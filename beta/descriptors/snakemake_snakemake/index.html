@@ -11,9 +11,9 @@
 <link href="../snakemake/" rel="prev"/>
 <link href="../snakemake_snakefmt/" rel="next"/>
 <link href="../../assets/images/mega-linter-square.png" rel="icon"/>
-<meta content="mkdocs-1.5.3, mkdocs-material-9.5.9" name="generator"/>
+<meta content="mkdocs-1.5.3, mkdocs-material-9.5.11" name="generator"/>
 <title>snakemake configuration in MegaLinter - MegaLinter by OX Security</title>
-<link href="../../assets/stylesheets/main.f2e4d321.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/main.7e359304.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Satoshi,+sans-serif:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
@@ -3326,7 +3326,7 @@
 <p><a href="https://github.com/snakemake/snakemake"><img alt="GitHub stars" src="https://img.shields.io/github/stars/snakemake/snakemake?cacheSeconds=3600"/></a> <a href="https://github.com/snakemake/snakemake/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/snakemake/snakemake?sort=semver"/></a> <a href="https://github.com/snakemake/snakemake/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/snakemake/snakemake"/></a> <a href="https://github.com/snakemake/snakemake/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/snakemake/snakemake"/></a> <a href="https://github.com/snakemake/snakemake/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/snakemake/snakemake"/></a></p>
 <h2 id="snakemake-documentation">snakemake documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>8.4.8</strong></li>
+<li>Version in MegaLinter: <strong>8.4.12</strong></li>
 <li>Visit <a href="https://snakemake.readthedocs.io/en/stable/" target="_blank">Official Web Site</a></li>
 </ul>
 <p><a href="https://github.com/snakemake/snakemake" target="_blank"><img alt="snakemake - GitHub" src="https://gh-card.dev/repos/snakemake/snakemake.svg?fullname="/></a></p>
@@ -3611,7 +3611,7 @@
                  [--detailed-summary] [--archive FILE]
                  [--cleanup-metadata FILE [FILE ...]] [--cleanup-shadow]
                  [--skip-script-cleanup] [--unlock]
-                 [--list-changes {code,input,params}] [--list-input-changes]
+                 [--list-changes {input,params,code}] [--list-input-changes]
                  [--list-params-changes] [--list-untracked]
                  [--delete-all-output | --delete-temp-output]
                  [--keep-incomplete] [--drop-metadata]
@@ -3640,7 +3640,7 @@
                  [--shared-fs-usage {input-output,persistence,software-deployment,source-cache,sources,storage-local-copies,none} [{input-output,persistence,software-deployment,source-cache,sources,storage-local-copies,none} ...]]
                  [--scheduler-greediness SCHEDULER_GREEDINESS] [--no-hooks]
                  [--debug] [--runtime-profile FILE]
-                 [--mode {remote,subprocess,default}] [--show-failed-logs]
+                 [--mode {subprocess,default,remote}] [--show-failed-logs]
                  [--log-handler-script FILE] [--log-service {none,slack,wms}]
                  [--job-deploy-sources] [--container-image IMAGE]
                  [--immediate-submit] [--jobscript SCRIPT] [--jobname NAME]
@@ -3881,9 +3881,10 @@ EXECUTION:
                         configuration. If you rather prefer the traditional
                         way of just considering file modification dates, use '
                         --rerun-trigger mtime'. (default:
-                        frozenset({&lt;RerunTrigger.SOFTWARE_ENV: 3&gt;,
-                        &lt;RerunTrigger.CODE: 4&gt;, &lt;RerunTrigger.INPUT: 2&gt;,
-                        &lt;RerunTrigger.MTIME: 0&gt;, &lt;RerunTrigger.PARAMS: 1&gt;}))
+                        frozenset({&lt;RerunTrigger.PARAMS: 1&gt;,
+                        &lt;RerunTrigger.CODE: 4&gt;, &lt;RerunTrigger.SOFTWARE_ENV:
+                        3&gt;, &lt;RerunTrigger.INPUT: 2&gt;, &lt;RerunTrigger.MTIME:
+                        0&gt;}))
   --force, -f           Force the execution of the selected target or the
                         first rule regardless of already created output.
                         (default: False)
@@ -4120,7 +4121,7 @@ UTILITIES:
                         (default: False)
   --unlock              Remove a lock on the working directory. (default:
                         False)
-  --list-changes {code,input,params}, --lc {code,input,params}
+  --list-changes {input,params,code}, --lc {input,params,code}
                         List all output files for which the rule body (run or
                         shell) have changed in the Snakefile. (default: None)
   --list-input-changes, --li
@@ -4299,12 +4300,12 @@ BEHAVIOR:
                         and data provenance will be handled by NFS but input
                         and output files will be handled exclusively by the
                         storage provider. (default:
-                        frozenset({&lt;SharedFSUsage.STORAGE_LOCAL_COPIES: 4&gt;,
-                        &lt;SharedFSUsage.SOURCE_CACHE: 5&gt;,
-                        &lt;SharedFSUsage.PERSISTENCE: 0&gt;,
+                        frozenset({&lt;SharedFSUsage.SOFTWARE_DEPLOYMENT: 2&gt;,
+                        &lt;SharedFSUsage.SOURCES: 3&gt;,
                         &lt;SharedFSUsage.INPUT_OUTPUT: 1&gt;,
-                        &lt;SharedFSUsage.SOFTWARE_DEPLOYMENT: 2&gt;,
-                        &lt;SharedFSUsage.SOURCES: 3&gt;}))
+                        &lt;SharedFSUsage.PERSISTENCE: 0&gt;,
+                        &lt;SharedFSUsage.SOURCE_CACHE: 5&gt;,
+                        &lt;SharedFSUsage.STORAGE_LOCAL_COPIES: 4&gt;}))
   --scheduler-greediness SCHEDULER_GREEDINESS, --greediness SCHEDULER_GREEDINESS
                         Set the greediness of scheduling. This value between 0
                         and 1 determines how careful jobs are selected for
@@ -4318,7 +4319,7 @@ BEHAVIOR:
   --runtime-profile FILE
                         Profile Snakemake and write the output to FILE. This
                         requires yappi to be installed. (default: None)
-  --mode {remote,subprocess,default}
+  --mode {subprocess,default,remote}
                         Set execution mode of Snakemake (internal use only).
                         (default: default)
   --show-failed-logs    Automatically display logs of failed jobs. (default:
@@ -4349,7 +4350,8 @@ REMOTE EXECUTION:
                         is up to your responsibility. Any used image has to
                         contain a working snakemake installation that is
                         compatible with (or ideally the same as) the currently
-                        running version. (default: snakemake/snakemake:v8.4.8)
+                        running version. (default:
+                        snakemake/snakemake:v8.4.12)
   --immediate-submit, --is
                         Immediately submit all jobs to the cluster instead of
                         waiting for present input files. This will fail,
