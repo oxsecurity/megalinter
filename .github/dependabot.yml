@@ -37,6 +37,26 @@ updates:
     schedule:
       interval: "daily"
     open-pull-requests-limit: 10
+  - package-ecosystem: "docker"
+    directory: "/flavors"
+    schedule:
+      interval: "daily"
+    open-pull-requests-limit: 10
+  - package-ecosystem: "docker"
+    directory: "/linters"
+    schedule:
+      interval: "daily"
+    open-pull-requests-limit: 10
+  - package-ecosystem: "docker"
+    directory: "/server"
+    schedule:
+      interval: "daily"
+    open-pull-requests-limit: 10
+  - package-ecosystem: "docker"
+    directory: "/.config/gitpod"
+    schedule:
+      interval: "daily"
+    open-pull-requests-limit: 10
 
   # Maintain dependencies for python with pip
   - package-ecosystem: "pip"
