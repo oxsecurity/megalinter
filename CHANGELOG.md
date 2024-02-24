@@ -54,6 +54,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.3.2 to **8.4.1** on 2024-02-23
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.55.1 to **0.55.2** on 2024-02-23
   - [yamllint](https://yamllint.readthedocs.io/) from 1.34.0 to **1.35.1** on 2024-02-23
+  - [actionlint](https://rhysd.github.io/actionlint/) from 1.6.26 to **1.6.27** on 2024-02-24
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.68.0 to **3.68.2** on 2024-02-24
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.4.12 to **8.5.2** on 2024-02-24
 <!-- linter-versions-end -->
 
 ## [v7.9.0] - 2024-02-11
