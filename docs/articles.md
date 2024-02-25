@@ -80,7 +80,7 @@ description: List of all known articles, blog posts and videos that talk about M
 ## Linters
 
 <!-- referring-linters-start -->
-- [checkstyle](https://checkstyle.sourceforge.io/index.html#Related_Tools_Active_Tools){target=_blank}
+- [checkstyle](https://checkstyle.org/index.html#Related_Tools_Active_Tools){target=_blank}
 - [clj-kondo](https://github.com/borkdude/clj-kondo/blob/master/doc/ci-integration.md#github){target=_blank}
 - [cljstyle](https://github.com/greglook/cljstyle/blob/main/doc/integrations.md){target=_blank}
 - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#mega-linter){target=_blank}

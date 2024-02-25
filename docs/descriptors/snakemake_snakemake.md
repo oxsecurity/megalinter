@@ -15,7 +15,7 @@ description: How to use snakemake (configure, ignore files, ignore errors, help 
 
 ## snakemake documentation
 
-- Version in MegaLinter: **8.4.12**
+- Version in MegaLinter: **8.5.2**
 - Visit [Official Web Site](https://snakemake.readthedocs.io/en/stable/){target=_blank}
 
 [![snakemake - GitHub](https://gh-card.dev/repos/snakemake/snakemake.svg?fullname=)](https://github.com/snakemake/snakemake){target=_blank}
@@ -125,15 +125,15 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--precommand PRECOMMAND] [--groups GROUPS [GROUPS ...]]
                  [--group-components GROUP_COMPONENTS [GROUP_COMPONENTS ...]]
                  [--report [FILE]] [--report-stylesheet CSSFILE]
-                 [--draft-notebook TARGET] [--edit-notebook TARGET]
-                 [--notebook-listen IP:PORT] [--lint [{text,json}]]
-                 [--generate-unit-tests [TESTPATH]] [--containerize]
-                 [--export-cwl FILE] [--list-rules] [--list-target-rules]
-                 [--dag] [--rulegraph] [--filegraph] [--d3dag] [--summary]
-                 [--detailed-summary] [--archive FILE]
+                 [--reporter PLUGIN] [--draft-notebook TARGET]
+                 [--edit-notebook TARGET] [--notebook-listen IP:PORT]
+                 [--lint [{text,json}]] [--generate-unit-tests [TESTPATH]]
+                 [--containerize] [--export-cwl FILE] [--list-rules]
+                 [--list-target-rules] [--dag] [--rulegraph] [--filegraph]
+                 [--d3dag] [--summary] [--detailed-summary] [--archive FILE]
                  [--cleanup-metadata FILE [FILE ...]] [--cleanup-shadow]
                  [--skip-script-cleanup] [--unlock]
-                 [--list-changes {input,params,code}] [--list-input-changes]
+                 [--list-changes {code,input,params}] [--list-input-changes]
                  [--list-params-changes] [--list-untracked]
                  [--delete-all-output | --delete-temp-output]
                  [--keep-incomplete] [--drop-metadata]
@@ -175,6 +175,8 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--conda-create-envs-only] [--conda-frontend {conda,mamba}]
                  [--use-apptainer] [--apptainer-prefix DIR]
                  [--apptainer-args ARGS] [--use-envmodules]
+                 [--report-html-path VALUE]
+                 [--report-html-stylesheet-path VALUE]
                  [targets ...]
 
 Snakemake is a Python based language and execution environment for GNU Make-
@@ -403,10 +405,9 @@ EXECUTION:
                         configuration. If you rather prefer the traditional
                         way of just considering file modification dates, use '
                         --rerun-trigger mtime'. (default:
-                        frozenset({<RerunTrigger.PARAMS: 1>,
-                        <RerunTrigger.CODE: 4>, <RerunTrigger.SOFTWARE_ENV:
-                        3>, <RerunTrigger.INPUT: 2>, <RerunTrigger.MTIME:
-                        0>}))
+                        frozenset({<RerunTrigger.SOFTWARE_ENV: 3>,
+                        <RerunTrigger.CODE: 4>, <RerunTrigger.INPUT: 2>,
+                        <RerunTrigger.PARAMS: 1>, <RerunTrigger.MTIME: 0>}))
   --force, -f           Force the execution of the selected target or the
                         first rule regardless of already created output.
                         (default: False)
@@ -516,6 +517,10 @@ REPORTS:
                         Custom stylesheet to use for report. In particular,
                         this can be used for branding the report with e.g. a
                         custom logo, see docs. (default: None)
+  --reporter PLUGIN     Specify a custom report plugin. By default,
+                        Snakemake's builtin html reporter will be used. For
+                        custom reporters, check out their command line options
+                        starting with --report-. (default: None)
 
 NOTEBOOKS:
   --draft-notebook TARGET
@@ -643,7 +648,7 @@ UTILITIES:
                         (default: False)
   --unlock              Remove a lock on the working directory. (default:
                         False)
-  --list-changes {input,params,code}, --lc {input,params,code}
+  --list-changes {code,input,params}, --lc {code,input,params}
                         List all output files for which the rule body (run or
                         shell) have changed in the Snakefile. (default: None)
   --list-input-changes, --li
@@ -822,12 +827,12 @@ BEHAVIOR:
                         and data provenance will be handled by NFS but input
                         and output files will be handled exclusively by the
                         storage provider. (default:
-                        frozenset({<SharedFSUsage.SOFTWARE_DEPLOYMENT: 2>,
-                        <SharedFSUsage.SOURCES: 3>,
-                        <SharedFSUsage.INPUT_OUTPUT: 1>,
+                        frozenset({<SharedFSUsage.SOURCE_CACHE: 5>,
+                        <SharedFSUsage.SOFTWARE_DEPLOYMENT: 2>,
                         <SharedFSUsage.PERSISTENCE: 0>,
-                        <SharedFSUsage.SOURCE_CACHE: 5>,
-                        <SharedFSUsage.STORAGE_LOCAL_COPIES: 4>}))
+                        <SharedFSUsage.INPUT_OUTPUT: 1>,
+                        <SharedFSUsage.STORAGE_LOCAL_COPIES: 4>,
+                        <SharedFSUsage.SOURCES: 3>}))
   --scheduler-greediness SCHEDULER_GREEDINESS, --greediness SCHEDULER_GREEDINESS
                         Set the greediness of scheduling. This value between 0
                         and 1 determines how careful jobs are selected for
@@ -872,8 +877,7 @@ REMOTE EXECUTION:
                         is up to your responsibility. Any used image has to
                         contain a working snakemake installation that is
                         compatible with (or ideally the same as) the currently
-                        running version. (default:
-                        snakemake/snakemake:v8.4.12)
+                        running version. (default: snakemake/snakemake:v8.5.2)
   --immediate-submit, --is
                         Immediately submit all jobs to the cluster instead of
                         waiting for present input files. This will fail,
@@ -973,6 +977,16 @@ ENVIRONMENT MODULES:
                         singularity, which will then be only used as a
                         fallback for rules which don't define environment
                         modules. (default: False)
+
+html executor settings:
+  --report-html-path VALUE
+                        Path to the report file (either .html or .zip). Use
+                        zip if your report contains large results or
+                        directories with htmlindex as results. (default:
+                        <dataclasses._MISSING_TYPE object at 0x7f5b7332d7c0>)
+  --report-html-stylesheet-path VALUE
+                        Path to a custom stylesheet for the report. (default:
+                        <dataclasses._MISSING_TYPE object at 0x7f5b7332d7c0>)
 
  In general, command-line values override environment variables which override
 defaults.
