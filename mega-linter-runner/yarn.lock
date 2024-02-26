@@ -3127,9 +3127,9 @@ onetime@^6.0.0:
     mimic-fn "^4.0.0"
 
 open@^10.0.2:
-  version "10.0.3"
-  resolved "https://registry.yarnpkg.com/open/-/open-10.0.3.tgz#f60d8db49fa126c50aec751957fb5d7de3308d4f"
-  integrity sha512-dtbI5oW7987hwC9qjJTyABldTaa19SuyJse1QboWv3b0qCcrrLNVDqBx1XgELAjh9QTVQaP/C5b1nhQebd1H2A==
+  version "10.0.4"
+  resolved "https://registry.yarnpkg.com/open/-/open-10.0.4.tgz#4869d009dc5b706ae6585699e15d8ccc6cb73629"
+  integrity sha512-oujJ/FFr7ra6/7gJuQ4ZJJ8Gf2VHM0J3J/W7IvH++zaqEzacWVxzK++NiVY5NLHTTj7u/jNH5H3Ei9biL31Lng==
   dependencies:
     default-browser "^5.2.1"
     define-lazy-prop "^3.0.0"
