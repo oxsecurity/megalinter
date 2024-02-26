@@ -1,6 +1,6 @@
 # Please check changes with entrypoint.sh and keep in sync
 aiofiles
-azure-devops==6.0.0b4
+azure-devops==7.1.0b4
 beautifulsoup4
 commentjson
 fastapi
