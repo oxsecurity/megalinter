@@ -121,6 +121,8 @@ linters:
       - "**/aura/**/*.js"
       - "--severity-threshold"
       - "2"
+      - "--outfile"
+      - "{{REPORT_FOLDER}}/sfdx-scanner-report-aura.csv"
       - "--format"
       - "csv"
     cli_lint_mode: project
@@ -179,6 +181,8 @@ linters:
       - "**/lwc/**/*.js"
       - "--severity-threshold"
       - "2"
+      - "--outfile"
+      - "{{REPORT_FOLDER}}/sfdx-scanner-report-lwc.csv"
       - "--format"
       - "csv"
     cli_lint_mode: project
