@@ -121,6 +121,8 @@ linters:
       - "**/aura/**/*.js"
       - "--severity-threshold"
       - "2"
+      - "--outfile"
+      - "{{REPORT_FOLDER}}/sfdx-scanner-report-aura.csv"
       - "--format"
       - "csv"
     cli_lint_mode: project
@@ -132,8 +134,8 @@ linters:
       - "plugins"
     cli_version_arg_name: ""
     version_extract_regex: "(?<=@salesforce/sfdx-scanner )\\d+(\\.\\d+)+"
-    cli_lint_errors_count: regex_count
-    cli_lint_errors_regex: '"[0-9]+",'
+    cli_lint_errors_count: regex_sum
+    cli_lint_errors_regex: "found ([0-9]+) violation"
     examples:
       - "sfdx scanner:run"
     install:
@@ -179,6 +181,8 @@ linters:
       - "**/lwc/**/*.js"
       - "--severity-threshold"
       - "2"
+      - "--outfile"
+      - "{{REPORT_FOLDER}}/sfdx-scanner-report-lwc.csv"
       - "--format"
       - "csv"
     cli_lint_mode: project
@@ -190,8 +194,8 @@ linters:
       - "plugins"
     cli_version_arg_name: ""
     version_extract_regex: "(?<=@salesforce/sfdx-scanner )\\d+(\\.\\d+)+"
-    cli_lint_errors_count: regex_count
-    cli_lint_errors_regex: '"[0-9]+",'
+    cli_lint_errors_count: regex_sum
+    cli_lint_errors_regex: "found ([0-9]+) violation"
     examples:
       - "sfdx scanner:run"
     install:
