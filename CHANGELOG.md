@@ -78,6 +78,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [vale](https://vale.sh/) from 3.0.5 to **3.2.1** on 2024-03-01
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.7.3 to **1.7.4** on 2024-03-01
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.55.2 to **0.55.9** on 2024-03-01
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.68.3 to **3.68.4** on 2024-03-02
 <!-- linter-versions-end -->
 
 ## [v7.9.0] - 2024-02-11
