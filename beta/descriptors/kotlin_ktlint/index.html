@@ -11,7 +11,7 @@
 <link href="../kotlin/" rel="prev"/>
 <link href="../lua/" rel="next"/>
 <link href="../../assets/images/mega-linter-square.png" rel="icon"/>
-<meta content="mkdocs-1.5.3, mkdocs-material-9.5.11" name="generator"/>
+<meta content="mkdocs-1.5.3, mkdocs-material-9.5.12" name="generator"/>
 <title>ktlint configuration in MegaLinter - MegaLinter by OX Security</title>
 <link href="../../assets/stylesheets/main.7e359304.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
@@ -3326,7 +3326,7 @@
 <p><a href="https://github.com/pinterest/ktlint"><img alt="GitHub stars" src="https://img.shields.io/github/stars/pinterest/ktlint?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-autofix-green"><img alt="autofix" src="https://shields.io/badge/-autofix-green"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-SARIF-orange"><img alt="sarif" src="https://shields.io/badge/-SARIF-orange"/></a> <a href="https://github.com/pinterest/ktlint/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/pinterest/ktlint?sort=semver"/></a> <a href="https://github.com/pinterest/ktlint/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/pinterest/ktlint"/></a> <a href="https://github.com/pinterest/ktlint/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/pinterest/ktlint"/></a> <a href="https://github.com/pinterest/ktlint/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/pinterest/ktlint"/></a></p>
 <h2 id="ktlint-documentation">ktlint documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>1.1.1</strong></li>
+<li>Version in MegaLinter: <strong>1.2.1</strong></li>
 <li>Visit <a href="https://ktlint.github.io" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://ktlint.github.io/#rules" target="_blank">Index of problems detected by ktlint</a></li>
 </ul>
@@ -3585,87 +3585,110 @@
 <pre><code class="language-shell">ktlint --format myfile.kt
 </code></pre>
 <h3 id="help-content">Help content</h3>
-<pre><code class="language-shell">
-An anti-bikeshedding Kotlin linter with built-in formatter.
-(https://pinterest.github.io/ktlint/latest/).
+<pre><code class="language-shell">Usage: ktlint [&lt;options&gt;] [&lt;arguments&gt;]... &lt;command&gt; [&lt;args&gt;]...
 
-Usage:
-  ktlint &lt;flags&gt; [patterns]
-  java -jar ktlint.jar &lt;flags&gt; [patterns]
+  An anti-bikeshedding Kotlin linter with built-in formatter. (
+  https://pinterest.github.io/ktlint/latest/).
 
-Examples:
-  # Check the style of all Kotlin files (ending with '.kt' or '.kts') inside
-the current dir (recursively).
-  #
-  # Hidden folders will be skipped.
+  Usage on Windows: java -jar ktlint.jar &lt;options&gt; [&lt;arguments&gt;]... &lt;command&gt;
+  [&lt;args&gt;]...
+
+
+  ═════════════════════════════════ EXAMPLES ══════════════════════════════════
+
+
+
+  ─────────────────────────── Use default patterns ────────────────────────────
+
+
+  Check the style of all Kotlin files (ending with '.kt' or '.kts') inside the
+  current dir (recursively). Hidden folders will be skipped.
+
   ktlint
 
-  # Check only certain locations starting from the current directory.
-  #
-  # Prepend ! to negate the pattern, KtLint uses .gitignore pattern style
-syntax.
-  # Globs are applied starting from the last one.
-  #
-  # Hidden folders will be skipped.
-  # Check all '.kt' files in 'src/' directory, but ignore files ending with
-'Test.kt':
+
+  ───────────────────────────── Specify patterns ──────────────────────────────
+
+
+  Check only certain locations starting from the current directory. Prepend !
+  to negate the pattern, KtLint uses .gitignore pattern style syntax. Globs are
+  applied starting from the last one.
+
+  Check all '.kt' files in 'src/' directory, but ignore files ending with
+  'Test.kt':
+
   ktlint "src/**/*.kt" "!src/**/*Test.kt"
-  # Check all '.kt' files in 'src/' directory, but ignore 'generated' directory
-and its subdirectories:
+
+  Check all '.kt' files in 'src/' directory, but ignore 'generated' directory
+  and its subdirectories:
+
   ktlint "src/**/*.kt" "!src/**/generated/**"
 
-  # Auto-correct style violations.
+
+  ─────────────────────── Auto-correct style violations ───────────────────────
+
+
+  Check all '.kt' files in 'src/' directory, and when possible automatically
+  correct the lint violations:
+
   ktlint -F "src/**/*.kt"
 
-  # Using custom reporter jar and overriding report location
-  ktlint --reporter=csv,artifact=/path/to/reporter/csv.jar,
-output=my-custom-report.csv
-Flags:
 
-      --color           Make output colorful
-      --color-name=&lt;colorName&gt;
-                        Customize the output color
-  -F, --format          Fix deviations from the code style when possible
-      --limit=&lt;limit&gt;   Maximum number of errors to show (default: show all)
-      --relative        Print files relative to the working directory (e.g.
-                          dir/file.kt instead of /home/user/project/dir/file.kt)
-      --reporter=&lt;reporterConfigurations&gt;
-                        A reporter to use (built-in: plain (default), plain?
-                          group_by_file, plain-summary, json, sarif,
-                          checkstyle, html). To use a third-party reporter
-                          specify a path to a JAR file on the filesystem via ',
-                          artifact=' option. To override reporter output, use ',
-                          output=' option.
-  -R, --ruleset=&lt;rulesetJarPaths&gt;
-                        A path to a JAR file containing additional ruleset(s)
-      --stdin           Read file from stdin
-      --patterns-from-stdin[=&lt;stdinDelimiter&gt;]
-                        Read additional patterns to check/format from stdin.
-                          Patterns are delimited by the given argument.
-                          (default is newline) If the argument is an empty
-                          string, the NUL byte is used.
-      --editorconfig=&lt;editorConfigPath&gt;
-                        Path to the default '.editorconfig'. A property value
-                          from this file is used only when no '.editorconfig'
-                          file on the path to the source file specifies that
-                          property. Note: up until ktlint 0.46 the property
-                          value in this file used to override values found in '.
-                          editorconfig' files on the path to the source file.
-      --baseline=&lt;baselinePath&gt;
-                        Defines a baseline file to check against
-  -l, --log-level=&lt;minLogLevel&gt;
-                        Defines the minimum log level (trace, debug, info,
-                          warn, error) or none to suppress all logging
-  -h, --help            Show this help message and exit.
-  -V, --version         Print version information and exit.
+  ───────── Using custom reporter jar and overriding report location ──────────
+
+
+  ktlint
+  --reporter=csv,artifact=/path/to/reporter/csv.jar,output=my-custom-report.csv
+
+
+  ═══════════════════════════ Options and commands ════════════════════════════
+
+
+Options:
+  -v, --version            Show the version and exit
+  --code-style=(android_studio|intellij_idea|ktlint_official)
+                           (deprecated)
+  --color                  Make output colorful
+  --color-name=&lt;text&gt;      Customize the output color
+  -F, --format             Fix deviations from the code style when possible
+  --limit=&lt;int&gt;            Maximum number of errors to show (default: show all)
+  --relative               Print files relative to the working directory (e.g.
+                           dir/file.kt instead of
+                           /home/user/project/dir/file.kt)
+  --reporter=&lt;text&gt;        A reporter to use (built-in: plain (default),
+                           plain?group_by_file, plain-summary, json, sarif,
+                           checkstyle, html). To usea third-party reporter
+                           specify a path to a JAR file on the filesystem via
+                           ',artifact=' option. To override reporter output,
+                           use ',output=' option.
+  -R, --ruleset=&lt;text&gt;     A path to a JAR file containing additional
+                           ruleset(s)
+  --stdin                  Read file from stdin
+  --patterns-from-stdin[=&lt;text&gt;]
+                           Read additional patterns to check/format from stdin.
+                           Patterns are delimited by the given argument.
+                           (default is newline). If the argument is an empty
+                           string, the NUL byte is used.
+  --editorconfig=&lt;text&gt;    Path to the default '.editorconfig'. A property
+                           value from this file is used only when no
+                           '.editorconfig' file on the path to the source file
+                           specifies that property. Note: up until ktlint 0.46
+                           the property value in this file used to override
+                           values found in '.editorconfig' files on the path to
+                           the source file.
+  --baseline=&lt;text&gt;        Defines a baseline file to check against
+  -l, --log-level=&lt;value&gt;  Defines the minimum log level (trace, debug, info,
+                           warn, error) or none to suppress all logging
+  -h, --help               Show this message and exit
+
 Commands:
-  installGitPreCommitHook  Install git hook to automatically check files for
-                             style violations on commit
-  installGitPrePushHook    Install git hook to automatically check files for
-                             style violations before push
   generateEditorConfig     Generate kotlin style section for '.editorconfig'
-                             file. Output should be copied manually to the '.
-                             editorconfig' file.
+                           file. Output should be copied manually to the
+                           '.editorconfig' file.
+  installGitPreCommitHook  Install git hook to automatically check files for
+                           style violations on commit
+  installGitPrePushHook    Install git hook to automatically check files for
+                           style violations before push
 </code></pre>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
 <ul>
@@ -3746,7 +3769,7 @@ RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/rel
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.footer"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
-<script src="../../assets/javascripts/bundle.8fd75fb4.min.js"></script>
+<script src="../../assets/javascripts/bundle.c8d2eff1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
 <script src="../../javascripts/tables.js"></script>
 <script src="../../javascripts/gtag.js"></script>
