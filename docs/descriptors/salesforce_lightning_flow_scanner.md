@@ -19,7 +19,7 @@ If your root folder is not **force-app**, please set variable SALESFORCE_LIGHTNI
 
 ## lightning-flow-scanner documentation
 
-- Version in MegaLinter: **2.16.0**
+- Version in MegaLinter: **2.17.0**
 - Visit [Official Web Site](https://github.com/Lightning-Flow-Scanner#readme){target=_blank}
 - See [How to configure lightning-flow-scanner rules](https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx#configuration){target=_blank}
 - See [Index of problems detected by lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-core#rules){target=_blank}
@@ -88,7 +88,7 @@ sfdx flow:scan
 ### Help content
 
 ```shell
-(node:1929) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(node:1917) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
 (Use `node --trace-deprecation ...` to show where the warning was created)
 Try to resolve the errors in the following flows:
 
