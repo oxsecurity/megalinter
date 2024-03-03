@@ -1,0 +1,5 @@
+Results of rst-lint linter (version 1.3.2)
+See documentation on https://megalinter.io/descriptors/rst_rst_lint/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/rst/rst_good.rst
