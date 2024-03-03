@@ -270,6 +270,9 @@ OPTIONS
            by python, which is documented at
            https://docs.python.org/3/library/glob.html
 
+       --incremental-output
+           Output results incrementally.
+
        --interfile-timeout=VAL (absent=0)
            Maximum time to spend on interfile analysis. If set to 0 will not
            have time limit. Defaults to 0 s for all CLI scans. For CI scans,
