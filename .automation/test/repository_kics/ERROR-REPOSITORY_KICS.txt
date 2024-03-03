@@ -1,6 +1,1 @@
-Results of rst-lint linter (version 1.3.2)
-See documentation on https://megalinter.io/descriptors/rst_rst_lint/
------------------------------------------------
-
-[ERROR] .automation/test/rst/rst_bad_1.rst
-    WARNING .automation/test/repository_kics:2 Title underline too short.
+[ERROR] TESTING TBC
