@@ -15,7 +15,7 @@ MegaLinter analyze markdown and restructuredText files by default, you can chang
 
 ## vale documentation
 
-- Version in MegaLinter: **3.0.5**
+- Version in MegaLinter: **3.2.1**
 - Visit [Official Web Site](https://vale.sh/){target=_blank}
 - See [How to configure vale rules](https://vale.sh/explorer/){target=_blank}
 - See [How to disable vale rules in files](https://vale.sh/docs/topics/vocab/){target=_blank}
@@ -136,6 +136,7 @@ Flags:
  -h, --help       Print this help message.
  --ignore-syntax  Lint all files line-by-line.
  --no-exit        Don't return a nonzero exit code on errors.
+ --no-global      Don't load the global configuration.
  --no-wrap        Don't wrap CLI output.
  --output         An output style ("line", "JSON", or a template file).
  -v, --version    Print the current version.
@@ -145,6 +146,7 @@ Commands:
  ls-config        Print the current configuration to stdout.
  ls-metrics       Print the given file's internal metrics to stdout.
  ls-dirs          Print the default configuration directories to stdout.
+ ls-vars          Print the supported enviroment variables to stdout.
  sync             Download and install external configuration sources.
 
 ```

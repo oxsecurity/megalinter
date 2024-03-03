@@ -59,6 +59,27 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [actionlint](https://rhysd.github.io/actionlint/) from 1.6.26 to **1.6.27** on 2024-02-24
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.68.0 to **3.68.2** on 2024-02-24
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.4.12 to **8.5.2** on 2024-02-24
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.85.2 to **0.85.3** on 2024-03-01
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 14.2.2 to **14.2.3** on 2024-03-01
+  - [checkstyle](https://checkstyle.org/) from 10.13.0 to **10.14.0** on 2024-03-01
+  - [ktlint](https://ktlint.github.io) from 1.1.1 to **1.2.1** on 2024-03-01
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.47.5 to **0.47.6** on 2024-03-01
+  - [pylint](https://pylint.readthedocs.io) from 3.0.4 to **3.1.0** on 2024-03-01
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.351 to **1.1.352** on 2024-03-01
+  - [ruff](https://github.com/astral-sh/ruff) from 0.2.2 to **0.3.0** on 2024-03-01
+  - [checkov](https://www.checkov.io/) from 3.2.24 to **3.2.28** on 2024-03-01
+  - [grype](https://github.com/anchore/grype) from 0.74.6 to **0.74.7** on 2024-03-01
+  - [kics](https://www.kics.io) from 1.7.12 to **1.7.13** on 2024-03-01
+  - [syft](https://github.com/anchore/syft) from 0.105.0 to **1.0.0** on 2024-03-01
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.68.2 to **3.68.3** on 2024-03-01
+  - [rubocop](https://rubocop.org/) from 1.60.2 to **1.61.0** on 2024-03-01
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 2.16.0 to **2.17.0** on 2024-03-01
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.5.2 to **8.5.3** on 2024-03-01
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.4.1 to **8.5.0** on 2024-03-01
+  - [vale](https://vale.sh/) from 3.0.5 to **3.2.1** on 2024-03-01
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.7.3 to **1.7.4** on 2024-03-01
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.55.2 to **0.55.9** on 2024-03-01
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.68.3 to **3.68.4** on 2024-03-02
 <!-- linter-versions-end -->
 
 ## [v7.9.0] - 2024-02-11

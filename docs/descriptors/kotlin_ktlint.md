@@ -15,7 +15,7 @@ description: How to use ktlint (configure, ignore files, ignore errors, help & v
 
 ## ktlint documentation
 
-- Version in MegaLinter: **1.1.1**
+- Version in MegaLinter: **1.2.1**
 - Visit [Official Web Site](https://ktlint.github.io){target=_blank}
 - See [Index of problems detected by ktlint](https://ktlint.github.io/#rules){target=_blank}
 
@@ -102,87 +102,110 @@ ktlint --format myfile.kt
 ### Help content
 
 ```shell
+Usage: ktlint [<options>] [<arguments>]... <command> [<args>]...
 
-An anti-bikeshedding Kotlin linter with built-in formatter.
-(https://pinterest.github.io/ktlint/latest/).
+  An anti-bikeshedding Kotlin linter with built-in formatter. (
+  https://pinterest.github.io/ktlint/latest/).
 
-Usage:
-  ktlint <flags> [patterns]
-  java -jar ktlint.jar <flags> [patterns]
+  Usage on Windows: java -jar ktlint.jar <options> [<arguments>]... <command>
+  [<args>]...
 
-Examples:
-  # Check the style of all Kotlin files (ending with '.kt' or '.kts') inside
-the current dir (recursively).
-  #
-  # Hidden folders will be skipped.
+
+  ═════════════════════════════════ EXAMPLES ══════════════════════════════════
+
+
+
+  ─────────────────────────── Use default patterns ────────────────────────────
+
+
+  Check the style of all Kotlin files (ending with '.kt' or '.kts') inside the
+  current dir (recursively). Hidden folders will be skipped.
+
   ktlint
 
-  # Check only certain locations starting from the current directory.
-  #
-  # Prepend ! to negate the pattern, KtLint uses .gitignore pattern style
-syntax.
-  # Globs are applied starting from the last one.
-  #
-  # Hidden folders will be skipped.
-  # Check all '.kt' files in 'src/' directory, but ignore files ending with
-'Test.kt':
+
+  ───────────────────────────── Specify patterns ──────────────────────────────
+
+
+  Check only certain locations starting from the current directory. Prepend !
+  to negate the pattern, KtLint uses .gitignore pattern style syntax. Globs are
+  applied starting from the last one.
+
+  Check all '.kt' files in 'src/' directory, but ignore files ending with
+  'Test.kt':
+
   ktlint "src/**/*.kt" "!src/**/*Test.kt"
-  # Check all '.kt' files in 'src/' directory, but ignore 'generated' directory
-and its subdirectories:
+
+  Check all '.kt' files in 'src/' directory, but ignore 'generated' directory
+  and its subdirectories:
+
   ktlint "src/**/*.kt" "!src/**/generated/**"
 
-  # Auto-correct style violations.
+
+  ─────────────────────── Auto-correct style violations ───────────────────────
+
+
+  Check all '.kt' files in 'src/' directory, and when possible automatically
+  correct the lint violations:
+
   ktlint -F "src/**/*.kt"
 
-  # Using custom reporter jar and overriding report location
-  ktlint --reporter=csv,artifact=/path/to/reporter/csv.jar,
-output=my-custom-report.csv
-Flags:
 
-      --color           Make output colorful
-      --color-name=<colorName>
-                        Customize the output color
-  -F, --format          Fix deviations from the code style when possible
-      --limit=<limit>   Maximum number of errors to show (default: show all)
-      --relative        Print files relative to the working directory (e.g.
-                          dir/file.kt instead of /home/user/project/dir/file.kt)
-      --reporter=<reporterConfigurations>
-                        A reporter to use (built-in: plain (default), plain?
-                          group_by_file, plain-summary, json, sarif,
-                          checkstyle, html). To use a third-party reporter
-                          specify a path to a JAR file on the filesystem via ',
-                          artifact=' option. To override reporter output, use ',
-                          output=' option.
-  -R, --ruleset=<rulesetJarPaths>
-                        A path to a JAR file containing additional ruleset(s)
-      --stdin           Read file from stdin
-      --patterns-from-stdin[=<stdinDelimiter>]
-                        Read additional patterns to check/format from stdin.
-                          Patterns are delimited by the given argument.
-                          (default is newline) If the argument is an empty
-                          string, the NUL byte is used.
-      --editorconfig=<editorConfigPath>
-                        Path to the default '.editorconfig'. A property value
-                          from this file is used only when no '.editorconfig'
-                          file on the path to the source file specifies that
-                          property. Note: up until ktlint 0.46 the property
-                          value in this file used to override values found in '.
-                          editorconfig' files on the path to the source file.
-      --baseline=<baselinePath>
-                        Defines a baseline file to check against
-  -l, --log-level=<minLogLevel>
-                        Defines the minimum log level (trace, debug, info,
-                          warn, error) or none to suppress all logging
-  -h, --help            Show this help message and exit.
-  -V, --version         Print version information and exit.
+  ───────── Using custom reporter jar and overriding report location ──────────
+
+
+  ktlint
+  --reporter=csv,artifact=/path/to/reporter/csv.jar,output=my-custom-report.csv
+
+
+  ═══════════════════════════ Options and commands ════════════════════════════
+
+
+Options:
+  -v, --version            Show the version and exit
+  --code-style=(android_studio|intellij_idea|ktlint_official)
+                           (deprecated)
+  --color                  Make output colorful
+  --color-name=<text>      Customize the output color
+  -F, --format             Fix deviations from the code style when possible
+  --limit=<int>            Maximum number of errors to show (default: show all)
+  --relative               Print files relative to the working directory (e.g.
+                           dir/file.kt instead of
+                           /home/user/project/dir/file.kt)
+  --reporter=<text>        A reporter to use (built-in: plain (default),
+                           plain?group_by_file, plain-summary, json, sarif,
+                           checkstyle, html). To usea third-party reporter
+                           specify a path to a JAR file on the filesystem via
+                           ',artifact=' option. To override reporter output,
+                           use ',output=' option.
+  -R, --ruleset=<text>     A path to a JAR file containing additional
+                           ruleset(s)
+  --stdin                  Read file from stdin
+  --patterns-from-stdin[=<text>]
+                           Read additional patterns to check/format from stdin.
+                           Patterns are delimited by the given argument.
+                           (default is newline). If the argument is an empty
+                           string, the NUL byte is used.
+  --editorconfig=<text>    Path to the default '.editorconfig'. A property
+                           value from this file is used only when no
+                           '.editorconfig' file on the path to the source file
+                           specifies that property. Note: up until ktlint 0.46
+                           the property value in this file used to override
+                           values found in '.editorconfig' files on the path to
+                           the source file.
+  --baseline=<text>        Defines a baseline file to check against
+  -l, --log-level=<value>  Defines the minimum log level (trace, debug, info,
+                           warn, error) or none to suppress all logging
+  -h, --help               Show this message and exit
+
 Commands:
-  installGitPreCommitHook  Install git hook to automatically check files for
-                             style violations on commit
-  installGitPrePushHook    Install git hook to automatically check files for
-                             style violations before push
   generateEditorConfig     Generate kotlin style section for '.editorconfig'
-                             file. Output should be copied manually to the '.
-                             editorconfig' file.
+                           file. Output should be copied manually to the
+                           '.editorconfig' file.
+  installGitPreCommitHook  Install git hook to automatically check files for
+                           style violations on commit
+  installGitPrePushHook    Install git hook to automatically check files for
+                           style violations before push
 ```
 
 ### Installation on mega-linter Docker image
