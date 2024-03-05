@@ -6,7 +6,7 @@
     <title>Error 404 :(</title>
 
     <script>
-        window.onload = function () {
+        window.onload = async () => {
             const defaultVersion = 'latest';
             const destination = window.location.href;
             if (window.location.href.includes("megalinter.io/" + defaultVersion)) {
@@ -21,6 +21,14 @@
                         "megalinter.io/" + match[0] + "/",
                         "megalinter.io/" + defaultVersion + "/"
                     );
+                    const response = await fetch(redirectLocation, { method: "HEAD" });
+                    if (response.status > 400) {
+                        console.log(`Unable to reach ${redirectLocation}`);
+                        redirectLocation = window.location.href.replace(
+                            "megalinter.io/",
+                            "megalinter.io/" + defaultVersion + "/"
+                        );
+                    }
                 }
                 else {
                     redirectLocation = window.location.href.replace(

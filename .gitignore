@@ -2,3 +2,9 @@ node_modules
 .automation/test/copypaste/good/report/html/styles/prism.css
 .automation/test/dependencies/megalinter-reports/IDE-config/.vscode/extensions.json
 .automation/test/dependencies/megalinter-reports/linters_logs/ERROR-TYPESCRIPT_ES.log
+
+megalinter/
+
+.vscode/
+
+site/
