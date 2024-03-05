@@ -23,10 +23,9 @@
                     );
                     const response = await fetch(redirectLocation, { method: "HEAD" });
                     if (response.status > 400) {
-                        console.log(`Unable to reach ${redirectLocation}`);
                         redirectLocation = window.location.href.replace(
-                            "megalinter.io/",
-                            "megalinter.io/" + defaultVersion + "/"
+                            "megalinter.io/" + match[0] ,
+                            "megalinter.io/" + defaultVersion 
                         );
                     }
                 }
