@@ -110,7 +110,10 @@ def combine_config(workspace, config, combined_config, config_source):
     for extends_item in extends:
         if extends_item.startswith("http"):
             headers = {}
-            if extends_item.startswith("https://raw.githubusercontent.com") and "GITHUB_TOKEN" in os.environ:
+            if (
+                extends_item.startswith("https://raw.githubusercontent.com")
+                and "GITHUB_TOKEN" in os.environ
+            ):
                 github_token = os.environ["GITHUB_TOKEN"]
                 headers["Authorization"] = f"token {github_token}"
             r = requests.get(extends_item, allow_redirects=True, headers=headers)
