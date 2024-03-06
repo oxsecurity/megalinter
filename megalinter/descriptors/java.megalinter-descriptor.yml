@@ -80,6 +80,8 @@ linters:
     cli_lint_mode: list_of_files
     cli_executable: /usr/bin/pmd/bin/run.sh
     config_file_name: java-pmd-ruleset.xml
+    cli_lint_errors_count: "regex_sum"
+    cli_lint_errors_regex: "Found ([0-9]+) errors"
     cli_config_arg_name: "--rulesets"
     cli_sarif_args:
       - --format

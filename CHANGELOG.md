@@ -18,6 +18,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Trivy: use `misconfig` instead of the deprecated `config` scanner, updating the default arguments
   - Update calls to sfdx-scanner to output a CSV file for Aura & LWC
   - Kics: fixed error count in the summary table
+  - pmd: fixed error count in the summary table
 
 - Doc
   - Removed obsolete warning for semgrep as the issue has been fixed
