@@ -15,7 +15,7 @@ description: How to use snakemake (configure, ignore files, ignore errors, help 
 
 ## snakemake documentation
 
-- Version in MegaLinter: **8.5.3**
+- Version in MegaLinter: **8.5.5**
 - Visit [Official Web Site](https://snakemake.readthedocs.io/en/stable/){target=_blank}
 
 [![snakemake - GitHub](https://gh-card.dev/repos/snakemake/snakemake.svg?fullname=)](https://github.com/snakemake/snakemake){target=_blank}
@@ -133,7 +133,7 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--d3dag] [--summary] [--detailed-summary] [--archive FILE]
                  [--cleanup-metadata FILE [FILE ...]] [--cleanup-shadow]
                  [--skip-script-cleanup] [--unlock]
-                 [--list-changes {code,params,input}] [--list-input-changes]
+                 [--list-changes {params,code,input}] [--list-input-changes]
                  [--list-params-changes] [--list-untracked]
                  [--delete-all-output | --delete-temp-output]
                  [--keep-incomplete] [--drop-metadata]
@@ -405,9 +405,10 @@ EXECUTION:
                         configuration. If you rather prefer the traditional
                         way of just considering file modification dates, use '
                         --rerun-trigger mtime'. (default:
-                        frozenset({<RerunTrigger.SOFTWARE_ENV: 3>,
-                        <RerunTrigger.INPUT: 2>, <RerunTrigger.PARAMS: 1>,
-                        <RerunTrigger.CODE: 4>, <RerunTrigger.MTIME: 0>}))
+                        frozenset({<RerunTrigger.PARAMS: 1>,
+                        <RerunTrigger.INPUT: 2>, <RerunTrigger.MTIME: 0>,
+                        <RerunTrigger.CODE: 4>, <RerunTrigger.SOFTWARE_ENV:
+                        3>}))
   --force, -f           Force the execution of the selected target or the
                         first rule regardless of already created output.
                         (default: False)
@@ -648,9 +649,10 @@ UTILITIES:
                         (default: False)
   --unlock              Remove a lock on the working directory. (default:
                         False)
-  --list-changes {code,params,input}, --lc {code,params,input}
-                        List all output files for which the rule body (run or
-                        shell) have changed in the Snakefile. (default: None)
+  --list-changes {params,code,input}, --lc {params,code,input}
+                        List all output files for which the given items (code,
+                        input, params) have changed since creation. (default:
+                        None)
   --list-input-changes, --li
                         List all output files for which the defined input
                         files have changed in the Snakefile (e.g. new input
@@ -827,12 +829,12 @@ BEHAVIOR:
                         and data provenance will be handled by NFS but input
                         and output files will be handled exclusively by the
                         storage provider. (default:
-                        frozenset({<SharedFSUsage.SOFTWARE_DEPLOYMENT: 2>,
-                        <SharedFSUsage.SOURCES: 3>,
+                        frozenset({<SharedFSUsage.SOURCE_CACHE: 5>,
                         <SharedFSUsage.INPUT_OUTPUT: 1>,
-                        <SharedFSUsage.SOURCE_CACHE: 5>,
-                        <SharedFSUsage.STORAGE_LOCAL_COPIES: 4>,
-                        <SharedFSUsage.PERSISTENCE: 0>}))
+                        <SharedFSUsage.PERSISTENCE: 0>,
+                        <SharedFSUsage.SOFTWARE_DEPLOYMENT: 2>,
+                        <SharedFSUsage.SOURCES: 3>,
+                        <SharedFSUsage.STORAGE_LOCAL_COPIES: 4>}))
   --scheduler-greediness SCHEDULER_GREEDINESS, --greediness SCHEDULER_GREEDINESS
                         Set the greediness of scheduling. This value between 0
                         and 1 determines how careful jobs are selected for
@@ -877,7 +879,7 @@ REMOTE EXECUTION:
                         is up to your responsibility. Any used image has to
                         contain a working snakemake installation that is
                         compatible with (or ideally the same as) the currently
-                        running version. (default: snakemake/snakemake:v8.5.3)
+                        running version. (default: snakemake/snakemake:v8.5.5)
   --immediate-submit, --is
                         Immediately submit all jobs to the cluster instead of
                         waiting for present input files. This will fail,
@@ -983,10 +985,10 @@ html executor settings:
                         Path to the report file (either .html or .zip). Use
                         zip if your report contains large results or
                         directories with htmlindex as results. (default:
-                        <dataclasses._MISSING_TYPE object at 0x7efffa4b5520>)
+                        <dataclasses._MISSING_TYPE object at 0x7feeaf401a60>)
   --report-html-stylesheet-path VALUE
                         Path to a custom stylesheet for the report. (default:
-                        <dataclasses._MISSING_TYPE object at 0x7efffa4b5520>)
+                        <dataclasses._MISSING_TYPE object at 0x7feeaf401a60>)
 
  In general, command-line values override environment variables which override
 defaults.

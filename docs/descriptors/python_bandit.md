@@ -19,7 +19,7 @@ If you find it too harsh, you may define `PYTHON_BANDIT_DISABLE_ERRORS: true` in
 
 ## bandit documentation
 
-- Version in MegaLinter: **1.7.7**
+- Version in MegaLinter: **1.7.8**
 - Visit [Official Web Site](https://bandit.readthedocs.io/en/latest/){target=_blank}
 - See [How to configure bandit rules](https://bandit.readthedocs.io/en/latest/config.html#){target=_blank}
   - If custom `.bandit.yml` config file isn't found, [.bandit.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.bandit.yml){target=_blank} will be used
@@ -101,7 +101,7 @@ usage: bandit [-h] [-r] [-a {file,vuln}] [-n CONTEXT_LINES] [-c CONFIG_FILE]
               [-p PROFILE] [-t TESTS] [-s SKIPS]
               [-l | --severity-level {all,low,medium,high}]
               [-i | --confidence-level {all,low,medium,high}]
-              [-f {csv,custom,html,json,sarif,screen,txt,xml,yaml}]
+              [-f {csv,custom,html,json,sarif,sarif,screen,txt,xml,yaml}]
               [--msg-template MSG_TEMPLATE] [-o [OUTPUT_FILE]] [-v] [-d] [-q]
               [--ignore-nosec] [-x EXCLUDED_PATHS] [-b BASELINE]
               [--ini INI_PATH] [--exit-zero] [--version]
@@ -143,7 +143,7 @@ options:
                         higher. "all" and "low" are likely to produce the same
                         results, but it is possible for rules to be undefined
                         which will not be listed in "low".
-  -f {csv,custom,html,json,sarif,screen,txt,xml,yaml}, --format {csv,custom,html,json,sarif,screen,txt,xml,yaml}
+  -f {csv,custom,html,json,sarif,sarif,screen,txt,xml,yaml}, --format {csv,custom,html,json,sarif,sarif,screen,txt,xml,yaml}
                         specify output format
   --msg-template MSG_TEMPLATE
                         specify output message template (only usable with
