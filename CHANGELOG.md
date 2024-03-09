@@ -19,6 +19,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Update calls to sfdx-scanner to output a CSV file for Aura & LWC
   - Kics: fixed error count in the summary table
   - Fix issue with EXTENDS using private repository by sending GITHUB_TOKEN as HTTP auth header
+  - Fix SPELL_VALE_CONFIG_FILE not working (handle the override of linter CONFIG_FILE if the linter is activated only if some files are found)
 
 - Doc
   - Removed obsolete warning for semgrep as the issue has been fixed
@@ -99,6 +100,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.5.3 to **8.5.5** on 2024-03-08
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.5.0 to **8.6.0** on 2024-03-08
   - [vale](https://vale.sh/) from 3.2.1 to **3.2.2** on 2024-03-08
+  - [helm](https://helm.sh/docs/helm/helm_lint/) from 3.13.2 to **3.14.2** on 2024-03-09
+  - [powershell_formatter](https://github.com/PowerShell/PSScriptAnalyzer) from 7.4.0 to **7.4.1** on 2024-03-09
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.4.0 to **7.4.1** on 2024-03-09
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.47.6 to **0.48.0** on 2024-03-09
+  - [ruff](https://github.com/astral-sh/ruff) from 0.3.1 to **0.3.2** on 2024-03-09
 <!-- linter-versions-end -->
 
 ## [v7.9.0] - 2024-02-11
