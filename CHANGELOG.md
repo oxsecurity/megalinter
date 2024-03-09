@@ -18,6 +18,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Trivy: use `misconfig` instead of the deprecated `config` scanner, updating the default arguments
   - Update calls to sfdx-scanner to output a CSV file for Aura & LWC
   - Kics: fixed error count in the summary table
+  - Fix SPELL_VALE_CONFIG_FILE not working (handle the override of linter CONFIG_FILE if the linter is activated only if some files are found)
 
 - Doc
   - Removed obsolete warning for semgrep as the issue has been fixed
@@ -80,6 +81,24 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.7.3 to **1.7.4** on 2024-03-01
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.55.2 to **0.55.9** on 2024-03-01
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.68.3 to **3.68.4** on 2024-03-02
+  - [shellcheck](https://github.com/koalaman/shellcheck) from 0.9.0 to **0.10.0** on 2024-03-08
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2024.02.12 to **2024.03.05** on 2024-03-08
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.85.3 to **0.86.0** on 2024-03-08
+  - [phpstan](https://phpstan.org/) from 1.10.59 to **1.10.60** on 2024-03-08
+  - [bandit](https://bandit.readthedocs.io/en/latest/) from 1.7.7 to **1.7.8** on 2024-03-08
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.8.0 to **1.9.0** on 2024-03-08
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.352 to **1.1.353** on 2024-03-08
+  - [ruff](https://github.com/astral-sh/ruff) from 0.3.0 to **0.3.1** on 2024-03-08
+  - [checkov](https://www.checkov.io/) from 3.2.28 to **3.2.33** on 2024-03-08
+  - [devskim](https://github.com/microsoft/DevSkim) from 1.0.30 to **1.0.32** on 2024-03-08
+  - [syft](https://github.com/anchore/syft) from 1.0.0 to **1.0.1** on 2024-03-08
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.68.4 to **3.69.0** on 2024-03-08
+  - [rubocop](https://rubocop.org/) from 1.61.0 to **1.62.0** on 2024-03-08
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 2.17.0 to **2.18.0** on 2024-03-08
+  - [scalafix](https://scalacenter.github.io/scalafix/) from 0.11.1 to **0.12.0** on 2024-03-08
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.5.3 to **8.5.5** on 2024-03-08
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.5.0 to **8.6.0** on 2024-03-08
+  - [vale](https://vale.sh/) from 3.2.1 to **3.2.2** on 2024-03-08
 <!-- linter-versions-end -->
 
 ## [v7.9.0] - 2024-02-11
