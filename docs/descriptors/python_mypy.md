@@ -19,7 +19,7 @@ If you don't use python static typing, you should disable this linter by adding 
 
 ## mypy documentation
 
-- Version in MegaLinter: **1.8.0**
+- Version in MegaLinter: **1.9.0**
 - Visit [Official Web Site](https://mypy.readthedocs.io/en/stable/){target=_blank}
 - See [How to configure mypy rules](https://mypy.readthedocs.io/en/stable/config_file.html){target=_blank}
   - If custom `.mypy.ini` config file isn't found, [.mypy.ini](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.mypy.ini){target=_blank} will be used
@@ -125,7 +125,7 @@ command line flags. For more details, see:
 - https://mypy.readthedocs.io/en/stable/config_file.html
 
 options:
-  --enable-incomplete-feature FEATURE
+  --enable-incomplete-feature {PreciseTupleTypes}
                             Enable support of incomplete/experimental features
                             for early preview
 
