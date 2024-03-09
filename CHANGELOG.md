@@ -18,6 +18,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Trivy: use `misconfig` instead of the deprecated `config` scanner, updating the default arguments
   - Update calls to sfdx-scanner to output a CSV file for Aura & LWC
   - Kics: fixed error count in the summary table
+  - Fix issue with EXTENDS using private repository by sending GITHUB_TOKEN as HTTP auth header
   - Fix SPELL_VALE_CONFIG_FILE not working (handle the override of linter CONFIG_FILE if the linter is activated only if some files are found)
 
 - Doc
