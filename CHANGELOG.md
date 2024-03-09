@@ -99,6 +99,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.5.3 to **8.5.5** on 2024-03-08
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.5.0 to **8.6.0** on 2024-03-08
   - [vale](https://vale.sh/) from 3.2.1 to **3.2.2** on 2024-03-08
+  - [helm](https://helm.sh/docs/helm/helm_lint/) from 3.13.2 to **3.14.2** on 2024-03-09
+  - [powershell_formatter](https://github.com/PowerShell/PSScriptAnalyzer) from 7.4.0 to **7.4.1** on 2024-03-09
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.4.0 to **7.4.1** on 2024-03-09
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.47.6 to **0.48.0** on 2024-03-09
+  - [ruff](https://github.com/astral-sh/ruff) from 0.3.1 to **0.3.2** on 2024-03-09
 <!-- linter-versions-end -->
 
 ## [v7.9.0] - 2024-02-11
