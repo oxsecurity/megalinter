@@ -11,7 +11,7 @@
 <link href="../python_pyright/" rel="prev"/>
 <link href="../r/" rel="next"/>
 <link href="../../assets/images/mega-linter-square.png" rel="icon"/>
-<meta content="mkdocs-1.5.3, mkdocs-material-9.5.12" name="generator"/>
+<meta content="mkdocs-1.5.3, mkdocs-material-9.5.13" name="generator"/>
 <title>ruff configuration in MegaLinter - MegaLinter by OX Security</title>
 <link href="../../assets/stylesheets/main.7e359304.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
@@ -3322,7 +3322,7 @@
 <p>An extremely fast Python linter, written in Rust.</p>
 <h2 id="ruff-documentation">ruff documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>0.3.0</strong></li>
+<li>Version in MegaLinter: <strong>0.3.1</strong></li>
 <li>Visit <a href="https://github.com/astral-sh/ruff#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://docs.astral.sh/ruff/configuration/" target="_blank">How to configure ruff rules</a><ul>
 <li>If custom <code>.ruff.toml</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.ruff.toml" target="_blank">.ruff.toml</a> will be used</li>
@@ -3528,6 +3528,16 @@ Log levels:
   -q, --quiet    Print diagnostics, but nothing else
   -s, --silent   Disable all logging (but still exit with status code "1" upon detecting
                  diagnostics)
+
+Global options:
+      --config &lt;CONFIG_OPTION&gt;  Either a path to a TOML configuration file (`pyproject.toml` or
+                                `ruff.toml`), or a TOML `&lt;KEY&gt; = &lt;VALUE&gt;` pair (such as you might
+                                find in a `ruff.toml` configuration file) overriding a specific
+                                configuration option. Overrides of individual settings using this
+                                option always take precedence over all configuration files,
+                                including configuration files that were also specified using
+                                `--config`
+      --isolated                Ignore all configuration files
 
 For help with a specific command, see: `ruff help &lt;command&gt;`.
 </code></pre>

@@ -11,7 +11,7 @@
 <link href="../bash_bash_exec/" rel="prev"/>
 <link href="../bash_shfmt/" rel="next"/>
 <link href="../../assets/images/mega-linter-square.png" rel="icon"/>
-<meta content="mkdocs-1.5.3, mkdocs-material-9.5.12" name="generator"/>
+<meta content="mkdocs-1.5.3, mkdocs-material-9.5.13" name="generator"/>
 <title>shellcheck configuration in MegaLinter - MegaLinter by OX Security</title>
 <link href="../../assets/stylesheets/main.7e359304.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
@@ -3321,7 +3321,7 @@
 <p><a href="https://github.com/koalaman/shellcheck"><img alt="GitHub stars" src="https://img.shields.io/github/stars/koalaman/shellcheck?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-SARIF-orange"><img alt="sarif" src="https://shields.io/badge/-SARIF-orange"/></a> <a href="https://github.com/koalaman/shellcheck/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/koalaman/shellcheck?sort=semver"/></a> <a href="https://github.com/koalaman/shellcheck/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/koalaman/shellcheck"/></a> <a href="https://github.com/koalaman/shellcheck/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/koalaman/shellcheck"/></a> <a href="https://github.com/koalaman/shellcheck/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/koalaman/shellcheck"/></a></p>
 <h2 id="shellcheck-documentation">shellcheck documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>0.9.0</strong></li>
+<li>Version in MegaLinter: <strong>0.10.0</strong></li>
 <li>Visit <a href="https://github.com/koalaman/shellcheck#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/koalaman/shellcheck/wiki/Ignore" target="_blank">How to disable shellcheck rules in files</a></li>
 <li>See <a href="https://github.com/koalaman/shellcheck#gallery-of-bad-code" target="_blank">Index of problems detected by shellcheck</a></li>
@@ -3631,12 +3631,14 @@
   -C[WHEN]            --color[=WHEN]             Use color (auto, always, never)
   -i CODE1,CODE2..    --include=CODE1,CODE2..    Consider only given types of warnings
   -e CODE1,CODE2..    --exclude=CODE1,CODE2..    Exclude types of warnings
+                      --extended-analysis=bool   Perform dataflow analysis (default true)
   -f FORMAT           --format=FORMAT            Output format (checkstyle, diff, gcc, json, json1, quiet, tty)
                       --list-optional            List checks disabled by default
                       --norc                     Don't look for .shellcheckrc files
+                      --rcfile=RCFILE            Prefer the specified configuration file over searching for one
   -o check1,check2..  --enable=check1,check2..   List of optional checks to enable (or 'all')
   -P SOURCEPATHS      --source-path=SOURCEPATHS  Specify path when looking for sourced files ("SCRIPTDIR" for script's dir)
-  -s SHELLNAME        --shell=SHELLNAME          Specify dialect (sh, bash, dash, ksh)
+  -s SHELLNAME        --shell=SHELLNAME          Specify dialect (sh, bash, dash, ksh, busybox)
   -S SEVERITY         --severity=SEVERITY        Minimum severity of errors to consider (error, warning, info, style)
   -V                  --version                  Print version information
   -W NUM              --wiki-link-count=NUM      The number of wiki links to show, when applicable
