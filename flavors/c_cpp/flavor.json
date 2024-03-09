@@ -29,6 +29,7 @@
         "JSON_V8R",
         "JSON_PRETTIER",
         "KOTLIN_KTLINT",
+        "KOTLIN_DETEKT",
         "KUBERNETES_KUBECONFORM",
         "KUBERNETES_HELM",
         "KUBERNETES_KUBESCAPE",
