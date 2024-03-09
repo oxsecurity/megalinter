@@ -455,18 +455,22 @@ class Linter:
             self.config_file_name = config.get(
                 self.request_id, self.name + "_CONFIG_FILE"
             )
+            self.update_active_if_file_found()
         elif config.exists(self.request_id, self.descriptor_id + "_CONFIG_FILE"):
             self.config_file_name = config.get(
                 self.request_id, self.descriptor_id + "_CONFIG_FILE"
             )
+            self.update_active_if_file_found()
         elif config.exists(self.request_id, self.name + "_FILE_NAME"):
             self.config_file_name = config.get(
                 self.request_id, self.name + "_FILE_NAME"
             )
+            self.update_active_if_file_found()
         elif config.exists(self.request_id, self.descriptor_id + "_FILE_NAME"):
             self.config_file_name = config.get(
                 self.request_id, self.descriptor_id + "_FILE_NAME"
             )
+            self.update_active_if_file_found()
         # Ignore file name: try first NAME + _FILE_NAME, then LANGUAGE + _FILE_NAME
         if self.cli_lint_ignore_arg_name is not None:
             if config.exists(self.request_id, self.name + "_IGNORE_FILE"):
@@ -740,6 +744,15 @@ class Linter:
             self.cli_docker_image_version = config.get(
                 self.request_id, self.name + "_DOCKER_IMAGE_VERSION"
             )
+
+    # If linter is activated only if some file is found, and config file has been overridden
+    # ->  add it to the files to check
+    def update_active_if_file_found(self):
+        if (
+            len(self.active_only_if_file_found) > 0
+            and self.config_file_name not in self.active_only_if_file_found
+        ):
+            self.active_only_if_file_found.append(self.config_file_name)
 
     # Processes the linter
     def run(self):
