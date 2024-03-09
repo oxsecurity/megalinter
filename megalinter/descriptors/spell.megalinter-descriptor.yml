@@ -29,7 +29,7 @@ linters:
     config_file_name: ".cspell.json"
     cli_lint_mode: list_of_files
     cli_lint_errors_count: regex_number
-    cli_lint_errors_regex: "Issues found: ([0-9]+) in .* files"
+    cli_lint_errors_regex: "Issues found: ([0-9]+) in .* file"
     examples:
       - "cspell myfile.any"
       - "cspell -c cspell.json myfile.any"
