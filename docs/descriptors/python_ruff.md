@@ -11,7 +11,7 @@ An extremely fast Python linter, written in Rust.
 
 ## ruff documentation
 
-- Version in MegaLinter: **0.3.0**
+- Version in MegaLinter: **0.3.1**
 - Visit [Official Web Site](https://github.com/astral-sh/ruff#readme){target=_blank}
 - See [How to configure ruff rules](https://docs.astral.sh/ruff/configuration/){target=_blank}
   - If custom `.ruff.toml` config file isn't found, [.ruff.toml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.ruff.toml){target=_blank} will be used
@@ -113,6 +113,16 @@ Log levels:
   -q, --quiet    Print diagnostics, but nothing else
   -s, --silent   Disable all logging (but still exit with status code "1" upon detecting
                  diagnostics)
+
+Global options:
+      --config <CONFIG_OPTION>  Either a path to a TOML configuration file (`pyproject.toml` or
+                                `ruff.toml`), or a TOML `<KEY> = <VALUE>` pair (such as you might
+                                find in a `ruff.toml` configuration file) overriding a specific
+                                configuration option. Overrides of individual settings using this
+                                option always take precedence over all configuration files,
+                                including configuration files that were also specified using
+                                `--config`
+      --isolated                Ignore all configuration files
 
 For help with a specific command, see: `ruff help <command>`.
 ```
