@@ -109,7 +109,14 @@ def combine_config(workspace, config, combined_config, config_source):
         extends = extends.split(",")
     for extends_item in extends:
         if extends_item.startswith("http"):
-            r = requests.get(extends_item, allow_redirects=True)
+            headers = {}
+            if (
+                extends_item.startswith("https://raw.githubusercontent.com")
+                and "GITHUB_TOKEN" in os.environ
+            ):
+                github_token = os.environ["GITHUB_TOKEN"]
+                headers["Authorization"] = f"token {github_token}"
+            r = requests.get(extends_item, allow_redirects=True, headers=headers)
             assert (
                 r.status_code == 200
             ), f"Unable to retrieve EXTENDS config file {extends_item}"
