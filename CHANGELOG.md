@@ -106,6 +106,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [protolint](https://github.com/yoheimuta/protolint) from 0.47.6 to **0.48.0** on 2024-03-09
   - [ruff](https://github.com/astral-sh/ruff) from 0.3.1 to **0.3.2** on 2024-03-09
   - [psalm](https://psalm.dev) from Psalm.5.22.2@ to **Psalm.5.23.0@** on 2024-03-09
+  - [checkov](https://www.checkov.io/) from 3.2.33 to **3.2.34** on 2024-03-10
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.55.9 to **0.55.13** on 2024-03-10
 <!-- linter-versions-end -->
 
 ## [v7.9.0] - 2024-02-11
