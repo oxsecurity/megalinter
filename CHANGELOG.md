@@ -105,6 +105,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.4.0 to **7.4.1** on 2024-03-09
   - [protolint](https://github.com/yoheimuta/protolint) from 0.47.6 to **0.48.0** on 2024-03-09
   - [ruff](https://github.com/astral-sh/ruff) from 0.3.1 to **0.3.2** on 2024-03-09
+  - [psalm](https://psalm.dev) from Psalm.5.22.2@ to **Psalm.5.23.0@** on 2024-03-09
 <!-- linter-versions-end -->
 
 ## [v7.9.0] - 2024-02-11
