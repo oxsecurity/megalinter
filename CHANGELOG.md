@@ -21,6 +21,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - CI
 
 - Linter versions upgrades
+  - [markdown-link-check](https://github.com/tcort/markdown-link-check) from 3.11.2 to **3.12.0** on 2024-03-10
 <!-- linter-versions-end -->
 
 ## [v7.10.0] - 2024-03-10
