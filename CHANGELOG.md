@@ -27,19 +27,24 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 ## [v7.10.0] - 2024-03-10
 
 - Core
+  - Update dotnet linters to .NET 8, by @bdovaz in https://github.com/oxsecurity/megalinter/pull/3182
 
 - Media
   - [How to use MegaLinter with Jenkins](https://www.youtube.com/watch?v=KhkNf2tQ3hM), by [Darin Pope](https://www.linkedin.com/in/darinpope/) / [Cloudbees](https://www.cloudbees.com/)
 
 - Fixes
-  - Trivy: use `misconfig` instead of the deprecated `config` scanner, updating the default arguments
-  - Update calls to sfdx-scanner to output a CSV file for Aura & LWC
-  - Kics: fixed error count in the summary table
-  - Fix issue with EXTENDS using private repository by sending GITHUB_TOKEN as HTTP auth header
-  - Fix SPELL_VALE_CONFIG_FILE not working (handle the override of linter CONFIG_FILE if the linter is activated only if some files are found)
+  - Trivy: use `misconfig` instead of the deprecated `config` scanner, updating the default arguments, by @pjungermann in https://github.com/oxsecurity/megalinter/pull/3376
+  - Update calls to sfdx-scanner to output a CSV file for Aura & LWC, by @nvuillam in https://github.com/oxsecurity/megalinter/pull/3398
+  - Kics: fixed error count in the summary table, by @TommyE123 in https://github.com/oxsecurity/megalinter/pull/3402
+  - Fix issue with EXTENDS using private repository by sending GITHUB_TOKEN as HTTP auth header, by @nvuillam in https://github.com/oxsecurity/megalinter/pull/3404
+  - Fix SPELL_VALE_CONFIG_FILE not working (handle the override of linter CONFIG_FILE if the linter is activated only if some files are found), by @nvuillam in https://github.com/oxsecurity/megalinter/pull/3409
+
+- CI
+  - Enable dependabot updates for devcontainer and other Docker directories, by @echoix in https://github.com/oxsecurity/megalinter/pull/3390
 
 - Doc
-  - Removed obsolete warning for semgrep as the issue has been fixed
+  - Removed obsolete warning for semgrep as the issue has been fixed, by @Jayllyz in https://github.com/oxsecurity/megalinter/pull/3374
+  - docs: fix docs in TrivySbomLinter.py, by @pjungermann in https://github.com/oxsecurity/megalinter/pull/3377S
 
 - Linter versions upgrades
   - [actionlint](https://rhysd.github.io/actionlint/) from 1.6.26 to **1.6.27**
