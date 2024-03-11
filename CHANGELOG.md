@@ -22,6 +22,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Linter versions upgrades
   - [markdown-link-check](https://github.com/tcort/markdown-link-check) from 3.11.2 to **3.12.0** on 2024-03-10
+  - [checkstyle](https://checkstyle.org/) from 10.14.0 to **10.14.1** on 2024-03-11
+  - [markdown-link-check](https://github.com/tcort/markdown-link-check) from 3.12.0 to **3.12.1** on 2024-03-11
+  - [checkov](https://www.checkov.io/) from 3.2.34 to **3.2.35** on 2024-03-11
+  - [rubocop](https://rubocop.org/) from 1.62.0 to **1.62.1** on 2024-03-11
 <!-- linter-versions-end -->
 
 ## [v7.10.0] - 2024-03-10
