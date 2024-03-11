@@ -5013,12 +5013,18 @@
 <li>CI</li>
 </ul>
 <ul>
-<li>Linter versions upgrades</li>
+<li>Linter versions upgrades<ul>
+<li><a href="https://github.com/tcort/markdown-link-check">markdown-link-check</a> from 3.11.2 to <strong>3.12.0</strong> on 2024-03-10</li>
+</ul>
+</li>
 </ul>
 <!-- linter-versions-end -->
 <h2 id="v7100-2024-03-10">[v7.10.0] - 2024-03-10</h2>
 <ul>
-<li>Core</li>
+<li>Core<ul>
+<li>Update dotnet linters to .NET 8, by @bdovaz in https://github.com/oxsecurity/megalinter/pull/3182</li>
+</ul>
+</li>
 </ul>
 <ul>
 <li>Media<ul>
@@ -5028,17 +5034,24 @@
 </ul>
 <ul>
 <li>Fixes<ul>
-<li>Trivy: use <code>misconfig</code> instead of the deprecated <code>config</code> scanner, updating the default arguments</li>
-<li>Update calls to sfdx-scanner to output a CSV file for Aura &amp; LWC</li>
-<li>Kics: fixed error count in the summary table</li>
-<li>Fix issue with EXTENDS using private repository by sending GITHUB_TOKEN as HTTP auth header</li>
-<li>Fix SPELL_VALE_CONFIG_FILE not working (handle the override of linter CONFIG_FILE if the linter is activated only if some files are found)</li>
+<li>Trivy: use <code>misconfig</code> instead of the deprecated <code>config</code> scanner, updating the default arguments, by @pjungermann in https://github.com/oxsecurity/megalinter/pull/3376</li>
+<li>Update calls to sfdx-scanner to output a CSV file for Aura &amp; LWC, by @nvuillam in https://github.com/oxsecurity/megalinter/pull/3398</li>
+<li>Kics: fixed error count in the summary table, by @TommyE123 in https://github.com/oxsecurity/megalinter/pull/3402</li>
+<li>Fix issue with EXTENDS using private repository by sending GITHUB_TOKEN as HTTP auth header, by @nvuillam in https://github.com/oxsecurity/megalinter/pull/3404</li>
+<li>Fix SPELL_VALE_CONFIG_FILE not working (handle the override of linter CONFIG_FILE if the linter is activated only if some files are found), by @nvuillam in https://github.com/oxsecurity/megalinter/pull/3409</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>CI<ul>
+<li>Enable dependabot updates for devcontainer and other Docker directories, by @echoix in https://github.com/oxsecurity/megalinter/pull/3390</li>
 </ul>
 </li>
 </ul>
 <ul>
 <li>Doc<ul>
-<li>Removed obsolete warning for semgrep as the issue has been fixed</li>
+<li>Removed obsolete warning for semgrep as the issue has been fixed, by @Jayllyz in https://github.com/oxsecurity/megalinter/pull/3374</li>
+<li>docs: fix docs in TrivySbomLinter.py, by @pjungermann in https://github.com/oxsecurity/megalinter/pull/3377S</li>
 </ul>
 </li>
 </ul>
