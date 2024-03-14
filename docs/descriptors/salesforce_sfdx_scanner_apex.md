@@ -19,7 +19,7 @@ See more details in [Help](#help-content)
 
 ## sfdx-scanner-apex documentation
 
-- Version in MegaLinter: **3.21.0**
+- Version in MegaLinter: **3.22.0**
 - Visit [Official Web Site](https://forcedotcom.github.io/sfdx-scanner/){target=_blank}
 - See [How to configure sfdx-scanner-apex rules](https://docs.pmd-code.org/latest/pmd_userdocs_making_rulesets.html){target=_blank}
   - If custom `apex-pmd-ruleset.xml` config file isn't found, [apex-pmd-ruleset.xml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/apex-pmd-ruleset.xml){target=_blank} will be used
@@ -93,17 +93,17 @@ sfdx scanner:run
 ### Help content
 
 ```shell
-(node:1961) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(node:1980) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
 (Use `node --trace-deprecation ...` to show where the warning was created)
 scan a codebase with a selection of rules
 
 USAGE
   $ sf scanner run [--verbose] [-c <value>] [-f
-    csv|html|json|junit|sarif|table|xml] [-o <value>] [-s <value> | ]
+    csv|html|json|junit|sarif|table|xml] [-o <value>] [-s <value> | --json]
     [--normalize-severity] [-p <value>] [-r <value>] [-e
     eslint|eslint-lwc|eslint-typescript|pmd|pmd-appexchange|retire-js|sfge|cpd]
     [-t <value>] [--tsconfig <value>] [--eslintconfig <value>] [--pmdconfig
-    <value>] [--env <value>] [--verbose-violations]
+    <value>] [--preview-pmd7] [--env <value>] [--verbose-violations]
 
 FLAGS
   -c, --category=<value>...         one or more categories of rules to run
@@ -115,13 +115,13 @@ FLAGS
                                     csv|html|json|junit|sarif|table|xml>
   -o, --outfile=<value>             write output to a file
   -p, --projectdir=<value>...       root directory of project
-  -r, --ruleset=<value>...          [deprecated] rulesets to run
+  -r, --ruleset=<value>...          [Deprecated] rulesets to run
   -s, --severity-threshold=<value>  throw an error when a violation threshold is
                                     reached, the --normalize-severity is
                                     invoked, and severity levels are reset to
                                     the baseline
   -t, --target=<value>...           source code location
-      --env=<value>                 [deprecated] override ESLint's default
+      --env=<value>                 [Deprecated] override ESLint's default
                                     environment variables, in JSON-formatted
                                     string
       --eslintconfig=<value>        specify the location of eslintrc config to
@@ -131,15 +131,22 @@ FLAGS
                                     engine-specific severity
       --pmdconfig=<value>           specify location of PMD rule reference XML
                                     file to customize rule selection
+      --preview-pmd7                use PMD version 7.0.0-rc4 when running PMD
+                                    and CPD
       --tsconfig=<value>            location of tsconfig.json file
       --verbose                     emit additional command output to stdout
       --verbose-violations          return retire-js violation message details
 
+GLOBAL FLAGS
+  --json  Format output as json.
+
 COMMANDS
   scanner run dfa  scan codebase with all DFA rules
 
-(node:1981) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(node:2005) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
 (Use `node --trace-deprecation ...` to show where the warning was created)
+ ›   Warning: Plugin @salesforce/sfdx-scanner (3.22.0) differs from the version
+ ›    specified by sf (3.21.0)
 Warning: We're continually improving Salesforce Code Analyzer. Tell us what you think! Give feedback at https://research.net/r/SalesforceCA
  name                                                   languages   categories            rulesets [dep]                                   engine            is dfa is pilot
  ────────────────────────────────────────────────────── ─────────── ───────────────────── ──────────────────────────────────────────────── ───────────────── ────── ────────

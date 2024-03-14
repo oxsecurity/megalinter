@@ -26,6 +26,22 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [markdown-link-check](https://github.com/tcort/markdown-link-check) from 3.12.0 to **3.12.1** on 2024-03-11
   - [checkov](https://www.checkov.io/) from 3.2.34 to **3.2.35** on 2024-03-11
   - [rubocop](https://rubocop.org/) from 1.62.0 to **1.62.1** on 2024-03-11
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 24.2.0 to **24.2.1** on 2024-03-14
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.25.53 to **0.26.54** on 2024-03-14
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2024.03.05 to **2024.03.13** on 2024-03-14
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 14.2.3 to **14.2.4** on 2024-03-14
+  - [phpstan](https://phpstan.org/) from 1.10.60 to **1.10.62** on 2024-03-14
+  - [psalm](https://psalm.dev) from Psalm.5.23.0@ to **Psalm.5.23.1@** on 2024-03-14
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.48.0 to **0.49.1** on 2024-03-14
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.353 to **1.1.354** on 2024-03-14
+  - [checkov](https://www.checkov.io/) from 3.2.35 to **3.2.38** on 2024-03-14
+  - [devskim](https://github.com/microsoft/DevSkim) from 1.0.32 to **1.0.33** on 2024-03-14
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 3.21.0 to **3.22.0** on 2024-03-14
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 3.21.0 to **3.22.0** on 2024-03-14
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 3.21.0 to **3.22.0** on 2024-03-14
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.5.5 to **8.7.0** on 2024-03-14
+  - [vale](https://vale.sh/) from 3.2.2 to **3.3.0** on 2024-03-14
+  - [sqlfluff](https://www.sqlfluff.com/) from 2.3.5 to **3.0.1** on 2024-03-14
 <!-- linter-versions-end -->
 
 ## [v7.10.0] - 2024-03-10
