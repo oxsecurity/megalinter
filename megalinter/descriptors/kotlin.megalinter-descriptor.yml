@@ -42,25 +42,29 @@ linters:
           url: https://github.com/w0rp/ale
   # DETEKT
   - linter_name: detekt
-    can_output_sarif: true
+    can_output_sarif: false
     linter_url: https://detekt.dev/
     linter_repo: https://github.com/detekt/detekt
     linter_rules_url: https://detekt.dev/docs/rules/comments
     linter_banner_image_url: https://repository-images.githubusercontent.com/71729669/8b793230-5d85-4c36-b72e-6911dd7bf6d3
     linter_megalinter_ref_url: https://detekt.dev/docs/intro
-    cli_lint_fix_arg_name: "--auto-correct"
-    cli_sarif_args:
-      - --report=sarif,output={{SARIF_OUTPUT_FILE}}
+    cli_executable: detekt-cli
+    cli_lint_extra_args:
+      - --report
+      - html:{{REPORT_FOLDER}}/kotlin_detekt_result.html
+      - -i
     examples:
-      - "detekt-cli myfile.kt"
-      - "detekt-cli --auto-correct myfile.kt"
+      - "detekt-cli"
+      - "detekt-cli --report html:folder/kotlin_detekt_result.html"
     install:
       dockerfile:
         - |
-          RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/detekt/detekt/releases/download/v1.23.3/detekt-cli-1.23.3.zip && \
-              unzip detekt-cli-1.23.3.zip && \
-              mv detekt-cli-1.23.3/bin /usr/bin && \
-              chmod a+x /usr/bin/detekt-cli
+          RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/detekt/detekt/releases/download/v1.23.5/detekt-cli-1.23.5.zip && \
+              unzip detekt-cli-1.23.5.zip && \
+              chmod a+x detekt-cli-1.23.5/bin/* && \
+              chmod a+x detekt-cli-1.23.5/lib/* && \
+              mv -n detekt-cli-1.23.5/bin/* usr/bin && \
+              mv -n detekt-cli-1.23.5/lib/* usr/lib
     ide:
       emacs:
         - name: flycheck-kotlin
@@ -68,7 +72,3 @@ linters:
       vim:
         - name: ale
           url: https://github.com/w0rp/ale
-
-
-
-

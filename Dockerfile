@@ -587,10 +587,12 @@ RUN wget --quiet https://github.com/pmd/pmd/releases/download/pmd_releases%2F${P
     mv "ktlint" /usr/bin/ \
 
 # detekt installation
-    && curl --retry 5 --retry-delay 5 -sSLO https://github.com/detekt/detekt/releases/download/v1.23.3/detekt-cli-1.23.3.zip && \
-    unzip detekt-cli-1.23.3.zip && \
-    mv detekt-cli-1.23.3/bin /usr/bin && \
-    chmod a+x /usr/bin/detekt-cli \
+    && curl --retry 5 --retry-delay 5 -sSLO https://github.com/detekt/detekt/releases/download/v1.23.5/detekt-cli-1.23.5.zip && \
+    unzip detekt-cli-1.23.5.zip && \
+    chmod a+x detekt-cli-1.23.5/bin/* && \
+    chmod a+x detekt-cli-1.23.5/lib/* && \
+    mv -n detekt-cli-1.23.5/bin/* usr/bin && \
+    mv -n detekt-cli-1.23.5/lib/* usr/lib \
 
 # kubeconform installation
 # Managed with COPY --link --from=kubeconform /kubeconform /usr/bin/
