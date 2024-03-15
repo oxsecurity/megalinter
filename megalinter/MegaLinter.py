@@ -318,8 +318,18 @@ class Megalinter:
                 linter_groups += [[linter]]
             linter_groups = linter_factory.sort_linters_groups_by_speed(linter_groups)
         # Execute linters in asynchronous pool to improve overall performances
-        process_number = mp.cpu_count()
-        logging.info(f"Processing linters on [{str(process_number)}] parallel cores…")
+        if config.exists(self.request_id, "PARALLEL_PROCESS_NUMBER"):
+            process_number = int(config.get(self.request_id, "PARALLEL_PROCESS_NUMBER"))
+            logging.info(
+                f"Processing linters on [{str(process_number)}] parallel cores… "
+                "(according to variable PARALLEL_PROCESS_NUMBER"
+            )
+        else:
+            process_number = mp.cpu_count()
+            logging.info(
+                f"Processing linters on [{str(process_number)}] parallel cores… "
+                "(can be decreased with variable PARALLEL_PROCESS_NUMBER in case of performance issues)"
+            )
         install_mp_handler()
         pool = mp.Pool(
             process_number,
