@@ -44,6 +44,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.5.5 to **8.7.0** on 2024-03-14
   - [vale](https://vale.sh/) from 3.2.2 to **3.3.0** on 2024-03-14
   - [sqlfluff](https://www.sqlfluff.com/) from 2.3.5 to **3.0.1** on 2024-03-14
+  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 8.0.102 to **8.0.103** on 2024-03-15
 <!-- linter-versions-end -->
 
 ## [v7.10.0] - 2024-03-10
