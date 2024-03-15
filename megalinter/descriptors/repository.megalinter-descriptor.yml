@@ -577,6 +577,7 @@ linters:
       - "."
       - --fail
       - --only-verified
+      - --no-update
     cli_help_arg_name: --help
     cli_version_arg_name: --version
     examples:
