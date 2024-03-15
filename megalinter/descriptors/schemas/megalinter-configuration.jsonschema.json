@@ -10242,6 +10242,15 @@
       "title": "Parallel processing",
       "type": "boolean"
     },
+    "PARALLEL_PROCESS_NUMBER": {
+      "$id": "#/properties/PARALLEL_PROCESS_NUMBER",
+      "description": "All available cores are used by default. If there are too many, you need to decrease the number of used cores in order to enhance performances",
+      "examples": [
+        4
+      ],
+      "title": "Parallel process number",
+      "type": "number"
+    },
     "PERL_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/PERL_FILTER_REGEX_EXCLUDE",
       "title": "Excluding regex filter for PERL descriptor",
