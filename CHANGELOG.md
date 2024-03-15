@@ -45,6 +45,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [vale](https://vale.sh/) from 3.2.2 to **3.3.0** on 2024-03-14
   - [sqlfluff](https://www.sqlfluff.com/) from 2.3.5 to **3.0.1** on 2024-03-14
   - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 8.0.102 to **8.0.103** on 2024-03-15
+  - [black](https://black.readthedocs.io/en/stable/) from 24.2.0 to **24.3.0** on 2024-03-15
+  - [ruff](https://github.com/astral-sh/ruff) from 0.3.2 to **0.3.3** on 2024-03-15
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.69.0 to **3.70.0** on 2024-03-15
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.7.0 to **8.8.0** on 2024-03-15
 <!-- linter-versions-end -->
 
 ## [v7.10.0] - 2024-03-10
