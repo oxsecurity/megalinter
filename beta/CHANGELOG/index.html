@@ -4995,7 +4995,10 @@
 <h2 id="unreleased-beta-main-branch-content">[Unreleased] (beta, main branch content)</h2>
 <p>Note: Can be used with <code>oxsecurity/megalinter@beta</code> in your GitHub Action mega-linter.yml file, or with <code>oxsecurity/megalinter:beta</code> docker image</p>
 <ul>
-<li>Core</li>
+<li>Core<ul>
+<li>Allow to override the number of parallel cores used, with variable <strong>PARALLEL_PROCESS_NUMBER</strong></li>
+</ul>
+</li>
 </ul>
 <ul>
 <li>Media</li>
@@ -5004,7 +5007,10 @@
 <li>New linters</li>
 </ul>
 <ul>
-<li>Fixes</li>
+<li>Fixes<ul>
+<li>Fix conflict between prettier and yamllint about spaces</li>
+</ul>
+</li>
 </ul>
 <ul>
 <li>Doc</li>
