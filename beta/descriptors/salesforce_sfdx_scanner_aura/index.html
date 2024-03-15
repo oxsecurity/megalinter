@@ -3326,7 +3326,7 @@
 <p><strong>Workaround: Restricted to Aura</strong></p>
 <h2 id="sfdx-scanner-aura-documentation">sfdx-scanner-aura documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>3.21.0</strong></li>
+<li>Version in MegaLinter: <strong>3.22.0</strong></li>
 <li>Visit <a href="https://forcedotcom.github.io/sfdx-scanner/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://eslint.org/docs/user-guide/configuring" target="_blank">How to configure sfdx-scanner-aura rules</a></li>
 <li>See <a href="https://eslint.org/docs/user-guide/configuring/rules#disabling-rules" target="_blank">How to disable sfdx-scanner-aura rules in files</a></li>
@@ -3471,17 +3471,17 @@
 <pre><code class="language-shell">sfdx scanner:run
 </code></pre>
 <h3 id="help-content">Help content</h3>
-<pre><code class="language-shell">(node:2193) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+<pre><code class="language-shell">(node:2219) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
 (Use `node --trace-deprecation ...` to show where the warning was created)
 scan a codebase with a selection of rules
 
 USAGE
   $ sf scanner run [--verbose] [-c &lt;value&gt;] [-f
-    csv|html|json|junit|sarif|table|xml] [-o &lt;value&gt;] [-s &lt;value&gt; | ]
+    csv|html|json|junit|sarif|table|xml] [-o &lt;value&gt;] [-s &lt;value&gt; | --json]
     [--normalize-severity] [-p &lt;value&gt;] [-r &lt;value&gt;] [-e
     eslint|eslint-lwc|eslint-typescript|pmd|pmd-appexchange|retire-js|sfge|cpd]
     [-t &lt;value&gt;] [--tsconfig &lt;value&gt;] [--eslintconfig &lt;value&gt;] [--pmdconfig
-    &lt;value&gt;] [--env &lt;value&gt;] [--verbose-violations]
+    &lt;value&gt;] [--preview-pmd7] [--env &lt;value&gt;] [--verbose-violations]
 
 FLAGS
   -c, --category=&lt;value&gt;...         one or more categories of rules to run
@@ -3493,13 +3493,13 @@ FLAGS
                                     csv|html|json|junit|sarif|table|xml&gt;
   -o, --outfile=&lt;value&gt;             write output to a file
   -p, --projectdir=&lt;value&gt;...       root directory of project
-  -r, --ruleset=&lt;value&gt;...          [deprecated] rulesets to run
+  -r, --ruleset=&lt;value&gt;...          [Deprecated] rulesets to run
   -s, --severity-threshold=&lt;value&gt;  throw an error when a violation threshold is
                                     reached, the --normalize-severity is
                                     invoked, and severity levels are reset to
                                     the baseline
   -t, --target=&lt;value&gt;...           source code location
-      --env=&lt;value&gt;                 [deprecated] override ESLint's default
+      --env=&lt;value&gt;                 [Deprecated] override ESLint's default
                                     environment variables, in JSON-formatted
                                     string
       --eslintconfig=&lt;value&gt;        specify the location of eslintrc config to
@@ -3509,15 +3509,22 @@ FLAGS
                                     engine-specific severity
       --pmdconfig=&lt;value&gt;           specify location of PMD rule reference XML
                                     file to customize rule selection
+      --preview-pmd7                use PMD version 7.0.0-rc4 when running PMD
+                                    and CPD
       --tsconfig=&lt;value&gt;            location of tsconfig.json file
       --verbose                     emit additional command output to stdout
       --verbose-violations          return retire-js violation message details
 
+GLOBAL FLAGS
+  --json  Format output as json.
+
 COMMANDS
   scanner run dfa  scan codebase with all DFA rules
 
-(node:2214) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(node:2241) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
 (Use `node --trace-deprecation ...` to show where the warning was created)
+ ›   Warning: Plugin @salesforce/sfdx-scanner (3.22.0) differs from the version
+ ›    specified by sf (3.21.0)
 Warning: We're continually improving Salesforce Code Analyzer. Tell us what you think! Give feedback at https://research.net/r/SalesforceCA
  name                                                   languages   categories            rulesets [dep]                                   engine            is dfa is pilot
  ────────────────────────────────────────────────────── ─────────── ───────────────────── ──────────────────────────────────────────────── ───────────────── ────── ────────
