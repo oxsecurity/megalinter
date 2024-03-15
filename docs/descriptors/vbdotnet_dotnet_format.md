@@ -11,7 +11,7 @@ dotnet-format requires a `.sln` or `.vbproj` file to run correctly.
 
 ## dotnet-format documentation
 
-- Version in MegaLinter: **8.0.102**
+- Version in MegaLinter: **8.0.103**
 - Visit [Official Web Site](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format){target=_blank}
 
 [![format - GitHub](https://gh-card.dev/repos/dotnet/format.svg?fullname=)](https://github.com/dotnet/format){target=_blank}
@@ -80,10 +80,10 @@ Description:
   Formats code to match editorconfig settings.
 
 Usage:
-  dotnet-format [<The project or solution file to operate on. If a file is not specified, the command will search the current directory for one.>] [command] [options]
+  dotnet-format [<PROJECT | SOLUTION>] [command] [options]
 
 Arguments:
-  <The project or solution file to operate on. If a file is not specified, the command will search the current directory for one.>  The project or solution file to operate on. If a file is not specified, the command will search the current directory for one. [default: /]
+  <PROJECT | SOLUTION>  The project or solution file to operate on. If a file is not specified, the command will search the current directory for one. [default: /]
 
 Options:
   -?, -h, --help                                                           Show help and usage information
@@ -102,9 +102,9 @@ Options:
 
 
 Commands:
-  whitespace <The project or solution file to operate on. If a file is not specified, the command will search the current directory for one.>  Run whitespace formatting. [default: /]
-  style <The project or solution file to operate on. If a file is not specified, the command will search the current directory for one.>       Run code style analyzers and apply fixes. [default: /]
-  analyzers <The project or solution file to operate on. If a file is not specified, the command will search the current directory for one.>   Run 3rd party analyzers and apply fixes. [default: /]
+  whitespace <PROJECT | SOLUTION>  Run whitespace formatting. [default: /]
+  style <PROJECT | SOLUTION>       Run code style analyzers and apply fixes. [default: /]
+  analyzers <PROJECT | SOLUTION>   Run 3rd party analyzers and apply fixes. [default: /]
 
 
 ```
