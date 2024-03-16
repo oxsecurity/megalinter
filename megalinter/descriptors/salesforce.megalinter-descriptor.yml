@@ -12,7 +12,7 @@ install:
     - ENV PATH="$JAVA_HOME/bin:${PATH}"
     - |
       RUN sf plugins install @salesforce/plugin-packaging \
-          && echo y|sfdx plugins:install sfdx-hardis \
+          && echo y|sf plugins install sfdx-hardis \
           && npm cache clean --force || true \
           && rm -rf /root/.npm/_cacache
   # Salesforce DX
@@ -59,7 +59,7 @@ linters:
     cli_help_extra_args:
       - "scanner:run"
     cli_help_extra_commands:
-      - "sfdx scanner:rule:list"
+      - "sf scanner:rule:list"
     cli_version_extra_args:
       - "plugins"
     cli_version_arg_name: ""
@@ -67,11 +67,11 @@ linters:
     cli_lint_errors_count: regex_sum
     cli_lint_errors_regex: "found ([0-9]+) violation"
     examples:
-      - "sfdx scanner:run"
+      - "sf scanner:run"
     install:
       dockerfile:
         - |
-          RUN sfdx plugins:install @salesforce/sfdx-scanner \
+          RUN sf plugins install @salesforce/sfdx-scanner \
               && npm cache clean --force || true \
               && rm -rf /root/.npm/_cacache
     ide:
@@ -129,7 +129,7 @@ linters:
     cli_help_extra_args:
       - "scanner:run"
     cli_help_extra_commands:
-      - "sfdx scanner:rule:list"
+      - "sf scanner:rule:list"
     cli_version_extra_args:
       - "plugins"
     cli_version_arg_name: ""
@@ -137,11 +137,11 @@ linters:
     cli_lint_errors_count: regex_sum
     cli_lint_errors_regex: "found ([0-9]+) violation"
     examples:
-      - "sfdx scanner:run"
+      - "sf scanner:run"
     install:
       dockerfile:
         - |
-          RUN sfdx plugins:install @salesforce/sfdx-scanner \
+          RUN sf plugins install @salesforce/sfdx-scanner \
               && npm cache clean --force || true \
               && rm -rf /root/.npm/_cacache
     ide:
@@ -189,7 +189,7 @@ linters:
     cli_help_extra_args:
       - "scanner:run"
     cli_help_extra_commands:
-      - "sfdx scanner:rule:list"
+      - "sf scanner:rule:list"
     cli_version_extra_args:
       - "plugins"
     cli_version_arg_name: ""
@@ -197,11 +197,11 @@ linters:
     cli_lint_errors_count: regex_sum
     cli_lint_errors_regex: "found ([0-9]+) violation"
     examples:
-      - "sfdx scanner:run"
+      - "sf scanner:run"
     install:
       dockerfile:
         - |
-          RUN sfdx plugins:install @salesforce/sfdx-scanner \
+          RUN sf plugins install @salesforce/sfdx-scanner \
               && npm cache clean --force || true \
               && rm -rf /root/.npm/_cacache
     ide:
@@ -237,11 +237,11 @@ linters:
     cli_lint_errors_regex: "- error: ([0-9]+)"
     test_folder: salesforce-lfs
     examples:
-      - "sfdx flow:scan"
+      - "sf flow:scan"
     install:
       dockerfile:
         - |
-          RUN echo y|sfdx plugins:install lightning-flow-scanner \
+          RUN echo y|sf plugins install lightning-flow-scanner \
               && npm cache clean --force || true \
               && rm -rf /root/.npm/_cacache
     ide:
