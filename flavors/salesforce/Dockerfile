@@ -241,7 +241,7 @@ ENV PATH="$JAVA_HOME/bin:${PATH}"
 # Next line commented because already managed by another linter
 # ENV PATH="$JAVA_HOME/bin:${PATH}"
 RUN sf plugins install @salesforce/plugin-packaging \
-    && echo y|sfdx plugins:install sfdx-hardis \
+    && echo y|sf plugins install sfdx-hardis \
     && npm cache clean --force || true \
     && rm -rf /root/.npm/_cacache \
 
@@ -308,24 +308,24 @@ RUN sf plugins install @salesforce/plugin-packaging \
 # Managed with COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
 
 # sfdx-scanner-apex installation
-    && sfdx plugins:install @salesforce/sfdx-scanner \
+    && sf plugins install @salesforce/sfdx-scanner \
     && npm cache clean --force || true \
     && rm -rf /root/.npm/_cacache \
 
 # sfdx-scanner-aura installation
 # Next line commented because already managed by another linter
-# RUN sfdx plugins:install @salesforce/sfdx-scanner \
+# RUN sf plugins install @salesforce/sfdx-scanner \
 #     && npm cache clean --force || true \
 #     && rm -rf /root/.npm/_cacache
 
 # sfdx-scanner-lwc installation
 # Next line commented because already managed by another linter
-# RUN sfdx plugins:install @salesforce/sfdx-scanner \
+# RUN sf plugins install @salesforce/sfdx-scanner \
 #     && npm cache clean --force || true \
 #     && rm -rf /root/.npm/_cacache
 
 # lightning-flow-scanner installation
-    && echo y|sfdx plugins:install lightning-flow-scanner \
+    && echo y|sf plugins install lightning-flow-scanner \
     && npm cache clean --force || true \
     && rm -rf /root/.npm/_cacache
 

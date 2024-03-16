@@ -35,7 +35,7 @@ description: sfdx-scanner-apex, sfdx-scanner-aura, sfdx-scanner-lwc, lightning-f
 ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 RUN sf plugins install @salesforce/plugin-packaging \
-    && echo y|sfdx plugins:install sfdx-hardis \
+    && echo y|sf plugins install sfdx-hardis \
     && npm cache clean --force || true \
     && rm -rf /root/.npm/_cacache
 
