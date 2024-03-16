@@ -3328,9 +3328,12 @@
 <p>If your root folder is not <strong>force-app</strong>, please set variable SALESFORCE_LIGHTNING_FLOW_SCANNER_DIRECTORY</p>
 <h2 id="lightning-flow-scanner-documentation">lightning-flow-scanner documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>2.18.0</strong></li>
+<li>Version in MegaLinter: <strong>2.19.0</strong></li>
 <li>Visit <a href="https://github.com/Lightning-Flow-Scanner#readme" target="_blank">Official Web Site</a></li>
-<li>See <a href="https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx#configuration" target="_blank">How to configure lightning-flow-scanner rules</a></li>
+<li>See <a href="https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx#configuration" target="_blank">How to configure lightning-flow-scanner rules</a><ul>
+<li>If custom <code>.flow-scanner.json</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.flow-scanner.json" target="_blank">.flow-scanner.json</a> will be used</li>
+</ul>
+</li>
 <li>See <a href="https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-core#rules" target="_blank">Index of problems detected by lightning-flow-scanner</a></li>
 </ul>
 <p><a href="https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx" target="_blank"><img alt="lightning-flow-scanner-sfdx - GitHub" src="https://gh-card.dev/repos/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx.svg?fullname="/></a></p>
@@ -3396,7 +3399,7 @@
 <tr>
 <td>SALESFORCE_LIGHTNING_FLOW_SCANNER_CLI_EXECUTABLE</td>
 <td>Override CLI executable</td>
-<td><code>['sfdx']</code></td>
+<td><code>['sf']</code></td>
 </tr>
 <tr>
 <td>SALESFORCE_DIRECTORY</td>
@@ -3469,10 +3472,10 @@
 <li><code>VALIDATE_ALL_CODEBASE: false</code> doesn't make lightning-flow-scanner analyze only updated files</li>
 </ul>
 <h3 id="example-calls">Example calls</h3>
-<pre><code class="language-shell">sfdx flow:scan
+<pre><code class="language-shell">sf flow:scan
 </code></pre>
 <h3 id="help-content">Help content</h3>
-<pre><code class="language-shell">(node:1986) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+<pre><code class="language-shell">(node:1985) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
 (Use `node --trace-deprecation ...` to show where the warning was created)
 Try to resolve the errors in the following flows:
 
@@ -3521,12 +3524,12 @@ FLAGS
 ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 RUN sf plugins install @salesforce/plugin-packaging \
-    &amp;&amp; echo y|sfdx plugins:install sfdx-hardis \
+    &amp;&amp; echo y|sf plugins install sfdx-hardis \
     &amp;&amp; npm cache clean --force || true \
     &amp;&amp; rm -rf /root/.npm/_cacache
 
 # Linter install
-RUN echo y|sfdx plugins:install lightning-flow-scanner \
+RUN echo y|sf plugins install lightning-flow-scanner \
     &amp;&amp; npm cache clean --force || true \
     &amp;&amp; rm -rf /root/.npm/_cacache
 

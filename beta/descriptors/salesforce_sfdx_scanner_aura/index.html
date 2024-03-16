@@ -3395,7 +3395,7 @@
 <tr>
 <td>SALESFORCE_SFDX_SCANNER_AURA_CLI_EXECUTABLE</td>
 <td>Override CLI executable</td>
-<td><code>['sfdx']</code></td>
+<td><code>['sf']</code></td>
 </tr>
 <tr>
 <td>SALESFORCE_DIRECTORY</td>
@@ -3468,10 +3468,10 @@
 <li><code>VALIDATE_ALL_CODEBASE: false</code> doesn't make sfdx-scanner-aura analyze only updated files</li>
 </ul>
 <h3 id="example-calls">Example calls</h3>
-<pre><code class="language-shell">sfdx scanner:run
+<pre><code class="language-shell">sf scanner:run
 </code></pre>
 <h3 id="help-content">Help content</h3>
-<pre><code class="language-shell">(node:2248) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+<pre><code class="language-shell">(node:2243) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
 (Use `node --trace-deprecation ...` to show where the warning was created)
 scan a codebase with a selection of rules
 
@@ -3521,7 +3521,7 @@ GLOBAL FLAGS
 COMMANDS
   scanner run dfa  scan codebase with all DFA rules
 
-(node:2266) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(node:2268) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
 (Use `node --trace-deprecation ...` to show where the warning was created)
  ›   Warning: Plugin @salesforce/sfdx-scanner (3.22.0) differs from the version
  ›    specified by sf (3.21.0)
@@ -3753,12 +3753,12 @@ Warning: We're continually improving Salesforce Code Analyzer. Tell us what you 
 ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 RUN sf plugins install @salesforce/plugin-packaging \
-    &amp;&amp; echo y|sfdx plugins:install sfdx-hardis \
+    &amp;&amp; echo y|sf plugins install sfdx-hardis \
     &amp;&amp; npm cache clean --force || true \
     &amp;&amp; rm -rf /root/.npm/_cacache
 
 # Linter install
-RUN sfdx plugins:install @salesforce/sfdx-scanner \
+RUN sf plugins install @salesforce/sfdx-scanner \
     &amp;&amp; npm cache clean --force || true \
     &amp;&amp; rm -rf /root/.npm/_cacache
 
