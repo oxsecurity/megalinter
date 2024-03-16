@@ -17,6 +17,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Fixes
   - Fix conflict between prettier and yamllint about spaces
+  - Ensure [trufflehog](https://github.com/trufflesecurity/trufflehog) does not auto-update itself
 
 - Doc
 
