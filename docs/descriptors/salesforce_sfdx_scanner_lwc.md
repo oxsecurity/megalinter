@@ -43,7 +43,7 @@ See more details in [Help](#help-content)
 | SALESFORCE_SFDX_SCANNER_LWC_RULES_PATH                  | Path where to find linter configuration file                                                                       | Workspace folder, then MegaLinter default rules |
 | SALESFORCE_SFDX_SCANNER_LWC_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                         | `false`                                         |
 | SALESFORCE_SFDX_SCANNER_LWC_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                   | `0`                                             |
-| SALESFORCE_SFDX_SCANNER_LWC_CLI_EXECUTABLE              | Override CLI executable                                                                                            | `['sfdx']`                                      |
+| SALESFORCE_SFDX_SCANNER_LWC_CLI_EXECUTABLE              | Override CLI executable                                                                                            | `['sf']`                                        |
 | SALESFORCE_DIRECTORY                                    | Directory containing SALESFORCE files (use `any` to always activate the linter)                                    | `force-app`                                     |
 
 ## IDE Integration
@@ -82,14 +82,14 @@ sfdx-scanner-lwc is called once on the whole project directory (`project` CLI li
 ### Example calls
 
 ```shell
-sfdx scanner:run
+sf scanner:run
 ```
 
 
 ### Help content
 
 ```shell
-(node:2478) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(node:2476) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
 (Use `node --trace-deprecation ...` to show where the warning was created)
 scan a codebase with a selection of rules
 
@@ -139,7 +139,7 @@ GLOBAL FLAGS
 COMMANDS
   scanner run dfa  scan codebase with all DFA rules
 
-(node:2498) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(node:2494) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
 (Use `node --trace-deprecation ...` to show where the warning was created)
  ›   Warning: Plugin @salesforce/sfdx-scanner (3.22.0) differs from the version
  ›    specified by sf (3.21.0)
@@ -372,12 +372,12 @@ Warning: We're continually improving Salesforce Code Analyzer. Tell us what you 
 ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 RUN sf plugins install @salesforce/plugin-packaging \
-    && echo y|sfdx plugins:install sfdx-hardis \
+    && echo y|sf plugins install sfdx-hardis \
     && npm cache clean --force || true \
     && rm -rf /root/.npm/_cacache
 
 # Linter install
-RUN sfdx plugins:install @salesforce/sfdx-scanner \
+RUN sf plugins install @salesforce/sfdx-scanner \
     && npm cache clean --force || true \
     && rm -rf /root/.npm/_cacache
 

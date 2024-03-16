@@ -51,6 +51,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [ruff](https://github.com/astral-sh/ruff) from 0.3.2 to **0.3.3** on 2024-03-15
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.69.0 to **3.70.0** on 2024-03-15
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.7.0 to **8.8.0** on 2024-03-15
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.49.1 to **0.49.2** on 2024-03-16
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.70.0 to **3.70.1** on 2024-03-16
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 2.18.0 to **2.19.0** on 2024-03-16
 <!-- linter-versions-end -->
 
 ## [v7.10.0] - 2024-03-10
