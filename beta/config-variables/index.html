@@ -3316,6 +3316,11 @@
 <td>Process linters in parallel to improve overall MegaLinter performance. If true, linters of same language or formats are grouped in the same parallel process to avoid lock issues if fixing the same files</td>
 </tr>
 <tr>
+<td><strong>PARALLEL_PROCESS_NUMBER</strong></td>
+<td><!-- --></td>
+<td>All available cores are used by default. If there are too many, you need to decrease the number of used cores in order to enhance performances (example: <code>4</code>)</td>
+</tr>
+<tr>
 <td><a href="../plugins/"><strong>PLUGINS</strong></a></td>
 <td>[]</td>
 <td>List of plugin urls to install and run during MegaLinter run</td>
