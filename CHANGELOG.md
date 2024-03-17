@@ -55,6 +55,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [protolint](https://github.com/yoheimuta/protolint) from 0.49.1 to **0.49.2** on 2024-03-16
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.70.0 to **3.70.1** on 2024-03-16
   - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 2.18.0 to **2.19.0** on 2024-03-16
+  - [checkstyle](https://checkstyle.org/) from 10.14.1 to **10.14.2** on 2024-03-17
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.49.2 to **0.49.3** on 2024-03-17
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.7.4 to **1.7.5** on 2024-03-17
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.55.13 to **0.55.16** on 2024-03-17
 <!-- linter-versions-end -->
 
 ## [v7.10.0] - 2024-03-10
