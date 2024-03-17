@@ -21,6 +21,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Salesforce linters: use sf + default Flow Scanner rules
 
 - Doc
+  - Update R2DevOps logo
 
 - CI
 
