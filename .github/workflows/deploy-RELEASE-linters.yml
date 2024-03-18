@@ -93,6 +93,7 @@ jobs:
             "json_npm_package_json_lint",
             "jsx_eslint",
             "kotlin_ktlint",
+            "kotlin_detekt",
             "kubernetes_kubeconform",
             "kubernetes_helm",
             "kubernetes_kubescape",

@@ -298,6 +298,14 @@ RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: Fil
     chmod a+x ktlint && \
     mv "ktlint" /usr/bin/ \
 
+# detekt installation
+    && curl --retry 5 --retry-delay 5 -sSLO https://github.com/detekt/detekt/releases/download/v1.23.5/detekt-cli-1.23.5.zip && \
+    unzip detekt-cli-1.23.5.zip && \
+    chmod a+x detekt-cli-1.23.5/bin/* && \
+    chmod a+x detekt-cli-1.23.5/lib/* && \
+    mv -n detekt-cli-1.23.5/bin/* usr/bin && \
+    mv -n detekt-cli-1.23.5/lib/* usr/lib \
+
 # kubeconform installation
 # Managed with COPY --link --from=kubeconform /kubeconform /usr/bin/
 
