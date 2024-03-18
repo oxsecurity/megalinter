@@ -50,8 +50,6 @@ linters:
     linter_megalinter_ref_url: https://detekt.dev/docs/intro
     cli_executable: detekt-cli
     cli_lint_extra_args:
-      - --report
-      - html:{{REPORT_FOLDER}}/kotlin_detekt_result.html
       - -i
     examples:
       - "detekt-cli"
