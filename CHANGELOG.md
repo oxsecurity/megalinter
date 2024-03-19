@@ -59,6 +59,12 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [protolint](https://github.com/yoheimuta/protolint) from 0.49.2 to **0.49.3** on 2024-03-17
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.7.4 to **1.7.5** on 2024-03-17
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.55.13 to **0.55.16** on 2024-03-17
+  - [eslint-plugin-jsonc](https://ota-meshi.github.io/eslint-plugin-jsonc/) from 2.13.0 to **2.14.0** on 2024-03-18
+  - [phpstan](https://phpstan.org/) from 1.10.62 to **1.10.63** on 2024-03-18
+  - [checkov](https://www.checkov.io/) from 3.2.38 to **3.2.39** on 2024-03-18
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.70.1 to **3.70.2** on 2024-03-18
+  - [sqlfluff](https://www.sqlfluff.com/) from 3.0.1 to **3.0.2** on 2024-03-18
+  - [tekton-lint](https://github.com/IBM/tekton-lint) from 1.0.0 to **1.0.1** on 2024-03-18
 <!-- linter-versions-end -->
 
 ## [v7.10.0] - 2024-03-10
