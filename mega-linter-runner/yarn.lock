@@ -556,15 +556,10 @@
   dependencies:
     undici-types "~5.26.4"
 
-"@types/node@^16.18.26":
+"@types/node@^16.18.26", "@types/node@^16.18.28", "@types/node@^16.18.31":
   version "16.18.71"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-16.18.71.tgz#305a955ab99353d4b8a9e9b6b6682ed6cbc186cc"
   integrity sha512-ARO+458bNJQeNEFuPyT6W+q9ULotmsQzhV3XABsFSxEvRMUYENcBsNAHWYPlahU+UHa5gCVwyKT1Z3f1Wwr26Q==
-
-"@types/node@^16.18.28", "@types/node@^16.18.31":
-  version "16.18.59"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.18.59.tgz#4cdbd631be6d9be266a96fb17b5d0d7ad6bbe26c"
-  integrity sha512-PJ1w2cNeKUEdey4LiPra0ZuxZFOGvetswE8qHRriV/sUkL5Al4tTmPV9D2+Y/TPIxTHHgxTfRjZVKWhPw/ORhQ==
 
 "@types/node@^18.18.5":
   version "18.18.7"
@@ -2693,9 +2688,9 @@ mem-fs-editor@^11.0.0:
     vinyl "^3.0.0"
 
 mem-fs@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/mem-fs/-/mem-fs-4.0.0.tgz#045e6aba448efed6cd6ca3be7c3e0c6c37f4aaed"
-  integrity sha512-GCt8Xh5cRZ1ep45A8T+NlUYCPHzSj5JG2Xo7CA4Z8ISZ8Ovw0UQhQGt+J/z2xk7M3F9F4X9ZjSYk9UYlLLy4Wg==
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/mem-fs/-/mem-fs-4.1.0.tgz#b3dc2d6b5eae4c86a2a6030ea3f2774fe1dc9bce"
+  integrity sha512-lOB7haBbxO43eZ/++GA+jBMHQ9DNJeliMt35jNutzCfAgEg5gblFCItnzsss8Z4t81bB5jsz77bptqelHQn0Qw==
   dependencies:
     "@types/node" "^20.8.3"
     "@types/vinyl" "^2.0.8"

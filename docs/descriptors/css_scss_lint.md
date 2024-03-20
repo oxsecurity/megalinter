@@ -15,7 +15,7 @@ description: How to use scss-lint (configure, ignore files, ignore errors, help 
 
 > This linter has been deprecated.
 >
-> https://github.com/sds/scss-lint#notice-consider-other-tools-before-adopting-scss-lint
+> <https://github.com/sds/scss-lint#notice-consider-other-tools-before-adopting-scss-lint>
 >
 > You should disable scss-lint by adding it in DISABLE_LINTERS property.
 >
