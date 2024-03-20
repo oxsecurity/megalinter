@@ -1,7 +1,7 @@
 FROM hadolint/hadolint:v2.12.0-alpine as hadolint
 FROM trufflesecurity/trufflehog:latest as trufflehog
 
-FROM python:3.11-alpine
+FROM python:3.12-alpine
 
 WORKDIR /
 
