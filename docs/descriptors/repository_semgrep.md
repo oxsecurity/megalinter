@@ -304,9 +304,10 @@ OPTIONS
            before trimming (set to 0 for unlimited).
 
        --max-memory=VAL (absent=0)
-           Maximum system memory to use running a rule on a single file in
-           MiB. If set to 0 will not have memory limit. Defaults to 0. For CI
-           scans that use the Pro Engine, it defaults to 5000 MiB.
+           Maximum system memory in MiB to use during the interfile
+           pre-processing phase, or when running a rule on a single file. If
+           set to 0, will not have memory limit. Defaults to 0. For CI scans
+           that use the Pro Engine, defaults to 5000 MiB.
 
        --max-target-bytes=VAL (absent=1000000)
            Maximum size for a file to be scanned by Semgrep, e.g '1.5MB'. Any
@@ -335,6 +336,9 @@ OPTIONS
 
        --no-git-ignore
            negates --use-git-ignore
+
+       --no-interfile-diff-scan
+           Disables interfile diff scan.
 
        --no-rewrite-rule-ids
            negates --rewrite-rule-ids
@@ -398,7 +402,8 @@ OPTIONS
        --remote=VAL
            Remote will quickly checkout and scan a remote git repository of
            the format "http[s]://<WEBSITE>/.../<REPO>.git". Must be run with
-           --pro Incompatible with --project-root
+           --pro Incompatible with --project-root. Note this requires an
+           empty CWD as this command will clone the repository into the CWD
 
        --replacement=VAL
            An autofix expression that will be applied to any matches found
