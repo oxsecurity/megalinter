@@ -16,7 +16,8 @@
     "mega-linter-runner": "lib/index.js"
   },
   "scripts": {
-    "test": "mocha \"test/**/*.test.js\""
+    "test": "mocha \"test/**/*.test.js\"",
+    "generator-samples": "mocha \"__tests__/mega-linter.mjs\""
   },
   "keywords": [
     "mega-linter",
@@ -95,7 +96,8 @@
   "devDependencies": {
     "assert": "^2.1.0",
     "eslint": "^8.50.0",
-    "mocha": "^10.2.0"
+    "mocha": "^10.2.0",
+    "yeoman-test": "^8.2.0"
   },
   "resolutions": {
     "semver": "7.5.2"
