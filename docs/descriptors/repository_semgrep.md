@@ -147,8 +147,8 @@ OPTIONS
            Note that this mode is experimental and not guaranteed to function
            properly.
 
-       --allow-untrusted-validators
-           Run postprocessors from untrusted sources.
+       --allow-custom-validators
+           Run postprocessors from custom rules.
 
        --baseline-commit=VAL (absent SEMGREP_BASELINE_COMMIT env)
            Only show results that are not found in this commit hash. Aborts
@@ -336,9 +336,6 @@ OPTIONS
 
        --no-git-ignore
            negates --use-git-ignore
-
-       --no-interfile-diff-scan
-           Disables interfile diff scan.
 
        --no-rewrite-rule-ids
            negates --rewrite-rule-ids
