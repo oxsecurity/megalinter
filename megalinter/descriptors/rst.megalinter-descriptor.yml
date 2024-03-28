@@ -16,6 +16,7 @@ linters:
       - "rst-lint myfile.rst"
     install:
       pip:
+        - Pygments
         - restructuredtext_lint
   # rstcheck
   - linter_name: rstcheck

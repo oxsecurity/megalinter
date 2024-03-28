@@ -14,6 +14,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Media
 
 - Linters
+  - Add python package Pygments to rst-lint venv
 
 - Reporters
 
