@@ -147,8 +147,8 @@ OPTIONS
            Note that this mode is experimental and not guaranteed to function
            properly.
 
-       --allow-untrusted-validators
-           Run postprocessors from untrusted sources.
+       --allow-custom-validators
+           Run postprocessors from custom rules.
 
        --baseline-commit=VAL (absent SEMGREP_BASELINE_COMMIT env)
            Only show results that are not found in this commit hash. Aborts
@@ -242,6 +242,9 @@ OPTIONS
            https://semgrep.dev/docs/writing-rules/rule-syntax for information
            on configuration file format.
 
+       --files-with-matches
+           Output only the names of files containing matches
+
        --force-color (absent SEMGREP_FORCE_COLOR env)
            Always include ANSI color in the output, even if not writing to a
            TTY; defaults to using the TTY status
@@ -251,6 +254,9 @@ OPTIONS
 
        --gitlab-secrets
            Output results in GitLab Secrets format.
+
+       --historical-secrets
+           Scans git history using Secrets rules.
 
        --include=VAL
            Filter files or directories by path. The argument is a glob-style
@@ -336,9 +342,6 @@ OPTIONS
 
        --no-git-ignore
            negates --use-git-ignore
-
-       --no-interfile-diff-scan
-           Disables interfile diff scan.
 
        --no-rewrite-rule-ids
            negates --rewrite-rule-ids
