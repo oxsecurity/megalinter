@@ -100,6 +100,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.10.0 to **8.10.4** on 2024-03-30
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.6.0 to **8.6.1** on 2024-03-30
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.55.16 to **0.55.19** on 2024-03-30
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.55.19 to **0.55.20** on 2024-03-31
 <!-- linter-versions-end -->
 
 ## [v7.10.0] - 2024-03-10
