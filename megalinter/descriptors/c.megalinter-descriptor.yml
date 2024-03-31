@@ -5,6 +5,7 @@ descriptor_flavors:
   - c_cpp
   - dotnet
   - dotnetweb
+  - python
 file_extensions:
   - ".c"
   - ".h"
