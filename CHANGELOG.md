@@ -23,6 +23,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Doc
   - Update R2DevOps logo
+  - Update [Roslynator](https://github.com/dotnet/roslynator) repo url and logo
 
 - CI
 
