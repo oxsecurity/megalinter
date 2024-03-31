@@ -83,6 +83,22 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.8.0 to **8.10.0** on 2024-03-23
   - [vale](https://vale.sh/) from 3.3.0 to **3.3.1** on 2024-03-23
   - [sqlfluff](https://www.sqlfluff.com/) from 3.0.2 to **3.0.3** on 2024-03-23
+  - [stylelint](https://stylelint.io) from 16.2.1 to **16.3.1** on 2024-03-30
+  - [golangci-lint](https://golangci-lint.run/) from 1.57.1 to **1.57.2** on 2024-03-30
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 14.2.4 to **14.4.0** on 2024-03-30
+  - [phpstan](https://phpstan.org/) from 1.10.65 to **1.10.66** on 2024-03-30
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.355 to **1.1.356** on 2024-03-30
+  - [checkov](https://www.checkov.io/) from 3.2.43 to **3.2.49** on 2024-03-30
+  - [syft](https://github.com/anchore/syft) from 1.0.1 to **1.1.0** on 2024-03-30
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.50.0 to **0.50.1** on 2024-03-30
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.50.0 to **0.50.1** on 2024-03-30
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.71.0 to **3.71.2** on 2024-03-30
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 3.22.0 to **3.23.0** on 2024-03-30
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 3.22.0 to **3.23.0** on 2024-03-30
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 3.22.0 to **3.23.0** on 2024-03-30
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.10.0 to **8.10.4** on 2024-03-30
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.6.0 to **8.6.1** on 2024-03-30
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.55.16 to **0.55.19** on 2024-03-30
 <!-- linter-versions-end -->
 
 ## [v7.10.0] - 2024-03-10

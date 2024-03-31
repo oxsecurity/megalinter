@@ -18,6 +18,7 @@
     "csharpier": "MIT",
     "cspell": "MIT",
     "dartanalyzer": "BSD-3-Clause",
+    "detekt": "Apache-2.0",
     "devskim": "MIT",
     "djlint": "GPL-3.0",
     "dockerfilelint": "MIT",
