@@ -16,6 +16,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - New linters
 
 - Fixes
+  - Fix clang-format documentation links to point to the correct version. Fixes [#3452](https://github.com/oxsecurity/megalinter/issues/3452)
   - Fix conflict between prettier and yamllint about spaces
   - Ensure [trufflehog](https://github.com/trufflesecurity/trufflehog) does not auto-update itself
   - Salesforce linters: use sf + default Flow Scanner rules
