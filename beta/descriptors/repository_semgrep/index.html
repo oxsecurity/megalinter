@@ -11,9 +11,9 @@
 <link href="../repository_secretlint/" rel="prev"/>
 <link href="../repository_syft/" rel="next"/>
 <link href="../../assets/images/mega-linter-square.png" rel="icon"/>
-<meta content="mkdocs-1.5.3, mkdocs-material-9.5.15" name="generator"/>
+<meta content="mkdocs-1.5.3, mkdocs-material-9.5.16" name="generator"/>
 <title>semgrep configuration in MegaLinter - MegaLinter by OX Security</title>
-<link href="../../assets/stylesheets/main.7e359304.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/main.bcfcd587.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Satoshi,+sans-serif:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
@@ -3623,8 +3623,8 @@ OPTIONS
            Note that this mode is experimental and not guaranteed to function
            properly.
 
-       --allow-untrusted-validators
-           Run postprocessors from untrusted sources.
+       --allow-custom-validators
+           Run postprocessors from custom rules.
 
        --baseline-commit=VAL (absent SEMGREP_BASELINE_COMMIT env)
            Only show results that are not found in this commit hash. Aborts
@@ -3718,6 +3718,9 @@ OPTIONS
            https://semgrep.dev/docs/writing-rules/rule-syntax for information
            on configuration file format.
 
+       --files-with-matches
+           Output only the names of files containing matches
+
        --force-color (absent SEMGREP_FORCE_COLOR env)
            Always include ANSI color in the output, even if not writing to a
            TTY; defaults to using the TTY status
@@ -3727,6 +3730,9 @@ OPTIONS
 
        --gitlab-secrets
            Output results in GitLab Secrets format.
+
+       --historical-secrets
+           Scans git history using Secrets rules.
 
        --include=VAL
            Filter files or directories by path. The argument is a glob-style
@@ -3812,9 +3818,6 @@ OPTIONS
 
        --no-git-ignore
            negates --use-git-ignore
-
-       --no-interfile-diff-scan
-           Disables interfile diff scan.
 
        --no-rewrite-rule-ids
            negates --rewrite-rule-ids
