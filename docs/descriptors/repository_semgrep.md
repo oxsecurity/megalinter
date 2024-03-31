@@ -147,8 +147,8 @@ OPTIONS
            Note that this mode is experimental and not guaranteed to function
            properly.
 
-       --allow-untrusted-validators
-           Run postprocessors from untrusted sources.
+       --allow-custom-validators
+           Run postprocessors from custom rules.
 
        --baseline-commit=VAL (absent SEMGREP_BASELINE_COMMIT env)
            Only show results that are not found in this commit hash. Aborts
@@ -242,6 +242,9 @@ OPTIONS
            https://semgrep.dev/docs/writing-rules/rule-syntax for information
            on configuration file format.
 
+       --files-with-matches
+           Output only the names of files containing matches
+
        --force-color (absent SEMGREP_FORCE_COLOR env)
            Always include ANSI color in the output, even if not writing to a
            TTY; defaults to using the TTY status
@@ -251,6 +254,9 @@ OPTIONS
 
        --gitlab-secrets
            Output results in GitLab Secrets format.
+
+       --historical-secrets
+           Scans git history using Secrets rules.
 
        --include=VAL
            Filter files or directories by path. The argument is a glob-style
@@ -304,9 +310,10 @@ OPTIONS
            before trimming (set to 0 for unlimited).
 
        --max-memory=VAL (absent=0)
-           Maximum system memory to use running a rule on a single file in
-           MiB. If set to 0 will not have memory limit. Defaults to 0. For CI
-           scans that use the Pro Engine, it defaults to 5000 MiB.
+           Maximum system memory in MiB to use during the interfile
+           pre-processing phase, or when running a rule on a single file. If
+           set to 0, will not have memory limit. Defaults to 0. For CI scans
+           that use the Pro Engine, defaults to 5000 MiB.
 
        --max-target-bytes=VAL (absent=1000000)
            Maximum size for a file to be scanned by Semgrep, e.g '1.5MB'. Any
@@ -398,7 +405,8 @@ OPTIONS
        --remote=VAL
            Remote will quickly checkout and scan a remote git repository of
            the format "http[s]://<WEBSITE>/.../<REPO>.git". Must be run with
-           --pro Incompatible with --project-root
+           --pro Incompatible with --project-root. Note this requires an
+           empty CWD as this command will clone the repository into the CWD
 
        --replacement=VAL
            An autofix expression that will be applied to any matches found
