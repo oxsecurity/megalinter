@@ -101,6 +101,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.6.0 to **8.6.1** on 2024-03-30
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.55.16 to **0.55.19** on 2024-03-30
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.55.19 to **0.55.20** on 2024-03-31
+  - [phpcs](https://github.com/PHPCSStandards/PHP_CodeSniffer) from 3.9.0 to **3.9.1** on 2024-03-31
+  - [checkov](https://www.checkov.io/) from 3.2.49 to **3.2.50** on 2024-03-31
 <!-- linter-versions-end -->
 
 ## [v7.10.0] - 2024-03-10
