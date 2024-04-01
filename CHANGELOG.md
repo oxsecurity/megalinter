@@ -103,6 +103,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.55.19 to **0.55.20** on 2024-03-31
   - [phpcs](https://github.com/PHPCSStandards/PHP_CodeSniffer) from 3.9.0 to **3.9.1** on 2024-03-31
   - [checkov](https://www.checkov.io/) from 3.2.49 to **3.2.50** on 2024-03-31
+  - [checkstyle](https://checkstyle.org/) from 10.14.2 to **10.15.0** on 2024-04-01
+  - [eslint-plugin-jsonc](https://ota-meshi.github.io/eslint-plugin-jsonc/) from 2.14.1 to **2.15.0** on 2024-04-01
+  - [ruff](https://github.com/astral-sh/ruff) from 0.3.4 to **0.3.5** on 2024-04-01
 <!-- linter-versions-end -->
 
 ## [v7.10.0] - 2024-03-10
