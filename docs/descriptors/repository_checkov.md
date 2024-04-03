@@ -15,7 +15,7 @@ description: How to use checkov (configure, ignore files, ignore errors, help & 
 
 ## checkov documentation
 
-- Version in MegaLinter: **3.2.50**
+- Version in MegaLinter: **3.2.51**
 - Visit [Official Web Site](https://www.checkov.io/){target=_blank}
 - See [How to configure checkov rules](https://github.com/bridgecrewio/checkov#configuration-using-a-config-file){target=_blank}
   - If custom `.checkov.yml` config file isn't found, [.checkov.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.checkov.yml){target=_blank} will be used
@@ -130,10 +130,11 @@ usage: checkov [-h] [-v] [--support] [-d DIRECTORY] [--add-check]
                [--output-baseline-as-skipped]
                [--skip-cve-package SKIP_CVE_PACKAGE]
                [--policy-metadata-filter POLICY_METADATA_FILTER]
+               [--policy-metadata-filter-exception POLICY_METADATA_FILTER_EXCEPTION]
                [--secrets-scan-file-type SECRETS_SCAN_FILE_TYPE]
                [--enable-secret-scan-all-files]
                [--block-list-secret-scan BLOCK_LIST_SECRET_SCAN]
-               [--summary-position {top,bottom}]
+               [--summary-position {bottom,top}]
                [--skip-resources-without-violations] [--deep-analysis]
                [--no-fail-on-crash] [--mask MASK] [--scan-secrets-history]
                [--secrets-history-timeout SECRETS_HISTORY_TIMEOUT]
@@ -413,10 +414,22 @@ options:
                         argument multiple times to skip multiple packages
   --policy-metadata-filter POLICY_METADATA_FILTER
                         comma separated key:value string to filter policies
-                        based on Prisma Cloud policy metadata. See https://pri
-                        sma.pan.dev/api/cloud/cspm/policy#operation/get-
-                        policy-filters-and-options for information on allowed
-                        filters. Format: policy.label=test,cloud.type=aws
+                        based on Prisma Cloud policy metadata. When used with
+                        --policy-metadata-filter-exception, the exceptions
+                        override any policies selected asa result of the
+                        --policy-metadata-filter flag.See https://prisma.pan.d
+                        ev/api/cloud/cspm/policy#operation/get-policy-filters-
+                        and-options for information on allowed filters.
+                        Format: policy.label=test,cloud.type=aws
+  --policy-metadata-filter-exception POLICY_METADATA_FILTER_EXCEPTION
+                        comma separated key:value string to exclude filtered
+                        policies based on Prisma Cloud policy metadata. When
+                        used with --policy-metadata-filter, the exceptions
+                        override any policies selected asa result of the
+                        --policy-metadata-filter flag.See https://prisma.pan.d
+                        ev/api/cloud/cspm/policy#operation/get-policy-filters-
+                        and-options for information on allowed filters.
+                        Format: policy.label=test,cloud.type=aws
   --secrets-scan-file-type SECRETS_SCAN_FILE_TYPE
                         not in use [env var: CKV_SECRETS_SCAN_FILE_TYPE]
   --enable-secret-scan-all-files
@@ -425,7 +438,7 @@ options:
   --block-list-secret-scan BLOCK_LIST_SECRET_SCAN
                         List of files to filter out from the secret scanner
                         [env var: CKV_SECRETS_SCAN_BLOCK_LIST]
-  --summary-position {top,bottom}
+  --summary-position {bottom,top}
                         Chose whether the summary will be appended on top
                         (before the checks results) or on bottom (after check
                         results), default is on top.
