@@ -113,7 +113,10 @@ class config_test(unittest.TestCase):
             + "local_extends_list_merge",
             {"MEGALINTER_CONFIG": local_config},
         )
-        self.assertEqual(["LINTER_1", "LINTER_3", "LINTER_2"], config.get(request_id, "ENABLE_LINTERS"))
+        self.assertEqual(
+            ["LINTER_1", "LINTER_3", "LINTER_2"],
+            config.get(request_id, "ENABLE_LINTERS"),
+        )
         self.assertEqual("(local)", config.get(request_id, "FILTER_REGEX_INCLUDE"))
         self.restore_branch_in_input_files(changed_files)
 

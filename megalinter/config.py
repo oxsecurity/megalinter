@@ -140,7 +140,7 @@ def combine_config(workspace, config, combined_config, config_source):
 
 
 def merge_dicts(first, second):
-    for k,v in second.items():
+    for k, v in second.items():
         if k not in first:
             first[k] = v
         else:
