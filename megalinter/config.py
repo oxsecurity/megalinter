@@ -126,7 +126,7 @@ def combine_config(workspace, config, combined_config, config_source):
                 workspace + os.path.sep + extends_item, "r", encoding="utf-8"
             ) as f:
                 extends_config_data = yaml.safe_load(f)
-        combined_config.update(extends_config_data)
+        merge_dicts(combined_config, extends_config_data)
         config_source += f"\n[config] - extends from: {extends_item}"
         if "EXTENDS" in extends_config_data:
             combine_config(
@@ -135,8 +135,19 @@ def combine_config(workspace, config, combined_config, config_source):
                 combined_config,
                 config_source,
             )
-    combined_config.update(config)
+    merge_dicts(combined_config, config)
     return config_source
+
+
+def merge_dicts(first, second):
+    for k,v in second.items():
+        if k not in first:
+            first[k] = v
+        else:
+            if isinstance(first[k], list) and isinstance(v, list):
+                first[k] = first[k] + v
+            else:
+                first[k] = v
 
 
 def is_initialized_for(request_id):
