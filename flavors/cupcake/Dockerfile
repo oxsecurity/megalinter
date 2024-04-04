@@ -29,7 +29,7 @@ RUN GOBIN=/usr/bin go install github.com/mgechev/revive@latest
 
 FROM ghcr.io/yannh/kubeconform:latest-alpine as kubeconform
 FROM mrtazz/checkmake:latest as checkmake
-FROM ghcr.io/phpstan/phpstan:latest-php8.1 as phpstan
+FROM ghcr.io/phpstan/phpstan:latest-php8.3 as phpstan
 FROM zricethezav/gitleaks:v8.18.2 as gitleaks
 FROM checkmarx/kics:alpine as kics
 FROM trufflesecurity/trufflehog:latest as trufflehog
@@ -79,15 +79,15 @@ RUN apk add --no-cache \
                 openrc \
                 openjdk17 \
                 gnupg \
-                php81 \
-                php81-phar \
-                php81-mbstring \
-                php81-xmlwriter \
-                php81-tokenizer \
-                php81-ctype \
-                php81-curl \
-                php81-dom \
-                php81-simplexml \
+                php83 \
+                php83-phar \
+                php83-mbstring \
+                php83-xmlwriter \
+                php83-tokenizer \
+                php83-ctype \
+                php83-curl \
+                php83-dom \
+                php83-simplexml \
                 dpkg \
                 py3-pyflakes \
                 nodejs \
@@ -364,7 +364,7 @@ RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GI
     && chmod +x phive.phar \
     && mv phive.phar /usr/local/bin/phive \
     && rm phive.phar.asc \
-    && update-alternatives --install /usr/bin/php php /usr/bin/php81 110
+    && update-alternatives --install /usr/bin/php php /usr/bin/php83 110
 
 
 # actionlint installation

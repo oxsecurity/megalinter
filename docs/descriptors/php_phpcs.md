@@ -182,7 +182,7 @@ RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" \
     && chmod +x phive.phar \
     && mv phive.phar /usr/local/bin/phive \
     && rm phive.phar.asc \
-    && update-alternatives --install /usr/bin/php php /usr/bin/php81 110
+    && update-alternatives --install /usr/bin/php php /usr/bin/php83 110
 
 # Linter install
 RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && phive --no-progress install phpcs -g --trust-gpg-keys 31C7E470E2138192,95DE904AB800754A11D80B605E6DDE998AB73B8E

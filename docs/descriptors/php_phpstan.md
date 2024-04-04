@@ -135,10 +135,10 @@ RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" \
     && chmod +x phive.phar \
     && mv phive.phar /usr/local/bin/phive \
     && rm phive.phar.asc \
-    && update-alternatives --install /usr/bin/php php /usr/bin/php81 110
+    && update-alternatives --install /usr/bin/php php /usr/bin/php83 110
 
 # Linter install
-FROM ghcr.io/phpstan/phpstan:latest-php8.1 as phpstan
+FROM ghcr.io/phpstan/phpstan:latest-php8.3 as phpstan
 COPY --link --from=phpstan /composer/vendor/phpstan/phpstan/phpstan.phar /usr/bin/phpstan
 RUN chmod +x /usr/bin/phpstan
 ```
