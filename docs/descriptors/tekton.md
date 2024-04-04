@@ -24,8 +24,10 @@ description: tekton-lint is available to analyze TEKTON files in MegaLinter
 
 ## Configuration in MegaLinter
 
-| Variable                    | Description                   | Default value |
-|-----------------------------|-------------------------------|---------------|
-| TEKTON_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| TEKTON_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable                    | Description                                     | Default value |
+|-----------------------------|-------------------------------------------------|---------------|
+| TEKTON_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
+| TEKTON_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
+| TEKTON_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
+| TEKTON_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 

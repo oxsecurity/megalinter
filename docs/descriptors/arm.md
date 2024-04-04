@@ -23,10 +23,12 @@ description: arm-ttk is available to analyze ARM files in MegaLinter
 
 ## Configuration in MegaLinter
 
-| Variable                 | Description                   | Default value |
-|--------------------------|-------------------------------|---------------|
-| ARM_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| ARM_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable                 | Description                                     | Default value |
+|--------------------------|-------------------------------------------------|---------------|
+| ARM_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
+| ARM_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
+| ARM_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
+| ARM_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 
 
 ## Behind the scenes

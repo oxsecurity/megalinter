@@ -20,10 +20,12 @@ description: dotnet-format is available to analyze VBDOTNET files in MegaLinter
 
 ## Configuration in MegaLinter
 
-| Variable                      | Description                   | Default value |
-|-------------------------------|-------------------------------|---------------|
-| VBDOTNET_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| VBDOTNET_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable                      | Description                                     | Default value |
+|-------------------------------|-------------------------------------------------|---------------|
+| VBDOTNET_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
+| VBDOTNET_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
+| VBDOTNET_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
+| VBDOTNET_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 
 
 ## Behind the scenes

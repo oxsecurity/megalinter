@@ -23,10 +23,12 @@ description: phpcs, phpstan, psalm, phplint are available to analyze PHP files i
 
 ## Configuration in MegaLinter
 
-| Variable                 | Description                   | Default value |
-|--------------------------|-------------------------------|---------------|
-| PHP_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| PHP_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable                 | Description                                     | Default value |
+|--------------------------|-------------------------------------------------|---------------|
+| PHP_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
+| PHP_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
+| PHP_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
+| PHP_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 
 
 ## Behind the scenes
@@ -48,19 +50,19 @@ RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" \
     && chmod +x phive.phar \
     && mv phive.phar /usr/local/bin/phive \
     && rm phive.phar.asc \
-    && update-alternatives --install /usr/bin/php php /usr/bin/php81 110
+    && update-alternatives --install /usr/bin/php php /usr/bin/php83 110
 
 ```
 
 - APK packages (Linux):
   - [gnupg](https://pkgs.alpinelinux.org/packages?branch=edge&name=gnupg)
-  - [php81](https://pkgs.alpinelinux.org/packages?branch=edge&name=php81)
-  - [php81-phar](https://pkgs.alpinelinux.org/packages?branch=edge&name=php81-phar)
-  - [php81-mbstring](https://pkgs.alpinelinux.org/packages?branch=edge&name=php81-mbstring)
-  - [php81-xmlwriter](https://pkgs.alpinelinux.org/packages?branch=edge&name=php81-xmlwriter)
-  - [php81-tokenizer](https://pkgs.alpinelinux.org/packages?branch=edge&name=php81-tokenizer)
-  - [php81-ctype](https://pkgs.alpinelinux.org/packages?branch=edge&name=php81-ctype)
-  - [php81-curl](https://pkgs.alpinelinux.org/packages?branch=edge&name=php81-curl)
-  - [php81-dom](https://pkgs.alpinelinux.org/packages?branch=edge&name=php81-dom)
-  - [php81-simplexml](https://pkgs.alpinelinux.org/packages?branch=edge&name=php81-simplexml)
+  - [php83](https://pkgs.alpinelinux.org/packages?branch=edge&name=php83)
+  - [php83-phar](https://pkgs.alpinelinux.org/packages?branch=edge&name=php83-phar)
+  - [php83-mbstring](https://pkgs.alpinelinux.org/packages?branch=edge&name=php83-mbstring)
+  - [php83-xmlwriter](https://pkgs.alpinelinux.org/packages?branch=edge&name=php83-xmlwriter)
+  - [php83-tokenizer](https://pkgs.alpinelinux.org/packages?branch=edge&name=php83-tokenizer)
+  - [php83-ctype](https://pkgs.alpinelinux.org/packages?branch=edge&name=php83-ctype)
+  - [php83-curl](https://pkgs.alpinelinux.org/packages?branch=edge&name=php83-curl)
+  - [php83-dom](https://pkgs.alpinelinux.org/packages?branch=edge&name=php83-dom)
+  - [php83-simplexml](https://pkgs.alpinelinux.org/packages?branch=edge&name=php83-simplexml)
   - [dpkg](https://pkgs.alpinelinux.org/packages?branch=edge&name=dpkg)

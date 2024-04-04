@@ -21,8 +21,10 @@ description: hadolint is available to analyze DOCKERFILE files in MegaLinter
 
 ## Configuration in MegaLinter
 
-| Variable                        | Description                   | Default value |
-|---------------------------------|-------------------------------|---------------|
-| DOCKERFILE_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| DOCKERFILE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable                        | Description                                     | Default value |
+|---------------------------------|-------------------------------------------------|---------------|
+| DOCKERFILE_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
+| DOCKERFILE_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
+| DOCKERFILE_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
+| DOCKERFILE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 

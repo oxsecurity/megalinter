@@ -20,10 +20,12 @@ description: sfdx-scanner-apex, sfdx-scanner-aura, sfdx-scanner-lwc, lightning-f
 
 ## Configuration in MegaLinter
 
-| Variable                        | Description                   | Default value |
-|---------------------------------|-------------------------------|---------------|
-| SALESFORCE_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| SALESFORCE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable                        | Description                                     | Default value |
+|---------------------------------|-------------------------------------------------|---------------|
+| SALESFORCE_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
+| SALESFORCE_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
+| SALESFORCE_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
+| SALESFORCE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 
 
 ## Behind the scenes
