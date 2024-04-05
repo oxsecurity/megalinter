@@ -107,6 +107,15 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [eslint-plugin-jsonc](https://ota-meshi.github.io/eslint-plugin-jsonc/) from 2.14.1 to **2.15.0** on 2024-04-01
   - [ruff](https://github.com/astral-sh/ruff) from 0.3.4 to **0.3.5** on 2024-04-01
   - [checkov](https://www.checkov.io/) from 3.2.50 to **3.2.51** on 2024-04-02
+  - [spectral](https://docs.stoplight.io/docs/spectral/674b27b261c3c-overview) from 6.11.0 to **6.11.1** on 2024-04-04
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.356 to **1.1.357** on 2024-04-04
+  - [checkov](https://www.checkov.io/) from 3.2.51 to **3.2.53** on 2024-04-04
+  - [grype](https://github.com/anchore/grype) from 0.74.7 to **0.75.0** on 2024-04-04
+  - [syft](https://github.com/anchore/syft) from 1.1.0 to **1.1.1** on 2024-04-04
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.71.2 to **3.72.0** on 2024-04-04
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 2.20.0 to **2.21.0** on 2024-04-04
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.10.4 to **8.10.6** on 2024-04-04
+  - [tekton-lint](https://github.com/IBM/tekton-lint) from 1.0.1 to **1.0.2** on 2024-04-04
 <!-- linter-versions-end -->
 
 ## [v7.10.0] - 2024-03-10
