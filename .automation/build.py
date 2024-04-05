@@ -954,12 +954,50 @@ def generate_descriptor_documentation(descriptor):
         "| ----------------- | -------------- | -------------- |",
     ]
     descriptor_md += [
+        f"| {descriptor.get('descriptor_id')}_PRE_COMMANDS | List of bash commands to run before the linters | None |",
+        f"| {descriptor.get('descriptor_id')}_POST_COMMANDS | List of bash commands to run after the linters | None |",
         f"| {descriptor.get('descriptor_id')}_FILTER_REGEX_INCLUDE | Custom regex including filter |  |",
         f"| {descriptor.get('descriptor_id')}_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |",
         "",
     ]
     add_in_config_schema_file(
         [
+            [
+                f"{descriptor.get('descriptor_id')}_PRE_COMMANDS",
+                {
+                    "$id": f"#/properties/{descriptor.get('descriptor_id')}_PRE_COMMANDS",
+                    "type": "array",
+                    "title": f"Pre commands for {descriptor.get('descriptor_id')} descriptor",
+                    "examples": [
+                        [
+                            {
+                                "command": "composer install",
+                                "continue_if_failed": False,
+                                "cwd": "workspace",
+                            }
+                        ]
+                    ],
+                    "items": {"$ref": "#/definitions/command_info"},
+                },
+            ],
+            [
+                f"{descriptor.get('descriptor_id')}_POST_COMMANDS",
+                {
+                    "$id": f"#/properties/{descriptor.get('descriptor_id')}_POST_COMMANDS",
+                    "type": "array",
+                    "title": f"Post commands for {descriptor.get('descriptor_id')} descriptor",
+                    "examples": [
+                        [
+                            {
+                                "command": "npm run test",
+                                "continue_if_failed": False,
+                                "cwd": "workspace",
+                            }
+                        ]
+                    ],
+                    "items": {"$ref": "#/definitions/command_info"},
+                },
+            ],
             [
                 f"{descriptor.get('descriptor_id')}_FILTER_REGEX_INCLUDE",
                 {

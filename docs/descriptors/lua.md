@@ -20,8 +20,10 @@ description: luacheck is available to analyze LUA files in MegaLinter
 
 ## Configuration in MegaLinter
 
-| Variable                 | Description                   | Default value |
-|--------------------------|-------------------------------|---------------|
-| LUA_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| LUA_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable                 | Description                                     | Default value |
+|--------------------------|-------------------------------------------------|---------------|
+| LUA_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
+| LUA_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
+| LUA_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
+| LUA_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 

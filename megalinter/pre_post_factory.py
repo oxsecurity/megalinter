@@ -18,6 +18,20 @@ def run_post_commands(mega_linter):
     return run_pre_post_commands("POST_COMMANDS", "[Post]", mega_linter)
 
 
+# Commands to run before running all linters in a descriptor
+def run_descriptor_pre_commands(mega_linter, descriptor_id):
+    return run_pre_post_commands(
+        f"{descriptor_id}_PRE_COMMANDS", f"[Pre][{descriptor_id}]", mega_linter
+    )
+
+
+# Commands to run after running all linters in a descriptor
+def run_descriptor_post_commands(mega_linter, descriptor_id):
+    return run_pre_post_commands(
+        f"{descriptor_id}_POST_COMMANDS", f"[Post][{descriptor_id}]", mega_linter
+    )
+
+
 # Commands to run before a linter (defined in descriptors)
 def run_linter_pre_commands(mega_linter, linter):
     if linter.pre_commands is not None:

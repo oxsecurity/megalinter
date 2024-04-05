@@ -22,10 +22,12 @@ description: ktlint, detekt are available to analyze KOTLIN files in MegaLinter
 
 ## Configuration in MegaLinter
 
-| Variable                    | Description                   | Default value |
-|-----------------------------|-------------------------------|---------------|
-| KOTLIN_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| KOTLIN_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable                    | Description                                     | Default value |
+|-----------------------------|-------------------------------------------------|---------------|
+| KOTLIN_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
+| KOTLIN_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
+| KOTLIN_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
+| KOTLIN_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 
 
 ## Behind the scenes

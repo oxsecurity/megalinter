@@ -25,8 +25,10 @@ description: raku is available to analyze RAKU files in MegaLinter
 
 ## Configuration in MegaLinter
 
-| Variable                  | Description                   | Default value |
-|---------------------------|-------------------------------|---------------|
-| RAKU_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| RAKU_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable                  | Description                                     | Default value |
+|---------------------------|-------------------------------------------------|---------------|
+| RAKU_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
+| RAKU_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
+| RAKU_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
+| RAKU_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 

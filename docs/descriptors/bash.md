@@ -25,10 +25,12 @@ description: bash-exec, shellcheck, shfmt are available to analyze BASH files in
 
 ## Configuration in MegaLinter
 
-| Variable                  | Description                   | Default value |
-|---------------------------|-------------------------------|---------------|
-| BASH_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| BASH_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable                  | Description                                     | Default value |
+|---------------------------|-------------------------------------------------|---------------|
+| BASH_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
+| BASH_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
+| BASH_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
+| BASH_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 
 
 ## Behind the scenes

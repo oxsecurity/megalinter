@@ -21,10 +21,12 @@ description: checkstyle, pmd are available to analyze JAVA files in MegaLinter
 
 ## Configuration in MegaLinter
 
-| Variable                  | Description                   | Default value |
-|---------------------------|-------------------------------|---------------|
-| JAVA_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| JAVA_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable                  | Description                                     | Default value |
+|---------------------------|-------------------------------------------------|---------------|
+| JAVA_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
+| JAVA_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
+| JAVA_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
+| JAVA_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 
 
 ## Behind the scenes

@@ -27,10 +27,12 @@ description: powershell, powershell_formatter are available to analyze POWERSHEL
 
 ## Configuration in MegaLinter
 
-| Variable                        | Description                   | Default value |
-|---------------------------------|-------------------------------|---------------|
-| POWERSHELL_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| POWERSHELL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable                        | Description                                     | Default value |
+|---------------------------------|-------------------------------------------------|---------------|
+| POWERSHELL_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
+| POWERSHELL_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
+| POWERSHELL_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
+| POWERSHELL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 
 
 ## Behind the scenes
