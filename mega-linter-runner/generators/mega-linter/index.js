@@ -195,9 +195,9 @@ When you don't know what option to select, please use default values`
       this.validateAllCodeBaseGha = "true";
     } else {
       this.validateAllCodeBaseGha  = ">-\n"
-      this.validateAllCodeBaseGha += "            ${{";
-      this.validateAllCodeBaseGha += "              github.event_name == 'push' &&"
-      this.validateAllCodeBaseGha += "              github.ref == 'refs/heads/main'"
+      this.validateAllCodeBaseGha += "            ${{\n";
+      this.validateAllCodeBaseGha += "              github.event_name == 'push' &&\n"
+      this.validateAllCodeBaseGha += "              github.ref == 'refs/heads/main'\n"
       this.validateAllCodeBaseGha += "            }}";
     }
     this.disable = false;

@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 set -eu
 
+npm install --prefix mega-linter-runner
+npm run --prefix mega-linter-runner generator-samples
+
 PYTHONPATH=.
 export PYTHONPATH
 if type python3 >/dev/null 2>/dev/null; then
