@@ -12,6 +12,7 @@
     "linters": [
         "ACTION_ACTIONLINT",
         "ANSIBLE_ANSIBLE_LINT",
+        "API_SPECTRAL",
         "ARM_ARM_TTK",
         "BASH_EXEC",
         "BASH_SHELLCHECK",

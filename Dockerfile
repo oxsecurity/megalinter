@@ -206,6 +206,7 @@ WORKDIR /node-deps
 RUN npm --no-cache install --ignore-scripts --omit=dev \
                 @salesforce/cli \
                 typescript \
+                @stoplight/spectral-cli \
                 @coffeelint/cli \
                 jscpd \
                 stylelint \
@@ -241,7 +242,6 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 markdownlint-cli \
                 markdown-link-check \
                 markdown-table-formatter \
-                @stoplight/spectral-cli \
                 secretlint \
                 @secretlint/secretlint-rule-preset-recommend \
                 @secretlint/secretlint-formatter-sarif \
