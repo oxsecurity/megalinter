@@ -31,8 +31,10 @@ description: cpplint, clang-format are available to analyze CPP files in MegaLin
 
 ## Configuration in MegaLinter
 
-| Variable                 | Description                   | Default value |
-|--------------------------|-------------------------------|---------------|
-| CPP_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| CPP_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable                 | Description                                     | Default value |
+|--------------------------|-------------------------------------------------|---------------|
+| CPP_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
+| CPP_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
+| CPP_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
+| CPP_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 

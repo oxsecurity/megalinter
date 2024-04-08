@@ -28,8 +28,10 @@ description: spectral is available to analyze OPENAPI files in MegaLinter
 
 ## Configuration in MegaLinter
 
-| Variable                     | Description                   | Default value |
-|------------------------------|-------------------------------|---------------|
-| OPENAPI_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| OPENAPI_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable                     | Description                                     | Default value |
+|------------------------------|-------------------------------------------------|---------------|
+| OPENAPI_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
+| OPENAPI_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
+| OPENAPI_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
+| OPENAPI_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 

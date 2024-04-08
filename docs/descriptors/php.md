@@ -23,10 +23,12 @@ description: phpcs, phpstan, psalm, phplint are available to analyze PHP files i
 
 ## Configuration in MegaLinter
 
-| Variable                 | Description                   | Default value |
-|--------------------------|-------------------------------|---------------|
-| PHP_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| PHP_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable                 | Description                                     | Default value |
+|--------------------------|-------------------------------------------------|---------------|
+| PHP_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
+| PHP_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
+| PHP_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
+| PHP_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 
 
 ## Behind the scenes

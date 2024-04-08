@@ -38,3 +38,7 @@ class PrePostTest(unittest.TestCase):
         )
         self.assertIn("pre-test command has been called", output)
         self.assertIn("npm run test has been called", output)
+        self.assertIn("descriptor pre-command has been run", output)
+        self.assertIn("descriptor post-command has been run", output)
+        self.assertIn("linter pre-command has been run", output)
+        self.assertIn("linter post-command has been run", output)

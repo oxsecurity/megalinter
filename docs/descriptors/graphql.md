@@ -20,8 +20,10 @@ description: graphql-schema-linter is available to analyze GRAPHQL files in Mega
 
 ## Configuration in MegaLinter
 
-| Variable                     | Description                   | Default value |
-|------------------------------|-------------------------------|---------------|
-| GRAPHQL_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| GRAPHQL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable                     | Description                                     | Default value |
+|------------------------------|-------------------------------------------------|---------------|
+| GRAPHQL_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
+| GRAPHQL_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
+| GRAPHQL_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
+| GRAPHQL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 

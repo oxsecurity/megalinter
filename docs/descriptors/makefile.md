@@ -20,8 +20,10 @@ description: checkmake is available to analyze MAKEFILE files in MegaLinter
 
 ## Configuration in MegaLinter
 
-| Variable                      | Description                   | Default value |
-|-------------------------------|-------------------------------|---------------|
-| MAKEFILE_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| MAKEFILE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable                      | Description                                     | Default value |
+|-------------------------------|-------------------------------------------------|---------------|
+| MAKEFILE_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
+| MAKEFILE_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
+| MAKEFILE_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
+| MAKEFILE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 

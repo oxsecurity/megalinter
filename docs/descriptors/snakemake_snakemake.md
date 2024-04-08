@@ -15,7 +15,7 @@ description: How to use snakemake (configure, ignore files, ignore errors, help 
 
 ## snakemake documentation
 
-- Version in MegaLinter: **8.10.4**
+- Version in MegaLinter: **8.10.6**
 - Visit [Official Web Site](https://snakemake.readthedocs.io/en/stable/){target=_blank}
 
 [![snakemake - GitHub](https://gh-card.dev/repos/snakemake/snakemake.svg?fullname=)](https://github.com/snakemake/snakemake){target=_blank}
@@ -133,7 +133,7 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--d3dag] [--summary] [--detailed-summary] [--archive FILE]
                  [--cleanup-metadata FILE [FILE ...]] [--cleanup-shadow]
                  [--skip-script-cleanup] [--unlock]
-                 [--list-changes {params,code,input}] [--list-input-changes]
+                 [--list-changes {input,params,code}] [--list-input-changes]
                  [--list-params-changes] [--list-untracked]
                  [--delete-all-output | --delete-temp-output]
                  [--keep-incomplete] [--drop-metadata]
@@ -163,7 +163,7 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--shared-fs-usage {input-output,persistence,software-deployment,source-cache,sources,storage-local-copies,none} [{input-output,persistence,software-deployment,source-cache,sources,storage-local-copies,none} ...]]
                  [--scheduler-greediness SCHEDULER_GREEDINESS] [--no-hooks]
                  [--debug] [--runtime-profile FILE]
-                 [--mode {default,remote,subprocess}] [--show-failed-logs]
+                 [--mode {remote,subprocess,default}] [--show-failed-logs]
                  [--log-handler-script FILE] [--log-service {none,slack,wms}]
                  [--job-deploy-sources] [--container-image IMAGE]
                  [--immediate-submit] [--jobscript SCRIPT] [--jobname NAME]
@@ -406,10 +406,10 @@ EXECUTION:
                         configuration. If you rather prefer the traditional
                         way of just considering file modification dates, use '
                         --rerun-trigger mtime'. (default:
-                        frozenset({<RerunTrigger.INPUT: 2>,
+                        frozenset({<RerunTrigger.MTIME: 0>,
+                        <RerunTrigger.PARAMS: 1>, <RerunTrigger.INPUT: 2>,
                         <RerunTrigger.SOFTWARE_ENV: 3>, <RerunTrigger.CODE:
-                        4>, <RerunTrigger.PARAMS: 1>, <RerunTrigger.MTIME:
-                        0>}))
+                        4>}))
   --force, -f           Force the execution of the selected target or the
                         first rule regardless of already created output.
                         (default: False)
@@ -650,7 +650,7 @@ UTILITIES:
                         (default: False)
   --unlock              Remove a lock on the working directory. (default:
                         False)
-  --list-changes {params,code,input}, --lc {params,code,input}
+  --list-changes {input,params,code}, --lc {input,params,code}
                         List all output files for which the given items (code,
                         input, params) have changed since creation. (default:
                         None)
@@ -844,11 +844,11 @@ BEHAVIOR:
                         and data provenance will be handled by NFS but input
                         and output files will be handled exclusively by the
                         storage provider. (default:
-                        frozenset({<SharedFSUsage.PERSISTENCE: 0>,
-                        <SharedFSUsage.SOURCES: 3>,
+                        frozenset({<SharedFSUsage.INPUT_OUTPUT: 1>,
+                        <SharedFSUsage.PERSISTENCE: 0>,
                         <SharedFSUsage.SOURCE_CACHE: 5>,
-                        <SharedFSUsage.INPUT_OUTPUT: 1>,
                         <SharedFSUsage.STORAGE_LOCAL_COPIES: 4>,
+                        <SharedFSUsage.SOURCES: 3>,
                         <SharedFSUsage.SOFTWARE_DEPLOYMENT: 2>}))
   --scheduler-greediness SCHEDULER_GREEDINESS, --greediness SCHEDULER_GREEDINESS
                         Set the greediness of scheduling. This value between 0
@@ -863,7 +863,7 @@ BEHAVIOR:
   --runtime-profile FILE
                         Profile Snakemake and write the output to FILE. This
                         requires yappi to be installed. (default: None)
-  --mode {default,remote,subprocess}
+  --mode {remote,subprocess,default}
                         Set execution mode of Snakemake (internal use only).
                         (default: default)
   --show-failed-logs    Automatically display logs of failed jobs. (default:
@@ -895,7 +895,7 @@ REMOTE EXECUTION:
                         contain a working snakemake installation that is
                         compatible with (or ideally the same as) the currently
                         running version. (default:
-                        snakemake/snakemake:v8.10.4)
+                        snakemake/snakemake:v8.10.6)
   --immediate-submit, --is
                         Immediately submit all jobs to the cluster instead of
                         waiting for present input files. This will fail,
@@ -951,7 +951,13 @@ CONDA:
                         path, which will be extrapolated to the invocation
                         directory, or as an absolute path. The value can also
                         be provided via the environment variable
-                        $SNAKEMAKE_CONDA_PREFIX. (default: None)
+                        $SNAKEMAKE_CONDA_PREFIX. In any case, the prefix may
+                        contain environment variables which will be properly
+                        expanded. Note that if you use remote execution e.g.
+                        on a cluster and you have node specific values for
+                        this, you should disable assuming shared fs for
+                        software-deployment (see --shared-fs-usage). (default:
+                        None)
   --conda-cleanup-envs  Cleanup unused conda environments. (default: False)
   --conda-cleanup-pkgs [{tarballs,cache}]
                         Cleanup conda packages after creating environments. In
@@ -983,7 +989,13 @@ APPTAINER/SINGULARITY:
                         apptainer` flag must also be set. The value may be
                         given as a relative path, which will be extrapolated
                         to the invocation directory, or as an absolute path.
-                        (default: None)
+                        If not supplied, APPTAINER_CACHEDIR is used. In any
+                        case, the prefix may contain environment variables
+                        which will be properly expanded. Note that if you use
+                        remote execution e.g. on a cluster and you have node
+                        specific values for this, you should disable assuming
+                        shared fs for software-deployment (see --shared-fs-
+                        usage). (default: None)
   --apptainer-args ARGS, --singularity-args ARGS
                         Pass additional args to apptainer/singularity.
                         (default: )
@@ -1001,10 +1013,10 @@ html executor settings:
                         Path to the report file (either .html or .zip). Use
                         zip if your report contains large results or
                         directories with htmlindex as results. (default:
-                        <dataclasses._MISSING_TYPE object at 0x7f948816dac0>)
+                        <dataclasses._MISSING_TYPE object at 0x7f2578cfd940>)
   --report-html-stylesheet-path VALUE
                         Path to a custom stylesheet for the report. (default:
-                        <dataclasses._MISSING_TYPE object at 0x7f948816dac0>)
+                        <dataclasses._MISSING_TYPE object at 0x7f2578cfd940>)
 
  In general, command-line values override environment variables which override
 defaults.
