@@ -96,7 +96,7 @@ class config_test(unittest.TestCase):
         self.assertEqual("false", config.get(request_id, "SHOW_ELAPSED_TIME"))
         self.restore_branch_in_input_files(changed_files)
 
-    def test_local_config_extends_list_merge_success(self):
+    def test_local_config_extends_list_merge_replace_success(self):
         changed_files = self.replace_branch_in_input_files()
         local_config = "local.mega-linter.yml"
         request_id = str(uuid.uuid1())
@@ -110,7 +110,31 @@ class config_test(unittest.TestCase):
             + os.path.sep
             + "mega-linter-config-test"
             + os.path.sep
-            + "local_extends_list_merge",
+            + "local_extends_list_merge_replace",
+            {"MEGALINTER_CONFIG": local_config},
+        )
+        self.assertEqual(
+            ["LINTER_2"],
+            config.get(request_id, "ENABLE_LINTERS"),
+        )
+        self.assertEqual("(local)", config.get(request_id, "FILTER_REGEX_INCLUDE"))
+        self.restore_branch_in_input_files(changed_files)
+
+    def test_local_config_extends_list_merge_append_success(self):
+        changed_files = self.replace_branch_in_input_files()
+        local_config = "local.mega-linter.yml"
+        request_id = str(uuid.uuid1())
+        config.init_config(
+            request_id,
+            REPO_HOME_DEFAULT
+            + os.path.sep
+            + ".automation"
+            + os.path.sep
+            + "test"
+            + os.path.sep
+            + "mega-linter-config-test"
+            + os.path.sep
+            + "local_extends_list_merge_append",
             {"MEGALINTER_CONFIG": local_config},
         )
         self.assertEqual(

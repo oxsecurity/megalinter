@@ -49,15 +49,15 @@ RUN apk add --no-cache \
                 musl-dev \
                 openssh \
                 gnupg \
-                php81 \
-                php81-phar \
-                php81-mbstring \
-                php81-xmlwriter \
-                php81-tokenizer \
-                php81-ctype \
-                php81-curl \
-                php81-dom \
-                php81-simplexml \
+                php83 \
+                php83-phar \
+                php83-mbstring \
+                php83-xmlwriter \
+                php83-tokenizer \
+                php83-ctype \
+                php83-curl \
+                php83-dom \
+                php83-simplexml \
                 dpkg \
     && git config --global core.autocrlf true
 #APK__END
@@ -146,7 +146,7 @@ RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GI
     && chmod +x phive.phar \
     && mv phive.phar /usr/local/bin/phive \
     && rm phive.phar.asc \
-    && update-alternatives --install /usr/bin/php php /usr/bin/php81 110
+    && update-alternatives --install /usr/bin/php php /usr/bin/php83 110
 
 
 # phplint installation
