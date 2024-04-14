@@ -20,7 +20,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Fix conflict between prettier and yamllint about spaces
   - Ensure [trufflehog](https://github.com/trufflesecurity/trufflehog) does not auto-update itself
   - Salesforce linters: use sf + default Flow Scanner rules
-  - Disable JSON_ESLINT_PLUGIN_JSONC until https://github.com/ota-meshi/eslint-plugin-jsonc/issues/328 is fixed
+  - Disable JSON_ESLINT_PLUGIN_JSONC until <https://github.com/ota-meshi/eslint-plugin-jsonc/issues/328> is fixed
   - Upgrade tar in mega-linter-runner
 
 - Doc
