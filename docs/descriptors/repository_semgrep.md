@@ -147,8 +147,9 @@ OPTIONS
            Note that this mode is experimental and not guaranteed to function
            properly.
 
-       --allow-custom-validators
-           Run postprocessors from custom rules.
+       --allow-untrusted-validators
+           Allows running rules with validators from origins other than
+           semgrep.dev. Avoid running rules from origins you don't trust.
 
        --baseline-commit=VAL (absent SEMGREP_BASELINE_COMMIT env)
            Only show results that are not found in this commit hash. Aborts
@@ -217,12 +218,15 @@ OPTIONS
        --error
            Exit 1 if there are findings. Useful for CI and scripts.
 
-       --exclude=VAL
-           Skip any file or directory that matches this pattern;
-           --exclude='*.py' will ignore the following: foo.py, src/foo.py,
-           foo.py/bar.sh. --exclude='tests' will ignore tests/foo.py as well
-           as a/b/tests/c/foo.py. Can add multiple times. If present, any
-           --include directives are ignored.
+       --exclude=PATTERN
+           Skip any file or directory whose path that matches PATTERN.
+           '--exclude=*.py' will ignore the following: 'foo.py',
+           'src/foo.py', 'foo.py/bar.sh'. '--exclude=tests' will ignore
+           'tests/foo.py' as well as 'a/b/tests/c/foo.py'. Multiple
+           '--exclude' options may be specified. PATTERN is a glob-style
+           pattern that uses the same syntax as gitignore and semgrepignore,
+           which is documented at
+           https://git-scm.com/docs/gitignore#_pattern_format
 
        --exclude-rule=VAL
            Skip any rule with the given id. Can add multiple times.
@@ -258,19 +262,23 @@ OPTIONS
        --historical-secrets
            Scans git history using Secrets rules.
 
-       --include=VAL
-           Filter files or directories by path. The argument is a glob-style
-           pattern such as 'foo.*' that must match the path. This is an extra
-           filter in addition to other applicable filters. For example,
-           specifying the language with '-l javascript' might preselect files
-           'src/foo.jsx' and 'lib/bar.js'. Specifying one of '--include=src',
-           '-- include=*.jsx', or '--include=src/foo.*' will restrict the
-           selection to the single file 'src/foo.jsx'. A choice of multiple
-           '-- include' patterns can be specified. For example,
+       --include=PATTERN
+           Specify files or directories that should be scanned by semgrep,
+           excluding other files. This filter is applied after these other
+           filters: '--exclude' options, any filtering done by git (or other
+           SCM), and filtering by '.semgrepignore' files. Multiple
+           '--include' options can be specified. A file path is selected if
+           it matches at least one of the include patterns. PATTERN is a
+           glob-style pattern such as 'foo.*' that must match the path. For
+           example, specifying the language with '-l javascript' might
+           preselect files 'src/foo.jsx' and 'lib/bar.js'. Specifying one of
+           '--include=src', '--include=*.jsx', or '--include=src/foo.*' will
+           restrict the selection to the single file 'src/foo.jsx'. A choice
+           of multiple '--include' patterns can be specified. For example,
            '--include=foo.* --include=bar.*' will select both 'src/foo.jsx'
            and 'lib/bar.js'. Glob-style patterns follow the syntax supported
-           by python, which is documented at
-           https://docs.python.org/3/library/glob.html
+           by gitignore and semgrepignore, which is documented at
+           https://git-scm.com/docs/gitignore#_pattern_format
 
        --incremental-output
            Output results incrementally.
