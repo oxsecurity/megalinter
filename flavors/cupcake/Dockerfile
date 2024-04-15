@@ -202,7 +202,6 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 standard \
                 prettier \
                 @prantlf/jsonlint \
-                eslint-plugin-jsonc \
                 v8r \
                 npm-package-json-lint \
                 npm-package-json-lint-config-default \
