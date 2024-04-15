@@ -19,7 +19,7 @@ RUN GOBIN=/usr/bin go install github.com/checkmarx/dustilock@v1.2.0
 ##################
 # Get base image #
 ##################
-FROM python:3.12.2-alpine3.19
+FROM python:3.12.3-alpine3.19
 ARG GITHUB_TOKEN
 
 #############################################################################################

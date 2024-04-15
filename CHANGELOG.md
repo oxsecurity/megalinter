@@ -10,6 +10,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Core
   - Allow to override the number of parallel cores used, with variable **PARALLEL_PROCESS_NUMBER**
+  - Upgrade base python image from 3.12.2-alpine3.19 to 3.12.3-alpine3.19
 
 - Media
 
