@@ -89,7 +89,7 @@ sf scanner:run
 ### Help content
 
 ```shell
-(node:2495) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(node:2448) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
 (Use `node --trace-deprecation ...` to show where the warning was created)
 scan a codebase with a selection of rules
 
@@ -139,7 +139,7 @@ GLOBAL FLAGS
 COMMANDS
   scanner run dfa  scan codebase with all DFA rules
 
-(node:2519) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(node:2469) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
 (Use `node --trace-deprecation ...` to show where the warning was created)
 Warning: To use the most up-to-date Code Analyzer features including PMD 7.x, install Code Analyzer v4.x (Beta). To install v4.x (beta), run this command: sf plugins install @salesforce/sfdx-scanner@latest-beta
 Warning: We're continually improving Salesforce Code Analyzer. Tell us what you think! Give feedback at https://research.net/r/SalesforceCA

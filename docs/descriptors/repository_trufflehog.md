@@ -15,7 +15,7 @@ description: How to use trufflehog (configure, ignore files, ignore errors, help
 
 ## trufflehog documentation
 
-- Version in MegaLinter: **3.72.0**
+- Version in MegaLinter: **3.73.0**
 - Visit [Official Web Site](https://github.com/trufflesecurity/trufflehog#readme){target=_blank}
 - See [How to configure trufflehog rules](https://github.com/trufflesecurity/trufflehog#regex-detector-alpha){target=_blank}
 

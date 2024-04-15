@@ -9,7 +9,7 @@ description: How to use ansible-lint (configure, ignore files, ignore errors, he
 
 ## ansible-lint documentation
 
-- Version in MegaLinter: **24.2.1**
+- Version in MegaLinter: **24.2.2**
 - Visit [Official Web Site](https://ansible-lint.readthedocs.io/){target=_blank}
 - See [How to configure ansible-lint rules](https://ansible-lint.readthedocs.io/configuring/#configuration-file){target=_blank}
 - See [How to disable ansible-lint rules in files](https://ansible-lint.readthedocs.io/usage/#muting-warnings-to-avoid-false-positives){target=_blank}
