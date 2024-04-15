@@ -160,9 +160,6 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 npm-groovy-lint \
                 htmlhint \
                 @prantlf/jsonlint \
-                eslint \
-                eslint-plugin-jsonc \
-                @microsoft/eslint-formatter-sarif \
                 v8r \
                 prettier \
                 npm-package-json-lint \
