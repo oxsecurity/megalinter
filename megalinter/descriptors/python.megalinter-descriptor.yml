@@ -341,6 +341,7 @@ linters:
   # ruff
   - linter_name: ruff
     name: PYTHON_RUFF
+    can_output_sarif: true
     linter_text: |
       An extremely fast Python linter, written in Rust.
     linter_url: https://github.com/astral-sh/ruff
@@ -360,6 +361,11 @@ linters:
     cli_lint_errors_count: regex_number
     cli_lint_errors_regex: "Found ([0-9]+) error"
     config_file_name: ".ruff.toml"
+    cli_sarif_args:
+      - --output-format
+      - sarif
+      - --output-file
+      - "{{SARIF_OUTPUT_FILE}}"
     test_folder: python_ruff
     examples:
       - "ruff check myfile.py"
