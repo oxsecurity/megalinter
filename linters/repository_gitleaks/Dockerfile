@@ -17,7 +17,7 @@ FROM zricethezav/gitleaks:v8.18.2 as gitleaks
 ##################
 # Get base image #
 ##################
-FROM python:3.12.2-alpine3.19
+FROM python:3.12.3-alpine3.19
 ARG GITHUB_TOKEN
 
 #############################################################################################
