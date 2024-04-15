@@ -117,9 +117,6 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 jscpd \
                 npm-groovy-lint \
                 @prantlf/jsonlint \
-                eslint \
-                eslint-plugin-jsonc \
-                @microsoft/eslint-formatter-sarif \
                 v8r \
                 prettier \
                 secretlint \

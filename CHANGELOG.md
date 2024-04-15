@@ -138,6 +138,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [vale](https://vale.sh/) from 3.3.1 to **3.4.0** on 2024-04-13
   - [sqlfluff](https://www.sqlfluff.com/) from 3.0.3 to **3.0.4** on 2024-04-13
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.55.20 to **0.56.2** on 2024-04-13
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.49.4 to **0.49.6** on 2024-04-14
+  - [checkov](https://www.checkov.io/) from 3.2.60 to **3.2.63** on 2024-04-14
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 2.21.0 to **2.22.0** on 2024-04-14
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.7.5 to **1.8.0** on 2024-04-14
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.56.2 to **0.57.0** on 2024-04-14
 <!-- linter-versions-end -->
 
 ## [v7.10.0] - 2024-03-10
