@@ -20,12 +20,14 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Add ruff sarif support
 
 - Fixes
+  - Fix listing of modified files, by @vkucera in <https://github.com/oxsecurity/megalinter/pull/3472>. Fixes <https://github.com/oxsecurity/megalinter/issues/2125>.
   - Fix clang-format documentation links to point to the correct version. Fixes [#3452](https://github.com/oxsecurity/megalinter/issues/3452)
   - Fix conflict between prettier and yamllint about spaces
   - Ensure [trufflehog](https://github.com/trufflesecurity/trufflehog) does not auto-update itself
   - Salesforce linters: use sf + default Flow Scanner rules
   - Disable JSON_ESLINT_PLUGIN_JSONC until <https://github.com/ota-meshi/eslint-plugin-jsonc/issues/328> is fixed
   - Upgrade tar in mega-linter-runner
+  - secretlint: remove default `.secretlintignore` that was never used but `.gitignore` is used instead. Fixes [#3328](https://github.com/oxsecurity/megalinter/issues/3328)
 
 - Doc
   - Update R2DevOps logo
