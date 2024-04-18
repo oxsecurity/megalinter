@@ -34,7 +34,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Update [Roslynator](https://github.com/dotnet/roslynator) repo url and logo
 
 - CI
-  - Make SPELL_LYCHEE non bloking for internal CI jobs
+  - Make SPELL_LYCHEE non blocking for internal CI jobs
 
 - Linter versions upgrades
   - [markdown-link-check](https://github.com/tcort/markdown-link-check) from 3.11.2 to **3.12.0** on 2024-03-10
