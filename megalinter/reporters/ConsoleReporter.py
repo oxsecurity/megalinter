@@ -70,9 +70,11 @@ class ConsoleReporter(Reporter):
                 status = (
                     "✅"
                     if linter.status == "success" and linter.return_code == 0
-                    else "⚠️"
-                    if linter.status != "success" and linter.return_code == 0
-                    else "❌"
+                    else (
+                        "⚠️"
+                        if linter.status != "success" and linter.return_code == 0
+                        else "❌"
+                    )
                 )
                 errors = str(linter.total_number_errors)
                 if linter.cli_lint_mode == "project":
@@ -133,9 +135,7 @@ class ConsoleReporter(Reporter):
                 action_version = (
                     DEFAULT_RELEASE
                     if DEFAULT_RELEASE in build_version
-                    else "beta"
-                    if build_version == "latest"
-                    else build_version
+                    else "beta" if build_version == "latest" else build_version
                 )
                 logging.warning(
                     c.blue(

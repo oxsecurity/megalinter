@@ -21,8 +21,7 @@ description: List of all known articles, blog posts and videos that talk about M
 | [Use the Workflows JSON schema in your IDE](https://cloud.google.com/workflows/docs/use-workflows-json-schema-with-ide){target=_blank}                                                                                   | [Google Cloud](https://cloud.google.com/){target=_blank}                                                                                                                                            |
 | [Level up your Unity Packages with CI/CD](https://medium.com/@RunningMattress/level-up-your-unity-packages-with-ci-cd-9498d2791211){target=_blank}                                                                       | [RunningMattress](https://medium.com/@RunningMattress){target=_blank}                                                                                                                               |
 | [Writing documentation as a champ in engineering teams](https://rabobank.jobs/en/techblog/coding-architecture/gijs-reijn-writing-documentation-as-a-champ-in-engineering-teams/){target=_blank}                          | [Gijs Reijn](https://github.com/gijsreyn){target=_blank}                                                                                                                                            |
-| [Make Clojure tasks simple and consistent](https://practical.li/blog/posts/make-clojure-tasks-simple-and-consistent/){target=_blank}                                                                                     | [Practicalli](https://twitter.com/practical_li){target=_blank}                                                                                                                                      |
-| [GitHub Actions: sharing your secrets with third-party actions](https://secure-git.guide/014_Sharing-GitHub-secrets-with-third-party-actions/){target=_blank}                                                            | [Constantin Bosse](https://github.com/cgbosse){target=_blank} and [Stephen Hosom](https://github.com/hosom){target=_blank}                                                                          |
+| [GitHub Actions: sharing your secrets with third-party actions](https://secure-git.guide/013_Sharing-GitHub-secrets-with-third-party-actions){target=_blank}                                                             | [Constantin Bosse](https://github.com/cgbosse){target=_blank} and [Stephen Hosom](https://github.com/hosom){target=_blank}                                                                          |
 | [GitOps security topics you must address](https://amazic.com/gitops-security-topics-you-must-address/){target=_blank}                                                                                                    | [Wiebe de Roos](https://amazic.com/author/wiebe-de-roos/){target=_blank}                                                                                                                            |
 | [Talk about the Kotlin plugins Kover, Ktlint and Detekt. Made for the AmsterdamJUG meetup.](https://www.slideshare.net/SimonedeGijt/pluginandplayv4amsterdamjugpptx-251796070){target=_blank}                            | [Simone de Gijt](https://github.com/SimonedeGijt){target=_blank}                                                                                                                                    |
 | [Linting - What is all the fluff about?](https://rse.shef.ac.uk/blog/2022-04-19-linting/){target=_blank}                                                                                                                 | [Neil Shepard](https://www.linkedin.com/in/neil-shephard-a43a83211/?originalSubdomain=uk){target=_blank}, University Of Sheffield                                                                   |
@@ -40,7 +39,22 @@ description: List of all known articles, blog posts and videos that talk about M
 |:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------|
 | [MegaLinter, votre meilleur ami pour un code de qualité](https://www.neosoft.fr/nos-publications/blog-tech/mega-linter-votre-meilleur-ami-pour-un-code-de-qualite/?utm_source=twitter&utm_medium=organic&utm_campaign=article-mega-linter){target=_blank} | [Thomas Sanson](https://github.com/ThomasSanson){target=_blank} |
 
+## Japanese articles
+
+| Article                                                                                            | Author                                                                                                             |
+|:---------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------|
+| [Try using MegaLinter](https://future-architect.github.io/articles/20231129a/?s=03){target=_blank} | [Takashi Minayaga](https://future-architect.github.io/authors/%E5%AE%AE%E6%B0%B8%E5%B4%87%E5%8F%B2){target=_blank} |
+
 ## Videos
+
+- [How to use MegaLinter with Jenkins](https://www.youtube.com/watch?v=KhkNf2tQ3hM), by [Darin Pope](https://www.linkedin.com/in/darinpope/) / [Cloudbees](https://www.cloudbees.com/)
+
+<div style="text-align:center"><iframe width="560" height="315" src="https://www.youtube.com/embed/KhkNf2tQ3hM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+
+
+- (FR) MegaLinter presentation at [DevCon 20 / Programmez Magazine](https://www.programmez.com/page-devcon/devcon-20-100-securite-qualite-du-code), by [Nicolas Vuillamy](https://github.com/nvuillam)
+
+<div style="text-align:center"><iframe width="560" height="315" src="https://www.youtube.com/embed/SlKurrIsUls" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 
 - Code quality - Ep01 - MegaLinter, one linter to rule them all, by [Bertrand Thomas](https://github.com/devpro)
 
@@ -71,10 +85,11 @@ description: List of all known articles, blog posts and videos that talk about M
 ## Linters
 
 <!-- referring-linters-start -->
-- [checkstyle](https://checkstyle.sourceforge.io/index.html#Related_Tools_Active_Tools){target=_blank}
+- [checkstyle](https://checkstyle.org/index.html#Related_Tools_Active_Tools){target=_blank}
 - [clj-kondo](https://github.com/borkdude/clj-kondo/blob/master/doc/ci-integration.md#github){target=_blank}
 - [cljstyle](https://github.com/greglook/cljstyle/blob/main/doc/integrations.md){target=_blank}
 - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#mega-linter){target=_blank}
+- [detekt](https://detekt.dev/docs/intro){target=_blank}
 - [djlint](https://djlint.com/docs/integrations/#megalinter){target=_blank}
 - [dotenv-linter](https://dotenv-linter.github.io/#/integrations/mega_linter){target=_blank}
 - [editorconfig-checker](https://github.com/editorconfig-checker/editorconfig-checker#mega-linter){target=_blank}

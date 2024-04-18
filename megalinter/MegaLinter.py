@@ -227,6 +227,15 @@ class Megalinter:
         for reporter in self.reporters:
             reporter.initialize()
 
+        active_descriptor_ids = []
+
+        for active_linter in active_linters:
+            if active_linter.descriptor_id not in active_descriptor_ids:
+                active_descriptor_ids += [active_linter.descriptor_id]
+
+        for active_descriptor_id in active_descriptor_ids:
+            pre_post_factory.run_descriptor_pre_commands(self, active_descriptor_id)
+
         if (
             config.get(self.request_id, "PARALLEL", "true") == "true"
             and len(active_linters) > 1
@@ -234,6 +243,9 @@ class Megalinter:
             self.process_linters_parallel(active_linters, linters_do_fixes)
         else:
             self.process_linters_serial(active_linters)
+
+        for active_descriptor_id in active_descriptor_ids:
+            pre_post_factory.run_descriptor_post_commands(self, active_descriptor_id)
 
         # Update main MegaLinter status according to results of linters run
         for linter in self.linters:
@@ -298,9 +310,9 @@ class Megalinter:
                         linter.descriptor_id, []
                     )
                     descriptor_active_linters += [linter]
-                    linters_by_descriptor[
-                        linter.descriptor_id
-                    ] = descriptor_active_linters
+                    linters_by_descriptor[linter.descriptor_id] = (
+                        descriptor_active_linters
+                    )
                 else:
                     # If the linter can not updates sources, no need to run it in the same group
                     linter_groups_without_fixes += [[linter]]
@@ -318,8 +330,18 @@ class Megalinter:
                 linter_groups += [[linter]]
             linter_groups = linter_factory.sort_linters_groups_by_speed(linter_groups)
         # Execute linters in asynchronous pool to improve overall performances
-        process_number = mp.cpu_count()
-        logging.info(f"Processing linters on [{str(process_number)}] parallel cores…")
+        if config.exists(self.request_id, "PARALLEL_PROCESS_NUMBER"):
+            process_number = int(config.get(self.request_id, "PARALLEL_PROCESS_NUMBER"))
+            logging.info(
+                f"Processing linters on [{str(process_number)}] parallel cores… "
+                "(according to variable PARALLEL_PROCESS_NUMBER"
+            )
+        else:
+            process_number = mp.cpu_count()
+            logging.info(
+                f"Processing linters on [{str(process_number)}] parallel cores… "
+                "(can be decreased with variable PARALLEL_PROCESS_NUMBER in case of performance issues)"
+            )
         install_mp_handler()
         pool = mp.Pool(
             process_number,
@@ -751,10 +773,10 @@ class Megalinter:
                 "HEAD" if default_branch == "HEAD" else f"refs/heads/{default_branch}"
             )
             local_ref = f"refs/remotes/{default_branch_remote}"
-            # Try to fetch default_branch from origin, because it'sn't cached locally.
+            # Try to fetch default_branch from origin, because it isn't cached locally.
             repo.git.fetch("origin", f"{remote_ref}:{local_ref}")
         # Make git diff to list files (and exclude symlinks)
-        diff = repo.git.diff(default_branch_remote, name_only=True)
+        diff = repo.git.diff(f"{default_branch_remote}...", name_only=True)
         logging.info(f"Modified files:\n{diff}")
         all_files = list()
         for diff_line in diff.splitlines():

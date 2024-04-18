@@ -23,8 +23,10 @@ description: markdownlint, remark-lint, markdown-link-check, markdown-table-form
 
 ## Configuration in MegaLinter
 
-| Variable                      | Description                   | Default value |
-|-------------------------------|-------------------------------|---------------|
-| MARKDOWN_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| MARKDOWN_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable                      | Description                                     | Default value |
+|-------------------------------|-------------------------------------------------|---------------|
+| MARKDOWN_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
+| MARKDOWN_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
+| MARKDOWN_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
+| MARKDOWN_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 

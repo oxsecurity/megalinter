@@ -17,7 +17,7 @@
 ##################
 # Get base image #
 ##################
-FROM python:3.11.6-alpine3.18
+FROM python:3.12.3-alpine3.19
 ARG GITHUB_TOKEN
 
 #############################################################################################
@@ -50,7 +50,6 @@ RUN apk add --no-cache \
                 make \
                 musl-dev \
                 openssh \
-                openssl \
                 icu-libs \
     && git config --global core.autocrlf true
 #APK__END
@@ -126,7 +125,7 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #############################################################################################
 #OTHER__START
 # ARM installation
-RUN curl -L https://github.com/PowerShell/PowerShell/releases/download/v7.4.0/powershell-7.4.0-linux-musl-x64.tar.gz -o /tmp/powershell.tar.gz \
+RUN curl -L https://github.com/PowerShell/PowerShell/releases/download/v7.4.1/powershell-7.4.1-linux-musl-x64.tar.gz -o /tmp/powershell.tar.gz \
     && mkdir -p /opt/microsoft/powershell/7 \
     && tar zxf /tmp/powershell.tar.gz -C /opt/microsoft/powershell/7 \
     && chmod +x /opt/microsoft/powershell/7/pwsh \

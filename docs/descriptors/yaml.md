@@ -23,8 +23,10 @@ description: prettier, yamllint, v8r are available to analyze YAML files in Mega
 
 ## Configuration in MegaLinter
 
-| Variable                  | Description                   | Default value |
-|---------------------------|-------------------------------|---------------|
-| YAML_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| YAML_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable                  | Description                                     | Default value |
+|---------------------------|-------------------------------------------------|---------------|
+| YAML_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
+| YAML_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
+| YAML_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
+| YAML_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 

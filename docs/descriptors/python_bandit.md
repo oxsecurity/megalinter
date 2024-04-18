@@ -19,7 +19,7 @@ If you find it too harsh, you may define `PYTHON_BANDIT_DISABLE_ERRORS: true` in
 
 ## bandit documentation
 
-- Version in MegaLinter: **1.7.5**
+- Version in MegaLinter: **1.7.8**
 - Visit [Official Web Site](https://bandit.readthedocs.io/en/latest/){target=_blank}
 - See [How to configure bandit rules](https://bandit.readthedocs.io/en/latest/config.html#){target=_blank}
   - If custom `.bandit.yml` config file isn't found, [.bandit.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.bandit.yml){target=_blank} will be used
@@ -67,8 +67,8 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                   | Description                         | Embedded linters |                                                                                                                                                                                         Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------|:------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)     | Default MegaLinter Flavor           |       120        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)     | Optimized for PYTHON based projects |        62        |     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)     | Default MegaLinter Flavor           |       122        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)     | Optimized for PYTHON based projects |        64        |     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://megalinter.io/beta/flavors/security/) | Optimized for security              |        24        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
 
 ## Behind the scenes
@@ -101,7 +101,7 @@ usage: bandit [-h] [-r] [-a {file,vuln}] [-n CONTEXT_LINES] [-c CONFIG_FILE]
               [-p PROFILE] [-t TESTS] [-s SKIPS]
               [-l | --severity-level {all,low,medium,high}]
               [-i | --confidence-level {all,low,medium,high}]
-              [-f {csv,custom,html,json,sarif,screen,txt,xml,yaml}]
+              [-f {csv,custom,html,json,sarif,sarif,screen,txt,xml,yaml}]
               [--msg-template MSG_TEMPLATE] [-o [OUTPUT_FILE]] [-v] [-d] [-q]
               [--ignore-nosec] [-x EXCLUDED_PATHS] [-b BASELINE]
               [--ini INI_PATH] [--exit-zero] [--version]
@@ -143,7 +143,7 @@ options:
                         higher. "all" and "low" are likely to produce the same
                         results, but it is possible for rules to be undefined
                         which will not be listed in "low".
-  -f {csv,custom,html,json,sarif,screen,txt,xml,yaml}, --format {csv,custom,html,json,sarif,screen,txt,xml,yaml}
+  -f {csv,custom,html,json,sarif,sarif,screen,txt,xml,yaml}, --format {csv,custom,html,json,sarif,sarif,screen,txt,xml,yaml}
                         specify output format
   --msg-template MSG_TEMPLATE
                         specify output message template (only usable with

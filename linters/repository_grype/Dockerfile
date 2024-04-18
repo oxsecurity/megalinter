@@ -17,7 +17,7 @@
 ##################
 # Get base image #
 ##################
-FROM python:3.11.6-alpine3.18
+FROM python:3.12.3-alpine3.19
 ARG GITHUB_TOKEN
 
 #############################################################################################
@@ -48,7 +48,6 @@ RUN apk add --no-cache \
                 make \
                 musl-dev \
                 openssh \
-                openssl \
     && git config --global core.autocrlf true
 #APK__END
 
@@ -123,7 +122,7 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #############################################################################################
 #OTHER__START
 # grype installation
-RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin v0.63.1
+RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin
 
 #OTHER__END
 

@@ -23,7 +23,7 @@ FROM hadolint/hadolint:v2.12.0-alpine as hadolint
 FROM mstruebing/editorconfig-checker:2.7.2 as editorconfig-checker
 FROM ghcr.io/yannh/kubeconform:latest-alpine as kubeconform
 FROM yoheimuta/protolint:latest as protolint
-FROM zricethezav/gitleaks:v8.18.1 as gitleaks
+FROM zricethezav/gitleaks:v8.18.2 as gitleaks
 FROM trufflesecurity/trufflehog:latest as trufflehog
 FROM jdkato/vale:latest as vale
 FROM lycheeverse/lychee:latest-alpine as lychee
@@ -32,7 +32,7 @@ FROM lycheeverse/lychee:latest-alpine as lychee
 ##################
 # Get base image #
 ##################
-FROM python:3.11.6-alpine3.18
+FROM python:3.12.3-alpine3.19
 ARG GITHUB_TOKEN
 
 #############################################################################################
@@ -63,7 +63,6 @@ RUN apk add --no-cache \
                 make \
                 musl-dev \
                 openssh \
-                openssl \
                 openjdk17 \
                 py3-pyflakes \
                 nodejs \
@@ -152,9 +151,6 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 npm-groovy-lint \
                 htmlhint \
                 @prantlf/jsonlint \
-                eslint \
-                eslint-plugin-jsonc \
-                @microsoft/eslint-formatter-sarif \
                 v8r \
                 prettier \
                 npm-package-json-lint \
@@ -168,7 +164,7 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 @secretlint/secretlint-formatter-sarif \
                 cspell \
                 sql-lint \
-                tekton-lint  && \
+                @ibm/tekton-lint  && \
     echo "Cleaning npm cache…" \
     && npm cache clean --force || true \
     && echo "Changing owner of node_modules files…" \
@@ -242,7 +238,7 @@ ENV PATH="$JAVA_HOME/bin:${PATH}"
 # Next line commented because already managed by another linter
 # ENV PATH="$JAVA_HOME/bin:${PATH}"
 RUN sf plugins install @salesforce/plugin-packaging \
-    && echo y|sfdx plugins:install sfdx-hardis \
+    && echo y|sf plugins install sfdx-hardis \
     && npm cache clean --force || true \
     && rm -rf /root/.npm/_cacache \
 
@@ -282,6 +278,14 @@ RUN sf plugins install @salesforce/plugin-packaging \
     chmod a+x ktlint && \
     mv "ktlint" /usr/bin/ \
 
+# detekt installation
+    && curl --retry 5 --retry-delay 5 -sSLO https://github.com/detekt/detekt/releases/download/v1.23.5/detekt-cli-1.23.5.zip && \
+    unzip detekt-cli-1.23.5.zip && \
+    chmod a+x detekt-cli-1.23.5/bin/* && \
+    chmod a+x detekt-cli-1.23.5/lib/* && \
+    mv -n detekt-cli-1.23.5/bin/* usr/bin && \
+    mv -n detekt-cli-1.23.5/lib/* usr/lib \
+
 # kubeconform installation
 # Managed with COPY --link --from=kubeconform /kubeconform /usr/bin/
 
@@ -296,7 +300,7 @@ RUN sf plugins install @salesforce/plugin-packaging \
 # Managed with COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 
 # grype installation
-    && curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin v0.63.1 \
+    && curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin \
 
 # trivy installation
     && wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin \
@@ -309,24 +313,24 @@ RUN sf plugins install @salesforce/plugin-packaging \
 # Managed with COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
 
 # sfdx-scanner-apex installation
-    && sfdx plugins:install @salesforce/sfdx-scanner \
+    && sf plugins install @salesforce/sfdx-scanner \
     && npm cache clean --force || true \
     && rm -rf /root/.npm/_cacache \
 
 # sfdx-scanner-aura installation
 # Next line commented because already managed by another linter
-# RUN sfdx plugins:install @salesforce/sfdx-scanner \
+# RUN sf plugins install @salesforce/sfdx-scanner \
 #     && npm cache clean --force || true \
 #     && rm -rf /root/.npm/_cacache
 
 # sfdx-scanner-lwc installation
 # Next line commented because already managed by another linter
-# RUN sfdx plugins:install @salesforce/sfdx-scanner \
+# RUN sf plugins install @salesforce/sfdx-scanner \
 #     && npm cache clean --force || true \
 #     && rm -rf /root/.npm/_cacache
 
 # lightning-flow-scanner installation
-    && echo y|sfdx plugins:install lightning-flow-scanner \
+    && echo y|sf plugins install lightning-flow-scanner \
     && npm cache clean --force || true \
     && rm -rf /root/.npm/_cacache
 

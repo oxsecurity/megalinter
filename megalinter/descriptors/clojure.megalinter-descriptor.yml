@@ -89,6 +89,7 @@ linters:
 
     # cljstyle
   - linter_name: cljstyle
+    disabled: true # Disabled until https://github.com/greglook/cljstyle/issues/104 is solved
     linter_url: https://github.com/greglook/cljstyle
     linter_repo: https://github.com/greglook/cljstyle
     linter_rules_url: https://github.com/greglook/cljstyle/blob/main/doc/configuration.md#format-rules
@@ -112,7 +113,7 @@ linters:
     install:
       dockerfile:
         - |
-          RUN curl --retry 5 --retry-delay 5 -sLO https://raw.githubusercontent.com/greglook/cljstyle/main/script/install-cljstyle \
+          RUN curl --retry 5 --retry-delay 5 -sLO https://raw.githubusercontent.com/greglook/cljstyle/main/util/install-cljstyle \
               && chmod +x install-cljstyle \
               && ./install-cljstyle
     ide:

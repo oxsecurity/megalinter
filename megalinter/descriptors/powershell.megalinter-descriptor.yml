@@ -20,7 +20,7 @@ install:
     - icu-libs
   dockerfile:
     - |
-      RUN curl -L https://github.com/PowerShell/PowerShell/releases/download/v7.4.0/powershell-7.4.0-linux-musl-x64.tar.gz -o /tmp/powershell.tar.gz \
+      RUN curl -L https://github.com/PowerShell/PowerShell/releases/download/v7.4.1/powershell-7.4.1-linux-musl-x64.tar.gz -o /tmp/powershell.tar.gz \
           && mkdir -p /opt/microsoft/powershell/7 \
           && tar zxf /tmp/powershell.tar.gz -C /opt/microsoft/powershell/7 \
           && chmod +x /opt/microsoft/powershell/7/pwsh \
@@ -36,6 +36,8 @@ linters:
     linter_rules_configuration_url: https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/using-scriptanalyzer?view=ps-modules#explicit
     linter_rules_inline_disable_url: https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/using-scriptanalyzer?view=ps-modules#suppressing-rules
     config_file_name: .powershell-psscriptanalyzer.psd1
+    cli_lint_errors_regex: "(?m)^\\s*(Information|Warning|Error|ParseError)\\s"
+    cli_lint_errors_count: regex_count
     cli_lint_fix_arg_name: "-Fix"
     version_extract_regex: "(\\d+) *(\\d+) *(\\d+)"
     examples:

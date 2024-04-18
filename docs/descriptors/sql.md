@@ -22,8 +22,10 @@ description: sql-lint, sqlfluff, tsqllint are available to analyze SQL files in 
 
 ## Configuration in MegaLinter
 
-| Variable                 | Description                   | Default value |
-|--------------------------|-------------------------------|---------------|
-| SQL_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| SQL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable                 | Description                                     | Default value |
+|--------------------------|-------------------------------------------------|---------------|
+| SQL_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
+| SQL_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
+| SQL_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
+| SQL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 

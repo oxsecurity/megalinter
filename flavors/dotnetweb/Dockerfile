@@ -24,7 +24,7 @@ FROM mstruebing/editorconfig-checker:2.7.2 as editorconfig-checker
 FROM ghcr.io/yannh/kubeconform:latest-alpine as kubeconform
 FROM mrtazz/checkmake:latest as checkmake
 FROM yoheimuta/protolint:latest as protolint
-FROM zricethezav/gitleaks:v8.18.1 as gitleaks
+FROM zricethezav/gitleaks:v8.18.2 as gitleaks
 FROM trufflesecurity/trufflehog:latest as trufflehog
 FROM jdkato/vale:latest as vale
 FROM lycheeverse/lychee:latest-alpine as lychee
@@ -33,7 +33,7 @@ FROM lycheeverse/lychee:latest-alpine as lychee
 ##################
 # Get base image #
 ##################
-FROM python:3.11.6-alpine3.18
+FROM python:3.12.3-alpine3.19
 ARG GITHUB_TOKEN
 
 #############################################################################################
@@ -70,15 +70,7 @@ RUN apk add --no-cache \
                 make \
                 musl-dev \
                 openssh \
-                openssl \
                 icu-libs \
-                libcurl \
-                libintl \
-                libssl1.1 \
-                libstdc++ \
-                lttng-ust-dev \
-                zlib \
-                zlib-dev \
                 openjdk17 \
                 py3-pyflakes \
                 nodejs \
@@ -87,6 +79,7 @@ RUN apk add --no-cache \
                 helm \
                 gcompat \
                 libc6-compat \
+                libstdc++ \
                 libc-dev \
                 libxml2-dev \
                 libxml2-utils \
@@ -184,7 +177,6 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 standard \
                 prettier \
                 @prantlf/jsonlint \
-                eslint-plugin-jsonc \
                 v8r \
                 npm-package-json-lint \
                 npm-package-json-lint-config-default \
@@ -199,7 +191,7 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 @secretlint/secretlint-formatter-sarif \
                 cspell \
                 sql-lint \
-                tekton-lint \
+                @ibm/tekton-lint \
                 prettyjson \
                 @typescript-eslint/eslint-plugin \
                 @typescript-eslint/parser \
@@ -269,18 +261,15 @@ COPY --link --from=lychee /usr/local/bin/lychee /usr/bin/
 #############################################################################################
 #OTHER__START
 # ARM installation
-RUN curl -L https://github.com/PowerShell/PowerShell/releases/download/v7.4.0/powershell-7.4.0-linux-musl-x64.tar.gz -o /tmp/powershell.tar.gz \
+RUN curl -L https://github.com/PowerShell/PowerShell/releases/download/v7.4.1/powershell-7.4.1-linux-musl-x64.tar.gz -o /tmp/powershell.tar.gz \
     && mkdir -p /opt/microsoft/powershell/7 \
     && tar zxf /tmp/powershell.tar.gz -C /opt/microsoft/powershell/7 \
     && chmod +x /opt/microsoft/powershell/7/pwsh \
     && ln -s /opt/microsoft/powershell/7/pwsh /usr/bin/pwsh \
 
 # CSHARP installation
-    && wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
-    && chmod +x dotnet-install.sh \
-    && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
-
-ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
+    && apk add --no-cache dotnet8-sdk --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community
+ENV PATH="${PATH}:/root/.dotnet/tools"
 
 # KOTLIN installation
 ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
@@ -288,7 +277,7 @@ ENV PATH="$JAVA_HOME/bin:${PATH}"
 
 # POWERSHELL installation
 # Next line commented because already managed by another linter
-# RUN curl -L https://github.com/PowerShell/PowerShell/releases/download/v7.4.0/powershell-7.4.0-linux-musl-x64.tar.gz -o /tmp/powershell.tar.gz \
+# RUN curl -L https://github.com/PowerShell/PowerShell/releases/download/v7.4.1/powershell-7.4.1-linux-musl-x64.tar.gz -o /tmp/powershell.tar.gz \
 #     && mkdir -p /opt/microsoft/powershell/7 \
 #     && tar zxf /tmp/powershell.tar.gz -C /opt/microsoft/powershell/7 \
 #     && chmod +x /opt/microsoft/powershell/7/pwsh \
@@ -296,11 +285,9 @@ ENV PATH="$JAVA_HOME/bin:${PATH}"
 
 # VBDOTNET installation
 # Next line commented because already managed by another linter
-# RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
-#     && chmod +x dotnet-install.sh \
-#     && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
+# RUN apk add --no-cache dotnet8-sdk --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community
 # Next line commented because already managed by another linter
-# ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
+# ENV PATH="${PATH}:/root/.dotnet/tools"
 
 # actionlint installation
 # Managed with COPY --link --from=actionlint /usr/local/bin/actionlint /usr/bin/actionlint
@@ -332,7 +319,10 @@ RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
     && mv "${BICEP_EXE}" "${BICEP_DIR}" \
 
 # csharpier installation
-    && /usr/share/dotnet/dotnet tool install -g csharpier \
+    && dotnet tool install --global csharpier \
+
+# roslynator installation
+    && dotnet tool install -g roslynator.dotnet.cli \
 
 # hadolint installation
 # Managed with COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
@@ -353,6 +343,14 @@ RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
     && curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/releases/latest/download/ktlint && \
     chmod a+x ktlint && \
     mv "ktlint" /usr/bin/ \
+
+# detekt installation
+    && curl --retry 5 --retry-delay 5 -sSLO https://github.com/detekt/detekt/releases/download/v1.23.5/detekt-cli-1.23.5.zip && \
+    unzip detekt-cli-1.23.5.zip && \
+    chmod a+x detekt-cli-1.23.5/bin/* && \
+    chmod a+x detekt-cli-1.23.5/lib/* && \
+    mv -n detekt-cli-1.23.5/bin/* usr/bin && \
+    mv -n detekt-cli-1.23.5/lib/* usr/lib \
 
 # kubeconform installation
 # Managed with COPY --link --from=kubeconform /kubeconform /usr/bin/
@@ -378,7 +376,7 @@ RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
 # Managed with COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 
 # grype installation
-    && curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin v0.63.1 \
+    && curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin \
 
 # trivy installation
     && wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin \
@@ -398,11 +396,9 @@ RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
 
 # tsqllint installation
 # Next line commented because already managed by another linter
-# RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
-#     && chmod +x dotnet-install.sh \
-#     && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
+# RUN apk add --no-cache dotnet8-sdk --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community
 # Next line commented because already managed by another linter
-# ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
+# ENV PATH="${PATH}:/root/.dotnet/tools"
     && dotnet tool install --global TSQLLint
 
 #OTHER__END

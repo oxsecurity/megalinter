@@ -22,7 +22,7 @@ Example:
 
 ## devskim documentation
 
-- Version in MegaLinter: **1.0.23**
+- Version in MegaLinter: **1.0.33**
 - Visit [Official Web Site](https://github.com/microsoft/DevSkim#readme){target=_blank}
 - See [How to configure devskim rules](https://github.com/microsoft/DevSkim/wiki/Analyze-Command){target=_blank}
   - If custom `.devskim.json` config file isn't found, [.devskim.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.devskim.json){target=_blank} will be used
@@ -62,7 +62,7 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                   | Description               | Embedded linters |                                                                                                                                                                                         Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)     | Default MegaLinter Flavor |       120        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)     | Default MegaLinter Flavor |       122        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://megalinter.io/beta/flavors/security/) | Optimized for security    |        24        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
 
 ## Behind the scenes
@@ -94,7 +94,7 @@ devskim analyze --file-format sarif .
 ### Help content
 
 ```shell
-devskim 1.0.23+607c9a5eda
+devskim 1.0.33+9dba5c6c1f
 © Microsoft Corporation. All rights reserved.
 
   analyze     Analyze source code using DevSkim
@@ -115,20 +115,8 @@ devskim 1.0.23+607c9a5eda
 
 - Dockerfile commands :
 ```dockerfile
-RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
-    && chmod +x dotnet-install.sh \
-    && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
-
-ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
+RUN apk add --no-cache dotnet8-sdk --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community
+ENV PATH="${PATH}:/root/.dotnet/tools"
 RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI
 ```
 
-- APK packages (Linux):
-  - [icu-libs](https://pkgs.alpinelinux.org/packages?branch=edge&name=icu-libs)
-  - [libcurl](https://pkgs.alpinelinux.org/packages?branch=edge&name=libcurl)
-  - [libintl](https://pkgs.alpinelinux.org/packages?branch=edge&name=libintl)
-  - [libssl1.1](https://pkgs.alpinelinux.org/packages?branch=edge&name=libssl1.1)
-  - [libstdc++](https://pkgs.alpinelinux.org/packages?branch=edge&name=libstdc++)
-  - [lttng-ust-dev](https://pkgs.alpinelinux.org/packages?branch=edge&name=lttng-ust-dev)
-  - [zlib](https://pkgs.alpinelinux.org/packages?branch=edge&name=zlib)
-  - [zlib-dev](https://pkgs.alpinelinux.org/packages?branch=edge&name=zlib-dev)

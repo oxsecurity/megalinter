@@ -954,12 +954,50 @@ def generate_descriptor_documentation(descriptor):
         "| ----------------- | -------------- | -------------- |",
     ]
     descriptor_md += [
+        f"| {descriptor.get('descriptor_id')}_PRE_COMMANDS | List of bash commands to run before the linters | None |",
+        f"| {descriptor.get('descriptor_id')}_POST_COMMANDS | List of bash commands to run after the linters | None |",
         f"| {descriptor.get('descriptor_id')}_FILTER_REGEX_INCLUDE | Custom regex including filter |  |",
         f"| {descriptor.get('descriptor_id')}_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |",
         "",
     ]
     add_in_config_schema_file(
         [
+            [
+                f"{descriptor.get('descriptor_id')}_PRE_COMMANDS",
+                {
+                    "$id": f"#/properties/{descriptor.get('descriptor_id')}_PRE_COMMANDS",
+                    "type": "array",
+                    "title": f"Pre commands for {descriptor.get('descriptor_id')} descriptor",
+                    "examples": [
+                        [
+                            {
+                                "command": "composer install",
+                                "continue_if_failed": False,
+                                "cwd": "workspace",
+                            }
+                        ]
+                    ],
+                    "items": {"$ref": "#/definitions/command_info"},
+                },
+            ],
+            [
+                f"{descriptor.get('descriptor_id')}_POST_COMMANDS",
+                {
+                    "$id": f"#/properties/{descriptor.get('descriptor_id')}_POST_COMMANDS",
+                    "type": "array",
+                    "title": f"Post commands for {descriptor.get('descriptor_id')} descriptor",
+                    "examples": [
+                        [
+                            {
+                                "command": "npm run test",
+                                "continue_if_failed": False,
+                                "cwd": "workspace",
+                            }
+                        ]
+                    ],
+                    "items": {"$ref": "#/definitions/command_info"},
+                },
+            ],
             [
                 f"{descriptor.get('descriptor_id')}_FILTER_REGEX_INCLUDE",
                 {
@@ -1063,11 +1101,15 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
     col_header = (
         "Language"
         if type1 == "language"
-        else "Format"
-        if type1 == "format"
-        else "Tooling format"
-        if type1 == "tooling_format"
-        else "Code quality checker"
+        else (
+            "Format"
+            if type1 == "format"
+            else (
+                "Tooling format"
+                if type1 == "tooling_format"
+                else "Code quality checker"
+            )
+        )
     )
     linters_tables_md += [
         f"### {type_label}",
@@ -1470,12 +1512,12 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         # Pre/post commands & unsecured variables
         linter_doc_md += [
             f"| {linter.name}_PRE_COMMANDS | List of bash commands to run before the linter"
-            f"| {dump_as_json(linter.pre_commands,'None')} |",
+            f"| {dump_as_json(linter.pre_commands, 'None')} |",
             f"| {linter.name}_POST_COMMANDS | List of bash commands to run after the linter"
-            f"| {dump_as_json(linter.post_commands,'None')} |",
+            f"| {dump_as_json(linter.post_commands, 'None')} |",
             f"| {linter.name}_UNSECURED_ENV_VARIABLES  | List of env variables explicitly "
             + f"not filtered before calling {linter.name} and its pre/post commands"
-            f"| {dump_as_json(linter.post_commands,'None')} |",
+            f"| {dump_as_json(linter.post_commands, 'None')} |",
         ]
         add_in_config_schema_file(
             [
@@ -2834,11 +2876,15 @@ def generate_documentation_all_linters():
                             license = (
                                 resp["license"]["spdx_id"]
                                 if resp["license"]["spdx_id"] != "NOASSERTION"
-                                else resp["license"]["name"]
-                                if "name" in resp["license"]
-                                else resp["license"]["key"]
-                                if "key" in resp["license"]
-                                else ""
+                                else (
+                                    resp["license"]["name"]
+                                    if "name" in resp["license"]
+                                    else (
+                                        resp["license"]["key"]
+                                        if "key" in resp["license"]
+                                        else ""
+                                    )
+                                )
                             )
                             if license != "":
                                 linter_licenses[linter.linter_name] = license
@@ -3273,7 +3319,7 @@ def update_workflow_linters(file_path, linters):
         file_content = f.read()
         file_content = re.sub(
             r"(linter:\s+\[\s*)([^\[\]]*?)(\s*\])",
-            rf"\1{re.escape(linters).replace(chr(92),'').strip()}\3",
+            rf"\1{re.escape(linters).replace(chr(92), '').strip()}\3",
             file_content,
         )
 

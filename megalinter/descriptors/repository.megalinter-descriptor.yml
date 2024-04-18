@@ -53,7 +53,8 @@ linters:
           url: https://marketplace.visualstudio.com/items?itemName=Bridgecrew.checkov
     test_folder: repository_checkov
   # DEVSKIM
-  - linter_name: devskim
+  - class: DotNetToolLinter
+    linter_name: devskim
     can_output_sarif: true
     descriptor_flavors:
       - all
@@ -99,21 +100,10 @@ linters:
       - "devskim analyze ."
       - "devskim analyze --file-format sarif ."
     install:
-      apk:
-        - icu-libs
-        - libcurl
-        - libintl
-        - libssl1.1
-        - libstdc++
-        - lttng-ust-dev
-        - zlib
-        - zlib-dev
       dockerfile:
-        - |
-          RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
-              && chmod +x dotnet-install.sh \
-              && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
-        - ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
+        # https://github.com/dotnet/sdk/issues/37790#issuecomment-1918068016
+        - RUN apk add --no-cache dotnet8-sdk --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community
+        - ENV PATH="${PATH}:/root/.dotnet/tools"
         - RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI
     ide:
       vscode:
@@ -255,7 +245,7 @@ linters:
       - "gitleaks detect -c .gitleaks.toml --redact --no-git --verbose --source ."
     install:
       dockerfile:
-        - FROM zricethezav/gitleaks:v8.18.1 as gitleaks
+        - FROM zricethezav/gitleaks:v8.18.2 as gitleaks
         - COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
     variables:
       - name: REPOSITORY_GITLEAKS_PR_COMMITS_SCAN
@@ -294,11 +284,9 @@ linters:
     cli_version_arg_name: version
     examples:
       - "grype dir:."
-    downgraded_version: true
-    downgraded_reason: https://github.com/anchore/grype/issues/1388
     install:
       dockerfile:
-        - RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin v0.63.1
+        - RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin
     test_folder: repository_grype
 
   # KICS
@@ -336,6 +324,8 @@ linters:
       - --report-formats
       - "sarif"
     cli_version_arg_name: "version"
+    cli_lint_errors_count: regex_number
+    cli_lint_errors_regex: "TOTAL: ([0-9]+)"
     examples:
       - "kics scan --path ."
     install:
@@ -503,14 +493,14 @@ linters:
     cli_lint_extra_args:
       - fs
       - --scanners
-      - vuln,config
+      - vuln,misconfig
       - --exit-code
       - "1"
     cli_lint_extra_args_after:
       - "."
     test_folder: trivy
     examples:
-      - "trivy fs --scanners vuln,config ."
+      - "trivy fs --scanners vuln,misconfig ."
     install:
       dockerfile:
         - |
@@ -587,6 +577,7 @@ linters:
       - "."
       - --fail
       - --only-verified
+      - --no-update
     cli_help_arg_name: --help
     cli_version_arg_name: --version
     examples:

@@ -21,7 +21,7 @@ FROM mvdan/shfmt:latest-alpine as shfmt
 FROM hadolint/hadolint:v2.12.0-alpine as hadolint
 FROM mstruebing/editorconfig-checker:2.7.2 as editorconfig-checker
 FROM golang:1-alpine as revive
-## The golang image used as a builder is a temporary workaround 
+## The golang image used as a builder is a temporary workaround (https://github.com/mgechev/revive/issues/787)
 ## for the released revive binaries not returning version numbers (devel). 
 ## The install command should then be what is commented in the go.megalinter-descriptor.yml
 RUN GOBIN=/usr/bin go install github.com/mgechev/revive@latest
@@ -29,18 +29,18 @@ RUN GOBIN=/usr/bin go install github.com/mgechev/revive@latest
 FROM ghcr.io/yannh/kubeconform:latest-alpine as kubeconform
 FROM ghcr.io/assignuser/chktex-alpine:latest as chktex
 FROM mrtazz/checkmake:latest as checkmake
-FROM ghcr.io/phpstan/phpstan:latest-php8.1 as phpstan
+FROM ghcr.io/phpstan/phpstan:latest-php8.3 as phpstan
 FROM yoheimuta/protolint:latest as protolint
 FROM golang:alpine as dustilock
 RUN GOBIN=/usr/bin go install github.com/checkmarx/dustilock@v1.2.0
 
-FROM zricethezav/gitleaks:v8.18.1 as gitleaks
+FROM zricethezav/gitleaks:v8.18.2 as gitleaks
 FROM checkmarx/kics:alpine as kics
 FROM trufflesecurity/trufflehog:latest as trufflehog
 FROM jdkato/vale:latest as vale
 FROM lycheeverse/lychee:latest-alpine as lychee
-FROM ghcr.io/terraform-linters/tflint:v0.49.0 as tflint
-FROM tenable/terrascan:1.18.3 as terrascan
+FROM ghcr.io/terraform-linters/tflint:v0.50.3 as tflint
+FROM tenable/terrascan:1.18.11 as terrascan
 FROM alpine/terragrunt:latest as terragrunt
 # Next FROM line commented because already managed by another linter
 # FROM alpine/terragrunt:latest as terragrunt
@@ -49,7 +49,7 @@ FROM alpine/terragrunt:latest as terragrunt
 ##################
 # Get base image #
 ##################
-FROM python:3.11.6-alpine3.18
+FROM python:3.12.3-alpine3.19
 ARG GITHUB_TOKEN
 
 #############################################################################################
@@ -88,33 +88,25 @@ RUN apk add --no-cache \
                 make \
                 musl-dev \
                 openssh \
-                openssl \
                 docker \
                 openrc \
                 icu-libs \
-                libcurl \
-                libintl \
-                libssl1.1 \
-                libstdc++ \
-                lttng-ust-dev \
-                zlib \
-                zlib-dev \
                 openjdk17 \
                 perl \
                 perl-dev \
                 gnupg \
-                php81 \
-                php81-phar \
-                php81-mbstring \
-                php81-xmlwriter \
-                php81-tokenizer \
-                php81-ctype \
-                php81-curl \
-                php81-dom \
-                php81-simplexml \
+                php83 \
+                php83-phar \
+                php83-mbstring \
+                php83-xmlwriter \
+                php83-tokenizer \
+                php83-ctype \
+                php83-curl \
+                php83-dom \
+                php83-simplexml \
                 dpkg \
                 py3-pyflakes \
-                clang16-extra-tools \
+                clang17-extra-tools \
                 nodejs \
                 npm \
                 yarn \
@@ -122,9 +114,12 @@ RUN apk add --no-cache \
                 helm \
                 gcompat \
                 libc6-compat \
+                libstdc++ \
+                openssl \
                 readline-dev \
                 g++ \
                 libc-dev \
+                libcurl \
                 libgcc \
                 libxml2-dev \
                 libxml2-utils \
@@ -238,7 +233,6 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 standard \
                 prettier \
                 @prantlf/jsonlint \
-                eslint-plugin-jsonc \
                 v8r \
                 npm-package-json-lint \
                 npm-package-json-lint-config-default \
@@ -253,7 +247,7 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 @secretlint/secretlint-formatter-sarif \
                 cspell \
                 sql-lint \
-                tekton-lint \
+                @ibm/tekton-lint \
                 prettyjson \
                 @typescript-eslint/eslint-plugin \
                 @typescript-eslint/parser \
@@ -341,7 +335,7 @@ COPY --link --from=terragrunt /bin/terraform /usr/bin/
 #OTHER__START
 RUN rc-update add docker boot && rc-service docker start || true \
 # ARM installation
-    && curl -L https://github.com/PowerShell/PowerShell/releases/download/v7.4.0/powershell-7.4.0-linux-musl-x64.tar.gz -o /tmp/powershell.tar.gz \
+    && curl -L https://github.com/PowerShell/PowerShell/releases/download/v7.4.1/powershell-7.4.1-linux-musl-x64.tar.gz -o /tmp/powershell.tar.gz \
     && mkdir -p /opt/microsoft/powershell/7 \
     && tar zxf /tmp/powershell.tar.gz -C /opt/microsoft/powershell/7 \
     && chmod +x /opt/microsoft/powershell/7/pwsh \
@@ -391,11 +385,8 @@ RUN ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases
         "$ALPINE_GLIBC_I18N_PACKAGE_FILENAME" \
 
 # CSHARP installation
-    && wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
-    && chmod +x dotnet-install.sh \
-    && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
-
-ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
+    && apk add --no-cache dotnet8-sdk --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community
+ENV PATH="${PATH}:/root/.dotnet/tools"
 
 # DART installation
 # Next line commented because already managed by another linter
@@ -456,21 +447,21 @@ RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GI
     && export GITHUB_AUTH_TOKEN \
     && wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
     && wget --tries=5 -q -O phive.phar.asc https://phar.io/releases/phive.phar.asc \
-    && PHAR_KEY_ID="0x9D8A98B29B2D5D79" \
-    && ( gpg --keyserver keyserver.pgp.com --recv-keys "$PHAR_KEY_ID" \
-        || gpg --keyserver ha.pool.sks-keyservers.net --recv-keys "$PHAR_KEY_ID" \
-        || gpg --keyserver pgp.mit.edu --recv-keys "$PHAR_KEY_ID" \
-        || gpg --keyserver hkps://keyserver.ubuntu.com --recv-keys "$PHAR_KEY_ID" ) \
+    && PHAR_KEY_ID="0x6AF725270AB81E04D79442549D8A98B29B2D5D79" \
+    && ( gpg --keyserver hkps://keys.openpgp.org --recv-keys "$PHAR_KEY_ID" \
+       || gpg --keyserver hkps://keyserver.ubuntu.com --recv-keys "$PHAR_KEY_ID" \
+       || gpg --keyserver keyserver.pgp.com --recv-keys "$PHAR_KEY_ID" \
+       || gpg --keyserver pgp.mit.edu --recv-keys "$PHAR_KEY_ID" ) \
     && gpg --verify phive.phar.asc phive.phar \
     && chmod +x phive.phar \
     && mv phive.phar /usr/local/bin/phive \
     && rm phive.phar.asc \
-    && update-alternatives --install /usr/bin/php php /usr/bin/php81 110
+    && update-alternatives --install /usr/bin/php php /usr/bin/php83 110
 
 
 # POWERSHELL installation
 # Next line commented because already managed by another linter
-# RUN curl -L https://github.com/PowerShell/PowerShell/releases/download/v7.4.0/powershell-7.4.0-linux-musl-x64.tar.gz -o /tmp/powershell.tar.gz \
+# RUN curl -L https://github.com/PowerShell/PowerShell/releases/download/v7.4.1/powershell-7.4.1-linux-musl-x64.tar.gz -o /tmp/powershell.tar.gz \
 #     && mkdir -p /opt/microsoft/powershell/7 \
 #     && tar zxf /tmp/powershell.tar.gz -C /opt/microsoft/powershell/7 \
 #     && chmod +x /opt/microsoft/powershell/7/pwsh \
@@ -482,7 +473,7 @@ RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GI
 # Next line commented because already managed by another linter
 # ENV PATH="$JAVA_HOME/bin:${PATH}"
 RUN sf plugins install @salesforce/plugin-packaging \
-    && echo y|sfdx plugins:install sfdx-hardis \
+    && echo y|sf plugins install sfdx-hardis \
     && npm cache clean --force || true \
     && rm -rf /root/.npm/_cacache \
 
@@ -497,11 +488,9 @@ RUN sf plugins install @salesforce/plugin-packaging \
 
 # VBDOTNET installation
 # Next line commented because already managed by another linter
-# RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
-#     && chmod +x dotnet-install.sh \
-#     && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
+# RUN apk add --no-cache dotnet8-sdk --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community
 # Next line commented because already managed by another linter
-# ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
+# ENV PATH="${PATH}:/root/.dotnet/tools"
 
 # actionlint installation
 # Managed with COPY --link --from=actionlint /usr/local/bin/actionlint /usr/bin/actionlint
@@ -537,13 +526,11 @@ RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
     && chmod +x install-clj-kondo \
     && ./install-clj-kondo \
 
-# cljstyle installation
-    && curl --retry 5 --retry-delay 5 -sLO https://raw.githubusercontent.com/greglook/cljstyle/main/script/install-cljstyle \
-    && chmod +x install-cljstyle \
-    && ./install-cljstyle \
-
 # csharpier installation
-    && /usr/share/dotnet/dotnet tool install -g csharpier \
+    && dotnet tool install --global csharpier \
+
+# roslynator installation
+    && dotnet tool install -g roslynator.dotnet.cli \
 
 # dartanalyzer installation
     && wget --tries=5 https://storage.googleapis.com/dart-archive/channels/stable/release/${DART_VERSION}/sdk/dartsdk-linux-x64-release.zip -O - -q | unzip -q - \
@@ -598,6 +585,14 @@ RUN wget --quiet https://github.com/pmd/pmd/releases/download/pmd_releases%2F${P
     chmod a+x ktlint && \
     mv "ktlint" /usr/bin/ \
 
+# detekt installation
+    && curl --retry 5 --retry-delay 5 -sSLO https://github.com/detekt/detekt/releases/download/v1.23.5/detekt-cli-1.23.5.zip && \
+    unzip detekt-cli-1.23.5.zip && \
+    chmod a+x detekt-cli-1.23.5/bin/* && \
+    chmod a+x detekt-cli-1.23.5/lib/* && \
+    mv -n detekt-cli-1.23.5/bin/* usr/bin && \
+    mv -n detekt-cli-1.23.5/lib/* usr/lib \
+
 # kubeconform installation
 # Managed with COPY --link --from=kubeconform /kubeconform /usr/bin/
 
@@ -633,7 +628,7 @@ RUN wget --quiet https://github.com/pmd/pmd/releases/download/pmd_releases%2F${P
 
 
 # phpcs installation
-RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && phive --no-progress install phpcs -g --trust-gpg-keys 31C7E470E2138192
+RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && phive --no-progress install phpcs -g --trust-gpg-keys 31C7E470E2138192,95DE904AB800754A11D80B605E6DDE998AB73B8E
 
 
 # phpstan installation
@@ -679,11 +674,9 @@ ENV PATH="~/.raku/bin:/opt/rakudo-pkg/bin:/opt/rakudo-pkg/share/perl6/site/bin:$
 
 # devskim installation
 # Next line commented because already managed by another linter
-# RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
-#     && chmod +x dotnet-install.sh \
-#     && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
+# RUN apk add --no-cache dotnet8-sdk --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community
 # Next line commented because already managed by another linter
-# ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
+# ENV PATH="${PATH}:/root/.dotnet/tools"
 RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI \
 
 # dustilock installation
@@ -693,7 +686,7 @@ RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI \
 # Managed with COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 
 # grype installation
-    && curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin v0.63.1
+    && curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin
 
 # kics installation
 # Managed with COPY --link --from=kics /app/bin/kics /usr/bin/kics
@@ -714,24 +707,24 @@ RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | 
 # Managed with COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
 
 # sfdx-scanner-apex installation
-    && sfdx plugins:install @salesforce/sfdx-scanner \
+    && sf plugins install @salesforce/sfdx-scanner \
     && npm cache clean --force || true \
     && rm -rf /root/.npm/_cacache \
 
 # sfdx-scanner-aura installation
 # Next line commented because already managed by another linter
-# RUN sfdx plugins:install @salesforce/sfdx-scanner \
+# RUN sf plugins install @salesforce/sfdx-scanner \
 #     && npm cache clean --force || true \
 #     && rm -rf /root/.npm/_cacache
 
 # sfdx-scanner-lwc installation
 # Next line commented because already managed by another linter
-# RUN sfdx plugins:install @salesforce/sfdx-scanner \
+# RUN sf plugins install @salesforce/sfdx-scanner \
 #     && npm cache clean --force || true \
 #     && rm -rf /root/.npm/_cacache
 
 # lightning-flow-scanner installation
-    && echo y|sfdx plugins:install lightning-flow-scanner \
+    && echo y|sf plugins install lightning-flow-scanner \
     && npm cache clean --force || true \
     && rm -rf /root/.npm/_cacache \
 
@@ -746,11 +739,9 @@ RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | 
 
 # tsqllint installation
 # Next line commented because already managed by another linter
-# RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
-#     && chmod +x dotnet-install.sh \
-#     && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
+# RUN apk add --no-cache dotnet8-sdk --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community
 # Next line commented because already managed by another linter
-# ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
+# ENV PATH="${PATH}:/root/.dotnet/tools"
     && dotnet tool install --global TSQLLint
 
 # tflint installation

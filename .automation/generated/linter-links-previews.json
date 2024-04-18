@@ -109,6 +109,11 @@
     "image": "https://repository-images.githubusercontent.com/35726310/78196080-8aee-11ea-8736-5d358571e7db",
     "title": "dart-lang/sdk"
   },
+  "detekt": {
+    "description": "The official website of detekt - A static analyzer for Kotlin",
+    "image": null,
+    "title": "Hello from detekt | detekt"
+  },
   "devskim": {
     "description": "DevSkim is a set of IDE plugins and rules that provide security &quot;linting&quot; capabilities. - GitHub - microsoft/DevSkim: DevSkim is a set of IDE plugins and rules that provide security &quot...",
     "image": "https://opengraph.githubassets.com/e833e13fb1284378f44a593a44685cf5c8f5eba2eb392202a3cced2c4e044fea/microsoft/DevSkim",
@@ -403,6 +408,11 @@
     "description": "Revive documentation website",
     "image": null,
     "title": "revive - fast & configurable linter for Go"
+  },
+  "roslynator": {
+    "description": "Roslynator is a set of code analysis tools for C#, powered by Roslyn. - GitHub - dotnet/roslynator: Roslynator is a set of code analysis tools for C#, powered by Roslyn.",
+    "image": "https://repository-images.githubusercontent.com/57153744/57b7135a-1505-4930-98d1-acfd619f1457",
+    "title": "GitHub - dotnet/roslynator: Roslynator is a set of code analysis tools for C#, powered by Roslyn."
   },
   "rst-lint": {
     "description": "reStructuredText linter. Contribute to twolfson/restructuredtext-lint development by creating an account on GitHub.",

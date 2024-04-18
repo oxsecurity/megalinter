@@ -27,10 +27,12 @@ description: powershell, powershell_formatter are available to analyze POWERSHEL
 
 ## Configuration in MegaLinter
 
-| Variable                        | Description                   | Default value |
-|---------------------------------|-------------------------------|---------------|
-| POWERSHELL_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| POWERSHELL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable                        | Description                                     | Default value |
+|---------------------------------|-------------------------------------------------|---------------|
+| POWERSHELL_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
+| POWERSHELL_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
+| POWERSHELL_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
+| POWERSHELL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 
 
 ## Behind the scenes
@@ -39,7 +41,7 @@ description: powershell, powershell_formatter are available to analyze POWERSHEL
 
 - Dockerfile commands :
 ```dockerfile
-RUN curl -L https://github.com/PowerShell/PowerShell/releases/download/v7.4.0/powershell-7.4.0-linux-musl-x64.tar.gz -o /tmp/powershell.tar.gz \
+RUN curl -L https://github.com/PowerShell/PowerShell/releases/download/v7.4.1/powershell-7.4.1-linux-musl-x64.tar.gz -o /tmp/powershell.tar.gz \
     && mkdir -p /opt/microsoft/powershell/7 \
     && tar zxf /tmp/powershell.tar.gz -C /opt/microsoft/powershell/7 \
     && chmod +x /opt/microsoft/powershell/7/pwsh \

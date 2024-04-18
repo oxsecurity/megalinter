@@ -31,12 +31,6 @@
           ],
           "title": "Folder where to run the command",
           "type": "string"
-        },
-        "secured_env": {
-          "Description": "Hides sensitive variables from ENV variables when calling the command",
-          "default": true,
-          "title": "Secured Environment Variables",
-          "type": "boolean"
         }
       },
       "required": [],
@@ -128,6 +122,7 @@
         "CPP_CLANG_FORMAT",
         "CSHARP_DOTNET_FORMAT",
         "CSHARP_CSHARPIER",
+        "CSHARP_ROSLYNATOR",
         "CSS_STYLELINT",
         "CSS_SCSS_LINT",
         "DART_DARTANALYZER",
@@ -153,6 +148,7 @@
         "JSON_NPM_PACKAGE_JSON_LINT",
         "JSX_ESLINT",
         "KOTLIN_KTLINT",
+        "KOTLIN_DETEKT",
         "KUBERNETES_KUBECONFORM",
         "KUBERNETES_HELM",
         "KUBERNETES_KUBESCAPE",
@@ -421,6 +417,40 @@
       "title": "Including regex filter for ACTION descriptor",
       "type": "string"
     },
+    "ACTION_POST_COMMANDS": {
+      "$id": "#/properties/ACTION_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Post commands for ACTION descriptor",
+      "type": "array"
+    },
+    "ACTION_PRE_COMMANDS": {
+      "$id": "#/properties/ACTION_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "composer install",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Pre commands for ACTION descriptor",
+      "type": "array"
+    },
     "ADDITIONAL_EXCLUDED_DIRECTORIES": {
       "$id": "#/properties/ADDITIONAL_EXCLUDED_DIRECTORIES",
       "description": "List of additional excluded directory basenames to add to MegaLinter default excluded directories. They are excluded at any nested level.",
@@ -602,6 +632,40 @@
       "$id": "#/properties/ANSIBLE_FILTER_REGEX_INCLUDE",
       "title": "Including regex filter for ANSIBLE descriptor",
       "type": "string"
+    },
+    "ANSIBLE_POST_COMMANDS": {
+      "$id": "#/properties/ANSIBLE_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Post commands for ANSIBLE descriptor",
+      "type": "array"
+    },
+    "ANSIBLE_PRE_COMMANDS": {
+      "$id": "#/properties/ANSIBLE_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "composer install",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Pre commands for ANSIBLE descriptor",
+      "type": "array"
     },
     "APPLY_FIXES": {
       "$id": "#/properties/APPLY_FIXES",
@@ -796,6 +860,40 @@
       "title": "Including regex filter for ARM descriptor",
       "type": "string"
     },
+    "ARM_POST_COMMANDS": {
+      "$id": "#/properties/ARM_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Post commands for ARM descriptor",
+      "type": "array"
+    },
+    "ARM_PRE_COMMANDS": {
+      "$id": "#/properties/ARM_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "composer install",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Pre commands for ARM descriptor",
+      "type": "array"
+    },
     "AZURE_COMMENT_REPORTER": {
       "$id": "#/properties/AZURE_COMMENT_REPORTER",
       "default": true,
@@ -967,6 +1065,40 @@
       "$id": "#/properties/BASH_FILTER_REGEX_INCLUDE",
       "title": "Including regex filter for BASH descriptor",
       "type": "string"
+    },
+    "BASH_POST_COMMANDS": {
+      "$id": "#/properties/BASH_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Post commands for BASH descriptor",
+      "type": "array"
+    },
+    "BASH_PRE_COMMANDS": {
+      "$id": "#/properties/BASH_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "composer install",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Pre commands for BASH descriptor",
+      "type": "array"
     },
     "BASH_SHELLCHECK_ARGUMENTS": {
       "$id": "#/properties/BASH_SHELLCHECK_ARGUMENTS",
@@ -1415,6 +1547,54 @@
       "title": "Including regex filter for BICEP descriptor",
       "type": "string"
     },
+    "BICEP_POST_COMMANDS": {
+      "$id": "#/properties/BICEP_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Post commands for BICEP descriptor",
+      "type": "array"
+    },
+    "BICEP_PRE_COMMANDS": {
+      "$id": "#/properties/BICEP_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "composer install",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Pre commands for BICEP descriptor",
+      "type": "array"
+    },
+    "BITBUCKET_COMMENT_REPORTER": {
+      "$id": "#/properties/BITBUCKET_COMMENT_REPORTER",
+      "default": true,
+      "description": "Posts Mega-Linter results summary in the comments of the related pull request (if existing)",
+      "title": "Activate Bitbucket PR Comments reporter",
+      "type": "boolean"
+    },
+    "BITBUCKET_COMMENT_REPORTER_OVERWRITE_COMMENT": {
+      "$id": "#/properties/BITBUCKET_COMMENT_REPORTER_OVERWRITE_COMMENT",
+      "default": true,
+      "description": "Set to false to disable the overwrite of existing MegaLinter Pull Request comment in case of new run",
+      "title": "Overwrite Bitbucket Pull Request Comment",
+      "type": "boolean"
+    },
     "CLEAR_REPORT_FOLDER": {
       "$id": "#/properties/CLEAR_REPORT_FOLDER",
       "default": false,
@@ -1755,6 +1935,40 @@
       "title": "Including regex filter for CLOJURE descriptor",
       "type": "string"
     },
+    "CLOJURE_POST_COMMANDS": {
+      "$id": "#/properties/CLOJURE_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Post commands for CLOJURE descriptor",
+      "type": "array"
+    },
+    "CLOJURE_PRE_COMMANDS": {
+      "$id": "#/properties/CLOJURE_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "composer install",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Pre commands for CLOJURE descriptor",
+      "type": "array"
+    },
     "CLOUDFORMATION_CFN_LINT_ARGUMENTS": {
       "$id": "#/properties/CLOUDFORMATION_CFN_LINT_ARGUMENTS",
       "description": "CLOUDFORMATION_CFN_LINT: User custom arguments to add in linter CLI call",
@@ -1931,6 +2145,40 @@
       "title": "Including regex filter for CLOUDFORMATION descriptor",
       "type": "string"
     },
+    "CLOUDFORMATION_POST_COMMANDS": {
+      "$id": "#/properties/CLOUDFORMATION_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Post commands for CLOUDFORMATION descriptor",
+      "type": "array"
+    },
+    "CLOUDFORMATION_PRE_COMMANDS": {
+      "$id": "#/properties/CLOUDFORMATION_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "composer install",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Pre commands for CLOUDFORMATION descriptor",
+      "type": "array"
+    },
     "COFFEE_COFFEELINT_ARGUMENTS": {
       "$id": "#/properties/COFFEE_COFFEELINT_ARGUMENTS",
       "description": "COFFEE_COFFEELINT: User custom arguments to add in linter CLI call",
@@ -2106,6 +2354,40 @@
       "title": "Including regex filter for COFFEE descriptor",
       "type": "string"
     },
+    "COFFEE_POST_COMMANDS": {
+      "$id": "#/properties/COFFEE_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Post commands for COFFEE descriptor",
+      "type": "array"
+    },
+    "COFFEE_PRE_COMMANDS": {
+      "$id": "#/properties/COFFEE_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "composer install",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Pre commands for COFFEE descriptor",
+      "type": "array"
+    },
     "CONFIG_REPORTER": {
       "$id": "#/properties/CONFIG_REPORTER",
       "default": true,
@@ -2262,6 +2544,40 @@
         "type": "string"
       },
       "title": "COPYPASTE_JSCPD: Unsecured env variables",
+      "type": "array"
+    },
+    "COPYPASTE_POST_COMMANDS": {
+      "$id": "#/properties/COPYPASTE_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Post commands for COPYPASTE descriptor",
+      "type": "array"
+    },
+    "COPYPASTE_PRE_COMMANDS": {
+      "$id": "#/properties/COPYPASTE_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "composer install",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Pre commands for COPYPASTE descriptor",
       "type": "array"
     },
     "CPP_CLANG_FORMAT_ARGUMENTS": {
@@ -2579,6 +2895,40 @@
       "title": "Including regex filter for CPP descriptor",
       "type": "string"
     },
+    "CPP_POST_COMMANDS": {
+      "$id": "#/properties/CPP_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Post commands for CPP descriptor",
+      "type": "array"
+    },
+    "CPP_PRE_COMMANDS": {
+      "$id": "#/properties/CPP_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "composer install",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Pre commands for CPP descriptor",
+      "type": "array"
+    },
     "CREDENTIALS_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/CREDENTIALS_FILTER_REGEX_EXCLUDE",
       "title": "Excluding regex filter for CREDENTIALS descriptor",
@@ -2708,7 +3058,7 @@
       "$id": "#/properties/CSHARP_CSHARPIER_CLI_EXECUTABLE",
       "default": [
         [
-          "csharpier"
+          "dotnet-csharpier"
         ]
       ],
       "items": {
@@ -2989,6 +3339,185 @@
       "title": "Including regex filter for CSHARP descriptor",
       "type": "string"
     },
+    "CSHARP_POST_COMMANDS": {
+      "$id": "#/properties/CSHARP_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Post commands for CSHARP descriptor",
+      "type": "array"
+    },
+    "CSHARP_PRE_COMMANDS": {
+      "$id": "#/properties/CSHARP_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "composer install",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Pre commands for CSHARP descriptor",
+      "type": "array"
+    },
+    "CSHARP_ROSLYNATOR_ARGUMENTS": {
+      "$id": "#/properties/CSHARP_ROSLYNATOR_ARGUMENTS",
+      "description": "CSHARP_ROSLYNATOR: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "CSHARP_ROSLYNATOR: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "CSHARP_ROSLYNATOR_CLI_EXECUTABLE": {
+      "$id": "#/properties/CSHARP_ROSLYNATOR_CLI_EXECUTABLE",
+      "default": [
+        [
+          "roslynator"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "CSHARP_ROSLYNATOR: CLI Executable",
+      "type": "array"
+    },
+    "CSHARP_ROSLYNATOR_CLI_LINT_MODE": {
+      "$id": "#/properties/CSHARP_ROSLYNATOR_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "project"
+      ],
+      "title": "CSHARP_ROSLYNATOR: Override default cli lint mode",
+      "type": "string"
+    },
+    "CSHARP_ROSLYNATOR_COMMAND_REMOVE_ARGUMENTS": {
+      "$id": "#/properties/CSHARP_ROSLYNATOR_COMMAND_REMOVE_ARGUMENTS",
+      "description": "CSHARP_ROSLYNATOR: User custom arguments to remove before calling linter",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "CSHARP_ROSLYNATOR: Custom remove arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "CSHARP_ROSLYNATOR_DISABLE_ERRORS": {
+      "$id": "#/properties/CSHARP_ROSLYNATOR_DISABLE_ERRORS",
+      "default": false,
+      "title": "CSHARP_ROSLYNATOR: Linter doesn't make MegaLinter fail even if errors are found",
+      "type": "boolean"
+    },
+    "CSHARP_ROSLYNATOR_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/CSHARP_ROSLYNATOR_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "CSHARP_ROSLYNATOR: Maximum number of errors allowed",
+      "type": "number"
+    },
+    "CSHARP_ROSLYNATOR_FILE_EXTENSIONS": {
+      "$id": "#/properties/CSHARP_ROSLYNATOR_FILE_EXTENSIONS",
+      "examples:": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "CSHARP_ROSLYNATOR: Override descriptor/linter matching files extensions",
+      "type": "array"
+    },
+    "CSHARP_ROSLYNATOR_FILE_NAMES_REGEX": {
+      "$id": "#/properties/CSHARP_ROSLYNATOR_FILE_NAMES_REGEX",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "CSHARP_ROSLYNATOR: Override descriptor/linter matching file name regex",
+      "type": "array"
+    },
+    "CSHARP_ROSLYNATOR_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/CSHARP_ROSLYNATOR_FILTER_REGEX_EXCLUDE",
+      "title": "CSHARP_ROSLYNATOR: Excluding Regex",
+      "type": "string"
+    },
+    "CSHARP_ROSLYNATOR_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/CSHARP_ROSLYNATOR_FILTER_REGEX_INCLUDE",
+      "title": "CSHARP_ROSLYNATOR: Including Regex",
+      "type": "string"
+    },
+    "CSHARP_ROSLYNATOR_POST_COMMANDS": {
+      "$id": "#/properties/CSHARP_ROSLYNATOR_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "CSHARP_ROSLYNATOR: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "CSHARP_ROSLYNATOR_PRE_COMMANDS": {
+      "$id": "#/properties/CSHARP_ROSLYNATOR_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "CSHARP_ROSLYNATOR: Define or override a list of bash commands to run before the linter",
+      "type": "array"
+    },
+    "CSHARP_ROSLYNATOR_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/CSHARP_ROSLYNATOR_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling CSHARP_ROSLYNATOR and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "CSHARP_ROSLYNATOR: Unsecured env variables",
+      "type": "array"
+    },
     "CSS_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/CSS_FILTER_REGEX_EXCLUDE",
       "title": "Excluding regex filter for CSS descriptor",
@@ -2998,6 +3527,40 @@
       "$id": "#/properties/CSS_FILTER_REGEX_INCLUDE",
       "title": "Including regex filter for CSS descriptor",
       "type": "string"
+    },
+    "CSS_POST_COMMANDS": {
+      "$id": "#/properties/CSS_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Post commands for CSS descriptor",
+      "type": "array"
+    },
+    "CSS_PRE_COMMANDS": {
+      "$id": "#/properties/CSS_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "composer install",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Pre commands for CSS descriptor",
+      "type": "array"
     },
     "CSS_SCSS_LINT_ARGUMENTS": {
       "$id": "#/properties/CSS_SCSS_LINT_ARGUMENTS",
@@ -3645,6 +4208,40 @@
       "title": "Including regex filter for C descriptor",
       "type": "string"
     },
+    "C_POST_COMMANDS": {
+      "$id": "#/properties/C_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Post commands for C descriptor",
+      "type": "array"
+    },
+    "C_PRE_COMMANDS": {
+      "$id": "#/properties/C_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "composer install",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Pre commands for C descriptor",
+      "type": "array"
+    },
     "DART_DARTANALYZER_ARGUMENTS": {
       "$id": "#/properties/DART_DARTANALYZER_ARGUMENTS",
       "description": "DART_DARTANALYZER: User custom arguments to add in linter CLI call",
@@ -3819,6 +4416,40 @@
       "$id": "#/properties/DART_FILTER_REGEX_INCLUDE",
       "title": "Including regex filter for DART descriptor",
       "type": "string"
+    },
+    "DART_POST_COMMANDS": {
+      "$id": "#/properties/DART_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Post commands for DART descriptor",
+      "type": "array"
+    },
+    "DART_PRE_COMMANDS": {
+      "$id": "#/properties/DART_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "composer install",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Pre commands for DART descriptor",
+      "type": "array"
     },
     "DEFAULT_BRANCH": {
       "$id": "#/properties/DEFAULT_BRANCH",
@@ -4193,6 +4824,40 @@
       "title": "DOCKERFILE_HADOLINT: Unsecured env variables",
       "type": "array"
     },
+    "DOCKERFILE_POST_COMMANDS": {
+      "$id": "#/properties/DOCKERFILE_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Post commands for DOCKERFILE descriptor",
+      "type": "array"
+    },
+    "DOCKERFILE_PRE_COMMANDS": {
+      "$id": "#/properties/DOCKERFILE_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "composer install",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Pre commands for DOCKERFILE descriptor",
+      "type": "array"
+    },
     "EDITORCONFIG_EDITORCONFIG_CHECKER_ARGUMENTS": {
       "$id": "#/properties/EDITORCONFIG_EDITORCONFIG_CHECKER_ARGUMENTS",
       "description": "EDITORCONFIG_EDITORCONFIG_CHECKER: User custom arguments to add in linter CLI call",
@@ -4368,6 +5033,40 @@
       "$id": "#/properties/EDITORCONFIG_FILTER_REGEX_INCLUDE",
       "title": "Including regex filter for EDITORCONFIG descriptor",
       "type": "string"
+    },
+    "EDITORCONFIG_POST_COMMANDS": {
+      "$id": "#/properties/EDITORCONFIG_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Post commands for EDITORCONFIG descriptor",
+      "type": "array"
+    },
+    "EDITORCONFIG_PRE_COMMANDS": {
+      "$id": "#/properties/EDITORCONFIG_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "composer install",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Pre commands for EDITORCONFIG descriptor",
+      "type": "array"
     },
     "EMAIL_REPORTER": {
       "$id": "#/properties/EMAIL_REPORTER",
@@ -4603,6 +5302,40 @@
       "$id": "#/properties/ENV_FILTER_REGEX_INCLUDE",
       "title": "Including regex filter for ENV descriptor",
       "type": "string"
+    },
+    "ENV_POST_COMMANDS": {
+      "$id": "#/properties/ENV_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Post commands for ENV descriptor",
+      "type": "array"
+    },
+    "ENV_PRE_COMMANDS": {
+      "$id": "#/properties/ENV_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "composer install",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Pre commands for ENV descriptor",
+      "type": "array"
     },
     "ERROR_ON_MISSING_EXEC_BIT": {
       "$id": "#/properties/ERROR_ON_MISSING_EXEC_BIT",
@@ -4876,6 +5609,40 @@
         "type": "string"
       },
       "title": "GHERKIN_GHERKIN_LINT: Unsecured env variables",
+      "type": "array"
+    },
+    "GHERKIN_POST_COMMANDS": {
+      "$id": "#/properties/GHERKIN_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Post commands for GHERKIN descriptor",
+      "type": "array"
+    },
+    "GHERKIN_PRE_COMMANDS": {
+      "$id": "#/properties/GHERKIN_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "composer install",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Pre commands for GHERKIN descriptor",
       "type": "array"
     },
     "GITHUB_API_URL": {
@@ -5228,6 +5995,40 @@
       "title": "GO_GOLANGCI_LINT: Unsecured env variables",
       "type": "array"
     },
+    "GO_POST_COMMANDS": {
+      "$id": "#/properties/GO_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Post commands for GO descriptor",
+      "type": "array"
+    },
+    "GO_PRE_COMMANDS": {
+      "$id": "#/properties/GO_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "composer install",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Pre commands for GO descriptor",
+      "type": "array"
+    },
     "GO_REVIVE_ARGUMENTS": {
       "$id": "#/properties/GO_REVIVE_ARGUMENTS",
       "description": "GO_REVIVE: User custom arguments to add in linter CLI call",
@@ -5562,6 +6363,40 @@
       "title": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: Unsecured env variables",
       "type": "array"
     },
+    "GRAPHQL_POST_COMMANDS": {
+      "$id": "#/properties/GRAPHQL_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Post commands for GRAPHQL descriptor",
+      "type": "array"
+    },
+    "GRAPHQL_PRE_COMMANDS": {
+      "$id": "#/properties/GRAPHQL_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "composer install",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Pre commands for GRAPHQL descriptor",
+      "type": "array"
+    },
     "GROOVY_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/GROOVY_FILTER_REGEX_EXCLUDE",
       "title": "Excluding regex filter for GROOVY descriptor",
@@ -5736,6 +6571,40 @@
         "type": "string"
       },
       "title": "GROOVY_NPM_GROOVY_LINT: Unsecured env variables",
+      "type": "array"
+    },
+    "GROOVY_POST_COMMANDS": {
+      "$id": "#/properties/GROOVY_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Post commands for GROOVY descriptor",
+      "type": "array"
+    },
+    "GROOVY_PRE_COMMANDS": {
+      "$id": "#/properties/GROOVY_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "composer install",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Pre commands for GROOVY descriptor",
       "type": "array"
     },
     "HTML_DJLINT_ARGUMENTS": {
@@ -6060,6 +6929,40 @@
       "title": "HTML_HTMLHINT: Unsecured env variables",
       "type": "array"
     },
+    "HTML_POST_COMMANDS": {
+      "$id": "#/properties/HTML_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Post commands for HTML descriptor",
+      "type": "array"
+    },
+    "HTML_PRE_COMMANDS": {
+      "$id": "#/properties/HTML_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "composer install",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Pre commands for HTML descriptor",
+      "type": "array"
+    },
     "IGNORE_GENERATED_FILES": {
       "$id": "#/properties/IGNORE_GENERATED_FILES",
       "default": false,
@@ -6262,6 +7165,23 @@
       "title": "Including regex filter for JAVASCRIPT descriptor",
       "type": "string"
     },
+    "JAVASCRIPT_POST_COMMANDS": {
+      "$id": "#/properties/JAVASCRIPT_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Post commands for JAVASCRIPT descriptor",
+      "type": "array"
+    },
     "JAVASCRIPT_PRETTIER_ARGUMENTS": {
       "$id": "#/properties/JAVASCRIPT_PRETTIER_ARGUMENTS",
       "description": "JAVASCRIPT_PRETTIER: User custom arguments to add in linter CLI call",
@@ -6419,6 +7339,23 @@
         "type": "string"
       },
       "title": "JAVASCRIPT_PRETTIER: Unsecured env variables",
+      "type": "array"
+    },
+    "JAVASCRIPT_PRE_COMMANDS": {
+      "$id": "#/properties/JAVASCRIPT_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "composer install",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Pre commands for JAVASCRIPT descriptor",
       "type": "array"
     },
     "JAVASCRIPT_STANDARD_ARGUMENTS": {
@@ -6902,6 +7839,40 @@
       "title": "JAVA_PMD: Unsecured env variables",
       "type": "array"
     },
+    "JAVA_POST_COMMANDS": {
+      "$id": "#/properties/JAVA_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Post commands for JAVA descriptor",
+      "type": "array"
+    },
+    "JAVA_PRE_COMMANDS": {
+      "$id": "#/properties/JAVA_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "composer install",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Pre commands for JAVA descriptor",
+      "type": "array"
+    },
     "JSON_ESLINT_PLUGIN_JSONC_ARGUMENTS": {
       "$id": "#/properties/JSON_ESLINT_PLUGIN_JSONC_ARGUMENTS",
       "description": "JSON_ESLINT_PLUGIN_JSONC: User custom arguments to add in linter CLI call",
@@ -7375,6 +8346,23 @@
       "title": "JSON_NPM_PACKAGE_JSON_LINT: Unsecured env variables",
       "type": "array"
     },
+    "JSON_POST_COMMANDS": {
+      "$id": "#/properties/JSON_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Post commands for JSON descriptor",
+      "type": "array"
+    },
     "JSON_PRETTIER_ARGUMENTS": {
       "$id": "#/properties/JSON_PRETTIER_ARGUMENTS",
       "description": "JSON_PRETTIER: User custom arguments to add in linter CLI call",
@@ -7532,6 +8520,23 @@
         "type": "string"
       },
       "title": "JSON_PRETTIER: Unsecured env variables",
+      "type": "array"
+    },
+    "JSON_PRE_COMMANDS": {
+      "$id": "#/properties/JSON_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "composer install",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Pre commands for JSON descriptor",
       "type": "array"
     },
     "JSON_REPORTER": {
@@ -7874,6 +8879,185 @@
       "title": "Including regex filter for JSX descriptor",
       "type": "string"
     },
+    "JSX_POST_COMMANDS": {
+      "$id": "#/properties/JSX_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Post commands for JSX descriptor",
+      "type": "array"
+    },
+    "JSX_PRE_COMMANDS": {
+      "$id": "#/properties/JSX_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "composer install",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Pre commands for JSX descriptor",
+      "type": "array"
+    },
+    "KOTLIN_DETEKT_ARGUMENTS": {
+      "$id": "#/properties/KOTLIN_DETEKT_ARGUMENTS",
+      "description": "KOTLIN_DETEKT: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "KOTLIN_DETEKT: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "KOTLIN_DETEKT_CLI_EXECUTABLE": {
+      "$id": "#/properties/KOTLIN_DETEKT_CLI_EXECUTABLE",
+      "default": [
+        [
+          "detekt-cli"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "KOTLIN_DETEKT: CLI Executable",
+      "type": "array"
+    },
+    "KOTLIN_DETEKT_CLI_LINT_MODE": {
+      "$id": "#/properties/KOTLIN_DETEKT_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "project"
+      ],
+      "title": "KOTLIN_DETEKT: Override default cli lint mode",
+      "type": "string"
+    },
+    "KOTLIN_DETEKT_COMMAND_REMOVE_ARGUMENTS": {
+      "$id": "#/properties/KOTLIN_DETEKT_COMMAND_REMOVE_ARGUMENTS",
+      "description": "KOTLIN_DETEKT: User custom arguments to remove before calling linter",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "KOTLIN_DETEKT: Custom remove arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "KOTLIN_DETEKT_DISABLE_ERRORS": {
+      "$id": "#/properties/KOTLIN_DETEKT_DISABLE_ERRORS",
+      "default": false,
+      "title": "KOTLIN_DETEKT: Linter doesn't make MegaLinter fail even if errors are found",
+      "type": "boolean"
+    },
+    "KOTLIN_DETEKT_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/KOTLIN_DETEKT_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "KOTLIN_DETEKT: Maximum number of errors allowed",
+      "type": "number"
+    },
+    "KOTLIN_DETEKT_FILE_EXTENSIONS": {
+      "$id": "#/properties/KOTLIN_DETEKT_FILE_EXTENSIONS",
+      "examples:": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "KOTLIN_DETEKT: Override descriptor/linter matching files extensions",
+      "type": "array"
+    },
+    "KOTLIN_DETEKT_FILE_NAMES_REGEX": {
+      "$id": "#/properties/KOTLIN_DETEKT_FILE_NAMES_REGEX",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "KOTLIN_DETEKT: Override descriptor/linter matching file name regex",
+      "type": "array"
+    },
+    "KOTLIN_DETEKT_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/KOTLIN_DETEKT_FILTER_REGEX_EXCLUDE",
+      "title": "KOTLIN_DETEKT: Excluding Regex",
+      "type": "string"
+    },
+    "KOTLIN_DETEKT_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/KOTLIN_DETEKT_FILTER_REGEX_INCLUDE",
+      "title": "KOTLIN_DETEKT: Including Regex",
+      "type": "string"
+    },
+    "KOTLIN_DETEKT_POST_COMMANDS": {
+      "$id": "#/properties/KOTLIN_DETEKT_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "KOTLIN_DETEKT: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "KOTLIN_DETEKT_PRE_COMMANDS": {
+      "$id": "#/properties/KOTLIN_DETEKT_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "KOTLIN_DETEKT: Define or override a list of bash commands to run before the linter",
+      "type": "array"
+    },
+    "KOTLIN_DETEKT_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/KOTLIN_DETEKT_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling KOTLIN_DETEKT and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "KOTLIN_DETEKT: Unsecured env variables",
+      "type": "array"
+    },
     "KOTLIN_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/KOTLIN_FILTER_REGEX_EXCLUDE",
       "title": "Excluding regex filter for KOTLIN descriptor",
@@ -8027,6 +9211,40 @@
         "type": "string"
       },
       "title": "KOTLIN_KTLINT: Unsecured env variables",
+      "type": "array"
+    },
+    "KOTLIN_POST_COMMANDS": {
+      "$id": "#/properties/KOTLIN_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Post commands for KOTLIN descriptor",
+      "type": "array"
+    },
+    "KOTLIN_PRE_COMMANDS": {
+      "$id": "#/properties/KOTLIN_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "composer install",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Pre commands for KOTLIN descriptor",
       "type": "array"
     },
     "KUBERNETES_DIRECTORY": {
@@ -8586,6 +9804,40 @@
       "title": "(removed) KUBERNETES_KUBEVAL: Define or override a list of bash commands to run before the linter",
       "type": "array"
     },
+    "KUBERNETES_POST_COMMANDS": {
+      "$id": "#/properties/KUBERNETES_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Post commands for KUBERNETES descriptor",
+      "type": "array"
+    },
+    "KUBERNETES_PRE_COMMANDS": {
+      "$id": "#/properties/KUBERNETES_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "composer install",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Pre commands for KUBERNETES descriptor",
+      "type": "array"
+    },
     "LATEX_CHKTEX_ARGUMENTS": {
       "$id": "#/properties/LATEX_CHKTEX_ARGUMENTS",
       "description": "LATEX_CHKTEX: User custom arguments to add in linter CLI call",
@@ -8760,6 +10012,40 @@
       "$id": "#/properties/LATEX_FILTER_REGEX_INCLUDE",
       "title": "Including regex filter for LATEX descriptor",
       "type": "string"
+    },
+    "LATEX_POST_COMMANDS": {
+      "$id": "#/properties/LATEX_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Post commands for LATEX descriptor",
+      "type": "array"
+    },
+    "LATEX_PRE_COMMANDS": {
+      "$id": "#/properties/LATEX_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "composer install",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Pre commands for LATEX descriptor",
+      "type": "array"
     },
     "LINTER_RULES_PATH": {
       "$id": "#/properties/LINTER_RULES_PATH",
@@ -8967,6 +10253,40 @@
       "title": "LUA_LUACHECK: Unsecured env variables",
       "type": "array"
     },
+    "LUA_POST_COMMANDS": {
+      "$id": "#/properties/LUA_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Post commands for LUA descriptor",
+      "type": "array"
+    },
+    "LUA_PRE_COMMANDS": {
+      "$id": "#/properties/LUA_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "composer install",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Pre commands for LUA descriptor",
+      "type": "array"
+    },
     "MAKEFILE_CHECKMAKE_ARGUMENTS": {
       "$id": "#/properties/MAKEFILE_CHECKMAKE_ARGUMENTS",
       "description": "MAKEFILE_CHECKMAKE: User custom arguments to add in linter CLI call",
@@ -9134,6 +10454,40 @@
       "$id": "#/properties/MAKEFILE_FILTER_REGEX_INCLUDE",
       "title": "Including regex filter for MAKEFILE descriptor",
       "type": "string"
+    },
+    "MAKEFILE_POST_COMMANDS": {
+      "$id": "#/properties/MAKEFILE_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Post commands for MAKEFILE descriptor",
+      "type": "array"
+    },
+    "MAKEFILE_PRE_COMMANDS": {
+      "$id": "#/properties/MAKEFILE_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "composer install",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Pre commands for MAKEFILE descriptor",
+      "type": "array"
     },
     "MARKDOWN_DEFAULT_STYLE": {
       "$id": "#/properties/MARKDOWN_DEFAULT_STYLE",
@@ -9686,6 +11040,40 @@
       "title": "MARKDOWN_MARKDOWN_TABLE_PRETTIFY: Including Regex",
       "type": "string"
     },
+    "MARKDOWN_POST_COMMANDS": {
+      "$id": "#/properties/MARKDOWN_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Post commands for MARKDOWN descriptor",
+      "type": "array"
+    },
+    "MARKDOWN_PRE_COMMANDS": {
+      "$id": "#/properties/MARKDOWN_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "composer install",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Pre commands for MARKDOWN descriptor",
+      "type": "array"
+    },
     "MARKDOWN_REMARK_LINT_ARGUMENTS": {
       "$id": "#/properties/MARKDOWN_REMARK_LINT_ARGUMENTS",
       "description": "MARKDOWN_REMARK_LINT: User custom arguments to add in linter CLI call",
@@ -9844,6 +11232,20 @@
       "title": "MARKDOWN_REMARK_LINT: Unsecured env variables",
       "type": "array"
     },
+    "MARKDOWN_SUMMARY_REPORTER": {
+      "$id": "#/properties/MARKDOWN_SUMMARY_REPORTER",
+      "default": false,
+      "description": "Generate SUMMARY reports that can be used to display issues directly in PR comment",
+      "title": "Activate SUMMARY reporter",
+      "type": "boolean"
+    },
+    "MARKDOWN_SUMMARY_REPORTER_FILE_NAME": {
+      "$id": "#/properties/MARKDOWN_SUMMARY_REPORTER_FILE_NAME",
+      "default": "megalinter-summary.log",
+      "description": "Override SUMMARY output file name",
+      "title": "SUMMARY report file name",
+      "type": "string"
+    },
     "MEGALINTER_FILES_TO_LINT": {
       "$id": "#/properties/MEGALINTER_FILES_TO_LINT",
       "description": "Comma-separated list of files to analyze. Using this variable will bypass other file listing methods",
@@ -9875,6 +11277,40 @@
       "$id": "#/properties/OPENAPI_FILTER_REGEX_INCLUDE",
       "title": "Including regex filter for OPENAPI descriptor",
       "type": "string"
+    },
+    "OPENAPI_POST_COMMANDS": {
+      "$id": "#/properties/OPENAPI_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Post commands for OPENAPI descriptor",
+      "type": "array"
+    },
+    "OPENAPI_PRE_COMMANDS": {
+      "$id": "#/properties/OPENAPI_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "composer install",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Pre commands for OPENAPI descriptor",
+      "type": "array"
     },
     "OPENAPI_SPECTRAL_ARGUMENTS": {
       "$id": "#/properties/OPENAPI_SPECTRAL_ARGUMENTS",
@@ -10068,6 +11504,15 @@
       "title": "Parallel processing",
       "type": "boolean"
     },
+    "PARALLEL_PROCESS_NUMBER": {
+      "$id": "#/properties/PARALLEL_PROCESS_NUMBER",
+      "description": "All available cores are used by default. If there are too many, you need to decrease the number of used cores in order to enhance performances",
+      "examples": [
+        4
+      ],
+      "title": "Parallel process number",
+      "type": "number"
+    },
     "PERL_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/PERL_FILTER_REGEX_EXCLUDE",
       "title": "Excluding regex filter for PERL descriptor",
@@ -10221,6 +11666,40 @@
         "type": "string"
       },
       "title": "PERL_PERLCRITIC: Unsecured env variables",
+      "type": "array"
+    },
+    "PERL_POST_COMMANDS": {
+      "$id": "#/properties/PERL_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Post commands for PERL descriptor",
+      "type": "array"
+    },
+    "PERL_PRE_COMMANDS": {
+      "$id": "#/properties/PERL_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "composer install",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Pre commands for PERL descriptor",
       "type": "array"
     },
     "PHP_BUILTIN_ARGUMENTS": {
@@ -10843,6 +12322,40 @@
       "title": "PHP_PHPSTAN: Unsecured env variables",
       "type": "array"
     },
+    "PHP_POST_COMMANDS": {
+      "$id": "#/properties/PHP_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Post commands for PHP descriptor",
+      "type": "array"
+    },
+    "PHP_PRE_COMMANDS": {
+      "$id": "#/properties/PHP_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "composer install",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Pre commands for PHP descriptor",
+      "type": "array"
+    },
     "PHP_PSALM_ARGUMENTS": {
       "$id": "#/properties/PHP_PSALM_ARGUMENTS",
       "description": "PHP_PSALM: User custom arguments to add in linter CLI call",
@@ -11065,6 +12578,23 @@
       "$id": "#/properties/POWERSHELL_FILTER_REGEX_INCLUDE",
       "title": "Including regex filter for POWERSHELL descriptor",
       "type": "string"
+    },
+    "POWERSHELL_POST_COMMANDS": {
+      "$id": "#/properties/POWERSHELL_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Post commands for POWERSHELL descriptor",
+      "type": "array"
     },
     "POWERSHELL_POWERSHELL_ARGUMENTS": {
       "$id": "#/properties/POWERSHELL_POWERSHELL_ARGUMENTS",
@@ -11389,6 +12919,23 @@
       "title": "POWERSHELL_POWERSHELL: Unsecured env variables",
       "type": "array"
     },
+    "POWERSHELL_PRE_COMMANDS": {
+      "$id": "#/properties/POWERSHELL_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "composer install",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Pre commands for POWERSHELL descriptor",
+      "type": "array"
+    },
     "PRE_COMMANDS": {
       "$id": "#/properties/PRE_COMMANDS",
       "default": [],
@@ -11435,6 +12982,40 @@
       "$id": "#/properties/PROTOBUF_FILTER_REGEX_INCLUDE",
       "title": "Including regex filter for PROTOBUF descriptor",
       "type": "string"
+    },
+    "PROTOBUF_POST_COMMANDS": {
+      "$id": "#/properties/PROTOBUF_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Post commands for PROTOBUF descriptor",
+      "type": "array"
+    },
+    "PROTOBUF_PRE_COMMANDS": {
+      "$id": "#/properties/PROTOBUF_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "composer install",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Pre commands for PROTOBUF descriptor",
+      "type": "array"
     },
     "PROTOBUF_PROTOLINT_ARGUMENTS": {
       "$id": "#/properties/PROTOBUF_PROTOLINT_ARGUMENTS",
@@ -11610,6 +13191,40 @@
       "$id": "#/properties/PUPPET_FILTER_REGEX_INCLUDE",
       "title": "Including regex filter for PUPPET descriptor",
       "type": "string"
+    },
+    "PUPPET_POST_COMMANDS": {
+      "$id": "#/properties/PUPPET_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Post commands for PUPPET descriptor",
+      "type": "array"
+    },
+    "PUPPET_PRE_COMMANDS": {
+      "$id": "#/properties/PUPPET_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "composer install",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Pre commands for PUPPET descriptor",
+      "type": "array"
     },
     "PUPPET_PUPPET_LINT_ARGUMENTS": {
       "$id": "#/properties/PUPPET_PUPPET_LINT_ARGUMENTS",
@@ -12602,6 +14217,40 @@
       "title": "PYTHON_MYPY: Unsecured env variables",
       "type": "array"
     },
+    "PYTHON_POST_COMMANDS": {
+      "$id": "#/properties/PYTHON_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Post commands for PYTHON descriptor",
+      "type": "array"
+    },
+    "PYTHON_PRE_COMMANDS": {
+      "$id": "#/properties/PYTHON_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "composer install",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Pre commands for PYTHON descriptor",
+      "type": "array"
+    },
     "PYTHON_PYLINT_ARGUMENTS": {
       "$id": "#/properties/PYTHON_PYLINT_ARGUMENTS",
       "description": "PYTHON_PYLINT: User custom arguments to add in linter CLI call",
@@ -13095,6 +14744,40 @@
       "$id": "#/properties/RAKU_FILTER_REGEX_INCLUDE",
       "title": "Including regex filter for RAKU descriptor",
       "type": "string"
+    },
+    "RAKU_POST_COMMANDS": {
+      "$id": "#/properties/RAKU_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Post commands for RAKU descriptor",
+      "type": "array"
+    },
+    "RAKU_PRE_COMMANDS": {
+      "$id": "#/properties/RAKU_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "composer install",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Pre commands for RAKU descriptor",
+      "type": "array"
     },
     "RAKU_RAKU_ARGUMENTS": {
       "$id": "#/properties/RAKU_RAKU_ARGUMENTS",
@@ -14149,6 +15832,40 @@
       "title": "REPOSITORY_KICS: Unsecured env variables",
       "type": "array"
     },
+    "REPOSITORY_POST_COMMANDS": {
+      "$id": "#/properties/REPOSITORY_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Post commands for REPOSITORY descriptor",
+      "type": "array"
+    },
+    "REPOSITORY_PRE_COMMANDS": {
+      "$id": "#/properties/REPOSITORY_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "composer install",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Pre commands for REPOSITORY descriptor",
+      "type": "array"
+    },
     "REPOSITORY_SECRETLINT_ARGUMENTS": {
       "$id": "#/properties/REPOSITORY_SECRETLINT_ARGUMENTS",
       "description": "REPOSITORY_SECRETLINT: User custom arguments to add in linter CLI call",
@@ -14353,6 +16070,22 @@
       },
       "title": "REPOSITORY_SEMGREP: Define or override a list of bash commands to run before the linter",
       "type": "array"
+    },
+    "REPOSITORY_SEMGREP_RULESETS": {
+      "$id": "#/properties/REPOSITORY_SEMGREP_RULESETS",
+      "description": "REPOSITORY_SEMGREP: Specify custom ruleset(s) for semgrep",
+      "examples:": [
+        "auto",
+        "p/ci"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_SEMGREP: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ]
     },
     "REPOSITORY_SEMGREP_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/REPOSITORY_SEMGREP_UNSECURED_ENV_VARIABLES",
@@ -14830,6 +16563,40 @@
       "title": "Including regex filter for RST descriptor",
       "type": "string"
     },
+    "RST_POST_COMMANDS": {
+      "$id": "#/properties/RST_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Post commands for RST descriptor",
+      "type": "array"
+    },
+    "RST_PRE_COMMANDS": {
+      "$id": "#/properties/RST_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "composer install",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Pre commands for RST descriptor",
+      "type": "array"
+    },
     "RST_RSTCHECK_ARGUMENTS": {
       "$id": "#/properties/RST_RSTCHECK_ARGUMENTS",
       "description": "RST_RSTCHECK: User custom arguments to add in linter CLI call",
@@ -15295,6 +17062,40 @@
       "title": "Including regex filter for RUBY descriptor",
       "type": "string"
     },
+    "RUBY_POST_COMMANDS": {
+      "$id": "#/properties/RUBY_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Post commands for RUBY descriptor",
+      "type": "array"
+    },
+    "RUBY_PRE_COMMANDS": {
+      "$id": "#/properties/RUBY_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "composer install",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Pre commands for RUBY descriptor",
+      "type": "array"
+    },
     "RUBY_RUBOCOP_ARGUMENTS": {
       "$id": "#/properties/RUBY_RUBOCOP_ARGUMENTS",
       "description": "RUBY_RUBOCOP: User custom arguments to add in linter CLI call",
@@ -15615,6 +17416,40 @@
       "title": "Including regex filter for RUST descriptor",
       "type": "string"
     },
+    "RUST_POST_COMMANDS": {
+      "$id": "#/properties/RUST_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Post commands for RUST descriptor",
+      "type": "array"
+    },
+    "RUST_PRE_COMMANDS": {
+      "$id": "#/properties/RUST_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "composer install",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Pre commands for RUST descriptor",
+      "type": "array"
+    },
     "R_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/R_FILTER_REGEX_EXCLUDE",
       "title": "Excluding regex filter for R descriptor",
@@ -15790,6 +17625,40 @@
       "title": "R_LINTR: Unsecured env variables",
       "type": "array"
     },
+    "R_POST_COMMANDS": {
+      "$id": "#/properties/R_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Post commands for R descriptor",
+      "type": "array"
+    },
+    "R_PRE_COMMANDS": {
+      "$id": "#/properties/R_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "composer install",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Pre commands for R descriptor",
+      "type": "array"
+    },
     "SALESFORCE_DIRECTORY": {
       "$id": "#/properties/SALESFORCE_DIRECTORY",
       "default": "force-app",
@@ -15826,7 +17695,7 @@
       "$id": "#/properties/SALESFORCE_LIGHTNING_FLOW_SCANNER_CLI_EXECUTABLE",
       "default": [
         [
-          "sfdx"
+          "sf"
         ]
       ],
       "items": {
@@ -15927,6 +17796,40 @@
       "title": "SALESFORCE_LIGHTNING_FLOW_SCANNER: Unsecured env variables",
       "type": "array"
     },
+    "SALESFORCE_POST_COMMANDS": {
+      "$id": "#/properties/SALESFORCE_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Post commands for SALESFORCE descriptor",
+      "type": "array"
+    },
+    "SALESFORCE_PRE_COMMANDS": {
+      "$id": "#/properties/SALESFORCE_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "composer install",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Pre commands for SALESFORCE descriptor",
+      "type": "array"
+    },
     "SALESFORCE_SFDX_SCANNER_APEX_ARGUMENTS": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_APEX_ARGUMENTS",
       "description": "SALESFORCE_SFDX_SCANNER_APEX: User custom arguments to add in linter CLI call",
@@ -15947,7 +17850,7 @@
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_APEX_CLI_EXECUTABLE",
       "default": [
         [
-          "sfdx"
+          "sf"
         ]
       ],
       "items": {
@@ -16084,7 +17987,7 @@
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_AURA_CLI_EXECUTABLE",
       "default": [
         [
-          "sfdx"
+          "sf"
         ]
       ],
       "items": {
@@ -16257,7 +18160,7 @@
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_LWC_CLI_EXECUTABLE",
       "default": [
         [
-          "sfdx"
+          "sf"
         ]
       ],
       "items": {
@@ -16396,6 +18299,40 @@
       "$id": "#/properties/SCALA_FILTER_REGEX_INCLUDE",
       "title": "Including regex filter for SCALA descriptor",
       "type": "string"
+    },
+    "SCALA_POST_COMMANDS": {
+      "$id": "#/properties/SCALA_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Post commands for SCALA descriptor",
+      "type": "array"
+    },
+    "SCALA_PRE_COMMANDS": {
+      "$id": "#/properties/SCALA_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "composer install",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Pre commands for SCALA descriptor",
+      "type": "array"
     },
     "SCALA_SCALAFIX_ARGUMENTS": {
       "$id": "#/properties/SCALA_SCALAFIX_ARGUMENTS",
@@ -16778,6 +18715,40 @@
         "type": "string"
       },
       "title": "SNAKEMAKE_LINT: Unsecured env variables",
+      "type": "array"
+    },
+    "SNAKEMAKE_POST_COMMANDS": {
+      "$id": "#/properties/SNAKEMAKE_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Post commands for SNAKEMAKE descriptor",
+      "type": "array"
+    },
+    "SNAKEMAKE_PRE_COMMANDS": {
+      "$id": "#/properties/SNAKEMAKE_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "composer install",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Pre commands for SNAKEMAKE descriptor",
       "type": "array"
     },
     "SNAKEMAKE_SNAKEFMT_ARGUMENTS": {
@@ -17407,6 +19378,40 @@
       "title": "SPELL_MISSPELL: Define or override a list of bash commands to run before the linter",
       "type": "array"
     },
+    "SPELL_POST_COMMANDS": {
+      "$id": "#/properties/SPELL_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Post commands for SPELL descriptor",
+      "type": "array"
+    },
+    "SPELL_PRE_COMMANDS": {
+      "$id": "#/properties/SPELL_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "composer install",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Pre commands for SPELL descriptor",
+      "type": "array"
+    },
     "SPELL_PROSELINT_ARGUMENTS": {
       "$id": "#/properties/SPELL_PROSELINT_ARGUMENTS",
       "description": "SPELL_PROSELINT: User custom arguments to add in linter CLI call",
@@ -17734,6 +19739,40 @@
       "$id": "#/properties/SQL_FILTER_REGEX_INCLUDE",
       "title": "Including regex filter for SQL descriptor",
       "type": "string"
+    },
+    "SQL_POST_COMMANDS": {
+      "$id": "#/properties/SQL_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Post commands for SQL descriptor",
+      "type": "array"
+    },
+    "SQL_PRE_COMMANDS": {
+      "$id": "#/properties/SQL_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "composer install",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Pre commands for SQL descriptor",
+      "type": "array"
     },
     "SQL_SQLFLUFF_ARGUMENTS": {
       "$id": "#/properties/SQL_SQLFLUFF_ARGUMENTS",
@@ -18228,6 +20267,40 @@
       "title": "Including regex filter for SWIFT descriptor",
       "type": "string"
     },
+    "SWIFT_POST_COMMANDS": {
+      "$id": "#/properties/SWIFT_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Post commands for SWIFT descriptor",
+      "type": "array"
+    },
+    "SWIFT_PRE_COMMANDS": {
+      "$id": "#/properties/SWIFT_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "composer install",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Pre commands for SWIFT descriptor",
+      "type": "array"
+    },
     "SWIFT_SWIFTLINT_ARGUMENTS": {
       "$id": "#/properties/SWIFT_SWIFTLINT_ARGUMENTS",
       "description": "SWIFT_SWIFTLINT: User custom arguments to add in linter CLI call",
@@ -18389,6 +20462,40 @@
       "$id": "#/properties/TEKTON_FILTER_REGEX_INCLUDE",
       "title": "Including regex filter for TEKTON descriptor",
       "type": "string"
+    },
+    "TEKTON_POST_COMMANDS": {
+      "$id": "#/properties/TEKTON_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Post commands for TEKTON descriptor",
+      "type": "array"
+    },
+    "TEKTON_PRE_COMMANDS": {
+      "$id": "#/properties/TEKTON_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "composer install",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Pre commands for TEKTON descriptor",
+      "type": "array"
     },
     "TEKTON_TEKTON_LINT_ARGUMENTS": {
       "$id": "#/properties/TEKTON_TEKTON_LINT_ARGUMENTS",
@@ -18801,6 +20908,40 @@
         "$ref": "#/definitions/command_info"
       },
       "title": "(removed) TERRAFORM_KICS: Define or override a list of bash commands to run before the linter",
+      "type": "array"
+    },
+    "TERRAFORM_POST_COMMANDS": {
+      "$id": "#/properties/TERRAFORM_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Post commands for TERRAFORM descriptor",
+      "type": "array"
+    },
+    "TERRAFORM_PRE_COMMANDS": {
+      "$id": "#/properties/TERRAFORM_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "composer install",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Pre commands for TERRAFORM descriptor",
       "type": "array"
     },
     "TERRAFORM_TERRAFORM_FMT_ARGUMENTS": {
@@ -19586,6 +21727,40 @@
       "title": "Including regex filter for TSX descriptor",
       "type": "string"
     },
+    "TSX_POST_COMMANDS": {
+      "$id": "#/properties/TSX_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Post commands for TSX descriptor",
+      "type": "array"
+    },
+    "TSX_PRE_COMMANDS": {
+      "$id": "#/properties/TSX_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "composer install",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Pre commands for TSX descriptor",
+      "type": "array"
+    },
     "TYPESCRIPT_DEFAULT_STYLE": {
       "$id": "#/properties/TYPESCRIPT_DEFAULT_STYLE",
       "description": "Style of typescript formatting to apply",
@@ -19776,6 +21951,23 @@
       "title": "Including regex filter for TYPESCRIPT descriptor",
       "type": "string"
     },
+    "TYPESCRIPT_POST_COMMANDS": {
+      "$id": "#/properties/TYPESCRIPT_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Post commands for TYPESCRIPT descriptor",
+      "type": "array"
+    },
     "TYPESCRIPT_PRETTIER_ARGUMENTS": {
       "$id": "#/properties/TYPESCRIPT_PRETTIER_ARGUMENTS",
       "description": "TYPESCRIPT_PRETTIER: User custom arguments to add in linter CLI call",
@@ -19933,6 +22125,23 @@
         "type": "string"
       },
       "title": "TYPESCRIPT_PRETTIER: Unsecured env variables",
+      "type": "array"
+    },
+    "TYPESCRIPT_PRE_COMMANDS": {
+      "$id": "#/properties/TYPESCRIPT_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "composer install",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Pre commands for TYPESCRIPT descriptor",
       "type": "array"
     },
     "TYPESCRIPT_STANDARD_ARGUMENTS": {
@@ -20253,6 +22462,40 @@
       "title": "Including regex filter for VBDOTNET descriptor",
       "type": "string"
     },
+    "VBDOTNET_POST_COMMANDS": {
+      "$id": "#/properties/VBDOTNET_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Post commands for VBDOTNET descriptor",
+      "type": "array"
+    },
+    "VBDOTNET_PRE_COMMANDS": {
+      "$id": "#/properties/VBDOTNET_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "composer install",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Pre commands for VBDOTNET descriptor",
+      "type": "array"
+    },
     "XML_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/XML_FILTER_REGEX_EXCLUDE",
       "title": "Excluding regex filter for XML descriptor",
@@ -20262,6 +22505,40 @@
       "$id": "#/properties/XML_FILTER_REGEX_INCLUDE",
       "title": "Including regex filter for XML descriptor",
       "type": "string"
+    },
+    "XML_POST_COMMANDS": {
+      "$id": "#/properties/XML_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Post commands for XML descriptor",
+      "type": "array"
+    },
+    "XML_PRE_COMMANDS": {
+      "$id": "#/properties/XML_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "composer install",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Pre commands for XML descriptor",
+      "type": "array"
     },
     "XML_XMLLINT_ARGUMENTS": {
       "$id": "#/properties/XML_XMLLINT_ARGUMENTS",
@@ -20418,6 +22695,23 @@
       "$id": "#/properties/YAML_FILTER_REGEX_INCLUDE",
       "title": "Including regex filter for YAML descriptor",
       "type": "string"
+    },
+    "YAML_POST_COMMANDS": {
+      "$id": "#/properties/YAML_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Post commands for YAML descriptor",
+      "type": "array"
     },
     "YAML_PRETTIER_ARGUMENTS": {
       "$id": "#/properties/YAML_PRETTIER_ARGUMENTS",
@@ -20576,6 +22870,23 @@
         "type": "string"
       },
       "title": "YAML_PRETTIER: Unsecured env variables",
+      "type": "array"
+    },
+    "YAML_PRE_COMMANDS": {
+      "$id": "#/properties/YAML_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "composer install",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Pre commands for YAML descriptor",
       "type": "array"
     },
     "YAML_V8R_ARGUMENTS": {

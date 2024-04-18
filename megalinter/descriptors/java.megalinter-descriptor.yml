@@ -15,14 +15,14 @@ linters:
   # Java Checkstyle
   - linter_name: checkstyle
     can_output_sarif: true
-    linter_url: https://checkstyle.sourceforge.io
+    linter_url: https://checkstyle.org/
     linter_repo: https://github.com/checkstyle/checkstyle
     linter_spdx_license: LGPL-2.1
-    linter_rules_url: https://checkstyle.sourceforge.io/checks.html
-    linter_banner_image_url: https://checkstyle.sourceforge.io/images/header-checkstyle-logo.png
-    linter_rules_configuration_url: https://checkstyle.sourceforge.io/config.html#Overview
-    linter_rules_inline_disable_url: https://checkstyle.sourceforge.io/filters/suppresswarningsfilter.html#SuppressWarningsFilter
-    linter_megalinter_ref_url: https://checkstyle.sourceforge.io/index.html#Related_Tools_Active_Tools
+    linter_rules_url: https://checkstyle.org/checks.html
+    linter_banner_image_url: https://checkstyle.org/images/header-checkstyle-logo.png
+    linter_rules_configuration_url: https://checkstyle.org/config.html
+    linter_rules_inline_disable_url: https://checkstyle.org/checks/annotation/suppresswarnings.html#SuppressWarnings
+    linter_megalinter_ref_url: https://checkstyle.org/index.html#Related_Tools_Active_Tools
     config_file_name: sun_checks.xml
     cli_executable: java
     cli_lint_mode: list_of_files

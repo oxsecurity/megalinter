@@ -18,6 +18,8 @@ class GitlabCommentReporter(Reporter):
     gitlab_server_url = "https://gitlab.com"
 
     def manage_activation(self):
+        if not config.exists(self.master.request_id, "CI_JOB_TOKEN"):
+            self.is_active = False
         if (
             config.get(self.master.request_id, "GITLAB_COMMENT_REPORTER", "true")
             != "true"

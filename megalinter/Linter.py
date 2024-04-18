@@ -65,6 +65,8 @@ class Linter:
         )
         self.linter_icon_png_url = None
         self.test_folder = None  # Override only if different from language.lowercase()
+        self.test_format_fix_file_extensions = []
+        self.test_format_fix_regex_exclude = None
         self.activation_rules = []
         self.test_variables = {}
         # Array of strings defining file extensions. Ex: ['.js','.cjs', '']
@@ -184,9 +186,11 @@ class Linter:
             if self.is_formatter is True
             and not config.get(self.request_id, "FORMATTERS_DISABLE_ERRORS", "true")
             == "false"
-            else True
-            if config.get(self.request_id, "DISABLE_ERRORS", "false") == "true"
-            else False
+            else (
+                True
+                if config.get(self.request_id, "DISABLE_ERRORS", "false") == "true"
+                else False
+            )
         )
         # Name
         if self.name is None:
@@ -351,11 +355,18 @@ class Linter:
                         file_to_check, prop = file_to_check.split(":")
                     if os.path.isfile(f"{self.workspace}{os.path.sep}{file_to_check}"):
                         found_file = f"{self.workspace}{os.path.sep}{file_to_check}"
-                    if os.path.isfile(
+                    elif os.path.isfile(
                         f"{self.workspace}{os.path.sep}{self.linter_rules_path}{os.path.sep}{file_to_check}"
                     ):
                         found_file = (
                             f"{self.workspace}{os.path.sep}{self.linter_rules_path}"
+                            + f"{os.path.sep}{file_to_check}"
+                        )
+                    elif os.path.isfile(
+                        f"{self.workspace}{os.path.sep}{self.files_sub_directory}{os.path.sep}{file_to_check}"
+                    ):
+                        found_file = (
+                            f"{self.workspace}{os.path.sep}{self.files_sub_directory}"
                             + f"{os.path.sep}{file_to_check}"
                         )
                     # filename case
@@ -444,18 +455,22 @@ class Linter:
             self.config_file_name = config.get(
                 self.request_id, self.name + "_CONFIG_FILE"
             )
+            self.update_active_if_file_found()
         elif config.exists(self.request_id, self.descriptor_id + "_CONFIG_FILE"):
             self.config_file_name = config.get(
                 self.request_id, self.descriptor_id + "_CONFIG_FILE"
             )
+            self.update_active_if_file_found()
         elif config.exists(self.request_id, self.name + "_FILE_NAME"):
             self.config_file_name = config.get(
                 self.request_id, self.name + "_FILE_NAME"
             )
+            self.update_active_if_file_found()
         elif config.exists(self.request_id, self.descriptor_id + "_FILE_NAME"):
             self.config_file_name = config.get(
                 self.request_id, self.descriptor_id + "_FILE_NAME"
             )
+            self.update_active_if_file_found()
         # Ignore file name: try first NAME + _FILE_NAME, then LANGUAGE + _FILE_NAME
         if self.cli_lint_ignore_arg_name is not None:
             if config.exists(self.request_id, self.name + "_IGNORE_FILE"):
@@ -730,6 +745,15 @@ class Linter:
                 self.request_id, self.name + "_DOCKER_IMAGE_VERSION"
             )
 
+    # If linter is activated only if some file is found, and config file has been overridden
+    # ->  add it to the files to check
+    def update_active_if_file_found(self):
+        if (
+            len(self.active_only_if_file_found) > 0
+            and self.config_file_name not in self.active_only_if_file_found
+        ):
+            self.active_only_if_file_found.append(self.config_file_name)
+
     # Processes the linter
     def run(self):
         self.start_perf = perf_counter()
@@ -938,9 +962,9 @@ class Linter:
                 shell=True,
                 cwd=cwd,
                 env=subprocess_env,
-                executable=shutil.which("bash")
-                if sys.platform == "win32"
-                else "/bin/bash",
+                executable=(
+                    shutil.which("bash") if sys.platform == "win32" else "/bin/bash"
+                ),
             )
             return_code = process.returncode
             return_stdout = utils.decode_utf8(process.stdout)

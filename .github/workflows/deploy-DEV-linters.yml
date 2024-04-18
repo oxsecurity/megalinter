@@ -63,6 +63,7 @@ jobs:
             "cpp_clang_format",
             "csharp_dotnet_format",
             "csharp_csharpier",
+            "csharp_roslynator",
             "css_stylelint",
             "css_scss_lint",
             "dart_dartanalyzer",
@@ -88,6 +89,7 @@ jobs:
             "json_npm_package_json_lint",
             "jsx_eslint",
             "kotlin_ktlint",
+            "kotlin_detekt",
             "kubernetes_kubeconform",
             "kubernetes_helm",
             "kubernetes_kubescape",
@@ -189,7 +191,7 @@ jobs:
         uses: actions/checkout@v4
         
       - name: Docker Metadata action
-        uses: docker/metadata-action@v5.0.0
+        uses: docker/metadata-action@v5.5.1
         id: meta
         with:
           images: |

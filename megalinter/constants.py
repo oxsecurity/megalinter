@@ -19,6 +19,7 @@ ML_DOCKER_IMAGE_LEGACY_V5 = "megalinter/megalinter"
 DEFAULT_DOCKER_WORKSPACE_DIR = "/tmp/lint"
 DEFAULT_REPORT_FOLDER_NAME = "megalinter-reports"
 DEFAULT_SARIF_REPORT_FILE_NAME = "megalinter-report.sarif"
+DEFAULT_MARKDOWN_SUMMARY_REPORT_FILE_NAME = "megalinter-report.md"
 DEFAULT_SARIF_SCHEMA_URI = "https://json.schemastore.org/sarif-2.1.0.json"
 DEFAULT_SARIF_VERSION = "2.1.0"
 DEFAULT_RELEASE = "v7"
@@ -34,6 +35,4 @@ DEFAULT_DOCKERFILE_APK_PACKAGES = [
     "make",
     "musl-dev",
     "openssh",
-    # Temporary, to make sure openssl 3.1.3 (installed by default) is replaced by 3.1.4 for CVE-2023-5363 (2023-11-12)
-    "openssl",
 ]

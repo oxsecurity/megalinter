@@ -22,20 +22,20 @@ FROM mvdan/shfmt:latest-alpine as shfmt
 FROM hadolint/hadolint:v2.12.0-alpine as hadolint
 FROM mstruebing/editorconfig-checker:2.7.2 as editorconfig-checker
 FROM golang:1-alpine as revive
-## The golang image used as a builder is a temporary workaround 
+## The golang image used as a builder is a temporary workaround (https://github.com/mgechev/revive/issues/787)
 ## for the released revive binaries not returning version numbers (devel). 
 ## The install command should then be what is commented in the go.megalinter-descriptor.yml
 RUN GOBIN=/usr/bin go install github.com/mgechev/revive@latest
 
 FROM ghcr.io/yannh/kubeconform:latest-alpine as kubeconform
 FROM mrtazz/checkmake:latest as checkmake
-FROM ghcr.io/phpstan/phpstan:latest-php8.1 as phpstan
-FROM zricethezav/gitleaks:v8.18.1 as gitleaks
+FROM ghcr.io/phpstan/phpstan:latest-php8.3 as phpstan
+FROM zricethezav/gitleaks:v8.18.2 as gitleaks
 FROM checkmarx/kics:alpine as kics
 FROM trufflesecurity/trufflehog:latest as trufflehog
 FROM lycheeverse/lychee:latest-alpine as lychee
-FROM ghcr.io/terraform-linters/tflint:v0.49.0 as tflint
-FROM tenable/terrascan:1.18.3 as terrascan
+FROM ghcr.io/terraform-linters/tflint:v0.50.3 as tflint
+FROM tenable/terrascan:1.18.11 as terrascan
 FROM alpine/terragrunt:latest as terragrunt
 # Next FROM line commented because already managed by another linter
 # FROM alpine/terragrunt:latest as terragrunt
@@ -44,7 +44,7 @@ FROM alpine/terragrunt:latest as terragrunt
 ##################
 # Get base image #
 ##################
-FROM python:3.11.6-alpine3.18
+FROM python:3.12.3-alpine3.19
 ARG GITHUB_TOKEN
 
 #############################################################################################
@@ -75,20 +75,19 @@ RUN apk add --no-cache \
                 make \
                 musl-dev \
                 openssh \
-                openssl \
                 docker \
                 openrc \
                 openjdk17 \
                 gnupg \
-                php81 \
-                php81-phar \
-                php81-mbstring \
-                php81-xmlwriter \
-                php81-tokenizer \
-                php81-ctype \
-                php81-curl \
-                php81-dom \
-                php81-simplexml \
+                php83 \
+                php83-phar \
+                php83-mbstring \
+                php83-xmlwriter \
+                php83-tokenizer \
+                php83-ctype \
+                php83-curl \
+                php83-dom \
+                php83-simplexml \
                 dpkg \
                 py3-pyflakes \
                 nodejs \
@@ -203,7 +202,6 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 standard \
                 prettier \
                 @prantlf/jsonlint \
-                eslint-plugin-jsonc \
                 v8r \
                 npm-package-json-lint \
                 npm-package-json-lint-config-default \
@@ -356,16 +354,16 @@ RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GI
     && export GITHUB_AUTH_TOKEN \
     && wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
     && wget --tries=5 -q -O phive.phar.asc https://phar.io/releases/phive.phar.asc \
-    && PHAR_KEY_ID="0x9D8A98B29B2D5D79" \
-    && ( gpg --keyserver keyserver.pgp.com --recv-keys "$PHAR_KEY_ID" \
-        || gpg --keyserver ha.pool.sks-keyservers.net --recv-keys "$PHAR_KEY_ID" \
-        || gpg --keyserver pgp.mit.edu --recv-keys "$PHAR_KEY_ID" \
-        || gpg --keyserver hkps://keyserver.ubuntu.com --recv-keys "$PHAR_KEY_ID" ) \
+    && PHAR_KEY_ID="0x6AF725270AB81E04D79442549D8A98B29B2D5D79" \
+    && ( gpg --keyserver hkps://keys.openpgp.org --recv-keys "$PHAR_KEY_ID" \
+       || gpg --keyserver hkps://keyserver.ubuntu.com --recv-keys "$PHAR_KEY_ID" \
+       || gpg --keyserver keyserver.pgp.com --recv-keys "$PHAR_KEY_ID" \
+       || gpg --keyserver pgp.mit.edu --recv-keys "$PHAR_KEY_ID" ) \
     && gpg --verify phive.phar.asc phive.phar \
     && chmod +x phive.phar \
     && mv phive.phar /usr/local/bin/phive \
     && rm phive.phar.asc \
-    && update-alternatives --install /usr/bin/php php /usr/bin/php81 110
+    && update-alternatives --install /usr/bin/php php /usr/bin/php83 110
 
 
 # actionlint installation
@@ -388,11 +386,6 @@ RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: Fil
     && curl --retry 5 --retry-delay 5 -sLO https://raw.githubusercontent.com/clj-kondo/clj-kondo/master/script/install-clj-kondo \
     && chmod +x install-clj-kondo \
     && ./install-clj-kondo \
-
-# cljstyle installation
-    && curl --retry 5 --retry-delay 5 -sLO https://raw.githubusercontent.com/greglook/cljstyle/main/script/install-cljstyle \
-    && chmod +x install-cljstyle \
-    && ./install-cljstyle \
 
 # hadolint installation
 # Managed with COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
@@ -441,6 +434,14 @@ RUN wget --quiet https://github.com/pmd/pmd/releases/download/pmd_releases%2F${P
     chmod a+x ktlint && \
     mv "ktlint" /usr/bin/ \
 
+# detekt installation
+    && curl --retry 5 --retry-delay 5 -sSLO https://github.com/detekt/detekt/releases/download/v1.23.5/detekt-cli-1.23.5.zip && \
+    unzip detekt-cli-1.23.5.zip && \
+    chmod a+x detekt-cli-1.23.5/bin/* && \
+    chmod a+x detekt-cli-1.23.5/lib/* && \
+    mv -n detekt-cli-1.23.5/bin/* usr/bin && \
+    mv -n detekt-cli-1.23.5/lib/* usr/lib \
+
 # kubeconform installation
 # Managed with COPY --link --from=kubeconform /kubeconform /usr/bin/
 
@@ -453,7 +454,7 @@ RUN wget --quiet https://github.com/pmd/pmd/releases/download/pmd_releases%2F${P
 # Managed with COPY --link --from=checkmake /checkmake /usr/bin/checkmake
 
 # phpcs installation
-RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && phive --no-progress install phpcs -g --trust-gpg-keys 31C7E470E2138192
+RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && phive --no-progress install phpcs -g --trust-gpg-keys 31C7E470E2138192,95DE904AB800754A11D80B605E6DDE998AB73B8E
 
 
 # phpstan installation
@@ -475,7 +476,7 @@ ENV MYPY_CACHE_DIR=/tmp
 # Managed with COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 
 # grype installation
-RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin v0.63.1
+RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin
 
 # kics installation
 # Managed with COPY --link --from=kics /app/bin/kics /usr/bin/kics
