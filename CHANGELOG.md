@@ -34,6 +34,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Update [Roslynator](https://github.com/dotnet/roslynator) repo url and logo
 
 - CI
+  - Make SPELL_LYCHEE non blocking for internal CI jobs
 
 - Linter versions upgrades
   - [markdown-link-check](https://github.com/tcort/markdown-link-check) from 3.11.2 to **3.12.0** on 2024-03-10
@@ -149,6 +150,16 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 2.21.0 to **2.22.0** on 2024-04-14
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.7.5 to **1.8.0** on 2024-04-14
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.56.2 to **0.57.0** on 2024-04-14
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.86.2 to **0.86.3** on 2024-04-17
+  - [csharpier](https://csharpier.com/) from 0.28.0 to **0.28.1** on 2024-04-17
+  - [roslynator](https://github.com/dotnet/Roslynator) from 0.8.4.0 to **0.8.6.0** on 2024-04-17
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 14.4.0 to **14.4.1** on 2024-04-17
+  - [phpstan](https://phpstan.org/) from 1.10.66 to **1.10.67** on 2024-04-17
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.358 to **1.1.359** on 2024-04-17
+  - [checkov](https://www.checkov.io/) from 3.2.63 to **3.2.70** on 2024-04-17
+  - [grype](https://github.com/anchore/grype) from 0.75.0 to **0.76.0** on 2024-04-17
+  - [rubocop](https://rubocop.org/) from 1.63.1 to **1.63.2** on 2024-04-17
+  - [snakefmt](https://github.com/snakemake/snakefmt) from 0.10.0 to **0.10.1** on 2024-04-17
 <!-- linter-versions-end -->
 
 ## [v7.10.0] - 2024-03-10
