@@ -94,7 +94,7 @@
   },
   "devDependencies": {
     "assert": "^2.1.0",
-    "eslint": "^8.50.0",
+    "eslint": "^9.0.0",
     "mocha": "^10.2.0"
   },
   "resolutions": {
