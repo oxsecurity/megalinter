@@ -17,7 +17,7 @@ FROM ghcr.io/yannh/kubeconform:latest-alpine as kubeconform
 ##################
 # Get base image #
 ##################
-FROM python:3.12.2-alpine3.19
+FROM python:3.12.3-alpine3.19
 ARG GITHUB_TOKEN
 
 #############################################################################################

@@ -49,7 +49,7 @@ FROM alpine/terragrunt:latest as terragrunt
 ##################
 # Get base image #
 ##################
-FROM python:3.12.2-alpine3.19
+FROM python:3.12.3-alpine3.19
 ARG GITHUB_TOKEN
 
 #############################################################################################
@@ -233,7 +233,6 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 standard \
                 prettier \
                 @prantlf/jsonlint \
-                eslint-plugin-jsonc \
                 v8r \
                 npm-package-json-lint \
                 npm-package-json-lint-config-default \

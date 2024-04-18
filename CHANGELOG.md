@@ -10,22 +10,31 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Core
   - Allow to override the number of parallel cores used, with variable **PARALLEL_PROCESS_NUMBER**
+  - Upgrade base python image from 3.12.2-alpine3.19 to 3.12.3-alpine3.19
 
 - Media
 
 - New linters
 
+- Reporters
+  - Add ruff sarif support
+
 - Fixes
+  - Fix listing of modified files, by @vkucera in <https://github.com/oxsecurity/megalinter/pull/3472>. Fixes <https://github.com/oxsecurity/megalinter/issues/2125>.
   - Fix clang-format documentation links to point to the correct version. Fixes [#3452](https://github.com/oxsecurity/megalinter/issues/3452)
   - Fix conflict between prettier and yamllint about spaces
   - Ensure [trufflehog](https://github.com/trufflesecurity/trufflehog) does not auto-update itself
   - Salesforce linters: use sf + default Flow Scanner rules
+  - Disable JSON_ESLINT_PLUGIN_JSONC until <https://github.com/ota-meshi/eslint-plugin-jsonc/issues/328> is fixed
+  - Upgrade tar in mega-linter-runner
+  - secretlint: remove default `.secretlintignore` that was never used but `.gitignore` is used instead. Fixes [#3328](https://github.com/oxsecurity/megalinter/issues/3328)
 
 - Doc
   - Update R2DevOps logo
   - Update [Roslynator](https://github.com/dotnet/roslynator) repo url and logo
 
 - CI
+  - Make SPELL_LYCHEE non blocking for internal CI jobs
 
 - Linter versions upgrades
   - [markdown-link-check](https://github.com/tcort/markdown-link-check) from 3.11.2 to **3.12.0** on 2024-03-10
@@ -116,6 +125,41 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 2.20.0 to **2.21.0** on 2024-04-04
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.10.4 to **8.10.6** on 2024-04-04
   - [tekton-lint](https://github.com/IBM/tekton-lint) from 1.0.1 to **1.0.2** on 2024-04-04
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 24.2.1 to **24.2.2** on 2024-04-13
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.26.54 to **0.26.170** on 2024-04-13
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.86.1 to **0.86.2** on 2024-04-13
+  - [csharpier](https://csharpier.com/) from 0.27.3 to **0.28.0** on 2024-04-13
+  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 8.0.103 to **8.0.104** on 2024-04-13
+  - [eslint-plugin-jsonc](https://ota-meshi.github.io/eslint-plugin-jsonc/) from 2.15.0 to **2.15.1** on 2024-04-13
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.49.3 to **0.49.4** on 2024-04-13
+  - [black](https://black.readthedocs.io/en/stable/) from 24.3.0 to **24.4.0** on 2024-04-13
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.357 to **1.1.358** on 2024-04-13
+  - [ruff](https://github.com/astral-sh/ruff) from 0.3.5 to **0.3.7** on 2024-04-13
+  - [checkov](https://www.checkov.io/) from 3.2.53 to **3.2.60** on 2024-04-13
+  - [secretlint](https://github.com/secretlint/secretlint) from 8.1.2 to **8.2.3** on 2024-04-13
+  - [syft](https://github.com/anchore/syft) from 1.1.1 to **1.2.0** on 2024-04-13
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.72.0 to **3.73.0** on 2024-04-13
+  - [rubocop](https://rubocop.org/) from 1.62.1 to **1.63.1** on 2024-04-13
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.10.6 to **8.10.7** on 2024-04-13
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.6.1 to **8.7.0** on 2024-04-13
+  - [vale](https://vale.sh/) from 3.3.1 to **3.4.0** on 2024-04-13
+  - [sqlfluff](https://www.sqlfluff.com/) from 3.0.3 to **3.0.4** on 2024-04-13
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.55.20 to **0.56.2** on 2024-04-13
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.49.4 to **0.49.6** on 2024-04-14
+  - [checkov](https://www.checkov.io/) from 3.2.60 to **3.2.63** on 2024-04-14
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 2.21.0 to **2.22.0** on 2024-04-14
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.7.5 to **1.8.0** on 2024-04-14
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.56.2 to **0.57.0** on 2024-04-14
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.86.2 to **0.86.3** on 2024-04-17
+  - [csharpier](https://csharpier.com/) from 0.28.0 to **0.28.1** on 2024-04-17
+  - [roslynator](https://github.com/dotnet/Roslynator) from 0.8.4.0 to **0.8.6.0** on 2024-04-17
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 14.4.0 to **14.4.1** on 2024-04-17
+  - [phpstan](https://phpstan.org/) from 1.10.66 to **1.10.67** on 2024-04-17
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.358 to **1.1.359** on 2024-04-17
+  - [checkov](https://www.checkov.io/) from 3.2.63 to **3.2.70** on 2024-04-17
+  - [grype](https://github.com/anchore/grype) from 0.75.0 to **0.76.0** on 2024-04-17
+  - [rubocop](https://rubocop.org/) from 1.63.1 to **1.63.2** on 2024-04-17
+  - [snakefmt](https://github.com/snakemake/snakefmt) from 0.10.0 to **0.10.1** on 2024-04-17
 <!-- linter-versions-end -->
 
 ## [v7.10.0] - 2024-03-10
