@@ -14,6 +14,7 @@ theme:
     text: Satoshi, sans-serif
   custom_dir: docs/overrides
   features:
+    - content.code.copy
     - navigation.instant
     - navigation.footer
   logo: assets/images/mega-linter-square.png

@@ -2388,6 +2388,20 @@
       "title": "Pre commands for COFFEE descriptor",
       "type": "array"
     },
+    "CONFIG_PROPERTIES_TO_APPEND": {
+      "$id": "#/properties/CONFIG_PROPERTIES_TO_APPEND",
+      "description": "List of configuration properties to append their values (instead of replacing them) in case of using EXTENDS.",
+      "examples": [
+        [
+          "ENABLE_LINTERS"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "List of configuration properties to append their values",
+      "type": "array"
+    },
     "CONFIG_REPORTER": {
       "$id": "#/properties/CONFIG_REPORTER",
       "default": true,
