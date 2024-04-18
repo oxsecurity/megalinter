@@ -149,7 +149,11 @@ def merge_dicts(first, second, config_properties_to_append):
         if k not in first:
             first[k] = v
         else:
-            if isinstance(first[k], list) and isinstance(v, list) and k in config_properties_to_append:
+            if (
+                isinstance(first[k], list)
+                and isinstance(v, list)
+                and k in config_properties_to_append
+            ):
                 first[k] = first[k] + v
             else:
                 first[k] = v
