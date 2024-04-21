@@ -160,6 +160,14 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [grype](https://github.com/anchore/grype) from 0.75.0 to **0.76.0** on 2024-04-17
   - [rubocop](https://rubocop.org/) from 1.63.1 to **1.63.2** on 2024-04-17
   - [snakefmt](https://github.com/snakemake/snakefmt) from 0.10.0 to **0.10.1** on 2024-04-17
+  - [ruff](https://github.com/astral-sh/ruff) from 0.3.7 to **0.4.1** on 2024-04-21
+  - [checkov](https://www.checkov.io/) from 3.2.70 to **3.2.73** on 2024-04-21
+  - [grype](https://github.com/anchore/grype) from 0.76.0 to **0.77.0** on 2024-04-21
+  - [kics](https://www.kics.io) from 1.7.13 to **2.0.0** on 2024-04-21
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.10.7 to **8.10.8** on 2024-04-21
+  - [sqlfluff](https://www.sqlfluff.com/) from 3.0.4 to **3.0.5** on 2024-04-21
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.8.0 to **1.8.1** on 2024-04-21
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.57.0 to **0.57.5** on 2024-04-21
 <!-- linter-versions-end -->
 
 ## [v7.10.0] - 2024-03-10
