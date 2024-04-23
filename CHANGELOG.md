@@ -17,7 +17,6 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Reporters
 
 - Fixes
-  - Implement fallback in case git diff does not work with merge-base
 
 - Doc
 
@@ -26,8 +25,15 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - CI
 
 - Linter versions upgrades
-  - [stylelint](https://stylelint.io) from 16.3.1 to **16.4.0** on 2024-04-23
 <!-- linter-versions-end -->
+
+## [v7.11.1] - 2024-04-23
+
+- Fixes
+  - Implement fallback in case git diff does not work with merge-base
+
+- Linter versions upgrades
+  - [stylelint](https://stylelint.io) from 16.3.1 to **16.4.0**
 
 ## [v7.11.0] - 2024-04-23
 
