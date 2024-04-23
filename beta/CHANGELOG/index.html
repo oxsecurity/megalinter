@@ -5028,7 +5028,10 @@
 <li>Reporters</li>
 </ul>
 <ul>
-<li>Fixes</li>
+<li>Fixes<ul>
+<li>Implement fallback in case git diff does not work with merge-base</li>
+</ul>
+</li>
 </ul>
 <ul>
 <li>Doc</li>
@@ -5046,11 +5049,11 @@
 <h2 id="v7110-2024-04-23">[v7.11.0] - 2024-04-23</h2>
 <ul>
 <li>Core<ul>
-<li>Allow to override the number of parallel cores used, with variable <strong>PARALLEL_PROCESS_NUMBER</strong>, by @nvuillam in https://github.com/oxsecurity/megalinter/pull/3428</li>
+<li>Allow to override the number of parallel cores used, with variable <strong>PARALLEL_PROCESS_NUMBER</strong>, by @nvuillam in <a href="https://github.com/oxsecurity/megalinter/pull/3428">https://github.com/oxsecurity/megalinter/pull/3428</a></li>
 <li>Upgrade base python image from 3.12.2-alpine3.19 to 3.12.3-alpine3.19</li>
-<li>Upgrade PHP 8.1 to 8.3 by @llaville in https://github.com/oxsecurity/megalinter/pull/3464</li>
-<li>Add descriptor pre / post commands, by @bdovaz in https://github.com/oxsecurity/megalinter/pull/3468</li>
-<li>Allow merge lists with <strong>EXTENDS</strong>, by @bdovaz in https://github.com/oxsecurity/megalinter/pull/3469</li>
+<li>Upgrade PHP 8.1 to 8.3 by @llaville in <a href="https://github.com/oxsecurity/megalinter/pull/3464">https://github.com/oxsecurity/megalinter/pull/3464</a></li>
+<li>Add descriptor pre / post commands, by @bdovaz in <a href="https://github.com/oxsecurity/megalinter/pull/3468">https://github.com/oxsecurity/megalinter/pull/3468</a></li>
+<li>Allow merge lists with <strong>EXTENDS</strong>, by @bdovaz in <a href="https://github.com/oxsecurity/megalinter/pull/3469">https://github.com/oxsecurity/megalinter/pull/3469</a></li>
 </ul>
 </li>
 </ul>
@@ -5059,51 +5062,51 @@
 </ul>
 <ul>
 <li>New linters<ul>
-<li>Add Kotlin detekt linter, by @enciyo in https://github.com/oxsecurity/megalinter/pull/3408</li>
+<li>Add Kotlin detekt linter, by @enciyo in <a href="https://github.com/oxsecurity/megalinter/pull/3408">https://github.com/oxsecurity/megalinter/pull/3408</a></li>
 </ul>
 </li>
 </ul>
 <ul>
 <li>Reporters<ul>
-<li>Add ruff sarif support, by @Skitionek in https://github.com/oxsecurity/megalinter/pull/3486</li>
+<li>Add ruff sarif support, by @Skitionek in <a href="https://github.com/oxsecurity/megalinter/pull/3486">https://github.com/oxsecurity/megalinter/pull/3486</a></li>
 </ul>
 </li>
 </ul>
 <ul>
 <li>Fixes<ul>
 <li>Fix listing of modified files, by @vkucera in <a href="https://github.com/oxsecurity/megalinter/pull/3472">https://github.com/oxsecurity/megalinter/pull/3472</a>. Fixes <a href="https://github.com/oxsecurity/megalinter/issues/2125">https://github.com/oxsecurity/megalinter/issues/2125</a>.</li>
-<li>Fix conflict between prettier and yamllint about spaces, by @apeyrat in https://github.com/oxsecurity/megalinter/pull/3426</li>
-<li>Ensure <a href="https://github.com/trufflesecurity/trufflehog">trufflehog</a> does not auto-update itself,  by @wandering-tales in https://github.com/oxsecurity/megalinter/pull/3430</li>
-<li>Salesforce linters: use sf + default Flow Scanner rules, by @nvuillam in https://github.com/oxsecurity/megalinter/pull/3435</li>
+<li>Fix conflict between prettier and yamllint about spaces, by @apeyrat in <a href="https://github.com/oxsecurity/megalinter/pull/3426">https://github.com/oxsecurity/megalinter/pull/3426</a></li>
+<li>Ensure <a href="https://github.com/trufflesecurity/trufflehog">trufflehog</a> does not auto-update itself,  by @wandering-tales in <a href="https://github.com/oxsecurity/megalinter/pull/3430">https://github.com/oxsecurity/megalinter/pull/3430</a></li>
+<li>Salesforce linters: use sf + default Flow Scanner rules, by @nvuillam in <a href="https://github.com/oxsecurity/megalinter/pull/3435">https://github.com/oxsecurity/megalinter/pull/3435</a></li>
 <li>Disable JSON_ESLINT_PLUGIN_JSONC until <a href="https://github.com/ota-meshi/eslint-plugin-jsonc/issues/328">https://github.com/ota-meshi/eslint-plugin-jsonc/issues/328</a> is fixed</li>
 <li>Upgrade tar in mega-linter-runner</li>
 <li>secretlint: remove default <code>.secretlintignore</code> that was never used but <code>.gitignore</code> is used instead. Fixes <a href="https://github.com/oxsecurity/megalinter/issues/3328">#3328</a></li>
-<li>Add jpeg, xlsx to .gitleaks.toml, by @rasa in https://github.com/oxsecurity/megalinter/pull/3434</li>
-<li>Fix Json Schema, by @nvuillam in https://github.com/oxsecurity/megalinter/pull/3470</li>
-<li>Remove <code>TEMPLATES/.secretlintignore</code>, by @pjungermann in https://github.com/oxsecurity/megalinter/pull/3476</li>
+<li>Add jpeg, xlsx to .gitleaks.toml, by @rasa in <a href="https://github.com/oxsecurity/megalinter/pull/3434">https://github.com/oxsecurity/megalinter/pull/3434</a></li>
+<li>Fix Json Schema, by @nvuillam in <a href="https://github.com/oxsecurity/megalinter/pull/3470">https://github.com/oxsecurity/megalinter/pull/3470</a></li>
+<li>Remove <code>TEMPLATES/.secretlintignore</code>, by @pjungermann in <a href="https://github.com/oxsecurity/megalinter/pull/3476">https://github.com/oxsecurity/megalinter/pull/3476</a></li>
 </ul>
 </li>
 </ul>
 <ul>
 <li>Doc<ul>
-<li>Update R2DevOps logo, by @nvuillam in https://github.com/oxsecurity/megalinter/pull/3436</li>
-<li>Update <a href="https://github.com/dotnet/roslynator">Roslynator</a> repo url and logo, by @TommyE123 in https://github.com/oxsecurity/megalinter/pull/3444</li>
-<li>Fix clang-format documentation links to point to the correct version. Fixes <a href="https://github.com/oxsecurity/megalinter/issues/3452">#3452</a>, by @daltonv in https://github.com/oxsecurity/megalinter/pull/3453</li>
-<li>Add copy to clipboard button in code block (documentation), by @nikkii86 in https://github.com/oxsecurity/megalinter/pull/3491</li>
+<li>Update R2DevOps logo, by @nvuillam in <a href="https://github.com/oxsecurity/megalinter/pull/3436">https://github.com/oxsecurity/megalinter/pull/3436</a></li>
+<li>Update <a href="https://github.com/dotnet/roslynator">Roslynator</a> repo url and logo, by @TommyE123 in <a href="https://github.com/oxsecurity/megalinter/pull/3444">https://github.com/oxsecurity/megalinter/pull/3444</a></li>
+<li>Fix clang-format documentation links to point to the correct version. Fixes <a href="https://github.com/oxsecurity/megalinter/issues/3452">#3452</a>, by @daltonv in <a href="https://github.com/oxsecurity/megalinter/pull/3453">https://github.com/oxsecurity/megalinter/pull/3453</a></li>
+<li>Add copy to clipboard button in code block (documentation), by @nikkii86 in <a href="https://github.com/oxsecurity/megalinter/pull/3491">https://github.com/oxsecurity/megalinter/pull/3491</a></li>
 </ul>
 </li>
 </ul>
 <ul>
 <li>Flavors<ul>
-<li>Add C &amp; C++ linters in Python flavor by @nvuillam in https://github.com/oxsecurity/megalinter/pull/3456</li>
+<li>Add C &amp; C++ linters in Python flavor by @nvuillam in <a href="https://github.com/oxsecurity/megalinter/pull/3456">https://github.com/oxsecurity/megalinter/pull/3456</a></li>
 </ul>
 </li>
 </ul>
 <ul>
 <li>CI<ul>
 <li>Make SPELL_LYCHEE non blocking for internal CI jobs</li>
-<li>Remove old unused automerge workflows by @echoix in https://github.com/oxsecurity/megalinter/pull/3432</li>
-<li>Add consistent python3/python handling at build.sh, by @pjungermann in https://github.com/oxsecurity/megalinter/pull/3475</li>
+<li>Remove old unused automerge workflows by @echoix in <a href="https://github.com/oxsecurity/megalinter/pull/3432">https://github.com/oxsecurity/megalinter/pull/3432</a></li>
+<li>Add consistent python3/python handling at build.sh, by @pjungermann in <a href="https://github.com/oxsecurity/megalinter/pull/3475">https://github.com/oxsecurity/megalinter/pull/3475</a></li>
 </ul>
 </li>
 </ul>
