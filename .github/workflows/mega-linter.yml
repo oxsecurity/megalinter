@@ -82,12 +82,12 @@ jobs:
           # VALIDATE_ALL_CODEBASE: true
           #
           # To validate only diff with main, set to:
-          # VALIDATE_ALL_CODEBASE: >-
-          #   ${{
-          #     github.event_name == 'push' &&
-          #     contains(fromJSON('["refs/heads/main", "refs/heads/master"]'), github.ref)
-          #   }}
-          VALIDATE_ALL_CODEBASE: true # ml workflow change
+          VALIDATE_ALL_CODEBASE: >-
+           ${{
+             github.event_name == 'push' &&
+             contains(fromJSON('["refs/heads/main", "refs/heads/master"]'), github.ref)
+           }}
+          # VALIDATE_ALL_CODEBASE: true # ml workflow change
           # >-
           #   ${{
           #     github.event_name == 'push' &&
