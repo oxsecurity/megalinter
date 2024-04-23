@@ -8,3 +8,5 @@ megalinter/
 .vscode/
 
 site/
+
+.sfdx/
