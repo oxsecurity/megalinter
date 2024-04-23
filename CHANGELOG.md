@@ -17,6 +17,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Reporters
 
 - Fixes
+  - Implement fallback in case git diff does not work with merge-base
 
 - Doc
 
