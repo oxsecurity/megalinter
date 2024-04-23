@@ -25,6 +25,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - CI
 
 - Linter versions upgrades
+  - [phpcs](https://github.com/PHPCSStandards/PHP_CodeSniffer) from 3.9.1 to **3.9.2** on 2024-04-23
 <!-- linter-versions-end -->
 
 ## [v7.11.1] - 2024-04-23
