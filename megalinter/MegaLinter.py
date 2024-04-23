@@ -776,13 +776,15 @@ class Megalinter:
             # Try to fetch default_branch from origin, because it isn't cached locally.
             repo.git.fetch("origin", f"{remote_ref}:{local_ref}")
         # Make git diff to list files (and exclude symlinks)
-        try: 
+        try:
             # Use optimized way from https://github.com/oxsecurity/megalinter/pull/3472
             diff = repo.git.diff(f"{default_branch_remote}...", name_only=True)
         except Exception as e7:
             # Use previous way as fallback
             logging.warning("Git diff error: " + str(e7))
-            logging.warning("You might need to add check-depth: 0 or equivalent to access merge-base")
+            logging.warning(
+                "You might need to add check-depth: 0 or equivalent to access merge-base"
+            )
             logging.warning("See https://github.com/oxsecurity/megalinter/pull/3472")
             logging.warning("Using fallback without merge-base...")
             diff = repo.git.diff(default_branch_remote, name_only=True)
