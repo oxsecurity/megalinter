@@ -168,6 +168,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [sqlfluff](https://www.sqlfluff.com/) from 3.0.4 to **3.0.5** on 2024-04-21
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.8.0 to **1.8.1** on 2024-04-21
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.57.0 to **0.57.5** on 2024-04-21
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.86.3 to **0.86.4** on 2024-04-23
+  - [checkov](https://www.checkov.io/) from 3.2.73 to **3.2.74** on 2024-04-23
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.50.1 to **0.50.2** on 2024-04-23
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.50.1 to **0.50.2** on 2024-04-23
+  - [rubocop](https://rubocop.org/) from 1.63.2 to **1.63.3** on 2024-04-23
 <!-- linter-versions-end -->
 
 ## [v7.10.0] - 2024-03-10
