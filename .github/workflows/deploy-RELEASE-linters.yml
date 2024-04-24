@@ -51,6 +51,7 @@ jobs:
           [
             "action_actionlint",
             "ansible_ansible_lint",
+            "api_spectral",
             "arm_arm_ttk",
             "bash_exec",
             "bash_shellcheck",
