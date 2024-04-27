@@ -29,6 +29,13 @@ CVE-2021-38561
 CVE-2022-32149
 GHSA-m425-mq94-257g
 
+# terrascan
+# https://github.com/tenable/terrascan/issues/1674
+CVE-2024-23652
+CVE-2024-23653
+CVE-2024-23651
+CVE-2024-26147
+
 # Dockerfile
 DS001
 DS002
