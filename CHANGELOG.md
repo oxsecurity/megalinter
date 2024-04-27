@@ -44,6 +44,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.73.0 to **3.74.0** on 2024-04-26
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.10.8 to **8.11.0** on 2024-04-26
   - [lychee](https://lychee.cli.rs) from 0.14.3 to **0.15.0** on 2024-04-26
+  - [markdown-table-formatter](https://www.npmjs.com/package/markdown-table-formatter) from 1.5.0 to **1.6.0** on 2024-04-27
 <!-- linter-versions-end -->
 
 ## [v7.11.1] - 2024-04-23
