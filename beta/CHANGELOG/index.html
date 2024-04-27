@@ -5070,7 +5070,7 @@
 <li>Media</li>
 </ul>
 <ul>
-<li>New linters<ul>
+<li>Linters<ul>
 <li><code>API_SPECTRAL</code> was added as replacement for <code>OPENAPI_SPECTRAL</code> (deprecated), supporting AsyncAPI and OpenAPI by default. Uses Spectral's standard config file name <code>.spectral.yaml</code> instead of <code>.openapirc.yml</code> with a default config with rulesets for AsyncAPI and OpenAPI enabled. Fixes <a href="https://github.com/oxsecurity/megalinter/issues/3387">#3387</a></li>
 </ul>
 </li>
@@ -5094,7 +5094,10 @@
 <li>Flavors</li>
 </ul>
 <ul>
-<li>CI</li>
+<li>CI<ul>
+<li>Build: take in account disabled linters for workflow auto-update</li>
+</ul>
+</li>
 </ul>
 <ul>
 <li>Linter versions upgrades<ul>
