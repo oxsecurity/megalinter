@@ -18,8 +18,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Reporters
 
 - Fixes
+  - Disable sql-lint as it is no longer maintained
 
 - Doc
+  - Handle disabled_reason property in descriptors
 
 - Flavors
 
