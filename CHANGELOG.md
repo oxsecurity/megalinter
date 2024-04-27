@@ -27,6 +27,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Flavors
 
 - CI
+  - Build: take in account disabled linters for workflow auto-update
 
 - Linter versions upgrades
   - [phpcs](https://github.com/PHPCSStandards/PHP_CodeSniffer) from 3.9.1 to **3.9.2** on 2024-04-23
