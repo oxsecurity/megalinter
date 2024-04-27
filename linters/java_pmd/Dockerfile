@@ -128,9 +128,9 @@ ENV PATH="$JAVA_HOME/bin:${PATH}"
 
 # pmd installation
 RUN wget --quiet https://github.com/pmd/pmd/releases/download/pmd_releases%2F${PMD_VERSION}/pmd-dist-${PMD_VERSION}-bin.zip && \
-    unzip pmd-bin-${PMD_VERSION}.zip && \
-    rm pmd-bin-${PMD_VERSION}.zip && \
-    mv pmd-bin-${PMD_VERSION} /usr/bin/pmd && \
+    unzip pmd-dist-${PMD_VERSION}-bin.zip && \
+    rm pmd-dist-${PMD_VERSION}-bin.zip && \
+    mv pmd-dist-${PMD_VERSION}-bin /usr/bin/pmd && \
     chmod +x /usr/bin/pmd/bin/run.sh
 
 
