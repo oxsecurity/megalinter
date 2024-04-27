@@ -16,7 +16,6 @@
         "BASH_SHFMT",
         "C_CPPLINT",
         "CLOJURE_CLJ_KONDO",
-        "CLOJURE_CLJSTYLE",
         "CLOUDFORMATION_CFN_LINT",
         "COPYPASTE_JSCPD",
         "CPP_CPPLINT",

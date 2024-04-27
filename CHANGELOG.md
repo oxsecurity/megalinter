@@ -15,7 +15,6 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Linters
   - `API_SPECTRAL` was added as replacement for `OPENAPI_SPECTRAL` (deprecated), supporting AsyncAPI and OpenAPI by default. Uses Spectral's standard config file name `.spectral.yaml` instead of `.openapirc.yml` with a default config with rulesets for AsyncAPI and OpenAPI enabled. Fixes [#3387](https://github.com/oxsecurity/megalinter/issues/3387)
-  - Re-enable cljstyle
 
 - Reporters
 
