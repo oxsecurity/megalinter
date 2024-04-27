@@ -48,7 +48,7 @@ RUN apk add --no-cache \
                 make \
                 musl-dev \
                 openssh \
-                openjdk17 \
+                openjdk21 \
     && git config --global core.autocrlf true
 #APK__END
 
@@ -123,7 +123,7 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #############################################################################################
 #OTHER__START
 # KOTLIN installation
-ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 
 # detekt installation

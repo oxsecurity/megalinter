@@ -65,7 +65,7 @@ RUN apk add --no-cache \
                 openssh \
                 docker \
                 openrc \
-                openjdk17 \
+                openjdk21 \
                 py3-pyflakes \
                 nodejs \
                 npm \
@@ -228,7 +228,7 @@ COPY --link --from=lychee /usr/local/bin/lychee /usr/bin/
 #OTHER__START
 RUN rc-update add docker boot && rc-service docker start || true
 # KOTLIN installation
-ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 
 # actionlint installation
@@ -258,7 +258,7 @@ RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: Fil
 
 # npm-groovy-lint installation
 # Next line commented because already managed by another linter
-# ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+# ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 # Next line commented because already managed by another linter
 # ENV PATH="$JAVA_HOME/bin:${PATH}"
 

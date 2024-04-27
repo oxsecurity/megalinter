@@ -63,7 +63,7 @@ RUN apk add --no-cache \
                 make \
                 musl-dev \
                 openssh \
-                openjdk17 \
+                openjdk21 \
                 py3-pyflakes \
                 nodejs \
                 npm \
@@ -228,12 +228,12 @@ COPY --link --from=lychee /usr/local/bin/lychee /usr/bin/
 #############################################################################################
 #OTHER__START
 # KOTLIN installation
-ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 
 # SALESFORCE installation
 # Next line commented because already managed by another linter
-# ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+# ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 # Next line commented because already managed by another linter
 # ENV PATH="$JAVA_HOME/bin:${PATH}"
 RUN sf plugins install @salesforce/plugin-packaging \
@@ -268,7 +268,7 @@ RUN sf plugins install @salesforce/plugin-packaging \
 
 # npm-groovy-lint installation
 # Next line commented because already managed by another linter
-# ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+# ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 # Next line commented because already managed by another linter
 # ENV PATH="$JAVA_HOME/bin:${PATH}"
 

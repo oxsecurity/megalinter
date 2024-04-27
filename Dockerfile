@@ -91,7 +91,7 @@ RUN apk add --no-cache \
                 docker \
                 openrc \
                 icu-libs \
-                openjdk17 \
+                openjdk21 \
                 perl \
                 perl-dev \
                 gnupg \
@@ -432,12 +432,12 @@ ENV PATH="${PATH}:/root/.dotnet/tools"
 #         "$ALPINE_GLIBC_I18N_PACKAGE_FILENAME"
 
 # JAVA installation
-ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 
 # KOTLIN installation
 # Next line commented because already managed by another linter
-# ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+# ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 # Next line commented because already managed by another linter
 # ENV PATH="$JAVA_HOME/bin:${PATH}"
 
@@ -467,7 +467,7 @@ RUN curl -L https://github.com/PowerShell/PowerShell/releases/download/v7.4.2/po
 
 # SALESFORCE installation
 # Next line commented because already managed by another linter
-# ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+# ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 # Next line commented because already managed by another linter
 # ENV PATH="$JAVA_HOME/bin:${PATH}"
     && sf plugins install @salesforce/plugin-packaging \
@@ -477,7 +477,7 @@ RUN curl -L https://github.com/PowerShell/PowerShell/releases/download/v7.4.2/po
 
 # SCALA installation
 # Next line commented because already managed by another linter
-# ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+# ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 # Next line commented because already managed by another linter
 # ENV PATH="$JAVA_HOME/bin:${PATH}"
     && curl --retry-all-errors --retry 10 -fLo coursier https://git.io/coursier-cli && \
@@ -555,7 +555,7 @@ RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
 
 # npm-groovy-lint installation
 # Next line commented because already managed by another linter
-# ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+# ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 # Next line commented because already managed by another linter
 # ENV PATH="$JAVA_HOME/bin:${PATH}"
 

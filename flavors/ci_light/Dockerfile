@@ -57,7 +57,7 @@ RUN apk add --no-cache \
                 nodejs \
                 npm \
                 yarn \
-                openjdk17 \
+                openjdk21 \
                 libc-dev \
                 libxml2-dev \
                 libxml2-utils \
@@ -187,7 +187,7 @@ COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
 RUN wget -q -O - https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/master/install.sh | sh -s
 
 # npm-groovy-lint installation
-ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 
 # checkmake installation
