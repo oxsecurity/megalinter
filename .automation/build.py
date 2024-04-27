@@ -1241,14 +1241,10 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         # Indicate that a linter is disabled in this version
         if hasattr(linter, "disabled") and linter.disabled is True:
             linter_doc_md += [""]
-            linter_doc_md += [
-                "_This linter has been disabled in this version_"
-            ]
+            linter_doc_md += ["_This linter has been disabled in this version_"]
             if hasattr(linter, "disabled_reason") and linter.disabled_reason is True:
                 linter_doc_md += [""]
-                linter_doc_md += [
-                    f"_Disabled reason: {linter.disabled_reason}_"
-                ]
+                linter_doc_md += [f"_Disabled reason: {linter.disabled_reason}_"]
 
         # Linter text , if defined in YML descriptor
         if hasattr(linter, "linter_text") and linter.linter_text:
