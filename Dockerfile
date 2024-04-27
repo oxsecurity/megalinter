@@ -459,19 +459,18 @@ RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GI
 
 
 # POWERSHELL installation
-# Next line commented because already managed by another linter
-# RUN curl -L https://github.com/PowerShell/PowerShell/releases/download/v7.4.1/powershell-7.4.1-linux-musl-x64.tar.gz -o /tmp/powershell.tar.gz \
-#     && mkdir -p /opt/microsoft/powershell/7 \
-#     && tar zxf /tmp/powershell.tar.gz -C /opt/microsoft/powershell/7 \
-#     && chmod +x /opt/microsoft/powershell/7/pwsh \
-#     && ln -s /opt/microsoft/powershell/7/pwsh /usr/bin/pwsh
+RUN curl -L https://github.com/PowerShell/PowerShell/releases/download/v7.4.2/powershell-7.4.2-linux-musl-x64.tar.gz -o /tmp/powershell.tar.gz \
+    && mkdir -p /opt/microsoft/powershell/7 \
+    && tar zxf /tmp/powershell.tar.gz -C /opt/microsoft/powershell/7 \
+    && chmod +x /opt/microsoft/powershell/7/pwsh \
+    && ln -s /opt/microsoft/powershell/7/pwsh /usr/bin/pwsh \
 
 # SALESFORCE installation
 # Next line commented because already managed by another linter
 # ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
 # Next line commented because already managed by another linter
 # ENV PATH="$JAVA_HOME/bin:${PATH}"
-RUN sf plugins install @salesforce/plugin-packaging \
+    && sf plugins install @salesforce/plugin-packaging \
     && echo y|sf plugins install sfdx-hardis \
     && npm cache clean --force || true \
     && rm -rf /root/.npm/_cacache \
