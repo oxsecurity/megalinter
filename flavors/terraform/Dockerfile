@@ -166,7 +166,6 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 @secretlint/secretlint-rule-preset-recommend \
                 @secretlint/secretlint-formatter-sarif \
                 cspell \
-                sql-lint \
                 @ibm/tekton-lint  && \
     echo "Cleaning npm cache…" \
     && npm cache clean --force || true \

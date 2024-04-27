@@ -50,7 +50,6 @@
         "SPELL_PROSELINT",
         "SPELL_VALE",
         "SPELL_LYCHEE",
-        "SQL_SQL_LINT",
         "SQL_SQLFLUFF",
         "TEKTON_TEKTON_LINT",
         "XML_XMLLINT",
