@@ -50,6 +50,13 @@ def get_root_dir():
 # Define env variables before any test case
 def linter_test_setup(params=None):
     config.delete()
+    # Workaround for
+    if os.environ.get(
+        "TEST_KEYWORDS", ""
+    ) == "api_spectral" and "openapi_spectral" in os.environ.get(
+        "PYTEST_CURRENT_TEST", ""
+    ):
+        raise unittest.SkipTest("This test class should not be run in this campaign")
     if params is None:
         params = {"request_id": str(uuid.uuid1())}
     request_id = params["request_id"]
