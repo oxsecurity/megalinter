@@ -11,7 +11,7 @@
 <link href="../repository_secretlint/" rel="prev"/>
 <link href="../repository_syft/" rel="next"/>
 <link href="../../assets/images/mega-linter-square.png" rel="icon"/>
-<meta content="mkdocs-1.5.3, mkdocs-material-9.5.18" name="generator"/>
+<meta content="mkdocs-1.6.0, mkdocs-material-9.5.19" name="generator"/>
 <title>semgrep configuration in MegaLinter - MegaLinter by OX Security</title>
 <link href="../../assets/stylesheets/main.66ac8b77.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
@@ -3481,7 +3481,7 @@
 <td style="text-align: center;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png"/></a></td>
 <td style="text-align: left;"><a href="https://megalinter.io/beta/supported-linters/">all</a></td>
 <td style="text-align: left;">Default MegaLinter Flavor</td>
-<td style="text-align: center;">122</td>
+<td style="text-align: center;">123</td>
 <td style="text-align: right;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter"/></a></a></td>
 </tr>
 <tr>
@@ -3495,7 +3495,7 @@
 <td style="text-align: center;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico"/></a></td>
 <td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/cupcake/">cupcake</a></td>
 <td style="text-align: left;">MegaLinter for the most commonly used languages</td>
-<td style="text-align: center;">84</td>
+<td style="text-align: center;">83</td>
 <td style="text-align: right;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake"/></a></a></td>
 </tr>
 <tr>
@@ -3714,6 +3714,10 @@ OPTIONS
        --emacs
            Output results in Emacs single-line format.
 
+       --emacs-output=VAL
+           Write a copy of the emacs output to a file or post to or post to
+           URL.
+
        --enable-nosem
            Enables 'nosem'. Findings will not be reported on lines containing
            a 'nosem' comment at the end. Enabled by default.
@@ -3763,8 +3767,16 @@ OPTIONS
        --gitlab-sast
            Output results in GitLab SAST format.
 
+       --gitlab-sast-output=VAL
+           Write a copy of the GitLab SAST output to a file or post to or
+           post to URL.
+
        --gitlab-secrets
            Output results in GitLab Secrets format.
+
+       --gitlab-secrets-output=VAL
+           Write a copy of the GitLab Secrets output to a file or post to or
+           post to URL.
 
        --historical-secrets
            Scans git history using Secrets rules.
@@ -3802,8 +3814,16 @@ OPTIONS
        --json
            Output results in Semgrep's JSON format.
 
+       --json-output=VAL
+           Write a copy of the json output to a file or post to or post to
+           URL.
+
        --junit-xml
            Output results in JUnit XML format.
+
+       --junit-xml-output=VAL
+           Write a copy of the JUnit XML output to a file or post to or post
+           to URL.
 
        -l VAL, --lang=VAL
            Parse pattern and all files in specified language. Must be used
@@ -3934,6 +3954,10 @@ OPTIONS
        --sarif
            Output results in SARIF format.
 
+       --sarif-output=VAL
+           Write a copy of the SARIF output to a file or post to or post to
+           URL.
+
        --scan-unknown-extensions
            If true, target files specified directly on the command line will
            bypass normal language detection. They will be analyzed according
@@ -3968,6 +3992,10 @@ OPTIONS
        --text
            Output results in text format.
 
+       --text-output=VAL
+           Write a copy of the text output to a file or post to or post to
+           URL.
+
        --time
            Include a timing summary with the results. If output format is
            json, provides times for each pair (rule, target).
@@ -4000,6 +4028,9 @@ OPTIONS
            filtering. Setting this flag does nothing if the scanning root is
            not in a git repository.
 
+       --use-osemgrep-sarif
+           Output results using osemgrep.
+
        -v, --verbose
            Show more details about what rules are running, which files failed
            to parse, etc.
@@ -4014,6 +4045,10 @@ OPTIONS
 
        --vim
            Output results in vim single-line format.
+
+       --vim-output=VAL
+           Write a copy of the vim output to a file or post to or post to
+           URL.
 
        --x-ls
            [INTERNAL] List the selected target files and the skipped target
@@ -4062,7 +4097,7 @@ AUTHORS
 
 BUGS
        If you encounter an issue, please report it at
-       https://github.com/returntocorp/semgrep/issues
+       https://github.com/semgrep/semgrep/issues
 
 </code></pre>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
@@ -4138,7 +4173,7 @@ BUGS
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.instant", "navigation.footer"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
-<script src="../../assets/javascripts/bundle.3220b9d7.min.js"></script>
+<script src="../../assets/javascripts/bundle.dd8806f2.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
 <script src="../../javascripts/tables.js"></script>
 <script src="../../javascripts/gtag.js"></script>

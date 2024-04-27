@@ -10,7 +10,7 @@
 <link href="https://megalinter.io/beta/CHANGELOG/" rel="canonical"/>
 <link href="../license-explanations/" rel="prev"/>
 <link href="../assets/images/mega-linter-square.png" rel="icon"/>
-<meta content="mkdocs-1.5.3, mkdocs-material-9.5.18" name="generator"/>
+<meta content="mkdocs-1.6.0, mkdocs-material-9.5.19" name="generator"/>
 <title>Changelog - MegaLinter by OX Security</title>
 <link href="../assets/stylesheets/main.66ac8b77.min.css" rel="stylesheet"/>
 <link href="../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
@@ -5076,10 +5076,16 @@
 <li>Reporters</li>
 </ul>
 <ul>
-<li>Fixes</li>
+<li>Fixes<ul>
+<li>Disable sql-lint as it is no longer maintained</li>
+</ul>
+</li>
 </ul>
 <ul>
-<li>Doc</li>
+<li>Doc<ul>
+<li>Handle disabled_reason property in descriptors</li>
+</ul>
+</li>
 </ul>
 <ul>
 <li>Flavors</li>
@@ -5090,6 +5096,19 @@
 <ul>
 <li>Linter versions upgrades<ul>
 <li><a href="https://github.com/PHPCSStandards/PHP_CodeSniffer">phpcs</a> from 3.9.1 to <strong>3.9.2</strong> on 2024-04-23</li>
+<li><a href="https://csharpier.com/">csharpier</a> from 0.28.1 to <strong>0.28.2</strong> on 2024-04-26</li>
+<li><a href="https://github.com/dotnet/Roslynator">roslynator</a> from 0.8.6.0 to <strong>0.8.7.0</strong> on 2024-04-26</li>
+<li><a href="https://black.readthedocs.io/en/stable/">black</a> from 24.4.0 to <strong>24.4.2</strong> on 2024-04-26</li>
+<li><a href="https://mypy.readthedocs.io/en/stable/">mypy</a> from 1.9.0 to <strong>1.10.0</strong> on 2024-04-26</li>
+<li><a href="https://github.com/Microsoft/pyright">pyright</a> from 1.1.359 to <strong>1.1.360</strong> on 2024-04-26</li>
+<li><a href="https://github.com/astral-sh/ruff">ruff</a> from 0.4.1 to <strong>0.4.2</strong> on 2024-04-26</li>
+<li><a href="https://github.com/anchore/grype">grype</a> from 0.77.0 to <strong>0.77.1</strong> on 2024-04-26</li>
+<li><a href="https://github.com/anchore/syft">syft</a> from 1.2.0 to <strong>1.3.0</strong> on 2024-04-26</li>
+<li><a href="https://aquasecurity.github.io/trivy/">trivy-sbom</a> from 0.50.2 to <strong>0.50.4</strong> on 2024-04-26</li>
+<li><a href="https://aquasecurity.github.io/trivy/">trivy</a> from 0.50.2 to <strong>0.50.4</strong> on 2024-04-26</li>
+<li><a href="https://github.com/trufflesecurity/trufflehog">trufflehog</a> from 3.73.0 to <strong>3.74.0</strong> on 2024-04-26</li>
+<li><a href="https://snakemake.readthedocs.io/en/stable/">snakemake</a> from 8.10.8 to <strong>8.11.0</strong> on 2024-04-26</li>
+<li><a href="https://lychee.cli.rs">lychee</a> from 0.14.3 to <strong>0.15.0</strong> on 2024-04-26</li>
 </ul>
 </li>
 </ul>
@@ -10226,7 +10245,7 @@ commit_user_email: nicolas.vuillamy@ox.security</code></p>
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "navigation.instant", "navigation.footer"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
-<script src="../assets/javascripts/bundle.3220b9d7.min.js"></script>
+<script src="../assets/javascripts/bundle.dd8806f2.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
 <script src="../javascripts/tables.js"></script>
 <script src="../javascripts/gtag.js"></script>
