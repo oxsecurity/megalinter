@@ -111,6 +111,8 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 typescript \
                 prettier \
                 markdownlint-cli \
+                remark-cli \
+                remark-preset-lint-recommended \
                 markdown-table-formatter  && \
     echo "Cleaning npm cache…" \
     && npm cache clean --force || true \
