@@ -6,6 +6,19 @@ CVE-2024-0057
 # https://github.com/editorconfig-checker/editorconfig-checker/issues/342
 CVE-2023-39325
 
+# gitleaks
+# Solved in next gitleaks release: https://github.com/gitleaks/gitleaks/pull/1342
+CVE-2021-38561
+CVE-2022-32149
+
+# grype & syft
+# https://github.com/anchore/grype/issues/1834
+CVE-2024-3154
+
+# KICS
+# https://github.com/Checkmarx/kics/issues/7029
+CVE-2024-3817
+
 # protolint
 # https://github.com/yoheimuta/protolint/issues/380
 CVE-2021-33194
@@ -15,6 +28,17 @@ CVE-2023-39325
 CVE-2021-38561
 CVE-2022-32149
 GHSA-m425-mq94-257g
+
+# sfdx-scanner
+CVE-2023-6378
+CVE-2020-36518
+CVE-2021-46877
+CVE-2022-42003
+CVE-2022-42004
+CVE-2022-33980
+CVE-2022-42889
+CVE-2022-1471
+CVE-2022-25857
 
 # Dockerfile
 DS001
