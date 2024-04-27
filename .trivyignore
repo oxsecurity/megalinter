@@ -15,7 +15,7 @@ CVE-2022-32149
 # https://github.com/anchore/grype/issues/1834
 CVE-2024-3154
 
-# KICS & tflint
+# KICS & tflint & terragrunt & terraform-fmt
 # https://github.com/Checkmarx/kics/issues/7029
 CVE-2024-3817
 
