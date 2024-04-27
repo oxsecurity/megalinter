@@ -29,7 +29,7 @@ FROM trufflesecurity/trufflehog:latest as trufflehog
 FROM jdkato/vale:latest as vale
 FROM lycheeverse/lychee:latest-alpine as lychee
 FROM ghcr.io/terraform-linters/tflint:v0.50.3 as tflint
-FROM tenable/terrascan:1.18.11 as terrascan
+FROM tenable/terrascan:1.19.1 as terrascan
 FROM alpine/terragrunt:latest as terragrunt
 # Next FROM line commented because already managed by another linter
 # FROM alpine/terragrunt:latest as terragrunt

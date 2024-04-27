@@ -22,7 +22,7 @@ FROM zricethezav/gitleaks:v8.18.2 as gitleaks
 FROM checkmarx/kics:alpine as kics
 FROM trufflesecurity/trufflehog:latest as trufflehog
 FROM ghcr.io/terraform-linters/tflint:v0.50.3 as tflint
-FROM tenable/terrascan:1.18.11 as terrascan
+FROM tenable/terrascan:1.19.1 as terrascan
 FROM alpine/terragrunt:latest as terragrunt
 #FROM__END
 
