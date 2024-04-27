@@ -1214,7 +1214,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         else:
             linter_doc_md += [f"# {linter.linter_name}\n{md_individual_extra}"]
 
-        # Indicate that a linter is disabled in this version
+        # Indicate that a linter is deprecated in this version
         title_prefix = ""
         if hasattr(linter, "deprecated") and linter.deprecated is True:
             title_prefix = "(deprecated) "
@@ -3301,6 +3301,8 @@ def update_workflows_linters():
 
     for descriptor in descriptors:
         for linter in descriptor["linters"]:
+            if "disabled" in linter and linter["disabled"] is True:
+                continue
             if "name" in linter:
                 name = linter["name"].lower()
             else:
