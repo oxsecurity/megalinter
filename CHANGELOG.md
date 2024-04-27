@@ -19,8 +19,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Reporters
 
 - Fixes
+  - Disable sql-lint as it is no longer maintained
 
 - Doc
+  - Handle disabled_reason property in descriptors
 
 - Flavors
 
@@ -28,6 +30,19 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Linter versions upgrades
   - [phpcs](https://github.com/PHPCSStandards/PHP_CodeSniffer) from 3.9.1 to **3.9.2** on 2024-04-23
+  - [csharpier](https://csharpier.com/) from 0.28.1 to **0.28.2** on 2024-04-26
+  - [roslynator](https://github.com/dotnet/Roslynator) from 0.8.6.0 to **0.8.7.0** on 2024-04-26
+  - [black](https://black.readthedocs.io/en/stable/) from 24.4.0 to **24.4.2** on 2024-04-26
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.9.0 to **1.10.0** on 2024-04-26
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.359 to **1.1.360** on 2024-04-26
+  - [ruff](https://github.com/astral-sh/ruff) from 0.4.1 to **0.4.2** on 2024-04-26
+  - [grype](https://github.com/anchore/grype) from 0.77.0 to **0.77.1** on 2024-04-26
+  - [syft](https://github.com/anchore/syft) from 1.2.0 to **1.3.0** on 2024-04-26
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.50.2 to **0.50.4** on 2024-04-26
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.50.2 to **0.50.4** on 2024-04-26
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.73.0 to **3.74.0** on 2024-04-26
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.10.8 to **8.11.0** on 2024-04-26
+  - [lychee](https://lychee.cli.rs) from 0.14.3 to **0.15.0** on 2024-04-26
 <!-- linter-versions-end -->
 
 ## [v7.11.1] - 2024-04-23

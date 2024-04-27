@@ -8,6 +8,8 @@ file_extensions:
 linters:
   # SQL-LINT
   - linter_name: sql-lint
+    disabled: true
+    disabled_reason: "Not maintained anymore, latest release in 2022: https://github.com/joereynolds/sql-lint/issues/262"
     linter_url: https://github.com/joereynolds/sql-lint
     linter_repo: https://github.com/joereynolds/sql-lint
     linter_rules_url: https://github.com/joereynolds/sql-lint#checks

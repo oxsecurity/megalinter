@@ -668,209 +668,209 @@
             },
             "title": "Pre commands for ANSIBLE descriptor",
             "type": "array"
-    },
+        },
         "API_FILTER_REGEX_EXCLUDE": {
-          "$id": "#/properties/API_FILTER_REGEX_EXCLUDE",
-          "title": "Excluding regex filter for API descriptor",
-          "type": "string"
+            "$id": "#/properties/API_FILTER_REGEX_EXCLUDE",
+            "title": "Excluding regex filter for API descriptor",
+            "type": "string"
         },
         "API_FILTER_REGEX_INCLUDE": {
-          "$id": "#/properties/API_FILTER_REGEX_INCLUDE",
-          "title": "Including regex filter for API descriptor",
-          "type": "string"
+            "$id": "#/properties/API_FILTER_REGEX_INCLUDE",
+            "title": "Including regex filter for API descriptor",
+            "type": "string"
         },
         "API_POST_COMMANDS": {
-          "$id": "#/properties/API_POST_COMMANDS",
-          "examples": [
-            [
-              {
-                "command": "npm run test",
-                "continue_if_failed": false,
-                "cwd": "workspace"
-              }
-            ]
-          ],
-          "items": {
-            "$ref": "#/definitions/command_info"
-          },
-          "title": "Post commands for API descriptor",
-          "type": "array"
+            "$id": "#/properties/API_POST_COMMANDS",
+            "examples": [
+                [
+                    {
+                        "command": "npm run test",
+                        "continue_if_failed": false,
+                        "cwd": "workspace"
+                    }
+                ]
+            ],
+            "items": {
+                "$ref": "#/definitions/command_info"
+            },
+            "title": "Post commands for API descriptor",
+            "type": "array"
         },
         "API_PRE_COMMANDS": {
-          "$id": "#/properties/API_PRE_COMMANDS",
-          "examples": [
-            [
-              {
-                "command": "composer install",
-                "continue_if_failed": false,
-                "cwd": "workspace"
-              }
-            ]
-          ],
-          "items": {
-            "$ref": "#/definitions/command_info"
-          },
-          "title": "Pre commands for API descriptor",
-          "type": "array"
+            "$id": "#/properties/API_PRE_COMMANDS",
+            "examples": [
+                [
+                    {
+                        "command": "composer install",
+                        "continue_if_failed": false,
+                        "cwd": "workspace"
+                    }
+                ]
+            ],
+            "items": {
+                "$ref": "#/definitions/command_info"
+            },
+            "title": "Pre commands for API descriptor",
+            "type": "array"
         },
         "API_SPECTRAL_ARGUMENTS": {
-          "$id": "#/properties/API_SPECTRAL_ARGUMENTS",
-          "description": "API_SPECTRAL: User custom arguments to add in linter CLI call",
-          "examples:": [
-            "--foo",
-            "bar"
-          ],
-          "items": {
-            "type": "string"
-          },
-          "title": "API_SPECTRAL: Custom arguments",
-          "type": [
-            "array",
-            "string"
-          ]
+            "$id": "#/properties/API_SPECTRAL_ARGUMENTS",
+            "description": "API_SPECTRAL: User custom arguments to add in linter CLI call",
+            "examples:": [
+                "--foo",
+                "bar"
+            ],
+            "items": {
+                "type": "string"
+            },
+            "title": "API_SPECTRAL: Custom arguments",
+            "type": [
+                "array",
+                "string"
+            ]
         },
         "API_SPECTRAL_CLI_EXECUTABLE": {
-          "$id": "#/properties/API_SPECTRAL_CLI_EXECUTABLE",
-          "default": [
-            [
-              "spectral"
-            ]
-          ],
-          "items": {
-            "type": "string"
-          },
-          "title": "API_SPECTRAL: CLI Executable",
-          "type": "array"
+            "$id": "#/properties/API_SPECTRAL_CLI_EXECUTABLE",
+            "default": [
+                [
+                    "spectral"
+                ]
+            ],
+            "items": {
+                "type": "string"
+            },
+            "title": "API_SPECTRAL: CLI Executable",
+            "type": "array"
         },
         "API_SPECTRAL_CLI_LINT_MODE": {
-          "$id": "#/properties/API_SPECTRAL_CLI_LINT_MODE",
-          "default": "file",
-          "enum": [
-            "file",
-            "project"
-          ],
-          "title": "API_SPECTRAL: Override default cli lint mode",
-          "type": "string"
+            "$id": "#/properties/API_SPECTRAL_CLI_LINT_MODE",
+            "default": "file",
+            "enum": [
+                "file",
+                "project"
+            ],
+            "title": "API_SPECTRAL: Override default cli lint mode",
+            "type": "string"
         },
         "API_SPECTRAL_COMMAND_REMOVE_ARGUMENTS": {
-          "$id": "#/properties/API_SPECTRAL_COMMAND_REMOVE_ARGUMENTS",
-          "description": "API_SPECTRAL: User custom arguments to remove before calling linter",
-          "examples:": [
-            "--foo",
-            "bar"
-          ],
-          "items": {
-            "type": "string"
-          },
-          "title": "API_SPECTRAL: Custom remove arguments",
-          "type": [
-            "array",
-            "string"
-          ]
+            "$id": "#/properties/API_SPECTRAL_COMMAND_REMOVE_ARGUMENTS",
+            "description": "API_SPECTRAL: User custom arguments to remove before calling linter",
+            "examples:": [
+                "--foo",
+                "bar"
+            ],
+            "items": {
+                "type": "string"
+            },
+            "title": "API_SPECTRAL: Custom remove arguments",
+            "type": [
+                "array",
+                "string"
+            ]
         },
         "API_SPECTRAL_CONFIG_FILE": {
-          "$id": "#/properties/API_SPECTRAL_CONFIG_FILE",
-          "default": ".spectral.yaml",
-          "description": "API_SPECTRAL: User custom config file name if different from default",
-          "title": "API_SPECTRAL: Custom config file name",
-          "type": "string"
+            "$id": "#/properties/API_SPECTRAL_CONFIG_FILE",
+            "default": ".spectral.yaml",
+            "description": "API_SPECTRAL: User custom config file name if different from default",
+            "title": "API_SPECTRAL: Custom config file name",
+            "type": "string"
         },
         "API_SPECTRAL_DISABLE_ERRORS": {
-          "$id": "#/properties/API_SPECTRAL_DISABLE_ERRORS",
-          "default": false,
-          "title": "API_SPECTRAL: Linter doesn't make MegaLinter fail even if errors are found",
-          "type": "boolean"
+            "$id": "#/properties/API_SPECTRAL_DISABLE_ERRORS",
+            "default": false,
+            "title": "API_SPECTRAL: Linter doesn't make MegaLinter fail even if errors are found",
+            "type": "boolean"
         },
         "API_SPECTRAL_DISABLE_ERRORS_IF_LESS_THAN": {
-          "$id": "#/properties/API_SPECTRAL_DISABLE_ERRORS_IF_LESS_THAN",
-          "default": 0,
-          "title": "API_SPECTRAL: Maximum number of errors allowed",
-          "type": "number"
+            "$id": "#/properties/API_SPECTRAL_DISABLE_ERRORS_IF_LESS_THAN",
+            "default": 0,
+            "title": "API_SPECTRAL: Maximum number of errors allowed",
+            "type": "number"
         },
         "API_SPECTRAL_FILE_EXTENSIONS": {
-          "$id": "#/properties/API_SPECTRAL_FILE_EXTENSIONS",
-          "examples:": [
-            ".py",
-            ".myext"
-          ],
-          "items": {
-            "type": "string"
-          },
-          "title": "API_SPECTRAL: Override descriptor/linter matching files extensions",
-          "type": "array"
+            "$id": "#/properties/API_SPECTRAL_FILE_EXTENSIONS",
+            "examples:": [
+                ".py",
+                ".myext"
+            ],
+            "items": {
+                "type": "string"
+            },
+            "title": "API_SPECTRAL: Override descriptor/linter matching files extensions",
+            "type": "array"
         },
         "API_SPECTRAL_FILE_NAMES_REGEX": {
-          "$id": "#/properties/API_SPECTRAL_FILE_NAMES_REGEX",
-          "examples": [
-            "Dockerfile(-.+)?",
-            "Jenkinsfile"
-          ],
-          "items": {
-            "type": "string"
-          },
-          "title": "API_SPECTRAL: Override descriptor/linter matching file name regex",
-          "type": "array"
+            "$id": "#/properties/API_SPECTRAL_FILE_NAMES_REGEX",
+            "examples": [
+                "Dockerfile(-.+)?",
+                "Jenkinsfile"
+            ],
+            "items": {
+                "type": "string"
+            },
+            "title": "API_SPECTRAL: Override descriptor/linter matching file name regex",
+            "type": "array"
         },
         "API_SPECTRAL_FILTER_REGEX_EXCLUDE": {
-          "$id": "#/properties/API_SPECTRAL_FILTER_REGEX_EXCLUDE",
-          "title": "API_SPECTRAL: Excluding Regex",
-          "type": "string"
+            "$id": "#/properties/API_SPECTRAL_FILTER_REGEX_EXCLUDE",
+            "title": "API_SPECTRAL: Excluding Regex",
+            "type": "string"
         },
         "API_SPECTRAL_FILTER_REGEX_INCLUDE": {
-          "$id": "#/properties/API_SPECTRAL_FILTER_REGEX_INCLUDE",
-          "title": "API_SPECTRAL: Including Regex",
-          "type": "string"
+            "$id": "#/properties/API_SPECTRAL_FILTER_REGEX_INCLUDE",
+            "title": "API_SPECTRAL: Including Regex",
+            "type": "string"
         },
         "API_SPECTRAL_POST_COMMANDS": {
-          "$id": "#/properties/API_SPECTRAL_POST_COMMANDS",
-          "examples": [
-            [
-              {
-                "command": "npm run test",
-                "continue_if_failed": false,
-                "cwd": "workspace"
-              }
-            ]
-          ],
-          "items": {
-            "$ref": "#/definitions/command_info"
-          },
-          "title": "API_SPECTRAL: Define or override a list of bash commands to run after the linter",
-          "type": "array"
+            "$id": "#/properties/API_SPECTRAL_POST_COMMANDS",
+            "examples": [
+                [
+                    {
+                        "command": "npm run test",
+                        "continue_if_failed": false,
+                        "cwd": "workspace"
+                    }
+                ]
+            ],
+            "items": {
+                "$ref": "#/definitions/command_info"
+            },
+            "title": "API_SPECTRAL: Define or override a list of bash commands to run after the linter",
+            "type": "array"
         },
         "API_SPECTRAL_PRE_COMMANDS": {
-          "$id": "#/properties/API_SPECTRAL_PRE_COMMANDS",
-          "examples": [
-            [
-              {
-                "command": "tflint --init",
-                "continue_if_failed": false,
-                "cwd": "workspace"
-              }
-            ]
-          ],
-          "items": {
-            "$ref": "#/definitions/command_info"
-          },
-          "title": "API_SPECTRAL: Define or override a list of bash commands to run before the linter",
-          "type": "array"
+            "$id": "#/properties/API_SPECTRAL_PRE_COMMANDS",
+            "examples": [
+                [
+                    {
+                        "command": "tflint --init",
+                        "continue_if_failed": false,
+                        "cwd": "workspace"
+                    }
+                ]
+            ],
+            "items": {
+                "$ref": "#/definitions/command_info"
+            },
+            "title": "API_SPECTRAL: Define or override a list of bash commands to run before the linter",
+            "type": "array"
         },
         "API_SPECTRAL_RULES_PATH": {
-          "$id": "#/properties/API_SPECTRAL_RULES_PATH",
-          "description": "API_SPECTRAL: Path where to find linter configuration file",
-          "title": "API_SPECTRAL: Custom config file path",
-          "type": "string"
+            "$id": "#/properties/API_SPECTRAL_RULES_PATH",
+            "description": "API_SPECTRAL: Path where to find linter configuration file",
+            "title": "API_SPECTRAL: Custom config file path",
+            "type": "string"
         },
         "API_SPECTRAL_UNSECURED_ENV_VARIABLES": {
-          "$id": "#/properties/API_SPECTRAL_UNSECURED_ENV_VARIABLES",
-          "default": [],
-          "description": "List of env variables explicitly not filtered before calling API_SPECTRAL and its pre/post commands",
-          "items": {
-            "type": "string"
-          },
-          "title": "API_SPECTRAL: Unsecured env variables",
-          "type": "array"
+            "$id": "#/properties/API_SPECTRAL_UNSECURED_ENV_VARIABLES",
+            "default": [],
+            "description": "List of env variables explicitly not filtered before calling API_SPECTRAL and its pre/post commands",
+            "items": {
+                "type": "string"
             },
+            "title": "API_SPECTRAL: Unsecured env variables",
+            "type": "array"
+        },
         "APPLY_FIXES": {
             "$id": "#/properties/APPLY_FIXES",
             "default": "none",
@@ -12834,7 +12834,7 @@
             "$id": "#/properties/POWERSHELL_POWERSHELL_CLI_EXECUTABLE",
             "default": [
                 [
-                    "pwsh"
+                    "powershell"
                 ]
             ],
             "items": {
@@ -12949,7 +12949,7 @@
             "$id": "#/properties/POWERSHELL_POWERSHELL_FORMATTER_CLI_EXECUTABLE",
             "default": [
                 [
-                    "pwsh"
+                    "powershell"
                 ]
             ],
             "items": {
