@@ -150,6 +150,7 @@ ENV NODE_OPTIONS="--max-old-space-size=8192" \
 WORKDIR /node-deps
 RUN npm --no-cache install --ignore-scripts --omit=dev \
                 typescript \
+                @stoplight/spectral-cli \
                 @coffeelint/cli \
                 jscpd \
                 stylelint \
@@ -185,12 +186,10 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 markdownlint-cli \
                 markdown-link-check \
                 markdown-table-formatter \
-                @stoplight/spectral-cli \
                 secretlint \
                 @secretlint/secretlint-rule-preset-recommend \
                 @secretlint/secretlint-formatter-sarif \
                 cspell \
-                sql-lint \
                 @ibm/tekton-lint \
                 prettyjson \
                 @typescript-eslint/eslint-plugin \

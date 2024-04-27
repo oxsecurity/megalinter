@@ -13,7 +13,7 @@ description: How to use eslint-plugin-jsonc (configure, ignore files, ignore err
 
 [![GitHub stars](https://img.shields.io/github/stars/ota-meshi/eslint-plugin-jsonc?cacheSeconds=3600)](https://github.com/ota-meshi/eslint-plugin-jsonc) ![autofix](https://shields.io/badge/-autofix-green) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/ota-meshi/eslint-plugin-jsonc?sort=semver)](https://github.com/ota-meshi/eslint-plugin-jsonc/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/ota-meshi/eslint-plugin-jsonc)](https://github.com/ota-meshi/eslint-plugin-jsonc/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/ota-meshi/eslint-plugin-jsonc)](https://github.com/ota-meshi/eslint-plugin-jsonc/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/ota-meshi/eslint-plugin-jsonc)](https://github.com/ota-meshi/eslint-plugin-jsonc/graphs/contributors/)
 
-_This linter has been temporary disabled in this version_
+_This linter has been disabled in this version_
 
 **eslint-plugin-jsonc** uses eslint to lint [**json**](https://www.json.org/), [**jsonc**](https://github.com/microsoft/node-jsonc-parser) and [**json5**](https://json5.org/) (extended JSON with comments & more).
 
@@ -87,10 +87,10 @@ DISABLE_LINTERS:
 
 ## Configuration in MegaLinter
 
-- Enable eslint-plugin-jsonc by adding `JSON_ESLINT_PLUGIN_JSONC` in [ENABLE_LINTERS variable](https://megalinter.io/7.11.0/configuration/#activation-and-deactivation)
-- Disable eslint-plugin-jsonc by adding `JSON_ESLINT_PLUGIN_JSONC` in [DISABLE_LINTERS variable](https://megalinter.io/7.11.0/configuration/#activation-and-deactivation)
+- Enable eslint-plugin-jsonc by adding `JSON_ESLINT_PLUGIN_JSONC` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
+- Disable eslint-plugin-jsonc by adding `JSON_ESLINT_PLUGIN_JSONC` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-- Enable **autofixes** by adding `JSON_ESLINT_PLUGIN_JSONC` in [APPLY_FIXES variable](https://megalinter.io/7.11.0/configuration/#apply-fixes)
+- Enable **autofixes** by adding `JSON_ESLINT_PLUGIN_JSONC` in [APPLY_FIXES variable](https://megalinter.io/beta/configuration/#apply-fixes)
 
 | Variable                                             | Description                                                                                                                                                                                                         | Default value                                   |
 |------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
@@ -122,9 +122,9 @@ Use eslint-plugin-jsonc in your favorite IDE to catch errors before MegaLinter !
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                 | Description               | Embedded linters |                                                                                                                                                                          Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:--------------------------|:----------------:|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/7.11.0/supported-linters/) | Default MegaLinter Flavor |       122        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v7.11.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|                                                                         <!-- -->                                                                         | Flavor                                               | Description               | Embedded linters |                                                                                                                                                                       Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       123        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 
 ## Behind the scenes
 

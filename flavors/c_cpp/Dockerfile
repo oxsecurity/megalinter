@@ -143,6 +143,7 @@ ENV NODE_OPTIONS="--max-old-space-size=8192" \
 #NPM__START
 WORKDIR /node-deps
 RUN npm --no-cache install --ignore-scripts --omit=dev \
+                @stoplight/spectral-cli \
                 jscpd \
                 stylelint \
                 stylelint-config-standard \
@@ -158,12 +159,10 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 markdownlint-cli \
                 markdown-link-check \
                 markdown-table-formatter \
-                @stoplight/spectral-cli \
                 secretlint \
                 @secretlint/secretlint-rule-preset-recommend \
                 @secretlint/secretlint-formatter-sarif \
                 cspell \
-                sql-lint \
                 @ibm/tekton-lint  && \
     echo "Cleaning npm cache…" \
     && npm cache clean --force || true \

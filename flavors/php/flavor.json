@@ -8,6 +8,7 @@
     "linters": [
         "ACTION_ACTIONLINT",
         "ANSIBLE_ANSIBLE_LINT",
+        "API_SPECTRAL",
         "BASH_EXEC",
         "BASH_SHELLCHECK",
         "BASH_SHFMT",
@@ -53,7 +54,6 @@
         "SPELL_PROSELINT",
         "SPELL_VALE",
         "SPELL_LYCHEE",
-        "SQL_SQL_LINT",
         "SQL_SQLFLUFF",
         "TEKTON_TEKTON_LINT",
         "XML_XMLLINT",

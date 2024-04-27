@@ -7,7 +7,7 @@ description: How to use remark-lint (configure, ignore files, ignore errors, hel
 # <a href="https://remark.js.org/" target="blank" title="Visit linter Web Site"><img src="https://raw.githubusercontent.com/remarkjs/remark-lint/02295bc/logo.svg?sanitize=true" alt="remark-lint" height="100px" class="megalinter-logo"></a>remark-lint
 [![GitHub stars](https://img.shields.io/github/stars/remarkjs/remark-lint?cacheSeconds=3600)](https://github.com/remarkjs/remark-lint) ![formatter](https://shields.io/badge/-format-yellow) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/remarkjs/remark-lint?sort=semver)](https://github.com/remarkjs/remark-lint/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/remarkjs/remark-lint)](https://github.com/remarkjs/remark-lint/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/remarkjs/remark-lint)](https://github.com/remarkjs/remark-lint/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/remarkjs/remark-lint)](https://github.com/remarkjs/remark-lint/graphs/contributors/)
 
-_This linter has been temporary disabled in this version_
+_This linter has been disabled in this version_
 
 ## remark-lint documentation
 
@@ -22,10 +22,10 @@ _This linter has been temporary disabled in this version_
 
 ## Configuration in MegaLinter
 
-- Enable remark-lint by adding `MARKDOWN_REMARK_LINT` in [ENABLE_LINTERS variable](https://megalinter.io/7.11.0/configuration/#activation-and-deactivation)
-- Disable remark-lint by adding `MARKDOWN_REMARK_LINT` in [DISABLE_LINTERS variable](https://megalinter.io/7.11.0/configuration/#activation-and-deactivation)
+- Enable remark-lint by adding `MARKDOWN_REMARK_LINT` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
+- Disable remark-lint by adding `MARKDOWN_REMARK_LINT` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-- Enable **autofixes** by adding `MARKDOWN_REMARK_LINT` in [APPLY_FIXES variable](https://megalinter.io/7.11.0/configuration/#apply-fixes)
+- Enable **autofixes** by adding `MARKDOWN_REMARK_LINT` in [APPLY_FIXES variable](https://megalinter.io/beta/configuration/#apply-fixes)
 
 | Variable                                         | Description                                                                                                                                                                                  | Default value                                   |
 |--------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
@@ -61,9 +61,9 @@ Use remark-lint in your favorite IDE to catch errors before MegaLinter !
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                 | Description               | Embedded linters |                                                                                                                                                                          Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:--------------------------|:----------------:|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/7.11.0/supported-linters/) | Default MegaLinter Flavor |       122        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v7.11.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|                                                                         <!-- -->                                                                         | Flavor                                               | Description               | Embedded linters |                                                                                                                                                                       Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       123        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 
 ## Behind the scenes
 

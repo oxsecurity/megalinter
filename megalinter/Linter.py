@@ -53,6 +53,7 @@ class Linter:
         # If you have several linters for the same language,override with a different name.Ex: JAVASCRIPT_ES
         self.name = None
         self.disabled = False
+        self.disabled_reason = None
         self.is_formatter = False
         self.is_sbom = False
         self.linter_name = "Field 'linter_name' must be overridden at custom linter class level"  # Ex: eslint
@@ -408,44 +409,78 @@ class Linter:
 
     # Enable or disable linter
     def manage_activation(self, params):
+        strategies = {
+            "ENABLE": False,
+            "ENABLE_LINTERS": False,
+            "DISABLE": False,
+            "DISABLE_LINTERS": False,
+            "VALIDATE": False,
+            "VALIDATE_LINTERS": False,
+        }
+
         # Default value is false in case ENABLE variables are used
-        if len(params["enable_descriptors"]) > 0 or len(params["enable_linters"]) > 0:
-            self.is_active = False
+        # See megalinter/MegaLinter.py, manage_default_linter_activation() function
+        # for params["default_linter_activation"]
+        self.is_active = params["default_linter_activation"]
         # Activate or not the linter
         if self.name in params["enable_linters"]:
             self.is_active = True
+            strategies["ENABLE_LINTERS"] = True
         elif self.name in params["disable_linters"]:
             self.is_active = False
-        elif (
-            self.descriptor_id in params["disable_descriptors"]
-            or self.name in params["disable_linters"]
-        ):
+            strategies["DISABLE_LINTERS"] = True
+        elif self.descriptor_id in params["disable_descriptors"]:
             self.is_active = False
+            strategies["DISABLE"] = True
+        elif self.name in params["disable_linters"]:
+            self.is_active = False
+            strategies["DISABLE_LINTERS"] = True
         elif self.descriptor_id in params["enable_descriptors"]:
             self.is_active = True
+            strategies["ENABLE"] = True
         elif (
             config.exists(self.request_id, "VALIDATE_" + self.name)
             and config.get(self.request_id, "VALIDATE_" + self.name) == "false"
         ):
             self.is_active = False
+            strategies["VALIDATE_LINTERS"] = True
         elif (
             config.exists(self.request_id, "VALIDATE_" + self.descriptor_id)
             and config.get(self.request_id, "VALIDATE_" + self.descriptor_id) == "false"
         ):
             self.is_active = False
+            strategies["VALIDATE"] = True
         elif (
             config.exists(self.request_id, "VALIDATE_" + self.name)
             and config.get(self.request_id, "VALIDATE_" + self.name) == "true"
         ):
             self.is_active = True
+            strategies["VALIDATE_LINTERS"] = True
         elif (
             config.exists(self.request_id, "VALIDATE_" + self.descriptor_id)
             and config.get(self.request_id, "VALIDATE_" + self.descriptor_id) == "true"
         ):
             self.is_active = True
+            strategies["VALIDATE"] = True
         # check activation rules
         if self.is_active is True and len(self.activation_rules) > 0:
             self.is_active = utils.check_activation_rules(self.activation_rules, self)
+
+        strategiesUsed = format(
+            ", ".join("{0}".format(k) for k, v in strategies.items() if v)
+        )
+
+        if not strategiesUsed:
+            strategiesUsed = "default"
+
+        if self.is_active:
+            logging.debug(
+                f"[Activation] + {self.name} ({self.descriptor_id}) was activated by {strategiesUsed} strategies"
+            )
+        else:
+            logging.debug(
+                f"[Activation] - {self.name} ({self.descriptor_id}) was not activated by {strategiesUsed} strategies"
+            )
 
     # Manage configuration variables
     def load_config_vars(self, params):

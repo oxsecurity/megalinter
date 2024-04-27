@@ -7,7 +7,7 @@ description: How to use cljstyle (configure, ignore files, ignore errors, help &
 # cljstyle
 [![GitHub stars](https://img.shields.io/github/stars/greglook/cljstyle?cacheSeconds=3600)](https://github.com/greglook/cljstyle) ![autofix](https://shields.io/badge/-autofix-green) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/greglook/cljstyle?sort=semver)](https://github.com/greglook/cljstyle/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/greglook/cljstyle)](https://github.com/greglook/cljstyle/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/greglook/cljstyle)](https://github.com/greglook/cljstyle/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/greglook/cljstyle)](https://github.com/greglook/cljstyle/graphs/contributors/)
 
-_This linter has been temporary disabled in this version_
+_This linter has been disabled in this version_
 
 ## cljstyle documentation
 
@@ -21,10 +21,10 @@ _This linter has been temporary disabled in this version_
 
 ## Configuration in MegaLinter
 
-- Enable cljstyle by adding `CLOJURE_CLJSTYLE` in [ENABLE_LINTERS variable](https://megalinter.io/7.11.0/configuration/#activation-and-deactivation)
-- Disable cljstyle by adding `CLOJURE_CLJSTYLE` in [DISABLE_LINTERS variable](https://megalinter.io/7.11.0/configuration/#activation-and-deactivation)
+- Enable cljstyle by adding `CLOJURE_CLJSTYLE` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
+- Disable cljstyle by adding `CLOJURE_CLJSTYLE` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-- Enable **autofixes** by adding `CLOJURE_CLJSTYLE` in [APPLY_FIXES variable](https://megalinter.io/7.11.0/configuration/#apply-fixes)
+- Enable **autofixes** by adding `CLOJURE_CLJSTYLE` in [APPLY_FIXES variable](https://megalinter.io/beta/configuration/#apply-fixes)
 
 | Variable                                     | Description                                                                                                                                                                                  | Default value                                   |
 |----------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
@@ -56,9 +56,9 @@ Use cljstyle in your favorite IDE to catch errors before MegaLinter !
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                 | Description               | Embedded linters |                                                                                                                                                                          Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:--------------------------|:----------------:|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/7.11.0/supported-linters/) | Default MegaLinter Flavor |       122        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v7.11.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|                                                                         <!-- -->                                                                         | Flavor                                               | Description               | Embedded linters |                                                                                                                                                                       Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       123        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 
 ## Behind the scenes
 
