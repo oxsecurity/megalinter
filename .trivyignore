@@ -22,6 +22,10 @@ CVE-2024-3154
 # https://github.com/Checkmarx/kics/issues/7029
 CVE-2024-3817
 
+# powershell
+CVE-2024-21907
+CVE-2021-24112
+
 # protolint
 # https://github.com/yoheimuta/protolint/issues/380
 CVE-2021-33194
