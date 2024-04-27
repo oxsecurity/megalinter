@@ -601,9 +601,14 @@ class Megalinter:
             ):
                 skipped_linters += [linter.name]
                 if linter.disabled is True:
+                    disabled_reason = (
+                        linter.disabled_reason
+                        if linter.disabled_reason is not None
+                        else "Undefined"
+                    )
                     logging.warning(
-                        f"{linter.name} has been temporary disabled in MegaLinter, please use a "
-                        "previous MegaLinter version or wait for the next one !"
+                        f"{linter.name} has been disabled in MegaLinter for the following reason: "
+                        + disabled_reason
                     )
                 if linter.cli_lint_mode in skip_cli_lint_modes:
                     logging.info(
