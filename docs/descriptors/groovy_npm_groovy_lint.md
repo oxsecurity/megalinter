@@ -148,8 +148,7 @@ Note: command-line arguments have priority on config file properties - default: 
 
 - Dockerfile commands :
 ```dockerfile
-ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
-ENV PATH="$JAVA_HOME/bin:${PATH}"
+ENV JAVA_HOME_17=/usr/lib/jvm/java-17-openjdk
 ```
 
 - APK packages (Linux):

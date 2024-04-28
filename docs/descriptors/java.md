@@ -35,9 +35,9 @@ description: checkstyle, pmd are available to analyze JAVA files in MegaLinter
 
 - Dockerfile commands :
 ```dockerfile
-ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 ```
 
 - APK packages (Linux):
-  - [openjdk17](https://pkgs.alpinelinux.org/packages?branch=edge&name=openjdk17)
+  - [openjdk21](https://pkgs.alpinelinux.org/packages?branch=edge&name=openjdk21)

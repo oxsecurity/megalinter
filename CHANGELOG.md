@@ -49,6 +49,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.10.8 to **8.11.0** on 2024-04-26
   - [lychee](https://lychee.cli.rs) from 0.14.3 to **0.15.0** on 2024-04-26
   - [markdown-table-formatter](https://www.npmjs.com/package/markdown-table-formatter) from 1.5.0 to **1.6.0** on 2024-04-27
+  - [pmd](https://pmd.github.io/) from 6.55.0 to **7.1.0** on 2024-04-28
+  - [powershell_formatter](https://github.com/PowerShell/PSScriptAnalyzer) from 7.4.1 to **7.4.2** on 2024-04-28
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.4.1 to **7.4.2** on 2024-04-28
 <!-- linter-versions-end -->
 
 ## [v7.11.1] - 2024-04-23
