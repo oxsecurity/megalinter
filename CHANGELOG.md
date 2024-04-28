@@ -52,6 +52,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [pmd](https://pmd.github.io/) from 6.55.0 to **7.1.0** on 2024-04-28
   - [powershell_formatter](https://github.com/PowerShell/PSScriptAnalyzer) from 7.4.1 to **7.4.2** on 2024-04-28
   - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.4.1 to **7.4.2** on 2024-04-28
+  - [rubocop](https://rubocop.org/) from 1.63.3 to **1.63.4** on 2024-04-28
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.8.1 to **1.8.2** on 2024-04-28
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.57.5 to **0.57.12** on 2024-04-28
 <!-- linter-versions-end -->
 
 ## [v7.11.1] - 2024-04-23
