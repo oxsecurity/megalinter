@@ -71,11 +71,12 @@ RUN apk add --no-cache \
                 musl-dev \
                 openssh \
                 icu-libs \
-                openjdk17 \
+                openjdk21 \
                 py3-pyflakes \
                 nodejs \
                 npm \
                 yarn \
+                openjdk17 \
                 helm \
                 gcompat \
                 libc6-compat \
@@ -249,16 +250,16 @@ RUN curl -L https://github.com/PowerShell/PowerShell/releases/download/v7.4.1/po
 ENV PATH="${PATH}:/root/.dotnet/tools"
 
 # KOTLIN installation
-ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 
 # POWERSHELL installation
-# Next line commented because already managed by another linter
-# RUN curl -L https://github.com/PowerShell/PowerShell/releases/download/v7.4.1/powershell-7.4.1-linux-musl-x64.tar.gz -o /tmp/powershell.tar.gz \
-#     && mkdir -p /opt/microsoft/powershell/7 \
-#     && tar zxf /tmp/powershell.tar.gz -C /opt/microsoft/powershell/7 \
-#     && chmod +x /opt/microsoft/powershell/7/pwsh \
-#     && ln -s /opt/microsoft/powershell/7/pwsh /usr/bin/pwsh
+RUN curl -L https://github.com/PowerShell/PowerShell/releases/download/v7.4.2/powershell-7.4.2-linux-musl-x64.tar.gz -o /tmp/powershell.tar.gz \
+    && mkdir -p /opt/microsoft/powershell/7 \
+    && tar zxf /tmp/powershell.tar.gz -C /opt/microsoft/powershell/7 \
+    && chmod +x /opt/microsoft/powershell/7/pwsh \
+    && ln -s /opt/microsoft/powershell/7/pwsh /usr/bin/pwsh
+
 
 # VBDOTNET installation
 # Next line commented because already managed by another linter
@@ -308,16 +309,13 @@ RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
 # Managed with COPY --link --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
 
 # dotenv-linter installation
-    && wget -q -O - https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/master/install.sh | sh -s \
+    && wget -q -O - https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/master/install.sh | sh -s
 
 # npm-groovy-lint installation
-# Next line commented because already managed by another linter
-# ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
-# Next line commented because already managed by another linter
-# ENV PATH="$JAVA_HOME/bin:${PATH}"
+ENV JAVA_HOME_17=/usr/lib/jvm/java-17-openjdk
 
 # ktlint installation
-    && curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/releases/latest/download/ktlint && \
+RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/releases/latest/download/ktlint && \
     chmod a+x ktlint && \
     mv "ktlint" /usr/bin/ \
 

@@ -14,7 +14,7 @@ class JavaPmdLinter(Linter):
     # Build the CLI command to call to lint a file
     def build_lint_command(self, file=None):
         # Base command
-        cmd = [*self.cli_executable, "pmd"]
+        cmd = [*self.cli_executable, "check"]
         # Add other lint cli arguments if defined
         self.cli_lint_extra_args = self.replace_vars(self.cli_lint_extra_args)
         cmd += self.cli_lint_extra_args
@@ -54,9 +54,3 @@ class JavaPmdLinter(Linter):
             file_args = ["--file-list", temp_list_of_files_for_pmd]
         cmd += file_args
         return cmd
-
-    def build_version_command(self):
-        return [*self.cli_executable, "pmd", "--version"]
-
-    def build_help_command(self):
-        return [*self.cli_executable, "pmd", "--help"]

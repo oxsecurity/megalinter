@@ -91,6 +91,7 @@ def linter_test_setup(params=None):
     config.set_value(request_id, "IGNORE_GITIGNORED_FILES", "true")
     config.set_value(request_id, "VALIDATE_ALL_CODEBASE", "true")
     config.set_value(request_id, "CLEAR_REPORT_FOLDER", "true")
+    config.set_value(request_id, "SARIF_REPORTER", "false")
     if params.get("additional_test_variables"):
         for env_var_key, env_var_value in params.get(
             "additional_test_variables"
@@ -674,6 +675,7 @@ def test_linter_format_fix(linter, test_self):
         "PRINT_ALL_FILES": "true",
         "GITHUB_COMMENT_REPORTER": "false",
         "GITHUB_STATUS_REPORTER": "false",
+        "SARIF_REPORTER": "false",
         "request_id": test_self.request_id,
     }
     env_vars.update(linter.test_variables)

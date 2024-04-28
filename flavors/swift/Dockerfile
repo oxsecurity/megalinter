@@ -65,11 +65,12 @@ RUN apk add --no-cache \
                 openssh \
                 docker \
                 openrc \
-                openjdk17 \
+                openjdk21 \
                 py3-pyflakes \
                 nodejs \
                 npm \
                 yarn \
+                openjdk17 \
                 helm \
                 gcompat \
                 libc6-compat \
@@ -228,7 +229,7 @@ COPY --link --from=lychee /usr/local/bin/lychee /usr/bin/
 #OTHER__START
 RUN rc-update add docker boot && rc-service docker start || true
 # KOTLIN installation
-ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 
 # actionlint installation
@@ -254,16 +255,13 @@ RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: Fil
 # Managed with COPY --link --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
 
 # dotenv-linter installation
-    && wget -q -O - https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/master/install.sh | sh -s \
+    && wget -q -O - https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/master/install.sh | sh -s
 
 # npm-groovy-lint installation
-# Next line commented because already managed by another linter
-# ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
-# Next line commented because already managed by another linter
-# ENV PATH="$JAVA_HOME/bin:${PATH}"
+ENV JAVA_HOME_17=/usr/lib/jvm/java-17-openjdk
 
 # ktlint installation
-    && curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/releases/latest/download/ktlint && \
+RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/releases/latest/download/ktlint && \
     chmod a+x ktlint && \
     mv "ktlint" /usr/bin/ \
 
