@@ -15,7 +15,7 @@ description: How to use rubocop (configure, ignore files, ignore errors, help & 
 
 ## rubocop documentation
 
-- Version in MegaLinter: **1.63.3**
+- Version in MegaLinter: **1.63.4**
 - Visit [Official Web Site](https://rubocop.org/){target=_blank}
 - See [How to configure rubocop rules](https://docs.rubocop.org/rubocop/0.92/configuration.html){target=_blank}
   - If custom `.ruby-lint.yml` config file isn't found, [.ruby-lint.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.ruby-lint.yml){target=_blank} will be used
@@ -214,7 +214,7 @@ Output Options:
                                      cops. Only valid for --format junit.
         --display-only-fail-level-offenses
                                      Only output offense messages at
-                                     the specified --fail-level or above
+                                     the specified --fail-level or above.
         --display-only-correctable   Only output correctable offense messages.
         --display-only-safe-correctable
                                      Only output safe-correctable offense messages
@@ -276,8 +276,8 @@ General Options:
     -V, --verbose-version            Display verbose version.
 
 Profiling Options:
-        --profile                    Profile rubocop
-        --memory                     Profile rubocop memory usage
+        --profile                    Profile rubocop.
+        --memory                     Profile rubocop memory usage.
 ```
 
 ### Installation on mega-linter Docker image
