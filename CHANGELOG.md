@@ -10,6 +10,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Core
   - Add new logs (at debug level) on each linter activation/deactivation
+  - Clean MegaLinter own CVE exceptions and order the remaining ones with links to related issues
+  - Upgrade to Java 21 except for npm-groovy-lint that requires Java 17
 
 - Media
 
@@ -28,6 +30,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - CI
   - Build: take in account disabled linters for workflow auto-update
+  - Remove useless package-lock.json that was in python tests folder
 
 - Linter versions upgrades
   - [phpcs](https://github.com/PHPCSStandards/PHP_CodeSniffer) from 3.9.1 to **3.9.2** on 2024-04-23
