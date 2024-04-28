@@ -76,6 +76,7 @@ RUN apk add --no-cache \
                 npm \
                 yarn \
                 go \
+                openjdk17 \
                 helm \
                 gcompat \
                 libc6-compat \
@@ -265,19 +266,17 @@ RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: Fil
 
 # golangci-lint installation
     && wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh \
-    && golangci-lint --version \
+    && golangci-lint --version
+
 
 # revive installation
 # Managed with COPY --link --from=revive /usr/bin/revive /usr/bin/revive
 
 # npm-groovy-lint installation
-# Next line commented because already managed by another linter
-# ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
-# Next line commented because already managed by another linter
-# ENV PATH="$JAVA_HOME/bin:${PATH}"
+ENV JAVA_HOME_17=/usr/lib/jvm/java-17-openjdk
 
 # ktlint installation
-    && curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/releases/latest/download/ktlint && \
+RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/releases/latest/download/ktlint && \
     chmod a+x ktlint && \
     mv "ktlint" /usr/bin/ \
 

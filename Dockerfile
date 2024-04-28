@@ -111,6 +111,7 @@ RUN apk add --no-cache \
                 npm \
                 yarn \
                 go \
+                openjdk17 \
                 helm \
                 gcompat \
                 libc6-compat \
@@ -554,10 +555,7 @@ RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
 # Managed with COPY --link --from=revive /usr/bin/revive /usr/bin/revive
 
 # npm-groovy-lint installation
-# Next line commented because already managed by another linter
-# ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
-# Next line commented because already managed by another linter
-# ENV PATH="$JAVA_HOME/bin:${PATH}"
+ENV JAVA_HOME_17=/usr/lib/jvm/java-17-openjdk
 
 # checkstyle installation
 RUN --mount=type=secret,id=GITHUB_TOKEN CHECKSTYLE_LATEST=$(curl -s \
