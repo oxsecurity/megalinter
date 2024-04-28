@@ -3573,12 +3573,14 @@
                   and ZIP archives to search for class files.
     -p &lt;module path&gt;
     --module-path &lt;module path&gt;...
-                  A : separated list of directories, each directory
-                  is a directory of modules.
+                  A : separated list of elements, each element is a file path
+                  to a module or a directory containing modules. Each module is either
+                  a modular JAR or an exploded-module directory.
     --upgrade-module-path &lt;module path&gt;...
-                  A : separated list of directories, each directory
-                  is a directory of modules that replace upgradeable
-                  modules in the runtime image
+                  A : separated list of elements, each element is a file path
+                  to a module or a directory containing modules to replace
+                  upgradeable modules in the runtime image. Each module is either
+                  a modular JAR or an exploded-module directory.
     --add-modules &lt;module name&gt;[,&lt;module name&gt;...]
                   root modules to resolve in addition to the initial module.
                   &lt;module name&gt; can also be ALL-DEFAULT, ALL-SYSTEM,
@@ -3641,7 +3643,7 @@
                   See the SplashScreen API documentation for more information
     @argument files
                   one or more argument files containing options
-    -disable-@files
+    --disable-@files
                   prevent further argument file expansion
     --enable-preview
                   allow classes to depend on preview features of this release
@@ -3654,7 +3656,7 @@ To specify an argument for a long option, you can use --&lt;name&gt;=&lt;value&g
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile"># Parent descriptor install
-ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 # Linter install
 RUN CHECKSTYLE_LATEST=$(curl -s \
