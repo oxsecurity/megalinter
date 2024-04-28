@@ -55,6 +55,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [rubocop](https://rubocop.org/) from 1.63.3 to **1.63.4** on 2024-04-28
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.8.1 to **1.8.2** on 2024-04-28
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.57.5 to **0.57.12** on 2024-04-28
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 14.4.1 to **14.5.0** on 2024-04-28
+  - [checkstyle](https://checkstyle.org/) from 10.15.0 to **10.16.0** on 2024-04-28
 <!-- linter-versions-end -->
 
 ## [v7.11.1] - 2024-04-23
