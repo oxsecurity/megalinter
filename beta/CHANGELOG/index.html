@@ -5063,6 +5063,8 @@
 <ul>
 <li>Core<ul>
 <li>Add new logs (at debug level) on each linter activation/deactivation</li>
+<li>Clean MegaLinter own CVE exceptions and order the remaining ones with links to related issues</li>
+<li>Upgrade to Java 21 except for npm-groovy-lint that requires Java 17</li>
 </ul>
 </li>
 </ul>
@@ -5096,6 +5098,8 @@
 <ul>
 <li>CI<ul>
 <li>Build: take in account disabled linters for workflow auto-update</li>
+<li>Remove useless package-lock.json that was in python tests folder</li>
+<li>Fix SARIF_REPORTER that was wrongly sent to <code>true</code> to format &amp; fix test methods</li>
 </ul>
 </li>
 </ul>
