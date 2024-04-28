@@ -54,6 +54,11 @@ CVE-2024-23653
 CVE-2024-23651
 CVE-2024-26147
 
+# tsql-lint
+# https://github.com/tsqllint/tsqllint/issues/333
+CVE-2023-36414
+CVE-2024-0056
+
 # Dockerfile
 DS001
 DS002
