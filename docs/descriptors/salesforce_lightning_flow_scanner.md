@@ -89,8 +89,6 @@ sf flow:scan
 ### Help content
 
 ```shell
-(node:1980) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
-(Use `node --trace-deprecation ...` to show where the warning was created)
 Try to resolve the errors in the following flows:
 
 USAGE
@@ -136,7 +134,7 @@ FLAGS
 - Dockerfile commands :
 ```dockerfile
 # Parent descriptor install
-ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 RUN sf plugins install @salesforce/plugin-packaging \
     && echo y|sf plugins install sfdx-hardis \

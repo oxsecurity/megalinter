@@ -11,7 +11,7 @@ description: How to use terrascan (configure, ignore files, ignore errors, help 
   </a>
 </div>
 
-[![GitHub stars](https://img.shields.io/github/stars/tenable/terrascan?cacheSeconds=3600)](https://github.com/tenable/terrascan) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/tenable/terrascan?sort=semver)](https://github.com/tenable/terrascan/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/tenable/terrascan)](https://github.com/tenable/terrascan/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/tenable/terrascan)](https://github.com/tenable/terrascan/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/tenable/terrascan)](https://github.com/tenable/terrascan/graphs/contributors/)
+![downgraded version](https://shields.io/badge/-downgraded%20version-orange) [![GitHub stars](https://img.shields.io/github/stars/tenable/terrascan?cacheSeconds=3600)](https://github.com/tenable/terrascan) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/tenable/terrascan?sort=semver)](https://github.com/tenable/terrascan/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/tenable/terrascan)](https://github.com/tenable/terrascan/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/tenable/terrascan)](https://github.com/tenable/terrascan/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/tenable/terrascan)](https://github.com/tenable/terrascan/graphs/contributors/)
 
 ## terrascan documentation
 
