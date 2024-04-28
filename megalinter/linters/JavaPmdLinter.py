@@ -54,4 +54,3 @@ class JavaPmdLinter(Linter):
             file_args = ["--file-list", temp_list_of_files_for_pmd]
         cmd += file_args
         return cmd
-
