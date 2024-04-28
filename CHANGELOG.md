@@ -31,6 +31,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - CI
   - Build: take in account disabled linters for workflow auto-update
   - Remove useless package-lock.json that was in python tests folder
+  - Fix SARIF_REPORTER that was wrongly sent to `true` to format & fix test methods
 
 - Linter versions upgrades
   - [phpcs](https://github.com/PHPCSStandards/PHP_CodeSniffer) from 3.9.1 to **3.9.2** on 2024-04-23
