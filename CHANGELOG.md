@@ -58,6 +58,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.57.5 to **0.57.12** on 2024-04-28
   - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 14.4.1 to **14.5.0** on 2024-04-28
   - [checkstyle](https://checkstyle.org/) from 10.15.0 to **10.16.0** on 2024-04-28
+  - [secretlint](https://github.com/secretlint/secretlint) from 8.2.3 to **8.2.4** on 2024-04-29
 <!-- linter-versions-end -->
 
 ## [v7.11.1] - 2024-04-23

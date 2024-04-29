@@ -86,7 +86,7 @@
     "ruff": "0.4.2",
     "scalafix": "0.12.0",
     "scss-lint": "0.60.0",
-    "secretlint": "8.2.3",
+    "secretlint": "8.2.4",
     "semgrep": "3.12",
     "sfdx-scanner": "2.8.0",
     "sfdx-scanner-apex": "3.23.0",
