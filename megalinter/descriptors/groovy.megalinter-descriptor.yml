@@ -25,6 +25,8 @@ linters:
     cli_lint_mode: list_of_files
     config_file_name: .groovylintrc.json
     cli_lint_extra_args:
+      - --javaexecutable
+      - /usr/lib/jvm/java-17-openjdk/bin/java
       - --failon
       - error
     cli_sarif_args:
@@ -40,8 +42,7 @@ linters:
       apk:
         - openjdk17
       dockerfile:
-        - ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
-        - ENV PATH="$JAVA_HOME/bin:${PATH}"
+        - ENV JAVA_HOME_17=/usr/lib/jvm/java-17-openjdk
       npm:
         - npm-groovy-lint
     ide:

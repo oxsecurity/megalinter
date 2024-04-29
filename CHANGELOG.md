@@ -9,25 +9,55 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
 - Core
+  - Add new logs (at debug level) on each linter activation/deactivation
+  - Clean MegaLinter own CVE exceptions and order the remaining ones with links to related issues
+  - Upgrade to Java 21 except for npm-groovy-lint that requires Java 17
 
 - Media
 
-- New linters
+- Linters
   - `API_SPECTRAL` was added as replacement for `OPENAPI_SPECTRAL` (deprecated), supporting AsyncAPI and OpenAPI by default. Uses Spectral's standard config file name `.spectral.yaml` instead of `.openapirc.yml` with a default config with rulesets for AsyncAPI and OpenAPI enabled. Fixes [#3387](https://github.com/oxsecurity/megalinter/issues/3387)
 
 - Reporters
 
 - Fixes
   - Change `golangci-lint` lint mode to `project`
+  - Disable sql-lint as it is no longer maintained
 
 - Doc
+  - Handle disabled_reason property in descriptors
 
 - Flavors
 
 - CI
+  - Build: take in account disabled linters for workflow auto-update
+  - Remove useless package-lock.json that was in python tests folder
+  - Fix SARIF_REPORTER that was wrongly sent to `true` to format & fix test methods
 
 - Linter versions upgrades
   - [phpcs](https://github.com/PHPCSStandards/PHP_CodeSniffer) from 3.9.1 to **3.9.2** on 2024-04-23
+  - [csharpier](https://csharpier.com/) from 0.28.1 to **0.28.2** on 2024-04-26
+  - [roslynator](https://github.com/dotnet/Roslynator) from 0.8.6.0 to **0.8.7.0** on 2024-04-26
+  - [black](https://black.readthedocs.io/en/stable/) from 24.4.0 to **24.4.2** on 2024-04-26
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.9.0 to **1.10.0** on 2024-04-26
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.359 to **1.1.360** on 2024-04-26
+  - [ruff](https://github.com/astral-sh/ruff) from 0.4.1 to **0.4.2** on 2024-04-26
+  - [grype](https://github.com/anchore/grype) from 0.77.0 to **0.77.1** on 2024-04-26
+  - [syft](https://github.com/anchore/syft) from 1.2.0 to **1.3.0** on 2024-04-26
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.50.2 to **0.50.4** on 2024-04-26
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.50.2 to **0.50.4** on 2024-04-26
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.73.0 to **3.74.0** on 2024-04-26
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.10.8 to **8.11.0** on 2024-04-26
+  - [lychee](https://lychee.cli.rs) from 0.14.3 to **0.15.0** on 2024-04-26
+  - [markdown-table-formatter](https://www.npmjs.com/package/markdown-table-formatter) from 1.5.0 to **1.6.0** on 2024-04-27
+  - [pmd](https://pmd.github.io/) from 6.55.0 to **7.1.0** on 2024-04-28
+  - [powershell_formatter](https://github.com/PowerShell/PSScriptAnalyzer) from 7.4.1 to **7.4.2** on 2024-04-28
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.4.1 to **7.4.2** on 2024-04-28
+  - [rubocop](https://rubocop.org/) from 1.63.3 to **1.63.4** on 2024-04-28
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.8.1 to **1.8.2** on 2024-04-28
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.57.5 to **0.57.12** on 2024-04-28
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 14.4.1 to **14.5.0** on 2024-04-28
+  - [checkstyle](https://checkstyle.org/) from 10.15.0 to **10.16.0** on 2024-04-28
 <!-- linter-versions-end -->
 
 ## [v7.11.1] - 2024-04-23

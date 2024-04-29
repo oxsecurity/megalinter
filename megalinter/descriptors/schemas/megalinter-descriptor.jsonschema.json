@@ -791,6 +791,13 @@
             "title": "Disabled",
             "type": "boolean"
           },
+          "disabled_reason": {
+            "$id": "#/properties/linters/items/properties/disabled_reason",
+            "default": false,
+            "description": "Explanation about why the linter is disabled",
+            "title": "Disabled reason",
+            "type": "string"
+          },
           "downgraded_reason": {
             "$id": "#/properties/linters/items/properties/downgraded_reason",
             "default": false,
