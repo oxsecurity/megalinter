@@ -179,10 +179,10 @@ jobs:
     # Load all steps #
     ##################
     steps:
-      - name: Collect Workflow Telemetry
-        uses: runforesight/workflow-telemetry-action@v1
-        with:
-          comment_on_pr: false
+      # - name: Collect Workflow Telemetry
+      #   uses: runforesight/workflow-telemetry-action@v1
+      #   with:
+      #     comment_on_pr: false
 
       - name: Checkout Code
         uses: actions/checkout@v4
