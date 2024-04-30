@@ -34,6 +34,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Remove useless package-lock.json that was in python tests folder
   - Fix SARIF_REPORTER that was wrongly sent to `true` to format & fix test methods
   - Build: Write ARG lines at the top of Dockerfiles if they are used by FROM variables
+  - Remove Github Actions Workflow telemetry to improve performances
 
 - Linter versions upgrades
   - [phpcs](https://github.com/PHPCSStandards/PHP_CodeSniffer) from 3.9.1 to **3.9.2** on 2024-04-23
