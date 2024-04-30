@@ -5,10 +5,6 @@ CVE-2018-8292
 CVE-2023-29331
 CVE-2019-0820
 
-# editorconfig-checker
-# https://github.com/editorconfig-checker/editorconfig-checker/issues/342
-CVE-2023-39325
-
 # gitleaks
 # Solved in next gitleaks release: https://github.com/gitleaks/gitleaks/pull/1342
 CVE-2021-38561
