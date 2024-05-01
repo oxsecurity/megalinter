@@ -3364,7 +3364,7 @@
 <p><strong>Workaround: Restricted to PMD</strong></p>
 <h2 id="sfdx-scanner-apex-documentation">sfdx-scanner-apex documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>3.23.0</strong></li>
+<li>Version in MegaLinter: <strong>3.24.0</strong></li>
 <li>Visit <a href="https://forcedotcom.github.io/sfdx-scanner/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://docs.pmd-code.org/latest/pmd_userdocs_making_rulesets.html" target="_blank">How to configure sfdx-scanner-apex rules</a><ul>
 <li>If custom <code>apex-pmd-ruleset.xml</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/apex-pmd-ruleset.xml" target="_blank">apex-pmd-ruleset.xml</a> will be used</li>
@@ -3578,8 +3578,10 @@ GLOBAL FLAGS
 COMMANDS
   scanner run dfa  scan codebase with all DFA rules
 
-(node:2016) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(node:2056) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
 (Use `node --trace-deprecation ...` to show where the warning was created)
+ ›   Warning: Plugin @salesforce/sfdx-scanner (3.24.0) differs from the version
+ ›    specified by sf (3.23.0)
 Warning: To use the most up-to-date Code Analyzer features including PMD 7.x, install Code Analyzer v4.x (Beta). To install v4.x (beta), run this command: sf plugins install @salesforce/sfdx-scanner@latest-beta
 Warning: We're continually improving Salesforce Code Analyzer. Tell us what you think! Give feedback at https://research.net/r/SalesforceCA
  name                                                   languages   categories            rulesets [dep]                                   engine            is dfa is pilot

@@ -3362,7 +3362,7 @@
 <p>To see MarkdownLint version, you can have a look in the dependencies of latest markdownlint-cli version.</p>
 <h2 id="markdownlint-documentation">markdownlint documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>0.39.0</strong></li>
+<li>Version in MegaLinter: <strong>0.40.0</strong></li>
 <li>Visit <a href="https://github.com/DavidAnson/markdownlint#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/igorshubovych/markdownlint-cli#configuration" target="_blank">How to configure markdownlint rules</a><ul>
 <li>If custom <code>.markdownlint.json</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.markdownlint.json" target="_blank">.markdownlint.json</a> will be used</li>
@@ -3668,20 +3668,21 @@
 MarkdownLint Command Line Interface
 
 Options:
-  -V, --version                               output the version number
-  -c, --config [configFile]                   configuration file (JSON, JSONC, JS, or YAML)
-  -d, --dot                                   include files/folders with a dot (for example `.github`)
-  -f, --fix                                   fix basic errors (does not work with STDIN)
-  -i, --ignore [file|directory|glob]          file(s) to ignore/exclude (default: [])
-  -j, --json                                  write issues in json format
-  -o, --output [outputFile]                   write issues to file (no console)
-  -p, --ignore-path [file]                    path to file with ignore pattern(s)
-  -q, --quiet                                 do not write issues to STDOUT
-  -r, --rules  [file|directory|glob|package]  include custom rule files (default: [])
-  -s, --stdin                                 read from STDIN (does not work with files)
-  --enable [rules...]                         Enable certain rules, e.g. --enable MD013 MD041 --
-  --disable [rules...]                        Disable certain rules, e.g. --disable MD013 MD041 --
-  -h, --help                                  display help for command
+  -V, --version                              output the version number
+  -c, --config &lt;configFile&gt;                  configuration file (JSON, JSONC, JS, YAML, or TOML)
+  --configPointer &lt;pointer&gt;                  JSON Pointer to object within configuration file (default: "")
+  -d, --dot                                  include files/folders with a dot (for example `.github`)
+  -f, --fix                                  fix basic errors (does not work with STDIN)
+  -i, --ignore &lt;file|directory|glob&gt;         file(s) to ignore/exclude (default: [])
+  -j, --json                                 write issues in json format
+  -o, --output &lt;outputFile&gt;                  write issues to file (no console)
+  -p, --ignore-path &lt;file&gt;                   path to file with ignore pattern(s)
+  -q, --quiet                                do not write issues to STDOUT
+  -r, --rules &lt;file|directory|glob|package&gt;  include custom rule files (default: [])
+  -s, --stdin                                read from STDIN (does not work with files)
+  --enable &lt;rules...&gt;                        Enable certain rules, e.g. --enable MD013 MD041 --
+  --disable &lt;rules...&gt;                       Disable certain rules, e.g. --disable MD013 MD041 --
+  -h, --help                                 display help for command
 </code></pre>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
 <ul>
