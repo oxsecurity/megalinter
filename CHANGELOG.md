@@ -62,6 +62,13 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkstyle](https://checkstyle.org/) from 10.15.0 to **10.16.0** on 2024-04-28
   - [secretlint](https://github.com/secretlint/secretlint) from 8.2.3 to **8.2.4** on 2024-04-29
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.11.0 to **8.11.1** on 2024-04-29
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 24.2.2 to **24.2.3** on 2024-04-30
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.86.4 to **0.87.0** on 2024-04-30
+  - [editorconfig-checker](https://editorconfig-checker.github.io/) from 2.7.2 to **3.0.1** on 2024-04-30
+  - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.39.0 to **0.40.0** on 2024-04-30
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 3.23.0 to **3.24.0** on 2024-04-30
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 3.23.0 to **3.24.0** on 2024-04-30
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 3.23.0 to **3.24.0** on 2024-04-30
 <!-- linter-versions-end -->
 
 ## [v7.11.1] - 2024-04-23
