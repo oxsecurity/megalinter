@@ -149,10 +149,13 @@ linters:
           url: https://marketplace.visualstudio.com/items?itemName=getpsalm.psalm-vscode-plugin
   # PHPLint
   - linter_name: phplint
+    can_output_sarif: true
     linter_url: https://github.com/overtrue/phplint
     linter_repo: https://github.com/overtrue/phplint
     config_file_name: .phplint.yml
     cli_lint_mode: list_of_files
+    cli_sarif_args:
+      - "--log-sarif={{SARIF_OUTPUT_FILE}}"
     examples:
       - "phplint myfile.php"
       - "phplint mydir"
