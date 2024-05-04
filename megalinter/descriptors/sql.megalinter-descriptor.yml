@@ -54,6 +54,8 @@ linters:
   # TSQL
   - class: DotNetToolLinter
     linter_name: tsqllint
+    disabled: true
+    disabled_reason: "Security issues not handled: # https://github.com/tsqllint/tsqllint/issues/333"
     descriptor_flavors:
       - dotnet
       - dotnetweb
