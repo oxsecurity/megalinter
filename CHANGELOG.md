@@ -10,15 +10,18 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Core
   - Add new logs (at debug level) on each linter activation/deactivation
+  - Clean MegaLinter own CVE exceptions and order the remaining ones with links to related issues
+  - Upgrade to Java 21 except for npm-groovy-lint that requires Java 17
 
 - Media
 
-- New linters
+- Linters
   - `API_SPECTRAL` was added as replacement for `OPENAPI_SPECTRAL` (deprecated), supporting AsyncAPI and OpenAPI by default. Uses Spectral's standard config file name `.spectral.yaml` instead of `.openapirc.yml` with a default config with rulesets for AsyncAPI and OpenAPI enabled. Fixes [#3387](https://github.com/oxsecurity/megalinter/issues/3387)
 
 - Reporters
 
 - Fixes
+  - Change `golangci-lint` lint mode to `project`
   - Disable sql-lint as it is no longer maintained
 
 - Doc
@@ -27,6 +30,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Flavors
 
 - CI
+  - Build: take in account disabled linters for workflow auto-update
+  - Remove useless package-lock.json that was in python tests folder
+  - Fix SARIF_REPORTER that was wrongly sent to `true` to format & fix test methods
+  - Build: Write ARG lines at the top of Dockerfiles if they are used by FROM variables
+  - Remove Github Actions Workflow telemetry to improve performances
 
 - Linter versions upgrades
   - [phpcs](https://github.com/PHPCSStandards/PHP_CodeSniffer) from 3.9.1 to **3.9.2** on 2024-04-23
@@ -43,6 +51,24 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.73.0 to **3.74.0** on 2024-04-26
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.10.8 to **8.11.0** on 2024-04-26
   - [lychee](https://lychee.cli.rs) from 0.14.3 to **0.15.0** on 2024-04-26
+  - [markdown-table-formatter](https://www.npmjs.com/package/markdown-table-formatter) from 1.5.0 to **1.6.0** on 2024-04-27
+  - [pmd](https://pmd.github.io/) from 6.55.0 to **7.1.0** on 2024-04-28
+  - [powershell_formatter](https://github.com/PowerShell/PSScriptAnalyzer) from 7.4.1 to **7.4.2** on 2024-04-28
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.4.1 to **7.4.2** on 2024-04-28
+  - [rubocop](https://rubocop.org/) from 1.63.3 to **1.63.4** on 2024-04-28
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.8.1 to **1.8.2** on 2024-04-28
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.57.5 to **0.57.12** on 2024-04-28
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 14.4.1 to **14.5.0** on 2024-04-28
+  - [checkstyle](https://checkstyle.org/) from 10.15.0 to **10.16.0** on 2024-04-28
+  - [secretlint](https://github.com/secretlint/secretlint) from 8.2.3 to **8.2.4** on 2024-04-29
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.11.0 to **8.11.1** on 2024-04-29
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 24.2.2 to **24.2.3** on 2024-04-30
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.86.4 to **0.87.0** on 2024-04-30
+  - [editorconfig-checker](https://editorconfig-checker.github.io/) from 2.7.2 to **3.0.1** on 2024-04-30
+  - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.39.0 to **0.40.0** on 2024-04-30
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 3.23.0 to **3.24.0** on 2024-04-30
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 3.23.0 to **3.24.0** on 2024-04-30
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 3.23.0 to **3.24.0** on 2024-04-30
 <!-- linter-versions-end -->
 
 ## [v7.11.1] - 2024-04-23

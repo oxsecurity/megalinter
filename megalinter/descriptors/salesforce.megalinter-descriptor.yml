@@ -6,9 +6,9 @@ lint_all_files: true
 install:
   # Java, because Apex is Java-based, so are related tools like PMD which is embedded in sfdx-scanner
   apk:
-    - openjdk17
+    - openjdk21
   dockerfile:
-    - ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+    - ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
     - ENV PATH="$JAVA_HOME/bin:${PATH}"
     - |
       RUN sf plugins install @salesforce/plugin-packaging \

@@ -15,7 +15,7 @@ description: How to use checkstyle (configure, ignore files, ignore errors, help
 
 ## checkstyle documentation
 
-- Version in MegaLinter: **10.15.0**
+- Version in MegaLinter: **10.16.0**
 - Visit [Official Web Site](https://checkstyle.org/){target=_blank}
 - See [How to configure checkstyle rules](https://checkstyle.org/config.html){target=_blank}
   - If custom `sun_checks.xml` config file isn't found, [sun_checks.xml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/sun_checks.xml){target=_blank} will be used
@@ -116,12 +116,14 @@ Usage: java [options] <mainclass> [args...]
                   and ZIP archives to search for class files.
     -p <module path>
     --module-path <module path>...
-                  A : separated list of directories, each directory
-                  is a directory of modules.
+                  A : separated list of elements, each element is a file path
+                  to a module or a directory containing modules. Each module is either
+                  a modular JAR or an exploded-module directory.
     --upgrade-module-path <module path>...
-                  A : separated list of directories, each directory
-                  is a directory of modules that replace upgradeable
-                  modules in the runtime image
+                  A : separated list of elements, each element is a file path
+                  to a module or a directory containing modules to replace
+                  upgradeable modules in the runtime image. Each module is either
+                  a modular JAR or an exploded-module directory.
     --add-modules <module name>[,<module name>...]
                   root modules to resolve in addition to the initial module.
                   <module name> can also be ALL-DEFAULT, ALL-SYSTEM,
@@ -184,7 +186,7 @@ Usage: java [options] <mainclass> [args...]
                   See the SplashScreen API documentation for more information
     @argument files
                   one or more argument files containing options
-    -disable-@files
+    --disable-@files
                   prevent further argument file expansion
     --enable-preview
                   allow classes to depend on preview features of this release
@@ -198,7 +200,7 @@ To specify an argument for a long option, you can use --<name>=<value> or
 - Dockerfile commands :
 ```dockerfile
 # Parent descriptor install
-ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 # Linter install
 RUN CHECKSTYLE_LATEST=$(curl -s \

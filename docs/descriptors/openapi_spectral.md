@@ -15,6 +15,8 @@ description: How to use spectral (configure, ignore files, ignore errors, help &
 
 > This linter has been deprecated.
 >
+> Please use API_SPECTRAL, as OPENAPI descriptor will be removed in the next major release.
+>
 > You should disable spectral by adding it in DISABLE_LINTERS property.
 >
 > It will be maintained at least until the next major release.

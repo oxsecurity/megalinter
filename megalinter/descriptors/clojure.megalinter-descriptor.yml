@@ -89,7 +89,8 @@ linters:
 
     # cljstyle
   - linter_name: cljstyle
-    disabled: true # Disabled until https://github.com/greglook/cljstyle/issues/104 is solved
+    disabled: true
+    disabled_reason: "Bug on cljstyle on alpine linux: https://github.com/greglook/cljstyle/issues/104"
     linter_url: https://github.com/greglook/cljstyle
     linter_repo: https://github.com/greglook/cljstyle
     linter_rules_url: https://github.com/greglook/cljstyle/blob/main/doc/configuration.md#format-rules

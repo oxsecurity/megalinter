@@ -16,7 +16,7 @@ linters:
     linter_rules_configuration_url: https://golangci-lint.run/usage/configuration/#config-file
     linter_rules_inline_disable_url: https://golangci-lint.run/usage/false-positives/#nolint
     config_file_name: .golangci.yml
-    cli_lint_mode: list_of_files
+    cli_lint_mode: project
     cli_lint_extra_args:
       - "run"
     cli_lint_fix_arg_name: --fix

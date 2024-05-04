@@ -418,6 +418,17 @@ def build_dockerfile(
     # Add ruby apk packages if gem packages are here
     if len(gem_packages) > 0:
         apk_packages += ["ruby", "ruby-dev", "ruby-bundler", "ruby-rdoc"]
+    # Separate args used in FROM instructions from others
+    all_from_instructions = "\n".join(list(dict.fromkeys(docker_from)))
+    docker_arg_top = []
+    docker_arg_main = []
+    for docker_arg_item in docker_arg:
+        match = re.match(r"ARG\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*=?\s*", docker_arg_item)
+        arg_name = match.group(1)
+        if arg_name in all_from_instructions:
+            docker_arg_top += [docker_arg_item]
+        else:
+            docker_arg_main += [docker_arg_item]
     # Replace between tags in Dockerfile
     # Commands
     replace_in_file(
@@ -428,9 +439,15 @@ def build_dockerfile(
     )
     replace_in_file(
         dockerfile,
+        "#ARGTOP__START",
+        "#ARGTOP__END",
+        "\n".join(list(dict.fromkeys(docker_arg_top))),
+    )
+    replace_in_file(
+        dockerfile,
         "#ARG__START",
         "#ARG__END",
-        "\n".join(list(dict.fromkeys(docker_arg))),
+        "\n".join(list(dict.fromkeys(docker_arg_main))),
     )
     replace_in_file(
         dockerfile,
@@ -1214,7 +1231,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         else:
             linter_doc_md += [f"# {linter.linter_name}\n{md_individual_extra}"]
 
-        # Indicate that a linter is disabled in this version
+        # Indicate that a linter is deprecated in this version
         title_prefix = ""
         if hasattr(linter, "deprecated") and linter.deprecated is True:
             title_prefix = "(deprecated) "
@@ -3301,6 +3318,8 @@ def update_workflows_linters():
 
     for descriptor in descriptors:
         for linter in descriptor["linters"]:
+            if "disabled" in linter and linter["disabled"] is True:
+                continue
             if "name" in linter:
                 name = linter["name"].lower()
             else:
