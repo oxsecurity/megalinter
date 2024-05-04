@@ -85,6 +85,7 @@ linters:
   # PHP Stan
   - linter_name: phpstan
     name: PHP_PHPSTAN
+    can_output_sarif: true
     linter_url: https://phpstan.org/
     linter_repo: https://github.com/phpstan/phpstan
     linter_image_url: https://i.imgur.com/WaRKPlC.png
@@ -98,6 +99,8 @@ linters:
       - "--no-ansi"
       - "--memory-limit"
       - "1G"
+    cli_sarif_args:
+      - "--error-format=sarif"
     cli_lint_errors_count: regex_number
     cli_lint_errors_regex: "Found ([0-9]+) error"
     examples:
@@ -107,9 +110,7 @@ linters:
       - "phpstan analyse --no-progress --no-ansi mydir1/ mydir2/ myfile.php"
     install:
       dockerfile:
-        - FROM ghcr.io/phpstan/phpstan:latest-php8.3 as phpstan
-        - COPY --link --from=phpstan /composer/vendor/phpstan/phpstan/phpstan.phar /usr/bin/phpstan
-        - RUN chmod +x /usr/bin/phpstan
+        - RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require phpstan/phpstan bartlett/sarif-php-sdk
       idea:
         - name: PHPStan / Psalm / Generics
           url: https://plugins.jetbrains.com/plugin/12754-phpstan--psalm--generics
