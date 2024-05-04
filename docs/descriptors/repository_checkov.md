@@ -15,7 +15,7 @@ description: How to use checkov (configure, ignore files, ignore errors, help & 
 
 ## checkov documentation
 
-- Version in MegaLinter: **3.2.74**
+- Version in MegaLinter: **3.2.79**
 - Visit [Official Web Site](https://www.checkov.io/){target=_blank}
 - See [How to configure checkov rules](https://github.com/bridgecrewio/checkov#configuration-using-a-config-file){target=_blank}
   - If custom `.checkov.yml` config file isn't found, [.checkov.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.checkov.yml){target=_blank} will be used
@@ -219,7 +219,8 @@ options:
                         kustomize, openapi, sca_package, sca_image, secrets,
                         serverless, terraform, terraform_json, terraform_plan,
                         sast, sast_python, sast_java, sast_javascript,
-                        3d_policy [env var: CKV_FRAMEWORK]
+                        sast_typescript, sast_golang, 3d_policy [env var:
+                        CKV_FRAMEWORK]
   --skip-framework SKIP_FRAMEWORK [SKIP_FRAMEWORK ...]
                         Filter scan to skip specific infrastructure as code
                         frameworks. This will be included automatically for
@@ -237,7 +238,7 @@ options:
                         kustomize, openapi, sca_package, sca_image, secrets,
                         serverless, terraform, terraform_json, terraform_plan,
                         sast, sast_python, sast_java, sast_javascript,
-                        3d_policy
+                        sast_typescript, sast_golang, 3d_policy
   -c CHECK, --check CHECK
                         Checks to run; any other checks will be skipped. Enter
                         one or more items separated by commas. Each item may

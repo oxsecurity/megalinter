@@ -69,6 +69,25 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 3.23.0 to **3.24.0** on 2024-04-30
   - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 3.23.0 to **3.24.0** on 2024-04-30
   - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 3.23.0 to **3.24.0** on 2024-04-30
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.87.0 to **0.87.1** on 2024-05-04
+  - [stylelint](https://stylelint.io) from 16.4.0 to **16.5.0** on 2024-05-04
+  - [golangci-lint](https://golangci-lint.run/) from 1.57.2 to **1.58.0** on 2024-05-04
+  - [phplint](https://github.com/overtrue/phplint) from 9.1.2 to **9.2.0** on 2024-05-04
+  - [psalm](https://psalm.dev) from Psalm.5.23.1@ to **Psalm.5.24.0@** on 2024-05-04
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.49.6 to **0.49.7** on 2024-05-04
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.360 to **1.1.361** on 2024-05-04
+  - [ruff](https://github.com/astral-sh/ruff) from 0.4.2 to **0.4.3** on 2024-05-04
+  - [checkov](https://www.checkov.io/) from 3.2.74 to **3.2.79** on 2024-05-04
+  - [grype](https://github.com/anchore/grype) from 0.77.1 to **0.77.2** on 2024-05-04
+  - [kics](https://www.kics.io) from 2.0.0 to **2.0.1** on 2024-05-04
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.50.4 to **0.51.1** on 2024-05-04
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.50.4 to **0.51.1** on 2024-05-04
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.74.0 to **3.75.0** on 2024-05-04
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.77 to **0.1.78** on 2024-05-04
+  - [scalafix](https://scalacenter.github.io/scalafix/) from 0.12.0 to **0.12.1** on 2024-05-04
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.11.1 to **8.11.3** on 2024-05-04
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.7.0 to **8.8.0** on 2024-05-04
+  - [vale](https://vale.sh/) from 3.4.0 to **3.4.2** on 2024-05-04
 <!-- linter-versions-end -->
 
 ## [v7.11.1] - 2024-04-23

@@ -156,11 +156,6 @@ OPTIONS
            run if not currently in a git directory, there are unstaged
            changes, or given baseline hash doesn't exist.
 
-       --beta-testing-secrets-enabled
-           Please use --secrets instead of --beta-testing-secrets. Requires
-           Semgrep Secrets, contact support@semgrep.com for more information
-           on this.
-
        -d, --dump-command-for-core
            <internal, do not use>
 
@@ -458,6 +453,11 @@ OPTIONS
            analyzers/languages specified in the Semgrep rule(s) regardless of
            file extension or file type. This setting doesn't apply to target
            files discovered by scanning folders. Defaults to false.
+
+       --secrets
+           Run Semgrep Secrets product, including support for secret
+           validation. Requires access to Secrets, contact
+           support@semgrep.com for more information.
 
        --severity=VAL
            Report findings only from rules matching the supplied severity
