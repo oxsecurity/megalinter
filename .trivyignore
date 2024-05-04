@@ -14,6 +14,8 @@ CVE-2022-32149
 # Kubescape
 # https://github.com/oxsecurity/megalinter/issues/3519
 GHSA-9763-4f94-gfch
+GHSA-m425-mq94-257g
+CVE-2023-39325
 CVE-2023-49569
 CVE-2023-49568
 
