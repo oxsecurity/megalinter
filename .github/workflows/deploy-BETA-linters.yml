@@ -177,7 +177,6 @@ jobs:
             "spell_vale",
             "spell_lychee",
             "sql_sqlfluff",
-            "sql_tsqllint",
             "swift_swiftlint",
             "tekton_tekton_lint",
             "terraform_tflint",
