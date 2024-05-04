@@ -17,6 +17,7 @@ install:
     - php83-curl
     - php83-dom
     - php83-opcache
+    - php83-openssl
     - php83-common
     - php83-simplexml
     - dpkg
@@ -36,10 +37,13 @@ install:
           && mv phive.phar /usr/local/bin/phive \
           && rm phive.phar.asc \
           && update-alternatives --install /usr/bin/php php /usr/bin/php83 110
+    - COPY --from=composer/composer:2-bin /composer /usr/bin/composer
+    - ENV PATH="/root/.composer/vendor/bin:${PATH}"
 linters:
   # PHPCS
   - linter_name: phpcs
     name: PHP_PHPCS
+    can_output_sarif: true
     linter_url: https://github.com/PHPCSStandards/PHP_CodeSniffer
     linter_repo: https://github.com/PHPCSStandards/PHP_CodeSniffer
     linter_rules_configuration_url: https://github.com/PHPCSStandards/PHP_CodeSniffer/wiki/Advanced-Usage#using-a-default-configuration-file
@@ -49,6 +53,8 @@ linters:
     config_file_name: phpcs.xml
     cli_lint_mode: list_of_files
     cli_config_arg_name: "--standard="
+    cli_sarif_args:
+      - "--report=\\Bartlett\\Sarif\\Converter\\PhpCsConverter"
     cli_lint_errors_count: regex_number
     cli_lint_errors_regex: "FOUND ([0-9]+) ERRORS"
     examples:
@@ -58,7 +64,7 @@ linters:
     install:
       dockerfile:
         - |
-          RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && phive --no-progress install phpcs -g --trust-gpg-keys 31C7E470E2138192,95DE904AB800754A11D80B605E6DDE998AB73B8E
+          RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require squizlabs/php_codesniffer bartlett/sarif-php-sdk
     ide:
       atom:
         - name: linter-phpcs
