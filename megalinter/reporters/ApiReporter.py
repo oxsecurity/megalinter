@@ -19,8 +19,10 @@ class ApiReporter(Reporter):
     name = "API_REPORTER"
 
     api_url: str | None = None
-    payload: object = {}
-    linter_payloads = []
+    payload: object = {
+        "linters": []
+    }
+    linter_payloads: list[any]= []
     payloadFormatted: object = {}
 
     def __init__(self, params=None):
@@ -88,7 +90,8 @@ class ApiReporter(Reporter):
                         else "Error"
                     )
                 )
-                linter_payload.data.severityIcon = (
+                linter_payload_data = {}
+                linter_payload_data.severityIcon = (
                     "✅"
                     if linter.status == "success" and linter.return_code == 0
                     else (
@@ -98,17 +101,18 @@ class ApiReporter(Reporter):
                     )
                 )
                 # Number of files & errors
-                linter_payload.data.cliLintMode = linter.cli_lint_mode
+                linter_payload_data.cliLintMode = linter.cli_lint_mode
                 if linter.cli_lint_mode != "project":
-                    linter_payload.data.numberFilesFound = len(linter.files)
-                linter_payload.data.numberErrorsFound = linter.total_number_errors
+                    linter_payload_data.numberFilesFound = len(linter.files)
+                linter_payload_data.numberErrorsFound = linter.total_number_errors
                 # Fixed cells
                 if linter.try_fix is True:
-                    linter_payload.data.numberErrorsFixed = linter.number_fixed
+                    linter_payload_data.numberErrorsFixed = linter.number_fixed
                 # Elapsed time
                 if self.master.show_elapsed_time is True:
-                    linter_payload.data.elapsedTime = round(linter.elapsed_time_s, 2)
+                    linter_payload_data.elapsedTime = round(linter.elapsed_time_s, 2)
                 # Add to linters
+                linter_payload["data"] = linter_payload_data
                 self.payload.linters.append(linter_payload)
 
     def format_payload(self):

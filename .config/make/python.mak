@@ -1,5 +1,5 @@
 # Python default launcher
-python_launcher ?= python3.11
+python_launcher ?= python3.12
 python_requirements_file ?= .config/python/dev/requirements.txt
 python_requirements_dev_file ?= .config/python/dev/requirements.txt
 
