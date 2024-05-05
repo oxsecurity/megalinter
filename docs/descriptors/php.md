@@ -64,5 +64,7 @@ RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" \
   - [php83-ctype](https://pkgs.alpinelinux.org/packages?branch=edge&name=php83-ctype)
   - [php83-curl](https://pkgs.alpinelinux.org/packages?branch=edge&name=php83-curl)
   - [php83-dom](https://pkgs.alpinelinux.org/packages?branch=edge&name=php83-dom)
+  - [php83-opcache](https://pkgs.alpinelinux.org/packages?branch=edge&name=php83-opcache)
+  - [php83-common](https://pkgs.alpinelinux.org/packages?branch=edge&name=php83-common)
   - [php83-simplexml](https://pkgs.alpinelinux.org/packages?branch=edge&name=php83-simplexml)
   - [dpkg](https://pkgs.alpinelinux.org/packages?branch=edge&name=dpkg)
