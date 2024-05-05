@@ -96,6 +96,8 @@ RUN apk add --no-cache \
                 php83-ctype \
                 php83-curl \
                 php83-dom \
+                php83-opcache \
+                php83-common \
                 php83-simplexml \
                 dpkg \
                 py3-pyflakes \
