@@ -161,9 +161,12 @@ class ApiReporter(Reporter):
                 logging.info(
                     f"[Api Reporter] Successfully posted data to {self.api_url}"
                 )
+                if config.get(self.master.request_id,"API_REPORTER_DEBUG"):
+                    logging.info(json.dumps(obj=self.payloadFormatted, indent=True))
             else:
                 logging.warning(
                     f"[Api Reporter] Error posting data to {self.api_url} ({response.status_code})\n"
+                    f"Api request: {json.dumps(obj=self.payloadFormatted, indent=True)}\n"
                     f"API response: {response.text}"
                 )
         except ConnectionError as e:
