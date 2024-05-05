@@ -1093,6 +1093,7 @@
         "oldxml",
         "onecolumn",
         "onstart",
+        "opcache",
         "openapi",
         "openapirc",
         "opencontainers",
