@@ -91,6 +91,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.7.0 to **8.8.0** on 2024-05-04
   - [vale](https://vale.sh/) from 3.4.0 to **3.4.2** on 2024-05-04
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.57.12 to **0.58.2** on 2024-05-05
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.50.3 to **0.51.0** on 2024-05-05
 <!-- linter-versions-end -->
 
 ## [v7.11.1] - 2024-04-23
