@@ -20,9 +20,7 @@ class ApiReporter(Reporter):
     scope = "mega-linter"
 
     api_url: str | None = None
-    payload: dict = {
-        "linters": []
-    }
+    payload: dict = {"linters": []}
     linter_payloads: list[dict] = []
     payloadFormatted: dict = {}
 
@@ -118,8 +116,9 @@ class ApiReporter(Reporter):
 
     def format_payload(self):
         if (
-            "loki/api/v1/push" in self.api_url or
-              self.api_url == "https://jsonplaceholder.typicode.com/posts" # For test class
+            "loki/api/v1/push" in self.api_url
+            or self.api_url
+            == "https://jsonplaceholder.typicode.com/posts"  # For test class
         ):
             self.format_payload_loki()
             return
@@ -153,8 +152,8 @@ class ApiReporter(Reporter):
         # Use username & password
         if config.exists(self.master.request_id, "API_REPORTER_BASIC_AUTH_USERNAME"):
             session.auth = (
-                config.get(self.master.request_id, 'API_REPORTER_BASIC_AUTH_USERNAME'),
-                config.get(self.master.request_id, 'API_REPORTER_BASIC_AUTH_PASSWORD')
+                config.get(self.master.request_id, "API_REPORTER_BASIC_AUTH_USERNAME"),
+                config.get(self.master.request_id, "API_REPORTER_BASIC_AUTH_PASSWORD"),
             )
         # Use token
         if config.exists(self.master.request_id, "API_REPORTER_BEARER_TOKEN"):
@@ -169,7 +168,7 @@ class ApiReporter(Reporter):
                 logging.info(
                     f"[Api Reporter] Successfully posted data to {self.api_url}"
                 )
-                if config.get(self.master.request_id,"API_REPORTER_DEBUG"):
+                if config.get(self.master.request_id, "API_REPORTER_DEBUG"):
                     logging.info(json.dumps(obj=self.payloadFormatted, indent=True))
             else:
                 logging.warning(
