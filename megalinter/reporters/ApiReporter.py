@@ -13,10 +13,9 @@ import git
 import requests
 from megalinter import Reporter, config
 from megalinter.constants import ML_DOC_URL_DESCRIPTORS_ROOT
-from megalinter.utils_reporter import build_linter_reporter_external_result
 
 
-class WebHookLinterReporter(Reporter):
+class ApiReporter(Reporter):
     name = "API_REPORTER"
 
     api_url: str | None = None
