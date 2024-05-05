@@ -101,6 +101,7 @@ class mega_linter_3_sarif_test(unittest.TestCase):
                 "ENABLE_LINTERS": "JAVASCRIPT_ES,PYTHON_BANDIT",
                 "API_REPORTER": "true",
                 "API_REPORTER_URL": "https://jsonplaceholder.typicode.com/posts",
+                "API_REPORTER_DEBUG": "true",
                 "request_id": self.request_id,
             }
         )

@@ -17,13 +17,14 @@ from megalinter.constants import ML_DOC_URL_DESCRIPTORS_ROOT
 
 class ApiReporter(Reporter):
     name = "API_REPORTER"
+    scope = "mega-linter"
 
     api_url: str | None = None
-    payload: object = {
+    payload: dict = {
         "linters": []
     }
     linter_payloads: list[any]= []
-    payloadFormatted: object = {}
+    payloadFormatted: dict = {}
 
     def __init__(self, params=None):
         # Deactivate Api reporter by default
@@ -46,7 +47,7 @@ class ApiReporter(Reporter):
         # Format payload according to target
         self.format_payload()
         # Call API
-        self.send_to_api
+        self.send_to_api()
 
     def build_payload(self):
         # Git info
@@ -75,23 +76,23 @@ class ApiReporter(Reporter):
                 )
                 linter_payload = {
                     "descriptor": linter.descriptor_id,
-                    "linter": linter.name,
-                    "linterKey": linter.linter_name,
+                    "linter": linter.linter_name,
+                    "linterKey": linter.name,
                     "linterDocUrl": linter_doc_url,
                     "data": {},
                 }
                 # Status
-                linter_payload.severity = (
-                    "Success"
+                linter_payload["severity"] = (
+                    "success"
                     if linter.status == "success" and linter.return_code == 0
                     else (
-                        "Warning"
+                        "warning"
                         if linter.status != "success" and linter.return_code == 0
-                        else "Error"
+                        else "error"
                     )
                 )
                 linter_payload_data = {}
-                linter_payload_data.severityIcon = (
+                linter_payload_data["severityIcon"] = (
                     "✅"
                     if linter.status == "success" and linter.return_code == 0
                     else (
@@ -101,22 +102,25 @@ class ApiReporter(Reporter):
                     )
                 )
                 # Number of files & errors
-                linter_payload_data.cliLintMode = linter.cli_lint_mode
+                linter_payload_data["cliLintMode"] = linter.cli_lint_mode
                 if linter.cli_lint_mode != "project":
-                    linter_payload_data.numberFilesFound = len(linter.files)
-                linter_payload_data.numberErrorsFound = linter.total_number_errors
+                    linter_payload_data["numberFilesFound"] = len(linter.files)
+                linter_payload_data["numberErrorsFound"] = linter.total_number_errors
                 # Fixed cells
                 if linter.try_fix is True:
-                    linter_payload_data.numberErrorsFixed = linter.number_fixed
+                    linter_payload_data["numberErrorsFixed"] = linter.number_fixed
                 # Elapsed time
                 if self.master.show_elapsed_time is True:
-                    linter_payload_data.elapsedTime = round(linter.elapsed_time_s, 2)
+                    linter_payload_data["elapsedTime"] = round(linter.elapsed_time_s, 2)
                 # Add to linters
                 linter_payload["data"] = linter_payload_data
-                self.payload.linters.append(linter_payload)
+                self.payload["linters"].append(linter_payload)
 
     def format_payload(self):
-        if "loki/api/v1/push" in self.api_url:
+        if (
+            "loki/api/v1/push" in self.api_url or
+              self.api_url == "https://jsonplaceholder.typicode.com/posts" # For test class
+        ):
             self.format_payload_loki()
             return
         self.payloadFormatted = self.payload
@@ -124,18 +128,18 @@ class ApiReporter(Reporter):
     def format_payload_loki(self):
         time_ns = time.time_ns()
         streams = []
-        for linter in self.payload.linters:
-            payload_copy = copy.deepcopy(self.payload)
-            del payload_copy.data
-            del payload_copy.linters
+        for linter in self.payload["linters"]:
+            stream_info = copy.deepcopy(self.payload)
+            del stream_info["data"]
+            del stream_info["linters"]
             linter_copy = copy.deepcopy(linter)
-            del linter_copy.data
-            stream_info = payload_copy.update(payload_copy)
-            data = copy.deepcopy(linter.data)
-            data.update(self.payload.data)
+            del linter_copy["data"]
+            stream_info.update(linter_copy)
+            data = copy.deepcopy(linter["data"])
+            data.update(self.payload["data"])
             stream = {
                 "stream": stream_info,
-                "values": [[str(time_ns), json.dumps()]],
+                "values": [[str(time_ns), json.dumps(data)]],
             }
             streams.append(stream)
         self.payloadFormatted = {"streams": streams}
