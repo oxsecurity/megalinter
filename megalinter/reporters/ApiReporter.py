@@ -23,7 +23,7 @@ class ApiReporter(Reporter):
     payload: dict = {
         "linters": []
     }
-    linter_payloads: list[any]= []
+    linter_payloads: list[dict] = []
     payloadFormatted: dict = {}
 
     def __init__(self, params=None):
