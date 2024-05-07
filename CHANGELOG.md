@@ -92,6 +92,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [vale](https://vale.sh/) from 3.4.0 to **3.4.2** on 2024-05-04
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.57.12 to **0.58.2** on 2024-05-05
   - [tflint](https://github.com/terraform-linters/tflint) from 0.50.3 to **0.51.0** on 2024-05-05
+  - [checkov](https://www.checkov.io/) from 3.2.79 to **3.2.82** on 2024-05-06
+  - [grype](https://github.com/anchore/grype) from 0.77.2 to **0.77.3** on 2024-05-06
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.75.0 to **3.75.1** on 2024-05-06
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 2.22.0 to **2.23.0** on 2024-05-06
+  - [sqlfluff](https://www.sqlfluff.com/) from 3.0.5 to **3.0.6** on 2024-05-06
 <!-- linter-versions-end -->
 
 ## [v7.11.1] - 2024-04-23
