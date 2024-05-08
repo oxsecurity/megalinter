@@ -317,31 +317,48 @@ def is_git_repo(path):
         return False
 
 def get_git_context_info(request_id, path):
-        try:
-            repo = git.Repo(
-                path,
-                search_parent_directories=True,
-            )
-            repo_name = repo.working_tree_dir.split("/")[-1]
-        except Exception as e:
-            return {
-                "repo_name": "?",
-                "branch_name": "?"
-            }
-        try:            
-            branch = repo.active_branch
-            branch_name = branch.name
-        except Exception as e:
-            branch_name = config.get_first_var_set(
-                request_id,
-                [
-                    "GITHUB_REF_NAME", 
-                    "GIT_BRANCH",
-                    "CI_COMMIT_REF_NAME",
-                    "BITBUCKET_BRANCH",
-                    "BUILD_SOURCEBRANCHNAME"
-                ],
-                "?")
+        repo_name = config.get_first_var_set(
+            request_id,
+            [
+                "GITHUB_REPOSITORY", 
+                "GIT_URL",
+                "CI_PROJECT_NAME",
+                "BITBUCKET_REPO_SLUG",
+                "BUILD_REPOSITORYNAME"
+            ],
+            None)
+        if repo_name is not None:
+            repo_name = repo_name.split("/")[-1] #Get last portion
+        branch_name = config.get_first_var_set(
+            request_id,
+            [
+                "GITHUB_REF_NAME", 
+                "GIT_BRANCH",
+                "CI_COMMIT_REF_NAME",
+                "BITBUCKET_BRANCH",
+                "BUILD_SOURCEBRANCHNAME"
+            ],
+            None)
+        if repo_name is None:
+            try:
+                repo = git.Repo(
+                    path,
+                    search_parent_directories=True,
+                )
+                repo_name = repo.working_tree_dir.split("/")[-1]
+            except Exception as e:
+                repo_name = "?"
+        if branch_name is None:
+            try:
+                repo = git.Repo(
+                    path,
+                    search_parent_directories=True,
+                )
+                repo_name_1 = repo.working_tree_dir.split("/")[-1]
+                branch = repo_name_1.active_branch
+                branch_name = branch.name
+            except Exception as e:
+                branch_name = "?"
         return {
             "repo_name": repo_name,
             "branch_name": branch_name
