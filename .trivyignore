@@ -12,6 +12,8 @@ CVE-2021-38561
 CVE-2022-32149
 
 # Go stdlib (all go based linters)
+CVE-2023-45283
+CVE-2023-45287
 CVE-2023-45288
 
 # Kubescape
