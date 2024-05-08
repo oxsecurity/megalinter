@@ -97,6 +97,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.75.0 to **3.75.1** on 2024-05-06
   - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 2.22.0 to **2.23.0** on 2024-05-06
   - [sqlfluff](https://www.sqlfluff.com/) from 3.0.5 to **3.0.6** on 2024-05-06
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.26.170 to **0.27.1** on 2024-05-07
+  - [checkov](https://www.checkov.io/) from 3.2.82 to **3.2.84** on 2024-05-07
 <!-- linter-versions-end -->
 
 ## [v7.11.1] - 2024-04-23
