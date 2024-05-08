@@ -11,6 +11,9 @@ CVE-2019-0820
 CVE-2021-38561
 CVE-2022-32149
 
+# Go stdlib (all go based linters)
+CVE-2023-45288
+
 # Kubescape
 # https://github.com/oxsecurity/megalinter/issues/3519
 GHSA-9763-4f94-gfch
