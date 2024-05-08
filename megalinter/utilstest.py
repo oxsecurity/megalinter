@@ -599,7 +599,7 @@ def assert_is_skipped(skipped_item, output, test_self):
 
 
 def assert_file_has_been_updated(file_name, bool_val, test_self):
-    repo = Repo(os.path.realpath(REPO_HOME))
+    repo = Repo(os.path.realpath(REPO_HOME), search_parent_directories=True)
     changed_files = [item.a_path for item in repo.index.diff(None)]
     logging.info("Updated files (git):\n" + "\n".join(changed_files))
     updated = False
@@ -713,7 +713,7 @@ def test_linter_format_fix(linter, test_self):
     )
     copy_logs_for_doc(text_report_file, test_folder, report_file_name)
 
-    repo = Repo(os.path.realpath(REPO_HOME))
+    repo = Repo(os.path.realpath(REPO_HOME), search_parent_directories=True)
 
     # Check files content
     for file in file_map:
