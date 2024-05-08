@@ -3286,7 +3286,7 @@ def generate_version():
             file.write(changelog_content)
 
     # git add , commit & tag
-    repo = git.Repo(os.getcwd(),search_parent_directories=True)
+    repo = git.Repo(os.getcwd())
     repo.git.add(update=True)
     repo.git.commit("-m", "Release MegaLinter " + RELEASE_TAG)
     repo.create_tag(RELEASE_TAG)

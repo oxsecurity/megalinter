@@ -298,10 +298,10 @@ def decode_utf8(stdout):
 
 def list_updated_files(repo_home):
     try:
-        repo = git.Repo(repo_home, search_parent_directories=True)
+        repo = git.Repo(repo_home)
     except git.InvalidGitRepositoryError:
         try:
-            repo = git.Repo(REPO_HOME_DEFAULT, search_parent_directories=True)
+            repo = git.Repo(REPO_HOME_DEFAULT)
         except git.InvalidGitRepositoryError:
             logging.warning("Unable to find git repository to list updated files")
             return []

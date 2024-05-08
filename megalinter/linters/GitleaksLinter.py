@@ -64,7 +64,7 @@ class GitleaksLinter(Linter):
         return pr_source_sha, pr_target_sha
 
     def get_azure_devops_pr_target_sha(self, target_branch_name):
-        repo = utils.git.Repo(os.path.realpath(self.workspace), search_parent_directories=True)
+        repo = utils.git.Repo(os.path.realpath(self.workspace))
         return repo.commit(target_branch_name.replace("refs/heads", "origin"))
 
     def get_github_sha(self):

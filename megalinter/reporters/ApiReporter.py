@@ -49,7 +49,7 @@ class ApiReporter(Reporter):
 
     def build_payload(self):
         # Git info
-        repo = git.Repo(os.path.realpath(self.master.github_workspace),search_parent_directories=True)
+        repo = git.Repo(os.path.realpath(self.master.github_workspace))
         repo_name = repo.working_tree_dir.split("/")[-1]
         branch = repo.active_branch
         branch_name = branch.name

@@ -469,7 +469,7 @@ class config_test(unittest.TestCase):
         return list
 
     def restore_branch_in_input_files(self, files):
-        repo = Repo(os.path.realpath(utilstest.REPO_HOME), search_parent_directories=True)
+        repo = Repo(os.path.realpath(utilstest.REPO_HOME))
 
         for file in files:
             repo.index.checkout(
