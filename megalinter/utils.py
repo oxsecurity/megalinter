@@ -316,6 +316,37 @@ def is_git_repo(path):
     except git.InvalidGitRepositoryError:
         return False
 
+def get_git_context_info(request_id, path):
+        try:
+            repo = git.Repo(
+                path,
+                search_parent_directories=True,
+            )
+            repo_name = repo.working_tree_dir.split("/")[-1]
+        except Exception as e:
+            return {
+                "repo_name": "?",
+                "branch_name": "?"
+            }
+        try:            
+            branch = repo.active_branch
+            branch_name = branch.name
+        except Exception as e:
+            branch_name = config.get_first_var_set(
+                request_id,
+                [
+                    "GITHUB_REF_NAME", 
+                    "GIT_BRANCH",
+                    "CI_COMMIT_REF_NAME",
+                    "BITBUCKET_BRANCH",
+                    "BUILD_SOURCEBRANCHNAME"
+                ],
+                "?")
+        return {
+            "repo_name": repo_name,
+            "branch_name": branch_name
+        }
+
 
 def check_updated_file(file, repo_home, changed_files=None):
     if changed_files is None:

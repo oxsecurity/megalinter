@@ -9,10 +9,10 @@ import logging
 import os
 import time
 
-import git
 import requests
 from megalinter import Reporter, config
 from megalinter.constants import ML_DOC_URL_DESCRIPTORS_ROOT
+from megalinter.utils import get_git_context_info
 
 
 class ApiReporter(Reporter):
@@ -49,22 +49,15 @@ class ApiReporter(Reporter):
 
     def build_payload(self):
         # Git info
-        repo = git.Repo(
-            os.path.realpath(self.master.github_workspace),
-            search_parent_directories=True,
-        )
-        repo_name = repo.working_tree_dir.split("/")[-1]
-        branch = repo.active_branch
-        branch_name = branch.name
+        repo_info = get_git_context_info(self.master.request_id, os.path.realpath(self.master.github_workspace))
+        git_identifier = f"${repo_info["repo_name"]}/${repo_info["branch_name"]}"
+        org_identifier = self.get_org_identifier(git_identifier)
         self.payload = {
             "source": "MegaLinter",
-            "gitRepoName": repo_name,
-            "gitBranchName": branch_name,
-            "gitIdentifier": f"${repo_name}/${branch_name}",
-            # Org (must come from global variable)
-            "orgIdentifier": config.get(
-                self.master.request_id, "API_REPORTER_ORG_IDENTIFIER", ""
-            ),
+            "gitRepoName": repo_info["repo_name"],
+            "gitBranchName": repo_info["branch_name"],
+            "gitIdentifier": git_identifier,
+            "orgIdentifier": org_identifier,
             "data": {},
             "linters": [],
         }
@@ -116,6 +109,16 @@ class ApiReporter(Reporter):
                 # Add to linters
                 linter_payload["data"] = linter_payload_data
                 self.payload["linters"].append(linter_payload)
+
+
+    def get_org_identifier(self, git_identifier: str):
+        org_identifier = config.get(
+                        self.master.request_id, "API_REPORTER_ORG_IDENTIFIER", None
+                    )
+        if org_identifier is not None:
+            return org_identifier
+        return git_identifier.replace("monitoring_","").replace("__","--").replace("_sandbox",".sandbox")
+
 
     def format_payload(self):
         if (

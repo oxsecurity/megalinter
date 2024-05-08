@@ -197,6 +197,17 @@ def get(request_id, config_var=None, default=None):
             val = "false"
     return val
 
+def get_first_var_set(request_id, config_vars=[], default=None):
+    for config_var in config_vars:
+        val = get(request_id,config_var,None)
+        if val is not None:
+            if isinstance(val, bool):
+                if val is True:
+                    val = "true"
+                elif val is False:
+                    val = "false"
+            return val
+    return default
 
 def set(request_id, config_var, value):
     global RUN_CONFIGS
