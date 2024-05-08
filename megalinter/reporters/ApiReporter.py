@@ -50,7 +50,7 @@ class ApiReporter(Reporter):
     def build_payload(self):
         # Git info
         repo_info = get_git_context_info(self.master.request_id, os.path.realpath(self.master.github_workspace))
-        git_identifier = f"${repo_info["repo_name"]}/${repo_info["branch_name"]}"
+        git_identifier = f"{repo_info["repo_name"]}/{repo_info["branch_name"]}"
         org_identifier = self.get_org_identifier(git_identifier)
         self.payload = {
             "source": "MegaLinter",
