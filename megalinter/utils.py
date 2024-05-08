@@ -332,6 +332,7 @@ def get_git_context_info(request_id, path):
         branch_name = config.get_first_var_set(
             request_id,
             [
+                "GITHUB_HEAD_REF",
                 "GITHUB_REF_NAME", 
                 "GIT_BRANCH",
                 "CI_COMMIT_REF_NAME",
