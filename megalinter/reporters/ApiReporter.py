@@ -31,10 +31,13 @@ class ApiReporter(Reporter):
         super().__init__(params)
 
     def manage_activation(self):
-        if config.get(self.master.request_id, "API_REPORTER", "false") == "true":
-            if config.exists(self.master.request_id, "API_REPORTER_URL"):
+        if config.get_first_var_set(self.master.request_id, ["API_REPORTER","NOTIF_API_REPORTER"], "false") == "true":
+            if (
+                config.exists(self.master.request_id, "API_REPORTER_URL") or 
+                config.exists(self.master.request_id, "NOTIF_API_REPORTER_URL")
+            ):
                 self.is_active = True
-                self.api_url = config.get(self.master.request_id, "API_REPORTER_URL")
+                self.api_url = config.get_first_var_set(self.master.request_id, ["API_REPORTER_URL","NOTIF_API_REPORTER"])
             else:
                 logging.error("You need to define API_REPORTER_URL to use ApiReporter")
 
@@ -156,15 +159,21 @@ class ApiReporter(Reporter):
             "content-type": "application/json",
         }
         # Use username & password
-        if config.exists(self.master.request_id, "API_REPORTER_BASIC_AUTH_USERNAME"):
+        if (
+            config.exists(self.master.request_id, "API_REPORTER_BASIC_AUTH_USERNAME") or 
+            config.exists(self.master.request_id, "NOTIF_API_REPORTER_BASIC_AUTH_USERNAME")
+        ):
             session.auth = (
-                config.get(self.master.request_id, "API_REPORTER_BASIC_AUTH_USERNAME"),
-                config.get(self.master.request_id, "API_REPORTER_BASIC_AUTH_PASSWORD"),
+                config.get_first_var_set(self.master.request_id, ["API_REPORTER_BASIC_AUTH_USERNAME","NOTIF_API_REPORTER_BASIC_AUTH_USERNAME"]),
+                config.get_first_var_set(self.master.request_id, ["API_REPORTER_BASIC_AUTH_PASSWORD","NOTIF_API_REPORTER_BASIC_AUTH_PASSWORD"]),
             )
         # Use token
-        if config.exists(self.master.request_id, "API_REPORTER_BEARER_TOKEN"):
+        if (
+            config.exists(self.master.request_id, "API_REPORTER_BEARER_TOKEN") or 
+            config.exists(self.master.request_id, "NOTIF_API_REPORTER_BEARER_TOKEN") 
+        ):
             headers["Authorization"] = (
-                f"Bearer {config.get(self.master.request_id, 'API_REPORTER_BEARER_TOKEN')}"
+                f"Bearer {config.get_first_var_set(self.master.request_id, ["API_REPORTER_BEARER_TOKEN","NOTIF_API_REPORTER_BEARER_TOKEN"])}"
             )
         try:
             response = session.post(
@@ -174,7 +183,7 @@ class ApiReporter(Reporter):
                 logging.info(
                     f"[Api Reporter] Successfully posted data to {self.api_url}"
                 )
-                if config.get(self.master.request_id, "API_REPORTER_DEBUG"):
+                if config.get_first_var_set(self.master.request_id,[ "API_REPORTER_DEBUG","NOTIF_API_REPORTER_DEBUG"]):
                     logging.info(json.dumps(obj=self.payloadFormatted, indent=True))
             else:
                 logging.warning(
