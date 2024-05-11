@@ -99,6 +99,24 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [sqlfluff](https://www.sqlfluff.com/) from 3.0.5 to **3.0.6** on 2024-05-06
   - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.26.170 to **0.27.1** on 2024-05-07
   - [checkov](https://www.checkov.io/) from 3.2.82 to **3.2.84** on 2024-05-07
+  - [actionlint](https://rhysd.github.io/actionlint/) from 1.6.27 to **1.7.0** on 2024-05-11
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.87.1 to **0.87.2** on 2024-05-11
+  - [roslynator](https://github.com/dotnet/Roslynator) from 0.8.7.0 to **0.8.8.0** on 2024-05-11
+  - [golangci-lint](https://golangci-lint.run/) from 1.58.0 to **1.58.1** on 2024-05-11
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 14.5.0 to **14.6.0** on 2024-05-11
+  - [kubeconform](https://github.com/yannh/kubeconform) from 0.6.4 to **0.6.6** on 2024-05-11
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.361 to **1.1.362** on 2024-05-11
+  - [ruff](https://github.com/astral-sh/ruff) from 0.4.3 to **0.4.4** on 2024-05-11
+  - [checkov](https://www.checkov.io/) from 3.2.84 to **3.2.90** on 2024-05-11
+  - [grype](https://github.com/anchore/grype) from 0.77.3 to **0.77.4** on 2024-05-11
+  - [syft](https://github.com/anchore/syft) from 1.3.0 to **1.4.1** on 2024-05-11
+  - [rubocop](https://rubocop.org/) from 1.63.4 to **1.63.5** on 2024-05-11
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 2.23.0 to **2.24.0** on 2024-05-11
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.11.3 to **8.11.4** on 2024-05-11
+  - [snakefmt](https://github.com/snakemake/snakefmt) from 0.10.1 to **0.10.2** on 2024-05-11
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.8.0 to **8.8.1** on 2024-05-11
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.8.2 to **1.8.3** on 2024-05-11
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.58.2 to **0.58.3** on 2024-05-11
 <!-- linter-versions-end -->
 
 ## [v7.11.1] - 2024-04-23
