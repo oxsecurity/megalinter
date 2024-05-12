@@ -123,7 +123,6 @@ jobs:
             "kubernetes_kubescape",
             "latex_chktex",
             "lua_luacheck",
-            "makefile_checkmake",
             "markdown_markdownlint",
             "markdown_markdown_link_check",
             "markdown_markdown_table_formatter",
