@@ -22,7 +22,6 @@
 FROM koalaman/shellcheck:stable as shellcheck
 FROM mvdan/shfmt:latest-alpine as shfmt
 FROM hadolint/hadolint:v2.12.0-alpine as hadolint
-FROM mrtazz/checkmake:latest as checkmake
 FROM zricethezav/gitleaks:v8.18.2 as gitleaks
 FROM trufflesecurity/trufflehog:latest as trufflehog
 #FROM__END
@@ -174,7 +173,6 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
 COPY --link --from=shfmt /bin/shfmt /usr/bin/
 COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
-COPY --link --from=checkmake /checkmake /usr/bin/checkmake
 COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
 #COPY__END
@@ -197,9 +195,6 @@ RUN wget -q -O - https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/m
 
 # npm-groovy-lint installation
 ENV JAVA_HOME_17=/usr/lib/jvm/java-17-openjdk
-
-# checkmake installation
-# Managed with COPY --link --from=checkmake /checkmake /usr/bin/checkmake
 
 # gitleaks installation
 # Managed with COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
