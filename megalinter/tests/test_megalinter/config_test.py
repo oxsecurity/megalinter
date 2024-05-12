@@ -427,6 +427,33 @@ class config_test(unittest.TestCase):
             "OX_API_KEY is not visible",
         )
 
+    def test_get_first_var_set(self):
+        request_id = str(uuid.uuid1())
+        config.init_config(
+            request_id,
+            None,
+            {
+                "NOTIF_API_REPORTER_URL": "test",
+                "TEST_VAR": "test2"
+            },
+        )
+        res = config.get_first_var_set(request_id,["API_REPORTER_URL","NOTIF_API_REPORTER_URL"], None)
+        self.assertTrue(
+            res == "test",
+            "get_first_var_set is failing",
+        )
+        res2 = config.get_first_var_set(request_id,["NOPE","NOT_HERE"], "default_value")
+        self.assertTrue(
+            res2 == "default_value",
+            "get_first_var_set is failing with default value",
+        )
+        res3 = config.get_first_var_set(request_id,["TEST_VAR","TEST_VAR_2"], None)
+        self.assertTrue(
+            res3 == "test2",
+            "get_first_var_set is failing",
+        )
+
+
     def replace_branch_in_input_files(self):
         root = (
             ".automation"
