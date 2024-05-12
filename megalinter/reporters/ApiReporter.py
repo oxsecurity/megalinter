@@ -37,7 +37,7 @@ class ApiReporter(Reporter):
                 config.exists(self.master.request_id, "NOTIF_API_REPORTER_URL")
             ):
                 self.is_active = True
-                self.api_url = config.get_first_var_set(self.master.request_id, ["API_REPORTER_URL","NOTIF_API_REPORTER"])
+                self.api_url = config.get_first_var_set(self.master.request_id, ["API_REPORTER_URL","NOTIF_API_REPORTER_URL"])
             else:
                 logging.error("You need to define API_REPORTER_URL to use ApiReporter")
 
