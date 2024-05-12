@@ -15,6 +15,7 @@ CVE-2022-32149
 CVE-2023-45283
 CVE-2023-45287
 CVE-2023-45288
+CVE-2024-24788
 
 # Kubescape
 # https://github.com/oxsecurity/megalinter/issues/3519

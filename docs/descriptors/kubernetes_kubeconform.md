@@ -17,7 +17,7 @@ description: How to use kubeconform (configure, ignore files, ignore errors, hel
 
 ## kubeconform documentation
 
-- Version in MegaLinter: **0.6.4**
+- Version in MegaLinter: **0.6.6**
 - Visit [Official Web Site](https://github.com/yannh/kubeconform#readme){target=_blank}
 
 [![kubeconform - GitHub](https://gh-card.dev/repos/yannh/kubeconform.svg?fullname=)](https://github.com/yannh/kubeconform){target=_blank}
@@ -110,8 +110,8 @@ Usage: kubeconform [OPTION]... [FILE OR FOLDER]...
       skip files with missing schemas instead of failing
   -insecure-skip-tls-verify
       disable verification of the server's SSL certificate. This will make your HTTPS connections insecure
-  -kubernetes-version string
-      version of Kubernetes to validate against, e.g.: 1.18.0 (default "master")
+  -kubernetes-version value
+      version of Kubernetes to validate against, e.g.: 1.18.0 (default master)
   -n int
       number of goroutines to run concurrently (default 4)
   -output string

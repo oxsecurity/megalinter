@@ -13,7 +13,6 @@
         "JSON_JSONLINT",
         "JSON_V8R",
         "JSON_PRETTIER",
-        "MAKEFILE_CHECKMAKE",
         "REPOSITORY_GIT_DIFF",
         "REPOSITORY_GITLEAKS",
         "REPOSITORY_GRYPE",
