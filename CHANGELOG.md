@@ -118,6 +118,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.8.0 to **8.8.1** on 2024-05-12
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.8.2 to **1.8.3** on 2024-05-12
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.58.2 to **0.58.4** on 2024-05-12
+  - [phpstan](https://phpstan.org/) from 1.10.67 to **1.11.0** on 2024-05-13
 <!-- linter-versions-end -->
 
 ## [v7.11.1] - 2024-04-23
