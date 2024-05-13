@@ -35,7 +35,6 @@ RUN GOBIN=/usr/bin go install github.com/mgechev/revive@latest
 
 FROM ghcr.io/yannh/kubeconform:latest-alpine as kubeconform
 FROM ghcr.io/assignuser/chktex-alpine:latest as chktex
-FROM ghcr.io/phpstan/phpstan:latest-php8.3 as phpstan
 FROM yoheimuta/protolint:latest as protolint
 FROM golang:alpine as dustilock
 RUN GOBIN=/usr/bin go install github.com/checkmarx/dustilock@v1.2.0
@@ -112,6 +111,7 @@ RUN apk add --no-cache \
                 php83-curl \
                 php83-dom \
                 php83-opcache \
+                php83-openssl \
                 php83-common \
                 php83-simplexml \
                 dpkg \
@@ -311,6 +311,7 @@ RUN echo 'gem: --no-document' >> ~/.gemrc && \
 #############################################################################################
 
 #COPY__START
+COPY --from=composer/composer:2-bin /composer /usr/bin/composer
 COPY --link --from=actionlint /usr/local/bin/actionlint /usr/bin/actionlint
 # shellcheck is a dependency for actionlint
 
@@ -323,7 +324,6 @@ COPY --link --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checke
 COPY --link --from=revive /usr/bin/revive /usr/bin/revive
 COPY --link --from=kubeconform /kubeconform /usr/bin/
 COPY --link --from=chktex /usr/bin/chktex /usr/bin/
-COPY --link --from=phpstan /composer/vendor/phpstan/phpstan/phpstan.phar /usr/bin/phpstan
 COPY --link --from=protolint /usr/local/bin/protolint /usr/bin/
 COPY --link --from=dustilock /usr/bin/dustilock /usr/bin/dustilock
 COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
@@ -467,6 +467,8 @@ RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GI
     && rm phive.phar.asc \
     && update-alternatives --install /usr/bin/php php /usr/bin/php83 110
 
+# Managed with COPY --from=composer/composer:2-bin /composer /usr/bin/composer
+ENV PATH="/root/.composer/vendor/bin:${PATH}"
 
 # POWERSHELL installation
 RUN curl -L https://github.com/PowerShell/PowerShell/releases/download/v7.4.2/powershell-7.4.2-linux-musl-x64.tar.gz -o /tmp/powershell.tar.gz \
@@ -630,12 +632,11 @@ RUN wget --quiet https://github.com/pmd/pmd/releases/download/pmd_releases%2F${P
 
 
 # phpcs installation
-RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && phive --no-progress install phpcs -g --trust-gpg-keys 31C7E470E2138192,95DE904AB800754A11D80B605E6DDE998AB73B8E
+RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require squizlabs/php_codesniffer bartlett/sarif-php-sdk
 
 
 # phpstan installation
-# Managed with COPY --link --from=phpstan /composer/vendor/phpstan/phpstan/phpstan.phar /usr/bin/phpstan
-RUN chmod +x /usr/bin/phpstan
+RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require phpstan/phpstan bartlett/sarif-php-sdk
 
 # psalm installation
 RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && phive --no-progress install psalm -g --trust-gpg-keys 8A03EA3B385DBAA1,12CE0F1D262429A5
