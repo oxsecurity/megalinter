@@ -119,6 +119,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.8.2 to **1.8.3** on 2024-05-12
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.58.2 to **0.58.4** on 2024-05-12
   - [phpstan](https://phpstan.org/) from 1.10.67 to **1.11.0** on 2024-05-13
+  - [pylint](https://pylint.readthedocs.io) from 3.1.0 to **3.1.1** on 2024-05-13
+  - [lychee](https://lychee.cli.rs) from 0.15.0 to **0.15.1** on 2024-05-13
 <!-- linter-versions-end -->
 
 ## [v7.11.1] - 2024-04-23
