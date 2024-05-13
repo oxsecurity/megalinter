@@ -3298,11 +3298,11 @@
 <tbody>
 <tr>
 <td><a href="../php_phpcs/"><strong>phpcs</strong></a><br/><a href="../php_phpcs/"><em>PHP_PHPCS</em></a></td>
-<td><a href="https://github.com/PHPCSStandards/PHP_CodeSniffer"><img alt="GitHub stars" src="https://img.shields.io/github/stars/PHPCSStandards/PHP_CodeSniffer?cacheSeconds=3600"/></a></td>
+<td><a href="https://github.com/PHPCSStandards/PHP_CodeSniffer"><img alt="GitHub stars" src="https://img.shields.io/github/stars/PHPCSStandards/PHP_CodeSniffer?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-SARIF-orange"><img alt="sarif" src="https://shields.io/badge/-SARIF-orange"/></a></td>
 </tr>
 <tr>
 <td><a href="../php_phpstan/"><strong>phpstan</strong></a><br/><a href="../php_phpstan/"><em>PHP_PHPSTAN</em></a></td>
-<td><a href="https://github.com/phpstan/phpstan"><img alt="GitHub stars" src="https://img.shields.io/github/stars/phpstan/phpstan?cacheSeconds=3600"/></a></td>
+<td><a href="https://github.com/phpstan/phpstan"><img alt="GitHub stars" src="https://img.shields.io/github/stars/phpstan/phpstan?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-SARIF-orange"><img alt="sarif" src="https://shields.io/badge/-SARIF-orange"/></a></td>
 </tr>
 <tr>
 <td><a href="../php_psalm/"><strong>psalm</strong></a><br/><a href="../php_psalm/"><em>PHP_PSALM</em></a></td>
@@ -3310,7 +3310,7 @@
 </tr>
 <tr>
 <td><a href="../php_phplint/"><strong>phplint</strong></a><br/><a href="../php_phplint/"><em>PHP_PHPLINT</em></a></td>
-<td><a href="https://github.com/overtrue/phplint"><img alt="GitHub stars" src="https://img.shields.io/github/stars/overtrue/phplint?cacheSeconds=3600"/></a></td>
+<td><a href="https://github.com/overtrue/phplint"><img alt="GitHub stars" src="https://img.shields.io/github/stars/overtrue/phplint?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-SARIF-orange"><img alt="sarif" src="https://shields.io/badge/-SARIF-orange"/></a></td>
 </tr>
 </tbody>
 </table>
@@ -3373,6 +3373,8 @@
     &amp;&amp; rm phive.phar.asc \
     &amp;&amp; update-alternatives --install /usr/bin/php php /usr/bin/php83 110
 
+COPY --from=composer/composer:2-bin /composer /usr/bin/composer
+ENV PATH="/root/.composer/vendor/bin:${PATH}"
 </code></pre>
 <ul>
 <li>APK packages (Linux):<ul>
@@ -3386,6 +3388,7 @@
 <li><a href="https://pkgs.alpinelinux.org/packages?branch=edge&amp;name=php83-curl">php83-curl</a></li>
 <li><a href="https://pkgs.alpinelinux.org/packages?branch=edge&amp;name=php83-dom">php83-dom</a></li>
 <li><a href="https://pkgs.alpinelinux.org/packages?branch=edge&amp;name=php83-opcache">php83-opcache</a></li>
+<li><a href="https://pkgs.alpinelinux.org/packages?branch=edge&amp;name=php83-openssl">php83-openssl</a></li>
 <li><a href="https://pkgs.alpinelinux.org/packages?branch=edge&amp;name=php83-common">php83-common</a></li>
 <li><a href="https://pkgs.alpinelinux.org/packages?branch=edge&amp;name=php83-simplexml">php83-simplexml</a></li>
 <li><a href="https://pkgs.alpinelinux.org/packages?branch=edge&amp;name=dpkg">dpkg</a></li>
