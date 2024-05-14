@@ -35,6 +35,7 @@
         "MARKDOWN_MARKDOWN_TABLE_FORMATTER",
         "OPENAPI_SPECTRAL",
         "PHP_PHPCS",
+        "PHP_PHPCSFIXER",
         "PHP_PHPSTAN",
         "PHP_PSALM",
         "PHP_PHPLINT",
