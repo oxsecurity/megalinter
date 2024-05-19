@@ -9,12 +9,12 @@ description: phpcs, phpstan, psalm, phplint are available to analyze PHP files i
 
 ## Linters
 
-| Linter                                                            | Additional                                                                                                                                                            |
-|-------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [**phpcs**](php_phpcs.md)<br/>[_PHP_PHPCS_](php_phpcs.md)         | [![GitHub stars](https://img.shields.io/github/stars/PHPCSStandards/PHP_CodeSniffer?cacheSeconds=3600)](https://github.com/PHPCSStandards/PHP_CodeSniffer)            |
-| [**phpstan**](php_phpstan.md)<br/>[_PHP_PHPSTAN_](php_phpstan.md) | [![GitHub stars](https://img.shields.io/github/stars/phpstan/phpstan?cacheSeconds=3600)](https://github.com/phpstan/phpstan)                                          |
-| [**psalm**](php_psalm.md)<br/>[_PHP_PSALM_](php_psalm.md)         | [![GitHub stars](https://img.shields.io/github/stars/vimeo/psalm?cacheSeconds=3600)](https://github.com/vimeo/psalm) ![sarif](https://shields.io/badge/-SARIF-orange) |
-| [**phplint**](php_phplint.md)<br/>[_PHP_PHPLINT_](php_phplint.md) | [![GitHub stars](https://img.shields.io/github/stars/overtrue/phplint?cacheSeconds=3600)](https://github.com/overtrue/phplint)                                        |
+| Linter                                                            | Additional                                                                                                                                                                                                  |
+|-------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [**phpcs**](php_phpcs.md)<br/>[_PHP_PHPCS_](php_phpcs.md)         | [![GitHub stars](https://img.shields.io/github/stars/PHPCSStandards/PHP_CodeSniffer?cacheSeconds=3600)](https://github.com/PHPCSStandards/PHP_CodeSniffer) ![sarif](https://shields.io/badge/-SARIF-orange) |
+| [**phpstan**](php_phpstan.md)<br/>[_PHP_PHPSTAN_](php_phpstan.md) | [![GitHub stars](https://img.shields.io/github/stars/phpstan/phpstan?cacheSeconds=3600)](https://github.com/phpstan/phpstan) ![sarif](https://shields.io/badge/-SARIF-orange)                               |
+| [**psalm**](php_psalm.md)<br/>[_PHP_PSALM_](php_psalm.md)         | [![GitHub stars](https://img.shields.io/github/stars/vimeo/psalm?cacheSeconds=3600)](https://github.com/vimeo/psalm) ![sarif](https://shields.io/badge/-SARIF-orange)                                       |
+| [**phplint**](php_phplint.md)<br/>[_PHP_PHPLINT_](php_phplint.md) | [![GitHub stars](https://img.shields.io/github/stars/overtrue/phplint?cacheSeconds=3600)](https://github.com/overtrue/phplint) ![sarif](https://shields.io/badge/-SARIF-orange)                             |
 
 ## Linted files
 
@@ -52,6 +52,8 @@ RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" \
     && rm phive.phar.asc \
     && update-alternatives --install /usr/bin/php php /usr/bin/php83 110
 
+COPY --from=composer/composer:2-bin /composer /usr/bin/composer
+ENV PATH="/root/.composer/vendor/bin:${PATH}"
 ```
 
 - APK packages (Linux):
@@ -65,6 +67,7 @@ RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" \
   - [php83-curl](https://pkgs.alpinelinux.org/packages?branch=edge&name=php83-curl)
   - [php83-dom](https://pkgs.alpinelinux.org/packages?branch=edge&name=php83-dom)
   - [php83-opcache](https://pkgs.alpinelinux.org/packages?branch=edge&name=php83-opcache)
+  - [php83-openssl](https://pkgs.alpinelinux.org/packages?branch=edge&name=php83-openssl)
   - [php83-common](https://pkgs.alpinelinux.org/packages?branch=edge&name=php83-common)
   - [php83-simplexml](https://pkgs.alpinelinux.org/packages?branch=edge&name=php83-simplexml)
   - [dpkg](https://pkgs.alpinelinux.org/packages?branch=edge&name=dpkg)

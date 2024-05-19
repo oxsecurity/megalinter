@@ -67,6 +67,7 @@ RUN apk add --no-cache \
                 php83-curl \
                 php83-dom \
                 php83-opcache \
+                php83-openssl \
                 php83-common \
                 php83-simplexml \
                 dpkg \
@@ -136,7 +137,7 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #############################################################################################
 
 #COPY__START
-
+COPY --from=composer/composer:2-bin /composer /usr/bin/composer
 #COPY__END
 
 #############################################################################################
@@ -159,9 +160,11 @@ RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GI
     && rm phive.phar.asc \
     && update-alternatives --install /usr/bin/php php /usr/bin/php83 110
 
+# Managed with COPY --from=composer/composer:2-bin /composer /usr/bin/composer
+ENV PATH="/root/.composer/vendor/bin:${PATH}"
 
 # phpcs installation
-RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && phive --no-progress install phpcs -g --trust-gpg-keys 31C7E470E2138192,95DE904AB800754A11D80B605E6DDE998AB73B8E
+RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require squizlabs/php_codesniffer bartlett/sarif-php-sdk
 
 
 #OTHER__END

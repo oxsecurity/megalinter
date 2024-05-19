@@ -18,6 +18,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Linters
   - `API_SPECTRAL` was added as replacement for `OPENAPI_SPECTRAL` (deprecated), supporting AsyncAPI and OpenAPI by default. Uses Spectral's standard config file name `.spectral.yaml` instead of `.openapirc.yml` with a default config with rulesets for AsyncAPI and OpenAPI enabled. Fixes [#3387](https://github.com/oxsecurity/megalinter/issues/3387)
   - Disable SQL_TSQLLINT until security issues are solved. Related to <https://github.com/tsqllint/tsqllint/issues/333>
+  - PHP linters (PHP_PHPCS, PHP_PHPLINT, PHP_PHPSTAN) add support to SARIF report output format with help of <https://github.com/llaville/sarif-php-sdk>
 
 - Reporters
   - New ApiReporter (can be used to build Grafana dashboards)
@@ -101,24 +102,41 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [sqlfluff](https://www.sqlfluff.com/) from 3.0.5 to **3.0.6** on 2024-05-06
   - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.26.170 to **0.27.1** on 2024-05-07
   - [checkov](https://www.checkov.io/) from 3.2.82 to **3.2.84** on 2024-05-07
-  - [actionlint](https://rhysd.github.io/actionlint/) from 1.6.27 to **1.7.0** on 2024-05-11
-  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.87.1 to **0.87.2** on 2024-05-11
-  - [roslynator](https://github.com/dotnet/Roslynator) from 0.8.7.0 to **0.8.8.0** on 2024-05-11
-  - [golangci-lint](https://golangci-lint.run/) from 1.58.0 to **1.58.1** on 2024-05-11
-  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 14.5.0 to **14.6.0** on 2024-05-11
-  - [kubeconform](https://github.com/yannh/kubeconform) from 0.6.4 to **0.6.6** on 2024-05-11
-  - [pyright](https://github.com/Microsoft/pyright) from 1.1.361 to **1.1.362** on 2024-05-11
-  - [ruff](https://github.com/astral-sh/ruff) from 0.4.3 to **0.4.4** on 2024-05-11
-  - [checkov](https://www.checkov.io/) from 3.2.84 to **3.2.90** on 2024-05-11
-  - [grype](https://github.com/anchore/grype) from 0.77.3 to **0.77.4** on 2024-05-11
-  - [syft](https://github.com/anchore/syft) from 1.3.0 to **1.4.1** on 2024-05-11
-  - [rubocop](https://rubocop.org/) from 1.63.4 to **1.63.5** on 2024-05-11
-  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 2.23.0 to **2.24.0** on 2024-05-11
-  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.11.3 to **8.11.4** on 2024-05-11
-  - [snakefmt](https://github.com/snakemake/snakefmt) from 0.10.1 to **0.10.2** on 2024-05-11
-  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.8.0 to **8.8.1** on 2024-05-11
-  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.8.2 to **1.8.3** on 2024-05-11
-  - [terragrunt](https://terragrunt.gruntwork.io) from 0.58.2 to **0.58.3** on 2024-05-11
+  - [actionlint](https://rhysd.github.io/actionlint/) from 1.6.27 to **1.7.0** on 2024-05-12
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.87.1 to **0.87.2** on 2024-05-12
+  - [roslynator](https://github.com/dotnet/Roslynator) from 0.8.7.0 to **0.8.8.0** on 2024-05-12
+  - [golangci-lint](https://golangci-lint.run/) from 1.58.0 to **1.58.1** on 2024-05-12
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 14.5.0 to **14.6.0** on 2024-05-12
+  - [kubeconform](https://github.com/yannh/kubeconform) from 0.6.4 to **0.6.6** on 2024-05-12
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.361 to **1.1.362** on 2024-05-12
+  - [ruff](https://github.com/astral-sh/ruff) from 0.4.3 to **0.4.4** on 2024-05-12
+  - [checkov](https://www.checkov.io/) from 3.2.84 to **3.2.91** on 2024-05-12
+  - [grype](https://github.com/anchore/grype) from 0.77.3 to **0.77.4** on 2024-05-12
+  - [syft](https://github.com/anchore/syft) from 1.3.0 to **1.4.1** on 2024-05-12
+  - [rubocop](https://rubocop.org/) from 1.63.4 to **1.63.5** on 2024-05-12
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 2.23.0 to **2.24.0** on 2024-05-12
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.11.3 to **8.11.4** on 2024-05-12
+  - [snakefmt](https://github.com/snakemake/snakefmt) from 0.10.1 to **0.10.2** on 2024-05-12
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.8.0 to **8.8.1** on 2024-05-12
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.8.2 to **1.8.3** on 2024-05-12
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.58.2 to **0.58.4** on 2024-05-12
+  - [phpstan](https://phpstan.org/) from 1.10.67 to **1.11.0** on 2024-05-13
+  - [pylint](https://pylint.readthedocs.io) from 3.1.0 to **3.1.1** on 2024-05-13
+  - [lychee](https://lychee.cli.rs) from 0.15.0 to **0.15.1** on 2024-05-13
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 24.2.3 to **24.5.0** on 2024-05-18
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.87.2 to **0.87.3** on 2024-05-18
+  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 8.0.104 to **8.0.105** on 2024-05-18
+  - [phplint](https://github.com/overtrue/phplint) from 9.2.0 to **9.3.1** on 2024-05-18
+  - [phpstan](https://phpstan.org/) from 1.11.0 to **1.11.1** on 2024-05-18
+  - [pylint](https://pylint.readthedocs.io) from 3.1.1 to **3.2.1** on 2024-05-18
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.362 to **1.1.363** on 2024-05-18
+  - [checkov](https://www.checkov.io/) from 3.2.91 to **3.2.95** on 2024-05-18
+  - [git_diff](https://git-scm.com) from 2.43.0 to **2.43.4** on 2024-05-18
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.75.1 to **3.76.3** on 2024-05-18
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 2.24.0 to **2.25.0** on 2024-05-18
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.11.4 to **8.11.6** on 2024-05-18
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.58.4 to **0.58.5** on 2024-05-18
+  - [xmllint](https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home) from 21107 to **21108** on 2024-05-18
 <!-- linter-versions-end -->
 
 ## [v7.11.1] - 2024-04-23
