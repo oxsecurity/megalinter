@@ -54,7 +54,7 @@ class ApiReporter(Reporter):
         # Git info
         repo_info = get_git_context_info(self.master.request_id, os.path.realpath(self.master.github_workspace))
         git_identifier = f"{repo_info["repo_name"]}/{repo_info["branch_name"]}"
-        org_identifier = self.get_org_identifier(git_identifier)
+        org_identifier = self.get_org_identifier(repo_info["branch_name"])
         self.payload = {
             "source": "MegaLinter",
             "gitRepoName": repo_info["repo_name"],
@@ -75,7 +75,6 @@ class ApiReporter(Reporter):
                     "descriptor": linter.descriptor_id,
                     "linter": linter.linter_name,
                     "linterKey": linter.name,
-                    "linterDocUrl": linter_doc_url,
                     "data": {},
                 }
                 # Status
@@ -88,7 +87,10 @@ class ApiReporter(Reporter):
                         else "error"
                     )
                 )
-                linter_payload_data = {}
+                linter_payload_data = {
+                    "linterDocUrl": linter_doc_url,
+                    "jobUrl": repo_info["job_url"]
+                }
                 linter_payload_data["severityIcon"] = (
                     "✅"
                     if linter.status == "success" and linter.return_code == 0
@@ -114,13 +116,15 @@ class ApiReporter(Reporter):
                 self.payload["linters"].append(linter_payload)
 
 
-    def get_org_identifier(self, git_identifier: str):
+    def get_org_identifier(self, branch_name: str):
         org_identifier = config.get(
                         self.master.request_id, "API_REPORTER_ORG_IDENTIFIER", None
                     )
         if org_identifier is not None:
             return org_identifier
-        return git_identifier.replace("monitoring_","").replace("__","--").replace("_sandbox",".sandbox")
+        # Workaround for sfdx-hardis, but it's better to set ENV variable API_REPORTER_ORG_IDENTIFIER
+        return branch_name.replace("monitoring_","").replace(
+            "_","-").replace("__","--").replace("_sandbox","__sandbox")
 
 
     def format_payload(self):

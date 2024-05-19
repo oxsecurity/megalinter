@@ -317,6 +317,7 @@ def is_git_repo(path):
         return False
 
 def get_git_context_info(request_id, path):
+        # Repo name
         repo_name = config.get_first_var_set(
             request_id,
             [
@@ -329,6 +330,7 @@ def get_git_context_info(request_id, path):
             None)
         if repo_name is not None:
             repo_name = repo_name.split("/")[-1] #Get last portion
+        # Branch name
         branch_name = config.get_first_var_set(
             request_id,
             [
@@ -360,9 +362,19 @@ def get_git_context_info(request_id, path):
                 branch_name = branch.name
             except Exception as e:
                 branch_name = "?"
+        # Job URL
+        job_url = config.get_first_var_set(
+            request_id,
+            [
+                "GITHUB_JOB_URL",
+                "CI_JOB_URL"
+                # TODO: Handle Azure, BitBucket & Jenkins
+            ],
+            "")
         return {
             "repo_name": repo_name,
-            "branch_name": branch_name
+            "branch_name": branch_name,
+            "job_url": job_url
         }
 
 
