@@ -121,6 +121,20 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [phpstan](https://phpstan.org/) from 1.10.67 to **1.11.0** on 2024-05-13
   - [pylint](https://pylint.readthedocs.io) from 3.1.0 to **3.1.1** on 2024-05-13
   - [lychee](https://lychee.cli.rs) from 0.15.0 to **0.15.1** on 2024-05-13
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 24.2.3 to **24.5.0** on 2024-05-18
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.87.2 to **0.87.3** on 2024-05-18
+  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 8.0.104 to **8.0.105** on 2024-05-18
+  - [phplint](https://github.com/overtrue/phplint) from 9.2.0 to **9.3.1** on 2024-05-18
+  - [phpstan](https://phpstan.org/) from 1.11.0 to **1.11.1** on 2024-05-18
+  - [pylint](https://pylint.readthedocs.io) from 3.1.1 to **3.2.1** on 2024-05-18
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.362 to **1.1.363** on 2024-05-18
+  - [checkov](https://www.checkov.io/) from 3.2.91 to **3.2.95** on 2024-05-18
+  - [git_diff](https://git-scm.com) from 2.43.0 to **2.43.4** on 2024-05-18
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.75.1 to **3.76.3** on 2024-05-18
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 2.24.0 to **2.25.0** on 2024-05-18
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.11.4 to **8.11.6** on 2024-05-18
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.58.4 to **0.58.5** on 2024-05-18
+  - [xmllint](https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home) from 21107 to **21108** on 2024-05-18
 <!-- linter-versions-end -->
 
 ## [v7.11.1] - 2024-04-23

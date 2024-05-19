@@ -178,7 +178,7 @@ ENV PATH="/root/.cargo/bin:${PATH}"
 
 #PIPVENV__START
 RUN PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir --upgrade pip virtualenv \
-    && mkdir -p "/venvs/ansible-lint" && cd "/venvs/ansible-lint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir ansible-lint && deactivate && cd ./../.. \
+    && mkdir -p "/venvs/ansible-lint" && cd "/venvs/ansible-lint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir ansible-lint=='24.2.3' && deactivate && cd ./../.. \
     && mkdir -p "/venvs/cpplint" && cd "/venvs/cpplint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir cpplint && deactivate && cd ./../.. \
     && mkdir -p "/venvs/cfn-lint" && cd "/venvs/cfn-lint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir cfn-lint && deactivate && cd ./../.. \
     && mkdir -p "/venvs/djlint" && cd "/venvs/djlint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir djlint && deactivate && cd ./../.. \
@@ -727,7 +727,7 @@ RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | 
 #     && rm -rf /root/.npm/_cacache
 
 # lightning-flow-scanner installation
-    && echo y|sf plugins install lightning-flow-scanner \
+    && echo y|sf plugins install lightning-flow-scanner@2.24.0 \
     && npm cache clean --force || true \
     && rm -rf /root/.npm/_cacache \
 

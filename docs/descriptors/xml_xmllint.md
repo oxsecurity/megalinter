@@ -11,7 +11,7 @@ To apply file formatting you must set `XML_XMLLINT_CLI_LINT_MODE: file` and `XML
 
 ## xmllint documentation
 
-- Version in MegaLinter: **21107**
+- Version in MegaLinter: **21108**
 - Visit [Official Web Site](https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home){target=_blank}
 - See [Index of problems detected by xmllint](https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home#diagnostics){target=_blank}
 

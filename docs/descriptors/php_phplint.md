@@ -9,7 +9,7 @@ description: How to use phplint (configure, ignore files, ignore errors, help & 
 
 ## phplint documentation
 
-- Version in MegaLinter: **9.2.0**
+- Version in MegaLinter: **9.3.1**
 - Visit [Official Web Site](https://github.com/overtrue/phplint#readme){target=_blank}
   - If custom `.phplint.yml` config file isn't found, [.phplint.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.phplint.yml){target=_blank} will be used
 
@@ -108,6 +108,7 @@ Options:
   -w, --warning                            Also show warnings
       --memory-limit=MEMORY-LIMIT          Memory limit for analysis
       --ignore-exit-code                   Ignore exit codes so there are no "failure" exit code even when no files processed
+      --bootstrap=BOOTSTRAP                A PHP script that is included before the linter run
   -h, --help                               Display help for the given command. When no command is given display help for the lint command
   -q, --quiet                              Do not output any message
   -V, --version                            Display this application version

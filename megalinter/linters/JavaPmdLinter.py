@@ -42,7 +42,7 @@ class JavaPmdLinter(Linter):
         elif self.cli_lint_mode == "project":
             file_args = ["-dir", self.workspace]
         # lint a list of files
-        elif self.cli_lint_mode == "list_of_files":
+        else:  # self.cli_lint_mode == "list_of_files":
             temp_list_of_files_for_pmd = (
                 tempfile.gettempdir()
                 + os.path.sep
