@@ -11,9 +11,9 @@
 <link href="../php_psalm/" rel="prev"/>
 <link href="../powershell/" rel="next"/>
 <link href="../../assets/images/mega-linter-square.png" rel="icon"/>
-<meta content="mkdocs-1.6.0, mkdocs-material-9.5.22" name="generator"/>
+<meta content="mkdocs-1.6.0, mkdocs-material-9.5.23" name="generator"/>
 <title>phplint configuration in MegaLinter - MegaLinter by OX Security</title>
-<link href="../../assets/stylesheets/main.732c4fb1.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/main.6543a935.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Satoshi,+sans-serif:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
@@ -3345,7 +3345,7 @@
 <p><a href="https://github.com/overtrue/phplint"><img alt="GitHub stars" src="https://img.shields.io/github/stars/overtrue/phplint?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-SARIF-orange"><img alt="sarif" src="https://shields.io/badge/-SARIF-orange"/></a> <a href="https://github.com/overtrue/phplint/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/overtrue/phplint?sort=semver"/></a> <a href="https://github.com/overtrue/phplint/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/overtrue/phplint"/></a> <a href="https://github.com/overtrue/phplint/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/overtrue/phplint"/></a> <a href="https://github.com/overtrue/phplint/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/overtrue/phplint"/></a></p>
 <h2 id="phplint-documentation">phplint documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>9.2.0</strong></li>
+<li>Version in MegaLinter: <strong>9.3.1</strong></li>
 <li>Visit <a href="https://github.com/overtrue/phplint#readme" target="_blank">Official Web Site</a><ul>
 <li>If custom <code>.phplint.yml</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.phplint.yml" target="_blank">.phplint.yml</a> will be used</li>
 </ul>
@@ -3526,6 +3526,7 @@ Options:
   -w, --warning                            Also show warnings
       --memory-limit=MEMORY-LIMIT          Memory limit for analysis
       --ignore-exit-code                   Ignore exit codes so there are no "failure" exit code even when no files processed
+      --bootstrap=BOOTSTRAP                A PHP script that is included before the linter run
   -h, --help                               Display help for the given command. When no command is given display help for the lint command
   -q, --quiet                              Do not output any message
   -V, --version                            Display this application version
@@ -3626,7 +3627,7 @@ RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" &amp;&amp; export GITHU
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.instant", "navigation.footer"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
-<script src="../../assets/javascripts/bundle.5cfa9459.min.js"></script>
+<script src="../../assets/javascripts/bundle.ebd0bdb7.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
 <script src="../../javascripts/tables.js"></script>
 <script src="../../javascripts/gtag.js"></script>
