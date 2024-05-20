@@ -140,6 +140,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 3.2.95 to **3.2.97** on 2024-05-20
   - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 2.25.0 to **2.24.0** on 2024-05-20
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.58.5 to **0.58.7** on 2024-05-20
+  - [phpcs](https://github.com/PHPCSStandards/PHP_CodeSniffer) from 3.9.2 to **3.10.0** on 2024-05-20
+  - [pylint](https://pylint.readthedocs.io) from 3.2.1 to **3.2.2** on 2024-05-20
+  - [checkov](https://www.checkov.io/) from 3.2.97 to **3.2.98** on 2024-05-20
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.51.1 to **0.51.2** on 2024-05-20
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.51.1 to **0.51.2** on 2024-05-20
 <!-- linter-versions-end -->
 
 ## [v7.11.1] - 2024-04-23
