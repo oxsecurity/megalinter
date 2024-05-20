@@ -135,6 +135,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.11.4 to **8.11.6** on 2024-05-18
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.58.4 to **0.58.5** on 2024-05-18
   - [xmllint](https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home) from 21107 to **21108** on 2024-05-18
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 24.5.0 to **24.2.3** on 2024-05-20
+  - [golangci-lint](https://golangci-lint.run/) from 1.58.1 to **1.58.2** on 2024-05-20
+  - [checkov](https://www.checkov.io/) from 3.2.95 to **3.2.97** on 2024-05-20
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 2.25.0 to **2.24.0** on 2024-05-20
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.58.5 to **0.58.7** on 2024-05-20
 <!-- linter-versions-end -->
 
 ## [v7.11.1] - 2024-04-23
