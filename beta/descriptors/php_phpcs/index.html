@@ -3359,7 +3359,7 @@
 <p><a href="https://github.com/PHPCSStandards/PHP_CodeSniffer"><img alt="GitHub stars" src="https://img.shields.io/github/stars/PHPCSStandards/PHP_CodeSniffer?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-SARIF-orange"><img alt="sarif" src="https://shields.io/badge/-SARIF-orange"/></a> <a href="https://github.com/PHPCSStandards/PHP_CodeSniffer/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/PHPCSStandards/PHP_CodeSniffer?sort=semver"/></a> <a href="https://github.com/PHPCSStandards/PHP_CodeSniffer/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/PHPCSStandards/PHP_CodeSniffer"/></a> <a href="https://github.com/PHPCSStandards/PHP_CodeSniffer/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/PHPCSStandards/PHP_CodeSniffer"/></a> <a href="https://github.com/PHPCSStandards/PHP_CodeSniffer/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/PHPCSStandards/PHP_CodeSniffer"/></a></p>
 <h2 id="phpcs-documentation">phpcs documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>3.9.2</strong></li>
+<li>Version in MegaLinter: <strong>3.10.0</strong></li>
 <li>Visit <a href="https://github.com/PHPCSStandards/PHP_CodeSniffer#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/PHPCSStandards/PHP_CodeSniffer/wiki/Advanced-Usage#using-a-default-configuration-file" target="_blank">How to configure phpcs rules</a><ul>
 <li>If custom <code>phpcs.xml</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/phpcs.xml" target="_blank">phpcs.xml</a> will be used</li>
@@ -3567,71 +3567,141 @@
 </code></pre>
 <h3 id="help-content">Help content</h3>
 <pre><code class="language-shell">
-Usage: phpcs [-nwlsaepqvi] [-d key[=value]] [--colors] [--no-colors]
-  [--cache[=&lt;cacheFile&gt;]] [--no-cache] [--tab-width=&lt;tabWidth&gt;]
-  [--report=&lt;report&gt;] [--report-file=&lt;reportFile&gt;] [--report-&lt;report&gt;=&lt;reportFile&gt;]
-  [--report-width=&lt;reportWidth&gt;] [--basepath=&lt;basepath&gt;] [--bootstrap=&lt;bootstrap&gt;]
-  [--severity=&lt;severity&gt;] [--error-severity=&lt;severity&gt;] [--warning-severity=&lt;severity&gt;]
-  [--runtime-set key value] [--config-set key value] [--config-delete key] [--config-show]
-  [--standard=&lt;standard&gt;] [--sniffs=&lt;sniffs&gt;] [--exclude=&lt;sniffs&gt;]
-  [--encoding=&lt;encoding&gt;] [--parallel=&lt;processes&gt;] [--generator=&lt;generator&gt;]
-  [--extensions=&lt;extensions&gt;] [--ignore=&lt;patterns&gt;] [--ignore-annotations]
-  [--stdin-path=&lt;stdinPath&gt;] [--file-list=&lt;fileList&gt;] [--filter=&lt;filter&gt;] &lt;file&gt; - ...
 
- -     Check STDIN instead of local files and directories
- -n    Do not print warnings (shortcut for --warning-severity=0)
- -w    Print both warnings and errors (this is the default)
- -l    Local directory only, no recursion
- -s    Show error codes in all reports
- -a    Run interactively
- -e    Explain a standard by showing the sniffs it includes
- -p    Show progress of the run
- -q    Quiet mode; disables progress and verbose output
- -m    Stop error messages from being recorded
-       (saves a lot of memory, but stops many reports from being used)
- -v    Print processed files
- -vv   Print ruleset and token output
- -vvv  Print sniff processing information
- -i    Show a list of installed coding standards
- -d    Set the [key] php.ini value to [value] or [true] if value is omitted
+Usage:
+  phpcs [options] &lt;file|directory&gt;
 
- --help                Print this help message
- --version             Print version information
- --colors              Use colors in output
- --no-colors           Do not use colors in output (this is the default)
- --cache               Cache results between runs
- --no-cache            Do not cache results between runs (this is the default)
- --ignore-annotations  Ignore all phpcs: annotations in code comments
+Scan targets:
+  &lt;file|directory&gt;               One or more files and/or directories to check,
+                                 space separated.
+  -                              Check STDIN instead of local files and
+                                 directories.
+  --stdin-path=&lt;stdinPath&gt;       If processing STDIN, the file path that STDIN
+                                 will be processed as.
+  --file-list=&lt;fileList&gt;         Check the files and/or directories which are
+                                 defined in the file to which the path is
+                                 provided (one per line).
+  --filter=&lt;filter&gt;              Check based on a predefined file filter. Use
+                                 either the "GitModified" or "GitStaged" filter,
+                                 or specify the path to a custom filter class.
+  --ignore=&lt;patterns&gt;            Ignore files based on a comma-separated list of
+                                 patterns matching files and/or directories.
+  --extensions=&lt;extensions&gt;      Check files with the specified file extensions
+                                 (comma-separated list). Defaults to
+                                 php,inc/php,js,css.
+                                 The type of the file can be specified using:
+                                 ext/type; e.g. module/php,es/js.
+  -l                             Check local directory only, no recursion.
 
- &lt;cacheFile&gt;    Use a specific file for caching (uses a temporary file by default)
- &lt;basepath&gt;     A path to strip from the front of file paths inside reports
- &lt;bootstrap&gt;    A comma separated list of files to run before processing begins
- &lt;encoding&gt;     The encoding of the files being checked (default is utf-8)
- &lt;extensions&gt;   A comma separated list of file extensions to check
-                The type of the file can be specified using: ext/type
-                e.g., module/php,es/js
- &lt;file&gt;         One or more files and/or directories to check
- &lt;fileList&gt;     A file containing a list of files and/or directories to check (one per line)
- &lt;filter&gt;       Use either the "GitModified" or "GitStaged" filter,
-                or specify the path to a custom filter class
- &lt;generator&gt;    Use either the "HTML", "Markdown" or "Text" generator
-                (forces documentation generation instead of checking)
- &lt;patterns&gt;     A comma separated list of patterns to ignore files and directories
- &lt;processes&gt;    How many files should be checked simultaneously (default is 1)
- &lt;report&gt;       Print either the "full", "xml", "checkstyle", "csv"
-                "json", "junit", "emacs", "source", "summary", "diff"
-                "svnblame", "gitblame", "hgblame", "notifysend" or "performance",
-                report or specify the path to a custom report class
-                (the "full" report is printed by default)
- &lt;reportFile&gt;   Write the report to the specified file path
- &lt;reportWidth&gt;  How many columns wide screen reports should be printed
-                or set to "auto" to use current screen width, where supported
- &lt;severity&gt;     The minimum severity required to display an error or warning
- &lt;sniffs&gt;       A comma separated list of sniff codes to include or exclude from checking
-                (all sniffs must be part of the specified standard)
- &lt;standard&gt;     The name or path of the coding standard to use
- &lt;stdinPath&gt;    If processing STDIN, the file path that STDIN will be processed as
- &lt;tabWidth&gt;     The number of spaces each tab represents
+Rule Selection Options:
+  --standard=&lt;standard&gt;          The name of, or the path to, the coding
+                                 standard to use. Can be a comma-separated list
+                                 specifying multiple standards. If no standard
+                                 is specified, PHP_CodeSniffer will look for a
+                                 [.]phpcs.xml[.dist] custom ruleset file in the
+                                 current directory and those above it.
+  --sniffs=&lt;sniffs&gt;              A comma-separated list of sniff codes to limit
+                                 the scan to. All sniffs must be part of the
+                                 standard in use.
+  --exclude=&lt;sniffs&gt;             A comma-separated list of sniff codes to
+                                 exclude from the scan. All sniffs must be part
+                                 of the standard in use.
+
+  -i                             Show a list of installed coding standards.
+  -e                             Explain a standard by showing the names of all
+                                 the sniffs it includes.
+  --generator=&lt;generator&gt;        Show documentation for a standard. Use either
+                                 the "HTML", "Markdown" or "Text" generator.
+
+Run Options:
+  -a                             Run in interactive mode, pausing after each
+                                 file.
+  --bootstrap=&lt;bootstrap&gt;        Run the specified file(s) before processing
+                                 begins. A list of files can be provided,
+                                 separated by commas.
+  --cache[=&lt;cacheFile&gt;]          Cache results between runs. Optionally,
+                                 &lt;cacheFile&gt; can be provided to use a specific
+                                 file for caching. Otherwise, a temporary file
+                                 is used.
+  --no-cache                     Do not cache results between runs (default).
+  --parallel=&lt;processes&gt;         The number of files to be checked
+                                 simultaneously. Defaults to 1 (no parallel
+                                 processing).
+                                 If enabled, this option only takes effect if
+                                 the PHP PCNTL (Process Control) extension is
+                                 available.
+
+  -d &lt;key[=value]&gt;               Set the [key] php.ini value to [value] or set
+                                 to [true] if value is omitted.
+                                 Note: only php.ini settings which can be
+                                 changed at runtime are supported.
+
+Reporting Options:
+  --report=&lt;report&gt;              Print either the "full", "xml", "checkstyle",
+                                 "csv", "json", "junit", "emacs", "source",
+                                 "summary", "diff", "svnblame", "gitblame",
+                                 "hgblame", "notifysend" or "performance" report
+                                 or specify the path to a custom report class.
+                                 By default, the "full" report is displayed.
+  --report-file=&lt;reportFile&gt;     Write the report to the specified file path.
+  --report-&lt;report&gt;=&lt;reportFile&gt; Write the report specified in &lt;report&gt; to the
+                                 specified file path.
+  --report-width=&lt;reportWidth&gt;   How many columns wide screen reports should be.
+                                 Set to "auto" to use current screen width,
+                                 where supported.
+  --basepath=&lt;basepath&gt;          Strip a path from the front of file paths
+                                 inside reports.
+
+  -w                             Include both warnings and errors (default).
+  -n                             Do not include warnings. Shortcut for
+                                 "--warning-severity=0".
+  --severity=&lt;severity&gt;          The minimum severity required to display an
+                                 error or warning. Defaults to 5.
+  --error-severity=&lt;severity&gt;    The minimum severity required to display an
+                                 error. Defaults to 5.
+  --warning-severity=&lt;severity&gt;  The minimum severity required to display a
+                                 warning. Defaults to 5.
+
+  -s                             Show sniff error codes in all reports.
+  --ignore-annotations           Ignore all "phpcs:..." annotations in code
+                                 comments.
+  --colors                       Use colors in screen output.
+  --no-colors                    Do not use colors in screen output (default).
+  -p                             Show progress of the run.
+  -q                             Quiet mode; disables progress and verbose
+                                 output.
+  -m                             Stop error messages from being recorded. This
+                                 saves a lot of memory but stops many reports
+                                 from being used.
+
+Configuration Options:
+  --encoding=&lt;encoding&gt;          The encoding of the files being checked.
+                                 Defaults to "utf-8".
+  --tab-width=&lt;tabWidth&gt;         The number of spaces each tab represents.
+
+  Default values for a selection of options can be stored in a user-specific
+  CodeSniffer.conf configuration file.
+  This applies to the following options: "default_standard", "report_format",
+  "tab_width", "encoding", "severity", "error_severity", "warning_severity",
+  "show_warnings", "report_width", "show_progress", "quiet", "colors", "cache",
+  "parallel".
+  --config-show                  Show the configuration options which are
+                                 currently stored in the applicable
+                                 CodeSniffer.conf file.
+  --config-set &lt;key&gt; &lt;value&gt;     Save a configuration option to the
+                                 CodeSniffer.conf file.
+  --config-delete &lt;key&gt;          Delete a configuration option from the
+                                 CodeSniffer.conf file.
+  --runtime-set &lt;key&gt; &lt;value&gt;    Set a configuration option to be applied to the
+                                 current scan run only.
+
+Miscellaneous Options:
+  -h, -?, --help                 Print this help message.
+  --version                      Print version information.
+  -v                             Verbose output: Print processed files.
+  -vv                            Verbose output: Print ruleset and token output.
+  -vvv                           Verbose output: Print sniff processing
+                                 information.
 
 </code></pre>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
