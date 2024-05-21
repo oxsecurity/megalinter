@@ -146,6 +146,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.51.1 to **0.51.2** on 2024-05-20
   - [trivy](https://aquasecurity.github.io/trivy/) from 0.51.1 to **0.51.2** on 2024-05-20
   - [checkov](https://www.checkov.io/) from 3.2.98 to **3.2.99** on 2024-05-21
+  - [checkov](https://www.checkov.io/) from 3.2.99 to **3.2.100** on 2024-05-21
 <!-- linter-versions-end -->
 
 ## [v7.11.1] - 2024-04-23
