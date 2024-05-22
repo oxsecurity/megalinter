@@ -147,6 +147,12 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [trivy](https://aquasecurity.github.io/trivy/) from 0.51.1 to **0.51.2** on 2024-05-20
   - [checkov](https://www.checkov.io/) from 3.2.98 to **3.2.99** on 2024-05-21
   - [checkov](https://www.checkov.io/) from 3.2.99 to **3.2.100** on 2024-05-21
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2024.03.13 to **2024.05.22** on 2024-05-22
+  - [markdown-link-check](https://github.com/tcort/markdown-link-check) from 3.12.1 to **3.12.2** on 2024-05-22
+  - [phpcs](https://github.com/PHPCSStandards/PHP_CodeSniffer) from 3.10.0 to **3.10.1** on 2024-05-22
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.363 to **1.1.364** on 2024-05-22
+  - [checkov](https://www.checkov.io/) from 3.2.100 to **3.2.105** on 2024-05-22
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.8.1 to **8.8.2** on 2024-05-22
 <!-- linter-versions-end -->
 
 ## [v7.11.1] - 2024-04-23

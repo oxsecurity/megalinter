@@ -9,7 +9,7 @@ description: How to use markdown-link-check (configure, ignore files, ignore err
 
 ## markdown-link-check documentation
 
-- Version in MegaLinter: **3.12.1**
+- Version in MegaLinter: **3.12.2**
 - Visit [Official Web Site](https://github.com/tcort/markdown-link-check#readme){target=_blank}
 - See [How to configure markdown-link-check rules](https://github.com/tcort/markdown-link-check#config-file-format){target=_blank}
   - If custom `.markdown-link-check.json` config file isn't found, [.markdown-link-check.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.markdown-link-check.json){target=_blank} will be used
@@ -89,7 +89,7 @@ markdown-link-check -c .markdown-link-check.json myfile.md
 ### Help content
 
 ```shell
-(node:1733) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(node:1717) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
 (Use `node --trace-deprecation ...` to show where the warning was created)
 Usage: markdown-link-check [options] [filenamesOrUrls...]
 
