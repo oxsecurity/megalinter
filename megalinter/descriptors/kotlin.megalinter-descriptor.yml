@@ -22,6 +22,9 @@ linters:
     linter_banner_image_url: https://miro.medium.com/max/655/1*sLboL6JnC9yUodFsdSMB-w.png
     linter_megalinter_ref_url: https://github.com/pinterest/ktlint#-with-continuous-integration
     cli_lint_fix_arg_name: "--format"
+    cli_lint_mode: list_of_files
+    cli_lint_errors_count: regex_sum
+    cli_lint_errors_regex: '\s+[\w\-_]+:[\w\-_]+: ([0-9]+)'
     cli_sarif_args:
       - --reporter=sarif,output={{SARIF_OUTPUT_FILE}}
     examples:
