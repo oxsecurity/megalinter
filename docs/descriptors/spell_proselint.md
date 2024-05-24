@@ -17,7 +17,7 @@ a linter for prose
 
 ## proselint documentation
 
-- Version in MegaLinter: **0.13.0**
+- Version in MegaLinter: **0.14.0**
 - Visit [Official Web Site](https://github.com/amperser/proselint#readme){target=_blank}
 - See [How to configure proselint rules](https://github.com/amperser/proselint#checks){target=_blank}
 - See [Index of problems detected by proselint](https://github.com/amperser/proselint#checks){target=_blank}

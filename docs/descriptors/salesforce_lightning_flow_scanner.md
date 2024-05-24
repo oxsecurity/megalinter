@@ -11,7 +11,7 @@ description: How to use lightning-flow-scanner (configure, ignore files, ignore 
   </a>
 </div>
 
-![downgraded version](https://shields.io/badge/-downgraded%20version-orange) [![GitHub stars](https://img.shields.io/github/stars/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx?cacheSeconds=3600)](https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx?sort=semver)](https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx)](https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx)](https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx)](https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx/graphs/contributors/)
+[![GitHub stars](https://img.shields.io/github/stars/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx?cacheSeconds=3600)](https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx?sort=semver)](https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx)](https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx)](https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx)](https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx/graphs/contributors/)
 
 Lightning Flow Scanner is a sfdx plugin scanning the integrity and best practices of Salesforce Flows
 
@@ -19,7 +19,7 @@ If your root folder is not **force-app**, please set variable SALESFORCE_LIGHTNI
 
 ## lightning-flow-scanner documentation
 
-- Version in MegaLinter: **2.24.0**
+- Version in MegaLinter: **2.26.0**
 - Visit [Official Web Site](https://github.com/Lightning-Flow-Scanner#readme){target=_blank}
 - See [How to configure lightning-flow-scanner rules](https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx#configuration){target=_blank}
   - If custom `.flow-scanner.json` config file isn't found, [.flow-scanner.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.flow-scanner.json){target=_blank} will be used
@@ -142,7 +142,7 @@ RUN sf plugins install @salesforce/plugin-packaging \
     && rm -rf /root/.npm/_cacache
 
 # Linter install
-RUN echo y|sf plugins install lightning-flow-scanner@2.24.0 \
+RUN echo y|sf plugins install lightning-flow-scanner \
     && npm cache clean --force || true \
     && rm -rf /root/.npm/_cacache
 

@@ -153,6 +153,13 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [pyright](https://github.com/Microsoft/pyright) from 1.1.363 to **1.1.364** on 2024-05-22
   - [checkov](https://www.checkov.io/) from 3.2.100 to **3.2.105** on 2024-05-22
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.8.1 to **8.8.2** on 2024-05-22
+  - [ruff](https://github.com/astral-sh/ruff) from 0.4.4 to **0.4.5** on 2024-05-24
+  - [checkov](https://www.checkov.io/) from 3.2.105 to **3.2.106** on 2024-05-24
+  - [rubocop](https://rubocop.org/) from 1.63.5 to **1.64.0** on 2024-05-24
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 2.24.0 to **2.26.0** on 2024-05-24
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.8.2 to **8.8.3** on 2024-05-24
+  - [proselint](https://github.com/amperser/proselint) from 0.13.0 to **0.14.0** on 2024-05-24
+  - [sqlfluff](https://www.sqlfluff.com/) from 3.0.6 to **3.0.7** on 2024-05-24
 <!-- linter-versions-end -->
 
 ## [v7.11.1] - 2024-04-23
