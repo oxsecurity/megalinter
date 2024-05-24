@@ -162,7 +162,7 @@ RUN sf plugins install @salesforce/plugin-packaging \
     && rm -rf /root/.npm/_cacache \
 
 # lightning-flow-scanner installation
-    && echo y|sf plugins install lightning-flow-scanner@2.24.0 \
+    && echo y|sf plugins install lightning-flow-scanner \
     && npm cache clean --force || true \
     && rm -rf /root/.npm/_cacache
 
