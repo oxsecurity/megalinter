@@ -9,7 +9,7 @@ description: How to use tekton-lint (configure, ignore files, ignore errors, hel
 
 ## tekton-lint documentation
 
-- Version in MegaLinter: **1.0.2**
+- Version in MegaLinter: **1.1.0**
 - Visit [Official Web Site](https://github.com/IBM/tekton-lint#readme){target=_blank}
 - See [How to configure tekton-lint rules](https://github.com/IBM/tekton-lint#configuring-tekton-lint){target=_blank}
 - See [Index of problems detected by tekton-lint](https://github.com/IBM/tekton-lint#rules){target=_blank}
