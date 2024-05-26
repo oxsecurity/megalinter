@@ -522,16 +522,17 @@ def build_dockerfile(
             + '    && echo "Changing owner of node_modules files…" \\\n'
             + '    && chown -R "$(id -u)":"$(id -g)" node_modules # fix for https://github.com/npm/cli/issues/5900 \\\n'
             + '    && echo "Removing extra node_module files…" \\\n'
-            + "    && rm -rf /root/.npm/_cacache \\\n"
-            + '    && find . -name "*.d.ts" -delete \\\n'
-            + '    && find . -name "*.map" -delete \\\n'
-            + '    && find . -name "*.npmignore" -delete \\\n'
-            + '    && find . -name "*.travis.yml" -delete \\\n'
-            + '    && find . -name "CHANGELOG.md" -delete \\\n'
-            + '    && find . -name "README.md" -delete \\\n'
-            + '    && find . -name ".package-lock.json" -delete \\\n'
-            + '    && find . -name "package-lock.json" -delete \\\n'
-            + '    && find . -name "README.md" -delete\n'
+            + '    && find . \\( -not -path "/proc" \\)'
+            + ' -and \\( -type f'
+            + ' \\( -iname "*.d.ts"'
+            + ' -o -iname "*.map"'
+            + ' -o -iname "*.npmignore"'
+            + ' -o -iname "*.travis.yml"'
+            + ' -o -iname "CHANGELOG.md"'
+            + ' -o -iname "README.md"'
+            + ' -o -iname ".package-lock.json"'
+            + ' -o -iname "package-lock.json"'
+            + ' \\) -o -type d -name /root/.npm/_cacache \\) -delete \n'
             + "WORKDIR /\n"
         )
     replace_in_file(dockerfile, "#NPM__START", "#NPM__END", npm_install_command)
