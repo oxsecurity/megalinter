@@ -3359,7 +3359,7 @@
 <p><a href="https://github.com/luarocks/luacheck"><img alt="GitHub stars" src="https://img.shields.io/github/stars/luarocks/luacheck?cacheSeconds=3600"/></a> <a href="https://github.com/luarocks/luacheck/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/luarocks/luacheck?sort=semver"/></a> <a href="https://github.com/luarocks/luacheck/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/luarocks/luacheck"/></a> <a href="https://github.com/luarocks/luacheck/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/luarocks/luacheck"/></a> <a href="https://github.com/luarocks/luacheck/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/luarocks/luacheck"/></a></p>
 <h2 id="luacheck-documentation">luacheck documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>1.1.2</strong></li>
+<li>Version in MegaLinter: <strong>1.2.0</strong></li>
 <li>Visit <a href="https://luacheck.readthedocs.io" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://luacheck.readthedocs.io/en/stable/config.html" target="_blank">How to configure luacheck rules</a><ul>
 <li>If custom <code>.luacheckrc</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.luacheckrc" target="_blank">.luacheckrc</a> will be used</li>
@@ -3571,7 +3571,7 @@
        [--exclude-files &lt;glob&gt; [&lt;glob&gt;] ...]
        [--include-files &lt;glob&gt; [&lt;glob&gt;] ...]
 
-luacheck 1.1.2, a linter and a static analyzer for Lua.
+luacheck 1.2.0, a linter and a static analyzer for Lua.
 
 Arguments:
    files                 List of files, directories and rockspecs to check. Pass
@@ -3626,6 +3626,7 @@ Options for configuring allowed globals:
                             ngx_lua - globals of Openresty lua-nginx-module
                             0.10.10, including standard LuaJIT 2.x globals;
                             love - globals added by LÖVE;
+                            minetest - globals added by minetest;
                             playdate - globals added by the Playdate SDK;
                             busted - globals added by Busted 2.0, by default
                             added for files ending with _spec.lua within spec,
