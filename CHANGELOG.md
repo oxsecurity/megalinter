@@ -160,6 +160,16 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.8.2 to **8.8.3** on 2024-05-24
   - [proselint](https://github.com/amperser/proselint) from 0.13.0 to **0.14.0** on 2024-05-24
   - [sqlfluff](https://www.sqlfluff.com/) from 3.0.6 to **3.0.7** on 2024-05-24
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2024.05.22 to **2024.05.24** on 2024-05-25
+  - [stylelint](https://stylelint.io) from 16.5.0 to **16.6.0** on 2024-05-25
+  - [luacheck](https://luacheck.readthedocs.io) from 1.1.2 to **1.2.0** on 2024-05-25
+  - [phpstan](https://phpstan.org/) from 1.11.1 to **1.11.2** on 2024-05-25
+  - [checkov](https://www.checkov.io/) from 3.2.106 to **3.2.107** on 2024-05-25
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.51.2 to **0.51.4** on 2024-05-25
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.51.2 to **0.51.4** on 2024-05-25
+  - [tekton-lint](https://github.com/IBM/tekton-lint) from 1.0.2 to **1.1.0** on 2024-05-25
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.8.3 to **1.8.4** on 2024-05-25
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.58.7 to **0.58.9** on 2024-05-25
 <!-- linter-versions-end -->
 
 ## [v7.11.1] - 2024-04-23
