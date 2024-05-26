@@ -170,6 +170,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [tekton-lint](https://github.com/IBM/tekton-lint) from 1.0.2 to **1.1.0** on 2024-05-25
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.8.3 to **1.8.4** on 2024-05-25
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.58.7 to **0.58.9** on 2024-05-25
+  - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.40.0 to **0.41.0** on 2024-05-26
 <!-- linter-versions-end -->
 
 ## [v7.11.1] - 2024-04-23
