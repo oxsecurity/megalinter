@@ -6,4 +6,3 @@ tasks:
   - init: |
       make bootstrap
       source .venv/bin/activate
-# source $HOME/.cargo/env || true
