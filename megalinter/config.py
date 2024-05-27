@@ -229,6 +229,8 @@ def get_list_args(request_id, config_var, default=None):
             return var
         if var == "":
             return []
+        if " " not in var:
+            return [var]
         return shlex.split(var)
     return default
 
