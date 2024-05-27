@@ -29,7 +29,6 @@ jobs:
         run: make bootstrap --debug
 
       - run: |
-          deactivate
           rm -rf .venv
           pip cache purge
 
