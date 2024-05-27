@@ -90,6 +90,7 @@ RUN useradd -l -u 33333 -G sudo -md /home/gitpod -s /bin/bash -p gitpod gitpod
 USER gitpod
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+# shellcheck source=/dev/null
 RUN curl  -LsSf https://astral.sh/uv/install.sh | sh \
     && source "$HOME/.cargo/env"
 
