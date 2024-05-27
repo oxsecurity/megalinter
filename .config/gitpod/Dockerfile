@@ -17,8 +17,6 @@ COPY .python-version /tmp/
 # hadolint ignore=DL3008,DL3009,DL3013
 RUN PYTHON_VERSION=$(cut -d '.' -f 1,2 /tmp/.python-version) \
     && apt-get update \
-    # && apt-get install -y apt-utils \
-    # && apt-get upgrade -y \
     && apt-get install -y --no-install-recommends \
     bash-completion \
     ca-certificates \
@@ -37,14 +35,7 @@ RUN PYTHON_VERSION=$(cut -d '.' -f 1,2 /tmp/.python-version) \
     sudo \
     tree \
     vim \
-    wget \
-    # && echo "done apt" \
-    # && python3 -m pip install --user --no-cache-dir --upgrade pip \
-    # && python3 -m pip install --no-cache-dir virtualenv 
-    # && curl  -LsSf https://astral.sh/uv/install.sh | sh \
-    # && source $HOME/.cargo/env \
-    # && echo "skipped python virtualenv"
-    && echo "skipped python virtualenv, "
+    wget
 
 ############################
 #     docker-installer     #
@@ -96,6 +87,7 @@ FROM cleanup as gitpod-user
 
 # UID must be 33333.
 RUN useradd -l -u 33333 -G sudo -md /home/gitpod -s /bin/bash -p gitpod gitpod
+
 USER gitpod
 RUN curl  -LsSf https://astral.sh/uv/install.sh | sh \
     && source $HOME/.cargo/env
@@ -103,14 +95,9 @@ RUN curl  -LsSf https://astral.sh/uv/install.sh | sh \
 #########################
 #         final         #
 #########################
-FROM ubuntu:noble
+# FROM ubuntu:noble
+# FROM cleanup as final
 
-COPY --from=gitpod-user / /
+# COPY --from=gitpod-user / /
 
-USER gitpod
-
-# ADD --chmod=755 https://astral.sh/uv/install.sh /install.sh
-# RUN /install.sh && rm /install.sh
-# RUN curl  -LsSf https://astral.sh/uv/install.sh | sh \
-    # && source $HOME/.cargo/env \
-
+# USER gitpod
