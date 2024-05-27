@@ -3364,7 +3364,7 @@
 </code></pre>
 <h2 id="jscpd-documentation">jscpd documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>3.5.10</strong></li>
+<li>Version in MegaLinter: <strong>4.0.1</strong></li>
 <li>Visit <a href="https://github.com/kucherenko/jscpd/tree/master/packages/jscpd#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/kucherenko/jscpd/tree/master/packages/jscpd#config-file" target="_blank">How to configure jscpd rules</a><ul>
 <li>If custom <code>.jscpd.json</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.jscpd.json" target="_blank">.jscpd.json</a> will be used</li>
@@ -3616,7 +3616,7 @@ Options:
                              comma to use (Default is time,console)
   -o, --output [string]      reporters to use (Default is ./report/)
   -m, --mode [string]        mode of quality of search, can be "strict", "mild" and "weak" (Default is "function mild(token) {
-      return strict(token) &amp;&amp; token.type !== 'empty' &amp;&amp; token.type !== 'new_line';
+    return strict(token) &amp;&amp; token.type !== "empty" &amp;&amp; token.type !== "new_line";
   }")
   -f, --format [string]      format or formats separated by comma (Example
                              php,javascript,python)
