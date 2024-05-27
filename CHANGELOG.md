@@ -39,6 +39,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Fix SARIF_REPORTER that was wrongly sent to `true` to format & fix test methods
   - Build: Write ARG lines at the top of Dockerfiles if they are used by FROM variables
   - Remove Github Actions Workflow telemetry to improve performances
+  - Update Docker image for Gitpod to run on Ubuntu Noble, by @echoix
+  - Update makefile bootstrap config (gitpod or local) to use uv for package installation, by @echoix
 
 - Linter versions upgrades
   - [phpcs](https://github.com/PHPCSStandards/PHP_CodeSniffer) from 3.9.1 to **3.9.2** on 2024-04-23

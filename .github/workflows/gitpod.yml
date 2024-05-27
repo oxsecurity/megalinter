@@ -11,7 +11,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     steps:
       - name: Set TERM environment variable
@@ -25,12 +25,23 @@ jobs:
         with:
           python-version-file: '.python-version' # Read python version from a file .python-version
 
-      - name: Install dependencies
-        run: make bootstrap
+      - name: Install dependencies (pip)
+        run: make bootstrap --debug
+
+      - run: |
+          rm -rf .venv
+          pip cache purge
+
+      - run: |
+          curl  -LsSf https://astral.sh/uv/install.sh | sh
+          source "$HOME/.cargo/env"
+
+      - name: Install dependencies (uv)
+        run: make bootstrap --debug
 
       - name: Run Gitpod tests
         uses: nick-invision/retry@v3
         with:
           max_attempts: 3
           timeout_minutes: 10
-          command: make gitpod-tests
+          command: make gitpod-tests --debug
