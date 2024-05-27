@@ -17,8 +17,8 @@ COPY .python-version /tmp/
 # hadolint ignore=DL3008,DL3009,DL3013
 RUN PYTHON_VERSION=$(cut -d '.' -f 1,2 /tmp/.python-version) \
     && apt-get update \
-    && apt-get install -y apt-utils \
-    && apt-get upgrade -y \
+    # && apt-get install -y apt-utils \
+    # && apt-get upgrade -y \
     && apt-get install -y --no-install-recommends \
     bash-completion \
     ca-certificates \

@@ -3,6 +3,8 @@ python_launcher ?= python3.11
 python_requirements_file ?= .config/python/dev/requirements.txt
 python_requirements_dev_file ?= .config/python/dev/requirements.txt
 
+UV := $(shell command -v uv 2> /dev/null)
+
 ## —— Python —————————————————————————————————————————————————————————————————————————————————————
 .PHONY: python-bootstrap
 python-bootstrap: ## Bootstrap python
@@ -20,67 +22,64 @@ python-bootstrap-dev: ## Bootstrap python for dev env
 # ===============================================================================================
 .PHONY: python-venv-init
 python-venv-init: ## Create venv ".venv/" if not exist
-	if [ ! -d .venv ] ; then \
-		if ! command -v -- "uv" > /dev/null 2>&1; then \
-			echo "In python-venv-init, using uv"; \
-			uv venv; \
-		else \
-			echo "In python-venv-init, using pip"; \
-			$(python_launcher) -m venv .venv; \
-		fi \
+ifndef UV
+	if [ ! -d .venv ] ; then
+		$(python_launcher) -m venv .venv
 	fi
-# $(python_launcher) -m venv .venv
+else
+	$(warning "uv available")
+	if [ ! -d .venv ] ; then \
+		echo "In python-venv-init, using uv"; \
+		$(UV) venv --seed; \
+	fi
+endif
 
 .PHONY: python-venv-upgrade
 python-venv-upgrade: ## Upgrade venv with pip, setuptools and wheel
-	source .venv/bin/activate
-	if ! command -v -- "uv" > /dev/null 2>&1; then \
-		echo "In python-venv-upgrade, using uv"; \
-		uv pip install setuptools wheel; \
-	else \
-		echo "In python-venv-upgrade, using pip"; \
-		pip install --upgrade pip setuptools wheel; \
-	fi
-# uv pip install --upgrade pip setuptools wheel
-# pip install --upgrade pip setuptools wheel
+ifndef UV
+	echo "start python-venv-upgrade:"
+	source .venv/bin/activate && (\
+		python3 -c 'import sys; print(sys.prefix)'; \
+		pip3 -V; \
+		pip -V; \
+		.venv/bin/pip3 install --upgrade pip setuptools wheel; \
+		echo "end venv of python-venv-upgrade"
+	)
+	echo "end python-venv-upgrade:"
+else
+	uv pip install --upgrade pip setuptools wheel
+endif
+
 
 .PHONY: python-venv-requirements
 python-venv-requirements: ## Install or upgrade from $(python_requirements_file)
+ifndef UV
 	source .venv/bin/activate
-	if ! command -v -- "uv" > /dev/null 2>&1; then \
-		echo "In python-venv-requirements, using uv"; \
-		uv pip install --upgrade --requirement $(python_requirements_file); \
-	else \
-		echo "In python-venv-requirements, using pip"; \
-		pip install --upgrade --requirement $(python_requirements_file); \
-	fi
-
-# uv pip install --upgrade --requirement $(python_requirements_file)
-# pip install --upgrade --requirement $(python_requirements_file)
+	pip install --upgrade --requirement $(python_requirements_file)
+else
+	uv pip install --upgrade --requirement $(python_requirements_file)
+endif
 
 .PHONY: python-venv-requirements-dev
 python-venv-requirements-dev: ## Install or upgrade from $(python_requirements_dev_file)
+ifndef UV
 	source .venv/bin/activate
-	if ! command -v -- "uv" > /dev/null 2>&1; then \
-		echo "In python-venv-requirements-dev, using uv"; \
-		uv pip install --upgrade --requirement $(python_requirements_dev_file); \
-	else \
-		echo "In python-venv-requirements-dev, using pip"; \
-		pip install --upgrade --requirement $(python_requirements_dev_file); \
-	fi
+	pip install --upgrade --requirement $(python_requirements_dev_file)
+else
+	uv pip install --upgrade --requirement $(python_requirements_dev_file)
+endif
+
 # pip install --upgrade --requirement $(python_requirements_dev_file)
 # uv pip install --upgrade --requirement $(python_requirements_dev_file)
 
 .PHONY: python-venv-linters-install
 python-venv-linters-install: ## Install or upgrade linters
+ifndef UV
 	source .venv/bin/activate
-	if ! command -v -- "uv" > /dev/null 2>&1; then \
-		echo "python-venv-linters-install, using uv"; \
-		uv pip install --upgrade flake8; \
-	else \
-		echo "python-venv-linters-install, using pip"; \
-		pip install --upgrade flake8; \
-	fi
+	pip install --upgrade flake8
+else
+	uv pip install --upgrade flake8
+endif
 # pip install --upgrade flake8
 
 .PHONY: python-venv-purge
@@ -92,13 +91,14 @@ python-venv-purge: ## Remove venv ".venv/" folder
 # ===============================================================================================
 .PHONY: python-purge-cache
 python-purge-cache: ## Purge cache to avoid used cached files
+ifndef UV
 	if [ -d .venv ] ; then
 		source .venv/bin/activate
 		pip cache purge
-		if ! command -v -- "uv" > /dev/null 2>&1; then \
-			uv cache clean; \
-		fi
 	fi
+else
+	uv cache clean
+endif
 
 .PHONY: python-version
 python-version: ## Displays the python version used for the .venv
@@ -115,3 +115,4 @@ python-pytest: ## Run pytest to test python scripts
 	source .venv/bin/activate
 	cd scripts/
 	$(python_launcher) -m pytest
+
