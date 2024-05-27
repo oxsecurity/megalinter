@@ -1,7 +1,7 @@
 ## —— Gitpod —————————————————————————————————————————————————————————————————————————————————————
 .PHONY: gitpod-build
 gitpod-build: ## Run docker build image in local
-	docker build --tag megalinter_gitpod:local --file .config/gitpod/Dockerfile .
+	docker buildx build --tag megalinter_gitpod:local --file .config/gitpod/Dockerfile .
 
 .PHONY: gitpod-lint
 gitpod-lint: ## Run hadolint command to lint Dokerfile
