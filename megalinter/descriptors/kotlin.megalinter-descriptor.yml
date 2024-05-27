@@ -52,7 +52,7 @@ linters:
     linter_banner_image_url: https://repository-images.githubusercontent.com/71729669/8b793230-5d85-4c36-b72e-6911dd7bf6d3
     linter_megalinter_ref_url: https://detekt.dev/docs/intro
     cli_executable: detekt-cli
-    cli_lint_extra_args:
+    cli_lint_extra_args_after:
       - -i
     examples:
       - "detekt-cli"
