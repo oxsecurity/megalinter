@@ -159,7 +159,7 @@ COPY megalinter /megalinter
 RUN PYTHONDONTWRITEBYTECODE=1 python /megalinter/setup.py install \
     && PYTHONDONTWRITEBYTECODE=1 python /megalinter/setup.py clean --all \
     && rm -rf /var/cache/apk/* \
-    && find . | grep -E "(/__pycache__$|\.pyc$|\.pyo$)" | xargs rm -rf
+    && find . \( -type f \( -iname \*.pyc -o -iname \*.pyo \) -o -type d -iname __pycache__ \) -delete
 
 #######################################
 # Copy scripts and rules to container #

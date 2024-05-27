@@ -89,7 +89,7 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin || true && \
 #PIPVENV__START
 RUN PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir --upgrade pip virtualenv \
     && mkdir -p "/venvs/rst-lint" && cd "/venvs/rst-lint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir restructuredtext_lint && deactivate && cd ./../..  \
-    && find . \( -type f \( -iname \*.pyc -o -iname \*.pyo \) -o -type d -iname __pycache__ \) -delete \
+    && find /venvs \( -type f \( -iname \*.pyc -o -iname \*.pyo \) -o -type d -iname __pycache__ \) -delete \
     && rm -rf /root/.cache
 ENV PATH="${PATH}":/venvs/rst-lint/bin
 #PIPVENV__END
@@ -144,7 +144,7 @@ COPY megalinter /megalinter
 RUN PYTHONDONTWRITEBYTECODE=1 python /megalinter/setup.py install \
     && PYTHONDONTWRITEBYTECODE=1 python /megalinter/setup.py clean --all \
     && rm -rf /var/cache/apk/* \
-    && find . | grep -E "(/__pycache__$|\.pyc$|\.pyo$)" | xargs rm -rf
+    && find . \( -type f \( -iname \*.pyc -o -iname \*.pyo \) -o -type d -iname __pycache__ \) -delete
 
 #######################################
 # Copy scripts and rules to container #
