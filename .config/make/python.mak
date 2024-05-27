@@ -22,7 +22,7 @@ python-bootstrap-dev: ## Bootstrap python for dev env
 # ===============================================================================================
 .PHONY: python-venv-init
 python-venv-init: ## Create venv ".venv/" if not exist
-ifndef UV
+ifeq ($(strip $(UV)),)
 	if [ ! -d .venv ] ; then
 		$(python_launcher) -m venv .venv
 	fi
@@ -34,7 +34,7 @@ endif
 
 .PHONY: python-venv-upgrade
 python-venv-upgrade: ## Upgrade venv with pip, setuptools and wheel
-ifndef UV
+ifeq ($(strip $(UV)),)
 	source .venv/bin/activate
 	pip install --upgrade pip setuptools wheel
 else
@@ -44,7 +44,7 @@ endif
 
 .PHONY: python-venv-requirements
 python-venv-requirements: ## Install or upgrade from $(python_requirements_file)
-ifndef UV
+ifeq ($(strip $(UV)),)
 	source .venv/bin/activate
 	pip install --upgrade --requirement $(python_requirements_file)
 else
@@ -53,7 +53,7 @@ endif
 
 .PHONY: python-venv-requirements-dev
 python-venv-requirements-dev: ## Install or upgrade from $(python_requirements_dev_file)
-ifndef UV
+ifeq ($(strip $(UV)),)
 	source .venv/bin/activate
 	pip install --upgrade --requirement $(python_requirements_dev_file)
 else
@@ -62,7 +62,7 @@ endif
 
 .PHONY: python-venv-linters-install
 python-venv-linters-install: ## Install or upgrade linters
-ifndef UV
+ifeq ($(strip $(UV)),)
 	source .venv/bin/activate
 	pip install --upgrade flake8
 else
@@ -82,7 +82,7 @@ python-purge-cache: ## Purge cache to avoid used cached files
 		source .venv/bin/activate
 		pip cache purge
 	fi
-ifdef UV
+ifneq ($(strip $(UV)),)
 	$(UV) cache clean
 endif
 
