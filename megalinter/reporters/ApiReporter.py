@@ -23,6 +23,8 @@ class ApiReporter(Reporter):
     payload: dict = {"linters": []}
     linter_payloads: list[dict] = []
     payloadFormatted: dict = {}
+    api_metrics_url: str | None = None
+    metrics_payload: str = ""
 
     def __init__(self, params=None):
         # Deactivate Api reporter by default
@@ -49,6 +51,17 @@ class ApiReporter(Reporter):
         self.format_payload()
         # Call API
         self.send_to_api()
+        # Handle Metrics API if requested
+        if (
+            config.exists(self.master.request_id, "API_REPORTER_METRICS_URL") or 
+            config.exists(self.master.request_id, "NOTIF_API_METRICS_URL")
+        ):
+            self.api_metrics_url = config.get_first_var_set(self.master.request_id, [
+                "API_REPORTER_METRICS_URL","NOTIF_API_METRICS_URL"
+                ])
+            self.build_metrics_payload()
+            self.send_to_metrics_api()
+        
 
     def build_payload(self):
         # Git info
@@ -77,8 +90,12 @@ class ApiReporter(Reporter):
                     "linterKey": linter.name,
                     "data": {},
                 }
+                linter_payload_data = {
+                    "linterDocUrl": linter_doc_url,
+                    "jobUrl": repo_info["job_url"]
+                }
                 # Status
-                linter_payload["severity"] = (
+                linter_payload_data["severity"] = (
                     "success"
                     if linter.status == "success" and linter.return_code == 0
                     else (
@@ -87,10 +104,6 @@ class ApiReporter(Reporter):
                         else "error"
                     )
                 )
-                linter_payload_data = {
-                    "linterDocUrl": linter_doc_url,
-                    "jobUrl": repo_info["job_url"]
-                }
                 linter_payload_data["severityIcon"] = (
                     "✅"
                     if linter.status == "success" and linter.return_code == 0
@@ -205,3 +218,39 @@ class ApiReporter(Reporter):
                 f"[Api Reporter] Error posting data to {self.api_url}:"
                 f"Connection error {str(e)}"
             )
+
+    # Build something like MetricName,source=sfdx-hardis,orgIdentifier=hardis-group metric=12.7,min=0,max=70,percent=0.63
+    def build_metrics_payload(self):
+        metric_base_tags= (
+            f"source={self.payload.source}," +
+            f"orgIdentifier={self.payload.orgIdentifier},"+
+            f"gitIdentifier={self.payload.gitIdentifier},"
+        )
+        all_metrics_lines = []
+        for linter in self.master.linters:
+            if linter.is_active is True:
+                metric_id = linter.linter_name
+                metric_line = (
+                    metric_id +","+
+                    metric_base_tags +
+                    f"descriptor={linter.descriptor_id},"+
+                    f"linter={linter.linter_name},"+
+                    f"linterKey={linter.name}"+
+                    " "
+                )
+                metric_line += f"metric={linter.total_number_errors}"
+                # Number of files & errors
+                if linter.cli_lint_mode != "project":
+                    metric_line += f",numberFilesFound={len(linter.files)}"
+                # Fixed files
+                if linter.try_fix is True:
+                    metric_line += f",numberErrorsFixed={len(linter.number_fixed)}"
+                # Elapsed time
+                if self.master.show_elapsed_time is True:
+                    metric_line += f",elapsedTime={round(linter.elapsed_time_s, 2)}"
+                all_metrics_lines += [metric_line]
+        self.metrics_payload = ",".join(all_metrics_lines)
+
+
+    def send_to_metrics_api(self):
+        pass
