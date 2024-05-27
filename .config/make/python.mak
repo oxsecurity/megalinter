@@ -32,25 +32,16 @@ ifndef UV
 		$(python_launcher) -m venv .venv
 	fi
 else
-	$(warning "uv available")
-	if [ ! -d .venv ] ; then \
-		echo "In python-venv-init, using uv"; \
-		$(UV) venv --seed; \
+	if [ ! -d .venv ] ; then
+		$(UV) venv --seed
 	fi
 endif
 
 .PHONY: python-venv-upgrade
 python-venv-upgrade: ## Upgrade venv with pip, setuptools and wheel
 ifndef UV
-	echo "start python-venv-upgrade:"
-	source .venv/bin/activate && (\
-		python3 -c 'import sys; print(sys.prefix)'; \
-		pip3 -V; \
-		pip -V; \
-		.venv/bin/pip3 install --upgrade pip setuptools wheel; \
-		echo "end venv of python-venv-upgrade"
-	)
-	echo "end python-venv-upgrade:"
+	source .venv/bin/activate
+	pip install --upgrade pip setuptools wheel
 else
 	$(UV) pip install --upgrade pip setuptools wheel
 endif
@@ -115,4 +106,3 @@ python-pytest: ## Run pytest to test python scripts
 	source .venv/bin/activate
 	cd scripts/
 	$(python_launcher) -m pytest
-
