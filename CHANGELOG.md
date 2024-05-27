@@ -174,6 +174,12 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.8.3 to **1.8.4** on 2024-05-25
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.58.7 to **0.58.9** on 2024-05-25
   - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.40.0 to **0.41.0** on 2024-05-26
+  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd) from 3.5.10 to **4.0.1** on 2024-05-27
+  - [golangci-lint](https://golangci-lint.run/) from 1.58.2 to **1.59.0** on 2024-05-27
+  - [checkstyle](https://checkstyle.org/) from 10.16.0 to **10.17.0** on 2024-05-27
+  - [checkov](https://www.checkov.io/) from 3.2.107 to **3.2.109** on 2024-05-27
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.11.6 to **8.12.0** on 2024-05-27
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.58.9 to **0.58.10** on 2024-05-27
 <!-- linter-versions-end -->
 
 ## [v7.11.1] - 2024-04-23
