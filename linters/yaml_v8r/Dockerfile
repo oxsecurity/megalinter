@@ -110,16 +110,7 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
     && echo "Changing owner of node_modules files…" \
     && chown -R "$(id -u)":"$(id -g)" node_modules # fix for https://github.com/npm/cli/issues/5900 \
     && echo "Removing extra node_module files…" \
-    && rm -rf /root/.npm/_cacache \
-    && find . -name "*.d.ts" -delete \
-    && find . -name "*.map" -delete \
-    && find . -name "*.npmignore" -delete \
-    && find . -name "*.travis.yml" -delete \
-    && find . -name "CHANGELOG.md" -delete \
-    && find . -name "README.md" -delete \
-    && find . -name ".package-lock.json" -delete \
-    && find . -name "package-lock.json" -delete \
-    && find . -name "README.md" -delete
+    && find . \( -not -path "/proc" \) -and \( -type f \( -iname "*.d.ts" -o -iname "*.map" -o -iname "*.npmignore" -o -iname "*.travis.yml" -o -iname "CHANGELOG.md" -o -iname "README.md" -o -iname ".package-lock.json" -o -iname "package-lock.json" \) -o -type d -name /root/.npm/_cacache \) -delete 
 WORKDIR /
 
 #NPM__END
@@ -162,7 +153,7 @@ COPY megalinter /megalinter
 RUN PYTHONDONTWRITEBYTECODE=1 python /megalinter/setup.py install \
     && PYTHONDONTWRITEBYTECODE=1 python /megalinter/setup.py clean --all \
     && rm -rf /var/cache/apk/* \
-    && find . | grep -E "(/__pycache__$|\.pyc$|\.pyo$)" | xargs rm -rf
+    && find . \( -type f \( -iname \*.pyc -o -iname \*.pyo \) -o -type d -iname __pycache__ \) -delete
 
 #######################################
 # Copy scripts and rules to container #
