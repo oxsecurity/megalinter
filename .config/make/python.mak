@@ -8,11 +8,6 @@ UV = $(shell command -v uv 2> /dev/null)
 ## —— Python —————————————————————————————————————————————————————————————————————————————————————
 .PHONY: python-bootstrap
 python-bootstrap: ## Bootstrap python
-ifndef UV
-	$(warning "uv not available python-bootstrap")
-else
-	$(warning "uv available python-bootstrap")
-endif
 	$(MAKE) python-venv-init
 	$(MAKE) python-venv-upgrade
 	$(MAKE) python-venv-requirements
