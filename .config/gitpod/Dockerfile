@@ -91,7 +91,7 @@ USER gitpod
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN curl  -LsSf https://astral.sh/uv/install.sh | sh \
-    && source $HOME/.cargo/env
+    && source "$HOME/.cargo/env"
 
 # Disabled the final stage, as it ends up being longer to launch overall
 # #########################
