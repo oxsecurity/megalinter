@@ -69,7 +69,8 @@ jobs:
           python-version-file: '.python-version' # Read python version from a file .python-version
           # Used to specify a package manager for caching in the default directory. Supported values: pip, pipenv, poetry.
           cache: pip # optional
-      - run: pip install -r .config/python/dev/requirements.txt
+      - run: python -m pip install uv
+      - run: uv pip install --system -r .config/python/dev/requirements.txt
       - name: Create comment starting build.sh
         uses: peter-evans/create-or-update-comment@v4
         with:

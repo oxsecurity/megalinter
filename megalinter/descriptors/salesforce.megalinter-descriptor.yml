@@ -238,12 +238,10 @@ linters:
     test_folder: salesforce-lfs
     examples:
       - "sf flow:scan"
-    downgraded_version: true
-    downgraded_reason: "False positive: https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-vsce/issues/100"
     install:
       dockerfile:
         - |
-          RUN echo y|sf plugins install lightning-flow-scanner@2.24.0 \
+          RUN echo y|sf plugins install lightning-flow-scanner \
               && npm cache clean --force || true \
               && rm -rf /root/.npm/_cacache
     ide:
