@@ -523,7 +523,7 @@ def build_dockerfile(
             + '    && chown -R "$(id -u)":"$(id -g)" node_modules # fix for https://github.com/npm/cli/issues/5900 \\\n'
             + '    && echo "Removing extra node_module files…" \\\n'
             + '    && find . \\( -not -path "/proc" \\)'
-            + ' -and \\( -type f'
+            + " -and \\( -type f"
             + ' \\( -iname "*.d.ts"'
             + ' -o -iname "*.map"'
             + ' -o -iname "*.npmignore"'
@@ -532,7 +532,7 @@ def build_dockerfile(
             + ' -o -iname "README.md"'
             + ' -o -iname ".package-lock.json"'
             + ' -o -iname "package-lock.json"'
-            + ' \\) -o -type d -name /root/.npm/_cacache \\) -delete \n'
+            + " \\) -o -type d -name /root/.npm/_cacache \\) -delete \n"
             + "WORKDIR /\n"
         )
     replace_in_file(dockerfile, "#NPM__START", "#NPM__END", npm_install_command)
