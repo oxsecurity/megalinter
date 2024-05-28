@@ -20,6 +20,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Disable SQL_TSQLLINT until security issues are solved. Related to <https://github.com/tsqllint/tsqllint/issues/333>
   - PHP linters (PHP_PHPCS, PHP_PHPLINT, PHP_PHPSTAN) add support to SARIF report output format with help of <https://github.com/llaville/sarif-php-sdk>
   - `KOTLIN_KTLINT` now supports `list_of_files` mode, and has better error counting
+  - Upgrade `KOTLIN_DETEKT` and make it work with cli_lint_mode = project
 
 - Reporters
 
