@@ -56,6 +56,7 @@ linters:
     examples:
       - "detekt-cli"
       - "detekt-cli --report html:folder/kotlin_detekt_result.html"
+    test_folder: kotlin_detekt
     install:
       dockerfile:
         - ARG VERSION_KOTLIN_DETEKT='1.23.6'
