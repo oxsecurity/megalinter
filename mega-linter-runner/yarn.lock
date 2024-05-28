@@ -2675,9 +2675,9 @@ mem-fs-editor@^11.0.0, mem-fs-editor@^11.0.1:
     vinyl "^3.0.0"
 
 mem-fs@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/mem-fs/-/mem-fs-4.0.0.tgz#045e6aba448efed6cd6ca3be7c3e0c6c37f4aaed"
-  integrity sha512-GCt8Xh5cRZ1ep45A8T+NlUYCPHzSj5JG2Xo7CA4Z8ISZ8Ovw0UQhQGt+J/z2xk7M3F9F4X9ZjSYk9UYlLLy4Wg==
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/mem-fs/-/mem-fs-4.1.0.tgz#b3dc2d6b5eae4c86a2a6030ea3f2774fe1dc9bce"
+  integrity sha512-lOB7haBbxO43eZ/++GA+jBMHQ9DNJeliMt35jNutzCfAgEg5gblFCItnzsss8Z4t81bB5jsz77bptqelHQn0Qw==
   dependencies:
     "@types/node" "^20.8.3"
     "@types/vinyl" "^2.0.8"
