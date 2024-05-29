@@ -181,6 +181,18 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 3.2.107 to **3.2.109** on 2024-05-27
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.11.6 to **8.12.0** on 2024-05-27
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.58.9 to **0.58.10** on 2024-05-27
+  - [actionlint](https://rhysd.github.io/actionlint/) from 1.7.0 to **1.7.1** on 2024-05-28
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.87.3 to **0.87.4** on 2024-05-28
+  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd) from 4.0.1 to **4.0.4** on 2024-05-28
+  - [stylelint](https://stylelint.io) from 16.6.0 to **16.6.1** on 2024-05-28
+  - [detekt](https://detekt.dev/) from 1.23.5 to **1.23.6** on 2024-05-28
+  - [ruff](https://github.com/astral-sh/ruff) from 0.4.5 to **0.4.6** on 2024-05-28
+  - [grype](https://github.com/anchore/grype) from 0.77.4 to **0.78.0** on 2024-05-28
+  - [syft](https://github.com/anchore/syft) from 1.4.1 to **1.5.0** on 2024-05-28
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.76.3 to **3.77.0** on 2024-05-28
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 3.24.0 to **3.25.0** on 2024-05-28
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 3.24.0 to **3.25.0** on 2024-05-28
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 3.24.0 to **3.25.0** on 2024-05-28
 <!-- linter-versions-end -->
 
 ## [v7.11.1] - 2024-04-23
