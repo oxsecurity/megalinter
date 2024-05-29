@@ -18,6 +18,7 @@ from megalinter.MegaLinter import Megalinter
 from megalinter.utils import REPO_HOME_DEFAULT
 from unittest.mock import patch
 
+
 class config_test(unittest.TestCase):
     repository = None
     branch = None
@@ -516,12 +517,16 @@ class config_test(unittest.TestCase):
             (28, "multiple_spaces_between_paths", 'path1  path2', ['path1', 'path2']),
             (29, "relative_paths", "./relative/path ./another/relative/path", ['./relative/path', './another/relative/path']),
             (30, "paths_with_file_extensions", "./file.txt ./folder/file.py", ['./file.txt', './folder/file.py']),
-            (31, "paths_with_hidden_files", "./folder/.file.sln ./folder/.hiddenfile", ['./folder/.file.sln', './folder/.hiddenfile']),
+            (31, "paths_with_hidden_files", "./folder/.file.sln ./folder/.hidden", ['./folder/.file.sln', './folder/.hidden']),
             (32, "absolute_unix_paths", "/root/path /another/root/path", ['/root/path', '/another/root/path']),
-            (33, "quoted_paths_with_spaces", '"quoted path/with spaces" "another/quoted path"', ['quoted path/with spaces', 'another/quoted path']),
-            (34, "paths_with_url_and_local_files", "http://example.com/file.txt ./local/file.txt", ['http://example.com/file.txt', './local/file.txt']),
-            (35, "mixed_quotes_and_spaces", '"quoted item1" item2 \'quoted item3\' item4', ['quoted item1', 'item2', 'quoted item3', 'item4']),
-            (36, "command_with_options", 'command --option="value with spaces" --flag', ['command', '--option=value with spaces', "--flag"])
+            (33, "quoted_paths_with_spaces", '"quoted path/with spaces" "another/quoted path"', 
+                ['quoted path/with spaces', 'another/quoted path']),
+            (34, "paths_with_url_and_local_files", "http://example.com/file.txt ./local/file.txt", 
+                ['http://example.com/file.txt', './local/file.txt']),
+            (35, "mixed_quotes_and_spaces", '"quoted item1" item2 \'quoted item3\' item4', 
+                ['quoted item1', 'item2', 'quoted item3', 'item4']),
+            (36, "command_with_options", 'command --option="value with spaces" --flag', 
+                ['command', '--option=value with spaces', "--flag"])
 
             # Commented out cases due to shlex.split removing the /
             # (37, "absolute_windows_paths", "C:\\absolute\\path C:\\another\\absolute\\path", ['C:\\absolute\\path', 'C:\\another\\absolute\\path']),
