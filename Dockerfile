@@ -12,6 +12,7 @@
 #############################################################################################
 #ARGTOP__START
 ARG VERSION_EDITORCONFIG_CHECKER=latest
+ARG VERSION_TERRAFORM_TFLINT=0.51.1
 #ARGTOP__END
 
 #############################################################################################
@@ -44,7 +45,7 @@ FROM checkmarx/kics:alpine as kics
 FROM trufflesecurity/trufflehog:latest as trufflehog
 FROM jdkato/vale:latest as vale
 FROM lycheeverse/lychee:latest-alpine as lychee
-FROM ghcr.io/terraform-linters/tflint:v0.51.1 as tflint
+FROM ghcr.io/terraform-linters/tflint:v${VERSION_TERRAFORM_TFLINT} as tflint
 FROM tenable/terrascan:1.18.11 as terrascan
 FROM alpine/terragrunt:latest as terragrunt
 # Next FROM line commented because already managed by another linter
