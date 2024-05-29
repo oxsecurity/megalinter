@@ -2708,7 +2708,7 @@ def generate_json_schema_enums():
         json_schema = json.load(json_file)
     json_schema["definitions"]["enum_flavors"]["enum"] = ["all_flavors"] + list(
         flavors.keys()
-    )
+    ).sort()
     with open(DESCRIPTOR_JSON_SCHEMA, "w", encoding="utf-8") as outfile:
         json.dump(json_schema, outfile, indent=2, sort_keys=True)
         outfile.write("\n")
@@ -2719,9 +2719,9 @@ def generate_json_schema_enums():
         json_schema = json.load(json_file)
     json_schema["definitions"]["enum_descriptor_keys"]["enum"] = [
         x["descriptor_id"] for x in descriptors
-    ]
+    ].sort()
     json_schema["definitions"]["enum_descriptor_keys"]["enum"] += ["CREDENTIALS", "GIT"]
-    json_schema["definitions"]["enum_linter_keys"]["enum"] = [x.name for x in linters]
+    json_schema["definitions"]["enum_linter_keys"]["enum"] = [x.name for x in linters].sort()
     # Deprecated linters
     json_schema["definitions"]["enum_linter_keys"]["enum"] += DEPRECATED_LINTERS
     with open(CONFIG_JSON_SCHEMA, "w", encoding="utf-8") as outfile:
