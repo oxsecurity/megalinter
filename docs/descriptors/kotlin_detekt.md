@@ -15,7 +15,7 @@ description: How to use detekt (configure, ignore files, ignore errors, help & v
 
 ## detekt documentation
 
-- Version in MegaLinter: **1.23.5**
+- Version in MegaLinter: **1.23.6**
 - Visit [Official Web Site](https://detekt.dev/){target=_blank}
 - See [Index of problems detected by detekt](https://detekt.dev/docs/rules/comments){target=_blank}
 
@@ -30,9 +30,6 @@ description: How to use detekt (configure, ignore files, ignore errors, help & v
 |-------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
 | KOTLIN_DETEKT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                    |
 | KOTLIN_DETEKT_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                         |                    |
-| KOTLIN_DETEKT_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                           | Include every file |
-| KOTLIN_DETEKT_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                     | Exclude no file    |
-| KOTLIN_DETEKT_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `project`: Call the linter from the root of the project                                                    | `file`             |
 | KOTLIN_DETEKT_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                      | `[".kt", ".kts"]`  |
 | KOTLIN_DETEKT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
 | KOTLIN_DETEKT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                               | None               |
@@ -84,7 +81,10 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- detekt is called one time by identified file (`file` CLI lint mode)
+detekt is called once on the whole project directory (`project` CLI lint mode)
+
+- filtering can not be done using MegaLinter configuration variables,it must be done using detekt configuration or ignore file (if existing)
+- `VALIDATE_ALL_CODEBASE: false` doesn't make detekt analyze only updated files
 
 ### Example calls
 
@@ -198,12 +198,13 @@ Usage: detekt [options]
 ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 # Linter install
-RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/detekt/detekt/releases/download/v1.23.5/detekt-cli-1.23.5.zip && \
-    unzip detekt-cli-1.23.5.zip && \
-    chmod a+x detekt-cli-1.23.5/bin/* && \
-    chmod a+x detekt-cli-1.23.5/lib/* && \
-    mv -n detekt-cli-1.23.5/bin/* usr/bin && \
-    mv -n detekt-cli-1.23.5/lib/* usr/lib
+ARG VERSION_KOTLIN_DETEKT='1.23.6'
+RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/detekt/detekt/releases/download/v${VERSION_KOTLIN_DETEKT}/detekt-cli-${VERSION_KOTLIN_DETEKT}.zip && \
+    unzip detekt-cli-${VERSION_KOTLIN_DETEKT}.zip && \
+    chmod a+x detekt-cli-${VERSION_KOTLIN_DETEKT}/bin/* && \
+    chmod a+x detekt-cli-${VERSION_KOTLIN_DETEKT}/lib/* && \
+    mv -n detekt-cli-${VERSION_KOTLIN_DETEKT}/bin/* usr/bin && \
+    mv -n detekt-cli-${VERSION_KOTLIN_DETEKT}/lib/* usr/lib
 
 ```
 

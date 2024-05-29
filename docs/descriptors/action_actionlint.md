@@ -11,7 +11,7 @@ Static checker for GitHub Actions workflow files
 
 ## actionlint documentation
 
-- Version in MegaLinter: **1.7.0**
+- Version in MegaLinter: **1.7.1**
 - Visit [Official Web Site](https://rhysd.github.io/actionlint/){target=_blank}
 - See [How to configure actionlint rules](https://github.com/rhysd/actionlint/blob/main/docs/config.md){target=_blank}
 
@@ -112,7 +112,7 @@ Usage: actionlint [FLAGS] [FILES...] [-]
 
 Documents:
 
-  https://github.com/rhysd/actionlint/tree/main/docs
+  https://github.com/rhysd/actionlint/tree/v1.7.1/docs
 
 Flags:
   -color

@@ -68,6 +68,7 @@ ARG BICEP_URI='https://github.com/Azure/bicep/releases/latest/download/bicep-lin
 ARG BICEP_DIR='/usr/local/bin'
 ARG DART_VERSION='2.8.4'
 ARG PMD_VERSION=7.1.0
+ARG VERSION_KOTLIN_DETEKT='1.23.6'
 ARG PSSA_VERSION='latest'
 #ARG__END
 
@@ -586,12 +587,12 @@ RUN wget --quiet https://github.com/pmd/pmd/releases/download/pmd_releases%2F${P
     mv "ktlint" /usr/bin/ \
 
 # detekt installation
-    && curl --retry 5 --retry-delay 5 -sSLO https://github.com/detekt/detekt/releases/download/v1.23.5/detekt-cli-1.23.5.zip && \
-    unzip detekt-cli-1.23.5.zip && \
-    chmod a+x detekt-cli-1.23.5/bin/* && \
-    chmod a+x detekt-cli-1.23.5/lib/* && \
-    mv -n detekt-cli-1.23.5/bin/* usr/bin && \
-    mv -n detekt-cli-1.23.5/lib/* usr/lib \
+    && curl --retry 5 --retry-delay 5 -sSLO https://github.com/detekt/detekt/releases/download/v${VERSION_KOTLIN_DETEKT}/detekt-cli-${VERSION_KOTLIN_DETEKT}.zip && \
+    unzip detekt-cli-${VERSION_KOTLIN_DETEKT}.zip && \
+    chmod a+x detekt-cli-${VERSION_KOTLIN_DETEKT}/bin/* && \
+    chmod a+x detekt-cli-${VERSION_KOTLIN_DETEKT}/lib/* && \
+    mv -n detekt-cli-${VERSION_KOTLIN_DETEKT}/bin/* usr/bin && \
+    mv -n detekt-cli-${VERSION_KOTLIN_DETEKT}/lib/* usr/lib \
 
 # kubeconform installation
 # Managed with COPY --link --from=kubeconform /kubeconform /usr/bin/

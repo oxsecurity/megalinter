@@ -9139,16 +9139,6 @@
             "title": "KOTLIN_DETEKT: CLI Executable",
             "type": "array"
         },
-        "KOTLIN_DETEKT_CLI_LINT_MODE": {
-            "$id": "#/properties/KOTLIN_DETEKT_CLI_LINT_MODE",
-            "default": "file",
-            "enum": [
-                "file",
-                "project"
-            ],
-            "title": "KOTLIN_DETEKT: Override default cli lint mode",
-            "type": "string"
-        },
         "KOTLIN_DETEKT_COMMAND_REMOVE_ARGUMENTS": {
             "$id": "#/properties/KOTLIN_DETEKT_COMMAND_REMOVE_ARGUMENTS",
             "description": "KOTLIN_DETEKT: User custom arguments to remove before calling linter",
@@ -9200,16 +9190,6 @@
             },
             "title": "KOTLIN_DETEKT: Override descriptor/linter matching file name regex",
             "type": "array"
-        },
-        "KOTLIN_DETEKT_FILTER_REGEX_EXCLUDE": {
-            "$id": "#/properties/KOTLIN_DETEKT_FILTER_REGEX_EXCLUDE",
-            "title": "KOTLIN_DETEKT: Excluding Regex",
-            "type": "string"
-        },
-        "KOTLIN_DETEKT_FILTER_REGEX_INCLUDE": {
-            "$id": "#/properties/KOTLIN_DETEKT_FILTER_REGEX_INCLUDE",
-            "title": "KOTLIN_DETEKT: Including Regex",
-            "type": "string"
         },
         "KOTLIN_DETEKT_POST_COMMANDS": {
             "$id": "#/properties/KOTLIN_DETEKT_POST_COMMANDS",
