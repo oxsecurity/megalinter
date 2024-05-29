@@ -2721,7 +2721,9 @@ def generate_json_schema_enums():
         x["descriptor_id"] for x in descriptors
     ].sort()
     json_schema["definitions"]["enum_descriptor_keys"]["enum"] += ["CREDENTIALS", "GIT"]
-    json_schema["definitions"]["enum_linter_keys"]["enum"] = [x.name for x in linters].sort()
+    json_schema["definitions"]["enum_linter_keys"]["enum"] = [
+        x.name for x in linters
+    ].sort()
     # Deprecated linters
     json_schema["definitions"]["enum_linter_keys"]["enum"] += DEPRECATED_LINTERS
     with open(CONFIG_JSON_SCHEMA, "w", encoding="utf-8") as outfile:
