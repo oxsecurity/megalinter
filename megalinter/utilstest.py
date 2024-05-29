@@ -186,7 +186,7 @@ def test_linter_success(linter, test_self):
             )
         else:
             test_self.assertRegex(output, rf"\[{linter_name}\] .*good.* - SUCCESS")
-    elif linter.descriptor_id != "SPELL":  # This log doesn't appear in SPELL linters
+    elif linter.descriptor_id != "SPELL" or linter.linter_name != "php-cs-fixer":  # This log doesn't appear in SPELL linters
         test_self.assertRegex(
             output,
             rf"Linted \[{linter.descriptor_id}\] files with \[{linter_name}\] successfully",
