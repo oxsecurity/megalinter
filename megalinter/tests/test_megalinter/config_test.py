@@ -500,24 +500,31 @@ class config_test(unittest.TestCase):
             (11, "non_empty_list", ["item1", "item2"], ['item1', 'item2']),
             (12, "single_quoted_string", "'single_quoted_string'", ["'single_quoted_string'"]),
             (13, "space_separated_items", 'item1 item2', ['item1', 'item2']),
-            (14, "multiple_single_quoted_strings", "'string1' 'string2' 'string3'", ['string1', 'string2', 'string3']),
-            (15, "mixed_single_and_double_quotes", '"double quoted" \'single quoted\'', ['double quoted', 'single quoted']),
+            (14, "multiple_single_quoted_strings", "'string1' 'string2' 'string3'", 
+                ['string1', 'string2', 'string3']),
+            (15, "mixed_single_and_double_quotes", '"double quoted" \'single quoted\'', 
+                ['double quoted', 'single quoted']),
             (16, "three_space_separated_items", "item1 item2 item3", ['item1', 'item2', 'item3']),
             (17, "four_space_separated_items", "item1 item2 item3 item4", ['item1', 'item2', 'item3', 'item4']),
-            (18, "five_space_separated_items", "item1 item2 item3 item4 item5", ['item1', 'item2', 'item3', 'item4', 'item5']),
+            (18, "five_space_separated_items", "item1 item2 item3 item4 item5", 
+                ['item1', 'item2', 'item3', 'item4', 'item5']),
             (19, "single_quoted_with_spaces", "' single quoted with spaces '", [" single quoted with spaces "]),
             (20, " quoted_with_leading_space", '" leading space"', [" leading space"]),
             (21, "quoted_with_trailing_space", '"trailing space "', ["trailing space "]),
-            (22, "quoted_with_leading_and_trailing_spaces", '" leading and trailing spaces "', [" leading and trailing spaces "]),
-            (23, "multiple_quoted_strings_with_spaces", '" string1 " "string2 " " string3 "', [" string1 ", "string2 ", " string3 "]),
+            (22, "quoted_with_leading_and_trailing_spaces", '" leading and trailing spaces "', 
+                [" leading and trailing spaces "]),
+            (23, "multiple_quoted_strings_with_spaces", '" string1 " "string2 " " string3 "', 
+                [" string1 ", "string2 ", " string3 "]),
             (24, "paths_with_nested_folders", "./nested/folder/file.txt", ['./nested/folder/file.txt']),
             (25, "paths_with_parent_directory", "../parent/file.txt", ['../parent/file.txt']),
             (26, "paths_with_tilde_home", "~/home/user/file.txt", ['~/home/user/file.txt']),
             (27, "paths_with_url_files", "http://example.com/file.txt", ['http://example.com/file.txt']),
             (28, "multiple_spaces_between_paths", 'path1  path2', ['path1', 'path2']),
-            (29, "relative_paths", "./relative/path ./another/relative/path", ['./relative/path', './another/relative/path']),
+            (29, "relative_paths", "./relative/path ./another/relative/path",
+                ['./relative/path', './another/relative/path']),
             (30, "paths_with_file_extensions", "./file.txt ./folder/file.py", ['./file.txt', './folder/file.py']),
-            (31, "paths_with_hidden_files", "./folder/.file.sln ./folder/.hidden", ['./folder/.file.sln', './folder/.hidden']),
+            (31, "paths_with_hidden_files", "./folder/.file.sln ./folder/.hidden", 
+                ['./folder/.file.sln', './folder/.hidden']),
             (32, "absolute_unix_paths", "/root/path /another/root/path", ['/root/path', '/another/root/path']),
             (33, "quoted_paths_with_spaces", '"quoted path/with spaces" "another/quoted path"', 
                 ['quoted path/with spaces', 'another/quoted path']),
@@ -529,14 +536,19 @@ class config_test(unittest.TestCase):
                 ['command', '--option=value with spaces', "--flag"])
 
             # Commented out cases due to shlex.split removing the /
-            # (37, "absolute_windows_paths", "C:\\absolute\\path C:\\another\\absolute\\path", ['C:\\absolute\\path', 'C:\\another\\absolute\\path']),
-            # (38, "paths_with_environment_variables", "$HOME/file.txt $USERPROFILE\\file.txt", ['$HOME/file.txt', '$USERPROFILE\\file.txt']),
-            # (39, "path_with_mixed_separators", "path/to/file path\\to\\another\\file", ['path/to/file', 'path\\to\\another\\file']),
-            # (40, "complex_paths_and_files", 'file1 "complex path/file2" file3\\with\\backslashes', ['file1', 'complex path/file2', 'file3\\with\\backslashes']),
+            # (37, "absolute_windows_paths", "C:\\absolute\\path C:\\another\\absolute\\path",
+            #   ['C:\\absolute\\path', 'C:\\another\\absolute\\path']),
+            # (38, "paths_with_environment_variables", "$HOME/file.txt $USERPROFILE\\file.txt",
+            #   ['$HOME/file.txt', '$USERPROFILE\\file.txt']),
+            # (39, "path_with_mixed_separators", "path/to/file path\\to\\another\\file",
+            #   ['path/to/file', 'path\\to\\another\\file']),
+            # (40, "complex_paths_and_files", 'file1 "complex path/file2" file3\\with\\backslashes',
+            #   ['file1', 'complex path/file2', 'file3\\with\\backslashes']),
         ]
 
         for scenario_number, scenario_name, return_value, expected_result in scenarios:
             with self.subTest(scenario_number=scenario_number, scenario_name=scenario_name):
                 with patch.object(config, 'get', return_value=return_value):
                     result = config.get_list_args('dummy_request_id', scenario_name)
-                    self.assertEqual(result, expected_result, f"Failed on result scenario {scenario_number}: {scenario_name}")
+                    self.assertEqual(result, expected_result, 
+                                     f"Failed on result scenario {scenario_number}: {scenario_name}")
