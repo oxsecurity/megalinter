@@ -566,12 +566,12 @@ class config_test(unittest.TestCase):
                 ['C:\\path\\to\\file1.txt', 'C:\\path\\to\\file2.txt']),
             (60, "list_of_two_windows_paths_with_spaces", ['"C:\\path to\\file1.txt"', '"C:\\path to\\file2.txt"'],
                 ['"C:\\path to\\file1.txt"', '"C:\\path to\\file2.txt"']),
-            (61, "network_share", "\\server\share", ["\\server\share"]),
-            (62, "network_share_with_spaces", '"\\server\share\path with spaces\file.txt"', ['\server\share\path with spaces\file.txt']),
+            (61, "network_share", "\\\\server\\share", ["\\\\server\\share"]),
+            (62, "network_share_with_spaces", "'\\\\server\\share\\path with spaces\\file.txt'", ['\\\\server\\share\\path with spaces\\file.txt']),
             (63, "relative_path", ".\\path\\to\\file.txt", [".\\path\\to\\file.txt"]),
             (64, "relative_path_with_spaces", '".\\path to\\file.txt"', ['.\\path to\\file.txt']),
-            (65, "list_of_two_network_shares", ["\\server1\share\file1.txt", "\\server2\share\file2.txt"],
-                ["\\server1\share\file1.txt", "\\server2\share\file2.txt"]),
+            (65, "list_of_two_network_shares", ["\\\\server1\\share\\file1.txt", "\\\\server2\\share\\file2.txt"],
+                ["\\\\server1\\share\\file1.txt", "\\\\server2\\share\\file2.txt"]),
             (66, "list_of_two_relative_paths", [".\\path1\\file1.txt", ".\\path2\\file2.txt"], [".\\path1\\file1.txt", ".\\path2\\file2.txt"])
 
             # Commented out cases due to shlex.split removing the /
@@ -590,4 +590,4 @@ class config_test(unittest.TestCase):
                 with patch.object(config, 'get', return_value=return_value):
                     result = config.get_list_args('dummy_request_id', scenario_name)
                     self.assertEqual(result, expected_result,
-                                     f"Failed on result scenario {scenario_number}: {scenario_name}")
+                                        f"Failed on result scenario {scenario_number}: {scenario_name}")
