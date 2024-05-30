@@ -56,7 +56,7 @@
     "markdownlint": "MIT",
     "misspell": "MIT",
     "mypy": "Other",
-    "npm-groovy-lint": "GPL-3.0",
+    "npm-groovy-lint": "MIT",
     "npm-package-json-lint": "MIT",
     "perlcritic": "Other",
     "php": "Other",
