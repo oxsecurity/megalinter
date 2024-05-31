@@ -194,6 +194,12 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 3.24.0 to **3.25.0** on 2024-05-28
   - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 3.24.0 to **3.25.0** on 2024-05-28
   - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 3.24.0 to **3.25.0** on 2024-05-28
+  - [phpstan](https://phpstan.org/) from 1.11.2 to **1.11.3** on 2024-05-31
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.364 to **1.1.365** on 2024-05-31
+  - [ruff](https://github.com/astral-sh/ruff) from 0.4.6 to **0.4.7** on 2024-05-31
+  - [checkov](https://www.checkov.io/) from 3.2.109 to **3.2.120** on 2024-05-31
+  - [rubocop](https://rubocop.org/) from 1.64.0 to **1.64.1** on 2024-05-31
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.58.10 to **0.58.12** on 2024-05-31
 <!-- linter-versions-end -->
 
 ## [v7.11.1] - 2024-04-23
