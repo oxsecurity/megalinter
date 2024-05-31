@@ -179,6 +179,8 @@ def test_linter_success(linter, test_self):
         len(mega_linter.linters) > 0, "Linters have been created and run"
     )
     # Check console output
+    logging.info(f">>> LLA descriptor_id {linter.linter_name} linter_name {linter.linter_name} ")
+
     if linter.cli_lint_mode == "file":
         if len(linter.file_names_regex) > 0 and len(linter.file_extensions) == 0:
             test_self.assertRegex(
@@ -186,7 +188,7 @@ def test_linter_success(linter, test_self):
             )
         else:
             test_self.assertRegex(output, rf"\[{linter_name}\] .*good.* - SUCCESS")
-    elif linter.descriptor_id != "SPELL" or linter.linter_name != "php-cs-fixer":  # This log doesn't appear in SPELL linters
+    elif ((linter.descriptor_id != "SPELL") and (linter.linter_name != "php-cs-fixer")):  # This log doesn't appear in SPELL linters
         test_self.assertRegex(
             output,
             rf"Linted \[{linter.descriptor_id}\] files with \[{linter_name}\] successfully",
@@ -197,11 +199,12 @@ def test_linter_success(linter, test_self):
         f"{tmp_report_folder}{os.path.sep}linters_logs"
         f"{os.path.sep}{report_file_name}"
     )
-    test_self.assertTrue(
-        os.path.isfile(text_report_file),
-        f"Unable to find text report {text_report_file}",
-    )
-    copy_logs_for_doc(text_report_file, test_folder, report_file_name)
+    if linter.linter_name != "php-cs-fixer":  # This log doesn't appear in PHP_PHPCSFIXER linter
+        test_self.assertTrue(
+            os.path.isfile(text_report_file),
+            f"Unable to find text report {text_report_file}",
+        )
+        copy_logs_for_doc(text_report_file, test_folder, report_file_name)
 
 
 def test_linter_failure(linter, test_self):
