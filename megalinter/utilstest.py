@@ -179,8 +179,6 @@ def test_linter_success(linter, test_self):
         len(mega_linter.linters) > 0, "Linters have been created and run"
     )
     # Check console output
-    logging.info(f">>> LLA descriptor_id {linter.linter_name} linter_name {linter.linter_name} ")
-
     if linter.cli_lint_mode == "file":
         if len(linter.file_names_regex) > 0 and len(linter.file_extensions) == 0:
             test_self.assertRegex(
