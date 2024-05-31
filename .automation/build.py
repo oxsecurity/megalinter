@@ -1111,7 +1111,7 @@ def generate_flavor_documentation(flavor_id, flavor, linters_tables_md):
 def dump_as_json(value: Any, empty_value: str) -> str:
     if not value:
         return empty_value
-    # Covert any value to string with JSON
+    # Convert any value to string with JSON
     # Don't indent since markdown table supports single line only
     result = json.dumps(value, indent=None, sort_keys=True)
     return f"`{result}`"
@@ -2350,7 +2350,7 @@ def add_in_config_schema_file(variables):
     json_schema["properties"] = json_schema_props
     if updated is True:
         with open(CONFIG_JSON_SCHEMA, "w", encoding="utf-8") as outfile:
-            json.dump(json_schema, outfile, indent=4, sort_keys=True)
+            json.dump(json_schema, outfile, indent=2, sort_keys=True)
             outfile.write("\n")
 
 
@@ -2367,7 +2367,7 @@ def remove_in_config_schema_file(variables):
     json_schema["properties"] = json_schema_props
     if updated is True:
         with open(CONFIG_JSON_SCHEMA, "w", encoding="utf-8") as outfile:
-            json.dump(json_schema, outfile, indent=4, sort_keys=True)
+            json.dump(json_schema, outfile, indent=2, sort_keys=True)
             outfile.write("\n")
 
 
@@ -2707,7 +2707,7 @@ def generate_json_schema_enums():
     with open(DESCRIPTOR_JSON_SCHEMA, "r", encoding="utf-8") as json_file:
         json_schema = json.load(json_file)
     json_schema["definitions"]["enum_flavors"]["enum"] = ["all_flavors"] + list(
-        flavors.keys()
+        sorted(set(list(flavors.keys())))
     )
     with open(DESCRIPTOR_JSON_SCHEMA, "w", encoding="utf-8") as outfile:
         json.dump(json_schema, outfile, indent=2, sort_keys=True)
@@ -2724,6 +2724,14 @@ def generate_json_schema_enums():
     json_schema["definitions"]["enum_linter_keys"]["enum"] = [x.name for x in linters]
     # Deprecated linters
     json_schema["definitions"]["enum_linter_keys"]["enum"] += DEPRECATED_LINTERS
+
+    # Sort:
+    json_schema["definitions"]["enum_descriptor_keys"]["enum"] = sorted(
+        set(json_schema["definitions"]["enum_descriptor_keys"]["enum"])
+    )
+    json_schema["definitions"]["enum_linter_keys"]["enum"] = sorted(
+        set(json_schema["definitions"]["enum_linter_keys"]["enum"])
+    )
     with open(CONFIG_JSON_SCHEMA, "w", encoding="utf-8") as outfile:
         json.dump(json_schema, outfile, indent=2, sort_keys=True)
         outfile.write("\n")
@@ -3352,17 +3360,22 @@ def update_workflow_linters(file_path, linters):
 
 
 if __name__ == "__main__":
+    logging_format = (
+        "[%(levelname)s] %(message)s"
+        if "CI" in os.environ
+        else "%(asctime)s [%(levelname)s] %(message)s"
+    )
     try:
         logging.basicConfig(
             force=True,
             level=logging.INFO,
-            format="%(asctime)s [%(levelname)s] %(message)s",
+            format=logging_format,
             handlers=[logging.StreamHandler(sys.stdout)],
         )
     except ValueError:
         logging.basicConfig(
             level=logging.INFO,
-            format="%(asctime)s [%(levelname)s] %(message)s",
+            format=logging_format,
             handlers=[logging.StreamHandler(sys.stdout)],
         )
     config.init_config("build")

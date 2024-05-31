@@ -31,6 +31,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Doc
   - Handle disabled_reason property in descriptors
+  - Sort enums in json schema, by @echoix in <https://github.com/oxsecurity/megalinter/pull/3595>
 
 - Flavors
 
