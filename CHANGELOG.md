@@ -200,6 +200,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 3.2.109 to **3.2.120** on 2024-05-31
   - [rubocop](https://rubocop.org/) from 1.64.0 to **1.64.1** on 2024-05-31
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.58.10 to **0.58.12** on 2024-05-31
+  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 8.0.105 to **8.0.106** on 2024-06-01
+  - [roslynator](https://github.com/dotnet/Roslynator) from 0.8.8.0 to **0.8.9.0** on 2024-06-01
+  - [prettier](https://prettier.io/) from 3.2.5 to **3.3.0** on 2024-06-01
+  - [checkov](https://www.checkov.io/) from 3.2.120 to **3.2.122** on 2024-06-01
 <!-- linter-versions-end -->
 
 ## [v7.11.1] - 2024-04-23
