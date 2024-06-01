@@ -9,10 +9,10 @@ description: How to use clang-format (configure, ignore files, ignore errors, he
 
 ## clang-format documentation
 
-- Version in MegaLinter: **16.0.6**
-- Visit [Official Web Site](https://releases.llvm.org/16.0.0/tools/clang/docs/ClangFormat.html){target=_blank}
-- See [How to disable clang-format rules in files](https://releases.llvm.org/16.0.0/tools/clang/docs/ClangFormatStyleOptions.html#disabling-formatting-on-a-piece-of-code){target=_blank}
-- See [Index of problems detected by clang-format](https://releases.llvm.org/16.0.0/tools/clang/docs/ClangFormat.html){target=_blank}
+- Version in MegaLinter: **17.0.5**
+- Visit [Official Web Site](https://releases.llvm.org/17.0.1/tools/clang/docs/ClangFormat.html){target=_blank}
+- See [How to disable clang-format rules in files](https://releases.llvm.org/17.0.1/tools/clang/docs/ClangFormatStyleOptions.html#disabling-formatting-on-a-piece-of-code){target=_blank}
+- See [Index of problems detected by clang-format](https://releases.llvm.org/17.0.1/tools/clang/docs/ClangFormat.html){target=_blank}
 
 [![llvm-project - GitHub](https://gh-card.dev/repos/llvm/llvm-project.svg?fullname=)](https://github.com/llvm/llvm-project){target=_blank}
 
@@ -48,7 +48,7 @@ Use clang-format in your favorite IDE to catch errors before MegaLinter !
 |                                                                  <!-- -->                                                                   | IDE                                                  | Extension Name                                                                                       |                                                                                 Install                                                                                 |
 |:-------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [Clang-Format](https://marketplace.visualstudio.com/items?itemName=xaver.clang-format)               | [![Install in VSCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/xaver.clang-format){target=_blank} |
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Emacs](https://www.gnu.org/software/emacs/)         | [clang-format](https://releases.llvm.org/16.0.0/tools/clang/docs/ClangFormat.html#emacs-integration) |                          [Visit Web Site](https://releases.llvm.org/16.0.0/tools/clang/docs/ClangFormat.html#emacs-integration){target=_blank}                          |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Emacs](https://www.gnu.org/software/emacs/)         | [clang-format](https://releases.llvm.org/17.0.1/tools/clang/docs/ClangFormat.html#emacs-integration) |                          [Visit Web Site](https://releases.llvm.org/17.0.1/tools/clang/docs/ClangFormat.html#emacs-integration){target=_blank}                          |
 
 ## MegaLinter Flavours
 
@@ -56,8 +56,8 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                               | Description                       | Embedded linters |                                                                                                                                                                                   Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------|:----------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor         |       121        |             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/c_cpp.ico" alt="" height="32px" class="megalinter-icon"></a>        | [c_cpp](https://megalinter.io/beta/flavors/c_cpp/)   | Optimized for pure C/C++ projects |        55        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-c_cpp/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-c_cpp) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor         |       123        |             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/c_cpp.ico" alt="" height="32px" class="megalinter-icon"></a>        | [c_cpp](https://megalinter.io/beta/flavors/c_cpp/)   | Optimized for pure C/C++ projects |        54        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-c_cpp/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-c_cpp) |
 
 ## Behind the scenes
 
@@ -182,4 +182,4 @@ Generic Options:
 ### Installation on mega-linter Docker image
 
 - APK packages (Linux):
-  - [clang16-extra-tools](https://pkgs.alpinelinux.org/packages?branch=edge&name=clang16-extra-tools)
+  - [clang17-extra-tools](https://pkgs.alpinelinux.org/packages?branch=edge&name=clang17-extra-tools)

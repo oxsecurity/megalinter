@@ -18,10 +18,10 @@ jobs:
           COMMIT_MESSAGE: ${{ github.event.head_commit.message }}
         run: echo "Checking commit '$COMMIT_MESSAGE'"
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v4
         with:
           node-version: 18.x
-      - uses: actions/cache@v2
+      - uses: actions/cache@v3
         with:
           path: ~/.npm
           key: ${{ matrix.os }}-node-${{ hashFiles('**/package-lock.json') }}

@@ -23,10 +23,12 @@ description: arm-ttk is available to analyze ARM files in MegaLinter
 
 ## Configuration in MegaLinter
 
-| Variable                 | Description                   | Default value |
-|--------------------------|-------------------------------|---------------|
-| ARM_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| ARM_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable                 | Description                                     | Default value |
+|--------------------------|-------------------------------------------------|---------------|
+| ARM_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
+| ARM_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
+| ARM_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
+| ARM_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 
 
 ## Behind the scenes
@@ -40,7 +42,7 @@ RUN case ${TARGETPLATFORM} in \
   "linux/amd64")  POWERSHELL_ARCH=musl-x64 ;; \
   "linux/arm64")  POWERSHELL_ARCH=arm64    ;; \
 esac \
-&& curl -L https://github.com/PowerShell/PowerShell/releases/download/v7.4.0/powershell-7.4.0-linux-${POWERSHELL_ARCH}.tar.gz -o /tmp/powershell.tar.gz \
+&& curl -L https://github.com/PowerShell/PowerShell/releases/download/v7.4.2/powershell-7.4.2-linux-${POWERSHELL_ARCH}.tar.gz -o /tmp/powershell.tar.gz \
 && mkdir -p /opt/microsoft/powershell/7 \
 && tar zxf /tmp/powershell.tar.gz -C /opt/microsoft/powershell/7 \
 && chmod +x /opt/microsoft/powershell/7/pwsh \

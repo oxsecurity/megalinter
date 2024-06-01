@@ -8,15 +8,18 @@ file_extensions:
 install:
   apk:
     - gnupg
-    - php81
-    - php81-phar
-    - php81-mbstring
-    - php81-xmlwriter
-    - php81-tokenizer
-    - php81-ctype
-    - php81-curl
-    - php81-dom
-    - php81-simplexml
+    - php83
+    - php83-phar
+    - php83-mbstring
+    - php83-xmlwriter
+    - php83-tokenizer
+    - php83-ctype
+    - php83-curl
+    - php83-dom
+    - php83-opcache
+    - php83-openssl
+    - php83-common
+    - php83-simplexml
     - dpkg
   dockerfile:
     - |
@@ -33,7 +36,9 @@ install:
           && chmod +x phive.phar \
           && mv phive.phar /usr/local/bin/phive \
           && rm phive.phar.asc \
-          && update-alternatives --install /usr/bin/php php /usr/bin/php81 110
+          && update-alternatives --install /usr/bin/php php /usr/bin/php83 110
+    - COPY --from=composer/composer:2-bin /composer /usr/bin/composer
+    - ENV PATH="/root/.composer/vendor/bin:${PATH}"
 supported_platforms:
   platform:
     - linux/amd64
@@ -42,6 +47,7 @@ linters:
   # PHPCS
   - linter_name: phpcs
     name: PHP_PHPCS
+    can_output_sarif: true
     linter_url: https://github.com/PHPCSStandards/PHP_CodeSniffer
     linter_repo: https://github.com/PHPCSStandards/PHP_CodeSniffer
     linter_rules_configuration_url: https://github.com/PHPCSStandards/PHP_CodeSniffer/wiki/Advanced-Usage#using-a-default-configuration-file
@@ -51,6 +57,8 @@ linters:
     config_file_name: phpcs.xml
     cli_lint_mode: list_of_files
     cli_config_arg_name: "--standard="
+    cli_sarif_args:
+      - "--report=\\Bartlett\\Sarif\\Converter\\PhpCsConverter"
     cli_lint_errors_count: regex_number
     cli_lint_errors_regex: "FOUND ([0-9]+) ERRORS"
     examples:
@@ -60,7 +68,7 @@ linters:
     install:
       dockerfile:
         - |
-          RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && phive --no-progress install phpcs -g --trust-gpg-keys 31C7E470E2138192,95DE904AB800754A11D80B605E6DDE998AB73B8E
+          RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require squizlabs/php_codesniffer bartlett/sarif-php-sdk
     supported_platforms:
       platform:
         - linux/amd64
@@ -85,6 +93,7 @@ linters:
   # PHP Stan
   - linter_name: phpstan
     name: PHP_PHPSTAN
+    can_output_sarif: true
     linter_url: https://phpstan.org/
     linter_repo: https://github.com/phpstan/phpstan
     linter_image_url: https://i.imgur.com/WaRKPlC.png
@@ -98,6 +107,8 @@ linters:
       - "--no-ansi"
       - "--memory-limit"
       - "1G"
+    cli_sarif_args:
+      - "--error-format=sarif"
     cli_lint_errors_count: regex_number
     cli_lint_errors_regex: "Found ([0-9]+) error"
     examples:
@@ -107,9 +118,7 @@ linters:
       - "phpstan analyse --no-progress --no-ansi mydir1/ mydir2/ myfile.php"
     install:
       dockerfile:
-        - FROM ghcr.io/phpstan/phpstan:latest-php8.1 as phpstan
-        - COPY --link --from=phpstan /composer/vendor/phpstan/phpstan/phpstan.phar /usr/bin/phpstan
-        - RUN chmod +x /usr/bin/phpstan
+        - RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require phpstan/phpstan bartlett/sarif-php-sdk
       idea:
         - name: PHPStan / Psalm / Generics
           url: https://plugins.jetbrains.com/plugin/12754-phpstan--psalm--generics
@@ -163,10 +172,13 @@ linters:
           url: https://marketplace.visualstudio.com/items?itemName=getpsalm.psalm-vscode-plugin
   # PHPLint
   - linter_name: phplint
+    can_output_sarif: true
     linter_url: https://github.com/overtrue/phplint
     linter_repo: https://github.com/overtrue/phplint
     config_file_name: .phplint.yml
     cli_lint_mode: list_of_files
+    cli_sarif_args:
+      - "--log-sarif={{SARIF_OUTPUT_FILE}}"
     examples:
       - "phplint myfile.php"
       - "phplint mydir"

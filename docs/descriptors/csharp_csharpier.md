@@ -9,7 +9,7 @@ description: How to use csharpier (configure, ignore files, ignore errors, help 
 
 ## csharpier documentation
 
-- Version in MegaLinter: **0.26.7**
+- Version in MegaLinter: **0.28.2**
 - Visit [Official Web Site](https://csharpier.com/){target=_blank}
 - See [How to configure csharpier rules](https://csharpier.com/docs/Configuration){target=_blank}
 - See [How to ignore files and directories with csharpier](https://csharpier.com/docs/Ignore){target=_blank}
@@ -56,9 +56,9 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                       | Description                                              | Embedded linters |                                                                                                                                                                                             Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------|:---------------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor                                |       121        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/)         | Optimized for C, C++, C# or VB based projects            |        64        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
-|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/)   | Optimized for C, C++, C# or VB based projects with JS/TS |        73        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor                                |       123        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/)         | Optimized for C, C++, C# or VB based projects            |        62        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/)   | Optimized for C, C++, C# or VB based projects with JS/TS |        71        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
 |     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/formatters.ico" alt="" height="32px" class="megalinter-icon"></a>      | [formatters](https://megalinter.io/beta/flavors/formatters/) | Contains only formatters                                 |        17        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-formatters/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-formatters) |
 
 ## Behind the scenes
@@ -100,10 +100,13 @@ Options:
   --loglevel <loglevel>        Specify the log level - Debug, Information (default), Warning, Error, None [default: Information]
   --no-cache                   Bypass the cache to determine if a file needs to be formatted.
   --no-msbuild-check           Bypass the check to determine if a csproj files references a different version of CSharpier.MsBuild.
+  --include-generated          Include files generated by the SDK and files that begin with <autogenerated /> comments
   --fast                       Skip comparing syntax tree of formatted file to original file to validate changes.
   --skip-write                 Skip writing changes. Generally used for testing to ensure csharpier doesn't throw any errors or cause syntax tree validation failures.
   --write-stdout               Write the results of formatting any files to stdout.
-  --pipe-multiple-files        Keep csharpier running so that multiples files can be piped to it via stdin
+  --pipe-multiple-files        Keep csharpier running so that multiples files can be piped to it via stdin.
+  --server                     Run CSharpier as a server so that multiple files may be formatted.
+  --server-port <server-port>  Specify the port that CSharpier should start on. Defaults to a random unused port.
   --config-path <config-path>  Path to the CSharpier configuration file
   --version                    Show version information
   -?, -h, --help               Show help and usage information
@@ -115,6 +118,7 @@ Options:
 - Dockerfile commands :
 ```dockerfile
 # Parent descriptor install
+RUN apk add --no-cache dotnet8-sdk --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community
 ENV PATH="${PATH}:/root/.dotnet/tools"
 # Linter install
 RUN dotnet tool install --global csharpier

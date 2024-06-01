@@ -9,16 +9,16 @@ description: pylint, black, flake8, isort, bandit, mypy, pyright, ruff are avail
 
 ## Linters
 
-| Linter                                                                     | Additional                                                                                                                                                                     |
-|----------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [**pylint**](python_pylint.md)<br/>[_PYTHON_PYLINT_](python_pylint.md)     | [![GitHub stars](https://img.shields.io/github/stars/pylint-dev/pylint?cacheSeconds=3600)](https://github.com/pylint-dev/pylint)                                               |
-| [**black**](python_black.md)<br/>[_PYTHON_BLACK_](python_black.md)         | [![GitHub stars](https://img.shields.io/github/stars/psf/black?cacheSeconds=3600)](https://github.com/psf/black) ![formatter](https://shields.io/badge/-format-yellow)         |
-| [**flake8**](python_flake8.md)<br/>[_PYTHON_FLAKE8_](python_flake8.md)     | [![GitHub stars](https://img.shields.io/github/stars/PyCQA/flake8?cacheSeconds=3600)](https://github.com/PyCQA/flake8)                                                         |
-| [**isort**](python_isort.md)<br/>[_PYTHON_ISORT_](python_isort.md)         | [![GitHub stars](https://img.shields.io/github/stars/PyCQA/isort?cacheSeconds=3600)](https://github.com/PyCQA/isort) ![formatter](https://shields.io/badge/-format-yellow)     |
-| [**bandit**](python_bandit.md)<br/>[_PYTHON_BANDIT_](python_bandit.md)     | [![GitHub stars](https://img.shields.io/github/stars/PyCQA/bandit?cacheSeconds=3600)](https://github.com/PyCQA/bandit) ![sarif](https://shields.io/badge/-SARIF-orange)        |
-| [**mypy**](python_mypy.md)<br/>[_PYTHON_MYPY_](python_mypy.md)             | [![GitHub stars](https://img.shields.io/github/stars/python/mypy?cacheSeconds=3600)](https://github.com/python/mypy)                                                           |
-| [**pyright**](python_pyright.md)<br/>[_PYTHON_PYRIGHT_](python_pyright.md) | [![GitHub stars](https://img.shields.io/github/stars/microsoft/pyright?cacheSeconds=3600)](https://github.com/microsoft/pyright)                                               |
-| [**ruff**](python_ruff.md)<br/>[_PYTHON_RUFF_](python_ruff.md)             | [![GitHub stars](https://img.shields.io/github/stars/astral-sh/ruff?cacheSeconds=3600)](https://github.com/astral-sh/ruff) ![autofix](https://shields.io/badge/-autofix-green) |
+| Linter                                                                     | Additional                                                                                                                                                                                                                      |
+|----------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [**pylint**](python_pylint.md)<br/>[_PYTHON_PYLINT_](python_pylint.md)     | [![GitHub stars](https://img.shields.io/github/stars/pylint-dev/pylint?cacheSeconds=3600)](https://github.com/pylint-dev/pylint)                                                                                                |
+| [**black**](python_black.md)<br/>[_PYTHON_BLACK_](python_black.md)         | [![GitHub stars](https://img.shields.io/github/stars/psf/black?cacheSeconds=3600)](https://github.com/psf/black) ![formatter](https://shields.io/badge/-format-yellow)                                                          |
+| [**flake8**](python_flake8.md)<br/>[_PYTHON_FLAKE8_](python_flake8.md)     | [![GitHub stars](https://img.shields.io/github/stars/PyCQA/flake8?cacheSeconds=3600)](https://github.com/PyCQA/flake8)                                                                                                          |
+| [**isort**](python_isort.md)<br/>[_PYTHON_ISORT_](python_isort.md)         | [![GitHub stars](https://img.shields.io/github/stars/PyCQA/isort?cacheSeconds=3600)](https://github.com/PyCQA/isort) ![formatter](https://shields.io/badge/-format-yellow)                                                      |
+| [**bandit**](python_bandit.md)<br/>[_PYTHON_BANDIT_](python_bandit.md)     | [![GitHub stars](https://img.shields.io/github/stars/PyCQA/bandit?cacheSeconds=3600)](https://github.com/PyCQA/bandit) ![sarif](https://shields.io/badge/-SARIF-orange)                                                         |
+| [**mypy**](python_mypy.md)<br/>[_PYTHON_MYPY_](python_mypy.md)             | [![GitHub stars](https://img.shields.io/github/stars/python/mypy?cacheSeconds=3600)](https://github.com/python/mypy)                                                                                                            |
+| [**pyright**](python_pyright.md)<br/>[_PYTHON_PYRIGHT_](python_pyright.md) | [![GitHub stars](https://img.shields.io/github/stars/microsoft/pyright?cacheSeconds=3600)](https://github.com/microsoft/pyright)                                                                                                |
+| [**ruff**](python_ruff.md)<br/>[_PYTHON_RUFF_](python_ruff.md)             | [![GitHub stars](https://img.shields.io/github/stars/astral-sh/ruff?cacheSeconds=3600)](https://github.com/astral-sh/ruff) ![autofix](https://shields.io/badge/-autofix-green) ![sarif](https://shields.io/badge/-SARIF-orange) |
 
 ## Linted files
 
@@ -27,8 +27,10 @@ description: pylint, black, flake8, isort, bandit, mypy, pyright, ruff are avail
 
 ## Configuration in MegaLinter
 
-| Variable                    | Description                   | Default value |
-|-----------------------------|-------------------------------|---------------|
-| PYTHON_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| PYTHON_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable                    | Description                                     | Default value |
+|-----------------------------|-------------------------------------------------|---------------|
+| PYTHON_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
+| PYTHON_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
+| PYTHON_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
+| PYTHON_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 

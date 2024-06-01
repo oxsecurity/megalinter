@@ -8,9 +8,9 @@ descriptor_flavors:
 file_extensions:
   - ".cs"
 install:
-  apk:
-    - dotnet7-sdk
   dockerfile:
+    # https://github.com/dotnet/sdk/issues/37790#issuecomment-1918068016
+    - RUN apk add --no-cache dotnet8-sdk --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community
     - ENV PATH="${PATH}:/root/.dotnet/tools"
 linters:
   # DOTNET FORMAT
@@ -83,9 +83,9 @@ linters:
     file_extensions:
       - ".csproj"
     is_formatter: true
-    linter_url: https://github.com/JosefPihrt/Roslynator
-    linter_repo: https://github.com/JosefPihrt/Roslynator
-    linter_image_url: http://pihrt.net/images/Roslynator.ico
+    linter_url: https://github.com/dotnet/Roslynator
+    linter_repo: https://github.com/dotnet/Roslynator
+    linter_image_url: https://github.com/dotnet/roslynator/raw/main/images/roslynator-logo-small.png
     linter_rules_url: https://josefpihrt.github.io/docs/roslynator/analyzers
     linter_rules_configuration_url: https://josefpihrt.github.io/docs/roslynator/configuration
     linter_rules_inline_disable_url: https://josefpihrt.github.io/docs/roslynator/how-to-suppress-diagnostic

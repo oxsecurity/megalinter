@@ -36,9 +36,11 @@ linters:
     examples:
       - "ansible-lint -v"
       - "ansible-lint -v -c .ansible-lint"
+    downgraded_version: true
+    downgraded_reason: "Bug: https://github.com/ansible/ansible-lint/issues/4177"
     install:
       pip:
-        - ansible-lint
+        - ansible-lint=='24.2.3'
     supported_platforms:
       platform:
         - linux/amd64

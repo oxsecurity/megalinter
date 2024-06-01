@@ -6,6 +6,7 @@ descriptor_flavors:
   - c_cpp
   - dotnet
   - dotnetweb
+  - python
 file_extensions:
   - ".cpp"
   - ".h"
@@ -44,10 +45,10 @@ linters:
     name: CPP_CLANG_FORMAT
     descriptor_flavors:
       - c_cpp
-    linter_url: https://releases.llvm.org/16.0.0/tools/clang/docs/ClangFormat.html
+    linter_url: https://releases.llvm.org/17.0.1/tools/clang/docs/ClangFormat.html
     linter_repo: https://github.com/llvm/llvm-project
-    linter_rules_url: https://releases.llvm.org/16.0.0/tools/clang/docs/ClangFormat.html
-    linter_rules_inline_disable_url: https://releases.llvm.org/16.0.0/tools/clang/docs/ClangFormatStyleOptions.html#disabling-formatting-on-a-piece-of-code
+    linter_rules_url: https://releases.llvm.org/17.0.1/tools/clang/docs/ClangFormat.html
+    linter_rules_inline_disable_url: https://releases.llvm.org/17.0.1/tools/clang/docs/ClangFormatStyleOptions.html#disabling-formatting-on-a-piece-of-code
     cli_lint_mode: list_of_files
     cli_help_arg_name: "--help"
     cli_lint_extra_args:
@@ -65,7 +66,7 @@ linters:
       - "clang-format --Werror --dry-run myfile.cpp"
     install:
       apk:
-        - clang16-extra-tools
+        - clang17-extra-tools
     supported_platforms:
       platform:
         - linux/amd64
@@ -76,4 +77,4 @@ linters:
           url: https://marketplace.visualstudio.com/items?itemName=xaver.clang-format
       emacs:
         - name: clang-format
-          url: https://releases.llvm.org/16.0.0/tools/clang/docs/ClangFormat.html#emacs-integration
+          url: https://releases.llvm.org/17.0.1/tools/clang/docs/ClangFormat.html#emacs-integration

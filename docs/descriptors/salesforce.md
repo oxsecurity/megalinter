@@ -20,10 +20,12 @@ description: sfdx-scanner-apex, sfdx-scanner-aura, sfdx-scanner-lwc, lightning-f
 
 ## Configuration in MegaLinter
 
-| Variable                        | Description                   | Default value |
-|---------------------------------|-------------------------------|---------------|
-| SALESFORCE_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| SALESFORCE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable                        | Description                                     | Default value |
+|---------------------------------|-------------------------------------------------|---------------|
+| SALESFORCE_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
+| SALESFORCE_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
+| SALESFORCE_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
+| SALESFORCE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 
 
 ## Behind the scenes
@@ -32,16 +34,16 @@ description: sfdx-scanner-apex, sfdx-scanner-aura, sfdx-scanner-lwc, lightning-f
 
 - Dockerfile commands :
 ```dockerfile
-ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 RUN sf plugins install @salesforce/plugin-packaging \
-    && echo y|sfdx plugins:install sfdx-hardis \
+    && echo y|sf plugins install sfdx-hardis \
     && npm cache clean --force || true \
     && rm -rf /root/.npm/_cacache
 
 ```
 
 - APK packages (Linux):
-  - [openjdk17](https://pkgs.alpinelinux.org/packages?branch=edge&name=openjdk17)
+  - [openjdk21](https://pkgs.alpinelinux.org/packages?branch=edge&name=openjdk21)
 - NPM packages (node.js):
   - [@salesforce/cli](https://www.npmjs.com/package/@salesforce/cli)

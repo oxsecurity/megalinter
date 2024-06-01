@@ -53,6 +53,7 @@ class Linter:
         # If you have several linters for the same language,override with a different name.Ex: JAVASCRIPT_ES
         self.name = None
         self.disabled = False
+        self.disabled_reason = None
         self.is_formatter = False
         self.is_sbom = False
         self.linter_name = "Field 'linter_name' must be overridden at custom linter class level"  # Ex: eslint
@@ -186,9 +187,11 @@ class Linter:
             if self.is_formatter is True
             and not config.get(self.request_id, "FORMATTERS_DISABLE_ERRORS", "true")
             == "false"
-            else True
-            if config.get(self.request_id, "DISABLE_ERRORS", "false") == "true"
-            else False
+            else (
+                True
+                if config.get(self.request_id, "DISABLE_ERRORS", "false") == "true"
+                else False
+            )
         )
         # Name
         if self.name is None:
@@ -353,11 +356,18 @@ class Linter:
                         file_to_check, prop = file_to_check.split(":")
                     if os.path.isfile(f"{self.workspace}{os.path.sep}{file_to_check}"):
                         found_file = f"{self.workspace}{os.path.sep}{file_to_check}"
-                    if os.path.isfile(
+                    elif os.path.isfile(
                         f"{self.workspace}{os.path.sep}{self.linter_rules_path}{os.path.sep}{file_to_check}"
                     ):
                         found_file = (
                             f"{self.workspace}{os.path.sep}{self.linter_rules_path}"
+                            + f"{os.path.sep}{file_to_check}"
+                        )
+                    elif os.path.isfile(
+                        f"{self.workspace}{os.path.sep}{self.files_sub_directory}{os.path.sep}{file_to_check}"
+                    ):
+                        found_file = (
+                            f"{self.workspace}{os.path.sep}{self.files_sub_directory}"
                             + f"{os.path.sep}{file_to_check}"
                         )
                     # filename case
@@ -399,44 +409,78 @@ class Linter:
 
     # Enable or disable linter
     def manage_activation(self, params):
+        strategies = {
+            "ENABLE": False,
+            "ENABLE_LINTERS": False,
+            "DISABLE": False,
+            "DISABLE_LINTERS": False,
+            "VALIDATE": False,
+            "VALIDATE_LINTERS": False,
+        }
+
         # Default value is false in case ENABLE variables are used
-        if len(params["enable_descriptors"]) > 0 or len(params["enable_linters"]) > 0:
-            self.is_active = False
+        # See megalinter/MegaLinter.py, manage_default_linter_activation() function
+        # for params["default_linter_activation"]
+        self.is_active = params["default_linter_activation"]
         # Activate or not the linter
         if self.name in params["enable_linters"]:
             self.is_active = True
+            strategies["ENABLE_LINTERS"] = True
         elif self.name in params["disable_linters"]:
             self.is_active = False
-        elif (
-            self.descriptor_id in params["disable_descriptors"]
-            or self.name in params["disable_linters"]
-        ):
+            strategies["DISABLE_LINTERS"] = True
+        elif self.descriptor_id in params["disable_descriptors"]:
             self.is_active = False
+            strategies["DISABLE"] = True
+        elif self.name in params["disable_linters"]:
+            self.is_active = False
+            strategies["DISABLE_LINTERS"] = True
         elif self.descriptor_id in params["enable_descriptors"]:
             self.is_active = True
+            strategies["ENABLE"] = True
         elif (
             config.exists(self.request_id, "VALIDATE_" + self.name)
             and config.get(self.request_id, "VALIDATE_" + self.name) == "false"
         ):
             self.is_active = False
+            strategies["VALIDATE_LINTERS"] = True
         elif (
             config.exists(self.request_id, "VALIDATE_" + self.descriptor_id)
             and config.get(self.request_id, "VALIDATE_" + self.descriptor_id) == "false"
         ):
             self.is_active = False
+            strategies["VALIDATE"] = True
         elif (
             config.exists(self.request_id, "VALIDATE_" + self.name)
             and config.get(self.request_id, "VALIDATE_" + self.name) == "true"
         ):
             self.is_active = True
+            strategies["VALIDATE_LINTERS"] = True
         elif (
             config.exists(self.request_id, "VALIDATE_" + self.descriptor_id)
             and config.get(self.request_id, "VALIDATE_" + self.descriptor_id) == "true"
         ):
             self.is_active = True
+            strategies["VALIDATE"] = True
         # check activation rules
         if self.is_active is True and len(self.activation_rules) > 0:
             self.is_active = utils.check_activation_rules(self.activation_rules, self)
+
+        strategiesUsed = format(
+            ", ".join("{0}".format(k) for k, v in strategies.items() if v)
+        )
+
+        if not strategiesUsed:
+            strategiesUsed = "default"
+
+        if self.is_active:
+            logging.debug(
+                f"[Activation] + {self.name} ({self.descriptor_id}) was activated by {strategiesUsed} strategies"
+            )
+        else:
+            logging.debug(
+                f"[Activation] - {self.name} ({self.descriptor_id}) was not activated by {strategiesUsed} strategies"
+            )
 
     # Manage configuration variables
     def load_config_vars(self, params):
@@ -446,18 +490,22 @@ class Linter:
             self.config_file_name = config.get(
                 self.request_id, self.name + "_CONFIG_FILE"
             )
+            self.update_active_if_file_found()
         elif config.exists(self.request_id, self.descriptor_id + "_CONFIG_FILE"):
             self.config_file_name = config.get(
                 self.request_id, self.descriptor_id + "_CONFIG_FILE"
             )
+            self.update_active_if_file_found()
         elif config.exists(self.request_id, self.name + "_FILE_NAME"):
             self.config_file_name = config.get(
                 self.request_id, self.name + "_FILE_NAME"
             )
+            self.update_active_if_file_found()
         elif config.exists(self.request_id, self.descriptor_id + "_FILE_NAME"):
             self.config_file_name = config.get(
                 self.request_id, self.descriptor_id + "_FILE_NAME"
             )
+            self.update_active_if_file_found()
         # Ignore file name: try first NAME + _FILE_NAME, then LANGUAGE + _FILE_NAME
         if self.cli_lint_ignore_arg_name is not None:
             if config.exists(self.request_id, self.name + "_IGNORE_FILE"):
@@ -732,6 +780,15 @@ class Linter:
                 self.request_id, self.name + "_DOCKER_IMAGE_VERSION"
             )
 
+    # If linter is activated only if some file is found, and config file has been overridden
+    # ->  add it to the files to check
+    def update_active_if_file_found(self):
+        if (
+            len(self.active_only_if_file_found) > 0
+            and self.config_file_name not in self.active_only_if_file_found
+        ):
+            self.active_only_if_file_found.append(self.config_file_name)
+
     # Processes the linter
     def run(self):
         self.start_perf = perf_counter()
@@ -940,9 +997,9 @@ class Linter:
                 shell=True,
                 cwd=cwd,
                 env=subprocess_env,
-                executable=shutil.which("bash")
-                if sys.platform == "win32"
-                else "/bin/bash",
+                executable=(
+                    shutil.which("bash") if sys.platform == "win32" else "/bin/bash"
+                ),
             )
             return_code = process.returncode
             return_stdout = utils.decode_utf8(process.stdout)

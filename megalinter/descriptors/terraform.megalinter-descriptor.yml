@@ -40,7 +40,7 @@ linters:
       - "tflint -c .tflint.hcl"
     install:
       dockerfile:
-        - FROM ghcr.io/terraform-linters/tflint:v0.50.0 as tflint
+        - FROM ghcr.io/terraform-linters/tflint:v0.51.0 as tflint
         - COPY --link --from=tflint /usr/local/bin/tflint /usr/bin/
     supported_platforms:
       platform:
@@ -80,6 +80,8 @@ linters:
     test_folder: terraform_terrascan
     examples:
       - "terrascan scan -i terraform -t all -f myfile.tf"
+    downgraded_version: true
+    downgraded_reason: https://github.com/tenable/terrascan/issues/1674
     install:
       dockerfile:
         - FROM tenable/terrascan:1.18.11 as terrascan

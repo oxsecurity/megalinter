@@ -418,6 +418,17 @@ def build_dockerfile(
     # Add ruby apk packages if gem packages are here
     if len(gem_packages) > 0:
         apk_packages += ["ruby", "ruby-dev", "ruby-bundler", "ruby-rdoc"]
+    # Separate args used in FROM instructions from others
+    all_from_instructions = "\n".join(list(dict.fromkeys(docker_from)))
+    docker_arg_top = []
+    docker_arg_main = []
+    for docker_arg_item in docker_arg:
+        match = re.match(r"ARG\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*=?\s*", docker_arg_item)
+        arg_name = match.group(1)
+        if arg_name in all_from_instructions:
+            docker_arg_top += [docker_arg_item]
+        else:
+            docker_arg_main += [docker_arg_item]
     # Replace between tags in Dockerfile
     # Commands
     replace_in_file(
@@ -428,9 +439,15 @@ def build_dockerfile(
     )
     replace_in_file(
         dockerfile,
+        "#ARGTOP__START",
+        "#ARGTOP__END",
+        "\n".join(list(dict.fromkeys(docker_arg_top))),
+    )
+    replace_in_file(
+        dockerfile,
         "#ARG__START",
         "#ARG__END",
-        "\n".join(list(dict.fromkeys(docker_arg))),
+        "\n".join(list(dict.fromkeys(docker_arg_main))),
     )
     replace_in_file(
         dockerfile,
@@ -505,16 +522,17 @@ def build_dockerfile(
             + '    && echo "Changing owner of node_modules files…" \\\n'
             + '    && chown -R "$(id -u)":"$(id -g)" node_modules # fix for https://github.com/npm/cli/issues/5900 \\\n'
             + '    && echo "Removing extra node_module files…" \\\n'
-            + "    && rm -rf /root/.npm/_cacache \\\n"
-            + '    && find . -name "*.d.ts" -delete \\\n'
-            + '    && find . -name "*.map" -delete \\\n'
-            + '    && find . -name "*.npmignore" -delete \\\n'
-            + '    && find . -name "*.travis.yml" -delete \\\n'
-            + '    && find . -name "CHANGELOG.md" -delete \\\n'
-            + '    && find . -name "README.md" -delete \\\n'
-            + '    && find . -name ".package-lock.json" -delete \\\n'
-            + '    && find . -name "package-lock.json" -delete \\\n'
-            + '    && find . -name "README.md" -delete\n'
+            + '    && find . \\( -not -path "/proc" \\)'
+            + " -and \\( -type f"
+            + ' \\( -iname "*.d.ts"'
+            + ' -o -iname "*.map"'
+            + ' -o -iname "*.npmignore"'
+            + ' -o -iname "*.travis.yml"'
+            + ' -o -iname "CHANGELOG.md"'
+            + ' -o -iname "README.md"'
+            + ' -o -iname ".package-lock.json"'
+            + ' -o -iname "package-lock.json"'
+            + " \\) -o -type d -name /root/.npm/_cacache \\) -delete \n"
             + "WORKDIR /\n"
         )
     replace_in_file(dockerfile, "#NPM__START", "#NPM__END", npm_install_command)
@@ -526,7 +544,8 @@ def build_dockerfile(
             + " PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir --upgrade \\\n          '"
             + "' \\\n          '".join(list(dict.fromkeys(pip_packages)))
             + "' && \\\n"
-            + 'find . | grep -E "(/__pycache__$|\\.pyc$|\\.pyo$)" | xargs rm -rf && \\\n'
+            + r"find . \( -type f \( -iname \*.pyc -o -iname \*.pyo \) -o -type d -iname __pycache__ \) -delete"
+            + " \\\n    && "
             + "rm -rf /root/.cache"
         )
     replace_in_file(dockerfile, "#PIP__START", "#PIP__END", pip_install_command)
@@ -552,8 +571,10 @@ def build_dockerfile(
             env_path_command += f":/venvs/{pip_linter}/bin"
         pipenv_install_command = pipenv_install_command[:-2]  # remove last \
         pipenv_install_command += (
-            ' \\\n    && find . | grep -E "(/__pycache__$|\\.pyc$|\\.pyo$)" | xargs rm -rf '
-            + "&& rm -rf /root/.cache\n"
+            " \\\n    && "
+            + r"find /venvs \( -type f \( -iname \*.pyc -o -iname \*.pyo \) -o -type d -iname __pycache__ \) -delete"
+            + " \\\n    && "
+            + "rm -rf /root/.cache\n"
             + env_path_command
         )
     else:
@@ -954,12 +975,50 @@ def generate_descriptor_documentation(descriptor):
         "| ----------------- | -------------- | -------------- |",
     ]
     descriptor_md += [
+        f"| {descriptor.get('descriptor_id')}_PRE_COMMANDS | List of bash commands to run before the linters | None |",
+        f"| {descriptor.get('descriptor_id')}_POST_COMMANDS | List of bash commands to run after the linters | None |",
         f"| {descriptor.get('descriptor_id')}_FILTER_REGEX_INCLUDE | Custom regex including filter |  |",
         f"| {descriptor.get('descriptor_id')}_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |",
         "",
     ]
     add_in_config_schema_file(
         [
+            [
+                f"{descriptor.get('descriptor_id')}_PRE_COMMANDS",
+                {
+                    "$id": f"#/properties/{descriptor.get('descriptor_id')}_PRE_COMMANDS",
+                    "type": "array",
+                    "title": f"Pre commands for {descriptor.get('descriptor_id')} descriptor",
+                    "examples": [
+                        [
+                            {
+                                "command": "composer install",
+                                "continue_if_failed": False,
+                                "cwd": "workspace",
+                            }
+                        ]
+                    ],
+                    "items": {"$ref": "#/definitions/command_info"},
+                },
+            ],
+            [
+                f"{descriptor.get('descriptor_id')}_POST_COMMANDS",
+                {
+                    "$id": f"#/properties/{descriptor.get('descriptor_id')}_POST_COMMANDS",
+                    "type": "array",
+                    "title": f"Post commands for {descriptor.get('descriptor_id')} descriptor",
+                    "examples": [
+                        [
+                            {
+                                "command": "npm run test",
+                                "continue_if_failed": False,
+                                "cwd": "workspace",
+                            }
+                        ]
+                    ],
+                    "items": {"$ref": "#/definitions/command_info"},
+                },
+            ],
             [
                 f"{descriptor.get('descriptor_id')}_FILTER_REGEX_INCLUDE",
                 {
@@ -1052,7 +1111,7 @@ def generate_flavor_documentation(flavor_id, flavor, linters_tables_md):
 def dump_as_json(value: Any, empty_value: str) -> str:
     if not value:
         return empty_value
-    # Covert any value to string with JSON
+    # Convert any value to string with JSON
     # Don't indent since markdown table supports single line only
     result = json.dumps(value, indent=None, sort_keys=True)
     return f"`{result}`"
@@ -1063,11 +1122,15 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
     col_header = (
         "Language"
         if type1 == "language"
-        else "Format"
-        if type1 == "format"
-        else "Tooling format"
-        if type1 == "tooling_format"
-        else "Code quality checker"
+        else (
+            "Format"
+            if type1 == "format"
+            else (
+                "Tooling format"
+                if type1 == "tooling_format"
+                else "Code quality checker"
+            )
+        )
     )
     linters_tables_md += [
         f"### {type_label}",
@@ -1172,7 +1235,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         else:
             linter_doc_md += [f"# {linter.linter_name}\n{md_individual_extra}"]
 
-        # Indicate that a linter is disabled in this version
+        # Indicate that a linter is deprecated in this version
         title_prefix = ""
         if hasattr(linter, "deprecated") and linter.deprecated is True:
             title_prefix = "(deprecated) "
@@ -1199,9 +1262,10 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         # Indicate that a linter is disabled in this version
         if hasattr(linter, "disabled") and linter.disabled is True:
             linter_doc_md += [""]
-            linter_doc_md += [
-                "_This linter has been temporary disabled in this version_"
-            ]
+            linter_doc_md += ["_This linter has been disabled in this version_"]
+            if hasattr(linter, "disabled_reason") and linter.disabled_reason is True:
+                linter_doc_md += [""]
+                linter_doc_md += [f"_Disabled reason: {linter.disabled_reason}_"]
 
         # Linter text , if defined in YML descriptor
         if hasattr(linter, "linter_text") and linter.linter_text:
@@ -2286,7 +2350,7 @@ def add_in_config_schema_file(variables):
     json_schema["properties"] = json_schema_props
     if updated is True:
         with open(CONFIG_JSON_SCHEMA, "w", encoding="utf-8") as outfile:
-            json.dump(json_schema, outfile, indent=4, sort_keys=True)
+            json.dump(json_schema, outfile, indent=2, sort_keys=True)
             outfile.write("\n")
 
 
@@ -2303,7 +2367,7 @@ def remove_in_config_schema_file(variables):
     json_schema["properties"] = json_schema_props
     if updated is True:
         with open(CONFIG_JSON_SCHEMA, "w", encoding="utf-8") as outfile:
-            json.dump(json_schema, outfile, indent=4, sort_keys=True)
+            json.dump(json_schema, outfile, indent=2, sort_keys=True)
             outfile.write("\n")
 
 
@@ -2643,7 +2707,7 @@ def generate_json_schema_enums():
     with open(DESCRIPTOR_JSON_SCHEMA, "r", encoding="utf-8") as json_file:
         json_schema = json.load(json_file)
     json_schema["definitions"]["enum_flavors"]["enum"] = ["all_flavors"] + list(
-        flavors.keys()
+        sorted(set(list(flavors.keys())))
     )
     with open(DESCRIPTOR_JSON_SCHEMA, "w", encoding="utf-8") as outfile:
         json.dump(json_schema, outfile, indent=2, sort_keys=True)
@@ -2660,6 +2724,14 @@ def generate_json_schema_enums():
     json_schema["definitions"]["enum_linter_keys"]["enum"] = [x.name for x in linters]
     # Deprecated linters
     json_schema["definitions"]["enum_linter_keys"]["enum"] += DEPRECATED_LINTERS
+
+    # Sort:
+    json_schema["definitions"]["enum_descriptor_keys"]["enum"] = sorted(
+        set(json_schema["definitions"]["enum_descriptor_keys"]["enum"])
+    )
+    json_schema["definitions"]["enum_linter_keys"]["enum"] = sorted(
+        set(json_schema["definitions"]["enum_linter_keys"]["enum"])
+    )
     with open(CONFIG_JSON_SCHEMA, "w", encoding="utf-8") as outfile:
         json.dump(json_schema, outfile, indent=2, sort_keys=True)
         outfile.write("\n")
@@ -2835,11 +2907,15 @@ def generate_documentation_all_linters():
                             license = (
                                 resp["license"]["spdx_id"]
                                 if resp["license"]["spdx_id"] != "NOASSERTION"
-                                else resp["license"]["name"]
-                                if "name" in resp["license"]
-                                else resp["license"]["key"]
-                                if "key" in resp["license"]
-                                else ""
+                                else (
+                                    resp["license"]["name"]
+                                    if "name" in resp["license"]
+                                    else (
+                                        resp["license"]["key"]
+                                        if "key" in resp["license"]
+                                        else ""
+                                    )
+                                )
                             )
                             if license != "":
                                 linter_licenses[linter.linter_name] = license
@@ -3264,6 +3340,8 @@ def update_workflows_linters():
 
     for descriptor in descriptors:
         for linter in descriptor["linters"]:
+            if "disabled" in linter and linter["disabled"] is True:
+                continue
             if "name" in linter:
                 name = linter["name"].lower()
             else:
@@ -3292,17 +3370,22 @@ def update_workflow_linters(file_path, linters):
 
 
 if __name__ == "__main__":
+    logging_format = (
+        "[%(levelname)s] %(message)s"
+        if "CI" in os.environ
+        else "%(asctime)s [%(levelname)s] %(message)s"
+    )
     try:
         logging.basicConfig(
             force=True,
             level=logging.INFO,
-            format="%(asctime)s [%(levelname)s] %(message)s",
+            format=logging_format,
             handlers=[logging.StreamHandler(sys.stdout)],
         )
     except ValueError:
         logging.basicConfig(
             level=logging.INFO,
-            format="%(asctime)s [%(levelname)s] %(message)s",
+            format=logging_format,
             handlers=[logging.StreamHandler(sys.stdout)],
         )
     config.init_config("build")

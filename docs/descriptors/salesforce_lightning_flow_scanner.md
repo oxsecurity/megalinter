@@ -19,9 +19,10 @@ If your root folder is not **force-app**, please set variable SALESFORCE_LIGHTNI
 
 ## lightning-flow-scanner documentation
 
-- Version in MegaLinter: **2.16.0**
+- Version in MegaLinter: **2.26.0**
 - Visit [Official Web Site](https://github.com/Lightning-Flow-Scanner#readme){target=_blank}
 - See [How to configure lightning-flow-scanner rules](https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx#configuration){target=_blank}
+  - If custom `.flow-scanner.json` config file isn't found, [.flow-scanner.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.flow-scanner.json){target=_blank} will be used
 - See [Index of problems detected by lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-core#rules){target=_blank}
 
 [![lightning-flow-scanner-sfdx - GitHub](https://gh-card.dev/repos/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx.svg?fullname=)](https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx){target=_blank}
@@ -42,7 +43,7 @@ If your root folder is not **force-app**, please set variable SALESFORCE_LIGHTNI
 | SALESFORCE_LIGHTNING_FLOW_SCANNER_RULES_PATH                  | Path where to find linter configuration file                                                                             | Workspace folder, then MegaLinter default rules |
 | SALESFORCE_LIGHTNING_FLOW_SCANNER_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                               | `false`                                         |
 | SALESFORCE_LIGHTNING_FLOW_SCANNER_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                         | `0`                                             |
-| SALESFORCE_LIGHTNING_FLOW_SCANNER_CLI_EXECUTABLE              | Override CLI executable                                                                                                  | `['sfdx']`                                      |
+| SALESFORCE_LIGHTNING_FLOW_SCANNER_CLI_EXECUTABLE              | Override CLI executable                                                                                                  | `['sf']`                                        |
 | SALESFORCE_DIRECTORY                                          | Directory containing SALESFORCE files (use `any` to always activate the linter)                                          | `force-app`                                     |
 
 ## IDE Integration
@@ -59,7 +60,7 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                       | Description                             | Embedded linters |                                                                                                                                                                                             Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------|:----------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor               |       121        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor               |       123        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 |     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://megalinter.io/beta/flavors/salesforce/) | Optimized for Salesforce based projects |        55        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce) |
 
 ## Behind the scenes
@@ -81,13 +82,15 @@ lightning-flow-scanner is called once on the whole project directory (`project` 
 ### Example calls
 
 ```shell
-sfdx flow:scan
+sf flow:scan
 ```
 
 
 ### Help content
 
 ```shell
+(node:2004) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
 Try to resolve the errors in the following flows:
 
 USAGE
@@ -133,15 +136,15 @@ FLAGS
 - Dockerfile commands :
 ```dockerfile
 # Parent descriptor install
-ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 RUN sf plugins install @salesforce/plugin-packaging \
-    && echo y|sfdx plugins:install sfdx-hardis \
+    && echo y|sf plugins install sfdx-hardis \
     && npm cache clean --force || true \
     && rm -rf /root/.npm/_cacache
 
 # Linter install
-RUN echo y|sfdx plugins:install lightning-flow-scanner \
+RUN echo y|sf plugins install lightning-flow-scanner \
     && npm cache clean --force || true \
     && rm -rf /root/.npm/_cacache
 

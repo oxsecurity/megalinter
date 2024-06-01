@@ -41,9 +41,9 @@
       "enum": [
         "all_flavors",
         "all",
+        "c_cpp",
         "ci_light",
         "cupcake",
-        "c_cpp",
         "documentation",
         "dotnet",
         "dotnetweb",
@@ -67,7 +67,7 @@
   "properties": {
     "active_only_if_file_found": {
       "$id": "#/properties/active_only_if_file_found",
-      "description": "Names of the config files to be found (at least one), else descriptor will be deactivated",
+      "description": "Names of the config files to be found (at least one), else descriptor will be deactivated. Search in workspace, linter rules path, and files_sub_directory",
       "examples": [
         [
           ".editorconfig",
@@ -790,6 +790,13 @@
             "description": "Disable linter in MegaLinter next builds",
             "title": "Disabled",
             "type": "boolean"
+          },
+          "disabled_reason": {
+            "$id": "#/properties/linters/items/properties/disabled_reason",
+            "default": false,
+            "description": "Explanation about why the linter is disabled",
+            "title": "Disabled reason",
+            "type": "string"
           },
           "downgraded_reason": {
             "$id": "#/properties/linters/items/properties/downgraded_reason",

@@ -20,8 +20,10 @@ description: dotenv-linter is available to analyze ENV files in MegaLinter
 
 ## Configuration in MegaLinter
 
-| Variable                 | Description                   | Default value |
-|--------------------------|-------------------------------|---------------|
-| ENV_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| ENV_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable                 | Description                                     | Default value |
+|--------------------------|-------------------------------------------------|---------------|
+| ENV_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
+| ENV_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
+| ENV_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
+| ENV_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 

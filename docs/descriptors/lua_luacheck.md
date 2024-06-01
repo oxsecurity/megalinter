@@ -9,7 +9,7 @@ description: How to use luacheck (configure, ignore files, ignore errors, help &
 
 ## luacheck documentation
 
-- Version in MegaLinter: **1.1.2**
+- Version in MegaLinter: **1.2.0**
 - Visit [Official Web Site](https://luacheck.readthedocs.io){target=_blank}
 - See [How to configure luacheck rules](https://luacheck.readthedocs.io/en/stable/config.html){target=_blank}
   - If custom `.luacheckrc` config file isn't found, [.luacheckrc](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.luacheckrc){target=_blank} will be used
@@ -60,7 +60,7 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                               | Description               | Embedded linters |                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       121        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       123        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 
 ## Behind the scenes
 
@@ -110,7 +110,7 @@ Usage: luacheck ([--config <config>] | [--no-config])
        [--exclude-files <glob> [<glob>] ...]
        [--include-files <glob> [<glob>] ...]
 
-luacheck 1.1.2, a linter and a static analyzer for Lua.
+luacheck 1.2.0, a linter and a static analyzer for Lua.
 
 Arguments:
    files                 List of files, directories and rockspecs to check. Pass
@@ -165,6 +165,7 @@ Options for configuring allowed globals:
                             ngx_lua - globals of Openresty lua-nginx-module
                             0.10.10, including standard LuaJIT 2.x globals;
                             love - globals added by LÖVE;
+                            minetest - globals added by minetest;
                             playdate - globals added by the Playdate SDK;
                             busted - globals added by Busted 2.0, by default
                             added for files ending with _spec.lua within spec,

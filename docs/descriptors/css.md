@@ -23,8 +23,10 @@ description: stylelint, scss-lint are available to analyze CSS files in MegaLint
 
 ## Configuration in MegaLinter
 
-| Variable                 | Description                   | Default value |
-|--------------------------|-------------------------------|---------------|
-| CSS_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| CSS_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable                 | Description                                     | Default value |
+|--------------------------|-------------------------------------------------|---------------|
+| CSS_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
+| CSS_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
+| CSS_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
+| CSS_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 

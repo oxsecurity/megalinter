@@ -109,6 +109,11 @@
     "image": "https://repository-images.githubusercontent.com/35726310/78196080-8aee-11ea-8736-5d358571e7db",
     "title": "dart-lang/sdk"
   },
+  "detekt": {
+    "description": "The official website of detekt - A static analyzer for Kotlin",
+    "image": null,
+    "title": "Hello from detekt | detekt"
+  },
   "devskim": {
     "description": "DevSkim is a set of IDE plugins and rules that provide security &quot;linting&quot; capabilities. - GitHub - microsoft/DevSkim: DevSkim is a set of IDE plugins and rules that provide security &quot...",
     "image": "https://opengraph.githubassets.com/e833e13fb1284378f44a593a44685cf5c8f5eba2eb392202a3cced2c4e044fea/microsoft/DevSkim",

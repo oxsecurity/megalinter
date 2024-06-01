@@ -1,0 +1,41 @@
+{
+    "rules": {
+        "APIVersion": {
+            "severity": "warning"
+        },
+        "CopyAPIName": {
+            "severity": "warning"
+        },
+        "DMLStatementInLoop": {
+            "severity": "error"
+        },
+        "DuplicateDMLOperation": {
+            "severity": "error"
+        },
+        "FlowDescription": {
+            "severity": "note"
+        },
+        "FlowName": {
+            "severity": "warning",
+            "expression": "[A-Za-z0-9]+_(SCR|SFL|SCH|EVT|EML|BeforeCreate|BeforeUpdate|BeforeDelete|BeforeCreateBeforeUpdate|AfterCreate|AfterUpdate|AfterDelete|AfterCreateAfterUpdate)_[A-Za-z0-9]+"
+        },
+        "HardcodedId": {
+            "severity": "error"
+        },
+        "MissingFaultPath": {
+            "severity": "note"
+        },
+        "MissingNullHandler": {
+            "severity": "note"
+        },
+        "SOQLQueryInLoop": {
+            "severity": "error"
+        },
+        "UnconnectedElement": {
+            "severity": "error"
+        },
+        "UnusedVariable": {
+            "severity": "error"
+        }
+    }
+}

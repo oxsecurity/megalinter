@@ -15,7 +15,7 @@ description: How to use snakemake (configure, ignore files, ignore errors, help 
 
 ## snakemake documentation
 
-- Version in MegaLinter: **3.12**
+- Version in MegaLinter: **8.12.0**
 - Visit [Official Web Site](https://snakemake.readthedocs.io/en/stable/){target=_blank}
 
 [![snakemake - GitHub](https://gh-card.dev/repos/snakemake/snakemake.svg?fullname=)](https://github.com/snakemake/snakemake){target=_blank}
@@ -56,16 +56,16 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                             | Description                                              | Embedded linters |                                                                                                                                                                                                   Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------|:---------------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)               | Default MegaLinter Flavor                                |       121        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/c_cpp.ico" alt="" height="32px" class="megalinter-icon"></a>        | [c_cpp](https://megalinter.io/beta/flavors/c_cpp/)                 | Optimized for pure C/C++ projects                        |        55        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-c_cpp/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-c_cpp) |
-|    <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/documentation.ico" alt="" height="32px" class="megalinter-icon"></a>    | [documentation](https://megalinter.io/beta/flavors/documentation/) | MegaLinter for documentation projects                    |        51        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-documentation/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-documentation) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/)               | Optimized for C, C++, C# or VB based projects            |        64        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
-|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/)         | Optimized for C, C++, C# or VB based projects with JS/TS |        73        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
-|         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a>          | [go](https://megalinter.io/beta/flavors/go/)                       | Optimized for GO based projects                          |        53        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-go/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-go) |
-|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.io/beta/flavors/java/)                   | Optimized for JAVA based projects                        |        55        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)               | Default MegaLinter Flavor                                |       123        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/c_cpp.ico" alt="" height="32px" class="megalinter-icon"></a>        | [c_cpp](https://megalinter.io/beta/flavors/c_cpp/)                 | Optimized for pure C/C++ projects                        |        54        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-c_cpp/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-c_cpp) |
+|    <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/documentation.ico" alt="" height="32px" class="megalinter-icon"></a>    | [documentation](https://megalinter.io/beta/flavors/documentation/) | MegaLinter for documentation projects                    |        50        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-documentation/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-documentation) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/)               | Optimized for C, C++, C# or VB based projects            |        62        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/)         | Optimized for C, C++, C# or VB based projects with JS/TS |        71        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
+|         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a>          | [go](https://megalinter.io/beta/flavors/go/)                       | Optimized for GO based projects                          |        52        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-go/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-go) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.io/beta/flavors/java/)                   | Optimized for JAVA based projects                        |        53        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
 |     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.io/beta/flavors/javascript/)       | Optimized for JAVASCRIPT or TYPESCRIPT based projects    |        60        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript) |
 |         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://megalinter.io/beta/flavors/php/)                     | Optimized for PHP based projects                         |        54        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-php) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)               | Optimized for PYTHON based projects                      |        62        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)               | Optimized for PYTHON based projects                      |        63        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
 |        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/ruby.ico" alt="" height="32px" class="megalinter-icon"></a>         | [ruby](https://megalinter.io/beta/flavors/ruby/)                   | Optimized for RUBY based projects                        |        51        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-ruby/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-ruby) |
 |        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/rust.ico" alt="" height="32px" class="megalinter-icon"></a>         | [rust](https://megalinter.io/beta/flavors/rust/)                   | Optimized for RUST based projects                        |        51        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-rust/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-rust) |
 |     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://megalinter.io/beta/flavors/salesforce/)       | Optimized for Salesforce based projects                  |        55        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce) |
@@ -108,7 +108,7 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--default-resources [NAME=INT ...]]
                  [--preemptible-rules [PREEMPTIBLE_RULES ...]]
                  [--preemptible-retries PREEMPTIBLE_RETRIES]
-                 [--config [KEY=VALUE ...]] [--configfile FILE [FILE ...]]
+                 [--configfile FILE [FILE ...]] [--config [KEY=VALUE ...]]
                  [--envvars VARNAME [VARNAME ...]] [--directory DIR] [--touch]
                  [--keep-going]
                  [--rerun-triggers {code,input,mtime,params,software-env} [{code,input,mtime,params,software-env} ...]]
@@ -125,15 +125,15 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--precommand PRECOMMAND] [--groups GROUPS [GROUPS ...]]
                  [--group-components GROUP_COMPONENTS [GROUP_COMPONENTS ...]]
                  [--report [FILE]] [--report-stylesheet CSSFILE]
-                 [--draft-notebook TARGET] [--edit-notebook TARGET]
-                 [--notebook-listen IP:PORT] [--lint [{text,json}]]
-                 [--generate-unit-tests [TESTPATH]] [--containerize]
-                 [--export-cwl FILE] [--list-rules] [--list-target-rules]
-                 [--dag] [--rulegraph] [--filegraph] [--d3dag] [--summary]
-                 [--detailed-summary] [--archive FILE]
+                 [--reporter PLUGIN] [--draft-notebook TARGET]
+                 [--edit-notebook TARGET] [--notebook-listen IP:PORT]
+                 [--lint [{text,json}]] [--generate-unit-tests [TESTPATH]]
+                 [--containerize] [--export-cwl FILE] [--list-rules]
+                 [--list-target-rules] [--dag] [--rulegraph] [--filegraph]
+                 [--d3dag] [--summary] [--detailed-summary] [--archive FILE]
                  [--cleanup-metadata FILE [FILE ...]] [--cleanup-shadow]
                  [--skip-script-cleanup] [--unlock]
-                 [--list-changes {input,params,code}] [--list-input-changes]
+                 [--list-changes {input,code,params}] [--list-input-changes]
                  [--list-params-changes] [--list-untracked]
                  [--delete-all-output | --delete-temp-output]
                  [--keep-incomplete] [--drop-metadata]
@@ -144,7 +144,7 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--nolock] [--ignore-incomplete]
                  [--max-inventory-time SECONDS] [--latency-wait SECONDS]
                  [--wait-for-files [FILE ...]] [--wait-for-files-file FILE]
-                 [--notemp] [--all-temp]
+                 [--queue-input-wait-time SECONDS] [--notemp] [--all-temp]
                  [--unneeded-temp-files FILE [FILE ...]]
                  [--keep-storage-local-copies]
                  [--target-files-omit-workdir-adjustment]
@@ -159,14 +159,15 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--default-storage-provider DEFAULT_STORAGE_PROVIDER]
                  [--default-storage-prefix DEFAULT_STORAGE_PREFIX]
                  [--local-storage-prefix LOCAL_STORAGE_PREFIX]
+                 [--remote-job-local-storage-prefix REMOTE_JOB_LOCAL_STORAGE_PREFIX]
                  [--shared-fs-usage {input-output,persistence,software-deployment,source-cache,sources,storage-local-copies,none} [{input-output,persistence,software-deployment,source-cache,sources,storage-local-copies,none} ...]]
                  [--scheduler-greediness SCHEDULER_GREEDINESS] [--no-hooks]
                  [--debug] [--runtime-profile FILE]
                  [--mode {remote,subprocess,default}] [--show-failed-logs]
                  [--log-handler-script FILE] [--log-service {none,slack,wms}]
-                 [--job-deploy-sources] [--container-image IMAGE]
-                 [--immediate-submit] [--jobscript SCRIPT] [--jobname NAME]
-                 [--flux]
+                 [--job-deploy-sources] [--benchmark-extended]
+                 [--container-image IMAGE] [--immediate-submit]
+                 [--jobscript SCRIPT] [--jobname NAME] [--flux]
                  [--software-deployment-method {apptainer,conda,env-modules} [{apptainer,conda,env-modules} ...]]
                  [--container-cleanup-images] [--use-conda]
                  [--conda-not-block-search-path-envvars] [--list-conda-envs]
@@ -175,6 +176,8 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--conda-create-envs-only] [--conda-frontend {conda,mamba}]
                  [--use-apptainer] [--apptainer-prefix DIR]
                  [--apptainer-args ARGS] [--use-envmodules]
+                 [--report-html-path VALUE]
+                 [--report-html-stylesheet-path VALUE]
                  [targets ...]
 
 Snakemake is a Python based language and execution environment for GNU Make-
@@ -353,18 +356,12 @@ EXECUTION:
                         currently only supported by the Google Life Sciences
                         executor and ignored by all other executors. If no
                         rule names are provided, all rules are considered to
-                        be preemptible. The (default: None)
+                        be preemptible. (default: None)
   --preemptible-retries PREEMPTIBLE_RETRIES
                         Number of retries that shall be made in order to
                         finish a job from of rule that has been marked as
                         preemptible via the --preemptible-rules setting.
                         (default: None)
-  --config [KEY=VALUE ...], -C [KEY=VALUE ...]
-                        Set or overwrite values in the workflow config object.
-                        The workflow config object is accessible as variable
-                        config inside the workflow. Default values can be set
-                        by providing a JSON file (see Documentation).
-                        (default: {})
   --configfile FILE [FILE ...], --configfiles FILE [FILE ...]
                         Specify or overwrite the config file of the workflow
                         (see the docs). Values specified in JSON or YAML
@@ -375,6 +372,12 @@ EXECUTION:
                         configfiles. Note that this order also includes a
                         config file defined in the workflow definition itself
                         (which will come first). (default: [])
+  --config [KEY=VALUE ...], -C [KEY=VALUE ...]
+                        Set or overwrite values in the workflow config object.
+                        The workflow config object is accessible as variable
+                        config inside the workflow. Default values can be set
+                        by providing a YAML JSON file (see --configfile and
+                        Documentation). (default: None)
   --envvars VARNAME [VARNAME ...]
                         Environment variables to pass to cloud jobs. (default:
                         set())
@@ -403,10 +406,10 @@ EXECUTION:
                         configuration. If you rather prefer the traditional
                         way of just considering file modification dates, use '
                         --rerun-trigger mtime'. (default:
-                        frozenset({<RerunTrigger.PARAMS: 1>,
-                        <RerunTrigger.INPUT: 2>, <RerunTrigger.MTIME: 0>,
-                        <RerunTrigger.CODE: 4>, <RerunTrigger.SOFTWARE_ENV:
-                        3>}))
+                        frozenset({<RerunTrigger.MTIME: 0>,
+                        <RerunTrigger.INPUT: 2>, <RerunTrigger.CODE: 4>,
+                        <RerunTrigger.SOFTWARE_ENV: 3>, <RerunTrigger.PARAMS:
+                        1>}))
   --force, -f           Force the execution of the selected target or the
                         first rule regardless of already created output.
                         (default: False)
@@ -516,6 +519,10 @@ REPORTS:
                         Custom stylesheet to use for report. In particular,
                         this can be used for branding the report with e.g. a
                         custom logo, see docs. (default: None)
+  --reporter PLUGIN     Specify a custom report plugin. By default,
+                        Snakemake's builtin html reporter will be used. For
+                        custom reporters, check out their command line options
+                        starting with --report-. (default: None)
 
 NOTEBOOKS:
   --draft-notebook TARGET
@@ -643,9 +650,10 @@ UTILITIES:
                         (default: False)
   --unlock              Remove a lock on the working directory. (default:
                         False)
-  --list-changes {input,params,code}, --lc {input,params,code}
-                        List all output files for which the rule body (run or
-                        shell) have changed in the Snakefile. (default: None)
+  --list-changes {input,code,params}, --lc {input,code,params}
+                        List all output files for which the given items (code,
+                        input, params) have changed since creation. (default:
+                        None)
   --list-input-changes, --li
                         List all output files for which the defined input
                         files have changed in the Snakefile (e.g. new input
@@ -736,6 +744,10 @@ BEHAVIOR:
                         commandline. This is useful when the list of files is
                         too long to be passed on the commandline. (default:
                         None)
+  --queue-input-wait-time SECONDS
+                        Set the interval in seconds to check for new input in
+                        rules that use from_queue to obtain input files.
+                        (default: 10)
   --notemp, --nt        Ignore temp() declarations. This is useful when
                         running only a part of the workflow, since temp()
                         would lead to deletion of probably needed files by
@@ -793,8 +805,9 @@ BEHAVIOR:
                         input and output files that don't yet specify one
                         (e.g. 's3'). See
                         https://snakemake.github.io/snakemake-plugin-catalog
-                        for available storage provider plugins. (default:
-                        None)
+                        for available storage provider plugins. If not set or
+                        explicitly 'none', no default storage provider will be
+                        used. (default: None)
   --default-storage-prefix DEFAULT_STORAGE_PREFIX
                         Specify prefix for default storage provider. E.g. a
                         bucket name. (default: )
@@ -803,7 +816,20 @@ BEHAVIOR:
                         files and folders. By default, this is a hidden
                         subfolder in the workdir. It can however be freely
                         chosen, e.g. in order to store those files on a local
-                        scratch disk. (default: .snakemake/storage)
+                        scratch disk. Environment variables will be expanded.
+                        (default: .snakemake/storage)
+  --remote-job-local-storage-prefix REMOTE_JOB_LOCAL_STORAGE_PREFIX
+                        Specify prefix for storing local copies of storage
+                        files and folders in case of remote jobs (e.g. cluster
+                        or cloud jobs). This may differ from --local-storage-
+                        prefix. If not set, uses value of --local-storage-
+                        prefix. By default, this is a hidden subfolder in the
+                        workdir. It can however be freely chosen, e.g. in
+                        order to store those files on a local scratch disk.
+                        Environment variables will be expanded. In case they
+                        shall be expanded only within the remote job, mask
+                        them with a leading backslash, i.e. \$SLURM_JOB_ID.
+                        (default: None)
   --shared-fs-usage {input-output,persistence,software-deployment,source-cache,sources,storage-local-copies,none} [{input-output,persistence,software-deployment,source-cache,sources,storage-local-copies,none} ...]
                         Set assumptions on shared filesystem for non-local
                         workflow execution. To disable any sharing via the
@@ -818,12 +844,12 @@ BEHAVIOR:
                         and data provenance will be handled by NFS but input
                         and output files will be handled exclusively by the
                         storage provider. (default:
-                        frozenset({<SharedFSUsage.SOURCES: 3>,
+                        frozenset({<SharedFSUsage.PERSISTENCE: 0>,
                         <SharedFSUsage.INPUT_OUTPUT: 1>,
+                        <SharedFSUsage.SOURCE_CACHE: 5>,
                         <SharedFSUsage.SOFTWARE_DEPLOYMENT: 2>,
-                        <SharedFSUsage.STORAGE_LOCAL_COPIES: 4>,
-                        <SharedFSUsage.PERSISTENCE: 0>,
-                        <SharedFSUsage.SOURCE_CACHE: 5>}))
+                        <SharedFSUsage.SOURCES: 3>,
+                        <SharedFSUsage.STORAGE_LOCAL_COPIES: 4>}))
   --scheduler-greediness SCHEDULER_GREEDINESS, --greediness SCHEDULER_GREEDINESS
                         Set the greediness of scheduling. This value between 0
                         and 1 determines how careful jobs are selected for
@@ -857,6 +883,7 @@ BEHAVIOR:
                         a remote job is started. Only applies if --no-shared-
                         fs is set or executors are used that imply no shared
                         FS (e.g. the kubernetes executor). (default: False)
+  --benchmark-extended  Write extended benchmarking metrics. (default: False)
 
 REMOTE EXECUTION:
   --container-image IMAGE
@@ -868,7 +895,8 @@ REMOTE EXECUTION:
                         is up to your responsibility. Any used image has to
                         contain a working snakemake installation that is
                         compatible with (or ideally the same as) the currently
-                        running version. (default: None)
+                        running version. (default:
+                        snakemake/snakemake:v8.12.0)
   --immediate-submit, --is
                         Immediately submit all jobs to the cluster instead of
                         waiting for present input files. This will fail,
@@ -898,7 +926,7 @@ FLUX:
                         additionally specify --no-shared-fs. (default: False)
 
 SOFTWARE DEPLOYMENT:
-  --software-deployment-method {apptainer,conda,env-modules} [{apptainer,conda,env-modules} ...], --deployment-method {apptainer,conda,env-modules} [{apptainer,conda,env-modules} ...], --deployment {apptainer,conda,env-modules} [{apptainer,conda,env-modules} ...]
+  --software-deployment-method {apptainer,conda,env-modules} [{apptainer,conda,env-modules} ...], --deployment-method {apptainer,conda,env-modules} [{apptainer,conda,env-modules} ...], --deployment {apptainer,conda,env-modules} [{apptainer,conda,env-modules} ...], --sdm {apptainer,conda,env-modules} [{apptainer,conda,env-modules} ...]
                         Specify software environment deployment method.
                         (default: set())
   --container-cleanup-images
@@ -924,7 +952,13 @@ CONDA:
                         path, which will be extrapolated to the invocation
                         directory, or as an absolute path. The value can also
                         be provided via the environment variable
-                        $SNAKEMAKE_CONDA_PREFIX. (default: None)
+                        $SNAKEMAKE_CONDA_PREFIX. In any case, the prefix may
+                        contain environment variables which will be properly
+                        expanded. Note that if you use remote execution e.g.
+                        on a cluster and you have node specific values for
+                        this, you should disable assuming shared fs for
+                        software-deployment (see --shared-fs-usage). (default:
+                        None)
   --conda-cleanup-envs  Cleanup unused conda environments. (default: False)
   --conda-cleanup-pkgs [{tarballs,cache}]
                         Cleanup conda packages after creating environments. In
@@ -956,7 +990,13 @@ APPTAINER/SINGULARITY:
                         apptainer` flag must also be set. The value may be
                         given as a relative path, which will be extrapolated
                         to the invocation directory, or as an absolute path.
-                        (default: None)
+                        If not supplied, APPTAINER_CACHEDIR is used. In any
+                        case, the prefix may contain environment variables
+                        which will be properly expanded. Note that if you use
+                        remote execution e.g. on a cluster and you have node
+                        specific values for this, you should disable assuming
+                        shared fs for software-deployment (see --shared-fs-
+                        usage). (default: None)
   --apptainer-args ARGS, --singularity-args ARGS
                         Pass additional args to apptainer/singularity.
                         (default: )
@@ -968,6 +1008,16 @@ ENVIRONMENT MODULES:
                         singularity, which will then be only used as a
                         fallback for rules which don't define environment
                         modules. (default: False)
+
+html executor settings:
+  --report-html-path VALUE
+                        Path to the report file (either .html or .zip). Use
+                        zip if your report contains large results or
+                        directories with htmlindex as results. (default:
+                        <dataclasses._MISSING_TYPE object at 0x7f6bab225ca0>)
+  --report-html-stylesheet-path VALUE
+                        Path to a custom stylesheet for the report. (default:
+                        <dataclasses._MISSING_TYPE object at 0x7f6bab225ca0>)
 
  In general, command-line values override environment variables which override
 defaults.
