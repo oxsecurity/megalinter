@@ -51,7 +51,7 @@ def get_root_dir():
 def linter_test_setup(params=None):
     config.delete()
     # Workarounds to avoid wrong test classes to be called
-    test_name = utils.get_current_test_name()
+    test_name = os.environ.get("PYTEST_CURRENT_TEST", "")
     test_keywords = os.environ.get("TEST_KEYWORDS", "")
     if (test_keywords == "api_spectral" and "openapi_spectral" in test_name) or (
         test_keywords == "php_phpcs" and "php_phpcsfixer" in test_name
