@@ -36,28 +36,28 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Upgrade to Java 21 except for npm-groovy-lint that requires Java 17
 
 - Media
-  - Add blog post [5 ways MegaLinter upped our DevSecOps game](https://flexion.us/blog/5-ways-megalinter-upped-our-devsecops-game/) to the list of English articles by @wesley-dean-flexion in https://github.com/oxsecurity/megalinter/pull/3596
+  - Add blog post [5 ways MegaLinter upped our DevSecOps game](https://flexion.us/blog/5-ways-megalinter-upped-our-devsecops-game/) to the list of English articles by @wesley-dean-flexion in <https://github.com/oxsecurity/megalinter/pull/3596>
 
 - Linters
-  - Add PHP fixer by @llaville in https://github.com/oxsecurity/megalinter/pull/3598
+  - Add PHP fixer by @llaville in <https://github.com/oxsecurity/megalinter/pull/3598>
   - `API_SPECTRAL` was added as replacement for `OPENAPI_SPECTRAL` (deprecated), supporting AsyncAPI and OpenAPI by default. Uses Spectral's standard config file name `.spectral.yaml` instead of `.openapirc.yml` with a default config with rulesets for AsyncAPI and OpenAPI enabled. Fixes [#3387](https://github.com/oxsecurity/megalinter/issues/3387)
   - Disable SQL_TSQLLINT until security issues are solved. Related to <https://github.com/tsqllint/tsqllint/issues/333>
   - PHP linters (PHP_PHPCS, PHP_PHPLINT, PHP_PHPSTAN) add support to SARIF report output format with help of <https://github.com/llaville/sarif-php-sdk>
-  - Php psalm improvement by @llaville in https://github.com/oxsecurity/megalinter/pull/3541
+  - Php psalm improvement by @llaville in <https://github.com/oxsecurity/megalinter/pull/3541>
   - `KOTLIN_KTLINT` now supports `list_of_files` mode, and has better error counting
   - Upgrade `KOTLIN_DETEKT` and make it work with cli_lint_mode = project
 
 - Reporters
 
 - Fixes
-  - Change `golangci-lint` lint mode to `project`, by @wandering-tales in https://github.com/oxsecurity/megalinter/pull/3509
+  - Change `golangci-lint` lint mode to `project`, by @wandering-tales in <https://github.com/oxsecurity/megalinter/pull/3509>
   - Disable sql-lint as it is no longer maintained
   - Add new entries `findUnusedCode` and `findUnusedBaselineEntry` in default `psalm.xml` configuration file for PHP_PSALM linter. Related to <https://github.com/oxsecurity/megalinter/issues/3538>
-  - fix(pylint): overgeneral-exceptions fully qualified name by @gardar in https://github.com/oxsecurity/megalinter/pull/3576
-  -  Update `ktlint` descriptor to support `list_of_files` and better error counting by @Yann-J in https://github.com/oxsecurity/megalinter/pull/3575
-  - Sync PowerShell version in arm.megalinter-descriptor.yml by @echoix in https://github.com/oxsecurity/megalinter/pull/3586
-  - Adjust find commands to clean up files in same step by @echoix in https://github.com/oxsecurity/megalinter/pull/3588
-  - Upgrade KOTLIN_DETEKT and make it work with cli_lint_mode = project by @nvuillam in https://github.com/oxsecurity/megalinter/pull/3590 
+  - fix(pylint): overgeneral-exceptions fully qualified name by @gardar in <https://github.com/oxsecurity/megalinter/pull/3576>
+  - Update `ktlint` descriptor to support `list_of_files` and better error counting by @Yann-J in <https://github.com/oxsecurity/megalinter/pull/3575>
+  - Sync PowerShell version in arm.megalinter-descriptor.yml by @echoix in <https://github.com/oxsecurity/megalinter/pull/3586>
+  - Adjust find commands to clean up files in same step by @echoix in <https://github.com/oxsecurity/megalinter/pull/3588>
+  - Upgrade KOTLIN_DETEKT and make it work with cli_lint_mode = project by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/3590>
 
 - Doc
   - Handle disabled_reason property in descriptors
@@ -73,9 +73,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Remove Github Actions Workflow telemetry to improve performances
   - Update Docker image for Gitpod to run on Ubuntu Noble, by @echoix
   - Update makefile bootstrap config (gitpod or local) to use uv for package installation, by @echoix
-  - Use uv to install Python deps for CI by @echoix in https://github.com/oxsecurity/megalinter/pull/3561
-  - Use a single find command to delete pycache files by @echoix in https://github.com/oxsecurity/megalinter/pull/3562
-  - Sort schema enums by @echoix in https://github.com/oxsecurity/megalinter/pull/3595
+  - Use uv to install Python deps for CI by @echoix in <https://github.com/oxsecurity/megalinter/pull/3561>
+  - Use a single find command to delete pycache files by @echoix in <https://github.com/oxsecurity/megalinter/pull/3562>
+  - Sort schema enums by @echoix in <https://github.com/oxsecurity/megalinter/pull/3595>
 
 - Linter versions upgrades
   - [actionlint](https://rhysd.github.io/actionlint/) from 1.6.27 to **1.7.1** on 2024-05-28
