@@ -31,6 +31,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Doc
   - Handle disabled_reason property in descriptors
+  - Sort enums in json schema, by @echoix in <https://github.com/oxsecurity/megalinter/pull/3595>
 
 - Flavors
 
@@ -193,6 +194,16 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 3.24.0 to **3.25.0** on 2024-05-28
   - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 3.24.0 to **3.25.0** on 2024-05-28
   - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 3.24.0 to **3.25.0** on 2024-05-28
+  - [phpstan](https://phpstan.org/) from 1.11.2 to **1.11.3** on 2024-05-31
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.364 to **1.1.365** on 2024-05-31
+  - [ruff](https://github.com/astral-sh/ruff) from 0.4.6 to **0.4.7** on 2024-05-31
+  - [checkov](https://www.checkov.io/) from 3.2.109 to **3.2.120** on 2024-05-31
+  - [rubocop](https://rubocop.org/) from 1.64.0 to **1.64.1** on 2024-05-31
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.58.10 to **0.58.12** on 2024-05-31
+  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 8.0.105 to **8.0.106** on 2024-06-01
+  - [roslynator](https://github.com/dotnet/Roslynator) from 0.8.8.0 to **0.8.9.0** on 2024-06-01
+  - [prettier](https://prettier.io/) from 3.2.5 to **3.3.0** on 2024-06-01
+  - [checkov](https://www.checkov.io/) from 3.2.120 to **3.2.122** on 2024-06-01
 <!-- linter-versions-end -->
 
 ## [v7.11.1] - 2024-04-23

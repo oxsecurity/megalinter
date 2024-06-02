@@ -41,9 +41,9 @@
       "enum": [
         "all_flavors",
         "all",
+        "c_cpp",
         "ci_light",
         "cupcake",
-        "c_cpp",
         "documentation",
         "dotnet",
         "dotnetweb",
