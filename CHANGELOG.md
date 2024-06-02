@@ -204,6 +204,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [roslynator](https://github.com/dotnet/Roslynator) from 0.8.8.0 to **0.8.9.0** on 2024-06-01
   - [prettier](https://prettier.io/) from 3.2.5 to **3.3.0** on 2024-06-01
   - [checkov](https://www.checkov.io/) from 3.2.120 to **3.2.122** on 2024-06-01
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.58.12 to **0.58.13** on 2024-06-02
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.51.0 to **0.51.1** on 2024-06-02
 <!-- linter-versions-end -->
 
 ## [v7.11.1] - 2024-04-23

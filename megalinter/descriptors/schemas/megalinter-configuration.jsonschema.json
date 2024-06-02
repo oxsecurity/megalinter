@@ -169,6 +169,7 @@
         "PERL_PERLCRITIC",
         "PHP_BUILTIN",
         "PHP_PHPCS",
+        "PHP_PHPCSFIXER",
         "PHP_PHPLINT",
         "PHP_PHPSTAN",
         "PHP_PSALM",
@@ -12001,6 +12002,144 @@
       "$id": "#/properties/PHP_FILTER_REGEX_INCLUDE",
       "title": "Including regex filter for PHP descriptor",
       "type": "string"
+    },
+    "PHP_PHPCSFIXER_ARGUMENTS": {
+      "$id": "#/properties/PHP_PHPCSFIXER_ARGUMENTS",
+      "description": "PHP_PHPCSFIXER: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "PHP_PHPCSFIXER: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "PHP_PHPCSFIXER_CLI_EXECUTABLE": {
+      "$id": "#/properties/PHP_PHPCSFIXER_CLI_EXECUTABLE",
+      "default": [
+        [
+          "php-cs-fixer"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "PHP_PHPCSFIXER: CLI Executable",
+      "type": "array"
+    },
+    "PHP_PHPCSFIXER_COMMAND_REMOVE_ARGUMENTS": {
+      "$id": "#/properties/PHP_PHPCSFIXER_COMMAND_REMOVE_ARGUMENTS",
+      "description": "PHP_PHPCSFIXER: User custom arguments to remove before calling linter",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "PHP_PHPCSFIXER: Custom remove arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "PHP_PHPCSFIXER_CONFIG_FILE": {
+      "$id": "#/properties/PHP_PHPCSFIXER_CONFIG_FILE",
+      "default": ".php-cs-fixer.dist.php",
+      "description": "PHP_PHPCSFIXER: User custom config file name if different from default",
+      "title": "PHP_PHPCSFIXER: Custom config file name",
+      "type": "string"
+    },
+    "PHP_PHPCSFIXER_DISABLE_ERRORS": {
+      "$id": "#/properties/PHP_PHPCSFIXER_DISABLE_ERRORS",
+      "default": false,
+      "title": "PHP_PHPCSFIXER: Linter doesn't make MegaLinter fail even if errors are found",
+      "type": "boolean"
+    },
+    "PHP_PHPCSFIXER_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/PHP_PHPCSFIXER_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "PHP_PHPCSFIXER: Maximum number of errors allowed",
+      "type": "number"
+    },
+    "PHP_PHPCSFIXER_FILE_EXTENSIONS": {
+      "$id": "#/properties/PHP_PHPCSFIXER_FILE_EXTENSIONS",
+      "examples:": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "PHP_PHPCSFIXER: Override descriptor/linter matching files extensions",
+      "type": "array"
+    },
+    "PHP_PHPCSFIXER_FILE_NAMES_REGEX": {
+      "$id": "#/properties/PHP_PHPCSFIXER_FILE_NAMES_REGEX",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "PHP_PHPCSFIXER: Override descriptor/linter matching file name regex",
+      "type": "array"
+    },
+    "PHP_PHPCSFIXER_POST_COMMANDS": {
+      "$id": "#/properties/PHP_PHPCSFIXER_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "PHP_PHPCSFIXER: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "PHP_PHPCSFIXER_PRE_COMMANDS": {
+      "$id": "#/properties/PHP_PHPCSFIXER_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "PHP_PHPCSFIXER: Define or override a list of bash commands to run before the linter",
+      "type": "array"
+    },
+    "PHP_PHPCSFIXER_RULES_PATH": {
+      "$id": "#/properties/PHP_PHPCSFIXER_RULES_PATH",
+      "description": "PHP_PHPCSFIXER: Path where to find linter configuration file",
+      "title": "PHP_PHPCSFIXER: Custom config file path",
+      "type": "string"
+    },
+    "PHP_PHPCSFIXER_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/PHP_PHPCSFIXER_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling PHP_PHPCSFIXER and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "PHP_PHPCSFIXER: Unsecured env variables",
+      "type": "array"
     },
     "PHP_PHPCS_ARGUMENTS": {
       "$id": "#/properties/PHP_PHPCS_ARGUMENTS",
