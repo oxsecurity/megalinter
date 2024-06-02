@@ -1,12 +1,5 @@
 [
   {
-    "version": "latest",
-    "title": "latest",
-    "aliases": [
-      "7.11.1"
-    ]
-  },
-  {
     "version": "beta",
     "title": "beta",
     "aliases": []
