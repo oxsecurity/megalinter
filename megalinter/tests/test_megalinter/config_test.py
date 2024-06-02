@@ -577,8 +577,8 @@ class config_test(unittest.TestCase):
             # Commented out cases due to shlex.split removing the /
             # (67, "absolute_windows_paths", "C:\\absolute\\path C:\\another\\absolute\\path",
             #   ['C:\\absolute\\path', 'C:\\another\\absolute\\path']),
-            # (68, "paths_with_environment_variables", "$HOME/file.txt $USERPROFILE\\file.txt",
-            #   ['$HOME/file.txt', '$USERPROFILE\\file.txt']),
+            # (68, "paths_with_environment_variables", "$HOME/file.txt $USERPROFILE\\file1.txt",
+            #   ['$HOME/file.txt', '$USERPROFILE\\file1.txt']),
             # (69, "path_with_mixed_separators", "path/to/file path\\to\\another\\file",
             #   ['path/to/file', 'path\\to\\another\\file']),
             # (70, "complex_paths_and_files", 'file1 "complex path/file2" file3\\with\\backslashes',
