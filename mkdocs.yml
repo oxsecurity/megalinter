@@ -5,7 +5,7 @@ repo_url: https://github.com/oxsecurity/megalinter
 edit_uri: tree/main/docs
 site_author: Nicolas Vuillamy
 # site_description-start
-site_description: MegaLinter is an Open-Source tool for CI/CD workflows that analyzes the consistency of your code, IAC, configuration, and scripts in your repository sources, to ensure all your projects sources are clean and formatted whatever IDE/toolbox is used by their developers, powered by OX Security.Supporting 60 languages, 24 formats, 21 tooling formats and ready to use out of the box, as a GitHub action or any CI system highly configurable and free for all uses.Switch to MegaLinter v7 !
+site_description: MegaLinter is an Open-Source tool for CI/CD workflows that analyzes the consistency of your code, IAC, configuration, and scripts in your repository sources, to ensure all your projects sources are clean and formatted whatever IDE/toolbox is used by their developers, powered by OX Security.Supporting 61 languages, 24 formats, 21 tooling formats and ready to use out of the box, as a GitHub action or any CI system highly configurable and free for all uses.Switch to MegaLinter v7 !
 # site_description-end
 copyright: Copyright &copy; 2024 <a href="https://www.ox.security/?ref=megalinter" target= "_blank">OX Security</a> &amp; <a href="https://github.com/nvuillam" target="_blank">Nicolas Vuillamy</a>
 theme:
@@ -156,6 +156,7 @@ nav:
               - "phpstan": "descriptors/php_phpstan.md"
               - "psalm": "descriptors/php_psalm.md"
               - "phplint": "descriptors/php_phplint.md"
+              - "php-cs-fixer": "descriptors/php_php_cs_fixer.md"
           - "POWERSHELL":
               - "All POWERSHELL linters": "descriptors/powershell.md"
               - "powershell": "descriptors/powershell_powershell.md"
