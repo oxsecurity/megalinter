@@ -13,6 +13,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Media
 
 - Linters
+  - Improve support for single argument in `get_list_args` function
 
 - Reporters
 
