@@ -5106,7 +5106,10 @@
 <li>CI</li>
 </ul>
 <ul>
-<li>Linter versions upgrades</li>
+<li>Linter versions upgrades<ul>
+<li><a href="https://www.checkov.io/">checkov</a> from 3.2.122 to <strong>3.2.124</strong> on 2024-06-02</li>
+</ul>
+</li>
 </ul>
 <!-- linter-versions-end -->
 <h2 id="v7120-2024-06-02">[v7.12.0] - 2024-06-02</h2>
@@ -5120,17 +5123,17 @@
 </ul>
 <ul>
 <li>Media<ul>
-<li>Add blog post <a href="https://flexion.us/blog/5-ways-megalinter-upped-our-devsecops-game/">5 ways MegaLinter upped our DevSecOps game</a> to the list of English articles by @wesley-dean-flexion in https://github.com/oxsecurity/megalinter/pull/3596</li>
+<li>Add blog post <a href="https://flexion.us/blog/5-ways-megalinter-upped-our-devsecops-game/">5 ways MegaLinter upped our DevSecOps game</a> to the list of English articles by @wesley-dean-flexion in <a href="https://github.com/oxsecurity/megalinter/pull/3596">https://github.com/oxsecurity/megalinter/pull/3596</a></li>
 </ul>
 </li>
 </ul>
 <ul>
 <li>Linters<ul>
-<li>Add PHP fixer by @llaville in https://github.com/oxsecurity/megalinter/pull/3598</li>
+<li>Add PHP fixer by @llaville in <a href="https://github.com/oxsecurity/megalinter/pull/3598">https://github.com/oxsecurity/megalinter/pull/3598</a></li>
 <li><code>API_SPECTRAL</code> was added as replacement for <code>OPENAPI_SPECTRAL</code> (deprecated), supporting AsyncAPI and OpenAPI by default. Uses Spectral's standard config file name <code>.spectral.yaml</code> instead of <code>.openapirc.yml</code> with a default config with rulesets for AsyncAPI and OpenAPI enabled. Fixes <a href="https://github.com/oxsecurity/megalinter/issues/3387">#3387</a></li>
 <li>Disable SQL_TSQLLINT until security issues are solved. Related to <a href="https://github.com/tsqllint/tsqllint/issues/333">https://github.com/tsqllint/tsqllint/issues/333</a></li>
 <li>PHP linters (PHP_PHPCS, PHP_PHPLINT, PHP_PHPSTAN) add support to SARIF report output format with help of <a href="https://github.com/llaville/sarif-php-sdk">https://github.com/llaville/sarif-php-sdk</a></li>
-<li>Php psalm improvement by @llaville in https://github.com/oxsecurity/megalinter/pull/3541</li>
+<li>Php psalm improvement by @llaville in <a href="https://github.com/oxsecurity/megalinter/pull/3541">https://github.com/oxsecurity/megalinter/pull/3541</a></li>
 <li><code>KOTLIN_KTLINT</code> now supports <code>list_of_files</code> mode, and has better error counting</li>
 <li>Upgrade <code>KOTLIN_DETEKT</code> and make it work with cli_lint_mode = project</li>
 </ul>
@@ -5141,14 +5144,14 @@
 </ul>
 <ul>
 <li>Fixes<ul>
-<li>Change <code>golangci-lint</code> lint mode to <code>project</code>, by @wandering-tales in https://github.com/oxsecurity/megalinter/pull/3509</li>
+<li>Change <code>golangci-lint</code> lint mode to <code>project</code>, by @wandering-tales in <a href="https://github.com/oxsecurity/megalinter/pull/3509">https://github.com/oxsecurity/megalinter/pull/3509</a></li>
 <li>Disable sql-lint as it is no longer maintained</li>
 <li>Add new entries <code>findUnusedCode</code> and <code>findUnusedBaselineEntry</code> in default <code>psalm.xml</code> configuration file for PHP_PSALM linter. Related to <a href="https://github.com/oxsecurity/megalinter/issues/3538">https://github.com/oxsecurity/megalinter/issues/3538</a></li>
-<li>fix(pylint): overgeneral-exceptions fully qualified name by @gardar in https://github.com/oxsecurity/megalinter/pull/3576</li>
-<li>Update <code>ktlint</code> descriptor to support <code>list_of_files</code> and better error counting by @Yann-J in https://github.com/oxsecurity/megalinter/pull/3575</li>
-<li>Sync PowerShell version in arm.megalinter-descriptor.yml by @echoix in https://github.com/oxsecurity/megalinter/pull/3586</li>
-<li>Adjust find commands to clean up files in same step by @echoix in https://github.com/oxsecurity/megalinter/pull/3588</li>
-<li>Upgrade KOTLIN_DETEKT and make it work with cli_lint_mode = project by @nvuillam in https://github.com/oxsecurity/megalinter/pull/3590 </li>
+<li>fix(pylint): overgeneral-exceptions fully qualified name by @gardar in <a href="https://github.com/oxsecurity/megalinter/pull/3576">https://github.com/oxsecurity/megalinter/pull/3576</a></li>
+<li>Update <code>ktlint</code> descriptor to support <code>list_of_files</code> and better error counting by @Yann-J in <a href="https://github.com/oxsecurity/megalinter/pull/3575">https://github.com/oxsecurity/megalinter/pull/3575</a></li>
+<li>Sync PowerShell version in arm.megalinter-descriptor.yml by @echoix in <a href="https://github.com/oxsecurity/megalinter/pull/3586">https://github.com/oxsecurity/megalinter/pull/3586</a></li>
+<li>Adjust find commands to clean up files in same step by @echoix in <a href="https://github.com/oxsecurity/megalinter/pull/3588">https://github.com/oxsecurity/megalinter/pull/3588</a></li>
+<li>Upgrade KOTLIN_DETEKT and make it work with cli_lint_mode = project by @nvuillam in <a href="https://github.com/oxsecurity/megalinter/pull/3590">https://github.com/oxsecurity/megalinter/pull/3590</a></li>
 </ul>
 </li>
 </ul>
@@ -5171,9 +5174,9 @@
 <li>Remove Github Actions Workflow telemetry to improve performances</li>
 <li>Update Docker image for Gitpod to run on Ubuntu Noble, by @echoix</li>
 <li>Update makefile bootstrap config (gitpod or local) to use uv for package installation, by @echoix</li>
-<li>Use uv to install Python deps for CI by @echoix in https://github.com/oxsecurity/megalinter/pull/3561</li>
-<li>Use a single find command to delete pycache files by @echoix in https://github.com/oxsecurity/megalinter/pull/3562</li>
-<li>Sort schema enums by @echoix in https://github.com/oxsecurity/megalinter/pull/3595</li>
+<li>Use uv to install Python deps for CI by @echoix in <a href="https://github.com/oxsecurity/megalinter/pull/3561">https://github.com/oxsecurity/megalinter/pull/3561</a></li>
+<li>Use a single find command to delete pycache files by @echoix in <a href="https://github.com/oxsecurity/megalinter/pull/3562">https://github.com/oxsecurity/megalinter/pull/3562</a></li>
+<li>Sort schema enums by @echoix in <a href="https://github.com/oxsecurity/megalinter/pull/3595">https://github.com/oxsecurity/megalinter/pull/3595</a></li>
 </ul>
 </li>
 </ul>
