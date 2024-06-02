@@ -324,6 +324,11 @@
     "image": null,
     "title": "PHP: Hypertext Preprocessor"
   },
+  "php-cs-fixer": {
+    "description": "PHP Coding Standards Fixer",
+    "image": null,
+    "title": "PHP Coding Standards Fixer"
+  },
   "phpcs": {
     "description": "PHP_CodeSniffer tokenizes PHP files and detects violations of a defined set of coding standards. - squizlabs/PHP_CodeSniffer",
     "image": "https://avatars2.githubusercontent.com/u/997547?s=400&v=4",

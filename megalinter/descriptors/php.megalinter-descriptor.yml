@@ -172,3 +172,42 @@ linters:
       dockerfile:
         - |
           RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && phive --no-progress install overtrue/phplint --force-accept-unsigned -g
+  # PHP-CS-Fixer
+  - linter_name: php-cs-fixer
+    name: PHP_PHPCSFIXER
+    linter_url: https://cs.symfony.com/
+    linter_repo: https://github.com/PHP-CS-Fixer/PHP-CS-Fixer
+    config_file_name: .php-cs-fixer.dist.php
+    cli_lint_mode: project
+    cli_lint_extra_args:
+      - "fix"
+      - "--dry-run"
+      - "--verbose"
+      - "--show-progress=none"
+    cli_config_arg_name: "--config"
+    cli_lint_fix_remove_args:
+      - "--dry-run"
+    examples:
+      - "php-cs-fixer check myfile.php"
+      - "php-cs-fixer check mydir"
+      - "php-cs-fixer check --config .php-cs-fixer.php"
+    install:
+      dockerfile:
+        - |
+          RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require friendsofphp/php-cs-fixer
+    ide:
+      netbeans:
+        - name: PHP-CS-Fixer
+          url: https://plugins.netbeans.apache.org/catalogue/?id=36
+      idea:
+        - name: php-cs-fixer
+          url: https://www.jetbrains.com/help/phpstorm/using-php-cs-fixer.html
+      sublime:
+        - name: sublime-phpcs
+          url: https://github.com/benmatselby/sublime-phpcs
+      vim:
+        - name: vim-php-cs-fixer
+          url: https://github.com/stephpy/vim-php-cs-fixer
+      vscode:
+        - name: vscode-php-cs-fixer
+          url: https://github.com/junstyle/vscode-php-cs-fixer
