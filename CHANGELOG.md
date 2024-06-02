@@ -25,6 +25,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - CI
 
 - Linter versions upgrades
+  - [checkov](https://www.checkov.io/) from 3.2.122 to **3.2.124** on 2024-06-02
 <!-- linter-versions-end -->
 
 ## [v7.12.0] - 2024-06-02
