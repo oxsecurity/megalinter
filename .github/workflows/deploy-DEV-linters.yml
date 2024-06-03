@@ -158,6 +158,7 @@ jobs:
             "typescript_es",
             "typescript_standard",
             "typescript_prettier",
+            "typescript_biome",
             "vbdotnet_dotnet_format",
             "xml_xmllint",
             "yaml_prettier",

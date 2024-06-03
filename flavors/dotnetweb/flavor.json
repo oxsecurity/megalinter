@@ -76,6 +76,7 @@
         "TYPESCRIPT_ES",
         "TYPESCRIPT_STANDARD",
         "TYPESCRIPT_PRETTIER",
+        "TYPESCRIPT_BIOME",
         "VBDOTNET_DOTNET_FORMAT",
         "XML_XMLLINT",
         "YAML_PRETTIER",

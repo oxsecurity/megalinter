@@ -205,7 +205,8 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 prettyjson \
                 @typescript-eslint/eslint-plugin \
                 @typescript-eslint/parser \
-                ts-standard  && \
+                ts-standard \
+                @biomejs/biome  && \
     echo "Cleaning npm cache…" \
     && npm cache clean --force || true \
     && echo "Changing owner of node_modules files…" \

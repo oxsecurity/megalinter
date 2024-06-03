@@ -186,3 +186,42 @@ linters:
       vscode:
         - name: prettier-vscode
           url: https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode
+  # BIOME
+  - class: BiomeLinter
+    linter_name: biome
+    name: TYPESCRIPT_BIOME
+    activation_rules:
+      - type: variable
+        variable: TYPESCRIPT_BIOME
+        expected_value: biome
+        default_value: biome
+    linter_url: https://biomejs.dev/
+    linter_repo: https://github.com/biomejs/biome
+    linter_rules_url: https://biomejs.dev/linter/rules/
+    linter_banner_image_url: https://biomejs.dev/_astro/banner-dark.Dl3moAyv_1gWyyh.webp
+    active_only_if_file_found:
+      - "biome.json"
+      - "biome.jsonc"
+    cli_lint_mode: list_of_files
+    config_file_name: biome.json
+    cli_lint_extra_args:
+      - "lint"
+    cli_lint_fix_arg_name: "--apply"
+    cli_config_arg_name: "--config-path"
+    examples:
+      - "biome lint myfile.ts"
+      - "biome lint --apply myfile.ts"
+      - "biome lint --config-path biome.json myfile.ts"
+    cli_lint_errors_count: regex_sum
+    cli_lint_errors_regex: "Found ([0-9]+) errors"
+    test_folder: typescript
+    install:
+      npm:
+        - "@biomejs/biome"
+    ide:
+      vscode:
+        - name: vscode-biome
+          url: https://marketplace.visualstudio.com/items?itemName=biomejs.biome
+      idea:
+        - name: Biome Plugin
+          url: https://plugins.jetbrains.com/plugin/22761-biome

@@ -88,6 +88,7 @@
         "TYPESCRIPT_ES",
         "TYPESCRIPT_STANDARD",
         "TYPESCRIPT_PRETTIER",
+        "TYPESCRIPT_BIOME",
         "XML_XMLLINT",
         "YAML_PRETTIER",
         "YAML_YAMLLINT",
