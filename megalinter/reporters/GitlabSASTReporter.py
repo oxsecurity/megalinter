@@ -14,6 +14,7 @@ from megalinter.constants import (
     ML_DOC_URL,
     ML_VERSION,
 )
+from megalinter.flavor_factory import list_flavor_linters
 from megalinter.utils import normalize_log_string
 
 
@@ -70,7 +71,8 @@ class GitlabSASTReporter(Reporter):
             keep_sarif_logs = False
         # Build unique SARIF file with all SARIF output files
         for linter in self.master.linters:
-            # TODO: scope this to certain scanners?
+            if linter.name not in list_flavor_linters("security"):
+                continue
             linter_sarif_obj = self.load_sarif_file(linter)
             # Delete linter SARIF file if LOG_FILE=none
             if keep_sarif_logs is False and os.path.isfile(
@@ -141,7 +143,7 @@ class GitlabSASTReporter(Reporter):
                 if rule:
                     gitlab_vulnerability["description"] = rule.get("fullDescription", rule.get("shortDescription", {})).get("text", "")
                 gitlab_vulnerability["category"] = "sast"
-                gitlab_vulnerability["name"] = self._parse_message(result["message"].get("text", ""))                
+                gitlab_vulnerability["name"] = self._parse_message(result["message"].get("text", ""))[:254]
                 gitlab_vulnerability["cve"] = ""
                 gitlab_vulnerability["severity"] = self.get_severity(result, rule) # Create a mapping for this?
                 gitlab_vulnerability["scanner"] = {
@@ -179,28 +181,30 @@ class GitlabSASTReporter(Reporter):
         return message
 
     def _map_severity(self, severity):
-        if severity.lower() in ["info", "note"]:
+        if severity.lower() in ["info", "note", "1", "2"]:
             return "Info"
-        if severity.lower() in ["low"]:
+        if severity.lower() in ["low", "3", "4"]:
             return "Low"
-        if severity.lower() in ["medium", "warning"]:
+        if severity.lower() in ["medium", "warning", "5", "6"]:
             return "Medium"
-        if severity.lower() in ["high", "error"]:
+        if severity.lower() in ["high", "error", "7", "8"]:
             return "High"
-        if severity.lower() in ["critical"]:
+        if severity.lower() in ["critical", "9", "10"]:
             return "Critical"
         return None
 
     def get_severity(self, result, rule):
         if not rule:
             rule = {}
+
         for possible_severity in [
             result.get("level", ""),
             result.get("properties", {}).get("issue_severity", ""),
             "LOW" if "LOW" in rule.get("properties", {}).get("tags", []) else "",
             "MEDIUM" if "MEDIUM" in rule.get("properties", {}).get("tags", []) else "",
             "HIGH" if "HIGH" in rule.get("properties", {}).get("tags", []) else "",
-            rule.get("defaultConfiguration", {}).get("level", "")
+            rule.get("defaultConfiguration", {}).get("level", ""),
+            rule.get("properties", {}).get("security-severity", "").split(".", 1)[0]
         ]:
             severity = self._map_severity(possible_severity)
             if severity:
@@ -211,7 +215,7 @@ class GitlabSASTReporter(Reporter):
         # Only returns the first location.
         for location in result["locations"]:
             physical_location = location.get("physicalLocation", {})
-            start_lint = physical_location.get("region", {}).get("startLine", "")
+            start_lint = physical_location.get("region", {}).get("startLine", 1)
             return {
                 "file": physical_location.get("artifactLocation", {}).get("uri", ""),
                 "start_line": start_lint,
