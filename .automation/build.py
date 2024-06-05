@@ -427,7 +427,10 @@ def build_dockerfile(
     docker_arg_top = []
     docker_arg_main = []
     for docker_arg_item in docker_arg:
-        match = re.match(r"(?:# renovate: .*\n)?ARG\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*=?\s*", docker_arg_item)
+        match = re.match(
+            r"(?:# renovate: .*\n)?ARG\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*=?\s*",
+            docker_arg_item,
+        )
         arg_name = match.group(1)
         if arg_name in all_from_instructions:
             docker_arg_top += [docker_arg_item]
