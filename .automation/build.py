@@ -330,7 +330,7 @@ def build_dockerfile(
                 elif dockerfile_item.startswith("ARG") or (
                     len(dockerfile_item.splitlines()) > 1
                     and dockerfile_item.splitlines()[0].startswith("# renovate: ")
-                    and dockerfile_item.splitlines()[0].startswith("ARG")
+                    and dockerfile_item.splitlines()[1].startswith("ARG")
                 ):
                     docker_arg += [dockerfile_item]
                 # COPY
