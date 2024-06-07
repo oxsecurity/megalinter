@@ -17,6 +17,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Reporters
 
 - Fixes
+  - [syft](https://github.com/anchore/syft) use `scan` instead of deprecated `packages` arg
 
 - Doc
 
