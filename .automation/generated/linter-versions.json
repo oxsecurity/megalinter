@@ -6,7 +6,7 @@
     "bash-exec": "5.2.21",
     "bicep_linter": "0.28.1",
     "black": "24.4.2",
-    "cfn-lint": "0.87.4",
+    "cfn-lint": "0.87.5",
     "checkmake": "0.2.0",
     "checkov": "3.2.128",
     "checkstyle": "10.17.0",

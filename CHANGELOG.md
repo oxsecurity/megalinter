@@ -44,6 +44,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.12.0 to **8.13.0** on 2024-06-06
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.8.3 to **8.8.4** on 2024-06-06
   - [swiftlint](https://github.com/realm/SwiftLint) from 0.54.0 to **0.55.1** on 2024-06-06
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.87.4 to **0.87.5** on 2024-06-07
 <!-- linter-versions-end -->
 
 ## [v7.12.0] - 2024-06-02
