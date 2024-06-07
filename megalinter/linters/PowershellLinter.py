@@ -71,17 +71,21 @@ class PowershellLinter(Linter):
 
     def format_powershell_output(self, pwsh_script):
         if utils.is_ci():
-            width = 150  # Use a default width in CI environments to prevent output cutoff
+            width = (
+                150  # Use a default width in CI environments to prevent output cutoff
+            )
         else:
             width = get_terminal_size().columns  # Use the terminal width when not in CI
 
         # Format the output to a table with specific columns
-        pwsh_script += " | Format-Table -AutoSize -Wrap -Property " \
-                   "@{Name='Severity'; Expression={$_.Severity}; Alignment='left'}," \
-                   " @{Name='RuleName'; Expression={$_.RuleName}; Alignment='left'}," \
-                   " @{Name='ScriptName'; Expression={$_.ScriptName}; Alignment='left'}," \
-                   " @{Name='Line'; Expression={$_.Line}; Alignment='right'}," \
-                   " @{Name='Message'; Expression={$_.Message}; Alignment='left'}"
+        pwsh_script += (
+            " | Format-Table -AutoSize -Wrap -Property "
+            "@{Name='Severity'; Expression={$_.Severity}; Alignment='left'},"
+            " @{Name='RuleName'; Expression={$_.RuleName}; Alignment='left'},"
+            " @{Name='ScriptName'; Expression={$_.ScriptName}; Alignment='left'},"
+            " @{Name='Line'; Expression={$_.Line}; Alignment='right'},"
+            " @{Name='Message'; Expression={$_.Message}; Alignment='left'}"
+        )
 
         # Ensure the output string fits within the specified width
         pwsh_script += f" | Out-String -Width {width}"
