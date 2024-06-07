@@ -17,6 +17,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Reporters
 
 - Fixes
+  - [syft](https://github.com/anchore/syft) use `scan` instead of deprecated `packages` arg
 
 - Doc
 
@@ -26,6 +27,22 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Linter versions upgrades
   - [checkov](https://www.checkov.io/) from 3.2.122 to **3.2.124** on 2024-06-02
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.27.1 to **0.28.1** on 2024-06-06
+  - [prettier](https://prettier.io/) from 3.3.0 to **3.3.1** on 2024-06-06
+  - [v8r](https://github.com/chris48s/v8r) from 3.0.0 to **3.1.0** on 2024-06-06
+  - [ktlint](https://ktlint.github.io) from 1.2.1 to **1.3.0** on 2024-06-06
+  - [phpstan](https://phpstan.org/) from 1.11.3 to **1.11.4** on 2024-06-06
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.49.7 to **0.49.8** on 2024-06-06
+  - [pylint](https://pylint.readthedocs.io) from 3.2.2 to **3.2.3** on 2024-06-06
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.365 to **1.1.366** on 2024-06-06
+  - [ruff](https://github.com/astral-sh/ruff) from 0.4.7 to **0.4.8** on 2024-06-06
+  - [checkov](https://www.checkov.io/) from 3.2.124 to **3.2.128** on 2024-06-06
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.51.4 to **0.52.0** on 2024-06-06
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.51.4 to **0.52.0** on 2024-06-06
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.77.0 to **3.78.0** on 2024-06-06
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.12.0 to **8.13.0** on 2024-06-06
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.8.3 to **8.8.4** on 2024-06-06
+  - [swiftlint](https://github.com/realm/SwiftLint) from 0.54.0 to **0.55.1** on 2024-06-06
 <!-- linter-versions-end -->
 
 ## [v7.12.0] - 2024-06-02

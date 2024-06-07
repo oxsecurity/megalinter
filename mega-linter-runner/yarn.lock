@@ -4333,9 +4333,9 @@ yargs@16.2.0:
     yargs-parser "^20.2.2"
 
 yeoman-environment@^4.0.0:
-  version "4.4.0"
-  resolved "https://registry.yarnpkg.com/yeoman-environment/-/yeoman-environment-4.4.0.tgz#74430a558195500398834a436b42c80bb7f46898"
-  integrity "sha1-dEMKVYGVUAOYg0pDa0LIC7f0aJg= sha512-X53IlyzOI4gX1vEGlxW1Q9lJ73sJq4o13gLeDw5IzDMBVn0xnmsmxphs+dWDzSmipirmZQaWKQhBH/rEAXTCLA=="
+  version "4.4.1"
+  resolved "https://registry.yarnpkg.com/yeoman-environment/-/yeoman-environment-4.4.1.tgz#09ee2e19eec3b6809e0e48efc320bb2b149b8275"
+  integrity sha512-x1TXPM6msNm9+zWLUuegfBf2AOwilTIUMAKHmhJvm9zidiDDrkp8cIuK32CvADuMxgbrGrvwHejDWnPScasnkw==
   dependencies:
     "@yeoman/adapter" "^1.4.0"
     "@yeoman/conflicter" "^2.0.0-alpha.2"
