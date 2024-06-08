@@ -327,7 +327,11 @@ def build_dockerfile(
                         )
                     docker_from += [dockerfile_item]
                 # ARG
-                elif dockerfile_item.startswith("ARG"):
+                elif dockerfile_item.startswith("ARG") or (
+                    len(dockerfile_item.splitlines()) > 1
+                    and dockerfile_item.splitlines()[0].startswith("# renovate: ")
+                    and dockerfile_item.splitlines()[1].startswith("ARG")
+                ):
                     docker_arg += [dockerfile_item]
                 # COPY
                 elif dockerfile_item.startswith("COPY"):
@@ -423,7 +427,10 @@ def build_dockerfile(
     docker_arg_top = []
     docker_arg_main = []
     for docker_arg_item in docker_arg:
-        match = re.match(r"ARG\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*=?\s*", docker_arg_item)
+        match = re.match(
+            r"(?:# renovate: .*\n)?ARG\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*=?\s*",
+            docker_arg_item,
+        )
         arg_name = match.group(1)
         if arg_name in all_from_instructions:
             docker_arg_top += [docker_arg_item]
