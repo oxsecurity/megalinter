@@ -36,7 +36,7 @@ FROM golang:1-alpine as revive
 RUN GOBIN=/usr/bin go install github.com/mgechev/revive@latest
 
 FROM ghcr.io/yannh/kubeconform:latest-alpine as kubeconform
-FROM zricethezav/gitleaks:v8.18.2 as gitleaks
+FROM zricethezav/gitleaks:v8.18.3 as gitleaks
 FROM checkmarx/kics:alpine as kics
 FROM trufflesecurity/trufflehog:latest as trufflehog
 FROM lycheeverse/lychee:latest-alpine as lychee

@@ -22,7 +22,7 @@
 FROM koalaman/shellcheck:stable as shellcheck
 FROM mvdan/shfmt:latest-alpine as shfmt
 FROM hadolint/hadolint:v2.12.0-alpine as hadolint
-FROM zricethezav/gitleaks:v8.18.2 as gitleaks
+FROM zricethezav/gitleaks:v8.18.3 as gitleaks
 FROM trufflesecurity/trufflehog:latest as trufflehog
 #FROM__END
 
