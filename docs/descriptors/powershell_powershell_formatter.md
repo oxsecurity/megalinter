@@ -438,7 +438,9 @@ RUN curl -L https://github.com/PowerShell/PowerShell/releases/download/v7.4.2/po
     && ln -s /opt/microsoft/powershell/7/pwsh /usr/bin/pwsh
 
 # Linter install
-ARG PSSA_VERSION='latest'
+# renovate: datasource=nuget depName=PSScriptAnalyzer registryUrl=https://www.powershellgallery.com/api/v2/
+ARG PSSA_VERSION='1.22.0'
+
 RUN pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSION} -Scope AllUsers -Force'
 ```
 
