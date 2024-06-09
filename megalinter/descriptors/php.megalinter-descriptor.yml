@@ -177,6 +177,7 @@ linters:
     name: PHP_PHPCSFIXER
     linter_url: https://cs.symfony.com/
     linter_repo: https://github.com/PHP-CS-Fixer/PHP-CS-Fixer
+    linter_image_url: https://cs.symfony.com/_static/images/logo.png
     config_file_name: .php-cs-fixer.dist.php
     cli_lint_mode: project
     cli_lint_extra_args:
