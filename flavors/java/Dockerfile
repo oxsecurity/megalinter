@@ -48,7 +48,7 @@ FROM python:3.12.3-alpine3.19
 #############################################################################################
 #ARG__START
 # renovate: datasource=github-tags depName=pmd/pmd extractVersion=^pmd_releases/(?<version>.*)$
-ARG PMD_VERSION=7.1.0
+ARG PMD_VERSION=7.2.0
 
 # renovate: datasource=github-tags depName=detekt/detekt
 ARG DETEKT_VERSION=1.23.6
