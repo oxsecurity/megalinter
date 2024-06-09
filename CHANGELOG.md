@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
 - Core
+  - Handle renovate version comments in build script
 
 - Media
 
@@ -18,6 +19,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Reporters
 
 - Fixes
+  - [syft](https://github.com/anchore/syft) use `scan` instead of deprecated `packages` arg
+  - [Powershell](https://github.com/PowerShell/PSScriptAnalyzer#readme) Error table truncation improvements
 
 - Doc
 
@@ -26,6 +29,26 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - CI
 
 - Linter versions upgrades
+  - [checkov](https://www.checkov.io/) from 3.2.122 to **3.2.124** on 2024-06-02
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.27.1 to **0.28.1** on 2024-06-06
+  - [prettier](https://prettier.io/) from 3.3.0 to **3.3.1** on 2024-06-06
+  - [v8r](https://github.com/chris48s/v8r) from 3.0.0 to **3.1.0** on 2024-06-06
+  - [ktlint](https://ktlint.github.io) from 1.2.1 to **1.3.0** on 2024-06-06
+  - [phpstan](https://phpstan.org/) from 1.11.3 to **1.11.4** on 2024-06-06
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.49.7 to **0.49.8** on 2024-06-06
+  - [pylint](https://pylint.readthedocs.io) from 3.2.2 to **3.2.3** on 2024-06-06
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.365 to **1.1.366** on 2024-06-06
+  - [ruff](https://github.com/astral-sh/ruff) from 0.4.7 to **0.4.8** on 2024-06-06
+  - [checkov](https://www.checkov.io/) from 3.2.124 to **3.2.128** on 2024-06-06
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.51.4 to **0.52.0** on 2024-06-06
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.51.4 to **0.52.0** on 2024-06-06
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.77.0 to **3.78.0** on 2024-06-06
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.12.0 to **8.13.0** on 2024-06-06
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.8.3 to **8.8.4** on 2024-06-06
+  - [swiftlint](https://github.com/realm/SwiftLint) from 0.54.0 to **0.55.1** on 2024-06-06
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.87.4 to **0.87.5** on 2024-06-07
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 24.2.3 to **24.6.0** on 2024-06-08
+  - [vale](https://vale.sh/) from 3.4.2 to **3.5.0** on 2024-06-08
 <!-- linter-versions-end -->
 
 ## [v7.12.0] - 2024-06-02
@@ -36,21 +59,21 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Upgrade to Java 21 except for npm-groovy-lint that requires Java 17
 
 - Media
-  - Add blog post [5 ways MegaLinter upped our DevSecOps game](https://flexion.us/blog/5-ways-megalinter-upped-our-devsecops-game/) to the list of English articles by @wesley-dean-flexion in https://github.com/oxsecurity/megalinter/pull/3596
+  - Add blog post [5 ways MegaLinter upped our DevSecOps game](https://flexion.us/blog/5-ways-megalinter-upped-our-devsecops-game/) to the list of English articles by @wesley-dean-flexion in <https://github.com/oxsecurity/megalinter/pull/3596>
 
 - Linters
-  - Add PHP fixer by @llaville in https://github.com/oxsecurity/megalinter/pull/3598
+  - Add PHP fixer by @llaville in <https://github.com/oxsecurity/megalinter/pull/3598>
   - `API_SPECTRAL` was added as replacement for `OPENAPI_SPECTRAL` (deprecated), supporting AsyncAPI and OpenAPI by default. Uses Spectral's standard config file name `.spectral.yaml` instead of `.openapirc.yml` with a default config with rulesets for AsyncAPI and OpenAPI enabled. Fixes [#3387](https://github.com/oxsecurity/megalinter/issues/3387)
   - Disable SQL_TSQLLINT until security issues are solved. Related to <https://github.com/tsqllint/tsqllint/issues/333>
   - PHP linters (PHP_PHPCS, PHP_PHPLINT, PHP_PHPSTAN) add support to SARIF report output format with help of <https://github.com/llaville/sarif-php-sdk>
-  - Php psalm improvement by @llaville in https://github.com/oxsecurity/megalinter/pull/3541
+  - Php psalm improvement by @llaville in <https://github.com/oxsecurity/megalinter/pull/3541>
   - `KOTLIN_KTLINT` now supports `list_of_files` mode, and has better error counting
   - Upgrade `KOTLIN_DETEKT` and make it work with cli_lint_mode = project
 
 - Reporters
 
 - Fixes
-  - Change `golangci-lint` lint mode to `project`, by @wandering-tales in https://github.com/oxsecurity/megalinter/pull/3509
+  - Change `golangci-lint` lint mode to `project`, by @wandering-tales in <https://github.com/oxsecurity/megalinter/pull/3509>
   - Disable sql-lint as it is no longer maintained
   - Add new entries `findUnusedCode` and `findUnusedBaselineEntry` in default `psalm.xml` configuration file for PHP_PSALM linter. Related to <https://github.com/oxsecurity/megalinter/issues/3538>
   - fix(pylint): overgeneral-exceptions fully qualified name by @gardar in https://github.com/oxsecurity/megalinter/pull/3576
@@ -58,6 +81,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Sync PowerShell version in arm.megalinter-descriptor.yml by @echoix in https://github.com/oxsecurity/megalinter/pull/3586
   - Adjust find commands to clean up files in same step by @echoix in https://github.com/oxsecurity/megalinter/pull/3588
   - Upgrade KOTLIN_DETEKT and make it work with cli_lint_mode = project by @nvuillam in https://github.com/oxsecurity/megalinter/pull/3590
+  - fix(pylint): overgeneral-exceptions fully qualified name by @gardar in <https://github.com/oxsecurity/megalinter/pull/3576>
+  - Update `ktlint` descriptor to support `list_of_files` and better error counting by @Yann-J in <https://github.com/oxsecurity/megalinter/pull/3575>
+  - Sync PowerShell version in arm.megalinter-descriptor.yml by @echoix in <https://github.com/oxsecurity/megalinter/pull/3586>
+  - Adjust find commands to clean up files in same step by @echoix in <https://github.com/oxsecurity/megalinter/pull/3588>
+  - Upgrade KOTLIN_DETEKT and make it work with cli_lint_mode = project by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/3590>
 
 - Doc
   - Handle disabled_reason property in descriptors
@@ -73,9 +101,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Remove Github Actions Workflow telemetry to improve performances
   - Update Docker image for Gitpod to run on Ubuntu Noble, by @echoix
   - Update makefile bootstrap config (gitpod or local) to use uv for package installation, by @echoix
-  - Use uv to install Python deps for CI by @echoix in https://github.com/oxsecurity/megalinter/pull/3561
-  - Use a single find command to delete pycache files by @echoix in https://github.com/oxsecurity/megalinter/pull/3562
-  - Sort schema enums by @echoix in https://github.com/oxsecurity/megalinter/pull/3595
+  - Use uv to install Python deps for CI by @echoix in <https://github.com/oxsecurity/megalinter/pull/3561>
+  - Use a single find command to delete pycache files by @echoix in <https://github.com/oxsecurity/megalinter/pull/3562>
+  - Sort schema enums by @echoix in <https://github.com/oxsecurity/megalinter/pull/3595>
 
 - Linter versions upgrades
   - [actionlint](https://rhysd.github.io/actionlint/) from 1.6.27 to **1.7.1** on 2024-05-28

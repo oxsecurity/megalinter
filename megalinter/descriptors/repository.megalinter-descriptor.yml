@@ -451,7 +451,7 @@ linters:
     config_file_name: .syft.yaml
     cli_config_arg_name: --config
     cli_lint_extra_args:
-      - packages
+      - scan
       - .
     cli_sarif_args:
       - --output
