@@ -17,7 +17,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Reporters
 
 - Fixes
-  - [yamllint](https://github.com/adrienverge/yamllint) fix error appearing when using `--strict`
+  - [yamllint](https://github.com/adrienverge/yamllint) fix error/warning count to work with different log output formats
 
 - Doc
 
