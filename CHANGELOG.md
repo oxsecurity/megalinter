@@ -9,14 +9,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
 - Core
+  - Handle renovate version comments in build script
 
 - Media
 
 - Linters
+  - Add python package Pygments to rst-lint venv
 
 - Reporters
 
 - Fixes
+  - [syft](https://github.com/anchore/syft) use `scan` instead of deprecated `packages` arg
+  - [Powershell](https://github.com/PowerShell/PSScriptAnalyzer#readme) Error table truncation improvements
   - [yamllint](https://github.com/adrienverge/yamllint) fix error/warning count to work with different log output formats
 
 - Doc
@@ -27,6 +31,29 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Linter versions upgrades
   - [checkov](https://www.checkov.io/) from 3.2.122 to **3.2.124** on 2024-06-02
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.27.1 to **0.28.1** on 2024-06-06
+  - [prettier](https://prettier.io/) from 3.3.0 to **3.3.1** on 2024-06-06
+  - [v8r](https://github.com/chris48s/v8r) from 3.0.0 to **3.1.0** on 2024-06-06
+  - [ktlint](https://ktlint.github.io) from 1.2.1 to **1.3.0** on 2024-06-06
+  - [phpstan](https://phpstan.org/) from 1.11.3 to **1.11.4** on 2024-06-06
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.49.7 to **0.49.8** on 2024-06-06
+  - [pylint](https://pylint.readthedocs.io) from 3.2.2 to **3.2.3** on 2024-06-06
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.365 to **1.1.366** on 2024-06-06
+  - [ruff](https://github.com/astral-sh/ruff) from 0.4.7 to **0.4.8** on 2024-06-06
+  - [checkov](https://www.checkov.io/) from 3.2.124 to **3.2.128** on 2024-06-06
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.51.4 to **0.52.0** on 2024-06-06
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.51.4 to **0.52.0** on 2024-06-06
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.77.0 to **3.78.0** on 2024-06-06
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.12.0 to **8.13.0** on 2024-06-06
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.8.3 to **8.8.4** on 2024-06-06
+  - [swiftlint](https://github.com/realm/SwiftLint) from 0.54.0 to **0.55.1** on 2024-06-06
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.87.4 to **0.87.5** on 2024-06-07
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 24.2.3 to **24.6.0** on 2024-06-08
+  - [vale](https://vale.sh/) from 3.4.2 to **3.5.0** on 2024-06-08
+  - [checkov](https://www.checkov.io/) from 3.2.128 to **3.2.130** on 2024-06-09
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.8.4 to **1.8.5** on 2024-06-09
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.58.13 to **0.58.14** on 2024-06-09
+  - [golangci-lint](https://golangci-lint.run/) from 1.59.0 to **1.59.1** on 2024-06-09
 <!-- linter-versions-end -->
 
 ## [v7.12.0] - 2024-06-02

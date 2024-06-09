@@ -107,7 +107,9 @@ Exit Codes:
 ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 # Linter install
+# renovate: datasource=github-tags depName=pmd/pmd extractVersion=^pmd_releases/(?<version>.*)$
 ARG PMD_VERSION=7.1.0
+
 RUN wget --quiet https://github.com/pmd/pmd/releases/download/pmd_releases%2F${PMD_VERSION}/pmd-dist-${PMD_VERSION}-bin.zip && \
     unzip pmd-dist-${PMD_VERSION}-bin.zip || echo "Error unzipping" && \
     rm pmd-dist-${PMD_VERSION}-bin.zip || echo "Error rm" && \

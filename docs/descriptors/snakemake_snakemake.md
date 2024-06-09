@@ -15,7 +15,7 @@ description: How to use snakemake (configure, ignore files, ignore errors, help 
 
 ## snakemake documentation
 
-- Version in MegaLinter: **8.12.0**
+- Version in MegaLinter: **8.13.0**
 - Visit [Official Web Site](https://snakemake.readthedocs.io/en/stable/){target=_blank}
 
 [![snakemake - GitHub](https://gh-card.dev/repos/snakemake/snakemake.svg?fullname=)](https://github.com/snakemake/snakemake){target=_blank}
@@ -133,7 +133,7 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--d3dag] [--summary] [--detailed-summary] [--archive FILE]
                  [--cleanup-metadata FILE [FILE ...]] [--cleanup-shadow]
                  [--skip-script-cleanup] [--unlock]
-                 [--list-changes {params,code,input}] [--list-input-changes]
+                 [--list-changes {params,input,code}] [--list-input-changes]
                  [--list-params-changes] [--list-untracked]
                  [--delete-all-output | --delete-temp-output]
                  [--keep-incomplete] [--drop-metadata]
@@ -163,7 +163,7 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--shared-fs-usage {input-output,persistence,software-deployment,source-cache,sources,storage-local-copies,none} [{input-output,persistence,software-deployment,source-cache,sources,storage-local-copies,none} ...]]
                  [--scheduler-greediness SCHEDULER_GREEDINESS] [--no-hooks]
                  [--debug] [--runtime-profile FILE]
-                 [--mode {subprocess,remote,default}] [--show-failed-logs]
+                 [--mode {remote,subprocess,default}] [--show-failed-logs]
                  [--log-handler-script FILE] [--log-service {none,slack,wms}]
                  [--job-deploy-sources] [--benchmark-extended]
                  [--container-image IMAGE] [--immediate-submit]
@@ -406,9 +406,10 @@ EXECUTION:
                         configuration. If you rather prefer the traditional
                         way of just considering file modification dates, use '
                         --rerun-trigger mtime'. (default:
-                        frozenset({<RerunTrigger.PARAMS: 1>,
-                        <RerunTrigger.MTIME: 0>, <RerunTrigger.SOFTWARE_ENV:
-                        3>, <RerunTrigger.INPUT: 2>, <RerunTrigger.CODE: 4>}))
+                        frozenset({<RerunTrigger.INPUT: 2>,
+                        <RerunTrigger.CODE: 4>, <RerunTrigger.MTIME: 0>,
+                        <RerunTrigger.SOFTWARE_ENV: 3>, <RerunTrigger.PARAMS:
+                        1>}))
   --force, -f           Force the execution of the selected target or the
                         first rule regardless of already created output.
                         (default: False)
@@ -649,7 +650,7 @@ UTILITIES:
                         (default: False)
   --unlock              Remove a lock on the working directory. (default:
                         False)
-  --list-changes {params,code,input}, --lc {params,code,input}
+  --list-changes {params,input,code}, --lc {params,input,code}
                         List all output files for which the given items (code,
                         input, params) have changed since creation. (default:
                         None)
@@ -843,12 +844,12 @@ BEHAVIOR:
                         and data provenance will be handled by NFS but input
                         and output files will be handled exclusively by the
                         storage provider. (default:
-                        frozenset({<SharedFSUsage.STORAGE_LOCAL_COPIES: 4>,
-                        <SharedFSUsage.SOURCE_CACHE: 5>,
+                        frozenset({<SharedFSUsage.PERSISTENCE: 0>,
                         <SharedFSUsage.INPUT_OUTPUT: 1>,
+                        <SharedFSUsage.SOFTWARE_DEPLOYMENT: 2>,
                         <SharedFSUsage.SOURCES: 3>,
-                        <SharedFSUsage.PERSISTENCE: 0>,
-                        <SharedFSUsage.SOFTWARE_DEPLOYMENT: 2>}))
+                        <SharedFSUsage.SOURCE_CACHE: 5>,
+                        <SharedFSUsage.STORAGE_LOCAL_COPIES: 4>}))
   --scheduler-greediness SCHEDULER_GREEDINESS, --greediness SCHEDULER_GREEDINESS
                         Set the greediness of scheduling. This value between 0
                         and 1 determines how careful jobs are selected for
@@ -862,7 +863,7 @@ BEHAVIOR:
   --runtime-profile FILE
                         Profile Snakemake and write the output to FILE. This
                         requires yappi to be installed. (default: None)
-  --mode {subprocess,remote,default}
+  --mode {remote,subprocess,default}
                         Set execution mode of Snakemake (internal use only).
                         (default: default)
   --show-failed-logs    Automatically display logs of failed jobs. (default:
@@ -895,7 +896,7 @@ REMOTE EXECUTION:
                         contain a working snakemake installation that is
                         compatible with (or ideally the same as) the currently
                         running version. (default:
-                        snakemake/snakemake:v8.12.0)
+                        snakemake/snakemake:v8.13.0)
   --immediate-submit, --is
                         Immediately submit all jobs to the cluster instead of
                         waiting for present input files. This will fail,
@@ -1013,10 +1014,10 @@ html executor settings:
                         Path to the report file (either .html or .zip). Use
                         zip if your report contains large results or
                         directories with htmlindex as results. (default:
-                        <dataclasses._MISSING_TYPE object at 0x7f3c9ae25ca0>)
+                        <dataclasses._MISSING_TYPE object at 0x7f3663d45cd0>)
   --report-html-stylesheet-path VALUE
                         Path to a custom stylesheet for the report. (default:
-                        <dataclasses._MISSING_TYPE object at 0x7f3c9ae25ca0>)
+                        <dataclasses._MISSING_TYPE object at 0x7f3663d45cd0>)
 
  In general, command-line values override environment variables which override
 defaults.

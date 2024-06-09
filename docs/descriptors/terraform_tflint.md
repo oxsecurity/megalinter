@@ -169,7 +169,9 @@ Help Options:
 
 - Dockerfile commands :
 ```dockerfile
+# renovate: datasource=docker depName=ghcr.io/terraform-linters/tflint
 ARG TFLINT_VERSION=0.51.1
+
 FROM ghcr.io/terraform-linters/tflint:v${TFLINT_VERSION} as tflint
 COPY --link --from=tflint /usr/local/bin/tflint /usr/bin/
 ```

@@ -198,7 +198,9 @@ Usage: detekt [options]
 ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 # Linter install
-ARG DETEKT_VERSION='1.23.6'
+# renovate: datasource=github-tags depName=detekt/detekt
+ARG DETEKT_VERSION=1.23.6
+
 RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/detekt/detekt/releases/download/v${DETEKT_VERSION}/detekt-cli-${DETEKT_VERSION}.zip && \
     unzip detekt-cli-${DETEKT_VERSION}.zip && \
     chmod a+x detekt-cli-${DETEKT_VERSION}/bin/* && \

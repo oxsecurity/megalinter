@@ -93,4 +93,5 @@ options:
 ### Installation on mega-linter Docker image
 
 - PIP packages (Python):
+  - [Pygments](https://pypi.org/project/Pygments)
   - [restructuredtext_lint](https://pypi.org/project/restructuredtext_lint)
