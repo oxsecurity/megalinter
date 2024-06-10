@@ -52,6 +52,7 @@
         "PHP_PHPSTAN",
         "PHP_PSALM",
         "PHP_PHPLINT",
+        "PHP_PHPCSFIXER",
         "PYTHON_PYLINT",
         "PYTHON_BLACK",
         "PYTHON_FLAKE8",

@@ -41,7 +41,10 @@ RUN apk add --update --no-cache libc6-compat \
 #############################################################################################
 #ARG__START
 ARG TARGETPLATFORM
-ARG PSSA_VERSION='latest'
+
+# renovate: datasource=nuget depName=PSScriptAnalyzer registryUrl=https://www.powershellgallery.com/api/v2/
+ARG PSSA_VERSION='1.22.0'
+
 #ARG__END
 
 # Static args

@@ -132,6 +132,7 @@ jobs:
             "php_phpstan",
             "php_psalm",
             "php_phplint",
+            "php_phpcsfixer",
             "powershell_powershell",
             "powershell_powershell_formatter",
             "protobuf_protolint",

@@ -63,14 +63,16 @@ linters:
     test_folder: kotlin_detekt
     install:
       dockerfile:
-        - ARG VERSION_KOTLIN_DETEKT='1.23.6'
         - |
-          RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/detekt/detekt/releases/download/v${VERSION_KOTLIN_DETEKT}/detekt-cli-${VERSION_KOTLIN_DETEKT}.zip && \
-              unzip detekt-cli-${VERSION_KOTLIN_DETEKT}.zip && \
-              chmod a+x detekt-cli-${VERSION_KOTLIN_DETEKT}/bin/* && \
-              chmod a+x detekt-cli-${VERSION_KOTLIN_DETEKT}/lib/* && \
-              mv -n detekt-cli-${VERSION_KOTLIN_DETEKT}/bin/* usr/bin && \
-              mv -n detekt-cli-${VERSION_KOTLIN_DETEKT}/lib/* usr/lib
+          # renovate: datasource=github-tags depName=detekt/detekt
+          ARG DETEKT_VERSION=1.23.6
+        - |
+          RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/detekt/detekt/releases/download/v${DETEKT_VERSION}/detekt-cli-${DETEKT_VERSION}.zip && \
+              unzip detekt-cli-${DETEKT_VERSION}.zip && \
+              chmod a+x detekt-cli-${DETEKT_VERSION}/bin/* && \
+              chmod a+x detekt-cli-${DETEKT_VERSION}/lib/* && \
+              mv -n detekt-cli-${DETEKT_VERSION}/bin/* usr/bin && \
+              mv -n detekt-cli-${DETEKT_VERSION}/lib/* usr/lib
     ide:
       emacs:
         - name: flycheck-kotlin

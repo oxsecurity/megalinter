@@ -1,0 +1,40 @@
+########################
+########################
+## Data Serialization ##
+########################
+########################
+
+# Rule: document-start - Missing document start marker
+# Rule: empty-lines - Too many blank lines (4 > 2)
+
+
+
+
+data:
+  - id: 1
+    name: John Doe
+  - id: 2
+    name: Jane Smith
+  - id: 3
+  - &anchor
+    foo: bar
+    # Rule: anchors - found undeclared alias "unknown"
+  - <<: *unknown
+    extra: value
+  - &anchor Foo Bar
+  - &anchor [item 1, item 2]
+  - items:
+    - item1
+    - item2
+  name: Alice Johnson # Rule: indentation - Inconsistent indentation
+address:
+  # Rule: trailing-spaces - Trailing spaces are disallowed
+  street: 123 Main St
+  city: Anytown
+  zip: 12345
+  state: CA
+  country: USA
+  garage: { key1: 4, key2: 8 }
+phone:
+# Rule: empty-lines - Too many blank lines (1 > 0)
+

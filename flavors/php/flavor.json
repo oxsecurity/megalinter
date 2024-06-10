@@ -38,6 +38,7 @@
         "PHP_PHPSTAN",
         "PHP_PSALM",
         "PHP_PHPLINT",
+        "PHP_PHPCSFIXER",
         "PROTOBUF_PROTOLINT",
         "REPOSITORY_CHECKOV",
         "REPOSITORY_GIT_DIFF",
