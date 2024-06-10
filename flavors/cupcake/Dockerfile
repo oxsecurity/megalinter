@@ -13,6 +13,9 @@
 #############################################################################################
 #ARGTOP__START
 ARG EDITORCONFIG_CHECKER_VERSION=latest
+# renovate: datasource=docker depName=zricethezav/gitleaks
+ARG GITLEAKS_VERSION=v8.18.3
+
 ARG TFLINT_VERSION=0.51.1
 #ARGTOP__END
 
@@ -36,7 +39,7 @@ FROM golang:1-alpine as revive
 RUN GOBIN=/usr/bin go install github.com/mgechev/revive@latest
 
 FROM ghcr.io/yannh/kubeconform:latest-alpine as kubeconform
-FROM zricethezav/gitleaks:v8.18.3 as gitleaks
+FROM zricethezav/gitleaks:${GITLEAKS_VERSION} as gitleaks
 FROM checkmarx/kics:alpine as kics
 FROM trufflesecurity/trufflehog:latest as trufflehog
 FROM lycheeverse/lychee:latest-alpine as lychee
