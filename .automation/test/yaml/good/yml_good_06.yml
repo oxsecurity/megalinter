@@ -1,0 +1,21 @@
+#######################
+#######################
+## Ansible Playbooks ##
+#######################
+#######################
+---
+- hosts: localhost
+  tasks:
+    - name: Install package
+      apt:
+        name: nginx
+        state: present
+    - name: Start service
+      service:
+        name: nginx
+        state: started
+
+- hosts: all
+  tasks:
+    - name: Echo message
+      command: echo "Hello World"

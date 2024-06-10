@@ -21,6 +21,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Fixes
   - [syft](https://github.com/anchore/syft) use `scan` instead of deprecated `packages` arg
   - [Powershell](https://github.com/PowerShell/PSScriptAnalyzer#readme) Error table truncation improvements
+  - [yamllint](https://github.com/adrienverge/yamllint) fix error/warning count to work with different log output formats
 
 - Doc
 
