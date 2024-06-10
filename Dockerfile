@@ -14,6 +14,9 @@
 # renovate: datasource=docker depName=mstruebing/editorconfig-checker
 ARG EDITORCONFIG_CHECKER_VERSION=v3.0.1
 
+# renovate: datasource=docker depName=zricethezav/gitleaks
+ARG GITLEAKS_VERSION=v8.18.3
+
 # renovate: datasource=docker depName=ghcr.io/terraform-linters/tflint
 ARG TFLINT_VERSION=0.51.1
 
@@ -44,7 +47,7 @@ FROM yoheimuta/protolint:latest as protolint
 FROM golang:alpine as dustilock
 RUN GOBIN=/usr/bin go install github.com/checkmarx/dustilock@v1.2.0
 
-FROM zricethezav/gitleaks:v8.18.2 as gitleaks
+FROM zricethezav/gitleaks:${GITLEAKS_VERSION} as gitleaks
 FROM checkmarx/kics:alpine as kics
 FROM trufflesecurity/trufflehog:latest as trufflehog
 FROM jdkato/vale:latest as vale
