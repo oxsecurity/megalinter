@@ -245,7 +245,10 @@ linters:
       - "gitleaks detect -c .gitleaks.toml --redact --no-git --verbose --source ."
     install:
       dockerfile:
-        - FROM zricethezav/gitleaks:v8.18.2 as gitleaks
+        - |
+          # renovate: datasource=docker depName=zricethezav/gitleaks
+          ARG GITLEAKS_VERSION=v8.18.2
+        - FROM zricethezav/gitleaks:${GITLEAKS_VERSION} as gitleaks
         - COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
     variables:
       - name: REPOSITORY_GITLEAKS_PR_COMMITS_SCAN
