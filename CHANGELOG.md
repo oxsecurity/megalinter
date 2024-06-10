@@ -14,6 +14,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Media
 
 - Linters
+  - Add python package Pygments to rst-lint venv
 
 - Reporters
 
@@ -48,6 +49,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.87.4 to **0.87.5** on 2024-06-07
   - [ansible-lint](https://ansible-lint.readthedocs.io/) from 24.2.3 to **24.6.0** on 2024-06-08
   - [vale](https://vale.sh/) from 3.4.2 to **3.5.0** on 2024-06-08
+  - [checkov](https://www.checkov.io/) from 3.2.128 to **3.2.130** on 2024-06-09
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.8.4 to **1.8.5** on 2024-06-09
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.58.13 to **0.58.14** on 2024-06-09
+  - [golangci-lint](https://golangci-lint.run/) from 1.59.0 to **1.59.1** on 2024-06-09
 <!-- linter-versions-end -->
 
 ## [v7.12.0] - 2024-06-02

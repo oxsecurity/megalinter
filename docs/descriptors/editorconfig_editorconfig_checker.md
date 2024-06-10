@@ -136,8 +136,10 @@ USAGE:
 
 - Dockerfile commands :
 ```dockerfile
-ARG EDITORCONFIG_CHECKER_VERSION=latest
-FROM mstruebing/editorconfig-checker:$EDITORCONFIG_CHECKER_VERSION as editorconfig-checker
+# renovate: datasource=docker depName=mstruebing/editorconfig-checker
+ARG EDITORCONFIG_CHECKER_VERSION=v3.0.1
+
+FROM mstruebing/editorconfig-checker:${EDITORCONFIG_CHECKER_VERSION} as editorconfig-checker
 COPY --link --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
 ```
 
