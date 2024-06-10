@@ -237,7 +237,6 @@ jobs:
         test: "uses: actions/checkout@v3",
         testRes: "uses: actions/checkout@v4",
       },
-      },
       // Documentation base URL
       {
         regex: /https:\/\/megalinter\.github\.io/gm,
