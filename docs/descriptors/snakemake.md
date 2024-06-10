@@ -24,8 +24,10 @@ description: snakemake, snakefmt are available to analyze SNAKEMAKE files in Meg
 
 ## Configuration in MegaLinter
 
-| Variable                       | Description                   | Default value |
-|--------------------------------|-------------------------------|---------------|
-| SNAKEMAKE_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| SNAKEMAKE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable                       | Description                                     | Default value |
+|--------------------------------|-------------------------------------------------|---------------|
+| SNAKEMAKE_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
+| SNAKEMAKE_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
+| SNAKEMAKE_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
+| SNAKEMAKE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 

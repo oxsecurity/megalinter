@@ -21,10 +21,12 @@ description: checkstyle, pmd are available to analyze JAVA files in MegaLinter
 
 ## Configuration in MegaLinter
 
-| Variable                  | Description                   | Default value |
-|---------------------------|-------------------------------|---------------|
-| JAVA_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| JAVA_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable                  | Description                                     | Default value |
+|---------------------------|-------------------------------------------------|---------------|
+| JAVA_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
+| JAVA_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
+| JAVA_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
+| JAVA_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 
 
 ## Behind the scenes
@@ -33,9 +35,9 @@ description: checkstyle, pmd are available to analyze JAVA files in MegaLinter
 
 - Dockerfile commands :
 ```dockerfile
-ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
+ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 ```
 
 - APK packages (Linux):
-  - [openjdk11](https://pkgs.alpinelinux.org/packages?branch=edge&name=openjdk11)
+  - [openjdk21](https://pkgs.alpinelinux.org/packages?branch=edge&name=openjdk21)

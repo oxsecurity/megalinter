@@ -61,6 +61,7 @@ class TextReporter(Reporter):
                 status = (
                     "✅ [SUCCESS]" if file_result["status_code"] == 0 else "❌ [ERROR]"
                 )
+                file_text_lines = []
                 if file_result["file"] is not None:
                     file_nm = utils.normalize_log_string(file_result["file"])
                     file_text_lines = [f"{status} {file_nm}"]

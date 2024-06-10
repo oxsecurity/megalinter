@@ -29,7 +29,7 @@ linters:
     config_file_name: ".cspell.json"
     cli_lint_mode: list_of_files
     cli_lint_errors_count: regex_number
-    cli_lint_errors_regex: "Issues found: ([0-9]+) in .* files"
+    cli_lint_errors_regex: "Issues found: ([0-9]+) in .* file"
     examples:
       - "cspell myfile.any"
       - "cspell -c cspell.json myfile.any"
@@ -138,12 +138,24 @@ linters:
           url: https://github.com/dense-analysis/ale
       vscode:
         - name: Vale
-          url: https://marketplace.visualstudio.com/items?itemName=errata-ai.vale-server
+          url: https://marketplace.visualstudio.com/items?itemName=ChrisChinchilla.vale-vscode
 
   # LYCHEE
   - class: LycheeLinter
     linter_name: lychee
     name: SPELL_LYCHEE
+    linter_text: |
+      A file **.lycheeignore** can be defined at the root of the repository to ignore some urls.
+
+      Each line can contain Regular Expressions or glob format.
+
+      Example with glob, regex and full url:
+
+      ```
+      https://twitter.com/intent/tweet*
+      (.*some_url_part)
+      https://github.com/sgerrand/alpine-pkg-glibc/releases/download
+      ```
     test_folder: spell_lychee
     can_output_sarif: false
     descriptor_flavors:

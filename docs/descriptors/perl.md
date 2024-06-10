@@ -27,10 +27,12 @@ description: perlcritic is available to analyze PERL files in MegaLinter
 
 ## Configuration in MegaLinter
 
-| Variable                  | Description                   | Default value |
-|---------------------------|-------------------------------|---------------|
-| PERL_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| PERL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable                  | Description                                     | Default value |
+|---------------------------|-------------------------------------------------|---------------|
+| PERL_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
+| PERL_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
+| PERL_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
+| PERL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 
 
 ## Behind the scenes

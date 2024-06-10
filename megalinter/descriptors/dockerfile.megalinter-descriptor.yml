@@ -5,6 +5,7 @@ descriptor_flavors:
   - ci_light
   - cupcake
 file_names_regex:
+  - "Containerfile"
   - "Dockerfile"
 test_folder: docker
 linters:

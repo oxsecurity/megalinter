@@ -114,17 +114,21 @@ Draft pull requests are also welcome to get feedback early on, or if there is so
 
 Apart from the descriptors, it will usually involve modifying files such as [.automation/build.py](https://github.com/oxsecurity/megalinter/blob/main/.automation/build.py)
 
-In order to be able to run locally a server that serves all the documentation and make the testing as real as possible you will have to run at least 2 commands.
+In order to be able to run locally a server that serves all the documentation and make the testing as real as possible you should setup a virtual environment.
 
-Command to execute (only one time):
+Commands to execute (only one time):
 
 ```bash
-pip install --upgrade "markdown==3.3.7" mike mkdocs-material "pymdown-extensions==9.11" "mkdocs-glightbox==0.3.2" mdx_truly_sane_lists jsonschema json-schema-for-humans giturlparse webpreview github-dependents-info
+mkdir venv
+python -m venv venv/
+source venv/bin/activate
+pip install --upgrade -r .config/python/dev/requirements.txt
 ```
 
-Command to run every time you want to bring up the server:
+Commands to run every time you want to enter the environment and run the server:
 
 ```bash
+source venv/bin/activate
 mkdocs serve
 ```
 

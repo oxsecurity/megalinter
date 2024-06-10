@@ -2,12 +2,14 @@ import { optionsDefinition } from "./options.js"
 import { spawnSync } from "child_process";
 import { default as c } from 'chalk';
 import * as path from 'path';
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
 import which from "which";
 import { default as fs } from "fs-extra";
 import { MegaLinterUpgrader } from "./upgrade.js";
 import { CodeTotalRunner } from "./codetotal.js";
 import { DEFAULT_RELEASE } from "./config.js";
-import { default as yeoman } from "yeoman-environment";
+import { createEnv} from "yeoman-environment";
 import { default as FindPackageJson } from "find-package-json";
 
 export class MegaLinterRunner {
@@ -42,7 +44,8 @@ export class MegaLinterRunner {
 
     // Run configuration generator
     if (options.install) {
-      const env = yeoman.createEnv();
+      const env = createEnv();
+      const __dirname = dirname(fileURLToPath(import.meta.url));
       const generatorPath = path.resolve(
         path.join(__dirname, "..", "generators", "mega-linter")
       );
@@ -135,7 +138,8 @@ ERROR: Docker engine has not been found on your system.
     // Build docker run options
     const lintPath = path.resolve(options.path || ".");
     const commandArgs = ["run", "--platform", imagePlatform];
-    if (options["removeContainer"]) {
+    const removeContainer = options["removeContainer"] ? true: options["noRemoveContainer"] ? false: true ;
+    if (removeContainer) {
       commandArgs.push("--rm");
     }
     if (options["containerName"]) {

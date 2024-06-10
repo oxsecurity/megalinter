@@ -23,8 +23,10 @@ description: tflint, terrascan, terragrunt, terraform-fmt are available to analy
 
 ## Configuration in MegaLinter
 
-| Variable                       | Description                   | Default value |
-|--------------------------------|-------------------------------|---------------|
-| TERRAFORM_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| TERRAFORM_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable                       | Description                                     | Default value |
+|--------------------------------|-------------------------------------------------|---------------|
+| TERRAFORM_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
+| TERRAFORM_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
+| TERRAFORM_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
+| TERRAFORM_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 

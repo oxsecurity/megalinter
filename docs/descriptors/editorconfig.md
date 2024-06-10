@@ -21,8 +21,10 @@ description: editorconfig-checker is available to analyze EDITORCONFIG files in 
 
 ## Configuration in MegaLinter
 
-| Variable                          | Description                   | Default value |
-|-----------------------------------|-------------------------------|---------------|
-| EDITORCONFIG_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| EDITORCONFIG_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable                          | Description                                     | Default value |
+|-----------------------------------|-------------------------------------------------|---------------|
+| EDITORCONFIG_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
+| EDITORCONFIG_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
+| EDITORCONFIG_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
+| EDITORCONFIG_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 

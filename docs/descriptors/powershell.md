@@ -27,10 +27,12 @@ description: powershell, powershell_formatter are available to analyze POWERSHEL
 
 ## Configuration in MegaLinter
 
-| Variable                        | Description                   | Default value |
-|---------------------------------|-------------------------------|---------------|
-| POWERSHELL_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| POWERSHELL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable                        | Description                                     | Default value |
+|---------------------------------|-------------------------------------------------|---------------|
+| POWERSHELL_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
+| POWERSHELL_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
+| POWERSHELL_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
+| POWERSHELL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 
 
 ## Behind the scenes
@@ -39,20 +41,11 @@ description: powershell, powershell_formatter are available to analyze POWERSHEL
 
 - Dockerfile commands :
 ```dockerfile
-ARG PWSH_VERSION='latest'
-ARG PWSH_DIRECTORY='/opt/microsoft/powershell'
-RUN mkdir -p ${PWSH_DIRECTORY} \
-    && curl --retry 5 --retry-delay 5 -s \
-       -H "Accept: application/vnd.github+json" \
-       -H "Authorization: Bearer $(cat /run/secrets/GITHUB_TOKEN)" \
-       https://api.github.com/repos/powershell/powershell/releases/${PWSH_VERSION} \
-        | grep browser_download_url \
-        | grep linux-alpine-x64 \
-        | cut -d '"' -f 4 \
-        | xargs -n 1 wget -O - \
-        | tar -xzC ${PWSH_DIRECTORY} \
-    && ln -sf ${PWSH_DIRECTORY}/pwsh /usr/bin/pwsh \
-    && chmod +x /usr/bin/pwsh
+RUN curl -L https://github.com/PowerShell/PowerShell/releases/download/v7.4.2/powershell-7.4.2-linux-musl-x64.tar.gz -o /tmp/powershell.tar.gz \
+    && mkdir -p /opt/microsoft/powershell/7 \
+    && tar zxf /tmp/powershell.tar.gz -C /opt/microsoft/powershell/7 \
+    && chmod +x /opt/microsoft/powershell/7/pwsh \
+    && ln -s /opt/microsoft/powershell/7/pwsh /usr/bin/pwsh
 
 ```
 

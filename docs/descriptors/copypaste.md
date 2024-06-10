@@ -17,8 +17,10 @@ description: jscpd is available to analyze COPYPASTE files in MegaLinter
 
 ## Configuration in MegaLinter
 
-| Variable                       | Description                   | Default value |
-|--------------------------------|-------------------------------|---------------|
-| COPYPASTE_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| COPYPASTE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable                       | Description                                     | Default value |
+|--------------------------------|-------------------------------------------------|---------------|
+| COPYPASTE_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
+| COPYPASTE_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
+| COPYPASTE_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
+| COPYPASTE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 

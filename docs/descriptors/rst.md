@@ -22,8 +22,10 @@ description: rst-lint, rstcheck, rstfmt are available to analyze RST files in Me
 
 ## Configuration in MegaLinter
 
-| Variable                 | Description                   | Default value |
-|--------------------------|-------------------------------|---------------|
-| RST_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| RST_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable                 | Description                                     | Default value |
+|--------------------------|-------------------------------------------------|---------------|
+| RST_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
+| RST_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
+| RST_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
+| RST_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 

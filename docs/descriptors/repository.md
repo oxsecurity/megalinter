@@ -29,8 +29,10 @@ description: checkov, devskim, dustilock, git_diff, gitleaks, grype, kics, secre
 
 ## Configuration in MegaLinter
 
-| Variable                        | Description                   | Default value |
-|---------------------------------|-------------------------------|---------------|
-| REPOSITORY_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| REPOSITORY_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable                        | Description                                     | Default value |
+|---------------------------------|-------------------------------------------------|---------------|
+| REPOSITORY_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
+| REPOSITORY_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
+| REPOSITORY_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
+| REPOSITORY_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 

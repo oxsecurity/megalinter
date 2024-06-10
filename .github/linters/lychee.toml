@@ -29,7 +29,7 @@ user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTM
 retry_wait_time = 2
 
 # Comma-separated list of accepted status codes for valid links.
-accept = [200, 206, 429]
+accept = ["200", "206", "429"]
 
 # Only test links with the given schemes (e.g. https).
 # Omit to check links with any scheme.

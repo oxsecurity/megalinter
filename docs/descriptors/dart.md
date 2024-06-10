@@ -20,10 +20,12 @@ description: dartanalyzer is available to analyze DART files in MegaLinter
 
 ## Configuration in MegaLinter
 
-| Variable                  | Description                   | Default value |
-|---------------------------|-------------------------------|---------------|
-| DART_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| DART_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable                  | Description                                     | Default value |
+|---------------------------|-------------------------------------------------|---------------|
+| DART_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
+| DART_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
+| DART_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
+| DART_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 
 
 ## Behind the scenes

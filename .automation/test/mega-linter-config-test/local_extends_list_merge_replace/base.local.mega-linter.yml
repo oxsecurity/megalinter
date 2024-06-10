@@ -1,0 +1,4 @@
+ENABLE_LINTERS:
+  - LINTER_1
+  - LINTER_3
+FILTER_REGEX_INCLUDE: "(base-local)"

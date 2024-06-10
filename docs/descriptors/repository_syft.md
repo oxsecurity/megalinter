@@ -17,7 +17,7 @@ Builds a SBOM (Software Build Of Materials) from your repository
 
 ## syft documentation
 
-- Version in MegaLinter: **0.92.0**
+- Version in MegaLinter: **1.5.0**
 - Visit [Official Web Site](https://github.com/anchore/syft#readme){target=_blank}
 
 [![syft - GitHub](https://gh-card.dev/repos/anchore/syft.svg?fullname=)](https://github.com/anchore/syft){target=_blank}
@@ -46,7 +46,7 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                   | Description               | Embedded linters |                                                                                                                                                                                         Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)     | Default MegaLinter Flavor |       117        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)     | Default MegaLinter Flavor |       124        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://megalinter.io/beta/flavors/security/) | Optimized for security    |        24        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
 
 ## Behind the scenes
@@ -77,222 +77,66 @@ syft /tmp/lint
 Generate a packaged-based Software Bill Of Materials (SBOM) from container images and filesystems
 
 Usage:
+  syft [SOURCE] [flags]
   syft [command]
 
-Application Configuration:
+Examples:
+  syft scan alpine:latest                                a summary of discovered packages
+  syft scan alpine:latest -o json                        show all possible cataloging details
+  syft scan alpine:latest -o cyclonedx                   show a CycloneDX formatted SBOM
+  syft scan alpine:latest -o cyclonedx-json              show a CycloneDX JSON formatted SBOM
+  syft scan alpine:latest -o spdx                        show a SPDX 2.3 Tag-Value formatted SBOM
+  syft scan alpine:latest -o spdx@2.2                    show a SPDX 2.2 Tag-Value formatted SBOM
+  syft scan alpine:latest -o spdx-json                   show a SPDX 2.3 JSON formatted SBOM
+  syft scan alpine:latest -o spdx-json@2.2               show a SPDX 2.2 JSON formatted SBOM
+  syft scan alpine:latest -vv                            show verbose debug information
+  syft scan alpine:latest -o template -t my_format.tmpl  show a SBOM formatted according to given template file
 
-  # (env: SYFT_CONFIG)
-  config: ''
+  Supports the following image sources:
+    syft scan yourrepo/yourimage:tag     defaults to using images from a Docker daemon. If Docker is not present, the image is pulled directly from the registry.
+    syft scan path/to/a/file/or/dir      a Docker tar, OCI tar, OCI directory, SIF container, or generic filesystem directory
 
-  # report output format, options=[syft-json github-json syft-table syft-text template cyclonedx-xml cyclonedx-json spdx-tag-value spdx-json] (env: SYFT_OUTPUT)
-  output:
-    - 'syft-table'
+  You can also explicitly specify the scheme to use:
+    syft scan docker:yourrepo/yourimage:tag            explicitly use the Docker daemon
+    syft scan podman:yourrepo/yourimage:tag            explicitly use the Podman daemon
+    syft scan registry:yourrepo/yourimage:tag          pull image directly from a registry (no container runtime required)
+    syft scan docker-archive:path/to/yourimage.tar     use a tarball from disk for archives created from "docker save"
+    syft scan oci-archive:path/to/yourimage.tar        use a tarball from disk for OCI archives (from Skopeo or otherwise)
+    syft scan oci-dir:path/to/yourimage                read directly from a path on disk for OCI layout directories (from Skopeo or otherwise)
+    syft scan singularity:path/to/yourimage.sif        read directly from a Singularity Image Format (SIF) container on disk
+    syft scan dir:path/to/yourproject                  read directly from a path on disk (any directory)
+    syft scan file:path/to/yourproject/file            read directly from a path on disk (any single file)
 
-  # file to write the default report output to (default is STDOUT) (env: SYFT_FILE)
-  file: ''
-
-  # specify the path to a Go template file (env: SYFT_OUTPUT_TEMPLATE_PATH)
-  output-template-path: ''
-
-  # (env: SYFT_CHECK_FOR_APP_UPDATE)
-  check-for-app-update: true
-
-  # enable one or more package catalogers (env: SYFT_CATALOGERS)
-  catalogers: []
-
-  package:
-    cataloger:
-      # (env: SYFT_PACKAGE_CATALOGER_ENABLED)
-      enabled: true
-
-      # selection of layers to catalog, options=[squashed all-layers] (env: SYFT_PACKAGE_CATALOGER_SCOPE)
-      scope: 'Squashed'
-
-    # (env: SYFT_PACKAGE_SEARCH_UNINDEXED_ARCHIVES)
-    search-unindexed-archives: false
-
-    # (env: SYFT_PACKAGE_SEARCH_INDEXED_ARCHIVES)
-    search-indexed-archives: true
-
-  golang:
-    # (env: SYFT_GOLANG_SEARCH_LOCAL_MOD_CACHE_LICENSES)
-    search-local-mod-cache-licenses: false
-
-    # (env: SYFT_GOLANG_LOCAL_MOD_CACHE_DIR)
-    local-mod-cache-dir: ''
-
-    # (env: SYFT_GOLANG_SEARCH_REMOTE_LICENSES)
-    search-remote-licenses: false
-
-    # (env: SYFT_GOLANG_PROXY)
-    proxy: ''
-
-    # (env: SYFT_GOLANG_NO_PROXY)
-    no-proxy: ''
-
-  linux-kernel:
-    # (env: SYFT_LINUX_KERNEL_CATALOG_MODULES)
-    catalog-modules: true
-
-  python:
-    # (env: SYFT_PYTHON_GUESS_UNPINNED_REQUIREMENTS)
-    guess-unpinned-requirements: false
-
-  file-metadata:
-    cataloger:
-      # (env: SYFT_FILE_METADATA_CATALOGER_ENABLED)
-      enabled: false
-
-      # (env: SYFT_FILE_METADATA_CATALOGER_SCOPE)
-      scope: 'Squashed'
-
-    # (env: SYFT_FILE_METADATA_DIGESTS)
-    digests:
-      - 'sha256'
-
-  file-classification:
-    cataloger:
-      # (env: SYFT_FILE_CLASSIFICATION_CATALOGER_ENABLED)
-      enabled: false
-
-      # (env: SYFT_FILE_CLASSIFICATION_CATALOGER_SCOPE)
-      scope: 'Squashed'
-
-  file-contents:
-    cataloger:
-      # (env: SYFT_FILE_CONTENTS_CATALOGER_ENABLED)
-      enabled: false
-
-      # (env: SYFT_FILE_CONTENTS_CATALOGER_SCOPE)
-      scope: 'Squashed'
-
-    # (env: SYFT_FILE_CONTENTS_SKIP_FILES_ABOVE_SIZE)
-    skip-files-above-size: 1048576
-
-    # (env: SYFT_FILE_CONTENTS_GLOBS)
-    globs: []
-
-  secrets:
-    cataloger:
-      # (env: SYFT_SECRETS_CATALOGER_ENABLED)
-      enabled: false
-
-      # (env: SYFT_SECRETS_CATALOGER_SCOPE)
-      scope: 'AllLayers'
-
-    # (env: SYFT_SECRETS_ADDITIONAL_PATTERNS)
-    additional-patterns: map[]
-
-    # (env: SYFT_SECRETS_EXCLUDE_PATTERN_NAMES)
-    exclude-pattern-names: []
-
-    # (env: SYFT_SECRETS_REVEAL_VALUES)
-    reveal-values: false
-
-    # (env: SYFT_SECRETS_SKIP_FILES_ABOVE_SIZE)
-    skip-files-above-size: 1048576
-
-  registry:
-    # (env: SYFT_REGISTRY_INSECURE_SKIP_TLS_VERIFY)
-    insecure-skip-tls-verify: false
-
-    # (env: SYFT_REGISTRY_INSECURE_USE_HTTP)
-    insecure-use-http: false
-
-    auth: []
-
-    # (env: SYFT_REGISTRY_CA_CERT)
-    ca-cert: ''
-
-  # exclude paths from being scanned using a glob expression (env: SYFT_EXCLUDE)
-  exclude: []
-
-  # an optional platform specifier for container image sources (e.g. 'linux/arm64', 'linux/arm64/v8', 'arm64', 'linux') (env: SYFT_PLATFORM)
-  platform: ''
-
-  # (env: SYFT_NAME)
-  name: ''
-
-  source:
-    # set the name of the target being analyzed (env: SYFT_SOURCE_NAME)
-    name: ''
-
-    # set the version of the target being analyzed (env: SYFT_SOURCE_VERSION)
-    version: ''
-
-    file:
-      # (env: SYFT_SOURCE_FILE_DIGESTS)
-      digests:
-        - 'sha256'
-
-  # (env: SYFT_PARALLELISM)
-  parallelism: 1
-
-  # (env: SYFT_DEFAULT_IMAGE_PULL_SOURCE)
-  default-image-pull-source: ''
-
-  # base directory for scanning, no links will be followed above this directory, and all paths will be reported relative to this directory (env: SYFT_BASE_PATH)
-  base-path: ''
-
-  # (env: SYFT_EXCLUDE_BINARY_OVERLAP_BY_OWNERSHIP)
-  exclude-binary-overlap-by-ownership: true
-
-  log:
-    # suppress all logging output (env: SYFT_LOG_QUIET)
-    quiet: false
-
-    # increase verbosity (-v = info, -vv = debug) (env: SYFT_LOG_VERBOSITY)
-    verbosity: 0
-
-    # explicitly set the logging level (available: [error warn info debug trace]) (env: SYFT_LOG_LEVEL)
-    level: warn
-
-    # file path to write logs to (env: SYFT_LOG_FILE)
-    file: ''
-
-  dev:
-    # capture resource profiling data (available: [cpu, mem]) (env: SYFT_DEV_PROFILE)
-    profile: none
-
-  # (env: SYFT_KEY)
-  key:
-
-  # (env: SYFT_PASSWORD)
-  password:
-
-Config Search Locations:
-  - .syft.yaml
-  - .syft/config.yaml
-  - /root/.syft.yaml
-  - /root/.config/syft/config.yaml
-  - /etc/xdg/syft/config.yaml
 
 Available Commands:
   attest      Generate an SBOM as an attestation for the given [SOURCE] container image
+  cataloger   Show available catalogers and configuration
   completion  Generate the autocompletion script for the specified shell
+  config      show the syft configuration
   convert     Convert between SBOM formats
   help        Help about any command
   login       Log in to a registry
-  packages    Generate a package SBOM
+  scan        Generate an SBOM
   version     show version information
 
 Flags:
-      --base-path string         base directory for scanning, no links will be followed above this directory, and all paths will be reported relative to this directory
-      --catalogers stringArray   enable one or more package catalogers
-  -c, --config string            syft configuration file
-      --exclude stringArray      exclude paths from being scanned using a glob expression
-      --file string              file to write the default report output to (default is STDOUT)
-  -h, --help                     help for syft
-      --name string              set the name of the target being analyzed (DEPRECATED: use: source-name)
-  -o, --output stringArray       report output format, options=[syft-json github-json syft-table syft-text template cyclonedx-xml cyclonedx-json spdx-tag-value spdx-json] (default [syft-table])
-      --platform string          an optional platform specifier for container image sources (e.g. 'linux/arm64', 'linux/arm64/v8', 'arm64', 'linux')
-  -q, --quiet                    suppress all logging output
-  -s, --scope string             selection of layers to catalog, options=[squashed all-layers] (default "Squashed")
-      --source-name string       set the name of the target being analyzed
-      --source-version string    set the version of the target being analyzed
-  -t, --template string          specify the path to a Go template file
-  -v, --verbose count            increase verbosity (-v = info, -vv = debug)
-      --version                  version for syft
+      --base-path string                          base directory for scanning, no links will be followed above this directory, and all paths will be reported relative to this directory
+  -c, --config string                             syft configuration file
+      --exclude stringArray                       exclude paths from being scanned using a glob expression
+      --file string                               file to write the default report output to (default is STDOUT) (DEPRECATED: use: output)
+      --from stringArray                          specify the source behavior to use (e.g. docker, registry, oci-dir, ...)
+  -h, --help                                      help for syft
+  -o, --output stringArray                        report output format (<format>=<file> to output to a file), formats=[cyclonedx-json cyclonedx-xml github-json spdx-json spdx-tag-value syft-json syft-table syft-text template] (default [syft-table])
+      --override-default-catalogers stringArray   set the base set of catalogers to use (defaults to 'image' or 'directory' depending on the scan source)
+      --platform string                           an optional platform specifier for container image sources (e.g. 'linux/arm64', 'linux/arm64/v8', 'arm64', 'linux')
+  -q, --quiet                                     suppress all logging output
+  -s, --scope string                              selection of layers to catalog, options=[squashed all-layers] (default "squashed")
+      --select-catalogers stringArray             add, remove, and filter the catalogers to be used
+      --source-name string                        set the name of the target being analyzed
+      --source-version string                     set the version of the target being analyzed
+  -t, --template string                           specify the path to a Go template file
+  -v, --verbose count                             increase verbosity (-v = info, -vv = debug)
+      --version                                   version for syft
 
 Use "syft [command] --help" for more information about a command.
 ```

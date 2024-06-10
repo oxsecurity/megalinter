@@ -27,8 +27,12 @@ linters:
     cli_lint_mode: project
     cli_config_arg_name: "--config-file"
     config_file_name: .checkov.yml
-    cli_sarif_args: ["--output", "sarif"]
-    sarif_default_output_file: ./results.sarif
+    cli_sarif_args:
+      - --output
+      - sarif
+      - --output-file-path
+      - "{{REPORT_FOLDER}}"
+    sarif_default_output_file: results_sarif.sarif
     cli_lint_extra_args:
       - "--directory"
       - "."
@@ -38,8 +42,8 @@ linters:
       - "checkov --directory ."
       - "checkov --directory . --output --sarif"
     install:
-      cargo:
-        - COMPILER_ONLY # Use COMPILER_ONLY fake package just to Dockerfile contains rust toolchain install
+      # cargo:
+      #   - COMPILER_ONLY # Use COMPILER_ONLY fake package just to Dockerfile contains rust toolchain install
       pip:
         - packaging
         - checkov
@@ -49,17 +53,26 @@ linters:
           url: https://marketplace.visualstudio.com/items?itemName=Bridgecrew.checkov
     test_folder: repository_checkov
   # DEVSKIM
-  - linter_name: devskim
+  - class: DotNetToolLinter
+    linter_name: devskim
     can_output_sarif: true
     descriptor_flavors:
       - all
       - security
     ignore_for_flavor_suggestions: true
     linter_text: |
-      Use `--ignore-globs` to ignore files and/or folders
+      If you need to ignore folders,files or file extensions, use glob expressions `Glob` property of local `.devskim.json` file
 
       Example:
-        `REPOSITORY_DEVSKIM_ARGUMENTS: ['--ignore-globs','**/megalinter-reports/**,**/.git/**,**/bin/**']`
+
+      ```json
+      {
+        Glob: [
+          "**/.git/**",
+          "**/megalinter-reports/**"
+        ]
+      }
+      ```
     linter_url: https://github.com/microsoft/DevSkim
     linter_repo: https://github.com/microsoft/DevSkim
     linter_speed: 1
@@ -67,6 +80,7 @@ linters:
     linter_rules_ignore_config_url: https://github.com/microsoft/DevSkim/wiki/Analyze-Command
     linter_image_url: https://github.com/microsoft/DevSkim/raw/main/media/devskim_logo.svg
     linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/devskim.png
+    config_file_name: .devskim.json
     cli_lint_mode: project
     cli_lint_extra_args:
       - analyze
@@ -86,21 +100,10 @@ linters:
       - "devskim analyze ."
       - "devskim analyze --file-format sarif ."
     install:
-      apk:
-        - icu-libs
-        - libcurl
-        - libintl
-        - libssl1.1
-        - libstdc++
-        - lttng-ust-dev
-        - zlib
-        - zlib-dev
       dockerfile:
-        - |
-          RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
-              && chmod +x dotnet-install.sh \
-              && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
-        - ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
+        # https://github.com/dotnet/sdk/issues/37790#issuecomment-1918068016
+        - RUN apk add --no-cache dotnet8-sdk --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community
+        - ENV PATH="${PATH}:/root/.dotnet/tools"
         - RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI
     ide:
       vscode:
@@ -242,7 +245,10 @@ linters:
       - "gitleaks detect -c .gitleaks.toml --redact --no-git --verbose --source ."
     install:
       dockerfile:
-        - FROM zricethezav/gitleaks:v8.18.0 as gitleaks
+        - |
+          # renovate: datasource=docker depName=zricethezav/gitleaks
+          ARG GITLEAKS_VERSION=v8.18.3
+        - FROM zricethezav/gitleaks:${GITLEAKS_VERSION} as gitleaks
         - COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
     variables:
       - name: REPOSITORY_GITLEAKS_PR_COMMITS_SCAN
@@ -281,11 +287,9 @@ linters:
     cli_version_arg_name: version
     examples:
       - "grype dir:."
-    downgraded_version: true
-    downgraded_reason: https://github.com/anchore/grype/issues/1388
     install:
       dockerfile:
-        - RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin v0.63.1
+        - RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin
     test_folder: repository_grype
 
   # KICS
@@ -323,15 +327,16 @@ linters:
       - --report-formats
       - "sarif"
     cli_version_arg_name: "version"
+    cli_lint_errors_count: regex_number
+    cli_lint_errors_regex: "TOTAL: ([0-9]+)"
     examples:
       - "kics scan --path ."
     install:
       dockerfile:
         - FROM checkmarx/kics:alpine as kics
-        - COPY --link --from=kics /app/bin/kics /usr/bin/
-        - RUN mkdir -p /opt/kics/assets
-        - ENV KICS_QUERIES_PATH=/opt/kics/assets/queries KICS_LIBRARIES_PATH=/opt/kics/assets/libraries
-        - COPY --from=kics /app/bin/assets /opt/kics/assets/
+        - COPY --link --from=kics /app/bin/kics /usr/bin/kics
+        - ENV KICS_QUERIES_PATH=/usr/bin/assets/queries KICS_LIBRARIES_PATH=/usr/bin/assets/libraries
+        - COPY --from=kics /app/bin/assets /usr/bin/assets
     test_folder: repository_kics
 
   # SECRETLINT
@@ -449,7 +454,7 @@ linters:
     config_file_name: .syft.yaml
     cli_config_arg_name: --config
     cli_lint_extra_args:
-      - packages
+      - scan
       - .
     cli_sarif_args:
       - --output
@@ -491,14 +496,14 @@ linters:
     cli_lint_extra_args:
       - fs
       - --scanners
-      - vuln,config
+      - vuln,misconfig
       - --exit-code
       - "1"
     cli_lint_extra_args_after:
       - "."
     test_folder: trivy
     examples:
-      - "trivy fs --scanners vuln,config ."
+      - "trivy fs --scanners vuln,misconfig ."
     install:
       dockerfile:
         - |
@@ -575,6 +580,7 @@ linters:
       - "."
       - --fail
       - --only-verified
+      - --no-update
     cli_help_arg_name: --help
     cli_version_arg_name: --version
     examples:

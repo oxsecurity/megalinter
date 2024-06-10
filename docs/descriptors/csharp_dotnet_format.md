@@ -11,7 +11,7 @@ dotnet-format requires a `.sln` or `.csproj` file to run correctly.
 
 ## dotnet-format documentation
 
-- Version in MegaLinter: **6.0.414**
+- Version in MegaLinter: **8.0.106**
 - Visit [Official Web Site](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format){target=_blank}
 
 [![format - GitHub](https://gh-card.dev/repos/dotnet/format.svg?fullname=)](https://github.com/dotnet/format){target=_blank}
@@ -43,11 +43,12 @@ dotnet-format requires a `.sln` or `.csproj` file to run correctly.
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                     | Description                                              | Embedded linters |                                                                                                                                                                                           Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------|:---------------------------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)       | Default MegaLinter Flavor                                |       117        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/)       | Optimized for C, C++, C# or VB based projects            |        63        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
-|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/) | Optimized for C, C++, C# or VB based projects with JS/TS |        72        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
+|                                                                         <!-- -->                                                                         | Flavor                                                       | Description                                              | Embedded linters |                                                                                                                                                                                             Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------|:---------------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor                                |       124        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/)         | Optimized for C, C++, C# or VB based projects            |        62        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/)   | Optimized for C, C++, C# or VB based projects with JS/TS |        71        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
+|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/formatters.ico" alt="" height="32px" class="megalinter-icon"></a>      | [formatters](https://megalinter.io/beta/flavors/formatters/) | Contains only formatters                                 |        17        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-formatters/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-formatters) |
 
 ## Behind the scenes
 
@@ -79,31 +80,31 @@ Description:
   Formats code to match editorconfig settings.
 
 Usage:
-  dotnet-format [<The project or solution file to operate on. If a file is not specified, the command will search the current directory for one.>] [command] [options]
+  dotnet-format [<PROJECT | SOLUTION>] [command] [options]
 
 Arguments:
-  <The project or solution file to operate on. If a file is not specified, the command will search the current directory for one.>  The project or solution file to operate on. If a file is not specified, the command will search the current directory for one. [default: /]
+  <PROJECT | SOLUTION>  The project or solution file to operate on. If a file is not specified, the command will search the current directory for one. [default: /]
 
 Options:
-  --diagnostics <diagnostics>                                              A space separated list of diagnostic ids to use as a filter when fixing code style or 3rd party issues. []
-  --exclude-diagnostics <exclude-diagnostics>                              A space separated list of diagnostic ids to ignore when fixing code style or 3rd party issues. []
+  -?, -h, --help                                                           Show help and usage information
+  --version                                                                Show version information
+  --diagnostics                                                            A space separated list of diagnostic ids to use as a filter when fixing code style or 3rd party issues. []
+  --exclude-diagnostics                                                    A space separated list of diagnostic ids to ignore when fixing code style or 3rd party issues. []
   --severity <error|info|warn>                                             The severity of diagnostics to fix. Allowed values are info, warn, and error.
   --no-restore                                                             Doesn't execute an implicit restore before formatting.
   --verify-no-changes                                                      Verify no formatting changes would be performed. Terminates with a non-zero exit code if any files would have been formatted.
-  --include <include>                                                      A list of relative file or folder paths to include in formatting. All files are formatted if empty. []
-  --exclude <exclude>                                                      A list of relative file or folder paths to exclude from formatting. []
+  --include                                                                A list of relative file or folder paths to include in formatting. All files are formatted if empty. []
+  --exclude                                                                A list of relative file or folder paths to exclude from formatting. []
   --include-generated                                                      Format files generated by the SDK.
   -v, --verbosity <d|detailed|diag|diagnostic|m|minimal|n|normal|q|quiet>  Set the verbosity level. Allowed values are q[uiet], m[inimal], n[ormal], d[etailed], and diag[nostic]
   --binarylog <binary-log-path>                                            Log all project or solution load information to a binary log file.
   --report <report-path>                                                   Accepts a file path which if provided will produce a json report in the given directory.
-  --version                                                                Show version information
-  -?, -h, --help                                                           Show help and usage information
 
 
 Commands:
-  whitespace <The project or solution file to operate on. If a file is not specified, the command will search the current directory for one.>  Run whitespace formatting. [default: /]
-  style <The project or solution file to operate on. If a file is not specified, the command will search the current directory for one.>       Run code style analyzers and apply fixes. [default: /]
-  analyzers <The project or solution file to operate on. If a file is not specified, the command will search the current directory for one.>   Run 3rd party analyzers and apply fixes. [default: /]
+  whitespace <PROJECT | SOLUTION>  Run whitespace formatting. [default: /]
+  style <PROJECT | SOLUTION>       Run code style analyzers and apply fixes. [default: /]
+  analyzers <PROJECT | SOLUTION>   Run 3rd party analyzers and apply fixes. [default: /]
 
 
 ```

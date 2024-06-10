@@ -35,10 +35,18 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
       - name: Setup Node
-        uses: actions/setup-node@v3.8.1
+        uses: actions/setup-node@v4.0.2
         with:
-          node-version: "16"
+          node-version: "18.x"
       - name: Install dependencies
         run: cd mega-linter-runner && yarn install --frozen-lockfile && npm link
+
+      # Free disk space
+      - name: Free Disk space
+        shell: bash
+        run: |
+          sudo rm -rf /usr/local/lib/android  # will release about 10 GB if you don't need Android
+          sudo rm -rf /usr/share/dotnet # will release about 20GB if you don't need .NET
+      # Run mocha tests
       - name: Run tests
         run: cd mega-linter-runner && npm run test
