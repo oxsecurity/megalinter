@@ -230,13 +230,13 @@ jobs:
         replacement: "actions/checkout@v3",
         test: "uses: actions/checkout@v2",
         testRes: "uses: actions/checkout@v3",
-    },
-    {
+      },
+      {
         regex: /actions\/checkout@v3/gm,
         replacement: "actions/checkout@v4",
         test: "uses: actions/checkout@v3",
         testRes: "uses: actions/checkout@v4",
-    },
+      },
       },
       // Documentation base URL
       {
