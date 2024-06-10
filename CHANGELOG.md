@@ -54,6 +54,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.8.4 to **1.8.5** on 2024-06-09
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.58.13 to **0.58.14** on 2024-06-09
   - [golangci-lint](https://golangci-lint.run/) from 1.59.0 to **1.59.1** on 2024-06-09
+  - [pmd](https://pmd.github.io/) from 7.1.0 to **7.2.0** on 2024-06-10
 <!-- linter-versions-end -->
 
 ## [v7.12.0] - 2024-06-02

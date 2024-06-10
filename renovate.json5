@@ -6,7 +6,8 @@
     "customManagers:dockerfileVersions",
     ":maintainLockFilesWeekly",
     ":separateMultipleMajorReleases",
-    ":semanticCommits"
+    ":semanticCommits",
+    ":label(dependencies)"
   ],
   "customManagers": [
     // This is "customManagers:dockerfileVersions":

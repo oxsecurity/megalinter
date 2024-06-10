@@ -15,6 +15,9 @@
 # renovate: datasource=docker depName=mstruebing/editorconfig-checker
 ARG EDITORCONFIG_CHECKER_VERSION=v3.0.1
 
+# renovate: datasource=docker depName=zricethezav/gitleaks
+ARG GITLEAKS_VERSION=v8.18.3
+
 #ARGTOP__END
 
 #############################################################################################
@@ -32,7 +35,7 @@ FROM hadolint/hadolint:v2.12.0-alpine as hadolint
 FROM mstruebing/editorconfig-checker:${EDITORCONFIG_CHECKER_VERSION} as editorconfig-checker
 FROM ghcr.io/yannh/kubeconform:latest-alpine as kubeconform
 FROM yoheimuta/protolint:latest as protolint
-FROM zricethezav/gitleaks:v8.18.2 as gitleaks
+FROM zricethezav/gitleaks:${GITLEAKS_VERSION} as gitleaks
 FROM trufflesecurity/trufflehog:latest as trufflehog
 FROM jdkato/vale:latest as vale
 FROM lycheeverse/lychee:latest-alpine as lychee
@@ -48,7 +51,7 @@ FROM python:3.12.3-alpine3.19
 #############################################################################################
 #ARG__START
 # renovate: datasource=github-tags depName=pmd/pmd extractVersion=^pmd_releases/(?<version>.*)$
-ARG PMD_VERSION=7.1.0
+ARG PMD_VERSION=7.2.0
 
 # renovate: datasource=github-tags depName=detekt/detekt
 ARG DETEKT_VERSION=1.23.6
