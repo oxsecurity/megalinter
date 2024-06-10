@@ -51,7 +51,7 @@ git fetch --depth=0
 
 ## gitleaks documentation
 
-- Version in MegaLinter: **8.18.2**
+- Version in MegaLinter: **8.18.3**
 - Visit [Official Web Site](https://github.com/gitleaks/gitleaks#readme){target=_blank}
 - See [How to configure gitleaks rules](https://github.com/gitleaks/gitleaks#configuration){target=_blank}
   - If custom `.gitleaks.toml` config file isn't found, [.gitleaks.toml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.gitleaks.toml){target=_blank} will be used
@@ -179,7 +179,10 @@ Use "gitleaks [command] --help" for more information about a command.
 
 - Dockerfile commands :
 ```dockerfile
-FROM zricethezav/gitleaks:v8.18.2 as gitleaks
+# renovate: datasource=docker depName=zricethezav/gitleaks
+ARG GITLEAKS_VERSION=v8.18.3
+
+FROM zricethezav/gitleaks:${GITLEAKS_VERSION} as gitleaks
 COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 ```
 
