@@ -4,7 +4,6 @@
 ########################
 ########################
 ---
-
 data:
   - id: 1
     name: John Doe
@@ -19,4 +18,3 @@ address:
   zip: 12345
   state: CA
   country: USA
-...

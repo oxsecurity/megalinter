@@ -4,7 +4,6 @@
 #####################
 #####################
 ---
-
 stages:
   - build
   - test
@@ -21,4 +20,3 @@ test_job:
     - echo "Testing..."
     - echo "Test complete!"
     - echo "Another test"
-...

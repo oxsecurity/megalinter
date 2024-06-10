@@ -4,7 +4,6 @@
 #####################
 #####################
 ---
-
 name: CI
 on: [push, pull_request]
 jobs:
@@ -23,4 +22,3 @@ jobs:
           echo Line 1
           echo Line 2
           echo Line 3
-...

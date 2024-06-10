@@ -4,7 +4,6 @@
 ########################
 ########################
 ---
-
 database:
   host: localhost
   port: 5432
@@ -26,4 +25,3 @@ logging:
 features:
   enable_feature_x: true
   enable_feature_y: false
-...

@@ -4,7 +4,6 @@
 #######################
 #######################
 ---
-
 - hosts: localhost
   tasks:
     - name: Install package
@@ -20,4 +19,3 @@
   tasks:
     - name: Echo message
       command: echo "Hello World"
-...
