@@ -9,7 +9,7 @@
     ]
   },
   "dependencies": {
-    "@cspell/dict-medicalterms": "^3.0.0",
+    "@cspell/dict-medicalterms": "^4.0.0",
     "markdown-table-formatter": "^1.4.0"
   }
 }

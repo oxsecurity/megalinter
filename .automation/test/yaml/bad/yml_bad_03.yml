@@ -1,0 +1,26 @@
+#####################
+#####################
+##### GitLab CI #####
+#####################
+#####################
+
+# Rule: document-start - Missing document start marker
+stages:
+# Rule: wrong indentation: expected at least 1
+- build
+- test
+build_job:
+  stage: build
+  script:
+    - echo "Building..." # Rule: trailing-spaces - Trailing spaces are disallowed
+    # Rule: syntax error: expected <block end>, but found '<block sequence start>' (syntax)
+     - echo "Build complete!" # Rule: empty-lines - Empty lines in a block avoided
+test_job:
+  stage: test
+  script:
+    - echo "Testing..."
+    - # Rule: empty-values - Empty values should be avoided
+    - echo "Test complete!"
+    - echo "Another test"
+# Rule: empty-lines - Too many blank lines (1 > 0)
+
