@@ -28,6 +28,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Flavors
 
 - CI
+  - Bump actions/checkout from 3 to 4
 
 - Linter versions upgrades
   - [checkov](https://www.checkov.io/) from 3.2.122 to **3.2.124** on 2024-06-02

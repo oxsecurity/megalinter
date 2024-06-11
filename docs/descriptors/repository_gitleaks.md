@@ -24,7 +24,7 @@ To scan only PR commits, the [shallow fetch](https://git-scm.com/docs/git-fetch#
 #### GitHub Actions
 
 ```yml
-- uses: actions/checkout@v3
+- uses: actions/checkout@v4
   with:
     fetch-depth: 0
 ```
