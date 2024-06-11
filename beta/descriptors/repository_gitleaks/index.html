@@ -3466,7 +3466,7 @@
 <h3 id="repository-checkout-on-pull-requests">Repository checkout on Pull Requests</h3>
 <p>To scan only PR commits, the <a href="https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---depthltdepthgt" target="_blank">shallow fetch</a> for a repository checkout has to be 0. Below is an example configuration for supported platforms:</p>
 <h4 id="github-actions">GitHub Actions</h4>
-<pre><code class="language-yml">- uses: actions/checkout@v3
+<pre><code class="language-yml">- uses: actions/checkout@v4
   with:
     fetch-depth: 0
 </code></pre>
