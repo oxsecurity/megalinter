@@ -17,7 +17,7 @@ from pytablewriter import MarkdownTableWriter
 from redis import Redis
 
 
-def build_markdown_summary(reporter_self, action_run_url):
+def build_markdown_summary(reporter_self, action_run_url=""):
     table_header = ["Descriptor", "Linter", "Files", "Fixed", "Errors"]
     if reporter_self.master.show_elapsed_time is True:
         table_header += ["Elapsed time"]
@@ -27,9 +27,11 @@ def build_markdown_summary(reporter_self, action_run_url):
             status = (
                 "✅"
                 if linter.status == "success" and linter.return_code == 0
-                else "⚠️"
-                if linter.status != "success" and linter.return_code == 0
-                else "❌"
+                else (
+                    "⚠️"
+                    if linter.status != "success" and linter.return_code == 0
+                    else "❌"
+                )
             )
             first_col = f"{status} {linter.descriptor_id}"
             lang_lower = linter.descriptor_id.lower()
@@ -74,9 +76,7 @@ def build_markdown_summary(reporter_self, action_run_url):
         "✅"
         if reporter_self.master.return_code == 0
         and reporter_self.master.status == "success"
-        else "⚠️"
-        if reporter_self.master.status == "warning"
-        else "❌"
+        else "⚠️" if reporter_self.master.status == "warning" else "❌"
     )
     status_with_href = (
         status
@@ -266,9 +266,11 @@ def build_linter_reporter_external_result(reporter, redis_stream=False) -> dict:
     status_message = (
         success_msg
         if reporter.master.status == "success" and reporter.master.return_code == 0
-        else error_not_blocking
-        if reporter.master.status == "error" and reporter.master.return_code == 0
-        else error_msg
+        else (
+            error_not_blocking
+            if reporter.master.status == "error" and reporter.master.return_code == 0
+            else error_msg
+        )
     )
     result = {
         "messageType": "linterComplete",
@@ -309,9 +311,9 @@ def build_linter_reporter_external_result(reporter, redis_stream=False) -> dict:
                 "External Message: Unable to find linter output, "
                 "there is a probably an error within MegaLinter Worker"
             )
-            result[
-                "outputText"
-            ] = f"Internal error: unable to find linter output in {text_file_name}"
+            result["outputText"] = (
+                f"Internal error: unable to find linter output in {text_file_name}"
+            )
     return manage_redis_stream(result, redis_stream)
 
 

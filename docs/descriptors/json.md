@@ -24,8 +24,10 @@ description: jsonlint, eslint-plugin-jsonc, v8r, prettier, npm-package-json-lint
 
 ## Configuration in MegaLinter
 
-| Variable                  | Description                   | Default value |
-|---------------------------|-------------------------------|---------------|
-| JSON_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| JSON_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable                  | Description                                     | Default value |
+|---------------------------|-------------------------------------------------|---------------|
+| JSON_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
+| JSON_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
+| JSON_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
+| JSON_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 

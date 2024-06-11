@@ -4,24 +4,14 @@ descriptor_type: language
 descriptor_flavors:
   - dotnet
   - dotnetweb
+  - formatters
 file_extensions:
   - ".cs"
 install:
-  apk:
-    - icu-libs
-    - libcurl
-    - libintl
-    - libssl1.1
-    - libstdc++
-    - lttng-ust-dev
-    - zlib
-    - zlib-dev
   dockerfile:
-    - |
-      RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
-          && chmod +x dotnet-install.sh \
-          && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
-    - ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
+    # https://github.com/dotnet/sdk/issues/37790#issuecomment-1918068016
+    - RUN apk add --no-cache dotnet8-sdk --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community
+    - ENV PATH="${PATH}:/root/.dotnet/tools"
 linters:
   # DOTNET FORMAT
   - class: DotnetFormatLinter
@@ -46,7 +36,7 @@ linters:
       - "dotnet format {{WORKSPACE}} --verify-no-changes"
       - "dotnet format {{WORKSPACE}}" # Fix
   # CSharpier
-  - class: DotnetLinter
+  - class: DotNetToolLinter
     linter_name: csharpier
     is_formatter: true
     linter_url: https://csharpier.com/
@@ -55,6 +45,7 @@ linters:
     linter_rules_configuration_url: https://csharpier.com/docs/Configuration
     linter_rules_ignore_config_url: https://csharpier.com/docs/Ignore
     ignore_file_name: .csharpierignore
+    cli_executable: dotnet-csharpier
     cli_lint_mode: list_of_files
     cli_lint_extra_args:
       - "--check"
@@ -67,7 +58,7 @@ linters:
       - "dotnet csharpier myfile.cs myfile2.cs" # Fix
     install:
       dockerfile:
-        - RUN /usr/share/dotnet/dotnet tool install -g csharpier
+        - RUN dotnet tool install --global csharpier
     ide:
       rider:
         - name: csharpier
@@ -78,3 +69,37 @@ linters:
       vscode:
         - name: csharpier-vscode
           url: https://marketplace.visualstudio.com/items?itemName=csharpier.csharpier-vscode
+  # Roslynator
+  - class: RoslynatorLinter
+    linter_name: roslynator
+    file_extensions:
+      - ".csproj"
+    is_formatter: true
+    linter_url: https://github.com/dotnet/Roslynator
+    linter_repo: https://github.com/dotnet/Roslynator
+    linter_image_url: https://github.com/dotnet/roslynator/raw/main/images/roslynator-logo-small.png
+    linter_rules_url: https://josefpihrt.github.io/docs/roslynator/analyzers
+    linter_rules_configuration_url: https://josefpihrt.github.io/docs/roslynator/configuration
+    linter_rules_inline_disable_url: https://josefpihrt.github.io/docs/roslynator/how-to-suppress-diagnostic
+    cli_lint_fix_arg_name: "fix"
+    cli_lint_extra_args:
+      - "analyze"
+    cli_lint_fix_remove_args:
+      - "analyze"
+    test_folder: csharp_roslynator
+    test_format_fix_file_extensions:
+      - ".cs"
+    test_format_fix_regex_exclude: /bin/|/obj/
+    examples:
+      - "roslynator analyze myproject.csproj"
+      - "roslynator fix myproject.csproj" # Fix
+    install:
+      dockerfile:
+        - RUN dotnet tool install -g roslynator.dotnet.cli
+    ide:
+      visual_studio:
+        - name: Roslynator 2022
+          url: https://marketplace.visualstudio.com/items?itemName=josefpihrt.Roslynator2022
+      vscode:
+        - name: Roslynator
+          url: https://marketplace.visualstudio.com/items?itemName=josefpihrt-vscode.roslynator

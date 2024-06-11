@@ -7,9 +7,11 @@ on:
       - main
       - auto-update
       - fixes/docgen
-  # Automatically run every day at midnight
+  # Automatically run every day at 21:49 UTC, before a start of hour peak
   schedule:
-    - cron: "0 0 * * *"
+    - cron: "49 21 * * *"
+  # Allow to manually trigger a run of the workflow
+  workflow_dispatch:
 
 concurrency:
   group: ${{ github.ref }}-${{ github.workflow }}
@@ -47,6 +49,15 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
+      # Free disk space
+      - name: Free Disk space
+        shell: bash
+        run: |
+          sudo rm -rf /usr/local/lib/android  # will release about 10 GB if you don't need Android
+          sudo rm -rf /usr/share/dotnet # will release about 20GB if you don't need .NET
+          sudo rm -rf /opt/ghc
+          sudo rm -rf "$AGENT_TOOLSDIRECTORY"
+
       #######################
       # Docker Buildx setup #
       #######################
@@ -61,13 +72,6 @@ jobs:
       ########################
       - name: Get current date
         run: echo "BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" >> ${GITHUB_ENV}
-
-      # Free disk space
-      - name: Free Disk space
-        shell: bash
-        run: |
-          sudo rm -rf /usr/local/lib/android  # will release about 10 GB if you don't need Android
-          sudo rm -rf /usr/share/dotnet # will release about 20GB if you don't need .NET
 
       ###################################
       # Build image locally for testing #
@@ -106,8 +110,8 @@ jobs:
 
       # Upload MegaLinter artifacts
       - name: Archive production artifacts
-        if: ${{ success() }} || ${{ failure() }}
-        uses: actions/upload-artifact@v3
+        if: success() || failure()
+        uses: actions/upload-artifact@v4
         with:
           name: MegaLinter reports
           path: |
@@ -118,7 +122,7 @@ jobs:
       - name: Create Pull Request
         id: cpr
         if: steps.compute_versions.outputs.has_updated_versions == 1
-        uses: peter-evans/create-pull-request@v5
+        uses: peter-evans/create-pull-request@v6
         with:
           token: ${{ secrets.PAT || secrets.GITHUB_TOKEN  }}
           author: "Nicolas Vuillamy <nicolas.vuillamy@gmail.com>"

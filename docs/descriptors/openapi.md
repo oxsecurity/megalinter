@@ -9,9 +9,9 @@ description: spectral is available to analyze OPENAPI files in MegaLinter
 
 ## Linters
 
-| Linter                                                                            | Additional                                                                                                                             |
-|-----------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
-| [**spectral**](openapi_spectral.md)<br/>[_OPENAPI_SPECTRAL_](openapi_spectral.md) | [![GitHub stars](https://img.shields.io/github/stars/stoplightio/spectral?cacheSeconds=3600)](https://github.com/stoplightio/spectral) |
+| Linter                                                                            | Additional                                                                                                                                                                                     |
+|-----------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [**spectral**](openapi_spectral.md)<br/>[_OPENAPI_SPECTRAL_](openapi_spectral.md) | ![deprecated](https://shields.io/badge/-deprecated-red) [![GitHub stars](https://img.shields.io/github/stars/stoplightio/spectral?cacheSeconds=3600)](https://github.com/stoplightio/spectral) |
 
 ## Linted files
 
@@ -28,8 +28,10 @@ description: spectral is available to analyze OPENAPI files in MegaLinter
 
 ## Configuration in MegaLinter
 
-| Variable                     | Description                   | Default value |
-|------------------------------|-------------------------------|---------------|
-| OPENAPI_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| OPENAPI_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable                     | Description                                     | Default value |
+|------------------------------|-------------------------------------------------|---------------|
+| OPENAPI_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
+| OPENAPI_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
+| OPENAPI_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
+| OPENAPI_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 

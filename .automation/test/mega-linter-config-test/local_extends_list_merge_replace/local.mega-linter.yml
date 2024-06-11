@@ -1,0 +1,4 @@
+EXTENDS: base.local.mega-linter.yml
+ENABLE_LINTERS:
+  - LINTER_2
+FILTER_REGEX_INCLUDE: "(local)"

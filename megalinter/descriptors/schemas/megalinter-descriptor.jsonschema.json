@@ -41,11 +41,13 @@
       "enum": [
         "all_flavors",
         "all",
+        "c_cpp",
         "ci_light",
         "cupcake",
         "documentation",
         "dotnet",
         "dotnetweb",
+        "formatters",
         "go",
         "java",
         "javascript",
@@ -65,7 +67,7 @@
   "properties": {
     "active_only_if_file_found": {
       "$id": "#/properties/active_only_if_file_found",
-      "description": "Names of the config files to be found (at least one), else descriptor will be deactivated",
+      "description": "Names of the config files to be found (at least one), else descriptor will be deactivated. Search in workspace, linter rules path, and files_sub_directory",
       "examples": [
         [
           ".editorconfig",
@@ -789,6 +791,13 @@
             "title": "Disabled",
             "type": "boolean"
           },
+          "disabled_reason": {
+            "$id": "#/properties/linters/items/properties/disabled_reason",
+            "default": false,
+            "description": "Explanation about why the linter is disabled",
+            "title": "Disabled reason",
+            "type": "string"
+          },
           "downgraded_reason": {
             "$id": "#/properties/linters/items/properties/downgraded_reason",
             "default": false,
@@ -1272,6 +1281,33 @@
               ]
             ],
             "title": "Test folder in .automation/",
+            "type": "string"
+          },
+          "test_format_fix_file_extensions": {
+            "$id": "#/properties/test_format_fix_file_extensions",
+            "default": [],
+            "description": "Format / Fix test file extension filters.",
+            "examples": [
+              [
+                ".py",
+                ""
+              ]
+            ],
+            "items": {
+              "type": "string"
+            },
+            "title": "Allowed file extensions",
+            "type": "array"
+          },
+          "test_format_fix_regex_exclude": {
+            "$id": "#/properties/linters/items/test_format_fix_regex_exclude",
+            "description": "Format / Fix test exclusions",
+            "examples": [
+              [
+                "/bin/|/obj/"
+              ]
+            ],
+            "title": "Format / Fix test exclusions",
             "type": "string"
           },
           "test_variables": {

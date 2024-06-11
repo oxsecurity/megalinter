@@ -14,6 +14,8 @@ file_contains_regex:
 linters:
   # Spectral
   - linter_name: spectral
+    deprecated: true
+    deprecated_description: Please use API_SPECTRAL, as OPENAPI descriptor will be removed in the next major release.
     linter_url: https://docs.stoplight.io/docs/spectral/674b27b261c3c-overview
     linter_repo: https://github.com/stoplightio/spectral
     linter_rules_url: https://docs.stoplight.io/docs/spectral/4dec24461f3af-open-api-rules

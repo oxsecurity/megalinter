@@ -45,5 +45,7 @@ Add the following job in your `azure-pipelines.yaml` file
 
 To benefit from Pull Request comments, please follow [configuration instructions](reporters/AzureCommentReporter.md)
 
+You can also follow this [detailed tutorial](https://github.com/DonKoning/megaLinter) by [DonKoning](https://github.com/DonKoning)
+
 
 <!-- install-azure-section-end -->

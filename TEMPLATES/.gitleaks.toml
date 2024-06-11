@@ -15,7 +15,7 @@ useDefault = true
     '''node_modules''',
     '''.mypy_cache''',
     '''(.*?)gitleaks\.toml$''',
-    '''(.*?)(png|jpg|gif|doc|docx|pdf|bin|xls|pyc|zip)$''',
+    '''(?i)(.*?)(png|jpeg|jpg|gif|doc|docx|pdf|bin|xls|xlsx|pyc|zip)$''',
     '''(go.mod|go.sum)$''']
 
 

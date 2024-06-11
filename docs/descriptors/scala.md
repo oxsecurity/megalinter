@@ -20,10 +20,12 @@ description: scalafix is available to analyze SCALA files in MegaLinter
 
 ## Configuration in MegaLinter
 
-| Variable                   | Description                   | Default value |
-|----------------------------|-------------------------------|---------------|
-| SCALA_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| SCALA_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable                   | Description                                     | Default value |
+|----------------------------|-------------------------------------------------|---------------|
+| SCALA_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
+| SCALA_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
+| SCALA_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
+| SCALA_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 
 
 ## Behind the scenes
@@ -32,10 +34,12 @@ description: scalafix is available to analyze SCALA files in MegaLinter
 
 - Dockerfile commands :
 ```dockerfile
+ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
+ENV PATH="$JAVA_HOME/bin:${PATH}"
 RUN curl --retry-all-errors --retry 10 -fLo coursier https://git.io/coursier-cli && \
         chmod +x coursier
 
 ```
 
 - APK packages (Linux):
-  - [openjdk11](https://pkgs.alpinelinux.org/packages?branch=edge&name=openjdk11)
+  - [openjdk21](https://pkgs.alpinelinux.org/packages?branch=edge&name=openjdk21)

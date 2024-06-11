@@ -3,6 +3,7 @@ descriptor_type: format
 descriptor_flavors:
   - all_flavors # Any project can contain Markdown
   - cupcake
+  - formatters
 file_extensions:
   - ".md"
 linters:
@@ -55,6 +56,7 @@ linters:
   # remark-lint
   - linter_name: remark-lint
     disabled: true
+    disabled_reason: "Bug in remark-lint: https://github.com/remarkjs/remark-lint/issues/322"
     is_formatter: true
     activation_rules:
       - type: variable

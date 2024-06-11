@@ -1,2 +1,6 @@
 parameters:
 	level: 0
+
+services:
+    errorFormatter.sarif:
+        class: Bartlett\Sarif\Converter\PhpStanConverter

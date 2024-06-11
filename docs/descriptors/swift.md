@@ -20,8 +20,10 @@ description: swiftlint is available to analyze SWIFT files in MegaLinter
 
 ## Configuration in MegaLinter
 
-| Variable                   | Description                   | Default value |
-|----------------------------|-------------------------------|---------------|
-| SWIFT_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| SWIFT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable                   | Description                                     | Default value |
+|----------------------------|-------------------------------------------------|---------------|
+| SWIFT_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
+| SWIFT_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
+| SWIFT_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
+| SWIFT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 

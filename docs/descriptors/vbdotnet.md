@@ -20,10 +20,12 @@ description: dotnet-format is available to analyze VBDOTNET files in MegaLinter
 
 ## Configuration in MegaLinter
 
-| Variable                      | Description                   | Default value |
-|-------------------------------|-------------------------------|---------------|
-| VBDOTNET_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| VBDOTNET_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable                      | Description                                     | Default value |
+|-------------------------------|-------------------------------------------------|---------------|
+| VBDOTNET_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
+| VBDOTNET_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
+| VBDOTNET_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
+| VBDOTNET_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 
 
 ## Behind the scenes
@@ -32,19 +34,7 @@ description: dotnet-format is available to analyze VBDOTNET files in MegaLinter
 
 - Dockerfile commands :
 ```dockerfile
-RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
-    && chmod +x dotnet-install.sh \
-    && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 6.0 -version latest
-
-ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
+RUN apk add --no-cache dotnet8-sdk --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community
+ENV PATH="${PATH}:/root/.dotnet/tools"
 ```
 
-- APK packages (Linux):
-  - [icu-libs](https://pkgs.alpinelinux.org/packages?branch=edge&name=icu-libs)
-  - [libcurl](https://pkgs.alpinelinux.org/packages?branch=edge&name=libcurl)
-  - [libintl](https://pkgs.alpinelinux.org/packages?branch=edge&name=libintl)
-  - [libssl1.1](https://pkgs.alpinelinux.org/packages?branch=edge&name=libssl1.1)
-  - [libstdc++](https://pkgs.alpinelinux.org/packages?branch=edge&name=libstdc++)
-  - [lttng-ust-dev](https://pkgs.alpinelinux.org/packages?branch=edge&name=lttng-ust-dev)
-  - [zlib](https://pkgs.alpinelinux.org/packages?branch=edge&name=zlib)
-  - [zlib-dev](https://pkgs.alpinelinux.org/packages?branch=edge&name=zlib-dev)

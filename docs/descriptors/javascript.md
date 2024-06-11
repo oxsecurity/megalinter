@@ -22,8 +22,10 @@ description: eslint, standard, prettier are available to analyze JAVASCRIPT file
 
 ## Configuration in MegaLinter
 
-| Variable                        | Description                   | Default value |
-|---------------------------------|-------------------------------|---------------|
-| JAVASCRIPT_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| JAVASCRIPT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable                        | Description                                     | Default value |
+|---------------------------------|-------------------------------------------------|---------------|
+| JAVASCRIPT_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
+| JAVASCRIPT_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
+| JAVASCRIPT_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
+| JAVASCRIPT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 

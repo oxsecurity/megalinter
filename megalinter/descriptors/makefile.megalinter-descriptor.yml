@@ -4,6 +4,7 @@ descriptor_flavors:
   - all # Applicable to CI in any language project
   - ci_light
   - cupcake
+  - c_cpp
   - documentation
   - dotnet
   - dotnetweb
@@ -16,6 +17,8 @@ test_folder: makefile
 linters:
   # Checkmake
   - linter_name: checkmake
+    disabled: true
+    disabled_reason: "Security issues: https://github.com/mrtazz/checkmake/issues/99"
     name: MAKEFILE_CHECKMAKE
     linter_url: https://github.com/mrtazz/checkmake
     linter_repo: https://github.com/mrtazz/checkmake

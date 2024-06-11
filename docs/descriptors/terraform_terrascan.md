@@ -11,11 +11,11 @@ description: How to use terrascan (configure, ignore files, ignore errors, help 
   </a>
 </div>
 
-[![GitHub stars](https://img.shields.io/github/stars/tenable/terrascan?cacheSeconds=3600)](https://github.com/tenable/terrascan) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/tenable/terrascan?sort=semver)](https://github.com/tenable/terrascan/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/tenable/terrascan)](https://github.com/tenable/terrascan/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/tenable/terrascan)](https://github.com/tenable/terrascan/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/tenable/terrascan)](https://github.com/tenable/terrascan/graphs/contributors/)
+![downgraded version](https://shields.io/badge/-downgraded%20version-orange) [![GitHub stars](https://img.shields.io/github/stars/tenable/terrascan?cacheSeconds=3600)](https://github.com/tenable/terrascan) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/tenable/terrascan?sort=semver)](https://github.com/tenable/terrascan/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/tenable/terrascan)](https://github.com/tenable/terrascan/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/tenable/terrascan)](https://github.com/tenable/terrascan/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/tenable/terrascan)](https://github.com/tenable/terrascan/graphs/contributors/)
 
 ## terrascan documentation
 
-- Version in MegaLinter: **1.18.3**
+- Version in MegaLinter: **1.18.11**
 - Visit [Official Web Site](https://runterrascan.io/){target=_blank}
 - See [How to configure terrascan rules](https://runterrascan.io/docs/usage/config_options/){target=_blank}
 - See [Index of problems detected by terrascan](https://runterrascan.io/docs/usage/){target=_blank}
@@ -48,8 +48,8 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                     | Description                                     | Embedded linters |                                                                                                                                                                                           Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------|:------------------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)       | Default MegaLinter Flavor                       |       117        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)     | MegaLinter for the most commonly used languages |        85        |     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)       | Default MegaLinter Flavor                       |       124        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)     | MegaLinter for the most commonly used languages |        83        |     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://megalinter.io/beta/flavors/security/)   | Optimized for security                          |        24        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://megalinter.io/beta/flavors/terraform/) | Optimized for TERRAFORM based projects          |        55        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform) |
 
@@ -107,7 +107,7 @@ Use "terrascan [command] --help" for more information about a command.
 
 - Dockerfile commands :
 ```dockerfile
-FROM tenable/terrascan:1.18.3 as terrascan
+FROM tenable/terrascan:1.18.11 as terrascan
 COPY --link --from=terrascan /go/bin/terrascan /usr/bin/
 ```
 

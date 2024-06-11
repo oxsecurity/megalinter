@@ -26,8 +26,10 @@ description: npm-groovy-lint is available to analyze GROOVY files in MegaLinter
 
 ## Configuration in MegaLinter
 
-| Variable                    | Description                   | Default value |
-|-----------------------------|-------------------------------|---------------|
-| GROOVY_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| GROOVY_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable                    | Description                                     | Default value |
+|-----------------------------|-------------------------------------------------|---------------|
+| GROOVY_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
+| GROOVY_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
+| GROOVY_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
+| GROOVY_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 
