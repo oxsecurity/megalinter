@@ -55,6 +55,12 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.58.13 to **0.58.14** on 2024-06-09
   - [golangci-lint](https://golangci-lint.run/) from 1.59.0 to **1.59.1** on 2024-06-09
   - [pmd](https://pmd.github.io/) from 7.1.0 to **7.2.0** on 2024-06-10
+  - [markdown-table-formatter](https://www.npmjs.com/package/markdown-table-formatter) from 1.6.0 to **1.6.1** on 2024-06-10
+  - [checkov](https://www.checkov.io/) from 3.2.130 to **3.2.133** on 2024-06-10
+  - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.18.2 to **8.18.3** on 2024-06-10
+  - [syft](https://github.com/anchore/syft) from 1.5.0 to **1.6.0** on 2024-06-10
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.52.0 to **0.52.1** on 2024-06-10
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.52.0 to **0.52.1** on 2024-06-10
 <!-- linter-versions-end -->
 
 ## [v7.12.0] - 2024-06-02
