@@ -21,6 +21,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Salesforce linters: Switch sfdx-cli to @salesforce/cli
   - Fixed issue with `actionlint` throwing an error on `if` statements in the generated workflow file
   - Added default `.devskim.json` to mitigate errors introduced when no config exists
+  - Fix swiftlint --path argument by adding workspace
 
 - Doc
   - Display list of articles from newest to oldest
@@ -1388,7 +1389,6 @@ _Note: MegaLinter 6.9.0 release has been cancelled: it was fine but the docker i
 - Add Makefile linter within python flavor ([#1760](https://github.com/oxsecurity/megalinter/issues/1760))
 - Set DEFAULT_WORKSPACE as git safe directory per default [#1766](https://github.com/oxsecurity/megalinter/issues/1766)
 - Improve documentation for TAP_REPORTER
-- Fix swiftlint --path argument by adding workspace
 
 - Linter versions upgrades
   - [actionlint](https://rhysd.github.io/actionlint/) from 1.6.15 to **1.6.16**
