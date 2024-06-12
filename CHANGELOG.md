@@ -62,6 +62,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [syft](https://github.com/anchore/syft) from 1.5.0 to **1.6.0** on 2024-06-10
   - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.52.0 to **0.52.1** on 2024-06-10
   - [trivy](https://aquasecurity.github.io/trivy/) from 0.52.0 to **0.52.1** on 2024-06-10
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.87.5 to **0.87.6** on 2024-06-11
+  - [prettier](https://prettier.io/) from 3.3.1 to **3.3.2** on 2024-06-11
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.78.0 to **3.78.1** on 2024-06-11
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.13.0 to **8.14.0** on 2024-06-11
 <!-- linter-versions-end -->
 
 ## [v7.12.0] - 2024-06-02
