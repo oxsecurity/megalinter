@@ -227,31 +227,25 @@ def get_list_args(request_id, config_var, default=None):
     # Retrieve the variable from the configuration
     var = get(request_id, config_var, None)
 
-    # Check if the variable is None and return the default value if true
-    if var is None:
-        return default
-
-    # Check if the variable is an empty string and return an empty list if true
-    if var == "":
-        return []
-
-    # Check if the variable is an integer or a decimal and return it as a list
-    if isinstance(var, (int, float)):
-        return [str(var)]
-
-    # Check if the variable is a list and return it if true
-    if isinstance(var, list):
-        return var
-    # Check if the variable is a string and return it as a list if it does not contain spaces
-    if isinstance(var, str) and var.strip() == "":
-        return []
-
-    # Check if the variable is a string and return it as a list if it does not contain spaces
-    if isinstance(var, str) and " " not in var.strip():
-        return [var]
-
-    # Otherwise, split the string using shlex and return the result
-    return shlex.split(var)
+    match var:
+        # None return the default value
+        case None:
+            return default
+        # Blank or whitespace-only strings return empty list
+        case "" | str() if var.strip() == "":
+            return []
+        # Integer or a Decimal return it as a list
+        case int() | float():
+            return [str(var)]
+        # If already a list just return it
+        case list():
+            return var
+        # If string does not contain spaces, return it as a list
+        case str() if " " not in var.strip():
+            return [var]
+        # Otherwise, split the string using shlex and return the result
+        case _:
+            return shlex.split(var)
 
 
 def set_value(request_id, config_var, val):
