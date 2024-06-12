@@ -6,7 +6,6 @@ import re
 import shlex
 import tempfile
 
-
 import requests
 import yaml
 
@@ -244,7 +243,7 @@ def get_list_args(request_id, config_var, default=None):
     if isinstance(var, list):
         return var
     # Check if the variable is a string and return it as a list if it does not contain spaces
-    if isinstance(var, str) and var.strip() is "":
+    if isinstance(var, str) and var.strip() == "":
         return []
 
     # Check if the variable is a string and return it as a list if it does not contain spaces
