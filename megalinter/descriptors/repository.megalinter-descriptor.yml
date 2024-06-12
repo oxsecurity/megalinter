@@ -195,7 +195,7 @@ linters:
       #### GitHub Actions
 
       ```yml
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
       ```
@@ -245,7 +245,10 @@ linters:
       - "gitleaks detect -c .gitleaks.toml --redact --no-git --verbose --source ."
     install:
       dockerfile:
-        - FROM zricethezav/gitleaks:v8.18.2 as gitleaks
+        - |
+          # renovate: datasource=docker depName=zricethezav/gitleaks
+          ARG GITLEAKS_VERSION=v8.18.3
+        - FROM zricethezav/gitleaks:${GITLEAKS_VERSION} as gitleaks
         - COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
     variables:
       - name: REPOSITORY_GITLEAKS_PR_COMMITS_SCAN
@@ -451,7 +454,7 @@ linters:
     config_file_name: .syft.yaml
     cli_config_arg_name: --config
     cli_lint_extra_args:
-      - packages
+      - scan
       - .
     cli_sarif_args:
       - --output

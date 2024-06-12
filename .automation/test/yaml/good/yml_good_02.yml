@@ -1,0 +1,24 @@
+#####################
+#####################
+## GitHub Actions  ##
+#####################
+#####################
+---
+name: CI
+on: [push, pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run a one-line script
+        run: echo Hello, world!
+      - name: Two-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
+      - name: Three-line script
+        run: |
+          echo Line 1
+          echo Line 2
+          echo Line 3

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended",
+    // "config:best-practices", // To enable once renovate usage is stabilized
+    "customManagers:dockerfileVersions",
+    ":maintainLockFilesWeekly",
+    ":separateMultipleMajorReleases",
+    ":semanticCommits",
+    ":label(dependencies)"
+  ],
+  "customManagers": [
+    // This is "customManagers:dockerfileVersions":
+    // {
+    //   "customType": "regex",
+    //   "fileMatch": [
+    //     "(^|/|\\.)([Dd]ocker|[Cc]ontainer)file$",
+    //     "(^|/)([Dd]ocker|[Cc]ontainer)file[^/]*$"
+    //   ],
+    //   "matchStrings": [
+    //     "# renovate: datasource=(?<datasource>[a-z-.]+?) depName=(?<depName>[^\\s]+?)(?: (lookupName|packageName)=(?<packageName>[^\\s]+?))?(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>[^\\s]+?))?(?: registryUrl=(?<registryUrl>[^\\s]+?))?\\s(?:ENV|ARG)\\s+[A-Za-z0-9_]+?_VERSION[ =][\"']?(?<currentValue>.+?)[\"']?\\s"
+    //   ]
+    // }
+    //
+    // This is "customManagers:dockerfileVersions", adapted to support our descriptors:
+    {
+      "customType": "regex",
+      "description": "Update dockerfile sections in .megalinter-descriptor.yml files",
+      "fileMatch": [
+        "(^|/).*\\.megalinter-descriptor.ya?ml$"
+      ],
+      "matchStrings": [
+        "# renovate: datasource=(?<datasource>[a-z-.]+?) depName=(?<depName>[^\\s]+?)(?: (lookupName|packageName)=(?<packageName>[^\\s]+?))?(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>[^\\s]+?))?(?: registryUrl=(?<registryUrl>[^\\s]+?))?\\s(?:ENV|ARG)\\s+[A-Za-z0-9_]+?_VERSION[ =][\"']?(?<currentValue>.+?)[\"']?\\s",
+        "# renovate: datasource=(?<datasource>[a-z-.]+?) depName=(?<depName>[^\\s]+?)(?: (lookupName|packageName)=(?<packageName>[^\\s]+?))?(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>[^\\s]+?))?(?: registryUrl=(?<registryUrl>[^\\s]+?))?\\s+(?:ENV|ARG)\\s+[A-Za-z0-9_]+?_VERSION[ =][\"']?(?<currentValue>.+?)[\"']?\\s",        
+      ]
+    }
+  ]
+}

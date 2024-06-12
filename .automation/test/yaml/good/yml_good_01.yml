@@ -1,0 +1,25 @@
+#####################
+#####################
+## Azure Pipelines ##
+#####################
+#####################
+---
+trigger:
+  - main
+
+pool:
+  vmImage: "ubuntu-latest"
+
+jobs:
+  - job: Build
+    steps:
+      - task: UseNode@1
+        inputs:
+          versionSpec: "12.x"
+          checkLatest: true
+
+  - job: Test
+    steps:
+      - script: npm install
+      - script: npm test
+      - script: echo "Testing!"
