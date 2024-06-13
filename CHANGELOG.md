@@ -68,6 +68,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.13.0 to **8.14.0** on 2024-06-11
   - [pyright](https://github.com/Microsoft/pyright) from 1.1.366 to **1.1.367** on 2024-06-12
   - [kics](https://www.kics.io) from 2.0.1 to **2.1.0** on 2024-06-12
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.87.6 to **0.87.7** on 2024-06-13
+  - [bandit](https://bandit.readthedocs.io/en/latest/) from 1.7.8 to **1.7.9** on 2024-06-13
 <!-- linter-versions-end -->
 
 ## [v7.12.0] - 2024-06-02
