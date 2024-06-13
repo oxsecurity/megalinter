@@ -71,6 +71,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [kics](https://www.kics.io) from 2.0.1 to **2.1.0** on 2024-06-12
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.87.6 to **0.87.7** on 2024-06-13
   - [bandit](https://bandit.readthedocs.io/en/latest/) from 1.7.8 to **1.7.9** on 2024-06-13
+  - [checkov](https://www.checkov.io/) from 3.2.133 to **3.2.136** on 2024-06-13
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.78 to **0.1.79** on 2024-06-13
 <!-- linter-versions-end -->
 
 ## [v7.12.0] - 2024-06-02
