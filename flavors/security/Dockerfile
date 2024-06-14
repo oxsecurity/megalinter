@@ -13,7 +13,7 @@
 #############################################################################################
 #ARGTOP__START
 # renovate: datasource=docker depName=zricethezav/gitleaks
-ARG GITLEAKS_VERSION=v8.18.3
+ARG GITLEAKS_VERSION=v8.18.4
 
 # renovate: datasource=docker depName=ghcr.io/terraform-linters/tflint
 ARG TFLINT_VERSION=0.51.1
