@@ -73,6 +73,12 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [bandit](https://bandit.readthedocs.io/en/latest/) from 1.7.8 to **1.7.9** on 2024-06-13
   - [checkov](https://www.checkov.io/) from 3.2.133 to **3.2.136** on 2024-06-13
   - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.78 to **0.1.79** on 2024-06-13
+  - [ruff](https://github.com/astral-sh/ruff) from 0.4.8 to **0.4.9** on 2024-06-14
+  - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.18.3 to **8.18.4** on 2024-06-14
+  - [grype](https://github.com/anchore/grype) from 0.78.0 to **0.79.0** on 2024-06-14
+  - [syft](https://github.com/anchore/syft) from 1.6.0 to **1.7.0** on 2024-06-14
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.52.1 to **0.52.2** on 2024-06-14
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.52.1 to **0.52.2** on 2024-06-14
 <!-- linter-versions-end -->
 
 ## [v7.12.0] - 2024-06-02
