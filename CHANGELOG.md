@@ -79,6 +79,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [syft](https://github.com/anchore/syft) from 1.6.0 to **1.7.0** on 2024-06-14
   - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.52.1 to **0.52.2** on 2024-06-14
   - [trivy](https://aquasecurity.github.io/trivy/) from 0.52.1 to **0.52.2** on 2024-06-14
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 2.26.0 to **2.27.0** on 2024-06-15
 <!-- linter-versions-end -->
 
 ## [v7.12.0] - 2024-06-02

@@ -44,6 +44,7 @@ CVE-2022-33980
 CVE-2022-42889
 CVE-2022-1471
 CVE-2022-25857
+CVE-2024-4068
 
 # terrascan
 # https://github.com/tenable/terrascan/issues/1674
