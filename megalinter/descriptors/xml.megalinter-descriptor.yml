@@ -29,7 +29,8 @@ linters:
     help_command_return_code: 1
     examples:
       - "xmllint myXMLfile.xml"
-      - "xmllint --format myXMLfile.xml --output myXSDfile.xsd"
+      - "xmllint myXSDfile.xsd"
+      - "xmllint --format myXMLfile.xml --output myXMLfile.xml"
     install:
       apk:
         - libc-dev
