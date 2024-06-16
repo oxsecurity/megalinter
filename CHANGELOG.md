@@ -83,6 +83,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [php-cs-fixer](https://cs.symfony.com/) from 3.58.1 to **3.59.1** on 2024-06-15
   - [npm-package-json-lint](https://npmpackagejsonlint.org/) from 7.1.0 to **8.0.0** on 2024-06-15
   - [flake8](https://flake8.pycqa.org) from 7.0.0 to **7.1.0** on 2024-06-15
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.58.14 to **0.59.3** on 2024-06-16
 <!-- linter-versions-end -->
 
 ## [v7.12.0] - 2024-06-02
