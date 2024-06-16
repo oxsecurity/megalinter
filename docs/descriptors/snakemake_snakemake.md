@@ -163,7 +163,7 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--shared-fs-usage {input-output,persistence,software-deployment,source-cache,sources,storage-local-copies,none} [{input-output,persistence,software-deployment,source-cache,sources,storage-local-copies,none} ...]]
                  [--scheduler-greediness SCHEDULER_GREEDINESS] [--no-hooks]
                  [--debug] [--runtime-profile FILE]
-                 [--mode {default,subprocess,remote}] [--show-failed-logs]
+                 [--mode {subprocess,default,remote}] [--show-failed-logs]
                  [--log-handler-script FILE] [--log-service {none,slack,wms}]
                  [--job-deploy-sources] [--benchmark-extended]
                  [--container-image IMAGE] [--immediate-submit]
@@ -407,8 +407,8 @@ EXECUTION:
                         way of just considering file modification dates, use '
                         --rerun-trigger mtime'. (default:
                         frozenset({<RerunTrigger.SOFTWARE_ENV: 3>,
-                        <RerunTrigger.MTIME: 0>, <RerunTrigger.CODE: 4>,
-                        <RerunTrigger.INPUT: 2>, <RerunTrigger.PARAMS: 1>}))
+                        <RerunTrigger.PARAMS: 1>, <RerunTrigger.INPUT: 2>,
+                        <RerunTrigger.MTIME: 0>, <RerunTrigger.CODE: 4>}))
   --force, -f           Force the execution of the selected target or the
                         first rule regardless of already created output.
                         (default: False)
@@ -843,12 +843,12 @@ BEHAVIOR:
                         and data provenance will be handled by NFS but input
                         and output files will be handled exclusively by the
                         storage provider. (default:
-                        frozenset({<SharedFSUsage.SOURCE_CACHE: 5>,
-                        <SharedFSUsage.PERSISTENCE: 0>,
-                        <SharedFSUsage.STORAGE_LOCAL_COPIES: 4>,
-                        <SharedFSUsage.INPUT_OUTPUT: 1>,
+                        frozenset({<SharedFSUsage.STORAGE_LOCAL_COPIES: 4>,
                         <SharedFSUsage.SOURCES: 3>,
-                        <SharedFSUsage.SOFTWARE_DEPLOYMENT: 2>}))
+                        <SharedFSUsage.SOURCE_CACHE: 5>,
+                        <SharedFSUsage.SOFTWARE_DEPLOYMENT: 2>,
+                        <SharedFSUsage.INPUT_OUTPUT: 1>,
+                        <SharedFSUsage.PERSISTENCE: 0>}))
   --scheduler-greediness SCHEDULER_GREEDINESS, --greediness SCHEDULER_GREEDINESS
                         Set the greediness of scheduling. This value between 0
                         and 1 determines how careful jobs are selected for
@@ -862,7 +862,7 @@ BEHAVIOR:
   --runtime-profile FILE
                         Profile Snakemake and write the output to FILE. This
                         requires yappi to be installed. (default: None)
-  --mode {default,subprocess,remote}
+  --mode {subprocess,default,remote}
                         Set execution mode of Snakemake (internal use only).
                         (default: default)
   --show-failed-logs    Automatically display logs of failed jobs. (default:
@@ -1013,10 +1013,10 @@ html executor settings:
                         Path to the report file (either .html or .zip). Use
                         zip if your report contains large results or
                         directories with htmlindex as results. (default:
-                        <dataclasses._MISSING_TYPE object at 0x7f9d2a4de120>)
+                        <dataclasses._MISSING_TYPE object at 0x7f23f199ad20>)
   --report-html-stylesheet-path VALUE
                         Path to a custom stylesheet for the report. (default:
-                        <dataclasses._MISSING_TYPE object at 0x7f9d2a4de120>)
+                        <dataclasses._MISSING_TYPE object at 0x7f23f199ad20>)
 
  In general, command-line values override environment variables which override
 defaults.
