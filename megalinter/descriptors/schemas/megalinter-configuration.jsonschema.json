@@ -3297,6 +3297,13 @@
       "title": "CSHARP_CSHARPIER: Override default cli lint mode",
       "type": "string"
     },
+    "CSHARP_CSHARPIER_CONFIG_FILE": {
+      "$id": "#/properties/CSHARP_CSHARPIER_CONFIG_FILE",
+      "default": ".csharpierrc",
+      "description": "CSHARP_CSHARPIER: User custom config file name if different from default",
+      "title": "CSHARP_CSHARPIER: Custom config file name",
+      "type": "string"
+    },
     "CSHARP_CSHARPIER_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/CSHARP_CSHARPIER_COMMAND_REMOVE_ARGUMENTS",
       "description": "CSHARP_CSHARPIER: User custom arguments to remove before calling linter",
@@ -3392,6 +3399,12 @@
       },
       "title": "CSHARP_CSHARPIER: Define or override a list of bash commands to run before the linter",
       "type": "array"
+    },
+    "CSHARP_CSHARPIER_RULES_PATH": {
+      "$id": "#/properties/CSHARP_CSHARPIER_RULES_PATH",
+      "description": "CSHARP_CSHARPIER: Path where to find linter configuration file",
+      "title": "CSHARP_CSHARPIER: Custom config file path",
+      "type": "string"
     },
     "CSHARP_CSHARPIER_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/CSHARP_CSHARPIER_UNSECURED_ENV_VARIABLES",
