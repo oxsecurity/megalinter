@@ -3297,13 +3297,6 @@
       "title": "CSHARP_CSHARPIER: Override default cli lint mode",
       "type": "string"
     },
-    "CSHARP_CSHARPIER_CONFIG_FILE": {
-      "$id": "#/properties/CSHARP_CSHARPIER_CONFIG_FILE",
-      "default": ".csharpierrc",
-      "description": "CSHARP_CSHARPIER: User custom config file name if different from default",
-      "title": "CSHARP_CSHARPIER: Custom config file name",
-      "type": "string"
-    },
     "CSHARP_CSHARPIER_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/CSHARP_CSHARPIER_COMMAND_REMOVE_ARGUMENTS",
       "description": "CSHARP_CSHARPIER: User custom arguments to remove before calling linter",
@@ -3319,6 +3312,13 @@
         "array",
         "string"
       ]
+    },
+    "CSHARP_CSHARPIER_CONFIG_FILE": {
+      "$id": "#/properties/CSHARP_CSHARPIER_CONFIG_FILE",
+      "default": ".csharpierrc",
+      "description": "CSHARP_CSHARPIER: User custom config file name if different from default",
+      "title": "CSHARP_CSHARPIER: Custom config file name",
+      "type": "string"
     },
     "CSHARP_CSHARPIER_DISABLE_ERRORS": {
       "$id": "#/properties/CSHARP_CSHARPIER_DISABLE_ERRORS",

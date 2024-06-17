@@ -9,7 +9,7 @@ description: How to use php-cs-fixer (configure, ignore files, ignore errors, he
 
 ## php-cs-fixer documentation
 
-- Version in MegaLinter: **3.59.1**
+- Version in MegaLinter: **3.59.3**
 - Visit [Official Web Site](https://cs.symfony.com/){target=_blank}
   - If custom `.php-cs-fixer.dist.php` config file isn't found, [.php-cs-fixer.dist.php](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.php-cs-fixer.dist.php){target=_blank} will be used
 
