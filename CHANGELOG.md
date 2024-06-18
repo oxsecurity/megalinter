@@ -24,6 +24,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [Powershell](https://github.com/PowerShell/PSScriptAnalyzer#readme) Error table truncation improvements
   - [yamllint](https://github.com/adrienverge/yamllint) fix error/warning count to work with different log output formats
   - Improve support for single argument in `get_list_args` function
+  - [DevSkim](https://github.com/microsoft/DevSkim) fixed fatal errors when scanning and ability to override config path
 
 - Doc
 
