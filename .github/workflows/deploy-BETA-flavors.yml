@@ -118,7 +118,7 @@ jobs:
           sudo rm -rf /usr/share/dotnet # will release about 20GB if you don't need .NET
 
       - name: Build Image
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: .
           file: flavors/${{ matrix.flavor }}/Dockerfile
@@ -136,7 +136,7 @@ jobs:
             ghcr.io/oxsecurity/megalinter-${{ matrix.flavor }}:beta
 
       - name: Build Worker Image
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: .
           file: Dockerfile-worker
