@@ -15738,13 +15738,13 @@
     "REPOSITORY_GITLEAKS_PR_SOURCE_SHA": {
       "$id": "#/properties/REPOSITORY_GITLEAKS_PR_SOURCE_SHA",
       "default": "",
-      "title": "REPOSITORY_GITLEAKS: Source SHA of the Pull Request/Merge Request",
+      "title": "REPOSITORY_GITLEAKS: Source commit SHA of the Pull Request/Merge Request",
       "type": "string"
     },
     "REPOSITORY_GITLEAKS_PR_TARGET_SHA": {
       "$id": "#/properties/REPOSITORY_GITLEAKS_PR_TARGET_SHA",
       "default": "",
-      "title": "REPOSITORY_GITLEAKS: Target SHA of the Pull Request/Merge Request",
+      "title": "REPOSITORY_GITLEAKS: Target commit SHA of the Pull Request/Merge Request",
       "type": "string"
     },
     "REPOSITORY_GITLEAKS_RULES_PATH": {
