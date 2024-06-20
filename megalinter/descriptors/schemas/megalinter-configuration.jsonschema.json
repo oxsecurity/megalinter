@@ -15712,22 +15712,6 @@
       "title": "REPOSITORY_GITLEAKS: Define or override a list of bash commands to run after the linter",
       "type": "array"
     },
-    "REPOSITORY_GITLEAKS_PR_COMMITS_SCAN": {
-      "$id": "#/properties/REPOSITORY_GITLEAKS_PR_COMMITS_SCAN",
-      "default": false,
-      "title": "REPOSITORY_GITLEAKS: Scan only commits in the current Pull Request/Merge Request",
-      "type": "boolean"
-    },
-    "REPOSITORY_GITLEAKS_PR_SOURCE_SHA":{
-      "$id": "#/properties/REPOSITORY_GITLEAKS_PR_SOURCE_SHA",
-      "title": "REPOSITORY_GITLEAKS: Source SHA of the Pull Request/Merge Request",
-      "type": "string"
-    },
-    "REPOSITORY_GITLEAKS_PR_TARGET_SHA":{
-      "$id": "#/properties/REPOSITORY_GITLEAKS_PR_TARGET_SHA",
-      "title": "REPOSITORY_GITLEAKS: Target SHA of the Pull Request/Merge Request",
-      "type": "string"
-    },
     "REPOSITORY_GITLEAKS_PRE_COMMANDS": {
       "$id": "#/properties/REPOSITORY_GITLEAKS_PRE_COMMANDS",
       "examples": [
@@ -15744,6 +15728,24 @@
       },
       "title": "REPOSITORY_GITLEAKS: Define or override a list of bash commands to run before the linter",
       "type": "array"
+    },
+    "REPOSITORY_GITLEAKS_PR_COMMITS_SCAN": {
+      "$id": "#/properties/REPOSITORY_GITLEAKS_PR_COMMITS_SCAN",
+      "default": false,
+      "title": "REPOSITORY_GITLEAKS: Scan only commits in the current Pull Request/Merge Request",
+      "type": "boolean"
+    },
+    "REPOSITORY_GITLEAKS_PR_SOURCE_SHA": {
+      "$id": "#/properties/REPOSITORY_GITLEAKS_PR_SOURCE_SHA",
+      "default": "",
+      "title": "REPOSITORY_GITLEAKS: Source SHA of the Pull Request/Merge Request",
+      "type": "string"
+    },
+    "REPOSITORY_GITLEAKS_PR_TARGET_SHA": {
+      "$id": "#/properties/REPOSITORY_GITLEAKS_PR_TARGET_SHA",
+      "default": "",
+      "title": "REPOSITORY_GITLEAKS: Target SHA of the Pull Request/Merge Request",
+      "type": "string"
     },
     "REPOSITORY_GITLEAKS_RULES_PATH": {
       "$id": "#/properties/REPOSITORY_GITLEAKS_RULES_PATH",
