@@ -1,0 +1,19 @@
+descriptor_id: FILE
+descriptor_type: format
+descriptor_flavors:
+  - all_flavors
+  - all
+linters:
+  # LS-LINT
+  - linter_name: ls-lint
+    linter_url: https://ls-lint.org/
+    linter_repo: https://github.com/loeffel-io/ls-lint
+    linter_rules_url: https://ls-lint.org/2.2/configuration/the-rules.html
+    linter_banner_image_url: https://raw.githubusercontent.com/loeffel-io/ls-lint/master/assets/logo/ls-lint.png
+    config_file_name: ".ls-lint.yml"
+    examples:
+      - "ls-lint"
+      - "ls-lint --workdir src"
+    install:
+      npm:
+        - "@ls-lint/ls-lint"
