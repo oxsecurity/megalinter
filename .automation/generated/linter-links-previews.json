@@ -264,6 +264,11 @@
     "image": "https://avatars0.githubusercontent.com/u/205275?s=400&v=4",
     "title": "r-lib/lintr"
   },
+  "ls-lint": {
+    "description": "An extremely fast file and directory name linter - Bring some structure to your project filesystem",
+    "image": "/open-graph-img.png",
+    "title": "ls-lint"
+  },
   "luacheck": {
     "description": " A tool for linting and static analysis of Lua code.  - luarocks/luacheck",
     "image": "https://avatars3.githubusercontent.com/u/17838737?s=400&v=4",

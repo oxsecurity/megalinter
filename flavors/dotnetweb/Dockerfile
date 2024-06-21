@@ -206,6 +206,7 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 markdownlint-cli \
                 markdown-link-check \
                 markdown-table-formatter \
+                @ls-lint/ls-lint \
                 secretlint \
                 @secretlint/secretlint-rule-preset-recommend \
                 @secretlint/secretlint-formatter-sarif \
