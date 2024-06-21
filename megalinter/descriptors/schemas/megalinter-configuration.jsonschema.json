@@ -21857,6 +21857,13 @@
       "title": "TERRAFORM_TFLINT: Custom config file path",
       "type": "string"
     },
+    "TERRAFORM_TFLINT_SECURED_ENV": {
+      "$id": "#/properties/TERRAFORM_TFLINT_SECURED_ENV",
+      "description": "TERRAFORM_TFLINT: Allows to send the full env to **tflint --init**. Initialized with default value `true`. Set to `false` to allow `tflint --init` to access your env vars.",
+      "default": true,
+      "title": "TERRAFORM_TFLINT: Secured Environment Flag",
+      "type": "boolean"
+    },
     "TERRAFORM_TFLINT_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/TERRAFORM_TFLINT_UNSECURED_ENV_VARIABLES",
       "default": [],
