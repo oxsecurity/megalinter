@@ -13149,6 +13149,13 @@
       "title": "POWERSHELL_POWERSHELL_FORMATTER: Including Regex",
       "type": "string"
     },
+    "POWERSHELL_POWERSHELL_FORMATTER_OUTPUT_ENCODING": {
+      "$id": "#/properties/POWERSHELL_POWERSHELL_FORMATTER_OUTPUT_ENCODING",
+      "description": "POWERSHELL_POWERSHELL_FORMATTER: `-Encoding` to be used when writing content to the file",
+      "default": "utf8",
+      "title": "POWERSHELL_POWERSHELL_FORMATTER: Output encoding type",
+      "type": "string"
+    },
     "POWERSHELL_POWERSHELL_FORMATTER_POST_COMMANDS": {
       "$id": "#/properties/POWERSHELL_POWERSHELL_FORMATTER_POST_COMMANDS",
       "examples": [
