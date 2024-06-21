@@ -22980,9 +22980,9 @@
     },
     "XML_XMLLINT_INDENT": {
       "$id": "#/properties/XML_XMLLINT_INDENT",
-      "default": false,
+      "default": "  ",
       "title": "XML_XMLLINT: The number of indentation spaces when `XML_XMLLINT_AUTOFORMAT` is `true`",
-      "type": "boolean"
+      "type": "string"
     },
     "XML_XMLLINT_POST_COMMANDS": {
       "$id": "#/properties/XML_XMLLINT_POST_COMMANDS",
