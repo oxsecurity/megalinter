@@ -31,7 +31,7 @@ linters:
       - --format
       - sarif
     cli_lint_errors_count: regex_number
-    cli_lint_errors_regex: ": ([0-9]+) failure\\(s\\), .* warning\\(s\\) on .* files"
+    cli_lint_errors_regex: "WARNING Listing ([0-9]+) violation"
     cli_version_arg_name: "--version"
     examples:
       - "ansible-lint -v"
