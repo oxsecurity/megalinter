@@ -896,6 +896,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://megalinter.io/beta/descriptors/repository_ls_lint/</loc>
+         <lastmod>2024-06-22</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://megalinter.io/beta/descriptors/repository_secretlint/</loc>
          <lastmod>2024-06-22</lastmod>
          <changefreq>daily</changefreq>
