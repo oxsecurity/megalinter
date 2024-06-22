@@ -206,11 +206,11 @@ linters:
     config_file_name: biome.json
     cli_lint_extra_args:
       - "lint"
-    cli_lint_fix_arg_name: "--apply"
+    cli_lint_fix_arg_name: "--fix"
     cli_config_arg_name: "--config-path"
     examples:
       - "biome lint myfile.ts"
-      - "biome lint --apply myfile.ts"
+      - "biome lint --fix myfile.ts"
       - "biome lint --config-path biome.json myfile.ts"
     cli_lint_errors_count: regex_sum
     cli_lint_errors_regex: "Found ([0-9]+) errors"
