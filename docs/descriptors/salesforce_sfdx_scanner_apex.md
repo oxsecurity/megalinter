@@ -98,11 +98,11 @@ sf scanner:run
 scan a codebase with a selection of rules
 
 USAGE
-  $ sf scanner run [--verbose] [-c <value>] [-f
+  $ sf scanner run [--verbose] [-c <value>...] [-f
     csv|html|json|junit|sarif|table|xml] [-o <value>] [-s <value> | --json]
-    [--normalize-severity] [-p <value>] [-r <value>] [-e
-    eslint|eslint-lwc|eslint-typescript|pmd|pmd-appexchange|retire-js|sfge|cpd]
-    [-t <value>] [--tsconfig <value>] [--eslintconfig <value>] [--pmdconfig
+    [--normalize-severity] [-p <value>...] [-r <value>...] [-e eslint|eslint-lwc
+    |eslint-typescript|pmd|pmd-appexchange|retire-js|sfge|cpd...] [-t
+    <value>...] [--tsconfig <value>] [--eslintconfig <value>] [--pmdconfig
     <value>] [--preview-pmd7] [--env <value>] [--verbose-violations]
 
 FLAGS

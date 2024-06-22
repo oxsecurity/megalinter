@@ -32,7 +32,7 @@ linters:
       - "cfn-lint --config-file .cfnlintrc.yml myfile.yml"
     install:
       pip:
-        - cfn-lint
+        - cfn-lint[sarif]
     ide:
       atom:
         - name: atom-cfn-lint
