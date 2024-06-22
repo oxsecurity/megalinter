@@ -3513,9 +3513,11 @@
 <li><code>VALIDATE_ALL_CODEBASE: false</code> doesn't make devskim analyze only updated files</li>
 </ul>
 <h3 id="example-calls">Example calls</h3>
-<pre><code class="language-shell">devskim analyze .
+<pre><code class="language-shell">devskim analyze --source-code .
 </code></pre>
-<pre><code class="language-shell">devskim analyze --file-format sarif .
+<pre><code class="language-shell">devskim analyze --file-format sarif --source-code .
+</code></pre>
+<pre><code class="language-shell">devskim analyze --file-format sarif --options-json config --source-code .
 </code></pre>
 <h3 id="help-content">Help content</h3>
 <pre><code class="language-shell">devskim 1.0.33+9dba5c6c1f

@@ -3353,9 +3353,9 @@
 <p>To apply file formatting you must set <code>XML_XMLLINT_CLI_LINT_MODE: file</code> and <code>XML_XMLLINT_AUTOFORMAT: true</code>.</p>
 <h2 id="xmllint-documentation">xmllint documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>21108</strong></li>
+<li>Version in MegaLinter: <strong>21207</strong></li>
 <li>Visit <a href="https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home" target="_blank">Official Web Site</a></li>
-<li>See <a href="https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home#diagnostics" target="_blank">Index of problems detected by xmllint</a></li>
+<li>See <a href="https://gnome.pages.gitlab.gnome.org/libxml2/xmllint.html" target="_blank">How to configure xmllint rules</a></li>
 </ul>
 <h2 id="configuration-in-megalinter">Configuration in MegaLinter</h2>
 <ul>
@@ -3412,7 +3412,7 @@
 <tr>
 <td>XML_XMLLINT_FILE_EXTENSIONS</td>
 <td>Allowed file extensions. <code>"*"</code> matches any extension, <code>""</code> matches empty extension. Empty list excludes all files<br/>Ex: <code>[".py", ""]</code></td>
-<td><code>[".xml"]</code></td>
+<td><code>[".xml", ".xsd"]</code></td>
 </tr>
 <tr>
 <td>XML_XMLLINT_FILE_NAMES_REGEX</td>
@@ -3588,7 +3588,7 @@
 <h2 id="behind-the-scenes">Behind the scenes</h2>
 <h3 id="how-are-identified-applicable-files">How are identified applicable files</h3>
 <ul>
-<li>File extensions: <code>.xml</code></li>
+<li>File extensions: <code>.xml</code>, <code>.xsd</code></li>
 </ul>
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
@@ -3597,9 +3597,11 @@
 <li>xmllint is called once with the list of files as arguments (<code>list_of_files</code> CLI lint mode)</li>
 </ul>
 <h3 id="example-calls">Example calls</h3>
-<pre><code class="language-shell">xmllint myfile.xml
+<pre><code class="language-shell">xmllint myXMLfile.xml
 </code></pre>
-<pre><code class="language-shell">xmllint --format myfile.xml --output myfile.xml
+<pre><code class="language-shell">xmllint myXSDfile.xsd
+</code></pre>
+<pre><code class="language-shell">xmllint --format myXMLfile.xml --output myXMLfile.xml
 </code></pre>
 <h3 id="help-content">Help content</h3>
 <pre><code class="language-shell">Unknown option --help
@@ -3674,6 +3676,7 @@ Usage : xmllint [options] XMLfiles ...
   --sax: do not build a tree but work just at the SAX level
   --oldxml10: use XML-1.0 parsing rules before the 5th edition
   --xpath expr: evaluate the XPath expression, imply --noout
+  --max-ampl value: set maximum amplification factor
 
 Libxml project home page: https://gitlab.gnome.org/GNOME/libxml2
 </code></pre>
