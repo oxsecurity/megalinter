@@ -332,6 +332,7 @@ nav:
               - "gitleaks": "descriptors/repository_gitleaks.md"
               - "grype": "descriptors/repository_grype.md"
               - "kics": "descriptors/repository_kics.md"
+              - "ls-lint": "descriptors/repository_ls_lint.md"
               - "secretlint": "descriptors/repository_secretlint.md"
               - "semgrep": "descriptors/repository_semgrep.md"
               - "syft": "descriptors/repository_syft.md"

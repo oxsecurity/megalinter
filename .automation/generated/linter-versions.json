@@ -51,6 +51,7 @@
     "kubeval": "0.16.1",
     "lightning-flow-scanner": "2.27.0",
     "lintr": "0.0.0",
+    "ls-lint": "2.2.3",
     "luacheck": "1.2.0",
     "lychee": "0.15.1",
     "markdown-link-check": "3.12.2",
