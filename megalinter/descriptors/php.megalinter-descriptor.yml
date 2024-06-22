@@ -108,9 +108,11 @@ linters:
       - "phpstan analyse --no-progress --no-ansi -c phpstan.neon myfile.php"
       - "phpstan analyse --no-progress --no-ansi myfile1.php myfile2.php"
       - "phpstan analyse --no-progress --no-ansi mydir1/ mydir2/ myfile.php"
+    downgraded_version: true
+    downgraded_reason: https://github.com/phpstan/phpstan/issues/11225
     install:
       dockerfile:
-        - RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require phpstan/phpstan bartlett/sarif-php-sdk
+        - RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require phpstan/phpstan:1.11.4 bartlett/sarif-php-sdk
       idea:
         - name: PHPStan / Psalm / Generics
           url: https://plugins.jetbrains.com/plugin/12754-phpstan--psalm--generics
