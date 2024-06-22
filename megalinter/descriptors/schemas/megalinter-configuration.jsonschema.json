@@ -13149,6 +13149,13 @@
       "title": "POWERSHELL_POWERSHELL_FORMATTER: Including Regex",
       "type": "string"
     },
+    "POWERSHELL_POWERSHELL_FORMATTER_OUTPUT_ENCODING": {
+      "$id": "#/properties/POWERSHELL_POWERSHELL_FORMATTER_OUTPUT_ENCODING",
+      "default": "utf8",
+      "description": "POWERSHELL_POWERSHELL_FORMATTER: `-Encoding` to be used when writing content to the file",
+      "title": "POWERSHELL_POWERSHELL_FORMATTER: Output encoding type",
+      "type": "string"
+    },
     "POWERSHELL_POWERSHELL_FORMATTER_POST_COMMANDS": {
       "$id": "#/properties/POWERSHELL_POWERSHELL_FORMATTER_POST_COMMANDS",
       "examples": [
@@ -15728,6 +15735,24 @@
       },
       "title": "REPOSITORY_GITLEAKS: Define or override a list of bash commands to run before the linter",
       "type": "array"
+    },
+    "REPOSITORY_GITLEAKS_PR_COMMITS_SCAN": {
+      "$id": "#/properties/REPOSITORY_GITLEAKS_PR_COMMITS_SCAN",
+      "default": false,
+      "title": "REPOSITORY_GITLEAKS: Scan only commits in the current Pull Request/Merge Request",
+      "type": "boolean"
+    },
+    "REPOSITORY_GITLEAKS_PR_SOURCE_SHA": {
+      "$id": "#/properties/REPOSITORY_GITLEAKS_PR_SOURCE_SHA",
+      "default": "",
+      "title": "REPOSITORY_GITLEAKS: Source commit SHA of the Pull Request/Merge Request",
+      "type": "string"
+    },
+    "REPOSITORY_GITLEAKS_PR_TARGET_SHA": {
+      "$id": "#/properties/REPOSITORY_GITLEAKS_PR_TARGET_SHA",
+      "default": "",
+      "title": "REPOSITORY_GITLEAKS: Target commit SHA of the Pull Request/Merge Request",
+      "type": "string"
     },
     "REPOSITORY_GITLEAKS_RULES_PATH": {
       "$id": "#/properties/REPOSITORY_GITLEAKS_RULES_PATH",
@@ -21856,6 +21881,13 @@
       "description": "TERRAFORM_TFLINT: Path where to find linter configuration file",
       "title": "TERRAFORM_TFLINT: Custom config file path",
       "type": "string"
+    },
+    "TERRAFORM_TFLINT_SECURED_ENV": {
+      "$id": "#/properties/TERRAFORM_TFLINT_SECURED_ENV",
+      "default": true,
+      "description": "TERRAFORM_TFLINT: Allows to send the full env to **tflint --init**. Initialized with default value `true`. Set to `false` to allow `tflint --init` to access your env vars.",
+      "title": "TERRAFORM_TFLINT: Secured Environment Flag",
+      "type": "boolean"
     },
     "TERRAFORM_TFLINT_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/TERRAFORM_TFLINT_UNSECURED_ENV_VARIABLES",
