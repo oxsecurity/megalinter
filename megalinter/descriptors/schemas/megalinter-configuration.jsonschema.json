@@ -16188,6 +16188,120 @@
       "title": "REPOSITORY_KICS: Unsecured env variables",
       "type": "array"
     },
+    "REPOSITORY_LS_LINT_ARGUMENTS": {
+      "$id": "#/properties/REPOSITORY_LS_LINT_ARGUMENTS",
+      "description": "REPOSITORY_LS_LINT: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_LS_LINT: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "REPOSITORY_LS_LINT_CLI_EXECUTABLE": {
+      "$id": "#/properties/REPOSITORY_LS_LINT_CLI_EXECUTABLE",
+      "default": [
+        [
+          "ls-lint"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_LS_LINT: CLI Executable",
+      "type": "array"
+    },
+    "REPOSITORY_LS_LINT_COMMAND_REMOVE_ARGUMENTS": {
+      "$id": "#/properties/REPOSITORY_LS_LINT_COMMAND_REMOVE_ARGUMENTS",
+      "description": "REPOSITORY_LS_LINT: User custom arguments to remove before calling linter",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_LS_LINT: Custom remove arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "REPOSITORY_LS_LINT_CONFIG_FILE": {
+      "$id": "#/properties/REPOSITORY_LS_LINT_CONFIG_FILE",
+      "default": ".ls-lint.yml",
+      "description": "REPOSITORY_LS_LINT: User custom config file name if different from default",
+      "title": "REPOSITORY_LS_LINT: Custom config file name",
+      "type": "string"
+    },
+    "REPOSITORY_LS_LINT_DISABLE_ERRORS": {
+      "$id": "#/properties/REPOSITORY_LS_LINT_DISABLE_ERRORS",
+      "default": false,
+      "title": "REPOSITORY_LS_LINT: Linter doesn't make MegaLinter fail even if errors are found",
+      "type": "boolean"
+    },
+    "REPOSITORY_LS_LINT_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/REPOSITORY_LS_LINT_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "REPOSITORY_LS_LINT: Maximum number of errors allowed",
+      "type": "number"
+    },
+    "REPOSITORY_LS_LINT_POST_COMMANDS": {
+      "$id": "#/properties/REPOSITORY_LS_LINT_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "REPOSITORY_LS_LINT: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "REPOSITORY_LS_LINT_PRE_COMMANDS": {
+      "$id": "#/properties/REPOSITORY_LS_LINT_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "REPOSITORY_LS_LINT: Define or override a list of bash commands to run before the linter",
+      "type": "array"
+    },
+    "REPOSITORY_LS_LINT_RULES_PATH": {
+      "$id": "#/properties/REPOSITORY_LS_LINT_RULES_PATH",
+      "description": "REPOSITORY_LS_LINT: Path where to find linter configuration file",
+      "title": "REPOSITORY_LS_LINT: Custom config file path",
+      "type": "string"
+    },
+    "REPOSITORY_LS_LINT_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/REPOSITORY_LS_LINT_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling REPOSITORY_LS_LINT and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_LS_LINT: Unsecured env variables",
+      "type": "array"
+    },
     "REPOSITORY_POST_COMMANDS": {
       "$id": "#/properties/REPOSITORY_POST_COMMANDS",
       "examples": [
