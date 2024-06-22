@@ -26,6 +26,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [Powershell](https://github.com/PowerShell/PSScriptAnalyzer#readme) Error table truncation improvements
   - [yamllint](https://github.com/adrienverge/yamllint) fix error/warning count to work with different log output formats
   - Improve support for single argument in `get_list_args` function
+  - [GitLeaks](https://github.com/gitleaks/gitleaks) add missing schema properties
   - [DevSkim](https://github.com/microsoft/DevSkim) fixed fatal errors when scanning and ability to override config path
   - [Powershell](https://github.com/PowerShell/PSScriptAnalyzer#readme) added missing schema property `POWERSHELL_POWERSHELL_FORMATTER_OUTPUT_ENCODING`
   - [tflint](https://github.com/terraform-linters/tflint) added missing schema property `TERRAFORM_TFLINT_SECURED_ENV`

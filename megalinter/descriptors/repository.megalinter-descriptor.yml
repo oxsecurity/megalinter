@@ -255,13 +255,13 @@ linters:
         - COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
     variables:
       - name: REPOSITORY_GITLEAKS_PR_COMMITS_SCAN
-        description: Scan only PR commits on Pull Request
+        description: Scan only commits in the current Pull Request/Merge Request
         default_value: "false"
       - name: REPOSITORY_GITLEAKS_PR_SOURCE_SHA
-        description: Pull Request source commit sha (N/A to supported scenarios)
+        description: Source commit SHA of the Pull Request/Merge Request
         default_value: ""
       - name: REPOSITORY_GITLEAKS_PR_TARGET_SHA
-        description: Pull Request target commit sha (N/A to supported scenarios)
+        description: Target commit SHA of the Pull Request/Merge Request
         default_value: ""
 
   # GRYPE
