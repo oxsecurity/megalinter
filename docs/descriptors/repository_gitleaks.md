@@ -24,7 +24,7 @@ To scan only PR commits, the [shallow fetch](https://git-scm.com/docs/git-fetch#
 #### GitHub Actions
 
 ```yml
-- uses: actions/checkout@v3
+- uses: actions/checkout@v4
   with:
     fetch-depth: 0
 ```
@@ -51,7 +51,7 @@ git fetch --depth=0
 
 ## gitleaks documentation
 
-- Version in MegaLinter: **8.18.2**
+- Version in MegaLinter: **8.18.4**
 - Visit [Official Web Site](https://github.com/gitleaks/gitleaks#readme){target=_blank}
 - See [How to configure gitleaks rules](https://github.com/gitleaks/gitleaks#configuration){target=_blank}
   - If custom `.gitleaks.toml` config file isn't found, [.gitleaks.toml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.gitleaks.toml){target=_blank} will be used
@@ -67,9 +67,9 @@ git fetch --depth=0
 
 | Variable                                        | Description                                                                                                | Default value                                   |
 |-------------------------------------------------|------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
-| REPOSITORY_GITLEAKS_PR_COMMITS_SCAN             | Scan only PR commits on Pull Request                                                                       | `false`                                         |
-| REPOSITORY_GITLEAKS_PR_SOURCE_SHA               | Pull Request source commit sha (N/A to supported scenarios)                                                | ``                                              |
-| REPOSITORY_GITLEAKS_PR_TARGET_SHA               | Pull Request target commit sha (N/A to supported scenarios)                                                | ``                                              |
+| REPOSITORY_GITLEAKS_PR_COMMITS_SCAN             | Scan only commits in the current Pull Request/Merge Request                                                | `false`                                         |
+| REPOSITORY_GITLEAKS_PR_SOURCE_SHA               | Source commit SHA of the Pull Request/Merge Request                                                        | ``                                              |
+| REPOSITORY_GITLEAKS_PR_TARGET_SHA               | Target commit SHA of the Pull Request/Merge Request                                                        | ``                                              |
 | REPOSITORY_GITLEAKS_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                   |                                                 |
 | REPOSITORY_GITLEAKS_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`       |                                                 |
 | REPOSITORY_GITLEAKS_PRE_COMMANDS                | List of bash commands to run before the linter                                                             | None                                            |
@@ -179,7 +179,10 @@ Use "gitleaks [command] --help" for more information about a command.
 
 - Dockerfile commands :
 ```dockerfile
-FROM zricethezav/gitleaks:v8.18.2 as gitleaks
+# renovate: datasource=docker depName=zricethezav/gitleaks
+ARG GITLEAKS_VERSION=v8.18.4
+
+FROM zricethezav/gitleaks:${GITLEAKS_VERSION} as gitleaks
 COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 ```
 

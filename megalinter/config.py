@@ -222,15 +222,30 @@ def get_list(request_id, config_var, default=None):
     return default
 
 
+# Retrieve a configuration variable as a list of arguments, handling various input formats.
 def get_list_args(request_id, config_var, default=None):
+    # Retrieve the variable from the configuration
     var = get(request_id, config_var, None)
-    if var is not None:
-        if isinstance(var, list):
-            return var
-        if var == "":
+
+    match var:
+        # None return the default value
+        case None:
+            return default
+        # Blank or whitespace-only strings return empty list
+        case "" | str() if var.strip() == "":
             return []
-        return shlex.split(var)
-    return default
+        # Integer or a Decimal return it as a list
+        case int() | float():
+            return [str(var)]
+        # If already a list just return it
+        case list():
+            return var
+        # If string does not contain spaces, return it as a list
+        case str() if " " not in var.strip():
+            return [var]
+        # Otherwise, split the string using shlex and return the result
+        case _:
+            return shlex.split(var)
 
 
 def set_value(request_id, config_var, val):

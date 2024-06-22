@@ -95,6 +95,14 @@ yamllint myfile.yaml
 yamllint -c .yamllint.yml myfile.yaml
 ```
 
+```shell
+yamllint --strict
+```
+
+```shell
+yamllint --no-warnings
+```
+
 
 ### Help content
 

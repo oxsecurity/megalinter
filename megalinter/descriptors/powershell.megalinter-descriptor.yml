@@ -46,7 +46,9 @@ linters:
     # If changing PWSH_VERSION='latest' to a specific version, use format PWSH_VERSION='tags/v7.0.2'
     install:
       dockerfile:
-        - ARG PSSA_VERSION='latest'
+        - |
+          # renovate: datasource=nuget depName=PSScriptAnalyzer registryUrl=https://www.powershellgallery.com/api/v2/
+          ARG PSSA_VERSION='1.22.0'
         - RUN pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSION} -Scope AllUsers -Force'
     ide:
       vscode:
@@ -76,7 +78,9 @@ linters:
     # If changing PWSH_VERSION='latest' to a specific version, use format PWSH_VERSION='tags/v7.0.2'
     install:
       dockerfile:
-        - ARG PSSA_VERSION='latest'
+        - |
+          # renovate: datasource=nuget depName=PSScriptAnalyzer registryUrl=https://www.powershellgallery.com/api/v2/
+          ARG PSSA_VERSION='1.22.0'
         - RUN pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSION} -Scope AllUsers -Force'
     ide:
       vscode:

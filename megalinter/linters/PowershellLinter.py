@@ -6,7 +6,7 @@ https://github.com/PowerShell/PSScriptAnalyzer
 import sys
 from shutil import get_terminal_size
 
-from megalinter import Linter, config
+from megalinter import Linter, config, utils
 
 
 class PowershellLinter(Linter):
@@ -56,17 +56,10 @@ class PowershellLinter(Linter):
             and self.cli_lint_fix_arg_name is not None
         ):
             pwsh_script[0] += f" {self.cli_lint_fix_arg_name}"
+
         if self.linter_name == "powershell":
-            # Enforce table output for easier parsing of number of errors
-            # (severity first)
-            pwsh_script[
-                0
-            ] += " | Format-Table -AutoSize -Wrap -Property Severity, RuleName, ScriptName, Line, Message"
-            # Format output to fit in terminal, respecting the terminal width.
-            # Use good defaults, shutil respects COLUMNS env var. For more info:
-            # https://stackoverflow.com/a/76889369
-            size = get_terminal_size()
-            pwsh_script[0] += f" | Out-String -Width {size.columns}"
+            pwsh_script[0] = self.format_powershell_output(pwsh_script[0])
+
         cmd = [
             *self.cli_executable,
             "-NoProfile",
@@ -75,6 +68,28 @@ class PowershellLinter(Linter):
             "\n".join(pwsh_script),
         ]
         return cmd
+
+    def format_powershell_output(self, pwsh_script):
+        if utils.is_ci():
+            width = (
+                150  # Use a default width in CI environments to prevent output cutoff
+            )
+        else:
+            width = get_terminal_size().columns  # Use the terminal width when not in CI
+
+        # Format the output to a table with specific columns
+        pwsh_script += (
+            " | Format-Table -AutoSize -Wrap -Property "
+            "@{Name='Severity'; Expression={$_.Severity}; Alignment='left'},"
+            " @{Name='RuleName'; Expression={$_.RuleName}; Alignment='left'},"
+            " @{Name='ScriptName'; Expression={$_.ScriptName}; Alignment='left'},"
+            " @{Name='Line'; Expression={$_.Line}; Alignment='right'},"
+            " @{Name='Message'; Expression={$_.Message}; Alignment='left'}"
+        )
+
+        # Ensure the output string fits within the specified width
+        pwsh_script += f" | Out-String -Width {width}"
+        return pwsh_script
 
     # Build the CLI command to get linter version
     def build_version_command(self):

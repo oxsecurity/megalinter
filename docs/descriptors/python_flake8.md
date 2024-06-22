@@ -9,7 +9,7 @@ description: How to use flake8 (configure, ignore files, ignore errors, help & v
 
 ## flake8 documentation
 
-- Version in MegaLinter: **7.0.0**
+- Version in MegaLinter: **7.1.0**
 - Visit [Official Web Site](https://flake8.pycqa.org){target=_blank}
 - See [How to configure flake8 rules](https://flake8.pycqa.org/en/latest/user/configuration.html#project-configuration){target=_blank}
   - If custom `.flake8` config file isn't found, [.flake8](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.flake8){target=_blank} will be used
@@ -193,7 +193,7 @@ pyflakes:
   --builtins BUILTINS   define more built-ins, comma separated
   --doctests            also check syntax of the doctests
 
-Installed plugins: mccabe: 0.7.0, pycodestyle: 2.11.1, pyflakes: 3.2.0
+Installed plugins: mccabe: 0.7.0, pycodestyle: 2.12.0, pyflakes: 3.2.0
 ```
 
 ### Installation on mega-linter Docker image

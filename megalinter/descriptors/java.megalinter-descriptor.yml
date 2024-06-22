@@ -92,7 +92,9 @@ linters:
       - "pmd --rulesets java-pmd-ruleset.xml --dir /path/to/sources"
     install:
       dockerfile:
-        - ARG PMD_VERSION=7.1.0
+        - |
+          # renovate: datasource=github-tags depName=pmd/pmd extractVersion=^pmd_releases/(?<version>.*)$
+          ARG PMD_VERSION=7.2.0
         - |
           RUN wget --quiet https://github.com/pmd/pmd/releases/download/pmd_releases%2F${PMD_VERSION}/pmd-dist-${PMD_VERSION}-bin.zip && \
               unzip pmd-dist-${PMD_VERSION}-bin.zip || echo "Error unzipping" && \

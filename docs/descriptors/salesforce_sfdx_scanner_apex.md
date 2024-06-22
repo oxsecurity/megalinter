@@ -93,16 +93,16 @@ sf scanner:run
 ### Help content
 
 ```shell
-(node:2009) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(node:1739) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
 (Use `node --trace-deprecation ...` to show where the warning was created)
 scan a codebase with a selection of rules
 
 USAGE
-  $ sf scanner run [--verbose] [-c <value>] [-f
+  $ sf scanner run [--verbose] [-c <value>...] [-f
     csv|html|json|junit|sarif|table|xml] [-o <value>] [-s <value> | --json]
-    [--normalize-severity] [-p <value>] [-r <value>] [-e
-    eslint|eslint-lwc|eslint-typescript|pmd|pmd-appexchange|retire-js|sfge|cpd]
-    [-t <value>] [--tsconfig <value>] [--eslintconfig <value>] [--pmdconfig
+    [--normalize-severity] [-p <value>...] [-r <value>...] [-e eslint|eslint-lwc
+    |eslint-typescript|pmd|pmd-appexchange|retire-js|sfge|cpd...] [-t
+    <value>...] [--tsconfig <value>] [--eslintconfig <value>] [--pmdconfig
     <value>] [--preview-pmd7] [--env <value>] [--verbose-violations]
 
 FLAGS
@@ -143,10 +143,8 @@ GLOBAL FLAGS
 COMMANDS
   scanner run dfa  scan codebase with all DFA rules
 
-(node:2031) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(node:1751) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
 (Use `node --trace-deprecation ...` to show where the warning was created)
- ›   Warning: Plugin @salesforce/sfdx-scanner (3.25.0) differs from the version
- ›    specified by sf (3.24.0)
 Warning: To use the most up-to-date Code Analyzer features including PMD 7.x, install Code Analyzer v4.x (Beta) by running this command: "sf plugins install @salesforce/sfdx-scanner@latest-beta". You are currently using Code Analyzer v3, which we plan to stop supporting soon.
 Warning: We're continually improving Salesforce Code Analyzer. Tell us what you think! Give feedback at https://research.net/r/SalesforceCA
  name                                                   languages   categories            rulesets [dep]                                   engine            is dfa is pilot

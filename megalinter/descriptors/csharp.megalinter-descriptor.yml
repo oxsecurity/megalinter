@@ -45,6 +45,8 @@ linters:
     linter_rules_configuration_url: https://csharpier.com/docs/Configuration
     linter_rules_ignore_config_url: https://csharpier.com/docs/Ignore
     ignore_file_name: .csharpierignore
+    config_file_name: .csharpierrc
+    cli_config_arg_name: "--config-path"
     cli_executable: dotnet-csharpier
     cli_lint_mode: list_of_files
     cli_lint_extra_args:
