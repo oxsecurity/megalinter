@@ -17,6 +17,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Linters
   - Add python package Pygments to rst-lint venv
   - [CSharpier](https://csharpier.com) added ability to override config filename and path
+  - [xmllint](https://gnome.pages.gitlab.gnome.org/libxml2/xmllint.html) added support for `xsd` files
 
 - Reporters
 
