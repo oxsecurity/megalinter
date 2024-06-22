@@ -83,11 +83,15 @@ devskim is called once on the whole project directory (`project` CLI lint mode)
 ### Example calls
 
 ```shell
-devskim analyze .
+devskim analyze --source-code .
 ```
 
 ```shell
-devskim analyze --file-format sarif .
+devskim analyze --file-format sarif --source-code .
+```
+
+```shell
+devskim analyze --file-format sarif --options-json config --source-code .
 ```
 
 
