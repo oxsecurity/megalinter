@@ -22918,6 +22918,12 @@
         "string"
       ]
     },
+    "XML_XMLLINT_AUTOFORMAT": {
+      "$id": "#/properties/XML_XMLLINT_AUTOFORMAT",
+      "default": false,
+      "title": "XML_XMLLINT: If set to `true`, it will reformat and reindent the output",
+      "type": "boolean"
+    },
     "XML_XMLLINT_CLI_EXECUTABLE": {
       "$id": "#/properties/XML_XMLLINT_CLI_EXECUTABLE",
       "default": [
@@ -23002,6 +23008,12 @@
     "XML_XMLLINT_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/XML_XMLLINT_FILTER_REGEX_INCLUDE",
       "title": "XML_XMLLINT: Including Regex",
+      "type": "string"
+    },
+    "XML_XMLLINT_INDENT": {
+      "$id": "#/properties/XML_XMLLINT_INDENT",
+      "default": "  ",
+      "title": "XML_XMLLINT: The number of indentation spaces when `XML_XMLLINT_AUTOFORMAT` is `true`",
       "type": "string"
     },
     "XML_XMLLINT_POST_COMMANDS": {
