@@ -352,6 +352,7 @@ linters:
       - "ls-lint"
       - "ls-lint --workdir src"
     test_folder: repository_file
+    cli_lint_errors_count: "total_lines"
     install:
       npm:
         - "@ls-lint/ls-lint"
