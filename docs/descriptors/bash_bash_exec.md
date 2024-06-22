@@ -12,7 +12,7 @@ Note: You can run `git add --chmod=+x myfile.sh` to make a file executable on Wi
 
 ## bash-exec documentation
 
-- Version in MegaLinter: **5.2.21**
+- Version in MegaLinter: **5.2.26**
 - Visit [Official Web Site](https://www.gnu.org/software/bash/){target=_blank}
 
 ## Configuration in MegaLinter
@@ -83,7 +83,7 @@ bash-exec myfile.sh
 ### Help content
 
 ```shell
-GNU bash, version 5.2.21(1)-release-(x86_64-alpine-linux-musl)
+GNU bash, version 5.2.26(1)-release-(x86_64-alpine-linux-musl)
 Usage:  bash [GNU long option] [option] ...
   bash [GNU long option] [option] script-file ...
 GNU long options:

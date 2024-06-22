@@ -104,6 +104,12 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.78.1 to **3.78.2** on 2024-06-21
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.8.4 to **8.9.1** on 2024-06-21
   - [vale](https://vale.sh/) from 3.5.0 to **3.6.0** on 2024-06-21
+  - [bash-exec](https://www.gnu.org/software/bash/) from 5.2.21 to **5.2.26** on 2024-06-22
+  - [clang-format](https://releases.llvm.org/17.0.1/tools/clang/docs/ClangFormat.html) from 17.0.5 to **17.0.6** on 2024-06-22
+  - [helm](https://helm.sh/docs/helm/helm_lint/) from 3.14.2 to **3.14.3** on 2024-06-22
+  - [phpstan](https://phpstan.org/) from 1.11.5 to **1.11.4** on 2024-06-22
+  - [git_diff](https://git-scm.com) from 2.43.4 to **2.45.2** on 2024-06-22
+  - [xmllint](https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home) from 21108 to **21207** on 2024-06-22
 <!-- linter-versions-end -->
 
 ## [v7.12.0] - 2024-06-02
