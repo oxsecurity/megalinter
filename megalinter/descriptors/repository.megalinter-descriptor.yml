@@ -6,7 +6,6 @@ descriptor_flavors:
   - cupcake
 lint_all_files: true
 linters:
-
   # CHECKOV
   - linter_name: checkov
     name: REPOSITORY_CHECKOV
