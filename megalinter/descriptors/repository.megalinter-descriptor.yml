@@ -341,6 +341,26 @@ linters:
         - COPY --from=kics /app/bin/assets /usr/bin/assets
     test_folder: repository_kics
 
+  # LS-LINT
+  - linter_name: ls-lint
+    linter_url: https://ls-lint.org/
+    linter_repo: https://github.com/loeffel-io/ls-lint
+    linter_rules_url: https://ls-lint.org/2.2/configuration/the-rules.html
+    linter_banner_image_url: https://raw.githubusercontent.com/loeffel-io/ls-lint/master/assets/logo/ls-lint.png
+    active_only_if_file_found:
+      - ".ls-lint.yml"
+    cli_lint_mode: project
+    cli_config_arg_name: "--config"
+    config_file_name: ".ls-lint.yml"
+    examples:
+      - "ls-lint"
+      - "ls-lint --workdir src"
+    test_folder: repository_file
+    cli_lint_errors_count: "total_lines"
+    install:
+      npm:
+        - "@ls-lint/ls-lint"
+
   # SECRETLINT
   - class: SecretLintLinter
     linter_name: secretlint
