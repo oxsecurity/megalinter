@@ -1,0 +1,22 @@
+#####################
+#####################
+##### GitLab CI #####
+#####################
+#####################
+---
+stages:
+  - build
+  - test
+
+build_job:
+  stage: build
+  script:
+    - echo "Building..."
+    - echo "Build complete!"
+
+test_job:
+  stage: test
+  script:
+    - echo "Testing..."
+    - echo "Test complete!"
+    - echo "Another test"

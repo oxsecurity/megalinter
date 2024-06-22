@@ -10,23 +10,33 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Core
   - Handle renovate version comments in build script
+  - Update base image to python:3.12.4-alpine3.20
 
 - Media
 
 - Linters
   - Add python package Pygments to rst-lint venv
+  - [CSharpier](https://csharpier.com) added ability to override config filename and path
+  - [xmllint](https://gnome.pages.gitlab.gnome.org/libxml2/xmllint.html) added support for `xsd` files
 
 - Reporters
 
 - Fixes
   - [syft](https://github.com/anchore/syft) use `scan` instead of deprecated `packages` arg
   - [Powershell](https://github.com/PowerShell/PSScriptAnalyzer#readme) Error table truncation improvements
+  - [yamllint](https://github.com/adrienverge/yamllint) fix error/warning count to work with different log output formats
+  - Improve support for single argument in `get_list_args` function
+  - [GitLeaks](https://github.com/gitleaks/gitleaks) add missing schema properties
+  - [DevSkim](https://github.com/microsoft/DevSkim) fixed fatal errors when scanning and ability to override config path
+  - [Powershell](https://github.com/PowerShell/PSScriptAnalyzer#readme) added missing schema property `POWERSHELL_POWERSHELL_FORMATTER_OUTPUT_ENCODING`
+  - [tflint](https://github.com/terraform-linters/tflint) added missing schema property `TERRAFORM_TFLINT_SECURED_ENV`
 
 - Doc
 
 - Flavors
 
 - CI
+  - Bump actions/checkout from 3 to 4
 
 - Linter versions upgrades
   - [checkov](https://www.checkov.io/) from 3.2.122 to **3.2.124** on 2024-06-02
@@ -54,6 +64,46 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.58.13 to **0.58.14** on 2024-06-09
   - [golangci-lint](https://golangci-lint.run/) from 1.59.0 to **1.59.1** on 2024-06-09
   - [pmd](https://pmd.github.io/) from 7.1.0 to **7.2.0** on 2024-06-10
+  - [markdown-table-formatter](https://www.npmjs.com/package/markdown-table-formatter) from 1.6.0 to **1.6.1** on 2024-06-10
+  - [checkov](https://www.checkov.io/) from 3.2.130 to **3.2.133** on 2024-06-10
+  - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.18.2 to **8.18.3** on 2024-06-10
+  - [syft](https://github.com/anchore/syft) from 1.5.0 to **1.6.0** on 2024-06-10
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.52.0 to **0.52.1** on 2024-06-10
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.52.0 to **0.52.1** on 2024-06-10
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.87.5 to **0.87.6** on 2024-06-11
+  - [prettier](https://prettier.io/) from 3.3.1 to **3.3.2** on 2024-06-11
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.78.0 to **3.78.1** on 2024-06-11
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.13.0 to **8.14.0** on 2024-06-11
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.366 to **1.1.367** on 2024-06-12
+  - [kics](https://www.kics.io) from 2.0.1 to **2.1.0** on 2024-06-12
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.87.6 to **0.87.7** on 2024-06-13
+  - [bandit](https://bandit.readthedocs.io/en/latest/) from 1.7.8 to **1.7.9** on 2024-06-13
+  - [checkov](https://www.checkov.io/) from 3.2.133 to **3.2.136** on 2024-06-13
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.78 to **0.1.79** on 2024-06-13
+  - [ruff](https://github.com/astral-sh/ruff) from 0.4.8 to **0.4.9** on 2024-06-14
+  - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.18.3 to **8.18.4** on 2024-06-14
+  - [grype](https://github.com/anchore/grype) from 0.78.0 to **0.79.0** on 2024-06-14
+  - [syft](https://github.com/anchore/syft) from 1.6.0 to **1.7.0** on 2024-06-14
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.52.1 to **0.52.2** on 2024-06-14
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.52.1 to **0.52.2** on 2024-06-14
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 2.26.0 to **2.27.0** on 2024-06-15
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.58.1 to **3.59.1** on 2024-06-15
+  - [npm-package-json-lint](https://npmpackagejsonlint.org/) from 7.1.0 to **8.0.0** on 2024-06-15
+  - [flake8](https://flake8.pycqa.org) from 7.0.0 to **7.1.0** on 2024-06-15
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.58.14 to **0.59.3** on 2024-06-16
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.59.1 to **3.59.3** on 2024-06-17
+  - [checkov](https://www.checkov.io/) from 3.2.136 to **3.2.137** on 2024-06-17
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 24.6.0 to **24.6.1** on 2024-06-21
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.87.7 to **1.3.3** on 2024-06-21
+  - [phpstan](https://phpstan.org/) from 1.11.4 to **1.11.5** on 2024-06-21
+  - [psalm](https://psalm.dev) from Psalm.5.24.0@ to **Psalm.5.25.0@** on 2024-06-21
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.367 to **1.1.368** on 2024-06-21
+  - [ruff](https://github.com/astral-sh/ruff) from 0.4.9 to **0.4.10** on 2024-06-21
+  - [checkov](https://www.checkov.io/) from 3.2.137 to **3.2.141** on 2024-06-21
+  - [grype](https://github.com/anchore/grype) from 0.79.0 to **0.79.1** on 2024-06-21
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.78.1 to **3.78.2** on 2024-06-21
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.8.4 to **8.9.1** on 2024-06-21
+  - [vale](https://vale.sh/) from 3.5.0 to **3.6.0** on 2024-06-21
 <!-- linter-versions-end -->
 
 ## [v7.12.0] - 2024-06-02

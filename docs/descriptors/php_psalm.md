@@ -15,7 +15,7 @@ description: How to use psalm (configure, ignore files, ignore errors, help & ve
 
 ## psalm documentation
 
-- Version in MegaLinter: **Psalm.5.24.0@**
+- Version in MegaLinter: **Psalm.5.25.0@**
 - Visit [Official Web Site](https://psalm.dev){target=_blank}
 - See [How to configure psalm rules](https://psalm.dev/docs/running_psalm/configuration/){target=_blank}
   - If custom `psalm.xml` config file isn't found, [psalm.xml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/psalm.xml){target=_blank} will be used
@@ -182,8 +182,10 @@ Output:
 
     --output-format=console
         Changes the output format.
-        Available formats: compact, console, text, emacs, json, pylint, xml, checkstyle, junit, sonarqube,
-                           github, phpstorm, codeclimate, by-issue-level
+        Available formats:
+            by-issue-level, checkstyle, codeclimate, compact, console, count, emacs,
+            github, json, json-summary, junit, phpstorm, pylint, sarif, sonarqube,
+            text, xml
 
     --no-progress
         Disable the progress indicator
@@ -197,8 +199,9 @@ Output:
 Reports:
     --report=PATH
         The path where to output report file. The output format is based on the file extension.
-        (Currently supported formats: ".json", ".xml", ".txt", ".emacs", ".pylint", ".console",
-        ".sarif", "checkstyle.xml", "sonarqube.json", "codeclimate.json", "summary.json", "junit.xml")
+        (Currently supported formats: ".console", ".emacs", ".json", ".pylint", ".sarif", ".sarif.json", ".txt",
+        ".xml", "checkstyle.xml", "codeclimate.json", "count.txt", "junit.xml",
+        "sonarqube.json", "summary.json")
 
     --report-show-info[=BOOLEAN]
         Whether the report should include non-errors in its output (defaults to true)
