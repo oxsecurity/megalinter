@@ -6,6 +6,7 @@ descriptor_flavors:
   - cupcake
 file_extensions:
   - ".xml"
+  - ".xsd"
 linters:
   # XML LINT
   - class: XmlLintLinter
@@ -20,15 +21,16 @@ linters:
         default_value: "  "
         description: The number of indentation spaces when `XML_XMLLINT_AUTOFORMAT` is `true`
     linter_url: https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home
-    linter_rules_url: https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home#diagnostics
+    linter_rules_configuration_url: https://gnome.pages.gitlab.gnome.org/libxml2/xmllint.html
     version_extract_regex: "(?<=libxml version )\\d+(\\d+)+"
     cli_lint_mode: list_of_files
     cli_lint_fix_arg_name: "--format"
     cli_help_arg_name: "--help"
     help_command_return_code: 1
     examples:
-      - "xmllint myfile.xml"
-      - "xmllint --format myfile.xml --output myfile.xml"
+      - "xmllint myXMLfile.xml"
+      - "xmllint myXSDfile.xsd"
+      - "xmllint --format myXMLfile.xml --output myXMLfile.xml"
     install:
       apk:
         - libc-dev
