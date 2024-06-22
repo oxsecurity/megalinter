@@ -28,6 +28,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Improve support for single argument in `get_list_args` function
   - [DevSkim](https://github.com/microsoft/DevSkim) fixed fatal errors when scanning and ability to override config path
   - [Powershell](https://github.com/PowerShell/PSScriptAnalyzer#readme) added missing schema property `POWERSHELL_POWERSHELL_FORMATTER_OUTPUT_ENCODING`
+  - [tflint](https://github.com/terraform-linters/tflint) added missing schema property `TERRAFORM_TFLINT_SECURED_ENV`
 
 - Doc
 
