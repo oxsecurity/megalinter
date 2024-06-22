@@ -11,9 +11,9 @@ To apply file formatting you must set `XML_XMLLINT_CLI_LINT_MODE: file` and `XML
 
 ## xmllint documentation
 
-- Version in MegaLinter: **21108**
+- Version in MegaLinter: **21207**
 - Visit [Official Web Site](https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home){target=_blank}
-- See [Index of problems detected by xmllint](https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home#diagnostics){target=_blank}
+- See [How to configure xmllint rules](https://gnome.pages.gitlab.gnome.org/libxml2/xmllint.html){target=_blank}
 
 ## Configuration in MegaLinter
 
@@ -25,13 +25,13 @@ To apply file formatting you must set `XML_XMLLINT_CLI_LINT_MODE: file` and `XML
 | Variable                                | Description                                                                                                                                                                                                         | Default value      |
 |-----------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
 | XML_XMLLINT_AUTOFORMAT                  | If set to `true`, it will reformat and reindent the output                                                                                                                                                          | `false`            |
-| XML_XMLLINT_INDENT                      | The number of indentation spaces when `XML_XMLLINT_AUTOFORMAT` is `true`                                                                                                                                            | ``                 |
+| XML_XMLLINT_INDENT                      | The number of indentation spaces when `XML_XMLLINT_AUTOFORMAT` is `true`                                                                                                                                            | `  `               |
 | XML_XMLLINT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                    |
 | XML_XMLLINT_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                                |                    |
 | XML_XMLLINT_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file |
 | XML_XMLLINT_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file    |
 | XML_XMLLINT_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `list_of_files`    |
-| XML_XMLLINT_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".xml"]`         |
+| XML_XMLLINT_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".xml", ".xsd"]` |
 | XML_XMLLINT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | Include every file |
 | XML_XMLLINT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None               |
 | XML_XMLLINT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None               |
@@ -68,7 +68,7 @@ This linter is available in the following flavours
 
 ### How are identified applicable files
 
-- File extensions: `.xml`
+- File extensions: `.xml`, `.xsd`
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
@@ -79,11 +79,15 @@ This linter is available in the following flavours
 ### Example calls
 
 ```shell
-xmllint myfile.xml
+xmllint myXMLfile.xml
 ```
 
 ```shell
-xmllint --format myfile.xml --output myfile.xml
+xmllint myXSDfile.xsd
+```
+
+```shell
+xmllint --format myXMLfile.xml --output myXMLfile.xml
 ```
 
 
@@ -162,6 +166,7 @@ Usage : xmllint [options] XMLfiles ...
   --sax: do not build a tree but work just at the SAX level
   --oldxml10: use XML-1.0 parsing rules before the 5th edition
   --xpath expr: evaluate the XPath expression, imply --noout
+  --max-ampl value: set maximum amplification factor
 
 Libxml project home page: https://gitlab.gnome.org/GNOME/libxml2
 ```

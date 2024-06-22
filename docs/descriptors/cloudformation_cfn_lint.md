@@ -162,4 +162,4 @@ Advanced / Debugging:
 ### Installation on mega-linter Docker image
 
 - PIP packages (Python):
-  - [cfn-lint](https://pypi.org/project/cfn-lint)
+  - [cfn-lint[sarif]](https://pypi.org/project/cfn-lint[sarif])
