@@ -23,6 +23,9 @@ linters:
     linter_rules_inline_disable_url: https://github.com/terraform-linters/tflint/blob/master/docs/user-guide/annotations.md
     linter_text: |
       > If you are using the GitHub action please use the `TERRAFORM_TFLINT_UNSECURED_ENV_VARIABLES: GITHUB_TOKEN` to prevent plugin download issues
+
+      Note: It's recommended to create your own `.tflint.hcl` custom config file tailored to your project's specific needs.
+      The default configuration enables all supported languages and rules, which may not be optimal for every project.
     linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/tflint.png
     cli_lint_mode: project
     config_file_name: .tflint.hcl
