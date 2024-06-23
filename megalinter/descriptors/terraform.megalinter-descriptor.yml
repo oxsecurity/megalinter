@@ -48,6 +48,7 @@ linters:
           ARG TFLINT_VERSION=0.51.1
         - FROM ghcr.io/terraform-linters/tflint:v${TFLINT_VERSION} as tflint
         - COPY --link --from=tflint /usr/local/bin/tflint /usr/bin/
+
   # TERRASCAN
   - class: TerrascanLinter
     linter_name: terrascan
@@ -88,6 +89,7 @@ linters:
       dockerfile:
         - FROM tenable/terrascan:1.18.11 as terrascan
         - COPY --link --from=terrascan /go/bin/terrascan /usr/bin/
+
   # TERRAGRUNT
   - linter_name: terragrunt
     name: TERRAFORM_TERRAGRUNT
@@ -122,6 +124,7 @@ linters:
       dockerfile:
         - FROM alpine/terragrunt:latest as terragrunt
         - COPY --link --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
+
   # TERRAFORM_FMT
   - linter_name: terraform-fmt
     name: TERRAFORM_TERRAFORM_FMT
