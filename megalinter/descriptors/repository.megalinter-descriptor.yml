@@ -52,6 +52,7 @@ linters:
         - name: Checkov
           url: https://marketplace.visualstudio.com/items?itemName=Bridgecrew.checkov
     test_folder: repository_checkov
+
   # DEVSKIM
   - class: DotNetToolLinter
     linter_name: devskim
@@ -81,6 +82,7 @@ linters:
     linter_image_url: https://github.com/microsoft/DevSkim/raw/main/media/devskim_logo.svg
     linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/devskim.png
     config_file_name: .devskim.json
+    cli_config_arg_name: "--options-json"
     cli_lint_mode: project
     cli_lint_extra_args:
       - analyze
@@ -91,14 +93,14 @@ linters:
       - --source-code
       - "."
       - -E
-      - --skip-git-ignored-files
     cli_help_arg_name: --help
     cli_version_arg_name: --version
     cli_lint_errors_count: sarif
     test_folder: devskim
     examples:
-      - "devskim analyze ."
-      - "devskim analyze --file-format sarif ."
+      - "devskim analyze --source-code ."
+      - "devskim analyze --file-format sarif --source-code ."
+      - "devskim analyze --file-format sarif --options-json config --source-code ."
     install:
       dockerfile:
         # https://github.com/dotnet/sdk/issues/37790#issuecomment-1918068016
@@ -252,13 +254,13 @@ linters:
         - COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
     variables:
       - name: REPOSITORY_GITLEAKS_PR_COMMITS_SCAN
-        description: Scan only PR commits on Pull Request
+        description: Scan only commits in the current Pull Request/Merge Request
         default_value: "false"
       - name: REPOSITORY_GITLEAKS_PR_SOURCE_SHA
-        description: Pull Request source commit sha (N/A to supported scenarios)
+        description: Source commit SHA of the Pull Request/Merge Request
         default_value: ""
       - name: REPOSITORY_GITLEAKS_PR_TARGET_SHA
-        description: Pull Request target commit sha (N/A to supported scenarios)
+        description: Target commit SHA of the Pull Request/Merge Request
         default_value: ""
 
   # GRYPE
@@ -338,6 +340,26 @@ linters:
         - ENV KICS_QUERIES_PATH=/usr/bin/assets/queries KICS_LIBRARIES_PATH=/usr/bin/assets/libraries
         - COPY --from=kics /app/bin/assets /usr/bin/assets
     test_folder: repository_kics
+
+  # LS-LINT
+  - linter_name: ls-lint
+    linter_url: https://ls-lint.org/
+    linter_repo: https://github.com/loeffel-io/ls-lint
+    linter_rules_url: https://ls-lint.org/2.2/configuration/the-rules.html
+    linter_banner_image_url: https://raw.githubusercontent.com/loeffel-io/ls-lint/master/assets/logo/ls-lint.png
+    active_only_if_file_found:
+      - ".ls-lint.yml"
+    cli_lint_mode: project
+    cli_config_arg_name: "--config"
+    config_file_name: ".ls-lint.yml"
+    examples:
+      - "ls-lint"
+      - "ls-lint --workdir src"
+    test_folder: repository_file
+    cli_lint_errors_count: "total_lines"
+    install:
+      npm:
+        - "@ls-lint/ls-lint"
 
   # SECRETLINT
   - class: SecretLintLinter

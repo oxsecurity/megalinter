@@ -125,6 +125,7 @@ jobs:
             "repository_gitleaks",
             "repository_grype",
             "repository_kics",
+            "repository_ls_lint",
             "repository_secretlint",
             "repository_semgrep",
             "repository_syft",
@@ -202,7 +203,7 @@ jobs:
         uses: docker/setup-buildx-action@v3
 
       - name: Build Image
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: .
           file: linters/${{ matrix.linter }}/Dockerfile

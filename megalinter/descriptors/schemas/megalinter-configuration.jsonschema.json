@@ -194,6 +194,7 @@
         "REPOSITORY_GOODCHECK",
         "REPOSITORY_GRYPE",
         "REPOSITORY_KICS",
+        "REPOSITORY_LS_LINT",
         "REPOSITORY_SECRETLINT",
         "REPOSITORY_SEMGREP",
         "REPOSITORY_SYFT",
@@ -3297,13 +3298,6 @@
       "title": "CSHARP_CSHARPIER: Override default cli lint mode",
       "type": "string"
     },
-    "CSHARP_CSHARPIER_CONFIG_FILE": {
-      "$id": "#/properties/CSHARP_CSHARPIER_CONFIG_FILE",
-      "default": ".csharpierrc",
-      "description": "CSHARP_CSHARPIER: User custom config file name if different from default",
-      "title": "CSHARP_CSHARPIER: Custom config file name",
-      "type": "string"
-    },
     "CSHARP_CSHARPIER_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/CSHARP_CSHARPIER_COMMAND_REMOVE_ARGUMENTS",
       "description": "CSHARP_CSHARPIER: User custom arguments to remove before calling linter",
@@ -3319,6 +3313,13 @@
         "array",
         "string"
       ]
+    },
+    "CSHARP_CSHARPIER_CONFIG_FILE": {
+      "$id": "#/properties/CSHARP_CSHARPIER_CONFIG_FILE",
+      "default": ".csharpierrc",
+      "description": "CSHARP_CSHARPIER: User custom config file name if different from default",
+      "title": "CSHARP_CSHARPIER: Custom config file name",
+      "type": "string"
     },
     "CSHARP_CSHARPIER_DISABLE_ERRORS": {
       "$id": "#/properties/CSHARP_CSHARPIER_DISABLE_ERRORS",
@@ -13149,6 +13150,13 @@
       "title": "POWERSHELL_POWERSHELL_FORMATTER: Including Regex",
       "type": "string"
     },
+    "POWERSHELL_POWERSHELL_FORMATTER_OUTPUT_ENCODING": {
+      "$id": "#/properties/POWERSHELL_POWERSHELL_FORMATTER_OUTPUT_ENCODING",
+      "default": "utf8",
+      "description": "POWERSHELL_POWERSHELL_FORMATTER: `-Encoding` to be used when writing content to the file",
+      "title": "POWERSHELL_POWERSHELL_FORMATTER: Output encoding type",
+      "type": "string"
+    },
     "POWERSHELL_POWERSHELL_FORMATTER_POST_COMMANDS": {
       "$id": "#/properties/POWERSHELL_POWERSHELL_FORMATTER_POST_COMMANDS",
       "examples": [
@@ -15729,6 +15737,24 @@
       "title": "REPOSITORY_GITLEAKS: Define or override a list of bash commands to run before the linter",
       "type": "array"
     },
+    "REPOSITORY_GITLEAKS_PR_COMMITS_SCAN": {
+      "$id": "#/properties/REPOSITORY_GITLEAKS_PR_COMMITS_SCAN",
+      "default": false,
+      "title": "REPOSITORY_GITLEAKS: Scan only commits in the current Pull Request/Merge Request",
+      "type": "boolean"
+    },
+    "REPOSITORY_GITLEAKS_PR_SOURCE_SHA": {
+      "$id": "#/properties/REPOSITORY_GITLEAKS_PR_SOURCE_SHA",
+      "default": "",
+      "title": "REPOSITORY_GITLEAKS: Source commit SHA of the Pull Request/Merge Request",
+      "type": "string"
+    },
+    "REPOSITORY_GITLEAKS_PR_TARGET_SHA": {
+      "$id": "#/properties/REPOSITORY_GITLEAKS_PR_TARGET_SHA",
+      "default": "",
+      "title": "REPOSITORY_GITLEAKS: Target commit SHA of the Pull Request/Merge Request",
+      "type": "string"
+    },
     "REPOSITORY_GITLEAKS_RULES_PATH": {
       "$id": "#/properties/REPOSITORY_GITLEAKS_RULES_PATH",
       "description": "REPOSITORY_GITLEAKS: Path where to find linter configuration file",
@@ -16160,6 +16186,120 @@
         "type": "string"
       },
       "title": "REPOSITORY_KICS: Unsecured env variables",
+      "type": "array"
+    },
+    "REPOSITORY_LS_LINT_ARGUMENTS": {
+      "$id": "#/properties/REPOSITORY_LS_LINT_ARGUMENTS",
+      "description": "REPOSITORY_LS_LINT: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_LS_LINT: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "REPOSITORY_LS_LINT_CLI_EXECUTABLE": {
+      "$id": "#/properties/REPOSITORY_LS_LINT_CLI_EXECUTABLE",
+      "default": [
+        [
+          "ls-lint"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_LS_LINT: CLI Executable",
+      "type": "array"
+    },
+    "REPOSITORY_LS_LINT_COMMAND_REMOVE_ARGUMENTS": {
+      "$id": "#/properties/REPOSITORY_LS_LINT_COMMAND_REMOVE_ARGUMENTS",
+      "description": "REPOSITORY_LS_LINT: User custom arguments to remove before calling linter",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_LS_LINT: Custom remove arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "REPOSITORY_LS_LINT_CONFIG_FILE": {
+      "$id": "#/properties/REPOSITORY_LS_LINT_CONFIG_FILE",
+      "default": ".ls-lint.yml",
+      "description": "REPOSITORY_LS_LINT: User custom config file name if different from default",
+      "title": "REPOSITORY_LS_LINT: Custom config file name",
+      "type": "string"
+    },
+    "REPOSITORY_LS_LINT_DISABLE_ERRORS": {
+      "$id": "#/properties/REPOSITORY_LS_LINT_DISABLE_ERRORS",
+      "default": false,
+      "title": "REPOSITORY_LS_LINT: Linter doesn't make MegaLinter fail even if errors are found",
+      "type": "boolean"
+    },
+    "REPOSITORY_LS_LINT_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/REPOSITORY_LS_LINT_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "REPOSITORY_LS_LINT: Maximum number of errors allowed",
+      "type": "number"
+    },
+    "REPOSITORY_LS_LINT_POST_COMMANDS": {
+      "$id": "#/properties/REPOSITORY_LS_LINT_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "REPOSITORY_LS_LINT: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "REPOSITORY_LS_LINT_PRE_COMMANDS": {
+      "$id": "#/properties/REPOSITORY_LS_LINT_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "REPOSITORY_LS_LINT: Define or override a list of bash commands to run before the linter",
+      "type": "array"
+    },
+    "REPOSITORY_LS_LINT_RULES_PATH": {
+      "$id": "#/properties/REPOSITORY_LS_LINT_RULES_PATH",
+      "description": "REPOSITORY_LS_LINT: Path where to find linter configuration file",
+      "title": "REPOSITORY_LS_LINT: Custom config file path",
+      "type": "string"
+    },
+    "REPOSITORY_LS_LINT_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/REPOSITORY_LS_LINT_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling REPOSITORY_LS_LINT and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_LS_LINT: Unsecured env variables",
       "type": "array"
     },
     "REPOSITORY_POST_COMMANDS": {
@@ -21857,6 +21997,13 @@
       "title": "TERRAFORM_TFLINT: Custom config file path",
       "type": "string"
     },
+    "TERRAFORM_TFLINT_SECURED_ENV": {
+      "$id": "#/properties/TERRAFORM_TFLINT_SECURED_ENV",
+      "default": true,
+      "description": "TERRAFORM_TFLINT: Allows to send the full env to **tflint --init**. Initialized with default value `true`. Set to `false` to allow `tflint --init` to access your env vars.",
+      "title": "TERRAFORM_TFLINT: Secured Environment Flag",
+      "type": "boolean"
+    },
     "TERRAFORM_TFLINT_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/TERRAFORM_TFLINT_UNSECURED_ENV_VARIABLES",
       "default": [],
@@ -22886,6 +23033,12 @@
         "string"
       ]
     },
+    "XML_XMLLINT_AUTOFORMAT": {
+      "$id": "#/properties/XML_XMLLINT_AUTOFORMAT",
+      "default": false,
+      "title": "XML_XMLLINT: If set to `true`, it will reformat and reindent the output",
+      "type": "boolean"
+    },
     "XML_XMLLINT_CLI_EXECUTABLE": {
       "$id": "#/properties/XML_XMLLINT_CLI_EXECUTABLE",
       "default": [
@@ -22970,6 +23123,12 @@
     "XML_XMLLINT_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/XML_XMLLINT_FILTER_REGEX_INCLUDE",
       "title": "XML_XMLLINT: Including Regex",
+      "type": "string"
+    },
+    "XML_XMLLINT_INDENT": {
+      "$id": "#/properties/XML_XMLLINT_INDENT",
+      "default": "  ",
+      "title": "XML_XMLLINT: The number of indentation spaces when `XML_XMLLINT_AUTOFORMAT` is `true`",
       "type": "string"
     },
     "XML_XMLLINT_POST_COMMANDS": {
