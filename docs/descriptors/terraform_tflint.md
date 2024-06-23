@@ -9,6 +9,9 @@ description: How to use tflint (configure, ignore files, ignore errors, help & v
 
 > If you are using the GitHub action please use the `TERRAFORM_TFLINT_UNSECURED_ENV_VARIABLES: GITHUB_TOKEN` to prevent plugin download issues
 
+Note: It's recommended to create your own `.tflint.hcl` custom config file tailored to your project's specific needs.
+The default configuration enables all supported languages and rules, which may not be optimal for every project.
+
 ## tflint documentation
 
 - Version in MegaLinter: **0.51.1**
