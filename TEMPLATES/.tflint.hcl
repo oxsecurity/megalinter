@@ -1,22 +1,31 @@
-// https://github.com/terraform-linters/tflint/blob/master/docs/guides/config.md
+// https://github.com/terraform-linters/tflint/blob/master/docs/user-guide/config.md
+
 config {
-  module = false
+  call_module_type = "local"
   force = false
 }
 
-plugin "aws" {
+plugin "terraform" {
   enabled = true
-  version = "0.32.0"
-  source  = "github.com/terraform-linters/tflint-ruleset-aws"
-  deep_check = false
+  preset  = "recommended"
 }
 
-rule "aws_instance_invalid_type" {
-  enabled = false
+plugin "azurerm" {
+    enabled = true
+    version = "0.26.0"
+    source  = "github.com/terraform-linters/tflint-ruleset-azurerm"
 }
 
-rule "aws_instance_previous_type" {
-  enabled = false
+plugin "aws" {
+    enabled = true
+    version = "0.32.0"
+    source  = "github.com/terraform-linters/tflint-ruleset-aws"
+}
+
+plugin "google" {
+    enabled = true
+    version = "0.29.0"
+    source  = "github.com/terraform-linters/tflint-ruleset-google"
 }
 
 rule "terraform_required_providers" {

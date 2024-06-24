@@ -3464,7 +3464,7 @@
         "      --version                               version for kubeval"
     ],
     "lightning-flow-scanner": [
-        "(node:1757) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.",
+        "(node:1756) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.",
         "(Use `node --trace-deprecation ...` to show where the warning was created)",
         "Try to resolve the errors in the following flows:",
         "",
@@ -3905,7 +3905,7 @@
         "          Print version"
     ],
     "markdown-link-check": [
-        "(node:1526) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.",
+        "(node:1525) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.",
         "(Use `node --trace-deprecation ...` to show where the warning was created)",
         "Usage: markdown-link-check [options] [filenamesOrUrls...]",
         "",
@@ -7962,7 +7962,7 @@
         "@typescript-eslint/unbound-method                  typescript   Best Practices    Best Practices                                    eslint-typescript"
     ],
     "sfdx-scanner-apex": [
-        "(node:1769) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.",
+        "(node:1768) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.",
         "(Use `node --trace-deprecation ...` to show where the warning was created)",
         "scan a codebase with a selection of rules",
         "",
@@ -8012,7 +8012,7 @@
         "COMMANDS",
         "  scanner run dfa  scan codebase with all DFA rules",
         "",
-        "(node:1781) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.",
+        "(node:1780) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.",
         "(Use `node --trace-deprecation ...` to show where the warning was created)",
         "Warning: To use the most up-to-date Code Analyzer features including PMD 7.x, install Code Analyzer v4.x (Beta) by running this command: \"sf plugins install @salesforce/sfdx-scanner@latest-beta\". You are currently using Code Analyzer v3, which we plan to stop supporting soon.",
         "Warning: We're continually improving Salesforce Code Analyzer. Tell us what you think! Give feedback at https://research.net/r/SalesforceCA",
@@ -8236,7 +8236,7 @@
         " UnimplementedTypeRule                                  apex        Performance                                                            sfge              N      N"
     ],
     "sfdx-scanner-aura": [
-        "(node:1962) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.",
+        "(node:1961) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.",
         "(Use `node --trace-deprecation ...` to show where the warning was created)",
         "scan a codebase with a selection of rules",
         "",
@@ -8286,7 +8286,7 @@
         "COMMANDS",
         "  scanner run dfa  scan codebase with all DFA rules",
         "",
-        "(node:1974) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.",
+        "(node:1973) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.",
         "(Use `node --trace-deprecation ...` to show where the warning was created)",
         "Warning: To use the most up-to-date Code Analyzer features including PMD 7.x, install Code Analyzer v4.x (Beta) by running this command: \"sf plugins install @salesforce/sfdx-scanner@latest-beta\". You are currently using Code Analyzer v3, which we plan to stop supporting soon.",
         "Warning: We're continually improving Salesforce Code Analyzer. Tell us what you think! Give feedback at https://research.net/r/SalesforceCA",
@@ -9198,10 +9198,10 @@
         "                        configuration. If you rather prefer the traditional",
         "                        way of just considering file modification dates, use '",
         "                        --rerun-trigger mtime'. (default:",
-        "                        frozenset({<RerunTrigger.INPUT: 2>,",
-        "                        <RerunTrigger.CODE: 4>, <RerunTrigger.PARAMS: 1>,",
-        "                        <RerunTrigger.MTIME: 0>, <RerunTrigger.SOFTWARE_ENV:",
-        "                        3>}))",
+        "                        frozenset({<RerunTrigger.CODE: 4>,",
+        "                        <RerunTrigger.SOFTWARE_ENV: 3>, <RerunTrigger.INPUT:",
+        "                        2>, <RerunTrigger.PARAMS: 1>, <RerunTrigger.MTIME:",
+        "                        0>}))",
         "  --force, -f           Force the execution of the selected target or the",
         "                        first rule regardless of already created output.",
         "                        (default: False)",
@@ -9638,9 +9638,9 @@
         "                        storage provider. (default:",
         "                        frozenset({<SharedFSUsage.SOURCE_CACHE: 5>,",
         "                        <SharedFSUsage.INPUT_OUTPUT: 1>,",
-        "                        <SharedFSUsage.PERSISTENCE: 0>,",
         "                        <SharedFSUsage.SOFTWARE_DEPLOYMENT: 2>,",
         "                        <SharedFSUsage.STORAGE_LOCAL_COPIES: 4>,",
+        "                        <SharedFSUsage.PERSISTENCE: 0>,",
         "                        <SharedFSUsage.SOURCES: 3>}))",
         "  --scheduler-greediness SCHEDULER_GREEDINESS, --greediness SCHEDULER_GREEDINESS",
         "                        Set the greediness of scheduling. This value between 0",
@@ -9806,10 +9806,10 @@
         "                        Path to the report file (either .html or .zip). Use",
         "                        zip if your report contains large results or",
         "                        directories with htmlindex as results. (default:",
-        "                        <dataclasses._MISSING_TYPE object at 0x7fad44f5ad50>)",
+        "                        <dataclasses._MISSING_TYPE object at 0x7fcf37f06cc0>)",
         "  --report-html-stylesheet-path VALUE",
         "                        Path to a custom stylesheet for the report. (default:",
-        "                        <dataclasses._MISSING_TYPE object at 0x7fad44f5ad50>)",
+        "                        <dataclasses._MISSING_TYPE object at 0x7fcf37f06cc0>)",
         "",
         " In general, command-line values override environment variables which override",
         "defaults."
@@ -10318,7 +10318,7 @@
         "   --help, -h                                        Show help",
         "   --version, -v                                     Show terragrunt version",
         "",
-        "VERSION: v0.59.3",
+        "VERSION: v0.59.5",
         "",
         "AUTHOR: Gruntwork <www.gruntwork.io>"
     ],
@@ -10765,11 +10765,11 @@
         "",
         "Commands:",
         "",
-        " ls-config        Print the current configuration to stdout.",
         " ls-metrics       Print the given file's internal metrics to stdout.",
         " ls-dirs          Print the default configuration directories to stdout.",
         " ls-vars          Print the supported environment variables to stdout.",
         " sync             Download and install external configuration sources.",
+        " ls-config        Print the current configuration to stdout.",
         ""
     ],
     "xmllint": [

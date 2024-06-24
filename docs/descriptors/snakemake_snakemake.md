@@ -406,10 +406,10 @@ EXECUTION:
                         configuration. If you rather prefer the traditional
                         way of just considering file modification dates, use '
                         --rerun-trigger mtime'. (default:
-                        frozenset({<RerunTrigger.INPUT: 2>,
-                        <RerunTrigger.CODE: 4>, <RerunTrigger.PARAMS: 1>,
-                        <RerunTrigger.MTIME: 0>, <RerunTrigger.SOFTWARE_ENV:
-                        3>}))
+                        frozenset({<RerunTrigger.CODE: 4>,
+                        <RerunTrigger.SOFTWARE_ENV: 3>, <RerunTrigger.INPUT:
+                        2>, <RerunTrigger.PARAMS: 1>, <RerunTrigger.MTIME:
+                        0>}))
   --force, -f           Force the execution of the selected target or the
                         first rule regardless of already created output.
                         (default: False)
@@ -846,9 +846,9 @@ BEHAVIOR:
                         storage provider. (default:
                         frozenset({<SharedFSUsage.SOURCE_CACHE: 5>,
                         <SharedFSUsage.INPUT_OUTPUT: 1>,
-                        <SharedFSUsage.PERSISTENCE: 0>,
                         <SharedFSUsage.SOFTWARE_DEPLOYMENT: 2>,
                         <SharedFSUsage.STORAGE_LOCAL_COPIES: 4>,
+                        <SharedFSUsage.PERSISTENCE: 0>,
                         <SharedFSUsage.SOURCES: 3>}))
   --scheduler-greediness SCHEDULER_GREEDINESS, --greediness SCHEDULER_GREEDINESS
                         Set the greediness of scheduling. This value between 0
@@ -1014,10 +1014,10 @@ html executor settings:
                         Path to the report file (either .html or .zip). Use
                         zip if your report contains large results or
                         directories with htmlindex as results. (default:
-                        <dataclasses._MISSING_TYPE object at 0x7fad44f5ad50>)
+                        <dataclasses._MISSING_TYPE object at 0x7fcf37f06cc0>)
   --report-html-stylesheet-path VALUE
                         Path to a custom stylesheet for the report. (default:
-                        <dataclasses._MISSING_TYPE object at 0x7fad44f5ad50>)
+                        <dataclasses._MISSING_TYPE object at 0x7fcf37f06cc0>)
 
  In general, command-line values override environment variables which override
 defaults.

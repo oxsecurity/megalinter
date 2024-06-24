@@ -31,6 +31,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [Powershell](https://github.com/PowerShell/PSScriptAnalyzer#readme) added missing schema property `POWERSHELL_POWERSHELL_FORMATTER_OUTPUT_ENCODING`
   - [tflint](https://github.com/terraform-linters/tflint) added missing schema property `TERRAFORM_TFLINT_SECURED_ENV`
   - [xmllint](https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home) added missing schema properties `XML_XMLLINT_AUTOFORMAT` and `XML_XMLLINT_INDENT`
+  - [tflint](https://github.com/terraform-linters/tflint) fixed deprecated argument and other improvements to default `.tflint.hcl` template
   - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) various performance improvements and ability to specify sln or proj paths
 
 - Doc
@@ -112,6 +113,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [phpstan](https://phpstan.org/) from 1.11.5 to **1.11.4** on 2024-06-22
   - [git_diff](https://git-scm.com) from 2.43.4 to **2.45.2** on 2024-06-22
   - [xmllint](https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home) from 21108 to **21207** on 2024-06-22
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.59.3 to **0.59.5** on 2024-06-23
+  - [checkov](https://www.checkov.io/) from 3.2.141 to **3.2.144** on 2024-06-23
 <!-- linter-versions-end -->
 
 ## [v7.12.0] - 2024-06-02
