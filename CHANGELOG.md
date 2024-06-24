@@ -113,6 +113,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [git_diff](https://git-scm.com) from 2.43.4 to **2.45.2** on 2024-06-22
   - [xmllint](https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home) from 21108 to **21207** on 2024-06-22
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.59.3 to **0.59.5** on 2024-06-23
+  - [checkov](https://www.checkov.io/) from 3.2.141 to **3.2.144** on 2024-06-23
 <!-- linter-versions-end -->
 
 ## [v7.12.0] - 2024-06-02
