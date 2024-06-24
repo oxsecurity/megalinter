@@ -115,6 +115,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.59.3 to **0.59.5** on 2024-06-23
   - [checkov](https://www.checkov.io/) from 3.2.141 to **3.2.144** on 2024-06-23
   - [syft](https://github.com/anchore/syft) from 1.7.0 to **1.8.0** on 2024-06-24
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.3.3 to **1.3.4** on 2024-06-24
 <!-- linter-versions-end -->
 
 ## [v7.12.0] - 2024-06-02
