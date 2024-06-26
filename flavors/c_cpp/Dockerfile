@@ -166,6 +166,7 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 stylelint-config-standard \
                 stylelint-config-sass-guidelines \
                 stylelint-scss \
+                gherkin-lint \
                 graphql \
                 graphql-schema-linter \
                 npm-groovy-lint \
