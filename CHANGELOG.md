@@ -116,6 +116,16 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 3.2.141 to **3.2.144** on 2024-06-23
   - [syft](https://github.com/anchore/syft) from 1.7.0 to **1.8.0** on 2024-06-24
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.3.3 to **1.3.4** on 2024-06-24
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.3.4 to **1.3.7** on 2024-06-26
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.49.8 to **0.50.1** on 2024-06-26
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.10.0 to **1.10.1** on 2024-06-26
+  - [pylint](https://pylint.readthedocs.io) from 3.2.3 to **3.2.4** on 2024-06-26
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.368 to **1.1.369** on 2024-06-26
+  - [checkov](https://www.checkov.io/) from 3.2.144 to **3.2.145** on 2024-06-26
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.78.2 to **3.79.0** on 2024-06-26
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 3.25.0 to **4.3.0** on 2024-06-26
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 3.25.0 to **4.3.0** on 2024-06-26
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 3.25.0 to **4.3.0** on 2024-06-26
 <!-- linter-versions-end -->
 
 ## [v7.12.0] - 2024-06-02
