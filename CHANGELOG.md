@@ -32,6 +32,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [tflint](https://github.com/terraform-linters/tflint) added missing schema property `TERRAFORM_TFLINT_SECURED_ENV`
   - [xmllint](https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home) added missing schema properties `XML_XMLLINT_AUTOFORMAT` and `XML_XMLLINT_INDENT`
   - [tflint](https://github.com/terraform-linters/tflint) fixed deprecated argument and other improvements to default `.tflint.hcl` template
+  - [ansible-lint](https://ansible-lint.readthedocs.io) Improved activation by checking for `.ansible-lint` config file
 
 - Doc
 
