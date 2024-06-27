@@ -18,8 +18,11 @@ ARG EDITORCONFIG_CHECKER_VERSION=v3.0.1
 ARG GITLEAKS_VERSION=v8.18.4
 
 # renovate: datasource=docker depName=ghcr.io/terraform-linters/tflint
-ARG TFLINT_VERSION=0.51.1
-
+ARG TERRAFORM_TFLINT_VERSION=0.51.1
+# renovate: datasource=docker depName=alpine/terragrunt
+ARG TERRAFORM_TERRASCAN_VERSION=1.18.11
+# renovate: datasource=docker depName=alpine/terragrunt
+ARG TERRAFORM_TERRAGRUNT_VERSION=1.8.5
 #ARGTOP__END
 
 #############################################################################################
@@ -52,11 +55,11 @@ FROM checkmarx/kics:alpine as kics
 FROM trufflesecurity/trufflehog:latest as trufflehog
 FROM jdkato/vale:latest as vale
 FROM lycheeverse/lychee:latest-alpine as lychee
-FROM ghcr.io/terraform-linters/tflint:v${TFLINT_VERSION} as tflint
-FROM tenable/terrascan:1.18.11 as terrascan
-FROM alpine/terragrunt:latest as terragrunt
+FROM ghcr.io/terraform-linters/tflint:v${TERRAFORM_TFLINT_VERSION} as tflint
+FROM tenable/terrascan:${TERRAFORM_TERRASCAN_VERSION} as terrascan
+FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} as terragrunt
 # Next FROM line commented because already managed by another linter
-# FROM alpine/terragrunt:latest as terragrunt
+# FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} as terragrunt
 #FROM__END
 
 ##################
