@@ -137,7 +137,7 @@ linters:
       dockerfile:
         # The golang image used as a builder is a temporary workaround
         # Dustilock is not released as a binary or container
-        - |
+        - |-
           FROM golang:alpine as dustilock
           RUN GOBIN=/usr/bin go install github.com/checkmarx/dustilock@v1.2.0
         - COPY --link --from=dustilock /usr/bin/dustilock /usr/bin/dustilock
@@ -247,10 +247,10 @@ linters:
       - "gitleaks detect -c .gitleaks.toml --redact --no-git --verbose --source ."
     install:
       dockerfile:
-        - |
+        - |-
           # renovate: datasource=docker depName=zricethezav/gitleaks
-          ARG GITLEAKS_VERSION=v8.18.4
-        - FROM zricethezav/gitleaks:${GITLEAKS_VERSION} as gitleaks
+          ARG REPOSITORY_GITLEAKS_VERSION=v8.18.4
+        - FROM zricethezav/gitleaks:${REPOSITORY_GITLEAKS_VERSION} as gitleaks
         - COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
     variables:
       - name: REPOSITORY_GITLEAKS_PR_COMMITS_SCAN
