@@ -13,9 +13,6 @@
 #######################################
 # Start the job on all push to main #
 #######################################
-#############################
-# Start the job on all push #
-#############################
 name: "Build & Deploy - DEV"
 on:
   push:
@@ -46,7 +43,6 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-
   build:
     # Name the Job
     name: Tests + Deploy Docker Image - DEV

@@ -37,7 +37,6 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-
   build:
     # Name the Job
     name: Deploy Docker Image - BETA
@@ -53,9 +52,6 @@ jobs:
     # Load all steps #
     ##################
     steps:
-      ##########################
-      # Checkout the code base #
-      ##########################
       - name: Checkout Code
         uses: actions/checkout@v4
 
@@ -82,6 +78,36 @@ jobs:
           sudo rm -rf /opt/ghc
           sudo rm -rf "$AGENT_TOOLSDIRECTORY"
 
+      - name: Docker Metadata action
+        uses: docker/metadata-action@v5.5.1
+        id: meta
+        with:
+          images: |
+            name=${{ github.repository }}
+            name=ghcr.io/${{ github.repository }}
+          tags: |
+            type=raw,value=beta
+
+      - name: Docker Metadata action (Server)
+        uses: docker/metadata-action@v5.5.1
+        id: meta-s
+        with:
+          images: |
+            name=${{ github.repository }}-server,enable=false
+            name=ghcr.io/${{ github.repository }}-server
+          tags: |
+            type=raw,value=beta
+
+      - name: Docker Metadata action (Worker)
+        uses: docker/metadata-action@v5.5.1
+        id: meta-w
+        with:
+          images: |
+            name=${{ github.repository }}-worker,enable=false
+            name=ghcr.io/${{ github.repository }}-worker
+          tags: |
+            type=raw,value=beta
+
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
 
@@ -101,9 +127,6 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Get current date
-        run: echo "BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" >> ${GITHUB_ENV}
-
       - name: Build & Push Docker Image (Server)
         uses: docker/build-push-action@v6
         with:
@@ -111,16 +134,14 @@ jobs:
           file: server/Dockerfile
           platforms: linux/amd64
           build-args: |
-            BUILD_DATE=${{ env.BUILD_DATE }}
-            BUILD_REVISION=${{ github.sha }}
-            BUILD_VERSION=alpha
+            BUILD_DATE=${{ fromJSON(steps.meta-s.outputs.json).labels['org.opencontainers.image.created'] }}
+            BUILD_VERSION=${{ fromJSON(steps.meta-s.outputs.json).labels['org.opencontainers.image.version'] }}
+            BUILD_REVISION=${{ fromJSON(steps.meta-s.outputs.json).labels['org.opencontainers.image.revision'] }}
           load: false
-          push: true
+          push: ${{ github.event_name != 'pull_request' }}
           secrets: |
             GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
-          tags: |
-            ghcr.io/oxsecurity/megalinter-server:beta
-          # ghcr.io/oxsecurity/megalinter-server:beta-${{ github.sha }}
+          tags: ${{ steps.meta-s.outputs.tags }}
 
       - name: Build & Push Docker Image
         uses: docker/build-push-action@v6
@@ -129,16 +150,14 @@ jobs:
           file: Dockerfile
           platforms: linux/amd64
           build-args: |
-            BUILD_DATE=${{ env.BUILD_DATE }}
-            BUILD_REVISION=${{ github.sha }}
-            BUILD_VERSION=beta
+            BUILD_DATE=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.created'] }}
+            BUILD_VERSION=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.version'] }}
+            BUILD_REVISION=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.revision'] }}
           load: false
-          push: true
+          push: ${{ github.event_name != 'pull_request' }}
           secrets: |
             GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
-          tags: |
-            oxsecurity/megalinter:beta
-            ghcr.io/oxsecurity/megalinter:beta
+          tags: ${{ steps.meta.outputs.tags }}
 
       - name: Build & Push Docker Worker Image
         uses: docker/build-push-action@v6
@@ -147,17 +166,15 @@ jobs:
           file: Dockerfile-worker
           platforms: linux/amd64
           build-args: |
-            MEGALINTER_BASE_IMAGE=ghcr.io/oxsecurity/megalinter:beta
-            BUILD_DATE=${{ env.BUILD_DATE }}
-            BUILD_REVISION=${{ github.sha }}
-            BUILD_VERSION=beta
+            MEGALINTER_BASE_IMAGE=${{ fromJson(steps.meta-w.outputs.json).tags[0]}}
+            BUILD_DATE=${{ fromJSON(steps.meta-w.outputs.json).labels['org.opencontainers.image.created'] }}
+            BUILD_VERSION=${{ fromJSON(steps.meta-w.outputs.json).labels['org.opencontainers.image.version'] }}
+            BUILD_REVISION=${{ fromJSON(steps.meta-w.outputs.json).labels['org.opencontainers.image.revision'] }}
           load: false
-          push: true
+          push: ${{ github.event_name != 'pull_request' }}
           secrets: |
             GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
-          tags: |
-            oxsecurity/megalinter-worker:beta
-            ghcr.io/oxsecurity/megalinter-worker:beta
+          tags: ${{ steps.meta-w.outputs.tags }}
 
       # ###############################
       # # Run tests for code coverage #
@@ -176,7 +193,7 @@ jobs:
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: "docker.io/oxsecurity/megalinter:beta"
+          image-ref: "docker.io/${{ fromJson(steps.meta.outputs.json).tags[0]}}"
           format: 'table'
           exit-code: '1'
           ignore-unfixed: true
