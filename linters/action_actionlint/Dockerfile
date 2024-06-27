@@ -20,7 +20,6 @@
 #FROM__START
 FROM rhysd/actionlint:latest as actionlint
 # shellcheck is a dependency for actionlint
-
 FROM koalaman/shellcheck:stable as shellcheck
 #FROM__END
 
@@ -129,7 +128,6 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #COPY__START
 COPY --link --from=actionlint /usr/local/bin/actionlint /usr/bin/actionlint
 # shellcheck is a dependency for actionlint
-
 COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
 #COPY__END
 

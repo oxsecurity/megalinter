@@ -13,11 +13,9 @@
 #############################################################################################
 #ARGTOP__START
 # renovate: datasource=docker depName=mstruebing/editorconfig-checker
-ARG EDITORCONFIG_CHECKER_VERSION=v3.0.1
-
+ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=v3.0.1
 # renovate: datasource=docker depName=zricethezav/gitleaks
-ARG GITLEAKS_VERSION=v8.18.4
-
+ARG REPOSITORY_GITLEAKS_VERSION=v8.18.4
 # renovate: datasource=docker depName=ghcr.io/terraform-linters/tflint
 ARG TERRAFORM_TFLINT_VERSION=0.51.1
 # renovate: datasource=docker depName=alpine/terragrunt
@@ -32,21 +30,19 @@ ARG TERRAFORM_TERRAGRUNT_VERSION=1.8.5
 #FROM__START
 FROM rhysd/actionlint:latest as actionlint
 # shellcheck is a dependency for actionlint
-
 FROM koalaman/shellcheck:stable as shellcheck
 # Next FROM line commented because already managed by another linter
 # FROM koalaman/shellcheck:stable as shellcheck
 FROM mvdan/shfmt:latest-alpine as shfmt
 FROM hadolint/hadolint:v2.12.0-alpine as hadolint
-FROM mstruebing/editorconfig-checker:${EDITORCONFIG_CHECKER_VERSION} as editorconfig-checker
+FROM mstruebing/editorconfig-checker:${EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION} as editorconfig-checker
 FROM golang:1-alpine as revive
 ## The golang image used as a builder is a temporary workaround (https://github.com/mgechev/revive/issues/787)
 ## for the released revive binaries not returning version numbers (devel). 
 ## The install command should then be what is commented in the go.megalinter-descriptor.yml
 RUN GOBIN=/usr/bin go install github.com/mgechev/revive@latest
-
 FROM ghcr.io/yannh/kubeconform:latest-alpine as kubeconform
-FROM zricethezav/gitleaks:${GITLEAKS_VERSION} as gitleaks
+FROM zricethezav/gitleaks:${REPOSITORY_GITLEAKS_VERSION} as gitleaks
 FROM checkmarx/kics:alpine as kics
 FROM trufflesecurity/trufflehog:latest as trufflehog
 FROM lycheeverse/lychee:latest-alpine as lychee
@@ -289,7 +285,6 @@ RUN echo 'gem: --no-document' >> ~/.gemrc && \
 COPY --from=composer/composer:2-bin /composer /usr/bin/composer
 COPY --link --from=actionlint /usr/local/bin/actionlint /usr/bin/actionlint
 # shellcheck is a dependency for actionlint
-
 COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
 # Next COPY line commented because already managed by another linter
 # COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck

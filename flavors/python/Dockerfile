@@ -13,11 +13,11 @@
 #############################################################################################
 #ARGTOP__START
 # renovate: datasource=docker depName=mstruebing/editorconfig-checker
-ARG EDITORCONFIG_CHECKER_VERSION=v3.0.1
-
+ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=v3.0.1
+# renovate: datasource=docker depName=yoheimuta/protolint
+ARG PROTOBUF_PROTOLINT_VERSION=0.49.8
 # renovate: datasource=docker depName=zricethezav/gitleaks
-ARG GITLEAKS_VERSION=v8.18.4
-
+ARG REPOSITORY_GITLEAKS_VERSION=v8.18.4
 #ARGTOP__END
 
 #############################################################################################
@@ -26,16 +26,15 @@ ARG GITLEAKS_VERSION=v8.18.4
 #FROM__START
 FROM rhysd/actionlint:latest as actionlint
 # shellcheck is a dependency for actionlint
-
 FROM koalaman/shellcheck:stable as shellcheck
 # Next FROM line commented because already managed by another linter
 # FROM koalaman/shellcheck:stable as shellcheck
 FROM mvdan/shfmt:latest-alpine as shfmt
 FROM hadolint/hadolint:v2.12.0-alpine as hadolint
-FROM mstruebing/editorconfig-checker:${EDITORCONFIG_CHECKER_VERSION} as editorconfig-checker
+FROM mstruebing/editorconfig-checker:${EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION} as editorconfig-checker
 FROM ghcr.io/yannh/kubeconform:latest-alpine as kubeconform
-FROM yoheimuta/protolint:latest as protolint
-FROM zricethezav/gitleaks:${GITLEAKS_VERSION} as gitleaks
+FROM yoheimuta/protolint:${PROTOBUF_PROTOLINT_VERSION} as protolint
+FROM zricethezav/gitleaks:${REPOSITORY_GITLEAKS_VERSION} as gitleaks
 FROM trufflesecurity/trufflehog:latest as trufflehog
 FROM jdkato/vale:latest as vale
 FROM lycheeverse/lychee:latest-alpine as lychee
@@ -227,7 +226,6 @@ RUN echo 'gem: --no-document' >> ~/.gemrc && \
 #COPY__START
 COPY --link --from=actionlint /usr/local/bin/actionlint /usr/bin/actionlint
 # shellcheck is a dependency for actionlint
-
 COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
 # Next COPY line commented because already managed by another linter
 # COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck

@@ -13,8 +13,7 @@
 #############################################################################################
 #ARGTOP__START
 # renovate: datasource=docker depName=zricethezav/gitleaks
-ARG GITLEAKS_VERSION=v8.18.4
-
+ARG REPOSITORY_GITLEAKS_VERSION=v8.18.4
 #ARGTOP__END
 
 #############################################################################################
@@ -24,7 +23,7 @@ ARG GITLEAKS_VERSION=v8.18.4
 FROM koalaman/shellcheck:stable as shellcheck
 FROM mvdan/shfmt:latest-alpine as shfmt
 FROM hadolint/hadolint:v2.12.0-alpine as hadolint
-FROM zricethezav/gitleaks:${GITLEAKS_VERSION} as gitleaks
+FROM zricethezav/gitleaks:${REPOSITORY_GITLEAKS_VERSION} as gitleaks
 FROM trufflesecurity/trufflehog:latest as trufflehog
 #FROM__END
 

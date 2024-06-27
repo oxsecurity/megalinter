@@ -13,8 +13,7 @@
 #############################################################################################
 #ARGTOP__START
 # renovate: datasource=docker depName=zricethezav/gitleaks
-ARG GITLEAKS_VERSION=v8.18.4
-
+ARG REPOSITORY_GITLEAKS_VERSION=v8.18.4
 # renovate: datasource=docker depName=ghcr.io/terraform-linters/tflint
 ARG TERRAFORM_TFLINT_VERSION=0.51.1
 # renovate: datasource=docker depName=alpine/terragrunt
@@ -32,8 +31,7 @@ FROM hadolint/hadolint:v2.12.0-alpine as hadolint
 FROM ghcr.io/yannh/kubeconform:latest-alpine as kubeconform
 FROM golang:alpine as dustilock
 RUN GOBIN=/usr/bin go install github.com/checkmarx/dustilock@v1.2.0
-
-FROM zricethezav/gitleaks:${GITLEAKS_VERSION} as gitleaks
+FROM zricethezav/gitleaks:${REPOSITORY_GITLEAKS_VERSION} as gitleaks
 FROM checkmarx/kics:alpine as kics
 FROM trufflesecurity/trufflehog:latest as trufflehog
 FROM ghcr.io/terraform-linters/tflint:v${TERRAFORM_TFLINT_VERSION} as tflint
