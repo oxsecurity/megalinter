@@ -29,6 +29,8 @@ ARG REPOSITORY_GITLEAKS_VERSION=v8.18.4
 ARG REPOSITORY_KICS_VERSION=v2.1.0-alpine
 # renovate: datasource=docker depName=trufflesecurity/trufflehog 
 ARG REPOSITORY_TRUFFLEHOG_VERSION=3.78.2
+# renovate: datasource=docker depName=
+ARG SPELL_VALE_VERSION=v3.6.0
 # renovate: datasource=docker depName=ghcr.io/terraform-linters/tflint
 ARG TERRAFORM_TFLINT_VERSION=0.51.1
 # renovate: datasource=docker depName=alpine/terragrunt
@@ -62,7 +64,7 @@ RUN GOBIN=/usr/bin go install github.com/checkmarx/dustilock@v1.2.0
 FROM zricethezav/gitleaks:${REPOSITORY_GITLEAKS_VERSION} as gitleaks
 FROM checkmarx/kics:${REPOSITORY_KICS_VERSION} as kics
 FROM trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION} as trufflehog
-FROM jdkato/vale:latest as vale
+FROM jdkato/vale:${SPELL_VALE_VERSION} as vale
 FROM lycheeverse/lychee:latest-alpine as lychee
 FROM ghcr.io/terraform-linters/tflint:v${TERRAFORM_TFLINT_VERSION} as tflint
 FROM tenable/terrascan:${TERRAFORM_TERRASCAN_VERSION} as terrascan

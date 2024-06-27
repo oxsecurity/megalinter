@@ -28,6 +28,8 @@ ARG PROTOBUF_PROTOLINT_VERSION=0.49.8
 ARG REPOSITORY_GITLEAKS_VERSION=v8.18.4
 # renovate: datasource=docker depName=trufflesecurity/trufflehog 
 ARG REPOSITORY_TRUFFLEHOG_VERSION=3.78.2
+# renovate: datasource=docker depName=
+ARG SPELL_VALE_VERSION=v3.6.0
 #ARGTOP__END
 
 #############################################################################################
@@ -51,7 +53,7 @@ FROM ghcr.io/yannh/kubeconform:${KUBERNETES_KUBECONFORM_VERSION} as kubeconform
 FROM yoheimuta/protolint:${PROTOBUF_PROTOLINT_VERSION} as protolint
 FROM zricethezav/gitleaks:${REPOSITORY_GITLEAKS_VERSION} as gitleaks
 FROM trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION} as trufflehog
-FROM jdkato/vale:latest as vale
+FROM jdkato/vale:${SPELL_VALE_VERSION} as vale
 FROM lycheeverse/lychee:latest-alpine as lychee
 #FROM__END
 
