@@ -160,10 +160,9 @@ RUN sf plugins install @salesforce/plugin-packaging@${SALESFORCE_PLUGIN_PACKAGIN
     && rm -rf /root/.npm/_cacache \
 
 # sfdx-scanner-aura installation
-    && sf plugins install @salesforce/sfdx-scanner@{SALESFORCE_SFDX_SCANNER_VERSION} \
+    && sf plugins install @salesforce/sfdx-scanner@${SALESFORCE_SFDX_SCANNER_VERSION} \
     && npm cache clean --force || true \
     && rm -rf /root/.npm/_cacache
-
 
 #OTHER__END
 

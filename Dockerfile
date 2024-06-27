@@ -733,24 +733,24 @@ RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | 
 # Managed with COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
 
 # sfdx-scanner-apex installation
-    && sf plugins install @salesforce/sfdx-scanner@{SALESFORCE_SFDX_SCANNER_VERSION} \
+    && sf plugins install @salesforce/sfdx-scanner@${SALESFORCE_SFDX_SCANNER_VERSION} \
     && npm cache clean --force || true \
     && rm -rf /root/.npm/_cacache \
 
 # sfdx-scanner-aura installation
 # Next line commented because already managed by another linter
-# RUN sf plugins install @salesforce/sfdx-scanner@{SALESFORCE_SFDX_SCANNER_VERSION} \
+# RUN sf plugins install @salesforce/sfdx-scanner@${SALESFORCE_SFDX_SCANNER_VERSION} \
 #     && npm cache clean --force || true \
 #     && rm -rf /root/.npm/_cacache
 
 # sfdx-scanner-lwc installation
 # Next line commented because already managed by another linter
-# RUN sf plugins install @salesforce/sfdx-scanner@{SALESFORCE_SFDX_SCANNER_VERSION} \
+# RUN sf plugins install @salesforce/sfdx-scanner@${SALESFORCE_SFDX_SCANNER_VERSION} \
 #     && npm cache clean --force || true \
 #     && rm -rf /root/.npm/_cacache
 
 # lightning-flow-scanner installation
-    && echo y|sf plugins install lightning-flow-scanner@{LIGHTNING_FLOW_SCANNER_VERSION} \
+    && echo y|sf plugins install lightning-flow-scanner@${LIGHTNING_FLOW_SCANNER_VERSION} \
     && npm cache clean --force || true \
     && rm -rf /root/.npm/_cacache \
 
