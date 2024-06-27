@@ -24,6 +24,10 @@ ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=v3.0.1
 ARG KUBERNETES_KUBECONFORM_VERSION=v0.6.6-alpine
 # renovate: datasource=docker depName=zricethezav/gitleaks
 ARG REPOSITORY_GITLEAKS_VERSION=v8.18.4
+# renovate: datasource=docker depName=checkmarx/kics
+ARG REPOSITORY_KICS_VERSION=v2.1.0-alpine
+# renovate: datasource=docker depName=trufflesecurity/trufflehog 
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.78.2
 # renovate: datasource=docker depName=ghcr.io/terraform-linters/tflint
 ARG TERRAFORM_TFLINT_VERSION=0.51.1
 # renovate: datasource=docker depName=alpine/terragrunt
@@ -51,8 +55,8 @@ FROM golang:1-alpine as revive
 RUN GOBIN=/usr/bin go install github.com/mgechev/revive@latest
 FROM ghcr.io/yannh/kubeconform:${KUBERNETES_KUBECONFORM_VERSION} as kubeconform
 FROM zricethezav/gitleaks:${REPOSITORY_GITLEAKS_VERSION} as gitleaks
-FROM checkmarx/kics:alpine as kics
-FROM trufflesecurity/trufflehog:latest as trufflehog
+FROM checkmarx/kics:${REPOSITORY_KICS_VERSION} as kics
+FROM trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION} as trufflehog
 FROM lycheeverse/lychee:latest-alpine as lychee
 FROM ghcr.io/terraform-linters/tflint:v${TERRAFORM_TFLINT_VERSION} as tflint
 FROM tenable/terrascan:${TERRAFORM_TERRASCAN_VERSION} as terrascan

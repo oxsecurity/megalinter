@@ -18,6 +18,8 @@ ARG BASH_SHELLCHECK_VERSION=v0.10.0
 ARG DOCKERFILE_HADOLINT_VERSION=v2.12.0-alpine
 # renovate: datasource=docker depName=zricethezav/gitleaks
 ARG REPOSITORY_GITLEAKS_VERSION=v8.18.4
+# renovate: datasource=docker depName=trufflesecurity/trufflehog 
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.78.2
 #ARGTOP__END
 
 #############################################################################################
@@ -28,7 +30,7 @@ FROM koalaman/shellcheck:${BASH_SHELLCHECK_VERSION} as shellcheck
 FROM mvdan/shfmt:latest-alpine as shfmt
 FROM hadolint/hadolint:${DOCKERFILE_HADOLINT_VERSION} as hadolint
 FROM zricethezav/gitleaks:${REPOSITORY_GITLEAKS_VERSION} as gitleaks
-FROM trufflesecurity/trufflehog:latest as trufflehog
+FROM trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION} as trufflehog
 #FROM__END
 
 ##################

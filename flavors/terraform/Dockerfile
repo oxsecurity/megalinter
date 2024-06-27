@@ -26,6 +26,10 @@ ARG KUBERNETES_KUBECONFORM_VERSION=v0.6.6-alpine
 ARG PROTOBUF_PROTOLINT_VERSION=0.49.8
 # renovate: datasource=docker depName=zricethezav/gitleaks
 ARG REPOSITORY_GITLEAKS_VERSION=v8.18.4
+# renovate: datasource=docker depName=checkmarx/kics
+ARG REPOSITORY_KICS_VERSION=v2.1.0-alpine
+# renovate: datasource=docker depName=trufflesecurity/trufflehog 
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.78.2
 # renovate: datasource=docker depName=ghcr.io/terraform-linters/tflint
 ARG TERRAFORM_TFLINT_VERSION=0.51.1
 # renovate: datasource=docker depName=alpine/terragrunt
@@ -49,8 +53,8 @@ FROM mstruebing/editorconfig-checker:${EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION
 FROM ghcr.io/yannh/kubeconform:${KUBERNETES_KUBECONFORM_VERSION} as kubeconform
 FROM yoheimuta/protolint:${PROTOBUF_PROTOLINT_VERSION} as protolint
 FROM zricethezav/gitleaks:${REPOSITORY_GITLEAKS_VERSION} as gitleaks
-FROM checkmarx/kics:alpine as kics
-FROM trufflesecurity/trufflehog:latest as trufflehog
+FROM checkmarx/kics:${REPOSITORY_KICS_VERSION} as kics
+FROM trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION} as trufflehog
 FROM jdkato/vale:latest as vale
 FROM lycheeverse/lychee:latest-alpine as lychee
 FROM ghcr.io/terraform-linters/tflint:v${TERRAFORM_TFLINT_VERSION} as tflint
