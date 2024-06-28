@@ -37,7 +37,7 @@ ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.6.1
 # renovate: datasource=npm depName=sfdx-hardis
 ARG SFDX_HARDIS_VERSION=4.40.1
 # renovate: datasource=npm depName=@salesforce/sfdx-scanner
-ARG SALESFORCE_SFDX_SCANNER_VERSION=3.25.0
+ARG SALESFORCE_SFDX_SCANNER_VERSION=3.26.0
 #ARG__END
 
 # Static args
