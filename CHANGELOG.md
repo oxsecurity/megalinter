@@ -11,6 +11,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Core
   - Handle renovate version comments in build script
   - Update base image to python:3.12.4-alpine3.20
+  - Use `dotnet8-sdk` available in the main repository
 
 - Media
 

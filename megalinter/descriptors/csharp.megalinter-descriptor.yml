@@ -9,8 +9,7 @@ file_extensions:
   - ".cs"
 install:
   dockerfile:
-    # https://github.com/dotnet/sdk/issues/37790#issuecomment-1918068016
-    - RUN apk add --no-cache dotnet8-sdk --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community
+    - RUN apk add --no-cache dotnet8-sdk
     - ENV PATH="${PATH}:/root/.dotnet/tools"
 linters:
   # DOTNET FORMAT
