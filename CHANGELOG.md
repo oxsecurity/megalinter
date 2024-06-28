@@ -117,6 +117,16 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 3.2.141 to **3.2.144** on 2024-06-23
   - [syft](https://github.com/anchore/syft) from 1.7.0 to **1.8.0** on 2024-06-24
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.3.3 to **1.3.4** on 2024-06-24
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.3.4 to **1.4.2** on 2024-06-28
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.49.8 to **0.50.2** on 2024-06-28
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.10.0 to **1.10.1** on 2024-06-28
+  - [pylint](https://pylint.readthedocs.io) from 3.2.3 to **3.2.4** on 2024-06-28
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.368 to **1.1.369** on 2024-06-28
+  - [ruff](https://github.com/astral-sh/ruff) from 0.4.10 to **0.5.0** on 2024-06-28
+  - [checkov](https://www.checkov.io/) from 3.2.144 to **3.2.156** on 2024-06-28
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.78.2 to **3.79.0** on 2024-06-28
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.8.5 to **1.9.0** on 2024-06-28
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.59.5 to **0.59.6** on 2024-06-28
 <!-- linter-versions-end -->
 
 ## [v7.12.0] - 2024-06-02

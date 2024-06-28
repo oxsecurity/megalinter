@@ -89,7 +89,7 @@ sf flow:scan
 ### Help content
 
 ```shell
-(node:1754) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(node:1753) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
 (Use `node --trace-deprecation ...` to show where the warning was created)
 Try to resolve the errors in the following flows:
 
@@ -136,17 +136,23 @@ FLAGS
 - Dockerfile commands :
 ```dockerfile
 # Parent descriptor install
+# renovate: datasource=npm depName=@salesforce/cli
+ARG SALESFORCE_CLI_VERSION=2.47.6
+# renovate: datasource=npm depName=@salesforce/plugin-packaging
+ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.6.1
+# renovate: datasource=npm depName=sfdx-hardis
+ARG SFDX_HARDIS_VERSION=4.40.1
 ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
-RUN sf plugins install @salesforce/plugin-packaging \
-    && echo y|sf plugins install sfdx-hardis \
+RUN sf plugins install @salesforce/plugin-packaging@${SALESFORCE_PLUGIN_PACKAGING_VERSION} \
+    && echo y|sf plugins install sfdx-hardis@${SFDX_HARDIS_VERSION} \
     && npm cache clean --force || true \
     && rm -rf /root/.npm/_cacache
-
 # Linter install
-RUN echo y|sf plugins install lightning-flow-scanner \
+# renovate: datasource=npm depName=lightning-flow-scanner
+ARG LIGHTNING_FLOW_SCANNER_VERSION=2.27.0
+RUN echo y|sf plugins install lightning-flow-scanner@${LIGHTNING_FLOW_SCANNER_VERSION} \
     && npm cache clean --force || true \
     && rm -rf /root/.npm/_cacache
-
 ```
 
