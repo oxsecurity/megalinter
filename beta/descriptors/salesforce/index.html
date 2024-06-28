@@ -3366,13 +3366,18 @@
 <ul>
 <li>Dockerfile commands :</li>
 </ul>
-<pre><code class="language-dockerfile">ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
+<pre><code class="language-dockerfile"># renovate: datasource=npm depName=@salesforce/cli
+ARG SALESFORCE_CLI_VERSION=2.47.6
+# renovate: datasource=npm depName=@salesforce/plugin-packaging
+ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.6.1
+# renovate: datasource=npm depName=sfdx-hardis
+ARG SFDX_HARDIS_VERSION=4.40.1
+ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
-RUN sf plugins install @salesforce/plugin-packaging \
-    &amp;&amp; echo y|sf plugins install sfdx-hardis \
+RUN sf plugins install @salesforce/plugin-packaging@${SALESFORCE_PLUGIN_PACKAGING_VERSION} \
+    &amp;&amp; echo y|sf plugins install sfdx-hardis@${SFDX_HARDIS_VERSION} \
     &amp;&amp; npm cache clean --force || true \
     &amp;&amp; rm -rf /root/.npm/_cacache
-
 </code></pre>
 <ul>
 <li>APK packages (Linux):<ul>
@@ -3380,7 +3385,7 @@ RUN sf plugins install @salesforce/plugin-packaging \
 </ul>
 </li>
 <li>NPM packages (node.js):<ul>
-<li><a href="https://www.npmjs.com/package/@salesforce/cli">@salesforce/cli</a></li>
+<li><a href="https://www.npmjs.com/package/@salesforce/cli/v/${SALESFORCE_CLI_VERSION}">@salesforce/cli@${SALESFORCE_CLI_VERSION}</a></li>
 </ul>
 </li>
 </ul>
