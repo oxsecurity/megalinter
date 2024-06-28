@@ -3,7 +3,7 @@
   ansible.builtin.file:
     path: "/tmp/my_directory"
     state: directory
-    mode: '0755'
+    mode: "0755"
 
 - name: Copy configuration file
   ansible.builtin.template:
@@ -11,4 +11,4 @@
     dest: "/etc/myapp/config.ini"
     owner: root
     group: root
-    mode: '0644'
+    mode: "0644"
