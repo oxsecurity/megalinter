@@ -14,6 +14,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Use `dotnet8-sdk` available in the main repository
 
 - Media
+  - [Introducing MegaLinter: Streamlining Code Quality Checks Across Multiple Languages](https://cloudtuned.hashnode.dev/introducing-megalinter-streamlining-code-quality-checks-across-multiple-languages), by Cloud Tuned
 
 - Linters
   - Add python package Pygments to rst-lint venv
