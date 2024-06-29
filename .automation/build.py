@@ -327,7 +327,11 @@ def build_dockerfile(
                         )
                     docker_from += [dockerfile_item]
                 # ARG
-                elif dockerfile_item.startswith("ARG"):
+                elif dockerfile_item.startswith("ARG") or (
+                    len(dockerfile_item.splitlines()) > 1
+                    and dockerfile_item.splitlines()[0].startswith("# renovate: ")
+                    and dockerfile_item.splitlines()[1].startswith("ARG")
+                ):
                     docker_arg += [dockerfile_item]
                 # COPY
                 elif dockerfile_item.startswith("COPY"):
@@ -423,7 +427,10 @@ def build_dockerfile(
     docker_arg_top = []
     docker_arg_main = []
     for docker_arg_item in docker_arg:
-        match = re.match(r"ARG\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*=?\s*", docker_arg_item)
+        match = re.match(
+            r"(?:# renovate: .*\n)?ARG\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*=?\s*",
+            docker_arg_item,
+        )
         arg_name = match.group(1)
         if arg_name in all_from_instructions:
             docker_arg_top += [docker_arg_item]
@@ -523,7 +530,7 @@ def build_dockerfile(
             + '    && chown -R "$(id -u)":"$(id -g)" node_modules # fix for https://github.com/npm/cli/issues/5900 \\\n'
             + '    && echo "Removing extra node_module files…" \\\n'
             + '    && find . \\( -not -path "/proc" \\)'
-            + ' -and \\( -type f'
+            + " -and \\( -type f"
             + ' \\( -iname "*.d.ts"'
             + ' -o -iname "*.map"'
             + ' -o -iname "*.npmignore"'
@@ -532,7 +539,7 @@ def build_dockerfile(
             + ' -o -iname "README.md"'
             + ' -o -iname ".package-lock.json"'
             + ' -o -iname "package-lock.json"'
-            + ' \\) -o -type d -name /root/.npm/_cacache \\) -delete \n'
+            + " \\) -o -type d -name /root/.npm/_cacache \\) -delete \n"
             + "WORKDIR /\n"
         )
     replace_in_file(dockerfile, "#NPM__START", "#NPM__END", npm_install_command)
@@ -1111,7 +1118,7 @@ def generate_flavor_documentation(flavor_id, flavor, linters_tables_md):
 def dump_as_json(value: Any, empty_value: str) -> str:
     if not value:
         return empty_value
-    # Covert any value to string with JSON
+    # Convert any value to string with JSON
     # Don't indent since markdown table supports single line only
     result = json.dumps(value, indent=None, sort_keys=True)
     return f"`{result}`"
@@ -2350,7 +2357,7 @@ def add_in_config_schema_file(variables):
     json_schema["properties"] = json_schema_props
     if updated is True:
         with open(CONFIG_JSON_SCHEMA, "w", encoding="utf-8") as outfile:
-            json.dump(json_schema, outfile, indent=4, sort_keys=True)
+            json.dump(json_schema, outfile, indent=2, sort_keys=True)
             outfile.write("\n")
 
 
@@ -2367,7 +2374,7 @@ def remove_in_config_schema_file(variables):
     json_schema["properties"] = json_schema_props
     if updated is True:
         with open(CONFIG_JSON_SCHEMA, "w", encoding="utf-8") as outfile:
-            json.dump(json_schema, outfile, indent=4, sort_keys=True)
+            json.dump(json_schema, outfile, indent=2, sort_keys=True)
             outfile.write("\n")
 
 
@@ -2707,7 +2714,7 @@ def generate_json_schema_enums():
     with open(DESCRIPTOR_JSON_SCHEMA, "r", encoding="utf-8") as json_file:
         json_schema = json.load(json_file)
     json_schema["definitions"]["enum_flavors"]["enum"] = ["all_flavors"] + list(
-        flavors.keys()
+        sorted(set(list(flavors.keys())))
     )
     with open(DESCRIPTOR_JSON_SCHEMA, "w", encoding="utf-8") as outfile:
         json.dump(json_schema, outfile, indent=2, sort_keys=True)
@@ -2724,6 +2731,14 @@ def generate_json_schema_enums():
     json_schema["definitions"]["enum_linter_keys"]["enum"] = [x.name for x in linters]
     # Deprecated linters
     json_schema["definitions"]["enum_linter_keys"]["enum"] += DEPRECATED_LINTERS
+
+    # Sort:
+    json_schema["definitions"]["enum_descriptor_keys"]["enum"] = sorted(
+        set(json_schema["definitions"]["enum_descriptor_keys"]["enum"])
+    )
+    json_schema["definitions"]["enum_linter_keys"]["enum"] = sorted(
+        set(json_schema["definitions"]["enum_linter_keys"]["enum"])
+    )
     with open(CONFIG_JSON_SCHEMA, "w", encoding="utf-8") as outfile:
         json.dump(json_schema, outfile, indent=2, sort_keys=True)
         outfile.write("\n")
@@ -3352,17 +3367,22 @@ def update_workflow_linters(file_path, linters):
 
 
 if __name__ == "__main__":
+    logging_format = (
+        "[%(levelname)s] %(message)s"
+        if "CI" in os.environ
+        else "%(asctime)s [%(levelname)s] %(message)s"
+    )
     try:
         logging.basicConfig(
             force=True,
             level=logging.INFO,
-            format="%(asctime)s [%(levelname)s] %(message)s",
+            format=logging_format,
             handlers=[logging.StreamHandler(sys.stdout)],
         )
     except ValueError:
         logging.basicConfig(
             level=logging.INFO,
-            format="%(asctime)s [%(levelname)s] %(message)s",
+            format=logging_format,
             handlers=[logging.StreamHandler(sys.stdout)],
         )
     config.init_config("build")

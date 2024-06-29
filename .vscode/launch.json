@@ -16,6 +16,17 @@
             "request": "launch",
             "program": "${file}",
             "console": "integratedTerminal"
+        },
+        {
+            "name": "Python Debugger: Build MegaLinter files",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/.automation/build.py",
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal",
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}"
+            }
         }
     ]
 }

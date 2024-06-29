@@ -6,14 +6,14 @@ updates:
   - package-ecosystem: github-actions
     directory: "/"
     schedule:
-      interval: daily
+      interval: weekly
     open-pull-requests-limit: 10
 
   # Maintain dependencies for js with npm
   - package-ecosystem: "npm"
     directory: "/mega-linter-runner"
     schedule:
-      interval: "daily"
+      interval: "weekly"
     open-pull-requests-limit: 10
   - package-ecosystem: "npm"
     directory: "/.automation/test/repository_grype/bad/"
@@ -28,51 +28,51 @@ updates:
   - package-ecosystem: "bundler"
     directory: "/"
     schedule:
-      interval: "daily"
+      interval: "weekly"
     open-pull-requests-limit: 10
 
   # Maintain dependencies for docker
   - package-ecosystem: "docker"
     directory: "/"
     schedule:
-      interval: "daily"
+      interval: "weekly"
     open-pull-requests-limit: 10
   - package-ecosystem: "docker"
     directory: "/flavors"
     schedule:
-      interval: "daily"
+      interval: "weekly"
     open-pull-requests-limit: 10
   - package-ecosystem: "docker"
     directory: "/linters"
     schedule:
-      interval: "daily"
+      interval: "weekly"
     open-pull-requests-limit: 10
   - package-ecosystem: "docker"
     directory: "/server"
     schedule:
-      interval: "daily"
+      interval: "weekly"
     open-pull-requests-limit: 10
   - package-ecosystem: "docker"
     directory: "/.config/gitpod"
     schedule:
-      interval: "daily"
+      interval: "weekly"
     open-pull-requests-limit: 10
 
   # Maintain dependencies for python with pip
   - package-ecosystem: "pip"
     directory: "/.config/python/dev/"
     schedule:
-      interval: "daily"
+      interval: "weekly"
     open-pull-requests-limit: 10
   - package-ecosystem: "pip"
     directory: "/megalinter"
     schedule:
-      interval: "daily"
+      interval: "weekly"
     open-pull-requests-limit: 10
   - package-ecosystem: "pip"
     directory: "/server"
     schedule:
-      interval: "daily"
+      interval: "weekly"
     open-pull-requests-limit: 10
 
   - package-ecosystem: "devcontainers"

@@ -74,10 +74,12 @@ linters:
     config_file_name: ".yamllint.yml"
     cli_lint_mode: list_of_files
     cli_lint_errors_count: regex_count
-    cli_lint_errors_regex: "[0-9]+:[0-9]+.*error"
+    cli_lint_errors_regex: "[0-9]+:[0-9]+:?\\s*(?:\\[?warning\\]?|\\[?error\\]?)|(?:::warning file=|::error file=)"
     examples:
       - "yamllint myfile.yaml"
       - "yamllint -c .yamllint.yml myfile.yaml"
+      - "yamllint --strict"
+      - "yamllint --no-warnings"
     install:
       pip:
         - yamllint

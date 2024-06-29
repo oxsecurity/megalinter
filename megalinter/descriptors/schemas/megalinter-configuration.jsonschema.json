@@ -51,6 +51,7 @@
         "COFFEE",
         "COPYPASTE",
         "CPP",
+        "CREDENTIALS",
         "CSHARP",
         "CSS",
         "DART",
@@ -58,6 +59,7 @@
         "EDITORCONFIG",
         "ENV",
         "GHERKIN",
+        "GIT",
         "GO",
         "GRAPHQL",
         "GROOVY",
@@ -97,9 +99,7 @@
         "TYPESCRIPT",
         "VBDOTNET",
         "XML",
-        "YAML",
-        "CREDENTIALS",
-        "GIT"
+        "YAML"
       ],
       "type": "string"
     },
@@ -113,130 +113,132 @@
         "BASH_SHELLCHECK",
         "BASH_SHFMT",
         "BICEP_BICEP_LINTER",
-        "C_CPPLINT",
-        "C_CLANG_FORMAT",
-        "CLOJURE_CLJ_KONDO",
         "CLOJURE_CLJSTYLE",
+        "CLOJURE_CLJ_KONDO",
         "CLOUDFORMATION_CFN_LINT",
         "COFFEE_COFFEELINT",
         "COPYPASTE_JSCPD",
-        "CPP_CPPLINT",
         "CPP_CLANG_FORMAT",
-        "CSHARP_DOTNET_FORMAT",
+        "CPP_CPPLINT",
+        "CREDENTIALS_SECRETLINT",
         "CSHARP_CSHARPIER",
+        "CSHARP_DOTNET_FORMAT",
         "CSHARP_ROSLYNATOR",
-        "CSS_STYLELINT",
         "CSS_SCSS_LINT",
+        "CSS_STYLELINT",
+        "C_CLANG_FORMAT",
+        "C_CPPLINT",
         "DART_DARTANALYZER",
+        "DOCKERFILE_DOCKERFILELINT",
         "DOCKERFILE_HADOLINT",
         "EDITORCONFIG_EDITORCONFIG_CHECKER",
         "ENV_DOTENV_LINTER",
         "GHERKIN_GHERKIN_LINT",
+        "GIT_GIT_DIFF",
         "GO_GOLANGCI_LINT",
         "GO_REVIVE",
         "GRAPHQL_GRAPHQL_SCHEMA_LINTER",
         "GROOVY_NPM_GROOVY_LINT",
         "HTML_DJLINT",
         "HTML_HTMLHINT",
+        "JAVASCRIPT_ES",
+        "JAVASCRIPT_PRETTIER",
+        "JAVASCRIPT_STANDARD",
         "JAVA_CHECKSTYLE",
         "JAVA_PMD",
-        "JAVASCRIPT_ES",
-        "JAVASCRIPT_STANDARD",
-        "JAVASCRIPT_PRETTIER",
-        "JSON_JSONLINT",
         "JSON_ESLINT_PLUGIN_JSONC",
-        "JSON_V8R",
-        "JSON_PRETTIER",
+        "JSON_JSONLINT",
         "JSON_NPM_PACKAGE_JSON_LINT",
+        "JSON_PRETTIER",
+        "JSON_V8R",
         "JSX_ESLINT",
-        "KOTLIN_KTLINT",
         "KOTLIN_DETEKT",
-        "KUBERNETES_KUBECONFORM",
+        "KOTLIN_KTLINT",
         "KUBERNETES_HELM",
+        "KUBERNETES_KUBECONFORM",
         "KUBERNETES_KUBESCAPE",
+        "KUBERNETES_KUBEVAL",
         "LATEX_CHKTEX",
         "LUA_LUACHECK",
         "MAKEFILE_CHECKMAKE",
         "MARKDOWN_MARKDOWNLINT",
-        "MARKDOWN_REMARK_LINT",
         "MARKDOWN_MARKDOWN_LINK_CHECK",
         "MARKDOWN_MARKDOWN_TABLE_FORMATTER",
+        "MARKDOWN_REMARK_LINT",
         "OPENAPI_SPECTRAL",
         "PERL_PERLCRITIC",
+        "PHP_BUILTIN",
         "PHP_PHPCS",
+        "PHP_PHPCSFIXER",
+        "PHP_PHPLINT",
         "PHP_PHPSTAN",
         "PHP_PSALM",
-        "PHP_PHPLINT",
         "POWERSHELL_POWERSHELL",
         "POWERSHELL_POWERSHELL_FORMATTER",
         "PROTOBUF_PROTOLINT",
         "PUPPET_PUPPET_LINT",
-        "PYTHON_PYLINT",
+        "PYTHON_BANDIT",
         "PYTHON_BLACK",
         "PYTHON_FLAKE8",
         "PYTHON_ISORT",
-        "PYTHON_BANDIT",
         "PYTHON_MYPY",
+        "PYTHON_PYLINT",
         "PYTHON_PYRIGHT",
         "PYTHON_RUFF",
-        "R_LINTR",
         "RAKU_RAKU",
         "REPOSITORY_CHECKOV",
         "REPOSITORY_DEVSKIM",
         "REPOSITORY_DUSTILOCK",
-        "REPOSITORY_GIT_DIFF",
         "REPOSITORY_GITLEAKS",
+        "REPOSITORY_GIT_DIFF",
+        "REPOSITORY_GOODCHECK",
         "REPOSITORY_GRYPE",
         "REPOSITORY_KICS",
+        "REPOSITORY_LS_LINT",
         "REPOSITORY_SECRETLINT",
         "REPOSITORY_SEMGREP",
         "REPOSITORY_SYFT",
         "REPOSITORY_TRIVY",
         "REPOSITORY_TRIVY_SBOM",
         "REPOSITORY_TRUFFLEHOG",
-        "RST_RST_LINT",
         "RST_RSTCHECK",
         "RST_RSTFMT",
+        "RST_RST_LINT",
         "RUBY_RUBOCOP",
         "RUST_CLIPPY",
+        "R_LINTR",
+        "SALESFORCE_LIGHTNING_FLOW_SCANNER",
         "SALESFORCE_SFDX_SCANNER_APEX",
         "SALESFORCE_SFDX_SCANNER_AURA",
         "SALESFORCE_SFDX_SCANNER_LWC",
-        "SALESFORCE_LIGHTNING_FLOW_SCANNER",
         "SCALA_SCALAFIX",
         "SNAKEMAKE_LINT",
         "SNAKEMAKE_SNAKEFMT",
         "SPELL_CSPELL",
+        "SPELL_LYCHEE",
+        "SPELL_MISSPELL",
         "SPELL_PROSELINT",
         "SPELL_VALE",
-        "SPELL_LYCHEE",
-        "SQL_SQL_LINT",
         "SQL_SQLFLUFF",
+        "SQL_SQL_LINT",
         "SQL_TSQLLINT",
         "SWIFT_SWIFTLINT",
         "TEKTON_TEKTON_LINT",
-        "TERRAFORM_TFLINT",
-        "TERRAFORM_TERRASCAN",
-        "TERRAFORM_TERRAGRUNT",
+        "TERRAFORM_CHECKOV",
+        "TERRAFORM_KICS",
         "TERRAFORM_TERRAFORM_FMT",
+        "TERRAFORM_TERRAGRUNT",
+        "TERRAFORM_TERRASCAN",
+        "TERRAFORM_TFLINT",
         "TSX_ESLINT",
         "TYPESCRIPT_ES",
-        "TYPESCRIPT_STANDARD",
         "TYPESCRIPT_PRETTIER",
+        "TYPESCRIPT_STANDARD",
         "VBDOTNET_DOTNET_FORMAT",
         "XML_XMLLINT",
         "YAML_PRETTIER",
-        "YAML_YAMLLINT",
         "YAML_V8R",
-        "CREDENTIALS_SECRETLINT",
-        "DOCKERFILE_DOCKERFILELINT",
-        "GIT_GIT_DIFF",
-        "PHP_BUILTIN",
-        "KUBERNETES_KUBEVAL",
-        "REPOSITORY_GOODCHECK",
-        "SPELL_MISSPELL",
-        "TERRAFORM_CHECKOV",
-        "TERRAFORM_KICS"
+        "YAML_YAMLLINT"
       ],
       "type": "string"
     }
@@ -3312,6 +3314,13 @@
         "string"
       ]
     },
+    "CSHARP_CSHARPIER_CONFIG_FILE": {
+      "$id": "#/properties/CSHARP_CSHARPIER_CONFIG_FILE",
+      "default": ".csharpierrc",
+      "description": "CSHARP_CSHARPIER: User custom config file name if different from default",
+      "title": "CSHARP_CSHARPIER: Custom config file name",
+      "type": "string"
+    },
     "CSHARP_CSHARPIER_DISABLE_ERRORS": {
       "$id": "#/properties/CSHARP_CSHARPIER_DISABLE_ERRORS",
       "default": false,
@@ -3391,6 +3400,12 @@
       },
       "title": "CSHARP_CSHARPIER: Define or override a list of bash commands to run before the linter",
       "type": "array"
+    },
+    "CSHARP_CSHARPIER_RULES_PATH": {
+      "$id": "#/properties/CSHARP_CSHARPIER_RULES_PATH",
+      "description": "CSHARP_CSHARPIER: Path where to find linter configuration file",
+      "title": "CSHARP_CSHARPIER: Custom config file path",
+      "type": "string"
     },
     "CSHARP_CSHARPIER_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/CSHARP_CSHARPIER_UNSECURED_ENV_VARIABLES",
@@ -9139,16 +9154,6 @@
       "title": "KOTLIN_DETEKT: CLI Executable",
       "type": "array"
     },
-    "KOTLIN_DETEKT_CLI_LINT_MODE": {
-      "$id": "#/properties/KOTLIN_DETEKT_CLI_LINT_MODE",
-      "default": "file",
-      "enum": [
-        "file",
-        "project"
-      ],
-      "title": "KOTLIN_DETEKT: Override default cli lint mode",
-      "type": "string"
-    },
     "KOTLIN_DETEKT_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/KOTLIN_DETEKT_COMMAND_REMOVE_ARGUMENTS",
       "description": "KOTLIN_DETEKT: User custom arguments to remove before calling linter",
@@ -9200,16 +9205,6 @@
       },
       "title": "KOTLIN_DETEKT: Override descriptor/linter matching file name regex",
       "type": "array"
-    },
-    "KOTLIN_DETEKT_FILTER_REGEX_EXCLUDE": {
-      "$id": "#/properties/KOTLIN_DETEKT_FILTER_REGEX_EXCLUDE",
-      "title": "KOTLIN_DETEKT: Excluding Regex",
-      "type": "string"
-    },
-    "KOTLIN_DETEKT_FILTER_REGEX_INCLUDE": {
-      "$id": "#/properties/KOTLIN_DETEKT_FILTER_REGEX_INCLUDE",
-      "title": "KOTLIN_DETEKT: Including Regex",
-      "type": "string"
     },
     "KOTLIN_DETEKT_POST_COMMANDS": {
       "$id": "#/properties/KOTLIN_DETEKT_POST_COMMANDS",
@@ -9296,9 +9291,10 @@
     },
     "KOTLIN_KTLINT_CLI_LINT_MODE": {
       "$id": "#/properties/KOTLIN_KTLINT_CLI_LINT_MODE",
-      "default": "file",
+      "default": "list_of_files",
       "enum": [
         "file",
+        "list_of_files",
         "project"
       ],
       "title": "KOTLIN_KTLINT: Override default cli lint mode",
@@ -12021,6 +12017,144 @@
       "title": "Including regex filter for PHP descriptor",
       "type": "string"
     },
+    "PHP_PHPCSFIXER_ARGUMENTS": {
+      "$id": "#/properties/PHP_PHPCSFIXER_ARGUMENTS",
+      "description": "PHP_PHPCSFIXER: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "PHP_PHPCSFIXER: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "PHP_PHPCSFIXER_CLI_EXECUTABLE": {
+      "$id": "#/properties/PHP_PHPCSFIXER_CLI_EXECUTABLE",
+      "default": [
+        [
+          "php-cs-fixer"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "PHP_PHPCSFIXER: CLI Executable",
+      "type": "array"
+    },
+    "PHP_PHPCSFIXER_COMMAND_REMOVE_ARGUMENTS": {
+      "$id": "#/properties/PHP_PHPCSFIXER_COMMAND_REMOVE_ARGUMENTS",
+      "description": "PHP_PHPCSFIXER: User custom arguments to remove before calling linter",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "PHP_PHPCSFIXER: Custom remove arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "PHP_PHPCSFIXER_CONFIG_FILE": {
+      "$id": "#/properties/PHP_PHPCSFIXER_CONFIG_FILE",
+      "default": ".php-cs-fixer.dist.php",
+      "description": "PHP_PHPCSFIXER: User custom config file name if different from default",
+      "title": "PHP_PHPCSFIXER: Custom config file name",
+      "type": "string"
+    },
+    "PHP_PHPCSFIXER_DISABLE_ERRORS": {
+      "$id": "#/properties/PHP_PHPCSFIXER_DISABLE_ERRORS",
+      "default": false,
+      "title": "PHP_PHPCSFIXER: Linter doesn't make MegaLinter fail even if errors are found",
+      "type": "boolean"
+    },
+    "PHP_PHPCSFIXER_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/PHP_PHPCSFIXER_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "PHP_PHPCSFIXER: Maximum number of errors allowed",
+      "type": "number"
+    },
+    "PHP_PHPCSFIXER_FILE_EXTENSIONS": {
+      "$id": "#/properties/PHP_PHPCSFIXER_FILE_EXTENSIONS",
+      "examples:": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "PHP_PHPCSFIXER: Override descriptor/linter matching files extensions",
+      "type": "array"
+    },
+    "PHP_PHPCSFIXER_FILE_NAMES_REGEX": {
+      "$id": "#/properties/PHP_PHPCSFIXER_FILE_NAMES_REGEX",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "PHP_PHPCSFIXER: Override descriptor/linter matching file name regex",
+      "type": "array"
+    },
+    "PHP_PHPCSFIXER_POST_COMMANDS": {
+      "$id": "#/properties/PHP_PHPCSFIXER_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "PHP_PHPCSFIXER: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "PHP_PHPCSFIXER_PRE_COMMANDS": {
+      "$id": "#/properties/PHP_PHPCSFIXER_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "PHP_PHPCSFIXER: Define or override a list of bash commands to run before the linter",
+      "type": "array"
+    },
+    "PHP_PHPCSFIXER_RULES_PATH": {
+      "$id": "#/properties/PHP_PHPCSFIXER_RULES_PATH",
+      "description": "PHP_PHPCSFIXER: Path where to find linter configuration file",
+      "title": "PHP_PHPCSFIXER: Custom config file path",
+      "type": "string"
+    },
+    "PHP_PHPCSFIXER_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/PHP_PHPCSFIXER_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling PHP_PHPCSFIXER and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "PHP_PHPCSFIXER: Unsecured env variables",
+      "type": "array"
+    },
     "PHP_PHPCS_ARGUMENTS": {
       "$id": "#/properties/PHP_PHPCS_ARGUMENTS",
       "description": "PHP_PHPCS: User custom arguments to add in linter CLI call",
@@ -13014,6 +13148,13 @@
     "POWERSHELL_POWERSHELL_FORMATTER_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/POWERSHELL_POWERSHELL_FORMATTER_FILTER_REGEX_INCLUDE",
       "title": "POWERSHELL_POWERSHELL_FORMATTER: Including Regex",
+      "type": "string"
+    },
+    "POWERSHELL_POWERSHELL_FORMATTER_OUTPUT_ENCODING": {
+      "$id": "#/properties/POWERSHELL_POWERSHELL_FORMATTER_OUTPUT_ENCODING",
+      "default": "utf8",
+      "description": "POWERSHELL_POWERSHELL_FORMATTER: `-Encoding` to be used when writing content to the file",
+      "title": "POWERSHELL_POWERSHELL_FORMATTER: Output encoding type",
       "type": "string"
     },
     "POWERSHELL_POWERSHELL_FORMATTER_POST_COMMANDS": {
@@ -15596,6 +15737,24 @@
       "title": "REPOSITORY_GITLEAKS: Define or override a list of bash commands to run before the linter",
       "type": "array"
     },
+    "REPOSITORY_GITLEAKS_PR_COMMITS_SCAN": {
+      "$id": "#/properties/REPOSITORY_GITLEAKS_PR_COMMITS_SCAN",
+      "default": false,
+      "title": "REPOSITORY_GITLEAKS: Scan only commits in the current Pull Request/Merge Request",
+      "type": "boolean"
+    },
+    "REPOSITORY_GITLEAKS_PR_SOURCE_SHA": {
+      "$id": "#/properties/REPOSITORY_GITLEAKS_PR_SOURCE_SHA",
+      "default": "",
+      "title": "REPOSITORY_GITLEAKS: Source commit SHA of the Pull Request/Merge Request",
+      "type": "string"
+    },
+    "REPOSITORY_GITLEAKS_PR_TARGET_SHA": {
+      "$id": "#/properties/REPOSITORY_GITLEAKS_PR_TARGET_SHA",
+      "default": "",
+      "title": "REPOSITORY_GITLEAKS: Target commit SHA of the Pull Request/Merge Request",
+      "type": "string"
+    },
     "REPOSITORY_GITLEAKS_RULES_PATH": {
       "$id": "#/properties/REPOSITORY_GITLEAKS_RULES_PATH",
       "description": "REPOSITORY_GITLEAKS: Path where to find linter configuration file",
@@ -16027,6 +16186,120 @@
         "type": "string"
       },
       "title": "REPOSITORY_KICS: Unsecured env variables",
+      "type": "array"
+    },
+    "REPOSITORY_LS_LINT_ARGUMENTS": {
+      "$id": "#/properties/REPOSITORY_LS_LINT_ARGUMENTS",
+      "description": "REPOSITORY_LS_LINT: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_LS_LINT: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "REPOSITORY_LS_LINT_CLI_EXECUTABLE": {
+      "$id": "#/properties/REPOSITORY_LS_LINT_CLI_EXECUTABLE",
+      "default": [
+        [
+          "ls-lint"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_LS_LINT: CLI Executable",
+      "type": "array"
+    },
+    "REPOSITORY_LS_LINT_COMMAND_REMOVE_ARGUMENTS": {
+      "$id": "#/properties/REPOSITORY_LS_LINT_COMMAND_REMOVE_ARGUMENTS",
+      "description": "REPOSITORY_LS_LINT: User custom arguments to remove before calling linter",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_LS_LINT: Custom remove arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "REPOSITORY_LS_LINT_CONFIG_FILE": {
+      "$id": "#/properties/REPOSITORY_LS_LINT_CONFIG_FILE",
+      "default": ".ls-lint.yml",
+      "description": "REPOSITORY_LS_LINT: User custom config file name if different from default",
+      "title": "REPOSITORY_LS_LINT: Custom config file name",
+      "type": "string"
+    },
+    "REPOSITORY_LS_LINT_DISABLE_ERRORS": {
+      "$id": "#/properties/REPOSITORY_LS_LINT_DISABLE_ERRORS",
+      "default": false,
+      "title": "REPOSITORY_LS_LINT: Linter doesn't make MegaLinter fail even if errors are found",
+      "type": "boolean"
+    },
+    "REPOSITORY_LS_LINT_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/REPOSITORY_LS_LINT_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "REPOSITORY_LS_LINT: Maximum number of errors allowed",
+      "type": "number"
+    },
+    "REPOSITORY_LS_LINT_POST_COMMANDS": {
+      "$id": "#/properties/REPOSITORY_LS_LINT_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "REPOSITORY_LS_LINT: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "REPOSITORY_LS_LINT_PRE_COMMANDS": {
+      "$id": "#/properties/REPOSITORY_LS_LINT_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "REPOSITORY_LS_LINT: Define or override a list of bash commands to run before the linter",
+      "type": "array"
+    },
+    "REPOSITORY_LS_LINT_RULES_PATH": {
+      "$id": "#/properties/REPOSITORY_LS_LINT_RULES_PATH",
+      "description": "REPOSITORY_LS_LINT: Path where to find linter configuration file",
+      "title": "REPOSITORY_LS_LINT: Custom config file path",
+      "type": "string"
+    },
+    "REPOSITORY_LS_LINT_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/REPOSITORY_LS_LINT_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling REPOSITORY_LS_LINT and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_LS_LINT: Unsecured env variables",
       "type": "array"
     },
     "REPOSITORY_POST_COMMANDS": {
@@ -21724,6 +21997,13 @@
       "title": "TERRAFORM_TFLINT: Custom config file path",
       "type": "string"
     },
+    "TERRAFORM_TFLINT_SECURED_ENV": {
+      "$id": "#/properties/TERRAFORM_TFLINT_SECURED_ENV",
+      "default": true,
+      "description": "TERRAFORM_TFLINT: Allows to send the full env to **tflint --init**. Initialized with default value `true`. Set to `false` to allow `tflint --init` to access your env vars.",
+      "title": "TERRAFORM_TFLINT: Secured Environment Flag",
+      "type": "boolean"
+    },
     "TERRAFORM_TFLINT_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/TERRAFORM_TFLINT_UNSECURED_ENV_VARIABLES",
       "default": [],
@@ -22753,6 +23033,12 @@
         "string"
       ]
     },
+    "XML_XMLLINT_AUTOFORMAT": {
+      "$id": "#/properties/XML_XMLLINT_AUTOFORMAT",
+      "default": false,
+      "title": "XML_XMLLINT: If set to `true`, it will reformat and reindent the output",
+      "type": "boolean"
+    },
     "XML_XMLLINT_CLI_EXECUTABLE": {
       "$id": "#/properties/XML_XMLLINT_CLI_EXECUTABLE",
       "default": [
@@ -22837,6 +23123,12 @@
     "XML_XMLLINT_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/XML_XMLLINT_FILTER_REGEX_INCLUDE",
       "title": "XML_XMLLINT: Including Regex",
+      "type": "string"
+    },
+    "XML_XMLLINT_INDENT": {
+      "$id": "#/properties/XML_XMLLINT_INDENT",
+      "default": "  ",
+      "title": "XML_XMLLINT: The number of indentation spaces when `XML_XMLLINT_AUTOFORMAT` is `true`",
       "type": "string"
     },
     "XML_XMLLINT_POST_COMMANDS": {

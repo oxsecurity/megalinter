@@ -108,9 +108,11 @@ linters:
       - "phpstan analyse --no-progress --no-ansi -c phpstan.neon myfile.php"
       - "phpstan analyse --no-progress --no-ansi myfile1.php myfile2.php"
       - "phpstan analyse --no-progress --no-ansi mydir1/ mydir2/ myfile.php"
+    downgraded_version: true
+    downgraded_reason: https://github.com/phpstan/phpstan/issues/11225
     install:
       dockerfile:
-        - RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require phpstan/phpstan bartlett/sarif-php-sdk
+        - RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require phpstan/phpstan:1.11.4 bartlett/sarif-php-sdk
       idea:
         - name: PHPStan / Psalm / Generics
           url: https://plugins.jetbrains.com/plugin/12754-phpstan--psalm--generics
@@ -172,3 +174,43 @@ linters:
       dockerfile:
         - |
           RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && phive --no-progress install overtrue/phplint --force-accept-unsigned -g
+  # PHP-CS-Fixer
+  - linter_name: php-cs-fixer
+    name: PHP_PHPCSFIXER
+    linter_url: https://cs.symfony.com/
+    linter_repo: https://github.com/PHP-CS-Fixer/PHP-CS-Fixer
+    linter_image_url: https://cs.symfony.com/_static/images/logo.png
+    config_file_name: .php-cs-fixer.dist.php
+    cli_lint_mode: project
+    cli_lint_extra_args:
+      - "fix"
+      - "--dry-run"
+      - "--verbose"
+      - "--show-progress=none"
+    cli_config_arg_name: "--config"
+    cli_lint_fix_remove_args:
+      - "--dry-run"
+    examples:
+      - "php-cs-fixer check myfile.php"
+      - "php-cs-fixer check mydir"
+      - "php-cs-fixer check --config .php-cs-fixer.php"
+    install:
+      dockerfile:
+        - |
+          RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require friendsofphp/php-cs-fixer
+    ide:
+      netbeans:
+        - name: PHP-CS-Fixer
+          url: https://plugins.netbeans.apache.org/catalogue/?id=36
+      idea:
+        - name: php-cs-fixer
+          url: https://www.jetbrains.com/help/phpstorm/using-php-cs-fixer.html
+      sublime:
+        - name: sublime-phpcs
+          url: https://github.com/benmatselby/sublime-phpcs
+      vim:
+        - name: vim-php-cs-fixer
+          url: https://github.com/stephpy/vim-php-cs-fixer
+      vscode:
+        - name: vscode-php-cs-fixer
+          url: https://github.com/junstyle/vscode-php-cs-fixer

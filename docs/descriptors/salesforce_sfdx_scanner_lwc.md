@@ -19,7 +19,7 @@ See more details in [Help](#help-content)
 
 ## sfdx-scanner-lwc documentation
 
-- Version in MegaLinter: **3.24.0**
+- Version in MegaLinter: **3.26.0**
 - Visit [Official Web Site](https://forcedotcom.github.io/sfdx-scanner/){target=_blank}
 - See [How to configure sfdx-scanner-lwc rules](https://eslint.org/docs/user-guide/configuring){target=_blank}
 - See [How to disable sfdx-scanner-lwc rules in files](https://eslint.org/docs/user-guide/configuring/rules#disabling-rules){target=_blank}
@@ -60,8 +60,8 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                       | Description                             | Embedded linters |                                                                                                                                                                                             Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------|:----------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor               |       123        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://megalinter.io/beta/flavors/salesforce/) | Optimized for Salesforce based projects |        55        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor               |       125        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://megalinter.io/beta/flavors/salesforce/) | Optimized for Salesforce based projects |        56        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce) |
 
 ## Behind the scenes
 
@@ -89,14 +89,16 @@ sf scanner:run
 ### Help content
 
 ```shell
+(node:2155) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
 scan a codebase with a selection of rules
 
 USAGE
-  $ sf scanner run [--verbose] [-c <value>] [-f
+  $ sf scanner run [--verbose] [-c <value>...] [-f
     csv|html|json|junit|sarif|table|xml] [-o <value>] [-s <value> | --json]
-    [--normalize-severity] [-p <value>] [-r <value>] [-e
-    eslint|eslint-lwc|eslint-typescript|pmd|pmd-appexchange|retire-js|sfge|cpd]
-    [-t <value>] [--tsconfig <value>] [--eslintconfig <value>] [--pmdconfig
+    [--normalize-severity] [-p <value>...] [-r <value>...] [-e eslint|eslint-lwc
+    |eslint-typescript|pmd|pmd-appexchange|retire-js|sfge|cpd...] [-t
+    <value>...] [--tsconfig <value>] [--eslintconfig <value>] [--pmdconfig
     <value>] [--preview-pmd7] [--env <value>] [--verbose-violations]
 
 FLAGS
@@ -137,9 +139,11 @@ GLOBAL FLAGS
 COMMANDS
   scanner run dfa  scan codebase with all DFA rules
 
-(node:2474) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(node:2167) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
 (Use `node --trace-deprecation ...` to show where the warning was created)
-Warning: To use the most up-to-date Code Analyzer features including PMD 7.x, install Code Analyzer v4.x (Beta). To install v4.x (beta), run this command: sf plugins install @salesforce/sfdx-scanner@latest-beta
+ ›   Warning: Plugin @salesforce/sfdx-scanner (3.26.0) differs from the version
+ ›    specified by sf (3.25.0)
+Warning: You are using Code Analyzer v3, which we no longer support. Update to v4 of Code Analyzer by running this command: "sf plugins install @salesforce/sfdx-scanner". Version 4 of Code Analyzer has the most up-to-date features, including PMD 7.x.
 Warning: We're continually improving Salesforce Code Analyzer. Tell us what you think! Give feedback at https://research.net/r/SalesforceCA
  name                                                   languages   categories            rulesets [dep]                                   engine            is dfa is pilot
  ────────────────────────────────────────────────────── ─────────── ───────────────────── ──────────────────────────────────────────────── ───────────────── ────── ────────
@@ -366,17 +370,23 @@ Warning: We're continually improving Salesforce Code Analyzer. Tell us what you 
 - Dockerfile commands :
 ```dockerfile
 # Parent descriptor install
+# renovate: datasource=npm depName=@salesforce/cli
+ARG SALESFORCE_CLI_VERSION=2.47.6
+# renovate: datasource=npm depName=@salesforce/plugin-packaging
+ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.7.0
+# renovate: datasource=npm depName=sfdx-hardis
+ARG SFDX_HARDIS_VERSION=4.40.1
 ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
-RUN sf plugins install @salesforce/plugin-packaging \
-    && echo y|sf plugins install sfdx-hardis \
+RUN sf plugins install @salesforce/plugin-packaging@${SALESFORCE_PLUGIN_PACKAGING_VERSION} \
+    && echo y|sf plugins install sfdx-hardis@${SFDX_HARDIS_VERSION} \
     && npm cache clean --force || true \
     && rm -rf /root/.npm/_cacache
-
 # Linter install
-RUN sf plugins install @salesforce/sfdx-scanner \
+# renovate: datasource=npm depName=@salesforce/sfdx-scanner
+ARG SALESFORCE_SFDX_SCANNER_VERSION=3.26.0
+RUN sf plugins install @salesforce/sfdx-scanner@${SALESFORCE_SFDX_SCANNER_VERSION} \
     && npm cache clean --force || true \
     && rm -rf /root/.npm/_cacache
-
 ```
 

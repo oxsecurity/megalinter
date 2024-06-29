@@ -19,7 +19,7 @@ If your root folder is not **force-app**, please set variable SALESFORCE_LIGHTNI
 
 ## lightning-flow-scanner documentation
 
-- Version in MegaLinter: **2.26.0**
+- Version in MegaLinter: **2.28.0**
 - Visit [Official Web Site](https://github.com/Lightning-Flow-Scanner#readme){target=_blank}
 - See [How to configure lightning-flow-scanner rules](https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx#configuration){target=_blank}
   - If custom `.flow-scanner.json` config file isn't found, [.flow-scanner.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.flow-scanner.json){target=_blank} will be used
@@ -60,8 +60,8 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                       | Description                             | Embedded linters |                                                                                                                                                                                             Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------|:----------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor               |       123        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://megalinter.io/beta/flavors/salesforce/) | Optimized for Salesforce based projects |        55        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor               |       125        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://megalinter.io/beta/flavors/salesforce/) | Optimized for Salesforce based projects |        56        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce) |
 
 ## Behind the scenes
 
@@ -89,43 +89,31 @@ sf flow:scan
 ### Help content
 
 ```shell
-Try to resolve the errors in the following flows:
+(node:1756) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+Find and fix potential bugs in Salesforce flows.
 
 USAGE
-  $ sf flow scan [-d <filepath>] [-c <filepath>] [-f
-    error|warning|note|never] [-r] [-p <filepath>] [-u <string>] [--apiversion
-    <string>] [--json] [--loglevel
-    trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]
+  $ sf flow scan [--json] [--flags-dir <value>] [-d <value>] [-c
+    <value>] [-f error|warning|note|never] [-r] [-p <value>] [-u <value>]
 
 FLAGS
-  -c, --config=<value>
-      Path to configuration file
+  -c, --config=<value>          Path to configuration file
+  -d, --directory=<value>       Directory to scan for flows
+  -f, --failon=<option>         [default: error] Threshold failure level (error,
+                                warning, note, or never) defining when the
+                                command return code will be 1
+                                <options: error|warning|note|never>
+  -p, --sourcepath=<value>      Comma-separated list of source flow paths to
+                                scan
+  -r, --retrieve                Force retrieve Flows from org at the start of
+                                the command
+  -u, --targetusername=<value>  Retrieve the latest metadata from the target
+                                before the scan.
 
-  -d, --directory=<value>
-      Directory to scan for flows
-
-  -f, --failon=(error|warning|note|never)
-      [default: error] Thresold failure level (error, warning, note, or never)
-      defining when the command return code will be 1
-
-  -p, --sourcepath=<value>
-      comma-separated list of source flow paths to scan
-
-  -r, --retrieve
-      Force retrieve Flows from org at the start of the command
-
-  -u, --targetusername=<value>
-      username or alias for the target org; overrides default target org
-
-  --apiversion=<value>
-      override the api version used for api requests made by this command
-
-  --json
-      format output as json
-
-  --loglevel=(trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATA
-  L)
-      [default: warn] logging level for this command invocation
+GLOBAL FLAGS
+  --flags-dir=<value>  Import flag values from a directory.
+  --json               Format output as json.
 
 ```
 
@@ -134,17 +122,23 @@ FLAGS
 - Dockerfile commands :
 ```dockerfile
 # Parent descriptor install
+# renovate: datasource=npm depName=@salesforce/cli
+ARG SALESFORCE_CLI_VERSION=2.47.6
+# renovate: datasource=npm depName=@salesforce/plugin-packaging
+ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.7.0
+# renovate: datasource=npm depName=sfdx-hardis
+ARG SFDX_HARDIS_VERSION=4.40.1
 ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
-RUN sf plugins install @salesforce/plugin-packaging \
-    && echo y|sf plugins install sfdx-hardis \
+RUN sf plugins install @salesforce/plugin-packaging@${SALESFORCE_PLUGIN_PACKAGING_VERSION} \
+    && echo y|sf plugins install sfdx-hardis@${SFDX_HARDIS_VERSION} \
     && npm cache clean --force || true \
     && rm -rf /root/.npm/_cacache
-
 # Linter install
-RUN echo y|sf plugins install lightning-flow-scanner \
+# renovate: datasource=npm depName=lightning-flow-scanner
+ARG LIGHTNING_FLOW_SCANNER_VERSION=2.28.0
+RUN echo y|sf plugins install lightning-flow-scanner@${LIGHTNING_FLOW_SCANNER_VERSION} \
     && npm cache clean --force || true \
     && rm -rf /root/.npm/_cacache
-
 ```
 

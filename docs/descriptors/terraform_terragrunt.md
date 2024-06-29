@@ -9,7 +9,7 @@ description: How to use terragrunt (configure, ignore files, ignore errors, help
 
 ## terragrunt documentation
 
-- Version in MegaLinter: **0.58.9**
+- Version in MegaLinter: **0.59.6**
 - Visit [Official Web Site](https://terragrunt.gruntwork.io){target=_blank}
 - See [How to configure terragrunt rules](https://terragrunt.gruntwork.io/docs/getting-started/configuration/#terragrunt-configuration-file){target=_blank}
 
@@ -46,10 +46,10 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                     | Description                                     | Embedded linters |                                                                                                                                                                                           Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------|:------------------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)       | Default MegaLinter Flavor                       |       123        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)     | MegaLinter for the most commonly used languages |        82        |     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)       | Default MegaLinter Flavor                       |       125        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)     | MegaLinter for the most commonly used languages |        84        |     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://megalinter.io/beta/flavors/security/)   | Optimized for security                          |        24        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
-|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://megalinter.io/beta/flavors/terraform/) | Optimized for TERRAFORM based projects          |        55        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://megalinter.io/beta/flavors/terraform/) | Optimized for TERRAFORM based projects          |        56        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform) |
 
 ## Behind the scenes
 
@@ -100,6 +100,7 @@ COMMANDS:
    *                      Terragrunt forwards all other commands directly to Terraform
 
 GLOBAL OPTIONS:
+   --terragrunt-auth-provider-cmd value              The command and arguments that can be used to fetch authentication configurations. [$TERRAGRUNT_AUTH_PROVIDER_CMD]
    --terragrunt-config value                         The path to the Terragrunt config file. Default is terragrunt.hcl. [$TERRAGRUNT_CONFIG]
    --terragrunt-debug                                Write terragrunt-debug.tfvars to working folder to help root-cause issues. [$TERRAGRUNT_DEBUG]
    --terragrunt-disable-bucket-update                When this flag is set Terragrunt will not update the remote state bucket. [$TERRAGRUNT_DISABLE_BUCKET_UPDATE]
@@ -111,6 +112,7 @@ GLOBAL OPTIONS:
    --terragrunt-iam-assume-role-duration value       Session duration for IAM Assume Role session. Can also be set via the TERRAGRUNT_IAM_ASSUME_ROLE_DURATION environment variable. [$TERRAGRUNT_IAM_ASSUME_ROLE_DURATION]
    --terragrunt-iam-assume-role-session-name value   Name for the IAM Assummed Role session. Can also be set via TERRAGRUNT_IAM_ASSUME_ROLE_SESSION_NAME environment variable. [$TERRAGRUNT_IAM_ASSUME_ROLE_SESSION_NAME]
    --terragrunt-iam-role value                       Assume the specified IAM role before executing Terraform. Can also be set via the TERRAGRUNT_IAM_ROLE environment variable. [$TERRAGRUNT_IAM_ROLE]
+   --terragrunt-iam-web-identity-token value         For AssumeRoleWithWebIdentity, the WebIdentity token. Can also be set via TERRRAGRUNT_IAM_ASSUME_ROLE_WEB_IDENTITY_TOKEN environment variable [$TERRRAGRUNT_IAM_ASSUME_ROLE_WEB_IDENTITY_TOKEN]
    --terragrunt-ignore-dependency-errors             *-all commands continue processing components even if a dependency fails.
    --terragrunt-ignore-dependency-order              *-all commands will be run disregarding the dependencies
    --terragrunt-ignore-external-dependencies         *-all commands will not attempt to include external dependencies
@@ -143,7 +145,7 @@ GLOBAL OPTIONS:
    --help, -h                                        Show help
    --version, -v                                     Show terragrunt version
 
-VERSION: v0.58.9
+VERSION: v0.59.6
 
 AUTHOR: Gruntwork <www.gruntwork.io>
 ```
@@ -152,7 +154,9 @@ AUTHOR: Gruntwork <www.gruntwork.io>
 
 - Dockerfile commands :
 ```dockerfile
-FROM alpine/terragrunt:latest as terragrunt
+# renovate: datasource=docker depName=alpine/terragrunt
+ARG TERRAFORM_TERRAGRUNT_VERSION=1.9.0
+FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} as terragrunt
 COPY --link --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
 ```
 

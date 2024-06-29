@@ -28,11 +28,17 @@ linters:
       apk:
         - py3-pyflakes
       dockerfile:
-        - |
-          FROM rhysd/actionlint:latest as actionlint
+        - |-
+          # renovate: datasource=docker depName=rhysd/actionlint
+          ARG ACTION_ACTIONLINT_VERSION=1.7.1
+        - |-
+          # renovate: datasource=docker depName=koalaman/shellcheck
+          ARG BASH_SHELLCHECK_VERSION=v0.10.0
+        - |-
+          FROM rhysd/actionlint:${ACTION_ACTIONLINT_VERSION} as actionlint
           # shellcheck is a dependency for actionlint
-        - FROM koalaman/shellcheck:stable as shellcheck
-        - |
+        - FROM koalaman/shellcheck:${BASH_SHELLCHECK_VERSION} as shellcheck
+        - |-
           COPY --link --from=actionlint /usr/local/bin/actionlint /usr/bin/actionlint
           # shellcheck is a dependency for actionlint
         - COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
