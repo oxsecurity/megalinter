@@ -192,7 +192,9 @@ jenkins --url=URL [<flags>]
 
 - Dockerfile commands :
 ```dockerfile
-FROM trufflesecurity/trufflehog:latest as trufflehog
+# renovate: datasource=docker depName=trufflesecurity/trufflehog 
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.79.0
+FROM trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION} as trufflehog
 COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
 ```
 

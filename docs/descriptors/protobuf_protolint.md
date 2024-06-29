@@ -129,7 +129,9 @@ Usage of lint:
 
 - Dockerfile commands :
 ```dockerfile
-FROM yoheimuta/protolint:latest as protolint
+# renovate: datasource=docker depName=yoheimuta/protolint
+ARG PROTOBUF_PROTOLINT_VERSION=0.50.2
+FROM yoheimuta/protolint:${PROTOBUF_PROTOLINT_VERSION} as protolint
 COPY --link --from=protolint /usr/local/bin/protolint /usr/bin/
 ```
 

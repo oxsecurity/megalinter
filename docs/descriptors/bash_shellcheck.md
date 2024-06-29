@@ -124,7 +124,9 @@ Usage: shellcheck [OPTIONS...] FILES...
 
 - Dockerfile commands :
 ```dockerfile
-FROM koalaman/shellcheck:stable as shellcheck
+# renovate: datasource=docker depName=koalaman/shellcheck
+ARG BASH_SHELLCHECK_VERSION=v0.10.0
+FROM koalaman/shellcheck:${BASH_SHELLCHECK_VERSION} as shellcheck
 COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
 ```
 

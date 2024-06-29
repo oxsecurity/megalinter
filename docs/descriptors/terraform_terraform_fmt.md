@@ -132,7 +132,9 @@ Global options (use these before the subcommand, if any):
 
 - Dockerfile commands :
 ```dockerfile
-FROM alpine/terragrunt:latest as terragrunt
+# renovate: datasource=docker depName=alpine/terragrunt
+ARG TERRAFORM_TERRAGRUNT_VERSION=1.9.0
+FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} as terragrunt
 COPY --link --from=terragrunt /bin/terraform /usr/bin/
 ```
 

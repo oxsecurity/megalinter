@@ -160,7 +160,9 @@ Available options:
 
 - Dockerfile commands :
 ```dockerfile
-FROM hadolint/hadolint:v2.12.0-alpine as hadolint
+# renovate: datasource=docker depName=hadolint/hadolint
+ARG DOCKERFILE_HADOLINT_VERSION=v2.12.0-alpine
+FROM hadolint/hadolint:${DOCKERFILE_HADOLINT_VERSION} as hadolint
 COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
 ```
 
