@@ -3666,7 +3666,9 @@
 <ul>
 <li>Dockerfile commands :</li>
 </ul>
-<pre><code class="language-dockerfile">FROM yoheimuta/protolint:latest as protolint
+<pre><code class="language-dockerfile"># renovate: datasource=docker depName=yoheimuta/protolint
+ARG PROTOBUF_PROTOLINT_VERSION=0.50.2
+FROM yoheimuta/protolint:${PROTOBUF_PROTOLINT_VERSION} as protolint
 COPY --link --from=protolint /usr/local/bin/protolint /usr/bin/
 </code></pre>
 </article>

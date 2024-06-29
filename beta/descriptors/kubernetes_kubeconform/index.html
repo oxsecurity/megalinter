@@ -3647,7 +3647,9 @@
 <ul>
 <li>Dockerfile commands :</li>
 </ul>
-<pre><code class="language-dockerfile">FROM ghcr.io/yannh/kubeconform:latest-alpine as kubeconform
+<pre><code class="language-dockerfile"># renovate: datasource=docker depName=ghcr.io/yannh/kubeconform
+ARG KUBERNETES_KUBECONFORM_VERSION=v0.6.6-alpine
+FROM ghcr.io/yannh/kubeconform:${KUBERNETES_KUBECONFORM_VERSION} as kubeconform
 COPY --link --from=kubeconform /kubeconform /usr/bin/
 </code></pre>
 </article>

@@ -3606,7 +3606,9 @@ Global options (use these before the subcommand, if any):
 <ul>
 <li>Dockerfile commands :</li>
 </ul>
-<pre><code class="language-dockerfile">FROM alpine/terragrunt:latest as terragrunt
+<pre><code class="language-dockerfile"># renovate: datasource=docker depName=alpine/terragrunt
+ARG TERRAFORM_TERRAGRUNT_VERSION=1.9.0
+FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} as terragrunt
 COPY --link --from=terragrunt /bin/terraform /usr/bin/
 </code></pre>
 </article>
