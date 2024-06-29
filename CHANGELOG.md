@@ -15,6 +15,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Media
   - [Introducing MegaLinter: Streamlining Code Quality Checks Across Multiple Languages](https://cloudtuned.hashnode.dev/introducing-megalinter-streamlining-code-quality-checks-across-multiple-languages), by Cloud Tuned
+  - [Infrastructure as Code GitHub Codespace Template](https://luke.geek.nz/azure/iac-github-codespace/), by [Luke Murray](https://www.linkedin.com/in/ljmurray/)
+  - [Video: How to: Secrets scanning](https://youtu.be/iBMWAk5QIfM?si=EVcJilkz7Y2jdn6e&t=649), by [Hackitect's playground](https://www.youtube.com/@hackitectsplayground)
 
 - Linters
   - Add python package Pygments to rst-lint venv
