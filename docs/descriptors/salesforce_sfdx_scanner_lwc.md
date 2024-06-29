@@ -19,7 +19,7 @@ See more details in [Help](#help-content)
 
 ## sfdx-scanner-lwc documentation
 
-- Version in MegaLinter: **3.25.0**
+- Version in MegaLinter: **3.26.0**
 - Visit [Official Web Site](https://forcedotcom.github.io/sfdx-scanner/){target=_blank}
 - See [How to configure sfdx-scanner-lwc rules](https://eslint.org/docs/user-guide/configuring){target=_blank}
 - See [How to disable sfdx-scanner-lwc rules in files](https://eslint.org/docs/user-guide/configuring/rules#disabling-rules){target=_blank}
@@ -141,7 +141,9 @@ COMMANDS
 
 (node:2164) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
 (Use `node --trace-deprecation ...` to show where the warning was created)
-Warning: To use the most up-to-date Code Analyzer features including PMD 7.x, install Code Analyzer v4.x (Beta) by running this command: "sf plugins install @salesforce/sfdx-scanner@latest-beta". You are currently using Code Analyzer v3, which we plan to stop supporting soon.
+ ›   Warning: Plugin @salesforce/sfdx-scanner (3.26.0) differs from the version
+ ›    specified by sf (3.25.0)
+Warning: You are using Code Analyzer v3, which we no longer support. Update to v4 of Code Analyzer by running this command: "sf plugins install @salesforce/sfdx-scanner". Version 4 of Code Analyzer has the most up-to-date features, including PMD 7.x.
 Warning: We're continually improving Salesforce Code Analyzer. Tell us what you think! Give feedback at https://research.net/r/SalesforceCA
  name                                                   languages   categories            rulesets [dep]                                   engine            is dfa is pilot
  ────────────────────────────────────────────────────── ─────────── ───────────────────── ──────────────────────────────────────────────── ───────────────── ────── ────────
@@ -382,7 +384,7 @@ RUN sf plugins install @salesforce/plugin-packaging@${SALESFORCE_PLUGIN_PACKAGIN
     && rm -rf /root/.npm/_cacache
 # Linter install
 # renovate: datasource=npm depName=@salesforce/sfdx-scanner
-ARG SALESFORCE_SFDX_SCANNER_VERSION=3.25.0
+ARG SALESFORCE_SFDX_SCANNER_VERSION=3.26.0
 RUN sf plugins install @salesforce/sfdx-scanner@${SALESFORCE_SFDX_SCANNER_VERSION} \
     && npm cache clean --force || true \
     && rm -rf /root/.npm/_cacache
