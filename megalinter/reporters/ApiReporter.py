@@ -34,12 +34,13 @@ class ApiReporter(Reporter):
 
     def manage_activation(self):
         if config.get(self.master.request_id, "API_REPORTER", "false") == "true":
-            if (
-                config.exists(self.master.request_id, "API_REPORTER_URL") or 
-                config.exists(self.master.request_id, "NOTIF_API_URL")
-            ):
+            if config.exists(
+                self.master.request_id, "API_REPORTER_URL"
+            ) or config.exists(self.master.request_id, "NOTIF_API_URL"):
                 self.is_active = True
-                self.api_url = config.get_first_var_set(self.master.request_id, ["API_REPORTER_URL","NOTIF_API_URL"])
+                self.api_url = config.get_first_var_set(
+                    self.master.request_id, ["API_REPORTER_URL", "NOTIF_API_URL"]
+                )
             else:
                 logging.error("You need to define API_REPORTER_URL to use ApiReporter")
 
@@ -52,20 +53,21 @@ class ApiReporter(Reporter):
         # Call API
         self.send_to_api()
         # Handle Metrics API if requested
-        if (
-            config.exists(self.master.request_id, "API_REPORTER_METRICS_URL") or 
-            config.exists(self.master.request_id, "NOTIF_API_METRICS_URL")
-        ):
-            self.api_metrics_url = config.get_first_var_set(self.master.request_id, [
-                "API_REPORTER_METRICS_URL","NOTIF_API_METRICS_URL"
-                ])
+        if config.exists(
+            self.master.request_id, "API_REPORTER_METRICS_URL"
+        ) or config.exists(self.master.request_id, "NOTIF_API_METRICS_URL"):
+            self.api_metrics_url = config.get_first_var_set(
+                self.master.request_id,
+                ["API_REPORTER_METRICS_URL", "NOTIF_API_METRICS_URL"],
+            )
             self.build_metrics_payload()
             self.send_to_metrics_api()
-        
 
     def build_payload(self):
         # Git info
-        repo_info = get_git_context_info(self.master.request_id, os.path.realpath(self.master.github_workspace))
+        repo_info = get_git_context_info(
+            self.master.request_id, os.path.realpath(self.master.github_workspace)
+        )
         git_identifier = f"{repo_info["repo_name"]}/{repo_info["branch_name"]}"
         org_identifier = self.get_org_identifier(repo_info["branch_name"])
         self.payload = {
@@ -92,7 +94,7 @@ class ApiReporter(Reporter):
                 }
                 linter_payload_data = {
                     "linterDocUrl": linter_doc_url,
-                    "jobUrl": repo_info["job_url"]
+                    "jobUrl": repo_info["job_url"],
                 }
                 # Status
                 linter_payload_data["severity"] = (
@@ -128,17 +130,19 @@ class ApiReporter(Reporter):
                 linter_payload["data"] = linter_payload_data
                 self.payload["linters"].append(linter_payload)
 
-
     def get_org_identifier(self, branch_name: str):
         org_identifier = config.get(
-                        self.master.request_id, "API_REPORTER_ORG_IDENTIFIER", None
-                    )
+            self.master.request_id, "API_REPORTER_ORG_IDENTIFIER", None
+        )
         if org_identifier is not None:
             return org_identifier
         # Workaround for sfdx-hardis, but it's better to set ENV variable API_REPORTER_ORG_IDENTIFIER
-        return branch_name.replace("monitoring_","").replace(
-            "_","-").replace("__","--").replace("_sandbox","__sandbox")
-
+        return (
+            branch_name.replace("monitoring_", "")
+            .replace("_", "-")
+            .replace("__", "--")
+            .replace("_sandbox", "__sandbox")
+        )
 
     def format_payload(self):
         if (
@@ -176,19 +180,29 @@ class ApiReporter(Reporter):
             "content-type": "application/json",
         }
         # Use username & password
-        if (
-            config.exists(self.master.request_id, "API_REPORTER_BASIC_AUTH_USERNAME") or 
-            config.exists(self.master.request_id, "NOTIF_API_BASIC_AUTH_USERNAME")
-        ):
+        if config.exists(
+            self.master.request_id, "API_REPORTER_BASIC_AUTH_USERNAME"
+        ) or config.exists(self.master.request_id, "NOTIF_API_BASIC_AUTH_USERNAME"):
             session.auth = (
-                config.get_first_var_set(self.master.request_id, ["API_REPORTER_BASIC_AUTH_USERNAME","NOTIF_API_BASIC_AUTH_USERNAME"]),
-                config.get_first_var_set(self.master.request_id, ["API_REPORTER_BASIC_AUTH_PASSWORD","NOTIF_API_BASIC_AUTH_PASSWORD"]),
+                config.get_first_var_set(
+                    self.master.request_id,
+                    [
+                        "API_REPORTER_BASIC_AUTH_USERNAME",
+                        "NOTIF_API_BASIC_AUTH_USERNAME",
+                    ],
+                ),
+                config.get_first_var_set(
+                    self.master.request_id,
+                    [
+                        "API_REPORTER_BASIC_AUTH_PASSWORD",
+                        "NOTIF_API_BASIC_AUTH_PASSWORD",
+                    ],
+                ),
             )
         # Use token
-        if (
-            config.exists(self.master.request_id, "API_REPORTER_BEARER_TOKEN") or 
-            config.exists(self.master.request_id, "NOTIF_API_BEARER_TOKEN") 
-        ):
+        if config.exists(
+            self.master.request_id, "API_REPORTER_BEARER_TOKEN"
+        ) or config.exists(self.master.request_id, "NOTIF_API_BEARER_TOKEN"):
             headers["Authorization"] = (
                 f"Bearer {config.get_first_var_set(self.master.request_id, ["API_REPORTER_BEARER_TOKEN","NOTIF_API_BEARER_TOKEN"])}"
             )
@@ -200,7 +214,9 @@ class ApiReporter(Reporter):
                 logging.info(
                     f"[Api Reporter] Successfully posted data to {self.api_url}"
                 )
-                if config.get_first_var_set(self.master.request_id,[ "API_REPORTER_DEBUG","NOTIF_API_DEBUG"]):
+                if config.get_first_var_set(
+                    self.master.request_id, ["API_REPORTER_DEBUG", "NOTIF_API_DEBUG"]
+                ):
                     logging.info(json.dumps(obj=self.payloadFormatted, indent=True))
             else:
                 logging.warning(
@@ -221,22 +237,23 @@ class ApiReporter(Reporter):
 
     # Build something like MetricName,source=sfdx-hardis,orgIdentifier=hardis-group metric=12.7,min=0,max=70,percent=0.63
     def build_metrics_payload(self):
-        metric_base_tags= (
-            f"source={self.payload.source}," +
-            f"orgIdentifier={self.payload.orgIdentifier},"+
-            f"gitIdentifier={self.payload.gitIdentifier},"
+        metric_base_tags = (
+            f"source={self.payload["source"]},"
+            + f"orgIdentifier={self.payload["orgIdentifier"]},"
+            + f"gitIdentifier={self.payload["gitIdentifier"]},"
         )
         all_metrics_lines = []
         for linter in self.master.linters:
             if linter.is_active is True:
                 metric_id = linter.linter_name
                 metric_line = (
-                    metric_id +","+
-                    metric_base_tags +
-                    f"descriptor={linter.descriptor_id},"+
-                    f"linter={linter.linter_name},"+
-                    f"linterKey={linter.name}"+
-                    " "
+                    metric_id
+                    + ","
+                    + metric_base_tags
+                    + f"descriptor={linter.descriptor_id},"
+                    + f"linter={linter.linter_name},"
+                    + f"linterKey={linter.name}"
+                    + " "
                 )
                 metric_line += f"metric={linter.total_number_errors}"
                 # Number of files & errors
@@ -251,7 +268,6 @@ class ApiReporter(Reporter):
                 all_metrics_lines += [metric_line]
         self.metrics_payload = ",".join(all_metrics_lines)
 
-
     def send_to_metrics_api(self):
         session = requests.Session()
         headers = {
@@ -259,19 +275,31 @@ class ApiReporter(Reporter):
             "content-type": "application/json",
         }
         # Use username & password
-        if (
-            config.exists(self.master.request_id, "API_REPORTER_METRICS_BASIC_AUTH_USERNAME") or 
-            config.exists(self.master.request_id, "NOTIF_API_METRICS_BASIC_AUTH_USERNAME")
+        if config.exists(
+            self.master.request_id, "API_REPORTER_METRICS_BASIC_AUTH_USERNAME"
+        ) or config.exists(
+            self.master.request_id, "NOTIF_API_METRICS_BASIC_AUTH_USERNAME"
         ):
             session.auth = (
-                config.get_first_var_set(self.master.request_id, ["API_REPORTER_METRICS_BASIC_AUTH_USERNAME","NOTIF_API_METRICS_BASIC_AUTH_USERNAME"]),
-                config.get_first_var_set(self.master.request_id, ["API_REPORTER_METRICS_BASIC_AUTH_PASSWORD","NOTIF_API_METRICS_BASIC_AUTH_PASSWORD"]),
+                config.get_first_var_set(
+                    self.master.request_id,
+                    [
+                        "API_REPORTER_METRICS_BASIC_AUTH_USERNAME",
+                        "NOTIF_API_METRICS_BASIC_AUTH_USERNAME",
+                    ],
+                ),
+                config.get_first_var_set(
+                    self.master.request_id,
+                    [
+                        "API_REPORTER_METRICS_BASIC_AUTH_PASSWORD",
+                        "NOTIF_API_METRICS_BASIC_AUTH_PASSWORD",
+                    ],
+                ),
             )
         # Use token
-        if (
-            config.exists(self.master.request_id, "API_REPORTER_METRICS_BEARER_TOKEN") or 
-            config.exists(self.master.request_id, "NOTIF_API_METRICS_BEARER_TOKEN") 
-        ):
+        if config.exists(
+            self.master.request_id, "API_REPORTER_METRICS_BEARER_TOKEN"
+        ) or config.exists(self.master.request_id, "NOTIF_API_METRICS_BEARER_TOKEN"):
             headers["Authorization"] = (
                 f"Bearer {config.get_first_var_set(self.master.request_id, ["API_REPORTER_METRICS_BEARER_TOKEN","NOTIF_API_METRICS_BEARER_TOKEN"])}"
             )
@@ -283,7 +311,9 @@ class ApiReporter(Reporter):
                 logging.info(
                     f"[Api Reporter Metrics] Successfully posted data to {self.api_url}"
                 )
-                if config.get_first_var_set(self.master.request_id,[ "API_REPORTER_DEBUG","NOTIF_API_DEBUG"]):
+                if config.get_first_var_set(
+                    self.master.request_id, ["API_REPORTER_DEBUG", "NOTIF_API_DEBUG"]
+                ):
                     logging.info(json.dumps(obj=self.payloadFormatted, indent=True))
             else:
                 logging.warning(
