@@ -118,7 +118,6 @@ FROM golang:1-alpine as revive
 ## for the released revive binaries not returning version numbers (devel). 
 ## The install command should then be what is commented in the go.megalinter-descriptor.yml
 RUN GOBIN=/usr/bin go install github.com/mgechev/revive@latest
-
 COPY --link --from=revive /usr/bin/revive /usr/bin/revive
 ```
 
