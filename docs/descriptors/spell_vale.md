@@ -155,7 +155,9 @@ Commands:
 
 - Dockerfile commands :
 ```dockerfile
-FROM jdkato/vale:latest as vale
+# renovate: datasource=docker depName=
+ARG SPELL_VALE_VERSION=v3.6.0
+FROM jdkato/vale:${SPELL_VALE_VERSION} as vale
 COPY --link --from=vale /bin/vale /bin/vale
 ```
 

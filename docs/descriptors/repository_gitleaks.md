@@ -180,9 +180,8 @@ Use "gitleaks [command] --help" for more information about a command.
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=docker depName=zricethezav/gitleaks
-ARG GITLEAKS_VERSION=v8.18.4
-
-FROM zricethezav/gitleaks:${GITLEAKS_VERSION} as gitleaks
+ARG REPOSITORY_GITLEAKS_VERSION=v8.18.4
+FROM zricethezav/gitleaks:${REPOSITORY_GITLEAKS_VERSION} as gitleaks
 COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 ```
 

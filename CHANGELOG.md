@@ -132,6 +132,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 3.25.0 to **3.26.0** on 2024-06-28
   - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 3.25.0 to **3.26.0** on 2024-06-28
   - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 3.25.0 to **3.26.0** on 2024-06-28
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.50.2 to **0.49.8** on 2024-06-29
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.79.0 to **3.78.2** on 2024-06-29
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 2.27.0 to **2.28.0** on 2024-06-29
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.9.0 to **1.8.5** on 2024-06-29
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.59.6 to **0.59.5** on 2024-06-29
 <!-- linter-versions-end -->
 
 ## [v7.12.0] - 2024-06-02

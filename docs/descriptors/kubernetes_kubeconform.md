@@ -136,7 +136,9 @@ Usage: kubeconform [OPTION]... [FILE OR FOLDER]...
 
 - Dockerfile commands :
 ```dockerfile
-FROM ghcr.io/yannh/kubeconform:latest-alpine as kubeconform
+# renovate: datasource=docker depName=ghcr.io/yannh/kubeconform
+ARG KUBERNETES_KUBECONFORM_VERSION=v0.6.6-alpine
+FROM ghcr.io/yannh/kubeconform:${KUBERNETES_KUBECONFORM_VERSION} as kubeconform
 COPY --link --from=kubeconform /kubeconform /usr/bin/
 ```
 
