@@ -11,6 +11,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Core
   - Handle renovate version comments in build script
   - Update base image to python:3.12.4-alpine3.20
+  - Use `dotnet8-sdk` available in the main repository
 
 - Media
 
@@ -116,6 +117,22 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 3.2.141 to **3.2.144** on 2024-06-23
   - [syft](https://github.com/anchore/syft) from 1.7.0 to **1.8.0** on 2024-06-24
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.3.3 to **1.3.4** on 2024-06-24
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.3.4 to **1.4.2** on 2024-06-28
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.49.8 to **0.50.2** on 2024-06-28
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.10.0 to **1.10.1** on 2024-06-28
+  - [pylint](https://pylint.readthedocs.io) from 3.2.3 to **3.2.4** on 2024-06-28
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.368 to **1.1.369** on 2024-06-28
+  - [ruff](https://github.com/astral-sh/ruff) from 0.4.10 to **0.5.0** on 2024-06-28
+  - [checkov](https://www.checkov.io/) from 3.2.144 to **3.2.156** on 2024-06-28
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.78.2 to **3.79.0** on 2024-06-28
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.8.5 to **1.9.0** on 2024-06-28
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.59.5 to **0.59.6** on 2024-06-28
+  - [pmd](https://pmd.github.io/) from 7.2.0 to **7.3.0** on 2024-06-28
+  - [pylint](https://pylint.readthedocs.io) from 3.2.4 to **3.2.5** on 2024-06-28
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 3.25.0 to **3.26.0** on 2024-06-28
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 3.25.0 to **3.26.0** on 2024-06-28
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 3.25.0 to **3.26.0** on 2024-06-28
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 2.27.0 to **2.28.0** on 2024-06-29
 <!-- linter-versions-end -->
 
 ## [v7.12.0] - 2024-06-02

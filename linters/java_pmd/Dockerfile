@@ -31,7 +31,7 @@ FROM python:3.12.4-alpine3.20
 #############################################################################################
 #ARG__START
 # renovate: datasource=github-tags depName=pmd/pmd extractVersion=^pmd_releases/(?<version>.*)$
-ARG PMD_VERSION=7.2.0
+ARG PMD_VERSION=7.3.0
 
 #ARG__END
 

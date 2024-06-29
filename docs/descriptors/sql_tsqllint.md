@@ -108,7 +108,7 @@ tsqllint [options] [file.sql] | [dir] | [file.sql | dir]
 
 - Dockerfile commands :
 ```dockerfile
-RUN apk add --no-cache dotnet8-sdk --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community
+RUN apk add --no-cache dotnet8-sdk
 ENV PATH="${PATH}:/root/.dotnet/tools"
 RUN dotnet tool install --global TSQLLint
 ```

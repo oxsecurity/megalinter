@@ -111,7 +111,7 @@ Run 'roslynator help [command]' for more information on a command.
 - Dockerfile commands :
 ```dockerfile
 # Parent descriptor install
-RUN apk add --no-cache dotnet8-sdk --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community
+RUN apk add --no-cache dotnet8-sdk
 ENV PATH="${PATH}:/root/.dotnet/tools"
 # Linter install
 RUN dotnet tool install -g roslynator.dotnet.cli

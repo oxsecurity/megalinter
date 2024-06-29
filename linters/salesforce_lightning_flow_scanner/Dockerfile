@@ -33,11 +33,11 @@ FROM python:3.12.4-alpine3.20
 # renovate: datasource=npm depName=@salesforce/cli
 ARG SALESFORCE_CLI_VERSION=2.47.6
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
-ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.6.1
+ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.7.0
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=4.40.1
+ARG SFDX_HARDIS_VERSION=4.41.0
 # renovate: datasource=npm depName=lightning-flow-scanner
-ARG LIGHTNING_FLOW_SCANNER_VERSION=2.27.0
+ARG LIGHTNING_FLOW_SCANNER_VERSION=2.28.0
 #ARG__END
 
 # Static args

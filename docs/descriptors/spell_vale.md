@@ -143,11 +143,11 @@ Flags:
 
 Commands:
 
- sync             Download and install external configuration sources.
  ls-config        Print the current configuration to stdout.
  ls-metrics       Print the given file's internal metrics to stdout.
  ls-dirs          Print the default configuration directories to stdout.
  ls-vars          Print the supported environment variables to stdout.
+ sync             Download and install external configuration sources.
 
 ```
 
@@ -155,7 +155,9 @@ Commands:
 
 - Dockerfile commands :
 ```dockerfile
-FROM jdkato/vale:latest as vale
+# renovate: datasource=docker depName=
+ARG SPELL_VALE_VERSION=v3.6.0
+FROM jdkato/vale:${SPELL_VALE_VERSION} as vale
 COPY --link --from=vale /bin/vale /bin/vale
 ```
 

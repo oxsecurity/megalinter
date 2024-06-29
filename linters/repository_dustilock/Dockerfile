@@ -20,7 +20,6 @@
 #FROM__START
 FROM golang:alpine as dustilock
 RUN GOBIN=/usr/bin go install github.com/checkmarx/dustilock@v1.2.0
-
 #FROM__END
 
 ##################

@@ -9,7 +9,7 @@ description: How to use pylint (configure, ignore files, ignore errors, help & v
 
 ## pylint documentation
 
-- Version in MegaLinter: **3.2.3**
+- Version in MegaLinter: **3.2.5**
 - Visit [Official Web Site](https://pylint.readthedocs.io){target=_blank}
 - See [How to configure pylint rules](https://pylint.readthedocs.io/en/stable/user_guide/configuration/index.html){target=_blank}
   - If custom `.pylintrc` config file isn't found, [.pylintrc](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.pylintrc){target=_blank} will be used
