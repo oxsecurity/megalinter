@@ -37,6 +37,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Doc
 
 - Flavors
+  - Add gherkin-lint in c_cpp flavor
 
 - CI
   - Bump actions/checkout from 3 to 4
