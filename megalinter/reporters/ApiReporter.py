@@ -203,9 +203,11 @@ class ApiReporter(Reporter):
         if config.exists(
             self.master.request_id, "API_REPORTER_BEARER_TOKEN"
         ) or config.exists(self.master.request_id, "NOTIF_API_BEARER_TOKEN"):
-            headers["Authorization"] = (
-                f"Bearer {config.get_first_var_set(self.master.request_id, ["API_REPORTER_BEARER_TOKEN","NOTIF_API_BEARER_TOKEN"])}"
+            bearer = config.get_first_var_set(
+                self.master.request_id,
+                ["API_REPORTER_BEARER_TOKEN", "NOTIF_API_BEARER_TOKEN"],
             )
+            headers["Authorization"] = f"Bearer {bearer}"
         try:
             response = session.post(
                 self.api_url, headers=headers, json=self.payloadFormatted
@@ -300,9 +302,11 @@ class ApiReporter(Reporter):
         if config.exists(
             self.master.request_id, "API_REPORTER_METRICS_BEARER_TOKEN"
         ) or config.exists(self.master.request_id, "NOTIF_API_METRICS_BEARER_TOKEN"):
-            headers["Authorization"] = (
-                f"Bearer {config.get_first_var_set(self.master.request_id, ["API_REPORTER_METRICS_BEARER_TOKEN","NOTIF_API_METRICS_BEARER_TOKEN"])}"
+            bearer = config.get_first_var_set(
+                self.master.request_id,
+                ["API_REPORTER_METRICS_BEARER_TOKEN", "NOTIF_API_METRICS_BEARER_TOKEN"],
             )
+            headers["Authorization"] = f"Bearer {bearer}"
         try:
             response = session.post(
                 self.api_url, headers=headers, json=self.payloadFormatted
