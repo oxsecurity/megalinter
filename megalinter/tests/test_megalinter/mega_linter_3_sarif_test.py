@@ -101,6 +101,7 @@ class mega_linter_3_sarif_test(unittest.TestCase):
                 "ENABLE_LINTERS": "JAVASCRIPT_ES,PYTHON_BANDIT",
                 "API_REPORTER": "true",
                 "API_REPORTER_URL": "https://jsonplaceholder.typicode.com/posts",
+                "API_REPORTER_METRICS_URL": "https://jsonplaceholder.typicode.com/posts",
                 "API_REPORTER_DEBUG": "true",
                 "request_id": self.request_id,
             }
@@ -111,4 +112,8 @@ class mega_linter_3_sarif_test(unittest.TestCase):
         self.assertTrue(
             "[Api Reporter] Successfully posted data" in output,
             "Api Reporter failed to post message",
+        )
+        self.assertTrue(
+            "[Api Reporter Metrics] Successfully posted data" in output,
+            "Api Reporter Metrics failed to post message",
         )

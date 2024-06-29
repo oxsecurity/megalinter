@@ -190,7 +190,7 @@ class ApiReporter(Reporter):
             config.exists(self.master.request_id, "NOTIF_API_BEARER_TOKEN") 
         ):
             headers["Authorization"] = (
-                f"Bearer {config.get_first_var_set(self.master.request_id, ["API_REPORTER_BEARER_TOKEN","NOTIF_API_REPORTER_BEARER_TOKEN"])}"
+                f"Bearer {config.get_first_var_set(self.master.request_id, ["API_REPORTER_BEARER_TOKEN","NOTIF_API_BEARER_TOKEN"])}"
             )
         try:
             response = session.post(
@@ -253,4 +253,51 @@ class ApiReporter(Reporter):
 
 
     def send_to_metrics_api(self):
-        pass
+        session = requests.Session()
+        headers = {
+            "accept": "application/json",
+            "content-type": "application/json",
+        }
+        # Use username & password
+        if (
+            config.exists(self.master.request_id, "API_REPORTER_METRICS_BASIC_AUTH_USERNAME") or 
+            config.exists(self.master.request_id, "NOTIF_API_METRICS_BASIC_AUTH_USERNAME")
+        ):
+            session.auth = (
+                config.get_first_var_set(self.master.request_id, ["API_REPORTER_METRICS_BASIC_AUTH_USERNAME","NOTIF_API_METRICS_BASIC_AUTH_USERNAME"]),
+                config.get_first_var_set(self.master.request_id, ["API_REPORTER_METRICS_BASIC_AUTH_PASSWORD","NOTIF_API_METRICS_BASIC_AUTH_PASSWORD"]),
+            )
+        # Use token
+        if (
+            config.exists(self.master.request_id, "API_REPORTER_METRICS_BEARER_TOKEN") or 
+            config.exists(self.master.request_id, "NOTIF_API_METRICS_BEARER_TOKEN") 
+        ):
+            headers["Authorization"] = (
+                f"Bearer {config.get_first_var_set(self.master.request_id, ["API_REPORTER_METRICS_BEARER_TOKEN","NOTIF_API_METRICS_BEARER_TOKEN"])}"
+            )
+        try:
+            response = session.post(
+                self.api_url, headers=headers, json=self.payloadFormatted
+            )
+            if 200 <= response.status_code < 300:
+                logging.info(
+                    f"[Api Reporter Metrics] Successfully posted data to {self.api_url}"
+                )
+                if config.get_first_var_set(self.master.request_id,[ "API_REPORTER_DEBUG","NOTIF_API_DEBUG"]):
+                    logging.info(json.dumps(obj=self.payloadFormatted, indent=True))
+            else:
+                logging.warning(
+                    f"[Api Reporter Metrics] Error posting data to {self.api_url} ({response.status_code})\n"
+                    f"Api request: {json.dumps(obj=self.payloadFormatted, indent=True)}\n"
+                    f"API response: {response.text}"
+                )
+        except ConnectionError as e:
+            logging.warning(
+                f"[Api Reporter Metrics] Error posting data to {self.api_url}:"
+                f"Connection error {str(e)}"
+            )
+        except Exception as e:
+            logging.warning(
+                f"[Api Reporter Metrics] Error posting data to {self.api_url}:"
+                f"Connection error {str(e)}"
+            )
