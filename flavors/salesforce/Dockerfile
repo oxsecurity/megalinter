@@ -64,7 +64,7 @@ FROM python:3.12.4-alpine3.20
 # renovate: datasource=npm depName=@salesforce/cli
 ARG SALESFORCE_CLI_VERSION=2.47.6
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
-ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.6.1
+ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.7.0
 # renovate: datasource=npm depName=sfdx-hardis
 ARG SFDX_HARDIS_VERSION=4.40.1
 # renovate: datasource=github-tags depName=detekt/detekt
