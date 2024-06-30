@@ -4,7 +4,6 @@ descriptor_flavors:
   - all_flavors # Applicable to CI in any language project
   - cupcake
   - security
-files_sub_directory: ansible
 file_names_not_ends_with:
   - "vault.yml"
   - "vault.yaml"
@@ -23,6 +22,8 @@ linters:
     linter_rules_configuration_url: https://ansible-lint.readthedocs.io/configuring/#configuration-file
     linter_rules_inline_disable_url: https://ansible-lint.readthedocs.io/usage/#muting-warnings-to-avoid-false-positives
     linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/ansible-lint.png
+    active_only_if_file_found:
+      - ".ansible-lint"
     config_file_name: .ansible-lint
     cli_lint_mode: project
     cli_config_extra_args:
