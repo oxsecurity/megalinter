@@ -237,7 +237,8 @@ class ApiReporter(Reporter):
                 f"Connection error {str(e)}"
             )
 
-    # Build something like MetricName,source=sfdx-hardis,orgIdentifier=hardis-group metric=12.7,min=0,max=70,percent=0.63
+    # Build something like:
+    # MetricName,source=sfdx-hardis,orgIdentifier=hardis-group metric=12.7,min=0,max=70,percent=0.63
     def build_metrics_payload(self):
         metric_base_tags = (
             f"source={self.payload["source"]},"
