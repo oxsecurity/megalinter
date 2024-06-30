@@ -352,7 +352,7 @@ def get_git_context_info(request_id, path):
                 search_parent_directories=True,
             )
             repo_name = repo.working_tree_dir.split("/")[-1]
-        except Exception as e:
+        except Exception:
             repo_name = "?"
     if branch_name is None:
         try:
@@ -363,7 +363,7 @@ def get_git_context_info(request_id, path):
             repo_name_1 = repo.working_tree_dir.split("/")[-1]
             branch = repo_name_1.active_branch
             branch_name = branch.name
-        except Exception as e:
+        except Exception:
             branch_name = "?"
     # Job URL
     job_url = config.get_first_var_set(
