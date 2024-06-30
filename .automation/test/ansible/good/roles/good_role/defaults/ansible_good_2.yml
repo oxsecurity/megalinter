@@ -1,0 +1,3 @@
+---
+good_role_app_port: 8080
+good_role_max_connections: 100
