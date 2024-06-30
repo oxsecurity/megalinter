@@ -3361,7 +3361,10 @@
 <ul>
 <li>Version in MegaLinter: <strong>24.6.1</strong></li>
 <li>Visit <a href="https://ansible-lint.readthedocs.io/" target="_blank">Official Web Site</a></li>
-<li>See <a href="https://ansible-lint.readthedocs.io/configuring/#configuration-file" target="_blank">How to configure ansible-lint rules</a></li>
+<li>See <a href="https://ansible-lint.readthedocs.io/configuring/#configuration-file" target="_blank">How to configure ansible-lint rules</a><ul>
+<li>If custom <code>.ansible-lint</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.ansible-lint" target="_blank">.ansible-lint</a> will be used</li>
+</ul>
+</li>
 <li>See <a href="https://ansible-lint.readthedocs.io/usage/#muting-warnings-to-avoid-false-positives" target="_blank">How to disable ansible-lint rules in files</a></li>
 <li>See <a href="https://ansible-lint.readthedocs.io/rules/" target="_blank">Index of problems detected by ansible-lint</a></li>
 </ul>
@@ -3440,11 +3443,6 @@
 <td>Override CLI executable</td>
 <td><code>['ansible-lint']</code></td>
 </tr>
-<tr>
-<td>ANSIBLE_DIRECTORY</td>
-<td>Directory containing ANSIBLE files (use <code>any</code> to always activate the linter)</td>
-<td><code>ansible</code></td>
-</tr>
 </tbody>
 </table>
 <h2 id="megalinter-flavours">MegaLinter Flavours</h2>
@@ -3471,7 +3469,7 @@
 <td style="text-align: center;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/c_cpp.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/c_cpp.ico"/></a></td>
 <td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/c_cpp/">c_cpp</a></td>
 <td style="text-align: left;">Optimized for pure C/C++ projects</td>
-<td style="text-align: center;">55</td>
+<td style="text-align: center;">56</td>
 <td style="text-align: right;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-c_cpp/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-c_cpp/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-c_cpp"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-c_cpp"/></a></a></td>
 </tr>
 <tr>
@@ -3584,7 +3582,7 @@
 <h2 id="behind-the-scenes">Behind the scenes</h2>
 <h3 id="how-are-identified-applicable-files">How are identified applicable files</h3>
 <ul>
-<li>Activated only if sub-directory <code>ansible</code> is found. (directory name can be overridden with <code>ANSIBLE_DIRECTORY</code>)</li>
+<li>Activated only if one of these files is found: <code>.ansible-lint</code></li>
 <li>File extensions: <code>.yml</code>, <code>.yaml</code></li>
 <li>File name don't ends with: <code>vault.yml</code>, <code>vault.yaml</code>, <code>galaxy.yml</code>, <code>galaxy.yaml</code></li>
 </ul>
