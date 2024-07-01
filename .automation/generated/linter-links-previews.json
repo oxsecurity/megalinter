@@ -34,6 +34,11 @@
     "image": "https://learn.microsoft.com/en-us/media/logos/logo-ms-social.png",
     "title": "Use Bicep linter - Azure Resource Manager"
   },
+  "biome": {
+    "description": "Format, lint, and more in a fraction of a second.",
+    "image": "https://biomejs.dev/img/og.png?v=2",
+    "title": "Biome"
+  },
   "black": {
     "description": "The uncompromising Python code formatter. Contribute to psf/black development by creating an account on GitHub.",
     "image": "https://repository-images.githubusercontent.com/125266328/48aef880-6cce-11e9-9e3c-3ca0dd3ac138",
