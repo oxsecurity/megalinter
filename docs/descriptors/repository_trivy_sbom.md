@@ -17,7 +17,7 @@ Generates SBOM (Software Bill Of Material) using Trivy
 
 ## trivy-sbom documentation
 
-- Version in MegaLinter: **0.52.2**
+- Version in MegaLinter: **0.53.0**
 - Visit [Official Web Site](https://aquasecurity.github.io/trivy/){target=_blank}
 - See [How to configure trivy-sbom rules](https://aquasecurity.github.io/trivy/latest/docs/configuration/){target=_blank}
 - See [How to ignore files and directories with trivy-sbom](https://aquasecurity.github.io/trivy/latest/docs/configuration/filtering/#by-inline-comments){target=_blank}
@@ -124,7 +124,6 @@ Examples:
   $ trivy server
 
 Scanning Commands
-  aws         [EXPERIMENTAL] Scan AWS account
   config      Scan config files for misconfigurations
   filesystem  Scan local filesystem
   image       Scan a container image
@@ -139,6 +138,7 @@ Management Commands
   plugin      Manage plugins
 
 Utility Commands
+  clean       Remove cached files
   completion  Generate the autocompletion script for the specified shell
   convert     Convert Trivy JSON report into a different format
   help        Help about any command
