@@ -139,6 +139,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 3.25.0 to **3.26.0** on 2024-06-28
   - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 2.27.0 to **2.28.0** on 2024-06-29
   - [checkov](https://www.checkov.io/) from 3.2.156 to **3.2.159** on 2024-06-30
+  - [checkov](https://www.checkov.io/) from 3.2.159 to **3.2.161** on 2024-07-01
 <!-- linter-versions-end -->
 
 ## [v7.12.0] - 2024-06-02
