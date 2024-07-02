@@ -162,6 +162,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Upgrade `KOTLIN_DETEKT` and make it work with cli_lint_mode = project
 
 - Reporters
+  - New ApiReporter (can be used to build Grafana dashboards)
 
 - Fixes
   - Change `golangci-lint` lint mode to `project`, by @wandering-tales in <https://github.com/oxsecurity/megalinter/pull/3509>
@@ -172,6 +173,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Sync PowerShell version in arm.megalinter-descriptor.yml by @echoix in <https://github.com/oxsecurity/megalinter/pull/3586>
   - Adjust find commands to clean up files in same step by @echoix in <https://github.com/oxsecurity/megalinter/pull/3588>
   - Upgrade KOTLIN_DETEKT and make it work with cli_lint_mode = project by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/3590>
+  - Add `skip_checkout: true` to default MegaLinter GitHub Action template
 
 - Doc
   - Handle disabled_reason property in descriptors

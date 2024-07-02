@@ -317,6 +317,67 @@ def is_git_repo(path):
         return False
 
 
+def get_git_context_info(request_id, path):
+    # Repo name
+    repo_name = config.get_first_var_set(
+        request_id,
+        [
+            "GITHUB_REPOSITORY",
+            "GIT_URL",
+            "CI_PROJECT_NAME",
+            "BITBUCKET_REPO_SLUG",
+            "BUILD_REPOSITORYNAME",
+        ],
+        None,
+    )
+    if repo_name is not None:
+        repo_name = repo_name.split("/")[-1]  # Get last portion
+    # Branch name
+    branch_name = config.get_first_var_set(
+        request_id,
+        [
+            "GITHUB_HEAD_REF",
+            "GITHUB_REF_NAME",
+            "GIT_BRANCH",
+            "CI_COMMIT_REF_NAME",
+            "BITBUCKET_BRANCH",
+            "BUILD_SOURCEBRANCHNAME",
+        ],
+        None,
+    )
+    if repo_name is None:
+        try:
+            repo = git.Repo(
+                path,
+                search_parent_directories=True,
+            )
+            repo_name = repo.working_tree_dir.split("/")[-1]
+        except Exception:
+            repo_name = "?"
+    if branch_name is None:
+        try:
+            repo = git.Repo(
+                path,
+                search_parent_directories=True,
+            )
+            repo_name_1 = repo.working_tree_dir.split("/")[-1]
+            branch = repo_name_1.active_branch
+            branch_name = branch.name
+        except Exception:
+            branch_name = "?"
+    # Job URL
+    job_url = config.get_first_var_set(
+        request_id,
+        [
+            "GITHUB_JOB_URL",
+            "CI_JOB_URL",
+            # TODO: Handle Azure, BitBucket & Jenkins
+        ],
+        "",
+    )
+    return {"repo_name": repo_name, "branch_name": branch_name, "job_url": job_url}
+
+
 def check_updated_file(file, repo_home, changed_files=None):
     if changed_files is None:
         changed_files = list_updated_files(repo_home)
