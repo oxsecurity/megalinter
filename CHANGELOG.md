@@ -151,6 +151,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [grype](https://github.com/anchore/grype) from 0.79.1 to **0.79.2** on 2024-07-03
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.9.1 to **8.10.0** on 2024-07-03
   - [sqlfluff](https://www.sqlfluff.com/) from 3.0.7 to **3.1.0** on 2024-07-03
+  - [editorconfig-checker](https://editorconfig-checker.github.io/) from 3.0.1 to **3.0.3** on 2024-07-04
+  - [checkov](https://www.checkov.io/) from 3.2.171 to **3.2.174** on 2024-07-04
+  - [kics](https://www.kics.io) from 2.1.0 to **2.1.1** on 2024-07-04
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.14.0 to **8.15.1** on 2024-07-04
 <!-- linter-versions-end -->
 
 ## [v7.12.0] - 2024-06-02
