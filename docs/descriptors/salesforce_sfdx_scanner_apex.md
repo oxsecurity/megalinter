@@ -93,7 +93,7 @@ sf scanner:run
 ### Help content
 
 ```shell
-(node:1767) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(node:1768) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
 (Use `node --trace-deprecation ...` to show where the warning was created)
 scan a codebase with a selection of rules
 
@@ -143,10 +143,10 @@ GLOBAL FLAGS
 COMMANDS
   scanner run dfa  scan codebase with all DFA rules
 
-(node:1779) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(node:1780) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
 (Use `node --trace-deprecation ...` to show where the warning was created)
  ›   Warning: Plugin @salesforce/sfdx-scanner (3.26.0) differs from the version
- ›    specified by sf (3.25.0)
+ ›    specified by sf (4.3.0)
 Warning: You are using Code Analyzer v3, which we no longer support. Update to v4 of Code Analyzer by running this command: "sf plugins install @salesforce/sfdx-scanner". Version 4 of Code Analyzer has the most up-to-date features, including PMD 7.x.
 Warning: We're continually improving Salesforce Code Analyzer. Tell us what you think! Give feedback at https://research.net/r/SalesforceCA
  name                                                   languages   categories            rulesets [dep]                                   engine            is dfa is pilot
@@ -375,7 +375,7 @@ Warning: We're continually improving Salesforce Code Analyzer. Tell us what you 
 ```dockerfile
 # Parent descriptor install
 # renovate: datasource=npm depName=@salesforce/cli
-ARG SALESFORCE_CLI_VERSION=2.47.6
+ARG SALESFORCE_CLI_VERSION=2.48.6
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
 ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.7.0
 # renovate: datasource=npm depName=sfdx-hardis
