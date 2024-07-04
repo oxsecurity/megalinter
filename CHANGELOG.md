@@ -155,6 +155,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 3.2.171 to **3.2.174** on 2024-07-04
   - [kics](https://www.kics.io) from 2.1.0 to **2.1.1** on 2024-07-04
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.14.0 to **8.15.1** on 2024-07-04
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 3.26.0 to **4.3.2** on 2024-07-04
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 3.26.0 to **4.3.2** on 2024-07-04
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 3.26.0 to **4.3.2** on 2024-07-04
 <!-- linter-versions-end -->
 
 ## [v7.12.0] - 2024-06-02
