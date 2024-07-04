@@ -143,6 +143,14 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 3.2.161 to **3.2.163** on 2024-07-01
   - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.52.2 to **0.53.0** on 2024-07-01
   - [trivy](https://aquasecurity.github.io/trivy/) from 0.52.2 to **0.53.0** on 2024-07-01
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.4.2 to **1.5.0** on 2024-07-03
+  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd) from 4.0.4 to **4.0.5** on 2024-07-03
+  - [ktlint](https://ktlint.github.io) from 1.3.0 to **1.3.1** on 2024-07-03
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.369 to **1.1.370** on 2024-07-03
+  - [checkov](https://www.checkov.io/) from 3.2.163 to **3.2.171** on 2024-07-03
+  - [grype](https://github.com/anchore/grype) from 0.79.1 to **0.79.2** on 2024-07-03
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.9.1 to **8.10.0** on 2024-07-03
+  - [sqlfluff](https://www.sqlfluff.com/) from 3.0.7 to **3.1.0** on 2024-07-03
 <!-- linter-versions-end -->
 
 ## [v7.12.0] - 2024-06-02
