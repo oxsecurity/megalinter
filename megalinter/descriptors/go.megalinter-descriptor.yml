@@ -80,7 +80,7 @@ linters:
         ## Until "FROM ghcr.io/mgechev/revive:1.2.5 as revive" is available, use
         # - FROM ghcr.io/mgechev/revive:1.2.5 as revive
         # - COPY --link --from=revive /usr/bin/revive /usr/bin/revive
-        - |
+        - |-
           FROM golang:1-alpine as revive
           ## The golang image used as a builder is a temporary workaround (https://github.com/mgechev/revive/issues/787)
           ## for the released revive binaries not returning version numbers (devel). 

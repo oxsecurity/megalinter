@@ -1,5 +1,4 @@
 # .NET sdk
-# https://github.com/dotnet/sdk/issues/37790#issuecomment-1918068016
 CVE-2024-0057
 
 # Devskim
@@ -7,12 +6,13 @@ CVE-2018-8292
 CVE-2019-0820
 
 # Go stdlib (all go based linters)
+CVE-2024-6257
 CVE-2023-45288
 CVE-2024-24788
 CVE-2024-24790
-u
+
 # Kubescape
-# https://github.com/oxsecrity/megalinter/issues/3519
+# https://github.com/oxsecurity/megalinter/issues/3519
 GHSA-9763-4f94-gfch
 GHSA-m425-mq94-257g
 CVE-2023-39325
@@ -38,6 +38,7 @@ CVE-2022-42004
 CVE-2022-33980
 CVE-2022-42889
 CVE-2022-1471
+CVE-2022-23539
 CVE-2022-25857
 CVE-2024-37890
 CVE-2024-4068

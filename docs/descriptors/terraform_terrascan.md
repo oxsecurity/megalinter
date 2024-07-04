@@ -107,7 +107,9 @@ Use "terrascan [command] --help" for more information about a command.
 
 - Dockerfile commands :
 ```dockerfile
-FROM tenable/terrascan:1.18.11 as terrascan
+# renovate: datasource=docker depName=alpine/terragrunt
+ARG TERRAFORM_TERRASCAN_VERSION=1.18.11
+FROM tenable/terrascan:${TERRAFORM_TERRASCAN_VERSION} as terrascan
 COPY --link --from=terrascan /go/bin/terrascan /usr/bin/
 ```
 

@@ -103,8 +103,7 @@ linters:
       - "devskim analyze --file-format sarif --options-json config --source-code ."
     install:
       dockerfile:
-        # https://github.com/dotnet/sdk/issues/37790#issuecomment-1918068016
-        - RUN apk add --no-cache dotnet8-sdk --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community
+        - RUN apk add --no-cache dotnet8-sdk
         - ENV PATH="${PATH}:/root/.dotnet/tools"
         - RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI
     ide:
@@ -137,7 +136,7 @@ linters:
       dockerfile:
         # The golang image used as a builder is a temporary workaround
         # Dustilock is not released as a binary or container
-        - |
+        - |-
           FROM golang:alpine as dustilock
           RUN GOBIN=/usr/bin go install github.com/checkmarx/dustilock@v1.2.0
         - COPY --link --from=dustilock /usr/bin/dustilock /usr/bin/dustilock
@@ -247,10 +246,10 @@ linters:
       - "gitleaks detect -c .gitleaks.toml --redact --no-git --verbose --source ."
     install:
       dockerfile:
-        - |
+        - |-
           # renovate: datasource=docker depName=zricethezav/gitleaks
-          ARG GITLEAKS_VERSION=v8.18.4
-        - FROM zricethezav/gitleaks:${GITLEAKS_VERSION} as gitleaks
+          ARG REPOSITORY_GITLEAKS_VERSION=v8.18.4
+        - FROM zricethezav/gitleaks:${REPOSITORY_GITLEAKS_VERSION} as gitleaks
         - COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
     variables:
       - name: REPOSITORY_GITLEAKS_PR_COMMITS_SCAN
@@ -335,7 +334,10 @@ linters:
       - "kics scan --path ."
     install:
       dockerfile:
-        - FROM checkmarx/kics:alpine as kics
+        - |-
+          # renovate: datasource=docker depName=checkmarx/kics
+          ARG REPOSITORY_KICS_VERSION=v2.1.1-alpine
+        - FROM checkmarx/kics:${REPOSITORY_KICS_VERSION} as kics
         - COPY --link --from=kics /app/bin/kics /usr/bin/kics
         - ENV KICS_QUERIES_PATH=/usr/bin/assets/queries KICS_LIBRARIES_PATH=/usr/bin/assets/libraries
         - COPY --from=kics /app/bin/assets /usr/bin/assets
@@ -609,6 +611,9 @@ linters:
       - "trufflehog filesystem ."
     install:
       dockerfile:
-        - FROM trufflesecurity/trufflehog:latest as trufflehog
+        - |-
+          # renovate: datasource=docker depName=trufflesecurity/trufflehog 
+          ARG REPOSITORY_TRUFFLEHOG_VERSION=3.79.0
+        - FROM trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION} as trufflehog
         - COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
     test_folder: gitleaks

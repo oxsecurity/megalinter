@@ -8,16 +8,25 @@ install:
   apk:
     - openjdk21
   dockerfile:
+    - |-
+      # renovate: datasource=npm depName=@salesforce/cli
+      ARG SALESFORCE_CLI_VERSION=2.48.6
+    - |-
+      # renovate: datasource=npm depName=@salesforce/plugin-packaging
+      ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.7.0
+    - |-
+      # renovate: datasource=npm depName=sfdx-hardis
+      ARG SFDX_HARDIS_VERSION=4.41.0
     - ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
     - ENV PATH="$JAVA_HOME/bin:${PATH}"
-    - |
-      RUN sf plugins install @salesforce/plugin-packaging \
-          && echo y|sf plugins install sfdx-hardis \
+    - |-
+      RUN sf plugins install @salesforce/plugin-packaging@${SALESFORCE_PLUGIN_PACKAGING_VERSION} \
+          && echo y|sf plugins install sfdx-hardis@${SFDX_HARDIS_VERSION} \
           && npm cache clean --force || true \
           && rm -rf /root/.npm/_cacache
   # Salesforce DX
   npm:
-    - "@salesforce/cli"
+    - "@salesforce/cli@${SALESFORCE_CLI_VERSION}"
 linters:
   # SFDX Scanner
   - linter_name: sfdx-scanner-apex
@@ -70,8 +79,11 @@ linters:
       - "sf scanner:run"
     install:
       dockerfile:
-        - |
-          RUN sf plugins install @salesforce/sfdx-scanner \
+        - |-
+          # renovate: datasource=npm depName=@salesforce/sfdx-scanner
+          ARG SALESFORCE_SFDX_SCANNER_VERSION=3.26.0
+        - |-
+          RUN sf plugins install @salesforce/sfdx-scanner@${SALESFORCE_SFDX_SCANNER_VERSION} \
               && npm cache clean --force || true \
               && rm -rf /root/.npm/_cacache
     ide:
@@ -140,8 +152,11 @@ linters:
       - "sf scanner:run"
     install:
       dockerfile:
-        - |
-          RUN sf plugins install @salesforce/sfdx-scanner \
+        - |-
+          # renovate: datasource=npm depName=@salesforce/sfdx-scanner
+          ARG SALESFORCE_SFDX_SCANNER_VERSION=3.26.0
+        - |-
+          RUN sf plugins install @salesforce/sfdx-scanner@${SALESFORCE_SFDX_SCANNER_VERSION} \
               && npm cache clean --force || true \
               && rm -rf /root/.npm/_cacache
     ide:
@@ -200,8 +215,11 @@ linters:
       - "sf scanner:run"
     install:
       dockerfile:
-        - |
-          RUN sf plugins install @salesforce/sfdx-scanner \
+        - |-
+          # renovate: datasource=npm depName=@salesforce/sfdx-scanner
+          ARG SALESFORCE_SFDX_SCANNER_VERSION=3.26.0
+        - |-
+          RUN sf plugins install @salesforce/sfdx-scanner@${SALESFORCE_SFDX_SCANNER_VERSION} \
               && npm cache clean --force || true \
               && rm -rf /root/.npm/_cacache
     ide:
@@ -240,8 +258,11 @@ linters:
       - "sf flow:scan"
     install:
       dockerfile:
-        - |
-          RUN echo y|sf plugins install lightning-flow-scanner \
+        - |-
+          # renovate: datasource=npm depName=lightning-flow-scanner
+          ARG LIGHTNING_FLOW_SCANNER_VERSION=2.28.0
+        - |-
+          RUN echo y|sf plugins install lightning-flow-scanner@${LIGHTNING_FLOW_SCANNER_VERSION} \
               && npm cache clean --force || true \
               && rm -rf /root/.npm/_cacache
     ide:

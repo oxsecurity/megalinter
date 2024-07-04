@@ -14,6 +14,8 @@ description: List of all known articles, blog posts and videos that talk about M
 
 | Article                                                                                                                                                                                                                  | Author                                                                                                                                                                                              |
 |:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [Introducing MegaLinter: Streamlining Code Quality Checks Across Multiple Languages](https://cloudtuned.hashnode.dev/introducing-megalinter-streamlining-code-quality-checks-across-multiple-languages){target=_blank}   | [Cloud Tuned](https://cloudtuned.hashnode.dev/){target=_blank}                                                                                                                                      |
+| [Infrastructure as Code GitHub Codespace Template](https://luke.geek.nz/azure/iac-github-codespace/){target=_blank}                                                                                                      | [Luke Murray](https://www.linkedin.com/in/ljmurray/){target=_blank}                                                                                                                                 |
 | [5 ways MegaLinter upped our DevSecOps game](https://flexion.us/blog/5-ways-megalinter-upped-our-devsecops-game/){target=_blank}                                                                                         | [Wes Dean](https://github.com/wesley-dean){target=_blank}                                                                                                                                           |
 | [Achieve Code Consistency: MegaLinter Integration in Azure DevOps](https://techcommunity.microsoft.com/t5/azure-devops-blog/achieve-code-consistency-megalinter-integration-in-azure-devops/ba-p/3939448){target=_blank} | [Don Koning](https://techcommunity.microsoft.com/t5/user/viewprofilepage/user-id/2039143#profile){target=_blank} on [Microsoft Tech Community](https://techcommunity.microsoft.com/){target=_blank} |
 | [MegaLinter in Azure DevOps](https://jamescook.dev/megalinter-in-azure-devops){target=_blank}                                                                                                                            | [James Cook](https://www.linkedin.com/in/cookjames/){target=_blank}                                                                                                                                 |
@@ -48,10 +50,13 @@ description: List of all known articles, blog posts and videos that talk about M
 
 ## Videos
 
+- [How to: Secrets scanning](https://youtu.be/iBMWAk5QIfM?si=EVcJilkz7Y2jdn6e&t=649), by [Hackitect's playground](https://www.youtube.com/@hackitectsplayground)
+
+<div style="text-align:center"><iframe width="560" height="315" src="https://www.youtube.com/embed/iBMWAk5QIfM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+
 - [How to use MegaLinter with Jenkins](https://www.youtube.com/watch?v=KhkNf2tQ3hM), by [Darin Pope](https://www.linkedin.com/in/darinpope/) / [Cloudbees](https://www.cloudbees.com/)
 
 <div style="text-align:center"><iframe width="560" height="315" src="https://www.youtube.com/embed/KhkNf2tQ3hM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-
 
 - (FR) MegaLinter presentation at [DevCon 20 / Programmez Magazine](https://www.programmez.com/page-devcon/devcon-20-100-securite-qualite-du-code), by [Nicolas Vuillamy](https://github.com/nvuillam)
 

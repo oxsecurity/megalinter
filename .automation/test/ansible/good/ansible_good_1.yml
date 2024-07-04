@@ -1,0 +1,17 @@
+---
+- name: Good playbook example
+  hosts: all
+  vars:
+    my_var: "Hello, World!"
+
+  tasks:
+    - name: Ensure Apache is installed
+      ansible.builtin.apt:
+        name: apache2
+        state: present
+      when: ansible_os_family == "Debian"
+
+    - name: Start Apache service
+      ansible.builtin.service:
+        name: apache2
+        state: started

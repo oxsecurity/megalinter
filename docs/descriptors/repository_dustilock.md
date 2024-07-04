@@ -92,7 +92,6 @@ Arguments:
 ```dockerfile
 FROM golang:alpine as dustilock
 RUN GOBIN=/usr/bin go install github.com/checkmarx/dustilock@v1.2.0
-
 COPY --link --from=dustilock /usr/bin/dustilock /usr/bin/dustilock
 ```
 

@@ -11,8 +11,12 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Core
   - Handle renovate version comments in build script
   - Update base image to python:3.12.4-alpine3.20
+  - Use `dotnet8-sdk` available in the main repository
 
 - Media
+  - [Introducing MegaLinter: Streamlining Code Quality Checks Across Multiple Languages](https://cloudtuned.hashnode.dev/introducing-megalinter-streamlining-code-quality-checks-across-multiple-languages), by Cloud Tuned
+  - [Infrastructure as Code GitHub Codespace Template](https://luke.geek.nz/azure/iac-github-codespace/), by [Luke Murray](https://www.linkedin.com/in/ljmurray/)
+  - [Video: How to: Secrets scanning](https://youtu.be/iBMWAk5QIfM?si=EVcJilkz7Y2jdn6e&t=649), by [Hackitect's playground](https://www.youtube.com/@hackitectsplayground)
 
 - Linters
   - Add python package Pygments to rst-lint venv
@@ -32,11 +36,13 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [tflint](https://github.com/terraform-linters/tflint) added missing schema property `TERRAFORM_TFLINT_SECURED_ENV`
   - [xmllint](https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home) added missing schema properties `XML_XMLLINT_AUTOFORMAT` and `XML_XMLLINT_INDENT`
   - [tflint](https://github.com/terraform-linters/tflint) fixed deprecated argument and other improvements to default `.tflint.hcl` template
+  - [ansible-lint](https://ansible-lint.readthedocs.io) Improved activation by checking for `.ansible-lint` config file
   - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) various performance improvements and ability to specify sln or proj paths
 
 - Doc
 
 - Flavors
+  - Add gherkin-lint in c_cpp flavor
 
 - CI
   - Bump actions/checkout from 3 to 4
@@ -115,6 +121,41 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [xmllint](https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home) from 21108 to **21207** on 2024-06-22
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.59.3 to **0.59.5** on 2024-06-23
   - [checkov](https://www.checkov.io/) from 3.2.141 to **3.2.144** on 2024-06-23
+  - [syft](https://github.com/anchore/syft) from 1.7.0 to **1.8.0** on 2024-06-24
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.3.3 to **1.3.4** on 2024-06-24
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.3.4 to **1.4.2** on 2024-06-28
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.49.8 to **0.50.2** on 2024-06-28
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.10.0 to **1.10.1** on 2024-06-28
+  - [pylint](https://pylint.readthedocs.io) from 3.2.3 to **3.2.4** on 2024-06-28
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.368 to **1.1.369** on 2024-06-28
+  - [ruff](https://github.com/astral-sh/ruff) from 0.4.10 to **0.5.0** on 2024-06-28
+  - [checkov](https://www.checkov.io/) from 3.2.144 to **3.2.156** on 2024-06-28
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.78.2 to **3.79.0** on 2024-06-28
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.8.5 to **1.9.0** on 2024-06-28
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.59.5 to **0.59.6** on 2024-06-28
+  - [pmd](https://pmd.github.io/) from 7.2.0 to **7.3.0** on 2024-06-28
+  - [pylint](https://pylint.readthedocs.io) from 3.2.4 to **3.2.5** on 2024-06-28
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 3.25.0 to **3.26.0** on 2024-06-28
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 3.25.0 to **3.26.0** on 2024-06-28
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 3.25.0 to **3.26.0** on 2024-06-28
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 2.27.0 to **2.28.0** on 2024-06-29
+  - [checkov](https://www.checkov.io/) from 3.2.156 to **3.2.159** on 2024-06-30
+  - [checkov](https://www.checkov.io/) from 3.2.159 to **3.2.161** on 2024-07-01
+  - [checkov](https://www.checkov.io/) from 3.2.161 to **3.2.163** on 2024-07-01
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.52.2 to **0.53.0** on 2024-07-01
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.52.2 to **0.53.0** on 2024-07-01
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.4.2 to **1.5.0** on 2024-07-03
+  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd) from 4.0.4 to **4.0.5** on 2024-07-03
+  - [ktlint](https://ktlint.github.io) from 1.3.0 to **1.3.1** on 2024-07-03
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.369 to **1.1.370** on 2024-07-03
+  - [checkov](https://www.checkov.io/) from 3.2.163 to **3.2.171** on 2024-07-03
+  - [grype](https://github.com/anchore/grype) from 0.79.1 to **0.79.2** on 2024-07-03
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.9.1 to **8.10.0** on 2024-07-03
+  - [sqlfluff](https://www.sqlfluff.com/) from 3.0.7 to **3.1.0** on 2024-07-03
+  - [editorconfig-checker](https://editorconfig-checker.github.io/) from 3.0.1 to **3.0.3** on 2024-07-04
+  - [checkov](https://www.checkov.io/) from 3.2.171 to **3.2.174** on 2024-07-04
+  - [kics](https://www.kics.io) from 2.1.0 to **2.1.1** on 2024-07-04
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.14.0 to **8.15.1** on 2024-07-04
 <!-- linter-versions-end -->
 
 ## [v7.12.0] - 2024-06-02
@@ -1594,7 +1635,7 @@ To upgrade to MegaLinter v7, run `npx mega-linter-runner@latest --upgrade` , com
   - [linkcheck](https://github.com/shiranr/linkcheck): Plugin to check and validate Markdown links, by @shiranr
   - [salt-lint](https://github.com/ssc-services/mega-linter-plugin-salt): Checks Salt State files (SLS) for best practices and behavior that could potentially be improved, by @grimmjo
 
-- New article talking about MegaLinter: [Writing documentation as a champ in engineering teams](https://rabobank.jobs/en/techblog/coding-architecture/gijs-reijn-writing-documentation-as-a-champ-in-engineering-teams/), by @gijsreyn
+- New article talking about MegaLinter: Writing documentation as a champ in engineering teams (deleted), by @gijsreyn
 
 - Linter versions upgrades
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.72.5 to **0.72.6**
