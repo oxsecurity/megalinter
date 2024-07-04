@@ -15,7 +15,7 @@ description: How to use checkov (configure, ignore files, ignore errors, help & 
 
 ## checkov documentation
 
-- Version in MegaLinter: **3.2.161**
+- Version in MegaLinter: **3.2.174**
 - Visit [Official Web Site](https://www.checkov.io/){target=_blank}
 - See [How to configure checkov rules](https://github.com/bridgecrewio/checkov#configuration-using-a-config-file){target=_blank}
   - If custom `.checkov.yml` config file isn't found, [.checkov.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.checkov.yml){target=_blank} will be used
@@ -168,13 +168,18 @@ options:
                         specified multiple times.
   --external-checks-dir EXTERNAL_CHECKS_DIR
                         Directory for custom checks to be loaded. Can be
-                        repeated
+                        repeated. Note that this will run Python code from the
+                        specified directory, so only use this option with
+                        trusted directories.
   --external-checks-git EXTERNAL_CHECKS_GIT
-                        Github url of external checks to be added. you can
-                        specify a subdirectory after a double-slash //.
-                        possible to use ?ref=tags/tagName or
-                        ?ref=heads/branchName or ?ref=commit_id cannot be used
-                        together with --external-checks-dir
+                        GitHub url of external checks to be added. You can
+                        specify a subdirectory after a double-slash //.It is
+                        ossible to use ?ref=tags/tagName or
+                        ?ref=heads/branchName or ?ref=commit_id and cannot be
+                        used together with --external-checks-dir. Note that
+                        this will run Python code from the specified
+                        directory, so only use this option with trusted
+                        repositories.
   -l, --list            List checks
   -o {cli,csv,cyclonedx,cyclonedx_json,json,junitxml,github_failed_only,gitlab_sast,sarif,spdx}, --output {cli,csv,cyclonedx,cyclonedx_json,json,junitxml,github_failed_only,gitlab_sast,sarif,spdx}
                         Report output format. Add multiple outputs by using

@@ -140,6 +140,21 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 2.27.0 to **2.28.0** on 2024-06-29
   - [checkov](https://www.checkov.io/) from 3.2.156 to **3.2.159** on 2024-06-30
   - [checkov](https://www.checkov.io/) from 3.2.159 to **3.2.161** on 2024-07-01
+  - [checkov](https://www.checkov.io/) from 3.2.161 to **3.2.163** on 2024-07-01
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.52.2 to **0.53.0** on 2024-07-01
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.52.2 to **0.53.0** on 2024-07-01
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.4.2 to **1.5.0** on 2024-07-03
+  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd) from 4.0.4 to **4.0.5** on 2024-07-03
+  - [ktlint](https://ktlint.github.io) from 1.3.0 to **1.3.1** on 2024-07-03
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.369 to **1.1.370** on 2024-07-03
+  - [checkov](https://www.checkov.io/) from 3.2.163 to **3.2.171** on 2024-07-03
+  - [grype](https://github.com/anchore/grype) from 0.79.1 to **0.79.2** on 2024-07-03
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.9.1 to **8.10.0** on 2024-07-03
+  - [sqlfluff](https://www.sqlfluff.com/) from 3.0.7 to **3.1.0** on 2024-07-03
+  - [editorconfig-checker](https://editorconfig-checker.github.io/) from 3.0.1 to **3.0.3** on 2024-07-04
+  - [checkov](https://www.checkov.io/) from 3.2.171 to **3.2.174** on 2024-07-04
+  - [kics](https://www.kics.io) from 2.1.0 to **2.1.1** on 2024-07-04
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.14.0 to **8.15.1** on 2024-07-04
 <!-- linter-versions-end -->
 
 ## [v7.12.0] - 2024-06-02
