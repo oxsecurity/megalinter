@@ -158,6 +158,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 3.26.0 to **4.3.2** on 2024-07-04
   - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 3.26.0 to **4.3.2** on 2024-07-04
   - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 3.26.0 to **4.3.2** on 2024-07-04
+  - [phpstan](https://phpstan.org/) from 1.11.4 to **1.11.6** on 2024-07-06
 <!-- linter-versions-end -->
 
 ## [v7.12.0] - 2024-06-02
