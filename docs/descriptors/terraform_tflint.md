@@ -14,7 +14,7 @@ The default configuration enables all supported languages and rules, which may n
 
 ## tflint documentation
 
-- Version in MegaLinter: **0.51.1**
+- Version in MegaLinter: **0.52.0**
 - Visit [Official Web Site](https://github.com/terraform-linters/tflint#readme){target=_blank}
 - See [How to configure tflint rules](https://github.com/terraform-linters/tflint/blob/master/docs/user-guide/config.md){target=_blank}
   - If custom `.tflint.hcl` config file isn't found, [.tflint.hcl](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.tflint.hcl){target=_blank} will be used
@@ -173,7 +173,7 @@ Help Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=docker depName=ghcr.io/terraform-linters/tflint
-ARG TERRAFORM_TFLINT_VERSION=0.51.1
+ARG TERRAFORM_TFLINT_VERSION=0.52.0
 FROM ghcr.io/terraform-linters/tflint:v${TERRAFORM_TFLINT_VERSION} as tflint
 COPY --link --from=tflint /usr/local/bin/tflint /usr/bin/
 ```

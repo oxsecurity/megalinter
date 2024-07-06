@@ -164,6 +164,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [ruff](https://github.com/astral-sh/ruff) from 0.5.0 to **0.5.1** on 2024-07-06
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.15.1 to **8.15.2** on 2024-07-06
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.10.0 to **8.10.4** on 2024-07-06
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.51.1 to **0.52.0** on 2024-07-06
 <!-- linter-versions-end -->
 
 ## [v7.12.0] - 2024-06-02
