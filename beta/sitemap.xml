@@ -1521,6 +1521,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://megalinter.io/beta/licenses/ls-lint/</loc>
+         <lastmod>2024-07-06</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://megalinter.io/beta/licenses/luacheck/</loc>
          <lastmod>2024-07-06</lastmod>
          <changefreq>daily</changefreq>
