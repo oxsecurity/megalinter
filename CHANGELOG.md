@@ -159,6 +159,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 3.26.0 to **4.3.2** on 2024-07-04
   - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 3.26.0 to **4.3.2** on 2024-07-04
   - [phpstan](https://phpstan.org/) from 1.11.4 to **1.11.6** on 2024-07-06
+  - [phplint](https://github.com/overtrue/phplint) from 9.3.1 to **9.4.1** on 2024-07-06
+  - [phpstan](https://phpstan.org/) from 1.11.6 to **1.11.7** on 2024-07-06
+  - [ruff](https://github.com/astral-sh/ruff) from 0.5.0 to **0.5.1** on 2024-07-06
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.15.1 to **8.15.2** on 2024-07-06
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.10.0 to **8.10.4** on 2024-07-06
 <!-- linter-versions-end -->
 
 ## [v7.12.0] - 2024-06-02

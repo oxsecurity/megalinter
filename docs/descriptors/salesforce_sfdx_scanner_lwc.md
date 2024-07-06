@@ -89,7 +89,7 @@ sf scanner:run
 ### Help content
 
 ```shell
-(node:2146) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(node:2150) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
 (Use `node --trace-deprecation ...` to show where the warning was created)
 Scan a codebase with all the rules in the registry, or use parameters to filter the rules based on rulename, category, or ruleset.
 
@@ -144,7 +144,7 @@ GLOBAL FLAGS
 COMMANDS
   scanner run dfa  Scan codebase with all DFA rules by default.
 
-(node:2158) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(node:2162) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
 (Use `node --trace-deprecation ...` to show where the warning was created)
  ›   Warning: Plugin @salesforce/sfdx-scanner (4.3.2) differs from the version
  ›   specified by sf (4.3.0)
@@ -376,7 +376,7 @@ ARG SALESFORCE_CLI_VERSION=2.48.6
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
 ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.7.0
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=4.41.0
+ARG SFDX_HARDIS_VERSION=4.42.0
 ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 RUN sf plugins install @salesforce/plugin-packaging@${SALESFORCE_PLUGIN_PACKAGING_VERSION} \

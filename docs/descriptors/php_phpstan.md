@@ -9,7 +9,7 @@ description: How to use phpstan (configure, ignore files, ignore errors, help & 
 
 ## phpstan documentation
 
-- Version in MegaLinter: **1.11.4**
+- Version in MegaLinter: **1.11.7**
 - Visit [Official Web Site](https://phpstan.org/){target=_blank}
 - See [How to configure phpstan rules](https://phpstan.org/config-reference#neon-format){target=_blank}
   - If custom `phpstan.neon.dist` config file isn't found, [phpstan.neon.dist](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/phpstan.neon.dist){target=_blank} will be used
@@ -140,6 +140,6 @@ RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" \
 COPY --from=composer/composer:2-bin /composer /usr/bin/composer
 ENV PATH="/root/.composer/vendor/bin:${PATH}"
 # Linter install
-RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require phpstan/phpstan:1.11.4 bartlett/sarif-php-sdk ^1.5
+RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require phpstan/phpstan bartlett/sarif-php-converters "1.0.x-dev#8ed4611 as 1.0.0"
 ```
 
