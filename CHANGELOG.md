@@ -8,164 +8,121 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
+- New linters
+
 - Core
-  - Handle renovate version comments in build script
+
+- Media
+
+- Linters enhancements
+
+- Reporters
+
+- Fixes
+
+- Doc
+
+- Flavors
+
+- CI
+
+- Linter versions upgrades
+<!-- linter-versions-end -->
+
+## [v7.13.0] - 2024-07-06
+
+- New linters
+  - Add [**ls-lint**](https://ls-lint.org/), file and folder linter, by @scolladon in https://github.com/oxsecurity/megalinter/pull/3681
+
+- Core
+  - Handle renovate version comments in build script, by @echoix in https://github.com/oxsecurity/megalinter/pull/3617 ,  https://github.com/oxsecurity/megalinter/pull/3627 , https://github.com/oxsecurity/megalinter/pull/3643 , https://github.com/oxsecurity/megalinter/pull/3699 , https://github.com/oxsecurity/megalinter/pull/3700
   - Update base image to python:3.12.4-alpine3.20
-  - Use `dotnet8-sdk` available in the main repository
+  - Use `dotnet8-sdk` available in the main repository, by @TommyE123 in https://github.com/oxsecurity/megalinter/pull/3696
 
 - Media
   - [Introducing MegaLinter: Streamlining Code Quality Checks Across Multiple Languages](https://cloudtuned.hashnode.dev/introducing-megalinter-streamlining-code-quality-checks-across-multiple-languages), by Cloud Tuned
   - [Infrastructure as Code GitHub Codespace Template](https://luke.geek.nz/azure/iac-github-codespace/), by [Luke Murray](https://www.linkedin.com/in/ljmurray/)
   - [Video: How to: Secrets scanning](https://youtu.be/iBMWAk5QIfM?si=EVcJilkz7Y2jdn6e&t=649), by [Hackitect's playground](https://www.youtube.com/@hackitectsplayground)
 
-- Linters
-  - Add python package Pygments to rst-lint venv
-  - [CSharpier](https://csharpier.com) added ability to override config filename and path
-  - [xmllint](https://gnome.pages.gitlab.gnome.org/libxml2/xmllint.html) added support for `xsd` files
-
-- Reporters
+- Linters enhancements
+  - Add SARIF support (v2) for all PHP linters by @llaville in https://github.com/oxsecurity/megalinter/pull/3745 , https://github.com/oxsecurity/megalinter/pull/3729
+  - Add python package Pygments to rst-lint venv, by @bobidle in https://github.com/oxsecurity/megalinter/pull/3631
+  - [CSharpier](https://csharpier.com) added ability to override config filename and path, by @TommyE123 in https://github.com/oxsecurity/megalinter/pull/3664
+  - [xmllint](https://gnome.pages.gitlab.gnome.org/libxml2/xmllint.html) added support for `xsd` files, by @TommyE123 in https://github.com/oxsecurity/megalinter/pull/3665
 
 - Fixes
-  - [syft](https://github.com/anchore/syft) use `scan` instead of deprecated `packages` arg
-  - [Powershell](https://github.com/PowerShell/PSScriptAnalyzer#readme) Error table truncation improvements
-  - [yamllint](https://github.com/adrienverge/yamllint) fix error/warning count to work with different log output formats
-  - Improve support for single argument in `get_list_args` function
-  - [GitLeaks](https://github.com/gitleaks/gitleaks) add missing schema properties
-  - [DevSkim](https://github.com/microsoft/DevSkim) fixed fatal errors when scanning and ability to override config path
-  - [Powershell](https://github.com/PowerShell/PSScriptAnalyzer#readme) added missing schema property `POWERSHELL_POWERSHELL_FORMATTER_OUTPUT_ENCODING`
-  - [tflint](https://github.com/terraform-linters/tflint) added missing schema property `TERRAFORM_TFLINT_SECURED_ENV`
-  - [xmllint](https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home) added missing schema properties `XML_XMLLINT_AUTOFORMAT` and `XML_XMLLINT_INDENT`
-  - [tflint](https://github.com/terraform-linters/tflint) fixed deprecated argument and other improvements to default `.tflint.hcl` template
-  - [ansible-lint](https://ansible-lint.readthedocs.io) Improved activation by checking for `.ansible-lint` config file
+  - Improve support for single argument in `get_list_args` function, by @TommyE123 in https://github.com/oxsecurity/megalinter/pull/3589
+  - [ansible-lint](https://ansible-lint.readthedocs.io) Improved activation by checking for `.ansible-lint` config file, by @TommyE123 in https://github.com/oxsecurity/megalinter/pull/3697
+  - [DevSkim](https://github.com/microsoft/DevSkim) fixed fatal errors when scanning and ability to override config path, by @TommyE123 in https://github.com/oxsecurity/megalinter/pull/3673
+  - [GitLeaks](https://github.com/gitleaks/gitleaks) add missing schema properties, by @TommyE123 in https://github.com/oxsecurity/megalinter/pull/3675
+  - [Powershell](https://github.com/PowerShell/PSScriptAnalyzer#readme) Error table truncation improvements, by @TommyE123 in https://github.com/oxsecurity/megalinter/pull/3620
+  - [Powershell](https://github.com/PowerShell/PSScriptAnalyzer#readme) added missing schema property `POWERSHELL_POWERSHELL_FORMATTER_OUTPUT_ENCODING`, by @TommyE123 in https://github.com/oxsecurity/megalinter/pull/3678
+  - [syft](https://github.com/anchore/syft) use `scan` instead of deprecated `packages` arg, by @TommyE123 in https://github.com/oxsecurity/megalinter/pull/3613
+  - [tflint](https://github.com/terraform-linters/tflint) added missing schema property `TERRAFORM_TFLINT_SECURED_ENV`, by @TommyE123 in https://github.com/oxsecurity/megalinter/pull/3679
+  - [tflint](https://github.com/terraform-linters/tflint) fixed deprecated argument and other improvements to default `.tflint.hcl` template, by @TommyE123 in https://github.com/oxsecurity/megalinter/pull/3688
+  - [xmllint](https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home) added missing schema properties `XML_XMLLINT_AUTOFORMAT` and `XML_XMLLINT_INDENT`, by @TommyE123 in https://github.com/oxsecurity/megalinter/pull/3677
+  - [yamllint](https://github.com/adrienverge/yamllint) fix error/warning count to work with different log output formats, by @TommyE123 in https://github.com/oxsecurity/megalinter/pull/3612
 
 - Doc
+  - Update documentation icons by @nvuillam in https://github.com/oxsecurity/megalinter/pull/3625
 
 - Flavors
-  - Add gherkin-lint in c_cpp flavor
+  - Add gherkin-lint in c_cpp flavor, by @nvuillam in https://github.com/oxsecurity/megalinter/pull/3698
 
 - CI
-  - Bump actions/checkout from 3 to 4
+  - Bump actions/checkout from 3 to 4, by @KristjanESPERANTO in https://github.com/oxsecurity/megalinter/pull/2994
+  - Reduce dependabot PR frequency to weekly by @echoix in https://github.com/oxsecurity/megalinter/pull/3642
 
 - Linter versions upgrades
-  - [checkov](https://www.checkov.io/) from 3.2.122 to **3.2.124** on 2024-06-02
-  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.27.1 to **0.28.1** on 2024-06-06
-  - [prettier](https://prettier.io/) from 3.3.0 to **3.3.1** on 2024-06-06
-  - [v8r](https://github.com/chris48s/v8r) from 3.0.0 to **3.1.0** on 2024-06-06
-  - [ktlint](https://ktlint.github.io) from 1.2.1 to **1.3.0** on 2024-06-06
-  - [phpstan](https://phpstan.org/) from 1.11.3 to **1.11.4** on 2024-06-06
-  - [protolint](https://github.com/yoheimuta/protolint) from 0.49.7 to **0.49.8** on 2024-06-06
-  - [pylint](https://pylint.readthedocs.io) from 3.2.2 to **3.2.3** on 2024-06-06
-  - [pyright](https://github.com/Microsoft/pyright) from 1.1.365 to **1.1.366** on 2024-06-06
-  - [ruff](https://github.com/astral-sh/ruff) from 0.4.7 to **0.4.8** on 2024-06-06
-  - [checkov](https://www.checkov.io/) from 3.2.124 to **3.2.128** on 2024-06-06
-  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.51.4 to **0.52.0** on 2024-06-06
-  - [trivy](https://aquasecurity.github.io/trivy/) from 0.51.4 to **0.52.0** on 2024-06-06
-  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.77.0 to **3.78.0** on 2024-06-06
-  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.12.0 to **8.13.0** on 2024-06-06
-  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.8.3 to **8.8.4** on 2024-06-06
-  - [swiftlint](https://github.com/realm/SwiftLint) from 0.54.0 to **0.55.1** on 2024-06-06
-  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.87.4 to **0.87.5** on 2024-06-07
-  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 24.2.3 to **24.6.0** on 2024-06-08
-  - [vale](https://vale.sh/) from 3.4.2 to **3.5.0** on 2024-06-08
-  - [checkov](https://www.checkov.io/) from 3.2.128 to **3.2.130** on 2024-06-09
-  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.8.4 to **1.8.5** on 2024-06-09
-  - [terragrunt](https://terragrunt.gruntwork.io) from 0.58.13 to **0.58.14** on 2024-06-09
-  - [golangci-lint](https://golangci-lint.run/) from 1.59.0 to **1.59.1** on 2024-06-09
-  - [pmd](https://pmd.github.io/) from 7.1.0 to **7.2.0** on 2024-06-10
-  - [markdown-table-formatter](https://www.npmjs.com/package/markdown-table-formatter) from 1.6.0 to **1.6.1** on 2024-06-10
-  - [checkov](https://www.checkov.io/) from 3.2.130 to **3.2.133** on 2024-06-10
-  - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.18.2 to **8.18.3** on 2024-06-10
-  - [syft](https://github.com/anchore/syft) from 1.5.0 to **1.6.0** on 2024-06-10
-  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.52.0 to **0.52.1** on 2024-06-10
-  - [trivy](https://aquasecurity.github.io/trivy/) from 0.52.0 to **0.52.1** on 2024-06-10
-  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.87.5 to **0.87.6** on 2024-06-11
-  - [prettier](https://prettier.io/) from 3.3.1 to **3.3.2** on 2024-06-11
-  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.78.0 to **3.78.1** on 2024-06-11
-  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.13.0 to **8.14.0** on 2024-06-11
-  - [pyright](https://github.com/Microsoft/pyright) from 1.1.366 to **1.1.367** on 2024-06-12
-  - [kics](https://www.kics.io) from 2.0.1 to **2.1.0** on 2024-06-12
-  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.87.6 to **0.87.7** on 2024-06-13
-  - [bandit](https://bandit.readthedocs.io/en/latest/) from 1.7.8 to **1.7.9** on 2024-06-13
-  - [checkov](https://www.checkov.io/) from 3.2.133 to **3.2.136** on 2024-06-13
-  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.78 to **0.1.79** on 2024-06-13
-  - [ruff](https://github.com/astral-sh/ruff) from 0.4.8 to **0.4.9** on 2024-06-14
-  - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.18.3 to **8.18.4** on 2024-06-14
-  - [grype](https://github.com/anchore/grype) from 0.78.0 to **0.79.0** on 2024-06-14
-  - [syft](https://github.com/anchore/syft) from 1.6.0 to **1.7.0** on 2024-06-14
-  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.52.1 to **0.52.2** on 2024-06-14
-  - [trivy](https://aquasecurity.github.io/trivy/) from 0.52.1 to **0.52.2** on 2024-06-14
-  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 2.26.0 to **2.27.0** on 2024-06-15
-  - [php-cs-fixer](https://cs.symfony.com/) from 3.58.1 to **3.59.1** on 2024-06-15
-  - [npm-package-json-lint](https://npmpackagejsonlint.org/) from 7.1.0 to **8.0.0** on 2024-06-15
-  - [flake8](https://flake8.pycqa.org) from 7.0.0 to **7.1.0** on 2024-06-15
-  - [terragrunt](https://terragrunt.gruntwork.io) from 0.58.14 to **0.59.3** on 2024-06-16
-  - [php-cs-fixer](https://cs.symfony.com/) from 3.59.1 to **3.59.3** on 2024-06-17
-  - [checkov](https://www.checkov.io/) from 3.2.136 to **3.2.137** on 2024-06-17
-  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 24.6.0 to **24.6.1** on 2024-06-21
-  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.87.7 to **1.3.3** on 2024-06-21
-  - [phpstan](https://phpstan.org/) from 1.11.4 to **1.11.5** on 2024-06-21
-  - [psalm](https://psalm.dev) from Psalm.5.24.0@ to **Psalm.5.25.0@** on 2024-06-21
-  - [pyright](https://github.com/Microsoft/pyright) from 1.1.367 to **1.1.368** on 2024-06-21
-  - [ruff](https://github.com/astral-sh/ruff) from 0.4.9 to **0.4.10** on 2024-06-21
-  - [checkov](https://www.checkov.io/) from 3.2.137 to **3.2.141** on 2024-06-21
-  - [grype](https://github.com/anchore/grype) from 0.79.0 to **0.79.1** on 2024-06-21
-  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.78.1 to **3.78.2** on 2024-06-21
-  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.8.4 to **8.9.1** on 2024-06-21
-  - [vale](https://vale.sh/) from 3.5.0 to **3.6.0** on 2024-06-21
-  - [bash-exec](https://www.gnu.org/software/bash/) from 5.2.21 to **5.2.26** on 2024-06-22
-  - [clang-format](https://releases.llvm.org/17.0.1/tools/clang/docs/ClangFormat.html) from 17.0.5 to **17.0.6** on 2024-06-22
-  - [helm](https://helm.sh/docs/helm/helm_lint/) from 3.14.2 to **3.14.3** on 2024-06-22
-  - [phpstan](https://phpstan.org/) from 1.11.5 to **1.11.4** on 2024-06-22
-  - [git_diff](https://git-scm.com) from 2.43.4 to **2.45.2** on 2024-06-22
-  - [xmllint](https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home) from 21108 to **21207** on 2024-06-22
-  - [terragrunt](https://terragrunt.gruntwork.io) from 0.59.3 to **0.59.5** on 2024-06-23
-  - [checkov](https://www.checkov.io/) from 3.2.141 to **3.2.144** on 2024-06-23
-  - [syft](https://github.com/anchore/syft) from 1.7.0 to **1.8.0** on 2024-06-24
-  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.3.3 to **1.3.4** on 2024-06-24
-  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.3.4 to **1.4.2** on 2024-06-28
-  - [protolint](https://github.com/yoheimuta/protolint) from 0.49.8 to **0.50.2** on 2024-06-28
-  - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.10.0 to **1.10.1** on 2024-06-28
-  - [pylint](https://pylint.readthedocs.io) from 3.2.3 to **3.2.4** on 2024-06-28
-  - [pyright](https://github.com/Microsoft/pyright) from 1.1.368 to **1.1.369** on 2024-06-28
-  - [ruff](https://github.com/astral-sh/ruff) from 0.4.10 to **0.5.0** on 2024-06-28
-  - [checkov](https://www.checkov.io/) from 3.2.144 to **3.2.156** on 2024-06-28
-  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.78.2 to **3.79.0** on 2024-06-28
-  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.8.5 to **1.9.0** on 2024-06-28
-  - [terragrunt](https://terragrunt.gruntwork.io) from 0.59.5 to **0.59.6** on 2024-06-28
-  - [pmd](https://pmd.github.io/) from 7.2.0 to **7.3.0** on 2024-06-28
-  - [pylint](https://pylint.readthedocs.io) from 3.2.4 to **3.2.5** on 2024-06-28
-  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 3.25.0 to **3.26.0** on 2024-06-28
-  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 3.25.0 to **3.26.0** on 2024-06-28
-  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 3.25.0 to **3.26.0** on 2024-06-28
-  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 2.27.0 to **2.28.0** on 2024-06-29
-  - [checkov](https://www.checkov.io/) from 3.2.156 to **3.2.159** on 2024-06-30
-  - [checkov](https://www.checkov.io/) from 3.2.159 to **3.2.161** on 2024-07-01
-  - [checkov](https://www.checkov.io/) from 3.2.161 to **3.2.163** on 2024-07-01
-  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.52.2 to **0.53.0** on 2024-07-01
-  - [trivy](https://aquasecurity.github.io/trivy/) from 0.52.2 to **0.53.0** on 2024-07-01
-  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.4.2 to **1.5.0** on 2024-07-03
-  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd) from 4.0.4 to **4.0.5** on 2024-07-03
-  - [ktlint](https://ktlint.github.io) from 1.3.0 to **1.3.1** on 2024-07-03
-  - [pyright](https://github.com/Microsoft/pyright) from 1.1.369 to **1.1.370** on 2024-07-03
-  - [checkov](https://www.checkov.io/) from 3.2.163 to **3.2.171** on 2024-07-03
-  - [grype](https://github.com/anchore/grype) from 0.79.1 to **0.79.2** on 2024-07-03
-  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.9.1 to **8.10.0** on 2024-07-03
-  - [sqlfluff](https://www.sqlfluff.com/) from 3.0.7 to **3.1.0** on 2024-07-03
-  - [editorconfig-checker](https://editorconfig-checker.github.io/) from 3.0.1 to **3.0.3** on 2024-07-04
-  - [checkov](https://www.checkov.io/) from 3.2.171 to **3.2.174** on 2024-07-04
-  - [kics](https://www.kics.io) from 2.1.0 to **2.1.1** on 2024-07-04
-  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.14.0 to **8.15.1** on 2024-07-04
-  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 3.26.0 to **4.3.2** on 2024-07-04
-  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 3.26.0 to **4.3.2** on 2024-07-04
-  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 3.26.0 to **4.3.2** on 2024-07-04
-  - [phpstan](https://phpstan.org/) from 1.11.4 to **1.11.6** on 2024-07-06
-  - [phplint](https://github.com/overtrue/phplint) from 9.3.1 to **9.4.1** on 2024-07-06
-  - [phpstan](https://phpstan.org/) from 1.11.6 to **1.11.7** on 2024-07-06
-  - [ruff](https://github.com/astral-sh/ruff) from 0.5.0 to **0.5.1** on 2024-07-06
-  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.15.1 to **8.15.2** on 2024-07-06
-  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.10.0 to **8.10.4** on 2024-07-06
-  - [tflint](https://github.com/terraform-linters/tflint) from 0.51.1 to **0.52.0** on 2024-07-06
-<!-- linter-versions-end -->
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 24.2.3 to **24.6.1**
+  - [bandit](https://bandit.readthedocs.io/en/latest/) from 1.7.8 to **1.7.9**
+  - [bash-exec](https://www.gnu.org/software/bash/) from 5.2.21 to **5.2.26**
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.27.1 to **0.28.1**
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.87.4 to **1.5.0**
+  - [checkov](https://www.checkov.io/) from 3.2.122 to **3.2.174**
+  - [clang-format](https://releases.llvm.org/17.0.1/tools/clang/docs/ClangFormat.html) from 17.0.5 to **17.0.6**
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.78 to **0.1.79**
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.8.3 to **8.10.4**
+  - [editorconfig-checker](https://editorconfig-checker.github.io/) from 3.0.1 to **3.0.3**
+  - [flake8](https://flake8.pycqa.org) from 7.0.0 to **7.1.0**
+  - [git_diff](https://git-scm.com) from 2.43.4 to **2.45.2**
+  - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.18.2 to **8.18.4**
+  - [golangci-lint](https://golangci-lint.run/) from 1.59.0 to **1.59.1**
+  - [grype](https://github.com/anchore/grype) from 0.78.0 to **0.79.2**
+  - [helm](https://helm.sh/docs/helm/helm_lint/) from 3.14.2 to **3.14.3**
+  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd) from 4.0.4 to **4.0.5**
+  - [kics](https://www.kics.io) from 2.0.1 to **2.1.1**
+  - [ktlint](https://ktlint.github.io) from 1.2.1 to **1.3.1**
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 2.26.0 to **2.28.0**
+  - [markdown-table-formatter](https://www.npmjs.com/package/markdown-table-formatter) from 1.6.0 to **1.6.1**
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.10.0 to **1.10.1**
+  - [npm-package-json-lint](https://npmpackagejsonlint.org/) from 7.1.0 to **8.0.0**
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.58.1 to **3.59.3**
+  - [phplint](https://github.com/overtrue/phplint) from 9.3.1 to **9.4.1**
+  - [phpstan](https://phpstan.org/) from 1.11.3 to **1.11.7**
+  - [pmd](https://pmd.github.io/) from 7.1.0 to **7.3.0**
+  - [prettier](https://prettier.io/) from 3.3.0 to **3.3.2**
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.49.7 to **0.50.2**
+  - [psalm](https://psalm.dev) from Psalm.5.24.0@ to **Psalm.5.25.0@**
+  - [pylint](https://pylint.readthedocs.io) from 3.2.2 to **3.2.5**
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.365 to **1.1.370**
+  - [ruff](https://github.com/astral-sh/ruff) from 0.4.10 to **0.5.1**
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 3.25.0 to **4.3.2**
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 3.25.0 to **4.3.2**
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 3.25.0 to **4.3.2**
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.12.0 to **8.15.2**
+  - [sqlfluff](https://www.sqlfluff.com/) from 3.0.7 to **3.1.0**
+  - [swiftlint](https://github.com/realm/SwiftLint) from 0.54.0 to **0.55.1**
+  - [syft](https://github.com/anchore/syft) from 1.5.0 to **1.8.0**
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.8.4 to **1.9.0**
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.58.13 to **0.59.6**
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.51.1 to **0.52.0**
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.51.4 to **0.53.0**
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.51.4 to **0.53.0**
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.77.0 to **3.79.0**
+  - [v8r](https://github.com/chris48s/v8r) from 3.0.0 to **3.1.0**
+  - [vale](https://vale.sh/) from 3.4.2 to **3.6.0**
+  - [xmllint](https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home) from 21108 to **21207**
 
 ## [v7.12.0] - 2024-06-02
 
@@ -217,68 +174,68 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Sort schema enums by @echoix in <https://github.com/oxsecurity/megalinter/pull/3595>
 
 - Linter versions upgrades
-  - [actionlint](https://rhysd.github.io/actionlint/) from 1.6.27 to **1.7.1** on 2024-05-28
-  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 24.2.2 to **24.2.3** on 2024-05-20
-  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.26.170 to **0.27.1** on 2024-05-07
-  - [black](https://black.readthedocs.io/en/stable/) from 24.4.0 to **24.4.2** on 2024-04-26
-  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.86.4 to **0.87.4** on 2024-05-28
-  - [checkov](https://www.checkov.io/) from 3.2.74 to **3.2.122** on 2024-05-04
-  - [checkstyle](https://checkstyle.org/) from 10.15.0 to **10.17.0** on 2024-05-27
-  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.77 to **0.1.78** on 2024-05-04
-  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2024.03.13 to **2024.05.24** on 2024-05-25
-  - [csharpier](https://csharpier.com/) from 0.28.1 to **0.28.2** on 2024-04-26
-  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.7.0 to **8.8.3** on 2024-05-24
-  - [detekt](https://detekt.dev/) from 1.23.5 to **1.23.6** on 2024-05-28
-  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 8.0.104 to **8.0.106** on 2024-06-01
-  - [editorconfig-checker](https://editorconfig-checker.github.io/) from 2.7.2 to **3.0.1** on 2024-04-30
-  - [git_diff](https://git-scm.com) from 2.43.0 to **2.43.4** on 2024-05-18
-  - [golangci-lint](https://golangci-lint.run/) from 1.57.2 to **1.59.0** on 2024-05-27
-  - [grype](https://github.com/anchore/grype) from 0.77.0 to **0.78.0** on 2024-05-28
-  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd) from 3.5.10 to **4.0.4** on 2024-05-28
-  - [kics](https://www.kics.io) from 2.0.0 to **2.0.1** on 2024-05-04
-  - [kubeconform](https://github.com/yannh/kubeconform) from 0.6.4 to **0.6.6** on 2024-05-12
-  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 2.22.0 to **2.24.0** on 2024-05-20
-  - [luacheck](https://luacheck.readthedocs.io) from 1.1.2 to **1.2.0** on 2024-05-25
-  - [lychee](https://lychee.cli.rs) from 0.14.3 to **0.15.1** on 2024-05-13
-  - [markdown-link-check](https://github.com/tcort/markdown-link-check) from 3.12.1 to **3.12.2** on 2024-05-22
-  - [markdown-table-formatter](https://www.npmjs.com/package/markdown-table-formatter) from 1.5.0 to **1.6.0** on 2024-04-27
-  - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.39.0 to **0.41.0** on 2024-05-26
-  - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.9.0 to **1.10.0** on 2024-04-26
-  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 14.4.1 to **14.6.0** on 2024-05-12
-  - [phpcs](https://github.com/PHPCSStandards/PHP_CodeSniffer) from 3.9.1 to **3.10.1** on 2024-04-23
-  - [phplint](https://github.com/overtrue/phplint) from 9.1.2 to **9.3.1** on 2024-05-18
-  - [phpstan](https://phpstan.org/) from 1.10.67 to **1.11.0** to **1.11.3** on 2024-05-31
-  - [pmd](https://pmd.github.io/) from 6.55.0 to **7.1.0** on 2024-04-28
-  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.4.1 to **7.4.2** on 2024-04-28
-  - [powershell_formatter](https://github.com/PowerShell/PSScriptAnalyzer) from 7.4.1 to **7.4.2** on 2024-04-28
-  - [prettier](https://prettier.io/) from 3.2.5 to **3.3.0** on 2024-06-01
-  - [proselint](https://github.com/amperser/proselint) from 0.13.0 to **0.14.0** on 2024-05-24
-  - [protolint](https://github.com/yoheimuta/protolint) from 0.49.6 to **0.49.7** on 2024-05-04
-  - [psalm](https://psalm.dev) from Psalm.5.23.1@ to **Psalm.5.24.0@** on 2024-05-04
-  - [pylint](https://pylint.readthedocs.io) from 3.1.0 to **3.2.2** on 2024-05-20
-  - [pyright](https://github.com/Microsoft/pyright) from 1.1.359 to **1.1.365** on 2024-05-31
-  - [roslynator](https://github.com/dotnet/Roslynator) from 0.8.6.0 to **0.8.9.0** on 2024-06-01
-  - [rubocop](https://rubocop.org/) from 1.63.3 to **1.64.1** on 2024-05-31
-  - [ruff](https://github.com/astral-sh/ruff) from 0.4.1 to **0.4.7** on 2024-05-31
-  - [scalafix](https://scalacenter.github.io/scalafix/) from 0.12.0 to **0.12.1** on 2024-05-04
-  - [secretlint](https://github.com/secretlint/secretlint) from 8.2.3 to **8.2.4** on 2024-04-29
-  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 3.23.0 to **3.25.0** on 2024-05-28
-  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 3.23.0 to **3.25.0** on 2024-05-28
-  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 3.23.0 to **3.25.0** on 2024-05-28
-  - [snakefmt](https://github.com/snakemake/snakefmt) from 0.10.1 to **0.10.2** on 2024-05-12
-  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.10.8 to **8.12.0** on 2024-05-27
-  - [sqlfluff](https://www.sqlfluff.com/) from 3.0.5 to **3.0.7** on 2024-05-24
-  - [stylelint](https://stylelint.io) from 16.4.0 to **16.6.1** on 2024-05-28
-  - [syft](https://github.com/anchore/syft) from 1.2.0 to **1.5.0** on 2024-05-28
-  - [tekton-lint](https://github.com/IBM/tekton-lint) from 1.0.2 to **1.1.0** on 2024-05-25
-  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.8.1 to **1.8.4** on 2024-05-25
-  - [terragrunt](https://terragrunt.gruntwork.io) from 0.57.5 to **0.58.10** on 2024-05-27
-  - [tflint](https://github.com/terraform-linters/tflint) from 0.50.3 to **0.51.1** on 2024-06-02
-  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.50.2 to **0.51.4** on 2024-05-25
-  - [trivy](https://aquasecurity.github.io/trivy/) from 0.50.2 to **0.51.4** on 2024-05-25
-  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.73.0 to **3.77.0** on 2024-05-28
-  - [vale](https://vale.sh/) from 3.4.0 to **3.4.2** on 2024-05-04
-  - [xmllint](https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home) from 21107 to **21108** on 2024-05-18
+  - [actionlint](https://rhysd.github.io/actionlint/) from 1.6.27 to **1.7.1**
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 24.2.2 to **24.2.3**
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.26.170 to **0.27.1**
+  - [black](https://black.readthedocs.io/en/stable/) from 24.4.0 to **24.4.2**
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 0.86.4 to **0.87.4**
+  - [checkov](https://www.checkov.io/) from 3.2.74 to **3.2.122**
+  - [checkstyle](https://checkstyle.org/) from 10.15.0 to **10.17.0**
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.77 to **0.1.78**
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2024.03.13 to **2024.05.24**
+  - [csharpier](https://csharpier.com/) from 0.28.1 to **0.28.2**
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.7.0 to **8.8.3**
+  - [detekt](https://detekt.dev/) from 1.23.5 to **1.23.6**
+  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 8.0.104 to **8.0.106**
+  - [editorconfig-checker](https://editorconfig-checker.github.io/) from 2.7.2 to **3.0.1**
+  - [git_diff](https://git-scm.com) from 2.43.0 to **2.43.4**
+  - [golangci-lint](https://golangci-lint.run/) from 1.57.2 to **1.59.0**
+  - [grype](https://github.com/anchore/grype) from 0.77.0 to **0.78.0**
+  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd) from 3.5.10 to **4.0.4**
+  - [kics](https://www.kics.io) from 2.0.0 to **2.0.1**
+  - [kubeconform](https://github.com/yannh/kubeconform) from 0.6.4 to **0.6.6**
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 2.22.0 to **2.24.0**
+  - [luacheck](https://luacheck.readthedocs.io) from 1.1.2 to **1.2.0**
+  - [lychee](https://lychee.cli.rs) from 0.14.3 to **0.15.1**
+  - [markdown-link-check](https://github.com/tcort/markdown-link-check) from 3.12.1 to **3.12.2**
+  - [markdown-table-formatter](https://www.npmjs.com/package/markdown-table-formatter) from 1.5.0 to **1.6.0**
+  - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.39.0 to **0.41.0**
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.9.0 to **1.10.0**
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 14.4.1 to **14.6.0**
+  - [phpcs](https://github.com/PHPCSStandards/PHP_CodeSniffer) from 3.9.1 to **3.10.1**
+  - [phplint](https://github.com/overtrue/phplint) from 9.1.2 to **9.3.1**
+  - [phpstan](https://phpstan.org/) from 1.10.67 to **1.11.0** to **1.11.3**
+  - [pmd](https://pmd.github.io/) from 6.55.0 to **7.1.0**
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.4.1 to **7.4.2**
+  - [powershell_formatter](https://github.com/PowerShell/PSScriptAnalyzer) from 7.4.1 to **7.4.2**
+  - [prettier](https://prettier.io/) from 3.2.5 to **3.3.0**
+  - [proselint](https://github.com/amperser/proselint) from 0.13.0 to **0.14.0**
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.49.6 to **0.49.7**
+  - [psalm](https://psalm.dev) from Psalm.5.23.1@ to **Psalm.5.24.0@**
+  - [pylint](https://pylint.readthedocs.io) from 3.1.0 to **3.2.2**
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.359 to **1.1.365**
+  - [roslynator](https://github.com/dotnet/Roslynator) from 0.8.6.0 to **0.8.9.0**
+  - [rubocop](https://rubocop.org/) from 1.63.3 to **1.64.1**
+  - [ruff](https://github.com/astral-sh/ruff) from 0.4.1 to **0.4.7**
+  - [scalafix](https://scalacenter.github.io/scalafix/) from 0.12.0 to **0.12.1**
+  - [secretlint](https://github.com/secretlint/secretlint) from 8.2.3 to **8.2.4**
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 3.23.0 to **3.25.0**
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 3.23.0 to **3.25.0**
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 3.23.0 to **3.25.0**
+  - [snakefmt](https://github.com/snakemake/snakefmt) from 0.10.1 to **0.10.2**
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.10.8 to **8.12.0**
+  - [sqlfluff](https://www.sqlfluff.com/) from 3.0.5 to **3.0.7**
+  - [stylelint](https://stylelint.io) from 16.4.0 to **16.6.1**
+  - [syft](https://github.com/anchore/syft) from 1.2.0 to **1.5.0**
+  - [tekton-lint](https://github.com/IBM/tekton-lint) from 1.0.2 to **1.1.0**
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.8.1 to **1.8.4**
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.57.5 to **0.58.10**
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.50.3 to **0.51.1**
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.50.2 to **0.51.4**
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.50.2 to **0.51.4**
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.73.0 to **3.77.0**
+  - [vale](https://vale.sh/) from 3.4.0 to **3.4.2**
+  - [xmllint](https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home) from 21107 to **21108**
 
 ## [v7.11.1] - 2024-04-23
 

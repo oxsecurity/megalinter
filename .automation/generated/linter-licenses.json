@@ -49,6 +49,7 @@
     "kubeval": "Other",
     "lightning-flow-scanner": "AGPL-3.0",
     "lintr": "Other",
+    "ls-lint": "MIT",
     "luacheck": "MIT",
     "lychee": "Apache-2.0",
     "markdown-link-check": "ISC",
