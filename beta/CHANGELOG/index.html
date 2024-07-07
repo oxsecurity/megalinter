@@ -5130,21 +5130,26 @@
 <li>CI</li>
 </ul>
 <ul>
-<li>Linter versions upgrades</li>
+<li>Linter versions upgrades<ul>
+<li><a href="https://github.com/yoheimuta/protolint">protolint</a> from 0.50.2 to <strong>0.50.3</strong> on 2024-07-07</li>
+<li><a href="https://developer.hashicorp.com/terraform/cli/commands/fmt">terraform-fmt</a> from 1.9.0 to <strong>1.9.1</strong> on 2024-07-07</li>
+<li><a href="https://terragrunt.gruntwork.io">terragrunt</a> from 0.59.6 to <strong>0.60.0</strong> on 2024-07-07</li>
+</ul>
+</li>
 </ul>
 <!-- linter-versions-end -->
 <h2 id="v7130-2024-07-06">[v7.13.0] - 2024-07-06</h2>
 <ul>
 <li>New linters<ul>
-<li>Add <a href="https://ls-lint.org/"><strong>ls-lint</strong></a>, file and folder linter, by @scolladon in https://github.com/oxsecurity/megalinter/pull/3681</li>
+<li>Add <a href="https://ls-lint.org/"><strong>ls-lint</strong></a>, file and folder linter, by @scolladon in <a href="https://github.com/oxsecurity/megalinter/pull/3681">https://github.com/oxsecurity/megalinter/pull/3681</a></li>
 </ul>
 </li>
 </ul>
 <ul>
 <li>Core<ul>
-<li>Handle renovate version comments in build script, by @echoix in https://github.com/oxsecurity/megalinter/pull/3617 ,  https://github.com/oxsecurity/megalinter/pull/3627 , https://github.com/oxsecurity/megalinter/pull/3643 , https://github.com/oxsecurity/megalinter/pull/3699 , https://github.com/oxsecurity/megalinter/pull/3700</li>
+<li>Handle renovate version comments in build script, by @echoix in <a href="https://github.com/oxsecurity/megalinter/pull/3617">https://github.com/oxsecurity/megalinter/pull/3617</a> ,  <a href="https://github.com/oxsecurity/megalinter/pull/3627">https://github.com/oxsecurity/megalinter/pull/3627</a> , <a href="https://github.com/oxsecurity/megalinter/pull/3643">https://github.com/oxsecurity/megalinter/pull/3643</a> , <a href="https://github.com/oxsecurity/megalinter/pull/3699">https://github.com/oxsecurity/megalinter/pull/3699</a> , <a href="https://github.com/oxsecurity/megalinter/pull/3700">https://github.com/oxsecurity/megalinter/pull/3700</a></li>
 <li>Update base image to python:3.12.4-alpine3.20</li>
-<li>Use <code>dotnet8-sdk</code> available in the main repository, by @TommyE123 in https://github.com/oxsecurity/megalinter/pull/3696</li>
+<li>Use <code>dotnet8-sdk</code> available in the main repository, by @TommyE123 in <a href="https://github.com/oxsecurity/megalinter/pull/3696">https://github.com/oxsecurity/megalinter/pull/3696</a></li>
 </ul>
 </li>
 </ul>
@@ -5158,45 +5163,45 @@
 </ul>
 <ul>
 <li>Linters enhancements<ul>
-<li>Add SARIF support (v2) for all PHP linters by @llaville in https://github.com/oxsecurity/megalinter/pull/3745 , https://github.com/oxsecurity/megalinter/pull/3729</li>
-<li>Add python package Pygments to rst-lint venv, by @bobidle in https://github.com/oxsecurity/megalinter/pull/3631</li>
-<li><a href="https://csharpier.com">CSharpier</a> added ability to override config filename and path, by @TommyE123 in https://github.com/oxsecurity/megalinter/pull/3664</li>
-<li><a href="https://gnome.pages.gitlab.gnome.org/libxml2/xmllint.html">xmllint</a> added support for <code>xsd</code> files, by @TommyE123 in https://github.com/oxsecurity/megalinter/pull/3665</li>
+<li>Add SARIF support (v2) for all PHP linters by @llaville in <a href="https://github.com/oxsecurity/megalinter/pull/3745">https://github.com/oxsecurity/megalinter/pull/3745</a> , <a href="https://github.com/oxsecurity/megalinter/pull/3729">https://github.com/oxsecurity/megalinter/pull/3729</a></li>
+<li>Add python package Pygments to rst-lint venv, by @bobidle in <a href="https://github.com/oxsecurity/megalinter/pull/3631">https://github.com/oxsecurity/megalinter/pull/3631</a></li>
+<li><a href="https://csharpier.com">CSharpier</a> added ability to override config filename and path, by @TommyE123 in <a href="https://github.com/oxsecurity/megalinter/pull/3664">https://github.com/oxsecurity/megalinter/pull/3664</a></li>
+<li><a href="https://gnome.pages.gitlab.gnome.org/libxml2/xmllint.html">xmllint</a> added support for <code>xsd</code> files, by @TommyE123 in <a href="https://github.com/oxsecurity/megalinter/pull/3665">https://github.com/oxsecurity/megalinter/pull/3665</a></li>
 </ul>
 </li>
 </ul>
 <ul>
 <li>Fixes<ul>
-<li>Improve support for single argument in <code>get_list_args</code> function, by @TommyE123 in https://github.com/oxsecurity/megalinter/pull/3589</li>
-<li><a href="https://ansible-lint.readthedocs.io">ansible-lint</a> Improved activation by checking for <code>.ansible-lint</code> config file, by @TommyE123 in https://github.com/oxsecurity/megalinter/pull/3697</li>
-<li><a href="https://github.com/microsoft/DevSkim">DevSkim</a> fixed fatal errors when scanning and ability to override config path, by @TommyE123 in https://github.com/oxsecurity/megalinter/pull/3673</li>
-<li><a href="https://github.com/gitleaks/gitleaks">GitLeaks</a> add missing schema properties, by @TommyE123 in https://github.com/oxsecurity/megalinter/pull/3675</li>
-<li><a href="https://github.com/PowerShell/PSScriptAnalyzer#readme">Powershell</a> Error table truncation improvements, by @TommyE123 in https://github.com/oxsecurity/megalinter/pull/3620</li>
-<li><a href="https://github.com/PowerShell/PSScriptAnalyzer#readme">Powershell</a> added missing schema property <code>POWERSHELL_POWERSHELL_FORMATTER_OUTPUT_ENCODING</code>, by @TommyE123 in https://github.com/oxsecurity/megalinter/pull/3678</li>
-<li><a href="https://github.com/anchore/syft">syft</a> use <code>scan</code> instead of deprecated <code>packages</code> arg, by @TommyE123 in https://github.com/oxsecurity/megalinter/pull/3613</li>
-<li><a href="https://github.com/terraform-linters/tflint">tflint</a> added missing schema property <code>TERRAFORM_TFLINT_SECURED_ENV</code>, by @TommyE123 in https://github.com/oxsecurity/megalinter/pull/3679</li>
-<li><a href="https://github.com/terraform-linters/tflint">tflint</a> fixed deprecated argument and other improvements to default <code>.tflint.hcl</code> template, by @TommyE123 in https://github.com/oxsecurity/megalinter/pull/3688</li>
-<li><a href="https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home">xmllint</a> added missing schema properties <code>XML_XMLLINT_AUTOFORMAT</code> and <code>XML_XMLLINT_INDENT</code>, by @TommyE123 in https://github.com/oxsecurity/megalinter/pull/3677</li>
-<li><a href="https://github.com/adrienverge/yamllint">yamllint</a> fix error/warning count to work with different log output formats, by @TommyE123 in https://github.com/oxsecurity/megalinter/pull/3612</li>
+<li>Improve support for single argument in <code>get_list_args</code> function, by @TommyE123 in <a href="https://github.com/oxsecurity/megalinter/pull/3589">https://github.com/oxsecurity/megalinter/pull/3589</a></li>
+<li><a href="https://ansible-lint.readthedocs.io">ansible-lint</a> Improved activation by checking for <code>.ansible-lint</code> config file, by @TommyE123 in <a href="https://github.com/oxsecurity/megalinter/pull/3697">https://github.com/oxsecurity/megalinter/pull/3697</a></li>
+<li><a href="https://github.com/microsoft/DevSkim">DevSkim</a> fixed fatal errors when scanning and ability to override config path, by @TommyE123 in <a href="https://github.com/oxsecurity/megalinter/pull/3673">https://github.com/oxsecurity/megalinter/pull/3673</a></li>
+<li><a href="https://github.com/gitleaks/gitleaks">GitLeaks</a> add missing schema properties, by @TommyE123 in <a href="https://github.com/oxsecurity/megalinter/pull/3675">https://github.com/oxsecurity/megalinter/pull/3675</a></li>
+<li><a href="https://github.com/PowerShell/PSScriptAnalyzer#readme">Powershell</a> Error table truncation improvements, by @TommyE123 in <a href="https://github.com/oxsecurity/megalinter/pull/3620">https://github.com/oxsecurity/megalinter/pull/3620</a></li>
+<li><a href="https://github.com/PowerShell/PSScriptAnalyzer#readme">Powershell</a> added missing schema property <code>POWERSHELL_POWERSHELL_FORMATTER_OUTPUT_ENCODING</code>, by @TommyE123 in <a href="https://github.com/oxsecurity/megalinter/pull/3678">https://github.com/oxsecurity/megalinter/pull/3678</a></li>
+<li><a href="https://github.com/anchore/syft">syft</a> use <code>scan</code> instead of deprecated <code>packages</code> arg, by @TommyE123 in <a href="https://github.com/oxsecurity/megalinter/pull/3613">https://github.com/oxsecurity/megalinter/pull/3613</a></li>
+<li><a href="https://github.com/terraform-linters/tflint">tflint</a> added missing schema property <code>TERRAFORM_TFLINT_SECURED_ENV</code>, by @TommyE123 in <a href="https://github.com/oxsecurity/megalinter/pull/3679">https://github.com/oxsecurity/megalinter/pull/3679</a></li>
+<li><a href="https://github.com/terraform-linters/tflint">tflint</a> fixed deprecated argument and other improvements to default <code>.tflint.hcl</code> template, by @TommyE123 in <a href="https://github.com/oxsecurity/megalinter/pull/3688">https://github.com/oxsecurity/megalinter/pull/3688</a></li>
+<li><a href="https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home">xmllint</a> added missing schema properties <code>XML_XMLLINT_AUTOFORMAT</code> and <code>XML_XMLLINT_INDENT</code>, by @TommyE123 in <a href="https://github.com/oxsecurity/megalinter/pull/3677">https://github.com/oxsecurity/megalinter/pull/3677</a></li>
+<li><a href="https://github.com/adrienverge/yamllint">yamllint</a> fix error/warning count to work with different log output formats, by @TommyE123 in <a href="https://github.com/oxsecurity/megalinter/pull/3612">https://github.com/oxsecurity/megalinter/pull/3612</a></li>
 </ul>
 </li>
 </ul>
 <ul>
 <li>Doc<ul>
-<li>Update documentation icons by @nvuillam in https://github.com/oxsecurity/megalinter/pull/3625</li>
+<li>Update documentation icons by @nvuillam in <a href="https://github.com/oxsecurity/megalinter/pull/3625">https://github.com/oxsecurity/megalinter/pull/3625</a></li>
 </ul>
 </li>
 </ul>
 <ul>
 <li>Flavors<ul>
-<li>Add gherkin-lint in c_cpp flavor, by @nvuillam in https://github.com/oxsecurity/megalinter/pull/3698</li>
+<li>Add gherkin-lint in c_cpp flavor, by @nvuillam in <a href="https://github.com/oxsecurity/megalinter/pull/3698">https://github.com/oxsecurity/megalinter/pull/3698</a></li>
 </ul>
 </li>
 </ul>
 <ul>
 <li>CI<ul>
-<li>Bump actions/checkout from 3 to 4, by @KristjanESPERANTO in https://github.com/oxsecurity/megalinter/pull/2994</li>
-<li>Reduce dependabot PR frequency to weekly by @echoix in https://github.com/oxsecurity/megalinter/pull/3642</li>
+<li>Bump actions/checkout from 3 to 4, by @KristjanESPERANTO in <a href="https://github.com/oxsecurity/megalinter/pull/2994">https://github.com/oxsecurity/megalinter/pull/2994</a></li>
+<li>Reduce dependabot PR frequency to weekly by @echoix in <a href="https://github.com/oxsecurity/megalinter/pull/3642">https://github.com/oxsecurity/megalinter/pull/3642</a></li>
 </ul>
 </li>
 </ul>
