@@ -30,6 +30,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [protolint](https://github.com/yoheimuta/protolint) from 0.50.2 to **0.50.3** on 2024-07-07
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.9.0 to **1.9.1** on 2024-07-07
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.59.6 to **0.60.0** on 2024-07-07
+  - [checkov](https://www.checkov.io/) from 3.2.174 to **3.2.175** on 2024-07-07
+  - [rstcheck](https://github.com/myint/rstcheck) from 6.2.1 to **6.2.4** on 2024-07-07
 <!-- linter-versions-end -->
 
 ## [v7.13.0] - 2024-07-06
