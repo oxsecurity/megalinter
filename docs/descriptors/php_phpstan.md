@@ -9,7 +9,7 @@ description: How to use phpstan (configure, ignore files, ignore errors, help & 
 
 ## phpstan documentation
 
-- Version in MegaLinter: **1.11.4**
+- Version in MegaLinter: **1.11.7**
 - Visit [Official Web Site](https://phpstan.org/){target=_blank}
 - See [How to configure phpstan rules](https://phpstan.org/config-reference#neon-format){target=_blank}
   - If custom `phpstan.neon.dist` config file isn't found, [phpstan.neon.dist](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/phpstan.neon.dist){target=_blank} will be used
@@ -19,8 +19,8 @@ description: How to use phpstan (configure, ignore files, ignore errors, help & 
 
 ## Configuration in MegaLinter
 
-- Enable phpstan by adding `PHP_PHPSTAN` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
-- Disable phpstan by adding `PHP_PHPSTAN` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
+- Enable phpstan by adding `PHP_PHPSTAN` in [ENABLE_LINTERS variable](https://megalinter.io/7.13.0/configuration/#activation-and-deactivation)
+- Disable phpstan by adding `PHP_PHPSTAN` in [DISABLE_LINTERS variable](https://megalinter.io/7.13.0/configuration/#activation-and-deactivation)
 
 | Variable                                | Description                                                                                                                                                                                                         | Default value                                   |
 |-----------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
@@ -44,11 +44,11 @@ description: How to use phpstan (configure, ignore files, ignore errors, help & 
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                     | Embedded linters |                                                                                                                                                                                       Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       125        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        84        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
-|         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://megalinter.io/beta/flavors/php/)         | Optimized for PHP based projects                |        56        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-php) |
+|                                                                         <!-- -->                                                                         | Flavor                                                   | Description                                     | Embedded linters |                                                                                                                                                                                          Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------|:------------------------------------------------|:----------------:|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/7.13.0/supported-linters/)   | Default MegaLinter Flavor                       |       125        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v7.13.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/7.13.0/flavors/cupcake/) | MegaLinter for the most commonly used languages |        84        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/v7.13.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+|         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://megalinter.io/7.13.0/flavors/php/)         | Optimized for PHP based projects                |        56        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/v7.13.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-php) |
 
 ## Behind the scenes
 
@@ -140,6 +140,6 @@ RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" \
 COPY --from=composer/composer:2-bin /composer /usr/bin/composer
 ENV PATH="/root/.composer/vendor/bin:${PATH}"
 # Linter install
-RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require phpstan/phpstan:1.11.4 bartlett/sarif-php-sdk
+RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require phpstan/phpstan bartlett/sarif-php-converters "1.0.x-dev#8ed4611 as 1.0.0"
 ```
 

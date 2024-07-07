@@ -19,11 +19,11 @@ ARG BASH_SHELLCHECK_VERSION=v0.10.0
 # renovate: datasource=docker depName=hadolint/hadolint
 ARG DOCKERFILE_HADOLINT_VERSION=v2.12.0-alpine
 # renovate: datasource=docker depName=mstruebing/editorconfig-checker
-ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=v3.0.1
+ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=v3.0.3
 # renovate: datasource=docker depName=ghcr.io/yannh/kubeconform
 ARG KUBERNETES_KUBECONFORM_VERSION=v0.6.6-alpine
 # renovate: datasource=docker depName=yoheimuta/protolint
-ARG PROTOBUF_PROTOLINT_VERSION=0.50.2
+ARG PROTOBUF_PROTOLINT_VERSION=0.50.3
 # renovate: datasource=docker depName=zricethezav/gitleaks
 ARG REPOSITORY_GITLEAKS_VERSION=v8.18.4
 # renovate: datasource=docker depName=trufflesecurity/trufflehog 
@@ -331,18 +331,18 @@ RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/rel
     curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash -s -- -v v2.9.0
 
 # phpcs installation
-RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require squizlabs/php_codesniffer bartlett/sarif-php-sdk
+RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require squizlabs/php_codesniffer bartlett/sarif-php-converters "1.0.x-dev#8ed4611 as 1.0.0"
 
 
 # phpstan installation
-RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require phpstan/phpstan:1.11.4 bartlett/sarif-php-sdk
+RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require phpstan/phpstan bartlett/sarif-php-converters "1.0.x-dev#8ed4611 as 1.0.0"
 
 # psalm installation
 RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && phive --no-progress install psalm -g --trust-gpg-keys 8A03EA3B385DBAA1,12CE0F1D262429A5
 
 
 # phplint installation
-RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && phive --no-progress install overtrue/phplint --force-accept-unsigned -g
+RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require overtrue/phplint bartlett/sarif-php-converters "1.0.x-dev#8ed4611 as 1.0.0"
 
 
 # php-cs-fixer installation

@@ -19,11 +19,11 @@ ARG BASH_SHELLCHECK_VERSION=v0.10.0
 # renovate: datasource=docker depName=hadolint/hadolint
 ARG DOCKERFILE_HADOLINT_VERSION=v2.12.0-alpine
 # renovate: datasource=docker depName=mstruebing/editorconfig-checker
-ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=v3.0.1
+ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=v3.0.3
 # renovate: datasource=docker depName=ghcr.io/yannh/kubeconform
 ARG KUBERNETES_KUBECONFORM_VERSION=v0.6.6-alpine
 # renovate: datasource=docker depName=yoheimuta/protolint
-ARG PROTOBUF_PROTOLINT_VERSION=0.50.2
+ARG PROTOBUF_PROTOLINT_VERSION=0.50.3
 # renovate: datasource=docker depName=zricethezav/gitleaks
 ARG REPOSITORY_GITLEAKS_VERSION=v8.18.4
 # renovate: datasource=docker depName=trufflesecurity/trufflehog 
@@ -62,16 +62,16 @@ FROM python:3.12.4-alpine3.20
 #############################################################################################
 #ARG__START
 # renovate: datasource=npm depName=@salesforce/cli
-ARG SALESFORCE_CLI_VERSION=2.47.6
+ARG SALESFORCE_CLI_VERSION=2.48.6
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
 ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.7.0
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=4.41.0
+ARG SFDX_HARDIS_VERSION=4.42.0
 # renovate: datasource=github-tags depName=detekt/detekt
 ARG DETEKT_VERSION=1.23.6
 
 # renovate: datasource=npm depName=@salesforce/sfdx-scanner
-ARG SALESFORCE_SFDX_SCANNER_VERSION=3.26.0
+ARG SALESFORCE_SFDX_SCANNER_VERSION=4.3.2
 # renovate: datasource=npm depName=lightning-flow-scanner
 ARG LIGHTNING_FLOW_SCANNER_VERSION=2.28.0
 #ARG__END

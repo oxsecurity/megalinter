@@ -54,7 +54,7 @@ linters:
     cli_lint_mode: list_of_files
     cli_config_arg_name: "--standard="
     cli_sarif_args:
-      - "--report=\\Bartlett\\Sarif\\Converter\\PhpCsConverter"
+      - "--report=\\Bartlett\\Sarif\\Converter\\Reporter\\PhpCsReport"
     cli_lint_errors_count: regex_number
     cli_lint_errors_regex: "FOUND ([0-9]+) ERRORS"
     examples:
@@ -64,7 +64,7 @@ linters:
     install:
       dockerfile:
         - |
-          RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require squizlabs/php_codesniffer bartlett/sarif-php-sdk
+          RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require squizlabs/php_codesniffer bartlett/sarif-php-converters "1.0.x-dev#8ed4611 as 1.0.0"
     ide:
       atom:
         - name: linter-phpcs
@@ -112,7 +112,7 @@ linters:
     downgraded_reason: https://github.com/phpstan/phpstan/issues/11225
     install:
       dockerfile:
-        - RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require phpstan/phpstan:1.11.4 bartlett/sarif-php-sdk
+        - RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require phpstan/phpstan bartlett/sarif-php-converters "1.0.x-dev#8ed4611 as 1.0.0"
       idea:
         - name: PHPStan / Psalm / Generics
           url: https://plugins.jetbrains.com/plugin/12754-phpstan--psalm--generics
@@ -164,7 +164,8 @@ linters:
     config_file_name: .phplint.yml
     cli_lint_mode: list_of_files
     cli_sarif_args:
-      - "--log-sarif={{SARIF_OUTPUT_FILE}}"
+      - "--format=\\Overtrue\\PHPLint\\Output\\SarifOutput"
+      - "--output={{SARIF_OUTPUT_FILE}}"
     examples:
       - "phplint myfile.php"
       - "phplint mydir"
@@ -173,7 +174,7 @@ linters:
     install:
       dockerfile:
         - |
-          RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && phive --no-progress install overtrue/phplint --force-accept-unsigned -g
+          RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require overtrue/phplint bartlett/sarif-php-converters "1.0.x-dev#8ed4611 as 1.0.0"
   # PHP-CS-Fixer
   - linter_name: php-cs-fixer
     name: PHP_PHPCSFIXER

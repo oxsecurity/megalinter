@@ -21,8 +21,8 @@ description: How to use phpcs (configure, ignore files, ignore errors, help & ve
 
 ## Configuration in MegaLinter
 
-- Enable phpcs by adding `PHP_PHPCS` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
-- Disable phpcs by adding `PHP_PHPCS` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
+- Enable phpcs by adding `PHP_PHPCS` in [ENABLE_LINTERS variable](https://megalinter.io/7.13.0/configuration/#activation-and-deactivation)
+- Disable phpcs by adding `PHP_PHPCS` in [DISABLE_LINTERS variable](https://megalinter.io/7.13.0/configuration/#activation-and-deactivation)
 
 | Variable                              | Description                                                                                                                                                                                                         | Default value                                   |
 |---------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
@@ -59,11 +59,11 @@ Use phpcs in your favorite IDE to catch errors before MegaLinter !
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                     | Embedded linters |                                                                                                                                                                                       Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       125        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        84        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
-|         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://megalinter.io/beta/flavors/php/)         | Optimized for PHP based projects                |        56        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-php) |
+|                                                                         <!-- -->                                                                         | Flavor                                                   | Description                                     | Embedded linters |                                                                                                                                                                                          Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------|:------------------------------------------------|:----------------:|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/7.13.0/supported-linters/)   | Default MegaLinter Flavor                       |       125        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v7.13.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/7.13.0/flavors/cupcake/) | MegaLinter for the most commonly used languages |        84        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/v7.13.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+|         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://megalinter.io/7.13.0/flavors/php/)         | Optimized for PHP based projects                |        56        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/v7.13.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-php) |
 
 ## Behind the scenes
 
@@ -257,7 +257,7 @@ RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" \
 COPY --from=composer/composer:2-bin /composer /usr/bin/composer
 ENV PATH="/root/.composer/vendor/bin:${PATH}"
 # Linter install
-RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require squizlabs/php_codesniffer bartlett/sarif-php-sdk
+RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require squizlabs/php_codesniffer bartlett/sarif-php-converters "1.0.x-dev#8ed4611 as 1.0.0"
 
 ```
 

@@ -45,7 +45,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=docker depName=ghcr.io/terraform-linters/tflint
-          ARG TERRAFORM_TFLINT_VERSION=0.51.1
+          ARG TERRAFORM_TFLINT_VERSION=0.52.0
         - FROM ghcr.io/terraform-linters/tflint:v${TERRAFORM_TFLINT_VERSION} as tflint
         - COPY --link --from=tflint /usr/local/bin/tflint /usr/bin/
 
@@ -127,7 +127,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=docker depName=alpine/terragrunt
-          ARG TERRAFORM_TERRAGRUNT_VERSION=1.9.0
+          ARG TERRAFORM_TERRAGRUNT_VERSION=1.9.1
         - FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} as terragrunt
         - COPY --link --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
 
@@ -153,7 +153,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=docker depName=alpine/terragrunt
-          ARG TERRAFORM_TERRAGRUNT_VERSION=1.9.0
+          ARG TERRAFORM_TERRAGRUNT_VERSION=1.9.1
         - FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} as terragrunt
         - COPY --link --from=terragrunt /bin/terraform /usr/bin/
     ide:
