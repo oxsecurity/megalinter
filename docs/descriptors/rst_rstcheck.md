@@ -9,7 +9,7 @@ description: How to use rstcheck (configure, ignore files, ignore errors, help &
 
 ## rstcheck documentation
 
-- Version in MegaLinter: **6.2.1**
+- Version in MegaLinter: **6.2.4**
 - Visit [Official Web Site](https://github.com/myint/rstcheck#readme){target=_blank}
 - See [How to configure rstcheck rules](https://github.com/myint/rstcheck#configuration-file){target=_blank}
 - See [How to disable rstcheck rules in files](https://github.com/myint/rstcheck#ignore-specific-errors){target=_blank}
@@ -88,7 +88,7 @@ rstcheck -c .rstcheck.cfg myfile.rst
                                                                                 
  CLI of rstcheck.
  Enabled features: ['Sphinx']
- Pass one ore more rst FILES to check. Can be files or directories if 
+ Pass one or more RST FILES to check. Can be files or directories if 
  --recursive is passed too. Pass "-" if you want to read from stdin.
 
 ╭─ Options ────────────────────────────────────────────────────────────────────╮
@@ -138,7 +138,7 @@ rstcheck -c .rstcheck.cfg myfile.rst
 │                                         linting issue messages against to    │
 │                                         ignore. Can be set in config file.   │
 │                                         [default: None]                      │
-│ --version                                                                    │
+│ --version                               Print versions and exit.             │
 │ --help                                  Show this message and exit.          │
 ╰──────────────────────────────────────────────────────────────────────────────╯
 
