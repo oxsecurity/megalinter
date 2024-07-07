@@ -27,17 +27,20 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - CI
 
 - Linter versions upgrades
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.50.2 to **0.50.3** on 2024-07-07
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.9.0 to **1.9.1** on 2024-07-07
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.59.6 to **0.60.0** on 2024-07-07
 <!-- linter-versions-end -->
 
 ## [v7.13.0] - 2024-07-06
 
 - New linters
-  - Add [**ls-lint**](https://ls-lint.org/), file and folder linter, by @scolladon in https://github.com/oxsecurity/megalinter/pull/3681
+  - Add [**ls-lint**](https://ls-lint.org/), file and folder linter, by @scolladon in <https://github.com/oxsecurity/megalinter/pull/3681>
 
 - Core
-  - Handle renovate version comments in build script, by @echoix in https://github.com/oxsecurity/megalinter/pull/3617 ,  https://github.com/oxsecurity/megalinter/pull/3627 , https://github.com/oxsecurity/megalinter/pull/3643 , https://github.com/oxsecurity/megalinter/pull/3699 , https://github.com/oxsecurity/megalinter/pull/3700
+  - Handle renovate version comments in build script, by @echoix in <https://github.com/oxsecurity/megalinter/pull/3617> ,  <https://github.com/oxsecurity/megalinter/pull/3627> , <https://github.com/oxsecurity/megalinter/pull/3643> , <https://github.com/oxsecurity/megalinter/pull/3699> , <https://github.com/oxsecurity/megalinter/pull/3700>
   - Update base image to python:3.12.4-alpine3.20
-  - Use `dotnet8-sdk` available in the main repository, by @TommyE123 in https://github.com/oxsecurity/megalinter/pull/3696
+  - Use `dotnet8-sdk` available in the main repository, by @TommyE123 in <https://github.com/oxsecurity/megalinter/pull/3696>
 
 - Media
   - [Introducing MegaLinter: Streamlining Code Quality Checks Across Multiple Languages](https://cloudtuned.hashnode.dev/introducing-megalinter-streamlining-code-quality-checks-across-multiple-languages), by Cloud Tuned
@@ -45,33 +48,33 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [Video: How to: Secrets scanning](https://youtu.be/iBMWAk5QIfM?si=EVcJilkz7Y2jdn6e&t=649), by [Hackitect's playground](https://www.youtube.com/@hackitectsplayground)
 
 - Linters enhancements
-  - Add SARIF support (v2) for all PHP linters by @llaville in https://github.com/oxsecurity/megalinter/pull/3745 , https://github.com/oxsecurity/megalinter/pull/3729
-  - Add python package Pygments to rst-lint venv, by @bobidle in https://github.com/oxsecurity/megalinter/pull/3631
-  - [CSharpier](https://csharpier.com) added ability to override config filename and path, by @TommyE123 in https://github.com/oxsecurity/megalinter/pull/3664
-  - [xmllint](https://gnome.pages.gitlab.gnome.org/libxml2/xmllint.html) added support for `xsd` files, by @TommyE123 in https://github.com/oxsecurity/megalinter/pull/3665
+  - Add SARIF support (v2) for all PHP linters by @llaville in <https://github.com/oxsecurity/megalinter/pull/3745> , <https://github.com/oxsecurity/megalinter/pull/3729>
+  - Add python package Pygments to rst-lint venv, by @bobidle in <https://github.com/oxsecurity/megalinter/pull/3631>
+  - [CSharpier](https://csharpier.com) added ability to override config filename and path, by @TommyE123 in <https://github.com/oxsecurity/megalinter/pull/3664>
+  - [xmllint](https://gnome.pages.gitlab.gnome.org/libxml2/xmllint.html) added support for `xsd` files, by @TommyE123 in <https://github.com/oxsecurity/megalinter/pull/3665>
 
 - Fixes
-  - Improve support for single argument in `get_list_args` function, by @TommyE123 in https://github.com/oxsecurity/megalinter/pull/3589
-  - [ansible-lint](https://ansible-lint.readthedocs.io) Improved activation by checking for `.ansible-lint` config file, by @TommyE123 in https://github.com/oxsecurity/megalinter/pull/3697
-  - [DevSkim](https://github.com/microsoft/DevSkim) fixed fatal errors when scanning and ability to override config path, by @TommyE123 in https://github.com/oxsecurity/megalinter/pull/3673
-  - [GitLeaks](https://github.com/gitleaks/gitleaks) add missing schema properties, by @TommyE123 in https://github.com/oxsecurity/megalinter/pull/3675
-  - [Powershell](https://github.com/PowerShell/PSScriptAnalyzer#readme) Error table truncation improvements, by @TommyE123 in https://github.com/oxsecurity/megalinter/pull/3620
-  - [Powershell](https://github.com/PowerShell/PSScriptAnalyzer#readme) added missing schema property `POWERSHELL_POWERSHELL_FORMATTER_OUTPUT_ENCODING`, by @TommyE123 in https://github.com/oxsecurity/megalinter/pull/3678
-  - [syft](https://github.com/anchore/syft) use `scan` instead of deprecated `packages` arg, by @TommyE123 in https://github.com/oxsecurity/megalinter/pull/3613
-  - [tflint](https://github.com/terraform-linters/tflint) added missing schema property `TERRAFORM_TFLINT_SECURED_ENV`, by @TommyE123 in https://github.com/oxsecurity/megalinter/pull/3679
-  - [tflint](https://github.com/terraform-linters/tflint) fixed deprecated argument and other improvements to default `.tflint.hcl` template, by @TommyE123 in https://github.com/oxsecurity/megalinter/pull/3688
-  - [xmllint](https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home) added missing schema properties `XML_XMLLINT_AUTOFORMAT` and `XML_XMLLINT_INDENT`, by @TommyE123 in https://github.com/oxsecurity/megalinter/pull/3677
-  - [yamllint](https://github.com/adrienverge/yamllint) fix error/warning count to work with different log output formats, by @TommyE123 in https://github.com/oxsecurity/megalinter/pull/3612
+  - Improve support for single argument in `get_list_args` function, by @TommyE123 in <https://github.com/oxsecurity/megalinter/pull/3589>
+  - [ansible-lint](https://ansible-lint.readthedocs.io) Improved activation by checking for `.ansible-lint` config file, by @TommyE123 in <https://github.com/oxsecurity/megalinter/pull/3697>
+  - [DevSkim](https://github.com/microsoft/DevSkim) fixed fatal errors when scanning and ability to override config path, by @TommyE123 in <https://github.com/oxsecurity/megalinter/pull/3673>
+  - [GitLeaks](https://github.com/gitleaks/gitleaks) add missing schema properties, by @TommyE123 in <https://github.com/oxsecurity/megalinter/pull/3675>
+  - [Powershell](https://github.com/PowerShell/PSScriptAnalyzer#readme) Error table truncation improvements, by @TommyE123 in <https://github.com/oxsecurity/megalinter/pull/3620>
+  - [Powershell](https://github.com/PowerShell/PSScriptAnalyzer#readme) added missing schema property `POWERSHELL_POWERSHELL_FORMATTER_OUTPUT_ENCODING`, by @TommyE123 in <https://github.com/oxsecurity/megalinter/pull/3678>
+  - [syft](https://github.com/anchore/syft) use `scan` instead of deprecated `packages` arg, by @TommyE123 in <https://github.com/oxsecurity/megalinter/pull/3613>
+  - [tflint](https://github.com/terraform-linters/tflint) added missing schema property `TERRAFORM_TFLINT_SECURED_ENV`, by @TommyE123 in <https://github.com/oxsecurity/megalinter/pull/3679>
+  - [tflint](https://github.com/terraform-linters/tflint) fixed deprecated argument and other improvements to default `.tflint.hcl` template, by @TommyE123 in <https://github.com/oxsecurity/megalinter/pull/3688>
+  - [xmllint](https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home) added missing schema properties `XML_XMLLINT_AUTOFORMAT` and `XML_XMLLINT_INDENT`, by @TommyE123 in <https://github.com/oxsecurity/megalinter/pull/3677>
+  - [yamllint](https://github.com/adrienverge/yamllint) fix error/warning count to work with different log output formats, by @TommyE123 in <https://github.com/oxsecurity/megalinter/pull/3612>
 
 - Doc
-  - Update documentation icons by @nvuillam in https://github.com/oxsecurity/megalinter/pull/3625
+  - Update documentation icons by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/3625>
 
 - Flavors
-  - Add gherkin-lint in c_cpp flavor, by @nvuillam in https://github.com/oxsecurity/megalinter/pull/3698
+  - Add gherkin-lint in c_cpp flavor, by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/3698>
 
 - CI
-  - Bump actions/checkout from 3 to 4, by @KristjanESPERANTO in https://github.com/oxsecurity/megalinter/pull/2994
-  - Reduce dependabot PR frequency to weekly by @echoix in https://github.com/oxsecurity/megalinter/pull/3642
+  - Bump actions/checkout from 3 to 4, by @KristjanESPERANTO in <https://github.com/oxsecurity/megalinter/pull/2994>
+  - Reduce dependabot PR frequency to weekly by @echoix in <https://github.com/oxsecurity/megalinter/pull/3642>
 
 - Linter versions upgrades
   - [ansible-lint](https://ansible-lint.readthedocs.io/) from 24.2.3 to **24.6.1**
