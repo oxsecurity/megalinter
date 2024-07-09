@@ -34,6 +34,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [rstcheck](https://github.com/myint/rstcheck) from 6.2.1 to **6.2.4** on 2024-07-07
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.5.0 to **1.5.1** on 2024-07-08
   - [checkov](https://www.checkov.io/) from 3.2.175 to **3.2.177** on 2024-07-08
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.5.1 to **1.5.2** on 2024-07-09
+  - [checkov](https://www.checkov.io/) from 3.2.177 to **3.2.179** on 2024-07-09
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.15.2 to **8.16.0** on 2024-07-09
 <!-- linter-versions-end -->
 
 ## [v7.13.0] - 2024-07-06
