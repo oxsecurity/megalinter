@@ -32,6 +32,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.59.6 to **0.60.0** on 2024-07-07
   - [checkov](https://www.checkov.io/) from 3.2.174 to **3.2.175** on 2024-07-07
   - [rstcheck](https://github.com/myint/rstcheck) from 6.2.1 to **6.2.4** on 2024-07-07
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.5.0 to **1.5.1** on 2024-07-08
+  - [checkov](https://www.checkov.io/) from 3.2.175 to **3.2.177** on 2024-07-08
 <!-- linter-versions-end -->
 
 ## [v7.13.0] - 2024-07-06
