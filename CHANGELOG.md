@@ -37,6 +37,17 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.5.1 to **1.5.2** on 2024-07-09
   - [checkov](https://www.checkov.io/) from 3.2.177 to **3.2.179** on 2024-07-09
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.15.2 to **8.16.0** on 2024-07-09
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 24.6.1 to **24.7.0** on 2024-07-14
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.5.2 to **1.6.1** on 2024-07-14
+  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 8.0.106 to **8.0.107** on 2024-07-14
+  - [stylelint](https://stylelint.io) from 16.6.1 to **16.7.0** on 2024-07-14
+  - [prettier](https://prettier.io/) from 3.3.2 to **3.3.3** on 2024-07-14
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.370 to **1.1.371** on 2024-07-14
+  - [ruff](https://github.com/astral-sh/ruff) from 0.5.1 to **0.5.2** on 2024-07-14
+  - [checkov](https://www.checkov.io/) from 3.2.179 to **3.2.189** on 2024-07-14
+  - [syft](https://github.com/anchore/syft) from 1.8.0 to **1.9.0** on 2024-07-14
+  - [rubocop](https://rubocop.org/) from 1.64.1 to **1.65.0** on 2024-07-14
+  - [vale](https://vale.sh/) from 3.6.0 to **3.6.1** on 2024-07-14
 <!-- linter-versions-end -->
 
 ## [v7.13.0] - 2024-07-06
