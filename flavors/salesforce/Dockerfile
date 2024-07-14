@@ -73,7 +73,7 @@ ARG DETEKT_VERSION=1.23.6
 # renovate: datasource=npm depName=@salesforce/sfdx-scanner
 ARG SALESFORCE_SFDX_SCANNER_VERSION=4.3.2
 # renovate: datasource=npm depName=lightning-flow-scanner
-ARG LIGHTNING_FLOW_SCANNER_VERSION=2.28.0
+ARG LIGHTNING_FLOW_SCANNER_VERSION=2.30.0
 #ARG__END
 
 # Static args
