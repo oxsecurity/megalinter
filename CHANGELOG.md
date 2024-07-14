@@ -19,6 +19,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Reporters
 
 - Fixes
+  - [terrascan](https://runterrascan.io/) fixed errors and removed redundant code
 
 - Doc
 
