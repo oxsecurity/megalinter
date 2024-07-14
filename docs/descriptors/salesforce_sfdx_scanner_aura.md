@@ -89,7 +89,7 @@ sf scanner:run
 ### Help content
 
 ```shell
-(node:1952) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(node:1953) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
 (Use `node --trace-deprecation ...` to show where the warning was created)
  ›   Warning: @salesforce/cli update available from 2.48.6 to 2.49.7.
 Scan a codebase with all the rules in the registry, or use parameters to filter the rules based on rulename, category, or ruleset.
@@ -145,7 +145,7 @@ GLOBAL FLAGS
 COMMANDS
   scanner run dfa  Scan codebase with all DFA rules by default.
 
-(node:1964) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(node:1965) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
 (Use `node --trace-deprecation ...` to show where the warning was created)
  ›   Warning: @salesforce/cli update available from 2.48.6 to 2.49.7.
  ›   Warning: Plugin @salesforce/sfdx-scanner (4.3.2) differs from the version

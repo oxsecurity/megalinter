@@ -48,6 +48,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [syft](https://github.com/anchore/syft) from 1.8.0 to **1.9.0** on 2024-07-14
   - [rubocop](https://rubocop.org/) from 1.64.1 to **1.65.0** on 2024-07-14
   - [vale](https://vale.sh/) from 3.6.0 to **3.6.1** on 2024-07-14
+  - [vale](https://vale.sh/) from 3.6.1 to **3.6.0** on 2024-07-14
 <!-- linter-versions-end -->
 
 ## [v7.13.0] - 2024-07-06
