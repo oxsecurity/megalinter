@@ -29,8 +29,8 @@ ARG REPOSITORY_GITLEAKS_VERSION=v8.18.4
 ARG REPOSITORY_KICS_VERSION=v2.1.1-alpine
 # renovate: datasource=docker depName=trufflesecurity/trufflehog 
 ARG REPOSITORY_TRUFFLEHOG_VERSION=3.79.0
-# renovate: datasource=docker depName=
-ARG SPELL_VALE_VERSION=v3.6.0
+# renovate: datasource=docker depName=jdkato/vale
+ARG SPELL_VALE_VERSION=v3.6.1
 # renovate: datasource=docker depName=ghcr.io/terraform-linters/tflint
 ARG TERRAFORM_TFLINT_VERSION=0.52.0
 # renovate: datasource=docker depName=alpine/terragrunt
