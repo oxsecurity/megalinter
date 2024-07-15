@@ -12,6 +12,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Core
   - Allow to override CLI_LINT_MODE when defined as project
+  - Allow to use absolute paths for LINTER_RULES_PATH
 
 - Media
 
