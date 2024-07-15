@@ -11,6 +11,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - New linters
 
 - Core
+  - Allow to override CLI_LINT_MODE when defined as project
 
 - Media
 
