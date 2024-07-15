@@ -1,15 +1,13 @@
-apiVersion: v1
-kind: Service
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: {{ include "bad.fullname" . }}
-  labels:
-    {{- include "bad.labels" . | nindent 4 }} 
+  name: nginx-deployment
 spec:
-  type: {{ .Values.service.type }}
-  ports:
-    - port: {{ .Values.service.port }}
-      targetPort: http
-      protocol: TCP
-      name: http
-  selector:
-    {{- include "bad.selectorLabels" . | nindent 4 }}
+  replicas: 1
+  template:
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:latest
+        securityContext:
+          allowPrivilegeEscalation: true # this field should be set to false explicitly
