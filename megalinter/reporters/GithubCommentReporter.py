@@ -48,11 +48,16 @@ class GithubCommentReporter(Reporter):
 
         """
         workflow = os.getenv("GITHUB_WORKFLOW")
+        github_workspace = os.getenv("GITHUB_WORKSPACE")
+        workspace = config.get(self.master.request_id, "DEFAULT_WORKSPACE", github_workspace)
+        if github_workspace is None or workspace == github_workspace:
+            workspace = None
         jobid = os.getenv("GITHUB_JOB")
         workflow = workflow and f"workflow={workflow!r}"
         jobid = jobid and f"jobid={jobid!r}"
+        workspace = workspace and f"workspace={workspace!r}"
         identifier = " ".join(
-            ["github-comment-reporter", *filter(None, (workflow, jobid))]
+            ["github-comment-reporter", *filter(None, (workflow, jobid, workspace))]
         )
         return f"<!-- megalinter: {identifier} -->"
 

@@ -11,6 +11,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - New linters
 
 - Core
+  - Handle GitHub comment markers for multiple MegaLinter workflows in the same repo
 
 - Media
 
