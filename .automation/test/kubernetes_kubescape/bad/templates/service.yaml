@@ -1,13 +1,12 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: Service
 metadata:
-  name: nginx-deployment
+  name: recommendationservice
 spec:
-  replicas: 1
-  template:
-    spec:
-      containers:
-      - name: nginx
-        image: nginx:latest
-        securityContext:
-          allowPrivilegeEscalation: true # this field should be set to false explicitly
+  type: ClusterIP
+  selector:
+    app: recommendationservice
+  ports:
+  - name: grpc
+    port: 8080
+    targetPort: 8080
