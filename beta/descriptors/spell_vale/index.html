@@ -3376,7 +3376,7 @@
 <p>MegaLinter analyze markdown and restructuredText files by default, you can change that using SPELL_VALE_FILE_EXTENSIONS variable.</p>
 <h2 id="vale-documentation">vale documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>3.6.0</strong></li>
+<li>Version in MegaLinter: <strong>3.6.1</strong></li>
 <li>Visit <a href="https://vale.sh/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://vale.sh/explorer/" target="_blank">How to configure vale rules</a></li>
 <li>See <a href="https://vale.sh/docs/topics/vocab/" target="_blank">How to disable vale rules in files</a></li>
@@ -3419,7 +3419,7 @@
 </tr>
 <tr>
 <td>SPELL_VALE_CLI_LINT_MODE</td>
-<td>Override default CLI lint mode<br/>- <code>file</code>: Calls the linter for each file<br/>- <code>list_of_files</code>: Call the linter with the list of files as argument<br/>- <code>project</code>: Call the linter from the root of the project</td>
+<td>Override default CLI lint mode<br/>⚠️ As default value is <strong>project</strong>, overriding might not work<br/>- <code>file</code>: Calls the linter for each file<br/>- <code>list_of_files</code>: Call the linter with the list of files as argument<br/>- <code>project</code>: Call the linter from the root of the project</td>
 <td><code>list_of_files</code></td>
 </tr>
 <tr>
@@ -3693,8 +3693,8 @@ Flags:
 Commands:
 
  ls-config        Print the current configuration to stdout.
- ls-metrics       Print the given file's internal metrics to stdout.
  ls-dirs          Print the default configuration directories to stdout.
+ ls-metrics       Print the given file's internal metrics to stdout.
  ls-vars          Print the supported environment variables to stdout.
  sync             Download and install external configuration sources.
 

@@ -3413,6 +3413,11 @@
 <td></td>
 </tr>
 <tr>
+<td>SALESFORCE_SFDX_SCANNER_APEX_CLI_LINT_MODE</td>
+<td>Override default CLI lint mode<br/>- <code>file</code>: Calls the linter for each file<br/>- <code>list_of_files</code>: Call the linter with the list of files as argument<br/>- <code>project</code>: Call the linter from the root of the project</td>
+<td><code>project</code></td>
+</tr>
+<tr>
 <td>SALESFORCE_SFDX_SCANNER_APEX_PRE_COMMANDS</td>
 <td>List of bash commands to run before the linter</td>
 <td>None</td>
@@ -3544,7 +3549,7 @@
 <pre><code class="language-shell">sf scanner:run
 </code></pre>
 <h3 id="help-content">Help content</h3>
-<pre><code class="language-shell">(node:1759) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+<pre><code class="language-shell">(node:1760) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
 (Use `node --trace-deprecation ...` to show where the warning was created)
  ›   Warning: @salesforce/cli update available from 2.48.6 to 2.49.7.
 Scan a codebase with all the rules in the registry, or use parameters to filter the rules based on rulename, category, or ruleset.
@@ -3600,7 +3605,7 @@ GLOBAL FLAGS
 COMMANDS
   scanner run dfa  Scan codebase with all DFA rules by default.
 
-(node:1771) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(node:1772) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
 (Use `node --trace-deprecation ...` to show where the warning was created)
  ›   Warning: @salesforce/cli update available from 2.48.6 to 2.49.7.
  ›   Warning: Plugin @salesforce/sfdx-scanner (4.3.2) differs from the version
@@ -3832,7 +3837,7 @@ ARG SALESFORCE_CLI_VERSION=2.48.6
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
 ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.7.0
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=4.44.2
+ARG SFDX_HARDIS_VERSION=4.45.0
 ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 RUN sf plugins install @salesforce/plugin-packaging@${SALESFORCE_PLUGIN_PACKAGING_VERSION} \

@@ -3410,6 +3410,11 @@
 <td></td>
 </tr>
 <tr>
+<td>SALESFORCE_SFDX_SCANNER_LWC_CLI_LINT_MODE</td>
+<td>Override default CLI lint mode<br/>- <code>file</code>: Calls the linter for each file<br/>- <code>list_of_files</code>: Call the linter with the list of files as argument<br/>- <code>project</code>: Call the linter from the root of the project</td>
+<td><code>project</code></td>
+</tr>
+<tr>
 <td>SALESFORCE_SFDX_SCANNER_LWC_PRE_COMMANDS</td>
 <td>List of bash commands to run before the linter</td>
 <td>None</td>
@@ -3811,7 +3816,7 @@ ARG SALESFORCE_CLI_VERSION=2.48.6
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
 ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.7.0
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=4.44.2
+ARG SFDX_HARDIS_VERSION=4.45.0
 ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 RUN sf plugins install @salesforce/plugin-packaging@${SALESFORCE_PLUGIN_PACKAGING_VERSION} \

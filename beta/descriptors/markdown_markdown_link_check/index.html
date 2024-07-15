@@ -3404,7 +3404,7 @@
 </tr>
 <tr>
 <td>MARKDOWN_MARKDOWN_LINK_CHECK_CLI_LINT_MODE</td>
-<td>Override default CLI lint mode<br/>- <code>file</code>: Calls the linter for each file<br/>- <code>list_of_files</code>: Call the linter with the list of files as argument<br/>- <code>project</code>: Call the linter from the root of the project</td>
+<td>Override default CLI lint mode<br/>⚠️ As default value is <strong>project</strong>, overriding might not work<br/>- <code>file</code>: Calls the linter for each file<br/>- <code>list_of_files</code>: Call the linter with the list of files as argument<br/>- <code>project</code>: Call the linter from the root of the project</td>
 <td><code>list_of_files</code></td>
 </tr>
 <tr>
@@ -3603,7 +3603,7 @@
 <pre><code class="language-shell">markdown-link-check -c .markdown-link-check.json myfile.md
 </code></pre>
 <h3 id="help-content">Help content</h3>
-<pre><code class="language-shell">(node:1522) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+<pre><code class="language-shell">(node:1520) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
 (Use `node --trace-deprecation ...` to show where the warning was created)
 Usage: markdown-link-check [options] [filenamesOrUrls...]
 
