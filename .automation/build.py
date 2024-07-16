@@ -1455,7 +1455,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         cli_lint_mode_doc_md = (
             f"| {linter.name}_CLI_LINT_MODE | Override default CLI lint mode<br/>"
         )
-        if linter.cli_lint_mode != "project":
+        if linter.cli_lint_mode == "project":
             cli_lint_mode_doc_md += (
                 "⚠️ As default value is **project**, overriding might not work<br/>"
             )
