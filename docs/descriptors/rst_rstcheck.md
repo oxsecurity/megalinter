@@ -9,7 +9,7 @@ description: How to use rstcheck (configure, ignore files, ignore errors, help &
 
 ## rstcheck documentation
 
-- Version in MegaLinter: **6.2.1**
+- Version in MegaLinter: **6.2.4**
 - Visit [Official Web Site](https://github.com/myint/rstcheck#readme){target=_blank}
 - See [How to configure rstcheck rules](https://github.com/myint/rstcheck#configuration-file){target=_blank}
 - See [How to disable rstcheck rules in files](https://github.com/myint/rstcheck#ignore-specific-errors){target=_blank}
@@ -18,26 +18,26 @@ description: How to use rstcheck (configure, ignore files, ignore errors, help &
 
 ## Configuration in MegaLinter
 
-- Enable rstcheck by adding `RST_RSTCHECK` in [ENABLE_LINTERS variable](https://megalinter.io/7.13.0/configuration/#activation-and-deactivation)
-- Disable rstcheck by adding `RST_RSTCHECK` in [DISABLE_LINTERS variable](https://megalinter.io/7.13.0/configuration/#activation-and-deactivation)
+- Enable rstcheck by adding `RST_RSTCHECK` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
+- Disable rstcheck by adding `RST_RSTCHECK` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-| Variable                                 | Description                                                                                                                                                                                  | Default value                                   |
-|------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
-| RST_RSTCHECK_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                                                 |
-| RST_RSTCHECK_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                         |                                                 |
-| RST_RSTCHECK_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                           | Include every file                              |
-| RST_RSTCHECK_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                     | Exclude no file                                 |
-| RST_RSTCHECK_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `project`: Call the linter from the root of the project                                                    | `file`                                          |
-| RST_RSTCHECK_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                      | `[".rst"]`                                      |
-| RST_RSTCHECK_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file                              |
-| RST_RSTCHECK_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                               | None                                            |
-| RST_RSTCHECK_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                | None                                            |
-| RST_RSTCHECK_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling RST_RSTCHECK and its pre/post commands                                                                                          | None                                            |
-| RST_RSTCHECK_CONFIG_FILE                 | rstcheck configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                          | `.rstcheck.cfg`                                 |
-| RST_RSTCHECK_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                 | Workspace folder, then MegaLinter default rules |
-| RST_RSTCHECK_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`                                         |
-| RST_RSTCHECK_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                             |
-| RST_RSTCHECK_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `['rstcheck']`                                  |
+| Variable                                 | Description                                                                                                                                                                                                 | Default value                                   |
+|------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
+| RST_RSTCHECK_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                    |                                                 |
+| RST_RSTCHECK_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                        |                                                 |
+| RST_RSTCHECK_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                          | Include every file                              |
+| RST_RSTCHECK_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                    | Exclude no file                                 |
+| RST_RSTCHECK_CLI_LINT_MODE               | Override default CLI lint mode<br/>⚠️ As default value is **project**, overriding might not work<br/>- `file`: Calls the linter for each file<br/>- `project`: Call the linter from the root of the project | `file`                                          |
+| RST_RSTCHECK_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                     | `[".rst"]`                                      |
+| RST_RSTCHECK_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                | Include every file                              |
+| RST_RSTCHECK_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                              | None                                            |
+| RST_RSTCHECK_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                               | None                                            |
+| RST_RSTCHECK_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling RST_RSTCHECK and its pre/post commands                                                                                                         | None                                            |
+| RST_RSTCHECK_CONFIG_FILE                 | rstcheck configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                         | `.rstcheck.cfg`                                 |
+| RST_RSTCHECK_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                | Workspace folder, then MegaLinter default rules |
+| RST_RSTCHECK_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                  | `false`                                         |
+| RST_RSTCHECK_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                            | `0`                                             |
+| RST_RSTCHECK_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                     | `['rstcheck']`                                  |
 
 ## IDE Integration
 
@@ -51,11 +51,11 @@ Use rstcheck in your favorite IDE to catch errors before MegaLinter !
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                   | Description                                     | Embedded linters |                                                                                                                                                                                          Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------|:------------------------------------------------|:----------------:|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/7.13.0/supported-linters/)   | Default MegaLinter Flavor                       |       125        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v7.13.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/7.13.0/flavors/cupcake/) | MegaLinter for the most commonly used languages |        84        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/v7.13.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/7.13.0/flavors/python/)   | Optimized for PYTHON based projects             |        64        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/v7.13.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
+|                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                     | Embedded linters |                                                                                                                                                                                       Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       125        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        84        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)   | Optimized for PYTHON based projects             |        64        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
 
 ## Behind the scenes
 
@@ -88,7 +88,7 @@ rstcheck -c .rstcheck.cfg myfile.rst
                                                                                 
  CLI of rstcheck.
  Enabled features: ['Sphinx']
- Pass one ore more rst FILES to check. Can be files or directories if 
+ Pass one or more RST FILES to check. Can be files or directories if 
  --recursive is passed too. Pass "-" if you want to read from stdin.
 
 ╭─ Options ────────────────────────────────────────────────────────────────────╮
@@ -138,7 +138,7 @@ rstcheck -c .rstcheck.cfg myfile.rst
 │                                         linting issue messages against to    │
 │                                         ignore. Can be set in config file.   │
 │                                         [default: None]                      │
-│ --version                                                                    │
+│ --version                               Print versions and exit.             │
 │ --help                                  Show this message and exit.          │
 ╰──────────────────────────────────────────────────────────────────────────────╯
 

@@ -29,22 +29,23 @@ See more details in [Help](#help-content)
 
 ## Configuration in MegaLinter
 
-- Enable sfdx-scanner-lwc by adding `SALESFORCE_SFDX_SCANNER_LWC` in [ENABLE_LINTERS variable](https://megalinter.io/7.13.0/configuration/#activation-and-deactivation)
-- Disable sfdx-scanner-lwc by adding `SALESFORCE_SFDX_SCANNER_LWC` in [DISABLE_LINTERS variable](https://megalinter.io/7.13.0/configuration/#activation-and-deactivation)
+- Enable sfdx-scanner-lwc by adding `SALESFORCE_SFDX_SCANNER_LWC` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
+- Disable sfdx-scanner-lwc by adding `SALESFORCE_SFDX_SCANNER_LWC` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-| Variable                                                | Description                                                                                                        | Default value                                   |
-|---------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
-| SALESFORCE_SFDX_SCANNER_LWC_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                           |                                                 |
-| SALESFORCE_SFDX_SCANNER_LWC_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`               |                                                 |
-| SALESFORCE_SFDX_SCANNER_LWC_PRE_COMMANDS                | List of bash commands to run before the linter                                                                     | None                                            |
-| SALESFORCE_SFDX_SCANNER_LWC_POST_COMMANDS               | List of bash commands to run after the linter                                                                      | None                                            |
-| SALESFORCE_SFDX_SCANNER_LWC_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling SALESFORCE_SFDX_SCANNER_LWC and its pre/post commands | None                                            |
-| SALESFORCE_SFDX_SCANNER_LWC_CONFIG_FILE                 | sfdx-scanner-lwc configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                        | `--eslintconfig`                                |
-| SALESFORCE_SFDX_SCANNER_LWC_RULES_PATH                  | Path where to find linter configuration file                                                                       | Workspace folder, then MegaLinter default rules |
-| SALESFORCE_SFDX_SCANNER_LWC_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                         | `false`                                         |
-| SALESFORCE_SFDX_SCANNER_LWC_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                   | `0`                                             |
-| SALESFORCE_SFDX_SCANNER_LWC_CLI_EXECUTABLE              | Override CLI executable                                                                                            | `['sf']`                                        |
-| SALESFORCE_DIRECTORY                                    | Directory containing SALESFORCE files (use `any` to always activate the linter)                                    | `force-app`                                     |
+| Variable                                                | Description                                                                                                                                                                                                         | Default value                                   |
+|---------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
+| SALESFORCE_SFDX_SCANNER_LWC_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                                                 |
+| SALESFORCE_SFDX_SCANNER_LWC_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                                |                                                 |
+| SALESFORCE_SFDX_SCANNER_LWC_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `project`                                       |
+| SALESFORCE_SFDX_SCANNER_LWC_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                                            |
+| SALESFORCE_SFDX_SCANNER_LWC_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                                            |
+| SALESFORCE_SFDX_SCANNER_LWC_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling SALESFORCE_SFDX_SCANNER_LWC and its pre/post commands                                                                                                  | None                                            |
+| SALESFORCE_SFDX_SCANNER_LWC_CONFIG_FILE                 | sfdx-scanner-lwc configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                         | `--eslintconfig`                                |
+| SALESFORCE_SFDX_SCANNER_LWC_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
+| SALESFORCE_SFDX_SCANNER_LWC_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                         |
+| SALESFORCE_SFDX_SCANNER_LWC_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
+| SALESFORCE_SFDX_SCANNER_LWC_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `['sf']`                                        |
+| SALESFORCE_DIRECTORY                                    | Directory containing SALESFORCE files (use `any` to always activate the linter)                                                                                                                                     | `force-app`                                     |
 
 ## IDE Integration
 
@@ -58,10 +59,10 @@ Use sfdx-scanner-lwc in your favorite IDE to catch errors before MegaLinter !
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                         | Description                             | Embedded linters |                                                                                                                                                                                                Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------|:----------------------------------------|:----------------:|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/7.13.0/supported-linters/)         | Default MegaLinter Flavor               |       125        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v7.13.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://megalinter.io/7.13.0/flavors/salesforce/) | Optimized for Salesforce based projects |        56        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/v7.13.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce) |
+|                                                                         <!-- -->                                                                         | Flavor                                                       | Description                             | Embedded linters |                                                                                                                                                                                             Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------|:----------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor               |       125        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://megalinter.io/beta/flavors/salesforce/) | Optimized for Salesforce based projects |        56        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce) |
 
 ## Behind the scenes
 
@@ -89,7 +90,7 @@ sf scanner:run
 ### Help content
 
 ```shell
-(node:2148) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(node:2146) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
 (Use `node --trace-deprecation ...` to show where the warning was created)
 Scan a codebase with all the rules in the registry, or use parameters to filter the rules based on rulename, category, or ruleset.
 
@@ -144,10 +145,8 @@ GLOBAL FLAGS
 COMMANDS
   scanner run dfa  Scan codebase with all DFA rules by default.
 
-(node:2160) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(node:2158) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
 (Use `node --trace-deprecation ...` to show where the warning was created)
- ›   Warning: Plugin @salesforce/sfdx-scanner (4.3.2) differs from the version
- ›   specified by sf (4.3.0)
 Warning: We're continually improving Salesforce Code Analyzer. Tell us what you think! Give feedback at https://research.net/r/SalesforceCA
  name                                                   languages   categories            rulesets [dep] engine            is dfa is pilot
  ────────────────────────────────────────────────────── ─────────── ───────────────────── ────────────── ───────────────── ────── ────────
@@ -372,11 +371,11 @@ Warning: We're continually improving Salesforce Code Analyzer. Tell us what you 
 ```dockerfile
 # Parent descriptor install
 # renovate: datasource=npm depName=@salesforce/cli
-ARG SALESFORCE_CLI_VERSION=2.48.6
+ARG SALESFORCE_CLI_VERSION=2.49.7
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
-ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.7.0
+ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.7.1
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=4.42.0
+ARG SFDX_HARDIS_VERSION=4.45.0
 ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 RUN sf plugins install @salesforce/plugin-packaging@${SALESFORCE_PLUGIN_PACKAGING_VERSION} \

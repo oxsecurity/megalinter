@@ -498,6 +498,17 @@
       "title": "ANSIBLE_ANSIBLE_LINT: CLI Executable",
       "type": "array"
     },
+    "ANSIBLE_ANSIBLE_LINT_CLI_LINT_MODE": {
+      "$id": "#/properties/ANSIBLE_ANSIBLE_LINT_CLI_LINT_MODE",
+      "default": "project",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "ANSIBLE_ANSIBLE_LINT: Override default cli lint mode",
+      "type": "string"
+    },
     "ANSIBLE_ANSIBLE_LINT_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/ANSIBLE_ANSIBLE_LINT_COMMAND_REMOVE_ARGUMENTS",
       "description": "ANSIBLE_ANSIBLE_LINT: User custom arguments to remove before calling linter",
@@ -2673,6 +2684,17 @@
       },
       "title": "COPYPASTE_JSCPD: CLI Executable",
       "type": "array"
+    },
+    "COPYPASTE_JSCPD_CLI_LINT_MODE": {
+      "$id": "#/properties/COPYPASTE_JSCPD_CLI_LINT_MODE",
+      "default": "project",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "COPYPASTE_JSCPD: Override default cli lint mode",
+      "type": "string"
     },
     "COPYPASTE_JSCPD_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/COPYPASTE_JSCPD_COMMAND_REMOVE_ARGUMENTS",
@@ -6091,6 +6113,17 @@
       "title": "GO_GOLANGCI_LINT: CLI Executable",
       "type": "array"
     },
+    "GO_GOLANGCI_LINT_CLI_LINT_MODE": {
+      "$id": "#/properties/GO_GOLANGCI_LINT_CLI_LINT_MODE",
+      "default": "project",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "GO_GOLANGCI_LINT: Override default cli lint mode",
+      "type": "string"
+    },
     "GO_GOLANGCI_LINT_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/GO_GOLANGCI_LINT_COMMAND_REMOVE_ARGUMENTS",
       "description": "GO_GOLANGCI_LINT: User custom arguments to remove before calling linter",
@@ -8449,6 +8482,17 @@
       "title": "JSON_NPM_PACKAGE_JSON_LINT: CLI Executable",
       "type": "array"
     },
+    "JSON_NPM_PACKAGE_JSON_LINT_CLI_LINT_MODE": {
+      "$id": "#/properties/JSON_NPM_PACKAGE_JSON_LINT_CLI_LINT_MODE",
+      "default": "project",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "JSON_NPM_PACKAGE_JSON_LINT: Override default cli lint mode",
+      "type": "string"
+    },
     "JSON_NPM_PACKAGE_JSON_LINT_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/JSON_NPM_PACKAGE_JSON_LINT_COMMAND_REMOVE_ARGUMENTS",
       "description": "JSON_NPM_PACKAGE_JSON_LINT: User custom arguments to remove before calling linter",
@@ -9154,6 +9198,17 @@
       "title": "KOTLIN_DETEKT: CLI Executable",
       "type": "array"
     },
+    "KOTLIN_DETEKT_CLI_LINT_MODE": {
+      "$id": "#/properties/KOTLIN_DETEKT_CLI_LINT_MODE",
+      "default": "project",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "KOTLIN_DETEKT: Override default cli lint mode",
+      "type": "string"
+    },
     "KOTLIN_DETEKT_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/KOTLIN_DETEKT_COMMAND_REMOVE_ARGUMENTS",
       "description": "KOTLIN_DETEKT: User custom arguments to remove before calling linter",
@@ -9484,6 +9539,17 @@
       "title": "KUBERNETES_HELM: CLI Executable",
       "type": "array"
     },
+    "KUBERNETES_HELM_CLI_LINT_MODE": {
+      "$id": "#/properties/KUBERNETES_HELM_CLI_LINT_MODE",
+      "default": "project",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "KUBERNETES_HELM: Override default cli lint mode",
+      "type": "string"
+    },
     "KUBERNETES_HELM_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/KUBERNETES_HELM_COMMAND_REMOVE_ARGUMENTS",
       "description": "KUBERNETES_HELM: User custom arguments to remove before calling linter",
@@ -9768,6 +9834,17 @@
       },
       "title": "KUBERNETES_KUBESCAPE: CLI Executable",
       "type": "array"
+    },
+    "KUBERNETES_KUBESCAPE_CLI_LINT_MODE": {
+      "$id": "#/properties/KUBERNETES_KUBESCAPE_CLI_LINT_MODE",
+      "default": "project",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "KUBERNETES_KUBESCAPE: Override default cli lint mode",
+      "type": "string"
     },
     "KUBERNETES_KUBESCAPE_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/KUBERNETES_KUBESCAPE_COMMAND_REMOVE_ARGUMENTS",
@@ -12046,6 +12123,17 @@
       "title": "PHP_PHPCSFIXER: CLI Executable",
       "type": "array"
     },
+    "PHP_PHPCSFIXER_CLI_LINT_MODE": {
+      "$id": "#/properties/PHP_PHPCSFIXER_CLI_LINT_MODE",
+      "default": "project",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "PHP_PHPCSFIXER: Override default cli lint mode",
+      "type": "string"
+    },
     "PHP_PHPCSFIXER_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/PHP_PHPCSFIXER_COMMAND_REMOVE_ARGUMENTS",
       "description": "PHP_PHPCSFIXER: User custom arguments to remove before calling linter",
@@ -12947,7 +13035,7 @@
       "$id": "#/properties/POWERSHELL_POWERSHELL_CLI_EXECUTABLE",
       "default": [
         [
-          "powershell"
+          "pwsh"
         ]
       ],
       "items": {
@@ -13062,7 +13150,7 @@
       "$id": "#/properties/POWERSHELL_POWERSHELL_FORMATTER_CLI_EXECUTABLE",
       "default": [
         [
-          "powershell"
+          "pwsh"
         ]
       ],
       "items": {
@@ -15329,6 +15417,17 @@
       "title": "REPOSITORY_CHECKOV: CLI Executable",
       "type": "array"
     },
+    "REPOSITORY_CHECKOV_CLI_LINT_MODE": {
+      "$id": "#/properties/REPOSITORY_CHECKOV_CLI_LINT_MODE",
+      "default": "project",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "REPOSITORY_CHECKOV: Override default cli lint mode",
+      "type": "string"
+    },
     "REPOSITORY_CHECKOV_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/REPOSITORY_CHECKOV_COMMAND_REMOVE_ARGUMENTS",
       "description": "REPOSITORY_CHECKOV: User custom arguments to remove before calling linter",
@@ -15442,6 +15541,17 @@
       },
       "title": "REPOSITORY_DEVSKIM: CLI Executable",
       "type": "array"
+    },
+    "REPOSITORY_DEVSKIM_CLI_LINT_MODE": {
+      "$id": "#/properties/REPOSITORY_DEVSKIM_CLI_LINT_MODE",
+      "default": "project",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "REPOSITORY_DEVSKIM: Override default cli lint mode",
+      "type": "string"
     },
     "REPOSITORY_DEVSKIM_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/REPOSITORY_DEVSKIM_COMMAND_REMOVE_ARGUMENTS",
@@ -15557,6 +15667,17 @@
       "title": "REPOSITORY_DUSTILOCK: CLI Executable",
       "type": "array"
     },
+    "REPOSITORY_DUSTILOCK_CLI_LINT_MODE": {
+      "$id": "#/properties/REPOSITORY_DUSTILOCK_CLI_LINT_MODE",
+      "default": "project",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "REPOSITORY_DUSTILOCK: Override default cli lint mode",
+      "type": "string"
+    },
     "REPOSITORY_DUSTILOCK_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/REPOSITORY_DUSTILOCK_COMMAND_REMOVE_ARGUMENTS",
       "description": "REPOSITORY_DUSTILOCK: User custom arguments to remove before calling linter",
@@ -15667,6 +15788,17 @@
       },
       "title": "REPOSITORY_GITLEAKS: CLI Executable",
       "type": "array"
+    },
+    "REPOSITORY_GITLEAKS_CLI_LINT_MODE": {
+      "$id": "#/properties/REPOSITORY_GITLEAKS_CLI_LINT_MODE",
+      "default": "project",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "REPOSITORY_GITLEAKS: Override default cli lint mode",
+      "type": "string"
     },
     "REPOSITORY_GITLEAKS_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/REPOSITORY_GITLEAKS_COMMAND_REMOVE_ARGUMENTS",
@@ -15799,6 +15931,17 @@
       },
       "title": "REPOSITORY_GIT_DIFF: CLI Executable",
       "type": "array"
+    },
+    "REPOSITORY_GIT_DIFF_CLI_LINT_MODE": {
+      "$id": "#/properties/REPOSITORY_GIT_DIFF_CLI_LINT_MODE",
+      "default": "project",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "REPOSITORY_GIT_DIFF: Override default cli lint mode",
+      "type": "string"
     },
     "REPOSITORY_GIT_DIFF_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/REPOSITORY_GIT_DIFF_COMMAND_REMOVE_ARGUMENTS",
@@ -15989,6 +16132,17 @@
       "title": "REPOSITORY_GRYPE: CLI Executable",
       "type": "array"
     },
+    "REPOSITORY_GRYPE_CLI_LINT_MODE": {
+      "$id": "#/properties/REPOSITORY_GRYPE_CLI_LINT_MODE",
+      "default": "project",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "REPOSITORY_GRYPE: Override default cli lint mode",
+      "type": "string"
+    },
     "REPOSITORY_GRYPE_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/REPOSITORY_GRYPE_COMMAND_REMOVE_ARGUMENTS",
       "description": "REPOSITORY_GRYPE: User custom arguments to remove before calling linter",
@@ -16103,6 +16257,17 @@
       "title": "REPOSITORY_KICS: CLI Executable",
       "type": "array"
     },
+    "REPOSITORY_KICS_CLI_LINT_MODE": {
+      "$id": "#/properties/REPOSITORY_KICS_CLI_LINT_MODE",
+      "default": "project",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "REPOSITORY_KICS: Override default cli lint mode",
+      "type": "string"
+    },
     "REPOSITORY_KICS_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/REPOSITORY_KICS_COMMAND_REMOVE_ARGUMENTS",
       "description": "REPOSITORY_KICS: User custom arguments to remove before calling linter",
@@ -16216,6 +16381,17 @@
       },
       "title": "REPOSITORY_LS_LINT: CLI Executable",
       "type": "array"
+    },
+    "REPOSITORY_LS_LINT_CLI_LINT_MODE": {
+      "$id": "#/properties/REPOSITORY_LS_LINT_CLI_LINT_MODE",
+      "default": "project",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "REPOSITORY_LS_LINT: Override default cli lint mode",
+      "type": "string"
     },
     "REPOSITORY_LS_LINT_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/REPOSITORY_LS_LINT_COMMAND_REMOVE_ARGUMENTS",
@@ -16365,6 +16541,17 @@
       "title": "REPOSITORY_SECRETLINT: CLI Executable",
       "type": "array"
     },
+    "REPOSITORY_SECRETLINT_CLI_LINT_MODE": {
+      "$id": "#/properties/REPOSITORY_SECRETLINT_CLI_LINT_MODE",
+      "default": "project",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "REPOSITORY_SECRETLINT: Override default cli lint mode",
+      "type": "string"
+    },
     "REPOSITORY_SECRETLINT_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/REPOSITORY_SECRETLINT_COMMAND_REMOVE_ARGUMENTS",
       "description": "REPOSITORY_SECRETLINT: User custom arguments to remove before calling linter",
@@ -16478,6 +16665,17 @@
       },
       "title": "REPOSITORY_SEMGREP: CLI Executable",
       "type": "array"
+    },
+    "REPOSITORY_SEMGREP_CLI_LINT_MODE": {
+      "$id": "#/properties/REPOSITORY_SEMGREP_CLI_LINT_MODE",
+      "default": "project",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "REPOSITORY_SEMGREP: Override default cli lint mode",
+      "type": "string"
     },
     "REPOSITORY_SEMGREP_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/REPOSITORY_SEMGREP_COMMAND_REMOVE_ARGUMENTS",
@@ -16596,6 +16794,17 @@
       "title": "REPOSITORY_SYFT: CLI Executable",
       "type": "array"
     },
+    "REPOSITORY_SYFT_CLI_LINT_MODE": {
+      "$id": "#/properties/REPOSITORY_SYFT_CLI_LINT_MODE",
+      "default": "project",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "REPOSITORY_SYFT: Override default cli lint mode",
+      "type": "string"
+    },
     "REPOSITORY_SYFT_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/REPOSITORY_SYFT_COMMAND_REMOVE_ARGUMENTS",
       "description": "REPOSITORY_SYFT: User custom arguments to remove before calling linter",
@@ -16710,6 +16919,17 @@
       "title": "REPOSITORY_TRIVY: CLI Executable",
       "type": "array"
     },
+    "REPOSITORY_TRIVY_CLI_LINT_MODE": {
+      "$id": "#/properties/REPOSITORY_TRIVY_CLI_LINT_MODE",
+      "default": "project",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "REPOSITORY_TRIVY: Override default cli lint mode",
+      "type": "string"
+    },
     "REPOSITORY_TRIVY_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/REPOSITORY_TRIVY_COMMAND_REMOVE_ARGUMENTS",
       "description": "REPOSITORY_TRIVY: User custom arguments to remove before calling linter",
@@ -16813,6 +17033,17 @@
       },
       "title": "REPOSITORY_TRIVY_SBOM: CLI Executable",
       "type": "array"
+    },
+    "REPOSITORY_TRIVY_SBOM_CLI_LINT_MODE": {
+      "$id": "#/properties/REPOSITORY_TRIVY_SBOM_CLI_LINT_MODE",
+      "default": "project",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "REPOSITORY_TRIVY_SBOM: Override default cli lint mode",
+      "type": "string"
     },
     "REPOSITORY_TRIVY_SBOM_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/REPOSITORY_TRIVY_SBOM_COMMAND_REMOVE_ARGUMENTS",
@@ -16937,6 +17168,17 @@
       },
       "title": "REPOSITORY_TRUFFLEHOG: CLI Executable",
       "type": "array"
+    },
+    "REPOSITORY_TRUFFLEHOG_CLI_LINT_MODE": {
+      "$id": "#/properties/REPOSITORY_TRUFFLEHOG_CLI_LINT_MODE",
+      "default": "project",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "REPOSITORY_TRUFFLEHOG: Override default cli lint mode",
+      "type": "string"
     },
     "REPOSITORY_TRUFFLEHOG_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/REPOSITORY_TRUFFLEHOG_COMMAND_REMOVE_ARGUMENTS",
@@ -17760,6 +18002,17 @@
       "title": "RUST_CLIPPY: CLI Executable",
       "type": "array"
     },
+    "RUST_CLIPPY_CLI_LINT_MODE": {
+      "$id": "#/properties/RUST_CLIPPY_CLI_LINT_MODE",
+      "default": "project",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "RUST_CLIPPY: Override default cli lint mode",
+      "type": "string"
+    },
     "RUST_CLIPPY_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/RUST_CLIPPY_COMMAND_REMOVE_ARGUMENTS",
       "description": "RUST_CLIPPY: User custom arguments to remove before calling linter",
@@ -18174,6 +18427,17 @@
       "title": "SALESFORCE_LIGHTNING_FLOW_SCANNER: CLI Executable",
       "type": "array"
     },
+    "SALESFORCE_LIGHTNING_FLOW_SCANNER_CLI_LINT_MODE": {
+      "$id": "#/properties/SALESFORCE_LIGHTNING_FLOW_SCANNER_CLI_LINT_MODE",
+      "default": "project",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "SALESFORCE_LIGHTNING_FLOW_SCANNER: Override default cli lint mode",
+      "type": "string"
+    },
     "SALESFORCE_LIGHTNING_FLOW_SCANNER_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/SALESFORCE_LIGHTNING_FLOW_SCANNER_COMMAND_REMOVE_ARGUMENTS",
       "description": "SALESFORCE_LIGHTNING_FLOW_SCANNER: User custom arguments to remove before calling linter",
@@ -18329,6 +18593,17 @@
       "title": "SALESFORCE_SFDX_SCANNER_APEX: CLI Executable",
       "type": "array"
     },
+    "SALESFORCE_SFDX_SCANNER_APEX_CLI_LINT_MODE": {
+      "$id": "#/properties/SALESFORCE_SFDX_SCANNER_APEX_CLI_LINT_MODE",
+      "default": "project",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "SALESFORCE_SFDX_SCANNER_APEX: Override default cli lint mode",
+      "type": "string"
+    },
     "SALESFORCE_SFDX_SCANNER_APEX_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_APEX_COMMAND_REMOVE_ARGUMENTS",
       "description": "SALESFORCE_SFDX_SCANNER_APEX: User custom arguments to remove before calling linter",
@@ -18465,6 +18740,17 @@
       },
       "title": "SALESFORCE_SFDX_SCANNER_AURA: CLI Executable",
       "type": "array"
+    },
+    "SALESFORCE_SFDX_SCANNER_AURA_CLI_LINT_MODE": {
+      "$id": "#/properties/SALESFORCE_SFDX_SCANNER_AURA_CLI_LINT_MODE",
+      "default": "project",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "SALESFORCE_SFDX_SCANNER_AURA: Override default cli lint mode",
+      "type": "string"
     },
     "SALESFORCE_SFDX_SCANNER_AURA_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_AURA_COMMAND_REMOVE_ARGUMENTS",
@@ -18638,6 +18924,17 @@
       },
       "title": "SALESFORCE_SFDX_SCANNER_LWC: CLI Executable",
       "type": "array"
+    },
+    "SALESFORCE_SFDX_SCANNER_LWC_CLI_LINT_MODE": {
+      "$id": "#/properties/SALESFORCE_SFDX_SCANNER_LWC_CLI_LINT_MODE",
+      "default": "project",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "SALESFORCE_SFDX_SCANNER_LWC: Override default cli lint mode",
+      "type": "string"
     },
     "SALESFORCE_SFDX_SCANNER_LWC_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_LWC_COMMAND_REMOVE_ARGUMENTS",
@@ -20800,6 +21097,17 @@
       "title": "SWIFT_SWIFTLINT: CLI Executable",
       "type": "array"
     },
+    "SWIFT_SWIFTLINT_CLI_LINT_MODE": {
+      "$id": "#/properties/SWIFT_SWIFTLINT_CLI_LINT_MODE",
+      "default": "project",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "SWIFT_SWIFTLINT: Override default cli lint mode",
+      "type": "string"
+    },
     "SWIFT_SWIFTLINT_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/SWIFT_SWIFTLINT_COMMAND_REMOVE_ARGUMENTS",
       "description": "SWIFT_SWIFTLINT: User custom arguments to remove before calling linter",
@@ -21753,6 +22061,17 @@
       "title": "TERRAFORM_TERRASCAN: CLI Executable",
       "type": "array"
     },
+    "TERRAFORM_TERRASCAN_CLI_LINT_MODE": {
+      "$id": "#/properties/TERRAFORM_TERRASCAN_CLI_LINT_MODE",
+      "default": "project",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "TERRAFORM_TERRASCAN: Override default cli lint mode",
+      "type": "string"
+    },
     "TERRAFORM_TERRASCAN_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/TERRAFORM_TERRASCAN_COMMAND_REMOVE_ARGUMENTS",
       "description": "TERRAFORM_TERRASCAN: User custom arguments to remove before calling linter",
@@ -21890,6 +22209,17 @@
       },
       "title": "TERRAFORM_TFLINT: CLI Executable",
       "type": "array"
+    },
+    "TERRAFORM_TFLINT_CLI_LINT_MODE": {
+      "$id": "#/properties/TERRAFORM_TFLINT_CLI_LINT_MODE",
+      "default": "project",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "TERRAFORM_TFLINT: Override default cli lint mode",
+      "type": "string"
     },
     "TERRAFORM_TFLINT_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/TERRAFORM_TFLINT_COMMAND_REMOVE_ARGUMENTS",

@@ -19,7 +19,7 @@ If your root folder is not **force-app**, please set variable SALESFORCE_LIGHTNI
 
 ## lightning-flow-scanner documentation
 
-- Version in MegaLinter: **2.28.0**
+- Version in MegaLinter: **2.30.0**
 - Visit [Official Web Site](https://github.com/Lightning-Flow-Scanner#readme){target=_blank}
 - See [How to configure lightning-flow-scanner rules](https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx#configuration){target=_blank}
   - If custom `.flow-scanner.json` config file isn't found, [.flow-scanner.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.flow-scanner.json){target=_blank} will be used
@@ -29,22 +29,23 @@ If your root folder is not **force-app**, please set variable SALESFORCE_LIGHTNI
 
 ## Configuration in MegaLinter
 
-- Enable lightning-flow-scanner by adding `SALESFORCE_LIGHTNING_FLOW_SCANNER` in [ENABLE_LINTERS variable](https://megalinter.io/7.13.0/configuration/#activation-and-deactivation)
-- Disable lightning-flow-scanner by adding `SALESFORCE_LIGHTNING_FLOW_SCANNER` in [DISABLE_LINTERS variable](https://megalinter.io/7.13.0/configuration/#activation-and-deactivation)
+- Enable lightning-flow-scanner by adding `SALESFORCE_LIGHTNING_FLOW_SCANNER` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
+- Disable lightning-flow-scanner by adding `SALESFORCE_LIGHTNING_FLOW_SCANNER` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-| Variable                                                      | Description                                                                                                              | Default value                                   |
-|---------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
-| SALESFORCE_LIGHTNING_FLOW_SCANNER_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                 |                                                 |
-| SALESFORCE_LIGHTNING_FLOW_SCANNER_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                     |                                                 |
-| SALESFORCE_LIGHTNING_FLOW_SCANNER_PRE_COMMANDS                | List of bash commands to run before the linter                                                                           | None                                            |
-| SALESFORCE_LIGHTNING_FLOW_SCANNER_POST_COMMANDS               | List of bash commands to run after the linter                                                                            | None                                            |
-| SALESFORCE_LIGHTNING_FLOW_SCANNER_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling SALESFORCE_LIGHTNING_FLOW_SCANNER and its pre/post commands | None                                            |
-| SALESFORCE_LIGHTNING_FLOW_SCANNER_CONFIG_FILE                 | lightning-flow-scanner configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                        | `.flow-scanner.json`                            |
-| SALESFORCE_LIGHTNING_FLOW_SCANNER_RULES_PATH                  | Path where to find linter configuration file                                                                             | Workspace folder, then MegaLinter default rules |
-| SALESFORCE_LIGHTNING_FLOW_SCANNER_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                               | `false`                                         |
-| SALESFORCE_LIGHTNING_FLOW_SCANNER_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                         | `0`                                             |
-| SALESFORCE_LIGHTNING_FLOW_SCANNER_CLI_EXECUTABLE              | Override CLI executable                                                                                                  | `['sf']`                                        |
-| SALESFORCE_DIRECTORY                                          | Directory containing SALESFORCE files (use `any` to always activate the linter)                                          | `force-app`                                     |
+| Variable                                                      | Description                                                                                                                                                                                                         | Default value                                   |
+|---------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
+| SALESFORCE_LIGHTNING_FLOW_SCANNER_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                                                 |
+| SALESFORCE_LIGHTNING_FLOW_SCANNER_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                                |                                                 |
+| SALESFORCE_LIGHTNING_FLOW_SCANNER_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `project`                                       |
+| SALESFORCE_LIGHTNING_FLOW_SCANNER_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                                            |
+| SALESFORCE_LIGHTNING_FLOW_SCANNER_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                                            |
+| SALESFORCE_LIGHTNING_FLOW_SCANNER_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling SALESFORCE_LIGHTNING_FLOW_SCANNER and its pre/post commands                                                                                            | None                                            |
+| SALESFORCE_LIGHTNING_FLOW_SCANNER_CONFIG_FILE                 | lightning-flow-scanner configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                   | `.flow-scanner.json`                            |
+| SALESFORCE_LIGHTNING_FLOW_SCANNER_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
+| SALESFORCE_LIGHTNING_FLOW_SCANNER_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                         |
+| SALESFORCE_LIGHTNING_FLOW_SCANNER_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
+| SALESFORCE_LIGHTNING_FLOW_SCANNER_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `['sf']`                                        |
+| SALESFORCE_DIRECTORY                                          | Directory containing SALESFORCE files (use `any` to always activate the linter)                                                                                                                                     | `force-app`                                     |
 
 ## IDE Integration
 
@@ -58,10 +59,10 @@ Use lightning-flow-scanner in your favorite IDE to catch errors before MegaLinte
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                         | Description                             | Embedded linters |                                                                                                                                                                                                Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------|:----------------------------------------|:----------------:|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/7.13.0/supported-linters/)         | Default MegaLinter Flavor               |       125        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v7.13.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://megalinter.io/7.13.0/flavors/salesforce/) | Optimized for Salesforce based projects |        56        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/v7.13.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce) |
+|                                                                         <!-- -->                                                                         | Flavor                                                       | Description                             | Embedded linters |                                                                                                                                                                                             Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------|:----------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor               |       125        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://megalinter.io/beta/flavors/salesforce/) | Optimized for Salesforce based projects |        56        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce) |
 
 ## Behind the scenes
 
@@ -89,7 +90,7 @@ sf flow:scan
 ### Help content
 
 ```shell
-(node:1749) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(node:1746) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
 (Use `node --trace-deprecation ...` to show where the warning was created)
 Find and fix potential bugs in Salesforce flows.
 
@@ -123,11 +124,11 @@ GLOBAL FLAGS
 ```dockerfile
 # Parent descriptor install
 # renovate: datasource=npm depName=@salesforce/cli
-ARG SALESFORCE_CLI_VERSION=2.48.6
+ARG SALESFORCE_CLI_VERSION=2.49.7
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
-ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.7.0
+ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.7.1
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=4.42.0
+ARG SFDX_HARDIS_VERSION=4.45.0
 ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 RUN sf plugins install @salesforce/plugin-packaging@${SALESFORCE_PLUGIN_PACKAGING_VERSION} \
@@ -136,7 +137,7 @@ RUN sf plugins install @salesforce/plugin-packaging@${SALESFORCE_PLUGIN_PACKAGIN
     && rm -rf /root/.npm/_cacache
 # Linter install
 # renovate: datasource=npm depName=lightning-flow-scanner
-ARG LIGHTNING_FLOW_SCANNER_VERSION=2.28.0
+ARG LIGHTNING_FLOW_SCANNER_VERSION=2.30.0
 RUN echo y|sf plugins install lightning-flow-scanner@${LIGHTNING_FLOW_SCANNER_VERSION} \
     && npm cache clean --force || true \
     && rm -rf /root/.npm/_cacache

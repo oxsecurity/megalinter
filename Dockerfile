@@ -29,14 +29,14 @@ ARG REPOSITORY_GITLEAKS_VERSION=v8.18.4
 ARG REPOSITORY_KICS_VERSION=v2.1.1-alpine
 # renovate: datasource=docker depName=trufflesecurity/trufflehog 
 ARG REPOSITORY_TRUFFLEHOG_VERSION=3.79.0
-# renovate: datasource=docker depName=
-ARG SPELL_VALE_VERSION=v3.6.0
+# renovate: datasource=docker depName=jdkato/vale
+ARG SPELL_VALE_VERSION=v3.6.1
 # renovate: datasource=docker depName=ghcr.io/terraform-linters/tflint
 ARG TERRAFORM_TFLINT_VERSION=0.52.0
 # renovate: datasource=docker depName=alpine/terragrunt
 ARG TERRAFORM_TERRASCAN_VERSION=1.18.11
 # renovate: datasource=docker depName=alpine/terragrunt
-ARG TERRAFORM_TERRAGRUNT_VERSION=1.9.1
+ARG TERRAFORM_TERRAGRUNT_VERSION=1.9.2
 #ARGTOP__END
 
 #############################################################################################
@@ -83,11 +83,11 @@ FROM python:3.12.4-alpine3.20
 #############################################################################################
 #ARG__START
 # renovate: datasource=npm depName=@salesforce/cli
-ARG SALESFORCE_CLI_VERSION=2.48.6
+ARG SALESFORCE_CLI_VERSION=2.49.7
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
-ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.7.0
+ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.7.1
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=4.42.0
+ARG SFDX_HARDIS_VERSION=4.45.0
 ARG ARM_TTK_NAME='master.zip'
 ARG ARM_TTK_URI='https://github.com/Azure/arm-ttk/archive/master.zip'
 ARG ARM_TTK_DIRECTORY='/opt/microsoft'
@@ -107,7 +107,7 @@ ARG PSSA_VERSION='1.22.0'
 # renovate: datasource=npm depName=@salesforce/sfdx-scanner
 ARG SALESFORCE_SFDX_SCANNER_VERSION=4.3.2
 # renovate: datasource=npm depName=lightning-flow-scanner
-ARG LIGHTNING_FLOW_SCANNER_VERSION=2.28.0
+ARG LIGHTNING_FLOW_SCANNER_VERSION=2.30.0
 #ARG__END
 
 # Static args

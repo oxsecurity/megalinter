@@ -683,17 +683,17 @@ class Linter:
                 self.request_id, self.name + "_CLI_LINT_MODE"
             )
             if cli_lint_mode_descriptor == "project":
-                raise KeyError(
-                    f"You can not override {self.name} cli_lint_mode as it can "
-                    "not process a file or a list of files. If you think this could be, post an issue :)"
+                logging.warning(
+                    f"Override {self.name} cli_lint_mode with {cli_lint_mode_config} at your own risk, "
+                    "as command line arguments are built for project mode"
                 )
             elif (
                 cli_lint_mode_descriptor == "file"
                 and cli_lint_mode_config == "list_of_files"
             ):
-                raise KeyError(
-                    f"You can not override {self.name} cli_lint_mode with {cli_lint_mode_config}, "
-                    "as it can process files only one by one. If you think it could be done, post an issue :)"
+                logging.warning(
+                    f"Override {self.name} cli_lint_mode with {cli_lint_mode_config} at your own risk, "
+                    f"as command line arguments are built for {cli_lint_mode_descriptor} mode"
                 )
             self.cli_lint_mode = cli_lint_mode_config
 

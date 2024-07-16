@@ -15,31 +15,31 @@ description: How to use snakemake (configure, ignore files, ignore errors, help 
 
 ## snakemake documentation
 
-- Version in MegaLinter: **8.15.2**
+- Version in MegaLinter: **8.16.0**
 - Visit [Official Web Site](https://snakemake.readthedocs.io/en/stable/){target=_blank}
 
 [![snakemake - GitHub](https://gh-card.dev/repos/snakemake/snakemake.svg?fullname=)](https://github.com/snakemake/snakemake){target=_blank}
 
 ## Configuration in MegaLinter
 
-- Enable snakemake by adding `SNAKEMAKE_LINT` in [ENABLE_LINTERS variable](https://megalinter.io/7.13.0/configuration/#activation-and-deactivation)
-- Disable snakemake by adding `SNAKEMAKE_LINT` in [DISABLE_LINTERS variable](https://megalinter.io/7.13.0/configuration/#activation-and-deactivation)
+- Enable snakemake by adding `SNAKEMAKE_LINT` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
+- Disable snakemake by adding `SNAKEMAKE_LINT` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-| Variable                                   | Description                                                                                                                                                                                  | Default value      |
-|--------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
-| SNAKEMAKE_LINT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                    |
-| SNAKEMAKE_LINT_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                         |                    |
-| SNAKEMAKE_LINT_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                           | Include every file |
-| SNAKEMAKE_LINT_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                     | Exclude no file    |
-| SNAKEMAKE_LINT_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `project`: Call the linter from the root of the project                                                    | `file`             |
-| SNAKEMAKE_LINT_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                      | `[".smk"]`         |
-| SNAKEMAKE_LINT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | `["Snakefile"]`    |
-| SNAKEMAKE_LINT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                               | None               |
-| SNAKEMAKE_LINT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                | None               |
-| SNAKEMAKE_LINT_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling SNAKEMAKE_LINT and its pre/post commands                                                                                        | None               |
-| SNAKEMAKE_LINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`            |
-| SNAKEMAKE_LINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                |
-| SNAKEMAKE_LINT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `['snakemake']`    |
+| Variable                                   | Description                                                                                                                                                                                                 | Default value      |
+|--------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
+| SNAKEMAKE_LINT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                    |                    |
+| SNAKEMAKE_LINT_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                        |                    |
+| SNAKEMAKE_LINT_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                          | Include every file |
+| SNAKEMAKE_LINT_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                    | Exclude no file    |
+| SNAKEMAKE_LINT_CLI_LINT_MODE               | Override default CLI lint mode<br/>⚠️ As default value is **project**, overriding might not work<br/>- `file`: Calls the linter for each file<br/>- `project`: Call the linter from the root of the project | `file`             |
+| SNAKEMAKE_LINT_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                     | `[".smk"]`         |
+| SNAKEMAKE_LINT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                | `["Snakefile"]`    |
+| SNAKEMAKE_LINT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                              | None               |
+| SNAKEMAKE_LINT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                               | None               |
+| SNAKEMAKE_LINT_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling SNAKEMAKE_LINT and its pre/post commands                                                                                                       | None               |
+| SNAKEMAKE_LINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                  | `false`            |
+| SNAKEMAKE_LINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                            | `0`                |
+| SNAKEMAKE_LINT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                     | `['snakemake']`    |
 
 ## IDE Integration
 
@@ -54,23 +54,23 @@ Use snakemake in your favorite IDE to catch errors before MegaLinter !
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                               | Description                                              | Embedded linters |                                                                                                                                                                                                      Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------|:---------------------------------------------------------|:----------------:|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/7.13.0/supported-linters/)               | Default MegaLinter Flavor                                |       125        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v7.13.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/c_cpp.ico" alt="" height="32px" class="megalinter-icon"></a>        | [c_cpp](https://megalinter.io/7.13.0/flavors/c_cpp/)                 | Optimized for pure C/C++ projects                        |        56        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-c_cpp/v7.13.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-c_cpp) |
-|    <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/documentation.ico" alt="" height="32px" class="megalinter-icon"></a>    | [documentation](https://megalinter.io/7.13.0/flavors/documentation/) | MegaLinter for documentation projects                    |        51        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-documentation/v7.13.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-documentation) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/7.13.0/flavors/dotnet/)               | Optimized for C, C++, C# or VB based projects            |        63        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/v7.13.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
-|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/7.13.0/flavors/dotnetweb/)         | Optimized for C, C++, C# or VB based projects with JS/TS |        72        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/v7.13.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
-|         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a>          | [go](https://megalinter.io/7.13.0/flavors/go/)                       | Optimized for GO based projects                          |        53        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-go/v7.13.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-go) |
-|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.io/7.13.0/flavors/java/)                   | Optimized for JAVA based projects                        |        54        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/v7.13.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
-|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.io/7.13.0/flavors/javascript/)       | Optimized for JAVASCRIPT or TYPESCRIPT based projects    |        61        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/v7.13.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript) |
-|         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://megalinter.io/7.13.0/flavors/php/)                     | Optimized for PHP based projects                         |        56        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/v7.13.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-php) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/7.13.0/flavors/python/)               | Optimized for PYTHON based projects                      |        64        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/v7.13.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
-|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/ruby.ico" alt="" height="32px" class="megalinter-icon"></a>         | [ruby](https://megalinter.io/7.13.0/flavors/ruby/)                   | Optimized for RUBY based projects                        |        52        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-ruby/v7.13.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-ruby) |
-|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/rust.ico" alt="" height="32px" class="megalinter-icon"></a>         | [rust](https://megalinter.io/7.13.0/flavors/rust/)                   | Optimized for RUST based projects                        |        52        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-rust/v7.13.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-rust) |
-|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://megalinter.io/7.13.0/flavors/salesforce/)       | Optimized for Salesforce based projects                  |        56        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/v7.13.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce) |
-|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/swift.ico" alt="" height="32px" class="megalinter-icon"></a>        | [swift](https://megalinter.io/7.13.0/flavors/swift/)                 | Optimized for SWIFT based projects                       |        52        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-swift/v7.13.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-swift) |
-|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://megalinter.io/7.13.0/flavors/terraform/)         | Optimized for TERRAFORM based projects                   |        56        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/v7.13.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform) |
+|                                                                         <!-- -->                                                                         | Flavor                                                             | Description                                              | Embedded linters |                                                                                                                                                                                                   Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------|:---------------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)               | Default MegaLinter Flavor                                |       125        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/c_cpp.ico" alt="" height="32px" class="megalinter-icon"></a>        | [c_cpp](https://megalinter.io/beta/flavors/c_cpp/)                 | Optimized for pure C/C++ projects                        |        56        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-c_cpp/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-c_cpp) |
+|    <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/documentation.ico" alt="" height="32px" class="megalinter-icon"></a>    | [documentation](https://megalinter.io/beta/flavors/documentation/) | MegaLinter for documentation projects                    |        51        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-documentation/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-documentation) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/)               | Optimized for C, C++, C# or VB based projects            |        63        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/)         | Optimized for C, C++, C# or VB based projects with JS/TS |        72        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
+|         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a>          | [go](https://megalinter.io/beta/flavors/go/)                       | Optimized for GO based projects                          |        53        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-go/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-go) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.io/beta/flavors/java/)                   | Optimized for JAVA based projects                        |        54        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
+|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.io/beta/flavors/javascript/)       | Optimized for JAVASCRIPT or TYPESCRIPT based projects    |        61        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript) |
+|         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://megalinter.io/beta/flavors/php/)                     | Optimized for PHP based projects                         |        56        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-php) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)               | Optimized for PYTHON based projects                      |        64        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/ruby.ico" alt="" height="32px" class="megalinter-icon"></a>         | [ruby](https://megalinter.io/beta/flavors/ruby/)                   | Optimized for RUBY based projects                        |        52        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-ruby/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-ruby) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/rust.ico" alt="" height="32px" class="megalinter-icon"></a>         | [rust](https://megalinter.io/beta/flavors/rust/)                   | Optimized for RUST based projects                        |        52        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-rust/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-rust) |
+|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://megalinter.io/beta/flavors/salesforce/)       | Optimized for Salesforce based projects                  |        56        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/swift.ico" alt="" height="32px" class="megalinter-icon"></a>        | [swift](https://megalinter.io/beta/flavors/swift/)                 | Optimized for SWIFT based projects                       |        52        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-swift/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-swift) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://megalinter.io/beta/flavors/terraform/)         | Optimized for TERRAFORM based projects                   |        56        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform) |
 
 ## Behind the scenes
 
@@ -133,7 +133,7 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--d3dag] [--summary] [--detailed-summary] [--archive FILE]
                  [--cleanup-metadata FILE [FILE ...]] [--cleanup-shadow]
                  [--skip-script-cleanup] [--unlock]
-                 [--list-changes {input,code,params}] [--list-input-changes]
+                 [--list-changes {input,params,code}] [--list-input-changes]
                  [--list-params-changes] [--list-untracked]
                  [--delete-all-output | --delete-temp-output]
                  [--keep-incomplete] [--drop-metadata]
@@ -163,7 +163,7 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--shared-fs-usage {input-output,persistence,software-deployment,source-cache,sources,storage-local-copies,none} [{input-output,persistence,software-deployment,source-cache,sources,storage-local-copies,none} ...]]
                  [--scheduler-greediness SCHEDULER_GREEDINESS] [--no-hooks]
                  [--debug] [--runtime-profile FILE]
-                 [--mode {subprocess,default,remote}] [--show-failed-logs]
+                 [--mode {remote,default,subprocess}] [--show-failed-logs]
                  [--log-handler-script FILE] [--log-service {none,slack,wms}]
                  [--job-deploy-sources] [--benchmark-extended]
                  [--container-image IMAGE] [--immediate-submit]
@@ -401,9 +401,10 @@ EXECUTION:
                         configuration. If you rather prefer the traditional
                         way of just considering file modification dates, use '
                         --rerun-trigger mtime'. (default:
-                        frozenset({<RerunTrigger.SOFTWARE_ENV: 3>,
-                        <RerunTrigger.PARAMS: 1>, <RerunTrigger.INPUT: 2>,
-                        <RerunTrigger.CODE: 4>, <RerunTrigger.MTIME: 0>}))
+                        frozenset({<RerunTrigger.INPUT: 2>,
+                        <RerunTrigger.CODE: 4>, <RerunTrigger.SOFTWARE_ENV:
+                        3>, <RerunTrigger.PARAMS: 1>, <RerunTrigger.MTIME:
+                        0>}))
   --force, -f           Force the execution of the selected target or the
                         first rule regardless of already created output.
                         (default: False)
@@ -638,7 +639,7 @@ UTILITIES:
                         (default: False)
   --unlock              Remove a lock on the working directory. (default:
                         False)
-  --list-changes {input,code,params}, --lc {input,code,params}
+  --list-changes {input,params,code}, --lc {input,params,code}
                         List all output files for which the given items (code,
                         input, params) have changed since creation.
   --list-input-changes, --li
@@ -827,12 +828,12 @@ BEHAVIOR:
                         and data provenance will be handled by NFS but input
                         and output files will be handled exclusively by the
                         storage provider. (default:
-                        frozenset({<SharedFSUsage.INPUT_OUTPUT: 1>,
-                        <SharedFSUsage.SOFTWARE_DEPLOYMENT: 2>,
-                        <SharedFSUsage.SOURCES: 3>,
+                        frozenset({<SharedFSUsage.STORAGE_LOCAL_COPIES: 4>,
                         <SharedFSUsage.PERSISTENCE: 0>,
-                        <SharedFSUsage.STORAGE_LOCAL_COPIES: 4>,
-                        <SharedFSUsage.SOURCE_CACHE: 5>}))
+                        <SharedFSUsage.SOFTWARE_DEPLOYMENT: 2>,
+                        <SharedFSUsage.SOURCE_CACHE: 5>,
+                        <SharedFSUsage.INPUT_OUTPUT: 1>,
+                        <SharedFSUsage.SOURCES: 3>}))
   --scheduler-greediness SCHEDULER_GREEDINESS, --greediness SCHEDULER_GREEDINESS
                         Set the greediness of scheduling. This value between 0
                         and 1 determines how careful jobs are selected for
@@ -845,7 +846,7 @@ BEHAVIOR:
   --runtime-profile FILE
                         Profile Snakemake and write the output to FILE. This
                         requires yappi to be installed.
-  --mode {subprocess,default,remote}
+  --mode {remote,default,subprocess}
                         Set execution mode of Snakemake (internal use only).
                         (default: default)
   --show-failed-logs    Automatically display logs of failed jobs. (default:
@@ -878,7 +879,7 @@ REMOTE EXECUTION:
                         contain a working snakemake installation that is
                         compatible with (or ideally the same as) the currently
                         running version. (default:
-                        snakemake/snakemake:v8.15.2)
+                        snakemake/snakemake:v8.16.0)
   --immediate-submit, --is
                         Immediately submit all jobs to the cluster instead of
                         waiting for present input files. This will fail,

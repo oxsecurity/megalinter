@@ -9,7 +9,7 @@ description: How to use terragrunt (configure, ignore files, ignore errors, help
 
 ## terragrunt documentation
 
-- Version in MegaLinter: **0.59.6**
+- Version in MegaLinter: **0.62.0**
 - Visit [Official Web Site](https://terragrunt.gruntwork.io){target=_blank}
 - See [How to configure terragrunt rules](https://terragrunt.gruntwork.io/docs/getting-started/configuration/#terragrunt-configuration-file){target=_blank}
 
@@ -17,39 +17,39 @@ description: How to use terragrunt (configure, ignore files, ignore errors, help
 
 ## Configuration in MegaLinter
 
-- Enable terragrunt by adding `TERRAFORM_TERRAGRUNT` in [ENABLE_LINTERS variable](https://megalinter.io/7.13.0/configuration/#activation-and-deactivation)
-- Disable terragrunt by adding `TERRAFORM_TERRAGRUNT` in [DISABLE_LINTERS variable](https://megalinter.io/7.13.0/configuration/#activation-and-deactivation)
+- Enable terragrunt by adding `TERRAFORM_TERRAGRUNT` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
+- Disable terragrunt by adding `TERRAFORM_TERRAGRUNT` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-- Enable **autofixes** by adding `TERRAFORM_TERRAGRUNT` in [APPLY_FIXES variable](https://megalinter.io/7.13.0/configuration/#apply-fixes)
+- Enable **autofixes** by adding `TERRAFORM_TERRAGRUNT` in [APPLY_FIXES variable](https://megalinter.io/beta/configuration/#apply-fixes)
 
-| Variable                                         | Description                                                                                                                                                                                  | Default value                                   |
-|--------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
-| TERRAFORM_TERRAGRUNT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                                                 |
-| TERRAFORM_TERRAGRUNT_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                         |                                                 |
-| TERRAFORM_TERRAGRUNT_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                           | Include every file                              |
-| TERRAFORM_TERRAGRUNT_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                     | Exclude no file                                 |
-| TERRAFORM_TERRAGRUNT_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `project`: Call the linter from the root of the project                                                    | `file`                                          |
-| TERRAFORM_TERRAGRUNT_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                      | `[".hcl"]`                                      |
-| TERRAFORM_TERRAGRUNT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file                              |
-| TERRAFORM_TERRAGRUNT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                               | None                                            |
-| TERRAFORM_TERRAGRUNT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                | None                                            |
-| TERRAFORM_TERRAGRUNT_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling TERRAFORM_TERRAGRUNT and its pre/post commands                                                                                  | None                                            |
-| TERRAFORM_TERRAGRUNT_CONFIG_FILE                 | terragrunt configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                        | `terragrunt.hcl`                                |
-| TERRAFORM_TERRAGRUNT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                 | Workspace folder, then MegaLinter default rules |
-| TERRAFORM_TERRAGRUNT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`                                         |
-| TERRAFORM_TERRAGRUNT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                             |
-| TERRAFORM_TERRAGRUNT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `['terragrunt']`                                |
+| Variable                                         | Description                                                                                                                                                                                                 | Default value                                   |
+|--------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
+| TERRAFORM_TERRAGRUNT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                    |                                                 |
+| TERRAFORM_TERRAGRUNT_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                        |                                                 |
+| TERRAFORM_TERRAGRUNT_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                          | Include every file                              |
+| TERRAFORM_TERRAGRUNT_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                    | Exclude no file                                 |
+| TERRAFORM_TERRAGRUNT_CLI_LINT_MODE               | Override default CLI lint mode<br/>⚠️ As default value is **project**, overriding might not work<br/>- `file`: Calls the linter for each file<br/>- `project`: Call the linter from the root of the project | `file`                                          |
+| TERRAFORM_TERRAGRUNT_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                     | `[".hcl"]`                                      |
+| TERRAFORM_TERRAGRUNT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                | Include every file                              |
+| TERRAFORM_TERRAGRUNT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                              | None                                            |
+| TERRAFORM_TERRAGRUNT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                               | None                                            |
+| TERRAFORM_TERRAGRUNT_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling TERRAFORM_TERRAGRUNT and its pre/post commands                                                                                                 | None                                            |
+| TERRAFORM_TERRAGRUNT_CONFIG_FILE                 | terragrunt configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                       | `terragrunt.hcl`                                |
+| TERRAFORM_TERRAGRUNT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                | Workspace folder, then MegaLinter default rules |
+| TERRAFORM_TERRAGRUNT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                  | `false`                                         |
+| TERRAFORM_TERRAGRUNT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                            | `0`                                             |
+| TERRAFORM_TERRAGRUNT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                     | `['terragrunt']`                                |
 
 ## MegaLinter Flavours
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                       | Description                                     | Embedded linters |                                                                                                                                                                                              Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------|:------------------------------------------------|:----------------:|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/7.13.0/supported-linters/)       | Default MegaLinter Flavor                       |       125        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v7.13.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/7.13.0/flavors/cupcake/)     | MegaLinter for the most commonly used languages |        84        |     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/v7.13.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
-|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://megalinter.io/7.13.0/flavors/security/)   | Optimized for security                          |        24        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/v7.13.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
-|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://megalinter.io/7.13.0/flavors/terraform/) | Optimized for TERRAFORM based projects          |        56        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/v7.13.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform) |
+|                                                                         <!-- -->                                                                         | Flavor                                                     | Description                                     | Embedded linters |                                                                                                                                                                                           Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------|:------------------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)       | Default MegaLinter Flavor                       |       125        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)     | MegaLinter for the most commonly used languages |        84        |     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://megalinter.io/beta/flavors/security/)   | Optimized for security                          |        24        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://megalinter.io/beta/flavors/terraform/) | Optimized for TERRAFORM based projects          |        56        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform) |
 
 ## Behind the scenes
 
@@ -91,6 +91,7 @@ COMMANDS:
    graph                  Execute commands on the full graph of dependent modules for the current module, ensuring correct execution order.
    graph-dependencies     Prints the terragrunt dependency graph to stdout.
    hclfmt                 Recursively find hcl files and rewrite them into a canonical format.
+   hclvalidate            Find all hcl files from the config stack and validate them.
    output-module-groups   Output groups of modules ordered by command (apply or destroy) as a list of list in JSON (useful for CI use cases).
    render-json            Render the final terragrunt config, with all variables, includes, and functions resolved, as json.
    run-all                Run a terraform command against a 'stack' by running the specified command in each subfolder.
@@ -107,6 +108,7 @@ GLOBAL OPTIONS:
    --terragrunt-disable-command-validation           When this flag is set, Terragrunt will not validate the terraform command. [$TERRAGRUNT_DISABLE_COMMAND_VALIDATION]
    --terragrunt-download-dir value                   The path where to download Terraform code. Default is .terragrunt-cache in the working directory. [$TERRAGRUNT_DOWNLOAD]
    --terragrunt-exclude-dir value                    Unix-style glob of directories to exclude when running *-all commands. [$TERRAGRUNT_EXCLUDE_DIR]
+   --terragrunt-excludes-file value                  Path to a file with a list of directories that need to be excluded when running *-all commands. (default: .terragrunt-excludes) [$TERRAGRUNT_EXCLUDES_FILE]
    --terragrunt-fail-on-state-bucket-creation        When this flag is set Terragrunt will fail if the remote state bucket needs to be created. [$TERRAGRUNT_FAIL_ON_STATE_BUCKET_CREATION]
    --terragrunt-fetch-dependency-output-from-state   The option fetchs dependency output directly from the state file instead of init dependencies and running terraform on them. [$TERRAGRUNT_FETCH_DEPENDENCY_OUTPUT_FROM_STATE]
    --terragrunt-iam-assume-role-duration value       Session duration for IAM Assume Role session. Can also be set via the TERRAGRUNT_IAM_ASSUME_ROLE_DURATION environment variable. [$TERRAGRUNT_IAM_ASSUME_ROLE_DURATION]
@@ -145,7 +147,7 @@ GLOBAL OPTIONS:
    --help, -h                                        Show help
    --version, -v                                     Show terragrunt version
 
-VERSION: v0.59.6
+VERSION: v0.62.0
 
 AUTHOR: Gruntwork <www.gruntwork.io>
 ```
@@ -155,7 +157,7 @@ AUTHOR: Gruntwork <www.gruntwork.io>
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=docker depName=alpine/terragrunt
-ARG TERRAFORM_TERRAGRUNT_VERSION=1.9.0
+ARG TERRAFORM_TERRAGRUNT_VERSION=1.9.2
 FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} as terragrunt
 COPY --link --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
 ```
