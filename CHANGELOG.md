@@ -55,6 +55,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [vale](https://vale.sh/) from 3.6.0 to **3.6.1** on 2024-07-15
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.9.1 to **1.9.2** on 2024-07-15
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.60.0 to **0.62.0** on 2024-07-15
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 2.28.0 to **2.30.0** on 2024-07-16
 <!-- linter-versions-end -->
 
 ## [v7.13.0] - 2024-07-06

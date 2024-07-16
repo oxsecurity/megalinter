@@ -31,6 +31,9 @@ CVE-2018-8292
 CVE-2023-29331
 CVE-2019-0820
 
+# Lightning flow scanner
+CVE-2020-26226
+
 # sfdx-scanner
 CVE-2023-6378
 CVE-2020-36518
