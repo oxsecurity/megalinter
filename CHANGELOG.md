@@ -63,6 +63,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.7.0 to **1.7.1** on 2024-07-17
   - [pyright](https://github.com/Microsoft/pyright) from 1.1.371 to **1.1.372** on 2024-07-17
   - [checkov](https://www.checkov.io/) from 3.2.191 to **3.2.192** on 2024-07-17
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.7.1 to **1.7.2** on 2024-07-17
+  - [checkov](https://www.checkov.io/) from 3.2.192 to **3.2.193** on 2024-07-17
 <!-- linter-versions-end -->
 
 ## [v7.13.0] - 2024-07-06
