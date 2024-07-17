@@ -90,7 +90,7 @@ sf flow:scan
 ### Help content
 
 ```shell
-(node:1745) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(node:1746) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
 (Use `node --trace-deprecation ...` to show where the warning was created)
 Find and fix potential bugs in Salesforce flows.
 
@@ -124,7 +124,7 @@ GLOBAL FLAGS
 ```dockerfile
 # Parent descriptor install
 # renovate: datasource=npm depName=@salesforce/cli
-ARG SALESFORCE_CLI_VERSION=2.49.7
+ARG SALESFORCE_CLI_VERSION=2.50.6
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
 ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.7.1
 # renovate: datasource=npm depName=sfdx-hardis
