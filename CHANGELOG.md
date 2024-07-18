@@ -68,6 +68,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.7.2 to **1.8.0** on 2024-07-17
   - [checkov](https://www.checkov.io/) from 3.2.193 to **3.2.194** on 2024-07-18
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.79.0 to **3.80.1** on 2024-07-18
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.8.0 to **1.8.1** on 2024-07-18
+  - [ruff](https://github.com/astral-sh/ruff) from 0.5.2 to **0.5.3** on 2024-07-18
 <!-- linter-versions-end -->
 
 ## [v7.13.0] - 2024-07-06
