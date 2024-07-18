@@ -3753,6 +3753,11 @@ OPTIONS
            which is documented at
            https://git-scm.com/docs/gitignore#_pattern_format
 
+       --exclude-minified-files
+           Skip minified files. These are files that are &gt; 7% whitespace, or
+           who have a large number of bytes per line. By defualt minified
+           files are scanned
+
        --exclude-rule=VAL
            Skip any rule with the given id. Can add multiple times.
 
@@ -3864,10 +3869,10 @@ OPTIONS
            set to 0, will not have memory limit. Defaults to 0. For CI scans
            that use the Pro Engine, defaults to 5000 MiB.
 
-       --max-target-bytes=VAL (absent=1000000)
+       --max-target-bytes=VAL (absent=-1)
            Maximum size for a file to be scanned by Semgrep, e.g '1.5MB'. Any
            input program larger than this will be ignored. A zero or negative
-           value disables this filter. Defaults to 1000000 bytes
+           value disables this filter. Defaults to -1 bytes
 
        --metrics=VAL (absent=auto or SEMGREP_SEND_METRICS env)
            Configures how usage metrics are sent to the Semgrep server. If
@@ -3885,6 +3890,9 @@ OPTIONS
 
        --no-error
            negates --error
+
+       --no-exclude-minified-files
+           negates --exclude-minified-files
 
        --no-force-color
            negates --force-color
@@ -3934,6 +3942,10 @@ OPTIONS
        --pro-languages
            Enable Pro languages (currently Apex and Elixir). Requires Semgrep
            Pro Engine. See https://semgrep.dev/products/pro-engine/ for more.
+
+       --pro-path-sensitive
+           Path sensitivity. Implies --pro-intrafile. Requires Semgrep Pro
+           Engine. See https://semgrep.dev/products/pro-engine/ for more.
 
        --profile
            &lt;undocumented&gt;
