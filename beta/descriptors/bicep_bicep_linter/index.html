@@ -3375,7 +3375,7 @@
 use a <code>bicepconfig.json</code> file. For more information, see the <a href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/bicep-config-linter#customize-linter">documentation for the Bicep Linter</a></p>
 <h2 id="bicep_linter-documentation">bicep_linter documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>0.28.1</strong></li>
+<li>Version in MegaLinter: <strong>0.29.45</strong></li>
 <li>Visit <a href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/bicep-config" target="_blank">How to configure bicep_linter rules</a></li>
 <li>See <a href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter#silencing-false-positives" target="_blank">How to disable bicep_linter rules in files</a></li>
@@ -3484,7 +3484,7 @@ use a <code>bicepconfig.json</code> file. For more information, see the <a href=
 </tbody>
 </table>
 <h2 id="megalinter-flavours">MegaLinter Flavours</h2>
-<p>This linter is available in the following flavours</p>
+<p>This linter is available in the following flavors</p>
 <table>
 <thead>
 <tr>
@@ -3539,7 +3539,7 @@ az bicep build -f infra.bicep
 
 </code></pre>
 <h3 id="help-content">Help content</h3>
-<pre><code class="language-shell">Bicep CLI version 0.28.1 (ba1e9f8c1e)
+<pre><code class="language-shell">Bicep CLI version 0.29.45 (57a44c0230)
 
 Usage:
   bicep build [options] &lt;file&gt;
@@ -3701,17 +3701,31 @@ Usage:
 
     Options:
       --bicep-file &lt;file&gt;            Verifies if the specified bicep file path matches the one provided in the params file using declaration
-      --outfile &lt;file&gt;               Saves the param output json as the specified file path.
-      --stdout                       Prints the param and bicep json output to stdout.
+      --outdir &lt;dir&gt;                 Saves the output of building the parameter file only (.bicepparam) as json to the specified directory.
+      --outfile &lt;file&gt;               Saves the output of building the parameter file only (.bicepparam) as json to the specified file path.
+      --stdout                       Prints the output of building both the parameter file (.bicepparam) and the template it points to (.bicep) as json to stdout.
       --no-restore                   Builds the bicep file (referenced in using declaration) without restoring external modules.
       --diagnostics-format &lt;format&gt;  Sets the format with which diagnostics are displayed. Valid values are ( Default | Sarif ).
 
     Examples:
       bicep build-params params.bicepparam
       bicep build-params params.bicepparam --stdout
+      bicep build-params params.bicepparam --outdir dir1
       bicep build-params params.bicepparam --outfile otherParams.json
       bicep build-params params.bicepparam --no-restore
       bicep build-params params.bicepparam --diagnostics-format sarif
+
+  bicep jsonrpc [options]
+    Runs a JSONRPC server for interacting with Bicep programatically.
+
+    Options:
+      --pipe &lt;name&gt;   Runs the JSONRPC server using a named pipe.
+      --socket &lt;dir&gt;  Runs the JSONRPC server on a specific port.
+      --stdio         Runs the JSONRPC server over stdin/stdout.
+
+    Examples:
+      bicep jsonrpc --pipe /path/to/pipe.sock
+      bicep jsonrpc --stdio
 
 </code></pre>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
