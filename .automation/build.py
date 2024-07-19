@@ -1745,12 +1745,12 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                         f"| {icon_html} | {md_ide(ide)} | [{ide_extension['name']}]({ide_extension['url']}) | "
                         f"{install_link} |"
                     ]
-        # Mega-linter flavours
+        # Mega-linter flavors
         linter_doc_md += [
             "",
-            "## MegaLinter Flavours",
+            "## MegaLinter Flavors",
             "",
-            "This linter is available in the following flavours",
+            "This linter is available in the following flavors",
             "",
         ]
         linter_doc_md += build_flavors_md_table(
