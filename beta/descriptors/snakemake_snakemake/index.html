@@ -2457,9 +2457,9 @@
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#megalinter-flavours">
+<a class="md-nav__link" href="#megalinter-flavors">
 <span class="md-ellipsis">
-      MegaLinter Flavours
+      MegaLinter Flavors
     </span>
 </a>
 </li>
@@ -3308,9 +3308,9 @@
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#megalinter-flavours">
+<a class="md-nav__link" href="#megalinter-flavors">
 <span class="md-ellipsis">
-      MegaLinter Flavours
+      MegaLinter Flavors
     </span>
 </a>
 </li>
@@ -3489,7 +3489,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="megalinter-flavours">MegaLinter Flavours</h2>
+<h2 id="megalinter-flavors">MegaLinter Flavors</h2>
 <p>This linter is available in the following flavors</p>
 <table>
 <thead>
@@ -3693,7 +3693,7 @@
                  [--shared-fs-usage {input-output,persistence,software-deployment,source-cache,sources,storage-local-copies,none} [{input-output,persistence,software-deployment,source-cache,sources,storage-local-copies,none} ...]]
                  [--scheduler-greediness SCHEDULER_GREEDINESS] [--no-hooks]
                  [--debug] [--runtime-profile FILE]
-                 [--mode {default,remote,subprocess}] [--show-failed-logs]
+                 [--mode {subprocess,default,remote}] [--show-failed-logs]
                  [--log-handler-script FILE] [--log-service {none,slack,wms}]
                  [--job-deploy-sources] [--benchmark-extended]
                  [--container-image IMAGE] [--immediate-submit]
@@ -4357,12 +4357,12 @@ BEHAVIOR:
                         and data provenance will be handled by NFS but input
                         and output files will be handled exclusively by the
                         storage provider. (default:
-                        frozenset({&lt;SharedFSUsage.SOURCE_CACHE: 5&gt;,
-                        &lt;SharedFSUsage.SOFTWARE_DEPLOYMENT: 2&gt;,
-                        &lt;SharedFSUsage.STORAGE_LOCAL_COPIES: 4&gt;,
+                        frozenset({&lt;SharedFSUsage.STORAGE_LOCAL_COPIES: 4&gt;,
+                        &lt;SharedFSUsage.INPUT_OUTPUT: 1&gt;,
                         &lt;SharedFSUsage.PERSISTENCE: 0&gt;,
-                        &lt;SharedFSUsage.SOURCES: 3&gt;,
-                        &lt;SharedFSUsage.INPUT_OUTPUT: 1&gt;}))
+                        &lt;SharedFSUsage.SOFTWARE_DEPLOYMENT: 2&gt;,
+                        &lt;SharedFSUsage.SOURCE_CACHE: 5&gt;,
+                        &lt;SharedFSUsage.SOURCES: 3&gt;}))
   --scheduler-greediness SCHEDULER_GREEDINESS, --greediness SCHEDULER_GREEDINESS
                         Set the greediness of scheduling. This value between 0
                         and 1 determines how careful jobs are selected for
@@ -4375,7 +4375,7 @@ BEHAVIOR:
   --runtime-profile FILE
                         Profile Snakemake and write the output to FILE. This
                         requires yappi to be installed.
-  --mode {default,remote,subprocess}
+  --mode {subprocess,default,remote}
                         Set execution mode of Snakemake (internal use only).
                         (default: default)
   --show-failed-logs    Automatically display logs of failed jobs. (default:
