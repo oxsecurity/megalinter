@@ -45,7 +45,7 @@ description: How to use editorconfig-checker (configure, ignore files, ignore er
 | EDITORCONFIG_EDITORCONFIG_CHECKER_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
 | EDITORCONFIG_EDITORCONFIG_CHECKER_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `['editorconfig-checker']`                      |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
 This linter is available in the following flavors
 

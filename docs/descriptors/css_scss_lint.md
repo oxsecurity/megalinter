@@ -15,7 +15,7 @@ description: How to use scss-lint (configure, ignore files, ignore errors, help 
 
 > This linter has been deprecated.
 >
-> <https://github.com/sds/scss-lint#notice-consider-other-tools-before-adopting-scss-lint>
+> https://github.com/sds/scss-lint#notice-consider-other-tools-before-adopting-scss-lint
 >
 > You should disable scss-lint by adding it in DISABLE_LINTERS property.
 >
@@ -63,7 +63,7 @@ Use scss-lint in your favorite IDE to catch errors before MegaLinter !
 |  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a>  | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [scss-lint-plugin](https://plugins.jetbrains.com/plugin/7530-scss-lint)               |                       <iframe frameborder="none" width="245px" height="48px" src="https://plugins.jetbrains.com/embeddable/install/7530"></iframe>                        |
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/)     | [scss-lint](https://marketplace.visualstudio.com/items?itemName=adamwalzer.scss-lint) | [![Install in VSCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/adamwalzer.scss-lint){target=_blank} |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
 This linter is available in the following flavors
 

@@ -40,7 +40,7 @@ description: How to use npm-package-json-lint (configure, ignore files, ignore e
 | JSON_NPM_PACKAGE_JSON_LINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                                                                                      | `0`                                             |
 | JSON_NPM_PACKAGE_JSON_LINT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                                                                                               | `['npmPkgJsonLint']`                            |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
 This linter is available in the following flavors
 

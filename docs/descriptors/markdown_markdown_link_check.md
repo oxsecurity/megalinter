@@ -40,7 +40,7 @@ description: How to use markdown-link-check (configure, ignore files, ignore err
 | MARKDOWN_MARKDOWN_LINK_CHECK_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
 | MARKDOWN_MARKDOWN_LINK_CHECK_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `['markdown-link-check']`                       |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
 This linter is available in the following flavors
 
@@ -89,7 +89,7 @@ markdown-link-check -c .markdown-link-check.json myfile.md
 ### Help content
 
 ```shell
-(node:1523) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(node:1517) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
 (Use `node --trace-deprecation ...` to show where the warning was created)
 Usage: markdown-link-check [options] [filenamesOrUrls...]
 

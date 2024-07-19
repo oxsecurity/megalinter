@@ -36,7 +36,7 @@ description: How to use cpplint (configure, ignore files, ignore errors, help & 
 | C_CPPLINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                |
 | C_CPPLINT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `['cpplint']`      |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
 This linter is available in the following flavors
 

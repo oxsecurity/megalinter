@@ -54,7 +54,7 @@ Use ruff in your favorite IDE to catch errors before MegaLinter !
 |  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a>  | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [Ruff](https://plugins.jetbrains.com/plugin/20574-ruff)                        |                      <iframe frameborder="none" width="245px" height="48px" src="https://plugins.jetbrains.com/embeddable/install/20574"></iframe>                      |
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/)     | [Ruff](https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff) | [![Install in VSCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/charliermarsh.ruff){target=_blank} |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
 This linter is available in the following flavors
 

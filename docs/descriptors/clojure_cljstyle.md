@@ -52,7 +52,7 @@ Use cljstyle in your favorite IDE to catch errors before MegaLinter !
 |:------------------------------------------------------------------------------------------------------------------------------------------:|----------------------------------------------|-------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------:|
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a> | [Emacs](https://www.gnu.org/software/emacs/) | [cljstyle-mode](https://github.com/greglook/cljstyle/blob/main/doc/integrations.md#emacs) | [Visit Web Site](https://github.com/greglook/cljstyle/blob/main/doc/integrations.md#emacs){target=_blank} |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
 This linter is available in the following flavors
 

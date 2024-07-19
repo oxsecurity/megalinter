@@ -39,7 +39,7 @@ description: How to use ansible-lint (configure, ignore files, ignore errors, he
 | ANSIBLE_ANSIBLE_LINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                                                                                      | `0`                                             |
 | ANSIBLE_ANSIBLE_LINT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                                                                                               | `['ansible-lint']`                              |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
 This linter is available in the following flavors
 

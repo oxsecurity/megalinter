@@ -33,7 +33,7 @@ Git diff checks for git conflicts markers in files
 | REPOSITORY_GIT_DIFF_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                                                                                      | `0`           |
 | REPOSITORY_GIT_DIFF_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                                                                                               | `['git']`     |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
 This linter is available in the following flavors
 

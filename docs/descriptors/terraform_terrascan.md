@@ -43,7 +43,7 @@ description: How to use terrascan (configure, ignore files, ignore errors, help 
 | TERRAFORM_TERRASCAN_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                                                                                      | `0`                                             |
 | TERRAFORM_TERRASCAN_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                                                                                               | `['terrascan']`                                 |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
 This linter is available in the following flavors
 

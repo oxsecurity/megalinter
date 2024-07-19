@@ -46,7 +46,7 @@ description: How to use sqlfluff (configure, ignore files, ignore errors, help &
 | SQL_SQLFLUFF_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
 | SQL_SQLFLUFF_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `['sqlfluff']`                                  |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
 This linter is available in the following flavors
 

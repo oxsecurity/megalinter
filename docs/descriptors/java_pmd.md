@@ -41,7 +41,7 @@ description: How to use pmd (configure, ignore files, ignore errors, help & vers
 | JAVA_PMD_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
 | JAVA_PMD_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `['/usr/bin/pmd/bin/pmd']`                      |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
 This linter is available in the following flavors
 

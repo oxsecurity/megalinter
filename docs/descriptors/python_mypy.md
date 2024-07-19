@@ -19,7 +19,7 @@ If you don't use python static typing, you should disable this linter by adding 
 
 ## mypy documentation
 
-- Version in MegaLinter: **1.10.1**
+- Version in MegaLinter: **1.11.0**
 - Visit [Official Web Site](https://mypy.readthedocs.io/en/stable/){target=_blank}
 - See [How to configure mypy rules](https://mypy.readthedocs.io/en/stable/config_file.html){target=_blank}
   - If custom `.mypy.ini` config file isn't found, [.mypy.ini](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.mypy.ini){target=_blank} will be used
@@ -64,7 +64,7 @@ Use mypy in your favorite IDE to catch errors before MegaLinter !
 |   <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a>   | [vim](https://www.vim.org/)                              | [Syntastic](https://github.com/vim-syntastic/syntastic)                                  |                                             [Visit Web Site](https://github.com/vim-syntastic/syntastic){target=_blank}                                              |
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/)     | [Mypy](https://marketplace.visualstudio.com/items?itemName=matangover.mypy)              | [![Install in VSCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/matangover.mypy){target=_blank} |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
 This linter is available in the following flavors
 
@@ -125,7 +125,7 @@ command line flags. For more details, see:
 - https://mypy.readthedocs.io/en/stable/config_file.html
 
 options:
-  --enable-incomplete-feature {PreciseTupleTypes}
+  --enable-incomplete-feature {NewGenericSyntax,PreciseTupleTypes}
                             Enable support of incomplete/experimental features
                             for early preview
 
@@ -133,6 +133,8 @@ Optional arguments:
   -h, --help                Show this help message and exit
   -v, --verbose             More verbose messages
   -V, --version             Show program's version number and exit
+  -O FORMAT, --output FORMAT
+                            Set a custom output format
 
 Config file:
   Use a config file instead of command line arguments. This is useful if you

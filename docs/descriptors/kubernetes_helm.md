@@ -42,7 +42,7 @@ description: How to use helm (configure, ignore files, ignore errors, help & ver
 | KUBERNETES_HELM_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                                                                                               | `['helm']`                   |
 | KUBERNETES_DIRECTORY                        | Directory containing KUBERNETES files (use `any` to always activate the linter)                                                                                                                                                                                                       | ``                           |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
 This linter is available in the following flavors
 

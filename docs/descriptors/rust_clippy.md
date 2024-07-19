@@ -46,7 +46,7 @@ Use clippy in your favorite IDE to catch errors before MegaLinter !
 |:-----------------------------------------------------------------------------------------------------------------------------------------:|--------------------------|-------------------------------------------------------------|:---------------------------------------------------------------------------:|
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a> | [Atom](https://atom.io/) | [Atom IDE Rest](https://github.com/rust-lang/atom-ide-rust) | [Visit Web Site](https://github.com/rust-lang/atom-ide-rust){target=_blank} |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
 This linter is available in the following flavors
 
