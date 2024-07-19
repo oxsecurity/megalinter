@@ -42,7 +42,7 @@ description: How to use kics (configure, ignore files, ignore errors, help & ver
 | REPOSITORY_KICS_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                                                                                      | `0`                                             |
 | REPOSITORY_KICS_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                                                                                               | `['kics']`                                      |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
 This linter is available in the following flavors
 

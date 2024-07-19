@@ -61,7 +61,7 @@ Example:
 | COPYPASTE_JSCPD_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                                                                                      | `0`                                             |
 | COPYPASTE_JSCPD_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                                                                                               | `['jscpd']`                                     |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
 This linter is available in the following flavors
 

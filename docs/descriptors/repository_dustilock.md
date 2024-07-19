@@ -37,7 +37,7 @@ description: How to use dustilock (configure, ignore files, ignore errors, help 
 | REPOSITORY_DUSTILOCK_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                                                                                      | `0`             |
 | REPOSITORY_DUSTILOCK_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                                                                                               | `['dustilock']` |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
 This linter is available in the following flavors
 

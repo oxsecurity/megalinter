@@ -61,7 +61,7 @@ Use bandit in your favorite IDE to catch errors before MegaLinter !
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/)         | [SublimeLinter-bandit](https://github.com/SublimeLinter/SublimeLinter-bandit) |   [Visit Web Site](https://github.com/SublimeLinter/SublimeLinter-bandit){target=_blank}   |
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/) | [Native Support](https://code.visualstudio.com/docs/python/linting#_bandit)   | [Visit Web Site](https://code.visualstudio.com/docs/python/linting#_bandit){target=_blank} |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
 This linter is available in the following flavors
 

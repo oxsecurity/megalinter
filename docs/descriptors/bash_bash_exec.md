@@ -37,7 +37,7 @@ Note: You can run `git add --chmod=+x myfile.sh` to make a file executable on Wi
 | BASH_EXEC_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                 |
 | BASH_EXEC_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `['bash-exec']`                     |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
 This linter is available in the following flavors
 

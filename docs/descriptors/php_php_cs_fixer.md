@@ -48,7 +48,7 @@ Use php-cs-fixer in your favorite IDE to catch errors before MegaLinter !
 |   <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a>   | [vim](https://www.vim.org/)                              | [vim-php-cs-fixer](https://github.com/stephpy/vim-php-cs-fixer)                 |           [Visit Web Site](https://github.com/stephpy/vim-php-cs-fixer){target=_blank}           |
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/)     | [vscode-php-cs-fixer](https://github.com/junstyle/vscode-php-cs-fixer)          |         [Visit Web Site](https://github.com/junstyle/vscode-php-cs-fixer){target=_blank}         |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
 This linter is available in the following flavors
 

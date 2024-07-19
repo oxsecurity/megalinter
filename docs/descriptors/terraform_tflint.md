@@ -45,7 +45,7 @@ The default configuration enables all supported languages and rules, which may n
 | TERRAFORM_TFLINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                                                                                      | `0`                                             |
 | TERRAFORM_TFLINT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                                                                                               | `['tflint']`                                    |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
 This linter is available in the following flavors
 

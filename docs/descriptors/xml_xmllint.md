@@ -40,7 +40,7 @@ To apply file formatting you must set `XML_XMLLINT_CLI_LINT_MODE: file` and `XML
 | XML_XMLLINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                |
 | XML_XMLLINT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `['xmllint']`      |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
 This linter is available in the following flavors
 

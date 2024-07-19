@@ -38,7 +38,7 @@ description: How to use phplint (configure, ignore files, ignore errors, help & 
 | PHP_PHPLINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
 | PHP_PHPLINT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `['phplint']`                                   |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
 This linter is available in the following flavors
 

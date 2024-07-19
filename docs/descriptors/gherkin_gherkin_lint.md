@@ -39,7 +39,7 @@ description: How to use gherkin-lint (configure, ignore files, ignore errors, he
 | GHERKIN_GHERKIN_LINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                             |
 | GHERKIN_GHERKIN_LINT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `['gherkin-lint']`                              |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
 This linter is available in the following flavors
 

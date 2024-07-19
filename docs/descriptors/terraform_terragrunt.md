@@ -40,7 +40,7 @@ description: How to use terragrunt (configure, ignore files, ignore errors, help
 | TERRAFORM_TERRAGRUNT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                             |
 | TERRAFORM_TERRAGRUNT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `['terragrunt']`                                |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
 This linter is available in the following flavors
 

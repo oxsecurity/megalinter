@@ -41,7 +41,7 @@ description: How to use snakefmt (configure, ignore files, ignore errors, help &
 | SNAKEMAKE_SNAKEFMT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                             |
 | SNAKEMAKE_SNAKEFMT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `['snakefmt']`                                  |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
 This linter is available in the following flavors
 

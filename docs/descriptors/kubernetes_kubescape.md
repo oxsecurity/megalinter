@@ -50,7 +50,7 @@ Use kubescape in your favorite IDE to catch errors before MegaLinter !
 |:-------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|--------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [Kubescape](https://marketplace.visualstudio.com/items?itemName=kubescape.kubescape) | [![Install in VSCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/kubescape.kubescape){target=_blank} |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
 This linter is available in the following flavors
 
@@ -126,7 +126,7 @@ Available Commands:
   completion  Generate autocompletion script
   config      Handle cached configurations
   delete      Delete configurations in Kubescape SaaS version
-  download    Download exceptions,control,framework,artifacts,attack-tracks,controls-inputs
+  download    Download controls-inputs,exceptions,control,framework,artifacts,attack-tracks
   fix         Fix misconfiguration in files
   help        Help about any command
   list        List frameworks/controls will list the supported frameworks and controls

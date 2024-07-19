@@ -44,7 +44,7 @@ description: How to use secretlint (configure, ignore files, ignore errors, help
 | REPOSITORY_SECRETLINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                                                                                      | `0`                                             |
 | REPOSITORY_SECRETLINT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                                                                                               | `['secretlint']`                                |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
 This linter is available in the following flavors
 

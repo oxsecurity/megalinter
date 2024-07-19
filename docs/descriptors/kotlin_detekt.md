@@ -49,7 +49,7 @@ Use detekt in your favorite IDE to catch errors before MegaLinter !
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a> | [Emacs](https://www.gnu.org/software/emacs/) | [flycheck-kotlin](https://github.com/whirm/flycheck-kotlin) | [Visit Web Site](https://github.com/whirm/flycheck-kotlin){target=_blank} |
 |  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a>  | [vim](https://www.vim.org/)                  | [ale](https://github.com/w0rp/ale)                          |       [Visit Web Site](https://github.com/w0rp/ale){target=_blank}        |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
 This linter is available in the following flavors
 

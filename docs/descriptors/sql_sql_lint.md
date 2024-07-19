@@ -50,7 +50,7 @@ Use sql-lint in your favorite IDE to catch errors before MegaLinter !
 |:----------------------------------------------------------------------------------------------------------------------------------------:|-----------------------------|-----------------------------------------------|:-----------------------------------------------------------------------:|
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a> | [vim](https://www.vim.org/) | [ale](https://github.com/dense-analysis/ale/) | [Visit Web Site](https://github.com/dense-analysis/ale/){target=_blank} |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
 This linter is available in the following flavors
 

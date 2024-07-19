@@ -40,7 +40,7 @@ description: How to use ls-lint (configure, ignore files, ignore errors, help & 
 | REPOSITORY_LS_LINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                                                                                      | `0`                                             |
 | REPOSITORY_LS_LINT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                                                                                               | `['ls-lint']`                                   |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
 This linter is available in the following flavors
 

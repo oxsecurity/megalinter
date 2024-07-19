@@ -42,7 +42,7 @@ description: How to use grype (configure, ignore files, ignore errors, help & ve
 | REPOSITORY_GRYPE_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                                                                                      | `0`                                             |
 | REPOSITORY_GRYPE_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                                                                                               | `['grype']`                                     |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
 This linter is available in the following flavors
 

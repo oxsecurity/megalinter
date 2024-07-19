@@ -37,7 +37,7 @@ description: How to use rstfmt (configure, ignore files, ignore errors, help & v
 | RST_RSTFMT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                |
 | RST_RSTFMT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `['rstfmt']`       |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
 This linter is available in the following flavors
 

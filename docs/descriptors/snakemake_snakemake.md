@@ -50,7 +50,7 @@ Use snakemake in your favorite IDE to catch errors before MegaLinter !
 |  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a>  | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [SnakeCharm](https://plugins.jetbrains.com/plugin/11947-snakecharm)                             |                        <iframe frameborder="none" width="245px" height="48px" src="https://plugins.jetbrains.com/embeddable/install/11947"></iframe>                         |
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/)     | [VSCode SnakeMake](https://marketplace.visualstudio.com/items?itemName=alping.vscode-snakemake) | [![Install in VSCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/alping.vscode-snakemake){target=_blank} |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
 This linter is available in the following flavors
 
@@ -163,7 +163,7 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--shared-fs-usage {input-output,persistence,software-deployment,source-cache,sources,storage-local-copies,none} [{input-output,persistence,software-deployment,source-cache,sources,storage-local-copies,none} ...]]
                  [--scheduler-greediness SCHEDULER_GREEDINESS] [--no-hooks]
                  [--debug] [--runtime-profile FILE]
-                 [--mode {default,remote,subprocess}] [--show-failed-logs]
+                 [--mode {subprocess,default,remote}] [--show-failed-logs]
                  [--log-handler-script FILE] [--log-service {none,slack,wms}]
                  [--job-deploy-sources] [--benchmark-extended]
                  [--container-image IMAGE] [--immediate-submit]
@@ -827,12 +827,12 @@ BEHAVIOR:
                         and data provenance will be handled by NFS but input
                         and output files will be handled exclusively by the
                         storage provider. (default:
-                        frozenset({<SharedFSUsage.SOURCE_CACHE: 5>,
-                        <SharedFSUsage.SOFTWARE_DEPLOYMENT: 2>,
-                        <SharedFSUsage.STORAGE_LOCAL_COPIES: 4>,
+                        frozenset({<SharedFSUsage.STORAGE_LOCAL_COPIES: 4>,
+                        <SharedFSUsage.INPUT_OUTPUT: 1>,
                         <SharedFSUsage.PERSISTENCE: 0>,
-                        <SharedFSUsage.SOURCES: 3>,
-                        <SharedFSUsage.INPUT_OUTPUT: 1>}))
+                        <SharedFSUsage.SOFTWARE_DEPLOYMENT: 2>,
+                        <SharedFSUsage.SOURCE_CACHE: 5>,
+                        <SharedFSUsage.SOURCES: 3>}))
   --scheduler-greediness SCHEDULER_GREEDINESS, --greediness SCHEDULER_GREEDINESS
                         Set the greediness of scheduling. This value between 0
                         and 1 determines how careful jobs are selected for
@@ -845,7 +845,7 @@ BEHAVIOR:
   --runtime-profile FILE
                         Profile Snakemake and write the output to FILE. This
                         requires yappi to be installed.
-  --mode {default,remote,subprocess}
+  --mode {subprocess,default,remote}
                         Set execution mode of Snakemake (internal use only).
                         (default: default)
   --show-failed-logs    Automatically display logs of failed jobs. (default:

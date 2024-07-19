@@ -82,7 +82,7 @@ git fetch --depth=0
 | REPOSITORY_GITLEAKS_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                                                                                      | `0`                                             |
 | REPOSITORY_GITLEAKS_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                                                                                               | `['gitleaks']`                                  |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
 This linter is available in the following flavors
 

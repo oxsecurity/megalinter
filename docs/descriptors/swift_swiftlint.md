@@ -53,7 +53,7 @@ Use swiftlint in your favorite IDE to catch errors before MegaLinter !
 |  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a>   | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [swiftlint](https://plugins.jetbrains.com/plugin/9175-swiftlint) | <iframe frameborder="none" width="245px" height="48px" src="https://plugins.jetbrains.com/embeddable/install/9175"></iframe> |
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/default.ico" alt="" height="32px" class="megalinter-icon"></a> | xcode                                                    | [Configure manually](https://github.com/realm/SwiftLint#xcode)   |                          [Visit Web Site](https://github.com/realm/SwiftLint#xcode){target=_blank}                           |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
 This linter is available in the following flavors
 
