@@ -11,7 +11,7 @@ dotnet-format requires a `.sln` or `.vbproj` file to run correctly.
 
 ## dotnet-format documentation
 
-- Version in MegaLinter: **8.0.106**
+- Version in MegaLinter: **8.0.107**
 - Visit [Official Web Site](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format){target=_blank}
 
 [![format - GitHub](https://gh-card.dev/repos/dotnet/format.svg?fullname=)](https://github.com/dotnet/format){target=_blank}
@@ -39,9 +39,9 @@ dotnet-format requires a `.sln` or `.vbproj` file to run correctly.
 | VBDOTNET_DOTNET_FORMAT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                |
 | VBDOTNET_DOTNET_FORMAT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `['dotnet']`       |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
-This linter is available in the following flavours
+This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                       | Description                                              | Embedded linters |                                                                                                                                                                                             Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------|:---------------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|

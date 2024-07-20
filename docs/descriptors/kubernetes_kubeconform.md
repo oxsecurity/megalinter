@@ -44,9 +44,9 @@ description: How to use kubeconform (configure, ignore files, ignore errors, hel
 | KUBERNETES_KUBECONFORM_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `['kubeconform']`            |
 | KUBERNETES_DIRECTORY                               | Directory containing KUBERNETES files (use `any` to always activate the linter)                                                                                                                                     | `kubernetes`                 |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
-This linter is available in the following flavours
+This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                             | Description                                              | Embedded linters |                                                                                                                                                                                                   Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------|:---------------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|

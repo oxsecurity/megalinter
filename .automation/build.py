@@ -1450,47 +1450,41 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                     f"{linter.name}_FILTER_REGEX_EXCLUDE",
                 ]
             )
-        # cli_lint_mode can be overridden by user config if the descriptor cli_lint_mode is not "project"
-        if linter.cli_lint_mode != "project":
-            cli_lint_mode_doc_md = (
-                f"| {linter.name}_CLI_LINT_MODE | Override default CLI lint mode<br/>"
-            )
-            cli_lint_mode_doc_md += "- `file`: Calls the linter for each file<br/>"
-
-            if linter.cli_lint_mode == "file":
-                enum = ["file", "project"]
-            else:
-                enum = ["file", "list_of_files", "project"]
-
-                cli_lint_mode_doc_md += "- `list_of_files`: Call the linter with the list of files as argument<br/>"
-
+        # cli_lint_mode can be overridden by user config
+        # if the descriptor cli_lint_mode == "project", it's at the user's own risk :)
+        cli_lint_mode_doc_md = (
+            f"| {linter.name}_CLI_LINT_MODE | Override default CLI lint mode<br/>"
+        )
+        if linter.cli_lint_mode == "project":
             cli_lint_mode_doc_md += (
-                "- `project`: Call the linter from the root of the project"
+                "⚠️ As default value is **project**, overriding might not work<br/>"
             )
-            cli_lint_mode_doc_md += f" | `{linter.cli_lint_mode}` |"
-
-            linter_doc_md += [cli_lint_mode_doc_md]
-
-            add_in_config_schema_file(
-                [
-                    [
-                        f"{linter.name}_CLI_LINT_MODE",
-                        {
-                            "$id": f"#/properties/{linter.name}_CLI_LINT_MODE",
-                            "type": "string",
-                            "title": f"{title_prefix}{linter.name}: Override default cli lint mode",
-                            "default": linter.cli_lint_mode,
-                            "enum": enum,
-                        },
-                    ]
-                ]
-            )
+        cli_lint_mode_doc_md += "- `file`: Calls the linter for each file<br/>"
+        if linter.cli_lint_mode == "file":
+            enum = ["file", "project"]
         else:
-            remove_in_config_schema_file(
+            enum = ["file", "list_of_files", "project"]
+            cli_lint_mode_doc_md += "- `list_of_files`: Call the linter with the list of files as argument<br/>"
+        cli_lint_mode_doc_md += (
+            "- `project`: Call the linter from the root of the project"
+        )
+        cli_lint_mode_doc_md += f" | `{linter.cli_lint_mode}` |"
+        linter_doc_md += [cli_lint_mode_doc_md]
+        add_in_config_schema_file(
+            [
                 [
                     f"{linter.name}_CLI_LINT_MODE",
+                    {
+                        "$id": f"#/properties/{linter.name}_CLI_LINT_MODE",
+                        "type": "string",
+                        "title": f"{title_prefix}{linter.name}: Override default cli lint mode",
+                        "default": linter.cli_lint_mode,
+                        "enum": enum,
+                    },
                 ]
-            )
+            ]
+        )
+
         # File extensions & file names override if not "lint_all_files"
         if linter.lint_all_files is False:
             linter_doc_md += [
@@ -1751,12 +1745,12 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                         f"| {icon_html} | {md_ide(ide)} | [{ide_extension['name']}]({ide_extension['url']}) | "
                         f"{install_link} |"
                     ]
-        # Mega-linter flavours
+        # Mega-linter flavors
         linter_doc_md += [
             "",
-            "## MegaLinter Flavours",
+            "## MegaLinter Flavors",
             "",
-            "This linter is available in the following flavours",
+            "This linter is available in the following flavors",
             "",
         ]
         linter_doc_md += build_flavors_md_table(

@@ -57,9 +57,9 @@ https://github.com/sgerrand/alpine-pkg-glibc/releases/download
 | SPELL_LYCHEE_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                                                                                           |
 | SPELL_LYCHEE_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `['lychee']`                                                                                                  |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
-This linter is available in the following flavours
+This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                             | Description                                              | Embedded linters |                                                                                                                                                                                                   Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------|:---------------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|

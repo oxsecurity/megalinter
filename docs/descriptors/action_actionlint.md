@@ -41,9 +41,9 @@ Static checker for GitHub Actions workflow files
 | ACTION_ACTIONLINT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `['actionlint']`                                |
 | ACTION_DIRECTORY                              | Directory containing ACTION files (use `any` to always activate the linter)                                                                                                                                         | `.github/workflows`                             |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
-This linter is available in the following flavours
+This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                             | Description                                              | Embedded linters |                                                                                                                                                                                                   Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------|:---------------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
