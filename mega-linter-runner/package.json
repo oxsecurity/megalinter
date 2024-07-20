@@ -98,6 +98,6 @@
     "mocha": "^10.2.0"
   },
   "resolutions": {
-    "semver": "7.6.2"
+    "semver": "7.6.3"
   }
 }

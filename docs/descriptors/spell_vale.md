@@ -58,9 +58,9 @@ Use vale in your favorite IDE to catch errors before MegaLinter !
 |   <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a>   | [vim](https://www.vim.org/)                          | [dense-analysis/vale](https://github.com/dense-analysis/ale)                                |                                                      [Visit Web Site](https://github.com/dense-analysis/ale){target=_blank}                                                      |
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/) | [Vale](https://marketplace.visualstudio.com/items?itemName=ChrisChinchilla.vale-vscode)     | [![Install in VSCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/ChrisChinchilla.vale-vscode){target=_blank} |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
-This linter is available in the following flavours
+This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                             | Description                                              | Embedded linters |                                                                                                                                                                                                   Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------|:---------------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
@@ -155,8 +155,8 @@ Commands:
 
 - Dockerfile commands :
 ```dockerfile
-# renovate: datasource=docker depName=
-ARG SPELL_VALE_VERSION=v3.6.0
+# renovate: datasource=docker depName=jdkato/vale
+ARG SPELL_VALE_VERSION=v3.6.1
 FROM jdkato/vale:${SPELL_VALE_VERSION} as vale
 COPY --link --from=vale /bin/vale /bin/vale
 ```

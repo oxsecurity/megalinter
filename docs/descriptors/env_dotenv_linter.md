@@ -44,9 +44,9 @@ description: How to use dotenv-linter (configure, ignore files, ignore errors, h
 | ENV_DOTENV_LINTER_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                 |
 | ENV_DOTENV_LINTER_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `['dotenv-linter']` |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
-This linter is available in the following flavours
+This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                             | Description                                                            | Embedded linters |                                                                                                                                                                                                   Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------|:-----------------------------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|

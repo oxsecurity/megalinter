@@ -501,9 +501,17 @@ class Megalinter:
             linter_rules_path_val = config.get(self.request_id, "LINTER_RULES_PATH")
             if linter_rules_path_val.startswith("http"):
                 self.linter_rules_path = linter_rules_path_val
-            else:
+            elif os.path.isdir(
+                self.github_workspace + os.path.sep + linter_rules_path_val
+            ):
                 self.linter_rules_path = (
                     self.github_workspace + os.path.sep + linter_rules_path_val
+                )
+            elif os.path.isdir(linter_rules_path_val):
+                self.linter_rules_path = linter_rules_path_val
+            else:
+                raise ValueError(
+                    f"LINTER_RULES_PATH should be a valid directory ({linter_rules_path_val})"
                 )
         # Filtering regex (inclusion)
         if config.exists(self.request_id, "FILTER_REGEX_INCLUDE"):

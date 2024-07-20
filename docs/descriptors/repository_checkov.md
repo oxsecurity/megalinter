@@ -15,7 +15,7 @@ description: How to use checkov (configure, ignore files, ignore errors, help & 
 
 ## checkov documentation
 
-- Version in MegaLinter: **3.2.189**
+- Version in MegaLinter: **3.2.194**
 - Visit [Official Web Site](https://www.checkov.io/){target=_blank}
 - See [How to configure checkov rules](https://github.com/bridgecrewio/checkov#configuration-using-a-config-file){target=_blank}
   - If custom `.checkov.yml` config file isn't found, [.checkov.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.checkov.yml){target=_blank} will be used
@@ -29,18 +29,19 @@ description: How to use checkov (configure, ignore files, ignore errors, help & 
 - Enable checkov by adding `REPOSITORY_CHECKOV` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 - Disable checkov by adding `REPOSITORY_CHECKOV` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-| Variable                                       | Description                                                                                               | Default value                                   |
-|------------------------------------------------|-----------------------------------------------------------------------------------------------------------|-------------------------------------------------|
-| REPOSITORY_CHECKOV_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                  |                                                 |
-| REPOSITORY_CHECKOV_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`      |                                                 |
-| REPOSITORY_CHECKOV_PRE_COMMANDS                | List of bash commands to run before the linter                                                            | None                                            |
-| REPOSITORY_CHECKOV_POST_COMMANDS               | List of bash commands to run after the linter                                                             | None                                            |
-| REPOSITORY_CHECKOV_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling REPOSITORY_CHECKOV and its pre/post commands | None                                            |
-| REPOSITORY_CHECKOV_CONFIG_FILE                 | checkov configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                        | `.checkov.yml`                                  |
-| REPOSITORY_CHECKOV_RULES_PATH                  | Path where to find linter configuration file                                                              | Workspace folder, then MegaLinter default rules |
-| REPOSITORY_CHECKOV_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                | `false`                                         |
-| REPOSITORY_CHECKOV_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                          | `0`                                             |
-| REPOSITORY_CHECKOV_CLI_EXECUTABLE              | Override CLI executable                                                                                   | `['checkov']`                                   |
+| Variable                                       | Description                                                                                                                                                                                                                                                                           | Default value                                   |
+|------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
+| REPOSITORY_CHECKOV_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                                                                                              |                                                 |
+| REPOSITORY_CHECKOV_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                                                                                                  |                                                 |
+| REPOSITORY_CHECKOV_CLI_LINT_MODE               | Override default CLI lint mode<br/>⚠️ As default value is **project**, overriding might not work<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `project`                                       |
+| REPOSITORY_CHECKOV_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                                                                                        | None                                            |
+| REPOSITORY_CHECKOV_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                                                                                         | None                                            |
+| REPOSITORY_CHECKOV_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling REPOSITORY_CHECKOV and its pre/post commands                                                                                                                                                                             | None                                            |
+| REPOSITORY_CHECKOV_CONFIG_FILE                 | checkov configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                                                                                    | `.checkov.yml`                                  |
+| REPOSITORY_CHECKOV_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                                                                                          | Workspace folder, then MegaLinter default rules |
+| REPOSITORY_CHECKOV_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                                                                                            | `false`                                         |
+| REPOSITORY_CHECKOV_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                                                                                      | `0`                                             |
+| REPOSITORY_CHECKOV_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                                                                                               | `['checkov']`                                   |
 
 ## IDE Integration
 
@@ -50,9 +51,9 @@ Use checkov in your favorite IDE to catch errors before MegaLinter !
 |:-------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|-----------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [Checkov](https://marketplace.visualstudio.com/items?itemName=Bridgecrew.checkov) | [![Install in VSCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/Bridgecrew.checkov){target=_blank} |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
-This linter is available in the following flavours
+This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                             | Description                                              | Embedded linters |                                                                                                                                                                                                   Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------|:---------------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
@@ -134,7 +135,7 @@ usage: checkov [-h] [-v] [--support] [-d DIRECTORY] [--add-check]
                [--secrets-scan-file-type SECRETS_SCAN_FILE_TYPE]
                [--enable-secret-scan-all-files]
                [--block-list-secret-scan BLOCK_LIST_SECRET_SCAN]
-               [--summary-position {top,bottom}]
+               [--summary-position {bottom,top}]
                [--skip-resources-without-violations] [--deep-analysis]
                [--no-fail-on-crash] [--mask MASK] [--scan-secrets-history]
                [--secrets-history-timeout SECRETS_HISTORY_TIMEOUT]
@@ -444,7 +445,7 @@ options:
   --block-list-secret-scan BLOCK_LIST_SECRET_SCAN
                         List of files to filter out from the secret scanner
                         [env var: CKV_SECRETS_SCAN_BLOCK_LIST]
-  --summary-position {top,bottom}
+  --summary-position {bottom,top}
                         Chose whether the summary will be appended on top
                         (before the checks results) or on bottom (after check
                         results), default is on top.

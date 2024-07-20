@@ -36,18 +36,19 @@ Exception for standalone and security flavors docker images, that use a list of 
 - Enable semgrep by adding `REPOSITORY_SEMGREP` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 - Disable semgrep by adding `REPOSITORY_SEMGREP` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-| Variable                                       | Description                                                                                               | Default value |
-|------------------------------------------------|-----------------------------------------------------------------------------------------------------------|---------------|
-| REPOSITORY_SEMGREP_RULESETS                    | List of semgrep rulesets identifiers that you want to enforce                                             | `auto`        |
-| REPOSITORY_SEMGREP_RULESETS_TYPE               | MegaLinter semgrep ruleset list preset id . Available values: security                                    | ``            |
-| REPOSITORY_SEMGREP_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                  |               |
-| REPOSITORY_SEMGREP_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`      |               |
-| REPOSITORY_SEMGREP_PRE_COMMANDS                | List of bash commands to run before the linter                                                            | None          |
-| REPOSITORY_SEMGREP_POST_COMMANDS               | List of bash commands to run after the linter                                                             | None          |
-| REPOSITORY_SEMGREP_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling REPOSITORY_SEMGREP and its pre/post commands | None          |
-| REPOSITORY_SEMGREP_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                | `false`       |
-| REPOSITORY_SEMGREP_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                          | `0`           |
-| REPOSITORY_SEMGREP_CLI_EXECUTABLE              | Override CLI executable                                                                                   | `['semgrep']` |
+| Variable                                       | Description                                                                                                                                                                                                                                                                           | Default value |
+|------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|
+| REPOSITORY_SEMGREP_RULESETS                    | List of semgrep rulesets identifiers that you want to enforce                                                                                                                                                                                                                         | `auto`        |
+| REPOSITORY_SEMGREP_RULESETS_TYPE               | MegaLinter semgrep ruleset list preset id . Available values: security                                                                                                                                                                                                                | ``            |
+| REPOSITORY_SEMGREP_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                                                                                              |               |
+| REPOSITORY_SEMGREP_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                                                                                                  |               |
+| REPOSITORY_SEMGREP_CLI_LINT_MODE               | Override default CLI lint mode<br/>⚠️ As default value is **project**, overriding might not work<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `project`     |
+| REPOSITORY_SEMGREP_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                                                                                        | None          |
+| REPOSITORY_SEMGREP_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                                                                                         | None          |
+| REPOSITORY_SEMGREP_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling REPOSITORY_SEMGREP and its pre/post commands                                                                                                                                                                             | None          |
+| REPOSITORY_SEMGREP_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                                                                                            | `false`       |
+| REPOSITORY_SEMGREP_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                                                                                      | `0`           |
+| REPOSITORY_SEMGREP_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                                                                                               | `['semgrep']` |
 
 ## IDE Integration
 
@@ -57,9 +58,9 @@ Use semgrep in your favorite IDE to catch errors before MegaLinter !
 |:-------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|---------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [VSCode SemGrep](https://marketplace.visualstudio.com/items?itemName=semgrep.semgrep) | [![Install in VSCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/semgrep.semgrep){target=_blank} |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
-This linter is available in the following flavours
+This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                             | Description                                              | Embedded linters |                                                                                                                                                                                                   Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------|:---------------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
@@ -227,6 +228,11 @@ OPTIONS
            which is documented at
            https://git-scm.com/docs/gitignore#_pattern_format
 
+       --exclude-minified-files
+           Skip minified files. These are files that are > 7% whitespace, or
+           who have a large number of bytes per line. By defualt minified
+           files are scanned
+
        --exclude-rule=VAL
            Skip any rule with the given id. Can add multiple times.
 
@@ -338,10 +344,10 @@ OPTIONS
            set to 0, will not have memory limit. Defaults to 0. For CI scans
            that use the Pro Engine, defaults to 5000 MiB.
 
-       --max-target-bytes=VAL (absent=1000000)
+       --max-target-bytes=VAL (absent=-1)
            Maximum size for a file to be scanned by Semgrep, e.g '1.5MB'. Any
            input program larger than this will be ignored. A zero or negative
-           value disables this filter. Defaults to 1000000 bytes
+           value disables this filter. Defaults to -1 bytes
 
        --metrics=VAL (absent=auto or SEMGREP_SEND_METRICS env)
            Configures how usage metrics are sent to the Semgrep server. If
@@ -359,6 +365,9 @@ OPTIONS
 
        --no-error
            negates --error
+
+       --no-exclude-minified-files
+           negates --exclude-minified-files
 
        --no-force-color
            negates --force-color
@@ -408,6 +417,10 @@ OPTIONS
        --pro-languages
            Enable Pro languages (currently Apex and Elixir). Requires Semgrep
            Pro Engine. See https://semgrep.dev/products/pro-engine/ for more.
+
+       --pro-path-sensitive
+           Path sensitivity. Implies --pro-intrafile. Requires Semgrep Pro
+           Engine. See https://semgrep.dev/products/pro-engine/ for more.
 
        --profile
            <undocumented>

@@ -15,7 +15,7 @@ description: How to use terraform-fmt (configure, ignore files, ignore errors, h
 
 ## terraform-fmt documentation
 
-- Version in MegaLinter: **1.9.1**
+- Version in MegaLinter: **1.9.2**
 - Visit [Official Web Site](https://developer.hashicorp.com/terraform/cli/commands/fmt){target=_blank}
 
 [![terraform - GitHub](https://gh-card.dev/repos/hashicorp/terraform.svg?fullname=)](https://github.com/hashicorp/terraform){target=_blank}
@@ -54,9 +54,9 @@ Use terraform-fmt in your favorite IDE to catch errors before MegaLinter !
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/)             | [Terrafmt](https://packagecontrol.io/packages/Terrafmt)                                                                           |                                               [Visit Web Site](https://packagecontrol.io/packages/Terrafmt){target=_blank}                                               |
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/)     | [HashiCorp Terraform](https://marketplace.visualstudio.com/items?itemName=HashiCorp.terraform)                                    | [![Install in VSCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/HashiCorp.terraform){target=_blank} |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
-This linter is available in the following flavours
+This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                       | Description                                     | Embedded linters |                                                                                                                                                                                             Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
@@ -133,7 +133,7 @@ Global options (use these before the subcommand, if any):
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=docker depName=alpine/terragrunt
-ARG TERRAFORM_TERRAGRUNT_VERSION=1.9.1
+ARG TERRAFORM_TERRAGRUNT_VERSION=1.9.2
 FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} as terragrunt
 COPY --link --from=terragrunt /bin/terraform /usr/bin/
 ```

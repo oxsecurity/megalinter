@@ -9,7 +9,7 @@ description: How to use terragrunt (configure, ignore files, ignore errors, help
 
 ## terragrunt documentation
 
-- Version in MegaLinter: **0.60.0**
+- Version in MegaLinter: **0.62.0**
 - Visit [Official Web Site](https://terragrunt.gruntwork.io){target=_blank}
 - See [How to configure terragrunt rules](https://terragrunt.gruntwork.io/docs/getting-started/configuration/#terragrunt-configuration-file){target=_blank}
 
@@ -40,9 +40,9 @@ description: How to use terragrunt (configure, ignore files, ignore errors, help
 | TERRAFORM_TERRAGRUNT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                             |
 | TERRAFORM_TERRAGRUNT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `['terragrunt']`                                |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
-This linter is available in the following flavours
+This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                     | Description                                     | Embedded linters |                                                                                                                                                                                           Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------|:------------------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
@@ -91,6 +91,7 @@ COMMANDS:
    graph                  Execute commands on the full graph of dependent modules for the current module, ensuring correct execution order.
    graph-dependencies     Prints the terragrunt dependency graph to stdout.
    hclfmt                 Recursively find hcl files and rewrite them into a canonical format.
+   hclvalidate            Find all hcl files from the config stack and validate them.
    output-module-groups   Output groups of modules ordered by command (apply or destroy) as a list of list in JSON (useful for CI use cases).
    render-json            Render the final terragrunt config, with all variables, includes, and functions resolved, as json.
    run-all                Run a terraform command against a 'stack' by running the specified command in each subfolder.
@@ -107,6 +108,7 @@ GLOBAL OPTIONS:
    --terragrunt-disable-command-validation           When this flag is set, Terragrunt will not validate the terraform command. [$TERRAGRUNT_DISABLE_COMMAND_VALIDATION]
    --terragrunt-download-dir value                   The path where to download Terraform code. Default is .terragrunt-cache in the working directory. [$TERRAGRUNT_DOWNLOAD]
    --terragrunt-exclude-dir value                    Unix-style glob of directories to exclude when running *-all commands. [$TERRAGRUNT_EXCLUDE_DIR]
+   --terragrunt-excludes-file value                  Path to a file with a list of directories that need to be excluded when running *-all commands. (default: .terragrunt-excludes) [$TERRAGRUNT_EXCLUDES_FILE]
    --terragrunt-fail-on-state-bucket-creation        When this flag is set Terragrunt will fail if the remote state bucket needs to be created. [$TERRAGRUNT_FAIL_ON_STATE_BUCKET_CREATION]
    --terragrunt-fetch-dependency-output-from-state   The option fetchs dependency output directly from the state file instead of init dependencies and running terraform on them. [$TERRAGRUNT_FETCH_DEPENDENCY_OUTPUT_FROM_STATE]
    --terragrunt-iam-assume-role-duration value       Session duration for IAM Assume Role session. Can also be set via the TERRAGRUNT_IAM_ASSUME_ROLE_DURATION environment variable. [$TERRAGRUNT_IAM_ASSUME_ROLE_DURATION]
@@ -145,7 +147,7 @@ GLOBAL OPTIONS:
    --help, -h                                        Show help
    --version, -v                                     Show terragrunt version
 
-VERSION: v0.60.0
+VERSION: v0.62.0
 
 AUTHOR: Gruntwork <www.gruntwork.io>
 ```
@@ -155,7 +157,7 @@ AUTHOR: Gruntwork <www.gruntwork.io>
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=docker depName=alpine/terragrunt
-ARG TERRAFORM_TERRAGRUNT_VERSION=1.9.1
+ARG TERRAFORM_TERRAGRUNT_VERSION=1.9.2
 FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} as terragrunt
 COPY --link --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
 ```

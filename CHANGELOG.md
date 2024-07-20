@@ -11,6 +11,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - New linters
 
 - Core
+  - Allow to override CLI_LINT_MODE when defined as project
+  - Allow to use absolute paths for LINTER_RULES_PATH
 
 - Media
 
@@ -49,6 +51,29 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [syft](https://github.com/anchore/syft) from 1.8.0 to **1.9.0** on 2024-07-14
   - [rubocop](https://rubocop.org/) from 1.64.1 to **1.65.0** on 2024-07-14
   - [vale](https://vale.sh/) from 3.6.0 to **3.6.1** on 2024-07-14
+  - [vale](https://vale.sh/) from 3.6.1 to **3.6.0** on 2024-07-14
+  - [checkov](https://www.checkov.io/) from 3.2.189 to **3.2.190** on 2024-07-15
+  - [grype](https://github.com/anchore/grype) from 0.79.2 to **0.79.3** on 2024-07-15
+  - [vale](https://vale.sh/) from 3.6.0 to **3.6.1** on 2024-07-15
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.9.1 to **1.9.2** on 2024-07-15
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.60.0 to **0.62.0** on 2024-07-15
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 2.28.0 to **2.30.0** on 2024-07-16
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.6.1 to **1.7.0** on 2024-07-16
+  - [checkov](https://www.checkov.io/) from 3.2.190 to **3.2.191** on 2024-07-16
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.10.4 to **8.11.0** on 2024-07-16
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.7.0 to **1.7.1** on 2024-07-17
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.371 to **1.1.372** on 2024-07-17
+  - [checkov](https://www.checkov.io/) from 3.2.191 to **3.2.192** on 2024-07-17
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.7.1 to **1.7.2** on 2024-07-17
+  - [checkov](https://www.checkov.io/) from 3.2.192 to **3.2.193** on 2024-07-17
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.7.2 to **1.8.0** on 2024-07-17
+  - [checkov](https://www.checkov.io/) from 3.2.193 to **3.2.194** on 2024-07-18
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.79.0 to **3.80.1** on 2024-07-18
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.8.0 to **1.8.1** on 2024-07-18
+  - [ruff](https://github.com/astral-sh/ruff) from 0.5.2 to **0.5.3** on 2024-07-18
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.28.1 to **0.29.45** on 2024-07-18
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.8.1 to **1.8.2** on 2024-07-19
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.10.1 to **1.11.0** on 2024-07-19
 <!-- linter-versions-end -->
 
 ## [v7.13.0] - 2024-07-06

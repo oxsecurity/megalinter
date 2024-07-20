@@ -12,7 +12,7 @@ use a `bicepconfig.json` file. For more information, see the [documentation for 
 
 ## bicep_linter documentation
 
-- Version in MegaLinter: **0.28.1**
+- Version in MegaLinter: **0.29.45**
 - Visit [Official Web Site](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter){target=_blank}
 - See [How to configure bicep_linter rules](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/bicep-config){target=_blank}
 - See [How to disable bicep_linter rules in files](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter#silencing-false-positives){target=_blank}
@@ -49,9 +49,9 @@ Use bicep_linter in your favorite IDE to catch errors before MegaLinter !
 |:-------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [VSCode Bicep](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-bicep) | [![Install in VSCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/ms-azuretools.vscode-bicep){target=_blank} |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
-This linter is available in the following flavours
+This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                     | Description                                              | Embedded linters |                                                                                                                                                                                           Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------|:---------------------------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
@@ -86,7 +86,7 @@ az bicep build -f infra.bicep
 ### Help content
 
 ```shell
-Bicep CLI version 0.28.1 (ba1e9f8c1e)
+Bicep CLI version 0.29.45 (57a44c0230)
 
 Usage:
   bicep build [options] <file>
@@ -248,17 +248,31 @@ Usage:
 
     Options:
       --bicep-file <file>            Verifies if the specified bicep file path matches the one provided in the params file using declaration
-      --outfile <file>               Saves the param output json as the specified file path.
-      --stdout                       Prints the param and bicep json output to stdout.
+      --outdir <dir>                 Saves the output of building the parameter file only (.bicepparam) as json to the specified directory.
+      --outfile <file>               Saves the output of building the parameter file only (.bicepparam) as json to the specified file path.
+      --stdout                       Prints the output of building both the parameter file (.bicepparam) and the template it points to (.bicep) as json to stdout.
       --no-restore                   Builds the bicep file (referenced in using declaration) without restoring external modules.
       --diagnostics-format <format>  Sets the format with which diagnostics are displayed. Valid values are ( Default | Sarif ).
 
     Examples:
       bicep build-params params.bicepparam
       bicep build-params params.bicepparam --stdout
+      bicep build-params params.bicepparam --outdir dir1
       bicep build-params params.bicepparam --outfile otherParams.json
       bicep build-params params.bicepparam --no-restore
       bicep build-params params.bicepparam --diagnostics-format sarif
+
+  bicep jsonrpc [options]
+    Runs a JSONRPC server for interacting with Bicep programatically.
+
+    Options:
+      --pipe <name>   Runs the JSONRPC server using a named pipe.
+      --socket <dir>  Runs the JSONRPC server on a specific port.
+      --stdio         Runs the JSONRPC server over stdin/stdout.
+
+    Examples:
+      bicep jsonrpc --pipe /path/to/pipe.sock
+      bicep jsonrpc --stdio
 
 ```
 
