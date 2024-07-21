@@ -22090,7 +22090,7 @@
     },
     "TERRAFORM_TERRASCAN_CONFIG_FILE": {
       "$id": "#/properties/TERRAFORM_TERRASCAN_CONFIG_FILE",
-      "default": "terrascan-config.toml",
+      "default": "terrascan.toml",
       "description": "TERRAFORM_TERRASCAN: User custom config file name if different from default",
       "title": "TERRAFORM_TERRASCAN: Custom config file name",
       "type": "string"

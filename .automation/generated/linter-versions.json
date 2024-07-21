@@ -85,7 +85,7 @@
     "rstcheck": "6.2.4",
     "rstfmt": "0.0.14",
     "rubocop": "1.65.0",
-    "ruff": "0.5.3",
+    "ruff": "0.5.4",
     "scalafix": "0.12.1",
     "scss-lint": "0.60.0",
     "secretlint": "8.2.4",
