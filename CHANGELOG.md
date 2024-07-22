@@ -76,6 +76,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.8.1 to **1.8.2** on 2024-07-19
   - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.10.1 to **1.11.0** on 2024-07-19
   - [ruff](https://github.com/astral-sh/ruff) from 0.5.3 to **0.5.4** on 2024-07-20
+  - [phpcs](https://github.com/PHPCSStandards/PHP_CodeSniffer) from 3.10.1 to **3.10.2** on 2024-07-22
+  - [pylint](https://pylint.readthedocs.io) from 3.2.5 to **3.2.6** on 2024-07-22
+  - [checkov](https://www.checkov.io/) from 3.2.194 to **3.2.196** on 2024-07-22
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.62.0 to **0.63.2** on 2024-07-22
 <!-- linter-versions-end -->
 
 ## [v7.13.0] - 2024-07-06
