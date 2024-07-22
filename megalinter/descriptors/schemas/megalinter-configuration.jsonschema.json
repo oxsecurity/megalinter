@@ -3470,9 +3470,10 @@
     },
     "CSHARP_DOTNET_FORMAT_CLI_LINT_MODE": {
       "$id": "#/properties/CSHARP_DOTNET_FORMAT_CLI_LINT_MODE",
-      "default": "file",
+      "default": "project",
       "enum": [
         "file",
+        "list_of_files",
         "project"
       ],
       "title": "CSHARP_DOTNET_FORMAT: Override default cli lint mode",
@@ -3529,16 +3530,6 @@
       },
       "title": "CSHARP_DOTNET_FORMAT: Override descriptor/linter matching file name regex",
       "type": "array"
-    },
-    "CSHARP_DOTNET_FORMAT_FILTER_REGEX_EXCLUDE": {
-      "$id": "#/properties/CSHARP_DOTNET_FORMAT_FILTER_REGEX_EXCLUDE",
-      "title": "CSHARP_DOTNET_FORMAT: Excluding Regex",
-      "type": "string"
-    },
-    "CSHARP_DOTNET_FORMAT_FILTER_REGEX_INCLUDE": {
-      "$id": "#/properties/CSHARP_DOTNET_FORMAT_FILTER_REGEX_INCLUDE",
-      "title": "CSHARP_DOTNET_FORMAT: Including Regex",
-      "type": "string"
     },
     "CSHARP_DOTNET_FORMAT_POST_COMMANDS": {
       "$id": "#/properties/CSHARP_DOTNET_FORMAT_POST_COMMANDS",
@@ -23145,9 +23136,10 @@
     },
     "VBDOTNET_DOTNET_FORMAT_CLI_LINT_MODE": {
       "$id": "#/properties/VBDOTNET_DOTNET_FORMAT_CLI_LINT_MODE",
-      "default": "file",
+      "default": "project",
       "enum": [
         "file",
+        "list_of_files",
         "project"
       ],
       "title": "VBDOTNET_DOTNET_FORMAT: Override default cli lint mode",
@@ -23204,16 +23196,6 @@
       },
       "title": "VBDOTNET_DOTNET_FORMAT: Override descriptor/linter matching file name regex",
       "type": "array"
-    },
-    "VBDOTNET_DOTNET_FORMAT_FILTER_REGEX_EXCLUDE": {
-      "$id": "#/properties/VBDOTNET_DOTNET_FORMAT_FILTER_REGEX_EXCLUDE",
-      "title": "VBDOTNET_DOTNET_FORMAT: Excluding Regex",
-      "type": "string"
-    },
-    "VBDOTNET_DOTNET_FORMAT_FILTER_REGEX_INCLUDE": {
-      "$id": "#/properties/VBDOTNET_DOTNET_FORMAT_FILTER_REGEX_INCLUDE",
-      "title": "VBDOTNET_DOTNET_FORMAT: Including Regex",
-      "type": "string"
     },
     "VBDOTNET_DOTNET_FORMAT_POST_COMMANDS": {
       "$id": "#/properties/VBDOTNET_DOTNET_FORMAT_POST_COMMANDS",
