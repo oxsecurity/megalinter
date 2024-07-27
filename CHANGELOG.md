@@ -80,6 +80,17 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [pylint](https://pylint.readthedocs.io) from 3.2.5 to **3.2.6** on 2024-07-22
   - [checkov](https://www.checkov.io/) from 3.2.194 to **3.2.196** on 2024-07-22
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.62.0 to **0.63.2** on 2024-07-22
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.29.45 to **0.29.47** on 2024-07-27
+  - [revive](https://revive.run/) from 1.3.7 to **1.3.9** on 2024-07-27
+  - [pmd](https://pmd.github.io/) from 7.3.0 to **7.4.0** on 2024-07-27
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.59.3 to **3.60.0** on 2024-07-27
+  - [phpstan](https://phpstan.org/) from 1.11.7 to **1.11.8** on 2024-07-27
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.372 to **1.1.373** on 2024-07-27
+  - [ruff](https://github.com/astral-sh/ruff) from 0.5.4 to **0.5.5** on 2024-07-27
+  - [checkov](https://www.checkov.io/) from 3.2.196 to **3.2.208** on 2024-07-27
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.80.1 to **3.80.2** on 2024-07-27
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.79 to **0.1.80** on 2024-07-27
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.11.0 to **8.12.1** on 2024-07-27
 <!-- linter-versions-end -->
 
 ## [v7.13.0] - 2024-07-06
