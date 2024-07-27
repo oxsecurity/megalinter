@@ -90,8 +90,9 @@ sf flow:scan
 ### Help content
 
 ```shell
-(node:1743) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(node:1745) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
 (Use `node --trace-deprecation ...` to show where the warning was created)
+ ›   Warning: @salesforce/cli update available from 2.50.6 to 2.51.6.
 Find and fix potential bugs in Salesforce flows.
 
 USAGE
@@ -126,9 +127,9 @@ GLOBAL FLAGS
 # renovate: datasource=npm depName=@salesforce/cli
 ARG SALESFORCE_CLI_VERSION=2.50.6
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
-ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.7.2
+ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.7.4
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=4.46.0
+ARG SFDX_HARDIS_VERSION=4.47.0
 ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 RUN sf plugins install @salesforce/plugin-packaging@${SALESFORCE_PLUGIN_PACKAGING_VERSION} \
