@@ -20,8 +20,6 @@ ARG BASH_SHELLCHECK_VERSION=v0.10.0
 ARG DOCKERFILE_HADOLINT_VERSION=v2.12.0-alpine
 # renovate: datasource=docker depName=mstruebing/editorconfig-checker
 ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=v3.0.3
-# renovate: datasource=github-tags depName=mgechev/revive
-ARG GO_REVIVE_VERSION=v1.3.7
 # renovate: datasource=docker depName=ghcr.io/yannh/kubeconform
 ARG KUBERNETES_KUBECONFORM_VERSION=v0.6.6-alpine
 # renovate: datasource=docker depName=yoheimuta/protolint
@@ -50,7 +48,9 @@ FROM golang:1-alpine as revive
 ## The golang image used as a builder is a temporary workaround (https://github.com/mgechev/revive/issues/787)
 ## for the released revive binaries not returning version numbers (devel). 
 ## The install command should then be what is commented in the go.megalinter-descriptor.yml
-RUN GOBIN=/usr/bin go install github.com/mgechev/revive@${GO_REVIVE_VERSION}
+# renovate: datasource=github-tags depName=mgechev/revive
+ARG GO_REVIVE_VERSION=v1.3.7
+RUN GOBIN=/usr/bin go install github.com/mgechev/revive@$GO_REVIVE_VERSION
 FROM ghcr.io/yannh/kubeconform:${KUBERNETES_KUBECONFORM_VERSION} as kubeconform
 FROM yoheimuta/protolint:${PROTOBUF_PROTOLINT_VERSION} as protolint
 FROM zricethezav/gitleaks:${REPOSITORY_GITLEAKS_VERSION} as gitleaks
