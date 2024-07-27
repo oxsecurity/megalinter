@@ -75,6 +75,8 @@ linters:
     examples:
       - "revive myfile.go"
       - "revive -config myfile.go"
+    downgraded_version: true
+    downgraded_reason: building fails in https://github.com/oxsecurity/megalinter/pull/3802
     install:
       dockerfile:
         - |-
