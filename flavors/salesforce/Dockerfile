@@ -66,7 +66,7 @@ ARG SALESFORCE_CLI_VERSION=2.50.6
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
 ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.7.4
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=4.47.0
+ARG SFDX_HARDIS_VERSION=4.49.1
 # renovate: datasource=github-tags depName=detekt/detekt
 ARG DETEKT_VERSION=1.23.6
 
