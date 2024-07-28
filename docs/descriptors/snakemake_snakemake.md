@@ -133,7 +133,7 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--d3dag] [--summary] [--detailed-summary] [--archive FILE]
                  [--cleanup-metadata FILE [FILE ...]] [--cleanup-shadow]
                  [--skip-script-cleanup] [--unlock]
-                 [--list-changes {params,input,code}] [--list-input-changes]
+                 [--list-changes {input,code,params}] [--list-input-changes]
                  [--list-params-changes] [--list-untracked]
                  [--delete-all-output | --delete-temp-output]
                  [--keep-incomplete] [--drop-metadata]
@@ -402,9 +402,8 @@ EXECUTION:
                         way of just considering file modification dates, use '
                         --rerun-trigger mtime'. (default:
                         frozenset({<RerunTrigger.INPUT: 2>,
-                        <RerunTrigger.MTIME: 0>, <RerunTrigger.PARAMS: 1>,
-                        <RerunTrigger.SOFTWARE_ENV: 3>, <RerunTrigger.CODE:
-                        4>}))
+                        <RerunTrigger.PARAMS: 1>, <RerunTrigger.SOFTWARE_ENV:
+                        3>, <RerunTrigger.MTIME: 0>, <RerunTrigger.CODE: 4>}))
   --force, -f           Force the execution of the selected target or the
                         first rule regardless of already created output.
                         (default: False)
@@ -639,7 +638,7 @@ UTILITIES:
                         (default: False)
   --unlock              Remove a lock on the working directory. (default:
                         False)
-  --list-changes {params,input,code}, --lc {params,input,code}
+  --list-changes {input,code,params}, --lc {input,code,params}
                         List all output files for which the given items (code,
                         input, params) have changed since creation.
   --list-input-changes, --li
@@ -828,12 +827,12 @@ BEHAVIOR:
                         and data provenance will be handled by NFS but input
                         and output files will be handled exclusively by the
                         storage provider. (default:
-                        frozenset({<SharedFSUsage.PERSISTENCE: 0>,
-                        <SharedFSUsage.SOURCE_CACHE: 5>,
-                        <SharedFSUsage.SOFTWARE_DEPLOYMENT: 2>,
+                        frozenset({<SharedFSUsage.SOFTWARE_DEPLOYMENT: 2>,
+                        <SharedFSUsage.PERSISTENCE: 0>,
+                        <SharedFSUsage.INPUT_OUTPUT: 1>,
                         <SharedFSUsage.STORAGE_LOCAL_COPIES: 4>,
-                        <SharedFSUsage.SOURCES: 3>,
-                        <SharedFSUsage.INPUT_OUTPUT: 1>}))
+                        <SharedFSUsage.SOURCE_CACHE: 5>,
+                        <SharedFSUsage.SOURCES: 3>}))
   --scheduler-greediness SCHEDULER_GREEDINESS, --greediness SCHEDULER_GREEDINESS
                         Set the greediness of scheduling. This value between 0
                         and 1 determines how careful jobs are selected for

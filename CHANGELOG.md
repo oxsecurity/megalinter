@@ -91,6 +91,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.80.1 to **3.80.2** on 2024-07-27
   - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.79 to **0.1.80** on 2024-07-27
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.11.0 to **8.12.1** on 2024-07-27
+  - [revive](https://revive.run/) from 1.3.9 to **1.3.7** on 2024-07-28
+  - [checkov](https://www.checkov.io/) from 3.2.208 to **3.2.209** on 2024-07-28
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.9.2 to **1.9.3** on 2024-07-28
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.63.2 to **0.64.1** on 2024-07-28
 <!-- linter-versions-end -->
 
 ## [v7.13.0] - 2024-07-06
