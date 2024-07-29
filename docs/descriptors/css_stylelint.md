@@ -15,7 +15,7 @@ description: How to use stylelint (configure, ignore files, ignore errors, help 
 
 ## stylelint documentation
 
-- Version in MegaLinter: **16.7.0**
+- Version in MegaLinter: **16.8.0**
 - Visit [Official Web Site](https://stylelint.io){target=_blank}
 - See [How to configure stylelint rules](https://stylelint.io/user-guide/configure){target=_blank}
   - If custom `.stylelintrc.json` config file isn't found, [.stylelintrc.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.stylelintrc.json){target=_blank} will be used
@@ -224,7 +224,7 @@ stylelint --fix --config .stylelintrc.json myfile.css myfile2.css myfile3.css
 
         string       human-readable strings (default)
         compact      similar to ESLint's compact formatter
-        github       workflow commands for GitHub Actions
+        github       workflow commands for GitHub Actions (DEPRECATED)
         json         JSON format
         tap          TAP format
         unix         C compiler-like format
