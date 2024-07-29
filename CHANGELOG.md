@@ -95,6 +95,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 3.2.208 to **3.2.209** on 2024-07-28
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.9.2 to **1.9.3** on 2024-07-28
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.63.2 to **0.64.1** on 2024-07-28
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.8.2 to **1.9.0** on 2024-07-29
+  - [stylelint](https://stylelint.io) from 16.7.0 to **16.8.0** on 2024-07-29
+  - [checkov](https://www.checkov.io/) from 3.2.209 to **3.2.213** on 2024-07-29
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 2.30.0 to **2.31.0** on 2024-07-29
 <!-- linter-versions-end -->
 
 ## [v7.13.0] - 2024-07-06
