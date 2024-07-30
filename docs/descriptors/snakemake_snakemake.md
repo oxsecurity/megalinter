@@ -133,7 +133,7 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--d3dag] [--summary] [--detailed-summary] [--archive FILE]
                  [--cleanup-metadata FILE [FILE ...]] [--cleanup-shadow]
                  [--skip-script-cleanup] [--unlock]
-                 [--list-changes {params,input,code}] [--list-input-changes]
+                 [--list-changes {code,params,input}] [--list-input-changes]
                  [--list-params-changes] [--list-untracked]
                  [--delete-all-output | --delete-temp-output]
                  [--keep-incomplete] [--drop-metadata]
@@ -401,10 +401,10 @@ EXECUTION:
                         configuration. If you rather prefer the traditional
                         way of just considering file modification dates, use '
                         --rerun-trigger mtime'. (default:
-                        frozenset({<RerunTrigger.INPUT: 2>,
-                        <RerunTrigger.CODE: 4>, <RerunTrigger.SOFTWARE_ENV:
-                        3>, <RerunTrigger.PARAMS: 1>, <RerunTrigger.MTIME:
-                        0>}))
+                        frozenset({<RerunTrigger.CODE: 4>,
+                        <RerunTrigger.MTIME: 0>, <RerunTrigger.SOFTWARE_ENV:
+                        3>, <RerunTrigger.INPUT: 2>, <RerunTrigger.PARAMS:
+                        1>}))
   --force, -f           Force the execution of the selected target or the
                         first rule regardless of already created output.
                         (default: False)
@@ -639,7 +639,7 @@ UTILITIES:
                         (default: False)
   --unlock              Remove a lock on the working directory. (default:
                         False)
-  --list-changes {params,input,code}, --lc {params,input,code}
+  --list-changes {code,params,input}, --lc {code,params,input}
                         List all output files for which the given items (code,
                         input, params) have changed since creation.
   --list-input-changes, --li
@@ -828,12 +828,12 @@ BEHAVIOR:
                         and data provenance will be handled by NFS but input
                         and output files will be handled exclusively by the
                         storage provider. (default:
-                        frozenset({<SharedFSUsage.STORAGE_LOCAL_COPIES: 4>,
-                        <SharedFSUsage.INPUT_OUTPUT: 1>,
-                        <SharedFSUsage.SOURCES: 3>,
+                        frozenset({<SharedFSUsage.INPUT_OUTPUT: 1>,
                         <SharedFSUsage.SOFTWARE_DEPLOYMENT: 2>,
+                        <SharedFSUsage.SOURCES: 3>,
                         <SharedFSUsage.SOURCE_CACHE: 5>,
-                        <SharedFSUsage.PERSISTENCE: 0>}))
+                        <SharedFSUsage.PERSISTENCE: 0>,
+                        <SharedFSUsage.STORAGE_LOCAL_COPIES: 4>}))
   --scheduler-greediness SCHEDULER_GREEDINESS, --greediness SCHEDULER_GREEDINESS
                         Set the greediness of scheduling. This value between 0
                         and 1 determines how careful jobs are selected for

@@ -99,6 +99,15 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [stylelint](https://stylelint.io) from 16.7.0 to **16.8.0** on 2024-07-29
   - [checkov](https://www.checkov.io/) from 3.2.209 to **3.2.213** on 2024-07-29
   - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 2.30.0 to **2.31.0** on 2024-07-29
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.9.0 to **1.9.1** on 2024-07-30
+  - [stylelint](https://stylelint.io) from 16.8.0 to **16.8.1** on 2024-07-30
+  - [checkov](https://www.checkov.io/) from 3.2.213 to **3.2.216** on 2024-07-30
+  - [syft](https://github.com/anchore/syft) from 1.9.0 to **1.10.0** on 2024-07-30
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.80.2 to **3.80.3** on 2024-07-30
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 4.3.2 to **4.4.0** on 2024-07-30
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 4.3.2 to **4.4.0** on 2024-07-30
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 4.3.2 to **4.4.0** on 2024-07-30
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.12.1 to **8.13.0** on 2024-07-30
 <!-- linter-versions-end -->
 
 ## [v7.13.0] - 2024-07-06
