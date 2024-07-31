@@ -20,7 +20,7 @@ ARG DOCKERFILE_HADOLINT_VERSION=v2.12.0-alpine
 # renovate: datasource=docker depName=mstruebing/editorconfig-checker
 ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=v3.0.3
 # renovate: datasource=docker depName=ghcr.io/yannh/kubeconform
-ARG KUBERNETES_KUBECONFORM_VERSION=v0.6.6-alpine
+ARG KUBERNETES_KUBECONFORM_VERSION=v0.6.7-alpine
 # renovate: datasource=docker depName=yoheimuta/protolint
 ARG PROTOBUF_PROTOLINT_VERSION=0.50.3
 # renovate: datasource=docker depName=zricethezav/gitleaks
