@@ -1502,6 +1502,7 @@ description: List of all known articles, blog posts and videos that talk about M
 
 | Article                                                                                                                                                                                                                                                   | Author                                                          |
 |:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------|
+| [MegaLinter: un linter pour les gouverner tous](https://blog.wescale.fr/megalinter-un-linter-pour-les-gouverner-tous){target=_blank} | [Guillaume Arnaud](https://www.linkedin.com/in/guillaume-arnaud/), [WeScale](https://www.wescale.fr/){target=_blank} |
 | [MegaLinter, votre meilleur ami pour un code de qualité](https://www.neosoft.fr/nos-publications/blog-tech/mega-linter-votre-meilleur-ami-pour-un-code-de-qualite/?utm_source=twitter&utm_medium=organic&utm_campaign=article-mega-linter){target=_blank} | [Thomas Sanson](https://github.com/ThomasSanson){target=_blank} |
 
 ### Japanese articles
