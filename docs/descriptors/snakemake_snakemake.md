@@ -133,7 +133,7 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--d3dag] [--summary] [--detailed-summary] [--archive FILE]
                  [--cleanup-metadata FILE [FILE ...]] [--cleanup-shadow]
                  [--skip-script-cleanup] [--unlock]
-                 [--list-changes {code,params,input}] [--list-input-changes]
+                 [--list-changes {input,code,params}] [--list-input-changes]
                  [--list-params-changes] [--list-untracked]
                  [--delete-all-output | --delete-temp-output]
                  [--keep-incomplete] [--drop-metadata]
@@ -163,7 +163,7 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--shared-fs-usage {input-output,persistence,software-deployment,source-cache,sources,storage-local-copies,none} [{input-output,persistence,software-deployment,source-cache,sources,storage-local-copies,none} ...]]
                  [--scheduler-greediness SCHEDULER_GREEDINESS] [--no-hooks]
                  [--debug] [--runtime-profile FILE]
-                 [--mode {default,remote,subprocess}] [--show-failed-logs]
+                 [--mode {subprocess,default,remote}] [--show-failed-logs]
                  [--log-handler-script FILE] [--log-service {none,slack,wms}]
                  [--job-deploy-sources] [--benchmark-extended]
                  [--container-image IMAGE] [--immediate-submit]
@@ -401,10 +401,9 @@ EXECUTION:
                         configuration. If you rather prefer the traditional
                         way of just considering file modification dates, use '
                         --rerun-trigger mtime'. (default:
-                        frozenset({<RerunTrigger.CODE: 4>,
-                        <RerunTrigger.MTIME: 0>, <RerunTrigger.SOFTWARE_ENV:
-                        3>, <RerunTrigger.INPUT: 2>, <RerunTrigger.PARAMS:
-                        1>}))
+                        frozenset({<RerunTrigger.SOFTWARE_ENV: 3>,
+                        <RerunTrigger.MTIME: 0>, <RerunTrigger.CODE: 4>,
+                        <RerunTrigger.INPUT: 2>, <RerunTrigger.PARAMS: 1>}))
   --force, -f           Force the execution of the selected target or the
                         first rule regardless of already created output.
                         (default: False)
@@ -639,7 +638,7 @@ UTILITIES:
                         (default: False)
   --unlock              Remove a lock on the working directory. (default:
                         False)
-  --list-changes {code,params,input}, --lc {code,params,input}
+  --list-changes {input,code,params}, --lc {input,code,params}
                         List all output files for which the given items (code,
                         input, params) have changed since creation.
   --list-input-changes, --li
@@ -828,12 +827,12 @@ BEHAVIOR:
                         and data provenance will be handled by NFS but input
                         and output files will be handled exclusively by the
                         storage provider. (default:
-                        frozenset({<SharedFSUsage.INPUT_OUTPUT: 1>,
+                        frozenset({<SharedFSUsage.PERSISTENCE: 0>,
+                        <SharedFSUsage.STORAGE_LOCAL_COPIES: 4>,
                         <SharedFSUsage.SOFTWARE_DEPLOYMENT: 2>,
                         <SharedFSUsage.SOURCES: 3>,
-                        <SharedFSUsage.SOURCE_CACHE: 5>,
-                        <SharedFSUsage.PERSISTENCE: 0>,
-                        <SharedFSUsage.STORAGE_LOCAL_COPIES: 4>}))
+                        <SharedFSUsage.INPUT_OUTPUT: 1>,
+                        <SharedFSUsage.SOURCE_CACHE: 5>}))
   --scheduler-greediness SCHEDULER_GREEDINESS, --greediness SCHEDULER_GREEDINESS
                         Set the greediness of scheduling. This value between 0
                         and 1 determines how careful jobs are selected for
@@ -846,7 +845,7 @@ BEHAVIOR:
   --runtime-profile FILE
                         Profile Snakemake and write the output to FILE. This
                         requires yappi to be installed.
-  --mode {default,remote,subprocess}
+  --mode {subprocess,default,remote}
                         Set execution mode of Snakemake (internal use only).
                         (default: default)
   --show-failed-logs    Automatically display logs of failed jobs. (default:

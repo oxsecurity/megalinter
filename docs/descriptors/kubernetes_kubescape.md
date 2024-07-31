@@ -126,7 +126,7 @@ Available Commands:
   completion  Generate autocompletion script
   config      Handle cached configurations
   delete      Delete configurations in Kubescape SaaS version
-  download    Download framework,artifacts,attack-tracks,controls-inputs,exceptions,control
+  download    Download control,framework,artifacts,attack-tracks,controls-inputs,exceptions
   fix         Fix misconfiguration in files
   help        Help about any command
   list        List frameworks/controls will list the supported frameworks and controls
