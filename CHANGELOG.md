@@ -15,6 +15,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Allow to use absolute paths for LINTER_RULES_PATH
 
 - Media
+  - [MegaLinter: un linter pour les gouverner tous](https://blog.wescale.fr/megalinter-un-linter-pour-les-gouverner-tous) (FR), by [Guillaume Arnaud](https://www.linkedin.com/in/guillaume-arnaud/) from [WeScale](https://www.wescale.fr/)
 
 - Linters enhancements
 
