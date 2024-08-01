@@ -17,7 +17,7 @@ Generates SBOM (Software Bill Of Material) using Trivy
 
 ## trivy-sbom documentation
 
-- Version in MegaLinter: **0.53.0**
+- Version in MegaLinter: **0.54.1**
 - Visit [Official Web Site](https://aquasecurity.github.io/trivy/){target=_blank}
 - See [How to configure trivy-sbom rules](https://aquasecurity.github.io/trivy/latest/docs/configuration/){target=_blank}
 - See [How to ignore files and directories with trivy-sbom](https://aquasecurity.github.io/trivy/latest/docs/configuration/filtering/#by-inline-comments){target=_blank}
@@ -137,6 +137,7 @@ Scanning Commands
 Management Commands
   module      Manage modules
   plugin      Manage plugins
+  vex         [EXPERIMENTAL] VEX utilities
 
 Utility Commands
   clean       Remove cached files

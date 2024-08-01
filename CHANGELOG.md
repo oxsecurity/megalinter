@@ -108,6 +108,15 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 4.3.2 to **4.4.0** on 2024-07-30
   - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 4.3.2 to **4.4.0** on 2024-07-30
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.12.1 to **8.13.0** on 2024-07-30
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.9.1 to **1.9.2** on 2024-07-31
+  - [kubeconform](https://github.com/yannh/kubeconform) from 0.6.6 to **0.6.7** on 2024-07-31
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.60.0 to **3.61.1** on 2024-07-31
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.11.0 to **1.11.1** on 2024-07-31
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.373 to **1.1.374** on 2024-07-31
+  - [grype](https://github.com/anchore/grype) from 0.79.3 to **0.79.4** on 2024-07-31
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.53.0 to **0.54.1** on 2024-07-31
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.53.0 to **0.54.1** on 2024-07-31
+  - [vale](https://vale.sh/) from 3.6.1 to **3.7.0** on 2024-07-31
 <!-- linter-versions-end -->
 
 ## [v7.13.0] - 2024-07-06
