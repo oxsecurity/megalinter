@@ -109,7 +109,7 @@ ARG PSSA_VERSION='1.22.0'
 # renovate: datasource=npm depName=@salesforce/sfdx-scanner
 ARG SALESFORCE_SFDX_SCANNER_VERSION=4.4.0
 # renovate: datasource=npm depName=lightning-flow-scanner
-ARG LIGHTNING_FLOW_SCANNER_VERSION=2.31.0
+ARG LIGHTNING_FLOW_SCANNER_VERSION=2.32.0
 #ARG__END
 
 # Static args
