@@ -15,7 +15,7 @@ description: How to use rubocop (configure, ignore files, ignore errors, help & 
 
 ## rubocop documentation
 
-- Version in MegaLinter: **1.65.0**
+- Version in MegaLinter: **1.65.1**
 - Visit [Official Web Site](https://rubocop.org/){target=_blank}
 - See [How to configure rubocop rules](https://docs.rubocop.org/rubocop/0.92/configuration.html){target=_blank}
   - If custom `.ruby-lint.yml` config file isn't found, [.ruby-lint.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.ruby-lint.yml){target=_blank} will be used
@@ -139,6 +139,8 @@ Basic Options:
                                      adjusting behaviors for editing experience.
     -P, --[no-]parallel              Use available CPUs to execute inspection in
                                      parallel. Default is true.
+                                     You can specify the number of parallel processes using
+                                     the $PARALLEL_PROCESSOR_COUNT environment variable.
         --raise-cop-error            Raise cop-related errors with cause and location.
                                      This is used to prevent cops from failing silently.
                                      Default is false.
