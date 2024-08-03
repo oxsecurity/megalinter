@@ -3364,7 +3364,7 @@
 <p><a href="https://github.com/trufflesecurity/trufflehog"><img alt="GitHub stars" src="https://img.shields.io/github/stars/trufflesecurity/trufflehog?cacheSeconds=3600"/></a> <a href="https://github.com/trufflesecurity/trufflehog/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/trufflesecurity/trufflehog?sort=semver"/></a> <a href="https://github.com/trufflesecurity/trufflehog/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/trufflesecurity/trufflehog"/></a> <a href="https://github.com/trufflesecurity/trufflehog/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/trufflesecurity/trufflehog"/></a> <a href="https://github.com/trufflesecurity/trufflehog/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/trufflesecurity/trufflehog"/></a></p>
 <h2 id="trufflehog-documentation">trufflehog documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>3.80.3</strong></li>
+<li>Version in MegaLinter: <strong>3.81.4</strong></li>
 <li>Visit <a href="https://github.com/trufflesecurity/trufflehog#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/trufflesecurity/trufflehog#regex-detector-alpha" target="_blank">How to configure trufflehog rules</a></li>
 </ul>
@@ -3661,6 +3661,10 @@ git [&lt;flags&gt;] &lt;uri&gt;
 github [&lt;flags&gt;]
     Find credentials in GitHub repositories.
 
+github-experimental --repo=REPO [&lt;flags&gt;]
+    Run an experimental GitHub scan. Must specify at least one experimental
+    sub-module to run: object-discovery.
+
 gitlab --token=TOKEN [&lt;flags&gt;]
     Find credentials in GitLab repositories.
 
@@ -3704,7 +3708,7 @@ huggingface [&lt;flags&gt;]
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile"># renovate: datasource=docker depName=trufflesecurity/trufflehog 
-ARG REPOSITORY_TRUFFLEHOG_VERSION=3.80.3
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.81.4
 FROM trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION} as trufflehog
 COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
 </code></pre>
