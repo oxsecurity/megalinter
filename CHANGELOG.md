@@ -130,6 +130,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.13.0 to **8.13.1** on 2024-08-02
   - [v8r](https://github.com/chris48s/v8r) from 3.1.0 to **3.1.1** on 2024-08-03
   - [protolint](https://github.com/yoheimuta/protolint) from 0.50.3 to **0.50.4** on 2024-08-03
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.9.3 to **1.9.4** on 2024-08-04
+  - [flake8](https://flake8.pycqa.org) from 7.1.0 to **7.1.1** on 2024-08-04
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.64.1 to **0.66.1** on 2024-08-04
 <!-- linter-versions-end -->
 
 ## [v7.13.0] - 2024-07-06
