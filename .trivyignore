@@ -3,6 +3,9 @@ CVE-2024-0057
 CVE-2024-30105
 CVE-2024-38095
 
+# Docker
+CVE-2024-41110
+
 # Devskim
 CVE-2018-8292
 CVE-2019-0820
@@ -47,6 +50,8 @@ CVE-2022-23539
 CVE-2022-25857
 CVE-2024-37890
 CVE-2024-4068
+GHSA-xpw8-rcwv-8f8p
+CVE-2024-41818
 
 # terrascan
 # https://github.com/tenable/terrascan/issues/1674

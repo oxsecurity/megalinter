@@ -118,6 +118,21 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.53.0 to **0.54.1** on 2024-07-31
   - [trivy](https://aquasecurity.github.io/trivy/) from 0.53.0 to **0.54.1** on 2024-07-31
   - [vale](https://vale.sh/) from 3.6.1 to **3.7.0** on 2024-07-31
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2024.05.24 to **2024.08.01** on 2024-08-02
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.9.2 to **1.9.3** on 2024-08-02
+  - [phpstan](https://phpstan.org/) from 1.11.8 to **1.11.9** on 2024-08-02
+  - [black](https://black.readthedocs.io/en/stable/) from 24.4.2 to **24.8.0** on 2024-08-02
+  - [ruff](https://github.com/astral-sh/ruff) from 0.5.5 to **0.5.6** on 2024-08-02
+  - [checkov](https://www.checkov.io/) from 3.2.216 to **3.2.217** on 2024-08-02
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.80.3 to **3.81.4** on 2024-08-02
+  - [rubocop](https://rubocop.org/) from 1.65.0 to **1.65.1** on 2024-08-02
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 2.31.0 to **2.32.0** on 2024-08-02
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.13.0 to **8.13.1** on 2024-08-02
+  - [v8r](https://github.com/chris48s/v8r) from 3.1.0 to **3.1.1** on 2024-08-03
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.50.3 to **0.50.4** on 2024-08-03
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.9.3 to **1.9.4** on 2024-08-04
+  - [flake8](https://flake8.pycqa.org) from 7.1.0 to **7.1.1** on 2024-08-04
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.64.1 to **0.66.1** on 2024-08-04
 <!-- linter-versions-end -->
 
 ## [v7.13.0] - 2024-07-06
