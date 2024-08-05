@@ -2,6 +2,7 @@
     "ignorePaths": [
         "**/.automation/generated/**",
         "**/.cspell.json",
+        "**/.trivyignore",
         "**/.git/**",
         "**/all_users.md",
         "**/licenses/*.md",
