@@ -19,7 +19,7 @@ If you don't use python static typing, you should disable this linter by adding 
 
 ## mypy documentation
 
-- Version in MegaLinter: **1.10.1**
+- Version in MegaLinter: **1.11.1**
 - Visit [Official Web Site](https://mypy.readthedocs.io/en/stable/){target=_blank}
 - See [How to configure mypy rules](https://mypy.readthedocs.io/en/stable/config_file.html){target=_blank}
   - If custom `.mypy.ini` config file isn't found, [.mypy.ini](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.mypy.ini){target=_blank} will be used
@@ -32,23 +32,23 @@ If you don't use python static typing, you should disable this linter by adding 
 - Enable mypy by adding `PYTHON_MYPY` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 - Disable mypy by adding `PYTHON_MYPY` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-| Variable                                | Description                                                                                                                                                                                                                                                                           | Default value                                   |
-|-----------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
-| PYTHON_MYPY_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                                                                                              |                                                 |
-| PYTHON_MYPY_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                                                                                                  |                                                 |
-| PYTHON_MYPY_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                                                                                    | Include every file                              |
-| PYTHON_MYPY_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                                                                                              | Exclude no file                                 |
-| PYTHON_MYPY_CLI_LINT_MODE               | Override default CLI lint mode<br/>⚠️ As default value is **project**, overriding might not work<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `list_of_files`                                 |
-| PYTHON_MYPY_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                                                                                               | `[".py"]`                                       |
-| PYTHON_MYPY_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                                                                                          | Include every file                              |
-| PYTHON_MYPY_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                                                                                        | None                                            |
-| PYTHON_MYPY_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                                                                                         | None                                            |
-| PYTHON_MYPY_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling PYTHON_MYPY and its pre/post commands                                                                                                                                                                                    | None                                            |
-| PYTHON_MYPY_CONFIG_FILE                 | mypy configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                                                                                       | `.mypy.ini`                                     |
-| PYTHON_MYPY_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                                                                                          | Workspace folder, then MegaLinter default rules |
-| PYTHON_MYPY_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                                                                                            | `false`                                         |
-| PYTHON_MYPY_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                                                                                      | `0`                                             |
-| PYTHON_MYPY_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                                                                                               | `['mypy']`                                      |
+| Variable                                | Description                                                                                                                                                                                                         | Default value                                   |
+|-----------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
+| PYTHON_MYPY_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                                                 |
+| PYTHON_MYPY_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                                |                                                 |
+| PYTHON_MYPY_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file                              |
+| PYTHON_MYPY_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file                                 |
+| PYTHON_MYPY_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `list_of_files`                                 |
+| PYTHON_MYPY_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".py"]`                                       |
+| PYTHON_MYPY_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | Include every file                              |
+| PYTHON_MYPY_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                                            |
+| PYTHON_MYPY_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                                            |
+| PYTHON_MYPY_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling PYTHON_MYPY and its pre/post commands                                                                                                                  | None                                            |
+| PYTHON_MYPY_CONFIG_FILE                 | mypy configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                     | `.mypy.ini`                                     |
+| PYTHON_MYPY_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
+| PYTHON_MYPY_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                         |
+| PYTHON_MYPY_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
+| PYTHON_MYPY_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `['mypy']`                                      |
 
 ## IDE Integration
 
@@ -64,9 +64,9 @@ Use mypy in your favorite IDE to catch errors before MegaLinter !
 |   <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a>   | [vim](https://www.vim.org/)                              | [Syntastic](https://github.com/vim-syntastic/syntastic)                                  |                                             [Visit Web Site](https://github.com/vim-syntastic/syntastic){target=_blank}                                              |
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/)     | [Mypy](https://marketplace.visualstudio.com/items?itemName=matangover.mypy)              | [![Install in VSCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/matangover.mypy){target=_blank} |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
-This linter is available in the following flavours
+This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                     | Embedded linters |                                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
@@ -125,7 +125,7 @@ command line flags. For more details, see:
 - https://mypy.readthedocs.io/en/stable/config_file.html
 
 options:
-  --enable-incomplete-feature {PreciseTupleTypes}
+  --enable-incomplete-feature {NewGenericSyntax,PreciseTupleTypes}
                             Enable support of incomplete/experimental features
                             for early preview
 
@@ -133,6 +133,8 @@ Optional arguments:
   -h, --help                Show this help message and exit
   -v, --verbose             More verbose messages
   -V, --version             Show program's version number and exit
+  -O FORMAT, --output FORMAT
+                            Set a custom output format
 
 Config file:
   Use a config file instead of command line arguments. This is useful if you

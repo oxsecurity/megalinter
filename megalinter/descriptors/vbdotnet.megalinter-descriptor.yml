@@ -19,12 +19,17 @@ linters:
     linter_text: |
       dotnet-format requires a `.sln` or `.vbproj` file to run correctly.
     linter_url: https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format
-    linter_repo: https://github.com/dotnet/format
+    linter_repo: https://github.com/dotnet/sdk
+    linter_rules_configuration_url: https://github.com/dotnet/sdk/tree/main/documentation/format/docs
     linter_image_url: https://user-images.githubusercontent.com/9797472/61659851-6bbdc880-ac7d-11e9-95f7-d30c7de1a18a.png
+    cli_lint_errors_count: regex_count
+    cli_lint_errors_regex: ".vb\\([0-9]+,[0-9]+\\):\\s(?:warning|error)"
     cli_executable: dotnet
+    cli_lint_mode: project
     cli_lint_extra_args:
       - "format"
-      - "{{WORKSPACE}}"
+    cli_lint_extra_args_after:
+      - "--include **/*.vb"
       - "--verify-no-changes"
     cli_lint_fix_arg_name: "--megalinter-fix-flag" # Workaround to allow fix
     cli_lint_fix_remove_args:
@@ -32,5 +37,8 @@ linters:
     cli_help_extra_args:
       - format
     examples:
-      - "dotnet format {{WORKSPACE}} --verify-no-changes"
-      - "dotnet format {{WORKSPACE}}" # Fix
+      - "dotnet format --verify-no-changes"
+      - "dotnet format Solution.sln --verify-no-changes"
+      - "dotnet format Folder/Solution.sln --verify-no-changes"
+      - "dotnet format Project.vbproj --verify-no-changes"
+      - "dotnet format" # Fix

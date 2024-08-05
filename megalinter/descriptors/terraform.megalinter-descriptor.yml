@@ -50,8 +50,7 @@ linters:
         - COPY --link --from=tflint /usr/local/bin/tflint /usr/bin/
 
   # TERRASCAN
-  - class: TerrascanLinter
-    linter_name: terrascan
+  - linter_name: terrascan
     can_output_sarif: true
     name: TERRAFORM_TERRASCAN
     descriptor_flavors:
@@ -64,20 +63,16 @@ linters:
     linter_rules_configuration_url: https://runterrascan.io/docs/usage/config_options/
     linter_banner_image_url: https://raw.githubusercontent.com/tenable/runterrascan.io/main/static/images/TerrascanTM_BY_Logo.png
     linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/terrascan.png
-    config_file_name: terrascan-config.toml
-    cli_config_arg_name: --config-path
+    config_file_name: terrascan.toml
+    cli_config_arg_name: "--config-path"
     cli_lint_mode: project
     cli_lint_extra_args:
       - "scan"
-      - "d"
-      - "."
-      - "-i"
+      - "--iac-type"
       - "terraform"
-      - "-t"
-      - "all"
-      - "-v"
+      - "--verbose"
     cli_sarif_args:
-      - -o
+      - --output
       - sarif
     cli_version_arg_name: "version"
     test_folder: terraform_terrascan
@@ -127,7 +122,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=docker depName=alpine/terragrunt
-          ARG TERRAFORM_TERRAGRUNT_VERSION=1.9.2
+          ARG TERRAFORM_TERRAGRUNT_VERSION=1.9.3
         - FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} as terragrunt
         - COPY --link --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
 
@@ -153,7 +148,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=docker depName=alpine/terragrunt
-          ARG TERRAFORM_TERRAGRUNT_VERSION=1.9.2
+          ARG TERRAFORM_TERRAGRUNT_VERSION=1.9.3
         - FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} as terragrunt
         - COPY --link --from=terragrunt /bin/terraform /usr/bin/
     ide:

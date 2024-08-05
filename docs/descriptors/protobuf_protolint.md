@@ -9,7 +9,7 @@ description: How to use protolint (configure, ignore files, ignore errors, help 
 
 ## protolint documentation
 
-- Version in MegaLinter: **0.50.3**
+- Version in MegaLinter: **0.50.4**
 - Visit [Official Web Site](https://github.com/yoheimuta/protolint#readme){target=_blank}
 - See [How to configure protolint rules](https://github.com/yoheimuta/protolint#rules){target=_blank}
   - If custom `.protolintrc.yml` config file isn't found, [.protolintrc.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.protolintrc.yml){target=_blank} will be used
@@ -24,23 +24,23 @@ description: How to use protolint (configure, ignore files, ignore errors, help 
 
 - Enable **autofixes** by adding `PROTOBUF_PROTOLINT` in [APPLY_FIXES variable](https://megalinter.io/beta/configuration/#apply-fixes)
 
-| Variable                                       | Description                                                                                                                                                                                                 | Default value                                   |
-|------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
-| PROTOBUF_PROTOLINT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                    |                                                 |
-| PROTOBUF_PROTOLINT_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                        |                                                 |
-| PROTOBUF_PROTOLINT_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                          | Include every file                              |
-| PROTOBUF_PROTOLINT_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                    | Exclude no file                                 |
-| PROTOBUF_PROTOLINT_CLI_LINT_MODE               | Override default CLI lint mode<br/>⚠️ As default value is **project**, overriding might not work<br/>- `file`: Calls the linter for each file<br/>- `project`: Call the linter from the root of the project | `file`                                          |
-| PROTOBUF_PROTOLINT_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                     | `[".proto"]`                                    |
-| PROTOBUF_PROTOLINT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                | Include every file                              |
-| PROTOBUF_PROTOLINT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                              | None                                            |
-| PROTOBUF_PROTOLINT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                               | None                                            |
-| PROTOBUF_PROTOLINT_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling PROTOBUF_PROTOLINT and its pre/post commands                                                                                                   | None                                            |
-| PROTOBUF_PROTOLINT_CONFIG_FILE                 | protolint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                        | `.protolintrc.yml`                              |
-| PROTOBUF_PROTOLINT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                | Workspace folder, then MegaLinter default rules |
-| PROTOBUF_PROTOLINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                  | `false`                                         |
-| PROTOBUF_PROTOLINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                            | `0`                                             |
-| PROTOBUF_PROTOLINT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                     | `['protolint']`                                 |
+| Variable                                       | Description                                                                                                                                                                                  | Default value                                   |
+|------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
+| PROTOBUF_PROTOLINT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                                                 |
+| PROTOBUF_PROTOLINT_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                         |                                                 |
+| PROTOBUF_PROTOLINT_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                           | Include every file                              |
+| PROTOBUF_PROTOLINT_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                     | Exclude no file                                 |
+| PROTOBUF_PROTOLINT_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `project`: Call the linter from the root of the project                                                    | `file`                                          |
+| PROTOBUF_PROTOLINT_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                      | `[".proto"]`                                    |
+| PROTOBUF_PROTOLINT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file                              |
+| PROTOBUF_PROTOLINT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                               | None                                            |
+| PROTOBUF_PROTOLINT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                | None                                            |
+| PROTOBUF_PROTOLINT_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling PROTOBUF_PROTOLINT and its pre/post commands                                                                                    | None                                            |
+| PROTOBUF_PROTOLINT_CONFIG_FILE                 | protolint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                         | `.protolintrc.yml`                              |
+| PROTOBUF_PROTOLINT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                 | Workspace folder, then MegaLinter default rules |
+| PROTOBUF_PROTOLINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`                                         |
+| PROTOBUF_PROTOLINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                             |
+| PROTOBUF_PROTOLINT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `['protolint']`                                 |
 
 ## IDE Integration
 
@@ -51,9 +51,9 @@ Use protolint in your favorite IDE to catch errors before MegaLinter !
 |  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a>  | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [Protocol Buffer Linter](https://plugins.jetbrains.com/plugin/12641-protocol-buffer-linter)   |                       <iframe frameborder="none" width="245px" height="48px" src="https://plugins.jetbrains.com/embeddable/install/12641"></iframe>                        |
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/)     | [VSCode Protolint](https://marketplace.visualstudio.com/items?itemName=Plex.vscode-protolint) | [![Install in VSCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/Plex.vscode-protolint){target=_blank} |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
-This linter is available in the following flavours
+This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                             | Description                                              | Embedded linters |                                                                                                                                                                                                   Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------|:---------------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
@@ -130,7 +130,7 @@ Usage of lint:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=docker depName=yoheimuta/protolint
-ARG PROTOBUF_PROTOLINT_VERSION=0.50.3
+ARG PROTOBUF_PROTOLINT_VERSION=0.50.4
 FROM yoheimuta/protolint:${PROTOBUF_PROTOLINT_VERSION} as protolint
 COPY --link --from=protolint /usr/local/bin/protolint /usr/bin/
 ```

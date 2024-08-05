@@ -15,12 +15,15 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Allow to use absolute paths for LINTER_RULES_PATH
 
 - Media
+  - [MegaLinter: un linter pour les gouverner tous](https://blog.wescale.fr/megalinter-un-linter-pour-les-gouverner-tous) (FR), by [Guillaume Arnaud](https://www.linkedin.com/in/guillaume-arnaud/) from [WeScale](https://www.wescale.fr/)
 
 - Linters enhancements
 
 - Reporters
 
 - Fixes
+  - [terrascan](https://runterrascan.io/) fixed errors and removed redundant code
+  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) various performance improvements and ability to specify sln or proj paths
 
 - Doc
 
@@ -57,6 +60,76 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.9.1 to **1.9.2** on 2024-07-15
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.60.0 to **0.62.0** on 2024-07-15
   - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 2.28.0 to **2.30.0** on 2024-07-16
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.6.1 to **1.7.0** on 2024-07-16
+  - [checkov](https://www.checkov.io/) from 3.2.190 to **3.2.191** on 2024-07-16
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.10.4 to **8.11.0** on 2024-07-16
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.7.0 to **1.7.1** on 2024-07-17
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.371 to **1.1.372** on 2024-07-17
+  - [checkov](https://www.checkov.io/) from 3.2.191 to **3.2.192** on 2024-07-17
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.7.1 to **1.7.2** on 2024-07-17
+  - [checkov](https://www.checkov.io/) from 3.2.192 to **3.2.193** on 2024-07-17
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.7.2 to **1.8.0** on 2024-07-17
+  - [checkov](https://www.checkov.io/) from 3.2.193 to **3.2.194** on 2024-07-18
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.79.0 to **3.80.1** on 2024-07-18
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.8.0 to **1.8.1** on 2024-07-18
+  - [ruff](https://github.com/astral-sh/ruff) from 0.5.2 to **0.5.3** on 2024-07-18
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.28.1 to **0.29.45** on 2024-07-18
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.8.1 to **1.8.2** on 2024-07-19
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.10.1 to **1.11.0** on 2024-07-19
+  - [ruff](https://github.com/astral-sh/ruff) from 0.5.3 to **0.5.4** on 2024-07-20
+  - [phpcs](https://github.com/PHPCSStandards/PHP_CodeSniffer) from 3.10.1 to **3.10.2** on 2024-07-22
+  - [pylint](https://pylint.readthedocs.io) from 3.2.5 to **3.2.6** on 2024-07-22
+  - [checkov](https://www.checkov.io/) from 3.2.194 to **3.2.196** on 2024-07-22
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.62.0 to **0.63.2** on 2024-07-22
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.29.45 to **0.29.47** on 2024-07-27
+  - [revive](https://revive.run/) from 1.3.7 to **1.3.9** on 2024-07-27
+  - [pmd](https://pmd.github.io/) from 7.3.0 to **7.4.0** on 2024-07-27
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.59.3 to **3.60.0** on 2024-07-27
+  - [phpstan](https://phpstan.org/) from 1.11.7 to **1.11.8** on 2024-07-27
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.372 to **1.1.373** on 2024-07-27
+  - [ruff](https://github.com/astral-sh/ruff) from 0.5.4 to **0.5.5** on 2024-07-27
+  - [checkov](https://www.checkov.io/) from 3.2.196 to **3.2.208** on 2024-07-27
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.80.1 to **3.80.2** on 2024-07-27
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.79 to **0.1.80** on 2024-07-27
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.11.0 to **8.12.1** on 2024-07-27
+  - [revive](https://revive.run/) from 1.3.9 to **1.3.7** on 2024-07-28
+  - [checkov](https://www.checkov.io/) from 3.2.208 to **3.2.209** on 2024-07-28
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.9.2 to **1.9.3** on 2024-07-28
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.63.2 to **0.64.1** on 2024-07-28
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.8.2 to **1.9.0** on 2024-07-29
+  - [stylelint](https://stylelint.io) from 16.7.0 to **16.8.0** on 2024-07-29
+  - [checkov](https://www.checkov.io/) from 3.2.209 to **3.2.213** on 2024-07-29
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 2.30.0 to **2.31.0** on 2024-07-29
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.9.0 to **1.9.1** on 2024-07-30
+  - [stylelint](https://stylelint.io) from 16.8.0 to **16.8.1** on 2024-07-30
+  - [checkov](https://www.checkov.io/) from 3.2.213 to **3.2.216** on 2024-07-30
+  - [syft](https://github.com/anchore/syft) from 1.9.0 to **1.10.0** on 2024-07-30
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.80.2 to **3.80.3** on 2024-07-30
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 4.3.2 to **4.4.0** on 2024-07-30
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 4.3.2 to **4.4.0** on 2024-07-30
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 4.3.2 to **4.4.0** on 2024-07-30
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.12.1 to **8.13.0** on 2024-07-30
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.9.1 to **1.9.2** on 2024-07-31
+  - [kubeconform](https://github.com/yannh/kubeconform) from 0.6.6 to **0.6.7** on 2024-07-31
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.60.0 to **3.61.1** on 2024-07-31
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.11.0 to **1.11.1** on 2024-07-31
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.373 to **1.1.374** on 2024-07-31
+  - [grype](https://github.com/anchore/grype) from 0.79.3 to **0.79.4** on 2024-07-31
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.53.0 to **0.54.1** on 2024-07-31
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.53.0 to **0.54.1** on 2024-07-31
+  - [vale](https://vale.sh/) from 3.6.1 to **3.7.0** on 2024-07-31
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2024.05.24 to **2024.08.01** on 2024-08-02
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.9.2 to **1.9.3** on 2024-08-02
+  - [phpstan](https://phpstan.org/) from 1.11.8 to **1.11.9** on 2024-08-02
+  - [black](https://black.readthedocs.io/en/stable/) from 24.4.2 to **24.8.0** on 2024-08-02
+  - [ruff](https://github.com/astral-sh/ruff) from 0.5.5 to **0.5.6** on 2024-08-02
+  - [checkov](https://www.checkov.io/) from 3.2.216 to **3.2.217** on 2024-08-02
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.80.3 to **3.81.4** on 2024-08-02
+  - [rubocop](https://rubocop.org/) from 1.65.0 to **1.65.1** on 2024-08-02
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 2.31.0 to **2.32.0** on 2024-08-02
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.13.0 to **8.13.1** on 2024-08-02
+  - [v8r](https://github.com/chris48s/v8r) from 3.1.0 to **3.1.1** on 2024-08-03
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.50.3 to **0.50.4** on 2024-08-03
 <!-- linter-versions-end -->
 
 ## [v7.13.0] - 2024-07-06

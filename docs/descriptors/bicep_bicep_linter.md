@@ -12,7 +12,7 @@ use a `bicepconfig.json` file. For more information, see the [documentation for 
 
 ## bicep_linter documentation
 
-- Version in MegaLinter: **0.28.1**
+- Version in MegaLinter: **0.29.47**
 - Visit [Official Web Site](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter){target=_blank}
 - See [How to configure bicep_linter rules](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/bicep-config){target=_blank}
 - See [How to disable bicep_linter rules in files](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter#silencing-false-positives){target=_blank}
@@ -25,21 +25,21 @@ use a `bicepconfig.json` file. For more information, see the [documentation for 
 - Enable bicep_linter by adding `BICEP_BICEP_LINTER` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 - Disable bicep_linter by adding `BICEP_BICEP_LINTER` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-| Variable                                       | Description                                                                                                                                                                                                 | Default value      |
-|------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
-| BICEP_BICEP_LINTER_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                    |                    |
-| BICEP_BICEP_LINTER_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                        |                    |
-| BICEP_BICEP_LINTER_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                          | Include every file |
-| BICEP_BICEP_LINTER_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                    | Exclude no file    |
-| BICEP_BICEP_LINTER_CLI_LINT_MODE               | Override default CLI lint mode<br/>⚠️ As default value is **project**, overriding might not work<br/>- `file`: Calls the linter for each file<br/>- `project`: Call the linter from the root of the project | `file`             |
-| BICEP_BICEP_LINTER_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                     | `[".bicep"]`       |
-| BICEP_BICEP_LINTER_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                | Include every file |
-| BICEP_BICEP_LINTER_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                              | None               |
-| BICEP_BICEP_LINTER_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                               | None               |
-| BICEP_BICEP_LINTER_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling BICEP_BICEP_LINTER and its pre/post commands                                                                                                   | None               |
-| BICEP_BICEP_LINTER_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                  | `false`            |
-| BICEP_BICEP_LINTER_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                            | `0`                |
-| BICEP_BICEP_LINTER_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                     | `['bicep']`        |
+| Variable                                       | Description                                                                                                                                                                                  | Default value      |
+|------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
+| BICEP_BICEP_LINTER_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                    |
+| BICEP_BICEP_LINTER_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                         |                    |
+| BICEP_BICEP_LINTER_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                           | Include every file |
+| BICEP_BICEP_LINTER_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                     | Exclude no file    |
+| BICEP_BICEP_LINTER_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `project`: Call the linter from the root of the project                                                    | `file`             |
+| BICEP_BICEP_LINTER_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                      | `[".bicep"]`       |
+| BICEP_BICEP_LINTER_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
+| BICEP_BICEP_LINTER_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                               | None               |
+| BICEP_BICEP_LINTER_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                | None               |
+| BICEP_BICEP_LINTER_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling BICEP_BICEP_LINTER and its pre/post commands                                                                                    | None               |
+| BICEP_BICEP_LINTER_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`            |
+| BICEP_BICEP_LINTER_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                |
+| BICEP_BICEP_LINTER_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `['bicep']`        |
 
 ## IDE Integration
 
@@ -49,9 +49,9 @@ Use bicep_linter in your favorite IDE to catch errors before MegaLinter !
 |:-------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [VSCode Bicep](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-bicep) | [![Install in VSCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/ms-azuretools.vscode-bicep){target=_blank} |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
-This linter is available in the following flavours
+This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                     | Description                                              | Embedded linters |                                                                                                                                                                                           Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------|:---------------------------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
@@ -86,7 +86,7 @@ az bicep build -f infra.bicep
 ### Help content
 
 ```shell
-Bicep CLI version 0.28.1 (ba1e9f8c1e)
+Bicep CLI version 0.29.47 (132ade51bc)
 
 Usage:
   bicep build [options] <file>
@@ -248,17 +248,31 @@ Usage:
 
     Options:
       --bicep-file <file>            Verifies if the specified bicep file path matches the one provided in the params file using declaration
-      --outfile <file>               Saves the param output json as the specified file path.
-      --stdout                       Prints the param and bicep json output to stdout.
+      --outdir <dir>                 Saves the output of building the parameter file only (.bicepparam) as json to the specified directory.
+      --outfile <file>               Saves the output of building the parameter file only (.bicepparam) as json to the specified file path.
+      --stdout                       Prints the output of building both the parameter file (.bicepparam) and the template it points to (.bicep) as json to stdout.
       --no-restore                   Builds the bicep file (referenced in using declaration) without restoring external modules.
       --diagnostics-format <format>  Sets the format with which diagnostics are displayed. Valid values are ( Default | Sarif ).
 
     Examples:
       bicep build-params params.bicepparam
       bicep build-params params.bicepparam --stdout
+      bicep build-params params.bicepparam --outdir dir1
       bicep build-params params.bicepparam --outfile otherParams.json
       bicep build-params params.bicepparam --no-restore
       bicep build-params params.bicepparam --diagnostics-format sarif
+
+  bicep jsonrpc [options]
+    Runs a JSONRPC server for interacting with Bicep programatically.
+
+    Options:
+      --pipe <name>   Runs the JSONRPC server using a named pipe.
+      --socket <dir>  Runs the JSONRPC server on a specific port.
+      --stdio         Runs the JSONRPC server over stdin/stdout.
+
+    Examples:
+      bicep jsonrpc --pipe /path/to/pipe.sock
+      bicep jsonrpc --stdio
 
 ```
 

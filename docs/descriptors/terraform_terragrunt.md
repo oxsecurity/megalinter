@@ -9,7 +9,7 @@ description: How to use terragrunt (configure, ignore files, ignore errors, help
 
 ## terragrunt documentation
 
-- Version in MegaLinter: **0.62.0**
+- Version in MegaLinter: **0.64.1**
 - Visit [Official Web Site](https://terragrunt.gruntwork.io){target=_blank}
 - See [How to configure terragrunt rules](https://terragrunt.gruntwork.io/docs/getting-started/configuration/#terragrunt-configuration-file){target=_blank}
 
@@ -22,27 +22,27 @@ description: How to use terragrunt (configure, ignore files, ignore errors, help
 
 - Enable **autofixes** by adding `TERRAFORM_TERRAGRUNT` in [APPLY_FIXES variable](https://megalinter.io/beta/configuration/#apply-fixes)
 
-| Variable                                         | Description                                                                                                                                                                                                 | Default value                                   |
-|--------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
-| TERRAFORM_TERRAGRUNT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                    |                                                 |
-| TERRAFORM_TERRAGRUNT_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                        |                                                 |
-| TERRAFORM_TERRAGRUNT_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                          | Include every file                              |
-| TERRAFORM_TERRAGRUNT_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                    | Exclude no file                                 |
-| TERRAFORM_TERRAGRUNT_CLI_LINT_MODE               | Override default CLI lint mode<br/>⚠️ As default value is **project**, overriding might not work<br/>- `file`: Calls the linter for each file<br/>- `project`: Call the linter from the root of the project | `file`                                          |
-| TERRAFORM_TERRAGRUNT_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                     | `[".hcl"]`                                      |
-| TERRAFORM_TERRAGRUNT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                | Include every file                              |
-| TERRAFORM_TERRAGRUNT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                              | None                                            |
-| TERRAFORM_TERRAGRUNT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                               | None                                            |
-| TERRAFORM_TERRAGRUNT_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling TERRAFORM_TERRAGRUNT and its pre/post commands                                                                                                 | None                                            |
-| TERRAFORM_TERRAGRUNT_CONFIG_FILE                 | terragrunt configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                       | `terragrunt.hcl`                                |
-| TERRAFORM_TERRAGRUNT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                | Workspace folder, then MegaLinter default rules |
-| TERRAFORM_TERRAGRUNT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                  | `false`                                         |
-| TERRAFORM_TERRAGRUNT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                            | `0`                                             |
-| TERRAFORM_TERRAGRUNT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                     | `['terragrunt']`                                |
+| Variable                                         | Description                                                                                                                                                                                  | Default value                                   |
+|--------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
+| TERRAFORM_TERRAGRUNT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                                                 |
+| TERRAFORM_TERRAGRUNT_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                         |                                                 |
+| TERRAFORM_TERRAGRUNT_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                           | Include every file                              |
+| TERRAFORM_TERRAGRUNT_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                     | Exclude no file                                 |
+| TERRAFORM_TERRAGRUNT_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `project`: Call the linter from the root of the project                                                    | `file`                                          |
+| TERRAFORM_TERRAGRUNT_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                      | `[".hcl"]`                                      |
+| TERRAFORM_TERRAGRUNT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file                              |
+| TERRAFORM_TERRAGRUNT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                               | None                                            |
+| TERRAFORM_TERRAGRUNT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                | None                                            |
+| TERRAFORM_TERRAGRUNT_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling TERRAFORM_TERRAGRUNT and its pre/post commands                                                                                  | None                                            |
+| TERRAFORM_TERRAGRUNT_CONFIG_FILE                 | terragrunt configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                        | `terragrunt.hcl`                                |
+| TERRAFORM_TERRAGRUNT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                 | Workspace folder, then MegaLinter default rules |
+| TERRAFORM_TERRAGRUNT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`                                         |
+| TERRAFORM_TERRAGRUNT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                             |
+| TERRAFORM_TERRAGRUNT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `['terragrunt']`                                |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
-This linter is available in the following flavours
+This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                     | Description                                     | Embedded linters |                                                                                                                                                                                           Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------|:------------------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
@@ -114,7 +114,7 @@ GLOBAL OPTIONS:
    --terragrunt-iam-assume-role-duration value       Session duration for IAM Assume Role session. Can also be set via the TERRAGRUNT_IAM_ASSUME_ROLE_DURATION environment variable. [$TERRAGRUNT_IAM_ASSUME_ROLE_DURATION]
    --terragrunt-iam-assume-role-session-name value   Name for the IAM Assummed Role session. Can also be set via TERRAGRUNT_IAM_ASSUME_ROLE_SESSION_NAME environment variable. [$TERRAGRUNT_IAM_ASSUME_ROLE_SESSION_NAME]
    --terragrunt-iam-role value                       Assume the specified IAM role before executing Terraform. Can also be set via the TERRAGRUNT_IAM_ROLE environment variable. [$TERRAGRUNT_IAM_ROLE]
-   --terragrunt-iam-web-identity-token value         For AssumeRoleWithWebIdentity, the WebIdentity token. Can also be set via TERRRAGRUNT_IAM_ASSUME_ROLE_WEB_IDENTITY_TOKEN environment variable [$TERRRAGRUNT_IAM_ASSUME_ROLE_WEB_IDENTITY_TOKEN]
+   --terragrunt-iam-web-identity-token value         For AssumeRoleWithWebIdentity, the WebIdentity token. Can also be set via TERRAGRUNT_IAM_ASSUME_ROLE_WEB_IDENTITY_TOKEN environment variable [$TERRAGRUNT_IAM_ASSUME_ROLE_WEB_IDENTITY_TOKEN]
    --terragrunt-ignore-dependency-errors             *-all commands continue processing components even if a dependency fails.
    --terragrunt-ignore-dependency-order              *-all commands will be run disregarding the dependencies
    --terragrunt-ignore-external-dependencies         *-all commands will not attempt to include external dependencies
@@ -147,7 +147,7 @@ GLOBAL OPTIONS:
    --help, -h                                        Show help
    --version, -v                                     Show terragrunt version
 
-VERSION: v0.62.0
+VERSION: v0.64.1
 
 AUTHOR: Gruntwork <www.gruntwork.io>
 ```
@@ -157,7 +157,7 @@ AUTHOR: Gruntwork <www.gruntwork.io>
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=docker depName=alpine/terragrunt
-ARG TERRAFORM_TERRAGRUNT_VERSION=1.9.2
+ARG TERRAFORM_TERRAGRUNT_VERSION=1.9.3
 FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} as terragrunt
 COPY --link --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
 ```
