@@ -91,6 +91,7 @@ def linter_test_setup(params=None):
     config.set_value(request_id, "IGNORE_GITIGNORED_FILES", "true")
     config.set_value(request_id, "VALIDATE_ALL_CODEBASE", "true")
     config.set_value(request_id, "CLEAR_REPORT_FOLDER", "true")
+    config.set_value(request_id, "API_REPORTER", "false")
     config.set_value(request_id, "SARIF_REPORTER", "false")
     if params.get("additional_test_variables"):
         for env_var_key, env_var_value in params.get(
