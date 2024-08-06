@@ -135,6 +135,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.64.1 to **0.66.1** on 2024-08-04
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.9.4 to **1.9.5** on 2024-08-05
   - [checkov](https://www.checkov.io/) from 3.2.217 to **3.2.219** on 2024-08-05
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.81.4 to **3.81.6** on 2024-08-06
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 2.32.0 to **2.33.0** on 2024-08-06
 <!-- linter-versions-end -->
 
 ## [v7.13.0] - 2024-07-06
