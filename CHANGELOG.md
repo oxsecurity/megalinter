@@ -138,6 +138,13 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 3.2.217 to **3.2.219** on 2024-08-05
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.81.4 to **3.81.6** on 2024-08-06
   - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 2.32.0 to **2.33.0** on 2024-08-06
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.9.5 to **1.9.6** on 2024-08-08
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.61.1 to **3.62.0** on 2024-08-08
+  - [phpstan](https://phpstan.org/) from 1.11.9 to **1.11.10** on 2024-08-08
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.374 to **1.1.375** on 2024-08-08
+  - [ruff](https://github.com/astral-sh/ruff) from 0.5.6 to **0.5.7** on 2024-08-08
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.13.1 to **8.13.2** on 2024-08-08
+  - [swiftlint](https://github.com/realm/SwiftLint) from 0.55.1 to **0.56.1** on 2024-08-08
 <!-- linter-versions-end -->
 
 ## [v7.13.0] - 2024-07-06
