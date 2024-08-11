@@ -35,9 +35,6 @@ ARG BICEP_URI='https://github.com/Azure/bicep/releases/latest/download/bicep-lin
 ARG BICEP_DIR='/usr/local/bin'
 #ARG__END
 
-# Static args
-ARG GITHUB_TOKEN
-
 ####################
 # Run APK installs #
 ####################
@@ -138,7 +135,7 @@ RUN curl --retry 5 --retry-delay 5 -sLo ${BICEP_EXE} "${BICEP_URI}" \
     && chmod +x "${BICEP_EXE}" \
     && mv "${BICEP_EXE}" "${BICEP_DIR}"
 
-
+#
 #OTHER__END
 
 ################################

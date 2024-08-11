@@ -35,9 +35,6 @@ ARG DETEKT_VERSION=1.23.6
 
 #ARG__END
 
-# Static args
-ARG GITHUB_TOKEN
-
 ####################
 # Run APK installs #
 ####################
@@ -136,7 +133,7 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 # KOTLIN installation
 ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
-
+#
 # detekt installation
 RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/detekt/detekt/releases/download/v${DETEKT_VERSION}/detekt-cli-${DETEKT_VERSION}.zip && \
     unzip detekt-cli-${DETEKT_VERSION}.zip && \
@@ -145,7 +142,7 @@ RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/detekt/detekt/releas
     mv -n detekt-cli-${DETEKT_VERSION}/bin/* usr/bin && \
     mv -n detekt-cli-${DETEKT_VERSION}/lib/* usr/lib
 
-
+#
 #OTHER__END
 
 ################################
