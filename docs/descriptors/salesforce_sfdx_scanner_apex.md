@@ -96,6 +96,7 @@ sf scanner:run
 ```shell
 (node:1755) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
 (Use `node --trace-deprecation ...` to show where the warning was created)
+ ›   Warning: @salesforce/cli update available from 2.52.6 to 2.53.6.
 Scan a codebase with all the rules in the registry, or use parameters to filter the rules based on rulename, category, or ruleset.
 
 USAGE
@@ -151,6 +152,7 @@ COMMANDS
 
 (node:1767) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
 (Use `node --trace-deprecation ...` to show where the warning was created)
+ ›   Warning: @salesforce/cli update available from 2.52.6 to 2.53.6.
  ›   Warning: Plugin @salesforce/sfdx-scanner (4.4.0) differs from the version
  ›   specified by sf (4.3.2)
 Warning: We're continually improving Salesforce Code Analyzer. Tell us what you think! Give feedback at https://research.net/r/SalesforceCA

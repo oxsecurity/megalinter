@@ -9,7 +9,7 @@ description: How to use jsonlint (configure, ignore files, ignore errors, help &
 
 ## jsonlint documentation
 
-- Version in MegaLinter: **14.0.3**
+- Version in MegaLinter: **16.0.0**
 - Visit [Official Web Site](https://github.com/prantlf/jsonlint#readme){target=_blank}
 - See [How to configure jsonlint rules](https://github.com/prantlf/jsonlint#configuration){target=_blank}
 - See [Index of problems detected by jsonlint](https://github.com/prantlf/jsonlint#configuration){target=_blank}
@@ -92,7 +92,15 @@ Usage: jsonlint [options] [--] [<file, directory, pattern> ...]
 Options:
   -f, --config <file>          read options from a custom configuration file
   -F, --no-config              disable searching for configuration files
+  --ignore-proto-key           ignore occurrences of "__proto__" object key
+  --ignore-prototype-keys      ignore all keys from "Object.prototype"
   -s, --sort-keys              sort object keys (not when prettifying)
+  --sort-keys-ignore-case      sort object keys ignoring the letter case
+  --sort-keys-locale <id>      locale identifier to sort object keys with
+                               (or "default" for the system default)
+  --sort-keys-case-first <id>  order if only letter case is different
+                               ("upper", "lower" and "false" are allowed)
+  --sort-keys-numeric          sort by numbers recognised in object keys
   -E, --extensions <ext...>    file extensions to process for directory walk
                                (default: json, JSON)
   -i, --in-place               overwrite the input files
@@ -126,6 +134,7 @@ Options:
   --enforce-double-quotes      surrounds all strings with double quotes
   --enforce-single-quotes      surrounds all strings with single quotes
   --trim-trailing-commas       omit trailing commas from objects and arrays
+  --succeed-with-no-files      succeed (exit code 0) if no files were found
   -v, --version                output the version number
   -h, --help                   display help for command
 
