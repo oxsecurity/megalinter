@@ -88,7 +88,7 @@ jobs:
       # Build image locally for testing #
       ###################################
       - name: Build MegaLinter Docker Image (quick)
-        if: "contains(github.event.head_commit.message, 'quick build')"
+        if: ${{ contains(github.event.head_commit.message, 'quick build') }}
         id: docker_build_quick
         uses: docker/build-push-action@v6
         with:
