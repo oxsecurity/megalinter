@@ -1141,6 +1141,8 @@ PRE_COMMANDS:
     continue_if_failed: False  # Will stop the process if command is failed (return code > 0)
   - command: pip install flake8-cognitive-complexity
     venv: flake8 # Will be run within flake8 python virtualenv. There is one virtualenv per python-based linter, with the same name
+  - command: export MY_OUTPUT_VAR="my output var" && export MY_OUTPUT_VAR2="my output var2"
+    output_variables: MY_OUTPUT_VAR,MY_OUTPUT_VAR2 # Will collect the values of output variables and update MegaLinter own ENV context
 ```
 
 <!-- config-precommands-section-end -->

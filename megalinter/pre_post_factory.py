@@ -1,6 +1,7 @@
 # Class to manage MegaLinter plugins
 import logging
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -111,6 +112,31 @@ def run_command(command_info, log_key, mega_linter, linter=None):
         raise Exception(
             f"{log_key}: User command failed, stop running MegaLinter\n{return_stdout}"
         )
+    # Get output variables if defined
+    if command_info.get("output_variables", None) is not None:
+        for output_variable in command_info["output_variables"]:
+            regex_start = f"output of {output_variable}:"
+            if regex_start in return_stdout:
+                match = re.search(rf"{regex_start}(.+)", return_stdout)
+                if match:
+                    output_variable_value = match.group(1).strip()
+                    if (
+                        config.get(mega_linter.request_id, output_variable, None)
+                        != output_variable_value
+                    ):
+                        config.set_value(
+                            mega_linter.request_id,
+                            output_variable,
+                            output_variable_value,
+                        )
+                        add_in_logs(
+                            linter,
+                            log_key,
+                            [
+                                f"{log_key} updated ENV var {output_variable}] from command output"
+                            ],
+                        )
+
     return {
         "command_info": command_info,
         "status": return_code,
@@ -129,6 +155,12 @@ def complete_command(command_info: dict):
         command_info["command"] = (
             f"cd /venvs/{venv} && source bin/activate && {command} && deactivate"
         )
+    # Handle output vars if present
+    if command_info.get("output_variables", None) is not None:
+        for output_variable in command_info["output_variables"]:
+            command_info[
+                "command"
+            ] += f' && echo "output of {output_variable}:${output_variable}"'
     return command_info
 
 
