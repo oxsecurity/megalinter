@@ -53,17 +53,17 @@ installer = "uv"
 [tool.hatch.envs.types]
 extra-dependencies = ["mypy>=1.0.0"]
 [tool.hatch.envs.types.scripts]
-check = "mypy --install-types --non-interactive {args:src/megalinter tests}"
+check = "mypy --install-types --non-interactive {args:megalinter}"
 
 [tool.coverage.run]
-source_pkgs = ["megalinter", "tests"]
+source_pkgs = ["megalinter"]
 branch = true
 parallel = true
 omit = ["megalinter/__about__.py"]
 
 [tool.coverage.paths]
 megalinter = ["megalinter", "*/megalinter/megalinter"]
-tests = [".automation/tests", "*/megalinter/tests"]
+tests = [".automation/test", "*/megalinter/tests"]
 
 [tool.coverage.report]
 exclude_lines = ["no cov", "if __name__ == .__main__.:", "if TYPE_CHECKING:"]
