@@ -33,9 +33,6 @@ FROM python:3.12.4-alpine3.20
 
 #ARG__END
 
-# Static args
-ARG GITHUB_TOKEN
-
 ####################
 # Run APK installs #
 ####################
@@ -147,7 +144,7 @@ RUN wget --tries=5 https://www.lua.org/ftp/lua-5.3.5.tar.gz -O - -q | tar -xzf -
     && luarocks install luacheck \
     && cd /
 
-
+#
 #OTHER__END
 
 ################################

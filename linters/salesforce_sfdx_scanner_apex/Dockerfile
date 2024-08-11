@@ -40,9 +40,6 @@ ARG SFDX_HARDIS_VERSION=4.52.0
 ARG SALESFORCE_SFDX_SCANNER_VERSION=4.4.0
 #ARG__END
 
-# Static args
-ARG GITHUB_TOKEN
-
 ####################
 # Run APK installs #
 ####################
@@ -158,12 +155,12 @@ RUN sf plugins install @salesforce/plugin-packaging@${SALESFORCE_PLUGIN_PACKAGIN
     && echo y|sf plugins install sfdx-hardis@${SFDX_HARDIS_VERSION} \
     && npm cache clean --force || true \
     && rm -rf /root/.npm/_cacache \
-
+#
 # sfdx-scanner-apex installation
     && sf plugins install @salesforce/sfdx-scanner@${SALESFORCE_SFDX_SCANNER_VERSION} \
     && npm cache clean --force || true \
     && rm -rf /root/.npm/_cacache
-
+#
 #OTHER__END
 
 ################################

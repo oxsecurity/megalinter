@@ -124,7 +124,7 @@ linters:
         - |-
           # renovate: datasource=docker depName=jdkato/vale
           ARG SPELL_VALE_VERSION=v3.7.0
-        - FROM jdkato/vale:${SPELL_VALE_VERSION} as vale
+        - FROM jdkato/vale:${SPELL_VALE_VERSION} AS vale
         - COPY --link --from=vale /bin/vale /bin/vale
     ide:
       emacs:
@@ -209,5 +209,5 @@ linters:
       - 'lychee --format detailed --no-progress --glob-ignore-case --verbose "~/projects/**/[r]eadme.*"'
     install:
       dockerfile:
-        - FROM lycheeverse/lychee:latest-alpine as lychee
+        - FROM lycheeverse/lychee:latest-alpine AS lychee
         - COPY --link --from=lychee /usr/local/bin/lychee /usr/bin/

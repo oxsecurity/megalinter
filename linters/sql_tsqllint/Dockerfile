@@ -33,9 +33,6 @@ FROM python:3.12.4-alpine3.20
 
 #ARG__END
 
-# Static args
-ARG GITHUB_TOKEN
-
 ####################
 # Run APK installs #
 ####################
@@ -134,7 +131,7 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 RUN apk add --no-cache dotnet8-sdk
 ENV PATH="${PATH}:/root/.dotnet/tools"
 RUN dotnet tool install --global TSQLLint
-
+#
 #OTHER__END
 
 ################################

@@ -36,5 +36,5 @@ linters:
       apk:
         - make
       dockerfile:
-        - FROM mrtazz/checkmake:latest as checkmake
+        - FROM mrtazz/checkmake:latest AS checkmake
         - COPY --link --from=checkmake /checkmake /usr/bin/checkmake

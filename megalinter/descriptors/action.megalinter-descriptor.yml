@@ -35,9 +35,9 @@ linters:
           # renovate: datasource=docker depName=koalaman/shellcheck
           ARG BASH_SHELLCHECK_VERSION=v0.10.0
         - |-
-          FROM rhysd/actionlint:${ACTION_ACTIONLINT_VERSION} as actionlint
+          FROM rhysd/actionlint:${ACTION_ACTIONLINT_VERSION} AS actionlint
           # shellcheck is a dependency for actionlint
-        - FROM koalaman/shellcheck:${BASH_SHELLCHECK_VERSION} as shellcheck
+        - FROM koalaman/shellcheck:${BASH_SHELLCHECK_VERSION} AS shellcheck
         - |-
           COPY --link --from=actionlint /usr/local/bin/actionlint /usr/bin/actionlint
           # shellcheck is a dependency for actionlint

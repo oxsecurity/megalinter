@@ -33,9 +33,6 @@ FROM python:3.12.4-alpine3.20
 
 #ARG__END
 
-# Static args
-ARG GITHUB_TOKEN
-
 ####################
 # Run APK installs #
 ####################
@@ -136,7 +133,7 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #OTHER__START
 # mypy installation
 ENV MYPY_CACHE_DIR=/tmp
-
+#
 #OTHER__END
 
 ################################

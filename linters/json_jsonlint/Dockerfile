@@ -33,9 +33,6 @@ FROM python:3.12.4-alpine3.20
 
 #ARG__END
 
-# Static args
-ARG GITHUB_TOKEN
-
 ####################
 # Run APK installs #
 ####################

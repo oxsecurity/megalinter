@@ -397,7 +397,7 @@ def build_dockerfile(
                     is_docker_other_run = False
                     docker_other += [dockerfile_item]
                 all_dockerfile_items += [dockerfile_item]
-            docker_other += [""]
+            docker_other += ["#"]
         # Collect python packages
         if "apk" in item["install"]:
             apk_packages += item["install"]["apk"]

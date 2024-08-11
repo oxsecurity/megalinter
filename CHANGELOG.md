@@ -32,6 +32,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Flavors
 
 - CI
+  - Fix docker warnings
+    - FromAsCasing: 'as' and 'FROM' keywords' casing do not match
+    - NoEmptyContinuation: Empty continuation line
+    - SecretsUsedInArgOrEnv: Do not use ARG or ENV instructions for sensitive data
 
 - Linter versions upgrades
   - [protolint](https://github.com/yoheimuta/protolint) from 0.50.2 to **0.50.3** on 2024-07-07

@@ -33,9 +33,6 @@ FROM python:3.12.4-alpine3.20
 
 #ARG__END
 
-# Static args
-ARG GITHUB_TOKEN
-
 ####################
 # Run APK installs #
 ####################
@@ -136,7 +133,7 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 RUN curl -fsSL https://raw.githubusercontent.com/skaji/cpm/main/cpm | perl - install -g --show-build-log-on-failure --without-build --without-test --without-runtime Perl::Critic \
     && rm -rf /root/.perl-cpm
 
-
+#
 #OTHER__END
 
 ################################

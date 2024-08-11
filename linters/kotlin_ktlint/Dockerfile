@@ -33,9 +33,6 @@ FROM python:3.12.4-alpine3.20
 
 #ARG__END
 
-# Static args
-ARG GITHUB_TOKEN
-
 ####################
 # Run APK installs #
 ####################
@@ -134,13 +131,13 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 # KOTLIN installation
 ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
-
+#
 # ktlint installation
 RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/releases/latest/download/ktlint && \
     chmod a+x ktlint && \
     mv "ktlint" /usr/bin/
 
-
+#
 #OTHER__END
 
 ################################
