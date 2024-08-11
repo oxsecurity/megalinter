@@ -194,7 +194,6 @@ nav:
               - "scalafix": "descriptors/scala_scalafix.md"
           - "SQL":
               - "All SQL linters": "descriptors/sql.md"
-              - "sql-lint": "descriptors/sql_sql_lint.md"
               - "sqlfluff": "descriptors/sql_sqlfluff.md"
               - "tsqllint": "descriptors/sql_tsqllint.md"
           - "SWIFT":
@@ -218,7 +217,6 @@ nav:
           - "CSS":
               - "All CSS linters": "descriptors/css.md"
               - "stylelint": "descriptors/css_stylelint.md"
-              - "scss-lint": "descriptors/css_scss_lint.md"
           - "ENV":
               - "All ENV linters": "descriptors/env.md"
               - "dotenv-linter": "descriptors/env_dotenv_linter.md"
@@ -299,7 +297,6 @@ nav:
               - "kubescape": "descriptors/kubernetes_kubescape.md"
           - "OPENAPI":
               - "All OPENAPI linters": "descriptors/openapi.md"
-              - "spectral": "descriptors/openapi_spectral.md"
           - "PUPPET":
               - "All PUPPET linters": "descriptors/puppet.md"
               - "puppet-lint": "descriptors/puppet_puppet_lint.md"
