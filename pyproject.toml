@@ -69,6 +69,12 @@ dependencies = [
 build = "mkdocs build --clean --strict"
 serve = "mkdocs serve --dev-addr localhost:8000"
 
+[tool.hatch.envs.hatch-test]
+default-args = [""]
+randomize = true
+parallel = true
+retries = 2
+
 [tool.hatch.envs.types]
 extra-dependencies = ["mypy>=1.0.0"]
 [tool.hatch.envs.types.scripts]
