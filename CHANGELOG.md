@@ -10,6 +10,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - New linters
 
+- Removed deprecated linters
+  - CSS_SCSSLINT: [Project discontinued and advising to use stylelint](https://github.com/sds/scss-lint#notice-consider-other-tools-before-adopting-scss-lint)
+  - OPENAPI_SPECTRAL: Replaced by API_SPECTRAL (same linter but more formats handled)
+
 - Core
   - Allow to override CLI_LINT_MODE when defined as project
   - Allow to use absolute paths for LINTER_RULES_PATH
