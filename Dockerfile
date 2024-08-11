@@ -112,9 +112,6 @@ ARG SALESFORCE_SFDX_SCANNER_VERSION=4.4.0
 ARG LIGHTNING_FLOW_SCANNER_VERSION=2.33.0
 #ARG__END
 
-# Static args
-ARG GITHUB_TOKEN
-
 ####################
 # Run APK installs #
 ####################
