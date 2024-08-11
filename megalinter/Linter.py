@@ -543,9 +543,10 @@ class Linter:
                 local_config_file = self.workspace + os.path.sep + self.config_file_name
                 existing_before = os.path.isfile(local_config_file)
                 try:
-                    with urllib.request.urlopen(remote_config_file) as response, open(
-                        local_config_file, "wb"
-                    ) as out_file:
+                    with (
+                        urllib.request.urlopen(remote_config_file) as response,
+                        open(local_config_file, "wb") as out_file,
+                    ):
                         shutil.copyfileobj(response, out_file)
                         self.config_file_label = remote_config_file
                         if existing_before is False:
@@ -621,9 +622,10 @@ class Linter:
                 local_ignore_file = self.workspace + os.path.sep + self.ignore_file_name
                 existing_before = os.path.isfile(local_ignore_file)
                 try:
-                    with urllib.request.urlopen(remote_ignore_file) as response, open(
-                        local_ignore_file, "wb"
-                    ) as out_file:
+                    with (
+                        urllib.request.urlopen(remote_ignore_file) as response,
+                        open(local_ignore_file, "wb") as out_file,
+                    ):
                         shutil.copyfileobj(response, out_file)
                         self.ignore_file_label = remote_ignore_file
                         if existing_before is False:
