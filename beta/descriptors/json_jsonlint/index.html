@@ -3359,7 +3359,7 @@
 <p><a href="https://github.com/prantlf/jsonlint"><img alt="GitHub stars" src="https://img.shields.io/github/stars/prantlf/jsonlint?cacheSeconds=3600"/></a> <a href="https://github.com/prantlf/jsonlint/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/prantlf/jsonlint?sort=semver"/></a> <a href="https://github.com/prantlf/jsonlint/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/prantlf/jsonlint"/></a> <a href="https://github.com/prantlf/jsonlint/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/prantlf/jsonlint"/></a> <a href="https://github.com/prantlf/jsonlint/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/prantlf/jsonlint"/></a></p>
 <h2 id="jsonlint-documentation">jsonlint documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>14.0.3</strong></li>
+<li>Version in MegaLinter: <strong>16.0.0</strong></li>
 <li>Visit <a href="https://github.com/prantlf/jsonlint#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/prantlf/jsonlint#configuration" target="_blank">How to configure jsonlint rules</a></li>
 <li>See <a href="https://github.com/prantlf/jsonlint#configuration" target="_blank">Index of problems detected by jsonlint</a></li>
@@ -3612,7 +3612,15 @@ Usage: jsonlint [options] [--] [&lt;file, directory, pattern&gt; ...]
 Options:
   -f, --config &lt;file&gt;          read options from a custom configuration file
   -F, --no-config              disable searching for configuration files
+  --ignore-proto-key           ignore occurrences of "__proto__" object key
+  --ignore-prototype-keys      ignore all keys from "Object.prototype"
   -s, --sort-keys              sort object keys (not when prettifying)
+  --sort-keys-ignore-case      sort object keys ignoring the letter case
+  --sort-keys-locale &lt;id&gt;      locale identifier to sort object keys with
+                               (or "default" for the system default)
+  --sort-keys-case-first &lt;id&gt;  order if only letter case is different
+                               ("upper", "lower" and "false" are allowed)
+  --sort-keys-numeric          sort by numbers recognised in object keys
   -E, --extensions &lt;ext...&gt;    file extensions to process for directory walk
                                (default: json, JSON)
   -i, --in-place               overwrite the input files
@@ -3646,6 +3654,7 @@ Options:
   --enforce-double-quotes      surrounds all strings with double quotes
   --enforce-single-quotes      surrounds all strings with single quotes
   --trim-trailing-commas       omit trailing commas from objects and arrays
+  --succeed-with-no-files      succeed (exit code 0) if no files were found
   -v, --version                output the version number
   -h, --help                   display help for command
 
