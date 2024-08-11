@@ -21,7 +21,7 @@ dependencies = [
   "azure-devops==6.0.0b4",
   "commentjson",
   "gitpython",
-  "importlib-metadata>=3.10",
+  "importlib-metadata>=3.10; python_version < '3.9'",
   "jsonpickle",
   "multiprocessing_logging",
   "pychalk",
