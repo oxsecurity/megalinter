@@ -158,6 +158,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [syft](https://github.com/anchore/syft) from 1.10.0 to **1.11.0** on 2024-08-10
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.13.1 to **8.13.2** on 2024-08-10
   - [swiftlint](https://github.com/realm/SwiftLint) from 0.55.1 to **0.56.1** on 2024-08-10
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.50.4 to **0.50.5** on 2024-08-11
+  - [kics](https://www.kics.io) from 2.1.1 to **2.1.2** on 2024-08-11
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.81.6 to **3.81.8** on 2024-08-11
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.9.3 to **1.9.4** on 2024-08-11
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.66.1 to **0.66.3** on 2024-08-11
 <!-- linter-versions-end -->
 
 ## [v7.13.0] - 2024-07-06
