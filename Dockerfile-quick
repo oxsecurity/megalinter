@@ -21,9 +21,8 @@ ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
 ################################
 # Installs python dependencies #
 ################################
-COPY megalinter /megalinter
-RUN python /megalinter/setup.py install \
-    && python /megalinter/setup.py clean --all \
+RUN pip3 install . --no-cache-dir \
+    pip3 cache purge \
     && rm -rf /var/cache/apk/*
 #######################################
 # Copy scripts and rules to container #
