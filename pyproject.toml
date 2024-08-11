@@ -65,15 +65,30 @@ dependencies = [
   "webpreview",
   "github-dependents-info",
 ]
-[tool.hatch.envs.docs.scripts]
-build = "mkdocs build --clean --strict"
-serve = "mkdocs serve --dev-addr localhost:8000"
 
 [tool.hatch.envs.hatch-test]
 default-args = [""]
 randomize = true
 parallel = true
 retries = 2
+
+[tool.hatch.envs.docs.scripts]
+# build = "mkdocs build --clean --strict"
+prettify = "hatch run python -m json.tool --sort-keys --no-indent ./site/search/search_index.json ./site/search/search_index.json"
+build-only = ["mkdocs build --clean {args}"]
+build = ["build-only {args}", "prettify"]
+serve = "mkdocs serve --dev-addr localhost:8000 {args}"
+
+[tool.hatch.envs.build]
+template = "docs"
+[tool.hatch.envs.build.scripts]
+all = ["build --doc --stats --dependents {args}", "hatch run docs:build"]
+build-sh = "./build.sh {args}"
+build-py = "hatch run python .automation/build.py {args}"
+build = ["build-py", "hatch run docs:build"]
+docs = ["./build.sh --doc {args}", "hatch run docs:build"]
+stats = "build --stats"
+changelog = "hatch run python .automation/build.py --changelog {args}"
 
 [tool.hatch.envs.types]
 extra-dependencies = ["mypy>=1.0.0"]
