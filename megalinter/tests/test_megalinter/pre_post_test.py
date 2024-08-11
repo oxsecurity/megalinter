@@ -43,20 +43,20 @@ class PrePostTest(unittest.TestCase):
         self.assertIn("linter pre-command has been run", output)
         self.assertIn("linter post-command has been run", output)
         self.assertTrue(
-            config.get("MY_OUTPUT_VARIABLE") == "my output variable value",
+            config.get(self.request_id, "MY_OUTPUT_VARIABLE", "") == "my output variable value",
             "MY_OUTPUT_VARIABLE should be found",
         )
         self.assertTrue(
-            config.get("MY_OUTPUT_VARIABLE2") == "my output variable value2",
+            config.get(self.request_id, "MY_OUTPUT_VARIABLE2", "") == "my output variable value2",
             "MY_OUTPUT_VARIABLE2 should be found",
         )
         self.assertTrue(
-            config.get("MY_OUTPUT_LINTER_VARIABLE")
+            config.get(self.request_id, "MY_OUTPUT_LINTER_VARIABLE", "")
             == "my output linter variable value",
             "MY_OUTPUT_LINTER_VARIABLE should be found",
         )
         self.assertTrue(
-            config.get("MY_OUTPUT_LINTER_VARIABLE2")
+            config.get(self.request_id, "MY_OUTPUT_LINTER_VARIABLE2", "")
             == "my output linter variable value2",
             "MY_OUTPUT_LINTER_VARIABLE2 should be found",
         )
