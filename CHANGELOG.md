@@ -830,6 +830,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Salesforce linters: Switch sfdx-cli to @salesforce/cli
   - Fixed issue with `actionlint` throwing an error on `if` statements in the generated workflow file
   - Added default `.devskim.json` to mitigate errors introduced when no config exists
+  - Fix swiftlint --path argument by adding workspace
 
 - Doc
   - Display list of articles from newest to oldest
