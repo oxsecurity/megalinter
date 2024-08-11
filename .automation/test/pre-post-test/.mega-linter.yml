@@ -18,7 +18,7 @@ PRE_COMMANDS:
   - command: pip install flake8-cognitive-complexity
     venv: flake8
   - command: export MY_OUTPUT_VARIABLE="my output variable value" && export MY_OUTPUT_VARIABLE2="my output variable value2"
-    output_variables: MY_OUTPUT_VARIABLE,MY_OUTPUT_VARIABLE2
+    output_variables: ["MY_OUTPUT_VARIABLE", "MY_OUTPUT_VARIABLE2"]
     cwd: "root"
 POST_COMMANDS:
   - command: npm run test
@@ -27,7 +27,7 @@ MARKDOWN_PRE_COMMANDS:
   - command: echo 'descriptor pre-command has been run'
     cwd: "root"
   - command: export MY_OUTPUT_LINTER_VARIABLE="my output linter variable value" && export MY_OUTPUT_LINTER_VARIABLE2="my output linter variable value2"
-    output_variables: MY_OUTPUT_LINTER_VARIABLE,MY_OUTPUT_LINTER_VARIABLE2
+    output_variables: ["MY_OUTPUT_LINTER_VARIABLE", "MY_OUTPUT_LINTER_VARIABLE2"]
     cwd: "root"
 MARKDOWN_POST_COMMANDS:
   - command: echo 'descriptor post-command has been run'
