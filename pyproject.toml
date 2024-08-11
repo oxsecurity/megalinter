@@ -1,0 +1,66 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "megalinter"
+dynamic = ["version"]
+description = "MegaLinter"
+readme = "README.md"
+requires-python = ">=3.9"
+license = "MIT"
+keywords = []
+authors = [{ name = "Nicolas Vuillamy", email = "nicolas.vuillamy@gmail.com" }]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: Implementation :: CPython",
+]
+dependencies = [
+  "azure-devops==6.0.0b4",
+  "commentjson",
+  "gitpython",
+  "importlib-metadata>=3.10",
+  "jsonpickle",
+  "multiprocessing_logging",
+  "pychalk",
+  "pygithub",
+  "pytablewriter",
+  "python-gitlab",
+  "pyyaml",
+  "redis",
+  "regex",
+  "requests",
+  "terminaltables",
+  "urllib3",
+]
+
+[project.urls]
+Homepage = "https://megalinter.io/"
+Documentation = "https://megalinter.io/"
+Repository = "https://github.com/oxsecurity/megalinter.git"
+Source = "https://github.com/oxsecurity/megalinter"
+Issues = "https://github.com/oxsecurity/megalinter/issues"
+Changelog = "https://github.com/oxsecurity/megalinter/blob/main/CHANGELOG.md"
+
+[tool.hatch.version]
+path = "megalinter/__about__.py"
+
+[tool.hatch.envs.types]
+extra-dependencies = ["mypy>=1.0.0"]
+[tool.hatch.envs.types.scripts]
+check = "mypy --install-types --non-interactive {args:src/megalinter tests}"
+
+[tool.coverage.run]
+source_pkgs = ["megalinter", "tests"]
+branch = true
+parallel = true
+omit = ["megalinter/__about__.py"]
+
+[tool.coverage.paths]
+megalinter = ["megalinter", "*/megalinter/megalinter"]
+tests = [".automation/tests", "*/megalinter/tests"]
+
+[tool.coverage.report]
+exclude_lines = ["no cov", "if __name__ == .__main__.:", "if TYPE_CHECKING:"]
