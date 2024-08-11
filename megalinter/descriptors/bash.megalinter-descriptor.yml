@@ -81,7 +81,7 @@ linters:
         - |-
           # renovate: datasource=docker depName=koalaman/shellcheck
           ARG BASH_SHELLCHECK_VERSION=v0.10.0
-        - FROM koalaman/shellcheck:${BASH_SHELLCHECK_VERSION} as shellcheck
+        - FROM koalaman/shellcheck:${BASH_SHELLCHECK_VERSION} AS shellcheck
         - COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
     ide:
       atom:
@@ -127,7 +127,7 @@ linters:
       - "shfmt -w myfile.sh" # Fix
     install:
       dockerfile:
-        - FROM mvdan/shfmt:latest-alpine as shfmt
+        - FROM mvdan/shfmt:latest-alpine AS shfmt
         - COPY --link --from=shfmt /bin/shfmt /usr/bin/
     ide:
       atom:

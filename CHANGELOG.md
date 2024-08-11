@@ -10,12 +10,18 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - New linters
 
+- Removed linters
+  - CSS_SCSSLINT: [Project discontinued and advising to use stylelint](https://github.com/sds/scss-lint#notice-consider-other-tools-before-adopting-scss-lint)
+  - OPENAPI_SPECTRAL: Replaced by [API_SPECTRAL](https://megalinter.io/latest/descriptors/api_spectral/) (same linter but more formats handled)
+  - SQL_SQL_LINT: [Project no longer maintained](https://github.com/joereynolds/sql-lint/issues/262)
+
 - Core
   - Allow to override CLI_LINT_MODE when defined as project
   - Allow to use absolute paths for LINTER_RULES_PATH
 
 - Media
   - [MegaLinter: un linter pour les gouverner tous](https://blog.wescale.fr/megalinter-un-linter-pour-les-gouverner-tous) (FR), by [Guillaume Arnaud](https://www.linkedin.com/in/guillaume-arnaud/) from [WeScale](https://www.wescale.fr/)
+  - [MegaLinter](https://blog.stephane-robert.info/docs/developper/autres-outils/linters/megalinter/), by [Stéphane Robert](https://www.linkedin.com/in/stephanerobert1/), from [3DS OutScale](https://fr.outscale.com/)
 
 - Linters enhancements
 
@@ -24,12 +30,17 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Fixes
   - [terrascan](https://runterrascan.io/) fixed errors and removed redundant code
   - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) various performance improvements and ability to specify sln or proj paths
+  - [swiftlint](https://github.com/realm/SwiftLint) Remove deprecated argument --path
 
 - Doc
 
 - Flavors
 
 - CI
+  - Fix docker warnings
+    - FromAsCasing: 'as' and 'FROM' keywords' casing do not match
+    - NoEmptyContinuation: Empty continuation line
+    - SecretsUsedInArgOrEnv: Do not use ARG or ENV instructions for sensitive data
 
 - Linter versions upgrades
   - [protolint](https://github.com/yoheimuta/protolint) from 0.50.2 to **0.50.3** on 2024-07-07
@@ -130,6 +141,23 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.13.0 to **8.13.1** on 2024-08-02
   - [v8r](https://github.com/chris48s/v8r) from 3.1.0 to **3.1.1** on 2024-08-03
   - [protolint](https://github.com/yoheimuta/protolint) from 0.50.3 to **0.50.4** on 2024-08-03
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.9.3 to **1.9.4** on 2024-08-04
+  - [flake8](https://flake8.pycqa.org) from 7.1.0 to **7.1.1** on 2024-08-04
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.64.1 to **0.66.1** on 2024-08-04
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.9.4 to **1.9.5** on 2024-08-05
+  - [checkov](https://www.checkov.io/) from 3.2.217 to **3.2.219** on 2024-08-05
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.81.4 to **3.81.6** on 2024-08-06
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 2.32.0 to **2.33.0** on 2024-08-06
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.9.5 to **1.9.7** on 2024-08-10
+  - [jsonlint](https://github.com/prantlf/jsonlint) from 14.0.3 to **16.0.0** on 2024-08-10
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.61.1 to **3.62.0** on 2024-08-10
+  - [phpstan](https://phpstan.org/) from 1.11.9 to **1.11.10** on 2024-08-10
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.374 to **1.1.375** on 2024-08-10
+  - [ruff](https://github.com/astral-sh/ruff) from 0.5.6 to **0.5.7** on 2024-08-10
+  - [grype](https://github.com/anchore/grype) from 0.79.4 to **0.79.5** on 2024-08-10
+  - [syft](https://github.com/anchore/syft) from 1.10.0 to **1.11.0** on 2024-08-10
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.13.1 to **8.13.2** on 2024-08-10
+  - [swiftlint](https://github.com/realm/SwiftLint) from 0.55.1 to **0.56.1** on 2024-08-10
 <!-- linter-versions-end -->
 
 ## [v7.13.0] - 2024-07-06

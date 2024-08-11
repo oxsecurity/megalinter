@@ -33,9 +33,6 @@ FROM python:3.12.4-alpine3.20
 
 #ARG__END
 
-# Static args
-ARG GITHUB_TOKEN
-
 ####################
 # Run APK installs #
 ####################
@@ -133,7 +130,7 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 # VBDOTNET installation
 RUN apk add --no-cache dotnet8-sdk
 ENV PATH="${PATH}:/root/.dotnet/tools"
-
+#
 #OTHER__END
 
 ################################

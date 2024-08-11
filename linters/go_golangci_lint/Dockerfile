@@ -33,9 +33,6 @@ FROM python:3.12.4-alpine3.20
 
 #ARG__END
 
-# Static args
-ARG GITHUB_TOKEN
-
 ####################
 # Run APK installs #
 ####################
@@ -135,7 +132,7 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 RUN wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh \
     && golangci-lint --version
 
-
+#
 #OTHER__END
 
 ################################

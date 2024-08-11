@@ -33,9 +33,6 @@ FROM python:3.12.4-alpine3.20
 
 #ARG__END
 
-# Static args
-ARG GITHUB_TOKEN
-
 ####################
 # Run APK installs #
 ####################
@@ -133,10 +130,10 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 # CSHARP installation
 RUN apk add --no-cache dotnet8-sdk
 ENV PATH="${PATH}:/root/.dotnet/tools"
-
+#
 # roslynator installation
 RUN dotnet tool install -g roslynator.dotnet.cli
-
+#
 #OTHER__END
 
 ################################

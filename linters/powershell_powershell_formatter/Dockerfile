@@ -35,9 +35,6 @@ ARG PSSA_VERSION='1.22.0'
 
 #ARG__END
 
-# Static args
-ARG GITHUB_TOKEN
-
 ####################
 # Run APK installs #
 ####################
@@ -139,10 +136,10 @@ RUN curl -L https://github.com/PowerShell/PowerShell/releases/download/v7.4.2/po
     && tar zxf /tmp/powershell.tar.gz -C /opt/microsoft/powershell/7 \
     && chmod +x /opt/microsoft/powershell/7/pwsh \
     && ln -s /opt/microsoft/powershell/7/pwsh /usr/bin/pwsh \
-
+#
 # powershell_formatter installation
     && pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSION} -Scope AllUsers -Force'
-
+#
 #OTHER__END
 
 ################################

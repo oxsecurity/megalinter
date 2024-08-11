@@ -79,11 +79,11 @@ linters:
     downgraded_reason: building fails in https://github.com/oxsecurity/megalinter/pull/3802
     install:
       dockerfile:
-        ## Until "FROM ghcr.io/mgechev/revive:1.2.5 as revive" is available, use
-        # - FROM ghcr.io/mgechev/revive:1.2.5 as revive
+        ## Until "FROM ghcr.io/mgechev/revive:1.2.5 AS revive" is available, use
+        # - FROM ghcr.io/mgechev/revive:1.2.5 AS revive
         # - COPY --link --from=revive /usr/bin/revive /usr/bin/revive
         - |-
-          FROM golang:1-alpine as revive
+          FROM golang:1-alpine AS revive
           ## The golang image used as a builder is a temporary workaround (https://github.com/mgechev/revive/issues/787)
           ## for the released revive binaries not returning version numbers (devel). 
           ## The install command should then be what is commented in the go.megalinter-descriptor.yml
