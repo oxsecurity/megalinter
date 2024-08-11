@@ -50,6 +50,25 @@ path = "megalinter/__about__.py"
 [tool.hatch.envs.default]
 installer = "uv"
 
+[tool.hatch.envs.docs]
+dependencies = [
+  "mkdocs",
+  "markdown",
+  "mike",
+  "mkdocs-material",
+  "pymdown-extensions",
+  "mkdocs-glightbox==0.3.2",
+  "mdx_truly_sane_lists",
+  "jsonschema",
+  "json-schema-for-humans",
+  "giturlparse",
+  "webpreview",
+  "github-dependents-info",
+]
+[tool.hatch.envs.docs.scripts]
+build = "mkdocs build --clean --strict"
+serve = "mkdocs serve --dev-addr localhost:8000"
+
 [tool.hatch.envs.types]
 extra-dependencies = ["mypy>=1.0.0"]
 [tool.hatch.envs.types.scripts]
