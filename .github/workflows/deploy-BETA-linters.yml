@@ -172,7 +172,7 @@ jobs:
             "yaml_yamllint",
             "yaml_v8r",
           ]
-        # linters-end
+# linters-end
         platform: ["linux/amd64"]
     # Only run this on the main repo
     if: >-

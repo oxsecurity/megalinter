@@ -73,7 +73,7 @@ jobs:
             "swift",
             "terraform",
           ]
-        # flavors-end
+# flavors-end
         platform: ["linux/amd64"]
     # Only run this on the main repo
     if: >-
