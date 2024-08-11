@@ -1370,13 +1370,6 @@
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/sql_sql_lint/">
-<span class="md-ellipsis">
-    sql-lint
-  </span>
-</a>
-</li>
-<li class="md-nav__item">
 <a class="md-nav__link" href="../descriptors/sql_sqlfluff/">
 <span class="md-ellipsis">
     sqlfluff
@@ -1580,13 +1573,6 @@
 <a class="md-nav__link" href="../descriptors/css_stylelint/">
 <span class="md-ellipsis">
     stylelint
-  </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/css_scss_lint/">
-<span class="md-ellipsis">
-    scss-lint
   </span>
 </a>
 </li>
@@ -2353,13 +2339,6 @@
 <a class="md-nav__link" href="../descriptors/openapi/">
 <span class="md-ellipsis">
     All OPENAPI linters
-  </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/openapi_spectral/">
-<span class="md-ellipsis">
-    spectral
   </span>
 </a>
 </li>
@@ -5104,6 +5083,14 @@
 <p>Note: Can be used with <code>oxsecurity/megalinter@beta</code> in your GitHub Action mega-linter.yml file, or with <code>oxsecurity/megalinter:beta</code> docker image</p>
 <ul>
 <li>New linters</li>
+</ul>
+<ul>
+<li>Removed linters<ul>
+<li>CSS_SCSSLINT: <a href="https://github.com/sds/scss-lint#notice-consider-other-tools-before-adopting-scss-lint">Project discontinued and advising to use stylelint</a></li>
+<li>OPENAPI_SPECTRAL: Replaced by <a href="https://megalinter.io/latest/descriptors/api_spectral/">API_SPECTRAL</a> (same linter but more formats handled)</li>
+<li>SQL_SQL_LINT: <a href="https://github.com/joereynolds/sql-lint/issues/262">Project no longer maintained</a></li>
+</ul>
+</li>
 </ul>
 <ul>
 <li>Core<ul>

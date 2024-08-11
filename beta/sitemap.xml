@@ -411,11 +411,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://megalinter.io/beta/descriptors/css_scss_lint/</loc>
-         <lastmod>2024-08-11</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://megalinter.io/beta/descriptors/css_stylelint/</loc>
          <lastmod>2024-08-11</lastmod>
          <changefreq>daily</changefreq>
@@ -702,11 +697,6 @@
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/openapi/</loc>
-         <lastmod>2024-08-11</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://megalinter.io/beta/descriptors/openapi_spectral/</loc>
          <lastmod>2024-08-11</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -1052,11 +1042,6 @@
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/sql/</loc>
-         <lastmod>2024-08-11</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://megalinter.io/beta/descriptors/sql_sql_lint/</loc>
          <lastmod>2024-08-11</lastmod>
          <changefreq>daily</changefreq>
     </url>
