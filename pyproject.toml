@@ -47,6 +47,9 @@ Changelog = "https://github.com/oxsecurity/megalinter/blob/main/CHANGELOG.md"
 [tool.hatch.version]
 path = "megalinter/__about__.py"
 
+[tool.hatch.envs.default]
+installer = "uv"
+
 [tool.hatch.envs.types]
 extra-dependencies = ["mypy>=1.0.0"]
 [tool.hatch.envs.types.scripts]
