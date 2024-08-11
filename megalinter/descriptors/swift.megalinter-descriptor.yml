@@ -19,7 +19,6 @@ linters:
     cli_lint_extra_args:
       - "lint"
     cli_lint_extra_args_after:
-      - "--path"
       - "/tmp/lint"
       - "--strict"
     cli_lint_fix_arg_name: "--fix"

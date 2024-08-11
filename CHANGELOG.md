@@ -25,6 +25,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Fixes
   - [terrascan](https://runterrascan.io/) fixed errors and removed redundant code
   - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) various performance improvements and ability to specify sln or proj paths
+  - [swiftlint](https://github.com/realm/SwiftLint) Remove deprecated argument --path
 
 - Doc
 
