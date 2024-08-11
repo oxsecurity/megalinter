@@ -69,4 +69,5 @@ tests = [".automation/test", "*/megalinter/tests"]
 exclude_lines = ["no cov", "if __name__ == .__main__.:", "if TYPE_CHECKING:"]
 
 [tool.ruff]
+src = ["megalinter"]
 extend-exclude = [".automation/test"]
