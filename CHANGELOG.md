@@ -12,7 +12,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Removed linters
   - CSS_SCSSLINT: [Project discontinued and advising to use stylelint](https://github.com/sds/scss-lint#notice-consider-other-tools-before-adopting-scss-lint)
-  - OPENAPI_SPECTRAL: Replaced by API_SPECTRAL (same linter but more formats handled)
+  - OPENAPI_SPECTRAL: Replaced by [API_SPECTRAL](https://megalinter.io/latest/descriptors/api_spectral/) (same linter but more formats handled)
   - SQL_SQL_LINT: [Project no longer maintained](https://github.com/joereynolds/sql-lint/issues/262)
 
 - Core
