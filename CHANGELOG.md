@@ -43,6 +43,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - NoEmptyContinuation: Empty continuation line
     - SecretsUsedInArgOrEnv: Do not use ARG or ENV instructions for sensitive data
     - Port Beta workflows to use docker/metadata-action, by @echoix
+  - AutoUpdate linters: Always create a PR if the job has been started manually
 
 - Linter versions upgrades
   - [protolint](https://github.com/yoheimuta/protolint) from 0.50.2 to **0.50.3** on 2024-07-07
