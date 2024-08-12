@@ -18,6 +18,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Core
   - Allow to override CLI_LINT_MODE when defined as project
   - Allow to use absolute paths for LINTER_RULES_PATH
+  - Allow to update variables from [PRE/POST Commands](https://megalinter.io/latest/config-precommands/) using `output_variables` property
 
 - Media
   - [MegaLinter: un linter pour les gouverner tous](https://blog.wescale.fr/megalinter-un-linter-pour-les-gouverner-tous) (FR), by [Guillaume Arnaud](https://www.linkedin.com/in/guillaume-arnaud/) from [WeScale](https://www.wescale.fr/)
@@ -41,6 +42,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - FromAsCasing: 'as' and 'FROM' keywords' casing do not match
     - NoEmptyContinuation: Empty continuation line
     - SecretsUsedInArgOrEnv: Do not use ARG or ENV instructions for sensitive data
+    - Port Beta workflows to use docker/metadata-action, by @echoix
+  - AutoUpdate linters: Always create a PR if the job has been started manually
 
 - Linter versions upgrades
   - [protolint](https://github.com/yoheimuta/protolint) from 0.50.2 to **0.50.3** on 2024-07-07
@@ -158,6 +161,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [syft](https://github.com/anchore/syft) from 1.10.0 to **1.11.0** on 2024-08-10
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.13.1 to **8.13.2** on 2024-08-10
   - [swiftlint](https://github.com/realm/SwiftLint) from 0.55.1 to **0.56.1** on 2024-08-10
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.50.4 to **0.50.5** on 2024-08-11
+  - [kics](https://www.kics.io) from 2.1.1 to **2.1.2** on 2024-08-11
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.81.6 to **3.81.8** on 2024-08-11
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.9.3 to **1.9.4** on 2024-08-11
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.66.1 to **0.66.3** on 2024-08-11
 <!-- linter-versions-end -->
 
 ## [v7.13.0] - 2024-07-06

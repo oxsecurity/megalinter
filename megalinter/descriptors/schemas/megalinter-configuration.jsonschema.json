@@ -15,7 +15,7 @@
           "type": "string"
         },
         "continue_if_failed": {
-          "Description": "If command fails, continue MegaLinter process or not",
+          "description": "If command fails, continue MegaLinter process or not",
           "default": true,
           "title": "Continue if failed",
           "type": "boolean"
@@ -30,6 +30,27 @@
             "workspace"
           ],
           "title": "Folder where to run the command",
+          "type": "string"
+        },
+        "output_variables": {
+          "description": "ENV variables to get from output after running the commands, and store in MegaLinter ENV context",
+          "title": "Output ENV variables",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "secured_env": {
+          "description": "Apply filter of secured env variables before calling the command (default true). Be careful if you disable it.",
+          "default": true,
+          "title": "Secured ENV variables",
+          "type": "boolean"
+        },
+        "venv": {
+          "examples": [
+            "flake8"
+          ],
+          "title": "Name of the python venv to run the command in.",
           "type": "string"
         }
       },
@@ -74,7 +95,6 @@
         "LUA",
         "MAKEFILE",
         "MARKDOWN",
-        "OPENAPI",
         "PERL",
         "PHP",
         "POWERSHELL",
@@ -124,7 +144,6 @@
         "CSHARP_CSHARPIER",
         "CSHARP_DOTNET_FORMAT",
         "CSHARP_ROSLYNATOR",
-        "CSS_SCSS_LINT",
         "CSS_STYLELINT",
         "C_CLANG_FORMAT",
         "C_CPPLINT",
@@ -165,7 +184,6 @@
         "MARKDOWN_MARKDOWN_LINK_CHECK",
         "MARKDOWN_MARKDOWN_TABLE_FORMATTER",
         "MARKDOWN_REMARK_LINT",
-        "OPENAPI_SPECTRAL",
         "PERL_PERLCRITIC",
         "PHP_BUILTIN",
         "PHP_PHPCS",
@@ -220,7 +238,6 @@
         "SPELL_PROSELINT",
         "SPELL_VALE",
         "SQL_SQLFLUFF",
-        "SQL_SQL_LINT",
         "SQL_TSQLLINT",
         "SWIFT_SWIFTLINT",
         "TEKTON_TEKTON_LINT",
