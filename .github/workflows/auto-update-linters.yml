@@ -131,7 +131,7 @@ jobs:
           title: "[automation] Auto-update linters version, help and documentation"
           body: "[automation] Auto-update linters version, help and documentation"
           labels: dependencies,automerge
-      - name: d*isplay Pull Request Info
+      - name: Display Pull Request Info
         if: (github.event_name == 'workflow_dispatch' || steps.compute_versions.outputs.has_updated_versions == 1)
         run: |
           echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
