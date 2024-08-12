@@ -12,6 +12,7 @@ import yaml
 RUN_CONFIGS = {}  # type: ignore[var-annotated]
 SKIP_DELETE_CONFIG = False
 
+
 def init_config(request_id, workspace=None, params={}):
     global RUN_CONFIGS
     if request_id in RUN_CONFIGS:
