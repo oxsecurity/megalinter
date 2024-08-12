@@ -166,6 +166,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.81.6 to **3.81.8** on 2024-08-11
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.9.3 to **1.9.4** on 2024-08-11
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.66.1 to **0.66.3** on 2024-08-11
+  - [checkov](https://www.checkov.io/) from 3.2.219 to **3.2.220** on 2024-08-12
 <!-- linter-versions-end -->
 
 ## [v7.13.0] - 2024-07-06
