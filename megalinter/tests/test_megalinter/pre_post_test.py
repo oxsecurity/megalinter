@@ -25,6 +25,7 @@ class PrePostTest(unittest.TestCase):
         )
 
     def test_pre_post_success(self):
+        config.SKIP_DELETE_CONFIG = True
         mega_linter, output = utilstest.call_mega_linter(
             {
                 "MULTI_STATUS": "false",
@@ -62,3 +63,5 @@ class PrePostTest(unittest.TestCase):
             == "my output linter variable value2",
             "MY_OUTPUT_LINTER_VARIABLE2 should be found",
         )
+        config.SKIP_DELETE_CONFIG = False
+        config.delete(self.request_id)
