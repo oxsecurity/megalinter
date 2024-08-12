@@ -118,10 +118,10 @@ jobs:
             docs
             megalinter-reports
 
-      # Create pull request if there are updates
+      # Create pull request if there are updates or if the workflow has been launched manually
       - name: Create Pull Request
         id: cpr
-        if: steps.compute_versions.outputs.has_updated_versions == 1
+        if: (github.event_name == 'workflow_dispatch' || steps.compute_versions.outputs.has_updated_versions == 1)
         uses: peter-evans/create-pull-request@v6
         with:
           token: ${{ secrets.PAT || secrets.GITHUB_TOKEN  }}
@@ -131,7 +131,8 @@ jobs:
           title: "[automation] Auto-update linters version, help and documentation"
           body: "[automation] Auto-update linters version, help and documentation"
           labels: dependencies,automerge
-      - name: Create PR output
+      - name: d*isplay Pull Request Info
+        if: (github.event_name == 'workflow_dispatch' || steps.compute_versions.outputs.has_updated_versions == 1)
         run: |
           echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
           echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
