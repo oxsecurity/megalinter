@@ -10,6 +10,7 @@ import requests
 import yaml
 
 RUN_CONFIGS = {}  # type: ignore[var-annotated]
+SKIP_DELETE_CONFIG = False
 
 
 def init_config(request_id, workspace=None, params={}):
@@ -264,13 +265,15 @@ def copy(request_id):
 
 def delete(request_id=None, key=None):
     global RUN_CONFIGS
+    global SKIP_DELETE_CONFIG
     # Global delete (used for tests)
     if request_id is None:
         RUN_CONFIGS = {}
         return
     if key is None:
-        del RUN_CONFIGS[request_id]
-        logging.debug("Cleared MegaLinter runtime config for request " + request_id)
+        if SKIP_DELETE_CONFIG is not True:
+            del RUN_CONFIGS[request_id]
+            logging.debug("Cleared MegaLinter runtime config for request " + request_id)
         return
     config = get_config(request_id)
     if key in config:
