@@ -167,6 +167,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.9.3 to **1.9.4** on 2024-08-11
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.66.1 to **0.66.3** on 2024-08-11
   - [checkov](https://www.checkov.io/) from 3.2.219 to **3.2.220** on 2024-08-12
+  - [checkov](https://www.checkov.io/) from 3.2.220 to **3.2.221** on 2024-08-12
+  - [grype](https://github.com/anchore/grype) from 0.79.5 to **0.79.6** on 2024-08-12
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.13.2 to **8.13.3** on 2024-08-12
 <!-- linter-versions-end -->
 
 ## [v7.13.0] - 2024-07-06
