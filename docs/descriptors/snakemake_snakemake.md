@@ -15,7 +15,7 @@ description: How to use snakemake (configure, ignore files, ignore errors, help 
 
 ## snakemake documentation
 
-- Version in MegaLinter: **8.16.0**
+- Version in MegaLinter: **8.17.0**
 - Visit [Official Web Site](https://snakemake.readthedocs.io/en/stable/){target=_blank}
 
 [![snakemake - GitHub](https://gh-card.dev/repos/snakemake/snakemake.svg?fullname=)](https://github.com/snakemake/snakemake){target=_blank}
@@ -120,7 +120,6 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--wms-monitor [WMS_MONITOR]]
                  [--wms-monitor-arg [NAME=VALUE ...]]
                  [--scheduler-ilp-solver {PULP_CBC_CMD}]
-                 [--scheduler-solver-path SCHEDULER_SOLVER_PATH]
                  [--conda-base-path CONDA_BASE_PATH] [--no-subworkflows]
                  [--precommand PRECOMMAND] [--groups GROUPS [GROUPS ...]]
                  [--group-components GROUP_COMPONENTS [GROUP_COMPONENTS ...]]
@@ -133,11 +132,10 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--d3dag] [--summary] [--detailed-summary] [--archive FILE]
                  [--cleanup-metadata FILE [FILE ...]] [--cleanup-shadow]
                  [--skip-script-cleanup] [--unlock]
-                 [--list-changes {code,params,input}] [--list-input-changes]
+                 [--list-changes {params,input,code}] [--list-input-changes]
                  [--list-params-changes] [--list-untracked]
                  [--delete-all-output | --delete-temp-output]
-                 [--keep-incomplete] [--drop-metadata]
-                 [--deploy-sources QUERY CHECKSUM] [--version]
+                 [--keep-incomplete] [--drop-metadata] [--version]
                  [--printshellcmds] [--debug-dag] [--nocolor]
                  [--quiet [{all,progress,rules} ...]] [--print-compilation]
                  [--verbose] [--force-use-threads] [--allow-ambiguity]
@@ -149,13 +147,11 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--keep-storage-local-copies]
                  [--target-files-omit-workdir-adjustment]
                  [--allowed-rules ALLOWED_RULES [ALLOWED_RULES ...]]
-                 [--target-jobs TARGET_JOBS [TARGET_JOBS ...]]
-                 [--local-groupid LOCAL_GROUPID]
+                 [--max-jobs-per-timespan MAX_JOBS_PER_TIMESPAN]
                  [--max-jobs-per-second MAX_JOBS_PER_SECOND]
                  [--max-status-checks-per-second MAX_STATUS_CHECKS_PER_SECOND]
                  [--seconds-between-status-checks SECONDS_BETWEEN_STATUS_CHECKS]
-                 [--retries RETRIES] [--attempt ATTEMPT]
-                 [--wrapper-prefix WRAPPER_PREFIX]
+                 [--retries RETRIES] [--wrapper-prefix WRAPPER_PREFIX]
                  [--default-storage-provider DEFAULT_STORAGE_PROVIDER]
                  [--default-storage-prefix DEFAULT_STORAGE_PREFIX]
                  [--local-storage-prefix LOCAL_STORAGE_PREFIX]
@@ -163,11 +159,12 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--shared-fs-usage {input-output,persistence,software-deployment,source-cache,sources,storage-local-copies,none} [{input-output,persistence,software-deployment,source-cache,sources,storage-local-copies,none} ...]]
                  [--scheduler-greediness SCHEDULER_GREEDINESS] [--no-hooks]
                  [--debug] [--runtime-profile FILE]
-                 [--mode {subprocess,default,remote}] [--show-failed-logs]
-                 [--log-handler-script FILE] [--log-service {none,slack,wms}]
-                 [--job-deploy-sources] [--benchmark-extended]
-                 [--container-image IMAGE] [--immediate-submit]
-                 [--jobscript SCRIPT] [--jobname NAME] [--flux]
+                 [--local-groupid LOCAL_GROUPID] [--attempt ATTEMPT]
+                 [--show-failed-logs] [--log-handler-script FILE]
+                 [--log-service {none,slack,wms}] [--job-deploy-sources]
+                 [--benchmark-extended] [--container-image IMAGE]
+                 [--immediate-submit] [--jobscript SCRIPT] [--jobname NAME]
+                 [--flux]
                  [--software-deployment-method {apptainer,conda,env-modules} [{apptainer,conda,env-modules} ...]]
                  [--container-cleanup-images] [--use-conda]
                  [--conda-not-block-search-path-envvars] [--list-conda-envs]
@@ -176,6 +173,10 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--conda-create-envs-only] [--conda-frontend {conda,mamba}]
                  [--use-apptainer] [--apptainer-prefix DIR]
                  [--apptainer-args ARGS] [--use-envmodules]
+                 [--scheduler-solver-path SCHEDULER_SOLVER_PATH]
+                 [--deploy-sources QUERY CHECKSUM]
+                 [--target-jobs TARGET_JOBS [TARGET_JOBS ...]]
+                 [--mode {subprocess,default,remote}]
                  [--report-html-path VALUE]
                  [--report-html-stylesheet-path VALUE]
                  [targets ...]
@@ -401,9 +402,10 @@ EXECUTION:
                         configuration. If you rather prefer the traditional
                         way of just considering file modification dates, use '
                         --rerun-trigger mtime'. (default:
-                        frozenset({<RerunTrigger.MTIME: 0>,
-                        <RerunTrigger.PARAMS: 1>, <RerunTrigger.SOFTWARE_ENV:
-                        3>, <RerunTrigger.CODE: 4>, <RerunTrigger.INPUT: 2>}))
+                        frozenset({<RerunTrigger.INPUT: 2>,
+                        <RerunTrigger.MTIME: 0>, <RerunTrigger.PARAMS: 1>,
+                        <RerunTrigger.CODE: 4>, <RerunTrigger.SOFTWARE_ENV:
+                        3>}))
   --force, -f           Force the execution of the selected target or the
                         first rule regardless of already created output.
                         (default: False)
@@ -470,9 +472,6 @@ EXECUTION:
   --scheduler-ilp-solver {PULP_CBC_CMD}
                         Specifies solver to be utilized when selecting ilp-
                         scheduler. (default: COIN_CMD)
-  --scheduler-solver-path SCHEDULER_SOLVER_PATH
-                        Set the PATH to search for scheduler solver binaries
-                        (internal use only).
   --conda-base-path CONDA_BASE_PATH
                         Path of conda base installation (home of conda, mamba,
                         activate) (internal use only).
@@ -638,7 +637,7 @@ UTILITIES:
                         (default: False)
   --unlock              Remove a lock on the working directory. (default:
                         False)
-  --list-changes {code,params,input}, --lc {code,params,input}
+  --list-changes {params,input,code}, --lc {params,input,code}
                         List all output files for which the given items (code,
                         input, params) have changed since creation.
   --list-input-changes, --li
@@ -670,11 +669,6 @@ UTILITIES:
                         finishes. Provenance-information based reports (e.g.
                         --report and the --list_x_changes functions) will be
                         empty or incomplete. (default: False)
-  --deploy-sources QUERY CHECKSUM
-                        Deploy sources archive from given storage provider
-                        query to the current working sdirectory and control
-                        for archive checksum to proceed. Meant for internal
-                        use only.
   --version, -v         show program's version number and exit
 
 OUTPUT:
@@ -755,16 +749,14 @@ BEHAVIOR:
                         Snakefile are used. Note that this is intended
                         primarily for internal use and may lead to unexpected
                         results otherwise.
-  --target-jobs TARGET_JOBS [TARGET_JOBS ...]
-                        Target particular jobs by
-                        RULE:WILDCARD1=VALUE,WILDCARD2=VALUE,... This is meant
-                        for internal use by Snakemake itself only.
-  --local-groupid LOCAL_GROUPID
-                        Name for local groupid, meant for internal use only.
-                        (default: local)
+  --max-jobs-per-timespan MAX_JOBS_PER_TIMESPAN
+                        Maximal number of job submissions/executions per
+                        timespan. Format: <number><timespan>, e.g. 50/1m or
+                        0.5/1s.
   --max-jobs-per-second MAX_JOBS_PER_SECOND
-                        Maximal number of cluster/drmaa jobs per second,
-                        default is 10, fractions allowed. (default: 10)
+                        Maximal number of job submissions/executions per
+                        second. Deprecated in favor of --max-jobs-per-
+                        timespan.
   --max-status-checks-per-second MAX_STATUS_CHECKS_PER_SECOND
                         Maximal number of job status checks per second,
                         default is 10, fractions allowed. (default: 10)
@@ -774,8 +766,6 @@ BEHAVIOR:
   --retries RETRIES, --restart-times RETRIES, -T RETRIES
                         Number of times to restart failing jobs (defaults to
                         0). (default: 0)
-  --attempt ATTEMPT     Internal use only: define the initial value of the
-                        attempt parameter (default: 1). (default: 1)
   --wrapper-prefix WRAPPER_PREFIX
                         Prefix for URL created from wrapper directive
                         (default: https://github.com/snakemake/snakemake-
@@ -827,12 +817,12 @@ BEHAVIOR:
                         and data provenance will be handled by NFS but input
                         and output files will be handled exclusively by the
                         storage provider. (default:
-                        frozenset({<SharedFSUsage.PERSISTENCE: 0>,
-                        <SharedFSUsage.SOURCE_CACHE: 5>,
+                        frozenset({<SharedFSUsage.INPUT_OUTPUT: 1>,
                         <SharedFSUsage.SOFTWARE_DEPLOYMENT: 2>,
-                        <SharedFSUsage.STORAGE_LOCAL_COPIES: 4>,
-                        <SharedFSUsage.INPUT_OUTPUT: 1>,
-                        <SharedFSUsage.SOURCES: 3>}))
+                        <SharedFSUsage.PERSISTENCE: 0>,
+                        <SharedFSUsage.SOURCES: 3>,
+                        <SharedFSUsage.SOURCE_CACHE: 5>,
+                        <SharedFSUsage.STORAGE_LOCAL_COPIES: 4>}))
   --scheduler-greediness SCHEDULER_GREEDINESS, --greediness SCHEDULER_GREEDINESS
                         Set the greediness of scheduling. This value between 0
                         and 1 determines how careful jobs are selected for
@@ -845,9 +835,11 @@ BEHAVIOR:
   --runtime-profile FILE
                         Profile Snakemake and write the output to FILE. This
                         requires yappi to be installed.
-  --mode {subprocess,default,remote}
-                        Set execution mode of Snakemake (internal use only).
-                        (default: default)
+  --local-groupid LOCAL_GROUPID
+                        Internal use only: Name for local groupid. (default:
+                        local)
+  --attempt ATTEMPT     Internal use only: define the initial value of the
+                        attempt parameter (default: 1). (default: 1)
   --show-failed-logs    Automatically display logs of failed jobs. (default:
                         False)
   --log-handler-script FILE
@@ -878,7 +870,7 @@ REMOTE EXECUTION:
                         contain a working snakemake installation that is
                         compatible with (or ideally the same as) the currently
                         running version. (default:
-                        snakemake/snakemake:v8.16.0)
+                        snakemake/snakemake:v8.17.0)
   --immediate-submit, --is
                         Immediately submit all jobs to the cluster instead of
                         waiting for present input files. This will fail,
@@ -987,6 +979,22 @@ ENVIRONMENT MODULES:
                         singularity, which will then be only used as a
                         fallback for rules which don't define environment
                         modules. (default: False)
+
+INTERNAL:
+  --scheduler-solver-path SCHEDULER_SOLVER_PATH
+                        Internal use only: Set the PATH to search for
+                        scheduler solver binaries.
+  --deploy-sources QUERY CHECKSUM
+                        Internal use only: Deploy sources archive from given
+                        storage provider query to the current working
+                        subdirectory and control for archive checksum to
+                        proceed.
+  --target-jobs TARGET_JOBS [TARGET_JOBS ...]
+                        Internal use only: Target particular jobs by
+                        RULE:WILDCARD1=VALUE,WILDCARD2=VALUE,...
+  --mode {subprocess,default,remote}
+                        Internal use only: Set execution mode of Snakemake.
+                        (default: default)
 
 html executor settings:
   --report-html-path VALUE
