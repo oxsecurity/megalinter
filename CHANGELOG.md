@@ -172,6 +172,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.13.2 to **8.13.3** on 2024-08-12
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.9.7 to **1.10.0** on 2024-08-13
   - [checkov](https://www.checkov.io/) from 3.2.221 to **3.2.222** on 2024-08-13
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.10.0 to **1.10.1** on 2024-08-13
+  - [checkov](https://www.checkov.io/) from 3.2.222 to **3.2.223** on 2024-08-13
+  - [grype](https://github.com/anchore/grype) from 0.79.6 to **0.79.5** on 2024-08-13
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.16.0 to **8.17.0** on 2024-08-13
 <!-- linter-versions-end -->
 
 ## [v7.13.0] - 2024-07-06

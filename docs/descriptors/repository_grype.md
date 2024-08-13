@@ -11,11 +11,11 @@ description: How to use grype (configure, ignore files, ignore errors, help & ve
   </a>
 </div>
 
-[![GitHub stars](https://img.shields.io/github/stars/anchore/grype?cacheSeconds=3600)](https://github.com/anchore/grype) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/anchore/grype?sort=semver)](https://github.com/anchore/grype/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/anchore/grype)](https://github.com/anchore/grype/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/anchore/grype)](https://github.com/anchore/grype/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/anchore/grype)](https://github.com/anchore/grype/graphs/contributors/)
+![downgraded version](https://shields.io/badge/-downgraded%20version-orange) [![GitHub stars](https://img.shields.io/github/stars/anchore/grype?cacheSeconds=3600)](https://github.com/anchore/grype) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/anchore/grype?sort=semver)](https://github.com/anchore/grype/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/anchore/grype)](https://github.com/anchore/grype/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/anchore/grype)](https://github.com/anchore/grype/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/anchore/grype)](https://github.com/anchore/grype/graphs/contributors/)
 
 ## grype documentation
 
-- Version in MegaLinter: **0.79.6**
+- Version in MegaLinter: **0.79.5**
 - Visit [Official Web Site](https://github.com/anchore/grype#readme){target=_blank}
 - See [How to configure grype rules](https://github.com/anchore/grype#configuration){target=_blank}
   - If custom `.grype.yaml` config file isn't found, [.grype.yaml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.grype.yaml){target=_blank} will be used
@@ -155,6 +155,6 @@ Use "grype [command] --help" for more information about a command.
 
 - Dockerfile commands :
 ```dockerfile
-RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin
+RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin v0.79.5
 ```
 
