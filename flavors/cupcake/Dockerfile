@@ -107,6 +107,7 @@ RUN apk add --no-cache \
                 openssh \
                 docker \
                 openrc \
+                go \
                 openjdk21 \
                 gnupg \
                 php83 \
@@ -126,7 +127,6 @@ RUN apk add --no-cache \
                 nodejs \
                 npm \
                 yarn \
-                go \
                 openjdk17 \
                 helm \
                 gcompat \

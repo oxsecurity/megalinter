@@ -1,6 +1,7 @@
 {
     "descriptors": [
         "BASH",
+        "GO",
         "KOTLIN"
     ],
     "label": "Optimized for GO based projects",

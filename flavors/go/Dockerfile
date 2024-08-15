@@ -94,12 +94,12 @@ RUN apk add --no-cache \
                 make \
                 musl-dev \
                 openssh \
+                go \
                 openjdk21 \
                 py3-pyflakes \
                 nodejs \
                 npm \
                 yarn \
-                go \
                 openjdk17 \
                 helm \
                 gcompat \

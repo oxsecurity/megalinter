@@ -136,6 +136,7 @@ RUN apk add --no-cache \
                 docker \
                 openrc \
                 icu-libs \
+                go \
                 openjdk21 \
                 perl \
                 perl-dev \
@@ -158,7 +159,6 @@ RUN apk add --no-cache \
                 nodejs \
                 npm \
                 yarn \
-                go \
                 openjdk17 \
                 helm \
                 gcompat \

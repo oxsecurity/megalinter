@@ -95,6 +95,7 @@
         "descriptors": [
             "BASH",
             "CLOJURE",
+            "GO",
             "JAVA",
             "KOTLIN",
             "PHP",
@@ -435,6 +436,7 @@
     "go": {
         "descriptors": [
             "BASH",
+            "GO",
             "KOTLIN"
         ],
         "label": "Optimized for GO based projects",
