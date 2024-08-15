@@ -19,7 +19,7 @@ ARG DOCKERFILE_HADOLINT_VERSION=v2.12.0-alpine
 # renovate: datasource=docker depName=zricethezav/gitleaks
 ARG REPOSITORY_GITLEAKS_VERSION=v8.18.4
 # renovate: datasource=docker depName=trufflesecurity/trufflehog 
-ARG REPOSITORY_TRUFFLEHOG_VERSION=3.81.8
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.81.9
 #ARGTOP__END
 
 #############################################################################################

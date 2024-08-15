@@ -27,7 +27,7 @@ ARG REPOSITORY_GITLEAKS_VERSION=v8.18.4
 # renovate: datasource=docker depName=checkmarx/kics
 ARG REPOSITORY_KICS_VERSION=v2.1.2-alpine
 # renovate: datasource=docker depName=trufflesecurity/trufflehog 
-ARG REPOSITORY_TRUFFLEHOG_VERSION=3.81.8
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.81.9
 # renovate: datasource=docker depName=ghcr.io/terraform-linters/tflint
 ARG TERRAFORM_TFLINT_VERSION=0.52.0
 # renovate: datasource=docker depName=alpine/terragrunt
