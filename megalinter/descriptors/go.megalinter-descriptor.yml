@@ -5,6 +5,9 @@ descriptor_flavors:
   - go
 file_extensions:
   - ".go"
+install:
+  apk:
+  - go
 test_folder: golang
 linters:
   # GOLANG CI LINT
@@ -26,8 +29,6 @@ linters:
       - "golangci-lint run myfile.go"
       - "golangci-lint run -c .golangci.yml myfile.go"
     install:
-      apk:
-        - go
       dockerfile:
         - |
           RUN wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh \
@@ -75,8 +76,6 @@ linters:
     examples:
       - "revive myfile.go"
       - "revive -config myfile.go"
-    downgraded_version: true
-    downgraded_reason: building fails in https://github.com/oxsecurity/megalinter/pull/3802
     install:
       dockerfile:
         ## Until "FROM ghcr.io/mgechev/revive:1.2.5 AS revive" is available, use
