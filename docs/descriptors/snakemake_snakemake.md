@@ -15,7 +15,7 @@ description: How to use snakemake (configure, ignore files, ignore errors, help 
 
 ## snakemake documentation
 
-- Version in MegaLinter: **8.17.0**
+- Version in MegaLinter: **8.18.0**
 - Visit [Official Web Site](https://snakemake.readthedocs.io/en/stable/){target=_blank}
 
 [![snakemake - GitHub](https://gh-card.dev/repos/snakemake/snakemake.svg?fullname=)](https://github.com/snakemake/snakemake){target=_blank}
@@ -132,7 +132,7 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--d3dag] [--summary] [--detailed-summary] [--archive FILE]
                  [--cleanup-metadata FILE [FILE ...]] [--cleanup-shadow]
                  [--skip-script-cleanup] [--unlock]
-                 [--list-changes {params,input,code}] [--list-input-changes]
+                 [--list-changes {input,code,params}] [--list-input-changes]
                  [--list-params-changes] [--list-untracked]
                  [--delete-all-output | --delete-temp-output]
                  [--keep-incomplete] [--drop-metadata] [--version]
@@ -176,7 +176,7 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--scheduler-solver-path SCHEDULER_SOLVER_PATH]
                  [--deploy-sources QUERY CHECKSUM]
                  [--target-jobs TARGET_JOBS [TARGET_JOBS ...]]
-                 [--mode {subprocess,default,remote}]
+                 [--mode {remote,subprocess,default}]
                  [--report-html-path VALUE]
                  [--report-html-stylesheet-path VALUE]
                  [targets ...]
@@ -402,10 +402,9 @@ EXECUTION:
                         configuration. If you rather prefer the traditional
                         way of just considering file modification dates, use '
                         --rerun-trigger mtime'. (default:
-                        frozenset({<RerunTrigger.INPUT: 2>,
-                        <RerunTrigger.MTIME: 0>, <RerunTrigger.PARAMS: 1>,
-                        <RerunTrigger.CODE: 4>, <RerunTrigger.SOFTWARE_ENV:
-                        3>}))
+                        frozenset({<RerunTrigger.SOFTWARE_ENV: 3>,
+                        <RerunTrigger.PARAMS: 1>, <RerunTrigger.INPUT: 2>,
+                        <RerunTrigger.CODE: 4>, <RerunTrigger.MTIME: 0>}))
   --force, -f           Force the execution of the selected target or the
                         first rule regardless of already created output.
                         (default: False)
@@ -637,7 +636,7 @@ UTILITIES:
                         (default: False)
   --unlock              Remove a lock on the working directory. (default:
                         False)
-  --list-changes {params,input,code}, --lc {params,input,code}
+  --list-changes {input,code,params}, --lc {input,code,params}
                         List all output files for which the given items (code,
                         input, params) have changed since creation.
   --list-input-changes, --li
@@ -817,12 +816,12 @@ BEHAVIOR:
                         and data provenance will be handled by NFS but input
                         and output files will be handled exclusively by the
                         storage provider. (default:
-                        frozenset({<SharedFSUsage.INPUT_OUTPUT: 1>,
-                        <SharedFSUsage.SOFTWARE_DEPLOYMENT: 2>,
-                        <SharedFSUsage.PERSISTENCE: 0>,
+                        frozenset({<SharedFSUsage.PERSISTENCE: 0>,
                         <SharedFSUsage.SOURCES: 3>,
+                        <SharedFSUsage.STORAGE_LOCAL_COPIES: 4>,
                         <SharedFSUsage.SOURCE_CACHE: 5>,
-                        <SharedFSUsage.STORAGE_LOCAL_COPIES: 4>}))
+                        <SharedFSUsage.INPUT_OUTPUT: 1>,
+                        <SharedFSUsage.SOFTWARE_DEPLOYMENT: 2>}))
   --scheduler-greediness SCHEDULER_GREEDINESS, --greediness SCHEDULER_GREEDINESS
                         Set the greediness of scheduling. This value between 0
                         and 1 determines how careful jobs are selected for
@@ -870,7 +869,7 @@ REMOTE EXECUTION:
                         contain a working snakemake installation that is
                         compatible with (or ideally the same as) the currently
                         running version. (default:
-                        snakemake/snakemake:v8.17.0)
+                        snakemake/snakemake:v8.18.0)
   --immediate-submit, --is
                         Immediately submit all jobs to the cluster instead of
                         waiting for present input files. This will fail,
@@ -992,7 +991,7 @@ INTERNAL:
   --target-jobs TARGET_JOBS [TARGET_JOBS ...]
                         Internal use only: Target particular jobs by
                         RULE:WILDCARD1=VALUE,WILDCARD2=VALUE,...
-  --mode {subprocess,default,remote}
+  --mode {remote,subprocess,default}
                         Internal use only: Set execution mode of Snakemake.
                         (default: default)
 
