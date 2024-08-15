@@ -15,8 +15,8 @@
           "type": "string"
         },
         "continue_if_failed": {
-          "description": "If command fails, continue MegaLinter process or not",
           "default": true,
+          "description": "If command fails, continue MegaLinter process or not",
           "title": "Continue if failed",
           "type": "boolean"
         },
@@ -34,15 +34,15 @@
         },
         "output_variables": {
           "description": "ENV variables to get from output after running the commands, and store in MegaLinter ENV context",
-          "title": "Output ENV variables",
           "items": {
             "type": "string"
           },
+          "title": "Output ENV variables",
           "type": "array"
         },
         "secured_env": {
-          "description": "Apply filter of secured env variables before calling the command (default true). Be careful if you disable it.",
           "default": true,
+          "description": "Apply filter of secured env variables before calling the command (default true). Be careful if you disable it.",
           "title": "Secured ENV variables",
           "type": "boolean"
         },

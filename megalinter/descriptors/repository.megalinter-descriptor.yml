@@ -288,9 +288,11 @@ linters:
     cli_version_arg_name: version
     examples:
       - "grype dir:."
+    downgraded_version: true
+    downgraded_reason: Crash for failure test class with https://github.com/anchore/grype/releases/tag/v0.79.6
     install:
       dockerfile:
-        - RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin
+        - RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin v0.79.5
     test_folder: repository_grype
 
   # KICS
