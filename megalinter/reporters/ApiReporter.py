@@ -316,18 +316,18 @@ class ApiReporter(Reporter):
                 logging.info("[Api Reporter Metrics] Using Bearer Token")
         try:
             response = session.post(
-                self.api_metrics_url, headers=headers, json=self.metrics_payload
+                self.api_metrics_url, headers=headers, data=self.metrics_payload
             )
             if 200 <= response.status_code < 300:
                 logging.info(
                     f"[Api Reporter Metrics] Successfully posted data to {self.api_metrics_url}"
                 )
                 if self.is_notif_api_debug_active():
-                    logging.info("[Api Reporter Metrics] " + json.dumps(obj=self.metrics_payload, indent=True))
+                    logging.info("[Api Reporter Metrics] " + self.metrics_payload)
             else:
                 logging.warning(
                     f"[Api Reporter Metrics] Error posting data to {self.api_metrics_url} ({response.status_code})\n"
-                    f"[Api Reporter Metrics] API request: {json.dumps(obj=self.metrics_payload, indent=True)}\n"
+                    f"[Api Reporter Metrics] API request: {self.metrics_payload}\n"
                     f"[Api Reporter Metrics] API response: {response.text}"
                 )
         except ConnectionError as e:
