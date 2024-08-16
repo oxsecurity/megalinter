@@ -221,7 +221,10 @@ class ApiReporter(Reporter):
                     f"[Api Reporter] Successfully posted data to {self.api_url}"
                 )
                 if self.is_notif_api_debug_active():
-                    logging.info("[Api Reporter] " + json.dumps(obj=self.payloadFormatted, indent=True))
+                    logging.info(
+                        "[Api Reporter] "
+                        + json.dumps(obj=self.payloadFormatted, indent=True)
+                    )
             else:
                 logging.warning(
                     f"[Api Reporter] Error posting data to {self.api_url} ({response.status_code})\n"
@@ -345,6 +348,9 @@ class ApiReporter(Reporter):
             )
 
     def is_notif_api_debug_active(self):
-        return config.get_first_var_set(
-                    self.master.request_id, ["API_REPORTER_DEBUG", "NOTIF_API_DEBUG"]
-                ) == "true"
+        return (
+            config.get_first_var_set(
+                self.master.request_id, ["API_REPORTER_DEBUG", "NOTIF_API_DEBUG"]
+            )
+            == "true"
+        )
