@@ -5,6 +5,9 @@ descriptor_flavors:
   - go
 file_extensions:
   - ".go"
+install:
+  apk:
+    - go
 test_folder: golang
 linters:
   # GOLANG CI LINT
@@ -26,8 +29,6 @@ linters:
       - "golangci-lint run myfile.go"
       - "golangci-lint run -c .golangci.yml myfile.go"
     install:
-      apk:
-        - go
       dockerfile:
         - |
           RUN wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh \
@@ -75,8 +76,6 @@ linters:
     examples:
       - "revive myfile.go"
       - "revive -config myfile.go"
-    downgraded_version: true
-    downgraded_reason: building fails in https://github.com/oxsecurity/megalinter/pull/3802
     install:
       dockerfile:
         ## Until "FROM ghcr.io/mgechev/revive:1.2.5 AS revive" is available, use
@@ -88,7 +87,7 @@ linters:
           ## for the released revive binaries not returning version numbers (devel). 
           ## The install command should then be what is commented in the go.megalinter-descriptor.yml
           # renovate: datasource=github-tags depName=mgechev/revive
-          ARG GO_REVIVE_VERSION=v1.3.7
+          ARG GO_REVIVE_VERSION=v1.3.9
           RUN GOBIN=/usr/bin go install github.com/mgechev/revive@$GO_REVIVE_VERSION
         - COPY --link --from=revive /usr/bin/revive /usr/bin/revive
     ide:

@@ -28,7 +28,7 @@ ARG REPOSITORY_GITLEAKS_VERSION=v8.18.4
 # renovate: datasource=docker depName=checkmarx/kics
 ARG REPOSITORY_KICS_VERSION=v2.1.2-alpine
 # renovate: datasource=docker depName=trufflesecurity/trufflehog 
-ARG REPOSITORY_TRUFFLEHOG_VERSION=3.81.8
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.81.9
 # renovate: datasource=docker depName=jdkato/vale
 ARG SPELL_VALE_VERSION=v3.7.0
 # renovate: datasource=docker depName=ghcr.io/terraform-linters/tflint
@@ -56,7 +56,7 @@ FROM golang:1-alpine AS revive
 ## for the released revive binaries not returning version numbers (devel). 
 ## The install command should then be what is commented in the go.megalinter-descriptor.yml
 # renovate: datasource=github-tags depName=mgechev/revive
-ARG GO_REVIVE_VERSION=v1.3.7
+ARG GO_REVIVE_VERSION=v1.3.9
 RUN GOBIN=/usr/bin go install github.com/mgechev/revive@$GO_REVIVE_VERSION
 FROM ghcr.io/yannh/kubeconform:${KUBERNETES_KUBECONFORM_VERSION} AS kubeconform
 FROM ghcr.io/assignuser/chktex-alpine:latest AS chktex
@@ -87,9 +87,9 @@ FROM python:3.12.5-alpine3.20
 # renovate: datasource=npm depName=@salesforce/cli
 ARG SALESFORCE_CLI_VERSION=2.54.6
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
-ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.7.4
+ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.8.0
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=4.52.0
+ARG SFDX_HARDIS_VERSION=4.52.1
 ARG ARM_TTK_NAME='master.zip'
 ARG ARM_TTK_URI='https://github.com/Azure/arm-ttk/archive/master.zip'
 ARG ARM_TTK_DIRECTORY='/opt/microsoft'
@@ -136,6 +136,7 @@ RUN apk add --no-cache \
                 docker \
                 openrc \
                 icu-libs \
+                go \
                 openjdk21 \
                 perl \
                 perl-dev \
@@ -158,7 +159,6 @@ RUN apk add --no-cache \
                 nodejs \
                 npm \
                 yarn \
-                go \
                 openjdk17 \
                 helm \
                 gcompat \

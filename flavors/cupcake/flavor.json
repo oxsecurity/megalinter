@@ -2,6 +2,7 @@
     "descriptors": [
         "BASH",
         "CLOJURE",
+        "GO",
         "JAVA",
         "KOTLIN",
         "PHP",

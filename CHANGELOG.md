@@ -181,6 +181,13 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [golangci-lint](https://golangci-lint.run/) from 1.59.1 to **1.60.1** on 2024-08-14
   - [pyright](https://github.com/Microsoft/pyright) from 1.1.375 to **1.1.376** on 2024-08-14
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.17.0 to **8.18.0** on 2024-08-14
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.10.1 to **1.10.2** on 2024-08-16
+  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 8.0.107 to **8.0.108** on 2024-08-16
+  - [stylelint](https://stylelint.io) from 16.8.1 to **16.8.2** on 2024-08-16
+  - [revive](https://revive.run/) from 1.3.7 to **1.3.9** on 2024-08-16
+  - [ruff](https://github.com/astral-sh/ruff) from 0.5.7 to **0.6.0** on 2024-08-16
+  - [checkov](https://www.checkov.io/) from 3.2.223 to **3.2.228** on 2024-08-16
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.81.8 to **3.81.9** on 2024-08-16
 <!-- linter-versions-end -->
 
 ## [v7.13.0] - 2024-07-06

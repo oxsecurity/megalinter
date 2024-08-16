@@ -27,7 +27,7 @@ ARG PROTOBUF_PROTOLINT_VERSION=0.50.5
 # renovate: datasource=docker depName=zricethezav/gitleaks
 ARG REPOSITORY_GITLEAKS_VERSION=v8.18.4
 # renovate: datasource=docker depName=trufflesecurity/trufflehog 
-ARG REPOSITORY_TRUFFLEHOG_VERSION=3.81.8
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.81.9
 # renovate: datasource=docker depName=jdkato/vale
 ARG SPELL_VALE_VERSION=v3.7.0
 #ARGTOP__END
@@ -49,7 +49,7 @@ FROM golang:1-alpine AS revive
 ## for the released revive binaries not returning version numbers (devel). 
 ## The install command should then be what is commented in the go.megalinter-descriptor.yml
 # renovate: datasource=github-tags depName=mgechev/revive
-ARG GO_REVIVE_VERSION=v1.3.7
+ARG GO_REVIVE_VERSION=v1.3.9
 RUN GOBIN=/usr/bin go install github.com/mgechev/revive@$GO_REVIVE_VERSION
 FROM ghcr.io/yannh/kubeconform:${KUBERNETES_KUBECONFORM_VERSION} AS kubeconform
 FROM yoheimuta/protolint:${PROTOBUF_PROTOLINT_VERSION} AS protolint
@@ -94,12 +94,12 @@ RUN apk add --no-cache \
                 make \
                 musl-dev \
                 openssh \
+                go \
                 openjdk21 \
                 py3-pyflakes \
                 nodejs \
                 npm \
                 yarn \
-                go \
                 openjdk17 \
                 helm \
                 gcompat \
