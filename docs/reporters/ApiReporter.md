@@ -36,7 +36,63 @@ API_REPORTER_BEARER_TOKEN=DDHGHfgfgjfhQESRDTHFKGKHFswgFHDHGDH
 Example of logs sent to Loki:
 
 ```json
-TODO
+{
+ "streams": [
+  {
+   "stream": {
+    "source": "MegaLinter",
+    "gitRepoName": "megalinter",
+    "gitBranchName": "alpha",
+    "gitIdentifier": "megalinter/alpha",
+    "orgIdentifier": "alpha",
+    "descriptor": "API",
+    "linter": "spectral",
+    "linterKey": "API_SPECTRAL"
+   },
+   "values": [
+    [
+     "1723831050362439098",
+     "{\"linterDocUrl\": \"https://megalinter.io/latest/descriptors/api_spectral\", \"jobUrl\": \"\", \"severity\": \"success\", \"severityIcon\": \"\\u2705\", \"cliLintMode\": \"file\", \"numberFilesFound\": 1, \"numberErrorsFound\": 0, \"elapsedTime\": 1.54}"
+    ]
+   ]
+  },
+  {
+   "stream": {
+    "source": "MegaLinter",
+    "gitRepoName": "megalinter",
+    "gitBranchName": "alpha",
+    "gitIdentifier": "megalinter/alpha",
+    "orgIdentifier": "alpha",
+    "descriptor": "BASH",
+    "linter": "shellcheck",
+    "linterKey": "BASH_SHELLCHECK"
+   },
+   "values": [
+    [
+     "1723831050362439098",
+     "{\"linterDocUrl\": \"https://megalinter.io/latest/descriptors/bash_shellcheck\", \"jobUrl\": \"\", \"severity\": \"success\", \"severityIcon\": \"\\u2705\", \"cliLintMode\": \"list_of_files\", \"numberFilesFound\": 5, \"numberErrorsFound\": 0, \"elapsedTime\": 0.14}"
+    ]
+   ]
+  },
+  {
+   "stream": {
+    "source": "MegaLinter",
+    "gitRepoName": "megalinter",
+    "gitBranchName": "alpha",
+    "gitIdentifier": "megalinter/alpha",
+    "orgIdentifier": "alpha",
+    "descriptor": "MARKDOWN",
+    "linter": "markdownlint",
+    "linterKey": "MARKDOWN_MARKDOWNLINT"
+   },
+   "values": [
+    [
+     "1723831050362439098",
+     "{\"linterDocUrl\": \"https://megalinter.io/alpha/descriptors/markdown_markdownlint\", \"jobUrl\": \"\", \"severity\": \"warning\", \"severityIcon\": \"\\u26a0\\ufe0f\", \"cliLintMode\": \"list_of_files\", \"numberFilesFound\": 264, \"numberErrorsFound\": 291, \"numberErrorsFixed\": 0, \"elapsedTime\": 30.55}"
+    ]
+   ]
+  }
+}
 ```
 
 ## Metrics Configuration
