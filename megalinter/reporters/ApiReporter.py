@@ -246,6 +246,9 @@ class ApiReporter(Reporter):
             f"source={self.payload["source"]},"
             + f"orgIdentifier={self.payload["orgIdentifier"]},"
             + f"gitIdentifier={self.payload["gitIdentifier"]},"
+            + f"gitIdentifier={self.payload["gitIdentifier"]},"
+            + f"gitRepoName={self.payload["gitRepoName"]},"
+            + f"gitBranchName={self.payload["gitBranchName"]},"
         )
         all_metrics_lines = []
         for linter in self.master.linters:

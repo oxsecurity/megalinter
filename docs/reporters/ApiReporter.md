@@ -117,7 +117,9 @@ API_REPORTER_METRICS_BASIC_AUTH_PASSWORD=GHTRGDHDHdhghg23345DFG^sfg!ss
 Example of metrics sent to Prometheus
 
 ```text
-TODO
+spectral,source=MegaLinter,orgIdentifier=alpha,gitIdentifier=megalinter/alpha,descriptor=API,linter=spectral,linterKey=API_SPECTRAL metric=0,numberFilesFound=1,elapsedTime=1.57
+shellcheck,source=MegaLinter,orgIdentifier=alpha,gitIdentifier=megalinter/alpha,descriptor=BASH,linter=shellcheck,linterKey=BASH_SHELLCHECK metric=0,numberFilesFound=5,elapsedTime=0.13
+markdownlint,source=MegaLinter,orgIdentifier=alpha,gitIdentifier=megalinter/alpha,descriptor=MARKDOWN,linter=markdownlint,linterKey=MARKDOWN_MARKDOWNLINT metric=291,numberFilesFound=264,numberErrorsFixed=0,elapsedTime=31.5
 ```
 
 ## Troubleshooting
