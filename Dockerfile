@@ -56,7 +56,7 @@ FROM golang:1-alpine AS revive
 ## for the released revive binaries not returning version numbers (devel). 
 ## The install command should then be what is commented in the go.megalinter-descriptor.yml
 # renovate: datasource=github-tags depName=mgechev/revive
-ARG GO_REVIVE_VERSION=v1.3.7
+ARG GO_REVIVE_VERSION=v1.3.9
 RUN GOBIN=/usr/bin go install github.com/mgechev/revive@$GO_REVIVE_VERSION
 FROM ghcr.io/yannh/kubeconform:${KUBERNETES_KUBECONFORM_VERSION} AS kubeconform
 FROM ghcr.io/assignuser/chktex-alpine:latest AS chktex
@@ -136,6 +136,7 @@ RUN apk add --no-cache \
                 docker \
                 openrc \
                 icu-libs \
+                go \
                 openjdk21 \
                 perl \
                 perl-dev \
@@ -158,7 +159,6 @@ RUN apk add --no-cache \
                 nodejs \
                 npm \
                 yarn \
-                go \
                 openjdk17 \
                 helm \
                 gcompat \
