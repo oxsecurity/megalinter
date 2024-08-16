@@ -72,18 +72,18 @@ If you want to see the content of the API notifications in execution logs, you c
 
 The following variables must be sent to the docker run command
 
-| Variable                          | Description                                                                        | Default value |
-|-----------------------------------|------------------------------------------------------------------------------------|---------------|
-| API_REPORTER            | Activates/deactivates API reporter                                                     | `false`          |
-| API_REPORTER_URL            | Logs endpoint URL                                                    | <!-- -->          |
-| API_REPORTER_BASIC_AUTH_USERNAME            | Logs endpoint auth username                                                     | <!-- -->          |
-| API_REPORTER_BASIC_AUTH_PASSWORD            | Logs endpoint auth password                                                     | <!-- -->          |
-| API_REPORTER_BEARER_TOKEN            | Logs endpoint auth token                                                     | <!-- -->          |
-| API_REPORTER_METRICS_URL            | Metrics endpoint URL                                                     | <!-- -->          |
-| API_REPORTER_METRICS_BASIC_AUTH_USERNAME            | Metrics endpoint auth username                                                      | <!-- -->          |
-| API_REPORTER_METRICS_BASIC_AUTH_PASSWORD            | Metrics endpoint auth password                                                     | <!-- -->          |
-| API_REPORTER_METRICS_BEARER_TOKEN            | Logs endpoint auth token                                                    | <!-- -->          |
-| API_REPORTER_DEBUG            | Activate to see notif content in MegaLinter console logs                                                     | `false`          |
+| Variable                                 | Description                                              | Default value |
+|------------------------------------------|----------------------------------------------------------|---------------|
+| API_REPORTER                             | Activates/deactivates API reporter                       | `false`       |
+| API_REPORTER_URL                         | Logs endpoint URL                                        | <!-- -->      |
+| API_REPORTER_BASIC_AUTH_USERNAME         | Logs endpoint auth username                              | <!-- -->      |
+| API_REPORTER_BASIC_AUTH_PASSWORD         | Logs endpoint auth password                              | <!-- -->      |
+| API_REPORTER_BEARER_TOKEN                | Logs endpoint auth token                                 | <!-- -->      |
+| API_REPORTER_METRICS_URL                 | Metrics endpoint URL                                     | <!-- -->      |
+| API_REPORTER_METRICS_BASIC_AUTH_USERNAME | Metrics endpoint auth username                           | <!-- -->      |
+| API_REPORTER_METRICS_BASIC_AUTH_PASSWORD | Metrics endpoint auth password                           | <!-- -->      |
+| API_REPORTER_METRICS_BEARER_TOKEN        | Logs endpoint auth token                                 | <!-- -->      |
+| API_REPORTER_DEBUG                       | Activate to see notif content in MegaLinter console logs | `false`       |
 
 
 ## Grafana Setup
