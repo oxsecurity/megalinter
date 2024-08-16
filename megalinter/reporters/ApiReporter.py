@@ -223,7 +223,7 @@ class ApiReporter(Reporter):
             else:
                 logging.warning(
                     f"[Api Reporter] Error posting data to {self.api_url} ({response.status_code})\n"
-                    f"[Api Reporter] Api request: {json.dumps(obj=self.payloadFormatted, indent=True)}\n"
+                    f"[Api Reporter] API request: {json.dumps(obj=self.payloadFormatted, indent=True)}\n"
                     f"[Api Reporter] API response: {response.text}"
                 )
         except ConnectionError as e:
@@ -323,7 +323,7 @@ class ApiReporter(Reporter):
             else:
                 logging.warning(
                     f"[Api Reporter Metrics] Error posting data to {self.api_url} ({response.status_code})\n"
-                    f"[Api Reporter Metrics] Api request: {json.dumps(obj=self.payloadFormatted, indent=True)}\n"
+                    f"[Api Reporter Metrics] API request: {json.dumps(obj=self.payloadFormatted, indent=True)}\n"
                     f"[Api Reporter Metrics] API response: {response.text}"
                 )
         except ConnectionError as e:
