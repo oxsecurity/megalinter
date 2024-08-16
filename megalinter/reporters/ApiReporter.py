@@ -264,7 +264,7 @@ class ApiReporter(Reporter):
                     metric_line += f",numberFilesFound={len(linter.files)}"
                 # Fixed files
                 if linter.try_fix is True:
-                    metric_line += f",numberErrorsFixed={len(linter.number_fixed)}"
+                    metric_line += f",numberErrorsFixed={str(linter.number_fixed)}"
                 # Elapsed time
                 if self.master.show_elapsed_time is True:
                     metric_line += f",elapsedTime={round(linter.elapsed_time_s, 2)}"
