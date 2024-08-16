@@ -271,7 +271,7 @@ class ApiReporter(Reporter):
                 if self.master.show_elapsed_time is True:
                     metric_line += f",elapsedTime={round(linter.elapsed_time_s, 2)}"
                 all_metrics_lines += [metric_line]
-        self.metrics_payload = ",".join(all_metrics_lines)
+        self.metrics_payload = "\n".join(all_metrics_lines)
 
     def send_to_metrics_api(self):
         session = requests.Session()
