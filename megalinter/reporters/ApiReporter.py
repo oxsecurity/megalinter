@@ -199,8 +199,10 @@ class ApiReporter(Reporter):
                     ],
                 ),
             )
+            if self.is_notif_api_debug_active():
+                logging.info("[Api Reporter] Using Basic Auth")
         # Use token
-        if config.exists(
+        elif config.exists(
             self.master.request_id, "API_REPORTER_BEARER_TOKEN"
         ) or config.exists(self.master.request_id, "NOTIF_API_BEARER_TOKEN"):
             bearer = config.get_first_var_set(
@@ -208,6 +210,8 @@ class ApiReporter(Reporter):
                 ["API_REPORTER_BEARER_TOKEN", "NOTIF_API_BEARER_TOKEN"],
             )
             headers["Authorization"] = f"Bearer {bearer}"
+            if self.is_notif_api_debug_active():
+                logging.info("[Api Reporter] Using Bearer Token")
         try:
             response = session.post(
                 self.api_url, headers=headers, json=self.payloadFormatted
@@ -216,9 +220,7 @@ class ApiReporter(Reporter):
                 logging.info(
                     f"[Api Reporter] Successfully posted data to {self.api_url}"
                 )
-                if config.get_first_var_set(
-                    self.master.request_id, ["API_REPORTER_DEBUG", "NOTIF_API_DEBUG"]
-                ) == "true":
+                if self.is_notif_api_debug_active():
                     logging.info("[Api Reporter] " + json.dumps(obj=self.payloadFormatted, indent=True))
             else:
                 logging.warning(
@@ -299,8 +301,10 @@ class ApiReporter(Reporter):
                     ],
                 ),
             )
+            if self.is_notif_api_debug_active():
+                logging.info("[Api Reporter Metrics] Using Basic Auth")
         # Use token
-        if config.exists(
+        elif config.exists(
             self.master.request_id, "API_REPORTER_METRICS_BEARER_TOKEN"
         ) or config.exists(self.master.request_id, "NOTIF_API_METRICS_BEARER_TOKEN"):
             bearer = config.get_first_var_set(
@@ -308,6 +312,8 @@ class ApiReporter(Reporter):
                 ["API_REPORTER_METRICS_BEARER_TOKEN", "NOTIF_API_METRICS_BEARER_TOKEN"],
             )
             headers["Authorization"] = f"Bearer {bearer}"
+            if self.is_notif_api_debug_active():
+                logging.info("[Api Reporter Metrics] Using Bearer Token")
         try:
             response = session.post(
                 self.api_url, headers=headers, json=self.payloadFormatted
@@ -316,9 +322,7 @@ class ApiReporter(Reporter):
                 logging.info(
                     f"[Api Reporter Metrics] Successfully posted data to {self.api_url}"
                 )
-                if config.get_first_var_set(
-                    self.master.request_id, ["API_REPORTER_DEBUG", "NOTIF_API_DEBUG"]
-                ) == "true":
+                if self.is_notif_api_debug_active():
                     logging.info("[Api Reporter Metrics] " + json.dumps(obj=self.payloadFormatted, indent=True))
             else:
                 logging.warning(
@@ -336,3 +340,8 @@ class ApiReporter(Reporter):
                 f"[Api Reporter Metrics] Error posting data to {self.api_url}:"
                 f"[Api Reporter Metrics] Connection error {str(e)}"
             )
+
+    def is_notif_api_debug_active(self):
+        return config.get_first_var_set(
+                    self.master.request_id, ["API_REPORTER_DEBUG", "NOTIF_API_DEBUG"]
+                ) == "true"
