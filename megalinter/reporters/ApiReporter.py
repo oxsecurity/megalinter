@@ -223,18 +223,18 @@ class ApiReporter(Reporter):
             else:
                 logging.warning(
                     f"[Api Reporter] Error posting data to {self.api_url} ({response.status_code})\n"
-                    f"Api request: {json.dumps(obj=self.payloadFormatted, indent=True)}\n"
-                    f"API response: {response.text}"
+                    f"[Api Reporter] Api request: {json.dumps(obj=self.payloadFormatted, indent=True)}\n"
+                    f"[Api Reporter] API response: {response.text}"
                 )
         except ConnectionError as e:
             logging.warning(
                 f"[Api Reporter] Error posting data to {self.api_url}:"
-                f"Connection error {str(e)}"
+                f"[Api Reporter] Connection error {str(e)}"
             )
         except Exception as e:
             logging.warning(
                 f"[Api Reporter] Error posting data to {self.api_url}:"
-                f"Connection error {str(e)}"
+                f"[Api Reporter] Connection error {str(e)}"
             )
 
     # Build something like:
@@ -323,16 +323,16 @@ class ApiReporter(Reporter):
             else:
                 logging.warning(
                     f"[Api Reporter Metrics] Error posting data to {self.api_url} ({response.status_code})\n"
-                    f"Api request: {json.dumps(obj=self.payloadFormatted, indent=True)}\n"
-                    f"API response: {response.text}"
+                    f"[Api Reporter Metrics] Api request: {json.dumps(obj=self.payloadFormatted, indent=True)}\n"
+                    f"[Api Reporter Metrics] API response: {response.text}"
                 )
         except ConnectionError as e:
             logging.warning(
                 f"[Api Reporter Metrics] Error posting data to {self.api_url}:"
-                f"Connection error {str(e)}"
+                f"[Api Reporter Metrics] Connection error {str(e)}"
             )
         except Exception as e:
             logging.warning(
                 f"[Api Reporter Metrics] Error posting data to {self.api_url}:"
-                f"Connection error {str(e)}"
+                f"[Api Reporter Metrics] Connection error {str(e)}"
             )
