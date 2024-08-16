@@ -134,5 +134,3 @@ RUN wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master
 
 ```
 
-- APK packages (Linux):
-  - [go](https://pkgs.alpinelinux.org/packages?branch=edge&name=go)
