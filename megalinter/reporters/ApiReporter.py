@@ -218,8 +218,8 @@ class ApiReporter(Reporter):
                 )
                 if config.get_first_var_set(
                     self.master.request_id, ["API_REPORTER_DEBUG", "NOTIF_API_DEBUG"]
-                ):
-                    logging.info(json.dumps(obj=self.payloadFormatted, indent=True))
+                ) == "true":
+                    logging.info("[Api Reporter] " + json.dumps(obj=self.payloadFormatted, indent=True))
             else:
                 logging.warning(
                     f"[Api Reporter] Error posting data to {self.api_url} ({response.status_code})\n"
@@ -318,8 +318,8 @@ class ApiReporter(Reporter):
                 )
                 if config.get_first_var_set(
                     self.master.request_id, ["API_REPORTER_DEBUG", "NOTIF_API_DEBUG"]
-                ):
-                    logging.info(json.dumps(obj=self.payloadFormatted, indent=True))
+                ) == "true":
+                    logging.info("[Api Reporter Metrics] " + json.dumps(obj=self.payloadFormatted, indent=True))
             else:
                 logging.warning(
                     f"[Api Reporter Metrics] Error posting data to {self.api_url} ({response.status_code})\n"
