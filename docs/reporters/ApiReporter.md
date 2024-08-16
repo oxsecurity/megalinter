@@ -219,9 +219,13 @@ API_REPORTER_METRICS_BASIC_AUTH_PASSWORD=glc_eyJvIjoiMTEzMjI4OCIsIm4iOiJzZmR4arZ
 
 Now configure all of the 6 variables on the repository running MegaLinter.
 
+![](../assets/images/grafana-config-13.jpg)
+
 There value must be accessible from MegaLinter Docker image, so you might need to redeclare them in YML workflows depending on your git provider.
 
-![](../assets/images/grafana-config-13.jpg)
+_Example with GitHub Workflow:_
+
+![](../assets/images/grafana-config-13bis.jpg)
 
 ### Download MegaLinter dashboards
 
