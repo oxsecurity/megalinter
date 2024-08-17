@@ -67,7 +67,7 @@ jobs:
 
         # You can override MegaLinter flavor used to have faster performances
         # More info at https://megalinter.io/flavors/
-        uses: oxsecurity/megalinter/flavors/python@alpha # ml workflow change #TODO: remove before publishing !!!
+        uses: oxsecurity/megalinter/flavors/python@beta
 
         id: ml
 
@@ -105,7 +105,7 @@ jobs:
           API_REPORTER_METRICS_URL: ${{ secrets.API_REPORTER_METRICS_URL }}
           API_REPORTER_METRICS_BASIC_AUTH_USERNAME: ${{ secrets.API_REPORTER_METRICS_BASIC_AUTH_USERNAME }}
           API_REPORTER_METRICS_BASIC_AUTH_PASSWORD: ${{ secrets.API_REPORTER_METRICS_BASIC_AUTH_PASSWORD }}
-          API_REPORTER_DEBUG: true
+          API_REPORTER_DEBUG: false
 
           # ADD YOUR CUSTOM ENV VARIABLES HERE OR DEFINE THEM IN A FILE
           # .mega-linter.yml AT THE ROOT OF YOUR REPOSITORY
