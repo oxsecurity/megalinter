@@ -27,7 +27,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Linters enhancements
 
 - Reporters
-  - New **ApiReporter** (can be used to build Grafana dashboards)
+  - New [**ApiReporter**](https://megalinter.io/beta/reporters/ApiReporter/) (can be used to build Grafana dashboards)
 
 - Fixes
   - [terrascan](https://runterrascan.io/) fixed errors and removed redundant code
