@@ -2765,6 +2765,13 @@
 </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="../reporters/ApiReporter/">
+<span class="md-ellipsis">
+    API (Grafana)
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="../reporters/GitHubStatusReporter/">
 <span class="md-ellipsis">
     GitHub Status
@@ -5087,7 +5094,10 @@
 <li>Linters enhancements</li>
 </ul>
 <ul>
-<li>Reporters</li>
+<li>Reporters<ul>
+<li>New <strong>ApiReporter</strong> (can be used to build Grafana dashboards)</li>
+</ul>
+</li>
 </ul>
 <ul>
 <li>Fixes<ul>
@@ -5113,6 +5123,7 @@
 </ul>
 </li>
 <li>AutoUpdate linters: Always create a PR if the job has been started manually</li>
+<li>Add <code>skip_checkout: true</code> to default MegaLinter GitHub Action template</li>
 </ul>
 </li>
 </ul>
@@ -5411,9 +5422,6 @@
 <li>Upgrade <code>KOTLIN_DETEKT</code> and make it work with cli_lint_mode = project</li>
 </ul>
 </li>
-</ul>
-<ul>
-<li>Reporters</li>
 </ul>
 <ul>
 <li>Fixes<ul>

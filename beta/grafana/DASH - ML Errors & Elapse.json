@@ -1,0 +1,766 @@
+{
+  "__inputs": [
+    {
+      "name": "DS_GRAFANACLOUD-CLOUDITY-LOGS",
+      "label": "grafanacloud-cloudity-logs",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "loki",
+      "pluginName": "Loki"
+    }
+  ],
+  "__elements": {},
+  "__requires": [
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "11.2.0-74515"
+    },
+    {
+      "type": "datasource",
+      "id": "loki",
+      "name": "Loki",
+      "version": "1.0.0"
+    },
+    {
+      "type": "panel",
+      "id": "stat",
+      "name": "Stat",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "timeseries",
+      "name": "Time series",
+      "version": ""
+    }
+  ],
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": null,
+  "links": [
+    {
+      "asDropdown": false,
+      "icon": "dashboard",
+      "includeVars": false,
+      "keepTime": true,
+      "tags": [],
+      "targetBlank": false,
+      "title": "Back to main dashboard",
+      "tooltip": "",
+      "type": "link",
+      "url": "/d/megalinter-home-repo/dash-00-megalinter-home?var-gitIdentifier=$gitIdentifier"
+    }
+  ],
+  "panels": [
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 2,
+      "panels": [],
+      "repeat": "linterKey",
+      "title": "$linterKey",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "loki",
+        "uid": "${DS_GRAFANACLOUD-CLOUDITY-LOGS}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 1
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 0,
+        "y": 1
+      },
+      "id": 5,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.2.0-74515",
+      "targets": [
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "${DS_GRAFANACLOUD-CLOUDITY-LOGS}"
+          },
+          "editorMode": "code",
+          "expr": "{source=\"MegaLinter\", linterKey=\"$linterKey\", gitIdentifier=\"$gitIdentifier\"}",
+          "maxLines": 1,
+          "queryType": "range",
+          "refId": "A"
+        }
+      ],
+      "title": "Latest errors",
+      "transformations": [
+        {
+          "id": "extractFields",
+          "options": {
+            "format": "json",
+            "jsonPaths": [
+              {
+                "path": "numberErrorsFound"
+              }
+            ],
+            "keepTime": false,
+            "replace": false,
+            "source": "Line"
+          }
+        }
+      ],
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "loki",
+        "uid": "${DS_GRAFANACLOUD-CLOUDITY-LOGS}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 20,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 3,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "displayName": "$linterKey",
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 1
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 8,
+        "x": 4,
+        "y": 1
+      },
+      "id": 1,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "11.2.0-74515",
+      "targets": [
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "${DS_GRAFANACLOUD-CLOUDITY-LOGS}"
+          },
+          "editorMode": "builder",
+          "expr": "{source=\"MegaLinter\", linterKey=\"$linterKey\", gitIdentifier=\"$gitIdentifier\"} |= ``",
+          "maxLines": 1000,
+          "queryType": "range",
+          "refId": "A"
+        }
+      ],
+      "title": "Number of errors found",
+      "transformations": [
+        {
+          "id": "extractFields",
+          "options": {
+            "format": "json",
+            "jsonPaths": [
+              {
+                "path": "numberErrorsFound"
+              }
+            ],
+            "keepTime": true,
+            "replace": true,
+            "source": "Line"
+          }
+        }
+      ],
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "loki",
+        "uid": "${DS_GRAFANACLOUD-CLOUDITY-LOGS}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 5
+              },
+              {
+                "color": "orange",
+                "value": 10
+              },
+              {
+                "color": "light-red",
+                "value": 20
+              },
+              {
+                "color": "red",
+                "value": 30
+              },
+              {
+                "color": "dark-red",
+                "value": 60
+              }
+            ]
+          },
+          "unit": "s"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 12,
+        "y": 1
+      },
+      "id": 4,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.2.0-74515",
+      "targets": [
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "${DS_GRAFANACLOUD-CLOUDITY-LOGS}"
+          },
+          "editorMode": "builder",
+          "expr": "{source=\"MegaLinter\", linterKey=\"$linterKey\", gitIdentifier=\"$gitIdentifier\"}",
+          "maxLines": 1000,
+          "queryType": "range",
+          "refId": "A"
+        }
+      ],
+      "title": "Average Runtime",
+      "transformations": [
+        {
+          "id": "extractFields",
+          "options": {
+            "format": "json",
+            "jsonPaths": [
+              {
+                "path": "elapsedTime"
+              }
+            ],
+            "keepTime": true,
+            "replace": true,
+            "source": "Line"
+          }
+        }
+      ],
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "loki",
+        "uid": "${DS_GRAFANACLOUD-CLOUDITY-LOGS}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 19,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 3,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "displayName": "$linterKey",
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 5
+              },
+              {
+                "color": "orange",
+                "value": 10
+              },
+              {
+                "color": "light-red",
+                "value": 20
+              },
+              {
+                "color": "red",
+                "value": 30
+              },
+              {
+                "color": "dark-red",
+                "value": 60
+              }
+            ]
+          },
+          "unit": "s"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 8,
+        "x": 16,
+        "y": 1
+      },
+      "id": 3,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "11.2.0-74515",
+      "targets": [
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "${DS_GRAFANACLOUD-CLOUDITY-LOGS}"
+          },
+          "editorMode": "builder",
+          "expr": "{source=\"MegaLinter\", linterKey=\"$linterKey\", gitIdentifier=\"$gitIdentifier\"} |= ``",
+          "maxLines": 1000,
+          "queryType": "range",
+          "refId": "A"
+        }
+      ],
+      "title": "Elapsed time by MegaLinter run",
+      "transformations": [
+        {
+          "id": "extractFields",
+          "options": {
+            "format": "json",
+            "jsonPaths": [
+              {
+                "path": "elapsedTime"
+              }
+            ],
+            "keepTime": true,
+            "replace": true,
+            "source": "Line"
+          }
+        }
+      ],
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "loki",
+        "uid": "${DS_GRAFANACLOUD-CLOUDITY-LOGS}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "links": [
+            {
+              "targetBlank": true,
+              "title": "Go to job URL",
+              "url": "${__data.fields.jobUrl}"
+            }
+          ],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 4,
+        "x": 0,
+        "y": 5
+      },
+      "id": 6,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^Time$/",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.2.0-74515",
+      "targets": [
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "${DS_GRAFANACLOUD-CLOUDITY-LOGS}"
+          },
+          "editorMode": "builder",
+          "expr": "{source=\"MegaLinter\", linterKey=\"$linterKey\", gitIdentifier=\"$gitIdentifier\"}",
+          "maxLines": 1,
+          "queryType": "range",
+          "refId": "A"
+        }
+      ],
+      "title": "Latest run",
+      "transformations": [
+        {
+          "id": "extractFields",
+          "options": {
+            "format": "json",
+            "jsonPaths": [
+              {
+                "path": "numberErrorsFound"
+              },
+              {
+                "path": "jobUrl"
+              }
+            ],
+            "keepTime": false,
+            "replace": false,
+            "source": "Line"
+          }
+        }
+      ],
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "loki",
+        "uid": "${DS_GRAFANACLOUD-CLOUDITY-LOGS}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "links": [
+            {
+              "targetBlank": true,
+              "title": "View in MegaLinter documentation",
+              "url": "${__data.fields.Documentation}"
+            }
+          ],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 4,
+        "x": 12,
+        "y": 5
+      },
+      "id": 7,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^Documentation$/",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "name",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.2.0-74515",
+      "targets": [
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "${DS_GRAFANACLOUD-CLOUDITY-LOGS}"
+          },
+          "editorMode": "builder",
+          "expr": "{source=\"MegaLinter\", linterKey=\"$linterKey\", gitIdentifier=\"$gitIdentifier\"}",
+          "maxLines": 1,
+          "queryType": "range",
+          "refId": "A"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "extractFields",
+          "options": {
+            "format": "auto",
+            "replace": true,
+            "source": "Line"
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "linterDocUrl": "Documentation"
+            }
+          }
+        }
+      ],
+      "type": "stat"
+    }
+  ],
+  "schemaVersion": 39,
+  "tags": [
+    "megalinter"
+  ],
+  "templating": {
+    "list": [
+      {
+        "current": {},
+        "datasource": {
+          "type": "loki",
+          "uid": "${DS_GRAFANACLOUD-CLOUDITY-LOGS}"
+        },
+        "definition": "",
+        "includeAll": false,
+        "label": "Repo / Branch",
+        "name": "gitIdentifier",
+        "options": [],
+        "query": {
+          "label": "gitIdentifier",
+          "refId": "LokiVariableQueryEditor-VariableQuery",
+          "stream": "{source=\"MegaLinter\"}",
+          "type": 1
+        },
+        "refresh": 1,
+        "regex": "",
+        "sort": 1,
+        "type": "query"
+      },
+      {
+        "current": {},
+        "datasource": {
+          "type": "loki",
+          "uid": "${DS_GRAFANACLOUD-CLOUDITY-LOGS}"
+        },
+        "definition": "",
+        "includeAll": true,
+        "label": "Linter",
+        "multi": true,
+        "name": "linterKey",
+        "options": [],
+        "query": {
+          "label": "linterKey",
+          "refId": "LokiVariableQueryEditor-VariableQuery",
+          "stream": "",
+          "type": 1
+        },
+        "refresh": 1,
+        "regex": "",
+        "sort": 1,
+        "type": "query"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-7d",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "DASH - ML Errors & Elapse",
+  "uid": "megalinter-repo-errors-elapse",
+  "version": 28,
+  "weekStart": ""
+}
