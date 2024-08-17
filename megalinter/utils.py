@@ -8,6 +8,7 @@ import re
 import tempfile
 from fnmatch import fnmatch
 from typing import Any, Optional, Pattern, Sequence
+import urllib.parse
 
 import git
 import regex
@@ -371,10 +372,49 @@ def get_git_context_info(request_id, path):
         [
             "GITHUB_JOB_URL",
             "CI_JOB_URL",
-            # TODO: Handle Azure, BitBucket & Jenkins
         ],
         "",
     )
+    # GitHub job url
+    if job_url == "" and config.get(request_id, "GITHUB_REPOSITORY", "") != "":
+        github_server_url = config.get(
+            request_id, "GITHUB_SERVER_URL", "https://github.com"
+        )
+        github_repo = config.get(request_id, "GITHUB_REPOSITORY")
+        run_id = config.get(request_id, "GITHUB_RUN_ID")
+        job_url = (
+            f"{github_server_url}/{github_repo}/actions/runs/{run_id}"
+        )
+    # Azure Job url
+    elif job_url == "" and config.get(request_id, "SYSTEM_COLLECTIONURI", "") != "":
+        SYSTEM_COLLECTIONURI = config.get(
+            request_id, "SYSTEM_COLLECTIONURI"
+        )
+        SYSTEM_TEAMPROJECT = urllib.parse.quote(
+            config.get(request_id, "SYSTEM_TEAMPROJECT")
+        )
+        BUILD_BUILDID = config.get(
+            request_id,
+            "BUILD_BUILDID",
+            config.get(request_id, "BUILD_BUILD_ID"),
+        )
+        job_url = f"{SYSTEM_COLLECTIONURI}{SYSTEM_TEAMPROJECT}/_build/results?buildId={BUILD_BUILDID}"
+    # BitBucket job url
+    elif job_url == "" and config.get(request_id, "BITBUCKET_STEP_UUID", "") != "":
+        bitbucket_project_url = config.get(
+            request_id, "BITBUCKET_GIT_HTTP_ORIGIN", ""
+        )
+        bitbucket_pipeline_job_number = config.get(
+            request_id, "BITBUCKET_BUILD_NUMBER", ""
+        )
+        pipeline_step_run_uuid = config.get(
+            request_id, "BITBUCKET_STEP_UUID", ""
+        )
+        pipeline_step_run_uuid = urllib.parse.quote(pipeline_step_run_uuid)
+        job_url = (
+            f"{bitbucket_project_url}/pipelines/results/"
+            f"{bitbucket_pipeline_job_number}/steps/{pipeline_step_run_uuid}"
+        )
     return {"repo_name": repo_name, "branch_name": branch_name, "job_url": job_url}
 
 
