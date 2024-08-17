@@ -6,9 +6,9 @@ import logging
 import os
 import re
 import tempfile
+import urllib.parse
 from fnmatch import fnmatch
 from typing import Any, Optional, Pattern, Sequence
-import urllib.parse
 
 import git
 import regex
@@ -382,14 +382,10 @@ def get_git_context_info(request_id, path):
         )
         github_repo = config.get(request_id, "GITHUB_REPOSITORY")
         run_id = config.get(request_id, "GITHUB_RUN_ID")
-        job_url = (
-            f"{github_server_url}/{github_repo}/actions/runs/{run_id}"
-        )
+        job_url = f"{github_server_url}/{github_repo}/actions/runs/{run_id}"
     # Azure Job url
     elif job_url == "" and config.get(request_id, "SYSTEM_COLLECTIONURI", "") != "":
-        SYSTEM_COLLECTIONURI = config.get(
-            request_id, "SYSTEM_COLLECTIONURI"
-        )
+        SYSTEM_COLLECTIONURI = config.get(request_id, "SYSTEM_COLLECTIONURI")
         SYSTEM_TEAMPROJECT = urllib.parse.quote(
             config.get(request_id, "SYSTEM_TEAMPROJECT")
         )
@@ -401,15 +397,11 @@ def get_git_context_info(request_id, path):
         job_url = f"{SYSTEM_COLLECTIONURI}{SYSTEM_TEAMPROJECT}/_build/results?buildId={BUILD_BUILDID}"
     # BitBucket job url
     elif job_url == "" and config.get(request_id, "BITBUCKET_STEP_UUID", "") != "":
-        bitbucket_project_url = config.get(
-            request_id, "BITBUCKET_GIT_HTTP_ORIGIN", ""
-        )
+        bitbucket_project_url = config.get(request_id, "BITBUCKET_GIT_HTTP_ORIGIN", "")
         bitbucket_pipeline_job_number = config.get(
             request_id, "BITBUCKET_BUILD_NUMBER", ""
         )
-        pipeline_step_run_uuid = config.get(
-            request_id, "BITBUCKET_STEP_UUID", ""
-        )
+        pipeline_step_run_uuid = config.get(request_id, "BITBUCKET_STEP_UUID", "")
         pipeline_step_run_uuid = urllib.parse.quote(pipeline_step_run_uuid)
         job_url = (
             f"{bitbucket_project_url}/pipelines/results/"
