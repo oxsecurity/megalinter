@@ -199,6 +199,19 @@ def get(request_id, config_var=None, default=None):
     return val
 
 
+def get_first_var_set(request_id, config_vars=[], default=None):
+    for config_var in config_vars:
+        val = get(request_id, config_var, None)
+        if val is not None and val != "":
+            if isinstance(val, bool):
+                if val is True:
+                    val = "true"
+                elif val is False:
+                    val = "false"
+            return val
+    return default
+
+
 def set(request_id, config_var, value):
     global RUN_CONFIGS
     assert request_id in RUN_CONFIGS, "Config has not been initialized yet !"
@@ -316,6 +329,12 @@ def list_secured_variables(request_id) -> list[str]:
             "GITLAB_ACCESS_TOKEN_MEGALINTER",
             "GITLAB_CUSTOM_CERTIFICATE",
             "WEBHOOK_REPORTER_BEARER_TOKEN",
+            "API_REPORTER_BEARER_TOKEN",
+            "API_REPORTER_BASIC_AUTH_USERNAME",
+            "API_REPORTER_BASIC_AUTH_PASSWORD",
+            "API_REPORTER_METRICS_BEARER_TOKEN",
+            "API_REPORTER_METRICS_BASIC_AUTH_USERNAME",
+            "API_REPORTER_METRICS_BASIC_AUTH_PASSWORD",
             "NODE_TOKEN",
             "NPM_TOKEN",
             "DOCKER_USERNAME",

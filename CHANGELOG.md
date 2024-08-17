@@ -27,6 +27,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Linters enhancements
 
 - Reporters
+  - New **ApiReporter** (can be used to build Grafana dashboards)
 
 - Fixes
   - [terrascan](https://runterrascan.io/) fixed errors and removed redundant code
@@ -44,6 +45,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - SecretsUsedInArgOrEnv: Do not use ARG or ENV instructions for sensitive data
     - Port Beta workflows to use docker/metadata-action, by @echoix
   - AutoUpdate linters: Always create a PR if the job has been started manually
+  - Add `skip_checkout: true` to default MegaLinter GitHub Action template
 
 - Linter versions upgrades
   - [protolint](https://github.com/yoheimuta/protolint) from 0.50.2 to **0.50.3** on 2024-07-07
@@ -303,8 +305,6 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Php psalm improvement by @llaville in <https://github.com/oxsecurity/megalinter/pull/3541>
   - `KOTLIN_KTLINT` now supports `list_of_files` mode, and has better error counting
   - Upgrade `KOTLIN_DETEKT` and make it work with cli_lint_mode = project
-
-- Reporters
 
 - Fixes
   - Change `golangci-lint` lint mode to `project`, by @wandering-tales in <https://github.com/oxsecurity/megalinter/pull/3509>
