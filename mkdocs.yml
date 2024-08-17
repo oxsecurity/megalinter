@@ -348,6 +348,7 @@ nav:
       - "Gitlab Merge Request comments": "reporters/GitlabCommentReporter.md"
       - "Azure Pull Request comments": "reporters/AzureCommentReporter.md"
       - "Bitbucket Pull Request comments": "reporters/BitbucketCommentReporter.md"
+      - "API (Grafana)": "reporters/ApiReporter.md"
       - "GitHub Status": "reporters/GitHubStatusReporter.md"
       - "SARIF Reporter": "reporters/SarifReporter.md"
       - "Updated sources": "reporters/UpdatedSourcesReporter.md"

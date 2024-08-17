@@ -156,7 +156,7 @@ Create a Grafana Cloud Free account at [this url](https://grafana.com/auth/sign-
 
 ___
 
-Input a Grafana Cloud org name (sfdxhardis in the example)
+Input a Grafana Cloud org name (megalinter in the example)
 
 ![](../assets/images/grafana-config-2.jpg)
 
@@ -287,9 +287,7 @@ _Example with GitHub Workflow:_
 
 ### Download MegaLinter dashboards
 
-TODOFROMHERE
-
-Download all MegaLinter Dashboard JSON files from [this MegaLinter repo folder](https://github.com/hardisgroupcom/sfdx-hardis/tree/main/docs/grafana/dashboards)
+TODO FROM HERE
 
 ![](assets/images/grafana-config-16.jpg)
 
@@ -301,7 +299,7 @@ Go in menu **Dashboards** then click on **New** then **New folder**
 
 ___
 
-Create folder `Sfdx-hardis Dashboards`
+Create folder `MegaLinter Dashboards`
 
 ![](assets/images/grafana-config-15.jpg)
 
