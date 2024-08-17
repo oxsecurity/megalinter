@@ -191,6 +191,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.10.2 to **1.10.3** on 2024-08-16
   - [ruff](https://github.com/astral-sh/ruff) from 0.6.0 to **0.6.1** on 2024-08-16
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.13.3 to **8.14.1** on 2024-08-17
+  - [csharpier](https://csharpier.com/) from 0.28.2 to **0.29.0** on 2024-08-17
 <!-- linter-versions-end -->
 
 ## [v7.13.0] - 2024-07-06
