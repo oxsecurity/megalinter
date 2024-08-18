@@ -15,6 +15,8 @@ Use Grafana default MegaLinter dashboards, and build new ones to monitor everyth
 
 ![](../assets/images/screenshot-grafana-2.jpg)
 
+If you create new useful dashboards, please share them with the MegaLinter community by exporting them then create a pull request :)
+
 ## Logs Configuration
 
 Define the following CI/CD variables:
@@ -291,35 +293,35 @@ _Example with GitHub Workflow:_
 
 ### Download MegaLinter dashboards
 
-TODO FROM HERE
+Download all MegaLinter Dashboard JSON files from [this MegaLinter repo folder](https://github.com/oxsecurity/megalinter/tree/main/docs/grafana)
 
-![](assets/images/grafana-config-16.jpg)
+![](../assets/images/grafana-config-16.jpg)
 
 ### Create Dashboard folder
 
 Go in menu **Dashboards** then click on **New** then **New folder**
 
-![](assets/images/grafana-config-14.jpg)
+![](../assets/images/grafana-config-14.jpg)
 
 ___
 
 Create folder `MegaLinter Dashboards`
 
-![](assets/images/grafana-config-15.jpg)
+![](../assets/images/grafana-config-15.jpg)
 
-### Import default sfdx-hardis Grafana Dashboards
+### Import default MegaLinter Grafana Dashboards
 
 For each downloaded Dashboard JSON file, process the following actions.
 
 Click **New** then **Import**
 
-![](assets/images/grafana-config-17.jpg)
+![](../assets/images/grafana-config-17.jpg)
 
 ___
 
 Click on **Upload Dashboard JSON File** and select one of the Dashboards JSON files you downloaded on your computer.
 
-![](assets/images/grafana-config-18.jpg)
+![](../assets/images/grafana-config-18.jpg)
 
 ___
 
@@ -327,17 +329,12 @@ ___
 - Select your Loki or Prometheus source. They can be:
   - **grafanacloud-YOURORGNAME-logs (Loki)**
   - **grafanacloud-YOURORGNAME-prom (Prometheus)**
+- Click import
 
-![](assets/images/grafana-config-19.jpg)
-
-___
-
-Click **Import**
-
-![](assets/images/grafana-config-20.jpg)
+![](../assets/images/grafana-config-19.jpg)
 
 __
 
 Repeat the operation for all Dashboard JSON files, and you're all set !
 
-![](assets/images/grafana-config-21.jpg)
+![](../assets/images/grafana-config-21.jpg)
