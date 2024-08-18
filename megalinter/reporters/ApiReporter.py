@@ -120,9 +120,9 @@ class ApiReporter(Reporter):
                 )
                 # Linter output for humans
                 linter_payload_data["output"] = utils.normalize_log_string(
-                    self.master.stdout_human
-                    if self.master.stdout_human is not None
-                    else self.master.stdout
+                    linter.stdout_human
+                    if linter.stdout_human is not None
+                    else linter.stdout
                 )
                 # Number of files & errors
                 linter_payload_data["cliLintMode"] = linter.cli_lint_mode
