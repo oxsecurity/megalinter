@@ -14,14 +14,6 @@
 name: "Build & Deploy - DEV linters"
 on:
   pull_request:
-    branches-ignore: []
-    paths-ignore:
-      - .github/CONTRIBUTING.md
-      - CHANGELOG.md
-      - README.md
-      - .github/workflows/slash-command-dispatch.yml
-      - .github/workflows/help-command.yml
-      - .github/workflows/build-command.yml
 
 ###############
 # Set the Job #
