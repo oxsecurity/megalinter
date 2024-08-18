@@ -25,7 +25,7 @@ workspace:
 steps:
 
 - name: megalinter
-  image: oxsecurity/megalinter:v7
+  image: oxsecurity/megalinter:v8
   environment:
     DEFAULT_WORKSPACE: /tmp/lint
 ```
@@ -47,7 +47,7 @@ workspace:
 steps:
 
 - name: megalinter
-  image: oxsecurity/megalinter:v7
+  image: oxsecurity/megalinter:v8
   environment:
     DEFAULT_WORKSPACE: /tmp/lint
 
