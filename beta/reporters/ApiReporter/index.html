@@ -3424,62 +3424,63 @@ API_REPORTER_BASIC_AUTH_PASSWORD=GHTRGDHDHdhghg23345DFG^sfg!ss
 API_REPORTER_BEARER_TOKEN=DDHGHfgfgjfhQESRDTHFKGKHFswgFHDHGDH
 </code></pre>
 <p>Example of logs sent to Loki:</p>
-<pre><code class="language-json">{
- "streams": [
-  {
-   "stream": {
-    "source": "MegaLinter",
-    "gitRepoName": "megalinter",
-    "gitBranchName": "alpha",
-    "gitIdentifier": "megalinter/alpha",
-    "orgIdentifier": "alpha",
-    "descriptor": "API",
-    "linter": "spectral",
-    "linterKey": "API_SPECTRAL"
-   },
-   "values": [
-    [
-     "1723831050362439098",
-     "{\"linterDocUrl\": \"https://megalinter.io/latest/descriptors/api_spectral\", \"jobUrl\": \"\", \"severity\": \"success\", \"severityIcon\": \"\\u2705\", \"cliLintMode\": \"file\", \"numberFilesFound\": 1, \"numberErrorsFound\": 0, \"elapsedTime\": 1.54, \"output\": [\"text output from linter console logs\"]}"
+<pre><code class="language-json">{ 
+  "streams": [
+   {
+    "stream": {
+     "source": "MegaLinter",
+     "gitRepoName": "megalinter",
+     "gitBranchName": "tmpX",
+     "gitIdentifier": "megalinter/tmpX",
+     "orgIdentifier": "tmpX",
+     "descriptor": "REPOSITORY",
+     "linter": "trufflehog",
+     "linterKey": "REPOSITORY_TRUFFLEHOG"
+    },
+    "values": [
+     [
+      "1724005973602212834",
+      "{\"linterDocUrl\": \"https://megalinter.io/beta/descriptors/repository_trufflehog\", \"jobUrl\": \"https://github.com/oxsecurity/megalinter/actions/runs/10442830998\", \"severity\": \"warning\", \"severityIcon\": \"\\u26a0\\ufe0f\", \"output\": [\"\\ud83d\\udc37\\ud83d\\udd11\\ud83d\\udc37  TruffleHog. Unearth your secrets. \\etc...\"], \"cliLintMode\": \"project\", \"numberErrorsFound\": 1, \"elapsedTime\": 13.1}"
+     ]
     ]
-   ]
-  },
-  {
-   "stream": {
-    "source": "MegaLinter",
-    "gitRepoName": "megalinter",
-    "gitBranchName": "alpha",
-    "gitIdentifier": "megalinter/alpha",
-    "orgIdentifier": "alpha",
-    "descriptor": "BASH",
-    "linter": "shellcheck",
-    "linterKey": "BASH_SHELLCHECK"
    },
-   "values": [
-    [
-     "1723831050362439098",
-     "{\"linterDocUrl\": \"https://megalinter.io/latest/descriptors/bash_shellcheck\", \"jobUrl\": \"\", \"severity\": \"success\", \"severityIcon\": \"\\u2705\", \"cliLintMode\": \"list_of_files\", \"numberFilesFound\": 5, \"numberErrorsFound\": 0, \"elapsedTime\": 0.14, \"output\": [\"text output from linter console logs\"]}"
+   {
+    "stream": {
+     "source": "MegaLinter",
+     "gitRepoName": "megalinter",
+     "gitBranchName": "tmpX",
+     "gitIdentifier": "megalinter/tmpX",
+     "orgIdentifier": "tmpX",
+     "descriptor": "SPELL",
+     "linter": "cspell",
+     "linterKey": "SPELL_CSPELL"
+    },
+    "values": [
+     [
+      "1724005973602212834",
+      "{\"linterDocUrl\": \"https://megalinter.io/beta/descriptors/spell_cspell\", \"jobUrl\": \"https://github.com/oxsecurity/megalinter/actions/runs/10442830998\", \"severity\": \"success\", \"severityIcon\": \"\\u2705\", \"output\": [\"  1/680 .automation/build_schemas_doc.sh 1762.38ms\", \"  etc...\", \"CSpell: Files checked: 680, Issues found: 0 in 0 files.\"], \"cliLintMode\": \"list_of_files\", \"numberFilesFound\": 687, \"numberErrorsFound\": 0, \"elapsedTime\": 11.7}"
+     ]
     ]
-   ]
-  },
-  {
-   "stream": {
-    "source": "MegaLinter",
-    "gitRepoName": "megalinter",
-    "gitBranchName": "alpha",
-    "gitIdentifier": "megalinter/alpha",
-    "orgIdentifier": "alpha",
-    "descriptor": "MARKDOWN",
-    "linter": "markdownlint",
-    "linterKey": "MARKDOWN_MARKDOWNLINT"
    },
-   "values": [
-    [
-     "1723831050362439098",
-     "{\"linterDocUrl\": \"https://megalinter.io/alpha/descriptors/markdown_markdownlint\", \"jobUrl\": \"\", \"severity\": \"warning\", \"severityIcon\": \"\\u26a0\\ufe0f\", \"cliLintMode\": \"list_of_files\", \"numberFilesFound\": 264, \"numberErrorsFound\": 291, \"numberErrorsFixed\": 0, \"elapsedTime\": 30.55, \"output\": [\"text output from linter console logs\"]}"
+   {
+    "stream": {
+     "source": "MegaLinter",
+     "gitRepoName": "megalinter",
+     "gitBranchName": "tmpX",
+     "gitIdentifier": "megalinter/tmpX",
+     "orgIdentifier": "tmpX",
+     "descriptor": "SPELL",
+     "linter": "lychee",
+     "linterKey": "SPELL_LYCHEE"
+    },
+    "values": [
+     [
+      "1724005973602212834",
+      "{\"linterDocUrl\": \"https://megalinter.io/beta/descriptors/spell_lychee\", \"jobUrl\": \"https://github.com/oxsecurity/megalinter/actions/runs/10442830998\", \"severity\": \"warning\", \"severityIcon\": \"\\u26a0\\ufe0f\", \"output\": [\"\\u2717 [404] https://docs.github.com/en/actions/configuring-and-managing-workflows/configuring-a-workflow#adding-a-workflow-status-badge-to-your-repository | Failed: Network error: Not Found\", \"\\u2717 [404] https://rabobank.jobs/en/techblog/coding-architecture/gijs-reijn-writing-documentation-as-a-champ-in-engineering-teams/ | Failed: Network error: Not Found\", \"\\ud83d\\udcdd Summary\", \"---------------------\", \"\\ud83d\\udd0d Total.........2322\", \"\\u2705 Successful....1889\", \"\\u23f3 Timeouts.........0\", \"\\ud83d\\udd00 Redirected.......0\", \"\\ud83d\\udc7b Excluded.......431\", \"\\u2753 Unknown..........0\", \"\\ud83d\\udeab Errors...........2\", \"\", \"Errors in README.md\", \"\\u2717 [404] https://rabobank.jobs/en/techblog/coding-architecture/gijs-reijn-writing-documentation-as-a-champ-in-engineering-teams/ | Failed: Network error: Not Found\", \"\\u2717 [404] https://docs.github.com/en/actions/configuring-and-managing-workflows/configuring-a-workflow#adding-a-workflow-status-badge-to-your-repository | Failed: Network error: Not Found\"], \"cliLintMode\": \"list_of_files\", \"numberFilesFound\": 346, \"numberErrorsFound\": 2, \"elapsedTime\": 6.17}"
+     ]
     ]
-   ]
-  }
+   },
+  ]
 }
 </code></pre>
 <h2 id="metrics-configuration">Metrics Configuration</h2>
@@ -3497,9 +3498,9 @@ API_REPORTER_METRICS_BASIC_AUTH_USERNAME=345673
 API_REPORTER_METRICS_BASIC_AUTH_PASSWORD=GHTRGDHDHdhghg23345DFG^sfg!ss
 </code></pre>
 <p>Example of metrics sent to Prometheus</p>
-<pre><code class="language-text">spectral,source=MegaLinter,orgIdentifier=alpha,gitIdentifier=megalinter/alpha,descriptor=API,linter=spectral,linterKey=API_SPECTRAL metric=0,numberFilesFound=1,elapsedTime=1.57
-shellcheck,source=MegaLinter,orgIdentifier=alpha,gitIdentifier=megalinter/alpha,descriptor=BASH,linter=shellcheck,linterKey=BASH_SHELLCHECK metric=0,numberFilesFound=5,elapsedTime=0.13
-markdownlint,source=MegaLinter,orgIdentifier=alpha,gitIdentifier=megalinter/alpha,descriptor=MARKDOWN,linter=markdownlint,linterKey=MARKDOWN_MARKDOWNLINT metric=291,numberFilesFound=264,numberErrorsFixed=0,elapsedTime=31.5
+<pre><code class="language-text">linter_run,source=MegaLinter,orgIdentifier=tmpX,gitIdentifier=megalinter/tmpX,gitRepoName=megalinter,gitBranchName=tmpX,descriptor=REPOSITORY,linter=trufflehog,linterKey=REPOSITORY_TRUFFLEHOG numberErrorsFound=1,elapsedTime=13.1
+linter_run,source=MegaLinter,orgIdentifier=tmpX,gitIdentifier=megalinter/tmpX,gitRepoName=megalinter,gitBranchName=tmpX,descriptor=SPELL,linter=cspell,linterKey=SPELL_CSPELL numberErrorsFound=0,numberFilesFound=687,elapsedTime=11.7
+linter_run,source=MegaLinter,orgIdentifier=tmpX,gitIdentifier=megalinter/tmpX,gitRepoName=megalinter,gitBranchName=tmpX,descriptor=SPELL,linter=lychee,linterKey=SPELL_LYCHEE numberErrorsFound=2,numberFilesFound=346,elapsedTime=6.17
 </code></pre>
 <h2 id="troubleshooting">Troubleshooting</h2>
 <p>If you want to see the content of the API notifications in execution logs, you can define <code>API_REPORTER_DEBUG=true</code></p>
