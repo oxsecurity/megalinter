@@ -515,14 +515,15 @@ ENV PATH="/root/.composer/vendor/bin:${PATH}"
 RUN sf plugins install @salesforce/plugin-packaging@${SALESFORCE_PLUGIN_PACKAGING_VERSION} \
     && echo y|sf plugins install sfdx-hardis@${SFDX_HARDIS_VERSION} \
     && npm cache clean --force || true \
-    && rm -rf /root/.npm/_cacache \
+    && rm -rf /root/.npm/_cacache
+ENV SF_AUTOUPDATE_DISABLE=true
 #
 # SCALA installation
 # Next line commented because already managed by another linter
 # ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 # Next line commented because already managed by another linter
 # ENV PATH="$JAVA_HOME/bin:${PATH}"
-    && curl --retry-all-errors --retry 10 -fLo coursier https://git.io/coursier-cli && \
+RUN curl --retry-all-errors --retry 10 -fLo coursier https://git.io/coursier-cli && \
         chmod +x coursier
 
 #
