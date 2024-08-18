@@ -34,6 +34,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [terrascan](https://runterrascan.io/) fixed errors and removed redundant code
   - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) various performance improvements and ability to specify sln or proj paths
   - [swiftlint](https://github.com/realm/SwiftLint) Remove deprecated argument --path
+  - Salesforce linters: Disable SF CLI auto update warning
 
 - Doc
 

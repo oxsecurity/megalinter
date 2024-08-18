@@ -24,6 +24,7 @@ install:
           && echo y|sf plugins install sfdx-hardis@${SFDX_HARDIS_VERSION} \
           && npm cache clean --force || true \
           && rm -rf /root/.npm/_cacache
+    - ENV SF_AUTOUPDATE_DISABLE=true
   # Salesforce DX
   npm:
     - "@salesforce/cli@${SALESFORCE_CLI_VERSION}"
