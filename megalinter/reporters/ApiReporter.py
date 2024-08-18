@@ -182,6 +182,7 @@ class ApiReporter(Reporter):
                 data["output"] = (
                     output[: self.TRUNCATE_LOKI_CHARS_LENGTH] + "\n(truncated)"
                 )
+            data["output"] = data["output"].splitlines()
             stream = {
                 "stream": stream_info,
                 "values": [[str(time_ns), json.dumps(data)]],
