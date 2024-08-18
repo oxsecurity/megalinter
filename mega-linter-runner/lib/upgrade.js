@@ -474,6 +474,20 @@ jobs:
         test: "oxsecurity/megalinter:v7",
         testRes: `oxsecurity/megalinter:${DEFAULT_RELEASE}`,
       },
+      // Create pull request action
+      {
+        regex: /peter-evans\/create-pull-request@v5/gm,
+        replacement: `peter-evans/create-pull-request@v6`,
+        test: "peter-evans/create-pull-request@v5",
+        testRes: `peter-evans/create-pull-request@v6`,
+      },
+      // Auto-commit action
+      {
+        regex: /stefanzweifel\/git-auto-commit-action@v4/gm,
+        replacement: `stefanzweifel/git-auto-commit-action@v5`,
+        test: "stefanzweifel/git-auto-commit-action@v4",
+        testRes: `stefanzweifel/git-auto-commit-action@v5`,
+      },
       // All remaining cases... cross fingers :)
       {
         regex: /megalinter\/megalinter/gm,
