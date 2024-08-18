@@ -16,6 +16,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - SQL_SQL_LINT: [Project no longer maintained](https://github.com/joereynolds/sql-lint/issues/262)
 
 - Core
+  - Hide to linters by default all environment variables that contain **TOKEN**, **USERNAME** or **PASSWORD**
   - Allow to override CLI_LINT_MODE when defined as project
   - Allow to use absolute paths for LINTER_RULES_PATH
   - Allow to update variables from [PRE/POST Commands](https://megalinter.io/latest/config-precommands/) using `output_variables` property
