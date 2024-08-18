@@ -1,11 +1,11 @@
-import { default as glob } from "glob-promise";
+import { glob } from "glob";
 import { default as fs } from "fs-extra";
 import * as path from "path";
 import { default as c } from 'chalk';
 import prompts from "prompts";
 import { OXSecuritySetup } from "./ox-setup.js";
 import { asciiArt } from "./ascii.js";
-import { DEFAULT_RELEASE } from "./config.js";
+import { DEFAULT_RELEASE, GLOB_IGNORE_PATTERNS } from "./config.js";
 
 export class MegaLinterUpgrader {
   constructor() {
@@ -545,11 +545,11 @@ jobs:
 
   async applyReplacements() {
     // List yaml and shell files
-    const globPattern1 = process.cwd() + `/**/*.{yaml,yml,sh,bash}`;
-    const files1 = await glob(globPattern1, { cwd: process.cwd(), dot: true });
+    const globPattern1 = `**/*.{yaml,yml,sh,bash}`;
+    const files1 = await glob(globPattern1, { cwd: process.cwd(), dot: true, ignore: GLOB_IGNORE_PATTERNS });
     // List Jenkinsfile
-    const globPattern2 = process.cwd() + `/**/Jenkinsfile`;
-    const files2 = await glob(globPattern2, { cwd: process.cwd(), dot: true });
+    const globPattern2 = `**/Jenkinsfile`;
+    const files2 = await glob(globPattern2, { cwd: process.cwd(), dot: true, ignore: GLOB_IGNORE_PATTERNS });
 
     // Analyze all files and make appropriate replacements
     const allFiles = files1.concat(files2);

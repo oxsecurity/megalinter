@@ -12,6 +12,9 @@
     "lib",
     "generators"
   ],
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "bin": {
     "mega-linter-runner": "lib/index.js"
   },
@@ -82,7 +85,7 @@
     "chalk": "^5.3.0",
     "find-package-json": "^1.2.0",
     "fs-extra": "^11.1.1",
-    "glob-promise": "^6.0.5",
+    "glob": "^11.0.0",
     "mem-fs": "^4.0.0",
     "open": "^10.0.2",
     "optionator": "^0.9.3",
