@@ -28,6 +28,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Linters enhancements
   - [bandit](https://megalinter.io/latest/descriptors/python_bandit/) Call bandit with quiet mode to generate less logs
+  - [yamllint](https://megalinter.io/latest/descriptors/yaml_yamllint) Fix yamllint default format to avoid special characters or GitHub sections in text logs
 
 - Reporters
   - New [**ApiReporter**](https://megalinter.io/beta/reporters/ApiReporter/) (can be used to build Grafana dashboards)
