@@ -53,6 +53,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - AutoUpdate linters: Always create a PR if the job has been started manually
   - Add `skip_checkout: true` to default MegaLinter GitHub Action template
 
+- mega-linter-runner
+  - Add new rules to upgrade to MegaLinter v8
+  - Replace glob-promise by glob library
+
 - Linter versions upgrades
   - [protolint](https://github.com/yoheimuta/protolint) from 0.50.2 to **0.50.3** on 2024-07-07
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.9.0 to **1.9.1** on 2024-07-07
