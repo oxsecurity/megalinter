@@ -36,19 +36,6 @@ MegaLinter is an **Open-Source** tool for **CI/CD workflows** that analyzes the 
 
 Supporting [**60** languages](#languages), [**23** formats](#formats), [**20** tooling formats](#tooling-formats) and **ready to use out of the box**, as a GitHub action or any CI system **highly configurable** and **free for all uses**.
 
-MegaLinter has **native integrations** with many of the major CI/CD tools of the market.
-
-[![GitHub](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/github.png?raw=true>)](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/GitHubCommentReporter.md)
-[![Gitlab](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/gitlab.png?raw=true>)](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/GitlabCommentReporter.md)
-[![Azure](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/azure.png?raw=true>)](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/AzureCommentReporter.md)
-[![Bitbucket](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/bitbucket.png?raw=true>)](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/BitbucketCommentReporter.md)
-[![Jenkins](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/jenkins.png?raw=true>)](https://github.com/oxsecurity/megalinter/tree/main/docs/install-jenkins.md)
-[![Drone](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/drone.png?raw=true>)](https://github.com/oxsecurity/megalinter/tree/main/docs/install-drone.md)
-[![Concourse](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/concourse.png?raw=true>)](https://github.com/oxsecurity/megalinter/tree/main/docs/install-concourse.md)
-[![Docker](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/docker.png?raw=true>)](https://github.com/oxsecurity/megalinter/tree/main/docs/install-docker.md)
-[![SARIF](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/sarif.png?raw=true>)](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/SarifReporter.md)
-[![Grafana](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/grafana.png?raw=true>)](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/ApiReporter.md)
-
 [**Switch to MegaLinter v7 !**](https://github.com/oxsecurity/megalinter/issues/2692)
 
 [![Upgrade to v7 Video](https://img.youtube.com/vi/6NSBzq01S9g/0.jpg)](https://www.youtube.com/watch?v=6NSBzq01S9g)

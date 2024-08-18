@@ -195,6 +195,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [ruff](https://github.com/astral-sh/ruff) from 0.6.0 to **0.6.1** on 2024-08-16
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.13.3 to **8.14.1** on 2024-08-17
   - [csharpier](https://csharpier.com/) from 0.28.2 to **0.29.0** on 2024-08-17
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.52.0 to **0.53.0** on 2024-08-18
 <!-- linter-versions-end -->
 
 ## [v7.13.0] - 2024-07-06
