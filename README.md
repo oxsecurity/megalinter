@@ -401,7 +401,7 @@ description: You can use latest release or beta version of MegaLinter, know the 
 -->
 ### Which version to use ?
 
-The following instructions examples are using latest MegaLinter stable version (**v7** , always corresponding to the [latest release](https://github.com/oxsecurity/megalinter/releases))
+The following instructions examples are using latest MegaLinter stable version (**v8** , always corresponding to the [latest release](https://github.com/oxsecurity/megalinter/releases))
 
 - Docker image: `oxsecurity/megalinter:v8`
 - GitHub Action: `oxsecurity/megalinter@v8`
@@ -730,7 +730,7 @@ Note: make sure you have `job.plan.get` step which gets `repo` containing your r
             type: docker-image
             source:
               repository: oxsecurity/megalinter
-              tag: v7
+              tag: v8
           inputs:
             - name: repo
           run:
@@ -765,7 +765,7 @@ image_resource:
   type: docker-image
   source:
     repository: oxsecurity/megalinter
-    tag: v7
+    tag: v8
 
 inputs:
 - name: repo

@@ -128,6 +128,9 @@ DEPRECATED_LINTERS = [
     "SPELL_MISSPELL",  # Removed in v7
     "TERRAFORM_CHECKOV",  # Removed in v7
     "TERRAFORM_KICS",  # Removed in v7
+    "CSS_SCSSLINT",  # Removed in v8
+    "OPENAPI_SPECTRAL",  # Removed in v8
+    "SQL_SQL_LINT",  # Removed in v8
 ]
 
 DESCRIPTORS_FOR_BUILD_CACHE = None
