@@ -199,6 +199,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [tflint](https://github.com/terraform-linters/tflint) from 0.52.0 to **0.53.0** on 2024-08-18
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.66.3 to **0.66.8** on 2024-08-18
   - [checkov](https://www.checkov.io/) from 3.2.228 to **3.2.229** on 2024-08-18
+  - [checkov](https://www.checkov.io/) from 3.2.229 to **3.2.230** on 2024-08-18
 <!-- linter-versions-end -->
 
 ## [v7.13.0] - 2024-07-06
