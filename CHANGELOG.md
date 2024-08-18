@@ -26,6 +26,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [MegaLinter](https://blog.stephane-robert.info/docs/developper/autres-outils/linters/megalinter/), by [Stéphane Robert](https://www.linkedin.com/in/stephanerobert1/), from [3DS OutScale](https://fr.outscale.com/)
 
 - Linters enhancements
+  - [bandit](https://megalinter.io/latest/descriptors/python_bandit/) Call bandit with quiet mode to generate less logs
 
 - Reporters
   - New [**ApiReporter**](https://megalinter.io/beta/reporters/ApiReporter/) (can be used to build Grafana dashboards)

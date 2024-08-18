@@ -190,6 +190,8 @@ linters:
     linter_rules_inline_disable_url: https://bandit.readthedocs.io/en/latest/config.html#suppressing-individual-lines
     cli_lint_mode: list_of_files
     config_file_name: ".bandit.yml"
+    cli_lint_extra_args:
+      - --quiet
     cli_sarif_args:
       - --format
       - sarif
