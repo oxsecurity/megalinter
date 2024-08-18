@@ -37,6 +37,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Salesforce linters: Disable SF CLI auto update warning
 
 - Doc
+  - Add images and links to Git, CI/CD & other tools integrations at the beginning of the README
 
 - Flavors
 
