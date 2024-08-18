@@ -439,7 +439,7 @@ jobs:
       {
         regex: /oxsecurity\/megalinter-([a-z]*):v7\.(.*)/gm,
         replacement: `oxsecurity/megalinter-$1:${DEFAULT_RELEASE}`,
-        test: "oxsecurity/megalinter-python:v6.1.2",
+        test: "oxsecurity/megalinter-python:v7.1.2",
         testRes: `oxsecurity/megalinter-python:${DEFAULT_RELEASE}`,
       },
       {
