@@ -421,7 +421,7 @@ def check_updated_file(file, repo_home, changed_files=None):
 
 
 def normalize_log_string(str_in):
-    if str_in == "":
+    if str_in == "" or str_in is None:
         return ""
     str_in = ANSI_ESCAPE_REGEX.sub("", str_in)
     for replacement in LIST_OF_REPLACEMENTS:
