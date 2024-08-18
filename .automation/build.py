@@ -855,7 +855,7 @@ def generate_documentation():
         + "(#languages), "
         + f"[**{len(linters_by_type['format'])}** formats](#formats), "
         + f"[**{len(linters_by_type['tooling_format'])}** tooling formats](#tooling-formats) "
-        + "and **ready to use out of the box**, as a GitHub action or any CI system "
+        + "and **ready to use out of the box**, as a GitHub action or any CI system, "
         + "**highly configurable** and **free for all uses**.\n\n"
         + "MegaLinter has **native integrations** with many of the major CI/CD tools of the market.\n\n"
         + "[![GitHub](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/github.png?raw=true>)](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/GitHubCommentReporter.md)\n"  # noqa: E501
