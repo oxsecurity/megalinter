@@ -50,32 +50,7 @@ MegaLinter has **native integrations** with many of the major CI/CD tools of the
 
 <!-- online-doc-end -->
 
-________
-
 [![_**See Article on Medium**_](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/megalinter-article.jpg?raw=true)](https://nicolas.vuillamy.fr/improve-uniformize-and-secure-your-code-base-with-megalinter-62ebab422c1)
-
-[![_**See Article on Medium**_](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/megalinter-article-2.jpg?raw=true)](https://nicolas.vuillamy.fr/megalinter-sells-his-soul-and-joins-ox-security-2a91a0027628)
-
-<!-- NV: remove for now until we have a branded archi table
-[![Archi](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/compare-table.png?raw=true)](https://nicolas.vuillamy.fr/improve-uniformize-and-secure-your-code-base-with-megalinter-62ebab422c1) -->
-
-________
-
-_Process_
-
-![Archi](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/archi.png?raw=true>)
-
-________
-
-_Console reporter_
-
-![Screenshot](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/ConsoleReporter.jpg?raw=true>)
-
-________
-
-_Github PR reporter_
-
-![Screenshot](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/GitHubCommentReporter.jpg?raw=true>)
 
 <!-- table-of-contents-start -->
 
