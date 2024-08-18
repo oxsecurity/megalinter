@@ -97,7 +97,7 @@ check = "mypy --install-types --non-interactive {args:megalinter}"
 
 [tool.coverage.run]
 source_pkgs = ["megalinter"]
-branch = true
+branch = false
 parallel = true
 omit = ["megalinter/__about__.py"]
 
