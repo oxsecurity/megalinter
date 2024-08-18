@@ -9,7 +9,13 @@ Send results as logs and metrics to observability tools, like Grafana.
 
 ## Usage
 
-TODO
+Use Grafana default MegaLinter dashboards, and build new ones to monitor everything you need from MegaLinter logs and metrics.
+
+![](../assets/images/screenshot-grafana-1.jpg)
+
+![](../assets/images/screenshot-grafana-2.jpg)
+
+If you create new useful dashboards, please share them with the MegaLinter community by exporting them then create a pull request :)
 
 ## Logs Configuration
 
@@ -52,7 +58,7 @@ Example of logs sent to Loki:
    "values": [
     [
      "1723831050362439098",
-     "{\"linterDocUrl\": \"https://megalinter.io/latest/descriptors/api_spectral\", \"jobUrl\": \"\", \"severity\": \"success\", \"severityIcon\": \"\\u2705\", \"cliLintMode\": \"file\", \"numberFilesFound\": 1, \"numberErrorsFound\": 0, \"elapsedTime\": 1.54}"
+     "{\"linterDocUrl\": \"https://megalinter.io/latest/descriptors/api_spectral\", \"jobUrl\": \"\", \"severity\": \"success\", \"severityIcon\": \"\\u2705\", \"cliLintMode\": \"file\", \"numberFilesFound\": 1, \"numberErrorsFound\": 0, \"elapsedTime\": 1.54, \"output\": [\"text output from linter console logs\"]}"
     ]
    ]
   },
@@ -70,7 +76,7 @@ Example of logs sent to Loki:
    "values": [
     [
      "1723831050362439098",
-     "{\"linterDocUrl\": \"https://megalinter.io/latest/descriptors/bash_shellcheck\", \"jobUrl\": \"\", \"severity\": \"success\", \"severityIcon\": \"\\u2705\", \"cliLintMode\": \"list_of_files\", \"numberFilesFound\": 5, \"numberErrorsFound\": 0, \"elapsedTime\": 0.14}"
+     "{\"linterDocUrl\": \"https://megalinter.io/latest/descriptors/bash_shellcheck\", \"jobUrl\": \"\", \"severity\": \"success\", \"severityIcon\": \"\\u2705\", \"cliLintMode\": \"list_of_files\", \"numberFilesFound\": 5, \"numberErrorsFound\": 0, \"elapsedTime\": 0.14, \"output\": [\"text output from linter console logs\"]}"
     ]
    ]
   },
@@ -88,7 +94,7 @@ Example of logs sent to Loki:
    "values": [
     [
      "1723831050362439098",
-     "{\"linterDocUrl\": \"https://megalinter.io/alpha/descriptors/markdown_markdownlint\", \"jobUrl\": \"\", \"severity\": \"warning\", \"severityIcon\": \"\\u26a0\\ufe0f\", \"cliLintMode\": \"list_of_files\", \"numberFilesFound\": 264, \"numberErrorsFound\": 291, \"numberErrorsFixed\": 0, \"elapsedTime\": 30.55}"
+     "{\"linterDocUrl\": \"https://megalinter.io/alpha/descriptors/markdown_markdownlint\", \"jobUrl\": \"\", \"severity\": \"warning\", \"severityIcon\": \"\\u26a0\\ufe0f\", \"cliLintMode\": \"list_of_files\", \"numberFilesFound\": 264, \"numberErrorsFound\": 291, \"numberErrorsFixed\": 0, \"elapsedTime\": 30.55, \"output\": [\"text output from linter console logs\"]}"
     ]
    ]
   }
@@ -287,35 +293,35 @@ _Example with GitHub Workflow:_
 
 ### Download MegaLinter dashboards
 
-TODO FROM HERE
+Download all MegaLinter Dashboard JSON files from [this MegaLinter repo folder](https://github.com/oxsecurity/megalinter/tree/main/docs/grafana)
 
-![](assets/images/grafana-config-16.jpg)
+![](../assets/images/grafana-config-16.jpg)
 
 ### Create Dashboard folder
 
 Go in menu **Dashboards** then click on **New** then **New folder**
 
-![](assets/images/grafana-config-14.jpg)
+![](../assets/images/grafana-config-14.jpg)
 
 ___
 
 Create folder `MegaLinter Dashboards`
 
-![](assets/images/grafana-config-15.jpg)
+![](../assets/images/grafana-config-15.jpg)
 
-### Import default sfdx-hardis Grafana Dashboards
+### Import default MegaLinter Grafana Dashboards
 
 For each downloaded Dashboard JSON file, process the following actions.
 
 Click **New** then **Import**
 
-![](assets/images/grafana-config-17.jpg)
+![](../assets/images/grafana-config-17.jpg)
 
 ___
 
 Click on **Upload Dashboard JSON File** and select one of the Dashboards JSON files you downloaded on your computer.
 
-![](assets/images/grafana-config-18.jpg)
+![](../assets/images/grafana-config-18.jpg)
 
 ___
 
@@ -323,17 +329,12 @@ ___
 - Select your Loki or Prometheus source. They can be:
   - **grafanacloud-YOURORGNAME-logs (Loki)**
   - **grafanacloud-YOURORGNAME-prom (Prometheus)**
+- Click import
 
-![](assets/images/grafana-config-19.jpg)
-
-___
-
-Click **Import**
-
-![](assets/images/grafana-config-20.jpg)
+![](../assets/images/grafana-config-19.jpg)
 
 __
 
 Repeat the operation for all Dashboard JSON files, and you're all set !
 
-![](assets/images/grafana-config-21.jpg)
+![](../assets/images/grafana-config-21.jpg)

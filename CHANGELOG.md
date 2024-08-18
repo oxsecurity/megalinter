@@ -24,6 +24,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Media
   - [MegaLinter: un linter pour les gouverner tous](https://blog.wescale.fr/megalinter-un-linter-pour-les-gouverner-tous) (FR), by [Guillaume Arnaud](https://www.linkedin.com/in/guillaume-arnaud/) from [WeScale](https://www.wescale.fr/)
   - [MegaLinter](https://blog.stephane-robert.info/docs/developper/autres-outils/linters/megalinter/), by [Stéphane Robert](https://www.linkedin.com/in/stephanerobert1/), from [3DS OutScale](https://fr.outscale.com/)
+  - [30 Seconds to Setup MegaLinter: Your Go-To Tool for Automated Code Quality](https://medium.com/@caodanju/30-seconds-to-setup-megalinter-your-go-to-tool-for-automated-code-quality-and-iac-security-969d90a5a99c), by [Peng Cao](https://www.linkedin.com/in/peng-cao-83b6a2103/) |
 
 - Linters enhancements
   - [bandit](https://megalinter.io/latest/descriptors/python_bandit/) Call bandit with quiet mode to generate less logs
