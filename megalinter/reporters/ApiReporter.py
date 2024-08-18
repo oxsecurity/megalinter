@@ -10,8 +10,7 @@ import os
 import time
 
 import requests
-from megalinter import Reporter, config
-from megalinter import utils
+from megalinter import Reporter, config, utils
 from megalinter.constants import ML_DOC_URL_DESCRIPTORS_ROOT
 from megalinter.utils import get_git_context_info
 
@@ -26,7 +25,7 @@ class ApiReporter(Reporter):
     payloadFormatted: dict = {}
     api_metrics_url: str | None = None
     metrics_payload: str = ""
-    MAX_LOKI_LOG_LENGTH = 200000  
+    MAX_LOKI_LOG_LENGTH = 200000
     TRUNCATE_LOKI_CHARS_LENGTH = 5000
 
     def __init__(self, params=None):
@@ -177,10 +176,12 @@ class ApiReporter(Reporter):
             data.update(self.payload["data"])
             # Truncate if too long
             payload_data_json = json.dumps(data)
-            body_bytes_len = len(payload_data_json.encode('utf-8'))
+            body_bytes_len = len(payload_data_json.encode("utf-8"))
             if body_bytes_len > self.MAX_LOKI_LOG_LENGTH:
-                output : str = data["output"]
-                data["output"] = output[:self.TRUNCATE_LOKI_CHARS_LENGTH]+ "\n(truncated)"
+                output: str = data["output"]
+                data["output"] = (
+                    output[: self.TRUNCATE_LOKI_CHARS_LENGTH] + "\n(truncated)"
+                )
             stream = {
                 "stream": stream_info,
                 "values": [[str(time_ns), json.dumps(data)]],
