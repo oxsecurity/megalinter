@@ -2881,9 +2881,9 @@
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#import-default-sfdx-hardis-grafana-dashboards">
+<a class="md-nav__link" href="#import-default-megalinter-grafana-dashboards">
 <span class="md-ellipsis">
-      Import default sfdx-hardis Grafana Dashboards
+      Import default MegaLinter Grafana Dashboards
     </span>
 </a>
 </li>
@@ -3383,9 +3383,9 @@
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#import-default-sfdx-hardis-grafana-dashboards">
+<a class="md-nav__link" href="#import-default-megalinter-grafana-dashboards">
 <span class="md-ellipsis">
-      Import default sfdx-hardis Grafana Dashboards
+      Import default MegaLinter Grafana Dashboards
     </span>
 </a>
 </li>
@@ -3403,7 +3403,10 @@
 <h1 id="api-reporter-beta">API Reporter (beta)</h1>
 <p>Send results as logs and metrics to observability tools, like Grafana.</p>
 <h2 id="usage">Usage</h2>
-<p>TODO</p>
+<p>Use Grafana default MegaLinter dashboards, and build new ones to monitor everything you need from MegaLinter logs and metrics.</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../../assets/images/screenshot-grafana-1.jpg"><img alt="" src="../../assets/images/screenshot-grafana-1.jpg"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../../assets/images/screenshot-grafana-2.jpg"><img alt="" src="../../assets/images/screenshot-grafana-2.jpg"/></a></p>
+<p>If you create new useful dashboards, please share them with the MegaLinter community by exporting them then create a pull request :)</p>
 <h2 id="logs-configuration">Logs Configuration</h2>
 <p>Define the following CI/CD variables:</p>
 <ul>
@@ -3437,7 +3440,7 @@ API_REPORTER_BEARER_TOKEN=DDHGHfgfgjfhQESRDTHFKGKHFswgFHDHGDH
    "values": [
     [
      "1723831050362439098",
-     "{\"linterDocUrl\": \"https://megalinter.io/latest/descriptors/api_spectral\", \"jobUrl\": \"\", \"severity\": \"success\", \"severityIcon\": \"\\u2705\", \"cliLintMode\": \"file\", \"numberFilesFound\": 1, \"numberErrorsFound\": 0, \"elapsedTime\": 1.54}"
+     "{\"linterDocUrl\": \"https://megalinter.io/latest/descriptors/api_spectral\", \"jobUrl\": \"\", \"severity\": \"success\", \"severityIcon\": \"\\u2705\", \"cliLintMode\": \"file\", \"numberFilesFound\": 1, \"numberErrorsFound\": 0, \"elapsedTime\": 1.54, \"output\": [\"text output from linter console logs\"]}"
     ]
    ]
   },
@@ -3455,7 +3458,7 @@ API_REPORTER_BEARER_TOKEN=DDHGHfgfgjfhQESRDTHFKGKHFswgFHDHGDH
    "values": [
     [
      "1723831050362439098",
-     "{\"linterDocUrl\": \"https://megalinter.io/latest/descriptors/bash_shellcheck\", \"jobUrl\": \"\", \"severity\": \"success\", \"severityIcon\": \"\\u2705\", \"cliLintMode\": \"list_of_files\", \"numberFilesFound\": 5, \"numberErrorsFound\": 0, \"elapsedTime\": 0.14}"
+     "{\"linterDocUrl\": \"https://megalinter.io/latest/descriptors/bash_shellcheck\", \"jobUrl\": \"\", \"severity\": \"success\", \"severityIcon\": \"\\u2705\", \"cliLintMode\": \"list_of_files\", \"numberFilesFound\": 5, \"numberErrorsFound\": 0, \"elapsedTime\": 0.14, \"output\": [\"text output from linter console logs\"]}"
     ]
    ]
   },
@@ -3473,7 +3476,7 @@ API_REPORTER_BEARER_TOKEN=DDHGHfgfgjfhQESRDTHFKGKHFswgFHDHGDH
    "values": [
     [
      "1723831050362439098",
-     "{\"linterDocUrl\": \"https://megalinter.io/alpha/descriptors/markdown_markdownlint\", \"jobUrl\": \"\", \"severity\": \"warning\", \"severityIcon\": \"\\u26a0\\ufe0f\", \"cliLintMode\": \"list_of_files\", \"numberFilesFound\": 264, \"numberErrorsFound\": 291, \"numberErrorsFixed\": 0, \"elapsedTime\": 30.55}"
+     "{\"linterDocUrl\": \"https://megalinter.io/alpha/descriptors/markdown_markdownlint\", \"jobUrl\": \"\", \"severity\": \"warning\", \"severityIcon\": \"\\u26a0\\ufe0f\", \"cliLintMode\": \"list_of_files\", \"numberFilesFound\": 264, \"numberErrorsFound\": 291, \"numberErrorsFixed\": 0, \"elapsedTime\": 30.55, \"output\": [\"text output from linter console logs\"]}"
     ]
    ]
   }
@@ -3647,21 +3650,21 @@ API_REPORTER_METRICS_BASIC_AUTH_PASSWORD=glc_eyJvIjoiMTEzMjI4OCIsIm4iOiJzZmR4arZ
 <p><em>Example with GitHub Workflow:</em></p>
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../../assets/images/grafana-config-13bis.jpg"><img alt="" src="../../assets/images/grafana-config-13bis.jpg"/></a></p>
 <h3 id="download-megalinter-dashboards">Download MegaLinter dashboards</h3>
-<p>TODO FROM HERE</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="assets/images/grafana-config-16.jpg"><img alt="" src="assets/images/grafana-config-16.jpg"/></a></p>
+<p>Download all MegaLinter Dashboard JSON files from <a href="https://github.com/oxsecurity/megalinter/tree/main/docs/grafana">this MegaLinter repo folder</a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../../assets/images/grafana-config-16.jpg"><img alt="" src="../../assets/images/grafana-config-16.jpg"/></a></p>
 <h3 id="create-dashboard-folder">Create Dashboard folder</h3>
 <p>Go in menu <strong>Dashboards</strong> then click on <strong>New</strong> then <strong>New folder</strong></p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="assets/images/grafana-config-14.jpg"><img alt="" src="assets/images/grafana-config-14.jpg"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../../assets/images/grafana-config-14.jpg"><img alt="" src="../../assets/images/grafana-config-14.jpg"/></a></p>
 <hr/>
 <p>Create folder <code>MegaLinter Dashboards</code></p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="assets/images/grafana-config-15.jpg"><img alt="" src="assets/images/grafana-config-15.jpg"/></a></p>
-<h3 id="import-default-sfdx-hardis-grafana-dashboards">Import default sfdx-hardis Grafana Dashboards</h3>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../../assets/images/grafana-config-15.jpg"><img alt="" src="../../assets/images/grafana-config-15.jpg"/></a></p>
+<h3 id="import-default-megalinter-grafana-dashboards">Import default MegaLinter Grafana Dashboards</h3>
 <p>For each downloaded Dashboard JSON file, process the following actions.</p>
 <p>Click <strong>New</strong> then <strong>Import</strong></p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="assets/images/grafana-config-17.jpg"><img alt="" src="assets/images/grafana-config-17.jpg"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../../assets/images/grafana-config-17.jpg"><img alt="" src="../../assets/images/grafana-config-17.jpg"/></a></p>
 <hr/>
 <p>Click on <strong>Upload Dashboard JSON File</strong> and select one of the Dashboards JSON files you downloaded on your computer.</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="assets/images/grafana-config-18.jpg"><img alt="" src="assets/images/grafana-config-18.jpg"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../../assets/images/grafana-config-18.jpg"><img alt="" src="../../assets/images/grafana-config-18.jpg"/></a></p>
 <hr/>
 <ul>
 <li>Let Name, Folder and UID default values</li>
@@ -3670,14 +3673,12 @@ API_REPORTER_METRICS_BASIC_AUTH_PASSWORD=glc_eyJvIjoiMTEzMjI4OCIsIm4iOiJzZmR4arZ
 <li><strong>grafanacloud-YOURORGNAME-prom (Prometheus)</strong></li>
 </ul>
 </li>
+<li>Click import</li>
 </ul>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="assets/images/grafana-config-19.jpg"><img alt="" src="assets/images/grafana-config-19.jpg"/></a></p>
-<hr/>
-<p>Click <strong>Import</strong></p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="assets/images/grafana-config-20.jpg"><img alt="" src="assets/images/grafana-config-20.jpg"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../../assets/images/grafana-config-19.jpg"><img alt="" src="../../assets/images/grafana-config-19.jpg"/></a></p>
 <p>__</p>
 <p>Repeat the operation for all Dashboard JSON files, and you're all set !</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="assets/images/grafana-config-21.jpg"><img alt="" src="assets/images/grafana-config-21.jpg"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../../assets/images/grafana-config-21.jpg"><img alt="" src="../../assets/images/grafana-config-21.jpg"/></a></p>
 </article>
 </div>
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>

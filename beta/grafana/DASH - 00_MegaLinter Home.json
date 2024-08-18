@@ -1,8 +1,8 @@
 {
   "__inputs": [
     {
-      "name": "DS_GRAFANACLOUD-CLOUDITY-LOGS",
-      "label": "grafanacloud-cloudity-logs",
+      "name": "DS_GRAFANACLOUD-MEGALINTER-LOGS",
+      "label": "grafanacloud-megalinter-logs",
       "description": "",
       "type": "datasource",
       "pluginId": "loki",
@@ -55,7 +55,7 @@
     {
       "datasource": {
         "type": "loki",
-        "uid": "${DS_GRAFANACLOUD-CLOUDITY-LOGS}"
+        "uid": "${DS_GRAFANACLOUD-MEGALINTER-LOGS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -116,7 +116,7 @@
         {
           "datasource": {
             "type": "loki",
-            "uid": "${DS_GRAFANACLOUD-CLOUDITY-LOGS}"
+            "uid": "${DS_GRAFANACLOUD-MEGALINTER-LOGS}"
           },
           "editorMode": "builder",
           "expr": "{source=\"MegaLinter\", linterKey=\"$linterKey\"} |= ``",
@@ -161,7 +161,7 @@
         "current": {},
         "datasource": {
           "type": "loki",
-          "uid": "${DS_GRAFANACLOUD-CLOUDITY-LOGS}"
+          "uid": "${DS_GRAFANACLOUD-MEGALINTER-LOGS}"
         },
         "definition": "",
         "includeAll": false,
@@ -183,7 +183,7 @@
         "current": {},
         "datasource": {
           "type": "loki",
-          "uid": "${DS_GRAFANACLOUD-CLOUDITY-LOGS}"
+          "uid": "${DS_GRAFANACLOUD-MEGALINTER-LOGS}"
         },
         "definition": "",
         "includeAll": true,
@@ -212,6 +212,6 @@
   "timezone": "browser",
   "title": "DASH - 00_MegaLinter Home",
   "uid": "megalinter-home-repo",
-  "version": 13,
+  "version": 2,
   "weekStart": ""
 }
