@@ -271,7 +271,7 @@ ___
 
 On the next screen, click on **Copy to clipboard** then paste in your notepad in front of variables **API_REPORTER_BASIC_AUTH_PASSWORD** and **API_REPORTER_METRICS_BASIC_AUTH_PASSWORD**
 
-![](assets/images/grafana-config-12.jpg)
+![](../assets/images/grafana-config-12.jpg)
 
 Example:
 
