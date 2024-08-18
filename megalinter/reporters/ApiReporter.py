@@ -39,11 +39,16 @@ class ApiReporter(Reporter):
             if config.exists(
                 self.master.request_id, "API_REPORTER_URL"
             ) or config.exists(self.master.request_id, "NOTIF_API_URL"):
-                self.is_active = True
                 self.api_url = config.get_first_var_set(
                     self.master.request_id, ["API_REPORTER_URL", "NOTIF_API_URL"]
                 )
+                if self.api_url is not None:
+                    self.is_active = True
+                else:
+                    self.is_active = False
+                    logging.error("API_REPORTER_URL must have a correct value to use ApiReporter")
             else:
+                self.is_active = False
                 logging.error("You need to define API_REPORTER_URL to use ApiReporter")
 
     # Send JSON log to remote api
