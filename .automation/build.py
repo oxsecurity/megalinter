@@ -855,16 +855,16 @@ def generate_documentation():
         + "and **ready to use out of the box**, as a GitHub action or any CI system "
         + "**highly configurable** and **free for all uses**.\n\n"
         + "MegaLinter has **native integrations** with many of the major CI/CD tools of the market.\n\n"
-        + "[![GitHub](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/github.png?raw=true>)](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/GitHubCommentReporter.md)\n" # noqa: E501
-        + "[![Gitlab](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/gitlab.png?raw=true>)](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/GitlabCommentReporter.md)\n" # noqa: E501
-        + "[![Azure](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/azure.png?raw=true>)](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/AzureCommentReporter.md)\n" # noqa: E501
-        + "[![Bitbucket](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/bitbucket.png?raw=true>)](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/BitbucketCommentReporter.md)\n" # noqa: E501
-        + "[![Jenkins](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/jenkins.png?raw=true>)](https://github.com/oxsecurity/megalinter/tree/main/docs/install-jenkins.md)\n" # noqa: E501
-        + "[![Drone](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/drone.png?raw=true>)](https://github.com/oxsecurity/megalinter/tree/main/docs/install-drone.md)\n" # noqa: E501
-        + "[![Concourse](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/concourse.png?raw=true>)](https://github.com/oxsecurity/megalinter/tree/main/docs/install-concourse.md)\n" # noqa: E501
-        + "[![Docker](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/docker.png?raw=true>)](https://github.com/oxsecurity/megalinter/tree/main/docs/install-docker.md)\n" # noqa: E501
-        + "[![SARIF](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/sarif.png?raw=true>)](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/SarifReporter.md)\n" # noqa: E501
-        + "[![Grafana](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/grafana.png?raw=true>)](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/ApiReporter.md)\n\n" # noqa: E501
+        + "[![GitHub](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/github.png?raw=true>)](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/GitHubCommentReporter.md)\n"  # noqa: E501
+        + "[![Gitlab](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/gitlab.png?raw=true>)](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/GitlabCommentReporter.md)\n"  # noqa: E501
+        + "[![Azure](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/azure.png?raw=true>)](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/AzureCommentReporter.md)\n"  # noqa: E501
+        + "[![Bitbucket](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/bitbucket.png?raw=true>)](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/BitbucketCommentReporter.md)\n"  # noqa: E501
+        + "[![Jenkins](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/jenkins.png?raw=true>)](https://github.com/oxsecurity/megalinter/tree/main/docs/install-jenkins.md)\n"  # noqa: E501
+        + "[![Drone](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/drone.png?raw=true>)](https://github.com/oxsecurity/megalinter/tree/main/docs/install-drone.md)\n"  # noqa: E501
+        + "[![Concourse](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/concourse.png?raw=true>)](https://github.com/oxsecurity/megalinter/tree/main/docs/install-concourse.md)\n"  # noqa: E501
+        + "[![Docker](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/docker.png?raw=true>)](https://github.com/oxsecurity/megalinter/tree/main/docs/install-docker.md)\n"  # noqa: E501
+        + "[![SARIF](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/sarif.png?raw=true>)](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/SarifReporter.md)\n"  # noqa: E501
+        + "[![Grafana](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/grafana.png?raw=true>)](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/ApiReporter.md)\n\n"  # noqa: E501
     )
     # Update README.md file
     replace_in_file(
