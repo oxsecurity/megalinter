@@ -22,7 +22,7 @@ DEFAULT_SARIF_REPORT_FILE_NAME = "megalinter-report.sarif"
 DEFAULT_MARKDOWN_SUMMARY_REPORT_FILE_NAME = "megalinter-report.md"
 DEFAULT_SARIF_SCHEMA_URI = "https://json.schemastore.org/sarif-2.1.0.json"
 DEFAULT_SARIF_VERSION = "2.1.0"
-DEFAULT_RELEASE = "v7"
+DEFAULT_RELEASE = "v8"
 
 DEFAULT_DOCKERFILE_APK_PACKAGES = [
     "bash",

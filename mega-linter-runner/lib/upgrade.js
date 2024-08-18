@@ -421,6 +421,73 @@ jobs:
         test: "oxsecurity/megalinter:v6",
         testRes: `oxsecurity/megalinter:${DEFAULT_RELEASE}`,
       },
+      // V7 to V8 migration rules
+      // Github actions flavors
+      {
+        regex: /oxsecurity\/megalinter\/flavors\/([a-z]*)@v7\.(.*)/gm,
+        replacement: `oxsecurity/megalinter/flavors/$1@${DEFAULT_RELEASE}`,
+        test: "oxsecurity/megalinter/flavors/python@v7.1.2",
+        testRes: `oxsecurity/megalinter/flavors/python@${DEFAULT_RELEASE}`,
+      },
+      {
+        regex: /oxsecurity\/megalinter\/flavors\/([a-z]*)@v7/gm,
+        replacement: `oxsecurity/megalinter/flavors/$1@${DEFAULT_RELEASE}`,
+        test: "oxsecurity/megalinter/flavors/python@v7",
+        testRes: `oxsecurity/megalinter/flavors/python@${DEFAULT_RELEASE}`,
+      },
+      // Docker image flavors
+      {
+        regex: /oxsecurity\/megalinter-([a-z]*):v7\.(.*)/gm,
+        replacement: `oxsecurity/megalinter-$1:${DEFAULT_RELEASE}`,
+        test: "oxsecurity/megalinter-python:v7.1.2",
+        testRes: `oxsecurity/megalinter-python:${DEFAULT_RELEASE}`,
+      },
+      {
+        regex: /oxsecurity\/megalinter-([a-z]*):v7/gm,
+        replacement: `oxsecurity/megalinter-$1:${DEFAULT_RELEASE}`,
+        test: "oxsecurity/megalinter-python:v7",
+        testRes: `oxsecurity/megalinter-python:${DEFAULT_RELEASE}`,
+      },
+      // Github actions using main flavor
+      {
+        regex: /oxsecurity\/megalinter@v7\.(.*)/gm,
+        replacement: `oxsecurity/megalinter@${DEFAULT_RELEASE}`,
+        test: "oxsecurity/megalinter@v7.2.4",
+        testRes: `oxsecurity/megalinter@${DEFAULT_RELEASE}`,
+      },
+      {
+        regex: /oxsecurity\/megalinter@v7/gm,
+        replacement: `oxsecurity/megalinter@${DEFAULT_RELEASE}`,
+        test: "oxsecurity/megalinter@v7",
+        testRes: `oxsecurity/megalinter@${DEFAULT_RELEASE}`,
+      },
+      // Docker images using main flavor
+      {
+        regex: /oxsecurity\/megalinter:v7\.(.*)/gm,
+        replacement: `oxsecurity/megalinter:${DEFAULT_RELEASE}`,
+        test: "oxsecurity/megalinter:v7.2.4",
+        testRes: `oxsecurity/megalinter:${DEFAULT_RELEASE}`,
+      },
+      {
+        regex: /oxsecurity\/megalinter:v7/gm,
+        replacement: `oxsecurity/megalinter:${DEFAULT_RELEASE}`,
+        test: "oxsecurity/megalinter:v7",
+        testRes: `oxsecurity/megalinter:${DEFAULT_RELEASE}`,
+      },
+      // Create pull request action
+      {
+        regex: /peter-evans\/create-pull-request@v5/gm,
+        replacement: `peter-evans/create-pull-request@v6`,
+        test: "peter-evans/create-pull-request@v5",
+        testRes: `peter-evans/create-pull-request@v6`,
+      },
+      // Auto-commit action
+      {
+        regex: /stefanzweifel\/git-auto-commit-action@v4/gm,
+        replacement: `stefanzweifel/git-auto-commit-action@v5`,
+        test: "stefanzweifel/git-auto-commit-action@v4",
+        testRes: `stefanzweifel/git-auto-commit-action@v5`,
+      },
       // All remaining cases... cross fingers :)
       {
         regex: /megalinter\/megalinter/gm,

@@ -25,7 +25,7 @@ Example:
             --env-file <(env | grep -e SYSTEM_ -e BUILD_ -e TF_ -e AGENT_) \
             -e SYSTEM_ACCESSTOKEN=$(System.AccessToken) \
             -e GIT_AUTHORIZATION_BEARER=$(System.AccessToken) \
-            oxsecurity/megalinter:v7
+            oxsecurity/megalinter:v8
         displayName: Run MegaLinter
 ```
 

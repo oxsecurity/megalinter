@@ -206,7 +206,7 @@ description: Setup MegaLinter in 5 minutes thanks to its assisted installation t
 **Notes**:
 
 - This repo is a hard-fork of [GitHub Super-Linter](https://github.com/super-linter/super-linter), rewritten in python to add [lots of additional features](#mega-linter-vs-super-linter)
-- If you are a Super-Linter user, you can transparently **switch to MegaLinter and keep the same configuration** (just replace `super-linter/super-linter@v3` by `oxsecurity/megalinter@v7` in your GitHub Action YML file, [like on this PR](https://github.com/nvuillam/npm-groovy-lint/pull/109))
+- If you are a Super-Linter user, you can transparently **switch to MegaLinter and keep the same configuration** (just replace `super-linter/super-linter@v3` by `oxsecurity/megalinter@v8` in your GitHub Action YML file, [like on this PR](https://github.com/nvuillam/npm-groovy-lint/pull/109))
 - If you want to use MegaLinter extra features (recommended), please take 5 minutes to use [MegaLinter assisted installation](https://github.com/oxsecurity/megalinter/tree/main/docs/install-assisted.md)
 - For a hand-holdy example of getting started with mega-linter check out [this blog post](https://ayyjohn.com/posts/linting-a-jekyll-blog-with-mega-linter) by Alec Johnson
 <!-- quick-start-section-end -->
@@ -401,10 +401,10 @@ description: You can use latest release or beta version of MegaLinter, know the 
 -->
 ### Which version to use ?
 
-The following instructions examples are using latest MegaLinter stable version (**v7** , always corresponding to the [latest release](https://github.com/oxsecurity/megalinter/releases))
+The following instructions examples are using latest MegaLinter stable version (**v8** , always corresponding to the [latest release](https://github.com/oxsecurity/megalinter/releases))
 
-- Docker image: `oxsecurity/megalinter:v7`
-- GitHub Action: `oxsecurity/megalinter@v7`
+- Docker image: `oxsecurity/megalinter:v8`
+- GitHub Action: `oxsecurity/megalinter@v8`
 
 You can also use **beta** version (corresponding to the content of main branch)
 
@@ -484,7 +484,7 @@ jobs:
         id: ml
         # You can override MegaLinter flavor used to have faster performances
         # More info at https://megalinter.io/flavors/
-        uses: oxsecurity/megalinter@v7
+        uses: oxsecurity/megalinter@v8
         env:
           # All available variables are described in documentation
           # https://megalinter.io/configuration/
@@ -557,7 +557,7 @@ mega-linter:
   stage: test
   # You can override MegaLinter flavor used to have faster performances
   # More info at https://megalinter.io/flavors/
-  image: oxsecurity/megalinter:v7
+  image: oxsecurity/megalinter:v8
   script: [ "true" ] # if script: ["true"] doesn't work, you may try ->  script: [ "/bin/bash /entrypoint.sh" ]
   variables:
     # All available variables are described in documentation
@@ -609,7 +609,7 @@ Add the following job in your `azure-pipelines.yaml` file
       - checkout: self
 
       # Pull MegaLinter docker image
-      - script: docker pull oxsecurity/megalinter:v7
+      - script: docker pull oxsecurity/megalinter:v8
         displayName: Pull MegaLinter
 
       # Run MegaLinter
@@ -618,7 +618,7 @@ Add the following job in your `azure-pipelines.yaml` file
             --env-file <(env | grep -e SYSTEM_ -e BUILD_ -e TF_ -e AGENT_) \
             -e SYSTEM_ACCESSTOKEN=$(System.AccessToken) \
             -e GIT_AUTHORIZATION_BEARER=$(System.AccessToken) \
-            oxsecurity/megalinter:v7
+            oxsecurity/megalinter:v8
         displayName: Run MegaLinter
 
       # Upload MegaLinter reports
@@ -655,7 +655,7 @@ pipelines:
     - parallel:
       - step:
           name: Run MegaLinter
-          image: oxsecurity/megalinter:v7
+          image: oxsecurity/megalinter:v8
           script:
             - export DEFAULT_WORKSPACE=$BITBUCKET_CLONE_DIR && bash /entrypoint.sh
           artifacts:
@@ -681,7 +681,7 @@ You may activate [File.io reporter](https://megalinter.io/reporters/FileIoReport
 stage('MegaLinter') {
     agent {
         docker {
-            image 'oxsecurity/megalinter:v7'
+            image 'oxsecurity/megalinter:v8'
             args "-u root -e VALIDATE_ALL_CODEBASE=true -v ${WORKSPACE}:/tmp/lint --entrypoint=''"
             reuseNode true
         }
@@ -730,7 +730,7 @@ Note: make sure you have `job.plan.get` step which gets `repo` containing your r
             type: docker-image
             source:
               repository: oxsecurity/megalinter
-              tag: v7
+              tag: v8
           inputs:
             - name: repo
           run:
@@ -765,7 +765,7 @@ image_resource:
   type: docker-image
   source:
     repository: oxsecurity/megalinter
-    tag: v7
+    tag: v8
 
 inputs:
 - name: repo
@@ -836,7 +836,7 @@ workspace:
 steps:
 
 - name: megalinter
-  image: oxsecurity/megalinter:v7
+  image: oxsecurity/megalinter:v8
   environment:
     DEFAULT_WORKSPACE: /tmp/lint
 ```
@@ -858,7 +858,7 @@ workspace:
 steps:
 
 - name: megalinter
-  image: oxsecurity/megalinter:v7
+  image: oxsecurity/megalinter:v8
   environment:
     DEFAULT_WORKSPACE: /tmp/lint
 
@@ -881,14 +881,14 @@ description: Manual instructions to run MegaLinter as a docker image
 
 You can also run megalinter with its Docker container, just execute this command:
 
-`docker run --rm -v /var/run/docker.sock:/var/run/docker.sock:rw -v $(pwd):/tmp/lint:rw oxsecurity/megalinter:v7`
+`docker run --rm -v /var/run/docker.sock:/var/run/docker.sock:rw -v $(pwd):/tmp/lint:rw oxsecurity/megalinter:v8`
 
 **No extra arguments are needed,** however, megalinter will lint all of the files inside the `/tmp/lint` folder, so it may be needed to configure your tool of choice to use the `/tmp/lint` folder as workspace.
 This can also be changed:
 
 _Example:_
 
-`docker run --rm -v /var/run/docker.sock:/var/run/docker.sock:rw -v $(pwd):/example/folder:rw oxsecurity/megalinter:v7`
+`docker run --rm -v /var/run/docker.sock:/var/run/docker.sock:rw -v $(pwd):/example/folder:rw oxsecurity/megalinter:v8`
 
 <!-- install-docker-section-end -->
 <!-- install-locally-section-start -->
