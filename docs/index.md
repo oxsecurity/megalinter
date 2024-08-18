@@ -30,9 +30,20 @@ MegaLinter is an **Open-Source** tool for **CI/CD workflows** that analyzes the 
 
 Supporting [**60** languages](supported-linters.md#languages), [**23** formats](supported-linters.md#formats), [**20** tooling formats](supported-linters.md#tooling-formats) and **ready to use out of the box**, as a GitHub action or any CI system **highly configurable** and **free for all uses**.
 
-[**Switch to MegaLinter v7 !**](https://github.com/oxsecurity/megalinter/issues/2692)
+MegaLinter has **native integrations** with many of the major CI/CD tools of the market.
 
-[![Upgrade to v7 Video](https://img.youtube.com/vi/6NSBzq01S9g/0.jpg)](https://www.youtube.com/watch?v=6NSBzq01S9g)
+[![GitHub](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/github.png?raw=true>)](reporters/GitHubCommentReporter.md)
+[![Gitlab](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/gitlab.png?raw=true>)](reporters/GitlabCommentReporter.md)
+[![Azure](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/azure.png?raw=true>)](reporters/AzureCommentReporter.md)
+[![Bitbucket](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/bitbucket.png?raw=true>)](reporters/BitbucketCommentReporter.md)
+[![Jenkins](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/jenkins.png?raw=true>)](install-jenkins.md)
+[![Drone](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/drone.png?raw=true>)](install-drone.md)
+[![Concourse](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/concourse.png?raw=true>)](install-concourse.md)
+[![Docker](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/docker.png?raw=true>)](install-docker.md)
+[![SARIF](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/sarif.png?raw=true>)](reporters/SarifReporter.md)
+[![Grafana](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/grafana.png?raw=true>)](reporters/ApiReporter.md)
+
+
 <!-- welcome-phrase-end -->
 
 <!-- online-doc-start -->
