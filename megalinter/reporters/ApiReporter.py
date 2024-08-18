@@ -255,17 +255,15 @@ class ApiReporter(Reporter):
         all_metrics_lines = []
         for linter in self.master.linters:
             if linter.is_active is True:
-                metric_id = linter.linter_name
                 metric_line = (
-                    metric_id
-                    + ","
+                    "linter_run,"
                     + metric_base_tags
                     + f"descriptor={linter.descriptor_id},"
                     + f"linter={linter.linter_name},"
                     + f"linterKey={linter.name}"
                     + " "
                 )
-                metric_line += f"metric={linter.total_number_errors}"
+                metric_line += f"numberErrorsFound={linter.total_number_errors}"
                 # Number of files & errors
                 if linter.cli_lint_mode != "project":
                     metric_line += f",numberFilesFound={len(linter.files)}"
