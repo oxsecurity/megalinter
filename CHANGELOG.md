@@ -56,6 +56,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - mega-linter-runner
   - Add new rules to upgrade to MegaLinter v8
   - Replace glob-promise by glob library
+  - Minimum NodeJs version is now 20.x
 
 - Linter versions upgrades
   - [protolint](https://github.com/yoheimuta/protolint) from 0.50.2 to **0.50.3** on 2024-07-07

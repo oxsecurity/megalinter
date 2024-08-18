@@ -12,6 +12,9 @@
     "lib",
     "generators"
   ],
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "bin": {
     "mega-linter-runner": "lib/index.js"
   },
