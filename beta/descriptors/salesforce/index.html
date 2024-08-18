@@ -3340,6 +3340,7 @@ RUN sf plugins install @salesforce/plugin-packaging@${SALESFORCE_PLUGIN_PACKAGIN
     &amp;&amp; echo y|sf plugins install sfdx-hardis@${SFDX_HARDIS_VERSION} \
     &amp;&amp; npm cache clean --force || true \
     &amp;&amp; rm -rf /root/.npm/_cacache
+ENV SF_AUTOUPDATE_DISABLE=true
 </code></pre>
 <ul>
 <li>APK packages (Linux):<ul>
