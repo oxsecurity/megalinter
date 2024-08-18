@@ -46,7 +46,9 @@ class ApiReporter(Reporter):
                     self.is_active = True
                 else:
                     self.is_active = False
-                    logging.error("API_REPORTER_URL must have a correct value to use ApiReporter")
+                    logging.error(
+                        "API_REPORTER_URL must have a correct value to use ApiReporter"
+                    )
             else:
                 self.is_active = False
                 logging.error("You need to define API_REPORTER_URL to use ApiReporter")
