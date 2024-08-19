@@ -23,6 +23,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Flavors
 
 - CI
+  - Free space in release job to avoid no space left on device
 
 - mega-linter-runner
 
