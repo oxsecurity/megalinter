@@ -292,6 +292,17 @@ _Example with GitHub Workflow:_
 
 ![](../assets/images/grafana-config-13bis.jpg)
 
+```yaml
+          API_REPORTER: true
+          API_REPORTER_URL: ${{ secrets.API_REPORTER_URL }}
+          API_REPORTER_BASIC_AUTH_USERNAME: ${{ secrets.API_REPORTER_BASIC_AUTH_USERNAME }}
+          API_REPORTER_BASIC_AUTH_PASSWORD: ${{ secrets.API_REPORTER_BASIC_AUTH_PASSWORD }}
+          API_REPORTER_METRICS_URL: ${{ secrets.API_REPORTER_METRICS_URL }}
+          API_REPORTER_METRICS_BASIC_AUTH_USERNAME: ${{ secrets.API_REPORTER_METRICS_BASIC_AUTH_USERNAME }}
+          API_REPORTER_METRICS_BASIC_AUTH_PASSWORD: ${{ secrets.API_REPORTER_METRICS_BASIC_AUTH_PASSWORD }}
+          API_REPORTER_DEBUG: false
+```
+
 ### Download MegaLinter dashboards
 
 Download all MegaLinter Dashboard JSON files from [this MegaLinter repo folder](https://github.com/oxsecurity/megalinter/tree/main/docs/grafana)
