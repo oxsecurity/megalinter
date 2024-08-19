@@ -28,6 +28,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Linters enhancements
   - [bandit](https://megalinter.io/latest/descriptors/python_bandit/) Call bandit with quiet mode to generate less logs
+  - [grype](https://megalinter.io/latest/descriptors/repository_grype/) Count number of errors returned by Grype
   - [yamllint](https://megalinter.io/latest/descriptors/yaml_yamllint) Fix yamllint default format to avoid special characters or GitHub sections in text logs
 
 - Reporters
