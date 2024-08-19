@@ -12,7 +12,7 @@
 #############################################################################################
 #ARGTOP__START
 # renovate: datasource=docker depName=alpine/terragrunt
-ARG TERRAFORM_TERRASCAN_VERSION=1.18.11
+ARG TERRAFORM_TERRASCAN_VERSION=1.19.2
 #ARGTOP__END
 
 #############################################################################################

@@ -31,7 +31,7 @@ ARG REPOSITORY_TRUFFLEHOG_VERSION=3.81.9
 # renovate: datasource=docker depName=ghcr.io/terraform-linters/tflint
 ARG TERRAFORM_TFLINT_VERSION=0.53.0
 # renovate: datasource=docker depName=alpine/terragrunt
-ARG TERRAFORM_TERRASCAN_VERSION=1.18.11
+ARG TERRAFORM_TERRASCAN_VERSION=1.19.2
 # renovate: datasource=docker depName=alpine/terragrunt
 ARG TERRAFORM_TERRAGRUNT_VERSION=1.9.4
 #ARGTOP__END
