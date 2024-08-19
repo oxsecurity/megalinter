@@ -286,6 +286,8 @@ linters:
       - --output
       - sarif
     cli_version_arg_name: version
+    cli_lint_errors_count: regex_count
+    cli_lint_errors_regex: "(Low|Medium|High|Critical)"
     examples:
       - "grype dir:."
     downgraded_version: true
