@@ -46,11 +46,11 @@ MegaLinter has **native integrations** with many of the major CI/CD tools of the
 
 <!-- welcome-phrase-end -->
 
+![MegaLinter Presentation GIF](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/MegaLinter-banner-Medium.gif?raw=true)
+
 <!-- online-doc-start -->
 
 <!-- online-doc-end -->
-
-[![_**See Article on Medium**_](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/megalinter-article.jpg?raw=true)](https://nicolas.vuillamy.fr/improve-uniformize-and-secure-your-code-base-with-megalinter-62ebab422c1)
 
 <!-- table-of-contents-start -->
 
