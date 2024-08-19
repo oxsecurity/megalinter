@@ -66,6 +66,8 @@ CVE-2024-3817
 # Misc
 # Not fixed yet https://avd.aquasec.com/nvd/2024/cve-2024-29415/
 CVE-2024-29415
+# axios
+CVE-2024-39338
 
 # Dockerfile
 DS001
