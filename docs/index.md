@@ -48,6 +48,10 @@ MegaLinter has **native integrations** with many of the major CI/CD tools of the
 
 ![MegaLinter Presentation GIF](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/MegaLinter-banner-Medium.gif?raw=true)
 
+[**Upgrade to MegaLinter v8 :)**](https://github.com/oxsecurity/megalinter/issues/3913)
+
+[![Upgrade to v8 Video](https://img.youtube.com/vi/vbx-ifa1oXE/0.jpg)](https://www.youtube.com/watch?v=vbx-ifa1oXE)
+
 <!-- online-doc-start -->
 
 <!-- online-doc-end -->
