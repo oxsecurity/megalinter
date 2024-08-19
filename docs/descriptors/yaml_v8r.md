@@ -11,7 +11,7 @@ v8r checks the validity of JSON/YAML files if they have a matching schema define
 
 ## v8r documentation
 
-- Version in MegaLinter: **3.1.1**
+- Version in MegaLinter: **4.0.0**
 - Visit [Official Web Site](https://github.com/chris48s/v8r#readme){target=_blank}
 - See [Index of problems detected by v8r](https://www.schemastore.org/json/){target=_blank}
 
@@ -104,7 +104,7 @@ v8r --ignore-errors myfile.yaml
 ℹ No config file found
 v8r <patterns..>
 
-Validate local json/yaml files against schema(s)
+Validate local json/json5/toml/yaml files against schema(s)
 
 Positionals:
   patterns  One or more filenames or glob patterns describing local file or file
