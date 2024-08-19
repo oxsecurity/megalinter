@@ -213,6 +213,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.18.0 to **8.18.1** on 2024-08-19
   - [v8r](https://github.com/chris48s/v8r) from 3.1.1 to **4.0.0** on 2024-08-19
   - [phpstan](https://phpstan.org/) from 1.11.10 to **1.11.11** on 2024-08-19
+  - [v8r](https://github.com/chris48s/v8r) from 4.0.0 to **4.0.1** on 2024-08-19
 <!-- linter-versions-end -->
 
 ## [v7.13.0] - 2024-07-06
