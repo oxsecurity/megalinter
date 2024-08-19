@@ -11,7 +11,7 @@
 <link href="../BitbucketCommentReporter/" rel="prev"/>
 <link href="../GitHubStatusReporter/" rel="next"/>
 <link href="../../assets/images/mega-linter-square.png" rel="icon"/>
-<meta content="mkdocs-1.6.0, mkdocs-material-9.5.31" name="generator"/>
+<meta content="mkdocs-1.6.0, mkdocs-material-9.5.32" name="generator"/>
 <title>Azure Pipelines Reporter for MegaLinter - MegaLinter by OX Security</title>
 <link href="../../assets/stylesheets/main.3cba04c6.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
@@ -3650,6 +3650,15 @@ API_REPORTER_METRICS_BASIC_AUTH_PASSWORD=glc_eyJvIjoiMTEzMjI4OCIsIm4iOiJzZmR4arZ
 <p>There value must be accessible from MegaLinter Docker image, so you might need to redeclare them in YML workflows depending on your git provider.</p>
 <p><em>Example with GitHub Workflow:</em></p>
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../../assets/images/grafana-config-13bis.jpg"><img alt="" src="../../assets/images/grafana-config-13bis.jpg"/></a></p>
+<pre><code class="language-yaml">          API_REPORTER: true
+          API_REPORTER_URL: ${{ secrets.API_REPORTER_URL }}
+          API_REPORTER_BASIC_AUTH_USERNAME: ${{ secrets.API_REPORTER_BASIC_AUTH_USERNAME }}
+          API_REPORTER_BASIC_AUTH_PASSWORD: ${{ secrets.API_REPORTER_BASIC_AUTH_PASSWORD }}
+          API_REPORTER_METRICS_URL: ${{ secrets.API_REPORTER_METRICS_URL }}
+          API_REPORTER_METRICS_BASIC_AUTH_USERNAME: ${{ secrets.API_REPORTER_METRICS_BASIC_AUTH_USERNAME }}
+          API_REPORTER_METRICS_BASIC_AUTH_PASSWORD: ${{ secrets.API_REPORTER_METRICS_BASIC_AUTH_PASSWORD }}
+          API_REPORTER_DEBUG: false
+</code></pre>
 <h3 id="download-megalinter-dashboards">Download MegaLinter dashboards</h3>
 <p>Download all MegaLinter Dashboard JSON files from <a href="https://github.com/oxsecurity/megalinter/tree/main/docs/grafana">this MegaLinter repo folder</a></p>
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../../assets/images/grafana-config-16.jpg"><img alt="" src="../../assets/images/grafana-config-16.jpg"/></a></p>
@@ -3746,7 +3755,7 @@ API_REPORTER_METRICS_BASIC_AUTH_PASSWORD=glc_eyJvIjoiMTEzMjI4OCIsIm4iOiJzZmR4arZ
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.instant", "navigation.footer"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
-<script src="../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
+<script src="../../assets/javascripts/bundle.471ce7a9.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
 <script src="../../javascripts/tables.js"></script>
 <script src="../../javascripts/gtag.js"></script>
