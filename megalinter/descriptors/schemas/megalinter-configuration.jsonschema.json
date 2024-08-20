@@ -13046,7 +13046,7 @@
       "$id": "#/properties/POWERSHELL_POWERSHELL_CLI_EXECUTABLE",
       "default": [
         [
-          "powershell"
+          "pwsh"
         ]
       ],
       "items": {
@@ -13161,7 +13161,7 @@
       "$id": "#/properties/POWERSHELL_POWERSHELL_FORMATTER_CLI_EXECUTABLE",
       "default": [
         [
-          "powershell"
+          "pwsh"
         ]
       ],
       "items": {
