@@ -28,6 +28,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - mega-linter-runner
 
 - Linter versions upgrades
+  - [checkov](https://www.checkov.io/) from 3.2.232 to **3.2.234** on 2024-08-20
+  - [syft](https://github.com/anchore/syft) from 1.11.0 to **1.11.1** on 2024-08-20
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.14.1 to **8.14.2** on 2024-08-20
 <!-- linter-versions-end -->
 
 ## [v8.0.0] - 2024-08-19
