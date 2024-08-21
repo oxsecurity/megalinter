@@ -31,6 +31,12 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 3.2.232 to **3.2.234** on 2024-08-20
   - [syft](https://github.com/anchore/syft) from 1.11.0 to **1.11.1** on 2024-08-20
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.14.1 to **8.14.2** on 2024-08-20
+  - [golangci-lint](https://golangci-lint.run/) from 1.60.1 to **1.60.2** on 2024-08-21
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.376 to **1.1.377** on 2024-08-21
+  - [checkov](https://www.checkov.io/) from 3.2.234 to **3.2.235** on 2024-08-21
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.18.1 to **8.18.2** on 2024-08-21
+  - [sqlfluff](https://www.sqlfluff.com/) from 3.1.0 to **3.1.1** on 2024-08-21
+  - [terrascan](https://runterrascan.io/) from 1.18.11 to **1.19.1** on 2024-08-21
 <!-- linter-versions-end -->
 
 ## [v8.0.0] - 2024-08-19
