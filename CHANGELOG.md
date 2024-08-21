@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
 - Core
+  - Replace usage of setup.py with a pyproject.toml package install, by @echoix in [#3893](https://github.com/oxsecurity/megalinter/pull/3893)
 
 - Media
 
