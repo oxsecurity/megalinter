@@ -27,6 +27,7 @@ DISABLE_ERRORS_LINTERS:
   - REPOSITORY_GRYPE
   - REPOSITORY_SEMGREP
   - REPOSITORY_TRUFFLEHOG
+  - SPELL_CODESPELL
   - SPELL_LYCHEE
 PRINT_ALL_FILES: false
 FILTER_REGEX_EXCLUDE: '(\.automation/test|\.automation/generated|\.venv|\.github/workflows|docs/javascripts|docs/overrides|docs/json-schemas|flavors|clj-kondo|TEMPLATES)'

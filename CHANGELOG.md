@@ -11,6 +11,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Core
 
 - New linters
+  - Add [codespell](https://github.com/codespell-project/codespell)
 
 - Media
 

@@ -79,6 +79,7 @@
         "SPELL_CSPELL",
         "SPELL_PROSELINT",
         "SPELL_LYCHEE",
+        "SPELL_CODESPELL",
         "SQL_SQLFLUFF",
         "SWIFT_SWIFTLINT",
         "TERRAFORM_TFLINT",

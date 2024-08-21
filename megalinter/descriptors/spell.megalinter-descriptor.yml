@@ -211,3 +211,52 @@ linters:
       dockerfile:
         - FROM lycheeverse/lychee:latest-alpine AS lychee
         - COPY --link --from=lychee /usr/local/bin/lychee /usr/bin/
+
+  # codespell
+  - linter_name: codespell
+    name: SPELL_CODESPELL
+    linter_text: |
+      Fix common misspellings in source code and other text files.
+
+      A file **.codespellrc** can be created at the root of the repository to configure codespell.
+
+      See the [codespell documentation](https://github.com/codespell-project/codespell) for details.
+    test_folder: spell_codespell
+    can_output_sarif: false
+    descriptor_flavors:
+      - all_flavors
+      - cupcake
+      - documentation
+    linter_url: https://github.com/codespell-project/codespell
+    linter_repo: https://github.com/codespell-project/codespell
+    linter_rules_configuration_url: https://github.com/codespell-project/codespell?tab=readme-ov-file#using-a-config-file
+    linter_rules_inline_disable_url: https://github.com/codespell-project/codespell?tab=readme-ov-file#inline-ignore
+    linter_speed: 3
+    file_extensions:
+      - .md
+      - .mdx
+      - .markdown
+      - .html
+      - .htm
+      - .rst
+      - .txt
+      - .json
+      - .jsonc
+      - .json5
+      - .yaml
+      - .yml
+    config_file_name: .codespellrc
+    cli_config_arg_name: --config
+    cli_help_arg_name: --help
+    cli_lint_ignore_arg_name: --skip
+    cli_lint_fix_arg_name: --write-changes
+    cli_version_arg_name: --version
+    cli_lint_mode: list_of_files
+    cli_lint_errors_count: total_lines
+    examples:
+      - codespell
+      - codespell ./my_file ./my_directory
+      - codespell --config codespell.ini --check-filenames test.txt
+    install:
+      pip:
+        - codespell
