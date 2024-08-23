@@ -37,6 +37,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.18.1 to **8.18.2** on 2024-08-21
   - [sqlfluff](https://www.sqlfluff.com/) from 3.1.0 to **3.1.1** on 2024-08-21
   - [terrascan](https://runterrascan.io/) from 1.18.11 to **1.19.1** on 2024-08-21
+  - [ruff](https://github.com/astral-sh/ruff) from 0.6.1 to **0.6.2** on 2024-08-22
 <!-- linter-versions-end -->
 
 ## [v8.0.0] - 2024-08-19
