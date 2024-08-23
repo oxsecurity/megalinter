@@ -39,6 +39,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [terrascan](https://runterrascan.io/) from 1.18.11 to **1.19.1** on 2024-08-21
   - [ruff](https://github.com/astral-sh/ruff) from 0.6.1 to **0.6.2** on 2024-08-22
   - [golangci-lint](https://golangci-lint.run/) from 1.60.2 to **1.60.3** on 2024-08-23
+  - [csharpier](https://csharpier.com/) from 0.29.0 to **0.29.1** on 2024-08-23
 <!-- linter-versions-end -->
 
 ## [v8.0.0] - 2024-08-19
