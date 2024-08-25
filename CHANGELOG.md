@@ -44,6 +44,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 2.33.0 to **2.34.0** on 2024-08-25
   - [swiftlint](https://github.com/realm/SwiftLint) from 0.56.1 to **0.56.2** on 2024-08-25
   - [checkstyle](https://checkstyle.org/) from 10.17.0 to **10.18.0** on 2024-08-25
+  - [v8r](https://github.com/chris48s/v8r) from 4.0.1 to **4.1.0** on 2024-08-25
 <!-- linter-versions-end -->
 
 ## [v8.0.0] - 2024-08-19
