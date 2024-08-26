@@ -99,7 +99,7 @@ FROM python:3.12.5-alpine3.20
 #############################################################################################
 #ARG__START
 # renovate: datasource=npm depName=@salesforce/cli
-ARG SALESFORCE_CLI_VERSION=2.54.6
+ARG SALESFORCE_CLI_VERSION=2.55.6
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
 ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.8.0
 # renovate: datasource=npm depName=sfdx-hardis
@@ -123,7 +123,7 @@ ARG PSSA_VERSION='1.22.0'
 # renovate: datasource=npm depName=@salesforce/sfdx-scanner
 ARG SALESFORCE_SFDX_SCANNER_VERSION=4.4.0
 # renovate: datasource=npm depName=lightning-flow-scanner
-ARG LIGHTNING_FLOW_SCANNER_VERSION=2.33.0
+ARG LIGHTNING_FLOW_SCANNER_VERSION=2.34.0
 #ARG__END
 
 ####################

@@ -38,6 +38,14 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.18.1 to **8.18.2** on 2024-08-21
   - [sqlfluff](https://www.sqlfluff.com/) from 3.1.0 to **3.1.1** on 2024-08-21
   - [terrascan](https://runterrascan.io/) from 1.18.11 to **1.19.1** on 2024-08-21
+  - [ruff](https://github.com/astral-sh/ruff) from 0.6.1 to **0.6.2** on 2024-08-22
+  - [golangci-lint](https://golangci-lint.run/) from 1.60.2 to **1.60.3** on 2024-08-23
+  - [csharpier](https://csharpier.com/) from 0.29.0 to **0.29.1** on 2024-08-23
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.11.1 to **1.11.2** on 2024-08-25
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 2.33.0 to **2.34.0** on 2024-08-25
+  - [swiftlint](https://github.com/realm/SwiftLint) from 0.56.1 to **0.56.2** on 2024-08-25
+  - [checkstyle](https://checkstyle.org/) from 10.17.0 to **10.18.0** on 2024-08-25
+  - [v8r](https://github.com/chris48s/v8r) from 4.0.1 to **4.1.0** on 2024-08-25
 <!-- linter-versions-end -->
 
 ## [v8.0.0] - 2024-08-19
