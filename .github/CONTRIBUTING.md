@@ -119,17 +119,15 @@ In order to be able to run locally a server that serves all the documentation an
 Commands to execute (only one time):
 
 ```bash
-mkdir venv
-python -m venv venv/
-source venv/bin/activate
-pip install --upgrade -r .config/python/dev/requirements.txt
+pip install pipx
+pipx install hatch
+hatch shell
 ```
 
-Commands to run every time you want to enter the environment and run the server:
+Commands to run every time you want to build the docs and run the server:
 
 ```bash
-source venv/bin/activate
-mkdocs serve
+hatch run build:serve
 ```
 
 By default it listens on `http://127.0.0.1:8000/`.

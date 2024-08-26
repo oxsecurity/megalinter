@@ -22,6 +22,20 @@
 #FROM__END
 
 ##################
+# Build wheel for megalinter python package
+##################
+FROM ghcr.io/astral-sh/uv:0.2.37 AS uv
+FROM python:3.12.5-alpine3.20 AS build-ml-core
+WORKDIR /
+COPY pyproject.toml .
+COPY --from=uv /uv /bin/uv
+RUN --mount=type=cache,target=/root/.cache/uv \
+     uv pip install --system -r pyproject.toml
+COPY . .
+RUN --mount=type=cache,target=/root/.cache/uv \
+    uv pip install --system .
+
+##################
 # Get base image #
 ##################
 FROM python:3.12.5-alpine3.20
@@ -149,11 +163,11 @@ ENV JAVA_HOME_17=/usr/lib/jvm/java-17-openjdk
 ################################
 # Installs python dependencies #
 ################################
-COPY megalinter /megalinter
-RUN PYTHONDONTWRITEBYTECODE=1 python /megalinter/setup.py install \
-    && PYTHONDONTWRITEBYTECODE=1 python /megalinter/setup.py clean --all \
-    && rm -rf /var/cache/apk/* \
-    && find . \( -type f \( -iname \*.pyc -o -iname \*.pyo \) -o -type d -iname __pycache__ \) -delete
+COPY --from=build-ml-core pyproject.toml README.md ./
+COPY --from=build-ml-core megalinter /megalinter/
+RUN --mount=type=cache,target=/root/.cache/uv,from=build-ml-core \
+    --mount=from=uv,source=/uv,target=/bin/uv \
+    uv pip install --system -e .
 
 #######################################
 # Copy scripts and rules to container #

@@ -3286,6 +3286,14 @@ def generate_version():
     )
     print(process.stdout)
     print(process.stderr)
+    # Update python project version:
+    process = subprocess.run(
+        ["hatch", "version", RELEASE_TAG],
+        stdout=subprocess.PIPE,
+        text=True,
+        shell=True,
+        check=False,
+    )
     # Update changelog
     if UPDATE_CHANGELOG is True:
         changelog_file = f"{REPO_HOME}/CHANGELOG.md"

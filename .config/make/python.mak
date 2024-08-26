@@ -1,6 +1,5 @@
 # Python default launcher
 python_launcher ?= python3.11
-python_requirements_file ?= .config/python/dev/requirements.txt
 python_requirements_dev_file ?= .config/python/dev/requirements.txt
 
 UV = $(shell command -v uv 2> /dev/null)
@@ -10,7 +9,7 @@ UV = $(shell command -v uv 2> /dev/null)
 python-bootstrap: ## Bootstrap python
 	$(MAKE) python-venv-init
 	$(MAKE) python-venv-upgrade
-	$(MAKE) python-venv-requirements
+	$(MAKE) python-venv-editable-install
 
 .PHONY: python-bootstrap-dev
 python-bootstrap-dev: ## Bootstrap python for dev env
@@ -33,22 +32,22 @@ else
 endif
 
 .PHONY: python-venv-upgrade
-python-venv-upgrade: ## Upgrade venv with pip, setuptools and wheel
+python-venv-upgrade: ## Upgrade venv with pip
 ifeq ($(strip $(UV)),)
 	source .venv/bin/activate
-	pip install --upgrade pip setuptools wheel
+	pip install --upgrade pip
 else
-	$(UV) pip install --upgrade pip setuptools wheel
+	$(UV) pip install --upgrade pip
 endif
 
 
-.PHONY: python-venv-requirements
-python-venv-requirements: ## Install or upgrade from $(python_requirements_file)
+.PHONY: python-venv-editable-install
+python-venv-editable-install: ## Install or upgrade from local project's pyproject.toml
 ifeq ($(strip $(UV)),)
 	source .venv/bin/activate
-	pip install --upgrade --requirement $(python_requirements_file)
+	pip install --upgrade -e .
 else
-	$(UV) pip install --upgrade --requirement $(python_requirements_file)
+	$(UV) pip install --upgrade -e .
 endif
 
 .PHONY: python-venv-requirements-dev
