@@ -25,7 +25,7 @@ FROM ghcr.io/yannh/kubeconform:${KUBERNETES_KUBECONFORM_VERSION} AS kubeconform
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.2.37 AS uv
+FROM ghcr.io/astral-sh/uv:0.3.4 AS uv
 FROM python:3.12.5-alpine3.20 AS build-ml-core
 WORKDIR /
 COPY pyproject.toml .
