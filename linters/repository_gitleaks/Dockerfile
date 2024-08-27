@@ -25,7 +25,7 @@ FROM zricethezav/gitleaks:${REPOSITORY_GITLEAKS_VERSION} AS gitleaks
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.3.4 AS uv
+FROM ghcr.io/astral-sh/uv:0.3.5 AS uv
 FROM python:3.12.5-alpine3.20 AS build-ml-core
 WORKDIR /
 COPY pyproject.toml .
