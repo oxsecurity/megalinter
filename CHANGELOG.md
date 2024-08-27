@@ -48,6 +48,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [v8r](https://github.com/chris48s/v8r) from 4.0.1 to **4.1.0** on 2024-08-25
   - [php-cs-fixer](https://cs.symfony.com/) from 3.62.0 to **3.63.1** on 2024-08-26
   - [checkov](https://www.checkov.io/) from 3.2.235 to **3.2.236** on 2024-08-26
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.10.3 to **1.11.0** on 2024-08-27
+  - [phpstan](https://phpstan.org/) from 1.11.11 to **1.12.0** on 2024-08-27
+  - [checkov](https://www.checkov.io/) from 3.2.236 to **3.2.238** on 2024-08-27
 <!-- linter-versions-end -->
 
 ## [v8.0.0] - 2024-08-19
