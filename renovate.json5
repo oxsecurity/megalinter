@@ -12,7 +12,7 @@
   "packageRules": [
     {
       "matchPackageNames": ["uv"],
-      "schedule": ["weekly"]
+      "schedule": ["before 4am on Wednesday"]
     }
   ],
   "customManagers": [
