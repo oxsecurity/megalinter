@@ -51,6 +51,12 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.10.3 to **1.11.0** on 2024-08-27
   - [phpstan](https://phpstan.org/) from 1.11.11 to **1.12.0** on 2024-08-27
   - [checkov](https://www.checkov.io/) from 3.2.236 to **3.2.238** on 2024-08-27
+  - [stylelint](https://stylelint.io) from 16.8.2 to **16.9.0** on 2024-08-28
+  - [djlint](https://djlint.com/) from 1.34.1 to **1.34.2** on 2024-08-28
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.63.1 to **3.63.2** on 2024-08-28
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.377 to **1.1.378** on 2024-08-28
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.9.4 to **1.9.5** on 2024-08-28
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.66.8 to **0.66.9** on 2024-08-28
 <!-- linter-versions-end -->
 
 ## [v8.0.0] - 2024-08-19
