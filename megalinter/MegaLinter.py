@@ -147,6 +147,9 @@ class Megalinter:
         self.flavor_suggestions = None
 
         # Initialize plugins
+        self.pre_commands_results = pre_post_factory.run_pre_commands(
+            self, "before_plugins"
+        )
         plugin_factory.initialize_plugins(self.request_id)
 
         # Copy node_modules in current folder if necessary
@@ -175,7 +178,7 @@ class Megalinter:
             )
 
         # Run user-defined commands
-        self.pre_commands_results = pre_post_factory.run_pre_commands(self)
+        self.pre_commands_results += pre_post_factory.run_pre_commands(self)
         self.post_commands_results = []
         # Initialize linters and gather criteria to browse files
         self.load_linters()
