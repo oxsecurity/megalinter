@@ -10,13 +10,13 @@ from megalinter import config, utils
 
 
 # User defined commands to run before running linters
-def run_pre_commands(mega_linter):
-    return run_pre_post_commands("PRE_COMMANDS", "[Pre]", mega_linter)
+def run_pre_commands(mega_linter, tag="default"):
+    return run_pre_post_commands("PRE_COMMANDS", "[Pre]", mega_linter, tag)
 
 
 # User defined commands to run after running linters
-def run_post_commands(mega_linter):
-    return run_pre_post_commands("POST_COMMANDS", "[Post]", mega_linter)
+def run_post_commands(mega_linter, tag="default"):
+    return run_pre_post_commands("POST_COMMANDS", "[Post]", mega_linter, tag)
 
 
 # Commands to run before running all linters in a descriptor
@@ -52,9 +52,21 @@ def run_linter_post_commands(mega_linter, linter):
 
 
 # Get commands from configuration
-def run_pre_post_commands(key, log_key, mega_linter):
+def run_pre_post_commands(key, log_key, mega_linter, tag="default"):
     pre_or_post_commands = config.get_list(mega_linter.request_id, key, None)
-    return run_commands(pre_or_post_commands, log_key, mega_linter)
+    if pre_or_post_commands is None:
+        logging.debug(f"{log_key} No commands declared in user configuration")
+        return []
+    # Filter commands according to tag
+    applicable_pre_post_commands = []
+    for command in pre_or_post_commands:
+        if (
+            tag == "default"
+            and (("tag" not in command) or (command["tag"] == "default"))
+        ) or (tag != "default" and "tag" in command and command["tag"] == tag):
+            applicable_pre_post_commands += [command]
+    # Run matching commands
+    return run_commands(applicable_pre_post_commands, log_key, mega_linter)
 
 
 # Perform run of commands
