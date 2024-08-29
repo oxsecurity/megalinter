@@ -15,7 +15,7 @@ description: How to use snakemake (configure, ignore files, ignore errors, help 
 
 ## snakemake documentation
 
-- Version in MegaLinter: **8.18.2**
+- Version in MegaLinter: **8.19.0**
 - Visit [Official Web Site](https://snakemake.readthedocs.io/en/stable/){target=_blank}
 
 [![snakemake - GitHub](https://gh-card.dev/repos/snakemake/snakemake.svg?fullname=)](https://github.com/snakemake/snakemake){target=_blank}
@@ -132,14 +132,14 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--d3dag] [--summary] [--detailed-summary] [--archive FILE]
                  [--cleanup-metadata FILE [FILE ...]] [--cleanup-shadow]
                  [--skip-script-cleanup] [--unlock]
-                 [--list-changes {input,code,params}] [--list-input-changes]
+                 [--list-changes {params,code,input}] [--list-input-changes]
                  [--list-params-changes] [--list-untracked]
                  [--delete-all-output | --delete-temp-output]
                  [--keep-incomplete] [--drop-metadata] [--version]
                  [--printshellcmds] [--debug-dag] [--nocolor]
-                 [--quiet [{all,progress,rules} ...]] [--print-compilation]
-                 [--verbose] [--force-use-threads] [--allow-ambiguity]
-                 [--nolock] [--ignore-incomplete]
+                 [--quiet [{all,host,progress,rules} ...]]
+                 [--print-compilation] [--verbose] [--force-use-threads]
+                 [--allow-ambiguity] [--nolock] [--ignore-incomplete]
                  [--max-inventory-time SECONDS] [--latency-wait SECONDS]
                  [--wait-for-files [FILE ...]] [--wait-for-files-file FILE]
                  [--queue-input-wait-time SECONDS] [--notemp] [--all-temp]
@@ -176,7 +176,7 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--scheduler-solver-path SCHEDULER_SOLVER_PATH]
                  [--deploy-sources QUERY CHECKSUM]
                  [--target-jobs TARGET_JOBS [TARGET_JOBS ...]]
-                 [--mode {subprocess,default,remote}]
+                 [--mode {default,subprocess,remote}]
                  [--report-html-path VALUE]
                  [--report-html-stylesheet-path VALUE]
                  [targets ...]
@@ -402,10 +402,9 @@ EXECUTION:
                         configuration. If you rather prefer the traditional
                         way of just considering file modification dates, use '
                         --rerun-trigger mtime'. (default:
-                        frozenset({<RerunTrigger.MTIME: 0>,
-                        <RerunTrigger.CODE: 4>, <RerunTrigger.INPUT: 2>,
-                        <RerunTrigger.SOFTWARE_ENV: 3>, <RerunTrigger.PARAMS:
-                        1>}))
+                        frozenset({<RerunTrigger.INPUT: 2>,
+                        <RerunTrigger.PARAMS: 1>, <RerunTrigger.SOFTWARE_ENV:
+                        3>, <RerunTrigger.MTIME: 0>, <RerunTrigger.CODE: 4>}))
   --force, -f           Force the execution of the selected target or the
                         first rule regardless of already created output.
                         (default: False)
@@ -637,7 +636,7 @@ UTILITIES:
                         (default: False)
   --unlock              Remove a lock on the working directory. (default:
                         False)
-  --list-changes {input,code,params}, --lc {input,code,params}
+  --list-changes {params,code,input}, --lc {params,code,input}
                         List all output files for which the given items (code,
                         input, params) have changed since creation.
   --list-input-changes, --li
@@ -678,7 +677,7 @@ OUTPUT:
                         wildcards) while inferring DAG. This can help to debug
                         unexpected DAG topology or errors. (default: False)
   --nocolor             Do not use a colored output. (default: False)
-  --quiet [{all,progress,rules} ...], -q [{all,progress,rules} ...]
+  --quiet [{all,host,progress,rules} ...], -q [{all,host,progress,rules} ...]
                         Do not output certain information. If used without
                         arguments, do not output any progress or rule
                         information. Defining 'all' results in no information
@@ -817,11 +816,11 @@ BEHAVIOR:
                         and data provenance will be handled by NFS but input
                         and output files will be handled exclusively by the
                         storage provider. (default:
-                        frozenset({<SharedFSUsage.SOFTWARE_DEPLOYMENT: 2>,
-                        <SharedFSUsage.STORAGE_LOCAL_COPIES: 4>,
-                        <SharedFSUsage.SOURCES: 3>,
-                        <SharedFSUsage.INPUT_OUTPUT: 1>,
+                        frozenset({<SharedFSUsage.SOURCES: 3>,
                         <SharedFSUsage.PERSISTENCE: 0>,
+                        <SharedFSUsage.INPUT_OUTPUT: 1>,
+                        <SharedFSUsage.STORAGE_LOCAL_COPIES: 4>,
+                        <SharedFSUsage.SOFTWARE_DEPLOYMENT: 2>,
                         <SharedFSUsage.SOURCE_CACHE: 5>}))
   --scheduler-greediness SCHEDULER_GREEDINESS, --greediness SCHEDULER_GREEDINESS
                         Set the greediness of scheduling. This value between 0
@@ -870,7 +869,7 @@ REMOTE EXECUTION:
                         contain a working snakemake installation that is
                         compatible with (or ideally the same as) the currently
                         running version. (default:
-                        snakemake/snakemake:v8.18.2)
+                        snakemake/snakemake:v8.19.0)
   --immediate-submit, --is
                         Immediately submit all jobs to the cluster instead of
                         waiting for present input files. This will fail,
@@ -992,7 +991,7 @@ INTERNAL:
   --target-jobs TARGET_JOBS [TARGET_JOBS ...]
                         Internal use only: Target particular jobs by
                         RULE:WILDCARD1=VALUE,WILDCARD2=VALUE,...
-  --mode {subprocess,default,remote}
+  --mode {default,subprocess,remote}
                         Internal use only: Set execution mode of Snakemake.
                         (default: default)
 
