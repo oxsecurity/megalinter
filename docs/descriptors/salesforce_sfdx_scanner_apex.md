@@ -19,7 +19,7 @@ See more details in [Help](#help-content)
 
 ## sfdx-scanner-apex documentation
 
-- Version in MegaLinter: **4.4.0**
+- Version in MegaLinter: **4.5.0**
 - Visit [Official Web Site](https://forcedotcom.github.io/sfdx-scanner/){target=_blank}
 - See [How to configure sfdx-scanner-apex rules](https://docs.pmd-code.org/latest/pmd_userdocs_making_rulesets.html){target=_blank}
   - If custom `apex-pmd-ruleset.xml` config file isn't found, [apex-pmd-ruleset.xml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/apex-pmd-ruleset.xml){target=_blank} will be used
@@ -94,7 +94,7 @@ sf scanner:run
 ### Help content
 
 ```shell
-(node:1750) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(node:1753) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
 (Use `node --trace-deprecation ...` to show where the warning was created)
 Scan a codebase with all the rules in the registry, or use parameters to filter the rules based on rulename, category, or ruleset.
 
@@ -149,8 +149,10 @@ GLOBAL FLAGS
 COMMANDS
   scanner run dfa  Scan codebase with all DFA rules by default.
 
-(node:1762) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(node:1765) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
 (Use `node --trace-deprecation ...` to show where the warning was created)
+ ›   Warning: Plugin @salesforce/sfdx-scanner (4.5.0) differs from the version
+ ›   specified by sf (4.4.0)
 Warning: We're continually improving Salesforce Code Analyzer. Tell us what you think! Give feedback at https://research.net/r/SalesforceCA
  name                                                   languages   categories            rulesets [dep] engine            is dfa is pilot
  ────────────────────────────────────────────────────── ─────────── ───────────────────── ────────────── ───────────────── ────── ────────
@@ -167,6 +169,7 @@ Warning: We're continually improving Salesforce Code Analyzer. Tell us what you 
  DebugsShouldUseLoggingLevel                            apex        Best Practices        quickstart     pmd               N      N
  UnusedLocalVariable                                    apex        Best Practices                       pmd               N      N
  AvoidDebugStatements                                   apex        Performance                          pmd               N      N
+ AvoidNonRestrictiveQueries                             apex        Performance                          pmd               N      N
  EagerlyLoadedDescribeSObjectResult                     apex        Performance                          pmd               N      N
  OperationWithHighCostInLoop                            apex        Performance           quickstart     pmd               N      N
  OperationWithLimitsInLoop                              apex        Performance           quickstart     pmd               N      N
@@ -389,7 +392,7 @@ RUN sf plugins install @salesforce/plugin-packaging@${SALESFORCE_PLUGIN_PACKAGIN
 ENV SF_AUTOUPDATE_DISABLE=true
 # Linter install
 # renovate: datasource=npm depName=@salesforce/sfdx-scanner
-ARG SALESFORCE_SFDX_SCANNER_VERSION=4.4.0
+ARG SALESFORCE_SFDX_SCANNER_VERSION=4.5.0
 RUN sf plugins install @salesforce/sfdx-scanner@${SALESFORCE_SFDX_SCANNER_VERSION} \
     && npm cache clean --force || true \
     && rm -rf /root/.npm/_cacache

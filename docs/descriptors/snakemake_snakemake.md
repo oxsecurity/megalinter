@@ -132,7 +132,7 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--d3dag] [--summary] [--detailed-summary] [--archive FILE]
                  [--cleanup-metadata FILE [FILE ...]] [--cleanup-shadow]
                  [--skip-script-cleanup] [--unlock]
-                 [--list-changes {params,code,input}] [--list-input-changes]
+                 [--list-changes {input,params,code}] [--list-input-changes]
                  [--list-params-changes] [--list-untracked]
                  [--delete-all-output | --delete-temp-output]
                  [--keep-incomplete] [--drop-metadata] [--version]
@@ -176,7 +176,7 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--scheduler-solver-path SCHEDULER_SOLVER_PATH]
                  [--deploy-sources QUERY CHECKSUM]
                  [--target-jobs TARGET_JOBS [TARGET_JOBS ...]]
-                 [--mode {default,subprocess,remote}]
+                 [--mode {remote,default,subprocess}]
                  [--report-html-path VALUE]
                  [--report-html-stylesheet-path VALUE]
                  [targets ...]
@@ -636,7 +636,7 @@ UTILITIES:
                         (default: False)
   --unlock              Remove a lock on the working directory. (default:
                         False)
-  --list-changes {params,code,input}, --lc {params,code,input}
+  --list-changes {input,params,code}, --lc {input,params,code}
                         List all output files for which the given items (code,
                         input, params) have changed since creation.
   --list-input-changes, --li
@@ -818,9 +818,9 @@ BEHAVIOR:
                         storage provider. (default:
                         frozenset({<SharedFSUsage.SOURCES: 3>,
                         <SharedFSUsage.PERSISTENCE: 0>,
+                        <SharedFSUsage.SOFTWARE_DEPLOYMENT: 2>,
                         <SharedFSUsage.INPUT_OUTPUT: 1>,
                         <SharedFSUsage.STORAGE_LOCAL_COPIES: 4>,
-                        <SharedFSUsage.SOFTWARE_DEPLOYMENT: 2>,
                         <SharedFSUsage.SOURCE_CACHE: 5>}))
   --scheduler-greediness SCHEDULER_GREEDINESS, --greediness SCHEDULER_GREEDINESS
                         Set the greediness of scheduling. This value between 0
@@ -991,7 +991,7 @@ INTERNAL:
   --target-jobs TARGET_JOBS [TARGET_JOBS ...]
                         Internal use only: Target particular jobs by
                         RULE:WILDCARD1=VALUE,WILDCARD2=VALUE,...
-  --mode {default,subprocess,remote}
+  --mode {remote,default,subprocess}
                         Internal use only: Set execution mode of Snakemake.
                         (default: default)
 
