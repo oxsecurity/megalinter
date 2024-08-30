@@ -85,7 +85,7 @@ ARG SFDX_HARDIS_VERSION=4.53.0
 ARG DETEKT_VERSION=1.23.6
 
 # renovate: datasource=npm depName=@salesforce/sfdx-scanner
-ARG SALESFORCE_SFDX_SCANNER_VERSION=4.4.0
+ARG SALESFORCE_SFDX_SCANNER_VERSION=4.5.0
 # renovate: datasource=npm depName=lightning-flow-scanner
 ARG LIGHTNING_FLOW_SCANNER_VERSION=2.34.0
 #ARG__END
