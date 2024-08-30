@@ -64,6 +64,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [ruff](https://github.com/astral-sh/ruff) from 0.6.2 to **0.6.3** on 2024-08-29
   - [checkov](https://www.checkov.io/) from 3.2.238 to **3.2.239** on 2024-08-29
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.18.2 to **8.19.0** on 2024-08-29
+  - [checkstyle](https://checkstyle.org/) from 10.18.0 to **10.18.1** on 2024-08-30
+  - [pmd](https://pmd.github.io/) from 7.4.0 to **7.5.0** on 2024-08-30
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 4.4.0 to **4.5.0** on 2024-08-30
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 4.4.0 to **4.5.0** on 2024-08-30
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 4.4.0 to **4.5.0** on 2024-08-30
 <!-- linter-versions-end -->
 
 ## [v8.0.0] - 2024-08-19
