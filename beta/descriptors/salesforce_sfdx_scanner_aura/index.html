@@ -3340,7 +3340,7 @@
 <p><strong>Workaround: Restricted to Aura</strong></p>
 <h2 id="sfdx-scanner-aura-documentation">sfdx-scanner-aura documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>4.4.0</strong></li>
+<li>Version in MegaLinter: <strong>4.5.0</strong></li>
 <li>Visit <a href="https://forcedotcom.github.io/sfdx-scanner/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://eslint.org/docs/user-guide/configuring" target="_blank">How to configure sfdx-scanner-aura rules</a></li>
 <li>See <a href="https://eslint.org/docs/user-guide/configuring/rules#disabling-rules" target="_blank">How to disable sfdx-scanner-aura rules in files</a></li>
@@ -3490,7 +3490,7 @@
 <pre><code class="language-shell">sf scanner:run
 </code></pre>
 <h3 id="help-content">Help content</h3>
-<pre><code class="language-shell">(node:1940) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+<pre><code class="language-shell">(node:1946) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
 (Use `node --trace-deprecation ...` to show where the warning was created)
 Scan a codebase with all the rules in the registry, or use parameters to filter the rules based on rulename, category, or ruleset.
 
@@ -3545,8 +3545,10 @@ GLOBAL FLAGS
 COMMANDS
   scanner run dfa  Scan codebase with all DFA rules by default.
 
-(node:1952) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(node:1958) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
 (Use `node --trace-deprecation ...` to show where the warning was created)
+ ›   Warning: Plugin @salesforce/sfdx-scanner (4.5.0) differs from the version
+ ›   specified by sf (4.4.0)
 Warning: We're continually improving Salesforce Code Analyzer. Tell us what you think! Give feedback at https://research.net/r/SalesforceCA
  name                                                   languages   categories            rulesets [dep] engine            is dfa is pilot
  ────────────────────────────────────────────────────── ─────────── ───────────────────── ────────────── ───────────────── ────── ────────
@@ -3563,6 +3565,7 @@ Warning: We're continually improving Salesforce Code Analyzer. Tell us what you 
  DebugsShouldUseLoggingLevel                            apex        Best Practices        quickstart     pmd               N      N
  UnusedLocalVariable                                    apex        Best Practices                       pmd               N      N
  AvoidDebugStatements                                   apex        Performance                          pmd               N      N
+ AvoidNonRestrictiveQueries                             apex        Performance                          pmd               N      N
  EagerlyLoadedDescribeSObjectResult                     apex        Performance                          pmd               N      N
  OperationWithHighCostInLoop                            apex        Performance           quickstart     pmd               N      N
  OperationWithLimitsInLoop                              apex        Performance           quickstart     pmd               N      N
@@ -3784,7 +3787,7 @@ RUN sf plugins install @salesforce/plugin-packaging@${SALESFORCE_PLUGIN_PACKAGIN
 ENV SF_AUTOUPDATE_DISABLE=true
 # Linter install
 # renovate: datasource=npm depName=@salesforce/sfdx-scanner
-ARG SALESFORCE_SFDX_SCANNER_VERSION=4.4.0
+ARG SALESFORCE_SFDX_SCANNER_VERSION=4.5.0
 RUN sf plugins install @salesforce/sfdx-scanner@${SALESFORCE_SFDX_SCANNER_VERSION} \
     &amp;&amp; npm cache clean --force || true \
     &amp;&amp; rm -rf /root/.npm/_cacache
