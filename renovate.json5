@@ -9,6 +9,12 @@
     ":semanticCommits",
     ":label(dependencies)"
   ],
+  "packageRules": [
+    {
+      "matchPackageNames": ["uv"],
+      "schedule": ["before 4am on Wednesday"]
+    }
+  ],
   "customManagers": [
     // This is "customManagers:dockerfileVersions":
     // {

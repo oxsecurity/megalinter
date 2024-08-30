@@ -46,6 +46,13 @@
           "title": "Secured ENV variables",
           "type": "boolean"
         },
+        "tag": {
+          "examples": [
+            "before_plugins"
+          ],
+          "title": "Tag defining at which commands entry point the command will be run",
+          "type": "string"
+        },
         "venv": {
           "examples": [
             "flake8"

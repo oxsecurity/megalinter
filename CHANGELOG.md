@@ -48,6 +48,22 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [v8r](https://github.com/chris48s/v8r) from 4.0.1 to **4.1.0** on 2024-08-25
   - [php-cs-fixer](https://cs.symfony.com/) from 3.62.0 to **3.63.1** on 2024-08-26
   - [checkov](https://www.checkov.io/) from 3.2.235 to **3.2.236** on 2024-08-26
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.10.3 to **1.11.0** on 2024-08-27
+  - [phpstan](https://phpstan.org/) from 1.11.11 to **1.12.0** on 2024-08-27
+  - [checkov](https://www.checkov.io/) from 3.2.236 to **3.2.238** on 2024-08-27
+  - [stylelint](https://stylelint.io) from 16.8.2 to **16.9.0** on 2024-08-28
+  - [djlint](https://djlint.com/) from 1.34.1 to **1.34.2** on 2024-08-28
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.63.1 to **3.63.2** on 2024-08-28
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.377 to **1.1.378** on 2024-08-28
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.9.4 to **1.9.5** on 2024-08-28
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.66.8 to **0.66.9** on 2024-08-28
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2024.08.01 to **2024.08.29** on 2024-08-29
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.11.0 to **1.11.1** on 2024-08-29
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 14.6.0 to **15.0.2** on 2024-08-29
+  - [djlint](https://djlint.com/) from 1.34.2 to **1.35.2** on 2024-08-29
+  - [ruff](https://github.com/astral-sh/ruff) from 0.6.2 to **0.6.3** on 2024-08-29
+  - [checkov](https://www.checkov.io/) from 3.2.238 to **3.2.239** on 2024-08-29
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.18.2 to **8.19.0** on 2024-08-29
 <!-- linter-versions-end -->
 
 ## [v8.0.0] - 2024-08-19
