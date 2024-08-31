@@ -69,6 +69,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 4.4.0 to **4.5.0** on 2024-08-30
   - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 4.4.0 to **4.5.0** on 2024-08-30
   - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 4.4.0 to **4.5.0** on 2024-08-30
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.63.2 to **3.64.0** on 2024-08-31
+  - [rubocop](https://rubocop.org/) from 1.65.1 to **1.66.0** on 2024-08-31
 <!-- linter-versions-end -->
 
 ## [v8.0.0] - 2024-08-19
