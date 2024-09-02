@@ -73,6 +73,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [rubocop](https://rubocop.org/) from 1.65.1 to **1.66.0** on 2024-08-31
   - [pylint](https://pylint.readthedocs.io) from 3.2.6 to **3.2.7** on 2024-08-31
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.81.9 to **3.81.10** on 2024-08-31
+  - [checkov](https://www.checkov.io/) from 3.2.239 to **3.2.241** on 2024-09-02
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.66.9 to **0.67.1** on 2024-09-02
 <!-- linter-versions-end -->
 
 ## [v8.0.0] - 2024-08-19
