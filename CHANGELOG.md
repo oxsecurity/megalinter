@@ -75,6 +75,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.81.9 to **3.81.10** on 2024-08-31
   - [checkov](https://www.checkov.io/) from 3.2.239 to **3.2.241** on 2024-09-02
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.66.9 to **0.67.1** on 2024-09-02
+  - [checkov](https://www.checkov.io/) from 3.2.241 to **3.2.242** on 2024-09-03
 <!-- linter-versions-end -->
 
 ## [v8.0.0] - 2024-08-19
