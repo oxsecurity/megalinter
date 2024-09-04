@@ -11,7 +11,7 @@
   ],
   "packageRules": [
     {
-      "matchPackageNames": ["uv"],
+      "matchPackageNames": ["uv", "ghcr.io/astral-sh/uv"],
       "schedule": ["before 4am on Wednesday"]
     }
   ],
