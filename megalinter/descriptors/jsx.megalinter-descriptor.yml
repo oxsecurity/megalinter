@@ -31,8 +31,6 @@ linters:
       - "package.json:eslintConfig"
     cli_lint_mode: list_of_files
     config_file_name: .eslintrc.json
-    cli_config_extra_args:
-      - "--no-eslintrc"
     cli_lint_extra_args:
       - "--no-ignore"
     ignore_file_name: .eslintignore
