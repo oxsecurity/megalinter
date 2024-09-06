@@ -71,6 +71,10 @@ CVE-2024-29415
 CVE-2024-39338
 # mega-linter-runner
 CVE-2024-4067
+# libexpat
+CVE-2024-45490
+CVE-2024-45491
+CVE-2024-45492
 
 # Dockerfile
 DS001
