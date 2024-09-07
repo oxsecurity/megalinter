@@ -9035,7 +9035,7 @@
     },
     "JSX_ESLINT_CONFIG_FILE": {
       "$id": "#/properties/JSX_ESLINT_CONFIG_FILE",
-      "default": ".eslintrc.json",
+      "default": "eslint.config.js",
       "description": "JSX_ESLINT: User custom config file name if different from default",
       "title": "JSX_ESLINT: Custom config file name",
       "type": "string"

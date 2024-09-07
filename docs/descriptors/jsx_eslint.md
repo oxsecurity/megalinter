@@ -47,7 +47,7 @@ You can create it by typing `npx eslint --init` in the root of your repository
 | JSX_ESLINT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                                            |
 | JSX_ESLINT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                                            |
 | JSX_ESLINT_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling JSX_ESLINT and its pre/post commands                                                                                                                   | None                                            |
-| JSX_ESLINT_CONFIG_FILE                 | eslint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                   | `.eslintrc.json`                                |
+| JSX_ESLINT_CONFIG_FILE                 | eslint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                   | `eslint.config.js`                              |
 | JSX_ESLINT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
 | JSX_ESLINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                         |
 | JSX_ESLINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
@@ -84,7 +84,7 @@ This linter is available in the following flavors
 
 ### How are identified applicable files
 
-- Activated only if one of these files is found: `.eslintrc.json, .eslintrc.yml, .eslintrc.yaml, .eslintrc.js, .eslintrc.cjs, package.json:eslintConfig`
+- Activated only if one of these files is found: `eslint.config.js, eslint.config.mjs, eslint.config.cjs, .eslintrc.json, .eslintrc.yml, .eslintrc.yaml, .eslintrc.js, .eslintrc.cjs, package.json:eslintConfig`
 - File extensions: `.jsx`
 
 <!-- markdownlint-disable -->
