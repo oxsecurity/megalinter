@@ -3,10 +3,6 @@ const globals = require('globals');
 
 module.exports = {
     files: ['**/*.{js,jsx,mjs,cjs,ts,tsx}'],
-    env: {
-        browser: true,
-        es2021: true
-    },
     globals: {
         ...globals.browser,
       },
