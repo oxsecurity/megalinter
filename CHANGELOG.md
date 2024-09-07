@@ -89,6 +89,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [rubocop](https://rubocop.org/) from 1.66.0 to **1.66.1** on 2024-09-06
   - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.80 to **0.1.81** on 2024-09-06
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.19.0 to **8.19.3** on 2024-09-06
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.19.3 to **8.20.1** on 2024-09-07
 <!-- linter-versions-end -->
 
 ## [v8.0.0] - 2024-08-19
