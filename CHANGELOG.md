@@ -79,6 +79,16 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [shfmt](https://github.com/mvdan/sh) from 3.8.0 to **3.9.0** on 2024-09-03
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.11.1 to **1.12.1** on 2024-09-03
   - [phpstan](https://phpstan.org/) from 1.12.0 to **1.12.1** on 2024-09-03
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.12.1 to **1.12.4** on 2024-09-06
+  - [phpstan](https://phpstan.org/) from 1.12.1 to **1.12** on 2024-09-06
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.378 to **1.1.379** on 2024-09-06
+  - [ruff](https://github.com/astral-sh/ruff) from 0.6.3 to **0.6.4** on 2024-09-06
+  - [checkov](https://www.checkov.io/) from 3.2.242 to **3.2.246** on 2024-09-06
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.54.1 to **0.55.0** on 2024-09-06
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.54.1 to **0.55.0** on 2024-09-06
+  - [rubocop](https://rubocop.org/) from 1.66.0 to **1.66.1** on 2024-09-06
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.80 to **0.1.81** on 2024-09-06
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.19.0 to **8.19.3** on 2024-09-06
 <!-- linter-versions-end -->
 
 ## [v8.0.0] - 2024-08-19

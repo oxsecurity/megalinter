@@ -23,6 +23,9 @@ linters:
     linter_rules_ignore_config_url: https://eslint.org/docs/latest/user-guide/configuring/ignoring-code#the-eslintignore-file
     linter_megalinter_ref_url: https://eslint.org/docs/user-guide/integrations#source-control
     active_only_if_file_found:
+      - eslint.config.js
+      - eslint.config.mjs
+      - eslint.config.cjs
       - ".eslintrc.json"
       - ".eslintrc.yml"
       - ".eslintrc.yaml"
@@ -30,9 +33,7 @@ linters:
       - ".eslintrc.cjs"
       - "package.json:eslintConfig"
     cli_lint_mode: list_of_files
-    config_file_name: .eslintrc.json
-    cli_config_extra_args:
-      - "--no-eslintrc"
+    config_file_name: eslint.config.js
     cli_lint_extra_args:
       - "--no-ignore"
     ignore_file_name: .eslintignore
