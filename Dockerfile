@@ -115,7 +115,7 @@ ARG DART_VERSION='2.8.4'
 ARG PMD_VERSION=7.5.0
 
 # renovate: datasource=github-tags depName=detekt/detekt
-ARG DETEKT_VERSION=1.23.6
+ARG DETEKT_VERSION=1.23.7
 
 # renovate: datasource=nuget depName=PSScriptAnalyzer registryUrl=https://www.powershellgallery.com/api/v2/
 ARG PSSA_VERSION='1.22.0'

@@ -82,7 +82,7 @@ ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.8.4
 # renovate: datasource=npm depName=sfdx-hardis
 ARG SFDX_HARDIS_VERSION=4.53.0
 # renovate: datasource=github-tags depName=detekt/detekt
-ARG DETEKT_VERSION=1.23.6
+ARG DETEKT_VERSION=1.23.7
 
 # renovate: datasource=npm depName=@salesforce/sfdx-scanner
 ARG SALESFORCE_SFDX_SCANNER_VERSION=4.5.0
