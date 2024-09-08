@@ -90,6 +90,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.80 to **0.1.81** on 2024-09-06
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.19.0 to **8.19.3** on 2024-09-06
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.19.3 to **8.20.1** on 2024-09-07
+  - [detekt](https://detekt.dev/) from 1.23.6 to **1.23.7** on 2024-09-08
+  - [psalm](https://psalm.dev) from Psalm.5.25.0@ to **Psalm.5.26.0@** on 2024-09-08
+  - [checkov](https://www.checkov.io/) from 3.2.246 to **3.2.249** on 2024-09-08
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.67.1 to **0.67.3** on 2024-09-08
 <!-- linter-versions-end -->
 
 ## [v8.0.0] - 2024-08-19
