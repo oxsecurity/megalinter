@@ -256,6 +256,8 @@ class Linter:
             # No fixing config on linter descriptor
             if self.cli_lint_fix_arg_name is None:
                 self.apply_fixes = False
+            if len(self.cli_lint_fix_remove_args) == 0:
+                self.apply_fixes = False
             # APPLY_FIXES is "all"
             elif param_apply_fixes == "all" or (
                 isinstance(param_apply_fixes, bool) and param_apply_fixes is True
@@ -1260,12 +1262,14 @@ class Linter:
         # Add fix argument if defined
         if self.apply_fixes is True and (
             self.cli_lint_fix_arg_name is not None
+            or len(self.cli_lint_fix_remove_args) > 0
             or str(self.cli_executable_fix) != str(self.cli_executable)
         ):
             args_pos = len(self.cli_executable)
             cmd = cmd[args_pos:]  # Remove executable elements
             cmd = self.cli_executable_fix + cmd
-            cmd += [self.cli_lint_fix_arg_name]
+            if self.cli_lint_fix_arg_name is not None:
+                cmd += [self.cli_lint_fix_arg_name]
             self.try_fix = True
 
         # Add user-defined extra arguments if defined
