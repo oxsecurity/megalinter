@@ -3340,7 +3340,7 @@
 <p><a href="https://github.com/detekt/detekt"><img alt="GitHub stars" src="https://img.shields.io/github/stars/detekt/detekt?cacheSeconds=3600"/></a> <a href="https://github.com/detekt/detekt/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/detekt/detekt?sort=semver"/></a> <a href="https://github.com/detekt/detekt/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/detekt/detekt"/></a> <a href="https://github.com/detekt/detekt/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/detekt/detekt"/></a> <a href="https://github.com/detekt/detekt/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/detekt/detekt"/></a></p>
 <h2 id="detekt-documentation">detekt documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>1.23.6</strong></li>
+<li>Version in MegaLinter: <strong>1.23.7</strong></li>
 <li>Visit <a href="https://detekt.dev/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://detekt.dev/docs/rules/comments" target="_blank">Index of problems detected by detekt</a></li>
 </ul>
@@ -3686,7 +3686,7 @@ ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 # Linter install
 # renovate: datasource=github-tags depName=detekt/detekt
-ARG DETEKT_VERSION=1.23.6
+ARG DETEKT_VERSION=1.23.7
 
 RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/detekt/detekt/releases/download/v${DETEKT_VERSION}/detekt-cli-${DETEKT_VERSION}.zip &amp;&amp; \
     unzip detekt-cli-${DETEKT_VERSION}.zip &amp;&amp; \
