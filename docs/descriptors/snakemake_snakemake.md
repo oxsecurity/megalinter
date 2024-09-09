@@ -15,7 +15,7 @@ description: How to use snakemake (configure, ignore files, ignore errors, help 
 
 ## snakemake documentation
 
-- Version in MegaLinter: **8.20.1**
+- Version in MegaLinter: **8.20.3**
 - Visit [Official Web Site](https://snakemake.readthedocs.io/en/stable/){target=_blank}
 
 [![snakemake - GitHub](https://gh-card.dev/repos/snakemake/snakemake.svg?fullname=)](https://github.com/snakemake/snakemake){target=_blank}
@@ -132,7 +132,7 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--d3dag] [--summary] [--detailed-summary] [--archive FILE]
                  [--cleanup-metadata FILE [FILE ...]] [--cleanup-shadow]
                  [--skip-script-cleanup] [--unlock]
-                 [--list-changes {code,input,params}] [--list-input-changes]
+                 [--list-changes {params,code,input}] [--list-input-changes]
                  [--list-params-changes] [--list-untracked]
                  [--delete-all-output | --delete-temp-output]
                  [--keep-incomplete] [--drop-metadata] [--version]
@@ -176,7 +176,7 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--scheduler-solver-path SCHEDULER_SOLVER_PATH]
                  [--deploy-sources QUERY CHECKSUM]
                  [--target-jobs TARGET_JOBS [TARGET_JOBS ...]]
-                 [--mode {remote,subprocess,default}]
+                 [--mode {default,remote,subprocess}]
                  [--report-html-path VALUE]
                  [--report-html-stylesheet-path VALUE]
                  [targets ...]
@@ -279,7 +279,7 @@ EXECUTION:
                         also constrain the amount of resources requested from
                         the server. (See https://snakemake.readthedocs.io/en/s
                         table/snakefiles/rules.html#resources-remote-execution
-                        for more info) (default: {})
+                        for more info) (default: )
   --set-threads RULE=THREADS [RULE=THREADS ...]
                         Overwrite thread usage of rules. This allows to fine-
                         tune workflow parallelization. In particular, this is
@@ -287,7 +287,7 @@ EXECUTION:
                         shifting a rule to use more, or less threads than
                         defined in the workflow. Thereby, THREADS has to be a
                         positive integer, and RULE has to be the name of the
-                        rule. (default: {})
+                        rule. (default: )
   --max-threads MAX_THREADS
                         Define a global maximum number of threads available to
                         any rule. Rules requesting more threads (via the
@@ -304,14 +304,14 @@ EXECUTION:
                         a temporary directory. Thereby, VALUE has to be a
                         positive integer or a string, RULE has to be the name
                         of the rule, and RESOURCE has to be the name of the
-                        resource. (default: {})
+                        resource. (default: )
   --set-scatter NAME=SCATTERITEMS [NAME=SCATTERITEMS ...]
                         Overwrite number of scatter items of scattergather
                         processes. This allows to fine-tune workflow
                         parallelization. Thereby, SCATTERITEMS has to be a
                         positive integer, and NAME has to be the name of the
                         scattergather process defined via a scattergather
-                        directive in the workflow. (default: {})
+                        directive in the workflow. (default: )
   --set-resource-scopes RESOURCE=[global|local] [RESOURCE=[global|local] ...]
                         Overwrite resource scopes. A scope determines how a
                         constraint is reckoned in cluster execution. With
@@ -325,7 +325,7 @@ EXECUTION:
                         Note that number of threads, specified via --cores, is
                         always considered local. (See https://snakemake.readth
                         edocs.io/en/stable/snakefiles/rules.html#resources-
-                        remote-execution for more info) (default: {})
+                        remote-execution for more info) (default: )
   --default-resources [NAME=INT ...], --default-res [NAME=INT ...]
                         Define default values of resources for rules that do
                         not define their own values. In addition to plain
@@ -369,7 +369,7 @@ EXECUTION:
                         previous config files are extended by following
                         configfiles. Note that this order also includes a
                         config file defined in the workflow definition itself
-                        (which will come first). (default: [])
+                        (which will come first). (default: )
   --config [KEY=VALUE ...], -C [KEY=VALUE ...]
                         Set or overwrite values in the workflow config object.
                         The workflow config object is accessible as variable
@@ -401,11 +401,8 @@ EXECUTION:
                         results are consistent with the workflow code and
                         configuration. If you rather prefer the traditional
                         way of just considering file modification dates, use '
-                        --rerun-trigger mtime'. (default:
-                        frozenset({<RerunTrigger.CODE: 4>,
-                        <RerunTrigger.INPUT: 2>, <RerunTrigger.MTIME: 0>,
-                        <RerunTrigger.PARAMS: 1>, <RerunTrigger.SOFTWARE_ENV:
-                        3>}))
+                        --rerun-trigger mtime'. (default: code input mtime
+                        params software-env)
   --force, -f           Force the execution of the selected target or the
                         first rule regardless of already created output.
                         (default: False)
@@ -486,7 +483,7 @@ EXECUTION:
 GROUPING:
   --groups GROUPS [GROUPS ...]
                         Assign rules to groups (this overwrites any group
-                        definitions from the workflow). (default: {})
+                        definitions from the workflow). (default: )
   --group-components GROUP_COMPONENTS [GROUP_COMPONENTS ...]
                         Set the number of connected components a group is
                         allowed to span. By default, this is 1, but this flag
@@ -494,7 +491,7 @@ GROUPING:
                         jobs of the same rule in the same group, although they
                         are not connected. It can be helpful for putting
                         together many small jobs or benefitting of shared
-                        memory setups. (default: {})
+                        memory setups. (default: )
 
 REPORTS:
   --report [FILE]       Create an HTML report with results and statistics.
@@ -637,7 +634,7 @@ UTILITIES:
                         (default: False)
   --unlock              Remove a lock on the working directory. (default:
                         False)
-  --list-changes {code,input,params}, --lc {code,input,params}
+  --list-changes {params,code,input}, --lc {params,code,input}
                         List all output files for which the given items (code,
                         input, params) have changed since creation.
   --list-input-changes, --li
@@ -816,13 +813,9 @@ BEHAVIOR:
                         sources source-cache', such that software deployment
                         and data provenance will be handled by NFS but input
                         and output files will be handled exclusively by the
-                        storage provider. (default:
-                        frozenset({<SharedFSUsage.STORAGE_LOCAL_COPIES: 4>,
-                        <SharedFSUsage.SOFTWARE_DEPLOYMENT: 2>,
-                        <SharedFSUsage.SOURCE_CACHE: 5>,
-                        <SharedFSUsage.PERSISTENCE: 0>,
-                        <SharedFSUsage.INPUT_OUTPUT: 1>,
-                        <SharedFSUsage.SOURCES: 3>}))
+                        storage provider. (default: input-output persistence
+                        software-deployment source-cache sources storage-
+                        local-copies)
   --scheduler-greediness SCHEDULER_GREEDINESS, --greediness SCHEDULER_GREEDINESS
                         Set the greediness of scheduling. This value between 0
                         and 1 determines how careful jobs are selected for
@@ -870,7 +863,7 @@ REMOTE EXECUTION:
                         contain a working snakemake installation that is
                         compatible with (or ideally the same as) the currently
                         running version. (default:
-                        snakemake/snakemake:v8.20.1)
+                        snakemake/snakemake:v8.20.3)
   --immediate-submit, --is
                         Immediately submit all jobs to the cluster instead of
                         waiting for present input files. This will fail,
@@ -992,7 +985,7 @@ INTERNAL:
   --target-jobs TARGET_JOBS [TARGET_JOBS ...]
                         Internal use only: Target particular jobs by
                         RULE:WILDCARD1=VALUE,WILDCARD2=VALUE,...
-  --mode {remote,subprocess,default}
+  --mode {default,remote,subprocess}
                         Internal use only: Set execution mode of Snakemake.
                         (default: default)
 
