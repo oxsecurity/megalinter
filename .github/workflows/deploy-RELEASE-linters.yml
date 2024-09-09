@@ -97,6 +97,7 @@ jobs:
             "kubernetes_kubescape",
             "latex_chktex",
             "lua_luacheck",
+            "lua_selene",
             "markdown_markdownlint",
             "markdown_markdown_link_check",
             "markdown_markdown_table_formatter",

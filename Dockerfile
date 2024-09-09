@@ -671,6 +671,14 @@ RUN wget --quiet https://github.com/pmd/pmd/releases/download/pmd_releases%2F${P
     && luarocks install luacheck \
     && cd / \
 #
+# selene installation
+    && wget --tries=5 https://www.lua.org/ftp/lua-5.3.5.tar.gz -O - -q | tar -xzf - \
+    && cd lua-5.3.5 \
+    && make linux \
+    && make install \
+    && cd .. && rm -r lua-5.3.5/ \
+    && cargo install --branch main --git https://github.com/Kampfkarren/selene selene \
+#
 # perlcritic installation
     && curl -fsSL https://raw.githubusercontent.com/skaji/cpm/main/cpm | perl - install -g --show-build-log-on-failure --without-build --without-test --without-runtime Perl::Critic \
     && rm -rf /root/.perl-cpm

@@ -464,6 +464,11 @@
     "image": "https://repository-images.githubusercontent.com/239106765/29bc0580-5b2f-11ea-89e2-d985890508c1",
     "title": "GitHub - secretlint/secretlint: Pluggable linting tool to prevent committing credential."
   },
+  "selene": {
+    "description": "selene is a command line tool designed to help write correct and idiomatic Lua code.",
+    "image": null,
+    "title": "selene - selene Documentation"
+  },
   "semgrep": {
     "description": "None",
     "image": null,
