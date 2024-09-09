@@ -9,7 +9,7 @@ install:
           && cd lua-5.3.5 \
           && make linux \
           && make install \
-          && cd .. && rm -r lua-5.3.5/ \
+          && cd .. && rm -r lua-5.3.5/
 linters:
   # LUACHECK
   - linter_name: luacheck
