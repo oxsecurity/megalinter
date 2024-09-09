@@ -68,7 +68,6 @@ RUN apk add --no-cache \
                 make \
                 musl-dev \
                 openssh \
-                g++ \
     && git config --global core.autocrlf true
 #APK__END
 
@@ -89,7 +88,11 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin || true && \
 #############################################################################################
 
 #CARGO__START
-
+RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --profile minimal --default-toolchain stable \
+    && export PATH="/root/.cargo/bin:${PATH}" \
+    && cargo install --force --locked selene@0.27.1 \
+    && rm -rf /root/.cargo/registry /root/.cargo/git /root/.cache/sccache /root/.rustup
+ENV PATH="/root/.cargo/bin:${PATH}"
 #CARGO__END
 
 ################################
@@ -147,10 +150,7 @@ RUN wget --tries=5 https://www.lua.org/ftp/lua-5.3.5.tar.gz -O - -q | tar -xzf -
     && cd lua-5.3.5 \
     && make linux \
     && make install \
-    && cd .. && rm -r lua-5.3.5/ \ \
-#
-# selene installation
-    && cargo install --branch main --git https://github.com/Kampfkarren/selene selene
+    && cd .. && rm -r lua-5.3.5/
 
 #
 #OTHER__END

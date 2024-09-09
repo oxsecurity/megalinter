@@ -217,7 +217,7 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin || true && \
 #CARGO__START
 RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --profile minimal --default-toolchain stable \
     && export PATH="/root/.cargo/bin:${PATH}" \
-    && rustup component add clippy && cargo install --force --locked sarif-fmt  shellcheck-sarif \
+    && rustup component add clippy && cargo install --force --locked sarif-fmt  shellcheck-sarif  selene@0.27.1 \
     && rm -rf /root/.cargo/registry /root/.cargo/git /root/.cache/sccache
 ENV PATH="/root/.cargo/bin:${PATH}"
 #CARGO__END
@@ -499,7 +499,7 @@ RUN wget --tries=5 https://www.lua.org/ftp/lua-5.3.5.tar.gz -O - -q | tar -xzf -
     && cd lua-5.3.5 \
     && make linux \
     && make install \
-    && cd .. && rm -r lua-5.3.5/ \
+    && cd .. && rm -r lua-5.3.5/
 
 #
 # PHP installation
@@ -673,9 +673,6 @@ RUN wget --quiet https://github.com/pmd/pmd/releases/download/pmd_releases%2F${P
     && cd .. && rm -r luarocks-3.3.1-super-linter/ \
     && luarocks install luacheck \
     && cd / \
-#
-# selene installation
-    && cargo install --branch main --git https://github.com/Kampfkarren/selene selene \
 #
 # perlcritic installation
     && curl -fsSL https://raw.githubusercontent.com/skaji/cpm/main/cpm | perl - install -g --show-build-log-on-failure --without-build --without-test --without-runtime Perl::Critic \
