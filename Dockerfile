@@ -494,6 +494,14 @@ ENV PATH="$JAVA_HOME/bin:${PATH}"
 # Next line commented because already managed by another linter
 # ENV PATH="$JAVA_HOME/bin:${PATH}"
 #
+# LUA installation
+RUN wget --tries=5 https://www.lua.org/ftp/lua-5.3.5.tar.gz -O - -q | tar -xzf - \
+    && cd lua-5.3.5 \
+    && make linux \
+    && make install \
+    && cd .. && rm -r lua-5.3.5/ \
+
+#
 # PHP installation
 RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" \
     && export GITHUB_AUTH_TOKEN \
@@ -657,11 +665,6 @@ RUN wget --quiet https://github.com/pmd/pmd/releases/download/pmd_releases%2F${P
     && cd ~ && touch .chktexrc && cd / \
 #
 # luacheck installation
-    && wget --tries=5 https://www.lua.org/ftp/lua-5.3.5.tar.gz -O - -q | tar -xzf - \
-    && cd lua-5.3.5 \
-    && make linux \
-    && make install \
-    && cd .. && rm -r lua-5.3.5/ \
     && wget --tries=5 https://github.com/cvega/luarocks/archive/v3.3.1-super-linter.tar.gz -O - -q | tar -xzf - \
     && cd luarocks-3.3.1-super-linter \
     && ./configure --with-lua-include=/usr/local/include \
@@ -672,11 +675,6 @@ RUN wget --quiet https://github.com/pmd/pmd/releases/download/pmd_releases%2F${P
     && cd / \
 #
 # selene installation
-    && wget --tries=5 https://www.lua.org/ftp/lua-5.3.5.tar.gz -O - -q | tar -xzf - \
-    && cd lua-5.3.5 \
-    && make linux \
-    && make install \
-    && cd .. && rm -r lua-5.3.5/ \
     && cargo install --branch main --git https://github.com/Kampfkarren/selene selene \
 #
 # perlcritic installation
