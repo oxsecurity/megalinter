@@ -93,6 +93,3 @@ linters:
       vscode:
         - name: selene-vscode
           url: https://marketplace.visualstudio.com/items?itemName=Kampfkarren.selene-vscode
-      idea:
-        - name: selene-idea
-          url: https://plugins.jetbrains.com/plugin/19087-selene-idea
