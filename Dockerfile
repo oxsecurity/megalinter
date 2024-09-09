@@ -117,6 +117,8 @@ ARG PMD_VERSION=7.5.0
 # renovate: datasource=github-tags depName=detekt/detekt
 ARG DETEKT_VERSION=1.23.7
 
+# renovate: datasource=crate depName=selene
+ARG LUA_SELENE_VERSION=0.27.1
 # renovate: datasource=nuget depName=PSScriptAnalyzer registryUrl=https://www.powershellgallery.com/api/v2/
 ARG PSSA_VERSION='1.22.0'
 
@@ -217,7 +219,7 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin || true && \
 #CARGO__START
 RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --profile minimal --default-toolchain stable \
     && export PATH="/root/.cargo/bin:${PATH}" \
-    && rustup component add clippy && cargo install --force --locked sarif-fmt  shellcheck-sarif  selene@0.27.1 \
+    && rustup component add clippy && cargo install --force --locked sarif-fmt  shellcheck-sarif  selene@${LUA_SELENE_VERSION} \
     && rm -rf /root/.cargo/registry /root/.cargo/git /root/.cache/sccache
 ENV PATH="/root/.cargo/bin:${PATH}"
 #CARGO__END
@@ -673,6 +675,8 @@ RUN wget --quiet https://github.com/pmd/pmd/releases/download/pmd_releases%2F${P
     && cd .. && rm -r luarocks-3.3.1-super-linter/ \
     && luarocks install luacheck \
     && cd / \
+#
+# selene installation
 #
 # perlcritic installation
     && curl -fsSL https://raw.githubusercontent.com/skaji/cpm/main/cpm | perl - install -g --show-build-log-on-failure --without-build --without-test --without-runtime Perl::Critic \
