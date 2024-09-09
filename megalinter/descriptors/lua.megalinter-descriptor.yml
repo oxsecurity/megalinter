@@ -54,3 +54,45 @@ linters:
       vscode:
         - name: vscode-luacheck
           url: https://marketplace.visualstudio.com/items?itemName=dwenegar.vscode-luacheck
+
+  # SELENE
+  - linter_name: selene
+    linter_url: https://kampfkarren.github.io/selene/
+    linter_repo: https://github.com/Kampfkarren/selene
+    linter_rules_url: https://kampfkarren.github.io/selene/lints/index.html
+    linter_rules_configuration_url: https://kampfkarren.github.io/selene/usage/configuration.html
+    linter_rules_inline_disable_url: https://kampfkarren.github.io/selene/usage/filtering.html
+    linter_megalinter_ref_url: "no"
+    config_file_name: selene.toml
+    cli_config_arg_name: "--config"
+    examples:
+      - "selene myfile.lua"
+      - "selene --config chktexrc.toml myfile.lua"
+    install:
+      apk:
+        - g++
+      dockerfile:
+      - |
+        RUN wget --tries=5 https://www.lua.org/ftp/lua-5.3.5.tar.gz -O - -q | tar -xzf - \
+            && cd lua-5.3.5 \
+            && make linux \
+            && make install \
+            && cd .. && rm -r lua-5.3.5/ \
+            && cargo install --branch main --git https://github.com/Kampfkarren/selene selene
+    ide:
+      neovim:
+        - name:
+          - nvim-lint
+          - none-ls
+          url:
+            - https://github.com/mfussenegger/nvim-lint
+            - https://github.com/nvimtools/none-ls.nvim
+      sublime:
+        - name: SublimeLinter-contrib-selene
+          url: https://packagecontrol.io/packages/SublimeLinter-contrib-selene
+      vscode:
+        - name: selene-vscode
+          url: https://marketplace.visualstudio.com/items?itemName=Kampfkarren.selene-vscode
+      idea:
+        - name: selene-idea
+          url: https://plugins.jetbrains.com/plugin/19087-selene-idea
