@@ -1,7 +1,8 @@
 local embracer = {}
 
-local function helper()
+local function helper(opt)
    -- NYI wontfix
+  print(opt)
 end
 
 function embracer.embrace(opt)
