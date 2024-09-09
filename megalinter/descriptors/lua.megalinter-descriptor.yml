@@ -3,12 +3,13 @@ descriptor_type: language
 file_extensions:
   - ".lua"
 install:
-  - |
-    RUN wget --tries=5 https://www.lua.org/ftp/lua-5.3.5.tar.gz -O - -q | tar -xzf - \
-        && cd lua-5.3.5 \
-        && make linux \
-        && make install \
-        && cd .. && rm -r lua-5.3.5/ \
+  dockerfile:
+    - |
+      RUN wget --tries=5 https://www.lua.org/ftp/lua-5.3.5.tar.gz -O - -q | tar -xzf - \
+          && cd lua-5.3.5 \
+          && make linux \
+          && make install \
+          && cd .. && rm -r lua-5.3.5/ \
 linters:
   # LUACHECK
   - linter_name: luacheck
