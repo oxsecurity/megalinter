@@ -72,11 +72,8 @@ linters:
       - "selene myfile.lua"
       - "selene --config chktexrc.toml myfile.lua"
     install:
-      apk:
-        - g++
-      dockerfile:
-        - |
-          RUN cargo install --branch main --git https://github.com/Kampfkarren/selene selene
+      cargo:
+        - selene@0.27.1
     ide:
       neovim:
         - name:
