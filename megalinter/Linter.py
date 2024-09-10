@@ -256,8 +256,6 @@ class Linter:
             # No fixing config on linter descriptor
             if self.cli_lint_fix_arg_name is None:
                 self.apply_fixes = False
-            if len(self.cli_lint_fix_remove_args) == 0:
-                self.apply_fixes = False
             # APPLY_FIXES is "all"
             elif param_apply_fixes == "all" or (
                 isinstance(param_apply_fixes, bool) and param_apply_fixes is True
