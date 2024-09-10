@@ -154,6 +154,7 @@ RUN apk add --no-cache \
                 icu-libs \
                 go \
                 openjdk21 \
+                readline-dev \
                 perl \
                 perl-dev \
                 gnupg \
@@ -181,7 +182,6 @@ RUN apk add --no-cache \
                 libc6-compat \
                 libstdc++ \
                 openssl \
-                readline-dev \
                 g++ \
                 libc-dev \
                 libcurl \

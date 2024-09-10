@@ -68,8 +68,8 @@ RUN apk add --no-cache \
                 make \
                 musl-dev \
                 openssh \
-                openssl \
                 readline-dev \
+                openssl \
     && git config --global core.autocrlf true
 #APK__END
 

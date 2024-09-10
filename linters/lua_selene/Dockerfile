@@ -69,6 +69,7 @@ RUN apk add --no-cache \
                 make \
                 musl-dev \
                 openssh \
+                readline-dev \
     && git config --global core.autocrlf true
 #APK__END
 
