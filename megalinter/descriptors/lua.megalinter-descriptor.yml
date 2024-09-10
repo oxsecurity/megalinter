@@ -110,7 +110,7 @@ linters:
     install:
       dockerfile:
         - |-
-          # renovate: datasource=docker depName=JohnnyMorganz/stylua
+          # renovate: datasource=docker depName=JohnnyMorganz/Stylua
           ARG LUA_STYLUA_VERSION=0.20.0
         - COPY --from=JohnnyMorganz/Stylua:{LUA_STYLUA_VERSION} /stylua /usr/bin/stylua
     ide:
