@@ -2,6 +2,16 @@ descriptor_id: LUA
 descriptor_type: language
 file_extensions:
   - ".lua"
+install:
+  apk:
+    - readline-dev
+  dockerfile:
+    - |
+      RUN wget --tries=5 https://www.lua.org/ftp/lua-5.3.5.tar.gz -O - -q | tar -xzf - \
+          && cd lua-5.3.5 \
+          && make linux \
+          && make install \
+          && cd .. && rm -r lua-5.3.5/
 linters:
   # LUACHECK
   - linter_name: luacheck
@@ -19,15 +29,9 @@ linters:
     install:
       apk:
         - openssl
-        - readline-dev
       dockerfile:
         - |
-          RUN wget --tries=5 https://www.lua.org/ftp/lua-5.3.5.tar.gz -O - -q | tar -xzf - \
-              && cd lua-5.3.5 \
-              && make linux \
-              && make install \
-              && cd .. && rm -r lua-5.3.5/ \
-              && wget --tries=5 https://github.com/cvega/luarocks/archive/v3.3.1-super-linter.tar.gz -O - -q | tar -xzf - \
+          RUN wget --tries=5 https://github.com/cvega/luarocks/archive/v3.3.1-super-linter.tar.gz -O - -q | tar -xzf - \
               && cd luarocks-3.3.1-super-linter \
               && ./configure --with-lua-include=/usr/local/include \
               && make \
@@ -54,3 +58,38 @@ linters:
       vscode:
         - name: vscode-luacheck
           url: https://marketplace.visualstudio.com/items?itemName=dwenegar.vscode-luacheck
+
+  # SELENE
+  - linter_name: selene
+    linter_url: https://kampfkarren.github.io/selene/
+    linter_repo: https://github.com/Kampfkarren/selene
+    linter_rules_url: https://kampfkarren.github.io/selene/lints/index.html
+    linter_rules_configuration_url: https://kampfkarren.github.io/selene/usage/configuration.html
+    linter_rules_inline_disable_url: https://kampfkarren.github.io/selene/usage/filtering.html
+    linter_megalinter_ref_url: "no"
+    config_file_name: selene.toml
+    cli_config_arg_name: "--config"
+    examples:
+      - "selene myfile.lua"
+      - "selene --config chktexrc.toml myfile.lua"
+    install:
+      cargo:
+        - selene@${LUA_SELENE_VERSION}
+      dockerfile:
+        - |-
+          # renovate: datasource=crate depName=selene
+          ARG LUA_SELENE_VERSION=0.27.1
+    ide:
+      neovim:
+        - name:
+            - nvim-lint
+            - none-ls
+          url:
+            - https://github.com/mfussenegger/nvim-lint
+            - https://github.com/nvimtools/none-ls.nvim
+      sublime:
+        - name: SublimeLinter-contrib-selene
+          url: https://packagecontrol.io/packages/SublimeLinter-contrib-selene
+      vscode:
+        - name: selene-vscode
+          url: https://marketplace.visualstudio.com/items?itemName=Kampfkarren.selene-vscode
