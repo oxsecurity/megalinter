@@ -99,6 +99,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [psalm](https://psalm.dev) from Psalm.5.26.0@ to **Psalm.5.26.1@** on 2024-09-09
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.20.1 to **8.20.3** on 2024-09-09
   - [swiftlint](https://github.com/realm/SwiftLint) from 0.56.2 to **0.57.0** on 2024-09-09
+  - [checkov](https://www.checkov.io/) from 3.2.249 to **3.2.250** on 2024-09-10
 <!-- linter-versions-end -->
 
 ## [v8.0.0] - 2024-08-19
