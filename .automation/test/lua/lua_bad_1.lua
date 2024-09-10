@@ -7,4 +7,3 @@ end
 function embrace(opt)
    local opt = opt or "default"
    return hepler(opt.."?")
-end
