@@ -10576,6 +10576,164 @@
       "title": "Pre commands for LUA descriptor",
       "type": "array"
     },
+    "LUA_SELENE_ARGUMENTS": {
+      "$id": "#/properties/LUA_SELENE_ARGUMENTS",
+      "description": "LUA_SELENE: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "LUA_SELENE: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "LUA_SELENE_CLI_EXECUTABLE": {
+      "$id": "#/properties/LUA_SELENE_CLI_EXECUTABLE",
+      "default": [
+        [
+          "selene"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "LUA_SELENE: CLI Executable",
+      "type": "array"
+    },
+    "LUA_SELENE_CLI_LINT_MODE": {
+      "$id": "#/properties/LUA_SELENE_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "project"
+      ],
+      "title": "LUA_SELENE: Override default cli lint mode",
+      "type": "string"
+    },
+    "LUA_SELENE_COMMAND_REMOVE_ARGUMENTS": {
+      "$id": "#/properties/LUA_SELENE_COMMAND_REMOVE_ARGUMENTS",
+      "description": "LUA_SELENE: User custom arguments to remove before calling linter",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "LUA_SELENE: Custom remove arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "LUA_SELENE_CONFIG_FILE": {
+      "$id": "#/properties/LUA_SELENE_CONFIG_FILE",
+      "default": "selene.toml",
+      "description": "LUA_SELENE: User custom config file name if different from default",
+      "title": "LUA_SELENE: Custom config file name",
+      "type": "string"
+    },
+    "LUA_SELENE_DISABLE_ERRORS": {
+      "$id": "#/properties/LUA_SELENE_DISABLE_ERRORS",
+      "default": false,
+      "title": "LUA_SELENE: Linter doesn't make MegaLinter fail even if errors are found",
+      "type": "boolean"
+    },
+    "LUA_SELENE_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/LUA_SELENE_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "LUA_SELENE: Maximum number of errors allowed",
+      "type": "number"
+    },
+    "LUA_SELENE_FILE_EXTENSIONS": {
+      "$id": "#/properties/LUA_SELENE_FILE_EXTENSIONS",
+      "examples:": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "LUA_SELENE: Override descriptor/linter matching files extensions",
+      "type": "array"
+    },
+    "LUA_SELENE_FILE_NAMES_REGEX": {
+      "$id": "#/properties/LUA_SELENE_FILE_NAMES_REGEX",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "LUA_SELENE: Override descriptor/linter matching file name regex",
+      "type": "array"
+    },
+    "LUA_SELENE_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/LUA_SELENE_FILTER_REGEX_EXCLUDE",
+      "title": "LUA_SELENE: Excluding Regex",
+      "type": "string"
+    },
+    "LUA_SELENE_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/LUA_SELENE_FILTER_REGEX_INCLUDE",
+      "title": "LUA_SELENE: Including Regex",
+      "type": "string"
+    },
+    "LUA_SELENE_POST_COMMANDS": {
+      "$id": "#/properties/LUA_SELENE_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "LUA_SELENE: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "LUA_SELENE_PRE_COMMANDS": {
+      "$id": "#/properties/LUA_SELENE_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "LUA_SELENE: Define or override a list of bash commands to run before the linter",
+      "type": "array"
+    },
+    "LUA_SELENE_RULES_PATH": {
+      "$id": "#/properties/LUA_SELENE_RULES_PATH",
+      "description": "LUA_SELENE: Path where to find linter configuration file",
+      "title": "LUA_SELENE: Custom config file path",
+      "type": "string"
+    },
+    "LUA_SELENE_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/LUA_SELENE_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling LUA_SELENE and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "LUA_SELENE: Unsecured env variables",
+      "type": "array"
+    },
     "MAKEFILE_CHECKMAKE_ARGUMENTS": {
       "$id": "#/properties/MAKEFILE_CHECKMAKE_ARGUMENTS",
       "description": "MAKEFILE_CHECKMAKE: User custom arguments to add in linter CLI call",
