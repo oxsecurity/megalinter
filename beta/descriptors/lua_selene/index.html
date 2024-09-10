@@ -5,14 +5,14 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<meta content="How to use stylelint (configure, ignore files, ignore errors, help &amp; version documentations) to analyze CSS files" name="description"/>
+<meta content="How to use selene (configure, ignore files, ignore errors, help &amp; version documentations) to analyze LUA files" name="description"/>
 <meta content="Nicolas Vuillamy" name="author"/>
-<link href="https://megalinter.io/beta/descriptors/css_stylelint/" rel="canonical"/>
-<link href="../css/" rel="prev"/>
-<link href="../env/" rel="next"/>
+<link href="https://megalinter.io/beta/descriptors/lua_selene/" rel="canonical"/>
+<link href="../lua_luacheck/" rel="prev"/>
+<link href="../makefile/" rel="next"/>
 <link href="../../assets/images/mega-linter-square.png" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-9.5.34" name="generator"/>
-<title>stylelint configuration in MegaLinter - MegaLinter by OX Security</title>
+<title>selene configuration in MegaLinter - MegaLinter by OX Security</title>
 <link href="../../assets/stylesheets/main.35f28582.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -23,13 +23,13 @@
 <meta content="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-logo.png" name="twitter:image:src">
 <meta content="@nvuillam" name="twitter:site">
 <meta content="summary_large_image" name="twitter:card">
-<meta content="stylelint configuration in MegaLinter" name="twitter:title">
-<meta content="How to use stylelint (configure, ignore files, ignore errors, help &amp; version documentations) to analyze CSS files" name="twitter:description">
+<meta content="selene configuration in MegaLinter" name="twitter:title">
+<meta content="How to use selene (configure, ignore files, ignore errors, help &amp; version documentations) to analyze LUA files" name="twitter:description">
 <meta content="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-logo.png" property="og:image"/>
 <meta content="🦙 MegaLinter analyzes 48 languages, 22 formats, 19 tooling formats, excessive copy-pastes and spelling mistakes in your repository sources with a GitHub Action, other CI tools or locally." property="og:image:alt"/>
 <meta content="MegaLinter" property="og:site_name"/>
-<meta content="stylelint configuration in MegaLinter" property="og:title"/>
-<meta content="How to use stylelint (configure, ignore files, ignore errors, help &amp; version documentations) to analyze CSS files" property="og:description"/>
+<meta content="selene configuration in MegaLinter" property="og:title"/>
+<meta content="How to use selene (configure, ignore files, ignore errors, help &amp; version documentations) to analyze LUA files" property="og:description"/>
 </meta></meta></meta></meta></meta><link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
             html.glightbox-open { overflow: initial; height: 100%; }
             .gslide-title { margin-top: 0px; user-select: text; }
@@ -47,7 +47,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#stylelint-documentation">
+<a class="md-skip" href="#selene">
           Skip to content
         </a>
 </div>
@@ -73,7 +73,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              stylelint configuration in MegaLinter
+              selene configuration in MegaLinter
             
           </span>
 </div>
@@ -361,15 +361,15 @@
   </span>
 </a>
 </li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_5_2" type="checkbox"/>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_5_2" type="checkbox"/>
 <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
 <span class="md-ellipsis">
     Languages linters
   </span>
 <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-expanded="false" aria-labelledby="__nav_5_2_label" class="md-nav" data-md-level="2">
+<nav aria-expanded="true" aria-labelledby="__nav_5_2_label" class="md-nav" data-md-level="2">
 <label class="md-nav__title" for="__nav_5_2">
 <span class="md-nav__icon md-icon"></span>
             Languages linters
@@ -869,15 +869,15 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_5_2_15" type="checkbox"/>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_5_2_15" type="checkbox"/>
 <label class="md-nav__link" for="__nav_5_2_15" id="__nav_5_2_15_label" tabindex="0">
 <span class="md-ellipsis">
     LUA
   </span>
 <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-expanded="false" aria-labelledby="__nav_5_2_15_label" class="md-nav" data-md-level="3">
+<nav aria-expanded="true" aria-labelledby="__nav_5_2_15_label" class="md-nav" data-md-level="3">
 <label class="md-nav__title" for="__nav_5_2_15">
 <span class="md-nav__icon md-icon"></span>
             LUA
@@ -897,12 +897,101 @@
   </span>
 </a>
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../lua_selene/">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    selene
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
 <span class="md-ellipsis">
     selene
   </span>
 </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#selene-documentation">
+<span class="md-ellipsis">
+      selene documentation
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#configuration-in-megalinter">
+<span class="md-ellipsis">
+      Configuration in MegaLinter
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ide-integration">
+<span class="md-ellipsis">
+      IDE Integration
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#megalinter-flavors">
+<span class="md-ellipsis">
+      MegaLinter Flavors
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#behind-the-scenes">
+<span class="md-ellipsis">
+      Behind the scenes
+    </span>
+</a>
+<nav aria-label="Behind the scenes" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#how-are-identified-applicable-files">
+<span class="md-ellipsis">
+      How are identified applicable files
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#how-the-linting-is-performed">
+<span class="md-ellipsis">
+      How the linting is performed
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#example-calls">
+<span class="md-ellipsis">
+      Example calls
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#help-content">
+<span class="md-ellipsis">
+      Help content
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#installation-on-mega-linter-docker-image">
+<span class="md-ellipsis">
+      Installation on mega-linter Docker image
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
 </li>
 </ul>
 </nav>
@@ -1532,15 +1621,15 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--active md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" id="__nav_5_3" type="checkbox"/>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5_3" type="checkbox"/>
 <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
 <span class="md-ellipsis">
     Formats linters
   </span>
 <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-expanded="true" aria-labelledby="__nav_5_3_label" class="md-nav" data-md-level="2">
+<nav aria-expanded="false" aria-labelledby="__nav_5_3_label" class="md-nav" data-md-level="2">
 <label class="md-nav__title" for="__nav_5_3">
 <span class="md-nav__icon md-icon"></span>
             Formats linters
@@ -1553,15 +1642,15 @@
   </span>
 </a>
 </li>
-<li class="md-nav__item md-nav__item--active md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" id="__nav_5_3_2" type="checkbox"/>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5_3_2" type="checkbox"/>
 <label class="md-nav__link" for="__nav_5_3_2" id="__nav_5_3_2_label" tabindex="0">
 <span class="md-ellipsis">
     CSS
   </span>
 <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-expanded="true" aria-labelledby="__nav_5_3_2_label" class="md-nav" data-md-level="3">
+<nav aria-expanded="false" aria-labelledby="__nav_5_3_2_label" class="md-nav" data-md-level="3">
 <label class="md-nav__title" for="__nav_5_3_2">
 <span class="md-nav__icon md-icon"></span>
             CSS
@@ -1574,101 +1663,12 @@
   </span>
 </a>
 </li>
-<li class="md-nav__item md-nav__item--active">
-<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
-<label class="md-nav__link md-nav__link--active" for="__toc">
-<span class="md-ellipsis">
-    stylelint
-  </span>
-<span class="md-nav__icon md-icon"></span>
-</label>
-<a class="md-nav__link md-nav__link--active" href="./">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../css_stylelint/">
 <span class="md-ellipsis">
     stylelint
   </span>
 </a>
-<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
-<label class="md-nav__title" for="__toc">
-<span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#stylelint-documentation">
-<span class="md-ellipsis">
-      stylelint documentation
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#configuration-in-megalinter">
-<span class="md-ellipsis">
-      Configuration in MegaLinter
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#ide-integration">
-<span class="md-ellipsis">
-      IDE Integration
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#megalinter-flavors">
-<span class="md-ellipsis">
-      MegaLinter Flavors
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#behind-the-scenes">
-<span class="md-ellipsis">
-      Behind the scenes
-    </span>
-</a>
-<nav aria-label="Behind the scenes" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#how-are-identified-applicable-files">
-<span class="md-ellipsis">
-      How are identified applicable files
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#how-the-linting-is-performed">
-<span class="md-ellipsis">
-      How the linting is performed
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#example-calls">
-<span class="md-ellipsis">
-      Example calls
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#help-content">
-<span class="md-ellipsis">
-      Help content
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#installation-on-mega-linter-docker-image">
-<span class="md-ellipsis">
-      Installation on mega-linter Docker image
-    </span>
-</a>
-</li>
-</ul>
-</nav>
-</li>
-</ul>
-</nav>
 </li>
 </ul>
 </nav>
@@ -3256,9 +3256,9 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#stylelint-documentation">
+<a class="md-nav__link" href="#selene-documentation">
 <span class="md-ellipsis">
-      stylelint documentation
+      selene documentation
     </span>
 </a>
 </li>
@@ -3336,34 +3336,23 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1>stylelint</h1>
 <!-- markdownlint-disable MD033 MD041 -->
 <!-- @generated by .automation/build.py, please don't update manually -->
-<div align="center">
-<a href="https://stylelint.io" target="blank" title="Visit linter Web Site">
-<img alt="stylelint" class="megalinter-banner" height="150px" src="https://github.com/stylelint/stylelint/raw/main/identity/stylelint-icon-and-text-white.png">
-</img></a>
-</div>
-<p><a href="https://github.com/stylelint/stylelint"><img alt="GitHub stars" src="https://img.shields.io/github/stars/stylelint/stylelint?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-autofix-green"><img alt="autofix" src="https://shields.io/badge/-autofix-green"/></a> <a href="https://github.com/stylelint/stylelint/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/stylelint/stylelint?sort=semver"/></a> <a href="https://github.com/stylelint/stylelint/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/stylelint/stylelint"/></a> <a href="https://github.com/stylelint/stylelint/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/stylelint/stylelint"/></a> <a href="https://github.com/stylelint/stylelint/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/stylelint/stylelint"/></a></p>
-<h2 id="stylelint-documentation">stylelint documentation</h2>
+<h1 id="selene">selene</h1>
+<p><a href="https://github.com/Kampfkarren/selene"><img alt="GitHub stars" src="https://img.shields.io/github/stars/Kampfkarren/selene?cacheSeconds=3600"/></a> <a href="https://github.com/Kampfkarren/selene/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/Kampfkarren/selene?sort=semver"/></a> <a href="https://github.com/Kampfkarren/selene/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/Kampfkarren/selene"/></a> <a href="https://github.com/Kampfkarren/selene/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/Kampfkarren/selene"/></a> <a href="https://github.com/Kampfkarren/selene/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/Kampfkarren/selene"/></a></p>
+<h2 id="selene-documentation">selene documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>16.9.0</strong></li>
-<li>Visit <a href="https://stylelint.io" target="_blank">Official Web Site</a></li>
-<li>See <a href="https://stylelint.io/user-guide/configure" target="_blank">How to configure stylelint rules</a><ul>
-<li>If custom <code>.stylelintrc.json</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.stylelintrc.json" target="_blank">.stylelintrc.json</a> will be used</li>
+<li>Version in MegaLinter: <strong>0.27.1</strong></li>
+<li>Visit <a href="https://kampfkarren.github.io/selene/" target="_blank">Official Web Site</a></li>
+<li>See <a href="https://kampfkarren.github.io/selene/usage/configuration.html" target="_blank">How to configure selene rules</a></li>
+<li>See <a href="https://kampfkarren.github.io/selene/usage/filtering.html" target="_blank">How to disable selene rules in files</a></li>
+<li>See <a href="https://kampfkarren.github.io/selene/lints/index.html" target="_blank">Index of problems detected by selene</a></li>
 </ul>
-</li>
-<li>See <a href="https://stylelint.io/user-guide/ignore-code" target="_blank">How to disable stylelint rules in files</a></li>
-<li>See <a href="https://stylelint.io/user-guide/rules/list" target="_blank">Index of problems detected by stylelint</a></li>
-</ul>
-<p><a href="https://github.com/stylelint/stylelint" target="_blank"><img alt="stylelint - GitHub" src="https://gh-card.dev/repos/stylelint/stylelint.svg?fullname="/></a></p>
+<p><a href="https://github.com/Kampfkarren/selene" target="_blank"><img alt="selene - GitHub" src="https://gh-card.dev/repos/Kampfkarren/selene.svg?fullname="/></a></p>
 <h2 id="configuration-in-megalinter">Configuration in MegaLinter</h2>
 <ul>
-<li>Enable stylelint by adding <code>CSS_STYLELINT</code> in <a href="https://megalinter.io/beta/configuration/#activation-and-deactivation">ENABLE_LINTERS variable</a></li>
-<li>Disable stylelint by adding <code>CSS_STYLELINT</code> in <a href="https://megalinter.io/beta/configuration/#activation-and-deactivation">DISABLE_LINTERS variable</a></li>
-</ul>
-<ul>
-<li>Enable <strong>autofixes</strong> by adding <code>CSS_STYLELINT</code> in <a href="https://megalinter.io/beta/configuration/#apply-fixes">APPLY_FIXES variable</a></li>
+<li>Enable selene by adding <code>LUA_SELENE</code> in <a href="https://megalinter.io/beta/configuration/#activation-and-deactivation">ENABLE_LINTERS variable</a></li>
+<li>Disable selene by adding <code>LUA_SELENE</code> in <a href="https://megalinter.io/beta/configuration/#activation-and-deactivation">DISABLE_LINTERS variable</a></li>
 </ul>
 <table>
 <thead>
@@ -3375,84 +3364,84 @@
 </thead>
 <tbody>
 <tr>
-<td>CSS_STYLELINT_ARGUMENTS</td>
+<td>LUA_SELENE_ARGUMENTS</td>
 <td>User custom arguments to add in linter CLI call<br/>Ex: <code>-s --foo "bar"</code></td>
 <td></td>
 </tr>
 <tr>
-<td>CSS_STYLELINT_COMMAND_REMOVE_ARGUMENTS</td>
+<td>LUA_SELENE_COMMAND_REMOVE_ARGUMENTS</td>
 <td>User custom arguments to remove from command line before calling the linter<br/>Ex: <code>-s --foo "bar"</code></td>
 <td></td>
 </tr>
 <tr>
-<td>CSS_STYLELINT_FILTER_REGEX_INCLUDE</td>
+<td>LUA_SELENE_FILTER_REGEX_INCLUDE</td>
 <td>Custom regex including filter<br/>Ex: <code>(src\|lib)</code></td>
 <td>Include every file</td>
 </tr>
 <tr>
-<td>CSS_STYLELINT_FILTER_REGEX_EXCLUDE</td>
+<td>LUA_SELENE_FILTER_REGEX_EXCLUDE</td>
 <td>Custom regex excluding filter<br/>Ex: <code>(test\|examples)</code></td>
 <td>Exclude no file</td>
 </tr>
 <tr>
-<td>CSS_STYLELINT_CLI_LINT_MODE</td>
-<td>Override default CLI lint mode<br/>- <code>file</code>: Calls the linter for each file<br/>- <code>list_of_files</code>: Call the linter with the list of files as argument<br/>- <code>project</code>: Call the linter from the root of the project</td>
-<td><code>list_of_files</code></td>
+<td>LUA_SELENE_CLI_LINT_MODE</td>
+<td>Override default CLI lint mode<br/>- <code>file</code>: Calls the linter for each file<br/>- <code>project</code>: Call the linter from the root of the project</td>
+<td><code>file</code></td>
 </tr>
 <tr>
-<td>CSS_STYLELINT_FILE_EXTENSIONS</td>
+<td>LUA_SELENE_FILE_EXTENSIONS</td>
 <td>Allowed file extensions. <code>"*"</code> matches any extension, <code>""</code> matches empty extension. Empty list excludes all files<br/>Ex: <code>[".py", ""]</code></td>
-<td><code>[".css", ".scss", ".saas"]</code></td>
+<td><code>[".lua"]</code></td>
 </tr>
 <tr>
-<td>CSS_STYLELINT_FILE_NAMES_REGEX</td>
+<td>LUA_SELENE_FILE_NAMES_REGEX</td>
 <td>File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: <code>["Dockerfile(-.+)?", "Jenkinsfile"]</code></td>
 <td>Include every file</td>
 </tr>
 <tr>
-<td>CSS_STYLELINT_PRE_COMMANDS</td>
+<td>LUA_SELENE_PRE_COMMANDS</td>
 <td>List of bash commands to run before the linter</td>
 <td>None</td>
 </tr>
 <tr>
-<td>CSS_STYLELINT_POST_COMMANDS</td>
+<td>LUA_SELENE_POST_COMMANDS</td>
 <td>List of bash commands to run after the linter</td>
 <td>None</td>
 </tr>
 <tr>
-<td>CSS_STYLELINT_UNSECURED_ENV_VARIABLES</td>
-<td>List of env variables explicitly not filtered before calling CSS_STYLELINT and its pre/post commands</td>
+<td>LUA_SELENE_UNSECURED_ENV_VARIABLES</td>
+<td>List of env variables explicitly not filtered before calling LUA_SELENE and its pre/post commands</td>
 <td>None</td>
 </tr>
 <tr>
-<td>CSS_STYLELINT_CONFIG_FILE</td>
-<td>stylelint configuration file nameUse <code>LINTER_DEFAULT</code> to let the linter find it</td>
-<td><code>.stylelintrc.json</code></td>
+<td>LUA_SELENE_CONFIG_FILE</td>
+<td>selene configuration file nameUse <code>LINTER_DEFAULT</code> to let the linter find it</td>
+<td><code>selene.toml</code></td>
 </tr>
 <tr>
-<td>CSS_STYLELINT_RULES_PATH</td>
+<td>LUA_SELENE_RULES_PATH</td>
 <td>Path where to find linter configuration file</td>
 <td>Workspace folder, then MegaLinter default rules</td>
 </tr>
 <tr>
-<td>CSS_STYLELINT_DISABLE_ERRORS</td>
+<td>LUA_SELENE_DISABLE_ERRORS</td>
 <td>Run linter but consider errors as warnings</td>
 <td><code>false</code></td>
 </tr>
 <tr>
-<td>CSS_STYLELINT_DISABLE_ERRORS_IF_LESS_THAN</td>
+<td>LUA_SELENE_DISABLE_ERRORS_IF_LESS_THAN</td>
 <td>Maximum number of errors allowed</td>
 <td><code>0</code></td>
 </tr>
 <tr>
-<td>CSS_STYLELINT_CLI_EXECUTABLE</td>
+<td>LUA_SELENE_CLI_EXECUTABLE</td>
 <td>Override CLI executable</td>
-<td><code>['stylelint']</code></td>
+<td><code>['selene']</code></td>
 </tr>
 </tbody>
 </table>
 <h2 id="ide-integration">IDE Integration</h2>
-<p>Use stylelint in your favorite IDE to catch errors before MegaLinter !</p>
+<p>Use selene in your favorite IDE to catch errors before MegaLinter !</p>
 <table>
 <thead>
 <tr>
@@ -3464,40 +3453,22 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align: center;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/atom.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/atom.ico"/></a></td>
-<td><a href="https://atom.io/">Atom</a></td>
-<td><a href="https://github.com/AtomLinter/linter-stylelint">linter-stylelint</a></td>
-<td style="text-align: center;"><a href="https://github.com/AtomLinter/linter-stylelint" target="_blank">Visit Web Site</a></td>
-</tr>
-<tr>
-<td style="text-align: center;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/emacs.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/emacs.ico"/></a></td>
-<td><a href="https://www.gnu.org/software/emacs/">Emacs</a></td>
-<td><a href="https://github.com/flycheck/flycheck">flycheck</a></td>
-<td style="text-align: center;"><a href="https://github.com/flycheck/flycheck" target="_blank">Visit Web Site</a></td>
+<td style="text-align: center;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/default.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/default.ico"/></a></td>
+<td>neovim</td>
+<td><a href="['https://github.com/mfussenegger/nvim-lint', 'https://github.com/nvimtools/none-ls.nvim']">['nvim-lint', 'none-ls']</a></td>
+<td style="text-align: center;"><a href="['https://github.com/mfussenegger/nvim-lint', 'https://github.com/nvimtools/none-ls.nvim']" target="_blank">Visit Web Site</a></td>
 </tr>
 <tr>
 <td style="text-align: center;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/sublime.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/sublime.ico"/></a></td>
 <td><a href="https://www.sublimetext.com/">Sublime Text</a></td>
-<td><a href="https://github.com/SublimeLinter/SublimeLinter-stylelint">SublimeLinter-stylelint</a></td>
-<td style="text-align: center;"><a href="https://github.com/SublimeLinter/SublimeLinter-stylelint" target="_blank">Visit Web Site</a></td>
-</tr>
-<tr>
-<td style="text-align: center;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/sublime.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/sublime.ico"/></a></td>
-<td><a href="https://www.sublimetext.com/">Sublime Text</a></td>
-<td><a href="https://github.com/jo-sm/SublimeLinter-contrib-stylelint_d">SublimeLinter-contrib-stylelint_d</a></td>
-<td style="text-align: center;"><a href="https://github.com/jo-sm/SublimeLinter-contrib-stylelint_d" target="_blank">Visit Web Site</a></td>
-</tr>
-<tr>
-<td style="text-align: center;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vim.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vim.ico"/></a></td>
-<td><a href="https://www.vim.org/">vim</a></td>
-<td><a href="https://github.com/dense-analysis/ale">ale</a></td>
-<td style="text-align: center;"><a href="https://github.com/dense-analysis/ale" target="_blank">Visit Web Site</a></td>
+<td><a href="https://packagecontrol.io/packages/SublimeLinter-contrib-selene">SublimeLinter-contrib-selene</a></td>
+<td style="text-align: center;"><a href="https://packagecontrol.io/packages/SublimeLinter-contrib-selene" target="_blank">Visit Web Site</a></td>
 </tr>
 <tr>
 <td style="text-align: center;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico"/></a></td>
 <td><a href="https://code.visualstudio.com/">Visual Studio Code</a></td>
-<td><a href="https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint">vscode-stylelint</a></td>
-<td style="text-align: center;"><a href="vscode:extension/stylelint.vscode-stylelint" target="_blank"><img alt="Install in VSCode" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png"/></a></td>
+<td><a href="https://marketplace.visualstudio.com/items?itemName=Kampfkarren.selene-vscode">selene-vscode</a></td>
+<td style="text-align: center;"><a href="vscode:extension/Kampfkarren.selene-vscode" target="_blank"><img alt="Install in VSCode" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png"/></a></td>
 </tr>
 </tbody>
 </table>
@@ -3521,317 +3492,73 @@
 <td style="text-align: center;">123</td>
 <td style="text-align: right;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter"/></a></a></td>
 </tr>
-<tr>
-<td style="text-align: center;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/c_cpp.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/c_cpp.ico"/></a></td>
-<td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/c_cpp/">c_cpp</a></td>
-<td style="text-align: left;">Optimized for pure C/C++ projects</td>
-<td style="text-align: center;">54</td>
-<td style="text-align: right;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-c_cpp/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-c_cpp/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-c_cpp"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-c_cpp"/></a></a></td>
-</tr>
-<tr>
-<td style="text-align: center;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico"/></a></td>
-<td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/cupcake/">cupcake</a></td>
-<td style="text-align: left;">MegaLinter for the most commonly used languages</td>
-<td style="text-align: center;">83</td>
-<td style="text-align: right;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake"/></a></a></td>
-</tr>
-<tr>
-<td style="text-align: center;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/documentation.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/documentation.ico"/></a></td>
-<td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/documentation/">documentation</a></td>
-<td style="text-align: left;">MegaLinter for documentation projects</td>
-<td style="text-align: center;">49</td>
-<td style="text-align: right;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-documentation/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-documentation/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-documentation"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-documentation"/></a></a></td>
-</tr>
-<tr>
-<td style="text-align: center;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico"/></a></td>
-<td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/dotnet/">dotnet</a></td>
-<td style="text-align: left;">Optimized for C, C++, C# or VB based projects</td>
-<td style="text-align: center;">61</td>
-<td style="text-align: right;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet"/></a></a></td>
-</tr>
-<tr>
-<td style="text-align: center;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico"/></a></td>
-<td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/dotnetweb/">dotnetweb</a></td>
-<td style="text-align: left;">Optimized for C, C++, C# or VB based projects with JS/TS</td>
-<td style="text-align: center;">70</td>
-<td style="text-align: right;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb"/></a></a></td>
-</tr>
-<tr>
-<td style="text-align: center;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/go.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/go.ico"/></a></td>
-<td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/go/">go</a></td>
-<td style="text-align: left;">Optimized for GO based projects</td>
-<td style="text-align: center;">51</td>
-<td style="text-align: right;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-go/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-go/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-go"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-go"/></a></a></td>
-</tr>
-<tr>
-<td style="text-align: center;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico"/></a></td>
-<td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/java/">java</a></td>
-<td style="text-align: left;">Optimized for JAVA based projects</td>
-<td style="text-align: center;">52</td>
-<td style="text-align: right;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-java"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-java"/></a></a></td>
-</tr>
-<tr>
-<td style="text-align: center;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico"/></a></td>
-<td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/javascript/">javascript</a></td>
-<td style="text-align: left;">Optimized for JAVASCRIPT or TYPESCRIPT based projects</td>
-<td style="text-align: center;">59</td>
-<td style="text-align: right;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript"/></a></a></td>
-</tr>
-<tr>
-<td style="text-align: center;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico"/></a></td>
-<td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/php/">php</a></td>
-<td style="text-align: left;">Optimized for PHP based projects</td>
-<td style="text-align: center;">54</td>
-<td style="text-align: right;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-php"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-php"/></a></a></td>
-</tr>
-<tr>
-<td style="text-align: center;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico"/></a></td>
-<td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/python/">python</a></td>
-<td style="text-align: left;">Optimized for PYTHON based projects</td>
-<td style="text-align: center;">62</td>
-<td style="text-align: right;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-python"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-python"/></a></a></td>
-</tr>
-<tr>
-<td style="text-align: center;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/ruby.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/ruby.ico"/></a></td>
-<td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/ruby/">ruby</a></td>
-<td style="text-align: left;">Optimized for RUBY based projects</td>
-<td style="text-align: center;">50</td>
-<td style="text-align: right;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-ruby/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-ruby/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-ruby"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-ruby"/></a></a></td>
-</tr>
-<tr>
-<td style="text-align: center;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/rust.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/rust.ico"/></a></td>
-<td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/rust/">rust</a></td>
-<td style="text-align: left;">Optimized for RUST based projects</td>
-<td style="text-align: center;">50</td>
-<td style="text-align: right;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-rust/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-rust/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-rust"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-rust"/></a></a></td>
-</tr>
-<tr>
-<td style="text-align: center;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico"/></a></td>
-<td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/salesforce/">salesforce</a></td>
-<td style="text-align: left;">Optimized for Salesforce based projects</td>
-<td style="text-align: center;">54</td>
-<td style="text-align: right;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce"/></a></a></td>
-</tr>
-<tr>
-<td style="text-align: center;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/swift.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/swift.ico"/></a></td>
-<td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/swift/">swift</a></td>
-<td style="text-align: left;">Optimized for SWIFT based projects</td>
-<td style="text-align: center;">50</td>
-<td style="text-align: right;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-swift/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-swift/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-swift"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-swift"/></a></a></td>
-</tr>
-<tr>
-<td style="text-align: center;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico"/></a></td>
-<td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/terraform/">terraform</a></td>
-<td style="text-align: left;">Optimized for TERRAFORM based projects</td>
-<td style="text-align: center;">54</td>
-<td style="text-align: right;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform"/></a></a></td>
-</tr>
 </tbody>
 </table>
 <h2 id="behind-the-scenes">Behind the scenes</h2>
 <h3 id="how-are-identified-applicable-files">How are identified applicable files</h3>
 <ul>
-<li>File extensions: <code>.css</code>, <code>.scss</code>, <code>.saas</code></li>
+<li>File extensions: <code>.lua</code></li>
 </ul>
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 <h3 id="how-the-linting-is-performed">How the linting is performed</h3>
 <ul>
-<li>stylelint is called once with the list of files as arguments (<code>list_of_files</code> CLI lint mode)</li>
+<li>selene is called one time by identified file (<code>file</code> CLI lint mode)</li>
 </ul>
 <h3 id="example-calls">Example calls</h3>
-<pre><code class="language-shell">stylelint myfile.css
+<pre><code class="language-shell">selene myfile.lua
 </code></pre>
-<pre><code class="language-shell">stylelint --config .stylelintrc.json myfile.css myfile2.css myfile3.css
-</code></pre>
-<pre><code class="language-shell">stylelint --fix --config .stylelintrc.json myfile.css myfile2.css myfile3.css
+<pre><code class="language-shell">selene --config chktexrc.toml myfile.lua
 </code></pre>
 <h3 id="help-content">Help content</h3>
-<pre><code class="language-shell">
-  A mighty CSS linter that helps you avoid errors and enforce conventions.
-
-  Usage: stylelint [input] [options]
-
-  Input: Files(s), glob(s), or nothing to use stdin.
-
-    If an input argument is wrapped in quotation marks, it will be passed to
-    globby for cross-platform glob support. "node_modules" are always ignored.
-    You can also pass no input and use stdin, instead.
-
-  Options:
-
-    --config, -c &lt;path_or_module&gt;
-
-      A path to a specific configuration file (JSON, YAML, CommonJS, or ES module),
-      or a module name in "node_modules" that points to one. If no argument is
-      provided, Stylelint will search for configuration files in the following
-      places, in this order:
-
-        - a "stylelint" property in "package.json"
-        - a ".stylelintrc" file
-        - a ".stylelintrc.{cjs,mjs,js,json,yaml,yml}" file
-        - a "stylelint.config.{cjs,mjs,js}" file
-
-      The search will begin in the working directory and move up the directory
-      tree until a configuration file is found.
-
-    --config-basedir &lt;path&gt;
-
-      An absolute path to the directory that relative paths defining "extends",
-      "plugins", and "customSyntax" are *relative to*. Only necessary if these
-      values are relative paths.
-
-    --print-config
-
-      Print the configuration for the given input file path. Globs are unsupported.
-
-    --ignore-path, -i &lt;path&gt;
-
-      A path to a file containing patterns that describe files to ignore. The
-      path can be absolute or relative to "process.cwd()". You can repeat the
-      option to provide multiple paths. By default, Stylelint looks for
-      ".stylelintignore" in "process.cwd()". Multiple can be set.
-
-    --ignore-pattern, --ip &lt;pattern&gt;
-
-      A pattern of files to ignore (in addition to those in ".stylelintignore").
-      Multiple can be set.
-
-    --fix
-
-      Automatically fix problems of certain rules.
-
-    --custom-syntax &lt;name_or_path&gt;
-
-      A module name or path to a JS file exporting a PostCSS-compatible syntax.
-
-    --stdin
-
-      Accept stdin input even if it is empty.
-
-    --stdin-filename &lt;name&gt;
-
-      A filename to assign stdin input.
-
-    --ignore-disables, --id
-
-      Ignore "stylelint-disable" comments.
-
-    --disable-default-ignores, --di
-
-      Allow linting of "node_modules".
-
-    --[no-]cache
-
-      Store the info about processed files in order to only operate on the
-      changed ones the next time you run Stylelint. By default, the cache is
-      stored in "./.stylelintcache". To adjust this, use "--cache-location".
-      Cache is disabled by default.
-
-    --cache-location &lt;path&gt;
-
-      A path to a file or directory to be used for the cache location. If a
-      directory is specified, a cache file will be created inside the specified
-      folder, with a name derived from a hash of the current working directory.
-
-      If the directory for the cache does not exist, make sure you add a trailing "/"
-      on *nix systems or "\" on Windows. Otherwise the path will be assumed to
-      be a file.
-
-    --cache-strategy &lt;strategy&gt;
-
-      A strategy for the cache to use for detecting changed files. Either one of:
-
-        metadata     by metadata of a file (default)
-        content      by content of a file
-
-      The "content" strategy can be useful in cases where the modification time
-      of your files changes even if their contents have not. For example, this can
-      happen during git operations like "git clone" because git does not track file
-      modification time.
-
-    --formatter, -f &lt;formatter&gt;
-
-      An output formatter. The variants are as follows:
-
-        string       human-readable strings (default)
-        compact      similar to ESLint's compact formatter
-        github       workflow commands for GitHub Actions (DEPRECATED)
-        json         JSON format
-        tap          TAP format
-        unix         C compiler-like format
-        verbose      extend "string" to include a file list and a tally
-
-    --custom-formatter &lt;path_or_module&gt;
-
-      A path to a JS file or module name exporting a custom formatting function.
-
-    --quiet, -q
-
-      Only register problems for rules with an "error"-level severity (ignore
-      "warning"-level).
-
-    --quiet-deprecation-warnings
-
-      Ignore deprecations warnings.
-
-    --[no-]color
-
-      Force enabling/disabling of color.
-
-    --report-needless-disables, --rd
-
-      Also report errors for "stylelint-disable" comments that are not blocking
-      a lint warning. The process will exit with code 2 if needless disables are found.
-
-    --report-invalid-scope-disables, --risd
-
-      Report "stylelint-disable" comments that used for rules that don't exist
-      within the configuration object. The process will exit with code 2 if invalid
-      scope disables are found.
-
-    --report-descriptionless-disables, --rdd
-
-      Report "stylelint-disable" comments without a description. The process will
-      exit with code 2 if descriptionless disables are found.
-
-    --max-warnings, --mw &lt;number&gt;
-
-      The number of warnings above which the process will exit with code 2.
-      Useful when setting "defaultSeverity" to "warning" and expecting the process
-      to fail on warnings (e.g. CI build).
-
-    --output-file, -o &lt;path&gt;
-
-      A file path to write a report.
-
-    --allow-empty-input, --aei
-
-      When a glob pattern matches no files, the process will exit without throwing an error.
-
-    --globby-options, --go &lt;json&gt;
-
-      Options in JSON format passed to globby.
-
-    --version, -v
-
-      Show the version.
-
-    --help, -h
-
-      Show the help.
-
+<pre><code class="language-shell">selene 0.27.1
+
+USAGE:
+    selene [FLAGS] [OPTIONS] &lt;files&gt;...
+    selene &lt;SUBCOMMAND&gt;
+
+FLAGS:
+        --allow-warnings    Pass when only warnings occur
+    -h, --help              Prints help information
+        --no-exclude
+    -n, --no-summary        Suppress summary information
+    -q, --quiet             Display only the necessary information. Equivalent to --display-style="quiet"
+    -V, --version           Prints version information
+
+OPTIONS:
+        --color &lt;color&gt;                     [default: auto]  [possible values: Always, Auto, Never]
+        --config &lt;config&gt;                  A toml file to configure the behavior of selene [default: selene.toml]
+        --display-style &lt;display-style&gt;    Sets the display method [possible values: Json, Json2, Rich, Quiet]
+        --num-threads &lt;num-threads&gt;        Number of threads to run on, default to the numbers of logical cores on your
+                                           system [default: 4]
+        --pattern &lt;pattern&gt;...             A glob to match files with to check
+
+ARGS:
+    &lt;files&gt;...
+
+SUBCOMMANDS:
+    capabilities           Prints the capabilities of the current build
+    generate-roblox-std
+    help                   Prints this message or the help of the given subcommand(s)
+    update-roblox-std
+    upgrade-std
+    validate-config
 </code></pre>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
 <ul>
-<li>NPM packages (node.js):<ul>
-<li><a href="https://www.npmjs.com/package/stylelint">stylelint</a></li>
-<li><a href="https://www.npmjs.com/package/stylelint-config-standard">stylelint-config-standard</a></li>
-<li><a href="https://www.npmjs.com/package/stylelint-config-sass-guidelines">stylelint-config-sass-guidelines</a></li>
-<li><a href="https://www.npmjs.com/package/stylelint-scss">stylelint-scss</a></li>
+<li>Dockerfile commands :</li>
 </ul>
-</li>
-</ul>
+<pre><code class="language-dockerfile"># Parent descriptor install
+RUN wget --tries=5 https://www.lua.org/ftp/lua-5.3.5.tar.gz -O - -q | tar -xzf - \
+    &amp;&amp; cd lua-5.3.5 \
+    &amp;&amp; make linux \
+    &amp;&amp; make install \
+    &amp;&amp; cd .. &amp;&amp; rm -r lua-5.3.5/
+
+# Linter install
+# renovate: datasource=crate depName=selene
+ARG LUA_SELENE_VERSION=0.27.1
+</code></pre>
 </article>
 </div>
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
@@ -3839,7 +3566,7 @@
 </main>
 <footer class="md-footer">
 <nav aria-label="Footer" class="md-footer__inner md-grid">
-<a aria-label="Previous: All CSS linters" class="md-footer__link md-footer__link--prev" href="../css/">
+<a aria-label="Previous: luacheck" class="md-footer__link md-footer__link--prev" href="../lua_luacheck/">
 <div class="md-footer__button md-icon">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
 </div>
@@ -3848,17 +3575,17 @@
                 Previous
               </span>
 <div class="md-ellipsis">
-                All CSS linters
+                luacheck
               </div>
 </div>
 </a>
-<a aria-label="Next: All ENV linters" class="md-footer__link md-footer__link--next" href="../env/">
+<a aria-label="Next: All MAKEFILE linters" class="md-footer__link md-footer__link--next" href="../makefile/">
 <div class="md-footer__title">
 <span class="md-footer__direction">
                 Next
               </span>
 <div class="md-ellipsis">
-                All ENV linters
+                All MAKEFILE linters
               </div>
 </div>
 <div class="md-footer__button md-icon">

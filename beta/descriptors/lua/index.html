@@ -5,7 +5,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<meta content="luacheck is available to analyze LUA files in MegaLinter" name="description"/>
+<meta content="luacheck, selene are available to analyze LUA files in MegaLinter" name="description"/>
 <meta content="Nicolas Vuillamy" name="author"/>
 <link href="https://megalinter.io/beta/descriptors/lua/" rel="canonical"/>
 <link href="../kotlin_detekt/" rel="prev"/>
@@ -24,12 +24,12 @@
 <meta content="@nvuillam" name="twitter:site">
 <meta content="summary_large_image" name="twitter:card">
 <meta content="LUA linters in MegaLinter" name="twitter:title">
-<meta content="luacheck is available to analyze LUA files in MegaLinter" name="twitter:description">
+<meta content="luacheck, selene are available to analyze LUA files in MegaLinter" name="twitter:description">
 <meta content="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-logo.png" property="og:image"/>
 <meta content="🦙 MegaLinter analyzes 48 languages, 22 formats, 19 tooling formats, excessive copy-pastes and spelling mistakes in your repository sources with a GitHub Action, other CI tools or locally." property="og:image:alt"/>
 <meta content="MegaLinter" property="og:site_name"/>
 <meta content="LUA linters in MegaLinter" property="og:title"/>
-<meta content="luacheck is available to analyze LUA files in MegaLinter" property="og:description"/>
+<meta content="luacheck, selene are available to analyze LUA files in MegaLinter" property="og:description"/>
 </meta></meta></meta></meta></meta><link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
             html.glightbox-open { overflow: initial; height: 100%; }
             .gslide-title { margin-top: 0px; user-select: text; }
@@ -923,6 +923,24 @@
     </span>
 </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#behind-the-scenes">
+<span class="md-ellipsis">
+      Behind the scenes
+    </span>
+</a>
+<nav aria-label="Behind the scenes" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#installation">
+<span class="md-ellipsis">
+      Installation
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
 </ul>
 </nav>
 </li>
@@ -930,6 +948,13 @@
 <a class="md-nav__link" href="../lua_luacheck/">
 <span class="md-ellipsis">
     luacheck
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lua_selene/">
+<span class="md-ellipsis">
+    selene
   </span>
 </a>
 </li>
@@ -3216,6 +3241,24 @@
     </span>
 </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#behind-the-scenes">
+<span class="md-ellipsis">
+      Behind the scenes
+    </span>
+</a>
+<nav aria-label="Behind the scenes" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#installation">
+<span class="md-ellipsis">
+      Installation
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
 </ul>
 </nav>
 </div>
@@ -3239,6 +3282,10 @@
 <tr>
 <td><a href="../lua_luacheck/"><strong>luacheck</strong></a><br/><a href="../lua_luacheck/"><em>LUA_LUACHECK</em></a></td>
 <td><a href="https://github.com/luarocks/luacheck"><img alt="GitHub stars" src="https://img.shields.io/github/stars/luarocks/luacheck?cacheSeconds=3600"/></a></td>
+</tr>
+<tr>
+<td><a href="../lua_selene/"><strong>selene</strong></a><br/><a href="../lua_selene/"><em>LUA_SELENE</em></a></td>
+<td><a href="https://github.com/Kampfkarren/selene"><img alt="GitHub stars" src="https://img.shields.io/github/stars/Kampfkarren/selene?cacheSeconds=3600"/></a></td>
 </tr>
 </tbody>
 </table>
@@ -3281,6 +3328,24 @@
 </tr>
 </tbody>
 </table>
+<h2 id="behind-the-scenes">Behind the scenes</h2>
+<h3 id="installation">Installation</h3>
+<ul>
+<li>Dockerfile commands :</li>
+</ul>
+<pre><code class="language-dockerfile">RUN wget --tries=5 https://www.lua.org/ftp/lua-5.3.5.tar.gz -O - -q | tar -xzf - \
+    &amp;&amp; cd lua-5.3.5 \
+    &amp;&amp; make linux \
+    &amp;&amp; make install \
+    &amp;&amp; cd .. &amp;&amp; rm -r lua-5.3.5/
+
+</code></pre>
+<ul>
+<li>APK packages (Linux):<ul>
+<li><a href="https://pkgs.alpinelinux.org/packages?branch=edge&amp;name=readline-dev">readline-dev</a></li>
+</ul>
+</li>
+</ul>
 </article>
 </div>
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
