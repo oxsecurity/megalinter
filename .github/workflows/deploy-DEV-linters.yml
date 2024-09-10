@@ -85,6 +85,7 @@ jobs:
             "latex_chktex",
             "lua_luacheck",
             "lua_selene",
+            "lua_stylua",
             "markdown_markdownlint",
             "markdown_markdown_link_check",
             "markdown_markdown_table_formatter",

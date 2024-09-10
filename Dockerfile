@@ -119,6 +119,8 @@ ARG DETEKT_VERSION=1.23.7
 
 # renovate: datasource=crate depName=selene
 ARG LUA_SELENE_VERSION=0.27.1
+# renovate: datasource=docker depName=JohnnyMorganz/stylua
+ARG LUA_STYLUA_VERSION=0.20.0
 # renovate: datasource=nuget depName=PSScriptAnalyzer registryUrl=https://www.powershellgallery.com/api/v2/
 ARG PSSA_VERSION='1.22.0'
 
@@ -369,6 +371,7 @@ COPY --link --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checke
 COPY --link --from=revive /usr/bin/revive /usr/bin/revive
 COPY --link --from=kubeconform /kubeconform /usr/bin/
 COPY --link --from=chktex /usr/bin/chktex /usr/bin/
+COPY --from=JohnnyMorganz/Stylua:{LUA_STYLUA_VERSION} /stylua /usr/bin/stylua
 COPY --link --from=protolint /usr/local/bin/protolint /usr/bin/
 COPY --link --from=dustilock /usr/bin/dustilock /usr/bin/dustilock
 COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
@@ -677,6 +680,9 @@ RUN wget --quiet https://github.com/pmd/pmd/releases/download/pmd_releases%2F${P
     && cd / \
 #
 # selene installation
+#
+# stylua installation
+# Managed with COPY --from=JohnnyMorganz/Stylua:{LUA_STYLUA_VERSION} /stylua /usr/bin/stylua
 #
 # perlcritic installation
     && curl -fsSL https://raw.githubusercontent.com/skaji/cpm/main/cpm | perl - install -g --show-build-log-on-failure --without-build --without-test --without-runtime Perl::Critic \
