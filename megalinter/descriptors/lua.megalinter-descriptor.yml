@@ -112,7 +112,7 @@ linters:
         - |-
           # renovate: datasource=docker depName=JohnnyMorganz/Stylua
           ARG LUA_STYLUA_VERSION=0.20.0
-        - COPY --from=JohnnyMorganz/Stylua:{LUA_STYLUA_VERSION} /stylua /usr/bin/stylua
+        - COPY --from=JohnnyMorganz/Stylua:${LUA_STYLUA_VERSION} /stylua /usr/bin/stylua
     ide:
       neovim:
         - name:
