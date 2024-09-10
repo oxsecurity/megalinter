@@ -110,9 +110,9 @@ linters:
     install:
       dockerfile:
         - |-
-          # renovate: datasource=docker depName=JohnnyMorganz/Stylua
+          # renovate: datasource=docker depName=johnnymorganz/stylua
           ARG LUA_STYLUA_VERSION=0.20.0
-        - COPY --from=JohnnyMorganz/Stylua:${LUA_STYLUA_VERSION} /stylua /usr/bin/stylua
+        - COPY --from=johnnymorganz/stylua:${LUA_STYLUA_VERSION} /stylua /usr/bin/stylua
     ide:
       neovim:
         - name:
