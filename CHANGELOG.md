@@ -16,6 +16,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Linters enhancements
 
 - Fixes
+  - APPLY_FIXES and for PHP_PHPCSFIXER linter, by @llaville in [#3963](https://github.com/oxsecurity/megalinter/issues/3963)
 
 - Reporters
 
