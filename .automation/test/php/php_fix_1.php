@@ -1,3 +1,3 @@
 <?php
 
-$x[] = $y;
+array_push($x, $y);
