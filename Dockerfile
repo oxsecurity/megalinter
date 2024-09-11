@@ -21,8 +21,6 @@ ARG DOCKERFILE_HADOLINT_VERSION=v2.12.0-alpine
 ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=v3.0.3
 # renovate: datasource=docker depName=ghcr.io/yannh/kubeconform
 ARG KUBERNETES_KUBECONFORM_VERSION=v0.6.7-alpine
-# renovate: datasource=docker depName=johnnymorganz/stylua
-ARG LUA_STYLUA_VERSION=0.20.0
 # renovate: datasource=docker depName=yoheimuta/protolint
 ARG PROTOBUF_PROTOLINT_VERSION=0.50.5
 # renovate: datasource=docker depName=zricethezav/gitleaks
@@ -62,7 +60,6 @@ ARG GO_REVIVE_VERSION=v1.3.9
 RUN GOBIN=/usr/bin go install github.com/mgechev/revive@$GO_REVIVE_VERSION
 FROM ghcr.io/yannh/kubeconform:${KUBERNETES_KUBECONFORM_VERSION} AS kubeconform
 FROM ghcr.io/assignuser/chktex-alpine:latest AS chktex
-FROM johnnymorganz/stylua:${LUA_STYLUA_VERSION} AS stylua
 FROM yoheimuta/protolint:${PROTOBUF_PROTOLINT_VERSION} AS protolint
 FROM golang:alpine AS dustilock
 RUN GOBIN=/usr/bin go install github.com/checkmarx/dustilock@v1.2.0
@@ -122,6 +119,8 @@ ARG DETEKT_VERSION=1.23.7
 
 # renovate: datasource=crate depName=selene
 ARG LUA_SELENE_VERSION=0.27.1
+# renovate: datasource=crate depName=stylua
+ARG LUA_STYLUA_VERSION=0.20.0
 # renovate: datasource=nuget depName=PSScriptAnalyzer registryUrl=https://www.powershellgallery.com/api/v2/
 ARG PSSA_VERSION='1.22.0'
 
@@ -222,7 +221,7 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin || true && \
 #CARGO__START
 RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --profile minimal --default-toolchain stable \
     && export PATH="/root/.cargo/bin:${PATH}" \
-    && rustup component add clippy && cargo install --force --locked sarif-fmt  shellcheck-sarif  selene@${LUA_SELENE_VERSION} \
+    && rustup component add clippy && cargo install --force --locked sarif-fmt  shellcheck-sarif  selene@${LUA_SELENE_VERSION}  stylua@${LUA_STYLUA_VERSION} \
     && rm -rf /root/.cargo/registry /root/.cargo/git /root/.cache/sccache
 ENV PATH="/root/.cargo/bin:${PATH}"
 #CARGO__END
@@ -372,7 +371,6 @@ COPY --link --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checke
 COPY --link --from=revive /usr/bin/revive /usr/bin/revive
 COPY --link --from=kubeconform /kubeconform /usr/bin/
 COPY --link --from=chktex /usr/bin/chktex /usr/bin/
-COPY --link --from=stylua /stylua /usr/bin/stylua
 COPY --link --from=protolint /usr/local/bin/protolint /usr/bin/
 COPY --link --from=dustilock /usr/bin/dustilock /usr/bin/dustilock
 COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
@@ -683,7 +681,6 @@ RUN wget --quiet https://github.com/pmd/pmd/releases/download/pmd_releases%2F${P
 # selene installation
 #
 # stylua installation
-# Managed with COPY --link --from=stylua /stylua /usr/bin/stylua
 #
 # perlcritic installation
     && curl -fsSL https://raw.githubusercontent.com/skaji/cpm/main/cpm | perl - install -g --show-build-log-on-failure --without-build --without-test --without-runtime Perl::Critic \

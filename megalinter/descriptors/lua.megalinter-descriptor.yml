@@ -95,7 +95,6 @@ linters:
           url: https://marketplace.visualstudio.com/items?itemName=Kampfkarren.selene-vscode
   # STYLUA
   - linter_name: stylua
-    is_formatter: true
     linter_url: https://github.com/JohnnyMorganz/StyLua
     linter_repo: https://github.com/JohnnyMorganz/StyLua
     linter_rules_url: https://roblox.github.io/lua-style-guide/
@@ -104,16 +103,19 @@ linters:
     linter_megalinter_ref_url: "no"
     config_file_name: stylua.toml
     cli_config_arg_name: "--config-path"
+    cli_version_arg_name: "-V"
+    cli_lint_extra_args:
+      - "--check"
     examples:
       - "stylua --check myfile.lua"
       - "stylua --config-path chktexrc.toml --check myfile.lua"
     install:
+      cargo:
+        - stylua@${LUA_STYLUA_VERSION}
       dockerfile:
         - |-
-          # renovate: datasource=docker depName=johnnymorganz/stylua
+          # renovate: datasource=crate depName=stylua
           ARG LUA_STYLUA_VERSION=0.20.0
-        - FROM johnnymorganz/stylua:${LUA_STYLUA_VERSION} AS stylua
-        - COPY --link --from=stylua /stylua /usr/bin/stylua
     ide:
       neovim:
         - name:
