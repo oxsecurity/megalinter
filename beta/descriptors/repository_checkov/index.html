@@ -904,6 +904,13 @@
   </span>
 </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lua_stylua/">
+<span class="md-ellipsis">
+    stylua
+  </span>
+</a>
+</li>
 </ul>
 </nav>
 </li>
@@ -3347,7 +3354,7 @@
 <p><a href="https://github.com/bridgecrewio/checkov"><img alt="GitHub stars" src="https://img.shields.io/github/stars/bridgecrewio/checkov?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-SARIF-orange"><img alt="sarif" src="https://shields.io/badge/-SARIF-orange"/></a> <a href="https://github.com/bridgecrewio/checkov/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/bridgecrewio/checkov?sort=semver"/></a> <a href="https://github.com/bridgecrewio/checkov/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/bridgecrewio/checkov"/></a> <a href="https://github.com/bridgecrewio/checkov/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/bridgecrewio/checkov"/></a> <a href="https://github.com/bridgecrewio/checkov/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/bridgecrewio/checkov"/></a></p>
 <h2 id="checkov-documentation">checkov documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>3.2.250</strong></li>
+<li>Version in MegaLinter: <strong>3.2.253</strong></li>
 <li>Visit <a href="https://www.checkov.io/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/bridgecrewio/checkov#configuration-using-a-config-file" target="_blank">How to configure checkov rules</a><ul>
 <li>If custom <code>.checkov.yml</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.checkov.yml" target="_blank">.checkov.yml</a> will be used</li>
@@ -3465,7 +3472,7 @@
 <td style="text-align: center;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png"/></a></td>
 <td style="text-align: left;"><a href="https://megalinter.io/beta/supported-linters/">all</a></td>
 <td style="text-align: left;">Default MegaLinter Flavor</td>
-<td style="text-align: center;">123</td>
+<td style="text-align: center;">124</td>
 <td style="text-align: right;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter"/></a></a></td>
 </tr>
 <tr>
@@ -3637,6 +3644,7 @@
                [--no-fail-on-crash] [--mask MASK] [--scan-secrets-history]
                [--secrets-history-timeout SECRETS_HISTORY_TIMEOUT]
                [--openai-api-key OPENAI_API_KEY]
+               [--custom-tool-name CUSTOM_TOOL_NAME]
 
 Infrastructure as code static analysis
 
@@ -3974,6 +3982,11 @@ options:
                         OpenAI credits. Set your number of findings that will
                         receive enhanced guidelines using
                         CKV_OPENAI_MAX_FINDINGS [env var: CKV_OPENAI_API_KEY]
+  --custom-tool-name CUSTOM_TOOL_NAME
+                        Add a tool name if you want your output to be tagged
+                        with a specific tool name,this is useful when
+                        integrating with other tools such as uploading SARIF
+                        files to github code scanning
 
 Args that start with '--' can also be set in a config file (/.checkov.yaml or
 /.checkov.yml or /root/.checkov.yaml or /root/.checkov.yml or specified via
