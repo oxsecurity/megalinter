@@ -188,6 +188,7 @@
         "LATEX_CHKTEX",
         "LUA_LUACHECK",
         "LUA_SELENE",
+        "LUA_STYLUA",
         "MAKEFILE_CHECKMAKE",
         "MARKDOWN_MARKDOWNLINT",
         "MARKDOWN_MARKDOWN_LINK_CHECK",
