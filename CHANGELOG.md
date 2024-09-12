@@ -100,6 +100,15 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.20.1 to **8.20.3** on 2024-09-09
   - [swiftlint](https://github.com/realm/SwiftLint) from 0.56.2 to **0.57.0** on 2024-09-09
   - [checkov](https://www.checkov.io/) from 3.2.249 to **3.2.250** on 2024-09-10
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 24.7.0 to **24.9.0** on 2024-09-12
+  - [spectral](https://docs.stoplight.io/docs/spectral/674b27b261c3c-overview) from 6.11.1 to **6.12.0** on 2024-09-12
+  - [standard](https://standardjs.com/) from 17.1.0 to **17.1.1** on 2024-09-12
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.379 to **1.1.380** on 2024-09-12
+  - [checkov](https://www.checkov.io/) from 3.2.250 to **3.2.253** on 2024-09-12
+  - [syft](https://github.com/anchore/syft) from 1.11.1 to **1.12.2** on 2024-09-12
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.55.0 to **0.55.1** on 2024-09-12
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.55.0 to **0.55.1** on 2024-09-12
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.81.10 to **3.82.1** on 2024-09-12
 <!-- linter-versions-end -->
 
 ## [v8.0.0] - 2024-08-19
