@@ -149,6 +149,7 @@
         "readdir-scoped-modules",
         "rechoir",
         "repositoryformatversion",
+        "rerunfailures",
         "reusify",
         "rimraf",
         "rulesetsoverridetype",
