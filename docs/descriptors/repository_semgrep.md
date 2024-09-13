@@ -506,7 +506,9 @@ OPTIONS
 
        --time
            Include a timing summary with the results. If output format is
-           json, provides times for each pair (rule, target).
+           json, provides times for each pair (rule, target). This feature is
+           meant for internal use and may be changed or removed without
+           warning. At the current moment, --trace is better supported.
 
        --timeout=VAL (absent=5.)
            Maximum time to spend running a rule on a single file in seconds.

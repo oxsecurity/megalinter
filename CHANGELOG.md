@@ -109,6 +109,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.55.0 to **0.55.1** on 2024-09-12
   - [trivy](https://aquasecurity.github.io/trivy/) from 0.55.0 to **0.55.1** on 2024-09-12
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.81.10 to **3.82.1** on 2024-09-12
+  - [spectral](https://docs.stoplight.io/docs/spectral/674b27b261c3c-overview) from 6.12.0 to **6.13.0** on 2024-09-13
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.12.4 to **1.13.0** on 2024-09-13
+  - [roslynator](https://github.com/dotnet/Roslynator) from 0.8.9.0 to **0.9.0.0** on 2024-09-13
+  - [standard](https://standardjs.com/) from 17.1.1 to **17.1.2** on 2024-09-13
+  - [ruff](https://github.com/astral-sh/ruff) from 0.6.4 to **0.6.5** on 2024-09-13
 <!-- linter-versions-end -->
 
 ## [v8.0.0] - 2024-08-19
