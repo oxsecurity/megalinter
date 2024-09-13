@@ -15,7 +15,7 @@ description: How to use spectral (configure, ignore files, ignore errors, help &
 
 ## spectral documentation
 
-- Version in MegaLinter: **6.12.0**
+- Version in MegaLinter: **6.13.0**
 - Visit [Official Web Site](https://docs.stoplight.io/docs/spectral/674b27b261c3c-overview){target=_blank}
 - See [How to configure spectral rules](https://docs.stoplight.io/docs/spectral/9ffa04e052cc1-spectral-cli#using-a-ruleset-file){target=_blank}
   - If custom `.spectral.yaml` config file isn't found, [.spectral.yaml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.spectral.yaml){target=_blank} will be used
@@ -115,7 +115,7 @@ Options:
       --version                  Show version number  [boolean]
       --help                     Show help  [boolean]
   -e, --encoding                 text encoding to use  [string] [choices: "utf8", "ascii", "utf-8", "utf16le", "ucs2", "ucs-2", "base64", "latin1"] [default: "utf8"]
-  -f, --format                   formatters to use for outputting results, more than one can be provided by using multiple flags  [string] [choices: "json", "stylish", "junit", "html", "text", "teamcity", "pretty", "github-actions", "sarif"] [default: "stylish"]
+  -f, --format                   formatters to use for outputting results, more than one can be provided by using multiple flags  [string] [choices: "json", "stylish", "junit", "html", "text", "teamcity", "pretty", "github-actions", "sarif", "code-climate", "gitlab", "markdown"] [default: "stylish"]
   -o, --output                   where to output results, can be a single file name, multiple "output.<format>" or missing to print to stdout  [string]
       --stdin-filepath           path to a file to pretend that stdin comes from  [string]
       --resolver                 path to custom json-ref-resolver instance  [string]
