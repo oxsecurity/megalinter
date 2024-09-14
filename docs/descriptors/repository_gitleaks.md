@@ -51,7 +51,7 @@ git fetch --depth=0
 
 ## gitleaks documentation
 
-- Version in MegaLinter: **8.18.4**
+- Version in MegaLinter: **8.19.0**
 - Visit [Official Web Site](https://github.com/gitleaks/gitleaks#readme){target=_blank}
 - See [How to configure gitleaks rules](https://github.com/gitleaks/gitleaks#configuration){target=_blank}
   - If custom `.gitleaks.toml` config file isn't found, [.gitleaks.toml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.gitleaks.toml){target=_blank} will be used
@@ -143,35 +143,33 @@ Usage:
 
 Available Commands:
   completion  generate the autocompletion script for the specified shell
-  detect      detect secrets in code
+  dir         scan directories or files for secrets
+  git         scan git repositories for secrets
   help        Help about any command
-  protect     protect secrets in code
+  stdin       detect secrets from stdin
   version     display gitleaks version
 
 Flags:
-  -b, --baseline-path string                                                                             path to baseline with issues that can be ignored
-  -c, --config string                                                                                    config file path
-                                                                                                         order of precedence:
-                                                                                                         1. --config/-c
-                                                                                                         2. env var GITLEAKS_CONFIG
-                                                                                                         3. (--source/-s)/.gitleaks.toml
-                                                                                                         If none of the three options are used, then gitleaks will use the default config
-      --enable-rule gitleaks detect --enable-rule=atlassian-api-token --enable-rule=slack-access-token   only enable specific rules by id, ex: gitleaks detect --enable-rule=atlassian-api-token --enable-rule=slack-access-token
-      --exit-code int                                                                                    exit code when leaks have been encountered (default 1)
-      --follow-symlinks                                                                                  scan files that are symlinks to other files
-  -i, --gitleaks-ignore-path string                                                                      path to .gitleaksignore file or folder containing one (default ".")
-  -h, --help                                                                                             help for gitleaks
-      --ignore-gitleaks-allow                                                                            ignore gitleaks:allow comments
-  -l, --log-level string                                                                                 log level (trace, debug, info, warn, error, fatal) (default "info")
-      --log-opts string                                                                                  git log options
-      --max-target-megabytes int                                                                         files larger than this will be skipped
-      --no-banner                                                                                        suppress banner
-      --no-color                                                                                         turn off color for verbose output
-      --redact uint[=100]                                                                                redact secrets from logs and stdout. To redact only parts of the secret just apply a percent value from 0..100. For example --redact=20 (default 100%)
-  -f, --report-format string                                                                             output format (json, csv, junit, sarif) (default "json")
-  -r, --report-path string                                                                               report file
-  -s, --source string                                                                                    path to source (default ".")
-  -v, --verbose                                                                                          show verbose output from scan
+  -b, --baseline-path string          path to baseline with issues that can be ignored
+  -c, --config string                 config file path
+                                      order of precedence:
+                                      1. --config/-c
+                                      2. env var GITLEAKS_CONFIG
+                                      3. (target path)/.gitleaks.toml
+                                      If none of the three options are used, then gitleaks will use the default config
+      --enable-rule strings           only enable specific rules by id
+      --exit-code int                 exit code when leaks have been encountered (default 1)
+  -i, --gitleaks-ignore-path string   path to .gitleaksignore file or folder containing one (default ".")
+  -h, --help                          help for gitleaks
+      --ignore-gitleaks-allow         ignore gitleaks:allow comments
+  -l, --log-level string              log level (trace, debug, info, warn, error, fatal) (default "info")
+      --max-target-megabytes int      files larger than this will be skipped
+      --no-banner                     suppress banner
+      --no-color                      turn off color for verbose output
+      --redact uint[=100]             redact secrets from logs and stdout. To redact only parts of the secret just apply a percent value from 0..100. For example --redact=20 (default 100%)
+  -f, --report-format string          output format (json, csv, junit, sarif) (default "json")
+  -r, --report-path string            report file
+  -v, --verbose                       show verbose output from scan
 
 Use "gitleaks [command] --help" for more information about a command.
 ```
@@ -181,7 +179,7 @@ Use "gitleaks [command] --help" for more information about a command.
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=docker depName=zricethezav/gitleaks
-ARG REPOSITORY_GITLEAKS_VERSION=v8.18.4
+ARG REPOSITORY_GITLEAKS_VERSION=v8.19.0
 FROM zricethezav/gitleaks:${REPOSITORY_GITLEAKS_VERSION} AS gitleaks
 COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 ```
