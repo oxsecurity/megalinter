@@ -114,6 +114,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [roslynator](https://github.com/dotnet/Roslynator) from 0.8.9.0 to **0.9.0.0** on 2024-09-13
   - [standard](https://standardjs.com/) from 17.1.1 to **17.1.2** on 2024-09-13
   - [ruff](https://github.com/astral-sh/ruff) from 0.6.4 to **0.6.5** on 2024-09-13
+  - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.18.4 to **8.19.0** on 2024-09-14
 <!-- linter-versions-end -->
 
 ## [v8.0.0] - 2024-08-19
