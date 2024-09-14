@@ -1139,15 +1139,15 @@ PRE_COMMANDS:
     tag: before_plugins # Tag indicating that the command will be run before loading plugins
 ```
 
-| Property           | Description                        | Default value |
-|--------------------|------------------------------------|---------------|
-| **command**            | Command line to run                |  Mandatory             |
-| **cwd**                | Directory where to run the command (`workspace` or `root`) |  `workspace`             |
-| **secured_env**        | Apply filtering of secured env variables before calling the command (default true)<br/>Be careful if you disable it !                                 |   `true`              |
-| **continue_if_failed** | If set to `false`, stop MegaLinter process in case of command failure                                   |  `true`             |
-| **venv**               | If set, runs the command into the related python venv                                   |  <!-- -->             |
-| **output_variables**   | ENV variables to get from output after running the commands, and store in MegaLinter ENV context, so they can be reused in next commands                                   |   `[]`            |
-| **tag**                | Tag defining at which commands entry point the command will be run   (available tags: `before_plugins`)                                 |  <!-- -->              |
+| Property               | Description                                                                                                                              | Default value |
+|------------------------|------------------------------------------------------------------------------------------------------------------------------------------|---------------|
+| **command**            | Command line to run                                                                                                                      | Mandatory     |
+| **cwd**                | Directory where to run the command (`workspace` or `root`)                                                                               | `workspace`   |
+| **secured_env**        | Apply filtering of secured env variables before calling the command (default true)<br/>Be careful if you disable it !                    | `true`        |
+| **continue_if_failed** | If set to `false`, stop MegaLinter process in case of command failure                                                                    | `true`        |
+| **venv**               | If set, runs the command into the related python venv                                                                                    | <!-- -->      |
+| **output_variables**   | ENV variables to get from output after running the commands, and store in MegaLinter ENV context, so they can be reused in next commands | `[]`          |
+| **tag**                | Tag defining at which commands entry point the command will be run   (available tags: `before_plugins`)                                  | <!-- -->      |
 
 <!-- config-precommands-section-end -->
 <!-- config-postcommands-section-start -->
