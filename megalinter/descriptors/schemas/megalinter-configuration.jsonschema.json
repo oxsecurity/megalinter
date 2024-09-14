@@ -42,7 +42,7 @@
         },
         "secured_env": {
           "default": true,
-          "description": "Apply filter of secured env variables before calling the command (default true). Be careful if you disable it.",
+          "description": "Apply filtering of secured env variables before calling the command (default true). Be careful if you disable it.",
           "title": "Secured ENV variables",
           "type": "boolean"
         },
