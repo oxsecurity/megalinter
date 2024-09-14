@@ -5094,7 +5094,15 @@
 <p>Note: Can be used with <code>oxsecurity/megalinter@beta</code> in your GitHub Action mega-linter.yml file, or with <code>oxsecurity/megalinter:beta</code> docker image</p>
 <ul>
 <li>Core<ul>
+<li>Allow to tag PRE_COMMANDS to run them before loading plugins, by @nvuillam in <a href="https://github.com/oxsecurity/megalinter/pull/3944">https://github.com/oxsecurity/megalinter/pull/3944</a></li>
 <li>Replace usage of setup.py with a pyproject.toml package install, by @echoix in <a href="https://github.com/oxsecurity/megalinter/pull/3893">#3893</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>New linters<ul>
+<li>New LUA linter: <a href="https://github.com/Kampfkarren/selene"><strong>selene</strong></a>, by @AlejandroSuero in <a href="https://github.com/oxsecurity/megalinter/pull/3978">https://github.com/oxsecurity/megalinter/pull/3978</a></li>
+<li>New LUA formatter: <a href="https://github.com/JohnnyMorganz/StyLua"><strong>stylua</strong></a>, by @AlejandroSuero in <a href="https://github.com/oxsecurity/megalinter/pull/3985">https://github.com/oxsecurity/megalinter/pull/3985</a></li>
 </ul>
 </li>
 </ul>
@@ -5111,14 +5119,18 @@
 <li>Reporters</li>
 </ul>
 <ul>
-<li>Doc</li>
+<li>Doc<ul>
+<li>Update PRE_COMMANDS documentation to describe all properties</li>
+</ul>
+</li>
 </ul>
 <ul>
 <li>Flavors</li>
 </ul>
 <ul>
 <li>CI<ul>
-<li>Free space in release job to avoid no space left on device</li>
+<li>Free space in release job to avoid no space left on device, by @nvuillam in <a href="https://github.com/oxsecurity/megalinter/pull/3914">https://github.com/oxsecurity/megalinter/pull/3914</a></li>
+<li>Add <code>pytest-rerunfailures</code> to improve CI control jobs success, by @AlejandroSuero in <a href="https://github.com/oxsecurity/megalinter/pull/3993">https://github.com/oxsecurity/megalinter/pull/3993</a></li>
 </ul>
 </li>
 </ul>
@@ -5213,6 +5225,7 @@
 <li><a href="https://standardjs.com/">standard</a> from 17.1.1 to <strong>17.1.2</strong> on 2024-09-13</li>
 <li><a href="https://github.com/astral-sh/ruff">ruff</a> from 0.6.4 to <strong>0.6.5</strong> on 2024-09-13</li>
 <li><a href="https://github.com/gitleaks/gitleaks">gitleaks</a> from 8.18.4 to <strong>8.19.0</strong> on 2024-09-14</li>
+<li><a href="https://github.com/trufflesecurity/trufflehog">trufflehog</a> from 3.82.1 to <strong>3.82.2</strong> on 2024-09-14</li>
 </ul>
 </li>
 </ul>
