@@ -123,6 +123,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [ruff](https://github.com/astral-sh/ruff) from 0.6.4 to **0.6.5** on 2024-09-13
   - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.18.4 to **8.19.0** on 2024-09-14
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.82.1 to **3.82.2** on 2024-09-14
+  - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.19.0 to **8.19.1** on 2024-09-14
 <!-- linter-versions-end -->
 
 ## [v8.0.0] - 2024-08-19
