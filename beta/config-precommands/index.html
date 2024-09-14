@@ -3197,6 +3197,52 @@
     continue_if_failed: False  # Will stop the process if command is failed (return code &gt; 0)
     tag: before_plugins # Tag indicating that the command will be run before loading plugins
 </code></pre>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>command</strong></td>
+<td>Command line to run</td>
+<td>Mandatory</td>
+</tr>
+<tr>
+<td><strong>cwd</strong></td>
+<td>Directory where to run the command (<code>workspace</code> or <code>root</code>)</td>
+<td><code>workspace</code></td>
+</tr>
+<tr>
+<td><strong>secured_env</strong></td>
+<td>Apply filtering of secured env variables before calling the command (default true)<br/>Be careful if you disable it !</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><strong>continue_if_failed</strong></td>
+<td>If set to <code>false</code>, stop MegaLinter process in case of command failure</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><strong>venv</strong></td>
+<td>If set, runs the command into the related python venv</td>
+<td><!-- --></td>
+</tr>
+<tr>
+<td><strong>output_variables</strong></td>
+<td>ENV variables to get from output after running the commands, and store in MegaLinter ENV context, so they can be reused in next commands</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><strong>tag</strong></td>
+<td>Tag defining at which commands entry point the command will be run   (available tags: <code>before_plugins</code>)</td>
+<td><!-- --></td>
+</tr>
+</tbody>
+</table>
 <!-- config-precommands-section-end -->
 </article>
 </div>
