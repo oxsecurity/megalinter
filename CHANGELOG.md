@@ -124,6 +124,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.18.4 to **8.19.0** on 2024-09-14
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.82.1 to **3.82.2** on 2024-09-14
   - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.19.0 to **8.19.1** on 2024-09-14
+  - [csharpier](https://csharpier.com/) from 0.29.1 to **0.29.2** on 2024-09-16
+  - [eslint](https://eslint.org) from 8.57.0 to **8.57.1** on 2024-09-16
+  - [checkov](https://www.checkov.io/) from 3.2.253 to **3.2.254** on 2024-09-16
+  - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.19.1 to **8.19.2** on 2024-09-16
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.67.3 to **0.67.5** on 2024-09-16
 <!-- linter-versions-end -->
 
 ## [v8.0.0] - 2024-08-19
