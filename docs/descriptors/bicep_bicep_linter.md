@@ -12,7 +12,7 @@ use a `bicepconfig.json` file. For more information, see the [documentation for 
 
 ## bicep_linter documentation
 
-- Version in MegaLinter: **0.29.47**
+- Version in MegaLinter: **0.30.3**
 - Visit [Official Web Site](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter){target=_blank}
 - See [How to configure bicep_linter rules](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/bicep-config){target=_blank}
 - See [How to disable bicep_linter rules in files](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter#silencing-false-positives){target=_blank}
@@ -86,7 +86,7 @@ az bicep build -f infra.bicep
 ### Help content
 
 ```shell
-Bicep CLI version 0.29.47 (132ade51bc)
+Bicep CLI version 0.30.3 (2f0e78dcae)
 
 Usage:
   bicep build [options] <file>
@@ -263,7 +263,7 @@ Usage:
       bicep build-params params.bicepparam --diagnostics-format sarif
 
   bicep jsonrpc [options]
-    Runs a JSONRPC server for interacting with Bicep programatically.
+    Runs a JSONRPC server for interacting with Bicep programmatically.
 
     Options:
       --pipe <name>   Runs the JSONRPC server using a named pipe.
