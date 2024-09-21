@@ -2,9 +2,11 @@
     "ignorePaths": [
         "**/.automation/generated/**",
         "**/.cspell.json",
+        "**/.gitignore",
         "**/.trivyignore",
         "**/.git/**",
         "**/all_users.md",
+        "**/alpaca.py",
         "**/licenses/*.md",
         "**/node_modules/**",
         "**/package-lock.json",

@@ -129,6 +129,20 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 3.2.253 to **3.2.254** on 2024-09-16
   - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.19.1 to **8.19.2** on 2024-09-16
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.67.3 to **0.67.5** on 2024-09-16
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 24.9.0 to **24.9.2** on 2024-09-20
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.29.47 to **0.30.3** on 2024-09-20
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.13.0 to **1.14.2** on 2024-09-20
+  - [phpcs](https://github.com/PHPCSStandards/PHP_CodeSniffer) from 3.10.2 to **3.10.3** on 2024-09-20
+  - [phpstan](https://phpstan.org/) from 1.12.3 to **1.12.4** on 2024-09-20
+  - [pylint](https://pylint.readthedocs.io) from 3.2.7 to **3.3.0** on 2024-09-20
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.380 to **1.1.381** on 2024-09-20
+  - [ruff](https://github.com/astral-sh/ruff) from 0.6.5 to **0.6.6** on 2024-09-20
+  - [checkov](https://www.checkov.io/) from 3.2.254 to **3.2.255** on 2024-09-20
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.55.1 to **0.55.2** on 2024-09-20
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.55.1 to **0.55.2** on 2024-09-20
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.20.3 to **8.20.4** on 2024-09-20
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.14.2 to **8.14.4** on 2024-09-20
+  - [sqlfluff](https://www.sqlfluff.com/) from 3.1.1 to **3.2.0** on 2024-09-20
 <!-- linter-versions-end -->
 
 ## [v8.0.0] - 2024-08-19
