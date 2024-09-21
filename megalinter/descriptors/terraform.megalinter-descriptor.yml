@@ -84,7 +84,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=docker depName=tenable/terrascan
-          ARG TERRAFORM_TERRASCAN_VERSION=1.19.2
+          ARG TERRAFORM_TERRASCAN_VERSION=1.19.9
         - FROM tenable/terrascan:${TERRAFORM_TERRASCAN_VERSION} AS terrascan
         - COPY --link --from=terrascan /go/bin/terrascan /usr/bin/
 

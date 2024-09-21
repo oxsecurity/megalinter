@@ -12,7 +12,7 @@
 #############################################################################################
 #ARGTOP__START
 # renovate: datasource=docker depName=tenable/terrascan
-ARG TERRAFORM_TERRASCAN_VERSION=1.19.2
+ARG TERRAFORM_TERRASCAN_VERSION=1.19.9
 #ARGTOP__END
 
 #############################################################################################
