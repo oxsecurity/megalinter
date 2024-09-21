@@ -144,6 +144,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.14.2 to **8.14.4** on 2024-09-20
   - [sqlfluff](https://www.sqlfluff.com/) from 3.1.1 to **3.2.0** on 2024-09-20
   - [spectral](https://docs.stoplight.io/docs/spectral/674b27b261c3c-overview) from 6.13.0 to **6.13.1** on 2024-09-21
+  - [ruff](https://github.com/astral-sh/ruff) from 0.6.6 to **0.6.7** on 2024-09-21
+  - [terrascan](https://runterrascan.io/) from 1.19.1 to **1.19.9** on 2024-09-21
 <!-- linter-versions-end -->
 
 ## [v8.0.0] - 2024-08-19
