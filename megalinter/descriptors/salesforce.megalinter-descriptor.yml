@@ -29,7 +29,53 @@ install:
   npm:
     - "@salesforce/cli@${SALESFORCE_CLI_VERSION}"
 linters:
-  # SFDX Scanner
+  # Code Analyzer
+  - linter_name: code-analyzer
+    name: SALESFORCE_CODE_ANALYZER
+    active_only_if_file_found:
+      - sfdx-project.json
+    linter_text: |
+      Salesforce Code Analyzer is the latest version of sfdx-scanner (that will be deprecated someday).
+      
+      In a single call, it can embed PMD, eslint, retire-js and regex engines to analyze rules defined in a single configuration file: code-analyzer.yml
+
+      If you don't have a code-analyzer.yml in your project, it is recommended to add one to Salesforce Code Analyzer VsCode Extension will also be able to use it.
+    linter_url: https://forcedotcom.github.io/sfdx-scanner/
+    linter_repo: https://github.com/forcedotcom/sfdx-scanner
+    linter_image_url: https://forcedotcom.github.io/sfdx-scanner/assets/images/sfdx_scanner_logo.png
+    config_file_name: code-analyzer.yml
+    cli_executable: sf
+    cli_config_arg_name: "--config"
+    cli_lint_extra_args:
+      - "code-analyzer:run"
+    cli_lint_mode: project
+    cli_help_extra_args:
+      - "code-analyzer:run"
+    cli_help_extra_commands:
+      - "sf code-analyzer:rule:list"
+    cli_version_extra_args:
+      - "plugins"
+    cli_version_arg_name: ""
+    version_extract_regex: "(?<=code-analyzer )\\d+(\\.\\d+)+"
+    cli_lint_errors_count: regex_sum
+    cli_lint_errors_regex: "found ([0-9]+) violation"
+    examples:
+      - "sf code-analyzer:run"
+    install:
+      dockerfile:
+        - |-
+          # renovate: datasource=npm depName=@salesforce/plugin-code-analyzer
+          ARG SALESFORCE_CODE_ANALYZER_VERSION=latest
+        - |-
+          RUN sf plugins install @salesforce/plugin-code-analyzer@${SALESFORCE_CODE_ANALYZER_VERSION} \
+              && npm cache clean --force || true \
+              && rm -rf /root/.npm/_cacache
+    ide:
+      vscode:
+        - name: Salesforce Extension Pack
+          url: https://marketplace.visualstudio.com/items?itemName=salesforce.salesforcedx-vscode
+
+  # SFDX Scanner Apex
   - linter_name: sfdx-scanner-apex
     name: SALESFORCE_SFDX_SCANNER_APEX
     files_sub_directory: force-app
