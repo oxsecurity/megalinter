@@ -2767,7 +2767,7 @@ def collect_linter_previews():
             title = None
             try:
                 title, description, image = web_preview(
-                    linter.linter_url, parser="html.parser", timeout=1000
+                    linter.linter_url, parser="html.parser", timeout=60
                 )
             except webpreview.excepts.URLUnreachable as e:
                 logging.error("URLUnreachable: " + str(e))
