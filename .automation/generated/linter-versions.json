@@ -15,6 +15,7 @@
     "clippy": "0.1.81",
     "clj-kondo": "2024.08.29",
     "cljstyle": "0.15.0",
+    "code-analyzer": "5.0.0",
     "coffeelint": "5.2.11",
     "cpplint": "1.6.1",
     "csharpier": "0.29.2",
