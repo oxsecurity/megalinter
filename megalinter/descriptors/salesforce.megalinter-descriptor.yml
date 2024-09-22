@@ -47,10 +47,12 @@ linters:
     cli_executable: sf
     cli_config_arg_name: "--config"
     cli_lint_extra_args:
-      - "code-analyzer:run"
+      - code-analyzer
+      - run
     cli_lint_mode: project
-    cli_help_arg_name: help
+    cli_help_arg_name: ''
     cli_help_extra_args:
+      - help
       - code-analyzer
       - run
     cli_help_extra_commands:
