@@ -124,6 +124,8 @@ ARG LUA_STYLUA_VERSION=0.20.0
 # renovate: datasource=nuget depName=PSScriptAnalyzer registryUrl=https://www.powershellgallery.com/api/v2/
 ARG PSSA_VERSION='1.22.0'
 
+# renovate: datasource=npm depName=@salesforce/plugin-code-analyzer
+ARG SALESFORCE_CODE_ANALYZER_VERSION=latest
 # renovate: datasource=npm depName=@salesforce/sfdx-scanner
 ARG SALESFORCE_SFDX_SCANNER_VERSION=4.5.0
 # renovate: datasource=npm depName=lightning-flow-scanner
@@ -768,6 +770,11 @@ RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | 
 #
 # trufflehog installation
 # Managed with COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
+#
+# code-analyzer installation
+    && sf plugins install @salesforce/plugin-code-analyzer@${SALESFORCE_CODE_ANALYZER_VERSION} \
+    && npm cache clean --force || true \
+    && rm -rf /root/.npm/_cacache \
 #
 # sfdx-scanner-apex installation
     && sf plugins install @salesforce/sfdx-scanner@${SALESFORCE_SFDX_SCANNER_VERSION} \

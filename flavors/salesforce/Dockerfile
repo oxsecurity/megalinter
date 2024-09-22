@@ -84,6 +84,8 @@ ARG SFDX_HARDIS_VERSION=4.53.0
 # renovate: datasource=github-tags depName=detekt/detekt
 ARG DETEKT_VERSION=1.23.7
 
+# renovate: datasource=npm depName=@salesforce/plugin-code-analyzer
+ARG SALESFORCE_CODE_ANALYZER_VERSION=latest
 # renovate: datasource=npm depName=@salesforce/sfdx-scanner
 ARG SALESFORCE_SFDX_SCANNER_VERSION=4.5.0
 # renovate: datasource=npm depName=lightning-flow-scanner
@@ -343,6 +345,11 @@ RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/rel
 #
 # trufflehog installation
 # Managed with COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
+#
+# code-analyzer installation
+    && sf plugins install @salesforce/plugin-code-analyzer@${SALESFORCE_CODE_ANALYZER_VERSION} \
+    && npm cache clean --force || true \
+    && rm -rf /root/.npm/_cacache \
 #
 # sfdx-scanner-apex installation
     && sf plugins install @salesforce/sfdx-scanner@${SALESFORCE_SFDX_SCANNER_VERSION} \
