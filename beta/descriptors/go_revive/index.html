@@ -3349,7 +3349,7 @@
 <p><a href="https://github.com/mgechev/revive"><img alt="GitHub stars" src="https://img.shields.io/github/stars/mgechev/revive?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-SARIF-orange"><img alt="sarif" src="https://shields.io/badge/-SARIF-orange"/></a> <a href="https://github.com/mgechev/revive/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/mgechev/revive?sort=semver"/></a> <a href="https://github.com/mgechev/revive/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/mgechev/revive"/></a> <a href="https://github.com/mgechev/revive/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/mgechev/revive"/></a> <a href="https://github.com/mgechev/revive/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/mgechev/revive"/></a></p>
 <h2 id="revive-documentation">revive documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>1.3.9</strong></li>
+<li>Version in MegaLinter: <strong>1.4.0</strong></li>
 <li>Visit <a href="https://revive.run/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://revive.run/docs#custom-configuration" target="_blank">How to configure revive rules</a></li>
 <li>See <a href="https://revive.run/r" target="_blank">Index of problems detected by revive</a></li>
@@ -3563,7 +3563,7 @@ Usage of revive:
 ## for the released revive binaries not returning version numbers (devel). 
 ## The install command should then be what is commented in the go.megalinter-descriptor.yml
 # renovate: datasource=github-tags depName=mgechev/revive
-ARG GO_REVIVE_VERSION=v1.3.9
+ARG GO_REVIVE_VERSION=v1.4.0
 RUN GOBIN=/usr/bin go install github.com/mgechev/revive@$GO_REVIVE_VERSION
 COPY --link --from=revive /usr/bin/revive /usr/bin/revive
 </code></pre>
