@@ -244,6 +244,7 @@ def list_active_reporters_for_scope(scope, reporter_init_params):
         if reporter_class.scope == scope:
             reporter = reporter_class(reporter_init_params)
             scope_reporters += [reporter]
+    logging.debug(f"[Reporters] Available reporters for scope {scope}: " + str([obj.name for obj in scope_reporters]))
     # Keep only active reporters
     for reporter in scope_reporters:
         if reporter.is_active is False:
@@ -251,6 +252,7 @@ def list_active_reporters_for_scope(scope, reporter_init_params):
         reporters += [reporter]
     # Sort reporters by name
     reporters = sorted(reporters, key=lambda r: r.processing_order)
+    logging.debug(f"[Reporters] Active reporters for scope {scope}: "+ + str([obj.name for obj in reporters]))
     return reporters
 
 
