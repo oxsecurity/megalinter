@@ -252,7 +252,7 @@ def list_active_reporters_for_scope(scope, reporter_init_params):
         reporters += [reporter]
     # Sort reporters by name
     reporters = sorted(reporters, key=lambda r: r.processing_order)
-    logging.debug(f"[Reporters] Active reporters for scope {scope}: "+ + ",".join([obj.name for obj in reporters]))
+    logging.debug(f"[Reporters] Active reporters for scope {scope}: " + ",".join([obj.name for obj in reporters]))
     return reporters
 
 
