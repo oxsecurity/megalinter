@@ -23,3 +23,4 @@ Activate the reporter (`MARKDOWN_SUMMARY_REPORTER: true`) to generate markdown s
 |-------------------------------------|---------------------------------------------------|------------------------|
 | MARKDOWN_SUMMARY_REPORTER           | Activates/deactivates reporter                    | `false`                |
 | MARKDOWN_SUMMARY_REPORTER_FILE_NAME | File name for MARKDOWN_SUMMARY report output file | `megalinter-report.md` |
+| JOB_SUMMARY_ADDITIONAL_MARKDOWN              | Custom markdown to add at the end of the summary message                                     | <!-- -->      |

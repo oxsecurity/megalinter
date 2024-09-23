@@ -158,6 +158,11 @@ def build_markdown_summary(reporter_self, action_run_url=""):
             + "(https://www.ox.security/wp-content/uploads/2022/06/"
             + "logo.svg?ref=megalinter_comment)](https://www.ox.security/?ref=megalinter)_"
         )
+    if config.exists(reporter_self.master.request_id, "JOB_SUMMARY_ADDITIONAL_MARKDOWN"):
+         p_r_msg += (
+            os.linesep
+            + config.get(reporter_self.master.request_id, "JOB_SUMMARY_ADDITIONAL_MARKDOWN", "")
+         )
     logging.debug("\n" + p_r_msg)
     return p_r_msg
 
