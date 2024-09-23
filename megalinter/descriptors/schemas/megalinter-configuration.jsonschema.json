@@ -8138,6 +8138,12 @@
       "title": "Pre commands for JAVA descriptor",
       "type": "array"
     },
+    "JOB_SUMMARY_ADDITIONAL_MARKDOWN": {
+      "$id": "#/properties/JOB_SUMMARY_ADDITIONAL_MARKDOWN",
+      "description": "Custom markdown to add at the end of the summary message posted on a PR/MR",
+      "title": "Job Summary additional markdown",
+      "type": "string"
+    },
     "JSON_ESLINT_PLUGIN_JSONC_ARGUMENTS": {
       "$id": "#/properties/JSON_ESLINT_PLUGIN_JSONC_ARGUMENTS",
       "description": "JSON_ESLINT_PLUGIN_JSONC: User custom arguments to add in linter CLI call",

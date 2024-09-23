@@ -11,6 +11,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Core
   - Allow to tag PRE_COMMANDS to run them before loading plugins, by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/3944>
   - Replace usage of setup.py with a pyproject.toml package install, by @echoix in [#3893](https://github.com/oxsecurity/megalinter/pull/3893)
+  - Allow to add custom messages at the end of PR / MR MegaLinter Summary using variable **JOB_SUMMARY_ADDITIONAL_MARKDOWN**
 
 - New linters
   - New LUA linter: [**selene**](https://github.com/Kampfkarren/selene), by @AlejandroSuero in <https://github.com/oxsecurity/megalinter/pull/3978>
