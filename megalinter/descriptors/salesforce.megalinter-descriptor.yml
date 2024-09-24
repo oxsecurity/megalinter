@@ -82,7 +82,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=@salesforce/sfdx-scanner
-          ARG SALESFORCE_SFDX_SCANNER_VERSION=4.5.0
+          ARG SALESFORCE_SFDX_SCANNER_VERSION=4.6.0
         - |-
           RUN sf plugins install @salesforce/sfdx-scanner@${SALESFORCE_SFDX_SCANNER_VERSION} \
               && npm cache clean --force || true \
@@ -155,7 +155,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=@salesforce/sfdx-scanner
-          ARG SALESFORCE_SFDX_SCANNER_VERSION=4.5.0
+          ARG SALESFORCE_SFDX_SCANNER_VERSION=4.6.0
         - |-
           RUN sf plugins install @salesforce/sfdx-scanner@${SALESFORCE_SFDX_SCANNER_VERSION} \
               && npm cache clean --force || true \
@@ -218,7 +218,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=@salesforce/sfdx-scanner
-          ARG SALESFORCE_SFDX_SCANNER_VERSION=4.5.0
+          ARG SALESFORCE_SFDX_SCANNER_VERSION=4.6.0
         - |-
           RUN sf plugins install @salesforce/sfdx-scanner@${SALESFORCE_SFDX_SCANNER_VERSION} \
               && npm cache clean --force || true \
