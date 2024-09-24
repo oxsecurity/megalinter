@@ -151,6 +151,12 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [revive](https://revive.run/) from 1.3.9 to **1.4.0** on 2024-09-23
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.14.2 to **1.15.0** on 2024-09-23
   - [bandit](https://bandit.readthedocs.io/en/latest/) from 1.7.9 to **1.7.10** on 2024-09-23
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.30.3 to **0.30.23** on 2024-09-24
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.15.0 to **1.15.1** on 2024-09-24
+  - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.41.0 to **0.42.0** on 2024-09-24
+  - [pylint](https://pylint.readthedocs.io) from 3.3.0 to **3.3.1** on 2024-09-24
+  - [syft](https://github.com/anchore/syft) from 1.12.2 to **1.13.0** on 2024-09-24
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.82.2 to **3.82.3** on 2024-09-24
 <!-- linter-versions-end -->
 
 ## [v8.0.0] - 2024-08-19
