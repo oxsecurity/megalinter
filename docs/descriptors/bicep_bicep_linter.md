@@ -12,7 +12,7 @@ use a `bicepconfig.json` file. For more information, see the [documentation for 
 
 ## bicep_linter documentation
 
-- Version in MegaLinter: **0.30.3**
+- Version in MegaLinter: **0.30.23**
 - Visit [Official Web Site](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter){target=_blank}
 - See [How to configure bicep_linter rules](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/bicep-config){target=_blank}
 - See [How to disable bicep_linter rules in files](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter#silencing-false-positives){target=_blank}
@@ -86,7 +86,7 @@ az bicep build -f infra.bicep
 ### Help content
 
 ```shell
-Bicep CLI version 0.30.3 (2f0e78dcae)
+Bicep CLI version 0.30.23 (ec3612efc7)
 
 Usage:
   bicep build [options] <file>
