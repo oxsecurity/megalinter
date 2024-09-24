@@ -125,7 +125,7 @@ ARG LUA_STYLUA_VERSION=0.20.0
 ARG PSSA_VERSION='1.22.0'
 
 # renovate: datasource=npm depName=@salesforce/sfdx-scanner
-ARG SALESFORCE_SFDX_SCANNER_VERSION=4.5.0
+ARG SALESFORCE_SFDX_SCANNER_VERSION=4.6.0
 # renovate: datasource=npm depName=lightning-flow-scanner
 ARG LIGHTNING_FLOW_SCANNER_VERSION=2.34.0
 #ARG__END
