@@ -48,6 +48,9 @@ CVE-2020-26226
 # sfdx
 GHSA-xpw8-rcwv-8f8p
 
+# spectral
+CVE-2024-47068
+
 # terrascan
 # https://github.com/tenable/terrascan/issues/1674
 CVE-2024-23652
