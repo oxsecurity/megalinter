@@ -149,6 +149,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [ruff](https://github.com/astral-sh/ruff) from 0.6.6 to **0.6.7** on 2024-09-21
   - [terrascan](https://runterrascan.io/) from 1.19.1 to **1.19.9** on 2024-09-21
   - [revive](https://revive.run/) from 1.3.9 to **1.4.0** on 2024-09-23
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.14.2 to **1.15.0** on 2024-09-23
+  - [bandit](https://bandit.readthedocs.io/en/latest/) from 1.7.9 to **1.7.10** on 2024-09-23
 <!-- linter-versions-end -->
 
 ## [v8.0.0] - 2024-08-19

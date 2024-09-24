@@ -19,7 +19,7 @@ If you find it too harsh, you may define `PYTHON_BANDIT_DISABLE_ERRORS: true` in
 
 ## bandit documentation
 
-- Version in MegaLinter: **1.7.9**
+- Version in MegaLinter: **1.7.10**
 - Visit [Official Web Site](https://bandit.readthedocs.io/en/latest/){target=_blank}
 - See [How to configure bandit rules](https://bandit.readthedocs.io/en/latest/config.html#){target=_blank}
   - If custom `.bandit.yml` config file isn't found, [.bandit.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.bandit.yml){target=_blank} will be used
@@ -267,6 +267,8 @@ The following tests were discovered and loaded:
   B610  django_extra_used
   B611  django_rawsql_used
   B612  logging_config_insecure_listen
+  B613  trojansource
+  B614  pytorch_load_save
   B701  jinja2_autoescape_false
   B702  use_of_mako_templates
   B703  django_mark_safe
