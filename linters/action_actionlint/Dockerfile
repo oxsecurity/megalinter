@@ -29,7 +29,7 @@ FROM koalaman/shellcheck:${BASH_SHELLCHECK_VERSION} AS shellcheck
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.4.9 AS uv
+FROM ghcr.io/astral-sh/uv:0.4.16 AS uv
 FROM python:3.12.6-alpine3.20 AS build-ml-core
 WORKDIR /
 COPY pyproject.toml .
