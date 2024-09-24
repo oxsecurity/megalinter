@@ -3341,7 +3341,7 @@
 <p>Builds a SBOM (Software Build Of Materials) from your repository</p>
 <h2 id="syft-documentation">syft documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>1.12.2</strong></li>
+<li>Version in MegaLinter: <strong>1.13.0</strong></li>
 <li>Visit <a href="https://github.com/anchore/syft#readme" target="_blank">Official Web Site</a></li>
 </ul>
 <p><a href="https://github.com/anchore/syft" target="_blank"><img alt="syft - GitHub" src="https://gh-card.dev/repos/anchore/syft.svg?fullname="/></a></p>
@@ -3510,6 +3510,7 @@ Available Commands:
 Flags:
       --base-path string                          base directory for scanning, no links will be followed above this directory, and all paths will be reported relative to this directory
   -c, --config string                             syft configuration file
+      --enrich stringArray                        enable package data enrichment from local and online sources (options: all, golang, java, javascript)
       --exclude stringArray                       exclude paths from being scanned using a glob expression
       --file string                               file to write the default report output to (default is STDOUT) (DEPRECATED: use: output)
       --from stringArray                          specify the source behavior to use (e.g. docker, registry, oci-dir, ...)
