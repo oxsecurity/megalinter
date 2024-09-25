@@ -206,7 +206,7 @@ Copy value of Authentication -> User and paste it with variable `API_REPORTER_BA
 
 Example: `API_REPORTER_BASIC_AUTH_USERNAME=898189`
 
-Leave NOTIF_API_BASIC_AUTH_PASSWORD empty for now, you can't get it here
+Leave `API_REPORTER_BASIC_AUTH_PASSWORD` empty for now, you can't get it here
 
 ![](../assets/images/grafana-config-5.jpg)
 

@@ -28,6 +28,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Doc
   - Update PRE_COMMANDS documentation to describe all properties
+  - Update Grafana documentation to fix secrets typo
 
 - Flavors
 
