@@ -12,7 +12,7 @@
 #############################################################################################
 #ARGTOP__START
 # renovate: datasource=docker depName=trufflesecurity/trufflehog 
-ARG REPOSITORY_TRUFFLEHOG_VERSION=3.82.3
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.82.4
 #ARGTOP__END
 
 #############################################################################################
