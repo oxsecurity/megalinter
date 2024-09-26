@@ -206,6 +206,9 @@ OPTIONS
        --emacs-output=VAL
            Write a copy of the emacs output to a file or post to URL.
 
+       --enable-experimental-requirements
+           Experimental: support wider set of requirements lockfiles.
+
        --enable-nosem
            Enables 'nosem'. Findings will not be reported on lines containing
            a 'nosem' comment at the end. Enabled by default.

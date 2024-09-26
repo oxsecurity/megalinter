@@ -89,7 +89,7 @@ markdown-link-check -c .markdown-link-check.json myfile.md
 ### Help content
 
 ```shell
-(node:1525) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(node:1522) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
 (Use `node --trace-deprecation ...` to show where the warning was created)
 Usage: markdown-link-check [options] [filenamesOrUrls...]
 

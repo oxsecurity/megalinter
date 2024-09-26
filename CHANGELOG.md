@@ -158,6 +158,16 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [pylint](https://pylint.readthedocs.io) from 3.3.0 to **3.3.1** on 2024-09-24
   - [syft](https://github.com/anchore/syft) from 1.12.2 to **1.13.0** on 2024-09-24
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.82.2 to **3.82.3** on 2024-09-24
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2024.08.29 to **2024.09.26** on 2024-09-26
+  - [phpstan](https://phpstan.org/) from 1.12.4 to **1.12.5** on 2024-09-26
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.381 to **1.1.382** on 2024-09-26
+  - [ruff](https://github.com/astral-sh/ruff) from 0.6.7 to **0.6.8** on 2024-09-26
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.82.3 to **3.82.5** on 2024-09-26
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 4.5.0 to **4.6.0** on 2024-09-26
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 4.5.0 to **4.6.0** on 2024-09-26
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 4.5.0 to **4.6.0** on 2024-09-26
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.20.4 to **8.20.5** on 2024-09-26
+  - [vale](https://vale.sh/) from 3.7.0 to **3.7.1** on 2024-09-26
 <!-- linter-versions-end -->
 
 ## [v8.0.0] - 2024-08-19

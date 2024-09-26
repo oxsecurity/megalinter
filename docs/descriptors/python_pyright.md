@@ -19,7 +19,7 @@ If you don't use python static typing, you should disable this linter by adding 
 
 ## pyright documentation
 
-- Version in MegaLinter: **1.1.381**
+- Version in MegaLinter: **1.1.382**
 - Visit [Official Web Site](https://github.com/Microsoft/pyright#readme){target=_blank}
 - See [How to configure pyright rules](https://github.com/microsoft/pyright/blob/main/docs/configuration.md){target=_blank}
 - See [How to disable pyright rules in files](https://github.com/microsoft/pyright/blob/main/docs/comments.md#file-level-type-controls){target=_blank}
@@ -121,6 +121,9 @@ Usage: pyright [options] files...
   --warnings                         Use exit code of 1 if warnings are reported
   -w,--watch                         Continue to run and watch for changes
   -                                  Read files from stdin
+
+WARNING: there is a new pyright version available (v1.1.382 -> v1.1.382.post0).
+Please install the new version or set PYRIGHT_PYTHON_FORCE_VERSION to `latest`
 
 ```
 
