@@ -28,9 +28,9 @@ ARG REPOSITORY_GITLEAKS_VERSION=v8.19.2
 # renovate: datasource=docker depName=checkmarx/kics
 ARG REPOSITORY_KICS_VERSION=v2.1.2-alpine
 # renovate: datasource=docker depName=trufflesecurity/trufflehog 
-ARG REPOSITORY_TRUFFLEHOG_VERSION=3.82.4
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.82.5
 # renovate: datasource=docker depName=jdkato/vale
-ARG SPELL_VALE_VERSION=v3.7.0
+ARG SPELL_VALE_VERSION=v3.7.1
 # renovate: datasource=docker depName=ghcr.io/terraform-linters/tflint
 ARG TERRAFORM_TFLINT_VERSION=0.53.0
 # renovate: datasource=docker depName=tenable/terrascan
@@ -103,7 +103,7 @@ ARG SALESFORCE_CLI_VERSION=2.59.6
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
 ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.8.6
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=5.0.6
+ARG SFDX_HARDIS_VERSION=5.0.7
 ARG ARM_TTK_NAME='master.zip'
 ARG ARM_TTK_URI='https://github.com/Azure/arm-ttk/archive/master.zip'
 ARG ARM_TTK_DIRECTORY='/opt/microsoft'
