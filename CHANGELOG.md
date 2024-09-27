@@ -168,6 +168,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 4.5.0 to **4.6.0** on 2024-09-26
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.20.4 to **8.20.5** on 2024-09-26
   - [vale](https://vale.sh/) from 3.7.0 to **3.7.1** on 2024-09-26
+  - [actionlint](https://rhysd.github.io/actionlint/) from 1.7.1 to **1.7.2** on 2024-09-26
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2024.09.26 to **2024.09.27** on 2024-09-26
+  - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.19.2 to **8.19.3** on 2024-09-26
 <!-- linter-versions-end -->
 
 ## [v8.0.0] - 2024-08-19
