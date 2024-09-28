@@ -9,7 +9,7 @@ description: How to use pmd (configure, ignore files, ignore errors, help & vers
 
 ## pmd documentation
 
-- Version in MegaLinter: **7.5.0**
+- Version in MegaLinter: **7.6.0**
 - Visit [Official Web Site](https://pmd.github.io/){target=_blank}
 - See [How to configure pmd rules](https://docs.pmd-code.org/pmd-doc-6.55.0/pmd_userdocs_configuring_rules.html){target=_blank}
   - If custom `java-pmd-ruleset.xml` config file isn't found, [java-pmd-ruleset.xml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/java-pmd-ruleset.xml){target=_blank} will be used
@@ -108,7 +108,7 @@ ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 # Linter install
 # renovate: datasource=github-tags depName=pmd/pmd extractVersion=^pmd_releases/(?<version>.*)$
-ARG PMD_VERSION=7.5.0
+ARG PMD_VERSION=7.6.0
 
 RUN wget --quiet https://github.com/pmd/pmd/releases/download/pmd_releases%2F${PMD_VERSION}/pmd-dist-${PMD_VERSION}-bin.zip && \
     unzip pmd-dist-${PMD_VERSION}-bin.zip || echo "Error unzipping" && \

@@ -122,9 +122,6 @@ Usage: pyright [options] files...
   -w,--watch                         Continue to run and watch for changes
   -                                  Read files from stdin
 
-WARNING: there is a new pyright version available (v1.1.382 -> v1.1.382.post0).
-Please install the new version or set PYRIGHT_PYTHON_FORCE_VERSION to `latest`
-
 ```
 
 ### Installation on mega-linter Docker image
