@@ -175,6 +175,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.82.5 to **3.82.6** on 2024-09-27
   - [scalafix](https://scalacenter.github.io/scalafix/) from 0.12.1 to **0.13.0** on 2024-09-27
   - [actionlint](https://rhysd.github.io/actionlint/) from 1.7.2 to **1.7.3** on 2024-09-29
+  - [checkstyle](https://checkstyle.org/) from 10.18.1 to **10.18.2** on 2024-09-29
 <!-- linter-versions-end -->
 
 ## [v8.0.0] - 2024-08-19

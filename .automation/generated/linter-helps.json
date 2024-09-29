@@ -789,7 +789,7 @@
         "               [--secrets-scan-file-type SECRETS_SCAN_FILE_TYPE]",
         "               [--enable-secret-scan-all-files]",
         "               [--block-list-secret-scan BLOCK_LIST_SECRET_SCAN]",
-        "               [--summary-position {top,bottom}]",
+        "               [--summary-position {bottom,top}]",
         "               [--skip-resources-without-violations] [--deep-analysis]",
         "               [--no-fail-on-crash] [--mask MASK] [--scan-secrets-history]",
         "               [--secrets-history-timeout SECRETS_HISTORY_TIMEOUT]",
@@ -1102,7 +1102,7 @@
         "  --block-list-secret-scan BLOCK_LIST_SECRET_SCAN",
         "                        List of files to filter out from the secret scanner",
         "                        [env var: CKV_SECRETS_SCAN_BLOCK_LIST]",
-        "  --summary-position {top,bottom}",
+        "  --summary-position {bottom,top}",
         "                        Chose whether the summary will be appended on top",
         "                        (before the checks results) or on bottom (after check",
         "                        results), default is on top.",
@@ -3455,7 +3455,7 @@
         "  completion  Generate autocompletion script",
         "  config      Handle cached configurations",
         "  delete      Delete configurations in Kubescape SaaS version",
-        "  download    Download attack-tracks,controls-inputs,exceptions,control,framework,artifacts",
+        "  download    Download control,framework,artifacts,attack-tracks,controls-inputs,exceptions",
         "  fix         Fix misconfiguration in files",
         "  help        Help about any command",
         "  list        List frameworks/controls will list the supported frameworks and controls",
@@ -3502,7 +3502,7 @@
         "      --version                               version for kubeval"
     ],
     "lightning-flow-scanner": [
-        "(node:1742) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.",
+        "(node:1744) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.",
         "(Use `node --trace-deprecation ...` to show where the warning was created)",
         "Find and fix potential bugs in Salesforce flows.",
         "",
@@ -3929,7 +3929,7 @@
         "          Print version"
     ],
     "markdown-link-check": [
-        "(node:1521) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.",
+        "(node:1524) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.",
         "(Use `node --trace-deprecation ...` to show where the warning was created)",
         "Usage: markdown-link-check [options] [filenamesOrUrls...]",
         "",
@@ -8047,7 +8047,7 @@
         "@typescript-eslint/unbound-method                  typescript   Best Practices    Best Practices                                    eslint-typescript"
     ],
     "sfdx-scanner-apex": [
-        "(node:1754) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.",
+        "(node:1756) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.",
         "(Use `node --trace-deprecation ...` to show where the warning was created)",
         "Scan a codebase with all the rules in the registry, or use parameters to filter the rules based on rulename, category, or ruleset.",
         "",
@@ -8102,7 +8102,7 @@
         "COMMANDS",
         "  scanner run dfa  Scan codebase with all DFA rules by default.",
         "",
-        "(node:1766) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.",
+        "(node:1768) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.",
         "(Use `node --trace-deprecation ...` to show where the warning was created)",
         " \u203a   Warning: Plugin @salesforce/sfdx-scanner (4.6.0) differs from the version",
         " \u203a   specified by sf (4.5.0)",
@@ -8603,7 +8603,7 @@
         " UnimplementedTypeRule                                  apex        Performance                          sfge              N      N"
     ],
     "sfdx-scanner-lwc": [
-        "(node:2137) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.",
+        "(node:2136) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.",
         "(Use `node --trace-deprecation ...` to show where the warning was created)",
         "Scan a codebase with all the rules in the registry, or use parameters to filter the rules based on rulename, category, or ruleset.",
         "",
@@ -8658,7 +8658,7 @@
         "COMMANDS",
         "  scanner run dfa  Scan codebase with all DFA rules by default.",
         "",
-        "(node:2149) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.",
+        "(node:2148) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.",
         "(Use `node --trace-deprecation ...` to show where the warning was created)",
         " \u203a   Warning: Plugin @salesforce/sfdx-scanner (4.6.0) differs from the version",
         " \u203a   specified by sf (4.5.0)",
@@ -9065,7 +9065,7 @@
         "                 [--scheduler-solver-path SCHEDULER_SOLVER_PATH]",
         "                 [--deploy-sources QUERY CHECKSUM]",
         "                 [--target-jobs TARGET_JOBS [TARGET_JOBS ...]]",
-        "                 [--mode {subprocess,remote,default}]",
+        "                 [--mode {remote,default,subprocess}]",
         "                 [--report-html-path VALUE]",
         "                 [--report-html-stylesheet-path VALUE]",
         "                 [targets ...]",
@@ -9874,7 +9874,7 @@
         "  --target-jobs TARGET_JOBS [TARGET_JOBS ...]",
         "                        Internal use only: Target particular jobs by",
         "                        RULE:WILDCARD1=VALUE,WILDCARD2=VALUE,...",
-        "  --mode {subprocess,remote,default}",
+        "  --mode {remote,default,subprocess}",
         "                        Internal use only: Set execution mode of Snakemake.",
         "                        (default: default)",
         "",
