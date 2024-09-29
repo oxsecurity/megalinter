@@ -9,7 +9,7 @@
     "cfn-lint": "1.15.1",
     "checkmake": "0.2.0",
     "checkov": "3.2.255",
-    "checkstyle": "10.18.1",
+    "checkstyle": "10.18.2",
     "chktex": "1.7.8",
     "clang-format": "17.0.6",
     "clippy": "0.1.81",

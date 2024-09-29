@@ -15,7 +15,7 @@ description: How to use checkstyle (configure, ignore files, ignore errors, help
 
 ## checkstyle documentation
 
-- Version in MegaLinter: **10.18.1**
+- Version in MegaLinter: **10.18.2**
 - Visit [Official Web Site](https://checkstyle.org/){target=_blank}
 - See [How to configure checkstyle rules](https://checkstyle.org/config.html){target=_blank}
   - If custom `sun_checks.xml` config file isn't found, [sun_checks.xml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/sun_checks.xml){target=_blank} will be used
