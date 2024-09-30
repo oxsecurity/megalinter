@@ -44,14 +44,21 @@ class ApiReporter(Reporter):
                 )
                 if self.api_url is not None:
                     self.is_active = True
+                    logging.info("[ApiReporter] Enabled")
                 else:
                     self.is_active = False
                     logging.error(
-                        "API_REPORTER_URL must have a correct value to use ApiReporter"
+                        "[ApiReporter] API_REPORTER_URL must have a correct value to use ApiReporter"
                     )
             else:
                 self.is_active = False
-                logging.error("You need to define API_REPORTER_URL to use ApiReporter")
+                logging.error(
+                    "[ApiReporter] You need to define API_REPORTER_URL to use ApiReporter"
+                )
+        else:
+            logging.info(
+                "[ApiReporter] Not enabled as API_REPORTER is not defined to true"
+            )
 
     # Send JSON log to remote api
     def produce_report(self):
