@@ -15,7 +15,7 @@
       "type": "grafana",
       "id": "grafana",
       "name": "Grafana",
-      "version": "11.2.0-74515"
+      "version": "11.3.0-76537"
     },
     {
       "type": "datasource",
@@ -98,6 +98,7 @@
         "graphMode": "area",
         "justifyMode": "center",
         "orientation": "auto",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -109,7 +110,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.1.0-69950",
+      "pluginVersion": "11.3.0-76537",
       "repeat": "linterKey",
       "repeatDirection": "h",
       "targets": [
@@ -119,7 +120,7 @@
             "uid": "${DS_GRAFANACLOUD-MEGALINTER-LOGS}"
           },
           "editorMode": "builder",
-          "expr": "{source=\"MegaLinter\", linterKey=\"$linterKey\"} |= ``",
+          "expr": "{source=\"MegaLinter\", linterKey=\"$linterKey\", gitIdentifier=\"$gitIdentifier\"} |= ``",
           "maxLines": 1,
           "queryType": "range",
           "refId": "A"
@@ -151,7 +152,8 @@
       "type": "stat"
     }
   ],
-  "schemaVersion": 39,
+  "refresh": "",
+  "schemaVersion": 40,
   "tags": [
     "megalinter"
   ],
@@ -212,6 +214,6 @@
   "timezone": "browser",
   "title": "DASH - 00_MegaLinter Home",
   "uid": "megalinter-home-repo",
-  "version": 2,
+  "version": 4,
   "weekStart": ""
 }
