@@ -20,6 +20,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Media
 
 - Linters enhancements
+  - Trivy: Retry 10 times in case of TooManyRequests when downloading vulnerability database
+  - Trivy: Embed vulnerability database in Docker Image for running trivy on internet-free network
 
 - Fixes
   - Add debug traces to investigate reporters activation

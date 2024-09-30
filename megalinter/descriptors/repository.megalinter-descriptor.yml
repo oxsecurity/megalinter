@@ -498,6 +498,7 @@ linters:
 
   # TRIVY
   - linter_name: trivy
+    class: TrivyLinter
     can_output_sarif: true
     descriptor_flavors:
       - all_flavors # Applicable to CI in any language project
