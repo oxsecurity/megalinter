@@ -180,6 +180,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [scalafix](https://scalacenter.github.io/scalafix/) from 0.12.1 to **0.13.0** on 2024-09-27
   - [actionlint](https://rhysd.github.io/actionlint/) from 1.7.2 to **1.7.3** on 2024-09-29
   - [checkstyle](https://checkstyle.org/) from 10.18.1 to **10.18.2** on 2024-09-29
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.15.1 to **1.15.2** on 2024-09-30
 <!-- linter-versions-end -->
 
 ## [v8.0.0] - 2024-08-19
