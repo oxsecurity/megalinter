@@ -26,6 +26,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Fixes
   - Add debug traces to investigate reporters activation
   - Add more traces for ApiReporter
+  - Activate ApiReporter by default
 
 - Reporters
 

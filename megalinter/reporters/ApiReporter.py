@@ -30,7 +30,7 @@ class ApiReporter(Reporter):
 
     def __init__(self, params=None):
         # Deactivate Api reporter by default
-        self.is_active = False
+        self.is_active = True
         self.processing_order = 20  # Run after text reporter
         super().__init__(params)
 
