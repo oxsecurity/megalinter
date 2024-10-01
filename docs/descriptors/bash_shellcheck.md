@@ -82,6 +82,7 @@ This linter is available in the following flavors
 ### How are identified applicable files
 
 - File extensions: `.sh`, `.bash`, `.dash`, `.ksh`
+- Shebangs: `#!/usr/bin/env bash`, `#!/bin/bash`, `#!/bin/sh`
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->

@@ -7,10 +7,17 @@ descriptor_flavors:
   - c_cpp
   - formatters
 file_extensions:
+  - ""
   - ".sh"
   - ".bash"
   - ".dash"
   - ".ksh"
+file_contains_regex_extensions:
+  - ""
+file_contains_regex:
+  - "^#!/usr/bin/env bash"
+  - "^#!/bin/bash"
+  - "^#!/bin/sh"
 install:
   apk:
     - bash
