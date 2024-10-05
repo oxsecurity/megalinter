@@ -189,6 +189,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [kics](https://www.kics.io) from 2.1.2 to **2.1.3** on 2024-10-04
   - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.55.2 to **0.56.1** on 2024-10-04
   - [trivy](https://aquasecurity.github.io/trivy/) from 0.55.2 to **0.56.1** on 2024-10-04
+  - [secretlint](https://github.com/secretlint/secretlint) from 8.2.4 to **8.3.0** on 2024-10-05
 <!-- linter-versions-end -->
 
 ## [v8.0.0] - 2024-08-19
