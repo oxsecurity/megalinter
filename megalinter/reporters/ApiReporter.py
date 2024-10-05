@@ -56,6 +56,7 @@ class ApiReporter(Reporter):
                     "[ApiReporter] You need to define API_REPORTER_URL to use ApiReporter"
                 )
         else:
+            self.is_active = False
             logging.info(
                 "[ApiReporter] Not enabled as API_REPORTER is not defined to true"
             )
