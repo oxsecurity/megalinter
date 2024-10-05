@@ -692,6 +692,7 @@ def generate_linter_dockerfiles():
                 "    GITHUB_STATUS_REPORTER=false \\",
                 "    GITHUB_COMMENT_REPORTER=false \\",
                 "    EMAIL_REPORTER=false \\",
+                "    API_REPORTER=false \\",
                 "    FILEIO_REPORTER=false \\",
                 "    CONFIG_REPORTER=false \\",
                 "    SARIF_TO_HUMAN=false" "",
