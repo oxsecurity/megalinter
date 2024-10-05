@@ -183,6 +183,14 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [actionlint](https://rhysd.github.io/actionlint/) from 1.7.2 to **1.7.3** on 2024-09-29
   - [checkstyle](https://checkstyle.org/) from 10.18.1 to **10.18.2** on 2024-09-29
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.15.1 to **1.15.2** on 2024-09-30
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.15.2 to **1.16.0** on 2024-10-04
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.382 to **1.1.383** on 2024-10-04
+  - [ruff](https://github.com/astral-sh/ruff) from 0.6.8 to **0.6.9** on 2024-10-04
+  - [checkov](https://www.checkov.io/) from 3.2.255 to **3.2.256** on 2024-10-04
+  - [kics](https://www.kics.io) from 2.1.2 to **2.1.3** on 2024-10-04
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.55.2 to **0.56.1** on 2024-10-04
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.55.2 to **0.56.1** on 2024-10-04
+  - [secretlint](https://github.com/secretlint/secretlint) from 8.2.4 to **8.3.0** on 2024-10-05
 <!-- linter-versions-end -->
 
 ## [v8.0.0] - 2024-08-19

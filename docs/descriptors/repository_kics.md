@@ -15,7 +15,7 @@ description: How to use kics (configure, ignore files, ignore errors, help & ver
 
 ## kics documentation
 
-- Version in MegaLinter: **2.1.2**
+- Version in MegaLinter: **2.1.3**
 - Visit [Official Web Site](https://www.kics.io){target=_blank}
 - See [How to configure kics rules](https://docs.kics.io/latest/configuration-file/){target=_blank}
 - See [How to disable kics rules in files](https://docs.kics.io/latest/running-kics/#using_commands_on_scanned_files_as_comments){target=_blank}
@@ -111,7 +111,7 @@ Use "kics [command] --help" for more information about a command.
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=docker depName=checkmarx/kics
-ARG REPOSITORY_KICS_VERSION=v2.1.2-alpine
+ARG REPOSITORY_KICS_VERSION=v2.1.3-alpine
 FROM checkmarx/kics:${REPOSITORY_KICS_VERSION} AS kics
 COPY --link --from=kics /app/bin/kics /usr/bin/kics
 ENV KICS_QUERIES_PATH=/usr/bin/assets/queries KICS_LIBRARIES_PATH=/usr/bin/assets/libraries
