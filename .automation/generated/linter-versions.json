@@ -88,7 +88,7 @@
     "ruff": "0.6.9",
     "scalafix": "0.13.0",
     "scss-lint": "0.60.0",
-    "secretlint": "8.2.4",
+    "secretlint": "8.3.0",
     "selene": "0.27.1",
     "semgrep": "3.12",
     "sfdx-scanner": "2.8.0",
