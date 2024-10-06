@@ -9,7 +9,7 @@ description: How to use cpplint (configure, ignore files, ignore errors, help & 
 
 ## cpplint documentation
 
-- Version in MegaLinter: **1.6.1**
+- Version in MegaLinter: **2.0.0**
 - Visit [Official Web Site](https://github.com/cpplint/cpplint#readme){target=_blank}
 - See [Index of problems detected by cpplint](https://google.github.io/styleguide/cppguide.html){target=_blank}
 
@@ -81,6 +81,7 @@ Syntax: cpplint.py [--verbose=#] [--output=emacs|eclipse|vs7|junit|sed|gsed]
                    [--exclude=path]
                    [--extensions=hpp,cpp,...]
                    [--includeorder=default|standardcfirst]
+                   [--config=filename]
                    [--quiet]
                    [--version]
         <file> [file] ...
@@ -95,9 +96,14 @@ Syntax: cpplint.py [--verbose=#] [--output=emacs|eclipse|vs7|junit|sed|gsed]
   certain of the problem, and 1 meaning it could be a legitimate construct.
   This will miss some errors, and is not a substitute for a code review.
 
-  To suppress false-positive errors of a certain category, add a
-  'NOLINT(category)' comment to the line.  NOLINT or NOLINT(*)
-  suppresses errors of all categories on that line.
+  To suppress false-positive errors of certain categories, add a
+  'NOLINT(category[, category...])' comment to the line.  NOLINT or NOLINT(*)
+  suppresses errors of all categories on that line. To suppress categories
+  on the next line use NOLINTNEXTLINE instead of NOLINT. To suppress errors in
+  a block of code 'NOLINTBEGIN(category[, category...])' comment to a line at
+  the start of the block and to end the block add a comment with 'NOLINTEND'.
+  NOLINT blocks are inclusive so any statements on the same line as a BEGIN
+  or END will have the error suppression applied.
 
   The files passed in will be linted; at least one file must be provided.
   Default linted extensions are ['c', 'c++', 'cc', 'cpp', 'cu', 'cuh', 'cxx', 'h', 'h++', 'hh', 'hpp', 'hxx'].
@@ -140,12 +146,20 @@ Syntax: cpplint.py [--verbose=#] [--output=emacs|eclipse|vs7|junit|sed|gsed]
       To see a list of all the categories used in cpplint, pass no arg:
          --filter=
 
+      Filters can directly be limited to files and also line numbers. The
+      syntax is category:file:line , where line is optional. The filter limitation
+      works for both + and - and can be combined with ordinary filters:
+
+      Examples: --filter=-whitespace:foo.h,+whitespace/braces:foo.h
+                --filter=-whitespace,-runtime/printf:foo.h:14,+runtime/printf_format:foo.h
+                --filter=-,+build/include_what_you_use:foo.h:321
+
     counting=total|toplevel|detailed
       The total number of errors found is always printed. If
       'toplevel' is provided, then the count of errors in each of
       the top-level categories like 'build' and 'whitespace' will
       also be printed. If 'detailed' is provided, then a count
-      is provided for each category like 'build/class'.
+      is provided for each category like 'legal/copyright'.
 
     repository=path
       The top level directory of the repository, used to derive the header
@@ -226,6 +240,9 @@ Syntax: cpplint.py [--verbose=#] [--output=emacs|eclipse|vs7|junit|sed|gsed]
       standardcfirst means to instead use an allow-list of known c headers and
       treat all others as separate group of "other system headers". The C headers
       included are those of the C-standard lib and closely related ones.
+
+    config=filename
+      Search for config files with the specified name instead of CPPLINT.cfg
 
     headers=x,y,...
       The header extensions that cpplint will treat as .h in checks. Values are

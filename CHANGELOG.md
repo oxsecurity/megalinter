@@ -190,6 +190,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.55.2 to **0.56.1** on 2024-10-04
   - [trivy](https://aquasecurity.github.io/trivy/) from 0.55.2 to **0.56.1** on 2024-10-04
   - [secretlint](https://github.com/secretlint/secretlint) from 8.2.4 to **8.3.0** on 2024-10-05
+  - [cpplint](https://github.com/cpplint/cpplint) from 1.6.1 to **2.0.0** on 2024-10-06
+  - [phpstan](https://phpstan.org/) from 1.12.5 to **1.12.6** on 2024-10-06
+  - [checkov](https://www.checkov.io/) from 3.2.256 to **3.2.257** on 2024-10-06
+  - [secretlint](https://github.com/secretlint/secretlint) from 8.3.0 to **8.4.0** on 2024-10-06
+  - [sqlfluff](https://www.sqlfluff.com/) from 3.2.0 to **3.2.1** on 2024-10-06
 <!-- linter-versions-end -->
 
 ## [v8.0.0] - 2024-08-19
