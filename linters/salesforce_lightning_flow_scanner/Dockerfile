@@ -45,11 +45,11 @@ FROM python:3.12.6-alpine3.20
 #############################################################################################
 #ARG__START
 # renovate: datasource=npm depName=@salesforce/cli
-ARG SALESFORCE_CLI_VERSION=2.59.6
+ARG SALESFORCE_CLI_VERSION=2.60.13
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
 ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.8.10
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=5.0.7
+ARG SFDX_HARDIS_VERSION=5.0.10
 # renovate: datasource=npm depName=lightning-flow-scanner
 ARG LIGHTNING_FLOW_SCANNER_VERSION=2.34.0
 #ARG__END

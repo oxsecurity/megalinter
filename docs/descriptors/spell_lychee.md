@@ -27,7 +27,7 @@ https://github.com/sgerrand/alpine-pkg-glibc/releases/download
 
 ## lychee documentation
 
-- Version in MegaLinter: **0.15.1**
+- Version in MegaLinter: **0.16.1**
 - Visit [Official Web Site](https://lychee.cli.rs){target=_blank}
 - See [How to configure lychee rules](https://lychee.cli.rs/#/usage/config){target=_blank}
 - See [Index of problems detected by lychee](https://lychee.cli.rs/#/usage/cli){target=_blank}
@@ -195,7 +195,7 @@ Options:
   -u, --user-agent <USER_AGENT>
           User agent
 
-          [default: lychee/0.15.1]
+          [default: lychee/0.16.1]
 
   -i, --insecure
           Proceed for server connections considered insecure (invalid TLS)
@@ -240,6 +240,13 @@ Options:
       --remap <REMAP>
           Remap URI matching pattern to different URI
 
+      --fallback-extensions <FALLBACK_EXTENSIONS>
+          Test the specified file extensions for URIs when checking files locally.
+          Multiple extensions can be separated by commas. Extensions will be checked in
+          order of appearance.
+
+          Example: --fallback-extensions html,htm,php,asp,aspx,jsp,cgi
+
       --header <HEADER>
           Custom request header
 
@@ -280,7 +287,7 @@ Options:
           [default: get]
 
   -b, --base <BASE>
-          Base URL or website root directory to check relative URLs e.g. https://example.com or `/path/to/public`
+          Base URL or website root directory to check relative URLs e.g. <https://example.com> or `/path/to/public`
 
       --basic-auth <BASIC_AUTH>
           Basic authentication support. E.g. `http://example.com username:password`
@@ -293,6 +300,12 @@ Options:
       --skip-missing
           Skip missing input files (default is to error if they don't exist)
 
+      --no-ignore
+          Do not skip files that would otherwise be ignored by '.gitignore', '.ignore', or the global ignore file
+
+      --hidden
+          Do not skip hidden directories and files
+
       --include-verbatim
           Find links in verbatim sections like `pre`- and `code` blocks
 
@@ -302,10 +315,17 @@ Options:
   -o, --output <OUTPUT>
           Output file of status report
 
+      --mode <MODE>
+          Set the output display mode. Determines how results are presented in the terminal
+
+          [default: color]
+          [possible values: plain, color, emoji]
+
   -f, --format <FORMAT>
-          Output format of final status report (compact, detailed, json, markdown)
+          Output format of final status report
 
           [default: compact]
+          [possible values: compact, detailed, json, markdown, raw]
 
       --require-https
           When HTTPS is available, treat HTTP links as errors
