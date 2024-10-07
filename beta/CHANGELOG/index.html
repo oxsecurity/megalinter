@@ -5112,8 +5112,12 @@
 </ul>
 <ul>
 <li>Linters enhancements<ul>
-<li>Trivy: Retry 10 times in case of TooManyRequests when downloading vulnerability database</li>
-<li>Trivy: Embed vulnerability database in Docker Image for running trivy on internet-free network</li>
+<li>Trivy<ul>
+<li>Embed vulnerability database in Docker Image for running trivy on internet-free network</li>
+<li>Retry 5 times after 3 seconds in case of TooManyRequests when downloading vulnerability database</li>
+<li>If the retries did not succeed, call trivy with <code>--skip-db-update --skip-check-update</code> (not ideal but better than nothing)</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -5143,6 +5147,7 @@
 <li>CI<ul>
 <li>Free space in release job to avoid no space left on device, by @nvuillam in <a href="https://github.com/oxsecurity/megalinter/pull/3914">https://github.com/oxsecurity/megalinter/pull/3914</a></li>
 <li>Add <code>pytest-rerunfailures</code> to improve CI control jobs success, by @AlejandroSuero in <a href="https://github.com/oxsecurity/megalinter/pull/3993">https://github.com/oxsecurity/megalinter/pull/3993</a></li>
+<li>Send GITHUB_TOKEN to trivy-action</li>
 </ul>
 </li>
 </ul>
