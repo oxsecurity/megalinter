@@ -251,3 +251,5 @@ jobs:
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
           timeout: 10m0s
+        env:
+            ACTIONS_RUNTIME_TOKEN: ${{ secrets.GITHUB_TOKEN }}

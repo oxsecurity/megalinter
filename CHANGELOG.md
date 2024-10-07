@@ -20,8 +20,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Media
 
 - Linters enhancements
-  - Trivy: Retry 10 times in case of TooManyRequests when downloading vulnerability database
-  - Trivy: Embed vulnerability database in Docker Image for running trivy on internet-free network
+  - Trivy
+    - Embed vulnerability database in Docker Image for running trivy on internet-free network
+    - Retry 5 times after 3 seconds in case of TooManyRequests when downloading vulnerability database
+    - If the retries did not succeed, call trivy with `--skip-db-update --skip-check-update` (not ideal but better than nothing)
 
 - Fixes
   - Add debug traces to investigate reporters activation
@@ -40,6 +42,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - CI
   - Free space in release job to avoid no space left on device, by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/3914>
   - Add `pytest-rerunfailures` to improve CI control jobs success, by @AlejandroSuero in <https://github.com/oxsecurity/megalinter/pull/3993>
+  - Send GITHUB_TOKEN to trivy-action
 
 - mega-linter-runner
 
