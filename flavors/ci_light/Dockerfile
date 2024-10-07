@@ -17,7 +17,7 @@ ARG BASH_SHELLCHECK_VERSION=v0.10.0
 # renovate: datasource=docker depName=hadolint/hadolint
 ARG DOCKERFILE_HADOLINT_VERSION=v2.12.0-alpine
 # renovate: datasource=docker depName=zricethezav/gitleaks
-ARG REPOSITORY_GITLEAKS_VERSION=v8.19.3
+ARG REPOSITORY_GITLEAKS_VERSION=v8.20.1
 # renovate: datasource=docker depName=trufflesecurity/trufflehog 
 ARG REPOSITORY_TRUFFLEHOG_VERSION=3.82.6
 #ARGTOP__END
