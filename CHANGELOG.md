@@ -195,6 +195,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 3.2.256 to **3.2.257** on 2024-10-06
   - [secretlint](https://github.com/secretlint/secretlint) from 8.3.0 to **8.4.0** on 2024-10-06
   - [sqlfluff](https://www.sqlfluff.com/) from 3.2.0 to **3.2.1** on 2024-10-06
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.20.5 to **8.20.6** on 2024-10-07
+  - [lychee](https://lychee.cli.rs) from 0.15.1 to **0.16.1** on 2024-10-07
+  - [sqlfluff](https://www.sqlfluff.com/) from 3.2.1 to **3.2.2** on 2024-10-07
 <!-- linter-versions-end -->
 
 ## [v8.0.0] - 2024-08-19
