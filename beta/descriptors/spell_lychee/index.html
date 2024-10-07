@@ -3347,7 +3347,7 @@ https://github.com/sgerrand/alpine-pkg-glibc/releases/download
 </code></pre>
 <h2 id="lychee-documentation">lychee documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>0.15.1</strong></li>
+<li>Version in MegaLinter: <strong>0.16.1</strong></li>
 <li>Visit <a href="https://lychee.cli.rs" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://lychee.cli.rs/#/usage/config" target="_blank">How to configure lychee rules</a></li>
 <li>See <a href="https://lychee.cli.rs/#/usage/cli" target="_blank">Index of problems detected by lychee</a></li>
@@ -3667,7 +3667,7 @@ Options:
   -u, --user-agent &lt;USER_AGENT&gt;
           User agent
 
-          [default: lychee/0.15.1]
+          [default: lychee/0.16.1]
 
   -i, --insecure
           Proceed for server connections considered insecure (invalid TLS)
@@ -3712,6 +3712,13 @@ Options:
       --remap &lt;REMAP&gt;
           Remap URI matching pattern to different URI
 
+      --fallback-extensions &lt;FALLBACK_EXTENSIONS&gt;
+          Test the specified file extensions for URIs when checking files locally.
+          Multiple extensions can be separated by commas. Extensions will be checked in
+          order of appearance.
+
+          Example: --fallback-extensions html,htm,php,asp,aspx,jsp,cgi
+
       --header &lt;HEADER&gt;
           Custom request header
 
@@ -3752,7 +3759,7 @@ Options:
           [default: get]
 
   -b, --base &lt;BASE&gt;
-          Base URL or website root directory to check relative URLs e.g. https://example.com or `/path/to/public`
+          Base URL or website root directory to check relative URLs e.g. &lt;https://example.com&gt; or `/path/to/public`
 
       --basic-auth &lt;BASIC_AUTH&gt;
           Basic authentication support. E.g. `http://example.com username:password`
@@ -3765,6 +3772,12 @@ Options:
       --skip-missing
           Skip missing input files (default is to error if they don't exist)
 
+      --no-ignore
+          Do not skip files that would otherwise be ignored by '.gitignore', '.ignore', or the global ignore file
+
+      --hidden
+          Do not skip hidden directories and files
+
       --include-verbatim
           Find links in verbatim sections like `pre`- and `code` blocks
 
@@ -3774,10 +3787,17 @@ Options:
   -o, --output &lt;OUTPUT&gt;
           Output file of status report
 
+      --mode &lt;MODE&gt;
+          Set the output display mode. Determines how results are presented in the terminal
+
+          [default: color]
+          [possible values: plain, color, emoji]
+
   -f, --format &lt;FORMAT&gt;
-          Output format of final status report (compact, detailed, json, markdown)
+          Output format of final status report
 
           [default: compact]
+          [possible values: compact, detailed, json, markdown, raw]
 
       --require-https
           When HTTPS is available, treat HTTP links as errors
