@@ -23,8 +23,8 @@ class TrivyLinter(Linter):
                 return_code, return_output = self.execute_lint_command(command)
             else:
                 logging.warning(
-                    "[Trivy] Hit TOOMANYREQUESTS 5 times: Run trivy "+
-                    "with --skip-db-update and --skip-check-update"
+                    "[Trivy] Hit TOOMANYREQUESTS 5 times: Run trivy "
+                    + "with --skip-db-update and --skip-check-update"
                 )
                 if isinstance(command, str):
                     command_without_db = (
