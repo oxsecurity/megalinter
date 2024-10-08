@@ -203,6 +203,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [sqlfluff](https://www.sqlfluff.com/) from 3.2.1 to **3.2.2** on 2024-10-07
   - [black](https://black.readthedocs.io/en/stable/) from 24.8.0 to **24.10.0** on 2024-10-07
   - [syft](https://github.com/anchore/syft) from 1.13.0 to **1.14.0** on 2024-10-07
+  - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.19.3 to **8.20.1** on 2024-10-08
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.82.6 to **3.82.7** on 2024-10-08
 <!-- linter-versions-end -->
 
 ## [v8.0.0] - 2024-08-19

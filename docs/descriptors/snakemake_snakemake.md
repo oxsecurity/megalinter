@@ -132,7 +132,7 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--d3dag] [--summary] [--detailed-summary] [--archive FILE]
                  [--cleanup-metadata FILE [FILE ...]] [--cleanup-shadow]
                  [--skip-script-cleanup] [--unlock]
-                 [--list-changes {code,params,input}] [--list-input-changes]
+                 [--list-changes {input,params,code}] [--list-input-changes]
                  [--list-params-changes] [--list-untracked]
                  [--delete-all-output | --delete-temp-output]
                  [--keep-incomplete] [--drop-metadata] [--version]
@@ -634,7 +634,7 @@ UTILITIES:
                         (default: False)
   --unlock              Remove a lock on the working directory. (default:
                         False)
-  --list-changes {code,params,input}, --lc {code,params,input}
+  --list-changes {input,params,code}, --lc {input,params,code}
                         List all output files for which the given items (code,
                         input, params) have changed since creation.
   --list-input-changes, --li
