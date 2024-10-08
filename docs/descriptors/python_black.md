@@ -15,7 +15,7 @@ description: How to use black (configure, ignore files, ignore errors, help & ve
 
 ## black documentation
 
-- Version in MegaLinter: **24.8.0**
+- Version in MegaLinter: **24.10.0**
 - Visit [Official Web Site](https://black.readthedocs.io/en/stable/){target=_blank}
 - See [How to configure black rules](https://black.readthedocs.io/en/stable/usage_and_configuration/the_basics.html#configuration-format){target=_blank}
   - If custom `pyproject.toml` config file isn't found, [pyproject.toml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/pyproject.toml){target=_blank} will be used
@@ -144,7 +144,7 @@ Options:
                                   expected to make it into the stable style
                                   Black's next major release. Implies
                                   --preview.
-  --enable-unstable-feature [hex_codes_in_unicode_sequences|string_processing|hug_parens_with_braces_and_square_brackets|unify_docstring_detection|no_normalize_fmt_skip_whitespace|wrap_long_dict_values_in_parens|multiline_string_handling|typed_params_trailing_comma|is_simple_lookup_for_doublestar_expression|docstring_check_for_newline|remove_redundant_guard_parens|parens_for_long_if_clauses_in_case_block]
+  --enable-unstable-feature [hex_codes_in_unicode_sequences|string_processing|hug_parens_with_braces_and_square_brackets|unify_docstring_detection|no_normalize_fmt_skip_whitespace|wrap_long_dict_values_in_parens|multiline_string_handling|typed_params_trailing_comma|is_simple_lookup_for_doublestar_expression|docstring_check_for_newline|remove_redundant_guard_parens|parens_for_long_if_clauses_in_case_block|pep646_typed_star_arg_type_var_tuple]
                                   Enable specific features included in the
                                   `--unstable` style. Requires `--preview`. No
                                   compatibility guarantees are provided on the

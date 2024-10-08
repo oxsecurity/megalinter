@@ -1,8 +1,8 @@
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.4.16 AS uv
-FROM python:3.12.6-alpine3.20 AS build-ml-core
+FROM ghcr.io/astral-sh/uv:0.4.19 AS uv
+FROM python:3.12.7-alpine3.20 AS build-ml-core
 WORKDIR /
 COPY pyproject.toml .
 COPY --from=uv /uv /bin/uv

@@ -20,8 +20,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Media
 
 - Linters enhancements
-  - Trivy: Retry 10 times in case of TooManyRequests when downloading vulnerability database
-  - Trivy: Embed vulnerability database in Docker Image for running trivy on internet-free network
+  - Trivy
+    - Embed vulnerability database in Docker Image for running trivy on internet-free network
+    - Retry 5 times after 3 seconds in case of TooManyRequests when downloading vulnerability database
+    - If the retries did not succeed, call trivy with `--skip-db-update --skip-check-update` (not ideal but better than nothing)network
   - Bash/Perl: Support shell scripts with no extension and only support perl shebangs at the beginning of a file in <https://github.com/oxsecurity/megalinter/pull/4076>
 
 - Fixes
@@ -41,6 +43,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - CI
   - Free space in release job to avoid no space left on device, by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/3914>
   - Add `pytest-rerunfailures` to improve CI control jobs success, by @AlejandroSuero in <https://github.com/oxsecurity/megalinter/pull/3993>
+  - Send GITHUB_TOKEN to trivy-action
 
 - mega-linter-runner
 
@@ -199,6 +202,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.20.5 to **8.20.6** on 2024-10-07
   - [lychee](https://lychee.cli.rs) from 0.15.1 to **0.16.1** on 2024-10-07
   - [sqlfluff](https://www.sqlfluff.com/) from 3.2.1 to **3.2.2** on 2024-10-07
+  - [black](https://black.readthedocs.io/en/stable/) from 24.8.0 to **24.10.0** on 2024-10-07
+  - [syft](https://github.com/anchore/syft) from 1.13.0 to **1.14.0** on 2024-10-07
+  - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.19.3 to **8.20.1** on 2024-10-08
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.82.6 to **3.82.7** on 2024-10-08
 <!-- linter-versions-end -->
 
 ## [v8.0.0] - 2024-08-19
