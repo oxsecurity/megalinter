@@ -24,6 +24,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - Embed vulnerability database in Docker Image for running trivy on internet-free network
     - Retry 5 times after 3 seconds in case of TooManyRequests when downloading vulnerability database
     - If the retries did not succeed, call trivy with `--skip-db-update --skip-check-update` (not ideal but better than nothing)
+  - Bash/Perl: Support shell scripts with no extension and only support perl shebangs at the beginning of a file in <https://github.com/oxsecurity/megalinter/pull/4076>
 
 - Fixes
   - Add debug traces to investigate reporters activation
