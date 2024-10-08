@@ -9,7 +9,7 @@ description: How to use phplint (configure, ignore files, ignore errors, help & 
 
 ## phplint documentation
 
-- Version in MegaLinter: **9.4.1**
+- Version in MegaLinter: **9.5.2**
 - Visit [Official Web Site](https://github.com/overtrue/phplint#readme){target=_blank}
   - If custom `.phplint.yml` config file isn't found, [.phplint.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.phplint.yml){target=_blank} will be used
 

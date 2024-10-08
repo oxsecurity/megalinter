@@ -57,7 +57,7 @@ This linter is available in the following flavors
 ### How are identified applicable files
 
 - File extensions: `.pl`, `.pm`, `.t`, ``
-- Detected file content (regex): `#!/usr/bin/env perl`, `#!/usr/bin/perl`
+- Detected file content (regex): `^#!/usr/bin/env perl`, `^#!/usr/bin/perl`
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->

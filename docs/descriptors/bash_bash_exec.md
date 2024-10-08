@@ -20,22 +20,22 @@ Note: You can run `git add --chmod=+x myfile.sh` to make a file executable on Wi
 - Enable bash-exec by adding `BASH_EXEC` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 - Disable bash-exec by adding `BASH_EXEC` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-| Variable                              | Description                                                                                                                                                                                  | Default value                       |
-|---------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------|
-| ERROR_ON_MISSING_EXEC_BIT             | If set to `false`, the `bash-exec` linter will report a warning if a shell script is not executable. If set to `true`, the `bash-exec` linter will report an error instead                   | `false`                             |
-| BASH_EXEC_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                                     |
-| BASH_EXEC_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                         |                                     |
-| BASH_EXEC_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                           | Include every file                  |
-| BASH_EXEC_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                     | Exclude no file                     |
-| BASH_EXEC_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `project`: Call the linter from the root of the project                                                    | `file`                              |
-| BASH_EXEC_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                      | `[".sh", ".bash", ".dash", ".ksh"]` |
-| BASH_EXEC_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file                  |
-| BASH_EXEC_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                               | None                                |
-| BASH_EXEC_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                | None                                |
-| BASH_EXEC_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling BASH_EXEC and its pre/post commands                                                                                             | None                                |
-| BASH_EXEC_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`                             |
-| BASH_EXEC_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                 |
-| BASH_EXEC_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `['bash-exec']`                     |
+| Variable                              | Description                                                                                                                                                                                  | Default value                           |
+|---------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------|
+| ERROR_ON_MISSING_EXEC_BIT             | If set to `false`, the `bash-exec` linter will report a warning if a shell script is not executable. If set to `true`, the `bash-exec` linter will report an error instead                   | `false`                                 |
+| BASH_EXEC_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                                         |
+| BASH_EXEC_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                         |                                         |
+| BASH_EXEC_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                           | Include every file                      |
+| BASH_EXEC_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                     | Exclude no file                         |
+| BASH_EXEC_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `project`: Call the linter from the root of the project                                                    | `file`                                  |
+| BASH_EXEC_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                      | `["", ".sh", ".bash", ".dash", ".ksh"]` |
+| BASH_EXEC_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file                      |
+| BASH_EXEC_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                               | None                                    |
+| BASH_EXEC_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                | None                                    |
+| BASH_EXEC_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling BASH_EXEC and its pre/post commands                                                                                             | None                                    |
+| BASH_EXEC_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`                                 |
+| BASH_EXEC_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                     |
+| BASH_EXEC_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `['bash-exec']`                         |
 
 ## MegaLinter Flavors
 
@@ -65,7 +65,8 @@ This linter is available in the following flavors
 
 ### How are identified applicable files
 
-- File extensions: `.sh`, `.bash`, `.dash`, `.ksh`
+- File extensions: ``, `.sh`, `.bash`, `.dash`, `.ksh`
+- Detected file content (regex): `^#!/usr/bin/env bash`, `^#!/bin/bash`, `^#!/bin/sh`
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
