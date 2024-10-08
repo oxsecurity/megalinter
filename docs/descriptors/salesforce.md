@@ -37,7 +37,7 @@ description: sfdx-scanner-apex, sfdx-scanner-aura, sfdx-scanner-lwc, lightning-f
 # renovate: datasource=npm depName=@salesforce/cli
 ARG SALESFORCE_CLI_VERSION=2.60.13
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
-ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.8.10
+ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.8.11
 # renovate: datasource=npm depName=sfdx-hardis
 ARG SFDX_HARDIS_VERSION=5.0.10
 ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk

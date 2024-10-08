@@ -51,7 +51,7 @@ git fetch --depth=0
 
 ## gitleaks documentation
 
-- Version in MegaLinter: **8.19.3**
+- Version in MegaLinter: **8.20.1**
 - Visit [Official Web Site](https://github.com/gitleaks/gitleaks#readme){target=_blank}
 - See [How to configure gitleaks rules](https://github.com/gitleaks/gitleaks#configuration){target=_blank}
   - If custom `.gitleaks.toml` config file isn't found, [.gitleaks.toml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.gitleaks.toml){target=_blank} will be used
@@ -163,6 +163,7 @@ Flags:
   -h, --help                          help for gitleaks
       --ignore-gitleaks-allow         ignore gitleaks:allow comments
   -l, --log-level string              log level (trace, debug, info, warn, error, fatal) (default "info")
+      --max-decode-depth int          allow recursive decoding up to this depth (default "0", no decoding is done)
       --max-target-megabytes int      files larger than this will be skipped
       --no-banner                     suppress banner
       --no-color                      turn off color for verbose output
@@ -179,7 +180,7 @@ Use "gitleaks [command] --help" for more information about a command.
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=docker depName=zricethezav/gitleaks
-ARG REPOSITORY_GITLEAKS_VERSION=v8.19.3
+ARG REPOSITORY_GITLEAKS_VERSION=v8.20.1
 FROM zricethezav/gitleaks:${REPOSITORY_GITLEAKS_VERSION} AS gitleaks
 COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 ```

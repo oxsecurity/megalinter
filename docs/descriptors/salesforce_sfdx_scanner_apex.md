@@ -94,7 +94,7 @@ sf scanner:run
 ### Help content
 
 ```shell
-(node:1754) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(node:1755) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
 (Use `node --trace-deprecation ...` to show where the warning was created)
 Scan a codebase with all the rules in the registry, or use parameters to filter the rules based on rulename, category, or ruleset.
 
@@ -149,40 +149,8 @@ GLOBAL FLAGS
 COMMANDS
   scanner run dfa  Scan codebase with all DFA rules by default.
 
-(node:1766) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(node:1767) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
 (Use `node --trace-deprecation ...` to show where the warning was created)
-@salesforce/cli: Installing plugin @salesforce/sfdx-scanner@4.6.0... installed v4.6.0
-npm warn EBADENGINE Unsupported engine {
-npm warn EBADENGINE   package: 'glob@11.0.0',
-npm warn EBADENGINE   required: { node: '20 || >=22' },
-npm warn EBADENGINE   current: { node: 'v21.7.3', npm: '10.8.3' }
-npm warn EBADENGINE }
-npm warn EBADENGINE Unsupported engine {
-npm warn EBADENGINE   package: 'minimatch@10.0.1',
-npm warn EBADENGINE   required: { node: '20 || >=22' },
-npm warn EBADENGINE   current: { node: 'v21.7.3', npm: '10.8.3' }
-npm warn EBADENGINE }
-npm warn EBADENGINE Unsupported engine {
-npm warn EBADENGINE   package: 'jackspeak@4.0.2',
-npm warn EBADENGINE   required: { node: '20 || >=22' },
-npm warn EBADENGINE   current: { node: 'v21.7.3', npm: '10.8.3' }
-npm warn EBADENGINE }
-npm warn EBADENGINE Unsupported engine {
-npm warn EBADENGINE   package: 'lightning-flow-scanner-core@4.3.0',
-npm warn EBADENGINE   required: { node: '^18 || ^20 || ^22' },
-npm warn EBADENGINE   current: { node: 'v21.7.3', npm: '10.8.3' }
-npm warn EBADENGINE }
-npm warn EBADENGINE Unsupported engine {
-npm warn EBADENGINE   package: 'path-scurry@2.0.0',
-npm warn EBADENGINE   required: { node: '20 || >=22' },
-npm warn EBADENGINE   current: { node: 'v21.7.3', npm: '10.8.3' }
-npm warn EBADENGINE }
-npm warn EBADENGINE Unsupported engine {
-npm warn EBADENGINE   package: 'lru-cache@11.0.1',
-npm warn EBADENGINE   required: { node: '20 || >=22' },
-npm warn EBADENGINE   current: { node: 'v21.7.3', npm: '10.8.3' }
-npm warn EBADENGINE }
-added 574 packages in 13s
 Warning: We're continually improving Salesforce Code Analyzer. Tell us what you think! Give feedback at https://research.net/r/SalesforceCA
  name                                                   languages   categories            rulesets [dep] engine            is dfa is pilot
  ────────────────────────────────────────────────────── ─────────── ───────────────────── ────────────── ───────────────── ────── ────────
@@ -410,7 +378,7 @@ Warning: We're continually improving Salesforce Code Analyzer. Tell us what you 
 # renovate: datasource=npm depName=@salesforce/cli
 ARG SALESFORCE_CLI_VERSION=2.60.13
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
-ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.8.10
+ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.8.11
 # renovate: datasource=npm depName=sfdx-hardis
 ARG SFDX_HARDIS_VERSION=5.0.10
 ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
