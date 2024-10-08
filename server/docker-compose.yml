@@ -2,7 +2,7 @@ version: "3"
 services:
   # Redis server to manage request queues and results
   megalinter_server_redis:
-    image: redis:7.4.0-alpine
+    image: redis:7.4.1-alpine
     ports:
       - "6379:6379"
     volumes:
