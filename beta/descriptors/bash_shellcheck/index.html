@@ -3397,7 +3397,7 @@
 <tr>
 <td>BASH_SHELLCHECK_FILE_EXTENSIONS</td>
 <td>Allowed file extensions. <code>"*"</code> matches any extension, <code>""</code> matches empty extension. Empty list excludes all files<br/>Ex: <code>[".py", ""]</code></td>
-<td><code>[".sh", ".bash", ".dash", ".ksh"]</code></td>
+<td><code>["", ".sh", ".bash", ".dash", ".ksh"]</code></td>
 </tr>
 <tr>
 <td>BASH_SHELLCHECK_FILE_NAMES_REGEX</td>
@@ -3642,8 +3642,8 @@
 <h2 id="behind-the-scenes">Behind the scenes</h2>
 <h3 id="how-are-identified-applicable-files">How are identified applicable files</h3>
 <ul>
-<li>File extensions: <code>.sh</code>, <code>.bash</code>, <code>.dash</code>, <code>.ksh</code></li>
-<li>Shebangs: <code>#!/usr/bin/env bash</code>, <code>#!/bin/bash</code>, <code>#!/bin/sh</code></li>
+<li>File extensions: <code>`,</code>.sh<code>,</code>.bash<code>,</code>.dash<code>,</code>.ksh`</li>
+<li>Detected file content (regex): <code>^#!/usr/bin/env bash</code>, <code>^#!/bin/bash</code>, <code>^#!/bin/sh</code></li>
 </ul>
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
