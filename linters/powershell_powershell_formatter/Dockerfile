@@ -45,7 +45,7 @@ FROM python:3.12.7-alpine3.20
 #############################################################################################
 #ARG__START
 # renovate: datasource=nuget depName=PSScriptAnalyzer registryUrl=https://www.powershellgallery.com/api/v2/
-ARG PSSA_VERSION='1.22.0'
+ARG PSSA_VERSION='1.23.0'
 
 #ARG__END
 
