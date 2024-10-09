@@ -18,10 +18,16 @@ description: bash-exec, shellcheck, shfmt are available to analyze BASH files in
 ## Linted files
 
 - File extensions:
+  - ``
   - `.sh`
   - `.bash`
   - `.dash`
   - `.ksh`
+
+- Detected file content:
+  - `^#!/usr/bin/env bash`
+  - `^#!/bin/bash`
+  - `^#!/bin/sh`
 
 ## Configuration in MegaLinter
 

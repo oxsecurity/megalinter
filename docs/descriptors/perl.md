@@ -22,8 +22,8 @@ description: perlcritic is available to analyze PERL files in MegaLinter
   - ``
 
 - Detected file content:
-  - `#!/usr/bin/env perl`
-  - `#!/usr/bin/perl`
+  - `^#!/usr/bin/env perl`
+  - `^#!/usr/bin/perl`
 
 ## Configuration in MegaLinter
 
