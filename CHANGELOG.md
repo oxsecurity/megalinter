@@ -207,6 +207,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.19.3 to **8.20.1** on 2024-10-08
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.82.6 to **3.82.7** on 2024-10-08
   - [phplint](https://github.com/overtrue/phplint) from 9.4.1 to **9.5.2** on 2024-10-08
+  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 8.0.108 to **8.0.110** on 2024-10-09
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.383 to **1.1.384** on 2024-10-09
 <!-- linter-versions-end -->
 
 ## [v8.0.0] - 2024-08-19
