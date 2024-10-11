@@ -9,7 +9,7 @@ description: How to use roslynator (configure, ignore files, ignore errors, help
 
 ## roslynator documentation
 
-- Version in MegaLinter: **0.9.0.0**
+- Version in MegaLinter: **0.9.1.0**
 - Visit [Official Web Site](https://github.com/dotnet/Roslynator#readme){target=_blank}
 - See [How to configure roslynator rules](https://josefpihrt.github.io/docs/roslynator/configuration){target=_blank}
 - See [How to disable roslynator rules in files](https://josefpihrt.github.io/docs/roslynator/how-to-suppress-diagnostic){target=_blank}
@@ -86,7 +86,7 @@ roslynator fix myproject.csproj
 ### Help content
 
 ```shell
-Roslynator Command Line Tool version 0.9.0.0 (Roslyn version 4.11.0.0)
+Roslynator Command Line Tool version 0.9.1.0 (Roslyn version 4.11.0.0)
 Usage: roslynator [command] [arguments]
 
 Commands:

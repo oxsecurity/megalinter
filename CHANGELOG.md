@@ -207,6 +207,17 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.19.3 to **8.20.1** on 2024-10-08
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.82.6 to **3.82.7** on 2024-10-08
   - [phplint](https://github.com/overtrue/phplint) from 9.4.1 to **9.5.2** on 2024-10-08
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.16.0 to **1.16.1** on 2024-10-11
+  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 8.0.108 to **8.0.110** on 2024-10-11
+  - [roslynator](https://github.com/dotnet/Roslynator) from 0.9.0.0 to **0.9.1.0** on 2024-10-11
+  - [stylelint](https://stylelint.io) from 16.9.0 to **16.10.0** on 2024-10-11
+  - [phplint](https://github.com/overtrue/phplint) from 9.5.2 to **9.5.3** on 2024-10-11
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.383 to **1.1.384** on 2024-10-11
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.56.1 to **0.56.2** on 2024-10-11
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.56.1 to **0.56.2** on 2024-10-11
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.20.6 to **8.20.7** on 2024-10-11
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.14.4 to **8.15.1** on 2024-10-11
+  - [sqlfluff](https://www.sqlfluff.com/) from 3.2.2 to **3.2.3** on 2024-10-11
 <!-- linter-versions-end -->
 
 ## [v8.0.0] - 2024-08-19
