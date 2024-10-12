@@ -19,6 +19,7 @@ on:
     branches:
       - "main"
       - "FlavoredMegaLinters"
+      - dbgbeta
     paths:
       - ".github/workflows/**"
       - "Dockerfile"
@@ -201,11 +202,11 @@ jobs:
       - name: Debug output
         run: "echo \"Tag steps.meta.outputs.tags: ${{ steps.meta.outputs.tags }}\""
       - name: Pull image from GHCR
-        run: docker pull ${{ steps.meta.outputs.tags }}
+        run: docker pull "${{ steps.meta.outputs.tags }}"
       - name: Tag image for Docker Hub
-        run: docker tag ${{ steps.meta.outputs.tags }} ${{ steps.meta-dhub.outputs.tags }}
+        run: docker tag "${{ steps.meta.outputs.tags }}" "${{ steps.meta-dhub.outputs.tags }}"
       - name: Push image to Docker Hub
-        run: docker push ${{ steps.meta-dhub.outputs.tags }}
+        run: docker push "${{ steps.meta-dhub.outputs.tags }}"
 
       # Copy ghrc.io image to Docker Hub (server)
       - name: Pull image from GHCR
