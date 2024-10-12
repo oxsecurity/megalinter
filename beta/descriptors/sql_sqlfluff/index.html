@@ -11,7 +11,7 @@
 <link href="../sql/" rel="prev"/>
 <link href="../sql_tsqllint/" rel="next"/>
 <link href="../../assets/images/mega-linter-square.png" rel="icon"/>
-<meta content="mkdocs-1.6.1, mkdocs-material-9.5.39" name="generator"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.5.40" name="generator"/>
 <title>sqlfluff configuration in MegaLinter - MegaLinter by OX Security</title>
 <link href="../../assets/stylesheets/main.8c3ca2c6.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
@@ -3340,7 +3340,7 @@
 <p><a href="https://github.com/sqlfluff/sqlfluff"><img alt="GitHub stars" src="https://img.shields.io/github/stars/sqlfluff/sqlfluff?cacheSeconds=3600"/></a> <a href="https://github.com/sqlfluff/sqlfluff/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/sqlfluff/sqlfluff?sort=semver"/></a> <a href="https://github.com/sqlfluff/sqlfluff/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/sqlfluff/sqlfluff"/></a> <a href="https://github.com/sqlfluff/sqlfluff/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/sqlfluff/sqlfluff"/></a> <a href="https://github.com/sqlfluff/sqlfluff/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/sqlfluff/sqlfluff"/></a></p>
 <h2 id="sqlfluff-documentation">sqlfluff documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>3.2.2</strong></li>
+<li>Version in MegaLinter: <strong>3.2.3</strong></li>
 <li>Visit <a href="https://www.sqlfluff.com/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://docs.sqlfluff.com/en/stable/configuration.html" target="_blank">How to configure sqlfluff rules</a><ul>
 <li>If custom <code>.sqlfluff</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.sqlfluff" target="_blank">.sqlfluff</a> will be used</li>
@@ -3603,15 +3603,17 @@ Commands:
   rules     Show the current rules in use.
   version   Show the version of sqlfluff.
 
-  Examples:
+  Examples:
 
-  sqlfluff lint --dialect postgres .
+  .. code-block:: sh
 
-  sqlfluff lint --dialect postgres --rules ST05 .
+     sqlfluff lint --dialect postgres .
 
-  sqlfluff fix --dialect sqlite --rules LT10,ST05 src/queries
+     sqlfluff lint --dialect mysql --rules ST05 my_query.sql
 
-  sqlfluff parse --dialect sqlite --templater jinja src/queries/common.sql
+     sqlfluff fix --dialect sqlite --rules LT10,ST05 src/queries
+
+     sqlfluff parse --dialect duckdb --templater jinja path/my_query.sql
 </code></pre>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
 <ul>
