@@ -15,7 +15,7 @@ description: How to use stylelint (configure, ignore files, ignore errors, help 
 
 ## stylelint documentation
 
-- Version in MegaLinter: **16.9.0**
+- Version in MegaLinter: **16.10.0**
 - Visit [Official Web Site](https://stylelint.io){target=_blank}
 - See [How to configure stylelint rules](https://stylelint.io/user-guide/configure){target=_blank}
   - If custom `.stylelintrc.json` config file isn't found, [.stylelintrc.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.stylelintrc.json){target=_blank} will be used
@@ -246,6 +246,10 @@ stylelint --fix --config .stylelintrc.json myfile.css myfile2.css myfile3.css
     --[no-]color
 
       Force enabling/disabling of color.
+
+    --[no-]validate
+
+      Force enable/disable the validation of the rules' options.
 
     --report-needless-disables, --rd
 
