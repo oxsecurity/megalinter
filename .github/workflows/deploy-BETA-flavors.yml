@@ -131,7 +131,7 @@ jobs:
         id: meta-w-dhub
         with:
           images: |
-            name=${{ github.repository }}-worker-${{ matrix.flavor }},enable=false
+            name=docker.io/${{ github.repository }}-worker-${{ matrix.flavor }}
           flavor: |
             latest=false
             prefix=beta
