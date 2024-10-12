@@ -142,3 +142,10 @@ jobs:
           tags: |
             ghcr.io/oxsecurity/megalinter-worker:alpha
 
+      # Copy ghrc.io image to Docker Hub
+      - name: Pull image from GHCR
+        run: docker pull ghcr.io/oxsecurity/megalinter:alpha
+      - name: Tag image for Docker Hub
+        run: docker tag ghcr.io/oxsecurity/megalinter:alpha oxsecurity/megalinter:alpha
+      - name: Push image to Docker Hub
+        run: docker push oxsecurity/megalinter:alpha
