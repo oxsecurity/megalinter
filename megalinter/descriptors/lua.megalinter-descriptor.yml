@@ -93,3 +93,44 @@ linters:
       vscode:
         - name: selene-vscode
           url: https://marketplace.visualstudio.com/items?itemName=Kampfkarren.selene-vscode
+  # STYLUA
+  - linter_name: stylua
+    linter_url: https://github.com/JohnnyMorganz/StyLua
+    linter_repo: https://github.com/JohnnyMorganz/StyLua
+    linter_rules_url: https://roblox.github.io/lua-style-guide/
+    linter_rules_configuration_url: https://github.com/JohnnyMorganz/StyLua?tab=readme-ov-file#configuration
+    linter_rules_inline_disable_url: https://github.com/JohnnyMorganz/StyLua?tab=readme-ov-file#ignoring-parts-of-a-file
+    linter_megalinter_ref_url: "no"
+    config_file_name: stylua.toml
+    cli_config_arg_name: "--config-path"
+    cli_version_arg_name: "-V"
+    cli_lint_extra_args:
+      - "--check"
+    examples:
+      - "stylua --check myfile.lua"
+      - "stylua --config-path chktexrc.toml --check myfile.lua"
+    install:
+      cargo:
+        - stylua@${LUA_STYLUA_VERSION}
+      dockerfile:
+        - |-
+          # renovate: datasource=crate depName=stylua
+          ARG LUA_STYLUA_VERSION=0.20.0
+    ide:
+      neovim:
+        - name:
+            - nvim-lint
+            - none-ls
+            - stylua-nvim
+            - stylua.nvim
+          url:
+            - https://github.com/mfussenegger/nvim-lint
+            - https://github.com/nvimtools/none-ls.nvim
+            - https://github.com/ckipp01/stylua-nvim
+            - https://github.com/wesleimp/stylua.nvim
+      vscode:
+        - name: Stylua
+          url: https://marketplace.visualstudio.com/items?itemName=JohnnyMorganz.stylua
+      sublime:
+        - name: Sublime-Pretty-Lua
+          url: https://packagecontrol.io/packages/Pretty%20Lua

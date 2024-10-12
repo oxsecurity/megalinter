@@ -8,8 +8,8 @@ file_extensions:
 file_contains_regex_extensions:
   - ""
 file_contains_regex:
-  - "#!/usr/bin/env perl"
-  - "#!/usr/bin/perl"
+  - "^#!/usr/bin/env perl"
+  - "^#!/usr/bin/perl"
 install:
   apk:
     - perl

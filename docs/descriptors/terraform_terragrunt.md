@@ -9,7 +9,7 @@ description: How to use terragrunt (configure, ignore files, ignore errors, help
 
 ## terragrunt documentation
 
-- Version in MegaLinter: **0.67.3**
+- Version in MegaLinter: **0.67.5**
 - Visit [Official Web Site](https://terragrunt.gruntwork.io){target=_blank}
 - See [How to configure terragrunt rules](https://terragrunt.gruntwork.io/docs/getting-started/configuration/#terragrunt-configuration-file){target=_blank}
 
@@ -46,7 +46,7 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                     | Description                                     | Embedded linters |                                                                                                                                                                                           Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------|:------------------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)       | Default MegaLinter Flavor                       |       123        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)       | Default MegaLinter Flavor                       |       124        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)     | MegaLinter for the most commonly used languages |        83        |     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://megalinter.io/beta/flavors/security/)   | Optimized for security                          |        24        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://megalinter.io/beta/flavors/terraform/) | Optimized for TERRAFORM based projects          |        54        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform) |
@@ -122,7 +122,9 @@ GLOBAL OPTIONS:
    --terragrunt-include-dir value                    Unix-style glob of directories to include when running *-all commands [$TERRAGRUNT_INCLUDE_DIR]
    --terragrunt-include-external-dependencies        *-all commands will include external dependencies [$TERRAGRUNT_INCLUDE_EXTERNAL_DEPENDENCIES]
    --terragrunt-json-log                             If specified, Terragrunt will output its logs in JSON format. [$TERRAGRUNT_JSON_LOG]
-   --terragrunt-log-level value                      Sets the logging level for Terragrunt. Supported levels: panic, fatal, error, warn, info, debug, trace. (default: info) [$TERRAGRUNT_LOG_LEVEL]
+   --terragrunt-log-disable                          Disable logging [$TERRAGRUNT_LOG_DISABLE]
+   --terragrunt-log-level value                      Sets the logging level for Terragrunt. Supported levels: stderr, stdout, error, warn, info, debug, trace (default: info) [$TERRAGRUNT_LOG_LEVEL]
+   --terragrunt-log-show-abs-paths                   Show absolute paths in logs [$TERRAGRUNT_LOG_SHOW_ABS_PATHS]
    --terragrunt-modules-that-include value           If flag is set, 'run-all' will only run the command against Terragrunt modules that include the specified file. [$TERRAGRUNT_MODULES_THAT_INCLUDE]
    --terragrunt-no-auto-approve -auto-approve        Don't automatically append -auto-approve to the underlying OpenTofu/Terraform commands run with 'run-all'. (default: true) [$TERRAGRUNT_NO_AUTO_APPROVE]
    --terragrunt-no-auto-init                         Don't automatically run 'terraform/tofu init' during other terragrunt commands. You must run 'terragrunt init' manually. (default: true) [$TERRAGRUNT_NO_AUTO_INIT]
@@ -147,7 +149,7 @@ GLOBAL OPTIONS:
    --help, -h                                        Show help
    --version, -v                                     Show terragrunt version
 
-VERSION: v0.67.3
+VERSION: v0.67.5
 
 AUTHOR: Gruntwork <www.gruntwork.io>
 ```

@@ -30,7 +30,7 @@ class ApiReporter(Reporter):
 
     def __init__(self, params=None):
         # Deactivate Api reporter by default
-        self.is_active = False
+        self.is_active = True
         self.processing_order = 20  # Run after text reporter
         super().__init__(params)
 
@@ -44,14 +44,22 @@ class ApiReporter(Reporter):
                 )
                 if self.api_url is not None:
                     self.is_active = True
+                    logging.info("[ApiReporter] Enabled")
                 else:
                     self.is_active = False
                     logging.error(
-                        "API_REPORTER_URL must have a correct value to use ApiReporter"
+                        "[ApiReporter] API_REPORTER_URL must have a correct value to use ApiReporter"
                     )
             else:
                 self.is_active = False
-                logging.error("You need to define API_REPORTER_URL to use ApiReporter")
+                logging.error(
+                    "[ApiReporter] You need to define API_REPORTER_URL to use ApiReporter"
+                )
+        else:
+            self.is_active = False
+            logging.info(
+                "[ApiReporter] Not enabled as API_REPORTER is not defined to true"
+            )
 
     # Send JSON log to remote api
     def produce_report(self):

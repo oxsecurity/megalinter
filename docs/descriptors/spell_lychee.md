@@ -27,7 +27,7 @@ https://github.com/sgerrand/alpine-pkg-glibc/releases/download
 
 ## lychee documentation
 
-- Version in MegaLinter: **0.15.1**
+- Version in MegaLinter: **0.16.1**
 - Visit [Official Web Site](https://lychee.cli.rs){target=_blank}
 - See [How to configure lychee rules](https://lychee.cli.rs/#/usage/config){target=_blank}
 - See [Index of problems detected by lychee](https://lychee.cli.rs/#/usage/cli){target=_blank}
@@ -63,7 +63,7 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                             | Description                                              | Embedded linters |                                                                                                                                                                                                   Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------|:---------------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)               | Default MegaLinter Flavor                                |       123        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)               | Default MegaLinter Flavor                                |       124        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 |        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/c_cpp.ico" alt="" height="32px" class="megalinter-icon"></a>        | [c_cpp](https://megalinter.io/beta/flavors/c_cpp/)                 | Optimized for pure C/C++ projects                        |        54        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-c_cpp/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-c_cpp) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)             | MegaLinter for the most commonly used languages          |        83        |             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
 |    <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/documentation.ico" alt="" height="32px" class="megalinter-icon"></a>    | [documentation](https://megalinter.io/beta/flavors/documentation/) | MegaLinter for documentation projects                    |        49        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-documentation/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-documentation) |
@@ -195,7 +195,7 @@ Options:
   -u, --user-agent <USER_AGENT>
           User agent
 
-          [default: lychee/0.15.1]
+          [default: lychee/0.16.1]
 
   -i, --insecure
           Proceed for server connections considered insecure (invalid TLS)
@@ -240,6 +240,13 @@ Options:
       --remap <REMAP>
           Remap URI matching pattern to different URI
 
+      --fallback-extensions <FALLBACK_EXTENSIONS>
+          Test the specified file extensions for URIs when checking files locally.
+          Multiple extensions can be separated by commas. Extensions will be checked in
+          order of appearance.
+
+          Example: --fallback-extensions html,htm,php,asp,aspx,jsp,cgi
+
       --header <HEADER>
           Custom request header
 
@@ -280,7 +287,7 @@ Options:
           [default: get]
 
   -b, --base <BASE>
-          Base URL or website root directory to check relative URLs e.g. https://example.com or `/path/to/public`
+          Base URL or website root directory to check relative URLs e.g. <https://example.com> or `/path/to/public`
 
       --basic-auth <BASIC_AUTH>
           Basic authentication support. E.g. `http://example.com username:password`
@@ -293,6 +300,12 @@ Options:
       --skip-missing
           Skip missing input files (default is to error if they don't exist)
 
+      --no-ignore
+          Do not skip files that would otherwise be ignored by '.gitignore', '.ignore', or the global ignore file
+
+      --hidden
+          Do not skip hidden directories and files
+
       --include-verbatim
           Find links in verbatim sections like `pre`- and `code` blocks
 
@@ -302,10 +315,17 @@ Options:
   -o, --output <OUTPUT>
           Output file of status report
 
+      --mode <MODE>
+          Set the output display mode. Determines how results are presented in the terminal
+
+          [default: color]
+          [possible values: plain, color, emoji]
+
   -f, --format <FORMAT>
-          Output format of final status report (compact, detailed, json, markdown)
+          Output format of final status report
 
           [default: compact]
+          [possible values: compact, detailed, json, markdown, raw]
 
       --require-https
           When HTTPS is available, treat HTTP links as errors

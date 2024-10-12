@@ -539,6 +539,11 @@
     "image": null,
     "title": "A mighty, modern style linter \u00b7 stylelint"
   },
+  "stylua": {
+    "description": "An opinionated Lua code formatter. Contribute to JohnnyMorganz/StyLua development by creating an account on GitHub.",
+    "image": "https://opengraph.githubassets.com/7b8419175a313d68fb5f334f872c05c1a370b31c1e9e8a96cb799184854e4cc0/JohnnyMorganz/StyLua",
+    "title": "GitHub - JohnnyMorganz/StyLua: An opinionated Lua code formatter"
+  },
   "swiftlint": {
     "description": "A tool to enforce Swift style and conventions. Contribute to realm/SwiftLint development by creating an account on GitHub.",
     "image": "https://avatars3.githubusercontent.com/u/7575099?s=400&v=4",

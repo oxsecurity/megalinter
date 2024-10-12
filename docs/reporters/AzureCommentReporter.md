@@ -42,3 +42,4 @@ Example:
 | AZURE_COMMENT_REPORTER            | Activates/deactivates reporter                                                     | true          |
 | AZURE_COMMENT_REPORTER_LINKS_TYPE | Set to `build` if you want comments linking to target Build and not artifacts page | `artifacts`   |
 | REPORTERS_MARKDOWN_TYPE           | Set to `simple` to avoid external images in generated markdown                     | `advanced`    |
+| JOB_SUMMARY_ADDITIONAL_MARKDOWN   | Custom markdown to add at the end of the summary message                           | <!-- -->      |
