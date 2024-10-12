@@ -93,7 +93,7 @@ jobs:
         id: meta-dhub
         with:
           images: |
-            name=${{ github.repository }}
+            name=docker.io/${{ github.repository }}
           tags: |
             type=raw,value=beta
 
@@ -111,7 +111,7 @@ jobs:
         id: meta-s-dhub
         with:
           images: |
-            name=${{ github.repository }}-server,enable=false
+            name=docker.io/${{ github.repository }}-server
           tags: |
             type=raw,value=beta
 
@@ -129,7 +129,7 @@ jobs:
         id: meta-w-dhub
         with:
           images: |
-            name=${{ github.repository }}-worker,enable=false
+            name=docker.io/${{ github.repository }}-worker
           tags: |
             type=raw,value=beta
 
@@ -242,7 +242,7 @@ jobs:
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: "docker.io/${{ fromJson(steps.meta.outputs.json).tags[0]}}"
+          image-ref: "ghcr.io/${{ fromJson(steps.meta.outputs.json).tags[0]}}"
           format: 'table'
           exit-code: '1'
           ignore-unfixed: true
