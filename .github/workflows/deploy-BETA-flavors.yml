@@ -198,6 +198,9 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       # Copy ghrc.io image to Docker Hub (main image)
+      - name: Debug output
+        run: "echo \"Tag steps.meta.outputs.tags[0]: ${{ steps.meta.outputs.tags[0] }}\""
+      - run: "echo \"Tag steps.meta.outputs.tags: ${{ steps.meta.outputs.tags }}\""
       - name: Pull image from GHCR
         run: docker pull ${{ steps.meta.outputs.tags[0] }}
       - name: Tag image for Docker Hub
