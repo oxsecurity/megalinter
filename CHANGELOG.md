@@ -29,6 +29,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - mega-linter-runner
 
 - Linter versions upgrades
+  - [checkov](https://www.checkov.io/) from 3.2.257 to **3.2.258** on 2024-10-13
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.21.0 to **8.22.0** on 2024-10-13
 <!-- linter-versions-end -->
 
 ## [v8.1.0] - 2024-10-13
