@@ -78,6 +78,7 @@ Available commands can be listed with the help command by posting the following 
 /help
 ```
 Which returns:
+>
 > Command | Description
 > --- | ---
 > /build | Updates the Dockerfile, documentation, and other files from the yml descriptors
