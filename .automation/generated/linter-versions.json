@@ -98,7 +98,7 @@
     "shellcheck": "0.10.0",
     "shfmt": "3.9.0",
     "snakefmt": "0.10.2",
-    "snakemake": "8.20.7",
+    "snakemake": "8.21.0",
     "spectral": "6.13.1",
     "sql-lint": "1.0.0",
     "sqlfluff": "3.2.3",
