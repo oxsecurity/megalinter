@@ -220,6 +220,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.14.4 to **8.15.1** on 2024-10-11
   - [sqlfluff](https://www.sqlfluff.com/) from 3.2.2 to **3.2.3** on 2024-10-11
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.20.7 to **8.21.0** on 2024-10-13
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.82.7 to **3.82.8** on 2024-10-13
 <!-- linter-versions-end -->
 
 ## [v8.0.0] - 2024-08-19
