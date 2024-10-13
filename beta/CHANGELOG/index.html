@@ -3174,6 +3174,13 @@
 </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#v810-2024-10-13">
+<span class="md-ellipsis">
+      [v8.1.0] - 2024-10-13
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#v800-2024-08-19">
 <span class="md-ellipsis">
       [v8.0.0] - 2024-08-19
@@ -4143,6 +4150,13 @@
 </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#v810-2024-10-13">
+<span class="md-ellipsis">
+      [v8.1.0] - 2024-10-13
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#v800-2024-08-19">
 <span class="md-ellipsis">
       [v8.0.0] - 2024-08-19
@@ -5093,6 +5107,41 @@
 <h2 id="unreleased-beta-main-branch-content">[Unreleased] (beta, main branch content)</h2>
 <p>Note: Can be used with <code>oxsecurity/megalinter@beta</code> in your GitHub Action mega-linter.yml file, or with <code>oxsecurity/megalinter:beta</code> docker image</p>
 <ul>
+<li>Core</li>
+</ul>
+<ul>
+<li>New linters</li>
+</ul>
+<ul>
+<li>Media</li>
+</ul>
+<ul>
+<li>Linters enhancements</li>
+</ul>
+<ul>
+<li>Fixes</li>
+</ul>
+<ul>
+<li>Reporters</li>
+</ul>
+<ul>
+<li>Doc</li>
+</ul>
+<ul>
+<li>Flavors</li>
+</ul>
+<ul>
+<li>CI</li>
+</ul>
+<ul>
+<li>mega-linter-runner</li>
+</ul>
+<ul>
+<li>Linter versions upgrades</li>
+</ul>
+<!-- linter-versions-end -->
+<h2 id="v810-2024-10-13">[v8.1.0] - 2024-10-13</h2>
+<ul>
 <li>Core<ul>
 <li>Allow to tag PRE_COMMANDS to run them before loading plugins, by @nvuillam in <a href="https://github.com/oxsecurity/megalinter/pull/3944">https://github.com/oxsecurity/megalinter/pull/3944</a></li>
 <li>Replace usage of setup.py with a pyproject.toml package install, by @echoix in <a href="https://github.com/oxsecurity/megalinter/pull/3893">#3893</a></li>
@@ -5106,9 +5155,6 @@
 <li>New LUA formatter: <a href="https://github.com/JohnnyMorganz/StyLua"><strong>stylua</strong></a>, by @AlejandroSuero in <a href="https://github.com/oxsecurity/megalinter/pull/3985">https://github.com/oxsecurity/megalinter/pull/3985</a></li>
 </ul>
 </li>
-</ul>
-<ul>
-<li>Media</li>
 </ul>
 <ul>
 <li>Linters enhancements<ul>
@@ -5131,7 +5177,10 @@
 </li>
 </ul>
 <ul>
-<li>Reporters</li>
+<li>Reporters<ul>
+<li>Fix ApiReporter not called in MegaLlinter flavors</li>
+</ul>
+</li>
 </ul>
 <ul>
 <li>Doc<ul>
@@ -5140,9 +5189,6 @@
 <li>Update Grafana documentation to fix secrets typo</li>
 </ul>
 </li>
-</ul>
-<ul>
-<li>Flavors</li>
 </ul>
 <ul>
 <li>CI<ul>
@@ -5154,186 +5200,68 @@
 </li>
 </ul>
 <ul>
-<li>mega-linter-runner</li>
-</ul>
-<ul>
 <li>Linter versions upgrades<ul>
-<li><a href="https://www.checkov.io/">checkov</a> from 3.2.232 to <strong>3.2.234</strong> on 2024-08-20</li>
-<li><a href="https://github.com/anchore/syft">syft</a> from 1.11.0 to <strong>1.11.1</strong> on 2024-08-20</li>
-<li><a href="https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell">cspell</a> from 8.14.1 to <strong>8.14.2</strong> on 2024-08-20</li>
-<li><a href="https://golangci-lint.run/">golangci-lint</a> from 1.60.1 to <strong>1.60.2</strong> on 2024-08-21</li>
-<li><a href="https://github.com/Microsoft/pyright">pyright</a> from 1.1.376 to <strong>1.1.377</strong> on 2024-08-21</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 3.2.234 to <strong>3.2.235</strong> on 2024-08-21</li>
-<li><a href="https://snakemake.readthedocs.io/en/stable/">snakemake</a> from 8.18.1 to <strong>8.18.2</strong> on 2024-08-21</li>
-<li><a href="https://www.sqlfluff.com/">sqlfluff</a> from 3.1.0 to <strong>3.1.1</strong> on 2024-08-21</li>
-<li><a href="https://runterrascan.io/">terrascan</a> from 1.18.11 to <strong>1.19.1</strong> on 2024-08-21</li>
-<li><a href="https://github.com/astral-sh/ruff">ruff</a> from 0.6.1 to <strong>0.6.2</strong> on 2024-08-22</li>
-<li><a href="https://golangci-lint.run/">golangci-lint</a> from 1.60.2 to <strong>1.60.3</strong> on 2024-08-23</li>
-<li><a href="https://csharpier.com/">csharpier</a> from 0.29.0 to <strong>0.29.1</strong> on 2024-08-23</li>
-<li><a href="https://mypy.readthedocs.io/en/stable/">mypy</a> from 1.11.1 to <strong>1.11.2</strong> on 2024-08-25</li>
-<li><a href="https://github.com/Lightning-Flow-Scanner">lightning-flow-scanner</a> from 2.33.0 to <strong>2.34.0</strong> on 2024-08-25</li>
-<li><a href="https://github.com/realm/SwiftLint">swiftlint</a> from 0.56.1 to <strong>0.56.2</strong> on 2024-08-25</li>
-<li><a href="https://checkstyle.org/">checkstyle</a> from 10.17.0 to <strong>10.18.0</strong> on 2024-08-25</li>
-<li><a href="https://github.com/chris48s/v8r">v8r</a> from 4.0.1 to <strong>4.1.0</strong> on 2024-08-25</li>
-<li><a href="https://cs.symfony.com/">php-cs-fixer</a> from 3.62.0 to <strong>3.63.1</strong> on 2024-08-26</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 3.2.235 to <strong>3.2.236</strong> on 2024-08-26</li>
-<li><a href="https://github.com/aws-cloudformation/cfn-lint">cfn-lint</a> from 1.10.3 to <strong>1.11.0</strong> on 2024-08-27</li>
-<li><a href="https://phpstan.org/">phpstan</a> from 1.11.11 to <strong>1.12.0</strong> on 2024-08-27</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 3.2.236 to <strong>3.2.238</strong> on 2024-08-27</li>
-<li><a href="https://stylelint.io">stylelint</a> from 16.8.2 to <strong>16.9.0</strong> on 2024-08-28</li>
-<li><a href="https://djlint.com/">djlint</a> from 1.34.1 to <strong>1.34.2</strong> on 2024-08-28</li>
-<li><a href="https://cs.symfony.com/">php-cs-fixer</a> from 3.63.1 to <strong>3.63.2</strong> on 2024-08-28</li>
-<li><a href="https://github.com/Microsoft/pyright">pyright</a> from 1.1.377 to <strong>1.1.378</strong> on 2024-08-28</li>
-<li><a href="https://developer.hashicorp.com/terraform/cli/commands/fmt">terraform-fmt</a> from 1.9.4 to <strong>1.9.5</strong> on 2024-08-28</li>
-<li><a href="https://terragrunt.gruntwork.io">terragrunt</a> from 0.66.8 to <strong>0.66.9</strong> on 2024-08-28</li>
-<li><a href="https://github.com/borkdude/clj-kondo">clj-kondo</a> from 2024.08.01 to <strong>2024.08.29</strong> on 2024-08-29</li>
-<li><a href="https://github.com/aws-cloudformation/cfn-lint">cfn-lint</a> from 1.11.0 to <strong>1.11.1</strong> on 2024-08-29</li>
-<li><a href="https://nvuillam.github.io/npm-groovy-lint/">npm-groovy-lint</a> from 14.6.0 to <strong>15.0.2</strong> on 2024-08-29</li>
-<li><a href="https://djlint.com/">djlint</a> from 1.34.2 to <strong>1.35.2</strong> on 2024-08-29</li>
-<li><a href="https://github.com/astral-sh/ruff">ruff</a> from 0.6.2 to <strong>0.6.3</strong> on 2024-08-29</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 3.2.238 to <strong>3.2.239</strong> on 2024-08-29</li>
-<li><a href="https://snakemake.readthedocs.io/en/stable/">snakemake</a> from 8.18.2 to <strong>8.19.0</strong> on 2024-08-29</li>
-<li><a href="https://checkstyle.org/">checkstyle</a> from 10.18.0 to <strong>10.18.1</strong> on 2024-08-30</li>
-<li><a href="https://pmd.github.io/">pmd</a> from 7.4.0 to <strong>7.5.0</strong> on 2024-08-30</li>
-<li><a href="https://forcedotcom.github.io/sfdx-scanner/">sfdx-scanner-apex</a> from 4.4.0 to <strong>4.5.0</strong> on 2024-08-30</li>
-<li><a href="https://forcedotcom.github.io/sfdx-scanner/">sfdx-scanner-aura</a> from 4.4.0 to <strong>4.5.0</strong> on 2024-08-30</li>
-<li><a href="https://forcedotcom.github.io/sfdx-scanner/">sfdx-scanner-lwc</a> from 4.4.0 to <strong>4.5.0</strong> on 2024-08-30</li>
-<li><a href="https://cs.symfony.com/">php-cs-fixer</a> from 3.63.2 to <strong>3.64.0</strong> on 2024-08-31</li>
-<li><a href="https://rubocop.org/">rubocop</a> from 1.65.1 to <strong>1.66.0</strong> on 2024-08-31</li>
-<li><a href="https://pylint.readthedocs.io">pylint</a> from 3.2.6 to <strong>3.2.7</strong> on 2024-08-31</li>
-<li><a href="https://github.com/trufflesecurity/trufflehog">trufflehog</a> from 3.81.9 to <strong>3.81.10</strong> on 2024-08-31</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 3.2.239 to <strong>3.2.241</strong> on 2024-09-02</li>
-<li><a href="https://terragrunt.gruntwork.io">terragrunt</a> from 0.66.9 to <strong>0.67.1</strong> on 2024-09-02</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 3.2.241 to <strong>3.2.242</strong> on 2024-09-03</li>
-<li><a href="https://github.com/mvdan/sh">shfmt</a> from 3.8.0 to <strong>3.9.0</strong> on 2024-09-03</li>
-<li><a href="https://github.com/aws-cloudformation/cfn-lint">cfn-lint</a> from 1.11.1 to <strong>1.12.1</strong> on 2024-09-03</li>
-<li><a href="https://phpstan.org/">phpstan</a> from 1.12.0 to <strong>1.12.1</strong> on 2024-09-03</li>
-<li><a href="https://github.com/aws-cloudformation/cfn-lint">cfn-lint</a> from 1.12.1 to <strong>1.12.4</strong> on 2024-09-06</li>
-<li><a href="https://phpstan.org/">phpstan</a> from 1.12.1 to <strong>1.12</strong> on 2024-09-06</li>
-<li><a href="https://github.com/Microsoft/pyright">pyright</a> from 1.1.378 to <strong>1.1.379</strong> on 2024-09-06</li>
-<li><a href="https://github.com/astral-sh/ruff">ruff</a> from 0.6.3 to <strong>0.6.4</strong> on 2024-09-06</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 3.2.242 to <strong>3.2.246</strong> on 2024-09-06</li>
-<li><a href="https://aquasecurity.github.io/trivy/">trivy-sbom</a> from 0.54.1 to <strong>0.55.0</strong> on 2024-09-06</li>
-<li><a href="https://aquasecurity.github.io/trivy/">trivy</a> from 0.54.1 to <strong>0.55.0</strong> on 2024-09-06</li>
-<li><a href="https://rubocop.org/">rubocop</a> from 1.66.0 to <strong>1.66.1</strong> on 2024-09-06</li>
-<li><a href="https://github.com/rust-lang/rust-clippy">clippy</a> from 0.1.80 to <strong>0.1.81</strong> on 2024-09-06</li>
-<li><a href="https://snakemake.readthedocs.io/en/stable/">snakemake</a> from 8.19.0 to <strong>8.19.3</strong> on 2024-09-06</li>
-<li><a href="https://snakemake.readthedocs.io/en/stable/">snakemake</a> from 8.19.3 to <strong>8.20.1</strong> on 2024-09-07</li>
-<li><a href="https://detekt.dev/">detekt</a> from 1.23.6 to <strong>1.23.7</strong> on 2024-09-08</li>
-<li><a href="https://psalm.dev">psalm</a> from Psalm.5.25.0@ to <strong>Psalm.5.26.0@</strong> on 2024-09-08</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 3.2.246 to <strong>3.2.249</strong> on 2024-09-08</li>
-<li><a href="https://terragrunt.gruntwork.io">terragrunt</a> from 0.67.1 to <strong>0.67.3</strong> on 2024-09-08</li>
-<li><a href="https://golangci-lint.run/">golangci-lint</a> from 1.60.3 to <strong>1.61.0</strong> on 2024-09-09</li>
-<li><a href="https://phpstan.org/">phpstan</a> from 1.12 to <strong>1.12.3</strong> on 2024-09-09</li>
-<li><a href="https://psalm.dev">psalm</a> from Psalm.5.26.0@ to <strong>Psalm.5.26.1@</strong> on 2024-09-09</li>
-<li><a href="https://snakemake.readthedocs.io/en/stable/">snakemake</a> from 8.20.1 to <strong>8.20.3</strong> on 2024-09-09</li>
-<li><a href="https://github.com/realm/SwiftLint">swiftlint</a> from 0.56.2 to <strong>0.57.0</strong> on 2024-09-09</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 3.2.249 to <strong>3.2.250</strong> on 2024-09-10</li>
-<li><a href="https://ansible-lint.readthedocs.io/">ansible-lint</a> from 24.7.0 to <strong>24.9.0</strong> on 2024-09-12</li>
-<li><a href="https://docs.stoplight.io/docs/spectral/674b27b261c3c-overview">spectral</a> from 6.11.1 to <strong>6.12.0</strong> on 2024-09-12</li>
-<li><a href="https://standardjs.com/">standard</a> from 17.1.0 to <strong>17.1.1</strong> on 2024-09-12</li>
-<li><a href="https://github.com/Microsoft/pyright">pyright</a> from 1.1.379 to <strong>1.1.380</strong> on 2024-09-12</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 3.2.250 to <strong>3.2.253</strong> on 2024-09-12</li>
-<li><a href="https://github.com/anchore/syft">syft</a> from 1.11.1 to <strong>1.12.2</strong> on 2024-09-12</li>
-<li><a href="https://aquasecurity.github.io/trivy/">trivy-sbom</a> from 0.55.0 to <strong>0.55.1</strong> on 2024-09-12</li>
-<li><a href="https://aquasecurity.github.io/trivy/">trivy</a> from 0.55.0 to <strong>0.55.1</strong> on 2024-09-12</li>
-<li><a href="https://github.com/trufflesecurity/trufflehog">trufflehog</a> from 3.81.10 to <strong>3.82.1</strong> on 2024-09-12</li>
-<li><a href="https://docs.stoplight.io/docs/spectral/674b27b261c3c-overview">spectral</a> from 6.12.0 to <strong>6.13.0</strong> on 2024-09-13</li>
-<li><a href="https://github.com/aws-cloudformation/cfn-lint">cfn-lint</a> from 1.12.4 to <strong>1.13.0</strong> on 2024-09-13</li>
-<li><a href="https://github.com/dotnet/Roslynator">roslynator</a> from 0.8.9.0 to <strong>0.9.0.0</strong> on 2024-09-13</li>
-<li><a href="https://standardjs.com/">standard</a> from 17.1.1 to <strong>17.1.2</strong> on 2024-09-13</li>
-<li><a href="https://github.com/astral-sh/ruff">ruff</a> from 0.6.4 to <strong>0.6.5</strong> on 2024-09-13</li>
-<li><a href="https://github.com/gitleaks/gitleaks">gitleaks</a> from 8.18.4 to <strong>8.19.0</strong> on 2024-09-14</li>
-<li><a href="https://github.com/trufflesecurity/trufflehog">trufflehog</a> from 3.82.1 to <strong>3.82.2</strong> on 2024-09-14</li>
-<li><a href="https://github.com/gitleaks/gitleaks">gitleaks</a> from 8.19.0 to <strong>8.19.1</strong> on 2024-09-14</li>
-<li><a href="https://csharpier.com/">csharpier</a> from 0.29.1 to <strong>0.29.2</strong> on 2024-09-16</li>
-<li><a href="https://eslint.org">eslint</a> from 8.57.0 to <strong>8.57.1</strong> on 2024-09-16</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 3.2.253 to <strong>3.2.254</strong> on 2024-09-16</li>
-<li><a href="https://github.com/gitleaks/gitleaks">gitleaks</a> from 8.19.1 to <strong>8.19.2</strong> on 2024-09-16</li>
-<li><a href="https://terragrunt.gruntwork.io">terragrunt</a> from 0.67.3 to <strong>0.67.5</strong> on 2024-09-16</li>
-<li><a href="https://ansible-lint.readthedocs.io/">ansible-lint</a> from 24.9.0 to <strong>24.9.2</strong> on 2024-09-20</li>
-<li><a href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter">bicep_linter</a> from 0.29.47 to <strong>0.30.3</strong> on 2024-09-20</li>
-<li><a href="https://github.com/aws-cloudformation/cfn-lint">cfn-lint</a> from 1.13.0 to <strong>1.14.2</strong> on 2024-09-20</li>
-<li><a href="https://github.com/PHPCSStandards/PHP_CodeSniffer">phpcs</a> from 3.10.2 to <strong>3.10.3</strong> on 2024-09-20</li>
-<li><a href="https://phpstan.org/">phpstan</a> from 1.12.3 to <strong>1.12.4</strong> on 2024-09-20</li>
-<li><a href="https://pylint.readthedocs.io">pylint</a> from 3.2.7 to <strong>3.3.0</strong> on 2024-09-20</li>
-<li><a href="https://github.com/Microsoft/pyright">pyright</a> from 1.1.380 to <strong>1.1.381</strong> on 2024-09-20</li>
-<li><a href="https://github.com/astral-sh/ruff">ruff</a> from 0.6.5 to <strong>0.6.6</strong> on 2024-09-20</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 3.2.254 to <strong>3.2.255</strong> on 2024-09-20</li>
-<li><a href="https://aquasecurity.github.io/trivy/">trivy-sbom</a> from 0.55.1 to <strong>0.55.2</strong> on 2024-09-20</li>
-<li><a href="https://aquasecurity.github.io/trivy/">trivy</a> from 0.55.1 to <strong>0.55.2</strong> on 2024-09-20</li>
-<li><a href="https://snakemake.readthedocs.io/en/stable/">snakemake</a> from 8.20.3 to <strong>8.20.4</strong> on 2024-09-20</li>
-<li><a href="https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell">cspell</a> from 8.14.2 to <strong>8.14.4</strong> on 2024-09-20</li>
-<li><a href="https://www.sqlfluff.com/">sqlfluff</a> from 3.1.1 to <strong>3.2.0</strong> on 2024-09-20</li>
-<li><a href="https://docs.stoplight.io/docs/spectral/674b27b261c3c-overview">spectral</a> from 6.13.0 to <strong>6.13.1</strong> on 2024-09-21</li>
-<li><a href="https://github.com/astral-sh/ruff">ruff</a> from 0.6.6 to <strong>0.6.7</strong> on 2024-09-21</li>
-<li><a href="https://runterrascan.io/">terrascan</a> from 1.19.1 to <strong>1.19.9</strong> on 2024-09-21</li>
-<li><a href="https://revive.run/">revive</a> from 1.3.9 to <strong>1.4.0</strong> on 2024-09-23</li>
-<li><a href="https://github.com/aws-cloudformation/cfn-lint">cfn-lint</a> from 1.14.2 to <strong>1.15.0</strong> on 2024-09-23</li>
+<li><a href="https://rhysd.github.io/actionlint/">actionlint</a> from 1.7.1 to <strong>1.7.3</strong> on 2024-09-29</li>
+<li><a href="https://ansible-lint.readthedocs.io/">ansible-lint</a> from 24.7.0 to <strong>24.9.2</strong> on 2024-09-20</li>
 <li><a href="https://bandit.readthedocs.io/en/latest/">bandit</a> from 1.7.9 to <strong>1.7.10</strong> on 2024-09-23</li>
-<li><a href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter">bicep_linter</a> from 0.30.3 to <strong>0.30.23</strong> on 2024-09-24</li>
-<li><a href="https://github.com/aws-cloudformation/cfn-lint">cfn-lint</a> from 1.15.0 to <strong>1.15.1</strong> on 2024-09-24</li>
-<li><a href="https://github.com/DavidAnson/markdownlint">markdownlint</a> from 0.41.0 to <strong>0.42.0</strong> on 2024-09-24</li>
-<li><a href="https://pylint.readthedocs.io">pylint</a> from 3.3.0 to <strong>3.3.1</strong> on 2024-09-24</li>
-<li><a href="https://github.com/anchore/syft">syft</a> from 1.12.2 to <strong>1.13.0</strong> on 2024-09-24</li>
-<li><a href="https://github.com/trufflesecurity/trufflehog">trufflehog</a> from 3.82.2 to <strong>3.82.3</strong> on 2024-09-24</li>
-<li><a href="https://github.com/borkdude/clj-kondo">clj-kondo</a> from 2024.08.29 to <strong>2024.09.26</strong> on 2024-09-26</li>
-<li><a href="https://phpstan.org/">phpstan</a> from 1.12.4 to <strong>1.12.5</strong> on 2024-09-26</li>
-<li><a href="https://github.com/Microsoft/pyright">pyright</a> from 1.1.381 to <strong>1.1.382</strong> on 2024-09-26</li>
-<li><a href="https://github.com/astral-sh/ruff">ruff</a> from 0.6.7 to <strong>0.6.8</strong> on 2024-09-26</li>
-<li><a href="https://github.com/trufflesecurity/trufflehog">trufflehog</a> from 3.82.3 to <strong>3.82.5</strong> on 2024-09-26</li>
-<li><a href="https://forcedotcom.github.io/sfdx-scanner/">sfdx-scanner-apex</a> from 4.5.0 to <strong>4.6.0</strong> on 2024-09-26</li>
-<li><a href="https://forcedotcom.github.io/sfdx-scanner/">sfdx-scanner-aura</a> from 4.5.0 to <strong>4.6.0</strong> on 2024-09-26</li>
-<li><a href="https://forcedotcom.github.io/sfdx-scanner/">sfdx-scanner-lwc</a> from 4.5.0 to <strong>4.6.0</strong> on 2024-09-26</li>
-<li><a href="https://snakemake.readthedocs.io/en/stable/">snakemake</a> from 8.20.4 to <strong>8.20.5</strong> on 2024-09-26</li>
-<li><a href="https://vale.sh/">vale</a> from 3.7.0 to <strong>3.7.1</strong> on 2024-09-26</li>
-<li><a href="https://rhysd.github.io/actionlint/">actionlint</a> from 1.7.1 to <strong>1.7.2</strong> on 2024-09-26</li>
-<li><a href="https://github.com/borkdude/clj-kondo">clj-kondo</a> from 2024.09.26 to <strong>2024.09.27</strong> on 2024-09-26</li>
-<li><a href="https://github.com/gitleaks/gitleaks">gitleaks</a> from 8.19.2 to <strong>8.19.3</strong> on 2024-09-26</li>
-<li><a href="https://pmd.github.io/">pmd</a> from 7.5.0 to <strong>7.6.0</strong> on 2024-09-27</li>
-<li><a href="https://github.com/trufflesecurity/trufflehog">trufflehog</a> from 3.82.5 to <strong>3.82.6</strong> on 2024-09-27</li>
-<li><a href="https://scalacenter.github.io/scalafix/">scalafix</a> from 0.12.1 to <strong>0.13.0</strong> on 2024-09-27</li>
-<li><a href="https://rhysd.github.io/actionlint/">actionlint</a> from 1.7.2 to <strong>1.7.3</strong> on 2024-09-29</li>
-<li><a href="https://checkstyle.org/">checkstyle</a> from 10.18.1 to <strong>10.18.2</strong> on 2024-09-29</li>
-<li><a href="https://github.com/aws-cloudformation/cfn-lint">cfn-lint</a> from 1.15.1 to <strong>1.15.2</strong> on 2024-09-30</li>
-<li><a href="https://github.com/aws-cloudformation/cfn-lint">cfn-lint</a> from 1.15.2 to <strong>1.16.0</strong> on 2024-10-04</li>
-<li><a href="https://github.com/Microsoft/pyright">pyright</a> from 1.1.382 to <strong>1.1.383</strong> on 2024-10-04</li>
-<li><a href="https://github.com/astral-sh/ruff">ruff</a> from 0.6.8 to <strong>0.6.9</strong> on 2024-10-04</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 3.2.255 to <strong>3.2.256</strong> on 2024-10-04</li>
-<li><a href="https://www.kics.io">kics</a> from 2.1.2 to <strong>2.1.3</strong> on 2024-10-04</li>
-<li><a href="https://aquasecurity.github.io/trivy/">trivy-sbom</a> from 0.55.2 to <strong>0.56.1</strong> on 2024-10-04</li>
-<li><a href="https://aquasecurity.github.io/trivy/">trivy</a> from 0.55.2 to <strong>0.56.1</strong> on 2024-10-04</li>
-<li><a href="https://github.com/secretlint/secretlint">secretlint</a> from 8.2.4 to <strong>8.3.0</strong> on 2024-10-05</li>
-<li><a href="https://github.com/cpplint/cpplint">cpplint</a> from 1.6.1 to <strong>2.0.0</strong> on 2024-10-06</li>
-<li><a href="https://phpstan.org/">phpstan</a> from 1.12.5 to <strong>1.12.6</strong> on 2024-10-06</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 3.2.256 to <strong>3.2.257</strong> on 2024-10-06</li>
-<li><a href="https://github.com/secretlint/secretlint">secretlint</a> from 8.3.0 to <strong>8.4.0</strong> on 2024-10-06</li>
-<li><a href="https://www.sqlfluff.com/">sqlfluff</a> from 3.2.0 to <strong>3.2.1</strong> on 2024-10-06</li>
-<li><a href="https://snakemake.readthedocs.io/en/stable/">snakemake</a> from 8.20.5 to <strong>8.20.6</strong> on 2024-10-07</li>
-<li><a href="https://lychee.cli.rs">lychee</a> from 0.15.1 to <strong>0.16.1</strong> on 2024-10-07</li>
-<li><a href="https://www.sqlfluff.com/">sqlfluff</a> from 3.2.1 to <strong>3.2.2</strong> on 2024-10-07</li>
+<li><a href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter">bicep_linter</a> from 0.29.47 to <strong>0.30.23</strong> on 2024-09-24</li>
 <li><a href="https://black.readthedocs.io/en/stable/">black</a> from 24.8.0 to <strong>24.10.0</strong> on 2024-10-07</li>
-<li><a href="https://github.com/anchore/syft">syft</a> from 1.13.0 to <strong>1.14.0</strong> on 2024-10-07</li>
-<li><a href="https://github.com/gitleaks/gitleaks">gitleaks</a> from 8.19.3 to <strong>8.20.1</strong> on 2024-10-08</li>
-<li><a href="https://github.com/trufflesecurity/trufflehog">trufflehog</a> from 3.82.6 to <strong>3.82.7</strong> on 2024-10-08</li>
-<li><a href="https://github.com/overtrue/phplint">phplint</a> from 9.4.1 to <strong>9.5.2</strong> on 2024-10-08</li>
-<li><a href="https://github.com/aws-cloudformation/cfn-lint">cfn-lint</a> from 1.16.0 to <strong>1.16.1</strong> on 2024-10-11</li>
+<li><a href="https://github.com/aws-cloudformation/cfn-lint">cfn-lint</a> from 1.10.3 to <strong>1.16.1</strong> on 2024-10-11</li>
+<li><a href="https://www.checkov.io/">checkov</a> from 3.2.232 to <strong>3.2.257</strong> on 2024-10-06</li>
+<li><a href="https://checkstyle.org/">checkstyle</a> from 10.17.0 to <strong>10.18.2</strong> on 2024-09-29</li>
+<li><a href="https://github.com/rust-lang/rust-clippy">clippy</a> from 0.1.80 to <strong>0.1.81</strong> on 2024-09-06</li>
+<li><a href="https://github.com/borkdude/clj-kondo">clj-kondo</a> from 2024.08.01 to <strong>2024.09.27</strong> on 2024-09-26</li>
+<li><a href="https://github.com/cpplint/cpplint">cpplint</a> from 1.6.1 to <strong>2.0.0</strong> on 2024-10-06</li>
+<li><a href="https://csharpier.com/">csharpier</a> from 0.29.0 to <strong>0.29.2</strong> on 2024-09-16</li>
+<li><a href="https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell">cspell</a> from 8.14.1 to <strong>8.15.1</strong> on 2024-10-11</li>
+<li><a href="https://detekt.dev/">detekt</a> from 1.23.6 to <strong>1.23.7</strong> on 2024-09-08</li>
+<li><a href="https://djlint.com/">djlint</a> from 1.34.1 to <strong>1.35.2</strong> on 2024-08-29</li>
 <li><a href="https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format">dotnet-format</a> from 8.0.108 to <strong>8.0.110</strong> on 2024-10-11</li>
-<li><a href="https://github.com/dotnet/Roslynator">roslynator</a> from 0.9.0.0 to <strong>0.9.1.0</strong> on 2024-10-11</li>
-<li><a href="https://stylelint.io">stylelint</a> from 16.9.0 to <strong>16.10.0</strong> on 2024-10-11</li>
-<li><a href="https://github.com/overtrue/phplint">phplint</a> from 9.5.2 to <strong>9.5.3</strong> on 2024-10-11</li>
-<li><a href="https://github.com/Microsoft/pyright">pyright</a> from 1.1.383 to <strong>1.1.384</strong> on 2024-10-11</li>
-<li><a href="https://aquasecurity.github.io/trivy/">trivy-sbom</a> from 0.56.1 to <strong>0.56.2</strong> on 2024-10-11</li>
-<li><a href="https://aquasecurity.github.io/trivy/">trivy</a> from 0.56.1 to <strong>0.56.2</strong> on 2024-10-11</li>
-<li><a href="https://snakemake.readthedocs.io/en/stable/">snakemake</a> from 8.20.6 to <strong>8.20.7</strong> on 2024-10-11</li>
-<li><a href="https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell">cspell</a> from 8.14.4 to <strong>8.15.1</strong> on 2024-10-11</li>
-<li><a href="https://www.sqlfluff.com/">sqlfluff</a> from 3.2.2 to <strong>3.2.3</strong> on 2024-10-11</li>
-<li><a href="https://snakemake.readthedocs.io/en/stable/">snakemake</a> from 8.20.7 to <strong>8.21.0</strong> on 2024-10-13</li>
-<li><a href="https://github.com/trufflesecurity/trufflehog">trufflehog</a> from 3.82.7 to <strong>3.82.8</strong> on 2024-10-13</li>
+<li><a href="https://eslint.org">eslint</a> from 8.57.0 to <strong>8.57.1</strong> on 2024-09-16</li>
+<li><a href="https://github.com/gitleaks/gitleaks">gitleaks</a> from 8.18.4 to <strong>8.20.1</strong> on 2024-10-08</li>
+<li><a href="https://golangci-lint.run/">golangci-lint</a> from 1.60.1 to <strong>1.61.0</strong> on 2024-09-09</li>
+<li><a href="https://www.kics.io">kics</a> from 2.1.2 to <strong>2.1.3</strong> on 2024-10-04</li>
+<li><a href="https://github.com/Lightning-Flow-Scanner">lightning-flow-scanner</a> from 2.33.0 to <strong>2.34.0</strong> on 2024-08-25</li>
+<li><a href="https://lychee.cli.rs">lychee</a> from 0.15.1 to <strong>0.16.1</strong> on 2024-10-07</li>
+<li><a href="https://github.com/DavidAnson/markdownlint">markdownlint</a> from 0.41.0 to <strong>0.42.0</strong> on 2024-09-24</li>
+<li><a href="https://mypy.readthedocs.io/en/stable/">mypy</a> from 1.11.1 to <strong>1.11.2</strong> on 2024-08-25</li>
+<li><a href="https://nvuillam.github.io/npm-groovy-lint/">npm-groovy-lint</a> from 14.6.0 to <strong>15.0.2</strong> on 2024-08-29</li>
+<li><a href="https://cs.symfony.com/">php-cs-fixer</a> from 3.62.0 to <strong>3.64.0</strong> on 2024-08-31</li>
+<li><a href="https://github.com/PHPCSStandards/PHP_CodeSniffer">phpcs</a> from 3.10.2 to <strong>3.10.3</strong> on 2024-09-20</li>
+<li><a href="https://github.com/overtrue/phplint">phplint</a> from 9.4.1 to <strong>9.5.3</strong> on 2024-10-11</li>
+<li><a href="https://phpstan.org/">phpstan</a> from 1.11.11 to <strong>1.12.6</strong> on 2024-10-06</li>
+<li><a href="https://pmd.github.io/">pmd</a> from 7.4.0 to <strong>7.6.0</strong> on 2024-09-27</li>
+<li><a href="https://psalm.dev">psalm</a> from Psalm.5.25.0@ to <strong>Psalm.5.26.1@</strong> on 2024-09-09</li>
+<li><a href="https://pylint.readthedocs.io">pylint</a> from 3.2.6 to <strong>3.3.1</strong> on 2024-09-24</li>
+<li><a href="https://github.com/Microsoft/pyright">pyright</a> from 1.1.376 to <strong>1.1.384</strong> on 2024-10-11</li>
+<li><a href="https://revive.run/">revive</a> from 1.3.9 to <strong>1.4.0</strong> on 2024-09-23</li>
+<li><a href="https://github.com/dotnet/Roslynator">roslynator</a> from 0.8.9.0 to <strong>0.9.1.0</strong> on 2024-10-11</li>
+<li><a href="https://rubocop.org/">rubocop</a> from 1.65.1 to <strong>1.66.1</strong> on 2024-09-06</li>
+<li><a href="https://github.com/astral-sh/ruff">ruff</a> from 0.6.1 to <strong>0.6.9</strong> on 2024-10-04</li>
+<li><a href="https://scalacenter.github.io/scalafix/">scalafix</a> from 0.12.1 to <strong>0.13.0</strong> on 2024-09-27</li>
+<li><a href="https://github.com/secretlint/secretlint">secretlint</a> from 8.2.4 to <strong>8.4.0</strong> on 2024-10-06</li>
+<li><a href="https://forcedotcom.github.io/sfdx-scanner/">sfdx-scanner-apex</a> from 4.4.0 to <strong>4.6.0</strong> on 2024-09-26</li>
+<li><a href="https://forcedotcom.github.io/sfdx-scanner/">sfdx-scanner-aura</a> from 4.4.0 to <strong>4.6.0</strong> on 2024-09-26</li>
+<li><a href="https://forcedotcom.github.io/sfdx-scanner/">sfdx-scanner-lwc</a> from 4.4.0 to <strong>4.6.0</strong> on 2024-09-26</li>
+<li><a href="https://github.com/mvdan/sh">shfmt</a> from 3.8.0 to <strong>3.9.0</strong> on 2024-09-03</li>
+<li><a href="https://snakemake.readthedocs.io/en/stable/">snakemake</a> from 8.18.1 to <strong>8.21.0</strong> on 2024-10-13</li>
+<li><a href="https://docs.stoplight.io/docs/spectral/674b27b261c3c-overview">spectral</a> from 6.11.1 to <strong>6.13.1</strong> on 2024-09-21</li>
+<li><a href="https://www.sqlfluff.com/">sqlfluff</a> from 3.1.0 to <strong>3.2.3</strong> on 2024-10-11</li>
+<li><a href="https://standardjs.com/">standard</a> from 17.1.0 to <strong>17.1.2</strong> on 2024-09-13</li>
+<li><a href="https://stylelint.io">stylelint</a> from 16.8.2 to <strong>16.10.0</strong> on 2024-10-11</li>
+<li><a href="https://github.com/realm/SwiftLint">swiftlint</a> from 0.56.1 to <strong>0.57.0</strong> on 2024-09-09</li>
+<li><a href="https://github.com/anchore/syft">syft</a> from 1.11.0 to <strong>1.14.0</strong> on 2024-10-07</li>
+<li><a href="https://developer.hashicorp.com/terraform/cli/commands/fmt">terraform-fmt</a> from 1.9.4 to <strong>1.9.5</strong> on 2024-08-28</li>
+<li><a href="https://terragrunt.gruntwork.io">terragrunt</a> from 0.66.8 to <strong>0.67.5</strong> on 2024-09-16</li>
+<li><a href="https://runterrascan.io/">terrascan</a> from 1.18.11 to <strong>1.19.9</strong> on 2024-09-21</li>
+<li><a href="https://aquasecurity.github.io/trivy/">trivy-sbom</a> from 0.54.1 to <strong>0.56.2</strong> on 2024-10-11</li>
+<li><a href="https://aquasecurity.github.io/trivy/">trivy</a> from 0.54.1 to <strong>0.56.2</strong> on 2024-10-11</li>
+<li><a href="https://github.com/trufflesecurity/trufflehog">trufflehog</a> from 3.81.10 to <strong>3.82.8</strong> on 2024-10-13</li>
+<li><a href="https://github.com/chris48s/v8r">v8r</a> from 4.0.1 to <strong>4.1.0</strong> on 2024-08-25</li>
+<li><a href="https://vale.sh/">vale</a> from 3.7.0 to <strong>3.7.1</strong> on 2024-09-26</li>
 </ul>
 </li>
 </ul>
-<!-- linter-versions-end -->
 <h2 id="v800-2024-08-19">[v8.0.0] - 2024-08-19</h2>
 <ul>
 <li>Reporters<ul>
