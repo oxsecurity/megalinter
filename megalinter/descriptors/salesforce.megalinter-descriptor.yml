@@ -13,7 +13,7 @@ install:
       ARG SALESFORCE_CLI_VERSION=2.60.13
     - |-
       # renovate: datasource=npm depName=@salesforce/plugin-packaging
-      ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.8.11
+      ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.8.12
     - |-
       # renovate: datasource=npm depName=sfdx-hardis
       ARG SFDX_HARDIS_VERSION=5.0.10
