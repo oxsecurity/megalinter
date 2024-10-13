@@ -85,7 +85,7 @@ ARG BICEP_DIR='/usr/local/bin'
 ARG DETEKT_VERSION=1.23.7
 
 # renovate: datasource=nuget depName=PSScriptAnalyzer registryUrl=https://www.powershellgallery.com/api/v2/
-ARG PSSA_VERSION='1.22.0'
+ARG PSSA_VERSION='1.23.0'
 
 #ARG__END
 

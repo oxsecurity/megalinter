@@ -122,7 +122,7 @@ ARG LUA_SELENE_VERSION=0.27.1
 # renovate: datasource=crate depName=stylua
 ARG LUA_STYLUA_VERSION=0.20.0
 # renovate: datasource=nuget depName=PSScriptAnalyzer registryUrl=https://www.powershellgallery.com/api/v2/
-ARG PSSA_VERSION='1.22.0'
+ARG PSSA_VERSION='1.23.0'
 
 # renovate: datasource=npm depName=@salesforce/sfdx-scanner
 ARG SALESFORCE_SFDX_SCANNER_VERSION=4.6.0
