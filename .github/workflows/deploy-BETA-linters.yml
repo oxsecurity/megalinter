@@ -270,13 +270,13 @@ jobs:
 
       # Copy ghrc.io image to Docker Hub (main image)
       - name: Debug output
-        run: "echo \"Tag steps.meta.outputs.tags: ${{ steps.meta.outputs.tags }}\""
+        run: "echo \"Tag steps.meta.outputs.tags: ${{ fromJson(steps.meta-dhub.outputs.json).tags[0]}}\""
       - name: Pull image from GHCR
-        run: docker system prune -a --force && docker pull "${{ steps.meta.outputs.tags }}"
+        run: docker system prune -a --force && docker pull "${{ fromJson(steps.meta.outputs.json).tags[0]}}"
       - name: Tag image for Docker Hub
-        run: docker tag "${{ steps.meta.outputs.tags }}" "${{ steps.meta-dhub.outputs.tags }}"
+        run: docker tag "${{ fromJson(steps.meta.outputs.json).tags[0]}}" "${{ fromJson(steps.meta-dhub.outputs.json).tags[0]}}"
       - name: Push image to Docker Hub
-        run: docker push "${{ steps.meta-dhub.outputs.tags }}"
+        run: docker push "${{ fromJson(steps.meta-dhub.outputs.json).tags[0]}}"
 
       ##############################################
       # Check Docker image security with Trivy #
