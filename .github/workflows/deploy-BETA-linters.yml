@@ -284,7 +284,7 @@ jobs:
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: "${{ steps.meta-dhub.outputs.tags }}"
+          image-ref: "${{ fromJson(steps.meta-dhub.outputs.json).tags[0]}}"
           format: "table"
           exit-code: "1"
           ignore-unfixed: true
