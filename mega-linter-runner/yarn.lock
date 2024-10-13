@@ -566,31 +566,24 @@
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.17.10.tgz#64f3edf656af2fe59e7278b73d3e62404144a6e6"
   integrity sha512-YpS0zzoduEhuOWjAotS6A5AVCva7X4lVlYLF0FYHAY9sdraBfnatttHItlWeZdGhuEkf+OzMNg2ZYAx8t+52uQ==
 
-"@types/node@*":
-  version "22.7.4"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-22.7.4.tgz#e35d6f48dca3255ce44256ddc05dee1c23353fcc"
-  integrity sha512-y+NPi1rFzDs1NdQHHToqeiX2TIS79SWEAw9GYhkkx8bD0ChpfqC+n2j5OXOCpzfojBEBt6DnEnnG9MY0zk1XLg==
+"@types/node@*", "@types/node@>=16.18.31", "@types/node@>=18":
+  version "22.7.5"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-22.7.5.tgz#cfde981727a7ab3611a481510b473ae54442b92b"
+  integrity sha512-jML7s2NAzMWc//QSJ1a3prpk78cOPchGvXJsC3C6R6PSMoooztvRVQEz89gmBTBY1SPMaqo5teB4uNHPdetShQ==
   dependencies:
     undici-types "~6.19.2"
 
-"@types/node@^16.18.28", "@types/node@^16.18.31":
-  version "16.18.112"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.18.112.tgz#efd468e4edd08404eed23b6aed6c2f35edfa9450"
-  integrity sha512-EKrbKUGJROm17+dY/gMi31aJlGLJ75e1IkTojt9n6u+hnaTBDs+M1bIdOawpk2m6YUAXq/R2W0SxCng1tndHCg==
+"@types/node@^16.18.28":
+  version "16.18.113"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.18.113.tgz#fbe99013933c4997db5838d20497494a7e01f4ab"
+  integrity sha512-4jHxcEzSXpF1cBNxogs5FVbVSFSKo50sFCn7Xg7vmjJTbWFWgeuHW3QnoINlfmfG++MFR/q97RZE5RQXKeT+jg==
 
 "@types/node@^18.18.5":
-  version "18.19.54"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.19.54.tgz#f1048dc083f81b242640f04f18fb3e4ccf13fcdb"
-  integrity sha512-+BRgt0G5gYjTvdLac9sIeE0iZcJxi4Jc4PV5EUzqi+88jmQLr+fRZdv2tCTV7IHKSGxM6SaLoOXQWWUiLUItMw==
+  version "18.19.55"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.19.55.tgz#29c3f8e1485a92ec96636957ddec55aabc6e856e"
+  integrity sha512-zzw5Vw52205Zr/nmErSEkN5FLqXPuKX/k5d1D7RKHATGqU7y6YfX9QxZraUzUrFGqH6XzOzG196BC35ltJC4Cw==
   dependencies:
     undici-types "~5.26.4"
-
-"@types/node@^20.8.3":
-  version "20.16.10"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.16.10.tgz#0cc3fdd3daf114a4776f54ba19726a01c907ef71"
-  integrity sha512-vQUKgWTjEIRFCvK6CyriPH3MZYiYlNy0fKiEYHWbcoWLEgs4opurGGKlebrTLqdSMIbXImH6XExNiIyNUv3WpA==
-  dependencies:
-    undici-types "~6.19.2"
 
 "@types/normalize-package-data@^2.4.3":
   version "2.4.4"
@@ -2352,7 +2345,26 @@ make-fetch-happen@^13.0.0, make-fetch-happen@^13.0.1:
     promise-retry "^2.0.1"
     ssri "^10.0.0"
 
-mem-fs-editor@^11.0.0, mem-fs-editor@^11.0.1:
+mem-fs-editor@^11.0.0:
+  version "11.1.2"
+  resolved "https://registry.yarnpkg.com/mem-fs-editor/-/mem-fs-editor-11.1.2.tgz#9ee84ee8889c6a9b8c1ccedc736e0f01f4558090"
+  integrity sha512-yUVFK96XhGv31iWZ3G60pGNIuXuZTUsWz0GQzv9ffjYFf1oXs0PcD3LFZHzRDImH+Da21x/C4csEjN0W5ygdQA==
+  dependencies:
+    "@types/ejs" "^3.1.4"
+    "@types/node" ">=18"
+    binaryextensions "^6.11.0"
+    commondir "^1.0.1"
+    deep-extend "^0.6.0"
+    ejs "^3.1.10"
+    globby "^14.0.2"
+    isbinaryfile "5.0.2"
+    minimatch "^9.0.3"
+    multimatch "^7.0.0"
+    normalize-path "^3.0.0"
+    textextensions "^6.11.0"
+    vinyl "^3.0.0"
+
+mem-fs-editor@^11.0.1:
   version "11.1.1"
   resolved "https://registry.yarnpkg.com/mem-fs-editor/-/mem-fs-editor-11.1.1.tgz#739bea0d0fdd7bedc068e7873fe2f331415cd3b5"
   integrity sha512-bjBczabthdOjNE9+gRk+wObTihMgwkrhr/ffk7e+adZk0F5I3i5fE/MApOwSG/JYmFAfpoThPkA6i+kKShcl0w==
@@ -2372,11 +2384,11 @@ mem-fs-editor@^11.0.0, mem-fs-editor@^11.0.1:
     vinyl "^3.0.0"
 
 mem-fs@^4.0.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/mem-fs/-/mem-fs-4.1.0.tgz#b3dc2d6b5eae4c86a2a6030ea3f2774fe1dc9bce"
-  integrity sha512-lOB7haBbxO43eZ/++GA+jBMHQ9DNJeliMt35jNutzCfAgEg5gblFCItnzsss8Z4t81bB5jsz77bptqelHQn0Qw==
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/mem-fs/-/mem-fs-4.1.1.tgz#2b5dfe2b8a3728b34560c041539dbcc6f05273d8"
+  integrity sha512-GwrbYV4U8h1iTfj3Yac2xxSMw1HGVbf3GcTKriFLf1hUmgoUwVPsfcp8ZQLYr6kiAHNXA9ozxrY5JuA23SjGFA==
   dependencies:
-    "@types/node" "^20.8.3"
+    "@types/node" ">=18"
     "@types/vinyl" "^2.0.8"
     vinyl "^3.0.0"
     vinyl-file "^5.0.0"
@@ -2872,11 +2884,11 @@ p-timeout@^6.1.2:
   integrity sha512-UbD77BuZ9Bc9aABo74gfXhNvzC9Tx7SxtHSh1fxvx3jTLLYvmVhiQZZrJzqqU0jKbN32kb5VOKiLEQI/3bIjgQ==
 
 p-transform@^4.1.3:
-  version "4.1.5"
-  resolved "https://registry.yarnpkg.com/p-transform/-/p-transform-4.1.5.tgz#a5ecaccfb773f94c52f2000cbfc3b2d59d33c652"
-  integrity sha512-CsXIiCOeBUYMBLpcY71DTq+fg8268ux31pAxI5TcoYEPfWCw5ozrbgWdZ9QmSDd8dUzvNXtmiwJOdTIxIFptfQ==
+  version "4.1.6"
+  resolved "https://registry.yarnpkg.com/p-transform/-/p-transform-4.1.6.tgz#7947f5c4c50ea3acb75202554d5392c4036f3de7"
+  integrity sha512-ub9xBaRuk5FhfyzJv9y4OF8i7/3wH0gRG4C3jUp2pFcoftzkopgr6H0BJNcvbJBGsr7KmHHNWN+DCRPfPBIlAQ==
   dependencies:
-    "@types/node" "^16.18.31"
+    "@types/node" ">=16.18.31"
     p-queue "^7.3.0"
     readable-stream "^4.3.0"
 
@@ -3914,9 +3926,9 @@ yargs@^16.2.0:
     yargs-parser "^20.2.2"
 
 yeoman-environment@^4.0.0:
-  version "4.4.1"
-  resolved "https://registry.yarnpkg.com/yeoman-environment/-/yeoman-environment-4.4.1.tgz#09ee2e19eec3b6809e0e48efc320bb2b149b8275"
-  integrity sha512-x1TXPM6msNm9+zWLUuegfBf2AOwilTIUMAKHmhJvm9zidiDDrkp8cIuK32CvADuMxgbrGrvwHejDWnPScasnkw==
+  version "4.4.2"
+  resolved "https://registry.yarnpkg.com/yeoman-environment/-/yeoman-environment-4.4.2.tgz#515f45f03363c3cdaca19c2d5258eeabb4ce8515"
+  integrity sha512-kAa67TpDO0pfYBY/WAlCwPYkOh5x7mQ2leCeClDlUYZR5i0ekd3Kv4f8/DJCULBv5xV1zqWQSA+6peHbQoK8UQ==
   dependencies:
     "@yeoman/adapter" "^1.4.0"
     "@yeoman/conflicter" "^2.0.0-alpha.2"
