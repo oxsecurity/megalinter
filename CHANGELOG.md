@@ -55,7 +55,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Activate ApiReporter by default
 
 - Reporters
-  - Fix ApiReporter not called in MegaLlinter flavors
+  - Fix ApiReporter not called in MegaLinter flavors
 
 - Doc
   - Fix Grafana Home Dashboard to add missing criteria
