@@ -28,7 +28,7 @@ ARG REPOSITORY_GITLEAKS_VERSION=v8.20.1
 # renovate: datasource=docker depName=checkmarx/kics
 ARG REPOSITORY_KICS_VERSION=v2.1.3-alpine
 # renovate: datasource=docker depName=trufflesecurity/trufflehog 
-ARG REPOSITORY_TRUFFLEHOG_VERSION=3.82.7
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.82.8
 # renovate: datasource=docker depName=jdkato/vale
 ARG SPELL_VALE_VERSION=v3.7.1
 # renovate: datasource=docker depName=ghcr.io/terraform-linters/tflint
@@ -78,7 +78,7 @@ FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} AS terragrunt
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.4.19 AS uv
+FROM ghcr.io/astral-sh/uv:0.4.20 AS uv
 FROM python:3.12.7-alpine3.20 AS build-ml-core
 WORKDIR /
 COPY pyproject.toml .
@@ -99,11 +99,11 @@ FROM python:3.12.7-alpine3.20
 #############################################################################################
 #ARG__START
 # renovate: datasource=npm depName=@salesforce/cli
-ARG SALESFORCE_CLI_VERSION=2.60.13
+ARG SALESFORCE_CLI_VERSION=2.61.8
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
-ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.8.11
+ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.8.12
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=5.0.10
+ARG SFDX_HARDIS_VERSION=5.1.0
 ARG ARM_TTK_NAME='master.zip'
 ARG ARM_TTK_URI='https://github.com/Azure/arm-ttk/archive/master.zip'
 ARG ARM_TTK_DIRECTORY='/opt/microsoft'
@@ -122,7 +122,7 @@ ARG LUA_SELENE_VERSION=0.27.1
 # renovate: datasource=crate depName=stylua
 ARG LUA_STYLUA_VERSION=0.20.0
 # renovate: datasource=nuget depName=PSScriptAnalyzer registryUrl=https://www.powershellgallery.com/api/v2/
-ARG PSSA_VERSION='1.22.0'
+ARG PSSA_VERSION='1.23.0'
 
 # renovate: datasource=npm depName=@salesforce/sfdx-scanner
 ARG SALESFORCE_SFDX_SCANNER_VERSION=4.6.0

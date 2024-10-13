@@ -17,7 +17,8 @@ name: "Build & Deploy - BETA"
 on:
   push:
     branches:
-      - "main"
+      - main
+      - dbgbeta
     paths:
       - ".github/workflows/**"
       - "Dockerfile"
@@ -83,8 +84,16 @@ jobs:
         id: meta
         with:
           images: |
-            name=${{ github.repository }}
             name=ghcr.io/${{ github.repository }}
+          tags: |
+            type=raw,value=beta
+
+      - name: Docker Metadata action (Docker Hub)
+        uses: docker/metadata-action@v5.5.1
+        id: meta-dhub
+        with:
+          images: |
+            name=docker.io/${{ github.repository }}
           tags: |
             type=raw,value=beta
 
@@ -93,8 +102,16 @@ jobs:
         id: meta-s
         with:
           images: |
-            name=${{ github.repository }}-server,enable=false
             name=ghcr.io/${{ github.repository }}-server
+          tags: |
+            type=raw,value=beta
+
+      - name: Docker Metadata action (Server Docker Hub)
+        uses: docker/metadata-action@v5.5.1
+        id: meta-s-dhub
+        with:
+          images: |
+            name=docker.io/${{ github.repository }}-server
           tags: |
             type=raw,value=beta
 
@@ -103,8 +120,16 @@ jobs:
         id: meta-w
         with:
           images: |
-            name=${{ github.repository }}-worker,enable=false
             name=ghcr.io/${{ github.repository }}-worker
+          tags: |
+            type=raw,value=beta
+
+      - name: Docker Metadata action (Worker Server)
+        uses: docker/metadata-action@v5.5.1
+        id: meta-w-dhub
+        with:
+          images: |
+            name=docker.io/${{ github.repository }}-worker
           tags: |
             type=raw,value=beta
 
@@ -113,12 +138,6 @@ jobs:
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
-
-      - name: Login to Docker Hub
-        uses: docker/login-action@v3
-        with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v3
@@ -176,6 +195,36 @@ jobs:
             GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
           tags: ${{ steps.meta-w.outputs.tags }}
 
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      # Copy ghrc.io image to Docker Hub (main image)
+      - name: Pull image from GHCR
+        run: docker system prune -a --force && docker pull "${{ steps.meta.outputs.tags }}"
+      - name: Tag image for Docker Hub
+        run: docker tag "${{ steps.meta.outputs.tags }}" "${{ steps.meta-dhub.outputs.tags }}"
+      - name: Push image to Docker Hub
+        run: docker push "${{ steps.meta-dhub.outputs.tags }}"
+
+      # Copy ghrc.io image to Docker Hub (server)
+      - name: Pull image from GHCR
+        run: docker system prune -a --force && docker pull "${{ steps.meta-s.outputs.tags }}"
+      - name: Tag image for Docker Hub
+        run: docker tag "${{ steps.meta-s.outputs.tags }}" "${{ steps.meta-s-dhub.outputs.tags }}"
+      - name: Push image to Docker Hub
+        run: docker push "${{ steps.meta-s-dhub.outputs.tags }}"
+
+      # Copy ghrc.io image to Docker Hub (worker)
+      - name: Pull image from GHCR
+        run: docker system prune -a --force && docker pull "${{ steps.meta-w.outputs.tags }}"
+      - name: Tag image for Docker Hub
+        run: docker tag "${{ steps.meta-w.outputs.tags }}" "${{ steps.meta-w-dhub.outputs.tags }}"
+      - name: Push image to Docker Hub
+        run: docker push "${{ steps.meta-w-dhub.outputs.tags }}"
+
       # ###############################
       # # Run tests for code coverage #
       # ###############################
@@ -193,7 +242,7 @@ jobs:
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: "docker.io/${{ fromJson(steps.meta.outputs.json).tags[0]}}"
+          image-ref: "${{ steps.meta-dhub.outputs.tags }}"
           format: 'table'
           exit-code: '1'
           ignore-unfixed: true
