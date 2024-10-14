@@ -566,7 +566,7 @@
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.17.10.tgz#64f3edf656af2fe59e7278b73d3e62404144a6e6"
   integrity sha512-YpS0zzoduEhuOWjAotS6A5AVCva7X4lVlYLF0FYHAY9sdraBfnatttHItlWeZdGhuEkf+OzMNg2ZYAx8t+52uQ==
 
-"@types/node@*", "@types/node@>=16.18.31", "@types/node@>=18":
+"@types/node@*", "@types/node@>=16.18.31", "@types/node@>=18", "@types/node@>=18.18.5":
   version "22.7.5"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-22.7.5.tgz#cfde981727a7ab3611a481510b473ae54442b92b"
   integrity sha512-jML7s2NAzMWc//QSJ1a3prpk78cOPchGvXJsC3C6R6PSMoooztvRVQEz89gmBTBY1SPMaqo5teB4uNHPdetShQ==
@@ -577,13 +577,6 @@
   version "16.18.113"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-16.18.113.tgz#fbe99013933c4997db5838d20497494a7e01f4ab"
   integrity sha512-4jHxcEzSXpF1cBNxogs5FVbVSFSKo50sFCn7Xg7vmjJTbWFWgeuHW3QnoINlfmfG++MFR/q97RZE5RQXKeT+jg==
-
-"@types/node@^18.18.5":
-  version "18.19.55"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.19.55.tgz#29c3f8e1485a92ec96636957ddec55aabc6e856e"
-  integrity sha512-zzw5Vw52205Zr/nmErSEkN5FLqXPuKX/k5d1D7RKHATGqU7y6YfX9QxZraUzUrFGqH6XzOzG196BC35ltJC4Cw==
-  dependencies:
-    undici-types "~5.26.4"
 
 "@types/normalize-package-data@^2.4.3":
   version "2.4.4"
@@ -3637,11 +3630,6 @@ type-fest@^4.6.0, type-fest@^4.7.1:
   resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-4.26.1.tgz#a4a17fa314f976dd3e6d6675ef6c775c16d7955e"
   integrity sha512-yOGpmOAL7CkKe/91I5O3gPICmJNLJ1G4zFYVAsRHg7M64biSnPtRj0WNQt++bRkjYOqjWXrhnUw1utzmVErAdg==
 
-undici-types@~5.26.4:
-  version "5.26.5"
-  resolved "https://registry.yarnpkg.com/undici-types/-/undici-types-5.26.5.tgz#bcd539893d00b56e964fd2657a4866b221a65617"
-  integrity sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==
-
 undici-types@~6.19.2:
   version "6.19.8"
   resolved "https://registry.yarnpkg.com/undici-types/-/undici-types-6.19.8.tgz#35111c9d1437ab83a7cdc0abae2f26d88eda0a02"
@@ -3939,12 +3927,12 @@ yeoman-environment@^4.0.0:
     which-package-manager "^0.0.1"
 
 yeoman-generator@^7.1.0:
-  version "7.3.2"
-  resolved "https://registry.yarnpkg.com/yeoman-generator/-/yeoman-generator-7.3.2.tgz#566df904cd1799168d23e4185fe4a071c59abee0"
-  integrity sha512-23w2fyGtkIliDwTFfhJDxU047ILPLs3Oz4xfpYVh6qhEQT+aobO9jTOJEzTR/FR0Gx7YpJhjQoBWPK9oYIyGUA==
+  version "7.3.3"
+  resolved "https://registry.yarnpkg.com/yeoman-generator/-/yeoman-generator-7.3.3.tgz#a117942dcfa6578b40ad898aa53893058fc74ec0"
+  integrity sha512-wIWCSRvm0R+Y10B+KJ7wEDo/WPyDMC2CG/2lxR/JnWkl40mtmiM442P5jlklMwp/1m7QCWhfnU8FHvlAfbGXhw==
   dependencies:
     "@types/lodash-es" "^4.17.9"
-    "@types/node" "^18.18.5"
+    "@types/node" ">=18.18.5"
     "@yeoman/namespace" "^1.0.0"
     chalk "^5.3.0"
     debug "^4.1.1"
