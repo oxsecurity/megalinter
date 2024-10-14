@@ -7,9 +7,9 @@ Requires the following vars sent to docker run:
 - SYSTEM_ACCESSTOKEN
 - SYSTEM_COLLECTIONURI
 - SYSTEM_PULLREQUEST_PULLREQUESTID
+- SYSTEM_PULLREQUEST_SOURCEREPOSITORYURI
 - SYSTEM_TEAMPROJECT
 - BUILD_BUILDID
-- BUILD_REPOSITORY_ID
 """
 import logging
 import urllib.parse
@@ -59,9 +59,19 @@ class AzureCommentReporter(Reporter):
             SYSTEM_TEAMPROJECT = urllib.parse.quote(
                 config.get(self.master.request_id, "SYSTEM_TEAMPROJECT")
             )
-            BUILD_REPOSITORY_ID = config.get(
-                self.master.request_id, "BUILD_REPOSITORY_ID"
+            SYSTEM_PULLREQUEST_SOURCEREPOSITORYURI = config.get(
+                self.master.request_id, "SYSTEM_PULLREQUEST_SOURCEREPOSITORYURI"
             )
+            if SYSTEM_PULLREQUEST_SOURCEREPOSITORYURI == "":
+                logging.info(
+                    "[Azure Comment Reporter] Missing value SYSTEM_PULLREQUEST_SOURCEREPOSITORYURI\n"
+                    + "You may need to configure a build validation policy to make it appear.\n"
+                    + "See https://docs.microsoft.com/en-US/azure/devops/repos/git/"
+                    + "branch-policies?view=azure-devops&tabs=browser#build-validation"
+                )
+                return
+            else:
+                pr_repo_name = SYSTEM_PULLREQUEST_SOURCEREPOSITORYURI.split("/")[-1]
             BUILD_BUILDID = config.get(
                 self.master.request_id,
                 "BUILD_BUILDID",
