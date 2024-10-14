@@ -29,7 +29,7 @@ class ApiReporter(Reporter):
     TRUNCATE_LOKI_CHARS_LENGTH = 5000
 
     def __init__(self, params=None):
-        # Deactivate Api reporter by default
+        # Activate Api reporter by default
         self.is_active = True
         self.processing_order = 20  # Run after text reporter
         super().__init__(params)
