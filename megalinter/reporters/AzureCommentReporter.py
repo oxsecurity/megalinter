@@ -107,9 +107,14 @@ class AzureCommentReporter(Reporter):
             )
             git_client: GitClient = connection.clients.get_git_client()
 
+            # Get repository
+            repository = git_client.get_repository(
+                pr_repo_name
+            )
+
             # Look for existing MegaLinter thread
             existing_threads = git_client.get_threads(
-                BUILD_REPOSITORY_ID, SYSTEM_PULLREQUEST_PULLREQUESTID
+                repository.id, SYSTEM_PULLREQUEST_PULLREQUESTID
             )
             existing_thread_id = None
             existing_thread_comment = None
@@ -129,13 +134,13 @@ class AzureCommentReporter(Reporter):
             # Remove previous MegaLinter thread if existing
             if existing_thread_id is not None:
                 git_client.delete_comment(
-                    BUILD_REPOSITORY_ID,
+                    repository.id,
                     SYSTEM_PULLREQUEST_PULLREQUESTID,
                     existing_thread_id,
                     existing_thread_comment_id,
                 )
                 existing_thread_comment = git_client.get_pull_request_thread(
-                    BUILD_REPOSITORY_ID,
+                    repository.id,
                     SYSTEM_PULLREQUEST_PULLREQUESTID,
                     existing_thread_id,
                 )
@@ -145,14 +150,14 @@ class AzureCommentReporter(Reporter):
                 }
                 git_client.update_thread(
                     existing_thread_comment,
-                    BUILD_REPOSITORY_ID,
+                    repository.id,
                     SYSTEM_PULLREQUEST_PULLREQUESTID,
                     existing_thread_id,
                 )
 
             # Post thread
             new_thread_result = git_client.create_thread(
-                thread_data, BUILD_REPOSITORY_ID, SYSTEM_PULLREQUEST_PULLREQUESTID
+                thread_data, repository.id, SYSTEM_PULLREQUEST_PULLREQUESTID
             )
             if new_thread_result.id is not None and new_thread_result.id > 0:
                 logging.debug(f"Posted Azure Pipelines comment: {thread_data}")
