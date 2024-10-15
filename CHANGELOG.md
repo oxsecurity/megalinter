@@ -32,6 +32,12 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Linter versions upgrades
   - [checkov](https://www.checkov.io/) from 3.2.257 to **3.2.258** on 2024-10-13
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.21.0 to **8.22.0** on 2024-10-13
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.11.2 to **1.12.0** on 2024-10-14
+  - [checkov](https://www.checkov.io/) from 3.2.258 to **3.2.262** on 2024-10-14
+  - [secretlint](https://github.com/secretlint/secretlint) from 8.4.0 to **9.0.0** on 2024-10-14
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.22.0 to **8.23.0** on 2024-10-14
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.15.1 to **8.15.2** on 2024-10-14
+  - [sqlfluff](https://www.sqlfluff.com/) from 3.2.3 to **3.2.4** on 2024-10-14
 <!-- linter-versions-end -->
 
 ## [v8.1.0] - 2024-10-13
