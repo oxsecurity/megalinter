@@ -61,7 +61,7 @@ class AzureCommentReporter(Reporter):
                 config.get(self.master.request_id, "SYSTEM_TEAMPROJECT")
             )
             SYSTEM_PULLREQUEST_SOURCEREPOSITORYURI = config.get(
-                self.master.request_id, "SYSTEM_PULLREQUEST_SOURCEREPOSITORYURI"
+                self.master.request_id, "SYSTEM_PULLREQUEST_SOURCEREPOSITORYURI", ""
             )
             BUILD_REPOSITORY_ID = config.get(
                 self.master.request_id, "BUILD_REPOSITORY_ID"
