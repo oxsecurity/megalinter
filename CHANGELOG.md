@@ -46,6 +46,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [pyright](https://github.com/Microsoft/pyright) from 1.1.384 to **1.1.385** on 2024-10-16
   - [checkov](https://www.checkov.io/) from 3.2.266 to **3.2.267** on 2024-10-16
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.23.0 to **8.23.1** on 2024-10-16
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.15.2 to **8.15.3** on 2024-10-16
 <!-- linter-versions-end -->
 
 ## [v8.1.0] - 2024-10-13
