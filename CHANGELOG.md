@@ -38,6 +38,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.22.0 to **8.23.0** on 2024-10-14
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.15.1 to **8.15.2** on 2024-10-14
   - [sqlfluff](https://www.sqlfluff.com/) from 3.2.3 to **3.2.4** on 2024-10-14
+  - [checkov](https://www.checkov.io/) from 3.2.262 to **3.2.266** on 2024-10-15
+  - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.20.1 to **8.21.0** on 2024-10-15
+  - [syft](https://github.com/anchore/syft) from 1.14.0 to **1.14.1** on 2024-10-15
+  - [rubocop](https://rubocop.org/) from 1.66.1 to **1.67.0** on 2024-10-15
 <!-- linter-versions-end -->
 
 ## [v8.1.0] - 2024-10-13
