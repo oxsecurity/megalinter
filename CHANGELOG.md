@@ -17,6 +17,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Linters enhancements
 
 - Fixes
+  - Trivy: handle retry if `failed to download Java DB` is detected
 
 - Reporters
   - Fix AzureCommentReporter not adding comments to PR on 2024-10-15
