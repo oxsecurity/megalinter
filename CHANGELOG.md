@@ -42,6 +42,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.20.1 to **8.21.0** on 2024-10-15
   - [syft](https://github.com/anchore/syft) from 1.14.0 to **1.14.1** on 2024-10-15
   - [rubocop](https://rubocop.org/) from 1.66.1 to **1.67.0** on 2024-10-15
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.384 to **1.1.385** on 2024-10-16
+  - [checkov](https://www.checkov.io/) from 3.2.266 to **3.2.267** on 2024-10-16
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.23.0 to **8.23.1** on 2024-10-16
 <!-- linter-versions-end -->
 
 ## [v8.1.0] - 2024-10-13
