@@ -22,6 +22,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Fix AzureCommentReporter not adding comments to PR on 2024-10-15
 
 - Doc
+  - Updated documentation with Azure central pipeline use case on 2024-10-16
 
 - Flavors
 
