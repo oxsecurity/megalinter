@@ -83,6 +83,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Fix Grafana Home Dashboard to add missing criteria
   - Update PRE_COMMANDS documentation to describe all properties
   - Update Grafana documentation to fix secrets typo
+  - Fix linting errors in GitHub Actions template
 
 - CI
   - Free space in release job to avoid no space left on device, by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/3914>
