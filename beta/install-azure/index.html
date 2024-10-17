@@ -203,11 +203,53 @@
 </li>
 <li class="md-nav__item md-nav__item--active">
 <input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    Azure Pipelines
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
 <a class="md-nav__link md-nav__link--active" href="./">
 <span class="md-ellipsis">
     Azure Pipelines
   </span>
 </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#single-repository">
+<span class="md-ellipsis">
+      Single Repository
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#central-repository">
+<span class="md-ellipsis">
+      Central Repository
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#pull-request-comments">
+<span class="md-ellipsis">
+      Pull Request Comments
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#detailed-tutorial">
+<span class="md-ellipsis">
+      Detailed Tutorial
+    </span>
+</a>
+</li>
+</ul>
+</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../install-bitbucket/">
@@ -3169,6 +3211,40 @@
 <div class="md-sidebar__scrollwrap">
 <div class="md-sidebar__inner">
 <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#single-repository">
+<span class="md-ellipsis">
+      Single Repository
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#central-repository">
+<span class="md-ellipsis">
+      Central Repository
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#pull-request-comments">
+<span class="md-ellipsis">
+      Pull Request Comments
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#detailed-tutorial">
+<span class="md-ellipsis">
+      Detailed Tutorial
+    </span>
+</a>
+</li>
+</ul>
 </nav>
 </div>
 </div>
@@ -3180,7 +3256,9 @@
 <!-- install-azure-section-start -->
 <h1 id="azure-pipelines">Azure Pipelines</h1>
 <p>Use the following Azure Pipelines <a href="https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema">YAML template</a></p>
-<p>Add the following job in your <code>azure-pipelines.yaml</code> file</p>
+<p>You can configure a <a href="https://learn.microsoft.com/en-us/azure/devops/repos/git/branch-policies?view=azure-devops&amp;tabs=browser#build-validation">build validation</a> branch policy against a single repository or across all repositories. If you configure across all repositories then your pipeline is stored in a central repository.</p>
+<h2 id="single-repository">Single Repository</h2>
+<p>Add the following to an <code>azure-pipelines.yaml</code> file within your code repository:</p>
 <pre><code class="language-yaml">  # Run MegaLinter to detect linting and security issues
   - job: MegaLinter
     pool:
@@ -3210,7 +3288,47 @@
           targetPath: "$(System.DefaultWorkingDirectory)/megalinter-reports/"
           artifactName: MegaLinterReport
 </code></pre>
+<h2 id="central-repository">Central Repository</h2>
+<p>Add the following to an <code>azure-pipelines.yaml</code> file within a separate repository e.g. 'MegaLinter' repository:</p>
+<pre><code class="language-yaml"># Run MegaLinter to detect linting and security issues
+
+trigger: none
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  repoName: $[ split(variables['System.PullRequest.SourceRepositoryURI'], '/')[6] ]
+
+steps:
+  # Checkout triggering repo
+  - checkout: git://$(System.TeamProject)/$(repoName)@$(System.PullRequest.SourceBranch)
+    displayName: Checkout Triggering Repository
+
+  # Pull MegaLinter docker image
+  - script: docker pull oxsecurity/megalinter:v8
+    displayName: Pull MegaLinter
+
+  # Run MegaLinter
+  - script: |
+      docker run -v $(System.DefaultWorkingDirectory):/tmp/lint \
+        --env-file &lt;(env | grep -e SYSTEM_ -e BUILD_ -e TF_ -e AGENT_) \
+        -e SYSTEM_ACCESSTOKEN=$(System.AccessToken) \
+        -e GIT_AUTHORIZATION_BEARER=$(System.AccessToken) \
+        oxsecurity/megalinter:v8
+    displayName: Run MegaLinter
+
+  # Upload MegaLinter reports
+  - task: PublishPipelineArtifact@1
+    condition: succeededOrFailed()
+    displayName: MegaLinter Report
+    inputs:
+      targetPath: $(System.DefaultWorkingDirectory)/megalinter-reports/
+      artifactName: MegaLinterReport
+</code></pre>
+<h2 id="pull-request-comments">Pull Request Comments</h2>
 <p>To benefit from Pull Request comments, please follow <a href="../reporters/AzureCommentReporter/">configuration instructions</a></p>
+<h2 id="detailed-tutorial">Detailed Tutorial</h2>
 <p>You can also follow this <a href="https://github.com/DonKoning/megaLinter">detailed tutorial</a> by <a href="https://github.com/DonKoning">DonKoning</a></p>
 <!-- install-azure-section-end -->
 </article>
