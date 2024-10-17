@@ -9,7 +9,7 @@ description: How to use clippy (configure, ignore files, ignore errors, help & v
 
 ## clippy documentation
 
-- Version in MegaLinter: **0.1.81**
+- Version in MegaLinter: **0.1.82**
 - Visit [Official Web Site](https://github.com/rust-lang/rust-clippy#readme){target=_blank}
 - See [How to configure clippy rules](https://github.com/rust-lang/rust-clippy#configuration){target=_blank}
 - See [How to disable clippy rules in files](https://github.com/rust-lang/rust-clippy#allowingdenying-lints){target=_blank}
