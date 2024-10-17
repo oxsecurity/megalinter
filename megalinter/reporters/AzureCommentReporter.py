@@ -117,8 +117,10 @@ class AzureCommentReporter(Reporter):
                     + "build/variables?view=azure-devops&tabs=yaml"
                 )
                 repository_name = SYSTEM_PULLREQUEST_SOURCEREPOSITORYURI.split("/")[-1]
-                repository = git_client.get_repository(repository_name)
-                repository_id = repository
+                repository = git_client.get_repository(
+                    repository_name, SYSTEM_TEAMPROJECT
+                )
+                repository_id = repository.id
 
             # Look for existing MegaLinter thread
             existing_threads = git_client.get_threads(
