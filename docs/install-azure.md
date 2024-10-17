@@ -10,7 +10,11 @@ description: Manual instructions to setup MegaLinter as an Azure Pipelines job
 
 Use the following Azure Pipelines [YAML template](https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema)
 
-Add the following job in your `azure-pipelines.yaml` file
+You can configure a [build validation](https://learn.microsoft.com/en-us/azure/devops/repos/git/branch-policies?view=azure-devops&tabs=browser#build-validation) branch policy against a single repository or across all repositories. If you configure across all repositories then your pipeline is stored in a central repository.
+
+## Single Repository
+
+Add the following to an `azure-pipelines.yaml` file within your code repository:
 
 ```yaml
   # Run MegaLinter to detect linting and security issues
@@ -43,7 +47,53 @@ Add the following job in your `azure-pipelines.yaml` file
           artifactName: MegaLinterReport
 ```
 
+## Central Repository
+
+Add the following to an `azure-pipelines.yaml` file within a separate repository e.g. 'MegaLinter' repository:
+
+```yaml
+# Run MegaLinter to detect linting and security issues
+
+trigger: none
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  repoName: $[ split(variables['System.PullRequest.SourceRepositoryURI'], '/')[6] ]
+
+steps:
+  # Checkout triggering repo
+  - checkout: git://$(System.TeamProject)/$(repoName)@$(System.PullRequest.SourceBranch)
+    displayName: Checkout Triggering Repository
+
+  # Pull MegaLinter docker image
+  - script: docker pull oxsecurity/megalinter:v8
+    displayName: Pull MegaLinter
+
+  # Run MegaLinter
+  - script: |
+      docker run -v $(System.DefaultWorkingDirectory):/tmp/lint \
+        --env-file <(env | grep -e SYSTEM_ -e BUILD_ -e TF_ -e AGENT_) \
+        -e SYSTEM_ACCESSTOKEN=$(System.AccessToken) \
+        -e GIT_AUTHORIZATION_BEARER=$(System.AccessToken) \
+        oxsecurity/megalinter:v8
+    displayName: Run MegaLinter
+
+  # Upload MegaLinter reports
+  - task: PublishPipelineArtifact@1
+    condition: succeededOrFailed()
+    displayName: MegaLinter Report
+    inputs:
+      targetPath: $(System.DefaultWorkingDirectory)/megalinter-reports/
+      artifactName: MegaLinterReport
+```
+
+## Pull Request Comments
+
 To benefit from Pull Request comments, please follow [configuration instructions](reporters/AzureCommentReporter.md)
+
+## Detailed Tutorial
 
 You can also follow this [detailed tutorial](https://github.com/DonKoning/megaLinter) by [DonKoning](https://github.com/DonKoning)
 

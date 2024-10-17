@@ -35,7 +35,7 @@ description: sfdx-scanner-apex, sfdx-scanner-aura, sfdx-scanner-lwc, lightning-f
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=@salesforce/cli
-ARG SALESFORCE_CLI_VERSION=2.61.8
+ARG SALESFORCE_CLI_VERSION=2.62.6
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
 ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.8.12
 # renovate: datasource=npm depName=sfdx-hardis
