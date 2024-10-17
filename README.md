@@ -627,7 +627,7 @@ Add the following to an `azure-pipelines.yaml` file within a separate repository
 trigger: none
 
 pool:
-  vmimage: ubuntu-latest
+  vmImage: ubuntu-latest
 
 variables:
   repoName: $[ split(variables['System.PullRequest.SourceRepositoryURI'], '/')[6] ]
