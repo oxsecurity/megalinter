@@ -15,7 +15,7 @@ description: How to use trufflehog (configure, ignore files, ignore errors, help
 
 ## trufflehog documentation
 
-- Version in MegaLinter: **3.82.8**
+- Version in MegaLinter: **3.82.11**
 - Visit [Official Web Site](https://github.com/trufflesecurity/trufflehog#readme){target=_blank}
 - See [How to configure trufflehog rules](https://github.com/trufflesecurity/trufflehog#regex-detector-alpha){target=_blank}
 
@@ -141,6 +141,14 @@ Flags:
                                  exclude. Protobuf name or IDs may be used,
                                  as well as ranges. IDs defined here take
                                  precedence over the include list.
+      --[no-]force-skip-binaries
+                                 Force skipping binaries.
+      --[no-]force-skip-archives
+                                 Force skipping archives.
+      --[no-]skip-additional-refs
+                                 Skip additional references.
+      --user-agent-suffix=USER-AGENT-SUFFIX
+                                 Suffix to add to User-Agent.
       --[no-]version             Show application version.
 
 Commands:
@@ -204,7 +212,7 @@ analyze [<key-type>]
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=docker depName=trufflesecurity/trufflehog 
-ARG REPOSITORY_TRUFFLEHOG_VERSION=3.82.8
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.82.11
 FROM trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION} AS trufflehog
 COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
 ```
