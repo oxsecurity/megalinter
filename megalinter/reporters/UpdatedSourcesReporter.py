@@ -65,10 +65,15 @@ class UpdatedSourcesReporter(Reporter):
                 "Download it from artifacts then copy-paste it in your local repo to apply linters updates"
             )
 
-            repo = git.Repo(os.path.realpath(self.github_workspace))
-            repo.git.add(update=True)
-            repo.index.commit("megalinter auto fixes")
-            repo.git.push
+            apply_fixes = config.get_list(self.request_id, "APPLY_FIXES", "none")
+            if apply_fixes:
+                try:
+                    repo = git.Repo(os.path.realpath(self.master.master.github_workspace))
+                    repo.git.add(update=True)
+                    repo.git.commit("megalinter auto fixes")
+                    repo.git.push
+                except Exception as exp:
+                    logging.error("Failed to git push auto fixes: " + str(exp.message))
         else:
             logging.info(
                 "[Updated Sources Reporter] No source file has been formatted or fixed"
