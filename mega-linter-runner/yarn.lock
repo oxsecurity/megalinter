@@ -2125,11 +2125,6 @@ is-wsl@^3.1.0:
   dependencies:
     is-inside-container "^1.0.0"
 
-isbinaryfile@5.0.2:
-  version "5.0.2"
-  resolved "https://registry.yarnpkg.com/isbinaryfile/-/isbinaryfile-5.0.2.tgz#fe6e4dfe2e34e947ffa240c113444876ba393ae0"
-  integrity sha512-GvcjojwonMjWbTkfMpnVHVqXW/wKMYDfEpY94/8zy8HFMOqb/VL6oeONq9v87q4ttVlaTLnGXnJD4B5B1OTGIg==
-
 isbinaryfile@5.0.3, isbinaryfile@^5.0.0:
   version "5.0.3"
   resolved "https://registry.yarnpkg.com/isbinaryfile/-/isbinaryfile-5.0.3.tgz#d7d9451fad89d7d3e889567f00bed6d3ea950bd3"
@@ -2350,26 +2345,7 @@ make-fetch-happen@^13.0.0, make-fetch-happen@^13.0.1:
     promise-retry "^2.0.1"
     ssri "^10.0.0"
 
-mem-fs-editor@^11.0.0:
-  version "11.1.2"
-  resolved "https://registry.yarnpkg.com/mem-fs-editor/-/mem-fs-editor-11.1.2.tgz#9ee84ee8889c6a9b8c1ccedc736e0f01f4558090"
-  integrity sha512-yUVFK96XhGv31iWZ3G60pGNIuXuZTUsWz0GQzv9ffjYFf1oXs0PcD3LFZHzRDImH+Da21x/C4csEjN0W5ygdQA==
-  dependencies:
-    "@types/ejs" "^3.1.4"
-    "@types/node" ">=18"
-    binaryextensions "^6.11.0"
-    commondir "^1.0.1"
-    deep-extend "^0.6.0"
-    ejs "^3.1.10"
-    globby "^14.0.2"
-    isbinaryfile "5.0.2"
-    minimatch "^9.0.3"
-    multimatch "^7.0.0"
-    normalize-path "^3.0.0"
-    textextensions "^6.11.0"
-    vinyl "^3.0.0"
-
-mem-fs-editor@^11.0.1:
+mem-fs-editor@^11.0.0, mem-fs-editor@^11.0.1:
   version "11.1.3"
   resolved "https://registry.yarnpkg.com/mem-fs-editor/-/mem-fs-editor-11.1.3.tgz#d89e58dfbfad63bd47a5fef49bfd8265eae7f5d7"
   integrity sha512-1+FhUWmCLY6Eqdc8HzDx3+wHScNiZQP62iMFZ+zZDpPmTyzfduPimWYjhtiSkVDBB/yXU1qGmlL8vQrQLUG1Lg==
@@ -3926,9 +3902,9 @@ yargs@^16.2.0:
     yargs-parser "^20.2.2"
 
 yeoman-environment@^4.0.0:
-  version "4.4.2"
-  resolved "https://registry.yarnpkg.com/yeoman-environment/-/yeoman-environment-4.4.2.tgz#515f45f03363c3cdaca19c2d5258eeabb4ce8515"
-  integrity sha512-kAa67TpDO0pfYBY/WAlCwPYkOh5x7mQ2leCeClDlUYZR5i0ekd3Kv4f8/DJCULBv5xV1zqWQSA+6peHbQoK8UQ==
+  version "4.4.3"
+  resolved "https://registry.yarnpkg.com/yeoman-environment/-/yeoman-environment-4.4.3.tgz#37121fcad4f77075445e5c1881b74eded3821b15"
+  integrity sha512-Irk6rymmb9vNZRhQlg8LUDeopnEot2VGlP4VayTNjayfQ3nFbiINTIjZqrtHrQdw29nTxYVOAsYy98jL1p27QQ==
   dependencies:
     "@yeoman/adapter" "^1.4.0"
     "@yeoman/conflicter" "^2.0.0-alpha.2"
