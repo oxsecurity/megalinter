@@ -6,6 +6,7 @@ Creates a folder containing only files updated by the linters
 import logging
 import os
 import shutil
+import git
 
 from megalinter import Reporter, config, utils
 
@@ -63,6 +64,16 @@ class UpdatedSourcesReporter(Reporter):
                 f" in folder {updated_sources_dir}.\n"
                 "Download it from artifacts then copy-paste it in your local repo to apply linters updates"
             )
+
+            apply_fixes = config.get_list(self.request_id, "APPLY_FIXES", "none")
+            if apply_fixes:
+                try:
+                    repo = git.Repo(os.path.realpath(self.master.master.github_workspace))
+                    repo.git.add(update=True)
+                    repo.git.commit("megalinter auto fixes")
+                    repo.git.push
+                except Exception as exp:
+                    logging.error("Failed to git push auto fixes: " + str(exp.message))
         else:
             logging.info(
                 "[Updated Sources Reporter] No source file has been formatted or fixed"

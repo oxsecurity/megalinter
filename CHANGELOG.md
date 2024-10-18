@@ -51,6 +51,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.16.1 to **1.17.0** on 2024-10-17
   - [ruff](https://github.com/astral-sh/ruff) from 0.6.9 to **0.7.0** on 2024-10-17
   - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.81 to **0.1.82** on 2024-10-17
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.17.0 to **1.17.1** on 2024-10-17
 <!-- linter-versions-end -->
 
 ## [v8.1.0] - 2024-10-13
