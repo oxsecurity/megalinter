@@ -74,7 +74,9 @@ class UpdatedSourcesReporter(Reporter):
                         repo.git.commit("megalinter auto fixes")
                         repo.git.push
                     except Exception as exp:
-                        logging.error("Failed to git push auto fixes: " + str(exp.message))
+                        logging.error(
+                            "[Updated Sources Reporter] Failed to git push auto fixes: " + str(exp.message)
+                        )
         else:
             logging.info(
                 "[Updated Sources Reporter] No source file has been formatted or fixed"
