@@ -150,7 +150,7 @@ jobs:
 
       # Copy ghrc.io image to Docker Hub
       - name: Pull image from GHCR
-        run: docker system prune -a --force && docker system prune -a --force && docker pull ghcr.io/oxsecurity/megalinter:alpha
+        run: docker system prune -a --volumes --force && docker system prune -a --volumes --force && docker pull ghcr.io/oxsecurity/megalinter:alpha
       - name: Tag image for Docker Hub
         run: docker tag ghcr.io/oxsecurity/megalinter:alpha oxsecurity/megalinter:alpha
       - name: Push image to Docker Hub
