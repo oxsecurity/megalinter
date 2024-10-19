@@ -57,6 +57,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.82.8 to **3.82.11** on 2024-10-18
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.23.1 to **8.23.2** on 2024-10-18
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.15.3 to **8.15.4** on 2024-10-18
+  - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.21.0 to **8.21.1** on 2024-10-19
 <!-- linter-versions-end -->
 
 ## [v8.1.0] - 2024-10-13
