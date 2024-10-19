@@ -3473,7 +3473,7 @@
         "  completion  Generate autocompletion script",
         "  config      Handle cached configurations",
         "  delete      Delete configurations in Kubescape SaaS version",
-        "  download    Download control,framework,artifacts,attack-tracks,controls-inputs,exceptions",
+        "  download    Download controls-inputs,exceptions,control,framework,artifacts,attack-tracks",
         "  fix         Fix misconfiguration in files",
         "  help        Help about any command",
         "  list        List frameworks/controls will list the supported frameworks and controls",
@@ -3520,7 +3520,7 @@
         "      --version                               version for kubeval"
     ],
     "lightning-flow-scanner": [
-        "(node:1744) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.",
+        "(node:1741) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.",
         "(Use `node --trace-deprecation ...` to show where the warning was created)",
         "Find and fix potential bugs in Salesforce flows.",
         "",
@@ -3967,7 +3967,7 @@
         "          Print version"
     ],
     "markdown-link-check": [
-        "(node:1525) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.",
+        "(node:1520) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.",
         "(Use `node --trace-deprecation ...` to show where the warning was created)",
         "Usage: markdown-link-check [options] [filenamesOrUrls...]",
         "",
@@ -6688,7 +6688,7 @@
         "      get revive version"
     ],
     "roslynator": [
-        "Roslynator Command Line Tool version 0.9.1.0 (Roslyn version 4.11.0.0)",
+        "Roslynator Command Line Tool version 0.9.2.0 (Roslyn version 4.11.0.0)",
         "Usage: roslynator [command] [arguments]",
         "",
         "Commands:",
@@ -8086,7 +8086,7 @@
         "@typescript-eslint/unbound-method                  typescript   Best Practices    Best Practices                                    eslint-typescript"
     ],
     "sfdx-scanner-apex": [
-        "(node:1756) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.",
+        "(node:1753) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.",
         "(Use `node --trace-deprecation ...` to show where the warning was created)",
         "Scan a codebase with all the rules in the registry, or use parameters to filter the rules based on rulename, category, or ruleset.",
         "",
@@ -8141,7 +8141,7 @@
         "COMMANDS",
         "  scanner run dfa  Scan codebase with all DFA rules by default.",
         "",
-        "(node:1768) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.",
+        "(node:1765) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.",
         "(Use `node --trace-deprecation ...` to show where the warning was created)",
         "Warning: We're continually improving Salesforce Code Analyzer. Tell us what you think! Give feedback at https://research.net/r/SalesforceCA",
         " name                                                   languages   categories            rulesets [dep] engine            is dfa is pilot",
@@ -8362,7 +8362,7 @@
         " UnimplementedTypeRule                                  apex        Performance                          sfge              N      N"
     ],
     "sfdx-scanner-aura": [
-        "(node:1946) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.",
+        "(node:1947) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.",
         "(Use `node --trace-deprecation ...` to show where the warning was created)",
         "Scan a codebase with all the rules in the registry, or use parameters to filter the rules based on rulename, category, or ruleset.",
         "",
@@ -8638,7 +8638,7 @@
         " UnimplementedTypeRule                                  apex        Performance                          sfge              N      N"
     ],
     "sfdx-scanner-lwc": [
-        "(node:2138) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.",
+        "(node:2141) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.",
         "(Use `node --trace-deprecation ...` to show where the warning was created)",
         "Scan a codebase with all the rules in the registry, or use parameters to filter the rules based on rulename, category, or ruleset.",
         "",
@@ -8693,7 +8693,7 @@
         "COMMANDS",
         "  scanner run dfa  Scan codebase with all DFA rules by default.",
         "",
-        "(node:2150) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.",
+        "(node:2153) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.",
         "(Use `node --trace-deprecation ...` to show where the warning was created)",
         "Warning: We're continually improving Salesforce Code Analyzer. Tell us what you think! Give feedback at https://research.net/r/SalesforceCA",
         " name                                                   languages   categories            rulesets [dep] engine            is dfa is pilot",
@@ -9054,7 +9054,7 @@
         "                 [--d3dag] [--summary] [--detailed-summary] [--archive FILE]",
         "                 [--cleanup-metadata FILE [FILE ...]] [--cleanup-shadow]",
         "                 [--skip-script-cleanup] [--unlock]",
-        "                 [--list-changes {input,code,params}] [--list-input-changes]",
+        "                 [--list-changes {code,params,input}] [--list-input-changes]",
         "                 [--list-params-changes] [--list-untracked]",
         "                 [--delete-all-output | --delete-temp-output]",
         "                 [--keep-incomplete] [--drop-metadata] [--version]",
@@ -9556,7 +9556,7 @@
         "                        (default: False)",
         "  --unlock              Remove a lock on the working directory. (default:",
         "                        False)",
-        "  --list-changes {input,code,params}, --lc {input,code,params}",
+        "  --list-changes {code,params,input}, --lc {code,params,input}",
         "                        List all output files for which the given items (code,",
         "                        input, params) have changed since creation.",
         "  --list-input-changes, --li",
