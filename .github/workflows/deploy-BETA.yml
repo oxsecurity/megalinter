@@ -203,7 +203,7 @@ jobs:
 
       # Copy ghrc.io image to Docker Hub (main image)
       - name: Pull image from GHCR
-        run: docker system prune -a --force && docker pull "${{ steps.meta.outputs.tags }}"
+        run: docker system prune -a --volumes --force && docker pull "${{ steps.meta.outputs.tags }}"
       - name: Tag image for Docker Hub
         run: docker tag "${{ steps.meta.outputs.tags }}" "${{ steps.meta-dhub.outputs.tags }}"
       - name: Push image to Docker Hub
@@ -211,7 +211,7 @@ jobs:
 
       # Copy ghrc.io image to Docker Hub (server)
       - name: Pull image from GHCR
-        run: docker system prune -a --force && docker pull "${{ steps.meta-s.outputs.tags }}"
+        run: docker system prune -a --volumes --force && docker pull "${{ steps.meta-s.outputs.tags }}"
       - name: Tag image for Docker Hub
         run: docker tag "${{ steps.meta-s.outputs.tags }}" "${{ steps.meta-s-dhub.outputs.tags }}"
       - name: Push image to Docker Hub
@@ -219,7 +219,7 @@ jobs:
 
       # Copy ghrc.io image to Docker Hub (worker)
       - name: Pull image from GHCR
-        run: docker system prune -a --force && docker pull "${{ steps.meta-w.outputs.tags }}"
+        run: docker system prune -a --volumes --force && docker pull "${{ steps.meta-w.outputs.tags }}"
       - name: Tag image for Docker Hub
         run: docker tag "${{ steps.meta-w.outputs.tags }}" "${{ steps.meta-w-dhub.outputs.tags }}"
       - name: Push image to Docker Hub

@@ -134,7 +134,7 @@ jobs:
 
       # Copy ghrc.io image to Docker Hub (main image)
       - name: Pull image from GHCR
-        run: docker system prune -a --force && docker pull ghcr.io/oxsecurity/megalinter-${{ matrix.flavor }}:v8
+        run: docker system prune -a --volumes --force && docker pull ghcr.io/oxsecurity/megalinter-${{ matrix.flavor }}:v8
 
       - name: Tag image for Docker Hub
         run: docker tag ghcr.io/oxsecurity/megalinter-${{ matrix.flavor }}:v8 docker.io/oxsecurity/megalinter-${{ matrix.flavor }}:v8
@@ -153,7 +153,7 @@ jobs:
 
       # Copy ghrc.io image to Docker Hub (worker)
       - name: Pull image from GHCR
-        run: docker system prune -a --force && docker pull ghcr.io/oxsecurity/megalinter-worker-${{ matrix.flavor }}:v8
+        run: docker system prune -a --volumes --force && docker pull ghcr.io/oxsecurity/megalinter-worker-${{ matrix.flavor }}:v8
 
       - name: Tag image for Docker Hub
         run: docker tag ghcr.io/oxsecurity/megalinter-worker-${{ matrix.flavor }}:v8 docker.io/oxsecurity/megalinter-worker-${{ matrix.flavor }}:v8

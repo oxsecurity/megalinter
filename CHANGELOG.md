@@ -28,6 +28,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Flavors
 
 - CI
+  - Also prune volumes before pulling and pushing to docker hub
 
 - mega-linter-runner
 

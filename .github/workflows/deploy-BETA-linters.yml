@@ -272,7 +272,7 @@ jobs:
       - name: Debug output
         run: "echo \"Tag steps.meta.outputs.tags: ${{ fromJson(steps.meta-dhub.outputs.json).tags[0]}}\""
       - name: Pull image from GHCR
-        run: docker system prune -a --force && docker pull "${{ fromJson(steps.meta.outputs.json).tags[0]}}"
+        run: docker system prune -a --volumes --force && docker pull "${{ fromJson(steps.meta.outputs.json).tags[0]}}"
       - name: Tag image for Docker Hub
         run: docker tag "${{ fromJson(steps.meta.outputs.json).tags[0]}}" "${{ fromJson(steps.meta-dhub.outputs.json).tags[0]}}"
       - name: Push image to Docker Hub
