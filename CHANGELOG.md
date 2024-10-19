@@ -58,6 +58,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.23.1 to **8.23.2** on 2024-10-18
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.15.3 to **8.15.4** on 2024-10-18
   - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.21.0 to **8.21.1** on 2024-10-19
+  - [roslynator](https://github.com/dotnet/Roslynator) from 0.9.1.0 to **0.9.2.0** on 2024-10-19
 <!-- linter-versions-end -->
 
 ## [v8.1.0] - 2024-10-13
