@@ -30,6 +30,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - CI
   - Also prune volumes before pulling and pushing to docker hub
   - Externalize mirroring from ghcr.io to docker hub in another workflow to avoid memory issues
+  - Squash docker images to have less layers and size
 
 - mega-linter-runner
 
