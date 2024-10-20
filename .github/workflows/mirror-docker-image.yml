@@ -1,0 +1,42 @@
+name: Mirror docker image
+
+on:
+  workflow_dispatch:
+    inputs:
+      source-image:
+        description: 'Source of the image on ghcr.io'
+        required: true
+      target-image:
+        description: 'Target of the image hosted on docker hub'
+        required: true
+      free-space-before:
+        description: 'Free space on the runner before pulling and pushing docker image'
+        required: false
+        default: 'true'
+
+jobs:
+  copy-to-docker-hub:
+    runs-on: ubuntu-latest
+    environment:
+      name: beta
+    steps:
+      # Free disk space
+      - name: Free Disk space
+        if: github.event.inputs.free-space-before == 'true'
+        shell: bash
+        run: |
+          sudo rm -rf /usr/local/lib/android  # will release about 10 GB if you don't need Android
+          sudo rm -rf /usr/share/dotnet # will release about 20GB if you don't need .NET
+      # Login to docker hub
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+      # Copy ghrc.io image to Docker Hub
+      - name: Pull image from GHCR
+        run: docker pull "${{ github.event.inputs.source-image }}"
+      - name: Tag image for Docker Hub
+        run: docker tag "${{ github.event.inputs.source-image }}" "${{ github.event.inputs.target-image }}"
+      - name: Push image to Docker Hub
+        run: docker push "${{ github.event.inputs.target-image }}"
