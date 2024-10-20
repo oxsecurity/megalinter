@@ -117,12 +117,6 @@ jobs:
           tags: |
             ghcr.io/oxsecurity/megalinter-${{ matrix.flavor }}:alpha
 
-      - name: Invoke Mirror docker image workflow (Flavor image)
-        uses: benc-uk/workflow-dispatch@v1
-        with:
-          workflow: mirror-docker-image.yml
-          inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter-${{ matrix.flavor }}:alpha", "target-image": "docker.io/oxsecurity/megalinter-${{ matrix.flavor }}:alpha" }'
-
       - name: Build Worker Image
         uses: docker/build-push-action@v6
         with:
@@ -140,12 +134,6 @@ jobs:
             GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
           tags: |
             ghcr.io/oxsecurity/megalinter-worker-${{ matrix.flavor }}:alpha
-
-      - name: Invoke Mirror docker image workflow (Flavor worker image)
-        uses: benc-uk/workflow-dispatch@v1
-        with:
-          workflow: mirror-docker-image.yml
-          inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter-worker-${{ matrix.flavor }}:alpha", "target-image": "docker.io/oxsecurity/megalinter-worker-${{ matrix.flavor }}:alpha" }'    
 
       ##############################################
       # Check Docker image security with Trivy #
