@@ -9,7 +9,7 @@ description: How to use shfmt (configure, ignore files, ignore errors, help & ve
 
 ## shfmt documentation
 
-- Version in MegaLinter: **3.9.0**
+- Version in MegaLinter: **3.10.0**
 - Visit [Official Web Site](https://github.com/mvdan/sh#readme){target=_blank}
 
 [![sh - GitHub](https://gh-card.dev/repos/mvdan/sh.svg?fullname=)](https://github.com/mvdan/sh){target=_blank}

@@ -63,6 +63,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.21.0 to **8.21.1** on 2024-10-19
   - [roslynator](https://github.com/dotnet/Roslynator) from 0.9.1.0 to **0.9.2.0** on 2024-10-19
   - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.12.0 to **1.12.1** on 2024-10-20
+  - [shfmt](https://github.com/mvdan/sh) from 3.9.0 to **3.10.0** on 2024-10-20
+  - [checkov](https://www.checkov.io/) from 3.2.267 to **3.2.268** on 2024-10-20
 <!-- linter-versions-end -->
 
 ## [v8.1.0] - 2024-10-13
