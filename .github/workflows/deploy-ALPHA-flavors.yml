@@ -110,6 +110,7 @@ jobs:
             BUILD_DATE=${{ env.BUILD_DATE }}
             BUILD_REVISION=${{ github.sha }}
             BUILD_VERSION=alpha
+            --squash  # Enable image squashing to produce a single-layer image
           load: false
           push: true
           secrets: |
@@ -128,6 +129,7 @@ jobs:
             BUILD_DATE=${{ env.BUILD_DATE }}
             BUILD_REVISION=${{ github.sha }}
             BUILD_VERSION=alpha
+            --squash  # Enable image squashing to produce a single-layer image
           load: false
           push: true
           secrets: |
