@@ -44,6 +44,7 @@ jobs:
     # Set the agent to run on
     runs-on: ubuntu-latest
     permissions:
+      actions: write
       packages: write
     # Only run this on the main repo
     if: github.repository == 'oxsecurity/megalinter' && !contains(github.event.head_commit.message, 'skip deploy') && !contains(github.event.head_commit.message, 'Release MegaLinter v')

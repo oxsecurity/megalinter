@@ -38,6 +38,7 @@ jobs:
     # Set the agent to run on
     runs-on: ${{ matrix.os }}
     permissions:
+      actions: write
       packages: write
     environment:
       name: release
