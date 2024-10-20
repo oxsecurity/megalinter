@@ -45,6 +45,7 @@ jobs:
     # Set the agent to run on
     runs-on: ${{ matrix.os }}
     permissions:
+      actions: write
       packages: write
     strategy:
       fail-fast: false
@@ -121,7 +122,6 @@ jobs:
         with:
           workflow: mirror-docker-image.yml
           inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter-${{ matrix.flavor }}:alpha", "target-image": "docker.io/oxsecurity/megalinter-${{ matrix.flavor }}:alpha" }'
-          ref: ${{ github.ref_name }}
 
       - name: Build Worker Image
         uses: docker/build-push-action@v6
@@ -145,8 +145,7 @@ jobs:
         uses: benc-uk/workflow-dispatch@v1
         with:
           workflow: mirror-docker-image.yml
-          inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter-worker-${{ matrix.flavor }}:alpha", "target-image": "docker.io/oxsecurity/megalinter-worker-${{ matrix.flavor }}:alpha" }'
-          ref: ${{ github.ref_name }}
+          inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter-worker-${{ matrix.flavor }}:alpha", "target-image": "docker.io/oxsecurity/megalinter-worker-${{ matrix.flavor }}:alpha" }'    
 
       ##############################################
       # Check Docker image security with Trivy #

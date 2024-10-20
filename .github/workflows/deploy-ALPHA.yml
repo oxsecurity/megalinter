@@ -45,6 +45,7 @@ jobs:
     # Set the agent to run on
     runs-on: ubuntu-latest
     permissions:
+      actions: write
       packages: write
     # Only run this on the main repo
     if: github.repository == 'oxsecurity/megalinter' && !contains(github.event.head_commit.message, 'skip deploy')
@@ -111,7 +112,6 @@ jobs:
         with:
           workflow: mirror-docker-image.yml
           inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter-server:alpha", "target-image": "docker.io/oxsecurity/megalinter-server:alpha" }'
-          ref: ${{ github.ref_name }}
 
       - name: Build & Push Docker Image
         uses: docker/build-push-action@v6
@@ -136,7 +136,6 @@ jobs:
         with:
           workflow: mirror-docker-image.yml
           inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter:alpha", "target-image": "docker.io/oxsecurity/megalinter:alpha" }'
-          ref: ${{ github.ref_name }}
 
       - name: Build & Push Worker Docker Image
         uses: docker/build-push-action@v6
@@ -161,4 +160,3 @@ jobs:
         with:
           workflow: mirror-docker-image.yml
           inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter-worker:alpha", "target-image": "docker.io/oxsecurity/megalinter-worker:alpha" }'
-          ref: ${{ github.ref_name }}
