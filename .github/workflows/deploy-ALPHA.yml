@@ -106,6 +106,13 @@ jobs:
             ghcr.io/oxsecurity/megalinter-server:alpha
           # ghcr.io/oxsecurity/megalinter-server:alpha-${{ github.sha }}
 
+      - name: Invoke Mirror docker image workflow (Server image)
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: mirror-docker-image.yml
+          inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter-server:alpha", "target-image": "docker.io/oxsecurity/megalinter-server:alpha" }'
+          ref: ${{ github.ref_name }}
+
       - name: Build & Push Docker Image
         uses: docker/build-push-action@v6
         with:
@@ -123,6 +130,13 @@ jobs:
           tags: |
             ghcr.io/oxsecurity/megalinter:alpha
           # ghcr.io/oxsecurity/megalinter:alpha-${{ github.sha }}
+
+      - name: Invoke Mirror docker image workflow (MegaLinter image)
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: mirror-docker-image.yml
+          inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter:alpha", "target-image": "docker.io/oxsecurity/megalinter:alpha" }'
+          ref: ${{ github.ref_name }}
 
       - name: Build & Push Worker Docker Image
         uses: docker/build-push-action@v6
@@ -142,16 +156,9 @@ jobs:
           tags: |
             ghcr.io/oxsecurity/megalinter-worker:alpha
 
-      - name: Login to Docker Hub
-        uses: docker/login-action@v3
+      - name: Invoke Mirror docker image workflow (Worker image)
+        uses: benc-uk/workflow-dispatch@v1
         with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-
-      # Copy ghrc.io image to Docker Hub
-      - name: Pull image from GHCR
-        run: docker system prune -a --volumes --force && docker system prune -a --volumes --force && docker pull ghcr.io/oxsecurity/megalinter:alpha
-      - name: Tag image for Docker Hub
-        run: docker tag ghcr.io/oxsecurity/megalinter:alpha oxsecurity/megalinter:alpha
-      - name: Push image to Docker Hub
-        run: docker push oxsecurity/megalinter:alpha
+          workflow: mirror-docker-image.yml
+          inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter-worker:alpha", "target-image": "docker.io/oxsecurity/megalinter-worker:alpha" }'
+          ref: ${{ github.ref_name }}
