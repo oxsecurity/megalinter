@@ -243,6 +243,7 @@
         "SCALA_SCALAFIX",
         "SNAKEMAKE_LINT",
         "SNAKEMAKE_SNAKEFMT",
+        "SPELL_CODESPELL",
         "SPELL_CSPELL",
         "SPELL_LYCHEE",
         "SPELL_MISSPELL",
