@@ -13,7 +13,7 @@ Example:
 
 ```json
 {
-  Glob: [
+  "Globs": [
     "**/.git/**",
     "**/megalinter-reports/**"
   ]
