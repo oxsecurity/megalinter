@@ -74,8 +74,8 @@ class UpdatedSourcesReporter(Reporter):
                         repo.git.push
                     except Exception as exp:
                         logging.error(
-                            "[Updated Sources Reporter] Failed to git push auto fixes: " + str(exp.message)
-                            "\nDownload it from artifacts then copy-paste it in your local repo to apply linters updates"
+                            "[Updated Sources Reporter] Failed to git push auto fixes: " + str(exp.message) + "\n"
+                            "Download it from artifacts then copy-paste it in your local repo to apply linters updates"
                         )
         else:
             logging.info(
