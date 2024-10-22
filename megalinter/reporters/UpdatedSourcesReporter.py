@@ -61,12 +61,11 @@ class UpdatedSourcesReporter(Reporter):
         if len(updated_files) > 0:
             logging.info(
                 f"[Updated Sources Reporter] copied {str(len(updated_files))} fixed source files"
-                f" in folder {updated_sources_dir}.\n"
-                "Download it from artifacts then copy-paste it in your local repo to apply linters updates"
+                f" in folder {updated_sources_dir}."
             )
 
             if not config.exists(self.master.request_id, "GITHUB_REPOSITORY"):
-                apply_fixes = config.get_list(self.master.request_id, "APPLY_FIXES", "none")
+                apply_fixes = config.get(self.master.request_id, "APPLY_FIXES", "none")
                 if apply_fixes.lower() != "none":
                     try:
                         repo = git.Repo(os.path.realpath(self.master.github_workspace))
@@ -75,7 +74,8 @@ class UpdatedSourcesReporter(Reporter):
                         repo.git.push
                     except Exception as exp:
                         logging.error(
-                            "[Updated Sources Reporter] Failed to git push auto fixes: " + str(exp.message)
+                            "[Updated Sources Reporter] Failed to git push auto fixes: " + str(exp.message) + "\n"
+                            "Download it from artifacts then copy-paste it in your local repo to apply linters updates"
                         )
         else:
             logging.info(
