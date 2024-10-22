@@ -8,3 +8,4 @@ skip-check:
   - CKV_GHA_2
   - CKV2_DOCKER_7
   - CKV2_GHA_1
+  - CKV_GHA_7

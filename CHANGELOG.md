@@ -28,6 +28,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Flavors
 
 - CI
+  - Also prune volumes before pulling and pushing to docker hub
+  - Externalize mirroring from ghcr.io to docker hub in another workflow to avoid memory issues
+  - Squash docker images to have less layers and size
 
 - mega-linter-runner
 
@@ -52,6 +55,16 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [ruff](https://github.com/astral-sh/ruff) from 0.6.9 to **0.7.0** on 2024-10-17
   - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.81 to **0.1.82** on 2024-10-17
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.17.0 to **1.17.1** on 2024-10-17
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.17.1 to **1.17.2** on 2024-10-18
+  - [phpstan](https://phpstan.org/) from 1.12.6 to **1.12.7** on 2024-10-18
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.82.8 to **3.82.11** on 2024-10-18
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.23.1 to **8.23.2** on 2024-10-18
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.15.3 to **8.15.4** on 2024-10-18
+  - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.21.0 to **8.21.1** on 2024-10-19
+  - [roslynator](https://github.com/dotnet/Roslynator) from 0.9.1.0 to **0.9.2.0** on 2024-10-19
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.12.0 to **1.12.1** on 2024-10-20
+  - [shfmt](https://github.com/mvdan/sh) from 3.9.0 to **3.10.0** on 2024-10-20
+  - [checkov](https://www.checkov.io/) from 3.2.267 to **3.2.268** on 2024-10-20
 <!-- linter-versions-end -->
 
 ## [v8.1.0] - 2024-10-13
