@@ -27,7 +27,7 @@ ARG PROTOBUF_PROTOLINT_VERSION=0.50.5
 # renovate: datasource=docker depName=zricethezav/gitleaks
 ARG REPOSITORY_GITLEAKS_VERSION=v8.21.1
 # renovate: datasource=docker depName=trufflesecurity/trufflehog 
-ARG REPOSITORY_TRUFFLEHOG_VERSION=3.82.11
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.82.12
 # renovate: datasource=docker depName=jdkato/vale
 ARG SPELL_VALE_VERSION=v3.7.1
 #ARGTOP__END
