@@ -70,8 +70,8 @@ class UpdatedSourcesReporter(Reporter):
                     try:
                         repo = git.Repo(os.path.realpath(self.master.github_workspace))
                         repo.git.add(update=True)
-                        repo.git.commit("megalinter auto fixes")
-                        repo.git.push
+                        repo.git.commit('-m', 'megalinter auto fixes')
+                        repo.git.push()
                     except git.GitCommandError as giterr:
                         logging.error(
                             "[Updated Sources Reporter] Failed to git push auto fixes: " + str(giterr.stderr) + "\n"
