@@ -72,9 +72,9 @@ class UpdatedSourcesReporter(Reporter):
                         repo.git.add(update=True)
                         repo.git.commit("megalinter auto fixes")
                         repo.git.push
-                    except Exception as exp:
+                    except git.GitCommandError as giterr:
                         logging.error(
-                            "[Updated Sources Reporter] Failed to git push auto fixes: " + str(exp.message) + "\n"
+                            "[Updated Sources Reporter] Failed to git push auto fixes: " + str(giterr.stderr) + "\n"
                             "Download it from artifacts then copy-paste it in your local repo to apply linters updates"
                         )
         else:
