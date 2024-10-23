@@ -116,7 +116,7 @@ class AzureCommentReporter(Reporter):
                     + "See https://learn.microsoft.com/en-us/azure/devops/pipelines/"
                     + "build/variables?view=azure-devops&tabs=yaml"
                 )
-                repository_name = SYSTEM_PULLREQUEST_SOURCEREPOSITORYURI.split("/")[-1]
+                repository_name = SYSTEM_PULLREQUEST_SOURCEREPOSITORYURI.split("/")[-1].replace('%20', ' ')
                 repository = git_client.get_repository(
                     repository_name, SYSTEM_TEAMPROJECT
                 )
