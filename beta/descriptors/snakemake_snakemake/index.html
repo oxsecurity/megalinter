@@ -3354,7 +3354,7 @@
 <p><a href="https://github.com/snakemake/snakemake"><img alt="GitHub stars" src="https://img.shields.io/github/stars/snakemake/snakemake?cacheSeconds=3600"/></a> <a href="https://github.com/snakemake/snakemake/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/snakemake/snakemake?sort=semver"/></a> <a href="https://github.com/snakemake/snakemake/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/snakemake/snakemake"/></a> <a href="https://github.com/snakemake/snakemake/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/snakemake/snakemake"/></a> <a href="https://github.com/snakemake/snakemake/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/snakemake/snakemake"/></a></p>
 <h2 id="snakemake-documentation">snakemake documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>8.23.2</strong></li>
+<li>Version in MegaLinter: <strong>8.24.1</strong></li>
 <li>Visit <a href="https://snakemake.readthedocs.io/en/stable/" target="_blank">Official Web Site</a></li>
 </ul>
 <p><a href="https://github.com/snakemake/snakemake" target="_blank"><img alt="snakemake - GitHub" src="https://gh-card.dev/repos/snakemake/snakemake.svg?fullname="/></a></p>
@@ -3638,7 +3638,7 @@
                  [--d3dag] [--summary] [--detailed-summary] [--archive FILE]
                  [--cleanup-metadata FILE [FILE ...]] [--cleanup-shadow]
                  [--skip-script-cleanup] [--unlock]
-                 [--list-changes {code,params,input}] [--list-input-changes]
+                 [--list-changes {input,params,code}] [--list-input-changes]
                  [--list-params-changes] [--list-untracked]
                  [--delete-all-output | --delete-temp-output]
                  [--keep-incomplete] [--drop-metadata] [--version]
@@ -3663,7 +3663,8 @@
                  [--local-storage-prefix LOCAL_STORAGE_PREFIX]
                  [--remote-job-local-storage-prefix REMOTE_JOB_LOCAL_STORAGE_PREFIX]
                  [--shared-fs-usage {input-output,persistence,software-deployment,source-cache,sources,storage-local-copies,none} [{input-output,persistence,software-deployment,source-cache,sources,storage-local-copies,none} ...]]
-                 [--scheduler-greediness SCHEDULER_GREEDINESS] [--no-hooks]
+                 [--scheduler-greediness SCHEDULER_GREEDINESS]
+                 [--scheduler-subsample SCHEDULER_SUBSAMPLE] [--no-hooks]
                  [--debug] [--runtime-profile FILE]
                  [--local-groupid LOCAL_GROUPID] [--attempt ATTEMPT]
                  [--show-failed-logs] [--log-handler-script FILE]
@@ -3682,7 +3683,7 @@
                  [--scheduler-solver-path SCHEDULER_SOLVER_PATH]
                  [--deploy-sources QUERY CHECKSUM]
                  [--target-jobs TARGET_JOBS [TARGET_JOBS ...]]
-                 [--mode {default,subprocess,remote}]
+                 [--mode {remote,subprocess,default}]
                  [--report-html-path VALUE]
                  [--report-html-stylesheet-path VALUE]
                  [targets ...]
@@ -4140,7 +4141,7 @@ UTILITIES:
                         (default: False)
   --unlock              Remove a lock on the working directory. (default:
                         False)
-  --list-changes {code,params,input}, --lc {code,params,input}
+  --list-changes {input,params,code}, --lc {input,params,code}
                         List all output files for which the given items (code,
                         input, params) have changed since creation.
   --list-input-changes, --li
@@ -4327,6 +4328,14 @@ BEHAVIOR:
                         and 1 determines how careful jobs are selected for
                         execution. The default value (1.0) provides the best
                         speed and still acceptable scheduling quality.
+  --scheduler-subsample SCHEDULER_SUBSAMPLE
+                        Set the number of jobs to be considered for
+                        scheduling. If number of ready jobs is greater than
+                        this value, this number of jobs is randomly chosen for
+                        scheduling; if number of ready jobs is lower, this
+                        option has no effect. This can be useful on very large
+                        DAGs, where the scheduler can take some time selecting
+                        which jobs to run.
   --no-hooks            Do not invoke onstart, onsuccess or onerror hooks
                         after execution. (default: False)
   --debug               Allow to debug rules with e.g. PDB. This flag allows
@@ -4369,7 +4378,7 @@ REMOTE EXECUTION:
                         contain a working snakemake installation that is
                         compatible with (or ideally the same as) the currently
                         running version. (default:
-                        snakemake/snakemake:v8.23.2)
+                        snakemake/snakemake:v8.24.1)
   --immediate-submit, --is
                         Immediately submit all jobs to the cluster instead of
                         waiting for present input files. This will fail,
@@ -4491,7 +4500,7 @@ INTERNAL:
   --target-jobs TARGET_JOBS [TARGET_JOBS ...]
                         Internal use only: Target particular jobs by
                         RULE:WILDCARD1=VALUE,WILDCARD2=VALUE,...
-  --mode {default,subprocess,remote}
+  --mode {remote,subprocess,default}
                         Internal use only: Set execution mode of Snakemake.
                         (default: default)
 
