@@ -11,7 +11,7 @@ v8r checks the validity of JSON/YAML files if they have a matching schema define
 
 ## v8r documentation
 
-- Version in MegaLinter: **4.1.0**
+- Version in MegaLinter: **4.2.0**
 - Visit [Official Web Site](https://github.com/chris48s/v8r#readme){target=_blank}
 - See [Index of problems detected by v8r](https://www.schemastore.org/json/){target=_blank}
 

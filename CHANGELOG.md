@@ -74,6 +74,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [syft](https://github.com/anchore/syft) from 1.14.1 to **1.14.2** on 2024-10-23
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.82.11 to **3.82.12** on 2024-10-23
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.23.2 to **8.24.1** on 2024-10-23
+  - [v8r](https://github.com/chris48s/v8r) from 4.1.0 to **4.2.0** on 2024-10-24
+  - [ktlint](https://ktlint.github.io) from 1.3.1 to **1.4.0** on 2024-10-24
+  - [ruff](https://github.com/astral-sh/ruff) from 0.7.0 to **0.7.1** on 2024-10-24
 <!-- linter-versions-end -->
 
 ## [v8.1.0] - 2024-10-13
