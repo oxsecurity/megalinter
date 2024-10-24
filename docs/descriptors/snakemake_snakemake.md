@@ -15,7 +15,7 @@ description: How to use snakemake (configure, ignore files, ignore errors, help 
 
 ## snakemake documentation
 
-- Version in MegaLinter: **8.23.2**
+- Version in MegaLinter: **8.24.1**
 - Visit [Official Web Site](https://snakemake.readthedocs.io/en/stable/){target=_blank}
 
 [![snakemake - GitHub](https://gh-card.dev/repos/snakemake/snakemake.svg?fullname=)](https://github.com/snakemake/snakemake){target=_blank}
@@ -132,7 +132,7 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--d3dag] [--summary] [--detailed-summary] [--archive FILE]
                  [--cleanup-metadata FILE [FILE ...]] [--cleanup-shadow]
                  [--skip-script-cleanup] [--unlock]
-                 [--list-changes {code,params,input}] [--list-input-changes]
+                 [--list-changes {input,params,code}] [--list-input-changes]
                  [--list-params-changes] [--list-untracked]
                  [--delete-all-output | --delete-temp-output]
                  [--keep-incomplete] [--drop-metadata] [--version]
@@ -157,7 +157,8 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--local-storage-prefix LOCAL_STORAGE_PREFIX]
                  [--remote-job-local-storage-prefix REMOTE_JOB_LOCAL_STORAGE_PREFIX]
                  [--shared-fs-usage {input-output,persistence,software-deployment,source-cache,sources,storage-local-copies,none} [{input-output,persistence,software-deployment,source-cache,sources,storage-local-copies,none} ...]]
-                 [--scheduler-greediness SCHEDULER_GREEDINESS] [--no-hooks]
+                 [--scheduler-greediness SCHEDULER_GREEDINESS]
+                 [--scheduler-subsample SCHEDULER_SUBSAMPLE] [--no-hooks]
                  [--debug] [--runtime-profile FILE]
                  [--local-groupid LOCAL_GROUPID] [--attempt ATTEMPT]
                  [--show-failed-logs] [--log-handler-script FILE]
@@ -176,7 +177,7 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--scheduler-solver-path SCHEDULER_SOLVER_PATH]
                  [--deploy-sources QUERY CHECKSUM]
                  [--target-jobs TARGET_JOBS [TARGET_JOBS ...]]
-                 [--mode {default,subprocess,remote}]
+                 [--mode {remote,subprocess,default}]
                  [--report-html-path VALUE]
                  [--report-html-stylesheet-path VALUE]
                  [targets ...]
@@ -634,7 +635,7 @@ UTILITIES:
                         (default: False)
   --unlock              Remove a lock on the working directory. (default:
                         False)
-  --list-changes {code,params,input}, --lc {code,params,input}
+  --list-changes {input,params,code}, --lc {input,params,code}
                         List all output files for which the given items (code,
                         input, params) have changed since creation.
   --list-input-changes, --li
@@ -821,6 +822,14 @@ BEHAVIOR:
                         and 1 determines how careful jobs are selected for
                         execution. The default value (1.0) provides the best
                         speed and still acceptable scheduling quality.
+  --scheduler-subsample SCHEDULER_SUBSAMPLE
+                        Set the number of jobs to be considered for
+                        scheduling. If number of ready jobs is greater than
+                        this value, this number of jobs is randomly chosen for
+                        scheduling; if number of ready jobs is lower, this
+                        option has no effect. This can be useful on very large
+                        DAGs, where the scheduler can take some time selecting
+                        which jobs to run.
   --no-hooks            Do not invoke onstart, onsuccess or onerror hooks
                         after execution. (default: False)
   --debug               Allow to debug rules with e.g. PDB. This flag allows
@@ -863,7 +872,7 @@ REMOTE EXECUTION:
                         contain a working snakemake installation that is
                         compatible with (or ideally the same as) the currently
                         running version. (default:
-                        snakemake/snakemake:v8.23.2)
+                        snakemake/snakemake:v8.24.1)
   --immediate-submit, --is
                         Immediately submit all jobs to the cluster instead of
                         waiting for present input files. This will fail,
@@ -985,7 +994,7 @@ INTERNAL:
   --target-jobs TARGET_JOBS [TARGET_JOBS ...]
                         Internal use only: Target particular jobs by
                         RULE:WILDCARD1=VALUE,WILDCARD2=VALUE,...
-  --mode {default,subprocess,remote}
+  --mode {remote,subprocess,default}
                         Internal use only: Set execution mode of Snakemake.
                         (default: default)
 

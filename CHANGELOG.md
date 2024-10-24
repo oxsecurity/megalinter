@@ -66,6 +66,14 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.12.0 to **1.12.1** on 2024-10-20
   - [shfmt](https://github.com/mvdan/sh) from 3.9.0 to **3.10.0** on 2024-10-20
   - [checkov](https://www.checkov.io/) from 3.2.267 to **3.2.268** on 2024-10-20
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.17.2 to **1.18.1** on 2024-10-23
+  - [perlcritic](https://metacpan.org/pod/Perl::Critic) from 1.152 to **1.156** on 2024-10-23
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.12.1 to **1.13.0** on 2024-10-23
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.385 to **1.1.386** on 2024-10-23
+  - [checkov](https://www.checkov.io/) from 3.2.268 to **3.2.269** on 2024-10-23
+  - [syft](https://github.com/anchore/syft) from 1.14.1 to **1.14.2** on 2024-10-23
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.82.11 to **3.82.12** on 2024-10-23
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.23.2 to **8.24.1** on 2024-10-23
 <!-- linter-versions-end -->
 
 ## [v8.1.0] - 2024-10-13
