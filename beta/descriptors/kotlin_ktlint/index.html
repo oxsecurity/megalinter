@@ -3354,7 +3354,7 @@
 <p><a href="https://github.com/pinterest/ktlint"><img alt="GitHub stars" src="https://img.shields.io/github/stars/pinterest/ktlint?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-autofix-green"><img alt="autofix" src="https://shields.io/badge/-autofix-green"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-SARIF-orange"><img alt="sarif" src="https://shields.io/badge/-SARIF-orange"/></a> <a href="https://github.com/pinterest/ktlint/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/pinterest/ktlint?sort=semver"/></a> <a href="https://github.com/pinterest/ktlint/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/pinterest/ktlint"/></a> <a href="https://github.com/pinterest/ktlint/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/pinterest/ktlint"/></a> <a href="https://github.com/pinterest/ktlint/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/pinterest/ktlint"/></a></p>
 <h2 id="ktlint-documentation">ktlint documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>1.3.1</strong></li>
+<li>Version in MegaLinter: <strong>1.4.0</strong></li>
 <li>Visit <a href="https://ktlint.github.io" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://ktlint.github.io/#rules" target="_blank">Index of problems detected by ktlint</a></li>
 </ul>
@@ -3615,28 +3615,22 @@
 <h3 id="help-content">Help content</h3>
 <pre><code class="language-shell">Usage: ktlint [&lt;options&gt;] [&lt;arguments&gt;]... &lt;command&gt; [&lt;args&gt;]...
 
-  An anti-bikeshedding Kotlin linter with built-in formatter. (
-  https://pinterest.github.io/ktlint/latest/).
+  An anti-bikeshedding Kotlin linter with built-in formatter.
+  (https://pinterest.github.io/ktlint/latest/).
 
-  Usage on Windows: java -jar ktlint.jar &lt;options&gt; [&lt;arguments&gt;]... &lt;command&gt;
+  Usage on Windows: java -jar ktlint.jar [&lt;options&gt;] [&lt;arguments&gt;]... &lt;command&gt;
   [&lt;args&gt;]...
 
+  # EXAMPLES
 
-  ═════════════════════════════════ EXAMPLES ══════════════════════════════════
-
-
-
-  ─────────────────────────── Use default patterns ────────────────────────────
-
+  ## Use default patterns
 
   Check the style of all Kotlin files (ending with '.kt' or '.kts') inside the
   current dir (recursively). Hidden folders will be skipped.
 
-  ktlint
+  `ktlint`
 
-
-  ───────────────────────────── Specify patterns ──────────────────────────────
-
+  ## Specify patterns
 
   Check only certain locations starting from the current directory. Prepend !
   to negate the pattern, KtLint uses .gitignore pattern style syntax. Globs are
@@ -3645,32 +3639,26 @@
   Check all '.kt' files in 'src/' directory, but ignore files ending with
   'Test.kt':
 
-  ktlint "src/**/*.kt" "!src/**/*Test.kt"
+  `ktlint "src/**/*.kt" "!src/**/*Test.kt"`
 
   Check all '.kt' files in 'src/' directory, but ignore 'generated' directory
   and its subdirectories:
 
-  ktlint "src/**/*.kt" "!src/**/generated/**"
+  `ktlint "src/**/*.kt" "!src/**/generated/**"`
 
-
-  ─────────────────────── Auto-correct style violations ───────────────────────
-
+  ## Auto-correct style violations
 
   Check all '.kt' files in 'src/' directory, and when possible automatically
   correct the lint violations:
 
-  ktlint -F "src/**/*.kt"
+  `ktlint -F "src/**/*.kt"`
 
+  ## Using custom reporter jar and overriding report location
 
-  ───────── Using custom reporter jar and overriding report location ──────────
+  `ktlint
+  --reporter=csv,artifact=/path/to/reporter/csv.jar,output=my-custom-report.csv`
 
-
-  ktlint
-  --reporter=csv,artifact=/path/to/reporter/csv.jar,output=my-custom-report.csv
-
-
-  ═══════════════════════════ Options and commands ════════════════════════════
-
+  # Options and commands
 
 Options:
   -v, --version            Show the version and exit
@@ -3692,6 +3680,9 @@ Options:
   -R, --ruleset=&lt;text&gt;     A path to a JAR file containing additional
                            ruleset(s)
   --stdin                  Read file from stdin
+  --stdin-path=&lt;text&gt;      Virtual file location for stdin. When combined with
+                           option '--format' the actual file will not be
+                           overwritten
   --patterns-from-stdin[=&lt;text&gt;]
                            Read additional patterns to check/format from stdin.
                            Patterns are delimited by the given argument.
