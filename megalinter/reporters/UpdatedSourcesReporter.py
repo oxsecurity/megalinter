@@ -69,13 +69,16 @@ class UpdatedSourcesReporter(Reporter):
                 if apply_fixes.lower() != "none":
                     try:
                         repo = git.Repo(os.path.realpath(self.master.github_workspace))
+                        repo.config_writer().set_value("user", "name", "MegaLinter").release()
+                        repo.config_writer().set_value("user", "email", "megalinter@megalinter.io").release()
                         repo.git.add(update=True)
                         repo.git.commit('-m', 'megalinter auto fixes')
                         repo.git.push()
                     except git.GitCommandError as giterr:
                         logging.error(
                             "[Updated Sources Reporter] Failed to git push auto fixes: " + str(giterr.stderr) + "\n"
-                            "Download it from artifacts then copy-paste it in your local repo to apply linters updates"
+                            "[Updated Sources Reporter] Download fixed source files from artifacts "
+                            "then copy-paste into your repo to apply linters updates"
                         )
         else:
             logging.info(
