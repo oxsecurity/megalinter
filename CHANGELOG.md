@@ -77,6 +77,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [v8r](https://github.com/chris48s/v8r) from 4.1.0 to **4.2.0** on 2024-10-24
   - [ktlint](https://ktlint.github.io) from 1.3.1 to **1.4.0** on 2024-10-24
   - [ruff](https://github.com/astral-sh/ruff) from 0.7.0 to **0.7.1** on 2024-10-24
+  - [roslynator](https://github.com/dotnet/Roslynator) from 0.9.2.0 to **0.9.3.0** on 2024-10-27
+  - [checkstyle](https://checkstyle.org/) from 10.18.2 to **10.19.0** on 2024-10-27
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.82.12 to **3.82.13** on 2024-10-27
+  - [sqlfluff](https://www.sqlfluff.com/) from 3.2.4 to **3.2.5** on 2024-10-27
 <!-- linter-versions-end -->
 
 ## [v8.1.0] - 2024-10-13
