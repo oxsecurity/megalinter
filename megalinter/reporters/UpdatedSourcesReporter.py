@@ -80,7 +80,7 @@ class UpdatedSourcesReporter(Reporter):
                             "[Updated Sources Reporter] Download fixed source files from artifacts "
                             "then copy-paste into your repo to apply linters updates"
                         )
-                        self.master.status = "error"
+                        self.master.status = "warning"
         else:
             logging.info(
                 "[Updated Sources Reporter] No source file has been formatted or fixed"
