@@ -81,6 +81,12 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkstyle](https://checkstyle.org/) from 10.18.2 to **10.19.0** on 2024-10-27
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.82.12 to **3.82.13** on 2024-10-27
   - [sqlfluff](https://www.sqlfluff.com/) from 3.2.4 to **3.2.5** on 2024-10-27
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.18.1 to **1.18.2** on 2024-10-29
+  - [pmd](https://pmd.github.io/) from 7.6.0 to **7.7.0** on 2024-10-29
+  - [checkov](https://www.checkov.io/) from 3.2.269 to **3.2.270** on 2024-10-29
+  - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.21.1 to **8.21.2** on 2024-10-29
+  - [syft](https://github.com/anchore/syft) from 1.14.2 to **1.15.0** on 2024-10-29
+  - [vale](https://vale.sh/) from 3.7.1 to **3.8.0** on 2024-10-29
 <!-- linter-versions-end -->
 
 ## [v8.1.0] - 2024-10-13
