@@ -78,12 +78,12 @@ class UpdatedSourcesReporter(Reporter):
                     except git.GitCommandError as giterr:
                         logging.error(
                             c.red(
-                                "[Updated Sources Reporter] Failed to git push auto fixes: " + str(giterr.stderr)
+                                "❌ [Updated Sources Reporter] Failed to git push auto fixes: " + str(giterr.stderr)
                             )
                         )
                         logging.warning(
                             c.yellow(
-                                "[Updated Sources Reporter] Download fixed source files from artifacts "
+                                "⚠️ [Updated Sources Reporter] Download fixed source files from artifacts "
                                 "then copy-paste into your repo to apply linters updates"
                             )
                         )
