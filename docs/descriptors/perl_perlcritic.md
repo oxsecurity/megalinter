@@ -15,7 +15,7 @@ description: How to use perlcritic (configure, ignore files, ignore errors, help
 
 ## perlcritic documentation
 
-- Version in MegaLinter: **1.152**
+- Version in MegaLinter: **1.156**
 - Visit [Official Web Site](https://metacpan.org/pod/Perl::Critic){target=_blank}
 - See [How to configure perlcritic rules](https://metacpan.org/pod/Perl::Critic#CONFIGURATION){target=_blank}
 - See [How to disable perlcritic rules in files](https://metacpan.org/pod/Perl::Critic#BENDING-THE-RULES){target=_blank}

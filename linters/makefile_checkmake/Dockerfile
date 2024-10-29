@@ -24,7 +24,7 @@ FROM mrtazz/checkmake:latest AS checkmake
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.4.20 AS uv
+FROM ghcr.io/astral-sh/uv:0.4.27 AS uv
 FROM python:3.12.7-alpine3.20 AS build-ml-core
 WORKDIR /
 COPY pyproject.toml .

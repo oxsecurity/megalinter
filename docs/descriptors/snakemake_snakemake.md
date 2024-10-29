@@ -15,7 +15,7 @@ description: How to use snakemake (configure, ignore files, ignore errors, help 
 
 ## snakemake documentation
 
-- Version in MegaLinter: **8.23.0**
+- Version in MegaLinter: **8.24.1**
 - Visit [Official Web Site](https://snakemake.readthedocs.io/en/stable/){target=_blank}
 
 [![snakemake - GitHub](https://gh-card.dev/repos/snakemake/snakemake.svg?fullname=)](https://github.com/snakemake/snakemake){target=_blank}
@@ -132,7 +132,7 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--d3dag] [--summary] [--detailed-summary] [--archive FILE]
                  [--cleanup-metadata FILE [FILE ...]] [--cleanup-shadow]
                  [--skip-script-cleanup] [--unlock]
-                 [--list-changes {params,code,input}] [--list-input-changes]
+                 [--list-changes {code,input,params}] [--list-input-changes]
                  [--list-params-changes] [--list-untracked]
                  [--delete-all-output | --delete-temp-output]
                  [--keep-incomplete] [--drop-metadata] [--version]
@@ -157,7 +157,8 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--local-storage-prefix LOCAL_STORAGE_PREFIX]
                  [--remote-job-local-storage-prefix REMOTE_JOB_LOCAL_STORAGE_PREFIX]
                  [--shared-fs-usage {input-output,persistence,software-deployment,source-cache,sources,storage-local-copies,none} [{input-output,persistence,software-deployment,source-cache,sources,storage-local-copies,none} ...]]
-                 [--scheduler-greediness SCHEDULER_GREEDINESS] [--no-hooks]
+                 [--scheduler-greediness SCHEDULER_GREEDINESS]
+                 [--scheduler-subsample SCHEDULER_SUBSAMPLE] [--no-hooks]
                  [--debug] [--runtime-profile FILE]
                  [--local-groupid LOCAL_GROUPID] [--attempt ATTEMPT]
                  [--show-failed-logs] [--log-handler-script FILE]
@@ -176,7 +177,7 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--scheduler-solver-path SCHEDULER_SOLVER_PATH]
                  [--deploy-sources QUERY CHECKSUM]
                  [--target-jobs TARGET_JOBS [TARGET_JOBS ...]]
-                 [--mode {default,remote,subprocess}]
+                 [--mode {remote,subprocess,default}]
                  [--report-html-path VALUE]
                  [--report-html-stylesheet-path VALUE]
                  [targets ...]
@@ -241,10 +242,10 @@ EXECUTION:
                         parameters and software stack (conda envs or
                         containers) needed to create them.
   --snakefile FILE, -s FILE
-                        The workflow definition in form of a
-                        snakefile.Usually, you should not need to specify
-                        this. By default, Snakemake will search for
-                        'Snakefile', 'snakefile', 'workflow/Snakefile',
+                        The workflow definition in form of a snakefile.
+                        Usually, you should not need to specify this. By
+                        default, Snakemake will search for 'Snakefile',
+                        'snakefile', 'workflow/Snakefile',
                         'workflow/snakefile' beneath the current working
                         directory, in this order. Only if you definitely want
                         a different layout, you need to use this parameter.
@@ -255,7 +256,7 @@ EXECUTION:
                         cores requested from the cluster or cloud scheduler.
                         (See https://snakemake.readthedocs.io/en/stable/snakef
                         iles/rules.html#resources-remote-execution for more
-                        info)This number is available to rules via
+                        info.) This number is available to rules via
                         workflow.cores.
   --jobs N, -j N        Use at most N CPU cluster/cloud jobs in parallel. For
                         local execution this is an alias for --cores (it is
@@ -279,7 +280,7 @@ EXECUTION:
                         also constrain the amount of resources requested from
                         the server. (See https://snakemake.readthedocs.io/en/s
                         table/snakefiles/rules.html#resources-remote-execution
-                        for more info) (default: )
+                        for more info.) (default: )
   --set-threads RULE=THREADS [RULE=THREADS ...]
                         Overwrite thread usage of rules. This allows to fine-
                         tune workflow parallelization. In particular, this is
@@ -590,13 +591,13 @@ UTILITIES:
   --summary, -S         Print a summary of all files created by the workflow.
                         The has the following columns: filename, modification
                         time, rule version, status, plan. Thereby rule version
-                        contains the versionthe file was created with (see the
-                        version keyword of rules), and status denotes whether
-                        the file is missing, its input files are newer or if
-                        version or implementation of the rule changed since
-                        file creation. Finally the last column denotes whether
-                        the file will be updated or created during the next
-                        workflow execution. (default: False)
+                        contains the version the file was created with (see
+                        the version keyword of rules), and status denotes
+                        whether the file is missing, its input files are newer
+                        or if version or implementation of the rule changed
+                        since file creation. Finally the last column denotes
+                        whether the file will be updated or created during the
+                        next workflow execution. (default: False)
   --detailed-summary, -D
                         Print a summary of all files created by the workflow.
                         The has the following columns: filename, modification
@@ -634,7 +635,7 @@ UTILITIES:
                         (default: False)
   --unlock              Remove a lock on the working directory. (default:
                         False)
-  --list-changes {params,code,input}, --lc {params,code,input}
+  --list-changes {code,input,params}, --lc {code,input,params}
                         List all output files for which the given items (code,
                         input, params) have changed since creation.
   --list-input-changes, --li
@@ -821,6 +822,14 @@ BEHAVIOR:
                         and 1 determines how careful jobs are selected for
                         execution. The default value (1.0) provides the best
                         speed and still acceptable scheduling quality.
+  --scheduler-subsample SCHEDULER_SUBSAMPLE
+                        Set the number of jobs to be considered for
+                        scheduling. If number of ready jobs is greater than
+                        this value, this number of jobs is randomly chosen for
+                        scheduling; if number of ready jobs is lower, this
+                        option has no effect. This can be useful on very large
+                        DAGs, where the scheduler can take some time selecting
+                        which jobs to run.
   --no-hooks            Do not invoke onstart, onsuccess or onerror hooks
                         after execution. (default: False)
   --debug               Allow to debug rules with e.g. PDB. This flag allows
@@ -838,13 +847,13 @@ BEHAVIOR:
   --log-handler-script FILE
                         Provide a custom script containing a function 'def
                         log_handler(msg):'. Snakemake will call this function
-                        for every logging output (given as a dictionary
-                        msg)allowing to e.g. send notifications in the form of
+                        for every logging output (given as a dictionary msg)
+                        allowing to e.g. send notifications in the form of
                         e.g. slack messages or emails.
   --log-service {none,slack,wms}
-                        Set a specific messaging service for logging
-                        output.Snakemake will notify the service on errors and
-                        completed execution.Currently slack and workflow
+                        Set a specific messaging service for logging output.
+                        Snakemake will notify the service on errors and
+                        completed execution. Currently slack and workflow
                         management system (wms) are supported.
   --job-deploy-sources  Whether the workflow sources shall be deployed before
                         a remote job is started. Only applies if --no-shared-
@@ -863,7 +872,7 @@ REMOTE EXECUTION:
                         contain a working snakemake installation that is
                         compatible with (or ideally the same as) the currently
                         running version. (default:
-                        snakemake/snakemake:v8.23.0)
+                        snakemake/snakemake:v8.24.1)
   --immediate-submit, --is
                         Immediately submit all jobs to the cluster instead of
                         waiting for present input files. This will fail,
@@ -985,7 +994,7 @@ INTERNAL:
   --target-jobs TARGET_JOBS [TARGET_JOBS ...]
                         Internal use only: Target particular jobs by
                         RULE:WILDCARD1=VALUE,WILDCARD2=VALUE,...
-  --mode {default,remote,subprocess}
+  --mode {remote,subprocess,default}
                         Internal use only: Set execution mode of Snakemake.
                         (default: default)
 

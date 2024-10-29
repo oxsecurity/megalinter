@@ -9,7 +9,7 @@ description: How to use shfmt (configure, ignore files, ignore errors, help & ve
 
 ## shfmt documentation
 
-- Version in MegaLinter: **3.9.0**
+- Version in MegaLinter: **3.10.0**
 - Visit [Official Web Site](https://github.com/mvdan/sh#readme){target=_blank}
 
 [![sh - GitHub](https://gh-card.dev/repos/mvdan/sh.svg?fullname=)](https://github.com/mvdan/sh){target=_blank}
@@ -117,12 +117,12 @@ directory, all shell scripts found under that directory will be used.
   -s,  --simplify  simplify the code
   -mn, --minify    minify the code to reduce its size (implies -s)
   --apply-ignore   always apply EditorConfig ignore rules
+  --filename str   provide a name for the standard input file
 
 Parser options:
 
   -ln, --language-dialect str  bash/posix/mksh/bats, default "auto"
   -p,  --posix                 shorthand for -ln=posix
-  --filename str               provide a name for the standard input file
 
 Printer options:
 
@@ -139,7 +139,9 @@ Utilities:
   --to-json    print syntax tree to stdout as a typed JSON
   --from-json  read syntax tree from stdin as a typed JSON
 
-For more information, see 'man shfmt' and https://github.com/mvdan/sh.
+Formatting options can also be read from EditorConfig files; see 'man shfmt'
+for a detailed description of the tool's behavior.
+For more information and to report bugs, see https://github.com/mvdan/sh.
 ```
 
 ### Installation on mega-linter Docker image

@@ -11,7 +11,7 @@ An extremely fast Python linter, written in Rust.
 
 ## ruff documentation
 
-- Version in MegaLinter: **0.6.9**
+- Version in MegaLinter: **0.7.1**
 - Visit [Official Web Site](https://github.com/astral-sh/ruff#readme){target=_blank}
 - See [How to configure ruff rules](https://docs.astral.sh/ruff/configuration/){target=_blank}
   - If custom `.ruff.toml` config file isn't found, [.ruff.toml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.ruff.toml){target=_blank} will be used
@@ -95,7 +95,7 @@ Ruff: An extremely fast Python linter and code formatter.
 Usage: ruff [OPTIONS] <COMMAND>
 
 Commands:
-  check    Run Ruff on the given files or directories (default)
+  check    Run Ruff on the given files or directories
   rule     Explain a rule (or all rules)
   config   List or describe the available configuration options
   linter   List all supported upstream linters

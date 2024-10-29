@@ -12,7 +12,7 @@
 #############################################################################################
 #ARGTOP__START
 # renovate: datasource=docker depName=jdkato/vale
-ARG SPELL_VALE_VERSION=v3.7.1
+ARG SPELL_VALE_VERSION=v3.8.0
 #ARGTOP__END
 
 #############################################################################################
@@ -25,7 +25,7 @@ FROM jdkato/vale:${SPELL_VALE_VERSION} AS vale
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.4.20 AS uv
+FROM ghcr.io/astral-sh/uv:0.4.27 AS uv
 FROM python:3.12.7-alpine3.20 AS build-ml-core
 WORKDIR /
 COPY pyproject.toml .

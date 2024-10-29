@@ -38,6 +38,7 @@ jobs:
     # Set the agent to run on
     runs-on: ${{ matrix.os }}
     permissions:
+      actions: write
       packages: write
     environment:
       name: release
@@ -203,6 +204,7 @@ jobs:
             BUILD_DATE=${{ env.BUILD_DATE }}
             BUILD_REVISION=${{ github.sha }}
             BUILD_VERSION=${{ github.event.release.tag_name }}
+            --squash  # Enable image squashing to produce a single-layer image
           load: false
           push: true
           secrets: |
@@ -211,6 +213,22 @@ jobs:
             ghcr.io/oxsecurity/megalinter-only-${{ matrix.linter }}:v8
             ghcr.io/oxsecurity/megalinter-only-${{ matrix.linter }}:${{ github.event.release.tag_name }}
             ghcr.io/oxsecurity/megalinter-only-${{ matrix.linter }}:latest
+
+      - name: Invoke Mirror docker image workflow (Standalone image)
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: mirror-docker-image.yml
+          inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter-only-${{ matrix.linter }}:v8", "target-image": "docker.io/oxsecurity/megalinter-only-${{ matrix.linter }}:v8" }'
+      - name: Invoke Mirror docker image workflow (Standalone image)
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: mirror-docker-image.yml
+          inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter-only-${{ matrix.linter }}:v8", "target-image": "docker.io/oxsecurity/megalinter-only-${{ matrix.linter }}:${{ github.event.release.tag_name }}" }'
+      - name: Invoke Mirror docker image workflow (Standalone image)
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: mirror-docker-image.yml
+          inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter-only-${{ matrix.linter }}:v8", "target-image": "docker.io/oxsecurity/megalinter-only-${{ matrix.linter }}:latest" }'
 
       #####################################
       # Run Linter test cases #

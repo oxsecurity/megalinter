@@ -15,7 +15,7 @@ description: How to use ktlint (configure, ignore files, ignore errors, help & v
 
 ## ktlint documentation
 
-- Version in MegaLinter: **1.3.1**
+- Version in MegaLinter: **1.4.0**
 - Visit [Official Web Site](https://ktlint.github.io){target=_blank}
 - See [Index of problems detected by ktlint](https://ktlint.github.io/#rules){target=_blank}
 
@@ -104,28 +104,22 @@ ktlint --format myfile.kt
 ```shell
 Usage: ktlint [<options>] [<arguments>]... <command> [<args>]...
 
-  An anti-bikeshedding Kotlin linter with built-in formatter. (
-  https://pinterest.github.io/ktlint/latest/).
+  An anti-bikeshedding Kotlin linter with built-in formatter.
+  (https://pinterest.github.io/ktlint/latest/).
 
-  Usage on Windows: java -jar ktlint.jar <options> [<arguments>]... <command>
+  Usage on Windows: java -jar ktlint.jar [<options>] [<arguments>]... <command>
   [<args>]...
 
+  # EXAMPLES
 
-  ═════════════════════════════════ EXAMPLES ══════════════════════════════════
-
-
-
-  ─────────────────────────── Use default patterns ────────────────────────────
-
+  ## Use default patterns
 
   Check the style of all Kotlin files (ending with '.kt' or '.kts') inside the
   current dir (recursively). Hidden folders will be skipped.
 
-  ktlint
+  `ktlint`
 
-
-  ───────────────────────────── Specify patterns ──────────────────────────────
-
+  ## Specify patterns
 
   Check only certain locations starting from the current directory. Prepend !
   to negate the pattern, KtLint uses .gitignore pattern style syntax. Globs are
@@ -134,32 +128,26 @@ Usage: ktlint [<options>] [<arguments>]... <command> [<args>]...
   Check all '.kt' files in 'src/' directory, but ignore files ending with
   'Test.kt':
 
-  ktlint "src/**/*.kt" "!src/**/*Test.kt"
+  `ktlint "src/**/*.kt" "!src/**/*Test.kt"`
 
   Check all '.kt' files in 'src/' directory, but ignore 'generated' directory
   and its subdirectories:
 
-  ktlint "src/**/*.kt" "!src/**/generated/**"
+  `ktlint "src/**/*.kt" "!src/**/generated/**"`
 
-
-  ─────────────────────── Auto-correct style violations ───────────────────────
-
+  ## Auto-correct style violations
 
   Check all '.kt' files in 'src/' directory, and when possible automatically
   correct the lint violations:
 
-  ktlint -F "src/**/*.kt"
+  `ktlint -F "src/**/*.kt"`
 
+  ## Using custom reporter jar and overriding report location
 
-  ───────── Using custom reporter jar and overriding report location ──────────
+  `ktlint
+  --reporter=csv,artifact=/path/to/reporter/csv.jar,output=my-custom-report.csv`
 
-
-  ktlint
-  --reporter=csv,artifact=/path/to/reporter/csv.jar,output=my-custom-report.csv
-
-
-  ═══════════════════════════ Options and commands ════════════════════════════
-
+  # Options and commands
 
 Options:
   -v, --version            Show the version and exit
@@ -181,6 +169,9 @@ Options:
   -R, --ruleset=<text>     A path to a JAR file containing additional
                            ruleset(s)
   --stdin                  Read file from stdin
+  --stdin-path=<text>      Virtual file location for stdin. When combined with
+                           option '--format' the actual file will not be
+                           overwritten
   --patterns-from-stdin[=<text>]
                            Read additional patterns to check/format from stdin.
                            Patterns are delimited by the given argument.
