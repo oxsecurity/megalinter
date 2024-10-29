@@ -6,6 +6,7 @@ Creates a folder containing only files updated by the linters
 import logging
 import os
 import shutil
+import chalk as c
 import git
 
 from megalinter import Reporter, config, utils
@@ -76,11 +77,16 @@ class UpdatedSourcesReporter(Reporter):
                         repo.git.push()
                     except git.GitCommandError as giterr:
                         logging.error(
-                            "[Updated Sources Reporter] Failed to git push auto fixes: " + str(giterr.stderr) + "\n"
-                            "[Updated Sources Reporter] Download fixed source files from artifacts "
-                            "then copy-paste into your repo to apply linters updates"
+                            c.red(
+                                "[Updated Sources Reporter] Failed to git push auto fixes: " + str(giterr.stderr)
+                            )
                         )
-                        self.master.status = "warning"
+                        logging.warning(
+                            c.yellow(
+                                "[Updated Sources Reporter] Download fixed source files from artifacts "
+                                "then copy-paste into your repo to apply linters updates"
+                            )
+                        )
         else:
             logging.info(
                 "[Updated Sources Reporter] No source file has been formatted or fixed"
