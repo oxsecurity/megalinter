@@ -45,7 +45,7 @@ FROM python:3.12.7-alpine3.20
 #############################################################################################
 #ARG__START
 # renovate: datasource=npm depName=@salesforce/cli
-ARG SALESFORCE_CLI_VERSION=2.62.6
+ARG SALESFORCE_CLI_VERSION=2.63.9
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
 ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.8.12
 # renovate: datasource=npm depName=sfdx-hardis
