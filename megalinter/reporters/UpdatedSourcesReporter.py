@@ -67,14 +67,17 @@ class UpdatedSourcesReporter(Reporter):
 
             if not config.exists(self.master.request_id, "GITHUB_REPOSITORY"):
                 apply_fixes = config.get(self.master.request_id, "APPLY_FIXES", "none")
-                # Should be able to use BITBUCKET_BRANCH for Bitbucket
-                # Need to work out how to determine the platform being used
-                # Concentrating on getting Azure DevOps working for now...
-                SYSTEM_PULLREQUEST_SOURCEBRANCH = config.get(
-                    self.master.request_id, "SYSTEM_PULLREQUEST_SOURCEBRANCH", ""
-                )
-                remote_branch = SYSTEM_PULLREQUEST_SOURCEBRANCH
                 if apply_fixes.lower() != "none":
+                    SYSTEM_PULLREQUEST_SOURCEBRANCH = config.get(
+                        self.master.request_id, "SYSTEM_PULLREQUEST_SOURCEBRANCH", ""
+                    )
+                    if SYSTEM_PULLREQUEST_SOURCEBRANCH != "":
+                        remote_branch = SYSTEM_PULLREQUEST_SOURCEBRANCH
+                    BITBUCKET_BRANCH = config.get(
+                        self.master.request_id, "BITBUCKET_BRANCH", ""
+                    )
+                    if BITBUCKET_BRANCH != "":
+                        remote_branch = BITBUCKET_BRANCH
                     try:
                         repo = git.Repo(os.path.realpath(self.master.github_workspace))
                         repo.config_writer().set_value("user", "name", "MegaLinter").release()
