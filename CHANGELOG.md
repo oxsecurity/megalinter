@@ -15,6 +15,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Media
 
 - Linters enhancements
+  - [tsqllint](https://github.com/tsqllint/tsqllint) Re-enabled after .net 8 and security updates
 
 - Fixes
   - Trivy: handle retry if `failed to download Java DB` is detected
@@ -106,7 +107,6 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - Retry 5 times after 3 seconds in case of TooManyRequests when downloading vulnerability database
     - If the retries did not succeed, call trivy with `--skip-db-update --skip-check-update` (not ideal but better than nothing)
   - Bash/Perl: Support shell scripts with no extension and only support perl shebangs at the beginning of a file in <https://github.com/oxsecurity/megalinter/pull/4076>
-  - [tsqllint](https://github.com/tsqllint/tsqllint) Re-enabled after .net 8 and security updates
 
 - Fixes
   - Add debug traces to investigate reporters activation
