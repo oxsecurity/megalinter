@@ -416,6 +416,13 @@ RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/rel
 # lychee installation
 # Managed with COPY --link --from=lychee /usr/local/bin/lychee /usr/bin/
 #
+# tsqllint installation
+# Next line commented because already managed by another linter
+# RUN apk add --no-cache dotnet8-sdk
+# Next line commented because already managed by another linter
+# ENV PATH="${PATH}:/root/.dotnet/tools"
+    && dotnet tool install --global TSQLLint
+#
 #OTHER__END
 
 ################################

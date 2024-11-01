@@ -802,6 +802,13 @@ RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | 
 # lychee installation
 # Managed with COPY --link --from=lychee /usr/local/bin/lychee /usr/bin/
 #
+# tsqllint installation
+# Next line commented because already managed by another linter
+# RUN apk add --no-cache dotnet8-sdk
+# Next line commented because already managed by another linter
+# ENV PATH="${PATH}:/root/.dotnet/tools"
+    && dotnet tool install --global TSQLLint
+#
 # tflint installation
 # Managed with COPY --link --from=tflint /usr/local/bin/tflint /usr/bin/
 #
