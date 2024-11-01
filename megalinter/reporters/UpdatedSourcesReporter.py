@@ -74,7 +74,7 @@ class UpdatedSourcesReporter(Reporter):
                         repo.config_writer().set_value("user", "email", "megalinter@megalinter.io").release()
                         repo.git.add(update=True)
                         repo.git.commit('-m', 'megalinter auto fixes')
-                        repo.git.push()
+                        repo.git.push('origin', 'HEAD:<remoteBranchName>')
                     except git.GitCommandError as giterr:
                         logging.error(
                             c.red(
