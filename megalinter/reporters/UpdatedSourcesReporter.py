@@ -67,6 +67,13 @@ class UpdatedSourcesReporter(Reporter):
 
             if not config.exists(self.master.request_id, "GITHUB_REPOSITORY"):
                 apply_fixes = config.get(self.master.request_id, "APPLY_FIXES", "none")
+                # Should be able to use BITBUCKET_BRANCH for Bitbucket
+                # Need to work out how to determine the platform being used
+                # Concentrating on getting Azure DevOps working for now...
+                SYSTEM_PULLREQUEST_SOURCEBRANCH = config.get(
+                    self.master.request_id, "SYSTEM_PULLREQUEST_SOURCEBRANCH", ""
+                )
+                remote_branch = SYSTEM_PULLREQUEST_SOURCEBRANCH
                 if apply_fixes.lower() != "none":
                     try:
                         repo = git.Repo(os.path.realpath(self.master.github_workspace))
@@ -74,7 +81,7 @@ class UpdatedSourcesReporter(Reporter):
                         repo.config_writer().set_value("user", "email", "megalinter@megalinter.io").release()
                         repo.git.add(update=True)
                         repo.git.commit('-m', 'megalinter auto fixes')
-                        repo.git.push('origin', 'HEAD:<remoteBranchName>')
+                        repo.git.push('origin', f'HEAD:{remote_branch}')
                     except git.GitCommandError as giterr:
                         logging.error(
                             c.red(
