@@ -89,6 +89,10 @@ def build_markdown_summary(reporter_self, action_run_url=""):
         + os.linesep
     )
     p_r_msg += table_content + os.linesep
+
+    if reporter_self.master.result_message != "":
+        p_r_msg += reporter_self.master.result_message + os.linesep
+
     if action_run_url != "":
         p_r_msg += (
             "See detailed report in [MegaLinter reports"
