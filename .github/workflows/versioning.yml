@@ -30,8 +30,7 @@ jobs:
     runs-on: windows-latest
     environment:
       name: release
-    permissions:
-      contents: write
+    permissions: write-all
     steps:
       #############################
       # Check out the latest code #
