@@ -276,7 +276,9 @@ class Megalinter:
         ):
             self.status = "error"
             self.return_code = 1
-            self.result_message = "MegaLinter failed because of FAIL_IF_UPDATED_SOURCES=true"
+            self.result_message = (
+                "MegaLinter failed because of FAIL_IF_UPDATED_SOURCES=true"
+            )
 
         # Sort linters before reports production
         self.linters = sorted(
