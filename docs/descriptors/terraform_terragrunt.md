@@ -9,7 +9,7 @@ description: How to use terragrunt (configure, ignore files, ignore errors, help
 
 ## terragrunt documentation
 
-- Version in MegaLinter: **0.67.5**
+- Version in MegaLinter: **0.68.7**
 - Visit [Official Web Site](https://terragrunt.gruntwork.io){target=_blank}
 - See [How to configure terragrunt rules](https://terragrunt.gruntwork.io/docs/getting-started/configuration/#terragrunt-configuration-file){target=_blank}
 
@@ -100,6 +100,8 @@ COMMANDS:
    *                      Terragrunt forwards all other commands directly to Terraform
 
 GLOBAL OPTIONS:
+   --strict-control value                            Enables specific strict controls. For a list of available controls, see https://terragrunt.gruntwork.io/docs/reference/strict-mode . [$TERRAGRUNT_STRICT_CONTROL]
+   --strict-mode                                     Enables strict mode for Terragrunt. For more information, see https://terragrunt.gruntwork.io/docs/reference/strict-mode . [$TERRAGRUNT_STRICT_MODE]
    --terragrunt-auth-provider-cmd value              The command and arguments that can be used to fetch authentication configurations. [$TERRAGRUNT_AUTH_PROVIDER_CMD]
    --terragrunt-config value                         The path to the Terragrunt config file. Default is terragrunt.hcl. [$TERRAGRUNT_CONFIG]
    --terragrunt-debug                                Write terragrunt-debug.tfvars to working folder to help root-cause issues. [$TERRAGRUNT_DEBUG]
@@ -110,10 +112,10 @@ GLOBAL OPTIONS:
    --terragrunt-exclude-dir value                    Unix-style glob of directories to exclude when running *-all commands. [$TERRAGRUNT_EXCLUDE_DIR]
    --terragrunt-excludes-file value                  Path to a file with a list of directories that need to be excluded when running *-all commands. (default: .terragrunt-excludes) [$TERRAGRUNT_EXCLUDES_FILE]
    --terragrunt-fail-on-state-bucket-creation        When this flag is set Terragrunt will fail if the remote state bucket needs to be created. [$TERRAGRUNT_FAIL_ON_STATE_BUCKET_CREATION]
-   --terragrunt-fetch-dependency-output-from-state   The option fetchs dependency output directly from the state file instead of init dependencies and running terraform on them. [$TERRAGRUNT_FETCH_DEPENDENCY_OUTPUT_FROM_STATE]
+   --terragrunt-fetch-dependency-output-from-state   The option fetches dependency output directly from the state file instead of init dependencies and running terraform on them. [$TERRAGRUNT_FETCH_DEPENDENCY_OUTPUT_FROM_STATE]
    --terragrunt-forward-tf-stdout                    If specified, the output of OpenTofu/Terraform commands will be printed as is, without being integrated into the Terragrunt log. [$TERRAGRUNT_FORWARD_TF_STDOUT]
    --terragrunt-iam-assume-role-duration value       Session duration for IAM Assume Role session. Can also be set via the TERRAGRUNT_IAM_ASSUME_ROLE_DURATION environment variable. [$TERRAGRUNT_IAM_ASSUME_ROLE_DURATION]
-   --terragrunt-iam-assume-role-session-name value   Name for the IAM Assummed Role session. Can also be set via TERRAGRUNT_IAM_ASSUME_ROLE_SESSION_NAME environment variable. [$TERRAGRUNT_IAM_ASSUME_ROLE_SESSION_NAME]
+   --terragrunt-iam-assume-role-session-name value   Name for the IAM Assumed Role session. Can also be set via TERRAGRUNT_IAM_ASSUME_ROLE_SESSION_NAME environment variable. [$TERRAGRUNT_IAM_ASSUME_ROLE_SESSION_NAME]
    --terragrunt-iam-role value                       Assume the specified IAM role before executing OpenTofu/Terraform. Can also be set via the TERRAGRUNT_IAM_ROLE environment variable. [$TERRAGRUNT_IAM_ROLE]
    --terragrunt-iam-web-identity-token value         For AssumeRoleWithWebIdentity, the WebIdentity token. Can also be set via TERRAGRUNT_IAM_ASSUME_ROLE_WEB_IDENTITY_TOKEN environment variable [$TERRAGRUNT_IAM_ASSUME_ROLE_WEB_IDENTITY_TOKEN]
    --terragrunt-ignore-dependency-errors             *-all commands continue processing components even if a dependency fails. [$TERRAGRUNT_IGNORE_DEPENDENCY_ERRORS]
@@ -149,7 +151,7 @@ GLOBAL OPTIONS:
    --help, -h                                        Show help
    --version, -v                                     Show terragrunt version
 
-VERSION: v0.67.5
+VERSION: v0.68.7
 
 AUTHOR: Gruntwork <www.gruntwork.io>
 ```
@@ -159,7 +161,7 @@ AUTHOR: Gruntwork <www.gruntwork.io>
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=docker depName=alpine/terragrunt
-ARG TERRAFORM_TERRAGRUNT_VERSION=1.9.5
+ARG TERRAFORM_TERRAGRUNT_VERSION=1.9.8
 FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} AS terragrunt
 COPY --link --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
 ```

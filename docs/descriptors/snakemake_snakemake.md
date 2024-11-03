@@ -15,7 +15,7 @@ description: How to use snakemake (configure, ignore files, ignore errors, help 
 
 ## snakemake documentation
 
-- Version in MegaLinter: **8.23.2**
+- Version in MegaLinter: **8.25.1**
 - Visit [Official Web Site](https://snakemake.readthedocs.io/en/stable/){target=_blank}
 
 [![snakemake - GitHub](https://gh-card.dev/repos/snakemake/snakemake.svg?fullname=)](https://github.com/snakemake/snakemake){target=_blank}
@@ -113,7 +113,9 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--keep-going]
                  [--rerun-triggers {code,input,mtime,params,software-env} [{code,input,mtime,params,software-env} ...]]
                  [--force] [--executor {local,dryrun,touch}] [--forceall]
-                 [--forcerun [TARGET ...]] [--prioritize TARGET [TARGET ...]]
+                 [--forcerun [TARGET ...]]
+                 [--consider-ancient RULE=INPUTITEMS [RULE=INPUTITEMS ...]]
+                 [--prioritize TARGET [TARGET ...]]
                  [--batch RULE=BATCH/BATCHES] [--until TARGET [TARGET ...]]
                  [--omit-from TARGET [TARGET ...]] [--rerun-incomplete]
                  [--shadow-prefix DIR] [--scheduler [{ilp,greedy}]]
@@ -157,7 +159,8 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--local-storage-prefix LOCAL_STORAGE_PREFIX]
                  [--remote-job-local-storage-prefix REMOTE_JOB_LOCAL_STORAGE_PREFIX]
                  [--shared-fs-usage {input-output,persistence,software-deployment,source-cache,sources,storage-local-copies,none} [{input-output,persistence,software-deployment,source-cache,sources,storage-local-copies,none} ...]]
-                 [--scheduler-greediness SCHEDULER_GREEDINESS] [--no-hooks]
+                 [--scheduler-greediness SCHEDULER_GREEDINESS]
+                 [--scheduler-subsample SCHEDULER_SUBSAMPLE] [--no-hooks]
                  [--debug] [--runtime-profile FILE]
                  [--local-groupid LOCAL_GROUPID] [--attempt ATTEMPT]
                  [--show-failed-logs] [--log-handler-script FILE]
@@ -176,7 +179,7 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--scheduler-solver-path SCHEDULER_SOLVER_PATH]
                  [--deploy-sources QUERY CHECKSUM]
                  [--target-jobs TARGET_JOBS [TARGET_JOBS ...]]
-                 [--mode {default,subprocess,remote}]
+                 [--mode {remote,default,subprocess}]
                  [--report-html-path VALUE]
                  [--report-html-stylesheet-path VALUE]
                  [targets ...]
@@ -416,6 +419,16 @@ EXECUTION:
                         Force the re-execution or creation of the given rules
                         or files. Use this option if you changed a rule and
                         want to have all its output in your workflow updated.
+  --consider-ancient RULE=INPUTITEMS [RULE=INPUTITEMS ...]
+                        Consider given input items of given rules as ancient,
+                        i.e. not triggering re-runs if they are newer than the
+                        output files. Putting this into a workflow specific
+                        profile (or specifying as argument) allows to overrule
+                        rerun triggers caused by file modification dates where
+                        the user knows better. RULE is the name of the rule,
+                        INPUTITEMS is a comma separated list of input items of
+                        the rule (given as name or index (0-based)). (default:
+                        )
   --prioritize TARGET [TARGET ...], -P TARGET [TARGET ...]
                         Tell the scheduler to assign creation of given targets
                         (and all their dependencies) highest priority.
@@ -821,6 +834,14 @@ BEHAVIOR:
                         and 1 determines how careful jobs are selected for
                         execution. The default value (1.0) provides the best
                         speed and still acceptable scheduling quality.
+  --scheduler-subsample SCHEDULER_SUBSAMPLE
+                        Set the number of jobs to be considered for
+                        scheduling. If number of ready jobs is greater than
+                        this value, this number of jobs is randomly chosen for
+                        scheduling; if number of ready jobs is lower, this
+                        option has no effect. This can be useful on very large
+                        DAGs, where the scheduler can take some time selecting
+                        which jobs to run.
   --no-hooks            Do not invoke onstart, onsuccess or onerror hooks
                         after execution. (default: False)
   --debug               Allow to debug rules with e.g. PDB. This flag allows
@@ -863,7 +884,7 @@ REMOTE EXECUTION:
                         contain a working snakemake installation that is
                         compatible with (or ideally the same as) the currently
                         running version. (default:
-                        snakemake/snakemake:v8.23.2)
+                        snakemake/snakemake:v8.25.1)
   --immediate-submit, --is
                         Immediately submit all jobs to the cluster instead of
                         waiting for present input files. This will fail,
@@ -985,7 +1006,7 @@ INTERNAL:
   --target-jobs TARGET_JOBS [TARGET_JOBS ...]
                         Internal use only: Target particular jobs by
                         RULE:WILDCARD1=VALUE,WILDCARD2=VALUE,...
-  --mode {default,subprocess,remote}
+  --mode {remote,default,subprocess}
                         Internal use only: Set execution mode of Snakemake.
                         (default: default)
 

@@ -36,8 +36,7 @@ description: ktlint, detekt are available to analyze KOTLIN files in MegaLinter
 
 - Dockerfile commands :
 ```dockerfile
-ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
-ENV PATH="$JAVA_HOME/bin:${PATH}"
+ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk PATH="$JAVA_HOME/bin:${PATH}"
 ```
 
 - APK packages (Linux):

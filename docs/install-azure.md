@@ -60,7 +60,7 @@ pool:
   vmImage: ubuntu-latest
 
 variables:
-  repoName: $[ split(variables['System.PullRequest.SourceRepositoryURI'], '/')[6] ]
+  repoName: $[ replace(split(variables['System.PullRequest.SourceRepositoryURI'], '/')[6], '%20', ' ') ]
 
 steps:
   # Checkout triggering repo
