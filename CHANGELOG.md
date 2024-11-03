@@ -104,6 +104,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.15.4 to **8.15.7** on 2024-11-03
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.9.5 to **1.9.8** on 2024-11-03
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.67.5 to **0.68.7** on 2024-11-03
+  - [checkov](https://www.checkov.io/) from 3.2.276 to **3.2.277** on 2024-11-03
 <!-- linter-versions-end -->
 
 ## [v8.1.0] - 2024-10-13

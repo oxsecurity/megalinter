@@ -275,8 +275,7 @@ RUN curl -L https://github.com/PowerShell/PowerShell/releases/download/v7.4.2/po
 ENV PATH="${PATH}:/root/.dotnet/tools"
 #
 # KOTLIN installation
-ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
-ENV PATH="$JAVA_HOME/bin:${PATH}"
+ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk PATH="$JAVA_HOME/bin:${PATH}"
 #
 # POWERSHELL installation
 # Next line commented because already managed by another linter
