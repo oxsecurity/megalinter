@@ -265,7 +265,8 @@ COPY --link --from=lychee /usr/local/bin/lychee /usr/bin/
 #############################################################################################
 #OTHER__START
 # KOTLIN installation
-ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk PATH="$JAVA_HOME/bin:${PATH}"
+ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
+ENV PATH="$JAVA_HOME/bin:${PATH}"
 #
 # PHP installation
 RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" \

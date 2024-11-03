@@ -253,7 +253,8 @@ COPY --link --from=lychee /usr/local/bin/lychee /usr/bin/
 #OTHER__START
 RUN rc-update add docker boot && rc-service docker start || true
 # KOTLIN installation
-ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk PATH="$JAVA_HOME/bin:${PATH}"
+ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
+ENV PATH="$JAVA_HOME/bin:${PATH}"
 #
 # actionlint installation
 # Managed with COPY --link --from=actionlint /usr/local/bin/actionlint /usr/bin/actionlint
