@@ -89,6 +89,21 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.21.1 to **8.21.2** on 2024-10-29
   - [syft](https://github.com/anchore/syft) from 1.14.2 to **1.15.0** on 2024-10-29
   - [vale](https://vale.sh/) from 3.7.1 to **3.8.0** on 2024-10-29
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.18.2 to **1.18.3** on 2024-11-03
+  - [djlint](https://djlint.com/) from 1.35.2 to **1.35.4** on 2024-11-03
+  - [checkstyle](https://checkstyle.org/) from 10.19.0 to **10.20.0** on 2024-11-03
+  - [phplint](https://github.com/overtrue/phplint) from 9.5.3 to **9.5.4** on 2024-11-03
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.386 to **1.1.387** on 2024-11-03
+  - [ruff](https://github.com/astral-sh/ruff) from 0.7.1 to **0.7.2** on 2024-11-03
+  - [checkov](https://www.checkov.io/) from 3.2.270 to **3.2.276** on 2024-11-03
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.56.2 to **0.57.0** on 2024-11-03
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.56.2 to **0.57.0** on 2024-11-03
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.82.13 to **3.83.2** on 2024-11-03
+  - [rubocop](https://rubocop.org/) from 1.67.0 to **1.68.0** on 2024-11-03
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.24.1 to **8.25.1** on 2024-11-03
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.15.4 to **8.15.7** on 2024-11-03
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.9.5 to **1.9.8** on 2024-11-03
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.67.5 to **0.68.7** on 2024-11-03
 <!-- linter-versions-end -->
 
 ## [v8.1.0] - 2024-10-13

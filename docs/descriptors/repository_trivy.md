@@ -17,7 +17,7 @@ You can ignore a list of errors by defining a [.trivyignore file](https://aquase
 
 ## trivy documentation
 
-- Version in MegaLinter: **0.56.2**
+- Version in MegaLinter: **0.57.0**
 - Visit [Official Web Site](https://aquasecurity.github.io/trivy/){target=_blank}
 - See [How to configure trivy rules](https://aquasecurity.github.io/trivy/latest/docs/configuration/){target=_blank}
 - See [How to ignore files and directories with trivy](https://aquasecurity.github.io/trivy/latest/docs/configuration/filtering/#by-inline-comments){target=_blank}
@@ -140,6 +140,7 @@ Utility Commands
   completion  Generate the autocompletion script for the specified shell
   convert     Convert Trivy JSON report into a different format
   help        Help about any command
+  registry    Manage registry authentication
   server      Server mode
   version     Print the version
 
