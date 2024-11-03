@@ -9,7 +9,8 @@ install:
   apk:
     - openjdk21
   dockerfile:
-    - ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk PATH="$JAVA_HOME/bin:${PATH}"
+    - ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
+    - ENV PATH="$JAVA_HOME/bin:${PATH}"
 linters:
   # Java Checkstyle
   - linter_name: checkstyle
