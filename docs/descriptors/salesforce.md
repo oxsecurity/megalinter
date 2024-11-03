@@ -40,13 +40,12 @@ ARG SALESFORCE_CLI_VERSION=2.63.9
 ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.8.12
 # renovate: datasource=npm depName=sfdx-hardis
 ARG SFDX_HARDIS_VERSION=5.4.0
-ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
-ENV PATH="$JAVA_HOME/bin:${PATH}"
+ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk PATH="$JAVA_HOME/bin:${PATH}"
 RUN sf plugins install @salesforce/plugin-packaging@${SALESFORCE_PLUGIN_PACKAGING_VERSION} \
     && echo y|sf plugins install sfdx-hardis@${SFDX_HARDIS_VERSION} \
     && npm cache clean --force || true \
     && rm -rf /root/.npm/_cacache
-ENV SF_AUTOUPDATE_DISABLE=true
+ENV SF_AUTOUPDATE_DISABLE=true SF_CLI_DISABLE_AUTOUPDATE=true
 ```
 
 - APK packages (Linux):
