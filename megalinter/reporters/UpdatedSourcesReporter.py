@@ -6,6 +6,8 @@ Creates a folder containing only files updated by the linters
 import logging
 import os
 import shutil
+import chalk as c
+import git
 
 from megalinter import Reporter, config, utils
 
@@ -60,9 +62,41 @@ class UpdatedSourcesReporter(Reporter):
         if len(updated_files) > 0:
             logging.info(
                 f"[Updated Sources Reporter] copied {str(len(updated_files))} fixed source files"
-                f" in folder {updated_sources_dir}.\n"
-                "Download it from artifacts then copy-paste it in your local repo to apply linters updates"
+                f" in folder {updated_sources_dir}."
             )
+
+            if not config.exists(self.master.request_id, "GITHUB_REPOSITORY"):
+                apply_fixes = config.get(self.master.request_id, "APPLY_FIXES", "none")
+                if apply_fixes.lower() != "none":
+                    SYSTEM_PULLREQUEST_SOURCEBRANCH = config.get(
+                        self.master.request_id, "SYSTEM_PULLREQUEST_SOURCEBRANCH", ""
+                    )
+                    if SYSTEM_PULLREQUEST_SOURCEBRANCH != "":
+                        remote_branch = SYSTEM_PULLREQUEST_SOURCEBRANCH
+                    BITBUCKET_BRANCH = config.get(
+                        self.master.request_id, "BITBUCKET_BRANCH", ""
+                    )
+                    if BITBUCKET_BRANCH != "":
+                        remote_branch = BITBUCKET_BRANCH
+                    try:
+                        repo = git.Repo(os.path.realpath(self.master.github_workspace))
+                        repo.config_writer().set_value("user", "name", "MegaLinter").release()
+                        repo.config_writer().set_value("user", "email", "megalinter@megalinter.io").release()
+                        repo.git.add(update=True)
+                        repo.git.commit('-m', 'megalinter auto fixes')
+                        repo.git.push('origin', f'HEAD:{remote_branch}')
+                    except git.GitCommandError as git_err:
+                        logging.error(
+                            c.red(
+                                "❌ [Updated Sources Reporter] Failed to git push auto fixes: " + str(git_err.stderr)
+                            )
+                        )
+                        logging.warning(
+                            c.yellow(
+                                "⚠️ [Updated Sources Reporter] Download fixed source files from artifacts "
+                                "then copy-paste into your repo to apply linters updates"
+                            )
+                        )
         else:
             logging.info(
                 "[Updated Sources Reporter] No source file has been formatted or fixed"
