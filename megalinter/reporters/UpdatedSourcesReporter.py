@@ -85,10 +85,10 @@ class UpdatedSourcesReporter(Reporter):
                         repo.git.add(update=True)
                         repo.git.commit('-m', 'megalinter auto fixes')
                         repo.git.push('origin', f'HEAD:{remote_branch}')
-                    except git.GitCommandError as giterr:
+                    except git.GitCommandError as git_err:
                         logging.error(
                             c.red(
-                                "❌ [Updated Sources Reporter] Failed to git push auto fixes: " + str(giterr.stderr)
+                                "❌ [Updated Sources Reporter] Failed to git push auto fixes: " + str(git_err.stderr)
                             )
                         )
                         logging.warning(
