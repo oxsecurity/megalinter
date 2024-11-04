@@ -97,6 +97,11 @@ class UpdatedSourcesReporter(Reporter):
                                 "then copy-paste into your repo to apply linters updates"
                             )
                         )
+                    else:
+                        logging.info(
+                            "[Updated Sources Reporter] Fixed source files have automatically "
+                            "been pushed to the source branch"
+                        )
         else:
             logging.info(
                 "[Updated Sources Reporter] No source file has been formatted or fixed"
