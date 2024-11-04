@@ -24,6 +24,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Reporters
   - Fix AzureCommentReporter not adding comments to PR on 2024-10-15
   - Fix AzureCommentReporter fails when target repo contains spaces on 2024-10-23
+  - UpdatedSourcesReporter will git commit & push fixed files to source branch on 2024-11-04
 
 - Doc
   - Updated documentation with Azure central pipeline use case on 2024-10-16
