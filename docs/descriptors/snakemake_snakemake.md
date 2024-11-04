@@ -15,7 +15,7 @@ description: How to use snakemake (configure, ignore files, ignore errors, help 
 
 ## snakemake documentation
 
-- Version in MegaLinter: **8.24.1**
+- Version in MegaLinter: **8.25.1**
 - Visit [Official Web Site](https://snakemake.readthedocs.io/en/stable/){target=_blank}
 
 [![snakemake - GitHub](https://gh-card.dev/repos/snakemake/snakemake.svg?fullname=)](https://github.com/snakemake/snakemake){target=_blank}
@@ -113,7 +113,9 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--keep-going]
                  [--rerun-triggers {code,input,mtime,params,software-env} [{code,input,mtime,params,software-env} ...]]
                  [--force] [--executor {local,dryrun,touch}] [--forceall]
-                 [--forcerun [TARGET ...]] [--prioritize TARGET [TARGET ...]]
+                 [--forcerun [TARGET ...]]
+                 [--consider-ancient RULE=INPUTITEMS [RULE=INPUTITEMS ...]]
+                 [--prioritize TARGET [TARGET ...]]
                  [--batch RULE=BATCH/BATCHES] [--until TARGET [TARGET ...]]
                  [--omit-from TARGET [TARGET ...]] [--rerun-incomplete]
                  [--shadow-prefix DIR] [--scheduler [{ilp,greedy}]]
@@ -132,7 +134,7 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--d3dag] [--summary] [--detailed-summary] [--archive FILE]
                  [--cleanup-metadata FILE [FILE ...]] [--cleanup-shadow]
                  [--skip-script-cleanup] [--unlock]
-                 [--list-changes {code,input,params}] [--list-input-changes]
+                 [--list-changes {code,params,input}] [--list-input-changes]
                  [--list-params-changes] [--list-untracked]
                  [--delete-all-output | --delete-temp-output]
                  [--keep-incomplete] [--drop-metadata] [--version]
@@ -177,7 +179,7 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--scheduler-solver-path SCHEDULER_SOLVER_PATH]
                  [--deploy-sources QUERY CHECKSUM]
                  [--target-jobs TARGET_JOBS [TARGET_JOBS ...]]
-                 [--mode {remote,subprocess,default}]
+                 [--mode {remote,default,subprocess}]
                  [--report-html-path VALUE]
                  [--report-html-stylesheet-path VALUE]
                  [targets ...]
@@ -417,6 +419,16 @@ EXECUTION:
                         Force the re-execution or creation of the given rules
                         or files. Use this option if you changed a rule and
                         want to have all its output in your workflow updated.
+  --consider-ancient RULE=INPUTITEMS [RULE=INPUTITEMS ...]
+                        Consider given input items of given rules as ancient,
+                        i.e. not triggering re-runs if they are newer than the
+                        output files. Putting this into a workflow specific
+                        profile (or specifying as argument) allows to overrule
+                        rerun triggers caused by file modification dates where
+                        the user knows better. RULE is the name of the rule,
+                        INPUTITEMS is a comma separated list of input items of
+                        the rule (given as name or index (0-based)). (default:
+                        )
   --prioritize TARGET [TARGET ...], -P TARGET [TARGET ...]
                         Tell the scheduler to assign creation of given targets
                         (and all their dependencies) highest priority.
@@ -635,7 +647,7 @@ UTILITIES:
                         (default: False)
   --unlock              Remove a lock on the working directory. (default:
                         False)
-  --list-changes {code,input,params}, --lc {code,input,params}
+  --list-changes {code,params,input}, --lc {code,params,input}
                         List all output files for which the given items (code,
                         input, params) have changed since creation.
   --list-input-changes, --li
@@ -872,7 +884,7 @@ REMOTE EXECUTION:
                         contain a working snakemake installation that is
                         compatible with (or ideally the same as) the currently
                         running version. (default:
-                        snakemake/snakemake:v8.24.1)
+                        snakemake/snakemake:v8.25.1)
   --immediate-submit, --is
                         Immediately submit all jobs to the cluster instead of
                         waiting for present input files. This will fail,
@@ -994,7 +1006,7 @@ INTERNAL:
   --target-jobs TARGET_JOBS [TARGET_JOBS ...]
                         Internal use only: Target particular jobs by
                         RULE:WILDCARD1=VALUE,WILDCARD2=VALUE,...
-  --mode {remote,subprocess,default}
+  --mode {remote,default,subprocess}
                         Internal use only: Set execution mode of Snakemake.
                         (default: default)
 

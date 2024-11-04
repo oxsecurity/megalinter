@@ -30,8 +30,7 @@ jobs:
     runs-on: windows-latest
     environment:
       name: release
-    permissions:
-      contents: write
+    permissions: write-all
     steps:
       #############################
       # Check out the latest code #
@@ -44,5 +43,4 @@ jobs:
       - uses: Actions-R-Us/actions-tagger@v2.0.3
         with:
           publish_latest_tag: true
-        env:
-          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+

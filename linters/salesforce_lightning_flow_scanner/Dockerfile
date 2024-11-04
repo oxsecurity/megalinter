@@ -49,7 +49,7 @@ ARG SALESFORCE_CLI_VERSION=2.63.9
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
 ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.8.12
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=5.3.0
+ARG SFDX_HARDIS_VERSION=5.5.0
 # renovate: datasource=npm depName=lightning-flow-scanner
 ARG LIGHTNING_FLOW_SCANNER_VERSION=2.34.0
 #ARG__END
@@ -169,7 +169,7 @@ RUN sf plugins install @salesforce/plugin-packaging@${SALESFORCE_PLUGIN_PACKAGIN
     && echo y|sf plugins install sfdx-hardis@${SFDX_HARDIS_VERSION} \
     && npm cache clean --force || true \
     && rm -rf /root/.npm/_cacache
-ENV SF_AUTOUPDATE_DISABLE=true
+ENV SF_AUTOUPDATE_DISABLE=true SF_CLI_DISABLE_AUTOUPDATE=true
 #
 # lightning-flow-scanner installation
 RUN echo y|sf plugins install lightning-flow-scanner@${LIGHTNING_FLOW_SCANNER_VERSION} \

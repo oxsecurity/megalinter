@@ -15,7 +15,7 @@ description: How to use checkstyle (configure, ignore files, ignore errors, help
 
 ## checkstyle documentation
 
-- Version in MegaLinter: **10.19.0**
+- Version in MegaLinter: **10.20.0**
 - Visit [Official Web Site](https://checkstyle.org/){target=_blank}
 - See [How to configure checkstyle rules](https://checkstyle.org/config.html){target=_blank}
   - If custom `sun_checks.xml` config file isn't found, [sun_checks.xml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/sun_checks.xml){target=_blank} will be used
@@ -200,8 +200,7 @@ To specify an argument for a long option, you can use --<name>=<value> or
 - Dockerfile commands :
 ```dockerfile
 # Parent descriptor install
-ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
-ENV PATH="$JAVA_HOME/bin:${PATH}"
+ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk PATH="$JAVA_HOME/bin:${PATH}"
 # Linter install
 RUN CHECKSTYLE_LATEST=$(curl -s \
     -H "Accept: application/vnd.github+json" \
