@@ -105,6 +105,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.9.5 to **1.9.8** on 2024-11-03
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.67.5 to **0.68.7** on 2024-11-03
   - [checkov](https://www.checkov.io/) from 3.2.276 to **3.2.277** on 2024-11-03
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.18.3 to **1.18.4** on 2024-11-04
+  - [checkov](https://www.checkov.io/) from 3.2.277 to **3.2.278** on 2024-11-04
+  - [devskim](https://github.com/microsoft/DevSkim) from 1.0.33 to **1.0.44** on 2024-11-04
 <!-- linter-versions-end -->
 
 ## [v8.1.0] - 2024-10-13
