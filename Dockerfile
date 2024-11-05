@@ -27,7 +27,7 @@ ARG PROTOBUF_PROTOLINT_VERSION=0.50.5
 ARG REPOSITORY_GITLEAKS_VERSION=v8.21.2
 # renovate: datasource=docker depName=checkmarx/kics
 ARG REPOSITORY_KICS_VERSION=v2.1.3-alpine
-# renovate: datasource=docker depName=trufflesecurity/trufflehog 
+# renovate: datasource=docker depName=trufflesecurity/trufflehog
 ARG REPOSITORY_TRUFFLEHOG_VERSION=3.83.2
 # renovate: datasource=docker depName=jdkato/vale
 ARG SPELL_VALE_VERSION=v3.8.0
@@ -53,7 +53,7 @@ FROM hadolint/hadolint:${DOCKERFILE_HADOLINT_VERSION} AS hadolint
 FROM mstruebing/editorconfig-checker:${EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION} AS editorconfig-checker
 FROM golang:1-alpine AS revive
 ## The golang image used as a builder is a temporary workaround (https://github.com/mgechev/revive/issues/787)
-## for the released revive binaries not returning version numbers (devel). 
+## for the released revive binaries not returning version numbers (devel).
 ## The install command should then be what is commented in the go.megalinter-descriptor.yml
 # renovate: datasource=github-tags depName=mgechev/revive
 ARG GO_REVIVE_VERSION=v1.4.0
@@ -325,7 +325,7 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
     && echo "Changing owner of node_modules files…" \
     && chown -R "$(id -u)":"$(id -g)" node_modules # fix for https://github.com/npm/cli/issues/5900 \
     && echo "Removing extra node_module files…" \
-    && find . \( -not -path "/proc" \) -and \( -type f \( -iname "*.d.ts" -o -iname "*.map" -o -iname "*.npmignore" -o -iname "*.travis.yml" -o -iname "CHANGELOG.md" -o -iname "README.md" -o -iname ".package-lock.json" -o -iname "package-lock.json" \) -o -type d -name /root/.npm/_cacache \) -delete 
+    && find . \( -not -path "/proc" \) -and \( -type f \( -iname "*.d.ts" -o -iname "*.map" -o -iname "*.npmignore" -o -iname "*.travis.yml" -o -iname "CHANGELOG.md" -o -iname "README.md" -o -iname ".package-lock.json" -o -iname "package-lock.json" \) -o -type d -name /root/.npm/_cacache \) -delete
 WORKDIR /
 
 #NPM__END
@@ -794,13 +794,20 @@ RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | 
     && rm -rf /root/.npm/_cacache \
 #
 # scalafix installation
-    && ./coursier install scalafix --quiet --install-dir /usr/bin && rm -rf /root/.cache
+    && ./coursier install scalafix --quiet --install-dir /usr/bin && rm -rf /root/.cache \
 #
 # vale installation
 # Managed with COPY --link --from=vale /bin/vale /bin/vale
 #
 # lychee installation
 # Managed with COPY --link --from=lychee /usr/local/bin/lychee /usr/bin/
+#
+# tsqllint installation
+# Next line commented because already managed by another linter
+# RUN apk add --no-cache dotnet8-sdk
+# Next line commented because already managed by another linter
+# ENV PATH="${PATH}:/root/.dotnet/tools"
+    && dotnet tool install --global TSQLLint
 #
 # tflint installation
 # Managed with COPY --link --from=tflint /usr/local/bin/tflint /usr/bin/

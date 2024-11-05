@@ -15,6 +15,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Media
 
 - Linters enhancements
+  - [tsqllint](https://github.com/tsqllint/tsqllint) Re-enabled after .net 8 and security updates
 
 - Fixes
   - Trivy: handle retry if `failed to download Java DB` is detected
