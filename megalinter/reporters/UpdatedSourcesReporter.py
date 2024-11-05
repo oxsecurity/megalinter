@@ -68,6 +68,7 @@ class UpdatedSourcesReporter(Reporter):
             if not config.exists(self.master.request_id, "GITHUB_REPOSITORY"):
                 apply_fixes = config.get(self.master.request_id, "APPLY_FIXES", "none")
                 if apply_fixes.lower() != "none":
+                    remote_branch = ""
                     SYSTEM_PULLREQUEST_SOURCEBRANCH = config.get(
                         self.master.request_id, "SYSTEM_PULLREQUEST_SOURCEBRANCH", ""
                     )
@@ -78,30 +79,37 @@ class UpdatedSourcesReporter(Reporter):
                     )
                     if BITBUCKET_BRANCH != "":
                         remote_branch = BITBUCKET_BRANCH
-                    try:
-                        repo = git.Repo(os.path.realpath(self.master.github_workspace))
-                        repo.config_writer().set_value("user", "name", "MegaLinter").release()
-                        repo.config_writer().set_value("user", "email", "megalinter@megalinter.io").release()
-                        repo.git.add(update=True)
-                        repo.git.commit('-m', 'megalinter auto fixes')
-                        repo.git.push('origin', f'HEAD:{remote_branch}')
-                    except git.GitCommandError as git_err:
+                    if remote_branch == "":
                         logging.error(
                             c.red(
-                                "❌ [Updated Sources Reporter] Failed to git push auto fixes: " + str(git_err.stderr)
-                            )
-                        )
-                        logging.warning(
-                            c.yellow(
-                                "⚠️ [Updated Sources Reporter] Download fixed source files from artifacts "
-                                "then copy-paste into your repo to apply linters updates"
+                                "❌ [Updated Sources Reporter] Failed to retrieve git source branch"
                             )
                         )
                     else:
-                        logging.info(
-                            "[Updated Sources Reporter] Fixed source files have automatically "
-                            "been pushed to the source branch"
-                        )
+                        try:
+                            repo = git.Repo(os.path.realpath(self.master.github_workspace))
+                            repo.config_writer().set_value("user", "name", "MegaLinter").release()
+                            repo.config_writer().set_value("user", "email", "megalinter@megalinter.io").release()
+                            repo.git.add(update=True)
+                            repo.git.commit('-m', 'megalinter auto fixes')
+                            repo.git.push('origin', f'HEAD:{remote_branch}')
+                        except git.GitCommandError as git_err:
+                            logging.error(
+                                c.red(
+                                    "❌ [Updated Sources Reporter] Failed to git push auto fixes: " + str(git_err.stderr)
+                                )
+                            )
+                            logging.warning(
+                                c.yellow(
+                                    "⚠️ [Updated Sources Reporter] Download fixed source files from artifacts "
+                                    "then copy-paste into your repo to apply linters updates"
+                                )
+                            )
+                        else:
+                            logging.info(
+                                 "[Updated Sources Reporter] Fixed source files have automatically "
+                                "been pushed to the source branch"
+                            )
         else:
             logging.info(
                 "[Updated Sources Reporter] No source file has been formatted or fixed"
