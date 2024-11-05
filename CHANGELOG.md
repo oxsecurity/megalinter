@@ -13,6 +13,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - New linters
 
 - Media
+  - [10 MegaLinter Tips and Tricks Unlock its Full Potential](https://flexion.us/blog/megalinter-tips-and-tricks/) by [Wes Dean](https://github.com/wesley-dean)
 
 - Linters enhancements
   - [tsqllint](https://github.com/tsqllint/tsqllint) Re-enabled after .net 8 and security updates
