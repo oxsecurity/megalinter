@@ -68,6 +68,10 @@ CVE-2024-26147
 # tflint
 CVE-2024-3817
 
+# tsqllint
+CVE-2023-36414
+CVE-2024-0056
+
 # Misc
 # Not fixed yet https://avd.aquasec.com/nvd/2024/cve-2024-29415/
 CVE-2024-29415
