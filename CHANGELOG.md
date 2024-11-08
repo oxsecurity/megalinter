@@ -22,6 +22,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Trivy: handle retry if `failed to download Java DB` is detected
   - Salesforce linters: Add SF_CLI_DISABLE_AUTOUPDATE for SF CLI JIT plugins
   - Add message in PR comment if FAIL_IF_UPDATED_SOURCES is triggered
+  - Lintr: Support files in subdirectories, fix unit tests
 
 - Reporters
   - Fix AzureCommentReporter not adding comments to PR on 2024-10-15
