@@ -4,7 +4,6 @@ Use lintr to lint R files
 https://github.com/r-lib/lintr
 """
 from pathlib import Path
-from shutil import copyfile
 
 from megalinter import Linter
 
@@ -21,20 +20,18 @@ class RLinter(Linter):
 
         if self.config_file:
             # Instruct lintr to load an absolute filepath
-            r_commands.append(
-                f"options('lintr.linter_file' = '{self.config_file}')"
-            )
+            r_commands.append(f"options('lintr.linter_file' = '{self.config_file}')")
         else:
             # Instruct lintr to walk up the directory tree
-            r_commands.append(
-                f"lintr:::read_settings('{self.config_file_name}')"
-            )
+            r_commands.append(f"lintr:::read_settings('{self.config_file_name}')")
 
-        r_commands.extend([
-            f"lints <- lintr::lint('{Path(file).name}')",
-            "print(lints)",
-            "quit(save = 'no', status = if (length(lints) > 0) 1 else 0)",
-        ])
+        r_commands.extend(
+            [
+                f"lints <- lintr::lint('{Path(file).name}')",
+                "print(lints)",
+                "quit(save = 'no', status = if (length(lints) > 0) 1 else 0)",
+            ]
+        )
         # Build shell command
         cmd = ["R", "--slave", "-e", ";".join(r_commands)]
         return cmd
