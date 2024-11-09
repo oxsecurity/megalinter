@@ -110,20 +110,20 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.18.3 to **1.18.4** on 2024-11-04
   - [checkov](https://www.checkov.io/) from 3.2.277 to **3.2.278** on 2024-11-04
   - [devskim](https://github.com/microsoft/DevSkim) from 1.0.33 to **1.0.44** on 2024-11-04
-  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.30.23 to **0.31.34** on 2024-11-08
-  - [djlint](https://djlint.com/) from 1.35.4 to **1.36.1** on 2024-11-08
-  - [checkstyle](https://checkstyle.org/) from 10.20.0 to **10.20.1** on 2024-11-08
-  - [ktlint](https://ktlint.github.io) from 1.4.0 to **1.4.1** on 2024-11-08
-  - [markdown-link-check](https://github.com/tcort/markdown-link-check) from 3.12.2 to **3.13.6** on 2024-11-08
-  - [phpstan](https://phpstan.org/) from 1.12.7 to **1.12.8** on 2024-11-08
-  - [pyright](https://github.com/Microsoft/pyright) from 1.1.387 to **1.1.388** on 2024-11-08
-  - [ruff](https://github.com/astral-sh/ruff) from 0.7.2 to **0.7.3** on 2024-11-08
-  - [checkov](https://www.checkov.io/) from 3.2.278 to **3.2.283** on 2024-11-08
-  - [syft](https://github.com/anchore/syft) from 1.15.0 to **1.16.0** on 2024-11-08
-  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.25.1 to **8.25.2** on 2024-11-08
-  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.15.7 to **8.16.0** on 2024-11-08
-  - [lychee](https://lychee.cli.rs) from 0.16.1 to **0.17.0** on 2024-11-08
-  - [tsqllint](https://github.com/tsqllint/tsqllint) from 1.15.3.0 to **1.16.0.0** on 2024-11-08
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.30.23 to **0.31.34** on 2024-11-09
+  - [djlint](https://djlint.com/) from 1.35.4 to **1.36.1** on 2024-11-09
+  - [checkstyle](https://checkstyle.org/) from 10.20.0 to **10.20.1** on 2024-11-09
+  - [ktlint](https://ktlint.github.io) from 1.4.0 to **1.4.1** on 2024-11-09
+  - [markdown-link-check](https://github.com/tcort/markdown-link-check) from 3.12.2 to **3.13.6** on 2024-11-09
+  - [phpstan](https://phpstan.org/) from 1.12.7 to **1.12.8** on 2024-11-09
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.387 to **1.1.388** on 2024-11-09
+  - [ruff](https://github.com/astral-sh/ruff) from 0.7.2 to **0.7.3** on 2024-11-09
+  - [checkov](https://www.checkov.io/) from 3.2.278 to **3.2.283** on 2024-11-09
+  - [syft](https://github.com/anchore/syft) from 1.15.0 to **1.16.0** on 2024-11-09
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.25.1 to **8.25.2** on 2024-11-09
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.15.7 to **8.16.0** on 2024-11-09
+  - [lychee](https://lychee.cli.rs) from 0.16.1 to **0.17.0** on 2024-11-09
+  - [tsqllint](https://github.com/tsqllint/tsqllint) from 1.15.3.0 to **1.16.0.0** on 2024-11-09
 <!-- linter-versions-end -->
 
 ## [v8.1.0] - 2024-10-13
