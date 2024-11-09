@@ -222,7 +222,7 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 eslint-plugin-react \
                 eslint-plugin-jsx-a11y \
                 markdownlint-cli \
-                markdown-link-check \
+                markdown-link-check@3.12.2 \
                 markdown-table-formatter \
                 @ls-lint/ls-lint \
                 secretlint \
