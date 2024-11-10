@@ -55,7 +55,8 @@ linters:
     cli_lint_mode: project
     cli_lint_errors_count: total_lines
     cli_sarif_args:
-      - --report={{SARIF_OUTPUT_FILE}}
+      - --report
+      - "sarif:{{SARIF_OUTPUT_FILE}}"
     examples:
       - "detekt-cli"
       - "detekt-cli --report html:folder/kotlin_detekt_result.html"
