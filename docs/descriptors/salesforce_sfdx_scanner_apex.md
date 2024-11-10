@@ -94,7 +94,7 @@ sf scanner:run
 ### Help content
 
 ```shell
-(node:1765) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(node:1773) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
 (Use `node --trace-deprecation ...` to show where the warning was created)
 Scan a codebase with all the rules in the registry, or use parameters to filter the rules based on rulename, category, or ruleset.
 
@@ -149,40 +149,8 @@ GLOBAL FLAGS
 COMMANDS
   scanner run dfa  Scan codebase with all DFA rules by default.
 
-(node:1777) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(node:1785) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
 (Use `node --trace-deprecation ...` to show where the warning was created)
-@salesforce/cli: Installing plugin @salesforce/sfdx-scanner@4.7.0... installed v4.7.0
-npm warn EBADENGINE Unsupported engine {
-npm warn EBADENGINE   package: 'glob@11.0.0',
-npm warn EBADENGINE   required: { node: '20 || >=22' },
-npm warn EBADENGINE   current: { node: 'v21.7.3', npm: '10.9.0' }
-npm warn EBADENGINE }
-npm warn EBADENGINE Unsupported engine {
-npm warn EBADENGINE   package: 'minimatch@10.0.1',
-npm warn EBADENGINE   required: { node: '20 || >=22' },
-npm warn EBADENGINE   current: { node: 'v21.7.3', npm: '10.9.0' }
-npm warn EBADENGINE }
-npm warn EBADENGINE Unsupported engine {
-npm warn EBADENGINE   package: 'jackspeak@4.0.2',
-npm warn EBADENGINE   required: { node: '20 || >=22' },
-npm warn EBADENGINE   current: { node: 'v21.7.3', npm: '10.9.0' }
-npm warn EBADENGINE }
-npm warn EBADENGINE Unsupported engine {
-npm warn EBADENGINE   package: 'lightning-flow-scanner-core@4.3.0',
-npm warn EBADENGINE   required: { node: '^18 || ^20 || ^22' },
-npm warn EBADENGINE   current: { node: 'v21.7.3', npm: '10.9.0' }
-npm warn EBADENGINE }
-npm warn EBADENGINE Unsupported engine {
-npm warn EBADENGINE   package: 'path-scurry@2.0.0',
-npm warn EBADENGINE   required: { node: '20 || >=22' },
-npm warn EBADENGINE   current: { node: 'v21.7.3', npm: '10.9.0' }
-npm warn EBADENGINE }
-npm warn EBADENGINE Unsupported engine {
-npm warn EBADENGINE   package: 'lru-cache@11.0.2',
-npm warn EBADENGINE   required: { node: '20 || >=22' },
-npm warn EBADENGINE   current: { node: 'v21.7.3', npm: '10.9.0' }
-npm warn EBADENGINE }
-added 564 packages in 19s
 Warning: We're continually improving Salesforce Code Analyzer. Tell us what you think! Give feedback at http://sfdc.co/CodeAnalyzerFeedback
  name                                                   languages   categories            rulesets [dep] engine            is dfa is pilot
  ────────────────────────────────────────────────────── ─────────── ───────────────────── ────────────── ───────────────── ────── ────────

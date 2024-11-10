@@ -134,6 +134,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [vale](https://vale.sh/) from 3.8.0 to **3.9.0** on 2024-11-10
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.68.7 to **0.68.9** on 2024-11-10
   - [tflint](https://github.com/terraform-linters/tflint) from 0.53.0 to **0.54.0** on 2024-11-10
+  - [checkov](https://www.checkov.io/) from 3.2.283 to **3.2.284** on 2024-11-10
 <!-- linter-versions-end -->
 
 ## [v8.1.0] - 2024-10-13
