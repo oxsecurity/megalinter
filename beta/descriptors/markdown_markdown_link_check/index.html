@@ -3335,7 +3335,7 @@
 <p><a href="https://github.com/tcort/markdown-link-check"><img alt="GitHub stars" src="https://img.shields.io/github/stars/tcort/markdown-link-check?cacheSeconds=3600"/></a> <a href="https://github.com/tcort/markdown-link-check/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/tcort/markdown-link-check?sort=semver"/></a> <a href="https://github.com/tcort/markdown-link-check/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/tcort/markdown-link-check"/></a> <a href="https://github.com/tcort/markdown-link-check/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/tcort/markdown-link-check"/></a> <a href="https://github.com/tcort/markdown-link-check/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/tcort/markdown-link-check"/></a></p>
 <h2 id="markdown-link-check-documentation">markdown-link-check documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>3.12.2</strong></li>
+<li>Version in MegaLinter: <strong>3.13.6</strong></li>
 <li>Visit <a href="https://github.com/tcort/markdown-link-check#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/tcort/markdown-link-check#config-file-format" target="_blank">How to configure markdown-link-check rules</a><ul>
 <li>If custom <code>.markdown-link-check.json</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.markdown-link-check.json" target="_blank">.markdown-link-check.json</a> will be used</li>
@@ -3480,14 +3480,14 @@
 <td style="text-align: center;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico"/></a></td>
 <td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/dotnet/">dotnet</a></td>
 <td style="text-align: left;">Optimized for C, C++, C# or VB based projects</td>
-<td style="text-align: center;">61</td>
+<td style="text-align: center;">62</td>
 <td style="text-align: right;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet"/></a></a></td>
 </tr>
 <tr>
 <td style="text-align: center;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico"/></a></td>
 <td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/dotnetweb/">dotnetweb</a></td>
 <td style="text-align: left;">Optimized for C, C++, C# or VB based projects with JS/TS</td>
-<td style="text-align: center;">70</td>
+<td style="text-align: center;">71</td>
 <td style="text-align: right;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb"/></a></a></td>
 </tr>
 <tr>
@@ -3579,9 +3579,7 @@
 <pre><code class="language-shell">markdown-link-check -c .markdown-link-check.json myfile.md
 </code></pre>
 <h3 id="help-content">Help content</h3>
-<pre><code class="language-shell">(node:1522) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
-(Use `node --trace-deprecation ...` to show where the warning was created)
-Usage: markdown-link-check [options] [filenamesOrUrls...]
+<pre><code class="language-shell">Usage: markdown-link-check [options] [filenamesOrDirectorynamesOrUrls...]
 
 Options:
   -V, --version           output the version number
@@ -3590,11 +3588,12 @@ Options:
                           header configuration
   -q, --quiet             displays errors only
   -v, --verbose           displays detailed error information
-  -i --ignore &lt;paths&gt;     ignore input paths including an ignore path
+  -i, --ignore &lt;paths&gt;    ignore input paths including an ignore path
   -a, --alive &lt;code&gt;      comma separated list of HTTP codes to be considered
                           as alive
   -r, --retry             retry after the duration indicated in 'retry-after'
                           header when HTTP code is 429
+  --reporters &lt;names&gt;     specify reporters to use
   --projectBaseUrl &lt;url&gt;  the URL to use for {{BASEURL}} replacement
   -h, --help              display help for command
 </code></pre>

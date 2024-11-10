@@ -3347,7 +3347,7 @@ https://github.com/sgerrand/alpine-pkg-glibc/releases/download
 </code></pre>
 <h2 id="lychee-documentation">lychee documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>0.16.1</strong></li>
+<li>Version in MegaLinter: <strong>0.17.0</strong></li>
 <li>Visit <a href="https://lychee.cli.rs" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://lychee.cli.rs/#/usage/config" target="_blank">How to configure lychee rules</a></li>
 <li>See <a href="https://lychee.cli.rs/#/usage/cli" target="_blank">Index of problems detected by lychee</a></li>
@@ -3489,14 +3489,14 @@ https://github.com/sgerrand/alpine-pkg-glibc/releases/download
 <td style="text-align: center;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico"/></a></td>
 <td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/dotnet/">dotnet</a></td>
 <td style="text-align: left;">Optimized for C, C++, C# or VB based projects</td>
-<td style="text-align: center;">61</td>
+<td style="text-align: center;">62</td>
 <td style="text-align: right;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet"/></a></a></td>
 </tr>
 <tr>
 <td style="text-align: center;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico"/></a></td>
 <td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/dotnetweb/">dotnetweb</a></td>
 <td style="text-align: left;">Optimized for C, C++, C# or VB based projects with JS/TS</td>
-<td style="text-align: center;">70</td>
+<td style="text-align: center;">71</td>
 <td style="text-align: right;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb"/></a></a></td>
 </tr>
 <tr>
@@ -3632,6 +3632,22 @@ Options:
 
           [default: 1d]
 
+      --cache-exclude-status &lt;CACHE_EXCLUDE_STATUS&gt;
+          A list of status codes that will be ignored from the cache
+
+          The following accept range syntax is supported: [start]..[=]end|code. Some valid
+          examples are:
+
+          - 429
+          - 500..=599
+          - 500..
+
+          Use "lychee --cache-exclude-status '429, 500..502' &lt;inputs&gt;..." to provide a comma- separated
+          list of excluded status codes. This example will not cache results with a status code of 429, 500,
+          501 and 502.
+
+          [default: ]
+
       --dump
           Don't perform any link checking. Instead, dump all the links extracted from inputs that would be checked
 
@@ -3667,7 +3683,7 @@ Options:
   -u, --user-agent &lt;USER_AGENT&gt;
           User agent
 
-          [default: lychee/0.16.1]
+          [default: lychee/0.17.0]
 
   -i, --insecure
           Proceed for server connections considered insecure (invalid TLS)
