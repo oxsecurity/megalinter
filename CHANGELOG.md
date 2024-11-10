@@ -125,6 +125,15 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [lychee](https://lychee.cli.rs) from 0.16.1 to **0.17.0** on 2024-11-09
   - [tsqllint](https://github.com/tsqllint/tsqllint) from 1.15.3.0 to **1.16.0.0** on 2024-11-09
   - [markdown-link-check](https://github.com/tcort/markdown-link-check) from 3.13.6 to **3.12.2** on 2024-11-10
+  - [actionlint](https://rhysd.github.io/actionlint/) from 1.7.3 to **1.7.4** on 2024-11-10
+  - [revive](https://revive.run/) from 1.4.0 to **1.5.0** on 2024-11-10
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.83.2 to **3.83.5** on 2024-11-10
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 4.6.0 to **4.7.0** on 2024-11-10
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 4.6.0 to **4.7.0** on 2024-11-10
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 4.6.0 to **4.7.0** on 2024-11-10
+  - [vale](https://vale.sh/) from 3.8.0 to **3.9.0** on 2024-11-10
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.68.7 to **0.68.9** on 2024-11-10
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.53.0 to **0.54.0** on 2024-11-10
 <!-- linter-versions-end -->
 
 ## [v8.1.0] - 2024-10-13
