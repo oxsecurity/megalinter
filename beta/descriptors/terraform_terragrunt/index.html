@@ -3335,7 +3335,7 @@
 <p><a href="https://github.com/gruntwork-io/terragrunt"><img alt="GitHub stars" src="https://img.shields.io/github/stars/gruntwork-io/terragrunt?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-autofix-green"><img alt="autofix" src="https://shields.io/badge/-autofix-green"/></a> <a href="https://github.com/gruntwork-io/terragrunt/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/gruntwork-io/terragrunt?sort=semver"/></a> <a href="https://github.com/gruntwork-io/terragrunt/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/gruntwork-io/terragrunt"/></a> <a href="https://github.com/gruntwork-io/terragrunt/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/gruntwork-io/terragrunt"/></a> <a href="https://github.com/gruntwork-io/terragrunt/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/gruntwork-io/terragrunt"/></a></p>
 <h2 id="terragrunt-documentation">terragrunt documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>0.68.7</strong></li>
+<li>Version in MegaLinter: <strong>0.68.9</strong></li>
 <li>Visit <a href="https://terragrunt.gruntwork.io" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://terragrunt.gruntwork.io/docs/getting-started/configuration/#terragrunt-configuration-file" target="_blank">How to configure terragrunt rules</a></li>
 </ul>
@@ -3517,6 +3517,7 @@ COMMANDS:
    *                      Terragrunt forwards all other commands directly to Terraform
 
 GLOBAL OPTIONS:
+   --feature value                                   Set feature flags for the HCL code. [$TERRAGRUNT_FEATURE]
    --strict-control value                            Enables specific strict controls. For a list of available controls, see https://terragrunt.gruntwork.io/docs/reference/strict-mode . [$TERRAGRUNT_STRICT_CONTROL]
    --strict-mode                                     Enables strict mode for Terragrunt. For more information, see https://terragrunt.gruntwork.io/docs/reference/strict-mode . [$TERRAGRUNT_STRICT_MODE]
    --terragrunt-auth-provider-cmd value              The command and arguments that can be used to fetch authentication configurations. [$TERRAGRUNT_AUTH_PROVIDER_CMD]
@@ -3549,6 +3550,7 @@ GLOBAL OPTIONS:
    --terragrunt-no-auto-init                         Don't automatically run 'terraform/tofu init' during other terragrunt commands. You must run 'terragrunt init' manually. (default: true) [$TERRAGRUNT_NO_AUTO_INIT]
    --terragrunt-no-auto-retry                        Don't automatically re-run command in case of transient errors. (default: true) [$TERRAGRUNT_NO_AUTO_RETRY]
    --terragrunt-no-color                             If specified, Terragrunt output won't contain any color. [$TERRAGRUNT_NO_COLOR]
+   --terragrunt-no-destroy-dependencies-check        When this flag is set, Terragrunt will not check for dependent modules when destroying. [$TERRAGRUNT_NO_DESTROY_DEPENDENCIES_CHECK]
    --terragrunt-non-interactive                      Assume "yes" for all prompts. [$TERRAGRUNT_NON_INTERACTIVE]
    --terragrunt-parallelism value                    *-all commands parallelism set to at most N modules (default: 2147483647) [$TERRAGRUNT_PARALLELISM]
    --terragrunt-provider-cache                       Enables Terragrunt's provider caching. [$TERRAGRUNT_PROVIDER_CACHE]
@@ -3568,7 +3570,7 @@ GLOBAL OPTIONS:
    --help, -h                                        Show help
    --version, -v                                     Show terragrunt version
 
-VERSION: v0.68.7
+VERSION: v0.68.9
 
 AUTHOR: Gruntwork &lt;www.gruntwork.io&gt;
 </code></pre>
