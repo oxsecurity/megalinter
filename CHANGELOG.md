@@ -125,6 +125,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.15.7 to **8.16.0** on 2024-11-09
   - [lychee](https://lychee.cli.rs) from 0.16.1 to **0.17.0** on 2024-11-09
   - [tsqllint](https://github.com/tsqllint/tsqllint) from 1.15.3.0 to **1.16.0.0** on 2024-11-09
+  - [markdown-link-check](https://github.com/tcort/markdown-link-check) from 3.13.6 to **3.12.2** on 2024-11-10
 <!-- linter-versions-end -->
 
 ## [v8.1.0] - 2024-10-13

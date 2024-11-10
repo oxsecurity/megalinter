@@ -27,9 +27,9 @@ ARG PROTOBUF_PROTOLINT_VERSION=0.50.5
 # renovate: datasource=docker depName=zricethezav/gitleaks
 ARG REPOSITORY_GITLEAKS_VERSION=v8.21.2
 # renovate: datasource=docker depName=trufflesecurity/trufflehog 
-ARG REPOSITORY_TRUFFLEHOG_VERSION=3.83.2
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.83.5
 # renovate: datasource=docker depName=jdkato/vale
-ARG SPELL_VALE_VERSION=v3.8.0
+ARG SPELL_VALE_VERSION=v3.9.0
 #ARGTOP__END
 
 #############################################################################################
@@ -80,7 +80,7 @@ ARG SALESFORCE_CLI_VERSION=2.63.9
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
 ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.8.12
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=5.5.0
+ARG SFDX_HARDIS_VERSION=5.6.0
 # renovate: datasource=github-tags depName=detekt/detekt
 ARG DETEKT_VERSION=1.23.7
 
