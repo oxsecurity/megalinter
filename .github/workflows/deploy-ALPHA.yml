@@ -99,7 +99,6 @@ jobs:
             BUILD_DATE=${{ env.BUILD_DATE }}
             BUILD_REVISION=${{ github.sha }}
             BUILD_VERSION=alpha
-            --squash  # Enable image squashing to produce a single-layer image
           load: false
           push: true
           secrets: |
@@ -118,7 +117,6 @@ jobs:
             BUILD_DATE=${{ env.BUILD_DATE }}
             BUILD_REVISION=${{ github.sha }}
             BUILD_VERSION=alpha
-            --squash  # Enable image squashing to produce a single-layer image
           load: false
           push: true
           secrets: |
@@ -127,21 +125,20 @@ jobs:
             ghcr.io/oxsecurity/megalinter:alpha
           # ghcr.io/oxsecurity/megalinter:alpha-${{ github.sha }}
 
-      - name: Build & Push Worker Docker Image
-        uses: docker/build-push-action@v6
-        with:
-          context: .
-          file: Dockerfile-worker
-          platforms: linux/amd64
-          build-args: |
-            MEGALINTER_BASE_IMAGE=ghcr.io/oxsecurity/megalinter:alpha
-            BUILD_DATE=${{ env.BUILD_DATE }}
-            BUILD_REVISION=${{ github.sha }}
-            BUILD_VERSION=alpha
-            --squash  # Enable image squashing to produce a single-layer image
-          load: false
-          push: true
-          secrets: |
-            GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
-          tags: |
-            ghcr.io/oxsecurity/megalinter-worker:alpha
+      # - name: Build & Push Worker Docker Image
+      #   uses: docker/build-push-action@v6
+      #   with:
+      #     context: .
+      #     file: Dockerfile-worker
+      #     platforms: linux/amd64
+      #     build-args: |
+      #       MEGALINTER_BASE_IMAGE=ghcr.io/oxsecurity/megalinter:alpha
+      #       BUILD_DATE=${{ env.BUILD_DATE }}
+      #       BUILD_REVISION=${{ github.sha }}
+      #       BUILD_VERSION=alpha
+      #     load: false
+      #     push: true
+      #     secrets: |
+      #       GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
+      #     tags: |
+      #       ghcr.io/oxsecurity/megalinter-worker:alpha
