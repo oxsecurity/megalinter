@@ -16,6 +16,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [10 MegaLinter Tips and Tricks Unlock its Full Potential](https://flexion.us/blog/megalinter-tips-and-tricks/) by [Wes Dean](https://github.com/wesley-dean)
 
 - Linters enhancements
+  - [detekt](https://megalinter.io/latest/descriptors/kotlin_detekt/) Enable SARIF output + count errors
   - [tsqllint](https://github.com/tsqllint/tsqllint) Re-enabled after .net 8 and security updates
 
 - Fixes
