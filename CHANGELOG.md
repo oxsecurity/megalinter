@@ -38,6 +38,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Externalize mirroring from ghcr.io to docker hub in another workflow to avoid memory issues
   - Squash docker images to have less layers and size
   - Comment jobs related to GitHub Worker images, as CodeTotal is not actively maintained
+  - Make gitpod workflow not blocking until uv install is fixed
 
 - mega-linter-runner
 
