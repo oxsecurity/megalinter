@@ -10,10 +10,10 @@ install:
   dockerfile:
     - |-
       # renovate: datasource=npm depName=@salesforce/cli
-      ARG SALESFORCE_CLI_VERSION=2.63.9
+      ARG SALESFORCE_CLI_VERSION=2.65.8
     - |-
       # renovate: datasource=npm depName=@salesforce/plugin-packaging
-      ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.8.12
+      ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.9.0
     - |-
       # renovate: datasource=npm depName=sfdx-hardis
       ARG SFDX_HARDIS_VERSION=5.6.0
@@ -82,7 +82,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=@salesforce/sfdx-scanner
-          ARG SALESFORCE_SFDX_SCANNER_VERSION=4.6.0
+          ARG SALESFORCE_SFDX_SCANNER_VERSION=4.7.0
         - |-
           RUN sf plugins install @salesforce/sfdx-scanner@${SALESFORCE_SFDX_SCANNER_VERSION} \
               && npm cache clean --force || true \
@@ -155,7 +155,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=@salesforce/sfdx-scanner
-          ARG SALESFORCE_SFDX_SCANNER_VERSION=4.6.0
+          ARG SALESFORCE_SFDX_SCANNER_VERSION=4.7.0
         - |-
           RUN sf plugins install @salesforce/sfdx-scanner@${SALESFORCE_SFDX_SCANNER_VERSION} \
               && npm cache clean --force || true \
@@ -218,7 +218,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=@salesforce/sfdx-scanner
-          ARG SALESFORCE_SFDX_SCANNER_VERSION=4.6.0
+          ARG SALESFORCE_SFDX_SCANNER_VERSION=4.7.0
         - |-
           RUN sf plugins install @salesforce/sfdx-scanner@${SALESFORCE_SFDX_SCANNER_VERSION} \
               && npm cache clean --force || true \
