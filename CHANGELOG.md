@@ -25,11 +25,12 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Add message in PR comment if FAIL_IF_UPDATED_SOURCES is triggered
 
 - Reporters
-  - Fix AzureCommentReporter not adding comments to PR on 2024-10-15
-  - Fix AzureCommentReporter fails when target repo contains spaces on 2024-10-23
+  - Fix AzureCommentReporter not adding comments to PR
+  - Fix AzureCommentReporter fails when target repo contains spaces
 
 - Doc
-  - Updated documentation with Azure central pipeline use case on 2024-10-16
+  - Updated documentation with Azure central pipeline use case
+  - Update DevSkim documentation to show a valid exclusion config file
 
 - Flavors
 
@@ -39,6 +40,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Squash docker images to have less layers and size
   - Comment jobs related to GitHub Worker images, as CodeTotal is not actively maintained
   - Make gitpod workflow not blocking until uv install is fixed
+  - Update stale comment
 
 - mega-linter-runner
 
@@ -138,6 +140,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.68.7 to **0.68.9** on 2024-11-10
   - [tflint](https://github.com/terraform-linters/tflint) from 0.53.0 to **0.54.0** on 2024-11-10
   - [checkov](https://www.checkov.io/) from 3.2.283 to **3.2.284** on 2024-11-10
+  - [golangci-lint](https://golangci-lint.run/) from 1.61.0 to **1.62.0** on 2024-11-10
+  - [phpstan](https://phpstan.org/) from 1.12.8 to **1.12.9** on 2024-11-10
+  - [checkov](https://www.checkov.io/) from 3.2.284 to **3.2.286** on 2024-11-10
 <!-- linter-versions-end -->
 
 ## [v8.1.0] - 2024-10-13
@@ -170,7 +175,6 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Fix Grafana Home Dashboard to add missing criteria
   - Update PRE_COMMANDS documentation to describe all properties
   - Update Grafana documentation to fix secrets typo
-  - Update Devskim documentation to show a valid exclusion config file
 
 - CI
   - Free space in release job to avoid no space left on device, by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/3914>
