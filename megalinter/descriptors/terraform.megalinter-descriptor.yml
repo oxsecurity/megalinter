@@ -45,7 +45,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=docker depName=ghcr.io/terraform-linters/tflint
-          ARG TERRAFORM_TFLINT_VERSION=0.53.0
+          ARG TERRAFORM_TFLINT_VERSION=0.54.0
         - FROM ghcr.io/terraform-linters/tflint:v${TERRAFORM_TFLINT_VERSION} AS tflint
         - COPY --link --from=tflint /usr/local/bin/tflint /usr/bin/
 
