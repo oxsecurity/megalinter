@@ -44,6 +44,7 @@ jobs:
     # Set the agent to run on
     runs-on: ubuntu-latest
     permissions:
+      actions: write
       packages: write
     # Only run this on the main repo
     if: github.repository == 'oxsecurity/megalinter' && !contains(github.event.head_commit.message, 'skip deploy') && !contains(github.event.head_commit.message, 'Release MegaLinter v')
@@ -59,7 +60,7 @@ jobs:
       ########################################################
       # Publish updated version of mega-linter-runner on NPM #
       ########################################################
-      - uses: actions/setup-node@v4.0.4
+      - uses: actions/setup-node@v4.1.0
         with:
           node-version: "20.x"
           registry-url: "https://registry.npmjs.org"
@@ -156,11 +157,18 @@ jobs:
             BUILD_DATE=${{ fromJSON(steps.meta-s.outputs.json).labels['org.opencontainers.image.created'] }}
             BUILD_VERSION=${{ fromJSON(steps.meta-s.outputs.json).labels['org.opencontainers.image.version'] }}
             BUILD_REVISION=${{ fromJSON(steps.meta-s.outputs.json).labels['org.opencontainers.image.revision'] }}
+            --squash  # Enable image squashing to produce a single-layer image
           load: false
           push: ${{ github.event_name != 'pull_request' }}
           secrets: |
             GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
           tags: ${{ steps.meta-s.outputs.tags }}
+
+      - name: Invoke Mirror docker image workflow (Server image)
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: mirror-docker-image.yml
+          inputs: '{ "source-image": "${{ steps.meta-s.outputs.tags }}", "target-image": "${{ steps.meta-s-dhub.outputs.tags }}" }'
 
       - name: Build & Push Docker Image
         uses: docker/build-push-action@v6
@@ -172,11 +180,18 @@ jobs:
             BUILD_DATE=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.created'] }}
             BUILD_VERSION=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.version'] }}
             BUILD_REVISION=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.revision'] }}
+            --squash  # Enable image squashing to produce a single-layer image
           load: false
           push: ${{ github.event_name != 'pull_request' }}
           secrets: |
             GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
           tags: ${{ steps.meta.outputs.tags }}
+
+      - name: Invoke Mirror docker image workflow (Main image)
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: mirror-docker-image.yml
+          inputs: '{ "source-image": "${{ steps.meta.outputs.tags }}", "target-image": "${{ steps.meta-dhub.outputs.tags }}" }'
 
       - name: Build & Push Docker Worker Image
         uses: docker/build-push-action@v6
@@ -189,41 +204,18 @@ jobs:
             BUILD_DATE=${{ fromJSON(steps.meta-w.outputs.json).labels['org.opencontainers.image.created'] }}
             BUILD_VERSION=${{ fromJSON(steps.meta-w.outputs.json).labels['org.opencontainers.image.version'] }}
             BUILD_REVISION=${{ fromJSON(steps.meta-w.outputs.json).labels['org.opencontainers.image.revision'] }}
+            --squash  # Enable image squashing to produce a single-layer image
           load: false
           push: ${{ github.event_name != 'pull_request' }}
           secrets: |
             GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
           tags: ${{ steps.meta-w.outputs.tags }}
 
-      - name: Login to Docker Hub
-        uses: docker/login-action@v3
+      - name: Invoke Mirror docker image workflow (Worker image)
+        uses: benc-uk/workflow-dispatch@v1
         with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-
-      # Copy ghrc.io image to Docker Hub (main image)
-      - name: Pull image from GHCR
-        run: docker system prune -a --force && docker pull "${{ steps.meta.outputs.tags }}"
-      - name: Tag image for Docker Hub
-        run: docker tag "${{ steps.meta.outputs.tags }}" "${{ steps.meta-dhub.outputs.tags }}"
-      - name: Push image to Docker Hub
-        run: docker push "${{ steps.meta-dhub.outputs.tags }}"
-
-      # Copy ghrc.io image to Docker Hub (server)
-      - name: Pull image from GHCR
-        run: docker system prune -a --force && docker pull "${{ steps.meta-s.outputs.tags }}"
-      - name: Tag image for Docker Hub
-        run: docker tag "${{ steps.meta-s.outputs.tags }}" "${{ steps.meta-s-dhub.outputs.tags }}"
-      - name: Push image to Docker Hub
-        run: docker push "${{ steps.meta-s-dhub.outputs.tags }}"
-
-      # Copy ghrc.io image to Docker Hub (worker)
-      - name: Pull image from GHCR
-        run: docker system prune -a --force && docker pull "${{ steps.meta-w.outputs.tags }}"
-      - name: Tag image for Docker Hub
-        run: docker tag "${{ steps.meta-w.outputs.tags }}" "${{ steps.meta-w-dhub.outputs.tags }}"
-      - name: Push image to Docker Hub
-        run: docker push "${{ steps.meta-w-dhub.outputs.tags }}"
+          workflow: mirror-docker-image.yml
+          inputs: '{ "source-image": "${{ steps.meta-w.outputs.tags }}", "target-image": "${{ steps.meta-w-dhub.outputs.tags }}" }'
 
       # ###############################
       # # Run tests for code coverage #

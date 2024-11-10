@@ -15,7 +15,7 @@ description: How to use ktlint (configure, ignore files, ignore errors, help & v
 
 ## ktlint documentation
 
-- Version in MegaLinter: **1.3.1**
+- Version in MegaLinter: **1.4.1**
 - Visit [Official Web Site](https://ktlint.github.io){target=_blank}
 - See [Index of problems detected by ktlint](https://ktlint.github.io/#rules){target=_blank}
 
@@ -63,8 +63,8 @@ This linter is available in the following flavors
 |        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/c_cpp.ico" alt="" height="32px" class="megalinter-icon"></a>        | [c_cpp](https://megalinter.io/beta/flavors/c_cpp/)                 | Optimized for pure C/C++ projects                        |        54        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-c_cpp/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-c_cpp) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)             | MegaLinter for the most commonly used languages          |        83        |             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
 |    <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/documentation.ico" alt="" height="32px" class="megalinter-icon"></a>    | [documentation](https://megalinter.io/beta/flavors/documentation/) | MegaLinter for documentation projects                    |        49        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-documentation/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-documentation) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/)               | Optimized for C, C++, C# or VB based projects            |        61        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
-|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/)         | Optimized for C, C++, C# or VB based projects with JS/TS |        70        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/)               | Optimized for C, C++, C# or VB based projects            |        62        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/)         | Optimized for C, C++, C# or VB based projects with JS/TS |        71        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
 |         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a>          | [go](https://megalinter.io/beta/flavors/go/)                       | Optimized for GO based projects                          |        51        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-go/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-go) |
 |        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.io/beta/flavors/java/)                   | Optimized for JAVA based projects                        |        52        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
 |     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.io/beta/flavors/javascript/)       | Optimized for JAVASCRIPT or TYPESCRIPT based projects    |        59        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript) |
@@ -104,28 +104,22 @@ ktlint --format myfile.kt
 ```shell
 Usage: ktlint [<options>] [<arguments>]... <command> [<args>]...
 
-  An anti-bikeshedding Kotlin linter with built-in formatter. (
-  https://pinterest.github.io/ktlint/latest/).
+  An anti-bikeshedding Kotlin linter with built-in formatter.
+  (https://pinterest.github.io/ktlint/latest/).
 
-  Usage on Windows: java -jar ktlint.jar <options> [<arguments>]... <command>
+  Usage on Windows: java -jar ktlint.jar [<options>] [<arguments>]... <command>
   [<args>]...
 
+  # EXAMPLES
 
-  ═════════════════════════════════ EXAMPLES ══════════════════════════════════
-
-
-
-  ─────────────────────────── Use default patterns ────────────────────────────
-
+  ## Use default patterns
 
   Check the style of all Kotlin files (ending with '.kt' or '.kts') inside the
   current dir (recursively). Hidden folders will be skipped.
 
-  ktlint
+  `ktlint`
 
-
-  ───────────────────────────── Specify patterns ──────────────────────────────
-
+  ## Specify patterns
 
   Check only certain locations starting from the current directory. Prepend !
   to negate the pattern, KtLint uses .gitignore pattern style syntax. Globs are
@@ -134,32 +128,26 @@ Usage: ktlint [<options>] [<arguments>]... <command> [<args>]...
   Check all '.kt' files in 'src/' directory, but ignore files ending with
   'Test.kt':
 
-  ktlint "src/**/*.kt" "!src/**/*Test.kt"
+  `ktlint "src/**/*.kt" "!src/**/*Test.kt"`
 
   Check all '.kt' files in 'src/' directory, but ignore 'generated' directory
   and its subdirectories:
 
-  ktlint "src/**/*.kt" "!src/**/generated/**"
+  `ktlint "src/**/*.kt" "!src/**/generated/**"`
 
-
-  ─────────────────────── Auto-correct style violations ───────────────────────
-
+  ## Auto-correct style violations
 
   Check all '.kt' files in 'src/' directory, and when possible automatically
   correct the lint violations:
 
-  ktlint -F "src/**/*.kt"
+  `ktlint -F "src/**/*.kt"`
 
+  ## Using custom reporter jar and overriding report location
 
-  ───────── Using custom reporter jar and overriding report location ──────────
+  `ktlint
+  --reporter=csv,artifact=/path/to/reporter/csv.jar,output=my-custom-report.csv`
 
-
-  ktlint
-  --reporter=csv,artifact=/path/to/reporter/csv.jar,output=my-custom-report.csv
-
-
-  ═══════════════════════════ Options and commands ════════════════════════════
-
+  # Options and commands
 
 Options:
   -v, --version            Show the version and exit
@@ -181,6 +169,9 @@ Options:
   -R, --ruleset=<text>     A path to a JAR file containing additional
                            ruleset(s)
   --stdin                  Read file from stdin
+  --stdin-path=<text>      Virtual file location for stdin. When combined with
+                           option '--format' the actual file will not be
+                           overwritten
   --patterns-from-stdin[=<text>]
                            Read additional patterns to check/format from stdin.
                            Patterns are delimited by the given argument.

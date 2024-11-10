@@ -25,7 +25,7 @@ FROM tenable/terrascan:${TERRAFORM_TERRASCAN_VERSION} AS terrascan
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.4.20 AS uv
+FROM ghcr.io/astral-sh/uv:0.4.28 AS uv
 FROM python:3.12.7-alpine3.20 AS build-ml-core
 WORKDIR /
 COPY pyproject.toml .

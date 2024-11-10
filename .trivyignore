@@ -32,6 +32,10 @@ CVE-2023-45283
 CVE-2023-49569
 CVE-2023-49568
 
+# node
+# json-path
+CVE-2024-21534
+
 # python
 CVE-2024-6232
 CVE-2024-7592
@@ -63,6 +67,10 @@ CVE-2024-26147
 
 # tflint
 CVE-2024-3817
+
+# tsqllint
+CVE-2023-36414
+CVE-2024-0056
 
 # Misc
 # Not fixed yet https://avd.aquasec.com/nvd/2024/cve-2024-29415/
