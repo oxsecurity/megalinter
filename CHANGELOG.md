@@ -25,6 +25,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Add message in PR comment if FAIL_IF_UPDATED_SOURCES is triggered
 
 - Reporters
+  - UpdatedSourcesReporter will git commit & push fixed files to source branch if APPLY_FIXES is set
   - Fix AzureCommentReporter not adding comments to PR
   - Fix AzureCommentReporter fails when target repo contains spaces
 
