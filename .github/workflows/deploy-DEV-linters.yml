@@ -140,6 +140,7 @@ jobs:
             "spell_vale",
             "spell_lychee",
             "sql_sqlfluff",
+            "sql_tsqllint",
             "swift_swiftlint",
             "tekton_tekton_lint",
             "terraform_tflint",
@@ -224,7 +225,7 @@ jobs:
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: "docker.io/${{ fromJson(steps.meta.outputs.json).tags[0] }}"
+          image-ref: "${{ fromJson(steps.meta.outputs.json).tags[0] }}"
           format: "table"
           exit-code: "1"
           ignore-unfixed: true

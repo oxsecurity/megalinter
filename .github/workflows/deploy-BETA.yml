@@ -17,7 +17,8 @@ name: "Build & Deploy - BETA"
 on:
   push:
     branches:
-      - "main"
+      - main
+      - dbgbeta
     paths:
       - ".github/workflows/**"
       - "Dockerfile"
@@ -43,6 +44,7 @@ jobs:
     # Set the agent to run on
     runs-on: ubuntu-latest
     permissions:
+      actions: write
       packages: write
     # Only run this on the main repo
     if: github.repository == 'oxsecurity/megalinter' && !contains(github.event.head_commit.message, 'skip deploy') && !contains(github.event.head_commit.message, 'Release MegaLinter v')
@@ -58,7 +60,7 @@ jobs:
       ########################################################
       # Publish updated version of mega-linter-runner on NPM #
       ########################################################
-      - uses: actions/setup-node@v4.0.4
+      - uses: actions/setup-node@v4.1.0
         with:
           node-version: "20.x"
           registry-url: "https://registry.npmjs.org"
@@ -83,8 +85,16 @@ jobs:
         id: meta
         with:
           images: |
-            name=${{ github.repository }}
             name=ghcr.io/${{ github.repository }}
+          tags: |
+            type=raw,value=beta
+
+      - name: Docker Metadata action (Docker Hub)
+        uses: docker/metadata-action@v5.5.1
+        id: meta-dhub
+        with:
+          images: |
+            name=docker.io/${{ github.repository }}
           tags: |
             type=raw,value=beta
 
@@ -93,18 +103,34 @@ jobs:
         id: meta-s
         with:
           images: |
-            name=${{ github.repository }}-server,enable=false
             name=ghcr.io/${{ github.repository }}-server
           tags: |
             type=raw,value=beta
 
-      - name: Docker Metadata action (Worker)
+      - name: Docker Metadata action (Server Docker Hub)
         uses: docker/metadata-action@v5.5.1
-        id: meta-w
+        id: meta-s-dhub
         with:
           images: |
-            name=${{ github.repository }}-worker,enable=false
-            name=ghcr.io/${{ github.repository }}-worker
+            name=docker.io/${{ github.repository }}-server
+          tags: |
+            type=raw,value=beta
+
+      # - name: Docker Metadata action (Worker)
+      #   uses: docker/metadata-action@v5.5.1
+      #   id: meta-w
+      #   with:
+      #     images: |
+      #       name=ghcr.io/${{ github.repository }}-worker
+      #     tags: |
+      #       type=raw,value=beta
+
+      - name: Docker Metadata action (Worker Server)
+        uses: docker/metadata-action@v5.5.1
+        id: meta-w-dhub
+        with:
+          images: |
+            name=docker.io/${{ github.repository }}-worker
           tags: |
             type=raw,value=beta
 
@@ -113,12 +139,6 @@ jobs:
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
-
-      - name: Login to Docker Hub
-        uses: docker/login-action@v3
-        with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v3
@@ -143,6 +163,12 @@ jobs:
             GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
           tags: ${{ steps.meta-s.outputs.tags }}
 
+      - name: Invoke Mirror docker image workflow (Server image)
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: mirror-docker-image.yml
+          inputs: '{ "source-image": "${{ steps.meta-s.outputs.tags }}", "target-image": "${{ steps.meta-s-dhub.outputs.tags }}" }'
+
       - name: Build & Push Docker Image
         uses: docker/build-push-action@v6
         with:
@@ -159,22 +185,34 @@ jobs:
             GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
           tags: ${{ steps.meta.outputs.tags }}
 
-      - name: Build & Push Docker Worker Image
-        uses: docker/build-push-action@v6
+      - name: Invoke Mirror docker image workflow (Main image)
+        uses: benc-uk/workflow-dispatch@v1
         with:
-          context: .
-          file: Dockerfile-worker
-          platforms: linux/amd64
-          build-args: |
-            MEGALINTER_BASE_IMAGE=${{ fromJson(steps.meta-w.outputs.json).tags[0]}}
-            BUILD_DATE=${{ fromJSON(steps.meta-w.outputs.json).labels['org.opencontainers.image.created'] }}
-            BUILD_VERSION=${{ fromJSON(steps.meta-w.outputs.json).labels['org.opencontainers.image.version'] }}
-            BUILD_REVISION=${{ fromJSON(steps.meta-w.outputs.json).labels['org.opencontainers.image.revision'] }}
-          load: false
-          push: ${{ github.event_name != 'pull_request' }}
-          secrets: |
-            GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
-          tags: ${{ steps.meta-w.outputs.tags }}
+          workflow: mirror-docker-image.yml
+          inputs: '{ "source-image": "${{ steps.meta.outputs.tags }}", "target-image": "${{ steps.meta-dhub.outputs.tags }}" }'
+
+      # - name: Build & Push Docker Worker Image
+      #   uses: docker/build-push-action@v6
+      #   with:
+      #     context: .
+      #     file: Dockerfile-worker
+      #     platforms: linux/amd64
+      #     build-args: |
+      #       MEGALINTER_BASE_IMAGE=${{ fromJson(steps.meta-w.outputs.json).tags[0]}}
+      #       BUILD_DATE=${{ fromJSON(steps.meta-w.outputs.json).labels['org.opencontainers.image.created'] }}
+      #       BUILD_VERSION=${{ fromJSON(steps.meta-w.outputs.json).labels['org.opencontainers.image.version'] }}
+      #       BUILD_REVISION=${{ fromJSON(steps.meta-w.outputs.json).labels['org.opencontainers.image.revision'] }}
+      #     load: false
+      #     push: ${{ github.event_name != 'pull_request' }}
+      #     secrets: |
+      #       GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
+      #     tags: ${{ steps.meta-w.outputs.tags }}
+
+      # - name: Invoke Mirror docker image workflow (Worker image)
+      #   uses: benc-uk/workflow-dispatch@v1
+      #   with:
+      #     workflow: mirror-docker-image.yml
+      #     inputs: '{ "source-image": "${{ steps.meta-w.outputs.tags }}", "target-image": "${{ steps.meta-w-dhub.outputs.tags }}" }'
 
       # ###############################
       # # Run tests for code coverage #
@@ -193,7 +231,7 @@ jobs:
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: "docker.io/${{ fromJson(steps.meta.outputs.json).tags[0]}}"
+          image-ref: "${{ steps.meta.outputs.tags }}"
           format: 'table'
           exit-code: '1'
           ignore-unfixed: true

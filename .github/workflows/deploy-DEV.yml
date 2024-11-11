@@ -218,7 +218,7 @@ jobs:
       # Test mega-linter-runner with newly created image
       - name: Setup Node
         if: ${{ steps.docker_build.outcome }} == 'success' && !contains(github.event.head_commit.message, 'quick build')
-        uses: actions/setup-node@v4.0.4
+        uses: actions/setup-node@v4.1.0
         with:
           node-version: "20.x"
       - name: Install NPM dependencies
@@ -241,7 +241,7 @@ jobs:
       # - name: Run Trivy vulnerability scanner
       #   uses: aquasecurity/trivy-action@master
       #   with:
-      #     image-ref: "docker.io/${{ fromJson(steps.meta.outputs.json).tags[0]}}"
+      #     image-ref: "${{ fromJson(steps.meta.outputs.json).tags[0]}}"
       #     format: 'table'
       #     exit-code: '1'
       #     ignore-unfixed: true

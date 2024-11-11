@@ -68,8 +68,8 @@ This linter is available in the following flavors
 |        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/c_cpp.ico" alt="" height="32px" class="megalinter-icon"></a>        | [c_cpp](https://megalinter.io/beta/flavors/c_cpp/)                 | Optimized for pure C/C++ projects                        |        54        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-c_cpp/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-c_cpp) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)             | MegaLinter for the most commonly used languages          |        83        |             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
 |    <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/documentation.ico" alt="" height="32px" class="megalinter-icon"></a>    | [documentation](https://megalinter.io/beta/flavors/documentation/) | MegaLinter for documentation projects                    |        49        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-documentation/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-documentation) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/)               | Optimized for C, C++, C# or VB based projects            |        61        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
-|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/)         | Optimized for C, C++, C# or VB based projects with JS/TS |        70        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/)               | Optimized for C, C++, C# or VB based projects            |        62        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/)         | Optimized for C, C++, C# or VB based projects with JS/TS |        71        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
 |         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a>          | [go](https://megalinter.io/beta/flavors/go/)                       | Optimized for GO based projects                          |        51        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-go/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-go) |
 |        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.io/beta/flavors/java/)                   | Optimized for JAVA based projects                        |        52        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
 |     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.io/beta/flavors/javascript/)       | Optimized for JAVASCRIPT or TYPESCRIPT based projects    |        59        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript) |
@@ -148,6 +148,10 @@ OPTIONS
            Note that this mode is experimental and not guaranteed to function
            properly.
 
+       --allow-dynamic-dependency-resolution
+           Experimental: allow resolving dependencies dynamically by
+           communicating with package managers during the scan.
+
        --allow-untrusted-validators
            Allows running rules with validators from origins other than
            semgrep.dev. Avoid running rules from origins you don't trust.
@@ -206,9 +210,6 @@ OPTIONS
        --emacs-output=VAL
            Write a copy of the emacs output to a file or post to URL.
 
-       --enable-experimental-requirements
-           Experimental: support wider set of requirements lockfiles.
-
        --enable-nosem
            Enables 'nosem'. Findings will not be reported on lines containing
            a 'nosem' comment at the end. Enabled by default.
@@ -232,7 +233,7 @@ OPTIONS
 
        --exclude-minified-files
            Skip minified files. These are files that are > 7% whitespace, or
-           who have a large number of bytes per line. By defualt minified
+           who have a large number of bytes per line. By default minified
            files are scanned
 
        --exclude-rule=VAL
@@ -411,8 +412,8 @@ OPTIONS
            on. This may still run Pro rules, but only using the OSS features.
 
        --pro
-           Inter-file analysis and Pro languages (currently Apex and Elixir).
-           Requires Semgrep Pro Engine. See
+           Inter-file analysis and Pro languages (currently Apex, C#, and
+           Elixir. Requires Semgrep Pro Engine. See
            https://semgrep.dev/products/pro-engine/ for more.
 
        --pro-intrafile
@@ -421,8 +422,9 @@ OPTIONS
            https://semgrep.dev/products/pro-engine/ for more.
 
        --pro-languages
-           Enable Pro languages (currently Apex and Elixir). Requires Semgrep
-           Pro Engine. See https://semgrep.dev/products/pro-engine/ for more.
+           Enable Pro languages (currently Apex, C#, and Elixir). Requires
+           Semgrep Pro Engine. See https://semgrep.dev/products/pro-engine/
+           for more.
 
        --pro-path-sensitive
            Path sensitivity. Implies --pro-intrafile. Requires Semgrep Pro
@@ -526,7 +528,7 @@ OPTIONS
            is meant for internal use and may be changed or removed without
            warning.
 
-       --trace-endpoint=VAL (absent SEMGREP_OTEL_ENDPOINTS env)
+       --trace-endpoint=VAL (absent SEMGREP_OTEL_ENDPOINT env)
            Endpoint to send OpenTelemetry traces to, if `--trace` is present.
            The value may be `semgrep-prod` (default), `semgrep-dev`,
            `semgrep-local`, or any valid URL. This feature is meant for
@@ -562,12 +564,23 @@ OPTIONS
        --vim-output=VAL
            Write a copy of the vim output to a file or post to URL.
 
+       --x-ignore-semgrepignore-files
+           [INTERNAL] Ignore all '.semgrepignore' files found in the project
+           tree for the purpose of selecting target files to be scanned by
+           semgrep. Other filters may still apply. THIS OPTION IS NOT PART OF
+           THE SEMGREP API AND MAY CHANGE OR DISAPPEAR WITHOUT NOTICE.
+
        --x-ls
-           [INTERNAL] List the selected target files and the skipped target
-           files before any rule-specific or language-specific filtering.
-           Then exit. The output format is unspecified. THIS OPTION IS NOT
-           PART OF THE SEMGREP API AND MAY CHANGE OR DISAPPEAR WITHOUT
-           NOTICE. REQUIRES --experimental.
+           [INTERNAL] List the selected target files before any rule-specific
+           or language-specific filtering. Then exit. The default output
+           format is one path per line. THIS OPTION IS NOT PART OF THE
+           SEMGREP API AND MAY CHANGE OR DISAPPEAR WITHOUT NOTICE.
+
+       --x-ls-long
+           [INTERNAL] Show selected targets and skipped targets with reasons
+           why they were skipped, using an unspecified output format. Implies
+           --x-ls. THIS OPTION IS NOT PART OF THE SEMGREP API AND MAY CHANGE
+           OR DISAPPEAR WITHOUT NOTICE.
 
 COMMON OPTIONS
        --help[=FMT] (default=auto)
@@ -598,7 +611,7 @@ ENVIRONMENT
        SEMGREP_FORCE_COLOR
            See option --force-color.
 
-       SEMGREP_OTEL_ENDPOINTS
+       SEMGREP_OTEL_ENDPOINT
            See option --trace-endpoint.
 
        SEMGREP_RULES

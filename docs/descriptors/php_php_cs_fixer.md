@@ -20,6 +20,13 @@ description: How to use php-cs-fixer (configure, ignore files, ignore errors, he
 - Enable php-cs-fixer by adding `PHP_PHPCSFIXER` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 - Disable php-cs-fixer by adding `PHP_PHPCSFIXER` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
+- Enable **autofixes** by adding `PHP_PHPCSFIXER` in [APPLY_FIXES variable](https://megalinter.io/beta/configuration/#apply-fixes)
+
+> [!NOTE]
+>
+> If you want to apply fixes on risky rules, you should set `PHP_PHPCSFIXER_ARGUMENTS` for additional value(s).
+> Read this [post](https://github.com/oxsecurity/megalinter/discussions/3973) to learn how to do.
+
 | Variable                                   | Description                                                                                                                                                                                                                                                                           | Default value                                   |
 |--------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
 | PHP_PHPCSFIXER_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                                                                                              |                                                 |

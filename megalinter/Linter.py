@@ -251,32 +251,8 @@ class Linter:
 
         if self.is_active is True:
             self.show_elapsed_time = params.get("show_elapsed_time", False)
-            # Manage apply fixes flag on linter
-            param_apply_fixes = params.get("apply_fixes", "none")
-            # No fixing config on linter descriptor
-            if self.cli_lint_fix_arg_name is None:
-                self.apply_fixes = False
-            # APPLY_FIXES is "all"
-            elif param_apply_fixes == "all" or (
-                isinstance(param_apply_fixes, bool) and param_apply_fixes is True
-            ):
-                self.apply_fixes = True
-            # APPLY_FIXES is a comma-separated list in a single string
-            elif (
-                param_apply_fixes != "none"
-                and isinstance(param_apply_fixes, str)
-                and self.name in param_apply_fixes.split(",")
-            ):
-                self.apply_fixes = True
-            # APPLY_FIXES is a list of strings
-            elif (
-                param_apply_fixes != "none"
-                and isinstance(param_apply_fixes, list)
-                and (self.name in param_apply_fixes or param_apply_fixes[0] == "all")
-            ):
-                self.apply_fixes = True
-            else:
-                self.apply_fixes = False
+
+            self.manage_apply_fixes(params)
 
             # Disable lint_all_other_linters_files=true if we are in a standalone linter docker image,
             # because there are no other linters
@@ -480,6 +456,43 @@ class Linter:
         else:
             logging.debug(
                 f"[Activation] - {self.name} ({self.descriptor_id}) was not activated by {strategiesUsed} strategies"
+            )
+
+    # Manage apply fixes flag on linter
+    def manage_apply_fixes(self, params):
+        self.apply_fixes = False
+
+        param_apply_fixes = params.get("apply_fixes", "none")
+
+        # APPLY_FIXES is "all"
+        if param_apply_fixes == "all" or (
+            isinstance(param_apply_fixes, bool) and param_apply_fixes is True
+        ):
+            self.apply_fixes = True
+        # APPLY_FIXES is a comma-separated list in a single string
+        elif (
+            param_apply_fixes != "none"
+            and isinstance(param_apply_fixes, str)
+            and self.name in param_apply_fixes.split(",")
+        ):
+            self.apply_fixes = True
+        # APPLY_FIXES is a list of strings
+        elif (
+            param_apply_fixes != "none"
+            and isinstance(param_apply_fixes, list)
+            and (self.name in param_apply_fixes or param_apply_fixes[0] == "all")
+        ):
+            self.apply_fixes = True
+        else:
+            self.apply_fixes = False
+
+        if self.apply_fixes:
+            logging.debug(
+                f"[Apply Fixes] is enabled for + {self.name} ({self.descriptor_id})"
+            )
+        else:
+            logging.debug(
+                f"[Apply Fixes] is disabled for + {self.name} ({self.descriptor_id})"
             )
 
     # Manage configuration variables
@@ -1260,12 +1273,14 @@ class Linter:
         # Add fix argument if defined
         if self.apply_fixes is True and (
             self.cli_lint_fix_arg_name is not None
+            or len(self.cli_lint_fix_remove_args) > 0
             or str(self.cli_executable_fix) != str(self.cli_executable)
         ):
             args_pos = len(self.cli_executable)
             cmd = cmd[args_pos:]  # Remove executable elements
             cmd = self.cli_executable_fix + cmd
-            cmd += [self.cli_lint_fix_arg_name]
+            if self.cli_lint_fix_arg_name is not None:
+                cmd += [self.cli_lint_fix_arg_name]
             self.try_fix = True
 
         # Add user-defined extra arguments if defined

@@ -45,6 +45,7 @@ jobs:
     # Set the agent to run on
     runs-on: ubuntu-latest
     permissions:
+      actions: write
       packages: write
     # Only run this on the main repo
     if: github.repository == 'oxsecurity/megalinter' && !contains(github.event.head_commit.message, 'skip deploy')
@@ -61,7 +62,7 @@ jobs:
       ########################################################
       # Publish updated version of mega-linter-runner on NPM #
       ########################################################
-      - uses: actions/setup-node@v4.0.4
+      - uses: actions/setup-node@v4.1.0
         with:
           node-version: "20.x"
           registry-url: "https://registry.npmjs.org"
@@ -124,21 +125,20 @@ jobs:
             ghcr.io/oxsecurity/megalinter:alpha
           # ghcr.io/oxsecurity/megalinter:alpha-${{ github.sha }}
 
-      - name: Build & Push Worker Docker Image
-        uses: docker/build-push-action@v6
-        with:
-          context: .
-          file: Dockerfile-worker
-          platforms: linux/amd64
-          build-args: |
-            MEGALINTER_BASE_IMAGE=ghcr.io/oxsecurity/megalinter:alpha
-            BUILD_DATE=${{ env.BUILD_DATE }}
-            BUILD_REVISION=${{ github.sha }}
-            BUILD_VERSION=alpha
-          load: false
-          push: true
-          secrets: |
-            GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
-          tags: |
-            ghcr.io/oxsecurity/megalinter-worker:alpha
-
+      # - name: Build & Push Worker Docker Image
+      #   uses: docker/build-push-action@v6
+      #   with:
+      #     context: .
+      #     file: Dockerfile-worker
+      #     platforms: linux/amd64
+      #     build-args: |
+      #       MEGALINTER_BASE_IMAGE=ghcr.io/oxsecurity/megalinter:alpha
+      #       BUILD_DATE=${{ env.BUILD_DATE }}
+      #       BUILD_REVISION=${{ github.sha }}
+      #       BUILD_VERSION=alpha
+      #     load: false
+      #     push: true
+      #     secrets: |
+      #       GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
+      #     tags: |
+      #       ghcr.io/oxsecurity/megalinter-worker:alpha

@@ -45,7 +45,7 @@ linters:
           url: https://github.com/w0rp/ale
   # DETEKT
   - linter_name: detekt
-    can_output_sarif: false
+    can_output_sarif: true
     linter_url: https://detekt.dev/
     linter_repo: https://github.com/detekt/detekt
     linter_rules_url: https://detekt.dev/docs/rules/comments
@@ -53,6 +53,10 @@ linters:
     linter_megalinter_ref_url: https://detekt.dev/docs/intro
     cli_executable: detekt-cli
     cli_lint_mode: project
+    cli_lint_errors_count: total_lines
+    cli_sarif_args:
+      - --report
+      - "sarif:{{SARIF_OUTPUT_FILE}}"
     examples:
       - "detekt-cli"
       - "detekt-cli --report html:folder/kotlin_detekt_result.html"

@@ -13,7 +13,7 @@ Example:
 
 ```json
 {
-  Glob: [
+  "Globs": [
     "**/.git/**",
     "**/megalinter-reports/**"
   ]
@@ -22,7 +22,7 @@ Example:
 
 ## devskim documentation
 
-- Version in MegaLinter: **1.0.33**
+- Version in MegaLinter: **1.0.44**
 - Visit [Official Web Site](https://github.com/microsoft/DevSkim#readme){target=_blank}
 - See [How to configure devskim rules](https://github.com/microsoft/DevSkim/wiki/Analyze-Command){target=_blank}
   - If custom `.devskim.json` config file isn't found, [.devskim.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.devskim.json){target=_blank} will be used
@@ -99,7 +99,7 @@ devskim analyze --file-format sarif --options-json config --source-code .
 ### Help content
 
 ```shell
-devskim 1.0.33+9dba5c6c1f
+devskim 1.0.44+10b85ce690
 © Microsoft Corporation. All rights reserved.
 
   analyze     Analyze source code using DevSkim

@@ -35,6 +35,7 @@ jobs:
     # Set the agent to run on
     runs-on: ${{ matrix.os }}
     permissions:
+      actions: write
       packages: write
     environment:
       name: release
@@ -76,12 +77,6 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Login to Docker Hub
-        uses: docker/login-action@v3
-        with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v3
         with:
@@ -108,35 +103,62 @@ jobs:
           secrets: |
             GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
           tags: |
-            docker.io/oxsecurity/megalinter-${{ matrix.flavor }}:v8
-            docker.io/oxsecurity/megalinter-${{ matrix.flavor }}:${{ github.event.release.tag_name }}
-            docker.io/oxsecurity/megalinter-${{ matrix.flavor }}:latest
             ghcr.io/oxsecurity/megalinter-${{ matrix.flavor }}:v8
             ghcr.io/oxsecurity/megalinter-${{ matrix.flavor }}:${{ github.event.release.tag_name }}
             ghcr.io/oxsecurity/megalinter-${{ matrix.flavor }}:latest
 
-      - name: Build Worker Image
-        uses: docker/build-push-action@v6
+      - name: Invoke Mirror docker image workflow (Main image)
+        uses: benc-uk/workflow-dispatch@v1
         with:
-          context: .
-          file: Dockerfile-release
-          platforms: linux/amd64
-          build-args: |
-            MEGALINTER_BASE_IMAGE=docker.io/oxsecurity/megalinter-worker-${{ matrix.flavor }}:beta
-            BUILD_DATE=${{ env.BUILD_DATE }}
-            BUILD_REVISION=${{ github.sha }}
-            BUILD_VERSION=${{ github.event.release.tag_name }}
-          load: false
-          push: true
-          secrets: |
-            GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
-          tags: |
-            docker.io/oxsecurity/megalinter-worker-${{ matrix.flavor }}:v8
-            docker.io/oxsecurity/megalinter-worker-${{ matrix.flavor }}:${{ github.event.release.tag_name }}
-            docker.io/oxsecurity/megalinter-worker-${{ matrix.flavor }}:latest
-            ghcr.io/oxsecurity/megalinter-worker-${{ matrix.flavor }}:v8
-            ghcr.io/oxsecurity/megalinter-worker-${{ matrix.flavor }}:${{ github.event.release.tag_name }}
-            ghcr.io/oxsecurity/megalinter-worker-${{ matrix.flavor }}:latest
+          workflow: mirror-docker-image.yml
+          inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter-${{ matrix.flavor }}:v8", "target-image": "docker.io/oxsecurity/megalinter-${{ matrix.flavor }}:v8" }'
+      - name: Invoke Mirror docker image workflow (Main image)
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: mirror-docker-image.yml
+          inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter-${{ matrix.flavor }}:v8", "target-image": "docker.io/oxsecurity/megalinter-${{ matrix.flavor }}:${{ github.event.release.tag_name }}" }'
+      - name: Invoke Mirror docker image workflow (Main image)
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: mirror-docker-image.yml
+          inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter-${{ matrix.flavor }}:v8", "target-image": "docker.io/oxsecurity/megalinter-${{ matrix.flavor }}:latest" }'
+
+      # - name: Build Worker Image
+      #   uses: docker/build-push-action@v6
+      #   with:
+      #     context: .
+      #     file: Dockerfile-release
+      #     platforms: linux/amd64
+      #     build-args: |
+      #       MEGALINTER_BASE_IMAGE=docker.io/oxsecurity/megalinter-worker-${{ matrix.flavor }}:beta
+      #       BUILD_DATE=${{ env.BUILD_DATE }}
+      #       BUILD_REVISION=${{ github.sha }}
+      #       BUILD_VERSION=${{ github.event.release.tag_name }}
+      #     load: false
+      #     push: true
+      #     secrets: |
+      #       GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
+      #     tags: |
+      #       ghcr.io/oxsecurity/megalinter-worker-${{ matrix.flavor }}:v8
+      #       ghcr.io/oxsecurity/megalinter-worker-${{ matrix.flavor }}:${{ github.event.release.tag_name }}
+      #       ghcr.io/oxsecurity/megalinter-worker-${{ matrix.flavor }}:latest
+
+      # - name: Invoke Mirror docker image workflow (Worker image)
+      #   uses: benc-uk/workflow-dispatch@v1
+      #   with:
+      #     workflow: mirror-docker-image.yml
+      #     inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter-worker-${{ matrix.flavor }}:v8", "target-image": "docker.io/oxsecurity/megalinter-worker-${{ matrix.flavor }}:v8" }'
+      # - name: Invoke Mirror docker image workflow (Worker image)
+      #   uses: benc-uk/workflow-dispatch@v1
+      #   with:
+      #     workflow: mirror-docker-image.yml
+      #     inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter-worker-${{ matrix.flavor }}:v8", "target-image": "docker.io/oxsecurity/megalinter-worker-${{ matrix.flavor }}:${{ github.event.release.tag_name }}" }'
+      # - name: Invoke Mirror docker image workflow (Worker image)
+      #   uses: benc-uk/workflow-dispatch@v1
+      #   with:
+      #     workflow: mirror-docker-image.yml
+      #     inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter-worker-${{ matrix.flavor }}:v8", "target-image": "docker.io/oxsecurity/megalinter-worker-${{ matrix.flavor }}:latest" }'
+
 
       ##############################################
       # Check Docker image security with Trivy #
@@ -144,7 +166,7 @@ jobs:
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: 'docker.io/oxsecurity/megalinter-${{ matrix.flavor }}:${{ github.event.release.tag_name }}'
+          image-ref: 'ghcr.io/oxsecurity/megalinter-${{ matrix.flavor }}:${{ github.event.release.tag_name }}'
           format: 'table'
           exit-code: '1'
           ignore-unfixed: true

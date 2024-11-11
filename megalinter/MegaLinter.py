@@ -111,6 +111,7 @@ class Megalinter:
         self.filter_regex_exclude = None
         self.default_linter_activation = True
         self.output_sarif = False
+        self.result_message = ""
 
         # Get enable / disable vars
         self.enable_descriptors = config.get_list(self.request_id, "ENABLE", [])
@@ -266,6 +267,18 @@ class Megalinter:
             # Update number fixed
             if linter.number_fixed > 0:
                 self.has_updated_sources = 1
+        # Handle FAIL_IF_UPDATED_SOURCES
+        if (
+            self.has_updated_sources > 0
+            and self.fail_if_updated_sources is True
+            and self.status != "error"
+            and self.return_code == 0
+        ):
+            self.status = "error"
+            self.return_code = 1
+            self.result_message = (
+                "MegaLinter failed because of FAIL_IF_UPDATED_SOURCES=true"
+            )
 
         # Sort linters before reports production
         self.linters = sorted(
