@@ -11,7 +11,7 @@ description: How to use detekt (configure, ignore files, ignore errors, help & v
   </a>
 </div>
 
-[![GitHub stars](https://img.shields.io/github/stars/detekt/detekt?cacheSeconds=3600)](https://github.com/detekt/detekt) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/detekt/detekt?sort=semver)](https://github.com/detekt/detekt/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/detekt/detekt)](https://github.com/detekt/detekt/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/detekt/detekt)](https://github.com/detekt/detekt/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/detekt/detekt)](https://github.com/detekt/detekt/graphs/contributors/)
+[![GitHub stars](https://img.shields.io/github/stars/detekt/detekt?cacheSeconds=3600)](https://github.com/detekt/detekt) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/detekt/detekt?sort=semver)](https://github.com/detekt/detekt/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/detekt/detekt)](https://github.com/detekt/detekt/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/detekt/detekt)](https://github.com/detekt/detekt/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/detekt/detekt)](https://github.com/detekt/detekt/graphs/contributors/)
 
 ## detekt documentation
 

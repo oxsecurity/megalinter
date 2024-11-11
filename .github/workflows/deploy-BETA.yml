@@ -116,14 +116,14 @@ jobs:
           tags: |
             type=raw,value=beta
 
-      - name: Docker Metadata action (Worker)
-        uses: docker/metadata-action@v5.5.1
-        id: meta-w
-        with:
-          images: |
-            name=ghcr.io/${{ github.repository }}-worker
-          tags: |
-            type=raw,value=beta
+      # - name: Docker Metadata action (Worker)
+      #   uses: docker/metadata-action@v5.5.1
+      #   id: meta-w
+      #   with:
+      #     images: |
+      #       name=ghcr.io/${{ github.repository }}-worker
+      #     tags: |
+      #       type=raw,value=beta
 
       - name: Docker Metadata action (Worker Server)
         uses: docker/metadata-action@v5.5.1
@@ -157,7 +157,6 @@ jobs:
             BUILD_DATE=${{ fromJSON(steps.meta-s.outputs.json).labels['org.opencontainers.image.created'] }}
             BUILD_VERSION=${{ fromJSON(steps.meta-s.outputs.json).labels['org.opencontainers.image.version'] }}
             BUILD_REVISION=${{ fromJSON(steps.meta-s.outputs.json).labels['org.opencontainers.image.revision'] }}
-            --squash  # Enable image squashing to produce a single-layer image
           load: false
           push: ${{ github.event_name != 'pull_request' }}
           secrets: |
@@ -180,7 +179,6 @@ jobs:
             BUILD_DATE=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.created'] }}
             BUILD_VERSION=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.version'] }}
             BUILD_REVISION=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.revision'] }}
-            --squash  # Enable image squashing to produce a single-layer image
           load: false
           push: ${{ github.event_name != 'pull_request' }}
           secrets: |
@@ -193,29 +191,28 @@ jobs:
           workflow: mirror-docker-image.yml
           inputs: '{ "source-image": "${{ steps.meta.outputs.tags }}", "target-image": "${{ steps.meta-dhub.outputs.tags }}" }'
 
-      - name: Build & Push Docker Worker Image
-        uses: docker/build-push-action@v6
-        with:
-          context: .
-          file: Dockerfile-worker
-          platforms: linux/amd64
-          build-args: |
-            MEGALINTER_BASE_IMAGE=${{ fromJson(steps.meta-w.outputs.json).tags[0]}}
-            BUILD_DATE=${{ fromJSON(steps.meta-w.outputs.json).labels['org.opencontainers.image.created'] }}
-            BUILD_VERSION=${{ fromJSON(steps.meta-w.outputs.json).labels['org.opencontainers.image.version'] }}
-            BUILD_REVISION=${{ fromJSON(steps.meta-w.outputs.json).labels['org.opencontainers.image.revision'] }}
-            --squash  # Enable image squashing to produce a single-layer image
-          load: false
-          push: ${{ github.event_name != 'pull_request' }}
-          secrets: |
-            GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
-          tags: ${{ steps.meta-w.outputs.tags }}
+      # - name: Build & Push Docker Worker Image
+      #   uses: docker/build-push-action@v6
+      #   with:
+      #     context: .
+      #     file: Dockerfile-worker
+      #     platforms: linux/amd64
+      #     build-args: |
+      #       MEGALINTER_BASE_IMAGE=${{ fromJson(steps.meta-w.outputs.json).tags[0]}}
+      #       BUILD_DATE=${{ fromJSON(steps.meta-w.outputs.json).labels['org.opencontainers.image.created'] }}
+      #       BUILD_VERSION=${{ fromJSON(steps.meta-w.outputs.json).labels['org.opencontainers.image.version'] }}
+      #       BUILD_REVISION=${{ fromJSON(steps.meta-w.outputs.json).labels['org.opencontainers.image.revision'] }}
+      #     load: false
+      #     push: ${{ github.event_name != 'pull_request' }}
+      #     secrets: |
+      #       GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
+      #     tags: ${{ steps.meta-w.outputs.tags }}
 
-      - name: Invoke Mirror docker image workflow (Worker image)
-        uses: benc-uk/workflow-dispatch@v1
-        with:
-          workflow: mirror-docker-image.yml
-          inputs: '{ "source-image": "${{ steps.meta-w.outputs.tags }}", "target-image": "${{ steps.meta-w-dhub.outputs.tags }}" }'
+      # - name: Invoke Mirror docker image workflow (Worker image)
+      #   uses: benc-uk/workflow-dispatch@v1
+      #   with:
+      #     workflow: mirror-docker-image.yml
+      #     inputs: '{ "source-image": "${{ steps.meta-w.outputs.tags }}", "target-image": "${{ steps.meta-w-dhub.outputs.tags }}" }'
 
       # ###############################
       # # Run tests for code coverage #
@@ -234,7 +231,7 @@ jobs:
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: "${{ steps.meta-dhub.outputs.tags }}"
+          image-ref: "${{ steps.meta.outputs.tags }}"
           format: 'table'
           exit-code: '1'
           ignore-unfixed: true

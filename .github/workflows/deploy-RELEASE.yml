@@ -94,7 +94,6 @@ jobs:
             BUILD_DATE=${{ env.BUILD_DATE }}
             BUILD_REVISION=${{ github.sha }}
             BUILD_VERSION=${{ github.event.release.tag_name }}
-            --squash  # Enable image squashing to produce a single-layer image
           load: false
           push: true
           secrets: |
@@ -120,42 +119,41 @@ jobs:
           workflow: mirror-docker-image.yml
           inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter:v8", "target-image": "docker.io/oxsecurity/megalinter:latest" }'
 
-      - name: Build Worker Image
-        uses: docker/build-push-action@v6
-        with:
-          context: .
-          file: Dockerfile-release
-          platforms: linux/amd64
-          build-args: |
-            MEGALINTER_BASE_IMAGE=docker.io/oxsecurity/megalinter-worker:beta
-            BUILD_DATE=${{ env.BUILD_DATE }}
-            BUILD_REVISION=${{ github.sha }}
-            BUILD_VERSION=${{ github.event.release.tag_name }}
-            --squash  # Enable image squashing to produce a single-layer image
-          load: false
-          push: true
-          secrets: |
-            GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
-          tags: |
-            ghcr.io/oxsecurity/megalinter-worker:v8
-            ghcr.io/oxsecurity/megalinter-worker:${{ github.event.release.tag_name }}
-            ghcr.io/oxsecurity/megalinter-worker:latest
+      # - name: Build Worker Image
+      #   uses: docker/build-push-action@v6
+      #   with:
+      #     context: .
+      #     file: Dockerfile-release
+      #     platforms: linux/amd64
+      #     build-args: |
+      #       MEGALINTER_BASE_IMAGE=docker.io/oxsecurity/megalinter-worker:beta
+      #       BUILD_DATE=${{ env.BUILD_DATE }}
+      #       BUILD_REVISION=${{ github.sha }}
+      #       BUILD_VERSION=${{ github.event.release.tag_name }}
+      #     load: false
+      #     push: true
+      #     secrets: |
+      #       GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
+      #     tags: |
+      #       ghcr.io/oxsecurity/megalinter-worker:v8
+      #       ghcr.io/oxsecurity/megalinter-worker:${{ github.event.release.tag_name }}
+      #       ghcr.io/oxsecurity/megalinter-worker:latest
 
-      - name: Invoke Mirror docker image workflow (Worker image)
-        uses: benc-uk/workflow-dispatch@v1
-        with:
-          workflow: mirror-docker-image.yml
-          inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter-worker:v8", "target-image": "docker.io/oxsecurity/megalinter-worker:v8" }'
-      - name: Invoke Mirror docker image workflow (Worker image)
-        uses: benc-uk/workflow-dispatch@v1
-        with:
-          workflow: mirror-docker-image.yml
-          inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter-worker:v8", "target-image": "docker.io/oxsecurity/megalinter-worker:${{ github.event.release.tag_name }}" }'
-      - name: Invoke Mirror docker image workflow (Worker image)
-        uses: benc-uk/workflow-dispatch@v1
-        with:
-          workflow: mirror-docker-image.yml
-          inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter-worker:v8", "target-image": "docker.io/oxsecurity/megalinter-worker:latest" }'
+      # - name: Invoke Mirror docker image workflow (Worker image)
+      #   uses: benc-uk/workflow-dispatch@v1
+      #   with:
+      #     workflow: mirror-docker-image.yml
+      #     inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter-worker:v8", "target-image": "docker.io/oxsecurity/megalinter-worker:v8" }'
+      # - name: Invoke Mirror docker image workflow (Worker image)
+      #   uses: benc-uk/workflow-dispatch@v1
+      #   with:
+      #     workflow: mirror-docker-image.yml
+      #     inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter-worker:v8", "target-image": "docker.io/oxsecurity/megalinter-worker:${{ github.event.release.tag_name }}" }'
+      # - name: Invoke Mirror docker image workflow (Worker image)
+      #   uses: benc-uk/workflow-dispatch@v1
+      #   with:
+      #     workflow: mirror-docker-image.yml
+      #     inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter-worker:v8", "target-image": "docker.io/oxsecurity/megalinter-worker:latest" }'
 
   deploy_doc:
     runs-on: ubuntu-latest
