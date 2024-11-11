@@ -47,9 +47,9 @@ if [ "${TEST_CASE_RUN}" == "true" ]; then
   echo "[MegaLinter init] RUNNING TEST CASES"
   pip install pytest-cov pytest-timeout pytest-xdist pytest-rerunfailures
   if [ -z "${TEST_KEYWORDS}" ]; then
-    pytest --reruns 3 --reruns-delay 1 -v --timeout=300 --durations=0 --cov=megalinter --cov-report=xml --numprocesses auto --dist loadscope megalinter/
+    pytest --reruns 3 --reruns-delay 10 -v --timeout=300 --durations=0 --cov=megalinter --cov-report=xml --numprocesses auto --dist loadscope megalinter/
   else
-    pytest --reruns 3 --reruns-delay 1 -v --timeout=300 --durations=0 --numprocesses auto --dist loadscope -k "${TEST_KEYWORDS}" megalinter/
+    pytest --reruns 3 --reruns-delay 10 -v --timeout=300 --durations=0 --numprocesses auto --dist loadscope -k "${TEST_KEYWORDS}" megalinter/
   fi
   PYTEST_STATUS=$?
   echo Pytest exited $PYTEST_STATUS

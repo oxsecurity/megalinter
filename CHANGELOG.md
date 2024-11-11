@@ -45,6 +45,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Make gitpod workflow not blocking until uv install is fixed
   - Update stale comment
   - Try several times to embed trivy db during Docker build, as a workaround to the random failures
+  - Wait 10 secondes instead of 1 before retrying a failing test method, to avoid race conditions
 
 - mega-linter-runner
 
