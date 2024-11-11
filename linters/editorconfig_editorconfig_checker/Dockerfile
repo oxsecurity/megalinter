@@ -25,7 +25,7 @@ FROM mstruebing/editorconfig-checker:${EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.4.28 AS uv
+FROM ghcr.io/astral-sh/uv:0.5.1 AS uv
 FROM python:3.12.7-alpine3.20 AS build-ml-core
 WORKDIR /
 COPY pyproject.toml .

@@ -68,7 +68,7 @@ linters:
 
       ```json
       {
-        Glob: [
+        "Globs": [
           "**/.git/**",
           "**/megalinter-reports/**"
         ]

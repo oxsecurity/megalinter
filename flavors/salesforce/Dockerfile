@@ -13,7 +13,7 @@
 #############################################################################################
 #ARGTOP__START
 # renovate: datasource=docker depName=rhysd/actionlint
-ARG ACTION_ACTIONLINT_VERSION=1.7.3
+ARG ACTION_ACTIONLINT_VERSION=1.7.4
 # renovate: datasource=docker depName=koalaman/shellcheck
 ARG BASH_SHELLCHECK_VERSION=v0.10.0
 # renovate: datasource=docker depName=hadolint/hadolint
@@ -55,7 +55,7 @@ FROM lycheeverse/lychee:latest-alpine AS lychee
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.4.28 AS uv
+FROM ghcr.io/astral-sh/uv:0.5.1 AS uv
 FROM python:3.12.7-alpine3.20 AS build-ml-core
 WORKDIR /
 COPY pyproject.toml .
@@ -76,16 +76,16 @@ FROM python:3.12.7-alpine3.20
 #############################################################################################
 #ARG__START
 # renovate: datasource=npm depName=@salesforce/cli
-ARG SALESFORCE_CLI_VERSION=2.63.9
+ARG SALESFORCE_CLI_VERSION=2.65.8
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
-ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.8.12
+ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.9.0
 # renovate: datasource=npm depName=sfdx-hardis
 ARG SFDX_HARDIS_VERSION=5.6.0
 # renovate: datasource=github-tags depName=detekt/detekt
 ARG DETEKT_VERSION=1.23.7
 
 # renovate: datasource=npm depName=@salesforce/sfdx-scanner
-ARG SALESFORCE_SFDX_SCANNER_VERSION=4.6.0
+ARG SALESFORCE_SFDX_SCANNER_VERSION=4.7.0
 # renovate: datasource=npm depName=lightning-flow-scanner
 ARG LIGHTNING_FLOW_SCANNER_VERSION=2.34.0
 #ARG__END

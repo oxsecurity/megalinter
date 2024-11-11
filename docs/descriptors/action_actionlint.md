@@ -11,7 +11,7 @@ Static checker for GitHub Actions workflow files
 
 ## actionlint documentation
 
-- Version in MegaLinter: **1.7.3**
+- Version in MegaLinter: **1.7.4**
 - Visit [Official Web Site](https://rhysd.github.io/actionlint/){target=_blank}
 - See [How to configure actionlint rules](https://github.com/rhysd/actionlint/blob/main/docs/config.md){target=_blank}
 
@@ -112,7 +112,7 @@ Usage: actionlint [FLAGS] [FILES...] [-]
 
 Documents:
 
-  https://github.com/rhysd/actionlint/tree/v1.7.3/docs
+  https://github.com/rhysd/actionlint/tree/v1.7.4/docs
 
 Flags:
   -color
@@ -136,7 +136,7 @@ Flags:
   -shellcheck string
       Command name or file path of "shellcheck" external command. If empty, shellcheck integration will be disabled (default "shellcheck")
   -stdin-filename string
-      File name when reading input from stdin
+      File name when reading input from stdin (default "<stdin>")
   -verbose
       Enable verbose output
   -version
@@ -148,7 +148,7 @@ Flags:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=docker depName=rhysd/actionlint
-ARG ACTION_ACTIONLINT_VERSION=1.7.3
+ARG ACTION_ACTIONLINT_VERSION=1.7.4
 # renovate: datasource=docker depName=koalaman/shellcheck
 ARG BASH_SHELLCHECK_VERSION=v0.10.0
 FROM rhysd/actionlint:${ACTION_ACTIONLINT_VERSION} AS actionlint
