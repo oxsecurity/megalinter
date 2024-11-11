@@ -178,6 +178,11 @@ linters:
   # PHP-CS-Fixer
   - linter_name: php-cs-fixer
     name: PHP_PHPCSFIXER
+    linter_text: |
+      PHP-CS-Fixer is able to fix rule violations detected, and even those marked as (risky)
+
+      - Enable **autofixes** by adding `PHP_PHPCSFIXER` in [APPLY_FIXES variable](https://megalinter.io/beta/configuration/#apply-fixes)
+      - Add "--allow-risky=yes" option in PHP_PHPCSFIXER_ARGUMENTS variable
     linter_url: https://cs.symfony.com/
     linter_repo: https://github.com/PHP-CS-Fixer/PHP-CS-Fixer
     linter_image_url: https://cs.symfony.com/_static/images/logo.png
