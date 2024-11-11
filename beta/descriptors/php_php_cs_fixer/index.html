@@ -3361,6 +3361,14 @@
 <li>Enable php-cs-fixer by adding <code>PHP_PHPCSFIXER</code> in <a href="https://megalinter.io/beta/configuration/#activation-and-deactivation">ENABLE_LINTERS variable</a></li>
 <li>Disable php-cs-fixer by adding <code>PHP_PHPCSFIXER</code> in <a href="https://megalinter.io/beta/configuration/#activation-and-deactivation">DISABLE_LINTERS variable</a></li>
 </ul>
+<ul>
+<li>Enable <strong>autofixes</strong> by adding <code>PHP_PHPCSFIXER</code> in <a href="https://megalinter.io/beta/configuration/#apply-fixes">APPLY_FIXES variable</a></li>
+</ul>
+<blockquote>
+<p>[!NOTE]</p>
+<p>If you want to apply fixes on risky rules, you should set <code>PHP_PHPCSFIXER_ARGUMENTS</code> for additional value(s).
+Read this <a href="https://github.com/oxsecurity/megalinter/discussions/3973">post</a> to learn how to do.</p>
+</blockquote>
 <table>
 <thead>
 <tr>
