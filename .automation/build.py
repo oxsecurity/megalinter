@@ -310,7 +310,7 @@ def build_dockerfile(
     if requires_docker is True:
         apk_packages += ["docker", "openrc"]
         docker_other += [
-            "RUN rc-update add docker boot && rc-service docker start || true"
+            "RUN rc-update add docker boot && (rc-service docker start || true)"
         ]
         is_docker_other_run = True
     for item in descriptor_and_linters:
@@ -528,7 +528,7 @@ def build_dockerfile(
             #    + '       echo "Fixing audit issues with npm…" \\\n'
             #    + "    && npm audit fix --audit-level=critical || true \\\n" # Deactivated for now
             + '    echo "Cleaning npm cache…" \\\n'
-            + "    && npm cache clean --force || true \\\n"
+            + "    && (npm cache clean --force || true) \\\n"
             + '    && echo "Changing owner of node_modules files…" \\\n'
             + '    && chown -R "$(id -u)":"$(id -g)" node_modules # fix for https://github.com/npm/cli/issues/5900 \\\n'
             + '    && echo "Removing extra node_module files…" \\\n'

@@ -125,7 +125,7 @@ WORKDIR /node-deps
 RUN npm --no-cache install --ignore-scripts --omit=dev \
                 @salesforce/cli@${SALESFORCE_CLI_VERSION}  && \
     echo "Cleaning npm cache…" \
-    && npm cache clean --force || true \
+    && (npm cache clean --force || true) \
     && echo "Changing owner of node_modules files…" \
     && chown -R "$(id -u)":"$(id -g)" node_modules # fix for https://github.com/npm/cli/issues/5900 \
     && echo "Removing extra node_module files…" \
@@ -167,13 +167,13 @@ ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 RUN sf plugins install @salesforce/plugin-packaging@${SALESFORCE_PLUGIN_PACKAGING_VERSION} \
     && echo y|sf plugins install sfdx-hardis@${SFDX_HARDIS_VERSION} \
-    && npm cache clean --force || true \
+    && (npm cache clean --force || true) \
     && rm -rf /root/.npm/_cacache
 ENV SF_AUTOUPDATE_DISABLE=true SF_CLI_DISABLE_AUTOUPDATE=true
 #
 # sfdx-scanner-aura installation
 RUN sf plugins install @salesforce/sfdx-scanner@${SALESFORCE_SFDX_SCANNER_VERSION} \
-    && npm cache clean --force || true \
+    && (npm cache clean --force || true) \
     && rm -rf /root/.npm/_cacache
 #
 #OTHER__END
