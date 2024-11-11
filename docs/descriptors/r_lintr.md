@@ -11,7 +11,6 @@ description: How to use lintr (configure, ignore files, ignore errors, help & ve
 
 - Visit [Official Web Site](https://lintr.r-lib.org/){target=_blank}
 - See [How to configure lintr rules](https://lintr.r-lib.org/articles/lintr.html#configuring-linters){target=_blank}
-  - If custom `.lintr` config file isn't found, [.lintr](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.lintr){target=_blank} will be used
 - See [Index of problems detected by lintr](https://lintr.r-lib.org/reference/index.html){target=_blank}
 
 [![lintr - GitHub](https://gh-card.dev/repos/r-lib/lintr.svg?fullname=)](https://github.com/r-lib/lintr){target=_blank}
