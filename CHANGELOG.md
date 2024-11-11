@@ -24,6 +24,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Salesforce linters: Add SF_CLI_DISABLE_AUTOUPDATE for SF CLI JIT plugins
   - Add message in PR comment if FAIL_IF_UPDATED_SOURCES is triggered
   - Lintr: Support files in subdirectories, fix unit tests
+  - Fix linting errors in GitHub Actions template
 
 - Reporters
   - UpdatedSourcesReporter will git commit & push fixed files to source branch if APPLY_FIXES is set
@@ -178,7 +179,6 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Fix Grafana Home Dashboard to add missing criteria
   - Update PRE_COMMANDS documentation to describe all properties
   - Update Grafana documentation to fix secrets typo
-  - Fix linting errors in GitHub Actions template
 
 - CI
   - Free space in release job to avoid no space left on device, by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/3914>
