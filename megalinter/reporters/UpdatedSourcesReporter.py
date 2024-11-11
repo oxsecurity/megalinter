@@ -6,9 +6,9 @@ Creates a folder containing only files updated by the linters
 import logging
 import os
 import shutil
+
 import chalk as c
 import git
-
 from megalinter import Reporter, config, utils
 
 
@@ -87,16 +87,23 @@ class UpdatedSourcesReporter(Reporter):
                         )
                     else:
                         try:
-                            repo = git.Repo(os.path.realpath(self.master.github_workspace))
-                            repo.config_writer().set_value("user", "name", "MegaLinter").release()
-                            repo.config_writer().set_value("user", "email", "contact@ox.security").release()
+                            repo = git.Repo(
+                                os.path.realpath(self.master.github_workspace)
+                            )
+                            repo.config_writer().set_value(
+                                "user", "name", "MegaLinter"
+                            ).release()
+                            repo.config_writer().set_value(
+                                "user", "email", "contact@ox.security"
+                            ).release()
                             repo.git.add(update=True)
-                            repo.git.commit('-m', '[MegaLinter] Apply linters fixes')
-                            repo.git.push('origin', f'HEAD:{remote_branch}')
+                            repo.git.commit("-m", "[MegaLinter] Apply linters fixes")
+                            repo.git.push("origin", f"HEAD:{remote_branch}")
                         except git.GitCommandError as git_err:
                             logging.error(
                                 c.red(
-                                    "❌ [Updated Sources Reporter] Failed to git push auto fixes: " + str(git_err.stderr)
+                                    "❌ [Updated Sources Reporter] Failed to git push auto fixes: "
+                                    + str(git_err.stderr)
                                 )
                             )
                             logging.warning(
@@ -107,7 +114,7 @@ class UpdatedSourcesReporter(Reporter):
                             )
                         else:
                             logging.info(
-                                 "[Updated Sources Reporter] Fixed source files have automatically "
+                                "[Updated Sources Reporter] Fixed source files have automatically "
                                 "been pushed to the source branch"
                             )
         else:
