@@ -13,8 +13,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - New linters
 
 - Media
+  - [10 MegaLinter Tips and Tricks Unlock its Full Potential](https://flexion.us/blog/megalinter-tips-and-tricks/) by [Wes Dean](https://github.com/wesley-dean)
 
 - Linters enhancements
+  - [detekt](https://megalinter.io/latest/descriptors/kotlin_detekt/) Enable SARIF output + count errors
+  - [tsqllint](https://github.com/tsqllint/tsqllint) Re-enabled after .net 8 and security updates
 
 - Fixes
   - Trivy: handle retry if `failed to download Java DB` is detected
@@ -22,12 +25,13 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Add message in PR comment if FAIL_IF_UPDATED_SOURCES is triggered
 
 - Reporters
-  - Fix AzureCommentReporter not adding comments to PR on 2024-10-15
-  - Fix AzureCommentReporter fails when target repo contains spaces on 2024-10-23
-  - UpdatedSourcesReporter will git commit & push fixed files to source branch on 2024-11-04
+  - UpdatedSourcesReporter will git commit & push fixed files to source branch if APPLY_FIXES is set
+  - Fix AzureCommentReporter not adding comments to PR
+  - Fix AzureCommentReporter fails when target repo contains spaces
 
 - Doc
-  - Updated documentation with Azure central pipeline use case on 2024-10-16
+  - Updated documentation with Azure central pipeline use case
+  - Update DevSkim documentation to show a valid exclusion config file
 
 - Flavors
 
@@ -35,6 +39,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Also prune volumes before pulling and pushing to docker hub
   - Externalize mirroring from ghcr.io to docker hub in another workflow to avoid memory issues
   - Squash docker images to have less layers and size
+  - Comment jobs related to GitHub Worker images, as CodeTotal is not actively maintained
+  - Make gitpod workflow not blocking until uv install is fixed
+  - Update stale comment
 
 - mega-linter-runner
 
@@ -106,6 +113,37 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.9.5 to **1.9.8** on 2024-11-03
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.67.5 to **0.68.7** on 2024-11-03
   - [checkov](https://www.checkov.io/) from 3.2.276 to **3.2.277** on 2024-11-03
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.18.3 to **1.18.4** on 2024-11-04
+  - [checkov](https://www.checkov.io/) from 3.2.277 to **3.2.278** on 2024-11-04
+  - [devskim](https://github.com/microsoft/DevSkim) from 1.0.33 to **1.0.44** on 2024-11-04
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.30.23 to **0.31.34** on 2024-11-09
+  - [djlint](https://djlint.com/) from 1.35.4 to **1.36.1** on 2024-11-09
+  - [checkstyle](https://checkstyle.org/) from 10.20.0 to **10.20.1** on 2024-11-09
+  - [ktlint](https://ktlint.github.io) from 1.4.0 to **1.4.1** on 2024-11-09
+  - [markdown-link-check](https://github.com/tcort/markdown-link-check) from 3.12.2 to **3.13.6** on 2024-11-09
+  - [phpstan](https://phpstan.org/) from 1.12.7 to **1.12.8** on 2024-11-09
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.387 to **1.1.388** on 2024-11-09
+  - [ruff](https://github.com/astral-sh/ruff) from 0.7.2 to **0.7.3** on 2024-11-09
+  - [checkov](https://www.checkov.io/) from 3.2.278 to **3.2.283** on 2024-11-09
+  - [syft](https://github.com/anchore/syft) from 1.15.0 to **1.16.0** on 2024-11-09
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.25.1 to **8.25.2** on 2024-11-09
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.15.7 to **8.16.0** on 2024-11-09
+  - [lychee](https://lychee.cli.rs) from 0.16.1 to **0.17.0** on 2024-11-09
+  - [tsqllint](https://github.com/tsqllint/tsqllint) from 1.15.3.0 to **1.16.0.0** on 2024-11-09
+  - [markdown-link-check](https://github.com/tcort/markdown-link-check) from 3.13.6 to **3.12.2** on 2024-11-10
+  - [actionlint](https://rhysd.github.io/actionlint/) from 1.7.3 to **1.7.4** on 2024-11-10
+  - [revive](https://revive.run/) from 1.4.0 to **1.5.0** on 2024-11-10
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.83.2 to **3.83.5** on 2024-11-10
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 4.6.0 to **4.7.0** on 2024-11-10
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 4.6.0 to **4.7.0** on 2024-11-10
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 4.6.0 to **4.7.0** on 2024-11-10
+  - [vale](https://vale.sh/) from 3.8.0 to **3.9.0** on 2024-11-10
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.68.7 to **0.68.9** on 2024-11-10
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.53.0 to **0.54.0** on 2024-11-10
+  - [checkov](https://www.checkov.io/) from 3.2.283 to **3.2.284** on 2024-11-10
+  - [golangci-lint](https://golangci-lint.run/) from 1.61.0 to **1.62.0** on 2024-11-10
+  - [phpstan](https://phpstan.org/) from 1.12.8 to **1.12.9** on 2024-11-10
+  - [checkov](https://www.checkov.io/) from 3.2.284 to **3.2.286** on 2024-11-10
 <!-- linter-versions-end -->
 
 ## [v8.1.0] - 2024-10-13

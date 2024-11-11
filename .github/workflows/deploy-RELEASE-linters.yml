@@ -154,6 +154,7 @@ jobs:
             "spell_vale",
             "spell_lychee",
             "sql_sqlfluff",
+            "sql_tsqllint",
             "swift_swiftlint",
             "tekton_tekton_lint",
             "terraform_tflint",
@@ -204,7 +205,6 @@ jobs:
             BUILD_DATE=${{ env.BUILD_DATE }}
             BUILD_REVISION=${{ github.sha }}
             BUILD_VERSION=${{ github.event.release.tag_name }}
-            --squash  # Enable image squashing to produce a single-layer image
           load: false
           push: true
           secrets: |

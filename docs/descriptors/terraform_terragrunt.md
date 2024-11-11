@@ -9,7 +9,7 @@ description: How to use terragrunt (configure, ignore files, ignore errors, help
 
 ## terragrunt documentation
 
-- Version in MegaLinter: **0.68.7**
+- Version in MegaLinter: **0.68.9**
 - Visit [Official Web Site](https://terragrunt.gruntwork.io){target=_blank}
 - See [How to configure terragrunt rules](https://terragrunt.gruntwork.io/docs/getting-started/configuration/#terragrunt-configuration-file){target=_blank}
 
@@ -100,6 +100,7 @@ COMMANDS:
    *                      Terragrunt forwards all other commands directly to Terraform
 
 GLOBAL OPTIONS:
+   --feature value                                   Set feature flags for the HCL code. [$TERRAGRUNT_FEATURE]
    --strict-control value                            Enables specific strict controls. For a list of available controls, see https://terragrunt.gruntwork.io/docs/reference/strict-mode . [$TERRAGRUNT_STRICT_CONTROL]
    --strict-mode                                     Enables strict mode for Terragrunt. For more information, see https://terragrunt.gruntwork.io/docs/reference/strict-mode . [$TERRAGRUNT_STRICT_MODE]
    --terragrunt-auth-provider-cmd value              The command and arguments that can be used to fetch authentication configurations. [$TERRAGRUNT_AUTH_PROVIDER_CMD]
@@ -132,6 +133,7 @@ GLOBAL OPTIONS:
    --terragrunt-no-auto-init                         Don't automatically run 'terraform/tofu init' during other terragrunt commands. You must run 'terragrunt init' manually. (default: true) [$TERRAGRUNT_NO_AUTO_INIT]
    --terragrunt-no-auto-retry                        Don't automatically re-run command in case of transient errors. (default: true) [$TERRAGRUNT_NO_AUTO_RETRY]
    --terragrunt-no-color                             If specified, Terragrunt output won't contain any color. [$TERRAGRUNT_NO_COLOR]
+   --terragrunt-no-destroy-dependencies-check        When this flag is set, Terragrunt will not check for dependent modules when destroying. [$TERRAGRUNT_NO_DESTROY_DEPENDENCIES_CHECK]
    --terragrunt-non-interactive                      Assume "yes" for all prompts. [$TERRAGRUNT_NON_INTERACTIVE]
    --terragrunt-parallelism value                    *-all commands parallelism set to at most N modules (default: 2147483647) [$TERRAGRUNT_PARALLELISM]
    --terragrunt-provider-cache                       Enables Terragrunt's provider caching. [$TERRAGRUNT_PROVIDER_CACHE]
@@ -151,7 +153,7 @@ GLOBAL OPTIONS:
    --help, -h                                        Show help
    --version, -v                                     Show terragrunt version
 
-VERSION: v0.68.7
+VERSION: v0.68.9
 
 AUTHOR: Gruntwork <www.gruntwork.io>
 ```

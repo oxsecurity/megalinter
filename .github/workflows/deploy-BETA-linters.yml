@@ -160,6 +160,7 @@ jobs:
             "spell_vale",
             "spell_lychee",
             "sql_sqlfluff",
+            "sql_tsqllint",
             "swift_swiftlint",
             "tekton_tekton_lint",
             "terraform_tflint",
@@ -242,7 +243,6 @@ jobs:
             BUILD_DATE=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.created'] }}
             BUILD_VERSION=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.version'] }}
             BUILD_REVISION=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.revision'] }}
-            --squash  # Enable image squashing to produce a single-layer image
           load: false
           push: ${{ github.event_name != 'pull_request' }}
           secrets: |
@@ -276,7 +276,7 @@ jobs:
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: "${{ fromJson(steps.meta-dhub.outputs.json).tags[0]}}"
+          image-ref: "${{ fromJson(steps.meta.outputs.json).tags[0]}}"
           format: "table"
           exit-code: "1"
           ignore-unfixed: true
