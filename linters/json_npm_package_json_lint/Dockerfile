@@ -118,7 +118,7 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 npm-package-json-lint \
                 npm-package-json-lint-config-default  && \
     echo "Cleaning npm cache…" \
-    && npm cache clean --force || true \
+    && (npm cache clean --force || true) \
     && echo "Changing owner of node_modules files…" \
     && chown -R "$(id -u)":"$(id -g)" node_modules # fix for https://github.com/npm/cli/issues/5900 \
     && echo "Removing extra node_module files…" \

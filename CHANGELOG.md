@@ -44,6 +44,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Comment jobs related to GitHub Worker images, as CodeTotal is not actively maintained
   - Make gitpod workflow not blocking until uv install is fixed
   - Update stale comment
+  - Try several times to embed trivy db during Docker build, as a workaround to the random failures
 
 - mega-linter-runner
 
