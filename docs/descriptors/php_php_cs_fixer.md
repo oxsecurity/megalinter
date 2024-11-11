@@ -7,6 +7,11 @@ description: How to use php-cs-fixer (configure, ignore files, ignore errors, he
 # <a href="https://cs.symfony.com/" target="blank" title="Visit linter Web Site"><img src="https://cs.symfony.com/_static/images/logo.png" alt="php-cs-fixer" height="100px" class="megalinter-logo"></a>php-cs-fixer
 [![GitHub stars](https://img.shields.io/github/stars/PHP-CS-Fixer/PHP-CS-Fixer?cacheSeconds=3600)](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/PHP-CS-Fixer/PHP-CS-Fixer?sort=semver)](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/PHP-CS-Fixer/PHP-CS-Fixer)](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/PHP-CS-Fixer/PHP-CS-Fixer)](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/PHP-CS-Fixer/PHP-CS-Fixer)](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/graphs/contributors/)
 
+PHP-CS-Fixer is able to fix rule violations detected, and even those marked as (risky)
+
+- Enable **autofixes** by adding `PHP_PHPCSFIXER` in [APPLY_FIXES variable](https://megalinter.io/beta/configuration/#apply-fixes)
+- Add "--allow-risky=yes" option in PHP_PHPCSFIXER_ARGUMENTS variable
+
 ## php-cs-fixer documentation
 
 - Version in MegaLinter: **3.64.0**
@@ -19,13 +24,6 @@ description: How to use php-cs-fixer (configure, ignore files, ignore errors, he
 
 - Enable php-cs-fixer by adding `PHP_PHPCSFIXER` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 - Disable php-cs-fixer by adding `PHP_PHPCSFIXER` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
-
-- Enable **autofixes** by adding `PHP_PHPCSFIXER` in [APPLY_FIXES variable](https://megalinter.io/beta/configuration/#apply-fixes)
-
-> [!NOTE]
->
-> If you want to apply fixes on risky rules, you should set `PHP_PHPCSFIXER_ARGUMENTS` for additional value(s).
-> Read this [post](https://github.com/oxsecurity/megalinter/discussions/3973) to learn how to do.
 
 | Variable                                   | Description                                                                                                                                                                                                                                                                           | Default value                                   |
 |--------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
