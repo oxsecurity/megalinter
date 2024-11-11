@@ -166,6 +166,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Bash/Perl: Support shell scripts with no extension and only support perl shebangs at the beginning of a file in <https://github.com/oxsecurity/megalinter/pull/4076>
 
 - Fixes
+  - APPLY_FIXES and for PHP_PHPCSFIXER linter, by @llaville in [#3963](https://github.com/oxsecurity/megalinter/issues/3963)
   - Add debug traces to investigate reporters activation
   - Add more traces for ApiReporter
   - Activate ApiReporter by default
