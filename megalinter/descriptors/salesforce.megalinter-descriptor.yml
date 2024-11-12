@@ -16,7 +16,7 @@ install:
       ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.9.0
     - |-
       # renovate: datasource=npm depName=sfdx-hardis
-      ARG SFDX_HARDIS_VERSION=5.6.0
+      ARG SFDX_HARDIS_VERSION=5.6.1
     - ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
     - ENV PATH="$JAVA_HOME/bin:${PATH}"
     - |-
