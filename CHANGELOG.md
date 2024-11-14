@@ -152,6 +152,14 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 3.2.286 to **3.2.287** on 2024-11-11
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.83.5 to **3.83.6** on 2024-11-11
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.25.2 to **8.25.3** on 2024-11-11
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 24.9.2 to **24.10.0** on 2024-11-14
+  - [spectral](https://docs.stoplight.io/docs/spectral/674b27b261c3c-overview) from 6.13.1 to **6.14.1** on 2024-11-14
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.31.34 to **0.31.92** on 2024-11-14
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.18.4 to **1.19.0** on 2024-11-14
+  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 8.0.110 to **8.0.111** on 2024-11-14
+  - [phpcs](https://github.com/PHPCSStandards/PHP_CodeSniffer) from 3.10.3 to **3.11.0** on 2024-11-14
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.388 to **1.1.389** on 2024-11-14
+  - [checkov](https://www.checkov.io/) from 3.2.287 to **3.2.296** on 2024-11-14
 <!-- linter-versions-end -->
 
 ## [v8.1.0] - 2024-10-13
