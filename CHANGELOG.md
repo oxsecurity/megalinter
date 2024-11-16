@@ -160,6 +160,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [phpcs](https://github.com/PHPCSStandards/PHP_CodeSniffer) from 3.10.3 to **3.11.0** on 2024-11-14
   - [pyright](https://github.com/Microsoft/pyright) from 1.1.388 to **1.1.389** on 2024-11-14
   - [checkov](https://www.checkov.io/) from 3.2.287 to **3.2.296** on 2024-11-14
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2024.09.27 to **2024.11.14** on 2024-11-16
+  - [phpcs](https://github.com/PHPCSStandards/PHP_CodeSniffer) from 3.11.0 to **3.11.1** on 2024-11-16
+  - [ruff](https://github.com/astral-sh/ruff) from 0.7.3 to **0.7.4** on 2024-11-16
 <!-- linter-versions-end -->
 
 ## [v8.1.0] - 2024-10-13
