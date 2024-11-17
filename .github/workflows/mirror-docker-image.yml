@@ -44,7 +44,7 @@ jobs:
         run: docker push "${{ github.event.inputs.target-image }}"
 
   copy-to-docker-hub-main:
-    if: github.ref_name == 'main'
+    if: github.ref_name == 'main' || startsWith(github.ref_name, 'v')
     runs-on: ubuntu-latest
     environment:
       name: beta
