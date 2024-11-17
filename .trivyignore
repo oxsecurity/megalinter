@@ -85,6 +85,10 @@ CVE-2024-45491
 CVE-2024-45492
 # stdlib  
 CVE-2024-34156
+# mega-linter-runner cross-spawn
+CVE-2024-21538
+# other
+CVE-2024-47535
 # Dockerfile
 DS001
 DS002

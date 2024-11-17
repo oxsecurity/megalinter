@@ -9,7 +9,7 @@ description: How to use terragrunt (configure, ignore files, ignore errors, help
 
 ## terragrunt documentation
 
-- Version in MegaLinter: **0.68.9**
+- Version in MegaLinter: **0.68.14**
 - Visit [Official Web Site](https://terragrunt.gruntwork.io){target=_blank}
 - See [How to configure terragrunt rules](https://terragrunt.gruntwork.io/docs/getting-started/configuration/#terragrunt-configuration-file){target=_blank}
 
@@ -142,6 +142,7 @@ GLOBAL OPTIONS:
    --terragrunt-provider-cache-port value            The port of the Terragrunt Provider Cache server. By default, assigned automatically. [$TERRAGRUNT_PROVIDER_CACHE_PORT]
    --terragrunt-provider-cache-registry-names value  The list of remote registries to cached by Terragrunt Provider Cache server. By default, 'registry.terraform.io', 'registry.opentofu.org'. (default: registry.terraform.io,registry.opentofu.org) [$TERRAGRUNT_PROVIDER_CACHE_REGISTRY_NAMES]
    --terragrunt-provider-cache-token value           The Token for authentication to the Terragrunt Provider Cache server. By default, assigned automatically. [$TERRAGRUNT_PROVIDER_CACHE_TOKEN]
+   --terragrunt-queue-include-units-reading value    If flag is set, 'run-all' will only run the command against Terragrunt units that read the specified file via an HCL function. [$TERRAGRUNT_QUEUE_INCLUDE_UNITS_READING]
    --terragrunt-source value                         Download OpenTofu/Terraform configurations from the specified source into a temporary folder, and run Terraform in that temporary folder. [$TERRAGRUNT_SOURCE]
    --terragrunt-source-map value                     Replace any source URL (including the source URL of a config pulled in with dependency blocks) that has root source with dest. [$TERRAGRUNT_SOURCE_MAP]
    --terragrunt-source-update                        Delete the contents of the temporary folder to clear out any old, cached source code before downloading new source code into it. [$TERRAGRUNT_SOURCE_UPDATE]
@@ -153,7 +154,7 @@ GLOBAL OPTIONS:
    --help, -h                                        Show help
    --version, -v                                     Show terragrunt version
 
-VERSION: v0.68.9
+VERSION: v0.68.14
 
 AUTHOR: Gruntwork <www.gruntwork.io>
 ```
