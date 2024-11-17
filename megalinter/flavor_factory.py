@@ -65,6 +65,21 @@ def list_megalinter_flavors():
         "security": {"label": "Optimized for security", "strict": True},
         "swift": {"label": "Optimized for SWIFT based projects"},
         "terraform": {"label": "Optimized for TERRAFORM based projects"},
+        "bioinformatics": {
+            "label": "Optimized for bioinformatics projects",
+            "strict": True,
+            "descriptors": [
+                "ACTION",
+                "BASH",
+                "GROOVY",
+                "JAVASCRIPT",
+                "JSON",
+                "PERL",
+                "PYTHON",
+                "R",
+                "YAML",
+            ]
+        },
     }
     return flavors
 

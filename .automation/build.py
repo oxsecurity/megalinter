@@ -157,8 +157,8 @@ def generate_all_flavors():
 # Automatically generate Dockerfile , action.yml and upgrade all_flavors.json
 def generate_flavor(flavor, flavor_info):
     descriptor_and_linters = []
-    flavor_descriptors = []
-    flavor_linters = []
+    flavor_descriptors = flavor_info.get("descriptors", [])
+    flavor_linters = flavor_info.get("linters", [])
     # Get install instructions at descriptor level
     descriptor_files = megalinter.linter_factory.list_descriptor_files()
     for descriptor_file in descriptor_files:
@@ -179,6 +179,11 @@ def generate_flavor(flavor, flavor_info):
             flavor_linters += [linter.name]
             if linter.cli_docker_image is not None:
                 requires_docker = True
+
+    # Remove duplicate entries without sorting
+    flavor_descriptors = list(dict.fromkeys(flavor_descriptors))
+    flavor_linters = list(dict.fromkeys(flavor_linters))
+
     # Initialize Dockerfile
     if flavor == "all":
         dockerfile = f"{REPO_HOME}/Dockerfile"
@@ -621,6 +626,12 @@ def match_flavor(item, flavor, flavor_info):
         and flavor in item["descriptor_flavors_exclude"]
     ):
         return False
+
+    elif (item.get("descriptor_id") in flavor_info.get("descriptors", [])
+          or item.get("name") in flavor_info.get("linters", [])):
+        # Short-circuit if the flavor explicitly supplied these details
+        return True
+
     # Flavor all
     elif flavor == "all":
         return True

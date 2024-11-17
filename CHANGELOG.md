@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
 - Core
+  - Allow flavors to be completely defined in `flavor_factory.py`
 
 - New linters
 
@@ -36,6 +37,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Update DevSkim documentation to show a valid exclusion config file
 
 - Flavors
+  - Add bioinformatics flavor
 
 - CI
   - Also prune volumes before pulling and pushing to docker hub
