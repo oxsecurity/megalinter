@@ -29,6 +29,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - mega-linter-runner
 
 - Linter versions upgrades (104)
+  - [phpstan](https://phpstan.org/) from 2.0.1 to **2.0.2** on 2024-11-17
+  - [checkov](https://www.checkov.io/) from 3.2.298 to **3.2.300** on 2024-11-17
 <!-- linter-versions-end -->
 
 ## [v8.2.0] - 2024-11-17
