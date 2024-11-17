@@ -15,7 +15,7 @@ description: How to use clj-kondo (configure, ignore files, ignore errors, help 
 
 ## clj-kondo documentation
 
-- Version in MegaLinter: **2024.09.27**
+- Version in MegaLinter: **2024.11.14**
 - Visit [Official Web Site](https://github.com/borkdude/clj-kondo#readme){target=_blank}
 - See [How to configure clj-kondo rules](https://github.com/borkdude/clj-kondo/blob/master/doc/config.md#configuration){target=_blank}
   - If custom `.clj-kondo/config.edn` config file isn't found, [.clj-kondo/config.edn](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.clj-kondo/config.edn){target=_blank} will be used
@@ -94,7 +94,7 @@ clj-kondo --lint --config .clj-kondo/config.edn myfile.clj
 ### Help content
 
 ```shell
-clj-kondo v2024.09.27
+clj-kondo v2024.11.14
 
 Options:
 
@@ -130,6 +130,9 @@ Options:
 
   --fail-level <level>: minimum severity for exit with error code.  Supported values:
     warning, error.  The default level if unspecified is warning.
+
+  --report-level <level>: minimum severity for which to report.  Supported values:
+    info, warning, error.  The default level if unspecified is info.
 
   --debug: print debug information.
 
