@@ -9,7 +9,7 @@ description: How to use csharpier (configure, ignore files, ignore errors, help 
 
 ## csharpier documentation
 
-- Version in MegaLinter: **0.29.2**
+- Version in MegaLinter: **0.30.0**
 - Visit [Official Web Site](https://csharpier.com/){target=_blank}
 - See [How to configure csharpier rules](https://csharpier.com/docs/Configuration){target=_blank}
 - See [How to ignore files and directories with csharpier](https://csharpier.com/docs/Ignore){target=_blank}
@@ -40,7 +40,7 @@ description: How to use csharpier (configure, ignore files, ignore errors, help 
 | CSHARP_CSHARPIER_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
 | CSHARP_CSHARPIER_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `true`                                          |
 | CSHARP_CSHARPIER_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
-| CSHARP_CSHARPIER_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `['dotnet-csharpier']`                          |
+| CSHARP_CSHARPIER_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `['csharpier']`                                 |
 
 ## IDE Integration
 
@@ -78,11 +78,11 @@ This linter is available in the following flavors
 ### Example calls
 
 ```shell
-dotnet csharpier --check myfile.cs myfile2.cs
+csharpier --check myfile.cs myfile2.cs
 ```
 
 ```shell
-dotnet csharpier myfile.cs myfile2.cs
+csharpier myfile.cs myfile2.cs
 ```
 
 

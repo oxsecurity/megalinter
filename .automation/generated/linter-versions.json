@@ -17,7 +17,7 @@
     "cljstyle": "0.15.0",
     "coffeelint": "5.2.11",
     "cpplint": "2.0.0",
-    "csharpier": "0.29.2",
+    "csharpier": "0.30.0",
     "cspell": "8.16.0",
     "dartanalyzer": "0.0.0",
     "detekt": "1.23.7",
