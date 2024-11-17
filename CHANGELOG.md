@@ -15,6 +15,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Media
 
 - Linters enhancements
+  - [csharpier](https://megalinter.io/latest/descriptors/csharp_csharpier/): Since v0.30, call linter using `csharpier`, not dotnet-csharpier
 
 - Fixes
 
