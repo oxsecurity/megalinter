@@ -55,7 +55,7 @@ linters:
     ignore_file_name: .csharpierignore
     config_file_name: .csharpierrc
     cli_config_arg_name: "--config-path"
-    cli_executable: dotnet-csharpier
+    cli_executable: csharpier
     cli_lint_mode: list_of_files
     cli_lint_extra_args:
       - "--check"
@@ -64,8 +64,8 @@ linters:
       - "--check"
     test_folder: csharp_csharpier
     examples:
-      - "dotnet csharpier --check myfile.cs myfile2.cs"
-      - "dotnet csharpier myfile.cs myfile2.cs" # Fix
+      - "csharpier --check myfile.cs myfile2.cs"
+      - "csharpier myfile.cs myfile2.cs" # Fix
     install:
       dockerfile:
         - RUN dotnet tool install --global csharpier
