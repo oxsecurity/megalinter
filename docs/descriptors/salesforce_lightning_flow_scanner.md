@@ -19,7 +19,7 @@ If your root folder is not **force-app**, please set variable SALESFORCE_LIGHTNI
 
 ## lightning-flow-scanner documentation
 
-- Version in MegaLinter: **2.34.0**
+- Version in MegaLinter: **2.36.0**
 - Visit [Official Web Site](https://github.com/Lightning-Flow-Scanner#readme){target=_blank}
 - See [How to configure lightning-flow-scanner rules](https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx#configuration){target=_blank}
   - If custom `.flow-scanner.json` config file isn't found, [.flow-scanner.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.flow-scanner.json){target=_blank} will be used
@@ -90,8 +90,7 @@ sf flow:scan
 ### Help content
 
 ```shell
- ›   Warning: @salesforce/cli update available from 2.65.8 to 2.66.7.
-(node:1764) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(node:1761) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
 (Use `node --trace-deprecation ...` to show where the warning was created)
 Find and fix potential bugs in Salesforce flows.
 
@@ -125,7 +124,7 @@ GLOBAL FLAGS
 ```dockerfile
 # Parent descriptor install
 # renovate: datasource=npm depName=@salesforce/cli
-ARG SALESFORCE_CLI_VERSION=2.65.8
+ARG SALESFORCE_CLI_VERSION=2.66.7
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
 ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.9.0
 # renovate: datasource=npm depName=sfdx-hardis
@@ -139,7 +138,7 @@ RUN sf plugins install @salesforce/plugin-packaging@${SALESFORCE_PLUGIN_PACKAGIN
 ENV SF_AUTOUPDATE_DISABLE=true SF_CLI_DISABLE_AUTOUPDATE=true
 # Linter install
 # renovate: datasource=npm depName=lightning-flow-scanner
-ARG LIGHTNING_FLOW_SCANNER_VERSION=2.34.0
+ARG LIGHTNING_FLOW_SCANNER_VERSION=2.36.0
 RUN echo y|sf plugins install lightning-flow-scanner@${LIGHTNING_FLOW_SCANNER_VERSION} \
     && (npm cache clean --force || true) \
     && rm -rf /root/.npm/_cacache

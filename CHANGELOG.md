@@ -163,6 +163,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2024.09.27 to **2024.11.14** on 2024-11-16
   - [phpcs](https://github.com/PHPCSStandards/PHP_CodeSniffer) from 3.11.0 to **3.11.1** on 2024-11-16
   - [ruff](https://github.com/astral-sh/ruff) from 0.7.3 to **0.7.4** on 2024-11-16
+  - [revive](https://revive.run/) from 1.5.0 to **1.5.1** on 2024-11-17
+  - [checkov](https://www.checkov.io/) from 3.2.296 to **3.2.298** on 2024-11-17
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.83.6 to **3.83.7** on 2024-11-17
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 2.34.0 to **2.36.0** on 2024-11-17
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.68.9 to **0.68.14** on 2024-11-17
 <!-- linter-versions-end -->
 
 ## [v8.1.0] - 2024-10-13
