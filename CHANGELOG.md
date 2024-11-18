@@ -20,6 +20,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Fixes
 
 - Reporters
+  - Fix UpdatedSourcesReporter when `APPLY_FIXES` is list (array) on 2024-11-18
 
 - Doc
 
