@@ -3349,7 +3349,7 @@
 <p><a href="https://github.com/JohnnyMorganz/StyLua"><img alt="GitHub stars" src="https://img.shields.io/github/stars/JohnnyMorganz/StyLua?cacheSeconds=3600"/></a> <a href="https://github.com/JohnnyMorganz/StyLua/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/JohnnyMorganz/StyLua?sort=semver"/></a> <a href="https://github.com/JohnnyMorganz/StyLua/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/JohnnyMorganz/StyLua"/></a> <a href="https://github.com/JohnnyMorganz/StyLua/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/JohnnyMorganz/StyLua"/></a> <a href="https://github.com/JohnnyMorganz/StyLua/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/JohnnyMorganz/StyLua"/></a></p>
 <h2 id="stylua-documentation">stylua documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>0.20.0</strong></li>
+<li>Version in MegaLinter: <strong>2.0.0</strong></li>
 <li>Visit <a href="https://github.com/JohnnyMorganz/StyLua#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/JohnnyMorganz/StyLua?tab=readme-ov-file#configuration" target="_blank">How to configure stylua rules</a></li>
 <li>See <a href="https://github.com/JohnnyMorganz/StyLua?tab=readme-ov-file#ignoring-parts-of-a-file" target="_blank">How to disable stylua rules in files</a></li>
@@ -3518,7 +3518,7 @@
 <pre><code class="language-shell">stylua --config-path chktexrc.toml --check myfile.lua
 </code></pre>
 <h3 id="help-content">Help content</h3>
-<pre><code class="language-shell">stylua 0.20.0
+<pre><code class="language-shell">stylua 2.0.0
 A utility to format Lua code
 
 USAGE:
@@ -3609,6 +3609,12 @@ FORMATTING OPTIONS:
 
         --sort-requires
             Enable requires sorting
+
+        --space-after-function-names &lt;SPACE_AFTER_FUNCTION_NAMES&gt;
+            [possible values: Never, Definitions, Calls, Always]
+
+        --syntax &lt;SYNTAX&gt;
+            The type of Lua syntax to parse [possible values: All, Lua51]
 </code></pre>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
 <ul>
@@ -3623,7 +3629,7 @@ RUN wget --tries=5 https://www.lua.org/ftp/lua-5.3.5.tar.gz -O - -q | tar -xzf -
 
 # Linter install
 # renovate: datasource=crate depName=stylua
-ARG LUA_STYLUA_VERSION=0.20.0
+ARG LUA_STYLUA_VERSION=2.0.0
 </code></pre>
 </article>
 </div>
