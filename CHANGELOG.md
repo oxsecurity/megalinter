@@ -22,7 +22,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Reporters
   - Fix UpdatedSourcesReporter when `APPLY_FIXES` is list (array)
-  - Fix AzureCommentReporter when the repo contains a space (previous behavior available with `AZURE_COMMENT_REPORTER_REPLACE_WITH_SPACES: true`)
+  - Fix AzureCommentReporter when the repo is not found: fallback using BUILD_REPOSITORY_ID. (+ disable space replacement in repo name with `AZURE_COMMENT_REPORTER_REPLACE_WITH_SPACES: false`)
 
 - Doc
 
