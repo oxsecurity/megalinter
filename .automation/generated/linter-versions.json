@@ -8,7 +8,7 @@
     "black": "24.10.0",
     "cfn-lint": "1.20.0",
     "checkmake": "0.2.0",
-    "checkov": "3.2.301",
+    "checkov": "3.2.303",
     "checkstyle": "10.20.1",
     "chktex": "1.7.8",
     "clang-format": "17.0.6",
@@ -118,7 +118,7 @@
     "ts-standard": "12.0.2",
     "tsqllint": "1.16.0.0",
     "v8r": "4.2.0",
-    "vale": "3.9.0",
+    "vale": "3.9.1",
     "xmllint": "21207",
     "yamllint": "1.35.1"
 }

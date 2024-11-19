@@ -42,6 +42,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 3.2.300 to **3.2.301** on 2024-11-19
   - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.57.0 to **0.57.1** on 2024-11-19
   - [trivy](https://aquasecurity.github.io/trivy/) from 0.57.0 to **0.57.1** on 2024-11-19
+  - [checkov](https://www.checkov.io/) from 3.2.301 to **3.2.303** on 2024-11-19
+  - [vale](https://vale.sh/) from 3.9.0 to **3.9.1** on 2024-11-19
 <!-- linter-versions-end -->
 
 ## [v8.2.0] - 2024-11-17
