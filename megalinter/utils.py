@@ -8,6 +8,7 @@ import re
 import tempfile
 import urllib.parse
 from fnmatch import fnmatch
+from pathlib import Path
 from typing import Any, Optional, Pattern, Sequence
 
 import git
@@ -314,6 +315,9 @@ def list_updated_files(repo_home):
         except git.InvalidGitRepositoryError:
             logging.warning("Unable to find git repository to list updated files")
             return []
+    if not Path(repo.git_dir).resolve().is_relative_to(Path(repo_home).resolve()):
+        logging.warning("Your linting root directory is not a Git working copy root (e.g., the linting root directory is inside a submodule)")
+        return []
     changed_files = [item.a_path for item in repo.index.diff(None)]
     return changed_files
 
