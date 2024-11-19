@@ -2,7 +2,7 @@
 # Build wheel for megalinter python package
 ##################
 FROM ghcr.io/astral-sh/uv:0.5.1 AS uv
-FROM python:3.12.7-alpine3.20 AS build-ml-core
+FROM python:3.13.0-alpine3.20 AS build-ml-core
 WORKDIR /
 COPY pyproject.toml .
 COPY --from=uv /uv /bin/uv
@@ -12,7 +12,7 @@ COPY . .
 RUN --mount=type=cache,target=/root/.cache/uv \
     uv pip install --system .
 
-FROM python:3.12-alpine
+FROM python:3.13-alpine
 
 RUN apk add --upgrade --no-cache git
 
