@@ -3352,7 +3352,7 @@
 <p>MegaLinter analyze markdown and restructuredText files by default, you can change that using SPELL_VALE_FILE_EXTENSIONS variable.</p>
 <h2 id="vale-documentation">vale documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>3.9.0</strong></li>
+<li>Version in MegaLinter: <strong>3.9.1</strong></li>
 <li>Visit <a href="https://vale.sh/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://vale.sh/explorer/" target="_blank">How to configure vale rules</a></li>
 <li>See <a href="https://vale.sh/docs/topics/vocab/" target="_blank">How to disable vale rules in files</a></li>
@@ -3680,7 +3680,7 @@ Commands:
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile"># renovate: datasource=docker depName=jdkato/vale
-ARG SPELL_VALE_VERSION=v3.9.0
+ARG SPELL_VALE_VERSION=v3.9.1
 FROM jdkato/vale:${SPELL_VALE_VERSION} AS vale
 COPY --link --from=vale /bin/vale /bin/vale
 </code></pre>
