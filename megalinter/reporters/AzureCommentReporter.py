@@ -116,13 +116,27 @@ class AzureCommentReporter(Reporter):
                     + "See https://learn.microsoft.com/en-us/azure/devops/pipelines/"
                     + "build/variables?view=azure-devops&tabs=yaml"
                 )
-                repository_name = SYSTEM_PULLREQUEST_SOURCEREPOSITORYURI.split("/")[
-                    -1
-                ].replace("%20", " ")
-                repository = git_client.get_repository(
-                    repository_name, SYSTEM_TEAMPROJECT
-                )
-                repository_id = repository.id
+                repository_name = SYSTEM_PULLREQUEST_SOURCEREPOSITORYURI.split("/")[-1]
+                if (
+                    config.get(
+                        self.master.request_id,
+                        "AZURE_COMMENT_REPORTER_REPLACE_WITH_SPACES",
+                        "",
+                    )
+                    == "true"
+                ):
+                    repository_name = repository_name.replace("%20", " ")
+                try:
+                    repository = git_client.get_repository(
+                        repository_name, SYSTEM_TEAMPROJECT
+                    )
+                    repository_id = repository.id
+                except Exception as err:
+                    logging.warning(
+                        "[Azure Comment Reporter] Error while getting repo, use fallback: "
+                        + str(err)
+                    )
+                    repository_id = BUILD_REPOSITORY_ID
 
             # Look for existing MegaLinter thread
             existing_threads = git_client.get_threads(

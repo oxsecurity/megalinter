@@ -21,7 +21,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Fixes
 
 - Reporters
-  - Fix UpdatedSourcesReporter when `APPLY_FIXES` is list (array) on 2024-11-18
+  - Fix UpdatedSourcesReporter when `APPLY_FIXES` is list (array)
+  - Fix AzureCommentReporter when the repo contains a space (previous behavior available with `AZURE_COMMENT_REPORTER_REPLACE_WITH_SPACES: true`)
 
 - Doc
 
