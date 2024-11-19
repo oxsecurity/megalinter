@@ -3329,7 +3329,7 @@
       "$id": "#/properties/CSHARP_CSHARPIER_CLI_EXECUTABLE",
       "default": [
         [
-          "csharpier"
+          "dotnet-csharpier"
         ]
       ],
       "items": {
