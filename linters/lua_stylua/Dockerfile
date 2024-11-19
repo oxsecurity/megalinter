@@ -45,7 +45,7 @@ FROM python:3.12.7-alpine3.20
 #############################################################################################
 #ARG__START
 # renovate: datasource=crate depName=stylua
-ARG LUA_STYLUA_VERSION=0.20.0
+ARG LUA_STYLUA_VERSION=2.0.0
 #ARG__END
 
 ####################

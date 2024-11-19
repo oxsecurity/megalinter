@@ -115,7 +115,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=crate depName=stylua
-          ARG LUA_STYLUA_VERSION=0.20.0
+          ARG LUA_STYLUA_VERSION=2.0.0
     ide:
       neovim:
         - name:
