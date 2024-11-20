@@ -30,7 +30,7 @@ ARG REPOSITORY_KICS_VERSION=v2.1.3-alpine
 # renovate: datasource=docker depName=trufflesecurity/trufflehog 
 ARG REPOSITORY_TRUFFLEHOG_VERSION=3.83.7
 # renovate: datasource=docker depName=jdkato/vale
-ARG SPELL_VALE_VERSION=v3.9.0
+ARG SPELL_VALE_VERSION=v3.9.1
 # renovate: datasource=docker depName=ghcr.io/terraform-linters/tflint
 ARG TERRAFORM_TFLINT_VERSION=0.54.0
 # renovate: datasource=docker depName=tenable/terrascan
@@ -78,7 +78,7 @@ FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} AS terragrunt
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.5.1 AS uv
+FROM ghcr.io/astral-sh/uv:0.5.3 AS uv
 FROM python:3.12.7-alpine3.20 AS build-ml-core
 WORKDIR /
 COPY pyproject.toml .
@@ -120,7 +120,7 @@ ARG DETEKT_VERSION=1.23.7
 # renovate: datasource=crate depName=selene
 ARG LUA_SELENE_VERSION=0.27.1
 # renovate: datasource=crate depName=stylua
-ARG LUA_STYLUA_VERSION=0.20.0
+ARG LUA_STYLUA_VERSION=2.0.0
 # renovate: datasource=nuget depName=PSScriptAnalyzer registryUrl=https://www.powershellgallery.com/api/v2/
 ARG PSSA_VERSION='1.23.0'
 

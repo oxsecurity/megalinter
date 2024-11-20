@@ -65,9 +65,15 @@ class UpdatedSourcesReporter(Reporter):
                 f" in folder {updated_sources_dir}."
             )
 
+            auto_fixes = False
             if not config.exists(self.master.request_id, "GITHUB_REPOSITORY"):
                 apply_fixes = config.get(self.master.request_id, "APPLY_FIXES", "none")
-                if apply_fixes.lower() != "none":
+                if isinstance(apply_fixes, list):
+                    auto_fixes = True
+                else:
+                    if apply_fixes.lower() == "all":
+                        auto_fixes = True
+                if auto_fixes:
                     remote_branch = ""
                     SYSTEM_PULLREQUEST_SOURCEBRANCH = config.get(
                         self.master.request_id, "SYSTEM_PULLREQUEST_SOURCEBRANCH", ""

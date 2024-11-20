@@ -9,7 +9,7 @@ description: How to use stylua (configure, ignore files, ignore errors, help & v
 
 ## stylua documentation
 
-- Version in MegaLinter: **0.20.0**
+- Version in MegaLinter: **2.0.0**
 - Visit [Official Web Site](https://github.com/JohnnyMorganz/StyLua#readme){target=_blank}
 - See [How to configure stylua rules](https://github.com/JohnnyMorganz/StyLua?tab=readme-ov-file#configuration){target=_blank}
 - See [How to disable stylua rules in files](https://github.com/JohnnyMorganz/StyLua?tab=readme-ov-file#ignoring-parts-of-a-file){target=_blank}
@@ -84,7 +84,7 @@ stylua --config-path chktexrc.toml --check myfile.lua
 ### Help content
 
 ```shell
-stylua 0.20.0
+stylua 2.0.0
 A utility to format Lua code
 
 USAGE:
@@ -175,6 +175,12 @@ FORMATTING OPTIONS:
 
         --sort-requires
             Enable requires sorting
+
+        --space-after-function-names <SPACE_AFTER_FUNCTION_NAMES>
+            [possible values: Never, Definitions, Calls, Always]
+
+        --syntax <SYNTAX>
+            The type of Lua syntax to parse [possible values: All, Lua51]
 ```
 
 ### Installation on mega-linter Docker image
@@ -190,6 +196,6 @@ RUN wget --tries=5 https://www.lua.org/ftp/lua-5.3.5.tar.gz -O - -q | tar -xzf -
 
 # Linter install
 # renovate: datasource=crate depName=stylua
-ARG LUA_STYLUA_VERSION=0.20.0
+ARG LUA_STYLUA_VERSION=2.0.0
 ```
 

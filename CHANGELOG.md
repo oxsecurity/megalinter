@@ -16,10 +16,13 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Linters enhancements
   - [csharpier](https://megalinter.io/latest/descriptors/csharp_csharpier/): Since v0.30, call linter using `csharpier`, not dotnet-csharpier
+  - [csharpier](https://megalinter.io/latest/descriptors/csharp_csharpier/): They reverted v0.30 in v0.31, so we revert it too
 
 - Fixes
 
 - Reporters
+  - Fix UpdatedSourcesReporter when `APPLY_FIXES` is list (array)
+  - Fix AzureCommentReporter when the repo is not found: fallback using BUILD_REPOSITORY_ID. (+ disable space replacement in repo name with `AZURE_COMMENT_REPORTER_REPLACE_WITH_SPACES: false`)
 
 - Doc
 
@@ -33,6 +36,16 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [phpstan](https://phpstan.org/) from 2.0.1 to **2.0.2** on 2024-11-17
   - [checkov](https://www.checkov.io/) from 3.2.298 to **3.2.300** on 2024-11-17
   - [csharpier](https://csharpier.com/) from 0.29.2 to **0.30.0** on 2024-11-17
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.19.0 to **1.20.0** on 2024-11-19
+  - [csharpier](https://csharpier.com/) from 0.30.0 to **0.30.1** on 2024-11-19
+  - [stylua](https://github.com/JohnnyMorganz/StyLua) from 0.20.0 to **2.0.0** on 2024-11-19
+  - [checkov](https://www.checkov.io/) from 3.2.300 to **3.2.301** on 2024-11-19
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.57.0 to **0.57.1** on 2024-11-19
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.57.0 to **0.57.1** on 2024-11-19
+  - [checkov](https://www.checkov.io/) from 3.2.301 to **3.2.303** on 2024-11-19
+  - [vale](https://vale.sh/) from 3.9.0 to **3.9.1** on 2024-11-19
+  - [spectral](https://docs.stoplight.io/docs/spectral/674b27b261c3c-overview) from 6.14.1 to **6.14.2** on 2024-11-19
+  - [checkov](https://www.checkov.io/) from 3.2.303 to **3.2.305** on 2024-11-19
 <!-- linter-versions-end -->
 
 ## [v8.2.0] - 2024-11-17

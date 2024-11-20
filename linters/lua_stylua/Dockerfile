@@ -24,7 +24,7 @@
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.5.1 AS uv
+FROM ghcr.io/astral-sh/uv:0.5.3 AS uv
 FROM python:3.12.7-alpine3.20 AS build-ml-core
 WORKDIR /
 COPY pyproject.toml .
@@ -45,7 +45,7 @@ FROM python:3.12.7-alpine3.20
 #############################################################################################
 #ARG__START
 # renovate: datasource=crate depName=stylua
-ARG LUA_STYLUA_VERSION=0.20.0
+ARG LUA_STYLUA_VERSION=2.0.0
 #ARG__END
 
 ####################
