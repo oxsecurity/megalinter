@@ -46,6 +46,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [vale](https://vale.sh/) from 3.9.0 to **3.9.1** on 2024-11-19
   - [spectral](https://docs.stoplight.io/docs/spectral/674b27b261c3c-overview) from 6.14.1 to **6.14.2** on 2024-11-19
   - [checkov](https://www.checkov.io/) from 3.2.303 to **3.2.305** on 2024-11-19
+  - [checkov](https://www.checkov.io/) from 3.2.305 to **3.2.307** on 2024-11-20
 <!-- linter-versions-end -->
 
 ## [v8.2.0] - 2024-11-17
