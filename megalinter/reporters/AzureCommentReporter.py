@@ -121,7 +121,7 @@ class AzureCommentReporter(Reporter):
                     config.get(
                         self.master.request_id,
                         "AZURE_COMMENT_REPORTER_REPLACE_WITH_SPACES",
-                        "",
+                        "true",
                     )
                     == "true"
                 ):
@@ -133,8 +133,9 @@ class AzureCommentReporter(Reporter):
                     repository_id = repository.id
                 except Exception as err:
                     logging.warning(
-                        "[Azure Comment Reporter] Error while getting repo, use fallback: "
+                        f"[Azure Comment Reporter] Unable to find repo {repository_name}:"
                         + str(err)
+                        + "\nUse fallback with BUILD_REPOSITORY_ID."
                     )
                     repository_id = BUILD_REPOSITORY_ID
 

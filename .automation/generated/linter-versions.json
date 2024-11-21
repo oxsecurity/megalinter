@@ -8,7 +8,7 @@
     "black": "24.10.0",
     "cfn-lint": "1.20.0",
     "checkmake": "0.2.0",
-    "checkov": "3.2.301",
+    "checkov": "3.2.305",
     "checkstyle": "10.20.1",
     "chktex": "1.7.8",
     "clang-format": "17.0.6",
@@ -100,7 +100,7 @@
     "shfmt": "3.10.0",
     "snakefmt": "0.10.2",
     "snakemake": "8.25.3",
-    "spectral": "6.14.1",
+    "spectral": "6.14.2",
     "sql-lint": "1.0.0",
     "sqlfluff": "3.2.5",
     "standard": "17.1.2",
@@ -119,7 +119,7 @@
     "ts-standard": "12.0.2",
     "tsqllint": "1.16.0.0",
     "v8r": "4.2.0",
-    "vale": "3.9.0",
+    "vale": "3.9.1",
     "xmllint": "21207",
     "yamllint": "1.35.1"
 }

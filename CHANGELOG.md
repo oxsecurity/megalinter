@@ -23,7 +23,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Reporters
   - Fix UpdatedSourcesReporter when `APPLY_FIXES` is list (array)
-  - Fix AzureCommentReporter when the repo contains a space (previous behavior available with `AZURE_COMMENT_REPORTER_REPLACE_WITH_SPACES: true`)
+  - Fix AzureCommentReporter when the repo is not found: fallback using BUILD_REPOSITORY_ID. (+ disable space replacement in repo name with `AZURE_COMMENT_REPORTER_REPLACE_WITH_SPACES: false`)
 
 - Doc
 
@@ -43,6 +43,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 3.2.300 to **3.2.301** on 2024-11-19
   - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.57.0 to **0.57.1** on 2024-11-19
   - [trivy](https://aquasecurity.github.io/trivy/) from 0.57.0 to **0.57.1** on 2024-11-19
+  - [checkov](https://www.checkov.io/) from 3.2.301 to **3.2.303** on 2024-11-19
+  - [vale](https://vale.sh/) from 3.9.0 to **3.9.1** on 2024-11-19
+  - [spectral](https://docs.stoplight.io/docs/spectral/674b27b261c3c-overview) from 6.14.1 to **6.14.2** on 2024-11-19
+  - [checkov](https://www.checkov.io/) from 3.2.303 to **3.2.305** on 2024-11-19
 <!-- linter-versions-end -->
 
 ## [v8.2.0] - 2024-11-17
