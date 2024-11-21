@@ -316,7 +316,9 @@ def list_updated_files(repo_home):
             logging.warning("Unable to find git repository to list updated files")
             return []
     if not Path(repo.git_dir).resolve().is_relative_to(Path(repo_home).resolve()):
-        logging.warning("Your workspace is not a Git working copy root (e.g., the workspace is inside a submodule)")
+        logging.warning(
+            "Your workspace is not a Git working copy root (e.g., the workspace is inside a submodule)"
+        )
         return []
     changed_files = [item.a_path for item in repo.index.diff(None)]
     return changed_files
