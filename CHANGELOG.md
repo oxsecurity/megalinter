@@ -47,6 +47,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [spectral](https://docs.stoplight.io/docs/spectral/674b27b261c3c-overview) from 6.14.1 to **6.14.2** on 2024-11-19
   - [checkov](https://www.checkov.io/) from 3.2.303 to **3.2.305** on 2024-11-19
   - [checkov](https://www.checkov.io/) from 3.2.305 to **3.2.307** on 2024-11-20
+  - [checkov](https://www.checkov.io/) from 3.2.307 to **3.2.311** on 2024-11-21
+  - [syft](https://github.com/anchore/syft) from 1.16.0 to **1.17.0** on 2024-11-21
 <!-- linter-versions-end -->
 
 ## [v8.2.0] - 2024-11-17
