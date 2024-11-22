@@ -105,13 +105,15 @@ class ConsoleLinterReporter(Reporter):
         # Command
         if len(self.master.lint_command_log) == 1:
             end = "" if len(self.master.lint_command_log[0]) < 250 else "...(truncated)"
-            msg += [
-                f"- Command: [{self.master.lint_command_log[0][:250]}{end}]"
-            ]
+            msg += [f"- Command: [{self.master.lint_command_log[0][:250]}{end}]"]
         elif len(self.master.lint_command_log) > 1:
             msg += ["- Commands:"]
             for command_log in self.master.lint_command_log:
-                end = "" if len(self.master.lint_command_log[0]) < 250 else "...(truncated)"
+                end = (
+                    ""
+                    if len(self.master.lint_command_log[0]) < 250
+                    else "...(truncated)"
+                )
                 msg += [f"  [{command_log[:250]}{end}]"]
         logging.info("\n".join(msg))
         # Pre-commands logs
