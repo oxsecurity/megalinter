@@ -55,10 +55,11 @@ class PrePostTest(unittest.TestCase):
             == "my output variable value2",
             "MY_OUTPUT_VARIABLE2 should be found",
         )
+        replaced_val = config.get(self.request_id, "MY_OUTPUT_VARIABLE_REPLACED", "")
         self.assertTrue(
-            config.get(self.request_id, "MY_OUTPUT_VARIABLE_REPLACED", "")
+            replaced_val
             == "HAS_BEEN_REPLACED",
-            "MY_OUTPUT_VARIABLE_REPLACED has not been replaced",
+            f"MY_OUTPUT_VARIABLE_REPLACED has not been replaced (value: {replaced_val})",
         )
         self.assertTrue(
             config.get(self.request_id, "MY_OUTPUT_LINTER_VARIABLE", "")

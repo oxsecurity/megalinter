@@ -20,7 +20,7 @@ PRE_COMMANDS:
   - command: export MY_OUTPUT_VARIABLE="my output variable value" && export MY_OUTPUT_VARIABLE2="my output variable value2"
     output_variables: ["MY_OUTPUT_VARIABLE", "MY_OUTPUT_VARIABLE2"]
     cwd: "root"
-  - command: export MY_OUTPUT_VARIABLE_REPLACED="$MY_INPUT_VARIABLE"
+  - command: export MY_OUTPUT_VARIABLE_REPLACED="${MY_INPUT_VARIABLE}"
     replacement_env_vars: 
       - var_src: MY_INPUT_VARIABLE_REPLACEMENT
         var_dest: MY_INPUT_VARIABLE
