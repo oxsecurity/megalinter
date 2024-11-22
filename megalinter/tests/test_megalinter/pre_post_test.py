@@ -57,8 +57,7 @@ class PrePostTest(unittest.TestCase):
         )
         replaced_val = config.get(self.request_id, "MY_OUTPUT_VARIABLE_REPLACED", "")
         self.assertTrue(
-            replaced_val
-            == "HAS_BEEN_REPLACED",
+            replaced_val == "HAS_BEEN_REPLACED",
             f"MY_OUTPUT_VARIABLE_REPLACED has not been replaced (value: {replaced_val})",
         )
         self.assertTrue(
