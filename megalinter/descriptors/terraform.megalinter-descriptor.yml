@@ -24,6 +24,8 @@ linters:
     linter_text: |
       > If you are using the GitHub action please use the `TERRAFORM_TFLINT_UNSECURED_ENV_VARIABLES: GITHUB_TOKEN` to prevent plugin download issues
 
+      > If you have issues with tflint --init, create a GitHub Personal Access Token and set its value to PAT_GITHUB_COM variable.
+
       Note: It's recommended to create your own `.tflint.hcl` custom config file tailored to your project's specific needs.
       The default configuration enables all supported languages and rules, which may not be optimal for every project.
     linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/tflint.png
@@ -38,6 +40,9 @@ linters:
       - name: TERRAFORM_TFLINT_SECURED_ENV
         default_value: true
         description: Allows to send the full env to **tflint --init**. Initialized with default value `true`. Set to `false` to allow `tflint --init` to access your env vars.
+      - name: PAT_GITHUB_COM
+        default_value: ""
+        description: If you have issues with tflint --init, create a GitHub Personal Access Token and set its value to PAT_GITHUB_COM variable.
     examples:
       - "tflint"
       - "tflint -c .tflint.hcl"

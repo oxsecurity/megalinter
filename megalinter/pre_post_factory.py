@@ -98,6 +98,11 @@ def run_command(command_info, log_key, mega_linter, linter=None):
             mega_linter.request_id, command_info["secured_env"], unsecured_env_variables
         )
     }
+    # Complete with replacement variables if necessary
+    if "replacement_env_vars" in command_info:
+        for replacement in command_info["replacement_env_vars"]:
+            if replacement["var_src"] in subprocess_env:
+                subprocess_env[replacement["var_dest"]] = replacement["var_src"]
     add_in_logs(
         linter,
         log_key,
