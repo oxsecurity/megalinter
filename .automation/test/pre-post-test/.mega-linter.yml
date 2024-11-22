@@ -23,7 +23,7 @@ PRE_COMMANDS:
   - command: export MY_OUTPUT_VARIABLE_REPLACED="$MY_INPUT_VARIABLE"
     replacement_env_vars: 
       - var_src: MY_INPUT_VARIABLE_REPLACEMENT
-      - var_dest: MY_INPUT_VARIABLE
+        var_dest: MY_INPUT_VARIABLE
     output_variables: ["MY_OUTPUT_VARIABLE_REPLACED"]
     cwd: "root"
 POST_COMMANDS:
