@@ -19,6 +19,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [csharpier](https://megalinter.io/latest/descriptors/csharp_csharpier/): They reverted v0.30 in v0.31, so we revert it too
 
 - Fixes
+  - [trivy](https://megalinter.io/latest/descriptors/repository_trivy/): retry in case of BLOB_UNKNOWN  while downloading vulnerability list 
 
 - Reporters
   - Fix UpdatedSourcesReporter when `APPLY_FIXES` is list (array)

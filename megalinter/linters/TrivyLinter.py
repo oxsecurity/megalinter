@@ -16,7 +16,7 @@ class TrivyLinter(Linter):
         return_code, return_output = super().execute_lint_command(command)
         if ("TOOMANYREQUESTS" in return_output) or (
             "failed to download Java DB" in return_output
-        ):
+        ) or ("BLOB_UNKNOWN" in return_output):
             # Try 5 times
             if self.counter < 5:
                 time.sleep(3.0)
