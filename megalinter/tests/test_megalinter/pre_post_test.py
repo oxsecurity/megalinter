@@ -33,7 +33,7 @@ class PrePostTest(unittest.TestCase):
                 "LOG_LEVEL": "DEBUG",
                 "request_id": self.request_id,
                 "MY_INPUT_VARIABLE": "SHOULD_BE_REPLACED",
-                "MY_INPUT_VARIABLE_REPLACEMENT": "HAS_BEEN_REPLACED"
+                "MY_INPUT_VARIABLE_REPLACEMENT": "HAS_BEEN_REPLACED",
             }
         )
         self.assertTrue(

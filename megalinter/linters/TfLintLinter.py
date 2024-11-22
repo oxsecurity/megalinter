@@ -29,11 +29,8 @@ class TfLintLinter(megalinter.Linter):
             "cwd": self.workspace,
             "secured_env": tflint_secured_env,
             "replacement_env_vars": [
-                { 
-                    "var_dest": "GITHUB_TOKEN",
-                    "var_src": "PAT_GITHUB_COM"
-                }
-            ]
+                {"var_dest": "GITHUB_TOKEN", "var_src": "PAT_GITHUB_COM"}
+            ],
         }
         if self.pre_commands is None:
             self.pre_commands = []
