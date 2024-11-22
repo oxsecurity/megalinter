@@ -289,7 +289,7 @@ def build_linter_reporter_external_result(reporter, redis_stream=False) -> dict:
         "linterStatusMessage": status_message,
         "linterElapsedTime": round(reporter.master.elapsed_time_s, 2),
     }
-    if reporter.master.lint_command_log is not None:
+    if len(reporter.master.lint_command_log) > 0:
         result["linterCliCommand"] = reporter.master.lint_command_log
     result = result | get_linter_infos(reporter.master)
     if (

@@ -146,7 +146,7 @@ class Linter:
 
         self.report_folder = ""
         self.reporters = []
-        self.lint_command_log: list(str) | str | None = None
+        self.lint_command_log: list(str) = []
 
         # Initialize parameters
         default_params = {
@@ -986,7 +986,6 @@ class Linter:
         command = self.build_lint_command(file)
         # Output command if debug mode
         logging.debug(f"[{self.linter_name}] command: {str(command)}")
-        self.lint_command_log = command
         # Run command via CLI
         return_code, return_output = self.execute_lint_command(command)
         logging.debug(
@@ -1004,6 +1003,7 @@ class Linter:
             "FORCE_COLOR": "0",
         }
         if isinstance(command, str):
+            self.lint_command_log.append(command)
             # Call linter with a sub-process
             process = subprocess.run(
                 command,
@@ -1028,7 +1028,7 @@ class Linter:
                     msg = "Unable to find command: " + command[0]
                     logging.error(msg)
                     return errno.ESRCH, msg
-
+            self.lint_command_log.append(" ".join(command))
             # Call linter with a sub-process (RECOMMENDED: with a list of strings corresponding to the command)
             try:
                 process = subprocess.run(
