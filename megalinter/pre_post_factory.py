@@ -102,7 +102,8 @@ def run_command(command_info, log_key, mega_linter, linter=None):
     if "replacement_env_vars" in command_info:
         for replacement in command_info["replacement_env_vars"]:
             if replacement["var_src"] in subprocess_env:
-                subprocess_env[replacement["var_dest"]] = replacement["var_src"]
+                var_dest_name = replacement["var_dest"]
+                subprocess_env[var_dest_name] = replacement["var_src"]
     add_in_logs(
         linter,
         log_key,
