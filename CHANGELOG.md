@@ -9,7 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
 - Core
-  - Display command log (truncated to 200 chars) even when LOG_LEVEL is not DEBUG
+  - Display command log (truncated to 250 chars) even when LOG_LEVEL is not DEBUG
   - Allow to replace an ENV var value with the value of another ENV var before calling a PRE_COMMAND (helps for tflint run from GitHub Enterprise)
 
 - New linters
