@@ -104,13 +104,15 @@ class ConsoleLinterReporter(Reporter):
             ]
         # Command
         if len(self.master.lint_command_log) == 1:
+            end = "" if len(self.master.lint_command_log[0]) < 200 else "..."
             msg += [
-                f"- Command: {self.master.lint_command_log[0][:200]}"
+                f"- Command: [{self.master.lint_command_log[0][:200]}{end}]"
             ]
         elif len(self.master.lint_command_log) > 1:
             msg += ["- Commands:"]
             for command_log in self.master.lint_command_log:
-                msg += [f"  {command_log[:200]}"]
+                end = "" if len(self.master.lint_command_log[0]) < 200 else "..."
+                msg += [f"  [{command_log[:200]}{end}]"]
         logging.info("\n".join(msg))
         # Pre-commands logs
         if len(self.master.log_lines_pre) > 0:
