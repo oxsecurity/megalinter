@@ -3174,6 +3174,13 @@
 </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#v830-2024-11-23">
+<span class="md-ellipsis">
+      [v8.3.0] - 2024-11-23
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#v820-2024-11-17">
 <span class="md-ellipsis">
       [v8.2.0] - 2024-11-17
@@ -4157,6 +4164,13 @@
 </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#v830-2024-11-23">
+<span class="md-ellipsis">
+      [v8.3.0] - 2024-11-23
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#v820-2024-11-17">
 <span class="md-ellipsis">
       [v8.2.0] - 2024-11-17
@@ -5121,11 +5135,7 @@
 <h2 id="unreleased-beta-main-branch-content">[Unreleased] (beta, main branch content)</h2>
 <p>Note: Can be used with <code>oxsecurity/megalinter@beta</code> in your GitHub Action mega-linter.yml file, or with <code>oxsecurity/megalinter:beta</code> docker image</p>
 <ul>
-<li>Core<ul>
-<li>Display command log (truncated to 250 chars) even when LOG_LEVEL is not DEBUG</li>
-<li>Allow to replace an ENV var value with the value of another ENV var before calling a PRE_COMMAND (helps for tflint run from GitHub Enterprise)</li>
-</ul>
-</li>
+<li>Core</li>
 </ul>
 <ul>
 <li>New linters</li>
@@ -5134,9 +5144,36 @@
 <li>Media</li>
 </ul>
 <ul>
-<li>Linters enhancements<ul>
-<li><a href="https://megalinter.io/latest/descriptors/csharp_csharpier/">csharpier</a>: Since v0.30, call linter using <code>csharpier</code>, not dotnet-csharpier</li>
-<li><a href="https://megalinter.io/latest/descriptors/csharp_csharpier/">csharpier</a>: They reverted v0.30 in v0.31, so we revert it too</li>
+<li>Linters enhancements</li>
+</ul>
+<ul>
+<li>Fixes</li>
+</ul>
+<ul>
+<li>Reporters</li>
+</ul>
+<ul>
+<li>Doc</li>
+</ul>
+<ul>
+<li>Flavors</li>
+</ul>
+<ul>
+<li>CI</li>
+</ul>
+<ul>
+<li>mega-linter-runner</li>
+</ul>
+<ul>
+<li>Linter versions upgrades (N)</li>
+</ul>
+<!-- linter-versions-end -->
+<h2 id="v830-2024-11-23">[v8.3.0] - 2024-11-23</h2>
+<ul>
+<li>Core<ul>
+<li>Display command log (truncated to 250 chars) even when LOG_LEVEL is not DEBUG</li>
+<li>Allow to replace an ENV var value with the value of another ENV var before calling a PRE_COMMAND (helps for tflint run from GitHub Enterprise)</li>
+<li>Fix handling of git submodule paths</li>
 </ul>
 </li>
 </ul>
@@ -5154,47 +5191,30 @@
 </li>
 </ul>
 <ul>
-<li>Doc</li>
-</ul>
-<ul>
-<li>Flavors</li>
-</ul>
-<ul>
 <li>CI<ul>
 <li>Fix Docker mirroring job for release context</li>
+<li>Remove max parallel jobs for release linters workflow</li>
 </ul>
 </li>
 </ul>
 <ul>
-<li>mega-linter-runner</li>
-</ul>
-<ul>
-<li>Linter versions upgrades (104)<ul>
-<li><a href="https://phpstan.org/">phpstan</a> from 2.0.1 to <strong>2.0.2</strong> on 2024-11-17</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 3.2.298 to <strong>3.2.300</strong> on 2024-11-17</li>
-<li><a href="https://csharpier.com/">csharpier</a> from 0.29.2 to <strong>0.30.0</strong> on 2024-11-17</li>
-<li><a href="https://github.com/aws-cloudformation/cfn-lint">cfn-lint</a> from 1.19.0 to <strong>1.20.0</strong> on 2024-11-19</li>
-<li><a href="https://csharpier.com/">csharpier</a> from 0.30.0 to <strong>0.30.1</strong> on 2024-11-19</li>
-<li><a href="https://github.com/JohnnyMorganz/StyLua">stylua</a> from 0.20.0 to <strong>2.0.0</strong> on 2024-11-19</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 3.2.300 to <strong>3.2.301</strong> on 2024-11-19</li>
-<li><a href="https://aquasecurity.github.io/trivy/">trivy-sbom</a> from 0.57.0 to <strong>0.57.1</strong> on 2024-11-19</li>
-<li><a href="https://aquasecurity.github.io/trivy/">trivy</a> from 0.57.0 to <strong>0.57.1</strong> on 2024-11-19</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 3.2.301 to <strong>3.2.303</strong> on 2024-11-19</li>
-<li><a href="https://vale.sh/">vale</a> from 3.9.0 to <strong>3.9.1</strong> on 2024-11-19</li>
-<li><a href="https://docs.stoplight.io/docs/spectral/674b27b261c3c-overview">spectral</a> from 6.14.1 to <strong>6.14.2</strong> on 2024-11-19</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 3.2.303 to <strong>3.2.305</strong> on 2024-11-19</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 3.2.305 to <strong>3.2.307</strong> on 2024-11-20</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 3.2.307 to <strong>3.2.311</strong> on 2024-11-21</li>
-<li><a href="https://github.com/anchore/syft">syft</a> from 1.16.0 to <strong>1.17.0</strong> on 2024-11-21</li>
-<li><a href="https://github.com/trufflesecurity/trufflehog">trufflehog</a> from 3.83.7 to <strong>3.84.0</strong> on 2024-11-22</li>
-<li><a href="https://github.com/astral-sh/ruff">ruff</a> from 0.7.4 to <strong>0.8.0</strong> on 2024-11-22</li>
-<li><a href="https://csharpier.com/">csharpier</a> from 0.30.1 to <strong>0.30.2</strong> on 2024-11-23</li>
-<li><a href="https://github.com/trufflesecurity/trufflehog">trufflehog</a> from 3.84.0 to <strong>3.84.1</strong> on 2024-11-23</li>
-<li><a href="https://github.com/DavidAnson/markdownlint">markdownlint</a> from 0.42.0 to <strong>0.43.0</strong> on 2024-11-23</li>
+<li>Linter versions upgrades (13)<ul>
+<li><a href="https://github.com/aws-cloudformation/cfn-lint">cfn-lint</a> from 1.19.0 to <strong>1.20.0</strong></li>
+<li><a href="https://www.checkov.io/">checkov</a> from 3.2.298 to <strong>3.2.311</strong></li>
+<li><a href="https://csharpier.com/">csharpier</a> from 0.29.2 to <strong>0.30.2</strong></li>
+<li><a href="https://github.com/DavidAnson/markdownlint">markdownlint</a> from 0.42.0 to <strong>0.43.0</strong></li>
+<li><a href="https://phpstan.org/">phpstan</a> from 2.0.1 to <strong>2.0.2</strong></li>
+<li><a href="https://github.com/astral-sh/ruff">ruff</a> from 0.7.4 to <strong>0.8.0</strong></li>
+<li><a href="https://docs.stoplight.io/docs/spectral/674b27b261c3c-overview">spectral</a> from 6.14.1 to <strong>6.14.2</strong></li>
+<li><a href="https://github.com/JohnnyMorganz/StyLua">stylua</a> from 0.20.0 to <strong>2.0.0</strong></li>
+<li><a href="https://github.com/anchore/syft">syft</a> from 1.16.0 to <strong>1.17.0</strong></li>
+<li><a href="https://aquasecurity.github.io/trivy/">trivy-sbom</a> from 0.57.0 to <strong>0.57.1</strong></li>
+<li><a href="https://aquasecurity.github.io/trivy/">trivy</a> from 0.57.0 to <strong>0.57.1</strong></li>
+<li><a href="https://github.com/trufflesecurity/trufflehog">trufflehog</a> from 3.83.7 to <strong>3.84.1</strong></li>
+<li><a href="https://vale.sh/">vale</a> from 3.9.0 to <strong>3.9.1</strong></li>
 </ul>
 </li>
 </ul>
-<!-- linter-versions-end -->
 <h2 id="v820-2024-11-17">[v8.2.0] - 2024-11-17</h2>
 <ul>
 <li>Media<ul>
