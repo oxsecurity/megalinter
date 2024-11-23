@@ -5121,7 +5121,11 @@
 <h2 id="unreleased-beta-main-branch-content">[Unreleased] (beta, main branch content)</h2>
 <p>Note: Can be used with <code>oxsecurity/megalinter@beta</code> in your GitHub Action mega-linter.yml file, or with <code>oxsecurity/megalinter:beta</code> docker image</p>
 <ul>
-<li>Core</li>
+<li>Core<ul>
+<li>Display command log (truncated to 250 chars) even when LOG_LEVEL is not DEBUG</li>
+<li>Allow to replace an ENV var value with the value of another ENV var before calling a PRE_COMMAND (helps for tflint run from GitHub Enterprise)</li>
+</ul>
+</li>
 </ul>
 <ul>
 <li>New linters</li>
