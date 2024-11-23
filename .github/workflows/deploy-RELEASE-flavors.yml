@@ -112,17 +112,19 @@ jobs:
         with:
           workflow: mirror-docker-image.yml
           inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter-${{ matrix.flavor }}:v8", "target-image": "docker.io/oxsecurity/megalinter-${{ matrix.flavor }}:v8" }'
+          ref: main
       - name: Invoke Mirror docker image workflow (Main image)
         uses: benc-uk/workflow-dispatch@v1
         with:
           workflow: mirror-docker-image.yml
           inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter-${{ matrix.flavor }}:v8", "target-image": "docker.io/oxsecurity/megalinter-${{ matrix.flavor }}:${{ github.event.release.tag_name }}" }'
+          ref: main
       - name: Invoke Mirror docker image workflow (Main image)
         uses: benc-uk/workflow-dispatch@v1
         with:
           workflow: mirror-docker-image.yml
           inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter-${{ matrix.flavor }}:v8", "target-image": "docker.io/oxsecurity/megalinter-${{ matrix.flavor }}:latest" }'
-
+          ref: main
       # - name: Build Worker Image
       #   uses: docker/build-push-action@v6
       #   with:

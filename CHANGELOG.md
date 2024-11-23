@@ -32,6 +32,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Flavors
 
 - CI
+  - Fix Docker mirroring job for release context
 
 - mega-linter-runner
 
