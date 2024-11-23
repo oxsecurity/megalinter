@@ -91,7 +91,7 @@ sf flow:scan
 
 ```shell
  ›   Warning: @salesforce/cli update available from 2.66.7 to 2.67.7.
-(node:1755) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(node:1762) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
 (Use `node --trace-deprecation ...` to show where the warning was created)
 Find and fix potential bugs in Salesforce flows.
 
