@@ -49,7 +49,7 @@ ARG SALESFORCE_CLI_VERSION=2.66.7
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
 ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.9.0
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=5.6.3
+ARG SFDX_HARDIS_VERSION=5.7.1
 # renovate: datasource=npm depName=lightning-flow-scanner
 ARG LIGHTNING_FLOW_SCANNER_VERSION=2.36.0
 #ARG__END
