@@ -57,6 +57,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [ruff](https://github.com/astral-sh/ruff) from 0.7.4 to **0.8.0** on 2024-11-22
   - [csharpier](https://csharpier.com/) from 0.30.1 to **0.30.2** on 2024-11-23
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.84.0 to **3.84.1** on 2024-11-23
+  - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.42.0 to **0.43.0** on 2024-11-23
 <!-- linter-versions-end -->
 
 ## [v8.2.0] - 2024-11-17
