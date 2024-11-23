@@ -3335,6 +3335,7 @@
 <p><a href="https://github.com/terraform-linters/tflint"><img alt="GitHub stars" src="https://img.shields.io/github/stars/terraform-linters/tflint?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-SARIF-orange"><img alt="sarif" src="https://shields.io/badge/-SARIF-orange"/></a> <a href="https://github.com/terraform-linters/tflint/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/terraform-linters/tflint?sort=semver"/></a> <a href="https://github.com/terraform-linters/tflint/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/terraform-linters/tflint"/></a> <a href="https://github.com/terraform-linters/tflint/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/terraform-linters/tflint"/></a> <a href="https://github.com/terraform-linters/tflint/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/terraform-linters/tflint"/></a></p>
 <blockquote>
 <p>If you are using the GitHub action please use the <code>TERRAFORM_TFLINT_UNSECURED_ENV_VARIABLES: GITHUB_TOKEN</code> to prevent plugin download issues</p>
+<p>If you have issues with tflint --init, create a GitHub Personal Access Token and set its value to PAT_GITHUB_COM variable.</p>
 </blockquote>
 <p>Note: It's recommended to create your own <code>.tflint.hcl</code> custom config file tailored to your project's specific needs.
 The default configuration enables all supported languages and rules, which may not be optimal for every project.</p>
@@ -3368,6 +3369,11 @@ The default configuration enables all supported languages and rules, which may n
 <td>TERRAFORM_TFLINT_SECURED_ENV</td>
 <td>Allows to send the full env to <strong>tflint --init</strong>. Initialized with default value <code>true</code>. Set to <code>false</code> to allow <code>tflint --init</code> to access your env vars.</td>
 <td><code>True</code></td>
+</tr>
+<tr>
+<td>PAT_GITHUB_COM</td>
+<td>If you have issues with tflint --init, create a GitHub Personal Access Token and set its value to PAT_GITHUB_COM variable.</td>
+<td>``</td>
 </tr>
 <tr>
 <td>TERRAFORM_TFLINT_ARGUMENTS</td>
