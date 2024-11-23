@@ -32,6 +32,8 @@ class PrePostTest(unittest.TestCase):
                 "GITHUB_COMMENT_REPORTER": "false",
                 "LOG_LEVEL": "DEBUG",
                 "request_id": self.request_id,
+                "MY_INPUT_VARIABLE": "SHOULD_BE_REPLACED",
+                "MY_INPUT_VARIABLE_REPLACEMENT": "HAS_BEEN_REPLACED",
             }
         )
         self.assertTrue(
@@ -52,6 +54,11 @@ class PrePostTest(unittest.TestCase):
             config.get(self.request_id, "MY_OUTPUT_VARIABLE2", "")
             == "my output variable value2",
             "MY_OUTPUT_VARIABLE2 should be found",
+        )
+        replaced_val = config.get(self.request_id, "MY_OUTPUT_VARIABLE_REPLACED", "")
+        self.assertTrue(
+            replaced_val == "HAS_BEEN_REPLACED",
+            f"MY_OUTPUT_VARIABLE_REPLACED has not been replaced (value: {replaced_val})",
         )
         self.assertTrue(
             config.get(self.request_id, "MY_OUTPUT_LINTER_VARIABLE", "")
