@@ -9,7 +9,7 @@ description: How to use terragrunt (configure, ignore files, ignore errors, help
 
 ## terragrunt documentation
 
-- Version in MegaLinter: **0.68.14**
+- Version in MegaLinter: **0.69.1**
 - Visit [Official Web Site](https://terragrunt.gruntwork.io){target=_blank}
 - See [How to configure terragrunt rules](https://terragrunt.gruntwork.io/docs/getting-started/configuration/#terragrunt-configuration-file){target=_blank}
 
@@ -108,7 +108,6 @@ GLOBAL OPTIONS:
    --terragrunt-debug                                Write terragrunt-debug.tfvars to working folder to help root-cause issues. [$TERRAGRUNT_DEBUG]
    --terragrunt-disable-bucket-update                When this flag is set Terragrunt will not update the remote state bucket. [$TERRAGRUNT_DISABLE_BUCKET_UPDATE]
    --terragrunt-disable-command-validation           When this flag is set, Terragrunt will not validate the terraform command. [$TERRAGRUNT_DISABLE_COMMAND_VALIDATION]
-   --terragrunt-disable-log-formatting               If specified, logs will be displayed in key/value format. By default, logs are formatted in a human readable format. [$TERRAGRUNT_DISABLE_LOG_FORMATTING]
    --terragrunt-download-dir value                   The path to download OpenTofu/Terraform modules into. Default is .terragrunt-cache in the working directory. [$TERRAGRUNT_DOWNLOAD]
    --terragrunt-exclude-dir value                    Unix-style glob of directories to exclude when running *-all commands. [$TERRAGRUNT_EXCLUDE_DIR]
    --terragrunt-excludes-file value                  Path to a file with a list of directories that need to be excluded when running *-all commands. (default: .terragrunt-excludes) [$TERRAGRUNT_EXCLUDES_FILE]
@@ -124,8 +123,9 @@ GLOBAL OPTIONS:
    --terragrunt-ignore-external-dependencies         *-all commands will not attempt to include external dependencies [$TERRAGRUNT_IGNORE_EXTERNAL_DEPENDENCIES]
    --terragrunt-include-dir value                    Unix-style glob of directories to include when running *-all commands [$TERRAGRUNT_INCLUDE_DIR]
    --terragrunt-include-external-dependencies        *-all commands will include external dependencies [$TERRAGRUNT_INCLUDE_EXTERNAL_DEPENDENCIES]
-   --terragrunt-json-log                             If specified, Terragrunt will output its logs in JSON format. [$TERRAGRUNT_JSON_LOG]
+   --terragrunt-log-custom-format value              Set the custom log formatting [$TERRAGRUNT_LOG_CUSTOM_FORMAT]
    --terragrunt-log-disable                          Disable logging [$TERRAGRUNT_LOG_DISABLE]
+   --terragrunt-log-format value                     Set the log format [$TERRAGRUNT_LOG_FORMAT]
    --terragrunt-log-level value                      Sets the logging level for Terragrunt. Supported levels: stderr, stdout, error, warn, info, debug, trace (default: info) [$TERRAGRUNT_LOG_LEVEL]
    --terragrunt-log-show-abs-paths                   Show absolute paths in logs [$TERRAGRUNT_LOG_SHOW_ABS_PATHS]
    --terragrunt-modules-that-include value           If flag is set, 'run-all' will only run the command against Terragrunt modules that include the specified file. [$TERRAGRUNT_MODULES_THAT_INCLUDE]
@@ -153,8 +153,10 @@ GLOBAL OPTIONS:
    --terragrunt-working-dir value                    The path to the directory of Terragrunt configurations. Default is current directory. [$TERRAGRUNT_WORKING_DIR]
    --help, -h                                        Show help
    --version, -v                                     Show terragrunt version
+   --terragrunt-disable-log-formatting               If specified, logs will be displayed in key/value format. By default, logs are formatted in a human readable format. [$TERRAGRUNT_DISABLE_LOG_FORMATTING]
+   --terragrunt-json-log                             If specified, Terragrunt will output its logs in JSON format. [$TERRAGRUNT_JSON_LOG]
 
-VERSION: v0.68.14
+VERSION: v0.69.1
 
 AUTHOR: Gruntwork <www.gruntwork.io>
 ```

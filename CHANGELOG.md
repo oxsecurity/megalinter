@@ -29,6 +29,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - mega-linter-runner
 
 - Linter versions upgrades (N)
+  - [checkov](https://www.checkov.io/) from 3.2.311 to **3.2.312** on 2024-11-24
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.68.14 to **0.69.1** on 2024-11-24
 <!-- linter-versions-end -->
 
 ## [v8.3.0] - 2024-11-23
