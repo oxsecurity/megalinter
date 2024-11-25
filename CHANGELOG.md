@@ -33,6 +33,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.68.14 to **0.69.1** on 2024-11-24
   - [php-cs-fixer](https://cs.symfony.com/) from 3.64.0 to **3.65.0** on 2024-11-25
   - [checkov](https://www.checkov.io/) from 3.2.312 to **3.2.314** on 2024-11-25
+  - [golangci-lint](https://golangci-lint.run/) from 1.62.0 to **1.62.2** on 2024-11-25
 <!-- linter-versions-end -->
 
 ## [v8.3.0] - 2024-11-23
