@@ -36,6 +36,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [golangci-lint](https://golangci-lint.run/) from 1.62.0 to **1.62.2** on 2024-11-25
   - [prettier](https://prettier.io/) from 3.3.3 to **3.4.0** on 2024-11-26
   - [swiftlint](https://github.com/realm/SwiftLint) from 0.57.0 to **0.57.1** on 2024-11-26
+  - [prettier](https://prettier.io/) from 3.4.0 to **3.4.1** on 2024-11-26
+  - [checkov](https://www.checkov.io/) from 3.2.314 to **3.2.317** on 2024-11-26
+  - [rubocop](https://rubocop.org/) from 1.68.0 to **1.69.0** on 2024-11-26
 <!-- linter-versions-end -->
 
 ## [v8.3.0] - 2024-11-23
