@@ -25,7 +25,7 @@ RUN GOBIN=/usr/bin go install github.com/checkmarx/dustilock@v1.2.0
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.5.3 AS uv
+FROM ghcr.io/astral-sh/uv:0.5.4 AS uv
 FROM python:3.12.7-alpine3.20 AS build-ml-core
 WORKDIR /
 COPY pyproject.toml .
