@@ -34,6 +34,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [php-cs-fixer](https://cs.symfony.com/) from 3.64.0 to **3.65.0** on 2024-11-25
   - [checkov](https://www.checkov.io/) from 3.2.312 to **3.2.314** on 2024-11-25
   - [golangci-lint](https://golangci-lint.run/) from 1.62.0 to **1.62.2** on 2024-11-25
+  - [prettier](https://prettier.io/) from 3.3.3 to **3.4.0** on 2024-11-26
+  - [swiftlint](https://github.com/realm/SwiftLint) from 0.57.0 to **0.57.1** on 2024-11-26
 <!-- linter-versions-end -->
 
 ## [v8.3.0] - 2024-11-23
