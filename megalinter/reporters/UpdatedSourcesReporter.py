@@ -86,9 +86,9 @@ class UpdatedSourcesReporter(Reporter):
                     if BITBUCKET_BRANCH != "":
                         remote_branch = BITBUCKET_BRANCH
                     if remote_branch == "":
-                        logging.error(
-                            c.red(
-                                "❌ [Updated Sources Reporter] Failed to retrieve git source branch"
+                        logging.warning(
+                            c.yellow(
+                                "⚠️ [Updated Sources Reporter] Failed to retrieve git source branch"
                             )
                         )
                     else:

@@ -15,7 +15,7 @@ To see MarkdownLint version, you can have a look in the dependencies of latest m
 
 ## markdownlint documentation
 
-- Version in MegaLinter: **0.42.0**
+- Version in MegaLinter: **0.43.0**
 - Visit [Official Web Site](https://github.com/DavidAnson/markdownlint#readme){target=_blank}
 - See [How to configure markdownlint rules](https://github.com/igorshubovych/markdownlint-cli#configuration){target=_blank}
   - If custom `.markdownlint.json` config file isn't found, [.markdownlint.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.markdownlint.json){target=_blank} will be used

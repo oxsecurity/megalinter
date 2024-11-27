@@ -9,6 +9,8 @@ description: How to use tflint (configure, ignore files, ignore errors, help & v
 
 > If you are using the GitHub action please use the `TERRAFORM_TFLINT_UNSECURED_ENV_VARIABLES: GITHUB_TOKEN` to prevent plugin download issues
 
+> If you have issues with tflint --init, create a GitHub Personal Access Token and set its value to PAT_GITHUB_COM variable.
+
 Note: It's recommended to create your own `.tflint.hcl` custom config file tailored to your project's specific needs.
 The default configuration enables all supported languages and rules, which may not be optimal for every project.
 
@@ -31,6 +33,7 @@ The default configuration enables all supported languages and rules, which may n
 | Variable                                     | Description                                                                                                                                                                                                                                                                           | Default value                                   |
 |----------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
 | TERRAFORM_TFLINT_SECURED_ENV                 | Allows to send the full env to **tflint --init**. Initialized with default value `true`. Set to `false` to allow `tflint --init` to access your env vars.                                                                                                                             | `True`                                          |
+| PAT_GITHUB_COM                               | If you have issues with tflint --init, create a GitHub Personal Access Token and set its value to PAT_GITHUB_COM variable.                                                                                                                                                            | ``                                              |
 | TERRAFORM_TFLINT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                                                                                              |                                                 |
 | TERRAFORM_TFLINT_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                                                                                                  |                                                 |
 | TERRAFORM_TFLINT_CLI_LINT_MODE               | Override default CLI lint mode<br/>⚠️ As default value is **project**, overriding might not work<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `project`                                       |

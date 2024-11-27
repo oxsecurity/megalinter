@@ -27,7 +27,7 @@ ARG PROTOBUF_PROTOLINT_VERSION=0.50.5
 # renovate: datasource=docker depName=zricethezav/gitleaks
 ARG REPOSITORY_GITLEAKS_VERSION=v8.21.2
 # renovate: datasource=docker depName=trufflesecurity/trufflehog 
-ARG REPOSITORY_TRUFFLEHOG_VERSION=3.84.0
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.84.1
 # renovate: datasource=docker depName=jdkato/vale
 ARG SPELL_VALE_VERSION=v3.9.1
 #ARGTOP__END
@@ -55,7 +55,7 @@ FROM lycheeverse/lychee:latest-alpine AS lychee
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.5.3 AS uv
+FROM ghcr.io/astral-sh/uv:0.5.4 AS uv
 FROM python:3.12.7-alpine3.20 AS build-ml-core
 WORKDIR /
 COPY pyproject.toml .
@@ -76,11 +76,11 @@ FROM python:3.12.7-alpine3.20
 #############################################################################################
 #ARG__START
 # renovate: datasource=npm depName=@salesforce/cli
-ARG SALESFORCE_CLI_VERSION=2.66.7
+ARG SALESFORCE_CLI_VERSION=2.67.7
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
-ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.9.0
+ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.9.4
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=5.6.3
+ARG SFDX_HARDIS_VERSION=5.8.1
 # renovate: datasource=github-tags depName=detekt/detekt
 ARG DETEKT_VERSION=1.23.7
 
