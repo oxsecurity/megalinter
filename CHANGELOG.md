@@ -39,6 +39,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [prettier](https://prettier.io/) from 3.4.0 to **3.4.1** on 2024-11-26
   - [checkov](https://www.checkov.io/) from 3.2.314 to **3.2.317** on 2024-11-26
   - [rubocop](https://rubocop.org/) from 1.68.0 to **1.69.0** on 2024-11-26
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.20.0 to **1.20.1** on 2024-11-27
+  - [bandit](https://bandit.readthedocs.io/en/latest/) from 1.7.10 to **1.8.0** on 2024-11-27
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.16.0 to **8.16.1** on 2024-11-27
 <!-- linter-versions-end -->
 
 ## [v8.3.0] - 2024-11-23
