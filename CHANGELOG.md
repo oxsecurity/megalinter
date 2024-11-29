@@ -44,6 +44,13 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.16.0 to **8.16.1** on 2024-11-27
   - [checkov](https://www.checkov.io/) from 3.2.317 to **3.2.320** on 2024-11-27
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.25.3 to **8.25.4** on 2024-11-27
+  - [stylelint](https://stylelint.io) from 16.10.0 to **16.11.0** on 2024-11-29
+  - [djlint](https://djlint.com/) from 1.36.1 to **1.36.3** on 2024-11-29
+  - [phpstan](https://phpstan.org/) from 2.0.2 to **2.0.3** on 2024-11-29
+  - [ruff](https://github.com/astral-sh/ruff) from 0.8.0 to **0.8.1** on 2024-11-29
+  - [checkov](https://www.checkov.io/) from 3.2.320 to **3.2.322** on 2024-11-29
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.82 to **0.1.83** on 2024-11-29
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.25.4 to **8.25.5** on 2024-11-29
 <!-- linter-versions-end -->
 
 ## [v8.3.0] - 2024-11-23
