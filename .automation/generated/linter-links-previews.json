@@ -449,6 +449,11 @@
     "image": "https://opengraph.githubassets.com/125c259b7ef6ad7bf2a4d9b3af0e3bc2b1f8561c1d4ce8923b052cc30d8b8d75/charliermarsh/ruff",
     "title": "GitHub - charliermarsh/ruff: An extremely fast Python linter, written in Rust."
   },
+  "ruff-format": {
+    "description": "An extremely fast Python linter and code formatter, written in Rust. - astral-sh/ruff",
+    "image": "https://opengraph.githubassets.com/38f6877259b2afe1e6f34f52be78027dce0e559671d0403656bae0f133893abc/astral-sh/ruff",
+    "title": "GitHub - astral-sh/ruff: An extremely fast Python linter and code formatter, written in Rust."
+  },
   "scalafix": {
     "description": "Refactoring and linting tool for Scala",
     "image": "https://scalacenter.github.io//scalafix/img/scalacenter2x.png",
