@@ -112,7 +112,7 @@ ARG BICEP_URI='https://github.com/Azure/bicep/releases/latest/download/bicep-lin
 ARG BICEP_DIR='/usr/local/bin'
 ARG DART_VERSION='2.8.4'
 # renovate: datasource=github-tags depName=pmd/pmd extractVersion=^pmd_releases/(?<version>.*)$
-ARG PMD_VERSION=7.7.0
+ARG PMD_VERSION=7.8.0
 
 # renovate: datasource=github-tags depName=detekt/detekt
 ARG DETEKT_VERSION=1.23.7
