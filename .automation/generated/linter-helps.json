@@ -789,7 +789,7 @@
         "               [--secrets-scan-file-type SECRETS_SCAN_FILE_TYPE]",
         "               [--enable-secret-scan-all-files]",
         "               [--block-list-secret-scan BLOCK_LIST_SECRET_SCAN]",
-        "               [--summary-position {bottom,top}]",
+        "               [--summary-position {top,bottom}]",
         "               [--skip-resources-without-violations] [--deep-analysis]",
         "               [--no-fail-on-crash] [--mask MASK] [--scan-secrets-history]",
         "               [--secrets-history-timeout SECRETS_HISTORY_TIMEOUT]",
@@ -1102,7 +1102,7 @@
         "  --block-list-secret-scan BLOCK_LIST_SECRET_SCAN",
         "                        List of files to filter out from the secret scanner",
         "                        [env var: CKV_SECRETS_SCAN_BLOCK_LIST]",
-        "  --summary-position {bottom,top}",
+        "  --summary-position {top,bottom}",
         "                        Chose whether the summary will be appended on top",
         "                        (before the checks results) or on bottom (after check",
         "                        results), default is on top.",
@@ -3514,7 +3514,7 @@
         "      --version                               version for kubeval"
     ],
     "lightning-flow-scanner": [
-        "(node:1760) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.",
+        "(node:1758) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.",
         "(Use `node --trace-deprecation ...` to show where the warning was created)",
         "Find and fix potential bugs in Salesforce flows.",
         "",
@@ -8113,7 +8113,7 @@
         "@typescript-eslint/unbound-method                  typescript   Best Practices    Best Practices                                    eslint-typescript"
     ],
     "sfdx-scanner-apex": [
-        "(node:1772) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.",
+        "(node:1770) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.",
         "(Use `node --trace-deprecation ...` to show where the warning was created)",
         "Scan a codebase with all the rules in the registry, or use parameters to filter the rules based on rulename, category, or ruleset.",
         "",
@@ -8168,7 +8168,7 @@
         "COMMANDS",
         "  scanner run dfa  Scan codebase with all DFA rules by default.",
         "",
-        "(node:1784) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.",
+        "(node:1782) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.",
         "(Use `node --trace-deprecation ...` to show where the warning was created)",
         "Warning: We're continually improving Salesforce Code Analyzer. Tell us what you think! Give feedback at http://sfdc.co/CodeAnalyzerFeedback",
         " name                                                   languages   categories            rulesets [dep] engine            is dfa is pilot",
@@ -8389,7 +8389,7 @@
         " UnimplementedTypeRule                                  apex        Performance                          sfge              N      N"
     ],
     "sfdx-scanner-aura": [
-        "(node:1961) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.",
+        "(node:1964) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.",
         "(Use `node --trace-deprecation ...` to show where the warning was created)",
         "Scan a codebase with all the rules in the registry, or use parameters to filter the rules based on rulename, category, or ruleset.",
         "",
@@ -8444,7 +8444,7 @@
         "COMMANDS",
         "  scanner run dfa  Scan codebase with all DFA rules by default.",
         "",
-        "(node:1974) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.",
+        "(node:1976) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.",
         "(Use `node --trace-deprecation ...` to show where the warning was created)",
         "Warning: We're continually improving Salesforce Code Analyzer. Tell us what you think! Give feedback at http://sfdc.co/CodeAnalyzerFeedback",
         " name                                                   languages   categories            rulesets [dep] engine            is dfa is pilot",
@@ -8665,7 +8665,7 @@
         " UnimplementedTypeRule                                  apex        Performance                          sfge              N      N"
     ],
     "sfdx-scanner-lwc": [
-        "(node:2152) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.",
+        "(node:2157) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.",
         "(Use `node --trace-deprecation ...` to show where the warning was created)",
         "Scan a codebase with all the rules in the registry, or use parameters to filter the rules based on rulename, category, or ruleset.",
         "",
@@ -8720,7 +8720,7 @@
         "COMMANDS",
         "  scanner run dfa  Scan codebase with all DFA rules by default.",
         "",
-        "(node:2164) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.",
+        "(node:2169) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.",
         "(Use `node --trace-deprecation ...` to show where the warning was created)",
         "Warning: We're continually improving Salesforce Code Analyzer. Tell us what you think! Give feedback at http://sfdc.co/CodeAnalyzerFeedback",
         " name                                                   languages   categories            rulesets [dep] engine            is dfa is pilot",

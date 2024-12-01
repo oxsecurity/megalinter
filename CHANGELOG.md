@@ -53,6 +53,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.25.4 to **8.25.5** on 2024-11-29
   - [checkstyle](https://checkstyle.org/) from 10.20.1 to **10.20.2** on 2024-11-30
   - [pmd](https://pmd.github.io/) from 7.7.0 to **7.8.0** on 2024-11-30
+  - [pylint](https://pylint.readthedocs.io) from 3.3.1 to **3.3.2** on 2024-12-01
+  - [checkov](https://www.checkov.io/) from 3.2.322 to **3.2.324** on 2024-12-01
 <!-- linter-versions-end -->
 
 ## [v8.3.0] - 2024-11-23
