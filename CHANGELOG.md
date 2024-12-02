@@ -55,6 +55,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [pmd](https://pmd.github.io/) from 7.7.0 to **7.8.0** on 2024-11-30
   - [pylint](https://pylint.readthedocs.io) from 3.3.1 to **3.3.2** on 2024-12-01
   - [checkov](https://www.checkov.io/) from 3.2.322 to **3.2.324** on 2024-12-01
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.50.5 to **0.51.0** on 2024-12-02
 <!-- linter-versions-end -->
 
 ## [v8.3.0] - 2024-11-23
