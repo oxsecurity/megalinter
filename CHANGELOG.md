@@ -15,6 +15,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Media
 
 - Linters enhancements
+  - add support to [phpstan/extension-installer](https://github.com/phpstan/extension-installer) Composer plugin for automatic installation of PHPStan extensions.
+      Learn more about context on [GH-4328](https://github.com/oxsecurity/megalinter/issues/4328)
 
 - Fixes
 
