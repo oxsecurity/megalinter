@@ -17,7 +17,7 @@ You can ignore a list of errors by defining a [.trivyignore file](https://aquase
 
 ## trivy documentation
 
-- Version in MegaLinter: **0.57.1**
+- Version in MegaLinter: **0.58.0**
 - Visit [Official Web Site](https://aquasecurity.github.io/trivy/){target=_blank}
 - See [How to configure trivy rules](https://aquasecurity.github.io/trivy/latest/docs/configuration/){target=_blank}
 - See [How to ignore files and directories with trivy](https://aquasecurity.github.io/trivy/latest/docs/configuration/filtering/#by-inline-comments){target=_blank}
