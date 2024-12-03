@@ -56,6 +56,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [pylint](https://pylint.readthedocs.io) from 3.3.1 to **3.3.2** on 2024-12-01
   - [checkov](https://www.checkov.io/) from 3.2.322 to **3.2.324** on 2024-12-01
   - [protolint](https://github.com/yoheimuta/protolint) from 0.50.5 to **0.51.0** on 2024-12-02
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.20.1 to **1.20.2** on 2024-12-02
+  - [checkov](https://www.checkov.io/) from 3.2.324 to **3.2.326** on 2024-12-02
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.9.8 to **1.10.0** on 2024-12-02
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.69.1 to **0.69.3** on 2024-12-02
 <!-- linter-versions-end -->
 
 ## [v8.3.0] - 2024-11-23
