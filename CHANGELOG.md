@@ -63,6 +63,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.9.8 to **1.10.0** on 2024-12-02
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.69.1 to **0.69.3** on 2024-12-02
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.84.1 to **3.84.2** on 2024-12-03
+  - [checkov](https://www.checkov.io/) from 3.2.326 to **3.2.327** on 2024-12-03
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.57.1 to **0.58.0** on 2024-12-03
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.57.1 to **0.58.0** on 2024-12-03
+  - [rubocop](https://rubocop.org/) from 1.69.0 to **1.69.1** on 2024-12-03
 <!-- linter-versions-end -->
 
 ## [v8.3.0] - 2024-11-23
