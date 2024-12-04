@@ -67,6 +67,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.57.1 to **0.58.0** on 2024-12-03
   - [trivy](https://aquasecurity.github.io/trivy/) from 0.57.1 to **0.58.0** on 2024-12-03
   - [rubocop](https://rubocop.org/) from 1.69.0 to **1.69.1** on 2024-12-03
+  - [prettier](https://prettier.io/) from 3.4.1 to **3.4.2** on 2024-12-04
+  - [checkov](https://www.checkov.io/) from 3.2.327 to **3.2.328** on 2024-12-04
 <!-- linter-versions-end -->
 
 ## [v8.3.0] - 2024-11-23
