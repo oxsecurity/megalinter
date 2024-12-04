@@ -76,7 +76,7 @@
     "psalm": "Psalm.5.26.1@",
     "puppet-lint": "4.2.4",
     "pylint": "3.3.2",
-    "pyright": "1.1.389",
+    "pyright": "1.1.390",
     "raku": "2020.10",
     "remark-lint": "14.0.2",
     "revive": "1.5.1",
