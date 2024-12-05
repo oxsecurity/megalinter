@@ -15,7 +15,7 @@ description: How to use jscpd (configure, ignore files, ignore errors, help & ve
 
 JSCPD browses all files of your repository to detect excessive copy-pastes
 
-If you need to ignore folders,files or file extensions, use glob expressions `ignore` property of local `.jscpd.json` file
+If you need to ignore folders, files or file extensions, use glob expressions `ignore` property of local `.jscpd.json` file
 
 Example:
 
@@ -35,10 +35,10 @@ Example:
 ## jscpd documentation
 
 - Version in MegaLinter: **4.0.5**
-- Visit [Official Web Site](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd#readme){target=_blank}
-- See [How to configure jscpd rules](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd#config-file){target=_blank}
+- Visit [Official Web Site](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd#readme){target=_blank}
+- See [How to configure jscpd rules](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd#config-file){target=_blank}
   - If custom `.jscpd.json` config file isn't found, [.jscpd.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.jscpd.json){target=_blank} will be used
-- See [How to disable jscpd rules in files](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd#ignored-blocks){target=_blank}
+- See [How to disable jscpd rules in files](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd#ignored-blocks){target=_blank}
 
 [![jscpd - GitHub](https://gh-card.dev/repos/kucherenko/jscpd.svg?fullname=)](https://github.com/kucherenko/jscpd){target=_blank}
 
