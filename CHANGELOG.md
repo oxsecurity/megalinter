@@ -70,6 +70,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [prettier](https://prettier.io/) from 3.4.1 to **3.4.2** on 2024-12-04
   - [checkov](https://www.checkov.io/) from 3.2.327 to **3.2.328** on 2024-12-04
   - [pyright](https://github.com/Microsoft/pyright) from 1.1.389 to **1.1.390** on 2024-12-04
+  - [ktlint](https://ktlint.github.io) from 1.4.1 to **1.5.0** on 2024-12-05
+  - [ruff](https://github.com/astral-sh/ruff) from 0.8.1 to **0.8.2** on 2024-12-05
+  - [checkov](https://www.checkov.io/) from 3.2.328 to **3.2.330** on 2024-12-05
 <!-- linter-versions-end -->
 
 ## [v8.3.0] - 2024-11-23
