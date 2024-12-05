@@ -15,7 +15,7 @@ description: How to use ktlint (configure, ignore files, ignore errors, help & v
 
 ## ktlint documentation
 
-- Version in MegaLinter: **1.4.1**
+- Version in MegaLinter: **1.5.0**
 - Visit [Official Web Site](https://ktlint.github.io){target=_blank}
 - See [Index of problems detected by ktlint](https://ktlint.github.io/#rules){target=_blank}
 
