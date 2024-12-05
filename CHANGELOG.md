@@ -73,6 +73,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [ktlint](https://ktlint.github.io) from 1.4.1 to **1.5.0** on 2024-12-05
   - [ruff](https://github.com/astral-sh/ruff) from 0.8.1 to **0.8.2** on 2024-12-05
   - [checkov](https://www.checkov.io/) from 3.2.328 to **3.2.330** on 2024-12-05
+  - [checkov](https://www.checkov.io/) from 3.2.330 to **3.2.332** on 2024-12-05
 <!-- linter-versions-end -->
 
 ## [v8.3.0] - 2024-11-23
