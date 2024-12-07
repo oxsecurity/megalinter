@@ -15,7 +15,7 @@ description: How to use trufflehog (configure, ignore files, ignore errors, help
 
 ## trufflehog documentation
 
-- Version in MegaLinter: **3.84.2**
+- Version in MegaLinter: **3.85.0**
 - Visit [Official Web Site](https://github.com/trufflesecurity/trufflehog#readme){target=_blank}
 - See [How to configure trufflehog rules](https://github.com/trufflesecurity/trufflehog#regex-detector-alpha){target=_blank}
 
@@ -98,8 +98,8 @@ TruffleHog is a tool for finding credentials.
 Flags:
   -h, --[no-]help                Show context-sensitive help (also try
                                  --help-long and --help-man).
-      --[no-]debug               Run in debug mode.
-      --[no-]trace               Run in trace mode.
+      --log-level=0              Logging verbosity on a scale of 0 (info) to 5
+                                 (trace). Can be disabled with "-1".
       --[no-]profile             Enables profiling and sets a pprof and fgprof
                                  server on :18066.
   -j, --[no-]json                Output in JSON format.
@@ -212,7 +212,7 @@ analyze [<key-type>]
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=docker depName=trufflesecurity/trufflehog 
-ARG REPOSITORY_TRUFFLEHOG_VERSION=3.84.2
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.85.0
 FROM trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION} AS trufflehog
 COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
 ```

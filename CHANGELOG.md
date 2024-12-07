@@ -74,6 +74,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [ruff](https://github.com/astral-sh/ruff) from 0.8.1 to **0.8.2** on 2024-12-05
   - [checkov](https://www.checkov.io/) from 3.2.328 to **3.2.330** on 2024-12-05
   - [checkov](https://www.checkov.io/) from 3.2.330 to **3.2.332** on 2024-12-05
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.84.2 to **3.85.0** on 2024-12-06
 <!-- linter-versions-end -->
 
 ## [v8.3.0] - 2024-11-23
