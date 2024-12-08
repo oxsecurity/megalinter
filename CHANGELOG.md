@@ -9,13 +9,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
 - Core
+  - PHP Linters use now the `bartlett/sarif-php-converters` first official release 1.0.0 to generate SARIF reports
 
 - New linters
 
 - Media
 
 - Linters enhancements
-  - add support to [phpstan/extension-installer](https://github.com/phpstan/extension-installer) Composer plugin for automatic installation of PHPStan extensions.
+  - Add support to [phpstan/extension-installer](https://github.com/phpstan/extension-installer) Composer plugin for automatic installation of PHPStan extensions.
       Learn more about context on [GH-4328](https://github.com/oxsecurity/megalinter/issues/4328)
 
 - Fixes
