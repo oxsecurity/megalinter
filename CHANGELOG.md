@@ -76,6 +76,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 3.2.328 to **3.2.330** on 2024-12-05
   - [checkov](https://www.checkov.io/) from 3.2.330 to **3.2.332** on 2024-12-05
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.84.2 to **3.85.0** on 2024-12-06
+  - [csharpier](https://csharpier.com/) from 0.30.2 to **0.30.3** on 2024-12-09
+  - [phplint](https://github.com/overtrue/phplint) from 9.5.4 to **9.5.5** on 2024-12-09
+  - [checkov](https://www.checkov.io/) from 3.2.332 to **3.2.334** on 2024-12-09
+  - [devskim](https://github.com/microsoft/DevSkim) from 1.0.44 to **1.0.50** on 2024-12-09
 <!-- linter-versions-end -->
 
 ## [v8.3.0] - 2024-11-23
