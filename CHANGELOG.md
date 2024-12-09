@@ -80,6 +80,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [phplint](https://github.com/overtrue/phplint) from 9.5.4 to **9.5.5** on 2024-12-09
   - [checkov](https://www.checkov.io/) from 3.2.332 to **3.2.334** on 2024-12-09
   - [devskim](https://github.com/microsoft/DevSkim) from 1.0.44 to **1.0.50** on 2024-12-09
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.10.0 to **1.10.1** on 2024-12-09
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.69.3 to **0.69.9** on 2024-12-09
 <!-- linter-versions-end -->
 
 ## [v8.3.0] - 2024-11-23
