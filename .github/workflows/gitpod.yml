@@ -39,6 +39,7 @@ jobs:
           # Show available shell options
           curl -LsSf https://astral.sh/uv/install.sh | sh -s -- --help
           curl -LsSf "https://astral.sh/uv/${UV_VERSION}/install.sh" | sh -s -- -v
+          ls -la -R $HOME/.local/
           source "$HOME/.local/bin/env"
 
       - name: Install dependencies (uv)
