@@ -58,13 +58,19 @@ FROM docker-installer as npm-installer
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # Set a variable for packages version
+# renovate: datasource=npm depName=npm
 ARG NPM_VERSION=10.8.0
+# renovate: datasource=npm depName=ungit
 ARG UNGIT_VERSION=1.5.26
+# renovate: datasource=npm depName=mega-linter-runner
 ARG MEGA_LINTER_RUNNER_VERSION=7.11.1
+# renovate: datasource=npm depName=markdown-table-formatter
 ARG MARKDOWN_TABLE_FORMATTER_VERSION=1.6.0
 
+# Adapted from instructions in 
+# https://github.com/nodesource/distributions?tab=readme-ov-file#using-ubuntu-nodejs-22
 # hadolint ignore=DL3008
-RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
+RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash - \
     && apt-get install  -y --no-install-recommends nodejs \
     && npm install -g "npm@${NPM_VERSION}" \
     && npm install -g \
@@ -101,7 +107,7 @@ ENV PATH="~/.local/bin/:$PATH"
 # #########################
 # #         final         #
 # #########################
-# FROM ubuntu:jammy
+# FROM ubuntu:noble
 
 # COPY --from=gitpod-user / /
 
