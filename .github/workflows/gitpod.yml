@@ -12,6 +12,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-24.04
+    env:
+      # renovate: datasource=github-releases depName=astral-sh/uv
+      UV_VERSION: 0.5.7
 
     steps:
       - name: Set TERM environment variable
@@ -33,8 +36,8 @@ jobs:
           pip cache purge
 
       - run: |
-          curl  -LsSf https://astral.sh/uv/install.sh | sh
-          source "$HOME/.cargo/env"
+          curl  -LsSf "https://astral.sh/uv/${UV_VERSION}/install.sh" | sh
+          source "$HOME/.local/bin/env"
 
       - name: Install dependencies (uv)
         run: make bootstrap --debug
