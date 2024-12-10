@@ -36,7 +36,7 @@ jobs:
           pip cache purge
 
       - run: |
-          curl  -LsSf "https://astral.sh/uv/${UV_VERSION}/install.sh" | sh
+          curl -LsSf "https://astral.sh/uv/${UV_VERSION}/install.sh" | sh
           source "$HOME/.local/bin/env"
 
       - name: Install dependencies (uv)
