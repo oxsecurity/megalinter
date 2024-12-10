@@ -159,6 +159,7 @@ jobs:
             "spell_proselint",
             "spell_vale",
             "spell_lychee",
+            "spell_codespell",
             "sql_sqlfluff",
             "sql_tsqllint",
             "swift_swiftlint",

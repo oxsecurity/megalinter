@@ -12,6 +12,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - PHP Linters use now the `bartlett/sarif-php-converters` first official release 1.0.0 to generate SARIF reports
 
 - New linters
+  - Add [codespell](https://github.com/codespell-project/codespell)
 
 - Media
 
