@@ -4,7 +4,7 @@ description: cupcake flavor is an optimized MegaLinter with only linters related
 ---
 # cupcake MegaLinter Flavor
 
-![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/vbeta)
+![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta)
 ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake)
 
 ## Description
@@ -13,8 +13,8 @@ MegaLinter for the most commonly used languages
 
 ## Usage
 
-- [GitHub Action](https://megalinter.io/beta/installation/#github-action): **oxsecurity/megalinter/flavors/cupcake@vbeta**
-- Docker image: **oxsecurity/megalinter-cupcake:vbeta**
+- [GitHub Action](https://megalinter.io/beta/installation/#github-action): **oxsecurity/megalinter/flavors/cupcake@beta**
+- Docker image: **oxsecurity/megalinter-cupcake:beta**
 - [mega-linter-runner](https://megalinter.io/beta/mega-linter-runner/): `mega-linter-runner --flavor cupcake`
 
 ## Embedded linters

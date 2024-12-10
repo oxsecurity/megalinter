@@ -4,7 +4,7 @@ description: formatters flavor is an optimized MegaLinter with only linters rela
 ---
 # formatters MegaLinter Flavor
 
-![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-formatters/vbeta)
+![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-formatters/beta)
 ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-formatters)
 
 ## Description
@@ -13,8 +13,8 @@ Contains only formatters
 
 ## Usage
 
-- [GitHub Action](https://megalinter.io/beta/installation/#github-action): **oxsecurity/megalinter/flavors/formatters@vbeta**
-- Docker image: **oxsecurity/megalinter-formatters:vbeta**
+- [GitHub Action](https://megalinter.io/beta/installation/#github-action): **oxsecurity/megalinter/flavors/formatters@beta**
+- Docker image: **oxsecurity/megalinter-formatters:beta**
 - [mega-linter-runner](https://megalinter.io/beta/mega-linter-runner/): `mega-linter-runner --flavor formatters`
 
 ## Embedded linters

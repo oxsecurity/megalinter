@@ -4,7 +4,7 @@ description: java flavor is an optimized MegaLinter with only linters related to
 ---
 # java MegaLinter Flavor
 
-![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/vbeta)
+![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta)
 ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java)
 
 ## Description
@@ -13,8 +13,8 @@ Optimized for JAVA based projects
 
 ## Usage
 
-- [GitHub Action](https://megalinter.io/beta/installation/#github-action): **oxsecurity/megalinter/flavors/java@vbeta**
-- Docker image: **oxsecurity/megalinter-java:vbeta**
+- [GitHub Action](https://megalinter.io/beta/installation/#github-action): **oxsecurity/megalinter/flavors/java@beta**
+- Docker image: **oxsecurity/megalinter-java:beta**
 - [mega-linter-runner](https://megalinter.io/beta/mega-linter-runner/): `mega-linter-runner --flavor java`
 
 ## Embedded linters

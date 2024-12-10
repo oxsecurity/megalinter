@@ -108,6 +108,7 @@
     "terrascan": "Apache-2.0",
     "tflint": "MPL-2.0",
     "trivy": "Apache-2.0",
+    "trivy-sbom": "Apache-2.0",
     "trufflehog": "AGPL-3.0",
     "ts-standard": "MIT",
     "tsqllint": "MIT",

@@ -4,7 +4,7 @@ description: dotnetweb flavor is an optimized MegaLinter with only linters relat
 ---
 # dotnetweb MegaLinter Flavor
 
-![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/vbeta)
+![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta)
 ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb)
 
 ## Description
@@ -13,8 +13,8 @@ Optimized for C, C++, C# or VB based projects with JS/TS
 
 ## Usage
 
-- [GitHub Action](https://megalinter.io/beta/installation/#github-action): **oxsecurity/megalinter/flavors/dotnetweb@vbeta**
-- Docker image: **oxsecurity/megalinter-dotnetweb:vbeta**
+- [GitHub Action](https://megalinter.io/beta/installation/#github-action): **oxsecurity/megalinter/flavors/dotnetweb@beta**
+- Docker image: **oxsecurity/megalinter-dotnetweb:beta**
 - [mega-linter-runner](https://megalinter.io/beta/mega-linter-runner/): `mega-linter-runner --flavor dotnetweb`
 
 ## Embedded linters

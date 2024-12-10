@@ -4,7 +4,7 @@ description: salesforce flavor is an optimized MegaLinter with only linters rela
 ---
 # salesforce MegaLinter Flavor
 
-![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/vbeta)
+![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/beta)
 ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce)
 
 ## Description
@@ -13,8 +13,8 @@ Optimized for Salesforce based projects
 
 ## Usage
 
-- [GitHub Action](https://megalinter.io/beta/installation/#github-action): **oxsecurity/megalinter/flavors/salesforce@vbeta**
-- Docker image: **oxsecurity/megalinter-salesforce:vbeta**
+- [GitHub Action](https://megalinter.io/beta/installation/#github-action): **oxsecurity/megalinter/flavors/salesforce@beta**
+- Docker image: **oxsecurity/megalinter-salesforce:beta**
 - [mega-linter-runner](https://megalinter.io/beta/mega-linter-runner/): `mega-linter-runner --flavor salesforce`
 
 ## Embedded linters

@@ -4,7 +4,7 @@ description: go flavor is an optimized MegaLinter with only linters related to g
 ---
 # go MegaLinter Flavor
 
-![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-go/vbeta)
+![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-go/beta)
 ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-go)
 
 ## Description
@@ -13,8 +13,8 @@ Optimized for GO based projects
 
 ## Usage
 
-- [GitHub Action](https://megalinter.io/beta/installation/#github-action): **oxsecurity/megalinter/flavors/go@vbeta**
-- Docker image: **oxsecurity/megalinter-go:vbeta**
+- [GitHub Action](https://megalinter.io/beta/installation/#github-action): **oxsecurity/megalinter/flavors/go@beta**
+- Docker image: **oxsecurity/megalinter-go:beta**
 - [mega-linter-runner](https://megalinter.io/beta/mega-linter-runner/): `mega-linter-runner --flavor go`
 
 ## Embedded linters

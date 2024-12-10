@@ -4,7 +4,7 @@ description: c_cpp flavor is an optimized MegaLinter with only linters related t
 ---
 # c_cpp MegaLinter Flavor
 
-![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-c_cpp/vbeta)
+![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-c_cpp/beta)
 ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-c_cpp)
 
 ## Description
@@ -13,8 +13,8 @@ Optimized for pure C/C++ projects
 
 ## Usage
 
-- [GitHub Action](https://megalinter.io/beta/installation/#github-action): **oxsecurity/megalinter/flavors/c_cpp@vbeta**
-- Docker image: **oxsecurity/megalinter-c_cpp:vbeta**
+- [GitHub Action](https://megalinter.io/beta/installation/#github-action): **oxsecurity/megalinter/flavors/c_cpp@beta**
+- Docker image: **oxsecurity/megalinter-c_cpp:beta**
 - [mega-linter-runner](https://megalinter.io/beta/mega-linter-runner/): `mega-linter-runner --flavor c_cpp`
 
 ## Embedded linters
