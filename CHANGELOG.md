@@ -28,6 +28,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Flavors
 
 - CI
+  - Fix up gitpod config and workflow to support uv 0.5.0+ by @echoix in #4373
 
 - mega-linter-runner
 
