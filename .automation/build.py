@@ -3293,7 +3293,7 @@ def generate_version():
         stdout=subprocess.PIPE,
         text=True,
         shell=True,
-        check=False,
+        check=True,
     )
     # Update changelog
     if UPDATE_CHANGELOG is True:
