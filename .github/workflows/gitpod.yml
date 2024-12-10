@@ -42,7 +42,7 @@ jobs:
           ls -la -R $HOME/
           echo "List directories in $HOME/.local"
           ls -la -R $HOME/.local/
-          source "$HOME/.local/bin/env"
+          # source "$HOME/.local/bin/env"
 
       - name: Install dependencies (uv)
         run: make bootstrap --debug
