@@ -9,7 +9,7 @@ description: How to use ansible-lint (configure, ignore files, ignore errors, he
 
 ## ansible-lint documentation
 
-- Version in MegaLinter: **24.10.0**
+- Version in MegaLinter: **24.12.0**
 - Visit [Official Web Site](https://ansible-lint.readthedocs.io/){target=_blank}
 - See [How to configure ansible-lint rules](https://ansible-lint.readthedocs.io/configuring/#configuration-file){target=_blank}
   - If custom `.ansible-lint` config file isn't found, [.ansible-lint](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.ansible-lint){target=_blank} will be used
@@ -104,7 +104,8 @@ usage: ansible-lint [-h] [-P | -L | -T]
                     [-x SKIP_LIST] [--generate-ignore] [-w WARN_LIST]
                     [--enable-list ENABLE_LIST] [--nocolor] [--force-color]
                     [--exclude EXCLUDE_PATHS [EXCLUDE_PATHS ...]]
-                    [-c CONFIG_FILE] [-i IGNORE_FILE] [--offline] [--version]
+                    [-c CONFIG_FILE] [-i IGNORE_FILE] [-I INVENTORY]
+                    [--offline] [--version]
                     [lintables ...]
 
 positional arguments:
@@ -112,9 +113,9 @@ positional arguments:
 
 options:
   -h, --help            show this help message and exit
-  -P, --list-profiles   List all profiles, no formatting options available.
-  -L, --list-rules      List all the rules. For listing rules only the following formats for argument -f are supported: {brief, full, md} with 'brief' as default.
-  -T, --list-tags       List all the tags and the rules they cover. Increase the verbosity level with `-v` to include 'opt-in' tag and its rules.
+  -P, --list-profiles   List all profiles.
+  -L, --list-rules      List all the rules.
+  -T, --list-tags       List all the tags and the rules they cover.
   -f {brief,full,md,json,codeclimate,quiet,pep8,sarif}, --format {brief,full,md,json,codeclimate,quiet,pep8,sarif}
                         stdout formatting, json being an alias for codeclimate. (default: None)
   --sarif-file SARIF_FILE
@@ -145,9 +146,11 @@ options:
   --exclude EXCLUDE_PATHS [EXCLUDE_PATHS ...]
                         path to directories or files to skip. This option is repeatable.
   -c CONFIG_FILE, --config-file CONFIG_FILE
-                        Specify configuration file to use. By default it will look for '.ansible-lint', '.config/ansible-lint.yml', or '.config/ansible-lint.yaml'
+                        Specify configuration file to use. By default it will look for '.ansible-lint', '.ansible-lint.yml', '.ansible-lint.yaml', '.config/ansible-lint.yml', or '.config/ansible-lint.yaml'
   -i IGNORE_FILE, --ignore-file IGNORE_FILE
                         Specify ignore file to use. By default it will look for '.ansible-lint-ignore' or '.config/ansible-lint-ignore.txt'
+  -I INVENTORY, --inventory INVENTORY
+                        Specify inventory host path or comma separated host list
   --offline             Disable installation of requirements.yml and schema refreshing
   --version
 
