@@ -89,6 +89,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.31.92 to **0.32.4** on 2024-12-10
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.21.0 to **1.22.0** on 2024-12-10
   - [devskim](https://github.com/microsoft/DevSkim) from 1.0.50 to **1.0.51** on 2024-12-10
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 24.12.0 to **24.12.1** on 2024-12-11
+  - [phpcs](https://github.com/PHPCSStandards/PHP_CodeSniffer) from 3.11.1 to **3.11.2** on 2024-12-11
 <!-- linter-versions-end -->
 
 ## [v8.3.0] - 2024-11-23
