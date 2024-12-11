@@ -101,7 +101,7 @@
     "snakemake": "8.25.5",
     "spectral": "6.14.2",
     "sql-lint": "1.0.0",
-    "sqlfluff": "3.3.0",
+    "sqlfluff": "3.2.5",
     "standard": "17.1.2",
     "stylelint": "16.11.0",
     "stylua": "2.0.0",
