@@ -61,7 +61,7 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 # renovate: datasource=npm depName=npm
 ARG NPM_VERSION=10.8.0
 # renovate: datasource=npm depName=ungit
-ARG UNGIT_VERSION=1.5.26
+ARG UNGIT_VERSION=1.5.28
 # renovate: datasource=npm depName=mega-linter-runner
 ARG MEGA_LINTER_RUNNER_VERSION=7.11.1
 # renovate: datasource=npm depName=markdown-table-formatter
