@@ -87,7 +87,7 @@ ARG DETEKT_VERSION=1.23.7
 # renovate: datasource=nuget depName=PSScriptAnalyzer registryUrl=https://www.powershellgallery.com/api/v2/
 ARG PSSA_VERSION='1.23.0'
 
-# renovate: datasource=pip depName=sqlfluff
+# renovate: datasource=pypi depName=sqlfluff
 ARG SQL_SQLFLUFF_VERSION=3.2.5
 #ARG__END
 
