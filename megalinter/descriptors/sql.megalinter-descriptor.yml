@@ -29,8 +29,12 @@ linters:
       - "sqlfluff myfile.sql"
       - "sqlfluff --config .sqlfluff myfile.sql myfile2.sql"
     install:
+      docker:
+        - |-
+         # renovate: datasource=pip depName=sqlfluff
+         ARG SQL_SQLFLUFF_VERSION=3.2.5
       pip:
-        - sqlfluff
+        - sqlfluff==${SQL_SQLFLUFF_VERSION}
   # TSQL
   - class: DotNetToolLinter
     linter_name: tsqllint
