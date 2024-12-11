@@ -65,7 +65,7 @@ ARG UNGIT_VERSION=1.5.26
 # renovate: datasource=npm depName=mega-linter-runner
 ARG MEGA_LINTER_RUNNER_VERSION=7.11.1
 # renovate: datasource=npm depName=markdown-table-formatter
-ARG MARKDOWN_TABLE_FORMATTER_VERSION=1.6.0
+ARG MARKDOWN_TABLE_FORMATTER_VERSION=1.6.1
 
 # Adapted from instructions in 
 # https://github.com/nodesource/distributions?tab=readme-ov-file#using-ubuntu-nodejs-22
