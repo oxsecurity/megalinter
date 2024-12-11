@@ -423,7 +423,6 @@ In your repository you should have a `.github/workflows` folder with **GitHub** 
 <summary>This file should have this code</summary>
 
 ```yml
----
 # MegaLinter GitHub Action configuration file
 # More info at https://megalinter.io
 ---
