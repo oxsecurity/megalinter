@@ -426,6 +426,7 @@ In your repository you should have a `.github/workflows` folder with **GitHub** 
 ---
 # MegaLinter GitHub Action configuration file
 # More info at https://megalinter.io
+---
 name: MegaLinter
 
 on:
@@ -438,7 +439,7 @@ env: # Comment env block if you don't want to apply fixes
   # Apply linter fixes configuration
   APPLY_FIXES: all # When active, APPLY_FIXES must also be defined as environment variable (in github/workflows/mega-linter.yml or other CI tool)
   APPLY_FIXES_EVENT: pull_request # Decide which event triggers application of fixes in a commit or a PR (pull_request, push, all)
-  APPLY_FIXES_MODE: commit # If APPLY_FIXES is used, defines if the fixes are directly committed (commit) or posted in a PR (pull_request)
+  APPLY_FIXES_MODE: pull_request # If APPLY_FIXES is used, defines if the fixes are directly committed (commit) or posted in a PR (pull_request)
 
 concurrency:
   group: ${{ github.ref }}-${{ github.workflow }}
@@ -448,12 +449,16 @@ jobs:
   megalinter:
     name: MegaLinter
     runs-on: ubuntu-latest
+
+    # Give the default GITHUB_TOKEN write permission to commit and push, comment
+    # issues, and post new Pull Requests; remove the ones you do not need
+    # Statuses, give permission to write statuses on wether it can be merged or not
     permissions:
-      # Give the default GITHUB_TOKEN write permission to commit and push, comment issues & post new PR
-      # Remove the ones you do not need
       contents: write
       issues: write
       pull-requests: write
+      statuses: write
+
     steps:
       # Git Checkout
       - name: Checkout Code
@@ -486,34 +491,62 @@ jobs:
             megalinter-reports
             mega-linter.log
 
-      # Create pull request if applicable (for now works only on PR from same repository, not from forks)
+      # Create pull request if applicable
+      # (for now works only on PR from same repository, not from forks)
       - name: Create Pull Request with applied fixes
-        id: cpr
-        if: steps.ml.outputs.has_updated_sources == 1 && (env.APPLY_FIXES_EVENT == 'all' || env.APPLY_FIXES_EVENT == github.event_name) && env.APPLY_FIXES_MODE == 'pull_request' && (github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository) && !contains(github.event.head_commit.message, 'skip fix')
         uses: peter-evans/create-pull-request@v6
+        id: cpr
+        if: >-
+          steps.ml.outputs.has_updated_sources == 1 &&
+          (
+            env.APPLY_FIXES_EVENT == 'all' ||
+            env.APPLY_FIXES_EVENT == github.event_name
+          ) &&
+          env.APPLY_FIXES_MODE == 'pull_request' &&
+          (
+            github.event_name == 'push' ||
+            github.event.pull_request.head.repo.full_name == github.repository
+          ) &&
+          !contains(github.event.head_commit.message, 'skip fix')
         with:
           token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
           commit-message: "[MegaLinter] Apply linters automatic fixes"
           title: "[MegaLinter] Apply linters automatic fixes"
           labels: bot
-      - name: Create PR output
-        if: steps.ml.outputs.has_updated_sources == 1 && (env.APPLY_FIXES_EVENT == 'all' || env.APPLY_FIXES_EVENT == github.event_name) && env.APPLY_FIXES_MODE == 'pull_request' && (github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository) && !contains(github.event.head_commit.message, 'skip fix')
-        run: |
-          echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
-          echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
+          branch: megalinter-fixes-${{ github.head_ref }}
+          body: |
+            MegaLinter has automatically applied linters fixes on this PR.
+            Please review the changes and merge if they are correct.
+          base: ${{ github.head_ref }}
 
-      # Push new commit if applicable (for now works only on PR from same repository, not from forks)
-      - name: Prepare commit
-        if: steps.ml.outputs.has_updated_sources == 1 && (env.APPLY_FIXES_EVENT == 'all' || env.APPLY_FIXES_EVENT == github.event_name) && env.APPLY_FIXES_MODE == 'commit' && github.ref != 'refs/heads/main' && (github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository) && !contains(github.event.head_commit.message, 'skip fix')
-        run: sudo chown -Rc $UID .git/
-      - name: Commit and push applied linter fixes
-        if: steps.ml.outputs.has_updated_sources == 1 && (env.APPLY_FIXES_EVENT == 'all' || env.APPLY_FIXES_EVENT == github.event_name) && env.APPLY_FIXES_MODE == 'commit' && github.ref != 'refs/heads/main' && (github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository) && !contains(github.event.head_commit.message, 'skip fix')
-        uses: stefanzweifel/git-auto-commit-action@v4
+      - name: Post PR Comment
+        if: >-
+          steps.ml.outputs.has_updated_sources == 1 &&
+          (
+            env.APPLY_FIXES_EVENT == 'all' ||
+            env.APPLY_FIXES_EVENT == github.event_name
+          ) &&
+          env.APPLY_FIXES_MODE == 'pull_request' &&
+          (
+            github.event_name == 'push' ||
+            github.event.pull_request.head.repo.full_name == github.repository
+          ) &&
+          !contains(github.event.head_commit.message, 'skip fix')
+        uses: marocchino/sticky-pull-request-comment@v2
         with:
-          branch: ${{ github.event.pull_request.head.ref || github.head_ref || github.ref }}
-          commit_message: "[MegaLinter] Apply linters fixes"
-          commit_user_name: megalinter-bot
-          commit_user_email: nicolas.vuillamy@ox.security
+          message: |
+            MegaLinter has automatically applied linters fixes on this PR.
+            Please review the changes and merge if they are correct.
+            PR: ${{ steps.cpr.outputs.pull-request-url }}
+          hide_and_recreate: true
+
+      - name: Fail if PR Created
+        run: |
+          if [ "${{ steps.cpr.outputs.pull-request-url }}" != "" ]; then
+            echo "A PR with formatting fixes has been created. Please merge it before proceeding."
+            exit 1
+          fi
+
 ```
 
 </details>
