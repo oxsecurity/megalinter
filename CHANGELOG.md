@@ -89,7 +89,6 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.31.92 to **0.32.4** on 2024-12-10
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.21.0 to **1.22.0** on 2024-12-10
   - [devskim](https://github.com/microsoft/DevSkim) from 1.0.50 to **1.0.51** on 2024-12-10
-  - [sqlfluff](https://www.sqlfluff.com/) from 3.2.5 to **3.3.0** on 2024-12-10
 <!-- linter-versions-end -->
 
 ## [v8.3.0] - 2024-11-23
