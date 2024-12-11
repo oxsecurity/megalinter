@@ -29,7 +29,7 @@ linters:
       - "sqlfluff myfile.sql"
       - "sqlfluff --config .sqlfluff myfile.sql myfile2.sql"
     install:
-      docker:
+      dockerfile:
         - |-
           # renovate: datasource=pip depName=sqlfluff
           ARG SQL_SQLFLUFF_VERSION=3.2.5
