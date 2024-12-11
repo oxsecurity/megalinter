@@ -92,6 +92,8 @@ FROM python:3.12.8-alpine3.20
 # renovate: datasource=github-tags depName=detekt/detekt
 ARG DETEKT_VERSION=1.23.7
 
+# renovate: datasource=pip depName=sqlfluff
+ARG SQL_SQLFLUFF_VERSION=3.2.5
 #ARG__END
 
 ####################
@@ -353,6 +355,8 @@ RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/
 #
 # lychee installation
 # Managed with COPY --link --from=lychee /usr/local/bin/lychee /usr/bin/
+#
+# sqlfluff installation
 #
 # tflint installation
 # Managed with COPY --link --from=tflint /usr/local/bin/tflint /usr/bin/

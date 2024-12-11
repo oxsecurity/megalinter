@@ -88,6 +88,8 @@ ARG DETEKT_VERSION=1.23.7
 ARG SALESFORCE_SFDX_SCANNER_VERSION=4.7.0
 # renovate: datasource=npm depName=lightning-flow-scanner
 ARG LIGHTNING_FLOW_SCANNER_VERSION=2.36.0
+# renovate: datasource=pip depName=sqlfluff
+ARG SQL_SQLFLUFF_VERSION=3.2.5
 #ARG__END
 
 ####################
@@ -373,6 +375,8 @@ RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/rel
 #
 # lychee installation
 # Managed with COPY --link --from=lychee /usr/local/bin/lychee /usr/bin/
+#
+# sqlfluff installation
 #
 #OTHER__END
 

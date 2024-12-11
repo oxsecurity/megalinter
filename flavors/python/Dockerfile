@@ -78,6 +78,8 @@ FROM python:3.12.8-alpine3.20
 # renovate: datasource=github-tags depName=detekt/detekt
 ARG DETEKT_VERSION=1.23.7
 
+# renovate: datasource=pip depName=sqlfluff
+ARG SQL_SQLFLUFF_VERSION=3.2.5
 #ARG__END
 
 ####################
@@ -343,6 +345,8 @@ RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh |
 #
 # lychee installation
 # Managed with COPY --link --from=lychee /usr/local/bin/lychee /usr/bin/
+#
+# sqlfluff installation
 #
 #OTHER__END
 

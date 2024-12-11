@@ -87,6 +87,8 @@ ARG DETEKT_VERSION=1.23.7
 # renovate: datasource=nuget depName=PSScriptAnalyzer registryUrl=https://www.powershellgallery.com/api/v2/
 ARG PSSA_VERSION='1.23.0'
 
+# renovate: datasource=pip depName=sqlfluff
+ARG SQL_SQLFLUFF_VERSION=3.2.5
 #ARG__END
 
 ####################
@@ -392,6 +394,8 @@ RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/rel
 #
 # lychee installation
 # Managed with COPY --link --from=lychee /usr/local/bin/lychee /usr/bin/
+#
+# sqlfluff installation
 #
 # tsqllint installation
 # Next line commented because already managed by another linter
