@@ -79,6 +79,7 @@ RUN apk add --no-cache \
                 make \
                 musl-dev \
                 openssh \
+                coreutils \
                 openjdk21 \
                 npm \
                 nodejs-current \

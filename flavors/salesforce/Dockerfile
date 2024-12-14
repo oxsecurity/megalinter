@@ -118,6 +118,7 @@ RUN apk add --no-cache \
                 musl-dev \
                 openssh \
                 openjdk21 \
+                coreutils \
                 py3-pyflakes \
                 nodejs \
                 npm \
