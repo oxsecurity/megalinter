@@ -91,6 +91,12 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [devskim](https://github.com/microsoft/DevSkim) from 1.0.50 to **1.0.51** on 2024-12-10
   - [ansible-lint](https://ansible-lint.readthedocs.io/) from 24.12.0 to **24.12.1** on 2024-12-11
   - [phpcs](https://github.com/PHPCSStandards/PHP_CodeSniffer) from 3.11.1 to **3.11.2** on 2024-12-11
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 24.12.1 to **24.12.2** on 2024-12-14
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.22.0 to **1.22.1** on 2024-12-14
+  - [checkstyle](https://checkstyle.org/) from 10.20.2 to **10.21.0** on 2024-12-14
+  - [ruff](https://github.com/astral-sh/ruff) from 0.8.2 to **0.8.3** on 2024-12-14
+  - [syft](https://github.com/anchore/syft) from 1.18.0 to **1.18.1** on 2024-12-14
+  - [rubocop](https://rubocop.org/) from 1.69.1 to **1.69.2** on 2024-12-14
 <!-- linter-versions-end -->
 
 ## [v8.3.0] - 2024-11-23
