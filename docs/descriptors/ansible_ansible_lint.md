@@ -9,7 +9,7 @@ description: How to use ansible-lint (configure, ignore files, ignore errors, he
 
 ## ansible-lint documentation
 
-- Version in MegaLinter: **24.12.1**
+- Version in MegaLinter: **24.12.2**
 - Visit [Official Web Site](https://ansible-lint.readthedocs.io/){target=_blank}
 - See [How to configure ansible-lint rules](https://ansible-lint.readthedocs.io/configuring/#configuration-file){target=_blank}
   - If custom `.ansible-lint` config file isn't found, [.ansible-lint](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.ansible-lint){target=_blank} will be used
@@ -104,8 +104,7 @@ usage: ansible-lint [-h] [-P | -L | -T]
                     [-x SKIP_LIST] [--generate-ignore] [-w WARN_LIST]
                     [--enable-list ENABLE_LIST] [--nocolor] [--force-color]
                     [--exclude EXCLUDE_PATHS [EXCLUDE_PATHS ...]]
-                    [-c CONFIG_FILE] [-i IGNORE_FILE] [-I INVENTORY]
-                    [--offline] [--version]
+                    [-c CONFIG_FILE] [-i IGNORE_FILE] [--offline] [--version]
                     [lintables ...]
 
 positional arguments:
@@ -149,8 +148,6 @@ options:
                         Specify configuration file to use. By default it will look for '.ansible-lint', '.ansible-lint.yml', '.ansible-lint.yaml', '.config/ansible-lint.yml', or '.config/ansible-lint.yaml'
   -i IGNORE_FILE, --ignore-file IGNORE_FILE
                         Specify ignore file to use. By default it will look for '.ansible-lint-ignore' or '.config/ansible-lint-ignore.txt'
-  -I INVENTORY, --inventory INVENTORY
-                        Specify inventory host path or comma separated host list
   --offline             Disable installation of requirements.yml and schema refreshing
   --version
 
