@@ -15,7 +15,7 @@ description: How to use trufflehog (configure, ignore files, ignore errors, help
 
 ## trufflehog documentation
 
-- Version in MegaLinter: **3.85.0**
+- Version in MegaLinter: **3.86.1**
 - Visit [Official Web Site](https://github.com/trufflesecurity/trufflehog#readme){target=_blank}
 - See [How to configure trufflehog rules](https://github.com/trufflesecurity/trufflehog#regex-detector-alpha){target=_blank}
 
@@ -108,7 +108,9 @@ Flags:
       --[no-]github-actions      Output in GitHub Actions format.
       --concurrency=4            Number of concurrent workers.
       --[no-]no-verification     Don't verify the results.
-      --[no-]only-verified       Only output verified results.
+      --results=RESULTS          Specifies which type(s) of results to
+                                 output: verified, unknown, unverified,
+                                 filtered_unverified. Defaults to all types.
       --[no-]allow-verification-overlap
                                  Allow verification of similar credentials
                                  across detectors
@@ -212,7 +214,7 @@ analyze [<key-type>]
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=docker depName=trufflesecurity/trufflehog 
-ARG REPOSITORY_TRUFFLEHOG_VERSION=3.85.0
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.86.1
 FROM trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION} AS trufflehog
 COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
 ```
