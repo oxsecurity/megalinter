@@ -1,6 +1,6 @@
 {
     "actionlint": "1.7.4",
-    "ansible-lint": "24.12.0",
+    "ansible-lint": "24.12.1",
     "arm-ttk": "0.0.0",
     "bandit": "1.8.0",
     "bash-exec": "5.2.26",
@@ -64,7 +64,7 @@
     "perlcritic": "1.156",
     "php": "7.4.26",
     "php-cs-fixer": "3.65.0",
-    "phpcs": "3.11.1",
+    "phpcs": "3.11.2",
     "phplint": "9.5.5",
     "phpstan": "2.0.3",
     "pmd": "7.8.0",
