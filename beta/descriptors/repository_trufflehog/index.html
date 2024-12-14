@@ -3340,7 +3340,7 @@
 <p><a href="https://github.com/trufflesecurity/trufflehog"><img alt="GitHub stars" src="https://img.shields.io/github/stars/trufflesecurity/trufflehog?cacheSeconds=3600"/></a> <a href="https://github.com/trufflesecurity/trufflehog/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/trufflesecurity/trufflehog?sort=semver"/></a> <a href="https://github.com/trufflesecurity/trufflehog/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/trufflesecurity/trufflehog"/></a> <a href="https://github.com/trufflesecurity/trufflehog/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/trufflesecurity/trufflehog"/></a> <a href="https://github.com/trufflesecurity/trufflehog/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/trufflesecurity/trufflehog"/></a></p>
 <h2 id="trufflehog-documentation">trufflehog documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>3.85.0</strong></li>
+<li>Version in MegaLinter: <strong>3.86.1</strong></li>
 <li>Visit <a href="https://github.com/trufflesecurity/trufflehog#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/trufflesecurity/trufflehog#regex-detector-alpha" target="_blank">How to configure trufflehog rules</a></li>
 </ul>
@@ -3592,7 +3592,9 @@ Flags:
       --[no-]github-actions      Output in GitHub Actions format.
       --concurrency=4            Number of concurrent workers.
       --[no-]no-verification     Don't verify the results.
-      --[no-]only-verified       Only output verified results.
+      --results=RESULTS          Specifies which type(s) of results to
+                                 output: verified, unknown, unverified,
+                                 filtered_unverified. Defaults to all types.
       --[no-]allow-verification-overlap
                                  Allow verification of similar credentials
                                  across detectors
@@ -3695,7 +3697,7 @@ analyze [&lt;key-type&gt;]
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile"># renovate: datasource=docker depName=trufflesecurity/trufflehog 
-ARG REPOSITORY_TRUFFLEHOG_VERSION=3.85.0
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.86.1
 FROM trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION} AS trufflehog
 COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
 </code></pre>
