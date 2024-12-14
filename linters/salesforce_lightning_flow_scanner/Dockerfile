@@ -53,7 +53,7 @@ ARG SALESFORCE_CLI_VERSION=2.68.6
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
 ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.9.6
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=5.9.2
+ARG SFDX_HARDIS_VERSION=5.10.1
 # renovate: datasource=npm depName=lightning-flow-scanner
 ARG LIGHTNING_FLOW_SCANNER_VERSION=2.36.0
 #ARG__END
@@ -79,6 +79,7 @@ RUN apk add --no-cache \
                 make \
                 musl-dev \
                 openssh \
+                coreutils \
                 openjdk21 \
                 npm \
                 nodejs-current \

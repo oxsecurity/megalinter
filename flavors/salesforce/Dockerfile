@@ -84,7 +84,7 @@ ARG SALESFORCE_CLI_VERSION=2.68.6
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
 ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.9.6
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=5.9.2
+ARG SFDX_HARDIS_VERSION=5.10.1
 # renovate: datasource=github-tags depName=detekt/detekt
 ARG DETEKT_VERSION=1.23.7
 
@@ -118,6 +118,7 @@ RUN apk add --no-cache \
                 musl-dev \
                 openssh \
                 openjdk21 \
+                coreutils \
                 py3-pyflakes \
                 nodejs \
                 npm \

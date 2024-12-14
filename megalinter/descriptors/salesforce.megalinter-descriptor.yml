@@ -6,6 +6,7 @@ lint_all_files: true
 install:
   # Java, because Apex is Java-based, so are related tools like PMD which is embedded in sfdx-scanner
   apk:
+    - coreutils
     - openjdk21
   dockerfile:
     - |-
@@ -16,7 +17,7 @@ install:
       ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.9.6
     - |-
       # renovate: datasource=npm depName=sfdx-hardis
-      ARG SFDX_HARDIS_VERSION=5.9.2
+      ARG SFDX_HARDIS_VERSION=5.10.1
     - ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
     - ENV PATH="$JAVA_HOME/bin:${PATH}"
     - |-
