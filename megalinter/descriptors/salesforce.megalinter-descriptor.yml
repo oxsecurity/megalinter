@@ -6,6 +6,7 @@ lint_all_files: true
 install:
   # Java, because Apex is Java-based, so are related tools like PMD which is embedded in sfdx-scanner
   apk:
+    - coreutils
     - openjdk21
   dockerfile:
     - |-
