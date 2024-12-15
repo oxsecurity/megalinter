@@ -101,6 +101,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [v8r](https://github.com/chris48s/v8r) from 4.2.0 to **4.2.1** on 2024-12-14
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.85.0 to **3.86.1** on 2024-12-14
   - [cljstyle](https://github.com/greglook/cljstyle) from 0.15.0 to **0.17.642** on 2024-12-15
+  - [stylelint](https://stylelint.io) from 16.11.0 to **16.12.0** on 2024-12-15
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.16.1 to **8.17.0** on 2024-12-15
 <!-- linter-versions-end -->
 
 ## [v8.3.0] - 2024-11-23
