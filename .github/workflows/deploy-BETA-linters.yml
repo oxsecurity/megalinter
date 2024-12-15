@@ -67,6 +67,7 @@ jobs:
             "c_cpplint",
             "c_clang_format",
             "clojure_clj_kondo",
+            "clojure_cljstyle",
             "cloudformation_cfn_lint",
             "coffee_coffeelint",
             "copypaste_jscpd",
