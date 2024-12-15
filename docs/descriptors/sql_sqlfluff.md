@@ -129,5 +129,11 @@ Commands:
 
 ### Installation on mega-linter Docker image
 
+- Dockerfile commands :
+```dockerfile
+# renovate: datasource=pypi depName=sqlfluff
+ARG SQL_SQLFLUFF_VERSION=3.2.5
+```
+
 - PIP packages (Python):
-  - [sqlfluff](https://pypi.org/project/sqlfluff)
+  - [sqlfluff==${SQL_SQLFLUFF_VERSION}](https://pypi.org/project/sqlfluff/${SQL_SQLFLUFF_VERSION})

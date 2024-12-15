@@ -23,6 +23,7 @@
     {
       matchPackageNames: [
         'uv',
+        'astral-sh/uv',
         'ghcr.io/astral-sh/uv',
       ],
       schedule: [

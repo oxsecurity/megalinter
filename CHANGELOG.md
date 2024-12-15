@@ -29,6 +29,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Flavors
 
 - CI
+  - Fix up gitpod config and workflow to support uv 0.5.0+ by @echoix in #4373
 
 - mega-linter-runner
 
@@ -83,6 +84,22 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [devskim](https://github.com/microsoft/DevSkim) from 1.0.44 to **1.0.50** on 2024-12-09
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.10.0 to **1.10.1** on 2024-12-09
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.69.3 to **0.69.9** on 2024-12-09
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.20.2 to **1.21.0** on 2024-12-09
+  - [syft](https://github.com/anchore/syft) from 1.17.0 to **1.18.0** on 2024-12-09
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 24.10.0 to **24.12.0** on 2024-12-10
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.31.92 to **0.32.4** on 2024-12-10
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.21.0 to **1.22.0** on 2024-12-10
+  - [devskim](https://github.com/microsoft/DevSkim) from 1.0.50 to **1.0.51** on 2024-12-10
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 24.12.0 to **24.12.1** on 2024-12-11
+  - [phpcs](https://github.com/PHPCSStandards/PHP_CodeSniffer) from 3.11.1 to **3.11.2** on 2024-12-11
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 24.12.1 to **24.12.2** on 2024-12-14
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.22.0 to **1.22.1** on 2024-12-14
+  - [checkstyle](https://checkstyle.org/) from 10.20.2 to **10.21.0** on 2024-12-14
+  - [ruff](https://github.com/astral-sh/ruff) from 0.8.2 to **0.8.3** on 2024-12-14
+  - [syft](https://github.com/anchore/syft) from 1.18.0 to **1.18.1** on 2024-12-14
+  - [rubocop](https://rubocop.org/) from 1.69.1 to **1.69.2** on 2024-12-14
+  - [v8r](https://github.com/chris48s/v8r) from 4.2.0 to **4.2.1** on 2024-12-14
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.85.0 to **3.86.1** on 2024-12-14
 <!-- linter-versions-end -->
 
 ## [v8.3.0] - 2024-11-23
