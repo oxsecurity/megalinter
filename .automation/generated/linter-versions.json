@@ -14,7 +14,7 @@
     "clang-format": "17.0.6",
     "clippy": "0.1.83",
     "clj-kondo": "2024.11.14",
-    "cljstyle": "0.15.0",
+    "cljstyle": "0.17.642",
     "coffeelint": "5.2.11",
     "cpplint": "2.0.0",
     "csharpier": "0.30.3",
