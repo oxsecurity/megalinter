@@ -103,6 +103,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [cljstyle](https://github.com/greglook/cljstyle) from 0.15.0 to **0.17.642** on 2024-12-15
   - [stylelint](https://stylelint.io) from 16.11.0 to **16.12.0** on 2024-12-15
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.16.1 to **8.17.0** on 2024-12-15
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.10.1 to **1.10.2** on 2024-12-16
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.69.9 to **0.69.13** on 2024-12-16
 <!-- linter-versions-end -->
 
 ## [v8.3.0] - 2024-11-23
