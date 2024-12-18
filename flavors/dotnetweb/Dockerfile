@@ -92,7 +92,7 @@ ARG DETEKT_VERSION=1.23.7
 ARG PSSA_VERSION='1.23.0'
 
 # renovate: datasource=pypi depName=sqlfluff
-ARG SQL_SQLFLUFF_VERSION=3.2.5
+ARG SQL_SQLFLUFF_VERSION=3.3.0
 #ARG__END
 
 ####################

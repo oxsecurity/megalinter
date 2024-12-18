@@ -32,7 +32,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=sqlfluff
-          ARG SQL_SQLFLUFF_VERSION=3.2.5
+          ARG SQL_SQLFLUFF_VERSION=3.3.0
       pip:
         - sqlfluff==${SQL_SQLFLUFF_VERSION}
   # TSQL
