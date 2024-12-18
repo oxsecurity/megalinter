@@ -133,7 +133,7 @@ ARG SALESFORCE_SFDX_SCANNER_VERSION=4.7.0
 # renovate: datasource=npm depName=lightning-flow-scanner
 ARG LIGHTNING_FLOW_SCANNER_VERSION=2.36.0
 # renovate: datasource=pypi depName=sqlfluff
-ARG SQL_SQLFLUFF_VERSION=3.2.5
+ARG SQL_SQLFLUFF_VERSION=3.3.0
 #ARG__END
 
 ####################

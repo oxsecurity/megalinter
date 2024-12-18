@@ -90,7 +90,7 @@ FROM python:3.12.8-alpine3.20
 ARG DETEKT_VERSION=1.23.7
 
 # renovate: datasource=pypi depName=sqlfluff
-ARG SQL_SQLFLUFF_VERSION=3.2.5
+ARG SQL_SQLFLUFF_VERSION=3.3.0
 #ARG__END
 
 ####################

@@ -13,7 +13,7 @@ linters:
     linter_banner_image_url: https://raw.githubusercontent.com/sqlfluff/sqlfluff/main/images/sqlfluff-wide.png
     linter_image_url: https://docs.sqlfluff.com/en/stable/_static/images/sqlfluff-lrg.png
     linter_rules_url: https://docs.sqlfluff.com/en/stable/rules.html
-    linter_rules_configuration_url: https://docs.sqlfluff.com/en/stable/configuration.html
+    linter_rules_configuration_url: https://docs.sqlfluff.com/en/stable/configuration/index.html
     config_file_name: .sqlfluff
     active_only_if_file_found:
       - .sqlfluff
@@ -32,7 +32,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=sqlfluff
-          ARG SQL_SQLFLUFF_VERSION=3.2.5
+          ARG SQL_SQLFLUFF_VERSION=3.3.0
       pip:
         - sqlfluff==${SQL_SQLFLUFF_VERSION}
   # TSQL

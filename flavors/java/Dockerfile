@@ -86,7 +86,7 @@ ARG PMD_VERSION=7.8.0
 ARG DETEKT_VERSION=1.23.7
 
 # renovate: datasource=pypi depName=sqlfluff
-ARG SQL_SQLFLUFF_VERSION=3.2.5
+ARG SQL_SQLFLUFF_VERSION=3.3.0
 #ARG__END
 
 ####################
