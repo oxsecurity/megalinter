@@ -214,6 +214,7 @@
         "PYTHON_PYLINT",
         "PYTHON_PYRIGHT",
         "PYTHON_RUFF",
+        "PYTHON_RUFF_FORMAT",
         "RAKU_RAKU",
         "REPOSITORY_CHECKOV",
         "REPOSITORY_DEVSKIM",
