@@ -114,6 +114,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 3.2.339 to **3.2.341** on 2024-12-18
   - [checkov](https://www.checkov.io/) from 3.2.341 to **3.2.342** on 2024-12-18
   - [sqlfluff](https://www.sqlfluff.com/) from 3.2.5 to **3.3.0** on 2024-12-18
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.13.0 to **1.14.0** on 2024-12-20
+  - [ruff](https://github.com/astral-sh/ruff) from 0.8.3 to **0.8.4** on 2024-12-20
+  - [checkov](https://www.checkov.io/) from 3.2.342 to **3.2.343** on 2024-12-20
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.86.1 to **3.87.1** on 2024-12-20
+  - [lychee](https://lychee.cli.rs) from 0.17.0 to **0.18.0** on 2024-12-20
 <!-- linter-versions-end -->
 
 ## [v8.3.0] - 2024-11-23

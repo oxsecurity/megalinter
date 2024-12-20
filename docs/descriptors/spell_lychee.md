@@ -27,7 +27,7 @@ https://github.com/sgerrand/alpine-pkg-glibc/releases/download
 
 ## lychee documentation
 
-- Version in MegaLinter: **0.17.0**
+- Version in MegaLinter: **0.18.0**
 - Visit [Official Web Site](https://lychee.cli.rs){target=_blank}
 - See [How to configure lychee rules](https://lychee.cli.rs/#/usage/config){target=_blank}
 - See [Index of problems detected by lychee](https://lychee.cli.rs/#/usage/cli){target=_blank}
@@ -211,7 +211,7 @@ Options:
   -u, --user-agent <USER_AGENT>
           User agent
 
-          [default: lychee/0.17.0]
+          [default: lychee/0.18.0]
 
   -i, --insecure
           Proceed for server connections considered insecure (invalid TLS)
