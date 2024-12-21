@@ -15,7 +15,7 @@ description: How to use trufflehog (configure, ignore files, ignore errors, help
 
 ## trufflehog documentation
 
-- Version in MegaLinter: **3.86.1**
+- Version in MegaLinter: **3.87.1**
 - Visit [Official Web Site](https://github.com/trufflesecurity/trufflehog#readme){target=_blank}
 - See [How to configure trufflehog rules](https://github.com/trufflesecurity/trufflehog#regex-detector-alpha){target=_blank}
 
@@ -128,6 +128,9 @@ Flags:
       --verifier=VERIFIER ...    Set custom verification endpoints.
       --[no-]custom-verifiers-only
                                  Only use custom verification endpoints.
+      --detector-timeout=DETECTOR-TIMEOUT
+                                 Maximum time to spend scanning chunks per
+                                 detector (e.g., 30s).
       --archive-max-size=ARCHIVE-MAX-SIZE
                                  Maximum size of archive to scan. (Byte units
                                  eg. 512B, 2KB, 4MB)
@@ -214,7 +217,7 @@ analyze [<key-type>]
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=docker depName=trufflesecurity/trufflehog 
-ARG REPOSITORY_TRUFFLEHOG_VERSION=3.86.1
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.87.1
 FROM trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION} AS trufflehog
 COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
 ```
