@@ -119,6 +119,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 3.2.342 to **3.2.343** on 2024-12-20
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.86.1 to **3.87.1** on 2024-12-20
   - [lychee](https://lychee.cli.rs) from 0.17.0 to **0.18.0** on 2024-12-20
+  - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.21.2 to **8.22.0** on 2024-12-21
 <!-- linter-versions-end -->
 
 ## [v8.3.0] - 2024-11-23
