@@ -8,7 +8,7 @@
     "black": "24.10.0",
     "cfn-lint": "1.22.2",
     "checkmake": "0.2.0",
-    "checkov": "3.2.343",
+    "checkov": "3.2.344",
     "checkstyle": "10.21.0",
     "chktex": "1.7.8",
     "clang-format": "17.0.6",
