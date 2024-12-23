@@ -523,15 +523,15 @@ wheels = [
 
 [[package]]
 name = "python-gitlab"
-version = "5.1.0"
+version = "5.2.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "requests" },
     { name = "requests-toolbelt" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/f6/44/a687ca1d79d3c4c52cc0529859eb2803f5a80612d0598c82798f1056e24b/python_gitlab-5.1.0.tar.gz", hash = "sha256:d5a10dae8328f32fb9214bd3f9dc199b4930cd496f81c9be42a0f8ff338aeb35", size = 384162 }
+sdist = { url = "https://files.pythonhosted.org/packages/8f/20/30e70cb0ebb6d86f6f8bf21e75896e2c4fc8f8523eb82212d3827d05f8f3/python_gitlab-5.2.0.tar.gz", hash = "sha256:1fb99d9de78aa93fdc97a106db44f0870cba225ea2064426302db02d14027967", size = 387472 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/87/c7/3298380881aa5ed98b4129d5bf1e1ea748d7bdb3dc9d45954f8099e9c455/python_gitlab-5.1.0-py3-none-any.whl", hash = "sha256:c30cf547392ce66daaaf020839cfb6c15a91b26e2e7054d1b3f1b92e8dd65e7d", size = 145395 },
+    { url = "https://files.pythonhosted.org/packages/81/40/9eaeb1575b1654282030ff8d147ae5cb440a2fcc65fc799107e97fd59c1a/python_gitlab-5.2.0-py3-none-any.whl", hash = "sha256:aa0136f3377210682970688789c1b510f948b68c4c14d1b873b590335501bd04", size = 146107 },
 ]
 
 [[package]]
@@ -821,11 +821,11 @@ wheels = [
 
 [[package]]
 name = "urllib3"
-version = "2.2.3"
+version = "2.3.0"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/ed/63/22ba4ebfe7430b76388e7cd448d5478814d3032121827c12a2cc287e2260/urllib3-2.2.3.tar.gz", hash = "sha256:e7d814a81dad81e6caf2ec9fdedb284ecc9c73076b62654547cc64ccdcae26e9", size = 300677 }
+sdist = { url = "https://files.pythonhosted.org/packages/aa/63/e53da845320b757bf29ef6a9062f5c669fe997973f966045cb019c3f4b66/urllib3-2.3.0.tar.gz", hash = "sha256:f8c5449b3cf0861679ce7e0503c7b44b5ec981bec0d1d3795a07f1ba96f0204d", size = 307268 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/ce/d9/5f4c13cecde62396b0d3fe530a50ccea91e7dfc1ccf0e09c228841bb5ba8/urllib3-2.2.3-py3-none-any.whl", hash = "sha256:ca899ca043dcb1bafa3e262d73aa25c465bfb49e0bd9dd5d59f1d0acba2f8fac", size = 126338 },
+    { url = "https://files.pythonhosted.org/packages/c8/19/4ec628951a74043532ca2cf5d97b7b14863931476d117c471e8e2b1eb39f/urllib3-2.3.0-py3-none-any.whl", hash = "sha256:1cee9ad369867bfdbbb48b7dd50374c0967a0bb7710050facf0dd6911440e3df", size = 128369 },
 ]
 
 [[package]]
