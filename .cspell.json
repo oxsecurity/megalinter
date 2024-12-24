@@ -992,6 +992,7 @@
         "linelength",
         "linesep",
         "linkcheck",
+        "lintable",
         "linterkey",
         "linterrc",
         "linterversion",

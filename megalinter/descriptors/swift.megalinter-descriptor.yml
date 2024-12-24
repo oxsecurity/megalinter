@@ -19,15 +19,16 @@ linters:
     cli_lint_extra_args:
       - "lint"
     cli_lint_extra_args_after:
-      - "/tmp/lint"
       - "--strict"
     cli_lint_fix_arg_name: "--fix"
     cli_lint_fix_remove_args:
       - "lint"
-    cli_docker_image: norionomura/swiftlint
+    cli_docker_image: ghcr.io/realm/swiftlint
     cli_docker_args:
       - "-v"
       - "{{WORKSPACE}}:/tmp/lint:rw"
+      - "-w"
+      - "/tmp/lint"
     config_file_name: ".swiftlint.yml"
     cli_config_arg_name: ""
     cli_help_arg_name: "help"
@@ -35,8 +36,8 @@ linters:
     cli_lint_errors_count: regex_number
     cli_lint_errors_regex: "Found ([0-9]+) violations"
     examples:
-      - "docker run -v /tmp/lint:/tmp/lint:rw norionomura/swiftlint:latest swiftlint lint --path /tmp/lint --strict"
-      - "docker run -v /tmp/lint:/tmp/lint:rw norionomura/swiftlint:latest swiftlint --fix --path /tmp/lint --strict"
+      - "docker run -v /tmp/lint:/tmp/lint:rw ghcr.io/realm/swiftlint:latest swiftlint --strict"
+      - "docker run -v /tmp/lint:/tmp/lint:rw ghcr.io/realm/swiftlint:latest swiftlint --fix --strict"
     ide:
       atom:
         - name: linter-swiftlint

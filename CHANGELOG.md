@@ -21,6 +21,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
       Learn more about context on [GH-4328](https://github.com/oxsecurity/megalinter/issues/4328)
 
 - Fixes
+  - [swiftlint](https://github.com/realm/SwiftLint) Fix swiftlint error where linter is unable to find lintable files. Fixes [#440](https://github.com/oxsecurity/megalinter/issues/440).
 
 - Reporters
 
