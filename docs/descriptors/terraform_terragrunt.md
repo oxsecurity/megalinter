@@ -9,7 +9,7 @@ description: How to use terragrunt (configure, ignore files, ignore errors, help
 
 ## terragrunt documentation
 
-- Version in MegaLinter: **0.69.13**
+- Version in MegaLinter: **0.71.1**
 - Visit [Official Web Site](https://terragrunt.gruntwork.io){target=_blank}
 - See [How to configure terragrunt rules](https://terragrunt.gruntwork.io/docs/getting-started/configuration/#terragrunt-configuration-file){target=_blank}
 
@@ -100,6 +100,8 @@ COMMANDS:
    *                      Terragrunt forwards all other commands directly to Terraform
 
 GLOBAL OPTIONS:
+   --experiment value                                Enables specific experiments. For a list of available experiments, see https://terragrunt.gruntwork.io/docs/reference/experiment-mode . [$TERRAGRUNT_EXPERIMENT]
+   --experiment-mode                                 Enables experiment mode for Terragrunt. For more information, see https://terragrunt.gruntwork.io/docs/reference/experiment-mode . [$TERRAGRUNT_EXPERIMENT_MODE]
    --feature value                                   Set feature flags for the HCL code. [$TERRAGRUNT_FEATURE]
    --strict-control value                            Enables specific strict controls. For a list of available controls, see https://terragrunt.gruntwork.io/docs/reference/strict-mode . [$TERRAGRUNT_STRICT_CONTROL]
    --strict-mode                                     Enables strict mode for Terragrunt. For more information, see https://terragrunt.gruntwork.io/docs/reference/strict-mode . [$TERRAGRUNT_STRICT_MODE]
@@ -125,6 +127,7 @@ GLOBAL OPTIONS:
    --terragrunt-include-external-dependencies        *-all commands will include external dependencies [$TERRAGRUNT_INCLUDE_EXTERNAL_DEPENDENCIES]
    --terragrunt-log-custom-format value              Set the custom log formatting [$TERRAGRUNT_LOG_CUSTOM_FORMAT]
    --terragrunt-log-disable                          Disable logging [$TERRAGRUNT_LOG_DISABLE]
+   --terragrunt-log-disable-error-summary            Skip error summary at the end of the command. [$TERRAGRUNT_LOG_DISABLE_ERROR_SUMMARY]
    --terragrunt-log-format value                     Set the log format [$TERRAGRUNT_LOG_FORMAT]
    --terragrunt-log-level value                      Sets the logging level for Terragrunt. Supported levels: stderr, stdout, error, warn, info, debug, trace (default: info) [$TERRAGRUNT_LOG_LEVEL]
    --terragrunt-log-show-abs-paths                   Show absolute paths in logs [$TERRAGRUNT_LOG_SHOW_ABS_PATHS]
@@ -153,7 +156,7 @@ GLOBAL OPTIONS:
    --help, -h                                        Show help
    --version, -v                                     Show terragrunt version
 
-VERSION: v0.69.13
+VERSION: v0.71.1
 
 AUTHOR: Gruntwork <www.gruntwork.io>
 ```
@@ -163,7 +166,7 @@ AUTHOR: Gruntwork <www.gruntwork.io>
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=docker depName=alpine/terragrunt
-ARG TERRAFORM_TERRAGRUNT_VERSION=1.10.2
+ARG TERRAFORM_TERRAGRUNT_VERSION=1.10.3
 FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} AS terragrunt
 COPY --link --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
 ```
