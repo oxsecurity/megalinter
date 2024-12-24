@@ -122,6 +122,13 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.21.2 to **8.22.0** on 2024-12-21
   - [checkov](https://www.checkov.io/) from 3.2.343 to **3.2.344** on 2024-12-21
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.87.1 to **3.88.0** on 2024-12-22
+  - [djlint](https://djlint.com/) from 1.36.3 to **1.36.4** on 2024-12-24
+  - [pylint](https://pylint.readthedocs.io) from 3.3.2 to **3.3.3** on 2024-12-24
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.58.0 to **0.58.1** on 2024-12-24
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.58.0 to **0.58.1** on 2024-12-24
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.25.5 to **8.26.0** on 2024-12-24
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.10.2 to **1.10.3** on 2024-12-24
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.69.13 to **0.71.1** on 2024-12-24
 <!-- linter-versions-end -->
 
 ## [v8.3.0] - 2024-11-23
