@@ -11,8 +11,8 @@ description: How to use swiftlint (configure, ignore files, ignore errors, help 
 
 - Version in MegaLinter: **0.57.1**
 - Visit [Official Web Site](https://github.com/realm/SwiftLint#readme){target=_blank}
-- Docker image: [norionomura/swiftlint:latest](https://hub.docker.com/r/norionomura/swiftlint){target=_blank}
-  - arguments: `-v {{WORKSPACE}}:/tmp/lint:rw`
+- Docker image: [ghcr.io/realm/swiftlint:latest](https://hub.docker.com/r/ghcr.io/realm/swiftlint){target=_blank}
+  - arguments: `-v {{WORKSPACE}}:/tmp/lint:rw -w /tmp/lint`
 - See [How to configure swiftlint rules](https://github.com/realm/SwiftLint#configuration){target=_blank}
 - See [How to disable swiftlint rules in files](https://github.com/realm/SwiftLint#disable-rules-in-code){target=_blank}
 - See [Index of problems detected by swiftlint](https://realm.github.io/SwiftLint/rule-directory.html){target=_blank}
@@ -82,11 +82,11 @@ swiftlint is called once on the whole project directory (`project` CLI lint mode
 ### Example calls
 
 ```shell
-docker run -v /tmp/lint:/tmp/lint:rw norionomura/swiftlint:latest swiftlint lint --path /tmp/lint --strict
+docker run -v /tmp/lint:/tmp/lint:rw ghcr.io/realm/swiftlint:latest swiftlint --strict
 ```
 
 ```shell
-docker run -v /tmp/lint:/tmp/lint:rw norionomura/swiftlint:latest swiftlint --fix --path /tmp/lint --strict
+docker run -v /tmp/lint:/tmp/lint:rw ghcr.io/realm/swiftlint:latest swiftlint --fix --strict
 ```
 
 
