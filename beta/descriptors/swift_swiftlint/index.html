@@ -3351,8 +3351,8 @@
 <ul>
 <li>Version in MegaLinter: <strong>0.57.1</strong></li>
 <li>Visit <a href="https://github.com/realm/SwiftLint#readme" target="_blank">Official Web Site</a></li>
-<li>Docker image: <a href="https://hub.docker.com/r/norionomura/swiftlint" target="_blank">norionomura/swiftlint:latest</a><ul>
-<li>arguments: <code>-v {{WORKSPACE}}:/tmp/lint:rw</code></li>
+<li>Docker image: <a href="https://hub.docker.com/r/ghcr.io/realm/swiftlint" target="_blank">ghcr.io/realm/swiftlint:latest</a><ul>
+<li>arguments: <code>-v {{WORKSPACE}}:/tmp/lint:rw -w /tmp/lint</code></li>
 </ul>
 </li>
 <li>See <a href="https://github.com/realm/SwiftLint#configuration" target="_blank">How to configure swiftlint rules</a></li>
@@ -3532,9 +3532,9 @@
 <li><code>VALIDATE_ALL_CODEBASE: false</code> doesn't make swiftlint analyze only updated files</li>
 </ul>
 <h3 id="example-calls">Example calls</h3>
-<pre><code class="language-shell">docker run -v /tmp/lint:/tmp/lint:rw norionomura/swiftlint:latest swiftlint lint --path /tmp/lint --strict
+<pre><code class="language-shell">docker run -v /tmp/lint:/tmp/lint:rw ghcr.io/realm/swiftlint:latest swiftlint --strict
 </code></pre>
-<pre><code class="language-shell">docker run -v /tmp/lint:/tmp/lint:rw norionomura/swiftlint:latest swiftlint --fix --path /tmp/lint --strict
+<pre><code class="language-shell">docker run -v /tmp/lint:/tmp/lint:rw ghcr.io/realm/swiftlint:latest swiftlint --fix --strict
 </code></pre>
 <h3 id="help-content">Help content</h3>
 <pre><code class="language-shell">OVERVIEW: A tool to enforce Swift style and conventions.
