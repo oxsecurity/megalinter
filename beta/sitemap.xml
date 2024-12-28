@@ -2,1534 +2,1534 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://megalinter.io/beta/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/CHANGELOG/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/all_linters/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/all_users/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/articles/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/badge/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/config-activation/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/config-apply-fixes/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/config-cli-lint-mode/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/config-file/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/config-filtering/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/config-linters/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/config-postcommands/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/config-precommands/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/config-variables-security/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/config-variables/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/configuration/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/contributing/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptor-schema/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/flavors-stats/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/flavors/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/frequently-asked-questions/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/how-to-contribute/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/install-assisted/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/install-azure/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/install-bitbucket/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/install-concourse/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/install-docker/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/install-drone/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/install-github/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/install-gitlab/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/install-jenkins/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/install-locally/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/install-version/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/license-explanations/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/license/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/mega-linter-runner/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/mega-linter-vs-super-linter/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/plugins/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/quick-start/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/reporters/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/special-thanks/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/sponsor/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/standalone-linters/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/supported-linters/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/used-by-stats/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/action/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/action_actionlint/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/ansible/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/ansible_ansible_lint/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/api/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/api_spectral/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/arm/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/arm_arm_ttk/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/bash/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/bash_bash_exec/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/bash_shellcheck/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/bash_shfmt/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/bicep/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/bicep_bicep_linter/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/c/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/c_clang_format/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/c_cpplint/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/clojure/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/clojure_clj_kondo/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/clojure_cljstyle/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/cloudformation/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/cloudformation_cfn_lint/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/coffee/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/coffee_coffeelint/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/copypaste/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/copypaste_jscpd/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/cpp/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/cpp_clang_format/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/cpp_cpplint/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/credentials/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/credentials_secretlint/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/csharp/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/csharp_csharpier/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/csharp_dotnet_format/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/csharp_roslynator/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/css/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/css_stylelint/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/dart/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/dart_dartanalyzer/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/dockerfile/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/dockerfile_hadolint/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/editorconfig/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/editorconfig_editorconfig_checker/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/env/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/env_dotenv_linter/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/gherkin/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/gherkin_gherkin_lint/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/git/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/git_git_diff/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/go/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/go_golangci_lint/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/go_revive/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/graphql/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/graphql_graphql_schema_linter/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/groovy/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/groovy_npm_groovy_lint/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/html/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/html_djlint/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/html_htmlhint/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/java/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/java_checkstyle/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/java_pmd/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/javascript/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/javascript_eslint/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/javascript_prettier/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/javascript_standard/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/json/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/json_eslint_plugin_jsonc/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/json_jsonlint/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/json_npm_package_json_lint/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/json_prettier/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/json_v8r/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/jsx/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/jsx_eslint/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/kotlin/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/kotlin_detekt/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/kotlin_ktlint/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/kubernetes/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/kubernetes_helm/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/kubernetes_kubeconform/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/kubernetes_kubescape/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/latex/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/latex_chktex/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/lua/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/lua_luacheck/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/lua_selene/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/lua_stylua/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/makefile/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/makefile_checkmake/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/markdown/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/markdown_markdown_link_check/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/markdown_markdown_table_formatter/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/markdown_markdown_table_prettify/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/markdown_markdownlint/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/markdown_remark_lint/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/openapi/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/perl/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/perl_perlcritic/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/php/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/php_php/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/php_php_cs_fixer/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/php_phpcs/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/php_phplint/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/php_phpstan/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/php_psalm/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/powershell/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/powershell_powershell/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/powershell_powershell_formatter/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/protobuf/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/protobuf_protolint/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/puppet/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/puppet_puppet_lint/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/python/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/python_bandit/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/python_black/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/python_flake8/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/python_isort/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/python_mypy/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/python_pylint/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/python_pyright/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/python_ruff/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/r/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/r_lintr/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/raku/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/raku_raku/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/repository/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/repository_checkov/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/repository_devskim/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/repository_dustilock/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/repository_git_diff/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/repository_gitleaks/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/repository_grype/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/repository_kics/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/repository_ls_lint/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/repository_secretlint/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/repository_semgrep/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/repository_syft/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/repository_trivy/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/repository_trivy_sbom/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/repository_trufflehog/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/rst/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/rst_rst_lint/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/rst_rstcheck/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/rst_rstfmt/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/ruby/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/ruby_rubocop/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/rust/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/rust_clippy/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/salesforce/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/salesforce_lightning_flow_scanner/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/salesforce_sfdx_scanner/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/salesforce_sfdx_scanner_apex/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/salesforce_sfdx_scanner_aura/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/salesforce_sfdx_scanner_lwc/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/scala/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/scala_scalafix/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/snakemake/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/snakemake_snakefmt/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/snakemake_snakemake/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/spell/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/spell_cspell/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/spell_lychee/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/spell_proselint/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/spell_vale/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/sql/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/sql_sqlfluff/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/sql_tsqllint/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/swift/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/swift_swiftlint/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/tekton/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/tekton_tekton_lint/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/terraform/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/terraform_kics/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/terraform_terraform_fmt/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/terraform_terragrunt/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/terraform_terrascan/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/terraform_tflint/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/tsx/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/tsx_eslint/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/typescript/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/typescript_eslint/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/typescript_prettier/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/typescript_standard/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/typescript_ts_standard/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/vbdotnet/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/vbdotnet_dotnet_format/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/xml/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/xml_xmllint/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/yaml/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/yaml_prettier/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/yaml_v8r/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/yaml_yamllint/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/flavors/c_cpp/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/flavors/ci_light/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/flavors/cupcake/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/flavors/documentation/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/flavors/dotnet/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/flavors/dotnetweb/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/flavors/formatters/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/flavors/go/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/flavors/java/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/flavors/javascript/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/flavors/php/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/flavors/python/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/flavors/ruby/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/flavors/rust/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/flavors/salesforce/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/flavors/security/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/flavors/swift/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/flavors/terraform/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/actionlint/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/ansible-lint/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/arm-ttk/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/bandit/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/bicep_linter/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/black/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/cfn-lint/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/checkmake/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/checkov/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/checkstyle/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/clang-format/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/clippy/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/clj-kondo/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/cljstyle/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/coffeelint/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/cpplint/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/csharpier/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/cspell/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/dartanalyzer/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/detekt/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/devskim/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/djlint/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/dotenv-linter/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/dotnet-format/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/dustilock/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/editorconfig-checker/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/eslint-plugin-jsonc/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/eslint/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/flake8/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/gherkin-lint/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/git_diff/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/gitleaks/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/golangci-lint/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/graphql-schema-linter/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/grype/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/hadolint/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/helm/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/htmlhint/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/isort/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/jscpd/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/jsonlint/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/kics/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/ktlint/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/kubeconform/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/kubescape/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/lightning-flow-scanner/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/lintr/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/ls-lint/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/luacheck/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/lychee/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/markdown-link-check/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/markdown-table-formatter/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/markdownlint/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/mypy/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/npm-groovy-lint/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/npm-package-json-lint/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/perlcritic/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/php-cs-fixer/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/phpcs/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/phplint/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/phpstan/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/pmd/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/powershell/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/powershell_formatter/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/prettier/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/proselint/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/protolint/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/psalm/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/puppet-lint/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/pylint/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/pyright/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/raku/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/remark-lint/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/revive/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/roslynator/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/rst-lint/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/rstcheck/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/rubocop/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/ruff/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/scalafix/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/scss-lint/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/secretlint/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/semgrep/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/sfdx-scanner-apex/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/sfdx-scanner-aura/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/sfdx-scanner-lwc/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/shellcheck/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/shfmt/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/snakefmt/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/snakemake/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/spectral/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/sql-lint/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/sqlfluff/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/standard/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/stylelint/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/stylua/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/swiftlint/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/syft/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/tekton-lint/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/terraform-fmt/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/terragrunt/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/terrascan/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/tflint/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/trivy-sbom/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/trivy/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/trufflehog/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/ts-standard/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/tsqllint/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/v8r/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/vale/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/yamllint/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/reporters/ApiReporter/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/reporters/AzureCommentReporter/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/reporters/BitbucketCommentReporter/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/reporters/ConfigReporter/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/reporters/ConsoleReporter/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/reporters/EmailReporter/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/reporters/FileIoReporter/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/reporters/GitHubCommentReporter/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/reporters/GitHubStatusReporter/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/reporters/GitlabCommentReporter/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/reporters/JsonReporter/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/reporters/MarkdownSummaryReporter/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/reporters/SarifReporter/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/reporters/TapReporter/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/reporters/TextReporter/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/reporters/UpdatedSourcesReporter/</loc>
-         <lastmod>2024-12-25</lastmod>
+         <lastmod>2024-12-28</lastmod>
     </url>
 </urlset>
