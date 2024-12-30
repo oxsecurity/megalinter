@@ -130,6 +130,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.25.5 to **8.26.0** on 2024-12-24
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.10.2 to **1.10.3** on 2024-12-24
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.69.13 to **0.71.1** on 2024-12-24
+  - [csharpier](https://csharpier.com/) from 0.30.3 to **0.30.4** on 2024-12-30
+  - [checkstyle](https://checkstyle.org/) from 10.21.0 to **10.21.1** on 2024-12-30
+  - [pmd](https://pmd.github.io/) from 7.8.0 to **7.9.0** on 2024-12-30
 <!-- linter-versions-end -->
 
 ## [v8.3.0] - 2024-11-23

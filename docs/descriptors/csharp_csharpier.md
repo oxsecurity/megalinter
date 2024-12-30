@@ -9,7 +9,7 @@ description: How to use csharpier (configure, ignore files, ignore errors, help 
 
 ## csharpier documentation
 
-- Version in MegaLinter: **0.30.3**
+- Version in MegaLinter: **0.30.4**
 - Visit [Official Web Site](https://csharpier.com/){target=_blank}
 - See [How to configure csharpier rules](https://csharpier.com/docs/Configuration){target=_blank}
 - See [How to ignore files and directories with csharpier](https://csharpier.com/docs/Ignore){target=_blank}
