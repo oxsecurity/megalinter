@@ -135,6 +135,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [pmd](https://pmd.github.io/) from 7.8.0 to **7.9.0** on 2024-12-30
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.22.2 to **1.22.3** on 2024-12-30
   - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.14.0 to **1.14.1** on 2024-12-30
+  - [actionlint](https://rhysd.github.io/actionlint/) from 1.7.4 to **1.7.5** on 2024-12-31
+  - [checkov](https://www.checkov.io/) from 3.2.344 to **3.2.345** on 2024-12-31
+  - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.22.0 to **8.22.1** on 2024-12-31
 <!-- linter-versions-end -->
 
 ## [v8.3.0] - 2024-11-23
