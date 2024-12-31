@@ -133,6 +133,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [csharpier](https://csharpier.com/) from 0.30.3 to **0.30.4** on 2024-12-30
   - [checkstyle](https://checkstyle.org/) from 10.21.0 to **10.21.1** on 2024-12-30
   - [pmd](https://pmd.github.io/) from 7.8.0 to **7.9.0** on 2024-12-30
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.22.2 to **1.22.3** on 2024-12-30
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.14.0 to **1.14.1** on 2024-12-30
 <!-- linter-versions-end -->
 
 ## [v8.3.0] - 2024-11-23
