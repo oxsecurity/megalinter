@@ -11,7 +11,7 @@ Static checker for GitHub Actions workflow files
 
 ## actionlint documentation
 
-- Version in MegaLinter: **1.7.4**
+- Version in MegaLinter: **1.7.5**
 - Visit [Official Web Site](https://rhysd.github.io/actionlint/){target=_blank}
 - See [How to configure actionlint rules](https://github.com/rhysd/actionlint/blob/main/docs/config.md){target=_blank}
 
@@ -112,7 +112,9 @@ Usage: actionlint [FLAGS] [FILES...] [-]
 
 Documents:
 
-  https://github.com/rhysd/actionlint/tree/v1.7.4/docs
+  - List of checks: https://github.com/rhysd/actionlint/tree/v1.7.5/docs/checks.md
+  - Usage:          https://github.com/rhysd/actionlint/tree/v1.7.5/docs/usage.md
+  - Configuration:  https://github.com/rhysd/actionlint/tree/v1.7.5/docs/config.md
 
 Flags:
   -color
@@ -122,7 +124,7 @@ Flags:
   -debug
       Enable debug output (for development)
   -format string
-      Custom template to format error messages in Go template syntax. See https://github.com/rhysd/actionlint/tree/main/docs/usage.md#format
+      Custom template to format error messages in Go template syntax. See the usage documentation for more details
   -ignore value
       Regular expression matching to error messages you want to ignore. This flag is repeatable
   -init-config
@@ -148,7 +150,7 @@ Flags:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=docker depName=rhysd/actionlint
-ARG ACTION_ACTIONLINT_VERSION=1.7.4
+ARG ACTION_ACTIONLINT_VERSION=1.7.5
 # renovate: datasource=docker depName=koalaman/shellcheck
 ARG BASH_SHELLCHECK_VERSION=v0.10.0
 FROM rhysd/actionlint:${ACTION_ACTIONLINT_VERSION} AS actionlint
