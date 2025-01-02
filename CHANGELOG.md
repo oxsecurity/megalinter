@@ -139,6 +139,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 3.2.344 to **3.2.345** on 2024-12-31
   - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.22.0 to **8.22.1** on 2024-12-31
   - [phpstan](https://phpstan.org/) from 2.0.4 to **2.1.0** on 2024-12-31
+  - [golangci-lint](https://golangci-lint.run/) from 1.62.2 to **1.63.1** on 2025-01-01
+  - [checkov](https://www.checkov.io/) from 3.2.345 to **3.2.346** on 2025-01-01
 <!-- linter-versions-end -->
 
 ## [v8.3.0] - 2024-11-23

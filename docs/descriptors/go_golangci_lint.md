@@ -15,7 +15,7 @@ description: How to use golangci-lint (configure, ignore files, ignore errors, h
 
 ## golangci-lint documentation
 
-- Version in MegaLinter: **1.62.2**
+- Version in MegaLinter: **1.63.1**
 - Visit [Official Web Site](https://golangci-lint.run/){target=_blank}
 - See [How to configure golangci-lint rules](https://golangci-lint.run/usage/configuration/#config-file){target=_blank}
   - If custom `.golangci.yml` config file isn't found, [.golangci.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.golangci.yml){target=_blank} will be used
