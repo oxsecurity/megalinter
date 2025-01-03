@@ -108,6 +108,7 @@ jobs:
             "python_mypy",
             "python_pyright",
             "python_ruff",
+            "python_ruff_format",
             "r_lintr",
             "raku_raku",
             "repository_checkov",
