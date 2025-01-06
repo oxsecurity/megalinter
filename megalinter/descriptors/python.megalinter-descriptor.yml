@@ -399,7 +399,6 @@ linters:
         variable: PYTHON_DEFAULT_STYLE
         expected_value: ruff
         default_value: black
-    can_output_sarif: true
     linter_text: |
       An extremely fast Python linter, written in Rust. Configured for formatting only.
     linter_url: https://github.com/astral-sh/ruff
@@ -419,14 +418,7 @@ linters:
       - --check
     cli_lint_fix_remove_args:
       - --check
-    cli_lint_errors_count: regex_number
-    cli_lint_errors_regex: "Found ([0-9]+) error"
     config_file_name: ".ruff.toml"
-    cli_sarif_args:
-      - --output-format
-      - sarif
-      - --output-file
-      - "{{SARIF_OUTPUT_FILE}}"
     examples:
       - "ruff format --check myfile.py myfile2.py"
       - "ruff format --config .ruff.toml myfile.py myfile2.py"
