@@ -214,6 +214,7 @@
         "PYTHON_PYLINT",
         "PYTHON_PYRIGHT",
         "PYTHON_RUFF",
+        "PYTHON_RUFF_FORMAT",
         "RAKU_RAKU",
         "REPOSITORY_CHECKOV",
         "REPOSITORY_DEVSKIM",
@@ -14483,6 +14484,20 @@
       },
       "title": "PYTHON_BLACK: Unsecured env variables",
       "type": "array"
+    },
+    "PYTHON_DEFAULT_STYLE": {
+      "$id": "#/properties/PYTHON_DEFAULT_STYLE",
+      "description": "Style of python formatting to apply",
+      "enum": [
+        "black",
+        "ruff"
+      ],
+      "examples": [
+        "black",
+        "ruff"
+      ],
+      "title": "Python default style",
+      "type": "string"
     },
     "PYTHON_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/PYTHON_FILTER_REGEX_EXCLUDE",
