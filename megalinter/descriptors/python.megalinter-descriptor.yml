@@ -391,6 +391,7 @@ linters:
 
   # ruff fmt
   - linter_name: ruff-format
+    class: RuffFormatLinter
     name: PYTHON_RUFF_FORMAT
     is_formatter: true
     activation_rules:
