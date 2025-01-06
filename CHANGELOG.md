@@ -9,14 +9,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
 - Core
+  - PHP Linters use now the `bartlett/sarif-php-converters` first official release 1.0.0 to generate SARIF reports
 
 - New linters
+  - Reactivate clj-style (Clojure formatter) since its bug is fixed
 
 - Media
 
 - Linters enhancements
+  - Add support to [phpstan/extension-installer](https://github.com/phpstan/extension-installer) Composer plugin for automatic installation of PHPStan extensions.
+      Learn more about context on [GH-4328](https://github.com/oxsecurity/megalinter/issues/4328)
 
 - Fixes
+  - [swiftlint](https://github.com/realm/SwiftLint) Fix swiftlint error where linter is unable to find lintable files. Fixes [#440](https://github.com/oxsecurity/megalinter/issues/440).
 
 - Reporters
 
@@ -25,6 +30,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Flavors
 
 - CI
+  - Fix up gitpod config and workflow to support uv 0.5.0+ by @echoix in #4373
 
 - mega-linter-runner
 
@@ -51,6 +57,90 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 3.2.320 to **3.2.322** on 2024-11-29
   - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.82 to **0.1.83** on 2024-11-29
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.25.4 to **8.25.5** on 2024-11-29
+  - [checkstyle](https://checkstyle.org/) from 10.20.1 to **10.20.2** on 2024-11-30
+  - [pmd](https://pmd.github.io/) from 7.7.0 to **7.8.0** on 2024-11-30
+  - [pylint](https://pylint.readthedocs.io) from 3.3.1 to **3.3.2** on 2024-12-01
+  - [checkov](https://www.checkov.io/) from 3.2.322 to **3.2.324** on 2024-12-01
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.50.5 to **0.51.0** on 2024-12-02
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.20.1 to **1.20.2** on 2024-12-02
+  - [checkov](https://www.checkov.io/) from 3.2.324 to **3.2.326** on 2024-12-02
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.9.8 to **1.10.0** on 2024-12-02
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.69.1 to **0.69.3** on 2024-12-02
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.84.1 to **3.84.2** on 2024-12-03
+  - [checkov](https://www.checkov.io/) from 3.2.326 to **3.2.327** on 2024-12-03
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.57.1 to **0.58.0** on 2024-12-03
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.57.1 to **0.58.0** on 2024-12-03
+  - [rubocop](https://rubocop.org/) from 1.69.0 to **1.69.1** on 2024-12-03
+  - [prettier](https://prettier.io/) from 3.4.1 to **3.4.2** on 2024-12-04
+  - [checkov](https://www.checkov.io/) from 3.2.327 to **3.2.328** on 2024-12-04
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.389 to **1.1.390** on 2024-12-04
+  - [ktlint](https://ktlint.github.io) from 1.4.1 to **1.5.0** on 2024-12-05
+  - [ruff](https://github.com/astral-sh/ruff) from 0.8.1 to **0.8.2** on 2024-12-05
+  - [checkov](https://www.checkov.io/) from 3.2.328 to **3.2.330** on 2024-12-05
+  - [checkov](https://www.checkov.io/) from 3.2.330 to **3.2.332** on 2024-12-05
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.84.2 to **3.85.0** on 2024-12-06
+  - [csharpier](https://csharpier.com/) from 0.30.2 to **0.30.3** on 2024-12-09
+  - [phplint](https://github.com/overtrue/phplint) from 9.5.4 to **9.5.5** on 2024-12-09
+  - [checkov](https://www.checkov.io/) from 3.2.332 to **3.2.334** on 2024-12-09
+  - [devskim](https://github.com/microsoft/DevSkim) from 1.0.44 to **1.0.50** on 2024-12-09
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.10.0 to **1.10.1** on 2024-12-09
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.69.3 to **0.69.9** on 2024-12-09
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.20.2 to **1.21.0** on 2024-12-09
+  - [syft](https://github.com/anchore/syft) from 1.17.0 to **1.18.0** on 2024-12-09
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 24.10.0 to **24.12.0** on 2024-12-10
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.31.92 to **0.32.4** on 2024-12-10
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.21.0 to **1.22.0** on 2024-12-10
+  - [devskim](https://github.com/microsoft/DevSkim) from 1.0.50 to **1.0.51** on 2024-12-10
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 24.12.0 to **24.12.1** on 2024-12-11
+  - [phpcs](https://github.com/PHPCSStandards/PHP_CodeSniffer) from 3.11.1 to **3.11.2** on 2024-12-11
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 24.12.1 to **24.12.2** on 2024-12-14
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.22.0 to **1.22.1** on 2024-12-14
+  - [checkstyle](https://checkstyle.org/) from 10.20.2 to **10.21.0** on 2024-12-14
+  - [ruff](https://github.com/astral-sh/ruff) from 0.8.2 to **0.8.3** on 2024-12-14
+  - [syft](https://github.com/anchore/syft) from 1.18.0 to **1.18.1** on 2024-12-14
+  - [rubocop](https://rubocop.org/) from 1.69.1 to **1.69.2** on 2024-12-14
+  - [v8r](https://github.com/chris48s/v8r) from 4.2.0 to **4.2.1** on 2024-12-14
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.85.0 to **3.86.1** on 2024-12-14
+  - [cljstyle](https://github.com/greglook/cljstyle) from 0.15.0 to **0.17.642** on 2024-12-15
+  - [stylelint](https://stylelint.io) from 16.11.0 to **16.12.0** on 2024-12-15
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.16.1 to **8.17.0** on 2024-12-15
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.10.1 to **1.10.2** on 2024-12-16
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.69.9 to **0.69.13** on 2024-12-16
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.22.1 to **1.22.2** on 2024-12-16
+  - [checkov](https://www.checkov.io/) from 3.2.334 to **3.2.336** on 2024-12-16
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.17.0 to **8.17.1** on 2024-12-16
+  - [phpstan](https://phpstan.org/) from 2.0.3 to **2.0.4** on 2024-12-17
+  - [checkov](https://www.checkov.io/) from 3.2.336 to **3.2.339** on 2024-12-17
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.390 to **1.1.391** on 2024-12-18
+  - [checkov](https://www.checkov.io/) from 3.2.339 to **3.2.341** on 2024-12-18
+  - [checkov](https://www.checkov.io/) from 3.2.341 to **3.2.342** on 2024-12-18
+  - [sqlfluff](https://www.sqlfluff.com/) from 3.2.5 to **3.3.0** on 2024-12-18
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.13.0 to **1.14.0** on 2024-12-20
+  - [ruff](https://github.com/astral-sh/ruff) from 0.8.3 to **0.8.4** on 2024-12-20
+  - [checkov](https://www.checkov.io/) from 3.2.342 to **3.2.343** on 2024-12-20
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.86.1 to **3.87.1** on 2024-12-20
+  - [lychee](https://lychee.cli.rs) from 0.17.0 to **0.18.0** on 2024-12-20
+  - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.21.2 to **8.22.0** on 2024-12-21
+  - [checkov](https://www.checkov.io/) from 3.2.343 to **3.2.344** on 2024-12-21
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.87.1 to **3.88.0** on 2024-12-22
+  - [djlint](https://djlint.com/) from 1.36.3 to **1.36.4** on 2024-12-24
+  - [pylint](https://pylint.readthedocs.io) from 3.3.2 to **3.3.3** on 2024-12-24
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.58.0 to **0.58.1** on 2024-12-24
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.58.0 to **0.58.1** on 2024-12-24
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.25.5 to **8.26.0** on 2024-12-24
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.10.2 to **1.10.3** on 2024-12-24
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.69.13 to **0.71.1** on 2024-12-24
+  - [csharpier](https://csharpier.com/) from 0.30.3 to **0.30.4** on 2024-12-30
+  - [checkstyle](https://checkstyle.org/) from 10.21.0 to **10.21.1** on 2024-12-30
+  - [pmd](https://pmd.github.io/) from 7.8.0 to **7.9.0** on 2024-12-30
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.22.2 to **1.22.3** on 2024-12-30
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.14.0 to **1.14.1** on 2024-12-30
+  - [actionlint](https://rhysd.github.io/actionlint/) from 1.7.4 to **1.7.5** on 2024-12-31
+  - [checkov](https://www.checkov.io/) from 3.2.344 to **3.2.345** on 2024-12-31
+  - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.22.0 to **8.22.1** on 2024-12-31
+  - [phpstan](https://phpstan.org/) from 2.0.4 to **2.1.0** on 2024-12-31
+  - [golangci-lint](https://golangci-lint.run/) from 1.62.2 to **1.63.1** on 2025-01-01
+  - [checkov](https://www.checkov.io/) from 3.2.345 to **3.2.346** on 2025-01-01
 <!-- linter-versions-end -->
 
 ## [v8.3.0] - 2024-11-23

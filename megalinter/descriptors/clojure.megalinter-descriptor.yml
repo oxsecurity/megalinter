@@ -89,8 +89,6 @@ linters:
 
     # cljstyle
   - linter_name: cljstyle
-    disabled: true
-    disabled_reason: "Bug on cljstyle on alpine linux: https://github.com/greglook/cljstyle/issues/104"
     linter_url: https://github.com/greglook/cljstyle
     linter_repo: https://github.com/greglook/cljstyle
     linter_rules_url: https://github.com/greglook/cljstyle/blob/main/doc/configuration.md#format-rules
@@ -110,13 +108,13 @@ linters:
     examples:
       - "cljstyle check"
       - "cljstyle fix"
-      - "clj-kondo fix myfile.clj path/to/myfile.clj"
+      - "cljstyle fix myfile.clj path/to/myfile.clj"
     install:
       dockerfile:
         - |
           RUN curl --retry 5 --retry-delay 5 -sLO https://raw.githubusercontent.com/greglook/cljstyle/main/util/install-cljstyle \
               && chmod +x install-cljstyle \
-              && ./install-cljstyle
+              && ./install-cljstyle --static
     ide:
       emacs:
         - name: cljstyle-mode

@@ -9,7 +9,7 @@ description: How to use terragrunt (configure, ignore files, ignore errors, help
 
 ## terragrunt documentation
 
-- Version in MegaLinter: **0.69.1**
+- Version in MegaLinter: **0.71.1**
 - Visit [Official Web Site](https://terragrunt.gruntwork.io){target=_blank}
 - See [How to configure terragrunt rules](https://terragrunt.gruntwork.io/docs/getting-started/configuration/#terragrunt-configuration-file){target=_blank}
 
@@ -47,7 +47,7 @@ This linter is available in the following flavors
 |                                                                         <!-- -->                                                                         | Flavor                                                     | Description                                     | Embedded linters |                                                                                                                                                                                           Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------|:------------------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)       | Default MegaLinter Flavor                       |       124        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)     | MegaLinter for the most commonly used languages |        83        |     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)     | MegaLinter for the most commonly used languages |        84        |     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://megalinter.io/beta/flavors/security/)   | Optimized for security                          |        24        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://megalinter.io/beta/flavors/terraform/) | Optimized for TERRAFORM based projects          |        54        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform) |
 
@@ -100,6 +100,8 @@ COMMANDS:
    *                      Terragrunt forwards all other commands directly to Terraform
 
 GLOBAL OPTIONS:
+   --experiment value                                Enables specific experiments. For a list of available experiments, see https://terragrunt.gruntwork.io/docs/reference/experiment-mode . [$TERRAGRUNT_EXPERIMENT]
+   --experiment-mode                                 Enables experiment mode for Terragrunt. For more information, see https://terragrunt.gruntwork.io/docs/reference/experiment-mode . [$TERRAGRUNT_EXPERIMENT_MODE]
    --feature value                                   Set feature flags for the HCL code. [$TERRAGRUNT_FEATURE]
    --strict-control value                            Enables specific strict controls. For a list of available controls, see https://terragrunt.gruntwork.io/docs/reference/strict-mode . [$TERRAGRUNT_STRICT_CONTROL]
    --strict-mode                                     Enables strict mode for Terragrunt. For more information, see https://terragrunt.gruntwork.io/docs/reference/strict-mode . [$TERRAGRUNT_STRICT_MODE]
@@ -125,6 +127,7 @@ GLOBAL OPTIONS:
    --terragrunt-include-external-dependencies        *-all commands will include external dependencies [$TERRAGRUNT_INCLUDE_EXTERNAL_DEPENDENCIES]
    --terragrunt-log-custom-format value              Set the custom log formatting [$TERRAGRUNT_LOG_CUSTOM_FORMAT]
    --terragrunt-log-disable                          Disable logging [$TERRAGRUNT_LOG_DISABLE]
+   --terragrunt-log-disable-error-summary            Skip error summary at the end of the command. [$TERRAGRUNT_LOG_DISABLE_ERROR_SUMMARY]
    --terragrunt-log-format value                     Set the log format [$TERRAGRUNT_LOG_FORMAT]
    --terragrunt-log-level value                      Sets the logging level for Terragrunt. Supported levels: stderr, stdout, error, warn, info, debug, trace (default: info) [$TERRAGRUNT_LOG_LEVEL]
    --terragrunt-log-show-abs-paths                   Show absolute paths in logs [$TERRAGRUNT_LOG_SHOW_ABS_PATHS]
@@ -147,16 +150,13 @@ GLOBAL OPTIONS:
    --terragrunt-source-map value                     Replace any source URL (including the source URL of a config pulled in with dependency blocks) that has root source with dest. [$TERRAGRUNT_SOURCE_MAP]
    --terragrunt-source-update                        Delete the contents of the temporary folder to clear out any old, cached source code before downloading new source code into it. [$TERRAGRUNT_SOURCE_UPDATE]
    --terragrunt-strict-include                       If flag is set, only modules under the directories passed in with '--terragrunt-include-dir' will be included. [$TERRAGRUNT_STRICT_INCLUDE]
-   --terragrunt-tf-logs-to-json                      If specified, Terragrunt will wrap Terraform stdout and stderr in JSON. [$TERRAGRUNT_TF_JSON_LOG]
    --terragrunt-tfpath value                         Path to the Terraform binary. Default is tofu (on PATH). (default: terraform) [$TERRAGRUNT_TFPATH]
    --terragrunt-use-partial-parse-config-cache       Enables caching of includes during partial parsing operations. Will also be used for the --terragrunt-iam-role option if provided. [$TERRAGRUNT_USE_PARTIAL_PARSE_CONFIG_CACHE]
    --terragrunt-working-dir value                    The path to the directory of Terragrunt configurations. Default is current directory. [$TERRAGRUNT_WORKING_DIR]
    --help, -h                                        Show help
    --version, -v                                     Show terragrunt version
-   --terragrunt-disable-log-formatting               If specified, logs will be displayed in key/value format. By default, logs are formatted in a human readable format. [$TERRAGRUNT_DISABLE_LOG_FORMATTING]
-   --terragrunt-json-log                             If specified, Terragrunt will output its logs in JSON format. [$TERRAGRUNT_JSON_LOG]
 
-VERSION: v0.69.1
+VERSION: v0.71.1
 
 AUTHOR: Gruntwork <www.gruntwork.io>
 ```
@@ -166,7 +166,7 @@ AUTHOR: Gruntwork <www.gruntwork.io>
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=docker depName=alpine/terragrunt
-ARG TERRAFORM_TERRAGRUNT_VERSION=1.9.8
+ARG TERRAFORM_TERRAGRUNT_VERSION=1.10.3
 FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} AS terragrunt
 COPY --link --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
 ```

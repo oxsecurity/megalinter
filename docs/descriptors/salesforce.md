@@ -35,11 +35,11 @@ description: sfdx-scanner-apex, sfdx-scanner-aura, sfdx-scanner-lwc, lightning-f
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=@salesforce/cli
-ARG SALESFORCE_CLI_VERSION=2.67.7
+ARG SALESFORCE_CLI_VERSION=2.70.7
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
-ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.9.4
+ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.9.10
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=5.8.1
+ARG SFDX_HARDIS_VERSION=5.10.1
 ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 RUN sf plugins install @salesforce/plugin-packaging@${SALESFORCE_PLUGIN_PACKAGING_VERSION} \
@@ -50,6 +50,7 @@ ENV SF_AUTOUPDATE_DISABLE=true SF_CLI_DISABLE_AUTOUPDATE=true
 ```
 
 - APK packages (Linux):
+  - [coreutils](https://pkgs.alpinelinux.org/packages?branch=edge&name=coreutils)
   - [openjdk21](https://pkgs.alpinelinux.org/packages?branch=edge&name=openjdk21)
 - NPM packages (node.js):
   - [@salesforce/cli@${SALESFORCE_CLI_VERSION}](https://www.npmjs.com/package/@salesforce/cli/v/${SALESFORCE_CLI_VERSION})

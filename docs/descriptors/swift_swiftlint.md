@@ -11,8 +11,8 @@ description: How to use swiftlint (configure, ignore files, ignore errors, help 
 
 - Version in MegaLinter: **0.57.1**
 - Visit [Official Web Site](https://github.com/realm/SwiftLint#readme){target=_blank}
-- Docker image: [norionomura/swiftlint:latest](https://hub.docker.com/r/norionomura/swiftlint){target=_blank}
-  - arguments: `-v {{WORKSPACE}}:/tmp/lint:rw`
+- Docker image: [ghcr.io/realm/swiftlint:latest](https://hub.docker.com/r/ghcr.io/realm/swiftlint){target=_blank}
+  - arguments: `-v {{WORKSPACE}}:/tmp/lint:rw -w /tmp/lint`
 - See [How to configure swiftlint rules](https://github.com/realm/SwiftLint#configuration){target=_blank}
 - See [How to disable swiftlint rules in files](https://github.com/realm/SwiftLint#disable-rules-in-code){target=_blank}
 - See [Index of problems detected by swiftlint](https://realm.github.io/SwiftLint/rule-directory.html){target=_blank}
@@ -60,7 +60,7 @@ This linter is available in the following flavors
 |                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                     | Embedded linters |                                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       124        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        83        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        84        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
 |        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/swift.ico" alt="" height="32px" class="megalinter-icon"></a>        | [swift](https://megalinter.io/beta/flavors/swift/)     | Optimized for SWIFT based projects              |        50        |     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-swift/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-swift) |
 
 ## Behind the scenes
@@ -82,11 +82,11 @@ swiftlint is called once on the whole project directory (`project` CLI lint mode
 ### Example calls
 
 ```shell
-docker run -v /tmp/lint:/tmp/lint:rw norionomura/swiftlint:latest swiftlint lint --path /tmp/lint --strict
+docker run -v /tmp/lint:/tmp/lint:rw ghcr.io/realm/swiftlint:latest swiftlint --strict
 ```
 
 ```shell
-docker run -v /tmp/lint:/tmp/lint:rw norionomura/swiftlint:latest swiftlint --fix --path /tmp/lint --strict
+docker run -v /tmp/lint:/tmp/lint:rw ghcr.io/realm/swiftlint:latest swiftlint --fix --strict
 ```
 
 

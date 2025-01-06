@@ -66,12 +66,12 @@ This linter is available in the following flavors
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------|:---------------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)               | Default MegaLinter Flavor                                |       124        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 |        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/c_cpp.ico" alt="" height="32px" class="megalinter-icon"></a>        | [c_cpp](https://megalinter.io/beta/flavors/c_cpp/)                 | Optimized for pure C/C++ projects                        |        54        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-c_cpp/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-c_cpp) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)             | MegaLinter for the most commonly used languages          |        83        |             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)             | MegaLinter for the most commonly used languages          |        84        |             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
 |    <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/documentation.ico" alt="" height="32px" class="megalinter-icon"></a>    | [documentation](https://megalinter.io/beta/flavors/documentation/) | MegaLinter for documentation projects                    |        49        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-documentation/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-documentation) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/)               | Optimized for C, C++, C# or VB based projects            |        62        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/)         | Optimized for C, C++, C# or VB based projects with JS/TS |        71        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
 |         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a>          | [go](https://megalinter.io/beta/flavors/go/)                       | Optimized for GO based projects                          |        51        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-go/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-go) |
-|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.io/beta/flavors/java/)                   | Optimized for JAVA based projects                        |        52        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.io/beta/flavors/java/)                   | Optimized for JAVA based projects                        |        53        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
 |     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.io/beta/flavors/javascript/)       | Optimized for JAVASCRIPT or TYPESCRIPT based projects    |        59        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript) |
 |         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://megalinter.io/beta/flavors/php/)                     | Optimized for PHP based projects                         |        54        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-php) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)               | Optimized for PYTHON based projects                      |        62        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
@@ -148,9 +148,13 @@ OPTIONS
            Note that this mode is experimental and not guaranteed to function
            properly.
 
-       --allow-dynamic-dependency-resolution
-           Experimental: allow resolving dependencies dynamically by
-           communicating with package managers during the scan.
+       --allow-local-builds
+           Experimental: allow building projects contained in the repository.
+           This allows Semgrep to identify dependencies and dependency
+           relationships when lockfiles are not present or are insufficient.
+           However, building code may inherently require the execution of
+           code contained in the scanned project or in its dependencies,
+           which is a security risk.
 
        --allow-untrusted-validators
            Allows running rules with validators from origins other than
@@ -369,11 +373,6 @@ OPTIONS
        --no-dryrun
            negates --dryrun
 
-       --no-dynamic-dependency-resolution
-           Experimental: disable resolving dependencies dynamically by
-           communicating with package managers during the scan. This is the
-           default, so this flag currently has no effect.
-
        --no-error
            negates --error
 
@@ -439,22 +438,31 @@ OPTIONS
            <undocumented>
 
        --project-root=VAL
-           The project root for gitignore and semgrepignore purposes is
-           detected automatically from the presence of a .git/ directory in
-           the current directory or one of its parents. If not found, the
-           current directory is used as the project root. This option forces
-           a specific directory to be the project root. This is useful for
-           testing or for restoring compatibility with older semgrep
-           implementations that only looked for a .semgrepignore file in the
-           current directory. REQUIRES --experimental
+           Semgrep normally determines the type of project (git or novcs) and
+           the project root automatically. The project root is then used to
+           locate and use '.gitignore' and '.semgrepignore' files which
+           determine target files that should be ignored by semgrep. This
+           option forces the project root to be a specific folder and assumes
+           a local project without version control (novcs). This option is
+           useful to ensure the '.semgrepignore' file that may exist at the
+           project root is consulted when the scanning root is not the
+           current folder '.'. A valid project root must be a folder (path
+           referencing a directory) whose physical path is a prefix of the
+           physical path of the scanning roots passed on the command line.
+           For example, the command 'semgrep scan --project-root . src' is
+           valid if '.' is '/home/me' and 'src' is a directory or a symbolic
+           link to a '/home/me/sources' directory or a symbolic link to a
+           'sources' directory but not if it is a symbolic link to a
+           directory '/var/sources' (assuming '/var' is not a symbolic link).
+           REQUIRES --experimental
 
        -q, --quiet
            Only output findings.
 
        --remote=VAL
-           Remote will quickly checkout and scan a remote git repository of
+           Remote will quickly check out and scan a remote git repository of
            the format "http[s]://<WEBSITE>/.../<REPO>.git". Must be run with
-           --pro Incompatible with --project-root. Note this requires an
+           --pro. Incompatible with --project-root. Note this requires an
            empty CWD as this command will clone the repository into the CWD.
            REQUIRES --experimental
 
@@ -540,16 +548,12 @@ OPTIONS
            internal use and may be changed or removed wihtout warning.
 
        --use-git-ignore
-           Skip files ignored by git. Scanning starts from the root folder
-           specified on the Semgrep command line. Normally, if the scanning
-           root is within a git repository, only the tracked files and the
-           new files would be scanned. Git submodules and git- ignored files
-           would normally be skipped. --no-git-ignore will disable git-aware
-           filtering. Setting this flag does nothing if the scanning root is
-           not in a git repository.
-
-       --use-osemgrep-sarif
-           Output results using osemgrep.
+           '--no-git-ignore' causes semgrep to not call 'git' and not consult
+           '.gitignore' files to determine which files semgrep should scan.
+           As a result of '--no-git-ignore', gitignored files and git
+           submodules will be scanned. This flag has no effect if the
+           scanning root is not in a git repository. '--use-git-ignore' is
+           semgrep's default behavior.
 
        -v, --verbose
            Show more details about what rules are running, which files failed

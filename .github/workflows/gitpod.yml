@@ -12,6 +12,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-24.04
+    env:
+      # renovate: datasource=github-releases depName=astral-sh/uv
+      UV_VERSION: 0.5.7
 
     steps:
       - name: Set TERM environment variable
@@ -33,15 +36,15 @@ jobs:
           pip cache purge
 
       - run: |
-          curl  -LsSf https://astral.sh/uv/install.sh | sh
-          source "$HOME/.cargo/env"
+          # Show available shell options
+          curl -LsSf https://astral.sh/uv/install.sh | sh -s -- --help
+          curl -LsSf "https://astral.sh/uv/${UV_VERSION}/install.sh" | sh -s -- -v
 
       - name: Install dependencies (uv)
         run: make bootstrap --debug
 
       - name: Run Gitpod tests
         uses: nick-invision/retry@v3
-        continue-on-error: true  # Temporary until uv install is fixed (TODO: fix ^^)
         with:
           max_attempts: 3
           timeout_minutes: 10

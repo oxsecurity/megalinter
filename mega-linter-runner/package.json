@@ -98,7 +98,7 @@
   "devDependencies": {
     "assert": "^2.1.0",
     "eslint": "^9.0.0",
-    "mocha": "^10.2.0"
+    "mocha": "^11.0.0"
   },
   "resolutions": {
     "semver": "7.6.3"
