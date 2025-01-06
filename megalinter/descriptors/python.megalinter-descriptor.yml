@@ -47,6 +47,11 @@ linters:
   - linter_name: black
     name: PYTHON_BLACK
     is_formatter: true
+    activation_rules:
+      - type: variable
+        variable: PYTHON_DEFAULT_STYLE
+        expected_value: black
+        default_value: black
     linter_url: https://black.readthedocs.io/en/stable/
     linter_repo: https://github.com/psf/black
     linter_speed: 3
@@ -384,10 +389,15 @@ linters:
         - name: Ruff
           url: https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff
 
-  # ruff
+  # ruff fmt
   - linter_name: ruff-format
     name: PYTHON_RUFF_FORMAT
     is_formatter: true
+    activation_rules:
+      - type: variable
+        variable: PYTHON_DEFAULT_STYLE
+        expected_value: ruff
+        default_value: black
     can_output_sarif: true
     linter_text: |
       An extremely fast Python linter, written in Rust. Configured for formatting only.
@@ -416,7 +426,6 @@ linters:
       - sarif
       - --output-file
       - "{{SARIF_OUTPUT_FILE}}"
-    test_folder: python_ruff
     examples:
       - "ruff format --check myfile.py myfile2.py"
       - "ruff format --config .ruff.toml myfile.py myfile2.py"

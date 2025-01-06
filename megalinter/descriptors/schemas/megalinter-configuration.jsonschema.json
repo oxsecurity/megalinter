@@ -14485,6 +14485,20 @@
       "title": "PYTHON_BLACK: Unsecured env variables",
       "type": "array"
     },
+    "PYTHON_DEFAULT_STYLE": {
+      "$id": "#/properties/PYTHON_DEFAULT_STYLE",
+      "description": "Style of python formatting to apply",
+      "enum": [
+        "black",
+        "ruff"
+      ],
+      "examples": [
+        "black",
+        "ruff"
+      ],
+      "title": "Python default style",
+      "type": "string"
+    },
     "PYTHON_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/PYTHON_FILTER_REGEX_EXCLUDE",
       "title": "Excluding regex filter for PYTHON descriptor",
