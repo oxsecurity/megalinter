@@ -5,32 +5,32 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<meta content="What you can do and can not do with MegaLinter" name="description"/>
+<meta content="How to use ruff-format (configure, ignore files, ignore errors, help &amp; version documentations) to analyze PYTHON files" name="description"/>
 <meta content="Nicolas Vuillamy" name="author"/>
-<link href="https://megalinter.io/beta/license-explanations/" rel="canonical"/>
-<link href="../license/" rel="prev"/>
-<link href="../CHANGELOG/" rel="next"/>
-<link href="../assets/images/mega-linter-square.png" rel="icon"/>
+<link href="https://megalinter.io/beta/descriptors/python_ruff_format/" rel="canonical"/>
+<link href="../python_ruff/" rel="prev"/>
+<link href="../r/" rel="next"/>
+<link href="../../assets/images/mega-linter-square.png" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-9.5.49" name="generator"/>
-<title>License explanation - MegaLinter by OX Security</title>
-<link href="../assets/stylesheets/main.6f8fc17f.min.css" rel="stylesheet"/>
-<link href="../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
+<title>ruff-format configuration in MegaLinter - MegaLinter by OX Security</title>
+<link href="../../assets/stylesheets/main.6f8fc17f.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Satoshi,+sans-serif:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
 <style>:root{--md-text-font:"Satoshi, sans-serif";--md-code-font:"Roboto Mono"}</style>
-<link href="../stylesheets/extra.css" rel="stylesheet"/>
-<script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<link href="../../stylesheets/extra.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <meta content="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-logo.png" name="twitter:image:src">
 <meta content="@nvuillam" name="twitter:site">
 <meta content="summary_large_image" name="twitter:card">
-<meta content="License explanation" name="twitter:title">
-<meta content="What you can do and can not do with MegaLinter" name="twitter:description">
+<meta content="ruff-format configuration in MegaLinter" name="twitter:title">
+<meta content="How to use ruff-format (configure, ignore files, ignore errors, help &amp; version documentations) to analyze PYTHON files" name="twitter:description">
 <meta content="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-logo.png" property="og:image"/>
 <meta content="🦙 MegaLinter analyzes 48 languages, 22 formats, 19 tooling formats, excessive copy-pastes and spelling mistakes in your repository sources with a GitHub Action, other CI tools or locally." property="og:image:alt"/>
 <meta content="MegaLinter" property="og:site_name"/>
-<meta content="License explanation" property="og:title"/>
-<meta content="What you can do and can not do with MegaLinter" property="og:description"/>
-</meta></meta></meta></meta></meta><link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+<meta content="ruff-format configuration in MegaLinter" property="og:title"/>
+<meta content="How to use ruff-format (configure, ignore files, ignore errors, help &amp; version documentations) to analyze PYTHON files" property="og:description"/>
+</meta></meta></meta></meta></meta><link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
             html.glightbox-open { overflow: initial; height: 100%; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
@@ -41,13 +41,13 @@
                 body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
                 body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
                 body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
-                </style><script src="../assets/javascripts/glightbox.min.js"></script></head>
+                </style><script src="../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="indigo" data-md-color-primary="white" data-md-color-scheme="default" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#why-agpl-v3-license">
+<a class="md-skip" href="#ruff-format">
           Skip to content
         </a>
 </div>
@@ -57,8 +57,8 @@
 </div>
 <header class="md-header md-header--shadow" data-md-component="header">
 <nav aria-label="Header" class="md-header__inner md-grid">
-<a aria-label="MegaLinter by OX Security" class="md-header__button md-logo" data-md-component="logo" href=".." title="MegaLinter by OX Security">
-<img alt="logo" src="../assets/images/mega-linter-square.png"/>
+<a aria-label="MegaLinter by OX Security" class="md-header__button md-logo" data-md-component="logo" href="../.." title="MegaLinter by OX Security">
+<img alt="logo" src="../../assets/images/mega-linter-square.png"/>
 </a>
 <label class="md-header__button md-icon" for="__drawer">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
@@ -73,7 +73,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              License explanation
+              ruff-format configuration in MegaLinter
             
           </span>
 </div>
@@ -129,8 +129,8 @@
 <div class="md-sidebar__inner">
 <nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
 <label class="md-nav__title" for="__drawer">
-<a aria-label="MegaLinter by OX Security" class="md-nav__button md-logo" data-md-component="logo" href=".." title="MegaLinter by OX Security">
-<img alt="logo" src="../assets/images/mega-linter-square.png"/>
+<a aria-label="MegaLinter by OX Security" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="MegaLinter by OX Security">
+<img alt="logo" src="../../assets/images/mega-linter-square.png"/>
 </a>
     MegaLinter by OX Security
   </label>
@@ -146,14 +146,14 @@
 </div>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="..">
+<a class="md-nav__link" href="../..">
 <span class="md-ellipsis">
     Home
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../quick-start/">
+<a class="md-nav__link" href="../../quick-start/">
 <span class="md-ellipsis">
     Quick Start
   </span>
@@ -174,77 +174,77 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../install-assisted/">
+<a class="md-nav__link" href="../../install-assisted/">
 <span class="md-ellipsis">
     Assisted Installation
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../install-version/">
+<a class="md-nav__link" href="../../install-version/">
 <span class="md-ellipsis">
     Which version to use ?
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../install-github/">
+<a class="md-nav__link" href="../../install-github/">
 <span class="md-ellipsis">
     GitHub Actions
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../install-gitlab/">
+<a class="md-nav__link" href="../../install-gitlab/">
 <span class="md-ellipsis">
     Gitlab CI
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../install-azure/">
+<a class="md-nav__link" href="../../install-azure/">
 <span class="md-ellipsis">
     Azure Pipelines
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../install-bitbucket/">
+<a class="md-nav__link" href="../../install-bitbucket/">
 <span class="md-ellipsis">
     Bitbucket Pipelines
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../install-jenkins/">
+<a class="md-nav__link" href="../../install-jenkins/">
 <span class="md-ellipsis">
     Jenkins
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../install-concourse/">
+<a class="md-nav__link" href="../../install-concourse/">
 <span class="md-ellipsis">
     Concourse CI
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../install-drone/">
+<a class="md-nav__link" href="../../install-drone/">
 <span class="md-ellipsis">
     Drone CI
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../install-docker/">
+<a class="md-nav__link" href="../../install-docker/">
 <span class="md-ellipsis">
     Docker (CLI)
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../install-locally/">
+<a class="md-nav__link" href="../../install-locally/">
 <span class="md-ellipsis">
     Run locally
   </span>
@@ -268,70 +268,70 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../config-file/">
+<a class="md-nav__link" href="../../config-file/">
 <span class="md-ellipsis">
     .mega-linter.yml file
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../config-variables/">
+<a class="md-nav__link" href="../../config-variables/">
 <span class="md-ellipsis">
     Common Variables
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../config-activation/">
+<a class="md-nav__link" href="../../config-activation/">
 <span class="md-ellipsis">
     Activation / Deactivation
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../config-filtering/">
+<a class="md-nav__link" href="../../config-filtering/">
 <span class="md-ellipsis">
     Filtering files
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../config-apply-fixes/">
+<a class="md-nav__link" href="../../config-apply-fixes/">
 <span class="md-ellipsis">
     Apply fixes
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../config-linters/">
+<a class="md-nav__link" href="../../config-linters/">
 <span class="md-ellipsis">
     Linter scopes variables
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../config-precommands/">
+<a class="md-nav__link" href="../../config-precommands/">
 <span class="md-ellipsis">
     Pre-commands
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../config-postcommands/">
+<a class="md-nav__link" href="../../config-postcommands/">
 <span class="md-ellipsis">
     Post-commands
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../config-variables-security/">
+<a class="md-nav__link" href="../../config-variables-security/">
 <span class="md-ellipsis">
     ENV variables security
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../config-cli-lint-mode/">
+<a class="md-nav__link" href="../../config-cli-lint-mode/">
 <span class="md-ellipsis">
     CLI lint mode
   </span>
@@ -340,43 +340,43 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_5" type="checkbox"/>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_5" type="checkbox"/>
 <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
 <span class="md-ellipsis">
     Linters
   </span>
 <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-expanded="false" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
+<nav aria-expanded="true" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
 <label class="md-nav__title" for="__nav_5">
 <span class="md-nav__icon md-icon"></span>
             Linters
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../supported-linters/">
+<a class="md-nav__link" href="../../supported-linters/">
 <span class="md-ellipsis">
     All supported linters
   </span>
 </a>
 </li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_5_2" type="checkbox"/>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_5_2" type="checkbox"/>
 <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
 <span class="md-ellipsis">
     Languages linters
   </span>
 <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-expanded="false" aria-labelledby="__nav_5_2_label" class="md-nav" data-md-level="2">
+<nav aria-expanded="true" aria-labelledby="__nav_5_2_label" class="md-nav" data-md-level="2">
 <label class="md-nav__title" for="__nav_5_2">
 <span class="md-nav__icon md-icon"></span>
             Languages linters
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../supported-linters/#languages">
+<a class="md-nav__link" href="../../supported-linters/#languages">
 <span class="md-ellipsis">
     All language linters
   </span>
@@ -397,28 +397,28 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/bash/">
+<a class="md-nav__link" href="../bash/">
 <span class="md-ellipsis">
     All BASH linters
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/bash_bash_exec/">
+<a class="md-nav__link" href="../bash_bash_exec/">
 <span class="md-ellipsis">
     bash-exec
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/bash_shellcheck/">
+<a class="md-nav__link" href="../bash_shellcheck/">
 <span class="md-ellipsis">
     shellcheck
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/bash_shfmt/">
+<a class="md-nav__link" href="../bash_shfmt/">
 <span class="md-ellipsis">
     shfmt
   </span>
@@ -442,21 +442,21 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/c/">
+<a class="md-nav__link" href="../c/">
 <span class="md-ellipsis">
     All C linters
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/c_cpplint/">
+<a class="md-nav__link" href="../c_cpplint/">
 <span class="md-ellipsis">
     cpplint
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/c_clang_format/">
+<a class="md-nav__link" href="../c_clang_format/">
 <span class="md-ellipsis">
     clang-format
   </span>
@@ -480,21 +480,21 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/clojure/">
+<a class="md-nav__link" href="../clojure/">
 <span class="md-ellipsis">
     All CLOJURE linters
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/clojure_clj_kondo/">
+<a class="md-nav__link" href="../clojure_clj_kondo/">
 <span class="md-ellipsis">
     clj-kondo
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/clojure_cljstyle/">
+<a class="md-nav__link" href="../clojure_cljstyle/">
 <span class="md-ellipsis">
     cljstyle
   </span>
@@ -518,14 +518,14 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/coffee/">
+<a class="md-nav__link" href="../coffee/">
 <span class="md-ellipsis">
     All COFFEE linters
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/coffee_coffeelint/">
+<a class="md-nav__link" href="../coffee_coffeelint/">
 <span class="md-ellipsis">
     coffeelint
   </span>
@@ -549,21 +549,21 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/cpp/">
+<a class="md-nav__link" href="../cpp/">
 <span class="md-ellipsis">
     All C++ (CPP) linters
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/cpp_cpplint/">
+<a class="md-nav__link" href="../cpp_cpplint/">
 <span class="md-ellipsis">
     cpplint
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/cpp_clang_format/">
+<a class="md-nav__link" href="../cpp_clang_format/">
 <span class="md-ellipsis">
     clang-format
   </span>
@@ -587,28 +587,28 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/csharp/">
+<a class="md-nav__link" href="../csharp/">
 <span class="md-ellipsis">
     All C# (CSHARP) linters
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/csharp_dotnet_format/">
+<a class="md-nav__link" href="../csharp_dotnet_format/">
 <span class="md-ellipsis">
     dotnet-format
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/csharp_csharpier/">
+<a class="md-nav__link" href="../csharp_csharpier/">
 <span class="md-ellipsis">
     csharpier
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/csharp_roslynator/">
+<a class="md-nav__link" href="../csharp_roslynator/">
 <span class="md-ellipsis">
     roslynator
   </span>
@@ -632,14 +632,14 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/dart/">
+<a class="md-nav__link" href="../dart/">
 <span class="md-ellipsis">
     All DART linters
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/dart_dartanalyzer/">
+<a class="md-nav__link" href="../dart_dartanalyzer/">
 <span class="md-ellipsis">
     dartanalyzer
   </span>
@@ -663,21 +663,21 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/go/">
+<a class="md-nav__link" href="../go/">
 <span class="md-ellipsis">
     All GO linters
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/go_golangci_lint/">
+<a class="md-nav__link" href="../go_golangci_lint/">
 <span class="md-ellipsis">
     golangci-lint
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/go_revive/">
+<a class="md-nav__link" href="../go_revive/">
 <span class="md-ellipsis">
     revive
   </span>
@@ -701,14 +701,14 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/groovy/">
+<a class="md-nav__link" href="../groovy/">
 <span class="md-ellipsis">
     All GROOVY linters
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/groovy_npm_groovy_lint/">
+<a class="md-nav__link" href="../groovy_npm_groovy_lint/">
 <span class="md-ellipsis">
     npm-groovy-lint
   </span>
@@ -732,21 +732,21 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/java/">
+<a class="md-nav__link" href="../java/">
 <span class="md-ellipsis">
     All JAVA linters
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/java_checkstyle/">
+<a class="md-nav__link" href="../java_checkstyle/">
 <span class="md-ellipsis">
     checkstyle
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/java_pmd/">
+<a class="md-nav__link" href="../java_pmd/">
 <span class="md-ellipsis">
     pmd
   </span>
@@ -770,28 +770,28 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/javascript/">
+<a class="md-nav__link" href="../javascript/">
 <span class="md-ellipsis">
     All JAVASCRIPT linters
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/javascript_eslint/">
+<a class="md-nav__link" href="../javascript_eslint/">
 <span class="md-ellipsis">
     eslint
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/javascript_standard/">
+<a class="md-nav__link" href="../javascript_standard/">
 <span class="md-ellipsis">
     standard
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/javascript_prettier/">
+<a class="md-nav__link" href="../javascript_prettier/">
 <span class="md-ellipsis">
     prettier
   </span>
@@ -815,14 +815,14 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/jsx/">
+<a class="md-nav__link" href="../jsx/">
 <span class="md-ellipsis">
     All JSX linters
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/jsx_eslint/">
+<a class="md-nav__link" href="../jsx_eslint/">
 <span class="md-ellipsis">
     eslint
   </span>
@@ -846,21 +846,21 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/kotlin/">
+<a class="md-nav__link" href="../kotlin/">
 <span class="md-ellipsis">
     All KOTLIN linters
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/kotlin_ktlint/">
+<a class="md-nav__link" href="../kotlin_ktlint/">
 <span class="md-ellipsis">
     ktlint
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/kotlin_detekt/">
+<a class="md-nav__link" href="../kotlin_detekt/">
 <span class="md-ellipsis">
     detekt
   </span>
@@ -884,28 +884,28 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/lua/">
+<a class="md-nav__link" href="../lua/">
 <span class="md-ellipsis">
     All LUA linters
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/lua_luacheck/">
+<a class="md-nav__link" href="../lua_luacheck/">
 <span class="md-ellipsis">
     luacheck
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/lua_selene/">
+<a class="md-nav__link" href="../lua_selene/">
 <span class="md-ellipsis">
     selene
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/lua_stylua/">
+<a class="md-nav__link" href="../lua_stylua/">
 <span class="md-ellipsis">
     stylua
   </span>
@@ -929,14 +929,14 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/makefile/">
+<a class="md-nav__link" href="../makefile/">
 <span class="md-ellipsis">
     All MAKEFILE linters
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/makefile_checkmake/">
+<a class="md-nav__link" href="../makefile_checkmake/">
 <span class="md-ellipsis">
     checkmake
   </span>
@@ -960,14 +960,14 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/perl/">
+<a class="md-nav__link" href="../perl/">
 <span class="md-ellipsis">
     All PERL linters
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/perl_perlcritic/">
+<a class="md-nav__link" href="../perl_perlcritic/">
 <span class="md-ellipsis">
     perlcritic
   </span>
@@ -991,42 +991,42 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/php/">
+<a class="md-nav__link" href="../php/">
 <span class="md-ellipsis">
     All PHP linters
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/php_phpcs/">
+<a class="md-nav__link" href="../php_phpcs/">
 <span class="md-ellipsis">
     phpcs
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/php_phpstan/">
+<a class="md-nav__link" href="../php_phpstan/">
 <span class="md-ellipsis">
     phpstan
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/php_psalm/">
+<a class="md-nav__link" href="../php_psalm/">
 <span class="md-ellipsis">
     psalm
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/php_phplint/">
+<a class="md-nav__link" href="../php_phplint/">
 <span class="md-ellipsis">
     phplint
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/php_php_cs_fixer/">
+<a class="md-nav__link" href="../php_php_cs_fixer/">
 <span class="md-ellipsis">
     php-cs-fixer
   </span>
@@ -1050,21 +1050,21 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/powershell/">
+<a class="md-nav__link" href="../powershell/">
 <span class="md-ellipsis">
     All POWERSHELL linters
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/powershell_powershell/">
+<a class="md-nav__link" href="../powershell_powershell/">
 <span class="md-ellipsis">
     powershell
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/powershell_powershell_formatter/">
+<a class="md-nav__link" href="../powershell_powershell_formatter/">
 <span class="md-ellipsis">
     powershell_formatter
   </span>
@@ -1073,89 +1073,178 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_5_2_20" type="checkbox"/>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_5_2_20" type="checkbox"/>
 <label class="md-nav__link" for="__nav_5_2_20" id="__nav_5_2_20_label" tabindex="0">
 <span class="md-ellipsis">
     PYTHON
   </span>
 <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-expanded="false" aria-labelledby="__nav_5_2_20_label" class="md-nav" data-md-level="3">
+<nav aria-expanded="true" aria-labelledby="__nav_5_2_20_label" class="md-nav" data-md-level="3">
 <label class="md-nav__title" for="__nav_5_2_20">
 <span class="md-nav__icon md-icon"></span>
             PYTHON
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/python/">
+<a class="md-nav__link" href="../python/">
 <span class="md-ellipsis">
     All PYTHON linters
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/python_pylint/">
+<a class="md-nav__link" href="../python_pylint/">
 <span class="md-ellipsis">
     pylint
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/python_black/">
+<a class="md-nav__link" href="../python_black/">
 <span class="md-ellipsis">
     black
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/python_flake8/">
+<a class="md-nav__link" href="../python_flake8/">
 <span class="md-ellipsis">
     flake8
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/python_isort/">
+<a class="md-nav__link" href="../python_isort/">
 <span class="md-ellipsis">
     isort
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/python_bandit/">
+<a class="md-nav__link" href="../python_bandit/">
 <span class="md-ellipsis">
     bandit
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/python_mypy/">
+<a class="md-nav__link" href="../python_mypy/">
 <span class="md-ellipsis">
     mypy
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/python_pyright/">
+<a class="md-nav__link" href="../python_pyright/">
 <span class="md-ellipsis">
     pyright
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/python_ruff/">
+<a class="md-nav__link" href="../python_ruff/">
 <span class="md-ellipsis">
     ruff
   </span>
 </a>
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/python_ruff_format/">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    ruff-format
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
 <span class="md-ellipsis">
     ruff-format
   </span>
 </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ruff-format-documentation">
+<span class="md-ellipsis">
+      ruff-format documentation
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#configuration-in-megalinter">
+<span class="md-ellipsis">
+      Configuration in MegaLinter
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ide-integration">
+<span class="md-ellipsis">
+      IDE Integration
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#megalinter-flavors">
+<span class="md-ellipsis">
+      MegaLinter Flavors
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#behind-the-scenes">
+<span class="md-ellipsis">
+      Behind the scenes
+    </span>
+</a>
+<nav aria-label="Behind the scenes" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#how-are-identified-applicable-files">
+<span class="md-ellipsis">
+      How are identified applicable files
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#how-the-linting-is-performed">
+<span class="md-ellipsis">
+      How the linting is performed
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#example-calls">
+<span class="md-ellipsis">
+      Example calls
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#help-content">
+<span class="md-ellipsis">
+      Help content
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#installation-on-mega-linter-docker-image">
+<span class="md-ellipsis">
+      Installation on mega-linter Docker image
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
 </li>
 </ul>
 </nav>
@@ -1175,14 +1264,14 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/r/">
+<a class="md-nav__link" href="../r/">
 <span class="md-ellipsis">
     All R linters
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/r_lintr/">
+<a class="md-nav__link" href="../r_lintr/">
 <span class="md-ellipsis">
     lintr
   </span>
@@ -1206,14 +1295,14 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/raku/">
+<a class="md-nav__link" href="../raku/">
 <span class="md-ellipsis">
     All RAKU linters
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/raku_raku/">
+<a class="md-nav__link" href="../raku_raku/">
 <span class="md-ellipsis">
     raku
   </span>
@@ -1237,14 +1326,14 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/ruby/">
+<a class="md-nav__link" href="../ruby/">
 <span class="md-ellipsis">
     All RUBY linters
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/ruby_rubocop/">
+<a class="md-nav__link" href="../ruby_rubocop/">
 <span class="md-ellipsis">
     rubocop
   </span>
@@ -1268,14 +1357,14 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/rust/">
+<a class="md-nav__link" href="../rust/">
 <span class="md-ellipsis">
     All RUST linters
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/rust_clippy/">
+<a class="md-nav__link" href="../rust_clippy/">
 <span class="md-ellipsis">
     clippy
   </span>
@@ -1299,35 +1388,35 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/salesforce/">
+<a class="md-nav__link" href="../salesforce/">
 <span class="md-ellipsis">
     All SALESFORCE linters
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/salesforce_sfdx_scanner_apex/">
+<a class="md-nav__link" href="../salesforce_sfdx_scanner_apex/">
 <span class="md-ellipsis">
     sfdx-scanner-apex
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/salesforce_sfdx_scanner_aura/">
+<a class="md-nav__link" href="../salesforce_sfdx_scanner_aura/">
 <span class="md-ellipsis">
     sfdx-scanner-aura
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/salesforce_sfdx_scanner_lwc/">
+<a class="md-nav__link" href="../salesforce_sfdx_scanner_lwc/">
 <span class="md-ellipsis">
     sfdx-scanner-lwc
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/salesforce_lightning_flow_scanner/">
+<a class="md-nav__link" href="../salesforce_lightning_flow_scanner/">
 <span class="md-ellipsis">
     lightning-flow-scanner
   </span>
@@ -1351,14 +1440,14 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/scala/">
+<a class="md-nav__link" href="../scala/">
 <span class="md-ellipsis">
     All SCALA linters
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/scala_scalafix/">
+<a class="md-nav__link" href="../scala_scalafix/">
 <span class="md-ellipsis">
     scalafix
   </span>
@@ -1382,21 +1471,21 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/sql/">
+<a class="md-nav__link" href="../sql/">
 <span class="md-ellipsis">
     All SQL linters
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/sql_sqlfluff/">
+<a class="md-nav__link" href="../sql_sqlfluff/">
 <span class="md-ellipsis">
     sqlfluff
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/sql_tsqllint/">
+<a class="md-nav__link" href="../sql_tsqllint/">
 <span class="md-ellipsis">
     tsqllint
   </span>
@@ -1420,14 +1509,14 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/swift/">
+<a class="md-nav__link" href="../swift/">
 <span class="md-ellipsis">
     All SWIFT linters
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/swift_swiftlint/">
+<a class="md-nav__link" href="../swift_swiftlint/">
 <span class="md-ellipsis">
     swiftlint
   </span>
@@ -1451,14 +1540,14 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/tsx/">
+<a class="md-nav__link" href="../tsx/">
 <span class="md-ellipsis">
     All TSX linters
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/tsx_eslint/">
+<a class="md-nav__link" href="../tsx_eslint/">
 <span class="md-ellipsis">
     eslint
   </span>
@@ -1482,28 +1571,28 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/typescript/">
+<a class="md-nav__link" href="../typescript/">
 <span class="md-ellipsis">
     All TYPESCRIPT linters
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/typescript_eslint/">
+<a class="md-nav__link" href="../typescript_eslint/">
 <span class="md-ellipsis">
     eslint
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/typescript_ts_standard/">
+<a class="md-nav__link" href="../typescript_ts_standard/">
 <span class="md-ellipsis">
     ts-standard
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/typescript_prettier/">
+<a class="md-nav__link" href="../typescript_prettier/">
 <span class="md-ellipsis">
     prettier
   </span>
@@ -1527,14 +1616,14 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/vbdotnet/">
+<a class="md-nav__link" href="../vbdotnet/">
 <span class="md-ellipsis">
     All Visual Basic .NET (VBDOTNET) linters
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/vbdotnet_dotnet_format/">
+<a class="md-nav__link" href="../vbdotnet_dotnet_format/">
 <span class="md-ellipsis">
     dotnet-format
   </span>
@@ -1561,7 +1650,7 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../supported-linters/#formats">
+<a class="md-nav__link" href="../../supported-linters/#formats">
 <span class="md-ellipsis">
     All formats linters
   </span>
@@ -1582,14 +1671,14 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/css/">
+<a class="md-nav__link" href="../css/">
 <span class="md-ellipsis">
     All CSS linters
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/css_stylelint/">
+<a class="md-nav__link" href="../css_stylelint/">
 <span class="md-ellipsis">
     stylelint
   </span>
@@ -1613,14 +1702,14 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/env/">
+<a class="md-nav__link" href="../env/">
 <span class="md-ellipsis">
     All ENV linters
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/env_dotenv_linter/">
+<a class="md-nav__link" href="../env_dotenv_linter/">
 <span class="md-ellipsis">
     dotenv-linter
   </span>
@@ -1644,14 +1733,14 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/graphql/">
+<a class="md-nav__link" href="../graphql/">
 <span class="md-ellipsis">
     All GRAPHQL linters
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/graphql_graphql_schema_linter/">
+<a class="md-nav__link" href="../graphql_graphql_schema_linter/">
 <span class="md-ellipsis">
     graphql-schema-linter
   </span>
@@ -1675,21 +1764,21 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/html/">
+<a class="md-nav__link" href="../html/">
 <span class="md-ellipsis">
     All HTML linters
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/html_djlint/">
+<a class="md-nav__link" href="../html_djlint/">
 <span class="md-ellipsis">
     djlint
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/html_htmlhint/">
+<a class="md-nav__link" href="../html_htmlhint/">
 <span class="md-ellipsis">
     htmlhint
   </span>
@@ -1713,42 +1802,42 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/json/">
+<a class="md-nav__link" href="../json/">
 <span class="md-ellipsis">
     All JSON linters
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/json_jsonlint/">
+<a class="md-nav__link" href="../json_jsonlint/">
 <span class="md-ellipsis">
     jsonlint
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/json_eslint_plugin_jsonc/">
+<a class="md-nav__link" href="../json_eslint_plugin_jsonc/">
 <span class="md-ellipsis">
     eslint-plugin-jsonc
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/json_v8r/">
+<a class="md-nav__link" href="../json_v8r/">
 <span class="md-ellipsis">
     v8r
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/json_prettier/">
+<a class="md-nav__link" href="../json_prettier/">
 <span class="md-ellipsis">
     prettier
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/json_npm_package_json_lint/">
+<a class="md-nav__link" href="../json_npm_package_json_lint/">
 <span class="md-ellipsis">
     npm-package-json-lint
   </span>
@@ -1772,14 +1861,14 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/latex/">
+<a class="md-nav__link" href="../latex/">
 <span class="md-ellipsis">
     All LATEX linters
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/latex_chktex/">
+<a class="md-nav__link" href="../latex_chktex/">
 <span class="md-ellipsis">
     chktex
   </span>
@@ -1803,35 +1892,35 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/markdown/">
+<a class="md-nav__link" href="../markdown/">
 <span class="md-ellipsis">
     All MARKDOWN linters
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/markdown_markdownlint/">
+<a class="md-nav__link" href="../markdown_markdownlint/">
 <span class="md-ellipsis">
     markdownlint
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/markdown_remark_lint/">
+<a class="md-nav__link" href="../markdown_remark_lint/">
 <span class="md-ellipsis">
     remark-lint
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/markdown_markdown_link_check/">
+<a class="md-nav__link" href="../markdown_markdown_link_check/">
 <span class="md-ellipsis">
     markdown-link-check
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/markdown_markdown_table_formatter/">
+<a class="md-nav__link" href="../markdown_markdown_table_formatter/">
 <span class="md-ellipsis">
     markdown-table-formatter
   </span>
@@ -1855,14 +1944,14 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/protobuf/">
+<a class="md-nav__link" href="../protobuf/">
 <span class="md-ellipsis">
     All PROTOBUF linters
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/protobuf_protolint/">
+<a class="md-nav__link" href="../protobuf_protolint/">
 <span class="md-ellipsis">
     protolint
   </span>
@@ -1886,28 +1975,28 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/rst/">
+<a class="md-nav__link" href="../rst/">
 <span class="md-ellipsis">
     All RST linters
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/rst_rst_lint/">
+<a class="md-nav__link" href="../rst_rst_lint/">
 <span class="md-ellipsis">
     rst-lint
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/rst_rstcheck/">
+<a class="md-nav__link" href="../rst_rstcheck/">
 <span class="md-ellipsis">
     rstcheck
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/rst_rstfmt/">
+<a class="md-nav__link" href="../rst_rstfmt/">
 <span class="md-ellipsis">
     rstfmt
   </span>
@@ -1931,14 +2020,14 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/xml/">
+<a class="md-nav__link" href="../xml/">
 <span class="md-ellipsis">
     All XML linters
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/xml_xmllint/">
+<a class="md-nav__link" href="../xml_xmllint/">
 <span class="md-ellipsis">
     xmllint
   </span>
@@ -1962,28 +2051,28 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/yaml/">
+<a class="md-nav__link" href="../yaml/">
 <span class="md-ellipsis">
     All YAML linters
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/yaml_prettier/">
+<a class="md-nav__link" href="../yaml_prettier/">
 <span class="md-ellipsis">
     prettier
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/yaml_yamllint/">
+<a class="md-nav__link" href="../yaml_yamllint/">
 <span class="md-ellipsis">
     yamllint
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/yaml_v8r/">
+<a class="md-nav__link" href="../yaml_v8r/">
 <span class="md-ellipsis">
     v8r
   </span>
@@ -2010,7 +2099,7 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../supported-linters/#tooling-formats">
+<a class="md-nav__link" href="../../supported-linters/#tooling-formats">
 <span class="md-ellipsis">
     All tooling formats linters
   </span>
@@ -2031,14 +2120,14 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/action/">
+<a class="md-nav__link" href="../action/">
 <span class="md-ellipsis">
     All ACTION linters
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/action_actionlint/">
+<a class="md-nav__link" href="../action_actionlint/">
 <span class="md-ellipsis">
     actionlint
   </span>
@@ -2062,14 +2151,14 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/ansible/">
+<a class="md-nav__link" href="../ansible/">
 <span class="md-ellipsis">
     All ANSIBLE linters
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/ansible_ansible_lint/">
+<a class="md-nav__link" href="../ansible_ansible_lint/">
 <span class="md-ellipsis">
     ansible-lint
   </span>
@@ -2093,14 +2182,14 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/api/">
+<a class="md-nav__link" href="../api/">
 <span class="md-ellipsis">
     All API linters
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/api_spectral/">
+<a class="md-nav__link" href="../api_spectral/">
 <span class="md-ellipsis">
     spectral
   </span>
@@ -2124,14 +2213,14 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/arm/">
+<a class="md-nav__link" href="../arm/">
 <span class="md-ellipsis">
     All ARM linters
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/arm_arm_ttk/">
+<a class="md-nav__link" href="../arm_arm_ttk/">
 <span class="md-ellipsis">
     arm-ttk
   </span>
@@ -2155,14 +2244,14 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/bicep/">
+<a class="md-nav__link" href="../bicep/">
 <span class="md-ellipsis">
     All BICEP linters
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/bicep_bicep_linter/">
+<a class="md-nav__link" href="../bicep_bicep_linter/">
 <span class="md-ellipsis">
     bicep_linter
   </span>
@@ -2186,14 +2275,14 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/cloudformation/">
+<a class="md-nav__link" href="../cloudformation/">
 <span class="md-ellipsis">
     All CLOUDFORMATION linters
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/cloudformation_cfn_lint/">
+<a class="md-nav__link" href="../cloudformation_cfn_lint/">
 <span class="md-ellipsis">
     cfn-lint
   </span>
@@ -2217,14 +2306,14 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/dockerfile/">
+<a class="md-nav__link" href="../dockerfile/">
 <span class="md-ellipsis">
     All DOCKERFILE linters
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/dockerfile_hadolint/">
+<a class="md-nav__link" href="../dockerfile_hadolint/">
 <span class="md-ellipsis">
     hadolint
   </span>
@@ -2248,14 +2337,14 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/editorconfig/">
+<a class="md-nav__link" href="../editorconfig/">
 <span class="md-ellipsis">
     All EDITORCONFIG linters
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/editorconfig_editorconfig_checker/">
+<a class="md-nav__link" href="../editorconfig_editorconfig_checker/">
 <span class="md-ellipsis">
     editorconfig-checker
   </span>
@@ -2279,14 +2368,14 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/gherkin/">
+<a class="md-nav__link" href="../gherkin/">
 <span class="md-ellipsis">
     All GHERKIN linters
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/gherkin_gherkin_lint/">
+<a class="md-nav__link" href="../gherkin_gherkin_lint/">
 <span class="md-ellipsis">
     gherkin-lint
   </span>
@@ -2310,28 +2399,28 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/kubernetes/">
+<a class="md-nav__link" href="../kubernetes/">
 <span class="md-ellipsis">
     All KUBERNETES linters
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/kubernetes_kubeconform/">
+<a class="md-nav__link" href="../kubernetes_kubeconform/">
 <span class="md-ellipsis">
     kubeconform
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/kubernetes_helm/">
+<a class="md-nav__link" href="../kubernetes_helm/">
 <span class="md-ellipsis">
     helm
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/kubernetes_kubescape/">
+<a class="md-nav__link" href="../kubernetes_kubescape/">
 <span class="md-ellipsis">
     kubescape
   </span>
@@ -2355,14 +2444,14 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/puppet/">
+<a class="md-nav__link" href="../puppet/">
 <span class="md-ellipsis">
     All PUPPET linters
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/puppet_puppet_lint/">
+<a class="md-nav__link" href="../puppet_puppet_lint/">
 <span class="md-ellipsis">
     puppet-lint
   </span>
@@ -2386,21 +2475,21 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/snakemake/">
+<a class="md-nav__link" href="../snakemake/">
 <span class="md-ellipsis">
     All SNAKEMAKE linters
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/snakemake_snakemake/">
+<a class="md-nav__link" href="../snakemake_snakemake/">
 <span class="md-ellipsis">
     snakemake
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/snakemake_snakefmt/">
+<a class="md-nav__link" href="../snakemake_snakefmt/">
 <span class="md-ellipsis">
     snakefmt
   </span>
@@ -2424,14 +2513,14 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/tekton/">
+<a class="md-nav__link" href="../tekton/">
 <span class="md-ellipsis">
     All TEKTON linters
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/tekton_tekton_lint/">
+<a class="md-nav__link" href="../tekton_tekton_lint/">
 <span class="md-ellipsis">
     tekton-lint
   </span>
@@ -2455,35 +2544,35 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/terraform/">
+<a class="md-nav__link" href="../terraform/">
 <span class="md-ellipsis">
     All TERRAFORM linters
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/terraform_tflint/">
+<a class="md-nav__link" href="../terraform_tflint/">
 <span class="md-ellipsis">
     tflint
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/terraform_terrascan/">
+<a class="md-nav__link" href="../terraform_terrascan/">
 <span class="md-ellipsis">
     terrascan
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/terraform_terragrunt/">
+<a class="md-nav__link" href="../terraform_terragrunt/">
 <span class="md-ellipsis">
     terragrunt
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/terraform_terraform_fmt/">
+<a class="md-nav__link" href="../terraform_terraform_fmt/">
 <span class="md-ellipsis">
     terraform-fmt
   </span>
@@ -2510,7 +2599,7 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../supported-linters/#other">
+<a class="md-nav__link" href="../../supported-linters/#other">
 <span class="md-ellipsis">
     All other linters
   </span>
@@ -2531,14 +2620,14 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/copypaste/">
+<a class="md-nav__link" href="../copypaste/">
 <span class="md-ellipsis">
     All COPYPASTE linters
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/copypaste_jscpd/">
+<a class="md-nav__link" href="../copypaste_jscpd/">
 <span class="md-ellipsis">
     jscpd
   </span>
@@ -2562,105 +2651,105 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/repository/">
+<a class="md-nav__link" href="../repository/">
 <span class="md-ellipsis">
     All REPOSITORY linters
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/repository_checkov/">
+<a class="md-nav__link" href="../repository_checkov/">
 <span class="md-ellipsis">
     checkov
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/repository_devskim/">
+<a class="md-nav__link" href="../repository_devskim/">
 <span class="md-ellipsis">
     devskim
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/repository_dustilock/">
+<a class="md-nav__link" href="../repository_dustilock/">
 <span class="md-ellipsis">
     dustilock
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/repository_git_diff/">
+<a class="md-nav__link" href="../repository_git_diff/">
 <span class="md-ellipsis">
     git_diff
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/repository_gitleaks/">
+<a class="md-nav__link" href="../repository_gitleaks/">
 <span class="md-ellipsis">
     gitleaks
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/repository_grype/">
+<a class="md-nav__link" href="../repository_grype/">
 <span class="md-ellipsis">
     grype
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/repository_kics/">
+<a class="md-nav__link" href="../repository_kics/">
 <span class="md-ellipsis">
     kics
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/repository_ls_lint/">
+<a class="md-nav__link" href="../repository_ls_lint/">
 <span class="md-ellipsis">
     ls-lint
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/repository_secretlint/">
+<a class="md-nav__link" href="../repository_secretlint/">
 <span class="md-ellipsis">
     secretlint
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/repository_semgrep/">
+<a class="md-nav__link" href="../repository_semgrep/">
 <span class="md-ellipsis">
     semgrep
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/repository_syft/">
+<a class="md-nav__link" href="../repository_syft/">
 <span class="md-ellipsis">
     syft
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/repository_trivy/">
+<a class="md-nav__link" href="../repository_trivy/">
 <span class="md-ellipsis">
     trivy
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/repository_trivy_sbom/">
+<a class="md-nav__link" href="../repository_trivy_sbom/">
 <span class="md-ellipsis">
     trivy-sbom
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/repository_trufflehog/">
+<a class="md-nav__link" href="../repository_trufflehog/">
 <span class="md-ellipsis">
     trufflehog
   </span>
@@ -2684,35 +2773,35 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/spell/">
+<a class="md-nav__link" href="../spell/">
 <span class="md-ellipsis">
     All SPELL linters
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/spell_cspell/">
+<a class="md-nav__link" href="../spell_cspell/">
 <span class="md-ellipsis">
     cspell
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/spell_proselint/">
+<a class="md-nav__link" href="../spell_proselint/">
 <span class="md-ellipsis">
     proselint
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/spell_vale/">
+<a class="md-nav__link" href="../spell_vale/">
 <span class="md-ellipsis">
     vale
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../descriptors/spell_lychee/">
+<a class="md-nav__link" href="../spell_lychee/">
 <span class="md-ellipsis">
     lychee
   </span>
@@ -2742,119 +2831,119 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../reporters/">
+<a class="md-nav__link" href="../../reporters/">
 <span class="md-ellipsis">
     All reporters
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../reporters/TextReporter/">
+<a class="md-nav__link" href="../../reporters/TextReporter/">
 <span class="md-ellipsis">
     Text files
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../reporters/GitHubCommentReporter/">
+<a class="md-nav__link" href="../../reporters/GitHubCommentReporter/">
 <span class="md-ellipsis">
     GitHub Pull Request comments
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../reporters/GitlabCommentReporter/">
+<a class="md-nav__link" href="../../reporters/GitlabCommentReporter/">
 <span class="md-ellipsis">
     Gitlab Merge Request comments
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../reporters/AzureCommentReporter/">
+<a class="md-nav__link" href="../../reporters/AzureCommentReporter/">
 <span class="md-ellipsis">
     Azure Pull Request comments
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../reporters/BitbucketCommentReporter/">
+<a class="md-nav__link" href="../../reporters/BitbucketCommentReporter/">
 <span class="md-ellipsis">
     Bitbucket Pull Request comments
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../reporters/ApiReporter/">
+<a class="md-nav__link" href="../../reporters/ApiReporter/">
 <span class="md-ellipsis">
     API (Grafana)
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../reporters/GitHubStatusReporter/">
+<a class="md-nav__link" href="../../reporters/GitHubStatusReporter/">
 <span class="md-ellipsis">
     GitHub Status
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../reporters/SarifReporter/">
+<a class="md-nav__link" href="../../reporters/SarifReporter/">
 <span class="md-ellipsis">
     SARIF Reporter
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../reporters/UpdatedSourcesReporter/">
+<a class="md-nav__link" href="../../reporters/UpdatedSourcesReporter/">
 <span class="md-ellipsis">
     Updated sources
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../reporters/EmailReporter/">
+<a class="md-nav__link" href="../../reporters/EmailReporter/">
 <span class="md-ellipsis">
     E-mail
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../reporters/FileIoReporter/">
+<a class="md-nav__link" href="../../reporters/FileIoReporter/">
 <span class="md-ellipsis">
     File.io
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../reporters/ConfigReporter/">
+<a class="md-nav__link" href="../../reporters/ConfigReporter/">
 <span class="md-ellipsis">
     IDE Configuration
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../reporters/TapReporter/">
+<a class="md-nav__link" href="../../reporters/TapReporter/">
 <span class="md-ellipsis">
     TAP files
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../reporters/ConsoleReporter/">
+<a class="md-nav__link" href="../../reporters/ConsoleReporter/">
 <span class="md-ellipsis">
     Console
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../reporters/JsonReporter/">
+<a class="md-nav__link" href="../../reporters/JsonReporter/">
 <span class="md-ellipsis">
     JSON
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../reporters/MarkdownSummaryReporter/">
+<a class="md-nav__link" href="../../reporters/MarkdownSummaryReporter/">
 <span class="md-ellipsis">
     Markdown Summary
   </span>
@@ -2878,140 +2967,140 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../flavors/">
+<a class="md-nav__link" href="../../flavors/">
 <span class="md-ellipsis">
     All flavors
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../flavors/c_cpp/">
+<a class="md-nav__link" href="../../flavors/c_cpp/">
 <span class="md-ellipsis">
     c_cpp
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../flavors/ci_light/">
+<a class="md-nav__link" href="../../flavors/ci_light/">
 <span class="md-ellipsis">
     ci_light
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../flavors/cupcake/">
+<a class="md-nav__link" href="../../flavors/cupcake/">
 <span class="md-ellipsis">
     cupcake
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../flavors/documentation/">
+<a class="md-nav__link" href="../../flavors/documentation/">
 <span class="md-ellipsis">
     documentation
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../flavors/dotnet/">
+<a class="md-nav__link" href="../../flavors/dotnet/">
 <span class="md-ellipsis">
     dotnet
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../flavors/dotnetweb/">
+<a class="md-nav__link" href="../../flavors/dotnetweb/">
 <span class="md-ellipsis">
     dotnetweb
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../flavors/formatters/">
+<a class="md-nav__link" href="../../flavors/formatters/">
 <span class="md-ellipsis">
     formatters
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../flavors/go/">
+<a class="md-nav__link" href="../../flavors/go/">
 <span class="md-ellipsis">
     go
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../flavors/java/">
+<a class="md-nav__link" href="../../flavors/java/">
 <span class="md-ellipsis">
     java
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../flavors/javascript/">
+<a class="md-nav__link" href="../../flavors/javascript/">
 <span class="md-ellipsis">
     javascript
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../flavors/php/">
+<a class="md-nav__link" href="../../flavors/php/">
 <span class="md-ellipsis">
     php
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../flavors/python/">
+<a class="md-nav__link" href="../../flavors/python/">
 <span class="md-ellipsis">
     python
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../flavors/ruby/">
+<a class="md-nav__link" href="../../flavors/ruby/">
 <span class="md-ellipsis">
     ruby
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../flavors/rust/">
+<a class="md-nav__link" href="../../flavors/rust/">
 <span class="md-ellipsis">
     rust
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../flavors/salesforce/">
+<a class="md-nav__link" href="../../flavors/salesforce/">
 <span class="md-ellipsis">
     salesforce
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../flavors/security/">
+<a class="md-nav__link" href="../../flavors/security/">
 <span class="md-ellipsis">
     security
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../flavors/swift/">
+<a class="md-nav__link" href="../../flavors/swift/">
 <span class="md-ellipsis">
     swift
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../flavors/terraform/">
+<a class="md-nav__link" href="../../flavors/terraform/">
 <span class="md-ellipsis">
     terraform
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../flavors-stats/">
+<a class="md-nav__link" href="../../flavors-stats/">
 <span class="md-ellipsis">
     Flavors statistics
   </span>
@@ -3021,70 +3110,70 @@
 </nav>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../mega-linter-runner/">
+<a class="md-nav__link" href="../../mega-linter-runner/">
 <span class="md-ellipsis">
     Run locally
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../articles/">
+<a class="md-nav__link" href="../../articles/">
 <span class="md-ellipsis">
     They talk about MegaLinter
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../used-by-stats/">
+<a class="md-nav__link" href="../../used-by-stats/">
 <span class="md-ellipsis">
     They use MegaLinter
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../all_linters/">
+<a class="md-nav__link" href="../../all_linters/">
 <span class="md-ellipsis">
     List of linters
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../plugins/">
+<a class="md-nav__link" href="../../plugins/">
 <span class="md-ellipsis">
     Plugins
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../special-thanks/">
+<a class="md-nav__link" href="../../special-thanks/">
 <span class="md-ellipsis">
     Special thanks
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../sponsor/">
+<a class="md-nav__link" href="../../sponsor/">
 <span class="md-ellipsis">
     Sponsoring
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../badge/">
+<a class="md-nav__link" href="../../badge/">
 <span class="md-ellipsis">
     Badge
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../mega-linter-vs-super-linter/">
+<a class="md-nav__link" href="../../mega-linter-vs-super-linter/">
 <span class="md-ellipsis">
     MegaLinter vs Super-Linter
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../frequently-asked-questions/">
+<a class="md-nav__link" href="../../frequently-asked-questions/">
 <span class="md-ellipsis">
     FAQ
   </span>
@@ -3105,14 +3194,14 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../how-to-contribute/">
+<a class="md-nav__link" href="../../how-to-contribute/">
 <span class="md-ellipsis">
     How-to Contribute
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../contributing/">
+<a class="md-nav__link" href="../../contributing/">
 <span class="md-ellipsis">
     Contributing Guide
   </span>
@@ -3121,75 +3210,39 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--active md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" id="__nav_19" type="checkbox"/>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_19" type="checkbox"/>
 <label class="md-nav__link" for="__nav_19" id="__nav_19_label" tabindex="0">
 <span class="md-ellipsis">
     License
   </span>
 <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-expanded="true" aria-labelledby="__nav_19_label" class="md-nav" data-md-level="1">
+<nav aria-expanded="false" aria-labelledby="__nav_19_label" class="md-nav" data-md-level="1">
 <label class="md-nav__title" for="__nav_19">
 <span class="md-nav__icon md-icon"></span>
             License
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../license/">
+<a class="md-nav__link" href="../../license/">
 <span class="md-ellipsis">
     AGPL V3 License
   </span>
 </a>
 </li>
-<li class="md-nav__item md-nav__item--active">
-<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
-<label class="md-nav__link md-nav__link--active" for="__toc">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../license-explanations/">
 <span class="md-ellipsis">
     License explanations
   </span>
-<span class="md-nav__icon md-icon"></span>
-</label>
-<a class="md-nav__link md-nav__link--active" href="./">
-<span class="md-ellipsis">
-    License explanations
-  </span>
-</a>
-<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
-<label class="md-nav__title" for="__toc">
-<span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#what-you-can-do">
-<span class="md-ellipsis">
-      What you can do
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#what-you-can-not-do">
-<span class="md-ellipsis">
-      What you can not do
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#what-you-could-do">
-<span class="md-ellipsis">
-      What you could do
-    </span>
 </a>
 </li>
 </ul>
 </nav>
 </li>
-</ul>
-</nav>
-</li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../CHANGELOG/">
+<a class="md-nav__link" href="../../CHANGELOG/">
 <span class="md-ellipsis">
     Changelog
   </span>
@@ -3217,25 +3270,78 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#what-you-can-do">
+<a class="md-nav__link" href="#ruff-format-documentation">
 <span class="md-ellipsis">
-      What you can do
+      ruff-format documentation
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#what-you-can-not-do">
+<a class="md-nav__link" href="#configuration-in-megalinter">
 <span class="md-ellipsis">
-      What you can not do
+      Configuration in MegaLinter
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#what-you-could-do">
+<a class="md-nav__link" href="#ide-integration">
 <span class="md-ellipsis">
-      What you could do
+      IDE Integration
     </span>
 </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#megalinter-flavors">
+<span class="md-ellipsis">
+      MegaLinter Flavors
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#behind-the-scenes">
+<span class="md-ellipsis">
+      Behind the scenes
+    </span>
+</a>
+<nav aria-label="Behind the scenes" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#how-are-identified-applicable-files">
+<span class="md-ellipsis">
+      How are identified applicable files
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#how-the-linting-is-performed">
+<span class="md-ellipsis">
+      How the linting is performed
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#example-calls">
+<span class="md-ellipsis">
+      Example calls
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#help-content">
+<span class="md-ellipsis">
+      Help content
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#installation-on-mega-linter-docker-image">
+<span class="md-ellipsis">
+      Installation on mega-linter Docker image
+    </span>
+</a>
+</li>
+</ul>
+</nav>
 </li>
 </ul>
 </nav>
@@ -3244,26 +3350,250 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<!-- markdownlint-disable MD013 -->
-<h1 id="why-agpl-v3-license">Why AGPL V3 License ?</h1>
-<p>MegaLinter is an open-source and free tool graciously provided to the developer community.</p>
-<p>We don't earn money with MegaLinter, but it takes a lot of time to maintain it, so we want to avoid companies to make money with it by selling software or services without sharing their sources, like it happened in the past with <a href="https://www.elastic.co/blog/why-license-change-aws">ElasticSearch</a> or <a href="https://techcrunch.com/2018/10/16/mongodb-switches-up-its-open-source-license/">MongoDB</a>.</p>
-<h2 id="what-you-can-do">What you can do</h2>
+<!-- markdownlint-disable MD033 MD041 -->
+<!-- @generated by .automation/build.py, please don't update manually -->
+<h1 id="ruff-format">ruff-format</h1>
+<p><a href="https://github.com/astral-sh/ruff"><img alt="GitHub stars" src="https://img.shields.io/github/stars/astral-sh/ruff?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-format-yellow"><img alt="formatter" src="https://shields.io/badge/-format-yellow"/></a> <a href="https://github.com/astral-sh/ruff/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/astral-sh/ruff?sort=semver"/></a> <a href="https://github.com/astral-sh/ruff/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/astral-sh/ruff"/></a> <a href="https://github.com/astral-sh/ruff/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/astral-sh/ruff"/></a> <a href="https://github.com/astral-sh/ruff/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/astral-sh/ruff"/></a></p>
+<p>An extremely fast Python linter, written in Rust. Configured for formatting only.</p>
+<h2 id="ruff-format-documentation">ruff-format documentation</h2>
 <ul>
-<li>Use MegaLinter in public repositories</li>
-<li>Use MegaLinter in private repositories, even commercial ones</li>
-<li>Use MegaLinter to build commercial closed-source applications</li>
-<li>Use MegaLinter on on-premise Git services, like Github Enterprise or Gitlab Community Edition</li>
-<li>Sell professional services to setup and maintain MegaLinter in the repositories of your clients</li>
+<li>Version in MegaLinter: <strong>0.8.6</strong></li>
+<li>Visit <a href="https://github.com/astral-sh/ruff#readme" target="_blank">Official Web Site</a></li>
+<li>See <a href="https://docs.astral.sh/ruff/configuration/" target="_blank">How to configure ruff-format rules</a><ul>
+<li>If custom <code>.ruff.toml</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.ruff.toml" target="_blank">.ruff.toml</a> will be used</li>
 </ul>
-<h2 id="what-you-can-not-do">What you can not do</h2>
+</li>
+<li>See <a href="https://docs.astral.sh/ruff/linter/#error-suppression" target="_blank">How to disable ruff-format rules in files</a></li>
+<li>See <a href="https://docs.astral.sh/ruff/rules/" target="_blank">Index of problems detected by ruff-format</a></li>
+</ul>
+<p><a href="https://github.com/astral-sh/ruff" target="_blank"><img alt="ruff - GitHub" src="https://gh-card.dev/repos/astral-sh/ruff.svg?fullname="/></a></p>
+<h2 id="configuration-in-megalinter">Configuration in MegaLinter</h2>
 <ul>
-<li>Sell MegaLinter</li>
-<li>Expose a closed-source online service that calls MegaLinter in the background</li>
+<li>Enable ruff-format by adding <code>PYTHON_RUFF_FORMAT</code> in <a href="https://megalinter.io/beta/configuration/#activation-and-deactivation">ENABLE_LINTERS variable</a></li>
+<li>Disable ruff-format by adding <code>PYTHON_RUFF_FORMAT</code> in <a href="https://megalinter.io/beta/configuration/#activation-and-deactivation">DISABLE_LINTERS variable</a></li>
 </ul>
-<h2 id="what-you-could-do">What you could do</h2>
-<p>If you have a professional use of MegaLinter, you can be nice and support us by <a href="https://megalinter.io/latest/sponsor/">sponsoring us</a>, and ask your clients to sponsor us too :)</p>
-<p>Any questions ? <a href="https://www.ox.security/contact/">Contact us</a> !</p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PYTHON_DEFAULT_STYLE</td>
+<td>For ruff-format to be active, PYTHON_DEFAULT_STYLE must be <code>ruff</code></td>
+<td><code>black</code></td>
+</tr>
+<tr>
+<td>PYTHON_RUFF_FORMAT_ARGUMENTS</td>
+<td>User custom arguments to add in linter CLI call<br/>Ex: <code>-s --foo "bar"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>PYTHON_RUFF_FORMAT_COMMAND_REMOVE_ARGUMENTS</td>
+<td>User custom arguments to remove from command line before calling the linter<br/>Ex: <code>-s --foo "bar"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>PYTHON_RUFF_FORMAT_FILTER_REGEX_INCLUDE</td>
+<td>Custom regex including filter<br/>Ex: <code>(src\|lib)</code></td>
+<td>Include every file</td>
+</tr>
+<tr>
+<td>PYTHON_RUFF_FORMAT_FILTER_REGEX_EXCLUDE</td>
+<td>Custom regex excluding filter<br/>Ex: <code>(test\|examples)</code></td>
+<td>Exclude no file</td>
+</tr>
+<tr>
+<td>PYTHON_RUFF_FORMAT_CLI_LINT_MODE</td>
+<td>Override default CLI lint mode<br/>- <code>file</code>: Calls the linter for each file<br/>- <code>list_of_files</code>: Call the linter with the list of files as argument<br/>- <code>project</code>: Call the linter from the root of the project</td>
+<td><code>list_of_files</code></td>
+</tr>
+<tr>
+<td>PYTHON_RUFF_FORMAT_FILE_EXTENSIONS</td>
+<td>Allowed file extensions. <code>"*"</code> matches any extension, <code>""</code> matches empty extension. Empty list excludes all files<br/>Ex: <code>[".py", ""]</code></td>
+<td><code>[".py"]</code></td>
+</tr>
+<tr>
+<td>PYTHON_RUFF_FORMAT_FILE_NAMES_REGEX</td>
+<td>File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: <code>["Dockerfile(-.+)?", "Jenkinsfile"]</code></td>
+<td>Include every file</td>
+</tr>
+<tr>
+<td>PYTHON_RUFF_FORMAT_PRE_COMMANDS</td>
+<td>List of bash commands to run before the linter</td>
+<td>None</td>
+</tr>
+<tr>
+<td>PYTHON_RUFF_FORMAT_POST_COMMANDS</td>
+<td>List of bash commands to run after the linter</td>
+<td>None</td>
+</tr>
+<tr>
+<td>PYTHON_RUFF_FORMAT_UNSECURED_ENV_VARIABLES</td>
+<td>List of env variables explicitly not filtered before calling PYTHON_RUFF_FORMAT and its pre/post commands</td>
+<td>None</td>
+</tr>
+<tr>
+<td>PYTHON_RUFF_FORMAT_CONFIG_FILE</td>
+<td>ruff-format configuration file nameUse <code>LINTER_DEFAULT</code> to let the linter find it</td>
+<td><code>.ruff.toml</code></td>
+</tr>
+<tr>
+<td>PYTHON_RUFF_FORMAT_RULES_PATH</td>
+<td>Path where to find linter configuration file</td>
+<td>Workspace folder, then MegaLinter default rules</td>
+</tr>
+<tr>
+<td>PYTHON_RUFF_FORMAT_DISABLE_ERRORS</td>
+<td>Run linter but consider errors as warnings</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>PYTHON_RUFF_FORMAT_DISABLE_ERRORS_IF_LESS_THAN</td>
+<td>Maximum number of errors allowed</td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td>PYTHON_RUFF_FORMAT_CLI_EXECUTABLE</td>
+<td>Override CLI executable</td>
+<td><code>['ruff']</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="ide-integration">IDE Integration</h2>
+<p>Use ruff-format in your favorite IDE to catch errors before MegaLinter !</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><!-- --></th>
+<th>IDE</th>
+<th>Extension Name</th>
+<th style="text-align: center;">Install</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/idea.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/idea.ico"/></a></td>
+<td><a href="https://www.jetbrains.com/products.html#type=ide">IDEA</a></td>
+<td><a href="https://plugins.jetbrains.com/plugin/20574-ruff">Ruff</a></td>
+<td style="text-align: center;"><iframe frameborder="none" height="48px" src="https://plugins.jetbrains.com/embeddable/install/20574" width="245px"></iframe></td>
+</tr>
+<tr>
+<td style="text-align: center;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico"/></a></td>
+<td><a href="https://code.visualstudio.com/">Visual Studio Code</a></td>
+<td><a href="https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff">Ruff</a></td>
+<td style="text-align: center;"><a href="vscode:extension/charliermarsh.ruff" target="_blank"><img alt="Install in VSCode" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png"/></a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="megalinter-flavors">MegaLinter Flavors</h2>
+<p>This linter is available in the following flavors</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><!-- --></th>
+<th style="text-align: left;">Flavor</th>
+<th style="text-align: left;">Description</th>
+<th style="text-align: center;">Embedded linters</th>
+<th style="text-align: right;">Info</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png"/></a></td>
+<td style="text-align: left;"><a href="https://megalinter.io/beta/supported-linters/">all</a></td>
+<td style="text-align: left;">Default MegaLinter Flavor</td>
+<td style="text-align: center;">125</td>
+<td style="text-align: right;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter"/></a></a></td>
+</tr>
+<tr>
+<td style="text-align: center;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico"/></a></td>
+<td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/cupcake/">cupcake</a></td>
+<td style="text-align: left;">MegaLinter for the most commonly used languages</td>
+<td style="text-align: center;">85</td>
+<td style="text-align: right;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake"/></a></a></td>
+</tr>
+<tr>
+<td style="text-align: center;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/formatters.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/formatters.ico"/></a></td>
+<td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/formatters/">formatters</a></td>
+<td style="text-align: left;">Contains only formatters</td>
+<td style="text-align: center;">18</td>
+<td style="text-align: right;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-formatters/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-formatters/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-formatters"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-formatters"/></a></a></td>
+</tr>
+<tr>
+<td style="text-align: center;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico"/></a></td>
+<td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/python/">python</a></td>
+<td style="text-align: left;">Optimized for PYTHON based projects</td>
+<td style="text-align: center;">63</td>
+<td style="text-align: right;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-python"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-python"/></a></a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="behind-the-scenes">Behind the scenes</h2>
+<h3 id="how-are-identified-applicable-files">How are identified applicable files</h3>
+<ul>
+<li>File extensions: <code>.py</code></li>
+</ul>
+<!-- markdownlint-disable -->
+<!-- /* cSpell:disable */ -->
+<h3 id="how-the-linting-is-performed">How the linting is performed</h3>
+<ul>
+<li>ruff-format is called once with the list of files as arguments (<code>list_of_files</code> CLI lint mode)</li>
+</ul>
+<h3 id="example-calls">Example calls</h3>
+<pre><code class="language-shell">ruff format --check myfile.py myfile2.py
+</code></pre>
+<pre><code class="language-shell">ruff format --config .ruff.toml myfile.py myfile2.py
+</code></pre>
+<h3 id="help-content">Help content</h3>
+<pre><code class="language-shell">Ruff: An extremely fast Python linter and code formatter.
+
+Usage: ruff [OPTIONS] &lt;COMMAND&gt;
+
+Commands:
+  check    Run Ruff on the given files or directories
+  rule     Explain a rule (or all rules)
+  config   List or describe the available configuration options
+  linter   List all supported upstream linters
+  clean    Clear any caches in the current directory and any subdirectories
+  format   Run the Ruff formatter on the given files or directories
+  server   Run the language server
+  analyze  Run analysis over Python source code
+  version  Display Ruff's version
+  help     Print this message or the help of the given subcommand(s)
+
+Options:
+  -h, --help     Print help
+  -V, --version  Print version
+
+Log levels:
+  -v, --verbose  Enable verbose logging
+  -q, --quiet    Print diagnostics, but nothing else
+  -s, --silent   Disable all logging (but still exit with status code "1" upon detecting
+                 diagnostics)
+
+Global options:
+      --config &lt;CONFIG_OPTION&gt;  Either a path to a TOML configuration file (`pyproject.toml` or
+                                `ruff.toml`), or a TOML `&lt;KEY&gt; = &lt;VALUE&gt;` pair (such as you might
+                                find in a `ruff.toml` configuration file) overriding a specific
+                                configuration option. Overrides of individual settings using this
+                                option always take precedence over all configuration files,
+                                including configuration files that were also specified using
+                                `--config`
+      --isolated                Ignore all configuration files
+
+For help with a specific command, see: `ruff help &lt;command&gt;`.
+</code></pre>
+<h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
+<ul>
+<li>PIP packages (Python):<ul>
+<li><a href="https://pypi.org/project/ruff">ruff</a></li>
+</ul>
+</li>
+</ul>
 </article>
 </div>
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
@@ -3271,7 +3601,7 @@
 </main>
 <footer class="md-footer">
 <nav aria-label="Footer" class="md-footer__inner md-grid">
-<a aria-label="Previous: AGPL V3 License" class="md-footer__link md-footer__link--prev" href="../license/">
+<a aria-label="Previous: ruff" class="md-footer__link md-footer__link--prev" href="../python_ruff/">
 <div class="md-footer__button md-icon">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
 </div>
@@ -3280,17 +3610,17 @@
                 Previous
               </span>
 <div class="md-ellipsis">
-                AGPL V3 License
+                ruff
               </div>
 </div>
 </a>
-<a aria-label="Next: Changelog" class="md-footer__link md-footer__link--next" href="../CHANGELOG/">
+<a aria-label="Next: All R linters" class="md-footer__link md-footer__link--next" href="../r/">
 <div class="md-footer__title">
 <span class="md-footer__direction">
                 Next
               </span>
 <div class="md-ellipsis">
-                Changelog
+                All R linters
               </div>
 </div>
 <div class="md-footer__button md-icon">
@@ -3329,12 +3659,12 @@
 <div class="md-dialog" data-md-component="dialog">
 <div class="md-dialog__inner md-typeset"></div>
 </div>
-<script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "navigation.instant", "navigation.footer"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
-<script src="../assets/javascripts/bundle.88dd0f4e.min.js"></script>
+<script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.instant", "navigation.footer"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+<script src="../../assets/javascripts/bundle.88dd0f4e.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
-<script src="../javascripts/tables.js"></script>
-<script src="../javascripts/gtag.js"></script>
-<script src="../javascripts/version-mike.js"></script>
-<script src="../javascripts/quickfixes.js"></script>
+<script src="../../javascripts/tables.js"></script>
+<script src="../../javascripts/gtag.js"></script>
+<script src="../../javascripts/version-mike.js"></script>
+<script src="../../javascripts/quickfixes.js"></script>
 <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>
