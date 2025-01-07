@@ -1,5 +1,5 @@
 {
-    "actionlint": "1.7.5",
+    "actionlint": "1.7.6",
     "ansible-lint": "24.12.2",
     "arm-ttk": "0.0.0",
     "bandit": "1.8.0",
@@ -8,7 +8,7 @@
     "black": "24.10.0",
     "cfn-lint": "1.22.3",
     "checkmake": "0.2.0",
-    "checkov": "3.2.347",
+    "checkov": "3.2.349",
     "checkstyle": "10.21.1",
     "chktex": "1.7.8",
     "clang-format": "17.0.6",
