@@ -151,6 +151,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.88.0 to **3.88.1** on 2025-01-07
   - [actionlint](https://rhysd.github.io/actionlint/) from 1.7.5 to **1.7.6** on 2025-01-07
   - [checkov](https://www.checkov.io/) from 3.2.347 to **3.2.349** on 2025-01-07
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.66.1 to **3.66.2** on 2025-01-07
+  - [checkov](https://www.checkov.io/) from 3.2.349 to **3.2.350** on 2025-01-07
 <!-- linter-versions-end -->
 
 ## [v8.3.0] - 2024-11-23
