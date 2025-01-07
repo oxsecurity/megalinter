@@ -5,7 +5,7 @@ repo_url: https://github.com/oxsecurity/megalinter
 edit_uri: tree/main/docs
 site_author: Nicolas Vuillamy
 # site_description-start
-site_description: MegaLinter is an Open-Source tool for CI/CD workflows that analyzes the consistency of your code, IAC, configuration, and scripts in your repository sources, to ensure all your projects sources are clean and formatted whatever IDE/toolbox is used by their developers, powered by OX Security.Supporting 62 languages, 23 formats, 20 tooling formats and ready to use out of the box, as a GitHub action or any CI system, highly configurable and free for all uses.MegaLinter has native integrations with many of the major CI/CD tools of the market.
+site_description: MegaLinter is an Open-Source tool for CI/CD workflows that analyzes the consistency of your code, IAC, configuration, and scripts in your repository sources, to ensure all your projects sources are clean and formatted whatever IDE/toolbox is used by their developers, powered by OX Security.Supporting 63 languages, 23 formats, 20 tooling formats and ready to use out of the box, as a GitHub action or any CI system, highly configurable and free for all uses.MegaLinter has native integrations with many of the major CI/CD tools of the market.
 # site_description-end
 copyright: Copyright &copy; 2024 <a href="https://www.ox.security/?ref=megalinter" target= "_blank">OX Security</a> &amp; <a href="https://github.com/nvuillam" target="_blank">Nicolas Vuillamy</a>
 theme:
@@ -173,6 +173,7 @@ nav:
               - "mypy": "descriptors/python_mypy.md"
               - "pyright": "descriptors/python_pyright.md"
               - "ruff": "descriptors/python_ruff.md"
+              - "ruff-format": "descriptors/python_ruff_format.md"
           - "R":
               - "All R linters": "descriptors/r.md"
               - "lintr": "descriptors/r_lintr.md"

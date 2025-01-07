@@ -141,6 +141,13 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [phpstan](https://phpstan.org/) from 2.0.4 to **2.1.0** on 2024-12-31
   - [golangci-lint](https://golangci-lint.run/) from 1.62.2 to **1.63.1** on 2025-01-01
   - [checkov](https://www.checkov.io/) from 3.2.345 to **3.2.346** on 2025-01-01
+  - [csharpier](https://csharpier.com/) from 0.30.4 to **0.30.5** on 2025-01-06
+  - [golangci-lint](https://golangci-lint.run/) from 1.63.1 to **1.63.4** on 2025-01-06
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.65.0 to **3.66.1** on 2025-01-06
+  - [phpstan](https://phpstan.org/) from 2.1.0 to **2.1.1** on 2025-01-06
+  - [ruff](https://github.com/astral-sh/ruff) from 0.8.4 to **0.8.6** on 2025-01-06
+  - [checkov](https://www.checkov.io/) from 3.2.346 to **3.2.347** on 2025-01-06
+  - [vale](https://vale.sh/) from 3.9.1 to **3.9.3** on 2025-01-06
 <!-- linter-versions-end -->
 
 ## [v8.3.0] - 2024-11-23
