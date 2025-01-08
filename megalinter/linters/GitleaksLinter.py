@@ -15,7 +15,7 @@ class GitleaksLinter(Linter):
         self.pr_commits_scan = config.get(
             self.request_id, "REPOSITORY_GITLEAKS_PR_COMMITS_SCAN", "false"
         )
-        if self.pr_commits_scan == "true" and utils.is_pr():
+        if self.pr_commits_scan == "true" and self.is_active is True and utils.is_pr():
             self.pr_source_sha, self.pr_target_sha = self.get_pr_data()
 
     def get_pr_data(self):
