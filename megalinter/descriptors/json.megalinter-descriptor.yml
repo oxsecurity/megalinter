@@ -27,7 +27,7 @@ linters:
   # ESLINT-PLUGIN-JSONC
   - class: EslintLinter
     disabled: true
-    disabled_reason: "Bug in eslint-plugin-jsonc : https://github.com/ota-meshi/eslint-plugin-jsonc/issues/328"
+    disabled_reason: "Bug in eslint-plugin-jsonc: https://github.com/ota-meshi/eslint-plugin-jsonc/issues/328"
     linter_name: eslint-plugin-jsonc
     can_output_sarif: true
     file_extensions:
