@@ -156,6 +156,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [php-cs-fixer](https://cs.symfony.com/) from 3.66.2 to **3.67.0** on 2025-01-08
   - [checkov](https://www.checkov.io/) from 3.2.350 to **3.2.351** on 2025-01-08
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.26.0 to **8.27.1** on 2025-01-08
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.8.6 to **0.9.0** on 2025-01-09
+  - [ruff](https://github.com/astral-sh/ruff) from 0.8.6 to **0.9.0** on 2025-01-09
+  - [checkov](https://www.checkov.io/) from 3.2.351 to **3.2.352** on 2025-01-09
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.83 to **0.1.84** on 2025-01-09
 <!-- linter-versions-end -->
 
 ## [v8.3.0] - 2024-11-23
