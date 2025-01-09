@@ -153,6 +153,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 3.2.347 to **3.2.349** on 2025-01-07
   - [php-cs-fixer](https://cs.symfony.com/) from 3.66.1 to **3.66.2** on 2025-01-07
   - [checkov](https://www.checkov.io/) from 3.2.349 to **3.2.350** on 2025-01-07
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.66.2 to **3.67.0** on 2025-01-08
+  - [checkov](https://www.checkov.io/) from 3.2.350 to **3.2.351** on 2025-01-08
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.26.0 to **8.27.1** on 2025-01-08
 <!-- linter-versions-end -->
 
 ## [v8.3.0] - 2024-11-23
