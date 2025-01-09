@@ -94,6 +94,7 @@ sf scanner:run
 ### Help content
 
 ```shell
+ ›   Warning: @salesforce/cli update available from 2.70.7 to 2.71.6.
 Scan a codebase with all the rules in the registry, or use parameters to filter the rules based on rulename, category, or ruleset.
 
 USAGE
@@ -147,6 +148,7 @@ GLOBAL FLAGS
 COMMANDS
   scanner run dfa  Scan codebase with all DFA rules by default.
 
+ ›   Warning: @salesforce/cli update available from 2.70.7 to 2.71.6.
 Warning: We're continually improving Salesforce Code Analyzer. Tell us what you think! Give feedback at http://sfdc.co/CodeAnalyzerFeedback
  name                                                   languages   categories            rulesets [dep] engine            is dfa is pilot
  ────────────────────────────────────────────────────── ─────────── ───────────────────── ────────────── ───────────────── ────── ────────
