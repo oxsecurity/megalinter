@@ -1281,7 +1281,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         if hasattr(linter, "disabled") and linter.disabled is True:
             linter_doc_md += [""]
             linter_doc_md += ["_This linter has been disabled in this version_"]
-            if hasattr(linter, "disabled_reason") and linter.disabled_reason is True:
+            if hasattr(linter, "disabled_reason") and linter.disabled_reason:
                 linter_doc_md += [""]
                 linter_doc_md += [f"_Disabled reason: {linter.disabled_reason}_"]
 
