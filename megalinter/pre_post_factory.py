@@ -36,7 +36,7 @@ def run_descriptor_post_commands(mega_linter, descriptor_id):
 # Commands to run before a linter (defined in descriptors)
 def run_linter_pre_commands(mega_linter, linter, parallel=None):
     if linter.pre_commands is not None:
-        filtered_commands: list= []
+        filtered_commands: list = []
 
         if parallel is None:
             filtered_commands = linter.pre_commands
@@ -54,7 +54,7 @@ def run_linter_pre_commands(mega_linter, linter, parallel=None):
 # Commands to run before a linter (defined in descriptors)
 def run_linter_post_commands(mega_linter, linter, parallel=None):
     if linter.post_commands is not None:
-        filtered_commands: list= []
+        filtered_commands: list = []
 
         if parallel is None:
             filtered_commands = linter.post_commands
