@@ -17,6 +17,18 @@ description: How to use gitleaks (configure, ignore files, ignore errors, help &
     - \* `PULL_REQUEST` environment variable must be set to `true` only on Pull Requests, so you must calculate the value in your pipeline and pass the outcome.
 - PR commits scan feature, if applicable, will override your `--log-opts` argument if you used it in the `REPOSITORY_GITLEAKS_ARGUMENTS`.
 
+### Azure Pipelines environment variables on Pull Requests
+
+In the case of Azure Pipelines when running a Docker container, we have to explicitly pass variables:
+
+```bash
+  docker run -v $(System.DefaultWorkingDirectory):/tmp/lint \
+      -e SYSTEM_PULLREQUEST_SOURCECOMMITID=$(System.PullRequest.SourceCommitId) \
+      -e SYSTEM_PULLREQUEST_TARGETBRANCH=$(System.PullRequest.TargetBranch) \
+      -e BUILD_REASON=$(Build.Reason) \
+      oxsecurity/megalinter:v8
+```
+
 ### Repository checkout on Pull Requests
 
 To scan only PR commits, the [shallow fetch](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---depthltdepthgt){target=_blank} for a repository checkout has to be 0. Below is an example configuration for supported platforms:
