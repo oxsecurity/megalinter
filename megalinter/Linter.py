@@ -805,7 +805,7 @@ class Linter:
             self.active_only_if_file_found.append(self.config_file_name)
 
     # Processes the linter
-    def run(self):
+    def run(self, parallel=None):
         self.start_perf = perf_counter()
 
         # Initialize linter reports
@@ -816,7 +816,7 @@ class Linter:
         self.before_lint_files()
 
         # Run commands defined in descriptor, or overridden by user in configuration
-        pre_post_factory.run_linter_pre_commands(self.master, self)
+        pre_post_factory.run_linter_pre_commands(self.master, self, parallel)
 
         # Lint each file one by one
         if self.cli_lint_mode == "file":
@@ -871,7 +871,7 @@ class Linter:
             os.remove(self.remote_ignore_file_to_delete)
 
         # Run commands defined in descriptor, or overridden by user in configuration
-        pre_post_factory.run_linter_post_commands(self.master, self)
+        pre_post_factory.run_linter_post_commands(self.master, self, parallel)
 
         # Generate linter reports
         self.elapsed_time_s = perf_counter() - self.start_perf

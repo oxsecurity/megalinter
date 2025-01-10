@@ -37,6 +37,20 @@
       "title": "Command",
       "type": "object"
     },
+    "linter_command_info": {
+      "description": "Command information",
+      "$ref": "#/definitions/command_info",
+      "properties": {
+        "parallel": {
+          "default": true,
+          "title": "Process command in parallel",
+          "type": "boolean"
+        }
+      },
+      "required": [],
+      "title": "Command",
+      "type": "object"
+    },
     "enum_flavors": {
       "enum": [
         "all_flavors",
@@ -1232,7 +1246,7 @@
               ]
             ],
             "items": {
-              "$ref": "#/definitions/command_info"
+              "$ref": "#/definitions/linter_command_info"
             },
             "title": "Linter Pre-run commands",
             "type": "array"
@@ -1255,7 +1269,7 @@
               ]
             ],
             "items": {
-              "$ref": "#/definitions/command_info"
+              "$ref": "#/definitions/linter_command_info"
             },
             "title": "Linter Pre-run commands",
             "type": "array"
