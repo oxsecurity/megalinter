@@ -160,6 +160,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [ruff](https://github.com/astral-sh/ruff) from 0.8.6 to **0.9.0** on 2025-01-09
   - [checkov](https://www.checkov.io/) from 3.2.351 to **3.2.352** on 2025-01-09
   - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.83 to **0.1.84** on 2025-01-09
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.22.3 to **1.22.4** on 2025-01-10
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.88.1 to **3.88.2** on 2025-01-10
+  - [rubocop](https://rubocop.org/) from 1.69.2 to **1.70.0** on 2025-01-10
 <!-- linter-versions-end -->
 
 ## [v8.3.0] - 2024-11-23
