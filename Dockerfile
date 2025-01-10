@@ -540,13 +540,12 @@ ENV PATH="/root/.composer/vendor/bin:${PATH}"
 # Next line commented because already managed by another linter
 # # renovate: datasource=github-tags depName=PowerShell/PowerShell
 # POWERSHELL_VERSION=7.4.2
-# renovate: datasource=github-tags depName=mgechev/revive
-RUN curl -L https://github.com/PowerShell/PowerShell/releases/download/v${POWERSHELL_VERSION}/powershell-${POWERSHELL_VERSION}-linux-musl-x64.tar.gz -o /tmp/powershell.tar.gz \
-    && mkdir -p /opt/microsoft/powershell/7 \
-    && tar zxf /tmp/powershell.tar.gz -C /opt/microsoft/powershell/7 \
-    && chmod +x /opt/microsoft/powershell/7/pwsh \
-    && ln -s /opt/microsoft/powershell/7/pwsh /usr/bin/pwsh
-
+# Next line commented because already managed by another linter
+# RUN curl -L https://github.com/PowerShell/PowerShell/releases/download/v${POWERSHELL_VERSION}/powershell-${POWERSHELL_VERSION}-linux-musl-x64.tar.gz -o /tmp/powershell.tar.gz \
+#     && mkdir -p /opt/microsoft/powershell/7 \
+#     && tar zxf /tmp/powershell.tar.gz -C /opt/microsoft/powershell/7 \
+#     && chmod +x /opt/microsoft/powershell/7/pwsh \
+#     && ln -s /opt/microsoft/powershell/7/pwsh /usr/bin/pwsh
 #
 # SALESFORCE installation
 # Next line commented because already managed by another linter

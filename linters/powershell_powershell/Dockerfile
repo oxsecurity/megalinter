@@ -152,16 +152,14 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 # renovate: datasource=github-tags depName=PowerShell/PowerShell
 POWERSHELL_VERSION=7.4.2
 
-# renovate: datasource=github-tags depName=mgechev/revive
 RUN curl -L https://github.com/PowerShell/PowerShell/releases/download/v${POWERSHELL_VERSION}/powershell-${POWERSHELL_VERSION}-linux-musl-x64.tar.gz -o /tmp/powershell.tar.gz \
     && mkdir -p /opt/microsoft/powershell/7 \
     && tar zxf /tmp/powershell.tar.gz -C /opt/microsoft/powershell/7 \
     && chmod +x /opt/microsoft/powershell/7/pwsh \
-    && ln -s /opt/microsoft/powershell/7/pwsh /usr/bin/pwsh
-
+    && ln -s /opt/microsoft/powershell/7/pwsh /usr/bin/pwsh \
 #
 # powershell installation
-RUN pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSION} -Scope AllUsers -Force'
+    && pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSION} -Scope AllUsers -Force'
 #
 #OTHER__END
 
