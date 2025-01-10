@@ -28,6 +28,8 @@ ARG REPOSITORY_GITLEAKS_VERSION=v8.22.1
 ARG REPOSITORY_KICS_VERSION=v2.1.3-alpine
 # renovate: datasource=docker depName=trufflesecurity/trufflehog 
 ARG REPOSITORY_TRUFFLEHOG_VERSION=3.88.2
+# renovate: datasource=docker depName=jdkato/vale
+ARG SPELL_VALE_VERSION=v3.9.3
 # renovate: datasource=docker depName=ghcr.io/terraform-linters/tflint
 ARG TERRAFORM_TFLINT_VERSION=0.54.0
 # renovate: datasource=docker depName=tenable/terrascan
@@ -59,6 +61,7 @@ FROM ghcr.io/yannh/kubeconform:${KUBERNETES_KUBECONFORM_VERSION} AS kubeconform
 FROM zricethezav/gitleaks:${REPOSITORY_GITLEAKS_VERSION} AS gitleaks
 FROM checkmarx/kics:${REPOSITORY_KICS_VERSION} AS kics
 FROM trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION} AS trufflehog
+FROM jdkato/vale:${SPELL_VALE_VERSION} AS vale
 FROM lycheeverse/lychee:latest-alpine AS lychee
 FROM ghcr.io/terraform-linters/tflint:v${TERRAFORM_TFLINT_VERSION} AS tflint
 FROM tenable/terrascan:${TERRAFORM_TERRASCAN_VERSION} AS terrascan
@@ -99,6 +102,9 @@ ARG PMD_VERSION=7.9.0
 
 # renovate: datasource=github-tags depName=detekt/detekt
 ARG DETEKT_VERSION=1.23.7
+
+# renovate: datasource=nuget depName=PSScriptAnalyzer registryUrl=https://www.powershellgallery.com/api/v2/
+ARG PSSA_VERSION='1.23.0'
 
 # renovate: datasource=pypi depName=sqlfluff
 ARG SQL_SQLFLUFF_VERSION=3.3.0
@@ -143,6 +149,7 @@ RUN apk add --no-cache \
                 php83-common \
                 php83-simplexml \
                 dpkg \
+                icu-libs \
                 py3-pyflakes \
                 nodejs \
                 npm \
@@ -328,6 +335,7 @@ COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 COPY --link --from=kics /app/bin/kics /usr/bin/kics
 COPY --from=kics /app/bin/assets /usr/bin/assets
 COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
+COPY --link --from=vale /bin/vale /bin/vale
 COPY --link --from=lychee /usr/local/bin/lychee /usr/bin/
 COPY --link --from=tflint /usr/local/bin/tflint /usr/bin/
 COPY --link --from=terrascan /go/bin/terrascan /usr/bin/
@@ -412,13 +420,20 @@ RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GI
 # Managed with COPY --from=composer/composer:2-bin /composer /usr/bin/composer
 ENV PATH="/root/.composer/vendor/bin:${PATH}"
 #
+# POWERSHELL installation
+RUN curl -L https://github.com/PowerShell/PowerShell/releases/download/v7.4.2/powershell-7.4.2-linux-musl-x64.tar.gz -o /tmp/powershell.tar.gz \
+    && mkdir -p /opt/microsoft/powershell/7 \
+    && tar zxf /tmp/powershell.tar.gz -C /opt/microsoft/powershell/7 \
+    && chmod +x /opt/microsoft/powershell/7/pwsh \
+    && ln -s /opt/microsoft/powershell/7/pwsh /usr/bin/pwsh \
+#
 # actionlint installation
 # Managed with COPY --link --from=actionlint /usr/local/bin/actionlint /usr/bin/actionlint
 #              # shellcheck is a dependency for actionlint
 # Managed with COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
 #
 # bash-exec installation
-RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: File:[$1] is not executable"; exit 1; fi' > /usr/bin/bash-exec \
+    && printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: File:[$1] is not executable"; exit 1; fi' > /usr/bin/bash-exec \
     && chmod +x /usr/bin/bash-exec \
 #
 # shellcheck installation
@@ -516,6 +531,13 @@ RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GI
 RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require friendsofphp/php-cs-fixer
 
 #
+# powershell installation
+RUN pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSION} -Scope AllUsers -Force'
+#
+# powershell_formatter installation
+# Next line commented because already managed by another linter
+# RUN pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSION} -Scope AllUsers -Force'
+#
 # mypy installation
 ENV MYPY_CACHE_DIR=/tmp
 #
@@ -542,6 +564,9 @@ RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/
 #
 # trufflehog installation
 # Managed with COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
+#
+# vale installation
+# Managed with COPY --link --from=vale /bin/vale /bin/vale
 #
 # lychee installation
 # Managed with COPY --link --from=lychee /usr/local/bin/lychee /usr/bin/
