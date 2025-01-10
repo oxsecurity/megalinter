@@ -24,6 +24,12 @@ Example:
           docker run -v $(System.DefaultWorkingDirectory):/tmp/lint \
             --env-file <(env | grep -e SYSTEM_ -e BUILD_ -e TF_ -e AGENT_) \
             -e SYSTEM_ACCESSTOKEN=$(System.AccessToken) \
+            -e SYSTEM_COLLECTIONURI=$(System.CollectionUri) \
+            -e SYSTEM_PULLREQUEST_PULLREQUESTID=$(System.PullRequest.PullRequestId) \
+            -e SYSTEM_PULLREQUEST_SOURCEREPOSITORYURI=$(System.PullRequest.SourceRepositoryURI) \
+            -e SYSTEM_TEAMPROJECT="$(System.TeamProject)" \
+            -e BUILD_BUILD_ID=$(Build.BuildId) \
+            -e BUILD_REPOSITORY_ID=$(Build.Repository.ID) \
             -e GIT_AUTHORIZATION_BEARER=$(System.AccessToken) \
             oxsecurity/megalinter:v8
         displayName: Run MegaLinter
