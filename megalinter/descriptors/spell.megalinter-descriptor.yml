@@ -97,6 +97,7 @@ linters:
       - .vale.ini
     descriptor_flavors:
       - all_flavors
+      - cupcake
       - documentation
     linter_speed: 1
     linter_text: |

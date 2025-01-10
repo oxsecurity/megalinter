@@ -1,6 +1,7 @@
 descriptor_id: POWERSHELL
 descriptor_type: language
 descriptor_flavors:
+  - cupcake
   - dotnet
   - dotnetweb
   - formatters
