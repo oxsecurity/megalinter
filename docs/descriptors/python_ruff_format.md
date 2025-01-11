@@ -11,7 +11,7 @@ An extremely fast Python linter, written in Rust. Configured for formatting only
 
 ## ruff-format documentation
 
-- Version in MegaLinter: **0.9.0**
+- Version in MegaLinter: **0.9.1**
 - Visit [Official Web Site](https://github.com/astral-sh/ruff#readme){target=_blank}
 - See [How to configure ruff-format rules](https://docs.astral.sh/ruff/configuration/){target=_blank}
   - If custom `.ruff.toml` config file isn't found, [.ruff.toml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.ruff.toml){target=_blank} will be used

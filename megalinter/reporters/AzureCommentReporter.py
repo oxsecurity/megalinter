@@ -2,15 +2,6 @@
 """
 Azure Comment reporter
 Post a comment on Azure Pipelines Pull Requests
-
-Requires the following vars sent to docker run:
-- SYSTEM_ACCESSTOKEN
-- SYSTEM_COLLECTIONURI
-- SYSTEM_PULLREQUEST_PULLREQUESTID
-- SYSTEM_PULLREQUEST_SOURCEREPOSITORYURI
-- SYSTEM_TEAMPROJECT
-- BUILD_BUILDID
-- BUILD_REPOSITORY_ID
 """
 import logging
 import urllib.parse
