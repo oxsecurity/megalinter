@@ -19,7 +19,7 @@ If you find it too harsh, you may define `PYTHON_BANDIT_DISABLE_ERRORS: true` in
 
 ## bandit documentation
 
-- Version in MegaLinter: **1.8.0**
+- Version in MegaLinter: **1.8.1**
 - Visit [Official Web Site](https://bandit.readthedocs.io/en/latest/){target=_blank}
 - See [How to configure bandit rules](https://bandit.readthedocs.io/en/latest/config.html#){target=_blank}
   - If custom `.bandit.yml` config file isn't found, [.bandit.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.bandit.yml){target=_blank} will be used
@@ -228,7 +228,6 @@ The following tests were discovered and loaded:
   B317  xml_bad_sax
   B318  xml_bad_minidom
   B319  xml_bad_pulldom
-  B320  xml_bad_etree
   B321  ftplib
   B323  unverified_context
   B324  hashlib_insecure_functions
@@ -241,7 +240,6 @@ The following tests were discovered and loaded:
   B407  import_xml_expat
   B408  import_xml_minidom
   B409  import_xml_pulldom
-  B410  import_lxml
   B411  import_xmlrpclib
   B412  import_httpoxy
   B413  import_pycrypto

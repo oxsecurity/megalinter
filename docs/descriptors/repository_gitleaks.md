@@ -19,7 +19,7 @@ description: How to use gitleaks (configure, ignore files, ignore errors, help &
 
 ### Azure Pipelines environment variables on Pull Requests
 
-In the case of Azure Pipelines when running a Docker container, we have to explicitly pass variables:
+In the case of Azure Pipelines when running in a Docker container, we have to explicitly pass some environment variables:
 
 ```bash
   docker run -v $(System.DefaultWorkingDirectory):/tmp/lint \
