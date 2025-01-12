@@ -9,7 +9,7 @@ description: How to use swiftlint (configure, ignore files, ignore errors, help 
 
 ## swiftlint documentation
 
-- Version in MegaLinter: **0.57.1**
+- Version in MegaLinter: **0.58.0**
 - Visit [Official Web Site](https://github.com/realm/SwiftLint#readme){target=_blank}
 - Docker image: [ghcr.io/realm/swiftlint:latest](https://hub.docker.com/r/ghcr.io/realm/swiftlint){target=_blank}
   - arguments: `-v {{WORKSPACE}}:/tmp/lint:rw -w /tmp/lint`
