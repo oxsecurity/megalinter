@@ -2624,6 +2624,13 @@
 <nav aria-label="Scan only Pull Request commits" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
+<a class="md-nav__link" href="#azure-pipelines-environment-variables-on-pull-requests">
+<span class="md-ellipsis">
+      Azure Pipelines environment variables on Pull Requests
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#repository-checkout-on-pull-requests">
 <span class="md-ellipsis">
       Repository checkout on Pull Requests
@@ -3321,6 +3328,13 @@
 <nav aria-label="Scan only Pull Request commits" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
+<a class="md-nav__link" href="#azure-pipelines-environment-variables-on-pull-requests">
+<span class="md-ellipsis">
+      Azure Pipelines environment variables on Pull Requests
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#repository-checkout-on-pull-requests">
 <span class="md-ellipsis">
       Repository checkout on Pull Requests
@@ -3453,6 +3467,14 @@
 </li>
 <li>PR commits scan feature, if applicable, will override your <code>--log-opts</code> argument if you used it in the <code>REPOSITORY_GITLEAKS_ARGUMENTS</code>.</li>
 </ul>
+<h3 id="azure-pipelines-environment-variables-on-pull-requests">Azure Pipelines environment variables on Pull Requests</h3>
+<p>In the case of Azure Pipelines when running a Docker container, we have to explicitly pass variables:</p>
+<pre><code class="language-bash">  docker run -v $(System.DefaultWorkingDirectory):/tmp/lint \
+      -e SYSTEM_PULLREQUEST_SOURCECOMMITID=$(System.PullRequest.SourceCommitId) \
+      -e SYSTEM_PULLREQUEST_TARGETBRANCH=$(System.PullRequest.TargetBranch) \
+      -e BUILD_REASON=$(Build.Reason) \
+      oxsecurity/megalinter:v8
+</code></pre>
 <h3 id="repository-checkout-on-pull-requests">Repository checkout on Pull Requests</h3>
 <p>To scan only PR commits, the <a href="https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---depthltdepthgt" target="_blank">shallow fetch</a> for a repository checkout has to be 0. Below is an example configuration for supported platforms:</p>
 <h4 id="github-actions">GitHub Actions</h4>
