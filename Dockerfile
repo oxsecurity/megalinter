@@ -103,7 +103,7 @@ FROM python:3.12.8-alpine3.20
 #############################################################################################
 #ARG__START
 # renovate: datasource=github-tags depName=PowerShell/PowerShell
-ARG POWERSHELL_VERSION=7.4.2
+ARG POWERSHELL_VERSION=7.4.6
 
 # renovate: datasource=npm depName=@salesforce/cli
 ARG SALESFORCE_CLI_VERSION=2.70.7
