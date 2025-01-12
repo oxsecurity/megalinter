@@ -15,7 +15,7 @@ description: How to use editorconfig-checker (configure, ignore files, ignore er
 
 ## editorconfig-checker documentation
 
-- Version in MegaLinter: **3.0.3**
+- Version in MegaLinter: **3.1.2**
 - Visit [Official Web Site](https://editorconfig-checker.github.io/){target=_blank}
 - See [How to configure editorconfig-checker rules](https://github.com/editorconfig-checker/editorconfig-checker#configuration){target=_blank}
 - See [How to disable editorconfig-checker rules in files](https://github.com/editorconfig-checker/editorconfig-checker#excluding){target=_blank}
@@ -112,10 +112,10 @@ USAGE:
       show which files would be checked
   -exclude string
       a regex which files should be excluded from checking - needs to be a valid regular expression
-  -f string
-      specify the output format: default, gcc (default "default")
-  -format string
-      specify the output format: default, gcc (default "default")
+  -f value
+      specify the output format: default, codeclimate, gcc, github-actions (default default)
+  -format value
+      specify the output format: default, codeclimate, gcc, github-actions (default default)
   -h  print the help
   -help
       print the help
@@ -137,7 +137,7 @@ USAGE:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=docker depName=mstruebing/editorconfig-checker
-ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=v3.0.3
+ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=v3.1.2
 FROM mstruebing/editorconfig-checker:${EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION} AS editorconfig-checker
 COPY --link --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
 ```
