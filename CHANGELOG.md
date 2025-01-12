@@ -160,6 +160,19 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [ruff](https://github.com/astral-sh/ruff) from 0.8.6 to **0.9.0** on 2025-01-09
   - [checkov](https://www.checkov.io/) from 3.2.351 to **3.2.352** on 2025-01-09
   - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.83 to **0.1.84** on 2025-01-09
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.22.3 to **1.22.4** on 2025-01-10
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.88.1 to **3.88.2** on 2025-01-10
+  - [rubocop](https://rubocop.org/) from 1.69.2 to **1.70.0** on 2025-01-10
+  - [csharpier](https://csharpier.com/) from 0.30.5 to **0.30.6** on 2025-01-10
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.9.0 to **0.9.1** on 2025-01-10
+  - [ruff](https://github.com/astral-sh/ruff) from 0.9.0 to **0.9.1** on 2025-01-10
+  - [editorconfig-checker](https://editorconfig-checker.github.io/) from 3.0.3 to **3.1.2** on 2025-01-12
+  - [powershell_formatter](https://github.com/PowerShell/PSScriptAnalyzer) from 7.4.2 to **7.4.6** on 2025-01-12
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.4.2 to **7.4.6** on 2025-01-12
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.51.0 to **0.52.0** on 2025-01-12
+  - [stylelint](https://stylelint.io) from 16.12.0 to **16.13.0** on 2025-01-12
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.67.0 to **3.67.1** on 2025-01-12
+  - [swiftlint](https://github.com/realm/SwiftLint) from 0.57.1 to **0.58.0** on 2025-01-12
 <!-- linter-versions-end -->
 
 ## [v8.3.0] - 2024-11-23

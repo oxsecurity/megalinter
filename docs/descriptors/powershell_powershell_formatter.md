@@ -9,7 +9,7 @@ description: How to use powershell_formatter (configure, ignore files, ignore er
 
 ## powershell_formatter documentation
 
-- Version in MegaLinter: **7.4.2**
+- Version in MegaLinter: **7.4.6**
 - Visit [Official Web Site](https://github.com/PowerShell/PSScriptAnalyzer#readme){target=_blank}
 - See [How to configure powershell_formatter rules](https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/using-scriptanalyzer?view=ps-modules#explicit){target=_blank}
 - See [How to disable powershell_formatter rules in files](https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/using-scriptanalyzer?view=ps-modules#suppressing-rules){target=_blank}
@@ -431,7 +431,10 @@ All parameters are case-insensitive.
 - Dockerfile commands :
 ```dockerfile
 # Parent descriptor install
-RUN curl -L https://github.com/PowerShell/PowerShell/releases/download/v7.4.2/powershell-7.4.2-linux-musl-x64.tar.gz -o /tmp/powershell.tar.gz \
+# renovate: datasource=github-tags depName=PowerShell/PowerShell
+ARG POWERSHELL_VERSION=7.4.6
+
+RUN curl -L https://github.com/PowerShell/PowerShell/releases/download/v${POWERSHELL_VERSION}/powershell-${POWERSHELL_VERSION}-linux-musl-x64.tar.gz -o /tmp/powershell.tar.gz \
     && mkdir -p /opt/microsoft/powershell/7 \
     && tar zxf /tmp/powershell.tar.gz -C /opt/microsoft/powershell/7 \
     && chmod +x /opt/microsoft/powershell/7/pwsh \
