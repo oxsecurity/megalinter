@@ -3468,7 +3468,7 @@
 <li>PR commits scan feature, if applicable, will override your <code>--log-opts</code> argument if you used it in the <code>REPOSITORY_GITLEAKS_ARGUMENTS</code>.</li>
 </ul>
 <h3 id="azure-pipelines-environment-variables-on-pull-requests">Azure Pipelines environment variables on Pull Requests</h3>
-<p>In the case of Azure Pipelines when running a Docker container, we have to explicitly pass variables:</p>
+<p>In the case of Azure Pipelines when running in a Docker container, we have to explicitly pass some environment variables:</p>
 <pre><code class="language-bash">  docker run -v $(System.DefaultWorkingDirectory):/tmp/lint \
       -e SYSTEM_PULLREQUEST_SOURCECOMMITID=$(System.PullRequest.SourceCommitId) \
       -e SYSTEM_PULLREQUEST_TARGETBRANCH=$(System.PullRequest.TargetBranch) \
