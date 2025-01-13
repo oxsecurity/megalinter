@@ -13,5 +13,5 @@ class TerrascanLinter(Linter):
 
         if self.cli_lint_mode == "file":
             cmd += ["--iac-file", f"{file}"]
-            
+
         return cmd
