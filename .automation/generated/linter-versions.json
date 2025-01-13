@@ -2,7 +2,7 @@
     "actionlint": "1.7.6",
     "ansible-lint": "24.12.2",
     "arm-ttk": "0.0.0",
-    "bandit": "1.8.0",
+    "bandit": "1.8.1",
     "bash-exec": "5.2.26",
     "bicep_linter": "0.32.4",
     "black": "24.10.0",
