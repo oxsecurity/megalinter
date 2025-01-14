@@ -179,6 +179,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [bandit](https://bandit.readthedocs.io/en/latest/) from 1.8.1 to **1.8.2** on 2025-01-13
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.17.1 to **8.17.2** on 2025-01-13
   - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.22.1 to **8.23.0** on 2025-01-14
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.22.4 to **1.22.5** on 2025-01-14
+  - [stylelint](https://stylelint.io) from 16.13.1 to **16.13.2** on 2025-01-14
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.58.1 to **0.58.2** on 2025-01-14
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.58.1 to **0.58.2** on 2025-01-14
+  - [scalafix](https://scalacenter.github.io/scalafix/) from 0.13.0 to **0.14.0** on 2025-01-14
 <!-- linter-versions-end -->
 
 ## [v8.3.0] - 2024-11-23
