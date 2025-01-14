@@ -178,6 +178,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [php-cs-fixer](https://cs.symfony.com/) from 3.67.1 to **3.68.0** on 2025-01-13
   - [bandit](https://bandit.readthedocs.io/en/latest/) from 1.8.1 to **1.8.2** on 2025-01-13
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.17.1 to **8.17.2** on 2025-01-13
+  - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.22.1 to **8.23.0** on 2025-01-14
 <!-- linter-versions-end -->
 
 ## [v8.3.0] - 2024-11-23
