@@ -184,6 +184,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.58.1 to **0.58.2** on 2025-01-14
   - [trivy](https://aquasecurity.github.io/trivy/) from 0.58.1 to **0.58.2** on 2025-01-14
   - [scalafix](https://scalacenter.github.io/scalafix/) from 0.13.0 to **0.14.0** on 2025-01-14
+  - [phplint](https://github.com/overtrue/phplint) from 9.5.5 to **9.5.6** on 2025-01-15
+  - [checkov](https://www.checkov.io/) from 3.2.352 to **3.2.353** on 2025-01-15
 <!-- linter-versions-end -->
 
 ## [v8.3.0] - 2024-11-23
