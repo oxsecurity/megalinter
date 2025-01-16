@@ -166,6 +166,26 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [csharpier](https://csharpier.com/) from 0.30.5 to **0.30.6** on 2025-01-10
   - [ruff-format](https://github.com/astral-sh/ruff) from 0.9.0 to **0.9.1** on 2025-01-10
   - [ruff](https://github.com/astral-sh/ruff) from 0.9.0 to **0.9.1** on 2025-01-10
+  - [editorconfig-checker](https://editorconfig-checker.github.io/) from 3.0.3 to **3.1.2** on 2025-01-12
+  - [powershell_formatter](https://github.com/PowerShell/PSScriptAnalyzer) from 7.4.2 to **7.4.6** on 2025-01-12
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.4.2 to **7.4.6** on 2025-01-12
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.51.0 to **0.52.0** on 2025-01-12
+  - [stylelint](https://stylelint.io) from 16.12.0 to **16.13.0** on 2025-01-12
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.67.0 to **3.67.1** on 2025-01-12
+  - [swiftlint](https://github.com/realm/SwiftLint) from 0.57.1 to **0.58.0** on 2025-01-12
+  - [bandit](https://bandit.readthedocs.io/en/latest/) from 1.8.0 to **1.8.1** on 2025-01-12
+  - [stylelint](https://stylelint.io) from 16.13.0 to **16.13.1** on 2025-01-13
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.67.1 to **3.68.0** on 2025-01-13
+  - [bandit](https://bandit.readthedocs.io/en/latest/) from 1.8.1 to **1.8.2** on 2025-01-13
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.17.1 to **8.17.2** on 2025-01-13
+  - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.22.1 to **8.23.0** on 2025-01-14
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.22.4 to **1.22.5** on 2025-01-14
+  - [stylelint](https://stylelint.io) from 16.13.1 to **16.13.2** on 2025-01-14
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.58.1 to **0.58.2** on 2025-01-14
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.58.1 to **0.58.2** on 2025-01-14
+  - [scalafix](https://scalacenter.github.io/scalafix/) from 0.13.0 to **0.14.0** on 2025-01-14
+  - [phplint](https://github.com/overtrue/phplint) from 9.5.5 to **9.5.6** on 2025-01-15
+  - [checkov](https://www.checkov.io/) from 3.2.352 to **3.2.353** on 2025-01-15
 <!-- linter-versions-end -->
 
 ## [v8.3.0] - 2024-11-23

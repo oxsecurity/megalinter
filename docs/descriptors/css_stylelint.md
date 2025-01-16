@@ -15,7 +15,7 @@ description: How to use stylelint (configure, ignore files, ignore errors, help 
 
 ## stylelint documentation
 
-- Version in MegaLinter: **16.12.0**
+- Version in MegaLinter: **16.13.2**
 - Visit [Official Web Site](https://stylelint.io){target=_blank}
 - See [How to configure stylelint rules](https://stylelint.io/user-guide/configure){target=_blank}
   - If custom `.stylelintrc.json` config file isn't found, [.stylelintrc.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.stylelintrc.json){target=_blank} will be used
@@ -165,9 +165,12 @@ stylelint --fix --config .stylelintrc.json myfile.css myfile2.css myfile3.css
       A pattern of files to ignore (in addition to those in ".stylelintignore").
       Multiple can be set.
 
-    --fix
+    --fix [<mode>]
 
-      Automatically fix problems of certain rules.
+      Automatically fix problems of certain rules. The modes are as follows:
+
+        lax          attempting to fix as much as possible even with syntax errors (default)
+        strict       only fixing when there are no syntax errors
 
     --custom-syntax <name_or_path>
 

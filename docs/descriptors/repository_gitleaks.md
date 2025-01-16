@@ -17,6 +17,18 @@ description: How to use gitleaks (configure, ignore files, ignore errors, help &
     - \* `PULL_REQUEST` environment variable must be set to `true` only on Pull Requests, so you must calculate the value in your pipeline and pass the outcome.
 - PR commits scan feature, if applicable, will override your `--log-opts` argument if you used it in the `REPOSITORY_GITLEAKS_ARGUMENTS`.
 
+### Azure Pipelines environment variables on Pull Requests
+
+In the case of Azure Pipelines when running in a Docker container, we have to explicitly pass some environment variables:
+
+```bash
+  docker run -v $(System.DefaultWorkingDirectory):/tmp/lint \
+      -e SYSTEM_PULLREQUEST_SOURCECOMMITID=$(System.PullRequest.SourceCommitId) \
+      -e SYSTEM_PULLREQUEST_TARGETBRANCH=$(System.PullRequest.TargetBranch) \
+      -e BUILD_REASON=$(Build.Reason) \
+      oxsecurity/megalinter:v8
+```
+
 ### Repository checkout on Pull Requests
 
 To scan only PR commits, the [shallow fetch](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---depthltdepthgt){target=_blank} for a repository checkout has to be 0. Below is an example configuration for supported platforms:
@@ -51,7 +63,7 @@ git fetch --depth=0
 
 ## gitleaks documentation
 
-- Version in MegaLinter: **8.22.1**
+- Version in MegaLinter: **8.23.0**
 - Visit [Official Web Site](https://github.com/gitleaks/gitleaks#readme){target=_blank}
 - See [How to configure gitleaks rules](https://github.com/gitleaks/gitleaks#configuration){target=_blank}
   - If custom `.gitleaks.toml` config file isn't found, [.gitleaks.toml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.gitleaks.toml){target=_blank} will be used
@@ -181,7 +193,7 @@ Use "gitleaks [command] --help" for more information about a command.
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=docker depName=zricethezav/gitleaks
-ARG REPOSITORY_GITLEAKS_VERSION=v8.22.1
+ARG REPOSITORY_GITLEAKS_VERSION=v8.23.0
 FROM zricethezav/gitleaks:${REPOSITORY_GITLEAKS_VERSION} AS gitleaks
 COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 ```
