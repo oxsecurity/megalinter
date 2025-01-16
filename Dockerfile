@@ -184,7 +184,7 @@ RUN apk add --no-cache \
                 dpkg \
                 coreutils \
                 py3-pyflakes \
-                clang17-extra-tools \
+                clang19-extra-tools \
                 nodejs \
                 npm \
                 yarn \

@@ -109,7 +109,7 @@ RUN apk add --no-cache \
                 openssh \
                 openjdk21 \
                 py3-pyflakes \
-                clang17-extra-tools \
+                clang19-extra-tools \
                 nodejs \
                 npm \
                 yarn \
