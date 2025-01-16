@@ -110,7 +110,7 @@ ARG SALESFORCE_CLI_VERSION=2.70.7
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
 ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.9.10
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=5.15.2
+ARG SFDX_HARDIS_VERSION=5.15.5
 ARG ARM_TTK_NAME='master.zip'
 ARG ARM_TTK_URI='https://github.com/Azure/arm-ttk/archive/master.zip'
 ARG ARM_TTK_DIRECTORY='/opt/microsoft'
