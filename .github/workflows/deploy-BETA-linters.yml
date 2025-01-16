@@ -155,7 +155,6 @@ jobs:
             "salesforce_sfdx_scanner_lwc",
             "salesforce_lightning_flow_scanner",
             "scala_scalafix",
-            "snakemake_lint",
             "snakemake_snakefmt",
             "spell_cspell",
             "spell_proselint",

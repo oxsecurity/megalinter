@@ -56,7 +56,6 @@
         "RST_RST_LINT",
         "RST_RSTCHECK",
         "RST_RSTFMT",
-        "SNAKEMAKE_LINT",
         "SNAKEMAKE_SNAKEFMT",
         "SPELL_CSPELL",
         "SPELL_PROSELINT",
