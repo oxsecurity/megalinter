@@ -15,7 +15,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Reactivate clj-style (Clojure formatter) since its bug is fixed
 
 - Disabled linters
-  - Snakemake has been disabled, because its dependency datrie not maintained, and [issue](https://github.com/snakemake/snakemake/issues/2970) open in snakemake repo since july is still pending 
+  - Snakemake has been disabled, because its dependency datrie not maintained, and [issue](https://github.com/snakemake/snakemake/issues/2970) open in snakemake repo since july is still pending
 
 - Media
 
