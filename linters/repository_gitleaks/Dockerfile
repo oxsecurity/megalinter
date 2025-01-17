@@ -12,7 +12,7 @@
 #############################################################################################
 #ARGTOP__START
 # renovate: datasource=docker depName=zricethezav/gitleaks
-ARG REPOSITORY_GITLEAKS_VERSION=v8.23.0
+ARG REPOSITORY_GITLEAKS_VERSION=v8.23.1
 #ARGTOP__END
 
 #############################################################################################
