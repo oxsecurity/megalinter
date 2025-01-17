@@ -201,6 +201,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [swiftlint](https://github.com/realm/SwiftLint) from 0.58.0 to **0.58.2** on 2025-01-17
   - [tflint](https://github.com/terraform-linters/tflint) from 0.54.0 to **0.55.0** on 2025-01-17
   - [xmllint](https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home) from 21207 to **21304** on 2025-01-17
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 2.36.0 to **2.37.0** on 2025-01-17
 <!-- linter-versions-end -->
 
 ## [v8.3.0] - 2024-11-23
