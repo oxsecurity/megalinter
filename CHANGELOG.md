@@ -189,6 +189,18 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [scalafix](https://scalacenter.github.io/scalafix/) from 0.13.0 to **0.14.0** on 2025-01-14
   - [phplint](https://github.com/overtrue/phplint) from 9.5.5 to **9.5.6** on 2025-01-15
   - [checkov](https://www.checkov.io/) from 3.2.352 to **3.2.353** on 2025-01-15
+  - [bash-exec](https://www.gnu.org/software/bash/) from 5.2.26 to **5.2.37** on 2025-01-17
+  - [clang-format](https://releases.llvm.org/17.0.1/tools/clang/docs/ClangFormat.html) from 17.0.6 to **19.1.4** on 2025-01-17
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2024.11.14 to **2025.01.16** on 2025-01-17
+  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 8.0.111 to **8.0.112** on 2025-01-17
+  - [helm](https://helm.sh/docs/helm/helm_lint/) from 3.14.3 to **3.16.3** on 2025-01-17
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.391 to **1.1.392** on 2025-01-17
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.9.1 to **0.9.2** on 2025-01-17
+  - [ruff](https://github.com/astral-sh/ruff) from 0.9.1 to **0.9.2** on 2025-01-17
+  - [git_diff](https://git-scm.com) from 2.45.2 to **2.47.2** on 2025-01-17
+  - [swiftlint](https://github.com/realm/SwiftLint) from 0.58.0 to **0.58.2** on 2025-01-17
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.54.0 to **0.55.0** on 2025-01-17
+  - [xmllint](https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home) from 21207 to **21304** on 2025-01-17
 <!-- linter-versions-end -->
 
 ## [v8.3.0] - 2024-11-23
