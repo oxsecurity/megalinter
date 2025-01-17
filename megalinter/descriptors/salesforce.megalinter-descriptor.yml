@@ -17,7 +17,7 @@ install:
       ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.9.10
     - |-
       # renovate: datasource=npm depName=sfdx-hardis
-      ARG SFDX_HARDIS_VERSION=5.14.3
+      ARG SFDX_HARDIS_VERSION=5.15.5
     - ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
     - ENV PATH="$JAVA_HOME/bin:${PATH}"
     - |-
@@ -262,7 +262,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=lightning-flow-scanner
-          ARG LIGHTNING_FLOW_SCANNER_VERSION=2.36.0
+          ARG LIGHTNING_FLOW_SCANNER_VERSION=2.37.0
         - |-
           RUN echo y|sf plugins install lightning-flow-scanner@${LIGHTNING_FLOW_SCANNER_VERSION} \
               && (npm cache clean --force || true) \
