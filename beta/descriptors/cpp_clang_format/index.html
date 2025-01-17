@@ -3356,7 +3356,7 @@
 <p><a href="https://github.com/llvm/llvm-project"><img alt="GitHub stars" src="https://img.shields.io/github/stars/llvm/llvm-project?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-autofix-green"><img alt="autofix" src="https://shields.io/badge/-autofix-green"/></a> <a href="https://github.com/llvm/llvm-project/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/llvm/llvm-project?sort=semver"/></a> <a href="https://github.com/llvm/llvm-project/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/llvm/llvm-project"/></a> <a href="https://github.com/llvm/llvm-project/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/llvm/llvm-project"/></a> <a href="https://github.com/llvm/llvm-project/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/llvm/llvm-project"/></a></p>
 <h2 id="clang-format-documentation">clang-format documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>17.0.6</strong></li>
+<li>Version in MegaLinter: <strong>19.1.4</strong></li>
 <li>Visit <a href="https://releases.llvm.org/17.0.1/tools/clang/docs/ClangFormat.html" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://releases.llvm.org/17.0.1/tools/clang/docs/ClangFormatStyleOptions.html#disabling-formatting-on-a-piece-of-code" target="_blank">How to disable clang-format rules in files</a></li>
 <li>See <a href="https://releases.llvm.org/17.0.1/tools/clang/docs/ClangFormat.html" target="_blank">Index of problems detected by clang-format</a></li>
@@ -3506,7 +3506,7 @@
 <td style="text-align: center;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/c_cpp.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/c_cpp.ico"/></a></td>
 <td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/c_cpp/">c_cpp</a></td>
 <td style="text-align: left;">Optimized for pure C/C++ projects</td>
-<td style="text-align: center;">54</td>
+<td style="text-align: center;">53</td>
 <td style="text-align: right;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-c_cpp/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-c_cpp/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-c_cpp"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-c_cpp"/></a></a></td>
 </tr>
 </tbody>
@@ -3534,7 +3534,7 @@ If &lt;file&gt;s are given, it reformats the files. If -i is specified
 together with &lt;file&gt;s, the files are edited in-place. Otherwise, the
 result is written to the standard output.
 
-USAGE: clang-format [options] [&lt;file&gt; ...]
+USAGE: clang-format [options] [@&lt;file&gt;] [&lt;file&gt; ...]
 
 OPTIONS:
 
@@ -3562,13 +3562,14 @@ Clang-format options:
                                      Objective-C: .m .mm
                                      Proto: .proto .protodevel
                                      TableGen: .td
-                                     TextProto: .textpb .pb.txt .textproto .asciipb
+                                     TextProto: .txtpb .textpb .pb.txt .textproto .asciipb
                                      Verilog: .sv .svh .v .vh
   --cursor=&lt;uint&gt;                - The position of the cursor when invoking
                                    clang-format from an editor integration
   --dry-run                      - If set, do not actually make the formatting changes
   --dump-config                  - Dump configuration options to stdout and exit.
                                    Can be used with -style option.
+  --fail-on-incomplete-format    - If set, fail with exit code 1 on incomplete format.
   --fallback-style=&lt;string&gt;      - The name of the predefined style used as a
                                    fallback in case clang-format is invoked with
                                    -style=file, but can not find the .clang-format
@@ -3626,7 +3627,7 @@ Generic Options:
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
 <ul>
 <li>APK packages (Linux):<ul>
-<li><a href="https://pkgs.alpinelinux.org/packages?branch=edge&amp;name=clang17-extra-tools">clang17-extra-tools</a></li>
+<li><a href="https://pkgs.alpinelinux.org/packages?branch=edge&amp;name=clang19-extra-tools">clang19-extra-tools</a></li>
 </ul>
 </li>
 </ul>

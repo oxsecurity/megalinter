@@ -3348,7 +3348,7 @@
 The default configuration enables all supported languages and rules, which may not be optimal for every project.</p>
 <h2 id="tflint-documentation">tflint documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>0.54.0</strong></li>
+<li>Version in MegaLinter: <strong>0.55.0</strong></li>
 <li>Visit <a href="https://github.com/terraform-linters/tflint#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/terraform-linters/tflint/blob/master/docs/user-guide/config.md" target="_blank">How to configure tflint rules</a><ul>
 <li>If custom <code>.tflint.hcl</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.tflint.hcl" target="_blank">.tflint.hcl</a> will be used</li>
@@ -3487,7 +3487,7 @@ The default configuration enables all supported languages and rules, which may n
 <td style="text-align: center;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico"/></a></td>
 <td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/terraform/">terraform</a></td>
 <td style="text-align: left;">Optimized for TERRAFORM based projects</td>
-<td style="text-align: center;">54</td>
+<td style="text-align: center;">53</td>
 <td style="text-align: right;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform"/></a></a></td>
 </tr>
 </tbody>
@@ -3599,7 +3599,7 @@ Help Options:
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile"># renovate: datasource=docker depName=ghcr.io/terraform-linters/tflint
-ARG TERRAFORM_TFLINT_VERSION=0.54.0
+ARG TERRAFORM_TFLINT_VERSION=0.55.0
 FROM ghcr.io/terraform-linters/tflint:v${TERRAFORM_TFLINT_VERSION} AS tflint
 COPY --link --from=tflint /usr/local/bin/tflint /usr/bin/
 </code></pre>

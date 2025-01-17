@@ -3492,7 +3492,7 @@
 <td style="text-align: center;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico"/></a></td>
 <td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/salesforce/">salesforce</a></td>
 <td style="text-align: left;">Optimized for Salesforce based projects</td>
-<td style="text-align: center;">54</td>
+<td style="text-align: center;">53</td>
 <td style="text-align: right;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce"/></a></a></td>
 </tr>
 </tbody>
@@ -3515,7 +3515,7 @@
 <pre><code class="language-shell">sf flow:scan
 </code></pre>
 <h3 id="help-content">Help content</h3>
-<pre><code class="language-shell"> ›   Warning: @salesforce/cli update available from 2.70.7 to 2.71.6.
+<pre><code class="language-shell"> ›   Warning: @salesforce/cli update available from 2.70.7 to 2.72.21.
 Find and fix potential bugs in Salesforce flows.
 
 USAGE
@@ -3551,7 +3551,7 @@ ARG SALESFORCE_CLI_VERSION=2.70.7
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
 ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.9.10
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=5.15.2
+ARG SFDX_HARDIS_VERSION=5.15.5
 ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 RUN sf plugins install @salesforce/plugin-packaging@${SALESFORCE_PLUGIN_PACKAGING_VERSION} \
