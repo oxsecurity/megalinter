@@ -10,6 +10,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Core
   - PHP Linters use now the `bartlett/sarif-php-converters` first official release 1.0.0 to generate SARIF reports
+  - [Upgrade PHP engine from 8.3 to 8.4](https://github.com/oxsecurity/megalinter/issues/4351) and allow Psalm 5.26 to run on this context (by @llaville)
 
 - New linters
   - Reactivate clj-style (Clojure formatter) since its bug is fixed
