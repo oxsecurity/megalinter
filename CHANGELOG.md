@@ -10,6 +10,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Core
   - PHP Linters use now the `bartlett/sarif-php-converters` first official release 1.0.0 to generate SARIF reports
+  - Linters can specify in the pre/post commands with a `continue_if_failed` parameter whether the command is to be executed before the execution of the linters themselves (by @bdovaz in [#4482](https://github.com/oxsecurity/megalinter/pull/4482))
 
 - New linters
   - Reactivate clj-style (Clojure formatter) since its bug is fixed

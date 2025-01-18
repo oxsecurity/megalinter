@@ -41,9 +41,9 @@
       "description": "Command information",
       "$ref": "#/definitions/command_info",
       "properties": {
-        "parallel": {
-          "default": true,
-          "title": "Process command in parallel",
+        "run_before_linters": {
+          "default": false,
+          "title": "Process command before running linters",
           "type": "boolean"
         }
       },

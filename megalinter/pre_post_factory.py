@@ -34,15 +34,15 @@ def run_descriptor_post_commands(mega_linter, descriptor_id):
 
 
 # Commands to run before a linter (defined in descriptors)
-def run_linter_pre_commands(mega_linter, linter, parallel=None):
+def run_linter_pre_commands(mega_linter, linter, run_before_linters=None):
     if linter.pre_commands is not None:
         filtered_commands: list = []
 
-        if parallel is None:
+        if run_before_linters is None:
             filtered_commands = linter.pre_commands
         else:
             for command_info in linter.pre_commands:
-                if command_info.get("parallel", True) is parallel:
+                if command_info.get("run_before_linters", False) is run_before_linters:
                     filtered_commands += command_info
 
         return run_commands(
@@ -52,15 +52,15 @@ def run_linter_pre_commands(mega_linter, linter, parallel=None):
 
 
 # Commands to run before a linter (defined in descriptors)
-def run_linter_post_commands(mega_linter, linter, parallel=None):
+def run_linter_post_commands(mega_linter, linter, run_before_linters=None):
     if linter.post_commands is not None:
         filtered_commands: list = []
 
-        if parallel is None:
+        if run_before_linters is None:
             filtered_commands = linter.post_commands
         else:
             for command_info in linter.post_commands:
-                if command_info.get("parallel", True) is parallel:
+                if command_info.get("run_before_linters", False) is run_before_linters:
                     filtered_commands += command_info
 
         return run_commands(

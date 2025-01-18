@@ -1182,6 +1182,7 @@ PRE_COMMANDS:
   - command: npm install eslint-plugin-whatever
     cwd: root        # Will be run at the root of MegaLinter docker image
     secured_env: true  # True by default, but if defined to false, no global variable will be hidden (for example if you need GITHUB_TOKEN)
+    run_before_linters: True # Will be run before the execution of the linters themselves, required for npm/pip commands that cannot be run in parallel
   - command: echo "pre-test command has been called"
     cwd: workspace   # Will be run at the root of the workspace (usually your repository root)
     continue_if_failed: False  # Will stop the process if command is failed (return code > 0)
