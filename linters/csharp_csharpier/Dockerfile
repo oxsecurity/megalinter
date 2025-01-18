@@ -146,7 +146,7 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #############################################################################################
 #OTHER__START
 # CSHARP installation
-RUN apk add --no-cache dotnet8-sdk
+RUN apk add --no-cache dotnet9-sdk
 ENV PATH="${PATH}:/root/.dotnet/tools"
 #
 # csharpier installation

@@ -279,7 +279,7 @@ RUN curl -L https://github.com/PowerShell/PowerShell/releases/download/v${POWERS
     && ln -s /opt/microsoft/powershell/7/pwsh /usr/bin/pwsh \
 #
 # CSHARP installation
-    && apk add --no-cache dotnet8-sdk
+    && apk add --no-cache dotnet9-sdk
 ENV PATH="${PATH}:/root/.dotnet/tools"
 #
 # KOTLIN installation
@@ -296,7 +296,7 @@ ENV PATH="$JAVA_HOME/bin:${PATH}"
 #
 # VBDOTNET installation
 # Next line commented because already managed by another linter
-# RUN apk add --no-cache dotnet8-sdk
+# RUN apk add --no-cache dotnet9-sdk
 # Next line commented because already managed by another linter
 # ENV PATH="${PATH}:/root/.dotnet/tools"
 #
@@ -405,7 +405,7 @@ RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/rel
 #
 # tsqllint installation
 # Next line commented because already managed by another linter
-# RUN apk add --no-cache dotnet8-sdk
+# RUN apk add --no-cache dotnet9-sdk
 # Next line commented because already managed by another linter
 # ENV PATH="${PATH}:/root/.dotnet/tools"
     && dotnet tool install --global TSQLLint
