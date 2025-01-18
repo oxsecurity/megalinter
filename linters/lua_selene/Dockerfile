@@ -49,7 +49,7 @@ FROM python:3.12.8-alpine3.21
 #############################################################################################
 #ARG__START
 # renovate: datasource=crate depName=selene
-ARG LUA_SELENE_VERSION=0.27.1
+ARG LUA_SELENE_VERSION=0.28.0
 #ARG__END
 
 ####################
