@@ -204,6 +204,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [xmllint](https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home) from 21207 to **21304** on 2025-01-17
   - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 2.36.0 to **2.37.0** on 2025-01-17
   - [php-cs-fixer](https://cs.symfony.com/) from 3.68.0 to **7.4.0** on 2025-01-18
+  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 8.0.112 to **9.0.101** on 2025-01-18
+  - [selene](https://kampfkarren.github.io/selene/) from 0.27.1 to **0.28.0** on 2025-01-18
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.68.0 to **7.4.0** on 2025-01-18
+  - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.23.0 to **8.23.1** on 2025-01-18
 <!-- linter-versions-end -->
 
 ## [v8.3.0] - 2024-11-23

@@ -34,7 +34,7 @@ description: dotnet-format is available to analyze VBDOTNET files in MegaLinter
 
 - Dockerfile commands :
 ```dockerfile
-RUN apk add --no-cache dotnet8-sdk
+RUN apk add --no-cache dotnet9-sdk
 ENV PATH="${PATH}:/root/.dotnet/tools"
 ```
 

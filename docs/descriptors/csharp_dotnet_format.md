@@ -11,7 +11,7 @@ dotnet-format requires a `.sln` or `.csproj` file to run correctly.
 
 ## dotnet-format documentation
 
-- Version in MegaLinter: **8.0.112**
+- Version in MegaLinter: **9.0.101**
 - Visit [Official Web Site](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format){target=_blank}
 - See [How to configure dotnet-format rules](https://github.com/dotnet/sdk/tree/main/documentation/format/docs){target=_blank}
 
@@ -114,12 +114,10 @@ Options:
   --binarylog <binary-log-path>                                            Log all project or solution load information to a binary log file.
   --report <report-path>                                                   Accepts a file path which if provided will produce a json report in the given directory.
 
-
 Commands:
   whitespace <PROJECT | SOLUTION>  Run whitespace formatting. [default: /]
   style <PROJECT | SOLUTION>       Run code style analyzers and apply fixes. [default: /]
   analyzers <PROJECT | SOLUTION>   Run 3rd party analyzers and apply fixes. [default: /]
-
 
 ```
 
