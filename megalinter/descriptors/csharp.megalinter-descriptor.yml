@@ -9,7 +9,7 @@ file_extensions:
   - ".cs"
 install:
   dockerfile:
-    - RUN apk add --no-cache dotnet8-sdk
+    - RUN apk add --no-cache dotnet9-sdk
     - ENV PATH="${PATH}:/root/.dotnet/tools"
 linters:
   # DOTNET FORMAT

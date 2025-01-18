@@ -48,6 +48,8 @@ Run `make` for Makefile help. Initialize virtualenv and install dependencies wit
 
 You can lint with `make megalinter` (Incoming)
 
+If you need to run `build.sh` commands manually you need to run `source .venv/bin/activate` first.
+
 ### 5. Submit a pull request
 
 [Create a pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request-from-a-fork) and [refer to the issue number](https://help.github.com/en/github/writing-on-github/autolinked-references-and-urls) using #123, where 123 is the issue number.

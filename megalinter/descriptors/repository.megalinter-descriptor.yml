@@ -103,7 +103,7 @@ linters:
       - "devskim analyze --file-format sarif --options-json config --source-code ."
     install:
       dockerfile:
-        - RUN apk add --no-cache dotnet8-sdk
+        - RUN apk add --no-cache dotnet9-sdk
         - ENV PATH="${PATH}:/root/.dotnet/tools"
         - RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI
     ide:
@@ -189,6 +189,18 @@ linters:
           - \* `PULL_REQUEST` environment variable must be set to `true` only on Pull Requests, so you must calculate the value in your pipeline and pass the outcome.
       - PR commits scan feature, if applicable, will override your `--log-opts` argument if you used it in the `REPOSITORY_GITLEAKS_ARGUMENTS`.
 
+      ### Azure Pipelines environment variables on Pull Requests
+
+      In the case of Azure Pipelines when running in a Docker container, we have to explicitly pass some environment variables:
+
+      ```bash
+        docker run -v $(System.DefaultWorkingDirectory):/tmp/lint \
+            -e SYSTEM_PULLREQUEST_SOURCECOMMITID=$(System.PullRequest.SourceCommitId) \
+            -e SYSTEM_PULLREQUEST_TARGETBRANCH=$(System.PullRequest.TargetBranch) \
+            -e BUILD_REASON=$(Build.Reason) \
+            oxsecurity/megalinter:v8
+      ```
+
       ### Repository checkout on Pull Requests
 
       To scan only PR commits, the [shallow fetch](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---depthltdepthgt){target=_blank} for a repository checkout has to be 0. Below is an example configuration for supported platforms:
@@ -248,7 +260,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=docker depName=zricethezav/gitleaks
-          ARG REPOSITORY_GITLEAKS_VERSION=v8.22.1
+          ARG REPOSITORY_GITLEAKS_VERSION=v8.23.1
         - FROM zricethezav/gitleaks:${REPOSITORY_GITLEAKS_VERSION} AS gitleaks
         - COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
     variables:

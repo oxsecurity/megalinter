@@ -3106,6 +3106,10 @@ def get_badges(
     badges = []
     repo = get_github_repo(linter)
 
+    if (hasattr(linter, "get") and linter.get("disabled") is True) or (
+        hasattr(linter, "disabled") and linter.disabled is True
+    ):
+        badges += ["![disabled](https://shields.io/badge/-disabled-orange)"]
     if (hasattr(linter, "get") and linter.get("deprecated") is True) or (
         hasattr(linter, "deprecated") and linter.deprecated is True
     ):
