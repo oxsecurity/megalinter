@@ -73,18 +73,18 @@ RUN apk add --no-cache \
                 musl-dev \
                 openssh \
                 gnupg \
-                php83 \
-                php83-phar \
-                php83-mbstring \
-                php83-xmlwriter \
-                php83-tokenizer \
-                php83-ctype \
-                php83-curl \
-                php83-dom \
-                php83-opcache \
-                php83-openssl \
-                php83-common \
-                php83-simplexml \
+                php84 \
+                php84-phar \
+                php84-mbstring \
+                php84-xmlwriter \
+                php84-tokenizer \
+                php84-ctype \
+                php84-curl \
+                php84-dom \
+                php84-opcache \
+                php84-openssl \
+                php84-common \
+                php84-simplexml \
                 dpkg \
     && git config --global core.autocrlf true
 #APK__END
@@ -160,23 +160,9 @@ COPY --from=composer/composer:2-bin /composer /usr/bin/composer
 #############################################################################################
 #OTHER__START
 # PHP installation
-RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" \
-    && export GITHUB_AUTH_TOKEN \
-    && wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
-    && wget --tries=5 -q -O phive.phar.asc https://phar.io/releases/phive.phar.asc \
-    && PHAR_KEY_ID="0x6AF725270AB81E04D79442549D8A98B29B2D5D79" \
-    && ( gpg --keyserver hkps://keys.openpgp.org --recv-keys "$PHAR_KEY_ID" \
-       || gpg --keyserver hkps://keyserver.ubuntu.com --recv-keys "$PHAR_KEY_ID" \
-       || gpg --keyserver keyserver.pgp.com --recv-keys "$PHAR_KEY_ID" \
-       || gpg --keyserver pgp.mit.edu --recv-keys "$PHAR_KEY_ID" ) \
-    && gpg --verify phive.phar.asc phive.phar \
-    && chmod +x phive.phar \
-    && mv phive.phar /usr/local/bin/phive \
-    && rm phive.phar.asc \
-    && update-alternatives --install /usr/bin/php php /usr/bin/php83 110
-
 # Managed with COPY --from=composer/composer:2-bin /composer /usr/bin/composer
 ENV PATH="/root/.composer/vendor/bin:${PATH}"
+ENV PHP_CS_FIXER_IGNORE_ENV=true
 #
 # phpstan installation
 RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer config --global allow-plugins.phpstan/extension-installer true && composer global require phpstan/phpstan phpstan/extension-installer bartlett/sarif-php-converters
