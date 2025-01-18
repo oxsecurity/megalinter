@@ -10,6 +10,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Core
   - PHP Linters use now the `bartlett/sarif-php-converters` first official release 1.0.0 to generate SARIF reports
+  - [Upgrade PHP engine from 8.3 to 8.4](https://github.com/oxsecurity/megalinter/issues/4351) and allow Psalm 5.26 to run on this context (by @llaville)
 
 - New linters
   - Reactivate clj-style (Clojure formatter) since its bug is fixed
@@ -202,6 +203,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [tflint](https://github.com/terraform-linters/tflint) from 0.54.0 to **0.55.0** on 2025-01-17
   - [xmllint](https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home) from 21207 to **21304** on 2025-01-17
   - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 2.36.0 to **2.37.0** on 2025-01-17
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.68.0 to **7.4.0** on 2025-01-18
 <!-- linter-versions-end -->
 
 ## [v8.3.0] - 2024-11-23
