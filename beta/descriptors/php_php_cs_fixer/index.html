@@ -3361,7 +3361,7 @@
 </ul>
 <h2 id="php-cs-fixer-documentation">php-cs-fixer documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>3.68.0</strong></li>
+<li>Version in MegaLinter: <strong>7.4.0</strong></li>
 <li>Visit <a href="https://cs.symfony.com/" target="_blank">Official Web Site</a><ul>
 <li>If custom <code>.php-cs-fixer.dist.php</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.php-cs-fixer.dist.php" target="_blank">.php-cs-fixer.dist.php</a> will be used</li>
 </ul>
@@ -3550,7 +3550,10 @@
 <pre><code class="language-shell">php-cs-fixer check --config .php-cs-fixer.php
 </code></pre>
 <h3 id="help-content">Help content</h3>
-<pre><code class="language-shell">Description:
+<pre><code class="language-shell">PHP needs to be a minimum version of PHP 7.4.0 and maximum version of PHP 8.3.*.
+Current PHP version: 8.4.3.
+Ignoring environment requirements because `PHP_CS_FIXER_IGNORE_ENV` is set. Execution may be unstable.
+Description:
   List commands
 
 Usage:
@@ -3593,23 +3596,10 @@ Help:
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile"># Parent descriptor install
-RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" \
-    &amp;&amp; export GITHUB_AUTH_TOKEN \
-    &amp;&amp; wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
-    &amp;&amp; wget --tries=5 -q -O phive.phar.asc https://phar.io/releases/phive.phar.asc \
-    &amp;&amp; PHAR_KEY_ID="0x6AF725270AB81E04D79442549D8A98B29B2D5D79" \
-    &amp;&amp; ( gpg --keyserver hkps://keys.openpgp.org --recv-keys "$PHAR_KEY_ID" \
-       || gpg --keyserver hkps://keyserver.ubuntu.com --recv-keys "$PHAR_KEY_ID" \
-       || gpg --keyserver keyserver.pgp.com --recv-keys "$PHAR_KEY_ID" \
-       || gpg --keyserver pgp.mit.edu --recv-keys "$PHAR_KEY_ID" ) \
-    &amp;&amp; gpg --verify phive.phar.asc phive.phar \
-    &amp;&amp; chmod +x phive.phar \
-    &amp;&amp; mv phive.phar /usr/local/bin/phive \
-    &amp;&amp; rm phive.phar.asc \
-    &amp;&amp; update-alternatives --install /usr/bin/php php /usr/bin/php83 110
-
+RUN update-alternatives --install /usr/bin/php php /usr/bin/php84 110
 COPY --from=composer/composer:2-bin /composer /usr/bin/composer
 ENV PATH="/root/.composer/vendor/bin:${PATH}"
+ENV PHP_CS_FIXER_IGNORE_ENV=true
 # Linter install
 RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" &amp;&amp; export GITHUB_AUTH_TOKEN &amp;&amp; composer global require friendsofphp/php-cs-fixer
 

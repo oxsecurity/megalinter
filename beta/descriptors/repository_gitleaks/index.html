@@ -3495,7 +3495,7 @@
 </code></pre>
 <h2 id="gitleaks-documentation">gitleaks documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>8.23.0</strong></li>
+<li>Version in MegaLinter: <strong>8.23.1</strong></li>
 <li>Visit <a href="https://github.com/gitleaks/gitleaks#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/gitleaks/gitleaks#configuration" target="_blank">How to configure gitleaks rules</a><ul>
 <li>If custom <code>.gitleaks.toml</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.gitleaks.toml" target="_blank">.gitleaks.toml</a> will be used</li>
@@ -3795,7 +3795,7 @@ Use "gitleaks [command] --help" for more information about a command.
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile"># renovate: datasource=docker depName=zricethezav/gitleaks
-ARG REPOSITORY_GITLEAKS_VERSION=v8.23.0
+ARG REPOSITORY_GITLEAKS_VERSION=v8.23.1
 FROM zricethezav/gitleaks:${REPOSITORY_GITLEAKS_VERSION} AS gitleaks
 COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 </code></pre>
