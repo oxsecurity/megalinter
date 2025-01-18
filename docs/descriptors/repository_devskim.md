@@ -120,7 +120,7 @@ devskim 1.0.51+210b5d121e
 
 - Dockerfile commands :
 ```dockerfile
-RUN apk add --no-cache dotnet8-sdk
+RUN apk add --no-cache dotnet9-sdk
 ENV PATH="${PATH}:/root/.dotnet/tools"
 RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI
 ```

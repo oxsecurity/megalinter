@@ -2098,12 +2098,10 @@
         "  --binarylog <binary-log-path>                                            Log all project or solution load information to a binary log file.",
         "  --report <report-path>                                                   Accepts a file path which if provided will produce a json report in the given directory.",
         "",
-        "",
         "Commands:",
         "  whitespace <PROJECT | SOLUTION>  Run whitespace formatting. [default: /]",
         "  style <PROJECT | SOLUTION>       Run code style analyzers and apply fixes. [default: /]",
         "  analyzers <PROJECT | SOLUTION>   Run 3rd party analyzers and apply fixes. [default: /]",
-        "",
         ""
     ],
     "dustilock": [
@@ -3470,7 +3468,7 @@
         "  completion  Generate autocompletion script",
         "  config      Handle cached configurations",
         "  delete      Delete configurations in Kubescape SaaS version",
-        "  download    Download attack-tracks,controls-inputs,exceptions,control,framework,artifacts",
+        "  download    Download controls-inputs,exceptions,control,framework,artifacts,attack-tracks",
         "  fix         Fix misconfiguration in files",
         "  help        Help about any command",
         "  list        List frameworks/controls will list the supported frameworks and controls",
@@ -4493,6 +4491,9 @@
         ""
     ],
     "php-cs-fixer": [
+        "PHP needs to be a minimum version of PHP 7.4.0 and maximum version of PHP 8.3.*.",
+        "Current PHP version: 8.4.3.",
+        "Ignoring environment requirements because `PHP_CS_FIXER_IGNORE_ENV` is set. Execution may be unstable.",
         "Description:",
         "  List commands",
         "",
@@ -7298,7 +7299,7 @@
         ""
     ],
     "selene": [
-        "selene 0.27.1",
+        "selene 0.28.0",
         "",
         "USAGE:",
         "    selene [FLAGS] [OPTIONS] <files>...",

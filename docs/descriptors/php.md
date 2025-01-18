@@ -38,37 +38,24 @@ description: phpcs, phpstan, psalm, phplint, php-cs-fixer are available to analy
 
 - Dockerfile commands :
 ```dockerfile
-RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" \
-    && export GITHUB_AUTH_TOKEN \
-    && wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
-    && wget --tries=5 -q -O phive.phar.asc https://phar.io/releases/phive.phar.asc \
-    && PHAR_KEY_ID="0x6AF725270AB81E04D79442549D8A98B29B2D5D79" \
-    && ( gpg --keyserver hkps://keys.openpgp.org --recv-keys "$PHAR_KEY_ID" \
-       || gpg --keyserver hkps://keyserver.ubuntu.com --recv-keys "$PHAR_KEY_ID" \
-       || gpg --keyserver keyserver.pgp.com --recv-keys "$PHAR_KEY_ID" \
-       || gpg --keyserver pgp.mit.edu --recv-keys "$PHAR_KEY_ID" ) \
-    && gpg --verify phive.phar.asc phive.phar \
-    && chmod +x phive.phar \
-    && mv phive.phar /usr/local/bin/phive \
-    && rm phive.phar.asc \
-    && update-alternatives --install /usr/bin/php php /usr/bin/php83 110
-
+RUN update-alternatives --install /usr/bin/php php /usr/bin/php84 110
 COPY --from=composer/composer:2-bin /composer /usr/bin/composer
 ENV PATH="/root/.composer/vendor/bin:${PATH}"
+ENV PHP_CS_FIXER_IGNORE_ENV=true
 ```
 
 - APK packages (Linux):
   - [gnupg](https://pkgs.alpinelinux.org/packages?branch=edge&name=gnupg)
-  - [php83](https://pkgs.alpinelinux.org/packages?branch=edge&name=php83)
-  - [php83-phar](https://pkgs.alpinelinux.org/packages?branch=edge&name=php83-phar)
-  - [php83-mbstring](https://pkgs.alpinelinux.org/packages?branch=edge&name=php83-mbstring)
-  - [php83-xmlwriter](https://pkgs.alpinelinux.org/packages?branch=edge&name=php83-xmlwriter)
-  - [php83-tokenizer](https://pkgs.alpinelinux.org/packages?branch=edge&name=php83-tokenizer)
-  - [php83-ctype](https://pkgs.alpinelinux.org/packages?branch=edge&name=php83-ctype)
-  - [php83-curl](https://pkgs.alpinelinux.org/packages?branch=edge&name=php83-curl)
-  - [php83-dom](https://pkgs.alpinelinux.org/packages?branch=edge&name=php83-dom)
-  - [php83-opcache](https://pkgs.alpinelinux.org/packages?branch=edge&name=php83-opcache)
-  - [php83-openssl](https://pkgs.alpinelinux.org/packages?branch=edge&name=php83-openssl)
-  - [php83-common](https://pkgs.alpinelinux.org/packages?branch=edge&name=php83-common)
-  - [php83-simplexml](https://pkgs.alpinelinux.org/packages?branch=edge&name=php83-simplexml)
+  - [php84](https://pkgs.alpinelinux.org/packages?branch=edge&name=php84)
+  - [php84-phar](https://pkgs.alpinelinux.org/packages?branch=edge&name=php84-phar)
+  - [php84-mbstring](https://pkgs.alpinelinux.org/packages?branch=edge&name=php84-mbstring)
+  - [php84-xmlwriter](https://pkgs.alpinelinux.org/packages?branch=edge&name=php84-xmlwriter)
+  - [php84-tokenizer](https://pkgs.alpinelinux.org/packages?branch=edge&name=php84-tokenizer)
+  - [php84-ctype](https://pkgs.alpinelinux.org/packages?branch=edge&name=php84-ctype)
+  - [php84-curl](https://pkgs.alpinelinux.org/packages?branch=edge&name=php84-curl)
+  - [php84-dom](https://pkgs.alpinelinux.org/packages?branch=edge&name=php84-dom)
+  - [php84-opcache](https://pkgs.alpinelinux.org/packages?branch=edge&name=php84-opcache)
+  - [php84-openssl](https://pkgs.alpinelinux.org/packages?branch=edge&name=php84-openssl)
+  - [php84-common](https://pkgs.alpinelinux.org/packages?branch=edge&name=php84-common)
+  - [php84-simplexml](https://pkgs.alpinelinux.org/packages?branch=edge&name=php84-simplexml)
   - [dpkg](https://pkgs.alpinelinux.org/packages?branch=edge&name=dpkg)
