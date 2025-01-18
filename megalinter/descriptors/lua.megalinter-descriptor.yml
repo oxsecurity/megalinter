@@ -78,7 +78,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=crate depName=selene
-          ARG LUA_SELENE_VERSION=0.27.1
+          ARG LUA_SELENE_VERSION=0.28.0
     ide:
       neovim:
         - name:

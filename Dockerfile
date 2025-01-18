@@ -125,7 +125,7 @@ ARG PMD_VERSION=7.9.0
 ARG DETEKT_VERSION=1.23.7
 
 # renovate: datasource=crate depName=selene
-ARG LUA_SELENE_VERSION=0.27.1
+ARG LUA_SELENE_VERSION=0.28.0
 # renovate: datasource=crate depName=stylua
 ARG LUA_STYLUA_VERSION=2.0.0
 # renovate: datasource=nuget depName=PSScriptAnalyzer registryUrl=https://www.powershellgallery.com/api/v2/
