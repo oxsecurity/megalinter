@@ -50,7 +50,6 @@ FROM python:3.12.8-alpine3.21
 #ARG__START
 # renovate: datasource=nuget depName=roslynator.dotnet.cli
 ARG CSHARP_ROSLYNATOR_VERSION=0.9.3
-
 #ARG__END
 
 ####################
@@ -152,7 +151,7 @@ RUN apk add --no-cache dotnet9-sdk
 ENV PATH="${PATH}:/root/.dotnet/tools"
 #
 # roslynator installation
-RUN dotnet tool install -g roslynator.dotnet.cli --version ${CSHARP_ROSLYNATOR_VERSION}
+RUN dotnet tool install -g roslynator.dotnet.cli --version "${CSHARP_ROSLYNATOR_VERSION}"
 #
 #OTHER__END
 
