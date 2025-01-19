@@ -50,7 +50,6 @@ FROM python:3.12.8-alpine3.21
 #ARG__START
 # renovate: datasource=github-tags depName=greglook/cljstyle
 ARG CLJ_STYLE_VERSION=0.17.642
-
 #ARG__END
 
 ####################
@@ -192,7 +191,7 @@ RUN ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases
 # cljstyle installation
     && curl --retry 5 --retry-delay 5 -sLO https://raw.githubusercontent.com/greglook/cljstyle/refs/tags/${CLJ_STYLE_VERSION}/util/install-cljstyle \
     && chmod +x install-cljstyle \
-    && ./install-cljstyle --static
+    && ./install-cljstyle
 
 #
 #OTHER__END

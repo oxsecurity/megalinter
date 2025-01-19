@@ -119,12 +119,11 @@ ARG ARM_TTK_DIRECTORY='/opt/microsoft'
 ARG BICEP_EXE='bicep'
 ARG BICEP_URI='https://github.com/Azure/bicep/releases/latest/download/bicep-linux-musl-x64'
 ARG BICEP_DIR='/usr/local/bin'
-# renovate: datasource=github-tags depName=greglook/cljstyle
-ARG CLJ_STYLE_VERSION=0.17.642
-
 # renovate: datasource=github-tags depName=clj-kondo/clj-kondo
 ARG CLJ_KONDO_VERSION=2025.01.16
 
+# renovate: datasource=github-tags depName=greglook/cljstyle
+ARG CLJ_STYLE_VERSION=0.17.642
 ARG DART_VERSION='2.8.4'
 # renovate: datasource=github-tags depName=pmd/pmd extractVersion=^pmd_releases/(?<version>.*)$
 ARG PMD_VERSION=7.9.0
@@ -605,7 +604,7 @@ RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
 # cljstyle installation
     && curl --retry 5 --retry-delay 5 -sLO https://raw.githubusercontent.com/greglook/cljstyle/refs/tags/${CLJ_STYLE_VERSION}/util/install-cljstyle \
     && chmod +x install-cljstyle \
-    && ./install-cljstyle --static \
+    && ./install-cljstyle \
 #
 # csharpier installation
     && dotnet tool install --global csharpier \
