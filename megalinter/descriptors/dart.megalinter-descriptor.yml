@@ -68,7 +68,8 @@ linters:
       ## stable dart sdk: https://dart.dev/get-dart#release-channels
       ## install alpine-pkg-glibc (glibc compatibility layer package for Alpine Linux)
       dockerfile:
-        - ARG DART_VERSION='2.8.4'
+        # renovate: datasource=dart
+        - ARG DART_VERSION='3.6.1'
         - |
           RUN wget --tries=5 https://storage.googleapis.com/dart-archive/channels/stable/release/${DART_VERSION}/sdk/dartsdk-linux-x64-release.zip -O - -q | unzip -q - \
               && chmod +x dart-sdk/bin/dart* \
