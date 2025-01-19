@@ -134,7 +134,10 @@ linters:
       - "shfmt -w myfile.sh" # Fix
     install:
       dockerfile:
-        - FROM mvdan/shfmt:latest-alpine AS shfmt
+        - |-
+          # renovate: datasource=docker depName=rhysd/actionlint
+          ARG BASH_SHFMT_VERSION=v3.10.0-alpine
+        - FROM mvdan/shfmt:${BASH_SHFMT_VERSION} AS shfmt
         - COPY --link --from=shfmt /bin/shfmt /usr/bin/
     ide:
       atom:
