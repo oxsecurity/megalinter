@@ -48,7 +48,7 @@ def run_linters(linters, request_id):
     global REQUEST_CONFIG
     config.set_config(request_id, REQUEST_CONFIG)
     for linter in linters:
-        linter.run(run_before_linters=False, run_after_linters=False)
+        linter.run(run_commands_before_linters=False, run_commands_after_linters=False)
     return linters
 
 
