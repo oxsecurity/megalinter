@@ -87,9 +87,14 @@ ARG SALESFORCE_CLI_VERSION=2.70.7
 ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.9.10
 # renovate: datasource=npm depName=sfdx-hardis
 ARG SFDX_HARDIS_VERSION=5.15.5
+# renovate: datasource=github-tags depName=pinterest/ktlint
+ARG KTLINT_VERSION=1.5.0
+
 # renovate: datasource=github-tags depName=detekt/detekt
 ARG DETEKT_VERSION=1.23.7
 
+# renovate: datasource=npm depName=markdown-link-check
+ARG MARKDOWN_MARKDOWN_LINK_CHECK_VERSION=3.12.2
 # renovate: datasource=npm depName=@salesforce/sfdx-scanner
 ARG SALESFORCE_SFDX_SCANNER_VERSION=4.7.0
 # renovate: datasource=npm depName=lightning-flow-scanner
@@ -211,7 +216,7 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 npm-package-json-lint \
                 npm-package-json-lint-config-default \
                 markdownlint-cli \
-                markdown-link-check@3.12.2 \
+                markdown-link-check@${MARKDOWN_MARKDOWN_LINK_CHECK_VERSION} \
                 markdown-table-formatter \
                 @ls-lint/ls-lint \
                 secretlint \
@@ -314,7 +319,7 @@ RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: Fil
 ENV JAVA_HOME_17=/usr/lib/jvm/java-17-openjdk
 #
 # ktlint installation
-RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/releases/latest/download/ktlint && \
+RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/releases/download/${KTLINT_VERSION}/ktlint && \
     chmod a+x ktlint && \
     mv "ktlint" /usr/bin/ \
 #
@@ -332,6 +337,8 @@ RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/rel
 # kubescape installation
     && ln -s /lib/libc.so.6 /usr/lib/libresolv.so.2 && \
     curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash -s -- -v v2.9.0 \
+#
+# markdown-link-check installation
 #
 # protolint installation
 # Managed with COPY --link --from=protolint /usr/local/bin/protolint /usr/bin/
