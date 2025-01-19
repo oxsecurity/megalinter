@@ -100,6 +100,9 @@ ARG PMD_VERSION=7.9.0
 # renovate: datasource=github-tags depName=detekt/detekt
 ARG DETEKT_VERSION=1.23.7
 
+# renovate: datasource=github-tags depName=kubescape/kubescape
+ARG KUBERNETES_KUBESCAPE_VERSION=3.0.24
+
 # renovate: datasource=pypi depName=sqlfluff
 ARG SQL_SQLFLUFF_VERSION=3.3.0
 #ARG__END
@@ -482,7 +485,7 @@ RUN wget --quiet https://github.com/pmd/pmd/releases/download/pmd_releases%2F${P
 #
 # kubescape installation
     && ln -s /lib/libc.so.6 /usr/lib/libresolv.so.2 && \
-    curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash -s -- -v v2.9.0
+    curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/refs/tags/v${KUBERNETES_KUBESCAPE_VERSION}/install.sh | /bin/bash -s -- -v v2.9.0
 #
 # phpcs installation
 RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require squizlabs/php_codesniffer bartlett/sarif-php-converters

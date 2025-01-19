@@ -91,6 +91,9 @@ ARG BICEP_DIR='/usr/local/bin'
 # renovate: datasource=github-tags depName=detekt/detekt
 ARG DETEKT_VERSION=1.23.7
 
+# renovate: datasource=github-tags depName=kubescape/kubescape
+ARG KUBERNETES_KUBESCAPE_VERSION=3.0.24
+
 # renovate: datasource=nuget depName=PSScriptAnalyzer registryUrl=https://www.powershellgallery.com/api/v2/
 ARG PSSA_VERSION='1.23.0'
 
@@ -387,7 +390,7 @@ RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/rel
 #
 # kubescape installation
     && ln -s /lib/libc.so.6 /usr/lib/libresolv.so.2 && \
-    curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash -s -- -v v2.9.0 \
+    curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/refs/tags/v${KUBERNETES_KUBESCAPE_VERSION}/install.sh | /bin/bash -s -- -v v2.9.0 \
 #
 # powershell installation
     && pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSION} -Scope AllUsers -Force' \

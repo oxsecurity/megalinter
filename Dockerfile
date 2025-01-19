@@ -124,6 +124,9 @@ ARG PMD_VERSION=7.9.0
 # renovate: datasource=github-tags depName=detekt/detekt
 ARG DETEKT_VERSION=1.23.7
 
+# renovate: datasource=github-tags depName=kubescape/kubescape
+ARG KUBERNETES_KUBESCAPE_VERSION=3.0.24
+
 # renovate: datasource=crate depName=selene
 ARG LUA_SELENE_VERSION=0.28.0
 # renovate: datasource=crate depName=stylua
@@ -663,7 +666,7 @@ RUN wget --quiet https://github.com/pmd/pmd/releases/download/pmd_releases%2F${P
 #
 # kubescape installation
     && ln -s /lib/libc.so.6 /usr/lib/libresolv.so.2 && \
-    curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash -s -- -v v2.9.0 \
+    curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/refs/tags/v${KUBERNETES_KUBESCAPE_VERSION}/install.sh | /bin/bash -s -- -v v2.9.0 \
 #
 # chktex installation
 # Managed with COPY --link --from=chktex /usr/bin/chktex /usr/bin/
