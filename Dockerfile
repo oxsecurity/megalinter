@@ -117,7 +117,8 @@ ARG ARM_TTK_DIRECTORY='/opt/microsoft'
 ARG BICEP_EXE='bicep'
 ARG BICEP_URI='https://github.com/Azure/bicep/releases/latest/download/bicep-linux-musl-x64'
 ARG BICEP_DIR='/usr/local/bin'
-ARG DART_VERSION='2.8.4'
+# renovate: datasource=dart-version depName=dart
+ARG DART_VERSION='3.6.1'
 # renovate: datasource=github-tags depName=pmd/pmd extractVersion=^pmd_releases/(?<version>.*)$
 ARG PMD_VERSION=7.9.0
 
