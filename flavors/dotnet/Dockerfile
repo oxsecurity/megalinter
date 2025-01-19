@@ -85,8 +85,10 @@ ARG POWERSHELL_VERSION=7.4.6
 ARG ARM_TTK_NAME='master.zip'
 ARG ARM_TTK_URI='https://github.com/Azure/arm-ttk/archive/master.zip'
 ARG ARM_TTK_DIRECTORY='/opt/microsoft'
+# renovate: datasource=github-tags depName=Azure/bicep
+ARG BICEP_VERSION=0.32.4
 ARG BICEP_EXE='bicep'
-ARG BICEP_URI='https://github.com/Azure/bicep/releases/latest/download/bicep-linux-musl-x64'
+ARG BICEP_URI='https://github.com/Azure/bicep/releases/download/v${BICEP_VERSION}/bicep-linux-musl-x64'
 ARG BICEP_DIR='/usr/local/bin'
 # renovate: datasource=github-tags depName=detekt/detekt
 ARG DETEKT_VERSION=1.23.7

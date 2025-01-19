@@ -114,8 +114,10 @@ ARG SFDX_HARDIS_VERSION=5.15.5
 ARG ARM_TTK_NAME='master.zip'
 ARG ARM_TTK_URI='https://github.com/Azure/arm-ttk/archive/master.zip'
 ARG ARM_TTK_DIRECTORY='/opt/microsoft'
+# renovate: datasource=github-tags depName=Azure/bicep
+ARG BICEP_VERSION=0.32.4
 ARG BICEP_EXE='bicep'
-ARG BICEP_URI='https://github.com/Azure/bicep/releases/latest/download/bicep-linux-musl-x64'
+ARG BICEP_URI='https://github.com/Azure/bicep/releases/download/v${BICEP_VERSION}/bicep-linux-musl-x64'
 ARG BICEP_DIR='/usr/local/bin'
 ARG DART_VERSION='2.8.4'
 # renovate: datasource=github-tags depName=pmd/pmd extractVersion=^pmd_releases/(?<version>.*)$
