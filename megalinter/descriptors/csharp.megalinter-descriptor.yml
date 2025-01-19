@@ -68,7 +68,10 @@ linters:
       - "csharpier myfile.cs myfile2.cs" # Fix
     install:
       dockerfile:
-        - RUN dotnet tool install --global csharpier
+        - |
+          # renovate: datasource=nuget depName=csharpier
+          ARG CSHARP_CSHARPIER_VERSION=0.30.6
+        - RUN dotnet tool install --global csharpier --version ${CSHARP_CSHARPIER_VERSION}
     ide:
       rider:
         - name: csharpier
@@ -106,7 +109,10 @@ linters:
       - "roslynator fix myproject.csproj" # Fix
     install:
       dockerfile:
-        - RUN dotnet tool install -g roslynator.dotnet.cli
+        - |
+          # renovate: datasource=nuget depName=roslynator.dotnet.cli
+          ARG CSHARP_ROSLYNATOR_VERSION=0.9.3
+        - RUN dotnet tool install -g roslynator.dotnet.cli --version ${CSHARP_ROSLYNATOR_VERSION}
     ide:
       visual_studio:
         - name: Roslynator 2022
