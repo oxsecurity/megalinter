@@ -25,7 +25,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
       Learn more about context on [GH-4328](https://github.com/oxsecurity/megalinter/issues/4328)
 
 - Plugins
-  - Add [prettier for markdown](https://github.com/liblaf/hello-megalinter/tree/main/mega-linter-plugin-prettier), by [Qin Li](https://github.com/liblaf)
+  - Add [prettier for markdown](https://github.com/liblaf/megalinter-plugins/tree/main/mega-linter-plugin-markdown-prettier), by [Qin Li](https://github.com/liblaf)
 
 - Fixes
   - [swiftlint](https://github.com/realm/SwiftLint) Fix swiftlint error where linter is unable to find lintable files. Fixes [#440](https://github.com/oxsecurity/megalinter/issues/440).
