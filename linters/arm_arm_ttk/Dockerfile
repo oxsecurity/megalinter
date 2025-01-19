@@ -51,8 +51,11 @@ FROM python:3.12.8-alpine3.21
 # renovate: datasource=github-tags depName=PowerShell/PowerShell
 ARG POWERSHELL_VERSION=7.4.6
 
-ARG ARM_TTK_NAME='master.zip'
-ARG ARM_TTK_URI='https://github.com/Azure/arm-ttk/archive/master.zip'
+# renovate: datasource=github-tags depName=Azure/arm-ttk
+ARG ARM_TTK_VERSION=20240328
+
+ARG ARM_TTK_NAME='arm-ttk.zip'
+ARG ARM_TTK_URI='https://github.com/Azure/arm-ttk/releases/download/${ARM_TTK_VERSION}/${ARM_TTK_NAME}'
 ARG ARM_TTK_DIRECTORY='/opt/microsoft'
 #ARG__END
 
