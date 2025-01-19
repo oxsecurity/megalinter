@@ -98,6 +98,9 @@ ARG PSSA_VERSION='1.23.0'
 
 # renovate: datasource=pypi depName=sqlfluff
 ARG SQL_SQLFLUFF_VERSION=3.3.0
+# renovate: datasource=nuget depName=TSQLLint
+ARG SQL_TSQLLINT_VERSION=1.16.0
+
 #ARG__END
 
 ####################
@@ -432,7 +435,7 @@ RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/rel
 # RUN apk add --no-cache dotnet9-sdk
 # Next line commented because already managed by another linter
 # ENV PATH="${PATH}:/root/.dotnet/tools"
-    && dotnet tool install --global TSQLLint
+    && dotnet tool install --global TSQLLint --version ${SQL_TSQLLINT_VERSION}
 #
 #OTHER__END
 
