@@ -45,6 +45,11 @@
           "default": false,
           "title": "Process command before running linters",
           "type": "boolean"
+        },
+        "run_after_linters": {
+          "default": false,
+          "title": "Process command after running linters",
+          "type": "boolean"
         }
       },
       "required": [],
