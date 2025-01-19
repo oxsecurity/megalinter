@@ -50,7 +50,6 @@ FROM python:3.12.8-alpine3.21
 #ARG__START
 # renovate: datasource=nuget depName=TSQLLint
 ARG SQL_TSQLLINT_VERSION=1.16.0
-
 #ARG__END
 
 ####################

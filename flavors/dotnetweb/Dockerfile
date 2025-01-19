@@ -100,7 +100,6 @@ ARG PSSA_VERSION='1.23.0'
 ARG SQL_SQLFLUFF_VERSION=3.3.0
 # renovate: datasource=nuget depName=TSQLLint
 ARG SQL_TSQLLINT_VERSION=1.16.0
-
 #ARG__END
 
 ####################
