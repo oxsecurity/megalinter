@@ -30,6 +30,8 @@ ARG REPOSITORY_GITLEAKS_VERSION=v8.23.1
 ARG REPOSITORY_KICS_VERSION=v2.1.3-alpine
 # renovate: datasource=docker depName=trufflesecurity/trufflehog 
 ARG REPOSITORY_TRUFFLEHOG_VERSION=3.88.2
+# renovate: datasource=docker depName=lycheeverse/lychee
+ARG SPELL_LYCHEE_VERSION=sha-a11d515-alpine
 # renovate: datasource=docker depName=ghcr.io/terraform-linters/tflint
 ARG TERRAFORM_TFLINT_VERSION=0.55.0
 # renovate: datasource=docker depName=tenable/terrascan
@@ -61,7 +63,7 @@ FROM ghcr.io/yannh/kubeconform:${KUBERNETES_KUBECONFORM_VERSION} AS kubeconform
 FROM zricethezav/gitleaks:${REPOSITORY_GITLEAKS_VERSION} AS gitleaks
 FROM checkmarx/kics:${REPOSITORY_KICS_VERSION} AS kics
 FROM trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION} AS trufflehog
-FROM lycheeverse/lychee:latest-alpine AS lychee
+FROM lycheeverse/lychee:${SPELL_LYCHEE_VERSION} AS lychee
 FROM ghcr.io/terraform-linters/tflint:v${TERRAFORM_TFLINT_VERSION} AS tflint
 FROM tenable/terrascan:${TERRAFORM_TERRASCAN_VERSION} AS terrascan
 FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} AS terragrunt
