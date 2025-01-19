@@ -37,6 +37,25 @@
       "title": "Command",
       "type": "object"
     },
+    "linter_command_info": {
+      "description": "Command information",
+      "$ref": "#/definitions/command_info",
+      "properties": {
+        "run_before_linters": {
+          "default": false,
+          "title": "Process command before running linters",
+          "type": "boolean"
+        },
+        "run_after_linters": {
+          "default": false,
+          "title": "Process command after running linters",
+          "type": "boolean"
+        }
+      },
+      "required": [],
+      "title": "Command",
+      "type": "object"
+    },
     "enum_flavors": {
       "enum": [
         "all_flavors",
@@ -1232,7 +1251,7 @@
               ]
             ],
             "items": {
-              "$ref": "#/definitions/command_info"
+              "$ref": "#/definitions/linter_command_info"
             },
             "title": "Linter Pre-run commands",
             "type": "array"
@@ -1255,7 +1274,7 @@
               ]
             ],
             "items": {
-              "$ref": "#/definitions/command_info"
+              "$ref": "#/definitions/linter_command_info"
             },
             "title": "Linter Pre-run commands",
             "type": "array"
