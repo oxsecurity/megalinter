@@ -124,6 +124,9 @@ ARG PMD_VERSION=7.9.0
 # renovate: datasource=github-tags depName=detekt/detekt
 ARG DETEKT_VERSION=1.23.7
 
+# renovate: datasource=github-tags depName=cvega/luarocks
+ARG LUA_LUACHECK_VERSION=3.3.1
+
 # renovate: datasource=crate depName=selene
 ARG LUA_SELENE_VERSION=0.28.0
 # renovate: datasource=crate depName=stylua
@@ -670,12 +673,12 @@ RUN wget --quiet https://github.com/pmd/pmd/releases/download/pmd_releases%2F${P
     && cd ~ && touch .chktexrc && cd / \
 #
 # luacheck installation
-    && wget --tries=5 https://github.com/cvega/luarocks/archive/v3.3.1-super-linter.tar.gz -O - -q | tar -xzf - \
-    && cd luarocks-3.3.1-super-linter \
+    && wget --tries=5 https://github.com/cvega/luarocks/archive/v${LUA_LUACHECK_VERSION}-super-linter.tar.gz -O - -q | tar -xzf - \
+    && cd luarocks-${LUA_LUACHECK_VERSION}-super-linter \
     && ./configure --with-lua-include=/usr/local/include \
     && make \
     && make -b install \
-    && cd .. && rm -r luarocks-3.3.1-super-linter/ \
+    && cd .. && rm -r luarocks-${LUA_LUACHECK_VERSION}-super-linter/ \
     && luarocks install luacheck \
     && cd / \
 #
