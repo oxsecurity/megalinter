@@ -36,7 +36,7 @@ description: dotnet-format, csharpier, roslynator are available to analyze CSHAR
 
 - Dockerfile commands :
 ```dockerfile
-RUN apk add --no-cache dotnet8-sdk
+RUN apk add --no-cache dotnet9-sdk
 ENV PATH="${PATH}:/root/.dotnet/tools"
 ```
 

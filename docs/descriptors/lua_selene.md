@@ -9,7 +9,7 @@ description: How to use selene (configure, ignore files, ignore errors, help & v
 
 ## selene documentation
 
-- Version in MegaLinter: **0.27.1**
+- Version in MegaLinter: **0.28.0**
 - Visit [Official Web Site](https://kampfkarren.github.io/selene/){target=_blank}
 - See [How to configure selene rules](https://kampfkarren.github.io/selene/usage/configuration.html){target=_blank}
 - See [How to disable selene rules in files](https://kampfkarren.github.io/selene/usage/filtering.html){target=_blank}
@@ -84,7 +84,7 @@ selene --config chktexrc.toml myfile.lua
 ### Help content
 
 ```shell
-selene 0.27.1
+selene 0.28.0
 
 USAGE:
     selene [FLAGS] [OPTIONS] <files>...
@@ -131,6 +131,6 @@ RUN wget --tries=5 https://www.lua.org/ftp/lua-5.3.5.tar.gz -O - -q | tar -xzf -
 
 # Linter install
 # renovate: datasource=crate depName=selene
-ARG LUA_SELENE_VERSION=0.27.1
+ARG LUA_SELENE_VERSION=0.28.0
 ```
 
