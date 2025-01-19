@@ -111,7 +111,7 @@ linters:
       - "cljstyle fix myfile.clj path/to/myfile.clj"
     install:
       dockerfile:
-        - |
+        - |-
           # renovate: datasource=github-tags depName=greglook/cljstyle
           ARG CLJ_STYLE_VERSION=0.17.642
         - |
