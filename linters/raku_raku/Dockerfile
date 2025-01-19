@@ -50,7 +50,7 @@ FROM python:3.12.8-alpine3.21
 #ARG__START
 # renovate: datasource=github-tags depName=nxadm/rakudo-pkg
 ARG RAKU_RAKU_VERSION=2024.10
-ARG RAKU_RAKU_FILE_NAME=rakudo-pkg-Alpine3.20_${RAKU_RAKU_VERSION}-01_x86_64.apk
+ARG RAKU_RAKU_ALPINE_VERSION=3.20
 
 #ARG__END
 
@@ -149,9 +149,9 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #############################################################################################
 #OTHER__START
 # raku installation
-RUN curl -L https://github.com/nxadm/rakudo-pkg/releases/download/v2020.10-02/${RAKU_RAKU_FILE_NAME} > ${RAKU_RAKU_FILE_NAME} \
-    && apk add --no-cache --allow-untrusted ${RAKU_RAKU_FILE_NAME} \
-    && rm ${RAKU_RAKU_FILE_NAME} \
+RUN curl -L https://github.com/nxadm/rakudo-pkg/releases/download/v2020.10-02/rakudo-pkg-Alpine${RAKU_RAKU_ALPINE_VERSION}_${RAKU_RAKU_VERSION}-01_x86_64.apk > rakudo-pkg-Alpine${RAKU_RAKU_ALPINE_VERSION}_${RAKU_RAKU_VERSION}-01_x86_64.apk \
+    && apk add --no-cache --allow-untrusted rakudo-pkg-Alpine${RAKU_RAKU_ALPINE_VERSION}_${RAKU_RAKU_VERSION}-01_x86_64.apk \
+    && rm rakudo-pkg-Alpine${RAKU_RAKU_ALPINE_VERSION}_${RAKU_RAKU_VERSION}-01_x86_64.apk \
     && /opt/rakudo-pkg/bin/add-rakudo-to-path \
     # && source /root/.profile \
     && /opt/rakudo-pkg/bin/install-zef-as-user
