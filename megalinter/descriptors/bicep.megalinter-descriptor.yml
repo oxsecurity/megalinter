@@ -35,8 +35,11 @@ linters:
       apk:
         - icu-libs
       dockerfile:
+        - |-
+          # renovate: datasource=github-tags depName=Azure/bicep
+          ARG BICEP_VERSION=0.32.4
         - ARG BICEP_EXE='bicep'
-        - ARG BICEP_URI='https://github.com/Azure/bicep/releases/latest/download/bicep-linux-musl-x64'
+        - ARG BICEP_URI='https://github.com/Azure/bicep/releases/download/v${BICEP_VERSION}/bicep-linux-musl-x64'
         - ARG BICEP_DIR='/usr/local/bin'
         - |
           RUN curl --retry 5 --retry-delay 5 -sLo ${BICEP_EXE} "${BICEP_URI}" \
