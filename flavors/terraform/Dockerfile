@@ -96,6 +96,15 @@ FROM python:3.12.8-alpine3.21
 # renovate: datasource=github-tags depName=detekt/detekt
 ARG DETEKT_VERSION=1.23.7
 
+# renovate: datasource=github-tags depName=anchore/grype
+ARG REPOSITORY_GRYPE_VERSION=0.79.5
+
+# renovate: datasource=github-tags depName=aquasecurity/trivy
+ARG REPOSITORY_TRIVY_VERSION=0.58.2
+
+# renovate: datasource=github-tags depName=aquasecurity/trivy
+ARG REPOSITORY_TRIVY_SBOM_VERSION=0.58.2
+
 # renovate: datasource=pypi depName=sqlfluff
 ARG SQL_SQLFLUFF_VERSION=3.3.0
 #ARG__END
@@ -333,7 +342,7 @@ RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/rel
 # Managed with COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 #
 # grype installation
-    && curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin v0.79.5
+    && curl -sSfL https://raw.githubusercontent.com/anchore/grype/refs/tags/v${REPOSITORY_GRYPE_VERSION}/install.sh | sh -s -- -b /usr/local/bin
 #
 # kics installation
 # Managed with COPY --link --from=kics /app/bin/kics /usr/bin/kics
@@ -341,13 +350,13 @@ ENV KICS_QUERIES_PATH=/usr/bin/assets/queries KICS_LIBRARIES_PATH=/usr/bin/asset
 # Managed with COPY --from=kics /app/bin/assets /usr/bin/assets
 #
 # trivy installation
-RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin \
+RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/refs/tags/v${REPOSITORY_TRIVY_VERSION}/contrib/install.sh | sh -s -- -b /usr/local/bin \
     && (trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress)
 
 #
 # trivy-sbom installation
 # Next line commented because already managed by another linter
-# RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin \
+# RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/refs/tags/v${REPOSITORY_TRIVY_VERSION}/contrib/install.sh | sh -s -- -b /usr/local/bin \
 #     && (trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress)
 #
 # trufflehog installation
