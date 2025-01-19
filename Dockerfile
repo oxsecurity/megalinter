@@ -119,15 +119,13 @@ ARG ARM_TTK_DIRECTORY='/opt/microsoft'
 ARG BICEP_EXE='bicep'
 ARG BICEP_URI='https://github.com/Azure/bicep/releases/latest/download/bicep-linux-musl-x64'
 ARG BICEP_DIR='/usr/local/bin'
+# renovate: datasource=github-tags depName=clj-kondo/clj-kondo
+ARG CLJ_KONDO_VERSION=2025.01.16
 
 # renovate: datasource=nuget depName=csharpier
 ARG CSHARP_CSHARPIER_VERSION=0.30.6
 # renovate: datasource=nuget depName=roslynator.dotnet.cli
 ARG CSHARP_ROSLYNATOR_VERSION=0.9.3
-
-# renovate: datasource=github-tags depName=clj-kondo/clj-kondo
-ARG CLJ_KONDO_VERSION=2025.01.16
-
 ARG DART_VERSION='2.8.4'
 # renovate: datasource=github-tags depName=pmd/pmd extractVersion=^pmd_releases/(?<version>.*)$
 ARG PMD_VERSION=7.9.0
