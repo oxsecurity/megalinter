@@ -88,6 +88,12 @@ ARG ARM_TTK_DIRECTORY='/opt/microsoft'
 ARG BICEP_EXE='bicep'
 ARG BICEP_URI='https://github.com/Azure/bicep/releases/latest/download/bicep-linux-musl-x64'
 ARG BICEP_DIR='/usr/local/bin'
+# renovate: datasource=nuget depName=csharpier
+ARG CSHARP_CSHARPIER_VERSION=0.30.6
+
+# renovate: datasource=nuget depName=roslynator.dotnet.cli
+ARG CSHARP_ROSLYNATOR_VERSION=0.9.3
+
 # renovate: datasource=github-tags depName=detekt/detekt
 ARG DETEKT_VERSION=1.23.7
 
@@ -352,10 +358,10 @@ RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
     && mv "${BICEP_EXE}" "${BICEP_DIR}" \
 #
 # csharpier installation
-    && dotnet tool install --global csharpier \
+    && dotnet tool install --global csharpier --version ${CSHARP_CSHARPIER_VERSION} \
 #
 # roslynator installation
-    && dotnet tool install -g roslynator.dotnet.cli \
+    && dotnet tool install -g roslynator.dotnet.cli --version ${CSHARP_ROSLYNATOR_VERSION} \
 #
 # hadolint installation
 # Managed with COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
