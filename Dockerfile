@@ -131,6 +131,10 @@ ARG LUA_STYLUA_VERSION=2.0.0
 # renovate: datasource=nuget depName=PSScriptAnalyzer registryUrl=https://www.powershellgallery.com/api/v2/
 ARG PSSA_VERSION='1.23.0'
 
+# renovate: datasource=github-tags depName=nxadm/rakudo-pkg
+ARG RAKU_RAKU_VERSION=2024.10
+ARG RAKU_RAKU_FILE_NAME=rakudo-pkg-Alpine3.20_${RAKU_RAKU_VERSION}-01_x86_64.apk
+
 # renovate: datasource=npm depName=@salesforce/sfdx-scanner
 ARG SALESFORCE_SFDX_SCANNER_VERSION=4.7.0
 # renovate: datasource=npm depName=lightning-flow-scanner
@@ -727,9 +731,9 @@ RUN mkdir -p /home/r-library \
     && R -e "install.packages(list.dirs('/home/r-library',recursive = FALSE), repos = NULL, type = 'source')" \
 #
 # raku installation
-    && curl -L https://github.com/nxadm/rakudo-pkg/releases/download/v2020.10-02/rakudo-pkg-Alpine3.12_2020.10-02_x86_64.apk > rakudo-pkg-Alpine3.12_2020.10-02_x86_64.apk \
-    && apk add --no-cache --allow-untrusted rakudo-pkg-Alpine3.12_2020.10-02_x86_64.apk \
-    && rm rakudo-pkg-Alpine3.12_2020.10-02_x86_64.apk \
+    && curl -L https://github.com/nxadm/rakudo-pkg/releases/download/v2020.10-02/${RAKU_RAKU_FILE_NAME} > ${RAKU_RAKU_FILE_NAME} \
+    && apk add --no-cache --allow-untrusted ${RAKU_RAKU_FILE_NAME} \
+    && rm ${RAKU_RAKU_FILE_NAME} \
     && /opt/rakudo-pkg/bin/add-rakudo-to-path \
     # && source /root/.profile \
     && /opt/rakudo-pkg/bin/install-zef-as-user
