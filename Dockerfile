@@ -148,6 +148,9 @@ ARG LUA_SELENE_VERSION=0.28.0
 ARG LUA_STYLUA_VERSION=2.0.0
 # renovate: datasource=npm depName=markdown-link-check
 ARG MARKDOWN_MARKDOWN_LINK_CHECK_VERSION=3.12.2
+# renovate: datasource=github-tags depName=skaji/cpm
+ARG PERL_PERLCRITIC_VERSION=0.997021
+
 # renovate: datasource=nuget depName=PSScriptAnalyzer registryUrl=https://www.powershellgallery.com/api/v2/
 ARG PSSA_VERSION='1.23.0'
 
@@ -708,7 +711,7 @@ RUN wget --quiet https://github.com/pmd/pmd/releases/download/pmd_releases%2F${P
 # markdown-link-check installation
 #
 # perlcritic installation
-    && curl -fsSL https://raw.githubusercontent.com/skaji/cpm/main/cpm | perl - install -g --show-build-log-on-failure --without-build --without-test --without-runtime Perl::Critic \
+    && curl -fsSL https://raw.githubusercontent.com/skaji/cpm/refs/tags/${PERL_PERLCRITIC_VERSION}/cpm | perl - install -g --show-build-log-on-failure --without-build --without-test --without-runtime Perl::Critic \
     && rm -rf /root/.perl-cpm
 
 #
