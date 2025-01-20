@@ -109,5 +109,11 @@ Options:
 
 ### Installation on mega-linter Docker image
 
+- Dockerfile commands :
+```dockerfile
+# renovate: datasource=npm depName=markdown-link-check
+ARG MARKDOWN_MARKDOWN_LINK_CHECK_VERSION=3.12.2
+```
+
 - NPM packages (node.js):
-  - [markdown-link-check@3.12.2](https://www.npmjs.com/package/markdown-link-check@3.12.2)
+  - [markdown-link-check@${MARKDOWN_MARKDOWN_LINK_CHECK_VERSION}](https://www.npmjs.com/package/markdown-link-check@${MARKDOWN_MARKDOWN_LINK_CHECK_VERSION})

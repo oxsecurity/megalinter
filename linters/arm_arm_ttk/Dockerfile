@@ -53,7 +53,6 @@ ARG POWERSHELL_VERSION=7.4.6
 
 # renovate: datasource=github-tags depName=Azure/arm-ttk
 ARG ARM_TTK_VERSION=20240328
-
 ARG ARM_TTK_NAME='arm-ttk.zip'
 ARG ARM_TTK_DIRECTORY='/opt/microsoft'
 #ARG__END
