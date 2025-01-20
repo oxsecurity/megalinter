@@ -154,6 +154,8 @@ ARG SALESFORCE_SFDX_SCANNER_VERSION=4.7.0
 ARG LIGHTNING_FLOW_SCANNER_VERSION=2.37.0
 # renovate: datasource=pypi depName=sqlfluff
 ARG SQL_SQLFLUFF_VERSION=3.3.0
+# renovate: datasource=nuget depName=TSQLLint
+ARG SQL_TSQLLINT_VERSION=1.16.0
 #ARG__END
 
 ####################
@@ -829,7 +831,7 @@ RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | 
 # RUN apk add --no-cache dotnet9-sdk
 # Next line commented because already managed by another linter
 # ENV PATH="${PATH}:/root/.dotnet/tools"
-    && dotnet tool install --global TSQLLint
+    && dotnet tool install --global TSQLLint --version ${SQL_TSQLLINT_VERSION}
 #
 # tflint installation
 # Managed with COPY --link --from=tflint /usr/local/bin/tflint /usr/bin/
