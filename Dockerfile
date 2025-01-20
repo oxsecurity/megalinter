@@ -117,7 +117,6 @@ ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.9.10
 ARG SFDX_HARDIS_VERSION=5.16.1
 # renovate: datasource=github-tags depName=Azure/arm-ttk
 ARG ARM_TTK_VERSION=20240328
-
 ARG ARM_TTK_NAME='arm-ttk.zip'
 ARG ARM_TTK_DIRECTORY='/opt/microsoft'
 ARG BICEP_EXE='bicep'
