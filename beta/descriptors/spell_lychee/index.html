@@ -3841,7 +3841,9 @@ Options:
 <ul>
 <li>Dockerfile commands :</li>
 </ul>
-<pre><code class="language-dockerfile">FROM lycheeverse/lychee:latest-alpine AS lychee
+<pre><code class="language-dockerfile"># renovate: datasource=docker depName=lycheeverse/lychee
+ARG SPELL_LYCHEE_VERSION=sha-a11d515-alpine
+FROM lycheeverse/lychee:${SPELL_LYCHEE_VERSION} AS lychee
 COPY --link --from=lychee /usr/local/bin/lychee /usr/bin/
 </code></pre>
 </article>

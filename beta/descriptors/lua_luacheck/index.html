@@ -3745,12 +3745,15 @@ RUN wget --tries=5 https://www.lua.org/ftp/lua-5.3.5.tar.gz -O - -q | tar -xzf -
     &amp;&amp; cd .. &amp;&amp; rm -r lua-5.3.5/
 
 # Linter install
-RUN wget --tries=5 https://github.com/cvega/luarocks/archive/v3.3.1-super-linter.tar.gz -O - -q | tar -xzf - \
-    &amp;&amp; cd luarocks-3.3.1-super-linter \
+# renovate: datasource=github-tags depName=cvega/luarocks
+ARG LUA_LUACHECK_VERSION=3.3.1
+
+RUN wget --tries=5 https://github.com/cvega/luarocks/archive/v${LUA_LUACHECK_VERSION}-super-linter.tar.gz -O - -q | tar -xzf - \
+    &amp;&amp; cd luarocks-${LUA_LUACHECK_VERSION}-super-linter \
     &amp;&amp; ./configure --with-lua-include=/usr/local/include \
     &amp;&amp; make \
     &amp;&amp; make -b install \
-    &amp;&amp; cd .. &amp;&amp; rm -r luarocks-3.3.1-super-linter/ \
+    &amp;&amp; cd .. &amp;&amp; rm -r luarocks-${LUA_LUACHECK_VERSION}-super-linter/ \
     &amp;&amp; luarocks install luacheck \
     &amp;&amp; cd /
 

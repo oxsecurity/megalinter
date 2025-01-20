@@ -3192,6 +3192,7 @@
   - command: npm install eslint-plugin-whatever
     cwd: root        # Will be run at the root of MegaLinter docker image
     secured_env: true  # True by default, but if defined to false, no global variable will be hidden (for example if you need GITHUB_TOKEN)
+    run_before_linters: True # Will be run before the execution of the linters themselves, required for npm/pip commands that cannot be run in parallel
   - command: echo "pre-test command has been called"
     cwd: workspace   # Will be run at the root of the workspace (usually your repository root)
     continue_if_failed: False  # Will stop the process if command is failed (return code &gt; 0)
@@ -3203,6 +3204,8 @@
     cwd: workspace   # Will be run at the root of the workspace (usually your repository root)
     continue_if_failed: False  # Will stop the process if command is failed (return code &gt; 0)
     tag: before_plugins # Tag indicating that the command will be run before loading plugins
+  - command: echo "Some command called after running MegaLinter linters"
+    run_after_linters: True # Will be run after the execution of the linters themselves
 </code></pre>
 <table>
 <thead>
@@ -3222,6 +3225,16 @@
 <td><strong>cwd</strong></td>
 <td>Directory where to run the command (<code>workspace</code> or <code>root</code>)</td>
 <td><code>workspace</code></td>
+</tr>
+<tr>
+<td><strong>run_before_linters</strong></td>
+<td>If set to <code>true</code>, runs the command before the execution of the linters themselves, required for npm/pip commands that cannot be run in parallel</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><strong>run_after_linters</strong></td>
+<td>If set to <code>true</code>, runs the command after the execution of the linters themselves</td>
+<td><code>false</code></td>
 </tr>
 <tr>
 <td><strong>secured_env</strong></td>

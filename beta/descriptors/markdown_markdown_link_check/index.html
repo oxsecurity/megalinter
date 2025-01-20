@@ -3605,8 +3605,14 @@ Options:
 </code></pre>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
 <ul>
+<li>Dockerfile commands :</li>
+</ul>
+<pre><code class="language-dockerfile"># renovate: datasource=npm depName=markdown-link-check
+ARG MARKDOWN_MARKDOWN_LINK_CHECK_VERSION=3.12.2
+</code></pre>
+<ul>
 <li>NPM packages (node.js):<ul>
-<li><a href="https://www.npmjs.com/package/markdown-link-check@3.12.2">markdown-link-check@3.12.2</a></li>
+<li><a href="https://www.npmjs.com/package/markdown-link-check@${MARKDOWN_MARKDOWN_LINK_CHECK_VERSION}">markdown-link-check@${MARKDOWN_MARKDOWN_LINK_CHECK_VERSION}</a></li>
 </ul>
 </li>
 </ul>
