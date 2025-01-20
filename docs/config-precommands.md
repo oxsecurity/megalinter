@@ -17,6 +17,7 @@ PRE_COMMANDS:
   - command: npm install eslint-plugin-whatever
     cwd: root        # Will be run at the root of MegaLinter docker image
     secured_env: true  # True by default, but if defined to false, no global variable will be hidden (for example if you need GITHUB_TOKEN)
+    run_before_linters: True # Will be run before the execution of the linters themselves, required for npm/pip commands that cannot be run in parallel
   - command: echo "pre-test command has been called"
     cwd: workspace   # Will be run at the root of the workspace (usually your repository root)
     continue_if_failed: False  # Will stop the process if command is failed (return code > 0)
@@ -28,17 +29,21 @@ PRE_COMMANDS:
     cwd: workspace   # Will be run at the root of the workspace (usually your repository root)
     continue_if_failed: False  # Will stop the process if command is failed (return code > 0)
     tag: before_plugins # Tag indicating that the command will be run before loading plugins
+  - command: echo "Some command called after running MegaLinter linters"
+    run_after_linters: True # Will be run after the execution of the linters themselves
 ```
 
-| Property               | Description                                                                                                                              | Default value |
-|------------------------|------------------------------------------------------------------------------------------------------------------------------------------|---------------|
-| **command**            | Command line to run                                                                                                                      | Mandatory     |
-| **cwd**                | Directory where to run the command (`workspace` or `root`)                                                                               | `workspace`   |
-| **secured_env**        | Apply filtering of secured env variables before calling the command (default true)<br/>Be careful if you disable it !                    | `true`        |
-| **continue_if_failed** | If set to `false`, stop MegaLinter process in case of command failure                                                                    | `true`        |
-| **venv**               | If set, runs the command into the related python venv                                                                                    | <!-- -->      |
-| **output_variables**   | ENV variables to get from output after running the commands, and store in MegaLinter ENV context, so they can be reused in next commands | `[]`          |
-| **tag**                | Tag defining at which commands entry point the command will be run   (available tags: `before_plugins`)                                  | <!-- -->      |
+| Property               | Description                                                                                                                                     | Default value |
+|------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|---------------|
+| **command**            | Command line to run                                                                                                                             | Mandatory     |
+| **cwd**                | Directory where to run the command (`workspace` or `root`)                                                                                      | `workspace`   |
+| **run_before_linters** | If set to `true`, runs the command before the execution of the linters themselves, required for npm/pip commands that cannot be run in parallel | `false`       |
+| **run_after_linters**  | If set to `true`, runs the command after the execution of the linters themselves                                                                | `false`       |
+| **secured_env**        | Apply filtering of secured env variables before calling the command (default true)<br/>Be careful if you disable it !                           | `true`        |
+| **continue_if_failed** | If set to `false`, stop MegaLinter process in case of command failure                                                                           | `true`        |
+| **venv**               | If set, runs the command into the related python venv                                                                                           | <!-- -->      |
+| **output_variables**   | ENV variables to get from output after running the commands, and store in MegaLinter ENV context, so they can be reused in next commands        | `[]`          |
+| **tag**                | Tag defining at which commands entry point the command will be run   (available tags: `before_plugins`)                                         | <!-- -->      |
 
 
 <!-- config-precommands-section-end -->
