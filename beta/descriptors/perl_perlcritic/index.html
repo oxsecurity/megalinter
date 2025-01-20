@@ -3503,7 +3503,10 @@
 <ul>
 <li>Dockerfile commands :</li>
 </ul>
-<pre><code class="language-dockerfile">RUN curl -fsSL https://raw.githubusercontent.com/skaji/cpm/main/cpm | perl - install -g --show-build-log-on-failure --without-build --without-test --without-runtime Perl::Critic \
+<pre><code class="language-dockerfile"># renovate: datasource=github-tags depName=skaji/cpm
+ARG PERL_PERLCRITIC_VERSION=0.997021
+
+RUN curl -fsSL https://raw.githubusercontent.com/skaji/cpm/refs/tags/${PERL_PERLCRITIC_VERSION}/cpm | perl - install -g --show-build-log-on-failure --without-build --without-test --without-runtime Perl::Critic \
     &amp;&amp; rm -rf /root/.perl-cpm
 
 </code></pre>
