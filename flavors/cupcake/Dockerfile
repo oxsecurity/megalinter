@@ -433,9 +433,9 @@ RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: Fil
     && ./install-clj-kondo \
 #
 # cljstyle installation
-    && curl --retry 5 --retry-delay 5 -sLO https://raw.githubusercontent.com/greglook/cljstyle/refs/tags/${CLJ_STYLE_VERSION}/util/install-cljstyle \
+    && curl --retry 5 --retry-delay 5 -sLO https://raw.githubusercontent.com/greglook/cljstyle/main/util/install-cljstyle \
     && chmod +x install-cljstyle \
-    && ./install-cljstyle \
+    && ./install-cljstyle --static --version "$CLJ_STYLE_VERSION" \
 #
 # hadolint installation
 # Managed with COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint

@@ -602,9 +602,9 @@ RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
     && ./install-clj-kondo \
 #
 # cljstyle installation
-    && curl --retry 5 --retry-delay 5 -sLO https://raw.githubusercontent.com/greglook/cljstyle/refs/tags/${CLJ_STYLE_VERSION}/util/install-cljstyle \
+    && curl --retry 5 --retry-delay 5 -sLO https://raw.githubusercontent.com/greglook/cljstyle/main/util/install-cljstyle \
     && chmod +x install-cljstyle \
-    && ./install-cljstyle \
+    && ./install-cljstyle --static --version "$CLJ_STYLE_VERSION" \
 #
 # csharpier installation
     && dotnet tool install --global csharpier \
