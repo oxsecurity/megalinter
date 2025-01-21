@@ -56,6 +56,10 @@ FROM python:3.12.8-alpine3.21
 # renovate: datasource=github-tags depName=PowerShell/PowerShell
 ARG POWERSHELL_VERSION=7.4.6
 
+# renovate: datasource=nuget depName=csharpier
+ARG CSHARP_CSHARPIER_VERSION=0.30.6
+# renovate: datasource=nuget depName=roslynator.dotnet.cli
+ARG CSHARP_ROSLYNATOR_VERSION=0.9.3
 # renovate: datasource=nuget depName=PSScriptAnalyzer registryUrl=https://www.powershellgallery.com/api/v2/
 ARG PSSA_VERSION='1.23.0'
 
@@ -206,10 +210,10 @@ RUN curl -L https://github.com/PowerShell/PowerShell/releases/download/v${POWERS
 # Managed with COPY --link --from=shfmt /bin/shfmt /usr/bin/
 #
 # csharpier installation
-    && dotnet tool install --global csharpier \
+    && dotnet tool install --global csharpier --version "${CSHARP_CSHARPIER_VERSION}" \
 #
 # roslynator installation
-    && dotnet tool install -g roslynator.dotnet.cli \
+    && dotnet tool install -g roslynator.dotnet.cli --version "${CSHARP_ROSLYNATOR_VERSION}" \
 #
 # powershell_formatter installation
     && pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSION} -Scope AllUsers -Force'

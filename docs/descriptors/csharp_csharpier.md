@@ -124,6 +124,8 @@ Options:
 RUN apk add --no-cache dotnet9-sdk
 ENV PATH="${PATH}:/root/.dotnet/tools"
 # Linter install
-RUN dotnet tool install --global csharpier
+# renovate: datasource=nuget depName=csharpier
+ARG CSHARP_CSHARPIER_VERSION=0.30.6
+RUN dotnet tool install --global csharpier --version "${CSHARP_CSHARPIER_VERSION}"
 ```
 

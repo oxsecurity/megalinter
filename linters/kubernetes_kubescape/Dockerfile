@@ -49,8 +49,7 @@ FROM python:3.12.8-alpine3.21
 #############################################################################################
 #ARG__START
 # renovate: datasource=github-tags depName=kubescape/kubescape
-ARG KUBERNETES_KUBESCAPE_VERSION=3.0.24
-
+ARG KUBERNETES_KUBESCAPE_VERSION=2.9.0
 #ARG__END
 
 ####################
@@ -152,7 +151,7 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #OTHER__START
 # kubescape installation
 RUN ln -s /lib/libc.so.6 /usr/lib/libresolv.so.2 && \
-    curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/refs/tags/v${KUBERNETES_KUBESCAPE_VERSION}/install.sh | /bin/bash -s -- -v v2.9.0
+    curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash -s -- -v "v${KUBERNETES_KUBESCAPE_VERSION}"
 #
 #OTHER__END
 
