@@ -59,7 +59,8 @@ class ConsoleLinterReporter(Reporter):
                 log_section_start(
                     f"processed-{self.master.name}",
                     c.yellow(
-                        f"⚠️ {base_phrase}: Found {total_errors} non blocking error(s) and {total_warnings} non blocking warning(s) - ({elapse})"
+                        f"⚠️ {base_phrase}: Found {total_errors} non blocking error(s) "
+                        + f"and {total_warnings} non blocking warning(s) - ({elapse})"
                     ),
                 )
             )
