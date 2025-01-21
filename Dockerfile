@@ -110,9 +110,9 @@ FROM python:3.12.8-alpine3.21
 ARG POWERSHELL_VERSION=7.4.6
 
 # renovate: datasource=npm depName=@salesforce/cli
-ARG SALESFORCE_CLI_VERSION=2.70.7
+ARG SALESFORCE_CLI_VERSION=2.72.21
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
-ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.9.10
+ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.9.12
 # renovate: datasource=npm depName=sfdx-hardis
 ARG SFDX_HARDIS_VERSION=5.16.1
 # renovate: datasource=github-tags depName=Azure/arm-ttk
@@ -155,7 +155,7 @@ ARG PERL_PERLCRITIC_VERSION=0.997021
 ARG PSSA_VERSION='1.23.0'
 
 # renovate: datasource=npm depName=@salesforce/sfdx-scanner
-ARG SALESFORCE_SFDX_SCANNER_VERSION=4.7.0
+ARG SALESFORCE_SFDX_SCANNER_VERSION=4.8.0
 # renovate: datasource=npm depName=lightning-flow-scanner
 ARG LIGHTNING_FLOW_SCANNER_VERSION=2.38.0
 # renovate: datasource=pypi depName=sqlfluff
