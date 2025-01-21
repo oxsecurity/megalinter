@@ -50,7 +50,6 @@ FROM python:3.12.8-alpine3.21
 #ARG__START
 # renovate: datasource=github-tags depName=anchore/syft
 ARG REPOSITORY_SYFT_VERSION=1.18.1
-
 #ARG__END
 
 ####################

@@ -50,7 +50,6 @@ FROM python:3.12.8-alpine3.21
 #ARG__START
 # renovate: datasource=github-tags depName=aquasecurity/trivy
 ARG REPOSITORY_TRIVY_SBOM_VERSION=0.58.2
-
 #ARG__END
 
 ####################

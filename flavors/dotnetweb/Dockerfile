@@ -90,8 +90,9 @@ ARG POWERSHELL_VERSION=7.4.6
 ARG ARM_TTK_VERSION=20240328
 ARG ARM_TTK_NAME='arm-ttk.zip'
 ARG ARM_TTK_DIRECTORY='/opt/microsoft'
+# renovate: datasource=github-tags depName=Azure/bicep
+ARG BICEP_VERSION=0.32.4
 ARG BICEP_EXE='bicep'
-ARG BICEP_URI='https://github.com/Azure/bicep/releases/latest/download/bicep-linux-musl-x64'
 ARG BICEP_DIR='/usr/local/bin'
 # renovate: datasource=nuget depName=csharpier
 ARG CSHARP_CSHARPIER_VERSION=0.30.6
@@ -103,6 +104,8 @@ ARG KTLINT_VERSION=1.5.0
 # renovate: datasource=github-tags depName=detekt/detekt
 ARG DETEKT_VERSION=1.23.7
 
+# renovate: datasource=github-tags depName=kubescape/kubescape
+ARG KUBERNETES_KUBESCAPE_VERSION=2.9.0
 # renovate: datasource=npm depName=markdown-link-check
 ARG MARKDOWN_MARKDOWN_LINK_CHECK_VERSION=3.12.2
 # renovate: datasource=nuget depName=PSScriptAnalyzer registryUrl=https://www.powershellgallery.com/api/v2/
@@ -110,13 +113,10 @@ ARG PSSA_VERSION='1.23.0'
 
 # renovate: datasource=github-tags depName=anchore/grype
 ARG REPOSITORY_GRYPE_VERSION=0.79.5
-
 # renovate: datasource=github-tags depName=aquasecurity/trivy
 ARG REPOSITORY_TRIVY_VERSION=0.58.2
-
 # renovate: datasource=github-tags depName=aquasecurity/trivy
 ARG REPOSITORY_TRIVY_SBOM_VERSION=0.58.2
-
 # renovate: datasource=pypi depName=sqlfluff
 ARG SQL_SQLFLUFF_VERSION=3.3.0
 # renovate: datasource=nuget depName=TSQLLint
@@ -372,7 +372,7 @@ RUN curl --retry 5 --retry-delay 5 -sLO "https://github.com/Azure/arm-ttk/releas
 # Managed with COPY --link --from=shfmt /bin/shfmt /usr/bin/
 #
 # bicep_linter installation
-    && curl --retry 5 --retry-delay 5 -sLo ${BICEP_EXE} "${BICEP_URI}" \
+    && curl --retry 5 --retry-delay 5 -sLo ${BICEP_EXE} "https://github.com/Azure/bicep/releases/download/v${BICEP_VERSION}/bicep-linux-musl-x64" \
     && chmod +x "${BICEP_EXE}" \
     && mv "${BICEP_EXE}" "${BICEP_DIR}" \
 #
@@ -412,7 +412,7 @@ RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/rel
 #
 # kubescape installation
     && ln -s /lib/libc.so.6 /usr/lib/libresolv.so.2 && \
-    curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash -s -- -v v2.9.0 \
+    curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash -s -- -v "v${KUBERNETES_KUBESCAPE_VERSION}" \
 #
 # markdown-link-check installation
 #

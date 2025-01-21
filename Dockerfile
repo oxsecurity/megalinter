@@ -121,17 +121,21 @@ ARG SFDX_HARDIS_VERSION=5.16.2
 ARG ARM_TTK_VERSION=20240328
 ARG ARM_TTK_NAME='arm-ttk.zip'
 ARG ARM_TTK_DIRECTORY='/opt/microsoft'
+# renovate: datasource=github-tags depName=Azure/bicep
+ARG BICEP_VERSION=0.32.4
 ARG BICEP_EXE='bicep'
-ARG BICEP_URI='https://github.com/Azure/bicep/releases/latest/download/bicep-linux-musl-x64'
 ARG BICEP_DIR='/usr/local/bin'
 # renovate: datasource=github-tags depName=clj-kondo/clj-kondo
 ARG CLJ_KONDO_VERSION=2025.01.16
 
+# renovate: datasource=github-tags depName=greglook/cljstyle
+ARG CLJ_STYLE_VERSION=0.17.642
 # renovate: datasource=nuget depName=csharpier
 ARG CSHARP_CSHARPIER_VERSION=0.30.6
 # renovate: datasource=nuget depName=roslynator.dotnet.cli
 ARG CSHARP_ROSLYNATOR_VERSION=0.9.3
-ARG DART_VERSION='2.8.4'
+# renovate: datasource=dart-version depName=dart
+ARG DART_VERSION='3.6.1'
 # renovate: datasource=github-tags depName=pmd/pmd extractVersion=^pmd_releases/(?<version>.*)$
 ARG PMD_VERSION=7.9.0
 
@@ -141,6 +145,8 @@ ARG KTLINT_VERSION=1.5.0
 # renovate: datasource=github-tags depName=detekt/detekt
 ARG DETEKT_VERSION=1.23.7
 
+# renovate: datasource=github-tags depName=kubescape/kubescape
+ARG KUBERNETES_KUBESCAPE_VERSION=2.9.0
 # renovate: datasource=github-tags depName=cvega/luarocks
 ARG LUA_LUACHECK_VERSION=3.3.1
 
@@ -156,21 +162,20 @@ ARG PERL_PERLCRITIC_VERSION=0.997021
 # renovate: datasource=nuget depName=PSScriptAnalyzer registryUrl=https://www.powershellgallery.com/api/v2/
 ARG PSSA_VERSION='1.23.0'
 
+# renovate: datasource=github-tags depName=nxadm/rakudo-pkg
+ARG RAKU_RAKU_VERSION=2024.10
+ARG RAKU_RAKU_ALPINE_VERSION=3.20
+
 # renovate: datasource=nuget depName=Microsoft.CST.DevSkim.CLI
 ARG REPOSITORY_DEVSKIM_VERSION=1.0.51
-
 # renovate: datasource=github-tags depName=anchore/grype
 ARG REPOSITORY_GRYPE_VERSION=0.79.5
-
 # renovate: datasource=github-tags depName=anchore/syft
 ARG REPOSITORY_SYFT_VERSION=1.18.1
-
 # renovate: datasource=github-tags depName=aquasecurity/trivy
 ARG REPOSITORY_TRIVY_VERSION=0.58.2
-
 # renovate: datasource=github-tags depName=aquasecurity/trivy
 ARG REPOSITORY_TRIVY_SBOM_VERSION=0.58.2
-
 # renovate: datasource=npm depName=@salesforce/sfdx-scanner
 ARG SALESFORCE_SFDX_SCANNER_VERSION=4.7.0
 # renovate: datasource=npm depName=lightning-flow-scanner
@@ -622,7 +627,7 @@ RUN curl --retry 5 --retry-delay 5 -sLO "https://github.com/Azure/arm-ttk/releas
 # Managed with COPY --link --from=shfmt /bin/shfmt /usr/bin/
 #
 # bicep_linter installation
-    && curl --retry 5 --retry-delay 5 -sLo ${BICEP_EXE} "${BICEP_URI}" \
+    && curl --retry 5 --retry-delay 5 -sLo ${BICEP_EXE} "https://github.com/Azure/bicep/releases/download/v${BICEP_VERSION}/bicep-linux-musl-x64" \
     && chmod +x "${BICEP_EXE}" \
     && mv "${BICEP_EXE}" "${BICEP_DIR}" \
 #
@@ -634,7 +639,7 @@ RUN curl --retry 5 --retry-delay 5 -sLO "https://github.com/Azure/arm-ttk/releas
 # cljstyle installation
     && curl --retry 5 --retry-delay 5 -sLO https://raw.githubusercontent.com/greglook/cljstyle/main/util/install-cljstyle \
     && chmod +x install-cljstyle \
-    && ./install-cljstyle --static \
+    && ./install-cljstyle --static --version "$CLJ_STYLE_VERSION" \
 #
 # csharpier installation
     && dotnet tool install --global csharpier --version "${CSHARP_CSHARPIER_VERSION}" \
@@ -644,9 +649,12 @@ RUN curl --retry 5 --retry-delay 5 -sLO "https://github.com/Azure/arm-ttk/releas
 #
 # dartanalyzer installation
     && wget --tries=5 https://storage.googleapis.com/dart-archive/channels/stable/release/${DART_VERSION}/sdk/dartsdk-linux-x64-release.zip -O - -q | unzip -q - \
-    && chmod +x dart-sdk/bin/dart* \
-    && mv dart-sdk/bin/* /usr/bin/ && mv dart-sdk/lib/* /usr/lib/ && mv dart-sdk/include/* /usr/include/ \
-    && rm -r dart-sdk/ \
+    && mkdir -p /usr/lib/dart \
+    && mv dart-sdk/* /usr/lib/dart/ \
+    && chmod +x /usr/lib/dart/bin/dart \
+    && rm -r dart-sdk/
+
+ENV PATH="/usr/lib/dart/bin:${PATH}"
 #
 # hadolint installation
 # Managed with COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
@@ -655,7 +663,7 @@ RUN curl --retry 5 --retry-delay 5 -sLO "https://github.com/Azure/arm-ttk/releas
 # Managed with COPY --link --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
 #
 # dotenv-linter installation
-    && wget -q -O - https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/master/install.sh | sh -s \
+RUN wget -q -O - https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/master/install.sh | sh -s \
 #
 # golangci-lint installation
     && wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh \
@@ -705,7 +713,7 @@ RUN wget --quiet https://github.com/pmd/pmd/releases/download/pmd_releases%2F${P
 #
 # kubescape installation
     && ln -s /lib/libc.so.6 /usr/lib/libresolv.so.2 && \
-    curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash -s -- -v v2.9.0 \
+    curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash -s -- -v "v${KUBERNETES_KUBESCAPE_VERSION}" \
 #
 # chktex installation
 # Managed with COPY --link --from=chktex /usr/bin/chktex /usr/bin/
@@ -771,12 +779,9 @@ RUN mkdir -p /home/r-library \
     && R -e "install.packages(list.dirs('/home/r-library',recursive = FALSE), repos = NULL, type = 'source')" \
 #
 # raku installation
-    && curl -L https://github.com/nxadm/rakudo-pkg/releases/download/v2020.10-02/rakudo-pkg-Alpine3.12_2020.10-02_x86_64.apk > rakudo-pkg-Alpine3.12_2020.10-02_x86_64.apk \
-    && apk add --no-cache --allow-untrusted rakudo-pkg-Alpine3.12_2020.10-02_x86_64.apk \
-    && rm rakudo-pkg-Alpine3.12_2020.10-02_x86_64.apk \
-    && /opt/rakudo-pkg/bin/add-rakudo-to-path \
-    # && source /root/.profile \
-    && /opt/rakudo-pkg/bin/install-zef-as-user
+    && curl -L "https://github.com/nxadm/rakudo-pkg/releases/download/v${RAKU_RAKU_VERSION}/rakudo-pkg-Alpine${RAKU_RAKU_ALPINE_VERSION}_${RAKU_RAKU_VERSION}-01_x86_64.apk" > "rakudo-pkg-Alpine${RAKU_RAKU_ALPINE_VERSION}_${RAKU_RAKU_VERSION}-01_x86_64.apk" \
+    && apk add --no-cache --allow-untrusted "rakudo-pkg-Alpine${RAKU_RAKU_ALPINE_VERSION}_${RAKU_RAKU_VERSION}-01_x86_64.apk" \
+    && rm "rakudo-pkg-Alpine${RAKU_RAKU_ALPINE_VERSION}_${RAKU_RAKU_VERSION}-01_x86_64.apk"
 
 ENV PATH="~/.raku/bin:/opt/rakudo-pkg/bin:/opt/rakudo-pkg/share/perl6/site/bin:$PATH"
 #

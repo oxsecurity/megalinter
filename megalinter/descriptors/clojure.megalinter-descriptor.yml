@@ -114,10 +114,13 @@ linters:
       - "cljstyle fix myfile.clj path/to/myfile.clj"
     install:
       dockerfile:
+        - |-
+          # renovate: datasource=github-tags depName=greglook/cljstyle
+          ARG CLJ_STYLE_VERSION=0.17.642
         - |
           RUN curl --retry 5 --retry-delay 5 -sLO https://raw.githubusercontent.com/greglook/cljstyle/main/util/install-cljstyle \
               && chmod +x install-cljstyle \
-              && ./install-cljstyle --static
+              && ./install-cljstyle --static --version "$CLJ_STYLE_VERSION"
     ide:
       emacs:
         - name: cljstyle-mode
