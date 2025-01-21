@@ -3356,7 +3356,7 @@
 <p><a href="https://github.com/rakudo/rakudo"><img alt="GitHub stars" src="https://img.shields.io/github/stars/rakudo/rakudo?cacheSeconds=3600"/></a> <a href="https://github.com/rakudo/rakudo/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/rakudo/rakudo?sort=semver"/></a> <a href="https://github.com/rakudo/rakudo/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/rakudo/rakudo"/></a> <a href="https://github.com/rakudo/rakudo/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/rakudo/rakudo"/></a> <a href="https://github.com/rakudo/rakudo/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/rakudo/rakudo"/></a></p>
 <h2 id="raku-documentation">raku documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>2020.10</strong></li>
+<li>Version in MegaLinter: <strong>2024.10</strong></li>
 <li>Visit <a href="https://raku.org/" target="_blank">Official Web Site</a></li>
 </ul>
 <p><a href="https://github.com/rakudo/rakudo" target="_blank"><img alt="rakudo - GitHub" src="https://gh-card.dev/repos/rakudo/rakudo.svg?fullname="/></a></p>
@@ -3520,7 +3520,7 @@
 <pre><code class="language-shell">raku -I ./lib -c myfile.raku
 </code></pre>
 <h3 id="help-content">Help content</h3>
-<pre><code class="language-shell">/opt/rakudo-pkg/share/perl6/runtime/perl6.moarvm [switches] [--] [programfile] [arguments]
+<pre><code class="language-shell">/opt/rakudo-pkg/bin/../share/perl6/runtime/perl6.moarvm [switches] [--] [programfile] [arguments]
 
 With no arguments, enters a REPL (see --repl-mode option).
 With a "[programfile]" or the "-e" option, compiles the given program
@@ -3528,7 +3528,8 @@ and, by default, also executes the compiled code.
 
   -                    read program source from STDIN or start REPL if a TTY
   -c                   check syntax only (runs BEGIN and CHECK blocks)
-  --doc                extract documentation and print it as text
+  --rakudoc            extract documentation and print it as text
+  --rakudoc=module     use RakuDoc::To::[module] to render inline documentation
   -e program           one line of program, strict is enabled by default
   -h, --help           display this help text
   -n                   run program once for each line of input
@@ -3543,16 +3544,18 @@ and, by default, also executes the compiled code.
   -V                   print configuration summary
   --stagestats         display time spent in the compilation stages
   --ll-exception       display a low level backtrace on errors
+  --doc                extract documentation and print it as text
   --doc=module         use Pod::To::[module] to render inline documentation
   --repl-mode=interactive|non-interactive
-                       when running without "-e" or filename arguments,
-                       a REPL is started. By default, if STDIN is a TTY,
-                       "interactive" REPL is started that shows extra messages and
-                       prompts, otherwise a "non-interactive" mode is used where
-                       STDIN is read entirely and evaluated as if it were a program,
-                       without any extra output (in fact, no REPL machinery is even
-                       loaded). This option allows to bypass TTY detection and
-                       force one of the REPL modes.
+                       when running without "-e", a REPL is started.
+                       By default, if STDIN is a TTY, "interactive" REPL is
+                       started that shows extra messages and prompts,
+                       otherwise a "non-interactive" mode is used where
+                       STDIN is read entirely and evaluated as if it were
+                       a program, without any extra output (in fact, no REPL
+                       machinery is even loaded). This option allows to bypass
+                       TTY detection and force one of the REPL modes.
+
   --profile[=name]     write profile information to a file
                        Extension controls format:
                            .json outputs in JSON
@@ -3583,17 +3586,18 @@ and, by default, also executes the compiled code.
   --full-cleanup       try to free all memory and exit cleanly
   --debug-port=port    listen for incoming debugger connections
   --debug-suspend      pause execution at the entry point
-  --tracing            output a line to stderr on every interpreter instr (only if
-                       enabled in MoarVM)
+  --tracing            output a line to stderr on every interpreter instr
+                       (only if enabled in MoarVM)
 
 Note that only boolean single-letter options may be bundled.
 
 The following environment variables are respected:
 
-  RAKULIB     Modify the module search path
-  PERL6LIB    Modify the module search path # to be deprecated
-  RAKUDO_HOME Override the path of the Rakudo runtime files
-  NQP_HOME    Override the path of the NQP runtime files
+  RAKULIB       Modify the module search path
+  PERL6LIB      Modify the module search path (DEPRECATED)
+  NQP_HOME      Override the path of the NQP runtime files
+  RAKUDO_HOME   Override the path of the Rakudo runtime files
+
 
 
 </code></pre>
@@ -3601,12 +3605,13 @@ The following environment variables are respected:
 <ul>
 <li>Dockerfile commands :</li>
 </ul>
-<pre><code class="language-dockerfile">RUN curl -L https://github.com/nxadm/rakudo-pkg/releases/download/v2020.10-02/rakudo-pkg-Alpine3.12_2020.10-02_x86_64.apk &gt; rakudo-pkg-Alpine3.12_2020.10-02_x86_64.apk \
-    &amp;&amp; apk add --no-cache --allow-untrusted rakudo-pkg-Alpine3.12_2020.10-02_x86_64.apk \
-    &amp;&amp; rm rakudo-pkg-Alpine3.12_2020.10-02_x86_64.apk \
-    &amp;&amp; /opt/rakudo-pkg/bin/add-rakudo-to-path \
-    # &amp;&amp; source /root/.profile \
-    &amp;&amp; /opt/rakudo-pkg/bin/install-zef-as-user
+<pre><code class="language-dockerfile"># renovate: datasource=github-tags depName=nxadm/rakudo-pkg
+ARG RAKU_RAKU_VERSION=2024.10
+ARG RAKU_RAKU_ALPINE_VERSION=3.20
+
+RUN curl -L "https://github.com/nxadm/rakudo-pkg/releases/download/v${RAKU_RAKU_VERSION}/rakudo-pkg-Alpine${RAKU_RAKU_ALPINE_VERSION}_${RAKU_RAKU_VERSION}-01_x86_64.apk" &gt; "rakudo-pkg-Alpine${RAKU_RAKU_ALPINE_VERSION}_${RAKU_RAKU_VERSION}-01_x86_64.apk" \
+    &amp;&amp; apk add --no-cache --allow-untrusted "rakudo-pkg-Alpine${RAKU_RAKU_ALPINE_VERSION}_${RAKU_RAKU_VERSION}-01_x86_64.apk" \
+    &amp;&amp; rm "rakudo-pkg-Alpine${RAKU_RAKU_ALPINE_VERSION}_${RAKU_RAKU_VERSION}-01_x86_64.apk"
 
 ENV PATH="~/.raku/bin:/opt/rakudo-pkg/bin:/opt/rakudo-pkg/share/perl6/site/bin:$PATH"
 </code></pre>
