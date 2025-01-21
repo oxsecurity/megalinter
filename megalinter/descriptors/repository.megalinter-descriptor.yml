@@ -139,12 +139,11 @@ linters:
       dockerfile:
         # The golang image used as a builder is a temporary workaround
         # Dustilock is not released as a binary or container
-        - |
-          # renovate: datasource=github-tags depName=checkmarx/dustilock
-          ARG REPOSITORY_DUSTILOCK_VERSION=1.2.0
         - |-
           FROM golang:alpine AS dustilock
-          RUN GOBIN=/usr/bin go install github.com/checkmarx/dustilock@v${REPOSITORY_DUSTILOCK_VERSION}
+          # renovate: datasource=github-tags depName=checkmarx/dustilock
+          ARG REPOSITORY_DUSTILOCK_VERSION=1.2.0
+          RUN apk add --no-cache git && GOBIN=/usr/bin go install github.com/checkmarx/dustilock@v${REPOSITORY_DUSTILOCK_VERSION}
         - COPY --link --from=dustilock /usr/bin/dustilock /usr/bin/dustilock
 
   # GIT_DIFF
@@ -563,7 +562,7 @@ linters:
           # renovate: datasource=github-tags depName=aquasecurity/trivy
           ARG REPOSITORY_TRIVY_VERSION=0.58.2
         - |
-          RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/refs/tags/v${REPOSITORY_TRIVY_VERSION}/contrib/install.sh | sh -s -- -b /usr/local/bin \
+          RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin "v${REPOSITORY_TRIVY_VERSION}" \
               && (trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress)
     ide:
       vscode:
@@ -613,7 +612,7 @@ linters:
           # renovate: datasource=github-tags depName=aquasecurity/trivy
           ARG REPOSITORY_TRIVY_SBOM_VERSION=0.58.2
         - |
-          RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/refs/tags/v${REPOSITORY_TRIVY_VERSION}/contrib/install.sh | sh -s -- -b /usr/local/bin \
+          RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin "v${REPOSITORY_TRIVY_SBOM_VERSION}" \
               && (trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress)
     ide:
       vscode:

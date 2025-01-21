@@ -120,7 +120,11 @@ linters:
     downgraded_reason: https://github.com/tcort/markdown-link-check/issues/369
     install:
       npm:
-        - markdown-link-check@3.12.2
+        - markdown-link-check@${MARKDOWN_MARKDOWN_LINK_CHECK_VERSION}
+      dockerfile:
+        - |-
+          # renovate: datasource=npm depName=markdown-link-check
+          ARG MARKDOWN_MARKDOWN_LINK_CHECK_VERSION=3.12.2
   # Markdown table formatter
   - linter_name: markdown-table-formatter
     is_formatter: true

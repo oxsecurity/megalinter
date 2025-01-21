@@ -48,7 +48,7 @@ def run_linters(linters, request_id):
     global REQUEST_CONFIG
     config.set_config(request_id, REQUEST_CONFIG)
     for linter in linters:
-        linter.run()
+        linter.run(run_commands_before_linters=False, run_commands_after_linters=False)
     return linters
 
 
@@ -244,7 +244,17 @@ class Megalinter:
             config.get(self.request_id, "PARALLEL", "true") == "true"
             and len(active_linters) > 1
         ):
+            for active_linter in active_linters:
+                pre_post_factory.run_linter_pre_commands(
+                    active_linter.master, active_linter, run_before_linters=True
+                )
+
             self.process_linters_parallel(active_linters, linters_do_fixes)
+
+            for active_linter in active_linters:
+                pre_post_factory.run_linter_post_commands(
+                    active_linter.master, active_linter, run_after_linters=True
+                )
         else:
             self.process_linters_serial(active_linters)
 
