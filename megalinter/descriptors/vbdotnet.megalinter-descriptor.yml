@@ -3,44 +3,42 @@ descriptor_label: "Visual Basic .NET"
 descriptor_type: language
 descriptor_flavors:
   - dotnet
+  - dotnetweb
+  - formatters
 file_extensions:
   - ".vb"
 install:
-  apk:
-    - icu-libs
-    - libcurl
-    - libintl
-    - libssl1.1
-    - libstdc++
-    - lttng-ust-dev
-    - zlib
-    - zlib-dev
   dockerfile:
-    - |
-      RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
-          && chmod +x dotnet-install.sh \
-          && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 5.0 -version latest
-    - ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
+    - RUN apk add --no-cache dotnet9-sdk
+    - ENV PATH="${PATH}:/root/.dotnet/tools"
 linters:
   # DOTNET FORMAT
   - class: DotnetFormatLinter
     linter_name: dotnet-format
     is_formatter: true
-    linter_url: https://github.com/dotnet/format
+    linter_text: |
+      dotnet-format requires a `.sln` or `.vbproj` file to run correctly.
+    linter_url: https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format
+    linter_repo: https://github.com/dotnet/sdk
+    linter_rules_configuration_url: https://github.com/dotnet/sdk/tree/main/documentation/format/docs
     linter_image_url: https://user-images.githubusercontent.com/9797472/61659851-6bbdc880-ac7d-11e9-95f7-d30c7de1a18a.png
+    cli_lint_errors_count: regex_count
+    cli_lint_errors_regex: ".vb\\([0-9]+,[0-9]+\\):\\s(?:warning|error)"
+    cli_executable: dotnet
+    cli_lint_mode: project
     cli_lint_extra_args:
-      - "--folder"
-      - "--check"
-      - "--exclude"
-      - "/"
-      - "--include"
+      - "format"
+    cli_lint_extra_args_after:
+      - "--include **/*.vb"
+      - "--verify-no-changes"
     cli_lint_fix_arg_name: "--megalinter-fix-flag" # Workaround to allow fix
     cli_lint_fix_remove_args:
-      - "--check"
-    linter_version_cache: "000"
+      - "--verify-no-changes"
+    cli_help_extra_args:
+      - format
     examples:
-      - "dotnet-format --folder --check --exclude / --include myfile.vb"
-      - "dotnet-format --folder --exclude / --include myfile.vb"
-    install:
-      dockerfile:
-        - RUN /usr/share/dotnet/dotnet tool install -g dotnet-format
+      - "dotnet format --verify-no-changes"
+      - "dotnet format Solution.sln --verify-no-changes"
+      - "dotnet format Folder/Solution.sln --verify-no-changes"
+      - "dotnet format Project.vbproj --verify-no-changes"
+      - "dotnet format" # Fix

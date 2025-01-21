@@ -1,6 +1,7 @@
 {
     // Extension completed by MegaLinter
     "recommendations": [
+        "mhutchie.git-graph",
         "ms-python.python",
         "stylelint.vscode-stylelint",
         "foxundermoon.shell-format",

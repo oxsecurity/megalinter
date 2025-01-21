@@ -1,11 +1,28 @@
-resource "aws_instance" "good" {
-  ami                         = "ami-0ff8a91507f77f867"
-  instance_type               = "t2.small"
-  associate_public_ip_address = false
-
-  vpc_security_group_ids = ["sg-12345678901234567"]
-
-  ebs_block_device {
-    encrypted = true
+terraform {
+  required_version = ">= 1.8.5"
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = ">= 5.55.0" # https://registry.terraform.io/providers/hashicorp/aws/latest
+    }
   }
+}
+
+provider "aws" {
+  region = "us-west-2"
+}
+
+resource "aws_s3_bucket" "example" {
+  bucket = "my-tf-test-bucket-${random_id.bucket_suffix.hex}"
+}
+
+resource "aws_s3_bucket_versioning" "example" {
+  bucket = aws_s3_bucket.example.id
+  versioning_configuration {
+    status = "Enabled"
+  }
+}
+
+resource "random_id" "bucket_suffix" {
+  byte_length = 4
 }

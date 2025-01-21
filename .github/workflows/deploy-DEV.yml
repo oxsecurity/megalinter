@@ -13,104 +13,96 @@
 #######################################
 # Start the job on all push to main #
 #######################################
-#############################
-# Start the job on all push #
-#############################
 name: "Build & Deploy - DEV"
 on:
   push:
-    branches-ignore: [main]
+    branches-ignore:
+      - main
+    paths-ignore:
+      - .github/CONTRIBUTING.md
+      - CHANGELOG.md
+      - README.md
+      - .github/workflows/slash-command-dispatch.yml
+      - .github/workflows/help-command.yml
+      - .github/workflows/build-command.yml
   pull_request:
-    branches-ignore: []
 
 ###############
 # Set the Job #
 ###############
 concurrency:
-  group: ${{ github.ref }}-${{ github.workflow }}
+  group: ${{ github.ref_name }}-${{ github.workflow }}
   cancel-in-progress: true
 
 jobs:
-
   build:
     # Name the Job
     name: Tests + Deploy Docker Image - DEV
     # Set the agent to run on
     runs-on: ubuntu-latest
+    permissions: read-all
     # Prevent duplicate run from happening when a forked push is committed
     if: (github.event_name == 'push' || github.event.pull_request.head.repo.full_name != github.repository) && !contains(github.event.head_commit.message, 'skip deploy')
     # Set max build time for the job
-    timeout-minutes: 90
+    timeout-minutes: 120
     ##################
     # Load all steps #
     ##################
     steps:
-      ##########################
-      # Checkout the code base #
-      ##########################
       - name: Checkout Code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
-          # Full git history is needed to get a proper list of changed files within `mega-linter`
           fetch-depth: 0
 
-      ########################
-      # Get the current date #
-      ########################
-      - name: Get current date
-        run: echo "BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" >> ${GITHUB_ENV}
-
-      ########################
-      # Build image tag name #
-      ########################
-      - name: Build image tag name
-        id: image_tag
+      # Free disk space
+      - name: Free Disk space
+        shell: bash
         run: |
-          BRANCH_NAME="${GITHUB_REF##*/}"
-          TAG="test-${GITHUB_ACTOR}-${BRANCH_NAME}"
-          echo "Tag name: ${TAG}"
-          echo "::set-output name=tag::${TAG}"
+          sudo rm -rf /usr/local/lib/android  # will release about 10 GB if you don't need Android
+          sudo rm -rf /usr/share/dotnet # will release about 20GB if you don't need .NET
+          sudo rm -rf /opt/ghc
+          sudo rm -rf "$AGENT_TOOLSDIRECTORY"
+
+      - name: Docker Metadata action
+        uses: docker/metadata-action@v5.6.1
+        id: meta
+        with:
+          images: |
+            ${{ github.repository }}
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
 
       ###################################
       # Build image locally for testing #
       ###################################
-      - name: Build image (quick)
-        if: "contains(github.event.head_commit.message, 'quick build')"
+      - name: Build MegaLinter Docker Image (quick)
+        if: ${{ contains(github.event.head_commit.message, 'quick build') }}
         id: docker_build_quick
-        shell: bash
-        run: |
-          function docker_tag_exists() {
-              echo "Checking existence of https://hub.docker.com/v2/repositories/$1/tags/$2"
-              curl --silent -f -lSL https://hub.docker.com/v2/repositories/$1/tags/$2 > /dev/null
-          }
-          MEGA_LINTER_BASE_IMAGE="oxsecurity/megalinter:beta"
-          if docker_tag_exists oxsecurity/megalinter ${{steps.image_tag.outputs.tag}}; then
-             MEGA_LINTER_BASE_IMAGE="oxsecurity/megalinter:${{steps.image_tag.outputs.tag}}"
-             echo "Reusing previously built image as base for quick build: ${MEGA_LINTER_BASE_IMAGE}"
-          fi
-          docker build --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=${GITHUB_SHA}" --build-arg "BUILD_VERSION=${GITHUB_SHA}" --build-arg "MEGALINTER_BASE_IMAGE=${MEGA_LINTER_BASE_IMAGE}" --no-cache -f "Dockerfile-quick" -t oxsecurity/megalinter:${{steps.image_tag.outputs.tag}} . | while read line ; do echo "$(date +'%H:%M:%S')| $line"; done;
-        timeout-minutes: 60
-
-      ##########################
-      # Push quick build image #
-      ##########################
-      - name: Push quickly built image
-        if: "contains(github.event.head_commit.message, 'quick build push')"
-        env:
-          # Set the Env Vars
-          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-          IMAGE_REPO: oxsecurity/megalinter
-          IMAGE_VERSION: ${{steps.image_tag.outputs.tag}}
-          DOCKERFILE_PATH: Dockerfile-quick
-          REGISTRY: Docker
-        shell: bash
-        run: .automation/upload-docker.sh || true
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: Dockerfile-quick
+          platforms: linux/amd64
+          build-args: |
+            BUILD_DATE=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.created'] }}
+            BUILD_VERSION=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.version'] }}
+            BUILD_REVISION=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.revision'] }}
+            MEGA_LINTER_BASE_IMAGE="oxsecurity/megalinter:beta"
+          load: true
+          push: false
+          secrets: |
+            GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
+          tags: ${{ steps.meta.outputs.tags }}
+        timeout-minutes: 90
 
       #######################################
       # Build image (full for forked repos) #
       #######################################
-      - name: Build image (full from forks)
+      - name: Build MegaLinter Docker Image (full from forks)
         if: |
           (
           (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository) ||
@@ -119,14 +111,26 @@ jobs:
           &&
           !contains(github.event.head_commit.message, 'quick build')
         id: docker_build
-        shell: bash
-        run: docker build --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=${GITHUB_SHA}" --build-arg "BUILD_VERSION=${GITHUB_SHA}" --no-cache -t oxsecurity/megalinter:${{steps.image_tag.outputs.tag}} . | while read line ; do echo "$(date +'%H:%M:%S')| $line"; done;
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: Dockerfile
+          platforms: linux/amd64
+          build-args: |
+            BUILD_DATE=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.created'] }}
+            BUILD_VERSION=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.version'] }}
+            BUILD_REVISION=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.revision'] }}
+          load: true
+          push: false
+          secrets: |
+            GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
+          tags: ${{ steps.meta.outputs.tags }}
         timeout-minutes: 90
 
       ####################################
       # Build image (full for main repo) #
       ####################################
-      - name: Build image (full from main repo) & push
+      - name: Build MegaLinter Docker Image (full from main repo) & push
         if: |
           (
           (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository) ||
@@ -134,23 +138,24 @@ jobs:
           )
           &&
           !contains(github.event.head_commit.message, 'quick build')
-        env:
-          # Set the Env Vars
-          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-          IMAGE_REPO: oxsecurity/megalinter
-          IMAGE_VERSION: ${{steps.image_tag.outputs.tag}}
-          DOCKERFILE_PATH: Dockerfile
-          REGISTRY: Docker
-        shell: bash
-        run: .automation/upload-docker.sh
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: Dockerfile
+          platforms: linux/amd64
+          build-args: |
+            BUILD_DATE=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.created'] }}
+            BUILD_VERSION=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.version'] }}
+            BUILD_REVISION=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.revision'] }}
+          load: true
+          push: false
+          secrets: |
+            GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
+          tags: ${{ steps.meta.outputs.tags }}
 
-      # Free disk space
-      - name: Free Disk space
-        shell: bash
-        run: |
-          sudo rm -rf /usr/local/lib/android  # will release about 10 GB if you don't need Android
-          sudo rm -rf /usr/share/dotnet # will release about 20GB if you don't need .NET
+      # Clean docker build cache
+      - name: Clean docker buildx cache
+        run: docker buildx prune --force
 
       #####################################
       # Run Linter test cases #
@@ -158,10 +163,13 @@ jobs:
       - name: Run Test Cases
         shell: bash
         run: |
+          GITHUB_REPOSITORY=$([ "${{ github.event_name }}" == "pull_request" ] && echo "${{ github.event.pull_request.head.repo.full_name }}" || echo "${{ github.repository }}")
+          GITHUB_BRANCH=$([ "${{ github.event_name }}" == "pull_request" ] && echo "${{ github.head_ref }}" || echo "${{ github.ref_name }}")
+
           export CI_ENV="$(bash <(curl -s https://codecov.io/env)) -e GITHUB_ACTIONS"
           TEST_KEYWORDS_TO_USE=""
-          if [[ "${{github.event.head_commit.message}}" == *"TEST_KEYWORDS="* ]]; then
-            COMMIT_MSG="${{github.event.head_commit.message}}"
+          if [[ "${{ github.event.head_commit.message }}" == *"TEST_KEYWORDS="* ]]; then
+            COMMIT_MSG="${{ github.event.head_commit.message }}"
             TEST_KEYWORDS_TO_USE=${COMMIT_MSG#*TEST_KEYWORDS=}
             echo "Run only tests with keywords ${TEST_KEYWORDS_TO_USE}"
             if [[ "${TEST_KEYWORDS_TO_USE}" =~ $'\r' ]]; then
@@ -169,8 +177,9 @@ jobs:
                 TEST_KEYWORDS_TO_USE=""
             fi
           fi
-          docker run $CI_ENV -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=text -e OUTPUT_FOLDER=${GITHUB_SHA} -e OUTPUT_DETAIL=detailed -e GITHUB_SHA=${GITHUB_SHA} -e PAT="${{secrets.PAT}}" -e TEST_KEYWORDS="${TEST_KEYWORDS_TO_USE}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint oxsecurity/megalinter:${{steps.image_tag.outputs.tag}}
-        timeout-minutes: 60
+          docker image ls
+          docker run $CI_ENV -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=text -e OUTPUT_FOLDER=${{ github.sha }} -e OUTPUT_DETAIL=detailed -e GITHUB_SHA=${{ github.sha }} -e GITHUB_REPOSITORY=${GITHUB_REPOSITORY} -e GITHUB_BRANCH=${GITHUB_BRANCH} -e GITHUB_TOKEN="${{ secrets.GITHUB_TOKEN }}" -e TEST_KEYWORDS="${TEST_KEYWORDS_TO_USE}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint ${{ fromJson(steps.meta.outputs.json).tags[0]}}
+        timeout-minutes: 90
 
       #####################################
       # Run Linter against ALL code base  #
@@ -178,13 +187,13 @@ jobs:
       - name: Run against all code base
         if: "!contains(github.event.head_commit.message, 'quick build')"
         shell: bash
-        run: docker run -e GITHUB_REPOSITORY="${{github.repository}}" -e GITHUB_SHA="${{github.sha}}" -e GITHUB_TOKEN="${{github.token}}" -e GITHUB_RUN_ID="${{github.run_id}}" -e PAT="${{secrets.PAT}}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint oxsecurity/megalinter:${{steps.image_tag.outputs.tag}}
+        run: docker run -e GITHUB_REPOSITORY="${{ github.repository }}" -e GITHUB_SHA="${{ github.sha }}" -e GITHUB_TOKEN="${{ github.token }}" -e GITHUB_RUN_ID="${{ github.run_id }}" -e GITHUB_TOKEN="${{ secrets.GITHUB_TOKEN }}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint ${{ fromJson(steps.meta.outputs.json).tags[0]}}
         timeout-minutes: 15
 
       # Upload MegaLinter artifacts
       - name: Archive production artifacts
-        if: ${{ success() }} || ${{ failure() }}
-        uses: actions/upload-artifact@v3
+        if: success() || failure()
+        uses: actions/upload-artifact@v4
         with:
           name: MegaLinter reports
           path: |
@@ -194,34 +203,49 @@ jobs:
             linter-versions.json
 
       - name: debug
-        if: ${{ success() }} || ${{ failure() }}
+        if: success() || failure()
         run: echo ${{ steps.docker_build.outcome }}
+
+      # Clean disk space
+      - name: Clear disk space
+        run: |
+          sudo rm -rf /opt/ghc
+          sudo rm -rf "$AGENT_TOOLSDIRECTORY"
+          sudo swapoff -a || true
+          sudo rm -f /swapfile || true
+          sudo apt clean || true
 
       # Test mega-linter-runner with newly created image
       - name: Setup Node
         if: ${{ steps.docker_build.outcome }} == 'success' && !contains(github.event.head_commit.message, 'quick build')
-        uses: actions/setup-node@v3.1.1
+        uses: actions/setup-node@v4.1.0
         with:
-          node-version: "12"
+          node-version: "20.x"
       - name: Install NPM dependencies
         if: ${{ steps.docker_build.outcome }} == 'success' && !contains(github.event.head_commit.message, 'quick build')
-        run: cd mega-linter-runner && sudo yarn install --frozen-lockfile && sudo npm link
+        run: cd mega-linter-runner && yarn install --frozen-lockfile && npm link
       - name: Run mega-linter-runner tests
         if: ${{ steps.docker_build.outcome }} == 'success' && !contains(github.event.head_commit.message, 'quick build')
-        run: cd mega-linter-runner && MEGALINTER_RELEASE=${{steps.image_tag.outputs.tag}} MEGALINTER_NO_DOCKER_PULL=true npm run test
+        run: cd mega-linter-runner && MEGALINTER_RELEASE=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.version'] }} MEGALINTER_IMAGE=${{ fromJson(steps.meta.outputs.json).tags[0]}} MEGALINTER_NO_DOCKER_PULL=true npm run test
 
-      ##############################################
-      # Check Docker image security with Trivy #
-      ##############################################
-      
-#      - name: Run Trivy vulnerability scanner
-#        uses: aquasecurity/trivy-action@master
-#        with:
-#          image-ref: "docker.io/oxsecurity/megalinter:${{steps.image_tag.outputs.tag}}"
-#          format: 'table'
-#          exit-code: '1'
-#          ignore-unfixed: true
-#          security-checks: vuln
-#          vuln-type: 'os,library'
-#          severity: 'CRITICAL,HIGH'
-#          timeout: 10m0s
+      # - name: free disk space
+      #   run: |
+      #     sudo swapoff -a || true
+      #     sudo rm -f /swapfile || true
+      #     sudo apt clean || true
+
+      # ##############################################
+      # # Check Docker image security with Trivy #
+      # ##############################################
+
+      # - name: Run Trivy vulnerability scanner
+      #   uses: aquasecurity/trivy-action@master
+      #   with:
+      #     image-ref: "${{ fromJson(steps.meta.outputs.json).tags[0]}}"
+      #     format: 'table'
+      #     exit-code: '1'
+      #     ignore-unfixed: true
+      #     scanners: vuln
+      #     vuln-type: 'os,library'
+      #     severity: 'CRITICAL,HIGH'
+      #     timeout: 15m0s

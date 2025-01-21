@@ -6,9 +6,9 @@ linters:
   # PuppetLint
   - linter_name: puppet-lint
     linter_url: http://puppet-lint.com/
-    linter_repo: https://github.com/rodjek/puppet-lint
+    linter_repo: https://github.com/puppetlabs/puppet-lint
     linter_rules_url: http://puppet-lint.com/checks/
-    linter_rules_configuration_url: https://github.com/rodjek/puppet-lint#configuration-file
+    linter_rules_configuration_url: https://github.com/puppetlabs/puppet-lint#configuration-file
     linter_rules_inline_disable_url: http://puppet-lint.com/controlcomments/
     config_file_name: .puppet-lint.rc
     cli_config_arg_name: ""
@@ -24,5 +24,5 @@ linters:
         - puppet-lint
     ide:
       vscode:
-        - name: Puppet VsCode Extension
+        - name: Puppet VSCode Extension
           url: https://puppet-vscode.github.io/docs/features/linting/

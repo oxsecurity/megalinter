@@ -1,0 +1,28 @@
+#####################
+#####################
+## GitHub Actions  ##
+#####################
+#####################
+
+# Rule: document-start - Missing document start marker
+name: CI
+on: [push, pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-latest # Rule: trailing-spaces - Trailing spaces are disallowed
+    steps:
+     - uses: actions/checkout@v2 # Rule: indentation - Expected 6 spaces but found 5
+    - name: Run a one-line script # Rule: syntax - Expected <block end>, but found '-'
+      # Rule: trailing-spaces - Trailing spaces are disallowed
+      run: echo Hello, world!
+    - name: Two-line script
+      run: |
+        echo Add other actions to build,
+        echo test
+    - name: Three-line script
+    run: |
+        echo Line 1
+         echo Line 2 # Rule: indentation - Expected 6 spaces but found 5
+        echo Line 3 # Rule: trailing-spaces - Trailing spaces are disallowed
+# Rule: empty-lines - Too many blank lines (1 > 0)
+

@@ -1,0 +1,44 @@
+descriptor_id: API
+descriptor_type: tooling_format
+descriptor_flavors:
+  - all_flavors # Any project can contain API specifications (AsyncAPI, OpenAI, etc.)
+file_extensions:
+  - ".yml"
+  - ".yaml"
+  - ".json"
+file_contains_regex:
+  - '"asyncapi":'
+  - '"openapi":'
+  - '"swagger":'
+  - "asyncapi:"
+  - "openapi:"
+  - "swagger:"
+linters:
+  # Spectral
+  - linter_name: spectral
+    linter_url: https://docs.stoplight.io/docs/spectral/674b27b261c3c-overview
+    linter_repo: https://github.com/stoplightio/spectral
+    linter_rules_url: https://docs.stoplight.io/docs/spectral/4dec24461f3af-open-api-rules
+    linter_banner_image_url: https://github.com/stoplightio/spectral/raw/develop/docs/img/spectral-banner.png
+    linter_rules_configuration_url: https://docs.stoplight.io/docs/spectral/9ffa04e052cc1-spectral-cli#using-a-ruleset-file
+    config_file_name: .spectral.yaml
+    cli_config_arg_name: "-r"
+    cli_lint_extra_args:
+      - "lint"
+    cli_help_arg_name: "--help"
+    cli_help_extra_args:
+      - "lint"
+    examples:
+      - "spectral lint myfile.yml"
+      - "spectral lint -r .spectral.yaml myfile.yml"
+    test_folder: api
+    install:
+      npm:
+        - "@stoplight/spectral-cli"
+    ide:
+      stoplight:
+        - name: Native integration
+          url: https://stoplight.io/studio
+      vscode:
+        - name: vscode-spectral
+          url: https://github.com/stoplightio/vscode-spectral

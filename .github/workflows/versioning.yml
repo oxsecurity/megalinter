@@ -28,17 +28,19 @@ on:
 jobs:
   actions-tagger:
     runs-on: windows-latest
+    environment:
+      name: release
+    permissions: write-all
     steps:
       #############################
       # Check out the latest code #
       #############################
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       ######################
       # Run the tag action #
       ######################
-      - uses: Actions-R-Us/actions-tagger@v2.0.2
+      - uses: Actions-R-Us/actions-tagger@v2.0.3
         with:
           publish_latest_tag: true
-        env:
-          GITHUB_TOKEN: "${{secrets.GITHUB_TOKEN}}"
+

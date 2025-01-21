@@ -1,0 +1,44 @@
+#####################
+#####################
+## Azure Pipelines ##
+#####################
+#####################
+
+# Error: 6:1 [trailing-spaces] trailing spaces
+trigger: main
+# Warning: 8:1 [document-start] missing document start "---"
+
+pool:
+  vmImage: 'ubuntu-latest'
+jobs:
+- job: Build
+# Error: trailing-spaces] trailing spaces
+
+  steps:
+  - task: UseNode@1
+    inputs:
+      versionSpec: 12.x
+      checkLatest: true
+      empty:
+# Error: [indentation] wrong indentation: expected 2 but found 0
+
+- job: Test
+  steps:
+
+# Error: [empty-lines] too many blank lines (3 > 2)
+
+
+
+  - script: npm install
+# Error: [indentation] wrong indentation: expected 4 but found 2
+  - script: npm test
+  - script: echo "Testing!"
+
+# Error: [trailing-spaces] trailing spaces
+
+
+# Error: [indentation] wrong indentation: expected 4 but found 2
+  - script: npm test
+# Error: [empty-lines] too many blank lines (1 > 0)
+
+

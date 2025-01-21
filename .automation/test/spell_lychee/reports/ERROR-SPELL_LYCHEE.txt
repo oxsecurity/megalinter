@@ -1,0 +1,19 @@
+Results of lychee linter (version 0.0.0)
+See documentation on https://lychee.cli.rs
+-----------------------------------------------
+
+❌ [ERROR] for workspace /github/workspace
+Linter raw log:
+📝 Summary
+---------------------
+🔍 Total............3
+✅ Successful.......1
+⏳ Timeouts.........0
+🔀 Redirected.......0
+👻 Excluded.........0
+❓ Unknown..........0
+🚫 Errors...........2
+
+Errors in /github/workspace/.automation/test/spell_lychee/markdown_bad_1.md
+✗ [ERR] http://www.glouglouglglsdgdfgfdgsfgdfgdf.com2/ | Failed: Network error: dns error: no record found for Query { name: Name("www.glouglouglglsdgdfgfdgsfgdfgdf.com2."), query_type: AAAA, query_class: IN }
+✗ [ERR] http://www.glouglouglglsdgdfgfdgsfgdfgdf.com/ | Failed: Network error: dns error: no record found for Query { name: Name("www.glouglouglglsdgdfgfdgsfgdfgdf.com."), query_type: AAAA, query_class: IN }

@@ -1,3 +1,8 @@
+---
+title: License info for dotenv-linter within MegaLinter
+search:
+  exclude: true
+---
 MIT License
 
 Copyright (c) 2019 Grachev Mikhail

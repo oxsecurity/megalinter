@@ -1,0 +1,23 @@
+##########################
+##########################
+## Kubernetes Manifests ##
+##########################
+##########################
+
+# Rule: document-start - Missing document start marker
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod
+spec:
+  containers:
+  - name: mycontainer # Rule: indentation - Inconsistent indentation
+    image: myimage
+     # Rule: trailing-spaces - Trailing spaces are disallowed
+    ports:
+    - containerPort: 80 # Rule: indentation - Inconsistent indentation
+    - containerPort: 443 # Rule: indentation - Inconsistent indentation
+  - name: mysidecar
+    image: sidecarimage
+    ports:
+    - containerPort: 8080

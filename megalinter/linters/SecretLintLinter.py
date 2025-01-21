@@ -10,13 +10,22 @@ from megalinter import Linter
 
 
 class SecretLintLinter(Linter):
-
     # Called before linting files
-    def before_lint_files(self):
+    def get_ignore_arguments(self, cmd):
+        ignore_args = super().get_ignore_arguments(cmd)
         # Use .gitignore as .secretlintignore
         # only if --secretlintignore is not defined and .secretlintignore not found
-        if "--secretlintignore" not in self.cli_lint_user_args and (
-            os.path.isfile(os.path.join(self.workspace, ".gitignore"))
-            and (not os.path.isfile(os.path.join(self.workspace, ".secretlintignore")))
+        if (
+            len(ignore_args) == 0
+            and "--secretlintignore" not in self.cli_lint_user_args
+            and (
+                os.path.isfile(os.path.join(self.workspace, ".gitignore"))
+                and (
+                    not os.path.isfile(
+                        os.path.join(self.workspace, ".secretlintignore")
+                    )
+                )
+            )
         ):
-            self.cli_lint_extra_args += ["--secretlintignore", ".gitignore"]
+            ignore_args = ["--secretlintignore", ".gitignore"]
+        return ignore_args

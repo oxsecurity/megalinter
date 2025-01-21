@@ -16,8 +16,9 @@ linters:
     linter_rules_configuration_url: https://github.com/IBM/tekton-lint#configuring-tekton-lint
     config_file_name: .tektonlintrc.yaml
     cli_config_arg_name: ""
+    cli_help_arg_name: --help
     examples:
       - "tekton-lint myfile.yml"
     install:
       npm:
-        - "tekton-lint"
+        - "@ibm/tekton-lint"

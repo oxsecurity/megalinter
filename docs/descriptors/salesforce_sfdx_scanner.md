@@ -24,8 +24,8 @@ See more details in [Help](#help-content)
 
 ## Configuration in MegaLinter
 
-- Enable sfdx-scanner by adding `SALESFORCE_SFDX_SCANNER` in [ENABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
-- Disable sfdx-scanner by adding `SALESFORCE_SFDX_SCANNER` in [DISABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
+- Enable sfdx-scanner by adding `SALESFORCE_SFDX_SCANNER` in [ENABLE_LINTERS variable](https://megalinter.io/configuration/#activation-and-deactivation)
+- Disable sfdx-scanner by adding `SALESFORCE_SFDX_SCANNER` in [DISABLE_LINTERS variable](https://megalinter.io/configuration/#activation-and-deactivation)
 
 | Variable                                            | Description                                                                                                                                                                                  | Default value      |
 |-----------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
@@ -51,12 +51,12 @@ Use sfdx-scanner in your favorite IDE to catch errors before MegaLinter !
 
 ## MegaLinter Flavours
 
-This linter is available in the following flavours
+This linter is available in the following flavors
 
-| <!-- -->                                                                                                                                                 | Flavor                                                         | Description                             | Embedded linters | Info                                                                                                                                                                                           |
-|----------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------|-----------------------------------------|------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/)         | Default MegaLinter Flavor               | 87               | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter)                       |
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>          | [salesforce](https://megalinter.github.io/flavors/salesforce/) | Optimized for Salesforce based projects | 41               | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-salesforce/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-salesforce) |
+| <!-- -->                                                                                                                                                 | Flavor                                                  | Description                             | Embedded linters | Info                                                                                                                                                                                           |
+|----------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------|-----------------------------------------|------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/supported-linters/)         | Default MegaLinter Flavor               | 87               | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter)                       |
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>          | [salesforce](https://megalinter.io/flavors/salesforce/) | Optimized for Salesforce based projects | 41               | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-salesforce/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-salesforce) |
 
 ## Behind the scenes
 
@@ -401,7 +401,7 @@ RUN sfdx plugins:install @salesforce/sfdx-scanner
 
 ```shell
 Results of sfdx-scanner linter (version 2.4.0)
-See documentation on https://megalinter.github.io/descriptors/salesforce_sfdx_scanner/
+See documentation on https://megalinter.io/descriptors/salesforce_sfdx_scanner/
 -----------------------------------------------
 
 [SUCCESS] /tmp/098844eb-9b85-4505-b6b6-8c6bcd96050f
@@ -413,7 +413,7 @@ See documentation on https://megalinter.github.io/descriptors/salesforce_sfdx_sc
 
 ```shell
 Results of sfdx-scanner linter (version 2.4.0)
-See documentation on https://megalinter.github.io/descriptors/salesforce_sfdx_scanner/
+See documentation on https://megalinter.io/descriptors/salesforce_sfdx_scanner/
 -----------------------------------------------
 
 [ERROR] /tmp/a62282d7-5f53-42be-9816-03d1c2da8715

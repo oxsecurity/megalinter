@@ -1,12 +1,56 @@
 descriptor_id: CLOJURE
 descriptor_type: language
 descriptor_flavors:
+  - cupcake
   - java
 file_extensions:
   - ".clj"
   - ".cljs"
   - ".cljc"
   - ".edn"
+install:
+  dockerfile:
+    - ENV LANG=C.UTF-8
+    - |
+      RUN ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases/download" && \
+          ALPINE_GLIBC_PACKAGE_VERSION="2.34-r0" && \
+          ALPINE_GLIBC_BASE_PACKAGE_FILENAME="glibc-$ALPINE_GLIBC_PACKAGE_VERSION.apk" && \
+          ALPINE_GLIBC_BIN_PACKAGE_FILENAME="glibc-bin-$ALPINE_GLIBC_PACKAGE_VERSION.apk" && \
+          ALPINE_GLIBC_I18N_PACKAGE_FILENAME="glibc-i18n-$ALPINE_GLIBC_PACKAGE_VERSION.apk" && \
+          apk add --no-cache --virtual=.build-dependencies wget ca-certificates && \
+          echo \
+              "-----BEGIN PUBLIC KEY-----\
+              MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEApZ2u1KJKUu/fW4A25y9m\
+              y70AGEa/J3Wi5ibNVGNn1gT1r0VfgeWd0pUybS4UmcHdiNzxJPgoWQhV2SSW1JYu\
+              tOqKZF5QSN6X937PTUpNBjUvLtTQ1ve1fp39uf/lEXPpFpOPL88LKnDBgbh7wkCp\
+              m2KzLVGChf83MS0ShL6G9EQIAUxLm99VpgRjwqTQ/KfzGtpke1wqws4au0Ab4qPY\
+              KXvMLSPLUp7cfulWvhmZSegr5AdhNw5KNizPqCJT8ZrGvgHypXyiFvvAH5YRtSsc\
+              Zvo9GI2e2MaZyo9/lvb+LbLEJZKEQckqRj4P26gmASrZEPStwc+yqy1ShHLA0j6m\
+              1QIDAQAB\
+              -----END PUBLIC KEY-----" | sed 's/   */\\n/g' > "/etc/apk/keys/sgerrand.rsa.pub" && \
+          wget --quiet --tries=10 --waitretry=10 \
+              "$ALPINE_GLIBC_BASE_URL/$ALPINE_GLIBC_PACKAGE_VERSION/$ALPINE_GLIBC_BASE_PACKAGE_FILENAME" \
+              "$ALPINE_GLIBC_BASE_URL/$ALPINE_GLIBC_PACKAGE_VERSION/$ALPINE_GLIBC_BIN_PACKAGE_FILENAME" \
+              "$ALPINE_GLIBC_BASE_URL/$ALPINE_GLIBC_PACKAGE_VERSION/$ALPINE_GLIBC_I18N_PACKAGE_FILENAME" && \
+          mv /etc/nsswitch.conf /etc/nsswitch.conf.bak && \
+          apk add --no-cache --force-overwrite \
+              "$ALPINE_GLIBC_BASE_PACKAGE_FILENAME" \
+              "$ALPINE_GLIBC_BIN_PACKAGE_FILENAME" \
+              "$ALPINE_GLIBC_I18N_PACKAGE_FILENAME" && \
+          \
+          mv /etc/nsswitch.conf.bak /etc/nsswitch.conf && \
+          rm "/etc/apk/keys/sgerrand.rsa.pub" && \
+          (/usr/glibc-compat/bin/localedef --force --inputfile POSIX --charmap UTF-8 "$LANG" || true) && \
+          echo "export LANG=$LANG" > /etc/profile.d/locale.sh && \
+          \
+          apk del glibc-i18n && \
+          \
+          rm "/root/.wget-hsts" && \
+          apk del .build-dependencies && \
+          rm \
+              "$ALPINE_GLIBC_BASE_PACKAGE_FILENAME" \
+              "$ALPINE_GLIBC_BIN_PACKAGE_FILENAME" \
+              "$ALPINE_GLIBC_I18N_PACKAGE_FILENAME"
 linters:
   # clj-kondo
   - linter_name: clj-kondo
@@ -24,11 +68,15 @@ linters:
     examples:
       - "clj-kondo --lint myfile.clj"
       - "clj-kondo --lint --config .clj-kondo/config.edn myfile.clj"
-    downgraded_version: true
     install:
       dockerfile:
-        - FROM cljkondo/clj-kondo:2022.04.25-alpine as clj-kondo
-        - COPY --from=clj-kondo /bin/clj-kondo /usr/bin/
+        - |
+          # renovate: datasource=github-tags depName=clj-kondo/clj-kondo
+          ARG CLJ_KONDO_VERSION=2025.01.16
+        - |
+          RUN curl --retry 5 --retry-delay 5 -sLO https://raw.githubusercontent.com/clj-kondo/clj-kondo/refs/tags/v${CLJ_KONDO_VERSION}/script/install-clj-kondo \
+              && chmod +x install-clj-kondo \
+              && ./install-clj-kondo
     ide:
       atom:
         - name: linter-kondo
@@ -41,3 +89,39 @@ linters:
           url: https://marketplace.visualstudio.com/items?itemName=borkdude.clj-kondo
         - name: Clojure lint
           url: https://github.com/marcomorain/clojure-lint
+
+    # cljstyle
+  - linter_name: cljstyle
+    linter_url: https://github.com/greglook/cljstyle
+    linter_repo: https://github.com/greglook/cljstyle
+    linter_rules_url: https://github.com/greglook/cljstyle/blob/main/doc/configuration.md#format-rules
+    # linter_banner_image_url: https://github.com/borkdude/clj-kondo/raw/master/logo/logo-300dpi.png
+    linter_rules_configuration_url: https://github.com/greglook/cljstyle/blob/main/doc/configuration.md#format-rules
+    linter_rules_inline_disable_url: https://github.com/greglook/cljstyle#ignoring-forms
+    linter_megalinter_ref_url: https://github.com/greglook/cljstyle/blob/main/doc/integrations.md
+    config_file_name: .cljstyle
+    cli_config_arg_name: ""
+    cli_lint_extra_args:
+      - "check"
+    cli_lint_fix_arg_name: "fix"
+    cli_lint_fix_remove_args:
+      - "check"
+    cli_version_arg_name: version
+    test_folder: clojure-style
+    examples:
+      - "cljstyle check"
+      - "cljstyle fix"
+      - "cljstyle fix myfile.clj path/to/myfile.clj"
+    install:
+      dockerfile:
+        - |-
+          # renovate: datasource=github-tags depName=greglook/cljstyle
+          ARG CLJ_STYLE_VERSION=0.17.642
+        - |
+          RUN curl --retry 5 --retry-delay 5 -sLO https://raw.githubusercontent.com/greglook/cljstyle/main/util/install-cljstyle \
+              && chmod +x install-cljstyle \
+              && ./install-cljstyle --static --version "$CLJ_STYLE_VERSION"
+    ide:
+      emacs:
+        - name: cljstyle-mode
+          url: https://github.com/greglook/cljstyle/blob/main/doc/integrations.md#emacs

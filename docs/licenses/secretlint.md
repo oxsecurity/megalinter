@@ -1,3 +1,8 @@
+---
+title: License info for secretlint within MegaLinter
+search:
+  exclude: true
+---
 Copyright (c) 2020 azu
 
 Permission is hereby granted, free of charge, to any person obtaining a copy

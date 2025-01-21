@@ -2,42 +2,89 @@ descriptor_id: DART
 descriptor_type: language
 file_extensions:
   - ".dart"
+install:
+  dockerfile:
+    - ENV LANG=C.UTF-8
+    - |
+      RUN ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases/download" && \
+          ALPINE_GLIBC_PACKAGE_VERSION="2.34-r0" && \
+          ALPINE_GLIBC_BASE_PACKAGE_FILENAME="glibc-$ALPINE_GLIBC_PACKAGE_VERSION.apk" && \
+          ALPINE_GLIBC_BIN_PACKAGE_FILENAME="glibc-bin-$ALPINE_GLIBC_PACKAGE_VERSION.apk" && \
+          ALPINE_GLIBC_I18N_PACKAGE_FILENAME="glibc-i18n-$ALPINE_GLIBC_PACKAGE_VERSION.apk" && \
+          apk add --no-cache --virtual=.build-dependencies wget ca-certificates && \
+          echo \
+              "-----BEGIN PUBLIC KEY-----\
+              MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEApZ2u1KJKUu/fW4A25y9m\
+              y70AGEa/J3Wi5ibNVGNn1gT1r0VfgeWd0pUybS4UmcHdiNzxJPgoWQhV2SSW1JYu\
+              tOqKZF5QSN6X937PTUpNBjUvLtTQ1ve1fp39uf/lEXPpFpOPL88LKnDBgbh7wkCp\
+              m2KzLVGChf83MS0ShL6G9EQIAUxLm99VpgRjwqTQ/KfzGtpke1wqws4au0Ab4qPY\
+              KXvMLSPLUp7cfulWvhmZSegr5AdhNw5KNizPqCJT8ZrGvgHypXyiFvvAH5YRtSsc\
+              Zvo9GI2e2MaZyo9/lvb+LbLEJZKEQckqRj4P26gmASrZEPStwc+yqy1ShHLA0j6m\
+              1QIDAQAB\
+              -----END PUBLIC KEY-----" | sed 's/   */\\n/g' > "/etc/apk/keys/sgerrand.rsa.pub" && \
+          wget --quiet --tries=10 --waitretry=10 \
+              "$ALPINE_GLIBC_BASE_URL/$ALPINE_GLIBC_PACKAGE_VERSION/$ALPINE_GLIBC_BASE_PACKAGE_FILENAME" \
+              "$ALPINE_GLIBC_BASE_URL/$ALPINE_GLIBC_PACKAGE_VERSION/$ALPINE_GLIBC_BIN_PACKAGE_FILENAME" \
+              "$ALPINE_GLIBC_BASE_URL/$ALPINE_GLIBC_PACKAGE_VERSION/$ALPINE_GLIBC_I18N_PACKAGE_FILENAME" && \
+          mv /etc/nsswitch.conf /etc/nsswitch.conf.bak && \
+          apk add --no-cache --force-overwrite \
+              "$ALPINE_GLIBC_BASE_PACKAGE_FILENAME" \
+              "$ALPINE_GLIBC_BIN_PACKAGE_FILENAME" \
+              "$ALPINE_GLIBC_I18N_PACKAGE_FILENAME" && \
+          \
+          mv /etc/nsswitch.conf.bak /etc/nsswitch.conf && \
+          rm "/etc/apk/keys/sgerrand.rsa.pub" && \
+          (/usr/glibc-compat/bin/localedef --force --inputfile POSIX --charmap UTF-8 "$LANG" || true) && \
+          echo "export LANG=$LANG" > /etc/profile.d/locale.sh && \
+          \
+          apk del glibc-i18n && \
+          \
+          rm "/root/.wget-hsts" && \
+          apk del .build-dependencies && \
+          rm \
+              "$ALPINE_GLIBC_BASE_PACKAGE_FILENAME" \
+              "$ALPINE_GLIBC_BIN_PACKAGE_FILENAME" \
+              "$ALPINE_GLIBC_I18N_PACKAGE_FILENAME"
 linters:
   # Dart Analyzer
   - linter_name: dartanalyzer
-    linter_url: https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli
+    linter_url: https://dart.dev/tools/dart-analyze
     linter_repo: https://github.com/dart-lang/sdk
-    linter_banner_image_url: https://manifesto.co.uk/wp-content/uploads/2014/08/dart-logo.png
-    linter_rules_configuration_url: https://dart.dev/guides/language/analysis-options#the-analysis-options-file
-    linter_rules_inline_disable_url: https://dart.dev/guides/language/analysis-options#suppressing-rules-for-a-file
+    linter_image_url: https://dart.dev/assets/img/logo/logo-white-text.svg
+    linter_rules_url: https://dart.dev/tools/linter-rules#rules
+    linter_rules_configuration_url: https://dart.dev/tools/analysis
+    linter_rules_inline_disable_url: https://dart.dev/tools/analysis#ignoring-rules
     linter_megalinter_ref_url: "no"
-    config_file_name: analysis_options.yml
+    config_file_name: analysis_options.yaml
+    cli_executable: dart
     cli_lint_extra_args:
+      - "analyze"
       - "--fatal-infos"
       - "--fatal-warnings"
-    cli_config_arg_name: "--options"
-    linter_version_cache: "0.0.0" # dartanalyzer --version returns <unknown>
+    cli_help_extra_args:
+      - "analyze"
+    version_extract_regex: "(?<=Dart SDK version: )(\\d+)\\.(\\d+)\\.(\\d+)"
     examples:
-      - "dartanalyzer --fatal-infos --fatal-warnings myfile.dart"
-      - "dartanalyzer --fatal-infos --fatal-warnings --options analysis_options.yml myfile.dart"
+      - "dart analyze --fatal-infos --fatal-warnings myfile.dart"
     install:
       ## stable dart sdk: https://dart.dev/get-dart#release-channels
       ## install alpine-pkg-glibc (glibc compatibility layer package for Alpine Linux)
       dockerfile:
-        - ARG DART_VERSION='2.8.4'
-        - ARG GLIBC_VERSION='2.31-r0'
+        - |-
+          # renovate: datasource=dart-version depName=dart
+          ARG DART_VERSION='3.6.1'
         - |
-          RUN wget --tries=50 -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub \
-              && wget --tries=5 -q https://github.com/sgerrand/alpine-pkg-glibc/releases/download/${GLIBC_VERSION}/glibc-${GLIBC_VERSION}.apk \
-              && apk add --no-cache glibc-${GLIBC_VERSION}.apk && rm glibc-${GLIBC_VERSION}.apk \
-              && wget --tries=5 https://storage.googleapis.com/dart-archive/channels/stable/release/${DART_VERSION}/sdk/dartsdk-linux-x64-release.zip -O - -q | unzip -q - \
-              && chmod +x dart-sdk/bin/dart* \
-              && mv dart-sdk/bin/* /usr/bin/ && mv dart-sdk/lib/* /usr/lib/ && mv dart-sdk/include/* /usr/include/ \
+          RUN wget --tries=5 https://storage.googleapis.com/dart-archive/channels/stable/release/${DART_VERSION}/sdk/dartsdk-linux-x64-release.zip -O - -q | unzip -q - \
+              && mkdir -p /usr/lib/dart \
+              && mv dart-sdk/* /usr/lib/dart/ \
+              && chmod +x /usr/lib/dart/bin/dart \
               && rm -r dart-sdk/
+        - ENV PATH="/usr/lib/dart/bin:${PATH}"
     ide:
       idea:
         - name: dart-jetbrains-plugin
           url: https://plugins.jetbrains.com/plugin/6351-dart
+          id: Dart
       vscode:
         - name: dart-code
           url: https://marketplace.visualstudio.com/items?itemName=Dart-Code.dart-code

@@ -1,0 +1,51 @@
+---
+name: "Gitpod"
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    env:
+      # renovate: datasource=github-releases depName=astral-sh/uv
+      UV_VERSION: 0.5.7
+
+    steps:
+      - name: Set TERM environment variable
+        run: echo "TERM=xterm" >> $GITHUB_ENV
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version-file: '.python-version' # Read python version from a file .python-version
+
+      - name: Install dependencies (pip)
+        run: make bootstrap --debug
+
+      - run: |
+          rm -rf .venv
+          pip cache purge
+
+      - run: |
+          # Show available shell options
+          curl -LsSf https://astral.sh/uv/install.sh | sh -s -- --help
+          curl -LsSf "https://astral.sh/uv/${UV_VERSION}/install.sh" | sh -s -- -v
+
+      - name: Install dependencies (uv)
+        run: make bootstrap --debug
+
+      - name: Run Gitpod tests
+        uses: nick-invision/retry@v3
+        with:
+          max_attempts: 3
+          timeout_minutes: 10
+          command: make gitpod-tests --debug

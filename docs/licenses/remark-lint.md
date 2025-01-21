@@ -1,3 +1,8 @@
+---
+title: License info for remark-lint within MegaLinter
+search:
+  exclude: true
+---
 (The MIT License)
 
 Copyright (c) 2015 Titus Wormer

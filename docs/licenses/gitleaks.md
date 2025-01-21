@@ -1,3 +1,8 @@
+---
+title: License info for gitleaks within MegaLinter
+search:
+  exclude: true
+---
 MIT License
 
 Copyright (c) 2019 Zachary Rice

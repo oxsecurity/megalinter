@@ -1,6 +1,8 @@
 descriptor_id: TERRAFORM
 descriptor_type: tooling_format
 descriptor_flavors:
+  - cupcake
+  - formatters
   - terraform
 file_extensions:
   - ".tf"
@@ -11,61 +13,87 @@ linters:
     linter_name: tflint
     name: TERRAFORM_TFLINT
     descriptor_flavors:
+      - cupcake
       - terraform
       - security
     linter_url: https://github.com/terraform-linters/tflint
     linter_repo: https://github.com/terraform-linters/tflint
-    linter_rules_url: https://github.com/terraform-linters/tflint/tree/master/docs/rules#rules
-    linter_rules_configuration_url: https://github.com/terraform-linters/tflint/blob/master/docs/guides/config.md
-    linter_rules_inline_disable_url: https://github.com/terraform-linters/tflint/blob/master/docs/guides/annotations.md
+    linter_rules_url: https://github.com/terraform-linters/tflint-ruleset-terraform/blob/main/docs/rules/README.md
+    linter_rules_configuration_url: https://github.com/terraform-linters/tflint/blob/master/docs/user-guide/config.md
+    linter_rules_inline_disable_url: https://github.com/terraform-linters/tflint/blob/master/docs/user-guide/annotations.md
+    linter_text: |
+      > If you are using the GitHub action please use the `TERRAFORM_TFLINT_UNSECURED_ENV_VARIABLES: GITHUB_TOKEN` to prevent plugin download issues
+
+      > If you have issues with tflint --init, create a GitHub Personal Access Token and set its value to PAT_GITHUB_COM variable.
+
+      Note: It's recommended to create your own `.tflint.hcl` custom config file tailored to your project's specific needs.
+      The default configuration enables all supported languages and rules, which may not be optimal for every project.
+    linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/tflint.png
+    cli_lint_mode: project
     config_file_name: .tflint.hcl
+    cli_config_extra_args:
+      - --recursive
     cli_sarif_args:
       - --format
       - sarif
+    variables:
+      - name: TERRAFORM_TFLINT_SECURED_ENV
+        default_value: true
+        description: Allows to send the full env to **tflint --init**. Initialized with default value `true`. Set to `false` to allow `tflint --init` to access your env vars.
+      - name: PAT_GITHUB_COM
+        default_value: ""
+        description: If you have issues with tflint --init, create a GitHub Personal Access Token and set its value to PAT_GITHUB_COM variable.
     examples:
-      - "tflint myfile.tf"
-      - "tflint -c .tflint.hcl myfile.tf"
-    downgraded_version: true
+      - "tflint"
+      - "tflint -c .tflint.hcl"
     install:
       dockerfile:
-        - FROM ghcr.io/terraform-linters/tflint:v0.35.0 as tflint
-        - COPY --from=tflint /usr/local/bin/tflint /usr/bin/
+        - |-
+          # renovate: datasource=docker depName=ghcr.io/terraform-linters/tflint
+          ARG TERRAFORM_TFLINT_VERSION=0.55.0
+        - FROM ghcr.io/terraform-linters/tflint:v${TERRAFORM_TFLINT_VERSION} AS tflint
+        - COPY --link --from=tflint /usr/local/bin/tflint /usr/bin/
+
   # TERRASCAN
   - class: TerrascanLinter
     linter_name: terrascan
     can_output_sarif: true
     name: TERRAFORM_TERRASCAN
     descriptor_flavors:
+      - cupcake
       - terraform
       - security
-    linter_url: https://www.accurics.com/products/terrascan/
-    linter_repo: https://github.com/accurics/terrascan
-    linter_rules_url: https://docs.accurics.com/projects/accurics-terrascan/en/latest/policies/
-    linter_rules_configuration_url: https://docs.accurics.com/projects/accurics-terrascan/en/latest/policies/
+    linter_url: https://runterrascan.io/
+    linter_repo: https://github.com/tenable/terrascan
+    linter_rules_url: https://runterrascan.io/docs/usage/
+    linter_rules_configuration_url: https://runterrascan.io/docs/usage/config_options/
     linter_banner_image_url: https://raw.githubusercontent.com/tenable/runterrascan.io/main/static/images/TerrascanTM_BY_Logo.png
-    config_file_name: terrascan-config.toml
-    cli_config_arg_name: --config-path
+    linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/terrascan.png
+    config_file_name: terrascan.toml
+    cli_config_arg_name: "--config-path"
     cli_lint_mode: project
     cli_lint_extra_args:
       - "scan"
-      - "d"
-      - "."
-      - "-i"
+      - "--iac-type"
       - "terraform"
-      - "-t"
-      - "all"
-      - "-v"
+      - "--verbose"
     cli_sarif_args:
-      - -o
+      - --output
       - sarif
     cli_version_arg_name: "version"
     test_folder: terraform_terrascan
     examples:
       - "terrascan scan -i terraform -t all -f myfile.tf"
+    downgraded_version: true
+    downgraded_reason: https://github.com/tenable/terrascan/issues/1674
     install:
       dockerfile:
-        - FROM tenable/terrascan:latest as terrascan
-        - COPY --from=terrascan /go/bin/terrascan /usr/bin/
+        - |-
+          # renovate: datasource=docker depName=tenable/terrascan
+          ARG TERRAFORM_TERRASCAN_VERSION=1.19.9
+        - FROM tenable/terrascan:${TERRAFORM_TERRASCAN_VERSION} AS terrascan
+        - COPY --link --from=terrascan /go/bin/terrascan /usr/bin/
+
   # TERRAGRUNT
   - linter_name: terragrunt
     name: TERRAFORM_TERRAGRUNT
@@ -74,12 +102,14 @@ linters:
     file_names_not_ends_with:
       - ".tflint.hcl"
     descriptor_flavors:
+      - cupcake
       - terraform
       - security
     linter_url: https://terragrunt.gruntwork.io
     linter_repo: https://github.com/gruntwork-io/terragrunt
     linter_rules_configuration_url: https://terragrunt.gruntwork.io/docs/getting-started/configuration/#terragrunt-configuration-file
     linter_image_url: https://github.com/gruntwork-io/terragrunt/blob/master/docs/assets/img/favicon/ms-icon-310x310.png
+    linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/terragrunt.png
     config_file_name: terragrunt.hcl
     cli_config_arg_name: "--terragrunt-config"
     cli_lint_extra_args:
@@ -96,15 +126,19 @@ linters:
       - "terragrunt hclfmt --terragrunt-check --terragrunt-config terragrunt.hcl --terragrunt-hclfmt-file myfile.hcl"
     install:
       dockerfile:
-        - FROM alpine/terragrunt:latest as terragrunt
-        - COPY --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
+        - |-
+          # renovate: datasource=docker depName=alpine/terragrunt
+          ARG TERRAFORM_TERRAGRUNT_VERSION=1.10.3
+        - FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} AS terragrunt
+        - COPY --link --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
+
   # TERRAFORM_FMT
   - linter_name: terraform-fmt
     name: TERRAFORM_TERRAFORM_FMT
     is_formatter: true
-    linter_url: https://www.terraform.io/docs/cli/commands/fmt.html
+    linter_url: https://developer.hashicorp.com/terraform/cli/commands/fmt
     linter_repo: https://github.com/hashicorp/terraform
-    linter_banner_image_url: https://www.terraform.io/assets/images/logo-hashicorp-3f10732f.svg
+    linter_banner_image_url: https://www.datocms-assets.com/2885/1629941242-logo-terraform-main.svg
     cli_executable: terraform
     cli_lint_extra_args:
       - "fmt"
@@ -118,8 +152,11 @@ linters:
       - "terraform fmt myfile.tf"
     install:
       dockerfile:
-        - FROM alpine/terragrunt:latest as terragrunt
-        - COPY --from=terragrunt /bin/terraform /usr/bin/
+        - |-
+          # renovate: datasource=docker depName=alpine/terragrunt
+          ARG TERRAFORM_TERRAGRUNT_VERSION=1.10.3
+        - FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} AS terragrunt
+        - COPY --link --from=terragrunt /bin/terraform /usr/bin/
     ide:
       atom:
         - name: terraform-fmt
@@ -127,6 +164,7 @@ linters:
       idea:
         - name: HashiCorp Terraform / HCL language support
           url: https://plugins.jetbrains.com/plugin/7808-hashicorp-terraform--hcl-language-support
+          id: org.intellij.plugins.hcl
       sublime:
         - name: Terrafmt
           url: https://packagecontrol.io/packages/Terrafmt
@@ -135,61 +173,3 @@ linters:
           url: https://marketplace.visualstudio.com/items?itemName=HashiCorp.terraform
     test_folder: terraform_fmt
     version_extract_regex: "(?<=Terraform v)\\d+(\\.\\d+)+"
-  # CHECKOV
-  - linter_name: checkov
-    name: TERRAFORM_CHECKOV
-    can_output_sarif: true
-    descriptor_flavors:
-      - terraform
-      - security
-    linter_url: https://www.checkov.io/
-    linter_repo: https://github.com/bridgecrewio/checkov
-    linter_banner_image_url: https://raw.githubusercontent.com/bridgecrewio/checkov/25388a34231e09ac17b266ad9db0b4c0e806e956/docs/web/images/checkov-logo.svg
-    linter_rules_inline_disable_url: https://www.checkov.io/2.Basics/Suppressing%20and%20Skipping%20Policies.html
-    linter_rules_url: https://www.checkov.io/5.Policy%20Index/all.html
-    linter_megalinter_ref_url: "no"
-    cli_config_arg_name: "--config-file"
-    cli_sarif_args: ["--output", "sarif"]
-    sarif_default_output_file: ./results.sarif
-    cli_lint_extra_args_after:
-      - "--file"
-    examples:
-      - "checkov --file myfile.tf"
-    install:
-      dockerfile:
-        - |
-          RUN pip3 install --upgrade --no-cache-dir pip && pip3 install --upgrade --no-cache-dir setuptools \
-              && pip3 install --no-cache-dir checkov
-    ide:
-      vscode:
-        - name: Checkov
-          url: https://marketplace.visualstudio.com/items?itemName=Bridgecrew.checkov
-    test_folder: terraform_checkov
-  # KICS
-  - linter_name: kics
-    name: TERRAFORM_KICS
-    descriptor_flavors:
-      - terraform
-      - security
-    linter_url: https://www.kics.io
-    linter_repo: https://github.com/checkmarx/kics
-    linter_rules_url: https://docs.kics.io/latest/queries/all-queries/
-    linter_banner_image_url: https://raw.githubusercontent.com/checkmarx/kics/master/docs/img/logo/kics-hat-logo.png
-    linter_rules_inline_disable_url: https://docs.kics.io/latest/running-kics/#using_commands_on_scanned_files_as_comments
-    linter_megalinter_ref_url: https://docs.kics.io/latest/integrations/
-    cli_config_arg_name: "--config"
-    cli_executable: kics
-    cli_lint_extra_args:
-      - scan
-      - --path
-    cli_version_arg_name: "version"
-    examples:
-      - "kics scan --path myfile.tf"
-    install:
-      dockerfile:
-        - FROM checkmarx/kics:alpine as kics
-        - COPY --from=kics /app/bin/kics /usr/bin/
-        - RUN mkdir -p /opt/kics/assets
-        - ENV KICS_QUERIES_PATH=/opt/kics/assets/queries KICS_LIBRARIES_PATH=/opt/kics/assets/libraries
-        - COPY --from=kics /app/bin/assets /opt/kics/assets/
-    test_folder: terraform_kics

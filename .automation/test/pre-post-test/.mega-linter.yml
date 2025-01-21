@@ -1,5 +1,5 @@
 # Configuration file for MegaLinter
-# See all available variables at https://oxsecurity.github.io/megalinter/configuration/ and in linters documentation
+# See all available variables at https://megalinter.io/configuration/ and in linters documentation
 
 APPLY_FIXES: all # all, none, or list of linter keys
 # ENABLE
@@ -15,12 +15,32 @@ PRE_COMMANDS:
     cwd: "root"
   - command: echo "pre-test command has been called"
     cwd: "workspace"
+  - command: pip install flake8-cognitive-complexity
+    venv: flake8
+  - command: export MY_OUTPUT_VARIABLE="my output variable value" && export MY_OUTPUT_VARIABLE2="my output variable value2"
+    output_variables: ["MY_OUTPUT_VARIABLE", "MY_OUTPUT_VARIABLE2"]
+    cwd: "root"
+  - command: export MY_OUTPUT_VARIABLE_REPLACED="${MY_INPUT_VARIABLE}"
+    replacement_env_vars: 
+      - var_src: MY_INPUT_VARIABLE_REPLACEMENT
+        var_dest: MY_INPUT_VARIABLE
+    output_variables: ["MY_OUTPUT_VARIABLE_REPLACED"]
+    cwd: "root"
 POST_COMMANDS:
   - command: npm run test
     cwd: "workspace"
+MARKDOWN_PRE_COMMANDS:
+  - command: echo 'descriptor pre-command has been run'
+    cwd: "root"
+  - command: export MY_OUTPUT_LINTER_VARIABLE="my output linter variable value" && export MY_OUTPUT_LINTER_VARIABLE2="my output linter variable value2"
+    output_variables: ["MY_OUTPUT_LINTER_VARIABLE", "MY_OUTPUT_LINTER_VARIABLE2"]
+    cwd: "root"
+MARKDOWN_POST_COMMANDS:
+  - command: echo 'descriptor post-command has been run'
+    cwd: "root"
 MARKDOWN_MARKDOWNLINT_PRE_COMMANDS:
   - command: echo 'linter pre-command has been run'
     cwd: "root"
 MARKDOWN_MARKDOWNLINT_POST_COMMANDS:
-  - command: echo 'linter pre-command has been run'
+  - command: echo 'linter post-command has been run'
     cwd: "root"

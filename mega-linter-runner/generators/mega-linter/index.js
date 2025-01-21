@@ -1,9 +1,9 @@
-"use strict";
-const Generator = require("yeoman-generator");
-const { asciiArt } = require("../../lib/ascii");
-const { OxSecuritySetup } = require("../../lib/ox-setup");
+import { asciiArt } from "../../lib/ascii.js";
+import Generator from 'yeoman-generator';
+import { OXSecuritySetup } from "../../lib/ox-setup.js";
+import { DEFAULT_RELEASE } from "../../lib/config.js";
 
-module.exports = class extends Generator {
+export default class GeneratorMegaLinter extends Generator {
   prompting() {
     console.log(asciiArt());
     this.log(
@@ -45,6 +45,7 @@ When you don't know what option to select, please use default values`
         default: "gitHubActions",
         choices: [
           { name: "GitHub Actions", value: "gitHubActions" },
+          { name: "Drone CI", value: "droneCI" },
           { name: "Jenkins", value: "jenkins" },
           { name: "GitLab CI", value: "gitLabCI" },
           { name: "Azure Pipelines", value: "azure" },
@@ -67,9 +68,9 @@ When you don't know what option to select, please use default values`
         type: "list",
         name: "version",
         message: "Which MegaLinter version do you want to use ?",
-        default: "v6",
+        default: DEFAULT_RELEASE,
         choices: [
-          { name: "v6 (Latest official release)", value: "v6" },
+          { name: `${DEFAULT_RELEASE} (Latest official release)`, value: DEFAULT_RELEASE },
           {
             name: "Beta (main branch of MegaLinter repository)",
             value: "beta",
@@ -124,8 +125,8 @@ When you don't know what option to select, please use default values`
         type: "confirm",
         name: "ox",
         message:
-          "Do you want to connect to OX Security to secure your repository ?",
-        default: false,
+          "Do you want to try OX Security (https://www.ox.security/?ref=megalinter) to secure your software supply chain security ?",
+        default: true,
       },
     ];
 
@@ -138,12 +139,13 @@ When you don't know what option to select, please use default values`
   writing() {
     // Generate workflow config
     this._generateGitHubAction();
+    this._generateDroneCI();
     this._generateJenkinsfile();
     this._generateGitLabCi();
     this._generateAzurePipelines();
     if (this.props.ci === "other") {
       this.log(
-        "Please follow manual instructions to define CI job at https://oxsecurity.github.io/megalinter/installation/"
+        "Please follow manual instructions to define CI job at https://megalinter.io/installation/"
       );
       this.log(
         "You may call `npx mega-linter-runner` to run MegaLinter from any system (requires node.js & docker)"
@@ -159,7 +161,7 @@ When you don't know what option to select, please use default values`
     this._manageGitIgnore();
     // Process linking to ox.security service
     if (this.props.ox === true) {
-      new OxSecuritySetup().run();
+      new OXSecuritySetup().run();
     }
   }
 
@@ -181,18 +183,22 @@ When you don't know what option to select, please use default values`
       this.dockerImageName = "oxsecurity/megalinter-" + this.props.flavor;
     }
     // Version
-    if (this.props.version == "v6") {
-      this.gitHubActionVersion = "v6";
-      this.dockerImageVersion = "v6";
+    if (this.props.version == DEFAULT_RELEASE) {
+      this.gitHubActionVersion = DEFAULT_RELEASE;
+      this.dockerImageVersion = DEFAULT_RELEASE;
     } else {
       this.gitHubActionVersion = "beta";
       this.dockerImageVersion = "beta";
     }
     // VALIDATE_ALL_CODE_BASE
     if (this.props.validateAllCodeBase === "all") {
-      this.validateAllCodeBaseGha = `true # Set \${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }} to validate only diff with main branch`;
+      this.validateAllCodeBaseGha = "true";
     } else {
-      this.validateAllCodeBaseGha = `\${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }} # Validates all source when push on main, else just the git diff with main. Set 'true' if you always want to lint all sources`;
+      this.validateAllCodeBaseGha  = ">-\n"
+      this.validateAllCodeBaseGha += "            ${{";
+      this.validateAllCodeBaseGha += "              github.event_name == 'push' &&"
+      this.validateAllCodeBaseGha += "              github.ref == 'refs/heads/main'"
+      this.validateAllCodeBaseGha += "            }}";
     }
     this.disable = false;
     // COPY PASTES
@@ -231,13 +237,25 @@ When you don't know what option to select, please use default values`
       }
     );
   }
-
+  _generateDroneCI() {
+    if (this.props.ci !== "droneCI") {
+      return;
+    }
+    this.fs.copyTpl(
+      this.templatePath(".drone.yml"),
+      this.destinationPath(".drone.yml"),
+      {
+        APPLY_FIXES: this.props.applyFixes === true ? "all" : "none",
+        DEFAULT_BRANCH: this.props.defaultBranch,
+      }
+    );
+  }
   _generateJenkinsfile() {
     if (this.props.ci !== "jenkins") {
       return;
     }
     this.log(
-      "Jenkinsfile config generation not implemented yet, please follow manual instructions at https://oxsecurity.github.io/megalinter/installation/#jenkins"
+      "Jenkinsfile config generation not implemented yet, please follow manual instructions at https://megalinter.io/installation/#jenkins"
     );
   }
 
@@ -261,7 +279,7 @@ When you don't know what option to select, please use default values`
       return;
     }
     this.log(
-      "Azure pipelines config generation not implemented yet, please follow manual instructions at https://oxsecurity.github.io/megalinter/installation/#gitlab"
+      "Azure pipelines config generation not implemented yet, please follow manual instructions at https://megalinter.io/installation/#azure-pipelines"
     );
   }
 
@@ -322,4 +340,4 @@ When you don't know what option to select, please use default values`
       );
     }
   }
-};
+}

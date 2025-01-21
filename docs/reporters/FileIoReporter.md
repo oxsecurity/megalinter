@@ -1,3 +1,7 @@
+---
+title: file.io Reporter for MegaLinter
+description: If you don't use artifacts upload to read MegaLinter reports, you can access them with an hyperlink to file.io
+---
 # File.io Reporter
 
 If you don't use artifacts upload to read MegaLinter reports, you can access them with an hyperlink to file.io
@@ -14,7 +18,7 @@ Activate the reporter (`FILEIO_REPORTER: true`) to see link to reports zip on fi
 
 ![Screenshot](../assets/images/FileIOReporter_1.jpg)
 
-- Download file on file.io: it is immediately deleted on the server so it can be downloaded only once
+- Download file on file.io: it's immediately deleted on the server so it can be downloaded only once
 
 ![Screenshot](../assets/images/FileIOReporter_2.jpg)
 

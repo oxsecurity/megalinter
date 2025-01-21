@@ -3,22 +3,32 @@ descriptor_type: format
 descriptor_flavors:
   - all_flavors # Any project can contain JSON
   - ci_light
+  - cupcake
+  - formatters
 file_extensions:
   - ".json"
 linters:
   # JSONLINT
   - linter_name: jsonlint
-    linter_url: https://github.com/zaach/jsonlint
-    linter_repo: https://github.com/zaach/jsonlint
-    linter_megalinter_ref_url: https://github.com/zaach/jsonlint/pull/127
-    version_command_return_code: 1
+    linter_url: https://github.com/prantlf/jsonlint
+    linter_repo: https://github.com/prantlf/jsonlint
+    linter_rules_url: https://github.com/prantlf/jsonlint#configuration
+    linter_rules_configuration_url: https://github.com/prantlf/jsonlint#configuration
+    cli_lint_mode: list_of_files
+    cli_config_arg_name: --config
+    config_file_name: .jsonlintrc
+    cli_lint_extra_args:
+      - --quiet
     examples:
-      - "jsonlint myfile.json"
+      - "jsonlint myfile1.json myfile2.json"
     install:
       npm:
-        - jsonlint
+        - "@prantlf/jsonlint"
   # ESLINT-PLUGIN-JSONC
-  - linter_name: eslint-plugin-jsonc
+  - class: EslintLinter
+    disabled: true
+    disabled_reason: "Bug in eslint-plugin-jsonc: https://github.com/ota-meshi/eslint-plugin-jsonc/issues/328"
+    linter_name: eslint-plugin-jsonc
     can_output_sarif: true
     file_extensions:
       - ".json"
@@ -87,6 +97,7 @@ linters:
     linter_banner_image_url: https://d33wubrfki0l68.cloudfront.net/3b5ac7586466159bb6f237b633bfc4f5a8d5acf8/ee0a1/assets/img/posts/eslint-collective.png
     linter_rules_configuration_url: https://eslint.org/docs/user-guide/configuring
     linter_rules_inline_disable_url: https://eslint.org/docs/user-guide/configuring#disabling-rules-with-inline-comments
+    linter_rules_ignore_config_url: https://eslint.org/docs/latest/user-guide/configuring/ignoring-code#the-eslintignore-file
     linter_megalinter_ref_url: https://eslint.org/docs/user-guide/integrations#source-control
     cli_lint_mode: list_of_files
     cli_executable: eslint
@@ -95,6 +106,8 @@ linters:
       - "--no-eslintrc"
     cli_lint_extra_args:
       - "--no-ignore"
+    ignore_file_name: .eslintignore
+    cli_lint_ignore_arg_name: --ignore-path
     cli_lint_fix_arg_name: "--fix"
     cli_sarif_args:
       - --format
@@ -127,6 +140,7 @@ linters:
   - linter_name: v8r
     linter_url: https://github.com/chris48s/v8r
     linter_repo: https://github.com/chris48s/v8r
+    linter_speed: 1
     linter_text: v8r checks the validity of JSON/YAML files if they have a matching schema defined on [schemastore.org](https://www.schemastore.org/json/)
     linter_rules_url: https://www.schemastore.org/json/
     linter_megalinter_ref_url: "no"
@@ -137,7 +151,6 @@ linters:
     test_folder: json_schema
     examples:
       - "v8r --ignore-errors myfile.json"
-    downgraded_version: true
     install:
       npm:
         - v8r
@@ -195,8 +208,9 @@ linters:
         - name: apheleia
           url: https://github.com/raxod502/apheleia
       idea:
-        - name: native support
-          url: https://prettier.io/docs/en/webstorm.html
+        - name: Prettier
+          url: https://plugins.jetbrains.com/plugin/10456-prettier
+          id: intellij.prettierJS
       sublime:
         - name: JsPrettier
           url: https://packagecontrol.io/packages/JsPrettier
@@ -209,3 +223,40 @@ linters:
       vscode:
         - name: prettier-vscode
           url: https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode
+  # npm-package-json-lint
+  - linter_name: npm-package-json-lint
+    linter_url: https://npmpackagejsonlint.org/
+    linter_repo: https://github.com/tclindner/npm-package-json-lint
+    linter_rules_url: https://npmpackagejsonlint.org/docs/rules
+    linter_rules_configuration_url: https://npmpackagejsonlint.org/docs/configuration
+    linter_rules_ignore_config_url: https://npmpackagejsonlint.org/docs/ignore
+    linter_image_url: https://npmpackagejsonlint.org/img/logo.svg
+    linter_megalinter_ref_url: https://npmpackagejsonlint.org/docs/integrations#megalinter
+    descriptor_flavors:
+      - cupcake
+      - dotnet
+      - dotnetweb
+      - javascript
+      - salesforce
+    file_names_regex:
+      - "package\\.json"
+    active_only_if_file_found:
+      - "package.json"
+    cli_lint_mode: project
+    cli_executable: npmPkgJsonLint
+    cli_config_arg_name: --configFile
+    config_file_name: .npmpackagejsonlintrc.json
+    ignore_file_name: .npmpackagejsonlintignore
+    cli_lint_extra_args:
+      - --quiet
+    cli_lint_extra_args_after:
+      - "."
+    cli_help_arg_name: --help
+    test_folder: npm_package_json_lint
+    examples:
+      - "npmPkgJsonLint ."
+      - "npmPkgJsonLint --configFile .npmpackagejsonlintrc.json ."
+    install:
+      npm:
+        - "npm-package-json-lint"
+        - "npm-package-json-lint-config-default"

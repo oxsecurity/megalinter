@@ -1,6 +1,22 @@
 ---
 name: "Test mega-linter-runner"
-on: [push, pull_request]
+on: 
+  push:
+    paths-ignore:
+      - .github/CONTRIBUTING.md
+      - CHANGELOG.md
+      - README.md
+      - .github/workflows/slash-command-dispatch.yml
+      - .github/workflows/help-command.yml
+      - .github/workflows/build-command.yml
+  pull_request:
+    paths-ignore:
+      - .github/CONTRIBUTING.md
+      - CHANGELOG.md
+      - README.md
+      - .github/workflows/slash-command-dispatch.yml
+      - .github/workflows/help-command.yml
+      - .github/workflows/build-command.yml
 
 concurrency:
   group: ${{ github.ref }}-${{ github.workflow }}
@@ -17,12 +33,20 @@ jobs:
     timeout-minutes: 60
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Setup Node
-        uses: actions/setup-node@v3.1.1
+        uses: actions/setup-node@v4.1.0
         with:
-          node-version: "12"
+          node-version: "20.x"
       - name: Install dependencies
         run: cd mega-linter-runner && yarn install --frozen-lockfile && npm link
+
+      # Free disk space
+      - name: Free Disk space
+        shell: bash
+        run: |
+          sudo rm -rf /usr/local/lib/android  # will release about 10 GB if you don't need Android
+          sudo rm -rf /usr/share/dotnet # will release about 20GB if you don't need .NET
+      # Run mocha tests
       - name: Run tests
         run: cd mega-linter-runner && npm run test

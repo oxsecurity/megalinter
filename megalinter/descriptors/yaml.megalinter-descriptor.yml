@@ -3,6 +3,7 @@ descriptor_type: format
 descriptor_flavors:
   - all_flavors # Any project can contain YAML
   - ci_light
+  - cupcake
 file_extensions:
   - ".yml"
   - ".yaml"
@@ -19,6 +20,10 @@ linters:
     config_file_name: ".prettierrc.json"
     cli_config_arg_name: "--config"
     cli_lint_mode: list_of_files
+    cli_lint_errors_count: regex_count
+    cli_lint_errors_regex: "error"
+    cli_lint_warnings_count: regex_count
+    cli_lint_warnings_regex: "warning"
     cli_lint_extra_args:
       - "--check"
     cli_lint_fix_arg_name: "--write"
@@ -47,8 +52,9 @@ linters:
         - name: apheleia
           url: https://github.com/raxod502/apheleia
       idea:
-        - name: native support
-          url: https://prettier.io/docs/en/webstorm.html
+        - name: Prettier
+          url: https://plugins.jetbrains.com/plugin/10456-prettier
+          id: intellij.prettierJS
       sublime:
         - name: JsPrettier
           url: https://packagecontrol.io/packages/JsPrettier
@@ -65,18 +71,22 @@ linters:
   - linter_name: yamllint
     linter_url: https://yamllint.readthedocs.io/
     linter_repo: https://github.com/adrienverge/yamllint
+    linter_speed: 3
     linter_rules_url: https://yamllint.readthedocs.io/en/stable/rules.html
     linter_rules_configuration_url: https://yamllint.readthedocs.io/en/stable/configuration.html#configuration
     linter_megalinter_ref_url: "no"
     config_file_name: ".yamllint.yml"
     cli_lint_mode: list_of_files
+    cli_lint_extra_args:
+      - --format
+      - standard
     cli_lint_errors_count: regex_count
-    cli_lint_errors_regex: "error"
-    cli_lint_warnings_count: regex_count
-    cli_lint_warnings_regex: "warning"
+    cli_lint_errors_regex: "[0-9]+:[0-9]+:?\\s*(?:\\[?warning\\]?|\\[?error\\]?)|(?:::warning file=|::error file=)"
     examples:
       - "yamllint myfile.yaml"
       - "yamllint -c .yamllint.yml myfile.yaml"
+      - "yamllint --strict"
+      - "yamllint --no-warnings"
     install:
       pip:
         - yamllint
@@ -91,9 +101,12 @@ linters:
   - linter_name: v8r
     linter_url: https://github.com/chris48s/v8r
     linter_repo: https://github.com/chris48s/v8r
+    linter_speed: 1
     linter_text: v8r checks the validity of JSON/YAML files if they have a matching schema defined on [schemastore.org](https://www.schemastore.org/json/)
     linter_rules_url: https://www.schemastore.org/json/
     linter_megalinter_ref_url: "no"
+    config_file_name: ".v8rrc.yml"
+    cli_config_arg_name: ""
     cli_lint_mode: list_of_files
     cli_lint_extra_args:
       - "--ignore-errors"
@@ -102,7 +115,6 @@ linters:
     examples:
       - "v8r --ignore-errors myfile.yml"
       - "v8r --ignore-errors myfile.yaml"
-    downgraded_version: true
     install:
       npm:
         - v8r

@@ -1,17 +1,25 @@
 # MegaLinter GitLab CI job configuration file
-# More info at https://oxsecurity.github.io/megalinter
+# More info at https://megalinter.io
 
 mega-linter:
   stage: test
+
   # You can override MegaLinter flavor used to have faster performances
-  # More info at https://oxsecurity.github.io/megalinter/flavors/
+  # More info at https://megalinter.io/latest/flavors/
   image: <%= DOCKER_IMAGE_NAME %>:<%= DOCKER_IMAGE_VERSION %>
-  script: ["true"] # if script: ["true"] does not work, you may try ->  script: [ "/bin/bash /entrypoint.sh" ]
+
+  # if script: ["true"] does not work, you may try this instead:
+  #   script: [ "/bin/bash /entrypoint.sh" ]
+  script: ["true"]
+
   variables:
     # All available variables are described in documentation
-    # https://oxsecurity.github.io/megalinter/configuration/
+    # https://megalinter.io/latest/config-file/
     DEFAULT_WORKSPACE: $CI_PROJECT_DIR
-    # ADD YOUR CUSTOM ENV VARIABLES HERE TO OVERRIDE VALUES OF .mega-linter.yml AT THE ROOT OF YOUR REPOSITORY
+
+    # ADD YOUR CUSTOM ENV VARIABLES HERE TO OVERRIDE VALUES OF .mega-linter.yml
+    # AT THE ROOT OF YOUR REPOSITORY
+
   artifacts:
     when: always
     paths:

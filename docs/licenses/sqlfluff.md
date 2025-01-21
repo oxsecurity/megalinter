@@ -1,3 +1,8 @@
+---
+title: License info for sqlfluff within MegaLinter
+search:
+  exclude: true
+---
 MIT License
 
 Copyright (c) 2018 Alan Cruickshank

@@ -5,10 +5,27 @@ Use SemGrep to lint any type of file according to local config
 
 import logging
 
-from megalinter import Linter, config
+from megalinter import Linter, config, flavor_factory, utils
 
 
 class SemgrepLinter(Linter):
+    # Activate SemGrep only if we have custom rulesets defined
+    def manage_activation(self, params):
+        super().manage_activation(params)
+        if self.is_active is True:
+            custom_rulesets = self.get_custom_rulesets()
+            if (
+                len(custom_rulesets) == 0
+                and len(
+                    config.get_list(self.request_id, "REPOSITORY_SEMGREP_ARGUMENTS", [])
+                )
+                == 0
+                and "semgrep" not in utils.get_current_test_name(full_name=True)
+            ):
+                logging.info(
+                    "[SemgrepLinter] Deactivated because no ruleset has been defined"
+                )
+                self.is_active = False
 
     # Manage case when we want semgrep rulesets to be selected related to security
     def build_lint_command(self, file=None):
@@ -31,13 +48,14 @@ class SemgrepLinter(Linter):
         return cmd
 
     def get_custom_rulesets(self):
-        if config.exists("REPOSITORY_SEMGREP_RULESETS"):
+        if config.exists(self.request_id, "REPOSITORY_SEMGREP_RULESETS"):
             # User defined rulesets
-            return config.get_list("REPOSITORY_SEMGREP_RULESETS")
+            return config.get_list(self.request_id, "REPOSITORY_SEMGREP_RULESETS")
         elif (
             # security rulesets
-            self.master.megalinter_flavor in ["security", "none"]
-            or config.get("REPOSITORY_SEMGREP_RULESETS_TYPE", "") == "security"
+            flavor_factory.get_image_flavor() in ["security", "none"]
+            or config.get(self.request_id, "REPOSITORY_SEMGREP_RULESETS_TYPE", "")
+            == "security"
         ):
             return [
                 "p/docker-compose",

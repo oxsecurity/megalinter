@@ -2,10 +2,47 @@ descriptor_id: HTML
 descriptor_type: format
 descriptor_flavors:
   - all_flavors # Any project can contain HTML
+  - cupcake
 file_extensions:
   - ".html"
   - ".htm"
 linters:
+  # DJLINT
+  - linter_name: djlint
+    linter_text: |
+      DjLint can analyse multiple formats of HTML:
+
+      - html (default)
+      - django
+      - jinja
+      - nunjucks (for nunjucks and twig)
+      - handlebars (for handlebars and mustache)
+      - golang
+      - angular
+
+      For example, define `HTML_DJLINT_ARGUMENTS: ["--profile", "django"]` to select django format
+    linter_url: https://djlint.com/
+    linter_repo: https://github.com/Riverside-Healthcare/djlint
+    linter_rules_url: https://djlint.com/docs/linter/
+    linter_banner_image_url: https://raw.githubusercontent.com/Riverside-Healthcare/djLint/master/docs/src/static/img/icon.png
+    linter_rules_configuration_url: https://djlint.com/docs/configuration/
+    linter_rules_inline_disable_url: https://djlint.com/docs/ignoring-code/
+    linter_megalinter_ref_url: https://djlint.com/docs/integrations/#megalinter
+    cli_lint_mode: list_of_files
+    cli_lint_errors_count: regex_number
+    cli_lint_errors_regex: "found ([0-9]+) errors"
+    examples:
+      - "djlint myfile1.html myfile2.html"
+    install:
+      pip:
+        - djlint
+    ide:
+      sublime:
+        - name: SublimeLinter-contrib-djlint
+          url: https://packagecontrol.io/packages/SublimeLinter-contrib-djlint
+      vscode:
+        - name: djlint-vscode
+          url: https://marketplace.visualstudio.com/items?itemName=monosans.djlint
   # HTML HINT
   - linter_name: htmlhint
     linter_url: https://htmlhint.com/
@@ -38,4 +75,4 @@ linters:
           url: https://github.com/htmlhint/SublimeLinter-contrib-htmlhint
       vscode:
         - name: vscode-htmlhint
-          url: https://marketplace.visualstudio.com/items?itemName=mkaufman.HTMLHint
+          url: https://marketplace.visualstudio.com/items?itemName=HTMLHint.vscode-htmlhint

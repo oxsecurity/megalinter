@@ -11,12 +11,18 @@
     "**/.venv/**",
     "**/report/**",
     "**/megalinter-reports/**",
+    "**/hardis-report/**",
     "**/*cache*/**",
     "**/*.json",
     "**/*.yaml",
     "**/*.yml",
     "**/*.md",
     "**/*.html",
-    "**/*.xml"
+    "**/*.xml",
+    "**/*.jpg",
+    "**/*.png",
+    "**/*.svg",
+    "**/*.zip",
+    "**/*.bin"
   ]
 }

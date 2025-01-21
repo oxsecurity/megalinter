@@ -23,41 +23,53 @@ class GithubStatusReporter(Reporter):
 
     def manage_activation(self):
         # Disable status for each linter if MULTI_STATUS is 'false'
-        if config.exists("MULTI_STATUS") and config.get("MULTI_STATUS") == "true":
+        if (
+            config.exists(self.master.request_id, "MULTI_STATUS")
+            and config.get(self.master.request_id, "MULTI_STATUS") == "true"
+        ):
             self.is_active = True
-        elif config.get("GITHUB_STATUS_REPORTER", "false") != "false":
+        elif (
+            config.get(self.master.request_id, "GITHUB_STATUS_REPORTER", "false")
+            != "false"
+        ):
             self.is_active = True
 
     def produce_report(self):
         if (
-            config.exists("GITHUB_REPOSITORY")
-            and config.exists("GITHUB_SHA")
-            and config.exists("GITHUB_TOKEN")
+            config.exists(self.master.request_id, "GITHUB_REPOSITORY")
+            and config.exists(self.master.request_id, "GITHUB_SHA")
+            and config.exists(self.master.request_id, "GITHUB_TOKEN")
         ):
-            github_repo = config.get("GITHUB_REPOSITORY")
-            github_server_url = config.get("GITHUB_SERVER_URL", self.github_server_url)
-            github_api_url = config.get("GITHUB_API_URL", self.github_api_url)
-            sha = config.get("GITHUB_SHA")
-            run_id = config.get("GITHUB_RUN_ID")
+            github_repo = config.get(self.master.request_id, "GITHUB_REPOSITORY")
+            github_server_url = config.get(
+                self.master.request_id, "GITHUB_SERVER_URL", self.github_server_url
+            )
+            github_api_url = config.get(
+                self.master.request_id, "GITHUB_API_URL", self.github_api_url
+            )
+            sha = config.get(self.master.request_id, "GITHUB_SHA")
+            run_id = config.get(self.master.request_id, "GITHUB_RUN_ID")
             success_msg = "No errors were found in the linting process"
             error_not_blocking = "Errors were detected but are considered not blocking"
             error_msg = f"Found {self.master.total_number_errors} errors, please check logs"
             url = f"{github_api_url}/repos/{github_repo}/statuses/{sha}"
             headers = {
                 "accept": "application/vnd.github.v3+json",
-                "authorization": f"Bearer {config.get('GITHUB_TOKEN')}",
+                "authorization": f"Bearer {config.get(self.master.request_id, 'GITHUB_TOKEN')}",
                 "content-type": "application/json",
             }
-            if config.exists("GITHUB_RUN_ID"):
+            if config.exists(self.master.request_id, "GITHUB_RUN_ID"):
                 target_url = f"{github_server_url}/{github_repo}/actions/runs/{run_id}"
             else:
-                target_url = config.get("GITHUB_TARGET_URL")
+                target_url = config.get(self.master.request_id, "GITHUB_TARGET_URL")
             description = (
                 success_msg
                 if self.master.status == "success" and self.master.return_code == 0
-                else error_not_blocking
-                if self.master.status == "error" and self.master.return_code == 0
-                else error_msg
+                else (
+                    error_not_blocking
+                    if self.master.status == "error" and self.master.return_code == 0
+                    else error_msg
+                )
             )
             if self.master.show_elapsed_time is True:
                 description += f" ({str(round(self.master.elapsed_time_s, 2))}s)"

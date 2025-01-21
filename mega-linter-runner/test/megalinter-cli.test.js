@@ -1,9 +1,8 @@
-#! /usr/bin/env node
-"use strict";
-const assert = require("assert");
-const childProcess = require("child_process");
-const util = require("util");
-const exec = util.promisify(childProcess.exec);
+/* jscpd:ignore-start */
+import assert from 'assert';
+import { exec as childProcessExec } from "child_process";
+import * as  util from "util";
+const exec = util.promisify(childProcessExec);
 
 const release = process.env.MEGALINTER_RELEASE || "beta";
 const nodockerpull =
@@ -63,7 +62,7 @@ describe("CLI", function () {
         done(err);
         throw err;
       });
-  });
+  }).timeout(10000);
 
   /*
 Disabled until find a way to run with default options
@@ -76,18 +75,22 @@ Disabled until find a way to run with default options
         assert(stdout, "stdout is set");
     })
 */
+  const params = [
+    "--path",
+    "./..",
+    "--release",
+    release,
+    "-e",
+    '"ENABLE=YAML"',
+  ];
 
   it("(CLI) run on own code base", async () => {
-    const params = [
-      "--path",
-      "./..",
-      "--release",
-      release,
-      "-e",
-      '"ENABLE=YAML"',
-    ];
     if (nodockerpull) {
       params.push("--nodockerpull");
+    }
+    if (process.env.MEGALINTER_IMAGE) {
+      params.push("--image");
+      params.push(process.env.MEGALINTER_IMAGE);
     }
     const { stdout, stderr } = await exec(MEGA_LINTER + params.join(" "));
     if (stderr) {
@@ -97,17 +100,13 @@ Disabled until find a way to run with default options
   }).timeout(600000);
 
   it("(CLI) run on own code base with json output", async () => {
-    const params = [
-      "--path",
-      "./..",
-      "--release",
-      release,
-      "-e",
-      '"ENABLE=YAML"',
-      "--json",
-    ];
+    params.push("--json");
     if (nodockerpull) {
       params.push("--nodockerpull");
+    }
+    if (process.env.MEGALINTER_IMAGE) {
+      params.push("--image");
+      params.push(process.env.MEGALINTER_IMAGE);
     }
     const { stdout, stderr } = await exec(MEGA_LINTER + params.join(" "));
     if (stderr) {
@@ -116,3 +115,4 @@ Disabled until find a way to run with default options
     assert(stdout, "stdout is set");
   }).timeout(600000);
 });
+/* jscpd:ignore-end */

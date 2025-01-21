@@ -3,13 +3,22 @@ descriptor_type: language
 descriptor_flavors:
   - all # Applicable to CI in any language project
   - ci_light
+  - cupcake
+  - c_cpp
+  - documentation
   - dotnet
+  - dotnetweb
+  - go
+  - java
+  - python
 file_names_regex:
   - "Makefile"
 test_folder: makefile
 linters:
   # Checkmake
   - linter_name: checkmake
+    disabled: true
+    disabled_reason: "Security issues: https://github.com/mrtazz/checkmake/issues/99"
     name: MAKEFILE_CHECKMAKE
     linter_url: https://github.com/mrtazz/checkmake
     linter_repo: https://github.com/mrtazz/checkmake
@@ -20,8 +29,12 @@ linters:
       - "checkmake Makefile"
       - "checkmake --config .checkmake.ini Makefile"
     install:
+      # make is included in the mrtazz/checkmake:latest image
+      # (DIGEST:sha256:eb6919b20b22d1701a976856e4a224627df0a74b118246101fb6cf5c2e03049f)
+      # It may not be a real dependency, like their pandoc mention in the README,
+      # that is not included in the docker image they provide.
+      apk:
+        - make
       dockerfile:
-        - |
-          RUN ( [ -d /usr/local/bin ] || mkdir -p /usr/local/bin ) \
-              && wget -q "https://github.com/mrtazz/checkmake/releases/download/0.2.1/checkmake-0.2.1.linux.amd64" -O /usr/local/bin/checkmake \
-              && chmod 755 /usr/local/bin/checkmake
+        - FROM mrtazz/checkmake:latest AS checkmake
+        - COPY --link --from=checkmake /checkmake /usr/bin/checkmake

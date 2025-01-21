@@ -1,22 +1,27 @@
 descriptor_id: TSX
 descriptor_type: language
 descriptor_flavors:
+  - cupcake
+  - dotnetweb
   - javascript
 file_extensions:
   - ".tsx"
 linters:
   # ESLINT
-  - linter_name: eslint
+  - class: EslintLinter
+    linter_name: eslint
     can_output_sarif: true
     linter_text: |
       eslint requires a custom configuration file applicable to your project.
 
       You can create it by typing `npx eslint --init` in the root of your repository
-    linter_url: https://github.com/yannickcr/eslint-plugin-react
-    linter_rules_url: https://github.com/yannickcr/eslint-plugin-react#list-of-supported-rules
+    linter_url: https://github.com/jsx-eslint/eslint-plugin-react
+    linter_repo: https://github.com/jsx-eslint/eslint-plugin-react
+    linter_rules_url: https://github.com/jsx-eslint/eslint-plugin-react#list-of-supported-rules
     linter_banner_image_url: https://d33wubrfki0l68.cloudfront.net/3b5ac7586466159bb6f237b633bfc4f5a8d5acf8/ee0a1/assets/img/posts/eslint-collective.png
-    linter_rules_configuration_url: https://github.com/yannickcr/eslint-plugin-react#configuration
+    linter_rules_configuration_url: https://github.com/jsx-eslint/eslint-plugin-react#configuration-legacy-eslintrc
     linter_rules_inline_disable_url: https://eslint.org/docs/user-guide/configuring#disabling-rules-with-inline-comments
+    linter_rules_ignore_config_url: https://eslint.org/docs/latest/user-guide/configuring/ignoring-code#the-eslintignore-file
     linter_megalinter_ref_url: https://eslint.org/docs/user-guide/integrations#source-control
     active_only_if_file_found:
       - ".eslintrc.json"
@@ -31,6 +36,8 @@ linters:
       - "--no-eslintrc"
     cli_lint_extra_args:
       - "--no-ignore"
+    ignore_file_name: .eslintignore
+    cli_lint_ignore_arg_name: --ignore-path
     cli_lint_fix_arg_name: "--fix"
     cli_sarif_args:
       - --format
@@ -52,7 +59,7 @@ linters:
         - eslint-plugin-jest
         - eslint-plugin-prettier
         - eslint-plugin-react
-        - babel-eslint
+        - "@babel/eslint-parser"
         - prettier
         - prettyjson
         - "@typescript-eslint/eslint-plugin"
@@ -74,6 +81,7 @@ linters:
       idea:
         - name: ESLint Plugin
           url: https://plugins.jetbrains.com/plugin/7494-eslint
+          id: com.wix.eslint
       sublime:
         - name: SublimeLinter-eslint
           url: https://github.com/roadhump/SublimeLinter-eslint

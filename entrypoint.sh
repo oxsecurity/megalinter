@@ -5,11 +5,16 @@ export PYTHONPATH
 
 # Manage debug mode
 LOG_LEVEL="${LOG_LEVEL:-INFO}" # Default log level (VERBOSE, DEBUG, TRACE)
-if [[ ${LOG_LEVEL} == "DEBUG" ]]; then
-  printenv
-fi
 
 # Manage newest git versions (related to CVE https://github.blog/2022-04-12-git-security-vulnerability-announced/)
+#
+if [[ "${WORKSPACE_AS_SAFE_DIR}" != 'false' && "${DEFAULT_WORKSPACE}" && -d "${DEFAULT_WORKSPACE}" ]]; then
+  echo "Setting git safe.directory DEFAULT_WORKSPACE: ${DEFAULT_WORKSPACE} ..."
+  git config --global --add safe.directory "${DEFAULT_WORKSPACE}"
+else
+  echo "Skipped setting git safe.directory DEFAULT_WORKSPACE: ${DEFAULT_WORKSPACE} ..."
+fi
+
 if [ -z ${GITHUB_WORKSPACE+x} ]; then
   echo "Setting git safe.directory default: /github/workspace ..."
   git config --global --add safe.directory /github/workspace
@@ -17,33 +22,34 @@ else
   echo "Setting git safe.directory GITHUB_WORKSPACE: $GITHUB_WORKSPACE ..."
   git config --global --add safe.directory "$GITHUB_WORKSPACE"
 fi
+
 echo "Setting git safe.directory to /tmp/lint ..."
 git config --global --add safe.directory /tmp/lint
 
 # Called by Auto-update CI job
 if [ "${UPGRADE_LINTERS_VERSION}" == "true" ]; then
   echo "[MegaLinter init] UPGRADING LINTER VERSION"
-  pip install pytest-cov pytest-timeout
+  pip install pytest-cov pytest-timeout pytest-rerunfailures
   # Run only get_linter_version test methods
-  pytest -v --durations=0 -k _get_linter_version megalinter/
+  pytest --reruns 3 --reruns-delay 1 -v --durations=0 -k _get_linter_version megalinter/
   # Run only get_linter_help test methods
-  pytest -v --durations=0 -k _get_linter_help megalinter/
+  pytest --reruns 3 --reruns-delay 1 -v --durations=0 -k _get_linter_help megalinter/
   # Reinstall mkdocs-material because of broken dependency
-  pip3 install --upgrade markdown==3.3.7 mike mkdocs-material mdx_truly_sane_lists json-schema-for-humans giturlparse webpreview
+  pip3 install --upgrade markdown mike mkdocs-material pymdown-extensions "mkdocs-glightbox==0.3.2" mdx_truly_sane_lists jsonschema json-schema-for-humans giturlparse webpreview github-dependents-info
   cd /tmp/lint || exit 1
   chmod +x build.sh
-  bash build.sh --doc
+  GITHUB_TOKEN="${GITHUB_TOKEN}" bash build.sh --doc --dependents --stats
   exit $?
 fi
 
 # Run test cases with pytest
 if [ "${TEST_CASE_RUN}" == "true" ]; then
   echo "[MegaLinter init] RUNNING TEST CASES"
-  pip install pytest-cov pytest-timeout pytest-xdist
+  pip install pytest-cov pytest-timeout pytest-xdist pytest-rerunfailures
   if [ -z "${TEST_KEYWORDS}" ]; then
-    pytest -v --timeout=300 --durations=0 --cov=megalinter --cov-report=xml megalinter/
+    pytest --reruns 3 --reruns-delay 10 -v --timeout=300 --durations=0 --cov=megalinter --cov-report=xml --numprocesses auto --dist loadscope megalinter/
   else
-    pytest -v --timeout=300 --durations=0 -k "${TEST_KEYWORDS}" megalinter/
+    pytest --reruns 3 --reruns-delay 10 -v --timeout=300 --durations=0 --numprocesses auto --dist loadscope -k "${TEST_KEYWORDS}" megalinter/
   fi
   PYTEST_STATUS=$?
   echo Pytest exited $PYTEST_STATUS
@@ -63,10 +69,24 @@ if [ "${TEST_CASE_RUN}" == "true" ]; then
 fi
 
 if [ "${MEGALINTER_SERVER}" == "true" ]; then
-  # MegaLinter HTTP server run
+  # MegaLinter Server Worker, listens to redis queues using python RQ -> https://github.com/rq/rq
   set -eu
-  echo "[MegaLinter init] MEGALINTER SERVER"
-  python ./megalinter/megalinter_server.py
+  echo "[MegaLinter init] MEGALINTER SERVER WORKER"
+  # Install python dependencies used by server to avoid to make bigger docker images
+  # pip install -r /server/requirements.txt <-- Now managed from Dockerfile-worker
+  MEGALINTER_SERVER_REDIS_HOST="${MEGALINTER_SERVER_REDIS_HOST:-megalinter_server_redis}" # Default host
+  MEGALINTER_SERVER_REDIS_PORT="${MEGALINTER_SERVER_REDIS_PORT:-6379}"                    # Default port
+  MEGALINTER_SERVER_REDIS_QUEUE="${MEGALINTER_SERVER_REDIS_QUEUE:-megalinter:queue:requests}"
+  if [ "${MEGALINTER_SERVER_WORKER_POOL}" == "true" ]; then
+    # Use RQ worker pool (beta)
+    MEGALINTER_SERVER_WORKER_POOL_NUMBER="${MEGALINTER_SERVER_WORKER_POOL_NUMBER:-10}" # Default number of worker threads
+    echo "[MegaLinter Worker] Init Redis Queue Worker pool (${MEGALINTER_SERVER_WORKER_POOL_NUMBER} processes)"
+    rq worker-pool --num-workers "${MEGALINTER_SERVER_WORKER_POOL_NUMBER}" --url "redis://${MEGALINTER_SERVER_REDIS_HOST}:${MEGALINTER_SERVER_REDIS_PORT}" "${MEGALINTER_SERVER_REDIS_QUEUE}"
+  else
+    # Use RQ worker (a worker can execute a single job parallelly)
+    echo "[MegaLinter Worker] Init Redis Queue Single worker"
+    rq worker --url "redis://${MEGALINTER_SERVER_REDIS_HOST}:${MEGALINTER_SERVER_REDIS_PORT}" "${MEGALINTER_SERVER_REDIS_QUEUE}"
+  fi
 else
   if [ "${MEGALINTER_SSH}" == "true" ]; then
     # MegaLinter SSH server

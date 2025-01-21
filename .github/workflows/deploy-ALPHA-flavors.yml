@@ -1,9 +1,9 @@
 ---
-#################################
-#################################
+#########################
+#########################
 ## Deploy Docker Image Flavors ##
-#################################
-#################################
+#########################
+#########################
 
 #
 # Documentation:
@@ -18,16 +18,16 @@ on:
   push:
     branches:
       - "alpha"
-      - "FlavoredMegaLinters"
     paths:
       - ".github/workflows/**"
       - "Dockerfile"
       - "flavors/**"
       - "megalinter/**"
       - "mega-linter-runner/**"
+      - "server/**"
       - "**/linter-versions.json"
       - "TEMPLATES/**"
-      - "**/*.py"
+      - ".trivyignore"
       - "**/.sh"
 
 ###############
@@ -44,14 +44,19 @@ jobs:
     name: Deploy Docker Image - ALPHA - Flavors
     # Set the agent to run on
     runs-on: ${{ matrix.os }}
+    permissions:
+      actions: write
+      packages: write
     strategy:
       fail-fast: false
+      max-parallel: 10
       matrix:
         os: [ubuntu-latest]
         # flavors-start
         flavor:
           [
             "ci_light",
+            "cupcake",
             "documentation",
             "dotnet",
             "go",
@@ -62,6 +67,7 @@ jobs:
             "ruby",
             "rust",
             "salesforce",
+            "security",
             "swift",
             "terraform",
           ]
@@ -76,32 +82,58 @@ jobs:
       # Checkout the code base #
       ##########################
       - name: Checkout Code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
         with:
-          fetch-depth: 0
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
-      #####################
-      # Run Deploy script #
-      #####################
-      - name: Deploy latest image to DockerHub
-        env:
-          # Set the Env Vars
-          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-          IMAGE_REPO: oxsecurity/megalinter-${{ matrix.flavor }}
-          IMAGE_VERSION: alpha
-          DOCKERFILE_PATH: flavors/${{ matrix.flavor }}/Dockerfile
-          REGISTRY: Docker
-          SQUASH: "true"
-        shell: bash
-        run: .automation/upload-docker.sh
+      - name: Get current date
+        run: echo "BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" >> ${GITHUB_ENV}
 
-      # Free disk space
-      - name: Free Disk space
-        shell: bash
-        run: |
-          sudo rm -rf /usr/local/lib/android  # will release about 10 GB if you don't need Android
-          sudo rm -rf /usr/share/dotnet # will release about 20GB if you don't need .NET
+      - name: Build Image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: flavors/${{ matrix.flavor }}/Dockerfile
+          platforms: linux/amd64
+          build-args: |
+            BUILD_DATE=${{ env.BUILD_DATE }}
+            BUILD_REVISION=${{ github.sha }}
+            BUILD_VERSION=alpha
+          load: false
+          push: true
+          secrets: |
+            GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
+          tags: |
+            ghcr.io/oxsecurity/megalinter-${{ matrix.flavor }}:alpha
+
+      # - name: Build Worker Image
+      #   uses: docker/build-push-action@v6
+      #   with:
+      #     context: .
+      #     file: Dockerfile-worker
+      #     platforms: linux/amd64
+      #     build-args: |
+      #       MEGALINTER_BASE_IMAGE=ghcr.io/oxsecurity/megalinter-${{ matrix.flavor }}:alpha
+      #       BUILD_DATE=${{ env.BUILD_DATE }}
+      #       BUILD_REVISION=${{ github.sha }}
+      #       BUILD_VERSION=alpha
+      #     load: false
+      #     push: true
+      #     secrets: |
+      #       GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
+      #     tags: |
+      #       ghcr.io/oxsecurity/megalinter-worker-${{ matrix.flavor }}:alpha
 
       ##############################################
       # Check Docker image security with Trivy #
@@ -109,11 +141,13 @@ jobs:
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: 'docker.io/oxsecurity/megalinter-${{ matrix.flavor }}:alpha'
+          image-ref: ghcr.io/oxsecurity/megalinter-${{ matrix.flavor }}:alpha
           format: 'table'
           exit-code: '1'
           ignore-unfixed: true
-          security-checks: vuln
+          scanners: vuln
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
-          timeout: 5m0s
+          timeout: 10m0s
+        env:
+            ACTIONS_RUNTIME_TOKEN: ${{ secrets.GITHUB_TOKEN }}

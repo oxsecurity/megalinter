@@ -9,10 +9,9 @@ import tempfile
 import unittest
 import uuid
 
-from megalinter import Linter, MegaLinter
+from megalinter import Linter, MegaLinter, utilstest
 from megalinter.constants import DEFAULT_SARIF_REPORT_FILE_NAME
 from megalinter.reporters.SarifReporter import SarifReporter
-from megalinter.tests.test_megalinter.helpers import utilstest
 
 root = (
     os.path.dirname(os.path.abspath(__file__))
@@ -26,21 +25,25 @@ root = (
 
 
 class mega_linter_3_sarif_test(unittest.TestCase):
-    def setUp(self):
+    def before_start(self):
+        self.request_id = str(uuid.uuid1())
         utilstest.linter_test_setup(
             {
-                "sub_lint_root": f"{os.path.sep}.automation{os.path.sep}test{os.path.sep}sample_project_sarif"
+                "request_id": self.request_id,
+                "sub_lint_root": f"{os.path.sep}.automation{os.path.sep}test{os.path.sep}sample_project_sarif",
             }
         )
 
     def test_sarif_output(self):
+        self.before_start()
         mega_linter, output = utilstest.call_mega_linter(
             {
                 "APPLY_FIXES": "false",
                 "LOG_LEVEL": "DEBUG",
                 "MULTI_STATUS": "false",
-                "ENABLE_LINTERS": "JAVASCRIPT_ES,REPOSITORY_TRIVY,REPOSITORY_GITLEAKS,PYTHON_BANDIT,TERRAFORM_KICS",
+                "ENABLE_LINTERS": "JAVASCRIPT_ES,PYTHON_BANDIT",
                 "SARIF_REPORTER": "true",
+                "request_id": self.request_id,
             }
         )
         self.assertTrue(
@@ -55,8 +58,9 @@ class mega_linter_3_sarif_test(unittest.TestCase):
         )
 
     def test_sarif_fix(self):
+        self.before_start()
         # Create megalinter
-        mega_linter = MegaLinter.Megalinter()
+        mega_linter = MegaLinter.Megalinter({"request_id": uuid.uuid1()})
         # Create sample linters
         sarif_dir = (
             root
@@ -85,4 +89,31 @@ class mega_linter_3_sarif_test(unittest.TestCase):
         self.assertTrue(
             os.path.isfile(expected_output_file),
             "Output aggregated SARIF file " + expected_output_file + " should exist",
+        )
+
+    def test_api_output(self):
+        self.before_start()
+        mega_linter, output = utilstest.call_mega_linter(
+            {
+                "APPLY_FIXES": "false",
+                "LOG_LEVEL": "DEBUG",
+                "MULTI_STATUS": "false",
+                "ENABLE_LINTERS": "JAVASCRIPT_ES,PYTHON_BANDIT",
+                "API_REPORTER": "true",
+                "API_REPORTER_URL": "https://jsonplaceholder.typicode.com/posts",
+                "API_REPORTER_METRICS_URL": "https://httpbin.org/anything",
+                "API_REPORTER_DEBUG": "true",
+                "request_id": self.request_id,
+            }
+        )
+        self.assertTrue(
+            len(mega_linter.linters) > 0, "Linters have been created and run"
+        )
+        self.assertTrue(
+            "[Api Reporter] Successfully posted data" in output,
+            "Api Reporter failed to post message",
+        )
+        self.assertTrue(
+            "[Api Reporter Metrics] Successfully posted data" in output,
+            "Api Reporter Metrics failed to post message",
         )

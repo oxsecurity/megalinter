@@ -1,6 +1,8 @@
 descriptor_id: RST
 descriptor_type: format
 descriptor_flavors:
+  - cupcake
+  - formatters
   - python # RST is usually used in python projects
 file_extensions:
   - ".rst"
@@ -14,6 +16,7 @@ linters:
       - "rst-lint myfile.rst"
     install:
       pip:
+        - Pygments
         - restructuredtext_lint
   # rstcheck
   - linter_name: rstcheck
@@ -22,15 +25,34 @@ linters:
     config_file_name: ".rstcheck.cfg"
     linter_rules_configuration_url: https://github.com/myint/rstcheck#configuration-file
     linter_rules_inline_disable_url: https://github.com/myint/rstcheck#ignore-specific-errors
-    linter_megalinter_ref_url: https://github.com/myint/rstcheck/pull/73
+    linter_megalinter_ref_url: https://rstcheck.readthedocs.io/en/latest/usage/integration/#use-with-mega-linter
+    cli_config_arg_name: --config
     cli_help_arg_name: --help
     examples:
       - "rstcheck myfile.rst"
       - "rstcheck -c .rstcheck.cfg myfile.rst"
     install:
       pip:
-        - rstcheck
+        - rstcheck[toml,sphinx]
     ide:
       vscode:
         - name: vscode-restructuredtext
           url: https://marketplace.visualstudio.com/items/lextudio.restructuredtext
+  # rstfmt
+  - linter_name: rstfmt
+    is_formatter: true
+    linter_url: https://github.com/dzhu/rstfmt
+    linter_megalinter_ref_url: https://github.com/dzhu/rstfmt/pull/1
+    cli_lint_extra_args:
+      - "--check"
+    cli_lint_fix_arg_name: "--megalinter-fix-flag" # Workaround for MegaLinter
+    cli_lint_fix_remove_args:
+      - "--check"
+    test_folder: rst_rstfmt
+    examples:
+      - "rstfmt --check myfile.rst"
+      - "rstfmt myfile.rst" # Format
+    install:
+      pip:
+        - rstfmt
+    version_extract_regex: "(?<=rstfmt )\\d+(\\.\\d+)+"

@@ -24,19 +24,19 @@ on:
       - "flavors/**"
       - "megalinter/**"
       - "mega-linter-runner/**"
+      - "server/**"
       - "**/linter-versions.json"
       - "TEMPLATES/**"
       - ".trivyignore"
-      - "**/*.py"
       - "**/.sh"
 
 ###############
 # Set the Job #
 ###############
-
 concurrency:
   group: ${{ github.ref }}-${{ github.workflow }}
   cancel-in-progress: true
+
 jobs:
 
   build:
@@ -44,10 +44,11 @@ jobs:
     name: Deploy Docker Image - ALPHA
     # Set the agent to run on
     runs-on: ubuntu-latest
+    permissions:
+      actions: write
+      packages: write
     # Only run this on the main repo
     if: github.repository == 'oxsecurity/megalinter' && !contains(github.event.head_commit.message, 'skip deploy')
-    environment: 
-      name: alpha
     ##################
     # Load all steps #
     ##################
@@ -56,59 +57,88 @@ jobs:
       # Checkout the code base #
       ##########################
       - name: Checkout Code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+
+      ########################################################
+      # Publish updated version of mega-linter-runner on NPM #
+      ########################################################
+      - uses: actions/setup-node@v4.1.0
         with:
-          fetch-depth: 0
-
-      #####################
-      # Run Deploy script #
-      #####################
-      - name: Deploy latest image to DockerHub
-        env:
-          # Set the Env Vars
-          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-          IMAGE_REPO: oxsecurity/megalinter
-          IMAGE_VERSION: alpha
-          DOCKERFILE_PATH: Dockerfile
-          REGISTRY: Docker
+          node-version: "20.x"
+          registry-url: "https://registry.npmjs.org"
+      - run: cd mega-linter-runner && yarn install --frozen-lockfile
+      - run: cd mega-linter-runner && ALPHAID=$(date '+%Y%m%d%H%M') && npm version prerelease --preid="alpha$ALPHAID"
         shell: bash
-        run: .automation/upload-docker.sh
+      # - run: cd mega-linter-runner && npm publish --tag alpha || echo "mega-linter-runner alpha not published"
+      #   env:
+      #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      #############################
-      # Run Deploy script for GPR #
-      #############################
-      - name: Deploy Latest image to GitHub Container Registry
-        if: github.repository == 'disabled'
-        env:
-          # Set the Env Vars
-          GCR_USERNAME: ${{ secrets.GCR_USERNAME }}
-          GCR_TOKEN: ${{ secrets.GCR_PASSWORD }}
-          IMAGE_REPO: oxsecurity/megalinter
-          IMAGE_VERSION: alpha
-          DOCKERFILE_PATH: Dockerfile
-          REGISTRY: GCR
-        shell: bash
-        run: .automation/upload-docker.sh
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
 
-      # Free disk space
-      - name: Free Disk space
-        shell: bash
-        run: |
-          sudo rm -rf /usr/local/lib/android  # will release about 10 GB if you don't need Android
-          sudo rm -rf /usr/share/dotnet # will release about 20GB if you don't need .NET
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
 
-      ##############################################
-      # Check Docker image security with Trivy #
-      ##############################################
-      - name: Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@master
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
         with:
-          image-ref: "docker.io/oxsecurity/megalinter:alpha"
-          format: 'table'
-          exit-code: '1'
-          ignore-unfixed: true
-          security-checks: vuln
-          vuln-type: 'os,library'
-          severity: 'CRITICAL,HIGH'
-          timeout: 5m0s
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Get current date
+        run: echo "BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" >> ${GITHUB_ENV}
+
+      - name: Build & Push Docker Image (Server)
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: server/Dockerfile
+          platforms: linux/amd64
+          build-args: |
+            BUILD_DATE=${{ env.BUILD_DATE }}
+            BUILD_REVISION=${{ github.sha }}
+            BUILD_VERSION=alpha
+          load: false
+          push: true
+          secrets: |
+            GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
+          tags: |
+            ghcr.io/oxsecurity/megalinter-server:alpha
+          # ghcr.io/oxsecurity/megalinter-server:alpha-${{ github.sha }}
+
+      - name: Build & Push Docker Image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: Dockerfile
+          platforms: linux/amd64
+          build-args: |
+            BUILD_DATE=${{ env.BUILD_DATE }}
+            BUILD_REVISION=${{ github.sha }}
+            BUILD_VERSION=alpha
+          load: false
+          push: true
+          secrets: |
+            GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
+          tags: |
+            ghcr.io/oxsecurity/megalinter:alpha
+          # ghcr.io/oxsecurity/megalinter:alpha-${{ github.sha }}
+
+      # - name: Build & Push Worker Docker Image
+      #   uses: docker/build-push-action@v6
+      #   with:
+      #     context: .
+      #     file: Dockerfile-worker
+      #     platforms: linux/amd64
+      #     build-args: |
+      #       MEGALINTER_BASE_IMAGE=ghcr.io/oxsecurity/megalinter:alpha
+      #       BUILD_DATE=${{ env.BUILD_DATE }}
+      #       BUILD_REVISION=${{ github.sha }}
+      #       BUILD_VERSION=alpha
+      #     load: false
+      #     push: true
+      #     secrets: |
+      #       GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
+      #     tags: |
+      #       ghcr.io/oxsecurity/megalinter-worker:alpha

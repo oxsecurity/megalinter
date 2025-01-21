@@ -3,7 +3,9 @@ descriptor_type: tooling_format
 descriptor_flavors:
   - all_flavors # Applicable to CI in any language project
   - ci_light
+  - cupcake
 file_names_regex:
+  - "Containerfile"
   - "Dockerfile"
 test_folder: docker
 linters:
@@ -14,14 +16,17 @@ linters:
     descriptor_flavors:
       - all_flavors # Applicable to CI in any language project
       - ci_light
+      - cupcake
       - security
     linter_url: https://github.com/hadolint/hadolint
     linter_repo: https://github.com/hadolint/hadolint
     linter_rules_url: https://github.com/hadolint/hadolint#rules
     linter_image_url: https://hadolint.github.io/hadolint/img/cat_container.png
+    linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/hadolint.png
     linter_rules_configuration_url: https://github.com/hadolint/hadolint#configure
     linter_rules_inline_disable_url: https://github.com/hadolint/hadolint#inline-ignores
     linter_megalinter_ref_url: https://github.com/hadolint/hadolint/blob/master/docs/INTEGRATION.md#mega-linter
+    cli_lint_mode: list_of_files
     cli_config_arg_name: "--config"
     config_file_name: .hadolint.yaml
     cli_sarif_args:
@@ -30,11 +35,13 @@ linters:
     examples:
       - "hadolint Dockerfile"
       - "hadolint --config .hadolint.yml Dockerfile"
-    downgraded_version: true
     install:
       dockerfile:
-        - FROM hadolint/hadolint:v2.10.0-alpine as hadolint
-        - COPY --from=hadolint /bin/hadolint /usr/bin/hadolint
+        - |-
+          # renovate: datasource=docker depName=hadolint/hadolint
+          ARG DOCKERFILE_HADOLINT_VERSION=v2.12.0-alpine
+        - FROM hadolint/hadolint:${DOCKERFILE_HADOLINT_VERSION} AS hadolint
+        - COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
     ide:
       atom:
         - name: linter-hadolint

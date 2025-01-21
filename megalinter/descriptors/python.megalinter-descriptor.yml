@@ -1,6 +1,8 @@
 descriptor_id: PYTHON
 descriptor_type: language
 descriptor_flavors:
+  - cupcake
+  - formatters
   - python
 file_extensions:
   - ".py"
@@ -9,12 +11,13 @@ linters:
   # PYLINT
   - linter_name: pylint
     name: PYTHON_PYLINT
-    linter_url: https://www.pylint.org
-    linter_repo: https://github.com/PyCQA/pylint
-    linter_rules_url: http://pylint-messages.wikidot.com/all-codes
-    linter_banner_image_url: https://www.pylint.org/pylint.svg
-    linter_rules_configuration_url: https://github.com/PyCQA/pylint/blob/master/pylintrc
-    linter_rules_inline_disable_url: https://pylint.readthedocs.io/en/latest/user_guide/message-control.html
+    linter_url: https://pylint.readthedocs.io
+    linter_repo: https://github.com/pylint-dev/pylint
+    linter_speed: 2
+    linter_rules_url: https://pylint.readthedocs.io/en/stable/user_guide/messages/index.html
+    linter_image_url: https://raw.githubusercontent.com/pylint-dev/pylint/main/doc/logo.svg
+    linter_rules_configuration_url: https://pylint.readthedocs.io/en/stable/user_guide/configuration/index.html
+    linter_rules_inline_disable_url: https://pylint.readthedocs.io/en/stable/user_guide/messages/message_control.html
     cli_lint_mode: list_of_files
     config_file_name: .pylintrc
     cli_config_arg_name: "--rcfile"
@@ -26,6 +29,7 @@ linters:
     install:
       pip:
         - pylint
+        - typing-extensions
     ide:
       eclipse:
         - name: PyLint
@@ -33,9 +37,6 @@ linters:
       idea:
         - name: PyCharm (Native Support)
           url: https://www.jetbrains.com/pycharm/
-      vim:
-        - name: pylint.vim
-          url: https://www.vim.org/scripts/script.php?script_id=891
       visual_studio:
         - name: Native Support
           url: https://docs.microsoft.com/fr-fr/visualstudio/python/linting-python-code?view=vs-2019
@@ -46,8 +47,14 @@ linters:
   - linter_name: black
     name: PYTHON_BLACK
     is_formatter: true
+    activation_rules:
+      - type: variable
+        variable: PYTHON_DEFAULT_STYLE
+        expected_value: black
+        default_value: black
     linter_url: https://black.readthedocs.io/en/stable/
     linter_repo: https://github.com/psf/black
+    linter_speed: 3
     linter_banner_image_url: https://raw.githubusercontent.com/psf/black/master/docs/_static/logo2-readme.png
     linter_rules_configuration_url: https://black.readthedocs.io/en/stable/usage_and_configuration/the_basics.html#configuration-format
     config_file_name: pyproject.toml
@@ -80,12 +87,12 @@ linters:
           url: https://github.com/jorgenschaefer/elpy
       idea:
         - name: black
-          url: https://black.readthedocs.io/en/stable/editor_integration.html#pycharm-intellij-idea
+          url: https://black.readthedocs.io/en/stable/integrations/editors.html#pycharm-intellij-idea
       sublime:
         - name: sublack
           url: https://github.com/jgirardet/sublack
       vscode:
-        - name: VsCode Python Extension
+        - name: VSCode Python Extension
           url: https://marketplace.visualstudio.com/items?itemName=ms-python.python
   # FLAKE8
   - linter_name: flake8
@@ -93,6 +100,7 @@ linters:
     linter_url: https://flake8.pycqa.org
     linter_repo: https://github.com/PyCQA/flake8
     linter_spdx_license: MIT
+    linter_speed: 3
     linter_rules_url: https://flake8.pycqa.org/en/latest/user/error-codes.html
     linter_rules_configuration_url: https://flake8.pycqa.org/en/latest/user/configuration.html#project-configuration
     linter_rules_inline_disable_url: https://flake8.pycqa.org/en/3.1.1/user/ignoring-errors.html#in-line-ignoring-errors
@@ -113,6 +121,7 @@ linters:
       idea:
         - name: flake8-support
           url: https://plugins.jetbrains.com/plugin/11563-flake8-support
+          id: python-flake8
       vscode:
         - name: Native Support
           url: https://code.visualstudio.com/docs/python/linting#_flake8
@@ -122,9 +131,10 @@ linters:
     is_formatter: true
     linter_url: https://pycqa.github.io/isort/
     linter_repo: https://github.com/PyCQA/isort
+    linter_speed: 5
     linter_banner_image_url: https://raw.githubusercontent.com/pycqa/isort/develop/art/logo_large.png
-    linter_rules_configuration_url: https://pycqa.github.io/isort/docs/configuration/config_files/
-    linter_rules_inline_disable_url: https://pycqa.github.io/isort/docs/configuration/action_comments/
+    linter_rules_configuration_url: https://pycqa.github.io/isort/docs/configuration/config_files.html
+    linter_rules_inline_disable_url: https://pycqa.github.io/isort/docs/configuration/action_comments.html
     cli_lint_mode: list_of_files
     config_file_name: .isort.cfg
     cli_config_arg_name: "--settings-file"
@@ -156,16 +166,13 @@ linters:
       emacs:
         - name: py-isort.el
           url: https://github.com/paetzke/py-isort.el
-      sublime:
-        - name: isort plugin
-          url: https://github.com/jcugat/sublime-text-isort-plugin#install
       vim:
         - name: ale
           url: https://github.com/w0rp/ale
         - name: vim-isort
           url: https://github.com/fisadev/vim-isort#installation
       vscode:
-        - name: VsCode Python Extension
+        - name: VSCode Python Extension
           url: https://github.com/Microsoft/vscode-python
   # BANDIT
   - linter_name: bandit
@@ -181,12 +188,15 @@ linters:
     linter_url: https://bandit.readthedocs.io/en/latest/
     linter_repo: https://github.com/PyCQA/bandit
     linter_rules_url: https://bandit.readthedocs.io/en/latest/plugins/index.html#complete-test-plugin-listing
-    linter_banner_image_url: https://github.com/PyCQA/bandit/raw/master/logo/logotype-sm.png
-    linter_image_url: https://github.com/PyCQA/bandit/raw/master/logo/logomark.png
+    linter_banner_image_url: https://github.com/PyCQA/bandit/raw/main/logo/logotype-sm.png
+    linter_image_url: https://github.com/PyCQA/bandit/raw/main/logo/logomark.png
+    linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/bandit.png
     linter_rules_configuration_url: https://bandit.readthedocs.io/en/latest/config.html#
     linter_rules_inline_disable_url: https://bandit.readthedocs.io/en/latest/config.html#suppressing-individual-lines
     cli_lint_mode: list_of_files
     config_file_name: ".bandit.yml"
+    cli_lint_extra_args:
+      - --quiet
     cli_sarif_args:
       - --format
       - sarif
@@ -203,6 +213,7 @@ linters:
       pip:
         - bandit
         - bandit_sarif_formatter
+        - bandit[toml]
     ide:
       atom:
         - name: bandit-lint
@@ -219,10 +230,11 @@ linters:
     linter_text: |
       Optional static typing checks for python
 
-      If you don't use python static typing, you should disable this linter by adding `- PYTHON_BANDIT` in `DISABLE_LINTERS` variable in your `.mega-linter.yml` config file
+      If you don't use python static typing, you should disable this linter by adding `PYTHON_MYPY` in `DISABLE_LINTERS` variable in your `.mega-linter.yml` config file
     linter_url: https://mypy.readthedocs.io/en/stable/
     linter_repo: https://github.com/python/mypy
     linter_spdx_license: MIT
+    linter_speed: 1
     linter_banner_image_url: http://mypy-lang.org/static/mypy_light.svg
     linter_rules_configuration_url: https://mypy.readthedocs.io/en/stable/config_file.html
     linter_rules_inline_disable_url: https://mypy.readthedocs.io/en/stable/inline_config.html#inline-config
@@ -242,6 +254,8 @@ linters:
       - "mypy myfile.py"
       - "mypy --config-file .mypy.yml myfile.py"
     install:
+      dockerfile:
+        - ENV MYPY_CACHE_DIR=/tmp # Avoid mypy cache to mess with other linters
       pip:
         - mypy
     ide:
@@ -265,3 +279,157 @@ linters:
       vscode:
         - name: Mypy
           url: https://marketplace.visualstudio.com/items?itemName=matangover.mypy
+  # PyType # NV Not working yet, if anyone wants to complete it, please be my guest :)
+  # - linter_name: pytype
+  #   name: PYTHON_PYTYPE
+  #   linter_text: |
+  #     Optional static typing checks for python, by Google
+
+  #     If you don't use python static typing, you should disable this linter by adding `PYTHON_PYTYPE` in `DISABLE_LINTERS` variable in your `.mega-linter.yml` config file
+  #   linter_url: https://google.github.io/pytype/
+  #   linter_repo: https://github.com/google/pytype
+  #   linter_speed: 1
+  #   linter_rules_inline_disable_url: https://google.github.io/pytype/user_guide.html#silencing-errors
+  #   cli_lint_mode: list_of_files
+  #   config_file_name: pytype.cfg
+  #   cli_lint_errors_count: regex_sum
+  #   cli_lint_errors_regex: "Found ([0-9]+) error"
+  #   test_folder: python_mypy
+  #   examples:
+  #     - "pytype myfile.py myfile2.py"
+  #     - "pytype myfile.py"
+  #   install:
+  #     pip:
+  #       - pytype
+  # PyRight
+  - class: PyrightLinter
+    linter_name: pyright
+    name: PYTHON_PYRIGHT
+    linter_text: |
+      Optional static typing checks for python, by Microsoft
+
+      If you don't use python static typing, you should disable this linter by adding `PYTHON_PYRIGHT` in `DISABLE_LINTERS` variable in your `.mega-linter.yml` config file
+    linter_url: https://github.com/Microsoft/pyright
+    linter_rules_url: https://github.com/microsoft/pyright#type-checking-features
+    linter_repo: https://github.com/microsoft/pyright
+    linter_banner_image_url: https://github.com/microsoft/pyright/raw/main/docs/img/PyrightLarge.png
+    linter_speed: 1
+    linter_rules_configuration_url: https://github.com/microsoft/pyright/blob/main/docs/configuration.md
+    linter_rules_inline_disable_url: https://github.com/microsoft/pyright/blob/main/docs/comments.md#file-level-type-controls
+    cli_lint_mode: list_of_files
+    config_file_name: pyrightconfig.json
+    cli_config_arg_name: -p
+    cli_lint_errors_count: regex_sum
+    cli_lint_errors_regex: "([0-9]+) errors,"
+    test_folder: python_mypy
+    examples:
+      - "pyright myfile.py myfile2.py"
+      - "pyright myfile.py"
+    install:
+      apk:
+        - nodejs
+      pip:
+        - pyright
+    ide:
+      emacs:
+        - name: LSP-pyright
+          url: https://github.com/emacs-lsp/lsp-pyright
+      sublime:
+        - name: LSP-pyright
+          url: https://packagecontrol.io/packages/LSP-pyright
+      vim:
+        - name: Ale
+          url: https://github.com/dense-analysis/ale
+        - name: coc-pyright
+          url: https://github.com/fannheyward/coc-pyright
+      vscode:
+        - name: PyRight
+          url: https://marketplace.visualstudio.com/items?itemName=ms-pyright.pyright
+  # ruff
+  - linter_name: ruff
+    name: PYTHON_RUFF
+    can_output_sarif: true
+    linter_text: |
+      An extremely fast Python linter, written in Rust.
+    linter_url: https://github.com/astral-sh/ruff
+    linter_repo: https://github.com/astral-sh/ruff
+    linter_spdx_license: MIT
+    linter_speed: 5
+    linter_rules_url: https://docs.astral.sh/ruff/rules/
+    linter_rules_configuration_url: https://docs.astral.sh/ruff/configuration/
+    linter_rules_inline_disable_url: https://docs.astral.sh/ruff/linter/#error-suppression
+    cli_lint_mode: list_of_files
+    cli_config_arg_name: "--config"
+    cli_help_arg_name: "help"
+    cli_lint_fix_arg_name: "--fix"
+    cli_version_arg_name: "--version"
+    cli_lint_extra_args:
+      - "check"
+    cli_lint_errors_count: regex_number
+    cli_lint_errors_regex: "Found ([0-9]+) error"
+    config_file_name: ".ruff.toml"
+    cli_sarif_args:
+      - --output-format
+      - sarif
+      - --output-file
+      - "{{SARIF_OUTPUT_FILE}}"
+    test_folder: python_ruff
+    examples:
+      - "ruff check myfile.py"
+      - "ruff check --config .ruff.toml myfile.py"
+    install:
+      pip:
+        - ruff
+    ide:
+      idea:
+        - name: Ruff
+          url: https://plugins.jetbrains.com/plugin/20574-ruff
+          id: com.koxudaxi.ruff
+      vscode:
+        - name: Ruff
+          url: https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff
+
+  # ruff fmt
+  - linter_name: ruff-format
+    class: RuffFormatLinter
+    name: PYTHON_RUFF_FORMAT
+    is_formatter: true
+    activation_rules:
+      - type: variable
+        variable: PYTHON_DEFAULT_STYLE
+        expected_value: ruff
+        default_value: black
+    linter_text: |
+      An extremely fast Python linter, written in Rust. Configured for formatting only.
+    linter_url: https://github.com/astral-sh/ruff
+    linter_repo: https://github.com/astral-sh/ruff
+    linter_spdx_license: MIT
+    linter_speed: 5
+    linter_rules_url: https://docs.astral.sh/ruff/rules/
+    linter_rules_configuration_url: https://docs.astral.sh/ruff/configuration/
+    linter_rules_inline_disable_url: https://docs.astral.sh/ruff/linter/#error-suppression
+    cli_executable: ruff
+    cli_lint_mode: list_of_files
+    cli_config_arg_name: "--config"
+    cli_help_arg_name: "help"
+    cli_version_arg_name: "--version"
+    cli_lint_extra_args:
+      - format
+      - --check
+    cli_lint_fix_remove_args:
+      - --check
+    config_file_name: ".ruff.toml"
+    examples:
+      - "ruff format --check myfile.py myfile2.py"
+      - "ruff format --config .ruff.toml myfile.py myfile2.py"
+    install:
+      pip:
+        - ruff
+    ide:
+      idea:
+        - name: Ruff
+          url: https://plugins.jetbrains.com/plugin/20574-ruff
+          id: com.koxudaxi.ruff
+      vscode:
+        - name: Ruff
+          url: https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff

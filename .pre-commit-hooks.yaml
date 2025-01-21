@@ -1,66 +1,59 @@
-- id: megalinter
-  name: Run MegaLinter on files modified relative to DEFAULT_BRANCH
+- id: megalinter-incremental
+  name: Run MegaLinter (skipping linters that run in project mode)
   entry: npx --
   language: system
-  pass_filenames: false
+  require_serial: true
   args:
     - mega-linter-runner
+    - --containername
+    - "megalinter-incremental"
+    - --remove-container
     - --fix
     - --env
     - "'APPLY_FIXES=all'"
     - --env
-    - "'FAIL_IF_UPDATED_SOURCES=true'"
+    - "'CLEAR_REPORT_FOLDER=true'"
     - --env
     - "'LOG_LEVEL=warning'"
-    - --env
-    - "'VALIDATE_ALL_CODEBASE=false'"
-    - --env
-    - "'DISABLE_LINTERS=COPYPASTE_JSCPD'"
-  stages:
-    - commit
+    - --filesonly
   description: >
-    See https://oxsecurity.github.io/megalinter/latest/mega-linter-runner/#usage and
-    https://oxsecurity.github.io/megalinter/latest/configuration/ if you wish to override
-    the default arguments. mega-linter-runner is specified as an argument so
-    that you may override the version (e.g., mega-linter-runner@vx.y.z). Depends
-    on npx, which ships with npm 7+, and Docker. Unlike most pre-commit hooks,
-    MegaLinter itself computes the files to run on. Runs very slowly when the
-    pertinent Docker image isn't already cached (c.f.,
-    https://github.com/marketplace/actions/docker-cache/). If you encounter
-    permission errors, try running Docker in rootless mode (c.f.,
+    See https://megalinter.io/latest/mega-linter-runner/#usage
+    and https://megalinter.io/latest/configuration/ if you
+    wish to override the default arguments. mega-linter-runner is specified as
+    an argument so that you may override the version (e.g.,
+    mega-linter-runner@vx.y.z). Depends on npx, which ships with npm 7+, and
+    Docker. Runs very slowly when the pertinent Docker image isn't already
+    cached (c.f., https://github.com/marketplace/actions/docker-cache/). If you
+    encounter permission errors, try running Docker in rootless mode (c.f.,
     https://github.com/marketplace/actions/rootless-docker/). Linter results are
-    logged to the report directory, so you should make sure to list it in your
-    .gitignore and wipe it between runs. Skip jscpd since duplicate detection
-    fundamentally requires scanning the entire repository and hence can't be
-    performed incrementally.
+    logged to the megalinter-reports directory, so list it in your .gitignore.
+    Skip linters that run in project mode since they don't run incrementally.
 
-- id: megalinter-all
-  name: Run MegaLinter on all files
+- id: megalinter-full
+  name: Run MegaLinter
   entry: npx --
   language: system
-  pass_filenames: false
+  require_serial: true
   args:
     - mega-linter-runner
+    - --containername
+    - "megalinter-full"
+    - --remove-container
     - --fix
     - --env
     - "'APPLY_FIXES=all'"
     - --env
-    - "'FAIL_IF_UPDATED_SOURCES=true'"
+    - "'CLEAR_REPORT_FOLDER=true'"
     - --env
     - "'LOG_LEVEL=warning'"
-    - --env
-    - "'VALIDATE_ALL_CODEBASE=true'"
-  stages:
-    - push
   description: >
-    See https://oxsecurity.github.io/megalinter/latest/mega-linter-runner/#usage and
-    https://oxsecurity.github.io/megalinter/latest/configuration/ if you wish to override
-    the default arguments. mega-linter-runner is specified as an argument so
-    that you may override the version (e.g., mega-linter-runner@vx.y.z). Depends
-    on npx, which ships with npm 7+, and Docker. Runs very slowly when the
-    pertinent Docker image isn't already cached (c.f.,
-    https://github.com/marketplace/actions/docker-cache/). If you encounter
-    permission errors, try running Docker in rootless mode (c.f.,
+    See https://megalinter.io/latest/mega-linter-runner/#usage
+    and https://megalinter.io/latest/configuration/ if you
+    wish to override the default arguments. mega-linter-runner is specified as
+    an argument so that you may override the version (e.g.,
+    mega-linter-runner@vx.y.z). Depends on npx, which ships with npm 7+, and
+    Docker. Runs very slowly when the pertinent Docker image isn't already
+    cached (c.f., https://github.com/marketplace/actions/docker-cache/). If you
+    encounter permission errors, try running Docker in rootless mode (c.f.,
     https://github.com/marketplace/actions/rootless-docker/). Linter results are
-    logged to the report directory, so you should make sure to list it in your
-    .gitignore and wipe it between runs.
+    logged to the megalinter-reports directory, so list it in your .gitignore.

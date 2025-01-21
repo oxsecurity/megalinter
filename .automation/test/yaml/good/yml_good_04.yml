@@ -1,0 +1,20 @@
+########################
+########################
+## Data Serialization ##
+########################
+########################
+---
+data:
+  - id: 1
+    name: John Doe
+  - id: 2
+    name: Jane Smith
+  - id: 3
+    name: Alice Johnson
+
+address:
+  street: 123 Main St
+  city: Anytown
+  zip: 12345
+  state: CA
+  country: USA

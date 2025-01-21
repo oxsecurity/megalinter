@@ -1,0 +1,25 @@
+#######################
+#######################
+## Ansible Playbooks ##
+#######################
+#######################
+
+# Rule: document-start - Missing document start marker
+- hosts: localhost
+  tasks:
+    - name: Install package
+      # Rule: trailing-spaces - Trailing spaces are disallowed
+      apt:
+        name: nginx
+        state: present
+      # syntax error: expected <block end>, but found '<block sequence start>' (syntax)
+     - name: Start service
+      service: # Rule: indentation - Inconsistent indentation
+         name: nginx # Rule: indentation - Inconsistent indentation
+        state: started # Rule: indentation - Inconsistent indentation
+- hosts: all
+  tasks:
+    - name: Echo message
+      command: echo "Hello World"
+# Rule: empty-lines - Too many blank lines (1 > 0)
+

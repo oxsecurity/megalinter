@@ -1,0 +1,125 @@
+name: build-command
+on:
+  workflow_dispatch:
+    # checkov:skip=CKV_GHA_7:We are only triggering these workflows by users with write access manually, it is expected.
+    # Error was:
+    # The build output cannot be affected by user parameters other than the build entry point and the top-level source location.
+    # GitHub Actions workflow_dispatch inputs MUST be empty.
+    inputs:
+      repository:
+        description: "The repository from which the slash command was dispatched"
+        required: true
+      comment-id:
+        description: "The comment-id of the slash command"
+        required: true
+      issue-number:
+        description: "The issue number in which the slash command was made"
+        required: true
+      actor:
+        description: "The user who executed the slash command"
+        required: true
+      checkout-ref:
+        description: "The reference to pass to 'ref' to checkout action"
+        required: true
+      checkout-repository:
+        description: "The repository to pass to 'repository' to checkout action"
+        required: false
+  repository_dispatch:
+    types: [build-command]
+permissions: {}
+jobs:
+  build-sh:
+    runs-on: ubuntu-latest
+    permissions:
+      # Give the default GITHUB_TOKEN write permission to commit and push and comment on PR
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Create URL to the run output
+        id: vars
+        run: echo "run-url=https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" >> $GITHUB_OUTPUT
+      - name: Create comment
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          repository: ${{ github.event.inputs.repository }}
+          comment-id: ${{ github.event.inputs.comment-id }}
+          issue-number: ${{ github.event.inputs.issue-number }}
+          body: |
+            > [Command run output](${{ steps.vars.outputs.run-url }})
+            > Build command workflow started.
+            > Installing dependencies
+      - name: Dump the client payload context
+        env:
+          PAYLOAD_CONTEXT: ${{ toJson(github.event.client_payload) }}
+        run: echo "$PAYLOAD_CONTEXT"
+      - name: Dump the inputs payload context
+        env:
+          INPUTS_CONTEXT: ${{ toJson(github.event.inputs) }}
+        run: echo "$INPUTS_CONTEXT"
+      # Checkout the pull request branch
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.event.inputs.checkout-repository }}
+          ref: ${{ github.event.inputs.checkout-ref }}
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          # Version range or exact version of Python or PyPy to use, using SemVer's version range syntax. Reads from .python-version if unset.
+          python-version-file: '.python-version' # Read python version from a file .python-version
+          # Used to specify a package manager for caching in the default directory. Supported values: pip, pipenv, poetry.
+          cache: pip # optional
+      - run: python -m pip install uv
+      - run: uv pip install --system -r .config/python/dev/requirements.txt
+      - name: Create comment starting build.sh
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          repository: ${{ github.event.inputs.repository }}
+          comment-id: ${{ github.event.inputs.comment-id }}
+          issue-number: ${{ github.event.inputs.issue-number }}
+          body: |
+            > Running script `./build.sh`
+      - name: Run build script
+        run: ./build.sh
+      - run: git pull
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        id: auto-commit-action
+        with:
+          commit_message: "[build-command] Update generated files"
+          commit_user_name: megalinter-bot
+          commit_user_email: nicolas.vuillamy@ox.security
+      - name: Add reaction
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          repository: ${{ github.event.inputs.repository }}
+          comment-id: ${{ github.event.inputs.comment-id }}
+          issue-number: ${{ github.event.inputs.issue-number }}
+          reactions: hooray
+      - name: Create final comment updated files
+        if: steps.auto-commit-action.outputs.changes_detected == 'true'
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          repository: ${{ github.event.inputs.repository }}
+          comment-id: ${{ github.event.inputs.comment-id }}
+          issue-number: ${{ github.event.inputs.issue-number }}
+          body: |
+            > Build command workflow completed updating files.
+      - name: Create final comment no updated files
+        if: steps.auto-commit-action.outputs.changes_detected == 'false'
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          repository: ${{ github.event.inputs.repository }}
+          comment-id: ${{ github.event.inputs.comment-id }}
+          issue-number: ${{ github.event.inputs.issue-number }}
+          body: |
+            > Build command workflow completed without updating files.
+      - name: Add failure reaction
+        if: failure()
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          repository: ${{ github.event.inputs.repository }}
+          comment-id: ${{ github.event.comment.id }}
+          issue-number: ${{ github.event.inputs.issue-number }}
+          body: |
+            > Build command workflow failed.
+          reactions: -1

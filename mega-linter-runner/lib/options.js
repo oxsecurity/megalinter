@@ -3,20 +3,19 @@
  * @author Nicolas Vuillamy
  */
 
-"use strict";
-
 //------------------------------------------------------------------------------
 // Requirements
 //------------------------------------------------------------------------------
 
-const optionator = require("optionator");
+import * as optionator from 'optionator';
+import { DEFAULT_RELEASE } from "./config.js";
 
 //------------------------------------------------------------------------------
 // Initialization and Public Interface
 //------------------------------------------------------------------------------
 
 // exports "parse(args)", "generateHelp()", and "generateHelpForOption(optionName)"
-module.exports = optionator({
+export const optionsDefinition = optionator.default({
   prepend: "mega-linter [options]",
   defaults: {
     concatRepeatedArrays: true,
@@ -27,9 +26,9 @@ module.exports = optionator({
       option: "release",
       alias: "r",
       type: "String",
-      default: "v6",
+      default: DEFAULT_RELEASE,
       description: "MegaLinter version",
-      example: ["stable", "latest", "v5.9.0"],
+      example: ["stable", "latest", `${DEFAULT_RELEASE}.1.2`],
     },
     {
       option: "flavor",
@@ -46,8 +45,8 @@ module.exports = optionator({
       description: "MegaLinter docker image",
       example: [
         "ghcr.io/oxsecurity/megalinter:latest",
-        "ghcr.io/oxsecurity/megalinter:v5",
-        "my-registry.com/mega-linter-python:v5",
+        `ghcr.io/oxsecurity/megalinter:${DEFAULT_RELEASE}`,
+        `my-registry.com/mega-linter-python:${DEFAULT_RELEASE}`,
       ],
     },
     {
@@ -75,6 +74,11 @@ module.exports = optionator({
       description: "Apply formatters and fixes in linted sources",
     },
     {
+      option: "filesonly",
+      type: "Boolean",
+      description: "Do not run linters with project as CLI lint mode",
+    },
+    {
       option: "json",
       alias: "j",
       type: "Boolean",
@@ -85,6 +89,14 @@ module.exports = optionator({
       alias: "n",
       type: "Boolean",
       description: "Do not pull docker image before running it",
+    },
+    {
+      option: "platform",
+      alias: "z",
+      type: "String",
+      default: "linux/amd64",
+      description:
+        "Force a docker image platform (currently, only linux/amd64 works)",
     },
     {
       option: "debug",
@@ -117,9 +129,31 @@ module.exports = optionator({
       description: "Upgrade local repository MegaLinter configuration",
     },
     {
-      option: "containername",
+      option: "container-name",
+      alias: "containername",
       type: "String",
       description: "Specify MegaLinter container name",
+    },
+    {
+      option: "remove-container",
+      type: "Boolean",
+      description: "Remove MegaLinter Docker container when done (default: true since v7.8.0)",
+    },
+    {
+      option: "no-remove-container",
+      type: "Boolean",
+      description: "Do not remove MegaLinter Docker container when done",
+    },
+    {
+      option: "codetotal",
+      type: "Boolean",
+      description: "Run CodeTotal locally",
+    },
+    {
+      option: "codetotal-url",
+      type: "String",
+      default: "http://localhost:8081/",
+      description: "URL Hosting CodeTotal once launched",
     },
   ],
   mutuallyExclusive: [

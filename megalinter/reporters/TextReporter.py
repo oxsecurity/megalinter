@@ -6,7 +6,7 @@ import logging
 import os
 
 from megalinter import Reporter, config, utils
-from megalinter.constants import ML_DOC_URL
+from megalinter.constants import ML_DOC_URL_DESCRIPTORS_ROOT
 
 
 class TextReporter(Reporter):
@@ -17,18 +17,20 @@ class TextReporter(Reporter):
     def __init__(self, params=None):
         # report_type is simple by default
         self.report_type = "simple"
-        if config.get("OUTPUT_DETAIL", "") == "detailed":
-            self.report_type = "detailed"
         self.processing_order = -5
         super().__init__(params)
 
     def manage_activation(self):
-        # Super-Linter legacy variables
-        output_format = config.get("OUTPUT_FORMAT", "")
-        if output_format.startswith("text"):
+        if config.get(self.master.request_id, "OUTPUT_DETAIL", "") == "detailed":
+            self.report_type = "detailed"
+        output_format = config.get(self.master.request_id, "OUTPUT_FORMAT", "")
+        if not utils.can_write_report_files(self.master):
+            self.is_active = False
+        elif output_format.startswith("text"):
+            # Super-Linter legacy variable
             self.is_active = True
         # MegaLinter vars (true by default)
-        elif config.get("TEXT_REPORTER", "true") != "true":
+        elif config.get(self.master.request_id, "TEXT_REPORTER", "true") != "true":
             self.is_active = False
         else:
             self.is_active = True
@@ -45,7 +47,7 @@ class TextReporter(Reporter):
             lang_lower = self.master.descriptor_id.lower()
             linter_name_lower = self.master.linter_name.lower().replace("-", "_")
             doc_name = f"{lang_lower}_{linter_name_lower}"
-            doc_url = f"{ML_DOC_URL}/descriptors/{doc_name}/"
+            doc_url = f"{ML_DOC_URL_DESCRIPTORS_ROOT}/{doc_name}/"
         # Header lines
         text_report_lines = [
             f"Results of {self.master.linter_name} linter (version {self.master.get_linter_version()})",
@@ -59,6 +61,7 @@ class TextReporter(Reporter):
                 status = (
                     "✅ [SUCCESS]" if file_result["status_code"] == 0 else "❌ [ERROR]"
                 )
+                file_text_lines = []
                 if file_result["file"] is not None:
                     file_nm = utils.normalize_log_string(file_result["file"])
                     file_text_lines = [f"{status} {file_nm}"]
@@ -79,11 +82,18 @@ class TextReporter(Reporter):
             status = "✅ [SUCCESS]" if self.master.status == "success" else "❌ [ERROR]"
             text_report_lines += [f"{status} for workspace {workspace_nm}"]
             if self.report_type == "detailed" or self.master.status != "success":
-                text_report_lines += [f"Linter raw log:\n{self.master.stdout}"]
+                stdout = utils.normalize_log_string(
+                    self.master.stdout_human
+                    if self.master.stdout_human is not None
+                    else self.master.stdout
+                )
+                text_report_lines += [f"Linter raw log:\n{stdout}"]
         # Complete lines
         text_report_lines += self.master.complete_text_reporter_report(self)
         # Write to file
-        text_report_sub_folder = config.get("TEXT_REPORTER_SUB_FOLDER", "linters_logs")
+        text_report_sub_folder = config.get(
+            self.master.request_id, "TEXT_REPORTER_SUB_FOLDER", "linters_logs"
+        )
         text_file_name = (
             f"{self.report_folder}{os.path.sep}"
             f"{text_report_sub_folder}{os.path.sep}"
