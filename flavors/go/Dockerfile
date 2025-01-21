@@ -97,7 +97,7 @@ ARG KTLINT_VERSION=1.5.0
 ARG DETEKT_VERSION=1.23.7
 
 # renovate: datasource=github-tags depName=kubescape/kubescape
-ARG KUBERNETES_KUBESCAPE_VERSION=3.0.24
+ARG KUBERNETES_KUBESCAPE_VERSION=2.9.0
 # renovate: datasource=npm depName=markdown-link-check
 ARG MARKDOWN_MARKDOWN_LINK_CHECK_VERSION=3.12.2
 # renovate: datasource=pypi depName=sqlfluff
