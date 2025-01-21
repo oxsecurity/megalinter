@@ -93,7 +93,6 @@ ARG ARM_TTK_DIRECTORY='/opt/microsoft'
 # renovate: datasource=github-tags depName=Azure/bicep
 ARG BICEP_VERSION=0.32.4
 ARG BICEP_EXE='bicep'
-ARG BICEP_URI='https://github.com/Azure/bicep/releases/download/v${BICEP_VERSION}/bicep-linux-musl-x64'
 ARG BICEP_DIR='/usr/local/bin'
 # renovate: datasource=nuget depName=csharpier
 ARG CSHARP_CSHARPIER_VERSION=0.30.6
@@ -365,7 +364,7 @@ RUN curl --retry 5 --retry-delay 5 -sLO "https://github.com/Azure/arm-ttk/releas
 # Managed with COPY --link --from=shfmt /bin/shfmt /usr/bin/
 #
 # bicep_linter installation
-    && curl --retry 5 --retry-delay 5 -sLo ${BICEP_EXE} "${BICEP_URI}" \
+    && curl --retry 5 --retry-delay 5 -sLo ${BICEP_EXE} "https://github.com/Azure/bicep/releases/download/v${BICEP_VERSION}/bicep-linux-musl-x64" \
     && chmod +x "${BICEP_EXE}" \
     && mv "${BICEP_EXE}" "${BICEP_DIR}" \
 #

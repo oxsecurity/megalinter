@@ -51,7 +51,6 @@ FROM python:3.12.8-alpine3.21
 # renovate: datasource=github-tags depName=Azure/bicep
 ARG BICEP_VERSION=0.32.4
 ARG BICEP_EXE='bicep'
-ARG BICEP_URI='https://github.com/Azure/bicep/releases/download/v${BICEP_VERSION}/bicep-linux-musl-x64'
 ARG BICEP_DIR='/usr/local/bin'
 #ARG__END
 
@@ -151,7 +150,7 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #############################################################################################
 #OTHER__START
 # bicep_linter installation
-RUN curl --retry 5 --retry-delay 5 -sLo ${BICEP_EXE} "${BICEP_URI}" \
+RUN curl --retry 5 --retry-delay 5 -sLo ${BICEP_EXE} "https://github.com/Azure/bicep/releases/download/v${BICEP_VERSION}/bicep-linux-musl-x64" \
     && chmod +x "${BICEP_EXE}" \
     && mv "${BICEP_EXE}" "${BICEP_DIR}"
 
