@@ -61,6 +61,25 @@
         "terraform"
       ],
       "type": "string"
+    },
+    "linter_command_info": {
+      "$ref": "#/definitions/command_info",
+      "description": "Command information",
+      "properties": {
+        "run_after_linters": {
+          "default": false,
+          "title": "Process command after running linters",
+          "type": "boolean"
+        },
+        "run_before_linters": {
+          "default": false,
+          "title": "Process command before running linters",
+          "type": "boolean"
+        }
+      },
+      "required": [],
+      "title": "Command",
+      "type": "object"
     }
   },
   "description": "Descriptor definition for MegaLinter",
@@ -1232,7 +1251,7 @@
               ]
             ],
             "items": {
-              "$ref": "#/definitions/command_info"
+              "$ref": "#/definitions/linter_command_info"
             },
             "title": "Linter Pre-run commands",
             "type": "array"
@@ -1255,7 +1274,7 @@
               ]
             ],
             "items": {
-              "$ref": "#/definitions/command_info"
+              "$ref": "#/definitions/linter_command_info"
             },
             "title": "Linter Pre-run commands",
             "type": "array"
