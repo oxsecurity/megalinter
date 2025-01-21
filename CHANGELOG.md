@@ -215,6 +215,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [actionlint](https://rhysd.github.io/actionlint/) from 1.7.6 to **1.7.7** on 2025-01-20
   - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 2.37.0 to **2.38.0** on 2025-01-20
   - [ansible-lint](https://ansible-lint.readthedocs.io/) from 24.12.2 to **25.1.0** on 2025-01-20
+  - [phpstan](https://phpstan.org/) from 2.1.1 to **2.1.2** on 2025-01-21
+  - [raku](https://raku.org/) from 2020.10 to **2024.10** on 2025-01-21
 <!-- linter-versions-end -->
 
 ## [v8.3.0] - 2024-11-23

@@ -4538,7 +4538,7 @@
       "$id": "#/properties/DART_DARTANALYZER_CLI_EXECUTABLE",
       "default": [
         [
-          "dartanalyzer"
+          "dart"
         ]
       ],
       "items": {
@@ -4575,7 +4575,7 @@
     },
     "DART_DARTANALYZER_CONFIG_FILE": {
       "$id": "#/properties/DART_DARTANALYZER_CONFIG_FILE",
-      "default": "analysis_options.yml",
+      "default": "analysis_options.yaml",
       "description": "DART_DARTANALYZER: User custom config file name if different from default",
       "title": "DART_DARTANALYZER: Custom config file name",
       "type": "string"
