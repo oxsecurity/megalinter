@@ -108,8 +108,10 @@ tsqllint [options] [file.sql] | [dir] | [file.sql | dir]
 
 - Dockerfile commands :
 ```dockerfile
+# renovate: datasource=nuget depName=TSQLLint
+ARG SQL_TSQLLINT_VERSION=1.16.0
 RUN apk add --no-cache dotnet9-sdk
 ENV PATH="${PATH}:/root/.dotnet/tools"
-RUN dotnet tool install --global TSQLLint
+RUN dotnet tool install --global TSQLLint --version ${SQL_TSQLLINT_VERSION}
 ```
 

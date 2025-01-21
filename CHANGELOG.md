@@ -212,6 +212,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [selene](https://kampfkarren.github.io/selene/) from 0.27.1 to **0.28.0** on 2025-01-18
   - [php-cs-fixer](https://cs.symfony.com/) from 3.68.0 to **7.4.0** on 2025-01-18
   - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.23.0 to **8.23.1** on 2025-01-18
+  - [actionlint](https://rhysd.github.io/actionlint/) from 1.7.6 to **1.7.7** on 2025-01-20
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 2.37.0 to **2.38.0** on 2025-01-20
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 24.12.2 to **25.1.0** on 2025-01-20
 <!-- linter-versions-end -->
 
 ## [v8.3.0] - 2024-11-23
