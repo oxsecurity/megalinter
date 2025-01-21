@@ -843,10 +843,15 @@ class Linter:
                     self.number_errors += 1
                     # Calls external functions to count the number of warnings and errors
                     file_errors_number = self.get_total_number_errors(stdout)
-                    
+
                     self.total_number_errors += file_errors_number
                 self.update_files_lint_results(
-                    [file], return_code, file_status, stdout, file_errors_number, file_warnings_number
+                    [file],
+                    return_code,
+                    file_status,
+                    stdout,
+                    file_errors_number,
+                    file_warnings_number,
                 )
         else:
             # Lint all workspace in one command
@@ -912,7 +917,13 @@ class Linter:
         return variables_with_replacements
 
     def update_files_lint_results(
-        self, linted_files, return_code, file_status, stdout, file_errors_number, file_warnings_number
+        self,
+        linted_files,
+        return_code,
+        file_status,
+        stdout,
+        file_errors_number,
+        file_warnings_number,
     ):
         if self.try_fix is True:
             updated_files = utils.list_updated_files(self.github_workspace)
@@ -936,7 +947,7 @@ class Linter:
                     "stdout": stdout,
                     "fixed": fixed,
                     "errors_number": file_errors_number,
-                    "warnings_number": file_warnings_number
+                    "warnings_number": file_warnings_number,
                 }
             ]
 
@@ -1487,7 +1498,7 @@ class Linter:
                 f"Unable to get number of errors with {self.cli_lint_errors_count} "
                 f"and {str(self.cli_lint_errors_regex)}"
             )
-        
+
         # If no regex is defined, return 0 errors if there is a success or 1 error if there are any
         if self.status == "success":
             return 0
@@ -1526,7 +1537,7 @@ class Linter:
                 f"Unable to get number of warnings with {self.cli_lint_warnings_count} "
                 f"and {str(self.cli_lint_warnings_regex)}"
             )
-        
+
         return 0
 
     # Build the CLI command to get linter version (can be overridden if --version is not the way to get the version)

@@ -58,7 +58,15 @@ class ConsoleReporter(Reporter):
         logging.info(log_section_end("megalinter-file-listing"))
 
     def produce_report(self):
-        table_header = ["Descriptor", "Linter", "Mode", "Files", "Fixed", "Errors", "Warnings"]
+        table_header = [
+            "Descriptor",
+            "Linter",
+            "Mode",
+            "Files",
+            "Fixed",
+            "Errors",
+            "Warnings",
+        ]
         if self.master.show_elapsed_time is True:
             table_header += ["Elapsed time"]
         table_data = [table_header]
@@ -93,7 +101,7 @@ class ConsoleReporter(Reporter):
                     found,
                     nb_fixed_cell,
                     errors,
-                    warnings
+                    warnings,
                 ]
                 if self.master.show_elapsed_time is True:
                     table_line += [str(round(linter.elapsed_time_s, 2)) + "s"]
