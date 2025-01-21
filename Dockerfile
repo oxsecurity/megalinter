@@ -143,6 +143,8 @@ ARG KTLINT_VERSION=1.5.0
 # renovate: datasource=github-tags depName=detekt/detekt
 ARG DETEKT_VERSION=1.23.7
 
+# renovate: datasource=github-tags depName=kubescape/kubescape
+ARG KUBERNETES_KUBESCAPE_VERSION=2.9.0
 # renovate: datasource=github-tags depName=cvega/luarocks
 ARG LUA_LUACHECK_VERSION=3.3.1
 
@@ -695,7 +697,7 @@ RUN wget --quiet https://github.com/pmd/pmd/releases/download/pmd_releases%2F${P
 #
 # kubescape installation
     && ln -s /lib/libc.so.6 /usr/lib/libresolv.so.2 && \
-    curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash -s -- -v v2.9.0 \
+    curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash -s -- -v "v${KUBERNETES_KUBESCAPE_VERSION}" \
 #
 # chktex installation
 # Managed with COPY --link --from=chktex /usr/bin/chktex /usr/bin/
