@@ -114,9 +114,9 @@ FROM python:3.12.8-alpine3.21
 ARG POWERSHELL_VERSION=7.4.6
 
 # renovate: datasource=npm depName=@salesforce/cli
-ARG SALESFORCE_CLI_VERSION=2.70.7
+ARG SALESFORCE_CLI_VERSION=2.72.21
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
-ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.9.10
+ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.9.12
 # renovate: datasource=npm depName=sfdx-hardis
 ARG SFDX_HARDIS_VERSION=5.16.2
 # renovate: datasource=github-tags depName=Azure/arm-ttk
@@ -181,7 +181,7 @@ ARG REPOSITORY_TRIVY_VERSION=0.58.2
 # renovate: datasource=github-tags depName=aquasecurity/trivy
 ARG REPOSITORY_TRIVY_SBOM_VERSION=0.58.2
 # renovate: datasource=npm depName=@salesforce/sfdx-scanner
-ARG SALESFORCE_SFDX_SCANNER_VERSION=4.7.0
+ARG SALESFORCE_SFDX_SCANNER_VERSION=4.8.0
 # renovate: datasource=npm depName=lightning-flow-scanner
 ARG LIGHTNING_FLOW_SCANNER_VERSION=2.38.0
 # renovate: datasource=pypi depName=sqlfluff
