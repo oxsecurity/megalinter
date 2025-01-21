@@ -30,8 +30,11 @@ linters:
       - "golangci-lint run -c .golangci.yml myfile.go"
     install:
       dockerfile:
+        - |-
+          # renovate: datasource=github-tags depName=golangci/golangci-lint
+          ARG GO_GOLANGCI_LINT_VERSION=1.63.4
         - |
-          RUN wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh \
+          RUN wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s "v${GO_GOLANGCI_LINT_VERSION}" \
               && golangci-lint --version
     ide:
       atom:
@@ -82,12 +85,14 @@ linters:
         # - FROM ghcr.io/mgechev/revive:1.2.5 AS revive
         # - COPY --link --from=revive /usr/bin/revive /usr/bin/revive
         - |-
+          # renovate: datasource=github-tags depName=mgechev/revive
+          ARG GO_REVIVE_VERSION=v1.5.1
+        - |-
           FROM golang:1-alpine AS revive
           ## The golang image used as a builder is a temporary workaround (https://github.com/mgechev/revive/issues/787)
           ## for the released revive binaries not returning version numbers (devel). 
           ## The install command should then be what is commented in the go.megalinter-descriptor.yml
-          # renovate: datasource=github-tags depName=mgechev/revive
-          ARG GO_REVIVE_VERSION=v1.5.1
+          ARG GO_REVIVE_VERSION
           RUN GOBIN=/usr/bin go install github.com/mgechev/revive@$GO_REVIVE_VERSION
         - COPY --link --from=revive /usr/bin/revive /usr/bin/revive
     ide:

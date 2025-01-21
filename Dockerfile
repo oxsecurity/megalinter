@@ -21,6 +21,8 @@ ARG BASH_SHFMT_VERSION=v3.10.0-alpine
 ARG DOCKERFILE_HADOLINT_VERSION=v2.12.0-alpine
 # renovate: datasource=docker depName=mstruebing/editorconfig-checker
 ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=v3.1.2
+# renovate: datasource=github-tags depName=mgechev/revive
+ARG GO_REVIVE_VERSION=v1.5.1
 # renovate: datasource=docker depName=ghcr.io/yannh/kubeconform
 ARG KUBERNETES_KUBECONFORM_VERSION=v0.6.7-alpine
 # renovate: datasource=docker depName=yoheimuta/protolint
@@ -59,8 +61,7 @@ FROM golang:1-alpine AS revive
 ## The golang image used as a builder is a temporary workaround (https://github.com/mgechev/revive/issues/787)
 ## for the released revive binaries not returning version numbers (devel). 
 ## The install command should then be what is commented in the go.megalinter-descriptor.yml
-# renovate: datasource=github-tags depName=mgechev/revive
-ARG GO_REVIVE_VERSION=v1.5.1
+ARG GO_REVIVE_VERSION
 RUN GOBIN=/usr/bin go install github.com/mgechev/revive@$GO_REVIVE_VERSION
 FROM ghcr.io/yannh/kubeconform:${KUBERNETES_KUBECONFORM_VERSION} AS kubeconform
 FROM ghcr.io/assignuser/chktex-alpine:latest AS chktex
@@ -134,6 +135,8 @@ ARG CSHARP_CSHARPIER_VERSION=0.30.6
 ARG CSHARP_ROSLYNATOR_VERSION=0.9.3
 # renovate: datasource=dart-version depName=dart
 ARG DART_VERSION='3.6.1'
+# renovate: datasource=github-tags depName=golangci/golangci-lint
+ARG GO_GOLANGCI_LINT_VERSION=1.63.4
 # renovate: datasource=github-tags depName=pmd/pmd extractVersion=^pmd_releases/(?<version>.*)$
 ARG PMD_VERSION=7.9.0
 
@@ -654,7 +657,7 @@ ENV PATH="/usr/lib/dart/bin:${PATH}"
 RUN wget -q -O - https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/master/install.sh | sh -s \
 #
 # golangci-lint installation
-    && wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh \
+    && wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s "v${GO_GOLANGCI_LINT_VERSION}" \
     && golangci-lint --version
 
 #
