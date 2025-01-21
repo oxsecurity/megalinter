@@ -21,9 +21,9 @@ linters:
     cli_config_arg_name: "--config"
     cli_lint_mode: list_of_files
     cli_lint_errors_count: regex_count
-    cli_lint_errors_regex: "error"
+    cli_lint_errors_regex: "\\[error\\]"
     cli_lint_warnings_count: regex_count
-    cli_lint_warnings_regex: "warning"
+    cli_lint_warnings_regex: "\\[warn\\]"
     cli_lint_extra_args:
       - "--check"
     cli_lint_fix_arg_name: "--write"
