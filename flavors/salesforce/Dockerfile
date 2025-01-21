@@ -13,7 +13,7 @@
 #############################################################################################
 #ARGTOP__START
 # renovate: datasource=docker depName=rhysd/actionlint
-ARG ACTION_ACTIONLINT_VERSION=1.7.6
+ARG ACTION_ACTIONLINT_VERSION=1.7.7
 # renovate: datasource=docker depName=koalaman/shellcheck
 ARG BASH_SHELLCHECK_VERSION=v0.10.0
 # renovate: datasource=docker depName=rhysd/actionlint
@@ -32,6 +32,8 @@ ARG REPOSITORY_GITLEAKS_VERSION=v8.23.1
 ARG REPOSITORY_TRUFFLEHOG_VERSION=3.88.2
 # renovate: datasource=docker depName=jdkato/vale
 ARG SPELL_VALE_VERSION=v3.9.3
+# renovate: datasource=docker depName=lycheeverse/lychee
+ARG SPELL_LYCHEE_VERSION=sha-a11d515-alpine
 #ARGTOP__END
 
 #############################################################################################
@@ -51,7 +53,7 @@ FROM yoheimuta/protolint:${PROTOBUF_PROTOLINT_VERSION} AS protolint
 FROM zricethezav/gitleaks:${REPOSITORY_GITLEAKS_VERSION} AS gitleaks
 FROM trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION} AS trufflehog
 FROM jdkato/vale:${SPELL_VALE_VERSION} AS vale
-FROM lycheeverse/lychee:latest-alpine AS lychee
+FROM lycheeverse/lychee:${SPELL_LYCHEE_VERSION} AS lychee
 #FROM__END
 
 ##################
@@ -86,7 +88,7 @@ ARG SALESFORCE_CLI_VERSION=2.70.7
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
 ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.9.10
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=5.15.5
+ARG SFDX_HARDIS_VERSION=5.16.2
 # renovate: datasource=github-tags depName=pinterest/ktlint
 ARG KTLINT_VERSION=1.5.0
 
@@ -98,7 +100,7 @@ ARG MARKDOWN_MARKDOWN_LINK_CHECK_VERSION=3.12.2
 # renovate: datasource=npm depName=@salesforce/sfdx-scanner
 ARG SALESFORCE_SFDX_SCANNER_VERSION=4.7.0
 # renovate: datasource=npm depName=lightning-flow-scanner
-ARG LIGHTNING_FLOW_SCANNER_VERSION=2.37.0
+ARG LIGHTNING_FLOW_SCANNER_VERSION=2.38.0
 # renovate: datasource=pypi depName=sqlfluff
 ARG SQL_SQLFLUFF_VERSION=3.3.0
 #ARG__END

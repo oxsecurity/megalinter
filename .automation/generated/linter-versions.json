@@ -1,6 +1,6 @@
 {
-    "actionlint": "1.7.6",
-    "ansible-lint": "24.12.2",
+    "actionlint": "1.7.7",
+    "ansible-lint": "25.1.0",
     "arm-ttk": "0.0.0",
     "bandit": "1.8.2",
     "bash-exec": "5.2.37",
@@ -49,7 +49,7 @@
     "kubeconform": "0.6.7",
     "kubescape": "2.9.0",
     "kubeval": "0.16.1",
-    "lightning-flow-scanner": "2.37.0",
+    "lightning-flow-scanner": "2.38.0",
     "lintr": "0.0.0",
     "ls-lint": "2.2.3",
     "luacheck": "1.2.0",
