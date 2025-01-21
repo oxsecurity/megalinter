@@ -56,15 +56,16 @@ linters:
     linter_rules_inline_disable_url: https://dart.dev/tools/analysis#ignoring-rules
     linter_megalinter_ref_url: "no"
     config_file_name: analysis_options.yaml
-    cli_executable: "dart analyze"
-    cli_executable_version: dart
+    cli_executable: dart
     cli_lint_extra_args:
+      - "analyze"
       - "--fatal-infos"
       - "--fatal-warnings"
-    cli_config_arg_name: "--options"
-    version_extract_regex: "Dart SDK version: (\\d+)\\.(\\d+)\\.(\\d+)"
+    cli_help_extra_args:
+      - "analyze"
+    version_extract_regex: "(?<=Dart SDK version: )(\\d+)\\.(\\d+)\\.(\\d+)"
     examples:
-      - "dartanalyzer --fatal-infos --fatal-warnings myfile.dart"
+      - "dart analyze --fatal-infos --fatal-warnings myfile.dart"
     install:
       ## stable dart sdk: https://dart.dev/get-dart#release-channels
       ## install alpine-pkg-glibc (glibc compatibility layer package for Alpine Linux)
@@ -74,9 +75,11 @@ linters:
           ARG DART_VERSION='3.6.1'
         - |
           RUN wget --tries=5 https://storage.googleapis.com/dart-archive/channels/stable/release/${DART_VERSION}/sdk/dartsdk-linux-x64-release.zip -O - -q | unzip -q - \
-              && chmod +x dart-sdk/bin/dart* \
-              && mv dart-sdk/bin/* /usr/bin/ && mv dart-sdk/lib/* /usr/lib/ && mv dart-sdk/include/* /usr/include/ \
+              && mkdir -p /usr/lib/dart \
+              && mv dart-sdk/* /usr/lib/dart/ \
+              && chmod +x /usr/lib/dart/bin/dart \
               && rm -r dart-sdk/
+        - ENV PATH="/usr/lib/dart/bin:${PATH}"
     ide:
       idea:
         - name: dart-jetbrains-plugin

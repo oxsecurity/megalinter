@@ -19,7 +19,7 @@
     "cpplint": "2.0.0",
     "csharpier": "0.30.6",
     "cspell": "8.17.2",
-    "dartanalyzer": "0.0.0",
+    "dartanalyzer": "3.6.1",
     "detekt": "1.23.7",
     "devskim": "1.0.51",
     "djlint": "1.36.4",
