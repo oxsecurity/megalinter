@@ -852,7 +852,7 @@ class Linter:
             # Lint all workspace in one command
             return_code, stdout = self.process_linter()
             self.stdout = stdout
-            #Count warnings regardaless of return code
+            # Count warnings regardless of return code
             self.total_number_warnings += self.get_total_number_warnings(stdout)
             if return_code != 0:
                 self.status = "warning" if self.disable_errors is True else "error"
@@ -1488,7 +1488,7 @@ class Linter:
                 f"and {str(self.cli_lint_errors_regex)}"
             )
         
-        #If no regex is defined, return 0 errors if there is a success or 1 error if there are any
+        # If no regex is defined, return 0 errors if there is a success or 1 error if there are any
         if self.status == "success":
             return 0
         else:
@@ -1501,17 +1501,17 @@ class Linter:
         # Get number with a single regex.
         if self.cli_lint_warnings_count == "regex_number":
             reg = self.get_regex(self.cli_lint_warnings_regex)
-            m = re.search(reg, stdout)
+            m = re.search(reg, utils.normalize_log_string(stdout))
             if m:
                 total_warnings = int(m.group(1))
         # Count the number of occurrences of a regex corresponding to an error in linter log (parses linter log)
         elif self.cli_lint_warnings_count == "regex_count":
             reg = self.get_regex(self.cli_lint_warnings_regex)
-            total_warnings = len(re.findall(reg, stdout))
+            total_warnings = len(re.findall(reg, utils.normalize_log_string(stdout)))
         # Sum of all numbers found in linter logs with a regex. Found when each file prints out total number of errors
         elif self.cli_lint_warnings_count == "regex_sum":
             reg = self.get_regex(self.cli_lint_warnings_regex)
-            matches = re.findall(reg, stdout)
+            matches = re.findall(reg, utils.normalize_log_string(stdout))
             total_warnings = sum(int(m) for m in matches)
         # Count all lines of the linter log
         elif self.cli_lint_warnings_count == "total_lines":
