@@ -12,6 +12,7 @@ test_folder: golang
 linters:
   # GOLANG CI LINT
   - linter_name: golangci-lint
+    can_output_sarif: true
     linter_url: https://golangci-lint.run/
     linter_repo: https://github.com/golangci/golangci-lint
     linter_rules_url: https://golangci-lint.run/usage/linters/
@@ -22,6 +23,9 @@ linters:
     cli_lint_mode: project
     cli_lint_extra_args:
       - "run"
+    cli_sarif_args:
+      - --out-format
+      - sarif
     cli_lint_fix_arg_name: --fix
     cli_version_arg_name: "version"
     version_extract_regex: "((\\d+(\\.\\d+)+)|(master))"

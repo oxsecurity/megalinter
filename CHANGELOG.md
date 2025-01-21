@@ -12,6 +12,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - PHP Linters use now the `bartlett/sarif-php-converters` first official release 1.0.0 to generate SARIF reports
   - [Upgrade PHP engine from 8.3 to 8.4](https://github.com/oxsecurity/megalinter/issues/4351) and allow Psalm 5.26 to run on this context (by @llaville)
   - Linters can specify in the pre/post commands with a `run_before_linters` / `run_after_linters` parameter whether the command is to be executed before/after the execution of the linters themselves (by @bdovaz in [#4482](https://github.com/oxsecurity/megalinter/pull/4482))
+  - Add sarif output to golangci-lint
 
 - New linters
   - Reactivate clj-style (Clojure formatter) since its bug is fixed
