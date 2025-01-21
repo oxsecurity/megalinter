@@ -25,6 +25,8 @@ ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=v3.1.2
 ARG KUBERNETES_KUBECONFORM_VERSION=v0.6.7-alpine
 # renovate: datasource=docker depName=yoheimuta/protolint
 ARG PROTOBUF_PROTOLINT_VERSION=0.52.0
+# renovate: datasource=github-tags depName=checkmarx/dustilock
+ARG REPOSITORY_DUSTILOCK_VERSION=1.2.0
 # renovate: datasource=docker depName=zricethezav/gitleaks
 ARG REPOSITORY_GITLEAKS_VERSION=v8.23.1
 # renovate: datasource=docker depName=checkmarx/kics
@@ -66,8 +68,7 @@ FROM ghcr.io/yannh/kubeconform:${KUBERNETES_KUBECONFORM_VERSION} AS kubeconform
 FROM ghcr.io/assignuser/chktex-alpine:latest AS chktex
 FROM yoheimuta/protolint:${PROTOBUF_PROTOLINT_VERSION} AS protolint
 FROM golang:alpine AS dustilock
-# renovate: datasource=github-tags depName=checkmarx/dustilock
-ARG REPOSITORY_DUSTILOCK_VERSION=1.2.0
+ARG REPOSITORY_DUSTILOCK_VERSION
 RUN apk add --no-cache git && GOBIN=/usr/bin go install github.com/checkmarx/dustilock@v${REPOSITORY_DUSTILOCK_VERSION}
 FROM zricethezav/gitleaks:${REPOSITORY_GITLEAKS_VERSION} AS gitleaks
 FROM checkmarx/kics:${REPOSITORY_KICS_VERSION} AS kics
