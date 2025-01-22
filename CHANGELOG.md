@@ -222,6 +222,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 4.7.0 to **4.8.0** on 2025-01-22
   - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 4.7.0 to **4.8.0** on 2025-01-22
   - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 4.7.0 to **4.8.0** on 2025-01-22
+  - [checkov](https://www.checkov.io/) from 3.2.353 to **3.2.354** on 2025-01-22
 <!-- linter-versions-end -->
 
 ## [v8.3.0] - 2024-11-23
