@@ -129,7 +129,9 @@ Use "golangci-lint [command] --help" for more information about a command.
 
 - Dockerfile commands :
 ```dockerfile
-RUN wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh \
+# renovate: datasource=github-tags depName=golangci/golangci-lint
+ARG GO_GOLANGCI_LINT_VERSION=1.63.4
+RUN wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s "v${GO_GOLANGCI_LINT_VERSION}" \
     && golangci-lint --version
 
 ```

@@ -90,7 +90,6 @@ sf flow:scan
 ### Help content
 
 ```shell
- ›   Warning: @salesforce/cli update available from 2.70.7 to 2.72.21.
 Find and fix potential bugs in Salesforce flows.
 
 USAGE
@@ -123,9 +122,9 @@ GLOBAL FLAGS
 ```dockerfile
 # Parent descriptor install
 # renovate: datasource=npm depName=@salesforce/cli
-ARG SALESFORCE_CLI_VERSION=2.70.7
+ARG SALESFORCE_CLI_VERSION=2.72.21
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
-ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.9.10
+ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.9.12
 # renovate: datasource=npm depName=sfdx-hardis
 ARG SFDX_HARDIS_VERSION=5.16.2
 ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk

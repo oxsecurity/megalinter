@@ -217,6 +217,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [ansible-lint](https://ansible-lint.readthedocs.io/) from 24.12.2 to **25.1.0** on 2025-01-20
   - [phpstan](https://phpstan.org/) from 2.1.1 to **2.1.2** on 2025-01-21
   - [raku](https://raku.org/) from 2020.10 to **2024.10** on 2025-01-21
+  - [grype](https://github.com/anchore/grype) from 0.79.5 to **0.86.1** on 2025-01-22
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 4.7.0 to **4.8.0** on 2025-01-22
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 4.7.0 to **4.8.0** on 2025-01-22
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 4.7.0 to **4.8.0** on 2025-01-22
 <!-- linter-versions-end -->
 
 ## [v8.3.0] - 2024-11-23
