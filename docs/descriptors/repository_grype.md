@@ -15,7 +15,7 @@ description: How to use grype (configure, ignore files, ignore errors, help & ve
 
 ## grype documentation
 
-- Version in MegaLinter: **0.79.5**
+- Version in MegaLinter: **0.86.1**
 - Visit [Official Web Site](https://github.com/anchore/grype#readme){target=_blank}
 - See [How to configure grype rules](https://github.com/anchore/grype#configuration){target=_blank}
   - If custom `.grype.yaml` config file isn't found, [.grype.yaml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.grype.yaml){target=_blank} will be used
@@ -106,9 +106,11 @@ You can also explicitly specify the scheme to use:
     grype oci-dir:path/to/yourimage              read directly from a path on disk for OCI layout directories (from Skopeo or otherwise)
     grype singularity:path/to/yourimage.sif      read directly from a Singularity Image Format (SIF) container on disk
     grype dir:path/to/yourproject                read directly from a path on disk (any directory)
+    grype file:path/to/yourfile                  read directly from a file on disk
     grype sbom:path/to/syft.json                 read Syft JSON from path on disk
     grype registry:yourrepo/yourimage:tag        pull image directly from a registry (no container runtime required)
-    grype purl:path/to/purl/file                 read a newline separated file of purls from a path on disk
+    grype purl:path/to/purl/file                 read a newline separated file of package URLs from a path on disk
+    grype PURL                                   read a single package PURL directly (e.g. pkg:apk/openssl@3.2.1?distro=alpine-3.20.3)
 
 You can also pipe in Syft JSON directly:
   syft yourimage:tag -o json | grype
@@ -128,7 +130,7 @@ Available Commands:
 Flags:
       --add-cpes-if-none       generate CPEs for packages with no CPE data
       --by-cve                 orient results by CVE instead of the original vulnerability ID when possible
-  -c, --config string          grype configuration file
+  -c, --config stringArray     grype configuration file(s) to use
       --distro string          distro to match against in the format: <distro>:<version>
       --exclude stringArray    exclude paths from being scanned using a glob expression
   -f, --fail-on string         set the return code to 1 if a vulnerability is found with a severity >= the given severity, options=[negligible low medium high critical]
@@ -140,6 +142,7 @@ Flags:
       --only-notfixed          ignore matches for vulnerabilities that are fixed
   -o, --output stringArray     report output formatter, formats=[json table cyclonedx cyclonedx-json sarif template], deprecated formats=[embedded-cyclonedx-vex-json embedded-cyclonedx-vex-xml]
       --platform string        an optional platform specifier for container image sources (e.g. 'linux/arm64', 'linux/arm64/v8', 'arm64', 'linux')
+      --profile stringArray    configuration profiles to use
   -q, --quiet                  suppress all logging output
   -s, --scope string           selection of layers to analyze, options=[squashed all-layers] (default "squashed")
       --show-suppressed        show suppressed/ignored vulnerabilities in the output (only supported with table output format)
@@ -155,6 +158,8 @@ Use "grype [command] --help" for more information about a command.
 
 - Dockerfile commands :
 ```dockerfile
-RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin v0.79.5
+# renovate: datasource=github-tags depName=anchore/grype
+ARG REPOSITORY_GRYPE_VERSION=0.79.5
+RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/refs/tags/v${REPOSITORY_GRYPE_VERSION}/install.sh | sh -s -- -b /usr/local/bin
 ```
 

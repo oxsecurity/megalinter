@@ -91,8 +91,11 @@ Arguments:
 
 - Dockerfile commands :
 ```dockerfile
+# renovate: datasource=github-tags depName=checkmarx/dustilock
+ARG REPOSITORY_DUSTILOCK_VERSION=1.2.0
 FROM golang:alpine AS dustilock
-RUN GOBIN=/usr/bin go install github.com/checkmarx/dustilock@v1.2.0
+ARG REPOSITORY_DUSTILOCK_VERSION
+RUN apk add --no-cache git && GOBIN=/usr/bin go install github.com/checkmarx/dustilock@v${REPOSITORY_DUSTILOCK_VERSION}
 COPY --link --from=dustilock /usr/bin/dustilock /usr/bin/dustilock
 ```
 
