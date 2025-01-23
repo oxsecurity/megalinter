@@ -9,7 +9,7 @@ description: How to use phpcs (configure, ignore files, ignore errors, help & ve
 
 ## phpcs documentation
 
-- Version in MegaLinter: **3.11.2**
+- Version in MegaLinter: **3.11.3**
 - Visit [Official Web Site](https://github.com/PHPCSStandards/PHP_CodeSniffer#readme){target=_blank}
 - See [How to configure phpcs rules](https://github.com/PHPCSStandards/PHP_CodeSniffer/wiki/Advanced-Usage#using-a-default-configuration-file){target=_blank}
   - If custom `phpcs.xml` config file isn't found, [phpcs.xml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/phpcs.xml){target=_blank} will be used

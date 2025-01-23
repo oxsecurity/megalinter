@@ -15,7 +15,7 @@ description: How to use rubocop (configure, ignore files, ignore errors, help & 
 
 ## rubocop documentation
 
-- Version in MegaLinter: **1.70.0**
+- Version in MegaLinter: **1.71.0**
 - Visit [Official Web Site](https://rubocop.org/){target=_blank}
 - See [How to configure rubocop rules](https://docs.rubocop.org/rubocop/0.92/configuration.html){target=_blank}
   - If custom `.ruby-lint.yml` config file isn't found, [.ruby-lint.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.ruby-lint.yml){target=_blank} will be used
@@ -264,6 +264,7 @@ Additional Modes:
         --show-cops [COP1,COP2,...]  Shows the given cops, or all cops by
                                      default, and their configurations for the
                                      current directory.
+                                     You can use `*` as a wildcard.
         --show-docs-url [COP1,COP2,...]
                                      Display url to documentation for the given
                                      cops, or base url by default.
