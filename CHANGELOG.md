@@ -31,6 +31,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Fixes
   - [swiftlint](https://github.com/realm/SwiftLint) Fix swiftlint error where linter is unable to find lintable files. Fixes [#440](https://github.com/oxsecurity/megalinter/issues/440).
+  - [SARIF_REPORTER](https://megalinter.io/latest/reporters/SarifReporter/) Fix PMD SARIF report preview unavailable. Fixes [#4522](https://github.com/oxsecurity/megalinter/issues/4522).
 
 - Reporters
 
