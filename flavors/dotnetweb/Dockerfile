@@ -112,7 +112,7 @@ ARG MARKDOWN_MARKDOWN_LINK_CHECK_VERSION=3.12.2
 ARG PSSA_VERSION='1.23.0'
 
 # renovate: datasource=github-tags depName=anchore/grype
-ARG REPOSITORY_GRYPE_VERSION=0.79.5
+ARG REPOSITORY_GRYPE_VERSION=0.87.0
 # renovate: datasource=github-tags depName=aquasecurity/trivy
 ARG REPOSITORY_TRIVY_VERSION=0.58.2
 # renovate: datasource=github-tags depName=aquasecurity/trivy

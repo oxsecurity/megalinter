@@ -173,7 +173,7 @@ ARG RAKU_RAKU_ALPINE_VERSION=3.20
 # renovate: datasource=nuget depName=Microsoft.CST.DevSkim.CLI
 ARG REPOSITORY_DEVSKIM_VERSION=1.0.51
 # renovate: datasource=github-tags depName=anchore/grype
-ARG REPOSITORY_GRYPE_VERSION=0.79.5
+ARG REPOSITORY_GRYPE_VERSION=0.87.0
 # renovate: datasource=github-tags depName=anchore/syft
 ARG REPOSITORY_SYFT_VERSION=1.19.0
 # renovate: datasource=github-tags depName=aquasecurity/trivy
