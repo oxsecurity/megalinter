@@ -63,6 +63,9 @@ GHSA-xpw8-rcwv-8f8p
 # spectral
 CVE-2024-47068
 
+# terraform
+CVE-2025-0377
+
 # terrascan
 # https://github.com/tenable/terrascan/issues/1674
 CVE-2024-23652
