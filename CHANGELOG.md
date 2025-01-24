@@ -223,6 +223,14 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 4.7.0 to **4.8.0** on 2025-01-22
   - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 4.7.0 to **4.8.0** on 2025-01-22
   - [checkov](https://www.checkov.io/) from 3.2.353 to **3.2.354** on 2025-01-22
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.22.5 to **1.22.7** on 2025-01-23
+  - [phpcs](https://github.com/PHPCSStandards/PHP_CodeSniffer) from 3.11.2 to **3.11.3** on 2025-01-23
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.9.2 to **0.9.3** on 2025-01-23
+  - [ruff](https://github.com/astral-sh/ruff) from 0.9.2 to **0.9.3** on 2025-01-23
+  - [checkov](https://www.checkov.io/) from 3.2.354 to **3.2.357** on 2025-01-23
+  - [grype](https://github.com/anchore/grype) from 0.86.1 to **0.87.0** on 2025-01-23
+  - [syft](https://github.com/anchore/syft) from 1.18.1 to **1.19.0** on 2025-01-23
+  - [rubocop](https://rubocop.org/) from 1.70.0 to **1.71.0** on 2025-01-23
 <!-- linter-versions-end -->
 
 ## [v8.3.0] - 2024-11-23
