@@ -233,6 +233,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [rubocop](https://rubocop.org/) from 1.70.0 to **1.71.0** on 2025-01-23
   - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.43.0 to **0.44.0** on 2025-01-25
   - [vale](https://vale.sh/) from 3.9.3 to **3.9.4** on 2025-01-25
+  - [stylelint](https://stylelint.io) from 16.13.2 to **16.14.0** on 2025-01-25
+  - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.23.1 to **8.23.2** on 2025-01-25
 <!-- linter-versions-end -->
 
 ## [v8.3.0] - 2024-11-23
