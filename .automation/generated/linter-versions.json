@@ -56,7 +56,7 @@
     "lychee": "0.18.0",
     "markdown-link-check": "3.12.2",
     "markdown-table-formatter": "1.6.1",
-    "markdownlint": "0.43.0",
+    "markdownlint": "0.44.0",
     "misspell": "0.3.4",
     "mypy": "1.14.1",
     "npm-groovy-lint": "15.0.2",
@@ -119,7 +119,7 @@
     "ts-standard": "12.0.2",
     "tsqllint": "1.16.0.0",
     "v8r": "4.2.1",
-    "vale": "3.9.3",
+    "vale": "3.9.4",
     "xmllint": "21304",
     "yamllint": "1.35.1"
 }
