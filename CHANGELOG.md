@@ -231,6 +231,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [grype](https://github.com/anchore/grype) from 0.86.1 to **0.87.0** on 2025-01-23
   - [syft](https://github.com/anchore/syft) from 1.18.1 to **1.19.0** on 2025-01-23
   - [rubocop](https://rubocop.org/) from 1.70.0 to **1.71.0** on 2025-01-23
+  - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.43.0 to **0.44.0** on 2025-01-25
+  - [vale](https://vale.sh/) from 3.9.3 to **3.9.4** on 2025-01-25
 <!-- linter-versions-end -->
 
 ## [v8.3.0] - 2024-11-23
