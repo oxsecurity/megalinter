@@ -249,10 +249,14 @@ def test_linter_failure(linter, test_self):
     }
     env_vars_failure.update(linter.test_variables)
     mega_linter, output = call_mega_linter(env_vars_failure)
+
     # Check linter run
     test_self.assertTrue(
         len(mega_linter.linters) > 0, "Linters have been created and run"
     )
+
+    mega_linter_linter = mega_linter.linters[0]
+
     # Check console output
     if linter.cli_lint_mode == "file":
         if len(linter.file_names_regex) > 0 and len(linter.file_extensions) == 0:
@@ -266,7 +270,7 @@ def test_linter_failure(linter, test_self):
             test_self.assertRegex(output, rf"\[{linter_name}\] .*bad.* - ERROR")
             test_self.assertNotRegex(output, rf"\[{linter_name}\] .*bad.* - SUCCESS")
     elif linter.descriptor_id != "SPELL":  # This log doesn't appear in SPELL linters
-        if (linter.status != 'success'):
+        if (mega_linter_linter.status == 'error'):
             test_self.assertRegex(
                 output,
                 rf"Linted \[{linter.descriptor_id}\] files with \[{linter_name}\]: Found [0-9]+ error\(s\) and [0-9]+ warning\(s\)",
@@ -276,9 +280,6 @@ def test_linter_failure(linter, test_self):
                 output,
                 rf"Linted \[{linter.descriptor_id}\] files with \[{linter_name}\]: Found [0-9]+ non blocking error\(s\) and [0-9]+ non blocking warning\(s\)",
             )
-            
-
-    mega_linter_linter = mega_linter.linters[0]
 
     # Check text reporter output log
     if mega_linter_linter.disable_errors is True:
