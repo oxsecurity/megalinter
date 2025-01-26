@@ -12,6 +12,7 @@ from megalinter.constants import (
     ML_DOC_URL_DESCRIPTORS_ROOT,
     ML_REPO,
     ML_REPO_ISSUES_URL,
+    OX_MARKDOWN_LINK,
 )
 from pytablewriter import MarkdownTableWriter
 from redis import Redis
@@ -167,12 +168,7 @@ def build_markdown_summary(reporter_self, action_run_url=""):
             + "(https://www.ox.security/?ref=megalinter)"
         )
     else:
-        p_r_msg += (
-            os.linesep
-            + "_MegaLinter is graciously provided by [![OX Security]"
-            + "(https://www.ox.security/wp-content/uploads/2022/06/"
-            + "logo.svg?ref=megalinter_comment)](https://www.ox.security/?ref=megalinter)_"
-        )
+        p_r_msg += os.linesep + OX_MARKDOWN_LINK
     if config.exists(
         reporter_self.master.request_id, "JOB_SUMMARY_ADDITIONAL_MARKDOWN"
     ):

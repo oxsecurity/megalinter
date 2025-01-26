@@ -9,10 +9,10 @@ description: golangci-lint, revive are available to analyze GO files in MegaLint
 
 ## Linters
 
-| Linter                                                                                 | Additional                                                                                                                                                                                     |
-|----------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [**golangci-lint**](go_golangci_lint.md)<br/>[_GO_GOLANGCI_LINT_](go_golangci_lint.md) | [![GitHub stars](https://img.shields.io/github/stars/golangci/golangci-lint?cacheSeconds=3600)](https://github.com/golangci/golangci-lint) ![autofix](https://shields.io/badge/-autofix-green) |
-| [**revive**](go_revive.md)<br/>[_GO_REVIVE_](go_revive.md)                             | [![GitHub stars](https://img.shields.io/github/stars/mgechev/revive?cacheSeconds=3600)](https://github.com/mgechev/revive) ![sarif](https://shields.io/badge/-SARIF-orange)                    |
+| Linter                                                                                 | Additional                                                                                                                                                                                                                                      |
+|----------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [**golangci-lint**](go_golangci_lint.md)<br/>[_GO_GOLANGCI_LINT_](go_golangci_lint.md) | [![GitHub stars](https://img.shields.io/github/stars/golangci/golangci-lint?cacheSeconds=3600)](https://github.com/golangci/golangci-lint) ![autofix](https://shields.io/badge/-autofix-green) ![sarif](https://shields.io/badge/-SARIF-orange) |
+| [**revive**](go_revive.md)<br/>[_GO_REVIVE_](go_revive.md)                             | [![GitHub stars](https://img.shields.io/github/stars/mgechev/revive?cacheSeconds=3600)](https://github.com/mgechev/revive) ![sarif](https://shields.io/badge/-SARIF-orange)                                                                     |
 
 ## Linted files
 

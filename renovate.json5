@@ -27,7 +27,7 @@
         'ghcr.io/astral-sh/uv',
       ],
       schedule: [
-        'before 4am on Wednesday',
+        'before 4am on Friday',
       ],
     },
     {
@@ -40,6 +40,14 @@
         'patch',
         'minor',
         'major',
+      ],
+    },
+    {
+      matchPackageNames: [
+        'hardisgroupcom/sfdx-hardis',
+      ],
+      schedule: [
+        'before 8am on Friday',
       ],
     },
     {

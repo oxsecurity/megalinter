@@ -103,9 +103,12 @@ linters:
       - "devskim analyze --file-format sarif --options-json config --source-code ."
     install:
       dockerfile:
+        - |-
+          # renovate: datasource=nuget depName=Microsoft.CST.DevSkim.CLI
+          ARG REPOSITORY_DEVSKIM_VERSION=1.0.51
         - RUN apk add --no-cache dotnet9-sdk
         - ENV PATH="${PATH}:/root/.dotnet/tools"
-        - RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI
+        - RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI --version ${REPOSITORY_DEVSKIM_VERSION}
     ide:
       vscode:
         - name: VSCode DevSkim
@@ -134,11 +137,15 @@ linters:
       - "dustilock"
     install:
       dockerfile:
+        - |-
+          # renovate: datasource=github-tags depName=checkmarx/dustilock
+          ARG REPOSITORY_DUSTILOCK_VERSION=1.2.0
         # The golang image used as a builder is a temporary workaround
         # Dustilock is not released as a binary or container
         - |-
           FROM golang:alpine AS dustilock
-          RUN GOBIN=/usr/bin go install github.com/checkmarx/dustilock@v1.2.0
+          ARG REPOSITORY_DUSTILOCK_VERSION
+          RUN apk add --no-cache git && GOBIN=/usr/bin go install github.com/checkmarx/dustilock@v${REPOSITORY_DUSTILOCK_VERSION}
         - COPY --link --from=dustilock /usr/bin/dustilock /usr/bin/dustilock
 
   # GIT_DIFF
@@ -260,7 +267,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=docker depName=zricethezav/gitleaks
-          ARG REPOSITORY_GITLEAKS_VERSION=v8.23.1
+          ARG REPOSITORY_GITLEAKS_VERSION=v8.23.2
         - FROM zricethezav/gitleaks:${REPOSITORY_GITLEAKS_VERSION} AS gitleaks
         - COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
     variables:
@@ -306,7 +313,10 @@ linters:
     downgraded_reason: Crash for failure test class with https://github.com/anchore/grype/releases/tag/v0.79.6
     install:
       dockerfile:
-        - RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin v0.79.5
+        - |-
+          # renovate: datasource=github-tags depName=anchore/grype
+          ARG REPOSITORY_GRYPE_VERSION=0.87.0
+        - RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/refs/tags/v${REPOSITORY_GRYPE_VERSION}/install.sh | sh -s -- -b /usr/local/bin
     test_folder: repository_grype
 
   # KICS
@@ -506,7 +516,10 @@ linters:
       - "syft /tmp/lint"
     install:
       dockerfile:
-        - RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh -s -- -b /usr/local/bin
+        - |-
+          # renovate: datasource=github-tags depName=anchore/syft
+          ARG REPOSITORY_SYFT_VERSION=1.19.0
+        - RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/refs/tags/v${REPOSITORY_SYFT_VERSION}/install.sh | sh -s -- -b /usr/local/bin
 
   # TRIVY
   - linter_name: trivy
@@ -547,8 +560,11 @@ linters:
       - "trivy fs --scanners vuln,misconfig ."
     install:
       dockerfile:
+        - |-
+          # renovate: datasource=github-tags depName=aquasecurity/trivy
+          ARG REPOSITORY_TRIVY_VERSION=0.58.2
         - |
-          RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin \
+          RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin "v${REPOSITORY_TRIVY_VERSION}" \
               && (trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress)
     ide:
       vscode:
@@ -594,8 +610,11 @@ linters:
       - "trivy fs --config trivy-sbom.yaml --format cyclonedx ."
     install:
       dockerfile:
+        - |-
+          # renovate: datasource=github-tags depName=aquasecurity/trivy
+          ARG REPOSITORY_TRIVY_SBOM_VERSION=0.58.2
         - |
-          RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin \
+          RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin "v${REPOSITORY_TRIVY_SBOM_VERSION}" \
               && (trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress)
     ide:
       vscode:
