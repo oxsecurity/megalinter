@@ -52,7 +52,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - CI
   - Fix up gitpod config and workflow to support uv 0.5.0+ by @echoix in #4373
   - Use uv.lock file to build docker images, by @echoix in https://github.com/oxsecurity/megalinter/pull/4374
-  - Update Renovate schedules for uv and sfdx-hardis by @echoix in https://github.com/oxsecurity/megalinter/pull/4568
+  - Update Renovate schedules for uv and sfdx-hardis, by @echoix in https://github.com/oxsecurity/megalinter/pull/4568
   - Variabilize version and use renovate for updates for the following linters:
     - all GO linters
     - all REPOSITORY linters
