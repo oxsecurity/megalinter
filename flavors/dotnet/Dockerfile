@@ -91,7 +91,7 @@ ARG ARM_TTK_VERSION=20240328
 ARG ARM_TTK_NAME='arm-ttk.zip'
 ARG ARM_TTK_DIRECTORY='/opt/microsoft'
 # renovate: datasource=github-tags depName=Azure/bicep
-ARG BICEP_VERSION=0.32.4
+ARG BICEP_VERSION=0.33.13
 ARG BICEP_EXE='bicep'
 ARG BICEP_DIR='/usr/local/bin'
 # renovate: datasource=nuget depName=csharpier
