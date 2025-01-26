@@ -5143,16 +5143,19 @@
 <p>Note: Can be used with <code>oxsecurity/megalinter@beta</code> in your GitHub Action mega-linter.yml file, or with <code>oxsecurity/megalinter:beta</code> docker image</p>
 <ul>
 <li>Core<ul>
-<li>PHP Linters use now the <code>bartlett/sarif-php-converters</code> first official release 1.0.0 to generate SARIF reports</li>
+<li>PHP Linters use now the <code>bartlett/sarif-php-converters</code> first official release 1.0.0 to generate SARIF reports, by @llaville in <a href="https://github.com/oxsecurity/megalinter/pull/4357">https://github.com/oxsecurity/megalinter/pull/4357</a></li>
 <li><a href="https://github.com/oxsecurity/megalinter/issues/4351">Upgrade PHP engine from 8.3 to 8.4</a> and allow Psalm 5.26 to run on this context (by @llaville)</li>
 <li>Linters can specify in the pre/post commands with a <code>run_before_linters</code> / <code>run_after_linters</code> parameter whether the command is to be executed before/after the execution of the linters themselves (by @bdovaz in <a href="https://github.com/oxsecurity/megalinter/pull/4482">#4482</a>)</li>
-<li>Add sarif output to golangci-lint</li>
+<li>Bump python version to 3.12.8, by @echoix in <a href="https://github.com/oxsecurity/megalinter/pull/4372">https://github.com/oxsecurity/megalinter/pull/4372</a></li>
+<li>Update to .NET 9, by @bdovaz in <a href="https://github.com/oxsecurity/megalinter/pull/4488">https://github.com/oxsecurity/megalinter/pull/4488</a></li>
+<li>Upgrade PHP engine from 8.3 to 8.4, by @llaville in <a href="https://github.com/oxsecurity/megalinter/pull/4524">https://github.com/oxsecurity/megalinter/pull/4524</a></li>
 </ul>
 </li>
 </ul>
 <ul>
 <li>New linters<ul>
-<li>Reactivate clj-style (Clojure formatter) since its bug is fixed</li>
+<li>Reactivate clj-style (Clojure formatter) since its bug is fixed, by @nvuillam in <a href="https://github.com/oxsecurity/megalinter/pull/4369">https://github.com/oxsecurity/megalinter/pull/4369</a></li>
+<li>New python formatter: PYTHON_RUFF_FORMAT, by @nvuillam in <a href="https://github.com/oxsecurity/megalinter/pull/4329">https://github.com/oxsecurity/megalinter/pull/4329</a></li>
 </ul>
 </li>
 </ul>
@@ -5167,8 +5170,12 @@
 </ul>
 <ul>
 <li>Linters enhancements<ul>
-<li>Add support to <a href="https://github.com/phpstan/extension-installer">phpstan/extension-installer</a> Composer plugin for automatic installation of PHPStan extensions.
-    Learn more about context on <a href="https://github.com/oxsecurity/megalinter/issues/4328">GH-4328</a></li>
+<li>Add support to <a href="https://github.com/phpstan/extension-installer">phpstan/extension-installer</a> Composer plugin for automatic installation of PHPStan extensions, by @llaville in <a href="https://github.com/oxsecurity/megalinter/pull/4337">https://github.com/oxsecurity/megalinter/pull/4337</a><ul>
+<li>Learn more about context on <a href="https://github.com/oxsecurity/megalinter/issues/4328">GH-4328</a></li>
+</ul>
+</li>
+<li>Allow Terrascan to lint in file lint mode, by @bdovaz in <a href="https://github.com/oxsecurity/megalinter/pull/4498">https://github.com/oxsecurity/megalinter/pull/4498</a></li>
+<li>Add sarif output to golangci-lint, by @bdovaz in <a href="https://github.com/oxsecurity/megalinter/pull/4557">https://github.com/oxsecurity/megalinter/pull/4557</a></li>
 </ul>
 </li>
 </ul>
@@ -5180,7 +5187,10 @@
 </ul>
 <ul>
 <li>Fixes<ul>
-<li><a href="https://github.com/realm/SwiftLint">swiftlint</a> Fix swiftlint error where linter is unable to find lintable files. Fixes <a href="https://github.com/oxsecurity/megalinter/issues/440">#440</a>.</li>
+<li><a href="https://github.com/realm/SwiftLint">swiftlint</a> Fix swiftlint error where linter is unable to find lintable files. Fixes <a href="https://github.com/oxsecurity/megalinter/issues/440">#440</a>, by @Noraldeno in <a href="https://github.com/oxsecurity/megalinter/pull/4427">https://github.com/oxsecurity/megalinter/pull/4427</a></li>
+<li>jscpd url fixes, by @alexanderbazhenoff in <a href="https://github.com/oxsecurity/megalinter/pull/4352">https://github.com/oxsecurity/megalinter/pull/4352</a></li>
+<li>Don't call get_pr_data if GitLeaks linter is not active, by @bdovaz in <a href="https://github.com/oxsecurity/megalinter/pull/4469">https://github.com/oxsecurity/megalinter/pull/4469</a></li>
+<li>Fix linter disabled reason usage, by @bdovaz in <a href="https://github.com/oxsecurity/megalinter/pull/4466">https://github.com/oxsecurity/megalinter/pull/4466</a></li>
 </ul>
 </li>
 </ul>
@@ -5188,7 +5198,12 @@
 <li>Reporters</li>
 </ul>
 <ul>
-<li>Doc</li>
+<li>Doc<ul>
+<li>Add contributing docs on venv, by @bdovaz in <a href="https://github.com/oxsecurity/megalinter/pull/4479">https://github.com/oxsecurity/megalinter/pull/4479</a></li>
+<li>Add disabled linter badge, by @bdovaz in <a href="https://github.com/oxsecurity/megalinter/pull/4477">https://github.com/oxsecurity/megalinter/pull/4477</a></li>
+<li>Add AzureCommentReporter instructions, by @bdovaz in <a href="https://github.com/oxsecurity/megalinter/pull/4480">https://github.com/oxsecurity/megalinter/pull/4480</a></li>
+</ul>
+</li>
 </ul>
 <ul>
 <li>Flavors</li>
@@ -5196,6 +5211,28 @@
 <ul>
 <li>CI<ul>
 <li>Fix up gitpod config and workflow to support uv 0.5.0+ by @echoix in #4373</li>
+<li>Use uv.lock file to build docker images, by @echoix in <a href="https://github.com/oxsecurity/megalinter/pull/4374">https://github.com/oxsecurity/megalinter/pull/4374</a></li>
+<li>Update Renovate schedules for uv and sfdx-hardis, by @echoix in <a href="https://github.com/oxsecurity/megalinter/pull/4568">https://github.com/oxsecurity/megalinter/pull/4568</a></li>
+<li>Variabilize version and use renovate for updates for the following linters:<ul>
+<li>all GO linters</li>
+<li>all REPOSITORY linters</li>
+<li>arm-ttk</li>
+<li>bash-shfmt</li>
+<li>bicep</li>
+<li>clj-kondo</li>
+<li>cljstyle</li>
+<li>csharpier</li>
+<li>dart</li>
+<li>ktlint</li>
+<li>kubescape</li>
+<li>lychee</li>
+<li>luacheck</li>
+<li>markdown-link-check</li>
+<li>perlcritic</li>
+<li>raku</li>
+<li>tsqllint</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -5399,6 +5436,7 @@
 <li><a href="https://github.com/Lightning-Flow-Scanner">lightning-flow-scanner</a> from 2.38.0 to <strong>2.39.0</strong> on 2025-01-26</li>
 <li><a href="https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format">dotnet-format</a> from 9.0.101 to <strong>9.0.102</strong> on 2025-01-26</li>
 <li><a href="https://revive.run/">revive</a> from 1.5.1 to <strong>1.6.0</strong> on 2025-01-26</li>
+<li><a href="https://psalm.dev">psalm</a> from Psalm.5.26.1@ to <strong>Psalm.6.0.0@</strong> on 2025-01-26</li>
 </ul>
 </li>
 </ul>

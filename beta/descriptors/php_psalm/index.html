@@ -3361,7 +3361,7 @@
 <p><a href="https://github.com/vimeo/psalm"><img alt="GitHub stars" src="https://img.shields.io/github/stars/vimeo/psalm?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-SARIF-orange"><img alt="sarif" src="https://shields.io/badge/-SARIF-orange"/></a> <a href="https://github.com/vimeo/psalm/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/vimeo/psalm?sort=semver"/></a> <a href="https://github.com/vimeo/psalm/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/vimeo/psalm"/></a> <a href="https://github.com/vimeo/psalm/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/vimeo/psalm"/></a> <a href="https://github.com/vimeo/psalm/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/vimeo/psalm"/></a></p>
 <h2 id="psalm-documentation">psalm documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>Psalm.5.26.1@</strong></li>
+<li>Version in MegaLinter: <strong>Psalm.6.0.0@</strong></li>
 <li>Visit <a href="https://psalm.dev" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://psalm.dev/docs/running_psalm/configuration/" target="_blank">How to configure psalm rules</a><ul>
 <li>If custom <code>psalm.xml</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/psalm.xml" target="_blank">psalm.xml</a> will be used</li>
@@ -3561,6 +3561,9 @@ Basic configuration:
     --disable-extension=[extension]
         Used to disable certain extensions while Psalm is running.
 
+    --force-jit
+        If set, requires JIT acceleration to be available in order to run Psalm, exiting immediately if it cannot be enabled.
+
     --threads=INT
         If greater than one, Psalm will run analysis on multiple threads, speeding things up.
 
@@ -3601,10 +3604,12 @@ Surfacing issues:
         Output the taint graph using the DOT language – requires --taint-analysis
 
 Issue baselines:
-    --set-baseline=PATH
+    --set-baseline[=PATH]
         Save all current error level issues to a file, to mark them as info in subsequent runs
 
         Add --include-php-versions to also include a list of PHP extension versions
+
+        Default value is `psalm-baseline.xml`
 
     --use-baseline=PATH
         Allows you to use a baseline other than the default baseline provided in your config
