@@ -37,4 +37,4 @@ DEFAULT_DOCKERFILE_APK_PACKAGES = [
     "openssh",
 ]
 
-OX_MARKDOWN_LINK = '[![MegaLinter is graciously provided by OX Security](https://raw.githubusercontent.com/oxsecurity/megalinter/prepare-rel/docs/assets/images/ox-banner.png)](https://www.ox.security/?ref=megalinter)'
+OX_MARKDOWN_LINK = '[![MegaLinter is graciously provided by OX Security](https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/images/ox-banner.png)](https://www.ox.security/?ref=megalinter)'

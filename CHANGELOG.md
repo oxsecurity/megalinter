@@ -14,7 +14,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Linters can specify in the pre/post commands with a `run_before_linters` / `run_after_linters` parameter whether the command is to be executed before/after the execution of the linters themselves (by @bdovaz in [#4482](https://github.com/oxsecurity/megalinter/pull/4482))
   - Bump python version to 3.12.8, by @echoix in https://github.com/oxsecurity/megalinter/pull/4372
   - Update to .NET 9, by @bdovaz in https://github.com/oxsecurity/megalinter/pull/4488
-  - Ugrade PHP engine from 8.3 to 8.4, by @llaville in https://github.com/oxsecurity/megalinter/pull/4524
+  - Upgrade PHP engine from 8.3 to 8.4, by @llaville in https://github.com/oxsecurity/megalinter/pull/4524
 
 - New linters
   - Reactivate clj-style (Clojure formatter) since its bug is fixed, by @nvuillam in https://github.com/oxsecurity/megalinter/pull/4369
@@ -68,7 +68,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - lychee
     - luacheck
     - markdown-link-check
-    - perlcritil
+    - perlcritic
     - raku
     - tsqllint
 
