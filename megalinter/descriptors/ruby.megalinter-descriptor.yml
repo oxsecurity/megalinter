@@ -22,13 +22,32 @@ linters:
       - "rubocop --force-exclusion -c .ruby-lint.yml myfile.rb"
       - "rubocop --force-exclusion --safe-auto-correct -c .ruby-lint.yml myfile.rb"
     install:
+      dockerfile:
+        - |-
+          # renovate: datasource=rubygems depName=rubocop
+          ARG GEM_RUBOCOP_VERSION=1.71.0
+        - |-
+          # renovate: datasource=rubygems depName=rubocop-github
+          ARG GEM_RUBOCOP_GITHUB_VERSION=0.20.0
+        - |-
+          # renovate: datasource=rubygems depName=rubocop-performance
+          ARG GEM_RUBOCOP_PERFORMANCE_VERSION=1.23.1
+        - |-
+          # renovate: datasource=rubygems depName=rubocop-rails
+          ARG GEM_RUBOCOP_RAILS_VERSION=2.29.1
+        - |-
+          # renovate: datasource=rubygems depName=rubocop-rake
+          ARG GEM_RUBOCOP_RAKE_VERSION=0.6.0
+        - |-
+          # renovate: datasource=rubygems depName=rubocop-rspec
+          ARG GEM_RUBOCOP_RSPEC_VERSION=3.4.0
       gem:
-        - rubocop
-        - rubocop-github
-        - rubocop-performance
-        - rubocop-rails
-        - rubocop-rake
-        - rubocop-rspec
+        - rubocop -v ${GEM_RUBOCOP_VERSION}
+        - rubocop-github -v ${GEM_RUBOCOP_GITHUB_VERSION}
+        - rubocop-performance -v ${GEM_RUBOCOP_PERFORMANCE_VERSION}
+        - rubocop-rails -v ${GEM_RUBOCOP_RAILS_VERSION}
+        - rubocop-rake -v ${GEM_RUBOCOP_RAKE_VERSION}
+        - rubocop-rspec -v ${GEM_RUBOCOP_RSPEC_VERSION}
     ide:
       atom:
         - name: linter-rubocop

@@ -9,7 +9,10 @@ file_extensions:
   - ".cs"
 install:
   dockerfile:
-    - RUN apk add --no-cache dotnet9-sdk
+    - |-
+      # renovate: datasource=repology depName=alpine_3_21/dotnet9-sdk
+      ARG APK_DOTNET9_SDK_VERSION=9.0.102-r0
+    - RUN apk add --no-cache dotnet9-sdk=${APK_DOTNET9_SDK_VERSION}
     - ENV PATH="${PATH}:/root/.dotnet/tools"
 linters:
   # DOTNET FORMAT

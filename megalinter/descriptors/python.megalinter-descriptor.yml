@@ -27,9 +27,16 @@ linters:
       - "pylint myfile.py"
       - "pylint --rcfile .python-lint myfile.py"
     install:
+      dockerfile:
+        - |-
+          # renovate: datasource=pypi depName=pylint
+          ARG PIP_PYLINT_VERSION=3.3.3
+        - |-
+          # renovate: datasource=pypi depName=typing-extensions
+          ARG PIP_TYPING_EXTENSIONS_VERSION=4.12.2
       pip:
-        - pylint
-        - typing-extensions
+        - pylint==${PIP_PYLINT_VERSION}
+        - typing-extensions==${PIP_TYPING_EXTENSIONS_VERSION}
     ide:
       eclipse:
         - name: PyLint
@@ -72,8 +79,12 @@ linters:
       - "black --config pyproject.toml --diff --check myfile.py"
       - "black --config pyproject.toml myfile.py" # format
     install:
+      dockerfile:
+        - |-
+          # renovate: datasource=pypi depName=black
+          ARG PIP_BLACK_VERSION=24.10.0
       pip:
-        - black
+        - black==${PIP_BLACK_VERSION}
     ide:
       atom:
         - name: python-black
@@ -112,8 +123,12 @@ linters:
       - "flake8 myfile.py"
       - "flake8 --config .flake8 myfile.py"
     install:
+      dockerfile:
+        - |-
+          # renovate: datasource=pypi depName=flake8
+          ARG PIP_FLAKE8_VERSION=7.1.1
       pip:
-        - flake8
+        - flake8==${PIP_FLAKE8_VERSION}
     ide:
       atom:
         - name: linter-flake8
@@ -154,9 +169,16 @@ linters:
       - "isort --diff --check --profile black --settings-file .isort.cfg myfile.py"
       - "isort --profile black --settings-file .isort.cfg myfile.py"
     install:
+      dockerfile:
+        - |-
+          # renovate: datasource=pypi depName=black
+          ARG PIP_BLACK_VERSION=24.10.0
+        - |-
+          # renovate: datasource=pypi depName=isort
+          ARG PIP_ISORT_VERSION=5.13.2
       pip:
-        - isort
-        - black
+        - black==${PIP_BLACK_VERSION}
+        - isort==${PIP_ISORT_VERSION}
     ide:
       atom:
         - name: atom-python-isort
@@ -210,10 +232,17 @@ linters:
       - "bandit myfile.py"
       - "bandit --configfile .bandit.yml myfile.py"
     install:
+      dockerfile:
+        - |-
+          # renovate: datasource=pypi depName=bandit
+          ARG PIP_BANDIT_VERSION=24.10.0
+        - |-
+          # renovate: datasource=pypi depName=bandit_sarif_formatter
+          ARG PIP_BANDIT_SARIF_FORMATTER_VERSION=1.1.1
       pip:
-        - bandit
-        - bandit_sarif_formatter
-        - bandit[toml]
+        - bandit==${PIP_BANDIT_VERSION}
+        - bandit_sarif_formatter==${PIP_BANDIT_SARIF_FORMATTER_VERSION}
+        - bandit[toml]==${PIP_BANDIT_VERSION}
     ide:
       atom:
         - name: bandit-lint
@@ -255,9 +284,12 @@ linters:
       - "mypy --config-file .mypy.yml myfile.py"
     install:
       dockerfile:
+        - |-
+          # renovate: datasource=pypi depName=mypy
+          ARG PIP_MYPY_VERSION=1.14.1
         - ENV MYPY_CACHE_DIR=/tmp # Avoid mypy cache to mess with other linters
       pip:
-        - mypy
+        - mypy==${PIP_MYPY_VERSION}
     ide:
       atom:
         - name: linter-mypy
@@ -299,8 +331,12 @@ linters:
   #     - "pytype myfile.py myfile2.py"
   #     - "pytype myfile.py"
   #   install:
+  #     dockerfile:
+  #       - |-
+  #         # renovate: datasource=pypi depName=pytype
+  #         ARG PIP_PYTYPE_VERSION=2024.10.11
   #     pip:
-  #       - pytype
+  #       - pytype==${PIP_PYTYPE_VERSION}
   # PyRight
   - class: PyrightLinter
     linter_name: pyright
@@ -327,9 +363,16 @@ linters:
       - "pyright myfile.py"
     install:
       apk:
-        - nodejs
+        - nodejs=${APK_NODEJS_VERSION}
+      dockerfile:
+        - |-
+          # renovate: datasource=repology depName=alpine_3_21/nodejs
+          ARG APK_NODEJS_VERSION=22.11.0-r1
+        - |-
+          # renovate: datasource=pypi depName=pyright
+          ARG PIP_PYRIGHT_VERSION=1.1.392.post0
       pip:
-        - pyright
+        - pyright==${PIP_PYRIGHT_VERSION}
     ide:
       emacs:
         - name: LSP-pyright
@@ -378,8 +421,12 @@ linters:
       - "ruff check myfile.py"
       - "ruff check --config .ruff.toml myfile.py"
     install:
+      dockerfile:
+        - |-
+          # renovate: datasource=pypi depName=ruff
+          ARG PIP_RUFF_VERSION=0.9.3
       pip:
-        - ruff
+        - ruff==${PIP_RUFF_VERSION}
     ide:
       idea:
         - name: Ruff
@@ -423,8 +470,12 @@ linters:
       - "ruff format --check myfile.py myfile2.py"
       - "ruff format --config .ruff.toml myfile.py myfile2.py"
     install:
+      dockerfile:
+        - |-
+          # renovate: datasource=pypi depName=ruff
+          ARG PIP_RUFF_VERSION=0.9.3
       pip:
-        - ruff
+        - ruff==${PIP_RUFF_VERSION}
     ide:
       idea:
         - name: Ruff

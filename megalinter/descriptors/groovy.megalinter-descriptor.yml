@@ -40,11 +40,17 @@ linters:
       - "npm-groovy-lint -c .groovylintrc.json --fix myfile.groovy myfile2.groovy"
     install:
       apk:
-        - openjdk17
+        - openjdk17=${APK_OPENJDK17_VERSION}
       dockerfile:
         - ENV JAVA_HOME_17=/usr/lib/jvm/java-17-openjdk
+        - |-
+          # renovate: datasource=repology depName=alpine_3_21/openjdk17
+          ARG APK_OPENJDK17_VERSION=17.0.13_p11-r0
+        - |-
+          # renovate: datasource=npm depName=npm-groovy-lint
+          ARG NPM_GROOVY_LINT_VERSION=15.0.2
       npm:
-        - npm-groovy-lint
+        - npm-groovy-lint@${NPM_GROOVY_LINT_VERSION}
     ide:
       vscode:
         - name: VSCode Groovy Lint

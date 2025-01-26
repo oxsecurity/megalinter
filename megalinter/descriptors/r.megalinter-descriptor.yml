@@ -20,19 +20,55 @@ linters:
       - 'R --slave -e "errors <- lintr::lint(''myfile.r''); print(errors); quit(save = ''no'', status = if (length(errors) > 0) 1 else 0) "'
     install:
       apk:
-        - gcc
-        - g++
-        - libc-dev
-        - libcurl
-        - libffi-dev
-        - libgcc
-        - libxml2-dev
-        - libxml2-utils
-        - linux-headers
-        - R
-        - R-dev
-        - R-doc
+        - gcc=${APK_GCC_VERSION}
+        - g++=${APK_G_VERSION}
+        - libc-dev=${APK_LIBC_DEV_VERSION}
+        - libcurl=${APK_LIBCURL_VERSION}
+        - libffi-dev=${APK_LBFFI_DEV_VERSION}
+        - libgcc=${APK_LIBGCC_VERSION}
+        - libxml2-dev=${APK_LIBXML2_DEV_VERSION}
+        - libxml2-utils=${APK_LIBXML2_UTILS_VERSION}
+        - linux-headers=${APK_LINUX_HEADERS_VERSION}
+        - R=${APK_R_VERSION}
+        - R-dev=${APK_R_DEV_VERSION}
+        - R-doc=${APK_R_DOC_VERSION}
       dockerfile:
+        - |-
+          # renovate: datasource=repology depName=alpine_3_21/gcc
+          ARG APK_GCC_VERSION=14.2.0-r4
+        - |-
+          # renovate: datasource=repology depName=alpine_3_21/g++
+          ARG APK_G_VERSION=14.2.0-r4
+        - |-
+          # renovate: datasource=repology depName=alpine_3_21/libc-dev
+          ARG APK_LIBC_DEV_VERSION=0.7.2-r5
+        - |-
+          # renovate: datasource=repology depName=alpine_3_21/libcurl
+          ARG APK_LIBCURL_VERSION=8.11.1-r0
+        - |-
+          # renovate: datasource=repology depName=alpine_3_21/libffi-dev
+          ARG APK_LBFFI_DEV_VERSION=3.4.6-r0
+        - |-
+          # renovate: datasource=repology depName=alpine_3_21/libgcc
+          ARG APK_LIBGCC_VERSION=14.2.0-r4
+        - |-
+          # renovate: datasource=repology depName=alpine_3_21/libxml2-dev
+          ARG APK_LIBXML2_DEV_VERSION=2.13.4-r3
+        - |-
+          # renovate: datasource=repology depName=alpine_3_21/libxml2-utils
+          ARG APK_LIBXML2_UTILS_VERSION=2.13.4-r3
+        - |-
+          # renovate: datasource=repology depName=alpine_3_21/linux-headers
+          ARG APK_LINUX_HEADERS_VERSION=6.6-r1
+        - |-
+          # renovate: datasource=repology depName=alpine_3_21/R
+          ARG APK_R_VERSION=4.4.2-r0
+        - |-
+          # renovate: datasource=repology depName=alpine_3_21/R-dev
+          ARG APK_R_DEV_VERSION=4.4.2-r0
+        - |-
+          # renovate: datasource=repology depName=alpine_3_21/R-doc
+          ARG APK_R_DOC_VERSION=4.4.2-r0
         - |
           RUN mkdir -p /home/r-library \
               && cp -r /usr/lib/R/library/ /home/r-library/ \

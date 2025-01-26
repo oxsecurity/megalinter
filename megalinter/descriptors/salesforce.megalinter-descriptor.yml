@@ -6,29 +6,35 @@ lint_all_files: true
 install:
   # Java, because Apex is Java-based, so are related tools like PMD which is embedded in sfdx-scanner
   apk:
-    - coreutils
-    - openjdk21
+    - coreutils=${APK_COREUTILS_VERSION}
+    - openjdk21=${APK_OPENJDK21_VERSION}
   dockerfile:
     - |-
+      # renovate: datasource=repology depName=alpine_3_21/coreutils
+      ARG APK_COREUTILS_VERSION=9.5-r2
+    - |-
+      # renovate: datasource=repology depName=alpine_3_21/openjdk21
+      ARG APK_OPENJDK21_VERSION=21.0.5_p11-r0
+    - |-
       # renovate: datasource=npm depName=@salesforce/cli
-      ARG SALESFORCE_CLI_VERSION=2.72.21
+      ARG NPM_SALESFORCE_CLI_VERSION=2.72.21
     - |-
       # renovate: datasource=npm depName=@salesforce/plugin-packaging
-      ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.9.12
+      ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.9.12
     - |-
       # renovate: datasource=npm depName=sfdx-hardis
       ARG SFDX_HARDIS_VERSION=5.16.4
     - ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
     - ENV PATH="$JAVA_HOME/bin:${PATH}"
     - |-
-      RUN sf plugins install @salesforce/plugin-packaging@${SALESFORCE_PLUGIN_PACKAGING_VERSION} \
+      RUN sf plugins install @salesforce/plugin-packaging@${NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION} \
           && echo y|sf plugins install sfdx-hardis@${SFDX_HARDIS_VERSION} \
           && (npm cache clean --force || true) \
           && rm -rf /root/.npm/_cacache
     - ENV SF_AUTOUPDATE_DISABLE=true SF_CLI_DISABLE_AUTOUPDATE=true
   # Salesforce DX
   npm:
-    - "@salesforce/cli@${SALESFORCE_CLI_VERSION}"
+    - "@salesforce/cli@${NPM_SALESFORCE_CLI_VERSION}"
 linters:
   # SFDX Scanner
   - linter_name: sfdx-scanner-apex

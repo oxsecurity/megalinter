@@ -27,6 +27,7 @@ from bs4 import BeautifulSoup
 from giturlparse import parse
 from megalinter import config, utils
 from megalinter.constants import (
+    DEFAULT_DOCKERFILE_ARGS,
     DEFAULT_DOCKERFILE_APK_PACKAGES,
     DEFAULT_RELEASE,
     DEFAULT_REPORT_FOLDER_NAME,
@@ -279,7 +280,10 @@ branding:
         requires_docker,
         flavor,
         extra_lines,
-        {"cargo": ["sarif-fmt"]},
+        [
+            "# renovate: datasource=crate depName=sarif-fmt\nARG CARGO_SARIF_FMT_VERSION=0.7.0"
+        ],
+        {"cargo": ["sarif-fmt@${CARGO_SARIF_FMT_VERSION}"]},
     )
 
 
@@ -289,13 +293,16 @@ def build_dockerfile(
     requires_docker,
     flavor,
     extra_lines,
+    extra_args=None,
     extra_packages=None,
 ):
     if extra_packages is None:
         extra_packages = {}
     # Gather all dockerfile commands
     docker_from = []
-    docker_arg = []
+    docker_arg = DEFAULT_DOCKERFILE_ARGS.copy()
+    if extra_args is not None:
+        docker_arg += extra_args
     docker_copy = []
     docker_other = []
     all_dockerfile_items = []
@@ -308,7 +315,14 @@ def build_dockerfile(
     is_docker_other_run = False
     # Manage docker
     if requires_docker is True:
-        apk_packages += ["docker", "openrc"]
+        docker_arg += [
+            "# renovate: datasource=repology depName=alpine_3_21/docker\nARG APK_DOCKER_VERSION=27.3.1-r0",
+            "# renovate: datasource=repology depName=alpine_3_21/openrc\nARG APK_OPENRC_VERSION=0.55.1-r2",
+        ]
+        apk_packages += [
+            "docker=${APK_DOCKER_VERSION}",
+            "openrc=${APK_OPENRC_VERSION}"
+        ]
         docker_other += [
             "RUN rc-update add docker boot && (rc-service docker start || true)"
         ]
@@ -421,10 +435,29 @@ def build_dockerfile(
             cargo_packages += item["install"]["cargo"]
     # Add node install if node packages are here
     if len(npm_packages) > 0:
-        apk_packages += ["npm", "nodejs-current", "yarn"]
+        docker_arg += [
+            "# renovate: datasource=repology depName=alpine_3_21/npm\nARG APK_NPM_VERSION=10.9.1-r0",
+            "# renovate: datasource=repology depName=alpine_3_21/nodejs-current\nARG APK_NODEJS_CURRENT_VERSION=23.2.0-r1",
+            "# renovate: datasource=repology depName=alpine_3_21/yarn\nARG APK_YARN_VERSION=1.22.22-r1",
+        ]
+        apk_packages += [
+            "npm=${APK_NPM_VERSION}",
+            "nodejs-current=${APK_NODEJS_CURRENT_VERSION}",
+            "yarn=${APK_YARN_VERSION}"
+        ]
     # Add ruby apk packages if gem packages are here
     if len(gem_packages) > 0:
-        apk_packages += ["ruby", "ruby-dev", "ruby-bundler", "ruby-rdoc"]
+        docker_arg += [
+            "# renovate: datasource=repology depName=alpine_3_21/ruby\nARG APK_RUBY_VERSION=3.3.6-r0",
+            "# renovate: datasource=repology depName=alpine_3_21/ruby-dev\nARG APK_RUBY_DEV_VERSION=3.3.6-r0",
+            "# renovate: datasource=repology depName=alpine_3_21/ruby-bundler\nARG APK_RUBY_BUNDLER_VERSION=2.5.23-r0",
+            "# renovate: datasource=repology depName=alpine_3_21/ruby-rdoc\nARG APK_RUBY_RDOC_VERSION=3.3.6-r0",
+        ]
+        apk_packages += [
+            "ruby=${APK_RUBY_VERSION}",
+            "ruby-dev=${APK_RUBY_DEV_VERSION}",
+            "ruby-bundler=${APK_RUBY_BUNDLER_VERSION}",
+            "ruby-rdoc=${APK_RUBY_RDOC_VERSION}"]
     # Separate args used in FROM instructions from others
     all_from_instructions = "\n".join(list(dict.fromkeys(docker_from)))
     docker_arg_top = []
@@ -500,7 +533,7 @@ def build_dockerfile(
             cargo_packages = [
                 p for p in cargo_packages if p != "COMPILER_ONLY"
             ]  # remove empty string packages
-            cargo_cmd = "cargo install --force --locked " + "  ".join(
+            cargo_cmd = "cargo install --force --locked " + " ".join(
                 list(dict.fromkeys(cargo_packages))
             )
             rust_commands += [cargo_cmd]

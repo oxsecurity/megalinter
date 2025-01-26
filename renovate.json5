@@ -71,6 +71,8 @@
       customType: 'regex',
       description: 'Update dockerfile sections in .megalinter-descriptor.yml files',
       fileMatch: [
+        '(^|/).*\\build.py$',
+        '(^|/).*\\constants.py$',
         '(^|/).*\\.megalinter-descriptor.ya?ml$',
       ],
       matchStrings: [

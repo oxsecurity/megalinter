@@ -24,17 +24,30 @@ DEFAULT_SARIF_SCHEMA_URI = "https://json.schemastore.org/sarif-2.1.0.json"
 DEFAULT_SARIF_VERSION = "2.1.0"
 DEFAULT_RELEASE = "v8"
 
+DEFAULT_DOCKERFILE_ARGS = [
+    "# renovate: datasource=repology depName=alpine_3_21/bash\nARG APK_BASH_VERSION=5.2.37-r0",
+    "# renovate: datasource=repology depName=alpine_3_21/ca-certificates\nARG APK_CA_CERTIFICATES_VERSION=20241121-r1",
+    "# renovate: datasource=repology depName=alpine_3_21/curl\nARG APK_CURL_VERSION=8.11.1-r0",
+    "# renovate: datasource=repology depName=alpine_3_21/gcc\nARG APK_GCC_VERSION=14.2.0-r4",
+    "# renovate: datasource=repology depName=alpine_3_21/git\nARG APK_GIT_VERSION=2.47.2-r0",
+    "# renovate: datasource=repology depName=alpine_3_21/git-lfs\nARG APK_GIT_LFS_VERSION=3.6.0-r0",
+    "# renovate: datasource=repology depName=alpine_3_21/libffi-dev\nARG APK_LIBFFI_DEV_VERSION=3.4.6-r0",
+    "# renovate: datasource=repology depName=alpine_3_21/make\nARG APK_MAKE_VERSION=4.4.1-r2",
+    "# renovate: datasource=repology depName=alpine_3_21/musl-dev\nARG APK_MUSL_DEV_VERSION=1.2.5-r8",
+    "# renovate: datasource=repology depName=alpine_3_21/openssh\nARG APK_OPENSSH_VERSION=9.9_p1-r2",
+]
+
 DEFAULT_DOCKERFILE_APK_PACKAGES = [
-    "bash",
-    "ca-certificates",
-    "curl",
-    "gcc",
-    "git",
-    "git-lfs",
-    "libffi-dev",
-    "make",
-    "musl-dev",
-    "openssh",
+    "bash=${APK_BASH_VERSION}",
+    "ca-certificates=${APK_CA_CERTIFICATES_VERSION}",
+    "curl=${APK_CURL_VERSION}",
+    "gcc=${APK_GCC_VERSION}",
+    "git=${APK_GIT_VERSION}",
+    "git-lfs=${APK_GIT_LFS_VERSION}",
+    "libffi-dev=${APK_LIBFFI_DEV_VERSION}",
+    "make=${APK_MAKE_VERSION}",
+    "musl-dev=${APK_MUSL_DEV_VERSION}",
+    "openssh=${APK_OPENSSH_VERSION}",
 ]
 
 OX_MARKDOWN_LINK = (

@@ -34,8 +34,12 @@ linters:
       - "cspell myfile.any"
       - "cspell -c cspell.json myfile.any"
     install:
+      dockerfile:
+        - |-
+          # renovate: datasource=npm depName=cspell
+          ARG NPM_CSPELL_VERSION=8.17.2
       npm:
-        - "cspell"
+        - "cspell@${NPM_CSPELL_VERSION}"
     ide:
       vscode:
         - name: Code Spell Checker
@@ -67,8 +71,12 @@ linters:
     examples:
       - "proselint --config .proselintrc myfile.md myfile2.txt myfile3.rst"
     install:
+      dockerfile:
+        - |-
+          # renovate: datasource=pypi depName=proselint
+          ARG PIP_PROSELINT_VERSION=0.14.0
       pip:
-        - proselint
+        - proselint==${PIP_PROSELINT_VERSION}
     ide:
       atom:
         - name: linter-proselint

@@ -9,8 +9,11 @@ file_contains_regex:
   - 'schema\.management\.azure\.com'
 install:
   apk:
-    - icu-libs
+    - icu-libs=${APK_ICU_LIBS_VERSION}
   dockerfile:
+    - |-
+      # renovate: datasource=repology depName=alpine_3_21/icu-libs
+      ARG APK_ICU_LIBS_VERSION=74.2-r0
     - |
       # renovate: datasource=github-tags depName=PowerShell/PowerShell
       ARG POWERSHELL_VERSION=7.4.6

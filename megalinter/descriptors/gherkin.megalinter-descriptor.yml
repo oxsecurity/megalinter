@@ -19,5 +19,9 @@ linters:
       - "gherkin-lint myfile.feature"
       - "gherkin-lint -c .gherkin-lintrc myfile.feature"
     install:
+      dockerfile:
+        - |-
+          # renovate: datasource=npm depName=gherkin-lint
+          ARG NPM_GHERKIN_LINT_VERSION=4.2.4
       npm:
-        - gherkin-lint
+        - gherkin-lint@${NPM_GHERKIN_LINT_VERSION}

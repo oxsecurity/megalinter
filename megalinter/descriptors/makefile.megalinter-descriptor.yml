@@ -34,7 +34,10 @@ linters:
       # It may not be a real dependency, like their pandoc mention in the README,
       # that is not included in the docker image they provide.
       apk:
-        - make
+        - make=${APK_MAKE_VERSION}
       dockerfile:
+        - |-
+          # renovate: datasource=repology depName=alpine_3_21/make
+          ARG APK_MAKE_VERSION=4.4.1-r2
         - FROM mrtazz/checkmake:latest AS checkmake
         - COPY --link --from=checkmake /checkmake /usr/bin/checkmake
