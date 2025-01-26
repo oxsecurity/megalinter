@@ -73,7 +73,7 @@
     "prettier": "3.4.2",
     "proselint": "0.14.0",
     "protolint": "0.52.0",
-    "psalm": "Psalm.5.26.1@",
+    "psalm": "Psalm.6.0.0@",
     "puppet-lint": "4.2.4",
     "pylint": "3.3.3",
     "pyright": "1.1.392",

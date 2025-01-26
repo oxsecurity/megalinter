@@ -15,7 +15,7 @@ description: How to use psalm (configure, ignore files, ignore errors, help & ve
 
 ## psalm documentation
 
-- Version in MegaLinter: **Psalm.5.26.1@**
+- Version in MegaLinter: **Psalm.6.0.0@**
 - Visit [Official Web Site](https://psalm.dev){target=_blank}
 - See [How to configure psalm rules](https://psalm.dev/docs/running_psalm/configuration/){target=_blank}
   - If custom `psalm.xml` config file isn't found, [psalm.xml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/psalm.xml){target=_blank} will be used
@@ -116,6 +116,9 @@ Basic configuration:
     --disable-extension=[extension]
         Used to disable certain extensions while Psalm is running.
 
+    --force-jit
+        If set, requires JIT acceleration to be available in order to run Psalm, exiting immediately if it cannot be enabled.
+
     --threads=INT
         If greater than one, Psalm will run analysis on multiple threads, speeding things up.
 
@@ -156,10 +159,12 @@ Surfacing issues:
         Output the taint graph using the DOT language – requires --taint-analysis
 
 Issue baselines:
-    --set-baseline=PATH
+    --set-baseline[=PATH]
         Save all current error level issues to a file, to mark them as info in subsequent runs
 
         Add --include-php-versions to also include a list of PHP extension versions
+
+        Default value is `psalm-baseline.xml`
 
     --use-baseline=PATH
         Allows you to use a baseline other than the default baseline provided in your config
