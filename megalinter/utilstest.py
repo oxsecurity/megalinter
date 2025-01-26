@@ -266,10 +266,17 @@ def test_linter_failure(linter, test_self):
             test_self.assertRegex(output, rf"\[{linter_name}\] .*bad.* - ERROR")
             test_self.assertNotRegex(output, rf"\[{linter_name}\] .*bad.* - SUCCESS")
     elif linter.descriptor_id != "SPELL":  # This log doesn't appear in SPELL linters
-        test_self.assertRegex(
-            output,
-            rf"Linted \[{linter.descriptor_id}\] files with \[{linter_name}\]: Found [0-9]+ error\(s\) and [0-9]+ warning\(s\)",
-        )
+        if (linter.status != 'success'):
+            test_self.assertRegex(
+                output,
+                rf"Linted \[{linter.descriptor_id}\] files with \[{linter_name}\]: Found [0-9]+ error\(s\) and [0-9]+ warning\(s\)",
+            )
+        else:
+            test_self.assertRegex(
+                output,
+                rf"Linted \[{linter.descriptor_id}\] files with \[{linter_name}\]: Found [0-9]+ non blocking error\(s\) and [0-9]+ non blocking warning\(s\)",
+            )
+            
 
     mega_linter_linter = mega_linter.linters[0]
 
