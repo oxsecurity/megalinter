@@ -237,6 +237,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.23.1 to **8.23.2** on 2025-01-25
   - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.32.4 to **0.33.13** on 2025-01-26
   - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 2.38.0 to **2.39.0** on 2025-01-26
+  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 9.0.101 to **9.0.102** on 2025-01-26
+  - [revive](https://revive.run/) from 1.5.1 to **1.6.0** on 2025-01-26
 <!-- linter-versions-end -->
 
 ## [v8.3.0] - 2024-11-23
