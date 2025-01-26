@@ -9,16 +9,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
 - Core
-  - PHP Linters use now the `bartlett/sarif-php-converters` first official release 1.0.0 to generate SARIF reports, by @llaville in https://github.com/oxsecurity/megalinter/pull/4357
+  - PHP Linters use now the `bartlett/sarif-php-converters` first official release 1.0.0 to generate SARIF reports, by @llaville in <https://github.com/oxsecurity/megalinter/pull/4357>
   - [Upgrade PHP engine from 8.3 to 8.4](https://github.com/oxsecurity/megalinter/issues/4351) and allow Psalm 5.26 to run on this context (by @llaville)
   - Linters can specify in the pre/post commands with a `run_before_linters` / `run_after_linters` parameter whether the command is to be executed before/after the execution of the linters themselves (by @bdovaz in [#4482](https://github.com/oxsecurity/megalinter/pull/4482))
-  - Bump python version to 3.12.8, by @echoix in https://github.com/oxsecurity/megalinter/pull/4372
-  - Update to .NET 9, by @bdovaz in https://github.com/oxsecurity/megalinter/pull/4488
-  - Upgrade PHP engine from 8.3 to 8.4, by @llaville in https://github.com/oxsecurity/megalinter/pull/4524
+  - Bump python version to 3.12.8, by @echoix in <https://github.com/oxsecurity/megalinter/pull/4372>
+  - Update to .NET 9, by @bdovaz in <https://github.com/oxsecurity/megalinter/pull/4488>
+  - Upgrade PHP engine from 8.3 to 8.4, by @llaville in <https://github.com/oxsecurity/megalinter/pull/4524>
 
 - New linters
-  - Reactivate clj-style (Clojure formatter) since its bug is fixed, by @nvuillam in https://github.com/oxsecurity/megalinter/pull/4369
-  - New python formatter: PYTHON_RUFF_FORMAT, by @nvuillam in https://github.com/oxsecurity/megalinter/pull/4329
+  - Reactivate clj-style (Clojure formatter) since its bug is fixed, by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/4369>
+  - New python formatter: PYTHON_RUFF_FORMAT, by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/4329>
 
 - Disabled linters
   - Snakemake has been disabled, because its dependency datrie not maintained, and [issue](https://github.com/snakemake/snakemake/issues/2970) open in snakemake repo since july is still pending
@@ -26,33 +26,33 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Media
 
 - Linters enhancements
-  - Add support to [phpstan/extension-installer](https://github.com/phpstan/extension-installer) Composer plugin for automatic installation of PHPStan extensions, by @llaville in https://github.com/oxsecurity/megalinter/pull/4337
+  - Add support to [phpstan/extension-installer](https://github.com/phpstan/extension-installer) Composer plugin for automatic installation of PHPStan extensions, by @llaville in <https://github.com/oxsecurity/megalinter/pull/4337>
     - Learn more about context on [GH-4328](https://github.com/oxsecurity/megalinter/issues/4328)
-  - Allow Terrascan to lint in file lint mode, by @bdovaz in https://github.com/oxsecurity/megalinter/pull/4498
-  - Add sarif output to golangci-lint, by @bdovaz in https://github.com/oxsecurity/megalinter/pull/4557
+  - Allow Terrascan to lint in file lint mode, by @bdovaz in <https://github.com/oxsecurity/megalinter/pull/4498>
+  - Add sarif output to golangci-lint, by @bdovaz in <https://github.com/oxsecurity/megalinter/pull/4557>
 
 - Plugins
   - Add [prettier for markdown](https://github.com/liblaf/megalinter-plugins/tree/main/mega-linter-plugin-markdown-prettier), by [Qin Li](https://github.com/liblaf)
 
 - Fixes
-  - [swiftlint](https://github.com/realm/SwiftLint) Fix swiftlint error where linter is unable to find lintable files. Fixes [#440](https://github.com/oxsecurity/megalinter/issues/440), by @Noraldeno in https://github.com/oxsecurity/megalinter/pull/4427
-  - jscpd url fixes, by @alexanderbazhenoff in https://github.com/oxsecurity/megalinter/pull/4352
-  - Don't call get_pr_data if GitLeaks linter is not active, by @bdovaz in https://github.com/oxsecurity/megalinter/pull/4469
-  - Fix linter disabled reason usage, by @bdovaz in https://github.com/oxsecurity/megalinter/pull/4466
+  - [swiftlint](https://github.com/realm/SwiftLint) Fix swiftlint error where linter is unable to find lintable files. Fixes [#440](https://github.com/oxsecurity/megalinter/issues/440), by @Noraldeno in <https://github.com/oxsecurity/megalinter/pull/4427>
+  - jscpd url fixes, by @alexanderbazhenoff in <https://github.com/oxsecurity/megalinter/pull/4352>
+  - Don't call get_pr_data if GitLeaks linter is not active, by @bdovaz in <https://github.com/oxsecurity/megalinter/pull/4469>
+  - Fix linter disabled reason usage, by @bdovaz in <https://github.com/oxsecurity/megalinter/pull/4466>
 
 - Reporters
 
 - Doc
-  - Add contributing docs on venv, by @bdovaz in https://github.com/oxsecurity/megalinter/pull/4479
-  - Add disabled linter badge, by @bdovaz in https://github.com/oxsecurity/megalinter/pull/4477
-  - Add AzureCommentReporter instructions, by @bdovaz in https://github.com/oxsecurity/megalinter/pull/4480
+  - Add contributing docs on venv, by @bdovaz in <https://github.com/oxsecurity/megalinter/pull/4479>
+  - Add disabled linter badge, by @bdovaz in <https://github.com/oxsecurity/megalinter/pull/4477>
+  - Add AzureCommentReporter instructions, by @bdovaz in <https://github.com/oxsecurity/megalinter/pull/4480>
 
 - Flavors
 
 - CI
   - Fix up gitpod config and workflow to support uv 0.5.0+ by @echoix in #4373
-  - Use uv.lock file to build docker images, by @echoix in https://github.com/oxsecurity/megalinter/pull/4374
-  - Update Renovate schedules for uv and sfdx-hardis, by @echoix in https://github.com/oxsecurity/megalinter/pull/4568
+  - Use uv.lock file to build docker images, by @echoix in <https://github.com/oxsecurity/megalinter/pull/4374>
+  - Update Renovate schedules for uv and sfdx-hardis, by @echoix in <https://github.com/oxsecurity/megalinter/pull/4568>
   - Variabilize version and use renovate for updates for the following linters:
     - all GO linters
     - all REPOSITORY linters

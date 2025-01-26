@@ -157,10 +157,7 @@ def build_markdown_summary(reporter_self, action_run_url=""):
             + "(https://www.ox.security/?ref=megalinter)"
         )
     else:
-        p_r_msg += (
-            os.linesep
-            + OX_MARKDOWN_LINK
-        )
+        p_r_msg += os.linesep + OX_MARKDOWN_LINK
     if config.exists(
         reporter_self.master.request_id, "JOB_SUMMARY_ADDITIONAL_MARKDOWN"
     ):
