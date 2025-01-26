@@ -3,8 +3,6 @@
 Use StyleLint to lint css, scss and saas files
 """
 
-import os
-
 from megalinter import Linter, config
 
 
