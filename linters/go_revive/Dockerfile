@@ -12,7 +12,7 @@
 #############################################################################################
 #ARGTOP__START
 # renovate: datasource=github-tags depName=mgechev/revive
-ARG GO_REVIVE_VERSION=v1.5.1
+ARG GO_REVIVE_VERSION=v1.6.0
 #ARGTOP__END
 
 #############################################################################################
