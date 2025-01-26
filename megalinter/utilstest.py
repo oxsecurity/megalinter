@@ -302,9 +302,20 @@ def test_linter_failure(linter, test_self):
     ):
         test_self.assertTrue(
             mega_linter_linter.total_number_errors > 1,
-            "Unable to count number of errors from logs with count method "
+            "Unable to get number of errors from logs with "
             + f"{mega_linter_linter.cli_lint_errors_count} and "
-            + f"regex {mega_linter_linter.cli_lint_errors_regex}",
+            + f"{mega_linter_linter.cli_lint_errors_regex}",
+        )
+
+    # Check if number of warnings is correctly generated
+    if (
+        mega_linter_linter.cli_lint_warnings_count is not None
+    ):
+        test_self.assertTrue(
+            mega_linter_linter.total_number_warnings > 1,
+            "Unable to get number of warnings from logs with "
+            + f"{mega_linter_linter.cli_lint_warnings_count} and "
+            + f"{mega_linter_linter.cli_lint_warnings_regex}",
         )
 
     # Copy error logs in documentation
