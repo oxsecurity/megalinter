@@ -105,6 +105,7 @@ jobs:
         if: success() || failure()
         with:
           name: MegaLinter reports
+          include-hidden-files: "true"
           path: |
             megalinter-reports
             mega-linter.log
