@@ -86,14 +86,11 @@ class ConsoleReporter(Reporter):
                 )
                 errors = str(linter.total_number_errors)
                 warnings = str(linter.total_number_warnings)
-                if warnings == "0":
-                    warnings = ""
                 if linter.cli_lint_mode == "project":
                     found = "n/a"
                     nb_fixed_cell = "yes" if nb_fixed_cell != "" else nb_fixed_cell
                 else:
                     found = str(len(linter.files))
-
                 table_line = [
                     status + " " + linter.descriptor_id,
                     linter.linter_name,

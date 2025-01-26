@@ -126,7 +126,8 @@ class ConsoleLinterReporter(Reporter):
             file_nm = utils.normalize_log_string(res["file"])
             if self.master.cli_lint_mode == "file":
                 file_errors = str(res.get("errors_number", 0))
-                line = f"[{self.master.linter_name}] {file_nm} - {res['status'].upper()} - {file_errors} error(s)"
+                file_warnings = str(res.get("warnings_number", 0))
+                line = f"[{self.master.linter_name}] {file_nm} - {res['status'].upper()} - {file_errors} error(s) and {file_warnings} warning(s)"
             else:
                 line = f"[{self.master.linter_name}] {file_nm}"
             if res["fixed"] is True:

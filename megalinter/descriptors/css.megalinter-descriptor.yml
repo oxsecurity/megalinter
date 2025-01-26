@@ -9,7 +9,8 @@ file_extensions:
   - ".saas"
 linters:
   # StyleLint
-  - linter_name: stylelint
+  - class: StyleLintLinter
+    linter_name: stylelint
     name: CSS_STYLELINT
     linter_url: https://stylelint.io
     linter_rules_url: https://stylelint.io/user-guide/rules/list

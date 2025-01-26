@@ -901,6 +901,7 @@ class Linter:
                 reporter.produce_report()
             except Exception as e:
                 logging.error("Unable to process reporter " + reporter.name + str(e))
+        
         return self
 
     def replace_vars(self, variables):
@@ -1507,7 +1508,7 @@ class Linter:
 
     # Find number of warnings in linter stdout log
     def get_total_number_warnings(self, stdout: str):
-        total_warnings = 0
+        total_warnings = None
 
         # Get number with a single regex.
         if self.cli_lint_warnings_count == "regex_number":
@@ -1529,16 +1530,14 @@ class Linter:
             total_warnings = sum(
                 not line.isspace() and line != "" for line in stdout.splitlines()
             )
-        # Return result if found, else default value according to status
-        if total_warnings > 0:
-            return total_warnings
-        if self.cli_lint_warnings_count is not None:
+        if self.cli_lint_warnings_count is not None and total_warnings is None:
             logging.warning(
                 f"Unable to get number of warnings with {self.cli_lint_warnings_count} "
                 f"and {str(self.cli_lint_warnings_regex)}"
             )
+            total_warnings = 0
 
-        return 0
+        return total_warnings
 
     # Build the CLI command to get linter version (can be overridden if --version is not the way to get the version)
     def build_version_command(self):
@@ -1563,8 +1562,8 @@ class Linter:
     def complete_text_reporter_report(self, _reporter_self):
         return []
 
-    def pre_test(self):
+    def pre_test(self, test_name):
         pass
 
-    def post_test(self):
+    def post_test(self, test_name):
         pass
