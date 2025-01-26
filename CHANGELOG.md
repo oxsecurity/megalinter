@@ -271,6 +271,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 9.0.101 to **9.0.102** on 2025-01-26
   - [revive](https://revive.run/) from 1.5.1 to **1.6.0** on 2025-01-26
   - [psalm](https://psalm.dev) from Psalm.5.26.1@ to **Psalm.6.0.0@** on 2025-01-26
+  - [checkstyle](https://checkstyle.org/) from 10.21.1 to **10.21.2** on 2025-01-26
 <!-- linter-versions-end -->
 
 ## [v8.3.0] - 2024-11-23

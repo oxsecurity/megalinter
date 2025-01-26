@@ -86,7 +86,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: MegaLinter reports
-          include-hidden-files: "true"
           path: |
             megalinter-reports
             mega-linter.log
