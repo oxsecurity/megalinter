@@ -116,8 +116,6 @@ linters:
       - "{{SARIF_OUTPUT_FILE}}"
     cli_lint_errors_count: regex_sum
     cli_lint_errors_regex: "✖ ([0-9]+) problem"
-    cli_lint_warnings_count: regex_number
-    cli_lint_warnings_regex: "([0-9]+) warnings"
     cli_executable_version: "npm"
     cli_version_arg_name: ""
     cli_version_extra_args: ["list", "eslint-plugin-jsonc", "--prefix", "/node-deps"]

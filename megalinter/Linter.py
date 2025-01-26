@@ -1535,6 +1535,8 @@ class Linter:
                 f"Unable to get number of warnings with {self.cli_lint_warnings_count} "
                 f"and {str(self.cli_lint_warnings_regex)}"
             )
+
+        if total_warnings is None:
             total_warnings = 0
 
         return total_warnings

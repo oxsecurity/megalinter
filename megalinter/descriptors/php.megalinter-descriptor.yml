@@ -43,7 +43,9 @@ linters:
     cli_sarif_args:
       - "--report=\\Bartlett\\Sarif\\Converter\\Reporter\\PhpCsReport"
     cli_lint_errors_count: regex_number
-    cli_lint_errors_regex: "FOUND ([0-9]+) ERRORS"
+    cli_lint_errors_regex: "FOUND ([0-9]+) ERRORS?"
+    cli_lint_warnings_count: regex_number
+    cli_lint_warnings_regex: "AND ([0-9]+) WARNINGS?"
     examples:
       - "phpcs myfile.php"
       - "phpcs --standard=phpcs.xml myfile.php"

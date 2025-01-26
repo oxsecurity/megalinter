@@ -268,7 +268,7 @@ def test_linter_failure(linter, test_self):
     elif linter.descriptor_id != "SPELL":  # This log doesn't appear in SPELL linters
         test_self.assertRegex(
             output,
-            rf"Linted \[{linter.descriptor_id}\] files with \[{linter_name}\]: Found \d+ error\(s\) and \d+ warning\(s\)",
+            rf"Linted \[{linter.descriptor_id}\] files with \[{linter_name}\]: Found [0-9]+ error\(s\) and [0-9]+ warning\(s\)",
         )
 
     mega_linter_linter = mega_linter.linters[0]
