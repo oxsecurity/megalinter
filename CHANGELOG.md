@@ -32,6 +32,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Linter versions upgrades (N)
   - [checkstyle](https://checkstyle.org/) from 10.21.1 to **10.21.2** on 2025-01-26
+  - [stylelint](https://stylelint.io) from 16.14.0 to **16.14.1** on 2025-01-27
 <!-- linter-versions-end -->
 
 ## [v8.4.1] - 2024-01-??
