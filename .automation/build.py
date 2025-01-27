@@ -37,6 +37,7 @@ from megalinter.constants import (
     DEFAULT_DOCKERFILE_GEM_APK_PACKAGES,
     DEFAULT_DOCKERFILE_PIP_ARGS,
     DEFAULT_DOCKERFILE_PIPENV_ARGS,
+    DEFAULT_DOCKERFILE_RUST_ARGS,
     DEFAULT_DOCKERFILE_FLAVOR_ARGS,
     DEFAULT_DOCKERFILE_FLAVOR_CARGO_PACKAGES,
     DEFAULT_RELEASE,
@@ -447,6 +448,8 @@ def build_dockerfile(
         docker_arg += DEFAULT_DOCKERFILE_PIP_ARGS.copy()
     if len(pipvenv_packages) > 0:
         docker_arg += DEFAULT_DOCKERFILE_PIPENV_ARGS.copy()
+    if len(cargo_packages) > 0:
+        docker_arg += DEFAULT_DOCKERFILE_RUST_ARGS.copy()
     # Separate args used in FROM instructions from others
     all_from_instructions = "\n".join(list(dict.fromkeys(docker_from)))
     docker_arg_top = []
@@ -538,7 +541,7 @@ def build_dockerfile(
         rustup_cargo_cmd = " && ".join(rust_commands)
         cargo_install_command = (
             "RUN curl https://sh.rustup.rs -sSf |"
-            + " sh -s -- -y --profile minimal --default-toolchain stable \\\n"
+            + " sh -s -- -y --profile minimal --default-toolchain ${RUST_RUST_VERSION} \\\n"
             + '    && export PATH="/root/.cargo/bin:${PATH}" \\\n'
             + f"    && {rustup_cargo_cmd} \\\n"
             + "    && rm -rf /root/.cargo/registry /root/.cargo/git "

@@ -69,7 +69,7 @@ ARG APK_MUSL_DEV_VERSION=1.2.5-r8
 # renovate: datasource=repology depName=alpine_3_21/openssh
 ARG APK_OPENSSH_VERSION=9.9_p1-r2
 # renovate: datasource=repology depName=alpine_3_21/readline-dev
-ARG APK_READLINE_DEV_VERSION=	8.2.13-r0
+ARG APK_READLINE_DEV_VERSION=8.2.13-r0
 # renovate: datasource=repology depName=alpine_3_21/openssl
 ARG APK_OPENSSL_VERSION=3.3.2-r4
 # renovate: datasource=github-tags depName=cvega/luarocks

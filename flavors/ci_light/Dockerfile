@@ -112,8 +112,6 @@ ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=9.0.0
 ARG REPOSITORY_TRIVY_VERSION=0.58.2
 # renovate: datasource=github-tags depName=aquasecurity/trivy
 ARG REPOSITORY_TRIVY_SBOM_VERSION=0.58.2
-# renovate: datasource=repology depName=alpine_3_21/libc-dev
-ARG APK_LIBC_DEV_VERSION=0.7.2-r5
 # renovate: datasource=repology depName=alpine_3_21/libgcc
 ARG APK_LIBGCC_VERSION=14.2.0-r4
 # renovate: datasource=repology depName=alpine_3_21/libxml2-dev
@@ -132,6 +130,8 @@ ARG APK_YARN_VERSION=1.22.22-r1
 ARG PIP_PIP_VERSION=25.0
 # renovate: datasource=pypi depName=virtualenv
 ARG PIP_VIRTUALENV_VERSION=20.29.1
+# renovate: datasource=github-tags depName=rust-lang/rust
+ARG RUST_RUST_VERSION=1.84.0
 
 ARG BASH_SHELLCHECK_VERSION
 ARG BASH_SHFMT_VERSION
@@ -162,7 +162,6 @@ RUN apk add --no-cache \
                 musl-dev=${APK_MUSL_DEV_VERSION} \
                 openssh=${APK_OPENSSH_VERSION} \
                 openjdk17=${APK_OPENJDK17_VERSION} \
-                libc-dev=${APK_LIBC_DEV_VERSION} \
                 libxml2-dev=${APK_LIBXML2_DEV_VERSION} \
                 libxml2-utils=${APK_LIBXML2_UTILS_VERSION} \
                 libgcc=${APK_LIBGCC_VERSION} \
@@ -189,7 +188,7 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin || true && \
 #############################################################################################
 
 #CARGO__START
-RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --profile minimal --default-toolchain stable \
+RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --profile minimal --default-toolchain ${RUST_RUST_VERSION} \
     && export PATH="/root/.cargo/bin:${PATH}" \
     && cargo install --force --locked sarif-fmt@${CARGO_SARIF_FMT_VERSION} shellcheck-sarif@${CARGO_SHELLCHECK_SARIF_VERSION} \
     && rm -rf /root/.cargo/registry /root/.cargo/git /root/.cache/sccache /root/.rustup

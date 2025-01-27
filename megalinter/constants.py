@@ -94,6 +94,10 @@ DEFAULT_DOCKERFILE_PIPENV_ARGS = [
     "# renovate: datasource=pypi depName=virtualenv\nARG PIP_VIRTUALENV_VERSION=20.29.1",
 ]
 
+DEFAULT_DOCKERFILE_RUST_ARGS = [
+    "# renovate: datasource=github-tags depName=rust-lang/rust\nARG RUST_RUST_VERSION=1.84.0",
+]
+
 DEFAULT_DOCKERFILE_FLAVOR_ARGS = [
     "# renovate: datasource=crate depName=sarif-fmt\nARG CARGO_SARIF_FMT_VERSION=0.7.0",
 ]

@@ -71,6 +71,8 @@ ARG APK_MUSL_DEV_VERSION=1.2.5-r8
 ARG APK_OPENSSH_VERSION=9.9_p1-r2
 # renovate: datasource=crate depName=shellcheck-sarif
 ARG CARGO_SHELLCHECK_SARIF_VERSION=0.7.0
+# renovate: datasource=github-tags depName=rust-lang/rust
+ARG RUST_RUST_VERSION=1.84.0
 
 ARG BASH_SHELLCHECK_VERSION
 #ARG__END
@@ -116,7 +118,7 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin || true && \
 #############################################################################################
 
 #CARGO__START
-RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --profile minimal --default-toolchain stable \
+RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --profile minimal --default-toolchain ${RUST_RUST_VERSION} \
     && export PATH="/root/.cargo/bin:${PATH}" \
     && cargo install --force --locked shellcheck-sarif@${CARGO_SHELLCHECK_SARIF_VERSION} \
     && rm -rf /root/.cargo/registry /root/.cargo/git /root/.cache/sccache /root/.rustup

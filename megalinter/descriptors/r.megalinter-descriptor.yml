@@ -22,7 +22,6 @@ linters:
       apk:
         - gcc=${APK_GCC_VERSION}
         - g++=${APK_G_VERSION}
-        - libc-dev=${APK_LIBC_DEV_VERSION}
         - libcurl=${APK_LIBCURL_VERSION}
         - libffi-dev=${APK_LBFFI_DEV_VERSION}
         - libgcc=${APK_LIBGCC_VERSION}
@@ -39,9 +38,6 @@ linters:
         - |-
           # renovate: datasource=repology depName=alpine_3_21/g++
           ARG APK_G_VERSION=14.2.0-r4
-        - |-
-          # renovate: datasource=repology depName=alpine_3_21/libc-dev
-          ARG APK_LIBC_DEV_VERSION=0.7.2-r5
         - |-
           # renovate: datasource=repology depName=alpine_3_21/libcurl
           ARG APK_LIBCURL_VERSION=8.11.1-r0

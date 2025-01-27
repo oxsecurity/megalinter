@@ -8,7 +8,7 @@ install:
   dockerfile:
     - |-
       # renovate: datasource=repology depName=alpine_3_21/readline-dev
-      ARG APK_READLINE_DEV_VERSION=	8.2.13-r0
+      ARG APK_READLINE_DEV_VERSION=8.2.13-r0
     - |
       RUN wget --tries=5 https://www.lua.org/ftp/lua-5.3.5.tar.gz -O - -q | tar -xzf - \
           && cd lua-5.3.5 \

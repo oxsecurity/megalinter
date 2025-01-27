@@ -70,8 +70,6 @@ ARG APK_MUSL_DEV_VERSION=1.2.5-r8
 ARG APK_OPENSSH_VERSION=9.9_p1-r2
 # renovate: datasource=repology depName=alpine_3_21/gcompat
 ARG APK_GCOMPAT_VERSION=1.1.0-r4
-# renovate: datasource=repology depName=alpine_3_21/libc6-compat
-ARG APK_LIBC6_COMPAT_VERSION=1.2.2-r9
 # renovate: datasource=repology depName=alpine_3_21/libstdc++
 ARG APK_LIBSTDC_VERSION=14.2.0-r4
 # renovate: datasource=github-tags depName=kubescape/kubescape
@@ -100,7 +98,6 @@ RUN apk add --no-cache \
                 musl-dev=${APK_MUSL_DEV_VERSION} \
                 openssh=${APK_OPENSSH_VERSION} \
                 gcompat=${APK_GCOMPAT_VERSION} \
-                libc6-compat=${APK_LIBC6_COMPAT_VERSION} \
                 libstdc++=${APK_LIBSTDC_VERSION} \
     && git config --global core.autocrlf true
 #APK__END

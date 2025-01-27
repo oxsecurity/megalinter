@@ -48,11 +48,7 @@ linters:
         - |-
           # renovate: datasource=pypi depName=checkov
           ARG PIP_CHECKOV_VERSION=3.2.357
-        - |-
-          # renovate: datasource=pypi depName=packaging
-          ARG PIP_PACKAGING_VERSION=24.2
       pip:
-        - packaging==${PIP_PACKAGING_VERSION}
         - checkov==${PIP_CHECKOV_VERSION}
     ide:
       vscode:

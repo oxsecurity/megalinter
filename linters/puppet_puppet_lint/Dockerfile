@@ -163,7 +163,7 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #GEM__START
 RUN echo 'gem: --no-document' >> ~/.gemrc && \
     gem install \
-          puppet-lint -v ${GEM_PUPPET_LINT_VERSION}
+          puppet-lint:${GEM_PUPPET_LINT_VERSION}
 #GEM__END
 
 ##############################

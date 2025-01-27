@@ -117,6 +117,8 @@ ARG APK_YARN_VERSION=1.22.22-r1
 ARG PIP_PIP_VERSION=25.0
 # renovate: datasource=pypi depName=virtualenv
 ARG PIP_VIRTUALENV_VERSION=20.29.1
+# renovate: datasource=github-tags depName=rust-lang/rust
+ARG RUST_RUST_VERSION=1.84.0
 
 ARG BASH_SHFMT_VERSION
 ARG TERRAFORM_TERRAGRUNT_VERSION
@@ -167,7 +169,7 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin || true && \
 #############################################################################################
 
 #CARGO__START
-RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --profile minimal --default-toolchain stable \
+RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --profile minimal --default-toolchain ${RUST_RUST_VERSION} \
     && export PATH="/root/.cargo/bin:${PATH}" \
     && cargo install --force --locked sarif-fmt@${CARGO_SARIF_FMT_VERSION} \
     && rm -rf /root/.cargo/registry /root/.cargo/git /root/.cache/sccache /root/.rustup
@@ -206,7 +208,7 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 typescript@${NPM_TYPESCRIPT_VERSION} \
                 prettier@${NPM_PRETTIER_VERSION} \
                 markdownlint-cli@${NPM_MARKDOWNLINT_CLI_VERSION} \
-                markdown-table-formatter@{NPM_MARKDOWN_TABLE_FORMATTER_VERSION} && \
+                markdown-table-formatter@${NPM_MARKDOWN_TABLE_FORMATTER_VERSION} && \
     echo "Cleaning npm cache…" \
     && (npm cache clean --force || true) \
     && echo "Changing owner of node_modules files…" \

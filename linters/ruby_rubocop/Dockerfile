@@ -173,12 +173,12 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #GEM__START
 RUN echo 'gem: --no-document' >> ~/.gemrc && \
     gem install \
-          rubocop -v ${GEM_RUBOCOP_VERSION} \
-          rubocop-github -v ${GEM_RUBOCOP_GITHUB_VERSION} \
-          rubocop-performance -v ${GEM_RUBOCOP_PERFORMANCE_VERSION} \
-          rubocop-rails -v ${GEM_RUBOCOP_RAILS_VERSION} \
-          rubocop-rake -v ${GEM_RUBOCOP_RAKE_VERSION} \
-          rubocop-rspec -v ${GEM_RUBOCOP_RSPEC_VERSION}
+          rubocop:${GEM_RUBOCOP_VERSION} \
+          rubocop-github:${GEM_RUBOCOP_GITHUB_VERSION} \
+          rubocop-performance:${GEM_RUBOCOP_PERFORMANCE_VERSION} \
+          rubocop-rails:${GEM_RUBOCOP_RAILS_VERSION} \
+          rubocop-rake:${GEM_RUBOCOP_RAKE_VERSION} \
+          rubocop-rspec:${GEM_RUBOCOP_RSPEC_VERSION}
 #GEM__END
 
 ##############################

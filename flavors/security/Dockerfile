@@ -112,20 +112,16 @@ ARG PIP_CFN_LINT_VERSION=1.22.7
 ARG APK_HELM_VERSION=3.16.3-r0
 # renovate: datasource=repology depName=alpine_3_21/gcompat
 ARG APK_GCOMPAT_VERSION=1.1.0-r4
-# renovate: datasource=repology depName=alpine_3_21/libc6-compat
-ARG APK_LIBC6_COMPAT_VERSION=1.2.2-r9
 # renovate: datasource=repology depName=alpine_3_21/libstdc++
 ARG APK_LIBSTDC_VERSION=14.2.0-r4
 # renovate: datasource=github-tags depName=kubescape/kubescape
 ARG KUBERNETES_KUBESCAPE_VERSION=2.9.0
 # renovate: datasource=pypi depName=bandit
-ARG PIP_BANDIT_VERSION=24.10.0
+ARG PIP_BANDIT_VERSION=1.8.2
 # renovate: datasource=pypi depName=bandit_sarif_formatter
 ARG PIP_BANDIT_SARIF_FORMATTER_VERSION=1.1.1
 # renovate: datasource=pypi depName=checkov
 ARG PIP_CHECKOV_VERSION=3.2.357
-# renovate: datasource=pypi depName=packaging
-ARG PIP_PACKAGING_VERSION=24.2
 # renovate: datasource=repology depName=alpine_3_21/dotnet9-sdk
 ARG APK_DOTNET9_SDK_VERSION=9.0.102-r0
 # renovate: datasource=nuget depName=Microsoft.CST.DevSkim.CLI
@@ -156,6 +152,8 @@ ARG APK_YARN_VERSION=1.22.22-r1
 ARG PIP_PIP_VERSION=25.0
 # renovate: datasource=pypi depName=virtualenv
 ARG PIP_VIRTUALENV_VERSION=20.29.1
+# renovate: datasource=github-tags depName=rust-lang/rust
+ARG RUST_RUST_VERSION=1.84.0
 
 ARG APK_GIT_VERSION
 ARG BASH_SHELLCHECK_VERSION
@@ -193,7 +191,6 @@ RUN apk add --no-cache \
                 openssh=${APK_OPENSSH_VERSION} \
                 helm=${APK_HELM_VERSION} \
                 gcompat=${APK_GCOMPAT_VERSION} \
-                libc6-compat=${APK_LIBC6_COMPAT_VERSION} \
                 libstdc++=${APK_LIBSTDC_VERSION} \
                 npm=${APK_NPM_VERSION} \
                 nodejs-current=${APK_NODEJS_CURRENT_VERSION} \
@@ -218,7 +215,7 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin || true && \
 #############################################################################################
 
 #CARGO__START
-RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --profile minimal --default-toolchain stable \
+RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --profile minimal --default-toolchain ${RUST_RUST_VERSION} \
     && export PATH="/root/.cargo/bin:${PATH}" \
     && cargo install --force --locked sarif-fmt@${CARGO_SARIF_FMT_VERSION} shellcheck-sarif@${CARGO_SHELLCHECK_SARIF_VERSION} \
     && rm -rf /root/.cargo/registry /root/.cargo/git /root/.cache/sccache /root/.rustup
@@ -236,7 +233,7 @@ RUN PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir pip==${PIP_PIP_VERSION
     && mkdir -p "/venvs/ansible-lint" && cd "/venvs/ansible-lint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir ansible-lint==${PIP_ANSIBLE_LINT_VERSION} && deactivate && cd ./../.. \
     && mkdir -p "/venvs/cfn-lint" && cd "/venvs/cfn-lint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir cfn-lint[sarif]==${PIP_CFN_LINT_VERSION} && deactivate && cd ./../.. \
     && mkdir -p "/venvs/bandit" && cd "/venvs/bandit" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir bandit==${PIP_BANDIT_VERSION} bandit_sarif_formatter==${PIP_BANDIT_SARIF_FORMATTER_VERSION} bandit[toml]==${PIP_BANDIT_VERSION} && deactivate && cd ./../.. \
-    && mkdir -p "/venvs/checkov" && cd "/venvs/checkov" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir packaging==${PIP_PACKAGING_VERSION} checkov==${PIP_CHECKOV_VERSION} && deactivate && cd ./../.. \
+    && mkdir -p "/venvs/checkov" && cd "/venvs/checkov" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir checkov==${PIP_CHECKOV_VERSION} && deactivate && cd ./../.. \
     && mkdir -p "/venvs/semgrep" && cd "/venvs/semgrep" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir semgrep==${PIP_SEMGREP_VERSION} && deactivate && cd ./../..  \
     && find /venvs \( -type f \( -iname \*.pyc -o -iname \*.pyo \) -o -type d -iname __pycache__ \) -delete \
     && rm -rf /root/.cache

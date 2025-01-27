@@ -69,9 +69,11 @@ ARG APK_MUSL_DEV_VERSION=1.2.5-r8
 # renovate: datasource=repology depName=alpine_3_21/openssh
 ARG APK_OPENSSH_VERSION=9.9_p1-r2
 # renovate: datasource=repology depName=alpine_3_21/readline-dev
-ARG APK_READLINE_DEV_VERSION=	8.2.13-r0
+ARG APK_READLINE_DEV_VERSION=8.2.13-r0
 # renovate: datasource=crate depName=stylua
 ARG CARGO_STYLUA_VERSION=2.0.0
+# renovate: datasource=github-tags depName=rust-lang/rust
+ARG RUST_RUST_VERSION=1.84.0
 #ARG__END
 
 ####################
@@ -116,7 +118,7 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin || true && \
 #############################################################################################
 
 #CARGO__START
-RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --profile minimal --default-toolchain stable \
+RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --profile minimal --default-toolchain ${RUST_RUST_VERSION} \
     && export PATH="/root/.cargo/bin:${PATH}" \
     && cargo install --force --locked stylua@${CARGO_STYLUA_VERSION} \
     && rm -rf /root/.cargo/registry /root/.cargo/git /root/.cache/sccache /root/.rustup

@@ -69,7 +69,7 @@ ARG APK_MUSL_DEV_VERSION=1.2.5-r8
 # renovate: datasource=repology depName=alpine_3_21/openssh
 ARG APK_OPENSSH_VERSION=9.9_p1-r2
 # renovate: datasource=pypi depName=bandit
-ARG PIP_BANDIT_VERSION=24.10.0
+ARG PIP_BANDIT_VERSION=1.8.2
 # renovate: datasource=pypi depName=bandit_sarif_formatter
 ARG PIP_BANDIT_SARIF_FORMATTER_VERSION=1.1.1
 # renovate: datasource=pypi depName=pip

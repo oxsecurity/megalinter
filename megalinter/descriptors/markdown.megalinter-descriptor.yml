@@ -159,7 +159,7 @@ linters:
           # renovate: datasource=npm depName=markdown-table-formatter
           ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.6.1
       npm:
-        - markdown-table-formatter@{NPM_MARKDOWN_TABLE_FORMATTER_VERSION}
+        - markdown-table-formatter@${NPM_MARKDOWN_TABLE_FORMATTER_VERSION}
     ide:
       vscode:
         - name: Markdown Table Prettify Extension

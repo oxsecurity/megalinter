@@ -151,7 +151,7 @@ ARG APK_GO_VERSION=1.23.5-r0
 # renovate: datasource=repology depName=alpine_3_21/openjdk21
 ARG APK_OPENJDK21_VERSION=21.0.5_p11-r0
 # renovate: datasource=repology depName=alpine_3_21/readline-dev
-ARG APK_READLINE_DEV_VERSION=	8.2.13-r0
+ARG APK_READLINE_DEV_VERSION=8.2.13-r0
 # renovate: datasource=repology depName=alpine_3_21/perl
 ARG APK_PERL_VERSION=5.40.1-r0
 # renovate: datasource=repology depName=alpine_3_21/perl-dev
@@ -310,8 +310,6 @@ ARG DETEKT_VERSION=1.23.7
 ARG APK_HELM_VERSION=3.16.3-r0
 # renovate: datasource=repology depName=alpine_3_21/gcompat
 ARG APK_GCOMPAT_VERSION=1.1.0-r4
-# renovate: datasource=repology depName=alpine_3_21/libc6-compat
-ARG APK_LIBC6_COMPAT_VERSION=1.2.2-r9
 # renovate: datasource=repology depName=alpine_3_21/libstdc++
 ARG APK_LIBSTDC_VERSION=14.2.0-r4
 # renovate: datasource=github-tags depName=kubescape/kubescape
@@ -350,7 +348,7 @@ ARG PIP_FLAKE8_VERSION=7.1.1
 # renovate: datasource=pypi depName=isort
 ARG PIP_ISORT_VERSION=5.13.2
 # renovate: datasource=pypi depName=bandit
-ARG PIP_BANDIT_VERSION=24.10.0
+ARG PIP_BANDIT_VERSION=1.8.2
 # renovate: datasource=pypi depName=bandit_sarif_formatter
 ARG PIP_BANDIT_SARIF_FORMATTER_VERSION=1.1.1
 # renovate: datasource=pypi depName=mypy
@@ -361,8 +359,6 @@ ARG PIP_PYRIGHT_VERSION=1.1.392.post0
 ARG PIP_RUFF_VERSION=0.9.3
 # renovate: datasource=repology depName=alpine_3_21/g++
 ARG APK_G_VERSION=14.2.0-r4
-# renovate: datasource=repology depName=alpine_3_21/libc-dev
-ARG APK_LIBC_DEV_VERSION=0.7.2-r5
 # renovate: datasource=repology depName=alpine_3_21/libcurl
 ARG APK_LIBCURL_VERSION=8.11.1-r0
 # renovate: datasource=repology depName=alpine_3_21/libffi-dev
@@ -387,8 +383,6 @@ ARG RAKU_RAKU_ALPINE_VERSION=3.20
 
 # renovate: datasource=pypi depName=checkov
 ARG PIP_CHECKOV_VERSION=3.2.357
-# renovate: datasource=pypi depName=packaging
-ARG PIP_PACKAGING_VERSION=24.2
 # renovate: datasource=nuget depName=Microsoft.CST.DevSkim.CLI
 ARG REPOSITORY_DEVSKIM_VERSION=1.0.51
 # renovate: datasource=github-tags depName=anchore/grype
@@ -429,8 +423,6 @@ ARG GEM_RUBOCOP_RAILS_VERSION=2.29.1
 ARG GEM_RUBOCOP_RAKE_VERSION=0.6.0
 # renovate: datasource=rubygems depName=rubocop-rspec
 ARG GEM_RUBOCOP_RSPEC_VERSION=3.4.0
-# renovate: datasource=crate depName=clippy
-ARG CARGO_CLIPPY_VERSION=0.0.302
 # renovate: datasource=npm depName=@salesforce/sfdx-scanner
 ARG SALESFORCE_SFDX_SCANNER_VERSION=4.8.0
 # renovate: datasource=npm depName=lightning-flow-scanner
@@ -475,6 +467,8 @@ ARG APK_RUBY_RDOC_VERSION=3.3.6-r0
 ARG PIP_PIP_VERSION=25.0
 # renovate: datasource=pypi depName=virtualenv
 ARG PIP_VIRTUALENV_VERSION=20.29.1
+# renovate: datasource=github-tags depName=rust-lang/rust
+ARG RUST_RUST_VERSION=1.84.0
 
 ARG APK_GIT_VERSION
 ARG ACTION_ACTIONLINT_VERSION
@@ -545,11 +539,9 @@ RUN apk add --no-cache \
                 openjdk17=${APK_OPENJDK17_VERSION} \
                 helm=${APK_HELM_VERSION} \
                 gcompat=${APK_GCOMPAT_VERSION} \
-                libc6-compat=${APK_LIBC6_COMPAT_VERSION} \
                 libstdc++=${APK_LIBSTDC_VERSION} \
                 openssl=${APK_OPENSSL_VERSION} \
                 g++=${APK_G_VERSION} \
-                libc-dev=${APK_LIBC_DEV_VERSION} \
                 libcurl=${APK_LIBCURL_VERSION} \
                 libffi-dev=${APK_LBFFI_DEV_VERSION} \
                 libgcc=${APK_LIBGCC_VERSION} \
@@ -586,10 +578,10 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin || true && \
 #############################################################################################
 
 #CARGO__START
-RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --profile minimal --default-toolchain stable \
+RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --profile minimal --default-toolchain ${RUST_RUST_VERSION} \
     && export PATH="/root/.cargo/bin:${PATH}" \
-    && cargo install --force --locked sarif-fmt@${CARGO_SARIF_FMT_VERSION} shellcheck-sarif@${CARGO_SHELLCHECK_SARIF_VERSION} selene@${CARGO_SELENE_VERSION} stylua@${CARGO_STYLUA_VERSION} clippy@${CARGO_CLIPPY_VERSION} \
-    && rm -rf /root/.cargo/registry /root/.cargo/git /root/.cache/sccache /root/.rustup
+    && rustup component add clippy && cargo install --force --locked sarif-fmt@${CARGO_SARIF_FMT_VERSION} shellcheck-sarif@${CARGO_SHELLCHECK_SARIF_VERSION} selene@${CARGO_SELENE_VERSION} stylua@${CARGO_STYLUA_VERSION} \
+    && rm -rf /root/.cargo/registry /root/.cargo/git /root/.cache/sccache
 ENV PATH="/root/.cargo/bin:${PATH}"
 #CARGO__END
 
@@ -615,7 +607,7 @@ RUN PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir pip==${PIP_PIP_VERSION
     && mkdir -p "/venvs/pyright" && cd "/venvs/pyright" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir pyright==${PIP_PYRIGHT_VERSION} && deactivate && cd ./../.. \
     && mkdir -p "/venvs/ruff" && cd "/venvs/ruff" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir ruff==${PIP_RUFF_VERSION} && deactivate && cd ./../.. \
     && mkdir -p "/venvs/ruff-format" && cd "/venvs/ruff-format" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir ruff==${PIP_RUFF_VERSION} && deactivate && cd ./../.. \
-    && mkdir -p "/venvs/checkov" && cd "/venvs/checkov" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir packaging==${PIP_PACKAGING_VERSION} checkov==${PIP_CHECKOV_VERSION} && deactivate && cd ./../.. \
+    && mkdir -p "/venvs/checkov" && cd "/venvs/checkov" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir checkov==${PIP_CHECKOV_VERSION} && deactivate && cd ./../.. \
     && mkdir -p "/venvs/semgrep" && cd "/venvs/semgrep" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir semgrep==${PIP_SEMGREP_VERSION} && deactivate && cd ./../.. \
     && mkdir -p "/venvs/rst-lint" && cd "/venvs/rst-lint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir Pygments==${PIP_PYGMENTS_VERSION} restructuredtext_lint==${PIP_RESTRUCTUREDTEXT_LINT_VERSION} && deactivate && cd ./../.. \
     && mkdir -p "/venvs/rstcheck" && cd "/venvs/rstcheck" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir rstcheck[toml,sphinx]==${PIP_RSTCHECK_VERSION} && deactivate && cd ./../.. \
@@ -677,7 +669,7 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 eslint-plugin-jsx-a11y@${NPM_ESLINT_PLUGIN_JSX_ALLY_VERSION} \
                 markdownlint-cli@${NPM_MARKDOWNLINT_CLI_VERSION} \
                 markdown-link-check@${NPM_MARKDOWN_LINK_CHECK_VERSION} \
-                markdown-table-formatter@{NPM_MARKDOWN_TABLE_FORMATTER_VERSION} \
+                markdown-table-formatter@${NPM_MARKDOWN_TABLE_FORMATTER_VERSION} \
                 @ls-lint/ls-lint@${NPM_LS_LINT_LS_LINT_VERSION} \
                 secretlint@${NPM_SECRETLINT_VERSION} \
                 @secretlint/secretlint-rule-preset-recommend@${NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION} \
@@ -711,13 +703,13 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #GEM__START
 RUN echo 'gem: --no-document' >> ~/.gemrc && \
     gem install \
-          puppet-lint -v ${GEM_PUPPET_LINT_VERSION} \
-          rubocop -v ${GEM_RUBOCOP_VERSION} \
-          rubocop-github -v ${GEM_RUBOCOP_GITHUB_VERSION} \
-          rubocop-performance -v ${GEM_RUBOCOP_PERFORMANCE_VERSION} \
-          rubocop-rails -v ${GEM_RUBOCOP_RAILS_VERSION} \
-          rubocop-rake -v ${GEM_RUBOCOP_RAKE_VERSION} \
-          rubocop-rspec -v ${GEM_RUBOCOP_RSPEC_VERSION}
+          puppet-lint:${GEM_PUPPET_LINT_VERSION} \
+          rubocop:${GEM_RUBOCOP_VERSION} \
+          rubocop-github:${GEM_RUBOCOP_GITHUB_VERSION} \
+          rubocop-performance:${GEM_RUBOCOP_PERFORMANCE_VERSION} \
+          rubocop-rails:${GEM_RUBOCOP_RAILS_VERSION} \
+          rubocop-rake:${GEM_RUBOCOP_RAKE_VERSION} \
+          rubocop-rspec:${GEM_RUBOCOP_RSPEC_VERSION}
 #GEM__END
 
 ##############################
@@ -1220,8 +1212,6 @@ RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/refs/tags/v${REPOS
 # rstfmt installation
 #
 # rubocop installation
-#
-# clippy installation
 #
 # sfdx-scanner-apex installation
     && sf plugins install @salesforce/sfdx-scanner@${SALESFORCE_SFDX_SCANNER_VERSION} \

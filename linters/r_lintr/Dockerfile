@@ -70,8 +70,6 @@ ARG APK_MUSL_DEV_VERSION=1.2.5-r8
 ARG APK_OPENSSH_VERSION=9.9_p1-r2
 # renovate: datasource=repology depName=alpine_3_21/g++
 ARG APK_G_VERSION=14.2.0-r4
-# renovate: datasource=repology depName=alpine_3_21/libc-dev
-ARG APK_LIBC_DEV_VERSION=0.7.2-r5
 # renovate: datasource=repology depName=alpine_3_21/libcurl
 ARG APK_LIBCURL_VERSION=8.11.1-r0
 # renovate: datasource=repology depName=alpine_3_21/libffi-dev
@@ -114,7 +112,6 @@ RUN apk add --no-cache \
                 musl-dev=${APK_MUSL_DEV_VERSION} \
                 openssh=${APK_OPENSSH_VERSION} \
                 g++=${APK_G_VERSION} \
-                libc-dev=${APK_LIBC_DEV_VERSION} \
                 libcurl=${APK_LIBCURL_VERSION} \
                 libffi-dev=${APK_LBFFI_DEV_VERSION} \
                 libgcc=${APK_LIBGCC_VERSION} \

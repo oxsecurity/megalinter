@@ -68,8 +68,6 @@ ARG APK_MAKE_VERSION=4.4.1-r2
 ARG APK_MUSL_DEV_VERSION=1.2.5-r8
 # renovate: datasource=repology depName=alpine_3_21/openssh
 ARG APK_OPENSSH_VERSION=9.9_p1-r2
-# renovate: datasource=repology depName=alpine_3_21/libc-dev
-ARG APK_LIBC_DEV_VERSION=0.7.2-r5
 # renovate: datasource=repology depName=alpine_3_21/libgcc
 ARG APK_LIBGCC_VERSION=14.2.0-r4
 # renovate: datasource=repology depName=alpine_3_21/libxml2-dev
@@ -99,7 +97,6 @@ RUN apk add --no-cache \
                 make=${APK_MAKE_VERSION} \
                 musl-dev=${APK_MUSL_DEV_VERSION} \
                 openssh=${APK_OPENSSH_VERSION} \
-                libc-dev=${APK_LIBC_DEV_VERSION} \
                 libxml2-dev=${APK_LIBXML2_DEV_VERSION} \
                 libxml2-utils=${APK_LIBXML2_UTILS_VERSION} \
                 libgcc=${APK_LIBGCC_VERSION} \

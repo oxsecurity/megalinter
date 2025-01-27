@@ -24,7 +24,7 @@ linters:
     cli_lint_fix_remove_args:
       - "lint"
     cli_docker_image: ghcr.io/realm/swiftlint
-    cli_docker_image_version: "${SWIFT_SWIFTLINT_VERSION}"
+    cli_docker_image_version: "SWIFT_SWIFTLINT_VERSION"
     cli_docker_args:
       - "-v"
       - "{{WORKSPACE}}:/tmp/lint:rw"

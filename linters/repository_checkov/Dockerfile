@@ -70,8 +70,6 @@ ARG APK_MUSL_DEV_VERSION=1.2.5-r8
 ARG APK_OPENSSH_VERSION=9.9_p1-r2
 # renovate: datasource=pypi depName=checkov
 ARG PIP_CHECKOV_VERSION=3.2.357
-# renovate: datasource=pypi depName=packaging
-ARG PIP_PACKAGING_VERSION=24.2
 # renovate: datasource=pypi depName=pip
 ARG PIP_PIP_VERSION=25.0
 # renovate: datasource=pypi depName=virtualenv
@@ -130,7 +128,7 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin || true && \
 
 #PIPVENV__START
 RUN PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir pip==${PIP_PIP_VERSION} virtualenv==${PIP_VIRTUALENV_VERSION} \
-    && mkdir -p "/venvs/checkov" && cd "/venvs/checkov" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir packaging==${PIP_PACKAGING_VERSION} checkov==${PIP_CHECKOV_VERSION} && deactivate && cd ./../..  \
+    && mkdir -p "/venvs/checkov" && cd "/venvs/checkov" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir checkov==${PIP_CHECKOV_VERSION} && deactivate && cd ./../..  \
     && find /venvs \( -type f \( -iname \*.pyc -o -iname \*.pyo \) -o -type d -iname __pycache__ \) -delete \
     && rm -rf /root/.cache
 ENV PATH="${PATH}":/venvs/checkov/bin

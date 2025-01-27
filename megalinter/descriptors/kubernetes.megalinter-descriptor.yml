@@ -114,7 +114,6 @@ linters:
       apk:
         - curl=${APK_CURL_VERSION}
         - gcompat=${APK_GCOMPAT_VERSION}
-        - libc6-compat=${APK_LIBC6_COMPAT_VERSION}
         - libstdc++=${APK_LIBSTDC_VERSION}
       dockerfile:
         - |-
@@ -123,9 +122,6 @@ linters:
         - |-
           # renovate: datasource=repology depName=alpine_3_21/gcompat
           ARG APK_GCOMPAT_VERSION=1.1.0-r4
-        - |-
-          # renovate: datasource=repology depName=alpine_3_21/libc6-compat
-          ARG APK_LIBC6_COMPAT_VERSION=1.2.2-r9
         - |-
           # renovate: datasource=repology depName=alpine_3_21/libstdc++
           ARG APK_LIBSTDC_VERSION=14.2.0-r4

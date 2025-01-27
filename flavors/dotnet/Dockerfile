@@ -180,8 +180,6 @@ ARG DETEKT_VERSION=1.23.7
 ARG APK_HELM_VERSION=3.16.3-r0
 # renovate: datasource=repology depName=alpine_3_21/gcompat
 ARG APK_GCOMPAT_VERSION=1.1.0-r4
-# renovate: datasource=repology depName=alpine_3_21/libc6-compat
-ARG APK_LIBC6_COMPAT_VERSION=1.2.2-r9
 # renovate: datasource=repology depName=alpine_3_21/libstdc++
 ARG APK_LIBSTDC_VERSION=14.2.0-r4
 # renovate: datasource=github-tags depName=kubescape/kubescape
@@ -197,8 +195,6 @@ ARG PSSA_VERSION='1.23.0'
 
 # renovate: datasource=pypi depName=checkov
 ARG PIP_CHECKOV_VERSION=3.2.357
-# renovate: datasource=pypi depName=packaging
-ARG PIP_PACKAGING_VERSION=24.2
 # renovate: datasource=github-tags depName=anchore/grype
 ARG REPOSITORY_GRYPE_VERSION=0.87.0
 # renovate: datasource=npm depName=@ls-lint/ls-lint
@@ -227,8 +223,6 @@ ARG PIP_SQLFLUFF_VERSION=3.3.0
 ARG SQL_TSQLLINT_VERSION=1.16.0
 # renovate: datasource=npm depName=@ibm/tekton-lint
 ARG NPM_IBM_TEKTON_LINT_VERSION=1.1.0
-# renovate: datasource=repology depName=alpine_3_21/libc-dev
-ARG APK_LIBC_DEV_VERSION=0.7.2-r5
 # renovate: datasource=repology depName=alpine_3_21/libgcc
 ARG APK_LIBGCC_VERSION=14.2.0-r4
 # renovate: datasource=repology depName=alpine_3_21/libxml2-dev
@@ -247,6 +241,8 @@ ARG APK_YARN_VERSION=1.22.22-r1
 ARG PIP_PIP_VERSION=25.0
 # renovate: datasource=pypi depName=virtualenv
 ARG PIP_VIRTUALENV_VERSION=20.29.1
+# renovate: datasource=github-tags depName=rust-lang/rust
+ARG RUST_RUST_VERSION=1.84.0
 
 ARG ACTION_ACTIONLINT_VERSION
 ARG BASH_SHELLCHECK_VERSION
@@ -288,9 +284,7 @@ RUN apk add --no-cache \
                 openjdk17=${APK_OPENJDK17_VERSION} \
                 helm=${APK_HELM_VERSION} \
                 gcompat=${APK_GCOMPAT_VERSION} \
-                libc6-compat=${APK_LIBC6_COMPAT_VERSION} \
                 libstdc++=${APK_LIBSTDC_VERSION} \
-                libc-dev=${APK_LIBC_DEV_VERSION} \
                 libxml2-dev=${APK_LIBXML2_DEV_VERSION} \
                 libxml2-utils=${APK_LIBXML2_UTILS_VERSION} \
                 libgcc=${APK_LIBGCC_VERSION} \
@@ -317,7 +311,7 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin || true && \
 #############################################################################################
 
 #CARGO__START
-RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --profile minimal --default-toolchain stable \
+RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --profile minimal --default-toolchain ${RUST_RUST_VERSION} \
     && export PATH="/root/.cargo/bin:${PATH}" \
     && cargo install --force --locked sarif-fmt@${CARGO_SARIF_FMT_VERSION} shellcheck-sarif@${CARGO_SHELLCHECK_SARIF_VERSION} \
     && rm -rf /root/.cargo/registry /root/.cargo/git /root/.cache/sccache /root/.rustup
@@ -336,7 +330,7 @@ RUN PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir pip==${PIP_PIP_VERSION
     && mkdir -p "/venvs/cpplint" && cd "/venvs/cpplint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir cpplint==${PIP_CPPLINT_VERSION} && deactivate && cd ./../.. \
     && mkdir -p "/venvs/stylelint" && cd "/venvs/stylelint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir cpplint==${PIP_CPPLINT_VERSION} && deactivate && cd ./../.. \
     && mkdir -p "/venvs/djlint" && cd "/venvs/djlint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir djlint==${PIP_DJLINT_VERSION} && deactivate && cd ./../.. \
-    && mkdir -p "/venvs/checkov" && cd "/venvs/checkov" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir packaging==${PIP_PACKAGING_VERSION} checkov==${PIP_CHECKOV_VERSION} && deactivate && cd ./../.. \
+    && mkdir -p "/venvs/checkov" && cd "/venvs/checkov" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir checkov==${PIP_CHECKOV_VERSION} && deactivate && cd ./../.. \
     && mkdir -p "/venvs/semgrep" && cd "/venvs/semgrep" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir semgrep==${PIP_SEMGREP_VERSION} && deactivate && cd ./../.. \
     && mkdir -p "/venvs/snakefmt" && cd "/venvs/snakefmt" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir snakefmt==${PIP_SNAKEFMT_VERSION} && deactivate && cd ./../.. \
     && mkdir -p "/venvs/proselint" && cd "/venvs/proselint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir proselint==${PIP_PROSELINT_VERSION} && deactivate && cd ./../.. \
@@ -376,7 +370,7 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 npm-package-json-lint-config-default@${NPM_PACKAGE_JSON_LINT_CONFIG_DEFAULT_VERSION} \
                 markdownlint-cli@${NPM_MARKDOWNLINT_CLI_VERSION} \
                 markdown-link-check@${NPM_MARKDOWN_LINK_CHECK_VERSION} \
-                markdown-table-formatter@{NPM_MARKDOWN_TABLE_FORMATTER_VERSION} \
+                markdown-table-formatter@${NPM_MARKDOWN_TABLE_FORMATTER_VERSION} \
                 @ls-lint/ls-lint@${NPM_LS_LINT_LS_LINT_VERSION} \
                 secretlint@${NPM_SECRETLINT_VERSION} \
                 @secretlint/secretlint-rule-preset-recommend@${NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION} \

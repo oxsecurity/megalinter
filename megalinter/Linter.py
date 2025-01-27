@@ -1250,7 +1250,8 @@ class Linter:
             lambda arg, w=workspace_value: arg.replace("{{WORKSPACE}}", w),
             self.cli_docker_args,
         )
-        docker_command += [f"{self.cli_docker_image}:{self.cli_docker_image_version}"]
+        docker_command += [f"{self.cli_docker_image}:"
+            + f"{os.environ.get(self.cli_docker_image_version, self.cli_docker_image_version)}"]
         if isinstance(command, str):
             command = " ".join(docker_command) + " " + command
         else:

@@ -22,11 +22,7 @@ linters:
       - "cargo-clippy"
     install:
       cargo:
-        - clippy@${CARGO_CLIPPY_VERSION}
-      dockerfile:
-        - |-
-          # renovate: datasource=crate depName=clippy
-          ARG CARGO_CLIPPY_VERSION=0.0.302
+        - clippy
     ide:
       atom:
         - name: Atom IDE Rest
