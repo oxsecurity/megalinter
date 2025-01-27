@@ -149,7 +149,7 @@ ENV NODE_OPTIONS="--max-old-space-size=8192" \
 WORKDIR /node-deps
 RUN npm --no-cache install --ignore-scripts --omit=dev \
                 graphql@${NPM_GRAPHQL_VERSION} \
-                graphql-schema-linter@${NPM_GRAPHQL_SCHEMA_LINTER_VERSION}  && \
+                graphql-schema-linter@${NPM_GRAPHQL_SCHEMA_LINTER_VERSION} && \
     echo "Cleaning npm cache…" \
     && (npm cache clean --force || true) \
     && echo "Changing owner of node_modules files…" \

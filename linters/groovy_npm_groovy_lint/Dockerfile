@@ -149,7 +149,7 @@ ENV NODE_OPTIONS="--max-old-space-size=8192" \
 #NPM__START
 WORKDIR /node-deps
 RUN npm --no-cache install --ignore-scripts --omit=dev \
-                npm-groovy-lint@${NPM_GROOVY_LINT_VERSION}  && \
+                npm-groovy-lint@${NPM_GROOVY_LINT_VERSION} && \
     echo "Cleaning npm cache…" \
     && (npm cache clean --force || true) \
     && echo "Changing owner of node_modules files…" \

@@ -127,7 +127,6 @@ ARG APK_DOCKER_VERSION=27.3.1-r0
 ARG APK_OPENRC_VERSION=0.55.1-r2
 # renovate: datasource=github-tags depName=sgerrand/alpine-pkg-glibc
 ARG ALPINE_GLIBC_PACKAGE_VERSION=2.34-r0
-
 # renovate: datasource=repology depName=alpine_3_21/go
 ARG APK_GO_VERSION=1.23.5-r0
 # renovate: datasource=repology depName=alpine_3_21/openjdk21
@@ -543,7 +542,7 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 prettyjson@${NPM_PRETTYJSON_VERSION} \
                 @typescript-eslint/eslint-plugin@${NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION} \
                 @typescript-eslint/parser@${NPM_TYPESCRIPT_ESLINT_PARSER_VERSION} \
-                ts-standard@${NPM_TS_STANDARD_VERSION}  && \
+                ts-standard@${NPM_TS_STANDARD_VERSION} && \
     echo "Cleaning npm cache…" \
     && (npm cache clean --force || true) \
     && echo "Changing owner of node_modules files…" \
@@ -885,6 +884,10 @@ RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/
 # Managed with COPY --link --from=lychee /usr/local/bin/lychee /usr/bin/
 #
 # sqlfluff installation
+#
+# swiftlint installation
+# renovate: datasource=docker depName=ghcr.io/realm/swiftlint
+ENV SWIFT_SWIFTLINT_VERSION=0.58.2
 #
 # tflint installation
 # Managed with COPY --link --from=tflint /usr/local/bin/tflint /usr/bin/

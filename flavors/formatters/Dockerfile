@@ -199,7 +199,7 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 typescript@${NPM_TYPESCRIPT_VERSION} \
                 prettier@${NPM_PRETTIER_VERSION} \
                 markdownlint-cli@${NPM_MARKDOWNLINT_CLI_VERSION} \
-                markdown-table-formatter@{NPM_MARKDOWN_TABLE_FORMATTER_VERSION}  && \
+                markdown-table-formatter@{NPM_MARKDOWN_TABLE_FORMATTER_VERSION} && \
     echo "Cleaning npm cache…" \
     && (npm cache clean --force || true) \
     && echo "Changing owner of node_modules files…" \

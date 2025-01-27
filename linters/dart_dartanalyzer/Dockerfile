@@ -70,7 +70,6 @@ ARG APK_MUSL_DEV_VERSION=1.2.5-r8
 ARG APK_OPENSSH_VERSION=9.9_p1-r2
 # renovate: datasource=github-tags depName=sgerrand/alpine-pkg-glibc
 ARG ALPINE_GLIBC_PACKAGE_VERSION=2.34-r0
-
 # renovate: datasource=dart-version depName=dart
 ARG DART_VERSION='3.6.1'
 #ARG__END

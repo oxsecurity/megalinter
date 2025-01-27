@@ -50,6 +50,50 @@ DEFAULT_DOCKERFILE_APK_PACKAGES = [
     "openssh=${APK_OPENSSH_VERSION}",
 ]
 
+DEFAULT_DOCKERFILE_DOCKER_ARGS = [
+    "# renovate: datasource=repology depName=alpine_3_21/docker\nARG APK_DOCKER_VERSION=27.3.1-r0",
+    "# renovate: datasource=repology depName=alpine_3_21/openrc\nARG APK_OPENRC_VERSION=0.55.1-r2",
+]
+
+DEFAULT_DOCKERFILE_DOCKER_APK_PACKAGES = [
+    "docker=${APK_DOCKER_VERSION}",
+    "openrc=${APK_OPENRC_VERSION}"
+]
+
+DEFAULT_DOCKERFILE_NPM_ARGS = [
+    "# renovate: datasource=repology depName=alpine_3_21/npm\nARG APK_NPM_VERSION=10.9.1-r0",
+    "# renovate: datasource=repology depName=alpine_3_21/nodejs-current\nARG APK_NODEJS_CURRENT_VERSION=23.2.0-r1",
+    "# renovate: datasource=repology depName=alpine_3_21/yarn\nARG APK_YARN_VERSION=1.22.22-r1",
+]
+
+DEFAULT_DOCKERFILE_NPM_APK_PACKAGES = [
+    "npm=${APK_NPM_VERSION}",
+    "nodejs-current=${APK_NODEJS_CURRENT_VERSION}",
+    "yarn=${APK_YARN_VERSION}"
+]
+
+DEFAULT_DOCKERFILE_GEM_ARGS = [
+    "# renovate: datasource=repology depName=alpine_3_21/ruby\nARG APK_RUBY_VERSION=3.3.6-r0",
+    "# renovate: datasource=repology depName=alpine_3_21/ruby-dev\nARG APK_RUBY_DEV_VERSION=3.3.6-r0",
+    "# renovate: datasource=repology depName=alpine_3_21/ruby-bundler\nARG APK_RUBY_BUNDLER_VERSION=2.5.23-r0",
+    "# renovate: datasource=repology depName=alpine_3_21/ruby-rdoc\nARG APK_RUBY_RDOC_VERSION=3.3.6-r0",
+]
+
+DEFAULT_DOCKERFILE_GEM_APK_PACKAGES = [
+    "ruby=${APK_RUBY_VERSION}",
+    "ruby-dev=${APK_RUBY_DEV_VERSION}",
+    "ruby-bundler=${APK_RUBY_BUNDLER_VERSION}",
+    "ruby-rdoc=${APK_RUBY_RDOC_VERSION}"
+]
+
+DEFAULT_DOCKERFILE_FLAVOR_ARGS = [
+    "# renovate: datasource=crate depName=sarif-fmt\nARG CARGO_SARIF_FMT_VERSION=0.7.0",
+]
+
+DEFAULT_DOCKERFILE_FLAVOR_CARGO_PACKAGES = [
+    "sarif-fmt@${CARGO_SARIF_FMT_VERSION}",
+]
+
 OX_MARKDOWN_LINK = (
     "[![MegaLinter is graciously provided by OX Security]"
     + "(https://raw.githubusercontent.com/oxsecurity/megalinter/main/"

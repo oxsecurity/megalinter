@@ -161,7 +161,7 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 stylelint@${NPM_STYLELINT_VERSION} \
                 stylelint-config-standard@${NPM_STYLELINT_CONFIG_STANDARD_VERSION} \
                 stylelint-config-sass-guidelines@${NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION} \
-                stylelint-scss@${NPM_STYLELINT_SCSS_VERSION}  && \
+                stylelint-scss@${NPM_STYLELINT_SCSS_VERSION} && \
     echo "Cleaning npm cache…" \
     && (npm cache clean --force || true) \
     && echo "Changing owner of node_modules files…" \

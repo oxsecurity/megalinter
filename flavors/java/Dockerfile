@@ -107,7 +107,6 @@ ARG APK_OPENSSH_VERSION=9.9_p1-r2
 ARG CARGO_SARIF_FMT_VERSION=0.7.0
 # renovate: datasource=github-tags depName=sgerrand/alpine-pkg-glibc
 ARG ALPINE_GLIBC_PACKAGE_VERSION=2.34-r0
-
 # renovate: datasource=repology depName=alpine_3_21/openjdk21
 ARG APK_OPENJDK21_VERSION=21.0.5_p11-r0
 # renovate: datasource=repology depName=alpine_3_21/py3-pyflakes
@@ -345,7 +344,7 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 @secretlint/secretlint-rule-preset-recommend@${NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION} \
                 @secretlint/secretlint-formatter-sarif@${NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION} \
                 cspell@${NPM_CSPELL_VERSION} \
-                @ibm/tekton-lint@${NPM_IBM_TEKTON_LINT_VERSION}  && \
+                @ibm/tekton-lint@${NPM_IBM_TEKTON_LINT_VERSION} && \
     echo "Cleaning npm cache…" \
     && (npm cache clean --force || true) \
     && echo "Changing owner of node_modules files…" \

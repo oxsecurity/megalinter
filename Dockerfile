@@ -29,8 +29,6 @@ ARG GO_REVIVE_VERSION=v1.6.0
 ARG KUBERNETES_KUBECONFORM_VERSION=v0.6.7-alpine
 # renovate: datasource=docker depName=yoheimuta/protolint
 ARG PROTOBUF_PROTOLINT_VERSION=0.52.0
-# renovate: datasource=repology depName=alpine_3_21/git-sdk
-ARG APK_GIT_VERSION=2.47.2-r0
 # renovate: datasource=github-tags depName=checkmarx/dustilock
 ARG REPOSITORY_DUSTILOCK_VERSION=1.2.0
 # renovate: datasource=docker depName=zricethezav/gitleaks
@@ -145,7 +143,6 @@ ARG POWERSHELL_VERSION=7.4.6
 
 # renovate: datasource=github-tags depName=sgerrand/alpine-pkg-glibc
 ARG ALPINE_GLIBC_PACKAGE_VERSION=2.34-r0
-
 # renovate: datasource=repology depName=alpine_3_21/dotnet9-sdk
 ARG APK_DOTNET9_SDK_VERSION=9.0.102-r0
 # renovate: datasource=repology depName=alpine_3_21/go
@@ -673,7 +670,7 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 prettyjson@${NPM_PRETTYJSON_VERSION} \
                 @typescript-eslint/eslint-plugin@${NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION} \
                 @typescript-eslint/parser@${NPM_TYPESCRIPT_ESLINT_PARSER_VERSION} \
-                ts-standard@${NPM_TS_STANDARD_VERSION}  && \
+                ts-standard@${NPM_TS_STANDARD_VERSION} && \
     echo "Cleaning npm cache…" \
     && (npm cache clean --force || true) \
     && echo "Changing owner of node_modules files…" \
@@ -1254,6 +1251,10 @@ RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/refs/tags/v${REPOS
 # Next line commented because already managed by another linter
 # ENV PATH="${PATH}:/root/.dotnet/tools"
     && dotnet tool install --global TSQLLint --version ${SQL_TSQLLINT_VERSION}
+#
+# swiftlint installation
+# renovate: datasource=docker depName=ghcr.io/realm/swiftlint
+ENV SWIFT_SWIFTLINT_VERSION=0.58.2
 #
 # tekton-lint installation
 #

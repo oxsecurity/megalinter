@@ -340,7 +340,7 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 @secretlint/secretlint-rule-preset-recommend@${NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION} \
                 @secretlint/secretlint-formatter-sarif@${NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION} \
                 cspell@${NPM_CSPELL_VERSION} \
-                @ibm/tekton-lint@${NPM_IBM_TEKTON_LINT_VERSION}  && \
+                @ibm/tekton-lint@${NPM_IBM_TEKTON_LINT_VERSION} && \
     echo "Cleaning npm cache…" \
     && (npm cache clean --force || true) \
     && echo "Changing owner of node_modules files…" \
@@ -517,6 +517,10 @@ RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/rel
 # Managed with COPY --link --from=lychee /usr/local/bin/lychee /usr/bin/
 #
 # sqlfluff installation
+#
+# swiftlint installation
+# renovate: datasource=docker depName=ghcr.io/realm/swiftlint
+ENV SWIFT_SWIFTLINT_VERSION=0.58.2
 #
 # tekton-lint installation
 #

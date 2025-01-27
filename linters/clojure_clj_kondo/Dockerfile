@@ -70,7 +70,6 @@ ARG APK_MUSL_DEV_VERSION=1.2.5-r8
 ARG APK_OPENSSH_VERSION=9.9_p1-r2
 # renovate: datasource=github-tags depName=sgerrand/alpine-pkg-glibc
 ARG ALPINE_GLIBC_PACKAGE_VERSION=2.34-r0
-
 # renovate: datasource=github-tags depName=clj-kondo/clj-kondo
 ARG CLJ_KONDO_VERSION=2025.01.16
 

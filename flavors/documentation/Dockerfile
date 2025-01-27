@@ -334,7 +334,7 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 @secretlint/secretlint-rule-preset-recommend@${NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION} \
                 @secretlint/secretlint-formatter-sarif@${NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION} \
                 cspell@${NPM_CSPELL_VERSION} \
-                @ibm/tekton-lint@${NPM_IBM_TEKTON_LINT_VERSION}  && \
+                @ibm/tekton-lint@${NPM_IBM_TEKTON_LINT_VERSION} && \
     echo "Cleaning npm cache…" \
     && (npm cache clean --force || true) \
     && echo "Changing owner of node_modules files…" \
