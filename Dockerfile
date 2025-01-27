@@ -237,8 +237,6 @@ ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=37.0.0
 ARG NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION=12.1.0
 # renovate: datasource=npm depName=stylelint-scss
 ARG NPM_STYLELINT_SCSS_VERSION=6.14.2
-# renovate: datasource=pypi depName=cpplint
-ARG PIP_CPPLINT_VERSION=6.10.1
 # renovate: datasource=dart-version depName=dart
 ARG DART_VERSION='3.6.1'
 # renovate: datasource=npm depName=gherkin-lint
@@ -473,6 +471,10 @@ ARG APK_RUBY_DEV_VERSION=3.3.6-r0
 ARG APK_RUBY_BUNDLER_VERSION=2.5.23-r0
 # renovate: datasource=repology depName=alpine_3_21/ruby-rdoc
 ARG APK_RUBY_RDOC_VERSION=3.3.6-r0
+# renovate: datasource=pypi depName=pip
+ARG PIP_PIP_VERSION=25.0
+# renovate: datasource=pypi depName=virtualenv
+ARG PIP_VIRTUALENV_VERSION=20.29.1
 
 ARG APK_GIT_VERSION
 ARG ACTION_ACTIONLINT_VERSION
@@ -598,7 +600,7 @@ ENV PATH="/root/.cargo/bin:${PATH}"
 #############################################################################################
 
 #PIPVENV__START
-RUN PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir --upgrade pip virtualenv \
+RUN PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir --upgrade pip==${PIP_PIP_VERSION} virtualenv==${PIP_VIRTUALENV_VERSION} \
     && mkdir -p "/venvs/ansible-lint" && cd "/venvs/ansible-lint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir ansible-lint==${PIP_ANSIBLE_LINT_VERSION} && deactivate && cd ./../.. \
     && mkdir -p "/venvs/cpplint" && cd "/venvs/cpplint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir cpplint==${PIP_CPPLINT_VERSION} && deactivate && cd ./../.. \
     && mkdir -p "/venvs/cfn-lint" && cd "/venvs/cfn-lint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir cfn-lint[sarif]==${PIP_CFN_LINT_VERSION} && deactivate && cd ./../.. \

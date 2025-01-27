@@ -152,6 +152,10 @@ ARG APK_NPM_VERSION=10.9.1-r0
 ARG APK_NODEJS_CURRENT_VERSION=23.2.0-r1
 # renovate: datasource=repology depName=alpine_3_21/yarn
 ARG APK_YARN_VERSION=1.22.22-r1
+# renovate: datasource=pypi depName=pip
+ARG PIP_PIP_VERSION=25.0
+# renovate: datasource=pypi depName=virtualenv
+ARG PIP_VIRTUALENV_VERSION=20.29.1
 
 ARG APK_GIT_VERSION
 ARG BASH_SHELLCHECK_VERSION
@@ -228,7 +232,7 @@ ENV PATH="/root/.cargo/bin:${PATH}"
 #############################################################################################
 
 #PIPVENV__START
-RUN PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir --upgrade pip virtualenv \
+RUN PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir --upgrade pip==${PIP_PIP_VERSION} virtualenv==${PIP_VIRTUALENV_VERSION} \
     && mkdir -p "/venvs/ansible-lint" && cd "/venvs/ansible-lint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir ansible-lint==${PIP_ANSIBLE_LINT_VERSION} && deactivate && cd ./../.. \
     && mkdir -p "/venvs/cfn-lint" && cd "/venvs/cfn-lint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir cfn-lint[sarif]==${PIP_CFN_LINT_VERSION} && deactivate && cd ./../.. \
     && mkdir -p "/venvs/bandit" && cd "/venvs/bandit" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir bandit==${PIP_BANDIT_VERSION} bandit_sarif_formatter==${PIP_BANDIT_SARIF_FORMATTER_VERSION} bandit[toml]==${PIP_BANDIT_VERSION} && deactivate && cd ./../.. \

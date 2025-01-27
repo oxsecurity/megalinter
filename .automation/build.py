@@ -35,6 +35,8 @@ from megalinter.constants import (
     DEFAULT_DOCKERFILE_NPM_APK_PACKAGES,
     DEFAULT_DOCKERFILE_GEM_ARGS,
     DEFAULT_DOCKERFILE_GEM_APK_PACKAGES,
+    DEFAULT_DOCKERFILE_PIP_ARGS,
+    DEFAULT_DOCKERFILE_PIPENV_ARGS,
     DEFAULT_DOCKERFILE_FLAVOR_ARGS,
     DEFAULT_DOCKERFILE_FLAVOR_CARGO_PACKAGES,
     DEFAULT_RELEASE,
@@ -441,6 +443,10 @@ def build_dockerfile(
     if len(gem_packages) > 0:
         docker_arg += DEFAULT_DOCKERFILE_GEM_ARGS.copy()
         apk_packages += DEFAULT_DOCKERFILE_GEM_APK_PACKAGES.copy()
+    if len(pip_packages) > 0:
+        docker_arg += DEFAULT_DOCKERFILE_PIP_ARGS.copy()
+    if len(pipvenv_packages) > 0:
+        docker_arg += DEFAULT_DOCKERFILE_PIPENV_ARGS.copy()
     # Separate args used in FROM instructions from others
     all_from_instructions = "\n".join(list(dict.fromkeys(docker_from)))
     docker_arg_top = []
@@ -575,7 +581,7 @@ def build_dockerfile(
     pip_install_command = ""
     if len(pip_packages) > 0:
         pip_install_command = (
-            "RUN PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir --upgrade pip &&"
+            "RUN PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir --upgrade pip==${PIP_PIP_VERSION} &&"
             + " PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir --upgrade \\\n          '"
             + "' \\\n          '".join(list(dict.fromkeys(pip_packages)))
             + "' && \\\n"
@@ -588,7 +594,7 @@ def build_dockerfile(
     if len(pipvenv_packages.items()) > 0:
         pipenv_install_command = (
             "RUN PYTHONDONTWRITEBYTECODE=1 pip3 install"
-            " --no-cache-dir --upgrade pip virtualenv \\\n"
+            " --no-cache-dir --upgrade pip==${PIP_PIP_VERSION} virtualenv==${PIP_VIRTUALENV_VERSION} \\\n"
         )
         env_path_command = 'ENV PATH="${PATH}"'
         for pip_linter, pip_linter_packages in pipvenv_packages.items():

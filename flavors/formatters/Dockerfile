@@ -113,6 +113,10 @@ ARG APK_NPM_VERSION=10.9.1-r0
 ARG APK_NODEJS_CURRENT_VERSION=23.2.0-r1
 # renovate: datasource=repology depName=alpine_3_21/yarn
 ARG APK_YARN_VERSION=1.22.22-r1
+# renovate: datasource=pypi depName=pip
+ARG PIP_PIP_VERSION=25.0
+# renovate: datasource=pypi depName=virtualenv
+ARG PIP_VIRTUALENV_VERSION=20.29.1
 
 ARG BASH_SHFMT_VERSION
 ARG TERRAFORM_TERRAGRUNT_VERSION
@@ -177,7 +181,7 @@ ENV PATH="/root/.cargo/bin:${PATH}"
 #############################################################################################
 
 #PIPVENV__START
-RUN PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir --upgrade pip virtualenv \
+RUN PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir --upgrade pip==${PIP_PIP_VERSION} virtualenv==${PIP_VIRTUALENV_VERSION} \
     && mkdir -p "/venvs/black" && cd "/venvs/black" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir black==${PIP_BLACK_VERSION} && deactivate && cd ./../.. \
     && mkdir -p "/venvs/isort" && cd "/venvs/isort" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir black==${PIP_BLACK_VERSION} isort==${PIP_ISORT_VERSION} && deactivate && cd ./../.. \
     && mkdir -p "/venvs/ruff-format" && cd "/venvs/ruff-format" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir ruff==${PIP_RUFF_VERSION} && deactivate && cd ./../.. \

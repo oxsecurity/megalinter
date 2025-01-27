@@ -72,6 +72,10 @@ ARG APK_OPENSSH_VERSION=9.9_p1-r2
 ARG PIP_BLACK_VERSION=24.10.0
 # renovate: datasource=pypi depName=isort
 ARG PIP_ISORT_VERSION=5.13.2
+# renovate: datasource=pypi depName=pip
+ARG PIP_PIP_VERSION=25.0
+# renovate: datasource=pypi depName=virtualenv
+ARG PIP_VIRTUALENV_VERSION=20.29.1
 #ARG__END
 
 ####################
@@ -125,7 +129,7 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin || true && \
 #############################################################################################
 
 #PIPVENV__START
-RUN PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir --upgrade pip virtualenv \
+RUN PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir --upgrade pip==${PIP_PIP_VERSION} virtualenv==${PIP_VIRTUALENV_VERSION} \
     && mkdir -p "/venvs/isort" && cd "/venvs/isort" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir black==${PIP_BLACK_VERSION} isort==${PIP_ISORT_VERSION} && deactivate && cd ./../..  \
     && find /venvs \( -type f \( -iname \*.pyc -o -iname \*.pyo \) -o -type d -iname __pycache__ \) -delete \
     && rm -rf /root/.cache

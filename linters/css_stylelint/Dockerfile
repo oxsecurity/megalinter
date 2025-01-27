@@ -77,13 +77,17 @@ ARG NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION=12.1.0
 # renovate: datasource=npm depName=stylelint-scss
 ARG NPM_STYLELINT_SCSS_VERSION=6.14.2
 # renovate: datasource=pypi depName=cpplint
-ARG PIP_CPPLINT_VERSION=6.10.1
+ARG PIP_CPPLINT_VERSION=2.0.0
 # renovate: datasource=repology depName=alpine_3_21/npm
 ARG APK_NPM_VERSION=10.9.1-r0
 # renovate: datasource=repology depName=alpine_3_21/nodejs-current
 ARG APK_NODEJS_CURRENT_VERSION=23.2.0-r1
 # renovate: datasource=repology depName=alpine_3_21/yarn
 ARG APK_YARN_VERSION=1.22.22-r1
+# renovate: datasource=pypi depName=pip
+ARG PIP_PIP_VERSION=25.0
+# renovate: datasource=pypi depName=virtualenv
+ARG PIP_VIRTUALENV_VERSION=20.29.1
 #ARG__END
 
 ####################
@@ -140,7 +144,7 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin || true && \
 #############################################################################################
 
 #PIPVENV__START
-RUN PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir --upgrade pip virtualenv \
+RUN PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir --upgrade pip==${PIP_PIP_VERSION} virtualenv==${PIP_VIRTUALENV_VERSION} \
     && mkdir -p "/venvs/stylelint" && cd "/venvs/stylelint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir cpplint==${PIP_CPPLINT_VERSION} && deactivate && cd ./../..  \
     && find /venvs \( -type f \( -iname \*.pyc -o -iname \*.pyo \) -o -type d -iname __pycache__ \) -delete \
     && rm -rf /root/.cache

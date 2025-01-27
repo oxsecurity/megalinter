@@ -86,6 +86,14 @@ DEFAULT_DOCKERFILE_GEM_APK_PACKAGES = [
     "ruby-rdoc=${APK_RUBY_RDOC_VERSION}"
 ]
 
+DEFAULT_DOCKERFILE_PIP_ARGS = [
+    "# renovate: datasource=pypi depName=pip\nARG PIP_PIP_VERSION=25.0",
+]
+
+DEFAULT_DOCKERFILE_PIPENV_ARGS = [
+    "# renovate: datasource=pypi depName=virtualenv\nARG PIP_VIRTUALENV_VERSION=20.29.1",
+]
+
 DEFAULT_DOCKERFILE_FLAVOR_ARGS = [
     "# renovate: datasource=crate depName=sarif-fmt\nARG CARGO_SARIF_FMT_VERSION=0.7.0",
 ]
