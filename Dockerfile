@@ -224,7 +224,7 @@ ARG PIP_CFN_LINT_VERSION=1.22.7
 # renovate: datasource=npm depName=@coffeelint/cli
 ARG NPM_COFFEELINT_CLI_VERSION=5.2.11
 # renovate: datasource=repology depName=alpine_3_21/nodejs
-ARG APK_NODEJS_VERSION=22.11.0-r2
+ARG APK_NODEJS_VERSION=22.11.0-r1
 # renovate: datasource=repology depName=alpine_3_21/npm
 ARG APK_NPM_VERSION=10.9.1-r0
 # renovate: datasource=repology depName=alpine_3_21/yarn
@@ -363,8 +363,6 @@ ARG PIP_BANDIT_VERSION=24.10.0
 ARG PIP_BANDIT_SARIF_FORMATTER_VERSION=1.1.1
 # renovate: datasource=pypi depName=mypy
 ARG PIP_MYPY_VERSION=1.14.1
-# renovate: datasource=repology depName=alpine_3_21/nodejs
-ARG APK_NODEJS_VERSION=22.11.0-r1
 # renovate: datasource=pypi depName=pyright
 ARG PIP_PYRIGHT_VERSION=1.1.392.post0
 # renovate: datasource=pypi depName=ruff

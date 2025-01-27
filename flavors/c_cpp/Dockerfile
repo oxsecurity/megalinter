@@ -120,7 +120,7 @@ ARG PIP_CPPLINT_VERSION=2.0.0
 # renovate: datasource=repology depName=alpine_3_21/clang19-extra-tools
 ARG APK_CLANG19_EXTRA_TOOLS_VERSION=19.1.4-r0
 # renovate: datasource=repology depName=alpine_3_21/nodejs
-ARG APK_NODEJS_VERSION=22.11.0-r2
+ARG APK_NODEJS_VERSION=22.11.0-r1
 # renovate: datasource=repology depName=alpine_3_21/npm
 ARG APK_NPM_VERSION=10.9.1-r0
 # renovate: datasource=repology depName=alpine_3_21/yarn

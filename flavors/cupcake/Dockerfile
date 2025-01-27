@@ -177,7 +177,7 @@ ARG CLJ_STYLE_VERSION=0.17.642
 # renovate: datasource=pypi depName=cfn-lint
 ARG PIP_CFN_LINT_VERSION=1.22.7
 # renovate: datasource=repology depName=alpine_3_21/nodejs
-ARG APK_NODEJS_VERSION=22.11.0-r2
+ARG APK_NODEJS_VERSION=22.11.0-r1
 # renovate: datasource=repology depName=alpine_3_21/npm
 ARG APK_NPM_VERSION=10.9.1-r0
 # renovate: datasource=repology depName=alpine_3_21/yarn
@@ -287,8 +287,6 @@ ARG PIP_FLAKE8_VERSION=7.1.1
 ARG PIP_ISORT_VERSION=5.13.2
 # renovate: datasource=pypi depName=mypy
 ARG PIP_MYPY_VERSION=1.14.1
-# renovate: datasource=repology depName=alpine_3_21/nodejs
-ARG APK_NODEJS_VERSION=22.11.0-r1
 # renovate: datasource=pypi depName=pyright
 ARG PIP_PYRIGHT_VERSION=1.1.392.post0
 # renovate: datasource=pypi depName=ruff
