@@ -43,7 +43,7 @@ def run_linter_pre_commands(mega_linter, linter, run_before_linters=None):
         else:
             for command_info in linter.pre_commands:
                 if command_info.get("run_before_linters", False) is run_before_linters:
-                    filtered_commands += command_info
+                    filtered_commands.append(command_info)
 
         return run_commands(
             filtered_commands, "[Pre][" + linter.name + "]", mega_linter, linter
@@ -61,7 +61,7 @@ def run_linter_post_commands(mega_linter, linter, run_after_linters=None):
         else:
             for command_info in linter.post_commands:
                 if command_info.get("run_after_linters", False) is run_after_linters:
-                    filtered_commands += command_info
+                    filtered_commands.append(command_info)
 
         return run_commands(
             filtered_commands, "[Post][" + linter.name + "]", mega_linter, linter
@@ -102,6 +102,18 @@ def run_commands(all_commands, log_key, mega_linter, linter=None):
 def run_command(command_info, log_key, mega_linter, linter=None):
     # Run a command in Docker image root or in workspace root
     cwd = os.getcwd()
+    # Check if command_info is a string (should not happen but will allow to investigate)
+    if isinstance(command_info, str):
+        add_in_logs(
+            linter,
+            log_key,
+            [f"{log_key} run: ERROR command_info type: {command_info}"],
+        )
+        return {
+            "command_info": command_info,
+            "status": 0,
+            "stdout": f"Command info is a string ({command_info}), should be a dict",
+        }
     if command_info.get("cwd", "root") == "workspace":
         cwd = mega_linter.workspace
         # Secure env by default. Must be explicitly define to false in command definition to be disabled

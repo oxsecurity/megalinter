@@ -31,8 +31,15 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - mega-linter-runner
 
 - Linter versions upgrades (N)
-  - [checkstyle](https://checkstyle.org/) from 10.21.1 to **10.21.2** on 2025-01-26
 <!-- linter-versions-end -->
+
+## [v8.4.1] - 2024-01-??
+
+- Quick fix about PRE_COMMANDS crash (see <https://github.com/oxsecurity/megalinter/issues/4591>)
+
+- Linter versions upgrades (2)
+  - [checkstyle](https://checkstyle.org/) from 10.21.1 to **10.21.2** on 2025-01-26
+  - [stylelint](https://stylelint.io) from 16.14.0 to **16.14.1** on 2025-01-27
 
 ## [v8.4.0] - 2024-01-26
 
