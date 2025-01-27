@@ -76,6 +76,8 @@ ARG APK_MUSL_DEV_VERSION=1.2.5-r8
 ARG APK_OPENSSH_VERSION=9.9_p1-r2
 # renovate: datasource=repology depName=alpine_3_21/go
 ARG APK_GO_VERSION=1.23.5-r0
+
+ARG GO_REVIVE_VERSION
 #ARG__END
 
 ####################

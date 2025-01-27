@@ -75,6 +75,9 @@ ARG APK_MUSL_DEV_VERSION=1.2.5-r8
 ARG APK_OPENSSH_VERSION=9.9_p1-r2
 # renovate: datasource=repology depName=alpine_3_21/py3-pyflakes
 ARG APK_PY3_PYFLAKES_VERSION=3.2.0-r1
+
+ARG ACTION_ACTIONLINT_VERSION
+ARG BASH_SHELLCHECK_VERSION
 #ARG__END
 
 ####################

@@ -22,6 +22,7 @@ ARG REPOSITORY_DUSTILOCK_VERSION=1.2.0
 #############################################################################################
 #FROM__START
 FROM golang:alpine AS dustilock
+ARG APK_GIT_VERSION
 ARG REPOSITORY_DUSTILOCK_VERSION
 RUN apk add --no-cache git=${APK_GIT_VERSION} && GOBIN=/usr/bin go install github.com/checkmarx/dustilock@v${REPOSITORY_DUSTILOCK_VERSION}
 #FROM__END
@@ -71,6 +72,9 @@ ARG APK_MAKE_VERSION=4.4.1-r2
 ARG APK_MUSL_DEV_VERSION=1.2.5-r8
 # renovate: datasource=repology depName=alpine_3_21/openssh
 ARG APK_OPENSSH_VERSION=9.9_p1-r2
+
+ARG APK_GIT_VERSION
+ARG REPOSITORY_DUSTILOCK_VERSION
 #ARG__END
 
 ####################

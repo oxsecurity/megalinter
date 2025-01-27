@@ -445,6 +445,7 @@ def build_dockerfile(
     all_from_instructions = "\n".join(list(dict.fromkeys(docker_from)))
     docker_arg_top = []
     docker_arg_main = []
+    docker_arg_main_extra = []
     for docker_arg_item in docker_arg:
         match = re.match(
             r"(?:# renovate: .*\n)?ARG\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*=?\s*",
@@ -455,6 +456,14 @@ def build_dockerfile(
             docker_arg_top += [docker_arg_item]
         else:
             docker_arg_main += [docker_arg_item]
+        
+        if docker_arg_item in docker_arg_top:
+            docker_arg_main_extra += [f"ARG {arg_name}"]
+
+    if len(docker_arg_main_extra) > 0:
+        docker_arg_main_extra.insert(0, '')
+        
+        docker_arg_main += docker_arg_main_extra
     # Replace between tags in Dockerfile
     # Commands
     replace_in_file(

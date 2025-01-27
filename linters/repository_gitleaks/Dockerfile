@@ -69,6 +69,8 @@ ARG APK_MAKE_VERSION=4.4.1-r2
 ARG APK_MUSL_DEV_VERSION=1.2.5-r8
 # renovate: datasource=repology depName=alpine_3_21/openssh
 ARG APK_OPENSSH_VERSION=9.9_p1-r2
+
+ARG REPOSITORY_GITLEAKS_VERSION
 #ARG__END
 
 ####################

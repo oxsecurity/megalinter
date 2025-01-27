@@ -71,6 +71,8 @@ ARG APK_MUSL_DEV_VERSION=1.2.5-r8
 ARG APK_OPENSSH_VERSION=9.9_p1-r2
 # renovate: datasource=crate depName=shellcheck-sarif
 ARG CARGO_SHELLCHECK_SARIF_VERSION=0.7.0
+
+ARG BASH_SHELLCHECK_VERSION
 #ARG__END
 
 ####################
