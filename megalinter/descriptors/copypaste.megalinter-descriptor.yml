@@ -51,20 +51,7 @@ linters:
       - "jscpd --output ./report/copy-paste/ ."
       - "jscpd --output ./report/copy-paste/ -c .jscpd.json ."
     install:
-      apk:
-        - nodejs=${APK_NODEJS_VERSION}
-        - npm=${APK_NPM_VERSION}
-        - yarn=${APK_YARN_VERSION}
       dockerfile:
-        - |-
-          # renovate: datasource=repology depName=alpine_3_21/nodejs
-          ARG APK_NODEJS_VERSION=22.11.0-r1
-        - |-
-          # renovate: datasource=repology depName=alpine_3_21/npm
-          ARG APK_NPM_VERSION=10.9.1-r0
-        - |-
-          # renovate: datasource=repology depName=alpine_3_21/yarn
-          ARG APK_YARN_VERSION=1.22.22-r1
         - |-
           # renovate: datasource=npm depName=jscpd
           ARG NPM_JSCPD_VERSION=4.0.5

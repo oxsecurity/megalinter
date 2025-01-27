@@ -86,12 +86,6 @@ ARG APK_OPENSSH_VERSION=9.9_p1-r2
 ARG CARGO_SARIF_FMT_VERSION=0.7.0
 # renovate: datasource=crate depName=shellcheck-sarif
 ARG CARGO_SHELLCHECK_SARIF_VERSION=0.7.0
-# renovate: datasource=repology depName=alpine_3_21/nodejs
-ARG APK_NODEJS_VERSION=22.11.0-r1
-# renovate: datasource=repology depName=alpine_3_21/npm
-ARG APK_NPM_VERSION=10.9.1-r0
-# renovate: datasource=repology depName=alpine_3_21/yarn
-ARG APK_YARN_VERSION=1.22.22-r1
 # renovate: datasource=npm depName=jscpd
 ARG NPM_JSCPD_VERSION=4.0.5
 # renovate: datasource=repology depName=alpine_3_21/openjdk17
@@ -128,8 +122,12 @@ ARG APK_LIBXML2_DEV_VERSION=2.13.4-r3
 ARG APK_LIBXML2_UTILS_VERSION=2.13.4-r3
 # renovate: datasource=pypi depName=yamllint
 ARG PIP_YAMLLINT_VERSION=1.35.1
+# renovate: datasource=repology depName=alpine_3_21/npm
+ARG APK_NPM_VERSION=10.9.1-r0
 # renovate: datasource=repology depName=alpine_3_21/nodejs-current
 ARG APK_NODEJS_CURRENT_VERSION=23.2.0-r1
+# renovate: datasource=repology depName=alpine_3_21/yarn
+ARG APK_YARN_VERSION=1.22.22-r1
 
 ARG BASH_SHELLCHECK_VERSION
 ARG BASH_SHFMT_VERSION
@@ -159,15 +157,14 @@ RUN apk add --no-cache \
                 make=${APK_MAKE_VERSION} \
                 musl-dev=${APK_MUSL_DEV_VERSION} \
                 openssh=${APK_OPENSSH_VERSION} \
-                nodejs=${APK_NODEJS_VERSION} \
-                npm=${APK_NPM_VERSION} \
-                yarn=${APK_YARN_VERSION} \
                 openjdk17=${APK_OPENJDK17_VERSION} \
                 libc-dev=${APK_LIBC_DEV_VERSION} \
                 libxml2-dev=${APK_LIBXML2_DEV_VERSION} \
                 libxml2-utils=${APK_LIBXML2_UTILS_VERSION} \
                 libgcc=${APK_LIBGCC_VERSION} \
+                npm=${APK_NPM_VERSION} \
                 nodejs-current=${APK_NODEJS_CURRENT_VERSION} \
+                yarn=${APK_YARN_VERSION} \
     && git config --global core.autocrlf true
 #APK__END
 

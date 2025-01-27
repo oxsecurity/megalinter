@@ -136,12 +136,6 @@ ARG BICEP_DIR='/usr/local/bin'
 ARG PIP_CPPLINT_VERSION=2.0.0
 # renovate: datasource=npm depName=@coffeelint/cli
 ARG NPM_COFFEELINT_CLI_VERSION=5.2.11
-# renovate: datasource=repology depName=alpine_3_21/nodejs
-ARG APK_NODEJS_VERSION=22.11.0-r1
-# renovate: datasource=repology depName=alpine_3_21/npm
-ARG APK_NPM_VERSION=10.9.1-r0
-# renovate: datasource=repology depName=alpine_3_21/yarn
-ARG APK_YARN_VERSION=1.22.22-r1
 # renovate: datasource=npm depName=jscpd
 ARG NPM_JSCPD_VERSION=4.0.5
 # renovate: datasource=nuget depName=csharpier
@@ -289,8 +283,12 @@ ARG APK_LIBXML2_DEV_VERSION=2.13.4-r3
 ARG APK_LIBXML2_UTILS_VERSION=2.13.4-r3
 # renovate: datasource=pypi depName=yamllint
 ARG PIP_YAMLLINT_VERSION=1.35.1
+# renovate: datasource=repology depName=alpine_3_21/npm
+ARG APK_NPM_VERSION=10.9.1-r0
 # renovate: datasource=repology depName=alpine_3_21/nodejs-current
 ARG APK_NODEJS_CURRENT_VERSION=23.2.0-r1
+# renovate: datasource=repology depName=alpine_3_21/yarn
+ARG APK_YARN_VERSION=1.22.22-r1
 
 ARG ACTION_ACTIONLINT_VERSION
 ARG BASH_SHELLCHECK_VERSION
@@ -329,9 +327,6 @@ RUN apk add --no-cache \
                 icu-libs=${APK_ICU_LIBS_VERSION} \
                 openjdk21=${APK_OPENJDK21_VERSION} \
                 py3-pyflakes=${APK_PY3_PYFLAKES_VERSION} \
-                nodejs=${APK_NODEJS_VERSION} \
-                npm=${APK_NPM_VERSION} \
-                yarn=${APK_YARN_VERSION} \
                 openjdk17=${APK_OPENJDK17_VERSION} \
                 helm=${APK_HELM_VERSION} \
                 gcompat=${APK_GCOMPAT_VERSION} \
@@ -341,7 +336,9 @@ RUN apk add --no-cache \
                 libxml2-dev=${APK_LIBXML2_DEV_VERSION} \
                 libxml2-utils=${APK_LIBXML2_UTILS_VERSION} \
                 libgcc=${APK_LIBGCC_VERSION} \
+                npm=${APK_NPM_VERSION} \
                 nodejs-current=${APK_NODEJS_CURRENT_VERSION} \
+                yarn=${APK_YARN_VERSION} \
     && git config --global core.autocrlf true
 #APK__END
 

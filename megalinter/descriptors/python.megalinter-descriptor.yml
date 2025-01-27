@@ -362,12 +362,7 @@ linters:
       - "pyright myfile.py myfile2.py"
       - "pyright myfile.py"
     install:
-      apk:
-        - nodejs=${APK_NODEJS_VERSION}
       dockerfile:
-        - |-
-          # renovate: datasource=repology depName=alpine_3_21/nodejs
-          ARG APK_NODEJS_VERSION=22.11.0-r1
         - |-
           # renovate: datasource=pypi depName=pyright
           ARG PIP_PYRIGHT_VERSION=1.1.392.post0

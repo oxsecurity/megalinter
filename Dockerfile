@@ -223,12 +223,6 @@ ARG CLJ_STYLE_VERSION=0.17.642
 ARG PIP_CFN_LINT_VERSION=1.22.7
 # renovate: datasource=npm depName=@coffeelint/cli
 ARG NPM_COFFEELINT_CLI_VERSION=5.2.11
-# renovate: datasource=repology depName=alpine_3_21/nodejs
-ARG APK_NODEJS_VERSION=22.11.0-r1
-# renovate: datasource=repology depName=alpine_3_21/npm
-ARG APK_NPM_VERSION=10.9.1-r0
-# renovate: datasource=repology depName=alpine_3_21/yarn
-ARG APK_YARN_VERSION=1.22.22-r1
 # renovate: datasource=npm depName=jscpd
 ARG NPM_JSCPD_VERSION=4.0.5
 # renovate: datasource=nuget depName=csharpier
@@ -465,8 +459,12 @@ ARG NPM_TYPESCRIPT_ESLINT_PARSER_VERSION=8.21.0
 ARG NPM_TS_STANDARD_VERSION=12.0.2
 # renovate: datasource=pypi depName=yamllint
 ARG PIP_YAMLLINT_VERSION=1.35.1
+# renovate: datasource=repology depName=alpine_3_21/npm
+ARG APK_NPM_VERSION=10.9.1-r0
 # renovate: datasource=repology depName=alpine_3_21/nodejs-current
 ARG APK_NODEJS_CURRENT_VERSION=23.2.0-r1
+# renovate: datasource=repology depName=alpine_3_21/yarn
+ARG APK_YARN_VERSION=1.22.22-r1
 # renovate: datasource=repology depName=alpine_3_21/ruby
 ARG APK_RUBY_VERSION=3.3.6-r0
 # renovate: datasource=repology depName=alpine_3_21/ruby-dev
@@ -542,9 +540,6 @@ RUN apk add --no-cache \
                 coreutils=${APK_COREUTILS_VERSION} \
                 py3-pyflakes=${APK_PY3_PYFLAKES_VERSION} \
                 clang19-extra-tools=${APK_CLANG19_EXTRA_TOOLS_VERSION} \
-                nodejs=${APK_NODEJS_VERSION} \
-                npm=${APK_NPM_VERSION} \
-                yarn=${APK_YARN_VERSION} \
                 openjdk17=${APK_OPENJDK17_VERSION} \
                 helm=${APK_HELM_VERSION} \
                 gcompat=${APK_GCOMPAT_VERSION} \
@@ -562,7 +557,9 @@ RUN apk add --no-cache \
                 R=${APK_R_VERSION} \
                 R-dev=${APK_R_DEV_VERSION} \
                 R-doc=${APK_R_DOC_VERSION} \
+                npm=${APK_NPM_VERSION} \
                 nodejs-current=${APK_NODEJS_CURRENT_VERSION} \
+                yarn=${APK_YARN_VERSION} \
                 ruby=${APK_RUBY_VERSION} \
                 ruby-dev=${APK_RUBY_DEV_VERSION} \
                 ruby-bundler=${APK_RUBY_BUNDLER_VERSION} \

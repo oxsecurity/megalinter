@@ -68,8 +68,6 @@ ARG APK_MAKE_VERSION=4.4.1-r2
 ARG APK_MUSL_DEV_VERSION=1.2.5-r8
 # renovate: datasource=repology depName=alpine_3_21/openssh
 ARG APK_OPENSSH_VERSION=9.9_p1-r2
-# renovate: datasource=repology depName=alpine_3_21/nodejs
-ARG APK_NODEJS_VERSION=22.11.0-r1
 # renovate: datasource=pypi depName=pyright
 ARG PIP_PYRIGHT_VERSION=1.1.392.post0
 #ARG__END
@@ -95,7 +93,6 @@ RUN apk add --no-cache \
                 make=${APK_MAKE_VERSION} \
                 musl-dev=${APK_MUSL_DEV_VERSION} \
                 openssh=${APK_OPENSSH_VERSION} \
-                nodejs=${APK_NODEJS_VERSION} \
     && git config --global core.autocrlf true
 #APK__END
 
