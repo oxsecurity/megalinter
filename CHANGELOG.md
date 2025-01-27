@@ -36,7 +36,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 ## [v8.4.1] - 2024-01-??
 
-- Quick fix about PRE_COMMANDS crash (see https://github.com/oxsecurity/megalinter/issues/4591)
+- Quick fix about PRE_COMMANDS crash (see <https://github.com/oxsecurity/megalinter/issues/4591>)
 
 ## [v8.4.0] - 2024-01-26
 

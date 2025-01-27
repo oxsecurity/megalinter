@@ -108,7 +108,7 @@ def run_command(command_info, log_key, mega_linter, linter=None):
             linter,
             log_key,
             [f"{log_key} run: ERROR command_info type: {command_info}"],
-        )        
+        )
         return {
             "command_info": command_info,
             "status": 0,
