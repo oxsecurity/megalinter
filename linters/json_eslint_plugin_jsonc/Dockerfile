@@ -69,7 +69,7 @@ ARG APK_MUSL_DEV_VERSION=1.2.5-r8
 # renovate: datasource=repology depName=alpine_3_21/openssh
 ARG APK_OPENSSH_VERSION=9.9_p1-r2
 # renovate: datasource=npm depName=eslint
-ARG NPM_ESLINT_VERSION=9.19.0
+ARG NPM_ESLINT_VERSION=8.57.0
 # renovate: datasource=npm depName=eslint-plugin-jsonc
 ARG NPM_ESLINT_PLUGIN_JSONC_VERSION=2.19.1
 # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif

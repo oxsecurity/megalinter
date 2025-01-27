@@ -57,13 +57,13 @@ linters:
           ARG NPM_TYPESCRIPT_VERSION=5.7.3
         - |-
           # renovate: datasource=npm depName=eslint
-          ARG NPM_ESLINT_VERSION=9.19.0
+          ARG NPM_ESLINT_VERSION=8.57.0
         - |-
           # renovate: datasource=npm depName=eslint-config-airbnb
-          ARG NPM_ESLINT_CONFIG_AIRBNB_VERSION=9.19.0
+          ARG NPM_ESLINT_CONFIG_AIRBNB_VERSION=19.0.4
         - |-
           # renovate: datasource=npm depName=eslint-config-prettier
-          ARG NPM_ESLINT_CONFIG_PRETTIER_VERSION=19.0.4
+          ARG NPM_ESLINT_CONFIG_PRETTIER_VERSION=10.0.1
         - |-
           # renovate: datasource=npm depName=eslint-plugin-jest
           ARG NPM_ESLINT_PLUGIN_JEST_VERSION=28.11.0

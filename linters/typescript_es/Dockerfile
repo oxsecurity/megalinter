@@ -71,11 +71,11 @@ ARG APK_OPENSSH_VERSION=9.9_p1-r2
 # renovate: datasource=npm depName=typescript
 ARG NPM_TYPESCRIPT_VERSION=5.7.3
 # renovate: datasource=npm depName=eslint
-ARG NPM_ESLINT_VERSION=9.19.0
+ARG NPM_ESLINT_VERSION=8.57.0
 # renovate: datasource=npm depName=eslint-config-airbnb
-ARG NPM_ESLINT_CONFIG_AIRBNB_VERSION=9.19.0
+ARG NPM_ESLINT_CONFIG_AIRBNB_VERSION=19.0.4
 # renovate: datasource=npm depName=eslint-config-prettier
-ARG NPM_ESLINT_CONFIG_PRETTIER_VERSION=19.0.4
+ARG NPM_ESLINT_CONFIG_PRETTIER_VERSION=10.0.1
 # renovate: datasource=npm depName=eslint-config-standard
 ARG NPM_ESLINT_CONFIG_STANDARD_VERSION=17.1.0
 # renovate: datasource=npm depName=eslint-plugin-import
@@ -87,7 +87,7 @@ ARG NPM_ESLINT_PLUGIN_NODE_VERSION=11.1.0
 # renovate: datasource=npm depName=eslint-plugin-prettier
 ARG NPM_ESLINT_PLUGIN_PRETTIER_VERSION=5.2.3
 # renovate: datasource=npm depName=eslint-plugin-promise
-ARG NPM_ESLINT_PLUGIN_PROMISE_VERSION=7.2.1
+ARG NPM_ESLINT_PLUGIN_PROMISE_VERSION=6.6.0
 # renovate: datasource=npm depName=@babel/eslint-parser
 ARG NPM_BABEL_ESLINT_PARSER_VERSION=7.26.5
 # renovate: datasource=npm depName=prettier

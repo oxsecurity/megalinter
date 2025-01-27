@@ -69,7 +69,7 @@ ARG APK_MUSL_DEV_VERSION=1.2.5-r8
 # renovate: datasource=repology depName=alpine_3_21/openssh
 ARG APK_OPENSSH_VERSION=9.9_p1-r2
 # renovate: datasource=npm depName=eslint
-ARG NPM_ESLINT_VERSION=9.19.0
+ARG NPM_ESLINT_VERSION=8.57.0
 # renovate: datasource=npm depName=eslint-plugin-react
 ARG NPM_ESLINT_PLUGIN_REACT_VERSION=7.37.4
 # renovate: datasource=npm depName=eslint-plugin-jsx-a11y
