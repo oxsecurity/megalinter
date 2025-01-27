@@ -96,7 +96,7 @@ class SarifReporter(Reporter):
                         os.remove(linter.sarif_output_file)
         result_json = json.dumps(sarif_obj, sort_keys=True, indent=4)
         # Remove workspace prefix from file names
-        result_json = result_json.replace("file:///github/workspace", "")
+        result_json = result_json.replace("file:///github/workspace/", "")
         result_json = normalize_log_string(result_json)
         # Write output file
         sarif_file_name = f"{self.report_folder}{os.path.sep}" + config.get(
