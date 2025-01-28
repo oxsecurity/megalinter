@@ -71,7 +71,7 @@ ARG APK_OPENSSH_VERSION=9.9_p1-r2
 # renovate: datasource=repology depName=alpine_3_21/icu-libs
 ARG APK_ICU_LIBS_VERSION=74.2-r0
 # renovate: datasource=github-tags depName=PowerShell/PowerShell
-ARG POWERSHELL_VERSION=7.4.6
+ARG POWERSHELL_VERSION=7.5.0
 
 # renovate: datasource=github-tags depName=Azure/arm-ttk
 ARG ARM_TTK_VERSION=20240328

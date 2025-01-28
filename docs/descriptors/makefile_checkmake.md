@@ -9,7 +9,7 @@ description: How to use checkmake (configure, ignore files, ignore errors, help 
 
 _This linter has been disabled in this version_
 
-_Disabled reason: Security issues: https://github.com/mrtazz/checkmake/issues/99_
+_Disabled reason: Security issues: <https://github.com/mrtazz/checkmake/issues/99>_
 
 ## checkmake documentation
 
@@ -21,8 +21,8 @@ _Disabled reason: Security issues: https://github.com/mrtazz/checkmake/issues/99
 
 ## Configuration in MegaLinter
 
-- Enable checkmake by adding `MAKEFILE_CHECKMAKE` in [ENABLE_LINTERS variable](https://megalinter.io/8.4.1/configuration/#activation-and-deactivation)
-- Disable checkmake by adding `MAKEFILE_CHECKMAKE` in [DISABLE_LINTERS variable](https://megalinter.io/8.4.1/configuration/#activation-and-deactivation)
+- Enable checkmake by adding `MAKEFILE_CHECKMAKE` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
+- Disable checkmake by adding `MAKEFILE_CHECKMAKE` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
 | Variable                                       | Description                                                                                                                                                                                  | Default value                                   |
 |------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
@@ -46,9 +46,9 @@ _Disabled reason: Security issues: https://github.com/mrtazz/checkmake/issues/99
 
 This linter is available in the following flavors
 
-|                                                                         <!-- -->                                                                         | Flavor                                                | Description               | Embedded linters |                                                                                                                                                                         Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------|:--------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/8.4.1/supported-linters/) | Default MegaLinter Flavor |       125        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v8.4.1) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|                                                                         <!-- -->                                                                         | Flavor                                               | Description               | Embedded linters |                                                                                                                                                                       Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       125        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 
 ## Behind the scenes
 

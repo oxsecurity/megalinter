@@ -80,7 +80,7 @@ ARG APK_DOTNET9_SDK_VERSION=9.0.102-r0
 # renovate: datasource=repology depName=alpine_3_21/icu-libs
 ARG APK_ICU_LIBS_VERSION=74.2-r0
 # renovate: datasource=github-tags depName=PowerShell/PowerShell
-ARG POWERSHELL_VERSION=7.4.6
+ARG POWERSHELL_VERSION=7.5.0
 
 # renovate: datasource=npm depName=typescript
 ARG NPM_TYPESCRIPT_VERSION=5.7.3

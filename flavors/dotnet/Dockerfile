@@ -21,7 +21,7 @@ ARG BASH_SHFMT_VERSION=v3.10.0-alpine
 # renovate: datasource=docker depName=hadolint/hadolint
 ARG DOCKERFILE_HADOLINT_VERSION=v2.12.0-alpine
 # renovate: datasource=docker depName=mstruebing/editorconfig-checker
-ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=v3.1.2
+ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=v3.2.0
 # renovate: datasource=docker depName=ghcr.io/yannh/kubeconform
 ARG KUBERNETES_KUBECONFORM_VERSION=v0.6.7-alpine
 # renovate: datasource=docker depName=yoheimuta/protolint
@@ -108,7 +108,7 @@ ARG CARGO_SARIF_FMT_VERSION=0.7.0
 # renovate: datasource=repology depName=alpine_3_21/icu-libs
 ARG APK_ICU_LIBS_VERSION=74.2-r0
 # renovate: datasource=github-tags depName=PowerShell/PowerShell
-ARG POWERSHELL_VERSION=7.4.6
+ARG POWERSHELL_VERSION=7.5.0
 
 # renovate: datasource=repology depName=alpine_3_21/dotnet9-sdk
 ARG APK_DOTNET9_SDK_VERSION=9.0.102-r0
