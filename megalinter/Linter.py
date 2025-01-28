@@ -1149,6 +1149,7 @@ class Linter:
         subprocess_env = {
             **config.build_env(self.request_id, True, self.unsecured_env_variables),
             "FORCE_COLOR": "0",
+            "NO_COLOR": "true",
         }
         try:
             process = subprocess.run(
