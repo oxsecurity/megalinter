@@ -77,9 +77,9 @@ ARG NPM_SALESFORCE_CLI_VERSION=2.72.21
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
 ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.9.12
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=5.16.4
+ARG SFDX_HARDIS_VERSION=5.17.1
 # renovate: datasource=npm depName=lightning-flow-scanner
-ARG LIGHTNING_FLOW_SCANNER_VERSION=2.39.0
+ARG LIGHTNING_FLOW_SCANNER_VERSION=2.43.0
 # renovate: datasource=repology depName=alpine_3_21/npm
 ARG APK_NPM_VERSION=10.9.1-r0
 # renovate: datasource=repology depName=alpine_3_21/nodejs-current

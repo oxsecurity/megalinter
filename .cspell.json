@@ -978,6 +978,7 @@
         "kwargs",
         "lacheck",
         "langserver",
+        "LBFFI",
         "leveldb",
         "levn",
         "lexstatic",

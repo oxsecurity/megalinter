@@ -21,7 +21,7 @@ ARG BASH_SHFMT_VERSION=v3.10.0-alpine
 # renovate: datasource=docker depName=hadolint/hadolint
 ARG DOCKERFILE_HADOLINT_VERSION=v2.12.0-alpine
 # renovate: datasource=docker depName=mstruebing/editorconfig-checker
-ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=v3.1.2
+ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=v3.2.0
 # renovate: datasource=docker depName=ghcr.io/yannh/kubeconform
 ARG KUBERNETES_KUBECONFORM_VERSION=v0.6.7-alpine
 # renovate: datasource=docker depName=yoheimuta/protolint
@@ -114,7 +114,7 @@ ARG NPM_SALESFORCE_CLI_VERSION=2.72.21
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
 ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.9.12
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=5.16.4
+ARG SFDX_HARDIS_VERSION=5.17.1
 # renovate: datasource=repology depName=alpine_3_21/py3-pyflakes
 ARG APK_PY3_PYFLAKES_VERSION=3.2.0-r1
 # renovate: datasource=pypi depName=ansible-lint
@@ -198,7 +198,7 @@ ARG REPOSITORY_TRIVY_SBOM_VERSION=0.58.2
 # renovate: datasource=npm depName=@salesforce/sfdx-scanner
 ARG SALESFORCE_SFDX_SCANNER_VERSION=4.8.0
 # renovate: datasource=npm depName=lightning-flow-scanner
-ARG LIGHTNING_FLOW_SCANNER_VERSION=2.39.0
+ARG LIGHTNING_FLOW_SCANNER_VERSION=2.43.0
 # renovate: datasource=pypi depName=snakefmt
 ARG PIP_SNAKEFMT_VERSION=0.10.2
 # renovate: datasource=npm depName=cspell
