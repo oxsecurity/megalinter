@@ -27,19 +27,19 @@ from bs4 import BeautifulSoup
 from giturlparse import parse
 from megalinter import config, utils
 from megalinter.constants import (
-    DEFAULT_DOCKERFILE_ARGS,
     DEFAULT_DOCKERFILE_APK_PACKAGES,
-    DEFAULT_DOCKERFILE_DOCKER_ARGS,
+    DEFAULT_DOCKERFILE_ARGS,
     DEFAULT_DOCKERFILE_DOCKER_APK_PACKAGES,
-    DEFAULT_DOCKERFILE_NPM_ARGS,
-    DEFAULT_DOCKERFILE_NPM_APK_PACKAGES,
-    DEFAULT_DOCKERFILE_GEM_ARGS,
+    DEFAULT_DOCKERFILE_DOCKER_ARGS,
+    DEFAULT_DOCKERFILE_FLAVOR_ARGS,
+    DEFAULT_DOCKERFILE_FLAVOR_CARGO_PACKAGES,
     DEFAULT_DOCKERFILE_GEM_APK_PACKAGES,
+    DEFAULT_DOCKERFILE_GEM_ARGS,
+    DEFAULT_DOCKERFILE_NPM_APK_PACKAGES,
+    DEFAULT_DOCKERFILE_NPM_ARGS,
     DEFAULT_DOCKERFILE_PIP_ARGS,
     DEFAULT_DOCKERFILE_PIPENV_ARGS,
     DEFAULT_DOCKERFILE_RUST_ARGS,
-    DEFAULT_DOCKERFILE_FLAVOR_ARGS,
-    DEFAULT_DOCKERFILE_FLAVOR_CARGO_PACKAGES,
     DEFAULT_RELEASE,
     DEFAULT_REPORT_FOLDER_NAME,
     ML_DOC_URL_BASE,
@@ -465,13 +465,13 @@ def build_dockerfile(
             docker_arg_top += [docker_arg_item]
         else:
             docker_arg_main += [docker_arg_item]
-        
+
         if docker_arg_item in docker_arg_top:
             docker_arg_main_extra += [f"ARG {arg_name}"]
 
     if len(docker_arg_main_extra) > 0:
-        docker_arg_main_extra.insert(0, '')
-        
+        docker_arg_main_extra.insert(0, "")
+
         docker_arg_main += docker_arg_main_extra
     # Replace between tags in Dockerfile
     # Commands
