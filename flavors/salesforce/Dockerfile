@@ -108,7 +108,7 @@ ARG REPOSITORY_TRIVY_SBOM_VERSION=0.58.2
 # renovate: datasource=npm depName=@salesforce/sfdx-scanner
 ARG SALESFORCE_SFDX_SCANNER_VERSION=4.8.0
 # renovate: datasource=npm depName=lightning-flow-scanner
-ARG LIGHTNING_FLOW_SCANNER_VERSION=2.39.0
+ARG LIGHTNING_FLOW_SCANNER_VERSION=2.43.0
 # renovate: datasource=pypi depName=sqlfluff
 ARG SQL_SQLFLUFF_VERSION=3.3.0
 #ARG__END
