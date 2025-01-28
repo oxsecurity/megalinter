@@ -15,7 +15,7 @@ description: How to use editorconfig-checker (configure, ignore files, ignore er
 
 ## editorconfig-checker documentation
 
-- Version in MegaLinter: **3.1.2**
+- Version in MegaLinter: **3.2.0**
 - Visit [Official Web Site](https://editorconfig-checker.github.io/){target=_blank}
 - See [How to configure editorconfig-checker rules](https://github.com/editorconfig-checker/editorconfig-checker#configuration){target=_blank}
 - See [How to disable editorconfig-checker rules in files](https://github.com/editorconfig-checker/editorconfig-checker#excluding){target=_blank}
@@ -92,6 +92,8 @@ editorconfig-checker myfile.js
 
 ```shell
 USAGE:
+  -color
+      enables printing color
   -config string
       config
   -debug
@@ -124,7 +126,7 @@ USAGE:
   -init
       creates an initial configuration
   -no-color
-      dont print colors
+      disables printing color
   -v  print debugging information
   -verbose
       print debugging information
@@ -137,7 +139,7 @@ USAGE:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=docker depName=mstruebing/editorconfig-checker
-ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=v3.1.2
+ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=v3.2.0
 FROM mstruebing/editorconfig-checker:${EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION} AS editorconfig-checker
 COPY --link --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
 ```

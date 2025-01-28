@@ -32,6 +32,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Linter versions upgrades (N)
   - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 2.39.0 to **2.43.0** on 2025-01-28
+  - [editorconfig-checker](https://editorconfig-checker.github.io/) from 3.1.2 to **3.2.0** on 2025-01-28
+  - [powershell_formatter](https://github.com/PowerShell/PSScriptAnalyzer) from 7.4.6 to **7.5.0** on 2025-01-28
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.4.6 to **7.5.0** on 2025-01-28
 <!-- linter-versions-end -->
 
 ## [v8.4.1] - 2024-01-??
