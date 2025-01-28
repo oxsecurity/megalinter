@@ -19,6 +19,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Linters enhancements
 
 - Fixes
+  - [GH-4610](https://github.com/oxsecurity/megalinter/issues/4610) : PHP CS Fixer linter version available is not correct since running on PHP 8.4 runtime (by @llaville)
 
 - Reporters
 

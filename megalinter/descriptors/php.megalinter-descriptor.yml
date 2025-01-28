@@ -183,6 +183,7 @@ linters:
     cli_config_arg_name: "--config"
     cli_lint_fix_remove_args:
       - "--dry-run"
+    version_extract_regex: "(?<=PHP CS Fixer )\\d+(\\.\\d+)+"
     examples:
       - "php-cs-fixer check myfile.php"
       - "php-cs-fixer check mydir"
