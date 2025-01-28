@@ -31,6 +31,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - mega-linter-runner
 
 - Linter versions upgrades (N)
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 2.39.0 to **2.43.0** on 2025-01-28
 <!-- linter-versions-end -->
 
 ## [v8.4.1] - 2024-01-??
