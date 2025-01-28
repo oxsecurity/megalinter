@@ -19,6 +19,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Linters enhancements
 
 - Fixes
+  - [GH-4610](https://github.com/oxsecurity/megalinter/issues/4610) : PHP CS Fixer linter version available is not correct since running on PHP 8.4 runtime (by @llaville)
 
 - Reporters
 
@@ -35,6 +36,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [editorconfig-checker](https://editorconfig-checker.github.io/) from 3.1.2 to **3.2.0** on 2025-01-28
   - [powershell_formatter](https://github.com/PowerShell/PSScriptAnalyzer) from 7.4.6 to **7.5.0** on 2025-01-28
   - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.4.6 to **7.5.0** on 2025-01-28
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.68.0 to **3.68.3** on 2025-01-28
 <!-- linter-versions-end -->
 
 ## [v8.4.1] - 2024-01-??
