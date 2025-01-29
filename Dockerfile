@@ -135,7 +135,7 @@ ARG CLJ_STYLE_VERSION=0.17.642
 # renovate: datasource=nuget depName=csharpier
 ARG CSHARP_CSHARPIER_VERSION=0.30.6
 # renovate: datasource=nuget depName=roslynator.dotnet.cli
-ARG CSHARP_ROSLYNATOR_VERSION=0.9.3
+ARG CSHARP_ROSLYNATOR_VERSION=0.10.0
 # renovate: datasource=dart-version depName=dart
 ARG DART_VERSION='3.6.1'
 # renovate: datasource=github-tags depName=golangci/golangci-lint
