@@ -167,7 +167,7 @@ ARG PERL_PERLCRITIC_VERSION=0.997021
 ARG PSSA_VERSION='1.23.0'
 
 # renovate: datasource=github-tags depName=nxadm/rakudo-pkg
-ARG RAKU_RAKU_VERSION=2024.10
+ARG RAKU_RAKU_VERSION=2024.12
 ARG RAKU_RAKU_ALPINE_VERSION=3.20
 
 # renovate: datasource=nuget depName=Microsoft.CST.DevSkim.CLI
