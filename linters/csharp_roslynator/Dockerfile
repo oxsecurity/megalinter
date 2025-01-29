@@ -151,7 +151,7 @@ RUN apk add --no-cache dotnet9-sdk
 ENV PATH="${PATH}:/root/.dotnet/tools"
 #
 # roslynator installation
-RUN dotnet tool install -g roslynator.dotnet.cli --version "${CSHARP_ROSLYNATOR_VERSION}"
+RUN dotnet tool install --allow-roll-forward --global roslynator.dotnet.cli --version "${CSHARP_ROSLYNATOR_VERSION}"
 #
 #OTHER__END
 

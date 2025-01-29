@@ -646,10 +646,10 @@ RUN curl --retry 5 --retry-delay 5 -sLO "https://github.com/Azure/arm-ttk/releas
     && ./install-cljstyle --static --version "$CLJ_STYLE_VERSION" \
 #
 # csharpier installation
-    && dotnet tool install --global csharpier --version "${CSHARP_CSHARPIER_VERSION}" \
+    && dotnet tool install --allow-roll-forward --global csharpier --version "${CSHARP_CSHARPIER_VERSION}" \
 #
 # roslynator installation
-    && dotnet tool install -g roslynator.dotnet.cli --version "${CSHARP_ROSLYNATOR_VERSION}" \
+    && dotnet tool install --allow-roll-forward --global roslynator.dotnet.cli --version "${CSHARP_ROSLYNATOR_VERSION}" \
 #
 # dartanalyzer installation
     && wget --tries=5 https://storage.googleapis.com/dart-archive/channels/stable/release/${DART_VERSION}/sdk/dartsdk-linux-x64-release.zip -O - -q | unzip -q - \
@@ -794,7 +794,7 @@ ENV PATH="~/.raku/bin:/opt/rakudo-pkg/bin:/opt/rakudo-pkg/share/perl6/site/bin:$
 # RUN apk add --no-cache dotnet9-sdk
 # Next line commented because already managed by another linter
 # ENV PATH="${PATH}:/root/.dotnet/tools"
-RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI --version ${REPOSITORY_DEVSKIM_VERSION} \
+RUN dotnet tool install --allow-roll-forward --global Microsoft.CST.DevSkim.CLI --version ${REPOSITORY_DEVSKIM_VERSION} \
 #
 # dustilock installation
 # Managed with COPY --link --from=dustilock /usr/bin/dustilock /usr/bin/dustilock
@@ -862,7 +862,7 @@ RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/refs/tags/v${REPOS
 # RUN apk add --no-cache dotnet9-sdk
 # Next line commented because already managed by another linter
 # ENV PATH="${PATH}:/root/.dotnet/tools"
-    && dotnet tool install --global TSQLLint --version ${SQL_TSQLLINT_VERSION}
+    && dotnet tool install --allow-roll-forward --global TSQLLint --version ${SQL_TSQLLINT_VERSION}
 #
 # tflint installation
 # Managed with COPY --link --from=tflint /usr/local/bin/tflint /usr/bin/

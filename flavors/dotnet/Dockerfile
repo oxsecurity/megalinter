@@ -355,10 +355,10 @@ RUN curl --retry 5 --retry-delay 5 -sLO "https://github.com/Azure/arm-ttk/releas
     && mv "${BICEP_EXE}" "${BICEP_DIR}" \
 #
 # csharpier installation
-    && dotnet tool install --global csharpier --version "${CSHARP_CSHARPIER_VERSION}" \
+    && dotnet tool install --allow-roll-forward --global csharpier --version "${CSHARP_CSHARPIER_VERSION}" \
 #
 # roslynator installation
-    && dotnet tool install -g roslynator.dotnet.cli --version "${CSHARP_ROSLYNATOR_VERSION}" \
+    && dotnet tool install --allow-roll-forward --global roslynator.dotnet.cli --version "${CSHARP_ROSLYNATOR_VERSION}" \
 #
 # hadolint installation
 # Managed with COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
@@ -434,7 +434,7 @@ RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/rel
 # RUN apk add --no-cache dotnet9-sdk
 # Next line commented because already managed by another linter
 # ENV PATH="${PATH}:/root/.dotnet/tools"
-    && dotnet tool install --global TSQLLint --version ${SQL_TSQLLINT_VERSION}
+    && dotnet tool install --allow-roll-forward --global TSQLLint --version ${SQL_TSQLLINT_VERSION}
 #
 #OTHER__END
 

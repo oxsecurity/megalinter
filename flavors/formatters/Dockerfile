@@ -210,10 +210,10 @@ RUN curl -L https://github.com/PowerShell/PowerShell/releases/download/v${POWERS
 # Managed with COPY --link --from=shfmt /bin/shfmt /usr/bin/
 #
 # csharpier installation
-    && dotnet tool install --global csharpier --version "${CSHARP_CSHARPIER_VERSION}" \
+    && dotnet tool install --allow-roll-forward --global csharpier --version "${CSHARP_CSHARPIER_VERSION}" \
 #
 # roslynator installation
-    && dotnet tool install -g roslynator.dotnet.cli --version "${CSHARP_ROSLYNATOR_VERSION}" \
+    && dotnet tool install --allow-roll-forward --global roslynator.dotnet.cli --version "${CSHARP_ROSLYNATOR_VERSION}" \
 #
 # powershell_formatter installation
     && pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSION} -Scope AllUsers -Force'

@@ -151,7 +151,7 @@ RUN apk add --no-cache dotnet9-sdk
 ENV PATH="${PATH}:/root/.dotnet/tools"
 #
 # csharpier installation
-RUN dotnet tool install --global csharpier --version "${CSHARP_CSHARPIER_VERSION}"
+RUN dotnet tool install --allow-roll-forward --global csharpier --version "${CSHARP_CSHARPIER_VERSION}"
 #
 #OTHER__END
 
