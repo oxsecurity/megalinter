@@ -3356,7 +3356,7 @@
 <p><a href="https://github.com/dotnet/Roslynator"><img alt="GitHub stars" src="https://img.shields.io/github/stars/dotnet/Roslynator?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-format-yellow"><img alt="formatter" src="https://shields.io/badge/-format-yellow"/></a> <a href="https://github.com/dotnet/Roslynator/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/dotnet/Roslynator?sort=semver"/></a> <a href="https://github.com/dotnet/Roslynator/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/dotnet/Roslynator"/></a> <a href="https://github.com/dotnet/Roslynator/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/dotnet/Roslynator"/></a> <a href="https://github.com/dotnet/Roslynator/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/dotnet/Roslynator"/></a></p>
 <h2 id="roslynator-documentation">roslynator documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>0.9.3.0</strong></li>
+<li>Version in MegaLinter: <strong>0.10.0.0</strong></li>
 <li>Visit <a href="https://github.com/dotnet/Roslynator#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://josefpihrt.github.io/docs/roslynator/configuration" target="_blank">How to configure roslynator rules</a></li>
 <li>See <a href="https://josefpihrt.github.io/docs/roslynator/how-to-suppress-diagnostic" target="_blank">How to disable roslynator rules in files</a></li>
@@ -3533,7 +3533,7 @@
 <pre><code class="language-shell">roslynator fix myproject.csproj
 </code></pre>
 <h3 id="help-content">Help content</h3>
-<pre><code class="language-shell">Roslynator Command Line Tool version 0.9.3.0 (Roslyn version 4.11.0.0)
+<pre><code class="language-shell">Roslynator Command Line Tool version 0.10.0.0 (Roslyn version 4.11.0.0)
 Usage: roslynator [command] [arguments]
 
 Commands:
@@ -3561,8 +3561,8 @@ RUN apk add --no-cache dotnet9-sdk
 ENV PATH="${PATH}:/root/.dotnet/tools"
 # Linter install
 # renovate: datasource=nuget depName=roslynator.dotnet.cli
-ARG CSHARP_ROSLYNATOR_VERSION=0.9.3
-RUN dotnet tool install -g roslynator.dotnet.cli --version "${CSHARP_ROSLYNATOR_VERSION}"
+ARG CSHARP_ROSLYNATOR_VERSION=0.10.0
+RUN dotnet tool install --allow-roll-forward --global roslynator.dotnet.cli --version "${CSHARP_ROSLYNATOR_VERSION}"
 </code></pre>
 </article>
 </div>
