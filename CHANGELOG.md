@@ -37,6 +37,20 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [powershell_formatter](https://github.com/PowerShell/PSScriptAnalyzer) from 7.4.6 to **7.5.0** on 2025-01-28
   - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.4.6 to **7.5.0** on 2025-01-28
   - [php-cs-fixer](https://cs.symfony.com/) from 3.68.0 to **3.68.3** on 2025-01-28
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 25.1.0 to **25.1.1** on 2025-01-30
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.22.7 to **1.23.0** on 2025-01-30
+  - [roslynator](https://github.com/dotnet/Roslynator) from 0.9.3.0 to **0.10.0.0** on 2025-01-30
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.68.3 to **3.68.4** on 2025-01-30
+  - [black](https://black.readthedocs.io/en/stable/) from 24.10.0 to **25.1.0** on 2025-01-30
+  - [isort](https://pycqa.github.io/isort/) from 5.13.2 to **6.0.0** on 2025-01-30
+  - [pylint](https://pylint.readthedocs.io) from 3.3.3 to **3.3.4** on 2025-01-30
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.392 to **1.1.393** on 2025-01-30
+  - [raku](https://raku.org/) from 2024.10 to **2024.12** on 2025-01-30
+  - [checkov](https://www.checkov.io/) from 3.2.357 to **3.2.358** on 2025-01-30
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 4.8.0 to **4.9.0** on 2025-01-30
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 4.8.0 to **4.9.0** on 2025-01-30
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 4.8.0 to **4.9.0** on 2025-01-30
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.17.2 to **8.17.3** on 2025-01-30
 <!-- linter-versions-end -->
 
 ## [v8.4.1] - 2024-01-??
