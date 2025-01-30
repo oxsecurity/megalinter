@@ -112,6 +112,6 @@ tsqllint [options] [file.sql] | [dir] | [file.sql | dir]
 ARG SQL_TSQLLINT_VERSION=1.16.0
 RUN apk add --no-cache dotnet9-sdk
 ENV PATH="${PATH}:/root/.dotnet/tools"
-RUN dotnet tool install --global TSQLLint --version ${SQL_TSQLLINT_VERSION}
+RUN dotnet tool install --allow-roll-forward --global TSQLLint --version ${SQL_TSQLLINT_VERSION}
 ```
 

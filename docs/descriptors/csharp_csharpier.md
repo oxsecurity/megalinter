@@ -126,6 +126,6 @@ ENV PATH="${PATH}:/root/.dotnet/tools"
 # Linter install
 # renovate: datasource=nuget depName=csharpier
 ARG CSHARP_CSHARPIER_VERSION=0.30.6
-RUN dotnet tool install --global csharpier --version "${CSHARP_CSHARPIER_VERSION}"
+RUN dotnet tool install --allow-roll-forward --global csharpier --version "${CSHARP_CSHARPIER_VERSION}"
 ```
 
