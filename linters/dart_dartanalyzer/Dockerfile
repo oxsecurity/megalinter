@@ -49,7 +49,7 @@ FROM python:3.12.8-alpine3.21
 #############################################################################################
 #ARG__START
 # renovate: datasource=dart-version depName=dart
-ARG DART_VERSION='3.6.2'
+ARG DART_VERSION='29803'
 #ARG__END
 
 ####################
