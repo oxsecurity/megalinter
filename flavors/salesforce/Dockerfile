@@ -88,7 +88,7 @@ ARG SALESFORCE_CLI_VERSION=2.74.6
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
 ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.9.14
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=5.17.1
+ARG SFDX_HARDIS_VERSION=5.17.4
 # renovate: datasource=github-tags depName=pinterest/ktlint
 ARG KTLINT_VERSION=1.5.0
 
