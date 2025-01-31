@@ -3699,7 +3699,7 @@
 </code></pre>
 <h2 id="devskim-documentation">devskim documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>1.0.51</strong></li>
+<li>Version in MegaLinter: <strong>1.0.52</strong></li>
 <li>Visit <a href="https://github.com/microsoft/DevSkim#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/microsoft/DevSkim/wiki/Analyze-Command" target="_blank">How to configure devskim rules</a><ul>
 <li>If custom <code>.devskim.json</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.devskim.json" target="_blank">.devskim.json</a> will be used</li>
@@ -3849,7 +3849,7 @@
 <pre><code class="language-shell">devskim analyze --file-format sarif --options-json config --source-code .
 </code></pre>
 <h3 id="help-content">Help content</h3>
-<pre><code class="language-shell">devskim 1.0.51+210b5d121e
+<pre><code class="language-shell">devskim 1.0.52+74513a99d4
 © Microsoft Corporation. All rights reserved.
 
   analyze     Analyze source code using DevSkim
@@ -3870,7 +3870,7 @@
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile"># renovate: datasource=nuget depName=Microsoft.CST.DevSkim.CLI
-ARG REPOSITORY_DEVSKIM_VERSION=1.0.51
+ARG REPOSITORY_DEVSKIM_VERSION=1.0.52
 RUN apk add --no-cache dotnet9-sdk
 ENV PATH="${PATH}:/root/.dotnet/tools"
 RUN dotnet tool install --allow-roll-forward --global Microsoft.CST.DevSkim.CLI --version ${REPOSITORY_DEVSKIM_VERSION}
