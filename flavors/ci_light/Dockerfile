@@ -153,7 +153,7 @@ ENV NODE_OPTIONS="--max-old-space-size=8192" \
 WORKDIR /node-deps
 RUN npm --no-cache install --ignore-scripts --omit=dev \
                 jscpd \
-                npm-groovy-lint \
+                npm-groovy-lint@15.0.0 \
                 @prantlf/jsonlint \
                 v8r \
                 prettier \

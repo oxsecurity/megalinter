@@ -265,7 +265,7 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 stylelint-scss \
                 graphql \
                 graphql-schema-linter \
-                npm-groovy-lint \
+                npm-groovy-lint@15.0.0 \
                 htmlhint \
                 eslint \
                 eslint-config-airbnb \
