@@ -15,7 +15,7 @@ description: How to use psalm (configure, ignore files, ignore errors, help & ve
 
 ## psalm documentation
 
-- Version in MegaLinter: **Psalm.6.0.0@**
+- Version in MegaLinter: **Psalm.6.1.0@**
 - Visit [Official Web Site](https://psalm.dev){target=_blank}
 - See [How to configure psalm rules](https://psalm.dev/docs/running_psalm/configuration/){target=_blank}
   - If custom `psalm.xml` config file isn't found, [psalm.xml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/psalm.xml){target=_blank} will be used
@@ -120,7 +120,10 @@ Basic configuration:
         If set, requires JIT acceleration to be available in order to run Psalm, exiting immediately if it cannot be enabled.
 
     --threads=INT
-        If greater than one, Psalm will run analysis on multiple threads, speeding things up.
+        If greater than one, Psalm will run the scan and analysis on multiple threads, speeding things up.
+
+    --scan-threads=INT
+        If greater than one, Psalm will run the scan on multiple threads, speeding things up (if specified, takes priority over the --threads flag).
 
     --no-diff
         Turns off Psalm’s diff mode, checks all files regardless of whether they’ve changed.

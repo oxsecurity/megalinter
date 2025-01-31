@@ -53,6 +53,15 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 4.8.0 to **4.9.0** on 2025-01-30
   - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 4.8.0 to **4.9.0** on 2025-01-30
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.17.2 to **8.17.3** on 2025-01-30
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.23.0 to **1.23.1** on 2025-01-31
+  - [dartanalyzer](https://dart.dev/tools/dart-analyze) from 3.6.1 to **3.6.2** on 2025-01-31
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 15.0.2 to **15.0.0** on 2025-01-31
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.68.4 to **3.68.5** on 2025-01-31
+  - [psalm](https://psalm.dev) from Psalm.6.0.0@ to **Psalm.6.1.0@** on 2025-01-31
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.9.3 to **0.9.4** on 2025-01-31
+  - [ruff](https://github.com/astral-sh/ruff) from 0.9.3 to **0.9.4** on 2025-01-31
+  - [checkov](https://www.checkov.io/) from 3.2.358 to **3.2.360** on 2025-01-31
+  - [devskim](https://github.com/microsoft/DevSkim) from 1.0.51 to **1.0.52** on 2025-01-31
 <!-- linter-versions-end -->
 
 ## [v8.4.1] - 2024-01-??
