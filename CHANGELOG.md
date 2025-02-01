@@ -63,6 +63,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 3.2.358 to **3.2.360** on 2025-01-31
   - [devskim](https://github.com/microsoft/DevSkim) from 1.0.51 to **1.0.52** on 2025-01-31
   - [rubocop](https://rubocop.org/) from 1.71.0 to **1.71.1** on 2025-01-31
+  - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.23.2 to **8.23.3** on 2025-02-01
 <!-- linter-versions-end -->
 
 ## [v8.4.1] - 2024-01-??
