@@ -31,7 +31,7 @@ ARG REPOSITORY_GITLEAKS_VERSION=v8.23.2
 # renovate: datasource=docker depName=checkmarx/kics
 ARG REPOSITORY_KICS_VERSION=v2.1.3-alpine
 # renovate: datasource=docker depName=trufflesecurity/trufflehog 
-ARG REPOSITORY_TRUFFLEHOG_VERSION=3.88.2
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.88.4
 # renovate: datasource=docker depName=lycheeverse/lychee
 ARG SPELL_LYCHEE_VERSION=sha-a11d515-alpine
 # renovate: datasource=docker depName=ghcr.io/terraform-linters/tflint
