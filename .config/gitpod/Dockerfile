@@ -59,7 +59,7 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # Set a variable for packages version
 # renovate: datasource=npm depName=npm
-ARG NPM_VERSION=11.0.0
+ARG NPM_VERSION=11.1.0
 # renovate: datasource=npm depName=ungit
 ARG UNGIT_VERSION=1.5.28
 # renovate: datasource=npm depName=mega-linter-runner
