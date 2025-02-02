@@ -55,6 +55,10 @@ description: List of all known articles, blog posts and videos that talk about M
 
 ## Videos
 
+- [(Brazilian) MegaLinter: Como Automatizar a Qualidade do Código para Todas Plataformas](https://www.youtube.com/watch?v=YSdZ3atC2j4), by [Codando TV](https://www.youtube.com/@hackitectsplayground)
+
+<div style="text-align:center"><iframe width="560" height="315" src="https://www.youtube.com/embed/YSdZ3atC2j4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+
 - [How to: Secrets scanning](https://youtu.be/iBMWAk5QIfM?si=EVcJilkz7Y2jdn6e&t=649), by [Hackitect's playground](https://www.youtube.com/@hackitectsplayground)
 
 <div style="text-align:center"><iframe width="560" height="315" src="https://www.youtube.com/embed/iBMWAk5QIfM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
