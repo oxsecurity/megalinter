@@ -64,6 +64,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [devskim](https://github.com/microsoft/DevSkim) from 1.0.51 to **1.0.52** on 2025-01-31
   - [rubocop](https://rubocop.org/) from 1.71.0 to **1.71.1** on 2025-01-31
   - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.23.2 to **8.23.3** on 2025-02-01
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.58.2 to **0.59.0** on 2025-02-02
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.58.2 to **0.59.0** on 2025-02-02
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.88.2 to **3.88.4** on 2025-02-02
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.55.0 to **0.55.1** on 2025-02-02
 <!-- linter-versions-end -->
 
 ## [v8.4.1] - 2024-01-??
