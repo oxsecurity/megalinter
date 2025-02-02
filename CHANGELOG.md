@@ -19,9 +19,6 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Linters enhancements
 
 - Fixes
-  - [GH-4610](https://github.com/oxsecurity/megalinter/issues/4610) : PHP CS Fixer linter version available is not correct since running on PHP 8.4 runtime (by @llaville)
-  - Allow cspell to work with CLI_LINT_MODE=project
-  - Downgrade npm-groovy-lint until it's fixed
 
 - Reporters
 
@@ -34,49 +31,58 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - mega-linter-runner
 
 - Linter versions upgrades (N)
-  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 2.39.0 to **2.43.0** on 2025-01-28
-  - [editorconfig-checker](https://editorconfig-checker.github.io/) from 3.1.2 to **3.2.0** on 2025-01-28
-  - [powershell_formatter](https://github.com/PowerShell/PSScriptAnalyzer) from 7.4.6 to **7.5.0** on 2025-01-28
-  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.4.6 to **7.5.0** on 2025-01-28
-  - [php-cs-fixer](https://cs.symfony.com/) from 3.68.0 to **3.68.3** on 2025-01-28
-  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 25.1.0 to **25.1.1** on 2025-01-30
-  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.22.7 to **1.23.0** on 2025-01-30
-  - [roslynator](https://github.com/dotnet/Roslynator) from 0.9.3.0 to **0.10.0.0** on 2025-01-30
-  - [php-cs-fixer](https://cs.symfony.com/) from 3.68.3 to **3.68.4** on 2025-01-30
-  - [black](https://black.readthedocs.io/en/stable/) from 24.10.0 to **25.1.0** on 2025-01-30
-  - [isort](https://pycqa.github.io/isort/) from 5.13.2 to **6.0.0** on 2025-01-30
-  - [pylint](https://pylint.readthedocs.io) from 3.3.3 to **3.3.4** on 2025-01-30
-  - [pyright](https://github.com/Microsoft/pyright) from 1.1.392 to **1.1.393** on 2025-01-30
-  - [raku](https://raku.org/) from 2024.10 to **2024.12** on 2025-01-30
-  - [checkov](https://www.checkov.io/) from 3.2.357 to **3.2.358** on 2025-01-30
-  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 4.8.0 to **4.9.0** on 2025-01-30
-  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 4.8.0 to **4.9.0** on 2025-01-30
-  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 4.8.0 to **4.9.0** on 2025-01-30
-  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.17.2 to **8.17.3** on 2025-01-30
-  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.23.0 to **1.23.1** on 2025-01-31
-  - [dartanalyzer](https://dart.dev/tools/dart-analyze) from 3.6.1 to **3.6.2** on 2025-01-31
-  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 15.0.2 to **15.0.0** on 2025-01-31
-  - [php-cs-fixer](https://cs.symfony.com/) from 3.68.4 to **3.68.5** on 2025-01-31
-  - [psalm](https://psalm.dev) from Psalm.6.0.0@ to **Psalm.6.1.0@** on 2025-01-31
-  - [ruff-format](https://github.com/astral-sh/ruff) from 0.9.3 to **0.9.4** on 2025-01-31
-  - [ruff](https://github.com/astral-sh/ruff) from 0.9.3 to **0.9.4** on 2025-01-31
-  - [checkov](https://www.checkov.io/) from 3.2.358 to **3.2.360** on 2025-01-31
-  - [devskim](https://github.com/microsoft/DevSkim) from 1.0.51 to **1.0.52** on 2025-01-31
-  - [rubocop](https://rubocop.org/) from 1.71.0 to **1.71.1** on 2025-01-31
-  - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.23.2 to **8.23.3** on 2025-02-01
-  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.58.2 to **0.59.0** on 2025-02-02
-  - [trivy](https://aquasecurity.github.io/trivy/) from 0.58.2 to **0.59.0** on 2025-02-02
-  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.88.2 to **3.88.4** on 2025-02-02
-  - [tflint](https://github.com/terraform-linters/tflint) from 0.55.0 to **0.55.1** on 2025-02-02
 <!-- linter-versions-end -->
 
-## [v8.4.1] - 2024-01-??
+## [v8.4.2] - 2024-02-02
+
+- Media
+  - New video [(Brazilian) MegaLinter: Como Automatizar a Qualidade do Código para Todas Plataformas](https://www.youtube.com/watch?v=YSdZ3atC2j4) , by Codando TV
+
+- Fixes
+  - Fix .NET linters issue: Add --allow-roll-forward to dotnet tool install commands, by @bdovaz in <https://github.com/oxsecurity/megalinter/pull/4619>
+  - [GH-4610](https://github.com/oxsecurity/megalinter/issues/4610) : PHP CS Fixer linter version available is not correct since running on PHP 8.4 runtime, by @llaville in <https://github.com/oxsecurity/megalinter/pull/4611>
+  - Allow cspell to work with CLI_LINT_MODE=project
+  - Downgrade npm-groovy-lint until it's fixed, by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/4628>
+
+- Linter versions upgrades (31)
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 25.1.0 to **25.1.1**
+  - [black](https://black.readthedocs.io/en/stable/) from 24.10.0 to **25.1.0**
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.22.7 to **1.23.1**
+  - [checkov](https://www.checkov.io/) from 3.2.357 to **3.2.360**
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.17.2 to **8.17.3**
+  - [dartanalyzer](https://dart.dev/tools/dart-analyze) from 3.6.1 to **3.6.2**
+  - [devskim](https://github.com/microsoft/DevSkim) from 1.0.51 to **1.0.52**
+  - [editorconfig-checker](https://editorconfig-checker.github.io/) from 3.1.2 to **3.2.0**
+  - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.23.2 to **8.23.3**
+  - [isort](https://pycqa.github.io/isort/) from 5.13.2 to **6.0.0**
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 2.39.0 to **2.43.0**
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 15.0.2 to **15.0.0**
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.68.0 to **3.68.5**
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.4.6 to **7.5.0**
+  - [powershell_formatter](https://github.com/PowerShell/PSScriptAnalyzer) from 7.4.6 to **7.5.0**
+  - [psalm](https://psalm.dev) from Psalm.6.0.0@ to **Psalm.6.1.0@**
+  - [pylint](https://pylint.readthedocs.io) from 3.3.3 to **3.3.4**
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.392 to **1.1.393**
+  - [raku](https://raku.org/) from 2024.10 to **2024.12**
+  - [roslynator](https://github.com/dotnet/Roslynator) from 0.9.3.0 to **0.10.0.0**
+  - [rubocop](https://rubocop.org/) from 1.71.0 to **1.71.1**
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.9.3 to **0.9.4**
+  - [ruff](https://github.com/astral-sh/ruff) from 0.9.3 to **0.9.4**
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 4.8.0 to **4.9.0**
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 4.8.0 to **4.9.0**
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 4.8.0 to **4.9.0**
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.55.0 to **0.55.1**
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.58.2 to **0.59.0**
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.58.2 to **0.59.0**
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.88.2 to **3.88.4**
+
+## [v8.4.1] - 2024-01-28
 
 - Quick fix about PRE_COMMANDS crash (see <https://github.com/oxsecurity/megalinter/issues/4591>)
 
 - Linter versions upgrades (2)
-  - [checkstyle](https://checkstyle.org/) from 10.21.1 to **10.21.2** on 2025-01-26
-  - [stylelint](https://stylelint.io) from 16.14.0 to **16.14.1** on 2025-01-27
+  - [checkstyle](https://checkstyle.org/) from 10.21.1 to **10.21.2**
+  - [stylelint](https://stylelint.io) from 16.14.0 to **16.14.1**
 
 ## [v8.4.0] - 2024-01-26
 
