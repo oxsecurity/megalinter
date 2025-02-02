@@ -39,10 +39,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - New video [(Brazilian) MegaLinter: Como Automatizar a Qualidade do Código para Todas Plataformas](https://www.youtube.com/watch?v=YSdZ3atC2j4) , by Codando TV
 
 - Fixes
-  - Fix .NET linters issue: Add --allow-roll-forward to dotnet tool install commands, by @bdovaz in https://github.com/oxsecurity/megalinter/pull/4619
-  - [GH-4610](https://github.com/oxsecurity/megalinter/issues/4610) : PHP CS Fixer linter version available is not correct since running on PHP 8.4 runtime, by @llaville in https://github.com/oxsecurity/megalinter/pull/4611
+  - Fix .NET linters issue: Add --allow-roll-forward to dotnet tool install commands, by @bdovaz in <https://github.com/oxsecurity/megalinter/pull/4619>
+  - [GH-4610](https://github.com/oxsecurity/megalinter/issues/4610) : PHP CS Fixer linter version available is not correct since running on PHP 8.4 runtime, by @llaville in <https://github.com/oxsecurity/megalinter/pull/4611>
   - Allow cspell to work with CLI_LINT_MODE=project
-  - Downgrade npm-groovy-lint until it's fixed, by @nvuillam in https://github.com/oxsecurity/megalinter/pull/4628
+  - Downgrade npm-groovy-lint until it's fixed, by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/4628>
 
 - Linter versions upgrades (31)
   - [ansible-lint](https://ansible-lint.readthedocs.io/) from 25.1.0 to **25.1.1**
