@@ -107,7 +107,7 @@ ARG CLJ_STYLE_VERSION=0.17.642
 # renovate: datasource=github-tags depName=golangci/golangci-lint
 ARG GO_GOLANGCI_LINT_VERSION=1.63.4
 # renovate: datasource=github-tags depName=pmd/pmd extractVersion=^pmd_releases/(?<version>.*)$
-ARG PMD_VERSION=7.9.0
+ARG PMD_VERSION=7.10.0
 
 # renovate: datasource=github-tags depName=pinterest/ktlint
 ARG KTLINT_VERSION=1.5.0
