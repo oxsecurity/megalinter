@@ -31,6 +31,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - mega-linter-runner
 
 - Linter versions upgrades (N)
+  - [pmd](https://pmd.github.io/) from 7.9.0 to **7.10.0** on 2025-02-03
+  - [psalm](https://psalm.dev) from Psalm.6.1.0@ to **Psalm.6.2.0@** on 2025-02-03
+  - [checkov](https://www.checkov.io/) from 3.2.360 to **3.2.362** on 2025-02-03
 <!-- linter-versions-end -->
 
 ## [v8.4.2] - 2024-02-02
