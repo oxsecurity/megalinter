@@ -36,6 +36,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 3.2.360 to **3.2.362** on 2025-02-03
   - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 2.43.0 to **2.45.0** on 2025-02-04
   - [protolint](https://github.com/yoheimuta/protolint) from 0.52.0 to **0.53.0** on 2025-02-04
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.23.1 to **1.24.0** on 2025-02-04
+  - [psalm](https://psalm.dev) from Psalm.6.2.0@ to **Psalm.6.3.0@** on 2025-02-04
+  - [checkov](https://www.checkov.io/) from 3.2.362 to **3.2.364** on 2025-02-04
+  - [rubocop](https://rubocop.org/) from 1.71.1 to **1.71.2** on 2025-02-04
 <!-- linter-versions-end -->
 
 ## [v8.4.2] - 2024-02-02
