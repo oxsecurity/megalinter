@@ -9,7 +9,7 @@ description: How to use protolint (configure, ignore files, ignore errors, help 
 
 ## protolint documentation
 
-- Version in MegaLinter: **0.52.0**
+- Version in MegaLinter: **0.53.0**
 - Visit [Official Web Site](https://github.com/yoheimuta/protolint#readme){target=_blank}
 - See [How to configure protolint rules](https://github.com/yoheimuta/protolint#rules){target=_blank}
   - If custom `.protolintrc.yml` config file isn't found, [.protolintrc.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.protolintrc.yml){target=_blank} will be used
@@ -130,7 +130,7 @@ Usage of lint:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=docker depName=yoheimuta/protolint
-ARG PROTOBUF_PROTOLINT_VERSION=0.52.0
+ARG PROTOBUF_PROTOLINT_VERSION=0.53.0
 FROM yoheimuta/protolint:${PROTOBUF_PROTOLINT_VERSION} AS protolint
 COPY --link --from=protolint /usr/local/bin/protolint /usr/bin/
 ```

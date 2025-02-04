@@ -377,7 +377,7 @@ Warning: We plan to stop supporting v4.x of Code Analyzer in the coming months. 
 # renovate: datasource=npm depName=@salesforce/cli
 ARG SALESFORCE_CLI_VERSION=2.74.6
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
-ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.9.14
+ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.9.16
 # renovate: datasource=npm depName=sfdx-hardis
 ARG SFDX_HARDIS_VERSION=5.18.0
 ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
