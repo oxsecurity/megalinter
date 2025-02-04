@@ -15,7 +15,7 @@ description: How to use psalm (configure, ignore files, ignore errors, help & ve
 
 ## psalm documentation
 
-- Version in MegaLinter: **Psalm.6.2.0@**
+- Version in MegaLinter: **Psalm.6.3.0@**
 - Visit [Official Web Site](https://psalm.dev){target=_blank}
 - See [How to configure psalm rules](https://psalm.dev/docs/running_psalm/configuration/){target=_blank}
   - If custom `psalm.xml` config file isn't found, [psalm.xml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/psalm.xml){target=_blank} will be used
