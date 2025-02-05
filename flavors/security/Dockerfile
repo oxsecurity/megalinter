@@ -109,7 +109,7 @@ ARG CARGO_SHELLCHECK_SARIF_VERSION=0.7.0
 # renovate: datasource=pypi depName=cfn-lint
 ARG PIP_CFN_LINT_VERSION=1.22.7
 # renovate: datasource=repology depName=alpine_3_21/helm
-ARG APK_HELM_VERSION=3.16.3-r0
+ARG APK_HELM_VERSION=3.16.3-r1
 # renovate: datasource=repology depName=alpine_3_21/gcompat
 ARG APK_GCOMPAT_VERSION=1.1.0-r4
 # renovate: datasource=repology depName=alpine_3_21/libstdc++

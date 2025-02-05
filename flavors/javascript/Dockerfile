@@ -192,7 +192,7 @@ ARG KTLINT_VERSION=1.5.0
 ARG DETEKT_VERSION=1.23.7
 
 # renovate: datasource=repology depName=alpine_3_21/helm
-ARG APK_HELM_VERSION=3.16.3-r0
+ARG APK_HELM_VERSION=3.16.3-r1
 # renovate: datasource=repology depName=alpine_3_21/gcompat
 ARG APK_GCOMPAT_VERSION=1.1.0-r4
 # renovate: datasource=repology depName=alpine_3_21/libstdc++

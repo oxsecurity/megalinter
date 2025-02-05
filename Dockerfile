@@ -134,7 +134,7 @@ ARG APK_OPENSSH_VERSION=9.9_p1-r2
 # renovate: datasource=crate depName=sarif-fmt
 ARG CARGO_SARIF_FMT_VERSION=0.7.0
 # renovate: datasource=repology depName=alpine_3_21/docker
-ARG APK_DOCKER_VERSION=27.3.1-r0
+ARG APK_DOCKER_VERSION=27.3.1-r1
 # renovate: datasource=repology depName=alpine_3_21/openrc
 ARG APK_OPENRC_VERSION=0.55.1-r2
 # renovate: datasource=repology depName=alpine_3_21/icu-libs
@@ -307,7 +307,7 @@ ARG KTLINT_VERSION=1.5.0
 ARG DETEKT_VERSION=1.23.7
 
 # renovate: datasource=repology depName=alpine_3_21/helm
-ARG APK_HELM_VERSION=3.16.3-r0
+ARG APK_HELM_VERSION=3.16.3-r1
 # renovate: datasource=repology depName=alpine_3_21/gcompat
 ARG APK_GCOMPAT_VERSION=1.1.0-r4
 # renovate: datasource=repology depName=alpine_3_21/libstdc++

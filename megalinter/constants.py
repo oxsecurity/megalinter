@@ -51,7 +51,7 @@ DEFAULT_DOCKERFILE_APK_PACKAGES = [
 ]
 
 DEFAULT_DOCKERFILE_DOCKER_ARGS = [
-    "# renovate: datasource=repology depName=alpine_3_21/docker\nARG APK_DOCKER_VERSION=27.3.1-r0",
+    "# renovate: datasource=repology depName=alpine_3_21/docker\nARG APK_DOCKER_VERSION=27.3.1-r1",
     "# renovate: datasource=repology depName=alpine_3_21/openrc\nARG APK_OPENRC_VERSION=0.55.1-r2",
 ]
 

@@ -69,7 +69,7 @@ ARG APK_MUSL_DEV_VERSION=1.2.5-r8
 # renovate: datasource=repology depName=alpine_3_21/openssh
 ARG APK_OPENSSH_VERSION=9.9_p1-r2
 # renovate: datasource=repology depName=alpine_3_21/docker
-ARG APK_DOCKER_VERSION=27.3.1-r0
+ARG APK_DOCKER_VERSION=27.3.1-r1
 # renovate: datasource=repology depName=alpine_3_21/openrc
 ARG APK_OPENRC_VERSION=0.55.1-r2
 #ARG__END
