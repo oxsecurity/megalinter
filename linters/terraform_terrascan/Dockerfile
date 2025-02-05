@@ -60,7 +60,7 @@ ARG APK_GCC_VERSION=14.2.0-r4
 # renovate: datasource=repology depName=alpine_3_21/git
 ARG APK_GIT_VERSION=2.47.2-r0
 # renovate: datasource=repology depName=alpine_3_21/git-lfs
-ARG APK_GIT_LFS_VERSION=3.6.0-r0
+ARG APK_GIT_LFS_VERSION=3.6.0-r1
 # renovate: datasource=repology depName=alpine_3_21/libffi-dev
 ARG APK_LIBFFI_DEV_VERSION=3.4.6-r0
 # renovate: datasource=repology depName=alpine_3_21/make

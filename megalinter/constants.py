@@ -30,7 +30,7 @@ DEFAULT_DOCKERFILE_ARGS = [
     "# renovate: datasource=repology depName=alpine_3_21/curl\nARG APK_CURL_VERSION=8.11.1-r0",
     "# renovate: datasource=repology depName=alpine_3_21/gcc\nARG APK_GCC_VERSION=14.2.0-r4",
     "# renovate: datasource=repology depName=alpine_3_21/git\nARG APK_GIT_VERSION=2.47.2-r0",
-    "# renovate: datasource=repology depName=alpine_3_21/git-lfs\nARG APK_GIT_LFS_VERSION=3.6.0-r0",
+    "# renovate: datasource=repology depName=alpine_3_21/git-lfs\nARG APK_GIT_LFS_VERSION=3.6.0-r1",
     "# renovate: datasource=repology depName=alpine_3_21/libffi-dev\nARG APK_LIBFFI_DEV_VERSION=3.4.6-r0",
     "# renovate: datasource=repology depName=alpine_3_21/make\nARG APK_MAKE_VERSION=4.4.1-r2",
     "# renovate: datasource=repology depName=alpine_3_21/musl-dev\nARG APK_MUSL_DEV_VERSION=1.2.5-r8",
