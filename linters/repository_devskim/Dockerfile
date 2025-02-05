@@ -24,7 +24,7 @@
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.5.22 AS uv
+FROM ghcr.io/astral-sh/uv:0.5.27 AS uv
 FROM python:3.12.8-alpine3.21 AS build-ml-core
 WORKDIR /
 COPY --from=uv /uv /uvx /bin/
@@ -71,7 +71,7 @@ ARG APK_OPENSSH_VERSION=9.9_p1-r2
 # renovate: datasource=repology depName=alpine_3_21/dotnet9-sdk
 ARG APK_DOTNET9_SDK_VERSION=9.0.102-r0
 # renovate: datasource=nuget depName=Microsoft.CST.DevSkim.CLI
-ARG REPOSITORY_DEVSKIM_VERSION=1.0.51
+ARG REPOSITORY_DEVSKIM_VERSION=1.0.52
 #ARG__END
 
 ####################
@@ -171,7 +171,7 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 # devskim installation
 RUN apk add --no-cache dotnet9-sdk=${APK_DOTNET9_SDK_VERSION}
 ENV PATH="${PATH}:/root/.dotnet/tools"
-RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI --version ${REPOSITORY_DEVSKIM_VERSION}
+RUN dotnet tool install --allow-roll-forward --global Microsoft.CST.DevSkim.CLI --version ${REPOSITORY_DEVSKIM_VERSION}
 #
 #OTHER__END
 

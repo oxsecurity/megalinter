@@ -15,7 +15,7 @@ description: How to use checkov (configure, ignore files, ignore errors, help & 
 
 ## checkov documentation
 
-- Version in MegaLinter: **3.2.357**
+- Version in MegaLinter: **3.2.364**
 - Visit [Official Web Site](https://www.checkov.io/){target=_blank}
 - See [How to configure checkov rules](https://github.com/bridgecrewio/checkov#configuration-using-a-config-file){target=_blank}
   - If custom `.checkov.yml` config file isn't found, [.checkov.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.checkov.yml){target=_blank} will be used
@@ -430,6 +430,7 @@ options:
                         and-options for information on allowed filters.
                         Example:
                         policy.label=label1,policy.label=label2,cloud.type=aws
+                        [env var: CKV_POLICY_METADATA_FILTER]
   --policy-metadata-filter-exception POLICY_METADATA_FILTER_EXCEPTION
                         comma separated key:value string to exclude filtered
                         policies based on Prisma Cloud policy metadata. When
@@ -440,6 +441,7 @@ options:
                         and-options for information on allowed filters.
                         Example:
                         policy.label=label1,policy.label=label2,cloud.type=aws
+                        [env var: CKV_POLICY_METADATA_FILTER_EXCEPTION]
   --secrets-scan-file-type SECRETS_SCAN_FILE_TYPE
                         not in use [env var: CKV_SECRETS_SCAN_FILE_TYPE]
   --enable-secret-scan-all-files
