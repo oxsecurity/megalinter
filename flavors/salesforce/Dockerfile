@@ -25,11 +25,11 @@ ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=v3.2.0
 # renovate: datasource=docker depName=ghcr.io/yannh/kubeconform
 ARG KUBERNETES_KUBECONFORM_VERSION=v0.6.7-alpine
 # renovate: datasource=docker depName=yoheimuta/protolint
-ARG PROTOBUF_PROTOLINT_VERSION=0.52.0
+ARG PROTOBUF_PROTOLINT_VERSION=0.53.0
 # renovate: datasource=docker depName=zricethezav/gitleaks
-ARG REPOSITORY_GITLEAKS_VERSION=v8.23.2
+ARG REPOSITORY_GITLEAKS_VERSION=v8.23.3
 # renovate: datasource=docker depName=trufflesecurity/trufflehog 
-ARG REPOSITORY_TRUFFLEHOG_VERSION=3.88.2
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.88.4
 # renovate: datasource=docker depName=jdkato/vale
 ARG SPELL_VALE_VERSION=v3.9.4
 # renovate: datasource=docker depName=lycheeverse/lychee
@@ -110,11 +110,11 @@ ARG APK_OPENJDK21_VERSION=21.0.5_p11-r0
 # renovate: datasource=repology depName=alpine_3_21/coreutils
 ARG APK_COREUTILS_VERSION=9.5-r2
 # renovate: datasource=npm depName=@salesforce/cli
-ARG NPM_SALESFORCE_CLI_VERSION=2.72.21
+ARG NPM_SALESFORCE_CLI_VERSION=2.74.6
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
-ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.9.12
+ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.9.16
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=5.17.1
+ARG SFDX_HARDIS_VERSION=5.18.1
 # renovate: datasource=repology depName=alpine_3_21/py3-pyflakes
 ARG APK_PY3_PYFLAKES_VERSION=3.2.0-r1
 # renovate: datasource=pypi depName=ansible-lint
@@ -142,7 +142,7 @@ ARG NPM_GRAPHQL_SCHEMA_LINTER_VERSION=3.0.1
 # renovate: datasource=repology depName=alpine_3_21/openjdk17
 ARG APK_OPENJDK17_VERSION=17.0.13_p11-r0
 # renovate: datasource=npm depName=npm-groovy-lint
-ARG NPM_GROOVY_LINT_VERSION=15.0.2
+ARG NPM_GROOVY_LINT_VERSION=15.0.0
 # renovate: datasource=pypi depName=djlint
 ARG PIP_DJLINT_VERSION=1.36.4
 # renovate: datasource=npm depName=htmlhint
@@ -192,13 +192,13 @@ ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=9.0.0
 # renovate: datasource=pypi depName=semgrep
 ARG PIP_SEMGREP_VERSION=1.104.0
 # renovate: datasource=github-tags depName=aquasecurity/trivy
-ARG REPOSITORY_TRIVY_VERSION=0.58.2
+ARG REPOSITORY_TRIVY_VERSION=0.59.0
 # renovate: datasource=github-tags depName=aquasecurity/trivy
-ARG REPOSITORY_TRIVY_SBOM_VERSION=0.58.2
+ARG REPOSITORY_TRIVY_SBOM_VERSION=0.59.0
 # renovate: datasource=npm depName=@salesforce/sfdx-scanner
-ARG SALESFORCE_SFDX_SCANNER_VERSION=4.8.0
+ARG SALESFORCE_SFDX_SCANNER_VERSION=4.9.0
 # renovate: datasource=npm depName=lightning-flow-scanner
-ARG LIGHTNING_FLOW_SCANNER_VERSION=2.43.0
+ARG LIGHTNING_FLOW_SCANNER_VERSION=2.45.0
 # renovate: datasource=pypi depName=snakefmt
 ARG PIP_SNAKEFMT_VERSION=0.10.2
 # renovate: datasource=npm depName=cspell

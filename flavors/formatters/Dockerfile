@@ -87,7 +87,7 @@ ARG NPM_TYPESCRIPT_VERSION=5.7.3
 # renovate: datasource=nuget depName=csharpier
 ARG CSHARP_CSHARPIER_VERSION=0.30.6
 # renovate: datasource=nuget depName=roslynator.dotnet.cli
-ARG CSHARP_ROSLYNATOR_VERSION=0.9.3
+ARG CSHARP_ROSLYNATOR_VERSION=0.10.0
 # renovate: datasource=npm depName=prettier
 ARG NPM_PRETTIER_VERSION=3.4.2
 # renovate: datasource=npm depName=markdownlint-cli
@@ -273,10 +273,10 @@ RUN curl -L https://github.com/PowerShell/PowerShell/releases/download/v${POWERS
 # Managed with COPY --link --from=shfmt /bin/shfmt /usr/bin/
 #
 # csharpier installation
-    && dotnet tool install --global csharpier --version "${CSHARP_CSHARPIER_VERSION}" \
+    && dotnet tool install --allow-roll-forward --global csharpier --version "${CSHARP_CSHARPIER_VERSION}" \
 #
 # roslynator installation
-    && dotnet tool install -g roslynator.dotnet.cli --version "${CSHARP_ROSLYNATOR_VERSION}" \
+    && dotnet tool install --allow-roll-forward --global roslynator.dotnet.cli --version "${CSHARP_ROSLYNATOR_VERSION}" \
 #
 # prettier installation
 #

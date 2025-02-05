@@ -71,7 +71,7 @@ ARG APK_OPENSSH_VERSION=9.9_p1-r2
 # renovate: datasource=repology depName=alpine_3_21/openjdk17
 ARG APK_OPENJDK17_VERSION=17.0.13_p11-r0
 # renovate: datasource=npm depName=npm-groovy-lint
-ARG NPM_GROOVY_LINT_VERSION=15.0.2
+ARG NPM_GROOVY_LINT_VERSION=15.0.0
 # renovate: datasource=repology depName=alpine_3_21/npm
 ARG APK_NPM_VERSION=10.9.1-r0
 # renovate: datasource=repology depName=alpine_3_21/nodejs-current

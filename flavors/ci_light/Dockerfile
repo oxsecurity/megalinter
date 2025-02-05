@@ -19,9 +19,9 @@ ARG BASH_SHFMT_VERSION=v3.10.0-alpine
 # renovate: datasource=docker depName=hadolint/hadolint
 ARG DOCKERFILE_HADOLINT_VERSION=v2.12.0-alpine
 # renovate: datasource=docker depName=zricethezav/gitleaks
-ARG REPOSITORY_GITLEAKS_VERSION=v8.23.2
+ARG REPOSITORY_GITLEAKS_VERSION=v8.23.3
 # renovate: datasource=docker depName=trufflesecurity/trufflehog 
-ARG REPOSITORY_TRUFFLEHOG_VERSION=3.88.2
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.88.4
 #ARGTOP__END
 
 #############################################################################################
@@ -91,7 +91,7 @@ ARG NPM_JSCPD_VERSION=4.0.5
 # renovate: datasource=repology depName=alpine_3_21/openjdk17
 ARG APK_OPENJDK17_VERSION=17.0.13_p11-r0
 # renovate: datasource=npm depName=npm-groovy-lint
-ARG NPM_GROOVY_LINT_VERSION=15.0.2
+ARG NPM_GROOVY_LINT_VERSION=15.0.0
 # renovate: datasource=npm depName=@prantlf/jsonlint
 ARG NPM_PRANTLF_JSONLINT_VERSION=16.0.0
 # renovate: datasource=npm depName=v8r
@@ -109,9 +109,9 @@ ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=9.0.0
 # renovate: datasource=npm depName=@secretlint/secretlint-formatter-sarif
 ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=9.0.0
 # renovate: datasource=github-tags depName=aquasecurity/trivy
-ARG REPOSITORY_TRIVY_VERSION=0.58.2
+ARG REPOSITORY_TRIVY_VERSION=0.59.0
 # renovate: datasource=github-tags depName=aquasecurity/trivy
-ARG REPOSITORY_TRIVY_SBOM_VERSION=0.58.2
+ARG REPOSITORY_TRIVY_SBOM_VERSION=0.59.0
 # renovate: datasource=repology depName=alpine_3_21/libgcc
 ARG APK_LIBGCC_VERSION=14.2.0-r4
 # renovate: datasource=repology depName=alpine_3_21/libxml2-dev
