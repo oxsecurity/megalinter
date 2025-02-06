@@ -26,11 +26,14 @@ linters:
     install:
       # actionlint requires shellcheck and pyflakes
       apk:
-        - py3-pyflakes
+        - py3-pyflakes=${APK_PY3_PYFLAKES_VERSION}
       dockerfile:
         - |-
           # renovate: datasource=docker depName=rhysd/actionlint
           ARG ACTION_ACTIONLINT_VERSION=1.7.7
+        - |-
+          # renovate: datasource=repology depName=alpine_3_21/py3-pyflakes
+          ARG APK_PY3_PYFLAKES_VERSION=3.2.0-r1
         - |-
           # renovate: datasource=docker depName=koalaman/shellcheck
           ARG BASH_SHELLCHECK_VERSION=v0.10.0

@@ -33,7 +33,16 @@ linters:
       - "xmllint --format myXMLfile.xml --output myXMLfile.xml"
     install:
       apk:
-        - libc-dev
-        - libxml2-dev
-        - libxml2-utils
-        - libgcc
+        - libxml2-dev=${APK_LIBXML2_DEV_VERSION}
+        - libxml2-utils=${APK_LIBXML2_UTILS_VERSION}
+        - libgcc=${APK_LIBGCC_VERSION}
+      dockerfile:
+        - |-
+          # renovate: datasource=repology depName=alpine_3_21/libgcc
+          ARG APK_LIBGCC_VERSION=14.2.0-r4
+        - |-
+          # renovate: datasource=repology depName=alpine_3_21/libxml2-dev
+          ARG APK_LIBXML2_DEV_VERSION=2.13.4-r3
+        - |-
+          # renovate: datasource=repology depName=alpine_3_21/libxml2-utils
+          ARG APK_LIBXML2_UTILS_VERSION=2.13.4-r3

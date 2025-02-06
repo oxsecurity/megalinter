@@ -8,10 +8,13 @@ file_extensions:
   - ".kts"
 install:
   apk:
-    - openjdk21
+    - openjdk21=${APK_OPENJDK21_VERSION}
   dockerfile:
     - ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
     - ENV PATH="$JAVA_HOME/bin:${PATH}"
+    - |-
+      # renovate: datasource=repology depName=alpine_3_21/openjdk21
+      ARG APK_OPENJDK21_VERSION=21.0.5_p11-r0
 linters:
   # KTLINT
   - linter_name: ktlint

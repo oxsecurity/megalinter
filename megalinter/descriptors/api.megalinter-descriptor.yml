@@ -33,8 +33,12 @@ linters:
       - "spectral lint -r .spectral.yaml myfile.yml"
     test_folder: api
     install:
+      dockerfile:
+        - |-
+          # renovate: datasource=npm depName=@stoplight/spectral-cli
+          ARG NPM_SPECTRAL_CLI_VERSION=6.14.2
       npm:
-        - "@stoplight/spectral-cli"
+        - "@stoplight/spectral-cli@${NPM_SPECTRAL_CLI_VERSION}"
     ide:
       stoplight:
         - name: Native integration

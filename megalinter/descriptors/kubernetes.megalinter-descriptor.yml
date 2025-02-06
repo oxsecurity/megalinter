@@ -68,7 +68,11 @@ linters:
       - helm lint --with-subcharts .
     install:
       apk:
-        - helm
+        - helm=${APK_HELM_VERSION}
+      dockerfile:
+        - |-
+          # renovate: datasource=repology depName=alpine_3_21/helm
+          ARG APK_HELM_VERSION=3.16.3-r1
     # KUBESCAPE
   - linter_name: kubescape
     name: KUBERNETES_KUBESCAPE
@@ -108,11 +112,19 @@ linters:
     downgraded_reason: https://github.com/kubescape/kubescape/issues/1366
     install:
       apk:
-        - curl
-        - gcompat
-        - libc6-compat
-        - libstdc++
+        - curl=${APK_CURL_VERSION}
+        - gcompat=${APK_GCOMPAT_VERSION}
+        - libstdc++=${APK_LIBSTDC_VERSION}
       dockerfile:
+        - |-
+          # renovate: datasource=repology depName=alpine_3_21/curl
+          ARG APK_CURL_VERSION=8.11.1-r0
+        - |-
+          # renovate: datasource=repology depName=alpine_3_21/gcompat
+          ARG APK_GCOMPAT_VERSION=1.1.0-r4
+        - |-
+          # renovate: datasource=repology depName=alpine_3_21/libstdc++
+          ARG APK_LIBSTDC_VERSION=14.2.0-r4
         - |-
           # renovate: datasource=github-tags depName=kubescape/kubescape
           ARG KUBERNETES_KUBESCAPE_VERSION=2.9.0

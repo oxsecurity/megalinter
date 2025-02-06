@@ -4,8 +4,11 @@ file_extensions:
   - ".lua"
 install:
   apk:
-    - readline-dev
+    - readline-dev=${APK_READLINE_DEV_VERSION}
   dockerfile:
+    - |-
+      # renovate: datasource=repology depName=alpine_3_21/readline-dev
+      ARG APK_READLINE_DEV_VERSION=8.2.13-r0
     - |
       RUN wget --tries=5 https://www.lua.org/ftp/lua-5.3.5.tar.gz -O - -q | tar -xzf - \
           && cd lua-5.3.5 \
@@ -28,8 +31,11 @@ linters:
       - "luacheck --config .chktexrc myfile.lua"
     install:
       apk:
-        - openssl
+        - openssl=${APK_OPENSSL_VERSION}
       dockerfile:
+        - |-
+          # renovate: datasource=repology depName=alpine_3_21/openssl
+          ARG APK_OPENSSL_VERSION=3.3.2-r4
         - |
           # renovate: datasource=github-tags depName=cvega/luarocks
           ARG LUA_LUACHECK_VERSION=3.3.1
@@ -77,11 +83,11 @@ linters:
       - "selene --config chktexrc.toml myfile.lua"
     install:
       cargo:
-        - selene@${LUA_SELENE_VERSION}
+        - selene@${CARGO_SELENE_VERSION}
       dockerfile:
         - |-
           # renovate: datasource=crate depName=selene
-          ARG LUA_SELENE_VERSION=0.28.0
+          ARG CARGO_SELENE_VERSION=0.28.0
     ide:
       neovim:
         - name:
@@ -114,11 +120,11 @@ linters:
       - "stylua --config-path chktexrc.toml --check myfile.lua"
     install:
       cargo:
-        - stylua@${LUA_STYLUA_VERSION}
+        - stylua@${CARGO_STYLUA_VERSION}
       dockerfile:
         - |-
           # renovate: datasource=crate depName=stylua
-          ARG LUA_STYLUA_VERSION=2.0.0
+          ARG CARGO_STYLUA_VERSION=2.0.0
     ide:
       neovim:
         - name:

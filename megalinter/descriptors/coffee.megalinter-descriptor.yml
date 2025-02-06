@@ -18,8 +18,12 @@ linters:
       - "coffeelint myfile.coffee"
       - "coffeelint -f .coffee-lint.json myfile.coffee"
     install:
+      dockerfile:
+        - |-
+          # renovate: datasource=npm depName=@coffeelint/cli
+          ARG NPM_COFFEELINT_CLI_VERSION=5.2.11
       npm:
-        - "@coffeelint/cli"
+        - "@coffeelint/cli@${NPM_COFFEELINT_CLI_VERSION}"
     ide:
       atom:
         - name: linter-coffeelint
