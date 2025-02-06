@@ -24,7 +24,6 @@ linters:
     cli_lint_fix_remove_args:
       - "lint"
     cli_docker_image: ghcr.io/realm/swiftlint
-    cli_docker_image_version: "SWIFT_SWIFTLINT_VERSION"
     cli_docker_args:
       - "-v"
       - "{{WORKSPACE}}:/tmp/lint:rw"
@@ -39,11 +38,6 @@ linters:
     examples:
       - "docker run -v /tmp/lint:/tmp/lint:rw ghcr.io/realm/swiftlint:latest swiftlint --strict"
       - "docker run -v /tmp/lint:/tmp/lint:rw ghcr.io/realm/swiftlint:latest swiftlint --fix --strict"
-    install:
-      dockerfile:
-        - |-
-          # renovate: datasource=docker depName=ghcr.io/realm/swiftlint
-          ENV SWIFT_SWIFTLINT_VERSION=0.58.2
     ide:
       atom:
         - name: linter-swiftlint

@@ -34,12 +34,8 @@ linters:
     examples:
       - "djlint myfile1.html myfile2.html"
     install:
-      dockerfile:
-        - |-
-          # renovate: datasource=pypi depName=djlint
-          ARG PIP_DJLINT_VERSION=1.36.4
       pip:
-        - djlint==${PIP_DJLINT_VERSION}
+        - djlint
     ide:
       sublime:
         - name: SublimeLinter-contrib-djlint
@@ -65,12 +61,8 @@ linters:
       - "htmlhint myfile.html"
       - "htmlhint --config .htmlhintrc myfile.html"
     install:
-      dockerfile:
-        - |-
-          # renovate: datasource=npm depName=htmlhint
-          ARG NPM_HTMLHINT_VERSION=1.1.4
       npm:
-        - htmlhint@${NPM_HTMLHINT_VERSION}
+        - htmlhint
     ide:
       atom:
         - name: atom-htmlhint

@@ -15,16 +15,9 @@ linters:
     examples:
       - "rst-lint myfile.rst"
     install:
-      dockerfile:
-        - |-
-          # renovate: datasource=pypi depName=Pygments
-          ARG PIP_PYGMENTS_VERSION=2.19.1
-        - |-
-          # renovate: datasource=pypi depName=restructuredtext_lint
-          ARG PIP_RESTRUCTUREDTEXT_LINT_VERSION=1.4.0
       pip:
-        - Pygments==${PIP_PYGMENTS_VERSION}
-        - restructuredtext_lint==${PIP_RESTRUCTUREDTEXT_LINT_VERSION}
+        - Pygments
+        - restructuredtext_lint
   # rstcheck
   - linter_name: rstcheck
     linter_url: https://github.com/myint/rstcheck
@@ -39,12 +32,8 @@ linters:
       - "rstcheck myfile.rst"
       - "rstcheck -c .rstcheck.cfg myfile.rst"
     install:
-      dockerfile:
-        - |-
-          # renovate: datasource=pypi depName=rstcheck
-          ARG PIP_RSTCHECK_VERSION=6.2.4
       pip:
-        - rstcheck[toml,sphinx]==${PIP_RSTCHECK_VERSION}
+        - rstcheck[toml,sphinx]
     ide:
       vscode:
         - name: vscode-restructuredtext
@@ -64,10 +53,6 @@ linters:
       - "rstfmt --check myfile.rst"
       - "rstfmt myfile.rst" # Format
     install:
-      dockerfile:
-        - |-
-          # renovate: datasource=pypi depName=rstfmt
-          ARG PIP_RSTFMT_VERSION=0.0.14
       pip:
-        - rstfmt==${PIP_RSTFMT_VERSION}
+        - rstfmt
     version_extract_regex: "(?<=rstfmt )\\d+(\\.\\d+)+"

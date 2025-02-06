@@ -7,11 +7,7 @@ file_extensions:
   - ".go"
 install:
   apk:
-    - go=${APK_GO_VERSION}
-  dockerfile:
-    - |-
-      # renovate: datasource=repology depName=alpine_3_21/go
-      ARG APK_GO_VERSION=1.23.5-r0
+    - go
 test_folder: golang
 linters:
   # GOLANG CI LINT
