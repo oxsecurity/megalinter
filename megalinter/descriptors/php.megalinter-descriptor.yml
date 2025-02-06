@@ -7,63 +7,21 @@ file_extensions:
   - ".php"
 install:
   apk:
-    - gnupg=${APK_GNUPG_VERSION}
-    - php84=${APK_PHP84_VERSION}
-    - php84-phar=${APK_PHP84_PHAR_VERSION}
-    - php84-mbstring=${APK_PHP84_MBSTRING_VERSION}
-    - php84-xmlwriter=${APK_PHP84_XMLWRITER_VERSION}
-    - php84-tokenizer=${APK_PHP84_TOKENIZER_VERSION}
-    - php84-ctype=${APK_PHP84_CTYPE_VERSION}
-    - php84-curl=${APK_PHP84_CURL_VERSION}
-    - php84-dom=${APK_PHP84_DOM_VERSION}
-    - php84-opcache=${APK_PHP84_OPCACHE_VERSION}
-    - php84-openssl=${APK_PHP84_OPENSSL_VERSION}
-    - php84-common=${APK_PHP84_COMMON_VERSION}
-    - php84-simplexml=${APK_PHP84_SIMPLEXML_VERSION}
-    - dpkg=${APK_DPKG_VERSION}
+    - gnupg
+    - php84
+    - php84-phar
+    - php84-mbstring
+    - php84-xmlwriter
+    - php84-tokenizer
+    - php84-ctype
+    - php84-curl
+    - php84-dom
+    - php84-opcache
+    - php84-openssl
+    - php84-common
+    - php84-simplexml
+    - dpkg
   dockerfile:
-    - |-
-      # renovate: datasource=repology depName=alpine_3_21/gnupg
-      ARG APK_GNUPG_VERSION=2.4.7-r0
-    - |-
-      # renovate: datasource=repology depName=alpine_3_21/php84
-      ARG APK_PHP84_VERSION=8.4.3-r0
-    - |-
-      # renovate: datasource=repology depName=alpine_3_21/php84-phar
-      ARG APK_PHP84_PHAR_VERSION=8.4.3-r0
-    - |-
-      # renovate: datasource=repology depName=alpine_3_21/php84-mbstring
-      ARG APK_PHP84_MBSTRING_VERSION=8.4.3-r0
-    - |-
-      # renovate: datasource=repology depName=alpine_3_21/php84-xmlwriter
-      ARG APK_PHP84_XMLWRITER_VERSION=8.4.3-r0
-    - |-
-      # renovate: datasource=repology depName=alpine_3_21/php84-tokenizer
-      ARG APK_PHP84_TOKENIZER_VERSION=8.4.3-r0
-    - |-
-      # renovate: datasource=repology depName=alpine_3_21/php84-ctype
-      ARG APK_PHP84_CTYPE_VERSION=8.4.3-r0
-    - |-
-      # renovate: datasource=repology depName=alpine_3_21/php84-curl
-      ARG APK_PHP84_CURL_VERSION=8.4.3-r0
-    - |-
-      # renovate: datasource=repology depName=alpine_3_21/php84-dom
-      ARG APK_PHP84_DOM_VERSION=8.4.3-r0
-    - |-
-      # renovate: datasource=repology depName=alpine_3_21/php84-opcache
-      ARG APK_PHP84_OPCACHE_VERSION=8.4.3-r0
-    - |-
-      # renovate: datasource=repology depName=alpine_3_21/php84-openssl
-      ARG APK_PHP84_OPENSSL_VERSION=8.4.3-r0
-    - |-
-      # renovate: datasource=repology depName=alpine_3_21/php84-common
-      ARG APK_PHP84_COMMON_VERSION=8.4.3-r0
-    - |-
-      # renovate: datasource=repology depName=alpine_3_21/php84-simplexml
-      ARG APK_PHP84_SIMPLEXML_VERSION=8.4.3-r0
-    - |-
-      # renovate: datasource=repology depName=alpine_3_21/dpkg
-      ARG APK_DPKG_VERSION=1.22.11-r0
     - RUN update-alternatives --install /usr/bin/php php /usr/bin/php84 110
     - COPY --from=composer/composer:2-bin /composer /usr/bin/composer
     - ENV PATH="/root/.composer/vendor/bin:${PATH}"

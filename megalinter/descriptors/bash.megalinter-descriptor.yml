@@ -20,11 +20,7 @@ file_contains_regex:
   - "^#!/bin/sh"
 install:
   apk:
-    - bash=${APK_BASH_VERSION}
-  dockerfile:
-    - |-
-      # renovate: datasource=repology depName=alpine_3_21/bash
-      ARG APK_BASH_VERSION=5.2.37-r0
+    - bash
 test_folder: shell
 linters:
   # Bash Built in Linter
@@ -86,11 +82,8 @@ linters:
       - "shellcheck --color=auto --external-sources myfile.sh"
     install:
       cargo:
-        - shellcheck-sarif@${CARGO_SHELLCHECK_SARIF_VERSION}
+        - shellcheck-sarif
       dockerfile:
-        - |-
-          # renovate: datasource=crate depName=shellcheck-sarif
-          ARG CARGO_SHELLCHECK_SARIF_VERSION=0.7.0
         # Also update shellcheck version in action.megalinter-descriptor.yml
         - |-
           # renovate: datasource=docker depName=koalaman/shellcheck

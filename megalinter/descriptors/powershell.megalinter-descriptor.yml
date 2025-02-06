@@ -17,11 +17,8 @@ file_extensions:
 # If changing PWSH_VERSION='latest' to a specific version, use format PWSH_VERSION='tags/v7.0.2'
 install:
   apk:
-    - icu-libs=${APK_ICU_LIBS_VERSION}
+    - icu-libs
   dockerfile:
-    - |-
-      # renovate: datasource=repology depName=alpine_3_21/icu-libs
-      ARG APK_ICU_LIBS_VERSION=74.2-r0
     - |
       # renovate: datasource=github-tags depName=PowerShell/PowerShell
       ARG POWERSHELL_VERSION=7.5.0

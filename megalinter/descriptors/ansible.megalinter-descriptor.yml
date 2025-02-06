@@ -38,9 +38,5 @@ linters:
       - "ansible-lint -v"
       - "ansible-lint -v -c .ansible-lint"
     install:
-      dockerfile:
-        - |-
-          # renovate: datasource=pypi depName=ansible-lint
-          ARG PIP_ANSIBLE_LINT_VERSION=25.1.0
       pip:
-        - ansible-lint==${PIP_ANSIBLE_LINT_VERSION}
+        - ansible-lint

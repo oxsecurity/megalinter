@@ -24,12 +24,8 @@ linters:
     examples:
       - "cpplint myfile.cpp"
     install:
-      dockerfile:
-        - |-
-          # renovate: datasource=pypi depName=cpplint
-          ARG PIP_CPPLINT_VERSION=2.0.0
       pip:
-        - cpplint==${PIP_CPPLINT_VERSION}
+        - cpplint
   # clang-format
   - linter_name: clang-format
     name: C_CLANG_FORMAT
@@ -56,11 +52,7 @@ linters:
       - "clang-format --Werror --dry-run myfile.c"
     install:
       apk:
-        - clang19-extra-tools=${APK_CLANG19_EXTRA_TOOLS_VERSION}
-      dockerfile:
-        - |-
-          # renovate: datasource=repology depName=alpine_3_21/clang19-extra-tools
-          ARG APK_CLANG19_EXTRA_TOOLS_VERSION=19.1.4-r0
+        - clang19-extra-tools
     ide:
       vscode:
         - name: Clang-Format

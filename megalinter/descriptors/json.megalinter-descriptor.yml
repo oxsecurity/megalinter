@@ -22,12 +22,8 @@ linters:
     examples:
       - "jsonlint myfile1.json myfile2.json"
     install:
-      dockerfile:
-        - |-
-          # renovate: datasource=npm depName=@prantlf/jsonlint
-          ARG NPM_PRANTLF_JSONLINT_VERSION=16.0.0
       npm:
-        - "@prantlf/jsonlint@${NPM_PRANTLF_JSONLINT_VERSION}"
+        - "@prantlf/jsonlint"
   # ESLINT-PLUGIN-JSONC
   - class: EslintLinter
     disabled: true
@@ -130,20 +126,10 @@ linters:
       - "eslint -c .eslintrc-json.json --no-eslintrc --no-ignore myfile.jsonc"
       - "eslint --fix -c .eslintrc-json.json --no-eslintrc --no-ignore myfile.json"
     install:
-      dockerfile:
-        - |-
-          # renovate: datasource=npm depName=eslint
-          ARG NPM_ESLINT_VERSION=8.57.0
-        - |-
-          # renovate: datasource=npm depName=eslint-plugin-jsonc
-          ARG NPM_ESLINT_PLUGIN_JSONC_VERSION=2.19.1
-        - |-
-          # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
-          ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
       npm:
-        - eslint@${NPM_ESLINT_VERSION}
-        - eslint-plugin-jsonc@${NPM_ESLINT_PLUGIN_JSONC_VERSION}
-        - "@microsoft/eslint-formatter-sarif@${NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION}"
+        - eslint
+        - eslint-plugin-jsonc
+        - "@microsoft/eslint-formatter-sarif"
     ide:
       vscode:
         - name: vscode-eslint
@@ -164,12 +150,8 @@ linters:
     examples:
       - "v8r --ignore-errors myfile.json"
     install:
-      dockerfile:
-        - |-
-          # renovate: datasource=npm depName=v8r
-          ARG NPM_V8R_VERSION=4.2.1
       npm:
-        - v8r@${NPM_V8R_VERSION}
+        - v8r
     ide:
       eclipse:
         - name: native support
@@ -206,12 +188,8 @@ linters:
       - "prettier --config .prettierrc.json --check myfile.json"
       - "prettier --config .prettierrc.json --write myfile.json" # format
     install:
-      dockerfile:
-        - |-
-          # renovate: datasource=npm depName=prettier
-          ARG NPM_PRETTIER_VERSION=3.4.2
       npm:
-        - "prettier@${NPM_PRETTIER_VERSION}"
+        - "prettier"
     ide:
       atom:
         - name: prettier-atom
@@ -277,13 +255,6 @@ linters:
       - "npmPkgJsonLint ."
       - "npmPkgJsonLint --configFile .npmpackagejsonlintrc.json ."
     install:
-      dockerfile:
-        - |-
-          # renovate: datasource=npm depName=npm-package-json-lint
-          ARG NPM_PACKAGE_JSON_LINT_VERSION=8.0.0
-        - |-
-          # renovate: datasource=npm depName=npm-package-json-lint-config-default
-          ARG NPM_PACKAGE_JSON_LINT_CONFIG_DEFAULT_VERSION=7.0.1
       npm:
-        - "npm-package-json-lint@${NPM_PACKAGE_JSON_LINT_VERSION}"
-        - "npm-package-json-lint-config-default@${NPM_PACKAGE_JSON_LINT_CONFIG_DEFAULT_VERSION}"
+        - "npm-package-json-lint"
+        - "npm-package-json-lint-config-default"

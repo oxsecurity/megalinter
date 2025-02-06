@@ -51,9 +51,9 @@ linters:
       - "jscpd --output ./report/copy-paste/ ."
       - "jscpd --output ./report/copy-paste/ -c .jscpd.json ."
     install:
-      dockerfile:
-        - |-
-          # renovate: datasource=npm depName=jscpd
-          ARG NPM_JSCPD_VERSION=4.0.5
+      apk:
+        - nodejs
+        - npm
+        - yarn
       npm:
-        - jscpd@${NPM_JSCPD_VERSION}
+        - jscpd

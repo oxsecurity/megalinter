@@ -28,18 +28,6 @@ from giturlparse import parse
 from megalinter import config, utils
 from megalinter.constants import (
     DEFAULT_DOCKERFILE_APK_PACKAGES,
-    DEFAULT_DOCKERFILE_ARGS,
-    DEFAULT_DOCKERFILE_DOCKER_APK_PACKAGES,
-    DEFAULT_DOCKERFILE_DOCKER_ARGS,
-    DEFAULT_DOCKERFILE_FLAVOR_ARGS,
-    DEFAULT_DOCKERFILE_FLAVOR_CARGO_PACKAGES,
-    DEFAULT_DOCKERFILE_GEM_APK_PACKAGES,
-    DEFAULT_DOCKERFILE_GEM_ARGS,
-    DEFAULT_DOCKERFILE_NPM_APK_PACKAGES,
-    DEFAULT_DOCKERFILE_NPM_ARGS,
-    DEFAULT_DOCKERFILE_PIP_ARGS,
-    DEFAULT_DOCKERFILE_PIPENV_ARGS,
-    DEFAULT_DOCKERFILE_RUST_ARGS,
     DEFAULT_RELEASE,
     DEFAULT_REPORT_FOLDER_NAME,
     ML_DOC_URL_BASE,
@@ -291,8 +279,7 @@ branding:
         requires_docker,
         flavor,
         extra_lines,
-        DEFAULT_DOCKERFILE_FLAVOR_ARGS.copy(),
-        {"cargo": DEFAULT_DOCKERFILE_FLAVOR_CARGO_PACKAGES.copy()},
+        {"cargo": ["sarif-fmt"]},
     )
 
 
@@ -302,16 +289,13 @@ def build_dockerfile(
     requires_docker,
     flavor,
     extra_lines,
-    extra_args=None,
     extra_packages=None,
 ):
     if extra_packages is None:
         extra_packages = {}
     # Gather all dockerfile commands
     docker_from = []
-    docker_arg = DEFAULT_DOCKERFILE_ARGS.copy()
-    if extra_args is not None:
-        docker_arg += extra_args
+    docker_arg = []
     docker_copy = []
     docker_other = []
     all_dockerfile_items = []
@@ -324,8 +308,7 @@ def build_dockerfile(
     is_docker_other_run = False
     # Manage docker
     if requires_docker is True:
-        docker_arg += DEFAULT_DOCKERFILE_DOCKER_ARGS.copy()
-        apk_packages += DEFAULT_DOCKERFILE_DOCKER_APK_PACKAGES.copy()
+        apk_packages += ["docker", "openrc"]
         docker_other += [
             "RUN rc-update add docker boot && (rc-service docker start || true)"
         ]
@@ -438,23 +421,14 @@ def build_dockerfile(
             cargo_packages += item["install"]["cargo"]
     # Add node install if node packages are here
     if len(npm_packages) > 0:
-        docker_arg += DEFAULT_DOCKERFILE_NPM_ARGS.copy()
-        apk_packages += DEFAULT_DOCKERFILE_NPM_APK_PACKAGES.copy()
+        apk_packages += ["npm", "nodejs-current", "yarn"]
     # Add ruby apk packages if gem packages are here
     if len(gem_packages) > 0:
-        docker_arg += DEFAULT_DOCKERFILE_GEM_ARGS.copy()
-        apk_packages += DEFAULT_DOCKERFILE_GEM_APK_PACKAGES.copy()
-    if len(pip_packages) > 0:
-        docker_arg += DEFAULT_DOCKERFILE_PIP_ARGS.copy()
-    if len(pipvenv_packages) > 0:
-        docker_arg += DEFAULT_DOCKERFILE_PIPENV_ARGS.copy()
-    if len(cargo_packages) > 0:
-        docker_arg += DEFAULT_DOCKERFILE_RUST_ARGS.copy()
+        apk_packages += ["ruby", "ruby-dev", "ruby-bundler", "ruby-rdoc"]
     # Separate args used in FROM instructions from others
     all_from_instructions = "\n".join(list(dict.fromkeys(docker_from)))
     docker_arg_top = []
     docker_arg_main = []
-    docker_arg_main_extra = []
     for docker_arg_item in docker_arg:
         match = re.match(
             r"(?:# renovate: .*\n)?ARG\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*=?\s*",
@@ -465,14 +439,6 @@ def build_dockerfile(
             docker_arg_top += [docker_arg_item]
         else:
             docker_arg_main += [docker_arg_item]
-
-        if docker_arg_item in docker_arg_top:
-            docker_arg_main_extra += [f"ARG {arg_name}"]
-
-    if len(docker_arg_main_extra) > 0:
-        docker_arg_main_extra.insert(0, "")
-
-        docker_arg_main += docker_arg_main_extra
     # Replace between tags in Dockerfile
     # Commands
     replace_in_file(
@@ -534,14 +500,14 @@ def build_dockerfile(
             cargo_packages = [
                 p for p in cargo_packages if p != "COMPILER_ONLY"
             ]  # remove empty string packages
-            cargo_cmd = "cargo install --force --locked " + " ".join(
+            cargo_cmd = "cargo install --force --locked " + "  ".join(
                 list(dict.fromkeys(cargo_packages))
             )
             rust_commands += [cargo_cmd]
         rustup_cargo_cmd = " && ".join(rust_commands)
         cargo_install_command = (
             "RUN curl https://sh.rustup.rs -sSf |"
-            + " sh -s -- -y --profile minimal --default-toolchain ${RUST_RUST_VERSION} \\\n"
+            + " sh -s -- -y --profile minimal --default-toolchain stable \\\n"
             + '    && export PATH="/root/.cargo/bin:${PATH}" \\\n'
             + f"    && {rustup_cargo_cmd} \\\n"
             + "    && rm -rf /root/.cargo/registry /root/.cargo/git "
@@ -558,7 +524,7 @@ def build_dockerfile(
             "WORKDIR /node-deps\n"
             + "RUN npm --no-cache install --ignore-scripts --omit=dev \\\n                "
             + " \\\n                ".join(list(dict.fromkeys(npm_packages)))
-            + " && \\\n"
+            + "  && \\\n"
             #    + '       echo "Fixing audit issues with npm…" \\\n'
             #    + "    && npm audit fix --audit-level=critical || true \\\n" # Deactivated for now
             + '    echo "Cleaning npm cache…" \\\n'
@@ -584,8 +550,8 @@ def build_dockerfile(
     pip_install_command = ""
     if len(pip_packages) > 0:
         pip_install_command = (
-            "RUN PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir pip==${PIP_PIP_VERSION} &&"
-            + " PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir \\\n          '"
+            "RUN PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir --upgrade pip &&"
+            + " PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir --upgrade \\\n          '"
             + "' \\\n          '".join(list(dict.fromkeys(pip_packages)))
             + "' && \\\n"
             + r"find . \( -type f \( -iname \*.pyc -o -iname \*.pyo \) -o -type d -iname __pycache__ \) -delete"
@@ -597,7 +563,7 @@ def build_dockerfile(
     if len(pipvenv_packages.items()) > 0:
         pipenv_install_command = (
             "RUN PYTHONDONTWRITEBYTECODE=1 pip3 install"
-            " --no-cache-dir pip==${PIP_PIP_VERSION} virtualenv==${PIP_VIRTUALENV_VERSION} \\\n"
+            " --no-cache-dir --upgrade pip virtualenv \\\n"
         )
         env_path_command = 'ENV PATH="${PATH}"'
         for pip_linter, pip_linter_packages in pipvenv_packages.items():

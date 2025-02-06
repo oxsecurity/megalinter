@@ -44,12 +44,9 @@ linters:
     install:
       # cargo:
       #   - COMPILER_ONLY # Use COMPILER_ONLY fake package just to Dockerfile contains rust toolchain install
-      dockerfile:
-        - |-
-          # renovate: datasource=pypi depName=checkov
-          ARG PIP_CHECKOV_VERSION=3.2.357
       pip:
-        - checkov==${PIP_CHECKOV_VERSION}
+        - packaging
+        - checkov
     ide:
       vscode:
         - name: Checkov
@@ -106,12 +103,9 @@ linters:
     install:
       dockerfile:
         - |-
-          # renovate: datasource=repology depName=alpine_3_21/dotnet9-sdk
-          ARG APK_DOTNET9_SDK_VERSION=9.0.102-r0
-        - |-
           # renovate: datasource=nuget depName=Microsoft.CST.DevSkim.CLI
           ARG REPOSITORY_DEVSKIM_VERSION=1.0.52
-        - RUN apk add --no-cache dotnet9-sdk=${APK_DOTNET9_SDK_VERSION}
+        - RUN apk add --no-cache dotnet9-sdk
         - ENV PATH="${PATH}:/root/.dotnet/tools"
         - RUN dotnet tool install --allow-roll-forward --global Microsoft.CST.DevSkim.CLI --version ${REPOSITORY_DEVSKIM_VERSION}
     ide:
@@ -143,18 +137,14 @@ linters:
     install:
       dockerfile:
         - |-
-          # renovate: datasource=repology depName=alpine_3_21/git
-          ARG APK_GIT_VERSION=2.47.2-r0
-        - |-
           # renovate: datasource=github-tags depName=checkmarx/dustilock
           ARG REPOSITORY_DUSTILOCK_VERSION=1.2.0
         # The golang image used as a builder is a temporary workaround
         # Dustilock is not released as a binary or container
         - |-
           FROM golang:alpine AS dustilock
-          ARG APK_GIT_VERSION
           ARG REPOSITORY_DUSTILOCK_VERSION
-          RUN apk add --no-cache git=${APK_GIT_VERSION} && GOBIN=/usr/bin go install github.com/checkmarx/dustilock@v${REPOSITORY_DUSTILOCK_VERSION}
+          RUN apk add --no-cache git && GOBIN=/usr/bin go install github.com/checkmarx/dustilock@v${REPOSITORY_DUSTILOCK_VERSION}
         - COPY --link --from=dustilock /usr/bin/dustilock /usr/bin/dustilock
 
   # GIT_DIFF
@@ -395,12 +385,8 @@ linters:
     test_folder: repository_file
     cli_lint_errors_count: "total_lines"
     install:
-      dockerfile:
-        - |-
-          # renovate: datasource=npm depName=@ls-lint/ls-lint
-          ARG NPM_LS_LINT_LS_LINT_VERSION=2.2.3
       npm:
-        - "@ls-lint/ls-lint@${NPM_LS_LINT_LS_LINT_VERSION}"
+        - "@ls-lint/ls-lint"
 
   # SECRETLINT
   - class: SecretLintLinter
@@ -436,20 +422,10 @@ linters:
       - 'secretlint "*/**"'
       - 'secretlint --secretlintrc .secretlintrc.json "**/*"'
     install:
-      dockerfile:
-        - |-
-          # renovate: datasource=npm depName=secretlint
-          ARG NPM_SECRETLINT_VERSION=9.0.0
-        - |-
-          # renovate: datasource=npm depName=@secretlint/secretlint-rule-preset-recommend
-          ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=9.0.0
-        - |-
-          # renovate: datasource=npm depName=@secretlint/secretlint-formatter-sarif
-          ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=9.0.0
       npm:
-        - secretlint@${NPM_SECRETLINT_VERSION}
-        - "@secretlint/secretlint-rule-preset-recommend@${NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION}"
-        - "@secretlint/secretlint-formatter-sarif@${NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION}"
+        - secretlint
+        - "@secretlint/secretlint-rule-preset-recommend"
+        - "@secretlint/secretlint-formatter-sarif"
 
   # SEMGREP
   - class: SemgrepLinter
@@ -496,12 +472,8 @@ linters:
       - "semgrep /tmp/lint"
       - "semgrep "
     install:
-      dockerfile:
-        - |-
-          # renovate: datasource=pypi depName=semgrep
-          ARG PIP_SEMGREP_VERSION=1.104.0
       pip:
-        - semgrep==${PIP_SEMGREP_VERSION}
+        - semgrep
     variables:
       - name: REPOSITORY_SEMGREP_RULESETS
         description: List of semgrep rulesets identifiers that you want to enforce

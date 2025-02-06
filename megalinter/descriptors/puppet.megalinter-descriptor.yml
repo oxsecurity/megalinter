@@ -20,12 +20,8 @@ linters:
       - "puppet-lint --fail-on-warnings --no-autoloader_layout-check myfile.pp"
       - "puppet-lint --fail-on-warnings --no-autoloader_layout-check --fix myfile.pp"
     install:
-      dockerfile:
-        - |-
-          # renovate: datasource=rubygems depName=puppet-lint
-          ARG GEM_PUPPET_LINT_VERSION=4.2.4
       gem:
-        - puppet-lint:${GEM_PUPPET_LINT_VERSION}
+        - puppet-lint
     ide:
       vscode:
         - name: Puppet VSCode Extension
