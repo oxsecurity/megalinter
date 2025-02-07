@@ -3459,7 +3459,7 @@
         "  completion  Generate autocompletion script",
         "  config      Handle cached configurations",
         "  delete      Delete configurations in Kubescape SaaS version",
-        "  download    Download attack-tracks,controls-inputs,exceptions,control,framework,artifacts",
+        "  download    Download artifacts,attack-tracks,controls-inputs,exceptions,control,framework",
         "  fix         Fix misconfiguration in files",
         "  help        Help about any command",
         "  list        List frameworks/controls will list the supported frameworks and controls",
@@ -3506,6 +3506,7 @@
         "      --version                               version for kubeval"
     ],
     "lightning-flow-scanner": [
+        " \u203a   Warning: @salesforce/cli update available from 2.74.6 to 2.75.5.",
         "Find and fix potential bugs in Salesforce flows.",
         "",
         "USAGE",
@@ -4091,7 +4092,7 @@
         "  --config-file CONFIG_FILE",
         "                            Configuration file, must have a [mypy] section",
         "                            (defaults to mypy.ini, .mypy.ini, pyproject.toml,",
-        "                            setup.cfg, ~/.config/mypy/config, ~/.mypy.ini)",
+        "                            setup.cfg)",
         "  --warn-unused-configs     Warn about unused '[mypy-<pattern>]' or",
         "                            '[[tool.mypy.overrides]]' config sections",
         "                            (inverse: --no-warn-unused-configs)",
@@ -4216,6 +4217,8 @@
         "  --strict-equality         Prohibit equality, identity, and container checks",
         "                            for non-overlapping types (inverse: --no-strict-",
         "                            equality)",
+        "  --strict-bytes            Disable treating bytearray and memoryview as",
+        "                            subtypes of bytes (inverse: --no-strict-bytes)",
         "  --extra-checks            Enable additional checks that are technically",
         "                            correct but may be impractical in real code. For",
         "                            example, this prohibits partial overlap in",
@@ -5753,6 +5756,9 @@
         "",
         "    --alter",
         "        Run Psalter",
+        "",
+        "    --review",
+        "        Run the psalm-review tool",
         "",
         "    --language-server",
         "        Run Psalm Language Server"
@@ -7781,7 +7787,7 @@
         "           Endpoint to send OpenTelemetry traces to, if `--trace` is present.",
         "           The value may be `semgrep-prod` (default), `semgrep-dev`,",
         "           `semgrep-local`, or any valid URL. This feature is meant for",
-        "           internal use and may be changed or removed wihtout warning.",
+        "           internal use and may be changed or removed without warning.",
         "",
         "       --use-git-ignore",
         "           '--no-git-ignore' causes semgrep to not call 'git' and not consult",
@@ -8181,6 +8187,7 @@
         "@typescript-eslint/unbound-method                  typescript   Best Practices    Best Practices                                    eslint-typescript"
     ],
     "sfdx-scanner-apex": [
+        " \u203a   Warning: @salesforce/cli update available from 2.74.6 to 2.75.5.",
         "Scan a codebase with all the rules in the registry, or use parameters to filter the rules based on rulename, category, or ruleset.",
         "",
         "USAGE",
@@ -8234,6 +8241,7 @@
         "COMMANDS",
         "  scanner run dfa  Scan codebase with all DFA rules by default.",
         "",
+        " \u203a   Warning: @salesforce/cli update available from 2.74.6 to 2.75.5.",
         " \u203a   Warning: Plugin @salesforce/sfdx-scanner (4.9.0) differs from the version",
         " \u203a   specified by sf (4.8.0)",
         "Warning: We plan to stop supporting v4.x of Code Analyzer in the coming months. We highly recommend that you start using v5.x, which is currently in Beta. For information on v5.x, see https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/code-analyzer.html.",
@@ -8456,6 +8464,7 @@
         " UnimplementedTypeRule                                  apex        Performance                          sfge              N      N"
     ],
     "sfdx-scanner-aura": [
+        " \u203a   Warning: @salesforce/cli update available from 2.74.6 to 2.75.5.",
         "Scan a codebase with all the rules in the registry, or use parameters to filter the rules based on rulename, category, or ruleset.",
         "",
         "USAGE",
@@ -8509,6 +8518,7 @@
         "COMMANDS",
         "  scanner run dfa  Scan codebase with all DFA rules by default.",
         "",
+        " \u203a   Warning: @salesforce/cli update available from 2.74.6 to 2.75.5.",
         " \u203a   Warning: Plugin @salesforce/sfdx-scanner (4.9.0) differs from the version",
         " \u203a   specified by sf (4.8.0)",
         "Warning: We plan to stop supporting v4.x of Code Analyzer in the coming months. We highly recommend that you start using v5.x, which is currently in Beta. For information on v5.x, see https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/code-analyzer.html.",
@@ -8731,6 +8741,7 @@
         " UnimplementedTypeRule                                  apex        Performance                          sfge              N      N"
     ],
     "sfdx-scanner-lwc": [
+        " \u203a   Warning: @salesforce/cli update available from 2.74.6 to 2.75.5.",
         "Scan a codebase with all the rules in the registry, or use parameters to filter the rules based on rulename, category, or ruleset.",
         "",
         "USAGE",
@@ -8784,6 +8795,7 @@
         "COMMANDS",
         "  scanner run dfa  Scan codebase with all DFA rules by default.",
         "",
+        " \u203a   Warning: @salesforce/cli update available from 2.74.6 to 2.75.5.",
         " \u203a   Warning: Plugin @salesforce/sfdx-scanner (4.9.0) differs from the version",
         " \u203a   specified by sf (4.8.0)",
         "Warning: We plan to stop supporting v4.x of Code Analyzer in the coming months. We highly recommend that you start using v5.x, which is currently in Beta. For information on v5.x, see https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/code-analyzer.html.",

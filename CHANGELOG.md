@@ -40,6 +40,12 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [psalm](https://psalm.dev) from Psalm.6.2.0@ to **Psalm.6.3.0@** on 2025-02-04
   - [checkov](https://www.checkov.io/) from 3.2.362 to **3.2.364** on 2025-02-04
   - [rubocop](https://rubocop.org/) from 1.71.1 to **1.71.2** on 2025-02-04
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 25.1.1 to **25.1.2** on 2025-02-07
+  - [psalm](https://psalm.dev) from Psalm.6.3.0@ to **Psalm.6.4.0@** on 2025-02-07
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.14.1 to **1.15.0** on 2025-02-07
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.9.4 to **0.9.5** on 2025-02-07
+  - [ruff](https://github.com/astral-sh/ruff) from 0.9.4 to **0.9.5** on 2025-02-07
+  - [checkov](https://www.checkov.io/) from 3.2.364 to **3.2.368** on 2025-02-07
 <!-- linter-versions-end -->
 
 ## [v8.4.2] - 2024-02-02
