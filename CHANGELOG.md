@@ -13,7 +13,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - New linters
 
 - Disabled linters
-  - pyright: https://github.com/microsoft/pyright/issues/9854
+  - pyright: <https://github.com/microsoft/pyright/issues/9854>
 
 - Media
 
