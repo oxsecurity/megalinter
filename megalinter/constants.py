@@ -24,8 +24,7 @@ DEFAULT_SARIF_SCHEMA_URI = "https://json.schemastore.org/sarif-2.1.0.json"
 DEFAULT_SARIF_VERSION = "2.1.0"
 DEFAULT_RELEASE = "v8"
 
-DEFAULT_DOCKERFILE_ARGS : list[str] = [
-]
+DEFAULT_DOCKERFILE_ARGS: list[str] = []
 
 DEFAULT_DOCKERFILE_APK_PACKAGES = [
     "bash",
@@ -40,16 +39,14 @@ DEFAULT_DOCKERFILE_APK_PACKAGES = [
     "openssh",
 ]
 
-DEFAULT_DOCKERFILE_DOCKER_ARGS : list[str] = [
-]
+DEFAULT_DOCKERFILE_DOCKER_ARGS: list[str] = []
 
 DEFAULT_DOCKERFILE_DOCKER_APK_PACKAGES = [
     "docker",
     "openrc",
 ]
 
-DEFAULT_DOCKERFILE_NPM_ARGS : list[str] = [
-]
+DEFAULT_DOCKERFILE_NPM_ARGS: list[str] = []
 
 DEFAULT_DOCKERFILE_NPM_APK_PACKAGES = [
     "npm",
@@ -57,8 +54,7 @@ DEFAULT_DOCKERFILE_NPM_APK_PACKAGES = [
     "yarn",
 ]
 
-DEFAULT_DOCKERFILE_GEM_ARGS : list[str] = [
-]
+DEFAULT_DOCKERFILE_GEM_ARGS: list[str] = []
 
 DEFAULT_DOCKERFILE_GEM_APK_PACKAGES = [
     "ruby",
