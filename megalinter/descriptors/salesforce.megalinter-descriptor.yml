@@ -6,15 +6,9 @@ lint_all_files: true
 install:
   # Java, because Apex is Java-based, so are related tools like PMD which is embedded in sfdx-scanner
   apk:
-    - coreutils=${APK_COREUTILS_VERSION}
-    - openjdk21=${APK_OPENJDK21_VERSION}
+    - coreutils
+    - openjdk21
   dockerfile:
-    - |-
-      # renovate: datasource=repology depName=alpine_3_21/coreutils
-      ARG APK_COREUTILS_VERSION=9.5-r2
-    - |-
-      # renovate: datasource=repology depName=alpine_3_21/openjdk21
-      ARG APK_OPENJDK21_VERSION=21.0.5_p11-r0
     - |-
       # renovate: datasource=npm depName=@salesforce/cli
       ARG NPM_SALESFORCE_CLI_VERSION=2.74.6

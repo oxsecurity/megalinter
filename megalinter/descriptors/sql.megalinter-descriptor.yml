@@ -59,12 +59,9 @@ linters:
     install:
       dockerfile:
         - |-
-          # renovate: datasource=repology depName=alpine_3_21/dotnet9-sdk
-          ARG APK_DOTNET9_SDK_VERSION=9.0.102-r0
-        - |-
           # renovate: datasource=nuget depName=TSQLLint
           ARG SQL_TSQLLINT_VERSION=1.16.0
-        - RUN apk add --no-cache dotnet9-sdk=${APK_DOTNET9_SDK_VERSION}
+        - RUN apk add --no-cache dotnet9-sdk
         - ENV PATH="${PATH}:/root/.dotnet/tools"
         - RUN dotnet tool install --allow-roll-forward --global TSQLLint --version ${SQL_TSQLLINT_VERSION}
     ide:

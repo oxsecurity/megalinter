@@ -20,11 +20,7 @@ file_contains_regex:
   - "^#!/bin/sh"
 install:
   apk:
-    - bash=${APK_BASH_VERSION}
-  dockerfile:
-    - |-
-      # renovate: datasource=repology depName=alpine_3_21/bash
-      ARG APK_BASH_VERSION=5.2.37-r0
+    - bash
 test_folder: shell
 linters:
   # Bash Built in Linter

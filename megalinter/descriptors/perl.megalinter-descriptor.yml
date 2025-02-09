@@ -12,15 +12,8 @@ file_contains_regex:
   - "^#!/usr/bin/perl"
 install:
   apk:
-    - perl=${APK_PERL_VERSION}
-    - perl-dev=${APK_PERL_DEV_VERSION}
-  dockerfile:
-    - |-
-      # renovate: datasource=repology depName=alpine_3_21/perl
-      ARG APK_PERL_VERSION=5.40.1-r0
-    - |-
-      # renovate: datasource=repology depName=alpine_3_21/perl-dev
-      ARG APK_PERL_DEV_VERSION=5.40.1-r0
+    - perl
+    - perl-dev
 linters:
   # PERL CRITIC
   - linter_name: perlcritic

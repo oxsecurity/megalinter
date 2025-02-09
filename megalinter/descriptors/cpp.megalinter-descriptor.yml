@@ -66,11 +66,7 @@ linters:
       - "clang-format --Werror --dry-run myfile.cpp"
     install:
       apk:
-        - clang19-extra-tools=${APK_CLANG19_EXTRA_TOOLS_VERSION}
-      dockerfile:
-        - |-
-          # renovate: datasource=repology depName=alpine_3_21/clang19-extra-tools
-          ARG APK_CLANG19_EXTRA_TOOLS_VERSION=19.1.4-r0
+        - clang19-extra-tools
     ide:
       vscode:
         - name: Clang-Format
