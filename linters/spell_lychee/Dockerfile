@@ -12,7 +12,7 @@
 #############################################################################################
 #ARGTOP__START
 # renovate: datasource=docker depName=lycheeverse/lychee
-ARG SPELL_LYCHEE_VERSION=sha-a11d515-alpine
+ARG SPELL_LYCHEE_VERSION=sha-7c4b132-alpine
 #ARGTOP__END
 
 #############################################################################################
@@ -25,7 +25,7 @@ FROM lycheeverse/lychee:${SPELL_LYCHEE_VERSION} AS lychee
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.5.22 AS uv
+FROM ghcr.io/astral-sh/uv:0.5.29 AS uv
 FROM python:3.12.8-alpine3.21 AS build-ml-core
 WORKDIR /
 COPY --from=uv /uv /uvx /bin/

@@ -364,10 +364,10 @@ linters:
     install:
       dockerfile:
         - |-
-          # renovate: datasource=pypi depName=pyright
-          ARG PIP_PYRIGHT_VERSION=1.1.392.post0
-      pip:
-        - pyright==${PIP_PYRIGHT_VERSION}
+          # renovate: datasource=npm depName=pyright
+          ARG NPM_PYRIGHT_VERSION=1.1.393
+      npm:
+        - pyright@${NPM_PYRIGHT_VERSION}
     ide:
       emacs:
         - name: LSP-pyright

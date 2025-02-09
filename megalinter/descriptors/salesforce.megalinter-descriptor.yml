@@ -11,7 +11,7 @@ install:
   dockerfile:
     - |-
       # renovate: datasource=npm depName=@salesforce/cli
-      ARG NPM_SALESFORCE_CLI_VERSION=2.74.6
+      ARG NPM_SALESFORCE_CLI_VERSION=2.75.5
     - |-
       # renovate: datasource=npm depName=@salesforce/plugin-packaging
       ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.9.16
