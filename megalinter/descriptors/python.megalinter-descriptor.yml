@@ -305,8 +305,6 @@ linters:
   - class: PyrightLinter
     linter_name: pyright
     name: PYTHON_PYRIGHT
-    disabled: true
-    disabled_reason: https://github.com/microsoft/pyright/issues/9854
     linter_text: |
       Optional static typing checks for python, by Microsoft
 
