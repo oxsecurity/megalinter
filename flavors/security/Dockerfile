@@ -87,6 +87,8 @@ ARG PIP_ANSIBLE_LINT_VERSION=25.1.0
 ARG CARGO_SHELLCHECK_SARIF_VERSION=0.7.0
 # renovate: datasource=pypi depName=cfn-lint
 ARG PIP_CFN_LINT_VERSION=1.22.7
+# renovate: datasource=github-tags depName=kubescape/kubescape
+ARG KUBERNETES_KUBESCAPE_VERSION=2.9.0
 # renovate: datasource=pypi depName=bandit
 ARG PIP_BANDIT_VERSION=1.8.2
 # renovate: datasource=pypi depName=bandit_sarif_formatter
@@ -154,10 +156,6 @@ RUN apk add --no-cache \
                 helm \
                 gcompat \
                 libstdc++ \
-                # renovate: datasource=github-tags depName=kubescape/kubescape
-ARG KUBERNETES_KUBESCAPE_VERSION=2.9.0 \
-                RUN ln -s /lib/libc.so.6 /usr/lib/libresolv.so.2 && \
-    curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash -s -- -v "v${KUBERNETES_KUBESCAPE_VERSION}" \
                 npm \
                 nodejs-current \
                 yarn \
@@ -284,6 +282,10 @@ RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: Fil
 #
 # kubeconform installation
 # Managed with COPY --link --from=kubeconform /kubeconform /usr/bin/
+#
+# kubescape installation
+    && ln -s /lib/libc.so.6 /usr/lib/libresolv.so.2 && \
+    curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash -s -- -v "v${KUBERNETES_KUBESCAPE_VERSION}" \
 #
 # bandit installation
 #

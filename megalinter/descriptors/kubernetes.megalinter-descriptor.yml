@@ -111,6 +111,7 @@ linters:
         - curl
         - gcompat
         - libstdc++
+      dockerfile:
         - |-
           # renovate: datasource=github-tags depName=kubescape/kubescape
           ARG KUBERNETES_KUBESCAPE_VERSION=2.9.0

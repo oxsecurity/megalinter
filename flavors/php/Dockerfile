@@ -125,6 +125,8 @@ ARG KTLINT_VERSION=1.5.0
 # renovate: datasource=github-tags depName=detekt/detekt
 ARG DETEKT_VERSION=1.23.7
 
+# renovate: datasource=github-tags depName=kubescape/kubescape
+ARG KUBERNETES_KUBESCAPE_VERSION=2.9.0
 # renovate: datasource=npm depName=markdownlint-cli
 ARG NPM_MARKDOWNLINT_CLI_VERSION=0.44.0
 # renovate: datasource=npm depName=markdown-link-check
@@ -222,10 +224,6 @@ RUN apk add --no-cache \
                 helm \
                 gcompat \
                 libstdc++ \
-                # renovate: datasource=github-tags depName=kubescape/kubescape
-ARG KUBERNETES_KUBESCAPE_VERSION=2.9.0 \
-                RUN ln -s /lib/libc.so.6 /usr/lib/libresolv.so.2 && \
-    curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash -s -- -v "v${KUBERNETES_KUBESCAPE_VERSION}" \
                 libxml2-dev \
                 libxml2-utils \
                 libgcc \
@@ -435,11 +433,14 @@ RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/rel
     chmod a+x detekt-cli-${DETEKT_VERSION}/bin/* && \
     chmod a+x detekt-cli-${DETEKT_VERSION}/lib/* && \
     mv -n detekt-cli-${DETEKT_VERSION}/bin/* usr/bin && \
-    mv -n detekt-cli-${DETEKT_VERSION}/lib/* usr/lib
-
+    mv -n detekt-cli-${DETEKT_VERSION}/lib/* usr/lib \
 #
 # kubeconform installation
 # Managed with COPY --link --from=kubeconform /kubeconform /usr/bin/
+#
+# kubescape installation
+    && ln -s /lib/libc.so.6 /usr/lib/libresolv.so.2 && \
+    curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash -s -- -v "v${KUBERNETES_KUBESCAPE_VERSION}"
 #
 # markdownlint installation
 #
