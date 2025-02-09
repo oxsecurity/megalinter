@@ -49,7 +49,7 @@ FROM python:3.12.8-alpine3.21
 #############################################################################################
 #ARG__START
 # renovate: datasource=pypi depName=sqlfluff
-ARG SQL_SQLFLUFF_VERSION=3.3.0
+ARG SQL_SQLFLUFF_VERSION=3.3.1
 #ARG__END
 
 ####################

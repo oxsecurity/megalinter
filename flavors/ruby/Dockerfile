@@ -100,7 +100,7 @@ ARG REPOSITORY_TRIVY_VERSION=0.59.1
 # renovate: datasource=github-tags depName=aquasecurity/trivy
 ARG REPOSITORY_TRIVY_SBOM_VERSION=0.59.1
 # renovate: datasource=pypi depName=sqlfluff
-ARG SQL_SQLFLUFF_VERSION=3.3.0
+ARG SQL_SQLFLUFF_VERSION=3.3.1
 #ARG__END
 
 ####################
