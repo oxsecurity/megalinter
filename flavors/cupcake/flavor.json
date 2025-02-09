@@ -59,6 +59,7 @@
         "PYTHON_FLAKE8",
         "PYTHON_ISORT",
         "PYTHON_MYPY",
+        "PYTHON_PYRIGHT",
         "PYTHON_RUFF",
         "PYTHON_RUFF_FORMAT",
         "REPOSITORY_CHECKOV",

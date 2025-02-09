@@ -290,6 +290,7 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 markdownlint-cli \
                 markdown-link-check@${MARKDOWN_MARKDOWN_LINK_CHECK_VERSION} \
                 markdown-table-formatter \
+                pyright \
                 @ls-lint/ls-lint \
                 secretlint \
                 @secretlint/secretlint-rule-preset-recommend \

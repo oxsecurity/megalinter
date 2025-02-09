@@ -40,6 +40,7 @@
         "PYTHON_ISORT",
         "PYTHON_BANDIT",
         "PYTHON_MYPY",
+        "PYTHON_PYRIGHT",
         "PYTHON_RUFF",
         "PYTHON_RUFF_FORMAT",
         "REPOSITORY_CHECKOV",

@@ -73,6 +73,9 @@ RUN apk add --no-cache \
                 musl-dev \
                 openssh \
                 nodejs \
+                npm \
+                nodejs-current \
+                yarn \
     && git config --global core.autocrlf true
 #APK__END
 
@@ -103,11 +106,7 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin || true && \
 #############################################################################################
 
 #PIPVENV__START
-RUN PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir --upgrade pip virtualenv \
-    && mkdir -p "/venvs/pyright" && cd "/venvs/pyright" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir pyright && deactivate && cd ./../..  \
-    && find /venvs \( -type f \( -iname \*.pyc -o -iname \*.pyo \) -o -type d -iname __pycache__ \) -delete \
-    && rm -rf /root/.cache
-ENV PATH="${PATH}":/venvs/pyright/bin
+
 #PIPVENV__END
 
 ############################
@@ -119,6 +118,16 @@ ENV PATH="${PATH}":/venvs/pyright/bin
 ENV NODE_OPTIONS="--max-old-space-size=8192" \
     NODE_ENV=production
 #NPM__START
+WORKDIR /node-deps
+RUN npm --no-cache install --ignore-scripts --omit=dev \
+                pyright  && \
+    echo "Cleaning npm cache…" \
+    && (npm cache clean --force || true) \
+    && echo "Changing owner of node_modules files…" \
+    && chown -R "$(id -u)":"$(id -g)" node_modules # fix for https://github.com/npm/cli/issues/5900 \
+    && echo "Removing extra node_module files…" \
+    && find . \( -not -path "/proc" \) -and \( -type f \( -iname "*.d.ts" -o -iname "*.map" -o -iname "*.npmignore" -o -iname "*.travis.yml" -o -iname "CHANGELOG.md" -o -iname "README.md" -o -iname ".package-lock.json" -o -iname "package-lock.json" \) -o -type d -name /root/.npm/_cacache \) -delete 
+WORKDIR /
 
 #NPM__END
 
