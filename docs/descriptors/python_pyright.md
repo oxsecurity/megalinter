@@ -15,7 +15,7 @@ description: How to use pyright (configure, ignore files, ignore errors, help & 
 
 _This linter has been disabled in this version_
 
-_Disabled reason: https://github.com/microsoft/pyright/issues/9854_
+_Disabled reason: <https://github.com/microsoft/pyright/issues/9854>_
 
 Optional static typing checks for python, by Microsoft
 
