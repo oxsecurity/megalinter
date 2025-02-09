@@ -106,7 +106,6 @@ jobs:
             "python_isort",
             "python_bandit",
             "python_mypy",
-            "python_pyright",
             "python_ruff",
             "python_ruff_format",
             "r_lintr",
