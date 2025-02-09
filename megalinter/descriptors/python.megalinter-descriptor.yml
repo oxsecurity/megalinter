@@ -330,7 +330,7 @@ linters:
     install:
       apk:
         - nodejs
-      pip:
+      npm:
         - pyright
     ide:
       emacs:
