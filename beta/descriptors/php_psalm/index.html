@@ -11,7 +11,7 @@
 <link href="../php_phpstan/" rel="prev"/>
 <link href="../php_phplint/" rel="next"/>
 <link href="../../assets/images/mega-linter-square.png" rel="icon"/>
-<meta content="mkdocs-1.6.1, mkdocs-material-9.6.2" name="generator"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.6.3" name="generator"/>
 <title>psalm configuration in MegaLinter - MegaLinter by OX Security</title>
 <link href="../../assets/stylesheets/main.d7758b05.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
@@ -3695,7 +3695,7 @@
 <p><a href="https://github.com/vimeo/psalm"><img alt="GitHub stars" src="https://img.shields.io/github/stars/vimeo/psalm?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-SARIF-orange"><img alt="sarif" src="https://shields.io/badge/-SARIF-orange"/></a> <a href="https://github.com/vimeo/psalm/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/vimeo/psalm?sort=semver"/></a> <a href="https://github.com/vimeo/psalm/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/vimeo/psalm"/></a> <a href="https://github.com/vimeo/psalm/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/vimeo/psalm"/></a> <a href="https://github.com/vimeo/psalm/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/vimeo/psalm"/></a></p>
 <h2 id="psalm-documentation">psalm documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>Psalm.6.3.0@</strong></li>
+<li>Version in MegaLinter: <strong>Psalm.6.4.0@</strong></li>
 <li>Visit <a href="https://psalm.dev" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://psalm.dev/docs/running_psalm/configuration/" target="_blank">How to configure psalm rules</a><ul>
 <li>If custom <code>psalm.xml</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/psalm.xml" target="_blank">psalm.xml</a> will be used</li>
@@ -4046,6 +4046,9 @@ Miscellaneous:
     --alter
         Run Psalter
 
+    --review
+        Run the psalm-review tool
+
     --language-server
         Run Psalm Language Server
 </code></pre>
@@ -4128,7 +4131,7 @@ RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" &amp;&amp; export GITHU
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.instant", "navigation.footer"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
-<script src="../../assets/javascripts/bundle.f13b1293.min.js"></script>
+<script src="../../assets/javascripts/bundle.f1b6f286.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
 <script src="../../javascripts/tables.js"></script>
 <script src="../../javascripts/gtag.js"></script>
