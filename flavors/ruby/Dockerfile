@@ -166,7 +166,7 @@ ARG GEM_RUBOCOP_RSPEC_VERSION=3.4.0
 # renovate: datasource=pypi depName=snakefmt
 ARG PIP_SNAKEFMT_VERSION=0.10.2
 # renovate: datasource=npm depName=cspell
-ARG NPM_CSPELL_VERSION=8.17.2
+ARG NPM_CSPELL_VERSION=8.17.3
 # renovate: datasource=pypi depName=proselint
 ARG PIP_PROSELINT_VERSION=0.14.0
 # renovate: datasource=pypi depName=sqlfluff
