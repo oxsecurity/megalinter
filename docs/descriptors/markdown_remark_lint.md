@@ -9,7 +9,7 @@ description: How to use remark-lint (configure, ignore files, ignore errors, hel
 
 _This linter has been disabled in this version_
 
-_Disabled reason: Bug in remark-lint: https://github.com/remarkjs/remark-lint/issues/322_
+_Disabled reason: Bug in remark-lint: <https://github.com/remarkjs/remark-lint/issues/322>_
 
 ## remark-lint documentation
 
