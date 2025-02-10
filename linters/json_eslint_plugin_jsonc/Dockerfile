@@ -49,7 +49,7 @@ FROM python:3.12.8-alpine3.21
 #############################################################################################
 #ARG__START
 # renovate: datasource=npm depName=eslint
-ARG NPM_ESLINT_VERSION=8.57.0
+ARG NPM_ESLINT_VERSION=8.57.1
 # renovate: datasource=npm depName=eslint-plugin-jsonc
 ARG NPM_ESLINT_PLUGIN_JSONC_VERSION=2.19.1
 # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
