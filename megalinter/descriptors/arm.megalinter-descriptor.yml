@@ -11,7 +11,7 @@ install:
   apk:
     - icu-libs
   dockerfile:
-    - |
+    - |-
       # renovate: datasource=github-tags depName=PowerShell/PowerShell
       ARG POWERSHELL_VERSION=7.5.0
     - |

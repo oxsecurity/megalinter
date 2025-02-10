@@ -54,6 +54,8 @@ FROM python:3.12.8-alpine3.21
 #############################################################################################
 #ARG__START
 
+ARG ACTION_ACTIONLINT_VERSION
+ARG BASH_SHELLCHECK_VERSION
 #ARG__END
 
 ####################

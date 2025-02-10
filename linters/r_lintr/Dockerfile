@@ -73,7 +73,6 @@ RUN apk add --no-cache \
                 musl-dev \
                 openssh \
                 g++ \
-                libc-dev \
                 libcurl \
                 libgcc \
                 libxml2-dev \

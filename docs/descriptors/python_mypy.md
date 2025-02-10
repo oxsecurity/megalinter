@@ -19,7 +19,7 @@ If you don't use python static typing, you should disable this linter by adding 
 
 ## mypy documentation
 
-- Version in MegaLinter: **1.15.0**
+- Version in MegaLinter: **1.14.1**
 - Visit [Official Web Site](https://mypy.readthedocs.io/en/stable/){target=_blank}
 - See [How to configure mypy rules](https://mypy.readthedocs.io/en/stable/config_file.html){target=_blank}
   - If custom `.mypy.ini` config file isn't found, [.mypy.ini](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.mypy.ini){target=_blank} will be used
@@ -143,7 +143,7 @@ Config file:
   --config-file CONFIG_FILE
                             Configuration file, must have a [mypy] section
                             (defaults to mypy.ini, .mypy.ini, pyproject.toml,
-                            setup.cfg)
+                            setup.cfg, ~/.config/mypy/config, ~/.mypy.ini)
   --warn-unused-configs     Warn about unused '[mypy-<pattern>]' or
                             '[[tool.mypy.overrides]]' config sections
                             (inverse: --no-warn-unused-configs)
@@ -268,8 +268,6 @@ Miscellaneous strictness flags:
   --strict-equality         Prohibit equality, identity, and container checks
                             for non-overlapping types (inverse: --no-strict-
                             equality)
-  --strict-bytes            Disable treating bytearray and memoryview as
-                            subtypes of bytes (inverse: --no-strict-bytes)
   --extra-checks            Enable additional checks that are technically
                             correct but may be impractical in real code. For
                             example, this prohibits partial overlap in

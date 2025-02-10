@@ -72,7 +72,6 @@ RUN apk add --no-cache \
                 make \
                 musl-dev \
                 openssh \
-                libc-dev \
                 libxml2-dev \
                 libxml2-utils \
                 libgcc \

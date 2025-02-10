@@ -110,7 +110,6 @@ linters:
       apk:
         - curl
         - gcompat
-        - libc6-compat
         - libstdc++
       dockerfile:
         - |-

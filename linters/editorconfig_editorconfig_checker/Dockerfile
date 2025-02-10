@@ -50,6 +50,7 @@ FROM python:3.12.8-alpine3.21
 #############################################################################################
 #ARG__START
 
+ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION
 #ARG__END
 
 ####################

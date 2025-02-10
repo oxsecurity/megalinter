@@ -77,11 +77,11 @@ linters:
       - "selene --config chktexrc.toml myfile.lua"
     install:
       cargo:
-        - selene@${LUA_SELENE_VERSION}
+        - selene@${CARGO_SELENE_VERSION}
       dockerfile:
         - |-
           # renovate: datasource=crate depName=selene
-          ARG LUA_SELENE_VERSION=0.28.0
+          ARG CARGO_SELENE_VERSION=0.28.0
     ide:
       neovim:
         - name:
@@ -114,11 +114,11 @@ linters:
       - "stylua --config-path chktexrc.toml --check myfile.lua"
     install:
       cargo:
-        - stylua@${LUA_STYLUA_VERSION}
+        - stylua@${CARGO_STYLUA_VERSION}
       dockerfile:
         - |-
           # renovate: datasource=crate depName=stylua
-          ARG LUA_STYLUA_VERSION=2.0.0
+          ARG CARGO_STYLUA_VERSION=2.0.0
     ide:
       neovim:
         - name:

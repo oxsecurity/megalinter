@@ -82,8 +82,11 @@ linters:
       - "shellcheck --color=auto --external-sources myfile.sh"
     install:
       cargo:
-        - shellcheck-sarif
+        - shellcheck-sarif@${CARGO_SHELLCHECK_SARIF_VERSION}
       dockerfile:
+        - |-
+          # renovate: datasource=crate depName=shellcheck-sarif
+          ARG CARGO_SHELLCHECK_SARIF_VERSION=0.7.0
         # Also update shellcheck version in action.megalinter-descriptor.yml
         - |-
           # renovate: datasource=docker depName=koalaman/shellcheck

@@ -74,7 +74,6 @@ RUN apk add --no-cache \
                 musl-dev \
                 openssh \
                 gcompat \
-                libc6-compat \
                 libstdc++ \
     && git config --global core.autocrlf true
 #APK__END

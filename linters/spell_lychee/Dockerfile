@@ -12,7 +12,7 @@
 #############################################################################################
 #ARGTOP__START
 # renovate: datasource=docker depName=lycheeverse/lychee
-ARG SPELL_LYCHEE_VERSION=sha-a11d515-alpine
+ARG SPELL_LYCHEE_VERSION=sha-7c4b132-alpine
 #ARGTOP__END
 
 #############################################################################################
@@ -50,6 +50,7 @@ FROM python:3.12.8-alpine3.21
 #############################################################################################
 #ARG__START
 
+ARG SPELL_LYCHEE_VERSION
 #ARG__END
 
 ####################

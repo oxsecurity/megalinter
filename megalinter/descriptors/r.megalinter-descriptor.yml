@@ -22,7 +22,6 @@ linters:
       apk:
         - gcc
         - g++
-        - libc-dev
         - libcurl
         - libffi-dev
         - libgcc
