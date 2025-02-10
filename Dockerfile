@@ -234,7 +234,7 @@ ARG KTLINT_VERSION=1.5.0
 ARG DETEKT_VERSION=1.23.7
 
 # renovate: datasource=github-tags depName=kubescape/kubescape
-ARG KUBERNETES_KUBESCAPE_VERSION=2.9.0
+ARG KUBERNETES_KUBESCAPE_VERSION=2.9.2
 # renovate: datasource=github-tags depName=cvega/luarocks
 ARG LUA_LUACHECK_VERSION=3.3.1
 

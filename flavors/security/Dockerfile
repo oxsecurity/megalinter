@@ -88,7 +88,7 @@ ARG CARGO_SHELLCHECK_SARIF_VERSION=0.7.0
 # renovate: datasource=pypi depName=cfn-lint
 ARG PIP_CFN_LINT_VERSION=1.22.7
 # renovate: datasource=github-tags depName=kubescape/kubescape
-ARG KUBERNETES_KUBESCAPE_VERSION=2.9.0
+ARG KUBERNETES_KUBESCAPE_VERSION=2.9.2
 # renovate: datasource=pypi depName=bandit
 ARG PIP_BANDIT_VERSION=1.8.2
 # renovate: datasource=pypi depName=bandit_sarif_formatter
