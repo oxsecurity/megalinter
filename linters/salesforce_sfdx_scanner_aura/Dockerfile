@@ -53,7 +53,7 @@ ARG NPM_SALESFORCE_CLI_VERSION=2.75.5
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
 ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.9.16
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=5.18.1
+ARG SFDX_HARDIS_VERSION=5.19.1
 # renovate: datasource=npm depName=@salesforce/sfdx-scanner
 ARG SALESFORCE_SFDX_SCANNER_VERSION=4.9.0
 #ARG__END
