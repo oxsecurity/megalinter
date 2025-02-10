@@ -52,6 +52,25 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [psalm](https://psalm.dev) from Psalm.6.4.0@ to **Psalm.6.5.0@** on 2025-02-09
   - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.59.0 to **0.59.1** on 2025-02-09
   - [trivy](https://aquasecurity.github.io/trivy/) from 0.59.0 to **0.59.1** on 2025-02-09
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 25.1.2 to **25.1.0** on 2025-02-10
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.24.0 to **1.22.7** on 2025-02-10
+  - [stylelint](https://stylelint.io) from 16.14.1 to **16.14.0** on 2025-02-10
+  - [eslint](https://eslint.org) from 8.57.1 to **8.57.0** on 2025-02-10
+  - [prettier](https://prettier.io/) from 3.5.0 to **3.4.2** on 2025-02-10
+  - [phpstan](https://phpstan.org/) from 2.1.3 to **2.1.4** on 2025-02-10
+  - [isort](https://pycqa.github.io/isort/) from 6.0.0 to **5.13.2** on 2025-02-10
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.15.0 to **1.14.1** on 2025-02-10
+  - [pylint](https://pylint.readthedocs.io) from 3.3.4 to **3.3.3** on 2025-02-10
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.9.5 to **0.9.3** on 2025-02-10
+  - [ruff](https://github.com/astral-sh/ruff) from 0.9.5 to **0.9.3** on 2025-02-10
+  - [checkov](https://www.checkov.io/) from 3.2.368 to **3.2.357** on 2025-02-10
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.59.1 to **0.59.0** on 2025-02-10
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.59.1 to **0.59.0** on 2025-02-10
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.88.4 to **3.88.5** on 2025-02-10
+  - [rubocop](https://rubocop.org/) from 1.71.2 to **1.71.0** on 2025-02-10
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 2.45.0 to **2.46.0** on 2025-02-10
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.17.3 to **8.17.2** on 2025-02-10
+  - [sqlfluff](https://www.sqlfluff.com/) from 3.3.0 to **3.3.1** on 2025-02-10
 <!-- linter-versions-end -->
 
 ## [v8.4.2] - 2024-02-02

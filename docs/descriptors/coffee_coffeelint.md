@@ -114,5 +114,11 @@ Options:
 
 ### Installation on mega-linter Docker image
 
+- Dockerfile commands :
+```dockerfile
+# renovate: datasource=npm depName=@coffeelint/cli
+ARG NPM_COFFEELINT_CLI_VERSION=5.2.11
+```
+
 - NPM packages (node.js):
-  - [@coffeelint/cli](https://www.npmjs.com/package/@coffeelint/cli)
+  - [@coffeelint/cli@${NPM_COFFEELINT_CLI_VERSION}](https://www.npmjs.com/package/@coffeelint/cli/v/${NPM_COFFEELINT_CLI_VERSION})

@@ -98,7 +98,6 @@ RUN mkdir -p /home/r-library \
 - APK packages (Linux):
   - [gcc](https://pkgs.alpinelinux.org/packages?branch=edge&name=gcc)
   - [g++](https://pkgs.alpinelinux.org/packages?branch=edge&name=g++)
-  - [libc-dev](https://pkgs.alpinelinux.org/packages?branch=edge&name=libc-dev)
   - [libcurl](https://pkgs.alpinelinux.org/packages?branch=edge&name=libcurl)
   - [libffi-dev](https://pkgs.alpinelinux.org/packages?branch=edge&name=libffi-dev)
   - [libgcc](https://pkgs.alpinelinux.org/packages?branch=edge&name=libgcc)

@@ -11,11 +11,7 @@ description: How to use pyright (configure, ignore files, ignore errors, help & 
   </a>
 </div>
 
-![disabled](https://shields.io/badge/-disabled-orange) [![GitHub stars](https://img.shields.io/github/stars/microsoft/pyright?cacheSeconds=3600)](https://github.com/microsoft/pyright) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/microsoft/pyright?sort=semver)](https://github.com/microsoft/pyright/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/microsoft/pyright)](https://github.com/microsoft/pyright/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/microsoft/pyright)](https://github.com/microsoft/pyright/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/microsoft/pyright)](https://github.com/microsoft/pyright/graphs/contributors/)
-
-_This linter has been disabled in this version_
-
-_Disabled reason: <https://github.com/microsoft/pyright/issues/9854>_
+[![GitHub stars](https://img.shields.io/github/stars/microsoft/pyright?cacheSeconds=3600)](https://github.com/microsoft/pyright) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/microsoft/pyright?sort=semver)](https://github.com/microsoft/pyright/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/microsoft/pyright)](https://github.com/microsoft/pyright/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/microsoft/pyright)](https://github.com/microsoft/pyright/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/microsoft/pyright)](https://github.com/microsoft/pyright/graphs/contributors/)
 
 Optional static typing checks for python, by Microsoft
 
@@ -70,9 +66,11 @@ Use pyright in your favorite IDE to catch errors before MegaLinter !
 
 This linter is available in the following flavors
 
-|                                                                         <!-- -->                                                                         | Flavor                                               | Description               | Embedded linters |                                                                                                                                                                       Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       125        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                     | Embedded linters |                                                                                                                                                                                       Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       125        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        85        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)   | Optimized for PYTHON based projects             |        62        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
 
 ## Behind the scenes
 
@@ -128,7 +126,11 @@ Usage: pyright [options] files...
 
 ### Installation on mega-linter Docker image
 
-- APK packages (Linux):
-  - [nodejs](https://pkgs.alpinelinux.org/packages?branch=edge&name=nodejs)
-- PIP packages (Python):
-  - [pyright](https://pypi.org/project/pyright)
+- Dockerfile commands :
+```dockerfile
+# renovate: datasource=npm depName=pyright
+ARG NPM_PYRIGHT_VERSION=1.1.393
+```
+
+- NPM packages (node.js):
+  - [pyright@${NPM_PYRIGHT_VERSION}](https://www.npmjs.com/package/pyright@${NPM_PYRIGHT_VERSION})
