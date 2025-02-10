@@ -144,7 +144,7 @@ ARG NPM_HTMLHINT_VERSION=1.1.4
 ARG PMD_VERSION=7.10.0
 
 # renovate: datasource=npm depName=eslint
-ARG NPM_ESLINT_VERSION=8.57.0
+ARG NPM_ESLINT_VERSION=8.57.1
 # renovate: datasource=npm depName=eslint-config-airbnb
 ARG NPM_ESLINT_CONFIG_AIRBNB_VERSION=19.0.4
 # renovate: datasource=npm depName=eslint-config-prettier
