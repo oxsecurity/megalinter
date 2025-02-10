@@ -82,7 +82,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=black
-          ARG PIP_BLACK_VERSION=24.10.0
+          ARG PIP_BLACK_VERSION=25.1.0
       pip:
         - black==${PIP_BLACK_VERSION}
     ide:
@@ -172,7 +172,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=black
-          ARG PIP_BLACK_VERSION=24.10.0
+          ARG PIP_BLACK_VERSION=25.1.0
         - |-
           # renovate: datasource=pypi depName=isort
           ARG PIP_ISORT_VERSION=5.13.2

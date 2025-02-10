@@ -74,7 +74,7 @@ ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.6.1
 ARG PSSA_VERSION='1.23.0'
 
 # renovate: datasource=pypi depName=black
-ARG PIP_BLACK_VERSION=24.10.0
+ARG PIP_BLACK_VERSION=25.1.0
 # renovate: datasource=pypi depName=isort
 ARG PIP_ISORT_VERSION=5.13.2
 # renovate: datasource=pypi depName=ruff
