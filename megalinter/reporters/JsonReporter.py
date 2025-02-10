@@ -41,6 +41,7 @@ class JsonReporter(Reporter):
         "return_code",
         "number_errors",
         "total_number_errors",
+        "total_number_warnings",
         "number_fixed",
         "files_lint_results",
         "elapsed_time_s",

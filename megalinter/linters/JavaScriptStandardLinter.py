@@ -7,8 +7,8 @@ from megalinter import Linter, utilstest
 
 
 class JavaScriptStandardLinter(Linter):
-    def pre_test(self):
+    def pre_test(self, test_name):
         utilstest.write_eslintignore()
 
-    def post_test(self):
+    def post_test(self, test_name):
         utilstest.delete_eslintignore()

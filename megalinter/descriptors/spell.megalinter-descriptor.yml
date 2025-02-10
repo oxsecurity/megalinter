@@ -122,7 +122,9 @@ linters:
     cli_config_arg_name: "--config"
     config_file_name: .vale.ini
     cli_lint_errors_count: regex_number
-    cli_lint_errors_regex: ([0-9]+) errors, [0-9]+ warnings and [0-9]+ suggestions in [0-9]+ files
+    cli_lint_errors_regex: "([0-9]+) errors?"
+    cli_lint_warnings_count: regex_number
+    cli_lint_warnings_regex: "([0-9]+) warnings?"
     examples:
       - "vale README.md file1.md file2.md file3.md"
       - "vale --config .vale.ini README.md file1.md file2.md file3.md"

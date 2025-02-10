@@ -712,6 +712,33 @@
             "title": "Linting mode",
             "type": "string"
           },
+          "cli_lint_warnings_count": {
+            "$id": "#/properties/linters/items/properties/cli_lint_warnings_count",
+            "description": "Defines how to count warnings from log file. regex_number, regex_count, regex_sum, or total_lines",
+            "enum": [
+              "regex_number",
+              "regex_count",
+              "regex_sum",
+              "total_lines"
+            ],
+            "examples": [
+              "regex_number",
+              "regex_count",
+              "regex_sum",
+              "total_lines"
+            ],
+            "title": "Lint errors count mode",
+            "type": "string"
+          },
+          "cli_lint_warnings_regex": {
+            "$id": "#/properties/linters/items/properties/cli_lint_warnings_regex",
+            "description": "Regex allowing to extract the number of warnings from linter output logs",
+            "examples": [
+              "Issues found: (.*) in .* files"
+            ],
+            "title": "Lint warnings number regex",
+            "type": "string"
+          },
           "cli_sarif_args": {
             "$id": "#/properties/linters/items/properties/cli_sarif_args",
             "default": [],

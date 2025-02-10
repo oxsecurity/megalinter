@@ -30,6 +30,10 @@ linters:
       The default configuration enables all supported languages and rules, which may not be optimal for every project.
     linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/tflint.png
     cli_lint_mode: project
+    cli_lint_errors_count: regex_count
+    cli_lint_errors_regex: "Error:"
+    cli_lint_warnings_count: regex_count
+    cli_lint_warnings_regex: "Warning:"
     config_file_name: .tflint.hcl
     cli_config_extra_args:
       - --recursive

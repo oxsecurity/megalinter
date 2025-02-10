@@ -144,7 +144,7 @@ Of course, please correct real typos before :)
         )
         return additional_report.splitlines()
 
-    def pre_test(self):
+    def pre_test(self, test_name):
         config.set_value(
             self.request_id, "SPELL_CSPELL_FILE_EXTENSIONS", [".js", ".md"]
         )

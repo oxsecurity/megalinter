@@ -9,7 +9,8 @@ file_extensions:
   - ".saas"
 linters:
   # StyleLint
-  - linter_name: stylelint
+  - class: StyleLintLinter
+    linter_name: stylelint
     name: CSS_STYLELINT
     linter_url: https://stylelint.io
     linter_rules_url: https://stylelint.io/user-guide/rules/list
@@ -22,6 +23,10 @@ linters:
     config_file_name: .stylelintrc.json
     cli_config_arg_name: "--config"
     cli_lint_fix_arg_name: "--fix"
+    cli_lint_errors_count: regex_number
+    cli_lint_errors_regex: "([0-9]+) errors"
+    cli_lint_warnings_count: regex_number
+    cli_lint_warnings_regex: "([0-9]+) warnings"
     examples:
       - "stylelint myfile.css"
       - "stylelint --config .stylelintrc.json myfile.css myfile2.css myfile3.css"
