@@ -149,6 +149,8 @@ DESCRIPTORS_FOR_BUILD_CACHE = None
 
 MAIN_DOCKERFILE = f"{REPO_HOME}/Dockerfile"
 
+ALPINE_VERSION = ""
+
 with open(MAIN_DOCKERFILE, "r", encoding="utf-8") as main_dockerfile_file:
     main_dockerfile_content = main_dockerfile_file.read()
 
