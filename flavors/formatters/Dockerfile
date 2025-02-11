@@ -84,7 +84,7 @@ ARG PIP_RSTFMT_VERSION=0.0.14
 # renovate: datasource=pypi depName=snakefmt
 ARG PIP_SNAKEFMT_VERSION=0.10.2
 # renovate: datasource=pypi depName=pip
-ARG PIP_PIP_VERSION=25.0
+ARG PIP_PIP_VERSION=25.0.1
 # renovate: datasource=pypi depName=virtualenv
 ARG PIP_VIRTUALENV_VERSION=20.29.1
 # renovate: datasource=github-tags depName=rust-lang/rust

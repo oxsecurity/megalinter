@@ -192,7 +192,7 @@ ARG NPM_IBM_TEKTON_LINT_VERSION=1.1.0
 # renovate: datasource=pypi depName=yamllint
 ARG PIP_YAMLLINT_VERSION=1.35.1
 # renovate: datasource=pypi depName=pip
-ARG PIP_PIP_VERSION=25.0
+ARG PIP_PIP_VERSION=25.0.1
 # renovate: datasource=pypi depName=virtualenv
 ARG PIP_VIRTUALENV_VERSION=20.29.1
 # renovate: datasource=github-tags depName=rust-lang/rust
