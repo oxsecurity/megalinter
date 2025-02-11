@@ -34,7 +34,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=cfn-lint
-          ARG PIP_CFN_LINT_VERSION=1.22.7
+          ARG PIP_CFN_LINT_VERSION=1.24.0
       pip:
         - cfn-lint[sarif]==${PIP_CFN_LINT_VERSION}
     ide:
