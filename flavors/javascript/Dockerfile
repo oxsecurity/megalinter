@@ -129,8 +129,8 @@ ARG NPM_ESLINT_CONFIG_STANDARD_VERSION=17.1.0
 ARG NPM_ESLINT_PLUGIN_IMPORT_VERSION=2.31.0
 # renovate: datasource=npm depName=eslint-plugin-jest
 ARG NPM_ESLINT_PLUGIN_JEST_VERSION=28.11.0
-# renovate: datasource=npm depName=eslint-plugin-node
-ARG NPM_ESLINT_PLUGIN_NODE_VERSION=11.1.0
+# renovate: datasource=npm depName=eslint-plugin-n
+ARG NPM_ESLINT_PLUGIN_N_VERSION=16.0.0
 # renovate: datasource=npm depName=eslint-plugin-prettier
 ARG NPM_ESLINT_PLUGIN_PRETTIER_VERSION=5.2.3
 # renovate: datasource=npm depName=eslint-plugin-promise
@@ -342,7 +342,7 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 eslint-config-standard@${NPM_ESLINT_CONFIG_STANDARD_VERSION} \
                 eslint-plugin-import@${NPM_ESLINT_PLUGIN_IMPORT_VERSION} \
                 eslint-plugin-jest@${NPM_ESLINT_PLUGIN_JEST_VERSION} \
-                eslint-plugin-node@${NPM_ESLINT_PLUGIN_NODE_VERSION} \
+                eslint-plugin-n@${NPM_ESLINT_PLUGIN_N_VERSION} \
                 eslint-plugin-prettier@${NPM_ESLINT_PLUGIN_PRETTIER_VERSION} \
                 eslint-plugin-promise@${NPM_ESLINT_PLUGIN_PROMISE_VERSION} \
                 eslint-plugin-vue@${NPM_ESLINT_PLUGIN_VUE_VERSION} \
