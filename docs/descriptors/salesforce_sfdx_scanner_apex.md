@@ -147,8 +147,6 @@ GLOBAL FLAGS
 COMMANDS
   scanner run dfa  Scan codebase with all DFA rules by default.
 
- ›   Warning: Plugin @salesforce/sfdx-scanner (4.9.0) differs from the version
- ›   specified by sf (4.8.0)
 Warning: We plan to stop supporting v4.x of Code Analyzer in the coming months. We highly recommend that you start using v5.x, which is currently in Beta. For information on v5.x, see https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/code-analyzer.html.
  name                                                   languages   categories            rulesets [dep] engine            is dfa is pilot
  ────────────────────────────────────────────────────── ─────────── ───────────────────── ────────────── ───────────────── ────── ────────
@@ -375,14 +373,14 @@ Warning: We plan to stop supporting v4.x of Code Analyzer in the coming months. 
 ```dockerfile
 # Parent descriptor install
 # renovate: datasource=npm depName=@salesforce/cli
-ARG SALESFORCE_CLI_VERSION=2.74.6
+ARG NPM_SALESFORCE_CLI_VERSION=2.75.5
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
-ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.9.16
+ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.9.16
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=5.18.0
+ARG SFDX_HARDIS_VERSION=5.19.1
 ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
-RUN sf plugins install @salesforce/plugin-packaging@${SALESFORCE_PLUGIN_PACKAGING_VERSION} \
+RUN sf plugins install @salesforce/plugin-packaging@${NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION} \
     && echo y|sf plugins install sfdx-hardis@${SFDX_HARDIS_VERSION} \
     && (npm cache clean --force || true) \
     && rm -rf /root/.npm/_cacache

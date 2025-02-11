@@ -131,6 +131,6 @@ RUN wget --tries=5 https://www.lua.org/ftp/lua-5.3.5.tar.gz -O - -q | tar -xzf -
 
 # Linter install
 # renovate: datasource=crate depName=selene
-ARG LUA_SELENE_VERSION=0.28.0
+ARG CARGO_SELENE_VERSION=0.28.0
 ```
 
