@@ -77,8 +77,6 @@ Before going below, see [**Online Documentation Web Site which has a much easier
   - [Which version to use ?](#which-version-to-use-)
   - [GitHub Action](#github-action)
   - [GitLab CI](#gitlab-ci)
-- [Manual Setup](#manual-setup)
-  - [Using R2Devops](#using-r2devops)
   - [Azure Pipelines](#azure-pipelines)
     - [Single Repository](#single-repository)
     - [Central Repository](#central-repository)
@@ -529,8 +527,6 @@ description: Manual instructions to setup MegaLinter as a Gitlab Pipeline job
 -->
 ### GitLab CI
 
-#### Manual setup
-
 Create or update `.gitlab-ci.yml` file at the root of your repository
 
 ```yaml
@@ -560,14 +556,6 @@ Create a Gitlab access token and define it in a variable **GITLAB_ACCESS_TOKEN_M
 ![config-gitlab-access-token](https://user-images.githubusercontent.com/17500430/151674446-1bcb1420-d9aa-4ae1-aaae-dcf51afb36ab.gif)
 
 ![Screenshot](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/TextReporter_gitlab_1.jpg?raw=true)
-
-#### Using R2Devops
-
-![R2Devops Logo](https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/images/r2devops.svg?sanitize=true)
-
-Our friends at [R2Devops](https://r2devops.io/) have packaged a [Gitlab-CI MegaLinter workflow](https://r2devops.io/marketplace/gitlab/r2devops/hub/mega_linter) on their [open-source templates marketplace](https://r2devops.io/marketplace), and it can post MegaLinter results in Gitlab Code Quality Reports !
-
-[![Screenshot](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/r2devops-link.jpg?raw=true)](https://r2devops.io/marketplace/gitlab/r2devops/hub/mega_linter)
 
 <!-- install-gitlab-section-end -->
 <!-- install-azure-section-start -->
@@ -1619,7 +1607,6 @@ description: List of all known articles, blog posts and videos that talk about M
 - [analysis-tools.dev](https://analysis-tools.dev/tool/mega-linter){target=_blank}
 - [awesome-linters](https://github.com/caramelomartins/awesome-linters#language-agnostic){target=_blank}
 - [schemastore.org](https://www.schemastore.org/json/){target=_blank}
-- [r2devops.io](https://r2devops.io/jobs/static_tests/mega_linter/){target=_blank}
 - [abhith.net](https://www.abhith.net/recommended/){target=_blank}
 <!-- - [iac-analyzers.dev/](https://iac-analyzers.dev/){target=_blank} -->
 - [my-devops-lab.com](https://www.my-devops-lab.com/tools){target=_blank}

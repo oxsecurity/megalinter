@@ -92,7 +92,6 @@ description: List of all known articles, blog posts and videos that talk about M
 - [analysis-tools.dev](https://analysis-tools.dev/tool/mega-linter){target=_blank}
 - [awesome-linters](https://github.com/caramelomartins/awesome-linters#language-agnostic){target=_blank}
 - [schemastore.org](https://www.schemastore.org/json/){target=_blank}
-- [r2devops.io](https://r2devops.io/jobs/static_tests/mega_linter/){target=_blank}
 - [abhith.net](https://www.abhith.net/recommended/){target=_blank}
 <!-- - [iac-analyzers.dev/](https://iac-analyzers.dev/){target=_blank} -->
 - [my-devops-lab.com](https://www.my-devops-lab.com/tools){target=_blank}
