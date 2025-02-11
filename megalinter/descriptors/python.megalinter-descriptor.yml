@@ -286,7 +286,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=mypy
-          ARG PIP_MYPY_VERSION=1.14.1
+          ARG PIP_MYPY_VERSION=1.15.0
         - ENV MYPY_CACHE_DIR=/tmp # Avoid mypy cache to mess with other linters
       pip:
         - mypy==${PIP_MYPY_VERSION}

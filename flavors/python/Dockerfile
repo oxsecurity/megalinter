@@ -148,7 +148,7 @@ ARG PIP_BANDIT_VERSION=1.8.2
 # renovate: datasource=pypi depName=bandit_sarif_formatter
 ARG PIP_BANDIT_SARIF_FORMATTER_VERSION=1.1.1
 # renovate: datasource=pypi depName=mypy
-ARG PIP_MYPY_VERSION=1.14.1
+ARG PIP_MYPY_VERSION=1.15.0
 # renovate: datasource=npm depName=pyright
 ARG NPM_PYRIGHT_VERSION=1.1.393
 # renovate: datasource=pypi depName=ruff
