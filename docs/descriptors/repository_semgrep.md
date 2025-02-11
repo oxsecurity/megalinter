@@ -545,7 +545,7 @@ OPTIONS
            Endpoint to send OpenTelemetry traces to, if `--trace` is present.
            The value may be `semgrep-prod` (default), `semgrep-dev`,
            `semgrep-local`, or any valid URL. This feature is meant for
-           internal use and may be changed or removed wihtout warning.
+           internal use and may be changed or removed without warning.
 
        --use-git-ignore
            '--no-git-ignore' causes semgrep to not call 'git' and not consult

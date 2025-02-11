@@ -102,8 +102,6 @@ linters:
       vscode:
         - name: Kubescape
           url: https://marketplace.visualstudio.com/items?itemName=kubescape.kubescape
-    downgraded_version: true
-    downgraded_reason: https://github.com/kubescape/kubescape/issues/1366
     install:
       apk:
         - curl

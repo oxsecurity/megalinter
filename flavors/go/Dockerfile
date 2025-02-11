@@ -31,7 +31,7 @@ ARG PROTOBUF_PROTOLINT_VERSION=0.53.0
 # renovate: datasource=docker depName=zricethezav/gitleaks
 ARG REPOSITORY_GITLEAKS_VERSION=v8.23.3
 # renovate: datasource=docker depName=trufflesecurity/trufflehog 
-ARG REPOSITORY_TRUFFLEHOG_VERSION=3.88.5
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.88.6
 # renovate: datasource=docker depName=jdkato/vale
 ARG SPELL_VALE_VERSION=v3.9.4
 # renovate: datasource=docker depName=lycheeverse/lychee
@@ -67,7 +67,7 @@ FROM lycheeverse/lychee:${SPELL_LYCHEE_VERSION} AS lychee
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.5.29 AS uv
+FROM ghcr.io/astral-sh/uv:0.5.30 AS uv
 FROM python:3.12.8-alpine3.21 AS build-ml-core
 WORKDIR /
 COPY --from=uv /uv /uvx /bin/

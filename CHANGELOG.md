@@ -24,6 +24,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Reporters
 
 - Doc
+  - Remove reference to R2DevOps jobs as it has been discontinued (see [#4678](https://github.com/oxsecurity/megalinter/issues/4678))
 
 - Flavors
 
@@ -65,6 +66,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.22.7 to **1.24.0** on 2025-02-11
   - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 15.0.0 to **15.0.2** on 2025-02-11
   - [rubocop](https://rubocop.org/) from 1.71.0 to **1.71.2** on 2025-02-11
+  - [kubescape](https://github.com/kubescape/kubescape) from 2.9.0 to **3.0.27** on 2025-02-11
 <!-- linter-versions-end -->
 
 ## [v8.4.2] - 2024-02-02
