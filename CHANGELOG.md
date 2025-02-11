@@ -52,6 +52,16 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [psalm](https://psalm.dev) from Psalm.6.4.0@ to **Psalm.6.5.0@** on 2025-02-09
   - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.59.0 to **0.59.1** on 2025-02-09
   - [trivy](https://aquasecurity.github.io/trivy/) from 0.59.0 to **0.59.1** on 2025-02-09
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.33.13 to **0.33.93** on 2025-02-11
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.24.0 to **1.22.7** on 2025-02-11
+  - [phpstan](https://phpstan.org/) from 2.1.3 to **2.1.4** on 2025-02-11
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.9.5 to **0.9.6** on 2025-02-11
+  - [ruff](https://github.com/astral-sh/ruff) from 0.9.5 to **0.9.6** on 2025-02-11
+  - [checkov](https://www.checkov.io/) from 3.2.368 to **3.2.369** on 2025-02-11
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.88.4 to **3.88.5** on 2025-02-11
+  - [rubocop](https://rubocop.org/) from 1.71.2 to **1.71.0** on 2025-02-11
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 2.45.0 to **2.46.0** on 2025-02-11
+  - [sqlfluff](https://www.sqlfluff.com/) from 3.3.0 to **3.3.1** on 2025-02-11
 <!-- linter-versions-end -->
 
 ## [v8.4.2] - 2024-02-02

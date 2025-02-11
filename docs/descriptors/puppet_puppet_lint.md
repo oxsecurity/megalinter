@@ -196,5 +196,11 @@ puppet-lint --fail-on-warnings --no-autoloader_layout-check --fix myfile.pp
 
 ### Installation on mega-linter Docker image
 
+- Dockerfile commands :
+```dockerfile
+# renovate: datasource=rubygems depName=puppet-lint
+ARG GEM_PUPPET_LINT_VERSION=4.2.4
+```
+
 - GEM packages (Ruby) :
-  - [puppet-lint](https://rubygems.org/gems/puppet-lint)
+  - [puppet-lint:${GEM_PUPPET_LINT_VERSION}](https://rubygems.org/gems/puppet-lint:${GEM_PUPPET_LINT_VERSION})

@@ -143,6 +143,14 @@ Examples:
 
 ### Installation on mega-linter Docker image
 
+- Dockerfile commands :
+```dockerfile
+# renovate: datasource=npm depName=remark-cli
+ARG NPM_REMARK_CLI_VERSION=12.0.1
+# renovate: datasource=npm depName=remark-preset-lint-recommended
+ARG NPM_REMARK_PRESET_LINT_RECOMMENDED_VERSION=7.0.0
+```
+
 - NPM packages (node.js):
-  - [remark-cli](https://www.npmjs.com/package/remark-cli)
-  - [remark-preset-lint-recommended](https://www.npmjs.com/package/remark-preset-lint-recommended)
+  - [remark-cli@${NPM_REMARK_CLI_VERSION}](https://www.npmjs.com/package/remark-cli@${NPM_REMARK_CLI_VERSION})
+  - [remark-preset-lint-recommended@${NPM_REMARK_PRESET_LINT_RECOMMENDED_VERSION}](https://www.npmjs.com/package/remark-preset-lint-recommended@${NPM_REMARK_PRESET_LINT_RECOMMENDED_VERSION})

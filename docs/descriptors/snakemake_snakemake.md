@@ -1013,5 +1013,11 @@ defaults.
 
 ### Installation on mega-linter Docker image
 
+- Dockerfile commands :
+```dockerfile
+# renovate: datasource=pypi depName=snakemake
+ARG PIP_SNAKEMAKE_VERSION=8.27.1
+```
+
 - PIP packages (Python):
-  - [snakemake](https://pypi.org/project/snakemake)
+  - [snakemake==${PIP_SNAKEMAKE_VERSION}](https://pypi.org/project/snakemake/${PIP_SNAKEMAKE_VERSION})

@@ -91,5 +91,11 @@ Options:
 
 ### Installation on mega-linter Docker image
 
+- Dockerfile commands :
+```dockerfile
+# renovate: datasource=npm depName=gherkin-lint
+ARG NPM_GHERKIN_LINT_VERSION=4.2.4
+```
+
 - NPM packages (node.js):
-  - [gherkin-lint](https://www.npmjs.com/package/gherkin-lint)
+  - [gherkin-lint@${NPM_GHERKIN_LINT_VERSION}](https://www.npmjs.com/package/gherkin-lint@${NPM_GHERKIN_LINT_VERSION})
