@@ -1,10 +1,12 @@
-- id: megalinter-incremental
+- id: megalinter-incremental-java
   name: Run MegaLinter (skipping linters that run in project mode)
   entry: npx --
   language: system
   require_serial: true
   args:
     - mega-linter-runner
+    - --flavor
+    - "java"
     - --containername
     - "megalinter-incremental"
     - --remove-container
@@ -29,13 +31,15 @@
     logged to the megalinter-reports directory, so list it in your .gitignore.
     Skip linters that run in project mode since they don't run incrementally.
 
-- id: megalinter-full
+- id: megalinter-full-java
   name: Run MegaLinter
   entry: npx --
   language: system
   require_serial: true
   args:
     - mega-linter-runner
+    - --flavor
+    - "java"
     - --containername
     - "megalinter-full"
     - --remove-container
