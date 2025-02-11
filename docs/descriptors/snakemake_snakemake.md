@@ -15,7 +15,7 @@ description: How to use snakemake (configure, ignore files, ignore errors, help 
 
 _This linter has been disabled in this version_
 
-_Disabled reason: Dependency datrie not maintained, and issue open in snakemake repo since july - <https://github.com/snakemake/snakemake/issues/2970>_
+_Disabled reason: Dependency datrie not maintained, and issue open in snakemake repo since july - https://github.com/snakemake/snakemake/issues/2970_
 
 ## snakemake documentation
 
@@ -1020,4 +1020,4 @@ ARG PIP_SNAKEMAKE_VERSION=8.27.1
 ```
 
 - PIP packages (Python):
-  - [snakemake==${PIP_SNAKEMAKE_VERSION}](https://pypi.org/project/snakemake/${PIP_SNAKEMAKE_VERSION})
+  - [snakemake](https://pypi.org/project/snakemake)

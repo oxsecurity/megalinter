@@ -150,12 +150,12 @@ Use "kubescape [command] --help" for more information about a command.
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=github-tags depName=kubescape/kubescape
-ARG KUBERNETES_KUBESCAPE_VERSION=2.9.0
+ARG KUBERNETES_KUBESCAPE_VERSION=3.0.27
 RUN ln -s /lib/libc.so.6 /usr/lib/libresolv.so.2 && \
     curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash -s -- -v "v${KUBERNETES_KUBESCAPE_VERSION}"
 ```
 
 - APK packages (Linux):
-  - [curl](https://pkgs.alpinelinux.org/packages?branch=edge&name=curl)
-  - [gcompat](https://pkgs.alpinelinux.org/packages?branch=edge&name=gcompat)
-  - [libstdc++](https://pkgs.alpinelinux.org/packages?branch=edge&name=libstdc++)
+  - [curl](https://pkgs.alpinelinux.org/packages?branch=v3.21&arch=x86_64&name=curl)
+  - [gcompat](https://pkgs.alpinelinux.org/packages?branch=v3.21&arch=x86_64&name=gcompat)
+  - [libstdc++](https://pkgs.alpinelinux.org/packages?branch=v3.21&arch=x86_64&name=libstdc++)

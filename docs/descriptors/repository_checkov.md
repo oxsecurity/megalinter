@@ -503,4 +503,4 @@ ARG PIP_CHECKOV_VERSION=3.2.369
 ```
 
 - PIP packages (Python):
-  - [checkov==${PIP_CHECKOV_VERSION}](https://pypi.org/project/checkov/${PIP_CHECKOV_VERSION})
+  - [checkov==3.2.369](https://pypi.org/project/checkov/3.2.369)

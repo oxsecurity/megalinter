@@ -169,4 +169,4 @@ ARG PIP_CFN_LINT_VERSION=1.24.0
 ```
 
 - PIP packages (Python):
-  - [cfn-lint[sarif]==${PIP_CFN_LINT_VERSION}](https://pypi.org/project/cfn-lint[sarif]/${PIP_CFN_LINT_VERSION})
+  - [cfn-lint[sarif]==1.24.0](https://pypi.org/project/cfn-lint[sarif]/1.24.0)

@@ -147,6 +147,27 @@ DEPRECATED_LINTERS = [
 
 DESCRIPTORS_FOR_BUILD_CACHE = None
 
+MAIN_DOCKERFILE = f"{REPO_HOME}/Dockerfile"
+
+ALPINE_VERSION = ""
+
+MAIN_DOCKERFILE_ARGS_MAP = {}
+
+with open(MAIN_DOCKERFILE, "r", encoding="utf-8") as main_dockerfile_file:
+    main_dockerfile_content = main_dockerfile_file.read()
+
+    match = re.search(r"FROM python:.*-alpine(\d+.\d+.?\d+)", main_dockerfile_content)
+
+    if match:
+        ALPINE_VERSION = match.group(1)
+    else:
+        logging.critical("No Alpine version found")
+
+    matches = re.finditer(r"ARG (.*)=(.*)", main_dockerfile_content)
+    
+    for match in matches:
+        MAIN_DOCKERFILE_ARGS_MAP[match.group(1)] = match.group(2)
+
 
 # Generate one Dockerfile by MegaLinter flavor
 def generate_all_flavors():
@@ -2172,22 +2193,39 @@ def get_install_md(item):
             item["install"]["apk"],
             "apk",
             "  ",
-            "https://pkgs.alpinelinux.org/packages?branch=edge&name=",
+            f"https://pkgs.alpinelinux.org/packages?branch=v{ALPINE_VERSION}&arch=x86_64&name=",
+        )
+    if "cargo" in item["install"]:
+        linter_doc_md += ["- Cargo packages (Rust):"]
+        linter_doc_md += md_package_list(
+            item["install"]["cargo"],
+            "cargo",
+            "  ",
+            f"https://crates.io/crates/",
         )
     if "npm" in item["install"]:
         linter_doc_md += ["- NPM packages (node.js):"]
         linter_doc_md += md_package_list(
-            item["install"]["npm"], "npm", "  ", "https://www.npmjs.com/package/"
+            item["install"]["npm"],
+            "npm",
+            "  ",
+            "https://www.npmjs.com/package/"
         )
     if "pip" in item["install"]:
         linter_doc_md += ["- PIP packages (Python):"]
         linter_doc_md += md_package_list(
-            item["install"]["pip"], "pip", "  ", "https://pypi.org/project/"
+            item["install"]["pip"],
+            "pip",
+            "  ",
+            "https://pypi.org/project/"
         )
     if "gem" in item["install"]:
         linter_doc_md += ["- GEM packages (Ruby) :"]
         linter_doc_md += md_package_list(
-            item["install"]["gem"], "gem", "  ", "https://rubygems.org/gems/"
+            item["install"]["gem"],
+            "gem",
+            "  ",
+            "https://rubygems.org/gems/"
         )
     return linter_doc_md
 
@@ -2313,28 +2351,73 @@ def merge_install_attr(item):
 
 def md_package_list(package_list, type, indent, start_url):
     res = []
-    for package_id_v in package_list:
-        package_id = package_id_v
-        package_version = ""
+    for package in package_list:
+        package_name = package
+        end_url = package
 
-        if type == "npm" and package_id.count("@") == 2:  # npm specific version
-            package_id_split = package_id.split("@")
-            package_id = "@" + package_id_split[1]
-            package_version = "/v/" + package_id_split[2]
-        elif type == "pip" and "==" in package_id_v:  # py specific version
-            package_id = package_id_v.split("==")[0]
-            package_version = "/" + package_id_v.split("==")[1]
-        elif type == "gem":
-            gem_match = re.match(
-                r"(.*)\s-v\s(.*)", package_id_v
-            )  # gem specific version
+        if type == "cargo": # cargo specific version
+            match = re.search(r"(.*)@(.*)", package)
 
-            if gem_match:  # gem specific version
-                package_id = gem_match.group(1)
-                package_version = "/versions/" + gem_match.group(2)
-        res += [f"{indent}- [{package_id_v}]({start_url}{package_id}{package_version})"]
+            if match:
+                package_id = match.group(1)
+                package_version = get_arg_variable_name(match.group(2))
+
+                if package_version is not None:
+                    package_name = f"{package_id}@{package_version}"
+                    end_url = f"{package_id}/{package_version}"
+                else:
+                    package_name = package_id
+                    end_url = package_id
+        elif type == "npm": # npm specific version
+            match = re.search(r"(.*)@(.*)", package)
+
+            if match:
+                package_id = match.group(1)
+                package_version = get_arg_variable_name(match.group(2))
+
+                if package_version is not None:
+                    package_name = f"{package_id}@{package_version}"
+                    end_url = f"{package_id}/v/{package_version}"
+                else:
+                    package_name = package_id
+                    end_url = package_id
+        elif type == "pip": # py specific version
+            match = re.search(r"(.*)==(.*)", package)
+
+            if match:
+                package_id = match.group(1)
+                package_version = get_arg_variable_name(match.group(2))
+
+                if package_version is not None:
+                    package_name = f"{package_id}=={package_version}"
+                    end_url = f"{package_id}/{package_version}"
+                else:
+                    package_name = package_id
+                    end_url = package_id
+        elif type == "gem": # gem specific version
+            match = re.search(r"(.*):(.*)", package)
+
+            if match:
+                package_id = match.group(1)
+                package_version = get_arg_variable_name(match.group(2))
+
+                if package_version is not None:
+                    package_name = f"{package_id}:{package_version}"
+                    end_url = f"{package_id}/versions/{package_version}"
+                else:
+                    package_name = package_id
+                    end_url = package_id
+
+        res += [f"{indent}- [{package_name}]({start_url}{end_url})"]
     return res
 
+def get_arg_variable_name(package_version):
+    extracted_version = re.search(r"\$\{(.*)\}", package_version).group(1)
+
+    if extracted_version in MAIN_DOCKERFILE_ARGS_MAP:
+        return MAIN_DOCKERFILE_ARGS_MAP[extracted_version]
+    else:
+        return None
 
 def replace_in_file(file_path, start, end, content, add_new_line=True):
     # Read in the file

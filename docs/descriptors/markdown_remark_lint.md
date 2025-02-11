@@ -9,7 +9,7 @@ description: How to use remark-lint (configure, ignore files, ignore errors, hel
 
 _This linter has been disabled in this version_
 
-_Disabled reason: Bug in remark-lint: <https://github.com/remarkjs/remark-lint/issues/322>_
+_Disabled reason: Bug in remark-lint: https://github.com/remarkjs/remark-lint/issues/322_
 
 ## remark-lint documentation
 
@@ -152,5 +152,5 @@ ARG NPM_REMARK_PRESET_LINT_RECOMMENDED_VERSION=7.0.1
 ```
 
 - NPM packages (node.js):
-  - [remark-cli@${NPM_REMARK_CLI_VERSION}](https://www.npmjs.com/package/remark-cli@${NPM_REMARK_CLI_VERSION})
-  - [remark-preset-lint-recommended@${NPM_REMARK_PRESET_LINT_RECOMMENDED_VERSION}](https://www.npmjs.com/package/remark-preset-lint-recommended@${NPM_REMARK_PRESET_LINT_RECOMMENDED_VERSION})
+  - [remark-cli](https://www.npmjs.com/package/remark-cli)
+  - [remark-preset-lint-recommended](https://www.npmjs.com/package/remark-preset-lint-recommended)

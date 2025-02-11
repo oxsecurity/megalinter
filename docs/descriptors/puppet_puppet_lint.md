@@ -203,4 +203,4 @@ ARG GEM_PUPPET_LINT_VERSION=4.2.4
 ```
 
 - GEM packages (Ruby) :
-  - [puppet-lint:${GEM_PUPPET_LINT_VERSION}](https://rubygems.org/gems/puppet-lint:${GEM_PUPPET_LINT_VERSION})
+  - [puppet-lint:4.2.4](https://rubygems.org/gems/puppet-lint/versions/4.2.4)

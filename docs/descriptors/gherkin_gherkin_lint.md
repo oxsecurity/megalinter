@@ -98,4 +98,4 @@ ARG NPM_GHERKIN_LINT_VERSION=4.2.4
 ```
 
 - NPM packages (node.js):
-  - [gherkin-lint@${NPM_GHERKIN_LINT_VERSION}](https://www.npmjs.com/package/gherkin-lint@${NPM_GHERKIN_LINT_VERSION})
+  - [gherkin-lint@4.2.4](https://www.npmjs.com/package/gherkin-lint/v/4.2.4)

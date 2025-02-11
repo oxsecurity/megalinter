@@ -173,4 +173,4 @@ ARG PIP_ANSIBLE_LINT_VERSION=25.1.2
 ```
 
 - PIP packages (Python):
-  - [ansible-lint==${PIP_ANSIBLE_LINT_VERSION}](https://pypi.org/project/ansible-lint/${PIP_ANSIBLE_LINT_VERSION})
+  - [ansible-lint==25.1.2](https://pypi.org/project/ansible-lint/25.1.2)

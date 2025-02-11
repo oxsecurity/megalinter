@@ -119,4 +119,4 @@ ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.6.1
 ```
 
 - NPM packages (node.js):
-  - [markdown-table-formatter@${NPM_MARKDOWN_TABLE_FORMATTER_VERSION}](https://www.npmjs.com/package/markdown-table-formatter@${NPM_MARKDOWN_TABLE_FORMATTER_VERSION})
+  - [markdown-table-formatter@1.6.1](https://www.npmjs.com/package/markdown-table-formatter/v/1.6.1)

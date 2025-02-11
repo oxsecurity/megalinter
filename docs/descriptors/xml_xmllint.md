@@ -25,7 +25,7 @@ To apply file formatting you must set `XML_XMLLINT_CLI_LINT_MODE: file` and `XML
 | Variable                                | Description                                                                                                                                                                                                         | Default value      |
 |-----------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
 | XML_XMLLINT_AUTOFORMAT                  | If set to `true`, it will reformat and reindent the output                                                                                                                                                          | `false`            |
-| XML_XMLLINT_INDENT                      | The number of indentation spaces when `XML_XMLLINT_AUTOFORMAT` is `true`                                                                                                                                            | ``                 |
+| XML_XMLLINT_INDENT                      | The number of indentation spaces when `XML_XMLLINT_AUTOFORMAT` is `true`                                                                                                                                            | `  `               |
 | XML_XMLLINT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                    |
 | XML_XMLLINT_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                                |                    |
 | XML_XMLLINT_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file |
@@ -173,6 +173,6 @@ Libxml project home page: https://gitlab.gnome.org/GNOME/libxml2
 ### Installation on mega-linter Docker image
 
 - APK packages (Linux):
-  - [libxml2-dev](https://pkgs.alpinelinux.org/packages?branch=edge&name=libxml2-dev)
-  - [libxml2-utils](https://pkgs.alpinelinux.org/packages?branch=edge&name=libxml2-utils)
-  - [libgcc](https://pkgs.alpinelinux.org/packages?branch=edge&name=libgcc)
+  - [libxml2-dev](https://pkgs.alpinelinux.org/packages?branch=v3.21&arch=x86_64&name=libxml2-dev)
+  - [libxml2-utils](https://pkgs.alpinelinux.org/packages?branch=v3.21&arch=x86_64&name=libxml2-utils)
+  - [libgcc](https://pkgs.alpinelinux.org/packages?branch=v3.21&arch=x86_64&name=libgcc)

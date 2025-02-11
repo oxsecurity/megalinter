@@ -133,4 +133,4 @@ ARG NPM_PYRIGHT_VERSION=1.1.393
 ```
 
 - NPM packages (node.js):
-  - [pyright@${NPM_PYRIGHT_VERSION}](https://www.npmjs.com/package/pyright@${NPM_PYRIGHT_VERSION})
+  - [pyright@1.1.393](https://www.npmjs.com/package/pyright/v/1.1.393)

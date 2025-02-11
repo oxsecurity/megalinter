@@ -153,4 +153,4 @@ ARG PIP_RSTCHECK_VERSION=6.2.4
 ```
 
 - PIP packages (Python):
-  - [rstcheck[toml,sphinx]==${PIP_RSTCHECK_VERSION}](https://pypi.org/project/rstcheck[toml,sphinx]/${PIP_RSTCHECK_VERSION})
+  - [rstcheck[toml,sphinx]==6.2.4](https://pypi.org/project/rstcheck[toml,sphinx]/6.2.4)

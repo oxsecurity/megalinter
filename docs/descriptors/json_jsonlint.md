@@ -154,4 +154,4 @@ ARG NPM_PRANTLF_JSONLINT_VERSION=16.0.0
 ```
 
 - NPM packages (node.js):
-  - [@prantlf/jsonlint@${NPM_PRANTLF_JSONLINT_VERSION}](https://www.npmjs.com/package/@prantlf/jsonlint/v/${NPM_PRANTLF_JSONLINT_VERSION})
+  - [@prantlf/jsonlint@16.0.0](https://www.npmjs.com/package/@prantlf/jsonlint/v/16.0.0)

@@ -133,4 +133,4 @@ ARG NPM_CSPELL_VERSION=8.17.3
 ```
 
 - NPM packages (node.js):
-  - [cspell@${NPM_CSPELL_VERSION}](https://www.npmjs.com/package/cspell@${NPM_CSPELL_VERSION})
+  - [cspell@8.17.3](https://www.npmjs.com/package/cspell/v/8.17.3)

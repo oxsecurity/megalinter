@@ -133,3 +133,5 @@ FROM koalaman/shellcheck:${BASH_SHELLCHECK_VERSION} AS shellcheck
 COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
 ```
 
+- Cargo packages (Rust):
+  - [shellcheck-sarif@0.7.0](https://crates.io/crates/shellcheck-sarif/0.7.0)

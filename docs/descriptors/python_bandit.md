@@ -283,6 +283,6 @@ ARG PIP_BANDIT_SARIF_FORMATTER_VERSION=1.1.1
 ```
 
 - PIP packages (Python):
-  - [bandit==${PIP_BANDIT_VERSION}](https://pypi.org/project/bandit/${PIP_BANDIT_VERSION})
-  - [bandit_sarif_formatter==${PIP_BANDIT_SARIF_FORMATTER_VERSION}](https://pypi.org/project/bandit_sarif_formatter/${PIP_BANDIT_SARIF_FORMATTER_VERSION})
-  - [bandit[toml]==${PIP_BANDIT_VERSION}](https://pypi.org/project/bandit[toml]/${PIP_BANDIT_VERSION})
+  - [bandit==1.8.2](https://pypi.org/project/bandit/1.8.2)
+  - [bandit_sarif_formatter==1.1.1](https://pypi.org/project/bandit_sarif_formatter/1.1.1)
+  - [bandit[toml]==1.8.2](https://pypi.org/project/bandit[toml]/1.8.2)

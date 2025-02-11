@@ -135,4 +135,4 @@ ARG NPM_STANDARD_VERSION=17.1.2
 ```
 
 - NPM packages (node.js):
-  - [standard@${NPM_STANDARD_VERSION}](https://www.npmjs.com/package/standard@${NPM_STANDARD_VERSION})
+  - [standard@17.1.2](https://www.npmjs.com/package/standard/v/17.1.2)

@@ -118,3 +118,5 @@ Manifest Options:
 
 ### Installation on mega-linter Docker image
 
+- Cargo packages (Rust):
+  - [clippy](https://crates.io/crates/clippy)

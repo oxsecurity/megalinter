@@ -771,5 +771,5 @@ ARG PIP_TYPING_EXTENSIONS_VERSION=4.12.2
 ```
 
 - PIP packages (Python):
-  - [pylint==${PIP_PYLINT_VERSION}](https://pypi.org/project/pylint/${PIP_PYLINT_VERSION})
-  - [typing-extensions==${PIP_TYPING_EXTENSIONS_VERSION}](https://pypi.org/project/typing-extensions/${PIP_TYPING_EXTENSIONS_VERSION})
+  - [pylint==3.3.4](https://pypi.org/project/pylint/3.3.4)
+  - [typing-extensions==4.12.2](https://pypi.org/project/typing-extensions/4.12.2)

@@ -205,4 +205,4 @@ ARG PIP_FLAKE8_VERSION=7.1.1
 ```
 
 - PIP packages (Python):
-  - [flake8==${PIP_FLAKE8_VERSION}](https://pypi.org/project/flake8/${PIP_FLAKE8_VERSION})
+  - [flake8==7.1.1](https://pypi.org/project/flake8/7.1.1)
