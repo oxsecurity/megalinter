@@ -95,8 +95,6 @@ linters:
     cli_lint_extra_args_after:
       - "."
     cli_sarif_args: ["--format", "sarif", "--output", "{{SARIF_OUTPUT_FILE}}"]
-    cli_lint_errors_count: regex_number
-    cli_lint_errors_regex: "Controls: .* \\(Failed: ([0-9]+), Passed: .*, Action Required: .*\\)"
     examples:
       - "kubescape scan ."
     test_folder: kubernetes_kubescape
