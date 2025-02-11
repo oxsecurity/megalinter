@@ -3697,7 +3697,7 @@
 <p>If you don't use python static typing, you should disable this linter by adding <code>PYTHON_MYPY</code> in <code>DISABLE_LINTERS</code> variable in your <code>.mega-linter.yml</code> config file</p>
 <h2 id="mypy-documentation">mypy documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>1.14.1</strong></li>
+<li>Version in MegaLinter: <strong>1.15.0</strong></li>
 <li>Visit <a href="https://mypy.readthedocs.io/en/stable/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://mypy.readthedocs.io/en/stable/config_file.html" target="_blank">How to configure mypy rules</a><ul>
 <li>If custom <code>.mypy.ini</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.mypy.ini" target="_blank">.mypy.ini</a> will be used</li>
@@ -3877,14 +3877,14 @@
 <td style="text-align: center;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico"/></a></td>
 <td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/cupcake/">cupcake</a></td>
 <td style="text-align: left;">MegaLinter for the most commonly used languages</td>
-<td style="text-align: center;">84</td>
+<td style="text-align: center;">85</td>
 <td style="text-align: right;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake"/></a></a></td>
 </tr>
 <tr>
 <td style="text-align: center;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico"/></a></td>
 <td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/python/">python</a></td>
 <td style="text-align: left;">Optimized for PYTHON based projects</td>
-<td style="text-align: center;">61</td>
+<td style="text-align: center;">62</td>
 <td style="text-align: right;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-python"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-python"/></a></a></td>
 </tr>
 </tbody>
@@ -3949,7 +3949,7 @@ Config file:
   --config-file CONFIG_FILE
                             Configuration file, must have a [mypy] section
                             (defaults to mypy.ini, .mypy.ini, pyproject.toml,
-                            setup.cfg, ~/.config/mypy/config, ~/.mypy.ini)
+                            setup.cfg)
   --warn-unused-configs     Warn about unused '[mypy-&lt;pattern&gt;]' or
                             '[[tool.mypy.overrides]]' config sections
                             (inverse: --no-warn-unused-configs)
@@ -4074,6 +4074,8 @@ Miscellaneous strictness flags:
   --strict-equality         Prohibit equality, identity, and container checks
                             for non-overlapping types (inverse: --no-strict-
                             equality)
+  --strict-bytes            Disable treating bytearray and memoryview as
+                            subtypes of bytes (inverse: --no-strict-bytes)
   --extra-checks            Enable additional checks that are technically
                             correct but may be impractical in real code. For
                             example, this prohibits partial overlap in
@@ -4208,11 +4210,13 @@ Environment variables:
 <ul>
 <li>Dockerfile commands :</li>
 </ul>
-<pre><code class="language-dockerfile">ENV MYPY_CACHE_DIR=/tmp
+<pre><code class="language-dockerfile"># renovate: datasource=pypi depName=mypy
+ARG PIP_MYPY_VERSION=1.15.0
+ENV MYPY_CACHE_DIR=/tmp
 </code></pre>
 <ul>
 <li>PIP packages (Python):<ul>
-<li><a href="https://pypi.org/project/mypy">mypy</a></li>
+<li><a href="https://pypi.org/project/mypy/${PIP_MYPY_VERSION}">mypy==${PIP_MYPY_VERSION}</a></li>
 </ul>
 </li>
 </ul>

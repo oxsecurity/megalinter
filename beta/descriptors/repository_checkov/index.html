@@ -3695,7 +3695,7 @@
 <p><a href="https://github.com/bridgecrewio/checkov"><img alt="GitHub stars" src="https://img.shields.io/github/stars/bridgecrewio/checkov?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-SARIF-orange"><img alt="sarif" src="https://shields.io/badge/-SARIF-orange"/></a> <a href="https://github.com/bridgecrewio/checkov/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/bridgecrewio/checkov?sort=semver"/></a> <a href="https://github.com/bridgecrewio/checkov/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/bridgecrewio/checkov"/></a> <a href="https://github.com/bridgecrewio/checkov/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/bridgecrewio/checkov"/></a> <a href="https://github.com/bridgecrewio/checkov/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/bridgecrewio/checkov"/></a></p>
 <h2 id="checkov-documentation">checkov documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>3.2.364</strong></li>
+<li>Version in MegaLinter: <strong>3.2.369</strong></li>
 <li>Visit <a href="https://www.checkov.io/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/bridgecrewio/checkov#configuration-using-a-config-file" target="_blank">How to configure checkov rules</a><ul>
 <li>If custom <code>.checkov.yml</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.checkov.yml" target="_blank">.checkov.yml</a> will be used</li>
@@ -3827,7 +3827,7 @@
 <td style="text-align: center;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico"/></a></td>
 <td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/cupcake/">cupcake</a></td>
 <td style="text-align: left;">MegaLinter for the most commonly used languages</td>
-<td style="text-align: center;">84</td>
+<td style="text-align: center;">85</td>
 <td style="text-align: right;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake"/></a></a></td>
 </tr>
 <tr>
@@ -3883,7 +3883,7 @@
 <td style="text-align: center;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico"/></a></td>
 <td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/python/">python</a></td>
 <td style="text-align: left;">Optimized for PYTHON based projects</td>
-<td style="text-align: center;">61</td>
+<td style="text-align: center;">62</td>
 <td style="text-align: right;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-python"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-python"/></a></a></td>
 </tr>
 <tr>
@@ -4340,9 +4340,14 @@ config file values which override defaults.
 </code></pre>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
 <ul>
+<li>Dockerfile commands :</li>
+</ul>
+<pre><code class="language-dockerfile"># renovate: datasource=pypi depName=checkov
+ARG PIP_CHECKOV_VERSION=3.2.369
+</code></pre>
+<ul>
 <li>PIP packages (Python):<ul>
-<li><a href="https://pypi.org/project/packaging">packaging</a></li>
-<li><a href="https://pypi.org/project/checkov">checkov</a></li>
+<li><a href="https://pypi.org/project/checkov/${PIP_CHECKOV_VERSION}">checkov==${PIP_CHECKOV_VERSION}</a></li>
 </ul>
 </li>
 </ul>

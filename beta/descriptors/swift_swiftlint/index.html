@@ -3692,7 +3692,7 @@
 <ul>
 <li>Version in MegaLinter: <strong>0.58.2</strong></li>
 <li>Visit <a href="https://github.com/realm/SwiftLint#readme" target="_blank">Official Web Site</a></li>
-<li>Docker image: <a href="https://hub.docker.com/r/ghcr.io/realm/swiftlint" target="_blank">ghcr.io/realm/swiftlint:latest</a><ul>
+<li>Docker image: <a href="https://hub.docker.com/r/ghcr.io/realm/swiftlint" target="_blank">ghcr.io/realm/swiftlint:SWIFT_SWIFTLINT_VERSION</a><ul>
 <li>arguments: <code>-v {{WORKSPACE}}:/tmp/lint:rw -w /tmp/lint</code></li>
 </ul>
 </li>
@@ -3721,7 +3721,7 @@
 <tr>
 <td>SWIFT_SWIFTLINT_DOCKER_IMAGE_VERSION</td>
 <td>Docker image version</td>
-<td><code>latest</code></td>
+<td><code>SWIFT_SWIFTLINT_VERSION</code></td>
 </tr>
 <tr>
 <td>SWIFT_SWIFTLINT_ARGUMENTS</td>
@@ -3846,7 +3846,7 @@
 <td style="text-align: center;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico"/></a></td>
 <td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/cupcake/">cupcake</a></td>
 <td style="text-align: left;">MegaLinter for the most commonly used languages</td>
-<td style="text-align: center;">84</td>
+<td style="text-align: center;">85</td>
 <td style="text-align: right;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake"/></a></a></td>
 </tr>
 <tr>
@@ -3901,7 +3901,12 @@ SUBCOMMANDS:
   See 'swiftlint help &lt;subcommand&gt;' for detailed help.
 </code></pre>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
-<p>None</p>
+<ul>
+<li>Dockerfile commands :</li>
+</ul>
+<pre><code class="language-dockerfile"># renovate: datasource=docker depName=ghcr.io/realm/swiftlint
+ENV SWIFT_SWIFTLINT_VERSION=0.58.2
+</code></pre>
 </article>
 </div>
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>

@@ -3695,7 +3695,7 @@
 <p><a href="https://github.com/rubocop-hq/rubocop"><img alt="GitHub stars" src="https://img.shields.io/github/stars/rubocop-hq/rubocop?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-autofix-green"><img alt="autofix" src="https://shields.io/badge/-autofix-green"/></a> <a href="https://github.com/rubocop-hq/rubocop/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/rubocop-hq/rubocop?sort=semver"/></a> <a href="https://github.com/rubocop-hq/rubocop/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/rubocop-hq/rubocop"/></a> <a href="https://github.com/rubocop-hq/rubocop/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/rubocop-hq/rubocop"/></a> <a href="https://github.com/rubocop-hq/rubocop/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/rubocop-hq/rubocop"/></a></p>
 <h2 id="rubocop-documentation">rubocop documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>1.71.2</strong></li>
+<li>Version in MegaLinter: <strong>1.71.0</strong></li>
 <li>Visit <a href="https://rubocop.org/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://docs.rubocop.org/rubocop/0.92/configuration.html" target="_blank">How to configure rubocop rules</a><ul>
 <li>If custom <code>.ruby-lint.yml</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.ruby-lint.yml" target="_blank">.ruby-lint.yml</a> will be used</li>
@@ -3891,7 +3891,7 @@
 <td style="text-align: center;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico"/></a></td>
 <td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/cupcake/">cupcake</a></td>
 <td style="text-align: left;">MegaLinter for the most commonly used languages</td>
-<td style="text-align: center;">84</td>
+<td style="text-align: center;">85</td>
 <td style="text-align: right;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake"/></a></a></td>
 </tr>
 <tr>
@@ -4101,13 +4101,29 @@ Profiling Options:
 </code></pre>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
 <ul>
+<li>Dockerfile commands :</li>
+</ul>
+<pre><code class="language-dockerfile"># renovate: datasource=rubygems depName=rubocop
+ARG GEM_RUBOCOP_VERSION=1.71.0
+# renovate: datasource=rubygems depName=rubocop-github
+ARG GEM_RUBOCOP_GITHUB_VERSION=0.20.0
+# renovate: datasource=rubygems depName=rubocop-performance
+ARG GEM_RUBOCOP_PERFORMANCE_VERSION=1.23.1
+# renovate: datasource=rubygems depName=rubocop-rails
+ARG GEM_RUBOCOP_RAILS_VERSION=2.29.1
+# renovate: datasource=rubygems depName=rubocop-rake
+ARG GEM_RUBOCOP_RAKE_VERSION=0.6.0
+# renovate: datasource=rubygems depName=rubocop-rspec
+ARG GEM_RUBOCOP_RSPEC_VERSION=3.4.0
+</code></pre>
+<ul>
 <li>GEM packages (Ruby) :<ul>
-<li><a href="https://rubygems.org/gems/rubocop">rubocop</a></li>
-<li><a href="https://rubygems.org/gems/rubocop-github">rubocop-github</a></li>
-<li><a href="https://rubygems.org/gems/rubocop-performance">rubocop-performance</a></li>
-<li><a href="https://rubygems.org/gems/rubocop-rails">rubocop-rails</a></li>
-<li><a href="https://rubygems.org/gems/rubocop-rake">rubocop-rake</a></li>
-<li><a href="https://rubygems.org/gems/rubocop-rspec">rubocop-rspec</a></li>
+<li><a href="https://rubygems.org/gems/rubocop:${GEM_RUBOCOP_VERSION}">rubocop:${GEM_RUBOCOP_VERSION}</a></li>
+<li><a href="https://rubygems.org/gems/rubocop-github:${GEM_RUBOCOP_GITHUB_VERSION}">rubocop-github:${GEM_RUBOCOP_GITHUB_VERSION}</a></li>
+<li><a href="https://rubygems.org/gems/rubocop-performance:${GEM_RUBOCOP_PERFORMANCE_VERSION}">rubocop-performance:${GEM_RUBOCOP_PERFORMANCE_VERSION}</a></li>
+<li><a href="https://rubygems.org/gems/rubocop-rails:${GEM_RUBOCOP_RAILS_VERSION}">rubocop-rails:${GEM_RUBOCOP_RAILS_VERSION}</a></li>
+<li><a href="https://rubygems.org/gems/rubocop-rake:${GEM_RUBOCOP_RAKE_VERSION}">rubocop-rake:${GEM_RUBOCOP_RAKE_VERSION}</a></li>
+<li><a href="https://rubygems.org/gems/rubocop-rspec:${GEM_RUBOCOP_RSPEC_VERSION}">rubocop-rspec:${GEM_RUBOCOP_RSPEC_VERSION}</a></li>
 </ul>
 </li>
 </ul>

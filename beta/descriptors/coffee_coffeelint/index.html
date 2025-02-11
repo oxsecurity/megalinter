@@ -3897,8 +3897,14 @@ Options:
 </code></pre>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
 <ul>
+<li>Dockerfile commands :</li>
+</ul>
+<pre><code class="language-dockerfile"># renovate: datasource=npm depName=@coffeelint/cli
+ARG NPM_COFFEELINT_CLI_VERSION=5.2.11
+</code></pre>
+<ul>
 <li>NPM packages (node.js):<ul>
-<li><a href="https://www.npmjs.com/package/@coffeelint/cli">@coffeelint/cli</a></li>
+<li><a href="https://www.npmjs.com/package/@coffeelint/cli/v/${NPM_COFFEELINT_CLI_VERSION}">@coffeelint/cli@${NPM_COFFEELINT_CLI_VERSION}</a></li>
 </ul>
 </li>
 </ul>

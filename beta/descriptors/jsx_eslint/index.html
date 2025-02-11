@@ -3894,7 +3894,7 @@ You can create it by typing <code>npx eslint --init</code> in the root of your r
 <td style="text-align: center;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico"/></a></td>
 <td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/cupcake/">cupcake</a></td>
 <td style="text-align: left;">MegaLinter for the most commonly used languages</td>
-<td style="text-align: center;">84</td>
+<td style="text-align: center;">85</td>
 <td style="text-align: right;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake"/></a></a></td>
 </tr>
 <tr>
@@ -3996,11 +3996,23 @@ Miscellaneous:
 </code></pre>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
 <ul>
+<li>Dockerfile commands :</li>
+</ul>
+<pre><code class="language-dockerfile"># renovate: datasource=npm depName=eslint
+ARG NPM_ESLINT_VERSION=8.57.1
+# renovate: datasource=npm depName=eslint-plugin-react
+ARG NPM_ESLINT_PLUGIN_REACT_VERSION=7.37.4
+# renovate: datasource=npm depName=eslint-plugin-jsx-a11y
+ARG NPM_ESLINT_PLUGIN_JSX_ALLY_VERSION=6.10.2
+# renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
+ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
+</code></pre>
+<ul>
 <li>NPM packages (node.js):<ul>
-<li><a href="https://www.npmjs.com/package/eslint">eslint</a></li>
-<li><a href="https://www.npmjs.com/package/eslint-plugin-react">eslint-plugin-react</a></li>
-<li><a href="https://www.npmjs.com/package/eslint-plugin-jsx-a11y">eslint-plugin-jsx-a11y</a></li>
-<li><a href="https://www.npmjs.com/package/@microsoft/eslint-formatter-sarif">@microsoft/eslint-formatter-sarif</a></li>
+<li><a href="https://www.npmjs.com/package/eslint@${NPM_ESLINT_VERSION}">eslint@${NPM_ESLINT_VERSION}</a></li>
+<li><a href="https://www.npmjs.com/package/eslint-plugin-react@${NPM_ESLINT_PLUGIN_REACT_VERSION}">eslint-plugin-react@${NPM_ESLINT_PLUGIN_REACT_VERSION}</a></li>
+<li><a href="https://www.npmjs.com/package/eslint-plugin-jsx-a11y@${NPM_ESLINT_PLUGIN_JSX_ALLY_VERSION}">eslint-plugin-jsx-a11y@${NPM_ESLINT_PLUGIN_JSX_ALLY_VERSION}</a></li>
+<li><a href="https://www.npmjs.com/package/@microsoft/eslint-formatter-sarif/v/${NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION}">@microsoft/eslint-formatter-sarif@${NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION}</a></li>
 </ul>
 </li>
 </ul>

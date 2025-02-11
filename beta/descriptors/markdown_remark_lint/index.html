@@ -3925,9 +3925,17 @@ Examples:
 </code></pre>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
 <ul>
+<li>Dockerfile commands :</li>
+</ul>
+<pre><code class="language-dockerfile"># renovate: datasource=npm depName=remark-cli
+ARG NPM_REMARK_CLI_VERSION=12.0.1
+# renovate: datasource=npm depName=remark-preset-lint-recommended
+ARG NPM_REMARK_PRESET_LINT_RECOMMENDED_VERSION=7.0.0
+</code></pre>
+<ul>
 <li>NPM packages (node.js):<ul>
-<li><a href="https://www.npmjs.com/package/remark-cli">remark-cli</a></li>
-<li><a href="https://www.npmjs.com/package/remark-preset-lint-recommended">remark-preset-lint-recommended</a></li>
+<li><a href="https://www.npmjs.com/package/remark-cli@${NPM_REMARK_CLI_VERSION}">remark-cli@${NPM_REMARK_CLI_VERSION}</a></li>
+<li><a href="https://www.npmjs.com/package/remark-preset-lint-recommended@${NPM_REMARK_PRESET_LINT_RECOMMENDED_VERSION}">remark-preset-lint-recommended@${NPM_REMARK_PRESET_LINT_RECOMMENDED_VERSION}</a></li>
 </ul>
 </li>
 </ul>

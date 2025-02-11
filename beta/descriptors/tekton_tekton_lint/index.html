@@ -3853,7 +3853,7 @@
 <td style="text-align: center;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico"/></a></td>
 <td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/python/">python</a></td>
 <td style="text-align: left;">Optimized for PYTHON based projects</td>
-<td style="text-align: center;">61</td>
+<td style="text-align: center;">62</td>
 <td style="text-align: right;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-python"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-python"/></a></a></td>
 </tr>
 <tr>
@@ -3935,8 +3935,14 @@ Examples:
 </code></pre>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
 <ul>
+<li>Dockerfile commands :</li>
+</ul>
+<pre><code class="language-dockerfile"># renovate: datasource=npm depName=@ibm/tekton-lint
+ARG NPM_IBM_TEKTON_LINT_VERSION=1.1.0
+</code></pre>
+<ul>
 <li>NPM packages (node.js):<ul>
-<li><a href="https://www.npmjs.com/package/@ibm/tekton-lint">@ibm/tekton-lint</a></li>
+<li><a href="https://www.npmjs.com/package/@ibm/tekton-lint/v/${NPM_IBM_TEKTON_LINT_VERSION}">@ibm/tekton-lint@${NPM_IBM_TEKTON_LINT_VERSION}</a></li>
 </ul>
 </li>
 </ul>

@@ -3961,8 +3961,14 @@
 </code></pre>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
 <ul>
+<li>Dockerfile commands :</li>
+</ul>
+<pre><code class="language-dockerfile"># renovate: datasource=rubygems depName=puppet-lint
+ARG GEM_PUPPET_LINT_VERSION=4.2.4
+</code></pre>
+<ul>
 <li>GEM packages (Ruby) :<ul>
-<li><a href="https://rubygems.org/gems/puppet-lint">puppet-lint</a></li>
+<li><a href="https://rubygems.org/gems/puppet-lint:${GEM_PUPPET_LINT_VERSION}">puppet-lint:${GEM_PUPPET_LINT_VERSION}</a></li>
 </ul>
 </li>
 </ul>

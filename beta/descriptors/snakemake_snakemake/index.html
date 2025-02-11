@@ -4773,8 +4773,14 @@ defaults.
 </code></pre>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
 <ul>
+<li>Dockerfile commands :</li>
+</ul>
+<pre><code class="language-dockerfile"># renovate: datasource=pypi depName=snakemake
+ARG PIP_SNAKEMAKE_VERSION=8.27.1
+</code></pre>
+<ul>
 <li>PIP packages (Python):<ul>
-<li><a href="https://pypi.org/project/snakemake">snakemake</a></li>
+<li><a href="https://pypi.org/project/snakemake/${PIP_SNAKEMAKE_VERSION}">snakemake==${PIP_SNAKEMAKE_VERSION}</a></li>
 </ul>
 </li>
 </ul>
