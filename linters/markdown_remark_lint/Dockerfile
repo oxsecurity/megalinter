@@ -51,7 +51,7 @@ FROM python:3.12.8-alpine3.21
 # renovate: datasource=npm depName=remark-cli
 ARG NPM_REMARK_CLI_VERSION=12.0.1
 # renovate: datasource=npm depName=remark-preset-lint-recommended
-ARG NPM_REMARK_PRESET_LINT_RECOMMENDED_VERSION=7.0.0
+ARG NPM_REMARK_PRESET_LINT_RECOMMENDED_VERSION=7.0.1
 #ARG__END
 
 ####################
