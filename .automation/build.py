@@ -2360,7 +2360,7 @@ def md_package_list(package_list, type, indent, start_url):
 
             if match:
                 package_id = match.group(1)
-                package_version = get_arg_variable_name(match.group(2))
+                package_version = get_arg_variable_value(match.group(2))
 
                 if package_version is not None:
                     package_name = f"{package_id}@{package_version}"
@@ -2373,7 +2373,7 @@ def md_package_list(package_list, type, indent, start_url):
 
             if match:
                 package_id = match.group(1)
-                package_version = get_arg_variable_name(match.group(2))
+                package_version = get_arg_variable_value(match.group(2))
 
                 if package_version is not None:
                     package_name = f"{package_id}@{package_version}"
@@ -2386,7 +2386,7 @@ def md_package_list(package_list, type, indent, start_url):
 
             if match:
                 package_id = match.group(1)
-                package_version = get_arg_variable_name(match.group(2))
+                package_version = get_arg_variable_value(match.group(2))
 
                 if package_version is not None:
                     package_name = f"{package_id}=={package_version}"
@@ -2399,7 +2399,7 @@ def md_package_list(package_list, type, indent, start_url):
 
             if match:
                 package_id = match.group(1)
-                package_version = get_arg_variable_name(match.group(2))
+                package_version = get_arg_variable_value(match.group(2))
 
                 if package_version is not None:
                     package_name = f"{package_id}:{package_version}"
@@ -2411,7 +2411,7 @@ def md_package_list(package_list, type, indent, start_url):
         res += [f"{indent}- [{package_name}]({start_url}{end_url})"]
     return res
 
-def get_arg_variable_name(package_version):
+def get_arg_variable_value(package_version):
     extracted_version = re.search(r"\$\{(.*)\}", package_version).group(1)
 
     if extracted_version in MAIN_DOCKERFILE_ARGS_MAP:
