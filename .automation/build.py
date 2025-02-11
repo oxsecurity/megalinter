@@ -159,9 +159,8 @@ with open(MAIN_DOCKERFILE, "r", encoding="utf-8") as main_dockerfile_file:
     if match:
         ALPINE_VERSION = match.group(1)
     else:
-        logging.critical(
-            "No Alpine version found"
-        )
+        logging.critical("No Alpine version found")
+
 
 # Generate one Dockerfile by MegaLinter flavor
 def generate_all_flavors():
