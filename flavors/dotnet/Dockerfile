@@ -113,7 +113,7 @@ ARG CSHARP_CSHARPIER_VERSION=0.30.6
 # renovate: datasource=nuget depName=roslynator.dotnet.cli
 ARG CSHARP_ROSLYNATOR_VERSION=0.10.0
 # renovate: datasource=npm depName=stylelint
-ARG NPM_STYLELINT_VERSION=16.14.0
+ARG NPM_STYLELINT_VERSION=16.14.1
 # renovate: datasource=npm depName=stylelint-config-standard
 ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=37.0.0
 # renovate: datasource=npm depName=stylelint-config-sass-guidelines
