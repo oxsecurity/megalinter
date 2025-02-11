@@ -186,7 +186,7 @@ ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=9.0.0
 # renovate: datasource=npm depName=@secretlint/secretlint-formatter-sarif
 ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=9.0.0
 # renovate: datasource=pypi depName=semgrep
-ARG PIP_SEMGREP_VERSION=1.104.0
+ARG PIP_SEMGREP_VERSION=1.107.0
 # renovate: datasource=github-tags depName=aquasecurity/trivy
 ARG REPOSITORY_TRIVY_VERSION=0.59.1
 # renovate: datasource=github-tags depName=aquasecurity/trivy
