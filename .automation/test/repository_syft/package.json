@@ -91,6 +91,6 @@
   "devDependencies": {
     "assert": "^2.0.0",
     "eslint": "^7.14.0",
-    "mocha": "^8.2.1"
+    "mocha": "^11.1.0"
   }
 }
