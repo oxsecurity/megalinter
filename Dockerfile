@@ -165,7 +165,7 @@ ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=37.0.0
 # renovate: datasource=npm depName=stylelint-config-sass-guidelines
 ARG NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION=12.1.0
 # renovate: datasource=npm depName=stylelint-scss
-ARG NPM_STYLELINT_SCSS_VERSION=6.10.1
+ARG NPM_STYLELINT_SCSS_VERSION=6.11.0
 # renovate: datasource=dart-version depName=dart
 ARG DART_VERSION='3.6.2'
 # renovate: datasource=npm depName=gherkin-lint
