@@ -110,7 +110,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=nuget depName=roslynator.dotnet.cli
-          ARG CSHARP_ROSLYNATOR_VERSION=0.10.0
+          ARG CSHARP_ROSLYNATOR_VERSION=0.10.1
         - RUN dotnet tool install --allow-roll-forward --global roslynator.dotnet.cli --version "${CSHARP_ROSLYNATOR_VERSION}"
     ide:
       visual_studio:
