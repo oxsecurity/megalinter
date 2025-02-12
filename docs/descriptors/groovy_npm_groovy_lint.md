@@ -154,6 +154,6 @@ ARG NPM_GROOVY_LINT_VERSION=15.0.2
 ```
 
 - APK packages (Linux):
-  - [openjdk17](https://pkgs.alpinelinux.org/packages?branch=edge&name=openjdk17)
+  - [openjdk17](https://pkgs.alpinelinux.org/packages?branch=v3.21&arch=x86_64&name=openjdk17)
 - NPM packages (node.js):
   - [npm-groovy-lint@${NPM_GROOVY_LINT_VERSION}](https://www.npmjs.com/package/npm-groovy-lint@${NPM_GROOVY_LINT_VERSION})

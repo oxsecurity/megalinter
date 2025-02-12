@@ -102,4 +102,4 @@ COPY --link --from=checkmake /checkmake /usr/bin/checkmake
 ```
 
 - APK packages (Linux):
-  - [make](https://pkgs.alpinelinux.org/packages?branch=edge&name=make)
+  - [make](https://pkgs.alpinelinux.org/packages?branch=v3.21&arch=x86_64&name=make)

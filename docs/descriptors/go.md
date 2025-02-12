@@ -34,4 +34,4 @@ description: golangci-lint, revive are available to analyze GO files in MegaLint
 ### Installation
 
 - APK packages (Linux):
-  - [go](https://pkgs.alpinelinux.org/packages?branch=edge&name=go)
+  - [go](https://pkgs.alpinelinux.org/packages?branch=v3.21&arch=x86_64&name=go)

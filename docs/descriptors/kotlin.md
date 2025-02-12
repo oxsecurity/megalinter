@@ -41,4 +41,4 @@ ENV PATH="$JAVA_HOME/bin:${PATH}"
 ```
 
 - APK packages (Linux):
-  - [openjdk21](https://pkgs.alpinelinux.org/packages?branch=edge&name=openjdk21)
+  - [openjdk21](https://pkgs.alpinelinux.org/packages?branch=v3.21&arch=x86_64&name=openjdk21)
