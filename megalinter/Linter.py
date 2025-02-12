@@ -901,7 +901,7 @@ class Linter:
                 reporter.produce_report()
             except Exception as e:
                 logging.error("Unable to process reporter " + reporter.name + str(e))
-        
+
         return self
 
     def replace_vars(self, variables):

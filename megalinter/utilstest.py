@@ -270,7 +270,7 @@ def test_linter_failure(linter, test_self):
             test_self.assertRegex(output, rf"\[{linter_name}\] .*bad.* - ERROR")
             test_self.assertNotRegex(output, rf"\[{linter_name}\] .*bad.* - SUCCESS")
     elif linter.descriptor_id != "SPELL":  # This log doesn't appear in SPELL linters
-        if (mega_linter_linter.status == 'error'):
+        if mega_linter_linter.status == "error":
             test_self.assertRegex(
                 output,
                 rf"Linted \[{linter.descriptor_id}\] files with \[{linter_name}\]: Found "
@@ -279,8 +279,8 @@ def test_linter_failure(linter, test_self):
         else:
             test_self.assertRegex(
                 output,
-                rf"Linted \[{linter.descriptor_id}\] files with \[{linter_name}\]: Found " +
-                r"[0-9]+ non blocking error\(s\) and [0-9]+ non blocking warning\(s\)",
+                rf"Linted \[{linter.descriptor_id}\] files with \[{linter_name}\]: Found "
+                + r"[0-9]+ non blocking error\(s\) and [0-9]+ non blocking warning\(s\)",
             )
 
     # Check text reporter output log
@@ -310,9 +310,7 @@ def test_linter_failure(linter, test_self):
         )
 
     # Check if number of warnings is correctly generated
-    if (
-        mega_linter_linter.cli_lint_warnings_count is not None
-    ):
+    if mega_linter_linter.cli_lint_warnings_count is not None:
         test_self.assertTrue(
             mega_linter_linter.total_number_warnings > 1,
             "Unable to get number of warnings from logs with "
