@@ -128,7 +128,7 @@ class ConsoleLinterReporter(Reporter):
                 file_errors = str(res.get("errors_number", 0))
                 file_warnings = str(res.get("warnings_number", 0))
                 line = f"[{self.master.linter_name}] {file_nm} - {res['status'].upper()} - "
-                + f"{file_errors} error(s) and {file_warnings} warning(s)"
+                line += f"{file_errors} error(s) and {file_warnings} warning(s)"
             else:
                 line = f"[{self.master.linter_name}] {file_nm}"
             if res["fixed"] is True:

@@ -274,13 +274,13 @@ def test_linter_failure(linter, test_self):
             test_self.assertRegex(
                 output,
                 rf"Linted \[{linter.descriptor_id}\] files with \[{linter_name}\]: Found "
-                + rf"[0-9]+ error\(s\) and [0-9]+ warning\(s\)",
+                + r"[0-9]+ error\(s\) and [0-9]+ warning\(s\)",
             )
         else:
             test_self.assertRegex(
                 output,
                 rf"Linted \[{linter.descriptor_id}\] files with \[{linter_name}\]: Found " +
-                rf"[0-9]+ non blocking error\(s\) and [0-9]+ non blocking warning\(s\)",
+                r"[0-9]+ non blocking error\(s\) and [0-9]+ non blocking warning\(s\)",
             )
 
     # Check text reporter output log
