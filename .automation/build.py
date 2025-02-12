@@ -147,6 +147,20 @@ DEPRECATED_LINTERS = [
 
 DESCRIPTORS_FOR_BUILD_CACHE = None
 
+MAIN_DOCKERFILE = f"{REPO_HOME}/Dockerfile"
+
+ALPINE_VERSION = ""
+
+with open(MAIN_DOCKERFILE, "r", encoding="utf-8") as main_dockerfile_file:
+    main_dockerfile_content = main_dockerfile_file.read()
+
+    match = re.search(r"FROM python:.*-alpine(\d+.\d+.?\d+)", main_dockerfile_content)
+
+    if match:
+        ALPINE_VERSION = match.group(1)
+    else:
+        logging.critical("No Alpine version found")
+
 
 # Generate one Dockerfile by MegaLinter flavor
 def generate_all_flavors():
@@ -2172,7 +2186,7 @@ def get_install_md(item):
             item["install"]["apk"],
             "apk",
             "  ",
-            "https://pkgs.alpinelinux.org/packages?branch=edge&name=",
+            f"https://pkgs.alpinelinux.org/packages?branch=v{ALPINE_VERSION}&arch=x86_64&name=",
         )
     if "npm" in item["install"]:
         linter_doc_md += ["- NPM packages (node.js):"]
