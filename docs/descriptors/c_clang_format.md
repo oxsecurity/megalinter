@@ -183,4 +183,4 @@ Generic Options:
 ### Installation on mega-linter Docker image
 
 - APK packages (Linux):
-  - [clang19-extra-tools](https://pkgs.alpinelinux.org/packages?branch=edge&name=clang19-extra-tools)
+  - [clang19-extra-tools](https://pkgs.alpinelinux.org/packages?branch=v3.21&arch=x86_64&name=clang19-extra-tools)

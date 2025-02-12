@@ -48,4 +48,4 @@ RUN curl -L https://github.com/PowerShell/PowerShell/releases/download/v${POWERS
 ```
 
 - APK packages (Linux):
-  - [icu-libs](https://pkgs.alpinelinux.org/packages?branch=edge&name=icu-libs)
+  - [icu-libs](https://pkgs.alpinelinux.org/packages?branch=v3.21&arch=x86_64&name=icu-libs)

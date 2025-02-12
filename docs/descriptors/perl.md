@@ -40,5 +40,5 @@ description: perlcritic is available to analyze PERL files in MegaLinter
 ### Installation
 
 - APK packages (Linux):
-  - [perl](https://pkgs.alpinelinux.org/packages?branch=edge&name=perl)
-  - [perl-dev](https://pkgs.alpinelinux.org/packages?branch=edge&name=perl-dev)
+  - [perl](https://pkgs.alpinelinux.org/packages?branch=v3.21&arch=x86_64&name=perl)
+  - [perl-dev](https://pkgs.alpinelinux.org/packages?branch=v3.21&arch=x86_64&name=perl-dev)

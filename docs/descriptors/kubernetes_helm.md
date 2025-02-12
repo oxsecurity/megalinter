@@ -206,4 +206,4 @@ Use "helm [command] --help" for more information about a command.
 ### Installation on mega-linter Docker image
 
 - APK packages (Linux):
-  - [helm](https://pkgs.alpinelinux.org/packages?branch=edge&name=helm)
+  - [helm](https://pkgs.alpinelinux.org/packages?branch=v3.21&arch=x86_64&name=helm)

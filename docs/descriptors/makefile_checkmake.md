@@ -9,7 +9,7 @@ description: How to use checkmake (configure, ignore files, ignore errors, help 
 
 _This linter has been disabled in this version_
 
-_Disabled reason: Security issues: <https://github.com/mrtazz/checkmake/issues/99>_
+_Disabled reason: Security issues: https://github.com/mrtazz/checkmake/issues/99_
 
 ## checkmake documentation
 
@@ -102,4 +102,4 @@ COPY --link --from=checkmake /checkmake /usr/bin/checkmake
 ```
 
 - APK packages (Linux):
-  - [make](https://pkgs.alpinelinux.org/packages?branch=edge&name=make)
+  - [make](https://pkgs.alpinelinux.org/packages?branch=v3.21&arch=x86_64&name=make)

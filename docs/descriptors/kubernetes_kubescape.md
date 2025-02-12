@@ -11,7 +11,7 @@ description: How to use kubescape (configure, ignore files, ignore errors, help 
   </a>
 </div>
 
-![downgraded version](https://shields.io/badge/-downgraded%20version-orange) [![GitHub stars](https://img.shields.io/github/stars/kubescape/kubescape?cacheSeconds=3600)](https://github.com/kubescape/kubescape) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/kubescape/kubescape?sort=semver)](https://github.com/kubescape/kubescape/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/kubescape/kubescape)](https://github.com/kubescape/kubescape/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/kubescape/kubescape)](https://github.com/kubescape/kubescape/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/kubescape/kubescape)](https://github.com/kubescape/kubescape/graphs/contributors/)
+[![GitHub stars](https://img.shields.io/github/stars/kubescape/kubescape?cacheSeconds=3600)](https://github.com/kubescape/kubescape) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/kubescape/kubescape?sort=semver)](https://github.com/kubescape/kubescape/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/kubescape/kubescape)](https://github.com/kubescape/kubescape/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/kubescape/kubescape)](https://github.com/kubescape/kubescape/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/kubescape/kubescape)](https://github.com/kubescape/kubescape/graphs/contributors/)
 
 `kubescape scan` examines charts and kubernetes files for possible issues, best practices and security vulnerabilities.
 
@@ -160,6 +160,6 @@ RUN ln -s /lib/libc.so.6 /usr/lib/libresolv.so.2 && \
 ```
 
 - APK packages (Linux):
-  - [curl](https://pkgs.alpinelinux.org/packages?branch=edge&name=curl)
-  - [gcompat](https://pkgs.alpinelinux.org/packages?branch=edge&name=gcompat)
-  - [libstdc++](https://pkgs.alpinelinux.org/packages?branch=edge&name=libstdc++)
+  - [curl](https://pkgs.alpinelinux.org/packages?branch=v3.21&arch=x86_64&name=curl)
+  - [gcompat](https://pkgs.alpinelinux.org/packages?branch=v3.21&arch=x86_64&name=gcompat)
+  - [libstdc++](https://pkgs.alpinelinux.org/packages?branch=v3.21&arch=x86_64&name=libstdc++)
