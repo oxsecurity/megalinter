@@ -164,7 +164,7 @@ with open(MAIN_DOCKERFILE, "r", encoding="utf-8") as main_dockerfile_file:
         logging.critical("No Alpine version found")
 
     matches = re.finditer(r"ARG (.*)=(.*)", main_dockerfile_content)
-    
+
     for match in matches:
         MAIN_DOCKERFILE_ARGS_MAP[match.group(1)] = match.group(2)
 
@@ -2206,26 +2206,17 @@ def get_install_md(item):
     if "npm" in item["install"]:
         linter_doc_md += ["- NPM packages (node.js):"]
         linter_doc_md += md_package_list(
-            item["install"]["npm"],
-            "npm",
-            "  ",
-            "https://www.npmjs.com/package/"
+            item["install"]["npm"], "npm", "  ", "https://www.npmjs.com/package/"
         )
     if "pip" in item["install"]:
         linter_doc_md += ["- PIP packages (Python):"]
         linter_doc_md += md_package_list(
-            item["install"]["pip"],
-            "pip",
-            "  ",
-            "https://pypi.org/project/"
+            item["install"]["pip"], "pip", "  ", "https://pypi.org/project/"
         )
     if "gem" in item["install"]:
         linter_doc_md += ["- GEM packages (Ruby) :"]
         linter_doc_md += md_package_list(
-            item["install"]["gem"],
-            "gem",
-            "  ",
-            "https://rubygems.org/gems/"
+            item["install"]["gem"], "gem", "  ", "https://rubygems.org/gems/"
         )
     return linter_doc_md
 
@@ -2355,7 +2346,7 @@ def md_package_list(package_list, type, indent, start_url):
         package_name = package
         end_url = package
 
-        if type == "cargo": # cargo specific version
+        if type == "cargo":  # cargo specific version
             match = re.search(r"(.*)@(.*)", package)
 
             if match:
@@ -2368,7 +2359,7 @@ def md_package_list(package_list, type, indent, start_url):
                 else:
                     package_name = package_id
                     end_url = package_id
-        elif type == "npm": # npm specific version
+        elif type == "npm":  # npm specific version
             match = re.search(r"(.*)@(.*)", package)
 
             if match:
@@ -2381,7 +2372,7 @@ def md_package_list(package_list, type, indent, start_url):
                 else:
                     package_name = package_id
                     end_url = package_id
-        elif type == "pip": # py specific version
+        elif type == "pip":  # py specific version
             match = re.search(r"(.*)==(.*)", package)
 
             if match:
@@ -2394,7 +2385,7 @@ def md_package_list(package_list, type, indent, start_url):
                 else:
                     package_name = package_id
                     end_url = package_id
-        elif type == "gem": # gem specific version
+        elif type == "gem":  # gem specific version
             match = re.search(r"(.*):(.*)", package)
 
             if match:
@@ -2411,6 +2402,7 @@ def md_package_list(package_list, type, indent, start_url):
         res += [f"{indent}- [{package_name}]({start_url}{end_url})"]
     return res
 
+
 def get_arg_variable_value(package_version):
     extracted_version = re.search(r"\$\{(.*)\}", package_version).group(1)
 
@@ -2418,6 +2410,7 @@ def get_arg_variable_value(package_version):
         return MAIN_DOCKERFILE_ARGS_MAP[extracted_version]
     else:
         return None
+
 
 def replace_in_file(file_path, start, end, content, add_new_line=True):
     # Read in the file
