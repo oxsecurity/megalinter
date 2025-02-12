@@ -2201,7 +2201,7 @@ def get_install_md(item):
             item["install"]["cargo"],
             "cargo",
             "  ",
-            f"https://crates.io/crates/",
+            "https://crates.io/crates/",
         )
     if "npm" in item["install"]:
         linter_doc_md += ["- NPM packages (node.js):"]
