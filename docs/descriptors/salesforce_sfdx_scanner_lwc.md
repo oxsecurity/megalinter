@@ -19,7 +19,7 @@ See more details in [Help](#help-content)
 
 ## sfdx-scanner-lwc documentation
 
-- Version in MegaLinter: **4.8.0**
+- Version in MegaLinter: **4.9.0**
 - Visit [Official Web Site](https://forcedotcom.github.io/sfdx-scanner/){target=_blank}
 - See [How to configure sfdx-scanner-lwc rules](https://eslint.org/docs/user-guide/configuring){target=_blank}
 - See [How to disable sfdx-scanner-lwc rules in files](https://eslint.org/docs/user-guide/configuring/rules#disabling-rules){target=_blank}
@@ -29,8 +29,8 @@ See more details in [Help](#help-content)
 
 ## Configuration in MegaLinter
 
-- Enable sfdx-scanner-lwc by adding `SALESFORCE_SFDX_SCANNER_LWC` in [ENABLE_LINTERS variable](https://megalinter.io/8.4.0/configuration/#activation-and-deactivation)
-- Disable sfdx-scanner-lwc by adding `SALESFORCE_SFDX_SCANNER_LWC` in [DISABLE_LINTERS variable](https://megalinter.io/8.4.0/configuration/#activation-and-deactivation)
+- Enable sfdx-scanner-lwc by adding `SALESFORCE_SFDX_SCANNER_LWC` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
+- Disable sfdx-scanner-lwc by adding `SALESFORCE_SFDX_SCANNER_LWC` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
 | Variable                                                | Description                                                                                                                                                                                                                                                                           | Default value                                   |
 |---------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
@@ -59,10 +59,10 @@ Use sfdx-scanner-lwc in your favorite IDE to catch errors before MegaLinter !
 
 This linter is available in the following flavors
 
-|                                                                         <!-- -->                                                                         | Flavor                                                        | Description                             | Embedded linters |                                                                                                                                                                                               Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------|:----------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/8.4.0/supported-linters/)         | Default MegaLinter Flavor               |       125        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v8.4.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://megalinter.io/8.4.0/flavors/salesforce/) | Optimized for Salesforce based projects |        53        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/v8.4.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce) |
+|                                                                         <!-- -->                                                                         | Flavor                                                       | Description                             | Embedded linters |                                                                                                                                                                                             Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------|:----------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor               |       125        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://megalinter.io/beta/flavors/salesforce/) | Optimized for Salesforce based projects |        53        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce) |
 
 ## Behind the scenes
 
@@ -90,7 +90,6 @@ sf scanner:run
 ### Help content
 
 ```shell
- ›   Warning: @salesforce/cli update available from 2.72.21 to 2.73.9.
 Scan a codebase with all the rules in the registry, or use parameters to filter the rules based on rulename, category, or ruleset.
 
 USAGE
@@ -144,9 +143,6 @@ GLOBAL FLAGS
 COMMANDS
   scanner run dfa  Scan codebase with all DFA rules by default.
 
- ›   Warning: @salesforce/cli update available from 2.72.21 to 2.73.9.
- ›   Warning: Plugin @salesforce/sfdx-scanner (4.8.0) differs from the version
- ›   specified by sf (4.7.0)
 Warning: We plan to stop supporting v4.x of Code Analyzer in the coming months. We highly recommend that you start using v5.x, which is currently in Beta. For information on v5.x, see https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/code-analyzer.html.
  name                                                   languages   categories            rulesets [dep] engine            is dfa is pilot
  ────────────────────────────────────────────────────── ─────────── ───────────────────── ────────────── ───────────────── ────── ────────
@@ -373,21 +369,21 @@ Warning: We plan to stop supporting v4.x of Code Analyzer in the coming months. 
 ```dockerfile
 # Parent descriptor install
 # renovate: datasource=npm depName=@salesforce/cli
-ARG SALESFORCE_CLI_VERSION=2.72.21
+ARG NPM_SALESFORCE_CLI_VERSION=2.75.5
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
-ARG SALESFORCE_PLUGIN_PACKAGING_VERSION=2.9.12
+ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.9.16
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=5.16.4
+ARG SFDX_HARDIS_VERSION=5.19.1
 ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
-RUN sf plugins install @salesforce/plugin-packaging@${SALESFORCE_PLUGIN_PACKAGING_VERSION} \
+RUN sf plugins install @salesforce/plugin-packaging@${NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION} \
     && echo y|sf plugins install sfdx-hardis@${SFDX_HARDIS_VERSION} \
     && (npm cache clean --force || true) \
     && rm -rf /root/.npm/_cacache
 ENV SF_AUTOUPDATE_DISABLE=true SF_CLI_DISABLE_AUTOUPDATE=true
 # Linter install
 # renovate: datasource=npm depName=@salesforce/sfdx-scanner
-ARG SALESFORCE_SFDX_SCANNER_VERSION=4.8.0
+ARG SALESFORCE_SFDX_SCANNER_VERSION=4.9.0
 RUN sf plugins install @salesforce/sfdx-scanner@${SALESFORCE_SFDX_SCANNER_VERSION} \
     && (npm cache clean --force || true) \
     && rm -rf /root/.npm/_cacache

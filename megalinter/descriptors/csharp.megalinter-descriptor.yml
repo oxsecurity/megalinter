@@ -44,8 +44,7 @@ linters:
       - "dotnet format" # Fix
 
   # CSharpier
-  - class: DotNetToolLinter
-    linter_name: csharpier
+  - linter_name: csharpier
     is_formatter: true
     linter_url: https://csharpier.com/
     linter_repo: https://github.com/belav/csharpier
@@ -71,7 +70,7 @@ linters:
         - |-
           # renovate: datasource=nuget depName=csharpier
           ARG CSHARP_CSHARPIER_VERSION=0.30.6
-        - RUN dotnet tool install --global csharpier --version "${CSHARP_CSHARPIER_VERSION}"
+        - RUN dotnet tool install --allow-roll-forward --global csharpier --version "${CSHARP_CSHARPIER_VERSION}"
     ide:
       rider:
         - name: csharpier
@@ -111,8 +110,8 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=nuget depName=roslynator.dotnet.cli
-          ARG CSHARP_ROSLYNATOR_VERSION=0.9.3
-        - RUN dotnet tool install -g roslynator.dotnet.cli --version "${CSHARP_ROSLYNATOR_VERSION}"
+          ARG CSHARP_ROSLYNATOR_VERSION=0.10.1
+        - RUN dotnet tool install --allow-roll-forward --global roslynator.dotnet.cli --version "${CSHARP_ROSLYNATOR_VERSION}"
     ide:
       visual_studio:
         - name: Roslynator 2022

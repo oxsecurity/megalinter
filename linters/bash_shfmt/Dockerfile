@@ -25,7 +25,7 @@ FROM mvdan/shfmt:${BASH_SHFMT_VERSION} AS shfmt
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.5.22 AS uv
+FROM ghcr.io/astral-sh/uv:0.5.30 AS uv
 FROM python:3.12.8-alpine3.21 AS build-ml-core
 WORKDIR /
 COPY --from=uv /uv /uvx /bin/
@@ -50,6 +50,7 @@ FROM python:3.12.8-alpine3.21
 #############################################################################################
 #ARG__START
 
+ARG BASH_SHFMT_VERSION
 #ARG__END
 
 ####################

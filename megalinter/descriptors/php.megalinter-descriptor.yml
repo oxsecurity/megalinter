@@ -185,6 +185,7 @@ linters:
     cli_config_arg_name: "--config"
     cli_lint_fix_remove_args:
       - "--dry-run"
+    version_extract_regex: "(?<=PHP CS Fixer )\\d+(\\.\\d+)+"
     examples:
       - "php-cs-fixer check myfile.php"
       - "php-cs-fixer check mydir"
@@ -192,7 +193,7 @@ linters:
     install:
       dockerfile:
         - |
-          RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require friendsofphp/php-cs-fixer
+          RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require friendsofphp/php-cs-fixer --with-all-dependencies
     ide:
       netbeans:
         - name: PHP-CS-Fixer

@@ -9,7 +9,7 @@ description: How to use dartanalyzer (configure, ignore files, ignore errors, he
 
 ## dartanalyzer documentation
 
-- Version in MegaLinter: **3.6.1**
+- Version in MegaLinter: **3.6.2**
 - Visit [Official Web Site](https://dart.dev/tools/dart-analyze){target=_blank}
 - See [How to configure dartanalyzer rules](https://dart.dev/tools/analysis){target=_blank}
 - See [How to disable dartanalyzer rules in files](https://dart.dev/tools/analysis#ignoring-rules){target=_blank}
@@ -19,8 +19,8 @@ description: How to use dartanalyzer (configure, ignore files, ignore errors, he
 
 ## Configuration in MegaLinter
 
-- Enable dartanalyzer by adding `DART_DARTANALYZER` in [ENABLE_LINTERS variable](https://megalinter.io/8.4.0/configuration/#activation-and-deactivation)
-- Disable dartanalyzer by adding `DART_DARTANALYZER` in [DISABLE_LINTERS variable](https://megalinter.io/8.4.0/configuration/#activation-and-deactivation)
+- Enable dartanalyzer by adding `DART_DARTANALYZER` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
+- Disable dartanalyzer by adding `DART_DARTANALYZER` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
 | Variable                                      | Description                                                                                                                                                                                  | Default value                                   |
 |-----------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
@@ -53,9 +53,9 @@ Use dartanalyzer in your favorite IDE to catch errors before MegaLinter !
 
 This linter is available in the following flavors
 
-|                                                                         <!-- -->                                                                         | Flavor                                                | Description               | Embedded linters |                                                                                                                                                                         Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------|:--------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/8.4.0/supported-linters/) | Default MegaLinter Flavor |       125        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v8.4.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|                                                                         <!-- -->                                                                         | Flavor                                               | Description               | Embedded linters |                                                                                                                                                                       Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       125        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 
 ## Behind the scenes
 
@@ -95,9 +95,10 @@ Run "dart help" to see global options.
 - Dockerfile commands :
 ```dockerfile
 # Parent descriptor install
+# renovate: datasource=github-tags depName=sgerrand/alpine-pkg-glibc
+ARG ALPINE_GLIBC_PACKAGE_VERSION=2.34-r0
 ENV LANG=C.UTF-8
 RUN ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases/download" && \
-    ALPINE_GLIBC_PACKAGE_VERSION="2.34-r0" && \
     ALPINE_GLIBC_BASE_PACKAGE_FILENAME="glibc-$ALPINE_GLIBC_PACKAGE_VERSION.apk" && \
     ALPINE_GLIBC_BIN_PACKAGE_FILENAME="glibc-bin-$ALPINE_GLIBC_PACKAGE_VERSION.apk" && \
     ALPINE_GLIBC_I18N_PACKAGE_FILENAME="glibc-i18n-$ALPINE_GLIBC_PACKAGE_VERSION.apk" && \
@@ -138,7 +139,7 @@ RUN ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases
 
 # Linter install
 # renovate: datasource=dart-version depName=dart
-ARG DART_VERSION='3.6.1'
+ARG DART_VERSION='3.6.2'
 RUN wget --tries=5 https://storage.googleapis.com/dart-archive/channels/stable/release/${DART_VERSION}/sdk/dartsdk-linux-x64-release.zip -O - -q | unzip -q - \
     && mkdir -p /usr/lib/dart \
     && mv dart-sdk/* /usr/lib/dart/ \

@@ -44,9 +44,12 @@ linters:
     install:
       # cargo:
       #   - COMPILER_ONLY # Use COMPILER_ONLY fake package just to Dockerfile contains rust toolchain install
+      dockerfile:
+        - |-
+          # renovate: datasource=pypi depName=checkov
+          ARG PIP_CHECKOV_VERSION=3.2.369
       pip:
-        - packaging
-        - checkov
+        - checkov==${PIP_CHECKOV_VERSION}
     ide:
       vscode:
         - name: Checkov
@@ -54,8 +57,7 @@ linters:
     test_folder: repository_checkov
 
   # DEVSKIM
-  - class: DotNetToolLinter
-    linter_name: devskim
+  - linter_name: devskim
     can_output_sarif: true
     descriptor_flavors:
       - all
@@ -105,10 +107,10 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=nuget depName=Microsoft.CST.DevSkim.CLI
-          ARG REPOSITORY_DEVSKIM_VERSION=1.0.51
+          ARG REPOSITORY_DEVSKIM_VERSION=1.0.52
         - RUN apk add --no-cache dotnet9-sdk
         - ENV PATH="${PATH}:/root/.dotnet/tools"
-        - RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI --version ${REPOSITORY_DEVSKIM_VERSION}
+        - RUN dotnet tool install --allow-roll-forward --global Microsoft.CST.DevSkim.CLI --version ${REPOSITORY_DEVSKIM_VERSION}
     ide:
       vscode:
         - name: VSCode DevSkim
@@ -267,7 +269,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=docker depName=zricethezav/gitleaks
-          ARG REPOSITORY_GITLEAKS_VERSION=v8.23.2
+          ARG REPOSITORY_GITLEAKS_VERSION=v8.23.3
         - FROM zricethezav/gitleaks:${REPOSITORY_GITLEAKS_VERSION} AS gitleaks
         - COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
     variables:
@@ -386,8 +388,12 @@ linters:
     test_folder: repository_file
     cli_lint_errors_count: "total_lines"
     install:
+      dockerfile:
+        - |-
+          # renovate: datasource=npm depName=@ls-lint/ls-lint
+          ARG NPM_LS_LINT_LS_LINT_VERSION=2.2.3
       npm:
-        - "@ls-lint/ls-lint"
+        - "@ls-lint/ls-lint@${NPM_LS_LINT_LS_LINT_VERSION}"
 
   # SECRETLINT
   - class: SecretLintLinter
@@ -423,10 +429,20 @@ linters:
       - 'secretlint "*/**"'
       - 'secretlint --secretlintrc .secretlintrc.json "**/*"'
     install:
+      dockerfile:
+        - |-
+          # renovate: datasource=npm depName=secretlint
+          ARG NPM_SECRETLINT_VERSION=9.0.0
+        - |-
+          # renovate: datasource=npm depName=@secretlint/secretlint-rule-preset-recommend
+          ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=9.0.0
+        - |-
+          # renovate: datasource=npm depName=@secretlint/secretlint-formatter-sarif
+          ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=9.0.0
       npm:
-        - secretlint
-        - "@secretlint/secretlint-rule-preset-recommend"
-        - "@secretlint/secretlint-formatter-sarif"
+        - secretlint@${NPM_SECRETLINT_VERSION}
+        - "@secretlint/secretlint-rule-preset-recommend@${NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION}"
+        - "@secretlint/secretlint-formatter-sarif@${NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION}"
 
   # SEMGREP
   - class: SemgrepLinter
@@ -473,8 +489,12 @@ linters:
       - "semgrep /tmp/lint"
       - "semgrep "
     install:
+      dockerfile:
+        - |-
+          # renovate: datasource=pypi depName=semgrep
+          ARG PIP_SEMGREP_VERSION=1.107.0
       pip:
-        - semgrep
+        - semgrep==${PIP_SEMGREP_VERSION}
     variables:
       - name: REPOSITORY_SEMGREP_RULESETS
         description: List of semgrep rulesets identifiers that you want to enforce
@@ -562,7 +582,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=github-tags depName=aquasecurity/trivy
-          ARG REPOSITORY_TRIVY_VERSION=0.58.2
+          ARG REPOSITORY_TRIVY_VERSION=0.59.1
         - |
           RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin "v${REPOSITORY_TRIVY_VERSION}" \
               && (trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress)
@@ -612,7 +632,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=github-tags depName=aquasecurity/trivy
-          ARG REPOSITORY_TRIVY_SBOM_VERSION=0.58.2
+          ARG REPOSITORY_TRIVY_SBOM_VERSION=0.59.1
         - |
           RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin "v${REPOSITORY_TRIVY_SBOM_VERSION}" \
               && (trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress)
@@ -651,7 +671,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=docker depName=trufflesecurity/trufflehog 
-          ARG REPOSITORY_TRUFFLEHOG_VERSION=3.88.2
+          ARG REPOSITORY_TRUFFLEHOG_VERSION=3.88.6
         - FROM trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION} AS trufflehog
         - COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
     test_folder: gitleaks

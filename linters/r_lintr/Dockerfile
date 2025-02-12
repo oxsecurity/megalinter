@@ -24,7 +24,7 @@
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.5.22 AS uv
+FROM ghcr.io/astral-sh/uv:0.5.30 AS uv
 FROM python:3.12.8-alpine3.21 AS build-ml-core
 WORKDIR /
 COPY --from=uv /uv /uvx /bin/
@@ -73,7 +73,6 @@ RUN apk add --no-cache \
                 musl-dev \
                 openssh \
                 g++ \
-                libc-dev \
                 libcurl \
                 libgcc \
                 libxml2-dev \

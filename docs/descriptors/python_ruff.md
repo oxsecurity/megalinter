@@ -11,7 +11,7 @@ An extremely fast Python linter, written in Rust.
 
 ## ruff documentation
 
-- Version in MegaLinter: **0.9.3**
+- Version in MegaLinter: **0.9.6**
 - Visit [Official Web Site](https://github.com/astral-sh/ruff#readme){target=_blank}
 - See [How to configure ruff rules](https://docs.astral.sh/ruff/configuration/){target=_blank}
   - If custom `.ruff.toml` config file isn't found, [.ruff.toml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.ruff.toml){target=_blank} will be used
@@ -22,10 +22,10 @@ An extremely fast Python linter, written in Rust.
 
 ## Configuration in MegaLinter
 
-- Enable ruff by adding `PYTHON_RUFF` in [ENABLE_LINTERS variable](https://megalinter.io/8.4.0/configuration/#activation-and-deactivation)
-- Disable ruff by adding `PYTHON_RUFF` in [DISABLE_LINTERS variable](https://megalinter.io/8.4.0/configuration/#activation-and-deactivation)
+- Enable ruff by adding `PYTHON_RUFF` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
+- Disable ruff by adding `PYTHON_RUFF` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-- Enable **autofixes** by adding `PYTHON_RUFF` in [APPLY_FIXES variable](https://megalinter.io/8.4.0/configuration/#apply-fixes)
+- Enable **autofixes** by adding `PYTHON_RUFF` in [APPLY_FIXES variable](https://megalinter.io/beta/configuration/#apply-fixes)
 
 | Variable                                | Description                                                                                                                                                                                                         | Default value                                   |
 |-----------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
@@ -58,11 +58,11 @@ Use ruff in your favorite IDE to catch errors before MegaLinter !
 
 This linter is available in the following flavors
 
-|                                                                         <!-- -->                                                                         | Flavor                                                  | Description                                     | Embedded linters |                                                                                                                                                                                         Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------|:------------------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/8.4.0/supported-linters/)   | Default MegaLinter Flavor                       |       125        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v8.4.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/8.4.0/flavors/cupcake/) | MegaLinter for the most commonly used languages |        85        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/v8.4.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/8.4.0/flavors/python/)   | Optimized for PYTHON based projects             |        62        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/v8.4.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
+|                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                     | Embedded linters |                                                                                                                                                                                       Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       125        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        85        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)   | Optimized for PYTHON based projects             |        62        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
 
 ## Behind the scenes
 
@@ -131,5 +131,11 @@ For help with a specific command, see: `ruff help <command>`.
 
 ### Installation on mega-linter Docker image
 
+- Dockerfile commands :
+```dockerfile
+# renovate: datasource=pypi depName=ruff
+ARG PIP_RUFF_VERSION=0.9.6
+```
+
 - PIP packages (Python):
-  - [ruff](https://pypi.org/project/ruff)
+  - [ruff==${PIP_RUFF_VERSION}](https://pypi.org/project/ruff/${PIP_RUFF_VERSION})

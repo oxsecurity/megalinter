@@ -4,10 +4,10 @@ Use roslynator to lint CSharp files
 """
 import logging
 
-from megalinter.linters.DotNetToolLinter import DotNetToolLinter
+from megalinter import Linter
 
 
-class RoslynatorLinter(DotNetToolLinter):
+class RoslynatorLinter(Linter):
     def process_linter(self, file=None):
         command = f"dotnet restore {file}"
 

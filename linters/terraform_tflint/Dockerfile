@@ -12,7 +12,7 @@
 #############################################################################################
 #ARGTOP__START
 # renovate: datasource=docker depName=ghcr.io/terraform-linters/tflint
-ARG TERRAFORM_TFLINT_VERSION=0.55.0
+ARG TERRAFORM_TFLINT_VERSION=0.55.1
 #ARGTOP__END
 
 #############################################################################################
@@ -25,7 +25,7 @@ FROM ghcr.io/terraform-linters/tflint:v${TERRAFORM_TFLINT_VERSION} AS tflint
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.5.22 AS uv
+FROM ghcr.io/astral-sh/uv:0.5.30 AS uv
 FROM python:3.12.8-alpine3.21 AS build-ml-core
 WORKDIR /
 COPY --from=uv /uv /uvx /bin/
@@ -50,6 +50,7 @@ FROM python:3.12.8-alpine3.21
 #############################################################################################
 #ARG__START
 
+ARG TERRAFORM_TFLINT_VERSION
 #ARG__END
 
 ####################

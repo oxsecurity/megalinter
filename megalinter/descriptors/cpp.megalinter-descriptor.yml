@@ -34,8 +34,12 @@ linters:
     examples:
       - "cpplint myfile.cpp"
     install:
+      dockerfile:
+        - |-
+          # renovate: datasource=pypi depName=cpplint
+          ARG PIP_CPPLINT_VERSION=2.0.0
       pip:
-        - cpplint
+        - cpplint==${PIP_CPPLINT_VERSION}
   # clang-format
   - linter_name: clang-format
     name: CPP_CLANG_FORMAT

@@ -24,7 +24,7 @@
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.5.22 AS uv
+FROM ghcr.io/astral-sh/uv:0.5.30 AS uv
 FROM python:3.12.8-alpine3.21 AS build-ml-core
 WORKDIR /
 COPY --from=uv /uv /uvx /bin/
@@ -49,7 +49,7 @@ FROM python:3.12.8-alpine3.21
 #############################################################################################
 #ARG__START
 # renovate: datasource=npm depName=markdown-link-check
-ARG MARKDOWN_MARKDOWN_LINK_CHECK_VERSION=3.12.2
+ARG NPM_MARKDOWN_LINK_CHECK_VERSION=3.12.2
 #ARG__END
 
 ####################
@@ -120,7 +120,7 @@ ENV NODE_OPTIONS="--max-old-space-size=8192" \
 #NPM__START
 WORKDIR /node-deps
 RUN npm --no-cache install --ignore-scripts --omit=dev \
-                markdown-link-check@${MARKDOWN_MARKDOWN_LINK_CHECK_VERSION}  && \
+                markdown-link-check@${NPM_MARKDOWN_LINK_CHECK_VERSION} && \
     echo "Cleaning npm cache…" \
     && (npm cache clean --force || true) \
     && echo "Changing owner of node_modules files…" \

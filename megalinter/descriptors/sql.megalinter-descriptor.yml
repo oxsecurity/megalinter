@@ -32,12 +32,11 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=sqlfluff
-          ARG SQL_SQLFLUFF_VERSION=3.3.0
+          ARG PIP_SQLFLUFF_VERSION=3.3.1
       pip:
-        - sqlfluff==${SQL_SQLFLUFF_VERSION}
+        - sqlfluff==${PIP_SQLFLUFF_VERSION}
   # TSQL
-  - class: DotNetToolLinter
-    linter_name: tsqllint
+  - linter_name: tsqllint
     disabled: false
     descriptor_flavors:
       - dotnet
@@ -68,7 +67,7 @@ linters:
           ARG SQL_TSQLLINT_VERSION=1.16.0
         - RUN apk add --no-cache dotnet9-sdk
         - ENV PATH="${PATH}:/root/.dotnet/tools"
-        - RUN dotnet tool install --global TSQLLint --version ${SQL_TSQLLINT_VERSION}
+        - RUN dotnet tool install --allow-roll-forward --global TSQLLint --version ${SQL_TSQLLINT_VERSION}
     ide:
       vscode:
         - name: TSQL Lint

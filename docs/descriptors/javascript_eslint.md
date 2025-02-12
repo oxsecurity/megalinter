@@ -31,10 +31,10 @@ You can create it by typing `npx eslint --init` in the root of your repository
 
 ## Configuration in MegaLinter
 
-- Enable eslint by adding `JAVASCRIPT_ES` in [ENABLE_LINTERS variable](https://megalinter.io/8.4.0/configuration/#activation-and-deactivation)
-- Disable eslint by adding `JAVASCRIPT_ES` in [DISABLE_LINTERS variable](https://megalinter.io/8.4.0/configuration/#activation-and-deactivation)
+- Enable eslint by adding `JAVASCRIPT_ES` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
+- Disable eslint by adding `JAVASCRIPT_ES` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-- Enable **autofixes** by adding `JAVASCRIPT_ES` in [APPLY_FIXES variable](https://megalinter.io/8.4.0/configuration/#apply-fixes)
+- Enable **autofixes** by adding `JAVASCRIPT_ES` in [APPLY_FIXES variable](https://megalinter.io/beta/configuration/#apply-fixes)
 
 | Variable                                  | Description                                                                                                                                                                                                         | Default value                                   |
 |-------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
@@ -74,12 +74,12 @@ Use eslint in your favorite IDE to catch errors before MegaLinter !
 
 This linter is available in the following flavors
 
-|                                                                         <!-- -->                                                                         | Flavor                                                        | Description                                              | Embedded linters |                                                                                                                                                                                               Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------|:---------------------------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/8.4.0/supported-linters/)         | Default MegaLinter Flavor                                |       125        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v8.4.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/8.4.0/flavors/cupcake/)       | MegaLinter for the most commonly used languages          |        85        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/v8.4.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
-|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/8.4.0/flavors/dotnetweb/)   | Optimized for C, C++, C# or VB based projects with JS/TS |        70        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/v8.4.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
-|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.io/8.4.0/flavors/javascript/) | Optimized for JAVASCRIPT or TYPESCRIPT based projects    |        58        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/v8.4.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript) |
+|                                                                         <!-- -->                                                                         | Flavor                                                       | Description                                              | Embedded linters |                                                                                                                                                                                             Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------|:---------------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor                                |       125        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)       | MegaLinter for the most commonly used languages          |        85        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/)   | Optimized for C, C++, C# or VB based projects with JS/TS |        70        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
+|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.io/beta/flavors/javascript/) | Optimized for JAVASCRIPT or TYPESCRIPT based projects    |        58        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript) |
 
 ## Behind the scenes
 
@@ -176,17 +176,47 @@ Miscellaneous:
 
 ### Installation on mega-linter Docker image
 
+- Dockerfile commands :
+```dockerfile
+# renovate: datasource=npm depName=eslint
+ARG NPM_ESLINT_VERSION=8.57.1
+# renovate: datasource=npm depName=eslint-config-airbnb
+ARG NPM_ESLINT_CONFIG_AIRBNB_VERSION=19.0.4
+# renovate: datasource=npm depName=eslint-config-prettier
+ARG NPM_ESLINT_CONFIG_PRETTIER_VERSION=10.0.1
+# renovate: datasource=npm depName=eslint-config-standard
+ARG NPM_ESLINT_CONFIG_STANDARD_VERSION=17.1.0
+# renovate: datasource=npm depName=eslint-plugin-import
+ARG NPM_ESLINT_PLUGIN_IMPORT_VERSION=2.31.0
+# renovate: datasource=npm depName=eslint-plugin-jest
+ARG NPM_ESLINT_PLUGIN_JEST_VERSION=28.11.0
+# renovate: datasource=npm depName=eslint-plugin-n
+ARG NPM_ESLINT_PLUGIN_N_VERSION=16.0.0
+# renovate: datasource=npm depName=eslint-plugin-prettier
+ARG NPM_ESLINT_PLUGIN_PRETTIER_VERSION=5.2.3
+# renovate: datasource=npm depName=eslint-plugin-promise
+ARG NPM_ESLINT_PLUGIN_PROMISE_VERSION=6.6.0
+# renovate: datasource=npm depName=eslint-plugin-vue
+ARG NPM_ESLINT_PLUGIN_VUE_VERSION=9.32.0
+# renovate: datasource=npm depName=@babel/core
+ARG NPM_BABEL_CORE_VERSION=7.26.8
+# renovate: datasource=npm depName=@babel/eslint-parser
+ARG NPM_BABEL_ESLINT_PARSER_VERSION=7.26.8
+# renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
+ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
+```
+
 - NPM packages (node.js):
-  - [eslint](https://www.npmjs.com/package/eslint)
-  - [eslint-config-airbnb](https://www.npmjs.com/package/eslint-config-airbnb)
-  - [eslint-config-prettier](https://www.npmjs.com/package/eslint-config-prettier)
-  - [eslint-config-standard](https://www.npmjs.com/package/eslint-config-standard)
-  - [eslint-plugin-import](https://www.npmjs.com/package/eslint-plugin-import)
-  - [eslint-plugin-jest](https://www.npmjs.com/package/eslint-plugin-jest)
-  - [eslint-plugin-node](https://www.npmjs.com/package/eslint-plugin-node)
-  - [eslint-plugin-prettier](https://www.npmjs.com/package/eslint-plugin-prettier)
-  - [eslint-plugin-promise](https://www.npmjs.com/package/eslint-plugin-promise)
-  - [eslint-plugin-vue](https://www.npmjs.com/package/eslint-plugin-vue)
-  - [@babel/core](https://www.npmjs.com/package/@babel/core)
-  - [@babel/eslint-parser](https://www.npmjs.com/package/@babel/eslint-parser)
-  - [@microsoft/eslint-formatter-sarif](https://www.npmjs.com/package/@microsoft/eslint-formatter-sarif)
+  - [eslint@${NPM_ESLINT_VERSION}](https://www.npmjs.com/package/eslint@${NPM_ESLINT_VERSION})
+  - [eslint-config-airbnb@${NPM_ESLINT_CONFIG_AIRBNB_VERSION}](https://www.npmjs.com/package/eslint-config-airbnb@${NPM_ESLINT_CONFIG_AIRBNB_VERSION})
+  - [eslint-config-prettier@${NPM_ESLINT_CONFIG_PRETTIER_VERSION}](https://www.npmjs.com/package/eslint-config-prettier@${NPM_ESLINT_CONFIG_PRETTIER_VERSION})
+  - [eslint-config-standard@${NPM_ESLINT_CONFIG_STANDARD_VERSION}](https://www.npmjs.com/package/eslint-config-standard@${NPM_ESLINT_CONFIG_STANDARD_VERSION})
+  - [eslint-plugin-import@${NPM_ESLINT_PLUGIN_IMPORT_VERSION}](https://www.npmjs.com/package/eslint-plugin-import@${NPM_ESLINT_PLUGIN_IMPORT_VERSION})
+  - [eslint-plugin-jest@${NPM_ESLINT_PLUGIN_JEST_VERSION}](https://www.npmjs.com/package/eslint-plugin-jest@${NPM_ESLINT_PLUGIN_JEST_VERSION})
+  - [eslint-plugin-n@${NPM_ESLINT_PLUGIN_N_VERSION}](https://www.npmjs.com/package/eslint-plugin-n@${NPM_ESLINT_PLUGIN_N_VERSION})
+  - [eslint-plugin-prettier@${NPM_ESLINT_PLUGIN_PRETTIER_VERSION}](https://www.npmjs.com/package/eslint-plugin-prettier@${NPM_ESLINT_PLUGIN_PRETTIER_VERSION})
+  - [eslint-plugin-promise@${NPM_ESLINT_PLUGIN_PROMISE_VERSION}](https://www.npmjs.com/package/eslint-plugin-promise@${NPM_ESLINT_PLUGIN_PROMISE_VERSION})
+  - [eslint-plugin-vue@${NPM_ESLINT_PLUGIN_VUE_VERSION}](https://www.npmjs.com/package/eslint-plugin-vue@${NPM_ESLINT_PLUGIN_VUE_VERSION})
+  - [@babel/core@${NPM_BABEL_CORE_VERSION}](https://www.npmjs.com/package/@babel/core/v/${NPM_BABEL_CORE_VERSION})
+  - [@babel/eslint-parser@${NPM_BABEL_ESLINT_PARSER_VERSION}](https://www.npmjs.com/package/@babel/eslint-parser/v/${NPM_BABEL_ESLINT_PARSER_VERSION})
+  - [@microsoft/eslint-formatter-sarif@${NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION}](https://www.npmjs.com/package/@microsoft/eslint-formatter-sarif/v/${NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION})

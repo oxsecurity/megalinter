@@ -24,7 +24,7 @@
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.5.22 AS uv
+FROM ghcr.io/astral-sh/uv:0.5.30 AS uv
 FROM python:3.12.8-alpine3.21 AS build-ml-core
 WORKDIR /
 COPY --from=uv /uv /uvx /bin/
@@ -49,7 +49,9 @@ FROM python:3.12.8-alpine3.21
 #############################################################################################
 #ARG__START
 # renovate: datasource=crate depName=stylua
-ARG LUA_STYLUA_VERSION=2.0.0
+ARG CARGO_STYLUA_VERSION=2.0.0
+# renovate: datasource=github-tags depName=rust-lang/rust
+ARG RUST_RUST_VERSION=1.84.1
 #ARG__END
 
 ####################
@@ -94,9 +96,9 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin || true && \
 #############################################################################################
 
 #CARGO__START
-RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --profile minimal --default-toolchain stable \
+RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --profile minimal --default-toolchain ${RUST_RUST_VERSION} \
     && export PATH="/root/.cargo/bin:${PATH}" \
-    && cargo install --force --locked stylua@${LUA_STYLUA_VERSION} \
+    && cargo install --force --locked stylua@${CARGO_STYLUA_VERSION} \
     && rm -rf /root/.cargo/registry /root/.cargo/git /root/.cache/sccache /root/.rustup
 ENV PATH="/root/.cargo/bin:${PATH}"
 #CARGO__END

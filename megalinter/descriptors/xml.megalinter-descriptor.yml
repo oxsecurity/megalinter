@@ -33,7 +33,6 @@ linters:
       - "xmllint --format myXMLfile.xml --output myXMLfile.xml"
     install:
       apk:
-        - libc-dev
         - libxml2-dev
         - libxml2-utils
         - libgcc

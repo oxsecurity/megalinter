@@ -15,7 +15,7 @@ description: How to use rubocop (configure, ignore files, ignore errors, help & 
 
 ## rubocop documentation
 
-- Version in MegaLinter: **1.71.0**
+- Version in MegaLinter: **1.71.2**
 - Visit [Official Web Site](https://rubocop.org/){target=_blank}
 - See [How to configure rubocop rules](https://docs.rubocop.org/rubocop/0.92/configuration.html){target=_blank}
   - If custom `.ruby-lint.yml` config file isn't found, [.ruby-lint.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.ruby-lint.yml){target=_blank} will be used
@@ -26,10 +26,10 @@ description: How to use rubocop (configure, ignore files, ignore errors, help & 
 
 ## Configuration in MegaLinter
 
-- Enable rubocop by adding `RUBY_RUBOCOP` in [ENABLE_LINTERS variable](https://megalinter.io/8.4.0/configuration/#activation-and-deactivation)
-- Disable rubocop by adding `RUBY_RUBOCOP` in [DISABLE_LINTERS variable](https://megalinter.io/8.4.0/configuration/#activation-and-deactivation)
+- Enable rubocop by adding `RUBY_RUBOCOP` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
+- Disable rubocop by adding `RUBY_RUBOCOP` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-- Enable **autofixes** by adding `RUBY_RUBOCOP` in [APPLY_FIXES variable](https://megalinter.io/8.4.0/configuration/#apply-fixes)
+- Enable **autofixes** by adding `RUBY_RUBOCOP` in [APPLY_FIXES variable](https://megalinter.io/beta/configuration/#apply-fixes)
 
 | Variable                                 | Description                                                                                                                                                                                  | Default value                                   |
 |------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
@@ -69,11 +69,11 @@ Use rubocop in your favorite IDE to catch errors before MegaLinter !
 
 This linter is available in the following flavors
 
-|                                                                         <!-- -->                                                                         | Flavor                                                  | Description                                     | Embedded linters |                                                                                                                                                                                         Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------|:------------------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/8.4.0/supported-linters/)   | Default MegaLinter Flavor                       |       125        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v8.4.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/8.4.0/flavors/cupcake/) | MegaLinter for the most commonly used languages |        85        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/v8.4.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
-|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/ruby.ico" alt="" height="32px" class="megalinter-icon"></a>         | [ruby](https://megalinter.io/8.4.0/flavors/ruby/)       | Optimized for RUBY based projects               |        49        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-ruby/v8.4.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-ruby) |
+|                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                     | Embedded linters |                                                                                                                                                                                       Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       125        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        85        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/ruby.ico" alt="" height="32px" class="megalinter-icon"></a>         | [ruby](https://megalinter.io/beta/flavors/ruby/)       | Optimized for RUBY based projects               |        49        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-ruby/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-ruby) |
 
 ## Behind the scenes
 
@@ -285,10 +285,26 @@ Profiling Options:
 
 ### Installation on mega-linter Docker image
 
+- Dockerfile commands :
+```dockerfile
+# renovate: datasource=rubygems depName=rubocop
+ARG GEM_RUBOCOP_VERSION=1.71.2
+# renovate: datasource=rubygems depName=rubocop-github
+ARG GEM_RUBOCOP_GITHUB_VERSION=0.20.0
+# renovate: datasource=rubygems depName=rubocop-performance
+ARG GEM_RUBOCOP_PERFORMANCE_VERSION=1.23.1
+# renovate: datasource=rubygems depName=rubocop-rails
+ARG GEM_RUBOCOP_RAILS_VERSION=2.29.1
+# renovate: datasource=rubygems depName=rubocop-rake
+ARG GEM_RUBOCOP_RAKE_VERSION=0.6.0
+# renovate: datasource=rubygems depName=rubocop-rspec
+ARG GEM_RUBOCOP_RSPEC_VERSION=3.4.0
+```
+
 - GEM packages (Ruby) :
-  - [rubocop](https://rubygems.org/gems/rubocop)
-  - [rubocop-github](https://rubygems.org/gems/rubocop-github)
-  - [rubocop-performance](https://rubygems.org/gems/rubocop-performance)
-  - [rubocop-rails](https://rubygems.org/gems/rubocop-rails)
-  - [rubocop-rake](https://rubygems.org/gems/rubocop-rake)
-  - [rubocop-rspec](https://rubygems.org/gems/rubocop-rspec)
+  - [rubocop:${GEM_RUBOCOP_VERSION}](https://rubygems.org/gems/rubocop:${GEM_RUBOCOP_VERSION})
+  - [rubocop-github:${GEM_RUBOCOP_GITHUB_VERSION}](https://rubygems.org/gems/rubocop-github:${GEM_RUBOCOP_GITHUB_VERSION})
+  - [rubocop-performance:${GEM_RUBOCOP_PERFORMANCE_VERSION}](https://rubygems.org/gems/rubocop-performance:${GEM_RUBOCOP_PERFORMANCE_VERSION})
+  - [rubocop-rails:${GEM_RUBOCOP_RAILS_VERSION}](https://rubygems.org/gems/rubocop-rails:${GEM_RUBOCOP_RAILS_VERSION})
+  - [rubocop-rake:${GEM_RUBOCOP_RAKE_VERSION}](https://rubygems.org/gems/rubocop-rake:${GEM_RUBOCOP_RAKE_VERSION})
+  - [rubocop-rspec:${GEM_RUBOCOP_RSPEC_VERSION}](https://rubygems.org/gems/rubocop-rspec:${GEM_RUBOCOP_RSPEC_VERSION})

@@ -22,8 +22,12 @@ linters:
     examples:
       - "snakemake --lint -s Snakefile"
     install:
+      dockerfile:
+        - |-
+          # renovate: datasource=pypi depName=snakemake
+          ARG PIP_SNAKEMAKE_VERSION=8.27.1
       pip:
-        - snakemake
+        - snakemake==${PIP_SNAKEMAKE_VERSION}
     ide:
       idea:
         - name: SnakeCharm
@@ -53,5 +57,9 @@ linters:
       - "snakefmt --check --compact-diff --config .snakefmt.toml Snakefile"
       - "snakefmt --config .snakefmt.toml Snakefile" # Fix
     install:
+      dockerfile:
+        - |-
+          # renovate: datasource=pypi depName=snakefmt
+          ARG PIP_SNAKEFMT_VERSION=0.10.2
       pip:
-        - snakefmt
+        - snakefmt==${PIP_SNAKEFMT_VERSION}

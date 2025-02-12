@@ -15,7 +15,7 @@ description: How to use cfn-lint (configure, ignore files, ignore errors, help &
 
 ## cfn-lint documentation
 
-- Version in MegaLinter: **1.22.7**
+- Version in MegaLinter: **1.24.0**
 - Visit [Official Web Site](https://github.com/aws-cloudformation/cfn-lint#readme){target=_blank}
   - If custom `.cfnlintrc.yml` config file isn't found, [.cfnlintrc.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.cfnlintrc.yml){target=_blank} will be used
 - See [Index of problems detected by cfn-lint](https://github.com/aws-cloudformation/cfn-lint/blob/main/docs/rules.md){target=_blank}
@@ -24,8 +24,8 @@ description: How to use cfn-lint (configure, ignore files, ignore errors, help &
 
 ## Configuration in MegaLinter
 
-- Enable cfn-lint by adding `CLOUDFORMATION_CFN_LINT` in [ENABLE_LINTERS variable](https://megalinter.io/8.4.0/configuration/#activation-and-deactivation)
-- Disable cfn-lint by adding `CLOUDFORMATION_CFN_LINT` in [DISABLE_LINTERS variable](https://megalinter.io/8.4.0/configuration/#activation-and-deactivation)
+- Enable cfn-lint by adding `CLOUDFORMATION_CFN_LINT` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
+- Disable cfn-lint by adding `CLOUDFORMATION_CFN_LINT` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
 | Variable                                            | Description                                                                                                                                                                                                         | Default value                                   |
 |-----------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
@@ -60,11 +60,11 @@ Use cfn-lint in your favorite IDE to catch errors before MegaLinter !
 
 This linter is available in the following flavors
 
-|                                                                         <!-- -->                                                                         | Flavor                                                    | Description                                     | Embedded linters |                                                                                                                                                                                           Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------|:------------------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/8.4.0/supported-linters/)     | Default MegaLinter Flavor                       |       125        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v8.4.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/8.4.0/flavors/cupcake/)   | MegaLinter for the most commonly used languages |        85        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/v8.4.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
-|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://megalinter.io/8.4.0/flavors/security/) | Optimized for security                          |        24        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/v8.4.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
+|                                                                         <!-- -->                                                                         | Flavor                                                   | Description                                     | Embedded linters |                                                                                                                                                                                         Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------|:------------------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)     | Default MegaLinter Flavor                       |       125        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)   | MegaLinter for the most commonly used languages |        85        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://megalinter.io/beta/flavors/security/) | Optimized for security                          |        24        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
 
 ## Behind the scenes
 
@@ -162,5 +162,11 @@ Advanced / Debugging:
 
 ### Installation on mega-linter Docker image
 
+- Dockerfile commands :
+```dockerfile
+# renovate: datasource=pypi depName=cfn-lint
+ARG PIP_CFN_LINT_VERSION=1.24.0
+```
+
 - PIP packages (Python):
-  - [cfn-lint[sarif]](https://pypi.org/project/cfn-lint[sarif])
+  - [cfn-lint[sarif]==${PIP_CFN_LINT_VERSION}](https://pypi.org/project/cfn-lint[sarif]/${PIP_CFN_LINT_VERSION})

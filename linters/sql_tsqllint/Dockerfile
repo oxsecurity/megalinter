@@ -24,7 +24,7 @@
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.5.22 AS uv
+FROM ghcr.io/astral-sh/uv:0.5.30 AS uv
 FROM python:3.12.8-alpine3.21 AS build-ml-core
 WORKDIR /
 COPY --from=uv /uv /uvx /bin/
@@ -149,7 +149,7 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 # tsqllint installation
 RUN apk add --no-cache dotnet9-sdk
 ENV PATH="${PATH}:/root/.dotnet/tools"
-RUN dotnet tool install --global TSQLLint --version ${SQL_TSQLLINT_VERSION}
+RUN dotnet tool install --allow-roll-forward --global TSQLLint --version ${SQL_TSQLLINT_VERSION}
 #
 #OTHER__END
 

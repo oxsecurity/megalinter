@@ -22,7 +22,7 @@ Example:
 
 ## devskim documentation
 
-- Version in MegaLinter: **1.0.51**
+- Version in MegaLinter: **1.0.52**
 - Visit [Official Web Site](https://github.com/microsoft/DevSkim#readme){target=_blank}
 - See [How to configure devskim rules](https://github.com/microsoft/DevSkim/wiki/Analyze-Command){target=_blank}
   - If custom `.devskim.json` config file isn't found, [.devskim.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.devskim.json){target=_blank} will be used
@@ -32,8 +32,8 @@ Example:
 
 ## Configuration in MegaLinter
 
-- Enable devskim by adding `REPOSITORY_DEVSKIM` in [ENABLE_LINTERS variable](https://megalinter.io/8.4.0/configuration/#activation-and-deactivation)
-- Disable devskim by adding `REPOSITORY_DEVSKIM` in [DISABLE_LINTERS variable](https://megalinter.io/8.4.0/configuration/#activation-and-deactivation)
+- Enable devskim by adding `REPOSITORY_DEVSKIM` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
+- Disable devskim by adding `REPOSITORY_DEVSKIM` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
 | Variable                                       | Description                                                                                                                                                                                                                                                                           | Default value                                   |
 |------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
@@ -61,10 +61,10 @@ Use devskim in your favorite IDE to catch errors before MegaLinter !
 
 This linter is available in the following flavors
 
-|                                                                         <!-- -->                                                                         | Flavor                                                    | Description               | Embedded linters |                                                                                                                                                                                           Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------|:--------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/8.4.0/supported-linters/)     | Default MegaLinter Flavor |       125        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v8.4.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://megalinter.io/8.4.0/flavors/security/) | Optimized for security    |        24        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/v8.4.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
+|                                                                         <!-- -->                                                                         | Flavor                                                   | Description               | Embedded linters |                                                                                                                                                                                         Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)     | Default MegaLinter Flavor |       125        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://megalinter.io/beta/flavors/security/) | Optimized for security    |        24        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
 
 ## Behind the scenes
 
@@ -99,7 +99,7 @@ devskim analyze --file-format sarif --options-json config --source-code .
 ### Help content
 
 ```shell
-devskim 1.0.51+210b5d121e
+devskim 1.0.52+74513a99d4
 © Microsoft Corporation. All rights reserved.
 
   analyze     Analyze source code using DevSkim
@@ -121,9 +121,9 @@ devskim 1.0.51+210b5d121e
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=nuget depName=Microsoft.CST.DevSkim.CLI
-ARG REPOSITORY_DEVSKIM_VERSION=1.0.51
+ARG REPOSITORY_DEVSKIM_VERSION=1.0.52
 RUN apk add --no-cache dotnet9-sdk
 ENV PATH="${PATH}:/root/.dotnet/tools"
-RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI --version ${REPOSITORY_DEVSKIM_VERSION}
+RUN dotnet tool install --allow-roll-forward --global Microsoft.CST.DevSkim.CLI --version ${REPOSITORY_DEVSKIM_VERSION}
 ```
 

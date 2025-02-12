@@ -34,8 +34,12 @@ linters:
       - "prettier --config .prettierrc.json --check myfile.yml"
       - "prettier --config .prettierrc.json --write myfile.yml" # format
     install:
+      dockerfile:
+        - |-
+          # renovate: datasource=npm depName=prettier
+          ARG NPM_PRETTIER_VERSION=3.5.0
       npm:
-        - "prettier"
+        - "prettier@${NPM_PRETTIER_VERSION}"
     ide:
       atom:
         - name: prettier-atom
@@ -88,8 +92,12 @@ linters:
       - "yamllint --strict"
       - "yamllint --no-warnings"
     install:
+      dockerfile:
+        - |-
+          # renovate: datasource=pypi depName=yamllint
+          ARG PIP_YAMLLINT_VERSION=1.35.1
       pip:
-        - yamllint
+        - yamllint==${PIP_YAMLLINT_VERSION}
     ide:
       emacs:
         - name: flycheck
@@ -116,8 +124,12 @@ linters:
       - "v8r --ignore-errors myfile.yml"
       - "v8r --ignore-errors myfile.yaml"
     install:
+      dockerfile:
+        - |-
+          # renovate: datasource=npm depName=v8r
+          ARG NPM_V8R_VERSION=4.2.1
       npm:
-        - v8r
+        - v8r@${NPM_V8R_VERSION}
     ide:
       eclipse:
         - name: native support
