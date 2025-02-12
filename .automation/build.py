@@ -168,7 +168,6 @@ with open(MAIN_DOCKERFILE, "r", encoding="utf-8") as main_dockerfile_file:
     for match in matches:
         MAIN_DOCKERFILE_ARGS_MAP[match.group(1)] = match.group(2)
 
-
 # Generate one Dockerfile by MegaLinter flavor
 def generate_all_flavors():
     flavors = megalinter.flavor_factory.list_megalinter_flavors()
