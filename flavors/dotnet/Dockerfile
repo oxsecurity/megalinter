@@ -137,7 +137,7 @@ ARG NPM_PRANTLF_JSONLINT_VERSION=16.0.0
 # renovate: datasource=npm depName=v8r
 ARG NPM_V8R_VERSION=4.2.1
 # renovate: datasource=npm depName=prettier
-ARG NPM_PRETTIER_VERSION=3.5.0
+ARG NPM_PRETTIER_VERSION=3.5.1
 # renovate: datasource=npm depName=npm-package-json-lint
 ARG NPM_PACKAGE_JSON_LINT_VERSION=8.0.0
 # renovate: datasource=npm depName=npm-package-json-lint-config-default
