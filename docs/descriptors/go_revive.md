@@ -9,7 +9,7 @@ description: How to use revive (configure, ignore files, ignore errors, help & v
 
 ## revive documentation
 
-- Version in MegaLinter: **1.6.0**
+- Version in MegaLinter: **1.6.1**
 - Visit [Official Web Site](https://revive.run/){target=_blank}
 - See [How to configure revive rules](https://revive.run/docs#custom-configuration){target=_blank}
 - See [Index of problems detected by revive](https://revive.run/r){target=_blank}
@@ -114,7 +114,7 @@ Usage of revive:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=github-tags depName=mgechev/revive
-ARG GO_REVIVE_VERSION=v1.6.0
+ARG GO_REVIVE_VERSION=v1.6.1
 FROM golang:1-alpine AS revive
 ## The golang image used as a builder is a temporary workaround (https://github.com/mgechev/revive/issues/787)
 ## for the released revive binaries not returning version numbers (devel). 
