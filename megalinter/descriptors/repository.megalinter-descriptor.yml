@@ -47,7 +47,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=checkov
-          ARG PIP_CHECKOV_VERSION=3.2.369
+          ARG PIP_CHECKOV_VERSION=3.2.370
       pip:
         - checkov==${PIP_CHECKOV_VERSION}
     ide:
