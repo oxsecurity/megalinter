@@ -22,8 +22,10 @@ description: djlint, htmlhint are available to analyze HTML files in MegaLinter
 
 ## Configuration in MegaLinter
 
-| Variable                  | Description                   | Default value |
-|---------------------------|-------------------------------|---------------|
-| HTML_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| HTML_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable                  | Description                                     | Default value |
+|---------------------------|-------------------------------------------------|---------------|
+| HTML_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
+| HTML_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
+| HTML_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
+| HTML_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 

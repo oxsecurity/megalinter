@@ -50,6 +50,16 @@ def get_root_dir():
 # Define env variables before any test case
 def linter_test_setup(params=None):
     config.delete()
+    # Workarounds to avoid wrong test classes to be called
+    test_name = os.environ.get("PYTEST_CURRENT_TEST", "")
+    test_keywords = os.environ.get("TEST_KEYWORDS", "")
+    # Special cases with names resembling each other
+    if (
+        (test_keywords == "api_spectral" and "openapi_spectral" in test_name)
+        or (test_keywords == "php_phpcs" and "php_phpcsfixer" in test_name)
+        or (test_keywords == "python_ruff" and "python_ruff_format" in test_name)
+    ):
+        raise unittest.SkipTest("This test class should not be run in this campaign")
     if params is None:
         params = {"request_id": str(uuid.uuid1())}
     request_id = params["request_id"]
@@ -84,6 +94,8 @@ def linter_test_setup(params=None):
     config.set_value(request_id, "IGNORE_GITIGNORED_FILES", "true")
     config.set_value(request_id, "VALIDATE_ALL_CODEBASE", "true")
     config.set_value(request_id, "CLEAR_REPORT_FOLDER", "true")
+    config.set_value(request_id, "API_REPORTER", "false")
+    config.set_value(request_id, "SARIF_REPORTER", "false")
     if params.get("additional_test_variables"):
         for env_var_key, env_var_value in params.get(
             "additional_test_variables"
@@ -178,7 +190,9 @@ def test_linter_success(linter, test_self):
             )
         else:
             test_self.assertRegex(output, rf"\[{linter_name}\] .*good.* - SUCCESS")
-    elif linter.descriptor_id != "SPELL":  # This log doesn't appear in SPELL linters
+    elif (linter.descriptor_id != "SPELL") and (
+        linter.linter_name != "php-cs-fixer"
+    ):  # This log doesn't appear in SPELL linters
         test_self.assertRegex(
             output,
             rf"Linted \[{linter.descriptor_id}\] files with \[{linter_name}\] successfully",
@@ -189,11 +203,14 @@ def test_linter_success(linter, test_self):
         f"{tmp_report_folder}{os.path.sep}linters_logs"
         f"{os.path.sep}{report_file_name}"
     )
-    test_self.assertTrue(
-        os.path.isfile(text_report_file),
-        f"Unable to find text report {text_report_file}",
-    )
-    copy_logs_for_doc(text_report_file, test_folder, report_file_name)
+    if (
+        linter.linter_name != "php-cs-fixer"
+    ):  # This log doesn't appear in PHP_PHPCSFIXER linter
+        test_self.assertTrue(
+            os.path.isfile(text_report_file),
+            f"Unable to find text report {text_report_file}",
+        )
+        copy_logs_for_doc(text_report_file, test_folder, report_file_name)
 
 
 def test_linter_failure(linter, test_self):
@@ -667,6 +684,7 @@ def test_linter_format_fix(linter, test_self):
         "PRINT_ALL_FILES": "true",
         "GITHUB_COMMENT_REPORTER": "false",
         "GITHUB_STATUS_REPORTER": "false",
+        "SARIF_REPORTER": "false",
         "request_id": test_self.request_id,
     }
     env_vars.update(linter.test_variables)

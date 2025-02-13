@@ -29,13 +29,17 @@ linters:
     config_file_name: ".cspell.json"
     cli_lint_mode: list_of_files
     cli_lint_errors_count: regex_number
-    cli_lint_errors_regex: "Issues found: ([0-9]+) in .* files"
+    cli_lint_errors_regex: "Issues found: ([0-9]+) in .* file"
     examples:
       - "cspell myfile.any"
       - "cspell -c cspell.json myfile.any"
     install:
+      dockerfile:
+        - |-
+          # renovate: datasource=npm depName=cspell
+          ARG NPM_CSPELL_VERSION=8.17.3
       npm:
-        - "cspell"
+        - "cspell@${NPM_CSPELL_VERSION}"
     ide:
       vscode:
         - name: Code Spell Checker
@@ -67,8 +71,12 @@ linters:
     examples:
       - "proselint --config .proselintrc myfile.md myfile2.txt myfile3.rst"
     install:
+      dockerfile:
+        - |-
+          # renovate: datasource=pypi depName=proselint
+          ARG PIP_PROSELINT_VERSION=0.14.0
       pip:
-        - proselint
+        - proselint==${PIP_PROSELINT_VERSION}
     ide:
       atom:
         - name: linter-proselint
@@ -121,7 +129,10 @@ linters:
     test_folder: spell_vale
     install:
       dockerfile:
-        - FROM jdkato/vale:latest as vale
+        - |-
+          # renovate: datasource=docker depName=jdkato/vale
+          ARG SPELL_VALE_VERSION=v3.9.4
+        - FROM jdkato/vale:${SPELL_VALE_VERSION} AS vale
         - COPY --link --from=vale /bin/vale /bin/vale
     ide:
       emacs:
@@ -138,7 +149,7 @@ linters:
           url: https://github.com/dense-analysis/ale
       vscode:
         - name: Vale
-          url: https://marketplace.visualstudio.com/items?itemName=errata-ai.vale-server
+          url: https://marketplace.visualstudio.com/items?itemName=ChrisChinchilla.vale-vscode
 
   # LYCHEE
   - class: LycheeLinter
@@ -206,5 +217,8 @@ linters:
       - 'lychee --format detailed --no-progress --glob-ignore-case --verbose "~/projects/**/[r]eadme.*"'
     install:
       dockerfile:
-        - FROM lycheeverse/lychee:latest-alpine as lychee
+        - |-
+          # renovate: datasource=docker depName=lycheeverse/lychee
+          ARG SPELL_LYCHEE_VERSION=sha-7c4b132-alpine
+        - FROM lycheeverse/lychee:${SPELL_LYCHEE_VERSION} AS lychee
         - COPY --link --from=lychee /usr/local/bin/lychee /usr/bin/

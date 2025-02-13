@@ -20,8 +20,10 @@ description: rubocop is available to analyze RUBY files in MegaLinter
 
 ## Configuration in MegaLinter
 
-| Variable                  | Description                   | Default value |
-|---------------------------|-------------------------------|---------------|
-| RUBY_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| RUBY_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable                  | Description                                     | Default value |
+|---------------------------|-------------------------------------------------|---------------|
+| RUBY_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
+| RUBY_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
+| RUBY_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
+| RUBY_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 

@@ -13,7 +13,7 @@ Example:
 
 ```json
 {
-  Glob: [
+  "Globs": [
     "**/.git/**",
     "**/megalinter-reports/**"
   ]
@@ -22,7 +22,7 @@ Example:
 
 ## devskim documentation
 
-- Version in MegaLinter: **1.0.23**
+- Version in MegaLinter: **1.0.52**
 - Visit [Official Web Site](https://github.com/microsoft/DevSkim#readme){target=_blank}
 - See [How to configure devskim rules](https://github.com/microsoft/DevSkim/wiki/Analyze-Command){target=_blank}
   - If custom `.devskim.json` config file isn't found, [.devskim.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.devskim.json){target=_blank} will be used
@@ -35,18 +35,19 @@ Example:
 - Enable devskim by adding `REPOSITORY_DEVSKIM` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 - Disable devskim by adding `REPOSITORY_DEVSKIM` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-| Variable                                       | Description                                                                                               | Default value                                   |
-|------------------------------------------------|-----------------------------------------------------------------------------------------------------------|-------------------------------------------------|
-| REPOSITORY_DEVSKIM_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                  |                                                 |
-| REPOSITORY_DEVSKIM_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`      |                                                 |
-| REPOSITORY_DEVSKIM_PRE_COMMANDS                | List of bash commands to run before the linter                                                            | None                                            |
-| REPOSITORY_DEVSKIM_POST_COMMANDS               | List of bash commands to run after the linter                                                             | None                                            |
-| REPOSITORY_DEVSKIM_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling REPOSITORY_DEVSKIM and its pre/post commands | None                                            |
-| REPOSITORY_DEVSKIM_CONFIG_FILE                 | devskim configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                        | `.devskim.json`                                 |
-| REPOSITORY_DEVSKIM_RULES_PATH                  | Path where to find linter configuration file                                                              | Workspace folder, then MegaLinter default rules |
-| REPOSITORY_DEVSKIM_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                | `false`                                         |
-| REPOSITORY_DEVSKIM_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                          | `0`                                             |
-| REPOSITORY_DEVSKIM_CLI_EXECUTABLE              | Override CLI executable                                                                                   | `['devskim']`                                   |
+| Variable                                       | Description                                                                                                                                                                                                                                                                           | Default value                                   |
+|------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
+| REPOSITORY_DEVSKIM_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                                                                                              |                                                 |
+| REPOSITORY_DEVSKIM_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                                                                                                  |                                                 |
+| REPOSITORY_DEVSKIM_CLI_LINT_MODE               | Override default CLI lint mode<br/>⚠️ As default value is **project**, overriding might not work<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `project`                                       |
+| REPOSITORY_DEVSKIM_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                                                                                        | None                                            |
+| REPOSITORY_DEVSKIM_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                                                                                         | None                                            |
+| REPOSITORY_DEVSKIM_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling REPOSITORY_DEVSKIM and its pre/post commands                                                                                                                                                                             | None                                            |
+| REPOSITORY_DEVSKIM_CONFIG_FILE                 | devskim configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                                                                                    | `.devskim.json`                                 |
+| REPOSITORY_DEVSKIM_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                                                                                          | Workspace folder, then MegaLinter default rules |
+| REPOSITORY_DEVSKIM_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                                                                                            | `false`                                         |
+| REPOSITORY_DEVSKIM_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                                                                                      | `0`                                             |
+| REPOSITORY_DEVSKIM_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                                                                                               | `['devskim']`                                   |
 
 ## IDE Integration
 
@@ -56,13 +57,13 @@ Use devskim in your favorite IDE to catch errors before MegaLinter !
 |:-------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|-----------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [VSCode DevSkim](https://marketplace.visualstudio.com/items?itemName=MS-CST-E.vscode-devskim) | [![Install in VSCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/MS-CST-E.vscode-devskim){target=_blank} |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
-This linter is available in the following flavours
+This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                   | Description               | Embedded linters |                                                                                                                                                                                         Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)     | Default MegaLinter Flavor |       121        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)     | Default MegaLinter Flavor |       125        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://megalinter.io/beta/flavors/security/) | Optimized for security    |        24        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
 
 ## Behind the scenes
@@ -83,18 +84,22 @@ devskim is called once on the whole project directory (`project` CLI lint mode)
 ### Example calls
 
 ```shell
-devskim analyze .
+devskim analyze --source-code .
 ```
 
 ```shell
-devskim analyze --file-format sarif .
+devskim analyze --file-format sarif --source-code .
+```
+
+```shell
+devskim analyze --file-format sarif --options-json config --source-code .
 ```
 
 
 ### Help content
 
 ```shell
-devskim 1.0.23+607c9a5eda
+devskim 1.0.52+74513a99d4
 © Microsoft Corporation. All rights reserved.
 
   analyze     Analyze source code using DevSkim
@@ -115,9 +120,10 @@ devskim 1.0.23+607c9a5eda
 
 - Dockerfile commands :
 ```dockerfile
+# renovate: datasource=nuget depName=Microsoft.CST.DevSkim.CLI
+ARG REPOSITORY_DEVSKIM_VERSION=1.0.52
+RUN apk add --no-cache dotnet9-sdk
 ENV PATH="${PATH}:/root/.dotnet/tools"
-RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI
+RUN dotnet tool install --allow-roll-forward --global Microsoft.CST.DevSkim.CLI --version ${REPOSITORY_DEVSKIM_VERSION}
 ```
 
-- APK packages (Linux):
-  - [dotnet7-sdk](https://pkgs.alpinelinux.org/packages?branch=edge&name=dotnet7-sdk)

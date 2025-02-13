@@ -43,9 +43,9 @@ class WebHookLinterReporter(Reporter):
             "content-type": "application/json",
         }
         if config.exists(self.master.request_id, "WEBHOOK_REPORTER_BEARER_TOKEN"):
-            headers[
-                "authorization"
-            ] = f"Bearer {config.get(self.master.request_id,'WEBHOOK_REPORTER_BEARER_TOKEN')}"
+            headers["authorization"] = (
+                f"Bearer {config.get(self.master.request_id, 'WEBHOOK_REPORTER_BEARER_TOKEN')}"
+            )
         try:
             response = requests.post(
                 self.hook_url, headers=headers, json=self.web_hook_data

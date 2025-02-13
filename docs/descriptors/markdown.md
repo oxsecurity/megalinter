@@ -9,12 +9,12 @@ description: markdownlint, remark-lint, markdown-link-check, markdown-table-form
 
 ## Linters
 
-| Linter                                                                                                                                               | Additional                                                                                                                                                                                                             |
-|------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [**markdownlint**](markdown_markdownlint.md)<br/>[_MARKDOWN_MARKDOWNLINT_](markdown_markdownlint.md)                                                 | [![GitHub stars](https://img.shields.io/github/stars/DavidAnson/markdownlint?cacheSeconds=3600)](https://github.com/DavidAnson/markdownlint) ![formatter](https://shields.io/badge/-format-yellow)                     |
-| [**remark-lint**](markdown_remark_lint.md)<br/>[_MARKDOWN_REMARK_LINT_](markdown_remark_lint.md)                                                     | [![GitHub stars](https://img.shields.io/github/stars/remarkjs/remark-lint?cacheSeconds=3600)](https://github.com/remarkjs/remark-lint) ![formatter](https://shields.io/badge/-format-yellow)                           |
-| [**markdown-link-check**](markdown_markdown_link_check.md)<br/>[_MARKDOWN_MARKDOWN_LINK_CHECK_](markdown_markdown_link_check.md)                     | [![GitHub stars](https://img.shields.io/github/stars/tcort/markdown-link-check?cacheSeconds=3600)](https://github.com/tcort/markdown-link-check)                                                                       |
-| [**markdown-table-formatter**](markdown_markdown_table_formatter.md)<br/>[_MARKDOWN_MARKDOWN_TABLE_FORMATTER_](markdown_markdown_table_formatter.md) | [![GitHub stars](https://img.shields.io/github/stars/nvuillam/markdown-table-formatter?cacheSeconds=3600)](https://github.com/nvuillam/markdown-table-formatter) ![formatter](https://shields.io/badge/-format-yellow) |
+| Linter                                                                                                                                               | Additional                                                                                                                                                                                                                                          |
+|------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [**markdownlint**](markdown_markdownlint.md)<br/>[_MARKDOWN_MARKDOWNLINT_](markdown_markdownlint.md)                                                 | [![GitHub stars](https://img.shields.io/github/stars/DavidAnson/markdownlint?cacheSeconds=3600)](https://github.com/DavidAnson/markdownlint) ![formatter](https://shields.io/badge/-format-yellow)                                                  |
+| [**remark-lint**](markdown_remark_lint.md)<br/>[_MARKDOWN_REMARK_LINT_](markdown_remark_lint.md)                                                     | ![disabled](https://shields.io/badge/-disabled-orange) [![GitHub stars](https://img.shields.io/github/stars/remarkjs/remark-lint?cacheSeconds=3600)](https://github.com/remarkjs/remark-lint) ![formatter](https://shields.io/badge/-format-yellow) |
+| [**markdown-link-check**](markdown_markdown_link_check.md)<br/>[_MARKDOWN_MARKDOWN_LINK_CHECK_](markdown_markdown_link_check.md)                     | [![GitHub stars](https://img.shields.io/github/stars/tcort/markdown-link-check?cacheSeconds=3600)](https://github.com/tcort/markdown-link-check)                                                                                                    |
+| [**markdown-table-formatter**](markdown_markdown_table_formatter.md)<br/>[_MARKDOWN_MARKDOWN_TABLE_FORMATTER_](markdown_markdown_table_formatter.md) | [![GitHub stars](https://img.shields.io/github/stars/nvuillam/markdown-table-formatter?cacheSeconds=3600)](https://github.com/nvuillam/markdown-table-formatter) ![formatter](https://shields.io/badge/-format-yellow)                              |
 
 ## Linted files
 
@@ -23,8 +23,10 @@ description: markdownlint, remark-lint, markdown-link-check, markdown-table-form
 
 ## Configuration in MegaLinter
 
-| Variable                      | Description                   | Default value |
-|-------------------------------|-------------------------------|---------------|
-| MARKDOWN_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| MARKDOWN_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable                      | Description                                     | Default value |
+|-------------------------------|-------------------------------------------------|---------------|
+| MARKDOWN_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
+| MARKDOWN_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
+| MARKDOWN_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
+| MARKDOWN_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 

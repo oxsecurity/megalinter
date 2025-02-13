@@ -29,8 +29,10 @@ description: kubeconform, helm, kubescape are available to analyze KUBERNETES fi
 
 ## Configuration in MegaLinter
 
-| Variable                        | Description                   | Default value |
-|---------------------------------|-------------------------------|---------------|
-| KUBERNETES_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| KUBERNETES_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable                        | Description                                     | Default value |
+|---------------------------------|-------------------------------------------------|---------------|
+| KUBERNETES_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
+| KUBERNETES_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
+| KUBERNETES_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
+| KUBERNETES_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 

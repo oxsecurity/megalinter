@@ -137,7 +137,12 @@ export const optionsDefinition = optionator.default({
     {
       option: "remove-container",
       type: "Boolean",
-      description: "Remove MegaLinter Docker container when done",
+      description: "Remove MegaLinter Docker container when done (default: true since v7.8.0)",
+    },
+    {
+      option: "no-remove-container",
+      type: "Boolean",
+      description: "Do not remove MegaLinter Docker container when done",
     },
     {
       option: "codetotal",

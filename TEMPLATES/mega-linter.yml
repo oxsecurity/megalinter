@@ -5,7 +5,7 @@ name: MegaLinter
 
 # Trigger mega-linter at every push. Action will also be visible from Pull
 # Requests to main
-on:
+on: # yamllint disable-line rule:truthy - false positive
   # Comment this line to trigger action only on pull-requests
   # (not recommended if you don't pay for GH Actions)
   push:
@@ -35,6 +35,8 @@ concurrency:
   group: ${{ github.ref }}-${{ github.workflow }}
   cancel-in-progress: true
 
+permissions: {}
+
 jobs:
   megalinter:
     name: MegaLinter
@@ -48,7 +50,6 @@ jobs:
       pull-requests: write
 
     steps:
-
       # Git Checkout
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -63,15 +64,14 @@ jobs:
       - name: MegaLinter
 
         # You can override MegaLinter flavor used to have faster performances
-        # More info at https://megalinter.io/flavors/
-        uses: oxsecurity/megalinter@v7
+        # More info at https://megalinter.io/latest/flavors/
+        uses: oxsecurity/megalinter@v8
 
         id: ml
 
         # All available variables are described in documentation
-        # https://megalinter.io/configuration/
+        # https://megalinter.io/latest/configuration/
         env:
-
           # Validates all source when push on main, else just the git diff with
           # main. Override with true if you always want to lint all sources
           #
@@ -100,10 +100,11 @@ jobs:
 
       # Upload MegaLinter artifacts
       - name: Archive production artifacts
-        uses: actions/upload-artifact@v3
         if: success() || failure()
+        uses: actions/upload-artifact@v4
         with:
           name: MegaLinter reports
+          include-hidden-files: "true"
           path: |
             megalinter-reports
             mega-linter.log
@@ -139,7 +140,7 @@ jobs:
       # Create pull request if applicable
       # (for now works only on PR from same repository, not from forks)
       - name: Create Pull Request with applied fixes
-        uses: peter-evans/create-pull-request@v5
+        uses: peter-evans/create-pull-request@v6
         id: cpr
         if: env.APPLY_FIXES_IF_PR == 'true'
         with:

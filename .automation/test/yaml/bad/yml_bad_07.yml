@@ -1,0 +1,27 @@
+########################
+########################
+## Configuration File ##
+########################
+########################
+
+# Rule: document-start - Missing document start marker
+database:
+  host: localhost
+  port: 5432
+  user: admin
+  password: admin
+server:
+  host: 0.0.0.0
+  port: 8080
+  ssl:
+    enabled: true
+    certificate: /path/to/cert.pem
+    key: /path/to/key.pem
+# Rule: trailing-spaces - Trailing spaces are disallowed
+logging:
+   level: DEBUG # Rule: indentation - Inconsistent indentation
+   # syntax error: expected <block end>, but found '<block sequence start>' (syntax)
+  file: /var/log/webapp.log
+features:
+  enable_feature_x: True
+  enable_feature_y: false

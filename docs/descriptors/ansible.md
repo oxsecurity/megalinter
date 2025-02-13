@@ -21,8 +21,10 @@ description: ansible-lint is available to analyze ANSIBLE files in MegaLinter
 
 ## Configuration in MegaLinter
 
-| Variable                     | Description                   | Default value |
-|------------------------------|-------------------------------|---------------|
-| ANSIBLE_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| ANSIBLE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable                     | Description                                     | Default value |
+|------------------------------|-------------------------------------------------|---------------|
+| ANSIBLE_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
+| ANSIBLE_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
+| ANSIBLE_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
+| ANSIBLE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 

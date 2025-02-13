@@ -27,9 +27,16 @@ linters:
       - "pylint myfile.py"
       - "pylint --rcfile .python-lint myfile.py"
     install:
+      dockerfile:
+        - |-
+          # renovate: datasource=pypi depName=pylint
+          ARG PIP_PYLINT_VERSION=3.3.4
+        - |-
+          # renovate: datasource=pypi depName=typing-extensions
+          ARG PIP_TYPING_EXTENSIONS_VERSION=4.12.2
       pip:
-        - pylint
-        - typing-extensions
+        - pylint==${PIP_PYLINT_VERSION}
+        - typing-extensions==${PIP_TYPING_EXTENSIONS_VERSION}
     ide:
       eclipse:
         - name: PyLint
@@ -47,6 +54,11 @@ linters:
   - linter_name: black
     name: PYTHON_BLACK
     is_formatter: true
+    activation_rules:
+      - type: variable
+        variable: PYTHON_DEFAULT_STYLE
+        expected_value: black
+        default_value: black
     linter_url: https://black.readthedocs.io/en/stable/
     linter_repo: https://github.com/psf/black
     linter_speed: 3
@@ -67,8 +79,12 @@ linters:
       - "black --config pyproject.toml --diff --check myfile.py"
       - "black --config pyproject.toml myfile.py" # format
     install:
+      dockerfile:
+        - |-
+          # renovate: datasource=pypi depName=black
+          ARG PIP_BLACK_VERSION=25.1.0
       pip:
-        - black
+        - black==${PIP_BLACK_VERSION}
     ide:
       atom:
         - name: python-black
@@ -107,8 +123,12 @@ linters:
       - "flake8 myfile.py"
       - "flake8 --config .flake8 myfile.py"
     install:
+      dockerfile:
+        - |-
+          # renovate: datasource=pypi depName=flake8
+          ARG PIP_FLAKE8_VERSION=7.1.1
       pip:
-        - flake8
+        - flake8==${PIP_FLAKE8_VERSION}
     ide:
       atom:
         - name: linter-flake8
@@ -149,9 +169,16 @@ linters:
       - "isort --diff --check --profile black --settings-file .isort.cfg myfile.py"
       - "isort --profile black --settings-file .isort.cfg myfile.py"
     install:
+      dockerfile:
+        - |-
+          # renovate: datasource=pypi depName=black
+          ARG PIP_BLACK_VERSION=25.1.0
+        - |-
+          # renovate: datasource=pypi depName=isort
+          ARG PIP_ISORT_VERSION=6.0.0
       pip:
-        - isort
-        - black
+        - black==${PIP_BLACK_VERSION}
+        - isort==${PIP_ISORT_VERSION}
     ide:
       atom:
         - name: atom-python-isort
@@ -190,6 +217,8 @@ linters:
     linter_rules_inline_disable_url: https://bandit.readthedocs.io/en/latest/config.html#suppressing-individual-lines
     cli_lint_mode: list_of_files
     config_file_name: ".bandit.yml"
+    cli_lint_extra_args:
+      - --quiet
     cli_sarif_args:
       - --format
       - sarif
@@ -203,10 +232,17 @@ linters:
       - "bandit myfile.py"
       - "bandit --configfile .bandit.yml myfile.py"
     install:
+      dockerfile:
+        - |-
+          # renovate: datasource=pypi depName=bandit
+          ARG PIP_BANDIT_VERSION=1.8.2
+        - |-
+          # renovate: datasource=pypi depName=bandit_sarif_formatter
+          ARG PIP_BANDIT_SARIF_FORMATTER_VERSION=1.1.1
       pip:
-        - bandit
-        - bandit_sarif_formatter
-        - bandit[toml]
+        - bandit==${PIP_BANDIT_VERSION}
+        - bandit_sarif_formatter==${PIP_BANDIT_SARIF_FORMATTER_VERSION}
+        - bandit[toml]==${PIP_BANDIT_VERSION}
     ide:
       atom:
         - name: bandit-lint
@@ -248,9 +284,12 @@ linters:
       - "mypy --config-file .mypy.yml myfile.py"
     install:
       dockerfile:
+        - |-
+          # renovate: datasource=pypi depName=mypy
+          ARG PIP_MYPY_VERSION=1.15.0
         - ENV MYPY_CACHE_DIR=/tmp # Avoid mypy cache to mess with other linters
       pip:
-        - mypy
+        - mypy==${PIP_MYPY_VERSION}
     ide:
       atom:
         - name: linter-mypy
@@ -292,8 +331,12 @@ linters:
   #     - "pytype myfile.py myfile2.py"
   #     - "pytype myfile.py"
   #   install:
+  #     dockerfile:
+  #       - |-
+  #         # renovate: datasource=pypi depName=pytype
+  #         ARG PIP_PYTYPE_VERSION=2024.10.11
   #     pip:
-  #       - pytype
+  #       - pytype==${PIP_PYTYPE_VERSION}
   # PyRight
   - class: PyrightLinter
     linter_name: pyright
@@ -319,10 +362,12 @@ linters:
       - "pyright myfile.py myfile2.py"
       - "pyright myfile.py"
     install:
-      apk:
-        - nodejs
-      pip:
-        - pyright
+      dockerfile:
+        - |-
+          # renovate: datasource=npm depName=pyright
+          ARG NPM_PYRIGHT_VERSION=1.1.394
+      npm:
+        - pyright@${NPM_PYRIGHT_VERSION}
     ide:
       emacs:
         - name: LSP-pyright
@@ -341,6 +386,7 @@ linters:
   # ruff
   - linter_name: ruff
     name: PYTHON_RUFF
+    can_output_sarif: true
     linter_text: |
       An extremely fast Python linter, written in Rust.
     linter_url: https://github.com/astral-sh/ruff
@@ -360,13 +406,71 @@ linters:
     cli_lint_errors_count: regex_number
     cli_lint_errors_regex: "Found ([0-9]+) error"
     config_file_name: ".ruff.toml"
+    cli_sarif_args:
+      - --output-format
+      - sarif
+      - --output-file
+      - "{{SARIF_OUTPUT_FILE}}"
     test_folder: python_ruff
     examples:
       - "ruff check myfile.py"
       - "ruff check --config .ruff.toml myfile.py"
     install:
+      dockerfile:
+        - |-
+          # renovate: datasource=pypi depName=ruff
+          ARG PIP_RUFF_VERSION=0.9.6
       pip:
-        - ruff
+        - ruff==${PIP_RUFF_VERSION}
+    ide:
+      idea:
+        - name: Ruff
+          url: https://plugins.jetbrains.com/plugin/20574-ruff
+          id: com.koxudaxi.ruff
+      vscode:
+        - name: Ruff
+          url: https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff
+
+  # ruff fmt
+  - linter_name: ruff-format
+    class: RuffFormatLinter
+    name: PYTHON_RUFF_FORMAT
+    is_formatter: true
+    activation_rules:
+      - type: variable
+        variable: PYTHON_DEFAULT_STYLE
+        expected_value: ruff
+        default_value: black
+    linter_text: |
+      An extremely fast Python linter, written in Rust. Configured for formatting only.
+    linter_url: https://github.com/astral-sh/ruff
+    linter_repo: https://github.com/astral-sh/ruff
+    linter_spdx_license: MIT
+    linter_speed: 5
+    linter_rules_url: https://docs.astral.sh/ruff/rules/
+    linter_rules_configuration_url: https://docs.astral.sh/ruff/configuration/
+    linter_rules_inline_disable_url: https://docs.astral.sh/ruff/linter/#error-suppression
+    cli_executable: ruff
+    cli_lint_mode: list_of_files
+    cli_config_arg_name: "--config"
+    cli_help_arg_name: "help"
+    cli_version_arg_name: "--version"
+    cli_lint_extra_args:
+      - format
+      - --check
+    cli_lint_fix_remove_args:
+      - --check
+    config_file_name: ".ruff.toml"
+    examples:
+      - "ruff format --check myfile.py myfile2.py"
+      - "ruff format --config .ruff.toml myfile.py myfile2.py"
+    install:
+      dockerfile:
+        - |-
+          # renovate: datasource=pypi depName=ruff
+          ARG PIP_RUFF_VERSION=0.9.6
+      pip:
+        - ruff==${PIP_RUFF_VERSION}
     ide:
       idea:
         - name: Ruff

@@ -25,24 +25,25 @@ description: How to use dustilock (configure, ignore files, ignore errors, help 
 - Enable dustilock by adding `REPOSITORY_DUSTILOCK` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 - Disable dustilock by adding `REPOSITORY_DUSTILOCK` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-| Variable                                         | Description                                                                                                 | Default value   |
-|--------------------------------------------------|-------------------------------------------------------------------------------------------------------------|-----------------|
-| REPOSITORY_DUSTILOCK_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                    |                 |
-| REPOSITORY_DUSTILOCK_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`        |                 |
-| REPOSITORY_DUSTILOCK_PRE_COMMANDS                | List of bash commands to run before the linter                                                              | None            |
-| REPOSITORY_DUSTILOCK_POST_COMMANDS               | List of bash commands to run after the linter                                                               | None            |
-| REPOSITORY_DUSTILOCK_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling REPOSITORY_DUSTILOCK and its pre/post commands | None            |
-| REPOSITORY_DUSTILOCK_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                  | `false`         |
-| REPOSITORY_DUSTILOCK_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                            | `0`             |
-| REPOSITORY_DUSTILOCK_CLI_EXECUTABLE              | Override CLI executable                                                                                     | `['dustilock']` |
+| Variable                                         | Description                                                                                                                                                                                                                                                                           | Default value   |
+|--------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------|
+| REPOSITORY_DUSTILOCK_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                                                                                              |                 |
+| REPOSITORY_DUSTILOCK_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                                                                                                  |                 |
+| REPOSITORY_DUSTILOCK_CLI_LINT_MODE               | Override default CLI lint mode<br/>⚠️ As default value is **project**, overriding might not work<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `project`       |
+| REPOSITORY_DUSTILOCK_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                                                                                        | None            |
+| REPOSITORY_DUSTILOCK_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                                                                                         | None            |
+| REPOSITORY_DUSTILOCK_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling REPOSITORY_DUSTILOCK and its pre/post commands                                                                                                                                                                           | None            |
+| REPOSITORY_DUSTILOCK_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                                                                                            | `false`         |
+| REPOSITORY_DUSTILOCK_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                                                                                      | `0`             |
+| REPOSITORY_DUSTILOCK_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                                                                                               | `['dustilock']` |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
-This linter is available in the following flavours
+This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                   | Description               | Embedded linters |                                                                                                                                                                                         Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)     | Default MegaLinter Flavor |       121        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)     | Default MegaLinter Flavor |       125        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://megalinter.io/beta/flavors/security/) | Optimized for security    |        24        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
 
 ## Behind the scenes
@@ -90,9 +91,11 @@ Arguments:
 
 - Dockerfile commands :
 ```dockerfile
-FROM golang:alpine as dustilock
-RUN GOBIN=/usr/bin go install github.com/checkmarx/dustilock@v1.2.0
-
+# renovate: datasource=github-tags depName=checkmarx/dustilock
+ARG REPOSITORY_DUSTILOCK_VERSION=1.2.0
+FROM golang:alpine AS dustilock
+ARG REPOSITORY_DUSTILOCK_VERSION
+RUN apk add --no-cache git && GOBIN=/usr/bin go install github.com/checkmarx/dustilock@v${REPOSITORY_DUSTILOCK_VERSION}
 COPY --link --from=dustilock /usr/bin/dustilock /usr/bin/dustilock
 ```
 

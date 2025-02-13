@@ -11,7 +11,6 @@ description: How to use lintr (configure, ignore files, ignore errors, help & ve
 
 - Visit [Official Web Site](https://lintr.r-lib.org/){target=_blank}
 - See [How to configure lintr rules](https://lintr.r-lib.org/articles/lintr.html#configuring-linters){target=_blank}
-  - If custom `.lintr` config file isn't found, [.lintr](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.lintr){target=_blank} will be used
 - See [Index of problems detected by lintr](https://lintr.r-lib.org/reference/index.html){target=_blank}
 
 [![lintr - GitHub](https://gh-card.dev/repos/r-lib/lintr.svg?fullname=)](https://github.com/r-lib/lintr){target=_blank}
@@ -51,13 +50,13 @@ Use lintr in your favorite IDE to catch errors before MegaLinter !
 |   <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a>   | [vim](https://www.vim.org/)                          | [ale](https://github.com/dense-analysis/ale)                                            |                                                [Visit Web Site](https://github.com/dense-analysis/ale){target=_blank}                                                 |
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/) | [VSCode R LSP](https://marketplace.visualstudio.com/items?itemName=REditorSupport.r)    | [![Install in VSCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/REditorSupport.r){target=_blank} |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
-This linter is available in the following flavours
+This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                               | Description               | Embedded linters |                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       121        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       125        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 
 ## Behind the scenes
 
@@ -97,15 +96,14 @@ RUN mkdir -p /home/r-library \
 ```
 
 - APK packages (Linux):
-  - [gcc](https://pkgs.alpinelinux.org/packages?branch=edge&name=gcc)
-  - [g++](https://pkgs.alpinelinux.org/packages?branch=edge&name=g++)
-  - [libc-dev](https://pkgs.alpinelinux.org/packages?branch=edge&name=libc-dev)
-  - [libcurl](https://pkgs.alpinelinux.org/packages?branch=edge&name=libcurl)
-  - [libffi-dev](https://pkgs.alpinelinux.org/packages?branch=edge&name=libffi-dev)
-  - [libgcc](https://pkgs.alpinelinux.org/packages?branch=edge&name=libgcc)
-  - [libxml2-dev](https://pkgs.alpinelinux.org/packages?branch=edge&name=libxml2-dev)
-  - [libxml2-utils](https://pkgs.alpinelinux.org/packages?branch=edge&name=libxml2-utils)
-  - [linux-headers](https://pkgs.alpinelinux.org/packages?branch=edge&name=linux-headers)
-  - [R](https://pkgs.alpinelinux.org/packages?branch=edge&name=R)
-  - [R-dev](https://pkgs.alpinelinux.org/packages?branch=edge&name=R-dev)
-  - [R-doc](https://pkgs.alpinelinux.org/packages?branch=edge&name=R-doc)
+  - [gcc](https://pkgs.alpinelinux.org/packages?branch=v3.21&arch=x86_64&name=gcc)
+  - [g++](https://pkgs.alpinelinux.org/packages?branch=v3.21&arch=x86_64&name=g++)
+  - [libcurl](https://pkgs.alpinelinux.org/packages?branch=v3.21&arch=x86_64&name=libcurl)
+  - [libffi-dev](https://pkgs.alpinelinux.org/packages?branch=v3.21&arch=x86_64&name=libffi-dev)
+  - [libgcc](https://pkgs.alpinelinux.org/packages?branch=v3.21&arch=x86_64&name=libgcc)
+  - [libxml2-dev](https://pkgs.alpinelinux.org/packages?branch=v3.21&arch=x86_64&name=libxml2-dev)
+  - [libxml2-utils](https://pkgs.alpinelinux.org/packages?branch=v3.21&arch=x86_64&name=libxml2-utils)
+  - [linux-headers](https://pkgs.alpinelinux.org/packages?branch=v3.21&arch=x86_64&name=linux-headers)
+  - [R](https://pkgs.alpinelinux.org/packages?branch=v3.21&arch=x86_64&name=R)
+  - [R-dev](https://pkgs.alpinelinux.org/packages?branch=v3.21&arch=x86_64&name=R-dev)
+  - [R-doc](https://pkgs.alpinelinux.org/packages?branch=v3.21&arch=x86_64&name=R-doc)

@@ -20,7 +20,10 @@ install:
     - icu-libs
   dockerfile:
     - |
-      RUN curl -L https://github.com/PowerShell/PowerShell/releases/download/v7.4.0/powershell-7.4.0-linux-musl-x64.tar.gz -o /tmp/powershell.tar.gz \
+      # renovate: datasource=github-tags depName=PowerShell/PowerShell
+      ARG POWERSHELL_VERSION=7.5.0
+    - |
+      RUN curl -L https://github.com/PowerShell/PowerShell/releases/download/v${POWERSHELL_VERSION}/powershell-${POWERSHELL_VERSION}-linux-musl-x64.tar.gz -o /tmp/powershell.tar.gz \
           && mkdir -p /opt/microsoft/powershell/7 \
           && tar zxf /tmp/powershell.tar.gz -C /opt/microsoft/powershell/7 \
           && chmod +x /opt/microsoft/powershell/7/pwsh \
@@ -36,6 +39,8 @@ linters:
     linter_rules_configuration_url: https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/using-scriptanalyzer?view=ps-modules#explicit
     linter_rules_inline_disable_url: https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/using-scriptanalyzer?view=ps-modules#suppressing-rules
     config_file_name: .powershell-psscriptanalyzer.psd1
+    cli_lint_errors_regex: "(?m)^\\s*(Information|Warning|Error|ParseError)\\s"
+    cli_lint_errors_count: regex_count
     cli_lint_fix_arg_name: "-Fix"
     version_extract_regex: "(\\d+) *(\\d+) *(\\d+)"
     examples:
@@ -44,7 +49,9 @@ linters:
     # If changing PWSH_VERSION='latest' to a specific version, use format PWSH_VERSION='tags/v7.0.2'
     install:
       dockerfile:
-        - ARG PSSA_VERSION='latest'
+        - |
+          # renovate: datasource=nuget depName=PSScriptAnalyzer registryUrl=https://www.powershellgallery.com/api/v2/
+          ARG PSSA_VERSION='1.23.0'
         - RUN pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSION} -Scope AllUsers -Force'
     ide:
       vscode:
@@ -74,7 +81,9 @@ linters:
     # If changing PWSH_VERSION='latest' to a specific version, use format PWSH_VERSION='tags/v7.0.2'
     install:
       dockerfile:
-        - ARG PSSA_VERSION='latest'
+        - |
+          # renovate: datasource=nuget depName=PSScriptAnalyzer registryUrl=https://www.powershellgallery.com/api/v2/
+          ARG PSSA_VERSION='1.23.0'
         - RUN pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSION} -Scope AllUsers -Force'
     ide:
       vscode:

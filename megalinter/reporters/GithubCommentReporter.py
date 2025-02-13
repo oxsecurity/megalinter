@@ -22,7 +22,9 @@ class GithubCommentReporter(Reporter):
     issues_root = ML_REPO_URL + "/issues"
 
     def manage_activation(self):
-        if (
+        if not config.exists(self.master.request_id, "GITHUB_REPOSITORY"):
+            self.is_active = False
+        elif (
             config.get(self.master.request_id, "GITHUB_COMMENT_REPORTER", "true")
             != "true"
         ):

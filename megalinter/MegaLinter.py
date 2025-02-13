@@ -48,7 +48,7 @@ def run_linters(linters, request_id):
     global REQUEST_CONFIG
     config.set_config(request_id, REQUEST_CONFIG)
     for linter in linters:
-        linter.run()
+        linter.run(run_commands_before_linters=False, run_commands_after_linters=False)
     return linters
 
 
@@ -111,6 +111,7 @@ class Megalinter:
         self.filter_regex_exclude = None
         self.default_linter_activation = True
         self.output_sarif = False
+        self.result_message = ""
 
         # Get enable / disable vars
         self.enable_descriptors = config.get_list(self.request_id, "ENABLE", [])
@@ -147,6 +148,9 @@ class Megalinter:
         self.flavor_suggestions = None
 
         # Initialize plugins
+        self.pre_commands_results = pre_post_factory.run_pre_commands(
+            self, "before_plugins"
+        )
         plugin_factory.initialize_plugins(self.request_id)
 
         # Copy node_modules in current folder if necessary
@@ -175,7 +179,7 @@ class Megalinter:
             )
 
         # Run user-defined commands
-        self.pre_commands_results = pre_post_factory.run_pre_commands(self)
+        self.pre_commands_results += pre_post_factory.run_pre_commands(self)
         self.post_commands_results = []
         # Initialize linters and gather criteria to browse files
         self.load_linters()
@@ -227,13 +231,35 @@ class Megalinter:
         for reporter in self.reporters:
             reporter.initialize()
 
+        active_descriptor_ids = []
+
+        for active_linter in active_linters:
+            if active_linter.descriptor_id not in active_descriptor_ids:
+                active_descriptor_ids += [active_linter.descriptor_id]
+
+        for active_descriptor_id in active_descriptor_ids:
+            pre_post_factory.run_descriptor_pre_commands(self, active_descriptor_id)
+
         if (
             config.get(self.request_id, "PARALLEL", "true") == "true"
             and len(active_linters) > 1
         ):
+            for active_linter in active_linters:
+                pre_post_factory.run_linter_pre_commands(
+                    active_linter.master, active_linter, run_before_linters=True
+                )
+
             self.process_linters_parallel(active_linters, linters_do_fixes)
+
+            for active_linter in active_linters:
+                pre_post_factory.run_linter_post_commands(
+                    active_linter.master, active_linter, run_after_linters=True
+                )
         else:
             self.process_linters_serial(active_linters)
+
+        for active_descriptor_id in active_descriptor_ids:
+            pre_post_factory.run_descriptor_post_commands(self, active_descriptor_id)
 
         # Update main MegaLinter status according to results of linters run
         for linter in self.linters:
@@ -251,6 +277,18 @@ class Megalinter:
             # Update number fixed
             if linter.number_fixed > 0:
                 self.has_updated_sources = 1
+        # Handle FAIL_IF_UPDATED_SOURCES
+        if (
+            self.has_updated_sources > 0
+            and self.fail_if_updated_sources is True
+            and self.status != "error"
+            and self.return_code == 0
+        ):
+            self.status = "error"
+            self.return_code = 1
+            self.result_message = (
+                "MegaLinter failed because of FAIL_IF_UPDATED_SOURCES=true"
+            )
 
         # Sort linters before reports production
         self.linters = sorted(
@@ -298,9 +336,9 @@ class Megalinter:
                         linter.descriptor_id, []
                     )
                     descriptor_active_linters += [linter]
-                    linters_by_descriptor[
-                        linter.descriptor_id
-                    ] = descriptor_active_linters
+                    linters_by_descriptor[linter.descriptor_id] = (
+                        descriptor_active_linters
+                    )
                 else:
                     # If the linter can not updates sources, no need to run it in the same group
                     linter_groups_without_fixes += [[linter]]
@@ -318,8 +356,18 @@ class Megalinter:
                 linter_groups += [[linter]]
             linter_groups = linter_factory.sort_linters_groups_by_speed(linter_groups)
         # Execute linters in asynchronous pool to improve overall performances
-        process_number = mp.cpu_count()
-        logging.info(f"Processing linters on [{str(process_number)}] parallel cores…")
+        if config.exists(self.request_id, "PARALLEL_PROCESS_NUMBER"):
+            process_number = int(config.get(self.request_id, "PARALLEL_PROCESS_NUMBER"))
+            logging.info(
+                f"Processing linters on [{str(process_number)}] parallel cores… "
+                "(according to variable PARALLEL_PROCESS_NUMBER"
+            )
+        else:
+            process_number = mp.cpu_count()
+            logging.info(
+                f"Processing linters on [{str(process_number)}] parallel cores… "
+                "(can be decreased with variable PARALLEL_PROCESS_NUMBER in case of performance issues)"
+            )
         install_mp_handler()
         pool = mp.Pool(
             process_number,
@@ -479,9 +527,17 @@ class Megalinter:
             linter_rules_path_val = config.get(self.request_id, "LINTER_RULES_PATH")
             if linter_rules_path_val.startswith("http"):
                 self.linter_rules_path = linter_rules_path_val
-            else:
+            elif os.path.isdir(
+                self.github_workspace + os.path.sep + linter_rules_path_val
+            ):
                 self.linter_rules_path = (
                     self.github_workspace + os.path.sep + linter_rules_path_val
+                )
+            elif os.path.isdir(linter_rules_path_val):
+                self.linter_rules_path = linter_rules_path_val
+            else:
+                raise ValueError(
+                    f"LINTER_RULES_PATH should be a valid directory ({linter_rules_path_val})"
                 )
         # Filtering regex (inclusion)
         if config.exists(self.request_id, "FILTER_REGEX_INCLUDE"):
@@ -579,9 +635,14 @@ class Megalinter:
             ):
                 skipped_linters += [linter.name]
                 if linter.disabled is True:
+                    disabled_reason = (
+                        linter.disabled_reason
+                        if linter.disabled_reason is not None
+                        else "Undefined"
+                    )
                     logging.warning(
-                        f"{linter.name} has been temporary disabled in MegaLinter, please use a "
-                        "previous MegaLinter version or wait for the next one !"
+                        f"{linter.name} has been disabled in MegaLinter for the following reason: "
+                        + disabled_reason
                     )
                 if linter.cli_lint_mode in skip_cli_lint_modes:
                     logging.info(
@@ -751,10 +812,21 @@ class Megalinter:
                 "HEAD" if default_branch == "HEAD" else f"refs/heads/{default_branch}"
             )
             local_ref = f"refs/remotes/{default_branch_remote}"
-            # Try to fetch default_branch from origin, because it'sn't cached locally.
+            # Try to fetch default_branch from origin, because it isn't cached locally.
             repo.git.fetch("origin", f"{remote_ref}:{local_ref}")
         # Make git diff to list files (and exclude symlinks)
-        diff = repo.git.diff(default_branch_remote, name_only=True)
+        try:
+            # Use optimized way from https://github.com/oxsecurity/megalinter/pull/3472
+            diff = repo.git.diff(f"{default_branch_remote}...", name_only=True)
+        except Exception as e7:
+            # Use previous way as fallback
+            logging.warning("Git diff error: " + str(e7))
+            logging.warning(
+                "You might need to add check-depth: 0 or equivalent to access merge-base"
+            )
+            logging.warning("See https://github.com/oxsecurity/megalinter/pull/3472")
+            logging.warning("Using fallback without merge-base...")
+            diff = repo.git.diff(default_branch_remote, name_only=True)
         logging.info(f"Modified files:\n{diff}")
         all_files = list()
         for diff_line in diff.splitlines():

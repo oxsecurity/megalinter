@@ -9,9 +9,14 @@ description: How to use tflint (configure, ignore files, ignore errors, help & v
 
 > If you are using the GitHub action please use the `TERRAFORM_TFLINT_UNSECURED_ENV_VARIABLES: GITHUB_TOKEN` to prevent plugin download issues
 
+> If you have issues with tflint --init, create a GitHub Personal Access Token and set its value to PAT_GITHUB_COM variable.
+
+Note: It's recommended to create your own `.tflint.hcl` custom config file tailored to your project's specific needs.
+The default configuration enables all supported languages and rules, which may not be optimal for every project.
+
 ## tflint documentation
 
-- Version in MegaLinter: **0.49.0**
+- Version in MegaLinter: **0.55.1**
 - Visit [Official Web Site](https://github.com/terraform-linters/tflint#readme){target=_blank}
 - See [How to configure tflint rules](https://github.com/terraform-linters/tflint/blob/master/docs/user-guide/config.md){target=_blank}
   - If custom `.tflint.hcl` config file isn't found, [.tflint.hcl](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.tflint.hcl){target=_blank} will be used
@@ -25,32 +30,34 @@ description: How to use tflint (configure, ignore files, ignore errors, help & v
 - Enable tflint by adding `TERRAFORM_TFLINT` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 - Disable tflint by adding `TERRAFORM_TFLINT` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-| Variable                                     | Description                                                                                                                                                                                  | Default value                                   |
-|----------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
-| TERRAFORM_TFLINT_SECURED_ENV                 | Allows to send the full env to **tflint --init**. Initialized with default value `true`. Set to `false` to allow `tflint --init` to access your env vars.                                    | `True`                                          |
-| TERRAFORM_TFLINT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                                                 |
-| TERRAFORM_TFLINT_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                         |                                                 |
-| TERRAFORM_TFLINT_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                      | `[".tf"]`                                       |
-| TERRAFORM_TFLINT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file                              |
-| TERRAFORM_TFLINT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                               | None                                            |
-| TERRAFORM_TFLINT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                | None                                            |
-| TERRAFORM_TFLINT_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling TERRAFORM_TFLINT and its pre/post commands                                                                                      | None                                            |
-| TERRAFORM_TFLINT_CONFIG_FILE                 | tflint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                            | `.tflint.hcl`                                   |
-| TERRAFORM_TFLINT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                 | Workspace folder, then MegaLinter default rules |
-| TERRAFORM_TFLINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`                                         |
-| TERRAFORM_TFLINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                             |
-| TERRAFORM_TFLINT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `['tflint']`                                    |
+| Variable                                     | Description                                                                                                                                                                                                                                                                           | Default value                                   |
+|----------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
+| TERRAFORM_TFLINT_SECURED_ENV                 | Allows to send the full env to **tflint --init**. Initialized with default value `true`. Set to `false` to allow `tflint --init` to access your env vars.                                                                                                                             | `True`                                          |
+| PAT_GITHUB_COM                               | If you have issues with tflint --init, create a GitHub Personal Access Token and set its value to PAT_GITHUB_COM variable.                                                                                                                                                            | ``                                              |
+| TERRAFORM_TFLINT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                                                                                              |                                                 |
+| TERRAFORM_TFLINT_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                                                                                                  |                                                 |
+| TERRAFORM_TFLINT_CLI_LINT_MODE               | Override default CLI lint mode<br/>⚠️ As default value is **project**, overriding might not work<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `project`                                       |
+| TERRAFORM_TFLINT_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                                                                                               | `[".tf"]`                                       |
+| TERRAFORM_TFLINT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                                                                                          | Include every file                              |
+| TERRAFORM_TFLINT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                                                                                        | None                                            |
+| TERRAFORM_TFLINT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                                                                                         | None                                            |
+| TERRAFORM_TFLINT_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling TERRAFORM_TFLINT and its pre/post commands                                                                                                                                                                               | None                                            |
+| TERRAFORM_TFLINT_CONFIG_FILE                 | tflint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                                                                                     | `.tflint.hcl`                                   |
+| TERRAFORM_TFLINT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                                                                                          | Workspace folder, then MegaLinter default rules |
+| TERRAFORM_TFLINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                                                                                            | `false`                                         |
+| TERRAFORM_TFLINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                                                                                      | `0`                                             |
+| TERRAFORM_TFLINT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                                                                                               | `['tflint']`                                    |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
-This linter is available in the following flavours
+This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                     | Description                                     | Embedded linters |                                                                                                                                                                                           Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------|:------------------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)       | Default MegaLinter Flavor                       |       121        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)       | Default MegaLinter Flavor                       |       125        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)     | MegaLinter for the most commonly used languages |        85        |     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://megalinter.io/beta/flavors/security/)   | Optimized for security                          |        24        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
-|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://megalinter.io/beta/flavors/terraform/) | Optimized for TERRAFORM based projects          |        55        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://megalinter.io/beta/flavors/terraform/) | Optimized for TERRAFORM based projects          |        53        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform) |
 
 ## Behind the scenes
 
@@ -117,10 +124,9 @@ Application Options:
                                                                 name
       --var='foo=bar'                                           Set a Terraform
                                                                 variable
-      --module                                                  Enable module
-                                                                inspection
-      --no-module                                               Disable module
-                                                                inspection
+      --call-module-type=[all|local|none]                       Types of module
+                                                                to call
+                                                                (default: local)
       --chdir=DIR                                               Switch to a
                                                                 different
                                                                 working
@@ -149,6 +155,16 @@ Application Options:
                                                                 colorized output
       --fix                                                     Fix issues
                                                                 automatically
+      --no-parallel-runners                                     Disable
+                                                                per-runner
+                                                                parallelism
+      --max-workers=N                                           Set maximum
+                                                                number of
+                                                                workers in
+                                                                recursive
+                                                                inspection
+                                                                (default:
+                                                                number of CPUs)
 
 Help Options:
   -h, --help                                                    Show this help
@@ -160,7 +176,9 @@ Help Options:
 
 - Dockerfile commands :
 ```dockerfile
-FROM ghcr.io/terraform-linters/tflint:v0.49.0 as tflint
+# renovate: datasource=docker depName=ghcr.io/terraform-linters/tflint
+ARG TERRAFORM_TFLINT_VERSION=0.55.1
+FROM ghcr.io/terraform-linters/tflint:v${TERRAFORM_TFLINT_VERSION} AS tflint
 COPY --link --from=tflint /usr/local/bin/tflint /usr/bin/
 ```
 

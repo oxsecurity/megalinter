@@ -166,10 +166,10 @@ def fix_sarif(linter_sarif_obj, linter):
                         # browse result locations
                         for id_location, location in enumerate(result["locations"]):
                             if "physicalLocation" in location:
-                                location[
-                                    "physicalLocation"
-                                ] = fix_sarif_physical_location(
-                                    location["physicalLocation"]
+                                location["physicalLocation"] = (
+                                    fix_sarif_physical_location(
+                                        location["physicalLocation"]
+                                    )
                                 )
                             result["locations"][id_location] = location
 

@@ -2,14 +2,6 @@
 """
 Azure Comment reporter
 Post a comment on Azure Pipelines Pull Requests
-
-Requires the following vars sent to docker run:
-- SYSTEM_ACCESSTOKEN
-- SYSTEM_COLLECTIONURI
-- SYSTEM_PULLREQUEST_PULLREQUESTID
-- SYSTEM_TEAMPROJECT
-- BUILD_BUILDID
-- BUILD_REPOSITORY_ID
 """
 import logging
 import urllib.parse
@@ -26,7 +18,9 @@ class AzureCommentReporter(Reporter):
     scope = "mega-linter"
 
     def manage_activation(self):
-        if (
+        if not config.exists(self.master.request_id, "SYSTEM_COLLECTIONURI"):
+            self.is_active = False
+        elif (
             config.get(self.master.request_id, "AZURE_COMMENT_REPORTER", "true")
             != "true"
         ):
@@ -56,6 +50,9 @@ class AzureCommentReporter(Reporter):
                 return
             SYSTEM_TEAMPROJECT = urllib.parse.quote(
                 config.get(self.master.request_id, "SYSTEM_TEAMPROJECT")
+            )
+            SYSTEM_PULLREQUEST_SOURCEREPOSITORYURI = config.get(
+                self.master.request_id, "SYSTEM_PULLREQUEST_SOURCEREPOSITORYURI", ""
             )
             BUILD_REPOSITORY_ID = config.get(
                 self.master.request_id, "BUILD_REPOSITORY_ID"
@@ -95,9 +92,47 @@ class AzureCommentReporter(Reporter):
             )
             git_client: GitClient = connection.clients.get_git_client()
 
+            # Get repository id
+            if SYSTEM_PULLREQUEST_SOURCEREPOSITORYURI == "":
+                logging.info(
+                    "[Azure Comment Reporter] Missing ADO variable System.PullRequest.SourceRepositoryURI\n"
+                    + "Falling back to ADO variable Build.Repository.ID\n"
+                    + "See https://learn.microsoft.com/en-us/azure/devops/pipelines/"
+                    + "build/variables?view=azure-devops&tabs=yaml"
+                )
+                repository_id = BUILD_REPOSITORY_ID
+            else:
+                logging.info(
+                    "[Azure Comment Reporter] Using ADO variable System.PullRequest.SourceRepositoryURI\n"
+                    + "See https://learn.microsoft.com/en-us/azure/devops/pipelines/"
+                    + "build/variables?view=azure-devops&tabs=yaml"
+                )
+                repository_name = SYSTEM_PULLREQUEST_SOURCEREPOSITORYURI.split("/")[-1]
+                if (
+                    config.get(
+                        self.master.request_id,
+                        "AZURE_COMMENT_REPORTER_REPLACE_WITH_SPACES",
+                        "true",
+                    )
+                    == "true"
+                ):
+                    repository_name = repository_name.replace("%20", " ")
+                try:
+                    repository = git_client.get_repository(
+                        repository_name, SYSTEM_TEAMPROJECT
+                    )
+                    repository_id = repository.id
+                except Exception as err:
+                    logging.warning(
+                        f"[Azure Comment Reporter] Unable to find repo {repository_name}:"
+                        + str(err)
+                        + "\nUse fallback with BUILD_REPOSITORY_ID."
+                    )
+                    repository_id = BUILD_REPOSITORY_ID
+
             # Look for existing MegaLinter thread
             existing_threads = git_client.get_threads(
-                BUILD_REPOSITORY_ID, SYSTEM_PULLREQUEST_PULLREQUESTID
+                repository_id, SYSTEM_PULLREQUEST_PULLREQUESTID
             )
             existing_thread_id = None
             existing_thread_comment = None
@@ -117,13 +152,13 @@ class AzureCommentReporter(Reporter):
             # Remove previous MegaLinter thread if existing
             if existing_thread_id is not None:
                 git_client.delete_comment(
-                    BUILD_REPOSITORY_ID,
+                    repository_id,
                     SYSTEM_PULLREQUEST_PULLREQUESTID,
                     existing_thread_id,
                     existing_thread_comment_id,
                 )
                 existing_thread_comment = git_client.get_pull_request_thread(
-                    BUILD_REPOSITORY_ID,
+                    repository_id,
                     SYSTEM_PULLREQUEST_PULLREQUESTID,
                     existing_thread_id,
                 )
@@ -133,14 +168,14 @@ class AzureCommentReporter(Reporter):
                 }
                 git_client.update_thread(
                     existing_thread_comment,
-                    BUILD_REPOSITORY_ID,
+                    repository_id,
                     SYSTEM_PULLREQUEST_PULLREQUESTID,
                     existing_thread_id,
                 )
 
             # Post thread
             new_thread_result = git_client.create_thread(
-                thread_data, BUILD_REPOSITORY_ID, SYSTEM_PULLREQUEST_PULLREQUESTID
+                thread_data, repository_id, SYSTEM_PULLREQUEST_PULLREQUESTID
             )
             if new_thread_result.id is not None and new_thread_result.id > 0:
                 logging.debug(f"Posted Azure Pipelines comment: {thread_data}")

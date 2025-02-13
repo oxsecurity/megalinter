@@ -1,0 +1,21 @@
+##########################
+##########################
+## Kubernetes Manifests ##
+##########################
+##########################
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod
+spec:
+  containers:
+    - name: mycontainer
+      image: myimage
+      ports:
+        - containerPort: 80
+        - containerPort: 443
+    - name: mysidecar
+      image: sidecarimage
+      ports:
+        - containerPort: 8080

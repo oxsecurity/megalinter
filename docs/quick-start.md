@@ -17,7 +17,7 @@ description: Setup MegaLinter in 5 minutes thanks to its assisted installation t
 **Notes**:
 
 - This repo is a hard-fork of [GitHub Super-Linter](https://github.com/super-linter/super-linter), rewritten in python to add [lots of additional features](mega-linter-vs-super-linter.md)
-- If you are a Super-Linter user, you can transparently **switch to MegaLinter and keep the same configuration** (just replace `super-linter/super-linter@v3` by `oxsecurity/megalinter@v7` in your GitHub Action YML file, [like on this PR](https://github.com/nvuillam/npm-groovy-lint/pull/109))
+- If you are a Super-Linter user, you can transparently **switch to MegaLinter and keep the same configuration** (just replace `super-linter/super-linter@v3` by `oxsecurity/megalinter@v8` in your GitHub Action YML file, [like on this PR](https://github.com/nvuillam/npm-groovy-lint/pull/109))
 - If you want to use MegaLinter extra features (recommended), please take 5 minutes to use [MegaLinter assisted installation](install-assisted.md)
 - For a hand-holdy example of getting started with mega-linter check out [this blog post](https://ayyjohn.com/posts/linting-a-jekyll-blog-with-mega-linter) by Alec Johnson
 

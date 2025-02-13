@@ -17,7 +17,7 @@ You may activate [File.io reporter](https://megalinter.io/reporters/FileIoReport
 stage('MegaLinter') {
     agent {
         docker {
-            image 'oxsecurity/megalinter:v7'
+            image 'oxsecurity/megalinter:v8'
             args "-u root -e VALIDATE_ALL_CODEBASE=true -v ${WORKSPACE}:/tmp/lint --entrypoint=''"
             reuseNode true
         }
@@ -32,6 +32,10 @@ stage('MegaLinter') {
     }
 }
 ```
+
+CloudBees themselves made a nice tutorial about how to use MegaLinter with Jenkins !
+
+<div style="text-align:center"><iframe width="560" height="315" src="https://www.youtube.com/embed/KhkNf2tQ3hM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 
 
 <!-- install-jenkins-section-end -->

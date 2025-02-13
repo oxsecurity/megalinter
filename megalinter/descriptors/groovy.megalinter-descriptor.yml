@@ -25,6 +25,8 @@ linters:
     cli_lint_mode: list_of_files
     config_file_name: .groovylintrc.json
     cli_lint_extra_args:
+      - --javaexecutable
+      - /usr/lib/jvm/java-17-openjdk/bin/java
       - --failon
       - error
     cli_sarif_args:
@@ -36,14 +38,18 @@ linters:
       - "npm-groovy-lint myfile.groovy"
       - "npm-groovy-lint -c .groovylintrc.json "
       - "npm-groovy-lint -c .groovylintrc.json --fix myfile.groovy myfile2.groovy"
+    downgraded_version: true
+    downgraded_reason: https://github.com/oxsecurity/megalinter/issues/4414
     install:
       apk:
         - openjdk17
       dockerfile:
-        - ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
-        - ENV PATH="$JAVA_HOME/bin:${PATH}"
+        - ENV JAVA_HOME_17=/usr/lib/jvm/java-17-openjdk
+        - |-
+          # renovate: datasource=npm depName=npm-groovy-lint
+          ARG NPM_GROOVY_LINT_VERSION=15.0.2
       npm:
-        - npm-groovy-lint
+        - npm-groovy-lint@${NPM_GROOVY_LINT_VERSION}
     ide:
       vscode:
         - name: VSCode Groovy Lint

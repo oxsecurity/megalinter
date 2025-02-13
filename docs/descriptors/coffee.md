@@ -20,8 +20,10 @@ description: coffeelint is available to analyze COFFEE files in MegaLinter
 
 ## Configuration in MegaLinter
 
-| Variable                    | Description                   | Default value |
-|-----------------------------|-------------------------------|---------------|
-| COFFEE_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| COFFEE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable                    | Description                                     | Default value |
+|-----------------------------|-------------------------------------------------|---------------|
+| COFFEE_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
+| COFFEE_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
+| COFFEE_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
+| COFFEE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 

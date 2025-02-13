@@ -20,8 +20,10 @@ description: clippy is available to analyze RUST files in MegaLinter
 
 ## Configuration in MegaLinter
 
-| Variable                  | Description                   | Default value |
-|---------------------------|-------------------------------|---------------|
-| RUST_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| RUST_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable                  | Description                                     | Default value |
+|---------------------------|-------------------------------------------------|---------------|
+| RUST_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
+| RUST_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
+| RUST_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
+| RUST_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 

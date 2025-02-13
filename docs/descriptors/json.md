@@ -9,13 +9,13 @@ description: jsonlint, eslint-plugin-jsonc, v8r, prettier, npm-package-json-lint
 
 ## Linters
 
-| Linter                                                                                                                       | Additional                                                                                                                                                                                                                                                    |
-|------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [**jsonlint**](json_jsonlint.md)<br/>[_JSON_JSONLINT_](json_jsonlint.md)                                                     | [![GitHub stars](https://img.shields.io/github/stars/prantlf/jsonlint?cacheSeconds=3600)](https://github.com/prantlf/jsonlint)                                                                                                                                |
-| [**eslint-plugin-jsonc**](json_eslint_plugin_jsonc.md)<br/>[_JSON_ESLINT_PLUGIN_JSONC_](json_eslint_plugin_jsonc.md)         | [![GitHub stars](https://img.shields.io/github/stars/ota-meshi/eslint-plugin-jsonc?cacheSeconds=3600)](https://github.com/ota-meshi/eslint-plugin-jsonc) ![autofix](https://shields.io/badge/-autofix-green) ![sarif](https://shields.io/badge/-SARIF-orange) |
-| [**v8r**](json_v8r.md)<br/>[_JSON_V8R_](json_v8r.md)                                                                         | [![GitHub stars](https://img.shields.io/github/stars/chris48s/v8r?cacheSeconds=3600)](https://github.com/chris48s/v8r)                                                                                                                                        |
-| [**prettier**](json_prettier.md)<br/>[_JSON_PRETTIER_](json_prettier.md)                                                     | [![GitHub stars](https://img.shields.io/github/stars/prettier/prettier?cacheSeconds=3600)](https://github.com/prettier/prettier) ![formatter](https://shields.io/badge/-format-yellow)                                                                        |
-| [**npm-package-json-lint**](json_npm_package_json_lint.md)<br/>[_JSON_NPM_PACKAGE_JSON_LINT_](json_npm_package_json_lint.md) | [![GitHub stars](https://img.shields.io/github/stars/tclindner/npm-package-json-lint?cacheSeconds=3600)](https://github.com/tclindner/npm-package-json-lint)                                                                                                  |
+| Linter                                                                                                                       | Additional                                                                                                                                                                                                                                                                                                           |
+|------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [**jsonlint**](json_jsonlint.md)<br/>[_JSON_JSONLINT_](json_jsonlint.md)                                                     | [![GitHub stars](https://img.shields.io/github/stars/prantlf/jsonlint?cacheSeconds=3600)](https://github.com/prantlf/jsonlint)                                                                                                                                                                                       |
+| [**eslint-plugin-jsonc**](json_eslint_plugin_jsonc.md)<br/>[_JSON_ESLINT_PLUGIN_JSONC_](json_eslint_plugin_jsonc.md)         | ![disabled](https://shields.io/badge/-disabled-orange) [![GitHub stars](https://img.shields.io/github/stars/ota-meshi/eslint-plugin-jsonc?cacheSeconds=3600)](https://github.com/ota-meshi/eslint-plugin-jsonc) ![autofix](https://shields.io/badge/-autofix-green) ![sarif](https://shields.io/badge/-SARIF-orange) |
+| [**v8r**](json_v8r.md)<br/>[_JSON_V8R_](json_v8r.md)                                                                         | [![GitHub stars](https://img.shields.io/github/stars/chris48s/v8r?cacheSeconds=3600)](https://github.com/chris48s/v8r)                                                                                                                                                                                               |
+| [**prettier**](json_prettier.md)<br/>[_JSON_PRETTIER_](json_prettier.md)                                                     | [![GitHub stars](https://img.shields.io/github/stars/prettier/prettier?cacheSeconds=3600)](https://github.com/prettier/prettier) ![formatter](https://shields.io/badge/-format-yellow)                                                                                                                               |
+| [**npm-package-json-lint**](json_npm_package_json_lint.md)<br/>[_JSON_NPM_PACKAGE_JSON_LINT_](json_npm_package_json_lint.md) | [![GitHub stars](https://img.shields.io/github/stars/tclindner/npm-package-json-lint?cacheSeconds=3600)](https://github.com/tclindner/npm-package-json-lint)                                                                                                                                                         |
 
 ## Linted files
 
@@ -24,8 +24,10 @@ description: jsonlint, eslint-plugin-jsonc, v8r, prettier, npm-package-json-lint
 
 ## Configuration in MegaLinter
 
-| Variable                  | Description                   | Default value |
-|---------------------------|-------------------------------|---------------|
-| JSON_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| JSON_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable                  | Description                                     | Default value |
+|---------------------------|-------------------------------------------------|---------------|
+| JSON_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
+| JSON_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
+| JSON_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
+| JSON_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 

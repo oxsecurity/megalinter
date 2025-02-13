@@ -12,12 +12,13 @@ from megalinter.constants import (
     ML_DOC_URL_DESCRIPTORS_ROOT,
     ML_REPO,
     ML_REPO_ISSUES_URL,
+    OX_MARKDOWN_LINK,
 )
 from pytablewriter import MarkdownTableWriter
 from redis import Redis
 
 
-def build_markdown_summary(reporter_self, action_run_url):
+def build_markdown_summary(reporter_self, action_run_url=""):
     table_header = ["Descriptor", "Linter", "Files", "Fixed", "Errors"]
     if reporter_self.master.show_elapsed_time is True:
         table_header += ["Elapsed time"]
@@ -27,9 +28,11 @@ def build_markdown_summary(reporter_self, action_run_url):
             status = (
                 "✅"
                 if linter.status == "success" and linter.return_code == 0
-                else "⚠️"
-                if linter.status != "success" and linter.return_code == 0
-                else "❌"
+                else (
+                    "⚠️"
+                    if linter.status != "success" and linter.return_code == 0
+                    else "❌"
+                )
             )
             first_col = f"{status} {linter.descriptor_id}"
             lang_lower = linter.descriptor_id.lower()
@@ -74,9 +77,7 @@ def build_markdown_summary(reporter_self, action_run_url):
         "✅"
         if reporter_self.master.return_code == 0
         and reporter_self.master.status == "success"
-        else "⚠️"
-        if reporter_self.master.status == "warning"
-        else "❌"
+        else "⚠️" if reporter_self.master.status == "warning" else "❌"
     )
     status_with_href = (
         status
@@ -89,6 +90,10 @@ def build_markdown_summary(reporter_self, action_run_url):
         + os.linesep
     )
     p_r_msg += table_content + os.linesep
+
+    if reporter_self.master.result_message != "":
+        p_r_msg += reporter_self.master.result_message + os.linesep
+
     if action_run_url != "":
         p_r_msg += (
             "See detailed report in [MegaLinter reports"
@@ -152,11 +157,12 @@ def build_markdown_summary(reporter_self, action_run_url):
             + "(https://www.ox.security/?ref=megalinter)"
         )
     else:
-        p_r_msg += (
-            os.linesep
-            + "_MegaLinter is graciously provided by [![OX Security]"
-            + "(https://www.ox.security/wp-content/uploads/2022/06/"
-            + "logo.svg?ref=megalinter_comment)](https://www.ox.security/?ref=megalinter)_"
+        p_r_msg += os.linesep + OX_MARKDOWN_LINK
+    if config.exists(
+        reporter_self.master.request_id, "JOB_SUMMARY_ADDITIONAL_MARKDOWN"
+    ):
+        p_r_msg += os.linesep + config.get(
+            reporter_self.master.request_id, "JOB_SUMMARY_ADDITIONAL_MARKDOWN", ""
         )
     logging.debug("\n" + p_r_msg)
     return p_r_msg
@@ -266,9 +272,11 @@ def build_linter_reporter_external_result(reporter, redis_stream=False) -> dict:
     status_message = (
         success_msg
         if reporter.master.status == "success" and reporter.master.return_code == 0
-        else error_not_blocking
-        if reporter.master.status == "error" and reporter.master.return_code == 0
-        else error_msg
+        else (
+            error_not_blocking
+            if reporter.master.status == "error" and reporter.master.return_code == 0
+            else error_msg
+        )
     )
     result = {
         "messageType": "linterComplete",
@@ -277,7 +285,7 @@ def build_linter_reporter_external_result(reporter, redis_stream=False) -> dict:
         "linterStatusMessage": status_message,
         "linterElapsedTime": round(reporter.master.elapsed_time_s, 2),
     }
-    if reporter.master.lint_command_log is not None:
+    if len(reporter.master.lint_command_log) > 0:
         result["linterCliCommand"] = reporter.master.lint_command_log
     result = result | get_linter_infos(reporter.master)
     if (
@@ -309,9 +317,9 @@ def build_linter_reporter_external_result(reporter, redis_stream=False) -> dict:
                 "External Message: Unable to find linter output, "
                 "there is a probably an error within MegaLinter Worker"
             )
-            result[
-                "outputText"
-            ] = f"Internal error: unable to find linter output in {text_file_name}"
+            result["outputText"] = (
+                f"Internal error: unable to find linter output in {text_file_name}"
+            )
     return manage_redis_stream(result, redis_stream)
 
 

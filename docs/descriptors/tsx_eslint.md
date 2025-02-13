@@ -19,7 +19,7 @@ You can create it by typing `npx eslint --init` in the root of your repository
 
 ## eslint documentation
 
-- Version in MegaLinter: **8.55.0**
+- Version in MegaLinter: **8.57.1**
 - Visit [Official Web Site](https://github.com/jsx-eslint/eslint-plugin-react#readme){target=_blank}
 - See [How to configure eslint rules](https://github.com/jsx-eslint/eslint-plugin-react#configuration-legacy-eslintrc){target=_blank}
 - See [How to disable eslint rules in files](https://eslint.org/docs/user-guide/configuring#disabling-rules-with-inline-comments){target=_blank}
@@ -70,16 +70,16 @@ Use eslint in your favorite IDE to catch errors before MegaLinter !
 |   <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a>    | [vim](https://www.vim.org/)                              | [Syntastic](https://github.com/vim-syntastic/syntastic/tree/master/syntax_checkers/javascript) |                             [Visit Web Site](https://github.com/vim-syntastic/syntastic/tree/master/syntax_checkers/javascript){target=_blank}                              |
 |  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/)     | [vscode-eslint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)    | [![Install in VSCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/dbaeumer.vscode-eslint){target=_blank} |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
-This linter is available in the following flavours
+This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                       | Description                                              | Embedded linters |                                                                                                                                                                                             Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------|:---------------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor                                |       121        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor                                |       125        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)       | MegaLinter for the most commonly used languages          |        85        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
-|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/)   | Optimized for C, C++, C# or VB based projects with JS/TS |        73        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
-|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.io/beta/flavors/javascript/) | Optimized for JAVASCRIPT or TYPESCRIPT based projects    |        60        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/)   | Optimized for C, C++, C# or VB based projects with JS/TS |        70        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
+|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.io/beta/flavors/javascript/) | Optimized for JAVASCRIPT or TYPESCRIPT based projects    |        58        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript) |
 
 ## Behind the scenes
 
@@ -115,77 +115,108 @@ eslint --fix -c .eslintrc.json --no-eslintrc --no-ignore myfile.tsx
 eslint [options] file.js [file.js] [dir]
 
 Basic configuration:
-  --no-eslintrc                   Disable use of configuration from .eslintrc.*
-  -c, --config path::String       Use this configuration, overriding .eslintrc.* config options if present
-  --env [String]                  Specify environments
-  --ext [String]                  Specify JavaScript file extensions
-  --global [String]               Define global variables
-  --parser String                 Specify the parser to be used
-  --parser-options Object         Specify parser options
+  --no-eslintrc                    Disable use of configuration from .eslintrc.*
+  -c, --config path::String        Use this configuration, overriding .eslintrc.* config options if present
+  --env [String]                   Specify environments
+  --ext [String]                   Specify JavaScript file extensions
+  --global [String]                Define global variables
+  --parser String                  Specify the parser to be used
+  --parser-options Object          Specify parser options
   --resolve-plugins-relative-to path::String  A folder where plugins should be resolved from, CWD by default
 
 Specify Rules and Plugins:
-  --plugin [String]               Specify plugins
-  --rule Object                   Specify rules
-  --rulesdir [path::String]       Load additional rules from this directory. Deprecated: Use rules from plugins
+  --plugin [String]                Specify plugins
+  --rule Object                    Specify rules
+  --rulesdir [path::String]        Load additional rules from this directory. Deprecated: Use rules from plugins
 
 Fix Problems:
-  --fix                           Automatically fix problems
-  --fix-dry-run                   Automatically fix problems without saving the changes to the file system
-  --fix-type Array                Specify the types of fixes to apply (directive, problem, suggestion, layout)
+  --fix                            Automatically fix problems
+  --fix-dry-run                    Automatically fix problems without saving the changes to the file system
+  --fix-type Array                 Specify the types of fixes to apply (directive, problem, suggestion, layout)
 
 Ignore Files:
-  --ignore-path path::String      Specify path of ignore file
-  --no-ignore                     Disable use of ignore files and patterns
-  --ignore-pattern [String]       Pattern of files to ignore (in addition to those in .eslintignore)
+  --ignore-path path::String       Specify path of ignore file
+  --no-ignore                      Disable use of ignore files and patterns
+  --ignore-pattern [String]        Pattern of files to ignore (in addition to those in .eslintignore)
 
 Use stdin:
-  --stdin                         Lint code provided on <STDIN> - default: false
-  --stdin-filename String         Specify filename to process STDIN as
+  --stdin                          Lint code provided on <STDIN> - default: false
+  --stdin-filename String          Specify filename to process STDIN as
 
 Handle Warnings:
-  --quiet                         Report errors only - default: false
-  --max-warnings Int              Number of warnings to trigger nonzero exit code - default: -1
+  --quiet                          Report errors only - default: false
+  --max-warnings Int               Number of warnings to trigger nonzero exit code - default: -1
 
 Output:
-  -o, --output-file path::String  Specify file to write report to
-  -f, --format String             Use a specific output format - default: stylish
-  --color, --no-color             Force enabling/disabling of color
+  -o, --output-file path::String   Specify file to write report to
+  -f, --format String              Use a specific output format - default: stylish
+  --color, --no-color              Force enabling/disabling of color
 
 Inline configuration comments:
-  --no-inline-config              Prevent comments from changing config or rules
+  --no-inline-config               Prevent comments from changing config or rules
   --report-unused-disable-directives  Adds reported errors for unused eslint-disable and eslint-enable directives
+  --report-unused-disable-directives-severity String  Chooses severity level for reporting unused eslint-disable and eslint-enable directives - either: off, warn, error, 0, 1, or 2
 
 Caching:
-  --cache                         Only check changed files - default: false
-  --cache-file path::String       Path to the cache file. Deprecated: use --cache-location - default: .eslintcache
-  --cache-location path::String   Path to the cache file or directory
-  --cache-strategy String         Strategy to use for detecting changed files in the cache - either: metadata or content - default: metadata
+  --cache                          Only check changed files - default: false
+  --cache-file path::String        Path to the cache file. Deprecated: use --cache-location - default: .eslintcache
+  --cache-location path::String    Path to the cache file or directory
+  --cache-strategy String          Strategy to use for detecting changed files in the cache - either: metadata or content - default: metadata
 
 Miscellaneous:
-  --init                          Run config initialization wizard - default: false
-  --env-info                      Output execution environment information - default: false
+  --init                           Run config initialization wizard - default: false
+  --env-info                       Output execution environment information - default: false
   --no-error-on-unmatched-pattern  Prevent errors when pattern is unmatched
-  --exit-on-fatal-error           Exit with exit code 2 in case of fatal error - default: false
-  --debug                         Output debugging information
-  -h, --help                      Show help
-  -v, --version                   Output the version number
-  --print-config path::String     Print the configuration for the given file
+  --exit-on-fatal-error            Exit with exit code 2 in case of fatal error - default: false
+  --debug                          Output debugging information
+  -h, --help                       Show help
+  -v, --version                    Output the version number
+  --print-config path::String      Print the configuration for the given file
 ```
 
 ### Installation on mega-linter Docker image
 
+- Dockerfile commands :
+```dockerfile
+# renovate: datasource=npm depName=typescript
+ARG NPM_TYPESCRIPT_VERSION=5.7.3
+# renovate: datasource=npm depName=eslint
+ARG NPM_ESLINT_VERSION=8.57.1
+# renovate: datasource=npm depName=eslint-config-airbnb
+ARG NPM_ESLINT_CONFIG_AIRBNB_VERSION=19.0.4
+# renovate: datasource=npm depName=eslint-config-prettier
+ARG NPM_ESLINT_CONFIG_PRETTIER_VERSION=10.0.1
+# renovate: datasource=npm depName=eslint-plugin-jest
+ARG NPM_ESLINT_PLUGIN_JEST_VERSION=28.11.0
+# renovate: datasource=npm depName=eslint-plugin-prettier
+ARG NPM_ESLINT_PLUGIN_PRETTIER_VERSION=5.2.3
+# renovate: datasource=npm depName=eslint-plugin-react
+ARG NPM_ESLINT_PLUGIN_REACT_VERSION=7.37.4
+# renovate: datasource=npm depName=@babel/eslint-parser
+ARG NPM_BABEL_ESLINT_PARSER_VERSION=7.26.8
+# renovate: datasource=npm depName=prettier
+ARG NPM_PRETTIER_VERSION=3.5.0
+# renovate: datasource=npm depName=prettyjson
+ARG NPM_PRETTYJSON_VERSION=1.2.5
+# renovate: datasource=npm depName=@typescript-eslint/eslint-plugin
+ARG NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION=8.24.0
+# renovate: datasource=npm depName=@typescript-eslint/parser
+ARG NPM_TYPESCRIPT_ESLINT_PARSER_VERSION=8.24.0
+# renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
+ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
+```
+
 - NPM packages (node.js):
-  - [typescript](https://www.npmjs.com/package/typescript)
-  - [eslint](https://www.npmjs.com/package/eslint)
-  - [eslint-config-airbnb](https://www.npmjs.com/package/eslint-config-airbnb)
-  - [eslint-config-prettier](https://www.npmjs.com/package/eslint-config-prettier)
-  - [eslint-plugin-jest](https://www.npmjs.com/package/eslint-plugin-jest)
-  - [eslint-plugin-prettier](https://www.npmjs.com/package/eslint-plugin-prettier)
-  - [eslint-plugin-react](https://www.npmjs.com/package/eslint-plugin-react)
-  - [@babel/eslint-parser](https://www.npmjs.com/package/@babel/eslint-parser)
-  - [prettier](https://www.npmjs.com/package/prettier)
-  - [prettyjson](https://www.npmjs.com/package/prettyjson)
-  - [@typescript-eslint/eslint-plugin](https://www.npmjs.com/package/@typescript-eslint/eslint-plugin)
-  - [@typescript-eslint/parser](https://www.npmjs.com/package/@typescript-eslint/parser)
-  - [@microsoft/eslint-formatter-sarif](https://www.npmjs.com/package/@microsoft/eslint-formatter-sarif)
+  - [typescript@${NPM_TYPESCRIPT_VERSION}](https://www.npmjs.com/package/typescript@${NPM_TYPESCRIPT_VERSION})
+  - [eslint@${NPM_ESLINT_VERSION}](https://www.npmjs.com/package/eslint@${NPM_ESLINT_VERSION})
+  - [eslint-config-airbnb@${NPM_ESLINT_CONFIG_AIRBNB_VERSION}](https://www.npmjs.com/package/eslint-config-airbnb@${NPM_ESLINT_CONFIG_AIRBNB_VERSION})
+  - [eslint-config-prettier@${NPM_ESLINT_CONFIG_PRETTIER_VERSION}](https://www.npmjs.com/package/eslint-config-prettier@${NPM_ESLINT_CONFIG_PRETTIER_VERSION})
+  - [eslint-plugin-jest@${NPM_ESLINT_PLUGIN_JEST_VERSION}](https://www.npmjs.com/package/eslint-plugin-jest@${NPM_ESLINT_PLUGIN_JEST_VERSION})
+  - [eslint-plugin-prettier@${NPM_ESLINT_PLUGIN_PRETTIER_VERSION}](https://www.npmjs.com/package/eslint-plugin-prettier@${NPM_ESLINT_PLUGIN_PRETTIER_VERSION})
+  - [eslint-plugin-react@${NPM_ESLINT_PLUGIN_REACT_VERSION}](https://www.npmjs.com/package/eslint-plugin-react@${NPM_ESLINT_PLUGIN_REACT_VERSION})
+  - [@babel/eslint-parser@${NPM_BABEL_ESLINT_PARSER_VERSION}](https://www.npmjs.com/package/@babel/eslint-parser/v/${NPM_BABEL_ESLINT_PARSER_VERSION})
+  - [prettier@${NPM_PRETTIER_VERSION}](https://www.npmjs.com/package/prettier@${NPM_PRETTIER_VERSION})
+  - [prettyjson@${NPM_PRETTYJSON_VERSION}](https://www.npmjs.com/package/prettyjson@${NPM_PRETTYJSON_VERSION})
+  - [@typescript-eslint/eslint-plugin@${NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION}](https://www.npmjs.com/package/@typescript-eslint/eslint-plugin/v/${NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION})
+  - [@typescript-eslint/parser@${NPM_TYPESCRIPT_ESLINT_PARSER_VERSION}](https://www.npmjs.com/package/@typescript-eslint/parser/v/${NPM_TYPESCRIPT_ESLINT_PARSER_VERSION})
+  - [@microsoft/eslint-formatter-sarif@${NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION}](https://www.npmjs.com/package/@microsoft/eslint-formatter-sarif/v/${NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION})

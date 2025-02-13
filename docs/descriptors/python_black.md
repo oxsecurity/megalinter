@@ -15,7 +15,7 @@ description: How to use black (configure, ignore files, ignore errors, help & ve
 
 ## black documentation
 
-- Version in MegaLinter: **23.11.0**
+- Version in MegaLinter: **25.1.0**
 - Visit [Official Web Site](https://black.readthedocs.io/en/stable/){target=_blank}
 - See [How to configure black rules](https://black.readthedocs.io/en/stable/usage_and_configuration/the_basics.html#configuration-format){target=_blank}
   - If custom `pyproject.toml` config file isn't found, [pyproject.toml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/pyproject.toml){target=_blank} will be used
@@ -31,6 +31,7 @@ description: How to use black (configure, ignore files, ignore errors, help & ve
 
 | Variable                                 | Description                                                                                                                                                                                                         | Default value                                   |
 |------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
+| PYTHON_DEFAULT_STYLE                     | For black to be active, PYTHON_DEFAULT_STYLE must be `black`                                                                                                                                                        | `black`                                         |
 | PYTHON_BLACK_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                                                 |
 | PYTHON_BLACK_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                                |                                                 |
 | PYTHON_BLACK_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file                              |
@@ -61,15 +62,15 @@ Use black in your favorite IDE to catch errors before MegaLinter !
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/)             | [sublack](https://github.com/jgirardet/sublack)                                                 |                                                 [Visit Web Site](https://github.com/jgirardet/sublack){target=_blank}                                                 |
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/)     | [VSCode Python Extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python) | [![Install in VSCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/ms-python.python){target=_blank} |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
-This linter is available in the following flavours
+This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                       | Description                                     | Embedded linters |                                                                                                                                                                                             Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor                       |       121        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor                       |       125        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)       | MegaLinter for the most commonly used languages |        85        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
-|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/formatters.ico" alt="" height="32px" class="megalinter-icon"></a>      | [formatters](https://megalinter.io/beta/flavors/formatters/) | Contains only formatters                        |        17        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-formatters/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-formatters) |
+|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/formatters.ico" alt="" height="32px" class="megalinter-icon"></a>      | [formatters](https://megalinter.io/beta/flavors/formatters/) | Contains only formatters                        |        18        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-formatters/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-formatters) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)         | Optimized for PYTHON based projects             |        62        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
 
 ## Behind the scenes
@@ -110,20 +111,21 @@ Options:
   -c, --code TEXT                 Format the code passed in as a string.
   -l, --line-length INTEGER       How many characters per line to allow.
                                   [default: 88]
-  -t, --target-version [py33|py34|py35|py36|py37|py38|py39|py310|py311|py312]
+  -t, --target-version [py33|py34|py35|py36|py37|py38|py39|py310|py311|py312|py313]
                                   Python versions that should be supported by
-                                  Black's output. By default, Black will try
-                                  to infer this from the project metadata in
-                                  pyproject.toml. If this does not yield
-                                  conclusive results, Black will use per-file
-                                  auto-detection.
+                                  Black's output. You should include all
+                                  versions that your code supports. By
+                                  default, Black will infer target versions
+                                  from the project metadata in pyproject.toml.
+                                  If this does not yield conclusive results,
+                                  Black will use per-file auto-detection.
   --pyi                           Format all input files like typing stubs
-                                  regardless of file extension (useful when
-                                  piping source on standard input).
+                                  regardless of file extension. This is useful
+                                  when piping source on standard input.
   --ipynb                         Format all input files like Jupyter
-                                  Notebooks regardless of file extension
-                                  (useful when piping source on standard
-                                  input).
+                                  Notebooks regardless of file extension. This
+                                  is useful when piping source on standard
+                                  input.
   --python-cell-magics TEXT       When processing Jupyter Notebooks, add the
                                   given magic to the list of known python-
                                   magics (capture, prun, pypy, python,
@@ -138,14 +140,29 @@ Options:
   --preview                       Enable potentially disruptive style changes
                                   that may be added to Black's main
                                   functionality in the next major release.
+  --unstable                      Enable potentially disruptive style changes
+                                  that have known bugs or are not currently
+                                  expected to make it into the stable style
+                                  Black's next major release. Implies
+                                  --preview.
+  --enable-unstable-feature [string_processing|hug_parens_with_braces_and_square_brackets|wrap_long_dict_values_in_parens|multiline_string_handling|always_one_newline_after_import]
+                                  Enable specific features included in the
+                                  `--unstable` style. Requires `--preview`. No
+                                  compatibility guarantees are provided on the
+                                  behavior or existence of any unstable
+                                  features.
   --check                         Don't write the files back, just return the
                                   status. Return code 0 means nothing would
                                   change. Return code 1 means some files would
                                   be reformatted. Return code 123 means there
                                   was an internal error.
   --diff                          Don't write the files back, just output a
-                                  diff for each file on stdout.
-  --line-ranges START-END         When specified, _Black_ will try its best to
+                                  diff to indicate what changes Black would've
+                                  made. They are printed to stdout so
+                                  capturing them is simple.
+  --color / --no-color            Show (or do not show) colored diff. Only
+                                  applies when --diff is given.
+  --line-ranges START-END         When specified, Black will try its best to
                                   only format these lines. This option can be
                                   specified multiple times, and a union of the
                                   lines will be formatted. Each range must be
@@ -153,61 +170,83 @@ Options:
                                   `-`: `<START>-<END>`. The `<START>` and
                                   `<END>` integer indices are 1-based and
                                   inclusive on both ends.
-  --color / --no-color            Show colored diff. Only applies when
-                                  `--diff` is given.
-  --fast / --safe                 If --fast given, skip temporary sanity
-                                  checks. [default: --safe]
+  --fast / --safe                 By default, Black performs an AST safety
+                                  check after formatting your code. The --fast
+                                  flag turns off this check and the --safe
+                                  flag explicitly enables it. [default:
+                                  --safe]
   --required-version TEXT         Require a specific version of Black to be
-                                  running (useful for unifying results across
-                                  many environments e.g. with a pyproject.toml
-                                  file). It can be either a major version
-                                  number or an exact version.
-  --include TEXT                  A regular expression that matches files and
-                                  directories that should be included on
-                                  recursive searches. An empty value means all
-                                  files are included regardless of the name.
-                                  Use forward slashes for directories on all
-                                  platforms (Windows, too). Exclusions are
-                                  calculated first, inclusions later.
-                                  [default: (\.pyi?|\.ipynb)$]
+                                  running. This is useful for ensuring that
+                                  all contributors to your project are using
+                                  the same version, because different versions
+                                  of Black may format code a little
+                                  differently. This option can be set in a
+                                  configuration file for consistent results
+                                  across environments.
   --exclude TEXT                  A regular expression that matches files and
                                   directories that should be excluded on
                                   recursive searches. An empty value means no
                                   paths are excluded. Use forward slashes for
                                   directories on all platforms (Windows, too).
-                                  Exclusions are calculated first, inclusions
-                                  later. [default: /(\.direnv|\.eggs|\.git|\.h
-                                  g|\.ipynb_checkpoints|\.mypy_cache|\.nox|\.p
-                                  ytest_cache|\.ruff_cache|\.tox|\.svn|\.venv|
-                                  \.vscode|__pypackages__|_build|buck-
+                                  By default, Black also ignores all paths
+                                  listed in .gitignore. Changing this value
+                                  will override all default exclusions.
+                                  [default: /(\.direnv|\.eggs|\.git|\.hg|\.ipy
+                                  nb_checkpoints|\.mypy_cache|\.nox|\.pytest_c
+                                  ache|\.ruff_cache|\.tox|\.svn|\.venv|\.vscod
+                                  e|__pypackages__|_build|buck-
                                   out|build|dist|venv)/]
   --extend-exclude TEXT           Like --exclude, but adds additional files
-                                  and directories on top of the excluded ones.
-                                  (Useful if you simply want to add to the
-                                  default)
+                                  and directories on top of the default values
+                                  instead of overriding them.
   --force-exclude TEXT            Like --exclude, but files and directories
                                   matching this regex will be excluded even
                                   when they are passed explicitly as
-                                  arguments.
+                                  arguments. This is useful when invoking
+                                  Black programmatically on changed files,
+                                  such as in a pre-commit hook or editor
+                                  plugin.
   --stdin-filename TEXT           The name of the file when passing it through
                                   stdin. Useful to make sure Black will
-                                  respect --force-exclude option on some
+                                  respect the --force-exclude option on some
                                   editors that rely on using stdin.
-  -W, --workers INTEGER RANGE     Number of parallel workers [default:
-                                  BLACK_NUM_WORKERS environment variable or
-                                  number of CPUs in the system]  [x>=1]
-  -q, --quiet                     Don't emit non-error messages to stderr.
-                                  Errors are still emitted; silence those with
-                                  2>/dev/null.
-  -v, --verbose                   Also emit messages to stderr about files
-                                  that were not changed or were ignored due to
-                                  exclusion patterns.
+  --include TEXT                  A regular expression that matches files and
+                                  directories that should be included on
+                                  recursive searches. An empty value means all
+                                  files are included regardless of the name.
+                                  Use forward slashes for directories on all
+                                  platforms (Windows, too). Overrides all
+                                  exclusions, including from .gitignore and
+                                  command line options.  [default:
+                                  (\.pyi?|\.ipynb)$]
+  -W, --workers INTEGER RANGE     When Black formats multiple files, it may
+                                  use a process pool to speed up formatting.
+                                  This option controls the number of parallel
+                                  workers. This can also be specified via the
+                                  BLACK_NUM_WORKERS environment variable.
+                                  Defaults to the number of CPUs in the
+                                  system.  [x>=1]
+  -q, --quiet                     Stop emitting all non-critical output. Error
+                                  messages will still be emitted (which can
+                                  silenced by 2>/dev/null).
+  -v, --verbose                   Emit messages about files that were not
+                                  changed or were ignored due to exclusion
+                                  patterns. If Black is using a configuration
+                                  file, a message detailing which one it is
+                                  using will be emitted.
   --version                       Show the version and exit.
-  --config FILE                   Read configuration from FILE path.
+  --config FILE                   Read configuration options from a
+                                  configuration file.
   -h, --help                      Show this message and exit.
 ```
 
 ### Installation on mega-linter Docker image
 
+- Dockerfile commands :
+```dockerfile
+# renovate: datasource=pypi depName=black
+ARG PIP_BLACK_VERSION=25.1.0
+```
+
 - PIP packages (Python):
-  - [black](https://pypi.org/project/black)
+  - [black==${PIP_BLACK_VERSION}](https://pypi.org/project/black/${PIP_BLACK_VERSION})

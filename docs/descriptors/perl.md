@@ -22,15 +22,17 @@ description: perlcritic is available to analyze PERL files in MegaLinter
   - ``
 
 - Detected file content:
-  - `#!/usr/bin/env perl`
-  - `#!/usr/bin/perl`
+  - `^#!/usr/bin/env perl`
+  - `^#!/usr/bin/perl`
 
 ## Configuration in MegaLinter
 
-| Variable                  | Description                   | Default value |
-|---------------------------|-------------------------------|---------------|
-| PERL_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| PERL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable                  | Description                                     | Default value |
+|---------------------------|-------------------------------------------------|---------------|
+| PERL_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
+| PERL_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
+| PERL_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
+| PERL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 
 
 ## Behind the scenes
@@ -38,5 +40,5 @@ description: perlcritic is available to analyze PERL files in MegaLinter
 ### Installation
 
 - APK packages (Linux):
-  - [perl](https://pkgs.alpinelinux.org/packages?branch=edge&name=perl)
-  - [perl-dev](https://pkgs.alpinelinux.org/packages?branch=edge&name=perl-dev)
+  - [perl](https://pkgs.alpinelinux.org/packages?branch=v3.21&arch=x86_64&name=perl)
+  - [perl-dev](https://pkgs.alpinelinux.org/packages?branch=v3.21&arch=x86_64&name=perl-dev)

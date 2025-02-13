@@ -10,6 +10,7 @@ import requests
 import yaml
 
 RUN_CONFIGS = {}  # type: ignore[var-annotated]
+SKIP_DELETE_CONFIG = False
 
 
 def init_config(request_id, workspace=None, params={}):
@@ -104,12 +105,24 @@ def init_config(request_id, workspace=None, params={}):
 
 
 def combine_config(workspace, config, combined_config, config_source):
+    config_properties_to_append = []
+
+    if "CONFIG_PROPERTIES_TO_APPEND" in config:
+        config_properties_to_append = config["CONFIG_PROPERTIES_TO_APPEND"]
+
     extends = config["EXTENDS"]
     if isinstance(extends, str):
         extends = extends.split(",")
     for extends_item in extends:
         if extends_item.startswith("http"):
-            r = requests.get(extends_item, allow_redirects=True)
+            headers = {}
+            if (
+                extends_item.startswith("https://raw.githubusercontent.com")
+                and "GITHUB_TOKEN" in os.environ
+            ):
+                github_token = os.environ["GITHUB_TOKEN"]
+                headers["Authorization"] = f"token {github_token}"
+            r = requests.get(extends_item, allow_redirects=True, headers=headers)
             assert (
                 r.status_code == 200
             ), f"Unable to retrieve EXTENDS config file {extends_item}"
@@ -119,7 +132,7 @@ def combine_config(workspace, config, combined_config, config_source):
                 workspace + os.path.sep + extends_item, "r", encoding="utf-8"
             ) as f:
                 extends_config_data = yaml.safe_load(f)
-        combined_config.update(extends_config_data)
+        merge_dicts(combined_config, extends_config_data, config_properties_to_append)
         config_source += f"\n[config] - extends from: {extends_item}"
         if "EXTENDS" in extends_config_data:
             combine_config(
@@ -128,8 +141,23 @@ def combine_config(workspace, config, combined_config, config_source):
                 combined_config,
                 config_source,
             )
-    combined_config.update(config)
+    merge_dicts(combined_config, config, config_properties_to_append)
     return config_source
+
+
+def merge_dicts(first, second, config_properties_to_append):
+    for k, v in second.items():
+        if k not in first:
+            first[k] = v
+        else:
+            if (
+                isinstance(first[k], list)
+                and isinstance(v, list)
+                and k in config_properties_to_append
+            ):
+                first[k] = first[k] + v
+            else:
+                first[k] = v
 
 
 def is_initialized_for(request_id):
@@ -171,6 +199,19 @@ def get(request_id, config_var=None, default=None):
     return val
 
 
+def get_first_var_set(request_id, config_vars=[], default=None):
+    for config_var in config_vars:
+        val = get(request_id, config_var, None)
+        if val is not None and val != "":
+            if isinstance(val, bool):
+                if val is True:
+                    val = "true"
+                elif val is False:
+                    val = "false"
+            return val
+    return default
+
+
 def set(request_id, config_var, value):
     global RUN_CONFIGS
     assert request_id in RUN_CONFIGS, "Config has not been initialized yet !"
@@ -195,15 +236,30 @@ def get_list(request_id, config_var, default=None):
     return default
 
 
+# Retrieve a configuration variable as a list of arguments, handling various input formats.
 def get_list_args(request_id, config_var, default=None):
+    # Retrieve the variable from the configuration
     var = get(request_id, config_var, None)
-    if var is not None:
-        if isinstance(var, list):
-            return var
-        if var == "":
+
+    match var:
+        # None return the default value
+        case None:
+            return default
+        # Blank or whitespace-only strings return empty list
+        case "" | str() if var.strip() == "":
             return []
-        return shlex.split(var)
-    return default
+        # Integer or a Decimal return it as a list
+        case int() | float():
+            return [str(var)]
+        # If already a list just return it
+        case list():
+            return var
+        # If string does not contain spaces, return it as a list
+        case str() if " " not in var.strip():
+            return [var]
+        # Otherwise, split the string using shlex and return the result
+        case _:
+            return shlex.split(var)
 
 
 def set_value(request_id, config_var, val):
@@ -222,13 +278,15 @@ def copy(request_id):
 
 def delete(request_id=None, key=None):
     global RUN_CONFIGS
+    global SKIP_DELETE_CONFIG
     # Global delete (used for tests)
     if request_id is None:
         RUN_CONFIGS = {}
         return
     if key is None:
-        del RUN_CONFIGS[request_id]
-        logging.debug("Cleared MegaLinter runtime config for request " + request_id)
+        if SKIP_DELETE_CONFIG is not True:
+            del RUN_CONFIGS[request_id]
+            logging.debug("Cleared MegaLinter runtime config for request " + request_id)
         return
     config = get_config(request_id)
     if key in config:
@@ -263,23 +321,13 @@ def list_secured_variables(request_id) -> list[str]:
         request_id,
         "SECURED_ENV_VARIABLES_DEFAULT",
         [
-            "GITHUB_TOKEN",
             "PAT",
-            "SYSTEM_ACCESSTOKEN",
             "GIT_AUTHORIZATION_BEARER",
-            "CI_JOB_TOKEN",
-            "GITLAB_ACCESS_TOKEN_MEGALINTER",
             "GITLAB_CUSTOM_CERTIFICATE",
-            "WEBHOOK_REPORTER_BEARER_TOKEN",
-            "NODE_TOKEN",
-            "NPM_TOKEN",
-            "DOCKER_USERNAME",
-            "DOCKER_PASSWORD",
-            "CODECOV_TOKEN",
-            "GCR_USERNAME",
-            "GCR_PASSWORD",
-            "SMTP_PASSWORD",
-            "CI_SFDX_HARDIS_GITLAB_TOKEN" "(SFDX_CLIENT_ID_.*)",
+            "(USERNAME)",
+            "(PASSWORD)",
+            "(TOKEN)",
+            "(SFDX_CLIENT_ID_.*)",
             "(SFDX_CLIENT_KEY_.*)",
         ],
     )

@@ -9,7 +9,7 @@ description: How to use csharpier (configure, ignore files, ignore errors, help 
 
 ## csharpier documentation
 
-- Version in MegaLinter: **0.26.4**
+- Version in MegaLinter: **0.30.6**
 - Visit [Official Web Site](https://csharpier.com/){target=_blank}
 - See [How to configure csharpier rules](https://csharpier.com/docs/Configuration){target=_blank}
 - See [How to ignore files and directories with csharpier](https://csharpier.com/docs/Ignore){target=_blank}
@@ -24,21 +24,23 @@ description: How to use csharpier (configure, ignore files, ignore errors, help 
 
 - Enable **autofixes** by adding `CSHARP_CSHARPIER` in [APPLY_FIXES variable](https://megalinter.io/beta/configuration/#apply-fixes)
 
-| Variable                                     | Description                                                                                                                                                                                                         | Default value          |
-|----------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------|
-| CSHARP_CSHARPIER_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                        |
-| CSHARP_CSHARPIER_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                                |                        |
-| CSHARP_CSHARPIER_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file     |
-| CSHARP_CSHARPIER_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file        |
-| CSHARP_CSHARPIER_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `list_of_files`        |
-| CSHARP_CSHARPIER_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".cs"]`              |
-| CSHARP_CSHARPIER_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | Include every file     |
-| CSHARP_CSHARPIER_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                   |
-| CSHARP_CSHARPIER_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                   |
-| CSHARP_CSHARPIER_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling CSHARP_CSHARPIER and its pre/post commands                                                                                                             | None                   |
-| CSHARP_CSHARPIER_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `true`                 |
-| CSHARP_CSHARPIER_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                    |
-| CSHARP_CSHARPIER_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `['dotnet-csharpier']` |
+| Variable                                     | Description                                                                                                                                                                                                         | Default value                                   |
+|----------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
+| CSHARP_CSHARPIER_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                                                 |
+| CSHARP_CSHARPIER_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                                |                                                 |
+| CSHARP_CSHARPIER_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file                              |
+| CSHARP_CSHARPIER_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file                                 |
+| CSHARP_CSHARPIER_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `list_of_files`                                 |
+| CSHARP_CSHARPIER_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".cs"]`                                       |
+| CSHARP_CSHARPIER_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | Include every file                              |
+| CSHARP_CSHARPIER_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                                            |
+| CSHARP_CSHARPIER_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                                            |
+| CSHARP_CSHARPIER_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling CSHARP_CSHARPIER and its pre/post commands                                                                                                             | None                                            |
+| CSHARP_CSHARPIER_CONFIG_FILE                 | csharpier configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                | `.csharpierrc`                                  |
+| CSHARP_CSHARPIER_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
+| CSHARP_CSHARPIER_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `true`                                          |
+| CSHARP_CSHARPIER_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
+| CSHARP_CSHARPIER_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `['dotnet-csharpier']`                          |
 
 ## IDE Integration
 
@@ -50,16 +52,16 @@ Use csharpier in your favorite IDE to catch errors before MegaLinter !
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/default.ico" alt="" height="32px" class="megalinter-icon"></a> | visual_studio                                        | [CSharpier](https://marketplace.visualstudio.com/items?itemName=csharpier.CSharpier)               |                                    [Visit Web Site](https://marketplace.visualstudio.com/items?itemName=csharpier.CSharpier){target=_blank}                                     |
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/) | [csharpier-vscode](https://marketplace.visualstudio.com/items?itemName=csharpier.csharpier-vscode) | [![Install in VSCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/csharpier.csharpier-vscode){target=_blank} |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
-This linter is available in the following flavours
+This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                       | Description                                              | Embedded linters |                                                                                                                                                                                             Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------|:---------------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor                                |       121        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/)         | Optimized for C, C++, C# or VB based projects            |        64        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
-|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/)   | Optimized for C, C++, C# or VB based projects with JS/TS |        73        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
-|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/formatters.ico" alt="" height="32px" class="megalinter-icon"></a>      | [formatters](https://megalinter.io/beta/flavors/formatters/) | Contains only formatters                                 |        17        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-formatters/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-formatters) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor                                |       125        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/)         | Optimized for C, C++, C# or VB based projects            |        61        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/)   | Optimized for C, C++, C# or VB based projects with JS/TS |        70        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
+|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/formatters.ico" alt="" height="32px" class="megalinter-icon"></a>      | [formatters](https://megalinter.io/beta/flavors/formatters/) | Contains only formatters                                 |        18        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-formatters/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-formatters) |
 
 ## Behind the scenes
 
@@ -76,11 +78,11 @@ This linter is available in the following flavours
 ### Example calls
 
 ```shell
-dotnet csharpier --check myfile.cs myfile2.cs
+csharpier --check myfile.cs myfile2.cs
 ```
 
 ```shell
-dotnet csharpier myfile.cs myfile2.cs
+csharpier myfile.cs myfile2.cs
 ```
 
 
@@ -93,20 +95,24 @@ Usage:
   dotnet-csharpier [options] [<directoryOrFile>...]
 
 Arguments:
-  <directoryOrFile>  One or more paths to a directory containing c# files to format or a c# file to format. If a path is not specified the current directory is used
+  <directoryOrFile>  One or more paths to a directory containing C# files to format or a C# file to format. It may be ommited when piping data via stdin.
 
 Options:
-  --check                      Check that files are formatted. Will not write any changes.
-  --loglevel <loglevel>        Specify the log level - Debug, Information (default), Warning, Error, None [default: Information]
-  --no-cache                   Bypass the cache to determine if a file needs to be formatted.
-  --no-msbuild-check           Bypass the check to determine if a csproj files references a different version of CSharpier.MsBuild.
-  --fast                       Skip comparing syntax tree of formatted file to original file to validate changes.
-  --skip-write                 Skip writing changes. Generally used for testing to ensure csharpier doesn't throw any errors or cause syntax tree validation failures.
-  --write-stdout               Write the results of formatting any files to stdout.
-  --pipe-multiple-files        Keep csharpier running so that multiples files can be piped to it via stdin
-  --config-path <config-path>  Path to the CSharpier configuration file
-  --version                    Show version information
-  -?, -h, --help               Show help and usage information
+  --check                           Check that files are formatted. Will not write any changes.
+  --loglevel <loglevel>             Specify the log level - Debug, Information (default), Warning, Error, None [default: Information]
+  --no-cache                        Bypass the cache to determine if a file needs to be formatted.
+  --no-msbuild-check                Bypass the check to determine if a csproj files references a different version of CSharpier.MsBuild.
+  --include-generated               Include files generated by the SDK and files that begin with <autogenerated /> comments
+  --fast                            Skip comparing syntax tree of formatted file to original file to validate changes.
+  --skip-write                      Skip writing changes. Generally used for testing to ensure csharpier doesn't throw any errors or cause syntax tree validation failures.
+  --write-stdout                    Write the results of formatting any files to stdout.
+  --pipe-multiple-files             Keep csharpier running so that multiples files can be piped to it via stdin.
+  --server                          Run CSharpier as a server so that multiple files may be formatted.
+  --server-port <server-port>       Specify the port that CSharpier should start on. Defaults to a random unused port.
+  --config-path <config-path>       Path to the CSharpier configuration file
+  --compilation-errors-as-warnings  Treat compilation errors from files as warnings instead of errors.
+  --version                         Show version information
+  -?, -h, --help                    Show help and usage information
 
 ```
 
@@ -115,8 +121,11 @@ Options:
 - Dockerfile commands :
 ```dockerfile
 # Parent descriptor install
+RUN apk add --no-cache dotnet9-sdk
 ENV PATH="${PATH}:/root/.dotnet/tools"
 # Linter install
-RUN dotnet tool install --global csharpier
+# renovate: datasource=nuget depName=csharpier
+ARG CSHARP_CSHARPIER_VERSION=0.30.6
+RUN dotnet tool install --allow-roll-forward --global csharpier --version "${CSHARP_CSHARPIER_VERSION}"
 ```
 

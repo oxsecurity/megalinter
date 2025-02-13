@@ -14,14 +14,6 @@
 name: "Build & Deploy - DEV linters"
 on:
   pull_request:
-    branches-ignore: []
-    paths-ignore:
-      - .github/CONTRIBUTING.md
-      - CHANGELOG.md
-      - README.md
-      - .github/workflows/slash-command-dispatch.yml
-      - .github/workflows/help-command.yml
-      - .github/workflows/build-command.yml
 
 ###############
 # Set the Job #
@@ -31,7 +23,6 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-
   build:
     # Name the Job
     name: DEV/Linters
@@ -47,6 +38,7 @@ jobs:
           [
             "action_actionlint",
             "ansible_ansible_lint",
+            "api_spectral",
             "arm_arm_ttk",
             "bash_exec",
             "bash_shellcheck",
@@ -65,7 +57,6 @@ jobs:
             "csharp_csharpier",
             "csharp_roslynator",
             "css_stylelint",
-            "css_scss_lint",
             "dart_dartanalyzer",
             "dockerfile_hadolint",
             "editorconfig_editorconfig_checker",
@@ -83,28 +74,28 @@ jobs:
             "javascript_standard",
             "javascript_prettier",
             "json_jsonlint",
-            "json_eslint_plugin_jsonc",
             "json_v8r",
             "json_prettier",
             "json_npm_package_json_lint",
             "jsx_eslint",
             "kotlin_ktlint",
+            "kotlin_detekt",
             "kubernetes_kubeconform",
             "kubernetes_helm",
             "kubernetes_kubescape",
             "latex_chktex",
             "lua_luacheck",
-            "makefile_checkmake",
+            "lua_selene",
+            "lua_stylua",
             "markdown_markdownlint",
-            "markdown_remark_lint",
             "markdown_markdown_link_check",
             "markdown_markdown_table_formatter",
-            "openapi_spectral",
             "perl_perlcritic",
             "php_phpcs",
             "php_phpstan",
             "php_psalm",
             "php_phplint",
+            "php_phpcsfixer",
             "powershell_powershell",
             "powershell_powershell_formatter",
             "protobuf_protolint",
@@ -117,6 +108,7 @@ jobs:
             "python_mypy",
             "python_pyright",
             "python_ruff",
+            "python_ruff_format",
             "r_lintr",
             "raku_raku",
             "repository_checkov",
@@ -126,6 +118,7 @@ jobs:
             "repository_gitleaks",
             "repository_grype",
             "repository_kics",
+            "repository_ls_lint",
             "repository_secretlint",
             "repository_semgrep",
             "repository_syft",
@@ -142,13 +135,11 @@ jobs:
             "salesforce_sfdx_scanner_lwc",
             "salesforce_lightning_flow_scanner",
             "scala_scalafix",
-            "snakemake_lint",
             "snakemake_snakefmt",
             "spell_cspell",
             "spell_proselint",
             "spell_vale",
             "spell_lychee",
-            "sql_sql_lint",
             "sql_sqlfluff",
             "sql_tsqllint",
             "swift_swiftlint",
@@ -168,29 +159,24 @@ jobs:
             "yaml_v8r",
           ]
 # linters-end
-        platform: ['linux/amd64']
+        platform: ["linux/amd64"]
     # Only run this on the main repo
     if: |
-        (
-        (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository) ||
-        (github.event_name == 'push' && github.repository == 'oxsecurity/megalinter')
-        )
-        && !contains(github.event.head_commit.message, 'skip deploy')
+      (
+      (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository) ||
+      (github.event_name == 'push' && github.repository == 'oxsecurity/megalinter')
+      )
+      && !contains(github.event.head_commit.message, 'skip deploy')
 
     ##################
     # Load all steps #
     ##################
     steps:
-      - name: Collect Workflow Telemetry
-        uses: runforesight/workflow-telemetry-action@v1
-        with:
-          comment_on_pr: false
-
       - name: Checkout Code
         uses: actions/checkout@v4
-        
+
       - name: Docker Metadata action
-        uses: docker/metadata-action@v5.3.0
+        uses: docker/metadata-action@v5.6.1
         id: meta
         with:
           images: |
@@ -199,13 +185,12 @@ jobs:
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
         if: ${{ ( ( runner.arch != 'X64' || runner.os != 'Linux' ) && matrix.platform == 'linux/amd64' ) || matrix.platform != 'linux/amd64' }}
-        
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
       - name: Build Image
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: .
           file: linters/${{ matrix.linter }}/Dockerfile
@@ -241,12 +226,13 @@ jobs:
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: 'docker.io/${{ fromJson(steps.meta.outputs.json).tags[0] }}'
-          format: 'table'
-          exit-code: '1'
+          image-ref: "${{ fromJson(steps.meta.outputs.json).tags[0] }}"
+          format: "table"
+          exit-code: "1"
           ignore-unfixed: true
           scanners: vuln
-          vuln-type: 'os,library'
-          severity: 'CRITICAL,HIGH'
+          vuln-type: "os,library"
+          severity: "CRITICAL,HIGH"
           timeout: 10m0s
-      
+        env:
+            ACTIONS_RUNTIME_TOKEN: ${{ secrets.GITHUB_TOKEN }}

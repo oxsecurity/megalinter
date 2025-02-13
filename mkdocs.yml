@@ -5,15 +5,16 @@ repo_url: https://github.com/oxsecurity/megalinter
 edit_uri: tree/main/docs
 site_author: Nicolas Vuillamy
 # site_description-start
-site_description: MegaLinter is an Open-Source tool for CI/CD workflows that analyzes the consistency of your code, IAC, configuration, and scripts in your repository sources, to ensure all your projects sources are clean and formatted whatever IDE/toolbox is used by their developers, powered by OX Security.Supporting 59 languages, 24 formats, 20 tooling formats and ready to use out of the box, as a GitHub action or any CI system highly configurable and free for all uses.Switch to MegaLinter v7 !
+site_description: MegaLinter is an Open-Source tool for CI/CD workflows that analyzes the consistency of your code, IAC, configuration, and scripts in your repository sources, to ensure all your projects sources are clean and formatted whatever IDE/toolbox is used by their developers, powered by OX Security.Supporting 63 languages, 23 formats, 20 tooling formats and ready to use out of the box, as a GitHub action or any CI system, highly configurable and free for all uses.MegaLinter has native integrations with many of the major CI/CD tools of the market.
 # site_description-end
-copyright: Copyright &copy; 2022 <a href="https://www.ox.security/?ref=megalinter" target= "_blank">OX Security</a> &amp; <a href="https://github.com/nvuillam" target="_blank">Nicolas Vuillamy</a>
+copyright: Copyright &copy; 2024 <a href="https://www.ox.security/?ref=megalinter" target= "_blank">OX Security</a> &amp; <a href="https://github.com/nvuillam" target="_blank">Nicolas Vuillamy</a>
 theme:
   name: material
   font: 
     text: Satoshi, sans-serif
   custom_dir: docs/overrides
   features:
+    - content.code.copy
     - navigation.instant
     - navigation.footer
   logo: assets/images/mega-linter-square.png
@@ -139,9 +140,12 @@ nav:
           - "KOTLIN":
               - "All KOTLIN linters": "descriptors/kotlin.md"
               - "ktlint": "descriptors/kotlin_ktlint.md"
+              - "detekt": "descriptors/kotlin_detekt.md"
           - "LUA":
               - "All LUA linters": "descriptors/lua.md"
               - "luacheck": "descriptors/lua_luacheck.md"
+              - "selene": "descriptors/lua_selene.md"
+              - "stylua": "descriptors/lua_stylua.md"
           - "MAKEFILE":
               - "All MAKEFILE linters": "descriptors/makefile.md"
               - "checkmake": "descriptors/makefile_checkmake.md"
@@ -154,6 +158,7 @@ nav:
               - "phpstan": "descriptors/php_phpstan.md"
               - "psalm": "descriptors/php_psalm.md"
               - "phplint": "descriptors/php_phplint.md"
+              - "php-cs-fixer": "descriptors/php_php_cs_fixer.md"
           - "POWERSHELL":
               - "All POWERSHELL linters": "descriptors/powershell.md"
               - "powershell": "descriptors/powershell_powershell.md"
@@ -168,6 +173,7 @@ nav:
               - "mypy": "descriptors/python_mypy.md"
               - "pyright": "descriptors/python_pyright.md"
               - "ruff": "descriptors/python_ruff.md"
+              - "ruff-format": "descriptors/python_ruff_format.md"
           - "R":
               - "All R linters": "descriptors/r.md"
               - "lintr": "descriptors/r_lintr.md"
@@ -191,7 +197,6 @@ nav:
               - "scalafix": "descriptors/scala_scalafix.md"
           - "SQL":
               - "All SQL linters": "descriptors/sql.md"
-              - "sql-lint": "descriptors/sql_sql_lint.md"
               - "sqlfluff": "descriptors/sql_sqlfluff.md"
               - "tsqllint": "descriptors/sql_tsqllint.md"
           - "SWIFT":
@@ -215,7 +220,6 @@ nav:
           - "CSS":
               - "All CSS linters": "descriptors/css.md"
               - "stylelint": "descriptors/css_stylelint.md"
-              - "scss-lint": "descriptors/css_scss_lint.md"
           - "ENV":
               - "All ENV linters": "descriptors/env.md"
               - "dotenv-linter": "descriptors/env_dotenv_linter.md"
@@ -268,6 +272,9 @@ nav:
           - "ANSIBLE":
               - "All ANSIBLE linters": "descriptors/ansible.md"
               - "ansible-lint": "descriptors/ansible_ansible_lint.md"
+          - "API":
+              - "All API linters": "descriptors/api.md"
+              - "spectral": "descriptors/api_spectral.md"
           - "ARM":
               - "All ARM linters": "descriptors/arm.md"
               - "arm-ttk": "descriptors/arm_arm_ttk.md"
@@ -291,9 +298,6 @@ nav:
               - "kubeconform": "descriptors/kubernetes_kubeconform.md"
               - "helm": "descriptors/kubernetes_helm.md"
               - "kubescape": "descriptors/kubernetes_kubescape.md"
-          - "OPENAPI":
-              - "All OPENAPI linters": "descriptors/openapi.md"
-              - "spectral": "descriptors/openapi_spectral.md"
           - "PUPPET":
               - "All PUPPET linters": "descriptors/puppet.md"
               - "puppet-lint": "descriptors/puppet_puppet_lint.md"
@@ -326,6 +330,7 @@ nav:
               - "gitleaks": "descriptors/repository_gitleaks.md"
               - "grype": "descriptors/repository_grype.md"
               - "kics": "descriptors/repository_kics.md"
+              - "ls-lint": "descriptors/repository_ls_lint.md"
               - "secretlint": "descriptors/repository_secretlint.md"
               - "semgrep": "descriptors/repository_semgrep.md"
               - "syft": "descriptors/repository_syft.md"
@@ -345,6 +350,8 @@ nav:
       - "GitHub Pull Request comments": "reporters/GitHubCommentReporter.md"
       - "Gitlab Merge Request comments": "reporters/GitlabCommentReporter.md"
       - "Azure Pull Request comments": "reporters/AzureCommentReporter.md"
+      - "Bitbucket Pull Request comments": "reporters/BitbucketCommentReporter.md"
+      - "API (Grafana)": "reporters/ApiReporter.md"
       - "GitHub Status": "reporters/GitHubStatusReporter.md"
       - "SARIF Reporter": "reporters/SarifReporter.md"
       - "Updated sources": "reporters/UpdatedSourcesReporter.md"
@@ -354,6 +361,7 @@ nav:
       - "TAP files": "reporters/TapReporter.md"
       - "Console": "reporters/ConsoleReporter.md"
       - "JSON": "reporters/JsonReporter.md"
+      - "Markdown Summary": "reporters/MarkdownSummaryReporter.md"
   - "Flavors":
       - "All flavors": "flavors.md"
       # flavors-start
@@ -394,4 +402,4 @@ nav:
       - "AGPL V3 License": "license.md"
       - "License explanations": "license-explanations.md"
   - "Changelog": "CHANGELOG.md"
-  - "OX Security": "https://ox.security?ref=megalinter"
+  - "Try OX Security ASPM": "https://ox.security?ref=megalinter"

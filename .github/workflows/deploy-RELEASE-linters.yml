@@ -38,12 +38,12 @@ jobs:
     # Set the agent to run on
     runs-on: ${{ matrix.os }}
     permissions:
+      actions: write
       packages: write
     environment:
       name: release
     strategy:
       fail-fast: false
-      max-parallel: 10
       matrix:
         os: [ubuntu-latest]
         # linters-start
@@ -51,6 +51,7 @@ jobs:
           [
             "action_actionlint",
             "ansible_ansible_lint",
+            "api_spectral",
             "arm_arm_ttk",
             "bash_exec",
             "bash_shellcheck",
@@ -69,7 +70,6 @@ jobs:
             "csharp_csharpier",
             "csharp_roslynator",
             "css_stylelint",
-            "css_scss_lint",
             "dart_dartanalyzer",
             "dockerfile_hadolint",
             "editorconfig_editorconfig_checker",
@@ -87,28 +87,28 @@ jobs:
             "javascript_standard",
             "javascript_prettier",
             "json_jsonlint",
-            "json_eslint_plugin_jsonc",
             "json_v8r",
             "json_prettier",
             "json_npm_package_json_lint",
             "jsx_eslint",
             "kotlin_ktlint",
+            "kotlin_detekt",
             "kubernetes_kubeconform",
             "kubernetes_helm",
             "kubernetes_kubescape",
             "latex_chktex",
             "lua_luacheck",
-            "makefile_checkmake",
+            "lua_selene",
+            "lua_stylua",
             "markdown_markdownlint",
-            "markdown_remark_lint",
             "markdown_markdown_link_check",
             "markdown_markdown_table_formatter",
-            "openapi_spectral",
             "perl_perlcritic",
             "php_phpcs",
             "php_phpstan",
             "php_psalm",
             "php_phplint",
+            "php_phpcsfixer",
             "powershell_powershell",
             "powershell_powershell_formatter",
             "protobuf_protolint",
@@ -121,6 +121,7 @@ jobs:
             "python_mypy",
             "python_pyright",
             "python_ruff",
+            "python_ruff_format",
             "r_lintr",
             "raku_raku",
             "repository_checkov",
@@ -130,6 +131,7 @@ jobs:
             "repository_gitleaks",
             "repository_grype",
             "repository_kics",
+            "repository_ls_lint",
             "repository_secretlint",
             "repository_semgrep",
             "repository_syft",
@@ -146,13 +148,11 @@ jobs:
             "salesforce_sfdx_scanner_lwc",
             "salesforce_lightning_flow_scanner",
             "scala_scalafix",
-            "snakemake_lint",
             "snakemake_snakefmt",
             "spell_cspell",
             "spell_proselint",
             "spell_vale",
             "spell_lychee",
-            "sql_sql_lint",
             "sql_sqlfluff",
             "sql_tsqllint",
             "swift_swiftlint",
@@ -184,12 +184,6 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Login to Docker Hub
-        uses: docker/login-action@v3
-        with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v3
         with:
@@ -201,7 +195,7 @@ jobs:
         run: echo "BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" >> ${GITHUB_ENV}
 
       - name: Build Image
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: .
           file: Dockerfile-release
@@ -216,14 +210,28 @@ jobs:
           secrets: |
             GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
           tags: |
-            docker.io/oxsecurity/megalinter-only-${{ matrix.linter }}:v7
-            docker.io/oxsecurity/megalinter-only-${{ matrix.linter }}:${{ github.event.release.tag_name }}
-            docker.io/oxsecurity/megalinter-only-${{ matrix.linter }}:latest
-            ghcr.io/oxsecurity/megalinter-only-${{ matrix.linter }}:v7
+            ghcr.io/oxsecurity/megalinter-only-${{ matrix.linter }}:v8
             ghcr.io/oxsecurity/megalinter-only-${{ matrix.linter }}:${{ github.event.release.tag_name }}
             ghcr.io/oxsecurity/megalinter-only-${{ matrix.linter }}:latest
 
-
+      - name: Invoke Mirror docker image workflow (Standalone image)
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: mirror-docker-image.yml
+          inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter-only-${{ matrix.linter }}:v8", "target-image": "docker.io/oxsecurity/megalinter-only-${{ matrix.linter }}:v8" }'
+          ref: main
+      - name: Invoke Mirror docker image workflow (Standalone image)
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: mirror-docker-image.yml
+          inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter-only-${{ matrix.linter }}:v8", "target-image": "docker.io/oxsecurity/megalinter-only-${{ matrix.linter }}:${{ github.event.release.tag_name }}" }'
+          ref: main
+      - name: Invoke Mirror docker image workflow (Standalone image)
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: mirror-docker-image.yml
+          inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter-only-${{ matrix.linter }}:v8", "target-image": "docker.io/oxsecurity/megalinter-only-${{ matrix.linter }}:latest" }'
+          ref: main
       #####################################
       # Run Linter test cases #
       #####################################
@@ -236,7 +244,7 @@ jobs:
           TEST_KEYWORDS_TO_USE_UPPER="${{ matrix.linter }}"
           TEST_KEYWORDS_TO_USE="${TEST_KEYWORDS_TO_USE_UPPER,,}"
 
-          docker run -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=text -e OUTPUT_FOLDER=${{ github.sha }} -e OUTPUT_DETAIL=detailed -e GITHUB_SHA=${{ github.sha }} -e GITHUB_REPOSITORY=${GITHUB_REPOSITORY} -e GITHUB_BRANCH=${GITHUB_BRANCH} -e GITHUB_TOKEN="${{ secrets.GITHUB_TOKEN }}" -e TEST_KEYWORDS="${TEST_KEYWORDS_TO_USE}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint oxsecurity/megalinter-only-${{ matrix.linter }}:${{ github.event.release.tag_name }}
+          docker run -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=text -e OUTPUT_FOLDER=${{ github.sha }} -e OUTPUT_DETAIL=detailed -e GITHUB_SHA=${{ github.sha }} -e GITHUB_REPOSITORY=${GITHUB_REPOSITORY} -e GITHUB_BRANCH=${GITHUB_BRANCH} -e GITHUB_TOKEN="${{ secrets.GITHUB_TOKEN }}" -e TEST_KEYWORDS="${TEST_KEYWORDS_TO_USE}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint ghcr.io/oxsecurity/megalinter-only-${{ matrix.linter }}:${{ github.event.release.tag_name }}
         timeout-minutes: 30
 
       ##############################################
@@ -245,7 +253,7 @@ jobs:
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: 'docker.io/oxsecurity/megalinter-only-${{ matrix.linter }}:${{ github.event.release.tag_name }}'
+          image-ref: ghcr.io/oxsecurity/megalinter-only-${{ matrix.linter }}:${{ github.event.release.tag_name }}
           format: 'table'
           exit-code: '1'
           ignore-unfixed: true
@@ -253,3 +261,5 @@ jobs:
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
           timeout: 10m0s
+        env:
+            ACTIONS_RUNTIME_TOKEN: ${{ secrets.GITHUB_TOKEN }}

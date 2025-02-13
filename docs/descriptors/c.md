@@ -22,8 +22,10 @@ description: cpplint, clang-format are available to analyze C files in MegaLinte
 
 ## Configuration in MegaLinter
 
-| Variable               | Description                   | Default value |
-|------------------------|-------------------------------|---------------|
-| C_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| C_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable               | Description                                     | Default value |
+|------------------------|-------------------------------------------------|---------------|
+| C_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
+| C_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
+| C_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
+| C_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 

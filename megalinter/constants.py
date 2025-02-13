@@ -19,9 +19,12 @@ ML_DOCKER_IMAGE_LEGACY_V5 = "megalinter/megalinter"
 DEFAULT_DOCKER_WORKSPACE_DIR = "/tmp/lint"
 DEFAULT_REPORT_FOLDER_NAME = "megalinter-reports"
 DEFAULT_SARIF_REPORT_FILE_NAME = "megalinter-report.sarif"
+DEFAULT_MARKDOWN_SUMMARY_REPORT_FILE_NAME = "megalinter-report.md"
 DEFAULT_SARIF_SCHEMA_URI = "https://json.schemastore.org/sarif-2.1.0.json"
 DEFAULT_SARIF_VERSION = "2.1.0"
-DEFAULT_RELEASE = "v7"
+DEFAULT_RELEASE = "v8"
+
+DEFAULT_DOCKERFILE_ARGS: list[str] = []
 
 DEFAULT_DOCKERFILE_APK_PACKAGES = [
     "bash",
@@ -35,3 +38,54 @@ DEFAULT_DOCKERFILE_APK_PACKAGES = [
     "musl-dev",
     "openssh",
 ]
+
+DEFAULT_DOCKERFILE_DOCKER_ARGS: list[str] = []
+
+DEFAULT_DOCKERFILE_DOCKER_APK_PACKAGES = [
+    "docker",
+    "openrc",
+]
+
+DEFAULT_DOCKERFILE_NPM_ARGS: list[str] = []
+
+DEFAULT_DOCKERFILE_NPM_APK_PACKAGES = [
+    "npm",
+    "nodejs-current",
+    "yarn",
+]
+
+DEFAULT_DOCKERFILE_GEM_ARGS: list[str] = []
+
+DEFAULT_DOCKERFILE_GEM_APK_PACKAGES = [
+    "ruby",
+    "ruby-dev",
+    "ruby-bundler",
+    "ruby-rdoc",
+]
+
+DEFAULT_DOCKERFILE_PIP_ARGS = [
+    "# renovate: datasource=pypi depName=pip\nARG PIP_PIP_VERSION=25.0.1",
+]
+
+DEFAULT_DOCKERFILE_PIPENV_ARGS = [
+    "# renovate: datasource=pypi depName=virtualenv\nARG PIP_VIRTUALENV_VERSION=20.29.2",
+]
+
+DEFAULT_DOCKERFILE_RUST_ARGS = [
+    "# renovate: datasource=github-tags depName=rust-lang/rust\nARG RUST_RUST_VERSION=1.84.1",
+]
+
+DEFAULT_DOCKERFILE_FLAVOR_ARGS = [
+    "# renovate: datasource=crate depName=sarif-fmt\nARG CARGO_SARIF_FMT_VERSION=0.7.0",
+]
+
+DEFAULT_DOCKERFILE_FLAVOR_CARGO_PACKAGES = [
+    "sarif-fmt@${CARGO_SARIF_FMT_VERSION}",
+]
+
+OX_MARKDOWN_LINK = (
+    "[![MegaLinter is graciously provided by OX Security]"
+    + "(https://raw.githubusercontent.com/oxsecurity/megalinter/main/"
+    + "docs/assets/images/ox-banner.png)]"
+    + "(https://www.ox.security/?ref=megalinter)"
+)

@@ -9,19 +9,21 @@ test_folder: coffeescript
 linters:
   # Coffee Lint
   - linter_name: coffeelint
-    linter_url: http://www.coffeelint.org
-    linter_rules_url: http://www.coffeelint.org/#options
+    linter_url: https://coffeelint.github.io/
+    linter_rules_url: https://coffeelint.github.io/#options
     linter_repo: https://github.com/clutchski/coffeelint
-    linter_rules_configuration_url: http://www.coffeelint.org/#options
-    linter_rules_inline_disable_url: http://www.coffeelint.org/#options
     config_file_name: .coffee-lint.json
     cli_config_arg_name: "-f"
     examples:
       - "coffeelint myfile.coffee"
       - "coffeelint -f .coffee-lint.json myfile.coffee"
     install:
+      dockerfile:
+        - |-
+          # renovate: datasource=npm depName=@coffeelint/cli
+          ARG NPM_COFFEELINT_CLI_VERSION=5.2.11
       npm:
-        - "@coffeelint/cli"
+        - "@coffeelint/cli@${NPM_COFFEELINT_CLI_VERSION}"
     ide:
       atom:
         - name: linter-coffeelint

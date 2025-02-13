@@ -20,8 +20,10 @@ description: cspell, proselint, vale, lychee are available to analyze SPELL file
 
 ## Configuration in MegaLinter
 
-| Variable                   | Description                   | Default value |
-|----------------------------|-------------------------------|---------------|
-| SPELL_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| SPELL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable                   | Description                                     | Default value |
+|----------------------------|-------------------------------------------------|---------------|
+| SPELL_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
+| SPELL_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
+| SPELL_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
+| SPELL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 

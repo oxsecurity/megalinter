@@ -1,17 +1,34 @@
 terraform {
-  required_version = ">= 1.2.5"
-}
-
-resource "aws_instance" "good" {
-  required_version = ">= 0.15.0"
-  ami                         = "ami-0ff8a91507f77f867"
-  instance_type               = "t2.small"
-  associate_public_ip_address = false
-
-  vpc_security_group_ids = ["sg-12345678901234567"]
-
-  ebs_block_device {
-    encrypted = true
+  required_version = ">= 1.8.5"
+  required_providers {
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = ">= 3.109.0" # https://registry.terraform.io/providers/hashicorp/azurerm/latest
+    }
   }
 }
 
+provider "azurerm" {
+  features {}
+}
+
+resource "azurerm_resource_group" "example" {
+  name     = "example-resources"
+  location = "East US"
+}
+
+resource "azurerm_storage_account" "example" {
+  name                     = "storageacc${random_id.suffix.hex}"
+  resource_group_name      = azurerm_resource_group.example.name
+  location                 = azurerm_resource_group.example.location
+  account_tier             = "Standard"
+  account_replication_type = "GRS"
+
+  tags = {
+    environment = "staging"
+  }
+}
+
+resource "random_id" "suffix" {
+  byte_length = 8
+}

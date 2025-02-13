@@ -17,6 +17,8 @@ MegaLinter can generate various reports that you can activate / deactivate and c
 | [GitHub Pull Request comments](reporters/GitHubCommentReporter.md)         | MegaLinter posts a comment on the PR with a summary of lint results, and links to detailed logs               | Active if GitHub Action      |
 | [Gitlab Merge Request comments](reporters/GitlabCommentReporter.md)        | Mega-Linter posts a comment on the MR with a summary of lint results, and links to detailed logs              | Active if in Gitlab CI       |
 | [Azure Pipelines Pull Request comments](reporters/AzureCommentReporter.md) | Mega-Linter posts a comment on the PR with a summary of lint results, and links to detailed logs              | Active if in Azure Pipelines |
+| [Bitbucket Pull Request comments](reporters/BitbucketCommentReporter.md)   | Mega-Linter posts a comment on the PR with a summary of lint results, and links to detailed logs              | Active if in Bitbucket CI    |
+| [API (Grafana)](reporters/ApiReporter.md)                                  | Sends logs and metrics to Grafana endpoint (Loki / Prometheus)                                                | Inactive                     |
 | [Updated sources](reporters/UpdatedSourcesReporter.md)                     | Zip containing **all formatted and autofixed sources** so you can extract them in your repository             | Active                       |
 | [IDE Configuration](reporters/ConfigReporter.md)                           | Apply MegaLinter configuration in your local IDE with linter config files and IDE extensions                  | Active                       |
 | [GitHub Status](reporters/GitHubStatusReporter.md)                         | One GitHub status by linter on the PR, with links to detailed logs                                            | Active if GitHub Action      |
@@ -25,5 +27,6 @@ MegaLinter can generate various reports that you can activate / deactivate and c
 | [Email](reporters/EmailReporter.md)                                        | Receive **all reports on your e-mail**, if you can not use artifacts                                          | Active                       |
 | [TAP files](reporters/TapReporter.md)                                      | One file by linter following [**Test Anything Protocol**](https://testanything.org/) format                   | Active                       |
 | [Console](reporters/ConsoleReporter.md)                                    | **Execution logs** visible in **console** with **summary table** and **links to other reports** at the end    | Active                       |
+| [Markdown Summary](reporters/MarkdownSummaryReporter.md)                   | Generates a Markdown summary report file                                                                      | Inactive                     |
 
 <!-- reporters-section-end -->

@@ -9,9 +9,9 @@ description: checkmake is available to analyze MAKEFILE files in MegaLinter
 
 ## Linters
 
-| Linter                                                                                   | Additional                                                                                                                     |
-|------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------|
-| [**checkmake**](makefile_checkmake.md)<br/>[_MAKEFILE_CHECKMAKE_](makefile_checkmake.md) | [![GitHub stars](https://img.shields.io/github/stars/mrtazz/checkmake?cacheSeconds=3600)](https://github.com/mrtazz/checkmake) |
+| Linter                                                                                   | Additional                                                                                                                                                                            |
+|------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [**checkmake**](makefile_checkmake.md)<br/>[_MAKEFILE_CHECKMAKE_](makefile_checkmake.md) | ![disabled](https://shields.io/badge/-disabled-orange) [![GitHub stars](https://img.shields.io/github/stars/mrtazz/checkmake?cacheSeconds=3600)](https://github.com/mrtazz/checkmake) |
 
 ## Linted files
 
@@ -20,8 +20,10 @@ description: checkmake is available to analyze MAKEFILE files in MegaLinter
 
 ## Configuration in MegaLinter
 
-| Variable                      | Description                   | Default value |
-|-------------------------------|-------------------------------|---------------|
-| MAKEFILE_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| MAKEFILE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable                      | Description                                     | Default value |
+|-------------------------------|-------------------------------------------------|---------------|
+| MAKEFILE_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
+| MAKEFILE_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
+| MAKEFILE_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
+| MAKEFILE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Use Syft to generate SBOM (Software bill of materials)
+Use Trivy to generate SBOM (Software bill of materials)
 """
 
 import json

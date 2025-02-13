@@ -1,0 +1,27 @@
+########################
+########################
+## Configuration File ##
+########################
+########################
+---
+database:
+  host: localhost
+  port: 5432
+  user: admin
+  password: admin
+
+server:
+  host: 0.0.0.0
+  port: 8080
+  ssl:
+    enabled: true
+    certificate: /path/to/cert.pem
+    key: /path/to/key.pem
+
+logging:
+  level: DEBUG
+  file: /var/log/webapp.log
+
+features:
+  enable_feature_x: true
+  enable_feature_y: false

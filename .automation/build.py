@@ -28,6 +28,18 @@ from giturlparse import parse
 from megalinter import config, utils
 from megalinter.constants import (
     DEFAULT_DOCKERFILE_APK_PACKAGES,
+    DEFAULT_DOCKERFILE_ARGS,
+    DEFAULT_DOCKERFILE_DOCKER_APK_PACKAGES,
+    DEFAULT_DOCKERFILE_DOCKER_ARGS,
+    DEFAULT_DOCKERFILE_FLAVOR_ARGS,
+    DEFAULT_DOCKERFILE_FLAVOR_CARGO_PACKAGES,
+    DEFAULT_DOCKERFILE_GEM_APK_PACKAGES,
+    DEFAULT_DOCKERFILE_GEM_ARGS,
+    DEFAULT_DOCKERFILE_NPM_APK_PACKAGES,
+    DEFAULT_DOCKERFILE_NPM_ARGS,
+    DEFAULT_DOCKERFILE_PIP_ARGS,
+    DEFAULT_DOCKERFILE_PIPENV_ARGS,
+    DEFAULT_DOCKERFILE_RUST_ARGS,
     DEFAULT_RELEASE,
     DEFAULT_REPORT_FOLDER_NAME,
     ML_DOC_URL_BASE,
@@ -128,9 +140,26 @@ DEPRECATED_LINTERS = [
     "SPELL_MISSPELL",  # Removed in v7
     "TERRAFORM_CHECKOV",  # Removed in v7
     "TERRAFORM_KICS",  # Removed in v7
+    "CSS_SCSSLINT",  # Removed in v8
+    "OPENAPI_SPECTRAL",  # Removed in v8
+    "SQL_SQL_LINT",  # Removed in v8
 ]
 
 DESCRIPTORS_FOR_BUILD_CACHE = None
+
+MAIN_DOCKERFILE = f"{REPO_HOME}/Dockerfile"
+
+ALPINE_VERSION = ""
+
+with open(MAIN_DOCKERFILE, "r", encoding="utf-8") as main_dockerfile_file:
+    main_dockerfile_content = main_dockerfile_file.read()
+
+    match = re.search(r"FROM python:.*-alpine(\d+.\d+.?\d+)", main_dockerfile_content)
+
+    if match:
+        ALPINE_VERSION = match.group(1)
+    else:
+        logging.critical("No Alpine version found")
 
 
 # Generate one Dockerfile by MegaLinter flavor
@@ -276,7 +305,8 @@ branding:
         requires_docker,
         flavor,
         extra_lines,
-        {"cargo": ["sarif-fmt"]},
+        DEFAULT_DOCKERFILE_FLAVOR_ARGS.copy(),
+        {"cargo": DEFAULT_DOCKERFILE_FLAVOR_CARGO_PACKAGES.copy()},
     )
 
 
@@ -286,13 +316,16 @@ def build_dockerfile(
     requires_docker,
     flavor,
     extra_lines,
+    extra_args=None,
     extra_packages=None,
 ):
     if extra_packages is None:
         extra_packages = {}
     # Gather all dockerfile commands
     docker_from = []
-    docker_arg = []
+    docker_arg = DEFAULT_DOCKERFILE_ARGS.copy()
+    if extra_args is not None:
+        docker_arg += extra_args
     docker_copy = []
     docker_other = []
     all_dockerfile_items = []
@@ -305,9 +338,10 @@ def build_dockerfile(
     is_docker_other_run = False
     # Manage docker
     if requires_docker is True:
-        apk_packages += ["docker", "openrc"]
+        docker_arg += DEFAULT_DOCKERFILE_DOCKER_ARGS.copy()
+        apk_packages += DEFAULT_DOCKERFILE_DOCKER_APK_PACKAGES.copy()
         docker_other += [
-            "RUN rc-update add docker boot && rc-service docker start || true"
+            "RUN rc-update add docker boot && (rc-service docker start || true)"
         ]
         is_docker_other_run = True
     for item in descriptor_and_linters:
@@ -327,7 +361,11 @@ def build_dockerfile(
                         )
                     docker_from += [dockerfile_item]
                 # ARG
-                elif dockerfile_item.startswith("ARG"):
+                elif dockerfile_item.startswith("ARG") or (
+                    len(dockerfile_item.splitlines()) > 1
+                    and dockerfile_item.splitlines()[0].startswith("# renovate: ")
+                    and dockerfile_item.splitlines()[1].startswith("ARG")
+                ):
                     docker_arg += [dockerfile_item]
                 # COPY
                 elif dockerfile_item.startswith("COPY"):
@@ -393,7 +431,7 @@ def build_dockerfile(
                     is_docker_other_run = False
                     docker_other += [dockerfile_item]
                 all_dockerfile_items += [dockerfile_item]
-            docker_other += [""]
+            docker_other += ["#"]
         # Collect python packages
         if "apk" in item["install"]:
             apk_packages += item["install"]["apk"]
@@ -414,10 +452,41 @@ def build_dockerfile(
             cargo_packages += item["install"]["cargo"]
     # Add node install if node packages are here
     if len(npm_packages) > 0:
-        apk_packages += ["npm", "nodejs-current", "yarn"]
+        docker_arg += DEFAULT_DOCKERFILE_NPM_ARGS.copy()
+        apk_packages += DEFAULT_DOCKERFILE_NPM_APK_PACKAGES.copy()
     # Add ruby apk packages if gem packages are here
     if len(gem_packages) > 0:
-        apk_packages += ["ruby", "ruby-dev", "ruby-bundler", "ruby-rdoc"]
+        docker_arg += DEFAULT_DOCKERFILE_GEM_ARGS.copy()
+        apk_packages += DEFAULT_DOCKERFILE_GEM_APK_PACKAGES.copy()
+    if len(pip_packages) > 0:
+        docker_arg += DEFAULT_DOCKERFILE_PIP_ARGS.copy()
+    if len(pipvenv_packages) > 0:
+        docker_arg += DEFAULT_DOCKERFILE_PIPENV_ARGS.copy()
+    if len(cargo_packages) > 0:
+        docker_arg += DEFAULT_DOCKERFILE_RUST_ARGS.copy()
+    # Separate args used in FROM instructions from others
+    all_from_instructions = "\n".join(list(dict.fromkeys(docker_from)))
+    docker_arg_top = []
+    docker_arg_main = []
+    docker_arg_main_extra = []
+    for docker_arg_item in docker_arg:
+        match = re.match(
+            r"(?:# renovate: .*\n)?ARG\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*=?\s*",
+            docker_arg_item,
+        )
+        arg_name = match.group(1)
+        if arg_name in all_from_instructions:
+            docker_arg_top += [docker_arg_item]
+        else:
+            docker_arg_main += [docker_arg_item]
+
+        if docker_arg_item in docker_arg_top:
+            docker_arg_main_extra += [f"ARG {arg_name}"]
+
+    if len(docker_arg_main_extra) > 0:
+        docker_arg_main_extra.insert(0, "")
+
+        docker_arg_main += docker_arg_main_extra
     # Replace between tags in Dockerfile
     # Commands
     replace_in_file(
@@ -428,9 +497,15 @@ def build_dockerfile(
     )
     replace_in_file(
         dockerfile,
+        "#ARGTOP__START",
+        "#ARGTOP__END",
+        "\n".join(list(dict.fromkeys(docker_arg_top))),
+    )
+    replace_in_file(
+        dockerfile,
         "#ARG__START",
         "#ARG__END",
-        "\n".join(list(dict.fromkeys(docker_arg))),
+        "\n".join(list(dict.fromkeys(docker_arg_main))),
     )
     replace_in_file(
         dockerfile,
@@ -473,14 +548,14 @@ def build_dockerfile(
             cargo_packages = [
                 p for p in cargo_packages if p != "COMPILER_ONLY"
             ]  # remove empty string packages
-            cargo_cmd = "cargo install --force --locked " + "  ".join(
+            cargo_cmd = "cargo install --force --locked " + " ".join(
                 list(dict.fromkeys(cargo_packages))
             )
             rust_commands += [cargo_cmd]
         rustup_cargo_cmd = " && ".join(rust_commands)
         cargo_install_command = (
             "RUN curl https://sh.rustup.rs -sSf |"
-            + " sh -s -- -y --profile minimal --default-toolchain stable \\\n"
+            + " sh -s -- -y --profile minimal --default-toolchain ${RUST_RUST_VERSION} \\\n"
             + '    && export PATH="/root/.cargo/bin:${PATH}" \\\n'
             + f"    && {rustup_cargo_cmd} \\\n"
             + "    && rm -rf /root/.cargo/registry /root/.cargo/git "
@@ -497,24 +572,25 @@ def build_dockerfile(
             "WORKDIR /node-deps\n"
             + "RUN npm --no-cache install --ignore-scripts --omit=dev \\\n                "
             + " \\\n                ".join(list(dict.fromkeys(npm_packages)))
-            + "  && \\\n"
+            + " && \\\n"
             #    + '       echo "Fixing audit issues with npm…" \\\n'
             #    + "    && npm audit fix --audit-level=critical || true \\\n" # Deactivated for now
             + '    echo "Cleaning npm cache…" \\\n'
-            + "    && npm cache clean --force || true \\\n"
+            + "    && (npm cache clean --force || true) \\\n"
             + '    && echo "Changing owner of node_modules files…" \\\n'
             + '    && chown -R "$(id -u)":"$(id -g)" node_modules # fix for https://github.com/npm/cli/issues/5900 \\\n'
             + '    && echo "Removing extra node_module files…" \\\n'
-            + "    && rm -rf /root/.npm/_cacache \\\n"
-            + '    && find . -name "*.d.ts" -delete \\\n'
-            + '    && find . -name "*.map" -delete \\\n'
-            + '    && find . -name "*.npmignore" -delete \\\n'
-            + '    && find . -name "*.travis.yml" -delete \\\n'
-            + '    && find . -name "CHANGELOG.md" -delete \\\n'
-            + '    && find . -name "README.md" -delete \\\n'
-            + '    && find . -name ".package-lock.json" -delete \\\n'
-            + '    && find . -name "package-lock.json" -delete \\\n'
-            + '    && find . -name "README.md" -delete\n'
+            + '    && find . \\( -not -path "/proc" \\)'
+            + " -and \\( -type f"
+            + ' \\( -iname "*.d.ts"'
+            + ' -o -iname "*.map"'
+            + ' -o -iname "*.npmignore"'
+            + ' -o -iname "*.travis.yml"'
+            + ' -o -iname "CHANGELOG.md"'
+            + ' -o -iname "README.md"'
+            + ' -o -iname ".package-lock.json"'
+            + ' -o -iname "package-lock.json"'
+            + " \\) -o -type d -name /root/.npm/_cacache \\) -delete \n"
             + "WORKDIR /\n"
         )
     replace_in_file(dockerfile, "#NPM__START", "#NPM__END", npm_install_command)
@@ -522,11 +598,12 @@ def build_dockerfile(
     pip_install_command = ""
     if len(pip_packages) > 0:
         pip_install_command = (
-            "RUN PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir --upgrade pip &&"
-            + " PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir --upgrade \\\n          '"
+            "RUN PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir pip==${PIP_PIP_VERSION} &&"
+            + " PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir \\\n          '"
             + "' \\\n          '".join(list(dict.fromkeys(pip_packages)))
             + "' && \\\n"
-            + 'find . | grep -E "(/__pycache__$|\\.pyc$|\\.pyo$)" | xargs rm -rf && \\\n'
+            + r"find . \( -type f \( -iname \*.pyc -o -iname \*.pyo \) -o -type d -iname __pycache__ \) -delete"
+            + " \\\n    && "
             + "rm -rf /root/.cache"
         )
     replace_in_file(dockerfile, "#PIP__START", "#PIP__END", pip_install_command)
@@ -534,7 +611,7 @@ def build_dockerfile(
     if len(pipvenv_packages.items()) > 0:
         pipenv_install_command = (
             "RUN PYTHONDONTWRITEBYTECODE=1 pip3 install"
-            " --no-cache-dir --upgrade pip virtualenv \\\n"
+            " --no-cache-dir pip==${PIP_PIP_VERSION} virtualenv==${PIP_VIRTUALENV_VERSION} \\\n"
         )
         env_path_command = 'ENV PATH="${PATH}"'
         for pip_linter, pip_linter_packages in pipvenv_packages.items():
@@ -552,8 +629,10 @@ def build_dockerfile(
             env_path_command += f":/venvs/{pip_linter}/bin"
         pipenv_install_command = pipenv_install_command[:-2]  # remove last \
         pipenv_install_command += (
-            ' \\\n    && find . | grep -E "(/__pycache__$|\\.pyc$|\\.pyo$)" | xargs rm -rf '
-            + "&& rm -rf /root/.cache\n"
+            " \\\n    && "
+            + r"find /venvs \( -type f \( -iname \*.pyc -o -iname \*.pyo \) -o -type d -iname __pycache__ \) -delete"
+            + " \\\n    && "
+            + "rm -rf /root/.cache\n"
             + env_path_command
         )
     else:
@@ -661,6 +740,7 @@ def generate_linter_dockerfiles():
                 "    GITHUB_STATUS_REPORTER=false \\",
                 "    GITHUB_COMMENT_REPORTER=false \\",
                 "    EMAIL_REPORTER=false \\",
+                "    API_REPORTER=false \\",
                 "    FILEIO_REPORTER=false \\",
                 "    CONFIG_REPORTER=false \\",
                 "    SARIF_TO_HUMAN=false" "",
@@ -824,12 +904,19 @@ def generate_documentation():
         + "(#languages), "
         + f"[**{len(linters_by_type['format'])}** formats](#formats), "
         + f"[**{len(linters_by_type['tooling_format'])}** tooling formats](#tooling-formats) "
-        + "and **ready to use out of the box**, as a GitHub action or any CI system "
+        + "and **ready to use out of the box**, as a GitHub action or any CI system, "
         + "**highly configurable** and **free for all uses**.\n\n"
-        + "[**Switch to MegaLinter v7 !**]"
-        + "(https://github.com/oxsecurity/megalinter/issues/2692)\n\n"
-        + "[![Upgrade to v7 Video](https://img.youtube.com/vi/6NSBzq01S9g/0.jpg)]"
-        + "(https://www.youtube.com/watch?v=6NSBzq01S9g)"
+        + "MegaLinter has **native integrations** with many of the major CI/CD tools of the market.\n\n"
+        + "[![GitHub](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/github.png?raw=true>)](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/GitHubCommentReporter.md)\n"  # noqa: E501
+        + "[![Gitlab](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/gitlab.png?raw=true>)](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/GitlabCommentReporter.md)\n"  # noqa: E501
+        + "[![Azure](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/azure.png?raw=true>)](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/AzureCommentReporter.md)\n"  # noqa: E501
+        + "[![Bitbucket](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/bitbucket.png?raw=true>)](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/BitbucketCommentReporter.md)\n"  # noqa: E501
+        + "[![Jenkins](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/jenkins.png?raw=true>)](https://github.com/oxsecurity/megalinter/tree/main/docs/install-jenkins.md)\n"  # noqa: E501
+        + "[![Drone](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/drone.png?raw=true>)](https://github.com/oxsecurity/megalinter/tree/main/docs/install-drone.md)\n"  # noqa: E501
+        + "[![Concourse](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/concourse.png?raw=true>)](https://github.com/oxsecurity/megalinter/tree/main/docs/install-concourse.md)\n"  # noqa: E501
+        + "[![Docker](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/docker.png?raw=true>)](https://github.com/oxsecurity/megalinter/tree/main/docs/install-docker.md)\n"  # noqa: E501
+        + "[![SARIF](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/sarif.png?raw=true>)](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/SarifReporter.md)\n"  # noqa: E501
+        + "[![Grafana](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/grafana.png?raw=true>)](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/ApiReporter.md)\n\n"  # noqa: E501
     )
     # Update README.md file
     replace_in_file(
@@ -954,12 +1041,50 @@ def generate_descriptor_documentation(descriptor):
         "| ----------------- | -------------- | -------------- |",
     ]
     descriptor_md += [
+        f"| {descriptor.get('descriptor_id')}_PRE_COMMANDS | List of bash commands to run before the linters | None |",
+        f"| {descriptor.get('descriptor_id')}_POST_COMMANDS | List of bash commands to run after the linters | None |",
         f"| {descriptor.get('descriptor_id')}_FILTER_REGEX_INCLUDE | Custom regex including filter |  |",
         f"| {descriptor.get('descriptor_id')}_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |",
         "",
     ]
     add_in_config_schema_file(
         [
+            [
+                f"{descriptor.get('descriptor_id')}_PRE_COMMANDS",
+                {
+                    "$id": f"#/properties/{descriptor.get('descriptor_id')}_PRE_COMMANDS",
+                    "type": "array",
+                    "title": f"Pre commands for {descriptor.get('descriptor_id')} descriptor",
+                    "examples": [
+                        [
+                            {
+                                "command": "composer install",
+                                "continue_if_failed": False,
+                                "cwd": "workspace",
+                            }
+                        ]
+                    ],
+                    "items": {"$ref": "#/definitions/command_info"},
+                },
+            ],
+            [
+                f"{descriptor.get('descriptor_id')}_POST_COMMANDS",
+                {
+                    "$id": f"#/properties/{descriptor.get('descriptor_id')}_POST_COMMANDS",
+                    "type": "array",
+                    "title": f"Post commands for {descriptor.get('descriptor_id')} descriptor",
+                    "examples": [
+                        [
+                            {
+                                "command": "npm run test",
+                                "continue_if_failed": False,
+                                "cwd": "workspace",
+                            }
+                        ]
+                    ],
+                    "items": {"$ref": "#/definitions/command_info"},
+                },
+            ],
             [
                 f"{descriptor.get('descriptor_id')}_FILTER_REGEX_INCLUDE",
                 {
@@ -1052,7 +1177,7 @@ def generate_flavor_documentation(flavor_id, flavor, linters_tables_md):
 def dump_as_json(value: Any, empty_value: str) -> str:
     if not value:
         return empty_value
-    # Covert any value to string with JSON
+    # Convert any value to string with JSON
     # Don't indent since markdown table supports single line only
     result = json.dumps(value, indent=None, sort_keys=True)
     return f"`{result}`"
@@ -1063,11 +1188,15 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
     col_header = (
         "Language"
         if type1 == "language"
-        else "Format"
-        if type1 == "format"
-        else "Tooling format"
-        if type1 == "tooling_format"
-        else "Code quality checker"
+        else (
+            "Format"
+            if type1 == "format"
+            else (
+                "Tooling format"
+                if type1 == "tooling_format"
+                else "Code quality checker"
+            )
+        )
     )
     linters_tables_md += [
         f"### {type_label}",
@@ -1172,7 +1301,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         else:
             linter_doc_md += [f"# {linter.linter_name}\n{md_individual_extra}"]
 
-        # Indicate that a linter is disabled in this version
+        # Indicate that a linter is deprecated in this version
         title_prefix = ""
         if hasattr(linter, "deprecated") and linter.deprecated is True:
             title_prefix = "(deprecated) "
@@ -1199,9 +1328,10 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         # Indicate that a linter is disabled in this version
         if hasattr(linter, "disabled") and linter.disabled is True:
             linter_doc_md += [""]
-            linter_doc_md += [
-                "_This linter has been temporary disabled in this version_"
-            ]
+            linter_doc_md += ["_This linter has been disabled in this version_"]
+            if hasattr(linter, "disabled_reason") and linter.disabled_reason:
+                linter_doc_md += [""]
+                linter_doc_md += [f"_Disabled reason: {linter.disabled_reason}_"]
 
         # Linter text , if defined in YML descriptor
         if hasattr(linter, "linter_text") and linter.linter_text:
@@ -1379,47 +1509,41 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                     f"{linter.name}_FILTER_REGEX_EXCLUDE",
                 ]
             )
-        # cli_lint_mode can be overridden by user config if the descriptor cli_lint_mode is not "project"
-        if linter.cli_lint_mode != "project":
-            cli_lint_mode_doc_md = (
-                f"| {linter.name}_CLI_LINT_MODE | Override default CLI lint mode<br/>"
-            )
-            cli_lint_mode_doc_md += "- `file`: Calls the linter for each file<br/>"
-
-            if linter.cli_lint_mode == "file":
-                enum = ["file", "project"]
-            else:
-                enum = ["file", "list_of_files", "project"]
-
-                cli_lint_mode_doc_md += "- `list_of_files`: Call the linter with the list of files as argument<br/>"
-
+        # cli_lint_mode can be overridden by user config
+        # if the descriptor cli_lint_mode == "project", it's at the user's own risk :)
+        cli_lint_mode_doc_md = (
+            f"| {linter.name}_CLI_LINT_MODE | Override default CLI lint mode<br/>"
+        )
+        if linter.cli_lint_mode == "project":
             cli_lint_mode_doc_md += (
-                "- `project`: Call the linter from the root of the project"
+                "⚠️ As default value is **project**, overriding might not work<br/>"
             )
-            cli_lint_mode_doc_md += f" | `{linter.cli_lint_mode}` |"
-
-            linter_doc_md += [cli_lint_mode_doc_md]
-
-            add_in_config_schema_file(
-                [
-                    [
-                        f"{linter.name}_CLI_LINT_MODE",
-                        {
-                            "$id": f"#/properties/{linter.name}_CLI_LINT_MODE",
-                            "type": "string",
-                            "title": f"{title_prefix}{linter.name}: Override default cli lint mode",
-                            "default": linter.cli_lint_mode,
-                            "enum": enum,
-                        },
-                    ]
-                ]
-            )
+        cli_lint_mode_doc_md += "- `file`: Calls the linter for each file<br/>"
+        if linter.cli_lint_mode == "file":
+            enum = ["file", "project"]
         else:
-            remove_in_config_schema_file(
+            enum = ["file", "list_of_files", "project"]
+            cli_lint_mode_doc_md += "- `list_of_files`: Call the linter with the list of files as argument<br/>"
+        cli_lint_mode_doc_md += (
+            "- `project`: Call the linter from the root of the project"
+        )
+        cli_lint_mode_doc_md += f" | `{linter.cli_lint_mode}` |"
+        linter_doc_md += [cli_lint_mode_doc_md]
+        add_in_config_schema_file(
+            [
                 [
                     f"{linter.name}_CLI_LINT_MODE",
+                    {
+                        "$id": f"#/properties/{linter.name}_CLI_LINT_MODE",
+                        "type": "string",
+                        "title": f"{title_prefix}{linter.name}: Override default cli lint mode",
+                        "default": linter.cli_lint_mode,
+                        "enum": enum,
+                    },
                 ]
-            )
+            ]
+        )
+
         # File extensions & file names override if not "lint_all_files"
         if linter.lint_all_files is False:
             linter_doc_md += [
@@ -1470,12 +1594,12 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         # Pre/post commands & unsecured variables
         linter_doc_md += [
             f"| {linter.name}_PRE_COMMANDS | List of bash commands to run before the linter"
-            f"| {dump_as_json(linter.pre_commands,'None')} |",
+            f"| {dump_as_json(linter.pre_commands, 'None')} |",
             f"| {linter.name}_POST_COMMANDS | List of bash commands to run after the linter"
-            f"| {dump_as_json(linter.post_commands,'None')} |",
+            f"| {dump_as_json(linter.post_commands, 'None')} |",
             f"| {linter.name}_UNSECURED_ENV_VARIABLES  | List of env variables explicitly "
             + f"not filtered before calling {linter.name} and its pre/post commands"
-            f"| {dump_as_json(linter.post_commands,'None')} |",
+            f"| {dump_as_json(linter.post_commands, 'None')} |",
         ]
         add_in_config_schema_file(
             [
@@ -1680,12 +1804,12 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                         f"| {icon_html} | {md_ide(ide)} | [{ide_extension['name']}]({ide_extension['url']}) | "
                         f"{install_link} |"
                     ]
-        # Mega-linter flavours
+        # Mega-linter flavors
         linter_doc_md += [
             "",
-            "## MegaLinter Flavours",
+            "## MegaLinter Flavors",
             "",
-            "This linter is available in the following flavours",
+            "This linter is available in the following flavors",
             "",
         ]
         linter_doc_md += build_flavors_md_table(
@@ -2062,7 +2186,7 @@ def get_install_md(item):
             item["install"]["apk"],
             "apk",
             "  ",
-            "https://pkgs.alpinelinux.org/packages?branch=edge&name=",
+            f"https://pkgs.alpinelinux.org/packages?branch=v{ALPINE_VERSION}&arch=x86_64&name=",
         )
     if "npm" in item["install"]:
         linter_doc_md += ["- NPM packages (node.js):"]
@@ -2286,7 +2410,7 @@ def add_in_config_schema_file(variables):
     json_schema["properties"] = json_schema_props
     if updated is True:
         with open(CONFIG_JSON_SCHEMA, "w", encoding="utf-8") as outfile:
-            json.dump(json_schema, outfile, indent=4, sort_keys=True)
+            json.dump(json_schema, outfile, indent=2, sort_keys=True)
             outfile.write("\n")
 
 
@@ -2303,7 +2427,7 @@ def remove_in_config_schema_file(variables):
     json_schema["properties"] = json_schema_props
     if updated is True:
         with open(CONFIG_JSON_SCHEMA, "w", encoding="utf-8") as outfile:
-            json.dump(json_schema, outfile, indent=4, sort_keys=True)
+            json.dump(json_schema, outfile, indent=2, sort_keys=True)
             outfile.write("\n")
 
 
@@ -2643,7 +2767,7 @@ def generate_json_schema_enums():
     with open(DESCRIPTOR_JSON_SCHEMA, "r", encoding="utf-8") as json_file:
         json_schema = json.load(json_file)
     json_schema["definitions"]["enum_flavors"]["enum"] = ["all_flavors"] + list(
-        flavors.keys()
+        sorted(set(list(flavors.keys())))
     )
     with open(DESCRIPTOR_JSON_SCHEMA, "w", encoding="utf-8") as outfile:
         json.dump(json_schema, outfile, indent=2, sort_keys=True)
@@ -2660,6 +2784,14 @@ def generate_json_schema_enums():
     json_schema["definitions"]["enum_linter_keys"]["enum"] = [x.name for x in linters]
     # Deprecated linters
     json_schema["definitions"]["enum_linter_keys"]["enum"] += DEPRECATED_LINTERS
+
+    # Sort:
+    json_schema["definitions"]["enum_descriptor_keys"]["enum"] = sorted(
+        set(json_schema["definitions"]["enum_descriptor_keys"]["enum"])
+    )
+    json_schema["definitions"]["enum_linter_keys"]["enum"] = sorted(
+        set(json_schema["definitions"]["enum_linter_keys"]["enum"])
+    )
     with open(CONFIG_JSON_SCHEMA, "w", encoding="utf-8") as outfile:
         json.dump(json_schema, outfile, indent=2, sort_keys=True)
         outfile.write("\n")
@@ -2834,11 +2966,15 @@ def generate_documentation_all_linters():
                             license = (
                                 resp["license"]["spdx_id"]
                                 if resp["license"]["spdx_id"] != "NOASSERTION"
-                                else resp["license"]["name"]
-                                if "name" in resp["license"]
-                                else resp["license"]["key"]
-                                if "key" in resp["license"]
-                                else ""
+                                else (
+                                    resp["license"]["name"]
+                                    if "name" in resp["license"]
+                                    else (
+                                        resp["license"]["key"]
+                                        if "key" in resp["license"]
+                                        else ""
+                                    )
+                                )
                             )
                             if license != "":
                                 linter_licenses[linter.linter_name] = license
@@ -3018,6 +3154,10 @@ def get_badges(
     badges = []
     repo = get_github_repo(linter)
 
+    if (hasattr(linter, "get") and linter.get("disabled") is True) or (
+        hasattr(linter, "disabled") and linter.disabled is True
+    ):
+        badges += ["![disabled](https://shields.io/badge/-disabled-orange)"]
     if (hasattr(linter, "get") and linter.get("deprecated") is True) or (
         hasattr(linter, "deprecated") and linter.deprecated is True
     ):
@@ -3199,6 +3339,14 @@ def generate_version():
     )
     print(process.stdout)
     print(process.stderr)
+    # Update python project version:
+    process = subprocess.run(
+        ["hatch", "version", RELEASE_TAG],
+        stdout=subprocess.PIPE,
+        text=True,
+        shell=True,
+        check=True,
+    )
     # Update changelog
     if UPDATE_CHANGELOG is True:
         changelog_file = f"{REPO_HOME}/CHANGELOG.md"
@@ -3254,6 +3402,8 @@ def update_workflows_linters():
 
     for descriptor in descriptors:
         for linter in descriptor["linters"]:
+            if "disabled" in linter and linter["disabled"] is True:
+                continue
             if "name" in linter:
                 name = linter["name"].lower()
             else:
@@ -3273,7 +3423,7 @@ def update_workflow_linters(file_path, linters):
         file_content = f.read()
         file_content = re.sub(
             r"(linter:\s+\[\s*)([^\[\]]*?)(\s*\])",
-            rf"\1{re.escape(linters).replace(chr(92),'').strip()}\3",
+            rf"\1{re.escape(linters).replace(chr(92), '').strip()}\3",
             file_content,
         )
 
@@ -3282,17 +3432,22 @@ def update_workflow_linters(file_path, linters):
 
 
 if __name__ == "__main__":
+    logging_format = (
+        "[%(levelname)s] %(message)s"
+        if "CI" in os.environ
+        else "%(asctime)s [%(levelname)s] %(message)s"
+    )
     try:
         logging.basicConfig(
             force=True,
             level=logging.INFO,
-            format="%(asctime)s [%(levelname)s] %(message)s",
+            format=logging_format,
             handlers=[logging.StreamHandler(sys.stdout)],
         )
     except ValueError:
         logging.basicConfig(
             level=logging.INFO,
-            format="%(asctime)s [%(levelname)s] %(message)s",
+            format=logging_format,
             handlers=[logging.StreamHandler(sys.stdout)],
         )
     config.init_config("build")

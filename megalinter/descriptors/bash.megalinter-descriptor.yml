@@ -7,10 +7,17 @@ descriptor_flavors:
   - c_cpp
   - formatters
 file_extensions:
+  - ""
   - ".sh"
   - ".bash"
   - ".dash"
   - ".ksh"
+file_contains_regex_extensions:
+  - ""
+file_contains_regex:
+  - "^#!/usr/bin/env bash"
+  - "^#!/bin/bash"
+  - "^#!/bin/sh"
 install:
   apk:
     - bash
@@ -75,10 +82,16 @@ linters:
       - "shellcheck --color=auto --external-sources myfile.sh"
     install:
       cargo:
-        - shellcheck-sarif
+        - shellcheck-sarif@${CARGO_SHELLCHECK_SARIF_VERSION}
       dockerfile:
+        - |-
+          # renovate: datasource=crate depName=shellcheck-sarif
+          ARG CARGO_SHELLCHECK_SARIF_VERSION=0.7.0
         # Also update shellcheck version in action.megalinter-descriptor.yml
-        - FROM koalaman/shellcheck:stable as shellcheck
+        - |-
+          # renovate: datasource=docker depName=koalaman/shellcheck
+          ARG BASH_SHELLCHECK_VERSION=v0.10.0
+        - FROM koalaman/shellcheck:${BASH_SHELLCHECK_VERSION} AS shellcheck
         - COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
     ide:
       atom:
@@ -124,7 +137,10 @@ linters:
       - "shfmt -w myfile.sh" # Fix
     install:
       dockerfile:
-        - FROM mvdan/shfmt:latest-alpine as shfmt
+        - |-
+          # renovate: datasource=docker depName=rhysd/actionlint
+          ARG BASH_SHFMT_VERSION=v3.10.0-alpine
+        - FROM mvdan/shfmt:${BASH_SHFMT_VERSION} AS shfmt
         - COPY --link --from=shfmt /bin/shfmt /usr/bin/
     ide:
       atom:

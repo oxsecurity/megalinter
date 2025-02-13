@@ -26,8 +26,10 @@ description: cfn-lint is available to analyze CLOUDFORMATION files in MegaLinter
 
 ## Configuration in MegaLinter
 
-| Variable                            | Description                   | Default value |
-|-------------------------------------|-------------------------------|---------------|
-| CLOUDFORMATION_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| CLOUDFORMATION_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable                            | Description                                     | Default value |
+|-------------------------------------|-------------------------------------------------|---------------|
+| CLOUDFORMATION_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
+| CLOUDFORMATION_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
+| CLOUDFORMATION_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
+| CLOUDFORMATION_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 

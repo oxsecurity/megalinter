@@ -17,11 +17,14 @@ description: xmllint is available to analyze XML files in MegaLinter
 
 - File extensions:
   - `.xml`
+  - `.xsd`
 
 ## Configuration in MegaLinter
 
-| Variable                 | Description                   | Default value |
-|--------------------------|-------------------------------|---------------|
-| XML_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| XML_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable                 | Description                                     | Default value |
+|--------------------------|-------------------------------------------------|---------------|
+| XML_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
+| XML_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
+| XML_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
+| XML_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 

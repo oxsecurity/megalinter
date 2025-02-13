@@ -8,8 +8,6 @@ description: Manual instructions to setup MegaLinter as a Gitlab Pipeline job
 
 # GitLab CI
 
-## Manual setup
-
 Create or update `.gitlab-ci.yml` file at the root of your repository
 
 ```yaml
@@ -20,7 +18,7 @@ mega-linter:
   stage: test
   # You can override MegaLinter flavor used to have faster performances
   # More info at https://megalinter.io/flavors/
-  image: oxsecurity/megalinter:v7
+  image: oxsecurity/megalinter:v8
   script: [ "true" ] # if script: ["true"] doesn't work, you may try ->  script: [ "/bin/bash /entrypoint.sh" ]
   variables:
     # All available variables are described in documentation
@@ -39,14 +37,6 @@ Create a Gitlab access token and define it in a variable **GITLAB_ACCESS_TOKEN_M
 ![config-gitlab-access-token](https://user-images.githubusercontent.com/17500430/151674446-1bcb1420-d9aa-4ae1-aaae-dcf51afb36ab.gif)
 
 ![Screenshot](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/TextReporter_gitlab_1.jpg?raw=true)
-
-## Using R2Devops
-
-![R2Devops Logo](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/r2devops-logo.jpg?raw=true)
-
-Our friends at [R2Devops](https://r2devops.io/) have packaged a [Gitlab-CI MegaLinter workflow](https://r2devops.io/marketplace/gitlab/r2devops/hub/mega_linter) on their [open-source templates marketplace](https://r2devops.io/marketplace), and it can post MegaLinter results in Gitlab Code Quality Reports !
-
-[![Screenshot](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/r2devops-link.jpg?raw=true)](https://r2devops.io/marketplace/gitlab/r2devops/hub/mega_linter)
 
 
 <!-- install-gitlab-section-end -->

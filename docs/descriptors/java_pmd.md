@@ -9,7 +9,7 @@ description: How to use pmd (configure, ignore files, ignore errors, help & vers
 
 ## pmd documentation
 
-- Version in MegaLinter: **6.55.0**
+- Version in MegaLinter: **7.10.0**
 - Visit [Official Web Site](https://pmd.github.io/){target=_blank}
 - See [How to configure pmd rules](https://docs.pmd-code.org/pmd-doc-6.55.0/pmd_userdocs_configuring_rules.html){target=_blank}
   - If custom `java-pmd-ruleset.xml` config file isn't found, [java-pmd-ruleset.xml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/java-pmd-ruleset.xml){target=_blank} will be used
@@ -39,17 +39,17 @@ description: How to use pmd (configure, ignore files, ignore errors, help & vers
 | JAVA_PMD_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
 | JAVA_PMD_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                         |
 | JAVA_PMD_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
-| JAVA_PMD_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `['/usr/bin/pmd/bin/run.sh']`                   |
+| JAVA_PMD_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `['/usr/bin/pmd/bin/pmd']`                      |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
-This linter is available in the following flavours
+This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                     | Embedded linters |                                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       121        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       125        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        85        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
-|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.io/beta/flavors/java/)       | Optimized for JAVA based projects               |        55        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.io/beta/flavors/java/)       | Optimized for JAVA based projects               |        52        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
 
 ## Behind the scenes
 
@@ -81,193 +81,22 @@ pmd --rulesets java-pmd-ruleset.xml --dir /path/to/sources
 ### Help content
 
 ```shell
-Usage: <main class> [options]
-  Options:
-    --aux-classpath, -auxclasspath
-       Specifies the classpath for libraries used by the source code. This is
-       used to resolve types in Java source files. The platform specific path
-       delimiter (":" on Linux, ";" on Windows) is used to separate the entries.
-       Alternatively, a single 'file:' URL to a text file containing path elements on
-       consecutive lines can be specified.
-    --benchmark, -benchmark, -b
-       Benchmark mode - output a benchmark report upon completion; default to
-       System.err.
-       Default: false
-    --cache, -cache
-       Specify the location of the cache file for incremental analysis. This
-       should be the full path to the file, including the desired file name (not just
-       the parent directory). If the file doesn't exist, it will be created on the
-       first run. The file will be overwritten on each run with the most up-to-date
-       rule violations.
-    --dir, -dir, -d
-       Path to a source file, or directory containing source files to analyze.
-       Note that a file is only effectively added if it matches a language known by
-       PMD. Zip and Jar files are also supported, if they are specified directly
-       (archive files found while exploring a directory are not recursively expanded).
-       This option can be repeated, and multiple arguments can be provided to a
-       single occurrence of the option. One of --dir, --file-list or --uri must be
-       provided.
-       Default: []
-    --encoding, -encoding, -e
-       Specifies the character set encoding of the source code files PMD is
-       reading (i.e., UTF-8).
-       Default: UTF-8
-    --fail-on-violation, --failOnViolation, -failOnViolation
-       By default PMD exits with status 4 if violations are found. Disable this
-       option with '-failOnViolation false' to exit with 0 instead and just write the
-       report.
-       Default: true
-    --file-list, -filelist
-       Path to a file containing a list of files to analyze, one path per line.
-       One of --dir, --file-list or --uri must be provided.
-    --force-language, -force-language
-       Force a language to be used for all input files, irrespective of file
-       names. When using this option, the automatic language selection by extension is
-       disabled, and PMD tries to parse all input files with the given language's parser.
-       Parsing errors are ignored.
-    --format, -format, -f
-       Report format type.
-       Default: text
-    --help, -help, -h, -H
-       Display help on usage.
-       Default: false
-    --ignore-list, -ignorelist
-       Path to a file containing a list of files to exclude from the analysis,
-       one path per line. This option can be combined with --dir and --file-list.
-    --minimum-priority, -minimumpriority, -min
-       Rule priority threshold; rules with lower priority than configured here
-       won't be used. Valid values are integers between 1 and 5 (inclusive), with 5
-       being the lowest priority.
-       Default: 5
-    --no-cache, -no-cache
-       Explicitly disable incremental analysis. The '-cache' option is ignored
-       if this switch is present in the command line.
-       Default: false
-    --no-ruleset-compatibility, -norulesetcompatibility
-       Disable the ruleset compatibility filter. The filter is active by default
-       and tries automatically 'fix' old ruleset files with old rule names
-       Default: false
-    --property, -property, -P
-       {name}={value}: Define a property for the report format.
-       Default: []
-    --relativize-paths-with, -z
-       Path relative to which directories are rendered in the report. This
-       option allows shortening directories in the report; without it, paths are
-       rendered as mentioned in the source directory (option "--dir"). The option can be
-       repeated, in which case the shortest relative path will be used. If the root path
-       is mentioned (e.g. "/" or "C:\"), then the paths will be rendered as
-       absolute.
-       Default: []
-    --report-file, -reportfile, -r
-       Path to a file to which report output is written. The file is created if
-       it does not exist. If this option is not specified, the report is rendered
-       to standard output.
-  * --rulesets, -rulesets, -R
-       Path to a ruleset xml file. The path may reference a resource on the
-       classpath of the application, be a local file system path, or a URL. The option can
-       be repeated, and multiple arguments can be provided to a single occurrence
-       of the option.
-    --short-names, -shortnames
-       Prints shortened filenames in the report.
-       Default: false
-    --show-suppressed, -showsuppressed
-       Report should show suppressed rule violations.
-       Default: false
-    --stress, -stress, -S
-       Performs a stress test.
-       Default: false
-    --suppress-marker, -suppressmarker
-       Specifies the string that marks a line which PMD should ignore; default
-       is NOPMD.
-       Default: NOPMD
-    --threads, -threads, -t
-       Sets the number of threads used by PMD.
-       Default: 1
-    --uri, -uri, -u
-       Database URI for sources. One of --dir, --file-list or --uri must be
-       provided.
-    --use-version
-       The language version PMD should use when parsing source code in the
-       language-version format, ie: 'java-1.8'
-       Default: []
-    --debug, --verbose, -debug, -verbose, -D, -V
-       Debug mode.
-       Default: false
-    --version
-       Display current version of PMD and exit without performing any analysis.
-       Default: false
-    -language, -l
-       Specify a language PMD should use.
-    -version, -v
-       Specify version of a language PMD should use.
-
-
-Mandatory arguments:
-1) A java source code filename or directory
-2) A report format
-3) A ruleset filename or a comma-delimited string of ruleset filenames
-
-For example:
-C:\>pmd-bin-6.55.0\bin\pmd.bat -d c:\my\source\code -f html -R java-unusedcode
-
-Languages and version supported:
-apex, ecmascript, html, java, jsp, modelica, plsql, pom, scala, vf, vm, wsdl, xml, xsl
-
-Available report formats and their configuration properties are:
-   codeclimate: Code Climate integration.
-   csv: Comma-separated values tabular format.
-        problem - Include Problem column   default: true
-        package - Include Package column   default: true
-        file - Include File column   default: true
-        priority - Include Priority column   default: true
-        line - Include Line column   default: true
-        desc - Include Description column   default: true
-        ruleSet - Include Rule set column   default: true
-        rule - Include Rule column   default: true
-   emacs: GNU Emacs integration.
-   empty: Empty, nothing.
-   html: HTML format
-        linePrefix - Prefix for line number anchor in the source file.
-        linkPrefix - Path to HTML source.
-        htmlExtension - Replace file extension with .html for the links (default: false)   default: false
-   ideaj: IntelliJ IDEA integration.
-        classAndMethodName - Class and Method name, pass '.method' when processing a directory.   default:
-        sourcePath - Source path.   default:
-        fileName - File name.   default:
-   json: JSON format.
-   sarif: Static Analysis Results Interchange Format (SARIF)
-   summaryhtml: Summary HTML format.
-        linePrefix - Prefix for line number anchor in the source file.
-        linkPrefix - Path to HTML source.
-        htmlExtension - Replace file extension with .html for the links (default: false)   default: false
-   text: Text format.
-   textcolor: Text format, with color support (requires ANSI console support, e.g. xterm, rxvt, etc.).
-        color - Enables colors with anything other than 'false' or '0'.   default: yes
-   textpad: TextPad integration.
-   vbhtml: Vladimir Bossicard HTML format.
-   xml: XML format.
-        encoding - XML encoding format, defaults to UTF-8.   default: UTF-8
-   xslt: XML with a XSL Transformation applied.
-        encoding - XML encoding format, defaults to UTF-8.   default: UTF-8
-        xsltFilename - The XSLT file name.
-   yahtml: Yet Another HTML format.
-        outputDir - Output directory.
-
-For example on windows:
-C:\>pmd-bin-6.55.0\bin\pmd.bat --dir c:\my\source\code --format text -R rulesets/java/quickstart.xml --use-version java-1.5 --debug
-C:\>pmd-bin-6.55.0\bin\pmd.bat -dir c:\my\source\code -f xml --rulesets rulesets/java/quickstart.xml,category/java/codestyle.xml --encoding UTF-8
-C:\>pmd-bin-6.55.0\bin\pmd.bat --d c:\my\source\code --rulesets rulesets/java/quickstart.xml --aux-classpath lib\commons-collections.jar;lib\derby.jar
-C:\>pmd-bin-6.55.0\bin\pmd.bat -d c:\my\source\code -f html -R rulesets/java/quickstart.xml --aux-classpath file:///C:/my/classpathfile
-
-For example on *nix:
-$ pmd-bin-6.55.0/bin/run.sh pmd --dir /home/workspace/src/main/java/code -f html --rulesets rulesets/java/quickstart.xml,category/java/codestyle.xml
-$ pmd-bin-6.55.0/bin/run.sh pmd -d ./src/main/java/code -R rulesets/java/quickstart.xml -f xslt --property xsltFilename=my-own.xsl
-$ pmd-bin-6.55.0/bin/run.sh pmd -d ./src/main/java/code -R rulesets/java/quickstart.xml -f xslt --property xsltFilename=html-report-v2.xslt
- - html-report-v2.xslt is at https://github.com/pmd/pmd/tree/master/pmd-core/etc/xslt/html-report-v2.xslt$ pmd-bin-6.55.0/bin/run.sh pmd -d ./src/main/java/code -f html -R rulesets/java/quickstart.xml --aux-classpath commons-collections.jar:derby.jar
-
-
-
-
+Usage: pmd [-hV] [COMMAND]
+  -h, --help      Show this help message and exit.
+  -V, --version   Print version information and exit.
+Commands:
+  check                The PMD standard source code analyzer
+  cpd                  Copy/Paste Detector - find duplicate code
+  designer             The PMD visual rule designer
+  cpd-gui              GUI for the Copy/Paste Detector
+                         Warning: May not support the full CPD feature set
+  ast-dump             Dumps the AST of parsing source code
+  generate-completion  Generate bash/zsh completion script for pmd.
+Exit Codes:
+  0   Successful analysis, no violations found
+  1   An unexpected error occurred during execution
+  2   Usage error, please refer to the command help
+  4   Successful analysis, at least 1 violation found
 ```
 
 ### Installation on mega-linter Docker image
@@ -275,15 +104,17 @@ $ pmd-bin-6.55.0/bin/run.sh pmd -d ./src/main/java/code -R rulesets/java/quickst
 - Dockerfile commands :
 ```dockerfile
 # Parent descriptor install
-ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 # Linter install
-ARG PMD_VERSION=6.55.0
-RUN wget --quiet https://github.com/pmd/pmd/releases/download/pmd_releases%2F${PMD_VERSION}/pmd-bin-${PMD_VERSION}.zip && \
-    unzip pmd-bin-${PMD_VERSION}.zip && \
-    rm pmd-bin-${PMD_VERSION}.zip && \
-    mv pmd-bin-${PMD_VERSION} /usr/bin/pmd && \
-    chmod +x /usr/bin/pmd/bin/run.sh
+# renovate: datasource=github-tags depName=pmd/pmd extractVersion=^pmd_releases/(?<version>.*)$
+ARG PMD_VERSION=7.10.0
+
+RUN wget --quiet https://github.com/pmd/pmd/releases/download/pmd_releases%2F${PMD_VERSION}/pmd-dist-${PMD_VERSION}-bin.zip && \
+    unzip pmd-dist-${PMD_VERSION}-bin.zip || echo "Error unzipping" && \
+    rm pmd-dist-${PMD_VERSION}-bin.zip || echo "Error rm" && \
+    mv pmd-bin-${PMD_VERSION} /usr/bin/pmd || echo "Error mv" && \
+    chmod +x /usr/bin/pmd/bin/pmd || echo "Error chmod"
 
 ```
 

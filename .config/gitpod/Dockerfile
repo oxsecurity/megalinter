@@ -2,7 +2,7 @@
 #     builder     #
 ###################
 # First stage: Install build-time dependencies
-FROM ubuntu:jammy as builder
+FROM ubuntu:noble as builder
 
 # hadolint ignore=DL3002
 USER root
@@ -16,7 +16,6 @@ COPY .python-version /tmp/
 # hadolint ignore=DL3008,DL3009,DL3013
 RUN PYTHON_VERSION=$(cut -d '.' -f 1,2 /tmp/.python-version) \
     && apt-get update \
-    && apt-get upgrade -y \
     && apt-get install -y --no-install-recommends \
     bash-completion \
     ca-certificates \
@@ -35,9 +34,7 @@ RUN PYTHON_VERSION=$(cut -d '.' -f 1,2 /tmp/.python-version) \
     sudo \
     tree \
     vim \
-    wget \
-    && python3 -m pip install --no-cache-dir --upgrade pip \
-    && python3 -m pip install --no-cache-dir virtualenv
+    wget
 
 ############################
 #     docker-installer     #
@@ -61,13 +58,19 @@ FROM docker-installer as npm-installer
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # Set a variable for packages version
-ARG NPM_VERSION=9.8.0
-ARG UNGIT_VERSION=1.5.23
-ARG MEGA_LINTER_RUNNER_VERSION=7.0.0
-ARG MARKDOWN_TABLE_FORMATTER_VERSION=1.4.0
+# renovate: datasource=npm depName=npm
+ARG NPM_VERSION=11.1.0
+# renovate: datasource=npm depName=ungit
+ARG UNGIT_VERSION=1.5.28
+# renovate: datasource=npm depName=mega-linter-runner
+ARG MEGA_LINTER_RUNNER_VERSION=8.4.2
+# renovate: datasource=npm depName=markdown-table-formatter
+ARG MARKDOWN_TABLE_FORMATTER_VERSION=1.6.1
 
+# Adapted from instructions in 
+# https://github.com/nodesource/distributions?tab=readme-ov-file#using-ubuntu-nodejs-22
 # hadolint ignore=DL3008
-RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
+RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash - \
     && apt-get install  -y --no-install-recommends nodejs \
     && npm install -g "npm@${NPM_VERSION}" \
     && npm install -g \
@@ -90,11 +93,22 @@ FROM cleanup as gitpod-user
 # UID must be 33333.
 RUN useradd -l -u 33333 -G sudo -md /home/gitpod -s /bin/bash -p gitpod gitpod
 
-#########################
-#         final         #
-#########################
-FROM ubuntu:jammy
-
-COPY --from=gitpod-user / /
-
 USER gitpod
+
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+# renovate: datasource=github-releases depName=astral-sh/uv
+ARG UV_VERSION=0.5.30
+# hadolint ignore=SC1090,SC1091
+RUN curl -LsSf "https://astral.sh/uv/${UV_VERSION}/install.sh" | sh \
+    && source "$HOME/.local/bin/env"
+ENV PATH="~/.local/bin/:$PATH"
+
+# Disabled the final stage, as it ends up being longer to launch overall
+# #########################
+# #         final         #
+# #########################
+# FROM ubuntu:noble
+
+# COPY --from=gitpod-user / /
+
+# USER gitpod

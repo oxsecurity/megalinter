@@ -61,9 +61,17 @@ MegaLinter can be run locally thanks to [mega-linter-runner](https://megalinter.
 
 ![Screenshot](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/GitlabCommentReporter.jpg?raw=true)
 
+- [Bitbucket Pull Request comments](docs/reporters/BitbucketCommentReporter.md)
+
+![Screenshot](docs/assets/images/BitbucketCommentReporter.png)
+
 - [Azure Pull Request comments](reporters/AzureCommentReporter.md)
 
 ![Screenshot](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/AzureCommentReporter.jpg?raw=true)
+
+- [Markdown Summary](docs/reporters/MarkdownSummaryReporter.md)
+
+![Screenshot](docs/assets/images/MarkdownSummaryReporter_2.png)
 
 - [Updated sources](reporters/UpdatedSourcesReporter.md)
 - [Email](reporters/EmailReporter.md)

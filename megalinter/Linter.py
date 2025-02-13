@@ -53,6 +53,7 @@ class Linter:
         # If you have several linters for the same language,override with a different name.Ex: JAVASCRIPT_ES
         self.name = None
         self.disabled = False
+        self.disabled_reason = None
         self.is_formatter = False
         self.is_sbom = False
         self.linter_name = "Field 'linter_name' must be overridden at custom linter class level"  # Ex: eslint
@@ -145,7 +146,7 @@ class Linter:
 
         self.report_folder = ""
         self.reporters = []
-        self.lint_command_log: list(str) | str | None = None
+        self.lint_command_log: list(str) = []
 
         # Initialize parameters
         default_params = {
@@ -186,9 +187,11 @@ class Linter:
             if self.is_formatter is True
             and not config.get(self.request_id, "FORMATTERS_DISABLE_ERRORS", "true")
             == "false"
-            else True
-            if config.get(self.request_id, "DISABLE_ERRORS", "false") == "true"
-            else False
+            else (
+                True
+                if config.get(self.request_id, "DISABLE_ERRORS", "false") == "true"
+                else False
+            )
         )
         # Name
         if self.name is None:
@@ -248,32 +251,8 @@ class Linter:
 
         if self.is_active is True:
             self.show_elapsed_time = params.get("show_elapsed_time", False)
-            # Manage apply fixes flag on linter
-            param_apply_fixes = params.get("apply_fixes", "none")
-            # No fixing config on linter descriptor
-            if self.cli_lint_fix_arg_name is None:
-                self.apply_fixes = False
-            # APPLY_FIXES is "all"
-            elif param_apply_fixes == "all" or (
-                isinstance(param_apply_fixes, bool) and param_apply_fixes is True
-            ):
-                self.apply_fixes = True
-            # APPLY_FIXES is a comma-separated list in a single string
-            elif (
-                param_apply_fixes != "none"
-                and isinstance(param_apply_fixes, str)
-                and self.name in param_apply_fixes.split(",")
-            ):
-                self.apply_fixes = True
-            # APPLY_FIXES is a list of strings
-            elif (
-                param_apply_fixes != "none"
-                and isinstance(param_apply_fixes, list)
-                and (self.name in param_apply_fixes or param_apply_fixes[0] == "all")
-            ):
-                self.apply_fixes = True
-            else:
-                self.apply_fixes = False
+
+            self.manage_apply_fixes(params)
 
             # Disable lint_all_other_linters_files=true if we are in a standalone linter docker image,
             # because there are no other linters
@@ -353,11 +332,18 @@ class Linter:
                         file_to_check, prop = file_to_check.split(":")
                     if os.path.isfile(f"{self.workspace}{os.path.sep}{file_to_check}"):
                         found_file = f"{self.workspace}{os.path.sep}{file_to_check}"
-                    if os.path.isfile(
+                    elif os.path.isfile(
                         f"{self.workspace}{os.path.sep}{self.linter_rules_path}{os.path.sep}{file_to_check}"
                     ):
                         found_file = (
                             f"{self.workspace}{os.path.sep}{self.linter_rules_path}"
+                            + f"{os.path.sep}{file_to_check}"
+                        )
+                    elif os.path.isfile(
+                        f"{self.workspace}{os.path.sep}{self.files_sub_directory}{os.path.sep}{file_to_check}"
+                    ):
+                        found_file = (
+                            f"{self.workspace}{os.path.sep}{self.files_sub_directory}"
                             + f"{os.path.sep}{file_to_check}"
                         )
                     # filename case
@@ -399,44 +385,115 @@ class Linter:
 
     # Enable or disable linter
     def manage_activation(self, params):
+        strategies = {
+            "ENABLE": False,
+            "ENABLE_LINTERS": False,
+            "DISABLE": False,
+            "DISABLE_LINTERS": False,
+            "VALIDATE": False,
+            "VALIDATE_LINTERS": False,
+        }
+
         # Default value is false in case ENABLE variables are used
-        if len(params["enable_descriptors"]) > 0 or len(params["enable_linters"]) > 0:
-            self.is_active = False
+        # See megalinter/MegaLinter.py, manage_default_linter_activation() function
+        # for params["default_linter_activation"]
+        self.is_active = params["default_linter_activation"]
         # Activate or not the linter
         if self.name in params["enable_linters"]:
             self.is_active = True
+            strategies["ENABLE_LINTERS"] = True
         elif self.name in params["disable_linters"]:
             self.is_active = False
-        elif (
-            self.descriptor_id in params["disable_descriptors"]
-            or self.name in params["disable_linters"]
-        ):
+            strategies["DISABLE_LINTERS"] = True
+        elif self.descriptor_id in params["disable_descriptors"]:
             self.is_active = False
+            strategies["DISABLE"] = True
+        elif self.name in params["disable_linters"]:
+            self.is_active = False
+            strategies["DISABLE_LINTERS"] = True
         elif self.descriptor_id in params["enable_descriptors"]:
             self.is_active = True
+            strategies["ENABLE"] = True
         elif (
             config.exists(self.request_id, "VALIDATE_" + self.name)
             and config.get(self.request_id, "VALIDATE_" + self.name) == "false"
         ):
             self.is_active = False
+            strategies["VALIDATE_LINTERS"] = True
         elif (
             config.exists(self.request_id, "VALIDATE_" + self.descriptor_id)
             and config.get(self.request_id, "VALIDATE_" + self.descriptor_id) == "false"
         ):
             self.is_active = False
+            strategies["VALIDATE"] = True
         elif (
             config.exists(self.request_id, "VALIDATE_" + self.name)
             and config.get(self.request_id, "VALIDATE_" + self.name) == "true"
         ):
             self.is_active = True
+            strategies["VALIDATE_LINTERS"] = True
         elif (
             config.exists(self.request_id, "VALIDATE_" + self.descriptor_id)
             and config.get(self.request_id, "VALIDATE_" + self.descriptor_id) == "true"
         ):
             self.is_active = True
+            strategies["VALIDATE"] = True
         # check activation rules
         if self.is_active is True and len(self.activation_rules) > 0:
             self.is_active = utils.check_activation_rules(self.activation_rules, self)
+
+        strategiesUsed = format(
+            ", ".join("{0}".format(k) for k, v in strategies.items() if v)
+        )
+
+        if not strategiesUsed:
+            strategiesUsed = "default"
+
+        if self.is_active:
+            logging.debug(
+                f"[Activation] + {self.name} ({self.descriptor_id}) was activated by {strategiesUsed} strategies"
+            )
+        else:
+            logging.debug(
+                f"[Activation] - {self.name} ({self.descriptor_id}) was not activated by {strategiesUsed} strategies"
+            )
+
+    # Manage apply fixes flag on linter
+    def manage_apply_fixes(self, params):
+        self.apply_fixes = False
+
+        param_apply_fixes = params.get("apply_fixes", "none")
+
+        # APPLY_FIXES is "all"
+        if param_apply_fixes == "all" or (
+            isinstance(param_apply_fixes, bool) and param_apply_fixes is True
+        ):
+            self.apply_fixes = True
+        # APPLY_FIXES is a comma-separated list in a single string
+        elif (
+            param_apply_fixes != "none"
+            and isinstance(param_apply_fixes, str)
+            and self.name in param_apply_fixes.split(",")
+        ):
+            self.apply_fixes = True
+        # APPLY_FIXES is a list of strings
+        elif (
+            param_apply_fixes != "none"
+            and isinstance(param_apply_fixes, list)
+            and (self.name in param_apply_fixes or param_apply_fixes[0] == "all")
+        ):
+            self.apply_fixes = True
+        else:
+            self.apply_fixes = False
+
+        if self.apply_fixes:
+            logging.debug(
+                f"[Apply Fixes] is enabled for + {self.name} ({self.descriptor_id})"
+            )
+        else:
+            logging.debug(
+                f"[Apply Fixes] is disabled for + {self.name} ({self.descriptor_id})"
+            )
 
     # Manage configuration variables
     def load_config_vars(self, params):
@@ -446,18 +503,22 @@ class Linter:
             self.config_file_name = config.get(
                 self.request_id, self.name + "_CONFIG_FILE"
             )
+            self.update_active_if_file_found()
         elif config.exists(self.request_id, self.descriptor_id + "_CONFIG_FILE"):
             self.config_file_name = config.get(
                 self.request_id, self.descriptor_id + "_CONFIG_FILE"
             )
+            self.update_active_if_file_found()
         elif config.exists(self.request_id, self.name + "_FILE_NAME"):
             self.config_file_name = config.get(
                 self.request_id, self.name + "_FILE_NAME"
             )
+            self.update_active_if_file_found()
         elif config.exists(self.request_id, self.descriptor_id + "_FILE_NAME"):
             self.config_file_name = config.get(
                 self.request_id, self.descriptor_id + "_FILE_NAME"
             )
+            self.update_active_if_file_found()
         # Ignore file name: try first NAME + _FILE_NAME, then LANGUAGE + _FILE_NAME
         if self.cli_lint_ignore_arg_name is not None:
             if config.exists(self.request_id, self.name + "_IGNORE_FILE"):
@@ -495,9 +556,10 @@ class Linter:
                 local_config_file = self.workspace + os.path.sep + self.config_file_name
                 existing_before = os.path.isfile(local_config_file)
                 try:
-                    with urllib.request.urlopen(remote_config_file) as response, open(
-                        local_config_file, "wb"
-                    ) as out_file:
+                    with (
+                        urllib.request.urlopen(remote_config_file) as response,
+                        open(local_config_file, "wb") as out_file,
+                    ):
                         shutil.copyfileobj(response, out_file)
                         self.config_file_label = remote_config_file
                         if existing_before is False:
@@ -573,9 +635,10 @@ class Linter:
                 local_ignore_file = self.workspace + os.path.sep + self.ignore_file_name
                 existing_before = os.path.isfile(local_ignore_file)
                 try:
-                    with urllib.request.urlopen(remote_ignore_file) as response, open(
-                        local_ignore_file, "wb"
-                    ) as out_file:
+                    with (
+                        urllib.request.urlopen(remote_ignore_file) as response,
+                        open(local_ignore_file, "wb") as out_file,
+                    ):
                         shutil.copyfileobj(response, out_file)
                         self.ignore_file_label = remote_ignore_file
                         if existing_before is False:
@@ -635,17 +698,17 @@ class Linter:
                 self.request_id, self.name + "_CLI_LINT_MODE"
             )
             if cli_lint_mode_descriptor == "project":
-                raise KeyError(
-                    f"You can not override {self.name} cli_lint_mode as it can "
-                    "not process a file or a list of files. If you think this could be, post an issue :)"
+                logging.warning(
+                    f"Override {self.name} cli_lint_mode with {cli_lint_mode_config} at your own risk, "
+                    "as command line arguments are built for project mode"
                 )
             elif (
                 cli_lint_mode_descriptor == "file"
                 and cli_lint_mode_config == "list_of_files"
             ):
-                raise KeyError(
-                    f"You can not override {self.name} cli_lint_mode with {cli_lint_mode_config}, "
-                    "as it can process files only one by one. If you think it could be done, post an issue :)"
+                logging.warning(
+                    f"Override {self.name} cli_lint_mode with {cli_lint_mode_config} at your own risk, "
+                    f"as command line arguments are built for {cli_lint_mode_descriptor} mode"
                 )
             self.cli_lint_mode = cli_lint_mode_config
 
@@ -732,8 +795,17 @@ class Linter:
                 self.request_id, self.name + "_DOCKER_IMAGE_VERSION"
             )
 
+    # If linter is activated only if some file is found, and config file has been overridden
+    # ->  add it to the files to check
+    def update_active_if_file_found(self):
+        if (
+            len(self.active_only_if_file_found) > 0
+            and self.config_file_name not in self.active_only_if_file_found
+        ):
+            self.active_only_if_file_found.append(self.config_file_name)
+
     # Processes the linter
-    def run(self):
+    def run(self, run_commands_before_linters=None, run_commands_after_linters=None):
         self.start_perf = perf_counter()
 
         # Initialize linter reports
@@ -744,7 +816,9 @@ class Linter:
         self.before_lint_files()
 
         # Run commands defined in descriptor, or overridden by user in configuration
-        pre_post_factory.run_linter_pre_commands(self.master, self)
+        pre_post_factory.run_linter_pre_commands(
+            self.master, self, run_commands_before_linters
+        )
 
         # Lint each file one by one
         if self.cli_lint_mode == "file":
@@ -799,7 +873,9 @@ class Linter:
             os.remove(self.remote_ignore_file_to_delete)
 
         # Run commands defined in descriptor, or overridden by user in configuration
-        pre_post_factory.run_linter_post_commands(self.master, self)
+        pre_post_factory.run_linter_post_commands(
+            self.master, self, run_commands_after_linters
+        )
 
         # Generate linter reports
         self.elapsed_time_s = perf_counter() - self.start_perf
@@ -914,7 +990,6 @@ class Linter:
         command = self.build_lint_command(file)
         # Output command if debug mode
         logging.debug(f"[{self.linter_name}] command: {str(command)}")
-        self.lint_command_log = command
         # Run command via CLI
         return_code, return_output = self.execute_lint_command(command)
         logging.debug(
@@ -932,6 +1007,7 @@ class Linter:
             "FORCE_COLOR": "0",
         }
         if isinstance(command, str):
+            self.lint_command_log.append(command)
             # Call linter with a sub-process
             process = subprocess.run(
                 command,
@@ -940,9 +1016,9 @@ class Linter:
                 shell=True,
                 cwd=cwd,
                 env=subprocess_env,
-                executable=shutil.which("bash")
-                if sys.platform == "win32"
-                else "/bin/bash",
+                executable=(
+                    shutil.which("bash") if sys.platform == "win32" else "/bin/bash"
+                ),
             )
             return_code = process.returncode
             return_stdout = utils.decode_utf8(process.stdout)
@@ -956,7 +1032,7 @@ class Linter:
                     msg = "Unable to find command: " + command[0]
                     logging.error(msg)
                     return errno.ESRCH, msg
-
+            self.lint_command_log.append(" ".join(command))
             # Call linter with a sub-process (RECOMMENDED: with a list of strings corresponding to the command)
             try:
                 process = subprocess.run(
@@ -1073,6 +1149,7 @@ class Linter:
         subprocess_env = {
             **config.build_env(self.request_id, True, self.unsecured_env_variables),
             "FORCE_COLOR": "0",
+            "NO_COLOR": "true",
         }
         try:
             process = subprocess.run(
@@ -1174,7 +1251,10 @@ class Linter:
             lambda arg, w=workspace_value: arg.replace("{{WORKSPACE}}", w),
             self.cli_docker_args,
         )
-        docker_command += [f"{self.cli_docker_image}:{self.cli_docker_image_version}"]
+        docker_command += [
+            f"{self.cli_docker_image}:"
+            + f"{os.environ.get(self.cli_docker_image_version, self.cli_docker_image_version)}"
+        ]
         if isinstance(command, str):
             command = " ".join(docker_command) + " " + command
         else:
@@ -1201,12 +1281,14 @@ class Linter:
         # Add fix argument if defined
         if self.apply_fixes is True and (
             self.cli_lint_fix_arg_name is not None
+            or len(self.cli_lint_fix_remove_args) > 0
             or str(self.cli_executable_fix) != str(self.cli_executable)
         ):
             args_pos = len(self.cli_executable)
             cmd = cmd[args_pos:]  # Remove executable elements
             cmd = self.cli_executable_fix + cmd
-            cmd += [self.cli_lint_fix_arg_name]
+            if self.cli_lint_fix_arg_name is not None:
+                cmd += [self.cli_lint_fix_arg_name]
             self.try_fix = True
 
         # Add user-defined extra arguments if defined

@@ -6,18 +6,29 @@ lint_all_files: true
 install:
   # Java, because Apex is Java-based, so are related tools like PMD which is embedded in sfdx-scanner
   apk:
-    - openjdk17
+    - coreutils
+    - openjdk21
   dockerfile:
-    - ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+    - |-
+      # renovate: datasource=npm depName=@salesforce/cli
+      ARG NPM_SALESFORCE_CLI_VERSION=2.75.5
+    - |-
+      # renovate: datasource=npm depName=@salesforce/plugin-packaging
+      ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.9.16
+    - |-
+      # renovate: datasource=npm depName=sfdx-hardis
+      ARG SFDX_HARDIS_VERSION=5.19.1
+    - ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
     - ENV PATH="$JAVA_HOME/bin:${PATH}"
-    - |
-      RUN sf plugins install @salesforce/plugin-packaging \
-          && echo y|sfdx plugins:install sfdx-hardis \
-          && npm cache clean --force || true \
+    - |-
+      RUN sf plugins install @salesforce/plugin-packaging@${NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION} \
+          && echo y|sf plugins install sfdx-hardis@${SFDX_HARDIS_VERSION} \
+          && (npm cache clean --force || true) \
           && rm -rf /root/.npm/_cacache
+    - ENV SF_AUTOUPDATE_DISABLE=true SF_CLI_DISABLE_AUTOUPDATE=true
   # Salesforce DX
   npm:
-    - "@salesforce/cli"
+    - "@salesforce/cli@${NPM_SALESFORCE_CLI_VERSION}"
 linters:
   # SFDX Scanner
   - linter_name: sfdx-scanner-apex
@@ -41,7 +52,7 @@ linters:
     linter_rules_inline_disable_url: https://docs.pmd-code.org/latest/pmd_userdocs_suppressing_warnings.html
     linter_megalinter_ref_url: https://github.com/forcedotcom/sfdx-scanner/pull/307
     config_file_name: apex-pmd-ruleset.xml
-    cli_executable: sfdx
+    cli_executable: sf
     cli_config_arg_name: "--pmdconfig"
     cli_lint_extra_args:
       - "scanner:run"
@@ -59,7 +70,7 @@ linters:
     cli_help_extra_args:
       - "scanner:run"
     cli_help_extra_commands:
-      - "sfdx scanner:rule:list"
+      - "sf scanner:rule:list"
     cli_version_extra_args:
       - "plugins"
     cli_version_arg_name: ""
@@ -67,12 +78,15 @@ linters:
     cli_lint_errors_count: regex_sum
     cli_lint_errors_regex: "found ([0-9]+) violation"
     examples:
-      - "sfdx scanner:run"
+      - "sf scanner:run"
     install:
       dockerfile:
-        - |
-          RUN sfdx plugins:install @salesforce/sfdx-scanner \
-              && npm cache clean --force || true \
+        - |-
+          # renovate: datasource=npm depName=@salesforce/sfdx-scanner
+          ARG SALESFORCE_SFDX_SCANNER_VERSION=4.9.0
+        - |-
+          RUN sf plugins install @salesforce/sfdx-scanner@${SALESFORCE_SFDX_SCANNER_VERSION} \
+              && (npm cache clean --force || true) \
               && rm -rf /root/.npm/_cacache
     ide:
       eclipse:
@@ -112,7 +126,7 @@ linters:
     linter_megalinter_ref_url: https://github.com/forcedotcom/sfdx-scanner/pull/307
     config_file_name: --eslintconfig
     cli_config_arg_name: ".eslintrc-aura.json"
-    cli_executable: sfdx
+    cli_executable: sf
     cli_lint_extra_args:
       - "scanner:run"
       - "--engine"
@@ -121,26 +135,31 @@ linters:
       - "**/aura/**/*.js"
       - "--severity-threshold"
       - "2"
+      - "--outfile"
+      - "{{REPORT_FOLDER}}/sfdx-scanner-report-aura.csv"
       - "--format"
       - "csv"
     cli_lint_mode: project
     cli_help_extra_args:
       - "scanner:run"
     cli_help_extra_commands:
-      - "sfdx scanner:rule:list"
+      - "sf scanner:rule:list"
     cli_version_extra_args:
       - "plugins"
     cli_version_arg_name: ""
     version_extract_regex: "(?<=@salesforce/sfdx-scanner )\\d+(\\.\\d+)+"
-    cli_lint_errors_count: regex_count
-    cli_lint_errors_regex: '"[0-9]+",'
+    cli_lint_errors_count: regex_sum
+    cli_lint_errors_regex: "found ([0-9]+) violation"
     examples:
-      - "sfdx scanner:run"
+      - "sf scanner:run"
     install:
       dockerfile:
-        - |
-          RUN sfdx plugins:install @salesforce/sfdx-scanner \
-              && npm cache clean --force || true \
+        - |-
+          # renovate: datasource=npm depName=@salesforce/sfdx-scanner
+          ARG SALESFORCE_SFDX_SCANNER_VERSION=4.9.0
+        - |-
+          RUN sf plugins install @salesforce/sfdx-scanner@${SALESFORCE_SFDX_SCANNER_VERSION} \
+              && (npm cache clean --force || true) \
               && rm -rf /root/.npm/_cacache
     ide:
       vscode:
@@ -170,7 +189,7 @@ linters:
     linter_megalinter_ref_url: https://github.com/forcedotcom/sfdx-scanner/pull/307
     config_file_name: --eslintconfig
     cli_config_arg_name: ".eslintrc-lwc.json"
-    cli_executable: sfdx
+    cli_executable: sf
     cli_lint_extra_args:
       - "scanner:run"
       - "--engine"
@@ -179,26 +198,31 @@ linters:
       - "**/lwc/**/*.js"
       - "--severity-threshold"
       - "2"
+      - "--outfile"
+      - "{{REPORT_FOLDER}}/sfdx-scanner-report-lwc.csv"
       - "--format"
       - "csv"
     cli_lint_mode: project
     cli_help_extra_args:
       - "scanner:run"
     cli_help_extra_commands:
-      - "sfdx scanner:rule:list"
+      - "sf scanner:rule:list"
     cli_version_extra_args:
       - "plugins"
     cli_version_arg_name: ""
     version_extract_regex: "(?<=@salesforce/sfdx-scanner )\\d+(\\.\\d+)+"
-    cli_lint_errors_count: regex_count
-    cli_lint_errors_regex: '"[0-9]+",'
+    cli_lint_errors_count: regex_sum
+    cli_lint_errors_regex: "found ([0-9]+) violation"
     examples:
-      - "sfdx scanner:run"
+      - "sf scanner:run"
     install:
       dockerfile:
-        - |
-          RUN sfdx plugins:install @salesforce/sfdx-scanner \
-              && npm cache clean --force || true \
+        - |-
+          # renovate: datasource=npm depName=@salesforce/sfdx-scanner
+          ARG SALESFORCE_SFDX_SCANNER_VERSION=4.9.0
+        - |-
+          RUN sf plugins install @salesforce/sfdx-scanner@${SALESFORCE_SFDX_SCANNER_VERSION} \
+              && (npm cache clean --force || true) \
               && rm -rf /root/.npm/_cacache
     ide:
       vscode:
@@ -219,7 +243,7 @@ linters:
     linter_rules_configuration_url: https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx#configuration
     config_file_name: .flow-scanner.json
     cli_config_arg_name: --config
-    cli_executable: sfdx
+    cli_executable: sf
     cli_lint_extra_args:
       - "flow:scan"
     cli_lint_mode: project
@@ -230,15 +254,18 @@ linters:
     cli_version_arg_name: ""
     version_extract_regex: "(?<=lightning-flow-scanner )\\d+(\\.\\d+)+"
     cli_lint_errors_count: regex_number
-    cli_lint_errors_regex: "=== Total: ([0-9]+) Results in .* Flows"
+    cli_lint_errors_regex: "- error: ([0-9]+)"
     test_folder: salesforce-lfs
     examples:
-      - "sfdx flow:scan"
+      - "sf flow:scan"
     install:
       dockerfile:
-        - |
-          RUN echo y|sfdx plugins:install lightning-flow-scanner \
-              && npm cache clean --force || true \
+        - |-
+          # renovate: datasource=npm depName=lightning-flow-scanner
+          ARG LIGHTNING_FLOW_SCANNER_VERSION=2.46.0
+        - |-
+          RUN echo y|sf plugins install lightning-flow-scanner@${LIGHTNING_FLOW_SCANNER_VERSION} \
+              && (npm cache clean --force || true) \
               && rm -rf /root/.npm/_cacache
     ide:
       vscode:

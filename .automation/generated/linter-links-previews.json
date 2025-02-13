@@ -109,6 +109,11 @@
     "image": "https://repository-images.githubusercontent.com/35726310/78196080-8aee-11ea-8736-5d358571e7db",
     "title": "dart-lang/sdk"
   },
+  "detekt": {
+    "description": "The official website of detekt - A static analyzer for Kotlin",
+    "image": null,
+    "title": "Hello from detekt | detekt"
+  },
   "devskim": {
     "description": "DevSkim is a set of IDE plugins and rules that provide security &quot;linting&quot; capabilities. - GitHub - microsoft/DevSkim: DevSkim is a set of IDE plugins and rules that provide security &quot...",
     "image": "https://opengraph.githubassets.com/e833e13fb1284378f44a593a44685cf5c8f5eba2eb392202a3cced2c4e044fea/microsoft/DevSkim",
@@ -259,6 +264,11 @@
     "image": "https://avatars0.githubusercontent.com/u/205275?s=400&v=4",
     "title": "r-lib/lintr"
   },
+  "ls-lint": {
+    "description": "An extremely fast file and directory name linter - Bring some structure to your project filesystem",
+    "image": "/open-graph-img.png",
+    "title": "ls-lint"
+  },
   "luacheck": {
     "description": " A tool for linting and static analysis of Lua code.  - luarocks/luacheck",
     "image": "https://avatars3.githubusercontent.com/u/17838737?s=400&v=4",
@@ -318,6 +328,11 @@
     "description": "PHP is a popular general-purpose scripting language that is especially suited to web development.",
     "image": null,
     "title": "PHP: Hypertext Preprocessor"
+  },
+  "php-cs-fixer": {
+    "description": "PHP Coding Standards Fixer",
+    "image": null,
+    "title": "PHP Coding Standards Fixer"
   },
   "phpcs": {
     "description": "PHP_CodeSniffer tokenizes PHP files and detects violations of a defined set of coding standards. - squizlabs/PHP_CodeSniffer",
@@ -434,6 +449,11 @@
     "image": "https://opengraph.githubassets.com/125c259b7ef6ad7bf2a4d9b3af0e3bc2b1f8561c1d4ce8923b052cc30d8b8d75/charliermarsh/ruff",
     "title": "GitHub - charliermarsh/ruff: An extremely fast Python linter, written in Rust."
   },
+  "ruff-format": {
+    "description": "An extremely fast Python linter and code formatter, written in Rust. - astral-sh/ruff",
+    "image": "https://opengraph.githubassets.com/38f6877259b2afe1e6f34f52be78027dce0e559671d0403656bae0f133893abc/astral-sh/ruff",
+    "title": "GitHub - astral-sh/ruff: An extremely fast Python linter and code formatter, written in Rust."
+  },
   "scalafix": {
     "description": "Refactoring and linting tool for Scala",
     "image": "https://scalacenter.github.io//scalafix/img/scalacenter2x.png",
@@ -448,6 +468,11 @@
     "description": "Pluggable linting tool to prevent committing credential. - GitHub - secretlint/secretlint: Pluggable linting tool to prevent committing credential.",
     "image": "https://repository-images.githubusercontent.com/239106765/29bc0580-5b2f-11ea-89e2-d985890508c1",
     "title": "GitHub - secretlint/secretlint: Pluggable linting tool to prevent committing credential."
+  },
+  "selene": {
+    "description": "selene is a command line tool designed to help write correct and idiomatic Lua code.",
+    "image": null,
+    "title": "selene - selene Documentation"
   },
   "semgrep": {
     "description": "None",
@@ -518,6 +543,11 @@
     "description": "# stylelint",
     "image": null,
     "title": "A mighty, modern style linter \u00b7 stylelint"
+  },
+  "stylua": {
+    "description": "An opinionated Lua code formatter. Contribute to JohnnyMorganz/StyLua development by creating an account on GitHub.",
+    "image": "https://opengraph.githubassets.com/7b8419175a313d68fb5f334f872c05c1a370b31c1e9e8a96cb799184854e4cc0/JohnnyMorganz/StyLua",
+    "title": "GitHub - JohnnyMorganz/StyLua: An opinionated Lua code formatter"
   },
   "swiftlint": {
     "description": "A tool to enforce Swift style and conventions. Contribute to realm/SwiftLint development by creating an account on GitHub.",

@@ -48,6 +48,8 @@ Run `make` for Makefile help. Initialize virtualenv and install dependencies wit
 
 You can lint with `make megalinter` (Incoming)
 
+If you need to run `build.sh` commands manually you need to run `source .venv/bin/activate` first.
+
 ### 5. Submit a pull request
 
 [Create a pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request-from-a-fork) and [refer to the issue number](https://help.github.com/en/github/writing-on-github/autolinked-references-and-urls) using #123, where 123 is the issue number.
@@ -78,6 +80,7 @@ Available commands can be listed with the help command by posting the following 
 /help
 ```
 Which returns:
+>
 > Command | Description
 > --- | ---
 > /build | Updates the Dockerfile, documentation, and other files from the yml descriptors
@@ -119,17 +122,15 @@ In order to be able to run locally a server that serves all the documentation an
 Commands to execute (only one time):
 
 ```bash
-mkdir venv
-python -m venv venv/
-source venv/bin/activate
-pip install --upgrade -r .config/python/dev/requirements.txt
+pip install pipx
+pipx install hatch
+hatch shell
 ```
 
-Commands to run every time you want to enter the environment and run the server:
+Commands to run every time you want to build the docs and run the server:
 
 ```bash
-source venv/bin/activate
-mkdocs serve
+hatch run build:serve
 ```
 
 By default it listens on `http://127.0.0.1:8000/`.
