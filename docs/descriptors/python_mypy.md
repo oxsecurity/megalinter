@@ -411,4 +411,4 @@ ENV MYPY_CACHE_DIR=/tmp
 ```
 
 - PIP packages (Python):
-  - [mypy==${PIP_MYPY_VERSION}](https://pypi.org/project/mypy/${PIP_MYPY_VERSION})
+  - [mypy==1.15.0](https://pypi.org/project/mypy/1.15.0)

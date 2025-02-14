@@ -188,7 +188,7 @@ ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
 ```
 
 - NPM packages (node.js):
-  - [eslint@${NPM_ESLINT_VERSION}](https://www.npmjs.com/package/eslint@${NPM_ESLINT_VERSION})
-  - [eslint-plugin-react@${NPM_ESLINT_PLUGIN_REACT_VERSION}](https://www.npmjs.com/package/eslint-plugin-react@${NPM_ESLINT_PLUGIN_REACT_VERSION})
-  - [eslint-plugin-jsx-a11y@${NPM_ESLINT_PLUGIN_JSX_ALLY_VERSION}](https://www.npmjs.com/package/eslint-plugin-jsx-a11y@${NPM_ESLINT_PLUGIN_JSX_ALLY_VERSION})
-  - [@microsoft/eslint-formatter-sarif@${NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION}](https://www.npmjs.com/package/@microsoft/eslint-formatter-sarif/v/${NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION})
+  - [eslint@8.57.1](https://www.npmjs.com/package/eslint/v/8.57.1)
+  - [eslint-plugin-react@7.37.4](https://www.npmjs.com/package/eslint-plugin-react/v/7.37.4)
+  - [eslint-plugin-jsx-a11y@6.10.2](https://www.npmjs.com/package/eslint-plugin-jsx-a11y/v/6.10.2)
+  - [@microsoft/eslint-formatter-sarif@3.1.0](https://www.npmjs.com/package/@microsoft/eslint-formatter-sarif/v/3.1.0)

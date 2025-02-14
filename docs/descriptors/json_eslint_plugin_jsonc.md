@@ -241,6 +241,6 @@ ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
 ```
 
 - NPM packages (node.js):
-  - [eslint@${NPM_ESLINT_VERSION}](https://www.npmjs.com/package/eslint@${NPM_ESLINT_VERSION})
-  - [eslint-plugin-jsonc@${NPM_ESLINT_PLUGIN_JSONC_VERSION}](https://www.npmjs.com/package/eslint-plugin-jsonc@${NPM_ESLINT_PLUGIN_JSONC_VERSION})
-  - [@microsoft/eslint-formatter-sarif@${NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION}](https://www.npmjs.com/package/@microsoft/eslint-formatter-sarif/v/${NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION})
+  - [eslint@8.57.1](https://www.npmjs.com/package/eslint/v/8.57.1)
+  - [eslint-plugin-jsonc](https://www.npmjs.com/package/eslint-plugin-jsonc)
+  - [@microsoft/eslint-formatter-sarif@3.1.0](https://www.npmjs.com/package/@microsoft/eslint-formatter-sarif/v/3.1.0)

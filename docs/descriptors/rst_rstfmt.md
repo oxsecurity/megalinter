@@ -105,4 +105,4 @@ ARG PIP_RSTFMT_VERSION=0.0.14
 ```
 
 - PIP packages (Python):
-  - [rstfmt==${PIP_RSTFMT_VERSION}](https://pypi.org/project/rstfmt/${PIP_RSTFMT_VERSION})
+  - [rstfmt==0.0.14](https://pypi.org/project/rstfmt/0.0.14)

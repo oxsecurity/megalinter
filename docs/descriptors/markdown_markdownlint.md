@@ -150,4 +150,4 @@ ARG NPM_MARKDOWNLINT_CLI_VERSION=0.44.0
 ```
 
 - NPM packages (node.js):
-  - [markdownlint-cli@${NPM_MARKDOWNLINT_CLI_VERSION}](https://www.npmjs.com/package/markdownlint-cli@${NPM_MARKDOWNLINT_CLI_VERSION})
+  - [markdownlint-cli@0.44.0](https://www.npmjs.com/package/markdownlint-cli/v/0.44.0)

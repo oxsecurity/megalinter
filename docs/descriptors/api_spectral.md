@@ -137,4 +137,4 @@ ARG NPM_SPECTRAL_CLI_VERSION=6.14.2
 ```
 
 - NPM packages (node.js):
-  - [@stoplight/spectral-cli@${NPM_SPECTRAL_CLI_VERSION}](https://www.npmjs.com/package/@stoplight/spectral-cli/v/${NPM_SPECTRAL_CLI_VERSION})
+  - [@stoplight/spectral-cli@6.14.2](https://www.npmjs.com/package/@stoplight/spectral-cli/v/6.14.2)

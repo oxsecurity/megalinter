@@ -135,5 +135,5 @@ ARG NPM_TS_STANDARD_VERSION=12.0.2
 ```
 
 - NPM packages (node.js):
-  - [typescript@${NPM_TYPESCRIPT_VERSION}](https://www.npmjs.com/package/typescript@${NPM_TYPESCRIPT_VERSION})
-  - [ts-standard@${NPM_TS_STANDARD_VERSION}](https://www.npmjs.com/package/ts-standard@${NPM_TS_STANDARD_VERSION})
+  - [typescript@5.7.3](https://www.npmjs.com/package/typescript/v/5.7.3)
+  - [ts-standard@12.0.2](https://www.npmjs.com/package/ts-standard/v/12.0.2)

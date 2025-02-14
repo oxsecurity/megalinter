@@ -647,4 +647,4 @@ ARG PIP_SEMGREP_VERSION=1.107.0
 ```
 
 - PIP packages (Python):
-  - [semgrep==${PIP_SEMGREP_VERSION}](https://pypi.org/project/semgrep/${PIP_SEMGREP_VERSION})
+  - [semgrep==1.107.0](https://pypi.org/project/semgrep/1.107.0)

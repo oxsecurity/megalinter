@@ -134,3 +134,5 @@ RUN wget --tries=5 https://www.lua.org/ftp/lua-5.3.5.tar.gz -O - -q | tar -xzf -
 ARG CARGO_SELENE_VERSION=0.28.0
 ```
 
+- Cargo packages (Rust):
+  - [selene@0.28.0](https://crates.io/crates/selene/0.28.0)

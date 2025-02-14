@@ -244,5 +244,5 @@ ARG NPM_PRETTIER_VERSION=3.5.1
 ```
 
 - NPM packages (node.js):
-  - [typescript@${NPM_TYPESCRIPT_VERSION}](https://www.npmjs.com/package/typescript@${NPM_TYPESCRIPT_VERSION})
-  - [prettier@${NPM_PRETTIER_VERSION}](https://www.npmjs.com/package/prettier@${NPM_PRETTIER_VERSION})
+  - [typescript@5.7.3](https://www.npmjs.com/package/typescript/v/5.7.3)
+  - [prettier@3.5.0](https://www.npmjs.com/package/prettier/v/3.5.0)

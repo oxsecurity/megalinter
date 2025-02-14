@@ -101,5 +101,5 @@ ARG PIP_RESTRUCTUREDTEXT_LINT_VERSION=1.4.0
 ```
 
 - PIP packages (Python):
-  - [Pygments==${PIP_PYGMENTS_VERSION}](https://pypi.org/project/Pygments/${PIP_PYGMENTS_VERSION})
-  - [restructuredtext_lint==${PIP_RESTRUCTUREDTEXT_LINT_VERSION}](https://pypi.org/project/restructuredtext_lint/${PIP_RESTRUCTUREDTEXT_LINT_VERSION})
+  - [Pygments==2.19.1](https://pypi.org/project/Pygments/2.19.1)
+  - [restructuredtext_lint==1.4.0](https://pypi.org/project/restructuredtext_lint/1.4.0)

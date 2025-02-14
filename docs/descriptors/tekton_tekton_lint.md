@@ -118,4 +118,4 @@ ARG NPM_IBM_TEKTON_LINT_VERSION=1.1.0
 ```
 
 - NPM packages (node.js):
-  - [@ibm/tekton-lint@${NPM_IBM_TEKTON_LINT_VERSION}](https://www.npmjs.com/package/@ibm/tekton-lint/v/${NPM_IBM_TEKTON_LINT_VERSION})
+  - [@ibm/tekton-lint@1.1.0](https://www.npmjs.com/package/@ibm/tekton-lint/v/1.1.0)

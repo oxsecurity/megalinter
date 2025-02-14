@@ -144,4 +144,4 @@ ARG PIP_YAMLLINT_VERSION=1.35.1
 ```
 
 - PIP packages (Python):
-  - [yamllint==${PIP_YAMLLINT_VERSION}](https://pypi.org/project/yamllint/${PIP_YAMLLINT_VERSION})
+  - [yamllint==1.35.1](https://pypi.org/project/yamllint/1.35.1)

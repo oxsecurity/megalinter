@@ -175,4 +175,4 @@ ARG NPM_JSCPD_VERSION=4.0.5
 ```
 
 - NPM packages (node.js):
-  - [jscpd@${NPM_JSCPD_VERSION}](https://www.npmjs.com/package/jscpd@${NPM_JSCPD_VERSION})
+  - [jscpd@4.0.5](https://www.npmjs.com/package/jscpd/v/4.0.5)

@@ -159,6 +159,6 @@ ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=9.0.0
 ```
 
 - NPM packages (node.js):
-  - [secretlint@${NPM_SECRETLINT_VERSION}](https://www.npmjs.com/package/secretlint@${NPM_SECRETLINT_VERSION})
-  - [@secretlint/secretlint-rule-preset-recommend@${NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION}](https://www.npmjs.com/package/@secretlint/secretlint-rule-preset-recommend/v/${NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION})
-  - [@secretlint/secretlint-formatter-sarif@${NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION}](https://www.npmjs.com/package/@secretlint/secretlint-formatter-sarif/v/${NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION})
+  - [secretlint@9.0.0](https://www.npmjs.com/package/secretlint/v/9.0.0)
+  - [@secretlint/secretlint-rule-preset-recommend@9.0.0](https://www.npmjs.com/package/@secretlint/secretlint-rule-preset-recommend/v/9.0.0)
+  - [@secretlint/secretlint-formatter-sarif@9.0.0](https://www.npmjs.com/package/@secretlint/secretlint-formatter-sarif/v/9.0.0)

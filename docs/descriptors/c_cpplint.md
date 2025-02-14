@@ -307,4 +307,4 @@ ARG PIP_CPPLINT_VERSION=2.0.0
 ```
 
 - PIP packages (Python):
-  - [cpplint==${PIP_CPPLINT_VERSION}](https://pypi.org/project/cpplint/${PIP_CPPLINT_VERSION})
+  - [cpplint==2.0.0](https://pypi.org/project/cpplint/2.0.0)

@@ -183,4 +183,4 @@ ARG PIP_DJLINT_VERSION=1.36.4
 ```
 
 - PIP packages (Python):
-  - [djlint==${PIP_DJLINT_VERSION}](https://pypi.org/project/djlint/${PIP_DJLINT_VERSION})
+  - [djlint==1.36.4](https://pypi.org/project/djlint/1.36.4)

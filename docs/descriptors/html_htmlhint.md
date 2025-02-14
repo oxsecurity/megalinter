@@ -140,4 +140,4 @@ ARG NPM_HTMLHINT_VERSION=1.1.4
 ```
 
 - NPM packages (node.js):
-  - [htmlhint@${NPM_HTMLHINT_VERSION}](https://www.npmjs.com/package/htmlhint@${NPM_HTMLHINT_VERSION})
+  - [htmlhint@1.1.4](https://www.npmjs.com/package/htmlhint/v/1.1.4)

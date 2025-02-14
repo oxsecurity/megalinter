@@ -1020,4 +1020,4 @@ ARG PIP_SNAKEMAKE_VERSION=8.28.0
 ```
 
 - PIP packages (Python):
-  - [snakemake==${PIP_SNAKEMAKE_VERSION}](https://pypi.org/project/snakemake/${PIP_SNAKEMAKE_VERSION})
+  - [snakemake](https://pypi.org/project/snakemake)

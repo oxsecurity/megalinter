@@ -138,4 +138,4 @@ ARG PIP_RUFF_VERSION=0.9.6
 ```
 
 - PIP packages (Python):
-  - [ruff==${PIP_RUFF_VERSION}](https://pypi.org/project/ruff/${PIP_RUFF_VERSION})
+  - [ruff==0.9.6](https://pypi.org/project/ruff/0.9.6)

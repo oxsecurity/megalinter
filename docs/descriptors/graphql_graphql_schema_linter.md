@@ -114,5 +114,5 @@ ARG NPM_GRAPHQL_SCHEMA_LINTER_VERSION=3.0.1
 ```
 
 - NPM packages (node.js):
-  - [graphql@${NPM_GRAPHQL_VERSION}](https://www.npmjs.com/package/graphql@${NPM_GRAPHQL_VERSION})
-  - [graphql-schema-linter@${NPM_GRAPHQL_SCHEMA_LINTER_VERSION}](https://www.npmjs.com/package/graphql-schema-linter@${NPM_GRAPHQL_SCHEMA_LINTER_VERSION})
+  - [graphql@16.10.0](https://www.npmjs.com/package/graphql/v/16.10.0)
+  - [graphql-schema-linter@3.0.1](https://www.npmjs.com/package/graphql-schema-linter/v/3.0.1)

@@ -41,4 +41,4 @@ ARG NPM_TYPESCRIPT_VERSION=5.7.3
 ```
 
 - NPM packages (node.js):
-  - [typescript@${NPM_TYPESCRIPT_VERSION}](https://www.npmjs.com/package/typescript@${NPM_TYPESCRIPT_VERSION})
+  - [typescript@5.7.3](https://www.npmjs.com/package/typescript/v/5.7.3)

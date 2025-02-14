@@ -315,9 +315,9 @@ ARG PIP_CPPLINT_VERSION=2.0.0
 ```
 
 - NPM packages (node.js):
-  - [stylelint@${NPM_STYLELINT_VERSION}](https://www.npmjs.com/package/stylelint@${NPM_STYLELINT_VERSION})
-  - [stylelint-config-standard@${NPM_STYLELINT_CONFIG_STANDARD_VERSION}](https://www.npmjs.com/package/stylelint-config-standard@${NPM_STYLELINT_CONFIG_STANDARD_VERSION})
-  - [stylelint-config-sass-guidelines@${NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION}](https://www.npmjs.com/package/stylelint-config-sass-guidelines@${NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION})
-  - [stylelint-scss@${NPM_STYLELINT_SCSS_VERSION}](https://www.npmjs.com/package/stylelint-scss@${NPM_STYLELINT_SCSS_VERSION})
+  - [stylelint@16.14.1](https://www.npmjs.com/package/stylelint/v/16.14.1)
+  - [stylelint-config-standard@37.0.0](https://www.npmjs.com/package/stylelint-config-standard/v/37.0.0)
+  - [stylelint-config-sass-guidelines@12.1.0](https://www.npmjs.com/package/stylelint-config-sass-guidelines/v/12.1.0)
+  - [stylelint-scss@6.11.0](https://www.npmjs.com/package/stylelint-scss/v/6.11.0)
 - PIP packages (Python):
-  - [cpplint==${PIP_CPPLINT_VERSION}](https://pypi.org/project/cpplint/${PIP_CPPLINT_VERSION})
+  - [cpplint==2.0.0](https://pypi.org/project/cpplint/2.0.0)

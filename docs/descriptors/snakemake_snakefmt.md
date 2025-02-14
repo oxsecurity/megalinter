@@ -147,4 +147,4 @@ ARG PIP_SNAKEFMT_VERSION=0.10.2
 ```
 
 - PIP packages (Python):
-  - [snakefmt==${PIP_SNAKEFMT_VERSION}](https://pypi.org/project/snakefmt/${PIP_SNAKEFMT_VERSION})
+  - [snakefmt==0.10.2](https://pypi.org/project/snakefmt/0.10.2)

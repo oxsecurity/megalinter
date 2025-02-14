@@ -53,4 +53,4 @@ ENV SF_AUTOUPDATE_DISABLE=true SF_CLI_DISABLE_AUTOUPDATE=true
   - [coreutils](https://pkgs.alpinelinux.org/packages?branch=v3.21&arch=x86_64&name=coreutils)
   - [openjdk21](https://pkgs.alpinelinux.org/packages?branch=v3.21&arch=x86_64&name=openjdk21)
 - NPM packages (node.js):
-  - [@salesforce/cli@${NPM_SALESFORCE_CLI_VERSION}](https://www.npmjs.com/package/@salesforce/cli/v/${NPM_SALESFORCE_CLI_VERSION})
+  - [@salesforce/cli@2.75.5](https://www.npmjs.com/package/@salesforce/cli/v/2.75.5)

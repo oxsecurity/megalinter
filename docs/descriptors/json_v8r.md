@@ -141,4 +141,4 @@ ARG NPM_V8R_VERSION=4.2.1
 ```
 
 - NPM packages (node.js):
-  - [v8r@${NPM_V8R_VERSION}](https://www.npmjs.com/package/v8r@${NPM_V8R_VERSION})
+  - [v8r@4.2.1](https://www.npmjs.com/package/v8r/v/4.2.1)
