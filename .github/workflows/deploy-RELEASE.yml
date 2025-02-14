@@ -192,7 +192,7 @@ jobs:
       # - run: mkdocs gh-deploy --force
       - run: |
           git config --global user.name megalinter-bot
-          git config --global user.email nicolas.vuillamy@ox.security
+          git config --global user.email 129584137+megalinter-bot@users.noreply.github.com
           git stash
       - name: Checkout previous tag
         run: |
