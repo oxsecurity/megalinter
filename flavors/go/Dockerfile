@@ -112,7 +112,7 @@ ARG NPM_STYLELINT_SCSS_VERSION=6.11.0
 # renovate: datasource=pypi depName=cpplint
 ARG PIP_CPPLINT_VERSION=2.0.0
 # renovate: datasource=github-tags depName=golangci/golangci-lint
-ARG GO_GOLANGCI_LINT_VERSION=1.64.2
+ARG GO_GOLANGCI_LINT_VERSION=1.64.5
 # renovate: datasource=npm depName=graphql
 ARG NPM_GRAPHQL_VERSION=16.10.0
 # renovate: datasource=npm depName=graphql-schema-linter

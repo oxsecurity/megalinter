@@ -36,7 +36,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=github-tags depName=golangci/golangci-lint
-          ARG GO_GOLANGCI_LINT_VERSION=1.64.2
+          ARG GO_GOLANGCI_LINT_VERSION=1.64.5
         - |
           RUN wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s "v${GO_GOLANGCI_LINT_VERSION}" \
               && golangci-lint --version
