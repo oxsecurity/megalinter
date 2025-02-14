@@ -215,7 +215,7 @@ ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
   - [eslint-plugin-prettier@5.2.3](https://www.npmjs.com/package/eslint-plugin-prettier/v/5.2.3)
   - [eslint-plugin-react@7.37.4](https://www.npmjs.com/package/eslint-plugin-react/v/7.37.4)
   - [@babel/eslint-parser@7.26.8](https://www.npmjs.com/package/@babel/eslint-parser/v/7.26.8)
-  - [prettier@3.5.0](https://www.npmjs.com/package/prettier/v/3.5.0)
+  - [prettier@3.5.1](https://www.npmjs.com/package/prettier/v/3.5.1)
   - [prettyjson@1.2.5](https://www.npmjs.com/package/prettyjson/v/1.2.5)
   - [@typescript-eslint/eslint-plugin@8.24.0](https://www.npmjs.com/package/@typescript-eslint/eslint-plugin/v/8.24.0)
   - [@typescript-eslint/parser@8.24.0](https://www.npmjs.com/package/@typescript-eslint/parser/v/8.24.0)

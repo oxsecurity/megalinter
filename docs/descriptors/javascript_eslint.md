@@ -213,7 +213,7 @@ ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
   - [eslint-config-standard@17.1.0](https://www.npmjs.com/package/eslint-config-standard/v/17.1.0)
   - [eslint-plugin-import@2.31.0](https://www.npmjs.com/package/eslint-plugin-import/v/2.31.0)
   - [eslint-plugin-jest@28.11.0](https://www.npmjs.com/package/eslint-plugin-jest/v/28.11.0)
-  - [eslint-plugin-n@16.0.0](https://www.npmjs.com/package/eslint-plugin-n/v/16.0.0)
+  - [eslint-plugin-n@16.6.2](https://www.npmjs.com/package/eslint-plugin-n/v/16.6.2)
   - [eslint-plugin-prettier@5.2.3](https://www.npmjs.com/package/eslint-plugin-prettier/v/5.2.3)
   - [eslint-plugin-promise@6.6.0](https://www.npmjs.com/package/eslint-plugin-promise/v/6.6.0)
   - [eslint-plugin-vue@9.32.0](https://www.npmjs.com/package/eslint-plugin-vue/v/9.32.0)

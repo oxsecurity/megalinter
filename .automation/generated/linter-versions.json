@@ -34,7 +34,7 @@
     "gherkin-lint": "0.0.0",
     "git_diff": "2.47.2",
     "gitleaks": "8.23.3",
-    "golangci-lint": "1.64.2",
+    "golangci-lint": "1.64.5",
     "goodcheck": "3.1.0",
     "graphql-schema-linter": "3.0.1",
     "grype": "0.87.0",
