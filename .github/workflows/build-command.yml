@@ -87,7 +87,7 @@ jobs:
         with:
           commit_message: "[build-command] Update generated files"
           commit_user_name: megalinter-bot
-          commit_user_email: nicolas.vuillamy@ox.security
+          commit_user_email: 129584137+megalinter-bot@users.noreply.github.com
       - name: Add reaction
         uses: peter-evans/create-or-update-comment@v4
         with:
