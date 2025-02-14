@@ -3695,7 +3695,7 @@
 <p><a href="https://github.com/golangci/golangci-lint"><img alt="GitHub stars" src="https://img.shields.io/github/stars/golangci/golangci-lint?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-autofix-green"><img alt="autofix" src="https://shields.io/badge/-autofix-green"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-SARIF-orange"><img alt="sarif" src="https://shields.io/badge/-SARIF-orange"/></a> <a href="https://github.com/golangci/golangci-lint/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/golangci/golangci-lint?sort=semver"/></a> <a href="https://github.com/golangci/golangci-lint/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/golangci/golangci-lint"/></a> <a href="https://github.com/golangci/golangci-lint/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/golangci/golangci-lint"/></a> <a href="https://github.com/golangci/golangci-lint/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/golangci/golangci-lint"/></a></p>
 <h2 id="golangci-lint-documentation">golangci-lint documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>1.64.2</strong></li>
+<li>Version in MegaLinter: <strong>1.64.5</strong></li>
 <li>Visit <a href="https://golangci-lint.run/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://golangci-lint.run/usage/configuration/#config-file" target="_blank">How to configure golangci-lint rules</a><ul>
 <li>If custom <code>.golangci.yml</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.golangci.yml" target="_blank">.golangci.yml</a> will be used</li>
@@ -3929,7 +3929,7 @@ Use "golangci-lint [command] --help" for more information about a command.
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile"># renovate: datasource=github-tags depName=golangci/golangci-lint
-ARG GO_GOLANGCI_LINT_VERSION=1.64.2
+ARG GO_GOLANGCI_LINT_VERSION=1.64.5
 RUN wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s "v${GO_GOLANGCI_LINT_VERSION}" \
     &amp;&amp; golangci-lint --version
 
