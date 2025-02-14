@@ -97,7 +97,7 @@ php-cs-fixer check --config .php-cs-fixer.php
 
 ```shell
 PHP needs to be a minimum version of PHP 7.4.0 and maximum version of PHP 8.3.*.
-Current PHP version: 8.4.3.
+Current PHP version: 8.4.4.
 Ignoring environment requirements because `PHP_CS_FIXER_IGNORE_ENV` is set. Execution may be unstable.
 Description:
   List commands

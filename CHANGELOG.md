@@ -76,6 +76,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [phpstan](https://phpstan.org/) from 2.1.4 to **2.1.5** on 2025-02-13
   - [checkov](https://www.checkov.io/) from 3.2.369 to **3.2.370** on 2025-02-13
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.88.6 to **3.88.8** on 2025-02-13
+  - [golangci-lint](https://golangci-lint.run/) from 1.64.2 to **1.64.5** on 2025-02-14
 <!-- linter-versions-end -->
 
 ## [v8.4.2] - 2024-02-02
