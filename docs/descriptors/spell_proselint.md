@@ -131,4 +131,4 @@ ARG PIP_PROSELINT_VERSION=0.14.0
 ```
 
 - PIP packages (Python):
-  - [proselint==${PIP_PROSELINT_VERSION}](https://pypi.org/project/proselint/${PIP_PROSELINT_VERSION})
+  - [proselint==0.14.0](https://pypi.org/project/proselint/0.14.0)

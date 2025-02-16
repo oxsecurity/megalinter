@@ -249,4 +249,4 @@ ARG PIP_BLACK_VERSION=25.1.0
 ```
 
 - PIP packages (Python):
-  - [black==${PIP_BLACK_VERSION}](https://pypi.org/project/black/${PIP_BLACK_VERSION})
+  - [black==25.1.0](https://pypi.org/project/black/25.1.0)

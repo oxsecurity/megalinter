@@ -15,7 +15,7 @@ description: How to use prettier (configure, ignore files, ignore errors, help &
 
 ## prettier documentation
 
-- Version in MegaLinter: **3.5.0**
+- Version in MegaLinter: **3.5.1**
 - Visit [Official Web Site](https://prettier.io/){target=_blank}
 - See [How to configure prettier rules](https://prettier.io/docs/en/configuration.html){target=_blank}
 - See [How to disable prettier rules in files](https://prettier.io/docs/en/ignore.html#javascript){target=_blank}
@@ -240,9 +240,9 @@ Other options:
 ARG NPM_TYPESCRIPT_VERSION=5.7.3
 # Linter install
 # renovate: datasource=npm depName=prettier
-ARG NPM_PRETTIER_VERSION=3.5.0
+ARG NPM_PRETTIER_VERSION=3.5.1
 ```
 
 - NPM packages (node.js):
-  - [typescript@${NPM_TYPESCRIPT_VERSION}](https://www.npmjs.com/package/typescript@${NPM_TYPESCRIPT_VERSION})
-  - [prettier@${NPM_PRETTIER_VERSION}](https://www.npmjs.com/package/prettier@${NPM_PRETTIER_VERSION})
+  - [typescript@5.7.3](https://www.npmjs.com/package/typescript/v/5.7.3)
+  - [prettier@3.5.1](https://www.npmjs.com/package/prettier/v/3.5.1)

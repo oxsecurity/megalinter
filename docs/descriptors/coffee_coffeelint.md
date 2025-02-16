@@ -121,4 +121,4 @@ ARG NPM_COFFEELINT_CLI_VERSION=5.2.11
 ```
 
 - NPM packages (node.js):
-  - [@coffeelint/cli@${NPM_COFFEELINT_CLI_VERSION}](https://www.npmjs.com/package/@coffeelint/cli/v/${NPM_COFFEELINT_CLI_VERSION})
+  - [@coffeelint/cli@5.2.11](https://www.npmjs.com/package/@coffeelint/cli/v/5.2.11)

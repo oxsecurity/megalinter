@@ -31,9 +31,9 @@ with:
 
 ## Configuration
 
-| Variable                                | Description                                                                                                       | Default value              |
-|-----------------------------------------|-------------------------------------------------------------------------------------------------------------------|----------------------------|
-| SARIF_REPORTER                          | Activates/deactivates reporter                                                                                    | `false`                    |
-| SARIF_REPORTER_NORMALIZE_LINTERS_OUTPUT | Remove DEFAULT_WORKSPACE prefix in SARIF-files, for example 'DEFAULT_WORKSPACE/src/main' would be 'src/main' etc. | `true`                     |
-| SARIF_REPORTER_FILE_NAME                | File name for SARIF report output file                                                                            | `mega-linter-report.sarif` |
-| SARIF_REPORTER_LINTERS                  | List of linter keys that will output SARIF (if not set, all SARIF compliant linters will output SARIF)            | `[]`                       |
+| Variable                                | Description                                                                                                       | Default value             |
+|-----------------------------------------|-------------------------------------------------------------------------------------------------------------------|---------------------------|
+| SARIF_REPORTER                          | Activates/deactivates reporter                                                                                    | `false`                   |
+| SARIF_REPORTER_NORMALIZE_LINTERS_OUTPUT | Remove DEFAULT_WORKSPACE prefix in SARIF-files, for example 'DEFAULT_WORKSPACE/src/main' would be 'src/main' etc. | `true`                    |
+| SARIF_REPORTER_FILE_NAME                | File name for SARIF report output file                                                                            | `megalinter-report.sarif` |
+| SARIF_REPORTER_LINTERS                  | List of linter keys that will output SARIF (if not set, all SARIF compliant linters will output SARIF)            | `[]`                      |

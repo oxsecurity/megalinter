@@ -45,4 +45,4 @@ RUN wget --tries=5 https://www.lua.org/ftp/lua-5.3.5.tar.gz -O - -q | tar -xzf -
 ```
 
 - APK packages (Linux):
-  - [readline-dev](https://pkgs.alpinelinux.org/packages?branch=edge&name=readline-dev)
+  - [readline-dev](https://pkgs.alpinelinux.org/packages?branch=v3.21&arch=x86_64&name=readline-dev)

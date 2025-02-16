@@ -14,7 +14,7 @@ PHP-CS-Fixer is able to fix rule violations detected, and even those marked as (
 
 ## php-cs-fixer documentation
 
-- Version in MegaLinter: **3.68.5**
+- Version in MegaLinter: **3.68.6**
 - Visit [Official Web Site](https://cs.symfony.com/){target=_blank}
   - If custom `.php-cs-fixer.dist.php` config file isn't found, [.php-cs-fixer.dist.php](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.php-cs-fixer.dist.php){target=_blank} will be used
 
@@ -97,7 +97,7 @@ php-cs-fixer check --config .php-cs-fixer.php
 
 ```shell
 PHP needs to be a minimum version of PHP 7.4.0 and maximum version of PHP 8.3.*.
-Current PHP version: 8.4.3.
+Current PHP version: 8.4.4.
 Ignoring environment requirements because `PHP_CS_FIXER_IGNORE_ENV` is set. Execution may be unstable.
 Description:
   List commands

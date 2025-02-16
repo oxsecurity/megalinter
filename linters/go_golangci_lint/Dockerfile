@@ -49,7 +49,7 @@ FROM python:3.12.8-alpine3.21
 #############################################################################################
 #ARG__START
 # renovate: datasource=github-tags depName=golangci/golangci-lint
-ARG GO_GOLANGCI_LINT_VERSION=1.64.2
+ARG GO_GOLANGCI_LINT_VERSION=1.64.5
 #ARG__END
 
 ####################

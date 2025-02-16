@@ -116,4 +116,4 @@ ARG NPM_LS_LINT_LS_LINT_VERSION=2.2.3
 ```
 
 - NPM packages (node.js):
-  - [@ls-lint/ls-lint@${NPM_LS_LINT_LS_LINT_VERSION}](https://www.npmjs.com/package/@ls-lint/ls-lint/v/${NPM_LS_LINT_LS_LINT_VERSION})
+  - [@ls-lint/ls-lint@2.2.3](https://www.npmjs.com/package/@ls-lint/ls-lint/v/2.2.3)

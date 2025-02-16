@@ -303,5 +303,5 @@ RUN wget --tries=5 https://github.com/cvega/luarocks/archive/v${LUA_LUACHECK_VER
 ```
 
 - APK packages (Linux):
-  - [readline-dev](https://pkgs.alpinelinux.org/packages?branch=edge&name=readline-dev)
-  - [openssl](https://pkgs.alpinelinux.org/packages?branch=edge&name=openssl)
+  - [readline-dev](https://pkgs.alpinelinux.org/packages?branch=v3.21&arch=x86_64&name=readline-dev)
+  - [openssl](https://pkgs.alpinelinux.org/packages?branch=v3.21&arch=x86_64&name=openssl)

@@ -486,5 +486,5 @@ ARG PIP_ISORT_VERSION=6.0.0
 ```
 
 - PIP packages (Python):
-  - [black==${PIP_BLACK_VERSION}](https://pypi.org/project/black/${PIP_BLACK_VERSION})
-  - [isort==${PIP_ISORT_VERSION}](https://pypi.org/project/isort/${PIP_ISORT_VERSION})
+  - [black==25.1.0](https://pypi.org/project/black/25.1.0)
+  - [isort==6.0.0](https://pypi.org/project/isort/6.0.0)

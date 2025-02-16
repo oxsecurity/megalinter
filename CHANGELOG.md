@@ -68,6 +68,19 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 15.0.0 to **15.0.2** on 2025-02-11
   - [rubocop](https://rubocop.org/) from 1.71.0 to **1.71.2** on 2025-02-11
   - [kubescape](https://github.com/kubescape/kubescape) from 2.9.0 to **3.0.27** on 2025-02-11
+  - [roslynator](https://github.com/dotnet/Roslynator) from 0.10.0.0 to **0.10.1.0** on 2025-02-12
+  - [golangci-lint](https://golangci-lint.run/) from 1.63.4 to **1.64.2** on 2025-02-12
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.393 to **1.1.394** on 2025-02-12
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.88.5 to **3.88.6** on 2025-02-12
+  - [revive](https://revive.run/) from 1.6.0 to **1.6.1** on 2025-02-13
+  - [prettier](https://prettier.io/) from 3.5.0 to **3.5.1** on 2025-02-13
+  - [phpstan](https://phpstan.org/) from 2.1.4 to **2.1.5** on 2025-02-13
+  - [checkov](https://www.checkov.io/) from 3.2.369 to **3.2.370** on 2025-02-13
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.88.6 to **3.88.8** on 2025-02-13
+  - [golangci-lint](https://golangci-lint.run/) from 1.64.2 to **1.64.5** on 2025-02-14
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.24.0 to **1.25.1** on 2025-02-15
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.68.5 to **3.68.6** on 2025-02-15
+  - [kubescape](https://github.com/kubescape/kubescape) from 3.0.27 to **3.0.28** on 2025-02-16
 <!-- linter-versions-end -->
 
 ## [v8.4.2] - 2024-02-02

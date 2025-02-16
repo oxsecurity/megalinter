@@ -136,4 +136,4 @@ ARG PIP_SQLFLUFF_VERSION=3.3.1
 ```
 
 - PIP packages (Python):
-  - [sqlfluff==${PIP_SQLFLUFF_VERSION}](https://pypi.org/project/sqlfluff/${PIP_SQLFLUFF_VERSION})
+  - [sqlfluff==3.3.1](https://pypi.org/project/sqlfluff/3.3.1)
