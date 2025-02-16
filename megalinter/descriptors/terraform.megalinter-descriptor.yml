@@ -47,6 +47,7 @@ linters:
       - name: PAT_GITHUB_COM
         default_value: ""
         description: If you have issues with tflint --init, create a GitHub Personal Access Token and set its value to PAT_GITHUB_COM variable.
+    test_folder: terraform_tflint
     examples:
       - "tflint"
       - "tflint -c .tflint.hcl"

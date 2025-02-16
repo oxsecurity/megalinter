@@ -1,5 +1,5 @@
-- Correct some broken links in `README` from "Mega-Linter" to "MegaLinter" (#1030)
-- Correct some broken links in `README` from "Mega-Linter" to "MegaLinter" (#1030)
-- Correct some broken links in `README` from "Mega-Linter" to "MegaLinter" (#1030)
+Are you actualy going?
 
-This is so advantageous to have an URL !
+and and
+
+the the
