@@ -17,7 +17,7 @@ description: How to use kubescape (configure, ignore files, ignore errors, help 
 
 ## kubescape documentation
 
-- Version in MegaLinter: **3.0.27**
+- Version in MegaLinter: **3.0.28**
 - Visit [Official Web Site](https://github.com/kubescape/kubescape#readme){target=_blank}
 
 [![kubescape - GitHub](https://gh-card.dev/repos/kubescape/kubescape.svg?fullname=)](https://github.com/kubescape/kubescape){target=_blank}
@@ -147,6 +147,7 @@ Flags:
       --server string         Backend discovery server URL
 
 Use "kubescape [command] --help" for more information about a command.
+{"level":"info","ts":"2025-02-16T16:09:39Z","msg":"Received interrupt signal, exiting..."}
 ```
 
 ### Installation on mega-linter Docker image
@@ -154,7 +155,7 @@ Use "kubescape [command] --help" for more information about a command.
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=github-tags depName=kubescape/kubescape
-ARG KUBERNETES_KUBESCAPE_VERSION=3.0.27
+ARG KUBERNETES_KUBESCAPE_VERSION=3.0.28
 RUN ln -s /lib/libc.so.6 /usr/lib/libresolv.so.2 && \
     curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash -s -- -v "v${KUBERNETES_KUBESCAPE_VERSION}"
 ```
