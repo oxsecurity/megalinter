@@ -1,6 +1,6 @@
 ---
 title: Install MegaLinter on GitHub Actions
-description: Manual instructions to setup MegaLinter in a GitHub Action Workflow
+description: Manual instructions to setup MegaLinter in a GitHub Action Workflow 
 ---
 
 <!-- markdownlint-disable MD013 -->
@@ -122,5 +122,6 @@ jobs:
 ```
 
 </details>
+
 
 <!-- install-github-section-end -->
