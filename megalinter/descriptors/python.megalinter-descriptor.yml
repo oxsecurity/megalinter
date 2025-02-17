@@ -126,7 +126,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=flake8
-          ARG PIP_FLAKE8_VERSION=7.1.1
+          ARG PIP_FLAKE8_VERSION=7.1.2
       pip:
         - flake8==${PIP_FLAKE8_VERSION}
     ide:
