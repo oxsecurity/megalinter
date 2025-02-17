@@ -80,6 +80,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.24.0 to **1.25.1** on 2025-02-15
   - [php-cs-fixer](https://cs.symfony.com/) from 3.68.5 to **3.68.6** on 2025-02-15
   - [kubescape](https://github.com/kubescape/kubescape) from 3.0.27 to **3.0.28** on 2025-02-16
+  - [revive](https://revive.run/) from 1.6.1 to **1.7.0** on 2025-02-17
+  - [flake8](https://flake8.pycqa.org) from 7.1.1 to **7.1.2** on 2025-02-17
 <!-- linter-versions-end -->
 
 ## [v8.4.2] - 2024-02-02

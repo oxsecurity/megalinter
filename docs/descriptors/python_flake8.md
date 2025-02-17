@@ -9,7 +9,7 @@ description: How to use flake8 (configure, ignore files, ignore errors, help & v
 
 ## flake8 documentation
 
-- Version in MegaLinter: **7.1.1**
+- Version in MegaLinter: **7.1.2**
 - Visit [Official Web Site](https://flake8.pycqa.org){target=_blank}
 - See [How to configure flake8 rules](https://flake8.pycqa.org/en/latest/user/configuration.html#project-configuration){target=_blank}
   - If custom `.flake8` config file isn't found, [.flake8](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.flake8){target=_blank} will be used
@@ -201,8 +201,8 @@ Installed plugins: mccabe: 0.7.0, pycodestyle: 2.12.1, pyflakes: 3.2.0
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=flake8
-ARG PIP_FLAKE8_VERSION=7.1.1
+ARG PIP_FLAKE8_VERSION=7.1.2
 ```
 
 - PIP packages (Python):
-  - [flake8==7.1.1](https://pypi.org/project/flake8/7.1.1)
+  - [flake8==7.1.2](https://pypi.org/project/flake8/7.1.2)
