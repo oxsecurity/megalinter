@@ -5518,7 +5518,10 @@
 <h2 id="unreleased-beta-main-branch-content">[Unreleased] (beta, main branch content)</h2>
 <p>Note: Can be used with <code>oxsecurity/megalinter@beta</code> in your GitHub Action mega-linter.yml file, or with <code>oxsecurity/megalinter:beta</code> docker image</p>
 <ul>
-<li>Core</li>
+<li>Core<ul>
+<li>Addition of warnings to reporters and logic changes to surface warnings even when there are no errors. Addition of <code>cli_lint_warning_count</code> / <code>cli_lint_warning_regex</code> variables to the JSON schema. <a href="https://github.com/oxsecurity/megalinter/issues/4476">#4476</a></li>
+</ul>
+</li>
 </ul>
 <ul>
 <li>New linters</li>
