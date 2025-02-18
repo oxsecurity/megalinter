@@ -34,7 +34,7 @@ linters:
           ARG GEM_RUBOCOP_PERFORMANCE_VERSION=1.23.1
         - |-
           # renovate: datasource=rubygems depName=rubocop-rails
-          ARG GEM_RUBOCOP_RAILS_VERSION=2.29.1
+          ARG GEM_RUBOCOP_RAILS_VERSION=2.30.1
         - |-
           # renovate: datasource=rubygems depName=rubocop-rake
           ARG GEM_RUBOCOP_RAKE_VERSION=0.6.0
