@@ -19,7 +19,7 @@ If your root folder is not **force-app**, please set variable SALESFORCE_LIGHTNI
 
 ## lightning-flow-scanner documentation
 
-- Version in MegaLinter: **2.46.0**
+- Version in MegaLinter: **2.46.2**
 - Visit [Official Web Site](https://github.com/Lightning-Flow-Scanner#readme){target=_blank}
 - See [How to configure lightning-flow-scanner rules](https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx#configuration){target=_blank}
   - If custom `.flow-scanner.json` config file isn't found, [.flow-scanner.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.flow-scanner.json){target=_blank} will be used
@@ -93,9 +93,8 @@ sf flow:scan
 Find and fix potential bugs in Salesforce flows.
 
 USAGE
-  $ sf flow scan [--json] [--flags-dir <value>] [-d <value>] [-c
-    <value>] [-f error|warning|note|never] [-r] [-p <value>] [--files
-    <value>...] [-u <value>]
+  $ sf flow scan [--json] [--flags-dir <value>] [-d <value> | --files
+    <value>...] [-c <value>] [-f error|warning|note|never] [-r] [-u <value>]
 
 FLAGS
   -c, --config=<value>          Path to configuration file
@@ -104,8 +103,6 @@ FLAGS
                                 warning, note, or never) defining when the
                                 command return code will be 1
                                 <options: error|warning|note|never>
-  -p, --sourcepath=<value>      Comma-separated list of source flow paths to
-                                scan
   -r, --retrieve                Force retrieve Flows from org at the start of
                                 the command
   -u, --targetusername=<value>  Retrieve the latest metadata from the target
@@ -138,7 +135,7 @@ RUN sf plugins install @salesforce/plugin-packaging@${NPM_SALESFORCE_PLUGIN_PACK
 ENV SF_AUTOUPDATE_DISABLE=true SF_CLI_DISABLE_AUTOUPDATE=true
 # Linter install
 # renovate: datasource=npm depName=lightning-flow-scanner
-ARG LIGHTNING_FLOW_SCANNER_VERSION=2.46.0
+ARG LIGHTNING_FLOW_SCANNER_VERSION=2.46.2
 RUN echo y|sf plugins install lightning-flow-scanner@${LIGHTNING_FLOW_SCANNER_VERSION} \
     && (npm cache clean --force || true) \
     && rm -rf /root/.npm/_cacache

@@ -83,6 +83,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [kubescape](https://github.com/kubescape/kubescape) from 3.0.27 to **3.0.28** on 2025-02-16
   - [revive](https://revive.run/) from 1.6.1 to **1.7.0** on 2025-02-17
   - [flake8](https://flake8.pycqa.org) from 7.1.1 to **7.1.2** on 2025-02-17
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 2.46.0 to **2.46.2** on 2025-02-18
 <!-- linter-versions-end -->
 
 ## [v8.4.2] - 2024-02-02

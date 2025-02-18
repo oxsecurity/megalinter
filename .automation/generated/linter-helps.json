@@ -3480,7 +3480,7 @@
         "      --server string         Backend discovery server URL",
         "",
         "Use \"kubescape [command] --help\" for more information about a command.",
-        "{\"level\":\"info\",\"ts\":\"2025-02-17T19:59:09Z\",\"msg\":\"Received interrupt signal, exiting...\"}"
+        "{\"level\":\"info\",\"ts\":\"2025-02-18T07:01:59Z\",\"msg\":\"Received interrupt signal, exiting...\"}"
     ],
     "kubeval": [
         "Validate a Kubernetes YAML file against the relevant schema",
@@ -3514,9 +3514,8 @@
         "Find and fix potential bugs in Salesforce flows.",
         "",
         "USAGE",
-        "  $ sf flow scan [--json] [--flags-dir <value>] [-d <value>] [-c",
-        "    <value>] [-f error|warning|note|never] [-r] [-p <value>] [--files",
-        "    <value>...] [-u <value>]",
+        "  $ sf flow scan [--json] [--flags-dir <value>] [-d <value> | --files",
+        "    <value>...] [-c <value>] [-f error|warning|note|never] [-r] [-u <value>]",
         "",
         "FLAGS",
         "  -c, --config=<value>          Path to configuration file",
@@ -3525,8 +3524,6 @@
         "                                warning, note, or never) defining when the",
         "                                command return code will be 1",
         "                                <options: error|warning|note|never>",
-        "  -p, --sourcepath=<value>      Comma-separated list of source flow paths to",
-        "                                scan",
         "  -r, --retrieve                Force retrieve Flows from org at the start of",
         "                                the command",
         "  -u, --targetusername=<value>  Retrieve the latest metadata from the target",
