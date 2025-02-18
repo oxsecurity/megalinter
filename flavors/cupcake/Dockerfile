@@ -250,7 +250,7 @@ ARG GEM_RUBOCOP_PERFORMANCE_VERSION=1.23.1
 # renovate: datasource=rubygems depName=rubocop-rails
 ARG GEM_RUBOCOP_RAILS_VERSION=2.29.1
 # renovate: datasource=rubygems depName=rubocop-rake
-ARG GEM_RUBOCOP_RAKE_VERSION=0.6.0
+ARG GEM_RUBOCOP_RAKE_VERSION=0.7.1
 # renovate: datasource=rubygems depName=rubocop-rspec
 ARG GEM_RUBOCOP_RSPEC_VERSION=3.4.0
 # renovate: datasource=npm depName=cspell
