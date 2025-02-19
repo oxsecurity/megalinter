@@ -162,7 +162,7 @@ ARG GEM_RUBOCOP_RAILS_VERSION=2.29.1
 # renovate: datasource=rubygems depName=rubocop-rake
 ARG GEM_RUBOCOP_RAKE_VERSION=0.7.1
 # renovate: datasource=rubygems depName=rubocop-rspec
-ARG GEM_RUBOCOP_RSPEC_VERSION=3.4.0
+ARG GEM_RUBOCOP_RSPEC_VERSION=3.5.0
 # renovate: datasource=pypi depName=snakefmt
 ARG PIP_SNAKEFMT_VERSION=0.10.2
 # renovate: datasource=npm depName=cspell
