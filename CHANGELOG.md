@@ -21,6 +21,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Fixes
   - Use npm to install pyright
+  - [jscpd](https://megalinter.io/latest/descriptors/copypaste_jscpd/): remove forced `--exitCode 1` to fix <https://github.com/oxsecurity/megalinter/issues/4631>
 
 - Reporters
 
