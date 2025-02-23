@@ -620,7 +620,7 @@
           },
           "cli_lint_errors_count": {
             "$id": "#/properties/linters/items/properties/cli_lint_errors_count",
-            "description": "Defines how to count errors from log file. regex_number, regex_count, regex_sum, or total_lines",
+            "description": "Defines how to count errors from log file. regex_number, regex_count, regex_sum, total_lines or sarif",
             "enum": [
               "regex_number",
               "regex_count",
@@ -632,7 +632,8 @@
               "regex_number",
               "regex_count",
               "regex_sum",
-              "total_lines"
+              "total_lines",
+              "sarif"
             ],
             "title": "Lint errors count mode",
             "type": "string"
@@ -714,18 +715,20 @@
           },
           "cli_lint_warnings_count": {
             "$id": "#/properties/linters/items/properties/cli_lint_warnings_count",
-            "description": "Defines how to count warnings from log file. regex_number, regex_count, regex_sum, or total_lines",
+            "description": "Defines how to count warnings from log file. regex_number, regex_count, regex_sum, total_lines or sarif",
             "enum": [
               "regex_number",
               "regex_count",
               "regex_sum",
-              "total_lines"
+              "total_lines",
+              "sarif"
             ],
             "examples": [
               "regex_number",
               "regex_count",
               "regex_sum",
-              "total_lines"
+              "total_lines",
+              "sarif"
             ],
             "title": "Lint errors count mode",
             "type": "string"

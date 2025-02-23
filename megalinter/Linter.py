@@ -1412,43 +1412,8 @@ class Linter:
 
     # Find number of errors in linter stdout log
     def get_total_number_errors(self, stdout: str):
-        total_errors = 0
+        total_errors = self.get_result_count(stdout, "error", "cli_lint_errors_count", "cli_lint_errors_regex")
 
-        # Count using SARIF output file
-        if self.output_sarif is True:
-            return self.get_sarif_result_count(stdout, "error")
-        # Get number with a single regex. Used when linter prints out Found _ errors
-        elif self.cli_lint_errors_count == "regex_number":
-            reg = self.get_regex(self.cli_lint_errors_regex)
-            m = re.search(reg, utils.normalize_log_string(stdout))
-            if m:
-                total_errors = int(m.group(1))
-        # Count the number of occurrences of a regex corresponding to an error in linter log (parses linter log)
-        elif self.cli_lint_errors_count == "regex_count":
-            reg = self.get_regex(self.cli_lint_errors_regex)
-            total_errors = len(re.findall(reg, utils.normalize_log_string(stdout)))
-        # Sum of all numbers found in linter logs with a regex. Found when each file prints out total number of errors
-        elif self.cli_lint_errors_count == "regex_sum":
-            reg = self.get_regex(self.cli_lint_errors_regex)
-            matches = re.findall(reg, utils.normalize_log_string(stdout))
-            total_errors = sum(int(m) for m in matches)
-        # Count all lines of the linter log
-        elif self.cli_lint_errors_count == "total_lines":
-            total_errors = sum(
-                not line.isspace() and line != "" for line in stdout.splitlines()
-            )
-        # Count number of results in sarif format
-        elif self.cli_lint_errors_count == "sarif":
-            sarif = None
-            sarif_stdout = utils.find_json_in_stdout(stdout)
-            try:
-                sarif = json.loads(sarif_stdout)
-            except ValueError as e:
-                logging.warning(f"Unable to parse sarif ({str(e)}):" + stdout)
-            if sarif and sarif["runs"] and sarif["runs"][0]["results"]:
-                total_errors = len(sarif["runs"][0]["results"])
-            else:
-                logging.warning("Unable to find results in :" + stdout)
         # Return result if found, else default value according to status
         if total_errors > 0:
             return total_errors
@@ -1466,31 +1431,8 @@ class Linter:
 
     # Find number of warnings in linter stdout log
     def get_total_number_warnings(self, stdout: str):
-        total_warnings = None
+        total_warnings = self.get_result_count(stdout, "warning", "cli_lint_warnings_count", "cli_lint_warnings_regex")
 
-        # Count using SARIF output file
-        if self.output_sarif is True:
-            return self.get_sarif_result_count(stdout, "warning")
-        # Get number with a single regex.
-        elif self.cli_lint_warnings_count == "regex_number":
-            reg = self.get_regex(self.cli_lint_warnings_regex)
-            m = re.search(reg, utils.normalize_log_string(stdout))
-            if m:
-                total_warnings = int(m.group(1))
-        # Count the number of occurrences of a regex corresponding to an error in linter log (parses linter log)
-        elif self.cli_lint_warnings_count == "regex_count":
-            reg = self.get_regex(self.cli_lint_warnings_regex)
-            total_warnings = len(re.findall(reg, utils.normalize_log_string(stdout)))
-        # Sum of all numbers found in linter logs with a regex. Found when each file prints out total number of errors
-        elif self.cli_lint_warnings_count == "regex_sum":
-            reg = self.get_regex(self.cli_lint_warnings_regex)
-            matches = re.findall(reg, utils.normalize_log_string(stdout))
-            total_warnings = sum(int(m) for m in matches)
-        # Count all lines of the linter log
-        elif self.cli_lint_warnings_count == "total_lines":
-            total_warnings = sum(
-                not line.isspace() and line != "" for line in stdout.splitlines()
-            )
         if self.cli_lint_warnings_count is not None and total_warnings is None:
             logging.warning(
                 f"Unable to get number of warnings with {self.cli_lint_warnings_count} "
@@ -1502,8 +1444,52 @@ class Linter:
 
         return total_warnings
 
+    # Find number of results by level in linter stdout log
+    def get_result_count(self, stdout: str, level: str, count_property: str, regex_property: str):
+        total_result = 0
+
+        # Count using SARIF output file
+        if self.output_sarif is True:
+            return self.get_sarif_result_count(stdout, level)
+        # Get number with a single regex. Used when linter prints out Found _ errors/warnings
+        elif self[count_property] == "regex_number":
+            reg = self.get_regex(self[regex_property])
+            m = re.search(reg, utils.normalize_log_string(stdout))
+            if m:
+                total_result = int(m.group(1))
+        # Count the number of occurrences of a regex corresponding to an error or warning in linter log (parses linter log)
+        elif self[count_property] == "regex_count":
+            reg = self.get_regex(self[regex_property])
+            total_result = len(re.findall(reg, utils.normalize_log_string(stdout)))
+        # Sum of all numbers found in linter logs with a regex. Found when each file prints out total number of errors or warnings
+        elif self[count_property] == "regex_sum":
+            reg = self.get_regex(self.cli_lint_errors_regex)
+            matches = re.findall(reg, utils.normalize_log_string(stdout))
+            total_result = sum(int(m) for m in matches)
+        # Count all lines of the linter log
+        elif self[count_property] == "total_lines":
+            total_result = sum(
+                not line.isspace() and line != "" for line in stdout.splitlines()
+            )
+        # Count number of results in sarif format
+        elif self[count_property] == "sarif":
+            sarif = None
+            sarif_stdout = utils.find_json_in_stdout(stdout)
+            try:
+                sarif = json.loads(sarif_stdout)
+            except ValueError as e:
+                logging.warning(f"Unable to parse sarif ({str(e)}):" + stdout)
+            if sarif and sarif["runs"]:
+                for run in sarif["runs"]:
+                    for result in run["results"]:
+                        if result["level"] == level:
+                            total_result += 1
+            else:
+                logging.warning("Unable to find results in:" + stdout)
+        return total_result
+
     def get_sarif_result_count(self, stdout: str, level: str):
-        result_count = 0
+        total_result = 0
 
         try:
             # SARIF is in MegaLinter named file
@@ -1530,24 +1516,24 @@ class Linter:
             for run in sarif_output["runs"]:
                 for result in run["results"]:
                     if result["level"] == level:
-                        result_count += 1
+                        total_result += 1
 
             # If we got here, we should have found a number of results from SARIF output
-            if result_count == 0:
+            if total_result == 0:
                 logging.warning(
                     f"Unable to get total {level}s from SARIF output.\nSARIF:"
                     + str(sarif_output)
                 )
-            return result_count
+            return total_result
         except Exception as e:
-            result_count = 1
+            total_result = 1
             logging.error(
                 f"Error while getting total {level}s from SARIF output.\nError:"
                 + str(e)
                 + "\nstdout: "
                 + stdout
             )
-            return result_count
+            return total_result
 
     # Build the CLI command to get linter version (can be overridden if --version is not the way to get the version)
     def build_version_command(self):
