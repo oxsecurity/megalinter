@@ -96,6 +96,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [php-cs-fixer](https://cs.symfony.com/) from 3.69.1 to **3.70.0** on 2025-02-23
   - [ruff-format](https://github.com/astral-sh/ruff) from 0.9.6 to **0.9.7** on 2025-02-23
   - [ruff](https://github.com/astral-sh/ruff) from 0.9.6 to **0.9.7** on 2025-02-23
+  - [checkstyle](https://checkstyle.org/) from 10.21.2 to **10.21.3** on 2025-02-23
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.88.9 to **3.88.12** on 2025-02-23
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.84 to **0.1.85** on 2025-02-23
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 2.46.2 to **3.0.0** on 2025-02-23
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.17.3 to **8.17.5** on 2025-02-23
 <!-- linter-versions-end -->
 
 ## [v8.4.2] - 2024-02-02
