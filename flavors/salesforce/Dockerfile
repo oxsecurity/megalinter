@@ -92,7 +92,7 @@ ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.10.1
 # renovate: datasource=npm depName=sfdx-hardis
 ARG SFDX_HARDIS_VERSION=5.19.4
 # renovate: datasource=pypi depName=ansible-lint
-ARG PIP_ANSIBLE_LINT_VERSION=25.1.2
+ARG PIP_ANSIBLE_LINT_VERSION=25.1.3
 # renovate: datasource=npm depName=@stoplight/spectral-cli
 ARG NPM_SPECTRAL_CLI_VERSION=6.14.2
 # renovate: datasource=crate depName=shellcheck-sarif
