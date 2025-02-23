@@ -93,6 +93,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [syft](https://github.com/anchore/syft) from 1.19.0 to **1.20.0** on 2025-02-22
   - [rubocop](https://rubocop.org/) from 1.71.2 to **1.72.2** on 2025-02-22
   - [scalafix](https://scalacenter.github.io/scalafix/) from 0.14.0 to **0.14.2** on 2025-02-22
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.69.1 to **3.70.0** on 2025-02-23
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.9.6 to **0.9.7** on 2025-02-23
+  - [ruff](https://github.com/astral-sh/ruff) from 0.9.6 to **0.9.7** on 2025-02-23
 <!-- linter-versions-end -->
 
 ## [v8.4.2] - 2024-02-02
