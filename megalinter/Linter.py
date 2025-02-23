@@ -1416,53 +1416,7 @@ class Linter:
 
         # Count using SARIF output file
         if self.output_sarif is True:
-            try:
-                # SARIF is in MegaLinter named file
-                if self.sarif_output_file is not None and os.path.isfile(
-                    self.sarif_output_file
-                ):
-                    with open(
-                        self.sarif_output_file, "r", encoding="utf-8"
-                    ) as sarif_file:
-                        sarif_output = yaml.safe_load(sarif_file)
-                        # SARIF is in default output file
-                elif self.sarif_default_output_file is not None and os.path.isfile(
-                    self.sarif_default_output_file
-                ):
-                    with open(
-                        self.sarif_default_output_file, "r", encoding="utf-8"
-                    ) as sarif_file:
-                        sarif_output = yaml.safe_load(sarif_file)
-                        # SARIF is in stdout
-                else:
-                    # SARIF is in stdout
-                    sarif_output = yaml.safe_load(stdout)
-                if "results" in sarif_output["runs"][0]:
-                    # Get number of results
-                    total_errors = len(sarif_output["runs"][0]["results"])
-                    # Append number of invocation config notifications (other type of errors, not in result)
-                    if "invocations" in sarif_output["runs"][0]:
-                        for invocation in sarif_output["runs"][0]["invocations"]:
-                            if "toolConfigurationNotifications" in invocation:
-                                total_errors += len(
-                                    invocation["toolConfigurationNotifications"]
-                                )
-                # If we got here, we should have found a number of errors from SARIF output
-                if total_errors == 0:
-                    logging.warning(
-                        "Unable to get total errors from SARIF output.\nSARIF:"
-                        + str(sarif_output)
-                    )
-                return total_errors
-            except Exception as e:
-                total_errors = 1
-                logging.error(
-                    "Error while getting total errors from SARIF output.\nError:"
-                    + str(e)
-                    + "\nstdout: "
-                    + stdout
-                )
-                return total_errors
+            return self.get_sarif_result_count(stdout, "error")
         # Get number with a single regex. Used when linter prints out Found _ errors
         elif self.cli_lint_errors_count == "regex_number":
             reg = self.get_regex(self.cli_lint_errors_regex)
@@ -1514,6 +1468,9 @@ class Linter:
     def get_total_number_warnings(self, stdout: str):
         total_warnings = None
 
+        # Count using SARIF output file
+        if self.output_sarif is True:
+            return self.get_sarif_result_count(stdout, "warning")
         # Get number with a single regex.
         if self.cli_lint_warnings_count == "regex_number":
             reg = self.get_regex(self.cli_lint_warnings_regex)
@@ -1544,6 +1501,53 @@ class Linter:
             total_warnings = 0
 
         return total_warnings
+
+    def get_sarif_result_count(self, stdout: str, level: str):
+        result_count = 0
+
+        try:
+            # SARIF is in MegaLinter named file
+            if self.sarif_output_file is not None and os.path.isfile(
+                self.sarif_output_file
+            ):
+                with open(
+                    self.sarif_output_file, "r", encoding="utf-8"
+                ) as sarif_file:
+                    sarif_output = yaml.safe_load(sarif_file)
+                    # SARIF is in default output file
+            elif self.sarif_default_output_file is not None and os.path.isfile(
+                self.sarif_default_output_file
+            ):
+                with open(
+                    self.sarif_default_output_file, "r", encoding="utf-8"
+                ) as sarif_file:
+                    sarif_output = yaml.safe_load(sarif_file)
+                    # SARIF is in stdout
+            else:
+                # SARIF is in stdout
+                sarif_output = yaml.safe_load(stdout)
+
+            for run in sarif_output["runs"]:
+                for result in run["results"]:
+                    if result["level"] == level:
+                        result_count += 1
+
+            # If we got here, we should have found a number of results from SARIF output
+            if result_count == 0:
+                logging.warning(
+                    f"Unable to get total {level}s from SARIF output.\nSARIF:"
+                    + str(sarif_output)
+                )
+            return result_count
+        except Exception as e:
+            result_count = 1
+            logging.error(
+                f"Error while getting total {level}s from SARIF output.\nError:"
+                + str(e)
+                + "\nstdout: "
+                + stdout
+            )
+            return result_count
 
     # Build the CLI command to get linter version (can be overridden if --version is not the way to get the version)
     def build_version_command(self):
