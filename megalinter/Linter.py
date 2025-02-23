@@ -1412,7 +1412,9 @@ class Linter:
 
     # Find number of errors in linter stdout log
     def get_total_number_errors(self, stdout: str):
-        total_errors = self.get_result_count(stdout, "error", "cli_lint_errors_count", "cli_lint_errors_regex")
+        total_errors = self.get_result_count(
+            stdout, "error", "cli_lint_errors_count", "cli_lint_errors_regex"
+        )
 
         # Return result if found, else default value according to status
         if total_errors > 0:
@@ -1431,7 +1433,9 @@ class Linter:
 
     # Find number of warnings in linter stdout log
     def get_total_number_warnings(self, stdout: str):
-        total_warnings = self.get_result_count(stdout, "warning", "cli_lint_warnings_count", "cli_lint_warnings_regex")
+        total_warnings = self.get_result_count(
+            stdout, "warning", "cli_lint_warnings_count", "cli_lint_warnings_regex"
+        )
 
         if self.cli_lint_warnings_count is not None and total_warnings is None:
             logging.warning(
@@ -1445,7 +1449,9 @@ class Linter:
         return total_warnings
 
     # Find number of results by level in linter stdout log
-    def get_result_count(self, stdout: str, level: str, count_property: str, regex_property: str):
+    def get_result_count(
+        self, stdout: str, level: str, count_property: str, regex_property: str
+    ):
         total_result = 0
 
         # Count using SARIF output file
@@ -1457,7 +1463,7 @@ class Linter:
             m = re.search(reg, utils.normalize_log_string(stdout))
             if m:
                 total_result = int(m.group(1))
-        # Count the number of occurrences of a regex corresponding to 
+        # Count the number of occurrences of a regex corresponding to
         # an error or warning in linter log (parses linter log)
         elif getattr(self, count_property) == "regex_count":
             reg = self.get_regex(getattr(self, regex_property))
@@ -1498,9 +1504,7 @@ class Linter:
             if self.sarif_output_file is not None and os.path.isfile(
                 self.sarif_output_file
             ):
-                with open(
-                    self.sarif_output_file, "r", encoding="utf-8"
-                ) as sarif_file:
+                with open(self.sarif_output_file, "r", encoding="utf-8") as sarif_file:
                     sarif_output = yaml.safe_load(sarif_file)
                     # SARIF is in default output file
             elif self.sarif_default_output_file is not None and os.path.isfile(
