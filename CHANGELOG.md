@@ -21,6 +21,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Fixes
   - Use npm to install pyright
+  - Undowngrade npm-groovy-lint as there is a new release with issue fixed
 
 - Reporters
 
