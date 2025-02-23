@@ -10,6 +10,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Core
   - Addition of warnings to reporters and logic changes to surface warnings even when there are no errors. Addition of `cli_lint_warning_count` / `cli_lint_warning_regex` variables to the JSON schema. [#4476](https://github.com/oxsecurity/megalinter/issues/4476)
+  - Center number columns of markdown tables in reports
 
 - New linters
 
