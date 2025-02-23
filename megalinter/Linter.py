@@ -1457,11 +1457,13 @@ class Linter:
             m = re.search(reg, utils.normalize_log_string(stdout))
             if m:
                 total_result = int(m.group(1))
-        # Count the number of occurrences of a regex corresponding to an error or warning in linter log (parses linter log)
+        # Count the number of occurrences of a regex corresponding to 
+        # an error or warning in linter log (parses linter log)
         elif getattr(self, count_property) == "regex_count":
             reg = self.get_regex(getattr(self, regex_property))
             total_result = len(re.findall(reg, utils.normalize_log_string(stdout)))
-        # Sum of all numbers found in linter logs with a regex. Found when each file prints out total number of errors or warnings
+        # Sum of all numbers found in linter logs with a regex.
+        # Found when each file prints out total number of errors or warnings
         elif getattr(self, count_property) == "regex_sum":
             reg = self.get_regex(self.cli_lint_errors_regex)
             matches = re.findall(reg, utils.normalize_log_string(stdout))
