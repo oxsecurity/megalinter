@@ -85,6 +85,13 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [flake8](https://flake8.pycqa.org) from 7.1.1 to **7.1.2** on 2025-02-17
   - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 2.46.0 to **2.46.2** on 2025-02-18
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.88.8 to **3.88.9** on 2025-02-18
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2025.01.16 to **2025.02.20** on 2025-02-22
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.68.6 to **3.69.1** on 2025-02-22
+  - [phpstan](https://phpstan.org/) from 2.1.5 to **2.1.6** on 2025-02-22
+  - [bandit](https://bandit.readthedocs.io/en/latest/) from 1.8.2 to **1.8.3** on 2025-02-22
+  - [syft](https://github.com/anchore/syft) from 1.19.0 to **1.20.0** on 2025-02-22
+  - [rubocop](https://rubocop.org/) from 1.71.2 to **1.72.2** on 2025-02-22
+  - [scalafix](https://scalacenter.github.io/scalafix/) from 0.14.0 to **0.14.2** on 2025-02-22
 <!-- linter-versions-end -->
 
 ## [v8.4.2] - 2024-02-02
