@@ -1472,7 +1472,7 @@ class Linter:
         if self.output_sarif is True:
             return self.get_sarif_result_count(stdout, "warning")
         # Get number with a single regex.
-        if self.cli_lint_warnings_count == "regex_number":
+        elif self.cli_lint_warnings_count == "regex_number":
             reg = self.get_regex(self.cli_lint_warnings_regex)
             m = re.search(reg, utils.normalize_log_string(stdout))
             if m:
