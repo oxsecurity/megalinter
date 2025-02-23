@@ -88,7 +88,7 @@ ARG CARGO_SARIF_FMT_VERSION=0.7.0
 # renovate: datasource=npm depName=typescript
 ARG NPM_TYPESCRIPT_VERSION=5.7.3
 # renovate: datasource=pypi depName=ansible-lint
-ARG PIP_ANSIBLE_LINT_VERSION=25.1.2
+ARG PIP_ANSIBLE_LINT_VERSION=25.1.3
 # renovate: datasource=npm depName=@stoplight/spectral-cli
 ARG NPM_SPECTRAL_CLI_VERSION=6.14.2
 # renovate: datasource=crate depName=shellcheck-sarif
