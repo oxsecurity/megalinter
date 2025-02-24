@@ -21,6 +21,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Fixes
   - Use npm to install pyright
+  - [jscpd](https://megalinter.io/latest/descriptors/copypaste_jscpd/): remove forced `--exitCode 1` to fix <https://github.com/oxsecurity/megalinter/issues/4631>
 
 - Reporters
 
@@ -92,6 +93,19 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [syft](https://github.com/anchore/syft) from 1.19.0 to **1.20.0** on 2025-02-22
   - [rubocop](https://rubocop.org/) from 1.71.2 to **1.72.2** on 2025-02-22
   - [scalafix](https://scalacenter.github.io/scalafix/) from 0.14.0 to **0.14.2** on 2025-02-22
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.69.1 to **3.70.0** on 2025-02-23
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.9.6 to **0.9.7** on 2025-02-23
+  - [ruff](https://github.com/astral-sh/ruff) from 0.9.6 to **0.9.7** on 2025-02-23
+  - [checkstyle](https://checkstyle.org/) from 10.21.2 to **10.21.3** on 2025-02-23
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.88.9 to **3.88.12** on 2025-02-23
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.84 to **0.1.85** on 2025-02-23
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 2.46.2 to **3.0.0** on 2025-02-23
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.17.3 to **8.17.5** on 2025-02-23
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 25.1.2 to **25.1.3** on 2025-02-23
+  - [dartanalyzer](https://dart.dev/tools/dart-analyze) from 3.6.2 to **3.7.0** on 2025-02-23
+  - [kubescape](https://github.com/kubescape/kubescape) from 3.0.28 to **3.0.29** on 2025-02-23
+  - [checkov](https://www.checkov.io/) from 3.2.370 to **3.2.372** on 2025-02-23
+  - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.23.3 to **8.24.0** on 2025-02-23
 <!-- linter-versions-end -->
 
 ## [v8.4.2] - 2024-02-02

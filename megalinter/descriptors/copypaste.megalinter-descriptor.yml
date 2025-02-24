@@ -41,8 +41,6 @@ linters:
       - --gitignore
       - "--reporters"
       - "console,html"
-      - "--exitCode"
-      - "1"
     cli_lint_extra_args_after:
       - "."
     cli_lint_errors_count: regex_number
