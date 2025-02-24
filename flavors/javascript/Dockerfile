@@ -163,7 +163,7 @@ ARG NPM_ESLINT_PLUGIN_JSX_ALLY_VERSION=6.10.2
 ARG KTLINT_VERSION=1.5.0
 
 # renovate: datasource=github-tags depName=detekt/detekt
-ARG DETEKT_VERSION=1.23.7
+ARG DETEKT_VERSION=1.23.8
 
 # renovate: datasource=github-tags depName=kubescape/kubescape
 ARG KUBERNETES_KUBESCAPE_VERSION=3.0.29
