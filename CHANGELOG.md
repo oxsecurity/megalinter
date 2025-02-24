@@ -106,6 +106,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [kubescape](https://github.com/kubescape/kubescape) from 3.0.28 to **3.0.29** on 2025-02-23
   - [checkov](https://www.checkov.io/) from 3.2.370 to **3.2.372** on 2025-02-23
   - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.23.3 to **8.24.0** on 2025-02-23
+  - [prettier](https://prettier.io/) from 3.5.1 to **3.5.2** on 2025-02-24
+  - [detekt](https://detekt.dev/) from 1.23.7 to **1.23.8** on 2025-02-24
 <!-- linter-versions-end -->
 
 ## [v8.4.2] - 2024-02-02
