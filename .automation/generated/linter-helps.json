@@ -790,7 +790,7 @@
         "               [--secrets-scan-file-type SECRETS_SCAN_FILE_TYPE]",
         "               [--enable-secret-scan-all-files]",
         "               [--block-list-secret-scan BLOCK_LIST_SECRET_SCAN]",
-        "               [--summary-position {top,bottom}]",
+        "               [--summary-position {bottom,top}]",
         "               [--skip-resources-without-violations] [--deep-analysis]",
         "               [--no-fail-on-crash] [--mask MASK] [--scan-secrets-history]",
         "               [--secrets-history-timeout SECRETS_HISTORY_TIMEOUT]",
@@ -1105,7 +1105,7 @@
         "  --block-list-secret-scan BLOCK_LIST_SECRET_SCAN",
         "                        List of files to filter out from the secret scanner",
         "                        [env var: CKV_SECRETS_SCAN_BLOCK_LIST]",
-        "  --summary-position {top,bottom}",
+        "  --summary-position {bottom,top}",
         "                        Chose whether the summary will be appended on top",
         "                        (before the checks results) or on bottom (after check",
         "                        results), default is on top.",
@@ -1909,7 +1909,7 @@
         "    --language-version",
         "      EXPERIMENTAL: Compatibility mode for Kotlin language version X.Y,",
         "      reports errors for all language features that came out later",
-        "      Possible Values: [1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0, 2.1]",
+        "      Possible Values: [1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0, 2.1, 2.2]",
         "    --max-issues",
         "      Return exit code 0 only when found issues count does not exceed",
         "      specified issues count.",
@@ -3479,7 +3479,7 @@
         "      --server string         Backend discovery server URL",
         "",
         "Use \"kubescape [command] --help\" for more information about a command.",
-        "{\"level\":\"info\",\"ts\":\"2025-02-23T22:23:55Z\",\"msg\":\"Received interrupt signal, exiting...\"}"
+        "{\"level\":\"info\",\"ts\":\"2025-02-24T22:16:21Z\",\"msg\":\"Received interrupt signal, exiting...\"}"
     ],
     "kubeval": [
         "Validate a Kubernetes YAML file against the relevant schema",
