@@ -11138,8 +11138,8 @@
         "string"
       ]
     },
-    "MARKDOWN_MARKDOWNLINT_CLI_EXECUTABLE": {
-      "$id": "#/properties/MARKDOWN_MARKDOWNLINT_CLI_EXECUTABLE",
+    "MARKDOWN_MARKDOWNLINT_CLI2_EXECUTABLE": {
+      "$id": "#/properties/MARKDOWN_MARKDOWNLINT_CLI2_EXECUTABLE",
       "default": [
         [
           "markdownlint"
@@ -11151,8 +11151,8 @@
       "title": "MARKDOWN_MARKDOWNLINT: CLI Executable",
       "type": "array"
     },
-    "MARKDOWN_MARKDOWNLINT_CLI_LINT_MODE": {
-      "$id": "#/properties/MARKDOWN_MARKDOWNLINT_CLI_LINT_MODE",
+    "MARKDOWN_MARKDOWNLINT_CLI2_LINT_MODE": {
+      "$id": "#/properties/MARKDOWN_MARKDOWNLINT_CLI2_LINT_MODE",
       "default": "list_of_files",
       "enum": [
         "file",

@@ -42,8 +42,8 @@ linters:
     install:
       dockerfile:
         - |-
-          # renovate: datasource=npm depName=markdownlint-cli
-          ARG NPM_MARKDOWNLINT_CLI_VERSION=0.44.0
+          # renovate: datasource=npm depName=markdownlint-cli2
+          ARG NPM_MARKDOWNLINT_CLI2_VERSION=0.17.2
       npm:
         - markdownlint-cli2@${NPM_MARKDOWNLINT_CLI2_VERSION}
     ide:
