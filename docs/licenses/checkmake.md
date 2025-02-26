@@ -1,3 +1,8 @@
+---
+title: License info for checkmake within MegaLinter
+search:
+  exclude: true
+---
 Copyright (C) 2016 Daniel Schauenberg
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of

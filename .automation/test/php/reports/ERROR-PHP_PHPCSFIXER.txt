@@ -1,0 +1,16 @@
+Results of php-cs-fixer linter (version 3.58.1)
+See documentation on https://megalinter.io/latest/descriptors/php_php_cs_fixer/
+-----------------------------------------------
+
+❌ [ERROR] for workspace /tmp/lint
+Linter raw log:
+PHP CS Fixer 3.58.1 7th Gear by Fabien Potencier, Dariusz Ruminski and contributors.
+PHP runtime: 8.3.7
+Running analysis on 1 core sequentially.
+You can enable parallel runner and speed up the analysis! Please see https://cs.symfony.com/doc/usage.html for more information.
+Loaded config default from "/action/lib/.automation/.php-cs-fixer.dist.php".
+Using cache file ".php-cs-fixer.cache".
+
+Files that were not fixed due to errors reported during linting before fixing:
+   1) ./php_bad_1.php
+   2) ./php_bad_2.php

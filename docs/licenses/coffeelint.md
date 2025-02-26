@@ -1,3 +1,8 @@
+---
+title: License info for coffeelint within MegaLinter
+search:
+  exclude: true
+---
 CoffeeLint
 Copyright (c) 2011 Matthew Perpick
 

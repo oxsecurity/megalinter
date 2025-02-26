@@ -1,0 +1,2 @@
+FILTER_REGEX_INCLUDE: "(base-local)"
+SHOW_ELAPSED_TIME: true

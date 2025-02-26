@@ -18,6 +18,7 @@ linters:
     linter_repo: https://github.com/aws-cloudformation/cfn-lint
     linter_rules_url: https://github.com/aws-cloudformation/cfn-lint/blob/main/docs/rules.md
     linter_banner_image_url: https://raw.githubusercontent.com/aws-cloudformation/cfn-lint/main/logo.png
+    linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/cfn-lint.png
     config_file_name: .cfnlintrc.yml
     cli_config_arg_name: "--config-file"
     cli_lint_mode: list_of_files
@@ -30,8 +31,12 @@ linters:
       - "cfn-lint myfile.yml"
       - "cfn-lint --config-file .cfnlintrc.yml myfile.yml"
     install:
+      dockerfile:
+        - |-
+          # renovate: datasource=pypi depName=cfn-lint
+          ARG PIP_CFN_LINT_VERSION=1.25.1
       pip:
-        - cfn-lint
+        - cfn-lint[sarif]==${PIP_CFN_LINT_VERSION}
     ide:
       atom:
         - name: atom-cfn-lint
@@ -39,6 +44,7 @@ linters:
       idea:
         - name: cfn-lint
           url: https://plugins.jetbrains.com/plugin/10973-cfn-lint
+          id: io.binx.cfnlint.plugin
       sublime:
         - name: SublimeLinter CloudFormation
           url: https://packagecontrol.io/packages/SublimeLinter-contrib-cloudformation

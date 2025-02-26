@@ -1,0 +1,9 @@
+aiofiles
+gitpython
+fastapi 
+python-multipart
+pygments
+uvicorn[standard]
+redis
+rq
+

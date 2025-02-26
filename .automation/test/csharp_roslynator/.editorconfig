@@ -1,0 +1,8 @@
+[*.cs]
+dotnet_analyzer_diagnostic.category-roslynator.severity = error
+
+roslynator_analyzers.enabled_by_default = true
+
+roslynator_refactorings.enabled = true
+
+roslynator_empty_string_style = field

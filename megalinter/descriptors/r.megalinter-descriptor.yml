@@ -13,7 +13,7 @@ linters:
     linter_repo: https://github.com/r-lib/lintr
     linter_rules_url: https://lintr.r-lib.org/reference/index.html
     linter_rules_configuration_url: https://lintr.r-lib.org/articles/lintr.html#configuring-linters
-    linter_megalinter_ref_url: https://cran.r-project.org/web/packages/lintr/vignettes/continuous-integration.html
+    linter_megalinter_ref_url: https://lintr.r-lib.org/articles/continuous-integration.html
     config_file_name: .lintr
     linter_version_cache: "0.0.0"
     examples:
@@ -22,7 +22,6 @@ linters:
       apk:
         - gcc
         - g++
-        - libc-dev
         - libcurl
         - libffi-dev
         - libgcc
@@ -39,12 +38,9 @@ linters:
               && Rscript -e "install.packages(c('lintr','purrr'), repos = 'https://cloud.r-project.org/')" \
               && R -e "install.packages(list.dirs('/home/r-library',recursive = FALSE), repos = NULL, type = 'source')"
     ide:
-      atom:
-        - name: Atom lintr
-          url: https://github.com/AtomLinter/linter-lintr
       emacs:
         - name: flycheck
-          url: http://www.flycheck.org/en/latest/languages.html#r
+          url: https://www.flycheck.org/en/latest/languages.html#r
       rstudio:
         - name: Native Support
           url: https://rstudio.com/

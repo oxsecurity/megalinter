@@ -1,3 +1,8 @@
+---
+title: License info for pmd within MegaLinter
+search:
+  exclude: true
+---
 PMD's BSD-style license:
 
 Copyright (c) 2003-2009, InfoEther, LLC

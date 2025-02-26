@@ -7,9 +7,6 @@ files_sub_directory: .github/workflows
 file_extensions:
   - ".yml"
   - ".yaml"
-install:
-  apk:
-    - go
 test_folder: action
 linters:
   # ACTIONLINT
@@ -27,6 +24,21 @@ linters:
     examples:
       - "actionlint /path/to/workflow1.yml /path/to/workflow2.yaml"
     install:
+      # actionlint requires shellcheck and pyflakes
+      apk:
+        - py3-pyflakes
       dockerfile:
-        - ENV GO111MODULE=on
-        - RUN go install github.com/rhysd/actionlint/cmd/actionlint@latest && go clean --cache
+        - |-
+          # renovate: datasource=docker depName=rhysd/actionlint
+          ARG ACTION_ACTIONLINT_VERSION=1.7.7
+        - |-
+          # renovate: datasource=docker depName=koalaman/shellcheck
+          ARG BASH_SHELLCHECK_VERSION=v0.10.0
+        - |-
+          FROM rhysd/actionlint:${ACTION_ACTIONLINT_VERSION} AS actionlint
+          # shellcheck is a dependency for actionlint
+        - FROM koalaman/shellcheck:${BASH_SHELLCHECK_VERSION} AS shellcheck
+        - |-
+          COPY --link --from=actionlint /usr/local/bin/actionlint /usr/bin/actionlint
+          # shellcheck is a dependency for actionlint
+        - COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck

@@ -1,3 +1,8 @@
+---
+title: License info for markdown-link-check within MegaLinter
+search:
+  exclude: true
+---
 Copyright (c) 2016-2022 Thomas Cort <linuxgeek@gmail.com>
 
 Permission to use, copy, modify, and distribute this software for any

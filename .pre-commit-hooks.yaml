@@ -5,7 +5,8 @@
   require_serial: true
   args:
     - mega-linter-runner
-    - --containername megalinter-incremental
+    - --containername
+    - "megalinter-incremental"
     - --remove-container
     - --fix
     - --env
@@ -35,7 +36,8 @@
   require_serial: true
   args:
     - mega-linter-runner
-    - --containername megalinter-full
+    - --containername
+    - "megalinter-full"
     - --remove-container
     - --fix
     - --env

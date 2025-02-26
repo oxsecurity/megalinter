@@ -19,20 +19,22 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     if: github.repository == 'oxsecurity/megalinter'
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - uses: actions/setup-python@v4.3.0
+      - uses: actions/setup-python@v5
         with:
-          python-version: 3.10.4
-      - run: pip install --upgrade markdown==3.3.7 mike mkdocs-material mdx_truly_sane_lists json-schema-for-humans giturlparse webpreview
+          python-version: 3.12.0
+      - run: pip install --upgrade -r .config/python/dev/requirements.txt
       - run: cd .automation && bash build_schemas_doc.sh && cd ..
       # - run: mkdocs gh-deploy --force
       - run: |
           git config --global user.name megalinter-bot
-          git config --global user.email megalinter@megalinter.com
+          git config --global user.email 129584137+megalinter-bot@users.noreply.github.com
       - run: mike deploy beta --push
 
  

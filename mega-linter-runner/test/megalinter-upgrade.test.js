@@ -1,8 +1,5 @@
-#! /usr/bin/env node
-"use strict";
-
-const assert = require("assert");
-const { MegaLinterUpgrader } = require("../lib/upgrade");
+import assert from 'assert';
+import { MegaLinterUpgrader } from "../lib/upgrade.js";
 
 describe("Upgrade config", function () {
   const upgrader = new MegaLinterUpgrader();

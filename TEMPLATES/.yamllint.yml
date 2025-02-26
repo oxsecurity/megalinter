@@ -8,6 +8,8 @@
 ###########################################
 extends: default
 rules:
+  braces:
+    max-spaces-inside: 1
   new-lines:
     level: warning
     type: unix

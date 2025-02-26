@@ -1,0 +1,48 @@
+name: help-command
+on:
+  workflow_dispatch:
+    # checkov:skip=CKV_GHA_7:We are only triggering these workflows by users with write access manually, it is expected. 
+    # Error was: 
+    # The build output cannot be affected by user parameters other than the build entry point and the top-level source location. 
+    # GitHub Actions workflow_dispatch inputs MUST be empty. 
+    inputs:
+      repository:
+        description: 'The repository from which the slash command was dispatched'
+        required: true
+      comment-id:
+        description: 'The comment-id of the slash command'
+        required: true
+      issue-number:
+        description: 'The issue number in which the slash command was made'
+        required: true
+      actor:
+        description: 'The user who executed the slash command'
+        required: false
+      checkout-ref:
+        description: "The reference to pass to 'ref' to checkout action"
+        required: false
+      checkout-repository:
+        description: "The repository to pass to 'repository' to checkout action"
+        required: false
+  repository_dispatch:
+    types: [help-command]
+permissions: {}
+jobs:
+  help:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - name: Update comment
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          repository: ${{ github.event.inputs.repository }}
+          comment-id: ${{ github.event.inputs.comment-id }}
+          issue-number: ${{ github.event.inputs.issue-number }}
+          body: |
+            > Command | Description
+            > --- | ---
+            > /build | Updates the Dockerfile, documentation, and other files from the yml descriptors
+            > /build [ref=...]| Same as /build, but executes workflow in any branch using the ref named argument. The reference can be a branch, tag, or a commit SHA. This can be useful to test workflows in PR branches before merging.
+            > /help | Returns this help message
+          reactions: hooray

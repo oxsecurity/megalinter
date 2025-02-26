@@ -19,6 +19,7 @@ on:
     branches:
       - "main"
       - "FlavoredMegaLinters"
+      - dbgbeta
     paths:
       - ".github/workflows/**"
       - "Dockerfile"
@@ -38,25 +39,30 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-
   build:
     # Name the Job
-    name: Deploy Docker Image - BETA - Flavors
+    name: BETA/Flavors
     # Set the agent to run on
-    runs-on: ${{ matrix.os }}
-    environment: 
-      name: beta-flavors
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+      packages: write
+    environment:
+      name: beta
     strategy:
       fail-fast: false
+      max-parallel: 10
       matrix:
-        os: [ubuntu-latest]
         # flavors-start
         flavor:
           [
+            "c_cpp",
             "ci_light",
             "cupcake",
             "documentation",
             "dotnet",
+            "dotnetweb",
+            "formatters",
             "go",
             "java",
             "javascript",
@@ -70,32 +76,82 @@ jobs:
             "terraform",
           ]
 # flavors-end
+        platform: ["linux/amd64"]
     # Only run this on the main repo
-    if: github.repository == 'oxsecurity/megalinter' && !contains(github.event.head_commit.message, 'skip deploy')
+    if: >-
+      (
+        github.repository == 'oxsecurity/megalinter'
+        && !contains(github.event.head_commit.message, 'skip deploy')
+        && !contains(github.event.head_commit.message, 'Release MegaLinter v')
+      )
     ##################
     # Load all steps #
     ##################
     steps:
-      ##########################
-      # Checkout the code base #
-      ##########################
       - name: Checkout Code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      #####################
-      # Run Deploy script #
-      #####################
-      - name: Deploy beta image to DockerHub
-        env:
-          # Set the Env Vars
-          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-          IMAGE_REPO: oxsecurity/megalinter-${{ matrix.flavor }}
-          IMAGE_VERSION: beta
-          DOCKERFILE_PATH: flavors/${{ matrix.flavor }}/Dockerfile
-          REGISTRY: Docker
-        shell: bash
-        run: .automation/upload-docker.sh
+      - name: Docker Metadata action
+        uses: docker/metadata-action@v5.6.1
+        id: meta
+        with:
+          images: |
+            ghcr.io/${{ github.repository }}-${{ matrix.flavor }}
+          flavor: |
+            latest=false
+            prefix=beta
+          tags: |
+            type=raw,value=
+
+      - name: Docker Metadata action (Docker Hub)
+        uses: docker/metadata-action@v5.6.1
+        id: meta-dhub
+        with:
+          images: |
+            ${{ github.repository }}-${{ matrix.flavor }}
+          flavor: |
+            latest=false
+            prefix=beta
+          tags: |
+            type=raw,value=
+
+      - name: Docker Metadata action (Worker)
+        uses: docker/metadata-action@v5.6.1
+        id: meta-w
+        with:
+          images: |
+            name=ghcr.io/${{ github.repository }}-worker-${{ matrix.flavor }}
+          flavor: |
+            latest=false
+            prefix=beta
+          tags: |
+            type=raw,value=
+
+      # - name: Docker Metadata action (Worker Docker Hub)
+      #   uses: docker/metadata-action@v5.5.1
+      #   id: meta-w-dhub
+      #   with:
+      #     images: |
+      #       name=docker.io/${{ github.repository }}-worker-${{ matrix.flavor }}
+      #     flavor: |
+      #       latest=false
+      #       prefix=beta
+      #     tags: |
+      #       type=raw,value=
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+        if: ${{ ( ( runner.arch != 'X64' || runner.os != 'Linux' ) && matrix.platform == 'linux/amd64' ) || matrix.platform != 'linux/amd64' }}
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
       # Free disk space
       - name: Free Disk space
@@ -104,17 +160,64 @@ jobs:
           sudo rm -rf /usr/local/lib/android  # will release about 10 GB if you don't need Android
           sudo rm -rf /usr/share/dotnet # will release about 20GB if you don't need .NET
 
+      - name: Build Image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: flavors/${{ matrix.flavor }}/Dockerfile
+          platforms: ${{ matrix.platform }}
+          build-args: |
+            BUILD_DATE=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.created'] }}
+            BUILD_VERSION=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.version'] }}
+            BUILD_REVISION=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.revision'] }}
+          load: false
+          push: ${{ github.event_name != 'pull_request' }}
+          secrets: |
+            GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
+          tags: ${{ steps.meta.outputs.tags }}
+
+      - name: Invoke Mirror docker image workflow (Main image)
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: mirror-docker-image.yml
+          inputs: '{ "source-image": "${{ steps.meta.outputs.tags }}", "target-image": "${{ steps.meta-dhub.outputs.tags }}" }'
+
+      # - name: Build Worker Image
+      #   uses: docker/build-push-action@v6
+      #   with:
+      #     context: .
+      #     file: Dockerfile-worker
+      #     platforms: linux/amd64
+      #     build-args: |
+      #       MEGALINTER_BASE_IMAGE=${{ fromJson(steps.meta-w.outputs.json).tags[0]}}
+      #       BUILD_DATE=${{ fromJSON(steps.meta-w.outputs.json).labels['org.opencontainers.image.created'] }}
+      #       BUILD_VERSION=${{ fromJSON(steps.meta-w.outputs.json).labels['org.opencontainers.image.version'] }}
+      #       BUILD_REVISION=${{ fromJSON(steps.meta-w.outputs.json).labels['org.opencontainers.image.revision'] }}
+      #     load: false
+      #     push: ${{ github.event_name != 'pull_request' }}
+      #     secrets: |
+      #       GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
+      #     tags: ${{ steps.meta-w.outputs.tags }}
+
+      # - name: Invoke Mirror docker image workflow (Main image)
+      #   uses: benc-uk/workflow-dispatch@v1
+      #   with:
+      #     workflow: mirror-docker-image.yml
+      #     inputs: '{ "source-image": "${{ steps.meta-w.outputs.tags }}", "target-image": "${{ steps.meta-w-dhub.outputs.tags }}" }'
+
       ##############################################
       # Check Docker image security with Trivy #
       ##############################################
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: 'docker.io/oxsecurity/megalinter-${{ matrix.flavor }}:beta'
-          format: 'table'
-          exit-code: '1'
+          image-ref: "${{ fromJson(steps.meta.outputs.json).tags[0]}}"
+          format: "table"
+          exit-code: "1"
           ignore-unfixed: true
-          security-checks: vuln
-          vuln-type: 'os,library'
-          severity: 'CRITICAL,HIGH'
+          scanners: vuln
+          vuln-type: "os,library"
+          severity: "CRITICAL,HIGH"
           timeout: 10m0s
+        env:
+            ACTIONS_RUNTIME_TOKEN: ${{ secrets.GITHUB_TOKEN }}

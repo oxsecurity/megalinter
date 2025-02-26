@@ -1,3 +1,8 @@
+---
+title: License info for flake8 within MegaLinter
+search:
+  exclude: true
+---
 == Flake8 License (MIT) ==
 
 Copyright (C) 2011-2013 Tarek Ziade <tarek@ziade.org>

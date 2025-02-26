@@ -3,7 +3,10 @@ descriptor_label: "C++"
 descriptor_type: language
 descriptor_flavors:
   - cupcake
+  - c_cpp
   - dotnet
+  - dotnetweb
+  - python
 file_extensions:
   - ".cpp"
   - ".h"
@@ -18,7 +21,8 @@ file_extensions:
   - ".cuh"
 linters:
   # CPPLINT
-  - linter_name: cpplint
+  - class: CppLintLinter
+    linter_name: cpplint
     name: CPP_CPPLINT
     linter_url: https://github.com/cpplint/cpplint
     linter_repo: https://github.com/cpplint/cpplint
@@ -30,5 +34,43 @@ linters:
     examples:
       - "cpplint myfile.cpp"
     install:
+      dockerfile:
+        - |-
+          # renovate: datasource=pypi depName=cpplint
+          ARG PIP_CPPLINT_VERSION=2.0.0
       pip:
-        - cpplint
+        - cpplint==${PIP_CPPLINT_VERSION}
+  # clang-format
+  - linter_name: clang-format
+    name: CPP_CLANG_FORMAT
+    descriptor_flavors:
+      - c_cpp
+    linter_url: https://releases.llvm.org/17.0.1/tools/clang/docs/ClangFormat.html
+    linter_repo: https://github.com/llvm/llvm-project
+    linter_rules_url: https://releases.llvm.org/17.0.1/tools/clang/docs/ClangFormat.html
+    linter_rules_inline_disable_url: https://releases.llvm.org/17.0.1/tools/clang/docs/ClangFormatStyleOptions.html#disabling-formatting-on-a-piece-of-code
+    cli_lint_mode: list_of_files
+    cli_help_arg_name: "--help"
+    cli_lint_extra_args:
+      - "--Werror"
+      - "--dry-run"
+    cli_lint_fix_arg_name: "-i"
+    cli_lint_fix_remove_args:
+      - "--Werror"
+      - "--dry-run"
+    config_file_name: .clang-format
+    cli_config_arg_name: "--style=file:"
+    cli_lint_errors_count: regex_count
+    cli_lint_errors_regex: "code should be clang-formatted"
+    examples:
+      - "clang-format --Werror --dry-run myfile.cpp"
+    install:
+      apk:
+        - clang19-extra-tools
+    ide:
+      vscode:
+        - name: Clang-Format
+          url: https://marketplace.visualstudio.com/items?itemName=xaver.clang-format
+      emacs:
+        - name: clang-format
+          url: https://releases.llvm.org/17.0.1/tools/clang/docs/ClangFormat.html#emacs-integration

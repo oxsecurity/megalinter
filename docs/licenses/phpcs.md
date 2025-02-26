@@ -1,3 +1,8 @@
+---
+title: License info for phpcs within MegaLinter
+search:
+  exclude: true
+---
 Copyright (c) 2012, Squiz Pty Ltd (ABN 77 084 670 600)
 All rights reserved.
 

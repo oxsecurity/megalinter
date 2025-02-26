@@ -3,45 +3,119 @@ descriptor_label: "C#"
 descriptor_type: language
 descriptor_flavors:
   - dotnet
+  - dotnetweb
+  - formatters
 file_extensions:
   - ".cs"
 install:
-  apk:
-    - icu-libs
-    - libcurl
-    - libintl
-    - libssl1.1
-    - libstdc++
-    - lttng-ust-dev
-    - zlib
-    - zlib-dev
   dockerfile:
-    - |
-      RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
-          && chmod +x dotnet-install.sh \
-          && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 5.0 -version latest
-    - ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
+    - RUN apk add --no-cache dotnet9-sdk
+    - ENV PATH="${PATH}:/root/.dotnet/tools"
 linters:
   # DOTNET FORMAT
   - class: DotnetFormatLinter
     linter_name: dotnet-format
     is_formatter: true
-    linter_url: https://github.com/dotnet/format
-    linter_repo: https://github.com/dotnet/format
+    linter_text: |
+      dotnet-format requires a `.sln` or `.csproj` file to run correctly.
+    linter_url: https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format
+    linter_repo: https://github.com/dotnet/sdk
+    linter_rules_configuration_url: https://github.com/dotnet/sdk/tree/main/documentation/format/docs
     linter_image_url: https://user-images.githubusercontent.com/9797472/61659851-6bbdc880-ac7d-11e9-95f7-d30c7de1a18a.png
+    cli_lint_errors_count: regex_count
+    cli_lint_errors_regex: ".cs\\([0-9]+,[0-9]+\\):\\s(?:warning|error)"
+    cli_executable: dotnet
+    cli_lint_mode: project
     cli_lint_extra_args:
-      - "--folder"
+      - "format"
+    cli_lint_extra_args_after:
+      - "--include **/*.cs"
+      - "--verify-no-changes"
+    cli_lint_fix_arg_name: "--megalinter-fix-flag" # Workaround for DotnetFormatLinter class behavior
+    cli_lint_fix_remove_args:
+      - "--verify-no-changes"
+    cli_help_extra_args:
+      - format
+    examples:
+      - "dotnet format --verify-no-changes"
+      - "dotnet format Solution.sln --verify-no-changes"
+      - "dotnet format Folder/Solution.sln --verify-no-changes"
+      - "dotnet format Project.csproj --verify-no-changes"
+      - "dotnet format" # Fix
+
+  # CSharpier
+  - linter_name: csharpier
+    is_formatter: true
+    linter_url: https://csharpier.com/
+    linter_repo: https://github.com/belav/csharpier
+    linter_image_url: https://csharpier.com/img/logo.svg
+    linter_rules_configuration_url: https://csharpier.com/docs/Configuration
+    linter_rules_ignore_config_url: https://csharpier.com/docs/Ignore
+    ignore_file_name: .csharpierignore
+    config_file_name: .csharpierrc
+    cli_config_arg_name: "--config-path"
+    cli_executable: dotnet-csharpier
+    cli_lint_mode: list_of_files
+    cli_lint_extra_args:
       - "--check"
-      - "--exclude"
-      - "/"
-      - "--include"
-    cli_lint_fix_arg_name: "--megalinter-fix-flag" # Workaround for PythonBlackOrIsortLinter class behavior
+    cli_lint_fix_arg_name: "--megalinter-fix-flag" # Workaround for DotnetFormatLinter class behavior
     cli_lint_fix_remove_args:
       - "--check"
-    linter_version_cache: "000"
+    test_folder: csharp_csharpier
     examples:
-      - "dotnet-format --folder --check --exclude / --include myfile.cs"
-      - "dotnet-format --folder --exclude / --include myfile.cs" # Fix
+      - "csharpier --check myfile.cs myfile2.cs"
+      - "csharpier myfile.cs myfile2.cs" # Fix
     install:
       dockerfile:
-        - RUN /usr/share/dotnet/dotnet tool install -g dotnet-format
+        - |-
+          # renovate: datasource=nuget depName=csharpier
+          ARG CSHARP_CSHARPIER_VERSION=0.30.6
+        - RUN dotnet tool install --allow-roll-forward --global csharpier --version "${CSHARP_CSHARPIER_VERSION}"
+    ide:
+      rider:
+        - name: csharpier
+          url: https://plugins.jetbrains.com/plugin/18243-csharpier
+      visual_studio:
+        - name: CSharpier
+          url: https://marketplace.visualstudio.com/items?itemName=csharpier.CSharpier
+      vscode:
+        - name: csharpier-vscode
+          url: https://marketplace.visualstudio.com/items?itemName=csharpier.csharpier-vscode
+
+  # Roslynator
+  - class: RoslynatorLinter
+    linter_name: roslynator
+    file_extensions:
+      - ".csproj"
+    is_formatter: true
+    linter_url: https://github.com/dotnet/Roslynator
+    linter_repo: https://github.com/dotnet/Roslynator
+    linter_image_url: https://github.com/dotnet/roslynator/raw/main/images/roslynator-logo-small.png
+    linter_rules_url: https://josefpihrt.github.io/docs/roslynator/analyzers
+    linter_rules_configuration_url: https://josefpihrt.github.io/docs/roslynator/configuration
+    linter_rules_inline_disable_url: https://josefpihrt.github.io/docs/roslynator/how-to-suppress-diagnostic
+    cli_lint_fix_arg_name: "fix"
+    cli_lint_extra_args:
+      - "analyze"
+    cli_lint_fix_remove_args:
+      - "analyze"
+    test_folder: csharp_roslynator
+    test_format_fix_file_extensions:
+      - ".cs"
+    test_format_fix_regex_exclude: /bin/|/obj/
+    examples:
+      - "roslynator analyze myproject.csproj"
+      - "roslynator fix myproject.csproj" # Fix
+    install:
+      dockerfile:
+        - |-
+          # renovate: datasource=nuget depName=roslynator.dotnet.cli
+          ARG CSHARP_ROSLYNATOR_VERSION=0.10.1
+        - RUN dotnet tool install --allow-roll-forward --global roslynator.dotnet.cli --version "${CSHARP_ROSLYNATOR_VERSION}"
+    ide:
+      visual_studio:
+        - name: Roslynator 2022
+          url: https://marketplace.visualstudio.com/items?itemName=josefpihrt.Roslynator2022
+      vscode:
+        - name: Roslynator
+          url: https://marketplace.visualstudio.com/items?itemName=josefpihrt-vscode.roslynator

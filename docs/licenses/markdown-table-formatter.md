@@ -1,3 +1,8 @@
+---
+title: License info for markdown-table-formatter within MegaLinter
+search:
+  exclude: true
+---
 MIT License
 
 Copyright (c) 2020 Nicolas Vuillamy

@@ -1,3 +1,7 @@
+---
+title: TAP Reporter for MegaLinter
+description: Generates SAST results in TAP output files in report folder
+---
 # TAP Reporter
 
 Posts a pack of TAP logs , zipped as a GitHub Action artifact
@@ -9,7 +13,7 @@ Posts a pack of TAP logs , zipped as a GitHub Action artifact
 - Performances: all linters with CLI lint mode `list_of_files` are switched to `file` mode, so linter is called ont time per file to analyze
 - Scope: all linters with CLI lint mode `project` are deactivated
 
-For those reasons... why not having a look at [SARIF reporter](https://megalinter.io/latest/reporters/SarifReporter/), that does not have those issues ?
+For those reasons… why not having a look at [SARIF reporter](https://megalinter.io/latest/reporters/SarifReporter/), that doesn't have those issues ?
 
 ## Usage
 
@@ -25,7 +29,7 @@ Open the downloaded zip file and browse linters TAP reports
 
 ### Other CI tools
 
-If you are not using GitHub Actions, you can export `mega-linter.log` and folder `<WORKSPACE>/megalinter-reports`
+If you aren't using GitHub Actions, you can export `mega-linter.log` and folder `<WORKSPACE>/megalinter-reports`
 
 ## Configuration
 

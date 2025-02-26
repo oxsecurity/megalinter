@@ -5,13 +5,14 @@ descriptor_flavors:
   - go
 file_extensions:
   - ".go"
-test_folder: golang
 install:
   apk:
     - go
+test_folder: golang
 linters:
   # GOLANG CI LINT
   - linter_name: golangci-lint
+    can_output_sarif: true
     linter_url: https://golangci-lint.run/
     linter_repo: https://github.com/golangci/golangci-lint
     linter_rules_url: https://golangci-lint.run/usage/linters/
@@ -19,9 +20,13 @@ linters:
     linter_rules_configuration_url: https://golangci-lint.run/usage/configuration/#config-file
     linter_rules_inline_disable_url: https://golangci-lint.run/usage/false-positives/#nolint
     config_file_name: .golangci.yml
-    cli_lint_mode: list_of_files
+    cli_lint_mode: project
     cli_lint_extra_args:
       - "run"
+    cli_sarif_args:
+      - --out-format
+      - sarif
+    cli_lint_fix_arg_name: --fix
     cli_version_arg_name: "version"
     version_extract_regex: "((\\d+(\\.\\d+)+)|(master))"
     examples:
@@ -29,8 +34,11 @@ linters:
       - "golangci-lint run -c .golangci.yml myfile.go"
     install:
       dockerfile:
+        - |-
+          # renovate: datasource=github-tags depName=golangci/golangci-lint
+          ARG GO_GOLANGCI_LINT_VERSION=1.64.5
         - |
-          RUN wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh \
+          RUN wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s "v${GO_GOLANGCI_LINT_VERSION}" \
               && golangci-lint --version
     ide:
       atom:
@@ -77,7 +85,20 @@ linters:
       - "revive -config myfile.go"
     install:
       dockerfile:
-        - RUN go install github.com/mgechev/revive@latest && go clean --cache
+        ## Until "FROM ghcr.io/mgechev/revive:1.2.5 AS revive" is available, use
+        # - FROM ghcr.io/mgechev/revive:1.2.5 AS revive
+        # - COPY --link --from=revive /usr/bin/revive /usr/bin/revive
+        - |-
+          # renovate: datasource=github-tags depName=mgechev/revive
+          ARG GO_REVIVE_VERSION=v1.7.0
+        - |-
+          FROM golang:1-alpine AS revive
+          ## The golang image used as a builder is a temporary workaround (https://github.com/mgechev/revive/issues/787)
+          ## for the released revive binaries not returning version numbers (devel). 
+          ## The install command should then be what is commented in the go.megalinter-descriptor.yml
+          ARG GO_REVIVE_VERSION
+          RUN GOBIN=/usr/bin go install github.com/mgechev/revive@$GO_REVIVE_VERSION
+        - COPY --link --from=revive /usr/bin/revive /usr/bin/revive
     ide:
       atom:
         - name: linter-revive

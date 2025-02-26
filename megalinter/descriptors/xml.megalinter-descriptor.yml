@@ -6,20 +6,33 @@ descriptor_flavors:
   - cupcake
 file_extensions:
   - ".xml"
+  - ".xsd"
 linters:
   # XML LINT
-  - linter_name: xmllint
-    linter_url: http://xmlsoft.org/xmllint.html
-    linter_rules_url: http://xmlsoft.org/xmllint.html#diagnostics
+  - class: XmlLintLinter
+    linter_name: xmllint
+    linter_text: |
+      To apply file formatting you must set `XML_XMLLINT_CLI_LINT_MODE: file` and `XML_XMLLINT_AUTOFORMAT: true`.
+    variables:
+      - name: XML_XMLLINT_AUTOFORMAT
+        default_value: "false"
+        description: If set to `true`, it will reformat and reindent the output
+      - name: XML_XMLLINT_INDENT
+        default_value: "  "
+        description: The number of indentation spaces when `XML_XMLLINT_AUTOFORMAT` is `true`
+    linter_url: https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home
+    linter_rules_configuration_url: https://gnome.pages.gitlab.gnome.org/libxml2/xmllint.html
     version_extract_regex: "(?<=libxml version )\\d+(\\d+)+"
     cli_lint_mode: list_of_files
+    cli_lint_fix_arg_name: "--format"
     cli_help_arg_name: "--help"
     help_command_return_code: 1
     examples:
-      - "xmllint myfile.xml"
+      - "xmllint myXMLfile.xml"
+      - "xmllint myXSDfile.xsd"
+      - "xmllint --format myXMLfile.xml --output myXMLfile.xml"
     install:
       apk:
-        - libc-dev
         - libxml2-dev
         - libxml2-utils
         - libgcc

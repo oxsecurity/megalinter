@@ -6,24 +6,6 @@ descriptor_flavors:
 file_extensions:
   - ".sql"
 linters:
-  # SQL-LINT
-  - linter_name: sql-lint
-    linter_url: https://github.com/joereynolds/sql-lint
-    linter_repo: https://github.com/joereynolds/sql-lint
-    linter_rules_url: https://github.com/joereynolds/sql-lint#checks
-    linter_rules_configuration_url: https://sql-lint.readthedocs.io/en/latest/files/configuration.html
-    config_file_name: .sql-config.json
-    cli_config_arg_name: "--config"
-    examples:
-      - "sql-lint myfile.sql"
-      - "sql-lint --config .sql-config.json myfile.sql"
-    install:
-      npm:
-        - sql-lint
-    ide:
-      vim:
-        - name: ale
-          url: https://github.com/dense-analysis/ale/
   # SQLFLUFF
   - linter_name: sqlfluff
     linter_url: https://www.sqlfluff.com/
@@ -31,7 +13,7 @@ linters:
     linter_banner_image_url: https://raw.githubusercontent.com/sqlfluff/sqlfluff/main/images/sqlfluff-wide.png
     linter_image_url: https://docs.sqlfluff.com/en/stable/_static/images/sqlfluff-lrg.png
     linter_rules_url: https://docs.sqlfluff.com/en/stable/rules.html
-    linter_rules_configuration_url: https://docs.sqlfluff.com/en/stable/configuration.html
+    linter_rules_configuration_url: https://docs.sqlfluff.com/en/stable/configuration/index.html
     config_file_name: .sqlfluff
     active_only_if_file_found:
       - .sqlfluff
@@ -47,12 +29,18 @@ linters:
       - "sqlfluff myfile.sql"
       - "sqlfluff --config .sqlfluff myfile.sql myfile2.sql"
     install:
+      dockerfile:
+        - |-
+          # renovate: datasource=pypi depName=sqlfluff
+          ARG PIP_SQLFLUFF_VERSION=3.3.1
       pip:
-        - sqlfluff
+        - sqlfluff==${PIP_SQLFLUFF_VERSION}
   # TSQL
   - linter_name: tsqllint
+    disabled: false
     descriptor_flavors:
       - dotnet
+      - dotnetweb
     linter_url: https://github.com/tsqllint/tsqllint
     linter_repo: https://github.com/tsqllint/tsqllint
     linter_image_url: https://tsqllint.gallerycdn.vsassets.io/extensions/tsqllint/tsqllint/1.2.0/1528922982751/Microsoft.VisualStudio.Services.Icons.Default
@@ -61,6 +49,10 @@ linters:
     linter_rules_inline_disable_url: https://github.com/tsqllint/tsqllint#disabling-rules-with-inline-comments
     config_file_name: ".tsqllintrc"
     cli_lint_mode: list_of_files
+    cli_lint_errors_count: regex_number
+    cli_lint_errors_regex: "([0-9]+) Errors"
+    cli_lint_warnings_count: regex_number
+    cli_lint_warnings_regex: "([0-9]+) Warnings"
     cli_config_arg_name: "--config"
     cli_help_arg_name: "--help"
     cli_version_arg_name: "--version"
@@ -68,24 +60,14 @@ linters:
     examples:
       - "tsqllint myfile.sql"
       - "tsqllint myfile.sql myfile2.sql"
-    downgraded_version: true
     install:
-      apk:
-        - icu-libs
-        - libcurl
-        - libintl
-        - libssl1.1
-        - libstdc++
-        - lttng-ust-dev
-        - zlib
-        - zlib-dev
       dockerfile:
-        - |
-          RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
-              && chmod +x dotnet-install.sh \
-              && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 5.0 -version latest
-        - ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
-        - RUN dotnet tool install --global --version 1.14.5 TSQLLint
+        - |-
+          # renovate: datasource=nuget depName=TSQLLint
+          ARG SQL_TSQLLINT_VERSION=1.16.0
+        - RUN apk add --no-cache dotnet9-sdk
+        - ENV PATH="${PATH}:/root/.dotnet/tools"
+        - RUN dotnet tool install --allow-roll-forward --global TSQLLint --version ${SQL_TSQLLINT_VERSION}
     ide:
       vscode:
         - name: TSQL Lint

@@ -16,19 +16,22 @@ class TapReporter(Reporter):
     def __init__(self, params=None):
         # report_type is tap by default
         self.report_type = "tap"
-        if config.get("OUTPUT_DETAIL", "") == "detailed":
-            self.report_type = "detailed"
-        if config.get("TAP_REPORTER_OUTPUT_DETAIL", "") == "detailed":
-            self.report_type = "detailed"
         super().__init__(params)
 
     def manage_activation(self):
         # Super-Linter legacy variables
-        output_format = config.get("OUTPUT_FORMAT", "")
+        if config.get(self.master.request_id, "OUTPUT_DETAIL", "") == "detailed":
+            self.report_type = "detailed"
+        if (
+            config.get(self.master.request_id, "TAP_REPORTER_OUTPUT_DETAIL", "")
+            == "detailed"
+        ):
+            self.report_type = "detailed"
+        output_format = config.get(self.master.request_id, "OUTPUT_FORMAT", "")
         if output_format.startswith("tap"):
             self.is_active = True
         # MegaLinter vars (false by default)
-        elif config.get("TAP_REPORTER", "false") == "true":
+        elif config.get(self.master.request_id, "TAP_REPORTER", "false") == "true":
             self.is_active = True
         else:
             self.is_active = False
@@ -67,7 +70,9 @@ class TapReporter(Reporter):
                 file_tap_lines += detailed_lines
             tap_report_lines += file_tap_lines
         # Write TAP file
-        tap_report_sub_folder = config.get("TAP_REPORTER_SUB_FOLDER", "tap")
+        tap_report_sub_folder = config.get(
+            self.master.request_id, "TAP_REPORTER_SUB_FOLDER", "tap"
+        )
         tap_file_name = (
             f"{self.report_folder}{os.path.sep}"
             f"{tap_report_sub_folder}{os.path.sep}"

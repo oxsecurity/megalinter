@@ -1,27 +1,17 @@
 #!/usr/bin/env python3
 """
-Use Terrascan to lint terraform files
-https://github.com/tenable/terrascan
+Use TerrascanLinter to lint tf files
 """
-import logging
 
-import megalinter
+from megalinter import Linter
 
 
-class TerrascanLinter(megalinter.Linter):
+class TerrascanLinter(Linter):
+    # Build the CLI command to call to lint a file
+    def build_lint_command(self, file=None):
+        cmd = super().build_lint_command(file)
 
-    # To execute before linting files
-    def before_lint_files(self):
-        # Build pre-command
-        terrascan_init_command = "terrascan"
-        if self.config_file is not None:
-            terrascan_init_command += f" --config-path {self.config_file}"
-        logging.debug("terrascan before_lint_files: " + terrascan_init_command)
-        # Add to pre-commands
-        terrascan_pre_command = {
-            "command": terrascan_init_command,
-            "cwd": self.workspace,
-        }
-        if self.pre_commands is None:
-            self.pre_commands = []
-        self.pre_commands.append(terrascan_pre_command)
+        if self.cli_lint_mode == "file":
+            cmd += ["--iac-file", f"{file}"]
+
+        return cmd

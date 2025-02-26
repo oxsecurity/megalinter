@@ -1,3 +1,7 @@
+---
+title: JSON Reporter for MegaLinter
+description: Generates a full execution and SAST results log in JSON format within a file named mega-linter-report.json, located in report folder
+---
 # JSON Reporter
 
 Generates a full execution log in JSON format within a file named **mega-linter-report.json** , located in report folder

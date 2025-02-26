@@ -20,21 +20,26 @@ linters:
       - golang
       - angular
 
-      For example, define `HTML_DJLINT_HTMLHINT_ARGUMENTS: ["--profile", "django"]` to select django format
+      For example, define `HTML_DJLINT_ARGUMENTS: ["--profile", "django"]` to select django format
     linter_url: https://djlint.com/
     linter_repo: https://github.com/Riverside-Healthcare/djlint
     linter_rules_url: https://djlint.com/docs/linter/
     linter_banner_image_url: https://raw.githubusercontent.com/Riverside-Healthcare/djLint/master/docs/src/static/img/icon.png
     linter_rules_configuration_url: https://djlint.com/docs/configuration/
     linter_rules_inline_disable_url: https://djlint.com/docs/ignoring-code/
+    linter_megalinter_ref_url: https://djlint.com/docs/integrations/#megalinter
     cli_lint_mode: list_of_files
     cli_lint_errors_count: regex_number
     cli_lint_errors_regex: "found ([0-9]+) errors"
     examples:
       - "djlint myfile1.html myfile2.html"
     install:
+      dockerfile:
+        - |-
+          # renovate: datasource=pypi depName=djlint
+          ARG PIP_DJLINT_VERSION=1.36.4
       pip:
-        - djlint
+        - djlint==${PIP_DJLINT_VERSION}
     ide:
       sublime:
         - name: SublimeLinter-contrib-djlint
@@ -60,8 +65,12 @@ linters:
       - "htmlhint myfile.html"
       - "htmlhint --config .htmlhintrc myfile.html"
     install:
+      dockerfile:
+        - |-
+          # renovate: datasource=npm depName=htmlhint
+          ARG NPM_HTMLHINT_VERSION=1.1.4
       npm:
-        - htmlhint
+        - htmlhint@${NPM_HTMLHINT_VERSION}
     ide:
       atom:
         - name: atom-htmlhint

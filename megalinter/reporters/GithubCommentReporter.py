@@ -22,10 +22,15 @@ class GithubCommentReporter(Reporter):
     issues_root = ML_REPO_URL + "/issues"
 
     def manage_activation(self):
-        if config.get("GITHUB_COMMENT_REPORTER", "true") != "true":
+        if not config.exists(self.master.request_id, "GITHUB_REPOSITORY"):
             self.is_active = False
         elif (
-            config.get("POST_GITHUB_COMMENT", "true") == "true"
+            config.get(self.master.request_id, "GITHUB_COMMENT_REPORTER", "true")
+            != "true"
+        ):
+            self.is_active = False
+        elif (
+            config.get(self.master.request_id, "POST_GITHUB_COMMENT", "true") == "true"
         ):  # Legacy - true by default
             self.is_active = True
 
@@ -39,7 +44,7 @@ class GithubCommentReporter(Reporter):
         GITHUB_WORKFLOW and GITHUB_JOB environment variables) to avoid clashes
         between multiple Mega-Linter jobs operating on the same PR:
 
-          <!-- megalinter: github-comment-reporter workflow='...' jobid='...' -->
+          <!-- megalinter: github-comment-reporter workflow='…' jobid='…' -->
 
         """
         workflow = os.getenv("GITHUB_WORKFLOW")
@@ -53,15 +58,21 @@ class GithubCommentReporter(Reporter):
 
     def produce_report(self):
         # Post comment on GitHub pull request
-        if config.get("GITHUB_TOKEN", "") != "":
-            github_repo = config.get("GITHUB_REPOSITORY")
-            github_server_url = config.get("GITHUB_SERVER_URL", self.github_server_url)
-            github_api_url = config.get("GITHUB_API_URL", self.github_api_url)
-            run_id = config.get("GITHUB_RUN_ID")
-            sha = config.get("GITHUB_SHA")
+        if config.get(self.master.request_id, "GITHUB_TOKEN", "") != "":
+            github_repo = config.get(self.master.request_id, "GITHUB_REPOSITORY")
+            github_server_url = config.get(
+                self.master.request_id, "GITHUB_SERVER_URL", self.github_server_url
+            )
+            github_api_url = config.get(
+                self.master.request_id, "GITHUB_API_URL", self.github_api_url
+            )
+            run_id = config.get(self.master.request_id, "GITHUB_RUN_ID")
+            sha = config.get(self.master.request_id, "GITHUB_SHA")
 
-            if config.get("CI_ACTION_RUN_URL", "") != "":
-                action_run_url = config.get("CI_ACTION_RUN_URL", "")
+            if config.get(self.master.request_id, "CI_ACTION_RUN_URL", "") != "":
+                action_run_url = config.get(
+                    self.master.request_id, "CI_ACTION_RUN_URL", ""
+                )
             elif run_id is not None:
                 action_run_url = (
                     f"{github_server_url}/{github_repo}/actions/runs/{run_id}"
@@ -77,13 +88,19 @@ class GithubCommentReporter(Reporter):
 
             # Post comment on pull request if found
             github_auth = (
-                config.get("PAT")
-                if config.get("PAT", "") != ""
-                else config.get("GITHUB_TOKEN")
+                config.get(self.master.request_id, "PAT")
+                if config.get(self.master.request_id, "PAT", "") != ""
+                else config.get(self.master.request_id, "GITHUB_TOKEN")
             )
             g = github.Github(base_url=github_api_url, login_or_token=github_auth)
-            repo = g.get_repo(github_repo)
-
+            try:
+                repo = g.get_repo(github_repo)
+            except github.GithubException as e:
+                logging.warning(f"Unable to connect to GitHub repository: {e}")
+                return
+            except Exception as e:
+                logging.warning(f"Unable to connect to GitHub repository: {e}")
+                return
             # Try to get PR from GITHUB_REF
             pr_list = []
             ref = os.environ.get("GITHUB_REF", "")
@@ -130,13 +147,10 @@ class GithubCommentReporter(Reporter):
                 except github.GithubException as e:
                     logging.warning(
                         f"[GitHub Comment Reporter] Unable to post pull request comment: {str(e)}.\n"
-                        "To enable this function, please :\n"
-                        "1. Create a Personal Access Token (https://docs.github.com/en/free-pro-team@"
-                        "latest/github/authenticating-to-github/creating-a-personal-access-token)\n"
-                        "2. Create a secret named PAT with its value on your repository (https://docs."
-                        "github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets#"
-                        "creating-encrypted-secrets-for-a-repository)"
-                        "3. Define PAT={{secrets.PAT}} in your GitHub action environment variables"
+                        "To enable this function, please add permissions in your Github Actions Workflow:\n"
+                        "permissions:\n"
+                        "  issues: write\n"
+                        "  pull-requests: write"
                     )
                 except Exception as e:
                     logging.warning(

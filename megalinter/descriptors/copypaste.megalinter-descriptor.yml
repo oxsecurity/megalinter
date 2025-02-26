@@ -9,13 +9,13 @@ linters:
   # JSCPD
   - class: JsCpdLinter
     linter_name: jscpd
-    linter_url: https://github.com/kucherenko/jscpd/tree/master/packages/jscpd
+    linter_url: https://github.com/kucherenko/jscpd/tree/master/apps/jscpd
     linter_repo: https://github.com/kucherenko/jscpd
     linter_speed: 1
     linter_text: |
       JSCPD browses all files of your repository to detect excessive copy-pastes
 
-      If you need to ignore folders,files or file extensions, use glob expressions `ignore` property of local `.jscpd.json` file
+      If you need to ignore folders, files or file extensions, use glob expressions `ignore` property of local `.jscpd.json` file
 
       Example:
 
@@ -32,18 +32,15 @@ linters:
       }
       ```
     linter_banner_image_url: https://raw.githubusercontent.com/kucherenko/jscpd/master/assets/logo.svg?sanitize=true
-    linter_rules_configuration_url: https://github.com/kucherenko/jscpd/tree/master/packages/jscpd#config-file
-    linter_rules_inline_disable_url: https://github.com/kucherenko/jscpd/tree/master/packages/jscpd#ignored-blocks
+    linter_rules_configuration_url: https://github.com/kucherenko/jscpd/tree/master/apps/jscpd#config-file
+    linter_rules_inline_disable_url: https://github.com/kucherenko/jscpd/tree/master/apps/jscpd#ignored-blocks
     linter_megalinter_ref_url: https://github.com/kucherenko/jscpd#who-uses-jscpd
     config_file_name: .jscpd.json
     cli_lint_mode: project
     cli_lint_extra_args:
+      - --gitignore
       - "--reporters"
       - "console,html"
-      - "--output"
-      - "{{REPORT_FOLDER}}/copy-paste/"
-    #      - "--exitCode" # uncomment when jscpd > 3.4.0
-    #      - "1"
     cli_lint_extra_args_after:
       - "."
     cli_lint_errors_count: regex_number
@@ -51,11 +48,10 @@ linters:
     examples:
       - "jscpd --output ./report/copy-paste/ ."
       - "jscpd --output ./report/copy-paste/ -c .jscpd.json ."
-    downgraded_version: true
     install:
-      apk:
-        - nodejs
-        - npm
-        - yarn
+      dockerfile:
+        - |-
+          # renovate: datasource=npm depName=jscpd
+          ARG NPM_JSCPD_VERSION=4.0.5
       npm:
-        - jscpd@3.3.26
+        - jscpd@${NPM_JSCPD_VERSION}

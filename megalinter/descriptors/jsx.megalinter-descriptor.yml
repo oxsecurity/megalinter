@@ -2,6 +2,7 @@ descriptor_id: JSX
 descriptor_type: language
 descriptor_flavors:
   - cupcake
+  - dotnetweb
   - javascript
 file_extensions:
   - ".jsx"
@@ -14,6 +15,7 @@ linters:
       eslint requires a custom configuration file applicable to your project.
       You can create it by typing `npx eslint --init` in the root of your repository
     linter_url: https://github.com/yannickcr/eslint-plugin-react
+    linter_repo: https://github.com/yannickcr/eslint-plugin-react
     linter_rules_url: https://github.com/yannickcr/eslint-plugin-react#list-of-supported-rules
     linter_banner_image_url: https://d33wubrfki0l68.cloudfront.net/3b5ac7586466159bb6f237b633bfc4f5a8d5acf8/ee0a1/assets/img/posts/eslint-collective.png
     linter_rules_configuration_url: https://github.com/yannickcr/eslint-plugin-react#configuration
@@ -21,6 +23,9 @@ linters:
     linter_rules_ignore_config_url: https://eslint.org/docs/latest/user-guide/configuring/ignoring-code#the-eslintignore-file
     linter_megalinter_ref_url: https://eslint.org/docs/user-guide/integrations#source-control
     active_only_if_file_found:
+      - eslint.config.js
+      - eslint.config.mjs
+      - eslint.config.cjs
       - ".eslintrc.json"
       - ".eslintrc.yml"
       - ".eslintrc.yaml"
@@ -28,9 +33,7 @@ linters:
       - ".eslintrc.cjs"
       - "package.json:eslintConfig"
     cli_lint_mode: list_of_files
-    config_file_name: .eslintrc.json
-    cli_config_extra_args:
-      - "--no-eslintrc"
+    config_file_name: eslint.config.js
     cli_lint_extra_args:
       - "--no-ignore"
     ignore_file_name: .eslintignore
@@ -48,11 +51,24 @@ linters:
       - "eslint -c .eslintrc.json --no-eslintrc --no-ignore myfile.jsx"
       - "eslint --fix -c .eslintrc.json --no-eslintrc --no-ignore myfile.jsx"
     install:
+      dockerfile:
+        - |-
+          # renovate: datasource=npm depName=eslint
+          ARG NPM_ESLINT_VERSION=8.57.1
+        - |-
+          # renovate: datasource=npm depName=eslint-plugin-react
+          ARG NPM_ESLINT_PLUGIN_REACT_VERSION=7.37.4
+        - |-
+          # renovate: datasource=npm depName=eslint-plugin-jsx-a11y
+          ARG NPM_ESLINT_PLUGIN_JSX_ALLY_VERSION=6.10.2
+        - |-
+          # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
+          ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
       npm:
-        - eslint
-        - eslint-plugin-react
-        - eslint-plugin-jsx-a11y
-        - "@microsoft/eslint-formatter-sarif"
+        - eslint@${NPM_ESLINT_VERSION}
+        - eslint-plugin-react@${NPM_ESLINT_PLUGIN_REACT_VERSION}
+        - eslint-plugin-jsx-a11y@${NPM_ESLINT_PLUGIN_JSX_ALLY_VERSION}
+        - "@microsoft/eslint-formatter-sarif@${NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION}"
     ide:
       atom:
         - name: linter-eslint
@@ -69,6 +85,7 @@ linters:
       idea:
         - name: ESLint Plugin
           url: https://plugins.jetbrains.com/plugin/7494-eslint
+          id: com.wix.eslint
       sublime:
         - name: SublimeLinter-eslint
           url: https://github.com/roadhump/SublimeLinter-eslint

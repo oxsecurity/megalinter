@@ -41,10 +41,13 @@
       "enum": [
         "all_flavors",
         "all",
+        "c_cpp",
         "ci_light",
         "cupcake",
         "documentation",
         "dotnet",
+        "dotnetweb",
+        "formatters",
         "go",
         "java",
         "javascript",
@@ -58,13 +61,32 @@
         "terraform"
       ],
       "type": "string"
+    },
+    "linter_command_info": {
+      "$ref": "#/definitions/command_info",
+      "description": "Command information",
+      "properties": {
+        "run_after_linters": {
+          "default": false,
+          "title": "Process command after running linters",
+          "type": "boolean"
+        },
+        "run_before_linters": {
+          "default": false,
+          "title": "Process command before running linters",
+          "type": "boolean"
+        }
+      },
+      "required": [],
+      "title": "Command",
+      "type": "object"
     }
   },
   "description": "Descriptor definition for MegaLinter",
   "properties": {
     "active_only_if_file_found": {
       "$id": "#/properties/active_only_if_file_found",
-      "description": "Names of the config files to be found (at least one), else descriptor will be deactivated",
+      "description": "Names of the config files to be found (at least one), else descriptor will be deactivated. Search in workspace, linter rules path, and files_sub_directory",
       "examples": [
         [
           ".editorconfig",
@@ -167,6 +189,22 @@
         "type": "string"
       },
       "title": "File content regex filters",
+      "type": "array"
+    },
+    "file_contains_regex_extensions": {
+      "$id": "#/properties/file_contains_regex_extensions",
+      "default": [],
+      "description": "If file_contains_regex is set, use this property to filter extensions of the files that will be checked",
+      "examples": [
+        [
+          "",
+          ".json"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "File contain regex extensions filters",
       "type": "array"
     },
     "file_extensions": {
@@ -368,7 +406,7 @@
                 "eslint-config-prettier",
                 "eslint-plugin-jest",
                 "eslint-plugin-prettier",
-                "babel-eslint"
+                "@babel/eslint-parser"
               ]
             },
             "linter_banner_image_url": "https://d33wubrfki0l68.cloudfront.net/3b5ac7586466159bb6f237b633bfc4f5a8d5acf8/ee0a1/assets/img/posts/eslint-collective.png",
@@ -593,7 +631,8 @@
               "regex_number",
               "regex_count",
               "regex_sum",
-              "total_lines"
+              "total_lines",
+              "sarif"
             ],
             "examples": [
               "regex_number",
@@ -679,6 +718,33 @@
             "title": "Linting mode",
             "type": "string"
           },
+          "cli_lint_warnings_count": {
+            "$id": "#/properties/linters/items/properties/cli_lint_warnings_count",
+            "description": "Defines how to count warnings from log file. regex_number, regex_count, regex_sum, or total_lines",
+            "enum": [
+              "regex_number",
+              "regex_count",
+              "regex_sum",
+              "total_lines"
+            ],
+            "examples": [
+              "regex_number",
+              "regex_count",
+              "regex_sum",
+              "total_lines"
+            ],
+            "title": "Lint errors count mode",
+            "type": "string"
+          },
+          "cli_lint_warnings_regex": {
+            "$id": "#/properties/linters/items/properties/cli_lint_warnings_regex",
+            "description": "Regex allowing to extract the number of warnings from linter output logs",
+            "examples": [
+              "Issues found: (.*) in .* files"
+            ],
+            "title": "Lint warnings number regex",
+            "type": "string"
+          },
           "cli_sarif_args": {
             "$id": "#/properties/linters/items/properties/cli_sarif_args",
             "default": [],
@@ -722,6 +788,20 @@
             "title": "Default file name for the linter configuration file",
             "type": "string"
           },
+          "deprecated": {
+            "$id": "#/properties/linters/items/properties/deprecated",
+            "default": false,
+            "description": "Shows if the linter is deprecated.",
+            "title": "Is the linter deprecated?",
+            "type": "boolean"
+          },
+          "deprecated_description": {
+            "$id": "#/properties/linters/items/properties/deprecated_description",
+            "default": "",
+            "description": "Displays information on why it is deprecated and whether an alternative is available.",
+            "title": "Description of the deprecated linter",
+            "type": "string"
+          },
           "descriptor_flavors": {
             "$id": "#/properties/linters/items/properties/descriptor_flavors",
             "default": [],
@@ -762,6 +842,20 @@
             "description": "Disable linter in MegaLinter next builds",
             "title": "Disabled",
             "type": "boolean"
+          },
+          "disabled_reason": {
+            "$id": "#/properties/linters/items/properties/disabled_reason",
+            "default": false,
+            "description": "Explanation about why the linter is disabled",
+            "title": "Disabled reason",
+            "type": "string"
+          },
+          "downgraded_reason": {
+            "$id": "#/properties/linters/items/properties/downgraded_reason",
+            "default": false,
+            "description": "Explanation about why the linter is downgraded",
+            "title": "Downgraded reason",
+            "type": "string"
           },
           "downgraded_version": {
             "$id": "#/properties/linters/items/properties/downgraded_version",
@@ -819,6 +913,22 @@
               "type": "string"
             },
             "title": "Filter on end of file name",
+            "type": "array"
+          },
+          "file_names_regex": {
+            "$id": "#/properties/linters/items/file_names_regex",
+            "default": [],
+            "description": "Regular expression list for filtering files by their base names using regex full match. Empty list includes all files. Can be overridden at linter level",
+            "examples": [
+              [
+                "Dockerfile(-.+)?",
+                "Jenkinsfile"
+              ]
+            ],
+            "items": {
+              "type": "string"
+            },
+            "title": "File name regex filters",
             "type": "array"
           },
           "files_sub_directory": {
@@ -997,6 +1107,13 @@
             "title": "Is formatter",
             "type": "boolean"
           },
+          "is_sbom": {
+            "$id": "#/properties/linters/items/properties/is_sbom",
+            "default": false,
+            "description": "If the linter is SBOM, set to true so extra properties will be returned",
+            "title": "Is SBOM",
+            "type": "boolean"
+          },
           "lint_all_files": {
             "$id": "#/properties/linters/items/lint_all_files",
             "default": false,
@@ -1015,7 +1132,7 @@
             "$id": "#/properties/linters/items/properties/linter_banner_image_url",
             "description": "URL of an image used to build header of linter Markdown documentation",
             "examples": [
-              "https://github.com/stylelint/stylelint/raw/master/identity/stylelint-icon-and-text-white.png"
+              "https://github.com/stylelint/stylelint/raw/main/identity/stylelint-icon-and-text-white.png"
             ],
             "format": "uri",
             "title": "Linter banner image URL",
@@ -1025,6 +1142,16 @@
             "$id": "#/properties/linters/items/properties/linter_help_cache",
             "description": "If the linter is unable to return help content, hardcode it here",
             "title": "Hardcoded help content",
+            "type": "string"
+          },
+          "linter_icon_png_url": {
+            "$id": "#/properties/linters/items/properties/linter_icon_png_url",
+            "description": "URL of a PNG image representing the icon of the linter",
+            "examples": [
+              "https://github.com/stylelint/stylelint/raw/main/identity/stylelint-icon-and-text-white.png"
+            ],
+            "format": "uri",
+            "title": "Linter Icon PNG URL",
             "type": "string"
           },
           "linter_image_url": {
@@ -1157,7 +1284,7 @@
               ]
             ],
             "items": {
-              "$ref": "#/definitions/command_info"
+              "$ref": "#/definitions/linter_command_info"
             },
             "title": "Linter Pre-run commands",
             "type": "array"
@@ -1180,7 +1307,7 @@
               ]
             ],
             "items": {
-              "$ref": "#/definitions/command_info"
+              "$ref": "#/definitions/linter_command_info"
             },
             "title": "Linter Pre-run commands",
             "type": "array"
@@ -1206,6 +1333,33 @@
               ]
             ],
             "title": "Test folder in .automation/",
+            "type": "string"
+          },
+          "test_format_fix_file_extensions": {
+            "$id": "#/properties/test_format_fix_file_extensions",
+            "default": [],
+            "description": "Format / Fix test file extension filters.",
+            "examples": [
+              [
+                ".py",
+                ""
+              ]
+            ],
+            "items": {
+              "type": "string"
+            },
+            "title": "Allowed file extensions",
+            "type": "array"
+          },
+          "test_format_fix_regex_exclude": {
+            "$id": "#/properties/linters/items/test_format_fix_regex_exclude",
+            "description": "Format / Fix test exclusions",
+            "examples": [
+              [
+                "/bin/|/obj/"
+              ]
+            ],
+            "title": "Format / Fix test exclusions",
             "type": "string"
           },
           "test_variables": {

@@ -1,3 +1,8 @@
+---
+title: License info for git_diff within MegaLinter
+search:
+  exclude: true
+---
 
  Note that the only valid version of the GPL as far as this project
  is concerned is _this_ particular version of the license (ie v2, not

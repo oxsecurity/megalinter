@@ -1,6 +1,11 @@
+---
+title: License info for markdownlint within MegaLinter
+search:
+  exclude: true
+---
 The MIT License (MIT)
 
-Copyright (c) 2015-2022 David Anson
+Copyright (c) David Anson
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

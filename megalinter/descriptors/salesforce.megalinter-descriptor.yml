@@ -6,17 +6,29 @@ lint_all_files: true
 install:
   # Java, because Apex is Java-based, so are related tools like PMD which is embedded in sfdx-scanner
   apk:
-    - openjdk11
+    - coreutils
+    - openjdk21
   dockerfile:
-    - ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
+    - |-
+      # renovate: datasource=npm depName=@salesforce/cli
+      ARG NPM_SALESFORCE_CLI_VERSION=2.77.6
+    - |-
+      # renovate: datasource=npm depName=@salesforce/plugin-packaging
+      ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.10.1
+    - |-
+      # renovate: datasource=npm depName=sfdx-hardis
+      ARG SFDX_HARDIS_VERSION=5.19.4
+    - ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
     - ENV PATH="$JAVA_HOME/bin:${PATH}"
-    - |
-      RUN echo y|sfdx plugins:install sfdx-hardis \
-          && npm cache clean --force || true \
+    - |-
+      RUN sf plugins install @salesforce/plugin-packaging@${NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION} \
+          && echo y|sf plugins install sfdx-hardis@${SFDX_HARDIS_VERSION} \
+          && (npm cache clean --force || true) \
           && rm -rf /root/.npm/_cacache
+    - ENV SF_AUTOUPDATE_DISABLE=true SF_CLI_DISABLE_AUTOUPDATE=true
   # Salesforce DX
   npm:
-    - sfdx-cli
+    - "@salesforce/cli@${NPM_SALESFORCE_CLI_VERSION}"
 linters:
   # SFDX Scanner
   - linter_name: sfdx-scanner-apex
@@ -34,13 +46,13 @@ linters:
       **Workaround: Restricted to PMD**
     linter_url: https://forcedotcom.github.io/sfdx-scanner/
     linter_repo: https://github.com/forcedotcom/sfdx-scanner
-    linter_rules_url: https://pmd.github.io/latest/pmd_rules_apex.html
+    linter_rules_url: https://docs.pmd-code.org/latest/pmd_rules_apex.html
     linter_image_url: https://forcedotcom.github.io/sfdx-scanner/assets/images/sfdx_scanner_logo.png
-    linter_rules_configuration_url: https://pmd.github.io/latest/pmd_userdocs_making_rulesets.html
-    linter_rules_inline_disable_url: https://pmd.github.io/latest/pmd_userdocs_suppressing_warnings.html
+    linter_rules_configuration_url: https://docs.pmd-code.org/latest/pmd_userdocs_making_rulesets.html
+    linter_rules_inline_disable_url: https://docs.pmd-code.org/latest/pmd_userdocs_suppressing_warnings.html
     linter_megalinter_ref_url: https://github.com/forcedotcom/sfdx-scanner/pull/307
     config_file_name: apex-pmd-ruleset.xml
-    cli_executable: sfdx
+    cli_executable: sf
     cli_config_arg_name: "--pmdconfig"
     cli_lint_extra_args:
       - "scanner:run"
@@ -58,7 +70,7 @@ linters:
     cli_help_extra_args:
       - "scanner:run"
     cli_help_extra_commands:
-      - "sfdx scanner:rule:list"
+      - "sf scanner:rule:list"
     cli_version_extra_args:
       - "plugins"
     cli_version_arg_name: ""
@@ -66,12 +78,15 @@ linters:
     cli_lint_errors_count: regex_sum
     cli_lint_errors_regex: "found ([0-9]+) violation"
     examples:
-      - "sfdx scanner:run"
+      - "sf scanner:run"
     install:
       dockerfile:
-        - |
-          RUN sfdx plugins:install @salesforce/sfdx-scanner \
-              && npm cache clean --force || true \
+        - |-
+          # renovate: datasource=npm depName=@salesforce/sfdx-scanner
+          ARG SALESFORCE_SFDX_SCANNER_VERSION=4.9.0
+        - |-
+          RUN sf plugins install @salesforce/sfdx-scanner@${SALESFORCE_SFDX_SCANNER_VERSION} \
+              && (npm cache clean --force || true) \
               && rm -rf /root/.npm/_cacache
     ide:
       eclipse:
@@ -83,6 +98,7 @@ linters:
       idea:
         - name: PMD IntelliJ
           url: https://plugins.jetbrains.com/plugin/1137-pmdplugin
+          id: PMDPlugin
       vscode:
         - name: Salesforce Extension Pack
           url: https://marketplace.visualstudio.com/items?itemName=salesforce.salesforcedx-vscode
@@ -110,7 +126,7 @@ linters:
     linter_megalinter_ref_url: https://github.com/forcedotcom/sfdx-scanner/pull/307
     config_file_name: --eslintconfig
     cli_config_arg_name: ".eslintrc-aura.json"
-    cli_executable: sfdx
+    cli_executable: sf
     cli_lint_extra_args:
       - "scanner:run"
       - "--engine"
@@ -119,26 +135,31 @@ linters:
       - "**/aura/**/*.js"
       - "--severity-threshold"
       - "2"
+      - "--outfile"
+      - "{{REPORT_FOLDER}}/sfdx-scanner-report-aura.csv"
       - "--format"
       - "csv"
     cli_lint_mode: project
     cli_help_extra_args:
       - "scanner:run"
     cli_help_extra_commands:
-      - "sfdx scanner:rule:list"
+      - "sf scanner:rule:list"
     cli_version_extra_args:
       - "plugins"
     cli_version_arg_name: ""
     version_extract_regex: "(?<=@salesforce/sfdx-scanner )\\d+(\\.\\d+)+"
-    cli_lint_errors_count: regex_count
-    cli_lint_errors_regex: '"[0-9]+",'
+    cli_lint_errors_count: regex_sum
+    cli_lint_errors_regex: "found ([0-9]+) violation"
     examples:
-      - "sfdx scanner:run"
+      - "sf scanner:run"
     install:
       dockerfile:
-        - |
-          RUN sfdx plugins:install @salesforce/sfdx-scanner \
-              && npm cache clean --force || true \
+        - |-
+          # renovate: datasource=npm depName=@salesforce/sfdx-scanner
+          ARG SALESFORCE_SFDX_SCANNER_VERSION=4.9.0
+        - |-
+          RUN sf plugins install @salesforce/sfdx-scanner@${SALESFORCE_SFDX_SCANNER_VERSION} \
+              && (npm cache clean --force || true) \
               && rm -rf /root/.npm/_cacache
     ide:
       vscode:
@@ -168,7 +189,7 @@ linters:
     linter_megalinter_ref_url: https://github.com/forcedotcom/sfdx-scanner/pull/307
     config_file_name: --eslintconfig
     cli_config_arg_name: ".eslintrc-lwc.json"
-    cli_executable: sfdx
+    cli_executable: sf
     cli_lint_extra_args:
       - "scanner:run"
       - "--engine"
@@ -177,28 +198,76 @@ linters:
       - "**/lwc/**/*.js"
       - "--severity-threshold"
       - "2"
+      - "--outfile"
+      - "{{REPORT_FOLDER}}/sfdx-scanner-report-lwc.csv"
       - "--format"
       - "csv"
     cli_lint_mode: project
     cli_help_extra_args:
       - "scanner:run"
     cli_help_extra_commands:
-      - "sfdx scanner:rule:list"
+      - "sf scanner:rule:list"
     cli_version_extra_args:
       - "plugins"
     cli_version_arg_name: ""
     version_extract_regex: "(?<=@salesforce/sfdx-scanner )\\d+(\\.\\d+)+"
-    cli_lint_errors_count: regex_count
-    cli_lint_errors_regex: '"[0-9]+",'
+    cli_lint_errors_count: regex_sum
+    cli_lint_errors_regex: "found ([0-9]+) violation"
     examples:
-      - "sfdx scanner:run"
+      - "sf scanner:run"
     install:
       dockerfile:
-        - |
-          RUN sfdx plugins:install @salesforce/sfdx-scanner \
-              && npm cache clean --force || true \
+        - |-
+          # renovate: datasource=npm depName=@salesforce/sfdx-scanner
+          ARG SALESFORCE_SFDX_SCANNER_VERSION=4.9.0
+        - |-
+          RUN sf plugins install @salesforce/sfdx-scanner@${SALESFORCE_SFDX_SCANNER_VERSION} \
+              && (npm cache clean --force || true) \
               && rm -rf /root/.npm/_cacache
     ide:
       vscode:
         - name: Salesforce Extension Pack
           url: https://marketplace.visualstudio.com/items?itemName=salesforce.salesforcedx-vscode
+
+  # Lightning Flow Scanner
+  - linter_name: lightning-flow-scanner
+    files_sub_directory: force-app
+    linter_text: |
+      Lightning Flow Scanner is a sfdx plugin scanning the integrity and best practices of Salesforce Flows
+
+      If your root folder is not **force-app**, please set variable SALESFORCE_LIGHTNING_FLOW_SCANNER_DIRECTORY
+    linter_url: https://github.com/Lightning-Flow-Scanner
+    linter_repo: https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx
+    linter_rules_url: https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-core#rules
+    linter_banner_image_url: https://raw.githubusercontent.com/Lightning-Flow-Scanner/.github/main/docs/images/bannerslim.png
+    linter_rules_configuration_url: https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx#configuration
+    config_file_name: .flow-scanner.json
+    cli_config_arg_name: --config
+    cli_executable: sf
+    cli_lint_extra_args:
+      - "flow:scan"
+    cli_lint_mode: project
+    cli_help_extra_args:
+      - "flow:scan"
+    cli_version_extra_args:
+      - "plugins"
+    cli_version_arg_name: ""
+    version_extract_regex: "(?<=lightning-flow-scanner )\\d+(\\.\\d+)+"
+    cli_lint_errors_count: regex_number
+    cli_lint_errors_regex: "- error: ([0-9]+)"
+    test_folder: salesforce-lfs
+    examples:
+      - "sf flow:scan"
+    install:
+      dockerfile:
+        - |-
+          # renovate: datasource=npm depName=lightning-flow-scanner
+          ARG LIGHTNING_FLOW_SCANNER_VERSION=3.0.0
+        - |-
+          RUN echo y|sf plugins install lightning-flow-scanner@${LIGHTNING_FLOW_SCANNER_VERSION} \
+              && (npm cache clean --force || true) \
+              && rm -rf /root/.npm/_cacache
+    ide:
+      vscode:
+        - name: Lightning Flow Scanner
+          url: https://marketplace.visualstudio.com/items?itemName=ForceConfigControl.lightningflowscanner

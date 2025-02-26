@@ -1,0 +1,113 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "megalinter"
+dynamic = ["version"]
+description = "MegaLinter"
+readme = "README.md"
+requires-python = ">=3.9"
+license = "MIT"
+keywords = []
+authors = [{ name = "Nicolas Vuillamy", email = "nicolas.vuillamy@gmail.com" }]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: Implementation :: CPython",
+]
+dependencies = [
+  "azure-devops==6.0.0b4",
+  "commentjson",
+  "gitpython",
+  "importlib-metadata>=3.10; python_version < '3.9'",
+  "jsonpickle",
+  "multiprocessing_logging",
+  "pychalk",
+  "pygithub",
+  "pytablewriter",
+  "python-gitlab",
+  "pyyaml",
+  "redis",
+  "regex",
+  "requests",
+  "terminaltables",
+  "urllib3",
+]
+
+[project.urls]
+Homepage = "https://megalinter.io/"
+Documentation = "https://megalinter.io/"
+Repository = "https://github.com/oxsecurity/megalinter.git"
+Source = "https://github.com/oxsecurity/megalinter"
+Issues = "https://github.com/oxsecurity/megalinter/issues"
+Changelog = "https://github.com/oxsecurity/megalinter/blob/main/CHANGELOG.md"
+
+[tool.hatch.version]
+path = "megalinter/__about__.py"
+
+[tool.hatch.envs.default]
+installer = "uv"
+
+[tool.hatch.envs.docs]
+dependencies = [
+  "mkdocs",
+  "markdown",
+  "mike",
+  "mkdocs-material",
+  "pymdown-extensions",
+  "mkdocs-glightbox==0.3.2",
+  "mdx_truly_sane_lists",
+  "jsonschema",
+  "json-schema-for-humans",
+  "giturlparse",
+  "webpreview",
+  "github-dependents-info",
+]
+
+[tool.hatch.envs.hatch-test]
+default-args = [""]
+randomize = true
+parallel = true
+retries = 2
+
+[tool.hatch.envs.docs.scripts]
+# build = "mkdocs build --clean --strict"
+prettify = "hatch run python -m json.tool --sort-keys --no-indent ./site/search/search_index.json ./site/search/search_index.json"
+build-only = ["mkdocs build --clean {args}"]
+build = ["build-only {args}", "prettify"]
+serve = "mkdocs serve --dev-addr localhost:8000 {args}"
+
+[tool.hatch.envs.build]
+template = "docs"
+[tool.hatch.envs.build.scripts]
+all = ["build --doc --stats --dependents {args}", "hatch run docs:build"]
+build-sh = "./build.sh {args}"
+build-py = "hatch run python .automation/build.py {args}"
+build = ["build-py", "hatch run docs:build"]
+docs = ["./build.sh --doc {args}", "hatch run docs:build"]
+stats = "build --stats"
+changelog = "hatch run python .automation/build.py --changelog {args}"
+
+[tool.hatch.envs.types]
+extra-dependencies = ["mypy>=1.0.0"]
+[tool.hatch.envs.types.scripts]
+check = "mypy --install-types --non-interactive {args:megalinter}"
+
+[tool.coverage.run]
+source_pkgs = ["megalinter"]
+branch = false
+parallel = true
+omit = ["megalinter/__about__.py"]
+
+[tool.coverage.paths]
+megalinter = ["megalinter", "*/megalinter/megalinter"]
+tests = [".automation/test", "*/megalinter/tests"]
+
+[tool.coverage.report]
+exclude_lines = ["no cov", "if __name__ == .__main__.:", "if TYPE_CHECKING:"]
+
+[tool.ruff]
+src = ["megalinter"]
+extend-exclude = [".automation/test"]

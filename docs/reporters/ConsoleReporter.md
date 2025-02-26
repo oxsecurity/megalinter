@@ -1,3 +1,7 @@
+---
+title: Console Reporter for MegaLinter
+description: Posts MegaLinter SAST results execution logs in the terminal console
+---
 # Console Reporter
 
 Posts MegaLinter results execution logs in the console

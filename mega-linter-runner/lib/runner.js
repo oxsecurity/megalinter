@@ -1,14 +1,18 @@
-#! /usr/bin/env node
-"use strict";
-const optionsDefinition = require("./options");
-const { spawnSync } = require("child_process");
-const c = require("chalk");
-const path = require("path");
-const which = require("which");
-const fs = require("fs-extra");
-const { MegaLinterUpgrader } = require("./upgrade");
+import { optionsDefinition } from "./options.js"
+import { spawnSync } from "child_process";
+import { default as c } from 'chalk';
+import * as path from 'path';
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+import which from "which";
+import { default as fs } from "fs-extra";
+import { MegaLinterUpgrader } from "./upgrade.js";
+import { CodeTotalRunner } from "./codetotal.js";
+import { DEFAULT_RELEASE } from "./config.js";
+import { createEnv} from "yeoman-environment";
+import { default as FindPackageJson } from "find-package-json";
 
-class MegaLinterRunner {
+export class MegaLinterRunner {
   async run(options) {
     // Show help ( index or for an options)
     if (options.help) {
@@ -27,7 +31,6 @@ class MegaLinterRunner {
       let v = process.env.npm_package_version;
       if (!v) {
         try {
-          const FindPackageJson = require("find-package-json");
           const finder = FindPackageJson(__dirname);
           v = finder.next().value.version;
         } catch (e) {
@@ -41,8 +44,8 @@ class MegaLinterRunner {
 
     // Run configuration generator
     if (options.install) {
-      const yeoman = require("yeoman-environment");
-      const env = yeoman.createEnv();
+      const env = createEnv();
+      const __dirname = dirname(fileURLToPath(import.meta.url));
       const generatorPath = path.resolve(
         path.join(__dirname, "..", "generators", "mega-linter")
       );
@@ -58,25 +61,32 @@ class MegaLinterRunner {
       return { status: 0 };
     }
 
+    if (options.codetotal) {
+      const codeTotalRunner = new CodeTotalRunner(options);
+      await codeTotalRunner.run();
+      return { status: 0 }
+    }
+
     // Build MegaLinter docker image name with flavor and release version
-    const release = options.release in ["stable"] ? "v6" : options.release;
+    const release = options.release in ["stable"] ? DEFAULT_RELEASE : options.release;
     const dockerImageName =
       // v4 retrocompatibility >>
       (options.flavor === "all" || options.flavor == null) && this.isv4(release)
         ? "nvuillam/mega-linter"
         : options.flavor !== "all" && this.isv4(release)
-        ? `nvuillam/mega-linter-${options.flavor}`
-        : // << v4 retrocompatibility
-        // v5 retrocompatibility >>
-        (options.flavor === "all" || options.flavor == null) &&
-          this.isv5(release)
-        ? "megalinter/megalinter"
-        : options.flavor !== "all" && this.isv5(release)
-        ? `megalinter/megalinter-${options.flavor}`
-        : // << v5 retrocompatibility
-        options.flavor === "all" || options.flavor == null
-        ? "oxsecurity/megalinter"
-        : `oxsecurity/megalinter-${options.flavor}`;
+          ? `nvuillam/mega-linter-${options.flavor}`
+          : // << v4 retrocompatibility
+          // v5 retrocompatibility >>
+          (options.flavor === "all" || options.flavor == null) &&
+            this.isv5(release)
+            ? "megalinter/megalinter"
+            : options.flavor !== "all" && this.isv5(release)
+              ? `megalinter/megalinter-${options.flavor}`
+              : // << v5 retrocompatibility
+              options.flavor === "all" || options.flavor == null
+                ? "oxsecurity/megalinter"
+                : `oxsecurity/megalinter-${options.flavor}`;
+    this.checkPreviousVersion(release);
     const dockerImage = options.image || `${dockerImageName}:${release}`; // Docker image can be directly sent in options
 
     // Check for docker installation
@@ -88,6 +98,9 @@ ERROR: Docker engine has not been found on your system.
 - to run docker on CI, use a base image containing docker engine`);
     });
 
+    // Get platform to use with docker pull & run
+    const imagePlatform = options.platform || "linux/amd64";
+
     // Pull docker image
     if (options.nodockerpull !== true) {
       console.info(`Pulling docker image ${dockerImage} ... `);
@@ -97,12 +110,16 @@ ERROR: Docker engine has not been found on your system.
       console.info(
         "The next runs, it will be immediate (thanks to docker cache !)"
       );
-      const spawnResPull = spawnSync("docker", ["pull", dockerImage], {
-        detached: false,
-        stdio: "inherit",
-        windowsHide: true,
-        windowsVerbatimArguments: true,
-      });
+      const spawnResPull = spawnSync(
+        "docker",
+        ["pull", "--platform", imagePlatform, dockerImage],
+        {
+          detached: false,
+          stdio: "inherit",
+          windowsHide: true,
+          windowsVerbatimArguments: true,
+        }
+      );
       // Manage case when unable to pull docker image
       if (spawnResPull.status !== 0) {
         return {
@@ -120,8 +137,9 @@ ERROR: Docker engine has not been found on your system.
 
     // Build docker run options
     const lintPath = path.resolve(options.path || ".");
-    const commandArgs = ["run"];
-    if (options["removeContainer"]) {
+    const commandArgs = ["run", "--platform", imagePlatform];
+    const removeContainer = options["removeContainer"] ? true: options["noRemoveContainer"] ? false: true ;
+    if (removeContainer) {
       commandArgs.push("--rm");
     }
     if (options["containerName"]) {
@@ -181,48 +199,32 @@ ERROR: Docker engine has not been found on your system.
 
   isv4(release) {
     const isV4flag = release === "insiders" || release.includes("v4");
-    if (isV4flag) {
-      console.warn(
-        c.bold(
-          "#######################################################################"
-        )
-      );
-      console.warn(
-        c.bold("MEGA-LINTER HAS A NEW V5 VERSION. Please upgrade to it by:")
-      );
-      console.warn(
-        c.bold(
-          "- Running the command at the root of your repo (requires node.js): npx mega-linter-runner --upgrade"
-        )
-      );
-      console.warn(
-        c.bold(
-          "- Replace versions used by latest (v5 latest stable version) or beta (previously 'insiders', content of main branch of megalinter/megalinter)"
-        )
-      );
-      console.warn(
-        c.bold(
-          "#######################################################################"
-        )
-      );
-    }
     return isV4flag;
   }
 
   isv5(release) {
     const isV5flag = release.includes("v5");
-    if (isV5flag) {
+    return isV5flag;
+  }
+
+  checkPreviousVersion(release) {
+    if (release.includes("v4") || release.includes("v5") || release.includes("v6")) {
       console.warn(
         c.bold(
           "#######################################################################"
         )
       );
       console.warn(
-        c.bold("MEGA-LINTER HAS A NEW V6 VERSION. Please upgrade to it by:")
+        c.bold(`MEGA-LINTER HAS A NEW ${DEFAULT_RELEASE} VERSION. Please upgrade to benefit of latest features :)`)
       );
       console.warn(
         c.bold(
-          "- Running the command at the root of your repo (requires node.js): npx mega-linter-runner --upgrade"
+          "- Running the command at the root of your repo (requires node.js): npx mega-linter-runner@latest --upgrade"
+        )
+      );
+      console.warn(
+        c.bold(
+          `- or replace ${release} by ${DEFAULT_RELEASE} in your scripts`
         )
       );
       console.warn(
@@ -231,8 +233,5 @@ ERROR: Docker engine has not been found on your system.
         )
       );
     }
-    return isV5flag;
   }
 }
-
-module.exports = { MegaLinterRunner };

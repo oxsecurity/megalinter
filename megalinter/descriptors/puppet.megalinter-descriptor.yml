@@ -6,9 +6,9 @@ linters:
   # PuppetLint
   - linter_name: puppet-lint
     linter_url: http://puppet-lint.com/
-    linter_repo: https://github.com/rodjek/puppet-lint
+    linter_repo: https://github.com/puppetlabs/puppet-lint
     linter_rules_url: http://puppet-lint.com/checks/
-    linter_rules_configuration_url: https://github.com/rodjek/puppet-lint#configuration-file
+    linter_rules_configuration_url: https://github.com/puppetlabs/puppet-lint#configuration-file
     linter_rules_inline_disable_url: http://puppet-lint.com/controlcomments/
     config_file_name: .puppet-lint.rc
     cli_config_arg_name: ""
@@ -20,8 +20,12 @@ linters:
       - "puppet-lint --fail-on-warnings --no-autoloader_layout-check myfile.pp"
       - "puppet-lint --fail-on-warnings --no-autoloader_layout-check --fix myfile.pp"
     install:
+      dockerfile:
+        - |-
+          # renovate: datasource=rubygems depName=puppet-lint
+          ARG GEM_PUPPET_LINT_VERSION=4.2.4
       gem:
-        - puppet-lint
+        - puppet-lint:${GEM_PUPPET_LINT_VERSION}
     ide:
       vscode:
         - name: Puppet VSCode Extension

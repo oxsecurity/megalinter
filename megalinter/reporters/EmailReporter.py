@@ -25,9 +25,11 @@ class EmailReporter(Reporter):
         super().__init__(params)
 
     def manage_activation(self):
-        if config.get("EMAIL_REPORTER", "true") != "true":
+        if config.get(self.master.request_id, "EMAIL_REPORTER", "true") != "true":
             self.is_active = False
-        elif config.get("EMAIL_REPORTER_EMAIL", "none") == "none":
+        elif (
+            config.get(self.master.request_id, "EMAIL_REPORTER_EMAIL", "none") == "none"
+        ):
             logging.info(
                 "To receive reports as email, please set variable EMAIL_REPORTER_EMAIL"
             )
@@ -37,7 +39,10 @@ class EmailReporter(Reporter):
         # Skip report if no errors has been found
         if (
             self.master.status == "success"
-            and config.get("EMAIL_REPORTER_SEND_SUCCESS", "false") == "true"
+            and config.get(
+                self.master.request_id, "EMAIL_REPORTER_SEND_SUCCESS", "false"
+            )
+            == "true"
             and self.master.has_updated_sources is False
         ):
             logging.info(
@@ -47,12 +52,20 @@ class EmailReporter(Reporter):
             return
 
         # get server and email config values
-        smtp_host = config.get("EMAIL_REPORTER_SMTP_HOST", "smtp.gmail.com")
-        smtp_port = config.get("EMAIL_REPORTER_SMTP_PORT", 465)
-        recipients = config.get_list("EMAIL_REPORTER_EMAIL", [])
-        sender = config.get("EMAIL_REPORTER_SENDER", "megalinter@gmail.com")
-        smtp_username = config.get("EMAIL_REPORTER_SMTP_USERNAME", sender)
-        smtp_password = config.get("EMAIL_REPORTER_SMTP_PASSWORD", "")
+        smtp_host = config.get(
+            self.master.request_id, "EMAIL_REPORTER_SMTP_HOST", "smtp.gmail.com"
+        )
+        smtp_port = config.get(self.master.request_id, "EMAIL_REPORTER_SMTP_PORT", 465)
+        recipients = config.get_list(self.master.request_id, "EMAIL_REPORTER_EMAIL", [])
+        sender = config.get(
+            self.master.request_id, "EMAIL_REPORTER_SENDER", "megalinter@gmail.com"
+        )
+        smtp_username = config.get(
+            self.master.request_id, "EMAIL_REPORTER_SMTP_USERNAME", sender
+        )
+        smtp_password = config.get(
+            self.master.request_id, "EMAIL_REPORTER_SMTP_PASSWORD", ""
+        )
 
         # Skip report if SMTP password is not set
         if smtp_password == "":

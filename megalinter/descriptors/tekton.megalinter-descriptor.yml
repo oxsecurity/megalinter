@@ -16,8 +16,13 @@ linters:
     linter_rules_configuration_url: https://github.com/IBM/tekton-lint#configuring-tekton-lint
     config_file_name: .tektonlintrc.yaml
     cli_config_arg_name: ""
+    cli_help_arg_name: --help
     examples:
       - "tekton-lint myfile.yml"
     install:
+      dockerfile:
+        - |-
+          # renovate: datasource=npm depName=@ibm/tekton-lint
+          ARG NPM_IBM_TEKTON_LINT_VERSION=1.1.0
       npm:
-        - "tekton-lint"
+        - "@ibm/tekton-lint@${NPM_IBM_TEKTON_LINT_VERSION}"

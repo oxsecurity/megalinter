@@ -3,7 +3,6 @@
 Output results in console
 """
 import logging
-import os
 import urllib
 
 import chalk as c
@@ -26,7 +25,7 @@ class ConsoleReporter(Reporter):
         super().__init__(params)
 
     def manage_activation(self):
-        if config.get("CONSOLE_REPORTER", "true") == "false":
+        if config.get(self.master.request_id, "CONSOLE_REPORTER", "true") == "false":
             self.is_active = False
 
     def initialize(self):
@@ -59,7 +58,15 @@ class ConsoleReporter(Reporter):
         logging.info(log_section_end("megalinter-file-listing"))
 
     def produce_report(self):
-        table_header = ["Descriptor", "Linter", "Mode", "Files", "Fixed", "Errors"]
+        table_header = [
+            "Descriptor",
+            "Linter",
+            "Mode",
+            "Files",
+            "Fixed",
+            "Errors",
+            "Warnings",
+        ]
         if self.master.show_elapsed_time is True:
             table_header += ["Elapsed time"]
         table_data = [table_header]
@@ -71,17 +78,19 @@ class ConsoleReporter(Reporter):
                 status = (
                     "✅"
                     if linter.status == "success" and linter.return_code == 0
-                    else "◬"
-                    if linter.status != "success" and linter.return_code == 0
-                    else "❌"
+                    else (
+                        "⚠️"
+                        if linter.status != "success" and linter.return_code == 0
+                        else "❌"
+                    )
                 )
                 errors = str(linter.total_number_errors)
+                warnings = str(linter.total_number_warnings)
                 if linter.cli_lint_mode == "project":
                     found = "n/a"
                     nb_fixed_cell = "yes" if nb_fixed_cell != "" else nb_fixed_cell
                 else:
                     found = str(len(linter.files))
-
                 table_line = [
                     status + " " + linter.descriptor_id,
                     linter.linter_name,
@@ -89,6 +98,7 @@ class ConsoleReporter(Reporter):
                     found,
                     nb_fixed_cell,
                     errors,
+                    warnings,
                 ]
                 if self.master.show_elapsed_time is True:
                     table_line += [str(round(linter.elapsed_time_s, 2)) + "s"]
@@ -130,13 +140,11 @@ class ConsoleReporter(Reporter):
                     f"[flavors] Use the following link to request the new flavor: {new_flavor_url}"
                 )
             else:
-                build_version = os.environ.get("BUILD_VERSION", DEFAULT_RELEASE)
+                build_version = config.get(None, "BUILD_VERSION", DEFAULT_RELEASE)
                 action_version = (
-                    "v5"
-                    if "v5" in build_version
-                    else "beta"
-                    if build_version == "latest"
-                    else build_version
+                    DEFAULT_RELEASE
+                    if DEFAULT_RELEASE in build_version
+                    else "beta" if build_version == "latest" else build_version
                 )
                 logging.warning(
                     c.blue(

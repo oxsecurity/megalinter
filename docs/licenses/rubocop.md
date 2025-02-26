@@ -1,4 +1,9 @@
-Copyright (c) 2012-22 Bozhidar Batsov
+---
+title: License info for rubocop within MegaLinter
+search:
+  exclude: true
+---
+Copyright (c) 2012-23 Bozhidar Batsov
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the

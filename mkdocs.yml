@@ -5,27 +5,33 @@ repo_url: https://github.com/oxsecurity/megalinter
 edit_uri: tree/main/docs
 site_author: Nicolas Vuillamy
 # site_description-start
-site_description: MegaLinter is an Open-Source tool for CI/CD workflows that analyzes the consistency of your code, IAC, configuration, and scripts in your repository sources, to ensure all your projects sources are clean and formatted whatever IDE/toolbox is used by their developers, powered by OX security.Supporting 51 languages, 23 formats, 21 tooling formats and ready to use out of the box, as a GitHub action or any CI system highly configurable and free for all uses.Upgrade to MegaLinter v6 !
+site_description: MegaLinter is an Open-Source tool for CI/CD workflows that analyzes the consistency of your code, IAC, configuration, and scripts in your repository sources, to ensure all your projects sources are clean and formatted whatever IDE/toolbox is used by their developers, powered by OX Security.Supporting 63 languages, 23 formats, 20 tooling formats and ready to use out of the box, as a GitHub action or any CI system, highly configurable and free for all uses.MegaLinter has native integrations with many of the major CI/CD tools of the market.
 # site_description-end
-copyright: Copyright &copy; 2022 <a href="https://www.ox.security/?ref=megalinter" target= "_blank">OX Security</a> &amp; <a href="https://github.com/nvuillam" target="_blank">Nicolas Vuillamy</a>
+copyright: Copyright &copy; 2024 <a href="https://www.ox.security/?ref=megalinter" target= "_blank">OX Security</a> &amp; <a href="https://github.com/nvuillam" target="_blank">Nicolas Vuillamy</a>
 theme:
   name: material
   font: 
     text: Satoshi, sans-serif
   custom_dir: docs/overrides
   features:
+    - content.code.copy
     - navigation.instant
+    - navigation.footer
   logo: assets/images/mega-linter-square.png
   favicon: assets/images/mega-linter-square.png
   palette:
     primary: white
+plugins:
+  - glightbox
+  - search
 markdown_extensions:
   - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - pymdownx.snippets:
       base_path: docs
       check_paths: true
+      restrict_base_path: false
   - mdx_truly_sane_lists
   - attr_list
 extra_javascript:
@@ -56,8 +62,29 @@ extra:
 nav:
   - "Home": "index.md"
   - "Quick Start": "quick-start.md"
-  - "Installation": "installation.md"
-  - "Configuration": "configuration.md"
+  - "Installation": 
+    - "Assisted Installation": "install-assisted.md"
+    - "Which version to use ?": "install-version.md"
+    - "GitHub Actions": "install-github.md"
+    - "Gitlab CI": "install-gitlab.md"
+    - "Azure Pipelines": "install-azure.md"
+    - "Bitbucket Pipelines": "install-bitbucket.md"
+    - "Jenkins": "install-jenkins.md"
+    - "Concourse CI": "install-concourse.md"
+    - "Drone CI": "install-drone.md"
+    - "Docker (CLI)": "install-docker.md"
+    - "Run locally": "install-locally.md"
+  - "Configuration": 
+    - ".mega-linter.yml file": "config-file.md"
+    - "Common Variables": "config-variables.md"
+    - "Activation / Deactivation": "config-activation.md"
+    - "Filtering files": "config-filtering.md"    
+    - "Apply fixes": "config-apply-fixes.md"
+    - "Linter scopes variables": "config-linters.md"
+    - "Pre-commands": "config-precommands.md"
+    - "Post-commands": "config-postcommands.md"
+    - "ENV variables security": "config-variables-security.md"
+    - "CLI lint mode": "config-cli-lint-mode.md"
   - "Linters":
       - "All supported linters": "supported-linters.md"
       - "Languages linters":
@@ -71,18 +98,23 @@ nav:
           - "C":
               - "All C linters": "descriptors/c.md"
               - "cpplint": "descriptors/c_cpplint.md"
+              - "clang-format": "descriptors/c_clang_format.md"
           - "CLOJURE":
               - "All CLOJURE linters": "descriptors/clojure.md"
               - "clj-kondo": "descriptors/clojure_clj_kondo.md"
+              - "cljstyle": "descriptors/clojure_cljstyle.md"
           - "COFFEE":
               - "All COFFEE linters": "descriptors/coffee.md"
               - "coffeelint": "descriptors/coffee_coffeelint.md"
           - "C++ (CPP)":
               - "All C++ (CPP) linters": "descriptors/cpp.md"
               - "cpplint": "descriptors/cpp_cpplint.md"
+              - "clang-format": "descriptors/cpp_clang_format.md"
           - "C# (CSHARP)":
               - "All C# (CSHARP) linters": "descriptors/csharp.md"
               - "dotnet-format": "descriptors/csharp_dotnet_format.md"
+              - "csharpier": "descriptors/csharp_csharpier.md"
+              - "roslynator": "descriptors/csharp_roslynator.md"
           - "DART":
               - "All DART linters": "descriptors/dart.md"
               - "dartanalyzer": "descriptors/dart_dartanalyzer.md"
@@ -108,9 +140,12 @@ nav:
           - "KOTLIN":
               - "All KOTLIN linters": "descriptors/kotlin.md"
               - "ktlint": "descriptors/kotlin_ktlint.md"
+              - "detekt": "descriptors/kotlin_detekt.md"
           - "LUA":
               - "All LUA linters": "descriptors/lua.md"
               - "luacheck": "descriptors/lua_luacheck.md"
+              - "selene": "descriptors/lua_selene.md"
+              - "stylua": "descriptors/lua_stylua.md"
           - "MAKEFILE":
               - "All MAKEFILE linters": "descriptors/makefile.md"
               - "checkmake": "descriptors/makefile_checkmake.md"
@@ -123,9 +158,11 @@ nav:
               - "phpstan": "descriptors/php_phpstan.md"
               - "psalm": "descriptors/php_psalm.md"
               - "phplint": "descriptors/php_phplint.md"
+              - "php-cs-fixer": "descriptors/php_php_cs_fixer.md"
           - "POWERSHELL":
               - "All POWERSHELL linters": "descriptors/powershell.md"
               - "powershell": "descriptors/powershell_powershell.md"
+              - "powershell_formatter": "descriptors/powershell_powershell_formatter.md"
           - "PYTHON":
               - "All PYTHON linters": "descriptors/python.md"
               - "pylint": "descriptors/python_pylint.md"
@@ -135,6 +172,8 @@ nav:
               - "bandit": "descriptors/python_bandit.md"
               - "mypy": "descriptors/python_mypy.md"
               - "pyright": "descriptors/python_pyright.md"
+              - "ruff": "descriptors/python_ruff.md"
+              - "ruff-format": "descriptors/python_ruff_format.md"
           - "R":
               - "All R linters": "descriptors/r.md"
               - "lintr": "descriptors/r_lintr.md"
@@ -152,12 +191,12 @@ nav:
               - "sfdx-scanner-apex": "descriptors/salesforce_sfdx_scanner_apex.md"
               - "sfdx-scanner-aura": "descriptors/salesforce_sfdx_scanner_aura.md"
               - "sfdx-scanner-lwc": "descriptors/salesforce_sfdx_scanner_lwc.md"
+              - "lightning-flow-scanner": "descriptors/salesforce_lightning_flow_scanner.md"
           - "SCALA":
               - "All SCALA linters": "descriptors/scala.md"
               - "scalafix": "descriptors/scala_scalafix.md"
           - "SQL":
               - "All SQL linters": "descriptors/sql.md"
-              - "sql-lint": "descriptors/sql_sql_lint.md"
               - "sqlfluff": "descriptors/sql_sqlfluff.md"
               - "tsqllint": "descriptors/sql_tsqllint.md"
           - "SWIFT":
@@ -169,7 +208,7 @@ nav:
           - "TYPESCRIPT":
               - "All TYPESCRIPT linters": "descriptors/typescript.md"
               - "eslint": "descriptors/typescript_eslint.md"
-              - "standard": "descriptors/typescript_standard.md"
+              - "ts-standard": "descriptors/typescript_ts_standard.md"
               - "prettier": "descriptors/typescript_prettier.md"
           - "Visual Basic .NET (VBDOTNET)":
               - "All Visual Basic .NET (VBDOTNET) linters": "descriptors/vbdotnet.md"
@@ -181,7 +220,6 @@ nav:
           - "CSS":
               - "All CSS linters": "descriptors/css.md"
               - "stylelint": "descriptors/css_stylelint.md"
-              - "scss-lint": "descriptors/css_scss_lint.md"
           - "ENV":
               - "All ENV linters": "descriptors/env.md"
               - "dotenv-linter": "descriptors/env_dotenv_linter.md"
@@ -198,6 +236,7 @@ nav:
               - "eslint-plugin-jsonc": "descriptors/json_eslint_plugin_jsonc.md"
               - "v8r": "descriptors/json_v8r.md"
               - "prettier": "descriptors/json_prettier.md"
+              - "npm-package-json-lint": "descriptors/json_npm_package_json_lint.md"
           - "LATEX":
               - "All LATEX linters": "descriptors/latex.md"
               - "chktex": "descriptors/latex_chktex.md"
@@ -233,6 +272,9 @@ nav:
           - "ANSIBLE":
               - "All ANSIBLE linters": "descriptors/ansible.md"
               - "ansible-lint": "descriptors/ansible_ansible_lint.md"
+          - "API":
+              - "All API linters": "descriptors/api.md"
+              - "spectral": "descriptors/api_spectral.md"
           - "ARM":
               - "All ARM linters": "descriptors/arm.md"
               - "arm-ttk": "descriptors/arm_arm_ttk.md"
@@ -253,11 +295,9 @@ nav:
               - "gherkin-lint": "descriptors/gherkin_gherkin_lint.md"
           - "KUBERNETES":
               - "All KUBERNETES linters": "descriptors/kubernetes.md"
-              - "kubeval": "descriptors/kubernetes_kubeval.md"
               - "kubeconform": "descriptors/kubernetes_kubeconform.md"
-          - "OPENAPI":
-              - "All OPENAPI linters": "descriptors/openapi.md"
-              - "spectral": "descriptors/openapi_spectral.md"
+              - "helm": "descriptors/kubernetes_helm.md"
+              - "kubescape": "descriptors/kubernetes_kubescape.md"
           - "PUPPET":
               - "All PUPPET linters": "descriptors/puppet.md"
               - "puppet-lint": "descriptors/puppet_puppet_lint.md"
@@ -274,8 +314,6 @@ nav:
               - "terrascan": "descriptors/terraform_terrascan.md"
               - "terragrunt": "descriptors/terraform_terragrunt.md"
               - "terraform-fmt": "descriptors/terraform_terraform_fmt.md"
-              - "checkov": "descriptors/terraform_checkov.md"
-              - "kics": "descriptors/terraform_kics.md"
 # tooling_format-end
       - "Other checks":
           - "All other linters": "./supported-linters/#other"
@@ -290,16 +328,21 @@ nav:
               - "dustilock": "descriptors/repository_dustilock.md"
               - "git_diff": "descriptors/repository_git_diff.md"
               - "gitleaks": "descriptors/repository_gitleaks.md"
-              - "goodcheck": "descriptors/repository_goodcheck.md"
+              - "grype": "descriptors/repository_grype.md"
+              - "kics": "descriptors/repository_kics.md"
+              - "ls-lint": "descriptors/repository_ls_lint.md"
               - "secretlint": "descriptors/repository_secretlint.md"
               - "semgrep": "descriptors/repository_semgrep.md"
               - "syft": "descriptors/repository_syft.md"
               - "trivy": "descriptors/repository_trivy.md"
+              - "trivy-sbom": "descriptors/repository_trivy_sbom.md"
+              - "trufflehog": "descriptors/repository_trufflehog.md"
           - "SPELL":
               - "All SPELL linters": "descriptors/spell.md"
-              - "misspell": "descriptors/spell_misspell.md"
               - "cspell": "descriptors/spell_cspell.md"
               - "proselint": "descriptors/spell_proselint.md"
+              - "vale": "descriptors/spell_vale.md"
+              - "lychee": "descriptors/spell_lychee.md"
 # other-end
   - "Reporters":
       - "All reporters": "reporters.md"
@@ -307,6 +350,8 @@ nav:
       - "GitHub Pull Request comments": "reporters/GitHubCommentReporter.md"
       - "Gitlab Merge Request comments": "reporters/GitlabCommentReporter.md"
       - "Azure Pull Request comments": "reporters/AzureCommentReporter.md"
+      - "Bitbucket Pull Request comments": "reporters/BitbucketCommentReporter.md"
+      - "API (Grafana)": "reporters/ApiReporter.md"
       - "GitHub Status": "reporters/GitHubStatusReporter.md"
       - "SARIF Reporter": "reporters/SarifReporter.md"
       - "Updated sources": "reporters/UpdatedSourcesReporter.md"
@@ -316,13 +361,17 @@ nav:
       - "TAP files": "reporters/TapReporter.md"
       - "Console": "reporters/ConsoleReporter.md"
       - "JSON": "reporters/JsonReporter.md"
+      - "Markdown Summary": "reporters/MarkdownSummaryReporter.md"
   - "Flavors":
       - "All flavors": "flavors.md"
       # flavors-start
+      - "c_cpp": "flavors/c_cpp.md"
       - "ci_light": "flavors/ci_light.md"
       - "cupcake": "flavors/cupcake.md"
       - "documentation": "flavors/documentation.md"
       - "dotnet": "flavors/dotnet.md"
+      - "dotnetweb": "flavors/dotnetweb.md"
+      - "formatters": "flavors/formatters.md"
       - "go": "flavors/go.md"
       - "java": "flavors/java.md"
       - "javascript": "flavors/javascript.md"
@@ -337,10 +386,10 @@ nav:
 # flavors-end
       - "Flavors statistics": "flavors-stats.md"
   - "Run locally": "mega-linter-runner.md"
+  - "They talk about MegaLinter": "articles.md"
   - "They use MegaLinter": "used-by-stats.md"
   - "List of linters": "all_linters.md"
   - "Plugins": "plugins.md"
-  - "Articles": "articles.md"
   - "Special thanks": "special-thanks.md"
   - "Sponsoring": 'sponsor.md'
   - "Badge": "badge.md"
@@ -349,5 +398,8 @@ nav:
   - "Contribute":
       - "How-to Contribute": "how-to-contribute.md"
       - "Contributing Guide": "contributing.md"
-  - "License": "license.md"
+  - "License":
+      - "AGPL V3 License": "license.md"
+      - "License explanations": "license-explanations.md"
   - "Changelog": "CHANGELOG.md"
+  - "Try OX Security ASPM": "https://ox.security?ref=megalinter"

@@ -4,6 +4,7 @@ Output results in console
 """
 import json
 import os
+import xml.dom.minidom
 from pathlib import Path
 from shutil import copyfile
 
@@ -24,12 +25,12 @@ class ConfigReporter(Reporter):
     def manage_activation(self):
         if not utils.can_write_report_files(self.master):
             self.is_active = False
-        elif config.get("CONFIG_REPORTER", "true") == "false":
+        elif config.get(self.master.request_id, "CONFIG_REPORTER", "true") == "false":
             self.is_active = False
 
     def produce_report(self):
         config_report_folder_name = config.get(
-            "CONFIG_REPORTER_SUB_FOLDER", "IDE-config"
+            self.master.request_id, "CONFIG_REPORTER_SUB_FOLDER", "IDE-config"
         )
         config_report_folder = (
             f"{self.report_folder}{os.path.sep}{config_report_folder_name}"
@@ -124,4 +125,44 @@ IDE EXTENSIONS APPLICABLE TO YOUR PROJECT
             ) as json_file:
                 json_file.write(vscode_extensions_config_json)
 
-        # Write idea plugin recommendations files (TODO)
+        # Write idea extensions file
+        if len(idea_recommended_extensions):
+            # Read existing .idea/externalDependencies.xml file
+            idea_extensions_file = f"{self.master.workspace}{os.path.sep}.idea{os.path.sep}externalDependencies.xml"
+            dom = None
+            ext_dep_component = None
+            if os.path.isfile(idea_extensions_file):
+                dom = xml.dom.minidom.parse(idea_extensions_file)
+                for node in dom.documentElement.childNodes:
+                    if (
+                        node.localName == "component"
+                        and node.getAttribute("name") == "ExternalDependencies"
+                    ):
+                        ext_dep_component = node
+            else:
+                impl = xml.dom.minidom.getDOMImplementation()
+                assert impl is not None
+                dom = impl.createDocument(None, "project", None)
+                dom.documentElement.setAttribute("version", "4")
+            # Add recommendations
+            if ext_dep_component is None:
+                ext_dep_component = dom.createElement("component")
+                ext_dep_component.setAttribute("name", "ExternalDependencies")
+                dom.documentElement.appendChild(ext_dep_component)
+            configured = set()
+            for node in ext_dep_component.childNodes:
+                if node.localName == "plugin":
+                    configured.add(node.getAttribute("id"))
+
+            to_add = set(idea_recommended_extensions) - configured
+
+            for id in to_add:
+                plugin = dom.createElement("plugin")
+                plugin.setAttribute("id", id)
+                ext_dep_component.appendChild(plugin)
+
+            # Write .idea/externalDependencies.xml file
+            output_idea_extensions_file = f"{config_report_folder}{os.path.sep}.idea{os.path.sep}externalDependencies.xml"
+            os.makedirs(os.path.dirname(output_idea_extensions_file), exist_ok=True)
+            with open(output_idea_extensions_file, "w", encoding="utf-8") as json_file:
+                json_file.write(dom.documentElement.toprettyxml())

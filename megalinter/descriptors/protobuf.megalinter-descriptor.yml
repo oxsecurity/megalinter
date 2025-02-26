@@ -6,7 +6,8 @@ file_extensions:
   - ".proto"
 linters:
   # Protolint
-  - linter_name: protolint
+  - class: ProtolintLinter
+    linter_name: protolint
     linter_url: https://github.com/yoheimuta/protolint
     linter_repo: https://github.com/yoheimuta/protolint
     linter_rules_url: https://github.com/yoheimuta/protolint#rules
@@ -24,12 +25,16 @@ linters:
       - "protolint lint -fix --config_path .protolintrc.yml myfile.proto"
     install:
       dockerfile:
-        - FROM yoheimuta/protolint:latest as protolint
-        - COPY --from=protolint /usr/local/bin/protolint /usr/bin/
+        - |-
+          # renovate: datasource=docker depName=yoheimuta/protolint
+          ARG PROTOBUF_PROTOLINT_VERSION=0.53.0
+        - FROM yoheimuta/protolint:${PROTOBUF_PROTOLINT_VERSION} AS protolint
+        - COPY --link --from=protolint /usr/local/bin/protolint /usr/bin/
     ide:
       idea:
         - name: Protocol Buffer Linter
           url: https://plugins.jetbrains.com/plugin/12641-protocol-buffer-linter
+          id: com.yoheimuta.intellij.plugin.protolint
       vscode:
         - name: VSCode Protolint
           url: https://marketplace.visualstudio.com/items?itemName=Plex.vscode-protolint

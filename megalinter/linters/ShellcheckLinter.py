@@ -6,11 +6,10 @@ Use Shellcheck to analyze shell / bash code
 import logging
 import subprocess
 
-from megalinter import Linter, utils
+from megalinter import Linter, config, utils
 
 
 class ShellcheckLinter(Linter):
-
     # Call shellcheck-sarif to convert default output to sarif
     # https://crates.io/crates/shellcheck-sarif
     def manage_sarif_output(self, return_stdout):
@@ -22,6 +21,7 @@ class ShellcheckLinter(Linter):
                 stderr=subprocess.STDOUT,
                 text=True,
                 input=return_stdout + "\n",
+                env=config.build_env(self.request_id),
             )
             return_code = process.returncode
             shellcheck_res_sarif = utils.decode_utf8(process.stdout)
