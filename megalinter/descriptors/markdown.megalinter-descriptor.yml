@@ -28,7 +28,7 @@ linters:
     linter_image_url: https://davidanson.gallerycdn.vsassets.io/extensions/davidanson/vscode-markdownlint/0.37.1/1601748708034/Microsoft.VisualStudio.Services.Icons.Default
     linter_rules_configuration_url: https://github.com/DavidAnson/markdownlint-cli2#configuration
     linter_rules_inline_disable_url: https://github.com/DavidAnson/markdownlint#configuration
-    linter_rules_ignore_config_url: https://github.com/igorshubovych/markdownlint-cli#ignoring-files
+    linter_rules_ignore_config_url: https://github.com/DavidAnson/markdownlint-cli2#configuration
     cli_lint_mode: list_of_files
     config_file_name: LINTER_DEFAULT
     cli_lint_fix_arg_name: "--fix"
