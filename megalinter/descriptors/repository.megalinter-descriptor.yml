@@ -47,7 +47,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=checkov
-          ARG PIP_CHECKOV_VERSION=3.2.370
+          ARG PIP_CHECKOV_VERSION=3.2.372
       pip:
         - checkov==${PIP_CHECKOV_VERSION}
     ide:
@@ -269,7 +269,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=docker depName=zricethezav/gitleaks
-          ARG REPOSITORY_GITLEAKS_VERSION=v8.23.3
+          ARG REPOSITORY_GITLEAKS_VERSION=v8.24.0
         - FROM zricethezav/gitleaks:${REPOSITORY_GITLEAKS_VERSION} AS gitleaks
         - COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
     variables:
@@ -492,7 +492,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=semgrep
-          ARG PIP_SEMGREP_VERSION=1.107.0
+          ARG PIP_SEMGREP_VERSION=1.109.0
       pip:
         - semgrep==${PIP_SEMGREP_VERSION}
     variables:
@@ -671,7 +671,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=docker depName=trufflesecurity/trufflehog 
-          ARG REPOSITORY_TRUFFLEHOG_VERSION=3.88.9
+          ARG REPOSITORY_TRUFFLEHOG_VERSION=3.88.12
         - FROM trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION} AS trufflehog
         - COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
     test_folder: gitleaks
