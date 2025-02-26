@@ -7,7 +7,7 @@ descriptor_flavors:
 file_extensions:
   - ".md"
 linters:
-  # MarkdownLint
+  # markdownlint
   - linter_name: markdownlint
     is_formatter: true
     activation_rules:

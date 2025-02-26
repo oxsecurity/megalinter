@@ -118,7 +118,7 @@ markdownlint --fix -c .markdownlint.json myfile.md
 ```shell
 Usage: markdownlint [options] [files|directories|globs...]
 
-MarkdownLint Command Line Interface
+markdownlint command line interface
 
 Arguments:
   files|directories|globs                    files, directories, and/or globs to lint
