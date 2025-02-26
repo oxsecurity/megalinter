@@ -307,7 +307,7 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 @prantlf/jsonlint@${NPM_PRANTLF_JSONLINT_VERSION} \
                 v8r@${NPM_V8R_VERSION} \
                 prettier@${NPM_PRETTIER_VERSION} \
-                markdownlint-cli@${NPM_MARKDOWNLINT_CLI_VERSION} \
+                markdownlint-cli2@${NPM_MARKDOWNLINT_CLI2_VERSION} \
                 markdown-link-check@${NPM_MARKDOWN_LINK_CHECK_VERSION} \
                 markdown-table-formatter@${NPM_MARKDOWN_TABLE_FORMATTER_VERSION} \
                 @ls-lint/ls-lint@${NPM_LS_LINT_LS_LINT_VERSION} \
