@@ -109,6 +109,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.23.3 to **8.24.0** on 2025-02-23
   - [prettier](https://prettier.io/) from 3.5.1 to **3.5.2** on 2025-02-24
   - [detekt](https://detekt.dev/) from 1.23.7 to **1.23.8** on 2025-02-24
+  - [dartanalyzer](https://dart.dev/tools/dart-analyze) from 3.7.0 to **3.7.1** on 2025-02-27
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 15.0.2 to **15.1.0** on 2025-02-27
+  - [isort](https://pycqa.github.io/isort/) from 6.0.0 to **6.0.1** on 2025-02-27
+  - [checkov](https://www.checkov.io/) from 3.2.372 to **3.2.377** on 2025-02-27
 <!-- linter-versions-end -->
 
 ## [v8.4.2] - 2024-02-02
