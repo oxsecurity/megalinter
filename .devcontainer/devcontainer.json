@@ -3,14 +3,14 @@
 	"build": {
 		"dockerfile": "Dockerfile",
 		"context": "..",
-		"args": { 
+		"args": {
 			"VARIANT": "3.10",
-			"NODE_VERSION": "16"
+			"NODE_VERSION": "18"
 		}
 	},
 	"customizations": {
 		"vscode": {
-			"settings": { 
+			"settings": {
 				"python.defaultInterpreterPath": "/usr/local/bin/python",
 				"python.linting.enabled": true,
 				"python.linting.pylintEnabled": true,
@@ -24,7 +24,7 @@
 				"python.linting.pydocstylePath": "/usr/local/py-utils/bin/pydocstyle",
 				"python.linting.pylintPath": "/usr/local/py-utils/bin/pylint"
 			},
-			
+
 			"extensions": [
 				"esbenp.prettier-vscode",
 				"exiasr.hadolint",
