@@ -175,7 +175,7 @@ linters:
           ARG PIP_BLACK_VERSION=25.1.0
         - |-
           # renovate: datasource=pypi depName=isort
-          ARG PIP_ISORT_VERSION=6.0.0
+          ARG PIP_ISORT_VERSION=6.0.1
       pip:
         - black==${PIP_BLACK_VERSION}
         - isort==${PIP_ISORT_VERSION}

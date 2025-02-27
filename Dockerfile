@@ -265,7 +265,7 @@ ARG PIP_BLACK_VERSION=25.1.0
 # renovate: datasource=pypi depName=flake8
 ARG PIP_FLAKE8_VERSION=7.1.2
 # renovate: datasource=pypi depName=isort
-ARG PIP_ISORT_VERSION=6.0.0
+ARG PIP_ISORT_VERSION=6.0.1
 # renovate: datasource=pypi depName=bandit
 ARG PIP_BANDIT_VERSION=1.8.3
 # renovate: datasource=pypi depName=bandit_sarif_formatter
