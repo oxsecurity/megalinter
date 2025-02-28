@@ -29,16 +29,18 @@ linters:
     linter_rules_configuration_url: https://github.com/DavidAnson/markdownlint-cli2#configuration
     linter_rules_inline_disable_url: https://github.com/DavidAnson/markdownlint#configuration
     linter_rules_ignore_config_url: https://github.com/DavidAnson/markdownlint-cli2#configuration
+    cli_executable: markdownlint-cli2
     cli_lint_mode: list_of_files
     config_file_name: LINTER_DEFAULT
     cli_lint_fix_arg_name: "--fix"
-    cli_help_arg_name: "| tail -n +4"
-    cli_version_arg_name: ""
+    cli_help_arg_name: "--help"
+    cli_version_arg_name: "--version"
     cli_lint_errors_count: total_lines
     examples:
+      - "markdownlint-cli2 --help"
       - "markdownlint-cli2 myfile.md"
       - "markdownlint-cli2 --fix myfile.md"
-      - "markdownlint-cli2 --config .markdownlint.json myfile.md"
+      - "markdownlint-cli2 --config .markdownlint.jsonc myfile.md"
     install:
       dockerfile:
         - |-
