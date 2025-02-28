@@ -113,6 +113,15 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 15.0.2 to **15.1.0** on 2025-02-27
   - [isort](https://pycqa.github.io/isort/) from 6.0.0 to **6.0.1** on 2025-02-27
   - [checkov](https://www.checkov.io/) from 3.2.372 to **3.2.377** on 2025-02-27
+  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 9.0.102 to **9.0.103** on 2025-02-28
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.394 to **1.1.395** on 2025-02-28
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.9.7 to **0.9.8** on 2025-02-28
+  - [ruff](https://github.com/astral-sh/ruff) from 0.9.7 to **0.9.8** on 2025-02-28
+  - [secretlint](https://github.com/secretlint/secretlint) from 9.0.0 to **9.2.0** on 2025-02-28
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.88.12 to **3.88.14** on 2025-02-28
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 4.9.0 to **4.10.0** on 2025-02-28
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 4.9.0 to **4.10.0** on 2025-02-28
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 4.9.0 to **4.10.0** on 2025-02-28
 <!-- linter-versions-end -->
 
 ## [v8.4.2] - 2024-02-02

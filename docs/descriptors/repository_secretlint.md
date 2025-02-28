@@ -15,7 +15,7 @@ description: How to use secretlint (configure, ignore files, ignore errors, help
 
 ## secretlint documentation
 
-- Version in MegaLinter: **9.0.0**
+- Version in MegaLinter: **9.2.0**
 - Visit [Official Web Site](https://github.com/secretlint/secretlint#readme){target=_blank}
 - See [How to configure secretlint rules](https://github.com/secretlint/secretlint#configuration){target=_blank}
   - If custom `.secretlintrc.json` config file isn't found, [.secretlintrc.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.secretlintrc.json){target=_blank} will be used
@@ -117,6 +117,7 @@ secretlint --secretlintrc .secretlintrc.json "**/*"
     --maskSecrets      enable masking of secret values. replace actual secrets with "***".
     --secretlintrc     [path:String] path to .secretlintrc config file. Default: .secretlintrc.*
     --secretlintignore [path:String] path to .secretlintignore file. Default: .secretlintignore
+    --stdinFileName    [String] filename to process STDIN content. Some rules depend on filename to check content.
 
   Options for Developer
     --profile          Enable performance profile.
@@ -132,6 +133,8 @@ secretlint --secretlintrc .secretlintrc.json "**/*"
     $ secretlint "source/**/*.ini"
     # found secrets and mask the secrets
     $ secretlint .zsh_history --format=mask-result --output=.zsh_history
+    # lint STDIN content instead of file
+    $ echo "SECRET CONTENT" | secretlint --stdinFileName=secret.txt
 
   Exit Status
     Secretlint exits with the following values:
@@ -151,14 +154,14 @@ secretlint --secretlintrc .secretlintrc.json "**/*"
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=secretlint
-ARG NPM_SECRETLINT_VERSION=9.0.0
+ARG NPM_SECRETLINT_VERSION=9.2.0
 # renovate: datasource=npm depName=@secretlint/secretlint-rule-preset-recommend
-ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=9.0.0
+ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=9.2.0
 # renovate: datasource=npm depName=@secretlint/secretlint-formatter-sarif
-ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=9.0.0
+ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=9.2.0
 ```
 
 - NPM packages (node.js):
-  - [secretlint@9.0.0](https://www.npmjs.com/package/secretlint/v/9.0.0)
-  - [@secretlint/secretlint-rule-preset-recommend@9.0.0](https://www.npmjs.com/package/@secretlint/secretlint-rule-preset-recommend/v/9.0.0)
-  - [@secretlint/secretlint-formatter-sarif@9.0.0](https://www.npmjs.com/package/@secretlint/secretlint-formatter-sarif/v/9.0.0)
+  - [secretlint@9.2.0](https://www.npmjs.com/package/secretlint/v/9.2.0)
+  - [@secretlint/secretlint-rule-preset-recommend@9.2.0](https://www.npmjs.com/package/@secretlint/secretlint-rule-preset-recommend/v/9.2.0)
+  - [@secretlint/secretlint-formatter-sarif@9.2.0](https://www.npmjs.com/package/@secretlint/secretlint-formatter-sarif/v/9.2.0)
