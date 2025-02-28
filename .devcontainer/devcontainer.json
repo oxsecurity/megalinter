@@ -4,6 +4,13 @@
 		"dockerfile": "Dockerfile",
 		"context": ".."
 	},
+	"features": {
+		"ghcr.io/devcontainers/features/docker-in-docker:2": {
+			"version": "latest",
+			"enableNonRootDocker": "true",
+			"moby": "true"
+		}
+	},
 	"customizations": {
 		"vscode": {
 			"settings": {
@@ -35,9 +42,13 @@
 				"rogalmic.bash-debug",
 				"streetsidesoftware.code-spell-checker",
 				"stylelint.vscode-stylelint",
-				"timonwong.shellcheck"
+				"timonwong.shellcheck",
+				"ms-azuretools.vscode-docker"
 			]
 		}
+	},
+	"containerEnv": {
+		"DOCKER_BUILDKIT": "1"
 	},
 	"remoteUser": "vscode"
 }
