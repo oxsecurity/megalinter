@@ -175,7 +175,7 @@ linters:
           ARG PIP_BLACK_VERSION=25.1.0
         - |-
           # renovate: datasource=pypi depName=isort
-          ARG PIP_ISORT_VERSION=6.0.0
+          ARG PIP_ISORT_VERSION=6.0.1
       pip:
         - black==${PIP_BLACK_VERSION}
         - isort==${PIP_ISORT_VERSION}
@@ -365,7 +365,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=pyright
-          ARG NPM_PYRIGHT_VERSION=1.1.394
+          ARG NPM_PYRIGHT_VERSION=1.1.395
       npm:
         - pyright@${NPM_PYRIGHT_VERSION}
     ide:
@@ -419,7 +419,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=ruff
-          ARG PIP_RUFF_VERSION=0.9.7
+          ARG PIP_RUFF_VERSION=0.9.9
       pip:
         - ruff==${PIP_RUFF_VERSION}
     ide:
@@ -468,7 +468,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=ruff
-          ARG PIP_RUFF_VERSION=0.9.7
+          ARG PIP_RUFF_VERSION=0.9.9
       pip:
         - ruff==${PIP_RUFF_VERSION}
     ide:

@@ -31,7 +31,7 @@ ARG REPOSITORY_GITLEAKS_VERSION=v8.24.0
 # renovate: datasource=docker depName=checkmarx/kics
 ARG REPOSITORY_KICS_VERSION=v2.1.3-alpine
 # renovate: datasource=docker depName=trufflesecurity/trufflehog 
-ARG REPOSITORY_TRUFFLEHOG_VERSION=3.88.12
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.88.14
 # renovate: datasource=docker depName=lycheeverse/lychee
 ARG SPELL_LYCHEE_VERSION=sha-7c4b132-alpine
 # renovate: datasource=docker depName=ghcr.io/terraform-linters/tflint
@@ -75,7 +75,7 @@ FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} AS terragrunt
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.6.2 AS uv
+FROM ghcr.io/astral-sh/uv:0.6.3 AS uv
 FROM python:3.12.8-alpine3.21 AS build-ml-core
 WORKDIR /
 COPY --from=uv /uv /uvx /bin/
@@ -127,7 +127,7 @@ ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=37.0.0
 # renovate: datasource=npm depName=stylelint-config-sass-guidelines
 ARG NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION=12.1.0
 # renovate: datasource=npm depName=stylelint-scss
-ARG NPM_STYLELINT_SCSS_VERSION=6.11.0
+ARG NPM_STYLELINT_SCSS_VERSION=6.11.1
 # renovate: datasource=github-tags depName=golangci/golangci-lint
 ARG GO_GOLANGCI_LINT_VERSION=1.64.5
 # renovate: datasource=npm depName=graphql
@@ -135,7 +135,7 @@ ARG NPM_GRAPHQL_VERSION=16.10.0
 # renovate: datasource=npm depName=graphql-schema-linter
 ARG NPM_GRAPHQL_SCHEMA_LINTER_VERSION=3.0.1
 # renovate: datasource=npm depName=npm-groovy-lint
-ARG NPM_GROOVY_LINT_VERSION=15.0.2
+ARG NPM_GROOVY_LINT_VERSION=15.1.0
 # renovate: datasource=pypi depName=djlint
 ARG PIP_DJLINT_VERSION=1.36.4
 # renovate: datasource=npm depName=htmlhint
@@ -208,25 +208,25 @@ ARG PIP_BLACK_VERSION=25.1.0
 # renovate: datasource=pypi depName=flake8
 ARG PIP_FLAKE8_VERSION=7.1.2
 # renovate: datasource=pypi depName=isort
-ARG PIP_ISORT_VERSION=6.0.0
+ARG PIP_ISORT_VERSION=6.0.1
 # renovate: datasource=pypi depName=mypy
 ARG PIP_MYPY_VERSION=1.15.0
 # renovate: datasource=npm depName=pyright
-ARG NPM_PYRIGHT_VERSION=1.1.394
+ARG NPM_PYRIGHT_VERSION=1.1.395
 # renovate: datasource=pypi depName=ruff
-ARG PIP_RUFF_VERSION=0.9.7
+ARG PIP_RUFF_VERSION=0.9.9
 # renovate: datasource=pypi depName=checkov
-ARG PIP_CHECKOV_VERSION=3.2.372
+ARG PIP_CHECKOV_VERSION=3.2.378
 # renovate: datasource=github-tags depName=anchore/grype
 ARG REPOSITORY_GRYPE_VERSION=0.87.0
 # renovate: datasource=npm depName=@ls-lint/ls-lint
 ARG NPM_LS_LINT_LS_LINT_VERSION=2.2.3
 # renovate: datasource=npm depName=secretlint
-ARG NPM_SECRETLINT_VERSION=9.0.0
+ARG NPM_SECRETLINT_VERSION=9.2.0
 # renovate: datasource=npm depName=@secretlint/secretlint-rule-preset-recommend
-ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=9.0.0
+ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=9.2.0
 # renovate: datasource=npm depName=@secretlint/secretlint-formatter-sarif
-ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=9.0.0
+ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=9.2.0
 # renovate: datasource=pypi depName=semgrep
 ARG PIP_SEMGREP_VERSION=1.109.0
 # renovate: datasource=github-tags depName=aquasecurity/trivy
@@ -242,13 +242,13 @@ ARG PIP_RSTCHECK_VERSION=6.2.4
 # renovate: datasource=pypi depName=rstfmt
 ARG PIP_RSTFMT_VERSION=0.0.14
 # renovate: datasource=rubygems depName=rubocop
-ARG GEM_RUBOCOP_VERSION=1.72.2
+ARG GEM_RUBOCOP_VERSION=1.73.1
 # renovate: datasource=rubygems depName=rubocop-github
-ARG GEM_RUBOCOP_GITHUB_VERSION=0.20.0
+ARG GEM_RUBOCOP_GITHUB_VERSION=0.23.0
 # renovate: datasource=rubygems depName=rubocop-performance
 ARG GEM_RUBOCOP_PERFORMANCE_VERSION=1.24.0
 # renovate: datasource=rubygems depName=rubocop-rails
-ARG GEM_RUBOCOP_RAILS_VERSION=2.30.1
+ARG GEM_RUBOCOP_RAILS_VERSION=2.30.2
 # renovate: datasource=rubygems depName=rubocop-rake
 ARG GEM_RUBOCOP_RAKE_VERSION=0.7.1
 # renovate: datasource=rubygems depName=rubocop-rspec

@@ -29,7 +29,7 @@ FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} AS terragrunt
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.6.2 AS uv
+FROM ghcr.io/astral-sh/uv:0.6.3 AS uv
 FROM python:3.12.8-alpine3.21 AS build-ml-core
 WORKDIR /
 COPY --from=uv /uv /uvx /bin/
@@ -76,9 +76,9 @@ ARG PSSA_VERSION='1.23.0'
 # renovate: datasource=pypi depName=black
 ARG PIP_BLACK_VERSION=25.1.0
 # renovate: datasource=pypi depName=isort
-ARG PIP_ISORT_VERSION=6.0.0
+ARG PIP_ISORT_VERSION=6.0.1
 # renovate: datasource=pypi depName=ruff
-ARG PIP_RUFF_VERSION=0.9.7
+ARG PIP_RUFF_VERSION=0.9.9
 # renovate: datasource=pypi depName=rstfmt
 ARG PIP_RSTFMT_VERSION=0.0.14
 # renovate: datasource=pypi depName=snakefmt

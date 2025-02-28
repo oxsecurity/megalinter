@@ -21,6 +21,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Fixes
   - Use npm to install pyright
+  - Undowngrade npm-groovy-lint as there is a new release with issue fix
   - [jscpd](https://megalinter.io/latest/descriptors/copypaste_jscpd/): remove forced `--exitCode 1` to fix <https://github.com/oxsecurity/megalinter/issues/4631>
 
 - Reporters
@@ -106,6 +107,21 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [kubescape](https://github.com/kubescape/kubescape) from 3.0.28 to **3.0.29** on 2025-02-23
   - [checkov](https://www.checkov.io/) from 3.2.370 to **3.2.372** on 2025-02-23
   - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.23.3 to **8.24.0** on 2025-02-23
+  - [prettier](https://prettier.io/) from 3.5.1 to **3.5.2** on 2025-02-24
+  - [detekt](https://detekt.dev/) from 1.23.7 to **1.23.8** on 2025-02-24
+  - [dartanalyzer](https://dart.dev/tools/dart-analyze) from 3.7.0 to **3.7.1** on 2025-02-27
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 15.0.2 to **15.1.0** on 2025-02-27
+  - [isort](https://pycqa.github.io/isort/) from 6.0.0 to **6.0.1** on 2025-02-27
+  - [checkov](https://www.checkov.io/) from 3.2.372 to **3.2.377** on 2025-02-27
+  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 9.0.102 to **9.0.103** on 2025-02-28
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.394 to **1.1.395** on 2025-02-28
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.9.7 to **0.9.8** on 2025-02-28
+  - [ruff](https://github.com/astral-sh/ruff) from 0.9.7 to **0.9.8** on 2025-02-28
+  - [secretlint](https://github.com/secretlint/secretlint) from 9.0.0 to **9.2.0** on 2025-02-28
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.88.12 to **3.88.14** on 2025-02-28
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 4.9.0 to **4.10.0** on 2025-02-28
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 4.9.0 to **4.10.0** on 2025-02-28
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 4.9.0 to **4.10.0** on 2025-02-28
 <!-- linter-versions-end -->
 
 ## [v8.4.2] - 2024-02-02
