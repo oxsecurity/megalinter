@@ -297,7 +297,7 @@ ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=9.0.0
 # renovate: datasource=pypi depName=semgrep
 ARG PIP_SEMGREP_VERSION=1.109.0
 # renovate: datasource=github-tags depName=anchore/syft
-ARG REPOSITORY_SYFT_VERSION=1.19.0
+ARG REPOSITORY_SYFT_VERSION=1.20.0
 # renovate: datasource=github-tags depName=aquasecurity/trivy
 ARG REPOSITORY_TRIVY_VERSION=0.59.1
 # renovate: datasource=github-tags depName=aquasecurity/trivy
