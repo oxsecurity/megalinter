@@ -122,6 +122,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 4.9.0 to **4.10.0** on 2025-02-28
   - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 4.9.0 to **4.10.0** on 2025-02-28
   - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 4.9.0 to **4.10.0** on 2025-02-28
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.9.8 to **0.9.9** on 2025-02-28
+  - [ruff](https://github.com/astral-sh/ruff) from 0.9.8 to **0.9.9** on 2025-02-28
+  - [checkov](https://www.checkov.io/) from 3.2.377 to **3.2.378** on 2025-02-28
+  - [rubocop](https://rubocop.org/) from 1.72.2 to **1.73.1** on 2025-02-28
 <!-- linter-versions-end -->
 
 ## [v8.4.2] - 2024-02-02
