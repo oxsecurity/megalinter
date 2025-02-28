@@ -3695,7 +3695,7 @@
 <p><strong>Workaround: Restricted to PMD</strong></p>
 <h2 id="sfdx-scanner-apex-documentation">sfdx-scanner-apex documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>4.9.0</strong></li>
+<li>Version in MegaLinter: <strong>4.10.0</strong></li>
 <li>Visit <a href="https://forcedotcom.github.io/sfdx-scanner/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://docs.pmd-code.org/latest/pmd_userdocs_making_rulesets.html" target="_blank">How to configure sfdx-scanner-apex rules</a><ul>
 <li>If custom <code>apex-pmd-ruleset.xml</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/apex-pmd-ruleset.xml" target="_blank">apex-pmd-ruleset.xml</a> will be used</li>
@@ -3866,8 +3866,7 @@
 <pre><code class="language-shell">sf scanner:run
 </code></pre>
 <h3 id="help-content">Help content</h3>
-<pre><code class="language-shell"> ›   Warning: @salesforce/cli update available from 2.77.6 to 2.78.3.
-Scan a codebase with all the rules in the registry, or use parameters to filter the rules based on rulename, category, or ruleset.
+<pre><code class="language-shell">Scan a codebase with all the rules in the registry, or use parameters to filter the rules based on rulename, category, or ruleset.
 
 USAGE
   $ sf scanner run [--verbose] [-c &lt;value&gt;...] [-f
@@ -3920,7 +3919,8 @@ GLOBAL FLAGS
 COMMANDS
   scanner run dfa  Scan codebase with all DFA rules by default.
 
- ›   Warning: @salesforce/cli update available from 2.77.6 to 2.78.3.
+ ›   Warning: Plugin @salesforce/sfdx-scanner (4.10.0) differs from the version
+ ›    specified by sf (4.9.0)
 Warning: We plan to stop supporting v4.x of Code Analyzer in the coming months. We highly recommend that you start using v5.x, which is currently in Beta. For information on v5.x, see https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/code-analyzer.html.
  name                                                   languages   categories            rulesets [dep] engine            is dfa is pilot
  ────────────────────────────────────────────────────── ─────────── ───────────────────── ────────────── ───────────────── ────── ────────
@@ -4146,11 +4146,11 @@ Warning: We plan to stop supporting v4.x of Code Analyzer in the coming months. 
 </ul>
 <pre><code class="language-dockerfile"># Parent descriptor install
 # renovate: datasource=npm depName=@salesforce/cli
-ARG NPM_SALESFORCE_CLI_VERSION=2.77.6
+ARG NPM_SALESFORCE_CLI_VERSION=2.78.3
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
 ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.10.1
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=5.19.4
+ARG SFDX_HARDIS_VERSION=5.21.1
 ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 RUN sf plugins install @salesforce/plugin-packaging@${NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION} \
@@ -4160,7 +4160,7 @@ RUN sf plugins install @salesforce/plugin-packaging@${NPM_SALESFORCE_PLUGIN_PACK
 ENV SF_AUTOUPDATE_DISABLE=true SF_CLI_DISABLE_AUTOUPDATE=true
 # Linter install
 # renovate: datasource=npm depName=@salesforce/sfdx-scanner
-ARG SALESFORCE_SFDX_SCANNER_VERSION=4.9.0
+ARG SALESFORCE_SFDX_SCANNER_VERSION=4.10.0
 RUN sf plugins install @salesforce/sfdx-scanner@${SALESFORCE_SFDX_SCANNER_VERSION} \
     &amp;&amp; (npm cache clean --force || true) \
     &amp;&amp; rm -rf /root/.npm/_cacache
