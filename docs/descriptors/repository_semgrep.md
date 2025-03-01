@@ -652,8 +652,8 @@ BUGS
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=semgrep
-ARG PIP_SEMGREP_VERSION=1.109.0
+ARG PIP_SEMGREP_VERSION=1.110.0
 ```
 
 - PIP packages (Python):
-  - [semgrep==1.109.0](https://pypi.org/project/semgrep/1.109.0)
+  - [semgrep==1.110.0](https://pypi.org/project/semgrep/1.110.0)
