@@ -1570,6 +1570,10 @@ description: List of all known articles, blog posts and videos that talk about M
 
 ### Videos
 
+- [Open Source Community Spotlight | Nicolas Vuillamy | MegaLinter](https://www.youtube.com/watch?v=cYuCIPpAAr4), by [Anchore](https://github.com/anchore) & [Alan Pope](https://www.linkedin.com/in/alan-pope-uk/)
+
+<div style="text-align:center"><iframe width="560" height="315" src="https://www.youtube.com/embed/cYuCIPpAAr4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+
 - [(Brazilian) MegaLinter: Como Automatizar a Qualidade do Código para Todas Plataformas](https://www.youtube.com/watch?v=YSdZ3atC2j4), by [Codando TV](https://www.youtube.com/@hackitectsplayground)
 
 <div style="text-align:center"><iframe width="560" height="315" src="https://www.youtube.com/embed/YSdZ3atC2j4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
