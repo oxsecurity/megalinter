@@ -67,7 +67,7 @@
     "phpcs": "3.11.3",
     "phplint": "9.5.6",
     "phpstan": "2.1.6",
-    "pmd": "7.10.0",
+    "pmd": "7.11.0",
     "powershell": "7.5.0",
     "powershell_formatter": "7.5.0",
     "prettier": "3.5.2",
