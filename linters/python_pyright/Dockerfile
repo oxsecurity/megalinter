@@ -49,7 +49,7 @@ FROM python:3.12.8-alpine3.21
 #############################################################################################
 #ARG__START
 # renovate: datasource=npm depName=pyright
-ARG NPM_PYRIGHT_VERSION=1.1.395
+ARG NPM_PYRIGHT_VERSION=1.1.396
 #ARG__END
 
 ####################
