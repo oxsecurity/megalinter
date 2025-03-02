@@ -3676,7 +3676,7 @@
 <p><a href="https://github.com/pmd/pmd"><img alt="GitHub stars" src="https://img.shields.io/github/stars/pmd/pmd?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-SARIF-orange"><img alt="sarif" src="https://shields.io/badge/-SARIF-orange"/></a> <a href="https://github.com/pmd/pmd/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/pmd/pmd?sort=semver"/></a> <a href="https://github.com/pmd/pmd/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/pmd/pmd"/></a> <a href="https://github.com/pmd/pmd/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/pmd/pmd"/></a> <a href="https://github.com/pmd/pmd/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/pmd/pmd"/></a></p>
 <h2 id="pmd-documentation">pmd documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>7.10.0</strong></li>
+<li>Version in MegaLinter: <strong>7.11.0</strong></li>
 <li>Visit <a href="https://pmd.github.io/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://docs.pmd-code.org/pmd-doc-6.55.0/pmd_userdocs_configuring_rules.html" target="_blank">How to configure pmd rules</a><ul>
 <li>If custom <code>java-pmd-ruleset.xml</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/java-pmd-ruleset.xml" target="_blank">java-pmd-ruleset.xml</a> will be used</li>
@@ -3858,7 +3858,7 @@ ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 # Linter install
 # renovate: datasource=github-tags depName=pmd/pmd extractVersion=^pmd_releases/(?&lt;version&gt;.*)$
-ARG PMD_VERSION=7.10.0
+ARG PMD_VERSION=7.11.0
 
 RUN wget --quiet https://github.com/pmd/pmd/releases/download/pmd_releases%2F${PMD_VERSION}/pmd-dist-${PMD_VERSION}-bin.zip &amp;&amp; \
     unzip pmd-dist-${PMD_VERSION}-bin.zip || echo "Error unzipping" &amp;&amp; \
