@@ -127,6 +127,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 3.2.377 to **3.2.378** on 2025-02-28
   - [rubocop](https://rubocop.org/) from 1.72.2 to **1.73.1** on 2025-02-28
   - [php-cs-fixer](https://cs.symfony.com/) from 3.70.0 to **3.70.1** on 2025-03-01
+  - [pmd](https://pmd.github.io/) from 7.10.0 to **7.11.0** on 2025-03-02
 <!-- linter-versions-end -->
 
 ## [v8.4.2] - 2024-02-02
