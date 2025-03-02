@@ -36,27 +36,27 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 ## [v8.5.0] - 2024-03-02
 
 - Core
-  - Addition of **warnings** to reporters and logic changes to surface warnings even when there are no errors. Addition of `cli_lint_warning_count` / `cli_lint_warning_regex` variables to the JSON schema. [#4476](https://github.com/oxsecurity/megalinter/issues/4476), by @bdovaz in https://github.com/oxsecurity/megalinter/pull/4556
-  - Configure renovate for gem, cargo, pip and npm dependencies by @bdovaz in https://github.com/oxsecurity/megalinter/pull/4673
+  - Addition of **warnings** to reporters and logic changes to surface warnings even when there are no errors. Addition of `cli_lint_warning_count` / `cli_lint_warning_regex` variables to the JSON schema. [#4476](https://github.com/oxsecurity/megalinter/issues/4476), by @bdovaz in <https://github.com/oxsecurity/megalinter/pull/4556>
+  - Configure renovate for gem, cargo, pip and npm dependencies by @bdovaz in <https://github.com/oxsecurity/megalinter/pull/4673>
 
 - Media
   - [Open Source Community Spotlight | Nicolas Vuillamy | MegaLinter](https://www.youtube.com/watch?v=cYuCIPpAAr4), by [Anchore](https://github.com/anchore) & [Alan Pope](https://www.linkedin.com/in/alan-pope-uk/)
 
 - Fixes
   - [jscpd](https://megalinter.io/latest/descriptors/copypaste_jscpd/): remove forced `--exitCode 1` to fix <https://github.com/oxsecurity/megalinter/issues/4631>
-  - [kubescape](https://megalinter.io/beta/descriptors/kubernetes_kubescape/) Remove downgraded_version from kubescape, by @bdovaz in https://github.com/oxsecurity/megalinter/pull/4712
+  - [kubescape](https://megalinter.io/beta/descriptors/kubernetes_kubescape/) Remove downgraded_version from kubescape, by @bdovaz in <https://github.com/oxsecurity/megalinter/pull/4712>
   - [npm-groovy-lint](https://megalinter.io/beta/descriptors/groovy_npm_groovy_lint/) Undowngrade npm-groovy-lint as there is a new release with issue fix
-  - [phpcs-fixer](https://megalinter.io/beta/descriptors/php_php_cs_fixer/) Use --with-all-dependencies to install phpcs-fixer by @nvuillam in https://github.com/oxsecurity/megalinter/pull/4672
+  - [phpcs-fixer](https://megalinter.io/beta/descriptors/php_php_cs_fixer/) Use --with-all-dependencies to install phpcs-fixer by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/4672>
   - [pyright](https://megalinter.io/beta/descriptors/python_pyright/) Use npm to install pyright
 
 - Doc
   - Remove reference to R2DevOps jobs as it has been discontinued (see [#4678](https://github.com/oxsecurity/megalinter/issues/4678))
-  - Improve apk package url by @bdovaz in https://github.com/oxsecurity/megalinter/pull/4707
-  - Improve package version docs by @bdovaz in https://github.com/oxsecurity/megalinter/pull/4721
+  - Improve apk package url by @bdovaz in <https://github.com/oxsecurity/megalinter/pull/4707>
+  - Improve package version docs by @bdovaz in <https://github.com/oxsecurity/megalinter/pull/4721>
     - Add references to cargo packages
     - Explicitly put the version of the cargo, npm, pip and gem packages. Both in the name of the package and in the generation of the urls.
-  - Correct default SARIF_REPORTER_FILE_NAME by @yxtay in https://github.com/oxsecurity/megalinter/pull/4783
-  - Use github private email for megalinter-bot by @yxtay in https://github.com/oxsecurity/megalinter/pull/4786
+  - Correct default SARIF_REPORTER_FILE_NAME by @yxtay in <https://github.com/oxsecurity/megalinter/pull/4783>
+  - Use github private email for megalinter-bot by @yxtay in <https://github.com/oxsecurity/megalinter/pull/4786>
 
 - Linter versions upgrades (42)
   - [ansible-lint](https://ansible-lint.readthedocs.io/) from 25.1.1 to **25.1.3**
