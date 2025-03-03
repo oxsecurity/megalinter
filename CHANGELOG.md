@@ -130,6 +130,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [pmd](https://pmd.github.io/) from 7.10.0 to **7.11.0** on 2025-03-02
   - [kubescape](https://github.com/kubescape/kubescape) from 3.0.29 to **3.0.30** on 2025-03-02
   - [pyright](https://github.com/Microsoft/pyright) from 1.1.395 to **1.1.396** on 2025-03-02
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.25.1 to **1.27.0** on 2025-03-03
+  - [stylelint](https://stylelint.io) from 16.14.1 to **16.15.0** on 2025-03-03
+  - [golangci-lint](https://golangci-lint.run/) from 1.64.5 to **1.64.6** on 2025-03-03
+  - [prettier](https://prettier.io/) from 3.5.2 to **3.5.3** on 2025-03-03
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.70.1 to **3.70.2** on 2025-03-03
 <!-- linter-versions-end -->
 
 ## [v8.4.2] - 2024-02-02
