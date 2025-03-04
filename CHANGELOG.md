@@ -135,6 +135,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [golangci-lint](https://golangci-lint.run/) from 1.64.5 to **1.64.6** on 2025-03-03
   - [prettier](https://prettier.io/) from 3.5.2 to **3.5.3** on 2025-03-03
   - [php-cs-fixer](https://cs.symfony.com/) from 3.70.1 to **3.70.2** on 2025-03-03
+  - [checkstyle](https://checkstyle.org/) from 10.21.3 to **10.21.4** on 2025-03-04
 <!-- linter-versions-end -->
 
 ## [v8.4.2] - 2024-02-02
