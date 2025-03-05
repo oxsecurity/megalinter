@@ -38,8 +38,6 @@ linters:
       - "npm-groovy-lint myfile.groovy"
       - "npm-groovy-lint -c .groovylintrc.json "
       - "npm-groovy-lint -c .groovylintrc.json --fix myfile.groovy myfile2.groovy"
-    downgraded_version: true
-    downgraded_reason: https://github.com/oxsecurity/megalinter/issues/4414
     install:
       apk:
         - openjdk17
@@ -47,7 +45,7 @@ linters:
         - ENV JAVA_HOME_17=/usr/lib/jvm/java-17-openjdk
         - |-
           # renovate: datasource=npm depName=npm-groovy-lint
-          ARG NPM_GROOVY_LINT_VERSION=15.0.2
+          ARG NPM_GROOVY_LINT_VERSION=15.1.0
       npm:
         - npm-groovy-lint@${NPM_GROOVY_LINT_VERSION}
     ide:
