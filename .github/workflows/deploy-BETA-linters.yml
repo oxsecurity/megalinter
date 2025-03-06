@@ -195,7 +195,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Docker Metadata action
-        uses: docker/metadata-action@v5.6.1
+        uses: docker/metadata-action@v5.7.0
         id: meta
         with:
           images: |
@@ -208,7 +208,7 @@ jobs:
             type=raw,value={{date 'YYYYMMDD_HHmm'}}
 
       - name: Docker Metadata action (Docker hub)
-        uses: docker/metadata-action@v5.6.1
+        uses: docker/metadata-action@v5.7.0
         id: meta-dhub
         with:
           images: |

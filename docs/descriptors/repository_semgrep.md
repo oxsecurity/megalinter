@@ -391,6 +391,9 @@ OPTIONS
        --no-secrets-validation
            Disables secret validation.
 
+       --no-semgrepignore-v2
+           negates --semgrepignore-v2
+
        --no-strict
            negates --strict
 
@@ -493,6 +496,9 @@ OPTIONS
            validation. Requires access to Secrets, contact
            support@semgrep.com for more information.
 
+       --semgrepignore-v2
+           Under development. Not currently recommended.
+
        --severity=VAL
            Report findings only from rules matching the supplied severity
            level. By default all applicable rules are run. Can add multiple
@@ -591,6 +597,9 @@ OPTIONS
            --x-ls. THIS OPTION IS NOT PART OF THE SEMGREP API AND MAY CHANGE
            OR DISAPPEAR WITHOUT NOTICE.
 
+       --x-tr
+           <internal, do not use>
+
 COMMON OPTIONS
        --help[=FMT] (default=auto)
            Show this help in format FMT. The value FMT must be one of auto,
@@ -643,8 +652,8 @@ BUGS
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=semgrep
-ARG PIP_SEMGREP_VERSION=1.107.0
+ARG PIP_SEMGREP_VERSION=1.110.0
 ```
 
 - PIP packages (Python):
-  - [semgrep==1.107.0](https://pypi.org/project/semgrep/1.107.0)
+  - [semgrep==1.110.0](https://pypi.org/project/semgrep/1.110.0)
