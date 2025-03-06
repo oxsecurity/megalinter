@@ -1524,8 +1524,13 @@ class Linter:
 
                 if "rules" in run["tool"]["driver"]:
                     for rule in run["tool"]["driver"]["rules"]:
-                        if "defaultConfiguration" in rule and "level" in rule["defaultConfiguration"]:
-                            rule_default_level_map[rule["id"]] = rule["defaultConfiguration"]["level"]
+                        if (
+                            "defaultConfiguration" in rule
+                            and "level" in rule["defaultConfiguration"]
+                        ):
+                            rule_default_level_map[rule["id"]] = rule[
+                                "defaultConfiguration"
+                            ]["level"]
 
                 for result in run["results"]:
                     count_results = False
@@ -1536,7 +1541,11 @@ class Linter:
                         # https://docs.oasis-open.org/sarif/sarif/v2.1.0/errata01/os/sarif-v2.1.0-errata01-os-complete.html#_Toc141790898
                         if result["level"] == level or level == "warning":
                             count_results = True
-                    elif "ruleId" in result and result["ruleId"] in rule_default_level_map and rule_default_level_map[result["ruleId"]] == level:
+                    elif (
+                        "ruleId" in result
+                        and result["ruleId"] in rule_default_level_map
+                        and rule_default_level_map[result["ruleId"]] == level
+                    ):
                         count_results = True
                     # If the level property does not exist, the default value is warning
                     # https://json.schemastore.org/sarif-2.1.0.json
