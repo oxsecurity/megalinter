@@ -1520,22 +1520,29 @@ class Linter:
                 sarif_output = yaml.safe_load(stdout)
 
             for run in sarif_output["runs"]:
+                rule_default_level_map = {}
+
+                for rule in run["tool"]["driver"]["rules"]:
+                    rule_default_level_map[rule["id"]] = rule["defaultConfiguration"]["level"]
+                    
                 for result in run["results"]:
                     count_results = False
 
                     if "level" in result:
-                        if result["level"] == level:
+                        # Check if the level matches. Otherwise, if the level to be checked is "warning", counts them as if they were
+                        # to cover "note" and "none" levels
+                        # https://docs.oasis-open.org/sarif/sarif/v2.1.0/errata01/os/sarif-v2.1.0-errata01-os-complete.html#_Toc141790898
+                        if result["level"] == level or level == "warning":
                             count_results = True
+                    elif rule_default_level_map[result["ruleId"]] == level:
+                        count_results = True
                     # If the level property does not exist, the default value is warning
                     # https://json.schemastore.org/sarif-2.1.0.json
                     elif level == "warning":
                         count_results = True
 
                     if count_results is True:
-                        if "locations" in result:
-                            total_result += len(result["locations"])
-                        else:
-                            total_result += 1
+                        total_result += len(result["locations"])
 
             # If we got here, we should have found a number of results from SARIF output
             if total_result == 0:
