@@ -1521,8 +1521,21 @@ class Linter:
 
             for run in sarif_output["runs"]:
                 for result in run["results"]:
-                    if result["level"] == level:
-                        total_result += 1
+                    count_results = False
+
+                    if "level" in result:
+                        if result["level"] == level:
+                            count_results = True
+                    # If the level property does not exist, the default value is warning
+                    # https://json.schemastore.org/sarif-2.1.0.json
+                    elif level == "warning":
+                        count_results = True
+
+                    if count_results is True:
+                        if "locations" in result:
+                            total_result += len(result["locations"])
+                        else:
+                            total_result += 1
 
             # If we got here, we should have found a number of results from SARIF output
             if total_result == 0:
