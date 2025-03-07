@@ -12,7 +12,7 @@
 #############################################################################################
 #ARGTOP__START
 # renovate: datasource=docker depName=rhysd/actionlint
-ARG BASH_SHFMT_VERSION=v3.10.0-alpine
+ARG BASH_SHFMT_VERSION=v3.11.0-alpine
 #ARGTOP__END
 
 #############################################################################################
