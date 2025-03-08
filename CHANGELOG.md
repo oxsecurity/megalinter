@@ -143,6 +143,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [shfmt](https://github.com/mvdan/sh) from 3.10.0 to **3.11.0** on 2025-03-07
   - [grype](https://github.com/anchore/grype) from 0.88.0 to **0.89.0** on 2025-03-07
   - [shfmt](https://github.com/mvdan/sh) from 3.11.0 to **3.10.0** on 2025-03-07
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.70.2 to **3.71.0** on 2025-03-07
 <!-- linter-versions-end -->
 
 ## [v8.4.2] - 2024-02-02
