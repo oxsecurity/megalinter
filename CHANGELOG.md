@@ -18,6 +18,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Media
 
 - Linters enhancements
+  - Use `markdownlint-cli2` instead of `markdownlint-cli`
+
 
 - Fixes
   - Use npm to install pyright
