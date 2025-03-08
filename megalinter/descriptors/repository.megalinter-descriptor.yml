@@ -98,6 +98,7 @@ linters:
     cli_help_arg_name: --help
     cli_version_arg_name: --version
     cli_lint_errors_count: sarif
+    cli_lint_warnings_count: sarif
     test_folder: devskim
     examples:
       - "devskim analyze --source-code ."
