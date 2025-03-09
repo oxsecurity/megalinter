@@ -260,7 +260,7 @@ ARG PHP_PHPSTAN_PHPSTAN_VERSION=2.1.8
 # renovate: datasource=composer depName=phpstan/extension-installer
 ARG PHP_PHPSTAN_EXTENSION_INSTALLER_VERSION=1.4.3
 # renovate: datasource=composer depName=vimeo/psalm
-ARG PHP_VIMEO_PSALM_VERSION=6.8.8
+ARG PHP_VIMEO_PSALM_VERSION=6.5.0
 # renovate: datasource=composer depName=overtrue/phplint
 ARG PHP_OVERTRUE_PHPLINT_VERSION=9.5.6
 # renovate: datasource=composer depName=friendsofphp/php-cs-fixer
