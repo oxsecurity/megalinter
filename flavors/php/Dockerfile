@@ -59,7 +59,7 @@ FROM lycheeverse/lychee:${SPELL_LYCHEE_VERSION} AS lychee
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.6.3 AS uv
+FROM ghcr.io/astral-sh/uv:0.6.5 AS uv
 FROM python:3.12.8-alpine3.21 AS build-ml-core
 WORKDIR /
 COPY --from=uv /uv /uvx /bin/
@@ -133,6 +133,20 @@ ARG NPM_MARKDOWNLINT_CLI_VERSION=0.44.0
 ARG NPM_MARKDOWN_LINK_CHECK_VERSION=3.12.2
 # renovate: datasource=npm depName=markdown-table-formatter
 ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.6.1
+# renovate: datasource=composer depName=squizlabs/php_codesniffer
+ARG PHP_SQUIZLABS_PHP_CODESNIFFER_VERSION=3.11.3
+# renovate: datasource=composer depName=bartlett/sarif-php-converters
+ARG PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION=1.1.0
+# renovate: datasource=composer depName=phpstan/phpstan
+ARG PHP_PHPSTAN_PHPSTAN_VERSION=2.1.8
+# renovate: datasource=composer depName=phpstan/extension-installer
+ARG PHP_PHPSTAN_EXTENSION_INSTALLER_VERSION=1.4.3
+# renovate: datasource=composer depName=vimeo/psalm
+ARG PHP_VIMEO_PSALM_VERSION=6.5.0
+# renovate: datasource=composer depName=overtrue/phplint
+ARG PHP_OVERTRUE_PHPLINT_VERSION=9.5.6
+# renovate: datasource=composer depName=friendsofphp/php-cs-fixer
+ARG PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION=v3.71.0
 # renovate: datasource=pypi depName=checkov
 ARG PIP_CHECKOV_VERSION=3.2.381
 # renovate: datasource=github-tags depName=anchore/grype
@@ -449,22 +463,22 @@ RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/rel
 # markdown-table-formatter installation
 #
 # phpcs installation
-RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require squizlabs/php_codesniffer bartlett/sarif-php-converters
+RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require squizlabs/php_codesniffer:${PHP_SQUIZLABS_PHP_CODESNIFFER_VERSION} bartlett/sarif-php-converters:${PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION}
 
 #
 # phpstan installation
-RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer config --global allow-plugins.phpstan/extension-installer true && composer global require phpstan/phpstan phpstan/extension-installer bartlett/sarif-php-converters
+RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer config --global allow-plugins.phpstan/extension-installer true && composer global require phpstan/phpstan:${PHP_PHPSTAN_PHPSTAN_VERSION} phpstan/extension-installer:${PHP_PHPSTAN_EXTENSION_INSTALLER_VERSION} bartlett/sarif-php-converters:${PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION}
 #
 # psalm installation
-RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer config --global platform.php 8.3 && composer global require vimeo/psalm
+RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer config --global platform.php 8.3 && composer global require vimeo/psalm:${PHP_VIMEO_PSALM_VERSION}
 
 #
 # phplint installation
-RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require overtrue/phplint bartlett/sarif-php-converters
+RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require overtrue/phplint:${PHP_OVERTRUE_PHPLINT_VERSION} bartlett/sarif-php-converters:${PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION}
 
 #
 # php-cs-fixer installation
-RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require friendsofphp/php-cs-fixer --with-all-dependencies
+RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require friendsofphp/php-cs-fixer:${PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION} --with-all-dependencies
 
 #
 # protolint installation

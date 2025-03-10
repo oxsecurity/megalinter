@@ -59,7 +59,7 @@ FROM lycheeverse/lychee:${SPELL_LYCHEE_VERSION} AS lychee
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.6.3 AS uv
+FROM ghcr.io/astral-sh/uv:0.6.5 AS uv
 FROM python:3.12.8-alpine3.21 AS build-ml-core
 WORKDIR /
 COPY --from=uv /uv /uvx /bin/
@@ -90,7 +90,7 @@ ARG NPM_SALESFORCE_CLI_VERSION=2.78.3
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
 ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.10.3
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=5.21.2
+ARG SFDX_HARDIS_VERSION=5.21.3
 # renovate: datasource=pypi depName=ansible-lint
 ARG PIP_ANSIBLE_LINT_VERSION=25.1.3
 # renovate: datasource=npm depName=@stoplight/spectral-cli
