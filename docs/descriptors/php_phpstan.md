@@ -127,11 +127,11 @@ COPY --from=composer/composer:2-bin /composer /usr/bin/composer
 ENV PATH="/root/.composer/vendor/bin:${PATH}"
 ENV PHP_CS_FIXER_IGNORE_ENV=true
 # Linter install
-# renovate: datasource=composer depName=phpstan/phpstan
+# renovate: datasource=packagist depName=phpstan/phpstan
 ARG PHP_PHPSTAN_PHPSTAN_VERSION=2.1.8
-# renovate: datasource=composer depName=phpstan/extension-installer
+# renovate: datasource=packagist depName=phpstan/extension-installer
 ARG PHP_PHPSTAN_EXTENSION_INSTALLER_VERSION=1.4.3
-# renovate: datasource=composer depName=bartlett/sarif-php-converters
+# renovate: datasource=packagist depName=bartlett/sarif-php-converters
 ARG PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION=1.1.0
 RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer config --global allow-plugins.phpstan/extension-installer true && composer global require phpstan/phpstan:${PHP_PHPSTAN_PHPSTAN_VERSION} phpstan/extension-installer:${PHP_PHPSTAN_EXTENSION_INSTALLER_VERSION} bartlett/sarif-php-converters:${PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION}
 ```

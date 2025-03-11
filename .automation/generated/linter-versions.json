@@ -84,7 +84,7 @@
     "rst-lint": "1.4.0",
     "rstcheck": "6.2.4",
     "rstfmt": "0.0.14",
-    "rubocop": "1.73.1",
+    "rubocop": "1.73.2",
     "ruff": "0.9.9",
     "ruff-format": "0.9.9",
     "scalafix": "0.14.2",
