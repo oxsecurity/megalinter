@@ -269,7 +269,7 @@ ARG PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION=v3.71.0
 ARG PSSA_VERSION='1.23.0'
 
 # renovate: datasource=rubygems depName=puppet-lint
-ARG GEM_PUPPET_LINT_VERSION=4.2.4
+ARG GEM_PUPPET_LINT_VERSION=4.3.0
 # renovate: datasource=pypi depName=pylint
 ARG PIP_PYLINT_VERSION=3.3.4
 # renovate: datasource=pypi depName=typing-extensions
