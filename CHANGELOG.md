@@ -147,6 +147,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [phpstan](https://phpstan.org/) from 2.1.7 to **2.1.8** on 2025-03-10
   - [rubocop](https://rubocop.org/) from 1.73.1 to **1.73.2** on 2025-03-10
   - [yamllint](https://yamllint.readthedocs.io/) from 1.35.1 to **1.36.0** on 2025-03-11
+  - [shfmt](https://github.com/mvdan/sh) from 3.10.0 to **3.11.0** on 2025-03-13
+  - [puppet-lint](http://puppet-lint.com/) from 4.2.4 to **4.3.0** on 2025-03-13
 <!-- linter-versions-end -->
 
 ## [v8.4.2] - 2024-02-02
