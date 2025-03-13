@@ -1,3 +1,8 @@
+---
+title: License info for eslint-plugin-jsonc within MegaLinter
+search:
+  exclude: true
+---
 MIT License
 
 Copyright (c) 2020 Yosuke Ota

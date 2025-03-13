@@ -2,6 +2,7 @@ descriptor_id: EDITORCONFIG
 descriptor_type: tooling_format
 descriptor_flavors:
   - all_flavors # Applicable to CI in any language project
+  - cupcake
 file_extensions:
   - "*"
 active_only_if_file_found:
@@ -23,5 +24,9 @@ linters:
     examples:
       - "editorconfig-checker myfile.js"
     install:
-      npm:
-        - editorconfig-checker
+      dockerfile:
+        - |-
+          # renovate: datasource=docker depName=mstruebing/editorconfig-checker
+          ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=v3.2.0
+        - FROM mstruebing/editorconfig-checker:${EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION} AS editorconfig-checker
+        - COPY --link --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker

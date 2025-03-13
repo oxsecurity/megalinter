@@ -2,6 +2,8 @@ descriptor_id: POWERSHELL
 descriptor_type: language
 descriptor_flavors:
   - dotnet
+  - dotnetweb
+  - formatters
 file_extensions:
   - ".ps1"
   - ".psm1"
@@ -10,31 +12,36 @@ file_extensions:
   - ".pssc"
   - ".psrc"
   - ".cdxml"
-# Reference: https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-core-on-linux?view=powershell-7
+# Reference: https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-core-on-linux
 # Slightly modified to always retrieve latest stable Powershell version
 # If changing PWSH_VERSION='latest' to a specific version, use format PWSH_VERSION='tags/v7.0.2'
 install:
+  apk:
+    - icu-libs
   dockerfile:
-    - ARG PWSH_VERSION='latest'
-    - ARG PWSH_DIRECTORY='/opt/microsoft/powershell'
     - |
-      RUN mkdir -p ${PWSH_DIRECTORY} \
-          && curl --retry 5 --retry-delay 5 -s https://api.github.com/repos/powershell/powershell/releases/${PWSH_VERSION} \
-              | grep browser_download_url \
-              | grep linux-alpine-x64 \
-              | cut -d '"' -f 4 \
-              | xargs -n 1 wget -O - \
-              | tar -xzC ${PWSH_DIRECTORY} \
-          && ln -sf ${PWSH_DIRECTORY}/pwsh /usr/bin/pwsh
+      # renovate: datasource=github-tags depName=PowerShell/PowerShell
+      ARG POWERSHELL_VERSION=7.5.0
+    - |
+      RUN curl -L https://github.com/PowerShell/PowerShell/releases/download/v${POWERSHELL_VERSION}/powershell-${POWERSHELL_VERSION}-linux-musl-x64.tar.gz -o /tmp/powershell.tar.gz \
+          && mkdir -p /opt/microsoft/powershell/7 \
+          && tar zxf /tmp/powershell.tar.gz -C /opt/microsoft/powershell/7 \
+          && chmod +x /opt/microsoft/powershell/7/pwsh \
+          && ln -s /opt/microsoft/powershell/7/pwsh /usr/bin/pwsh
 linters:
   # Internal powershell linter
   - class: PowershellLinter
     linter_name: powershell
     linter_url: https://github.com/PowerShell/PSScriptAnalyzer
+    linter_repo: https://github.com/PowerShell/PSScriptAnalyzer
     linter_image_url: https://github.com/PowerShell/PSScriptAnalyzer/raw/master/logo.png
-    linter_rules_configuration_url: https://github.com/PowerShell/PSScriptAnalyzer#explicit
-    linter_rules_inline_disable_url: https://github.com/PowerShell/PSScriptAnalyzer#suppressing-rules
+    linter_rules_url: https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/readme?view=ps-modules
+    linter_rules_configuration_url: https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/using-scriptanalyzer?view=ps-modules#explicit
+    linter_rules_inline_disable_url: https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/using-scriptanalyzer?view=ps-modules#suppressing-rules
     config_file_name: .powershell-psscriptanalyzer.psd1
+    cli_lint_errors_regex: "(?m)^\\s*(Information|Warning|Error|ParseError)\\s"
+    cli_lint_errors_count: regex_count
+    cli_lint_fix_arg_name: "-Fix"
     version_extract_regex: "(\\d+) *(\\d+) *(\\d+)"
     examples:
       - 'pwsh -NoProfile -NoLogo -Command "Invoke-ScriptAnalyzer -EnableExit -Path myfile.ps1"'
@@ -42,9 +49,43 @@ linters:
     # If changing PWSH_VERSION='latest' to a specific version, use format PWSH_VERSION='tags/v7.0.2'
     install:
       dockerfile:
-        - ARG PSSA_VERSION='latest'
+        - |
+          # renovate: datasource=nuget depName=PSScriptAnalyzer registryUrl=https://www.powershellgallery.com/api/v2/
+          ARG PSSA_VERSION='1.23.0'
         - RUN pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSION} -Scope AllUsers -Force'
     ide:
       vscode:
-        - name: VsCode PowerShell extension
+        - name: VSCode PowerShell extension
+          url: https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell
+  # Internal powershell formatter
+  - class: PowershellLinter
+    linter_name: powershell_formatter
+    variables:
+      - name: POWERSHELL_POWERSHELL_FORMATTER_OUTPUT_ENCODING
+        default_value: "utf8"
+        description: "`-Encoding` to be used when writing content to the file"
+    is_formatter: true
+    linter_url: https://github.com/PowerShell/PSScriptAnalyzer
+    linter_repo: https://github.com/PowerShell/PSScriptAnalyzer
+    linter_image_url: https://github.com/PowerShell/PSScriptAnalyzer/raw/master/logo.png
+    linter_rules_url: https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/readme?view=ps-modules
+    linter_rules_configuration_url: https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/using-scriptanalyzer?view=ps-modules#explicit
+    linter_rules_inline_disable_url: https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/using-scriptanalyzer?view=ps-modules#suppressing-rules
+    config_file_name: .powershell-formatter.psd1
+    test_folder: powershell_formatter
+    cli_lint_fix_arg_name: "--megalinter-fix-flag" # Workaround for PowershellLinter class behavior
+    version_extract_regex: "(\\d+) *(\\d+) *(\\d+)"
+    examples:
+      - 'pwsh -NoProfile -NoLogo -Command "Invoke-Formatter -ScriptDefinition ''write-host Hello World''"'
+      - 'pwsh -NoProfile -NoLogo -Command "Invoke-Formatter -Settings .powershell-psscriptanalyzer.psd1 -ScriptDefinition ''write-host Hello World''"'
+    # If changing PWSH_VERSION='latest' to a specific version, use format PWSH_VERSION='tags/v7.0.2'
+    install:
+      dockerfile:
+        - |
+          # renovate: datasource=nuget depName=PSScriptAnalyzer registryUrl=https://www.powershellgallery.com/api/v2/
+          ARG PSSA_VERSION='1.23.0'
+        - RUN pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSION} -Scope AllUsers -Force'
+    ide:
+      vscode:
+        - name: VSCode PowerShell extension
           url: https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell

@@ -1,33 +1,28 @@
 descriptor_id: RUST
 descriptor_type: language
 descriptor_flavors:
+  - cupcake
   - rust
 file_extensions:
   - ".rs"
-install:
-  dockerfile:
-    - RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-    - ENV PATH="/root/.cargo/bin:${PATH}"
 linters:
   # CLIPPY
-  - linter_name: clippy
+  - class: ClippyLinter
+    linter_name: clippy
     linter_url: https://github.com/rust-lang/rust-clippy
+    linter_repo: https://github.com/rust-lang/rust-clippy
     linter_rules_url: https://rust-lang.github.io/rust-clippy/stable/index.html
     linter_rules_configuration_url: https://github.com/rust-lang/rust-clippy#configuration
     linter_rules_inline_disable_url: https://github.com/rust-lang/rust-clippy#allowingdenying-lints
     config_file_name: .clippy.toml
     cli_config_arg_name: ""
-    cli_executable: cargo
+    cli_executable: cargo-clippy
     cli_lint_mode: project
-    cli_lint_extra_args:
-      - "clippy"
-    cli_version_extra_args:
-      - "clippy"
     examples:
-      - "cargo clippy"
+      - "cargo-clippy"
     install:
-      dockerfile:
-        - RUN rustup component add clippy
+      cargo:
+        - clippy
     ide:
       atom:
         - name: Atom IDE Rest

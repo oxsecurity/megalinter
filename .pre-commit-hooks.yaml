@@ -1,0 +1,59 @@
+- id: megalinter-incremental
+  name: Run MegaLinter (skipping linters that run in project mode)
+  entry: npx --
+  language: system
+  require_serial: true
+  args:
+    - mega-linter-runner
+    - --containername
+    - "megalinter-incremental"
+    - --remove-container
+    - --fix
+    - --env
+    - "'APPLY_FIXES=all'"
+    - --env
+    - "'CLEAR_REPORT_FOLDER=true'"
+    - --env
+    - "'LOG_LEVEL=warning'"
+    - --filesonly
+  description: >
+    See https://megalinter.io/latest/mega-linter-runner/#usage
+    and https://megalinter.io/latest/configuration/ if you
+    wish to override the default arguments. mega-linter-runner is specified as
+    an argument so that you may override the version (e.g.,
+    mega-linter-runner@vx.y.z). Depends on npx, which ships with npm 7+, and
+    Docker. Runs very slowly when the pertinent Docker image isn't already
+    cached (c.f., https://github.com/marketplace/actions/docker-cache/). If you
+    encounter permission errors, try running Docker in rootless mode (c.f.,
+    https://github.com/marketplace/actions/rootless-docker/). Linter results are
+    logged to the megalinter-reports directory, so list it in your .gitignore.
+    Skip linters that run in project mode since they don't run incrementally.
+
+- id: megalinter-full
+  name: Run MegaLinter
+  entry: npx --
+  language: system
+  require_serial: true
+  args:
+    - mega-linter-runner
+    - --containername
+    - "megalinter-full"
+    - --remove-container
+    - --fix
+    - --env
+    - "'APPLY_FIXES=all'"
+    - --env
+    - "'CLEAR_REPORT_FOLDER=true'"
+    - --env
+    - "'LOG_LEVEL=warning'"
+  description: >
+    See https://megalinter.io/latest/mega-linter-runner/#usage
+    and https://megalinter.io/latest/configuration/ if you
+    wish to override the default arguments. mega-linter-runner is specified as
+    an argument so that you may override the version (e.g.,
+    mega-linter-runner@vx.y.z). Depends on npx, which ships with npm 7+, and
+    Docker. Runs very slowly when the pertinent Docker image isn't already
+    cached (c.f., https://github.com/marketplace/actions/docker-cache/). If you
+    encounter permission errors, try running Docker in rootless mode (c.f.,
+    https://github.com/marketplace/actions/rootless-docker/). Linter results are
+    logged to the megalinter-reports directory, so list it in your .gitignore.

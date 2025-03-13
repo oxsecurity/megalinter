@@ -2,7 +2,8 @@ descriptor_id: ANSIBLE
 descriptor_type: tooling_format
 descriptor_flavors:
   - all_flavors # Applicable to CI in any language project
-files_sub_directory: ansible
+  - cupcake
+  - security
 file_names_not_ends_with:
   - "vault.yml"
   - "vault.yaml"
@@ -14,21 +15,32 @@ file_extensions:
 linters:
   # ANSIBLE LINT
   - linter_name: ansible-lint
-    linter_url: https://ansible-lint.readthedocs.io/en/latest/
+    can_output_sarif: true
+    linter_url: https://ansible-lint.readthedocs.io/
     linter_repo: https://github.com/ansible/ansible-lint
-    linter_rules_url: https://ansible-lint.readthedocs.io/en/latest/default_rules.html
-    linter_rules_configuration_url: https://ansible-lint.readthedocs.io/en/latest/configuring.html#configuration-file
-    linter_rules_inline_disable_url: https://ansible-lint.readthedocs.io/en/latest/rules.html#false-positives-skipping-rules
+    linter_rules_url: https://ansible-lint.readthedocs.io/rules/
+    linter_rules_configuration_url: https://ansible-lint.readthedocs.io/configuring/#configuration-file
+    linter_rules_inline_disable_url: https://ansible-lint.readthedocs.io/usage/#muting-warnings-to-avoid-false-positives
+    linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/ansible-lint.png
+    active_only_if_file_found:
+      - ".ansible-lint"
     config_file_name: .ansible-lint
     cli_lint_mode: project
     cli_config_extra_args:
       - "-v"
+    cli_sarif_args:
+      - --format
+      - sarif
     cli_lint_errors_count: regex_number
-    cli_lint_errors_regex: "Finished with ([0-9]+) failure\\(s\\), .* warning\\(s\\) on .* files"
+    cli_lint_errors_regex: ": ([0-9]+) failure\\(s\\), .* warning\\(s\\) on .* files"
     cli_version_arg_name: "--version"
     examples:
       - "ansible-lint -v"
       - "ansible-lint -v -c .ansible-lint"
     install:
+      dockerfile:
+        - |-
+          # renovate: datasource=pypi depName=ansible-lint
+          ARG PIP_ANSIBLE_LINT_VERSION=25.1.3
       pip:
-        - ansible-lint[community,yamllint]
+        - ansible-lint==${PIP_ANSIBLE_LINT_VERSION}

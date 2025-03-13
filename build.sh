@@ -9,13 +9,6 @@ else
   python ./.automation/build.py "$@"
 fi
 
-# Prettify markdown tables
-echo "Formatting markdown tables..."
-# shellcheck disable=SC2086
-MD_FILES=$(find . -type f -name "*.md" -not -path "*/node_modules/*" -not -path "*/.automation/*" -not -path "*/licenses/*") && npx markdown-table-formatter $MD_FILES
-# shellcheck disable=SC2086
-MD_FILES_2=$(find . -type f -name "*.md" -not -path "*/node_modules/*" -not -path "*/.automation/*" -path "*/licenses/*") && npx markdown-table-formatter $MD_FILES_2
-
 # Build online documentation
 if type python3 >/dev/null 2>/dev/null; then
   python3 -m mkdocs build
@@ -25,5 +18,8 @@ fi
 
 # Prettify `search_index.json` after `mkdocs`
 # `mkdocs` removed its own prettify few years ago: https://github.com/mkdocs/mkdocs/pull/1128
-python -m json.tool ./site/search/search_index.json >./site/search/search_index_new.json
-mv -f -- ./site/search/search_index_new.json ./site/search/search_index.json
+if type python3 >/dev/null 2>/dev/null; then
+  python3 -m json.tool --sort-keys --no-indent ./site/search/search_index.json ./site/search/search_index.json
+else
+  python -m json.tool --sort-keys --no-indent ./site/search/search_index.json ./site/search/search_index.json
+fi

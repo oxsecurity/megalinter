@@ -1,0 +1,11 @@
+{
+  "name": "test",
+  "version": "5.6.0",
+  "dependencies": {
+    "angular":"123",
+    "appboy-web-sdk": "^2.2.7",
+    "appboy-web-sdk-v2": "npm:appboy-web-sdk@^2.7.0",
+    "gulp": "git+ssh://git@github.com:gulpjs/gulp.git",
+    "tar": "^6.0.1"
+  }
+}

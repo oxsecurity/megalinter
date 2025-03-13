@@ -1,26 +1,36 @@
 descriptor_id: TYPESCRIPT
 descriptor_type: language
 descriptor_flavors:
+  - cupcake
+  - dotnetweb
+  - formatters
   - javascript
 file_extensions:
   - ".ts"
 install:
+  dockerfile:
+    - |-
+      # renovate: datasource=npm depName=typescript
+      ARG NPM_TYPESCRIPT_VERSION=5.7.3
   npm:
-    - typescript
+    - typescript@${NPM_TYPESCRIPT_VERSION}
 linters:
   # ESLINT
-  - linter_name: eslint
+  - class: EslintLinter
+    linter_name: eslint
     name: TYPESCRIPT_ES
+    can_output_sarif: true
     linter_text: |
       eslint requires a custom configuration file applicable to your project.
 
       You can create it by typing `npx eslint --init` in the root of your repository
-    linter_url: https://eslint.org
-    linter_repo: https://github.com/eslint/eslint
-    linter_rules_url: https://eslint.org/docs/rules/
-    linter_banner_image_url: https://d33wubrfki0l68.cloudfront.net/3b5ac7586466159bb6f237b633bfc4f5a8d5acf8/ee0a1/assets/img/posts/eslint-collective.png
-    linter_rules_configuration_url: https://eslint.org/docs/user-guide/configuring
+    linter_url: https://typescript-eslint.io/
+    linter_repo: https://github.com/typescript-eslint/typescript-eslint
+    linter_rules_url: https://typescript-eslint.io/rules/
+    linter_banner_image_url: https://typescript-eslint.io/img/logo.svg
+    linter_rules_configuration_url: https://typescript-eslint.io/getting-started/#configuration-values
     linter_rules_inline_disable_url: https://eslint.org/docs/user-guide/configuring#disabling-rules-with-inline-comments
+    linter_rules_ignore_config_url: https://eslint.org/docs/latest/user-guide/configuring/ignoring-code#the-eslintignore-file
     linter_megalinter_ref_url: https://eslint.org/docs/user-guide/integrations#source-control
     active_only_if_file_found:
       - ".eslintrc.json"
@@ -35,7 +45,14 @@ linters:
       - "--no-eslintrc"
     cli_lint_extra_args:
       - "--no-ignore"
+    ignore_file_name: .eslintignore
+    cli_lint_ignore_arg_name: --ignore-path
     cli_lint_fix_arg_name: "--fix"
+    cli_sarif_args:
+      - --format
+      - "@microsoft/eslint-formatter-sarif"
+      - -o
+      - "{{SARIF_OUTPUT_FILE}}"
     cli_lint_errors_count: regex_sum
     cli_lint_errors_regex: "✖ ([0-9]+) problem"
     examples:
@@ -43,25 +60,69 @@ linters:
       - "eslint -c .eslintrc.json --no-eslintrc --no-ignore myfile.ts"
       - "eslint --fix -c .eslintrc.json --no-eslintrc --no-ignore myfile.ts"
     install:
+      dockerfile:
+        - |-
+          # renovate: datasource=npm depName=eslint
+          ARG NPM_ESLINT_VERSION=8.57.1
+        - |-
+          # renovate: datasource=npm depName=eslint-config-airbnb
+          ARG NPM_ESLINT_CONFIG_AIRBNB_VERSION=19.0.4
+        - |-
+          # renovate: datasource=npm depName=eslint-config-prettier
+          ARG NPM_ESLINT_CONFIG_PRETTIER_VERSION=10.0.2
+        - |-
+          # renovate: datasource=npm depName=eslint-config-standard
+          ARG NPM_ESLINT_CONFIG_STANDARD_VERSION=17.1.0
+        - |-
+          # renovate: datasource=npm depName=eslint-plugin-import
+          ARG NPM_ESLINT_PLUGIN_IMPORT_VERSION=2.31.0
+        - |-
+          # renovate: datasource=npm depName=eslint-plugin-jest
+          ARG NPM_ESLINT_PLUGIN_JEST_VERSION=28.11.0
+        - |-
+          # renovate: datasource=npm depName=eslint-plugin-n
+          ARG NPM_ESLINT_PLUGIN_N_VERSION=16.6.2
+        - |-
+          # renovate: datasource=npm depName=eslint-plugin-prettier
+          ARG NPM_ESLINT_PLUGIN_PRETTIER_VERSION=5.2.3
+        - |-
+          # renovate: datasource=npm depName=eslint-plugin-promise
+          ARG NPM_ESLINT_PLUGIN_PROMISE_VERSION=6.6.0
+        - |-
+          # renovate: datasource=npm depName=@babel/eslint-parser
+          ARG NPM_BABEL_ESLINT_PARSER_VERSION=7.26.8
+        - |-
+          # renovate: datasource=npm depName=prettier
+          ARG NPM_PRETTIER_VERSION=3.5.3
+        - |-
+          # renovate: datasource=npm depName=prettyjson
+          ARG NPM_PRETTYJSON_VERSION=1.2.5
+        - |-
+          # renovate: datasource=npm depName=@typescript-eslint/eslint-plugin
+          ARG NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION=8.25.0
+        - |-
+          # renovate: datasource=npm depName=@typescript-eslint/parser
+          ARG NPM_TYPESCRIPT_ESLINT_PARSER_VERSION=8.25.0
+        - |-
+          # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
+          ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
       npm:
-        - eslint
-        - eslint-config-airbnb
-        - eslint-config-prettier
-        - eslint-config-standard
-        - eslint-plugin-import
-        - eslint-plugin-jest
-        - eslint-plugin-node
-        - eslint-plugin-prettier
-        - eslint-plugin-promise
-        - babel-eslint
-        - prettier
-        - prettyjson
-        - "@typescript-eslint/eslint-plugin"
-        - "@typescript-eslint/parser"
+        - eslint@${NPM_ESLINT_VERSION}
+        - eslint-config-airbnb@${NPM_ESLINT_CONFIG_AIRBNB_VERSION}
+        - eslint-config-prettier@${NPM_ESLINT_CONFIG_PRETTIER_VERSION}
+        - eslint-config-standard@${NPM_ESLINT_CONFIG_STANDARD_VERSION}
+        - eslint-plugin-import@${NPM_ESLINT_PLUGIN_IMPORT_VERSION}
+        - eslint-plugin-jest@${NPM_ESLINT_PLUGIN_JEST_VERSION}
+        - eslint-plugin-n@${NPM_ESLINT_PLUGIN_N_VERSION}
+        - eslint-plugin-prettier@${NPM_ESLINT_PLUGIN_PRETTIER_VERSION}
+        - eslint-plugin-promise@${NPM_ESLINT_PLUGIN_PROMISE_VERSION}
+        - "@babel/eslint-parser@${NPM_BABEL_ESLINT_PARSER_VERSION}"
+        - prettier@${NPM_PRETTIER_VERSION}
+        - prettyjson@${NPM_PRETTYJSON_VERSION}
+        - "@typescript-eslint/eslint-plugin@${NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION}"
+        - "@typescript-eslint/parser@${NPM_TYPESCRIPT_ESLINT_PARSER_VERSION}"
+        - "@microsoft/eslint-formatter-sarif@${NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION}"
     ide:
-      atom:
-        - name: linter-eslint
-          url: https://atom.io/packages/linter-eslint
       brackets:
         - name: brackets-eslint
           url: https://github.com/brackets-userland/brackets-eslint
@@ -74,6 +135,7 @@ linters:
       idea:
         - name: ESLint Plugin
           url: https://plugins.jetbrains.com/plugin/7494-eslint
+          id: com.wix.eslint
       sublime:
         - name: SublimeLinter-eslint
           url: https://github.com/roadhump/SublimeLinter-eslint
@@ -86,44 +148,31 @@ linters:
         - name: vscode-eslint
           url: https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
   # STANDARD
-  - linter_name: standard
+  - class: TypeScriptStandardLinter
+    linter_name: ts-standard
+    name: TYPESCRIPT_STANDARD
     activation_rules:
       - type: variable
-        variable: JAVASCRIPT_DEFAULT_STYLE
-        expected_value: standard
-        default_value: standard
+        variable: TYPESCRIPT_STANDARD
+        expected_value: ts-standard
+        default_value: ts-standard
     linter_url: https://standardjs.com/
-    linter_repo: https://github.com/standard/standard
+    linter_repo: https://github.com/standard/ts-standard
     linter_rules_url: https://standardjs.com/rules.html
     linter_banner_image_url: https://github.com/standard/standard/raw/master/sticker.png
-    name: TYPESCRIPT_STANDARD
     cli_lint_mode: list_of_files
-    cli_lint_extra_args:
-      - "--parser"
-      - "@typescript-eslint/parser"
-      - "--plugin"
-      - "@typescript-eslint/eslint-plugin"
     cli_lint_fix_arg_name: "--fix"
     examples:
-      - "standard --parser @typescript-eslint/parser --plugin @typescript-eslint/eslint-plugin myfile.ts"
-      - "standard --parser @typescript-eslint/parser --plugin @typescript-eslint/eslint-plugin --fix myfile.ts"
-    downgraded_version: true
+      - "ts-standard myfile.ts"
+      - "ts-standard --fix myfile.ts"
     install:
+      dockerfile:
+        - |-
+          # renovate: datasource=npm depName=ts-standard
+          ARG NPM_TS_STANDARD_VERSION=12.0.2
       npm:
-        - "standard@15.0.1"
-        - "@typescript-eslint/eslint-plugin"
-        - "@typescript-eslint/parser"
+        - ts-standard@${NPM_TS_STANDARD_VERSION}
     ide:
-      atom:
-        - name: linter-js-standard
-          url: https://atom.io/packages/linter-js-standard
-        - name: linter-js-standard-engine
-          url: https://atom.io/packages/linter-js-standard-engine
-        - name: standard-formatter
-          url: https://atom.io/packages/standard-formatter
-      brackets:
-        - name: brackets-standard
-          url: https://github.com/ishamf/brackets-standard/
       idea:
         - name: native support
           url: https://blog.jetbrains.com/webstorm/2017/01/webstorm-2017-1-eap-171-2272/
@@ -133,8 +182,8 @@ linters:
         - name: StandardFormat
           url: https://packagecontrol.io/packages/StandardFormat
       vscode:
-        - name: https://marketplace.visualstudio.com/items?itemName=chenxsan.vscode-standardjs
-          url: vscode-standardjs
+        - name: https://marketplace.visualstudio.com/items?itemName=standard.vscode-standard
+          url: vscode-standard
   # PRETTIER
   - linter_name: prettier
     is_formatter: true
@@ -148,7 +197,7 @@ linters:
     linter_rules_url: https://prettier.io/docs/en/options.html
     linter_rules_configuration_url: https://prettier.io/docs/en/configuration.html
     linter_rules_inline_disable_url: https://prettier.io/docs/en/ignore.html#javascript
-    linter_banner_image_url: https://github.com/standard/standard/raw/master/sticker.png
+    linter_banner_image_url: https://unpkg.com/prettier-logo@1.0.3/images/prettier-banner-light.svg
     config_file_name: ".prettierrc.json"
     cli_lint_mode: list_of_files
     cli_config_arg_name: "--config"
@@ -165,16 +214,13 @@ linters:
       - "prettier --config .prettierrc.json --check myfile.ts"
       - "prettier --config .prettierrc.json --write myfile.ts" # format
     install:
+      dockerfile:
+        - |-
+          # renovate: datasource=npm depName=prettier
+          ARG NPM_PRETTIER_VERSION=3.5.3
       npm:
-        - "prettier"
+        - "prettier@${NPM_PRETTIER_VERSION}"
     ide:
-      atom:
-        - name: prettier-atom
-          url: https://github.com/prettier/prettier-atom
-        - name: atom-mprettier
-          url: https://github.com/t9md/atom-mprettier
-        - name: atom-miniprettier
-          url: https://github.com/duailibe/atom-miniprettier
       emacs:
         - name: prettier-emacs
           url: https://github.com/prettier/prettier-emacs
@@ -183,8 +229,9 @@ linters:
         - name: apheleia
           url: https://github.com/raxod502/apheleia
       idea:
-        - name: native support
-          url: https://prettier.io/docs/en/webstorm.html
+        - name: Prettier
+          url: https://plugins.jetbrains.com/plugin/10456-prettier
+          id: intellij.prettierJS
       sublime:
         - name: JsPrettier
           url: https://packagecontrol.io/packages/JsPrettier

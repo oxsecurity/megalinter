@@ -1,0 +1,289 @@
+---
+#########################
+#########################
+## Deploy Docker Image Linters ##
+#########################
+#########################
+# Documentation:
+# https://help.github.com/en/articles/workflow-syntax-for-github-actions
+#
+
+#######################################
+# Start the job on all push to main #
+#######################################
+name: "Build & Deploy - BETA linters"
+on:
+  push:
+    branches:
+      - "main"
+      - "dbgbeta"
+    paths:
+      - ".github/workflows/**"
+      - "Dockerfile"
+      - "**/Dockerfile"
+      - "flavors/**"
+      - "megalinter/**"
+      - "mega-linter-runner/**"
+      - "**/linter-versions.json"
+      - "TEMPLATES/**"
+      - ".trivyignore"
+      - "**/*.sh"
+      - "**/*.py"
+      - "**/sh/**"
+
+###############
+# Set the Job #
+###############
+concurrency:
+  group: ${{ github.ref }}-${{ github.workflow }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    # Name the Job
+    name: BETA/Linters
+    # Set the agent to run on
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+      packages: write
+    environment:
+      name: beta
+    strategy:
+      fail-fast: false
+      max-parallel: 10
+      matrix:
+        # linters-start
+        linter:
+          [
+            "action_actionlint",
+            "ansible_ansible_lint",
+            "api_spectral",
+            "arm_arm_ttk",
+            "bash_exec",
+            "bash_shellcheck",
+            "bash_shfmt",
+            "bicep_bicep_linter",
+            "c_cpplint",
+            "c_clang_format",
+            "clojure_clj_kondo",
+            "clojure_cljstyle",
+            "cloudformation_cfn_lint",
+            "coffee_coffeelint",
+            "copypaste_jscpd",
+            "cpp_cpplint",
+            "cpp_clang_format",
+            "csharp_dotnet_format",
+            "csharp_csharpier",
+            "csharp_roslynator",
+            "css_stylelint",
+            "dart_dartanalyzer",
+            "dockerfile_hadolint",
+            "editorconfig_editorconfig_checker",
+            "env_dotenv_linter",
+            "gherkin_gherkin_lint",
+            "go_golangci_lint",
+            "go_revive",
+            "graphql_graphql_schema_linter",
+            "groovy_npm_groovy_lint",
+            "html_djlint",
+            "html_htmlhint",
+            "java_checkstyle",
+            "java_pmd",
+            "javascript_es",
+            "javascript_standard",
+            "javascript_prettier",
+            "json_jsonlint",
+            "json_v8r",
+            "json_prettier",
+            "json_npm_package_json_lint",
+            "jsx_eslint",
+            "kotlin_ktlint",
+            "kotlin_detekt",
+            "kubernetes_kubeconform",
+            "kubernetes_helm",
+            "kubernetes_kubescape",
+            "latex_chktex",
+            "lua_luacheck",
+            "lua_selene",
+            "lua_stylua",
+            "markdown_markdownlint",
+            "markdown_markdown_link_check",
+            "markdown_markdown_table_formatter",
+            "perl_perlcritic",
+            "php_phpcs",
+            "php_phpstan",
+            "php_psalm",
+            "php_phplint",
+            "php_phpcsfixer",
+            "powershell_powershell",
+            "powershell_powershell_formatter",
+            "protobuf_protolint",
+            "puppet_puppet_lint",
+            "python_pylint",
+            "python_black",
+            "python_flake8",
+            "python_isort",
+            "python_bandit",
+            "python_mypy",
+            "python_pyright",
+            "python_ruff",
+            "python_ruff_format",
+            "r_lintr",
+            "raku_raku",
+            "repository_checkov",
+            "repository_devskim",
+            "repository_dustilock",
+            "repository_git_diff",
+            "repository_gitleaks",
+            "repository_grype",
+            "repository_kics",
+            "repository_ls_lint",
+            "repository_secretlint",
+            "repository_semgrep",
+            "repository_syft",
+            "repository_trivy",
+            "repository_trivy_sbom",
+            "repository_trufflehog",
+            "rst_rst_lint",
+            "rst_rstcheck",
+            "rst_rstfmt",
+            "ruby_rubocop",
+            "rust_clippy",
+            "salesforce_sfdx_scanner_apex",
+            "salesforce_sfdx_scanner_aura",
+            "salesforce_sfdx_scanner_lwc",
+            "salesforce_lightning_flow_scanner",
+            "scala_scalafix",
+            "snakemake_snakefmt",
+            "spell_cspell",
+            "spell_proselint",
+            "spell_vale",
+            "spell_lychee",
+            "sql_sqlfluff",
+            "sql_tsqllint",
+            "swift_swiftlint",
+            "tekton_tekton_lint",
+            "terraform_tflint",
+            "terraform_terrascan",
+            "terraform_terragrunt",
+            "terraform_terraform_fmt",
+            "tsx_eslint",
+            "typescript_es",
+            "typescript_standard",
+            "typescript_prettier",
+            "vbdotnet_dotnet_format",
+            "xml_xmllint",
+            "yaml_prettier",
+            "yaml_yamllint",
+            "yaml_v8r",
+          ]
+# linters-end
+        platform: ["linux/amd64"]
+    # Only run this on the main repo
+    if: >-
+      (
+           github.repository == 'oxsecurity/megalinter'
+        && !contains(github.event.head_commit.message, 'skip deploy')
+        && !contains(github.event.head_commit.message, 'Release MegaLinter v')
+      )
+    ##################
+    # Load all steps #
+    ##################
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Docker Metadata action
+        uses: docker/metadata-action@v5.7.0
+        id: meta
+        with:
+          images: |
+            ghcr.io/${{ github.repository }}-only-${{ matrix.linter }}
+          flavor: |
+            latest=false
+            prefix=beta
+          tags: |
+            type=raw,value=
+            type=raw,value={{date 'YYYYMMDD_HHmm'}}
+
+      - name: Docker Metadata action (Docker hub)
+        uses: docker/metadata-action@v5.7.0
+        id: meta-dhub
+        with:
+          images: |
+            docker.io/${{ github.repository }}-only-${{ matrix.linter }}
+          flavor: |
+            latest=false
+            prefix=beta
+          tags: |
+            type=raw,value=
+            type=raw,value={{date 'YYYYMMDD_HHmm'}}
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+        if: ${{ ( ( runner.arch != 'X64' || runner.os != 'Linux' ) && matrix.platform == 'linux/amd64' ) || matrix.platform != 'linux/amd64' }}
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build Image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: linters/${{ matrix.linter }}/Dockerfile
+          platforms: ${{ matrix.platform }}
+          build-args: |
+            BUILD_DATE=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.created'] }}
+            BUILD_VERSION=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.version'] }}
+            BUILD_REVISION=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.revision'] }}
+          load: false
+          push: ${{ github.event_name != 'pull_request' }}
+          secrets: |
+            GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
+          tags: ${{ steps.meta.outputs.tags }}
+
+      #####################################
+      # Run Linter test cases #
+      #####################################
+      - name: Run Test Cases
+        shell: bash
+        run: |
+          GITHUB_REPOSITORY=$([ "${{ github.event_name }}" == "pull_request" ] && echo "${{ github.event.pull_request.head.repo.full_name }}" || echo "${{ github.repository }}")
+          GITHUB_BRANCH=$([ "${{ github.event_name }}" == "pull_request" ] && echo "${{ github.head_ref }}" || echo "${{ github.ref_name }}")
+
+          TEST_KEYWORDS_TO_USE_UPPER="${{ matrix.linter }}"
+          TEST_KEYWORDS_TO_USE="${TEST_KEYWORDS_TO_USE_UPPER,,}"
+          docker image ls
+          docker run -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=text -e OUTPUT_FOLDER=${{ github.sha }} -e OUTPUT_DETAIL=detailed -e GITHUB_SHA=${{ github.sha }} -e GITHUB_REPOSITORY=${GITHUB_REPOSITORY} -e GITHUB_BRANCH=${GITHUB_BRANCH} -e GITHUB_TOKEN="${{ secrets.GITHUB_TOKEN }}" -e TEST_KEYWORDS="${TEST_KEYWORDS_TO_USE}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint ${{ fromJson(steps.meta.outputs.json).tags[0]}}
+        timeout-minutes: 30
+
+      - name: Invoke Mirror docker image workflow (Standalone linter image)
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: mirror-docker-image.yml
+          inputs: '{ "source-image": "${{ fromJson(steps.meta.outputs.json).tags[0]}}", "target-image": "${{ fromJson(steps.meta-dhub.outputs.json).tags[0]}}" }'
+
+      ##############################################
+      # Check Docker image security with Trivy #
+      ##############################################
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: "${{ fromJson(steps.meta.outputs.json).tags[0]}}"
+          format: "table"
+          exit-code: "1"
+          ignore-unfixed: true
+          scanners: vuln
+          vuln-type: "os,library"
+          severity: "CRITICAL,HIGH"
+          timeout: 10m0s
+        env:
+            ACTIONS_RUNTIME_TOKEN: ${{ secrets.GITHUB_TOKEN }}

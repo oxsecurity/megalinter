@@ -1,0 +1,4 @@
+EXTENDS:
+  - "https://raw.githubusercontent.com/oxsecurity/megalinter/main/.automation/test/mega-linter-config-test/extension3.mega-linter.yml"
+FILTER_REGEX_INCLUDE: "(base)"
+SHOW_ELAPSED_TIME: true

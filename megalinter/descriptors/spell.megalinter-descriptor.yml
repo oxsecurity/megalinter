@@ -2,40 +2,24 @@ descriptor_id: SPELL
 descriptor_type: other
 descriptor_flavors:
   - all_flavors # Applicable to CI in any language project
+  - cupcake
 lint_all_other_linters_files: true
 linters:
-  # MISSPELL
-  - linter_name: misspell
-    name: SPELL_MISSPELL
-    linter_text: misspell detects and corrects commonly misspelled english words
-    linter_url: https://github.com/client9/misspell
-    cli_lint_mode: list_of_files
-    cli_lint_extra_args:
-      - "-error"
-    cli_lint_fix_arg_name: "-w"
-    cli_lint_fix_remove_args:
-      - "-error"
-    cli_version_arg_name: "-v"
-    version_extract_regex: "((\\d+(\\.\\d+)+)|(dev))"
-    help_command_return_code: 2
-    examples:
-      - "misspell myfile.any"
-    install:
-      dockerfile:
-        - |
-          RUN ML_THIRD_PARTY_DIR="/third-party/misspell" \
-              && mkdir -p ${ML_THIRD_PARTY_DIR} \
-              && curl -L -o ${ML_THIRD_PARTY_DIR}/install-misspell.sh https://git.io/misspell \
-              && sh .${ML_THIRD_PARTY_DIR}/install-misspell.sh \
-              && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete \
-              && find /tmp -path '/tmp/tmp.*' -type f -name 'misspell*' -delete -o -type d -empty -delete
   # CSPELL
   - class: CSpellLinter
     linter_name: cspell
     name: SPELL_CSPELL
+    variables:
+      - name: SPELL_CSPELL_ANALYZE_FILE_NAMES
+        default_value: "true"
+        description: If set to `true`, MegaLinter will also send file names to cspell for analysis. Disable by defining `SPELL_CSPELL_ANALYZE_FILE_NAMES` to `false`
+    linter_speed: 1
     linter_text: |
       MegaLinter generates content of a `.cspell.json` config file at the end of its TextReporter artifact
+
       Copy it at the root of your repository, read it, remove real spelling errors (after have corrected them in the source), and you're good to go !
+
+      If you do not want cspell to analyze the files names, define `SPELL_CSPELL_ANALYZE_FILE_NAMES` to `false`
     linter_url: https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell
     linter_repo: https://github.com/streetsidesoftware/cspell
     linter_image_url: https://streetsidesoftware.gallerycdn.vsassets.io/extensions/streetsidesoftware/code-spell-checker/1.9.2/1601218033318/Microsoft.VisualStudio.Services.Icons.Default
@@ -45,14 +29,198 @@ linters:
     config_file_name: ".cspell.json"
     cli_lint_mode: list_of_files
     cli_lint_errors_count: regex_number
-    cli_lint_errors_regex: "Issues found: ([0-9]+) in .* files"
+    cli_lint_errors_regex: "Issues found: ([0-9]+) in .* file"
     examples:
       - "cspell myfile.any"
       - "cspell -c cspell.json myfile.any"
     install:
+      dockerfile:
+        - |-
+          # renovate: datasource=npm depName=cspell
+          ARG NPM_CSPELL_VERSION=8.17.5
       npm:
-        - "cspell"
+        - "cspell@${NPM_CSPELL_VERSION}"
     ide:
       vscode:
         - name: Code Spell Checker
           url: https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker
+  # PROSELINT
+  - class: ProselintLinter
+    linter_name: proselint
+    name: SPELL_PROSELINT
+    lint_all_other_linters_files: false
+    file_extensions:
+      - ".md"
+      - ".txt"
+    active_only_if_file_found:
+      - .proselintrc
+      - proselint/config.json
+    linter_text: a linter for prose
+    linter_speed: 2
+    linter_url: https://github.com/amperser/proselint
+    linter_repo: https://github.com/amperser/proselint
+    linter_banner_image_url: https://raw.githubusercontent.com/amperser/proselint/main/logo.png
+    linter_rules_url: https://github.com/amperser/proselint#checks
+    linter_rules_configuration_url: https://github.com/amperser/proselint#checks
+    cli_config_arg_name: --config
+    config_file_name: .proselintrc
+    cli_lint_mode: list_of_files
+    cli_lint_errors_count: regex_count
+    cli_lint_errors_regex: ":([0-9]+):([0-9]+): (.*)"
+    cli_version_arg_name: "-v"
+    examples:
+      - "proselint --config .proselintrc myfile.md myfile2.txt myfile3.rst"
+    install:
+      dockerfile:
+        - |-
+          # renovate: datasource=pypi depName=proselint
+          ARG PIP_PROSELINT_VERSION=0.14.0
+      pip:
+        - proselint==${PIP_PROSELINT_VERSION}
+    ide:
+      atom:
+        - name: linter-proselint
+          url: https://atom.io/packages/linter-proselint
+      idea:
+        - name: Proselint
+          url: https://plugins.jetbrains.com/plugin/9854-proselint
+          id: name.kropp.intellij.proselint
+      sublime:
+        - name: SublimeLinter-contrib-proselint
+          url: https://github.com/amperser/proselint/tree/main/plugins/sublime/SublimeLinter-contrib-proselint
+      vscode:
+        - name: VSCode Proselint
+          url: https://marketplace.visualstudio.com/items?itemName=PatrykPeszko.vscode-proselint
+
+  # Vale
+  - class: ValeLinter
+    linter_name: vale
+    name: SPELL_VALE
+    can_output_sarif: false
+    lint_all_other_linters_files: false
+    file_extensions:
+      - ".md"
+      - ".rst"
+    active_only_if_file_found:
+      - .vale.ini
+    descriptor_flavors:
+      - all_flavors
+      - documentation
+    linter_speed: 1
+    linter_text: |
+      Vale brings your editorial style to life !
+
+      To be active within MegaLinter, you need to [initialize a .vale.ini configuration file](https://vale.sh/docs/vale-cli/structure/) at the root of your repository.
+
+      MegaLinter analyze markdown and restructuredText files by default, you can change that using SPELL_VALE_FILE_EXTENSIONS variable.
+    linter_url: https://vale.sh/
+    linter_repo: https://github.com/errata-ai/vale
+    linter_rules_url: https://vale.sh/hub/
+    linter_rules_configuration_url: https://vale.sh/explorer/
+    linter_rules_inline_disable_url: https://vale.sh/docs/topics/vocab/
+    cli_lint_mode: list_of_files
+    cli_config_arg_name: "--config"
+    config_file_name: .vale.ini
+    cli_lint_errors_count: regex_number
+    cli_lint_errors_regex: "([0-9]+) errors?"
+    cli_lint_warnings_count: regex_number
+    cli_lint_warnings_regex: "([0-9]+) warnings?"
+    examples:
+      - "vale README.md file1.md file2.md file3.md"
+      - "vale --config .vale.ini README.md file1.md file2.md file3.md"
+    test_folder: spell_vale
+    install:
+      dockerfile:
+        - |-
+          # renovate: datasource=docker depName=jdkato/vale
+          ARG SPELL_VALE_VERSION=v3.9.4
+        - FROM jdkato/vale:${SPELL_VALE_VERSION} AS vale
+        - COPY --link --from=vale /bin/vale /bin/vale
+    ide:
+      emacs:
+        - name: flymake-vale
+          url: https://github.com/tpeacock19/flymake-vale
+      jetbrains:
+        - name: Vale
+          url: https://vale.sh/docs/integrations/jetbrains/
+      sublime:
+        - name: SublimeLinter-contrib-vale
+          url: https://packagecontrol.io/packages/SublimeLinter-contrib-vale
+      vim:
+        - name: dense-analysis/vale
+          url: https://github.com/dense-analysis/ale
+      vscode:
+        - name: Vale
+          url: https://marketplace.visualstudio.com/items?itemName=ChrisChinchilla.vale-vscode
+
+  # LYCHEE
+  - class: LycheeLinter
+    linter_name: lychee
+    name: SPELL_LYCHEE
+    linter_text: |
+      A file **.lycheeignore** can be defined at the root of the repository to ignore some urls.
+
+      Each line can contain Regular Expressions or glob format.
+
+      Example with glob, regex and full url:
+
+      ```
+      https://twitter.com/intent/tweet*
+      (.*some_url_part)
+      https://github.com/sgerrand/alpine-pkg-glibc/releases/download
+      ```
+    test_folder: spell_lychee
+    can_output_sarif: false
+    descriptor_flavors:
+      - all_flavors
+      - cupcake
+      - documentation
+    linter_url: https://lychee.cli.rs
+    linter_repo: https://github.com/lycheeverse/lychee
+    linter_banner_image_url: https://raw.githubusercontent.com/lycheeverse/lychee/master/assets/banner.svg
+    linter_image_url: https://raw.githubusercontent.com/lycheeverse/lychee/master/assets/logo.svg
+    linter_rules_url: https://lychee.cli.rs/#/usage/cli
+    linter_rules_configuration_url: https://lychee.cli.rs/#/usage/config
+    linter_speed: 2
+    lint_all_other_linters_files: false
+    lint_all_files: false
+    file_extensions:
+      - .md
+      - .mdx
+      - .markdown
+      - .html
+      - .htm
+      - .rst
+      - .txt
+      - .json
+      - .jsonc
+      - .json5
+      - .yaml
+      - .yml
+    ignore_file_name: .lycheeignore
+    config_file_name: lychee.toml
+    cli_config_arg_name: --config
+    cli_help_arg_name: --help
+    cli_version_arg_name: --version
+    cli_lint_mode: list_of_files
+    cli_lint_errors_count: regex_number
+    cli_lint_errors_regex: "Errors\\.+([0-9]+)"
+    cli_lint_extra_args:
+      - --format
+      - detailed
+      - --no-progress
+    examples:
+      - lychee --format detailed --no-progress README.md info.txt test.html
+      - lychee --format detailed --no-progress README.md
+      - lychee --format detailed --no-progress test.html info.txt
+      - lychee --format detailed --no-progress --offline path/to/directory
+      - lychee --format detailed --no-progress https://raw.githubusercontent.com/lycheeverse/lychee/master/README.md
+      - 'lychee --format detailed --no-progress "~/projects/big_project/**/README.*"'
+      - 'lychee --format detailed --no-progress --glob-ignore-case --verbose "~/projects/**/[r]eadme.*"'
+    install:
+      dockerfile:
+        - |-
+          # renovate: datasource=docker depName=lycheeverse/lychee
+          ARG SPELL_LYCHEE_VERSION=sha-7c4b132-alpine
+        - FROM lycheeverse/lychee:${SPELL_LYCHEE_VERSION} AS lychee
+        - COPY --link --from=lychee /usr/local/bin/lychee /usr/bin/

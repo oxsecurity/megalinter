@@ -2,23 +2,42 @@ descriptor_id: BASH
 descriptor_type: language
 descriptor_flavors:
   - all_flavors # Applicable to CI in any language project
+  - ci_light
+  - cupcake
+  - c_cpp
+  - formatters
 file_extensions:
+  - ""
   - ".sh"
   - ".bash"
   - ".dash"
   - ".ksh"
+file_contains_regex_extensions:
+  - ""
+file_contains_regex:
+  - "^#!/usr/bin/env bash"
+  - "^#!/bin/bash"
+  - "^#!/bin/sh"
+install:
+  apk:
+    - bash
 test_folder: shell
 linters:
   # Bash Built in Linter
   - class: BashBashExecLinter
     linter_name: bash-exec
-    linter_url: https://tiswww.case.edu/php/chet/bash/bashtop.html
+    linter_url: https://www.gnu.org/software/bash/
     linter_text: |
-      Checks if shell files are defined are executable
+      Checks if shell files are executable
 
       Note: You can run `git add --chmod=+x myfile.sh` to make a file executable on Windows
+    linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/bash-exec.png
     linter_megalinter_ref_url: never
     name: BASH_EXEC
+    descriptor_flavors:
+      - all_flavors
+      - cupcake
+      - security
     cli_executable_help: bash
     cli_executable_version: bash
     cli_help_arg_name: "--help"
@@ -31,33 +50,49 @@ linters:
               && chmod +x /usr/bin/bash-exec
     variables:
       - name: ERROR_ON_MISSING_EXEC_BIT
-        description: If set to `false`, the `bash-exec` linter will report a warning if a shell script is not executable. If set to `true`, the `bash-exec` linter will report an arror instead
+        description: If set to `false`, the `bash-exec` linter will report a warning if a shell script is not executable. If set to `true`, the `bash-exec` linter will report an error instead
         default_value: "false"
   # Shellcheck
-  - linter_name: shellcheck
+  - class: ShellcheckLinter
+    linter_name: shellcheck
     name: BASH_SHELLCHECK
+    can_output_sarif: true
+    descriptor_flavors:
+      - all_flavors
+      - cupcake
+      - ci_light
+      - security
     linter_url: https://github.com/koalaman/shellcheck
+    linter_repo: https://github.com/koalaman/shellcheck
     linter_rules_url: https://github.com/koalaman/shellcheck#gallery-of-bad-code
     linter_rules_inline_disable_url: https://github.com/koalaman/shellcheck/wiki/Ignore
+    linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/shellcheck.png
     linter_megalinter_ref_url: never
     cli_lint_mode: list_of_files
     cli_lint_extra_args:
       - "--color=auto"
       - "--external-sources"
+    cli_sarif_args:
+      - -f
+      - json
     cli_help_arg_name: "--help"
     cli_lint_errors_count: regex_count
     cli_lint_errors_regex: "In .* line .*:.*\\n"
     examples:
       - "shellcheck --color=auto --external-sources myfile.sh"
     install:
+      cargo:
+        - shellcheck-sarif@${CARGO_SHELLCHECK_SARIF_VERSION}
       dockerfile:
-        - |
-          RUN ML_THIRD_PARTY_DIR="/third-party/shellcheck" \
-              && mkdir -p ${ML_THIRD_PARTY_DIR} \
-              && wget -qO- "https://github.com/koalaman/shellcheck/releases/download/stable/shellcheck-stable.linux.x86_64.tar.xz" | tar -xJv --directory ${ML_THIRD_PARTY_DIR} \
-              && mv "${ML_THIRD_PARTY_DIR}/shellcheck-stable/shellcheck" /usr/bin/ \
-              && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete \
-              && shellcheck --version
+        - |-
+          # renovate: datasource=crate depName=shellcheck-sarif
+          ARG CARGO_SHELLCHECK_SARIF_VERSION=0.7.0
+        # Also update shellcheck version in action.megalinter-descriptor.yml
+        - |-
+          # renovate: datasource=docker depName=koalaman/shellcheck
+          ARG BASH_SHELLCHECK_VERSION=v0.10.0
+        - FROM koalaman/shellcheck:${BASH_SHELLCHECK_VERSION} AS shellcheck
+        - COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
     ide:
       atom:
         - name: linter-shellcheck
@@ -84,6 +119,7 @@ linters:
   - linter_name: shfmt
     is_formatter: true
     linter_url: https://github.com/mvdan/sh
+    linter_repo: https://github.com/mvdan/sh
     linter_megalinter_ref_url: "no"
     name: BASH_SHFMT
     cli_lint_mode: list_of_files
@@ -101,8 +137,11 @@ linters:
       - "shfmt -w myfile.sh" # Fix
     install:
       dockerfile:
-        - FROM mvdan/shfmt:latest-alpine as shfmt
-        - COPY --from=shfmt /bin/shfmt /usr/bin/
+        - |-
+          # renovate: datasource=docker depName=rhysd/actionlint
+          ARG BASH_SHFMT_VERSION=v3.10.0-alpine
+        - FROM mvdan/shfmt:${BASH_SHFMT_VERSION} AS shfmt
+        - COPY --link --from=shfmt /bin/shfmt /usr/bin/
     ide:
       atom:
         - name: format-shell

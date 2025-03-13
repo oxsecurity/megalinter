@@ -2,6 +2,8 @@ descriptor_id: KUBERNETES
 descriptor_type: tooling_format
 descriptor_flavors:
   - all_flavors # Applicable to CI in any language project
+  - cupcake
+  - security
 files_sub_directory: kubernetes
 file_extensions:
   - ".yml"
@@ -12,32 +14,16 @@ file_contains_regex:
   - 'kustomize\.config\.k8s\.io'
   - "tekton"
 linters:
-  # KUBEVAL
-  - linter_name: kubeval
-    name: KUBERNETES_KUBEVAL
-    linter_url: https://www.kubeval.com/
-    linter_repo: https://github.com/instrumenta/kubeval
-    cli_config_extra_args:
-      - "--strict"
-    version_extract_regex: "((\\d+(\\.\\d+)+)|(dev))"
-    examples:
-      - "kubeval -strict myfile.yml"
-    install:
-      dockerfile:
-        - |
-          RUN ML_THIRD_PARTY_DIR="/third-party/kubeval" \
-              && mkdir -p ${ML_THIRD_PARTY_DIR} \
-              && wget -P ${ML_THIRD_PARTY_DIR} -q https://github.com/instrumenta/kubeval/releases/latest/download/kubeval-linux-amd64.tar.gz \
-              && tar xf ${ML_THIRD_PARTY_DIR}/kubeval-linux-amd64.tar.gz --directory ${ML_THIRD_PARTY_DIR} \
-              && mv ${ML_THIRD_PARTY_DIR}/kubeval /usr/local/bin \
-              && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete
   # KUBECONFORM
   - linter_name: kubeconform
     name: KUBERNETES_KUBECONFORM
     linter_repo: https://github.com/yannh/kubeconform
     linter_url: https://github.com/yannh/kubeconform
-    # The kubeconform doc indicates a -v arg to get version, but it doesn't work...
-    linter_version_cache: "0.4.12"
+    linter_banner_image_url: https://user-images.githubusercontent.com/19731161/142411871-f695e40c-bfa8-43ca-97c0-94c256749732.png
+    linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/kubeconform.png
+    linter_text: |
+      `kubeconform` is a schema-aware Kubernetes manifest validation tool, that tends to have more up-to-date schema definitions than `kubeval`.
+    cli_version_arg_name: -v
     cli_help_arg_name: -h
     cli_lint_extra_args:
       - -summary
@@ -47,19 +33,84 @@ linters:
     # Count errors when either file is invalid, or an error occurred (e.g. couldn't find schema for this object)
     cli_lint_errors_count: regex_sum
     cli_lint_errors_regex: "(?:Invalid|Errors): ([0-9]+)"
-    linter_banner_image_url: https://user-images.githubusercontent.com/19731161/142411871-f695e40c-bfa8-43ca-97c0-94c256749732.png
-    linter_text: |
-      `kubeconform` is a schema-aware Kubernetes manifest validation tool, that tends to have more up-to-date schema definitions than `kubeval`.
     examples:
       - kubeconform myfile.yml
       - kubeconform -ignore-missing-schemas -skip SomeCRD,AnotherCRD -kubernetes-version '1.18.0' -strict myfile.yml
     install:
       dockerfile:
-        - |
-          RUN ML_THIRD_PARTY_DIR="/third-party/kubeconform" \
-              && KUBECONFORM_VERSION=v0.4.12 \
-              && mkdir -p ${ML_THIRD_PARTY_DIR} \
-              && wget -P ${ML_THIRD_PARTY_DIR} -q https://github.com/yannh/kubeconform/releases/download/$KUBECONFORM_VERSION/kubeconform-linux-amd64.tar.gz \
-              && tar xf ${ML_THIRD_PARTY_DIR}/kubeconform-linux-amd64.tar.gz --directory ${ML_THIRD_PARTY_DIR} \
-              && mv ${ML_THIRD_PARTY_DIR}/kubeconform /usr/local/bin \
-              && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete
+        - |-
+          # renovate: datasource=docker depName=ghcr.io/yannh/kubeconform
+          ARG KUBERNETES_KUBECONFORM_VERSION=v0.6.7-alpine
+        - FROM ghcr.io/yannh/kubeconform:${KUBERNETES_KUBECONFORM_VERSION} AS kubeconform
+        - COPY --link --from=kubeconform /kubeconform /usr/bin/
+
+  # HELM LINT
+  - linter_name: helm
+    name: KUBERNETES_HELM
+    linter_repo: https://github.com/helm/helm
+    linter_url: https://helm.sh/docs/helm/helm_lint/
+    files_sub_directory: ""
+    test_folder: kubernetes_helm
+    active_only_if_file_found:
+      - Chart.yml
+      - Chart.yaml
+    cli_lint_mode: project
+    cli_help_arg_name: help
+    cli_version_arg_name: version
+    cli_lint_extra_args:
+      - "lint"
+    linter_banner_image_url: https://helm.sh/img/helm.svg
+    linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/helm.png
+    linter_text: |
+      `helm lint` examine a chart for possible issues.
+    examples:
+      - helm lint .
+      - helm lint --with-subcharts .
+    install:
+      apk:
+        - helm
+    # KUBESCAPE
+  - linter_name: kubescape
+    name: KUBERNETES_KUBESCAPE
+    can_output_sarif: true
+    files_sub_directory: ""
+    linter_repo: https://github.com/kubescape/kubescape
+    linter_url: https://github.com/kubescape/kubescape
+    linter_text: |
+      `kubescape scan` examines charts and kubernetes files for possible issues, best practices and security vulnerabilities.
+    linter_banner_image_url: https://www.armosec.io/wp-content/uploads/2022/11/Kubescape_BY_ARMO.png
+    linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/kubescape.png
+    linter_spdx_license: Apache-2.0
+    active_only_if_file_found:
+      - Chart.yml
+      - Chart.yaml
+    cli_lint_mode: project
+    cli_help_arg_name: help
+    cli_version_arg_name: version
+    cli_lint_extra_args:
+      - "scan"
+      - --verbose
+      - "--severity-threshold"
+      - high
+    cli_lint_extra_args_after:
+      - "."
+    cli_sarif_args: ["--format", "sarif", "--output", "{{SARIF_OUTPUT_FILE}}"]
+    examples:
+      - "kubescape scan ."
+    test_folder: kubernetes_kubescape
+    ide:
+      vscode:
+        - name: Kubescape
+          url: https://marketplace.visualstudio.com/items?itemName=kubescape.kubescape
+    install:
+      apk:
+        - curl
+        - gcompat
+        - libstdc++
+      dockerfile:
+        - |-
+          # renovate: datasource=github-tags depName=kubescape/kubescape
+          ARG KUBERNETES_KUBESCAPE_VERSION=3.0.30
+        - |-
+          RUN ln -s /lib/libc.so.6 /usr/lib/libresolv.so.2 && \
+              curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash -s -- -v "v${KUBERNETES_KUBESCAPE_VERSION}"

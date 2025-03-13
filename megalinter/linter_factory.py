@@ -47,6 +47,18 @@ def list_flavor_linters(linters_init_params=None, flavor_id="all"):
     return linters
 
 
+# List unique linter
+def list_linters_by_name(linters_init_params=None, linter_names=[]):
+    all_linters = list_all_linters(linters_init_params)
+    linters = []
+    for linter in all_linters:
+        if linter.name in linter_names:
+            linters += [linter]
+        else:
+            del linter
+    return linters
+
+
 # List all descriptor files (one by language)
 def list_descriptor_files():
     descriptors_dir = get_descriptor_dir()
@@ -60,7 +72,7 @@ def list_descriptor_files():
 # Extract descriptor info from descriptor file
 def build_descriptor_info(file):
     with open(file, "r", encoding="utf-8") as f:
-        language_descriptor = yaml.load(f, Loader=yaml.FullLoader)
+        language_descriptor = yaml.safe_load(f)
     return language_descriptor
 
 
@@ -71,7 +83,7 @@ def build_descriptor_linters(file, linter_init_params=None, linter_names=None):
     linters = []
     # Dynamic generation from yaml
     with open(file, "r", encoding="utf-8") as f:
-        language_descriptor = yaml.load(f, Loader=yaml.FullLoader)
+        language_descriptor = yaml.safe_load(f)
 
         # Build common attributes
         common_attributes = {}
@@ -109,7 +121,7 @@ def build_descriptor_linters(file, linter_init_params=None, linter_names=None):
 
 
 # Build a single linter instance from language and linter name
-def build_linter(language, linter_name):
+def build_linter(language, linter_name, linter_init_params=None):
     language_descriptor_file = (
         get_descriptor_dir()
         + os.path.sep
@@ -119,8 +131,22 @@ def build_linter(language, linter_name):
     assert os.path.isfile(
         language_descriptor_file
     ), f"Unable to find {language_descriptor_file}"
-    linters = build_descriptor_linters(language_descriptor_file, None, [linter_name])
+    linters = build_descriptor_linters(
+        language_descriptor_file, linter_init_params, [linter_name]
+    )
     assert (
         len(linters) == 1
     ), f"Unable to find linter {linter_name} in {language_descriptor_file}"
     return linters[0]
+
+
+# Sort groups of linters by speed
+def sort_linters_groups_by_speed(linters_groups):
+    # Calculate sum of linter speeds in the group
+    linter_groups_speed_points = list(
+        map(lambda x: [sum(i.linter_speed for i in x), x], linters_groups)
+    )
+    # Sort by slower to faster
+    linter_groups_speed_points.sort(key=lambda x: x[0])
+    linters_groups = list(map(lambda x: x[1], linter_groups_speed_points))
+    return linters_groups

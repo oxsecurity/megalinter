@@ -1,0 +1,15 @@
+Results of lychee linter (version 0.0.0)
+See documentation on https://lychee.cli.rs
+-----------------------------------------------
+
+✅ [SUCCESS] for workspace /github/workspace
+Linter raw log:
+📝 Summary
+---------------------
+🔍 Total............1
+✅ Successful.......1
+⏳ Timeouts.........0
+🔀 Redirected.......0
+👻 Excluded.........0
+❓ Unknown..........0
+🚫 Errors...........0

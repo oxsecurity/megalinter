@@ -1,76 +1,65 @@
 descriptor_id: PHP
 descriptor_type: language
 descriptor_flavors:
+  - cupcake
   - php
 file_extensions:
   - ".php"
 install:
   apk:
-    - php7
-    - php7-phar
-    - php7-json
-    - php7-mbstring
-    - php7-xmlwriter
-    - php7-tokenizer
-    - php7-ctype
-    - php7-curl
-    - php7-dom
-    - php7-simplexml
-    - php8
-    - php8-phar
-    - php8-mbstring
-    - php8-xmlwriter
-    - php8-tokenizer
-    - php8-ctype
-    - php8-curl
-    - php8-dom
-    - php8-simplexml
-    - composer
+    - gnupg
+    - php84
+    - php84-phar
+    - php84-mbstring
+    - php84-xmlwriter
+    - php84-tokenizer
+    - php84-ctype
+    - php84-curl
+    - php84-dom
+    - php84-opcache
+    - php84-openssl
+    - php84-common
+    - php84-simplexml
     - dpkg
   dockerfile:
-    - |
-      RUN wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
-          && wget --tries=5 -q -O phive.phar.asc https://phar.io/releases/phive.phar.asc \
-          && PHAR_KEY_ID="0x9D8A98B29B2D5D79" \
-          && ( gpg --keyserver keyserver.pgp.com --recv-keys "$PHAR_KEY_ID" \
-              || gpg --keyserver ha.pool.sks-keyservers.net --recv-keys "$PHAR_KEY_ID" \
-              || gpg --keyserver pgp.mit.edu --recv-keys "$PHAR_KEY_ID" \
-              || gpg --keyserver hkps://keyserver.ubuntu.com --recv-keys "$PHAR_KEY_ID" ) \
-          && gpg --verify phive.phar.asc phive.phar \
-          && chmod +x phive.phar \
-          && mv phive.phar /usr/local/bin/phive \
-          && rm phive.phar.asc \
-          && update-alternatives --install /usr/bin/php php /usr/bin/php7 100 \
-          && update-alternatives --install /usr/bin/php php /usr/bin/php8 10
+    - RUN update-alternatives --install /usr/bin/php php /usr/bin/php84 110
+    - COPY --from=composer/composer:2-bin /composer /usr/bin/composer
+    - ENV PATH="/root/.composer/vendor/bin:${PATH}"
+    - ENV PHP_CS_FIXER_IGNORE_ENV=true
 linters:
-  # PHP Built in Linter
-  - linter_name: php
-    linter_url: https://www.php.net
-    linter_repo: https://github.com/php/php-src
-    linter_banner_image_url: https://www.php.net/images/logos/new-php-logo.svg
-    linter_megalinter_ref_url: never
-    name: PHP_BUILTIN
-    cli_lint_extra_args:
-      - "-l"
-    examples:
-      - "php -l myfile.js"
   # PHPCS
   - linter_name: phpcs
     name: PHP_PHPCS
-    linter_url: https://github.com/squizlabs/PHP_CodeSniffer
-    linter_rules_configuration_url: https://github.com/squizlabs/PHP_CodeSniffer/wiki/Advanced-Usage#using-a-default-configuration-file
-    linter_rules_inline_disable_url: https://github.com/squizlabs/PHP_CodeSniffer/wiki/Advanced-Usage#ignoring-parts-of-a-file
+    can_output_sarif: true
+    linter_url: https://github.com/PHPCSStandards/PHP_CodeSniffer
+    linter_repo: https://github.com/PHPCSStandards/PHP_CodeSniffer
+    linter_rules_configuration_url: https://github.com/PHPCSStandards/PHP_CodeSniffer/wiki/Advanced-Usage#using-a-default-configuration-file
+    linter_rules_inline_disable_url: https://github.com/PHPCSStandards/PHP_CodeSniffer/wiki/Advanced-Usage#ignoring-parts-of-a-file
+    linter_rules_ignore_config_url: https://github.com/PHPCSStandards/PHP_CodeSniffer/wiki/Advanced-Usage#ignoring-files-and-folders
+    linter_rules_url: https://gist.github.com/tmsnvd/057ef1cf4fd412e8c8e866e5ba5119bc
     config_file_name: phpcs.xml
     cli_lint_mode: list_of_files
     cli_config_arg_name: "--standard="
+    cli_sarif_args:
+      - "--report=\\Bartlett\\Sarif\\Converter\\Reporter\\PhpCsReport"
+    cli_lint_errors_count: regex_sum
+    cli_lint_errors_regex: "FOUND ([0-9]+) ERRORS?"
+    cli_lint_warnings_count: regex_sum
+    cli_lint_warnings_regex: "AND ([0-9]+) WARNINGS?"
     examples:
       - "phpcs myfile.php"
       - "phpcs --standard=phpcs.xml myfile.php"
       - "phpcs --standard=phpcs.xml mydir/ myfile.php"
     install:
       dockerfile:
+        - |-
+          # renovate: datasource=packagist depName=squizlabs/php_codesniffer
+          ARG PHP_SQUIZLABS_PHP_CODESNIFFER_VERSION=3.11.3
+        - |-
+          # renovate: datasource=packagist depName=bartlett/sarif-php-converters
+          ARG PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION=1.1.0
         - |
-          RUN phive --no-progress install phpcs -g --trust-gpg-keys 31C7E470E2138192
+          RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require squizlabs/php_codesniffer:${PHP_SQUIZLABS_PHP_CODESNIFFER_VERSION} bartlett/sarif-php-converters:${PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION}
     ide:
       atom:
         - name: linter-phpcs
@@ -91,6 +80,7 @@ linters:
   # PHP Stan
   - linter_name: phpstan
     name: PHP_PHPSTAN
+    can_output_sarif: true
     linter_url: https://phpstan.org/
     linter_repo: https://github.com/phpstan/phpstan
     linter_image_url: https://i.imgur.com/WaRKPlC.png
@@ -104,6 +94,8 @@ linters:
       - "--no-ansi"
       - "--memory-limit"
       - "1G"
+    cli_sarif_args:
+      - "--error-format=sarif"
     cli_lint_errors_count: regex_number
     cli_lint_errors_regex: "Found ([0-9]+) error"
     examples:
@@ -113,9 +105,16 @@ linters:
       - "phpstan analyse --no-progress --no-ansi mydir1/ mydir2/ myfile.php"
     install:
       dockerfile:
-        - |
-          RUN phive --no-progress install phpstan -g --trust-gpg-keys CF1A108D0E7AE720
-    ide:
+        - |-
+          # renovate: datasource=packagist depName=phpstan/phpstan
+          ARG PHP_PHPSTAN_PHPSTAN_VERSION=2.1.8
+        - |-
+          # renovate: datasource=packagist depName=phpstan/extension-installer
+          ARG PHP_PHPSTAN_EXTENSION_INSTALLER_VERSION=1.4.3
+        - |-
+          # renovate: datasource=packagist depName=bartlett/sarif-php-converters
+          ARG PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION=1.1.0
+        - RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer config --global allow-plugins.phpstan/extension-installer true && composer global require phpstan/phpstan:${PHP_PHPSTAN_PHPSTAN_VERSION} phpstan/extension-installer:${PHP_PHPSTAN_EXTENSION_INSTALLER_VERSION} bartlett/sarif-php-converters:${PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION}
       idea:
         - name: PHPStan / Psalm / Generics
           url: https://plugins.jetbrains.com/plugin/12754-phpstan--psalm--generics
@@ -125,6 +124,7 @@ linters:
   # PSALM
   - linter_name: psalm
     name: PHP_PSALM
+    can_output_sarif: true
     linter_url: https://psalm.dev
     linter_repo: https://github.com/vimeo/psalm
     linter_rules_url: https://psalm.dev/docs/running_psalm/issues/
@@ -133,7 +133,11 @@ linters:
     linter_rules_inline_disable_url: https://psalm.dev/docs/running_psalm/dealing_with_code_issues/#docblock-suppression
     config_file_name: psalm.xml
     cli_lint_mode: list_of_files
+    cli_lint_extra_args:
+      - --output-format=console
     cli_config_arg_name: "--config="
+    cli_sarif_args:
+      - "--report={{SARIF_OUTPUT_FILE}}"
     version_extract_regex: "((\\d+(\\.\\d+)+)|Psalm (.*)@)"
     cli_lint_errors_count: regex_number
     cli_lint_errors_regex: "([0-9]+) error"
@@ -144,20 +148,29 @@ linters:
       - "psalm --config=psalm.xml myfile.php mydir/"
     install:
       dockerfile:
+        - |-
+          # renovate: datasource=packagist depName=vimeo/psalm
+          ARG PHP_VIMEO_PSALM_VERSION=6.5.0
         - |
-          RUN phive --no-progress install psalm -g --trust-gpg-keys 8A03EA3B385DBAA1,12CE0F1D262429A5
+          RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require vimeo/psalm:${PHP_VIMEO_PSALM_VERSION}
     ide:
       idea:
         - name: PHPStan / Psalm / Generics
           url: https://plugins.jetbrains.com/plugin/12754-phpstan--psalm--generics
+          id: de.espend.idea.php.generics
       vscode:
-        - name: Psalm VsCode Plugin
+        - name: Psalm VSCode Plugin
           url: https://marketplace.visualstudio.com/items?itemName=getpsalm.psalm-vscode-plugin
   # PHPLint
   - linter_name: phplint
+    can_output_sarif: true
     linter_url: https://github.com/overtrue/phplint
+    linter_repo: https://github.com/overtrue/phplint
     config_file_name: .phplint.yml
     cli_lint_mode: list_of_files
+    cli_sarif_args:
+      - "--format=\\Overtrue\\PHPLint\\Output\\SarifOutput"
+      - "--output={{SARIF_OUTPUT_FILE}}"
     examples:
       - "phplint myfile.php"
       - "phplint mydir"
@@ -165,7 +178,60 @@ linters:
       - "phplint mydir -vvv"
     install:
       dockerfile:
+        - |-
+          # renovate: datasource=packagist depName=overtrue/phplint
+          ARG PHP_OVERTRUE_PHPLINT_VERSION=9.5.6
+        - |-
+          # renovate: datasource=packagist depName=bartlett/sarif-php-converters
+          ARG PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION=1.1.0
         - |
-          RUN composer global require overtrue/phplint ^3.0 \
-              && composer global config bin-dir --absolute
-        - ENV PATH="/root/.composer/vendor/bin:$PATH"
+          RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require overtrue/phplint:${PHP_OVERTRUE_PHPLINT_VERSION} bartlett/sarif-php-converters:${PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION}
+  # PHP-CS-Fixer
+  - linter_name: php-cs-fixer
+    name: PHP_PHPCSFIXER
+    linter_text: |
+      PHP-CS-Fixer is able to fix rule violations detected, and even those marked as (risky)
+
+      - Enable **autofixes** by adding `PHP_PHPCSFIXER` in [APPLY_FIXES variable](https://megalinter.io/beta/configuration/#apply-fixes)
+      - Add "--allow-risky=yes" option in PHP_PHPCSFIXER_ARGUMENTS variable
+    linter_url: https://cs.symfony.com/
+    linter_repo: https://github.com/PHP-CS-Fixer/PHP-CS-Fixer
+    linter_image_url: https://cs.symfony.com/_static/images/logo.png
+    config_file_name: .php-cs-fixer.dist.php
+    cli_lint_mode: project
+    cli_lint_extra_args:
+      - "fix"
+      - "--dry-run"
+      - "--verbose"
+      - "--show-progress=none"
+    cli_config_arg_name: "--config"
+    cli_lint_fix_remove_args:
+      - "--dry-run"
+    version_extract_regex: "(?<=PHP CS Fixer )\\d+(\\.\\d+)+"
+    examples:
+      - "php-cs-fixer check myfile.php"
+      - "php-cs-fixer check mydir"
+      - "php-cs-fixer check --config .php-cs-fixer.php"
+    install:
+      dockerfile:
+        - |-
+          # renovate: datasource=packagist depName=friendsofphp/php-cs-fixer
+          ARG PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION=v3.71.0
+        - |
+          RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require friendsofphp/php-cs-fixer:${PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION} --with-all-dependencies
+    ide:
+      netbeans:
+        - name: PHP-CS-Fixer
+          url: https://plugins.netbeans.apache.org/catalogue/?id=36
+      idea:
+        - name: php-cs-fixer
+          url: https://www.jetbrains.com/help/phpstorm/using-php-cs-fixer.html
+      sublime:
+        - name: sublime-phpcs
+          url: https://github.com/benmatselby/sublime-phpcs
+      vim:
+        - name: vim-php-cs-fixer
+          url: https://github.com/stephpy/vim-php-cs-fixer
+      vscode:
+        - name: vscode-php-cs-fixer
+          url: https://github.com/junstyle/vscode-php-cs-fixer

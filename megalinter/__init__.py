@@ -15,5 +15,7 @@ __all__ = [
     "plugin_factory",
     "pre_post_factory",
     "utils",
+    "utilstest",
     "alpaca",
+    "logger",
 ]

@@ -2,15 +2,30 @@ descriptor_id: ARM
 descriptor_type: tooling_format
 descriptor_flavors:
   - dotnet
+  - dotnetweb
 file_extensions:
   - ".json"
 file_contains_regex:
   - 'schema\.management\.azure\.com'
+install:
+  apk:
+    - icu-libs
+  dockerfile:
+    - |-
+      # renovate: datasource=github-tags depName=PowerShell/PowerShell
+      ARG POWERSHELL_VERSION=7.5.0
+    - |
+      RUN curl -L https://github.com/PowerShell/PowerShell/releases/download/v${POWERSHELL_VERSION}/powershell-${POWERSHELL_VERSION}-linux-musl-x64.tar.gz -o /tmp/powershell.tar.gz \
+          && mkdir -p /opt/microsoft/powershell/7 \
+          && tar zxf /tmp/powershell.tar.gz -C /opt/microsoft/powershell/7 \
+          && chmod +x /opt/microsoft/powershell/7/pwsh \
+          && ln -s /opt/microsoft/powershell/7/pwsh /usr/bin/pwsh
 linters:
   # ARM TTK
   - class: ArmLinter
     linter_name: arm-ttk
     linter_url: https://github.com/Azure/arm-ttk
+    linter_repo: https://github.com/Azure/arm-ttk
     linter_rules_configuration_url: https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/test-toolkit#customize-tests
     config_file_name: .arm-ttk.psd1
     linter_version_cache: "0.0.0" # TODO: retrieve arm-ttk version
@@ -30,12 +45,14 @@ linters:
             "
     install:
       dockerfile:
-        - ARG ARM_TTK_NAME='master.zip'
-        - ARG ARM_TTK_URI='https://github.com/Azure/arm-ttk/archive/master.zip'
+        - |-
+          # renovate: datasource=github-tags depName=Azure/arm-ttk
+          ARG ARM_TTK_VERSION=20240328
+        - ARG ARM_TTK_NAME='arm-ttk.zip'
         - ARG ARM_TTK_DIRECTORY='/opt/microsoft'
-        - ENV ARM_TTK_PSD1="${ARM_TTK_DIRECTORY}/arm-ttk-master/arm-ttk/arm-ttk.psd1"
+        - ENV ARM_TTK_PSD1="${ARM_TTK_DIRECTORY}/arm-ttk/arm-ttk/arm-ttk.psd1"
         - |
-          RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
+          RUN curl --retry 5 --retry-delay 5 -sLO "https://github.com/Azure/arm-ttk/releases/download/${ARM_TTK_VERSION}/${ARM_TTK_NAME}" \
               && unzip "${ARM_TTK_NAME}" -d "${ARM_TTK_DIRECTORY}" \
               && rm "${ARM_TTK_NAME}" \
               && ln -sTf "${ARM_TTK_PSD1}" /usr/bin/arm-ttk \

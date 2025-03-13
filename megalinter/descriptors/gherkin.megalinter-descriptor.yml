@@ -1,11 +1,16 @@
 descriptor_id: GHERKIN
 descriptor_type: tooling_format
+descriptor_flavors:
+  - c_cpp
+  - dotnet
+  - dotnetweb
 file_extensions:
   - ".feature"
 linters:
   # GHERKIN-LINT
   - linter_name: gherkin-lint
     linter_url: https://github.com/vsiakka/gherkin-lint
+    linter_repo: https://github.com/vsiakka/gherkin-lint
     linter_rules_url: https://github.com/vsiakka/gherkin-lint#available-rules
     linter_rules_configuration_url: https://github.com/vsiakka/gherkin-lint#rule-configuration
     config_file_name: ".gherkin-lintrc"
@@ -14,5 +19,9 @@ linters:
       - "gherkin-lint myfile.feature"
       - "gherkin-lint -c .gherkin-lintrc myfile.feature"
     install:
+      dockerfile:
+        - |-
+          # renovate: datasource=npm depName=gherkin-lint
+          ARG NPM_GHERKIN_LINT_VERSION=4.2.4
       npm:
-        - gherkin-lint
+        - gherkin-lint@${NPM_GHERKIN_LINT_VERSION}

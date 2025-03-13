@@ -23,6 +23,7 @@ on:
       - "megalinter/**"
       - "flavors/**"
       - "**/linter-versions.json"
+      - "**/.sh"
 
 ###############
 # Set the Job #
@@ -33,18 +34,25 @@ jobs:
     name: Deploy Docker Image - RELEASE - Flavors
     # Set the agent to run on
     runs-on: ${{ matrix.os }}
-    environment: 
-      name: latest-flavors
+    permissions:
+      actions: write
+      packages: write
+    environment:
+      name: release
     strategy:
+      fail-fast: false
       matrix:
         os: [ubuntu-latest]
         # flavors-start
         flavor:
           [
+            "c_cpp",
             "ci_light",
-            "dart",
+            "cupcake",
             "documentation",
             "dotnet",
+            "dotnetweb",
+            "formatters",
             "go",
             "java",
             "javascript",
@@ -53,12 +61,12 @@ jobs:
             "ruby",
             "rust",
             "salesforce",
-            "scala",
+            "security",
             "swift",
             "terraform",
           ]
 # flavors-end
-    if: github.repository == 'megalinter/megalinter' && !contains(github.event.head_commit.message, 'skip deploy')
+    if: github.repository == 'oxsecurity/megalinter' && !contains(github.event.head_commit.message, 'skip deploy')
     ##################
     # Load all steps #
     ##################
@@ -67,44 +75,106 @@ jobs:
       # Checkout the code base #
       ##########################
       - name: Checkout Code
-        uses: actions/checkout@v2.4.0
+        uses: actions/checkout@v4
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
         with:
-          fetch-depth: 0
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
-      ###################################
-      # Run Deploy script for Dockerhub #
-      ###################################
-      - name: Deploy Release image to Dockerhub
-        env:
-          # Set the Env Vars
-          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-          IMAGE_REPO: megalinter/megalinter-${{ matrix.flavor }}
-          IMAGE_VERSION: ${{ github.event.release.tag_name }}
-          DOCKERFILE_PATH: flavors/${{ matrix.flavor }}/Dockerfile
-          REGISTRY: Docker
-        shell: bash
-        run: .automation/upload-docker.sh
+      - name: Get current date
+        run: echo "BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" >> ${GITHUB_ENV}
 
-      # Free disk space
-      - name: Free Disk space
-        shell: bash
-        run: |
-          sudo rm -rf /usr/local/lib/android  # will release about 10 GB if you don't need Android
-          sudo rm -rf /usr/share/dotnet # will release about 20GB if you don't need .NET
+      - name: Build Image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: Dockerfile-release
+          platforms: linux/amd64
+          build-args: |
+            MEGALINTER_BASE_IMAGE=docker.io/oxsecurity/megalinter-${{ matrix.flavor }}:beta
+            BUILD_DATE=${{ env.BUILD_DATE }}
+            BUILD_REVISION=${{ github.sha }}
+            BUILD_VERSION=${{ github.event.release.tag_name }}
+          load: false
+          push: true
+          secrets: |
+            GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
+          tags: |
+            ghcr.io/oxsecurity/megalinter-${{ matrix.flavor }}:v8
+            ghcr.io/oxsecurity/megalinter-${{ matrix.flavor }}:${{ github.event.release.tag_name }}
+            ghcr.io/oxsecurity/megalinter-${{ matrix.flavor }}:latest
+
+      - name: Invoke Mirror docker image workflow (Main image)
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: mirror-docker-image.yml
+          inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter-${{ matrix.flavor }}:v8", "target-image": "docker.io/oxsecurity/megalinter-${{ matrix.flavor }}:v8" }'
+          ref: main
+      - name: Invoke Mirror docker image workflow (Main image)
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: mirror-docker-image.yml
+          inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter-${{ matrix.flavor }}:v8", "target-image": "docker.io/oxsecurity/megalinter-${{ matrix.flavor }}:${{ github.event.release.tag_name }}" }'
+          ref: main
+      - name: Invoke Mirror docker image workflow (Main image)
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: mirror-docker-image.yml
+          inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter-${{ matrix.flavor }}:v8", "target-image": "docker.io/oxsecurity/megalinter-${{ matrix.flavor }}:latest" }'
+          ref: main
+      # - name: Build Worker Image
+      #   uses: docker/build-push-action@v6
+      #   with:
+      #     context: .
+      #     file: Dockerfile-release
+      #     platforms: linux/amd64
+      #     build-args: |
+      #       MEGALINTER_BASE_IMAGE=docker.io/oxsecurity/megalinter-worker-${{ matrix.flavor }}:beta
+      #       BUILD_DATE=${{ env.BUILD_DATE }}
+      #       BUILD_REVISION=${{ github.sha }}
+      #       BUILD_VERSION=${{ github.event.release.tag_name }}
+      #     load: false
+      #     push: true
+      #     secrets: |
+      #       GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
+      #     tags: |
+      #       ghcr.io/oxsecurity/megalinter-worker-${{ matrix.flavor }}:v8
+      #       ghcr.io/oxsecurity/megalinter-worker-${{ matrix.flavor }}:${{ github.event.release.tag_name }}
+      #       ghcr.io/oxsecurity/megalinter-worker-${{ matrix.flavor }}:latest
+
+      # - name: Invoke Mirror docker image workflow (Worker image)
+      #   uses: benc-uk/workflow-dispatch@v1
+      #   with:
+      #     workflow: mirror-docker-image.yml
+      #     inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter-worker-${{ matrix.flavor }}:v8", "target-image": "docker.io/oxsecurity/megalinter-worker-${{ matrix.flavor }}:v8" }'
+      # - name: Invoke Mirror docker image workflow (Worker image)
+      #   uses: benc-uk/workflow-dispatch@v1
+      #   with:
+      #     workflow: mirror-docker-image.yml
+      #     inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter-worker-${{ matrix.flavor }}:v8", "target-image": "docker.io/oxsecurity/megalinter-worker-${{ matrix.flavor }}:${{ github.event.release.tag_name }}" }'
+      # - name: Invoke Mirror docker image workflow (Worker image)
+      #   uses: benc-uk/workflow-dispatch@v1
+      #   with:
+      #     workflow: mirror-docker-image.yml
+      #     inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter-worker-${{ matrix.flavor }}:v8", "target-image": "docker.io/oxsecurity/megalinter-worker-${{ matrix.flavor }}:latest" }'
+
 
       ##############################################
       # Check Docker image security with Trivy #
       ##############################################
       - name: Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@0.0.18
+        uses: aquasecurity/trivy-action@master
         with:
-          image-ref: 'docker.io/megalinter/megalinter-${{ matrix.flavor }}:${{ github.event.release.tag_name }}'
+          image-ref: 'ghcr.io/oxsecurity/megalinter-${{ matrix.flavor }}:${{ github.event.release.tag_name }}'
           format: 'table'
           exit-code: '1'
           ignore-unfixed: true
+          scanners: vuln
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
-          timeout: 5m0s
-
-
+          timeout: 10m0s
+        env:
+            ACTIONS_RUNTIME_TOKEN: ${{ secrets.GITHUB_TOKEN }}

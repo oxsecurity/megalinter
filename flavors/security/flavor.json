@@ -1,0 +1,30 @@
+{
+    "descriptors": [],
+    "label": "Optimized for security",
+    "linters": [
+        "ANSIBLE_ANSIBLE_LINT",
+        "BASH_EXEC",
+        "BASH_SHELLCHECK",
+        "CLOUDFORMATION_CFN_LINT",
+        "DOCKERFILE_HADOLINT",
+        "KUBERNETES_KUBECONFORM",
+        "KUBERNETES_HELM",
+        "KUBERNETES_KUBESCAPE",
+        "PYTHON_BANDIT",
+        "REPOSITORY_CHECKOV",
+        "REPOSITORY_DEVSKIM",
+        "REPOSITORY_DUSTILOCK",
+        "REPOSITORY_GITLEAKS",
+        "REPOSITORY_GRYPE",
+        "REPOSITORY_KICS",
+        "REPOSITORY_SECRETLINT",
+        "REPOSITORY_SEMGREP",
+        "REPOSITORY_SYFT",
+        "REPOSITORY_TRIVY",
+        "REPOSITORY_TRIVY_SBOM",
+        "REPOSITORY_TRUFFLEHOG",
+        "TERRAFORM_TFLINT",
+        "TERRAFORM_TERRASCAN",
+        "TERRAFORM_TERRAGRUNT"
+    ]
+}

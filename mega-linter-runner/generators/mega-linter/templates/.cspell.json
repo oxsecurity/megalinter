@@ -3,6 +3,7 @@
     "**/node_modules/**",
     "**/vscode-extension/**",
     "**/.git/**",
+    "**/.pnpm-lock.json",
     ".vscode",
     "megalinter",
     "package-lock.json",
@@ -10,6 +11,6 @@
   ],
   "language": "en",
   "noConfigSearch": true,
-  "words": [],
+  "words": ["megalinter", "oxsecurity"],
   "version": "0.2"
 }

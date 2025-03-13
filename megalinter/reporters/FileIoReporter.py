@@ -23,14 +23,17 @@ class FileIoReporter(Reporter):
         super().__init__(params)
 
     def manage_activation(self):
-        if config.get("FILEIO_REPORTER", "false") == "true":
+        if config.get(self.master.request_id, "FILEIO_REPORTER", "false") == "true":
             self.is_active = True
 
     def produce_report(self):
         # Skip report if no errors has been found
         if (
             self.master.status == "success"
-            and config.get("FILEIO_REPORTER_SEND_SUCCESS", "false") == "true"
+            and config.get(
+                self.master.request_id, "FILEIO_REPORTER_SEND_SUCCESS", "false"
+            )
+            == "true"
             and self.master.has_updated_sources is False
         ):
             logging.info(
@@ -45,7 +48,7 @@ class FileIoReporter(Reporter):
         for root, dirs, files in os.walk(self.report_folder):
             for file in files:
                 file_abs_path = os.path.join(root, file)
-                if not os.path.splitext(file_abs_path) in [".js", ".map"]:
+                if os.path.splitext(file_abs_path) not in [".js", ".map"]:
                     zip_file.write(
                         file_abs_path,
                         arcname=file_abs_path.replace(self.report_folder, ""),

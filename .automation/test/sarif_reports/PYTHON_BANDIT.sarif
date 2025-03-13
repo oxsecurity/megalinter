@@ -1,0 +1,435 @@
+{
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "Bandit",
+          "rules": [
+            {
+              "id": "B404",
+              "name": "blacklist",
+              "helpUri": "https://bandit.readthedocs.io/en/latest/blacklists/blacklist_imports.html#b404-import-subprocess"
+            },
+            {
+              "id": "B506",
+              "name": "yaml_load",
+              "helpUri": "https://bandit.readthedocs.io/en/latest/plugins/b506_yaml_load.html"
+            },
+            {
+              "id": "B602",
+              "name": "subprocess_popen_with_shell_equals_true",
+              "helpUri": "https://bandit.readthedocs.io/en/latest/plugins/b602_subprocess_popen_with_shell_equals_true.html"
+            },
+            {
+              "id": "B607",
+              "name": "start_process_with_partial_path",
+              "helpUri": "https://bandit.readthedocs.io/en/latest/plugins/b607_start_process_with_partial_path.html"
+            },
+            {
+              "id": "B110",
+              "name": "try_except_pass",
+              "helpUri": "https://bandit.readthedocs.io/en/latest/plugins/b110_try_except_pass.html"
+            }
+          ]
+        }
+      },
+      "invocations": [
+        {
+          "executionSuccessful": true,
+          "endTimeUtc": "2021-12-08T21:21:50Z"
+        }
+      ],
+      "properties": {
+        "metrics": {
+          "_totals": {
+            "loc": 2084,
+            "nosec": 0,
+            "SEVERITY.UNDEFINED": 0.0,
+            "CONFIDENCE.UNDEFINED": 0.0,
+            "SEVERITY.LOW": 3.0,
+            "CONFIDENCE.LOW": 0.0,
+            "SEVERITY.MEDIUM": 5.0,
+            "CONFIDENCE.MEDIUM": 0.0,
+            "SEVERITY.HIGH": 2.0,
+            "CONFIDENCE.HIGH": 10.0
+          },
+          "/github/workspace/.github/workflows/build.py": {
+            "loc": 2033,
+            "nosec": 0,
+            "SEVERITY.UNDEFINED": 0.0,
+            "SEVERITY.LOW": 2.0,
+            "SEVERITY.MEDIUM": 5.0,
+            "SEVERITY.HIGH": 2.0,
+            "CONFIDENCE.UNDEFINED": 0.0,
+            "CONFIDENCE.LOW": 0.0,
+            "CONFIDENCE.MEDIUM": 0.0,
+            "CONFIDENCE.HIGH": 9.0
+          },
+          "/github/workspace/alpaca.py": {
+            "loc": 47,
+            "nosec": 0,
+            "SEVERITY.UNDEFINED": 0.0,
+            "SEVERITY.LOW": 0.0,
+            "SEVERITY.MEDIUM": 0.0,
+            "SEVERITY.HIGH": 0.0,
+            "CONFIDENCE.UNDEFINED": 0.0,
+            "CONFIDENCE.LOW": 0.0,
+            "CONFIDENCE.MEDIUM": 0.0,
+            "CONFIDENCE.HIGH": 0.0
+          },
+          "/github/workspace/python_bad_1.py": {
+            "loc": 4,
+            "nosec": 0,
+            "SEVERITY.UNDEFINED": 0.0,
+            "SEVERITY.LOW": 1.0,
+            "SEVERITY.MEDIUM": 0.0,
+            "SEVERITY.HIGH": 0.0,
+            "CONFIDENCE.UNDEFINED": 0.0,
+            "CONFIDENCE.LOW": 0.0,
+            "CONFIDENCE.MEDIUM": 0.0,
+            "CONFIDENCE.HIGH": 1.0
+          }
+        }
+      },
+      "results": [
+        {
+          "message": {
+            "text": "Consider possible security implications associated with the subprocess module."
+          },
+          "level": "note",
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "import subprocess\n"
+                  },
+                  "startLine": 10
+                },
+                "artifactLocation": {
+                  "uri": "file:///github/workspace/.github/workflows/build.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "import re\nimport subprocess\nimport sys\n"
+                  },
+                  "endLine": 11,
+                  "startLine": 9
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "HIGH",
+            "issue_severity": "LOW"
+          },
+          "ruleId": "B404",
+          "ruleIndex": 0
+        },
+        {
+          "message": {
+            "text": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load()."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "            descriptor = yaml.load(f, Loader=yaml.FullLoader)\n"
+                  },
+                  "startLine": 121
+                },
+                "artifactLocation": {
+                  "uri": "file:///github/workspace/.github/workflows/build.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "        with open(descriptor_file, \"r\", encoding=\"utf-8\") as f:\n            descriptor = yaml.load(f, Loader=yaml.FullLoader)\n            if (\n"
+                  },
+                  "endLine": 122,
+                  "startLine": 120
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "HIGH",
+            "issue_severity": "MEDIUM"
+          },
+          "ruleId": "B506",
+          "ruleIndex": 1
+        },
+        {
+          "message": {
+            "text": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load()."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "                instance=yaml.load(mega_linter_config, Loader=yaml.FullLoader),\n"
+                  },
+                  "startLine": 1732
+                },
+                "artifactLocation": {
+                  "uri": "file:///github/workspace/.github/workflows/build.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "            jsonschema.validate(\n                instance=yaml.load(mega_linter_config, Loader=yaml.FullLoader),\n                schema=yaml.load(descriptor_schema, Loader=yaml.FullLoader),\n"
+                  },
+                  "endLine": 1733,
+                  "startLine": 1731
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "HIGH",
+            "issue_severity": "MEDIUM"
+          },
+          "ruleId": "B506",
+          "ruleIndex": 1
+        },
+        {
+          "message": {
+            "text": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load()."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "                schema=yaml.load(descriptor_schema, Loader=yaml.FullLoader),\n"
+                  },
+                  "startLine": 1733
+                },
+                "artifactLocation": {
+                  "uri": "file:///github/workspace/.github/workflows/build.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "                instance=yaml.load(mega_linter_config, Loader=yaml.FullLoader),\n                schema=yaml.load(descriptor_schema, Loader=yaml.FullLoader),\n            )\n"
+                  },
+                  "endLine": 1734,
+                  "startLine": 1732
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "HIGH",
+            "issue_severity": "MEDIUM"
+          },
+          "ruleId": "B506",
+          "ruleIndex": 1
+        },
+        {
+          "message": {
+            "text": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load()."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "                        instance=yaml.load(descriptor, Loader=yaml.FullLoader),\n"
+                  },
+                  "startLine": 1749
+                },
+                "artifactLocation": {
+                  "uri": "file:///github/workspace/.github/workflows/build.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "                    jsonschema.validate(\n                        instance=yaml.load(descriptor, Loader=yaml.FullLoader),\n                        schema=yaml.load(descriptor_schema, Loader=yaml.FullLoader),\n"
+                  },
+                  "endLine": 1750,
+                  "startLine": 1748
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "HIGH",
+            "issue_severity": "MEDIUM"
+          },
+          "ruleId": "B506",
+          "ruleIndex": 1
+        },
+        {
+          "message": {
+            "text": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load()."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "                        schema=yaml.load(descriptor_schema, Loader=yaml.FullLoader),\n"
+                  },
+                  "startLine": 1750
+                },
+                "artifactLocation": {
+                  "uri": "file:///github/workspace/.github/workflows/build.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "                        instance=yaml.load(descriptor, Loader=yaml.FullLoader),\n                        schema=yaml.load(descriptor_schema, Loader=yaml.FullLoader),\n                    )\n"
+                  },
+                  "endLine": 1751,
+                  "startLine": 1749
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "HIGH",
+            "issue_severity": "MEDIUM"
+          },
+          "ruleId": "B506",
+          "ruleIndex": 1
+        },
+        {
+          "message": {
+            "text": "subprocess call with shell=True identified, security issue."
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "        shell=True,\n"
+                  },
+                  "startLine": 2220
+                },
+                "artifactLocation": {
+                  "uri": "file:///github/workspace/.github/workflows/build.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "        cwd=os.getcwd() + \"/.automation\",\n        shell=True,\n    )\n    print(process.stdout)\n    print(process.stderr)\n\n\ndef generate_version():\n"
+                  },
+                  "endLine": 2226,
+                  "startLine": 2219
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "HIGH",
+            "issue_severity": "HIGH"
+          },
+          "ruleId": "B602",
+          "ruleIndex": 2
+        },
+        {
+          "message": {
+            "text": "Starting a process with a partial executable path"
+          },
+          "level": "note",
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "    process = subprocess.run(\n"
+                  },
+                  "startLine": 2230
+                },
+                "artifactLocation": {
+                  "uri": "file:///github/workspace/.github/workflows/build.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "    cwd_to_use = os.getcwd() + \"/mega-linter-runner\"\n    process = subprocess.run(\n        [\n            \"npm\",\n            \"version\",\n            \"--newversion\",\n            RELEASE_TAG,\n            \"-no-git-tag-version\",\n            \"--no-commit-hooks\",\n        ],\n        stdout=subprocess.PIPE,\n        universal_newlines=True,\n        cwd=cwd_to_use,\n        shell=True,\n    )\n"
+                  },
+                  "endLine": 2243,
+                  "startLine": 2229
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "HIGH",
+            "issue_severity": "LOW"
+          },
+          "ruleId": "B607",
+          "ruleIndex": 3
+        },
+        {
+          "message": {
+            "text": "subprocess call with shell=True identified, security issue."
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "        shell=True,\n"
+                  },
+                  "startLine": 2242
+                },
+                "artifactLocation": {
+                  "uri": "file:///github/workspace/.github/workflows/build.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "        cwd=cwd_to_use,\n        shell=True,\n    )\n    print(process.stdout)\n    print(process.stderr)\n    # Update changelog\n    changelog_file = f\"{REPO_HOME}/CHANGELOG.md\"\n\n    with open(changelog_file, \"r\", encoding=\"utf-8\") as md_file:\n        changelog_content = md_file.read()\n    changelog_content = changelog_content.replace(\"<!-- linter-versions-end -->\", \"\")\n    new_release_lines = [\n        \",\" \"<!-- unreleased-content-marker -->\",\n        \"\",\n        \"- Linter versions upgrades\",\n"
+                  },
+                  "endLine": 2255,
+                  "startLine": 2241
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "HIGH",
+            "issue_severity": "HIGH"
+          },
+          "ruleId": "B602",
+          "ruleIndex": 2
+        },
+        {
+          "message": {
+            "text": "Try, Except, Pass detected."
+          },
+          "level": "note",
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "except:\n"
+                  },
+                  "startLine": 3
+                },
+                "artifactLocation": {
+                  "uri": "file:///github/workspace/python_bad_1.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "    pass\nexcept:\n    pass\n"
+                  },
+                  "endLine": 4,
+                  "startLine": 2
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "HIGH",
+            "issue_severity": "LOW"
+          },
+          "ruleId": "B110",
+          "ruleIndex": 4
+        }
+      ]
+    }
+  ],
+  "version": "2.1.0",
+  "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.4.json"
+}

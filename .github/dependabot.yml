@@ -6,33 +6,77 @@ updates:
   - package-ecosystem: github-actions
     directory: "/"
     schedule:
-      interval: daily
+      interval: weekly
     open-pull-requests-limit: 10
 
   # Maintain dependencies for js with npm
   - package-ecosystem: "npm"
-    directory: "/dependencies"
+    directory: "/mega-linter-runner"
     schedule:
-      interval: "daily"
+      interval: "weekly"
     open-pull-requests-limit: 10
+  - package-ecosystem: "npm"
+    directory: "/.automation/test/repository_grype/bad/"
+    schedule:
+      interval: monthly
+    ignore:
+      - dependency-name: "minimist"
+      - dependency-name: "chalk/ansi-regex"
+      - dependency-name: "*"
 
   # Maintain dependencies for ruby with bundler
   - package-ecosystem: "bundler"
-    directory: "/dependencies"
+    directory: "/"
     schedule:
-      interval: "daily"
+      interval: "weekly"
     open-pull-requests-limit: 10
 
   # Maintain dependencies for docker
   - package-ecosystem: "docker"
     directory: "/"
     schedule:
-      interval: "daily"
+      interval: "weekly"
+    open-pull-requests-limit: 10
+  - package-ecosystem: "docker"
+    directory: "/flavors"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 10
+  - package-ecosystem: "docker"
+    directory: "/linters"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 10
+  - package-ecosystem: "docker"
+    directory: "/server"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 10
+  - package-ecosystem: "docker"
+    directory: "/.config/gitpod"
+    schedule:
+      interval: "weekly"
     open-pull-requests-limit: 10
 
   # Maintain dependencies for python with pip
   - package-ecosystem: "pip"
-    directory: "/dependencies"
+    directory: "/.config/python/dev/"
     schedule:
-      interval: "daily"
+      interval: "weekly"
+    open-pull-requests-limit: 10
+  - package-ecosystem: "pip"
+    directory: "/megalinter"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 10
+  - package-ecosystem: "pip"
+    directory: "/server"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 10
+
+  - package-ecosystem: "devcontainers"
+    directory: "/"
+    schedule:
+      interval: weekly
     open-pull-requests-limit: 10

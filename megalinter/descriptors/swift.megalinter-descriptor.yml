@@ -1,6 +1,7 @@
 descriptor_id: SWIFT
 descriptor_type: language
 descriptor_flavors:
+  - cupcake
   - swift
 file_extensions:
   - ".swift"
@@ -18,16 +19,17 @@ linters:
     cli_lint_extra_args:
       - "lint"
     cli_lint_extra_args_after:
-      - "--path"
-      - "/tmp/lint"
       - "--strict"
     cli_lint_fix_arg_name: "--fix"
     cli_lint_fix_remove_args:
       - "lint"
-    cli_docker_image: norionomura/swiftlint
+    cli_docker_image: ghcr.io/realm/swiftlint
+    cli_docker_image_version: "SWIFT_SWIFTLINT_VERSION"
     cli_docker_args:
       - "-v"
       - "{{WORKSPACE}}:/tmp/lint:rw"
+      - "-w"
+      - "/tmp/lint"
     config_file_name: ".swiftlint.yml"
     cli_config_arg_name: ""
     cli_help_arg_name: "help"
@@ -35,8 +37,13 @@ linters:
     cli_lint_errors_count: regex_number
     cli_lint_errors_regex: "Found ([0-9]+) violations"
     examples:
-      - "docker run -v /tmp/lint:/tmp/lint:rw norionomura/swiftlint:latest swiftlint lint --path /tmp/lint --strict"
-      - "docker run -v /tmp/lint:/tmp/lint:rw norionomura/swiftlint:latest swiftlint autocorrect --path /tmp/lint --strict"
+      - "docker run -v /tmp/lint:/tmp/lint:rw ghcr.io/realm/swiftlint:latest swiftlint --strict"
+      - "docker run -v /tmp/lint:/tmp/lint:rw ghcr.io/realm/swiftlint:latest swiftlint --fix --strict"
+    install:
+      dockerfile:
+        - |-
+          # renovate: datasource=docker depName=ghcr.io/realm/swiftlint
+          ENV SWIFT_SWIFTLINT_VERSION=0.58.2
     ide:
       atom:
         - name: linter-swiftlint
@@ -44,6 +51,7 @@ linters:
       idea:
         - name: swiftlint
           url: https://plugins.jetbrains.com/plugin/9175-swiftlint
+          id: com.appcodeplugins.swiftlint
       xcode:
         - name: Configure manually
           url: https://github.com/realm/SwiftLint#xcode

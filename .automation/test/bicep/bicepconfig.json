@@ -1,0 +1,13 @@
+{
+    "analyzers": {
+        "core": {
+            "enabled": true,
+            "verbose": true,
+            "rules": {
+                "no-unused-vars": {
+                    "level": "error"
+                }
+            }
+        }
+    }
+}

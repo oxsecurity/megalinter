@@ -9,8 +9,10 @@ on:
   schedule:
     # every day at 0:00 UTC
     - cron: "0 0 * * *"
-  issue_comment:
-    types: [created, deleted, edited]
+permissions:
+  #contents: write # only for delete-branch option
+  issues: write
+  pull-requests: write
 
 ###############
 # Run the job #
@@ -25,17 +27,18 @@ jobs:
     if: "github.event_name == 'schedule'"
     steps:
       - name: Mark issue stale
-        uses: actions/stale@v4
+        uses: actions/stale@v9
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           stale-issue-message: "This issue has been automatically marked as stale because it has not had recent activity.\nIt will be closed in 14 days if no further activity occurs.\nThank you for your contributions.\n\nIf you think this issue should stay open, please remove the `O: stale 🤖` label or comment on the issue."
           stale-pr-message: "This pull request has been automatically marked as stale because it has not had recent activity.\nIt will be closed in 14 days if no further activity occurs.\nThank you for your contributions.\n\nIf you think this pull request should stay open, please remove the `O: stale 🤖` label or comment on the pull request."
+          close-issue-reason: not_planned
           days-before-stale: 30
           days-before-close: 14
           stale-issue-label: "O: stale 🤖"
-          exempt-issue-labels: "O: backlog 🤖"
+          exempt-issue-labels: "O: backlog 🤖,nostale"
           stale-pr-label: "O: stale 🤖"
-          exempt-pr-labels: "O: backlog 🤖"
+          exempt-pr-labels: "O: backlog 🤖,nostale"
           labels-to-remove-when-unstale: "O: stale 🤖"
           remove-issue-stale-when-updated: true
           remove-pr-stale-when-updated: true

@@ -2,6 +2,8 @@ descriptor_id: MARKDOWN
 descriptor_type: format
 descriptor_flavors:
   - all_flavors # Any project can contain Markdown
+  - cupcake
+  - formatters
 file_extensions:
   - ".md"
 linters:
@@ -13,11 +15,20 @@ linters:
         variable: MARKDOWN_DEFAULT_STYLE
         expected_value: markdownlint
         default_value: markdownlint
+    linter_text: Checks for errors in Markdown files, and can also auto-fix some of them.
+
+
+      [MarkdownLint](https://github.com/DavidAnson/markdownlint) is run through [markdownlint-cli](https://github.com/igorshubovych/markdownlint-cli)
+
+
+      To see MarkdownLint version, you can have a look in the dependencies of latest markdownlint-cli version.
     linter_url: https://github.com/DavidAnson/markdownlint
+    linter_repo: https://github.com/DavidAnson/markdownlint
     linter_rules_url: https://github.com/DavidAnson/markdownlint#rules--aliases
     linter_image_url: https://davidanson.gallerycdn.vsassets.io/extensions/davidanson/vscode-markdownlint/0.37.1/1601748708034/Microsoft.VisualStudio.Services.Icons.Default
     linter_rules_configuration_url: https://github.com/igorshubovych/markdownlint-cli#configuration
     linter_rules_inline_disable_url: https://github.com/DavidAnson/markdownlint#configuration
+    linter_rules_ignore_config_url: https://github.com/igorshubovych/markdownlint-cli#ignoring-files
     cli_lint_mode: list_of_files
     config_file_name: .markdownlint.json
     cli_lint_fix_arg_name: "--fix"
@@ -27,8 +38,12 @@ linters:
       - "markdownlint -c .markdownlint.json myfile.md"
       - "markdownlint --fix -c .markdownlint.json myfile.md"
     install:
+      dockerfile:
+        - |-
+          # renovate: datasource=npm depName=markdownlint-cli
+          ARG NPM_MARKDOWNLINT_CLI_VERSION=0.44.0
       npm:
-        - markdownlint-cli
+        - markdownlint-cli@${NPM_MARKDOWNLINT_CLI_VERSION}
     ide:
       atom:
         - name: linter-node-markdownlint
@@ -44,6 +59,8 @@ linters:
           url: https://marketplace.visualstudio.com/items/DavidAnson.vscode-markdownlint
   # remark-lint
   - linter_name: remark-lint
+    disabled: true
+    disabled_reason: "Bug in remark-lint: https://github.com/remarkjs/remark-lint/issues/322"
     is_formatter: true
     activation_rules:
       - type: variable
@@ -70,9 +87,16 @@ linters:
       - "remark --frail --rc-path .remarkrc myfile.md"
       - "remark --frail -o --rc-path .remarkrc myfile.md"
     install:
+      dockerfile:
+        - |-
+          # renovate: datasource=npm depName=remark-cli
+          ARG NPM_REMARK_CLI_VERSION=12.0.1
+        - |-
+          # renovate: datasource=npm depName=remark-preset-lint-recommended
+          ARG NPM_REMARK_PRESET_LINT_RECOMMENDED_VERSION=7.0.1
       npm:
-        - remark-cli
-        - remark-preset-lint-recommended
+        - remark-cli@${NPM_REMARK_CLI_VERSION}
+        - remark-preset-lint-recommended@${NPM_REMARK_PRESET_LINT_RECOMMENDED_VERSION}
     ide:
       atom:
         - name: linter-remark
@@ -89,19 +113,29 @@ linters:
   # Markdown Link Check
   - linter_name: markdown-link-check
     linter_url: https://github.com/tcort/markdown-link-check
+    linter_repo: https://github.com/tcort/markdown-link-check
+    linter_speed: 1
     linter_rules_configuration_url: https://github.com/tcort/markdown-link-check#config-file-format
     linter_rules_inline_disable_url: https://github.com/tcort/markdown-link-check#disable-comments
     linter_megalinter_ref_url: https://github.com/tcort/markdown-link-check#run-in-other-tools
     cli_lint_mode: list_of_files
     config_file_name: .markdown-link-check.json
+    cli_lint_extra_args:
+      - --quiet
     cli_lint_errors_count: regex_sum
     cli_lint_errors_regex: "ERROR: ([0-9]+) dead links found"
     examples:
       - "markdown-link-check myfile.md"
       - "markdown-link-check -c .markdown-link-check.json myfile.md"
+    downgraded_version: true
+    downgraded_reason: https://github.com/tcort/markdown-link-check/issues/369
     install:
+      dockerfile:
+        - |-
+          # renovate: datasource=npm depName=markdown-link-check
+          ARG NPM_MARKDOWN_LINK_CHECK_VERSION=3.12.2
       npm:
-        - markdown-link-check
+        - markdown-link-check@${NPM_MARKDOWN_LINK_CHECK_VERSION}
   # Markdown table formatter
   - linter_name: markdown-table-formatter
     is_formatter: true
@@ -120,8 +154,12 @@ linters:
       - "markdown-table-formatter myfile.md" # Apply formatting
       - "markdown-table-formatter myfile.md myfile2.md myfile3.md" # Apply formatting
     install:
+      dockerfile:
+        - |-
+          # renovate: datasource=npm depName=markdown-table-formatter
+          ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.6.1
       npm:
-        - markdown-table-formatter
+        - markdown-table-formatter@${NPM_MARKDOWN_TABLE_FORMATTER_VERSION}
     ide:
       vscode:
         - name: Markdown Table Prettify Extension

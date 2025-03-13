@@ -9,7 +9,7 @@ location$.subscribe(function(url) {
     gtag("config", "G-LQDMMC8FLG");
 });
 */
-var gtag_id = "G-LQDMMC8FLG";
+var gtag_id = "G-9B8BSP0VV7"; 
 
 var script = document.createElement("script");
 script.src = "https://www.googletagmanager.com/gtag/js?id=" + gtag_id;

@@ -44,9 +44,14 @@ def list_megalinter_flavors():
         "ci_light": {
             "label": "Optimized for CI items (Dockerfile, Jenkinsfile, JSON/YAML schemas, XML)"
         },
-        "dart": {"label": "Optimized for DART based projects"},
+        "cupcake": {"label": "MegaLinter for the most commonly used languages"},
+        "c_cpp": {"label": "Optimized for pure C/C++ projects"},
         "documentation": {"label": "Optimized for documentation projects"},
         "dotnet": {"label": "Optimized for C, C++, C# or VB based projects"},
+        "dotnetweb": {
+            "label": "Optimized for C, C++, C# or VB based projects with JS/TS"
+        },
+        "formatters": {"label": "Contains only formatters"},
         "go": {"label": "Optimized for GO based projects"},
         "java": {"label": "Optimized for JAVA based projects"},
         "javascript": {
@@ -57,7 +62,7 @@ def list_megalinter_flavors():
         "ruby": {"label": "Optimized for RUBY based projects"},
         "rust": {"label": "Optimized for RUST based projects"},
         "salesforce": {"label": "Optimized for Salesforce based projects"},
-        "scala": {"label": "Optimized for SCALA based projects"},
+        "security": {"label": "Optimized for security", "strict": True},
         "swift": {"label": "Optimized for SWIFT based projects"},
         "terraform": {"label": "Optimized for TERRAFORM based projects"},
     }
@@ -65,39 +70,58 @@ def list_megalinter_flavors():
 
 
 def get_image_flavor():
-    return config.get("MEGALINTER_FLAVOR", "all")
+    return config.get(None, "MEGALINTER_FLAVOR", "all")
 
 
 # Compare linters active for the current repo, and linters available in the current MegaLinter image flavor
-def check_active_linters_match_flavor(active_linters):
+def check_active_linters_match_flavor(active_linters, request_id):
     flavor = get_image_flavor()
     if flavor == "all":
         logging.debug('MegaLinter flavor is "all", no need to check match with linters')
+        return True
+    elif flavor == "none":
+        logging.debug(
+            "MegaLinter image contains a single linter, no need to check match with linters"
+        )
         return True
     all_flavors = get_all_flavors()
     flavor_linters = all_flavors[flavor]["linters"]
     missing_linters = []
     for active_linter in active_linters:
-        if active_linter.name not in flavor_linters:
+        if (
+            active_linter.name not in flavor_linters
+        ) and active_linter.is_plugin is False:
             missing_linters += [active_linter.name]
             active_linter.is_active = False
+    # Manage cases where linters are missing in flavor
     if len(missing_linters) > 0:
-        missing_linters_str = ",".join(missing_linters)
-        logging.warning(
-            f"MegaLinter flavor [{flavor}] does not contain linters {missing_linters_str}.\n"
-            "As they are not available in this docker image, they will not be processed\n"
-            "To solve this problem, please either: \n"
-            f"- use default flavor {ML_REPO}\n"
-            "- add ignored linters in DISABLE or DISABLE_LINTERS variables in your .mega-linter.yml config file "
-            "located in your root directory\n"
-            "- ignore this message by setting config variable FLAVOR_SUGGESTIONS to false"
-        )
-        if config.get("FAIL_IF_MISSING_LINTER_IN_FLAVOR", "") == "true":
-            logging.error(
-                'Missing linter and FAIL_IF_MISSING_LINTER_IN_FLAVOR has been set to "true": Stop run'
+        # Don't warn/stop if missing linters are repository ones (mostly OX.security related)
+        if not are_all_repository_linters(missing_linters):
+            missing_linters_str = ",".join(missing_linters)
+            logging.warning(
+                f"MegaLinter flavor [{flavor}] doesn't contain linters {missing_linters_str}.\n"
+                "As they're not available in this docker image, they will not be processed\n"
+                "To solve this problem, please either: \n"
+                f"- use default flavor {ML_REPO}\n"
+                "- add ignored linters in DISABLE or DISABLE_LINTERS variables in your .mega-linter.yml config file "
+                "located in your root directory\n"
+                "- ignore this message by setting config variable FLAVOR_SUGGESTIONS to false"
             )
-            sys.exit(84)
+            # Stop the process if user wanted so in case of missing linters
+            if (
+                config.get(
+                    request_id,
+                    "FAIL_IF_MISSING_LINTER_IN_FLAVOR",
+                    "",
+                )
+                == "true"
+            ):
+                logging.error(
+                    'Missing linter and FAIL_IF_MISSING_LINTER_IN_FLAVOR has been set to "true": Stop run'
+                )
+                sys.exit(84)
         return False
+    # All good !
     return True
 
 
@@ -111,7 +135,10 @@ def get_megalinter_flavor_suggestions(active_linters):
     for flavor_id, flavor_info in all_flavors.items():
         match = True
         for active_linter in active_linters:
-            if active_linter.name not in flavor_info["linters"]:
+            if (
+                active_linter.name not in flavor_info["linters"]
+                and active_linter.ignore_for_flavor_suggestions is False
+            ):
                 match = False
                 break
         if match is True:
@@ -127,5 +154,20 @@ def get_megalinter_flavor_suggestions(active_linters):
             matching_flavors, key=lambda i: (i["linters_number"], i["flavor"])
         )
     # Propose user to request a new flavor for the list of linters
-    active_linter_names = map(lambda linter: linter.name, active_linters)
-    return ["new", active_linter_names]
+
+    new_flavor_linters = filter(
+        lambda linter: linter.ignore_for_flavor_suggestions is False,
+        active_linters,
+    )
+    new_flavor_linters_names = map(lambda linter: linter.name, new_flavor_linters)
+    return ["new", new_flavor_linters_names]
+
+
+def are_all_repository_linters(linter_names: list[str]) -> bool:
+    if len(linter_names) == 0:
+        return False
+    result = True
+    for linter_name in linter_names:
+        if not linter_name.startswith("REPOSITORY"):
+            result = False
+    return result

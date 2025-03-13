@@ -9,29 +9,38 @@ linters:
   # Lintr
   - class: RLinter
     linter_name: lintr
-    linter_url: https://github.com/jimhester/lintr
-    linter_rules_url: https://github.com/jimhester/lintr#available-linters
-    linter_rules_configuration_url: https://github.com/jimhester/lintr#project-configuration
+    linter_url: https://lintr.r-lib.org/
+    linter_repo: https://github.com/r-lib/lintr
+    linter_rules_url: https://lintr.r-lib.org/reference/index.html
+    linter_rules_configuration_url: https://lintr.r-lib.org/articles/lintr.html#configuring-linters
+    linter_megalinter_ref_url: https://lintr.r-lib.org/articles/continuous-integration.html
     config_file_name: .lintr
     linter_version_cache: "0.0.0"
     examples:
       - 'R --slave -e "errors <- lintr::lint(''myfile.r''); print(errors); quit(save = ''no'', status = if (length(errors) > 0) 1 else 0) "'
     install:
       apk:
+        - gcc
+        - g++
+        - libcurl
+        - libffi-dev
+        - libgcc
+        - libxml2-dev
+        - libxml2-utils
+        - linux-headers
         - R
         - R-dev
         - R-doc
       dockerfile:
-        - FROM ghcr.io/assignuser/lintr-lib:0.2.0 as lintr-lib
-        - COPY --from=lintr-lib /usr/lib/R/library/ /home/r-library
-        - RUN R -e "install.packages(list.dirs('/home/r-library',recursive = FALSE), repos = NULL, type = 'source')"
+        - |
+          RUN mkdir -p /home/r-library \
+              && cp -r /usr/lib/R/library/ /home/r-library/ \
+              && Rscript -e "install.packages(c('lintr','purrr'), repos = 'https://cloud.r-project.org/')" \
+              && R -e "install.packages(list.dirs('/home/r-library',recursive = FALSE), repos = NULL, type = 'source')"
     ide:
-      atom:
-        - name: Atom lintr
-          url: https://github.com/AtomLinter/linter-lintr
       emacs:
         - name: flycheck
-          url: http://www.flycheck.org/en/latest/languages.html#r
+          url: https://www.flycheck.org/en/latest/languages.html#r
       rstudio:
         - name: Native Support
           url: https://rstudio.com/
@@ -42,5 +51,5 @@ linters:
         - name: ale
           url: https://github.com/dense-analysis/ale
       vscode:
-        - name: VsCode R LSP
-          url: https://marketplace.visualstudio.com/items?itemName=REditorSupport.r-lsp
+        - name: VSCode R LSP
+          url: https://marketplace.visualstudio.com/items?itemName=REditorSupport.r

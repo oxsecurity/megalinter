@@ -1,12 +1,26 @@
 # Configuration file for MegaLinter
-# See all available variables at https://megalinter.github.io/configuration/ and in linters documentation
+#
+# See all available variables at https://megalinter.io/latest/config-file/ and in
+# linters documentation
 
-APPLY_FIXES: <%= APPLY_FIXES %> # all, none, or list of linter keys
-# ENABLE: # If you use ENABLE variable, all other languages/formats/tooling-formats will be disabled by default
-# ENABLE_LINTERS: # If you use ENABLE_LINTERS variable, all other linters will be disabled by default
+# all, none, or list of linter keys
+APPLY_FIXES: <%= APPLY_FIXES %>
+
+# If you use ENABLE variable, all other languages/formats/tooling-formats will
+# be disabled by default
+# ENABLE:
+
+# If you use ENABLE_LINTERS variable, all other linters will be disabled by
+# default
+# ENABLE_LINTERS:
+
 <%= DISABLE %>
   <%= COPYPASTE %>
   <%= SPELL %>
+
 SHOW_ELAPSED_TIME: <%= SHOW_ELAPSED_TIME %>
+
 FILEIO_REPORTER: <%= FILEIO_REPORTER %>
-# DISABLE_ERRORS: true # Uncomment if you want MegaLinter to detect errors but not block CI to pass
+
+# Uncomment if you want MegaLinter to detect errors but not block CI to pass
+# DISABLE_ERRORS: true

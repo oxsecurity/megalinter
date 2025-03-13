@@ -1,3 +1,8 @@
+---
+title: License info for dartanalyzer within MegaLinter
+search:
+  exclude: true
+---
 Copyright 2012, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without

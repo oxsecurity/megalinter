@@ -1,10 +1,13 @@
-#! /usr/bin/env node
-"use strict";
-const glob = require("glob-promise");
-const fs = require("fs-extra");
-const c = require("chalk");
+import { glob } from "glob";
+import { default as fs } from "fs-extra";
+import * as path from "path";
+import { default as c } from 'chalk';
+import prompts from "prompts";
+import { OXSecuritySetup } from "./ox-setup.js";
+import { asciiArt } from "./ascii.js";
+import { DEFAULT_RELEASE, GLOB_IGNORE_PATTERNS } from "./config.js";
 
-class MegaLinterUpgrader {
+export class MegaLinterUpgrader {
   constructor() {
     this.replacements = [
       // Documentation base URL
@@ -220,16 +223,333 @@ jobs:
   build:
 `,
       },
+      // V5 to V6 migration rules
+      // GitHub actions
+      {
+        regex: /actions\/checkout@v2/gm,
+        replacement: "actions/checkout@v3",
+        test: "uses: actions/checkout@v2",
+        testRes: "uses: actions/checkout@v3",
+      },
+      {
+        regex: /actions\/checkout@v3/gm,
+        replacement: "actions/checkout@v4",
+        test: "uses: actions/checkout@v3",
+        testRes: "uses: actions/checkout@v4",
+      },
+      // Documentation base URL
+      {
+        regex: /https:\/\/megalinter\.github\.io/gm,
+        replacement: "https://oxsecurity.github.io/megalinter",
+        test: "https://megalinter.github.io/configuration",
+        testRes: "https://oxsecurity.github.io/megalinter/configuration",
+      },
+      // Github actions flavors
+      {
+        regex: /megalinter\/megalinter\/flavors\/([a-z]*)@v5\.(.*)/gm,
+        replacement: `oxsecurity/megalinter/flavors/$1@${DEFAULT_RELEASE}`,
+        test: "megalinter/megalinter/flavors/python@v5.1.2",
+        testRes: `oxsecurity/megalinter/flavors/python@${DEFAULT_RELEASE}`,
+      },
+      {
+        regex: /megalinter\/megalinter\/flavors\/([a-z]*)@v5/gm,
+        replacement: `oxsecurity/megalinter/flavors/$1@${DEFAULT_RELEASE}`,
+        test: "megalinter/megalinter/flavors/python@v5",
+        testRes: `oxsecurity/megalinter/flavors/python@${DEFAULT_RELEASE}`,
+      },
+      {
+        regex: /megalinter\/megalinter\/flavors\/([a-z]*)@([a-z]*)/gm,
+        replacement: "oxsecurity/megalinter/flavors/$1@$2",
+        test: "megalinter/megalinter/flavors/python@alpha",
+        testRes: "oxsecurity/megalinter/flavors/python@alpha",
+      },
+      {
+        regex: /megalinter\/megalinter\/flavors\/([a-z]*)/gm,
+        replacement: "oxsecurity/megalinter/flavors/$1",
+        test: "megalinter/megalinter/flavors/python",
+        testRes: "oxsecurity/megalinter/flavors/python",
+      },
+      // GitHub Action report folder
+      {
+        regex: /Mega-Linter reports(.*)\n(.*)path:(.*)\n(.*)report(?!s)/gm,
+        replacement: "Mega-Linter reports$1\n$2path:$3\n$4megalinter-reports",
+        test: `      name: Mega-Linter reports
+        path: |
+          report`,
+        testRes: `      name: Mega-Linter reports
+        path: |
+          megalinter-reports`,
+      },
+      // Docker image flavors
+      {
+        regex: /megalinter\/megalinter-([a-z]*):v5\.(.*)/gm,
+        replacement: `oxsecurity/megalinter-$1:${DEFAULT_RELEASE}`,
+        test: "megalinter/megalinter-python:v5.1.2",
+        testRes: `oxsecurity/megalinter-python:${DEFAULT_RELEASE}`,
+      },
+      {
+        regex: /megalinter\/megalinter-([a-z]*):v5/gm,
+        replacement: `oxsecurity/megalinter-$1:${DEFAULT_RELEASE}`,
+        test: "megalinter/megalinter-python:v5",
+        testRes: `oxsecurity/megalinter-python:${DEFAULT_RELEASE}`,
+      },
+      {
+        regex: /megalinter\/megalinter-([a-z]*):([a-z]*)/gm,
+        replacement: "oxsecurity/megalinter-$1:$2",
+        test: "megalinter/megalinter-python:alpha",
+        testRes: "oxsecurity/megalinter-python:alpha",
+      },
+      {
+        regex: /megalinter\/megalinter-([a-z]*)/gm,
+        replacement: "oxsecurity/megalinter-$1",
+        test: "megalinter/megalinter-python",
+        testRes: "oxsecurity/megalinter-python",
+      },
+      // Github actions using main flavor
+      {
+        regex: /megalinter\/megalinter@v5\.(.*)/gm,
+        replacement: `oxsecurity/megalinter@${DEFAULT_RELEASE}`,
+        test: "megalinter/megalinter@v5.2.4",
+        testRes: `oxsecurity/megalinter@${DEFAULT_RELEASE}`,
+      },
+      {
+        regex: /megalinter\/megalinter@v5/gm,
+        replacement: `oxsecurity/megalinter@${DEFAULT_RELEASE}`,
+        test: "megalinter/megalinter@v5",
+        testRes: `oxsecurity/megalinter@${DEFAULT_RELEASE}`,
+      },
+      {
+        regex: /megalinter\/megalinter@([a-z]*)/gm,
+        replacement: "oxsecurity/megalinter@$1",
+        test: "megalinter/megalinter@alpha",
+        testRes: "oxsecurity/megalinter@alpha",
+      },
+      // Docker images using main flavor
+      {
+        regex: /megalinter\/megalinter:v5\.(.*)/gm,
+        replacement: `oxsecurity/megalinter:${DEFAULT_RELEASE}`,
+        test: "megalinter/megalinter:v5.2.4",
+        testRes: `oxsecurity/megalinter:${DEFAULT_RELEASE}`,
+      },
+      {
+        regex: /megalinter\/megalinter:v5/gm,
+        replacement: `oxsecurity/megalinter:${DEFAULT_RELEASE}`,
+        test: "megalinter/megalinter:v5",
+        testRes: `oxsecurity/megalinter:${DEFAULT_RELEASE}`,
+      },
+      {
+        regex: /megalinter\/megalinter:([a-z]*)/gm,
+        replacement: "oxsecurity/megalinter:$1",
+        test: "megalinter/megalinter:alpha",
+        testRes: "oxsecurity/megalinter:alpha",
+      },
+      // V6 to V7 migration rules
+      // Documentation base URL
+      {
+        regex: /https:\/\/oxsecurity\.github\.io\/megalinter/gm,
+        replacement: "https://megalinter.io",
+        test: "https://oxsecurity.github.io/megalinter/configuration",
+        testRes: "https://megalinter.io/configuration",
+      },
+      {
+        regex: /https:\/\/megalinter.io\/configuration/gm,
+        replacement: "https://megalinter.io/latest/config-file",
+        test: "https://megalinter.io/configuration/",
+        testRes: "https://megalinter.io/latest/config-file/",
+      },
+      {
+        regex: /https:\/\/megalinter.io\/config-file/gm,
+        replacement: "https://megalinter.io/latest/config-file",
+        test: "https://megalinter.io/config-file/",
+        testRes: "https://megalinter.io/latest/config-file/",
+      },
+      {
+        regex: /https:\/\/megalinter.io\/flavors/gm,
+        replacement: "https://megalinter.io/latest/flavors",
+        test: "https://megalinter.io/flavors/",
+        testRes: "https://megalinter.io/latest/flavors/",
+      },
+      // Github actions flavors
+      {
+        regex: /oxsecurity\/megalinter\/flavors\/([a-z]*)@v6\.(.*)/gm,
+        replacement: `oxsecurity/megalinter/flavors/$1@${DEFAULT_RELEASE}`,
+        test: "oxsecurity/megalinter/flavors/python@v6.1.2",
+        testRes: `oxsecurity/megalinter/flavors/python@${DEFAULT_RELEASE}`,
+      },
+      {
+        regex: /oxsecurity\/megalinter\/flavors\/([a-z]*)@v6/gm,
+        replacement: `oxsecurity/megalinter/flavors/$1@${DEFAULT_RELEASE}`,
+        test: "oxsecurity/megalinter/flavors/python@v6",
+        testRes: `oxsecurity/megalinter/flavors/python@${DEFAULT_RELEASE}`,
+      },
+      // Docker image flavors
+      {
+        regex: /oxsecurity\/megalinter-([a-z]*):v6\.(.*)/gm,
+        replacement: `oxsecurity/megalinter-$1:${DEFAULT_RELEASE}`,
+        test: "oxsecurity/megalinter-python:v6.1.2",
+        testRes: `oxsecurity/megalinter-python:${DEFAULT_RELEASE}`,
+      },
+      {
+        regex: /oxsecurity\/megalinter-([a-z]*):v6/gm,
+        replacement: `oxsecurity/megalinter-$1:${DEFAULT_RELEASE}`,
+        test: "oxsecurity/megalinter-python:v6",
+        testRes: `oxsecurity/megalinter-python:${DEFAULT_RELEASE}`,
+      },
+      // Github actions using main flavor
+      {
+        regex: /oxsecurity\/megalinter@v6\.(.*)/gm,
+        replacement: `oxsecurity/megalinter@${DEFAULT_RELEASE}`,
+        test: "oxsecurity/megalinter@v6.2.4",
+        testRes: `oxsecurity/megalinter@${DEFAULT_RELEASE}`,
+      },
+      {
+        regex: /oxsecurity\/megalinter@v6/gm,
+        replacement: `oxsecurity/megalinter@${DEFAULT_RELEASE}`,
+        test: "oxsecurity/megalinter@v6",
+        testRes: `oxsecurity/megalinter@${DEFAULT_RELEASE}`,
+      },
+      // Docker images using main flavor
+      {
+        regex: /oxsecurity\/megalinter:v6\.(.*)/gm,
+        replacement: `oxsecurity/megalinter:${DEFAULT_RELEASE}`,
+        test: "oxsecurity/megalinter:v6.2.4",
+        testRes: `oxsecurity/megalinter:${DEFAULT_RELEASE}`,
+      },
+      {
+        regex: /oxsecurity\/megalinter:v6/gm,
+        replacement: `oxsecurity/megalinter:${DEFAULT_RELEASE}`,
+        test: "oxsecurity/megalinter:v6",
+        testRes: `oxsecurity/megalinter:${DEFAULT_RELEASE}`,
+      },
+      // V7 to V8 migration rules
+      // Github actions flavors
+      {
+        regex: /oxsecurity\/megalinter\/flavors\/([a-z]*)@v7\.(.*)/gm,
+        replacement: `oxsecurity/megalinter/flavors/$1@${DEFAULT_RELEASE}`,
+        test: "oxsecurity/megalinter/flavors/python@v7.1.2",
+        testRes: `oxsecurity/megalinter/flavors/python@${DEFAULT_RELEASE}`,
+      },
+      {
+        regex: /oxsecurity\/megalinter\/flavors\/([a-z]*)@v7/gm,
+        replacement: `oxsecurity/megalinter/flavors/$1@${DEFAULT_RELEASE}`,
+        test: "oxsecurity/megalinter/flavors/python@v7",
+        testRes: `oxsecurity/megalinter/flavors/python@${DEFAULT_RELEASE}`,
+      },
+      // Docker image flavors
+      {
+        regex: /oxsecurity\/megalinter-([a-z]*):v7\.(.*)/gm,
+        replacement: `oxsecurity/megalinter-$1:${DEFAULT_RELEASE}`,
+        test: "oxsecurity/megalinter-python:v7.1.2",
+        testRes: `oxsecurity/megalinter-python:${DEFAULT_RELEASE}`,
+      },
+      {
+        regex: /oxsecurity\/megalinter-([a-z]*):v7/gm,
+        replacement: `oxsecurity/megalinter-$1:${DEFAULT_RELEASE}`,
+        test: "oxsecurity/megalinter-python:v7",
+        testRes: `oxsecurity/megalinter-python:${DEFAULT_RELEASE}`,
+      },
+      // Github actions using main flavor
+      {
+        regex: /oxsecurity\/megalinter@v7\.(.*)/gm,
+        replacement: `oxsecurity/megalinter@${DEFAULT_RELEASE}`,
+        test: "oxsecurity/megalinter@v7.2.4",
+        testRes: `oxsecurity/megalinter@${DEFAULT_RELEASE}`,
+      },
+      {
+        regex: /oxsecurity\/megalinter@v7/gm,
+        replacement: `oxsecurity/megalinter@${DEFAULT_RELEASE}`,
+        test: "oxsecurity/megalinter@v7",
+        testRes: `oxsecurity/megalinter@${DEFAULT_RELEASE}`,
+      },
+      // Docker images using main flavor
+      {
+        regex: /oxsecurity\/megalinter:v7\.(.*)/gm,
+        replacement: `oxsecurity/megalinter:${DEFAULT_RELEASE}`,
+        test: "oxsecurity/megalinter:v7.2.4",
+        testRes: `oxsecurity/megalinter:${DEFAULT_RELEASE}`,
+      },
+      {
+        regex: /oxsecurity\/megalinter:v7/gm,
+        replacement: `oxsecurity/megalinter:${DEFAULT_RELEASE}`,
+        test: "oxsecurity/megalinter:v7",
+        testRes: `oxsecurity/megalinter:${DEFAULT_RELEASE}`,
+      },
+      // Create pull request action
+      {
+        regex: /peter-evans\/create-pull-request@v(3|4|5)/gm,
+        replacement: `peter-evans/create-pull-request@v6`,
+        test: "peter-evans/create-pull-request@v5",
+        testRes: `peter-evans/create-pull-request@v6`,
+      },
+      // Auto-commit action
+      {
+        regex: /stefanzweifel\/git-auto-commit-action@v(2|3|4)/gm,
+        replacement: `stefanzweifel/git-auto-commit-action@v5`,
+        test: "stefanzweifel/git-auto-commit-action@v4",
+        testRes: `stefanzweifel/git-auto-commit-action@v5`,
+      },
+      // All remaining cases... cross fingers :)
+      {
+        regex: /megalinter\/megalinter/gm,
+        replacement: "oxsecurity/megalinter",
+        test: "wesh megalinter/megalinter",
+        testRes: "wesh oxsecurity/megalinter",
+      },
     ];
   }
 
   async run() {
+    console.log(asciiArt());
+    const promptsUpgradeRes = await prompts({
+      name: "upgrade",
+      message: c.blueBright(
+        `This assistant will automatically upgrade your local files so you use MegaLinter ${DEFAULT_RELEASE}\nPlease confirm to proceed :)`
+      ),
+      type: "confirm",
+      initial: true,
+    });
+    if (promptsUpgradeRes.upgrade === false) {
+      console.log(
+        `You should upgrade to ${DEFAULT_RELEASE} to benefit from latest versions of linters, and more features :)`
+      );
+      return;
+    }
+    // Update local files
+    await this.applyReplacements();
+    this.manageGitIgnore();
+    console.log("");
+    console.log(
+      c.green("You MegaLinter local configuration files has been updated !")
+    );
+    console.log(
+      c.grey(
+        "Now stage and commit updated files then push to see latest version of MegaLinter in action !"
+      )
+    );
+    console.log("");
+    // Propose to try ox service
+    const promptsOXRes = await prompts({
+      name: "ox",
+      message: c.blueBright(
+        `MegaLinter is now part of ${c.green(
+          "OX Security"
+        )}. -> https://www.ox.security/?ref=megalinter\n\nDo you want to try OX Security to secure your software supply chain security ?`
+      ),
+      type: "confirm",
+      initial: true,
+    });
+    if (promptsOXRes.ox === true) {
+      new OXSecuritySetup().run();
+    }
+  }
+
+  async applyReplacements() {
     // List yaml and shell files
-    const globPattern1 = process.cwd() + `/**/*.{yaml,yml,sh,bash}`;
-    const files1 = await glob(globPattern1, { cwd: process.cwd(), dot: true });
+    const globPattern1 = `**/*.{yaml,yml,sh,bash}`;
+    const files1 = await glob(globPattern1, { cwd: process.cwd(), dot: true, ignore: GLOB_IGNORE_PATTERNS });
     // List Jenkinsfile
-    const globPattern2 = process.cwd() + `/**/Jenkinsfile`;
-    const files2 = await glob(globPattern2, { cwd: process.cwd(), dot: true });
+    const globPattern2 = `**/Jenkinsfile`;
+    const files2 = await glob(globPattern2, { cwd: process.cwd(), dot: true, ignore: GLOB_IGNORE_PATTERNS });
 
     // Analyze all files and make appropriate replacements
     const allFiles = files1.concat(files2);
@@ -266,6 +586,27 @@ jobs:
       )
     );
   }
+
+  // Create or update .gitignore files
+  manageGitIgnore() {
+    const gitIgnoreFile = path.join(process.cwd(), ".gitignore");
+    let gitIgnoreTextLines = [];
+    let doWrite = false;
+    if (fs.existsSync(gitIgnoreFile)) {
+      gitIgnoreTextLines = fs
+        .readFileSync(gitIgnoreFile, "utf8")
+        .split(/\r?\n/);
+    }
+    if (!gitIgnoreTextLines.includes("megalinter-reports/")) {
+      gitIgnoreTextLines.push("megalinter-reports/");
+      doWrite = true;
+    }
+    if (doWrite) {
+      fs.writeFileSync(gitIgnoreFile, gitIgnoreTextLines.join("\n") + "\n");
+      console.log(
+        "Updated .gitignore file to exclude megalinter-reports from commits"
+      );
+    }
+  }
 }
 
-module.exports = { MegaLinterUpgrader };

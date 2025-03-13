@@ -1,0 +1,12 @@
+Results of spectral linter (version 5.6.0)
+See documentation on https://megalinter.io/descriptors/api_spectral/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/api/api_good_1.yml
+    OpenAPI 3.x detected
+    No results with a severity of 'error' or higher found!
+
+[SUCCESS] .automation/test/api/api_good_2.json
+    OpenAPI 3.x detected
+    No results with a severity of 'error' or higher found!
+

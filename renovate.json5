@@ -1,0 +1,85 @@
+{
+  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+  extends: [
+    'config:recommended',
+    'customManagers:dockerfileVersions',
+    ':maintainLockFilesWeekly',
+    ':separateMultipleMajorReleases',
+    ':semanticCommits',
+    ':label(dependencies)',
+    ':configMigration',
+    ':combinePatchMinorReleases',
+    'npm:unpublishSafe',
+    'preview:dockerVersions',
+    'schedule:daily',
+    'group:unitTestNonMajor',
+    ':enableVulnerabilityAlerts',
+  ],
+  vulnerabilityAlerts: {
+    enabled: true,
+  },
+  osvVulnerabilityAlerts: true,
+  packageRules: [
+    {
+      matchPackageNames: [
+        'uv',
+        'astral-sh/uv',
+        'ghcr.io/astral-sh/uv',
+      ],
+      schedule: [
+        'before 4am on Friday',
+      ],
+    },
+    {
+      groupName: 'Roslynator',
+      matchSourceUrls: [
+        'https://github.com/dotnet/roslynator',
+      ],
+      matchUpdateTypes: [
+        'digest',
+        'patch',
+        'minor',
+        'major',
+      ],
+    },
+    {
+      matchPackageNames: [
+        'hardisgroupcom/sfdx-hardis',
+      ],
+      schedule: [
+        'before 8am on Friday',
+      ],
+    },
+    {
+      groupName: 'Salesforce packages',
+      matchPackageNames: [
+        '@salesforce/**',
+      ],
+      schedule: [
+        'before 4am every 4 day',
+      ],
+      matchUpdateTypes: [
+        'digest',
+        'patch',
+        'minor',
+        'major',
+      ],
+    },
+  ],
+  customManagers: [
+    {
+      customType: 'regex',
+      description: 'Update dockerfile sections in .megalinter-descriptor.yml files',
+      fileMatch: [
+        '(^|/).*megalinter(\\\\|/)constants\\.py$',
+        '(^|/).*\\.devcontainer(\\\\|/)Dockerfile$',
+        '(^|/).*\\.megalinter-descriptor\\.ya?ml$',
+      ],
+      matchStrings: [
+        '# renovate: datasource=(?<datasource>[a-z-.]+?) depName=(?<depName>[^\\s]+?)(?: (lookupName|packageName)=(?<packageName>[^\\s]+?))?(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>[^\\s]+?))?(?: registryUrl=(?<registryUrl>[^\\s]+?))?\\s(?:ENV|ARG)\\s+[A-Za-z0-9_]+?_VERSION[ =]["\']?(?<currentValue>.+?)["\']?\\s',
+        '# renovate: datasource=(?<datasource>[a-z-.]+?) depName=(?<depName>[^\\s]+?)(?: (lookupName|packageName)=(?<packageName>[^\\s]+?))?(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>[^\\s]+?))?(?: registryUrl=(?<registryUrl>[^\\s]+?))?\\s+(?:ENV|ARG)\\s+[A-Za-z0-9_]+?_VERSION[ =]["\']?(?<currentValue>.+?)["\']?\\s',
+        '# renovate: datasource=(?<datasource>[a-z-.]+?) depName=(?<depName>[^\\s]+?)(?: (lookupName|packageName)=(?<packageName>[^\\s]+?))?(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>[^\\s]+?))?(?: registryUrl=(?<registryUrl>[^\\s]+?))?\\\\n(?:ENV|ARG)\\s+[A-Za-z0-9_]+?_VERSION[ =]["\']?(?<currentValue>.+?)["\']?,',
+      ],
+    },
+  ],
+}

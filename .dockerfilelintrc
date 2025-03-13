@@ -1,4 +1,0 @@
----
-rules:
-  # Base images should not use the latest tag
-  latest_tag: off

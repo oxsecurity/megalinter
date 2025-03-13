@@ -1,0 +1,12 @@
+/* eslint jsonc/sort-array-values: ['error', { pathPattern: '.*', order: { type: 'asc' } }] */
+{
+  "arrow_spacing":{
+    "level": "ignore"
+  },
+  "braces_spacing": {
+  "level": "ignore",
+    "spaces": 0,
+    "empty_object_spaces": 0,
+    "letters": ["c", "b", "a"]
+  }
+}

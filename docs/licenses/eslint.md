@@ -1,3 +1,8 @@
+---
+title: License info for eslint within MegaLinter
+search:
+  exclude: true
+---
 Copyright OpenJS Foundation and other contributors, <www.openjsf.org>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy

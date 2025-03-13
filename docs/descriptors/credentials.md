@@ -5,9 +5,9 @@
 
 ## Linters
 
-| Linter                                  | Configuration key                        |
-|-----------------------------------------|------------------------------------------|
-| [secretlint](credentials_secretlint.md) | [CREDENTIALS](credentials_secretlint.md) |
+| Linter                                  | Configuration key                        | Status                                                                                                                                     |
+|-----------------------------------------|------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
+| [secretlint](credentials_secretlint.md) | [CREDENTIALS](credentials_secretlint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/secretlint/secretlint)](https://github.com/secretlint/secretlint/commits) |
 
 ## Linted files
 

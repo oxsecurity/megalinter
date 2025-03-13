@@ -20,15 +20,22 @@ class TapReporter(Reporter):
 
     def manage_activation(self):
         # Super-Linter legacy variables
-        output_format = config.get("OUTPUT_FORMAT", "")
+        if config.get(self.master.request_id, "OUTPUT_DETAIL", "") == "detailed":
+            self.report_type = "detailed"
+        if (
+            config.get(self.master.request_id, "TAP_REPORTER_OUTPUT_DETAIL", "")
+            == "detailed"
+        ):
+            self.report_type = "detailed"
+        output_format = config.get(self.master.request_id, "OUTPUT_FORMAT", "")
         if output_format.startswith("tap"):
             self.is_active = True
-            if config.get("OUTPUT_DETAIL", "") == "detailed":
-                self.report_type = "detailed"
         # MegaLinter vars (false by default)
-        elif config.get("TAP_REPORTER", "false") == "true":
+        elif config.get(self.master.request_id, "TAP_REPORTER", "false") == "true":
             self.is_active = True
         else:
+            self.is_active = False
+        if not utils.can_write_report_files(self.master):
             self.is_active = False
         if self.is_active is True:
             # If TAP is active, we must lint file by file to have result file by file in TAP
@@ -63,7 +70,9 @@ class TapReporter(Reporter):
                 file_tap_lines += detailed_lines
             tap_report_lines += file_tap_lines
         # Write TAP file
-        tap_report_sub_folder = config.get("TAP_REPORTER_SUB_FOLDER", "tap")
+        tap_report_sub_folder = config.get(
+            self.master.request_id, "TAP_REPORTER_SUB_FOLDER", "tap"
+        )
         tap_file_name = (
             f"{self.report_folder}{os.path.sep}"
             f"{tap_report_sub_folder}{os.path.sep}"

@@ -1,0 +1,677 @@
+descriptor_id: REPOSITORY
+descriptor_type: other
+descriptor_flavors:
+  - all_flavors # Applicable to CI in any language project
+  - ci_light
+  - cupcake
+lint_all_files: true
+linters:
+  # CHECKOV
+  - linter_name: checkov
+    name: REPOSITORY_CHECKOV
+    can_output_sarif: true
+    descriptor_flavors:
+      - all_flavors # Applicable to CI in any language project
+      - cupcake
+      - terraform
+      - security
+    linter_url: https://www.checkov.io/
+    linter_repo: https://github.com/bridgecrewio/checkov
+    linter_speed: 2
+    linter_banner_image_url: https://raw.githubusercontent.com/bridgecrewio/checkov/25388a34231e09ac17b266ad9db0b4c0e806e956/docs/web/images/checkov-logo.svg
+    linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/checkov.png
+    linter_rules_configuration_url: https://github.com/bridgecrewio/checkov#configuration-using-a-config-file
+    linter_rules_inline_disable_url: https://www.checkov.io/2.Basics/Suppressing%20and%20Skipping%20Policies.html
+    linter_rules_url: https://www.checkov.io/5.Policy%20Index/all.html
+    linter_megalinter_ref_url: "no"
+    cli_lint_mode: project
+    cli_config_arg_name: "--config-file"
+    config_file_name: .checkov.yml
+    cli_sarif_args:
+      - --output
+      - sarif
+      - --output-file-path
+      - "{{REPORT_FOLDER}}"
+    sarif_default_output_file: results_sarif.sarif
+    cli_lint_extra_args:
+      - "--directory"
+      - "."
+    cli_lint_errors_count: regex_sum
+    cli_lint_errors_regex: ", Failed checks: ([0-9]+), Skipped checks"
+    examples:
+      - "checkov --directory ."
+      - "checkov --directory . --output --sarif"
+    install:
+      # cargo:
+      #   - COMPILER_ONLY # Use COMPILER_ONLY fake package just to Dockerfile contains rust toolchain install
+      dockerfile:
+        - |-
+          # renovate: datasource=pypi depName=checkov
+          ARG PIP_CHECKOV_VERSION=3.2.381
+      pip:
+        - checkov==${PIP_CHECKOV_VERSION}
+    ide:
+      vscode:
+        - name: Checkov
+          url: https://marketplace.visualstudio.com/items?itemName=Bridgecrew.checkov
+    test_folder: repository_checkov
+
+  # DEVSKIM
+  - linter_name: devskim
+    can_output_sarif: true
+    descriptor_flavors:
+      - all
+      - security
+    ignore_for_flavor_suggestions: true
+    linter_text: |
+      If you need to ignore folders,files or file extensions, use glob expressions `Glob` property of local `.devskim.json` file
+
+      Example:
+
+      ```json
+      {
+        "Globs": [
+          "**/.git/**",
+          "**/megalinter-reports/**"
+        ]
+      }
+      ```
+    linter_url: https://github.com/microsoft/DevSkim
+    linter_repo: https://github.com/microsoft/DevSkim
+    linter_speed: 1
+    linter_rules_configuration_url: https://github.com/microsoft/DevSkim/wiki/Analyze-Command
+    linter_rules_ignore_config_url: https://github.com/microsoft/DevSkim/wiki/Analyze-Command
+    linter_image_url: https://github.com/microsoft/DevSkim/raw/main/media/devskim_logo.svg
+    linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/devskim.png
+    config_file_name: .devskim.json
+    cli_config_arg_name: "--options-json"
+    cli_lint_mode: project
+    cli_lint_extra_args:
+      - analyze
+    cli_sarif_args:
+      - --file-format
+      - sarif
+    cli_lint_extra_args_after:
+      - --source-code
+      - "."
+      - -E
+    cli_help_arg_name: --help
+    cli_version_arg_name: --version
+    cli_lint_errors_count: sarif
+    test_folder: devskim
+    examples:
+      - "devskim analyze --source-code ."
+      - "devskim analyze --file-format sarif --source-code ."
+      - "devskim analyze --file-format sarif --options-json config --source-code ."
+    install:
+      dockerfile:
+        - |-
+          # renovate: datasource=nuget depName=Microsoft.CST.DevSkim.CLI
+          ARG REPOSITORY_DEVSKIM_VERSION=1.0.52
+        - RUN apk add --no-cache dotnet9-sdk
+        - ENV PATH="${PATH}:/root/.dotnet/tools"
+        - RUN dotnet tool install --allow-roll-forward --global Microsoft.CST.DevSkim.CLI --version ${REPOSITORY_DEVSKIM_VERSION}
+    ide:
+      vscode:
+        - name: VSCode DevSkim
+          url: https://marketplace.visualstudio.com/items?itemName=MS-CST-E.vscode-devskim
+
+  # DUSTILOCK
+  - class: DustilockLinter
+    linter_name: dustilock
+    can_output_sarif: true
+    descriptor_flavors:
+      - all
+      - security
+    ignore_for_flavor_suggestions: true
+    linter_url: https://github.com/Checkmarx/dustilock
+    linter_repo: https://github.com/Checkmarx/dustilock
+    linter_banner_image_url: https://user-images.githubusercontent.com/1287098/142776854-83abf265-a1ba-485f-a8b6-995da7f7ef8b.png
+    linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/dustilock.png
+    cli_lint_mode: project
+    cli_lint_extra_args:
+      - --recursive
+    cli_lint_errors_count: regex_count
+    cli_lint_errors_regex: "(error )"
+    linter_version_cache: "1.2.0"
+    test_folder: dustilock
+    examples:
+      - "dustilock"
+    install:
+      dockerfile:
+        - |-
+          # renovate: datasource=github-tags depName=checkmarx/dustilock
+          ARG REPOSITORY_DUSTILOCK_VERSION=1.2.0
+        # The golang image used as a builder is a temporary workaround
+        # Dustilock is not released as a binary or container
+        - |-
+          FROM golang:alpine AS dustilock
+          ARG REPOSITORY_DUSTILOCK_VERSION
+          RUN apk add --no-cache git && GOBIN=/usr/bin go install github.com/checkmarx/dustilock@v${REPOSITORY_DUSTILOCK_VERSION}
+        - COPY --link --from=dustilock /usr/bin/dustilock /usr/bin/dustilock
+
+  # GIT_DIFF
+  - linter_name: git_diff
+    lint_all_files: true
+    test_folder: git_diff
+    linter_text: Git diff checks for git conflicts markers in files
+    linter_url: https://git-scm.com
+    linter_repo: https://github.com/git/git
+    linter_speed: 5
+    linter_spdx_license: LGPL-2.1
+    linter_megalinter_ref_url: never
+    cli_config_arg_name: ""
+    cli_executable: git
+    cli_lint_mode: project
+    cli_lint_extra_args:
+      - "diff"
+      - "--check"
+    cli_help_arg_name: "--help"
+    examples:
+      - "git diff --check"
+
+  # GITLEAKS
+  - class: GitleaksLinter
+    linter_name: gitleaks
+    can_output_sarif: true
+    descriptor_flavors:
+      - all_flavors # Applicable to CI in any language project
+      - ci_light
+      - cupcake
+      - security
+    linter_url: https://github.com/gitleaks/gitleaks
+    linter_repo: https://github.com/gitleaks/gitleaks
+    linter_speed: 3
+    linter_spdx_license: MIT
+    linter_rules_configuration_url: https://github.com/gitleaks/gitleaks#configuration
+    linter_rules_ignore_config_url: https://github.com/gitleaks/gitleaks#gitleaksignore
+    linter_rules_inline_disable_url: https://github.com/gitleaks/gitleaks#gitleaksallow
+    linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/gitleaks.png
+    linter_text: |
+      ## Scan only Pull Request commits
+
+      `VALIDATE_ALL_CODEBASE: false` doesn't make gitleaks analyze only updated files. To analyze only commits on Pull Request, set `VALIDATE_ALL_CODEBASE: false` together with `REPOSITORY_GITLEAKS_PR_COMMITS_SCAN: true` (you have to specify it explicitly), but only works for selected platforms: GitHub Actions, Azure Pipelines, GitLab Pipelines\* (Merge Requests and External Pull Requests)
+
+      - \* Only GitLab self-managed and GitLab SaaS (Premium and Ultimate) are supported (limitation due to GitLab itself) and [Merge result pipelines](https://docs.gitlab.com/ee/ci/pipelines/merged_results_pipelines.html#enable-merged-results-pipelines){target=_blank} feature has to be enabled.
+      - If MegaLinter with the gitleaks runs on PR on the not listed platform above, then the analysis is performed on the whole repository - default gitleaks behavior (checked-out commits, depends on fetch-depth configuration).
+        - You can still scan only PR commits in your CI/CD platform by setting MegaLinter envs: `PULL_REQUEST=true`\*, `REPOSITORY_GITLEAKS_PR_COMMITS_SCAN: true`, `REPOSITORY_GITLEAKS_PR_SOURCE_SHA` with last commit sha from your PR and `REPOSITORY_GITLEAKS_PR_TARGET_SHA` commit sha from your target branch (for example, `main` if you do PR to main branch). Example on how to get source commit sha `git rev-list -n 1 refs/remotes/origin/<source_branch>` and target commit sha `git rev-parse refs/remotes/origin/<target_branch>`
+          - \* `PULL_REQUEST` environment variable must be set to `true` only on Pull Requests, so you must calculate the value in your pipeline and pass the outcome.
+      - PR commits scan feature, if applicable, will override your `--log-opts` argument if you used it in the `REPOSITORY_GITLEAKS_ARGUMENTS`.
+
+      ### Azure Pipelines environment variables on Pull Requests
+
+      In the case of Azure Pipelines when running in a Docker container, we have to explicitly pass some environment variables:
+
+      ```bash
+        docker run -v $(System.DefaultWorkingDirectory):/tmp/lint \
+            -e SYSTEM_PULLREQUEST_SOURCECOMMITID=$(System.PullRequest.SourceCommitId) \
+            -e SYSTEM_PULLREQUEST_TARGETBRANCH=$(System.PullRequest.TargetBranch) \
+            -e BUILD_REASON=$(Build.Reason) \
+            oxsecurity/megalinter:v8
+      ```
+
+      ### Repository checkout on Pull Requests
+
+      To scan only PR commits, the [shallow fetch](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---depthltdepthgt){target=_blank} for a repository checkout has to be 0. Below is an example configuration for supported platforms:
+
+      #### GitHub Actions
+
+      ```yml
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      ```
+
+      #### Azure Pipelines
+
+      ```yml
+      - checkout: self
+        fetchDepth: 0
+      ```
+
+      #### GitLab Pipelines
+
+      ```yml
+      variables:
+        GIT_DEPTH: 0
+      ```
+
+      #### Git
+
+      ```shell
+      git fetch --depth=0
+      ```
+    config_file_name: .gitleaks.toml
+    cli_config_arg_name: "-c"
+    cli_lint_mode: project
+    cli_lint_extra_args:
+      - detect
+      - --redact
+      - --no-git
+    cli_sarif_args:
+      - --report-format
+      - sarif
+      - --report-path
+      - "{{SARIF_OUTPUT_FILE}}"
+    cli_lint_extra_args_after:
+      - "--verbose"
+      - "--source"
+      - "."
+    cli_help_arg_name: help
+    cli_version_arg_name: version
+    cli_lint_errors_count: regex_sum
+    cli_lint_errors_regex: "leaks found: ([0-9]+)"
+    test_folder: gitleaks
+    examples:
+      - "gitleaks detect --redact --no-git --verbose --source ."
+      - "gitleaks detect -c .gitleaks.toml --redact --no-git --verbose --source ."
+    install:
+      dockerfile:
+        - |-
+          # renovate: datasource=docker depName=zricethezav/gitleaks
+          ARG REPOSITORY_GITLEAKS_VERSION=v8.24.0
+        - FROM zricethezav/gitleaks:${REPOSITORY_GITLEAKS_VERSION} AS gitleaks
+        - COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
+    variables:
+      - name: REPOSITORY_GITLEAKS_PR_COMMITS_SCAN
+        description: Scan only commits in the current Pull Request/Merge Request
+        default_value: "false"
+      - name: REPOSITORY_GITLEAKS_PR_SOURCE_SHA
+        description: Source commit SHA of the Pull Request/Merge Request
+        default_value: ""
+      - name: REPOSITORY_GITLEAKS_PR_TARGET_SHA
+        description: Target commit SHA of the Pull Request/Merge Request
+        default_value: ""
+
+  # GRYPE
+  - linter_name: grype
+    can_output_sarif: true
+    descriptor_flavors:
+      - all_flavors # Applicable to CI in any language project
+      - ci_light
+      - cupcake
+      - security
+    linter_speed: 2
+    linter_url: https://github.com/anchore/grype
+    linter_repo: https://github.com/anchore/grype
+    linter_rules_url: https://github.com/anchore/grype#vulnerability-summary
+    linter_banner_image_url: https://user-images.githubusercontent.com/5199289/136855393-d0a9eef9-ccf1-4e2b-9d7c-7aad16a567e5.png
+    linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/grype.png
+    linter_rules_configuration_url: https://github.com/anchore/grype#configuration
+    cli_lint_mode: project
+    cli_config_arg_name: "--config"
+    config_file_name: .grype.yaml
+    cli_lint_extra_args_after:
+      - dir:.
+    cli_sarif_args:
+      - --output
+      - sarif
+    cli_version_arg_name: version
+    cli_lint_errors_count: regex_count
+    cli_lint_errors_regex: "(Low|Medium|High|Critical)"
+    examples:
+      - "grype dir:."
+    downgraded_version: true
+    downgraded_reason: Crash for failure test class with https://github.com/anchore/grype/releases/tag/v0.79.6
+    install:
+      dockerfile:
+        - |-
+          # renovate: datasource=github-tags depName=anchore/grype
+          ARG REPOSITORY_GRYPE_VERSION=0.87.0
+        - RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/refs/tags/v${REPOSITORY_GRYPE_VERSION}/install.sh | sh -s -- -b /usr/local/bin
+    test_folder: repository_grype
+
+  # KICS
+  - linter_name: kics
+    can_output_sarif: true
+    descriptor_flavors:
+      - cupcake
+      - terraform
+      - security
+    linter_speed: 2
+    linter_url: https://www.kics.io
+    linter_repo: https://github.com/checkmarx/kics
+    linter_rules_url: https://docs.kics.io/latest/queries/all-queries/
+    linter_banner_image_url: https://raw.githubusercontent.com/checkmarx/kics/master/docs/img/logo/kics-hat-logo.png
+    linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/kics.png
+    linter_rules_configuration_url: https://docs.kics.io/latest/configuration-file/
+    linter_rules_inline_disable_url: https://docs.kics.io/latest/running-kics/#using_commands_on_scanned_files_as_comments
+    linter_megalinter_ref_url: https://docs.kics.io/latest/integrations/
+    cli_lint_mode: project
+    cli_config_arg_name: "--config"
+    config_file_name: kics.config
+    cli_executable: kics
+    cli_lint_extra_args:
+      - scan
+    cli_lint_extra_args_after:
+      - --no-progress
+      - --path
+      - "."
+    sarif_default_output_file: kics-results.sarif
+    cli_sarif_args:
+      - --output-name
+      - kics-results.sarif
+      - --output-path
+      - "{{REPORT_FOLDER}}"
+      - --report-formats
+      - "sarif"
+    cli_version_arg_name: "version"
+    cli_lint_errors_count: regex_number
+    cli_lint_errors_regex: "TOTAL: ([0-9]+)"
+    examples:
+      - "kics scan --path ."
+    install:
+      dockerfile:
+        - |-
+          # renovate: datasource=docker depName=checkmarx/kics
+          ARG REPOSITORY_KICS_VERSION=v2.1.3-alpine
+        - FROM checkmarx/kics:${REPOSITORY_KICS_VERSION} AS kics
+        - COPY --link --from=kics /app/bin/kics /usr/bin/kics
+        - ENV KICS_QUERIES_PATH=/usr/bin/assets/queries KICS_LIBRARIES_PATH=/usr/bin/assets/libraries
+        - COPY --from=kics /app/bin/assets /usr/bin/assets
+    test_folder: repository_kics
+
+  # LS-LINT
+  - linter_name: ls-lint
+    linter_url: https://ls-lint.org/
+    linter_repo: https://github.com/loeffel-io/ls-lint
+    linter_rules_url: https://ls-lint.org/2.2/configuration/the-rules.html
+    linter_banner_image_url: https://raw.githubusercontent.com/loeffel-io/ls-lint/master/assets/logo/ls-lint.png
+    active_only_if_file_found:
+      - ".ls-lint.yml"
+    cli_lint_mode: project
+    cli_config_arg_name: "--config"
+    config_file_name: ".ls-lint.yml"
+    examples:
+      - "ls-lint"
+      - "ls-lint --workdir src"
+    test_folder: repository_file
+    cli_lint_errors_count: "total_lines"
+    install:
+      dockerfile:
+        - |-
+          # renovate: datasource=npm depName=@ls-lint/ls-lint
+          ARG NPM_LS_LINT_LS_LINT_VERSION=2.2.3
+      npm:
+        - "@ls-lint/ls-lint@${NPM_LS_LINT_LS_LINT_VERSION}"
+
+  # SECRETLINT
+  - class: SecretLintLinter
+    linter_name: secretlint
+    can_output_sarif: true
+    descriptor_flavors:
+      - all_flavors # Applicable to CI in any language project
+      - ci_light
+      - cupcake
+      - security
+    linter_speed: 1
+    linter_url: https://github.com/secretlint/secretlint
+    linter_repo: https://github.com/secretlint/secretlint
+    linter_banner_image_url: https://github.com/secretlint/secretlint/raw/master/docs/assets/SecretLintLP.png
+    linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/secretlint.png
+    linter_rules_url: https://github.com/secretlint/secretlint#rule-packages
+    linter_rules_configuration_url: https://github.com/secretlint/secretlint#configuration
+    linter_rules_ignore_config_url: https://github.com/secretlint/secretlint/blob/master/docs/configuration.md#secretlintignore
+    linter_megalinter_ref_url: https://github.com/secretlint/secretlint#mega-linter
+    config_file_name: .secretlintrc.json
+    cli_config_arg_name: "--secretlintrc"
+    ignore_file_name: .secretlintignore
+    cli_lint_ignore_arg_name: --secretlintignore
+    cli_lint_mode: project
+    cli_lint_extra_args_after:
+      - "**/*"
+    cli_sarif_args:
+      - --format
+      - "@secretlint/secretlint-formatter-sarif"
+    cli_help_arg_name: "--help"
+    test_folder: credentials
+    examples:
+      - 'secretlint "*/**"'
+      - 'secretlint --secretlintrc .secretlintrc.json "**/*"'
+    install:
+      dockerfile:
+        - |-
+          # renovate: datasource=npm depName=secretlint
+          ARG NPM_SECRETLINT_VERSION=9.2.0
+        - |-
+          # renovate: datasource=npm depName=@secretlint/secretlint-rule-preset-recommend
+          ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=9.2.0
+        - |-
+          # renovate: datasource=npm depName=@secretlint/secretlint-formatter-sarif
+          ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=9.2.0
+      npm:
+        - secretlint@${NPM_SECRETLINT_VERSION}
+        - "@secretlint/secretlint-rule-preset-recommend@${NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION}"
+        - "@secretlint/secretlint-formatter-sarif@${NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION}"
+
+  # SEMGREP
+  - class: SemgrepLinter
+    linter_name: semgrep
+    can_output_sarif: true
+    descriptor_flavors:
+      - all_flavors # Applicable to CI in any language project
+      - cupcake
+      - security
+    linter_url: https://semgrep.dev/
+    linter_repo: https://github.com/returntocorp/semgrep
+    linter_speed: 1
+    linter_text: |
+      To use SemGrep in MegaLinter you must define a list of rulesets to use.
+
+      Example: `REPOSITORY_SEMGREP_RULESETS: ["p/docker-compose","p/owasp-top-ten"]`
+
+      Exception for standalone and security flavors docker images, that use a list of security rulesets by default.
+    linter_rules_url: https://semgrep.dev/r
+    linter_rules_configuration_url: https://semgrep.dev/docs/running-rules/
+    linter_rules_inline_disable_url: https://semgrep.dev/docs/ignoring-findings/#inline-comments
+    linter_rules_ignore_config_url: https://semgrep.dev/docs/ignoring-files-folders-code/#defining-files-and-folders-in-semgrepignore
+    linter_banner_image_url: https://raw.githubusercontent.com/returntocorp/semgrep/develop/semgrep.svg
+    linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/semgrep.png
+    cli_lint_mode: project
+    cli_config_arg_name: --config
+    cli_config_default_value: auto
+    ignore_file_name: .semgrepignore
+    cli_lint_extra_args:
+      - --error # Exit 1 when errors are found
+    cli_lint_extra_args_after:
+      - "{{WORKSPACE}}"
+    # cli_lint_fix_arg_name: --autofix # Disable for now as some "fixes" are actually breaking ML code
+    cli_sarif_args:
+      - --sarif
+      - --output
+      - "{{SARIF_OUTPUT_FILE}}"
+    cli_help_arg_name: -h
+    cli_help_extra_args: ["--help"]
+    cli_lint_errors_count: regex_number
+    cli_lint_errors_regex: "files: ([0-9]+) finding"
+    test_folder: repository_semgrep
+    examples:
+      - "semgrep /tmp/lint"
+      - "semgrep "
+    install:
+      dockerfile:
+        - |-
+          # renovate: datasource=pypi depName=semgrep
+          ARG PIP_SEMGREP_VERSION=1.111.0
+      pip:
+        - semgrep==${PIP_SEMGREP_VERSION}
+    variables:
+      - name: REPOSITORY_SEMGREP_RULESETS
+        description: List of semgrep rulesets identifiers that you want to enforce
+        default_value: auto
+      - name: REPOSITORY_SEMGREP_RULESETS_TYPE
+        description: "MegaLinter semgrep ruleset list preset id . Available values: security"
+        default_value: ""
+    ide:
+      vscode:
+        - name: VSCode SemGrep
+          url: https://marketplace.visualstudio.com/items?itemName=semgrep.semgrep
+
+  # SYFT
+  - class: SyftLinter
+    linter_name: syft
+    can_output_sarif: true
+    is_sbom: true
+    descriptor_flavors:
+      - security
+    ignore_for_flavor_suggestions: true
+    linter_url: https://github.com/anchore/syft
+    linter_repo: https://github.com/anchore/syft
+    linter_text: |
+      Builds a SBOM (Software Build Of Materials) from your repository
+    linter_banner_image_url: https://user-images.githubusercontent.com/5199289/136844524-1527b09f-c5cb-4aa9-be54-5aa92a6086c1.png
+    cli_lint_mode: project
+    config_file_name: .syft.yaml
+    cli_config_arg_name: --config
+    cli_lint_extra_args:
+      - scan
+      - .
+    cli_sarif_args:
+      - --output
+      - json
+      - --file
+      - "{{SARIF_OUTPUT_FILE}}.syft.json"
+    test_folder: repository_syft
+    examples:
+      - "syft /tmp/lint"
+    install:
+      dockerfile:
+        - |-
+          # renovate: datasource=github-tags depName=anchore/syft
+          ARG REPOSITORY_SYFT_VERSION=1.20.0
+        - RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/refs/tags/v${REPOSITORY_SYFT_VERSION}/install.sh | sh -s -- -b /usr/local/bin
+
+  # TRIVY
+  - linter_name: trivy
+    class: TrivyLinter
+    can_output_sarif: true
+    descriptor_flavors:
+      - all_flavors # Applicable to CI in any language project
+      - ci_light
+      - cupcake
+      - security
+    linter_text: |
+      You can ignore a list of errors by defining a [.trivyignore file](https://aquasecurity.github.io/trivy/latest/docs/configuration/filtering/#by-finding-ids)
+    linter_url: https://aquasecurity.github.io/trivy/
+    linter_repo: https://github.com/aquasecurity/trivy
+    linter_speed: 2
+    linter_banner_image_url: https://github.com/aquasecurity/trivy/raw/main/docs/imgs/logo.png
+    linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/trivy.png
+    linter_rules_configuration_url: https://aquasecurity.github.io/trivy/latest/docs/configuration/
+    linter_rules_ignore_config_url: https://aquasecurity.github.io/trivy/latest/docs/configuration/filtering/#by-inline-comments
+    cli_lint_mode: project
+    config_file_name: trivy.yaml
+    cli_config_arg_name: --config
+    cli_sarif_args:
+      - --format
+      - sarif
+      - -o
+      - "{{SARIF_OUTPUT_FILE}}"
+    cli_lint_extra_args:
+      - fs
+      - --scanners
+      - vuln,misconfig
+      - --exit-code
+      - "1"
+    cli_lint_extra_args_after:
+      - "."
+    test_folder: trivy
+    examples:
+      - "trivy fs --scanners vuln,misconfig ."
+    install:
+      dockerfile:
+        - |-
+          # renovate: datasource=github-tags depName=aquasecurity/trivy
+          ARG REPOSITORY_TRIVY_VERSION=0.59.1
+        - |
+          RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin "v${REPOSITORY_TRIVY_VERSION}" \
+              && (trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress)
+    ide:
+      vscode:
+        - name: VSCode Trivy
+          url: https://marketplace.visualstudio.com/items?itemName=AquaSecurityOfficial.trivy-vulnerability-scanner
+
+  # TRIVY SBOM
+  - linter_name: trivy-sbom
+    class: TrivySbomLinter
+    can_output_sarif: true
+    is_sbom: true
+    name: REPOSITORY_TRIVY_SBOM
+    cli_executable: trivy
+    descriptor_flavors:
+      - all_flavors # Applicable to CI in any language project
+      - ci_light
+      - cupcake
+      - security
+    linter_text: |
+      Generates SBOM (Software Bill Of Material) using Trivy
+    linter_url: https://aquasecurity.github.io/trivy/
+    linter_repo: https://github.com/aquasecurity/trivy
+    linter_speed: 2
+    linter_banner_image_url: https://github.com/aquasecurity/trivy/raw/main/docs/imgs/logo.png
+    linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/trivy-sbom.png
+    linter_rules_configuration_url: https://aquasecurity.github.io/trivy/latest/docs/configuration/
+    linter_rules_ignore_config_url: https://aquasecurity.github.io/trivy/latest/docs/configuration/filtering/#by-inline-comments
+    cli_lint_mode: project
+    config_file_name: trivy-sbom.yaml
+    cli_config_arg_name: --config
+    cli_lint_extra_args:
+      - fs
+      - --format
+      - cyclonedx
+    cli_lint_extra_args_after:
+      - "."
+    cli_sarif_args:
+      - --output
+      - "{{SARIF_OUTPUT_FILE}}.trivy-sbom.json"
+    test_folder: trivy
+    examples:
+      - "trivy fs --format cyclonedx ."
+      - "trivy fs --config trivy-sbom.yaml --format cyclonedx ."
+    install:
+      dockerfile:
+        - |-
+          # renovate: datasource=github-tags depName=aquasecurity/trivy
+          ARG REPOSITORY_TRIVY_SBOM_VERSION=0.59.1
+        - |
+          RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin "v${REPOSITORY_TRIVY_SBOM_VERSION}" \
+              && (trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress)
+    ide:
+      vscode:
+        - name: VSCode Trivy
+          url: https://marketplace.visualstudio.com/items?itemName=AquaSecurityOfficial.trivy-vulnerability-scanner
+
+  # TRUFFLEHOG
+  - linter_name: trufflehog
+    descriptor_flavors:
+      - all_flavors # Applicable to CI in any language project
+      - ci_light
+      - cupcake
+      - security
+    linter_speed: 2
+    linter_url: https://github.com/trufflesecurity/trufflehog
+    linter_repo: https://github.com/trufflesecurity/trufflehog
+    linter_banner_image_url: https://storage.googleapis.com/trufflehog-static-sources/pixel_pig.png
+    linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/trufflehog.png
+    linter_rules_configuration_url: https://github.com/trufflesecurity/trufflehog#regex-detector-alpha
+    cli_lint_mode: project
+    cli_config_arg_name: "--config"
+    config_file_name: .trufflehog.yml
+    cli_lint_extra_args:
+      - filesystem
+      - "."
+      - --fail
+      - --only-verified
+      - --no-update
+    cli_help_arg_name: --help
+    cli_version_arg_name: --version
+    examples:
+      - "trufflehog filesystem ."
+    install:
+      dockerfile:
+        - |-
+          # renovate: datasource=docker depName=trufflesecurity/trufflehog 
+          ARG REPOSITORY_TRUFFLEHOG_VERSION=3.88.14
+        - FROM trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION} AS trufflehog
+        - COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
+    test_folder: gitleaks

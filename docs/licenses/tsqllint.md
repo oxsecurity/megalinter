@@ -1,3 +1,8 @@
+---
+title: License info for tsqllint within MegaLinter
+search:
+  exclude: true
+---
 MIT License
 
 Copyright (c) 2017 Nathan Boyd and Douglas Wilson

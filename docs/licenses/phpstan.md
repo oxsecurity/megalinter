@@ -1,3 +1,8 @@
+---
+title: License info for phpstan within MegaLinter
+search:
+  exclude: true
+---
 MIT License
 
 Copyright (c) 2016 Ondřej Mirtes

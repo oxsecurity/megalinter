@@ -1,0 +1,69 @@
+version: "3"
+services:
+  # Redis server to manage request queues and results
+  megalinter_server_redis:
+    image: redis:7.4.2-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./redis:/data
+
+  # Server to receive requests and post them in redis queue
+  megalinter_server_api:
+    image: ghcr.io/oxsecurity/megalinter-server:alpha
+    command: uvicorn server.server:app --host 0.0.0.0 --port 8000
+    environment:
+      - MEGALINTER_SERVER_REDIS_HOST=megalinter_server_redis
+      - MEGALINTER_SERVER_REDIS_PORT=6379
+      - MEGALINTER_SERVER_REDIS_QUEUE=megalinter:queue:requests
+    ports:
+      - "8000:8000"
+    depends_on:
+      - megalinter_server_redis
+    links:
+      - megalinter_server_redis
+    volumes:
+      - ./server-files:/tmp/server-files
+
+  # Worker to process requests and post results in redis stream or pubsub
+  megalinter_server_worker:
+    #image: ghcr.io/oxsecurity/megalinter-ci_light:alpha # ci_light is lighter
+    #image: ghcr.io/oxsecurity/megalinter-javascript:alpha # javascript projects
+    image: ghcr.io/oxsecurity/megalinter-worker-security:alpha # cupcake is more complete
+    #image: ghcr.io/oxsecurity/megalinter:alpha # all linters
+    environment:
+      # Megalinter variables
+      - FLAVOR_SUGGESTIONS=false
+      # Worker variables
+      - MEGALINTER_SERVER=true
+      - MEGALINTER_SERVER_REDIS_HOST=megalinter_server_redis
+      - MEGALINTER_SERVER_REDIS_PORT=6379
+      - MEGALINTER_SERVER_REDIS_QUEUE=megalinter:queue:requests
+      - MEGALINTER_SERVER_WORKER_POOL=true # Uncomment to try worker pool (beta), to have multiple jobs processed by the same worker
+      - MEGALINTER_SERVER_WORKER_POOL_NUMBER=5 # If worker pool active, number of parallel threads in the worker
+
+      # Redis Reporter info: can be different than Redis job Queue server
+      - REDIS_REPORTER=true
+      - REDIS_REPORTER_HOST=megalinter_server_redis
+      - REDIS_REPORTER_PORT=6379
+
+      # Use either of the following variables groups depending you want to use redis stream messages or pubsub
+
+      # Stream mode
+      #- REDIS_LINTER_REPORTER_METHOD=STREAM
+      #- REDIS_LINTER_REPORTER_STREAM=megalinter:stream:linter_results
+
+      # PubSub mode (by default so commented)
+      # - REDIS_REPORTER_METHOD=PUBSUB
+      # - REDIS_LINTER_REPORTER_METHOD=PUBSUB
+      # - REDIS_ERRORS_REPORTER_METHOD=PUBSUB
+      ## You can force a channel. If not set, megalinter:pubsub:REQUEST_ID will be used (request_id is returned in initial POST body)
+      # - REDIS_REPORTER_PUBSUB_CHANNEL=megalinter:pubsub:results
+      # - REDIS_LINTER_REPORTER_PUBSUB_CHANNEL=megalinter:pubsub:linter_results
+      # - REDIS_ERRORS_REPORTER_PUBSUB_CHANNEL=megalinter:pubsub:error
+    depends_on:
+      - megalinter_server_redis
+    links:
+      - megalinter_server_redis
+    volumes:
+      - ./server-files:/tmp/server-files

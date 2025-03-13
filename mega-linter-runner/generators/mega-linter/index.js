@@ -1,17 +1,14 @@
-"use strict";
-const Generator = require("yeoman-generator");
-const chalk = require("chalk");
-const yosay = require("yosay");
+import { asciiArt } from "../../lib/ascii.js";
+import Generator from 'yeoman-generator';
+import { OXSecuritySetup } from "../../lib/ox-setup.js";
+import { DEFAULT_RELEASE } from "../../lib/config.js";
 
-module.exports = class extends Generator {
+export default class GeneratorMegaLinter extends Generator {
   prompting() {
-    // Have Yeoman greet the user.
+    console.log(asciiArt());
     this.log(
-      yosay(
-        `Welcome to the ${chalk.red(
-          "MegaLinter"
-        )} configuration generator !\n When you don't know, please use default values`
-      )
+      `Welcome to the MegaLinter configuration generator !
+When you don't know what option to select, please use default values`
     );
 
     const prompts = [
@@ -48,6 +45,7 @@ module.exports = class extends Generator {
         default: "gitHubActions",
         choices: [
           { name: "GitHub Actions", value: "gitHubActions" },
+          { name: "Drone CI", value: "droneCI" },
           { name: "Jenkins", value: "jenkins" },
           { name: "GitLab CI", value: "gitLabCI" },
           { name: "Azure Pipelines", value: "azure" },
@@ -70,9 +68,9 @@ module.exports = class extends Generator {
         type: "list",
         name: "version",
         message: "Which MegaLinter version do you want to use ?",
-        default: "v5",
+        default: DEFAULT_RELEASE,
         choices: [
-          { name: "v5 (Latest official release)", value: "v5" },
+          { name: `${DEFAULT_RELEASE} (Latest official release)`, value: DEFAULT_RELEASE },
           {
             name: "Beta (main branch of MegaLinter repository)",
             value: "beta",
@@ -123,6 +121,13 @@ module.exports = class extends Generator {
         message: "Do you want to see elapsed time by linter in logs ?",
         default: true,
       },
+      {
+        type: "confirm",
+        name: "ox",
+        message:
+          "Do you want to try OX Security (https://www.ox.security/?ref=megalinter) to secure your software supply chain security ?",
+        default: true,
+      },
     ];
 
     return this.prompt(prompts).then((props) => {
@@ -134,12 +139,13 @@ module.exports = class extends Generator {
   writing() {
     // Generate workflow config
     this._generateGitHubAction();
+    this._generateDroneCI();
     this._generateJenkinsfile();
     this._generateGitLabCi();
     this._generateAzurePipelines();
     if (this.props.ci === "other") {
       this.log(
-        "Please follow manual instructions to define CI job at https://megalinter.github.io/installation/"
+        "Please follow manual instructions to define CI job at https://megalinter.io/installation/"
       );
       this.log(
         "You may call `npx mega-linter-runner` to run MegaLinter from any system (requires node.js & docker)"
@@ -151,6 +157,12 @@ module.exports = class extends Generator {
     this._generateCSpellConfig();
     // Generate .jscpd.json config
     this._generateJsCpdConfig();
+    // Create/update .gitignore
+    this._manageGitIgnore();
+    // Process linking to ox.security service
+    if (this.props.ox === true) {
+      new OXSecuritySetup().run();
+    }
   }
 
   end() {
@@ -163,26 +175,30 @@ module.exports = class extends Generator {
   _computeValues() {
     // Flavor
     if (this.props.flavor === "all") {
-      this.gitHubActionName = "megalinter/megalinter";
-      this.dockerImageName = "megalinter/megalinter";
+      this.gitHubActionName = "oxsecurity/megalinter";
+      this.dockerImageName = "oxsecurity/megalinter";
     } else {
       this.gitHubActionName =
-        "megalinter/megalinter/flavors/" + this.props.flavor;
-      this.dockerImageName = "megalinter/megalinter-" + this.props.flavor;
+        "oxsecurity/megalinter/flavors/" + this.props.flavor;
+      this.dockerImageName = "oxsecurity/megalinter-" + this.props.flavor;
     }
     // Version
-    if (this.props.version == "v5") {
-      this.gitHubActionVersion = "v5";
-      this.dockerImageVersion = "v5";
+    if (this.props.version == DEFAULT_RELEASE) {
+      this.gitHubActionVersion = DEFAULT_RELEASE;
+      this.dockerImageVersion = DEFAULT_RELEASE;
     } else {
       this.gitHubActionVersion = "beta";
       this.dockerImageVersion = "beta";
     }
     // VALIDATE_ALL_CODE_BASE
     if (this.props.validateAllCodeBase === "all") {
-      this.validateAllCodeBaseGha = `true # Set \${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }} to validate only diff with main branch`;
+      this.validateAllCodeBaseGha = "true";
     } else {
-      this.validateAllCodeBaseGha = `\${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }} # Validates all source when push on main, else just the git diff with main. Set 'true' if you always want to lint all sources`;
+      this.validateAllCodeBaseGha  = ">-\n"
+      this.validateAllCodeBaseGha += "            ${{";
+      this.validateAllCodeBaseGha += "              github.event_name == 'push' &&"
+      this.validateAllCodeBaseGha += "              github.ref == 'refs/heads/main'"
+      this.validateAllCodeBaseGha += "            }}";
     }
     this.disable = false;
     // COPY PASTES
@@ -221,13 +237,25 @@ module.exports = class extends Generator {
       }
     );
   }
-
+  _generateDroneCI() {
+    if (this.props.ci !== "droneCI") {
+      return;
+    }
+    this.fs.copyTpl(
+      this.templatePath(".drone.yml"),
+      this.destinationPath(".drone.yml"),
+      {
+        APPLY_FIXES: this.props.applyFixes === true ? "all" : "none",
+        DEFAULT_BRANCH: this.props.defaultBranch,
+      }
+    );
+  }
   _generateJenkinsfile() {
     if (this.props.ci !== "jenkins") {
       return;
     }
     this.log(
-      "Jenkinsfile config generation not implemented yet, please follow manual instructions at https://megalinter.github.io/installation/#jenkins"
+      "Jenkinsfile config generation not implemented yet, please follow manual instructions at https://megalinter.io/installation/#jenkins"
     );
   }
 
@@ -251,7 +279,7 @@ module.exports = class extends Generator {
       return;
     }
     this.log(
-      "Azure pipelines config generation not implemented yet, please follow manual instructions at https://megalinter.github.io/installation/#gitlab"
+      "Azure pipelines config generation not implemented yet, please follow manual instructions at https://megalinter.io/installation/#azure-pipelines"
     );
   }
 
@@ -292,4 +320,24 @@ module.exports = class extends Generator {
       {}
     );
   }
-};
+
+  // Create or update .gitignore files
+  _manageGitIgnore() {
+    const gitIgnoreFile = this.destinationPath(".gitignore");
+    let gitIgnoreTextLines = [];
+    let doWrite = false;
+    if (this.fs.exists(gitIgnoreFile)) {
+      gitIgnoreTextLines = this.fs.read(gitIgnoreFile).split(/\r?\n/);
+    }
+    if (!gitIgnoreTextLines.includes("megalinter-reports/")) {
+      gitIgnoreTextLines.push("megalinter-reports/");
+      doWrite = true;
+    }
+    if (doWrite) {
+      this.fs.write(gitIgnoreFile, gitIgnoreTextLines.join("\n") + "\n");
+      this.log(
+        "Updated .gitignore file to exclude megalinter-reports from commits"
+      );
+    }
+  }
+}

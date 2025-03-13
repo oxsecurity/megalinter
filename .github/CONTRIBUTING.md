@@ -3,49 +3,58 @@
 :wave: Hi there!
 We're thrilled that you'd like to contribute to this project. Your help is essential for keeping it great.
 
-## Submitting a pull request
+## How to Contribute
 
-[Pull Requests][pulls] are used for adding new playbooks, roles, and documents to the repository, or editing the existing ones.
+### 1. Create an issue
 
-### Pre-requisites
+Report problems or suggest improvements by [creating an issue](https://github.com/oxsecurity/megalinter/issues).
 
-- You need [**Python 3**](https://www.python.org/downloads/) (version 3.7 minimum) and [**Node.js** (14+)](https://nodejs.org/en/download/) to be installed on your computer.
-  - If you have issues running Python on Windows, you can uninstall it then reinstall it using [this video tutorial](https://www.youtube.com/watch?v=uDbDIhR76H4), then copy python.exe and name it python3.exe
+### 2. Fork the project
 
-- Run the following commands at the root of the repository to install required dev dependencies
-```shell
-python3 -m venv .venv
-. .venv/bin/activate
-echo ".venv/" >> .git/info/exclude
-python3 -m pip install -U pip
-python3 -m pip install -r requirements.dev.txt
+[Fork the repository](https://github.com/oxsecurity/megalinter) to your GitHub account.
+
+### 3. Make changes
+
+Clone your fork locally and make the necessary changes:
+
+```bash
+git clone git@github.com:YOURNAMESPACE/megalinter.git
 ```
 
-_If it does not work, just run the following script_
+### 4. Test your changes
 
-```shell
-pip install -r requirements.dev.txt
-pip install mkdocs-material
-npm install markdown-table-formatter -g
-```
+#### 4.1 Visual Studio Code Dev Containers
 
-Second level dev dependencies are installed by running `./build.sh` which is also a test if the installation worked
+The Visual Studio Code Dev Containers extension lets you use a container as a full-featured development environment:
 
-```shell
-./build.sh
-2021-03-30 19:40:03,790 [INFO] Validating ansible.megalinter-descriptor.yml
-2021-03-30 19:40:03,879 [INFO] Validating arm.megalinter-descriptor.yml
-...
-Formatting markdown tables...
-Need to install the following packages:
-  markdown-table-formatter
-Ok to proceed? (y)
-...
-INFO    -  Documentation built in 9.76 seconds
-(done.)
-```
+1. Fork the `megalinter` repository
+2. [Open your fork](https://docs.github.com/en/codespaces/developing-in-a-codespace/rebuilding-the-container-in-a-codespace#rebuilding-a-container) in VS Code
+3. Create a new branch: `git checkout -b my-feature-branch`
+4. Make your changes and commit: `git add .` and `git commit -m "chore: description of changes"`
+5. [Run tests](https://code.visualstudio.com/docs/editor/testing#_automatic-test-discovery-in-testing-view)
+6. Push your changes: `git push origin my-feature-branch`
+7. Create a pull request on GitHub
+8. Wait for a review
 
-_(if you have a permission denied issue on Windows, please check [this solution](https://stackoverflow.com/a/57168165/7113625))_
+#### 4.2 Desktop
+
+Install [make](https://www.gnu.org/software/make/), [Python3.11](https://www.python.org/), [venv](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/), [docker](https://docs.docker.com/engine/install/ubuntu/) and [nodejs](https://github.com/nodesource/distributions/tree/master).
+
+Run `make` for Makefile help. Initialize virtualenv and install dependencies with `make reinitialization` or `make bootstrap`. Test your changes with `make tests` or `make tests-fast`.
+
+You can lint with `make megalinter` (Incoming)
+
+If you need to run `build.sh` commands manually you need to run `source .venv/bin/activate` first.
+
+### 5. Submit a pull request
+
+[Create a pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request-from-a-fork) and [refer to the issue number](https://help.github.com/en/github/writing-on-github/autolinked-references-and-urls) using #123, where 123 is the issue number.
+
+### 6. Wait
+
+Your pull request will be reviewed, and you'll receive feedback. Thanks for contributing!
+
+Consider sponsoring the maintainer via [GitHub](https://github.com/sponsors/nvuillam).
 
 ### With write access
 
@@ -56,6 +65,23 @@ _(if you have a permission denied issue on Windows, please check [this solution]
 5. Run `bash build.sh` to regenerate dockerfile from updated sources (run `bash build.sh --doc` if you want to also regenerate documentation)
 6. Push and [submit a pull request][pr]
 7. Pat yourself on the back and wait for your pull request to be reviewed and merged.
+
+Maintainers with write access can also comment on pull requests with a command to run the build script on the PR, for example:
+```text
+/build
+```
+
+Available commands can be listed with the help command by posting the following comment:
+```text
+/help
+```
+Which returns:
+>
+> Command | Description
+> --- | ---
+> /build | Updates the Dockerfile, documentation, and other files from the yml descriptors
+> /build [ref=…]| Same as /build, but executes workflow in any branch using the ref named argument. The reference can be a branch, tag, or a commit SHA. This can be useful to test workflows in PR branches before merging.
+> /help | Returns this help message
 
 ### Without write access
 
@@ -69,23 +95,54 @@ _(if you have a permission denied issue on Windows, please check [this solution]
 
 Here are a few things you can do that will increase the likelihood of your pull request being accepted:
 
-- Keep your change as focused as possible. If there are multiple changes you would like to make that are not dependent upon each other, consider submitting them as separate pull requests.
+- Keep your change as focused as possible. If there are multiple changes you would like to make that aren't dependent upon each other, consider submitting them as separate pull requests.
 - Write [good commit messages](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html).
-- Update [CHANGELOG.md](https://github.com/megalinter/megalinter/blob/main/CHANGELOG.md) to briefly describe your changes
+- Update [CHANGELOG.md](https://github.com/oxsecurity/megalinter/blob/main/CHANGELOG.md) to briefly describe your changes
 
 Draft pull requests are also welcome to get feedback early on, or if there is something blocking you.
 
 - Create a branch with a name that identifies the user and nature of the changes (similar to `user/branch-purpose`)
 - Open a pull request
 
+### Update Dockerfile base image
+
+1. `/Dockerfile` file has to be updated
+2. Run `bash build.sh`, and it will automatically propagate to all the other Dockerfiles
+
+### Improve documentation
+
+Apart from the descriptors, it will usually involve modifying files such as [.automation/build.py](https://github.com/oxsecurity/megalinter/blob/main/.automation/build.py)
+
+In order to be able to run locally a server that serves all the documentation and make the testing as real as possible you should setup a virtual environment.
+
+Commands to execute (only one time):
+
+```bash
+pip install pipx
+pipx install hatch
+hatch shell
+```
+
+Commands to run every time you want to build the docs and run the server:
+
+```bash
+hatch run build:serve
+```
+
+By default it listens on `http://127.0.0.1:8000/`.
+
+Every time a change is made to a `.md` file it will automatically update if the server is up.
+
+Once you think everything is correct run `bash build.sh --doc` and it will generate all the rest!
+
 ### Add a new linter
 
 Each linter must:
 
-- Be defined in a descriptor file. Few properties are required ([see json schema documentation](https://megalinter.github.io/json-schemas/descriptor.html)), but please think to input doc URLs and `ide` section for documentation
+- Be defined in a descriptor file. Few properties are required ([see json schema documentation](https://megalinter.io/json-schemas/descriptor.html)), but please think to input doc URLs and `ide` section for documentation
 - Have two test files in `.automation/test`: one for success and one for failure
 
-Then run `bash build.py` and it will generate all the rest !
+Then run `bash build.sh` and it will generate all the rest!
 
 - Documentation (markdown)
 - Dockerfile (main and flavors)
@@ -93,8 +150,40 @@ Then run `bash build.py` and it will generate all the rest !
 - Configuration JSON schema
 - Online documentation menus
 
-![Screenshot](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/ContributingAddLinter_1.jpg?raw=true>)
+![Screenshot](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/ContributingAddLinter_1.jpg?raw=true>)
 
+### Execute the tests locally (Visual Studio Code)
+
+1. Install [Test Explorer UI](https://marketplace.visualstudio.com/items?itemName=hbenl.vscode-test-explorer) extension
+2. Install [Python Test Explorer for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=LittleFoxTeam.vscode-python-test-adapter) extension
+3. Execute or debug tests via the side menu
+
+### Execute linter tests inside the container
+
+If you are creating a linter or making changes to a linter, you may want to run the tests to check that none of them fail.
+
+When running them, you may encounter several problems:
+
+* It's not installed on the machine locally and you don't want to install it.
+* The OS doesn't allow the installation of the linter because it's not cross-platform.
+* The behavior between running it on the local machine (host) and the container is different.
+
+For those cases, it's important to have the possibility to run the tests inside the container. To do so:
+
+1. Run `bash build.sh` to update the Dockerfile files of each linter.
+2. Execute the following commands in a ***.sh** script. Example:
+
+```bash
+LINTER="spell_misspell"
+docker buildx build -f linters/$LINTER/Dockerfile . --tag $LINTER
+docker run -e TEST_CASE_RUN=true -e OUTPUT_DETAIL=detailed -e TEST_KEYWORDS="${LINTER}" -e MEGALINTER_VOLUME_ROOT="." -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v $(pwd):/tmp/lint $LINTER
+```
+
+In the above example, it builds the **misspell** linter image and then runs its tests. To do the same for another linter you would have to:
+
+1. Change the path to the Dockerfile to the appropriate Dockerfile
+2. Change the **tag** in the 2 places (docker buildx build and docker run)
+3. Change the value of **TEST_KEYWORDS_TO_USE** which is the one that's responsible for finding the tests of the particular linter
 
 ### CI/CT/CD
 
@@ -102,7 +191,7 @@ The **MegaLinter** has _CI/CT/CD_ configured utilizing **GitHub** Actions.
 
 - When a branch is created and code is pushed, a **GitHub** Action is triggered for building the new **Docker** container with the new codebase
   - To test your updates during your development, you may have to create a draft Pull Request to trigger CI on the main repo
-  - During development, if all you updated is python code, you can write `quick build` in the commit message body to benefit from a quicker build (about 15 minutes): only python files are copied over megalinter/megalinter:test-YOURUSERNAME-YOURBRANCH or megalinter/megalinter:latest if a previous full run has not been performed yet
+  - During development, if all you updated is python code, you can write `quick build` in the commit message body to benefit from a quicker build (about 15 minutes): only python files are copied over oxsecurity/megalinter:test-YOURUSERNAME-YOURBRANCH or oxsecurity/megalinter:latest if a previous full run has not been performed yet
   - You can [filter the performed tests](https://docs.pytest.org/en/stable/usage.html#specifying-tests-selecting-tests) by writing `TEST_KEYWORDS=my keywords` in the commit message body. Example: `TEST_KEYWORDS=kubernetes_kubeval_test`
   - The last commit before the validation of a Pull Request must be a full build with all tests (about 45 minutes)
 - The **Docker** container is then ran against the _test cases_ to validate all code sanity
@@ -128,6 +217,5 @@ If you are the current maintainer of this action:
 - [Using Pull Requests](https://help.github.com/articles/about-pull-requests/)
 - [GitHub Help](https://help.github.com)
 
-[pulls]: https://github.com/megalinter/megalinter/pulls
-[pr]: https://github.com/megalinter/megalinter/compare
-[fork]: https://github.com/megalinter/megalinter/fork
+[pr]: https://github.com/oxsecurity/megalinter/compare
+[fork]: https://github.com/oxsecurity/megalinter/fork

@@ -1,0 +1,79 @@
+name: Slash Command Dispatch
+on:
+  issue_comment:
+    types: [created]
+permissions: {}
+jobs:
+  slashCommandDispatch:
+    # This job only runs for pull request comments
+    if: ${{ github.event.issue.pull_request }}
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write # needed to launch a workflow_dispatch
+      pull-requests: write
+    steps:
+      - name: Create URL to the run output
+        id: vars
+        run: echo "run-url=https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" >> $GITHUB_OUTPUT
+      - name: Dump the event payload context
+        env:
+          EVENT_CONTEXT: ${{ toJson(github.event) }}
+        run: echo "$EVENT_CONTEXT"
+      - uses: actions/github-script@v7
+        id: get-pr
+        with:
+          script: |
+            const request = {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number
+            }
+            core.info(`Getting PR #${request.pull_number} from ${request.owner}/${request.repo}`)
+            try {
+              const result = await github.rest.pulls.get(request);
+              core.setOutput('head_ref', result.data.head.ref);
+              core.setOutput('head_repo_full_name', result.data.head.repo.full_name);
+              return result.data;
+            } catch (err) {
+              core.setFailed(`Request failed with error ${err}`)
+            }
+      - name: Dump the get-pr payload context
+        env:
+          GET_PR_OUTPUTS: ${{ toJson(steps.get-pr.outputs) }}
+        run: echo "$GET_PR_OUTPUTS"
+      - name: Slash Command Dispatch PR
+        uses: peter-evans/slash-command-dispatch@v4
+        id: scd
+        if: success()
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commands: |
+            build
+            help
+          issue-type: pull-request
+          permission: write   # Collaborator permission required: (`none`, `read`, `triage`, `write`, `maintain`, `admin`),  default: `write`
+          dispatch-type: workflow
+          static-args: |
+            repository=${{ github.repository }}
+            comment-id=${{ github.event.comment.id }}
+            issue-number=${{ github.event.issue.number }}
+            actor=${{ github.actor }}
+            checkout-ref=${{ steps.get-pr.outputs.head_ref }}
+            checkout-repository=${{ steps.get-pr.outputs.head_repo_full_name }}
+      - name: Edit comment with error message
+        if: (success() || failure()) && steps.scd.outputs.error-message
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          comment-id: ${{ github.event.comment.id }}
+          body: |
+            > ${{ steps.scd.outputs.error-message }}
+          reactions: confused
+      - name: Add failure reaction
+        if: failure()
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          comment-id: ${{ github.event.comment.id }}
+          reactions: -1
+          body: |
+            > Command dispatch failed.
+            > [Command run output](${{ steps.vars.outputs.run-url }})
