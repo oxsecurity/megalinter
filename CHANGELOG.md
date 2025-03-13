@@ -149,6 +149,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [yamllint](https://yamllint.readthedocs.io/) from 1.35.1 to **1.36.0** on 2025-03-11
   - [shfmt](https://github.com/mvdan/sh) from 3.10.0 to **3.11.0** on 2025-03-13
   - [puppet-lint](http://puppet-lint.com/) from 4.2.4 to **4.3.0** on 2025-03-13
+  - [shfmt](https://github.com/mvdan/sh) from 3.11.0 to **3.10.0** on 2025-03-13
 <!-- linter-versions-end -->
 
 ## [v8.4.2] - 2024-02-02
