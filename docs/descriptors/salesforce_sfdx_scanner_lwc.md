@@ -90,6 +90,7 @@ sf scanner:run
 ### Help content
 
 ```shell
+ ›   Warning: @salesforce/cli update available from 2.78.3 to 2.79.4.
 Scan a codebase with all the rules in the registry, or use parameters to filter the rules based on rulename, category, or ruleset.
 
 USAGE
@@ -143,6 +144,7 @@ GLOBAL FLAGS
 COMMANDS
   scanner run dfa  Scan codebase with all DFA rules by default.
 
+ ›   Warning: @salesforce/cli update available from 2.78.3 to 2.79.4.
  ›   Warning: Plugin @salesforce/sfdx-scanner (4.10.0) differs from the version
  ›    specified by sf (4.9.0)
 Warning: We plan to stop supporting v4.x of Code Analyzer in the coming months. We highly recommend that you start using v5.x, which is currently in Beta. For information on v5.x, see https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/code-analyzer.html.

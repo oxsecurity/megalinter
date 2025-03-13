@@ -406,6 +406,12 @@ OPTIONS
        --no-trace
            negates --trace
 
+       --novcs
+           Assume the project is not managed by a version control system
+           (VCS), even if the project appears to be under version control
+           based on the presence of files such as '.git' or similar. REQUIRES
+           --experimental or --semgrepignore-v2.
+
        -o VAL, --output=VAL
            Save search results to a file or post to URL. Default is to print
            to stdout.
@@ -457,7 +463,7 @@ OPTIONS
            link to a '/home/me/sources' directory or a symbolic link to a
            'sources' directory but not if it is a symbolic link to a
            directory '/var/sources' (assuming '/var' is not a symbolic link).
-           REQUIRES --experimental
+           REQUIRES --experimental or --semgrepignore-v2.
 
        -q, --quiet
            Only output findings.
@@ -497,7 +503,12 @@ OPTIONS
            support@semgrep.com for more information.
 
        --semgrepignore-v2
-           Under development. Not currently recommended.
+           '--semgrepignore-v2' forces the use of the newer Semgrepignore v2
+           implementation for discovering and filtering target files.
+           Conversely, '--no-semgrepignore-v2' is the deprecated option that
+           forces the use of the legacy Semgrepignore v1. If you must use
+           '--no-semgrepignore-v2', please let us know so we can fix problems
+           and help you migrate smoothly.
 
        --severity=VAL
            Report findings only from rules matching the supplied severity
@@ -652,8 +663,8 @@ BUGS
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=semgrep
-ARG PIP_SEMGREP_VERSION=1.110.0
+ARG PIP_SEMGREP_VERSION=1.111.0
 ```
 
 - PIP packages (Python):
-  - [semgrep==1.110.0](https://pypi.org/project/semgrep/1.110.0)
+  - [semgrep==1.111.0](https://pypi.org/project/semgrep/1.111.0)

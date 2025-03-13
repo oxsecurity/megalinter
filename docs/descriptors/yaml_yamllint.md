@@ -140,8 +140,8 @@ options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=yamllint
-ARG PIP_YAMLLINT_VERSION=1.35.1
+ARG PIP_YAMLLINT_VERSION=1.36.0
 ```
 
 - PIP packages (Python):
-  - [yamllint==1.35.1](https://pypi.org/project/yamllint/1.35.1)
+  - [yamllint==1.36.0](https://pypi.org/project/yamllint/1.36.0)
