@@ -25,7 +25,7 @@
     "djlint": "1.36.4",
     "dockerfilelint": "1.8.0",
     "dotenv-linter": "3.3.0",
-    "dotnet-format": "9.0.103",
+    "dotnet-format": "9.0.104",
     "dustilock": "1.2.0",
     "editorconfig-checker": "3.2.0",
     "eslint": "8.57.1",

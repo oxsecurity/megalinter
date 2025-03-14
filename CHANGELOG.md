@@ -151,6 +151,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [puppet-lint](http://puppet-lint.com/) from 4.2.4 to **4.3.0** on 2025-03-13
   - [shfmt](https://github.com/mvdan/sh) from 3.11.0 to **3.10.0** on 2025-03-13
   - [grype](https://github.com/anchore/grype) from 0.89.0 to **0.89.1** on 2025-03-13
+  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 9.0.103 to **9.0.104** on 2025-03-14
 <!-- linter-versions-end -->
 
 ## [v8.4.2] - 2024-02-02
