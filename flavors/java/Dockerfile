@@ -90,7 +90,7 @@ ARG ALPINE_GLIBC_PACKAGE_VERSION=2.34-r0
 # renovate: datasource=pypi depName=ansible-lint
 ARG PIP_ANSIBLE_LINT_VERSION=25.1.3
 # renovate: datasource=npm depName=@stoplight/spectral-cli
-ARG NPM_SPECTRAL_CLI_VERSION=6.14.2
+ARG NPM_SPECTRAL_CLI_VERSION=6.14.3
 # renovate: datasource=crate depName=shellcheck-sarif
 ARG CARGO_SHELLCHECK_SARIF_VERSION=0.7.0
 # renovate: datasource=github-tags depName=clj-kondo/clj-kondo
