@@ -45,7 +45,7 @@ fi
 # Run test cases with pytest
 if [ "${TEST_CASE_RUN}" == "true" ]; then
   echo "[MegaLinter init] RUNNING TEST CASES"
-  pip install pytest-cov pytest-timeout pytest-xdist pytest-rerunfailures
+  pip install pytest-cov codecov-cli pytest-timeout pytest-xdist pytest-rerunfailures
   if [ -z "${TEST_KEYWORDS}" ]; then
     pytest --reruns 3 --reruns-delay 10 -v --timeout=300 --durations=0 --cov=megalinter --cov-report=xml --numprocesses auto --dist loadscope megalinter/
   else
@@ -62,7 +62,7 @@ if [ "${TEST_CASE_RUN}" == "true" ]; then
   fi
   # Upload to codecov.io if all tests run
   if [ -z "${TEST_KEYWORDS}" ]; then
-    bash <(curl -s https://codecov.io/bash)
+    codecov
     exit $?
   fi
   exit $?
