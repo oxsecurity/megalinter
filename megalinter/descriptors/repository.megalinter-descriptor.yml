@@ -671,7 +671,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=docker depName=trufflesecurity/trufflehog 
-          ARG REPOSITORY_TRUFFLEHOG_VERSION=3.88.14
+          ARG REPOSITORY_TRUFFLEHOG_VERSION=3.88.17
         - FROM trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION} AS trufflehog
         - COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
     test_folder: gitleaks
