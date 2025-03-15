@@ -9,7 +9,7 @@ description: How to use checkmake (configure, ignore files, ignore errors, help 
 
 _This linter has been disabled in this version_
 
-_Disabled reason: Security issues: https://github.com/mrtazz/checkmake/issues/99_
+_Disabled reason: Security issues: <https://github.com/mrtazz/checkmake/issues/99>_
 
 ## checkmake documentation
 
