@@ -33,7 +33,7 @@ ARG REPOSITORY_DUSTILOCK_VERSION=1.2.0
 ARG REPOSITORY_GITLEAKS_VERSION=v8.24.0
 # renovate: datasource=docker depName=checkmarx/kics
 ARG REPOSITORY_KICS_VERSION=v2.1.3-alpine
-# renovate: datasource=docker depName=trufflesecurity/trufflehog 
+# renovate: datasource=docker depName=trufflesecurity/trufflehog
 ARG REPOSITORY_TRUFFLEHOG_VERSION=3.88.14
 # renovate: datasource=docker depName=jdkato/vale
 ARG SPELL_VALE_VERSION=v3.9.4
@@ -61,7 +61,7 @@ FROM hadolint/hadolint:${DOCKERFILE_HADOLINT_VERSION} AS hadolint
 FROM mstruebing/editorconfig-checker:${EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION} AS editorconfig-checker
 FROM golang:1-alpine AS revive
 ## The golang image used as a builder is a temporary workaround (https://github.com/mgechev/revive/issues/787)
-## for the released revive binaries not returning version numbers (devel). 
+## for the released revive binaries not returning version numbers (devel).
 ## The install command should then be what is commented in the go.megalinter-descriptor.yml
 ARG GO_REVIVE_VERSION
 RUN GOBIN=/usr/bin go install github.com/mgechev/revive@$GO_REVIVE_VERSION
@@ -242,8 +242,8 @@ ARG LUA_LUACHECK_VERSION=3.3.1
 ARG CARGO_SELENE_VERSION=0.28.0
 # renovate: datasource=crate depName=stylua
 ARG CARGO_STYLUA_VERSION=2.0.0
-# renovate: datasource=npm depName=markdownlint-cli
-ARG NPM_MARKDOWNLINT_CLI_VERSION=0.44.0
+# renovate: datasource=npm depName=markdownlint-cli2
+ARG NPM_MARKDOWNLINT_CLI2_VERSION=0.17.2
 # renovate: datasource=npm depName=markdown-link-check
 ARG NPM_MARKDOWN_LINK_CHECK_VERSION=3.12.2
 # renovate: datasource=npm depName=markdown-table-formatter
@@ -563,7 +563,7 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 npm-package-json-lint-config-default@${NPM_PACKAGE_JSON_LINT_CONFIG_DEFAULT_VERSION} \
                 eslint-plugin-react@${NPM_ESLINT_PLUGIN_REACT_VERSION} \
                 eslint-plugin-jsx-a11y@${NPM_ESLINT_PLUGIN_JSX_ALLY_VERSION} \
-                markdownlint-cli@${NPM_MARKDOWNLINT_CLI_VERSION} \
+                markdownlint-cli2@${NPM_MARKDOWNLINT_CLI2_VERSION} \
                 markdown-link-check@${NPM_MARKDOWN_LINK_CHECK_VERSION} \
                 markdown-table-formatter@${NPM_MARKDOWN_TABLE_FORMATTER_VERSION} \
                 pyright@${NPM_PYRIGHT_VERSION} \
@@ -582,7 +582,7 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
     && echo "Changing owner of node_modules files…" \
     && chown -R "$(id -u)":"$(id -g)" node_modules # fix for https://github.com/npm/cli/issues/5900 \
     && echo "Removing extra node_module files…" \
-    && find . \( -not -path "/proc" \) -and \( -type f \( -iname "*.d.ts" -o -iname "*.map" -o -iname "*.npmignore" -o -iname "*.travis.yml" -o -iname "CHANGELOG.md" -o -iname "README.md" -o -iname ".package-lock.json" -o -iname "package-lock.json" \) -o -type d -name /root/.npm/_cacache \) -delete 
+    && find . \( -not -path "/proc" \) -and \( -type f \( -iname "*.d.ts" -o -iname "*.map" -o -iname "*.npmignore" -o -iname "*.travis.yml" -o -iname "CHANGELOG.md" -o -iname "README.md" -o -iname ".package-lock.json" -o -iname "package-lock.json" \) -o -type d -name /root/.npm/_cacache \) -delete
 WORKDIR /
 
 #NPM__END
