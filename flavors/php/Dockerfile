@@ -150,7 +150,7 @@ ARG PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION=v3.71.0
 # renovate: datasource=pypi depName=checkov
 ARG PIP_CHECKOV_VERSION=3.2.386
 # renovate: datasource=github-tags depName=anchore/grype
-ARG REPOSITORY_GRYPE_VERSION=0.87.0
+ARG REPOSITORY_GRYPE_VERSION=0.89.1
 # renovate: datasource=npm depName=@ls-lint/ls-lint
 ARG NPM_LS_LINT_LS_LINT_VERSION=2.2.3
 # renovate: datasource=npm depName=secretlint

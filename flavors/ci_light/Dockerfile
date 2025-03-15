@@ -77,7 +77,7 @@ ARG NPM_V8R_VERSION=4.2.1
 # renovate: datasource=npm depName=prettier
 ARG NPM_PRETTIER_VERSION=3.5.3
 # renovate: datasource=github-tags depName=anchore/grype
-ARG REPOSITORY_GRYPE_VERSION=0.87.0
+ARG REPOSITORY_GRYPE_VERSION=0.89.1
 # renovate: datasource=npm depName=@ls-lint/ls-lint
 ARG NPM_LS_LINT_LS_LINT_VERSION=2.2.3
 # renovate: datasource=npm depName=secretlint
