@@ -152,6 +152,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [shfmt](https://github.com/mvdan/sh) from 3.11.0 to **3.10.0** on 2025-03-13
   - [grype](https://github.com/anchore/grype) from 0.89.0 to **0.89.1** on 2025-03-13
   - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 9.0.103 to **9.0.104** on 2025-03-14
+  - [spectral](https://docs.stoplight.io/docs/spectral/674b27b261c3c-overview) from 6.14.2 to **6.14.3** on 2025-03-15
+  - [dartanalyzer](https://dart.dev/tools/dart-analyze) from 3.7.1 to **3.7.2** on 2025-03-15
+  - [golangci-lint](https://golangci-lint.run/) from 1.64.6 to **1.64.7** on 2025-03-15
+  - [kubescape](https://github.com/kubescape/kubescape) from 3.0.30 to **3.0.31** on 2025-03-15
+  - [checkov](https://www.checkov.io/) from 3.2.381 to **3.2.386** on 2025-03-15
 <!-- linter-versions-end -->
 
 ## [v8.4.2] - 2024-02-02
