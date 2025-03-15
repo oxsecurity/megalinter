@@ -9,7 +9,7 @@ description: How to use pylint (configure, ignore files, ignore errors, help & v
 
 ## pylint documentation
 
-- Version in MegaLinter: **3.3.4**
+- Version in MegaLinter: **3.3.5**
 - Visit [Official Web Site](https://pylint.readthedocs.io){target=_blank}
 - See [How to configure pylint rules](https://pylint.readthedocs.io/en/stable/user_guide/configuration/index.html){target=_blank}
   - If custom `.pylintrc` config file isn't found, [.pylintrc](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.pylintrc){target=_blank} will be used
@@ -765,11 +765,11 @@ Imports:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=pylint
-ARG PIP_PYLINT_VERSION=3.3.4
+ARG PIP_PYLINT_VERSION=3.3.5
 # renovate: datasource=pypi depName=typing-extensions
 ARG PIP_TYPING_EXTENSIONS_VERSION=4.12.2
 ```
 
 - PIP packages (Python):
-  - [pylint==3.3.4](https://pypi.org/project/pylint/3.3.4)
+  - [pylint==3.3.5](https://pypi.org/project/pylint/3.3.5)
   - [typing-extensions==4.12.2](https://pypi.org/project/typing-extensions/4.12.2)

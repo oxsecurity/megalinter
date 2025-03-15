@@ -157,6 +157,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [golangci-lint](https://golangci-lint.run/) from 1.64.6 to **1.64.7** on 2025-03-15
   - [kubescape](https://github.com/kubescape/kubescape) from 3.0.30 to **3.0.31** on 2025-03-15
   - [checkov](https://www.checkov.io/) from 3.2.381 to **3.2.386** on 2025-03-15
+  - [psalm](https://psalm.dev) from Psalm.6.5.0@ to **Psalm.6.8.9@** on 2025-03-15
+  - [pylint](https://pylint.readthedocs.io) from 3.3.4 to **3.3.5** on 2025-03-15
 <!-- linter-versions-end -->
 
 ## [v8.4.2] - 2024-02-02
