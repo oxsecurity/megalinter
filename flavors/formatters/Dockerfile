@@ -15,7 +15,7 @@
 # renovate: datasource=docker depName=rhysd/actionlint
 ARG BASH_SHFMT_VERSION=v3.10.0-alpine
 # renovate: datasource=docker depName=alpine/terragrunt
-ARG TERRAFORM_TERRAGRUNT_VERSION=1.10.3
+ARG TERRAFORM_TERRAGRUNT_VERSION=1.11.2
 #ARGTOP__END
 
 #############################################################################################
