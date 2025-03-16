@@ -11,7 +11,7 @@
 <link href="../how-to-contribute/" rel="prev"/>
 <link href="../license/" rel="next"/>
 <link href="../assets/images/mega-linter-square.png" rel="icon"/>
-<meta content="mkdocs-1.6.1, mkdocs-material-9.6.7" name="generator"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.6.8" name="generator"/>
 <title>Contributing Guide - MegaLinter by OX Security</title>
 <link href="../assets/stylesheets/main.8608ea7d.min.css" rel="stylesheet"/>
 <link href="../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
@@ -3500,9 +3500,9 @@
 <nav aria-label="4. Test your changes" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#41-gitpod">
+<a class="md-nav__link" href="#41-visual-studio-code-dev-containers">
 <span class="md-ellipsis">
-      4.1 Gitpod
+      4.1 Visual Studio Code Dev Containers
     </span>
 </a>
 </li>
@@ -3711,9 +3711,9 @@
 <nav aria-label="4. Test your changes" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#41-gitpod">
+<a class="md-nav__link" href="#41-visual-studio-code-dev-containers">
 <span class="md-ellipsis">
-      4.1 Gitpod
+      4.1 Visual Studio Code Dev Containers
     </span>
 </a>
 </li>
@@ -3834,21 +3834,18 @@ We're thrilled that you'd like to contribute to this project. Your help is essen
 <pre><code class="language-bash">git clone git@github.com:YOURNAMESPACE/megalinter.git
 </code></pre>
 <h3 id="4-test-your-changes">4. Test your changes</h3>
-<h4 id="41-gitpod">4.1 Gitpod</h4>
-<p>Use Gitpod for a cloud-based development environment:</p>
+<h4 id="41-visual-studio-code-dev-containers">4.1 Visual Studio Code Dev Containers</h4>
+<p>The Visual Studio Code Dev Containers extension lets you use a container as a full-featured development environment:</p>
 <ol>
-<li>Sign up for Gitpod: <a href="https://gitpod.io">https://gitpod.io</a></li>
 <li>Fork the <code>megalinter</code> repository</li>
-<li>Open your fork in Gitpod: <code>https://gitpod.io/#https://github.com/username/megalinter</code></li>
+<li><a href="https://docs.github.com/en/codespaces/developing-in-a-codespace/rebuilding-the-container-in-a-codespace#rebuilding-a-container">Open your fork</a> in VS Code</li>
 <li>Create a new branch: <code>git checkout -b my-feature-branch</code></li>
 <li>Make your changes and commit: <code>git add .</code> and <code>git commit -m "chore: description of changes"</code></li>
-<li>Test all : <code>make tests</code> or <code>make tests-fast</code> for TDD mode</li>
-<li>Test with megalinter: <code>make megalinter-tests</code></li>
+<li><a href="https://code.visualstudio.com/docs/editor/testing#_automatic-test-discovery-in-testing-view">Run tests</a></li>
 <li>Push your changes: <code>git push origin my-feature-branch</code></li>
 <li>Create a pull request on GitHub</li>
 <li>Wait for a review</li>
 </ol>
-<p>Keep your Gitpod workspace synced with the main repository.</p>
 <h4 id="42-desktop">4.2 Desktop</h4>
 <p>Install <a href="https://www.gnu.org/software/make/">make</a>, <a href="https://www.python.org/">Python3.11</a>, <a href="https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/">venv</a>, <a href="https://docs.docker.com/engine/install/ubuntu/">docker</a> and <a href="https://github.com/nodesource/distributions/tree/master">nodejs</a>.</p>
 <p>Run <code>make</code> for Makefile help. Initialize virtualenv and install dependencies with <code>make reinitialization</code> or <code>make bootstrap</code>. Test your changes with <code>make tests</code> or <code>make tests-fast</code>.</p>
@@ -3965,7 +3962,7 @@ hatch shell
 <p>If you are creating a linter or making changes to a linter, you may want to run the tests to check that none of them fail.</p>
 <p>When running them, you may encounter several problems:</p>
 <ul>
-<li>it's not installed on the machine locally and you don't want to install it.</li>
+<li>It's not installed on the machine locally and you don't want to install it.</li>
 <li>The OS doesn't allow the installation of the linter because it's not cross-platform.</li>
 <li>The behavior between running it on the local machine (host) and the container is different.</li>
 </ul>
@@ -3974,9 +3971,9 @@ hatch shell
 <li>Run <code>bash build.sh</code> to update the Dockerfile files of each linter.</li>
 <li>Execute the following commands in a <strong>*.sh</strong> script. Example:</li>
 </ol>
-<pre><code class="language-bash">docker buildx build -f linters/spell_misspell/Dockerfile . --tag spell_misspell
-TEST_KEYWORDS_TO_USE="spell_misspell"
-docker run -e TEST_CASE_RUN=true -e OUTPUT_DETAIL=detailed -e TEST_KEYWORDS="${TEST_KEYWORDS_TO_USE}" -e MEGALINTER_VOLUME_ROOT="." -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v $(pwd):/tmp/lint spell_misspell
+<pre><code class="language-bash">LINTER="spell_misspell"
+docker buildx build -f linters/$LINTER/Dockerfile . --tag $LINTER
+docker run -e TEST_CASE_RUN=true -e OUTPUT_DETAIL=detailed -e TEST_KEYWORDS="${LINTER}" -e MEGALINTER_VOLUME_ROOT="." -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v $(pwd):/tmp/lint $LINTER
 </code></pre>
 <p>In the above example, it builds the <strong>misspell</strong> linter image and then runs its tests. To do the same for another linter you would have to:</p>
 <ol>

@@ -11,7 +11,7 @@
 <link href="../puppet/" rel="prev"/>
 <link href="../snakemake/" rel="next"/>
 <link href="../../assets/images/mega-linter-square.png" rel="icon"/>
-<meta content="mkdocs-1.6.1, mkdocs-material-9.6.7" name="generator"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.6.8" name="generator"/>
 <title>puppet-lint configuration in MegaLinter - MegaLinter by OX Security</title>
 <link href="../../assets/stylesheets/main.8608ea7d.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
@@ -3690,7 +3690,7 @@
 <p><a href="https://github.com/puppetlabs/puppet-lint"><img alt="GitHub stars" src="https://img.shields.io/github/stars/puppetlabs/puppet-lint?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-autofix-green"><img alt="autofix" src="https://shields.io/badge/-autofix-green"/></a> <a href="https://github.com/puppetlabs/puppet-lint/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/puppetlabs/puppet-lint?sort=semver"/></a> <a href="https://github.com/puppetlabs/puppet-lint/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/puppetlabs/puppet-lint"/></a> <a href="https://github.com/puppetlabs/puppet-lint/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/puppetlabs/puppet-lint"/></a> <a href="https://github.com/puppetlabs/puppet-lint/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/puppetlabs/puppet-lint"/></a></p>
 <h2 id="puppet-lint-documentation">puppet-lint documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>4.2.4</strong></li>
+<li>Version in MegaLinter: <strong>4.3.0</strong></li>
 <li>Visit <a href="http://puppet-lint.com/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/puppetlabs/puppet-lint#configuration-file" target="_blank">How to configure puppet-lint rules</a></li>
 <li>See <a href="http://puppet-lint.com/controlcomments/" target="_blank">How to disable puppet-lint rules in files</a></li>
@@ -3892,6 +3892,7 @@
     Checks:
         --only-checks CHECKS         A comma separated list of checks that should be run
         --ignore-paths PATHS         A comma separated list of patterns to ignore
+        --top-scope-variables VARS   A comma separated list of allowed top scope variables
         --no-arrow_on_right_operand_line-check
                                      Skip the arrow_on_right_operand_line check.
         --no-autoloader_layout-check Skip the autoloader_layout check.
@@ -3954,6 +3955,8 @@
         --80chars-check              Enable the 80chars check.
         --no-arrow_alignment-check   Skip the arrow_alignment check.
         --no-hard_tabs-check         Skip the hard_tabs check.
+        --no-space_before_arrow-check
+                                     Skip the space_before_arrow check.
         --no-trailing_whitespace-check
                                      Skip the trailing_whitespace check.
         --no-legacy_facts-check      Skip the legacy_facts check.
@@ -3964,11 +3967,11 @@
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile"># renovate: datasource=rubygems depName=puppet-lint
-ARG GEM_PUPPET_LINT_VERSION=4.2.4
+ARG GEM_PUPPET_LINT_VERSION=4.3.0
 </code></pre>
 <ul>
 <li>GEM packages (Ruby) :<ul>
-<li><a href="https://rubygems.org/gems/puppet-lint/versions/4.2.4">puppet-lint:4.2.4</a></li>
+<li><a href="https://rubygems.org/gems/puppet-lint/versions/4.3.0">puppet-lint:4.3.0</a></li>
 </ul>
 </li>
 </ul>

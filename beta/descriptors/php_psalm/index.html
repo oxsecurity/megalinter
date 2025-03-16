@@ -11,7 +11,7 @@
 <link href="../php_phpstan/" rel="prev"/>
 <link href="../php_phplint/" rel="next"/>
 <link href="../../assets/images/mega-linter-square.png" rel="icon"/>
-<meta content="mkdocs-1.6.1, mkdocs-material-9.6.7" name="generator"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.6.8" name="generator"/>
 <title>psalm configuration in MegaLinter - MegaLinter by OX Security</title>
 <link href="../../assets/stylesheets/main.8608ea7d.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
@@ -4062,7 +4062,9 @@ COPY --from=composer/composer:2-bin /composer /usr/bin/composer
 ENV PATH="/root/.composer/vendor/bin:${PATH}"
 ENV PHP_CS_FIXER_IGNORE_ENV=true
 # Linter install
-RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" &amp;&amp; export GITHUB_AUTH_TOKEN &amp;&amp; composer config --global platform.php 8.3 &amp;&amp; composer global require vimeo/psalm
+# renovate: datasource=packagist depName=vimeo/psalm
+ARG PHP_VIMEO_PSALM_VERSION=6.5.0
+RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" &amp;&amp; export GITHUB_AUTH_TOKEN &amp;&amp; composer global require vimeo/psalm:${PHP_VIMEO_PSALM_VERSION}
 
 </code></pre>
 </article>

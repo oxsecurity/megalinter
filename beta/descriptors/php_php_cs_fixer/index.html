@@ -11,7 +11,7 @@
 <link href="../php_phplint/" rel="prev"/>
 <link href="../powershell/" rel="next"/>
 <link href="../../assets/images/mega-linter-square.png" rel="icon"/>
-<meta content="mkdocs-1.6.1, mkdocs-material-9.6.7" name="generator"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.6.8" name="generator"/>
 <title>php-cs-fixer configuration in MegaLinter - MegaLinter by OX Security</title>
 <link href="../../assets/stylesheets/main.8608ea7d.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
@@ -3695,7 +3695,7 @@
 </ul>
 <h2 id="php-cs-fixer-documentation">php-cs-fixer documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>3.70.1</strong></li>
+<li>Version in MegaLinter: <strong>3.71.0</strong></li>
 <li>Visit <a href="https://cs.symfony.com/" target="_blank">Official Web Site</a><ul>
 <li>If custom <code>.php-cs-fixer.dist.php</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.php-cs-fixer.dist.php" target="_blank">.php-cs-fixer.dist.php</a> will be used</li>
 </ul>
@@ -3935,7 +3935,9 @@ COPY --from=composer/composer:2-bin /composer /usr/bin/composer
 ENV PATH="/root/.composer/vendor/bin:${PATH}"
 ENV PHP_CS_FIXER_IGNORE_ENV=true
 # Linter install
-RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" &amp;&amp; export GITHUB_AUTH_TOKEN &amp;&amp; composer global require friendsofphp/php-cs-fixer --with-all-dependencies
+# renovate: datasource=packagist depName=friendsofphp/php-cs-fixer
+ARG PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION=v3.71.0
+RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" &amp;&amp; export GITHUB_AUTH_TOKEN &amp;&amp; composer global require friendsofphp/php-cs-fixer:${PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION} --with-all-dependencies
 
 </code></pre>
 </article>

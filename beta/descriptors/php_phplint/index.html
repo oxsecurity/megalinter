@@ -11,7 +11,7 @@
 <link href="../php_psalm/" rel="prev"/>
 <link href="../php_php_cs_fixer/" rel="next"/>
 <link href="../../assets/images/mega-linter-square.png" rel="icon"/>
-<meta content="mkdocs-1.6.1, mkdocs-material-9.6.7" name="generator"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.6.8" name="generator"/>
 <title>phplint configuration in MegaLinter - MegaLinter by OX Security</title>
 <link href="../../assets/stylesheets/main.8608ea7d.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
@@ -3874,7 +3874,11 @@ COPY --from=composer/composer:2-bin /composer /usr/bin/composer
 ENV PATH="/root/.composer/vendor/bin:${PATH}"
 ENV PHP_CS_FIXER_IGNORE_ENV=true
 # Linter install
-RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" &amp;&amp; export GITHUB_AUTH_TOKEN &amp;&amp; composer global require overtrue/phplint bartlett/sarif-php-converters
+# renovate: datasource=packagist depName=overtrue/phplint
+ARG PHP_OVERTRUE_PHPLINT_VERSION=9.5.6
+# renovate: datasource=packagist depName=bartlett/sarif-php-converters
+ARG PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION=1.1.0
+RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" &amp;&amp; export GITHUB_AUTH_TOKEN &amp;&amp; composer global require overtrue/phplint:${PHP_OVERTRUE_PHPLINT_VERSION} bartlett/sarif-php-converters:${PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION}
 
 </code></pre>
 </article>
