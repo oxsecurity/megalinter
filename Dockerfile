@@ -20,7 +20,7 @@ ARG BASH_SHFMT_VERSION=v3.10.0-alpine
 # renovate: datasource=docker depName=hadolint/hadolint
 ARG DOCKERFILE_HADOLINT_VERSION=v2.12.0-alpine
 # renovate: datasource=docker depName=mstruebing/editorconfig-checker
-ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=v3.2.0
+ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=v3.2.1
 # renovate: datasource=github-tags depName=mgechev/revive
 ARG GO_REVIVE_VERSION=v1.7.0
 # renovate: datasource=docker depName=ghcr.io/yannh/kubeconform
