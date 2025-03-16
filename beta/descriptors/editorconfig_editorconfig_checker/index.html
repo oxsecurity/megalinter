@@ -3681,7 +3681,7 @@
 <p><a href="https://github.com/editorconfig-checker/editorconfig-checker"><img alt="GitHub stars" src="https://img.shields.io/github/stars/editorconfig-checker/editorconfig-checker?cacheSeconds=3600"/></a> <a href="https://github.com/editorconfig-checker/editorconfig-checker/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/editorconfig-checker/editorconfig-checker?sort=semver"/></a> <a href="https://github.com/editorconfig-checker/editorconfig-checker/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/editorconfig-checker/editorconfig-checker"/></a> <a href="https://github.com/editorconfig-checker/editorconfig-checker/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/editorconfig-checker/editorconfig-checker"/></a> <a href="https://github.com/editorconfig-checker/editorconfig-checker/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/editorconfig-checker/editorconfig-checker"/></a></p>
 <h2 id="editorconfig-checker-documentation">editorconfig-checker documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>3.2.0</strong></li>
+<li>Version in MegaLinter: <strong>3.2.1</strong></li>
 <li>Visit <a href="https://editorconfig-checker.github.io/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/editorconfig-checker/editorconfig-checker#configuration" target="_blank">How to configure editorconfig-checker rules</a></li>
 <li>See <a href="https://github.com/editorconfig-checker/editorconfig-checker#excluding" target="_blank">How to disable editorconfig-checker rules in files</a></li>
@@ -3968,7 +3968,7 @@
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile"># renovate: datasource=docker depName=mstruebing/editorconfig-checker
-ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=v3.2.0
+ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=v3.2.1
 FROM mstruebing/editorconfig-checker:${EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION} AS editorconfig-checker
 COPY --link --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
 </code></pre>
