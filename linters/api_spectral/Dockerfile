@@ -49,7 +49,7 @@ FROM python:3.12.8-alpine3.21
 #############################################################################################
 #ARG__START
 # renovate: datasource=npm depName=@stoplight/spectral-cli
-ARG NPM_SPECTRAL_CLI_VERSION=6.14.2
+ARG NPM_SPECTRAL_CLI_VERSION=6.14.3
 #ARG__END
 
 ####################
