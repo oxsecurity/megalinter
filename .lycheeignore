@@ -1,7 +1,7 @@
 # These links are ignored by lychee link checker: https://github.com/lycheeverse/lychee
 # The file allows you to list multiple regular expressions for exclusion (one pattern per line).
-# The `.lycheeignore` file is only used for excluding URLs, not paths. Use the `exclude_path` key in the `lychee.toml` file. ref: https://github.com/lycheeverse/lycheeverse.github.io/blob/master/recipes/excluding-paths.md
-
+# The `.lycheeignore` file is only used for excluding URLs, not paths. Use the `exclude_path` key in the `lychee.toml` file. 
+# ref: https://github.com/lycheeverse/lycheeverse.github.io/blob/master/src/content/docs/recipes/excluding-links.md
 my-company.com
 https://megalinter.io/
 https://megalinter.io/flavors/
@@ -24,4 +24,4 @@ https://stylelint.io/user-guide/integrations/other#analysis-platform-engines
 https://github.com/pmd/pmd/releases/download/pmd_releases
 https://twitter.com/intent/tweet*
 https://github.com/sgerrand/alpine-pkg-glibc/releases/download
-http://makeapullrequest.com
+https?:\/\/(www\.)?makeapullrequest\.com\/.*
