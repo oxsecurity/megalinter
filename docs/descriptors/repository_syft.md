@@ -17,7 +17,7 @@ Builds a SBOM (Software Build Of Materials) from your repository
 
 ## syft documentation
 
-- Version in MegaLinter: **1.20.0**
+- Version in MegaLinter: **1.21.0**
 - Visit [Official Web Site](https://github.com/anchore/syft#readme){target=_blank}
 
 [![syft - GitHub](https://gh-card.dev/repos/anchore/syft.svg?fullname=)](https://github.com/anchore/syft){target=_blank}
