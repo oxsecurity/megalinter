@@ -29,9 +29,15 @@ plugins:
     docUrl: https://github.com/ssc-services/mega-linter-plugin-salt
     pluginUrl: https://raw.githubusercontent.com/ssc-services/mega-linter-plugin-salt/main/mega-linter-plugin-salt/salt.megalinter-descriptor.yml
     author: "[Joachim Grimm](https://github.com/grimmjo)"
-  # document-compose-linter
-  - name: document-compose-linter
+  # docker-compose-linter
+  - name: docker-compose-linter
     description: Plugin to lint docker-compose files
     docUrl: https://github.com/wesley-dean/mega-linter-plugin-dclint/blob/main/README.md
     pluginUrl: https://github.com/wesley-dean/mega-linter-plugin-dclint/blob/main/mega-linter-plugin-dclint/dclint.megalinter-descriptor.yml
+    author: "[Wesley Dean](https://github.com/wesley-dean)"
+  # repolinter
+  - name: repolinter
+    description: Plugin to lint repositories for best practices
+    docUrl: https://github.com/wesley-dean/mega-linter-plugin-repolinter/blob/main/README.md
+    pluginUrl: https://github.com/wesley-dean/mega-linter-plugin-repolinter/blob/main/mega-linter-plugin-repolinter/repolinter.megalinter-descriptor.yml
     author: "[Wesley Dean](https://github.com/wesley-dean)"
