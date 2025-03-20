@@ -159,7 +159,7 @@
         "qedhere",
         "readdir-scoped-modules",
         "rechoir",
-        "repolinter",    
+        "repolinter",
         "rerunfailures",
         "reusify",
         "rimraf",
