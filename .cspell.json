@@ -16,7 +16,8 @@
         ".vscode",
         "lib",
         "misspell",
-        "report"
+        "report",
+        ".lycheeignore"
     ],
     "ignoreWords": [
         "ARGTOP",
