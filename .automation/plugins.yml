@@ -35,7 +35,7 @@ plugins:
     docUrl: https://github.com/wesley-dean/mega-linter-plugin-dclint/blob/main/README.md
     pluginUrl: https://github.com/wesley-dean/mega-linter-plugin-dclint/blob/main/mega-linter-plugin-dclint/dclint.megalinter-descriptor.yml
     author: "[Wesley Dean](https://github.com/wesley-dean)"
-# repolinter
+  # repolinter
   - name: repolinter
     description: Plugin to run TODO Group's repolinter to look for repository best practices
     docUrl: https://github.com/wesley-dean/mega-linter-plugin-repolinter/blob/main/README.md
