@@ -15,7 +15,7 @@ description: How to use detekt (configure, ignore files, ignore errors, help & v
 
 ## detekt documentation
 
-- Version in MegaLinter: **1.23.7**
+- Version in MegaLinter: **1.23.8**
 - Visit [Official Web Site](https://detekt.dev/){target=_blank}
 - See [Index of problems detected by detekt](https://detekt.dev/docs/rules/comments){target=_blank}
 
@@ -168,7 +168,7 @@ Usage: detekt [options]
     --language-version
       EXPERIMENTAL: Compatibility mode for Kotlin language version X.Y,
       reports errors for all language features that came out later
-      Possible Values: [1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0, 2.1]
+      Possible Values: [1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0, 2.1, 2.2]
     --max-issues
       Return exit code 0 only when found issues count does not exceed
       specified issues count.
@@ -200,7 +200,7 @@ ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 # Linter install
 # renovate: datasource=github-tags depName=detekt/detekt
-ARG DETEKT_VERSION=1.23.7
+ARG DETEKT_VERSION=1.23.8
 
 RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/detekt/detekt/releases/download/v${DETEKT_VERSION}/detekt-cli-${DETEKT_VERSION}.zip && \
     unzip detekt-cli-${DETEKT_VERSION}.zip && \

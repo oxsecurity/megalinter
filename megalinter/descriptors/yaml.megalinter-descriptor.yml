@@ -37,7 +37,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=prettier
-          ARG NPM_PRETTIER_VERSION=3.5.1
+          ARG NPM_PRETTIER_VERSION=3.5.3
       npm:
         - "prettier@${NPM_PRETTIER_VERSION}"
     ide:
@@ -95,7 +95,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=yamllint
-          ARG PIP_YAMLLINT_VERSION=1.35.1
+          ARG PIP_YAMLLINT_VERSION=1.36.1
       pip:
         - yamllint==${PIP_YAMLLINT_VERSION}
     ide:

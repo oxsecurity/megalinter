@@ -16,7 +16,8 @@
         ".vscode",
         "lib",
         "misspell",
-        "report"
+        "report",
+        ".lycheeignore"
     ],
     "ignoreWords": [
         "ARGTOP",
@@ -158,7 +159,7 @@
         "qedhere",
         "readdir-scoped-modules",
         "rechoir",
-        "repositoryformatversion",
+        "repolinter",
         "rerunfailures",
         "reusify",
         "rimraf",
@@ -1177,6 +1178,7 @@
         "owasp",
         "oxsecurity",
         "packagename",
+        "packagist",
         "pagebreak",
         "pagelen",
         "pageref",
