@@ -170,6 +170,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.59.1 to **0.60.0** on 2025-03-19
   - [trivy](https://aquasecurity.github.io/trivy/) from 0.59.1 to **0.60.0** on 2025-03-19
   - [yamllint](https://yamllint.readthedocs.io/) from 1.36.1 to **1.36.2** on 2025-03-19
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.27.0 to **1.32.0** on 2025-03-21
+  - [golangci-lint](https://golangci-lint.run/) from 1.64.7 to **1.64.8** on 2025-03-21
+  - [kubescape](https://github.com/kubescape/kubescape) from 3.0.31 to **3.0.32** on 2025-03-21
 <!-- linter-versions-end -->
 
 ## [v8.4.2] - 2024-02-02
