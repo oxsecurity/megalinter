@@ -175,6 +175,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [kubescape](https://github.com/kubescape/kubescape) from 3.0.31 to **3.0.32** on 2025-03-21
   - [pylint](https://pylint.readthedocs.io) from 3.3.5 to **3.3.6** on 2025-03-21
   - [pyright](https://github.com/Microsoft/pyright) from 1.1.396 to **1.1.397** on 2025-03-21
+  - [checkov](https://www.checkov.io/) from 3.2.386 to **3.2.390** on 2025-03-21
+  - [kics](https://www.kics.io) from 2.1.3 to **2.1.6** on 2025-03-21
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.88.17 to **3.88.18** on 2025-03-21
 <!-- linter-versions-end -->
 
 ## [v8.4.2] - 2024-02-02
