@@ -3478,7 +3478,8 @@
         "  -l, --logger string         Logger level. Supported: debug/info/success/warning/error/fatal [$KS_LOGGER] (default \"info\")",
         "      --server string         Backend discovery server URL",
         "",
-        "Use \"kubescape [command] --help\" for more information about a command."
+        "Use \"kubescape [command] --help\" for more information about a command.",
+        "{\"level\":\"info\",\"ts\":\"2025-03-21T18:08:37Z\",\"msg\":\"Received interrupt signal, exiting...\"}"
     ],
     "kubeval": [
         "Validate a Kubernetes YAML file against the relevant schema",
@@ -6029,10 +6030,11 @@
         "  Options related to output formatting and reporting",
         "",
         "  --output-format <format>, -f <format>",
-        "                        Set the output format. Available formats are: text,",
-        "                        parseable, colorized, json2 (improved json format),",
-        "                        json (old json format) and msvs (visual studio). You",
-        "                        can also give a reporter class, e.g.",
+        "                        Set the output format. Available formats are: 'text',",
+        "                        'parseable', 'colorized', 'json2' (improved json",
+        "                        format), 'json' (old json format), msvs (visual",
+        "                        studio) and 'github' (GitHub actions). You can also",
+        "                        give a reporter class, e.g.",
         "                        mypackage.mymodule.MyReporterClass.",
         "  --reports <y or n>, -r <y or n>",
         "                        Tells whether to display a full report or only the",

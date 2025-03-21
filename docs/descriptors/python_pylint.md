@@ -9,7 +9,7 @@ description: How to use pylint (configure, ignore files, ignore errors, help & v
 
 ## pylint documentation
 
-- Version in MegaLinter: **3.3.5**
+- Version in MegaLinter: **3.3.6**
 - Visit [Official Web Site](https://pylint.readthedocs.io){target=_blank}
 - See [How to configure pylint rules](https://pylint.readthedocs.io/en/stable/user_guide/configuration/index.html){target=_blank}
   - If custom `.pylintrc` config file isn't found, [.pylintrc](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.pylintrc){target=_blank} will be used
@@ -234,10 +234,11 @@ Reports:
   Options related to output formatting and reporting
 
   --output-format <format>, -f <format>
-                        Set the output format. Available formats are: text,
-                        parseable, colorized, json2 (improved json format),
-                        json (old json format) and msvs (visual studio). You
-                        can also give a reporter class, e.g.
+                        Set the output format. Available formats are: 'text',
+                        'parseable', 'colorized', 'json2' (improved json
+                        format), 'json' (old json format), msvs (visual
+                        studio) and 'github' (GitHub actions). You can also
+                        give a reporter class, e.g.
                         mypackage.mymodule.MyReporterClass.
   --reports <y or n>, -r <y or n>
                         Tells whether to display a full report or only the
@@ -765,11 +766,11 @@ Imports:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=pylint
-ARG PIP_PYLINT_VERSION=3.3.5
+ARG PIP_PYLINT_VERSION=3.3.6
 # renovate: datasource=pypi depName=typing-extensions
 ARG PIP_TYPING_EXTENSIONS_VERSION=4.12.2
 ```
 
 - PIP packages (Python):
-  - [pylint==3.3.5](https://pypi.org/project/pylint/3.3.5)
+  - [pylint==3.3.6](https://pypi.org/project/pylint/3.3.6)
   - [typing-extensions==4.12.2](https://pypi.org/project/typing-extensions/4.12.2)
