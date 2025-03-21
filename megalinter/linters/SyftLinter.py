@@ -4,7 +4,6 @@ Use Syft to generate SBOM (Software bill of materials)
 """
 
 import json
-import logging
 import os
 
 from megalinter import Linter, utils
