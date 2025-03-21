@@ -134,7 +134,7 @@ ARG NPM_MARKDOWN_LINK_CHECK_VERSION=3.12.2
 # renovate: datasource=npm depName=markdown-table-formatter
 ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.6.1
 # renovate: datasource=pypi depName=pylint
-ARG PIP_PYLINT_VERSION=3.3.5
+ARG PIP_PYLINT_VERSION=3.3.6
 # renovate: datasource=pypi depName=typing-extensions
 ARG PIP_TYPING_EXTENSIONS_VERSION=4.12.2
 # renovate: datasource=pypi depName=black
