@@ -173,6 +173,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.27.0 to **1.32.0** on 2025-03-21
   - [golangci-lint](https://golangci-lint.run/) from 1.64.7 to **1.64.8** on 2025-03-21
   - [kubescape](https://github.com/kubescape/kubescape) from 3.0.31 to **3.0.32** on 2025-03-21
+  - [pylint](https://pylint.readthedocs.io) from 3.3.5 to **3.3.6** on 2025-03-21
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.396 to **1.1.397** on 2025-03-21
 <!-- linter-versions-end -->
 
 ## [v8.4.2] - 2024-02-02
