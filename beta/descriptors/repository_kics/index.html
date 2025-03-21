@@ -3681,7 +3681,7 @@
 <p><a href="https://github.com/checkmarx/kics"><img alt="GitHub stars" src="https://img.shields.io/github/stars/checkmarx/kics?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-SARIF-orange"><img alt="sarif" src="https://shields.io/badge/-SARIF-orange"/></a> <a href="https://github.com/checkmarx/kics/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/checkmarx/kics?sort=semver"/></a> <a href="https://github.com/checkmarx/kics/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/checkmarx/kics"/></a> <a href="https://github.com/checkmarx/kics/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/checkmarx/kics"/></a> <a href="https://github.com/checkmarx/kics/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/checkmarx/kics"/></a></p>
 <h2 id="kics-documentation">kics documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>2.1.3</strong></li>
+<li>Version in MegaLinter: <strong>2.1.6</strong></li>
 <li>Visit <a href="https://www.kics.io" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://docs.kics.io/latest/configuration-file/" target="_blank">How to configure kics rules</a></li>
 <li>See <a href="https://docs.kics.io/latest/running-kics/#using_commands_on_scanned_files_as_comments" target="_blank">How to disable kics rules in files</a></li>
@@ -3851,7 +3851,7 @@ Use "kics [command] --help" for more information about a command.
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile"># renovate: datasource=docker depName=checkmarx/kics
-ARG REPOSITORY_KICS_VERSION=v2.1.3-alpine
+ARG REPOSITORY_KICS_VERSION=v2.1.6-alpine
 FROM checkmarx/kics:${REPOSITORY_KICS_VERSION} AS kics
 COPY --link --from=kics /app/bin/kics /usr/bin/kics
 ENV KICS_QUERIES_PATH=/usr/bin/assets/queries KICS_LIBRARIES_PATH=/usr/bin/assets/libraries
