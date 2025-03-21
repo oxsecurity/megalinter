@@ -27,7 +27,9 @@ class SyftLinter(Linter):
         sbom_output_file = (
             reporter_self.report_folder
             + os.path.sep
-            + "SBOM-syft"
+            + "sbom"
+            + os.path.sep
+            + "syft"
             + output_file_extension
         )
         # Save SBOM output file

@@ -19,6 +19,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Linters enhancements
   - [syft](https://megalinter.io/latest/descriptors/repository_syft/): Add SBOM file by default in report folder + remove useless debug statement
+  - [trivy-sbom](https://megalinter.io/latest/descriptors/repository_trivy_sbom/): Add SBOM file by default in report folder + remove useless debug statement
 
 - Fixes
   - Use npm to install pyright
