@@ -49,7 +49,7 @@ FROM python:3.12.8-alpine3.21
 #############################################################################################
 #ARG__START
 # renovate: datasource=pypi depName=pylint
-ARG PIP_PYLINT_VERSION=3.3.5
+ARG PIP_PYLINT_VERSION=3.3.6
 # renovate: datasource=pypi depName=typing-extensions
 ARG PIP_TYPING_EXTENSIONS_VERSION=4.12.2
 # renovate: datasource=pypi depName=pip
