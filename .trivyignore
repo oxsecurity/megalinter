@@ -87,6 +87,9 @@ CVE-2024-3817
 CVE-2023-36414
 CVE-2024-0056
 
+# vale
+CVE-2025-29786
+
 # Misc
 # Not fixed yet https://avd.aquasec.com/nvd/2024/cve-2024-29415/
 CVE-2024-29415

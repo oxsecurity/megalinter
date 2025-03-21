@@ -144,6 +144,31 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [grype](https://github.com/anchore/grype) from 0.88.0 to **0.89.0** on 2025-03-07
   - [shfmt](https://github.com/mvdan/sh) from 3.11.0 to **3.10.0** on 2025-03-07
   - [php-cs-fixer](https://cs.symfony.com/) from 3.70.2 to **3.71.0** on 2025-03-07
+  - [phpstan](https://phpstan.org/) from 2.1.7 to **2.1.8** on 2025-03-10
+  - [rubocop](https://rubocop.org/) from 1.73.1 to **1.73.2** on 2025-03-10
+  - [yamllint](https://yamllint.readthedocs.io/) from 1.35.1 to **1.36.0** on 2025-03-11
+  - [shfmt](https://github.com/mvdan/sh) from 3.10.0 to **3.11.0** on 2025-03-13
+  - [puppet-lint](http://puppet-lint.com/) from 4.2.4 to **4.3.0** on 2025-03-13
+  - [shfmt](https://github.com/mvdan/sh) from 3.11.0 to **3.10.0** on 2025-03-13
+  - [grype](https://github.com/anchore/grype) from 0.89.0 to **0.89.1** on 2025-03-13
+  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 9.0.103 to **9.0.104** on 2025-03-14
+  - [spectral](https://docs.stoplight.io/docs/spectral/674b27b261c3c-overview) from 6.14.2 to **6.14.3** on 2025-03-15
+  - [dartanalyzer](https://dart.dev/tools/dart-analyze) from 3.7.1 to **3.7.2** on 2025-03-15
+  - [golangci-lint](https://golangci-lint.run/) from 1.64.6 to **1.64.7** on 2025-03-15
+  - [kubescape](https://github.com/kubescape/kubescape) from 3.0.30 to **3.0.31** on 2025-03-15
+  - [checkov](https://www.checkov.io/) from 3.2.381 to **3.2.386** on 2025-03-15
+  - [editorconfig-checker](https://editorconfig-checker.github.io/) from 3.2.0 to **3.2.1** on 2025-03-16
+  - [psalm](https://psalm.dev) from Psalm.6.5.0@ to **Psalm.6.8.9@** on 2025-03-16
+  - [pylint](https://pylint.readthedocs.io) from 3.3.4 to **3.3.5** on 2025-03-16
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.88.14 to **3.88.17** on 2025-03-16
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.10.3 to **1.11.2** on 2025-03-16
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.71.1 to **0.75.10** on 2025-03-16
+  - [yamllint](https://yamllint.readthedocs.io/) from 1.36.0 to **1.36.1** on 2025-03-16
+  - [grype](https://github.com/anchore/grype) from 0.89.1 to **0.90.0** on 2025-03-19
+  - [syft](https://github.com/anchore/syft) from 1.20.0 to **1.21.0** on 2025-03-19
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.59.1 to **0.60.0** on 2025-03-19
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.59.1 to **0.60.0** on 2025-03-19
+  - [yamllint](https://yamllint.readthedocs.io/) from 1.36.1 to **1.36.2** on 2025-03-19
 <!-- linter-versions-end -->
 
 ## [v8.4.2] - 2024-02-02

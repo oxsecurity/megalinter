@@ -51,7 +51,7 @@ FROM python:3.12.8-alpine3.21
 # renovate: datasource=github-tags depName=sgerrand/alpine-pkg-glibc
 ARG ALPINE_GLIBC_PACKAGE_VERSION=2.34-r0
 # renovate: datasource=dart-version depName=dart
-ARG DART_VERSION='3.7.1'
+ARG DART_VERSION='3.7.2'
 #ARG__END
 
 ####################

@@ -97,7 +97,7 @@ php-cs-fixer check --config .php-cs-fixer.php
 
 ```shell
 PHP needs to be a minimum version of PHP 7.4.0 and maximum version of PHP 8.3.*.
-Current PHP version: 8.4.4.
+Current PHP version: 8.4.5.
 Ignoring environment requirements because `PHP_CS_FIXER_IGNORE_ENV` is set. Execution may be unstable.
 Description:
   List commands
@@ -148,7 +148,9 @@ COPY --from=composer/composer:2-bin /composer /usr/bin/composer
 ENV PATH="/root/.composer/vendor/bin:${PATH}"
 ENV PHP_CS_FIXER_IGNORE_ENV=true
 # Linter install
-RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require friendsofphp/php-cs-fixer --with-all-dependencies
+# renovate: datasource=packagist depName=friendsofphp/php-cs-fixer
+ARG PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION=v3.71.0
+RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require friendsofphp/php-cs-fixer:${PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION} --with-all-dependencies
 
 ```
 
