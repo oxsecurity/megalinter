@@ -23,7 +23,10 @@ class SyftLinter(Linter):
         # Collect detected words from logs
         if self.stdout is None or not utils.can_write_report_files(self.master):
             return []
-        output_file_extension = ".json" if self.stdout.startswith("{") else ".txt"
+        sbom_output = utils.find_json_in_stdout(self.stdout, False)
+        if sbom_output == "":
+            sbom_output = self.stdout
+        output_file_extension = ".json" if sbom_output.startswith("{") else ".txt"
         sbom_output_file = (
             reporter_self.report_folder
             + os.path.sep
@@ -35,7 +38,7 @@ class SyftLinter(Linter):
         # Save SBOM output file
         os.makedirs(os.path.dirname(sbom_output_file), exist_ok=True)
         with open(sbom_output_file, "w", encoding="utf-8") as outfile:
-            outfile.write(self.stdout)
+            outfile.write(sbom_output)
         return []
 
     # Get syft json output and build SARIF output from it
