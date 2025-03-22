@@ -183,6 +183,13 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.88.17 to **3.88.18** on 2025-03-21
   - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.33.93 to **0.34.1** on 2025-03-22
   - [php-cs-fixer](https://cs.symfony.com/) from 3.71.0 to **3.73.1** on 2025-03-22
+  - [phpcs](https://github.com/PHPCSStandards/PHP_CodeSniffer) from 3.11.3 to **3.12.0** on 2025-03-22
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.9.9 to **0.11.2** on 2025-03-22
+  - [ruff](https://github.com/astral-sh/ruff) from 0.9.9 to **0.11.2** on 2025-03-22
+  - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.24.0 to **8.24.2** on 2025-03-22
+  - [rubocop](https://rubocop.org/) from 1.73.2 to **1.74.0** on 2025-03-22
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.0.0 to **3.2.0** on 2025-03-22
+  - [snakefmt](https://github.com/snakemake/snakefmt) from 0.10.2 to **0.11.0** on 2025-03-22
 <!-- linter-versions-end -->
 
 ## [v8.4.2] - 2024-02-02
