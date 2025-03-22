@@ -182,7 +182,7 @@ ARG PIP_RSTCHECK_VERSION=6.2.4
 # renovate: datasource=pypi depName=rstfmt
 ARG PIP_RSTFMT_VERSION=0.0.14
 # renovate: datasource=pypi depName=snakefmt
-ARG PIP_SNAKEFMT_VERSION=0.10.2
+ARG PIP_SNAKEFMT_VERSION=0.11.0
 # renovate: datasource=npm depName=cspell
 ARG NPM_CSPELL_VERSION=8.17.5
 # renovate: datasource=pypi depName=proselint
