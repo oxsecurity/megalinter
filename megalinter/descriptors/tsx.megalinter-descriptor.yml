@@ -54,7 +54,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=typescript
-          ARG NPM_TYPESCRIPT_VERSION=5.7.3
+          ARG NPM_TYPESCRIPT_VERSION=5.8.2
         - |-
           # renovate: datasource=npm depName=eslint
           ARG NPM_ESLINT_VERSION=8.57.1
