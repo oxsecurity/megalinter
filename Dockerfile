@@ -266,7 +266,7 @@ ARG PHP_OVERTRUE_PHPLINT_VERSION=9.5.6
 # renovate: datasource=packagist depName=friendsofphp/php-cs-fixer
 ARG PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION=v3.73.1
 # renovate: datasource=nuget depName=PSScriptAnalyzer registryUrl=https://www.powershellgallery.com/api/v2/
-ARG PSSA_VERSION='1.23.0'
+ARG PSSA_VERSION='1.24.0'
 
 # renovate: datasource=rubygems depName=puppet-lint
 ARG GEM_PUPPET_LINT_VERSION=4.3.0
