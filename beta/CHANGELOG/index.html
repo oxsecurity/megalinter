@@ -5535,6 +5535,7 @@
 <ul>
 <li>Linters enhancements<ul>
 <li><a href="https://megalinter.io/latest/descriptors/repository_syft/">syft</a>: Add SBOM file by default in report folder + remove useless debug statement</li>
+<li><a href="https://megalinter.io/latest/descriptors/repository_trivy_sbom/">trivy-sbom</a>: Add SBOM file by default in report folder + remove useless debug statement</li>
 </ul>
 </li>
 </ul>
@@ -5552,11 +5553,15 @@
 <ul>
 <li>Doc<ul>
 <li>Remove reference to R2DevOps jobs as it has been discontinued (see <a href="https://github.com/oxsecurity/megalinter/issues/4678">#4678</a>)</li>
+<li>Improve contributing doc by adding reference to <code>source .venv/Scripts/activate</code> on Windows</li>
 </ul>
 </li>
 </ul>
 <ul>
-<li>Flavors</li>
+<li>Flavors<ul>
+<li>Add <a href="https://megalinter.io/latest/descriptors/repository_syft/">syft</a> in all flavors</li>
+</ul>
+</li>
 </ul>
 <ul>
 <li>CI</li>
