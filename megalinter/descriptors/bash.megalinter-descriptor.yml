@@ -139,7 +139,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=docker depName=rhysd/actionlint
-          ARG BASH_SHFMT_VERSION=v3.10.0-alpine
+          ARG BASH_SHFMT_VERSION=v3.11.0-alpine
         - FROM mvdan/shfmt:${BASH_SHFMT_VERSION} AS shfmt
         - COPY --link --from=shfmt /bin/shfmt /usr/bin/
     ide:
