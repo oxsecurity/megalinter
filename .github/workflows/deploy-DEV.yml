@@ -221,7 +221,7 @@ jobs:
         if: ${{ steps.docker_build.outcome }} == 'success' && !contains(github.event.head_commit.message, 'quick build')
         uses: actions/setup-node@v4.3.0
         with:
-          node-version: "20.x"
+          node-version: "22.x"
       - name: Install NPM dependencies
         if: ${{ steps.docker_build.outcome }} == 'success' && !contains(github.event.head_commit.message, 'quick build')
         run: cd mega-linter-runner && yarn install --frozen-lockfile && npm link
