@@ -3695,7 +3695,7 @@
 </ul>
 <h2 id="php-cs-fixer-documentation">php-cs-fixer documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>3.71.0</strong></li>
+<li>Version in MegaLinter: <strong>3.73.1</strong></li>
 <li>Visit <a href="https://cs.symfony.com/" target="_blank">Official Web Site</a><ul>
 <li>If custom <code>.php-cs-fixer.dist.php</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.php-cs-fixer.dist.php" target="_blank">.php-cs-fixer.dist.php</a> will be used</li>
 </ul>
@@ -3851,14 +3851,14 @@
 <td style="text-align: center;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico"/></a></td>
 <td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/cupcake/">cupcake</a></td>
 <td style="text-align: left;">MegaLinter for the most commonly used languages</td>
-<td style="text-align: center;">85</td>
+<td style="text-align: center;">86</td>
 <td style="text-align: right;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake"/></a></a></td>
 </tr>
 <tr>
 <td style="text-align: center;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico"/></a></td>
 <td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/php/">php</a></td>
 <td style="text-align: left;">Optimized for PHP based projects</td>
-<td style="text-align: center;">53</td>
+<td style="text-align: center;">54</td>
 <td style="text-align: right;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/beta"/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-php"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-php"/></a></a></td>
 </tr>
 </tbody>
@@ -3936,7 +3936,7 @@ ENV PATH="/root/.composer/vendor/bin:${PATH}"
 ENV PHP_CS_FIXER_IGNORE_ENV=true
 # Linter install
 # renovate: datasource=packagist depName=friendsofphp/php-cs-fixer
-ARG PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION=v3.71.0
+ARG PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION=v3.73.1
 RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" &amp;&amp; export GITHUB_AUTH_TOKEN &amp;&amp; composer global require friendsofphp/php-cs-fixer:${PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION} --with-all-dependencies
 
 </code></pre>
