@@ -190,6 +190,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [rubocop](https://rubocop.org/) from 1.73.2 to **1.74.0** on 2025-03-22
   - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.0.0 to **3.2.0** on 2025-03-22
   - [snakefmt](https://github.com/snakemake/snakefmt) from 0.10.2 to **0.11.0** on 2025-03-22
+  - [shfmt](https://github.com/mvdan/sh) from 3.10.0 to **3.11.0** on 2025-03-22
+  - [stylelint](https://stylelint.io) from 16.15.0 to **16.16.0** on 2025-03-22
+  - [psalm](https://psalm.dev) from Psalm.6.8.9@ to **Psalm.6.9.4@** on 2025-03-22
 <!-- linter-versions-end -->
 
 ## [v8.4.2] - 2024-02-02
