@@ -9,7 +9,7 @@ description: How to use snakefmt (configure, ignore files, ignore errors, help &
 
 ## snakefmt documentation
 
-- Version in MegaLinter: **0.10.2**
+- Version in MegaLinter: **0.11.0**
 - Visit [Official Web Site](https://github.com/snakemake/snakefmt#readme){target=_blank}
 - See [How to configure snakefmt rules](https://github.com/snakemake/snakefmt#configuration){target=_blank}
   - If custom `.snakefmt.toml` config file isn't found, [.snakefmt.toml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.snakefmt.toml){target=_blank} will be used
@@ -143,8 +143,8 @@ Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=snakefmt
-ARG PIP_SNAKEFMT_VERSION=0.10.2
+ARG PIP_SNAKEFMT_VERSION=0.11.0
 ```
 
 - PIP packages (Python):
-  - [snakefmt==0.10.2](https://pypi.org/project/snakefmt/0.10.2)
+  - [snakefmt==0.11.0](https://pypi.org/project/snakefmt/0.11.0)
