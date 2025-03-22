@@ -19,6 +19,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Linters enhancements
   - [syft](https://megalinter.io/latest/descriptors/repository_syft/): Add SBOM file by default in report folder + remove useless debug statement
+  - [trivy-sbom](https://megalinter.io/latest/descriptors/repository_trivy_sbom/): Add SBOM file by default in report folder + remove useless debug statement
 
 - Fixes
   - Use npm to install pyright
@@ -29,8 +30,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Doc
   - Remove reference to R2DevOps jobs as it has been discontinued (see [#4678](https://github.com/oxsecurity/megalinter/issues/4678))
+  - Improve contributing doc by adding reference to `source .venv/Scripts/activate` on Windows
 
 - Flavors
+  - Add [syft](https://megalinter.io/latest/descriptors/repository_syft/) in all flavors
 
 - CI
 

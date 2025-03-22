@@ -513,6 +513,9 @@ linters:
     can_output_sarif: true
     is_sbom: true
     descriptor_flavors:
+      - all_flavors # Applicable to CI in any language project
+      - ci_light
+      - cupcake
       - security
     ignore_for_flavor_suggestions: true
     linter_url: https://github.com/anchore/syft
