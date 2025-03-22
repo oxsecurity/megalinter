@@ -152,7 +152,7 @@ ARG PIP_MYPY_VERSION=1.15.0
 # renovate: datasource=npm depName=pyright
 ARG NPM_PYRIGHT_VERSION=1.1.397
 # renovate: datasource=pypi depName=ruff
-ARG PIP_RUFF_VERSION=0.9.9
+ARG PIP_RUFF_VERSION=0.11.2
 # renovate: datasource=pypi depName=checkov
 ARG PIP_CHECKOV_VERSION=3.2.390
 # renovate: datasource=github-tags depName=anchore/grype
