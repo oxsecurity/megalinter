@@ -7,7 +7,7 @@ outputs:
     description: "0 if no source file has been updated, 1 if source files has been updated"
 runs:
   using: "docker"
-  image: "docker://oxsecurity/megalinter:v8.4.2"
+  image: "docker://oxsecurity/megalinter:v8.5.0"
   args:
     - "-v"
     - "/var/run/docker.sock:/var/run/docker.sock:rw"
