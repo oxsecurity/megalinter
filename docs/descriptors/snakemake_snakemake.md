@@ -15,7 +15,7 @@ description: How to use snakemake (configure, ignore files, ignore errors, help 
 
 _This linter has been disabled in this version_
 
-_Disabled reason: Dependency datrie not maintained, and issue open in snakemake repo since july - https://github.com/snakemake/snakemake/issues/2970_
+_Disabled reason: Dependency datrie not maintained, and issue open in snakemake repo since july - <https://github.com/snakemake/snakemake/issues/2970>_
 
 ## snakemake documentation
 
