@@ -49,7 +49,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Undowngrade npm-groovy-lint as there is a new release with issue fix
   - [jscpd](https://megalinter.io/latest/descriptors/copypaste_jscpd/): remove forced `--exitCode 1` to fix <https://github.com/oxsecurity/megalinter/issues/4631>
   - Use --with-all-dependencies to install phpcs-fixer, by @nvuillam in https://github.com/oxsecurity/megalinter/pull/4672
-  - Remove Composer config PHP 8.3 compatibily platform for PSALM 6.0, by @llaville in https://github.com/oxsecurity/megalinter/pull/4930
+  - Remove Composer config PHP 8.3 compatibility platform for PSALM 6.0, by @llaville in https://github.com/oxsecurity/megalinter/pull/4930
   - Fix lychee upgrade issue (lycheeignore upgrade), by @wesley-dean in https://github.com/oxsecurity/megalinter/pull/4964
 
 - Doc

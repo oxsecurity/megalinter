@@ -717,6 +717,7 @@
         "datasource",
         "dateformat",
         "davidjeddy",
+        "dclint",
         "dearmor",
         "debugent",
         "debuglog",
@@ -1566,6 +1567,7 @@
         "xmlwriter",
         "xrange",
         "xtest",
+        "yxtay",
         "yamllint",
         "yann",
         "yannh",
@@ -1574,6 +1576,7 @@
         "yargs",
         "yoheimuta",
         "yosay",
+        "yxtay",
         "zaach",
         "zricethezav"
     ]
