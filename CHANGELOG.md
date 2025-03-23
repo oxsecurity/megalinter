@@ -36,11 +36,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 ## [v8.5.0] - 2024-03-23
 
 - Core
-  - Addition of warnings to reporters and logic changes to surface warnings even when there are no errors. Addition of `cli_lint_warning_count` / `cli_lint_warning_regex` variables to the JSON schema. [#4476](https://github.com/oxsecurity/megalinter/issues/4476), by @bdovaz in https://github.com/oxsecurity/megalinter/pull/4556
+  - Addition of warnings to reporters and logic changes to surface warnings even when there are no errors. Addition of `cli_lint_warning_count` / `cli_lint_warning_regex` variables to the JSON schema. [#4476](https://github.com/oxsecurity/megalinter/issues/4476), by @bdovaz in <https://github.com/oxsecurity/megalinter/pull/4556>
 
 - Linters enhancements
-  - [kubescape](https://megalinter.io/latest/descriptors/kubernetes_kubescape/) Remove downgraded_version from kubescape, by @bdovaz in https://github.com/oxsecurity/megalinter/pull/4712
-  - [npm-groovy-lint](https://megalinter.io/latest/descriptors/groovy_npm_groovy_lint/): Undowngrade npm-groovy-lint as there is a new release with issue fixed by @nvuillam in https://github.com/oxsecurity/megalinter/pull/4834
+  - [kubescape](https://megalinter.io/latest/descriptors/kubernetes_kubescape/) Remove downgraded_version from kubescape, by @bdovaz in <https://github.com/oxsecurity/megalinter/pull/4712>
+  - [npm-groovy-lint](https://megalinter.io/latest/descriptors/groovy_npm_groovy_lint/): Undowngrade npm-groovy-lint as there is a new release with issue fixed by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/4834>
   - [syft](https://megalinter.io/latest/descriptors/repository_syft/): Add SBOM file by default in report folder + remove useless debug statement
   - [trivy-sbom](https://megalinter.io/latest/descriptors/repository_trivy_sbom/): Add SBOM file by default in report folder + remove useless debug statement
 
@@ -48,32 +48,32 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Use npm to install pyright
   - Undowngrade npm-groovy-lint as there is a new release with issue fix
   - [jscpd](https://megalinter.io/latest/descriptors/copypaste_jscpd/): remove forced `--exitCode 1` to fix <https://github.com/oxsecurity/megalinter/issues/4631>
-  - Use --with-all-dependencies to install phpcs-fixer, by @nvuillam in https://github.com/oxsecurity/megalinter/pull/4672
-  - Remove Composer config PHP 8.3 compatibily platform for PSALM 6.0, by @llaville in https://github.com/oxsecurity/megalinter/pull/4930
-  - Fix lychee upgrade issue (lycheeignore upgrade), by @wesley-dean in https://github.com/oxsecurity/megalinter/pull/4964
+  - Use --with-all-dependencies to install phpcs-fixer, by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/4672>
+  - Remove Composer config PHP 8.3 compatibility platform for PSALM 6.0, by @llaville in <https://github.com/oxsecurity/megalinter/pull/4930>
+  - Fix lychee upgrade issue (lycheeignore upgrade), by @wesley-dean in <https://github.com/oxsecurity/megalinter/pull/4964>
 
 - Doc
   - Remove reference to R2DevOps jobs as it has been discontinued (see [#4678](https://github.com/oxsecurity/megalinter/issues/4678))
   - Improve contributing doc by adding reference to `source .venv/Scripts/activate` on Windows
-  - Better apk package url, by @bdovaz in https://github.com/oxsecurity/megalinter/pull/4707
-  - Better package version docs, by @bdovaz in https://github.com/oxsecurity/megalinter/pull/4721
-  - Correct default SARIF_REPORTER_FILE_NAME, by @yxtay in https://github.com/oxsecurity/megalinter/pull/4783
-  - Use github private email for megalinter-bot, by @yxtay in https://github.com/oxsecurity/megalinter/pull/4786
-  - Update plugins.md to add raw link to JSON schema, by @wesley-dean in https://github.com/oxsecurity/megalinter/pull/4932 
+  - Better apk package url, by @bdovaz in <https://github.com/oxsecurity/megalinter/pull/4707>
+  - Better package version docs, by @bdovaz in <https://github.com/oxsecurity/megalinter/pull/4721>
+  - Correct default SARIF_REPORTER_FILE_NAME, by @yxtay in <https://github.com/oxsecurity/megalinter/pull/4783>
+  - Use github private email for megalinter-bot, by @yxtay in <https://github.com/oxsecurity/megalinter/pull/4786>
+  - Update plugins.md to add raw link to JSON schema, by @wesley-dean in <https://github.com/oxsecurity/megalinter/pull/4932>
 
 - Flavors
   - Add [syft](https://megalinter.io/latest/descriptors/repository_syft/) in all flavors
 
 - CI
-  - Update **.devcontainer** configuration, by @bdovaz in https://github.com/oxsecurity/megalinter/pull/4843
-  - Configure Renovate for gem, cargo, pip and npm dependencies, by @bdovaz in https://github.com/oxsecurity/megalinter/pull/4673
-  - Configure Renovate for composer dependencies,  by @bdovaz in https://github.com/oxsecurity/megalinter/pull/4916
-  - Use packagist data source, by @bdovaz in https://github.com/oxsecurity/megalinter/pull/4922
-  - Bring back codecov, by @nvuillam in https://github.com/oxsecurity/megalinter/pull/4836
+  - Update **.devcontainer** configuration, by @bdovaz in <https://github.com/oxsecurity/megalinter/pull/4843>
+  - Configure Renovate for gem, cargo, pip and npm dependencies, by @bdovaz in <https://github.com/oxsecurity/megalinter/pull/4673>
+  - Configure Renovate for composer dependencies,  by @bdovaz in <https://github.com/oxsecurity/megalinter/pull/4916>
+  - Use packagist data source, by @bdovaz in <https://github.com/oxsecurity/megalinter/pull/4922>
+  - Bring back codecov, by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/4836>
 
 - Plugins
-  - Add docker-compose-linter (dclint) to plugins list, by @wesley-dean in https://github.com/oxsecurity/megalinter/pull/4962
-  - Add repolinter to the list of plugins, by @wesley-dean in https://github.com/oxsecurity/megalinter/pull/4972
+  - Add docker-compose-linter (dclint) to plugins list, by @wesley-dean in <https://github.com/oxsecurity/megalinter/pull/4962>
+  - Add repolinter to the list of plugins, by @wesley-dean in <https://github.com/oxsecurity/megalinter/pull/4972>
 
 - Linter versions upgrades (55)
   - [ansible-lint](https://ansible-lint.readthedocs.io/) from 25.1.1 to **25.1.3**
