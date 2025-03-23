@@ -9,7 +9,7 @@ description: How to use shfmt (configure, ignore files, ignore errors, help & ve
 
 ## shfmt documentation
 
-- Version in MegaLinter: **3.10.0**
+- Version in MegaLinter: **3.11.0**
 - Visit [Official Web Site](https://github.com/mvdan/sh#readme){target=_blank}
 
 [![sh - GitHub](https://gh-card.dev/repos/mvdan/sh.svg?fullname=)](https://github.com/mvdan/sh){target=_blank}
@@ -111,13 +111,14 @@ directory, all shell scripts found under that directory will be used.
 
   --version  show version and exit
 
-  -l,  --list      list files whose formatting differs from shfmt's
-  -w,  --write     write result to file instead of stdout
-  -d,  --diff      error with a diff when the formatting differs
-  -s,  --simplify  simplify the code
-  -mn, --minify    minify the code to reduce its size (implies -s)
-  --apply-ignore   always apply EditorConfig ignore rules
-  --filename str   provide a name for the standard input file
+  -l[=0], --list[=0]  list files whose formatting differs from shfmt;
+                      paths are separated by a newline or a null character if -l=0
+  -w,     --write     write result to file instead of stdout
+  -d,     --diff      error with a diff when the formatting differs
+  -s,     --simplify  simplify the code
+  -mn,    --minify    minify the code to reduce its size (implies -s)
+  --apply-ignore      always apply EditorConfig ignore rules
+  --filename str      provide a name for the standard input file
 
 Parser options:
 
@@ -135,9 +136,10 @@ Printer options:
 
 Utilities:
 
-  -f, --find   recursively find all shell files and print the paths
-  --to-json    print syntax tree to stdout as a typed JSON
-  --from-json  read syntax tree from stdin as a typed JSON
+  -f[=0], --find[=0]  recursively find all shell files and print the paths;
+                      paths are separated by a newline or a null character if -f=0
+  --to-json           print syntax tree to stdout as a typed JSON
+  --from-json         read syntax tree from stdin as a typed JSON
 
 Formatting options can also be read from EditorConfig files; see 'man shfmt'
 for a detailed description of the tool's behavior.
@@ -149,7 +151,7 @@ For more information and to report bugs, see https://github.com/mvdan/sh.
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=docker depName=rhysd/actionlint
-ARG BASH_SHFMT_VERSION=v3.10.0-alpine
+ARG BASH_SHFMT_VERSION=v3.11.0-alpine
 FROM mvdan/shfmt:${BASH_SHFMT_VERSION} AS shfmt
 COPY --link --from=shfmt /bin/shfmt /usr/bin/
 ```
