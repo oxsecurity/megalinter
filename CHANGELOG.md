@@ -193,6 +193,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [shfmt](https://github.com/mvdan/sh) from 3.10.0 to **3.11.0** on 2025-03-23
   - [stylelint](https://stylelint.io) from 16.15.0 to **16.16.0** on 2025-03-23
   - [psalm](https://psalm.dev) from Psalm.6.8.9@ to **Psalm.6.9.4@** on 2025-03-23
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.75.10 to **0.76.6** on 2025-03-23
 <!-- linter-versions-end -->
 
 ## [v8.4.2] - 2024-02-02

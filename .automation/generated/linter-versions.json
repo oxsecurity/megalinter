@@ -110,7 +110,7 @@
     "syft": "1.21.0",
     "tekton-lint": "1.1.0",
     "terraform-fmt": "1.11.2",
-    "terragrunt": "0.75.10",
+    "terragrunt": "0.76.6",
     "terrascan": "1.19.9",
     "tflint": "0.55.1",
     "trivy": "0.60.0",
