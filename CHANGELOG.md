@@ -31,6 +31,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - mega-linter-runner
 
 - Linter versions upgrades (N)
+  - [yamllint](https://yamllint.readthedocs.io/) from 1.36.2 to **1.37.0** on 2025-03-23
 <!-- linter-versions-end -->
 
 ## [v8.5.0] - 2024-03-23
