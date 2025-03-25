@@ -12,7 +12,7 @@
 #############################################################################################
 #ARGTOP__START
 # renovate: datasource=docker depName=jdkato/vale
-ARG SPELL_VALE_VERSION=v3.9.4
+ARG SPELL_VALE_VERSION=v3.10.0
 #ARGTOP__END
 
 #############################################################################################

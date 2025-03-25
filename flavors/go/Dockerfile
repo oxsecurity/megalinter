@@ -33,7 +33,7 @@ ARG REPOSITORY_GITLEAKS_VERSION=v8.24.2
 # renovate: datasource=docker depName=trufflesecurity/trufflehog 
 ARG REPOSITORY_TRUFFLEHOG_VERSION=3.88.18
 # renovate: datasource=docker depName=jdkato/vale
-ARG SPELL_VALE_VERSION=v3.9.4
+ARG SPELL_VALE_VERSION=v3.10.0
 # renovate: datasource=docker depName=lycheeverse/lychee
 ARG SPELL_LYCHEE_VERSION=sha-7c4b132-alpine
 #ARGTOP__END
