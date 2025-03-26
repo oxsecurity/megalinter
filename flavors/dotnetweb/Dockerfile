@@ -91,7 +91,7 @@ ARG POWERSHELL_VERSION=7.5.0
 ARG POWERSHELL_VERSION=7.5.0
 
 # renovate: datasource=npm depName=typescript
-ARG NPM_TYPESCRIPT_VERSION=5.7.3
+ARG NPM_TYPESCRIPT_VERSION=5.8.2
 # renovate: datasource=pypi depName=ansible-lint
 ARG PIP_ANSIBLE_LINT_VERSION=25.1.3
 # renovate: datasource=npm depName=@stoplight/spectral-cli
