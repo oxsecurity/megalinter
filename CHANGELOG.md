@@ -40,6 +40,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [phpstan](https://phpstan.org/) from 2.1.10 to **2.1.11** on 2025-03-26
   - [psalm](https://psalm.dev) from Psalm.6.9.4@ to **Psalm.6.9.5@** on 2025-03-26
   - [pyright](https://github.com/Microsoft/pyright) from 1.1.397 to **1.1.398** on 2025-03-26
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.34.1 to **0.34.44** on 2025-03-26
+  - [checkov](https://www.checkov.io/) from 3.2.392 to **3.2.393** on 2025-03-26
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.17.5 to **8.18.0** on 2025-03-26
 <!-- linter-versions-end -->
 
 ## [v8.5.0] - 2024-03-23

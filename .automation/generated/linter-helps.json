@@ -348,7 +348,7 @@
         "General help using GNU software: <http://www.gnu.org/gethelp/>"
     ],
     "bicep_linter": [
-        "Bicep CLI version 0.34.1 (2e7bb7d0e9)",
+        "Bicep CLI version 0.34.44 (1f661a23c4)",
         "",
         "Usage:",
         "  bicep build [options] [<file>]",
@@ -805,7 +805,7 @@
         "               [--secrets-scan-file-type SECRETS_SCAN_FILE_TYPE]",
         "               [--enable-secret-scan-all-files]",
         "               [--block-list-secret-scan BLOCK_LIST_SECRET_SCAN]",
-        "               [--summary-position {top,bottom}]",
+        "               [--summary-position {bottom,top}]",
         "               [--skip-resources-without-violations] [--deep-analysis]",
         "               [--no-fail-on-crash] [--mask MASK] [--scan-secrets-history]",
         "               [--secrets-history-timeout SECRETS_HISTORY_TIMEOUT]",
@@ -1120,7 +1120,7 @@
         "  --block-list-secret-scan BLOCK_LIST_SECRET_SCAN",
         "                        List of files to filter out from the secret scanner",
         "                        [env var: CKV_SECRETS_SCAN_BLOCK_LIST]",
-        "  --summary-position {top,bottom}",
+        "  --summary-position {bottom,top}",
         "                        Chose whether the summary will be appended on top",
         "                        (before the checks results) or on bottom (after check",
         "                        results), default is on top.",
@@ -3494,7 +3494,8 @@
         "  -l, --logger string         Logger level. Supported: debug/info/success/warning/error/fatal [$KS_LOGGER] (default \"info\")",
         "      --server string         Backend discovery server URL",
         "",
-        "Use \"kubescape [command] --help\" for more information about a command."
+        "Use \"kubescape [command] --help\" for more information about a command.",
+        "{\"level\":\"info\",\"ts\":\"2025-03-26T22:20:49Z\",\"msg\":\"Received interrupt signal, exiting...\"}"
     ],
     "kubeval": [
         "Validate a Kubernetes YAML file against the relevant schema",
@@ -3525,7 +3526,7 @@
         "      --version                               version for kubeval"
     ],
     "lightning-flow-scanner": [
-        " \u203a   Warning: @salesforce/cli update available from 2.78.3 to 2.80.12.",
+        " \u203a   Warning: @salesforce/cli update available from 2.78.3 to 2.81.9.",
         "Find and fix potential bugs in Salesforce flows.",
         "",
         "USAGE",
@@ -8242,7 +8243,7 @@
         "@typescript-eslint/unbound-method                  typescript   Best Practices    Best Practices                                    eslint-typescript"
     ],
     "sfdx-scanner-apex": [
-        " \u203a   Warning: @salesforce/cli update available from 2.78.3 to 2.80.12.",
+        " \u203a   Warning: @salesforce/cli update available from 2.78.3 to 2.81.9.",
         "Scan a codebase with all the rules in the registry, or use parameters to filter the rules based on rulename, category, or ruleset.",
         "",
         "USAGE",
@@ -8296,7 +8297,7 @@
         "COMMANDS",
         "  scanner run dfa  Scan codebase with all DFA rules by default.",
         "",
-        " \u203a   Warning: @salesforce/cli update available from 2.78.3 to 2.80.12.",
+        " \u203a   Warning: @salesforce/cli update available from 2.78.3 to 2.81.9.",
         " \u203a   Warning: Plugin @salesforce/sfdx-scanner (4.10.0) differs from the version",
         " \u203a    specified by sf (4.9.0)",
         "Warning: We plan to stop supporting v4.x of Code Analyzer in the coming months. We highly recommend that you start using v5.x, which is currently in Beta. For information on v5.x, see https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/code-analyzer.html.",
@@ -8519,7 +8520,7 @@
         " UnimplementedTypeRule                                  apex        Performance                          sfge              N      N"
     ],
     "sfdx-scanner-aura": [
-        " \u203a   Warning: @salesforce/cli update available from 2.78.3 to 2.80.12.",
+        " \u203a   Warning: @salesforce/cli update available from 2.78.3 to 2.81.9.",
         "Scan a codebase with all the rules in the registry, or use parameters to filter the rules based on rulename, category, or ruleset.",
         "",
         "USAGE",
@@ -8573,7 +8574,7 @@
         "COMMANDS",
         "  scanner run dfa  Scan codebase with all DFA rules by default.",
         "",
-        " \u203a   Warning: @salesforce/cli update available from 2.78.3 to 2.80.12.",
+        " \u203a   Warning: @salesforce/cli update available from 2.78.3 to 2.81.9.",
         " \u203a   Warning: Plugin @salesforce/sfdx-scanner (4.10.0) differs from the version",
         " \u203a    specified by sf (4.9.0)",
         "Warning: We plan to stop supporting v4.x of Code Analyzer in the coming months. We highly recommend that you start using v5.x, which is currently in Beta. For information on v5.x, see https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/code-analyzer.html.",
@@ -8796,7 +8797,7 @@
         " UnimplementedTypeRule                                  apex        Performance                          sfge              N      N"
     ],
     "sfdx-scanner-lwc": [
-        " \u203a   Warning: @salesforce/cli update available from 2.78.3 to 2.80.12.",
+        " \u203a   Warning: @salesforce/cli update available from 2.78.3 to 2.81.9.",
         "Scan a codebase with all the rules in the registry, or use parameters to filter the rules based on rulename, category, or ruleset.",
         "",
         "USAGE",
@@ -8850,7 +8851,7 @@
         "COMMANDS",
         "  scanner run dfa  Scan codebase with all DFA rules by default.",
         "",
-        " \u203a   Warning: @salesforce/cli update available from 2.78.3 to 2.80.12.",
+        " \u203a   Warning: @salesforce/cli update available from 2.78.3 to 2.81.9.",
         " \u203a   Warning: Plugin @salesforce/sfdx-scanner (4.10.0) differs from the version",
         " \u203a    specified by sf (4.9.0)",
         "Warning: We plan to stop supporting v4.x of Code Analyzer in the coming months. We highly recommend that you start using v5.x, which is currently in Beta. For information on v5.x, see https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/code-analyzer.html.",
