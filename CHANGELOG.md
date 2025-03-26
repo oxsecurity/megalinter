@@ -35,6 +35,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [phpstan](https://phpstan.org/) from 2.1.8 to **2.1.10** on 2025-03-23
   - [checkov](https://www.checkov.io/) from 3.2.390 to **3.2.391** on 2025-03-23
   - [checkov](https://www.checkov.io/) from 3.2.391 to **3.2.392** on 2025-03-25
+  - [vale](https://vale.sh/) from 3.9.4 to **3.10.0** on 2025-03-25
 <!-- linter-versions-end -->
 
 ## [v8.5.0] - 2024-03-23
