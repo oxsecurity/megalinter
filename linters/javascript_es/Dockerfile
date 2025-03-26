@@ -71,7 +71,7 @@ ARG NPM_ESLINT_PLUGIN_VUE_VERSION=10.0.0
 # renovate: datasource=npm depName=@babel/core
 ARG NPM_BABEL_CORE_VERSION=7.26.10
 # renovate: datasource=npm depName=@babel/eslint-parser
-ARG NPM_BABEL_ESLINT_PARSER_VERSION=7.26.10
+ARG NPM_BABEL_ESLINT_PARSER_VERSION=7.27.0
 # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
 ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
 #ARG__END
