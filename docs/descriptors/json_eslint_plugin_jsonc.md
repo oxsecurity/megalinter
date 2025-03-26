@@ -15,7 +15,7 @@ description: How to use eslint-plugin-jsonc (configure, ignore files, ignore err
 
 _This linter has been disabled in this version_
 
-_Disabled reason: Bug in eslint-plugin-jsonc: <https://github.com/ota-meshi/eslint-plugin-jsonc/issues/328>_
+_Disabled reason: Bug in eslint-plugin-jsonc: https://github.com/ota-meshi/eslint-plugin-jsonc/issues/328_
 
 **eslint-plugin-jsonc** uses eslint to lint [**json**](https://www.json.org/), [**jsonc**](https://github.com/microsoft/node-jsonc-parser) and [**json5**](https://json5.org/) (extended JSON with comments & more).
 
@@ -235,7 +235,7 @@ Miscellaneous:
 # renovate: datasource=npm depName=eslint
 ARG NPM_ESLINT_VERSION=8.57.1
 # renovate: datasource=npm depName=eslint-plugin-jsonc
-ARG NPM_ESLINT_PLUGIN_JSONC_VERSION=2.19.1
+ARG NPM_ESLINT_PLUGIN_JSONC_VERSION=2.20.0
 # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
 ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
 ```
