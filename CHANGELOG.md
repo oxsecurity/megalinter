@@ -43,6 +43,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.34.1 to **0.34.44** on 2025-03-26
   - [checkov](https://www.checkov.io/) from 3.2.392 to **3.2.393** on 2025-03-26
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.17.5 to **8.18.0** on 2025-03-26
+  - [stylelint](https://stylelint.io) from 16.16.0 to **16.17.0** on 2025-03-26
+  - [rubocop](https://rubocop.org/) from 1.74.0 to **1.75.1** on 2025-03-26
 <!-- linter-versions-end -->
 
 ## [v8.5.0] - 2024-03-23
