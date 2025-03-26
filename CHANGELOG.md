@@ -36,6 +36,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 3.2.390 to **3.2.391** on 2025-03-23
   - [checkov](https://www.checkov.io/) from 3.2.391 to **3.2.392** on 2025-03-25
   - [vale](https://vale.sh/) from 3.9.4 to **3.10.0** on 2025-03-25
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.32.0 to **1.32.1** on 2025-03-26
+  - [phpstan](https://phpstan.org/) from 2.1.10 to **2.1.11** on 2025-03-26
+  - [psalm](https://psalm.dev) from Psalm.6.9.4@ to **Psalm.6.9.5@** on 2025-03-26
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.397 to **1.1.398** on 2025-03-26
 <!-- linter-versions-end -->
 
 ## [v8.5.0] - 2024-03-23
