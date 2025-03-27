@@ -391,7 +391,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=@ls-lint/ls-lint
-          ARG NPM_LS_LINT_LS_LINT_VERSION=2.2.3
+          ARG NPM_LS_LINT_LS_LINT_VERSION=2.3.0
       npm:
         - "@ls-lint/ls-lint@${NPM_LS_LINT_LS_LINT_VERSION}"
 
