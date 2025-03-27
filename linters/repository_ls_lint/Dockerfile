@@ -49,7 +49,7 @@ FROM python:3.12.8-alpine3.21
 #############################################################################################
 #ARG__START
 # renovate: datasource=npm depName=@ls-lint/ls-lint
-ARG NPM_LS_LINT_LS_LINT_VERSION=2.2.3
+ARG NPM_LS_LINT_LS_LINT_VERSION=2.3.0
 #ARG__END
 
 ####################
