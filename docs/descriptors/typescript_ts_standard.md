@@ -128,12 +128,12 @@ Flags (advanced):
 ```dockerfile
 # Parent descriptor install
 # renovate: datasource=npm depName=typescript
-ARG NPM_TYPESCRIPT_VERSION=5.7.3
+ARG NPM_TYPESCRIPT_VERSION=5.8.2
 # Linter install
 # renovate: datasource=npm depName=ts-standard
 ARG NPM_TS_STANDARD_VERSION=12.0.2
 ```
 
 - NPM packages (node.js):
-  - [typescript@5.7.3](https://www.npmjs.com/package/typescript/v/5.7.3)
+  - [typescript@5.8.2](https://www.npmjs.com/package/typescript/v/5.8.2)
   - [ts-standard@12.0.2](https://www.npmjs.com/package/ts-standard/v/12.0.2)
