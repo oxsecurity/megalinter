@@ -94,7 +94,7 @@ ARG PIP_BANDIT_VERSION=1.8.3
 # renovate: datasource=pypi depName=bandit_sarif_formatter
 ARG PIP_BANDIT_SARIF_FORMATTER_VERSION=1.1.1
 # renovate: datasource=pypi depName=checkov
-ARG PIP_CHECKOV_VERSION=3.2.393
+ARG PIP_CHECKOV_VERSION=3.2.394
 # renovate: datasource=nuget depName=Microsoft.CST.DevSkim.CLI
 ARG REPOSITORY_DEVSKIM_VERSION=1.0.52
 # renovate: datasource=github-tags depName=anchore/grype
