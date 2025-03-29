@@ -3681,7 +3681,7 @@
 <p><a href="https://github.com/loeffel-io/ls-lint"><img alt="GitHub stars" src="https://img.shields.io/github/stars/loeffel-io/ls-lint?cacheSeconds=3600"/></a> <a href="https://github.com/loeffel-io/ls-lint/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/loeffel-io/ls-lint?sort=semver"/></a> <a href="https://github.com/loeffel-io/ls-lint/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/loeffel-io/ls-lint"/></a> <a href="https://github.com/loeffel-io/ls-lint/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/loeffel-io/ls-lint"/></a> <a href="https://github.com/loeffel-io/ls-lint/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/loeffel-io/ls-lint"/></a></p>
 <h2 id="ls-lint-documentation">ls-lint documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>2.2.3</strong></li>
+<li>Version in MegaLinter: <strong>2.3.0</strong></li>
 <li>Visit <a href="https://ls-lint.org/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://ls-lint.org/2.2/configuration/the-rules.html" target="_blank">Index of problems detected by ls-lint</a></li>
 </ul>
@@ -3911,11 +3911,14 @@
 <pre><code class="language-shell">ls-lint --workdir src
 </code></pre>
 <h3 id="help-content">Help content</h3>
-<pre><code class="language-shell">Usage of /node-deps/node_modules/@ls-lint/ls-lint/bin/ls-lint-linux-amd64:
+<pre><code class="language-shell">ls-lint [options] [file|dir]*
+Options:
   -config value
       ls-lint config file path(s)
   -debug
       write debug informations to stdout
+  -error-output-format string
+      use a specific error output format (text, json) (default "text")
   -version
       prints version information for ls-lint
   -warn
@@ -3928,11 +3931,11 @@
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile"># renovate: datasource=npm depName=@ls-lint/ls-lint
-ARG NPM_LS_LINT_LS_LINT_VERSION=2.2.3
+ARG NPM_LS_LINT_LS_LINT_VERSION=2.3.0
 </code></pre>
 <ul>
 <li>NPM packages (node.js):<ul>
-<li><a href="https://www.npmjs.com/package/@ls-lint/ls-lint/v/2.2.3">@ls-lint/ls-lint@2.2.3</a></li>
+<li><a href="https://www.npmjs.com/package/@ls-lint/ls-lint/v/2.3.0">@ls-lint/ls-lint@2.3.0</a></li>
 </ul>
 </li>
 </ul>
