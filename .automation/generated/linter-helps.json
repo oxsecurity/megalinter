@@ -3495,7 +3495,7 @@
         "      --server string         Backend discovery server URL",
         "",
         "Use \"kubescape [command] --help\" for more information about a command.",
-        "{\"level\":\"info\",\"ts\":\"2025-03-26T23:39:21Z\",\"msg\":\"Received interrupt signal, exiting...\"}"
+        "{\"level\":\"info\",\"ts\":\"2025-03-29T18:50:54Z\",\"msg\":\"Received interrupt signal, exiting...\"}"
     ],
     "kubeval": [
         "Validate a Kubernetes YAML file against the relevant schema",
@@ -3556,11 +3556,14 @@
         "you could try \u2018??lintr\u2019"
     ],
     "ls-lint": [
-        "Usage of /node-deps/node_modules/@ls-lint/ls-lint/bin/ls-lint-linux-amd64:",
+        "ls-lint [options] [file|dir]*",
+        "Options:",
         "  -config value",
         "      ls-lint config file path(s)",
         "  -debug",
         "      write debug informations to stdout",
+        "  -error-output-format string",
+        "      use a specific error output format (text, json) (default \"text\")",
         "  -version",
         "      prints version information for ls-lint",
         "  -warn",

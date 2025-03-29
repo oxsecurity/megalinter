@@ -15,7 +15,7 @@ description: How to use ls-lint (configure, ignore files, ignore errors, help & 
 
 ## ls-lint documentation
 
-- Version in MegaLinter: **2.2.3**
+- Version in MegaLinter: **2.3.0**
 - Visit [Official Web Site](https://ls-lint.org/){target=_blank}
 - See [Index of problems detected by ls-lint](https://ls-lint.org/2.2/configuration/the-rules.html){target=_blank}
 
@@ -94,11 +94,14 @@ ls-lint --workdir src
 ### Help content
 
 ```shell
-Usage of /node-deps/node_modules/@ls-lint/ls-lint/bin/ls-lint-linux-amd64:
+ls-lint [options] [file|dir]*
+Options:
   -config value
       ls-lint config file path(s)
   -debug
       write debug informations to stdout
+  -error-output-format string
+      use a specific error output format (text, json) (default "text")
   -version
       prints version information for ls-lint
   -warn
@@ -112,8 +115,8 @@ Usage of /node-deps/node_modules/@ls-lint/ls-lint/bin/ls-lint-linux-amd64:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=@ls-lint/ls-lint
-ARG NPM_LS_LINT_LS_LINT_VERSION=2.2.3
+ARG NPM_LS_LINT_LS_LINT_VERSION=2.3.0
 ```
 
 - NPM packages (node.js):
-  - [@ls-lint/ls-lint@2.2.3](https://www.npmjs.com/package/@ls-lint/ls-lint/v/2.2.3)
+  - [@ls-lint/ls-lint@2.3.0](https://www.npmjs.com/package/@ls-lint/ls-lint/v/2.3.0)
