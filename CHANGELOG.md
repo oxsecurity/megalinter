@@ -27,6 +27,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Flavors
 
 - CI
+  - Initial Renovate automerge configuration, by @echoix in <https://github.com/oxsecurity/megalinter/pull/5057>
 
 - mega-linter-runner
 
