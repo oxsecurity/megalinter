@@ -54,6 +54,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.60.0 to **0.61.0** on 2025-03-29
   - [trivy](https://aquasecurity.github.io/trivy/) from 0.60.0 to **0.61.0** on 2025-03-29
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.88.18 to **3.88.20** on 2025-03-29
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 4.10.0 to **4.11.0** on 2025-03-29
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 4.10.0 to **4.11.0** on 2025-03-29
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 4.10.0 to **4.11.0** on 2025-03-29
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.18.0 to **8.18.1** on 2025-03-29
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.55.1 to **0.56.0** on 2025-03-29
 <!-- linter-versions-end -->
 
 ## [v8.5.0] - 2024-03-23
