@@ -16,7 +16,8 @@
         ".vscode",
         "lib",
         "misspell",
-        "report"
+        "report",
+        ".lycheeignore"
     ],
     "ignoreWords": [
         "ARGTOP",
@@ -158,7 +159,7 @@
         "qedhere",
         "readdir-scoped-modules",
         "rechoir",
-        "repositoryformatversion",
+        "repolinter",
         "rerunfailures",
         "reusify",
         "rimraf",
@@ -716,6 +717,7 @@
         "datasource",
         "dateformat",
         "davidjeddy",
+        "dclint",
         "dearmor",
         "debugent",
         "debuglog",
@@ -1177,6 +1179,7 @@
         "owasp",
         "oxsecurity",
         "packagename",
+        "packagist",
         "pagebreak",
         "pagelen",
         "pageref",
@@ -1564,6 +1567,7 @@
         "xmlwriter",
         "xrange",
         "xtest",
+        "yxtay",
         "yamllint",
         "yann",
         "yannh",
@@ -1572,6 +1576,7 @@
         "yargs",
         "yoheimuta",
         "yosay",
+        "yxtay",
         "zaach",
         "zricethezav"
     ]

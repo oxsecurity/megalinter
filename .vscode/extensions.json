@@ -1,16 +1,16 @@
 {
-    // Extension completed by MegaLinter
-    "recommendations": [
-        "mhutchie.git-graph",
-        "ms-python.python",
-        "stylelint.vscode-stylelint",
-        "foxundermoon.shell-format",
-        "matangover.mypy",
-        "streetsidesoftware.code-spell-checker",
-        "esbenp.prettier-vscode",
-        "exiasr.hadolint",
-        "timonwong.shellcheck",
-        "hbenl.vscode-test-explorer",
-        "LittleFoxTeam.vscode-python-test-adapter"
-    ]
-} 
+  // Extension completed by MegaLinter
+  "recommendations": [
+    "mhutchie.git-graph",
+    "ms-python.python",
+    "stylelint.vscode-stylelint",
+    "foxundermoon.shell-format",
+    "matangover.mypy",
+    "streetsidesoftware.code-spell-checker",
+    "esbenp.prettier-vscode",
+    "exiasr.hadolint",
+    "timonwong.shellcheck",
+    "hbenl.vscode-test-explorer",
+    "LittleFoxTeam.vscode-python-test-adapter"
+  ]
+}

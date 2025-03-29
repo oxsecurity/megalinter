@@ -9,7 +9,8 @@ file_extensions:
   - ".saas"
 linters:
   # StyleLint
-  - linter_name: stylelint
+  - class: StyleLintLinter
+    linter_name: stylelint
     name: CSS_STYLELINT
     linter_url: https://stylelint.io
     linter_rules_url: https://stylelint.io/user-guide/rules/list
@@ -22,6 +23,10 @@ linters:
     config_file_name: .stylelintrc.json
     cli_config_arg_name: "--config"
     cli_lint_fix_arg_name: "--fix"
+    cli_lint_errors_count: regex_number
+    cli_lint_errors_regex: "([0-9]+) errors"
+    cli_lint_warnings_count: regex_number
+    cli_lint_warnings_regex: "([0-9]+) warnings"
     examples:
       - "stylelint myfile.css"
       - "stylelint --config .stylelintrc.json myfile.css myfile2.css myfile3.css"
@@ -30,7 +35,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=stylelint
-          ARG NPM_STYLELINT_VERSION=16.14.1
+          ARG NPM_STYLELINT_VERSION=16.17.0
         - |-
           # renovate: datasource=npm depName=stylelint-config-standard
           ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=37.0.0
@@ -39,7 +44,7 @@ linters:
           ARG NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION=12.1.0
         - |-
           # renovate: datasource=npm depName=stylelint-scss
-          ARG NPM_STYLELINT_SCSS_VERSION=6.11.0
+          ARG NPM_STYLELINT_SCSS_VERSION=6.11.1
         - |-
           # renovate: datasource=pypi depName=cpplint
           ARG PIP_CPPLINT_VERSION=2.0.0

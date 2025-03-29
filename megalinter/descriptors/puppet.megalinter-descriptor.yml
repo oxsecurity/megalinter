@@ -23,7 +23,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=rubygems depName=puppet-lint
-          ARG GEM_PUPPET_LINT_VERSION=4.2.4
+          ARG GEM_PUPPET_LINT_VERSION=4.3.0
       gem:
         - puppet-lint:${GEM_PUPPET_LINT_VERSION}
     ide:

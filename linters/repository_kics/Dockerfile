@@ -12,7 +12,7 @@
 #############################################################################################
 #ARGTOP__START
 # renovate: datasource=docker depName=checkmarx/kics
-ARG REPOSITORY_KICS_VERSION=v2.1.3-alpine
+ARG REPOSITORY_KICS_VERSION=v2.1.6-alpine
 #ARGTOP__END
 
 #############################################################################################
@@ -25,7 +25,7 @@ FROM checkmarx/kics:${REPOSITORY_KICS_VERSION} AS kics
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.5.30 AS uv
+FROM ghcr.io/astral-sh/uv:0.6.10 AS uv
 FROM python:3.12.8-alpine3.21 AS build-ml-core
 WORKDIR /
 COPY --from=uv /uv /uvx /bin/

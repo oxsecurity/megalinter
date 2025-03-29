@@ -19,7 +19,7 @@ from redis import Redis
 
 
 def build_markdown_summary(reporter_self, action_run_url=""):
-    table_header = ["Descriptor", "Linter", "Files", "Fixed", "Errors"]
+    table_header = ["Descriptor", "Linter", "Files", "Fixed", "Errors", "Warnings"]
     if reporter_self.master.show_elapsed_time is True:
         table_header += ["Elapsed time"]
     table_data_raw = [table_header]
@@ -51,6 +51,11 @@ def build_markdown_summary(reporter_self, action_run_url=""):
                     if linter.number_errors > 0
                     else "no"
                 )
+                warnings_cell = (
+                    log_link(f"{linter.total_number_warnings}", action_run_url)
+                    if linter.total_number_warnings > 0
+                    else "no"
+                )
             # Count using files
             else:
                 found = str(len(linter.files))
@@ -59,12 +64,18 @@ def build_markdown_summary(reporter_self, action_run_url=""):
                     if linter.number_errors > 0
                     else linter.number_errors
                 )
+                warnings_cell = (
+                    log_link(f"{linter.total_number_warnings}", action_run_url)
+                    if linter.total_number_warnings > 0
+                    else linter.total_number_warnings
+                )
             table_line = [
                 first_col,
                 linter_link,
                 found,
                 nb_fixed_cell,
                 errors_cell,
+                warnings_cell,
             ]
             if reporter_self.master.show_elapsed_time is True:
                 table_line += [str(round(linter.elapsed_time_s, 2)) + "s"]

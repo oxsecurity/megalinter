@@ -37,8 +37,8 @@ description: eslint, ts-standard, prettier are available to analyze TYPESCRIPT f
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=typescript
-ARG NPM_TYPESCRIPT_VERSION=5.7.3
+ARG NPM_TYPESCRIPT_VERSION=5.8.2
 ```
 
 - NPM packages (node.js):
-  - [typescript@${NPM_TYPESCRIPT_VERSION}](https://www.npmjs.com/package/typescript@${NPM_TYPESCRIPT_VERSION})
+  - [typescript@5.8.2](https://www.npmjs.com/package/typescript/v/5.8.2)

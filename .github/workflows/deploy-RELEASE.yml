@@ -55,9 +55,9 @@ jobs:
       ########################################################
       # Publish updated version of mega-linter-runner on NPM #
       ########################################################
-      - uses: actions/setup-node@v4.2.0
+      - uses: actions/setup-node@v4.3.0
         with:
-          node-version: "20.x"
+          node-version: "22.x"
           registry-url: "https://registry.npmjs.org"
       - run: cd mega-linter-runner && npm install
       - run: cd mega-linter-runner && npm publish || echo "mega-linter-runner not published"
@@ -192,7 +192,7 @@ jobs:
       # - run: mkdocs gh-deploy --force
       - run: |
           git config --global user.name megalinter-bot
-          git config --global user.email nicolas.vuillamy@ox.security
+          git config --global user.email 129584137+megalinter-bot@users.noreply.github.com
           git stash
       - name: Checkout previous tag
         run: |

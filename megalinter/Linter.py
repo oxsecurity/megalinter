@@ -129,6 +129,8 @@ class Linter:
         self.cli_lint_extra_args_after = []
         self.cli_lint_errors_count = None
         self.cli_lint_errors_regex = None
+        self.cli_lint_warnings_count = None
+        self.cli_lint_warnings_regex = None
         # Default arg name for configurations to use in linter version call
         self.cli_version_arg_name = "--version"
         self.cli_version_extra_args = []  # Extra arguments to send to cli everytime
@@ -376,6 +378,7 @@ class Linter:
             self.return_code = 0
             self.number_errors = 0
             self.total_number_errors = 0
+            self.total_number_warnings = 0
             self.number_fixed = 0
             self.files_lint_results = []
             self.start_perf = None
@@ -828,6 +831,9 @@ class Linter:
                 index = index + 1
                 return_code, stdout = self.process_linter(file)
                 file_errors_number = 0
+                file_warnings_number = 0
+                file_warnings_number = self.get_total_number_warnings(stdout)
+                self.total_number_warnings += file_warnings_number
                 if return_code > 0:
                     file_status = "error"
                     self.status = "warning" if self.disable_errors is True else "error"
@@ -835,23 +841,34 @@ class Linter:
                         self.return_code if self.disable_errors is True else 1
                     )
                     self.number_errors += 1
+                    # Calls external functions to count the number of warnings and errors
                     file_errors_number = self.get_total_number_errors(stdout)
+
                     self.total_number_errors += file_errors_number
                 self.update_files_lint_results(
-                    [file], return_code, file_status, stdout, file_errors_number
+                    [file],
+                    return_code,
+                    file_status,
+                    stdout,
+                    file_errors_number,
+                    file_warnings_number,
                 )
         else:
             # Lint all workspace in one command
             return_code, stdout = self.process_linter()
             self.stdout = stdout
+            # Count warnings regardless of return code
+            self.total_number_warnings += self.get_total_number_warnings(stdout)
             if return_code != 0:
                 self.status = "warning" if self.disable_errors is True else "error"
                 self.return_code = 0 if self.disable_errors is True else 1
                 self.number_errors += 1
                 self.total_number_errors += self.get_total_number_errors(stdout)
+            elif self.total_number_warnings > 0:
+                self.status = "warning"
             # Build result for list of files
             if self.cli_lint_mode == "list_of_files":
-                self.update_files_lint_results(self.files, None, None, None, None)
+                self.update_files_lint_results(self.files, None, None, None, None, None)
 
         # Set return code to 0 if failures in this linter must not make the MegaLinter run fail
         if self.return_code != 0:
@@ -884,6 +901,7 @@ class Linter:
                 reporter.produce_report()
             except Exception as e:
                 logging.error("Unable to process reporter " + reporter.name + str(e))
+
         return self
 
     def replace_vars(self, variables):
@@ -900,7 +918,13 @@ class Linter:
         return variables_with_replacements
 
     def update_files_lint_results(
-        self, linted_files, return_code, file_status, stdout, file_errors_number
+        self,
+        linted_files,
+        return_code,
+        file_status,
+        stdout,
+        file_errors_number,
+        file_warnings_number,
     ):
         if self.try_fix is True:
             updated_files = utils.list_updated_files(self.github_workspace)
@@ -924,6 +948,7 @@ class Linter:
                     "stdout": stdout,
                     "fixed": fixed,
                     "errors_number": file_errors_number,
+                    "warnings_number": file_warnings_number,
                 }
             ]
 
@@ -1388,6 +1413,7 @@ class Linter:
     # Find number of errors in linter stdout log
     def get_total_number_errors(self, stdout: str):
         total_errors = 0
+
         # Count using SARIF output file
         if self.output_sarif is True:
             try:
@@ -1437,17 +1463,17 @@ class Linter:
                     + stdout
                 )
                 return total_errors
-        # Get number with a single regex.
+        # Get number with a single regex. Used when linter prints out Found _ errors
         elif self.cli_lint_errors_count == "regex_number":
             reg = self.get_regex(self.cli_lint_errors_regex)
             m = re.search(reg, utils.normalize_log_string(stdout))
             if m:
                 total_errors = int(m.group(1))
-        # Count the number of occurrences of a regex corresponding to an error in linter log
+        # Count the number of occurrences of a regex corresponding to an error in linter log (parses linter log)
         elif self.cli_lint_errors_count == "regex_count":
             reg = self.get_regex(self.cli_lint_errors_regex)
             total_errors = len(re.findall(reg, utils.normalize_log_string(stdout)))
-        # Sum of all numbers found in linter logs with a regex
+        # Sum of all numbers found in linter logs with a regex. Found when each file prints out total number of errors
         elif self.cli_lint_errors_count == "regex_sum":
             reg = self.get_regex(self.cli_lint_errors_regex)
             matches = re.findall(reg, utils.normalize_log_string(stdout))
@@ -1477,10 +1503,47 @@ class Linter:
                 f"Unable to get number of errors with {self.cli_lint_errors_count} "
                 f"and {str(self.cli_lint_errors_regex)}"
             )
+
+        # If no regex is defined, return 0 errors if there is a success or 1 error if there are any
         if self.status == "success":
             return 0
         else:
             return 1
+
+    # Find number of warnings in linter stdout log
+    def get_total_number_warnings(self, stdout: str):
+        total_warnings = None
+
+        # Get number with a single regex.
+        if self.cli_lint_warnings_count == "regex_number":
+            reg = self.get_regex(self.cli_lint_warnings_regex)
+            m = re.search(reg, utils.normalize_log_string(stdout))
+            if m:
+                total_warnings = int(m.group(1))
+        # Count the number of occurrences of a regex corresponding to an error in linter log (parses linter log)
+        elif self.cli_lint_warnings_count == "regex_count":
+            reg = self.get_regex(self.cli_lint_warnings_regex)
+            total_warnings = len(re.findall(reg, utils.normalize_log_string(stdout)))
+        # Sum of all numbers found in linter logs with a regex. Found when each file prints out total number of errors
+        elif self.cli_lint_warnings_count == "regex_sum":
+            reg = self.get_regex(self.cli_lint_warnings_regex)
+            matches = re.findall(reg, utils.normalize_log_string(stdout))
+            total_warnings = sum(int(m) for m in matches)
+        # Count all lines of the linter log
+        elif self.cli_lint_warnings_count == "total_lines":
+            total_warnings = sum(
+                not line.isspace() and line != "" for line in stdout.splitlines()
+            )
+        if self.cli_lint_warnings_count is not None and total_warnings is None:
+            logging.warning(
+                f"Unable to get number of warnings with {self.cli_lint_warnings_count} "
+                f"and {str(self.cli_lint_warnings_regex)}"
+            )
+
+        if total_warnings is None:
+            total_warnings = 0
+
+        return total_warnings
 
     # Build the CLI command to get linter version (can be overridden if --version is not the way to get the version)
     def build_version_command(self):
@@ -1505,8 +1568,8 @@ class Linter:
     def complete_text_reporter_report(self, _reporter_self):
         return []
 
-    def pre_test(self):
+    def pre_test(self, test_name):
         pass
 
-    def post_test(self):
+    def post_test(self, test_name):
         pass

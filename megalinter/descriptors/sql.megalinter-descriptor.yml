@@ -49,6 +49,10 @@ linters:
     linter_rules_inline_disable_url: https://github.com/tsqllint/tsqllint#disabling-rules-with-inline-comments
     config_file_name: ".tsqllintrc"
     cli_lint_mode: list_of_files
+    cli_lint_errors_count: regex_number
+    cli_lint_errors_regex: "([0-9]+) Errors"
+    cli_lint_warnings_count: regex_number
+    cli_lint_warnings_regex: "([0-9]+) Warnings"
     cli_config_arg_name: "--config"
     cli_help_arg_name: "--help"
     cli_version_arg_name: "--version"

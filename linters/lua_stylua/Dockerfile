@@ -24,7 +24,7 @@
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.5.30 AS uv
+FROM ghcr.io/astral-sh/uv:0.6.10 AS uv
 FROM python:3.12.8-alpine3.21 AS build-ml-core
 WORKDIR /
 COPY --from=uv /uv /uvx /bin/
@@ -51,7 +51,7 @@ FROM python:3.12.8-alpine3.21
 # renovate: datasource=crate depName=stylua
 ARG CARGO_STYLUA_VERSION=2.0.0
 # renovate: datasource=github-tags depName=rust-lang/rust
-ARG RUST_RUST_VERSION=1.84.1
+ARG RUST_RUST_VERSION=1.85.1
 #ARG__END
 
 ####################

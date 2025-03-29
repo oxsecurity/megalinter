@@ -24,7 +24,7 @@
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.5.30 AS uv
+FROM ghcr.io/astral-sh/uv:0.6.10 AS uv
 FROM python:3.12.8-alpine3.21 AS build-ml-core
 WORKDIR /
 COPY --from=uv /uv /uvx /bin/
@@ -51,7 +51,7 @@ FROM python:3.12.8-alpine3.21
 # renovate: datasource=npm depName=eslint
 ARG NPM_ESLINT_VERSION=8.57.1
 # renovate: datasource=npm depName=eslint-plugin-jsonc
-ARG NPM_ESLINT_PLUGIN_JSONC_VERSION=2.19.1
+ARG NPM_ESLINT_PLUGIN_JSONC_VERSION=2.20.0
 # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
 ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
 #ARG__END

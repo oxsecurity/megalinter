@@ -19,7 +19,7 @@ If you find it too harsh, you may define `PYTHON_BANDIT_DISABLE_ERRORS: true` in
 
 ## bandit documentation
 
-- Version in MegaLinter: **1.8.2**
+- Version in MegaLinter: **1.8.3**
 - Visit [Official Web Site](https://bandit.readthedocs.io/en/latest/){target=_blank}
 - See [How to configure bandit rules](https://bandit.readthedocs.io/en/latest/config.html#){target=_blank}
   - If custom `.bandit.yml` config file isn't found, [.bandit.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.bandit.yml){target=_blank} will be used
@@ -68,7 +68,7 @@ This linter is available in the following flavors
 |                                                                         <!-- -->                                                                         | Flavor                                                   | Description                         | Embedded linters |                                                                                                                                                                                         Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------|:------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)     | Default MegaLinter Flavor           |       125        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)     | Optimized for PYTHON based projects |        62        |     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)     | Optimized for PYTHON based projects |        63        |     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://megalinter.io/beta/flavors/security/) | Optimized for security              |        24        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
 
 ## Behind the scenes
@@ -266,10 +266,11 @@ The following tests were discovered and loaded:
   B611  django_rawsql_used
   B612  logging_config_insecure_listen
   B613  trojansource
-  B614  pytorch_load_save
+  B614  pytorch_load
   B701  jinja2_autoescape_false
   B702  use_of_mako_templates
   B703  django_mark_safe
+  B704  markupsafe_markup_xss
 ```
 
 ### Installation on mega-linter Docker image
@@ -277,12 +278,12 @@ The following tests were discovered and loaded:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=bandit
-ARG PIP_BANDIT_VERSION=1.8.2
+ARG PIP_BANDIT_VERSION=1.8.3
 # renovate: datasource=pypi depName=bandit_sarif_formatter
 ARG PIP_BANDIT_SARIF_FORMATTER_VERSION=1.1.1
 ```
 
 - PIP packages (Python):
-  - [bandit==${PIP_BANDIT_VERSION}](https://pypi.org/project/bandit/${PIP_BANDIT_VERSION})
-  - [bandit_sarif_formatter==${PIP_BANDIT_SARIF_FORMATTER_VERSION}](https://pypi.org/project/bandit_sarif_formatter/${PIP_BANDIT_SARIF_FORMATTER_VERSION})
-  - [bandit[toml]==${PIP_BANDIT_VERSION}](https://pypi.org/project/bandit[toml]/${PIP_BANDIT_VERSION})
+  - [bandit==1.8.3](https://pypi.org/project/bandit/1.8.3)
+  - [bandit_sarif_formatter==1.1.1](https://pypi.org/project/bandit_sarif_formatter/1.1.1)
+  - [bandit[toml]==1.8.3](https://pypi.org/project/bandit[toml]/1.8.3)

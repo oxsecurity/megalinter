@@ -23,22 +23,18 @@ git clone git@github.com:YOURNAMESPACE/megalinter.git
 
 ### 4. Test your changes
 
-#### 4.1 Gitpod
+#### 4.1 Visual Studio Code Dev Containers
 
-Use Gitpod for a cloud-based development environment:
+The Visual Studio Code Dev Containers extension lets you use a container as a full-featured development environment:
 
-1. Sign up for Gitpod: <https://gitpod.io>
-2. Fork the `megalinter` repository
-3. Open your fork in Gitpod: `https://gitpod.io/#https://github.com/username/megalinter`
-4. Create a new branch: `git checkout -b my-feature-branch`
-5. Make your changes and commit: `git add .` and `git commit -m "chore: description of changes"`
-6. Test all : `make tests` or `make tests-fast` for TDD mode
-7. Test with megalinter: `make megalinter-tests`
-8. Push your changes: `git push origin my-feature-branch`
-9. Create a pull request on GitHub
-10. Wait for a review
-
-Keep your Gitpod workspace synced with the main repository.
+1. Fork the `megalinter` repository
+2. [Open your fork](https://docs.github.com/en/codespaces/developing-in-a-codespace/rebuilding-the-container-in-a-codespace#rebuilding-a-container) in VS Code
+3. Create a new branch: `git checkout -b my-feature-branch`
+4. Make your changes and commit: `git add .` and `git commit -m "chore: description of changes"`
+5. [Run tests](https://code.visualstudio.com/docs/editor/testing#_automatic-test-discovery-in-testing-view)
+6. Push your changes: `git push origin my-feature-branch`
+7. Create a pull request on GitHub
+8. Wait for a review
 
 #### 4.2 Desktop
 
@@ -48,7 +44,7 @@ Run `make` for Makefile help. Initialize virtualenv and install dependencies wit
 
 You can lint with `make megalinter` (Incoming)
 
-If you need to run `build.sh` commands manually you need to run `source .venv/bin/activate` first.
+If you need to run `build.sh` commands manually you need to run `source .venv/bin/activate` (or `source .venv/Scripts/activate` on Windows) first.
 
 ### 5. Submit a pull request
 
@@ -168,7 +164,7 @@ If you are creating a linter or making changes to a linter, you may want to run 
 
 When running them, you may encounter several problems:
 
-* it's not installed on the machine locally and you don't want to install it.
+* It's not installed on the machine locally and you don't want to install it.
 * The OS doesn't allow the installation of the linter because it's not cross-platform.
 * The behavior between running it on the local machine (host) and the container is different.
 
@@ -178,9 +174,9 @@ For those cases, it's important to have the possibility to run the tests inside 
 2. Execute the following commands in a ***.sh** script. Example:
 
 ```bash
-docker buildx build -f linters/spell_misspell/Dockerfile . --tag spell_misspell
-TEST_KEYWORDS_TO_USE="spell_misspell"
-docker run -e TEST_CASE_RUN=true -e OUTPUT_DETAIL=detailed -e TEST_KEYWORDS="${TEST_KEYWORDS_TO_USE}" -e MEGALINTER_VOLUME_ROOT="." -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v $(pwd):/tmp/lint spell_misspell
+LINTER="spell_misspell"
+docker buildx build -f linters/$LINTER/Dockerfile . --tag $LINTER
+docker run -e TEST_CASE_RUN=true -e OUTPUT_DETAIL=detailed -e TEST_KEYWORDS="${LINTER}" -e MEGALINTER_VOLUME_ROOT="." -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v $(pwd):/tmp/lint $LINTER
 ```
 
 In the above example, it builds the **misspell** linter image and then runs its tests. To do the same for another linter you would have to:

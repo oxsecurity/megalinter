@@ -74,7 +74,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=dart-version depName=dart
-          ARG DART_VERSION='3.6.2'
+          ARG DART_VERSION='3.7.2'
         - |
           RUN wget --tries=5 https://storage.googleapis.com/dart-archive/channels/stable/release/${DART_VERSION}/sdk/dartsdk-linux-x64-release.zip -O - -q | unzip -q - \
               && mkdir -p /usr/lib/dart \

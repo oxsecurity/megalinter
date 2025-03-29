@@ -9,7 +9,7 @@ description: How to use puppet-lint (configure, ignore files, ignore errors, hel
 
 ## puppet-lint documentation
 
-- Version in MegaLinter: **4.2.4**
+- Version in MegaLinter: **4.3.0**
 - Visit [Official Web Site](http://puppet-lint.com/){target=_blank}
 - See [How to configure puppet-lint rules](https://github.com/puppetlabs/puppet-lint#configuration-file){target=_blank}
 - See [How to disable puppet-lint rules in files](http://puppet-lint.com/controlcomments/){target=_blank}
@@ -126,6 +126,7 @@ puppet-lint --fail-on-warnings --no-autoloader_layout-check --fix myfile.pp
     Checks:
         --only-checks CHECKS         A comma separated list of checks that should be run
         --ignore-paths PATHS         A comma separated list of patterns to ignore
+        --top-scope-variables VARS   A comma separated list of allowed top scope variables
         --no-arrow_on_right_operand_line-check
                                      Skip the arrow_on_right_operand_line check.
         --no-autoloader_layout-check Skip the autoloader_layout check.
@@ -188,6 +189,8 @@ puppet-lint --fail-on-warnings --no-autoloader_layout-check --fix myfile.pp
         --80chars-check              Enable the 80chars check.
         --no-arrow_alignment-check   Skip the arrow_alignment check.
         --no-hard_tabs-check         Skip the hard_tabs check.
+        --no-space_before_arrow-check
+                                     Skip the space_before_arrow check.
         --no-trailing_whitespace-check
                                      Skip the trailing_whitespace check.
         --no-legacy_facts-check      Skip the legacy_facts check.
@@ -199,8 +202,8 @@ puppet-lint --fail-on-warnings --no-autoloader_layout-check --fix myfile.pp
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=rubygems depName=puppet-lint
-ARG GEM_PUPPET_LINT_VERSION=4.2.4
+ARG GEM_PUPPET_LINT_VERSION=4.3.0
 ```
 
 - GEM packages (Ruby) :
-  - [puppet-lint:${GEM_PUPPET_LINT_VERSION}](https://rubygems.org/gems/puppet-lint:${GEM_PUPPET_LINT_VERSION})
+  - [puppet-lint:4.3.0](https://rubygems.org/gems/puppet-lint/versions/4.3.0)

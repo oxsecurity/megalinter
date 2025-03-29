@@ -11,7 +11,6 @@
     ':combinePatchMinorReleases',
     'npm:unpublishSafe',
     'preview:dockerVersions',
-    'schedule:daily',
     'group:unitTestNonMajor',
     ':enableVulnerabilityAlerts',
   ],
@@ -71,7 +70,8 @@
       customType: 'regex',
       description: 'Update dockerfile sections in .megalinter-descriptor.yml files',
       fileMatch: [
-        '(^|/).*constants\\.py$',
+        '(^|/).*megalinter(\\\\|/)constants\\.py$',
+        '(^|/).*\\.devcontainer(\\\\|/)Dockerfile$',
         '(^|/).*\\.megalinter-descriptor\\.ya?ml$',
       ],
       matchStrings: [

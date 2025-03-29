@@ -35,9 +35,9 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
       - name: Setup Node
-        uses: actions/setup-node@v4.2.0
+        uses: actions/setup-node@v4.3.0
         with:
-          node-version: "20.x"
+          node-version: "22.x"
       - name: Install dependencies
         run: cd mega-linter-runner && yarn install --frozen-lockfile && npm link
 

@@ -46,6 +46,7 @@ class ConsoleLinterReporter(Reporter):
         base_phrase = f"Linted [{self.master.descriptor_id}] files with [{self.master.linter_name}]"
         elapse = str(round(self.master.elapsed_time_s, 2)) + "s"
         total_errors = str(self.master.total_number_errors)
+        total_warnings = str(self.master.total_number_warnings)
         if self.master.return_code == 0 and self.master.status == "success":
             logging.info(
                 log_section_start(
@@ -58,7 +59,8 @@ class ConsoleLinterReporter(Reporter):
                 log_section_start(
                     f"processed-{self.master.name}",
                     c.yellow(
-                        f"✅ {base_phrase}: Found {total_errors} non blocking error(s) - ({elapse})"
+                        f"⚠️ {base_phrase}: Found {total_errors} non blocking error(s) "
+                        + f"and {total_warnings} non blocking warning(s) - ({elapse})"
                     ),
                 )
             )
@@ -67,7 +69,7 @@ class ConsoleLinterReporter(Reporter):
                 log_section_start(
                     f"processed-{self.master.name}",
                     c.red(
-                        f"❌ {base_phrase}: Found {total_errors} error(s) - ({elapse})"
+                        f"❌ {base_phrase}: Found {total_errors} error(s) and {total_warnings} warning(s) - ({elapse})"
                     ),
                 )
             )
@@ -124,7 +126,9 @@ class ConsoleLinterReporter(Reporter):
             file_nm = utils.normalize_log_string(res["file"])
             if self.master.cli_lint_mode == "file":
                 file_errors = str(res.get("errors_number", 0))
-                line = f"[{self.master.linter_name}] {file_nm} - {res['status'].upper()} - {file_errors} error(s)"
+                file_warnings = str(res.get("warnings_number", 0))
+                line = f"[{self.master.linter_name}] {file_nm} - {res['status'].upper()} - "
+                line += f"{file_errors} error(s) and {file_warnings} warning(s)"
             else:
                 line = f"[{self.master.linter_name}] {file_nm}"
             if res["fixed"] is True:
