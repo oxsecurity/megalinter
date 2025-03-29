@@ -45,6 +45,15 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.17.5 to **8.18.0** on 2025-03-26
   - [stylelint](https://stylelint.io) from 16.16.0 to **16.17.0** on 2025-03-26
   - [rubocop](https://rubocop.org/) from 1.74.0 to **1.75.1** on 2025-03-26
+  - [pmd](https://pmd.github.io/) from 7.11.0 to **7.12.0** on 2025-03-29
+  - [kubescape](https://github.com/kubescape/kubescape) from 3.0.32 to **3.0.34** on 2025-03-29
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.73.1 to **3.74.0** on 2025-03-29
+  - [psalm](https://psalm.dev) from Psalm.6.9.5@ to **Psalm.6.9.6@** on 2025-03-29
+  - [checkov](https://www.checkov.io/) from 3.2.393 to **3.2.394** on 2025-03-29
+  - [ls-lint](https://ls-lint.org/) from 2.2.3 to **2.3.0** on 2025-03-29
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.60.0 to **0.61.0** on 2025-03-29
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.60.0 to **0.61.0** on 2025-03-29
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.88.18 to **3.88.20** on 2025-03-29
 <!-- linter-versions-end -->
 
 ## [v8.5.0] - 2024-03-23
