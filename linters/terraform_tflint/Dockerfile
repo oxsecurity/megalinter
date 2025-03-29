@@ -12,7 +12,7 @@
 #############################################################################################
 #ARGTOP__START
 # renovate: datasource=docker depName=ghcr.io/terraform-linters/tflint
-ARG TERRAFORM_TFLINT_VERSION=0.55.1
+ARG TERRAFORM_TFLINT_VERSION=0.56.0
 #ARGTOP__END
 
 #############################################################################################
