@@ -120,9 +120,9 @@ ARG ALPINE_GLIBC_PACKAGE_VERSION=2.34-r0
 ARG POWERSHELL_VERSION=7.5.0
 
 # renovate: datasource=npm depName=@salesforce/cli
-ARG NPM_SALESFORCE_CLI_VERSION=2.78.3
+ARG NPM_SALESFORCE_CLI_VERSION=2.81.9
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
-ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.10.3
+ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.12.3
 # renovate: datasource=npm depName=sfdx-hardis
 ARG SFDX_HARDIS_VERSION=5.24.1
 # renovate: datasource=npm depName=typescript
@@ -337,7 +337,7 @@ ARG GEM_RUBOCOP_RAKE_VERSION=0.7.1
 # renovate: datasource=rubygems depName=rubocop-rspec
 ARG GEM_RUBOCOP_RSPEC_VERSION=3.5.0
 # renovate: datasource=npm depName=@salesforce/sfdx-scanner
-ARG SALESFORCE_SFDX_SCANNER_VERSION=4.10.0
+ARG SALESFORCE_SFDX_SCANNER_VERSION=4.11.0
 # renovate: datasource=npm depName=lightning-flow-scanner
 ARG LIGHTNING_FLOW_SCANNER_VERSION=3.2.0
 # renovate: datasource=pypi depName=snakefmt
