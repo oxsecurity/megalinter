@@ -53,6 +53,14 @@
       ],
     },
     {
+      matchPackageNames: [
+        'checkov',
+      ],
+      schedule: [
+        'before 10am every 4 days',
+      ],
+    },
+    {
       groupName: 'Salesforce packages',
       matchPackageNames: [
         '@salesforce/**',
