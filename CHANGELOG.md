@@ -60,6 +60,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 4.10.0 to **4.11.0** on 2025-03-29
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.18.0 to **8.18.1** on 2025-03-29
   - [tflint](https://github.com/terraform-linters/tflint) from 0.55.1 to **0.56.0** on 2025-03-29
+  - [checkstyle](https://checkstyle.org/) from 10.21.4 to **10.22.0** on 2025-03-30
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.11.2 to **1.11.3** on 2025-03-30
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.76.6 to **0.77.1** on 2025-03-30
 <!-- linter-versions-end -->
 
 ## [v8.5.0] - 2024-03-23
