@@ -57,7 +57,7 @@ linters:
           ARG PHP_SQUIZLABS_PHP_CODESNIFFER_VERSION=3.12.0
         - |-
           # renovate: datasource=packagist depName=bartlett/sarif-php-converters
-          ARG PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION=1.1.1
+          ARG PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION=1.1.2
         - |
           RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require squizlabs/php_codesniffer:${PHP_SQUIZLABS_PHP_CODESNIFFER_VERSION} bartlett/sarif-php-converters:${PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION}
     ide:
@@ -113,7 +113,7 @@ linters:
           ARG PHP_PHPSTAN_EXTENSION_INSTALLER_VERSION=1.4.3
         - |-
           # renovate: datasource=packagist depName=bartlett/sarif-php-converters
-          ARG PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION=1.1.1
+          ARG PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION=1.1.2
         - RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer config --global allow-plugins.phpstan/extension-installer true && composer global require phpstan/phpstan:${PHP_PHPSTAN_PHPSTAN_VERSION} phpstan/extension-installer:${PHP_PHPSTAN_EXTENSION_INSTALLER_VERSION} bartlett/sarif-php-converters:${PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION}
       idea:
         - name: PHPStan / Psalm / Generics
@@ -183,7 +183,7 @@ linters:
           ARG PHP_OVERTRUE_PHPLINT_VERSION=9.5.6
         - |-
           # renovate: datasource=packagist depName=bartlett/sarif-php-converters
-          ARG PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION=1.1.1
+          ARG PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION=1.1.2
         - |
           RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require overtrue/phplint:${PHP_OVERTRUE_PHPLINT_VERSION} bartlett/sarif-php-converters:${PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION}
   # PHP-CS-Fixer
