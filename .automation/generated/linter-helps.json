@@ -10575,6 +10575,7 @@
         "  -h, --help                                      help for syft",
         "  -o, --output stringArray                        report output format (<format>=<file> to output to a file), formats=[cyclonedx-json cyclonedx-xml github-json spdx-json spdx-tag-value syft-json syft-table syft-text template] (default [syft-table])",
         "      --override-default-catalogers stringArray   set the base set of catalogers to use (defaults to 'image' or 'directory' depending on the scan source)",
+        "      --parallelism int                           number of cataloger workers to run in parallel",
         "      --platform string                           an optional platform specifier for container image sources (e.g. 'linux/arm64', 'linux/arm64/v8', 'arm64', 'linux')",
         "      --profile stringArray                       configuration profiles to use",
         "  -q, --quiet                                     suppress all logging output",
