@@ -14,7 +14,7 @@ PHP-CS-Fixer is able to fix rule violations detected, and even those marked as (
 
 ## php-cs-fixer documentation
 
-- Version in MegaLinter: **3.74.0**
+- Version in MegaLinter: **3.75.0**
 - Visit [Official Web Site](https://cs.symfony.com/){target=_blank}
   - If custom `.php-cs-fixer.dist.php` config file isn't found, [.php-cs-fixer.dist.php](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.php-cs-fixer.dist.php){target=_blank} will be used
 
@@ -149,7 +149,7 @@ ENV PATH="/root/.composer/vendor/bin:${PATH}"
 ENV PHP_CS_FIXER_IGNORE_ENV=true
 # Linter install
 # renovate: datasource=packagist depName=friendsofphp/php-cs-fixer
-ARG PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION=v3.74.0
+ARG PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION=v3.75.0
 RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require friendsofphp/php-cs-fixer:${PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION} --with-all-dependencies
 
 ```

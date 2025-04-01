@@ -66,6 +66,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.76.6 to **0.77.1** on 2025-03-30
   - [revive](https://revive.run/) from 1.7.0 to **1.8.0** on 2025-04-01
   - [psalm](https://psalm.dev) from Psalm.6.9.6@ to **Psalm.6.10.0@** on 2025-04-01
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.74.0 to **3.75.0** on 2025-04-01
 <!-- linter-versions-end -->
 
 ## [v8.5.0] - 2024-03-23
