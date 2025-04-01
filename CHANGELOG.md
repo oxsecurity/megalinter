@@ -67,6 +67,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [revive](https://revive.run/) from 1.7.0 to **1.8.0** on 2025-04-01
   - [psalm](https://psalm.dev) from Psalm.6.9.6@ to **Psalm.6.10.0@** on 2025-04-01
   - [php-cs-fixer](https://cs.symfony.com/) from 3.74.0 to **3.75.0** on 2025-04-01
+  - [grype](https://github.com/anchore/grype) from 0.90.0 to **0.91.0** on 2025-04-01
+  - [syft](https://github.com/anchore/syft) from 1.21.0 to **1.22.0** on 2025-04-01
 <!-- linter-versions-end -->
 
 ## [v8.5.0] - 2024-03-23
