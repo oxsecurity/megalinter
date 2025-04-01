@@ -3495,7 +3495,7 @@
         "      --server string         Backend discovery server URL",
         "",
         "Use \"kubescape [command] --help\" for more information about a command.",
-        "{\"level\":\"info\",\"ts\":\"2025-03-29T18:50:54Z\",\"msg\":\"Received interrupt signal, exiting...\"}"
+        "{\"level\":\"info\",\"ts\":\"2025-03-30T22:17:01Z\",\"msg\":\"Received interrupt signal, exiting...\"}"
     ],
     "kubeval": [
         "Validate a Kubernetes YAML file against the relevant schema",
@@ -3526,7 +3526,6 @@
         "      --version                               version for kubeval"
     ],
     "lightning-flow-scanner": [
-        " \u203a   Warning: @salesforce/cli update available from 2.78.3 to 2.81.9.",
         "Find and fix potential bugs in Salesforce flows.",
         "",
         "USAGE",
@@ -8246,7 +8245,6 @@
         "@typescript-eslint/unbound-method                  typescript   Best Practices    Best Practices                                    eslint-typescript"
     ],
     "sfdx-scanner-apex": [
-        " \u203a   Warning: @salesforce/cli update available from 2.78.3 to 2.81.9.",
         "Scan a codebase with all the rules in the registry, or use parameters to filter the rules based on rulename, category, or ruleset.",
         "",
         "USAGE",
@@ -8300,9 +8298,8 @@
         "COMMANDS",
         "  scanner run dfa  Scan codebase with all DFA rules by default.",
         "",
-        " \u203a   Warning: @salesforce/cli update available from 2.78.3 to 2.81.9.",
-        " \u203a   Warning: Plugin @salesforce/sfdx-scanner (4.10.0) differs from the version",
-        " \u203a    specified by sf (4.9.0)",
+        " \u203a   Warning: Plugin @salesforce/sfdx-scanner (4.11.0) differs from the version",
+        " \u203a    specified by sf (4.10.0)",
         "Warning: We plan to stop supporting v4.x of Code Analyzer in the coming months. We highly recommend that you start using v5.x, which is currently in Beta. For information on v5.x, see https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/code-analyzer.html.",
         " name                                                   languages   categories            rulesets [dep] engine            is dfa is pilot",
         " \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 \u2500\u2500\u2500\u2500\u2500\u2500 \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500",
@@ -8363,6 +8360,7 @@
         " AvoidDirectAccessTriggerMap                            apex        Error Prone           quickstart     pmd               N      N",
         " AvoidHardcodingId                                      apex        Error Prone           quickstart     pmd               N      N",
         " AvoidNonExistentAnnotations                            apex        Error Prone           quickstart     pmd               N      N",
+        " AvoidStatefulDatabaseResult                            apex        Error Prone                          pmd               N      N",
         " EmptyCatchBlock                                        apex        Error Prone           quickstart     pmd               N      N",
         " EmptyIfStmt                                            apex        Error Prone           quickstart     pmd               N      N",
         " EmptyStatementBlock                                    apex        Error Prone           quickstart     pmd               N      N",
@@ -8523,7 +8521,6 @@
         " UnimplementedTypeRule                                  apex        Performance                          sfge              N      N"
     ],
     "sfdx-scanner-aura": [
-        " \u203a   Warning: @salesforce/cli update available from 2.78.3 to 2.81.9.",
         "Scan a codebase with all the rules in the registry, or use parameters to filter the rules based on rulename, category, or ruleset.",
         "",
         "USAGE",
@@ -8577,9 +8574,8 @@
         "COMMANDS",
         "  scanner run dfa  Scan codebase with all DFA rules by default.",
         "",
-        " \u203a   Warning: @salesforce/cli update available from 2.78.3 to 2.81.9.",
-        " \u203a   Warning: Plugin @salesforce/sfdx-scanner (4.10.0) differs from the version",
-        " \u203a    specified by sf (4.9.0)",
+        " \u203a   Warning: Plugin @salesforce/sfdx-scanner (4.11.0) differs from the version",
+        " \u203a    specified by sf (4.10.0)",
         "Warning: We plan to stop supporting v4.x of Code Analyzer in the coming months. We highly recommend that you start using v5.x, which is currently in Beta. For information on v5.x, see https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/code-analyzer.html.",
         " name                                                   languages   categories            rulesets [dep] engine            is dfa is pilot",
         " \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 \u2500\u2500\u2500\u2500\u2500\u2500 \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500",
@@ -8640,6 +8636,7 @@
         " AvoidDirectAccessTriggerMap                            apex        Error Prone           quickstart     pmd               N      N",
         " AvoidHardcodingId                                      apex        Error Prone           quickstart     pmd               N      N",
         " AvoidNonExistentAnnotations                            apex        Error Prone           quickstart     pmd               N      N",
+        " AvoidStatefulDatabaseResult                            apex        Error Prone                          pmd               N      N",
         " EmptyCatchBlock                                        apex        Error Prone           quickstart     pmd               N      N",
         " EmptyIfStmt                                            apex        Error Prone           quickstart     pmd               N      N",
         " EmptyStatementBlock                                    apex        Error Prone           quickstart     pmd               N      N",
@@ -8800,7 +8797,6 @@
         " UnimplementedTypeRule                                  apex        Performance                          sfge              N      N"
     ],
     "sfdx-scanner-lwc": [
-        " \u203a   Warning: @salesforce/cli update available from 2.78.3 to 2.81.9.",
         "Scan a codebase with all the rules in the registry, or use parameters to filter the rules based on rulename, category, or ruleset.",
         "",
         "USAGE",
@@ -8854,9 +8850,8 @@
         "COMMANDS",
         "  scanner run dfa  Scan codebase with all DFA rules by default.",
         "",
-        " \u203a   Warning: @salesforce/cli update available from 2.78.3 to 2.81.9.",
-        " \u203a   Warning: Plugin @salesforce/sfdx-scanner (4.10.0) differs from the version",
-        " \u203a    specified by sf (4.9.0)",
+        " \u203a   Warning: Plugin @salesforce/sfdx-scanner (4.11.0) differs from the version",
+        " \u203a    specified by sf (4.10.0)",
         "Warning: We plan to stop supporting v4.x of Code Analyzer in the coming months. We highly recommend that you start using v5.x, which is currently in Beta. For information on v5.x, see https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/code-analyzer.html.",
         " name                                                   languages   categories            rulesets [dep] engine            is dfa is pilot",
         " \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 \u2500\u2500\u2500\u2500\u2500\u2500 \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500",
@@ -8917,6 +8912,7 @@
         " AvoidDirectAccessTriggerMap                            apex        Error Prone           quickstart     pmd               N      N",
         " AvoidHardcodingId                                      apex        Error Prone           quickstart     pmd               N      N",
         " AvoidNonExistentAnnotations                            apex        Error Prone           quickstart     pmd               N      N",
+        " AvoidStatefulDatabaseResult                            apex        Error Prone                          pmd               N      N",
         " EmptyCatchBlock                                        apex        Error Prone           quickstart     pmd               N      N",
         " EmptyIfStmt                                            apex        Error Prone           quickstart     pmd               N      N",
         " EmptyStatementBlock                                    apex        Error Prone           quickstart     pmd               N      N",
@@ -10667,6 +10663,7 @@
         "   For documentation, see https://terragrunt.gruntwork.io/.",
         "",
         "Main commands:",
+        "   backend                Interact with OpenTofu/Terraform backend infrastructure.",
         "   exec                   Execute an arbitrary command.",
         "   graph                  Execute commands on the full graph of dependent modules for the current module, ensuring correct execution order.",
         "   run                    Run an OpenTofu/Terraform command.",
@@ -10708,7 +10705,6 @@
         "Global Options:",
         "   --experiment value         Enables specific experiments. For a list of available experiments, see https://terragrunt.gruntwork.io/docs/reference/experiment-mode . [$TG_EXPERIMENT]",
         "   --experiment-mode          Enables experiment mode for Terragrunt. For more information, see https://terragrunt.gruntwork.io/docs/reference/experiment-mode . (default: false) [$TG_EXPERIMENT_MODE]",
-        "   --help, -h                 Show help. (default: false)",
         "   --log-custom-format value  Set the custom log formatting. [$TG_LOG_CUSTOM_FORMAT]",
         "   --log-disable              Disable logging. (default: false) [$TG_LOG_DISABLE]",
         "   --log-format value         Set the log format. [$TG_LOG_FORMAT]",
@@ -10718,10 +10714,11 @@
         "   --non-interactive          Assume \"yes\" for all prompts. (default: false) [$TG_NON_INTERACTIVE]",
         "   --strict-control value     Enables specific strict controls. For a list of available controls, run 'terragrunt info strict'. [$TG_STRICT_CONTROL]",
         "   --strict-mode              Enables strict mode for Terragrunt. For more information, run 'terragrunt info strict'. (default: false) [$TG_STRICT_MODE]",
-        "   --version, -v              Show terragrunt version. (default: false)",
         "   --working-dir value        The path to the directory of Terragrunt configurations. Default is current directory. [$TG_WORKING_DIR]",
+        "   --help, -h                 Show help. (default: false)",
+        "   --version, -v              Show terragrunt version. (default: false)",
         "",
-        "Version: v0.76.6",
+        "Version: v0.77.1",
         "",
         "Author: Gruntwork <www.gruntwork.io>"
     ],

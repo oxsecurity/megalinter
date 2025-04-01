@@ -17,6 +17,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Media
 
 - Linters enhancements
+  - [editorconfig_checker](https://megalinter.io/latest/descriptors/editorconfig_editorconfig_checker/) Changes default EditorConfig-Checker config filename by @llaville in <https://github.com/oxsecurity/megalinter/issues/5061>
 
 - Fixes
 
@@ -27,6 +28,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Flavors
 
 - CI
+  - Initial Renovate automerge configuration, by @echoix in <https://github.com/oxsecurity/megalinter/pull/5057>
 
 - mega-linter-runner
 
@@ -54,6 +56,14 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.60.0 to **0.61.0** on 2025-03-29
   - [trivy](https://aquasecurity.github.io/trivy/) from 0.60.0 to **0.61.0** on 2025-03-29
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.88.18 to **3.88.20** on 2025-03-29
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 4.10.0 to **4.11.0** on 2025-03-29
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 4.10.0 to **4.11.0** on 2025-03-29
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 4.10.0 to **4.11.0** on 2025-03-29
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.18.0 to **8.18.1** on 2025-03-29
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.55.1 to **0.56.0** on 2025-03-29
+  - [checkstyle](https://checkstyle.org/) from 10.21.4 to **10.22.0** on 2025-03-30
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.11.2 to **1.11.3** on 2025-03-30
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.76.6 to **0.77.1** on 2025-03-30
 <!-- linter-versions-end -->
 
 ## [v8.5.0] - 2024-03-23
