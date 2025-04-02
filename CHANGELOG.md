@@ -69,6 +69,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [php-cs-fixer](https://cs.symfony.com/) from 3.74.0 to **3.75.0** on 2025-04-01
   - [grype](https://github.com/anchore/grype) from 0.90.0 to **0.91.0** on 2025-04-01
   - [syft](https://github.com/anchore/syft) from 1.21.0 to **1.22.0** on 2025-04-01
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.32.1 to **1.32.3** on 2025-04-02
+  - [checkstyle](https://checkstyle.org/) from 10.22.0 to **10.23.0** on 2025-04-02
+  - [flake8](https://flake8.pycqa.org) from 7.1.2 to **7.2.0** on 2025-04-02
 <!-- linter-versions-end -->
 
 ## [v8.5.0] - 2024-03-23
