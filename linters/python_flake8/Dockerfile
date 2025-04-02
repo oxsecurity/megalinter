@@ -49,7 +49,7 @@ FROM python:3.12.9-alpine3.21
 #############################################################################################
 #ARG__START
 # renovate: datasource=pypi depName=flake8
-ARG PIP_FLAKE8_VERSION=7.1.2
+ARG PIP_FLAKE8_VERSION=7.2.0
 # renovate: datasource=pypi depName=pip
 ARG PIP_PIP_VERSION=25.0.1
 # renovate: datasource=pypi depName=virtualenv
