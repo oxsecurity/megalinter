@@ -1016,7 +1016,7 @@ defaults.
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=snakemake
-ARG PIP_SNAKEMAKE_VERSION=9.1.3
+ARG PIP_SNAKEMAKE_VERSION=9.1.4
 ```
 
 - PIP packages (Python):
