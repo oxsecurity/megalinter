@@ -105,7 +105,7 @@ ARG BICEP_VERSION=0.34.44
 ARG BICEP_EXE='bicep'
 ARG BICEP_DIR='/usr/local/bin'
 # renovate: datasource=pypi depName=cpplint
-ARG PIP_CPPLINT_VERSION=2.0.0
+ARG PIP_CPPLINT_VERSION=2.0.1
 # renovate: datasource=npm depName=jscpd
 ARG NPM_JSCPD_VERSION=4.0.5
 # renovate: datasource=nuget depName=csharpier
