@@ -110,7 +110,7 @@ ARG PIP_ANSIBLE_LINT_VERSION=25.1.3
 # renovate: datasource=crate depName=shellcheck-sarif
 ARG CARGO_SHELLCHECK_SARIF_VERSION=0.7.0
 # renovate: datasource=pypi depName=cpplint
-ARG PIP_CPPLINT_VERSION=2.0.0
+ARG PIP_CPPLINT_VERSION=2.0.1
 # renovate: datasource=github-tags depName=clj-kondo/clj-kondo
 ARG CLJ_KONDO_VERSION=2025.01.16
 
