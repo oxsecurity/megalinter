@@ -64,6 +64,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkstyle](https://checkstyle.org/) from 10.21.4 to **10.22.0** on 2025-03-30
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.11.2 to **1.11.3** on 2025-03-30
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.76.6 to **0.77.1** on 2025-03-30
+  - [revive](https://revive.run/) from 1.7.0 to **1.8.0** on 2025-04-01
+  - [psalm](https://psalm.dev) from Psalm.6.9.6@ to **Psalm.6.10.0@** on 2025-04-01
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.74.0 to **3.75.0** on 2025-04-01
+  - [grype](https://github.com/anchore/grype) from 0.90.0 to **0.91.0** on 2025-04-01
+  - [syft](https://github.com/anchore/syft) from 1.21.0 to **1.22.0** on 2025-04-01
 <!-- linter-versions-end -->
 
 ## [v8.5.0] - 2024-03-23

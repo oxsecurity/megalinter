@@ -51,7 +51,7 @@ FROM python:3.12.9-alpine3.21
 # renovate: datasource=packagist depName=squizlabs/php_codesniffer
 ARG PHP_SQUIZLABS_PHP_CODESNIFFER_VERSION=3.12.0
 # renovate: datasource=packagist depName=bartlett/sarif-php-converters
-ARG PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION=1.1.1
+ARG PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION=1.1.2
 #ARG__END
 
 ####################

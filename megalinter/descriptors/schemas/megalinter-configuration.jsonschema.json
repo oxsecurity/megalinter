@@ -5192,7 +5192,7 @@
     },
     "EDITORCONFIG_EDITORCONFIG_CHECKER_CONFIG_FILE": {
       "$id": "#/properties/EDITORCONFIG_EDITORCONFIG_CHECKER_CONFIG_FILE",
-      "default": ".ecrc",
+      "default": ".editorconfig-checker.json",
       "description": "EDITORCONFIG_EDITORCONFIG_CHECKER: User custom config file name if different from default",
       "title": "EDITORCONFIG_EDITORCONFIG_CHECKER: Custom config file name",
       "type": "string"
