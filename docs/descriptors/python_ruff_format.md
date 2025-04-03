@@ -11,7 +11,7 @@ An extremely fast Python linter, written in Rust. Configured for formatting only
 
 ## ruff-format documentation
 
-- Version in MegaLinter: **0.11.2**
+- Version in MegaLinter: **0.11.3**
 - Visit [Official Web Site](https://github.com/astral-sh/ruff#readme){target=_blank}
 - See [How to configure ruff-format rules](https://docs.astral.sh/ruff/configuration/){target=_blank}
   - If custom `.ruff.toml` config file isn't found, [.ruff.toml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.ruff.toml){target=_blank} will be used
@@ -134,8 +134,8 @@ For help with a specific command, see: `ruff help <command>`.
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=ruff
-ARG PIP_RUFF_VERSION=0.11.2
+ARG PIP_RUFF_VERSION=0.11.3
 ```
 
 - PIP packages (Python):
-  - [ruff==0.11.2](https://pypi.org/project/ruff/0.11.2)
+  - [ruff==0.11.3](https://pypi.org/project/ruff/0.11.3)
