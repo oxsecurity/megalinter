@@ -132,7 +132,7 @@ ARG PIP_ANSIBLE_LINT_VERSION=25.2.1
 # renovate: datasource=npm depName=@stoplight/spectral-cli
 ARG NPM_SPECTRAL_CLI_VERSION=6.14.3
 # renovate: datasource=github-tags depName=Azure/arm-ttk
-ARG ARM_TTK_VERSION=20240328
+ARG ARM_TTK_VERSION=20250401
 ARG ARM_TTK_NAME='arm-ttk.zip'
 ARG ARM_TTK_DIRECTORY='/opt/microsoft'
 # renovate: datasource=crate depName=shellcheck-sarif
