@@ -72,6 +72,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.32.1 to **1.32.3** on 2025-04-02
   - [checkstyle](https://checkstyle.org/) from 10.22.0 to **10.23.0** on 2025-04-02
   - [flake8](https://flake8.pycqa.org) from 7.1.2 to **7.2.0** on 2025-04-02
+  - [cpplint](https://github.com/cpplint/cpplint) from 2.0.0 to **2.0.1** on 2025-04-03
 <!-- linter-versions-end -->
 
 ## [v8.5.0] - 2024-03-23

@@ -16,7 +16,7 @@
     "clj-kondo": "2025.02.20",
     "cljstyle": "0.17.642",
     "coffeelint": "5.2.11",
-    "cpplint": "2.0.0",
+    "cpplint": "2.0.1",
     "csharpier": "0.30.6",
     "cspell": "8.18.1",
     "dartanalyzer": "3.7.2",

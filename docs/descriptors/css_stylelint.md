@@ -315,7 +315,7 @@ ARG NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION=12.1.0
 # renovate: datasource=npm depName=stylelint-scss
 ARG NPM_STYLELINT_SCSS_VERSION=6.11.1
 # renovate: datasource=pypi depName=cpplint
-ARG PIP_CPPLINT_VERSION=2.0.0
+ARG PIP_CPPLINT_VERSION=2.0.1
 ```
 
 - NPM packages (node.js):
@@ -324,4 +324,4 @@ ARG PIP_CPPLINT_VERSION=2.0.0
   - [stylelint-config-sass-guidelines@12.1.0](https://www.npmjs.com/package/stylelint-config-sass-guidelines/v/12.1.0)
   - [stylelint-scss@6.11.1](https://www.npmjs.com/package/stylelint-scss/v/6.11.1)
 - PIP packages (Python):
-  - [cpplint==2.0.0](https://pypi.org/project/cpplint/2.0.0)
+  - [cpplint==2.0.1](https://pypi.org/project/cpplint/2.0.1)
