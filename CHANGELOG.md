@@ -73,6 +73,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkstyle](https://checkstyle.org/) from 10.22.0 to **10.23.0** on 2025-04-02
   - [flake8](https://flake8.pycqa.org) from 7.1.2 to **7.2.0** on 2025-04-02
   - [cpplint](https://github.com/cpplint/cpplint) from 2.0.0 to **2.0.1** on 2025-04-03
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 25.1.3 to **25.2.1** on 2025-04-03
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.11.2 to **0.11.3** on 2025-04-03
+  - [ruff](https://github.com/astral-sh/ruff) from 0.11.2 to **0.11.3** on 2025-04-03
+  - [rubocop](https://rubocop.org/) from 1.75.1 to **1.75.2** on 2025-04-03
 <!-- linter-versions-end -->
 
 ## [v8.5.0] - 2024-03-23

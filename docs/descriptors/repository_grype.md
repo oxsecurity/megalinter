@@ -159,7 +159,7 @@ Use "grype [command] --help" for more information about a command.
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=github-tags depName=anchore/grype
-ARG REPOSITORY_GRYPE_VERSION=0.90.0
+ARG REPOSITORY_GRYPE_VERSION=0.91.0
 RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/refs/tags/v${REPOSITORY_GRYPE_VERSION}/install.sh | sh -s -- -b /usr/local/bin
 ```
 
