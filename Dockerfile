@@ -128,7 +128,7 @@ ARG SFDX_HARDIS_VERSION=5.24.2
 # renovate: datasource=npm depName=typescript
 ARG NPM_TYPESCRIPT_VERSION=5.8.2
 # renovate: datasource=pypi depName=ansible-lint
-ARG PIP_ANSIBLE_LINT_VERSION=25.1.3
+ARG PIP_ANSIBLE_LINT_VERSION=25.2.1
 # renovate: datasource=npm depName=@stoplight/spectral-cli
 ARG NPM_SPECTRAL_CLI_VERSION=6.14.3
 # renovate: datasource=github-tags depName=Azure/arm-ttk
