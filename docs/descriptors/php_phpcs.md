@@ -9,7 +9,7 @@ description: How to use phpcs (configure, ignore files, ignore errors, help & ve
 
 ## phpcs documentation
 
-- Version in MegaLinter: **3.12.0**
+- Version in MegaLinter: **3.12.1**
 - Visit [Official Web Site](https://github.com/PHPCSStandards/PHP_CodeSniffer#readme){target=_blank}
 - See [How to configure phpcs rules](https://github.com/PHPCSStandards/PHP_CodeSniffer/wiki/Advanced-Usage#using-a-default-configuration-file){target=_blank}
   - If custom `phpcs.xml` config file isn't found, [phpcs.xml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/phpcs.xml){target=_blank} will be used
@@ -246,7 +246,7 @@ ENV PATH="/root/.composer/vendor/bin:${PATH}"
 ENV PHP_CS_FIXER_IGNORE_ENV=true
 # Linter install
 # renovate: datasource=packagist depName=squizlabs/php_codesniffer
-ARG PHP_SQUIZLABS_PHP_CODESNIFFER_VERSION=3.12.0
+ARG PHP_SQUIZLABS_PHP_CODESNIFFER_VERSION=3.12.1
 # renovate: datasource=packagist depName=bartlett/sarif-php-converters
 ARG PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION=1.1.2
 RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require squizlabs/php_codesniffer:${PHP_SQUIZLABS_PHP_CODESNIFFER_VERSION} bartlett/sarif-php-converters:${PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION}
