@@ -175,7 +175,7 @@ ARG NPM_PACKAGE_JSON_LINT_VERSION=8.0.0
 # renovate: datasource=npm depName=npm-package-json-lint-config-default
 ARG NPM_PACKAGE_JSON_LINT_CONFIG_DEFAULT_VERSION=7.0.1
 # renovate: datasource=npm depName=eslint-plugin-react
-ARG NPM_ESLINT_PLUGIN_REACT_VERSION=7.37.4
+ARG NPM_ESLINT_PLUGIN_REACT_VERSION=7.37.5
 # renovate: datasource=npm depName=eslint-plugin-jsx-a11y
 ARG NPM_ESLINT_PLUGIN_JSX_ALLY_VERSION=6.10.2
 # renovate: datasource=github-tags depName=pinterest/ktlint
