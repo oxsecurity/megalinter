@@ -122,7 +122,7 @@ RUN curl -L https://github.com/PowerShell/PowerShell/releases/download/v${POWERS
 
 # Linter install
 # renovate: datasource=github-tags depName=Azure/arm-ttk
-ARG ARM_TTK_VERSION=20240328
+ARG ARM_TTK_VERSION=20250401
 ARG ARM_TTK_NAME='arm-ttk.zip'
 ARG ARM_TTK_DIRECTORY='/opt/microsoft'
 ENV ARM_TTK_PSD1="${ARM_TTK_DIRECTORY}/arm-ttk/arm-ttk/arm-ttk.psd1"

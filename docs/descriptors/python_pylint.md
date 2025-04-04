@@ -768,9 +768,9 @@ Imports:
 # renovate: datasource=pypi depName=pylint
 ARG PIP_PYLINT_VERSION=3.3.6
 # renovate: datasource=pypi depName=typing-extensions
-ARG PIP_TYPING_EXTENSIONS_VERSION=4.13.0
+ARG PIP_TYPING_EXTENSIONS_VERSION=4.13.1
 ```
 
 - PIP packages (Python):
   - [pylint==3.3.6](https://pypi.org/project/pylint/3.3.6)
-  - [typing-extensions==4.13.0](https://pypi.org/project/typing-extensions/4.13.0)
+  - [typing-extensions==4.13.1](https://pypi.org/project/typing-extensions/4.13.1)
