@@ -191,7 +191,7 @@ ARG NPM_ESLINT_PLUGIN_JEST_VERSION=28.11.0
 # renovate: datasource=npm depName=eslint-plugin-prettier
 ARG NPM_ESLINT_PLUGIN_PRETTIER_VERSION=5.2.6
 # renovate: datasource=npm depName=eslint-plugin-react
-ARG NPM_ESLINT_PLUGIN_REACT_VERSION=7.37.4
+ARG NPM_ESLINT_PLUGIN_REACT_VERSION=7.37.5
 # renovate: datasource=npm depName=@babel/eslint-parser
 ARG NPM_BABEL_ESLINT_PARSER_VERSION=7.27.0
 # renovate: datasource=npm depName=prettier
@@ -213,7 +213,7 @@ ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
   - [eslint-config-prettier@10.1.1](https://www.npmjs.com/package/eslint-config-prettier/v/10.1.1)
   - [eslint-plugin-jest@28.11.0](https://www.npmjs.com/package/eslint-plugin-jest/v/28.11.0)
   - [eslint-plugin-prettier@5.2.6](https://www.npmjs.com/package/eslint-plugin-prettier/v/5.2.6)
-  - [eslint-plugin-react@7.37.4](https://www.npmjs.com/package/eslint-plugin-react/v/7.37.4)
+  - [eslint-plugin-react@7.37.5](https://www.npmjs.com/package/eslint-plugin-react/v/7.37.5)
   - [@babel/eslint-parser@7.27.0](https://www.npmjs.com/package/@babel/eslint-parser/v/7.27.0)
   - [prettier@3.5.3](https://www.npmjs.com/package/prettier/v/3.5.3)
   - [prettyjson@1.2.5](https://www.npmjs.com/package/prettyjson/v/1.2.5)

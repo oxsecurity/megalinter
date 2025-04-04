@@ -180,7 +180,7 @@ Miscellaneous:
 # renovate: datasource=npm depName=eslint
 ARG NPM_ESLINT_VERSION=8.57.1
 # renovate: datasource=npm depName=eslint-plugin-react
-ARG NPM_ESLINT_PLUGIN_REACT_VERSION=7.37.4
+ARG NPM_ESLINT_PLUGIN_REACT_VERSION=7.37.5
 # renovate: datasource=npm depName=eslint-plugin-jsx-a11y
 ARG NPM_ESLINT_PLUGIN_JSX_ALLY_VERSION=6.10.2
 # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
@@ -189,6 +189,6 @@ ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
 
 - NPM packages (node.js):
   - [eslint@8.57.1](https://www.npmjs.com/package/eslint/v/8.57.1)
-  - [eslint-plugin-react@7.37.4](https://www.npmjs.com/package/eslint-plugin-react/v/7.37.4)
+  - [eslint-plugin-react@7.37.5](https://www.npmjs.com/package/eslint-plugin-react/v/7.37.5)
   - [eslint-plugin-jsx-a11y@6.10.2](https://www.npmjs.com/package/eslint-plugin-jsx-a11y/v/6.10.2)
   - [@microsoft/eslint-formatter-sarif@3.1.0](https://www.npmjs.com/package/@microsoft/eslint-formatter-sarif/v/3.1.0)
