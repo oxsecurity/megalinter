@@ -179,7 +179,7 @@ Miscellaneous:
 ```dockerfile
 # Parent descriptor install
 # renovate: datasource=npm depName=typescript
-ARG NPM_TYPESCRIPT_VERSION=5.8.2
+ARG NPM_TYPESCRIPT_VERSION=5.8.3
 # Linter install
 # renovate: datasource=npm depName=eslint
 ARG NPM_ESLINT_VERSION=8.57.1
@@ -214,7 +214,7 @@ ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
 ```
 
 - NPM packages (node.js):
-  - [typescript@5.8.2](https://www.npmjs.com/package/typescript/v/5.8.2)
+  - [typescript@5.8.3](https://www.npmjs.com/package/typescript/v/5.8.3)
   - [eslint@8.57.1](https://www.npmjs.com/package/eslint/v/8.57.1)
   - [eslint-config-airbnb@19.0.4](https://www.npmjs.com/package/eslint-config-airbnb/v/19.0.4)
   - [eslint-config-prettier@10.1.1](https://www.npmjs.com/package/eslint-config-prettier/v/10.1.1)
