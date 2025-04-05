@@ -3494,7 +3494,8 @@
         "  -l, --logger string         Logger level. Supported: debug/info/success/warning/error/fatal [$KS_LOGGER] (default \"info\")",
         "      --server string         Backend discovery server URL",
         "",
-        "Use \"kubescape [command] --help\" for more information about a command."
+        "Use \"kubescape [command] --help\" for more information about a command.",
+        "{\"level\":\"info\",\"ts\":\"2025-04-04T22:48:06Z\",\"msg\":\"Received interrupt signal, exiting...\"}"
     ],
     "kubeval": [
         "Validate a Kubernetes YAML file against the relevant schema",

@@ -80,6 +80,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.85 to **0.1.86** on 2025-04-04
   - [phpcs](https://github.com/PHPCSStandards/PHP_CodeSniffer) from 3.12.0 to **3.12.1** on 2025-04-04
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.88.20 to **3.88.22** on 2025-04-04
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.32.3 to **1.32.4** on 2025-04-04
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.11.3 to **0.11.4** on 2025-04-04
+  - [ruff](https://github.com/astral-sh/ruff) from 0.11.3 to **0.11.4** on 2025-04-04
+  - [vale](https://vale.sh/) from 3.10.0 to **3.11.1** on 2025-04-04
 <!-- linter-versions-end -->
 
 ## [v8.5.0] - 2024-03-23
