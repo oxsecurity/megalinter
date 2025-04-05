@@ -11,7 +11,7 @@ install:
   dockerfile:
     - |-
       # renovate: datasource=npm depName=typescript
-      ARG NPM_TYPESCRIPT_VERSION=5.8.2
+      ARG NPM_TYPESCRIPT_VERSION=5.8.3
   npm:
     - typescript@${NPM_TYPESCRIPT_VERSION}
 linters:
