@@ -106,7 +106,7 @@
     "standard": "17.1.2",
     "stylelint": "16.17.0",
     "stylua": "2.0.0",
-    "swiftlint": "0.58.2",
+    "swiftlint": "0.59.0",
     "syft": "1.22.0",
     "tekton-lint": "1.1.0",
     "terraform-fmt": "1.11.3",
