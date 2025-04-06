@@ -817,7 +817,7 @@ RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/refs/tags/v${REPOS
 #
 # swiftlint installation
 # renovate: datasource=docker depName=ghcr.io/realm/swiftlint
-ENV SWIFT_SWIFTLINT_VERSION=0.58.2
+ENV SWIFT_SWIFTLINT_VERSION=0.59.0
 #
 # tflint installation
 # Managed with COPY --link --from=tflint /usr/local/bin/tflint /usr/bin/

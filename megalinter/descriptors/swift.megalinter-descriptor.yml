@@ -43,7 +43,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=docker depName=ghcr.io/realm/swiftlint
-          ENV SWIFT_SWIFTLINT_VERSION=0.58.2
+          ENV SWIFT_SWIFTLINT_VERSION=0.59.0
     ide:
       atom:
         - name: linter-swiftlint
