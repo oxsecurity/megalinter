@@ -237,12 +237,12 @@ Other options:
 ```dockerfile
 # Parent descriptor install
 # renovate: datasource=npm depName=typescript
-ARG NPM_TYPESCRIPT_VERSION=5.8.2
+ARG NPM_TYPESCRIPT_VERSION=5.8.3
 # Linter install
 # renovate: datasource=npm depName=prettier
 ARG NPM_PRETTIER_VERSION=3.5.3
 ```
 
 - NPM packages (node.js):
-  - [typescript@5.8.2](https://www.npmjs.com/package/typescript/v/5.8.2)
+  - [typescript@5.8.3](https://www.npmjs.com/package/typescript/v/5.8.3)
   - [prettier@3.5.3](https://www.npmjs.com/package/prettier/v/3.5.3)
