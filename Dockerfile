@@ -202,7 +202,7 @@ ARG NPM_ESLINT_PLUGIN_N_VERSION=16.6.2
 # renovate: datasource=npm depName=eslint-plugin-prettier
 ARG NPM_ESLINT_PLUGIN_PRETTIER_VERSION=5.2.6
 # renovate: datasource=npm depName=eslint-plugin-promise
-ARG NPM_ESLINT_PLUGIN_PROMISE_VERSION=6.6.0
+ARG NPM_ESLINT_PLUGIN_PROMISE_VERSION=7.2.1
 # renovate: datasource=npm depName=eslint-plugin-vue
 ARG NPM_ESLINT_PLUGIN_VUE_VERSION=10.0.0
 # renovate: datasource=npm depName=@babel/core
