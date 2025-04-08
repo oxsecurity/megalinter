@@ -107,7 +107,7 @@ Usage:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=github-tags depName=skaji/cpm
-ARG PERL_PERLCRITIC_VERSION=0.997021
+ARG PERL_PERLCRITIC_VERSION=0.997022
 
 RUN curl -fsSL https://raw.githubusercontent.com/skaji/cpm/refs/tags/${PERL_PERLCRITIC_VERSION}/cpm | perl - install -g --show-build-log-on-failure --without-build --without-test --without-runtime Perl::Critic \
     && rm -rf /root/.perl-cpm
