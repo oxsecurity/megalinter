@@ -142,7 +142,7 @@ ARG BICEP_VERSION=0.34.44
 ARG BICEP_EXE='bicep'
 ARG BICEP_DIR='/usr/local/bin'
 # renovate: datasource=pypi depName=cpplint
-ARG PIP_CPPLINT_VERSION=2.0.1
+ARG PIP_CPPLINT_VERSION=2.0.2
 # renovate: datasource=github-tags depName=clj-kondo/clj-kondo
 ARG CLJ_KONDO_VERSION=2025.01.16
 

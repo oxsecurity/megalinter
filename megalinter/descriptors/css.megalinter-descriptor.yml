@@ -47,7 +47,7 @@ linters:
           ARG NPM_STYLELINT_SCSS_VERSION=6.11.1
         - |-
           # renovate: datasource=pypi depName=cpplint
-          ARG PIP_CPPLINT_VERSION=2.0.1
+          ARG PIP_CPPLINT_VERSION=2.0.2
       npm:
         - stylelint@${NPM_STYLELINT_VERSION}
         - stylelint-config-standard@${NPM_STYLELINT_CONFIG_STANDARD_VERSION}
