@@ -1476,7 +1476,7 @@
         ""
     ],
     "clj-kondo": [
-        "clj-kondo v2025.02.20",
+        "clj-kondo v2025.04.07",
         "",
         "Options:",
         "",
@@ -1515,6 +1515,8 @@
         "",
         "  --report-level <level>: minimum severity for which to report.  Supported values:",
         "    info, warning, error.  The default level if unspecified is info.",
+        "",
+        "  --repro: ignore home dir configuration",
         "",
         "  --debug: print debug information.",
         ""
@@ -3495,7 +3497,7 @@
         "      --server string         Backend discovery server URL",
         "",
         "Use \"kubescape [command] --help\" for more information about a command.",
-        "{\"level\":\"info\",\"ts\":\"2025-04-06T16:28:41Z\",\"msg\":\"Received interrupt signal, exiting...\"}"
+        "{\"level\":\"info\",\"ts\":\"2025-04-09T00:41:46Z\",\"msg\":\"Received interrupt signal, exiting...\"}"
     ],
     "kubeval": [
         "Validate a Kubernetes YAML file against the relevant schema",
