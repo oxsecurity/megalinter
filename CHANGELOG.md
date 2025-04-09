@@ -20,6 +20,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [editorconfig_checker](https://megalinter.io/latest/descriptors/editorconfig_editorconfig_checker/) Changes default EditorConfig-Checker config filename by @llaville in <https://github.com/oxsecurity/megalinter/issues/5061>
 
 - Fixes
+  - [golangci-lint](https://megalinter.io/latest/descriptors/go_golangci_lint/): Fix default config file to it matches JSON schema
 
 - Reporters
 
