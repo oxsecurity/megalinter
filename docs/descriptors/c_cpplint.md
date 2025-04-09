@@ -9,7 +9,7 @@ description: How to use cpplint (configure, ignore files, ignore errors, help & 
 
 ## cpplint documentation
 
-- Version in MegaLinter: **2.0.1**
+- Version in MegaLinter: **2.0.2**
 - Visit [Official Web Site](https://github.com/cpplint/cpplint#readme){target=_blank}
 - See [Index of problems detected by cpplint](https://google.github.io/styleguide/cppguide.html){target=_blank}
 
@@ -303,8 +303,8 @@ Syntax: cpplint.py [--verbose=#] [--output=emacs|eclipse|vs7|junit|sed|gsed]
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=cpplint
-ARG PIP_CPPLINT_VERSION=2.0.1
+ARG PIP_CPPLINT_VERSION=2.0.2
 ```
 
 - PIP packages (Python):
-  - [cpplint==2.0.1](https://pypi.org/project/cpplint/2.0.1)
+  - [cpplint==2.0.2](https://pypi.org/project/cpplint/2.0.2)

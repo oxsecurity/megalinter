@@ -87,6 +87,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.88.22 to **3.88.23** on 2025-04-06
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.77.1 to **0.77.7** on 2025-04-06
   - [swiftlint](https://github.com/realm/SwiftLint) from 0.58.2 to **0.59.0** on 2025-04-06
+  - [cpplint](https://github.com/cpplint/cpplint) from 2.0.1 to **2.0.2** on 2025-04-09
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2025.02.20 to **2025.04.07** on 2025-04-09
+  - [vale](https://vale.sh/) from 3.11.1 to **3.11.2** on 2025-04-09
 <!-- linter-versions-end -->
 
 ## [v8.5.0] - 2024-03-23

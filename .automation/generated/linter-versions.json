@@ -13,10 +13,10 @@
     "chktex": "1.7.8",
     "clang-format": "19.1.4",
     "clippy": "0.1.86",
-    "clj-kondo": "2025.02.20",
+    "clj-kondo": "2025.04.07",
     "cljstyle": "0.17.642",
     "coffeelint": "5.2.11",
-    "cpplint": "2.0.1",
+    "cpplint": "2.0.2",
     "csharpier": "0.30.6",
     "cspell": "8.18.1",
     "dartanalyzer": "3.7.2",
@@ -119,7 +119,7 @@
     "ts-standard": "12.0.2",
     "tsqllint": "1.16.0.0",
     "v8r": "4.2.1",
-    "vale": "3.11.1",
+    "vale": "3.11.2",
     "xmllint": "21304",
     "yamllint": "1.37.0"
 }
