@@ -49,7 +49,7 @@ FROM python:3.12.9-alpine3.21
 #############################################################################################
 #ARG__START
 # renovate: datasource=pypi depName=snakemake
-ARG PIP_SNAKEMAKE_VERSION=9.1.7
+ARG PIP_SNAKEMAKE_VERSION=9.1.9
 # renovate: datasource=pypi depName=pip
 ARG PIP_PIP_VERSION=25.0.1
 # renovate: datasource=pypi depName=virtualenv
