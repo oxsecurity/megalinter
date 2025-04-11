@@ -15,7 +15,7 @@ description: How to use snakemake (configure, ignore files, ignore errors, help 
 
 _This linter has been disabled in this version_
 
-_Disabled reason: Dependency datrie not maintained, and issue open in snakemake repo since july - <https://github.com/snakemake/snakemake/issues/2970>_
+_Disabled reason: Dependency datrie not maintained, and issue open in snakemake repo since july - https://github.com/snakemake/snakemake/issues/2970_
 
 ## snakemake documentation
 
@@ -1016,7 +1016,7 @@ defaults.
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=snakemake
-ARG PIP_SNAKEMAKE_VERSION=9.1.7
+ARG PIP_SNAKEMAKE_VERSION=9.1.9
 ```
 
 - PIP packages (Python):
