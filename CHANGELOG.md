@@ -91,6 +91,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2025.02.20 to **2025.04.07** on 2025-04-09
   - [vale](https://vale.sh/) from 3.11.1 to **3.11.2** on 2025-04-09
   - [stylelint](https://stylelint.io) from 16.17.0 to **16.18.0** on 2025-04-09
+  - [checkov](https://www.checkov.io/) from 3.2.394 to **3.2.402** on 2025-04-13
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.2.0 to **3.2.1** on 2025-04-13
 <!-- linter-versions-end -->
 
 ## [v8.5.0] - 2024-03-23
