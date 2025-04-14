@@ -93,6 +93,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [stylelint](https://stylelint.io) from 16.17.0 to **16.18.0** on 2025-04-09
   - [checkov](https://www.checkov.io/) from 3.2.394 to **3.2.402** on 2025-04-13
   - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.2.0 to **3.2.1** on 2025-04-13
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.32.4 to **1.33.2** on 2025-04-14
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.398 to **1.1.399** on 2025-04-14
+  - [checkov](https://www.checkov.io/) from 3.2.402 to **3.2.404** on 2025-04-14
 <!-- linter-versions-end -->
 
 ## [v8.5.0] - 2024-03-23
