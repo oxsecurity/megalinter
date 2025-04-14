@@ -157,6 +157,7 @@ class Linter:
             "enable_linters": [],
             "disable_descriptors": [],
             "disable_linters": [],
+            "enable_errors_linters": [],
             "disable_errors_linters": [],
             "post_linter_status": True,
         }
@@ -767,6 +768,18 @@ class Linter:
         if self.disable_errors_if_less_than is not None:
             self.disable_errors = False
         elif self.name in params["disable_errors_linters"]:
+            self.disable_errors = True
+        elif (
+            "enable_errors_linters" in params
+            and len(params["enable_errors_linters"]) > 0
+            and self.name in params["enable_errors_linters"]
+        ):
+            self.disable_errors = False
+        elif (
+            "enable_errors_linters" in params
+            and len(params["enable_errors_linters"]) > 0
+            and self.name not in params["enable_errors_linters"]
+        ):
             self.disable_errors = True
         elif config.get(self.request_id, self.name + "_DISABLE_ERRORS", "") == "false":
             self.disable_errors = False

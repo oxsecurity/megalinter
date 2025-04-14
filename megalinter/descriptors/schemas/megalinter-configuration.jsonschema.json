@@ -5409,6 +5409,21 @@
       "title": "Enabled descriptor keys",
       "type": "array"
     },
+    "ENABLE_ERRORS_LINTERS": {
+      "$id": "#/properties/ENABLE_ERRORS_LINTERS",
+      "description": "If ENABLE_ERRORS_LINTERS is set, only the listed linters will be considered as blocking",
+      "examples": [
+        [
+          "REPOSITORY_TRIVY",
+          "REPOSITORY_GITLEAKS"
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/enum_linter_keys"
+      },
+      "title": "Disabled errors linter keys",
+      "type": "array"
+    },
     "ENABLE_LINTERS": {
       "$id": "#/properties/ENABLE_LINTERS",
       "description": "If ENABLE_LINTERS is set, only listed linters will be processed",
