@@ -31,7 +31,7 @@ jobs:
     permissions: read-all
     strategy:
       fail-fast: false
-      max-parallel: 14
+      max-parallel: 18
       matrix:
         # linters-start
         linter:
