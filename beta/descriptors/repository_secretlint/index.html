@@ -3678,10 +3678,10 @@
 <img alt="secretlint" class="megalinter-banner" height="150px" src="https://github.com/secretlint/secretlint/raw/master/docs/assets/SecretLintLP.png">
 </img></a>
 </div>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-downgraded%20version-orange"><img alt="downgraded version" src="https://shields.io/badge/-downgraded%20version-orange"/> <a href="https://github.com/secretlint/secretlint"><img alt="GitHub stars" src="https://img.shields.io/github/stars/secretlint/secretlint?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-SARIF-orange"><img alt="sarif" src="https://shields.io/badge/-SARIF-orange"/></a> <a href="https://github.com/secretlint/secretlint/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/secretlint/secretlint?sort=semver"/></a> <a href="https://github.com/secretlint/secretlint/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/secretlint/secretlint"/></a> <a href="https://github.com/secretlint/secretlint/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/secretlint/secretlint"/></a> <a href="https://github.com/secretlint/secretlint/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/secretlint/secretlint"/></a></a></p>
+<p><a href="https://github.com/secretlint/secretlint"><img alt="GitHub stars" src="https://img.shields.io/github/stars/secretlint/secretlint?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-SARIF-orange"><img alt="sarif" src="https://shields.io/badge/-SARIF-orange"/></a> <a href="https://github.com/secretlint/secretlint/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/secretlint/secretlint?sort=semver"/></a> <a href="https://github.com/secretlint/secretlint/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/secretlint/secretlint"/></a> <a href="https://github.com/secretlint/secretlint/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/secretlint/secretlint"/></a> <a href="https://github.com/secretlint/secretlint/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/secretlint/secretlint"/></a></p>
 <h2 id="secretlint-documentation">secretlint documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>9.2.0</strong></li>
+<li>Version in MegaLinter: <strong>9.3.1</strong></li>
 <li>Visit <a href="https://github.com/secretlint/secretlint#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/secretlint/secretlint#configuration" target="_blank">How to configure secretlint rules</a><ul>
 <li>If custom <code>.secretlintrc.json</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.secretlintrc.json" target="_blank">.secretlintrc.json</a> will be used</li>
@@ -3926,53 +3926,51 @@
 </code></pre>
 <h3 id="help-content">Help content</h3>
 <pre><code class="language-shell">
-  Secretlint CLI that scan secret/credential data.
+Usage
+  $ secretlint [file|glob*]
 
-  Usage
-    $ secretlint [file|glob*]
+Note
+  supported glob syntax is based on microglob
+  https://github.com/micromatch/micromatch#matching-features
 
-  Note
-    supported glob syntax is based on microglob
-    https://github.com/micromatch/micromatch#matching-features
+Options
+  --init             setup config file. Create .secretlintrc.json file from your package.json
+  --format           [String] formatter name. Default: "stylish". Available Formatter: checkstyle, compact, jslint-xml, junit, pretty-error, stylish, tap, unix, json, mask-result, table
+  --output           [path:String] output file path that is written of reported result.
+  --no-color         disable ANSI-color of output.
+  --no-terminalLink  disable terminalLink of output.
+  --maskSecrets      enable masking of secret values. replace actual secrets with "***".
+  --secretlintrc     [path:String] path to .secretlintrc config file. Default: .secretlintrc.*
+  --secretlintignore [path:String] path to .secretlintignore file. Default: .secretlintignore
+  --stdinFileName    [String] filename to process STDIN content. Some rules depend on filename to check content.
 
-  Options
-    --init             setup config file. Create .secretlintrc.json file from your package.json
-    --format           [String] formatter name. Default: "stylish". Available Formatter: checkstyle, compact, jslint-xml, junit, pretty-error, stylish, tap, unix, json, mask-result, table
-    --output           [path:String] output file path that is written of reported result.
-    --no-color         disable ANSI-color of output.
-    --no-terminalLink  disable terminalLink of output.
-    --maskSecrets      enable masking of secret values. replace actual secrets with "***".
-    --secretlintrc     [path:String] path to .secretlintrc config file. Default: .secretlintrc.*
-    --secretlintignore [path:String] path to .secretlintignore file. Default: .secretlintignore
-    --stdinFileName    [String] filename to process STDIN content. Some rules depend on filename to check content.
+Options for Developer
+  --profile          Enable performance profile.
+  --secretlintrcJSON [String] a JSON string of .secretlintrc. use JSON string instead of rc file.
 
-  Options for Developer
-    --profile          Enable performance profile.
-    --secretlintrcJSON [String] a JSON string of .secretlintrc. use JSON string instead of rc file.
+Experimental Options
+  --locale            [String] locale tag for translating message. Default: en
 
-  Experimental Options
-    --locale            [String] locale tag for translating message. Default: en
+Examples
+  $ secretlint ./README.md
+  # glob pattern should be wrapped with double quote
+  $ secretlint "**/*"
+  $ secretlint "source/**/*.ini"
+  # found secrets and mask the secrets
+  $ secretlint .zsh_history --format=mask-result --output=.zsh_history
+  # lint STDIN content instead of file
+  $ echo "SECRET CONTENT" | secretlint --stdinFileName=secret.txt
 
-  Examples
-    $ secretlint ./README.md
-    # glob pattern should be wrapped with double quote
-    $ secretlint "**/*"
-    $ secretlint "source/**/*.ini"
-    # found secrets and mask the secrets
-    $ secretlint .zsh_history --format=mask-result --output=.zsh_history
-    # lint STDIN content instead of file
-    $ echo "SECRET CONTENT" | secretlint --stdinFileName=secret.txt
+Exit Status
+  Secretlint exits with the following values:
 
-  Exit Status
-    Secretlint exits with the following values:
-
-    - 0:
-      - Linting succeeded, no errors found.
-      - Found lint error but --output is specified.
-    - 1:
-      - Linting failed, errors found.
-    - 2:
-      - Unexpected error occurred, fatal error.
+  - 0:
+    - Linting succeeded, no errors found.
+    - Found lint error but --output is specified.
+  - 1:
+    - Linting failed, errors found.
+  - 2:
+    - Unexpected error occurred, fatal error.
 
 </code></pre>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
@@ -3980,17 +3978,17 @@
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile"># renovate: datasource=npm depName=secretlint
-ARG NPM_SECRETLINT_VERSION=9.2.0
+ARG NPM_SECRETLINT_VERSION=9.3.1
 # renovate: datasource=npm depName=@secretlint/secretlint-rule-preset-recommend
-ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=9.3.0
+ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=9.3.1
 # renovate: datasource=npm depName=@secretlint/secretlint-formatter-sarif
-ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=9.3.0
+ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=9.3.1
 </code></pre>
 <ul>
 <li>NPM packages (node.js):<ul>
-<li><a href="https://www.npmjs.com/package/secretlint/v/9.2.0">secretlint@9.2.0</a></li>
-<li><a href="https://www.npmjs.com/package/@secretlint/secretlint-rule-preset-recommend/v/9.3.0">@secretlint/secretlint-rule-preset-recommend@9.3.0</a></li>
-<li><a href="https://www.npmjs.com/package/@secretlint/secretlint-formatter-sarif/v/9.3.0">@secretlint/secretlint-formatter-sarif@9.3.0</a></li>
+<li><a href="https://www.npmjs.com/package/secretlint/v/9.3.1">secretlint@9.3.1</a></li>
+<li><a href="https://www.npmjs.com/package/@secretlint/secretlint-rule-preset-recommend/v/9.3.1">@secretlint/secretlint-rule-preset-recommend@9.3.1</a></li>
+<li><a href="https://www.npmjs.com/package/@secretlint/secretlint-formatter-sarif/v/9.3.1">@secretlint/secretlint-formatter-sarif@9.3.1</a></li>
 </ul>
 </li>
 </ul>

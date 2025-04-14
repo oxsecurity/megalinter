@@ -3526,6 +3526,7 @@
 <li>If <code>DISABLE</code> is set, the linters in the listed descriptors will be skipped</li>
 <li>If <code>DISABLE_LINTERS</code> is set, the listed linters will be skipped</li>
 <li>If <code>DISABLE_ERRORS_LINTERS</code> is set, the listed linters will be run, but if errors are found, they will be considered as non blocking</li>
+<li>If <code>ENABLE_ERRORS_LINTERS</code> is set, only the linters in this list will be considered as blocking.</li>
 </ul>
 <p>Examples:</p>
 <ul>
@@ -3534,6 +3535,11 @@
 <pre><code class="language-yaml">ENABLE: JAVASCRIPT,GROOVY
 DISABLE_LINTERS: JAVASCRIPT_STANDARD
 DISABLE_ERRORS_LINTERS: REPOSITORY_DEVSKIM
+</code></pre>
+<ul>
+<li>Run all matching linters but only trivy is blocking</li>
+</ul>
+<pre><code class="language-yaml">ENABLE_ERRORS_LINTERS: REPOSITORY_TRIVY
 </code></pre>
 <ul>
 <li>Run all linters except PHP linters (PHP_BUILTIN, PHP_PHPCS, PHP_PHPSTAN, PHP_PSALM)</li>
