@@ -11,7 +11,7 @@ description: How to use secretlint (configure, ignore files, ignore errors, help
   </a>
 </div>
 
-[![GitHub stars](https://img.shields.io/github/stars/secretlint/secretlint?cacheSeconds=3600)](https://github.com/secretlint/secretlint) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/secretlint/secretlint?sort=semver)](https://github.com/secretlint/secretlint/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/secretlint/secretlint)](https://github.com/secretlint/secretlint/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/secretlint/secretlint)](https://github.com/secretlint/secretlint/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/secretlint/secretlint)](https://github.com/secretlint/secretlint/graphs/contributors/)
+![downgraded version](https://shields.io/badge/-downgraded%20version-orange) [![GitHub stars](https://img.shields.io/github/stars/secretlint/secretlint?cacheSeconds=3600)](https://github.com/secretlint/secretlint) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/secretlint/secretlint?sort=semver)](https://github.com/secretlint/secretlint/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/secretlint/secretlint)](https://github.com/secretlint/secretlint/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/secretlint/secretlint)](https://github.com/secretlint/secretlint/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/secretlint/secretlint)](https://github.com/secretlint/secretlint/graphs/contributors/)
 
 ## secretlint documentation
 
@@ -156,12 +156,12 @@ secretlint --secretlintrc .secretlintrc.json "**/*"
 # renovate: datasource=npm depName=secretlint
 ARG NPM_SECRETLINT_VERSION=9.2.0
 # renovate: datasource=npm depName=@secretlint/secretlint-rule-preset-recommend
-ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=9.2.0
+ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=9.3.0
 # renovate: datasource=npm depName=@secretlint/secretlint-formatter-sarif
-ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=9.2.0
+ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=9.3.0
 ```
 
 - NPM packages (node.js):
   - [secretlint@9.2.0](https://www.npmjs.com/package/secretlint/v/9.2.0)
-  - [@secretlint/secretlint-rule-preset-recommend@9.2.0](https://www.npmjs.com/package/@secretlint/secretlint-rule-preset-recommend/v/9.2.0)
-  - [@secretlint/secretlint-formatter-sarif@9.2.0](https://www.npmjs.com/package/@secretlint/secretlint-formatter-sarif/v/9.2.0)
+  - [@secretlint/secretlint-rule-preset-recommend@9.3.0](https://www.npmjs.com/package/@secretlint/secretlint-rule-preset-recommend/v/9.3.0)
+  - [@secretlint/secretlint-formatter-sarif@9.3.0](https://www.npmjs.com/package/@secretlint/secretlint-formatter-sarif/v/9.3.0)

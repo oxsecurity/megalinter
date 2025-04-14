@@ -262,7 +262,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=lightning-flow-scanner
-          ARG LIGHTNING_FLOW_SCANNER_VERSION=3.2.1
+          ARG LIGHTNING_FLOW_SCANNER_VERSION=3.4.0
         - |-
           RUN echo y|sf plugins install lightning-flow-scanner@${LIGHTNING_FLOW_SCANNER_VERSION} \
               && (npm cache clean --force || true) \

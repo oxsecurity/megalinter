@@ -47,7 +47,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=checkov
-          ARG PIP_CHECKOV_VERSION=3.2.402
+          ARG PIP_CHECKOV_VERSION=3.2.404
       pip:
         - checkov==${PIP_CHECKOV_VERSION}
     ide:
@@ -428,11 +428,13 @@ linters:
     examples:
       - 'secretlint "*/**"'
       - 'secretlint --secretlintrc .secretlintrc.json "**/*"'
+    downgraded_version: true
+    downgraded_reason: https://github.com/secretlint/secretlint/issues/1005
     install:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=secretlint
-          ARG NPM_SECRETLINT_VERSION=9.3.0
+          ARG NPM_SECRETLINT_VERSION=9.2.0
         - |-
           # renovate: datasource=npm depName=@secretlint/secretlint-rule-preset-recommend
           ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=9.3.0
