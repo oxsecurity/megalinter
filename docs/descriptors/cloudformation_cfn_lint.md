@@ -15,7 +15,7 @@ description: How to use cfn-lint (configure, ignore files, ignore errors, help &
 
 ## cfn-lint documentation
 
-- Version in MegaLinter: **1.32.4**
+- Version in MegaLinter: **1.33.2**
 - Visit [Official Web Site](https://github.com/aws-cloudformation/cfn-lint#readme){target=_blank}
   - If custom `.cfnlintrc.yml` config file isn't found, [.cfnlintrc.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.cfnlintrc.yml){target=_blank} will be used
 - See [Index of problems detected by cfn-lint](https://github.com/aws-cloudformation/cfn-lint/blob/main/docs/rules.md){target=_blank}
@@ -165,8 +165,8 @@ Advanced / Debugging:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=cfn-lint
-ARG PIP_CFN_LINT_VERSION=1.32.4
+ARG PIP_CFN_LINT_VERSION=1.33.2
 ```
 
 - PIP packages (Python):
-  - [cfn-lint[sarif]==1.32.4](https://pypi.org/project/cfn-lint[sarif]/1.32.4)
+  - [cfn-lint[sarif]==1.33.2](https://pypi.org/project/cfn-lint[sarif]/1.33.2)
