@@ -118,6 +118,9 @@ class Megalinter:
         self.enable_linters = config.get_list(self.request_id, "ENABLE_LINTERS", [])
         self.disable_descriptors = config.get_list(self.request_id, "DISABLE", [])
         self.disable_linters = config.get_list(self.request_id, "DISABLE_LINTERS", [])
+        self.enable_errors_linters = config.get_list(
+            self.request_id, "ENABLE_ERRORS_LINTERS", []
+        )
         self.disable_errors_linters = config.get_list(
             self.request_id, "DISABLE_ERRORS_LINTERS", []
         )
@@ -592,6 +595,7 @@ class Megalinter:
             "enable_linters": self.enable_linters,
             "disable_descriptors": self.disable_descriptors,
             "disable_linters": self.disable_linters,
+            "enable_errors_linters": self.enable_errors_linters,
             "disable_errors_linters": self.disable_errors_linters,
             "workspace": self.workspace,
             "github_workspace": self.github_workspace,
