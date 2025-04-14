@@ -51,7 +51,7 @@ FROM python:3.12.10-alpine3.21
 # renovate: datasource=pypi depName=pylint
 ARG PIP_PYLINT_VERSION=3.3.6
 # renovate: datasource=pypi depName=typing-extensions
-ARG PIP_TYPING_EXTENSIONS_VERSION=4.13.1
+ARG PIP_TYPING_EXTENSIONS_VERSION=4.13.2
 # renovate: datasource=pypi depName=pip
 ARG PIP_PIP_VERSION=25.0.1
 # renovate: datasource=pypi depName=virtualenv
