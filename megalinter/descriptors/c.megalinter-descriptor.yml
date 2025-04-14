@@ -27,7 +27,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=cpplint
-          ARG PIP_CPPLINT_VERSION=2.0.0
+          ARG PIP_CPPLINT_VERSION=2.0.2
       pip:
         - cpplint==${PIP_CPPLINT_VERSION}
   # clang-format

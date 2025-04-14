@@ -12,7 +12,7 @@ use a `bicepconfig.json` file. For more information, see the [documentation for 
 
 ## bicep_linter documentation
 
-- Version in MegaLinter: **0.33.93**
+- Version in MegaLinter: **0.34.44**
 - Visit [Official Web Site](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter){target=_blank}
 - See [How to configure bicep_linter rules](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/bicep-config){target=_blank}
 - See [How to disable bicep_linter rules in files](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter#silencing-false-positives){target=_blank}
@@ -56,8 +56,8 @@ This linter is available in the following flavors
 |                                                                         <!-- -->                                                                         | Flavor                                                     | Description                                              | Embedded linters |                                                                                                                                                                                           Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------|:---------------------------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)       | Default MegaLinter Flavor                                |       125        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/)       | Optimized for C, C++, C# or VB based projects            |        61        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
-|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/) | Optimized for C, C++, C# or VB based projects with JS/TS |        70        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/)       | Optimized for C, C++, C# or VB based projects            |        62        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/) | Optimized for C, C++, C# or VB based projects with JS/TS |        71        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
 
 ## Behind the scenes
 
@@ -86,10 +86,10 @@ az bicep build -f infra.bicep
 ### Help content
 
 ```shell
-Bicep CLI version 0.33.93 (7a77c7f2a5)
+Bicep CLI version 0.34.44 (1f661a23c4)
 
 Usage:
-  bicep build [options] <file>
+  bicep build [options] [<file>]
     Builds a .bicep file.
 
     Arguments:
@@ -101,6 +101,7 @@ Usage:
       --stdout                       Prints the output to stdout.
       --no-restore                   Builds the bicep file without restoring external modules.
       --diagnostics-format <format>  Sets the format with which diagnostics are displayed. Valid values are ( Default | Sarif ).
+      --pattern <pattern>            Builds all files matching the specified glob pattern.
 
     Examples:
       bicep build file.bicep
@@ -109,21 +110,23 @@ Usage:
       bicep build file.bicep --outfile file.json
       bicep build file.bicep --no-restore
       bicep build file.bicep --diagnostics-format sarif
+      bicep build --pattern './dir/**/*.bicep'
 
-  bicep format [options] <file>
+  bicep format [options] [<file>]
     Formats a .bicep file.
 
     Arguments:
       <file>        The input file
 
     Options:
-      --outdir <dir>        Saves the output at the specified directory.
-      --outfile <file>      Saves the output as the specified file path.
-      --stdout              Prints the output to stdout.
-      --newline             Set newline char. Valid values are ( Auto | LF | CRLF | CR ).
-      --indent-kind          Set indentation kind. Valid values are ( Space | Tab ).
-      --indent-size          Number of spaces to indent with (Only valid with --indentKind set to Space).
-      --insert-final-newline  Insert a final newline.
+      --outdir <dir>            Saves the output at the specified directory.
+      --outfile <file>          Saves the output as the specified file path.
+      --stdout                  Prints the output to stdout.
+      --newline                 Set newline char. Valid values are ( Auto | LF | CRLF | CR ).
+      --indent-kind             Set indentation kind. Valid values are ( Space | Tab ).
+      --indent-size             Number of spaces to indent with (Only valid with --indentKind set to Space).
+      --insert-final-newline    Insert a final newline.
+      --pattern <pattern>       Formats all files matching the specified glob pattern.
 
     Examples:
       bicep format file.bicep
@@ -131,6 +134,7 @@ Usage:
       bicep format file.bicep --outdir dir1
       bicep format file.bicep --outfile file.json
       bicep format file.bicep --indent-kind Tab
+      bicep format --pattern './dir/**/*.bicep'
 
   bicep decompile [options] <file>
     Attempts to decompile a template .json file to .bicep.
@@ -151,7 +155,7 @@ Usage:
       bicep decompile file.json --force
       bicep decompile file.json --outfile file.bicep
 
-  bicep lint [options] <file>
+  bicep lint [options] [<file>]
     Lints a .bicep file.
 
     Arguments:
@@ -160,11 +164,13 @@ Usage:
     Options:
       --no-restore                   Skips restoring external modules.
       --diagnostics-format <format>  Sets the format with which diagnostics are displayed. Valid values are ( Default | Sarif ).
+      --pattern <pattern>            Lints all files matching the specified glob pattern.
 
     Examples:
       bicep lint file.bicep
       bicep lint file.bicep --no-restore
       bicep lint file.bicep --diagnostics-format sarif
+      bicep lint --pattern './dir/**/*.bicep'
 
   bicep decompile-params [options] <file>
     Attempts to decompile a parameters .json file to .bicepparam.
@@ -227,11 +233,18 @@ Usage:
       bicep publish file.bicep --target br:example.azurecr.io/hello/world:v1 --documentation-uri https://github.com/hello-world/README.md --with-source
       bicep publish file.json --target br:example.azurecr.io/hello/world:v1 --documentation-uri https://github.com/hello-world/README.md
 
-  bicep restore <file>
+  bicep restore [<file>]
     Restores external modules from the specified Bicep file to the local module cache.
 
     Arguments:
       <file>        The input file
+
+    Options:
+      --pattern <pattern>  Restores all files matching the specified glob pattern.
+
+    Examples:
+      bicep restore main.bicep
+      bicep restore --pattern './dir/**/*.bicep'
 
   bicep [options]
     Options:
@@ -240,7 +253,7 @@ Usage:
       --license                   Prints license information
       --third-party-notices       Prints third-party notices
 
-  bicep build-params <file>
+  bicep build-params [<file>]
     Builds a .json file from a .bicepparam file.
 
     Arguments:
@@ -253,6 +266,7 @@ Usage:
       --stdout                       Prints the output of building both the parameter file (.bicepparam) and the template it points to (.bicep) as json to stdout.
       --no-restore                   Builds the bicep file (referenced in using declaration) without restoring external modules.
       --diagnostics-format <format>  Sets the format with which diagnostics are displayed. Valid values are ( Default | Sarif ).
+      --pattern <pattern>            Builds all files matching the specified glob pattern.
 
     Examples:
       bicep build-params params.bicepparam
@@ -261,6 +275,7 @@ Usage:
       bicep build-params params.bicepparam --outfile otherParams.json
       bicep build-params params.bicepparam --no-restore
       bicep build-params params.bicepparam --diagnostics-format sarif
+      bicep build-params --pattern './dir/**/*.bicepparam'
 
   bicep jsonrpc [options]
     Runs a JSONRPC server for interacting with Bicep programmatically.
@@ -281,7 +296,7 @@ Usage:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=github-tags depName=Azure/bicep
-ARG BICEP_VERSION=0.33.93
+ARG BICEP_VERSION=0.34.44
 ARG BICEP_EXE='bicep'
 ARG BICEP_DIR='/usr/local/bin'
 RUN curl --retry 5 --retry-delay 5 -sLo ${BICEP_EXE} "https://github.com/Azure/bicep/releases/download/v${BICEP_VERSION}/bicep-linux-musl-x64" \

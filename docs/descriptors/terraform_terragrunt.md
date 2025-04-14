@@ -9,7 +9,7 @@ description: How to use terragrunt (configure, ignore files, ignore errors, help
 
 ## terragrunt documentation
 
-- Version in MegaLinter: **0.71.1**
+- Version in MegaLinter: **0.77.7**
 - Visit [Official Web Site](https://terragrunt.gruntwork.io){target=_blank}
 - See [How to configure terragrunt rules](https://terragrunt.gruntwork.io/docs/getting-started/configuration/#terragrunt-configuration-file){target=_blank}
 
@@ -47,9 +47,9 @@ This linter is available in the following flavors
 |                                                                         <!-- -->                                                                         | Flavor                                                     | Description                                     | Embedded linters |                                                                                                                                                                                           Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------|:------------------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)       | Default MegaLinter Flavor                       |       125        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)     | MegaLinter for the most commonly used languages |        85        |     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)     | MegaLinter for the most commonly used languages |        86        |     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://megalinter.io/beta/flavors/security/)   | Optimized for security                          |        24        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
-|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://megalinter.io/beta/flavors/terraform/) | Optimized for TERRAFORM based projects          |        53        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://megalinter.io/beta/flavors/terraform/) | Optimized for TERRAFORM based projects          |        54        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform) |
 
 ## Behind the scenes
 
@@ -78,87 +78,70 @@ terragrunt hclfmt --terragrunt-check --terragrunt-config terragrunt.hcl --terrag
 ### Help content
 
 ```shell
-NAME:
-   terragrunt - Terragrunt is a flexible orchestration tool that allows Infrastructure as Code written in OpenTofu/Terraform to scale. For documentation, see https://terragrunt.gruntwork.io/.
+Usage: terragrunt [global options] <command> [options]
 
-USAGE:
-   terragrunt <command> [options]
+   Terragrunt is a flexible orchestration tool that allows Infrastructure as Code written in OpenTofu/Terraform to scale.
+   For documentation, see https://terragrunt.gruntwork.io/.
 
-COMMANDS:
-   aws-provider-patch     Overwrite settings on nested AWS providers to work around a Terraform bug (issue #13018).
-   catalog                Launch the user interface for searching and managing your module catalog.
+Main commands:
+   backend                Interact with OpenTofu/Terraform backend infrastructure.
+   exec                   Execute an arbitrary command.
    graph                  Execute commands on the full graph of dependent modules for the current module, ensuring correct execution order.
+   run                    Run an OpenTofu/Terraform command.
+   run-all                Run a terraform command against a 'stack' by running the specified command in each subfolder.
+   stack                  Terragrunt stack commands.
+
+Catalog commands:
+   catalog                Launch the user interface for searching and managing your module catalog.
+   scaffold               Scaffold a new Terragrunt module.
+
+Discovery commands:
+   find                   Find relevant Terragrunt configurations.
+   list                   List relevant Terragrunt configurations.
+
+Configuration commands:
    graph-dependencies     Prints the terragrunt dependency graph to stdout.
    hclfmt                 Recursively find hcl files and rewrite them into a canonical format.
    hclvalidate            Find all hcl files from the config stack and validate them.
+   info                   List of commands to display Terragrunt settings.
    output-module-groups   Output groups of modules ordered by command (apply or destroy) as a list of list in JSON (useful for CI use cases).
    render-json            Render the final terragrunt config, with all variables, includes, and functions resolved, as json.
-   run-all                Run a terraform command against a 'stack' by running the specified command in each subfolder.
-   scaffold               Scaffold a new Terragrunt module.
    terragrunt-info        Emits limited terragrunt state on stdout and exits.
    validate-inputs        Checks if the terragrunt configured inputs align with the terraform defined variables.
-   *                      Terragrunt forwards all other commands directly to Terraform
 
-GLOBAL OPTIONS:
-   --experiment value                                Enables specific experiments. For a list of available experiments, see https://terragrunt.gruntwork.io/docs/reference/experiment-mode . [$TERRAGRUNT_EXPERIMENT]
-   --experiment-mode                                 Enables experiment mode for Terragrunt. For more information, see https://terragrunt.gruntwork.io/docs/reference/experiment-mode . [$TERRAGRUNT_EXPERIMENT_MODE]
-   --feature value                                   Set feature flags for the HCL code. [$TERRAGRUNT_FEATURE]
-   --strict-control value                            Enables specific strict controls. For a list of available controls, see https://terragrunt.gruntwork.io/docs/reference/strict-mode . [$TERRAGRUNT_STRICT_CONTROL]
-   --strict-mode                                     Enables strict mode for Terragrunt. For more information, see https://terragrunt.gruntwork.io/docs/reference/strict-mode . [$TERRAGRUNT_STRICT_MODE]
-   --terragrunt-auth-provider-cmd value              The command and arguments that can be used to fetch authentication configurations. [$TERRAGRUNT_AUTH_PROVIDER_CMD]
-   --terragrunt-config value                         The path to the Terragrunt config file. Default is terragrunt.hcl. [$TERRAGRUNT_CONFIG]
-   --terragrunt-debug                                Write terragrunt-debug.tfvars to working folder to help root-cause issues. [$TERRAGRUNT_DEBUG]
-   --terragrunt-disable-bucket-update                When this flag is set Terragrunt will not update the remote state bucket. [$TERRAGRUNT_DISABLE_BUCKET_UPDATE]
-   --terragrunt-disable-command-validation           When this flag is set, Terragrunt will not validate the terraform command. [$TERRAGRUNT_DISABLE_COMMAND_VALIDATION]
-   --terragrunt-download-dir value                   The path to download OpenTofu/Terraform modules into. Default is .terragrunt-cache in the working directory. [$TERRAGRUNT_DOWNLOAD]
-   --terragrunt-exclude-dir value                    Unix-style glob of directories to exclude when running *-all commands. [$TERRAGRUNT_EXCLUDE_DIR]
-   --terragrunt-excludes-file value                  Path to a file with a list of directories that need to be excluded when running *-all commands. (default: .terragrunt-excludes) [$TERRAGRUNT_EXCLUDES_FILE]
-   --terragrunt-fail-on-state-bucket-creation        When this flag is set Terragrunt will fail if the remote state bucket needs to be created. [$TERRAGRUNT_FAIL_ON_STATE_BUCKET_CREATION]
-   --terragrunt-fetch-dependency-output-from-state   The option fetches dependency output directly from the state file instead of init dependencies and running terraform on them. [$TERRAGRUNT_FETCH_DEPENDENCY_OUTPUT_FROM_STATE]
-   --terragrunt-forward-tf-stdout                    If specified, the output of OpenTofu/Terraform commands will be printed as is, without being integrated into the Terragrunt log. [$TERRAGRUNT_FORWARD_TF_STDOUT]
-   --terragrunt-iam-assume-role-duration value       Session duration for IAM Assume Role session. Can also be set via the TERRAGRUNT_IAM_ASSUME_ROLE_DURATION environment variable. [$TERRAGRUNT_IAM_ASSUME_ROLE_DURATION]
-   --terragrunt-iam-assume-role-session-name value   Name for the IAM Assumed Role session. Can also be set via TERRAGRUNT_IAM_ASSUME_ROLE_SESSION_NAME environment variable. [$TERRAGRUNT_IAM_ASSUME_ROLE_SESSION_NAME]
-   --terragrunt-iam-role value                       Assume the specified IAM role before executing OpenTofu/Terraform. Can also be set via the TERRAGRUNT_IAM_ROLE environment variable. [$TERRAGRUNT_IAM_ROLE]
-   --terragrunt-iam-web-identity-token value         For AssumeRoleWithWebIdentity, the WebIdentity token. Can also be set via TERRAGRUNT_IAM_ASSUME_ROLE_WEB_IDENTITY_TOKEN environment variable [$TERRAGRUNT_IAM_ASSUME_ROLE_WEB_IDENTITY_TOKEN]
-   --terragrunt-ignore-dependency-errors             *-all commands continue processing components even if a dependency fails. [$TERRAGRUNT_IGNORE_DEPENDENCY_ERRORS]
-   --terragrunt-ignore-dependency-order              *-all commands will be run disregarding the dependencies [$TERRAGRUNT_IGNORE_DEPENDENCY_ORDER]
-   --terragrunt-ignore-external-dependencies         *-all commands will not attempt to include external dependencies [$TERRAGRUNT_IGNORE_EXTERNAL_DEPENDENCIES]
-   --terragrunt-include-dir value                    Unix-style glob of directories to include when running *-all commands [$TERRAGRUNT_INCLUDE_DIR]
-   --terragrunt-include-external-dependencies        *-all commands will include external dependencies [$TERRAGRUNT_INCLUDE_EXTERNAL_DEPENDENCIES]
-   --terragrunt-log-custom-format value              Set the custom log formatting [$TERRAGRUNT_LOG_CUSTOM_FORMAT]
-   --terragrunt-log-disable                          Disable logging [$TERRAGRUNT_LOG_DISABLE]
-   --terragrunt-log-disable-error-summary            Skip error summary at the end of the command. [$TERRAGRUNT_LOG_DISABLE_ERROR_SUMMARY]
-   --terragrunt-log-format value                     Set the log format [$TERRAGRUNT_LOG_FORMAT]
-   --terragrunt-log-level value                      Sets the logging level for Terragrunt. Supported levels: stderr, stdout, error, warn, info, debug, trace (default: info) [$TERRAGRUNT_LOG_LEVEL]
-   --terragrunt-log-show-abs-paths                   Show absolute paths in logs [$TERRAGRUNT_LOG_SHOW_ABS_PATHS]
-   --terragrunt-modules-that-include value           If flag is set, 'run-all' will only run the command against Terragrunt modules that include the specified file. [$TERRAGRUNT_MODULES_THAT_INCLUDE]
-   --terragrunt-no-auto-approve -auto-approve        Don't automatically append -auto-approve to the underlying OpenTofu/Terraform commands run with 'run-all'. (default: true) [$TERRAGRUNT_NO_AUTO_APPROVE]
-   --terragrunt-no-auto-init                         Don't automatically run 'terraform/tofu init' during other terragrunt commands. You must run 'terragrunt init' manually. (default: true) [$TERRAGRUNT_NO_AUTO_INIT]
-   --terragrunt-no-auto-retry                        Don't automatically re-run command in case of transient errors. (default: true) [$TERRAGRUNT_NO_AUTO_RETRY]
-   --terragrunt-no-color                             If specified, Terragrunt output won't contain any color. [$TERRAGRUNT_NO_COLOR]
-   --terragrunt-no-destroy-dependencies-check        When this flag is set, Terragrunt will not check for dependent modules when destroying. [$TERRAGRUNT_NO_DESTROY_DEPENDENCIES_CHECK]
-   --terragrunt-non-interactive                      Assume "yes" for all prompts. [$TERRAGRUNT_NON_INTERACTIVE]
-   --terragrunt-parallelism value                    *-all commands parallelism set to at most N modules (default: 2147483647) [$TERRAGRUNT_PARALLELISM]
-   --terragrunt-provider-cache                       Enables Terragrunt's provider caching. [$TERRAGRUNT_PROVIDER_CACHE]
-   --terragrunt-provider-cache-dir value             The path to the Terragrunt provider cache directory. By default, 'terragrunt/providers' folder in the user cache directory. [$TERRAGRUNT_PROVIDER_CACHE_DIR]
-   --terragrunt-provider-cache-hostname value        The hostname of the Terragrunt Provider Cache server. By default, 'localhost'. [$TERRAGRUNT_PROVIDER_CACHE_HOSTNAME]
-   --terragrunt-provider-cache-port value            The port of the Terragrunt Provider Cache server. By default, assigned automatically. [$TERRAGRUNT_PROVIDER_CACHE_PORT]
-   --terragrunt-provider-cache-registry-names value  The list of remote registries to cached by Terragrunt Provider Cache server. By default, 'registry.terraform.io', 'registry.opentofu.org'. (default: registry.terraform.io,registry.opentofu.org) [$TERRAGRUNT_PROVIDER_CACHE_REGISTRY_NAMES]
-   --terragrunt-provider-cache-token value           The Token for authentication to the Terragrunt Provider Cache server. By default, assigned automatically. [$TERRAGRUNT_PROVIDER_CACHE_TOKEN]
-   --terragrunt-queue-include-units-reading value    If flag is set, 'run-all' will only run the command against Terragrunt units that read the specified file via an HCL function. [$TERRAGRUNT_QUEUE_INCLUDE_UNITS_READING]
-   --terragrunt-source value                         Download OpenTofu/Terraform configurations from the specified source into a temporary folder, and run Terraform in that temporary folder. [$TERRAGRUNT_SOURCE]
-   --terragrunt-source-map value                     Replace any source URL (including the source URL of a config pulled in with dependency blocks) that has root source with dest. [$TERRAGRUNT_SOURCE_MAP]
-   --terragrunt-source-update                        Delete the contents of the temporary folder to clear out any old, cached source code before downloading new source code into it. [$TERRAGRUNT_SOURCE_UPDATE]
-   --terragrunt-strict-include                       If flag is set, only modules under the directories passed in with '--terragrunt-include-dir' will be included. [$TERRAGRUNT_STRICT_INCLUDE]
-   --terragrunt-tfpath value                         Path to the Terraform binary. Default is tofu (on PATH). (default: terraform) [$TERRAGRUNT_TFPATH]
-   --terragrunt-use-partial-parse-config-cache       Enables caching of includes during partial parsing operations. Will also be used for the --terragrunt-iam-role option if provided. [$TERRAGRUNT_USE_PARTIAL_PARSE_CONFIG_CACHE]
-   --terragrunt-working-dir value                    The path to the directory of Terragrunt configurations. Default is current directory. [$TERRAGRUNT_WORKING_DIR]
-   --help, -h                                        Show help
-   --version, -v                                     Show terragrunt version
+OpenTofu shortcuts:
+   apply                  Create or update infrastructure.
+   destroy                Destroy previously-created infrastructure.
+   force-unlock           Release a stuck lock on the current workspace.
+   import                 Associate existing infrastructure with a OpenTofu/Terraform resource.
+   init                   Prepare your working directory for other commands.
+   output                 Show output values from your root module.
+   plan                   Show changes required by the current configuration.
+   refresh                Update the state to match remote systems.
+   show                   Show the current state or a saved plan.
+   state                  Advanced state management.
+   test                   Execute integration tests for OpenTofu/Terraform modules.
+   validate               Check whether the configuration is valid.
 
-VERSION: v0.71.1
+Global Options:
+   --experiment value         Enables specific experiments. For a list of available experiments, see https://terragrunt.gruntwork.io/docs/reference/experiment-mode . [$TG_EXPERIMENT]
+   --experiment-mode          Enables experiment mode for Terragrunt. For more information, see https://terragrunt.gruntwork.io/docs/reference/experiment-mode . (default: false) [$TG_EXPERIMENT_MODE]
+   --log-custom-format value  Set the custom log formatting. [$TG_LOG_CUSTOM_FORMAT]
+   --log-disable              Disable logging. (default: false) [$TG_LOG_DISABLE]
+   --log-format value         Set the log format. [$TG_LOG_FORMAT]
+   --log-level value          Sets the logging level for Terragrunt. Supported levels: stderr, stdout, error, warn, info, debug, trace. (default: info) [$TG_LOG_LEVEL]
+   --log-show-abs-paths       Show absolute paths in logs. (default: false) [$TG_LOG_SHOW_ABS_PATHS]
+   --no-color                 Disable color output. (default: false) [$TG_NO_COLOR]
+   --non-interactive          Assume "yes" for all prompts. (default: false) [$TG_NON_INTERACTIVE]
+   --strict-control value     Enables specific strict controls. For a list of available controls, run 'terragrunt info strict'. [$TG_STRICT_CONTROL]
+   --strict-mode              Enables strict mode for Terragrunt. For more information, run 'terragrunt info strict'. (default: false) [$TG_STRICT_MODE]
+   --working-dir value        The path to the directory of Terragrunt configurations. Default is current directory. [$TG_WORKING_DIR]
+   --help, -h                 Show help. (default: false)
+   --version, -v              Show terragrunt version. (default: false)
 
-AUTHOR: Gruntwork <www.gruntwork.io>
+Version: v0.77.7
+
+Author: Gruntwork <www.gruntwork.io>
 ```
 
 ### Installation on mega-linter Docker image
@@ -166,7 +149,7 @@ AUTHOR: Gruntwork <www.gruntwork.io>
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=docker depName=alpine/terragrunt
-ARG TERRAFORM_TERRAGRUNT_VERSION=1.10.3
+ARG TERRAFORM_TERRAGRUNT_VERSION=1.11.3
 FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} AS terragrunt
 COPY --link --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
 ```

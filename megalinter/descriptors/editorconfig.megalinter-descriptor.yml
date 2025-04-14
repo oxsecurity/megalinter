@@ -17,7 +17,7 @@ linters:
     linter_rules_configuration_url: https://github.com/editorconfig-checker/editorconfig-checker#configuration
     linter_rules_inline_disable_url: https://github.com/editorconfig-checker/editorconfig-checker#excluding
     linter_megalinter_ref_url: https://github.com/editorconfig-checker/editorconfig-checker#mega-linter
-    config_file_name: .ecrc
+    config_file_name: .editorconfig-checker.json
     cli_lint_mode: list_of_files
     cli_config_arg_name: "-config"
     cli_version_arg_name: "-version"
@@ -27,6 +27,6 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=docker depName=mstruebing/editorconfig-checker
-          ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=v3.2.0
+          ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=v3.2.1
         - FROM mstruebing/editorconfig-checker:${EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION} AS editorconfig-checker
         - COPY --link --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
