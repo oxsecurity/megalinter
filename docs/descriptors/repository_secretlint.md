@@ -11,11 +11,11 @@ description: How to use secretlint (configure, ignore files, ignore errors, help
   </a>
 </div>
 
-![downgraded version](https://shields.io/badge/-downgraded%20version-orange) [![GitHub stars](https://img.shields.io/github/stars/secretlint/secretlint?cacheSeconds=3600)](https://github.com/secretlint/secretlint) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/secretlint/secretlint?sort=semver)](https://github.com/secretlint/secretlint/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/secretlint/secretlint)](https://github.com/secretlint/secretlint/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/secretlint/secretlint)](https://github.com/secretlint/secretlint/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/secretlint/secretlint)](https://github.com/secretlint/secretlint/graphs/contributors/)
+[![GitHub stars](https://img.shields.io/github/stars/secretlint/secretlint?cacheSeconds=3600)](https://github.com/secretlint/secretlint) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/secretlint/secretlint?sort=semver)](https://github.com/secretlint/secretlint/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/secretlint/secretlint)](https://github.com/secretlint/secretlint/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/secretlint/secretlint)](https://github.com/secretlint/secretlint/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/secretlint/secretlint)](https://github.com/secretlint/secretlint/graphs/contributors/)
 
 ## secretlint documentation
 
-- Version in MegaLinter: **9.2.0**
+- Version in MegaLinter: **9.3.1**
 - Visit [Official Web Site](https://github.com/secretlint/secretlint#readme){target=_blank}
 - See [How to configure secretlint rules](https://github.com/secretlint/secretlint#configuration){target=_blank}
   - If custom `.secretlintrc.json` config file isn't found, [.secretlintrc.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.secretlintrc.json){target=_blank} will be used
@@ -99,53 +99,51 @@ secretlint --secretlintrc .secretlintrc.json "**/*"
 
 ```shell
 
-  Secretlint CLI that scan secret/credential data.
+Usage
+  $ secretlint [file|glob*]
 
-  Usage
-    $ secretlint [file|glob*]
+Note
+  supported glob syntax is based on microglob
+  https://github.com/micromatch/micromatch#matching-features
 
-  Note
-    supported glob syntax is based on microglob
-    https://github.com/micromatch/micromatch#matching-features
+Options
+  --init             setup config file. Create .secretlintrc.json file from your package.json
+  --format           [String] formatter name. Default: "stylish". Available Formatter: checkstyle, compact, jslint-xml, junit, pretty-error, stylish, tap, unix, json, mask-result, table
+  --output           [path:String] output file path that is written of reported result.
+  --no-color         disable ANSI-color of output.
+  --no-terminalLink  disable terminalLink of output.
+  --maskSecrets      enable masking of secret values. replace actual secrets with "***".
+  --secretlintrc     [path:String] path to .secretlintrc config file. Default: .secretlintrc.*
+  --secretlintignore [path:String] path to .secretlintignore file. Default: .secretlintignore
+  --stdinFileName    [String] filename to process STDIN content. Some rules depend on filename to check content.
 
-  Options
-    --init             setup config file. Create .secretlintrc.json file from your package.json
-    --format           [String] formatter name. Default: "stylish". Available Formatter: checkstyle, compact, jslint-xml, junit, pretty-error, stylish, tap, unix, json, mask-result, table
-    --output           [path:String] output file path that is written of reported result.
-    --no-color         disable ANSI-color of output.
-    --no-terminalLink  disable terminalLink of output.
-    --maskSecrets      enable masking of secret values. replace actual secrets with "***".
-    --secretlintrc     [path:String] path to .secretlintrc config file. Default: .secretlintrc.*
-    --secretlintignore [path:String] path to .secretlintignore file. Default: .secretlintignore
-    --stdinFileName    [String] filename to process STDIN content. Some rules depend on filename to check content.
+Options for Developer
+  --profile          Enable performance profile.
+  --secretlintrcJSON [String] a JSON string of .secretlintrc. use JSON string instead of rc file.
 
-  Options for Developer
-    --profile          Enable performance profile.
-    --secretlintrcJSON [String] a JSON string of .secretlintrc. use JSON string instead of rc file.
+Experimental Options
+  --locale            [String] locale tag for translating message. Default: en
 
-  Experimental Options
-    --locale            [String] locale tag for translating message. Default: en
+Examples
+  $ secretlint ./README.md
+  # glob pattern should be wrapped with double quote
+  $ secretlint "**/*"
+  $ secretlint "source/**/*.ini"
+  # found secrets and mask the secrets
+  $ secretlint .zsh_history --format=mask-result --output=.zsh_history
+  # lint STDIN content instead of file
+  $ echo "SECRET CONTENT" | secretlint --stdinFileName=secret.txt
 
-  Examples
-    $ secretlint ./README.md
-    # glob pattern should be wrapped with double quote
-    $ secretlint "**/*"
-    $ secretlint "source/**/*.ini"
-    # found secrets and mask the secrets
-    $ secretlint .zsh_history --format=mask-result --output=.zsh_history
-    # lint STDIN content instead of file
-    $ echo "SECRET CONTENT" | secretlint --stdinFileName=secret.txt
+Exit Status
+  Secretlint exits with the following values:
 
-  Exit Status
-    Secretlint exits with the following values:
-
-    - 0:
-      - Linting succeeded, no errors found.
-      - Found lint error but --output is specified.
-    - 1:
-      - Linting failed, errors found.
-    - 2:
-      - Unexpected error occurred, fatal error.
+  - 0:
+    - Linting succeeded, no errors found.
+    - Found lint error but --output is specified.
+  - 1:
+    - Linting failed, errors found.
+  - 2:
+    - Unexpected error occurred, fatal error.
 
 ```
 
@@ -154,14 +152,14 @@ secretlint --secretlintrc .secretlintrc.json "**/*"
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=secretlint
-ARG NPM_SECRETLINT_VERSION=9.2.0
+ARG NPM_SECRETLINT_VERSION=9.3.1
 # renovate: datasource=npm depName=@secretlint/secretlint-rule-preset-recommend
-ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=9.3.0
+ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=9.3.1
 # renovate: datasource=npm depName=@secretlint/secretlint-formatter-sarif
-ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=9.3.0
+ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=9.3.1
 ```
 
 - NPM packages (node.js):
-  - [secretlint@9.2.0](https://www.npmjs.com/package/secretlint/v/9.2.0)
-  - [@secretlint/secretlint-rule-preset-recommend@9.3.0](https://www.npmjs.com/package/@secretlint/secretlint-rule-preset-recommend/v/9.3.0)
-  - [@secretlint/secretlint-formatter-sarif@9.3.0](https://www.npmjs.com/package/@secretlint/secretlint-formatter-sarif/v/9.3.0)
+  - [secretlint@9.3.1](https://www.npmjs.com/package/secretlint/v/9.3.1)
+  - [@secretlint/secretlint-rule-preset-recommend@9.3.1](https://www.npmjs.com/package/@secretlint/secretlint-rule-preset-recommend/v/9.3.1)
+  - [@secretlint/secretlint-formatter-sarif@9.3.1](https://www.npmjs.com/package/@secretlint/secretlint-formatter-sarif/v/9.3.1)
