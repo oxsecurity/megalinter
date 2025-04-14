@@ -598,7 +598,7 @@ def build_dockerfile(
             + ' -o -iname "README.md"'
             + ' -o -iname ".package-lock.json"'
             + ' -o -iname "package-lock.json"'
-            + " \\) -o -type d -name /root/.npm/_cacache \\) -delete \n"
+            + " \\) -o -type d -name /root/.npm/_cacache \\) -delete\n"
             + "WORKDIR /\n"
         )
     replace_in_file(dockerfile, "#NPM__START", "#NPM__END", npm_install_command)
