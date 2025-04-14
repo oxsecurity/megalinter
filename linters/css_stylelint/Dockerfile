@@ -51,7 +51,7 @@ FROM python:3.12.9-alpine3.21
 # renovate: datasource=npm depName=stylelint
 ARG NPM_STYLELINT_VERSION=16.18.0
 # renovate: datasource=npm depName=stylelint-config-standard
-ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=37.0.0
+ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=38.0.0
 # renovate: datasource=npm depName=stylelint-config-sass-guidelines
 ARG NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION=12.1.0
 # renovate: datasource=npm depName=stylelint-scss
