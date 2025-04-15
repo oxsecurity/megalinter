@@ -30,7 +30,7 @@ ARG PROTOBUF_PROTOLINT_VERSION=0.53.0
 # renovate: datasource=github-tags depName=checkmarx/dustilock
 ARG REPOSITORY_DUSTILOCK_VERSION=1.2.0
 # renovate: datasource=docker depName=zricethezav/gitleaks
-ARG REPOSITORY_GITLEAKS_VERSION=v8.24.2
+ARG REPOSITORY_GITLEAKS_VERSION=v8.24.3
 # renovate: datasource=docker depName=checkmarx/kics
 ARG REPOSITORY_KICS_VERSION=v2.1.6-alpine
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
