@@ -2480,8 +2480,9 @@
         "                                      order of precedence:",
         "                                      1. --config/-c",
         "                                      2. env var GITLEAKS_CONFIG",
-        "                                      3. (target path)/.gitleaks.toml",
-        "                                      If none of the three options are used, then gitleaks will use the default config",
+        "                                      3. env var GITLEAKS_CONFIG_TOML with the file content",
+        "                                      4. (target path)/.gitleaks.toml",
+        "                                      If none of the four options are used, then gitleaks will use the default config",
         "      --enable-rule strings           only enable specific rules by id",
         "      --exit-code int                 exit code when leaks have been encountered (default 1)",
         "  -i, --gitleaks-ignore-path string   path to .gitleaksignore file or folder containing one (default \".\")",
@@ -3497,7 +3498,7 @@
         "      --server string         Backend discovery server URL",
         "",
         "Use \"kubescape [command] --help\" for more information about a command.",
-        "{\"level\":\"info\",\"ts\":\"2025-04-14T22:41:41Z\",\"msg\":\"Received interrupt signal, exiting...\"}"
+        "{\"level\":\"info\",\"ts\":\"2025-04-15T03:32:57Z\",\"msg\":\"Received interrupt signal, exiting...\"}"
     ],
     "kubeval": [
         "Validate a Kubernetes YAML file against the relevant schema",
@@ -4708,7 +4709,9 @@
         "  -j, --jobs=JOBS                    Number of paralleled jobs to run",
         "  -c, --configuration=CONFIGURATION  Read configuration from config file [default: \".phplint.yml\"]",
         "      --no-configuration             Ignore default configuration file (.phplint.yml)",
-        "      --cache=CACHE                  Path to the cache directory",
+        "      --cache=CACHE                  Path to the cache directory (Deprecated option, use \"cache-dir\" instead)",
+        "      --cache-dir=CACHE-DIR          Path to the cache directory",
+        "      --cache-ttl=CACHE-TTL          Limit cached data for a period of time (>0: time to live in seconds) [default: 3600]",
         "      --no-cache                     Ignore cached data",
         "  -p, --progress=PROGRESS            Show the progress output",
         "      --no-progress                  Hide the progress output",

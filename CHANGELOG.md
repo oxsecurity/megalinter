@@ -104,6 +104,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 9.0.104 to **9.0.105** on 2025-04-14
   - [ruff-format](https://github.com/astral-sh/ruff) from 0.11.4 to **0.11.5** on 2025-04-14
   - [ruff](https://github.com/astral-sh/ruff) from 0.11.4 to **0.11.5** on 2025-04-14
+  - [phpcs](https://github.com/PHPCSStandards/PHP_CodeSniffer) from 3.12.1 to **3.12.2** on 2025-04-15
+  - [phplint](https://github.com/overtrue/phplint) from 9.5.6 to **9.6.2** on 2025-04-15
+  - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.24.2 to **8.24.3** on 2025-04-15
 <!-- linter-versions-end -->
 
 ## [v8.5.0] - 2024-03-23
