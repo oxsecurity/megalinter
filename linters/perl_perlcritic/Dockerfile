@@ -49,7 +49,7 @@ FROM python:3.12.10-alpine3.21
 #############################################################################################
 #ARG__START
 # renovate: datasource=github-tags depName=skaji/cpm
-ARG PERL_PERLCRITIC_VERSION=0.997022
+ARG PERL_PERLCRITIC_VERSION=0.997023
 
 #ARG__END
 
