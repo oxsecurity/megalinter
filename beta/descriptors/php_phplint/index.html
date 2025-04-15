@@ -3676,7 +3676,7 @@
 <p><a href="https://github.com/overtrue/phplint"><img alt="GitHub stars" src="https://img.shields.io/github/stars/overtrue/phplint?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-SARIF-orange"><img alt="sarif" src="https://shields.io/badge/-SARIF-orange"/></a> <a href="https://github.com/overtrue/phplint/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/overtrue/phplint?sort=semver"/></a> <a href="https://github.com/overtrue/phplint/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/overtrue/phplint"/></a> <a href="https://github.com/overtrue/phplint/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/overtrue/phplint"/></a> <a href="https://github.com/overtrue/phplint/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/overtrue/phplint"/></a></p>
 <h2 id="phplint-documentation">phplint documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>9.5.6</strong></li>
+<li>Version in MegaLinter: <strong>9.6.2</strong></li>
 <li>Visit <a href="https://github.com/overtrue/phplint#readme" target="_blank">Official Web Site</a><ul>
 <li>If custom <code>.phplint.yml</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.phplint.yml" target="_blank">.phplint.yml</a> will be used</li>
 </ul>
@@ -3846,7 +3846,9 @@ Options:
   -j, --jobs=JOBS                    Number of paralleled jobs to run
   -c, --configuration=CONFIGURATION  Read configuration from config file [default: ".phplint.yml"]
       --no-configuration             Ignore default configuration file (.phplint.yml)
-      --cache=CACHE                  Path to the cache directory
+      --cache=CACHE                  Path to the cache directory (Deprecated option, use "cache-dir" instead)
+      --cache-dir=CACHE-DIR          Path to the cache directory
+      --cache-ttl=CACHE-TTL          Limit cached data for a period of time (&gt;0: time to live in seconds) [default: 3600]
       --no-cache                     Ignore cached data
   -p, --progress=PROGRESS            Show the progress output
       --no-progress                  Hide the progress output
@@ -3875,7 +3877,7 @@ ENV PATH="/root/.composer/vendor/bin:${PATH}"
 ENV PHP_CS_FIXER_IGNORE_ENV=true
 # Linter install
 # renovate: datasource=packagist depName=overtrue/phplint
-ARG PHP_OVERTRUE_PHPLINT_VERSION=9.5.6
+ARG PHP_OVERTRUE_PHPLINT_VERSION=9.6.2
 # renovate: datasource=packagist depName=bartlett/sarif-php-converters
 ARG PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION=1.1.2
 RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" &amp;&amp; export GITHUB_AUTH_TOKEN &amp;&amp; composer global require overtrue/phplint:${PHP_OVERTRUE_PHPLINT_VERSION} bartlett/sarif-php-converters:${PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION}
