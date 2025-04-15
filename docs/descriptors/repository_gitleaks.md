@@ -63,7 +63,7 @@ git fetch --depth=0
 
 ## gitleaks documentation
 
-- Version in MegaLinter: **8.24.2**
+- Version in MegaLinter: **8.24.3**
 - Visit [Official Web Site](https://github.com/gitleaks/gitleaks#readme){target=_blank}
 - See [How to configure gitleaks rules](https://github.com/gitleaks/gitleaks#configuration){target=_blank}
   - If custom `.gitleaks.toml` config file isn't found, [.gitleaks.toml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.gitleaks.toml){target=_blank} will be used
@@ -167,8 +167,9 @@ Flags:
                                       order of precedence:
                                       1. --config/-c
                                       2. env var GITLEAKS_CONFIG
-                                      3. (target path)/.gitleaks.toml
-                                      If none of the three options are used, then gitleaks will use the default config
+                                      3. env var GITLEAKS_CONFIG_TOML with the file content
+                                      4. (target path)/.gitleaks.toml
+                                      If none of the four options are used, then gitleaks will use the default config
       --enable-rule strings           only enable specific rules by id
       --exit-code int                 exit code when leaks have been encountered (default 1)
   -i, --gitleaks-ignore-path string   path to .gitleaksignore file or folder containing one (default ".")
@@ -194,7 +195,7 @@ Use "gitleaks [command] --help" for more information about a command.
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=docker depName=zricethezav/gitleaks
-ARG REPOSITORY_GITLEAKS_VERSION=v8.24.2
+ARG REPOSITORY_GITLEAKS_VERSION=v8.24.3
 FROM zricethezav/gitleaks:${REPOSITORY_GITLEAKS_VERSION} AS gitleaks
 COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 ```
