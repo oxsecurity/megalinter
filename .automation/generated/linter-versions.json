@@ -16,6 +16,7 @@
     "clj-kondo": "2025.04.07",
     "cljstyle": "0.17.642",
     "coffeelint": "5.2.11",
+    "cppcheck": "2.14.2",
     "cpplint": "2.0.2",
     "csharpier": "0.30.6",
     "cspell": "8.18.1",
