@@ -107,6 +107,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [phpcs](https://github.com/PHPCSStandards/PHP_CodeSniffer) from 3.12.1 to **3.12.2** on 2025-04-15
   - [phplint](https://github.com/overtrue/phplint) from 9.5.6 to **9.6.2** on 2025-04-15
   - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.24.2 to **8.24.3** on 2025-04-15
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.77.14 to **0.77.20** on 2025-04-20
 <!-- linter-versions-end -->
 
 ## [v8.5.0] - 2024-03-23

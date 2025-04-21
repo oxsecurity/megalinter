@@ -805,7 +805,7 @@
         "               [--secrets-scan-file-type SECRETS_SCAN_FILE_TYPE]",
         "               [--enable-secret-scan-all-files]",
         "               [--block-list-secret-scan BLOCK_LIST_SECRET_SCAN]",
-        "               [--summary-position {top,bottom}]",
+        "               [--summary-position {bottom,top}]",
         "               [--skip-resources-without-violations] [--deep-analysis]",
         "               [--no-fail-on-crash] [--mask MASK] [--scan-secrets-history]",
         "               [--secrets-history-timeout SECRETS_HISTORY_TIMEOUT]",
@@ -1120,7 +1120,7 @@
         "  --block-list-secret-scan BLOCK_LIST_SECRET_SCAN",
         "                        List of files to filter out from the secret scanner",
         "                        [env var: CKV_SECRETS_SCAN_BLOCK_LIST]",
-        "  --summary-position {top,bottom}",
+        "  --summary-position {bottom,top}",
         "                        Chose whether the summary will be appended on top",
         "                        (before the checks results) or on bottom (after check",
         "                        results), default is on top.",
@@ -3827,8 +3827,7 @@
         "  -l, --logger string         Logger level. Supported: debug/info/success/warning/error/fatal [$KS_LOGGER] (default \"info\")",
         "      --server string         Backend discovery server URL",
         "",
-        "Use \"kubescape [command] --help\" for more information about a command.",
-        "{\"level\":\"info\",\"ts\":\"2025-04-15T03:32:57Z\",\"msg\":\"Received interrupt signal, exiting...\"}"
+        "Use \"kubescape [command] --help\" for more information about a command."
     ],
     "kubeval": [
         "Validate a Kubernetes YAML file against the relevant schema",
@@ -3859,7 +3858,7 @@
         "      --version                               version for kubeval"
     ],
     "lightning-flow-scanner": [
-        " \u203a   Warning: @salesforce/cli update available from 2.82.6 to 2.83.7.",
+        " \u203a   Warning: @salesforce/cli update available from 2.82.6 to 2.84.6.",
         "Find and fix potential bugs in Salesforce flows.",
         "",
         "USAGE",
@@ -8577,7 +8576,7 @@
         "@typescript-eslint/unbound-method                  typescript   Best Practices    Best Practices                                    eslint-typescript"
     ],
     "sfdx-scanner-apex": [
-        " \u203a   Warning: @salesforce/cli update available from 2.82.6 to 2.83.7.",
+        " \u203a   Warning: @salesforce/cli update available from 2.82.6 to 2.84.6.",
         "Scan a codebase with all the rules in the registry, or use parameters to filter the rules based on rulename, category, or ruleset.",
         "",
         "USAGE",
@@ -8631,7 +8630,7 @@
         "COMMANDS",
         "  scanner run dfa  Scan codebase with all DFA rules by default.",
         "",
-        " \u203a   Warning: @salesforce/cli update available from 2.82.6 to 2.83.7.",
+        " \u203a   Warning: @salesforce/cli update available from 2.82.6 to 2.84.6.",
         "Warning: We plan to stop supporting v4.x of Code Analyzer in the coming months. We highly recommend that you start using v5.x, which is currently in Beta. For information on v5.x, see https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/code-analyzer.html.",
         " name                                                   languages   categories            rulesets [dep] engine            is dfa is pilot",
         " \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 \u2500\u2500\u2500\u2500\u2500\u2500 \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500",
@@ -8853,7 +8852,7 @@
         " UnimplementedTypeRule                                  apex        Performance                          sfge              N      N"
     ],
     "sfdx-scanner-aura": [
-        " \u203a   Warning: @salesforce/cli update available from 2.82.6 to 2.83.7.",
+        " \u203a   Warning: @salesforce/cli update available from 2.82.6 to 2.84.6.",
         "Scan a codebase with all the rules in the registry, or use parameters to filter the rules based on rulename, category, or ruleset.",
         "",
         "USAGE",
@@ -8907,7 +8906,7 @@
         "COMMANDS",
         "  scanner run dfa  Scan codebase with all DFA rules by default.",
         "",
-        " \u203a   Warning: @salesforce/cli update available from 2.82.6 to 2.83.7.",
+        " \u203a   Warning: @salesforce/cli update available from 2.82.6 to 2.84.6.",
         "Warning: We plan to stop supporting v4.x of Code Analyzer in the coming months. We highly recommend that you start using v5.x, which is currently in Beta. For information on v5.x, see https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/code-analyzer.html.",
         " name                                                   languages   categories            rulesets [dep] engine            is dfa is pilot",
         " \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 \u2500\u2500\u2500\u2500\u2500\u2500 \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500",
@@ -9129,7 +9128,7 @@
         " UnimplementedTypeRule                                  apex        Performance                          sfge              N      N"
     ],
     "sfdx-scanner-lwc": [
-        " \u203a   Warning: @salesforce/cli update available from 2.82.6 to 2.83.7.",
+        " \u203a   Warning: @salesforce/cli update available from 2.82.6 to 2.84.6.",
         "Scan a codebase with all the rules in the registry, or use parameters to filter the rules based on rulename, category, or ruleset.",
         "",
         "USAGE",
@@ -9183,7 +9182,7 @@
         "COMMANDS",
         "  scanner run dfa  Scan codebase with all DFA rules by default.",
         "",
-        " \u203a   Warning: @salesforce/cli update available from 2.82.6 to 2.83.7.",
+        " \u203a   Warning: @salesforce/cli update available from 2.82.6 to 2.84.6.",
         "Warning: We plan to stop supporting v4.x of Code Analyzer in the coming months. We highly recommend that you start using v5.x, which is currently in Beta. For information on v5.x, see https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/code-analyzer.html.",
         " name                                                   languages   categories            rulesets [dep] engine            is dfa is pilot",
         " \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 \u2500\u2500\u2500\u2500\u2500\u2500 \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500",
@@ -11012,11 +11011,13 @@
         "   list                   List relevant Terragrunt configurations.",
         "",
         "Configuration commands:",
+        "   dag                    Interact with the Directed Acyclic Graph (DAG).",
         "   graph-dependencies     Prints the terragrunt dependency graph to stdout.",
         "   hclfmt                 Recursively find hcl files and rewrite them into a canonical format.",
         "   hclvalidate            Find all hcl files from the config stack and validate them.",
         "   info                   List of commands to display Terragrunt settings.",
         "   output-module-groups   Output groups of modules ordered by command (apply or destroy) as a list of list in JSON (useful for CI use cases).",
+        "   render                 Render the final terragrunt config, with all variables, includes, and functions resolved, in the specified format.",
         "   render-json            Render the final terragrunt config, with all variables, includes, and functions resolved, as json.",
         "   terragrunt-info        Emits limited terragrunt state on stdout and exits.",
         "   validate-inputs        Checks if the terragrunt configured inputs align with the terraform defined variables.",
@@ -11051,7 +11052,7 @@
         "   --help, -h                 Show help. (default: false)",
         "   --version, -v              Show terragrunt version. (default: false)",
         "",
-        "Version: v0.77.14",
+        "Version: v0.77.20",
         "",
         "Author: Gruntwork <www.gruntwork.io>"
     ],
