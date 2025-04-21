@@ -1,5 +1,5 @@
 # Python default launcher
-python_launcher ?= python3.12
+python_launcher ?= python3.13
 python_requirements_dev_file ?= .config/python/dev/requirements.txt
 
 UV = $(shell command -v uv 2> /dev/null)

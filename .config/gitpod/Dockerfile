@@ -2,7 +2,8 @@
 #     builder     #
 ###################
 # First stage: Install build-time dependencies
-FROM ubuntu:noble as builder
+# renovate: datasource=docker depName=ubuntu
+FROM ubuntu:oracular-20241120 AS builder
 
 # hadolint ignore=DL3002
 USER root
@@ -34,12 +35,13 @@ RUN PYTHON_VERSION=$(cut -d '.' -f 1,2 /tmp/.python-version) \
     sudo \
     tree \
     vim \
-    wget
+    wget \
+    && rm -rf /var/lib/apt/lists/*
 
 ############################
 #     docker-installer     #
 ############################
-FROM builder as docker-installer
+FROM builder AS docker-installer
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
@@ -48,12 +50,13 @@ RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /
     && echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
     $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null \
     && apt-get update \
-    && apt-get install -y --no-install-recommends docker-ce docker-ce-cli containerd.io
+    && apt-get install -y --no-install-recommends containerd.io docker-ce docker-ce-cli \
+    && rm -rf /var/lib/apt/lists/*
 
 ###########################
 #      npm-installer      #
 ###########################
-FROM docker-installer as npm-installer
+FROM docker-installer AS npm-installer
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
@@ -72,6 +75,7 @@ ARG MARKDOWN_TABLE_FORMATTER_VERSION=1.6.1
 # hadolint ignore=DL3008
 RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash - \
     && apt-get install  -y --no-install-recommends nodejs \
+    && rm -rf /var/lib/apt/lists/* \
     && npm install -g "npm@${NPM_VERSION}" \
     && npm install -g \
     "ungit@${UNGIT_VERSION}" \
@@ -81,14 +85,14 @@ RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash - \
 ###########################
 #         cleanup         #
 ###########################
-FROM npm-installer as cleanup
+FROM npm-installer AS cleanup
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* tmp/* 
 
 ###########################
 #       gitpod-user       #
 ###########################
-FROM cleanup as gitpod-user
+FROM cleanup AS gitpod-user
 
 # UID must be 33333.
 RUN useradd -l -u 33333 -G sudo -md /home/gitpod -s /bin/bash -p gitpod gitpod
