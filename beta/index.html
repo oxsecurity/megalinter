@@ -5,7 +5,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<meta content="MegaLinter is an Open-Source tool for CI/CD workflows that analyzes the consistency of your code, IAC, configuration, and scripts in your repository sources, to ensure all your projects sources are clean and formatted whatever IDE/toolbox is used by their developers, powered by OX Security.Supporting 63 languages, 23 formats, 20 tooling formats and ready to use out of the box, as a GitHub action or any CI system, highly configurable and free for all uses.MegaLinter has native integrations with many of the major CI/CD tools of the market." name="description"/>
+<meta content="MegaLinter is an Open-Source tool for CI/CD workflows that analyzes the consistency of your code, IAC, configuration, and scripts in your repository sources, to ensure all your projects sources are clean and formatted whatever IDE/toolbox is used by their developers, powered by OX Security.Supporting 65 languages, 23 formats, 20 tooling formats and ready to use out of the box, as a GitHub action or any CI system, highly configurable and free for all uses.MegaLinter has native integrations with many of the major CI/CD tools of the market." name="description"/>
 <meta content="Nicolas Vuillamy" name="author"/>
 <link href="https://megalinter.io/beta/" rel="canonical"/>
 <link href="quick-start/" rel="next"/>
@@ -549,6 +549,14 @@
 </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="descriptors/c_cppcheck/">
+<span class="md-ellipsis">
+    cppcheck
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="descriptors/c_cpplint/">
 <span class="md-ellipsis">
     cpplint
@@ -662,6 +670,14 @@
 <a class="md-nav__link" href="descriptors/cpp/">
 <span class="md-ellipsis">
     All C++ (CPP) linters
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="descriptors/cpp_cppcheck/">
+<span class="md-ellipsis">
+    cppcheck
     
   </span>
 </a>
@@ -3656,7 +3672,7 @@
 <!-- mega-linter-badges-end -->
 <!-- welcome-phrase-start -->
 <p>MegaLinter is an <strong>Open-Source</strong> tool for <strong>CI/CD workflows</strong> that analyzes the <strong>consistency of your code</strong>, <strong>IAC</strong>, <strong>configuration</strong>, and <strong>scripts</strong> in your repository sources, to <strong>ensure all your projects sources are clean and formatted</strong> whatever IDE/toolbox is used by their developers, powered by <a href="https://www.ox.security/?ref=megalinter"><strong>OX Security</strong></a>.</p>
-<p>Supporting <a href="supported-linters/#languages"><strong>63</strong> languages</a>, <a href="supported-linters/#formats"><strong>23</strong> formats</a>, <a href="supported-linters/#tooling-formats"><strong>20</strong> tooling formats</a> and <strong>ready to use out of the box</strong>, as a GitHub action or any CI system, <strong>highly configurable</strong> and <strong>free for all uses</strong>.</p>
+<p>Supporting <a href="supported-linters/#languages"><strong>65</strong> languages</a>, <a href="supported-linters/#formats"><strong>23</strong> formats</a>, <a href="supported-linters/#tooling-formats"><strong>20</strong> tooling formats</a> and <strong>ready to use out of the box</strong>, as a GitHub action or any CI system, <strong>highly configurable</strong> and <strong>free for all uses</strong>.</p>
 <p>MegaLinter has <strong>native integrations</strong> with many of the major CI/CD tools of the market.</p>
 <p><a href="reporters/GitHubCommentReporter/"><img alt="GitHub" src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/github.png?raw=true&gt;"/></a>
 <a href="reporters/GitlabCommentReporter/"><img alt="Gitlab" src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/gitlab.png?raw=true&gt;"/></a>
@@ -3735,6 +3751,12 @@ description: Full list of all linters for all languages and formats that are ava
 <tr>
 <td style="text-align: center;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/c.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/c.ico"/></a> <!-- linter-icon --></td>
 <td><a href="descriptors/c/"><strong>C</strong></a></td>
+<td><a href="descriptors/c_cppcheck/"><strong>cppcheck</strong></a><br/><a href="descriptors/c_cppcheck/"><em>C_CPPCHECK</em></a></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/c.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/c.ico"/></a> <!-- linter-icon --></td>
+<td><a href="descriptors/c/"><strong>C</strong></a></td>
 <td><a href="descriptors/c_cpplint/"><strong>cpplint</strong></a><br/><a href="descriptors/c_cpplint/"><em>C_CPPLINT</em></a></td>
 <td style="text-align: center;"><a href="https://github.com/cpplint/cpplint"><img alt="GitHub stars" src="https://img.shields.io/github/stars/cpplint/cpplint?cacheSeconds=3600"/></a></td>
 </tr>
@@ -3761,6 +3783,12 @@ description: Full list of all linters for all languages and formats that are ava
 <td><a href="descriptors/coffee/"><strong>COFFEE</strong></a></td>
 <td><a href="descriptors/coffee_coffeelint/"><strong>coffeelint</strong></a><br/><a href="descriptors/coffee_coffeelint/"><em>COFFEE_COFFEELINT</em></a></td>
 <td style="text-align: center;"><a href="https://github.com/clutchski/coffeelint"><img alt="GitHub stars" src="https://img.shields.io/github/stars/clutchski/coffeelint?cacheSeconds=3600"/></a></td>
+</tr>
+<tr>
+<td style="text-align: center;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cpp.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cpp.ico"/></a> <!-- linter-icon --></td>
+<td><a href="descriptors/cpp/"><strong>C++</strong> (CPP)</a></td>
+<td><a href="descriptors/cpp_cppcheck/"><strong>cppcheck</strong></a><br/><a href="descriptors/cpp_cppcheck/"><em>CPP_CPPCHECK</em></a></td>
+<td style="text-align: center;"></td>
 </tr>
 <tr>
 <td style="text-align: center;"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cpp.ico"><img alt="" class="megalinter-icon" height="32px" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cpp.ico"/></a> <!-- linter-icon --></td>

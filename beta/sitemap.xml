@@ -249,6 +249,10 @@
          <lastmod>2025-04-21</lastmod>
     </url>
     <url>
+         <loc>https://megalinter.io/beta/descriptors/c_cppcheck/</loc>
+         <lastmod>2025-04-21</lastmod>
+    </url>
+    <url>
          <loc>https://megalinter.io/beta/descriptors/c_cpplint/</loc>
          <lastmod>2025-04-21</lastmod>
     </url>
@@ -294,6 +298,10 @@
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/cpp_clang_format/</loc>
+         <lastmod>2025-04-21</lastmod>
+    </url>
+    <url>
+         <loc>https://megalinter.io/beta/descriptors/cpp_cppcheck/</loc>
          <lastmod>2025-04-21</lastmod>
     </url>
     <url>
