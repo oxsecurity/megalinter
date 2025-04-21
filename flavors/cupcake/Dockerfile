@@ -349,6 +349,7 @@ RUN apk -U --no-cache upgrade \
                 php84-simplexml \
                 dpkg \
                 py3-pyflakes \
+                cppcheck \
                 openjdk17 \
                 helm \
                 gcompat \

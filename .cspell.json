@@ -705,6 +705,7 @@
         "coursier",
         "cpageref",
         "cpagerefrange",
+        "cppcheck",
         "cpplint",
         "cpython",
         "creds",

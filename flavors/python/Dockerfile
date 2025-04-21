@@ -237,6 +237,7 @@ RUN apk -U --no-cache upgrade \
                 openssh \
                 openjdk21 \
                 py3-pyflakes \
+                cppcheck \
                 openjdk17 \
                 helm \
                 gcompat \

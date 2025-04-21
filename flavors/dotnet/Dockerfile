@@ -238,6 +238,7 @@ RUN apk -U --no-cache upgrade \
                 icu-libs \
                 openjdk21 \
                 py3-pyflakes \
+                cppcheck \
                 openjdk17 \
                 helm \
                 gcompat \

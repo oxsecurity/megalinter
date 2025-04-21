@@ -434,6 +434,7 @@ RUN apk -U --no-cache upgrade \
                 dpkg \
                 coreutils \
                 py3-pyflakes \
+                cppcheck \
                 clang19-extra-tools \
                 openjdk17 \
                 helm \
