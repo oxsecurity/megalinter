@@ -90,7 +90,7 @@ linters:
         # - COPY --link --from=revive /usr/bin/revive /usr/bin/revive
         - |-
           # renovate: datasource=github-tags depName=mgechev/revive
-          ARG GO_REVIVE_VERSION=v1.8.0
+          ARG GO_REVIVE_VERSION=v1.9.0
         - |-
           FROM golang:1-alpine AS revive
           ## The golang image used as a builder is a temporary workaround (https://github.com/mgechev/revive/issues/787)
