@@ -1,7 +1,7 @@
 # Please check changes with entrypoint.sh and keep in sync
 aiofiles==24.1.0
 azure-devops==6.0.0b4
-beautifulsoup4==4.13.3
+beautifulsoup4==4.13.4
 commentjson==0.9.0
 fastapi==0.115.12
 gitpython==3.1.44
