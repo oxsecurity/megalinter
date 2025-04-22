@@ -108,6 +108,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [phplint](https://github.com/overtrue/phplint) from 9.5.6 to **9.6.2** on 2025-04-15
   - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.24.2 to **8.24.3** on 2025-04-15
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.77.14 to **0.77.20** on 2025-04-20
+  - [dartanalyzer](https://dart.dev/tools/dart-analyze) from 3.7.2 to **3.7.3** on 2025-04-22
+  - [revive](https://revive.run/) from 1.8.0 to **1.9.0** on 2025-04-22
+  - [kics](https://www.kics.io) from 2.1.6 to **2.1.7** on 2025-04-22
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.61.0 to **0.61.1** on 2025-04-22
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.61.0 to **0.61.1** on 2025-04-22
 <!-- linter-versions-end -->
 
 ## [v8.5.0] - 2024-03-23
