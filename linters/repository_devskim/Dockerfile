@@ -49,7 +49,7 @@ FROM python:3.12.10-alpine3.21
 #############################################################################################
 #ARG__START
 # renovate: datasource=nuget depName=Microsoft.CST.DevSkim.CLI
-ARG REPOSITORY_DEVSKIM_VERSION=1.0.52
+ARG REPOSITORY_DEVSKIM_VERSION=1.0.56
 #ARG__END
 
 ####################
