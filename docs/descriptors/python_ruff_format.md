@@ -11,7 +11,7 @@ An extremely fast Python linter, written in Rust. Configured for formatting only
 
 ## ruff-format documentation
 
-- Version in MegaLinter: **0.11.5**
+- Version in MegaLinter: **0.11.6**
 - Visit [Official Web Site](https://github.com/astral-sh/ruff#readme){target=_blank}
 - See [How to configure ruff-format rules](https://docs.astral.sh/ruff/configuration/){target=_blank}
   - If custom `.ruff.toml` config file isn't found, [.ruff.toml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.ruff.toml){target=_blank} will be used
@@ -117,13 +117,14 @@ Log levels:
                  diagnostics)
 
 Global options:
-  --config <CONFIG_OPTION>  Either a path to a TOML configuration file (`pyproject.toml` or
-                            `ruff.toml`), or a TOML `<KEY> = <VALUE>` pair (such as you might find
-                            in a `ruff.toml` configuration file) overriding a specific configuration
-                            option. Overrides of individual settings using this option always take
-                            precedence over all configuration files, including configuration files
-                            that were also specified using `--config`
-  --isolated                Ignore all configuration files
+      --config <CONFIG_OPTION>  Either a path to a TOML configuration file (`pyproject.toml` or
+                                `ruff.toml`), or a TOML `<KEY> = <VALUE>` pair (such as you might
+                                find in a `ruff.toml` configuration file) overriding a specific
+                                configuration option. Overrides of individual settings using this
+                                option always take precedence over all configuration files,
+                                including configuration files that were also specified using
+                                `--config`
+      --isolated                Ignore all configuration files
 
 For help with a specific command, see: `ruff help <command>`.
 ```
@@ -133,8 +134,8 @@ For help with a specific command, see: `ruff help <command>`.
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=ruff
-ARG PIP_RUFF_VERSION=0.11.5
+ARG PIP_RUFF_VERSION=0.11.6
 ```
 
 - PIP packages (Python):
-  - [ruff==0.11.5](https://pypi.org/project/ruff/0.11.5)
+  - [ruff==0.11.6](https://pypi.org/project/ruff/0.11.6)

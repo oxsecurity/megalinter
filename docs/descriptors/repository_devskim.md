@@ -22,7 +22,7 @@ Example:
 
 ## devskim documentation
 
-- Version in MegaLinter: **1.0.52**
+- Version in MegaLinter: **1.0.56**
 - Visit [Official Web Site](https://github.com/microsoft/DevSkim#readme){target=_blank}
 - See [How to configure devskim rules](https://github.com/microsoft/DevSkim/wiki/Analyze-Command){target=_blank}
   - If custom `.devskim.json` config file isn't found, [.devskim.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.devskim.json){target=_blank} will be used
@@ -99,7 +99,7 @@ devskim analyze --file-format sarif --options-json config --source-code .
 ### Help content
 
 ```shell
-devskim 1.0.52+74513a99d4
+devskim 1.0.56+3237407c1c
 © Microsoft Corporation. All rights reserved.
 
   analyze     Analyze source code using DevSkim
@@ -121,7 +121,7 @@ devskim 1.0.52+74513a99d4
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=nuget depName=Microsoft.CST.DevSkim.CLI
-ARG REPOSITORY_DEVSKIM_VERSION=1.0.52
+ARG REPOSITORY_DEVSKIM_VERSION=1.0.56
 RUN apk add --no-cache dotnet9-sdk
 ENV PATH="${PATH}:/root/.dotnet/tools"
 RUN dotnet tool install --allow-roll-forward --global Microsoft.CST.DevSkim.CLI --version ${REPOSITORY_DEVSKIM_VERSION}
