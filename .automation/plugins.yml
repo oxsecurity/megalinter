@@ -47,3 +47,9 @@ plugins:
     docUrl: https://github.com/wesley-dean/mega-linter-plugin-j2lint/blob/main/README.md
     pluginUrl: https://github.com/wesley-dean/mega-linter-plugin-j2lint/blob/main/mega-linter-plugin-j2lint/j2lint.megalinter-descriptor.yml
     author: "[Wesley Dean](https://github.com/wesley-dean)"
+  # YAML Front Matter in Markdown document linting with Yamllint by (@adrienverge)
+  - name: fmlint
+    description: Plugin to lint YAML frontmater in Markdown documents
+    docUrl: https://github.com/wesley-dean/mega-linter-plugin-fmlint/blob/main/README.md
+    pluginUrl: https://github.com/wesley-dean/mega-linter-plugin-fmlint/blob/main/mega-linter-plugin-fmlint/fmlint.megalinter-descriptor.yml
+    author: "[Wesley Dean](https://github.com/wesley-dean)"
