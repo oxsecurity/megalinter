@@ -120,6 +120,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [devskim](https://github.com/microsoft/DevSkim) from 1.0.52 to **1.0.56** on 2025-04-23
   - [rubocop](https://rubocop.org/) from 1.75.2 to **1.75.3** on 2025-04-23
   - [swiftlint](https://github.com/realm/SwiftLint) from 0.59.0 to **0.59.1** on 2025-04-23
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.399 to **1.1.400** on 2025-04-23
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.88.23 to **3.88.25** on 2025-04-23
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.18.1 to **8.19.2** on 2025-04-23
 <!-- linter-versions-end -->
 
 ## [v8.5.0] - 2024-03-23
