@@ -113,6 +113,13 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [kics](https://www.kics.io) from 2.1.6 to **2.1.7** on 2025-04-22
   - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.61.0 to **0.61.1** on 2025-04-22
   - [trivy](https://aquasecurity.github.io/trivy/) from 0.61.0 to **0.61.1** on 2025-04-22
+  - [phpstan](https://phpstan.org/) from 2.1.11 to **2.1.12** on 2025-04-23
+  - [psalm](https://psalm.dev) from Psalm.6.10.0@ to **Psalm.6.10.1@** on 2025-04-23
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.11.5 to **0.11.6** on 2025-04-23
+  - [ruff](https://github.com/astral-sh/ruff) from 0.11.5 to **0.11.6** on 2025-04-23
+  - [devskim](https://github.com/microsoft/DevSkim) from 1.0.52 to **1.0.56** on 2025-04-23
+  - [rubocop](https://rubocop.org/) from 1.75.2 to **1.75.3** on 2025-04-23
+  - [swiftlint](https://github.com/realm/SwiftLint) from 0.59.0 to **0.59.1** on 2025-04-23
 <!-- linter-versions-end -->
 
 ## [v8.5.0] - 2024-03-23
