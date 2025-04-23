@@ -3707,7 +3707,7 @@
 <p>An extremely fast Python linter, written in Rust. Configured for formatting only.</p>
 <h2 id="ruff-format-documentation">ruff-format documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>0.11.5</strong></li>
+<li>Version in MegaLinter: <strong>0.11.6</strong></li>
 <li>Visit <a href="https://github.com/astral-sh/ruff#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://docs.astral.sh/ruff/configuration/" target="_blank">How to configure ruff-format rules</a><ul>
 <li>If custom <code>.ruff.toml</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.ruff.toml" target="_blank">.ruff.toml</a> will be used</li>
@@ -3926,13 +3926,14 @@ Log levels:
                  diagnostics)
 
 Global options:
-  --config &lt;CONFIG_OPTION&gt;  Either a path to a TOML configuration file (`pyproject.toml` or
-                            `ruff.toml`), or a TOML `&lt;KEY&gt; = &lt;VALUE&gt;` pair (such as you might find
-                            in a `ruff.toml` configuration file) overriding a specific configuration
-                            option. Overrides of individual settings using this option always take
-                            precedence over all configuration files, including configuration files
-                            that were also specified using `--config`
-  --isolated                Ignore all configuration files
+      --config &lt;CONFIG_OPTION&gt;  Either a path to a TOML configuration file (`pyproject.toml` or
+                                `ruff.toml`), or a TOML `&lt;KEY&gt; = &lt;VALUE&gt;` pair (such as you might
+                                find in a `ruff.toml` configuration file) overriding a specific
+                                configuration option. Overrides of individual settings using this
+                                option always take precedence over all configuration files,
+                                including configuration files that were also specified using
+                                `--config`
+      --isolated                Ignore all configuration files
 
 For help with a specific command, see: `ruff help &lt;command&gt;`.
 </code></pre>
@@ -3941,11 +3942,11 @@ For help with a specific command, see: `ruff help &lt;command&gt;`.
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile"># renovate: datasource=pypi depName=ruff
-ARG PIP_RUFF_VERSION=0.11.5
+ARG PIP_RUFF_VERSION=0.11.6
 </code></pre>
 <ul>
 <li>PIP packages (Python):<ul>
-<li><a href="https://pypi.org/project/ruff/0.11.5">ruff==0.11.5</a></li>
+<li><a href="https://pypi.org/project/ruff/0.11.6">ruff==0.11.6</a></li>
 </ul>
 </li>
 </ul>
