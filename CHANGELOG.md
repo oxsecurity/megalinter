@@ -123,6 +123,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [pyright](https://github.com/Microsoft/pyright) from 1.1.399 to **1.1.400** on 2025-04-23
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.88.23 to **3.88.25** on 2025-04-23
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.18.1 to **8.19.2** on 2025-04-23
+  - [spectral](https://docs.stoplight.io/docs/spectral/674b27b261c3c-overview) from 6.14.3 to **6.15.0** on 2025-04-24
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.33.2 to **1.34.1** on 2025-04-24
+  - [stylelint](https://stylelint.io) from 16.18.0 to **16.19.0** on 2025-04-24
+  - [sqlfluff](https://www.sqlfluff.com/) from 3.3.1 to **3.4.0** on 2025-04-24
 <!-- linter-versions-end -->
 
 ## [v8.5.0] - 2024-03-23
