@@ -90,7 +90,7 @@ ARG NPM_SALESFORCE_CLI_VERSION=2.84.6
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
 ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.13.1
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=5.27.0
+ARG SFDX_HARDIS_VERSION=5.28.0
 # renovate: datasource=pypi depName=ansible-lint
 ARG PIP_ANSIBLE_LINT_VERSION=25.2.1
 # renovate: datasource=npm depName=@stoplight/spectral-cli
@@ -100,7 +100,7 @@ ARG CARGO_SHELLCHECK_SARIF_VERSION=0.7.0
 # renovate: datasource=npm depName=jscpd
 ARG NPM_JSCPD_VERSION=4.0.5
 # renovate: datasource=npm depName=stylelint
-ARG NPM_STYLELINT_VERSION=16.18.0
+ARG NPM_STYLELINT_VERSION=16.19.0
 # renovate: datasource=npm depName=stylelint-config-standard
 ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=38.0.0
 # renovate: datasource=npm depName=stylelint-config-sass-guidelines
