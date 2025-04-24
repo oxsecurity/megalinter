@@ -15,7 +15,7 @@ description: How to use spectral (configure, ignore files, ignore errors, help &
 
 ## spectral documentation
 
-- Version in MegaLinter: **6.14.3**
+- Version in MegaLinter: **6.15.0**
 - Visit [Official Web Site](https://docs.stoplight.io/docs/spectral/674b27b261c3c-overview){target=_blank}
 - See [How to configure spectral rules](https://docs.stoplight.io/docs/spectral/9ffa04e052cc1-spectral-cli#using-a-ruleset-file){target=_blank}
   - If custom `.spectral.yaml` config file isn't found, [.spectral.yaml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.spectral.yaml){target=_blank} will be used
@@ -124,6 +124,7 @@ Options:
   -D, --display-only-failures    only output results equal to or greater than --fail-severity  [boolean] [default: false]
       --ignore-unknown-format    do not warn about unmatched formats  [boolean] [default: false]
       --fail-on-unmatched-globs  fail on unmatched glob patterns  [boolean] [default: false]
+      --show-documentation-url   show documentation url in output result  [boolean] [default: false]
   -v, --verbose                  increase verbosity  [boolean]
   -q, --quiet                    no logging - output only  [boolean]
 ```
@@ -133,8 +134,8 @@ Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=@stoplight/spectral-cli
-ARG NPM_SPECTRAL_CLI_VERSION=6.14.3
+ARG NPM_SPECTRAL_CLI_VERSION=6.15.0
 ```
 
 - NPM packages (node.js):
-  - [@stoplight/spectral-cli@6.14.3](https://www.npmjs.com/package/@stoplight/spectral-cli/v/6.14.3)
+  - [@stoplight/spectral-cli@6.15.0](https://www.npmjs.com/package/@stoplight/spectral-cli/v/6.15.0)
