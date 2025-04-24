@@ -127,7 +127,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=v8r
-          ARG NPM_V8R_VERSION=4.2.1
+          ARG NPM_V8R_VERSION=4.3.0
       npm:
         - v8r@${NPM_V8R_VERSION}
     ide:
