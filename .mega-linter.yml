@@ -46,8 +46,7 @@ REPOSITORY_TRIVY_ARGUMENTS:
   - "--skip-dirs"
   - ".venv"
 REPOSITORY_TRUFFLEHOG_ARGUMENTS:
-  - --exclude
-  - ".automation/test,.git"
+  - --exclude-paths=.gitignore
 SHOW_ELAPSED_TIME: true
 FLAVOR_SUGGESTIONS: false
 EMAIL_REPORTER: false

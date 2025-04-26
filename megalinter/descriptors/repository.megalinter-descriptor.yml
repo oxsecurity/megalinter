@@ -663,8 +663,6 @@ linters:
     cli_lint_extra_args:
       - filesystem
       - "."
-      - --exclude
-      - .git
       - --fail
       - --only-verified
       - --no-update
