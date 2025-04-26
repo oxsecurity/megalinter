@@ -3,10 +3,8 @@
 Unit tests for utils class
 
 """
-import re
 import unittest
 
-from megalinter import utils
 from megalinter.logger import sanitize_string, fetch_gitleaks_regexes
 
 
@@ -15,10 +13,6 @@ class utils_test(unittest.TestCase):
         input_string = (
             "AWS Key: AKIAIOSFODNN7EXAMPLE and GitHub Token: ghp_abcdEFGHijklMNOPqrstUVWXyz1234567890"
         )
-        expected_output = (
-            "AWS Key: [HIDDEN BY MEGALINTER] and GitHub Token: [HIDDEN BY MEGALINTER]"
-        )
-
         sanitized = sanitize_string(input_string)
 
         self.assertNotIn("AKIAIOSFODNN7EXAMPLE", sanitized)
