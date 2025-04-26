@@ -301,10 +301,10 @@ def clean_string(stdout: str) -> str:
     # noinspection PyBroadException
     try:
         res = stdout.decode("utf-8")
-        stdout = logger.sanitize_string(stdout)
+        res = logger.sanitize_string(res)
     except Exception:
         res = str(stdout)
-        stdout = logger.sanitize_string(stdout)
+        res = logger.sanitize_string(res)
     return res
 
 
@@ -587,3 +587,23 @@ def is_pr() -> bool:
         )
         else False
     )
+
+
+def fix_regex_patterns(patterns,fail=False):
+    """
+    Ensures that global flags (e.g., (?i)) are at the start of each regex pattern in the list.
+    If not, it adjusts the patterns to make them compatible with the re module.
+    """
+    fixed_patterns = []
+    for pattern in patterns:
+        try:
+            # Try compiling the pattern to check if it's valid
+            re.compile(pattern)
+            fixed_patterns.append(pattern)  # Pattern is valid, add as is
+        except re.error as e:
+            if fail is True:
+                raise
+            else :
+                logging.warning(f"Invalid regex pattern: {pattern}. Error: {e}")
+    return fixed_patterns
+

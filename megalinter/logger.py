@@ -157,7 +157,7 @@ def fetch_gitleaks_regexes(force_use_local_file=False):
         try:
             response = requests.get(url)
             if response.status_code == 200:
-                config_data = response.text.encode("utf-8")
+                config_data = response.text  # Fix: Pass string to tomllib.loads instead of bytes
             else:
                 logging.warning(f"Failed to fetch Gitleaks config from URL: {response.status_code}")
         except Exception as e:
@@ -174,6 +174,7 @@ def fetch_gitleaks_regexes(force_use_local_file=False):
         pattern = rule.get('regex')
         if pattern:
             regex_patterns.append(pattern)
+    regex_patterns = utils.fix_regex_patterns(regex_patterns)
     GITLEAKS_REGEXES = regex_patterns
     return regex_patterns
 
