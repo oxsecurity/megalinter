@@ -127,6 +127,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.33.2 to **1.34.1** on 2025-04-24
   - [stylelint](https://stylelint.io) from 16.18.0 to **16.19.0** on 2025-04-24
   - [sqlfluff](https://www.sqlfluff.com/) from 3.3.1 to **3.4.0** on 2025-04-24
+  - [grype](https://github.com/anchore/grype) from 0.91.0 to **0.91.2** on 2025-04-25
+  - [syft](https://github.com/anchore/syft) from 1.22.0 to **1.23.1** on 2025-04-25
 <!-- linter-versions-end -->
 
 ## [v8.5.0] - 2024-03-23
