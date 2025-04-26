@@ -297,7 +297,7 @@ def file_is_generated(file_name: str) -> bool:
     return b"@generated" in content and b"@not-generated" not in content
 
 
-def clean_string(stdout: str) -> str:
+def clean_string(stdout) -> str:
     # noinspection PyBroadException
     try:
         res = stdout.decode("utf-8")
