@@ -157,7 +157,7 @@ def fetch_gitleaks_regexes(force_use_local_file=False):
         try:
             response = requests.get(url)
             if response.status_code == 200:
-                config_data = response.text
+                config_data = response.text.encode("utf-8")
             else:
                 logging.warning(f"Failed to fetch Gitleaks config from URL: {response.status_code}")
         except Exception as e:
@@ -168,7 +168,7 @@ def fetch_gitleaks_regexes(force_use_local_file=False):
         with open("./descriptors/additional/gitleaks-default.toml", "r", encoding="utf-8") as file:
             config_data = file.read()
 
-    config = tomllib.loads(config_data.encode("utf-8"))
+    config = tomllib.loads(config_data)
     regex_patterns = []
     for rule in config.get('rules', []):
         pattern = rule.get('regex')
