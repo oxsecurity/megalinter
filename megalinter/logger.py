@@ -1,12 +1,17 @@
 #!/usr/bin/env python3
 import logging
 import os
+import re
 import sys
+import tomllib
+
+import requests
 
 import chalk as c
 from megalinter import config, utils
 from megalinter.constants import ML_DOC_URL
 from megalinter.utils_reporter import log_section_start
+from pywhat import identifier
 
 
 def initialize_logger(mega_linter):
@@ -139,3 +144,43 @@ def display_header(mega_linter):
             logging.debug("" + name + "=HIDDEN_BY_MEGALINTER")
     logging.debug(utils.format_hyphens(""))
     logging.info("")
+
+GITLEAKS_REGEXES = None
+
+def fetch_gitleaks_regexes(force_use_local_file=False):
+    global GITLEAKS_REGEXES
+    if GITLEAKS_REGEXES is not None:
+        return GITLEAKS_REGEXES
+
+    config_data = None
+    if not force_use_local_file:
+        url = "https://raw.githubusercontent.com/gitleaks/gitleaks/refs/heads/master/config/gitleaks.toml"
+        try:
+            response = requests.get(url)
+            if response.status_code == 200:
+                config_data = response.text
+            else:
+                logging.warning(f"Failed to fetch Gitleaks config from URL: {response.status_code}")
+        except Exception as e:
+            logging.warning(f"Could not fetch Gitleaks config from URL. Error: {e}")
+
+    if config_data is None:
+        logging.info("Using local Gitleaks config file.")
+        with open("./descriptors/additional/gitleaks-default.toml", "r", encoding="utf-8") as file:
+            config_data = file.read()
+
+    config = tomllib.loads(config_data.encode("utf-8"))
+    regex_patterns = []
+    for rule in config.get('rules', []):
+        pattern = rule.get('regex')
+        if pattern:
+            regex_patterns.append(pattern)
+    GITLEAKS_REGEXES = regex_patterns
+    return regex_patterns
+
+def sanitize_string(input_string):
+    regex_patterns = fetch_gitleaks_regexes()
+    sanitized_string = input_string
+    for pattern in regex_patterns:
+        sanitized_string = re.sub(pattern, "[HIDDEN BY MEGALINTER]", sanitized_string)
+    return sanitized_string

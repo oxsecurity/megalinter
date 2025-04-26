@@ -13,7 +13,7 @@ from typing import Any, Optional, Pattern, Sequence
 
 import git
 import regex
-from megalinter import config
+from megalinter import config, logger
 from megalinter.constants import DEFAULT_DOCKER_WORKSPACE_DIR
 
 SIZE_MAX_SOURCEFILEHEADER = 1024
@@ -297,12 +297,14 @@ def file_is_generated(file_name: str) -> bool:
     return b"@generated" in content and b"@not-generated" not in content
 
 
-def decode_utf8(stdout):
+def clean_string(stdout: str) -> str:
     # noinspection PyBroadException
     try:
         res = stdout.decode("utf-8")
+        stdout = logger.sanitize_string(stdout)
     except Exception:
         res = str(stdout)
+        stdout = logger.sanitize_string(stdout)
     return res
 
 
