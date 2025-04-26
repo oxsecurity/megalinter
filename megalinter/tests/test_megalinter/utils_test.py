@@ -21,7 +21,6 @@ class utils_test(unittest.TestCase):
 
         sanitized = sanitize_string(input_string)
 
-        # We don't know exactly what pywhat will match, so check if sensitive parts are gone
         self.assertNotIn("AKIAIOSFODNN7EXAMPLE", sanitized)
         self.assertNotIn("ghp_abcdEFGHijklMNOPqrstUVWXyz1234567890", sanitized)
         self.assertIn("[HIDDEN BY MEGALINTER]", sanitized)

@@ -11,7 +11,6 @@ import chalk as c
 from megalinter import config, utils
 from megalinter.constants import ML_DOC_URL
 from megalinter.utils_reporter import log_section_start
-from pywhat import identifier
 
 
 def initialize_logger(mega_linter):
