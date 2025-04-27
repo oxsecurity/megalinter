@@ -89,6 +89,7 @@ def get_descriptor_dir():
         ), f"Descriptor dir {descriptor_dir} not found !"
         return descriptor_dir
 
+
 def get_excluded_directories(request_id):
     default_excluded_dirs = [
         "__pycache__",
@@ -622,7 +623,7 @@ def fix_regex_pattern(pattern):
     if "(?i)" in pattern:
         if pattern.find("(?i)") > 0:
             parts = pattern.split("(?i)")
-            pattern = "(?i)" + "".join(parts[1:])
+            pattern = "(?i)" + "".join(parts[0:])
     # 2. Replace invalid escape sequences like `\z` with `$`
     pattern = re.sub(r"\\z", "$", pattern)
     return pattern
@@ -641,7 +642,7 @@ def keep_only_valid_regex_patterns(patterns, fail=False):
             if fail is True:
                 raise
             else:
-                logging.warning(
+                logging.debug(
                     f"Invalid regex pattern after fix: {fixed_pattern}. Error: {e}"
                 )
 
