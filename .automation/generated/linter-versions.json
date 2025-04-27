@@ -111,7 +111,7 @@
     "syft": "1.23.1",
     "tekton-lint": "1.1.0",
     "terraform-fmt": "1.11.4",
-    "terragrunt": "0.77.20",
+    "terragrunt": "0.77.22",
     "terrascan": "1.19.9",
     "tflint": "0.56.0",
     "trivy": "0.61.1",
@@ -119,7 +119,7 @@
     "trufflehog": "3.88.25",
     "ts-standard": "12.0.2",
     "tsqllint": "1.16.0.0",
-    "v8r": "4.2.1",
+    "v8r": "4.3.0",
     "vale": "3.11.2",
     "xmllint": "21304",
     "yamllint": "1.37.0"

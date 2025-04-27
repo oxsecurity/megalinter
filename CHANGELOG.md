@@ -131,6 +131,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [sqlfluff](https://www.sqlfluff.com/) from 3.3.1 to **3.4.0** on 2025-04-24
   - [grype](https://github.com/anchore/grype) from 0.91.0 to **0.91.2** on 2025-04-25
   - [syft](https://github.com/anchore/syft) from 1.22.0 to **1.23.1** on 2025-04-25
+  - [v8r](https://github.com/chris48s/v8r) from 4.2.1 to **4.3.0** on 2025-04-27
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.77.20 to **0.77.22** on 2025-04-27
 <!-- linter-versions-end -->
 
 ## [v8.5.0] - 2024-03-23
