@@ -74,6 +74,21 @@ if DEFAULT_WORKSPACE != "":
     ]
 
 
+# Returns directory where all .yml language descriptors are defined
+def get_descriptor_dir():
+    # Compiled version (copied from DockerFile)
+    if os.path.isdir("/megalinter-descriptors"):
+        return "/megalinter-descriptors"
+    # Dev / Test version
+    else:
+        descriptor_dir = os.path.realpath(
+            os.path.dirname(os.path.abspath(__file__)) + "/descriptors"
+        )
+        assert os.path.isdir(
+            descriptor_dir
+        ), f"Descriptor dir {descriptor_dir} not found !"
+        return descriptor_dir
+
 def get_excluded_directories(request_id):
     default_excluded_dirs = [
         "__pycache__",

@@ -9,7 +9,6 @@ import chalk as c
 import requests
 from megalinter import config, utils
 from megalinter.constants import ML_DOC_URL
-from megalinter.linter_factory import get_descriptor_dir
 from megalinter.utils_reporter import log_section_start
 
 
@@ -176,7 +175,7 @@ def fetch_gitleaks_regexes(force_use_local_file=False):
 
     if config_data is None:
         logging.info("Using local Gitleaks config file.")
-        descriptors_dir = get_descriptor_dir()
+        descriptors_dir = utils.get_descriptor_dir()
         with open(
             f"{descriptors_dir}/additional/gitleaks-default.toml", "r", encoding="utf-8"
         ) as file:
