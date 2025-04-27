@@ -26,12 +26,12 @@ class utils_test(unittest.TestCase):
 
     def test_fetch_gitleaks_regexes_remote(self):
         # Test fetching Gitleaks regexes from the remote URL
-        regexes = fetch_gitleaks_regexes(force_use_local_file=False)
+        regexes = fetch_gitleaks_regexes(False)
         self.assertIsInstance(regexes, list, "Regexes should be a list")
         self.assertGreater(len(regexes), 0, "Regexes list should not be empty")
 
     def test_fetch_gitleaks_regexes_local(self):
         # Test fetching Gitleaks regexes from the local file
-        regexes = fetch_gitleaks_regexes(force_use_local_file=True)
+        regexes = fetch_gitleaks_regexes(True)
         self.assertIsInstance(regexes, list, "Regexes should be a list")
         self.assertGreater(len(regexes), 0, "Regexes list should not be empty")
