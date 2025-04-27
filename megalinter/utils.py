@@ -89,6 +89,7 @@ def get_descriptor_dir():
         ), f"Descriptor dir {descriptor_dir} not found !"
         return descriptor_dir
 
+
 def get_excluded_directories(request_id):
     default_excluded_dirs = [
         "__pycache__",
