@@ -182,5 +182,12 @@ def sanitize_string(input_string):
     regex_patterns = fetch_gitleaks_regexes()
     sanitized_string = input_string
     for pattern in regex_patterns:
-        sanitized_string = re.sub(pattern, "[HIDDEN BY MEGALINTER]", sanitized_string)
+        while True:
+            match = re.search(pattern, sanitized_string)
+            if not match:
+                break
+            if sanitized_string[match.end() - 1] == '"':
+                sanitized_string = re.sub(pattern, "[HIDDEN BY MEGALINTER]\"", sanitized_string, count=1)
+            else:
+                sanitized_string = re.sub(pattern, "[HIDDEN BY MEGALINTER]", sanitized_string, count=1)
     return sanitized_string
