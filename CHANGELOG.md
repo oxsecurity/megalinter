@@ -19,6 +19,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Linters enhancements
   - [editorconfig_checker](https://megalinter.io/latest/descriptors/editorconfig_editorconfig_checker/) Changes default EditorConfig-Checker config filename by @llaville in <https://github.com/oxsecurity/megalinter/issues/5061>
+  - [TruffleHog](https://megalinter.io/latest/descriptors/repository_trufflehog/): Ignore .git by default if not already done using --exclude-paths option
 
 - Fixes
   - Sanitize all linter outputs by default

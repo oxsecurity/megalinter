@@ -296,6 +296,17 @@ def file_is_generated(file_name: str) -> bool:
         content = f.read(SIZE_MAX_SOURCEFILEHEADER)
     return b"@generated" in content and b"@not-generated" not in content
 
+def get_default_rules_location() -> str:
+    default_rules_location = (
+        "/action/lib/.automation"
+        if os.path.isdir("/action/lib/.automation")
+        else os.path.relpath(
+            os.path.relpath(
+                os.path.dirname(os.path.abspath(__file__)) + "/../TEMPLATES"
+            )
+        )
+    )
+    return default_rules_location
 
 def clean_string(stdout) -> str:
     # noinspection PyBroadException
