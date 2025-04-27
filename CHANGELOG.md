@@ -39,7 +39,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - New config property **ENABLE_ERRORS_LINTERS**. If set, only the listed linters will be considered as blocking
 
 - New linters
-  - Add [cppcheck](https://github.com/danmar/cppcheck) linter, by @bdovaz in https://github.com/oxsecurity/megalinter/pull/5224
+  - Add [cppcheck](https://github.com/danmar/cppcheck) linter, by @bdovaz in <https://github.com/oxsecurity/megalinter/pull/5224>
 
 - Media
   - [Integrating MegaLinter to Automate Linting Across Multiple Codebases. A Technical Description](https://medium.com/datamindedbe/integrating-megalinter-to-automate-linting-across-multiple-codebases-a-technical-description-a200bb235b71), by [Thorsten Foltz](https://www.linkedin.com/in/thorstenfoltz/)
@@ -49,18 +49,18 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [TruffleHog](https://megalinter.io/latest/descriptors/repository_trufflehog/): Ignore .git by default if not already done using --exclude-paths option
 
 - Fixes
-  - Sanitize all linter outputs by default, by @nvuillam in https://github.com/oxsecurity/megalinter/pull/5266
+  - Sanitize all linter outputs by default, by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/5266>
 
 - Doc
-  - Add [j2lint](https://github.com/wesley-dean/mega-linter-plugin-j2lint/) to plugins, by @wesley-dean in https://github.com/oxsecurity/megalinter/pull/5151
-  - Add [fmlint](https://github.com/wesley-dean/mega-linter-plugin-fmlint) (frontmatter linter) to plugins list by @wesley-dean in https://github.com/oxsecurity/megalinter/pull/5257
-  - Remove trailing spaces by @parkerbxyz in https://github.com/oxsecurity/megalinter/pull/5185
+  - Add [j2lint](https://github.com/wesley-dean/mega-linter-plugin-j2lint/) to plugins, by @wesley-dean in <https://github.com/oxsecurity/megalinter/pull/5151>
+  - Add [fmlint](https://github.com/wesley-dean/mega-linter-plugin-fmlint) (frontmatter linter) to plugins list by @wesley-dean in <https://github.com/oxsecurity/megalinter/pull/5257>
+  - Remove trailing spaces by @parkerbxyz in <https://github.com/oxsecurity/megalinter/pull/5185>
 
 - CI
   - Initial Renovate automerge configuration, by @echoix in <https://github.com/oxsecurity/megalinter/pull/5057>
-  - Set update schedule for checkov updates, by @echoix in https://github.com/oxsecurity/megalinter/pull/5064
-  - Always upgrade packages from base image for updated security fixes, by @echoix in https://github.com/oxsecurity/megalinter/pull/5152
-  - build-command: Unshallow pull or full pull before committing changes, by @echoix in https://github.com/oxsecurity/megalinter/pull/5201
+  - Set update schedule for checkov updates, by @echoix in <https://github.com/oxsecurity/megalinter/pull/5064>
+  - Always upgrade packages from base image for updated security fixes, by @echoix in <https://github.com/oxsecurity/megalinter/pull/5152>
+  - build-command: Unshallow pull or full pull before committing changes, by @echoix in <https://github.com/oxsecurity/megalinter/pull/5201>
 
 - Linter versions upgrades (50)
   - [ansible-lint](https://ansible-lint.readthedocs.io/) from 25.1.3 to **25.2.1**
