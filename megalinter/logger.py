@@ -189,7 +189,7 @@ def fetch_gitleaks_regexes(force_use_local_file=False):
     for rule in config.get("rules", []):
         rule_id = rule.get("id")
         if rule_id == "generic-api-key":
-          continue
+            continue
         pattern = rule.get("regex")
         if pattern:
             regex_patterns.append(pattern)
