@@ -13,7 +13,9 @@ class TruffleHogLinter(Linter):
 
         if not any(arg.startswith("--exclude-paths") for arg in cmd):
             default_rules_location = utils.get_default_rules_location()
-            default_trufflehog_ignore_file = default_rules_location + "/.trufflehogignore"
+            default_trufflehog_ignore_file = (
+                default_rules_location + "/.trufflehogignore"
+            )
             exclude_arg = "--exclude-paths=" + default_trufflehog_ignore_file
             cmd += [exclude_arg]
 

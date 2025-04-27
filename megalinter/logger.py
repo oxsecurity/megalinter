@@ -5,9 +5,8 @@ import re
 import sys
 import tomllib
 
-import requests
-
 import chalk as c
+import requests
 from megalinter import config, utils
 from megalinter.constants import ML_DOC_URL
 from megalinter.utils_reporter import log_section_start
@@ -144,7 +143,9 @@ def display_header(mega_linter):
     logging.debug(utils.format_hyphens(""))
     logging.info("")
 
+
 GITLEAKS_REGEXES = None
+
 
 def fetch_gitleaks_regexes(force_use_local_file=False):
     global GITLEAKS_REGEXES
@@ -157,26 +158,33 @@ def fetch_gitleaks_regexes(force_use_local_file=False):
         try:
             response = requests.get(url)
             if response.status_code == 200:
-                config_data = response.text  # Fix: Pass string to tomllib.loads instead of bytes
+                config_data = (
+                    response.text
+                )  # Fix: Pass string to tomllib.loads instead of bytes
             else:
-                logging.warning(f"Failed to fetch Gitleaks config from URL: {response.status_code}")
+                logging.warning(
+                    f"Failed to fetch Gitleaks config from URL: {response.status_code}"
+                )
         except Exception as e:
             logging.warning(f"Could not fetch Gitleaks config from URL. Error: {e}")
 
     if config_data is None:
         logging.info("Using local Gitleaks config file.")
-        with open("./descriptors/additional/gitleaks-default.toml", "r", encoding="utf-8") as file:
+        with open(
+            "./descriptors/additional/gitleaks-default.toml", "r", encoding="utf-8"
+        ) as file:
             config_data = file.read()
 
     config = tomllib.loads(config_data)
     regex_patterns = []
-    for rule in config.get('rules', []):
-        pattern = rule.get('regex')
+    for rule in config.get("rules", []):
+        pattern = rule.get("regex")
         if pattern:
             regex_patterns.append(pattern)
     regex_patterns = utils.keep_only_valid_regex_patterns(regex_patterns)
     GITLEAKS_REGEXES = regex_patterns
     return regex_patterns
+
 
 def sanitize_string(input_string):
     regex_patterns = fetch_gitleaks_regexes()
@@ -187,7 +195,11 @@ def sanitize_string(input_string):
             if not match:
                 break
             if sanitized_string[match.end() - 1] == '"':
-                sanitized_string = re.sub(pattern, "[HIDDEN BY MEGALINTER]\"", sanitized_string, count=1)
+                sanitized_string = re.sub(
+                    pattern, '[HIDDEN BY MEGALINTER]"', sanitized_string, count=1
+                )
             else:
-                sanitized_string = re.sub(pattern, "[HIDDEN BY MEGALINTER]", sanitized_string, count=1)
+                sanitized_string = re.sub(
+                    pattern, "[HIDDEN BY MEGALINTER]", sanitized_string, count=1
+                )
     return sanitized_string

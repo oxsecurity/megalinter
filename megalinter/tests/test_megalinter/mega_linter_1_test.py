@@ -494,4 +494,3 @@ class mega_linter_1_test(unittest.TestCase):
         self.assertIn(
             "JAVASCRIPT_ES has been skipped because its CLI lint mode", output
         )
-

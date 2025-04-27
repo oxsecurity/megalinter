@@ -296,6 +296,7 @@ def file_is_generated(file_name: str) -> bool:
         content = f.read(SIZE_MAX_SOURCEFILEHEADER)
     return b"@generated" in content and b"@not-generated" not in content
 
+
 def get_default_rules_location() -> str:
     default_rules_location = (
         "/action/lib/.automation"
@@ -307,6 +308,7 @@ def get_default_rules_location() -> str:
         )
     )
     return default_rules_location
+
 
 def clean_string(stdout) -> str:
     # noinspection PyBroadException
@@ -602,13 +604,14 @@ def is_pr() -> bool:
 
 def fix_regex_pattern(pattern):
     # 1. Fix global flags not at the start of the expression
-    if '(?i)' in pattern:
-        if pattern.find('(?i)') > 0:
-            parts = pattern.split('(?i)')
-            pattern = '(?i)' + ''.join(parts[1:])
+    if "(?i)" in pattern:
+        if pattern.find("(?i)") > 0:
+            parts = pattern.split("(?i)")
+            pattern = "(?i)" + "".join(parts[1:])
     # 2. Replace invalid escape sequences like `\z` with `$`
-    pattern = re.sub(r'\\z', '$', pattern)
+    pattern = re.sub(r"\\z", "$", pattern)
     return pattern
+
 
 def keep_only_valid_regex_patterns(patterns, fail=False):
     fixed_patterns = []
@@ -623,7 +626,8 @@ def keep_only_valid_regex_patterns(patterns, fail=False):
             if fail is True:
                 raise
             else:
-                logging.warning(f"Invalid regex pattern after fix: {fixed_pattern}. Error: {e}")
-    
-    return fixed_patterns
+                logging.warning(
+                    f"Invalid regex pattern after fix: {fixed_pattern}. Error: {e}"
+                )
 
+    return fixed_patterns
