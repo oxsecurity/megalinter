@@ -1059,7 +1059,7 @@ class Linter:
                 ),
             )
             return_code = process.returncode
-            return_stdout = utils.clean_string(process.stdout,self.is_formatter == False)
+            return_stdout = utils.clean_string(process.stdout,not self.is_formatter)
         else:
             # Use full executable path if we are on Windows
             if sys.platform == "win32":
@@ -1081,7 +1081,7 @@ class Linter:
                     cwd=cwd,
                 )
                 return_code = process.returncode
-                return_stdout = utils.clean_string(process.stdout, self.is_formatter == False)
+                return_stdout = utils.clean_string(process.stdout, not self.is_formatter)
             except FileNotFoundError as err:
                 return_code = 999
                 return_stdout = (
