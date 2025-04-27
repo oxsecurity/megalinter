@@ -202,10 +202,10 @@ def sanitize_string(input_string):
                 break
             if sanitized_string[match.end() - 1] == '"':
                 sanitized_string = re.sub(
-                    pattern, '[HIDDEN BY MEGALINTER]"', sanitized_string, count=1
+                    pattern, 'HIDDEN_BY_MEGALINTER"', sanitized_string, count=1
                 )
             else:
                 sanitized_string = re.sub(
-                    pattern, "[HIDDEN BY MEGALINTER]", sanitized_string, count=1
+                    pattern, "HIDDEN_BY_MEGALINTER", sanitized_string, count=1
                 )
     return sanitized_string

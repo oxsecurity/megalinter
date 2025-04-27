@@ -15,13 +15,13 @@ class utils_test(unittest.TestCase):
 
         self.assertNotIn("AKIAIOSFODNN7EXAMPLE", sanitized)
         self.assertNotIn("ghp_abcdEFGHijklMNOPqrstUVWXyz1234567890", sanitized)
-        self.assertIn("[HIDDEN BY MEGALINTER]", sanitized)
+        self.assertIn("HIDDEN_BY_MEGALINTER", sanitized)
 
         # Optional: stricter check if needed
         self.assertEqual(
-            sanitized.count("[HIDDEN BY MEGALINTER]"),
+            sanitized.count("HIDDEN_BY_MEGALINTER"),
             2,
-            "There should be exactly 2 [HIDDEN BY MEGALINTER] in the output",
+            "There should be exactly 2 HIDDEN_BY_MEGALINTER in the output",
         )
 
     def test_fetch_gitleaks_regexes_remote(self):
