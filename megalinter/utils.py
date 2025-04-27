@@ -600,7 +600,7 @@ def is_pr() -> bool:
     )
 
 
-def fix_regex_patterns(patterns,fail=False):
+def keep_only_valid_regex_patterns(patterns,fail=False):
     """
     Ensures that global flags (e.g., (?i)) are at the start of each regex pattern in the list.
     If not, it adjusts the patterns to make them compatible with the re module.

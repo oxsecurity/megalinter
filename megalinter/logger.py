@@ -174,7 +174,7 @@ def fetch_gitleaks_regexes(force_use_local_file=False):
         pattern = rule.get('regex')
         if pattern:
             regex_patterns.append(pattern)
-    regex_patterns = utils.fix_regex_patterns(regex_patterns)
+    regex_patterns = utils.keep_only_valid_regex_patterns(regex_patterns)
     GITLEAKS_REGEXES = regex_patterns
     return regex_patterns
 
