@@ -600,21 +600,30 @@ def is_pr() -> bool:
     )
 
 
-def keep_only_valid_regex_patterns(patterns,fail=False):
-    """
-    Ensures that global flags (e.g., (?i)) are at the start of each regex pattern in the list.
-    If not, it adjusts the patterns to make them compatible with the re module.
-    """
+def fix_regex_pattern(pattern):
+    # 1. Fix global flags not at the start of the expression
+    if '(?i)' in pattern:
+        if pattern.find('(?i)') > 0:
+            parts = pattern.split('(?i)')
+            pattern = '(?i)' + ''.join(parts[1:])
+    # 2. Replace invalid escape sequences like `\z` with `$`
+    pattern = re.sub(r'\\z', '$', pattern)
+    return pattern
+
+def keep_only_valid_regex_patterns(patterns, fail=False):
     fixed_patterns = []
     for pattern in patterns:
+        # First, attempt to fix the pattern
+        fixed_pattern = fix_regex_pattern(pattern)
         try:
-            # Try compiling the pattern to check if it's valid
-            re.compile(pattern)
-            fixed_patterns.append(pattern)  # Pattern is valid, add as is
+            # Try compiling the fixed pattern to check if it's valid
+            re.compile(fixed_pattern)
+            fixed_patterns.append(fixed_pattern)  # Pattern is valid, add it
         except re.error as e:
             if fail is True:
                 raise
-            else :
-                logging.warning(f"Invalid regex pattern: {pattern}. Error: {e}")
+            else:
+                logging.warning(f"Invalid regex pattern after fix: {fixed_pattern}. Error: {e}")
+    
     return fixed_patterns
 
