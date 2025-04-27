@@ -152,6 +152,11 @@ def fetch_gitleaks_regexes(force_use_local_file=False):
     if GITLEAKS_REGEXES is not None:
         return GITLEAKS_REGEXES
 
+    # Use local file for test cases to improve speed
+    current_test_name = utils.get_current_test_name()
+    if current_test_name and "test_fetch_gitleaks_regexes_remote" not in current_test_name:
+        force_use_local_file = True
+
     config_data = None
     if not force_use_local_file:
         url = "https://raw.githubusercontent.com/gitleaks/gitleaks/refs/heads/master/config/gitleaks.toml"
