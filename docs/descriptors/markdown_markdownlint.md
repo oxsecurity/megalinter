@@ -9,18 +9,18 @@ description: How to use markdownlint (configure, ignore files, ignore errors, he
 
 Checks for errors in Markdown files, and can also auto-fix some of them.
 
-[MarkdownLint](https://github.com/DavidAnson/markdownlint) is run through [markdownlint-cli](https://github.com/igorshubovych/markdownlint-cli)
+[markdownlint](https://github.com/DavidAnson/markdownlint) is run through [markdownlint-cli2](https://github.com/DavidAnson/markdownlint-cli2)
 
-To see MarkdownLint version, you can have a look in the dependencies of latest markdownlint-cli version.
+To see markdownlint version, you can have a look in the dependencies of latest markdownlint-cli2 version.
 
 ## markdownlint documentation
 
-- Version in MegaLinter: **0.44.0**
+- Version in MegaLinter: **0.17.2**
 - Visit [Official Web Site](https://github.com/DavidAnson/markdownlint#readme){target=_blank}
-- See [How to configure markdownlint rules](https://github.com/igorshubovych/markdownlint-cli#configuration){target=_blank}
+- See [How to configure markdownlint rules](https://github.com/DavidAnson/markdownlint-cli2#configuration){target=_blank}
   - If custom `.markdownlint.json` config file isn't found, [.markdownlint.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.markdownlint.json){target=_blank} will be used
 - See [How to disable markdownlint rules in files](https://github.com/DavidAnson/markdownlint#configuration){target=_blank}
-- See [How to ignore files and directories with markdownlint](https://github.com/igorshubovych/markdownlint-cli#ignoring-files){target=_blank}
+- See [How to ignore files and directories with markdownlint](https://github.com/DavidAnson/markdownlint-cli2#configuration){target=_blank}
 - See [Index of problems detected by markdownlint](https://github.com/DavidAnson/markdownlint#rules--aliases){target=_blank}
 
 [![markdownlint - GitHub](https://gh-card.dev/repos/DavidAnson/markdownlint.svg?fullname=)](https://github.com/DavidAnson/markdownlint){target=_blank}
@@ -39,7 +39,7 @@ To see MarkdownLint version, you can have a look in the dependencies of latest m
 | MARKDOWN_MARKDOWNLINT_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                                |                                                 |
 | MARKDOWN_MARKDOWNLINT_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file                              |
 | MARKDOWN_MARKDOWNLINT_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file                                 |
-| MARKDOWN_MARKDOWNLINT_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `list_of_files`                                 |
+| MARKDOWN_MARKDOWNLINT_CLI2_LINT_MODE              | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `list_of_files`                                 |
 | MARKDOWN_MARKDOWNLINT_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".md"]`                                       |
 | MARKDOWN_MARKDOWNLINT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | Include every file                              |
 | MARKDOWN_MARKDOWNLINT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                                            |
@@ -49,7 +49,7 @@ To see MarkdownLint version, you can have a look in the dependencies of latest m
 | MARKDOWN_MARKDOWNLINT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
 | MARKDOWN_MARKDOWNLINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `true`                                          |
 | MARKDOWN_MARKDOWNLINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
-| MARKDOWN_MARKDOWNLINT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `['markdownlint']`                              |
+| MARKDOWN_MARKDOWNLINT_CLI2_EXECUTABLE             | Override CLI executable                                                                                                                                                                                             | `['markdownlint']`                              |
 
 ## IDE Integration
 
@@ -118,7 +118,7 @@ markdownlint --fix -c .markdownlint.json myfile.md
 ```shell
 Usage: markdownlint [options] [files|directories|globs...]
 
-MarkdownLint Command Line Interface
+markdownlint command line interface
 
 Arguments:
   files|directories|globs                    files, directories, and/or globs to lint
@@ -145,9 +145,9 @@ Options:
 
 - Dockerfile commands :
 ```dockerfile
-# renovate: datasource=npm depName=markdownlint-cli
-ARG NPM_MARKDOWNLINT_CLI_VERSION=0.44.0
+# renovate: datasource=npm depName=markdownlint-cli2
+ARG NPM_MARKDOWNLINT_CLI2_VERSION=0.17.2
 ```
 
 - NPM packages (node.js):
-  - [markdownlint-cli@0.44.0](https://www.npmjs.com/package/markdownlint-cli/v/0.44.0)
+  - [markdownlint-cli2@0.17.2](https://www.npmjs.com/package/markdownlint-cli2/v/0.17.2)
