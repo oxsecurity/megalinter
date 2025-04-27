@@ -46,7 +46,7 @@ REPOSITORY_TRIVY_ARGUMENTS:
   - "--skip-dirs"
   - ".venv"
 REPOSITORY_TRUFFLEHOG_ARGUMENTS:
-  - --exclude-paths=TEMPLATES/.trufflehogignore
+  - --exclude-paths=.trufflehogignore
 SHOW_ELAPSED_TIME: true
 FLAVOR_SUGGESTIONS: false
 EMAIL_REPORTER: false
