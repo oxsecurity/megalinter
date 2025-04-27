@@ -326,7 +326,7 @@ def get_default_rules_location() -> str:
     return default_rules_location
 
 
-def clean_string(stdout,sanitize=True) -> str:
+def clean_string(stdout, sanitize=True) -> str:
     # noinspection PyBroadException
     try:
         res = stdout.decode("utf-8")
