@@ -184,6 +184,9 @@ def fetch_gitleaks_regexes(force_use_local_file=False):
     config = tomllib.loads(config_data)
     regex_patterns = []
     for rule in config.get("rules", []):
+        rule_id = rule.get("id")
+        if rule_id == "generic-api-key":
+          continue
         pattern = rule.get("regex")
         if pattern:
             regex_patterns.append(pattern)
