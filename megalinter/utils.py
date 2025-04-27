@@ -326,14 +326,16 @@ def get_default_rules_location() -> str:
     return default_rules_location
 
 
-def clean_string(stdout) -> str:
+def clean_string(stdout,sanitize=True) -> str:
     # noinspection PyBroadException
     try:
         res = stdout.decode("utf-8")
-        res = logger.sanitize_string(res)
+        if sanitize is True:
+            res = logger.sanitize_string(res)
     except Exception:
         res = str(stdout)
-        res = logger.sanitize_string(res)
+        if sanitize is True:
+            res = logger.sanitize_string(res)
     return res
 
 
