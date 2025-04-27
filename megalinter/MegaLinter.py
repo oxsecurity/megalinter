@@ -92,15 +92,7 @@ class Megalinter:
             manage_upgrade_message()
             display_header(self)
         # MegaLinter default rules location
-        self.default_rules_location = (
-            "/action/lib/.automation"
-            if os.path.isdir("/action/lib/.automation")
-            else os.path.relpath(
-                os.path.relpath(
-                    os.path.dirname(os.path.abspath(__file__)) + "/../TEMPLATES"
-                )
-            )
-        )
+        self.default_rules_location = utils.get_default_rules_location()
         # User-defined rules location
         self.linter_rules_path = self.github_workspace + os.path.sep + ".github/linters"
 

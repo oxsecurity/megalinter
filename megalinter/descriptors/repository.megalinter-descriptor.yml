@@ -645,7 +645,8 @@ linters:
           url: https://marketplace.visualstudio.com/items?itemName=AquaSecurityOfficial.trivy-vulnerability-scanner
 
   # TRUFFLEHOG
-  - linter_name: trufflehog
+  - class: TruffleHogLinter
+    linter_name: trufflehog
     descriptor_flavors:
       - all_flavors # Applicable to CI in any language project
       - ci_light

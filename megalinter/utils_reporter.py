@@ -237,7 +237,7 @@ def convert_sarif_to_human(sarif_in, request_id) -> str:
             env=config.build_env(request_id),
         )
         return_code = process.returncode
-        output = utils.decode_utf8(process.stdout)
+        output = utils.clean_string(process.stdout)
     except Exception as e:
         return_code = 1
         output = sarif_in

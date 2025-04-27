@@ -20,6 +20,7 @@
         ".lycheeignore"
     ],
     "ignoreWords": [
+        "AKIAIOSFODNN",
         "ARGTOP",
         "AROA47DSWDEZA3",
         "ASPM",
@@ -1500,6 +1501,7 @@
         "trivyignore",
         "trollface",
         "trufflehog",
+        "trufflehogignore",
         "trufflesecurity",
         "tsql",
         "tsqllint",
