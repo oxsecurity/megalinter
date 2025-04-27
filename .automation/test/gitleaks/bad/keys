@@ -1,6 +1,6 @@
 Basic auth:
 
-https://admin:admin@the-internet.herokuapp.com/basic_auth # trufflehog:ignore
+https://admin:admin@the-internet.herokuapp.com/basic_auth
 
 Private key:
 -----BEGIN OPENSSH PRIVATE KEY-----
