@@ -19,7 +19,7 @@ mkdocs-material==9.6.12
 multiprocessing_logging==0.3.4
 pychalk==2.0.1
 pygithub==2.6.1
-pymdown-extensions==10.14.3
+pymdown-extensions==10.15
 pytablewriter==1.2.1
 pytest-cov==6.1.1
 pytest-timeout==2.3.1
