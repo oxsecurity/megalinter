@@ -87,6 +87,7 @@ rstcheck -c .rstcheck.cfg myfile.rst
  Usage: rstcheck [OPTIONS] FILES...                                             
                                                                                 
  CLI of rstcheck.
+
  Enabled features: ['Sphinx']
  Pass one or more RST FILES to check. Can be files or directories if 
  --recursive is passed too. Pass "-" if you want to read from stdin.

@@ -9,7 +9,7 @@
     "cfn-lint": "1.34.1",
     "checkmake": "0.2.0",
     "checkov": "3.2.404",
-    "checkstyle": "10.23.0",
+    "checkstyle": "10.23.1",
     "chktex": "1.7.8",
     "clang-format": "19.1.4",
     "clippy": "0.1.86",
@@ -119,7 +119,7 @@
     "trufflehog": "3.88.25",
     "ts-standard": "12.0.2",
     "tsqllint": "1.16.0.0",
-    "v8r": "4.3.0",
+    "v8r": "4.4.0",
     "vale": "3.11.2",
     "xmllint": "21304",
     "yamllint": "1.37.0"
