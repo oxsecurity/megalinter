@@ -4,10 +4,9 @@ Use Trivy to generate SBOM (Software bill of materials)
 """
 
 import json
-import logging
 import os
 
-from megalinter import Linter
+from megalinter import Linter, utils
 from megalinter.constants import (
     DEFAULT_SARIF_SCHEMA_URI,
     DEFAULT_SARIF_VERSION,
@@ -16,6 +15,31 @@ from megalinter.constants import (
 
 
 class TrivySbomLinter(Linter):
+    # Provide additional details in text reporter logs
+    # Add SBOM output file
+    # noinspection PyMethodMayBeStatic
+    def complete_text_reporter_report(self, reporter_self):
+        # Collect detected words from logs
+        if self.stdout is None or not utils.can_write_report_files(self.master):
+            return []
+        sbom_output = utils.find_json_in_stdout(self.stdout, False)
+        if sbom_output == "":
+            sbom_output = self.stdout
+        output_file_extension = ".json" if sbom_output.startswith("{") else ".txt"
+        sbom_output_file = (
+            reporter_self.report_folder
+            + os.path.sep
+            + "sbom"
+            + os.path.sep
+            + "trivy"
+            + output_file_extension
+        )
+        # Save SBOM output file
+        os.makedirs(os.path.dirname(sbom_output_file), exist_ok=True)
+        with open(sbom_output_file, "w", encoding="utf-8") as outfile:
+            outfile.write(sbom_output)
+        return []
+
     # Get syft json output and build SARIF output from it
     def manage_sarif_output(self, _return_stdout):
         if self.can_output_sarif is True and self.output_sarif is True:
@@ -23,10 +47,6 @@ class TrivySbomLinter(Linter):
             if os.path.isfile(json_output_file):
                 with open(json_output_file, "r", encoding="utf-8") as json_file:
                     json_file_str = json_file.read()
-                    if logging.getLogger().isEnabledFor(logging.DEBUG):
-                        logging.debug(
-                            "Trivy SBOM initial output file: " + json_file_str
-                        )
                     trivy_result_sbom = json.loads(json_file_str)
                 sarif_obj = {
                     "$schema": DEFAULT_SARIF_SCHEMA_URI,

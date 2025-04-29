@@ -44,7 +44,7 @@ Run `make` for Makefile help. Initialize virtualenv and install dependencies wit
 
 You can lint with `make megalinter` (Incoming)
 
-If you need to run `build.sh` commands manually you need to run `source .venv/bin/activate` first.
+If you need to run `build.sh` commands manually you need to run `source .venv/bin/activate` (or `source .venv/Scripts/activate` on Windows) first.
 
 ### 5. Submit a pull request
 

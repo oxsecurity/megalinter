@@ -29,7 +29,7 @@ class RakuLinter(megalinter.Linter):
                 ),
             )
             return_code = process.returncode
-            return_stdout = megalinter.utils.decode_utf8(process.stdout)
+            return_stdout = megalinter.utils.clean_string(process.stdout)
             logging.debug(f"{return_code} : {return_stdout}")
 
     # Build the CLI command to call to lint a file

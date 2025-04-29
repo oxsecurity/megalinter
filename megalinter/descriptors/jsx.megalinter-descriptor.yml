@@ -57,7 +57,7 @@ linters:
           ARG NPM_ESLINT_VERSION=8.57.1
         - |-
           # renovate: datasource=npm depName=eslint-plugin-react
-          ARG NPM_ESLINT_PLUGIN_REACT_VERSION=7.37.4
+          ARG NPM_ESLINT_PLUGIN_REACT_VERSION=7.37.5
         - |-
           # renovate: datasource=npm depName=eslint-plugin-jsx-a11y
           ARG NPM_ESLINT_PLUGIN_JSX_ALLY_VERSION=6.10.2

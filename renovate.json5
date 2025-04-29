@@ -13,6 +13,9 @@
     'preview:dockerVersions',
     'group:unitTestNonMajor',
     ':enableVulnerabilityAlerts',
+    ':automergePr', // Still raise a PR for automerges
+    ':automergeDigest', // enable for PRs updating digests
+    ':automergePatch', // enable for lock files, patch and pin
   ],
   vulnerabilityAlerts: {
     enabled: true,
@@ -47,6 +50,14 @@
       ],
       schedule: [
         'before 8am on Friday',
+      ],
+    },
+    {
+      matchPackageNames: [
+        'checkov',
+      ],
+      schedule: [
+        'before 10am every 4 day',
       ],
     },
     {

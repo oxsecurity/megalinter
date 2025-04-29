@@ -157,6 +157,7 @@ class Linter:
             "enable_linters": [],
             "disable_descriptors": [],
             "disable_linters": [],
+            "enable_errors_linters": [],
             "disable_errors_linters": [],
             "post_linter_status": True,
         }
@@ -768,6 +769,18 @@ class Linter:
             self.disable_errors = False
         elif self.name in params["disable_errors_linters"]:
             self.disable_errors = True
+        elif (
+            "enable_errors_linters" in params
+            and len(params["enable_errors_linters"]) > 0
+            and self.name in params["enable_errors_linters"]
+        ):
+            self.disable_errors = False
+        elif (
+            "enable_errors_linters" in params
+            and len(params["enable_errors_linters"]) > 0
+            and self.name not in params["enable_errors_linters"]
+        ):
+            self.disable_errors = True
         elif config.get(self.request_id, self.name + "_DISABLE_ERRORS", "") == "false":
             self.disable_errors = False
         elif config.get(self.request_id, self.name + "_DISABLE_ERRORS", "") == "true":
@@ -1046,7 +1059,7 @@ class Linter:
                 ),
             )
             return_code = process.returncode
-            return_stdout = utils.decode_utf8(process.stdout)
+            return_stdout = utils.clean_string(process.stdout, not self.is_formatter)
         else:
             # Use full executable path if we are on Windows
             if sys.platform == "win32":
@@ -1068,7 +1081,9 @@ class Linter:
                     cwd=cwd,
                 )
                 return_code = process.returncode
-                return_stdout = utils.decode_utf8(process.stdout)
+                return_stdout = utils.clean_string(
+                    process.stdout, not self.is_formatter
+                )
             except FileNotFoundError as err:
                 return_code = 999
                 return_stdout = (
@@ -1185,7 +1200,7 @@ class Linter:
                 env=subprocess_env,
             )
             return_code = process.returncode
-            output = utils.decode_utf8(process.stdout)
+            output = utils.clean_string(process.stdout)
             logging.debug("Linter version result: " + str(return_code) + " " + output)
         except FileNotFoundError:
             logging.warning("Unable to call command [" + " ".join(command) + "]")
@@ -1233,7 +1248,7 @@ class Linter:
                     env=subprocess_env,
                 )
                 return_code = process.returncode
-                output += utils.decode_utf8(process.stdout)
+                output += utils.clean_string(process.stdout)
                 logging.debug("Linter help result: " + str(return_code) + " " + output)
             except FileNotFoundError:
                 logging.warning("Unable to call command [" + " ".join(command) + "]")

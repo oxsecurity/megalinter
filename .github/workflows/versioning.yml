@@ -29,7 +29,7 @@ jobs:
   actions-tagger:
     runs-on: windows-latest
     environment:
-      name: release
+      name: release-tag
     permissions: write-all
     steps:
       #############################

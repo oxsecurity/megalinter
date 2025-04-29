@@ -339,8 +339,11 @@ def copy_logs_for_doc(text_report_file, test_folder, report_file_name):
     target_file = f"{updated_sources_dir}{os.path.sep}{report_file_name}".replace(
         ".log", ".txt"
     )
-    os.makedirs(os.path.dirname(target_file), exist_ok=True)
-    shutil.copy(text_report_file, target_file)
+    try:
+        os.makedirs(os.path.dirname(target_file), exist_ok=True)
+        shutil.copy(text_report_file, target_file)
+    except Exception:
+        logging.warning("Unable to copy logs for doc")
 
 
 def test_get_linter_version(linter, test_self):

@@ -30,10 +30,10 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=pylint
-          ARG PIP_PYLINT_VERSION=3.3.5
+          ARG PIP_PYLINT_VERSION=3.3.6
         - |-
           # renovate: datasource=pypi depName=typing-extensions
-          ARG PIP_TYPING_EXTENSIONS_VERSION=4.12.2
+          ARG PIP_TYPING_EXTENSIONS_VERSION=4.13.2
       pip:
         - pylint==${PIP_PYLINT_VERSION}
         - typing-extensions==${PIP_TYPING_EXTENSIONS_VERSION}
@@ -126,7 +126,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=flake8
-          ARG PIP_FLAKE8_VERSION=7.1.2
+          ARG PIP_FLAKE8_VERSION=7.2.0
       pip:
         - flake8==${PIP_FLAKE8_VERSION}
     ide:
@@ -365,7 +365,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=pyright
-          ARG NPM_PYRIGHT_VERSION=1.1.396
+          ARG NPM_PYRIGHT_VERSION=1.1.400
       npm:
         - pyright@${NPM_PYRIGHT_VERSION}
     ide:
@@ -419,7 +419,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=ruff
-          ARG PIP_RUFF_VERSION=0.9.9
+          ARG PIP_RUFF_VERSION=0.11.6
       pip:
         - ruff==${PIP_RUFF_VERSION}
     ide:
@@ -468,7 +468,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=ruff
-          ARG PIP_RUFF_VERSION=0.9.9
+          ARG PIP_RUFF_VERSION=0.11.6
       pip:
         - ruff==${PIP_RUFF_VERSION}
     ide:

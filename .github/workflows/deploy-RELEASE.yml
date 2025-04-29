@@ -55,9 +55,9 @@ jobs:
       ########################################################
       # Publish updated version of mega-linter-runner on NPM #
       ########################################################
-      - uses: actions/setup-node@v4.2.0
+      - uses: actions/setup-node@v4.4.0
         with:
-          node-version: "20.x"
+          node-version: "22.x"
           registry-url: "https://registry.npmjs.org"
       - run: cd mega-linter-runner && npm install
       - run: cd mega-linter-runner && npm publish || echo "mega-linter-runner not published"
@@ -186,7 +186,7 @@ jobs:
           echo "curr ver ${{ steps.version.outputs.cversion }}"
       - uses: actions/setup-python@v5
         with:
-          python-version: 3.12.0
+          python-version: 3.12.10
       - run: pip install --upgrade -r .config/python/dev/requirements.txt
       - run: cd .automation && bash build_schemas_doc.sh && cd ..
       # - run: mkdocs gh-deploy --force

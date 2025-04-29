@@ -530,7 +530,8 @@ def build_dockerfile(
     apk_install_command = ""
     if len(apk_packages) > 0:
         apk_install_command = (
-            "RUN apk add --no-cache \\\n                "
+            "RUN apk -U --no-cache upgrade"
+            + " \\\n    && apk add --no-cache \\\n                "
             + " \\\n                ".join(list(dict.fromkeys(apk_packages)))
             + " \\\n    && git config --global core.autocrlf true"
         )
@@ -597,7 +598,7 @@ def build_dockerfile(
             + ' -o -iname "README.md"'
             + ' -o -iname ".package-lock.json"'
             + ' -o -iname "package-lock.json"'
-            + " \\) -o -type d -name /root/.npm/_cacache \\) -delete \n"
+            + " \\) -o -type d -name /root/.npm/_cacache \\) -delete\n"
             + "WORKDIR /\n"
         )
     replace_in_file(dockerfile, "#NPM__START", "#NPM__END", npm_install_command)
@@ -2886,8 +2887,8 @@ def collect_linter_previews():
                 logging.error(str(e))
             if title is not None:
                 item = {
-                    "title": megalinter.utils.decode_utf8(title),
-                    "description": megalinter.utils.decode_utf8(description),
+                    "title": megalinter.utils.clean_string(title),
+                    "description": megalinter.utils.clean_string(description),
                     "image": image,
                 }
                 data[linter.linter_name] = item
@@ -3377,7 +3378,7 @@ def reformat_markdown_tables():
         shell=True,
         executable=None if sys.platform == "win32" else which("bash"),
     )
-    stdout = utils.decode_utf8(process.stdout)
+    stdout = utils.clean_string(process.stdout)
     logging.info(f"Format table results: ({process.returncode})\n" + stdout)
 
 
