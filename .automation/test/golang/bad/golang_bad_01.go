@@ -1,7 +1,3 @@
-package bad
-
-func _() {
-	if len(in) == 0 {
-		return "", fmt.Errorf("Input is empty")
-	}
+if len(in) == 0 {
+	return "", fmt.Errorf("Input is empty")
 }

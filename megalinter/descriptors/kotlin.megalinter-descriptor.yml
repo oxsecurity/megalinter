@@ -47,13 +47,15 @@ linters:
         - name: ale
           url: https://github.com/w0rp/ale
   # DETEKT
-  - linter_name: detekt
+  - class: DetektLinter
+    linter_name: detekt
     can_output_sarif: true
     linter_url: https://detekt.dev/
     linter_repo: https://github.com/detekt/detekt
     linter_rules_url: https://detekt.dev/docs/rules/comments
     linter_banner_image_url: https://repository-images.githubusercontent.com/71729669/8b793230-5d85-4c36-b72e-6911dd7bf6d3
     linter_megalinter_ref_url: https://detekt.dev/docs/intro
+    config_file_name: detekt-config.yml
     cli_executable: detekt-cli
     cli_lint_mode: project
     cli_lint_errors_count: total_lines
