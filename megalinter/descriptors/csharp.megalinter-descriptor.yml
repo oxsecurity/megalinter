@@ -54,17 +54,17 @@ linters:
     ignore_file_name: .csharpierignore
     config_file_name: .csharpierrc
     cli_config_arg_name: "--config-path"
-    cli_executable: dotnet-csharpier
+    cli_executable: csharpier
     cli_lint_mode: list_of_files
     cli_lint_extra_args:
-      - "--check"
-    cli_lint_fix_arg_name: "--megalinter-fix-flag" # Workaround for DotnetFormatLinter class behavior
+      - "check"
+    cli_lint_fix_arg_name: "format"
     cli_lint_fix_remove_args:
-      - "--check"
+      - "check"
     test_folder: csharp_csharpier
     examples:
-      - "csharpier --check myfile.cs myfile2.cs"
-      - "csharpier myfile.cs myfile2.cs" # Fix
+      - "csharpier check myfile.cs myfile2.cs"
+      - "csharpier format myfile.cs myfile2.cs" # Fix
     install:
       dockerfile:
         - |-
