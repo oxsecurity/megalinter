@@ -33,6 +33,13 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Linter versions upgrades (N)
   - [checkstyle](https://checkstyle.org/) from 10.23.0 to **10.23.1** on 2025-04-29
   - [v8r](https://github.com/chris48s/v8r) from 4.3.0 to **4.4.0** on 2025-04-29
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.34.1 to **1.34.2** on 2025-05-01
+  - [golangci-lint](https://golangci-lint.run/) from 1.64.8 to **2.1.5** on 2025-05-01
+  - [pmd](https://pmd.github.io/) from 7.12.0 to **7.13.0** on 2025-05-01
+  - [phpstan](https://phpstan.org/) from 2.1.12 to **2.1.13** on 2025-05-01
+  - [checkov](https://www.checkov.io/) from 3.2.404 to **3.2.413** on 2025-05-01
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.4.0 to **3.4.1** on 2025-05-01
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.19.2 to **8.19.3** on 2025-05-01
 <!-- linter-versions-end -->
 
 ## [v8.6.0] - 2024-04-27
