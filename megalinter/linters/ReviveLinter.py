@@ -2,7 +2,6 @@
 """
 Use Revive to lint go files
 """
-import os
 
 from megalinter import Linter, config
 
