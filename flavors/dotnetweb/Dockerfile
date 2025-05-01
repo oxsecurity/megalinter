@@ -155,7 +155,7 @@ ARG NPM_ESLINT_PLUGIN_PRETTIER_VERSION=5.2.6
 # renovate: datasource=npm depName=eslint-plugin-promise
 ARG NPM_ESLINT_PLUGIN_PROMISE_VERSION=6.6.0
 # renovate: datasource=npm depName=eslint-plugin-vue
-ARG NPM_ESLINT_PLUGIN_VUE_VERSION=10.0.0
+ARG NPM_ESLINT_PLUGIN_VUE_VERSION=10.0.1
 # renovate: datasource=npm depName=@babel/core
 ARG NPM_BABEL_CORE_VERSION=7.26.10
 # renovate: datasource=npm depName=@babel/eslint-parser
@@ -196,7 +196,7 @@ ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.6.1
 ARG PSSA_VERSION='1.24.0'
 
 # renovate: datasource=pypi depName=checkov
-ARG PIP_CHECKOV_VERSION=3.2.404
+ARG PIP_CHECKOV_VERSION=3.2.413
 # renovate: datasource=github-tags depName=anchore/grype
 ARG REPOSITORY_GRYPE_VERSION=0.91.2
 # renovate: datasource=npm depName=@ls-lint/ls-lint
@@ -218,7 +218,7 @@ ARG REPOSITORY_TRIVY_SBOM_VERSION=0.61.1
 # renovate: datasource=pypi depName=snakefmt
 ARG PIP_SNAKEFMT_VERSION=0.11.0
 # renovate: datasource=npm depName=cspell
-ARG NPM_CSPELL_VERSION=8.19.2
+ARG NPM_CSPELL_VERSION=8.19.3
 # renovate: datasource=pypi depName=proselint
 ARG PIP_PROSELINT_VERSION=0.14.0
 # renovate: datasource=pypi depName=sqlfluff
