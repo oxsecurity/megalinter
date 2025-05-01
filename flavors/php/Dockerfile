@@ -116,7 +116,7 @@ ARG NPM_HTMLHINT_VERSION=1.1.4
 # renovate: datasource=npm depName=@prantlf/jsonlint
 ARG NPM_PRANTLF_JSONLINT_VERSION=16.0.0
 # renovate: datasource=npm depName=v8r
-ARG NPM_V8R_VERSION=4.2.1
+ARG NPM_V8R_VERSION=4.4.0
 # renovate: datasource=npm depName=prettier
 ARG NPM_PRETTIER_VERSION=3.5.3
 # renovate: datasource=github-tags depName=pinterest/ktlint
@@ -148,9 +148,9 @@ ARG PHP_OVERTRUE_PHPLINT_VERSION=9.6.2
 # renovate: datasource=packagist depName=friendsofphp/php-cs-fixer
 ARG PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION=v3.75.0
 # renovate: datasource=pypi depName=checkov
-ARG PIP_CHECKOV_VERSION=3.2.404
+ARG PIP_CHECKOV_VERSION=3.2.413
 # renovate: datasource=github-tags depName=anchore/grype
-ARG REPOSITORY_GRYPE_VERSION=0.91.0
+ARG REPOSITORY_GRYPE_VERSION=0.91.2
 # renovate: datasource=npm depName=@ls-lint/ls-lint
 ARG NPM_LS_LINT_LS_LINT_VERSION=2.3.0
 # renovate: datasource=npm depName=secretlint
@@ -170,7 +170,7 @@ ARG REPOSITORY_TRIVY_SBOM_VERSION=0.61.1
 # renovate: datasource=pypi depName=snakefmt
 ARG PIP_SNAKEFMT_VERSION=0.11.0
 # renovate: datasource=npm depName=cspell
-ARG NPM_CSPELL_VERSION=8.19.2
+ARG NPM_CSPELL_VERSION=8.19.3
 # renovate: datasource=pypi depName=proselint
 ARG PIP_PROSELINT_VERSION=0.14.0
 # renovate: datasource=pypi depName=sqlfluff

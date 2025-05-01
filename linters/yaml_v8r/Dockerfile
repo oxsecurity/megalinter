@@ -49,7 +49,7 @@ FROM python:3.12.10-alpine3.21
 #############################################################################################
 #ARG__START
 # renovate: datasource=npm depName=v8r
-ARG NPM_V8R_VERSION=4.2.1
+ARG NPM_V8R_VERSION=4.4.0
 #ARG__END
 
 ####################

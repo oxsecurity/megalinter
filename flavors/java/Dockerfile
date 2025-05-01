@@ -121,12 +121,12 @@ ARG PIP_DJLINT_VERSION=1.36.4
 # renovate: datasource=npm depName=htmlhint
 ARG NPM_HTMLHINT_VERSION=1.1.4
 # renovate: datasource=github-tags depName=pmd/pmd extractVersion=^pmd_releases/(?<version>.*)$
-ARG PMD_VERSION=7.12.0
+ARG PMD_VERSION=7.13.0
 
 # renovate: datasource=npm depName=@prantlf/jsonlint
 ARG NPM_PRANTLF_JSONLINT_VERSION=16.0.0
 # renovate: datasource=npm depName=v8r
-ARG NPM_V8R_VERSION=4.2.1
+ARG NPM_V8R_VERSION=4.4.0
 # renovate: datasource=npm depName=prettier
 ARG NPM_PRETTIER_VERSION=3.5.3
 # renovate: datasource=github-tags depName=pinterest/ktlint
@@ -144,9 +144,9 @@ ARG NPM_MARKDOWN_LINK_CHECK_VERSION=3.12.2
 # renovate: datasource=npm depName=markdown-table-formatter
 ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.6.1
 # renovate: datasource=pypi depName=checkov
-ARG PIP_CHECKOV_VERSION=3.2.404
+ARG PIP_CHECKOV_VERSION=3.2.413
 # renovate: datasource=github-tags depName=anchore/grype
-ARG REPOSITORY_GRYPE_VERSION=0.91.0
+ARG REPOSITORY_GRYPE_VERSION=0.91.2
 # renovate: datasource=npm depName=@ls-lint/ls-lint
 ARG NPM_LS_LINT_LS_LINT_VERSION=2.3.0
 # renovate: datasource=npm depName=secretlint
@@ -166,7 +166,7 @@ ARG REPOSITORY_TRIVY_SBOM_VERSION=0.61.1
 # renovate: datasource=pypi depName=snakefmt
 ARG PIP_SNAKEFMT_VERSION=0.11.0
 # renovate: datasource=npm depName=cspell
-ARG NPM_CSPELL_VERSION=8.19.2
+ARG NPM_CSPELL_VERSION=8.19.3
 # renovate: datasource=pypi depName=proselint
 ARG PIP_PROSELINT_VERSION=0.14.0
 # renovate: datasource=pypi depName=sqlfluff

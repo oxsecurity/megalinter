@@ -47,7 +47,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=checkov
-          ARG PIP_CHECKOV_VERSION=3.2.404
+          ARG PIP_CHECKOV_VERSION=3.2.413
       pip:
         - checkov==${PIP_CHECKOV_VERSION}
     ide:
@@ -317,7 +317,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=github-tags depName=anchore/grype
-          ARG REPOSITORY_GRYPE_VERSION=0.91.0
+          ARG REPOSITORY_GRYPE_VERSION=0.91.2
         - RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/refs/tags/v${REPOSITORY_GRYPE_VERSION}/install.sh | sh -s -- -b /usr/local/bin
     test_folder: repository_grype
 
@@ -645,7 +645,8 @@ linters:
           url: https://marketplace.visualstudio.com/items?itemName=AquaSecurityOfficial.trivy-vulnerability-scanner
 
   # TRUFFLEHOG
-  - linter_name: trufflehog
+  - class: TruffleHogLinter
+    linter_name: trufflehog
     descriptor_flavors:
       - all_flavors # Applicable to CI in any language project
       - ci_light

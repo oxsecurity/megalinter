@@ -73,11 +73,11 @@ ARG NPM_GROOVY_LINT_VERSION=15.1.0
 # renovate: datasource=npm depName=@prantlf/jsonlint
 ARG NPM_PRANTLF_JSONLINT_VERSION=16.0.0
 # renovate: datasource=npm depName=v8r
-ARG NPM_V8R_VERSION=4.2.1
+ARG NPM_V8R_VERSION=4.4.0
 # renovate: datasource=npm depName=prettier
 ARG NPM_PRETTIER_VERSION=3.5.3
 # renovate: datasource=github-tags depName=anchore/grype
-ARG REPOSITORY_GRYPE_VERSION=0.91.0
+ARG REPOSITORY_GRYPE_VERSION=0.91.2
 # renovate: datasource=npm depName=@ls-lint/ls-lint
 ARG NPM_LS_LINT_LS_LINT_VERSION=2.3.0
 # renovate: datasource=npm depName=secretlint

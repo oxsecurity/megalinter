@@ -117,7 +117,7 @@ ARG CLJ_KONDO_VERSION=2025.01.16
 # renovate: datasource=github-tags depName=greglook/cljstyle
 ARG CLJ_STYLE_VERSION=0.17.642
 # renovate: datasource=pypi depName=cfn-lint
-ARG PIP_CFN_LINT_VERSION=1.34.1
+ARG PIP_CFN_LINT_VERSION=1.34.2
 # renovate: datasource=npm depName=jscpd
 ARG NPM_JSCPD_VERSION=4.0.5
 # renovate: datasource=npm depName=stylelint
@@ -141,7 +141,7 @@ ARG PIP_DJLINT_VERSION=1.36.4
 # renovate: datasource=npm depName=htmlhint
 ARG NPM_HTMLHINT_VERSION=1.1.4
 # renovate: datasource=github-tags depName=pmd/pmd extractVersion=^pmd_releases/(?<version>.*)$
-ARG PMD_VERSION=7.12.0
+ARG PMD_VERSION=7.13.0
 
 # renovate: datasource=npm depName=eslint
 ARG NPM_ESLINT_VERSION=8.57.1
@@ -162,7 +162,7 @@ ARG NPM_ESLINT_PLUGIN_PRETTIER_VERSION=5.2.6
 # renovate: datasource=npm depName=eslint-plugin-promise
 ARG NPM_ESLINT_PLUGIN_PROMISE_VERSION=6.6.0
 # renovate: datasource=npm depName=eslint-plugin-vue
-ARG NPM_ESLINT_PLUGIN_VUE_VERSION=10.0.0
+ARG NPM_ESLINT_PLUGIN_VUE_VERSION=10.0.1
 # renovate: datasource=npm depName=@babel/core
 ARG NPM_BABEL_CORE_VERSION=7.26.10
 # renovate: datasource=npm depName=@babel/eslint-parser
@@ -176,7 +176,7 @@ ARG NPM_PRETTIER_VERSION=3.5.3
 # renovate: datasource=npm depName=@prantlf/jsonlint
 ARG NPM_PRANTLF_JSONLINT_VERSION=16.0.0
 # renovate: datasource=npm depName=v8r
-ARG NPM_V8R_VERSION=4.2.1
+ARG NPM_V8R_VERSION=4.4.0
 # renovate: datasource=npm depName=npm-package-json-lint
 ARG NPM_PACKAGE_JSON_LINT_VERSION=8.0.0
 # renovate: datasource=npm depName=npm-package-json-lint-config-default
@@ -230,9 +230,9 @@ ARG NPM_PYRIGHT_VERSION=1.1.400
 # renovate: datasource=pypi depName=ruff
 ARG PIP_RUFF_VERSION=0.11.6
 # renovate: datasource=pypi depName=checkov
-ARG PIP_CHECKOV_VERSION=3.2.404
+ARG PIP_CHECKOV_VERSION=3.2.413
 # renovate: datasource=github-tags depName=anchore/grype
-ARG REPOSITORY_GRYPE_VERSION=0.91.0
+ARG REPOSITORY_GRYPE_VERSION=0.91.2
 # renovate: datasource=npm depName=@ls-lint/ls-lint
 ARG NPM_LS_LINT_LS_LINT_VERSION=2.3.0
 # renovate: datasource=npm depName=secretlint
@@ -270,7 +270,7 @@ ARG GEM_RUBOCOP_RAKE_VERSION=0.7.1
 # renovate: datasource=rubygems depName=rubocop-rspec
 ARG GEM_RUBOCOP_RSPEC_VERSION=3.6.0
 # renovate: datasource=npm depName=cspell
-ARG NPM_CSPELL_VERSION=8.19.2
+ARG NPM_CSPELL_VERSION=8.19.3
 # renovate: datasource=pypi depName=proselint
 ARG PIP_PROSELINT_VERSION=0.14.0
 # renovate: datasource=pypi depName=sqlfluff

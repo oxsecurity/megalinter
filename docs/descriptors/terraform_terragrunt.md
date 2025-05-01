@@ -9,7 +9,7 @@ description: How to use terragrunt (configure, ignore files, ignore errors, help
 
 ## terragrunt documentation
 
-- Version in MegaLinter: **0.77.20**
+- Version in MegaLinter: **0.77.22**
 - Visit [Official Web Site](https://terragrunt.gruntwork.io){target=_blank}
 - See [How to configure terragrunt rules](https://terragrunt.gruntwork.io/docs/getting-started/configuration/#terragrunt-configuration-file){target=_blank}
 
@@ -96,12 +96,13 @@ Catalog commands:
    scaffold               Scaffold a new Terragrunt module.
 
 Discovery commands:
-   find                   Find relevant Terragrunt configurations.
-   list                   List relevant Terragrunt configurations.
+   find, fd               Find relevant Terragrunt configurations.
+   list, ls               List relevant Terragrunt configurations.
 
 Configuration commands:
    dag                    Interact with the Directed Acyclic Graph (DAG).
    graph-dependencies     Prints the terragrunt dependency graph to stdout.
+   hcl                    Interact with HCL files.
    hclfmt                 Recursively find hcl files and rewrite them into a canonical format.
    hclvalidate            Find all hcl files from the config stack and validate them.
    info                   List of commands to display Terragrunt settings.
@@ -141,7 +142,7 @@ Global Options:
    --help, -h                 Show help. (default: false)
    --version, -v              Show terragrunt version. (default: false)
 
-Version: v0.77.20
+Version: v0.77.22
 
 Author: Gruntwork <www.gruntwork.io>
 ```
