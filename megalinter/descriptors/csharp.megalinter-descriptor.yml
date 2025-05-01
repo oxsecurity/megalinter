@@ -51,6 +51,13 @@ linters:
     linter_image_url: https://csharpier.com/img/logo.svg
     linter_rules_configuration_url: https://csharpier.com/docs/Configuration
     linter_rules_ignore_config_url: https://csharpier.com/docs/Ignore
+    file_extensions:
+      - ".config"
+      - ".cs"
+      - ".csproj"
+      - ".props"
+      - ".targets"
+      - ".xml"
     ignore_file_name: .csharpierignore
     config_file_name: .csharpierrc
     cli_config_arg_name: "--config-path"
