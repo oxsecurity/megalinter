@@ -1554,7 +1554,10 @@ class Linter:
                         # Check if the level matches. Otherwise, if the level to be checked is "warning",
                         # counts them as if they were to cover "note" and "none" levels
                         # https://docs.oasis-open.org/sarif/sarif/v2.1.0/errata01/os/sarif-v2.1.0-errata01-os-complete.html#_Toc141790898
-                        if result["level"] == level or (result["level"] not in ["error", "warning"] and level == "warning"):
+                        if result["level"] == level or (
+                            result["level"] not in ["error", "warning"]
+                            and level == "warning"
+                        ):
                             count_results = True
                     elif (
                         "ruleId" in result
