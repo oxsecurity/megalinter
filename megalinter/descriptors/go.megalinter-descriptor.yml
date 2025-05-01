@@ -24,8 +24,8 @@ linters:
     cli_lint_extra_args:
       - "run"
     cli_sarif_args:
-      - --out-format
-      - sarif
+      - --output.sarif.path
+      - "{{SARIF_OUTPUT_FILE}}"
     cli_lint_fix_arg_name: --fix
     cli_version_arg_name: "version"
     version_extract_regex: "((\\d+(\\.\\d+)+)|(master))"
@@ -36,7 +36,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=github-tags depName=golangci/golangci-lint
-          ARG GO_GOLANGCI_LINT_VERSION=1.64.8
+          ARG GO_GOLANGCI_LINT_VERSION=2.1.5
         - |
           RUN wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s "v${GO_GOLANGCI_LINT_VERSION}" \
               && golangci-lint --version
