@@ -32,10 +32,88 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - mega-linter-runner
 
 - Linter versions upgrades (N)
-  - [yamllint](https://yamllint.readthedocs.io/) from 1.36.2 to **1.37.0** on 2025-03-23
-  - [phpstan](https://phpstan.org/) from 2.1.8 to **2.1.10** on 2025-03-23
-  - [checkov](https://www.checkov.io/) from 3.2.390 to **3.2.391** on 2025-03-23
+  - [checkstyle](https://checkstyle.org/) from 10.23.0 to **10.23.1** on 2025-04-29
+  - [v8r](https://github.com/chris48s/v8r) from 4.3.0 to **4.4.0** on 2025-04-29
 <!-- linter-versions-end -->
+
+## [v8.6.0] - 2024-04-27
+
+- Core
+  - New config property **ENABLE_ERRORS_LINTERS**. If set, only the listed linters will be considered as blocking
+
+- New linters
+  - Add [cppcheck](https://github.com/danmar/cppcheck) linter, by @bdovaz in <https://github.com/oxsecurity/megalinter/pull/5224>
+
+- Media
+  - [Integrating MegaLinter to Automate Linting Across Multiple Codebases. A Technical Description](https://medium.com/datamindedbe/integrating-megalinter-to-automate-linting-across-multiple-codebases-a-technical-description-a200bb235b71), by [Thorsten Foltz](https://www.linkedin.com/in/thorstenfoltz/)
+
+- Linters enhancements
+  - [editorconfig_checker](https://megalinter.io/latest/descriptors/editorconfig_editorconfig_checker/) Changes default EditorConfig-Checker config filename by @llaville in <https://github.com/oxsecurity/megalinter/issues/5061>
+  - [TruffleHog](https://megalinter.io/latest/descriptors/repository_trufflehog/): Ignore .git by default if not already done using --exclude-paths option
+
+- Fixes
+  - Sanitize all linter outputs by default, by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/5266>
+
+- Doc
+  - Add [j2lint](https://github.com/wesley-dean/mega-linter-plugin-j2lint/) to plugins, by @wesley-dean in <https://github.com/oxsecurity/megalinter/pull/5151>
+  - Add [fmlint](https://github.com/wesley-dean/mega-linter-plugin-fmlint) (frontmatter linter) to plugins list by @wesley-dean in <https://github.com/oxsecurity/megalinter/pull/5257>
+  - Remove trailing spaces by @parkerbxyz in <https://github.com/oxsecurity/megalinter/pull/5185>
+
+- CI
+  - Initial Renovate automerge configuration, by @echoix in <https://github.com/oxsecurity/megalinter/pull/5057>
+  - Set update schedule for checkov updates, by @echoix in <https://github.com/oxsecurity/megalinter/pull/5064>
+  - Always upgrade packages from base image for updated security fixes, by @echoix in <https://github.com/oxsecurity/megalinter/pull/5152>
+  - build-command: Unshallow pull or full pull before committing changes, by @echoix in <https://github.com/oxsecurity/megalinter/pull/5201>
+
+- Linter versions upgrades (50)
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 25.1.3 to **25.2.1**
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.34.1 to **0.34.44**
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.32.0 to **1.34.1**
+  - [checkov](https://www.checkov.io/) from 3.2.390 to **3.2.404**
+  - [checkstyle](https://checkstyle.org/) from 10.21.4 to **10.23.0**
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.85 to **0.1.86**
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2025.02.20 to **2025.04.07**
+  - [cpplint](https://github.com/cpplint/cpplint) from 2.0.0 to **2.0.2**
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.17.5 to **8.19.2**
+  - [dartanalyzer](https://dart.dev/tools/dart-analyze) from 3.7.2 to **3.7.3**
+  - [devskim](https://github.com/microsoft/DevSkim) from 1.0.52 to **1.0.56**
+  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 9.0.104 to **9.0.105**
+  - [flake8](https://flake8.pycqa.org) from 7.1.2 to **7.2.0**
+  - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.24.2 to **8.24.3**
+  - [grype](https://github.com/anchore/grype) from 0.90.0 to **0.91.2**
+  - [kics](https://www.kics.io) from 2.1.6 to **2.1.7**
+  - [kubescape](https://github.com/kubescape/kubescape) from 3.0.32 to **3.0.34**
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.2.0 to **3.4.0**
+  - [ls-lint](https://ls-lint.org/) from 2.2.3 to **2.3.0**
+  - [phplint](https://github.com/overtrue/phplint) from 9.5.6 to **9.6.2**
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.73.1 to **3.75.0**
+  - [phpcs](https://github.com/PHPCSStandards/PHP_CodeSniffer) from 3.12.0 to **3.12.2**
+  - [phpstan](https://phpstan.org/) from 2.1.8 to **2.1.12**
+  - [pmd](https://pmd.github.io/) from 7.11.0 to **7.12.0**
+  - [psalm](https://psalm.dev) from Psalm.6.9.4@ to **Psalm.6.10.1@**
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.397 to **1.1.400**
+  - [revive](https://revive.run/) from 1.7.0 to **1.9.0**
+  - [rubocop](https://rubocop.org/) from 1.74.0 to **1.75.3**
+  - [ruff](https://github.com/astral-sh/ruff) from 0.11.2 to **0.11.6**
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.11.2 to **0.11.6**
+  - [secretlint](https://github.com/secretlint/secretlint) from 9.2.0 to **9.3.1**
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 4.10.0 to **4.11.0**
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 4.10.0 to **4.11.0**
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 4.10.0 to **4.11.0**
+  - [spectral](https://docs.stoplight.io/docs/spectral/674b27b261c3c-overview) from 6.14.3 to **6.15.0**
+  - [sqlfluff](https://www.sqlfluff.com/) from 3.3.1 to **3.4.0**
+  - [stylelint](https://stylelint.io) from 16.16.0 to **16.19.0**
+  - [swiftlint](https://github.com/realm/SwiftLint) from 0.58.2 to **0.59.1**
+  - [syft](https://github.com/anchore/syft) from 1.21.0 to **1.23.1**
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.11.2 to **1.11.4**
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.76.6 to **0.77.22**
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.55.1 to **0.56.0**
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.60.0 to **0.61.1**
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.60.0 to **0.61.1**
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.88.18 to **3.88.25**
+  - [v8r](https://github.com/chris48s/v8r) from 4.2.1 to **4.3.0**
+  - [vale](https://vale.sh/) from 3.9.4 to **3.11.2**
+  - [yamllint](https://yamllint.readthedocs.io/) from 1.36.2 to **1.37.0**
 
 ## [v8.5.0] - 2024-03-23
 

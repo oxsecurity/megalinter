@@ -13,7 +13,7 @@ from typing import Any, Optional, Pattern, Sequence
 
 import git
 import regex
-from megalinter import config
+from megalinter import config, logger
 from megalinter.constants import DEFAULT_DOCKER_WORKSPACE_DIR
 
 SIZE_MAX_SOURCEFILEHEADER = 1024
@@ -72,6 +72,22 @@ if DEFAULT_WORKSPACE != "":
         [f"/{DEFAULT_WORKSPACE}/", ""],
         [f"{DEFAULT_WORKSPACE}/", ""],
     ]
+
+
+# Returns directory where all .yml language descriptors are defined
+def get_descriptor_dir():
+    # Compiled version (copied from DockerFile)
+    if os.path.isdir("/megalinter-descriptors"):
+        return "/megalinter-descriptors"
+    # Dev / Test version
+    else:
+        descriptor_dir = os.path.realpath(
+            os.path.dirname(os.path.abspath(__file__)) + "/descriptors"
+        )
+        assert os.path.isdir(
+            descriptor_dir
+        ), f"Descriptor dir {descriptor_dir} not found !"
+        return descriptor_dir
 
 
 def get_excluded_directories(request_id):
@@ -297,12 +313,29 @@ def file_is_generated(file_name: str) -> bool:
     return b"@generated" in content and b"@not-generated" not in content
 
 
-def decode_utf8(stdout):
+def get_default_rules_location() -> str:
+    default_rules_location = (
+        "/action/lib/.automation"
+        if os.path.isdir("/action/lib/.automation")
+        else os.path.relpath(
+            os.path.relpath(
+                os.path.dirname(os.path.abspath(__file__)) + "/../TEMPLATES"
+            )
+        )
+    )
+    return default_rules_location
+
+
+def clean_string(stdout, sanitize=True) -> str:
     # noinspection PyBroadException
     try:
         res = stdout.decode("utf-8")
+        if sanitize is True:
+            res = logger.sanitize_string(res)
     except Exception:
         res = str(stdout)
+        if sanitize is True:
+            res = logger.sanitize_string(res)
     return res
 
 
@@ -585,3 +618,34 @@ def is_pr() -> bool:
         )
         else False
     )
+
+
+def fix_regex_pattern(pattern):
+    # 1. Fix global flags not at the start of the expression
+    if "(?i)" in pattern:
+        if pattern.find("(?i)") > 0:
+            parts = pattern.split("(?i)")
+            pattern = "(?i)" + "".join(parts[0:])
+    # 2. Replace invalid escape sequences like `\z` with `$`
+    pattern = re.sub(r"\\z", "$", pattern)
+    return pattern
+
+
+def keep_only_valid_regex_patterns(patterns, fail=False):
+    fixed_patterns = []
+    for pattern in patterns:
+        # First, attempt to fix the pattern
+        fixed_pattern = fix_regex_pattern(pattern)
+        try:
+            # Try compiling the fixed pattern to check if it's valid
+            re.compile(fixed_pattern)
+            fixed_patterns.append(fixed_pattern)  # Pattern is valid, add it
+        except re.error as e:
+            if fail is True:
+                raise
+            else:
+                logging.debug(
+                    f"Invalid regex pattern after fix: {fixed_pattern}. Error: {e}"
+                )
+
+    return fixed_patterns

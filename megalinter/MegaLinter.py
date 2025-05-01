@@ -92,15 +92,7 @@ class Megalinter:
             manage_upgrade_message()
             display_header(self)
         # MegaLinter default rules location
-        self.default_rules_location = (
-            "/action/lib/.automation"
-            if os.path.isdir("/action/lib/.automation")
-            else os.path.relpath(
-                os.path.relpath(
-                    os.path.dirname(os.path.abspath(__file__)) + "/../TEMPLATES"
-                )
-            )
-        )
+        self.default_rules_location = utils.get_default_rules_location()
         # User-defined rules location
         self.linter_rules_path = self.github_workspace + os.path.sep + ".github/linters"
 
@@ -118,6 +110,9 @@ class Megalinter:
         self.enable_linters = config.get_list(self.request_id, "ENABLE_LINTERS", [])
         self.disable_descriptors = config.get_list(self.request_id, "DISABLE", [])
         self.disable_linters = config.get_list(self.request_id, "DISABLE_LINTERS", [])
+        self.enable_errors_linters = config.get_list(
+            self.request_id, "ENABLE_ERRORS_LINTERS", []
+        )
         self.disable_errors_linters = config.get_list(
             self.request_id, "DISABLE_ERRORS_LINTERS", []
         )
@@ -592,6 +587,7 @@ class Megalinter:
             "enable_linters": self.enable_linters,
             "disable_descriptors": self.disable_descriptors,
             "disable_linters": self.disable_linters,
+            "enable_errors_linters": self.enable_errors_linters,
             "disable_errors_linters": self.disable_errors_linters,
             "workspace": self.workspace,
             "github_workspace": self.github_workspace,

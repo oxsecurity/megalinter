@@ -110,22 +110,9 @@ When you don't know what option to select, please use default values`
       },
       {
         type: "confirm",
-        name: "fileIoReporter",
-        message:
-          "Do you want MegaLinter to upload reports on file.io ? (report is deleted after being downloaded once)",
-        default: false,
-      },
-      {
-        type: "confirm",
-        name: "elapsedTime",
-        message: "Do you want to see elapsed time by linter in logs ?",
-        default: true,
-      },
-      {
-        type: "confirm",
         name: "ox",
         message:
-          "Do you want to try OX Security (https://www.ox.security/?ref=megalinter) to secure your software supply chain security ?",
+          "Do you want to additionally visit OX Security (https://www.ox.security/?ref=megalinter) to secure your software supply chain security ?",
         default: true,
       },
     ];
@@ -292,9 +279,7 @@ When you don't know what option to select, please use default values`
         DEFAULT_BRANCH: this.props.defaultBranch,
         DISABLE: this.disable === true ? "DISABLE:" : "# DISABLE:",
         COPYPASTE: this.configCopyPaste,
-        SPELL: this.configSpell,
-        SHOW_ELAPSED_TIME: this.props.elapsedTime === true ? "true" : "false",
-        FILEIO_REPORTER: this.props.fileIoReporter === true ? "true" : "false",
+        SPELL: this.configSpell
       }
     );
   }

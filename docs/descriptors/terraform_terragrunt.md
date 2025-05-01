@@ -9,7 +9,7 @@ description: How to use terragrunt (configure, ignore files, ignore errors, help
 
 ## terragrunt documentation
 
-- Version in MegaLinter: **0.76.6**
+- Version in MegaLinter: **0.77.22**
 - Visit [Official Web Site](https://terragrunt.gruntwork.io){target=_blank}
 - See [How to configure terragrunt rules](https://terragrunt.gruntwork.io/docs/getting-started/configuration/#terragrunt-configuration-file){target=_blank}
 
@@ -46,8 +46,8 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                     | Description                                     | Embedded linters |                                                                                                                                                                                           Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------|:------------------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)       | Default MegaLinter Flavor                       |       125        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)     | MegaLinter for the most commonly used languages |        86        |     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)       | Default MegaLinter Flavor                       |       127        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)     | MegaLinter for the most commonly used languages |        88        |     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://megalinter.io/beta/flavors/security/)   | Optimized for security                          |        24        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://megalinter.io/beta/flavors/terraform/) | Optimized for TERRAFORM based projects          |        54        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform) |
 
@@ -84,6 +84,7 @@ Usage: terragrunt [global options] <command> [options]
    For documentation, see https://terragrunt.gruntwork.io/.
 
 Main commands:
+   backend                Interact with OpenTofu/Terraform backend infrastructure.
    exec                   Execute an arbitrary command.
    graph                  Execute commands on the full graph of dependent modules for the current module, ensuring correct execution order.
    run                    Run an OpenTofu/Terraform command.
@@ -95,15 +96,18 @@ Catalog commands:
    scaffold               Scaffold a new Terragrunt module.
 
 Discovery commands:
-   find                   Find relevant Terragrunt configurations.
-   list                   List relevant Terragrunt configurations.
+   find, fd               Find relevant Terragrunt configurations.
+   list, ls               List relevant Terragrunt configurations.
 
 Configuration commands:
+   dag                    Interact with the Directed Acyclic Graph (DAG).
    graph-dependencies     Prints the terragrunt dependency graph to stdout.
+   hcl                    Interact with HCL files.
    hclfmt                 Recursively find hcl files and rewrite them into a canonical format.
    hclvalidate            Find all hcl files from the config stack and validate them.
    info                   List of commands to display Terragrunt settings.
    output-module-groups   Output groups of modules ordered by command (apply or destroy) as a list of list in JSON (useful for CI use cases).
+   render                 Render the final terragrunt config, with all variables, includes, and functions resolved, in the specified format.
    render-json            Render the final terragrunt config, with all variables, includes, and functions resolved, as json.
    terragrunt-info        Emits limited terragrunt state on stdout and exits.
    validate-inputs        Checks if the terragrunt configured inputs align with the terraform defined variables.
@@ -125,7 +129,6 @@ OpenTofu shortcuts:
 Global Options:
    --experiment value         Enables specific experiments. For a list of available experiments, see https://terragrunt.gruntwork.io/docs/reference/experiment-mode . [$TG_EXPERIMENT]
    --experiment-mode          Enables experiment mode for Terragrunt. For more information, see https://terragrunt.gruntwork.io/docs/reference/experiment-mode . (default: false) [$TG_EXPERIMENT_MODE]
-   --help, -h                 Show help. (default: false)
    --log-custom-format value  Set the custom log formatting. [$TG_LOG_CUSTOM_FORMAT]
    --log-disable              Disable logging. (default: false) [$TG_LOG_DISABLE]
    --log-format value         Set the log format. [$TG_LOG_FORMAT]
@@ -135,10 +138,11 @@ Global Options:
    --non-interactive          Assume "yes" for all prompts. (default: false) [$TG_NON_INTERACTIVE]
    --strict-control value     Enables specific strict controls. For a list of available controls, run 'terragrunt info strict'. [$TG_STRICT_CONTROL]
    --strict-mode              Enables strict mode for Terragrunt. For more information, run 'terragrunt info strict'. (default: false) [$TG_STRICT_MODE]
-   --version, -v              Show terragrunt version. (default: false)
    --working-dir value        The path to the directory of Terragrunt configurations. Default is current directory. [$TG_WORKING_DIR]
+   --help, -h                 Show help. (default: false)
+   --version, -v              Show terragrunt version. (default: false)
 
-Version: v0.76.6
+Version: v0.77.22
 
 Author: Gruntwork <www.gruntwork.io>
 ```
@@ -148,7 +152,7 @@ Author: Gruntwork <www.gruntwork.io>
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=docker depName=alpine/terragrunt
-ARG TERRAFORM_TERRAGRUNT_VERSION=1.11.2
+ARG TERRAFORM_TERRAGRUNT_VERSION=1.11.4
 FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} AS terragrunt
 COPY --link --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
 ```

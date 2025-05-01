@@ -3,6 +3,6 @@ gitpython==3.1.44
 fastapi==0.115.12
 python-multipart==0.0.20
 pygments==2.19.1
-uvicorn[standard]==0.34.0
+uvicorn[standard]==0.34.2
 redis==5.2.1
-rq==2.2.0
+rq==2.3.2
