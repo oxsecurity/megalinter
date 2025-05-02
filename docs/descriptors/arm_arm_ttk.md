@@ -113,7 +113,7 @@ Check the spelling of the name, or if a path was included, verify that the path 
 ```dockerfile
 # Parent descriptor install
 # renovate: datasource=github-tags depName=PowerShell/PowerShell
-ARG POWERSHELL_VERSION=7.5.0
+ARG POWERSHELL_VERSION=7.5.1
 RUN curl -L https://github.com/PowerShell/PowerShell/releases/download/v${POWERSHELL_VERSION}/powershell-${POWERSHELL_VERSION}-linux-musl-x64.tar.gz -o /tmp/powershell.tar.gz \
     && mkdir -p /opt/microsoft/powershell/7 \
     && tar zxf /tmp/powershell.tar.gz -C /opt/microsoft/powershell/7 \
