@@ -57,7 +57,6 @@ linters:
       - ".csproj"
       - ".props"
       - ".targets"
-      - ".xml"
     ignore_file_name: .csharpierignore
     config_file_name: .csharpierrc
     cli_config_arg_name: "--config-path"
