@@ -40,6 +40,12 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 3.2.404 to **3.2.413** on 2025-05-01
   - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.4.0 to **3.4.1** on 2025-05-01
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.19.2 to **8.19.3** on 2025-05-01
+  - [csharpier](https://csharpier.com/) from 0.30.6 to **1.0.1** on 2025-05-02
+  - [powershell_formatter](https://github.com/PowerShell/PSScriptAnalyzer) from 7.5.0 to **7.5.1** on 2025-05-02
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.5.0 to **7.5.1** on 2025-05-02
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.11.6 to **0.11.8** on 2025-05-02
+  - [ruff](https://github.com/astral-sh/ruff) from 0.11.6 to **0.11.8** on 2025-05-02
+  - [rubocop](https://rubocop.org/) from 1.75.3 to **1.75.4** on 2025-05-02
 <!-- linter-versions-end -->
 
 ## [v8.6.0] - 2024-04-27
