@@ -3866,7 +3866,7 @@ We're thrilled that you'd like to contribute to this project. Your help is essen
 <p>Install <a href="https://www.gnu.org/software/make/">make</a>, <a href="https://www.python.org/">Python3.11</a>, <a href="https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/">venv</a>, <a href="https://docs.docker.com/engine/install/ubuntu/">docker</a> and <a href="https://github.com/nodesource/distributions/tree/master">nodejs</a>.</p>
 <p>Run <code>make</code> for Makefile help. Initialize virtualenv and install dependencies with <code>make reinitialization</code> or <code>make bootstrap</code>. Test your changes with <code>make tests</code> or <code>make tests-fast</code>.</p>
 <p>You can lint with <code>make megalinter</code> (Incoming)</p>
-<p>If you need to run <code>build.sh</code> commands manually you need to run <code>source .venv/bin/activate</code> (or <code>source .venv/Scripts/activate</code> on Windows) first.</p>
+<p>If you need to run <code>build.sh</code> commands manually (instead of <code>make megalinter-build</code>), you need to run <code>source .venv/bin/activate</code> (or <code>source .venv/Scripts/activate</code> on Windows) first.</p>
 <h3 id="5-submit-a-pull-request">5. Submit a pull request</h3>
 <p><a href="https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request-from-a-fork">Create a pull request</a> and <a href="https://help.github.com/en/github/writing-on-github/autolinked-references-and-urls">refer to the issue number</a> using #123, where 123 is the issue number.</p>
 <h3 id="6-wait">6. Wait</h3>
@@ -3878,7 +3878,7 @@ We're thrilled that you'd like to contribute to this project. Your help is essen
 <li>Create a new branch: <code>git checkout -b my-branch-name</code></li>
 <li>Make your change</li>
 <li>Update <strong>CHANGELOG.md</strong> (the root one, not the one in /docs)</li>
-<li>Run <code>bash build.sh</code> to regenerate dockerfile from updated sources (run <code>bash build.sh --doc</code> if you want to also regenerate documentation)</li>
+<li>Run <code>make megalinter-build</code> or <code>bash build.sh</code> to regenerate dockerfile from updated sources (run <code>make megalinter-build --doc</code> or <code>bash build.sh --doc</code> if you want to also regenerate documentation)</li>
 <li>Push and <a href="https://github.com/oxsecurity/megalinter/compare">submit a pull request</a></li>
 <li>Pat yourself on the back and wait for your pull request to be reviewed and merged.</li>
 </ol>
@@ -3919,7 +3919,7 @@ We're thrilled that you'd like to contribute to this project. Your help is essen
 <li>Create a new branch: <code>git checkout -b my-branch-name</code></li>
 <li>Make your change</li>
 <li>Update <strong>CHANGELOG.md</strong> (the root one, not the one in /docs)</li>
-<li>Run <code>bash build.sh</code> to regenerate dockerfile from updated sources (run <code>bash build.sh --doc</code> if you want to also regenerate documentation)</li>
+<li>Run <code>make megalinter-build</code> or <code>bash build.sh</code> to regenerate dockerfile from updated sources (run <code>make megalinter-build --doc</code> or <code>bash build.sh --doc</code> if you want to also regenerate documentation)</li>
 <li>Push to your fork and <a href="https://github.com/oxsecurity/megalinter/compare">submit a pull request</a></li>
 <li>Pat your self on the back and wait for your pull request to be reviewed and merged.</li>
 </ol>
@@ -3937,7 +3937,7 @@ We're thrilled that you'd like to contribute to this project. Your help is essen
 <h3 id="update-dockerfile-base-image">Update Dockerfile base image</h3>
 <ol>
 <li><code>/Dockerfile</code> file has to be updated</li>
-<li>Run <code>bash build.sh</code>, and it will automatically propagate to all the other Dockerfiles</li>
+<li>Run <code>make megalinter-build</code> or <code>bash build.sh</code>, and it will automatically propagate to all the other Dockerfiles</li>
 </ol>
 <h3 id="improve-documentation">Improve documentation</h3>
 <p>Apart from the descriptors, it will usually involve modifying files such as <a href="https://github.com/oxsecurity/megalinter/blob/main/.automation/build.py">.automation/build.py</a></p>
@@ -3952,14 +3952,14 @@ hatch shell
 </code></pre>
 <p>By default it listens on <code>http://127.0.0.1:8000/</code>.</p>
 <p>Every time a change is made to a <code>.md</code> file it will automatically update if the server is up.</p>
-<p>Once you think everything is correct run <code>bash build.sh --doc</code> and it will generate all the rest!</p>
+<p>Once you think everything is correct run <code>make megalinter-build --doc</code> or  <code>bash build.sh --doc</code> and it will generate all the rest!</p>
 <h3 id="add-a-new-linter">Add a new linter</h3>
 <p>Each linter must:</p>
 <ul>
 <li>Be defined in a descriptor file. Few properties are required (<a href="https://megalinter.io/json-schemas/descriptor.html">see json schema documentation</a>), but please think to input doc URLs and <code>ide</code> section for documentation</li>
 <li>Have two test files in <code>.automation/test</code>: one for success and one for failure</li>
 </ul>
-<p>Then run <code>bash build.sh</code> and it will generate all the rest!</p>
+<p>Then run <code>make megalinter-build</code> or <code>bash build.sh</code> and it will generate all the rest!</p>
 <ul>
 <li>Documentation (markdown)</li>
 <li>Dockerfile (main and flavors)</li>
@@ -3984,7 +3984,7 @@ hatch shell
 </ul>
 <p>For those cases, it's important to have the possibility to run the tests inside the container. To do so:</p>
 <ol>
-<li>Run <code>bash build.sh</code> to update the Dockerfile files of each linter.</li>
+<li>Run <code>make megalinter-build</code> or <code>bash build.sh</code> to update the Dockerfile files of each linter.</li>
 <li>Execute the following commands in a <strong>*.sh</strong> script. Example:</li>
 </ol>
 <pre><code class="language-bash">LINTER="spell_misspell"
