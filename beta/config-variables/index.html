@@ -3775,6 +3775,11 @@
 <td>Comma-separated list of cli_lint_modes. To use if you want to skip linters with some CLI lint modes (ex: <code>file,project</code>). Available values: <code>file</code>,<code>cli_lint_mode</code>,<code>project</code>.</td>
 </tr>
 <tr>
+<td><strong>SKIP_LINTER_OUTPUT_SANITIZATION</strong></td>
+<td><code>false</code></td>
+<td>By default, MegaLinter sanitizes the output of every external command using Gitleaks public rules.<br/>If you are on a private and secured repo, you can improve performances by setting this variable to <code>true</code>, but it will mean that if a linter output contains a secret, it will be visible in log files</td>
+</tr>
+<tr>
 <td><strong>TYPESCRIPT_DEFAULT_STYLE</strong></td>
 <td><code>standard</code></td>
 <td>Typescript default style to check/apply. <code>standard</code>,<code>prettier</code></td>
