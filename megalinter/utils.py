@@ -5,6 +5,7 @@ import json
 import logging
 import os
 import re
+import regex
 import tempfile
 import urllib.parse
 from fnmatch import fnmatch
