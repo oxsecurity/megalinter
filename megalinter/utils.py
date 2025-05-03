@@ -660,20 +660,20 @@ def keep_only_valid_regex_patterns(patterns, fail=False):
 
 
 def yellow(text):
-    return colored(text, 'yellow', force_color=True)
+    return colored(text, "yellow", force_color=True)
 
 
 def green(text):
-    return colored(text, 'green', force_color=True)
+    return colored(text, "green", force_color=True)
 
 
 def red(text):
-    return colored(text, 'red', force_color=True)
+    return colored(text, "red", force_color=True)
 
 
 def blue(text):
-    return colored(text, 'blue', force_color=True)
+    return colored(text, "blue", force_color=True)
 
 
 def cyan(text):
-    return colored(text, 'cyan', force_color=True)
+    return colored(text, "cyan", force_color=True)
