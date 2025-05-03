@@ -4,7 +4,6 @@ import os
 import re
 import sys
 import tomllib
-from termcolor import colored
 import requests
 from megalinter import config, utils
 from megalinter.constants import ML_DOC_URL
@@ -71,20 +70,20 @@ def manage_upgrade_message():
         or "v5" in mega_linter_version
     ):
         logging.warning(
-            yellow(
+            utils.yellow(
                 "#######################################################################"
             )
         )
         logging.warning(
-            yellow(
+            utils.yellow(
                 "MEGA-LINTER HAS A NEW V7 VERSION at https://github.com/oxsecurity/megalinter .\n"
                 + "Please upgrade your configuration by running the following command at the "
                 + "root of your repository (requires node.js): \n"
-                + green("npx mega-linter-runner --upgrade")
+                + utils.green("npx mega-linter-runner --upgrade")
             )
         )
         logging.warning(
-            yellow(
+            utils.yellow(
                 "#######################################################################"
             )
         )
@@ -215,14 +214,3 @@ def sanitize_string(input_string):
                 )
     return sanitized_string
 
-
-def yellow(text):
-    return colored(text, 'yellow')
-
-
-def green(text):
-    return colored(text, 'green')
-
-
-def red(text):
-    return colored(text, 'red')

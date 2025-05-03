@@ -5,8 +5,7 @@ Output results in console
 import logging
 import urllib
 
-from termcolor import colored
-
+from megalinter.utils import blue
 import terminaltables
 from megalinter import Reporter, config
 from megalinter.constants import DEFAULT_RELEASE, ML_DOC_URL, ML_REPO, ML_REPO_URL
@@ -164,14 +163,3 @@ class ConsoleReporter(Reporter):
                     logging.warning(flavor_msg)
             logging.info("")
 
-def yellow(text):
-    return colored(text, 'yellow')
-
-def green(text):
-    return colored(text, 'green')
-
-def red(text):
-    return colored(text, 'red')
-
-def blue(text):
-    return colored(text, 'blue')

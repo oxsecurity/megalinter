@@ -3,7 +3,6 @@
 Output results in console
 """
 import logging
-from termcolor import colored
 
 from megalinter import Reporter, config, utils
 from megalinter.constants import ML_DOC_URL_DESCRIPTORS_ROOT
@@ -51,14 +50,14 @@ class ConsoleLinterReporter(Reporter):
             logging.info(
                 log_section_start(
                     f"processed-{self.master.name}",
-                    green(f"✅ {base_phrase} successfully - ({elapse})"),
+                    utils.green(f"✅ {base_phrase} successfully - ({elapse})"),
                 )
             )
         elif self.master.return_code == 0 and self.master.status != "success":
             logging.warning(
                 log_section_start(
                     f"processed-{self.master.name}",
-                    yellow(
+                    utils.yellow(
                         f"⚠️ {base_phrase}: Found {total_errors} non blocking error(s) "
                         + f"and {total_warnings} non blocking warning(s) - ({elapse})"
                     ),
@@ -68,7 +67,7 @@ class ConsoleLinterReporter(Reporter):
             logging.error(
                 log_section_start(
                     f"processed-{self.master.name}",
-                    red(
+                    utils.red(
                         f"❌ {base_phrase}: Found {total_errors} error(s) and {total_warnings} warning(s) - ({elapse})"
                     ),
                 )
@@ -133,13 +132,13 @@ class ConsoleLinterReporter(Reporter):
                 line = f"[{self.master.linter_name}] {file_nm}"
             if res["fixed"] is True:
                 line += " - FIXED"
-                line = cyan(line)
+                line = utils.cyan(line)
             if res["status_code"] in [0, None]:  # file ok or file from list_of_files
                 if self.print_all_files is True:
                     logging.info(line)
             else:
-                logging.error(red(line))
-                logging.error(red(f"--Error detail:\n{res['stdout']}"))
+                logging.error(utils.red(line))
+                logging.error(utils.red(f"--Error detail:\n{res['stdout']}"))
         # Output stdout if not file by file
         if self.master.cli_lint_mode in ["list_of_files", "project"]:
             stdout = (
@@ -157,17 +156,3 @@ class ConsoleLinterReporter(Reporter):
         # Close section
         logging.info(log_section_end(f"processed-{self.master.name}"))
 
-def yellow(text):
-    return colored(text, 'yellow')
-
-def green(text):
-    return colored(text, 'green')
-
-def red(text):
-    return colored(text, 'red')
-
-def cyan(text):
-    return colored(text, 'cyan')
-
-def blue(text):
-    return colored(text, 'blue')
