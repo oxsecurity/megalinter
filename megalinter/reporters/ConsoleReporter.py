@@ -5,7 +5,7 @@ Output results in console
 import logging
 import urllib
 
-import chalk as c
+from megalinter.utils import blue
 import terminaltables
 from megalinter import Reporter, config
 from megalinter.constants import DEFAULT_RELEASE, ML_DOC_URL, ML_REPO, ML_REPO_URL
@@ -147,7 +147,7 @@ class ConsoleReporter(Reporter):
                     else "beta" if build_version == "latest" else build_version
                 )
                 logging.warning(
-                    c.blue(
+                    blue(
                         "You could have same capabilities but better runtime performances"
                         " if you use a MegaLinter flavor:"
                     )
@@ -162,3 +162,4 @@ class ConsoleReporter(Reporter):
                     )
                     logging.warning(flavor_msg)
             logging.info("")
+

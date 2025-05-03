@@ -44,7 +44,7 @@ Run `make` for Makefile help. Initialize virtualenv and install dependencies wit
 
 You can lint with `make megalinter` (Incoming)
 
-If you need to run `build.sh` commands manually you need to run `source .venv/bin/activate` (or `source .venv/Scripts/activate` on Windows) first.
+If you need to run `build.sh` commands manually (instead of `make megalinter-build`), you need to run `source .venv/bin/activate` (or `source .venv/Scripts/activate` on Windows) first.
 
 ### 5. Submit a pull request
 
@@ -62,7 +62,7 @@ Consider sponsoring the maintainer via [GitHub](https://github.com/sponsors/nvui
 2. Create a new branch: `git checkout -b my-branch-name`
 3. Make your change
 4. Update **CHANGELOG.md** (the root one, not the one in /docs)
-5. Run `bash build.sh` to regenerate dockerfile from updated sources (run `bash build.sh --doc` if you want to also regenerate documentation)
+5. Run `make megalinter-build` or `bash build.sh` to regenerate dockerfile from updated sources (run `make megalinter-build --doc` or `bash build.sh --doc` if you want to also regenerate documentation)
 6. Push and [submit a pull request][pr]
 7. Pat yourself on the back and wait for your pull request to be reviewed and merged.
 
@@ -89,7 +89,7 @@ Which returns:
 2. Create a new branch: `git checkout -b my-branch-name`
 3. Make your change
 4. Update **CHANGELOG.md** (the root one, not the one in /docs)
-5. Run `bash build.sh` to regenerate dockerfile from updated sources (run `bash build.sh --doc` if you want to also regenerate documentation)
+5. Run `make megalinter-build` or `bash build.sh` to regenerate dockerfile from updated sources (run `make megalinter-build --doc` or `bash build.sh --doc` if you want to also regenerate documentation)
 6. Push to your fork and [submit a pull request][pr]
 7. Pat your self on the back and wait for your pull request to be reviewed and merged.
 
@@ -107,7 +107,7 @@ Draft pull requests are also welcome to get feedback early on, or if there is so
 ### Update Dockerfile base image
 
 1. `/Dockerfile` file has to be updated
-2. Run `bash build.sh`, and it will automatically propagate to all the other Dockerfiles
+2. Run `make megalinter-build` or `bash build.sh`, and it will automatically propagate to all the other Dockerfiles
 
 ### Improve documentation
 
@@ -133,7 +133,7 @@ By default it listens on `http://127.0.0.1:8000/`.
 
 Every time a change is made to a `.md` file it will automatically update if the server is up.
 
-Once you think everything is correct run `bash build.sh --doc` and it will generate all the rest!
+Once you think everything is correct run `make megalinter-build --doc` or  `bash build.sh --doc` and it will generate all the rest!
 
 ### Add a new linter
 
@@ -142,7 +142,7 @@ Each linter must:
 - Be defined in a descriptor file. Few properties are required ([see json schema documentation](https://megalinter.io/json-schemas/descriptor.html)), but please think to input doc URLs and `ide` section for documentation
 - Have two test files in `.automation/test`: one for success and one for failure
 
-Then run `bash build.sh` and it will generate all the rest!
+Then run `make megalinter-build` or `bash build.sh` and it will generate all the rest!
 
 - Documentation (markdown)
 - Dockerfile (main and flavors)
@@ -170,7 +170,7 @@ When running them, you may encounter several problems:
 
 For those cases, it's important to have the possibility to run the tests inside the container. To do so:
 
-1. Run `bash build.sh` to update the Dockerfile files of each linter.
+1. Run `make megalinter-build` or `bash build.sh` to update the Dockerfile files of each linter.
 2. Execute the following commands in a ***.sh** script. Example:
 
 ```bash
