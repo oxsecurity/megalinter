@@ -313,9 +313,9 @@ ARG PIP_SEMGREP_VERSION=1.116.0
 # renovate: datasource=github-tags depName=anchore/syft
 ARG REPOSITORY_SYFT_VERSION=1.22.0
 # renovate: datasource=github-tags depName=aquasecurity/trivy
-ARG REPOSITORY_TRIVY_VERSION=0.61.1
+ARG REPOSITORY_TRIVY_VERSION=0.62.0
 # renovate: datasource=github-tags depName=aquasecurity/trivy
-ARG REPOSITORY_TRIVY_SBOM_VERSION=0.61.1
+ARG REPOSITORY_TRIVY_SBOM_VERSION=0.62.0
 # renovate: datasource=pypi depName=Pygments
 ARG PIP_PYGMENTS_VERSION=2.19.1
 # renovate: datasource=pypi depName=restructuredtext_lint
