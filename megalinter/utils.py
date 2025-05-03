@@ -5,7 +5,6 @@ import json
 import logging
 import os
 import re
-import regex
 import tempfile
 import urllib.parse
 from fnmatch import fnmatch
@@ -13,6 +12,7 @@ from pathlib import Path
 from typing import Any, Optional, Pattern, Sequence
 
 import git
+import regex
 from megalinter import config, logger
 from megalinter.constants import DEFAULT_DOCKER_WORKSPACE_DIR
 
