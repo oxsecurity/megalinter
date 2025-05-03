@@ -50,6 +50,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [rubocop](https://rubocop.org/) from 1.75.3 to **1.75.4** on 2025-05-02
   - [stylelint](https://stylelint.io) from 16.19.0 to **16.19.1** on 2025-05-02
   - [phpstan](https://phpstan.org/) from 2.1.13 to **2.1.14** on 2025-05-02
+  - [secretlint](https://github.com/secretlint/secretlint) from 9.3.1 to **9.3.2** on 2025-05-03
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.88.25 to **3.88.27** on 2025-05-03
 <!-- linter-versions-end -->
 
 ## [v8.6.0] - 2024-04-27
