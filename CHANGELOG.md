@@ -54,6 +54,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [phpstan](https://phpstan.org/) from 2.1.13 to **2.1.14** on 2025-05-02
   - [secretlint](https://github.com/secretlint/secretlint) from 9.3.1 to **9.3.2** on 2025-05-03
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.88.25 to **3.88.27** on 2025-05-03
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 25.2.1 to **25.4.0** on 2025-05-03
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.61.1 to **0.62.0** on 2025-05-03
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.61.1 to **0.62.0** on 2025-05-03
 <!-- linter-versions-end -->
 
 ## [v8.6.0] - 2024-04-27

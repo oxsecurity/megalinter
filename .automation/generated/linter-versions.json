@@ -1,6 +1,6 @@
 {
     "actionlint": "1.7.7",
-    "ansible-lint": "25.2.1",
+    "ansible-lint": "25.4.0",
     "arm-ttk": "0.0.0",
     "bandit": "1.8.3",
     "bash-exec": "5.2.37",
@@ -114,8 +114,8 @@
     "terragrunt": "0.77.22",
     "terrascan": "1.19.9",
     "tflint": "0.56.0",
-    "trivy": "0.61.1",
-    "trivy-sbom": "0.61.1",
+    "trivy": "0.62.0",
+    "trivy-sbom": "0.62.0",
     "trufflehog": "3.88.27",
     "ts-standard": "12.0.2",
     "tsqllint": "1.16.0.0",
