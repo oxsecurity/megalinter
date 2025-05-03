@@ -633,13 +633,34 @@ def fix_regex_pattern(pattern):
 
 def keep_only_valid_regex_patterns(patterns, fail=False):
     fixed_patterns = []
+    # Heuristic regex to detect nested quantifiers (potential ReDoS risk)
+    nested_quantifier_regex = re.compile(
+        r"\((?:[^()]*[+*][^()]*){2,}\)[+*?]"
+    )
     for pattern in patterns:
         # First, attempt to fix the pattern
         fixed_pattern = fix_regex_pattern(pattern)
         try:
-            # Try compiling the fixed pattern to check if it's valid
-            re.compile(fixed_pattern)
-            fixed_patterns.append(fixed_pattern)  # Pattern is valid, add it
+            # Try compiling the fixed pattern with regex module and a timeout (also checks validity)
+            try:
+                regex.compile(fixed_pattern, timeout=0.1)  # 100ms timeout
+            except TimeoutError:
+                logging.debug(
+                    f"Skipped regex pattern due to timeout (possible ReDoS): {fixed_pattern}"
+                )
+                continue
+            except Exception as e:
+                logging.debug(
+                    f"Skipped regex pattern due to error in regex module: {fixed_pattern}. Error: {e}"
+                )
+                continue
+            # Skip if pattern has nested quantifiers (ReDoS risk)
+            if nested_quantifier_regex.search(fixed_pattern):
+                logging.debug(
+                    f"Skipped potentially unsafe regex pattern (possible ReDoS): {fixed_pattern}"
+                )
+                continue
+            fixed_patterns.append(fixed_pattern)  # Pattern is valid and safe, add it
         except re.error as e:
             if fail is True:
                 raise

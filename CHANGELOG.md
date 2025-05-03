@@ -19,6 +19,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Linters enhancements
 
 - Fixes
+  - Exclude from sanitization the regular expressions that have awful performances
 
 - Reporters
 
