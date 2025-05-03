@@ -4,6 +4,7 @@ import os
 import re
 import sys
 import tomllib
+
 import requests
 from megalinter import config, utils
 from megalinter.constants import ML_DOC_URL
@@ -216,4 +217,3 @@ def sanitize_string(input_string):
                     pattern, "HIDDEN_BY_MEGALINTER", sanitized_string, count=1
                 )
     return sanitized_string
-
