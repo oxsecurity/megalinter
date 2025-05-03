@@ -7,9 +7,9 @@ import logging
 import os
 import shutil
 
-import chalk as c
 import git
 from megalinter import Reporter, config, utils
+from termcolor import colored
 
 
 class UpdatedSourcesReporter(Reporter):
@@ -87,7 +87,7 @@ class UpdatedSourcesReporter(Reporter):
                         remote_branch = BITBUCKET_BRANCH
                     if remote_branch == "":
                         logging.warning(
-                            c.yellow(
+                            yellow(
                                 "⚠️ [Updated Sources Reporter] Failed to retrieve git source branch"
                             )
                         )
@@ -107,13 +107,13 @@ class UpdatedSourcesReporter(Reporter):
                             repo.git.push("origin", f"HEAD:{remote_branch}")
                         except git.GitCommandError as git_err:
                             logging.error(
-                                c.red(
+                                red(
                                     "❌ [Updated Sources Reporter] Failed to git push auto fixes: "
                                     + str(git_err.stderr)
                                 )
                             )
                             logging.warning(
-                                c.yellow(
+                                yellow(
                                     "⚠️ [Updated Sources Reporter] Download fixed source files from artifacts "
                                     "then copy-paste into your repo to apply linters updates"
                                 )
@@ -127,3 +127,15 @@ class UpdatedSourcesReporter(Reporter):
             logging.info(
                 "[Updated Sources Reporter] No source file has been formatted or fixed"
             )
+
+
+def yellow(text):
+    return colored(text, "yellow")
+
+
+def green(text):
+    return colored(text, "green")
+
+
+def red(text):
+    return colored(text, "red")

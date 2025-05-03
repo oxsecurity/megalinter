@@ -338,7 +338,6 @@ dependencies = [
     { name = "gitpython" },
     { name = "jsonpickle" },
     { name = "multiprocessing-logging" },
-    { name = "pychalk" },
     { name = "pygithub" },
     { name = "pytablewriter" },
     { name = "python-gitlab" },
@@ -347,6 +346,7 @@ dependencies = [
     { name = "regex" },
     { name = "requests" },
     { name = "terminaltables" },
+    { name = "termcolor" },
     { name = "urllib3" },
 ]
 
@@ -358,7 +358,6 @@ requires-dist = [
     { name = "importlib-metadata", marker = "python_full_version < '3.9'", specifier = ">=3.10" },
     { name = "jsonpickle" },
     { name = "multiprocessing-logging" },
-    { name = "pychalk" },
     { name = "pygithub" },
     { name = "pytablewriter" },
     { name = "python-gitlab" },
@@ -367,6 +366,7 @@ requires-dist = [
     { name = "regex" },
     { name = "requests" },
     { name = "terminaltables" },
+    { name = "termcolor" },
     { name = "urllib3" },
 ]
 
@@ -419,15 +419,6 @@ sdist = { url = "https://files.pythonhosted.org/packages/92/87/c7a2f51cc62df0495
 wheels = [
     { url = "https://files.pythonhosted.org/packages/50/14/c5a0e1a947909810fc4c043b84cac472b70e438148d34f5393be1bac663f/pathvalidate-3.2.3-py3-none-any.whl", hash = "sha256:5eaf0562e345d4b6d0c0239d0f690c3bd84d2a9a3c4c73b99ea667401b27bee1", size = 24130, upload_time = "2025-01-03T14:06:39.568Z" },
 ]
-
-[[package]]
-name = "pychalk"
-version = "2.0.1"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "six" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/bb/e6/f99c99aaf6c80ed7fcb39c3479871db45a2970ca9fe713a0e2ca0e5cb592/pychalk-2.0.1.tar.gz", hash = "sha256:f763275f6fa68835a30d22c2449f73724d569f33532a031d26e32edc604e7e39", size = 17231, upload_time = "2018-12-12T20:58:30.349Z" }
 
 [[package]]
 name = "pycparser"

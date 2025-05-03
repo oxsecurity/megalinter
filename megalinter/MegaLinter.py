@@ -13,7 +13,8 @@ import sys
 from shutil import copytree
 from uuid import uuid1
 
-import chalk as c
+from termcolor import colored
+
 import git
 from megalinter import (
     Linter,
@@ -920,17 +921,17 @@ class Megalinter:
                     f"has_updated_sources={str(self.has_updated_sources)}\n"
                 )
         if self.status == "success":
-            logging.info(c.green("✅ Successfully linted all files without errors"))
+            logging.info(green("✅ Successfully linted all files without errors"))
             config.delete(self.request_id)
             self.check_updated_sources_failure()
         elif self.status == "warning":
             logging.warning(
-                c.yellow("⚠️ Successfully linted all files, but with ignored errors")
+                yellow("⚠️ Successfully linted all files, but with ignored errors")
             )
             config.delete(self.request_id)
             self.check_updated_sources_failure()
         else:
-            logging.error(c.red("❌ Error(s) have been found during linting"))
+            logging.error(red("❌ Error(s) have been found during linting"))
             logging.warning(
                 "To disable linters or customize their checks, you can use a .mega-linter.yml file "
                 "at the root of your repository"
@@ -948,7 +949,7 @@ class Megalinter:
     def check_updated_sources_failure(self):
         if self.has_updated_sources > 0 and self.fail_if_updated_sources is True:
             logging.error(
-                c.red(
+                red(
                     "❌ Sources has been updated by linter autofixes, and FAIL_IF_UPDATED_SOURCES has been set to true"
                 )
             )
@@ -965,3 +966,17 @@ class Megalinter:
         if self.has_git_extraheader is True:
             repo = git.Repo(os.path.realpath(self.github_workspace))
             repo.config_writer().set_value("http", "extraheader", "").release()
+
+
+# Add color helpers
+
+def yellow(text):
+    return colored(text, 'yellow')
+
+
+def green(text):
+    return colored(text, 'green')
+
+
+def red(text):
+    return colored(text, 'red')
