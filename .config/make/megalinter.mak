@@ -1,7 +1,14 @@
 ## —— Megalinter —————————————————————————————————————————————————————————————————————————————————————
 .PHONY: megalinter-build
 megalinter-build: ## Run script build.sh
-	source .venv/bin/activate
+	@if [ -f .venv/bin/activate ]; then \
+		. .venv/bin/activate; \
+	elif [ -f .venv/Scripts/activate ]; then \
+		. .venv/Scripts/activate; \
+	else \
+		echo "No venv activation script found! Try command 'make bootstrap'" >&2; \
+		exit 1; \
+	fi; \
 	bash build.sh
 
 .PHONY: megalinter-run
