@@ -126,4 +126,3 @@ class UpdatedSourcesReporter(Reporter):
             logging.info(
                 "[Updated Sources Reporter] No source file has been formatted or fixed"
             )
-

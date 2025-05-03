@@ -155,4 +155,3 @@ class ConsoleLinterReporter(Reporter):
             logging.info("\n".join(self.master.log_lines_post))
         # Close section
         logging.info(log_section_end(f"processed-{self.master.name}"))
-

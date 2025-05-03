@@ -5,10 +5,10 @@ Output results in console
 import logging
 import urllib
 
-from megalinter.utils import blue
 import terminaltables
 from megalinter import Reporter, config
 from megalinter.constants import DEFAULT_RELEASE, ML_DOC_URL, ML_REPO, ML_REPO_URL
+from megalinter.utils import blue
 from megalinter.utils_reporter import log_section_end
 
 
@@ -162,4 +162,3 @@ class ConsoleReporter(Reporter):
                     )
                     logging.warning(flavor_msg)
             logging.info("")
-

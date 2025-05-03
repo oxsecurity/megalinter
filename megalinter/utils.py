@@ -634,13 +634,20 @@ def fix_regex_pattern(pattern):
 
 def keep_only_valid_regex_patterns(patterns, fail=False):
     fixed_patterns = []
+    # Heuristic regex to detect nested quantifiers (potential ReDoS risk)
+    nested_quantifier_regex = re.compile(r"\((?:[^()]*[+*][^()]*){2,}\)[+*?]")
     for pattern in patterns:
         # First, attempt to fix the pattern
         fixed_pattern = fix_regex_pattern(pattern)
         try:
-            # Try compiling the fixed pattern to check if it's valid
-            re.compile(fixed_pattern)
-            fixed_patterns.append(fixed_pattern)  # Pattern is valid, add it
+            re.compile(fixed_pattern)  # Check if the pattern is valid
+            # Skip if pattern has nested quantifiers (ReDoS risk)
+            if nested_quantifier_regex.search(fixed_pattern):
+                logging.debug(
+                    f"Skipped potentially unsafe regex pattern (possible ReDoS): {fixed_pattern}"
+                )
+                continue
+            fixed_patterns.append(fixed_pattern)  # Pattern is valid and safe, add it
         except re.error as e:
             if fail is True:
                 raise
@@ -653,20 +660,20 @@ def keep_only_valid_regex_patterns(patterns, fail=False):
 
 
 def yellow(text):
-    return colored(text, 'yellow')
+    return colored(text, "yellow", force_color=True)
 
 
 def green(text):
-    return colored(text, 'green')
+    return colored(text, "green", force_color=True)
 
 
 def red(text):
-    return colored(text, 'red')
+    return colored(text, "red", force_color=True)
 
 
 def blue(text):
-    return colored(text, 'blue')
+    return colored(text, "blue", force_color=True)
 
 
 def cyan(text):
-    return colored(text, 'cyan')
+    return colored(text, "cyan", force_color=True)

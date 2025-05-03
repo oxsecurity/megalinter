@@ -4,6 +4,7 @@ import os
 import re
 import sys
 import tomllib
+
 import requests
 from megalinter import config, utils
 from megalinter.constants import ML_DOC_URL
@@ -197,6 +198,9 @@ def fetch_gitleaks_regexes(force_use_local_file=False):
 
 
 def sanitize_string(input_string):
+    if os.environ.get("SKIP_LINTER_OUTPUT_SANITIZATION", "") == "true":
+        # Don't sanitize in test mode
+        return input_string
     regex_patterns = fetch_gitleaks_regexes()
     sanitized_string = input_string
     for pattern in regex_patterns:
@@ -213,4 +217,3 @@ def sanitize_string(input_string):
                     pattern, "HIDDEN_BY_MEGALINTER", sanitized_string, count=1
                 )
     return sanitized_string
-
