@@ -15,6 +15,7 @@ import git
 import regex
 from megalinter import config, logger
 from megalinter.constants import DEFAULT_DOCKER_WORKSPACE_DIR
+from termcolor import colored
 
 SIZE_MAX_SOURCEFILEHEADER = 1024
 
@@ -649,3 +650,23 @@ def keep_only_valid_regex_patterns(patterns, fail=False):
                 )
 
     return fixed_patterns
+
+
+def yellow(text):
+    return colored(text, 'yellow')
+
+
+def green(text):
+    return colored(text, 'green')
+
+
+def red(text):
+    return colored(text, 'red')
+
+
+def blue(text):
+    return colored(text, 'blue')
+
+
+def cyan(text):
+    return colored(text, 'cyan')

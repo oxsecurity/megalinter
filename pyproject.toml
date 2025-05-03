@@ -24,7 +24,6 @@ dependencies = [
   "importlib-metadata>=3.10; python_version < '3.9'",
   "jsonpickle",
   "multiprocessing_logging",
-  "pychalk",
   "pygithub",
   "pytablewriter",
   "python-gitlab",
@@ -33,6 +32,7 @@ dependencies = [
   "regex",
   "requests",
   "terminaltables",
+  "termcolor",
   "urllib3",
 ]
 
