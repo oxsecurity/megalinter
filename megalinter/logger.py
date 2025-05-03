@@ -199,6 +199,9 @@ def fetch_gitleaks_regexes(force_use_local_file=False):
 
 
 def sanitize_string(input_string):
+    if os.environ.get("SKIP_LINTER_OUTPUT_SANITIZATION", "") == "true":
+        # Don't sanitize in test mode
+        return input_string
     regex_patterns = fetch_gitleaks_regexes()
     sanitized_string = input_string
     for pattern in regex_patterns:
