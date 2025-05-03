@@ -57,6 +57,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [ansible-lint](https://ansible-lint.readthedocs.io/) from 25.2.1 to **25.4.0** on 2025-05-03
   - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.61.1 to **0.62.0** on 2025-05-03
   - [trivy](https://aquasecurity.github.io/trivy/) from 0.61.1 to **0.62.0** on 2025-05-03
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.4.1 to **3.8.0** on 2025-05-03
 <!-- linter-versions-end -->
 
 ## [v8.6.0] - 2024-04-27
