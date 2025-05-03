@@ -12,7 +12,6 @@ from pathlib import Path
 from typing import Any, Optional, Pattern, Sequence
 
 import git
-import regex
 from megalinter import config, logger
 from megalinter.constants import DEFAULT_DOCKER_WORKSPACE_DIR
 
@@ -639,19 +638,7 @@ def keep_only_valid_regex_patterns(patterns, fail=False):
         # First, attempt to fix the pattern
         fixed_pattern = fix_regex_pattern(pattern)
         try:
-            # Try compiling the fixed pattern with regex module and a timeout (also checks validity)
-            try:
-                regex.compile(fixed_pattern, timeout=0.1)  # 100ms timeout
-            except TimeoutError:
-                logging.debug(
-                    f"Skipped regex pattern due to timeout (possible ReDoS): {fixed_pattern}"
-                )
-                continue
-            except Exception as e:
-                logging.debug(
-                    f"Skipped regex pattern due to error in regex module: {fixed_pattern}. Error: {e}"
-                )
-                continue
+            re.compile(fixed_pattern)  # Check if the pattern is valid
             # Skip if pattern has nested quantifiers (ReDoS risk)
             if nested_quantifier_regex.search(fixed_pattern):
                 logging.debug(
