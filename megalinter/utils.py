@@ -634,9 +634,7 @@ def fix_regex_pattern(pattern):
 def keep_only_valid_regex_patterns(patterns, fail=False):
     fixed_patterns = []
     # Heuristic regex to detect nested quantifiers (potential ReDoS risk)
-    nested_quantifier_regex = re.compile(
-        r"\((?:[^()]*[+*][^()]*){2,}\)[+*?]"
-    )
+    nested_quantifier_regex = re.compile(r"\((?:[^()]*[+*][^()]*){2,}\)[+*?]")
     for pattern in patterns:
         # First, attempt to fix the pattern
         fixed_pattern = fix_regex_pattern(pattern)
