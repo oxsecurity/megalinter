@@ -97,7 +97,7 @@ USER gitpod
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 # renovate: datasource=github-releases depName=astral-sh/uv
-ARG UV_VERSION=0.6.14
+ARG UV_VERSION=0.7.2
 # hadolint ignore=SC1090,SC1091
 RUN curl -LsSf "https://astral.sh/uv/${UV_VERSION}/install.sh" | sh \
     && source "$HOME/.local/bin/env"
