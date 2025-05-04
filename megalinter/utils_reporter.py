@@ -24,7 +24,7 @@ def build_markdown_summary(reporter_self, action_run_url=""):
     if reporter_self.master.show_elapsed_time is True:
         table_header += ["Elapsed time"]
         table_column_styles += [Align.CENTER]
-    table_data_raw = [table_header]
+    table_data_raw = []
     for linter in reporter_self.master.linters:
         if linter.is_active is True:
             status = (
