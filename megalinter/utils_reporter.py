@@ -15,15 +15,23 @@ from megalinter.constants import (
     OX_MARKDOWN_LINK,
 )
 from pytablewriter import MarkdownTableWriter, Align
+from pytablewriter.style import Style
 from redis import Redis
 
 
 def build_markdown_summary(reporter_self, action_run_url=""):
     table_header = ["Descriptor", "Linter", "Files", "Fixed", "Errors", "Warnings"]
-    table_column_styles = [Align.LEFT, Align.LEFT, Align.CENTER, Align.CENTER, Align.CENTER, Align.CENTER]
+    table_column_styles = [
+        Style(align=Align.LEFT), 
+        Style(align=Align.LEFT), 
+        Style(align=Align.RIGHT), 
+        Style(align=Align.RIGHT), 
+        Style(align=Align.RIGHT), 
+        Style(align=Align.RIGHT)
+    ]
     if reporter_self.master.show_elapsed_time is True:
         table_header += ["Elapsed time"]
-        table_column_styles += [Align.CENTER]
+        table_column_styles += [Style(align=Align.RIGHT)]
     table_data_raw = []
     for linter in reporter_self.master.linters:
         if linter.is_active is True:
