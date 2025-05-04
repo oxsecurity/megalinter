@@ -36,16 +36,16 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 ## [v8.7.0] - 2024-05-04
 
 - Core
-  - Replace pychalk (not maintained for 7 years) by termcolor, by @nvuillam in https://github.com/oxsecurity/megalinter/pull/5316
-  - Update make scripts so they also work on Windows, by @nvuillam in https://github.com/oxsecurity/megalinter/pull/5316
-  - Align number columns of markdown tables in reports, by @nvuillam in https://github.com/oxsecurity/megalinter/pull/4835
+  - Replace pychalk (not maintained for 7 years) by termcolor, by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/5316>
+  - Update make scripts so they also work on Windows, by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/5316>
+  - Align number columns of markdown tables in reports, by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/4835>
 
 - Linters enhancements
-  - Add new CSharpier supported file extensions, by @bdovaz in https://github.com/oxsecurity/megalinter/pull/5292
+  - Add new CSharpier supported file extensions, by @bdovaz in <https://github.com/oxsecurity/megalinter/pull/5292>
 
 - Fixes
-  - Exclude from sanitization the regular expressions that have awful performances, by @nvuillam in https://github.com/oxsecurity/megalinter/pull/5308
-  - New variable SKIP_LINTER_OUTPUT_SANITIZATION to skip sanitization to improve performances if you are on a private repository with secured access, by @nvuillam in https://github.com/oxsecurity/megalinter/pull/5308
+  - Exclude from sanitization the regular expressions that have awful performances, by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/5308>
+  - New variable SKIP_LINTER_OUTPUT_SANITIZATION to skip sanitization to improve performances if you are on a private repository with secured access, by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/5308>
 
 - Linter versions upgrades (27)
   - [ansible-lint](https://ansible-lint.readthedocs.io/) from 25.2.1 to **25.4.0**  
