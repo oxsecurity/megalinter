@@ -61,6 +61,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.34.44 to **0.35.1** on 2025-05-04
   - [psalm](https://psalm.dev) from Psalm.6.10.1@ to **Psalm.6.10.2@** on 2025-05-04
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.19.3 to **8.19.4** on 2025-05-04
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.53.0 to **0.54.1** on 2025-05-04
+  - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.24.3 to **8.25.1** on 2025-05-04
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.77.22 to **0.78.0** on 2025-05-04
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.56.0 to **0.57.0** on 2025-05-04
 <!-- linter-versions-end -->
 
 ## [v8.6.0] - 2024-04-27
