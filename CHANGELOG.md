@@ -31,6 +31,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - mega-linter-runner
 
 - Linter versions upgrades (N)
+  - [golangci-lint](https://golangci-lint.run/) from 2.1.5 to **2.1.6** on 2025-05-04
+  - [pylint](https://pylint.readthedocs.io) from 3.3.6 to **3.3.7** on 2025-05-04
 <!-- linter-versions-end -->
 
 ## [v8.7.0] - 2024-05-04
