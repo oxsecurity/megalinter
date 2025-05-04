@@ -11,6 +11,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Core
   - Replace pychalk (not maintained for 7 years) by termcolor
   - Update make scripts so they also work on Windows
+  - Align number columns of markdown tables in reports
 
 - New linters
 
