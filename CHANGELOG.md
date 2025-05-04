@@ -66,6 +66,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.24.3 to **8.25.1** on 2025-05-04
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.77.22 to **0.78.0** on 2025-05-04
   - [tflint](https://github.com/terraform-linters/tflint) from 0.56.0 to **0.57.0** on 2025-05-04
+  - [yamllint](https://yamllint.readthedocs.io/) from 1.37.0 to **1.37.1** on 2025-05-04
 <!-- linter-versions-end -->
 
 ## [v8.6.0] - 2024-04-27
