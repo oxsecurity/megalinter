@@ -4,7 +4,6 @@ Output results in console
 """
 import logging
 
-import chalk as c
 from megalinter import Reporter, config, utils
 from megalinter.constants import ML_DOC_URL_DESCRIPTORS_ROOT
 from megalinter.utils_reporter import log_section_end, log_section_start
@@ -51,14 +50,14 @@ class ConsoleLinterReporter(Reporter):
             logging.info(
                 log_section_start(
                     f"processed-{self.master.name}",
-                    c.green(f"✅ {base_phrase} successfully - ({elapse})"),
+                    utils.green(f"✅ {base_phrase} successfully - ({elapse})"),
                 )
             )
         elif self.master.return_code == 0 and self.master.status != "success":
             logging.warning(
                 log_section_start(
                     f"processed-{self.master.name}",
-                    c.yellow(
+                    utils.yellow(
                         f"⚠️ {base_phrase}: Found {total_errors} non blocking error(s) "
                         + f"and {total_warnings} non blocking warning(s) - ({elapse})"
                     ),
@@ -68,7 +67,7 @@ class ConsoleLinterReporter(Reporter):
             logging.error(
                 log_section_start(
                     f"processed-{self.master.name}",
-                    c.red(
+                    utils.red(
                         f"❌ {base_phrase}: Found {total_errors} error(s) and {total_warnings} warning(s) - ({elapse})"
                     ),
                 )
@@ -133,13 +132,13 @@ class ConsoleLinterReporter(Reporter):
                 line = f"[{self.master.linter_name}] {file_nm}"
             if res["fixed"] is True:
                 line += " - FIXED"
-                line = c.cyan(line)
+                line = utils.cyan(line)
             if res["status_code"] in [0, None]:  # file ok or file from list_of_files
                 if self.print_all_files is True:
                     logging.info(line)
             else:
-                logging.error(c.red(line))
-                logging.error(c.red(f"--Error detail:\n{res['stdout']}"))
+                logging.error(utils.red(line))
+                logging.error(utils.red(f"--Error detail:\n{res['stdout']}"))
         # Output stdout if not file by file
         if self.master.cli_lint_mode in ["list_of_files", "project"]:
             stdout = (

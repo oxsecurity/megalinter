@@ -89,6 +89,11 @@
     "image": null,
     "title": "CoffeeLint - Lint your CoffeeScript"
   },
+  "cppcheck": {
+    "description": "Cppcheck is an analysis tool for C/C++ code. It detects the types of bugs that the compilers normally fail to detect. The goal is no false positives.",
+    "image": null,
+    "title": "Cppcheck - A tool for static C/C++ code analysis"
+  },
   "cpplint": {
     "description": "Static code checker for C++. Contribute to cpplint/cpplint development by creating an account on GitHub.",
     "image": "https://avatars3.githubusercontent.com/u/23239423?s=400&v=4",

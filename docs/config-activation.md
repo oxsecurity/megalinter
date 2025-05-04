@@ -15,6 +15,8 @@ MegaLinter have all linters enabled by default, but allows to enable only some, 
 - If `DISABLE` is set, the linters in the listed descriptors will be skipped
 - If `DISABLE_LINTERS` is set, the listed linters will be skipped
 - If `DISABLE_ERRORS_LINTERS` is set, the listed linters will be run, but if errors are found, they will be considered as non blocking
+- If `ENABLE_ERRORS_LINTERS` is set, only the linters in this list will be considered as blocking.
+
 
 Examples:
 
@@ -24,6 +26,12 @@ Examples:
 ENABLE: JAVASCRIPT,GROOVY
 DISABLE_LINTERS: JAVASCRIPT_STANDARD
 DISABLE_ERRORS_LINTERS: REPOSITORY_DEVSKIM
+```
+
+- Run all matching linters but only trivy is blocking
+
+```yaml
+ENABLE_ERRORS_LINTERS: REPOSITORY_TRIVY
 ```
 
 - Run all linters except PHP linters (PHP_BUILTIN, PHP_PHPCS, PHP_PHPSTAN, PHP_PSALM)
