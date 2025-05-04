@@ -58,6 +58,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.61.1 to **0.62.0** on 2025-05-03
   - [trivy](https://aquasecurity.github.io/trivy/) from 0.61.1 to **0.62.0** on 2025-05-03
   - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.4.1 to **3.8.0** on 2025-05-03
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.34.44 to **0.35.1** on 2025-05-04
+  - [psalm](https://psalm.dev) from Psalm.6.10.1@ to **Psalm.6.10.2@** on 2025-05-04
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.19.3 to **8.19.4** on 2025-05-04
 <!-- linter-versions-end -->
 
 ## [v8.6.0] - 2024-04-27
