@@ -10,8 +10,6 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Core
   - Replace pychalk (not maintained for 7 years) by termcolor
-  - Update make scripts so they also work on Windows
-  - Align number columns of markdown tables in reports
 
 - New linters
 
@@ -24,6 +22,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Fixes
   - Exclude from sanitization the regular expressions that have awful performances
   - New variable SKIP_LINTER_OUTPUT_SANITIZATION to skip sanitization to improve performances if you are on a private repository with secured access.
+  - Update make scripts so they also work on Windows
+  - Align number columns of markdown tables in reports
+  - Fix Gitlab CI sections display
 
 - Reporters
 

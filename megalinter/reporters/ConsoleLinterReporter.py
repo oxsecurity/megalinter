@@ -49,14 +49,14 @@ class ConsoleLinterReporter(Reporter):
         if self.master.return_code == 0 and self.master.status == "success":
             logging.info(
                 log_section_start(
-                    f"processed-{self.master.name}",
+                    f"processed{self.master.name}",
                     utils.green(f"✅ {base_phrase} successfully - ({elapse})"),
                 )
             )
         elif self.master.return_code == 0 and self.master.status != "success":
             logging.warning(
                 log_section_start(
-                    f"processed-{self.master.name}",
+                    f"processed{self.master.name}",
                     utils.yellow(
                         f"⚠️ {base_phrase}: Found {total_errors} non blocking error(s) "
                         + f"and {total_warnings} non blocking warning(s) - ({elapse})"
@@ -66,7 +66,7 @@ class ConsoleLinterReporter(Reporter):
         elif self.master.return_code != 0 and self.master.status != "success":
             logging.error(
                 log_section_start(
-                    f"processed-{self.master.name}",
+                    f"processed{self.master.name}",
                     utils.red(
                         f"❌ {base_phrase}: Found {total_errors} error(s) and {total_warnings} warning(s) - ({elapse})"
                     ),
@@ -75,7 +75,7 @@ class ConsoleLinterReporter(Reporter):
         else:
             logging.error(
                 log_section_start(
-                    f"processed-{self.master.name}",
+                    f"processed{self.master.name}",
                     f"❌ There is a MegaLinter issue, please report it: {self.master.return_code}"
                     + " / {self.master.status}",
                 )
@@ -154,4 +154,4 @@ class ConsoleLinterReporter(Reporter):
         if len(self.master.log_lines_post) > 0:
             logging.info("\n".join(self.master.log_lines_post))
         # Close section
-        logging.info(log_section_end(f"processed-{self.master.name}"))
+        logging.info(log_section_end(f"processed{self.master.name}"))

@@ -216,8 +216,8 @@ def log_section_start(section_key: str, section_title: str):
             return f"::group::{section_title} (expand for details)"
         elif utils.is_gitlab_ci():
             return (
-                f"\x1b[0Ksection_start:`{time.time_ns()}`:{section_key}"  # noqa: W605
-                + f"[collapsed=true]\r\x1b[0K{section_title} (expand for details)"  # noqa: W605
+                f"section_start:`{time.time_ns()}`:{section_key}"  # noqa: W605
+                + f"[collapsed=true]\r\e[0K{section_title} (expand for details)"  # noqa: W605
             )
         elif utils.is_azure_pipelines():
             return f"##[group]{section_title} (expand for details)"
@@ -232,7 +232,7 @@ def log_section_end(section_key):
         if utils.is_github_actions():
             return "::endgroup::"
         elif utils.is_gitlab_ci():
-            return f"\x1b[0Ksection_end:`{time.time_ns()}`:{section_key}\r\x1b[0K"  # noqa: W605
+            return f"section_end:`{time.time_ns()}`:{section_key}\r\e[0K"  # noqa: W605
         elif utils.is_azure_pipelines():
             return "##[endgroup]"
     return ""

@@ -55,7 +55,7 @@ class ConsoleReporter(Reporter):
         logging.info("")
         for table_line in table.table.splitlines():
             logging.info(table_line)
-        logging.info(log_section_end("megalinter-file-listing"))
+        logging.info(log_section_end("megalinterFileListing"))
 
     def produce_report(self):
         table_header = [

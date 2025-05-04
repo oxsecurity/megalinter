@@ -180,7 +180,7 @@ class Megalinter:
         self.compute_file_extensions()
         # Load MegaLinter reporters
         self.load_reporters()
-        logging.info(log_section_end("megalinter-init"))
+        logging.info(log_section_end("megalinterInit"))
 
     # Collect files, run linters on them and write reports
     def run(self):
@@ -194,7 +194,7 @@ class Megalinter:
         # Collect files for each identified linter
         logging.info(
             log_section_start(
-                "megalinter-file-listing",
+                "megalinterFileListing",
                 "MegaLinter now collects the files to analyse",
             )
         )
