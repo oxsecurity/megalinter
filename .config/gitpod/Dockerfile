@@ -63,7 +63,7 @@ ARG NPM_VERSION=11.3.0
 # renovate: datasource=npm depName=ungit
 ARG UNGIT_VERSION=1.5.28
 # renovate: datasource=npm depName=mega-linter-runner
-ARG MEGA_LINTER_RUNNER_VERSION=8.6.0
+ARG MEGA_LINTER_RUNNER_VERSION=8.7.0
 # renovate: datasource=npm depName=markdown-table-formatter
 ARG MARKDOWN_TABLE_FORMATTER_VERSION=1.6.1
 
