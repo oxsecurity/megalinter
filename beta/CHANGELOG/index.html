@@ -3530,6 +3530,13 @@
 </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#v870-2024-05-04">
+<span class="md-ellipsis">
+      [v8.7.0] - 2024-05-04
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#v860-2024-04-27">
 <span class="md-ellipsis">
       [v8.6.0] - 2024-04-27
@@ -4556,6 +4563,13 @@
 </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#v870-2024-05-04">
+<span class="md-ellipsis">
+      [v8.7.0] - 2024-05-04
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#v860-2024-04-27">
 <span class="md-ellipsis">
       [v8.6.0] - 2024-04-27
@@ -5562,12 +5576,7 @@
 <h2 id="unreleased-beta-main-branch-content">[Unreleased] (beta, main branch content)</h2>
 <p>Note: Can be used with <code>oxsecurity/megalinter@beta</code> in your GitHub Action mega-linter.yml file, or with <code>oxsecurity/megalinter:beta</code> docker image</p>
 <ul>
-<li>Core<ul>
-<li>Replace pychalk (not maintained for 7 years) by termcolor</li>
-<li>Update make scripts so they also work on Windows</li>
-<li>Align number columns of markdown tables in reports</li>
-</ul>
-</li>
+<li>Core</li>
 </ul>
 <ul>
 <li>New linters</li>
@@ -5582,11 +5591,7 @@
 <li>Linters enhancements</li>
 </ul>
 <ul>
-<li>Fixes<ul>
-<li>Exclude from sanitization the regular expressions that have awful performances</li>
-<li>New variable SKIP_LINTER_OUTPUT_SANITIZATION to skip sanitization to improve performances if you are on a private repository with secured access.</li>
-</ul>
-</li>
+<li>Fixes</li>
 </ul>
 <ul>
 <li>Reporters</li>
@@ -5604,42 +5609,62 @@
 <li>mega-linter-runner</li>
 </ul>
 <ul>
-<li>Linter versions upgrades (N)<ul>
-<li><a href="https://checkstyle.org/">checkstyle</a> from 10.23.0 to <strong>10.23.1</strong> on 2025-04-29</li>
-<li><a href="https://github.com/chris48s/v8r">v8r</a> from 4.3.0 to <strong>4.4.0</strong> on 2025-04-29</li>
-<li><a href="https://github.com/aws-cloudformation/cfn-lint">cfn-lint</a> from 1.34.1 to <strong>1.34.2</strong> on 2025-05-01</li>
-<li><a href="https://golangci-lint.run/">golangci-lint</a> from 1.64.8 to <strong>2.1.5</strong> on 2025-05-01</li>
-<li><a href="https://pmd.github.io/">pmd</a> from 7.12.0 to <strong>7.13.0</strong> on 2025-05-01</li>
-<li><a href="https://phpstan.org/">phpstan</a> from 2.1.12 to <strong>2.1.13</strong> on 2025-05-01</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 3.2.404 to <strong>3.2.413</strong> on 2025-05-01</li>
-<li><a href="https://github.com/Lightning-Flow-Scanner">lightning-flow-scanner</a> from 3.4.0 to <strong>3.4.1</strong> on 2025-05-01</li>
-<li><a href="https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell">cspell</a> from 8.19.2 to <strong>8.19.3</strong> on 2025-05-01</li>
-<li><a href="https://csharpier.com/">csharpier</a> from 0.30.6 to <strong>1.0.1</strong> on 2025-05-02</li>
-<li><a href="https://github.com/PowerShell/PSScriptAnalyzer">powershell_formatter</a> from 7.5.0 to <strong>7.5.1</strong> on 2025-05-02</li>
-<li><a href="https://github.com/PowerShell/PSScriptAnalyzer">powershell</a> from 7.5.0 to <strong>7.5.1</strong> on 2025-05-02</li>
-<li><a href="https://github.com/astral-sh/ruff">ruff-format</a> from 0.11.6 to <strong>0.11.8</strong> on 2025-05-02</li>
-<li><a href="https://github.com/astral-sh/ruff">ruff</a> from 0.11.6 to <strong>0.11.8</strong> on 2025-05-02</li>
-<li><a href="https://rubocop.org/">rubocop</a> from 1.75.3 to <strong>1.75.4</strong> on 2025-05-02</li>
-<li><a href="https://stylelint.io">stylelint</a> from 16.19.0 to <strong>16.19.1</strong> on 2025-05-02</li>
-<li><a href="https://phpstan.org/">phpstan</a> from 2.1.13 to <strong>2.1.14</strong> on 2025-05-02</li>
-<li><a href="https://github.com/secretlint/secretlint">secretlint</a> from 9.3.1 to <strong>9.3.2</strong> on 2025-05-03</li>
-<li><a href="https://github.com/trufflesecurity/trufflehog">trufflehog</a> from 3.88.25 to <strong>3.88.27</strong> on 2025-05-03</li>
-<li><a href="https://ansible-lint.readthedocs.io/">ansible-lint</a> from 25.2.1 to <strong>25.4.0</strong> on 2025-05-03</li>
-<li><a href="https://aquasecurity.github.io/trivy/">trivy-sbom</a> from 0.61.1 to <strong>0.62.0</strong> on 2025-05-03</li>
-<li><a href="https://aquasecurity.github.io/trivy/">trivy</a> from 0.61.1 to <strong>0.62.0</strong> on 2025-05-03</li>
-<li><a href="https://github.com/Lightning-Flow-Scanner">lightning-flow-scanner</a> from 3.4.1 to <strong>3.8.0</strong> on 2025-05-03</li>
-<li><a href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter">bicep_linter</a> from 0.34.44 to <strong>0.35.1</strong> on 2025-05-04</li>
-<li><a href="https://psalm.dev">psalm</a> from Psalm.6.10.1@ to <strong>Psalm.6.10.2@</strong> on 2025-05-04</li>
-<li><a href="https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell">cspell</a> from 8.19.3 to <strong>8.19.4</strong> on 2025-05-04</li>
-<li><a href="https://github.com/yoheimuta/protolint">protolint</a> from 0.53.0 to <strong>0.54.1</strong> on 2025-05-04</li>
-<li><a href="https://github.com/gitleaks/gitleaks">gitleaks</a> from 8.24.3 to <strong>8.25.1</strong> on 2025-05-04</li>
-<li><a href="https://terragrunt.gruntwork.io">terragrunt</a> from 0.77.22 to <strong>0.78.0</strong> on 2025-05-04</li>
-<li><a href="https://github.com/terraform-linters/tflint">tflint</a> from 0.56.0 to <strong>0.57.0</strong> on 2025-05-04</li>
-<li><a href="https://yamllint.readthedocs.io/">yamllint</a> from 1.37.0 to <strong>1.37.1</strong> on 2025-05-04</li>
+<li>Linter versions upgrades (N)</li>
+</ul>
+<!-- linter-versions-end -->
+<h2 id="v870-2024-05-04">[v8.7.0] - 2024-05-04</h2>
+<ul>
+<li>Core<ul>
+<li>Replace pychalk (not maintained for 7 years) by termcolor, by @nvuillam in https://github.com/oxsecurity/megalinter/pull/5316</li>
+<li>Update make scripts so they also work on Windows, by @nvuillam in https://github.com/oxsecurity/megalinter/pull/5316</li>
+<li>Align number columns of markdown tables in reports, by @nvuillam in https://github.com/oxsecurity/megalinter/pull/4835</li>
 </ul>
 </li>
 </ul>
-<!-- linter-versions-end -->
+<ul>
+<li>Linters enhancements<ul>
+<li>Add new CSharpier supported file extensions, by @bdovaz in https://github.com/oxsecurity/megalinter/pull/5292</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>Fixes<ul>
+<li>Exclude from sanitization the regular expressions that have awful performances, by @nvuillam in https://github.com/oxsecurity/megalinter/pull/5308</li>
+<li>New variable SKIP_LINTER_OUTPUT_SANITIZATION to skip sanitization to improve performances if you are on a private repository with secured access, by @nvuillam in https://github.com/oxsecurity/megalinter/pull/5308</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>Linter versions upgrades (27)<ul>
+<li><a href="https://ansible-lint.readthedocs.io/">ansible-lint</a> from 25.2.1 to <strong>25.4.0</strong> </li>
+<li><a href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter">bicep_linter</a> from 0.34.44 to <strong>0.35.1</strong> </li>
+<li><a href="https://github.com/aws-cloudformation/cfn-lint">cfn-lint</a> from 1.34.1 to <strong>1.34.2</strong> </li>
+<li><a href="https://www.checkov.io/">checkov</a> from 3.2.404 to <strong>3.2.413</strong> </li>
+<li><a href="https://checkstyle.org/">checkstyle</a> from 10.23.0 to <strong>10.23.1</strong> </li>
+<li><a href="https://csharpier.com/">csharpier</a> from 0.30.6 to <strong>1.0.1</strong> </li>
+<li><a href="https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell">cspell</a> from 8.19.2 to <strong>8.19.4</strong> </li>
+<li><a href="https://github.com/gitleaks/gitleaks">gitleaks</a> from 8.24.3 to <strong>8.25.1</strong> </li>
+<li><a href="https://golangci-lint.run/">golangci-lint</a> from 1.64.8 to <strong>2.1.5</strong> </li>
+<li><a href="https://github.com/Lightning-Flow-Scanner">lightning-flow-scanner</a> from 3.4.0 to <strong>3.8.0</strong> </li>
+<li><a href="https://phpstan.org/">phpstan</a> from 2.1.12 to <strong>2.1.14</strong> </li>
+<li><a href="https://pmd.github.io/">pmd</a> from 7.12.0 to <strong>7.13.0</strong> </li>
+<li><a href="https://github.com/PowerShell/PSScriptAnalyzer">powershell</a> from 7.5.0 to <strong>7.5.1</strong> </li>
+<li><a href="https://github.com/yoheimuta/protolint">protolint</a> from 0.53.0 to <strong>0.54.1</strong> </li>
+<li><a href="https://psalm.dev">psalm</a> from 6.10.1 to <strong>6.10.2</strong> </li>
+<li><a href="https://rubocop.org/">rubocop</a> from 1.75.3 to <strong>1.75.4</strong> </li>
+<li><a href="https://github.com/astral-sh/ruff">ruff</a> from 0.11.6 to <strong>0.11.8</strong> </li>
+<li><a href="https://github.com/astral-sh/ruff">ruff-format</a> from 0.11.6 to <strong>0.11.8</strong> </li>
+<li><a href="https://github.com/secretlint/secretlint">secretlint</a> from 9.3.1 to <strong>9.3.2</strong> </li>
+<li><a href="https://stylelint.io">stylelint</a> from 16.19.0 to <strong>16.19.1</strong> </li>
+<li><a href="https://terragrunt.gruntwork.io">terragrunt</a> from 0.77.22 to <strong>0.78.0</strong> </li>
+<li><a href="https://github.com/terraform-linters/tflint">tflint</a> from 0.56.0 to <strong>0.57.0</strong> </li>
+<li><a href="https://aquasecurity.github.io/trivy/">trivy</a> from 0.61.1 to <strong>0.62.0</strong> </li>
+<li><a href="https://aquasecurity.github.io/trivy/">trivy-sbom</a> from 0.61.1 to <strong>0.62.0</strong> </li>
+<li><a href="https://github.com/chris48s/v8r">v8r</a> from 4.3.0 to <strong>4.4.0</strong> </li>
+<li><a href="https://yamllint.readthedocs.io/">yamllint</a> from 1.37.0 to <strong>1.37.1</strong></li>
+</ul>
+</li>
+</ul>
 <h2 id="v860-2024-04-27">[v8.6.0] - 2024-04-27</h2>
 <ul>
 <li>Core<ul>
