@@ -150,7 +150,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=packagist depName=vimeo/psalm
-          ARG PHP_VIMEO_PSALM_VERSION=6.10.2
+          ARG PHP_VIMEO_PSALM_VERSION=6.10.3
         - |
           RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require vimeo/psalm:${PHP_VIMEO_PSALM_VERSION}
     ide:
