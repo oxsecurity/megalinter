@@ -33,6 +33,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Linter versions upgrades (N)
   - [golangci-lint](https://golangci-lint.run/) from 2.1.5 to **2.1.6** on 2025-05-04
   - [pylint](https://pylint.readthedocs.io) from 3.3.6 to **3.3.7** on 2025-05-04
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.8.0 to **3.11.0** on 2025-05-05
 <!-- linter-versions-end -->
 
 ## [v8.7.0] - 2024-05-04
