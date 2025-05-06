@@ -34,6 +34,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [golangci-lint](https://golangci-lint.run/) from 2.1.5 to **2.1.6** on 2025-05-04
   - [pylint](https://pylint.readthedocs.io) from 3.3.6 to **3.3.7** on 2025-05-04
   - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.8.0 to **3.11.0** on 2025-05-05
+  - [psalm](https://psalm.dev) from Psalm.6.10.2@ to **Psalm.6.10.3@** on 2025-05-06
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.88.27 to **3.88.28** on 2025-05-06
+  - [rubocop](https://rubocop.org/) from 1.75.4 to **1.75.5** on 2025-05-06
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.11.0 to **3.12.0** on 2025-05-06
 <!-- linter-versions-end -->
 
 ## [v8.7.0] - 2024-05-04
