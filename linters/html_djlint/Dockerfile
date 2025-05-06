@@ -53,7 +53,7 @@ ARG PIP_DJLINT_VERSION=1.36.4
 # renovate: datasource=pypi depName=pip
 ARG PIP_PIP_VERSION=25.1.1
 # renovate: datasource=pypi depName=virtualenv
-ARG PIP_VIRTUALENV_VERSION=20.30.0
+ARG PIP_VIRTUALENV_VERSION=20.31.1
 #ARG__END
 
 ####################
