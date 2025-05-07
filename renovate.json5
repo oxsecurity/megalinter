@@ -13,9 +13,9 @@
     'preview:dockerVersions',
     'group:unitTestNonMajor',
     ':enableVulnerabilityAlerts',
-    ':automergePr', // Still raise a PR for automerges
-    ':automergeDigest', // enable for PRs updating digests
-    ':automergePatch', // enable for lock files, patch and pin
+    ':automergePr',
+    ':automergeDigest',
+    ':automergePatch',
   ],
   vulnerabilityAlerts: {
     enabled: true,
@@ -80,10 +80,10 @@
     {
       customType: 'regex',
       description: 'Update dockerfile sections in .megalinter-descriptor.yml files',
-      fileMatch: [
-        '(^|/).*megalinter(\\\\|/)constants\\.py$',
-        '(^|/).*\\.devcontainer(\\\\|/)Dockerfile$',
-        '(^|/).*\\.megalinter-descriptor\\.ya?ml$',
+      managerFilePatterns: [
+        '/(^|/).*megalinter(\\\\|/)constants\\.py$/',
+        '/(^|/).*\\.devcontainer(\\\\|/)Dockerfile$/',
+        '/(^|/).*\\.megalinter-descriptor\\.ya?ml$/',
       ],
       matchStrings: [
         '# renovate: datasource=(?<datasource>[a-z-.]+?) depName=(?<depName>[^\\s]+?)(?: (lookupName|packageName)=(?<packageName>[^\\s]+?))?(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>[^\\s]+?))?(?: registryUrl=(?<registryUrl>[^\\s]+?))?\\s(?:ENV|ARG)\\s+[A-Za-z0-9_]+?_VERSION[ =]["\']?(?<currentValue>.+?)["\']?\\s',
