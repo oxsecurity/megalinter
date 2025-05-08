@@ -111,6 +111,8 @@ CVE-2024-21538
 # other
 CVE-2024-47535
 CVE-2024-12797
+# https://avd.aquasec.com/nvd/cve-2025-46569 : Linters in MegaLinter do not run servers.
+CVE-2025-46569
 # Dockerfile
 DS001
 DS002

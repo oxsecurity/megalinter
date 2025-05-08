@@ -91,7 +91,6 @@ def build_markdown_summary(reporter_self, action_run_url=""):
                 table_line += [str(round(linter.elapsed_time_s, 2)) + "s"]
             table_data_raw += [table_line]
     # Build markdown table
-    table_data_raw.pop(0)
     writer = MarkdownTableWriter(
         headers=table_header,
         column_styles=table_column_styles,
