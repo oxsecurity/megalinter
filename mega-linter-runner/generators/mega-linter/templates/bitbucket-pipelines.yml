@@ -1,0 +1,11 @@
+image: atlassian/default-image:3
+pipelines:
+  default:
+    - parallel:
+      - step:
+          name: Run MegaLinter
+          image: <%= DOCKER_IMAGE_NAME %>:<%= DOCKER_IMAGE_VERSION %>
+          script:
+            - export DEFAULT_WORKSPACE=$BITBUCKET_CLONE_DIR && export APPLY_FIXES=<%= APPLY_FIXES %> && bash /entrypoint.sh
+          artifacts:
+            - megalinter-reports/**

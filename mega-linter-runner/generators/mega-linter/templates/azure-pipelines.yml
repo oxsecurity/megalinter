@@ -1,0 +1,30 @@
+# Run MegaLinter to detect linting and security issues
+jobs:
+  - job: MegaLinter
+    pool:
+      vmImage: ubuntu-latest
+    steps:
+      # Checkout repo
+      - checkout: self
+
+      # Pull MegaLinter docker image
+      - script: docker pull <%= DOCKER_IMAGE_NAME %>:<%= DOCKER_IMAGE_VERSION %>
+        displayName: Pull MegaLinter
+
+      # Run MegaLinter
+      - script: |
+          docker run -v $(System.DefaultWorkingDirectory):/tmp/lint \
+            --env-file <(env | grep -e SYSTEM_ -e BUILD_ -e TF_ -e AGENT_) \
+            -e SYSTEM_ACCESSTOKEN=$(System.AccessToken) \
+            -e GIT_AUTHORIZATION_BEARER=$(System.AccessToken) \
+            -e APPLY_FIXES=<%= APPLY_FIXES %> \
+            <%= DOCKER_IMAGE_NAME %>:<%= DOCKER_IMAGE_VERSION %>
+        displayName: Run MegaLinter
+
+      # Upload MegaLinter reports
+      - task: PublishPipelineArtifact@1
+        condition: succeededOrFailed()
+        displayName: Upload MegaLinter reports
+        inputs:
+          targetPath: "$(System.DefaultWorkingDirectory)/megalinter-reports/"
+          artifactName: MegaLinterReport

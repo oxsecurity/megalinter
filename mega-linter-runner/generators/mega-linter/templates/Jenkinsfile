@@ -1,0 +1,18 @@
+// Lint with MegaLinter: https://megalinter.io/
+stage('MegaLinter') {
+    agent {
+        docker {
+            image '<%= DOCKER_IMAGE_NAME %>:<%= DOCKER_IMAGE_VERSION %>'
+            args "-u root -e VALIDATE_ALL_CODEBASE=true -e APPLY_FIXES=<%= APPLY_FIXES %> -v ${WORKSPACE}:/tmp/lint --entrypoint=''"
+            reuseNode true
+        }
+    }
+    steps {
+        sh '/entrypoint.sh'
+    }
+    post {
+        always {
+            archiveArtifacts allowEmptyArchive: true, artifacts: 'mega-linter.log,megalinter-reports/**/*', defaultExcludes: false, followSymlinks: false
+        }
+    }
+}
