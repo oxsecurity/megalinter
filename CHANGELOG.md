@@ -44,6 +44,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [scalafix](https://scalacenter.github.io/scalafix/) from 0.14.2 to **0.14.3** on 2025-05-09
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.19.4 to **9.0.1** on 2025-05-09
   - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.12.0 to **3.12.1** on 2025-05-09
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.88.28 to **3.88.29** on 2025-05-09
 <!-- linter-versions-end -->
 
 ## [v8.7.0] - 2024-05-04
