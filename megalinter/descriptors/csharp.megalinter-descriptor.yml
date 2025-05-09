@@ -9,8 +9,7 @@ file_extensions:
   - ".cs"
 install:
   dockerfile:
-    # https://github.com/dotnet/sdk/issues/37790#issuecomment-1918068016
-    - RUN apk add --no-cache dotnet8-sdk --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community
+    - RUN apk add --no-cache dotnet9-sdk
     - ENV PATH="${PATH}:/root/.dotnet/tools"
 linters:
   # DOTNET FORMAT
@@ -20,12 +19,17 @@ linters:
     linter_text: |
       dotnet-format requires a `.sln` or `.csproj` file to run correctly.
     linter_url: https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format
-    linter_repo: https://github.com/dotnet/format
+    linter_repo: https://github.com/dotnet/sdk
+    linter_rules_configuration_url: https://github.com/dotnet/sdk/tree/main/documentation/format/docs
     linter_image_url: https://user-images.githubusercontent.com/9797472/61659851-6bbdc880-ac7d-11e9-95f7-d30c7de1a18a.png
+    cli_lint_errors_count: regex_count
+    cli_lint_errors_regex: ".cs\\([0-9]+,[0-9]+\\):\\s(?:warning|error)"
     cli_executable: dotnet
+    cli_lint_mode: project
     cli_lint_extra_args:
       - "format"
-      - "{{WORKSPACE}}"
+    cli_lint_extra_args_after:
+      - "--include **/*.cs"
       - "--verify-no-changes"
     cli_lint_fix_arg_name: "--megalinter-fix-flag" # Workaround for DotnetFormatLinter class behavior
     cli_lint_fix_remove_args:
@@ -33,32 +37,46 @@ linters:
     cli_help_extra_args:
       - format
     examples:
-      - "dotnet format {{WORKSPACE}} --verify-no-changes"
-      - "dotnet format {{WORKSPACE}}" # Fix
+      - "dotnet format --verify-no-changes"
+      - "dotnet format Solution.sln --verify-no-changes"
+      - "dotnet format Folder/Solution.sln --verify-no-changes"
+      - "dotnet format Project.csproj --verify-no-changes"
+      - "dotnet format" # Fix
+
   # CSharpier
-  - class: DotNetToolLinter
-    linter_name: csharpier
+  - linter_name: csharpier
     is_formatter: true
     linter_url: https://csharpier.com/
     linter_repo: https://github.com/belav/csharpier
     linter_image_url: https://csharpier.com/img/logo.svg
     linter_rules_configuration_url: https://csharpier.com/docs/Configuration
     linter_rules_ignore_config_url: https://csharpier.com/docs/Ignore
+    file_extensions:
+      - ".config"
+      - ".cs"
+      - ".csproj"
+      - ".props"
+      - ".targets"
     ignore_file_name: .csharpierignore
-    cli_executable: dotnet-csharpier
+    config_file_name: .csharpierrc
+    cli_config_arg_name: "--config-path"
+    cli_executable: csharpier
     cli_lint_mode: list_of_files
     cli_lint_extra_args:
-      - "--check"
-    cli_lint_fix_arg_name: "--megalinter-fix-flag" # Workaround for DotnetFormatLinter class behavior
+      - "check"
+    cli_lint_fix_arg_name: "format"
     cli_lint_fix_remove_args:
-      - "--check"
+      - "check"
     test_folder: csharp_csharpier
     examples:
-      - "dotnet csharpier --check myfile.cs myfile2.cs"
-      - "dotnet csharpier myfile.cs myfile2.cs" # Fix
+      - "csharpier check myfile.cs myfile2.cs"
+      - "csharpier format myfile.cs myfile2.cs" # Fix
     install:
       dockerfile:
-        - RUN dotnet tool install --global csharpier
+        - |-
+          # renovate: datasource=nuget depName=csharpier
+          ARG CSHARP_CSHARPIER_VERSION=1.0.1
+        - RUN dotnet tool install --allow-roll-forward --global csharpier --version "${CSHARP_CSHARPIER_VERSION}"
     ide:
       rider:
         - name: csharpier
@@ -69,6 +87,7 @@ linters:
       vscode:
         - name: csharpier-vscode
           url: https://marketplace.visualstudio.com/items?itemName=csharpier.csharpier-vscode
+
   # Roslynator
   - class: RoslynatorLinter
     linter_name: roslynator
@@ -95,7 +114,10 @@ linters:
       - "roslynator fix myproject.csproj" # Fix
     install:
       dockerfile:
-        - RUN dotnet tool install -g roslynator.dotnet.cli
+        - |-
+          # renovate: datasource=nuget depName=roslynator.dotnet.cli
+          ARG CSHARP_ROSLYNATOR_VERSION=0.10.1
+        - RUN dotnet tool install --allow-roll-forward --global roslynator.dotnet.cli --version "${CSHARP_ROSLYNATOR_VERSION}"
     ide:
       visual_studio:
         - name: Roslynator 2022

@@ -18,7 +18,7 @@ You can create it by typing `npx eslint --init` in the root of your repository
 
 ## eslint documentation
 
-- Version in MegaLinter: **8.57.0**
+- Version in MegaLinter: **8.57.1**
 - Visit [Official Web Site](https://github.com/yannickcr/eslint-plugin-react#readme){target=_blank}
 - See [How to configure eslint rules](https://github.com/yannickcr/eslint-plugin-react#configuration){target=_blank}
 - See [How to disable eslint rules in files](https://eslint.org/docs/user-guide/configuring#disabling-rules-with-inline-comments){target=_blank}
@@ -47,7 +47,7 @@ You can create it by typing `npx eslint --init` in the root of your repository
 | JSX_ESLINT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                                            |
 | JSX_ESLINT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                                            |
 | JSX_ESLINT_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling JSX_ESLINT and its pre/post commands                                                                                                                   | None                                            |
-| JSX_ESLINT_CONFIG_FILE                 | eslint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                   | `.eslintrc.json`                                |
+| JSX_ESLINT_CONFIG_FILE                 | eslint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                   | `eslint.config.js`                              |
 | JSX_ESLINT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
 | JSX_ESLINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                         |
 | JSX_ESLINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
@@ -69,22 +69,22 @@ Use eslint in your favorite IDE to catch errors before MegaLinter !
 |   <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a>    | [vim](https://www.vim.org/)                              | [Syntastic](https://github.com/vim-syntastic/syntastic/tree/master/syntax_checkers/javascript) |                             [Visit Web Site](https://github.com/vim-syntastic/syntastic/tree/master/syntax_checkers/javascript){target=_blank}                              |
 |  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/)     | [vscode-eslint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)    | [![Install in VSCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/dbaeumer.vscode-eslint){target=_blank} |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
-This linter is available in the following flavours
+This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                       | Description                                              | Embedded linters |                                                                                                                                                                                             Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------|:---------------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor                                |       124        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)       | MegaLinter for the most commonly used languages          |        83        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
-|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/)   | Optimized for C, C++, C# or VB based projects with JS/TS |        71        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
-|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.io/beta/flavors/javascript/) | Optimized for JAVASCRIPT or TYPESCRIPT based projects    |        60        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor                                |       127        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)       | MegaLinter for the most commonly used languages          |        88        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/)   | Optimized for C, C++, C# or VB based projects with JS/TS |        73        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
+|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.io/beta/flavors/javascript/) | Optimized for JAVASCRIPT or TYPESCRIPT based projects    |        59        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript) |
 
 ## Behind the scenes
 
 ### How are identified applicable files
 
-- Activated only if one of these files is found: `.eslintrc.json, .eslintrc.yml, .eslintrc.yaml, .eslintrc.js, .eslintrc.cjs, package.json:eslintConfig`
+- Activated only if one of these files is found: `eslint.config.js, eslint.config.mjs, eslint.config.cjs, .eslintrc.json, .eslintrc.yml, .eslintrc.yaml, .eslintrc.js, .eslintrc.cjs, package.json:eslintConfig`
 - File extensions: `.jsx`
 
 <!-- markdownlint-disable -->
@@ -175,8 +175,20 @@ Miscellaneous:
 
 ### Installation on mega-linter Docker image
 
+- Dockerfile commands :
+```dockerfile
+# renovate: datasource=npm depName=eslint
+ARG NPM_ESLINT_VERSION=8.57.1
+# renovate: datasource=npm depName=eslint-plugin-react
+ARG NPM_ESLINT_PLUGIN_REACT_VERSION=7.37.5
+# renovate: datasource=npm depName=eslint-plugin-jsx-a11y
+ARG NPM_ESLINT_PLUGIN_JSX_ALLY_VERSION=6.10.2
+# renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
+ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
+```
+
 - NPM packages (node.js):
-  - [eslint](https://www.npmjs.com/package/eslint)
-  - [eslint-plugin-react](https://www.npmjs.com/package/eslint-plugin-react)
-  - [eslint-plugin-jsx-a11y](https://www.npmjs.com/package/eslint-plugin-jsx-a11y)
-  - [@microsoft/eslint-formatter-sarif](https://www.npmjs.com/package/@microsoft/eslint-formatter-sarif)
+  - [eslint@8.57.1](https://www.npmjs.com/package/eslint/v/8.57.1)
+  - [eslint-plugin-react@7.37.5](https://www.npmjs.com/package/eslint-plugin-react/v/7.37.5)
+  - [eslint-plugin-jsx-a11y@6.10.2](https://www.npmjs.com/package/eslint-plugin-jsx-a11y/v/6.10.2)
+  - [@microsoft/eslint-formatter-sarif@3.1.0](https://www.npmjs.com/package/@microsoft/eslint-formatter-sarif/v/3.1.0)

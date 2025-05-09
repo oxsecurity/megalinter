@@ -9,7 +9,8 @@ file_extensions:
   - ".saas"
 linters:
   # StyleLint
-  - linter_name: stylelint
+  - class: StyleLintLinter
+    linter_name: stylelint
     name: CSS_STYLELINT
     linter_url: https://stylelint.io
     linter_rules_url: https://stylelint.io/user-guide/rules/list
@@ -22,16 +23,38 @@ linters:
     config_file_name: .stylelintrc.json
     cli_config_arg_name: "--config"
     cli_lint_fix_arg_name: "--fix"
+    cli_lint_errors_count: regex_number
+    cli_lint_errors_regex: "([0-9]+) errors"
+    cli_lint_warnings_count: regex_number
+    cli_lint_warnings_regex: "([0-9]+) warnings"
     examples:
       - "stylelint myfile.css"
       - "stylelint --config .stylelintrc.json myfile.css myfile2.css myfile3.css"
       - "stylelint --fix --config .stylelintrc.json myfile.css myfile2.css myfile3.css"
     install:
+      dockerfile:
+        - |-
+          # renovate: datasource=npm depName=stylelint
+          ARG NPM_STYLELINT_VERSION=16.19.1
+        - |-
+          # renovate: datasource=npm depName=stylelint-config-standard
+          ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=38.0.0
+        - |-
+          # renovate: datasource=npm depName=stylelint-config-sass-guidelines
+          ARG NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION=12.1.0
+        - |-
+          # renovate: datasource=npm depName=stylelint-scss
+          ARG NPM_STYLELINT_SCSS_VERSION=6.12.0
+        - |-
+          # renovate: datasource=pypi depName=cpplint
+          ARG PIP_CPPLINT_VERSION=2.0.2
       npm:
-        - stylelint
-        - stylelint-config-standard
-        - stylelint-config-sass-guidelines
-        - stylelint-scss
+        - stylelint@${NPM_STYLELINT_VERSION}
+        - stylelint-config-standard@${NPM_STYLELINT_CONFIG_STANDARD_VERSION}
+        - stylelint-config-sass-guidelines@${NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION}
+        - stylelint-scss@${NPM_STYLELINT_SCSS_VERSION}
+      pip:
+        - cpplint==${PIP_CPPLINT_VERSION}
     ide:
       atom:
         - name: linter-stylelint
@@ -50,35 +73,3 @@ linters:
       vscode:
         - name: vscode-stylelint
           url: https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint
-  # SCSS Lint
-  - linter_name: scss-lint
-    name: CSS_SCSS_LINT
-    deprecated: true
-    deprecated_description: https://github.com/sds/scss-lint#notice-consider-other-tools-before-adopting-scss-lint
-    file_extensions:
-      - ".scss"
-      - ".saas"
-    linter_url: https://github.com/sds/scss-lint
-    linter_repo: https://github.com/sds/scss-lint
-    linter_banner_image_url: https://raw.githubusercontent.com/sds/scss-lint/master/logo/horizontal.png
-    linter_rules_configuration_url: https://github.com/sds/scss-lint#configuration
-    linter_rules_inline_disable_url: https://stylelint.io/user-guide/ignore-code
-    config_file_name: .scss-lint.yml
-    test_folder: scss
-    examples:
-      - "scss-lint myfile.scss"
-      - "scss-lint -config .scss-lint.yml myfile.scss"
-    install:
-      gem:
-        - scss_lint
-    ide:
-      atom:
-        - name: linter-scss-lint
-          url: https://atom.io/packages/linter-scss-lint
-      idea:
-        - name: scss-lint-plugin
-          url: https://plugins.jetbrains.com/plugin/7530-scss-lint
-          id: com.wix.scss.lint
-      vscode:
-        - name: scss-lint
-          url: https://marketplace.visualstudio.com/items?itemName=adamwalzer.scss-lint

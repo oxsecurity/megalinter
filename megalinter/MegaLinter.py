@@ -13,7 +13,6 @@ import sys
 from shutil import copytree
 from uuid import uuid1
 
-import chalk as c
 import git
 from megalinter import (
     Linter,
@@ -48,7 +47,7 @@ def run_linters(linters, request_id):
     global REQUEST_CONFIG
     config.set_config(request_id, REQUEST_CONFIG)
     for linter in linters:
-        linter.run()
+        linter.run(run_commands_before_linters=False, run_commands_after_linters=False)
     return linters
 
 
@@ -92,15 +91,7 @@ class Megalinter:
             manage_upgrade_message()
             display_header(self)
         # MegaLinter default rules location
-        self.default_rules_location = (
-            "/action/lib/.automation"
-            if os.path.isdir("/action/lib/.automation")
-            else os.path.relpath(
-                os.path.relpath(
-                    os.path.dirname(os.path.abspath(__file__)) + "/../TEMPLATES"
-                )
-            )
-        )
+        self.default_rules_location = utils.get_default_rules_location()
         # User-defined rules location
         self.linter_rules_path = self.github_workspace + os.path.sep + ".github/linters"
 
@@ -111,12 +102,16 @@ class Megalinter:
         self.filter_regex_exclude = None
         self.default_linter_activation = True
         self.output_sarif = False
+        self.result_message = ""
 
         # Get enable / disable vars
         self.enable_descriptors = config.get_list(self.request_id, "ENABLE", [])
         self.enable_linters = config.get_list(self.request_id, "ENABLE_LINTERS", [])
         self.disable_descriptors = config.get_list(self.request_id, "DISABLE", [])
         self.disable_linters = config.get_list(self.request_id, "DISABLE_LINTERS", [])
+        self.enable_errors_linters = config.get_list(
+            self.request_id, "ENABLE_ERRORS_LINTERS", []
+        )
         self.disable_errors_linters = config.get_list(
             self.request_id, "DISABLE_ERRORS_LINTERS", []
         )
@@ -147,6 +142,9 @@ class Megalinter:
         self.flavor_suggestions = None
 
         # Initialize plugins
+        self.pre_commands_results = pre_post_factory.run_pre_commands(
+            self, "before_plugins"
+        )
         plugin_factory.initialize_plugins(self.request_id)
 
         # Copy node_modules in current folder if necessary
@@ -175,7 +173,7 @@ class Megalinter:
             )
 
         # Run user-defined commands
-        self.pre_commands_results = pre_post_factory.run_pre_commands(self)
+        self.pre_commands_results += pre_post_factory.run_pre_commands(self)
         self.post_commands_results = []
         # Initialize linters and gather criteria to browse files
         self.load_linters()
@@ -240,7 +238,17 @@ class Megalinter:
             config.get(self.request_id, "PARALLEL", "true") == "true"
             and len(active_linters) > 1
         ):
+            for active_linter in active_linters:
+                pre_post_factory.run_linter_pre_commands(
+                    active_linter.master, active_linter, run_before_linters=True
+                )
+
             self.process_linters_parallel(active_linters, linters_do_fixes)
+
+            for active_linter in active_linters:
+                pre_post_factory.run_linter_post_commands(
+                    active_linter.master, active_linter, run_after_linters=True
+                )
         else:
             self.process_linters_serial(active_linters)
 
@@ -263,6 +271,18 @@ class Megalinter:
             # Update number fixed
             if linter.number_fixed > 0:
                 self.has_updated_sources = 1
+        # Handle FAIL_IF_UPDATED_SOURCES
+        if (
+            self.has_updated_sources > 0
+            and self.fail_if_updated_sources is True
+            and self.status != "error"
+            and self.return_code == 0
+        ):
+            self.status = "error"
+            self.return_code = 1
+            self.result_message = (
+                "MegaLinter failed because of FAIL_IF_UPDATED_SOURCES=true"
+            )
 
         # Sort linters before reports production
         self.linters = sorted(
@@ -501,9 +521,17 @@ class Megalinter:
             linter_rules_path_val = config.get(self.request_id, "LINTER_RULES_PATH")
             if linter_rules_path_val.startswith("http"):
                 self.linter_rules_path = linter_rules_path_val
-            else:
+            elif os.path.isdir(
+                self.github_workspace + os.path.sep + linter_rules_path_val
+            ):
                 self.linter_rules_path = (
                     self.github_workspace + os.path.sep + linter_rules_path_val
+                )
+            elif os.path.isdir(linter_rules_path_val):
+                self.linter_rules_path = linter_rules_path_val
+            else:
+                raise ValueError(
+                    f"LINTER_RULES_PATH should be a valid directory ({linter_rules_path_val})"
                 )
         # Filtering regex (inclusion)
         if config.exists(self.request_id, "FILTER_REGEX_INCLUDE"):
@@ -558,6 +586,7 @@ class Megalinter:
             "enable_linters": self.enable_linters,
             "disable_descriptors": self.disable_descriptors,
             "disable_linters": self.disable_linters,
+            "enable_errors_linters": self.enable_errors_linters,
             "disable_errors_linters": self.disable_errors_linters,
             "workspace": self.workspace,
             "github_workspace": self.github_workspace,
@@ -890,17 +919,17 @@ class Megalinter:
                     f"has_updated_sources={str(self.has_updated_sources)}\n"
                 )
         if self.status == "success":
-            logging.info(c.green("✅ Successfully linted all files without errors"))
+            logging.info(utils.green("✅ Successfully linted all files without errors"))
             config.delete(self.request_id)
             self.check_updated_sources_failure()
         elif self.status == "warning":
             logging.warning(
-                c.yellow("⚠️ Successfully linted all files, but with ignored errors")
+                utils.yellow("⚠️ Successfully linted all files, but with ignored errors")
             )
             config.delete(self.request_id)
             self.check_updated_sources_failure()
         else:
-            logging.error(c.red("❌ Error(s) have been found during linting"))
+            logging.error(utils.red("❌ Error(s) have been found during linting"))
             logging.warning(
                 "To disable linters or customize their checks, you can use a .mega-linter.yml file "
                 "at the root of your repository"
@@ -918,7 +947,7 @@ class Megalinter:
     def check_updated_sources_failure(self):
         if self.has_updated_sources > 0 and self.fail_if_updated_sources is True:
             logging.error(
-                c.red(
+                utils.red(
                     "❌ Sources has been updated by linter autofixes, and FAIL_IF_UPDATED_SOURCES has been set to true"
                 )
             )

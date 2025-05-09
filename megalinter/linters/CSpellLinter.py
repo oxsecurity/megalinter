@@ -51,6 +51,13 @@ class CSpellLinter(Linter):
                     "[cspell] Unable to check file names on a readonly workspace: "
                     + str(e)
                 )
+        # Add . parameter if cli_lint_mode is project
+        if (
+            self.cli_lint_mode == "project"
+            and "." not in self.cli_lint_extra_args_after
+            and "." not in self.cli_lint_extra_args
+        ):
+            self.cli_lint_extra_args_after.append(".")
         return super().build_lint_command(file)
 
     # Remove temp file with file names if existing
@@ -137,7 +144,7 @@ Of course, please correct real typos before :)
         )
         return additional_report.splitlines()
 
-    def pre_test(self):
+    def pre_test(self, test_name):
         config.set_value(
             self.request_id, "SPELL_CSPELL_FILE_EXTENSIONS", [".js", ".md"]
         )

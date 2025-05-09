@@ -45,6 +45,7 @@ jobs:
     # Set the agent to run on
     runs-on: ${{ matrix.os }}
     permissions:
+      actions: write
       packages: write
     strategy:
       fail-fast: false
@@ -100,7 +101,7 @@ jobs:
         run: echo "BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" >> ${GITHUB_ENV}
 
       - name: Build Image
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: .
           file: flavors/${{ matrix.flavor }}/Dockerfile
@@ -116,23 +117,23 @@ jobs:
           tags: |
             ghcr.io/oxsecurity/megalinter-${{ matrix.flavor }}:alpha
 
-      - name: Build Worker Image
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          file: Dockerfile-worker
-          platforms: linux/amd64
-          build-args: |
-            MEGALINTER_BASE_IMAGE=ghcr.io/oxsecurity/megalinter-${{ matrix.flavor }}:alpha
-            BUILD_DATE=${{ env.BUILD_DATE }}
-            BUILD_REVISION=${{ github.sha }}
-            BUILD_VERSION=alpha
-          load: false
-          push: true
-          secrets: |
-            GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
-          tags: |
-            ghcr.io/oxsecurity/megalinter-worker-${{ matrix.flavor }}:alpha
+      # - name: Build Worker Image
+      #   uses: docker/build-push-action@v6
+      #   with:
+      #     context: .
+      #     file: Dockerfile-worker
+      #     platforms: linux/amd64
+      #     build-args: |
+      #       MEGALINTER_BASE_IMAGE=ghcr.io/oxsecurity/megalinter-${{ matrix.flavor }}:alpha
+      #       BUILD_DATE=${{ env.BUILD_DATE }}
+      #       BUILD_REVISION=${{ github.sha }}
+      #       BUILD_VERSION=alpha
+      #     load: false
+      #     push: true
+      #     secrets: |
+      #       GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
+      #     tags: |
+      #       ghcr.io/oxsecurity/megalinter-worker-${{ matrix.flavor }}:alpha
 
       ##############################################
       # Check Docker image security with Trivy #
@@ -140,7 +141,7 @@ jobs:
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: 'ghcr.io/oxsecurity/megalinter-worker-${{ matrix.flavor }}:alpha'
+          image-ref: ghcr.io/oxsecurity/megalinter-${{ matrix.flavor }}:alpha
           format: 'table'
           exit-code: '1'
           ignore-unfixed: true
@@ -148,3 +149,5 @@ jobs:
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
           timeout: 10m0s
+        env:
+            ACTIONS_RUNTIME_TOKEN: ${{ secrets.GITHUB_TOKEN }}

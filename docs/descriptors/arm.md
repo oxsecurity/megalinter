@@ -37,7 +37,9 @@ description: arm-ttk is available to analyze ARM files in MegaLinter
 
 - Dockerfile commands :
 ```dockerfile
-RUN curl -L https://github.com/PowerShell/PowerShell/releases/download/v7.4.2/powershell-7.4.2-linux-musl-x64.tar.gz -o /tmp/powershell.tar.gz \
+# renovate: datasource=github-tags depName=PowerShell/PowerShell
+ARG POWERSHELL_VERSION=7.5.1
+RUN curl -L https://github.com/PowerShell/PowerShell/releases/download/v${POWERSHELL_VERSION}/powershell-${POWERSHELL_VERSION}-linux-musl-x64.tar.gz -o /tmp/powershell.tar.gz \
     && mkdir -p /opt/microsoft/powershell/7 \
     && tar zxf /tmp/powershell.tar.gz -C /opt/microsoft/powershell/7 \
     && chmod +x /opt/microsoft/powershell/7/pwsh \
@@ -46,4 +48,4 @@ RUN curl -L https://github.com/PowerShell/PowerShell/releases/download/v7.4.2/po
 ```
 
 - APK packages (Linux):
-  - [icu-libs](https://pkgs.alpinelinux.org/packages?branch=edge&name=icu-libs)
+  - [icu-libs](https://pkgs.alpinelinux.org/packages?branch=v3.21&arch=x86_64&name=icu-libs)

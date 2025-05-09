@@ -58,13 +58,19 @@ FROM docker-installer as npm-installer
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # Set a variable for packages version
-ARG NPM_VERSION=10.8.0
-ARG UNGIT_VERSION=1.5.26
-ARG MEGA_LINTER_RUNNER_VERSION=7.11.1
-ARG MARKDOWN_TABLE_FORMATTER_VERSION=1.6.0
+# renovate: datasource=npm depName=npm
+ARG NPM_VERSION=11.3.0
+# renovate: datasource=npm depName=ungit
+ARG UNGIT_VERSION=1.5.28
+# renovate: datasource=npm depName=mega-linter-runner
+ARG MEGA_LINTER_RUNNER_VERSION=8.7.0
+# renovate: datasource=npm depName=markdown-table-formatter
+ARG MARKDOWN_TABLE_FORMATTER_VERSION=1.6.1
 
+# Adapted from instructions in 
+# https://github.com/nodesource/distributions?tab=readme-ov-file#using-ubuntu-nodejs-22
 # hadolint ignore=DL3008
-RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
+RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash - \
     && apt-get install  -y --no-install-recommends nodejs \
     && npm install -g "npm@${NPM_VERSION}" \
     && npm install -g \
@@ -90,15 +96,18 @@ RUN useradd -l -u 33333 -G sudo -md /home/gitpod -s /bin/bash -p gitpod gitpod
 USER gitpod
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+# renovate: datasource=github-releases depName=astral-sh/uv
+ARG UV_VERSION=0.7.2
 # hadolint ignore=SC1090,SC1091
-RUN curl  -LsSf https://astral.sh/uv/install.sh | sh \
-    && source "$HOME/.cargo/env"
+RUN curl -LsSf "https://astral.sh/uv/${UV_VERSION}/install.sh" | sh \
+    && source "$HOME/.local/bin/env"
+ENV PATH="~/.local/bin/:$PATH"
 
 # Disabled the final stage, as it ends up being longer to launch overall
 # #########################
 # #         final         #
 # #########################
-# FROM ubuntu:jammy
+# FROM ubuntu:noble
 
 # COPY --from=gitpod-user / /
 

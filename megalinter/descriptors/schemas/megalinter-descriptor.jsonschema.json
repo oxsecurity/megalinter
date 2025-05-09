@@ -61,6 +61,25 @@
         "terraform"
       ],
       "type": "string"
+    },
+    "linter_command_info": {
+      "$ref": "#/definitions/command_info",
+      "description": "Command information",
+      "properties": {
+        "run_after_linters": {
+          "default": false,
+          "title": "Process command after running linters",
+          "type": "boolean"
+        },
+        "run_before_linters": {
+          "default": false,
+          "title": "Process command before running linters",
+          "type": "boolean"
+        }
+      },
+      "required": [],
+      "title": "Command",
+      "type": "object"
     }
   },
   "description": "Descriptor definition for MegaLinter",
@@ -693,6 +712,33 @@
             "title": "Linting mode",
             "type": "string"
           },
+          "cli_lint_warnings_count": {
+            "$id": "#/properties/linters/items/properties/cli_lint_warnings_count",
+            "description": "Defines how to count warnings from log file. regex_number, regex_count, regex_sum, or total_lines",
+            "enum": [
+              "regex_number",
+              "regex_count",
+              "regex_sum",
+              "total_lines"
+            ],
+            "examples": [
+              "regex_number",
+              "regex_count",
+              "regex_sum",
+              "total_lines"
+            ],
+            "title": "Lint errors count mode",
+            "type": "string"
+          },
+          "cli_lint_warnings_regex": {
+            "$id": "#/properties/linters/items/properties/cli_lint_warnings_regex",
+            "description": "Regex allowing to extract the number of warnings from linter output logs",
+            "examples": [
+              "Issues found: (.*) in .* files"
+            ],
+            "title": "Lint warnings number regex",
+            "type": "string"
+          },
           "cli_sarif_args": {
             "$id": "#/properties/linters/items/properties/cli_sarif_args",
             "default": [],
@@ -1232,7 +1278,7 @@
               ]
             ],
             "items": {
-              "$ref": "#/definitions/command_info"
+              "$ref": "#/definitions/linter_command_info"
             },
             "title": "Linter Pre-run commands",
             "type": "array"
@@ -1255,7 +1301,7 @@
               ]
             ],
             "items": {
-              "$ref": "#/definitions/command_info"
+              "$ref": "#/definitions/linter_command_info"
             },
             "title": "Linter Pre-run commands",
             "type": "array"

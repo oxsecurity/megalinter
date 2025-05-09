@@ -15,7 +15,7 @@ description: How to use kics (configure, ignore files, ignore errors, help & ver
 
 ## kics documentation
 
-- Version in MegaLinter: **2.0.1**
+- Version in MegaLinter: **2.1.7**
 - Visit [Official Web Site](https://www.kics.io){target=_blank}
 - See [How to configure kics rules](https://docs.kics.io/latest/configuration-file/){target=_blank}
 - See [How to disable kics rules in files](https://docs.kics.io/latest/running-kics/#using_commands_on_scanned_files_as_comments){target=_blank}
@@ -28,29 +28,30 @@ description: How to use kics (configure, ignore files, ignore errors, help & ver
 - Enable kics by adding `REPOSITORY_KICS` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 - Disable kics by adding `REPOSITORY_KICS` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-| Variable                                    | Description                                                                                            | Default value                                   |
-|---------------------------------------------|--------------------------------------------------------------------------------------------------------|-------------------------------------------------|
-| REPOSITORY_KICS_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                               |                                                 |
-| REPOSITORY_KICS_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`   |                                                 |
-| REPOSITORY_KICS_PRE_COMMANDS                | List of bash commands to run before the linter                                                         | None                                            |
-| REPOSITORY_KICS_POST_COMMANDS               | List of bash commands to run after the linter                                                          | None                                            |
-| REPOSITORY_KICS_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling REPOSITORY_KICS and its pre/post commands | None                                            |
-| REPOSITORY_KICS_CONFIG_FILE                 | kics configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                        | `kics.config`                                   |
-| REPOSITORY_KICS_RULES_PATH                  | Path where to find linter configuration file                                                           | Workspace folder, then MegaLinter default rules |
-| REPOSITORY_KICS_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                             | `false`                                         |
-| REPOSITORY_KICS_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                       | `0`                                             |
-| REPOSITORY_KICS_CLI_EXECUTABLE              | Override CLI executable                                                                                | `['kics']`                                      |
+| Variable                                    | Description                                                                                                                                                                                                                                                                           | Default value                                   |
+|---------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
+| REPOSITORY_KICS_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                                                                                              |                                                 |
+| REPOSITORY_KICS_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                                                                                                  |                                                 |
+| REPOSITORY_KICS_CLI_LINT_MODE               | Override default CLI lint mode<br/>⚠️ As default value is **project**, overriding might not work<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `project`                                       |
+| REPOSITORY_KICS_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                                                                                        | None                                            |
+| REPOSITORY_KICS_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                                                                                         | None                                            |
+| REPOSITORY_KICS_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling REPOSITORY_KICS and its pre/post commands                                                                                                                                                                                | None                                            |
+| REPOSITORY_KICS_CONFIG_FILE                 | kics configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                                                                                       | `kics.config`                                   |
+| REPOSITORY_KICS_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                                                                                          | Workspace folder, then MegaLinter default rules |
+| REPOSITORY_KICS_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                                                                                            | `false`                                         |
+| REPOSITORY_KICS_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                                                                                      | `0`                                             |
+| REPOSITORY_KICS_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                                                                                               | `['kics']`                                      |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
-This linter is available in the following flavours
+This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                     | Description                                     | Embedded linters |                                                                                                                                                                                           Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------|:------------------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)       | Default MegaLinter Flavor                       |       124        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)     | MegaLinter for the most commonly used languages |        83        |     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)       | Default MegaLinter Flavor                       |       127        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)     | MegaLinter for the most commonly used languages |        88        |     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://megalinter.io/beta/flavors/security/)   | Optimized for security                          |        24        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
-|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://megalinter.io/beta/flavors/terraform/) | Optimized for TERRAFORM based projects          |        55        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://megalinter.io/beta/flavors/terraform/) | Optimized for TERRAFORM based projects          |        54        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform) |
 
 ## Behind the scenes
 
@@ -109,7 +110,9 @@ Use "kics [command] --help" for more information about a command.
 
 - Dockerfile commands :
 ```dockerfile
-FROM checkmarx/kics:alpine as kics
+# renovate: datasource=docker depName=checkmarx/kics
+ARG REPOSITORY_KICS_VERSION=v2.1.7-alpine
+FROM checkmarx/kics:${REPOSITORY_KICS_VERSION} AS kics
 COPY --link --from=kics /app/bin/kics /usr/bin/kics
 ENV KICS_QUERIES_PATH=/usr/bin/assets/queries KICS_LIBRARIES_PATH=/usr/bin/assets/libraries
 COPY --from=kics /app/bin/assets /usr/bin/assets

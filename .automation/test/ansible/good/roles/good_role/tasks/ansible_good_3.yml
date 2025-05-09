@@ -1,0 +1,14 @@
+---
+- name: Ensure directory exists
+  ansible.builtin.file:
+    path: "/tmp/my_directory"
+    state: directory
+    mode: "0755"
+
+- name: Copy configuration file
+  ansible.builtin.template:
+    src: config.j2
+    dest: "/etc/myapp/config.ini"
+    owner: root
+    group: root
+    mode: "0644"

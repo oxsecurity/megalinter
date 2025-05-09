@@ -20,6 +20,10 @@ linters:
     config_file_name: ".prettierrc.json"
     cli_config_arg_name: "--config"
     cli_lint_mode: list_of_files
+    cli_lint_errors_count: regex_count
+    cli_lint_errors_regex: "\\[error\\]"
+    cli_lint_warnings_count: regex_count
+    cli_lint_warnings_regex: "\\[warn\\]"
     cli_lint_extra_args:
       - "--check"
     cli_lint_fix_arg_name: "--write"
@@ -30,8 +34,12 @@ linters:
       - "prettier --config .prettierrc.json --check myfile.yml"
       - "prettier --config .prettierrc.json --write myfile.yml" # format
     install:
+      dockerfile:
+        - |-
+          # renovate: datasource=npm depName=prettier
+          ARG NPM_PRETTIER_VERSION=3.5.3
       npm:
-        - "prettier"
+        - "prettier@${NPM_PRETTIER_VERSION}"
     ide:
       atom:
         - name: prettier-atom
@@ -73,6 +81,9 @@ linters:
     linter_megalinter_ref_url: "no"
     config_file_name: ".yamllint.yml"
     cli_lint_mode: list_of_files
+    cli_lint_extra_args:
+      - --format
+      - standard
     cli_lint_errors_count: regex_count
     cli_lint_errors_regex: "[0-9]+:[0-9]+:?\\s*(?:\\[?warning\\]?|\\[?error\\]?)|(?:::warning file=|::error file=)"
     examples:
@@ -81,8 +92,12 @@ linters:
       - "yamllint --strict"
       - "yamllint --no-warnings"
     install:
+      dockerfile:
+        - |-
+          # renovate: datasource=pypi depName=yamllint
+          ARG PIP_YAMLLINT_VERSION=1.37.1
       pip:
-        - yamllint
+        - yamllint==${PIP_YAMLLINT_VERSION}
     ide:
       emacs:
         - name: flycheck
@@ -109,8 +124,12 @@ linters:
       - "v8r --ignore-errors myfile.yml"
       - "v8r --ignore-errors myfile.yaml"
     install:
+      dockerfile:
+        - |-
+          # renovate: datasource=npm depName=v8r
+          ARG NPM_V8R_VERSION=4.4.0
       npm:
-        - v8r
+        - v8r@${NPM_V8R_VERSION}
     ide:
       eclipse:
         - name: native support

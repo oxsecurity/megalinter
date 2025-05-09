@@ -9,7 +9,7 @@ description: How to use revive (configure, ignore files, ignore errors, help & v
 
 ## revive documentation
 
-- Version in MegaLinter: **1.3.7**
+- Version in MegaLinter: **1.9.0**
 - Visit [Official Web Site](https://revive.run/){target=_blank}
 - See [How to configure revive rules](https://revive.run/docs#custom-configuration){target=_blank}
 - See [Index of problems detected by revive](https://revive.run/r){target=_blank}
@@ -49,15 +49,15 @@ Use revive in your favorite IDE to catch errors before MegaLinter !
 |  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a>   | [vim](https://www.vim.org/)                          | [ale](https://github.com/dense-analysis/ale)                                  |                                              [Visit Web Site](https://github.com/dense-analysis/ale){target=_blank}                                               |
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [vscode.Go](https://marketplace.visualstudio.com/items?itemName=ms-vscode.Go) | [![Install in VSCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/ms-vscode.Go){target=_blank} |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
-This linter is available in the following flavours
+This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                     | Embedded linters |                                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       124        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        83        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
-|         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a>          | [go](https://megalinter.io/beta/flavors/go/)           | Optimized for GO based projects                 |        52        |           ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-go/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-go) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       127        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        88        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+|         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a>          | [go](https://megalinter.io/beta/flavors/go/)           | Optimized for GO based projects                 |        51        |           ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-go/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-go) |
 
 ## Behind the scenes
 
@@ -113,12 +113,14 @@ Usage of revive:
 
 - Dockerfile commands :
 ```dockerfile
-FROM golang:1-alpine as revive
+# renovate: datasource=github-tags depName=mgechev/revive
+ARG GO_REVIVE_VERSION=v1.9.0
+FROM golang:1-alpine AS revive
 ## The golang image used as a builder is a temporary workaround (https://github.com/mgechev/revive/issues/787)
-## for the released revive binaries not returning version numbers (devel). 
+## for the released revive binaries not returning version numbers (devel).
 ## The install command should then be what is commented in the go.megalinter-descriptor.yml
-RUN GOBIN=/usr/bin go install github.com/mgechev/revive@latest
-
+ARG GO_REVIVE_VERSION
+RUN GOBIN=/usr/bin go install github.com/mgechev/revive@$GO_REVIVE_VERSION
 COPY --link --from=revive /usr/bin/revive /usr/bin/revive
 ```
 

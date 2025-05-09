@@ -53,8 +53,11 @@ def linter_test_setup(params=None):
     # Workarounds to avoid wrong test classes to be called
     test_name = os.environ.get("PYTEST_CURRENT_TEST", "")
     test_keywords = os.environ.get("TEST_KEYWORDS", "")
-    if (test_keywords == "api_spectral" and "openapi_spectral" in test_name) or (
-        test_keywords == "php_phpcs" and "php_phpcsfixer" in test_name
+    # Special cases with names resembling each other
+    if (
+        (test_keywords == "api_spectral" and "openapi_spectral" in test_name)
+        or (test_keywords == "php_phpcs" and "php_phpcsfixer" in test_name)
+        or (test_keywords == "python_ruff" and "python_ruff_format" in test_name)
     ):
         raise unittest.SkipTest("This test class should not be run in this campaign")
     if params is None:
@@ -91,6 +94,7 @@ def linter_test_setup(params=None):
     config.set_value(request_id, "IGNORE_GITIGNORED_FILES", "true")
     config.set_value(request_id, "VALIDATE_ALL_CODEBASE", "true")
     config.set_value(request_id, "CLEAR_REPORT_FOLDER", "true")
+    config.set_value(request_id, "API_REPORTER", "false")
     config.set_value(request_id, "SARIF_REPORTER", "false")
     if params.get("additional_test_variables"):
         for env_var_key, env_var_value in params.get(
@@ -245,10 +249,14 @@ def test_linter_failure(linter, test_self):
     }
     env_vars_failure.update(linter.test_variables)
     mega_linter, output = call_mega_linter(env_vars_failure)
+
     # Check linter run
     test_self.assertTrue(
         len(mega_linter.linters) > 0, "Linters have been created and run"
     )
+
+    mega_linter_linter = mega_linter.linters[0]
+
     # Check console output
     if linter.cli_lint_mode == "file":
         if len(linter.file_names_regex) > 0 and len(linter.file_extensions) == 0:
@@ -262,12 +270,18 @@ def test_linter_failure(linter, test_self):
             test_self.assertRegex(output, rf"\[{linter_name}\] .*bad.* - ERROR")
             test_self.assertNotRegex(output, rf"\[{linter_name}\] .*bad.* - SUCCESS")
     elif linter.descriptor_id != "SPELL":  # This log doesn't appear in SPELL linters
-        test_self.assertRegex(
-            output,
-            rf"Linted \[{linter.descriptor_id}\] files with \[{linter_name}\]: Found",
-        )
-
-    mega_linter_linter = mega_linter.linters[0]
+        if mega_linter_linter.status == "error":
+            test_self.assertRegex(
+                output,
+                rf"Linted \[{linter.descriptor_id}\] files with \[{linter_name}\]: Found "
+                + r"[0-9]+ error\(s\) and [0-9]+ warning\(s\)",
+            )
+        else:
+            test_self.assertRegex(
+                output,
+                rf"Linted \[{linter.descriptor_id}\] files with \[{linter_name}\]: Found "
+                + r"[0-9]+ non blocking error\(s\) and [0-9]+ non blocking warning\(s\)",
+            )
 
     # Check text reporter output log
     if mega_linter_linter.disable_errors is True:
@@ -290,9 +304,18 @@ def test_linter_failure(linter, test_self):
     ):
         test_self.assertTrue(
             mega_linter_linter.total_number_errors > 1,
-            "Unable to count number of errors from logs with count method "
+            "Unable to get number of errors from logs with "
             + f"{mega_linter_linter.cli_lint_errors_count} and "
-            + f"regex {mega_linter_linter.cli_lint_errors_regex}",
+            + f"{mega_linter_linter.cli_lint_errors_regex}",
+        )
+
+    # Check if number of warnings is correctly generated
+    if mega_linter_linter.cli_lint_warnings_count is not None:
+        test_self.assertTrue(
+            mega_linter_linter.total_number_warnings > 1,
+            "Unable to get number of warnings from logs with "
+            + f"{mega_linter_linter.cli_lint_warnings_count} and "
+            + f"{mega_linter_linter.cli_lint_warnings_regex}",
         )
 
     # Copy error logs in documentation
@@ -316,8 +339,11 @@ def copy_logs_for_doc(text_report_file, test_folder, report_file_name):
     target_file = f"{updated_sources_dir}{os.path.sep}{report_file_name}".replace(
         ".log", ".txt"
     )
-    os.makedirs(os.path.dirname(target_file), exist_ok=True)
-    shutil.copy(text_report_file, target_file)
+    try:
+        os.makedirs(os.path.dirname(target_file), exist_ok=True)
+        shutil.copy(text_report_file, target_file)
+    except Exception:
+        logging.warning("Unable to copy logs for doc")
 
 
 def test_get_linter_version(linter, test_self):

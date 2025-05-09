@@ -1,38 +1,95 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:recommended",
-    // "config:best-practices", // To enable once renovate usage is stabilized
-    "customManagers:dockerfileVersions",
-    ":maintainLockFilesWeekly",
-    ":separateMultipleMajorReleases",
-    ":semanticCommits",
-    ":label(dependencies)"
+  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+  extends: [
+    'config:recommended',
+    'customManagers:dockerfileVersions',
+    ':maintainLockFilesWeekly',
+    ':separateMultipleMajorReleases',
+    ':semanticCommits',
+    ':label(dependencies)',
+    ':configMigration',
+    ':combinePatchMinorReleases',
+    'npm:unpublishSafe',
+    'preview:dockerVersions',
+    'group:unitTestNonMajor',
+    ':enableVulnerabilityAlerts',
+    ':automergePr', // Still raise a PR for automerges
+    ':automergeDigest', // enable for PRs updating digests
+    ':automergePatch', // enable for lock files, patch and pin
   ],
-  "customManagers": [
-    // This is "customManagers:dockerfileVersions":
-    // {
-    //   "customType": "regex",
-    //   "fileMatch": [
-    //     "(^|/|\\.)([Dd]ocker|[Cc]ontainer)file$",
-    //     "(^|/)([Dd]ocker|[Cc]ontainer)file[^/]*$"
-    //   ],
-    //   "matchStrings": [
-    //     "# renovate: datasource=(?<datasource>[a-z-.]+?) depName=(?<depName>[^\\s]+?)(?: (lookupName|packageName)=(?<packageName>[^\\s]+?))?(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>[^\\s]+?))?(?: registryUrl=(?<registryUrl>[^\\s]+?))?\\s(?:ENV|ARG)\\s+[A-Za-z0-9_]+?_VERSION[ =][\"']?(?<currentValue>.+?)[\"']?\\s"
-    //   ]
-    // }
-    //
-    // This is "customManagers:dockerfileVersions", adapted to support our descriptors:
+  vulnerabilityAlerts: {
+    enabled: true,
+  },
+  osvVulnerabilityAlerts: true,
+  packageRules: [
     {
-      "customType": "regex",
-      "description": "Update dockerfile sections in .megalinter-descriptor.yml files",
-      "fileMatch": [
-        "(^|/).*\\.megalinter-descriptor.ya?ml$"
+      matchPackageNames: [
+        'uv',
+        'astral-sh/uv',
+        'ghcr.io/astral-sh/uv',
       ],
-      "matchStrings": [
-        "# renovate: datasource=(?<datasource>[a-z-.]+?) depName=(?<depName>[^\\s]+?)(?: (lookupName|packageName)=(?<packageName>[^\\s]+?))?(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>[^\\s]+?))?(?: registryUrl=(?<registryUrl>[^\\s]+?))?\\s(?:ENV|ARG)\\s+[A-Za-z0-9_]+?_VERSION[ =][\"']?(?<currentValue>.+?)[\"']?\\s",
-        "# renovate: datasource=(?<datasource>[a-z-.]+?) depName=(?<depName>[^\\s]+?)(?: (lookupName|packageName)=(?<packageName>[^\\s]+?))?(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>[^\\s]+?))?(?: registryUrl=(?<registryUrl>[^\\s]+?))?\\s+(?:ENV|ARG)\\s+[A-Za-z0-9_]+?_VERSION[ =][\"']?(?<currentValue>.+?)[\"']?\\s",        
-      ]
-    }
-  ]
+      schedule: [
+        'before 4am on Friday',
+      ],
+    },
+    {
+      groupName: 'Roslynator',
+      matchSourceUrls: [
+        'https://github.com/dotnet/roslynator',
+      ],
+      matchUpdateTypes: [
+        'digest',
+        'patch',
+        'minor',
+        'major',
+      ],
+    },
+    {
+      matchPackageNames: [
+        'hardisgroupcom/sfdx-hardis',
+      ],
+      schedule: [
+        'before 8am on Friday',
+      ],
+    },
+    {
+      matchPackageNames: [
+        'checkov',
+      ],
+      schedule: [
+        'before 10am every 4 day',
+      ],
+    },
+    {
+      groupName: 'Salesforce packages',
+      matchPackageNames: [
+        '@salesforce/**',
+      ],
+      schedule: [
+        'before 4am every 4 day',
+      ],
+      matchUpdateTypes: [
+        'digest',
+        'patch',
+        'minor',
+        'major',
+      ],
+    },
+  ],
+  customManagers: [
+    {
+      customType: 'regex',
+      description: 'Update dockerfile sections in .megalinter-descriptor.yml files',
+      managerFilePatterns: [
+        '/(^|/).*megalinter(\\\\|/)constants\\.py$/',
+        '/(^|/).*\\.devcontainer(\\\\|/)Dockerfile$/',
+        '/(^|/).*\\.megalinter-descriptor\\.ya?ml$/',
+      ],
+      matchStrings: [
+        '# renovate: datasource=(?<datasource>[a-z-.]+?) depName=(?<depName>[^\\s]+?)(?: (lookupName|packageName)=(?<packageName>[^\\s]+?))?(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>[^\\s]+?))?(?: registryUrl=(?<registryUrl>[^\\s]+?))?\\s(?:ENV|ARG)\\s+[A-Za-z0-9_]+?_VERSION[ =]["\']?(?<currentValue>.+?)["\']?\\s',
+        '# renovate: datasource=(?<datasource>[a-z-.]+?) depName=(?<depName>[^\\s]+?)(?: (lookupName|packageName)=(?<packageName>[^\\s]+?))?(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>[^\\s]+?))?(?: registryUrl=(?<registryUrl>[^\\s]+?))?\\s+(?:ENV|ARG)\\s+[A-Za-z0-9_]+?_VERSION[ =]["\']?(?<currentValue>.+?)["\']?\\s',
+        '# renovate: datasource=(?<datasource>[a-z-.]+?) depName=(?<depName>[^\\s]+?)(?: (lookupName|packageName)=(?<packageName>[^\\s]+?))?(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>[^\\s]+?))?(?: registryUrl=(?<registryUrl>[^\\s]+?))?\\\\n(?:ENV|ARG)\\s+[A-Za-z0-9_]+?_VERSION[ =]["\']?(?<currentValue>.+?)["\']?,',
+      ],
+    },
+  ],
 }

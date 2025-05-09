@@ -15,7 +15,7 @@ description: How to use prettier (configure, ignore files, ignore errors, help &
 
 ## prettier documentation
 
-- Version in MegaLinter: **3.3.1**
+- Version in MegaLinter: **3.5.3**
 - Visit [Official Web Site](https://prettier.io/){target=_blank}
 - See [How to configure prettier rules](https://prettier.io/docs/en/configuration.html){target=_blank}
 - See [How to disable prettier rules in files](https://prettier.io/docs/en/ignore.html#javascript){target=_blank}
@@ -64,17 +64,17 @@ Use prettier in your favorite IDE to catch errors before MegaLinter !
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/default.ico" alt="" height="32px" class="megalinter-icon"></a> | visual_studio                                            | [JavaScriptPrettier](https://github.com/madskristensen/JavaScriptPrettier)                    |                                            [Visit Web Site](https://github.com/madskristensen/JavaScriptPrettier){target=_blank}                                            |
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/)     | [prettier-vscode](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) | [![Install in VSCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/esbenp.prettier-vscode){target=_blank} |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
-This linter is available in the following flavours
+This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                       | Description                                              | Embedded linters |                                                                                                                                                                                             Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------|:---------------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor                                |       124        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)       | MegaLinter for the most commonly used languages          |        83        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
-|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/)   | Optimized for C, C++, C# or VB based projects with JS/TS |        71        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
-|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/formatters.ico" alt="" height="32px" class="megalinter-icon"></a>      | [formatters](https://megalinter.io/beta/flavors/formatters/) | Contains only formatters                                 |        17        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-formatters/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-formatters) |
-|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.io/beta/flavors/javascript/) | Optimized for JAVASCRIPT or TYPESCRIPT based projects    |        60        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor                                |       127        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)       | MegaLinter for the most commonly used languages          |        88        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/)   | Optimized for C, C++, C# or VB based projects with JS/TS |        73        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
+|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/formatters.ico" alt="" height="32px" class="megalinter-icon"></a>      | [formatters](https://megalinter.io/beta/flavors/formatters/) | Contains only formatters                                 |        18        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-formatters/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-formatters) |
+|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.io/beta/flavors/javascript/) | Optimized for JAVASCRIPT or TYPESCRIPT based projects    |        59        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript) |
 
 ## Behind the scenes
 
@@ -132,6 +132,9 @@ Format options:
   --end-of-line <lf|crlf|cr|auto>
                            Which end of line characters to apply.
                            Defaults to lf.
+  --experimental-operator-position <start|end>
+                           Where to print operators when binary expressions wrap lines.
+                           Defaults to end.
   --no-experimental-ternaries
                            Default behavior of ternaries; keep question marks on the same line as the consequent.
   --html-whitespace-sensitivity <css|strict|ignore>
@@ -139,6 +142,9 @@ Format options:
                            Defaults to css.
   --jsx-single-quote       Use single quotes in JSX.
                            Defaults to false.
+  --object-wrap <preserve|collapse>
+                           How to wrap object literals.
+                           Defaults to preserve.
   --parser <flow|babel|babel-flow|babel-ts|typescript|acorn|espree|meriyah|css|less|scss|json|json5|jsonc|json-stringify|graphql|markdown|mdx|vue|yaml|glimmer|html|angular|lwc>
                            Which parser to use.
   --print-width <int>      The line length where Prettier will try wrap.
@@ -227,6 +233,16 @@ Other options:
 
 ### Installation on mega-linter Docker image
 
+- Dockerfile commands :
+```dockerfile
+# Parent descriptor install
+# renovate: datasource=npm depName=typescript
+ARG NPM_TYPESCRIPT_VERSION=5.8.3
+# Linter install
+# renovate: datasource=npm depName=prettier
+ARG NPM_PRETTIER_VERSION=3.5.3
+```
+
 - NPM packages (node.js):
-  - [typescript](https://www.npmjs.com/package/typescript)
-  - [prettier](https://www.npmjs.com/package/prettier)
+  - [typescript@5.8.3](https://www.npmjs.com/package/typescript/v/5.8.3)
+  - [prettier@3.5.3](https://www.npmjs.com/package/prettier/v/3.5.3)

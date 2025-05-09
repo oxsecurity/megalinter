@@ -15,7 +15,7 @@ description: How to use perlcritic (configure, ignore files, ignore errors, help
 
 ## perlcritic documentation
 
-- Version in MegaLinter: **1.152**
+- Version in MegaLinter: **1.156**
 - Visit [Official Web Site](https://metacpan.org/pod/Perl::Critic){target=_blank}
 - See [How to configure perlcritic rules](https://metacpan.org/pod/Perl::Critic#CONFIGURATION){target=_blank}
 - See [How to disable perlcritic rules in files](https://metacpan.org/pod/Perl::Critic#BENDING-THE-RULES){target=_blank}
@@ -44,20 +44,20 @@ description: How to use perlcritic (configure, ignore files, ignore errors, help
 | PERL_PERLCRITIC_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                        |
 | PERL_PERLCRITIC_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `['perlcritic']`           |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
-This linter is available in the following flavours
+This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                               | Description               | Embedded linters |                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       124        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       127        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 
 ## Behind the scenes
 
 ### How are identified applicable files
 
 - File extensions: `.pl`, `.pm`, `.t`, ``
-- Detected file content (regex): `#!/usr/bin/env perl`, `#!/usr/bin/perl`
+- Detected file content (regex): `^#!/usr/bin/env perl`, `^#!/usr/bin/perl`
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
@@ -106,7 +106,10 @@ Usage:
 
 - Dockerfile commands :
 ```dockerfile
-RUN curl -fsSL https://raw.githubusercontent.com/skaji/cpm/main/cpm | perl - install -g --show-build-log-on-failure --without-build --without-test --without-runtime Perl::Critic \
+# renovate: datasource=github-tags depName=skaji/cpm
+ARG PERL_PERLCRITIC_VERSION=0.997023
+
+RUN curl -fsSL https://raw.githubusercontent.com/skaji/cpm/refs/tags/${PERL_PERLCRITIC_VERSION}/cpm | perl - install -g --show-build-log-on-failure --without-build --without-test --without-runtime Perl::Critic \
     && rm -rf /root/.perl-cpm
 
 ```

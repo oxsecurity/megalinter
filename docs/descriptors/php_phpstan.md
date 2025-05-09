@@ -9,7 +9,7 @@ description: How to use phpstan (configure, ignore files, ignore errors, help & 
 
 ## phpstan documentation
 
-- Version in MegaLinter: **1.11.4**
+- Version in MegaLinter: **2.1.14**
 - Visit [Official Web Site](https://phpstan.org/){target=_blank}
 - See [How to configure phpstan rules](https://phpstan.org/config-reference#neon-format){target=_blank}
   - If custom `phpstan.neon.dist` config file isn't found, [phpstan.neon.dist](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/phpstan.neon.dist){target=_blank} will be used
@@ -40,15 +40,15 @@ description: How to use phpstan (configure, ignore files, ignore errors, help & 
 | PHP_PHPSTAN_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
 | PHP_PHPSTAN_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `['phpstan']`                                   |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
-This linter is available in the following flavours
+This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                     | Embedded linters |                                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       124        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        83        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
-|         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://megalinter.io/beta/flavors/php/)         | Optimized for PHP based projects                |        55        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-php) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       127        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        88        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+|         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://megalinter.io/beta/flavors/php/)         | Optimized for PHP based projects                |        54        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-php) |
 
 ## Behind the scenes
 
@@ -122,24 +122,17 @@ Options:
 - Dockerfile commands :
 ```dockerfile
 # Parent descriptor install
-RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" \
-    && export GITHUB_AUTH_TOKEN \
-    && wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
-    && wget --tries=5 -q -O phive.phar.asc https://phar.io/releases/phive.phar.asc \
-    && PHAR_KEY_ID="0x6AF725270AB81E04D79442549D8A98B29B2D5D79" \
-    && ( gpg --keyserver hkps://keys.openpgp.org --recv-keys "$PHAR_KEY_ID" \
-       || gpg --keyserver hkps://keyserver.ubuntu.com --recv-keys "$PHAR_KEY_ID" \
-       || gpg --keyserver keyserver.pgp.com --recv-keys "$PHAR_KEY_ID" \
-       || gpg --keyserver pgp.mit.edu --recv-keys "$PHAR_KEY_ID" ) \
-    && gpg --verify phive.phar.asc phive.phar \
-    && chmod +x phive.phar \
-    && mv phive.phar /usr/local/bin/phive \
-    && rm phive.phar.asc \
-    && update-alternatives --install /usr/bin/php php /usr/bin/php83 110
-
+RUN update-alternatives --install /usr/bin/php php /usr/bin/php84 110
 COPY --from=composer/composer:2-bin /composer /usr/bin/composer
 ENV PATH="/root/.composer/vendor/bin:${PATH}"
+ENV PHP_CS_FIXER_IGNORE_ENV=true
 # Linter install
-RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require phpstan/phpstan bartlett/sarif-php-sdk
+# renovate: datasource=packagist depName=phpstan/phpstan
+ARG PHP_PHPSTAN_PHPSTAN_VERSION=2.1.14
+# renovate: datasource=packagist depName=phpstan/extension-installer
+ARG PHP_PHPSTAN_EXTENSION_INSTALLER_VERSION=1.4.3
+# renovate: datasource=packagist depName=bartlett/sarif-php-converters
+ARG PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION=1.1.2
+RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer config --global allow-plugins.phpstan/extension-installer true && composer global require phpstan/phpstan:${PHP_PHPSTAN_PHPSTAN_VERSION} phpstan/extension-installer:${PHP_PHPSTAN_EXTENSION_INSTALLER_VERSION} bartlett/sarif-php-converters:${PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION}
 ```
 

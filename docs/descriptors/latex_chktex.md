@@ -45,13 +45,13 @@ Use chktex in your favorite IDE to catch errors before MegaLinter !
 |  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Atom](https://atom.io/)                             | [linter-chktex](https://atom.io/packages/linter-chktex)                                       |                                                   [Visit Web Site](https://atom.io/packages/linter-chktex){target=_blank}                                                    |
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [latex-workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop) | [![Install in VSCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/James-Yu.latex-workshop){target=_blank} |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
-This linter is available in the following flavours
+This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                               | Description               | Embedded linters |                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       124        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       127        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 
 ## Behind the scenes
 
@@ -159,7 +159,7 @@ chktexrc file (~/.chktexrc).
 
 - Dockerfile commands :
 ```dockerfile
-FROM ghcr.io/assignuser/chktex-alpine:latest as chktex
+FROM ghcr.io/assignuser/chktex-alpine:latest AS chktex
 COPY --link --from=chktex /usr/bin/chktex /usr/bin/
 RUN cd ~ && touch .chktexrc && cd /
 ```

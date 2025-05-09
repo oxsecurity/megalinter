@@ -24,8 +24,14 @@ Example:
           docker run -v $(System.DefaultWorkingDirectory):/tmp/lint \
             --env-file <(env | grep -e SYSTEM_ -e BUILD_ -e TF_ -e AGENT_) \
             -e SYSTEM_ACCESSTOKEN=$(System.AccessToken) \
+            -e SYSTEM_COLLECTIONURI=$(System.CollectionUri) \
+            -e SYSTEM_PULLREQUEST_PULLREQUESTID=$(System.PullRequest.PullRequestId) \
+            -e SYSTEM_PULLREQUEST_SOURCEREPOSITORYURI=$(System.PullRequest.SourceRepositoryURI) \
+            -e SYSTEM_TEAMPROJECT="$(System.TeamProject)" \
+            -e BUILD_BUILD_ID=$(Build.BuildId) \
+            -e BUILD_REPOSITORY_ID=$(Build.Repository.ID) \
             -e GIT_AUTHORIZATION_BEARER=$(System.AccessToken) \
-            oxsecurity/megalinter:v7
+            oxsecurity/megalinter:v8
         displayName: Run MegaLinter
 ```
 
@@ -37,8 +43,10 @@ Example:
 
 ![Screenshot](../assets/images/AzureReporterConfigContribute.jpg)
 
-| Variable                          | Description                                                                        | Default value |
-|-----------------------------------|------------------------------------------------------------------------------------|---------------|
-| AZURE_COMMENT_REPORTER            | Activates/deactivates reporter                                                     | true          |
-| AZURE_COMMENT_REPORTER_LINKS_TYPE | Set to `build` if you want comments linking to target Build and not artifacts page | `artifacts`   |
-| REPORTERS_MARKDOWN_TYPE           | Set to `simple` to avoid external images in generated markdown                     | `advanced`    |
+| Variable                                   | Description                                                                        | Default value |
+|--------------------------------------------|------------------------------------------------------------------------------------|---------------|
+| AZURE_COMMENT_REPORTER                     | Activates/deactivates reporter                                                     | `true`        |
+| AZURE_COMMENT_REPORTER_LINKS_TYPE          | Set to `build` if you want comments linking to target Build and not artifacts page | `artifacts`   |
+| AZURE_COMMENT_REPORTER_REPLACE_WITH_SPACES | Do not replaces %20 by spaces in repo name if set to false                         | `true`        |
+| REPORTERS_MARKDOWN_TYPE                    | Set to `simple` to avoid external images in generated markdown                     | `advanced`    |
+| JOB_SUMMARY_ADDITIONAL_MARKDOWN            | Custom markdown to add at the end of the summary message                           | <!-- -->      |

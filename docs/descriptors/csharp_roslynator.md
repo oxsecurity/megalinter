@@ -9,7 +9,7 @@ description: How to use roslynator (configure, ignore files, ignore errors, help
 
 ## roslynator documentation
 
-- Version in MegaLinter: **0.8.9.0**
+- Version in MegaLinter: **0.10.1.0**
 - Visit [Official Web Site](https://github.com/dotnet/Roslynator#readme){target=_blank}
 - See [How to configure roslynator rules](https://josefpihrt.github.io/docs/roslynator/configuration){target=_blank}
 - See [How to disable roslynator rules in files](https://josefpihrt.github.io/docs/roslynator/how-to-suppress-diagnostic){target=_blank}
@@ -49,16 +49,16 @@ Use roslynator in your favorite IDE to catch errors before MegaLinter !
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/default.ico" alt="" height="32px" class="megalinter-icon"></a> | visual_studio                                        | [Roslynator 2022](https://marketplace.visualstudio.com/items?itemName=josefpihrt.Roslynator2022) |                                  [Visit Web Site](https://marketplace.visualstudio.com/items?itemName=josefpihrt.Roslynator2022){target=_blank}                                   |
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/) | [Roslynator](https://marketplace.visualstudio.com/items?itemName=josefpihrt-vscode.roslynator)   | [![Install in VSCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/josefpihrt-vscode.roslynator){target=_blank} |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
-This linter is available in the following flavours
+This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                       | Description                                              | Embedded linters |                                                                                                                                                                                             Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------|:---------------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor                                |       124        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/)         | Optimized for C, C++, C# or VB based projects            |        62        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
-|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/)   | Optimized for C, C++, C# or VB based projects with JS/TS |        71        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
-|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/formatters.ico" alt="" height="32px" class="megalinter-icon"></a>      | [formatters](https://megalinter.io/beta/flavors/formatters/) | Contains only formatters                                 |        17        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-formatters/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-formatters) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor                                |       127        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/)         | Optimized for C, C++, C# or VB based projects            |        64        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/)   | Optimized for C, C++, C# or VB based projects with JS/TS |        73        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
+|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/formatters.ico" alt="" height="32px" class="megalinter-icon"></a>      | [formatters](https://megalinter.io/beta/flavors/formatters/) | Contains only formatters                                 |        18        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-formatters/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-formatters) |
 
 ## Behind the scenes
 
@@ -86,7 +86,7 @@ roslynator fix myproject.csproj
 ### Help content
 
 ```shell
-Roslynator Command Line Tool version 0.8.9.0 (Roslyn version 4.9.0.0)
+Roslynator Command Line Tool version 0.10.1.0 (Roslyn version 4.12.0.0)
 Usage: roslynator [command] [arguments]
 
 Commands:
@@ -111,9 +111,11 @@ Run 'roslynator help [command]' for more information on a command.
 - Dockerfile commands :
 ```dockerfile
 # Parent descriptor install
-RUN apk add --no-cache dotnet8-sdk --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community
+RUN apk add --no-cache dotnet9-sdk
 ENV PATH="${PATH}:/root/.dotnet/tools"
 # Linter install
-RUN dotnet tool install -g roslynator.dotnet.cli
+# renovate: datasource=nuget depName=roslynator.dotnet.cli
+ARG CSHARP_ROSLYNATOR_VERSION=0.10.1
+RUN dotnet tool install --allow-roll-forward --global roslynator.dotnet.cli --version "${CSHARP_ROSLYNATOR_VERSION}"
 ```
 

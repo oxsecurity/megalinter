@@ -67,7 +67,7 @@ jobs:
 
         # You can override MegaLinter flavor used to have faster performances
         # More info at https://megalinter.io/flavors/
-        uses: oxsecurity/megalinter/flavors/python@beta # ml workflow change
+        uses: oxsecurity/megalinter/flavors/python@beta
 
         id: ml
 
@@ -97,6 +97,16 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           EMAIL_REPORTER_SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }} # ml workflow addtion
 
+          # Uncomment to use ApiReporter (Grafana)
+          API_REPORTER: true
+          API_REPORTER_URL: ${{ secrets.API_REPORTER_URL }}
+          API_REPORTER_BASIC_AUTH_USERNAME: ${{ secrets.API_REPORTER_BASIC_AUTH_USERNAME }}
+          API_REPORTER_BASIC_AUTH_PASSWORD: ${{ secrets.API_REPORTER_BASIC_AUTH_PASSWORD }}
+          API_REPORTER_METRICS_URL: ${{ secrets.API_REPORTER_METRICS_URL }}
+          API_REPORTER_METRICS_BASIC_AUTH_USERNAME: ${{ secrets.API_REPORTER_METRICS_BASIC_AUTH_USERNAME }}
+          API_REPORTER_METRICS_BASIC_AUTH_PASSWORD: ${{ secrets.API_REPORTER_METRICS_BASIC_AUTH_PASSWORD }}
+          API_REPORTER_DEBUG: false
+
           # ADD YOUR CUSTOM ENV VARIABLES HERE OR DEFINE THEM IN A FILE
           # .mega-linter.yml AT THE ROOT OF YOUR REPOSITORY
 
@@ -109,6 +119,7 @@ jobs:
         if: success() || failure()
         with:
           name: MegaLinter reports
+          include-hidden-files: "true"
           path: |
             megalinter-reports
             mega-linter.log
@@ -144,7 +155,7 @@ jobs:
       # Create pull request if applicable
       # (for now works only on PR from same repository, not from forks)
       - name: Create Pull Request with applied fixes
-        uses: peter-evans/create-pull-request@v6
+        uses: peter-evans/create-pull-request@v7
         id: cpr
         if: env.APPLY_FIXES_IF_PR == 'true'
         with:
@@ -177,4 +188,4 @@ jobs:
             }}
           commit_message: "[MegaLinter] Apply linters fixes"
           commit_user_name: megalinter-bot
-          commit_user_email: nicolas.vuillamy@ox.security
+          commit_user_email: 129584137+megalinter-bot@users.noreply.github.com

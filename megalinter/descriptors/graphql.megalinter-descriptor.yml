@@ -20,6 +20,13 @@ linters:
     examples:
       - "graphql-schema-linter myfile.graphql"
     install:
+      dockerfile:
+        - |-
+          # renovate: datasource=npm depName=graphql
+          ARG NPM_GRAPHQL_VERSION=16.11.0
+        - |-
+          # renovate: datasource=npm depName=graphql-schema-linter
+          ARG NPM_GRAPHQL_SCHEMA_LINTER_VERSION=3.0.1
       npm:
-        - graphql
-        - graphql-schema-linter
+        - graphql@${NPM_GRAPHQL_VERSION}
+        - graphql-schema-linter@${NPM_GRAPHQL_SCHEMA_LINTER_VERSION}

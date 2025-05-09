@@ -18,9 +18,7 @@ APPLY_FIXES: <%= APPLY_FIXES %>
   <%= COPYPASTE %>
   <%= SPELL %>
 
-SHOW_ELAPSED_TIME: <%= SHOW_ELAPSED_TIME %>
-
-FILEIO_REPORTER: <%= FILEIO_REPORTER %>
+SHOW_ELAPSED_TIME: true
 
 # Uncomment if you want MegaLinter to detect errors but not block CI to pass
 # DISABLE_ERRORS: true

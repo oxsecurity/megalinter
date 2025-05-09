@@ -12,16 +12,27 @@ from megalinter.constants import (
     ML_DOC_URL_DESCRIPTORS_ROOT,
     ML_REPO,
     ML_REPO_ISSUES_URL,
+    OX_MARKDOWN_LINK,
 )
-from pytablewriter import MarkdownTableWriter
+from pytablewriter import Align, MarkdownTableWriter
+from pytablewriter.style import Style
 from redis import Redis
 
 
 def build_markdown_summary(reporter_self, action_run_url=""):
-    table_header = ["Descriptor", "Linter", "Files", "Fixed", "Errors"]
+    table_header = ["Descriptor", "Linter", "Files", "Fixed", "Errors", "Warnings"]
+    table_column_styles = [
+        Style(align=Align.LEFT),
+        Style(align=Align.LEFT),
+        Style(align=Align.RIGHT),
+        Style(align=Align.RIGHT),
+        Style(align=Align.RIGHT),
+        Style(align=Align.RIGHT),
+    ]
     if reporter_self.master.show_elapsed_time is True:
         table_header += ["Elapsed time"]
-    table_data_raw = [table_header]
+        table_column_styles += [Style(align=Align.RIGHT)]
+    table_data_raw = []
     for linter in reporter_self.master.linters:
         if linter.is_active is True:
             status = (
@@ -50,6 +61,11 @@ def build_markdown_summary(reporter_self, action_run_url=""):
                     if linter.number_errors > 0
                     else "no"
                 )
+                warnings_cell = (
+                    log_link(f"{linter.total_number_warnings}", action_run_url)
+                    if linter.total_number_warnings > 0
+                    else "no"
+                )
             # Count using files
             else:
                 found = str(len(linter.files))
@@ -58,19 +74,28 @@ def build_markdown_summary(reporter_self, action_run_url=""):
                     if linter.number_errors > 0
                     else linter.number_errors
                 )
+                warnings_cell = (
+                    log_link(f"{linter.total_number_warnings}", action_run_url)
+                    if linter.total_number_warnings > 0
+                    else linter.total_number_warnings
+                )
             table_line = [
                 first_col,
                 linter_link,
                 found,
                 nb_fixed_cell,
                 errors_cell,
+                warnings_cell,
             ]
             if reporter_self.master.show_elapsed_time is True:
                 table_line += [str(round(linter.elapsed_time_s, 2)) + "s"]
             table_data_raw += [table_line]
     # Build markdown table
-    table_data_raw.pop(0)
-    writer = MarkdownTableWriter(headers=table_header, value_matrix=table_data_raw)
+    writer = MarkdownTableWriter(
+        headers=table_header,
+        column_styles=table_column_styles,
+        value_matrix=table_data_raw,
+    )
     table_content = str(writer)
     status = (
         "✅"
@@ -89,6 +114,10 @@ def build_markdown_summary(reporter_self, action_run_url=""):
         + os.linesep
     )
     p_r_msg += table_content + os.linesep
+
+    if reporter_self.master.result_message != "":
+        p_r_msg += reporter_self.master.result_message + os.linesep
+
     if action_run_url != "":
         p_r_msg += (
             "See detailed report in [MegaLinter reports"
@@ -152,11 +181,12 @@ def build_markdown_summary(reporter_self, action_run_url=""):
             + "(https://www.ox.security/?ref=megalinter)"
         )
     else:
-        p_r_msg += (
-            os.linesep
-            + "_MegaLinter is graciously provided by [![OX Security]"
-            + "(https://www.ox.security/wp-content/uploads/2022/06/"
-            + "logo.svg?ref=megalinter_comment)](https://www.ox.security/?ref=megalinter)_"
+        p_r_msg += os.linesep + OX_MARKDOWN_LINK
+    if config.exists(
+        reporter_self.master.request_id, "JOB_SUMMARY_ADDITIONAL_MARKDOWN"
+    ):
+        p_r_msg += os.linesep + config.get(
+            reporter_self.master.request_id, "JOB_SUMMARY_ADDITIONAL_MARKDOWN", ""
         )
     logging.debug("\n" + p_r_msg)
     return p_r_msg
@@ -220,7 +250,7 @@ def convert_sarif_to_human(sarif_in, request_id) -> str:
             env=config.build_env(request_id),
         )
         return_code = process.returncode
-        output = utils.decode_utf8(process.stdout)
+        output = utils.clean_string(process.stdout)
     except Exception as e:
         return_code = 1
         output = sarif_in
@@ -279,7 +309,7 @@ def build_linter_reporter_external_result(reporter, redis_stream=False) -> dict:
         "linterStatusMessage": status_message,
         "linterElapsedTime": round(reporter.master.elapsed_time_s, 2),
     }
-    if reporter.master.lint_command_log is not None:
+    if len(reporter.master.lint_command_log) > 0:
         result["linterCliCommand"] = reporter.master.lint_command_log
     result = result | get_linter_infos(reporter.master)
     if (

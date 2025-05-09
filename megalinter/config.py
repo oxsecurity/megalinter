@@ -10,6 +10,7 @@ import requests
 import yaml
 
 RUN_CONFIGS = {}  # type: ignore[var-annotated]
+SKIP_DELETE_CONFIG = False
 
 
 def init_config(request_id, workspace=None, params={}):
@@ -198,6 +199,19 @@ def get(request_id, config_var=None, default=None):
     return val
 
 
+def get_first_var_set(request_id, config_vars=[], default=None):
+    for config_var in config_vars:
+        val = get(request_id, config_var, None)
+        if val is not None and val != "":
+            if isinstance(val, bool):
+                if val is True:
+                    val = "true"
+                elif val is False:
+                    val = "false"
+            return val
+    return default
+
+
 def set(request_id, config_var, value):
     global RUN_CONFIGS
     assert request_id in RUN_CONFIGS, "Config has not been initialized yet !"
@@ -222,15 +236,30 @@ def get_list(request_id, config_var, default=None):
     return default
 
 
+# Retrieve a configuration variable as a list of arguments, handling various input formats.
 def get_list_args(request_id, config_var, default=None):
+    # Retrieve the variable from the configuration
     var = get(request_id, config_var, None)
-    if var is not None:
-        if isinstance(var, list):
-            return var
-        if var == "":
+
+    match var:
+        # None return the default value
+        case None:
+            return default
+        # Blank or whitespace-only strings return empty list
+        case "" | str() if var.strip() == "":
             return []
-        return shlex.split(var)
-    return default
+        # Integer or a Decimal return it as a list
+        case int() | float():
+            return [str(var)]
+        # If already a list just return it
+        case list():
+            return var
+        # If string does not contain spaces, return it as a list
+        case str() if " " not in var.strip():
+            return [var]
+        # Otherwise, split the string using shlex and return the result
+        case _:
+            return shlex.split(var)
 
 
 def set_value(request_id, config_var, val):
@@ -249,13 +278,15 @@ def copy(request_id):
 
 def delete(request_id=None, key=None):
     global RUN_CONFIGS
+    global SKIP_DELETE_CONFIG
     # Global delete (used for tests)
     if request_id is None:
         RUN_CONFIGS = {}
         return
     if key is None:
-        del RUN_CONFIGS[request_id]
-        logging.debug("Cleared MegaLinter runtime config for request " + request_id)
+        if SKIP_DELETE_CONFIG is not True:
+            del RUN_CONFIGS[request_id]
+            logging.debug("Cleared MegaLinter runtime config for request " + request_id)
         return
     config = get_config(request_id)
     if key in config:
@@ -290,23 +321,13 @@ def list_secured_variables(request_id) -> list[str]:
         request_id,
         "SECURED_ENV_VARIABLES_DEFAULT",
         [
-            "GITHUB_TOKEN",
             "PAT",
-            "SYSTEM_ACCESSTOKEN",
             "GIT_AUTHORIZATION_BEARER",
-            "CI_JOB_TOKEN",
-            "GITLAB_ACCESS_TOKEN_MEGALINTER",
             "GITLAB_CUSTOM_CERTIFICATE",
-            "WEBHOOK_REPORTER_BEARER_TOKEN",
-            "NODE_TOKEN",
-            "NPM_TOKEN",
-            "DOCKER_USERNAME",
-            "DOCKER_PASSWORD",
-            "CODECOV_TOKEN",
-            "GCR_USERNAME",
-            "GCR_PASSWORD",
-            "SMTP_PASSWORD",
-            "CI_SFDX_HARDIS_GITLAB_TOKEN" "(SFDX_CLIENT_ID_.*)",
+            "(USERNAME)",
+            "(PASSWORD)",
+            "(TOKEN)",
+            "(SFDX_CLIENT_ID_.*)",
             "(SFDX_CLIENT_KEY_.*)",
         ],
     )

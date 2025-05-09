@@ -14,7 +14,7 @@ Scalafix lints and fixes scala files
 
 ## scalafix documentation
 
-- Version in MegaLinter: **0.12.1**
+- Version in MegaLinter: **0.14.3**
 - Visit [Official Web Site](https://scalacenter.github.io/scalafix/){target=_blank}
 - See [How to configure scalafix rules](https://scalacenter.github.io/scalafix/docs/users/configuration.html){target=_blank}
   - If custom `.scalafix.conf` config file isn't found, [.scalafix.conf](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.scalafix.conf){target=_blank} will be used
@@ -46,13 +46,13 @@ Scalafix lints and fixes scala files
 | SCALA_SCALAFIX_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                             |
 | SCALA_SCALAFIX_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `['scalafix']`                                  |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
-This linter is available in the following flavours
+This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                               | Description               | Embedded linters |                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       124        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       127        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 
 ## Behind the scenes
 
@@ -84,7 +84,7 @@ scalafix --config .scalafix.conf myfile.scala
 ### Help content
 
 ```shell
-Scalafix 0.12.1
+Scalafix 0.14.3
 Usage: scalafix [options] [<path> ...]
 
 Scalafix is a refactoring and linting tool. Scalafix supports both syntactic and
@@ -167,7 +167,7 @@ Semantic options:
     The scala compiler options used to compile this --classpath, for example
     -Ywarn-unused-import
 
-  --scala-version ScalaVersion (default: "2.13.14")
+  --scala-version ScalaVersion (default: "2.13.16")
     The major or binary Scala version that the provided files are targeting, or the
     full version that was used to compile them when a classpath is provided.
 

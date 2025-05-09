@@ -38,8 +38,12 @@ linters:
       - "markdownlint -c .markdownlint.json myfile.md"
       - "markdownlint --fix -c .markdownlint.json myfile.md"
     install:
+      dockerfile:
+        - |-
+          # renovate: datasource=npm depName=markdownlint-cli
+          ARG NPM_MARKDOWNLINT_CLI_VERSION=0.44.0
       npm:
-        - markdownlint-cli
+        - markdownlint-cli@${NPM_MARKDOWNLINT_CLI_VERSION}
     ide:
       atom:
         - name: linter-node-markdownlint
@@ -83,9 +87,16 @@ linters:
       - "remark --frail --rc-path .remarkrc myfile.md"
       - "remark --frail -o --rc-path .remarkrc myfile.md"
     install:
+      dockerfile:
+        - |-
+          # renovate: datasource=npm depName=remark-cli
+          ARG NPM_REMARK_CLI_VERSION=12.0.1
+        - |-
+          # renovate: datasource=npm depName=remark-preset-lint-recommended
+          ARG NPM_REMARK_PRESET_LINT_RECOMMENDED_VERSION=7.0.1
       npm:
-        - remark-cli
-        - remark-preset-lint-recommended
+        - remark-cli@${NPM_REMARK_CLI_VERSION}
+        - remark-preset-lint-recommended@${NPM_REMARK_PRESET_LINT_RECOMMENDED_VERSION}
     ide:
       atom:
         - name: linter-remark
@@ -116,9 +127,15 @@ linters:
     examples:
       - "markdown-link-check myfile.md"
       - "markdown-link-check -c .markdown-link-check.json myfile.md"
+    downgraded_version: true
+    downgraded_reason: https://github.com/tcort/markdown-link-check/issues/369
     install:
+      dockerfile:
+        - |-
+          # renovate: datasource=npm depName=markdown-link-check
+          ARG NPM_MARKDOWN_LINK_CHECK_VERSION=3.12.2
       npm:
-        - markdown-link-check
+        - markdown-link-check@${NPM_MARKDOWN_LINK_CHECK_VERSION}
   # Markdown table formatter
   - linter_name: markdown-table-formatter
     is_formatter: true
@@ -137,8 +154,12 @@ linters:
       - "markdown-table-formatter myfile.md" # Apply formatting
       - "markdown-table-formatter myfile.md myfile2.md myfile3.md" # Apply formatting
     install:
+      dockerfile:
+        - |-
+          # renovate: datasource=npm depName=markdown-table-formatter
+          ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.6.1
       npm:
-        - markdown-table-formatter
+        - markdown-table-formatter@${NPM_MARKDOWN_TABLE_FORMATTER_VERSION}
     ide:
       vscode:
         - name: Markdown Table Prettify Extension

@@ -1,7 +1,7 @@
 ---
 #########################
 #########################
-## Deploy Docker Image Flavors ##
+## Deploy Docker Image Linters ##
 #########################
 #########################
 # Documentation:
@@ -16,6 +16,7 @@ on:
   push:
     branches:
       - "main"
+      - "dbgbeta"
     paths:
       - ".github/workflows/**"
       - "Dockerfile"
@@ -38,31 +39,13 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-
-  prepare:
-    name: Prepare matrix
-    runs-on: ubuntu-latest
-    if: github.repository == 'oxsecurity/megalinter' && !contains(github.event.head_commit.message, 'skip deploy') && !contains(github.event.head_commit.message, 'Release MegaLinter v')
-    steps:
-
-    - name: Build unique image name for beta
-      shell: bash
-      run: echo "UNIQUE_DOCKER_IMAGE_NAME=$(echo beta_$(date '+%Y%m%d-%H%M'))" >> $GITHUB_ENV
-
-    - name: Prepare result is ${{ env.UNIQUE_DOCKER_IMAGE_NAME }}
-      shell: bash
-      run: echo ${{ env.UNIQUE_DOCKER_IMAGE_NAME }}
-
-    outputs:
-      unique_docker_image_name: "${{ env.UNIQUE_DOCKER_IMAGE_NAME }}"
-
   build:
-    needs: prepare
     # Name the Job
-    name: Deploy Docker Image - Beta - Linters
+    name: BETA/Linters
     # Set the agent to run on
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     permissions:
+      actions: write
       packages: write
     environment:
       name: beta
@@ -70,7 +53,6 @@ jobs:
       fail-fast: false
       max-parallel: 10
       matrix:
-        os: [ubuntu-latest]
         # linters-start
         linter:
           [
@@ -82,19 +64,21 @@ jobs:
             "bash_shellcheck",
             "bash_shfmt",
             "bicep_bicep_linter",
+            "c_cppcheck",
             "c_cpplint",
             "c_clang_format",
             "clojure_clj_kondo",
+            "clojure_cljstyle",
             "cloudformation_cfn_lint",
             "coffee_coffeelint",
             "copypaste_jscpd",
+            "cpp_cppcheck",
             "cpp_cpplint",
             "cpp_clang_format",
             "csharp_dotnet_format",
             "csharp_csharpier",
             "csharp_roslynator",
             "css_stylelint",
-            "css_scss_lint",
             "dart_dartanalyzer",
             "dockerfile_hadolint",
             "editorconfig_editorconfig_checker",
@@ -123,10 +107,11 @@ jobs:
             "kubernetes_kubescape",
             "latex_chktex",
             "lua_luacheck",
+            "lua_selene",
+            "lua_stylua",
             "markdown_markdownlint",
             "markdown_markdown_link_check",
             "markdown_markdown_table_formatter",
-            "openapi_spectral",
             "perl_perlcritic",
             "php_phpcs",
             "php_phpstan",
@@ -145,6 +130,7 @@ jobs:
             "python_mypy",
             "python_pyright",
             "python_ruff",
+            "python_ruff_format",
             "r_lintr",
             "raku_raku",
             "repository_checkov",
@@ -154,6 +140,7 @@ jobs:
             "repository_gitleaks",
             "repository_grype",
             "repository_kics",
+            "repository_ls_lint",
             "repository_secretlint",
             "repository_semgrep",
             "repository_syft",
@@ -170,13 +157,13 @@ jobs:
             "salesforce_sfdx_scanner_lwc",
             "salesforce_lightning_flow_scanner",
             "scala_scalafix",
-            "snakemake_lint",
             "snakemake_snakefmt",
             "spell_cspell",
             "spell_proselint",
             "spell_vale",
             "spell_lychee",
             "sql_sqlfluff",
+            "sql_tsqllint",
             "swift_swiftlint",
             "tekton_tekton_lint",
             "terraform_tflint",
@@ -194,29 +181,53 @@ jobs:
             "yaml_v8r",
           ]
 # linters-end
+        platform: ["linux/amd64"]
     # Only run this on the main repo
-    if: github.repository == 'oxsecurity/megalinter' && !contains(github.event.head_commit.message, 'skip deploy') && !contains(github.event.head_commit.message, 'Release MegaLinter v')
+    if: >-
+      (
+           github.repository == 'oxsecurity/megalinter'
+        && !contains(github.event.head_commit.message, 'skip deploy')
+        && !contains(github.event.head_commit.message, 'Release MegaLinter v')
+      )
     ##################
     # Load all steps #
     ##################
     steps:
-      ##########################
-      # Checkout the code base #
-      ##########################
       - name: Checkout Code
         uses: actions/checkout@v4
 
+      - name: Docker Metadata action
+        uses: docker/metadata-action@v5.7.0
+        id: meta
+        with:
+          images: |
+            ghcr.io/${{ github.repository }}-only-${{ matrix.linter }}
+          flavor: |
+            latest=false
+            prefix=beta
+          tags: |
+            type=raw,value=
+            type=raw,value={{date 'YYYYMMDD_HHmm'}}
+
+      - name: Docker Metadata action (Docker hub)
+        uses: docker/metadata-action@v5.7.0
+        id: meta-dhub
+        with:
+          images: |
+            docker.io/${{ github.repository }}-only-${{ matrix.linter }}
+          flavor: |
+            latest=false
+            prefix=beta
+          tags: |
+            type=raw,value=
+            type=raw,value={{date 'YYYYMMDD_HHmm'}}
+
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
+        if: ${{ ( ( runner.arch != 'X64' || runner.os != 'Linux' ) && matrix.platform == 'linux/amd64' ) || matrix.platform != 'linux/amd64' }}
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
-
-      - name: Login to Docker Hub
-        uses: docker/login-action@v3
-        with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v3
@@ -225,28 +236,21 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Get current date
-        run: echo "BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" >> ${GITHUB_ENV}
-
       - name: Build Image
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: .
           file: linters/${{ matrix.linter }}/Dockerfile
-          platforms: linux/amd64
+          platforms: ${{ matrix.platform }}
           build-args: |
-            BUILD_DATE=${{ env.BUILD_DATE }}
-            BUILD_REVISION=${{ github.sha }}
-            BUILD_VERSION=beta
+            BUILD_DATE=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.created'] }}
+            BUILD_VERSION=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.version'] }}
+            BUILD_REVISION=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.revision'] }}
           load: false
-          push: true
+          push: ${{ github.event_name != 'pull_request' }}
           secrets: |
             GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
-          tags: |
-            oxsecurity/megalinter-only-${{ matrix.linter }}:beta
-            oxsecurity/megalinter-only-${{ matrix.linter }}:${{ needs.prepare.outputs.unique_docker_image_name }}
-            ghcr.io/oxsecurity/megalinter-only-${{ matrix.linter }}:beta
-            ghcr.io/oxsecurity/megalinter-only-${{ matrix.linter }}:${{ needs.prepare.outputs.unique_docker_image_name }}
+          tags: ${{ steps.meta.outputs.tags }}
 
       #####################################
       # Run Linter test cases #
@@ -259,9 +263,15 @@ jobs:
 
           TEST_KEYWORDS_TO_USE_UPPER="${{ matrix.linter }}"
           TEST_KEYWORDS_TO_USE="${TEST_KEYWORDS_TO_USE_UPPER,,}"
-
-          docker run -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=text -e OUTPUT_FOLDER=${{ github.sha }} -e OUTPUT_DETAIL=detailed -e GITHUB_SHA=${{ github.sha }} -e GITHUB_REPOSITORY=${GITHUB_REPOSITORY} -e GITHUB_BRANCH=${GITHUB_BRANCH} -e GITHUB_TOKEN="${{ secrets.GITHUB_TOKEN }}" -e TEST_KEYWORDS="${TEST_KEYWORDS_TO_USE}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint oxsecurity/megalinter-only-${{ matrix.linter }}:beta
+          docker image ls
+          docker run -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=text -e OUTPUT_FOLDER=${{ github.sha }} -e OUTPUT_DETAIL=detailed -e GITHUB_SHA=${{ github.sha }} -e GITHUB_REPOSITORY=${GITHUB_REPOSITORY} -e GITHUB_BRANCH=${GITHUB_BRANCH} -e GITHUB_TOKEN="${{ secrets.GITHUB_TOKEN }}" -e TEST_KEYWORDS="${TEST_KEYWORDS_TO_USE}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint ${{ fromJson(steps.meta.outputs.json).tags[0]}}
         timeout-minutes: 30
+
+      - name: Invoke Mirror docker image workflow (Standalone linter image)
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: mirror-docker-image.yml
+          inputs: '{ "source-image": "${{ fromJson(steps.meta.outputs.json).tags[0]}}", "target-image": "${{ fromJson(steps.meta-dhub.outputs.json).tags[0]}}" }'
 
       ##############################################
       # Check Docker image security with Trivy #
@@ -269,11 +279,13 @@ jobs:
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: 'docker.io/oxsecurity/megalinter-only-${{ matrix.linter }}:beta'
-          format: 'table'
-          exit-code: '1'
+          image-ref: "${{ fromJson(steps.meta.outputs.json).tags[0]}}"
+          format: "table"
+          exit-code: "1"
           ignore-unfixed: true
           scanners: vuln
-          vuln-type: 'os,library'
-          severity: 'CRITICAL,HIGH'
+          vuln-type: "os,library"
+          severity: "CRITICAL,HIGH"
           timeout: 10m0s
+        env:
+            ACTIONS_RUNTIME_TOKEN: ${{ secrets.GITHUB_TOKEN }}

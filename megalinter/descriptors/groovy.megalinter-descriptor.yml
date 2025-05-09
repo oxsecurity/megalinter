@@ -43,8 +43,11 @@ linters:
         - openjdk17
       dockerfile:
         - ENV JAVA_HOME_17=/usr/lib/jvm/java-17-openjdk
+        - |-
+          # renovate: datasource=npm depName=npm-groovy-lint
+          ARG NPM_GROOVY_LINT_VERSION=15.1.0
       npm:
-        - npm-groovy-lint
+        - npm-groovy-lint@${NPM_GROOVY_LINT_VERSION}
     ide:
       vscode:
         - name: VSCode Groovy Lint

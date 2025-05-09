@@ -15,7 +15,7 @@ description: How to use psalm (configure, ignore files, ignore errors, help & ve
 
 ## psalm documentation
 
-- Version in MegaLinter: **Psalm.5.24.0@**
+- Version in MegaLinter: **Psalm.6.10.3@**
 - Visit [Official Web Site](https://psalm.dev){target=_blank}
 - See [How to configure psalm rules](https://psalm.dev/docs/running_psalm/configuration/){target=_blank}
   - If custom `psalm.xml` config file isn't found, [psalm.xml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/psalm.xml){target=_blank} will be used
@@ -56,15 +56,15 @@ Use psalm in your favorite IDE to catch errors before MegaLinter !
 |  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a>  | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [PHPStan / Psalm / Generics](https://plugins.jetbrains.com/plugin/12754-phpstan--psalm--generics)       |                           <iframe frameborder="none" width="245px" height="48px" src="https://plugins.jetbrains.com/embeddable/install/12754"></iframe>                           |
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/)     | [Psalm VSCode Plugin](https://marketplace.visualstudio.com/items?itemName=getpsalm.psalm-vscode-plugin) | [![Install in VSCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/getpsalm.psalm-vscode-plugin){target=_blank} |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
-This linter is available in the following flavours
+This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                     | Embedded linters |                                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       124        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        83        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
-|         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://megalinter.io/beta/flavors/php/)         | Optimized for PHP based projects                |        55        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-php) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       127        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        88        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+|         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://megalinter.io/beta/flavors/php/)         | Optimized for PHP based projects                |        54        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-php) |
 
 ## Behind the scenes
 
@@ -116,8 +116,14 @@ Basic configuration:
     --disable-extension=[extension]
         Used to disable certain extensions while Psalm is running.
 
+    --force-jit
+        If set, requires JIT acceleration to be available in order to run Psalm, exiting immediately if it cannot be enabled.
+
     --threads=INT
-        If greater than one, Psalm will run analysis on multiple threads, speeding things up.
+        If greater than one, Psalm will run the scan and analysis on multiple threads, speeding things up.
+
+    --scan-threads=INT
+        If greater than one, Psalm will run the scan on multiple threads, speeding things up (if specified, takes priority over the --threads flag).
 
     --no-diff
         Turns off Psalm’s diff mode, checks all files regardless of whether they’ve changed.
@@ -156,10 +162,12 @@ Surfacing issues:
         Output the taint graph using the DOT language – requires --taint-analysis
 
 Issue baselines:
-    --set-baseline=PATH
+    --set-baseline[=PATH]
         Save all current error level issues to a file, to mark them as info in subsequent runs
 
         Add --include-php-versions to also include a list of PHP extension versions
+
+        Default value is `psalm-baseline.xml`
 
     --use-baseline=PATH
         Allows you to use a baseline other than the default baseline provided in your config
@@ -182,8 +190,10 @@ Output:
 
     --output-format=console
         Changes the output format.
-        Available formats: compact, console, text, emacs, json, pylint, xml, checkstyle, junit, sonarqube,
-                           github, phpstorm, codeclimate, by-issue-level
+        Available formats:
+            by-issue-level, checkstyle, codeclimate, compact, console, count, emacs,
+            github, json, json-summary, junit, phpstorm, pylint, sarif, sonarqube,
+            text, xml
 
     --no-progress
         Disable the progress indicator
@@ -197,8 +207,9 @@ Output:
 Reports:
     --report=PATH
         The path where to output report file. The output format is based on the file extension.
-        (Currently supported formats: ".json", ".xml", ".txt", ".emacs", ".pylint", ".console",
-        ".sarif", "checkstyle.xml", "sonarqube.json", "codeclimate.json", "summary.json", "junit.xml")
+        (Currently supported formats: ".console", ".emacs", ".json", ".pylint", ".sarif", ".sarif.json", ".txt",
+        ".xml", "checkstyle.xml", "codeclimate.json", "count.txt", "junit.xml",
+        "sonarqube.json", "summary.json")
 
     --report-show-info[=BOOLEAN]
         Whether the report should include non-errors in its output (defaults to true)
@@ -256,6 +267,9 @@ Miscellaneous:
     --alter
         Run Psalter
 
+    --review
+        Run the psalm-review tool
+
     --language-server
         Run Psalm Language Server
 ```
@@ -265,25 +279,14 @@ Miscellaneous:
 - Dockerfile commands :
 ```dockerfile
 # Parent descriptor install
-RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" \
-    && export GITHUB_AUTH_TOKEN \
-    && wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
-    && wget --tries=5 -q -O phive.phar.asc https://phar.io/releases/phive.phar.asc \
-    && PHAR_KEY_ID="0x6AF725270AB81E04D79442549D8A98B29B2D5D79" \
-    && ( gpg --keyserver hkps://keys.openpgp.org --recv-keys "$PHAR_KEY_ID" \
-       || gpg --keyserver hkps://keyserver.ubuntu.com --recv-keys "$PHAR_KEY_ID" \
-       || gpg --keyserver keyserver.pgp.com --recv-keys "$PHAR_KEY_ID" \
-       || gpg --keyserver pgp.mit.edu --recv-keys "$PHAR_KEY_ID" ) \
-    && gpg --verify phive.phar.asc phive.phar \
-    && chmod +x phive.phar \
-    && mv phive.phar /usr/local/bin/phive \
-    && rm phive.phar.asc \
-    && update-alternatives --install /usr/bin/php php /usr/bin/php83 110
-
+RUN update-alternatives --install /usr/bin/php php /usr/bin/php84 110
 COPY --from=composer/composer:2-bin /composer /usr/bin/composer
 ENV PATH="/root/.composer/vendor/bin:${PATH}"
+ENV PHP_CS_FIXER_IGNORE_ENV=true
 # Linter install
-RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && phive --no-progress install psalm -g --trust-gpg-keys 8A03EA3B385DBAA1,12CE0F1D262429A5
+# renovate: datasource=packagist depName=vimeo/psalm
+ARG PHP_VIMEO_PSALM_VERSION=6.10.3
+RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require vimeo/psalm:${PHP_VIMEO_PSALM_VERSION}
 
 ```
 

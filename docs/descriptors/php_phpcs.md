@@ -9,7 +9,7 @@ description: How to use phpcs (configure, ignore files, ignore errors, help & ve
 
 ## phpcs documentation
 
-- Version in MegaLinter: **3.10.1**
+- Version in MegaLinter: **3.12.2**
 - Visit [Official Web Site](https://github.com/PHPCSStandards/PHP_CodeSniffer#readme){target=_blank}
 - See [How to configure phpcs rules](https://github.com/PHPCSStandards/PHP_CodeSniffer/wiki/Advanced-Usage#using-a-default-configuration-file){target=_blank}
   - If custom `phpcs.xml` config file isn't found, [phpcs.xml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/phpcs.xml){target=_blank} will be used
@@ -55,15 +55,15 @@ Use phpcs in your favorite IDE to catch errors before MegaLinter !
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/)             | [SublimeLinter-phpcs](https://github.com/SublimeLinter/SublimeLinter-phpcs)         |                                       [Visit Web Site](https://github.com/SublimeLinter/SublimeLinter-phpcs){target=_blank}                                        |
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/)     | [vscode-phpcs](https://marketplace.visualstudio.com/items?itemName=ikappas.phpcs)   | [![Install in VSCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/ikappas.phpcs){target=_blank} |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
-This linter is available in the following flavours
+This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                     | Embedded linters |                                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       124        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        83        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
-|         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://megalinter.io/beta/flavors/php/)         | Optimized for PHP based projects                |        55        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-php) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       127        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        88        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+|         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://megalinter.io/beta/flavors/php/)         | Optimized for PHP based projects                |        54        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-php) |
 
 ## Behind the scenes
 
@@ -213,7 +213,8 @@ Configuration Options:
   This applies to the following options: "default_standard", "report_format",
   "tab_width", "encoding", "severity", "error_severity", "warning_severity",
   "show_warnings", "report_width", "show_progress", "quiet", "colors", "cache",
-  "parallel".
+  "parallel", "installed_paths", "php_version", "ignore_errors_on_exit",
+  "ignore_warnings_on_exit".
   --config-show                  Show the configuration options which are
                                  currently stored in the applicable
                                  CodeSniffer.conf file.
@@ -239,25 +240,16 @@ Miscellaneous Options:
 - Dockerfile commands :
 ```dockerfile
 # Parent descriptor install
-RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" \
-    && export GITHUB_AUTH_TOKEN \
-    && wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
-    && wget --tries=5 -q -O phive.phar.asc https://phar.io/releases/phive.phar.asc \
-    && PHAR_KEY_ID="0x6AF725270AB81E04D79442549D8A98B29B2D5D79" \
-    && ( gpg --keyserver hkps://keys.openpgp.org --recv-keys "$PHAR_KEY_ID" \
-       || gpg --keyserver hkps://keyserver.ubuntu.com --recv-keys "$PHAR_KEY_ID" \
-       || gpg --keyserver keyserver.pgp.com --recv-keys "$PHAR_KEY_ID" \
-       || gpg --keyserver pgp.mit.edu --recv-keys "$PHAR_KEY_ID" ) \
-    && gpg --verify phive.phar.asc phive.phar \
-    && chmod +x phive.phar \
-    && mv phive.phar /usr/local/bin/phive \
-    && rm phive.phar.asc \
-    && update-alternatives --install /usr/bin/php php /usr/bin/php83 110
-
+RUN update-alternatives --install /usr/bin/php php /usr/bin/php84 110
 COPY --from=composer/composer:2-bin /composer /usr/bin/composer
 ENV PATH="/root/.composer/vendor/bin:${PATH}"
+ENV PHP_CS_FIXER_IGNORE_ENV=true
 # Linter install
-RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require squizlabs/php_codesniffer bartlett/sarif-php-sdk
+# renovate: datasource=packagist depName=squizlabs/php_codesniffer
+ARG PHP_SQUIZLABS_PHP_CODESNIFFER_VERSION=3.12.2
+# renovate: datasource=packagist depName=bartlett/sarif-php-converters
+ARG PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION=1.1.2
+RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require squizlabs/php_codesniffer:${PHP_SQUIZLABS_PHP_CODESNIFFER_VERSION} bartlett/sarif-php-converters:${PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION}
 
 ```
 

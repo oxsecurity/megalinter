@@ -29,11 +29,11 @@ git config --global --add safe.directory /tmp/lint
 # Called by Auto-update CI job
 if [ "${UPGRADE_LINTERS_VERSION}" == "true" ]; then
   echo "[MegaLinter init] UPGRADING LINTER VERSION"
-  pip install pytest-cov pytest-timeout
+  pip install pytest-cov pytest-timeout pytest-rerunfailures
   # Run only get_linter_version test methods
-  pytest -v --durations=0 -k _get_linter_version megalinter/
+  pytest --reruns 3 --reruns-delay 1 -v --durations=0 -k _get_linter_version megalinter/
   # Run only get_linter_help test methods
-  pytest -v --durations=0 -k _get_linter_help megalinter/
+  pytest --reruns 3 --reruns-delay 1 -v --durations=0 -k _get_linter_help megalinter/
   # Reinstall mkdocs-material because of broken dependency
   pip3 install --upgrade markdown mike mkdocs-material pymdown-extensions "mkdocs-glightbox==0.3.2" mdx_truly_sane_lists jsonschema json-schema-for-humans giturlparse webpreview github-dependents-info
   cd /tmp/lint || exit 1
@@ -45,11 +45,11 @@ fi
 # Run test cases with pytest
 if [ "${TEST_CASE_RUN}" == "true" ]; then
   echo "[MegaLinter init] RUNNING TEST CASES"
-  pip install pytest-cov pytest-timeout pytest-xdist
+  pip install pytest-cov codecov-cli pytest-timeout pytest-xdist pytest-rerunfailures
   if [ -z "${TEST_KEYWORDS}" ]; then
-    pytest -v --timeout=300 --durations=0 --cov=megalinter --cov-report=xml --numprocesses auto --dist loadscope megalinter/
+    pytest --reruns 3 --reruns-delay 10 -v --timeout=300 --durations=0 --cov=megalinter --cov-report=xml --numprocesses auto --dist loadscope megalinter/
   else
-    pytest -v --timeout=300 --durations=0 --numprocesses auto --dist loadscope -k "${TEST_KEYWORDS}" megalinter/
+    pytest --reruns 3 --reruns-delay 10 -v --timeout=300 --durations=0 --numprocesses auto --dist loadscope -k "${TEST_KEYWORDS}" megalinter/
   fi
   PYTEST_STATUS=$?
   echo Pytest exited $PYTEST_STATUS
@@ -62,7 +62,7 @@ if [ "${TEST_CASE_RUN}" == "true" ]; then
   fi
   # Upload to codecov.io if all tests run
   if [ -z "${TEST_KEYWORDS}" ]; then
-    bash <(curl -s https://codecov.io/bash)
+    codecov
     exit $?
   fi
   exit $?

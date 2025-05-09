@@ -9,7 +9,7 @@ description: How to use rstcheck (configure, ignore files, ignore errors, help &
 
 ## rstcheck documentation
 
-- Version in MegaLinter: **6.2.1**
+- Version in MegaLinter: **6.2.4**
 - Visit [Official Web Site](https://github.com/myint/rstcheck#readme){target=_blank}
 - See [How to configure rstcheck rules](https://github.com/myint/rstcheck#configuration-file){target=_blank}
 - See [How to disable rstcheck rules in files](https://github.com/myint/rstcheck#ignore-specific-errors){target=_blank}
@@ -47,15 +47,15 @@ Use rstcheck in your favorite IDE to catch errors before MegaLinter !
 |:-------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|-------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [vscode-restructuredtext](https://marketplace.visualstudio.com/items/lextudio.restructuredtext) | [![Install in VSCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/lextudio.restructuredtext){target=_blank} |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
-This linter is available in the following flavours
+This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                     | Embedded linters |                                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       124        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        83        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)   | Optimized for PYTHON based projects             |        63        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       127        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        88        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)   | Optimized for PYTHON based projects             |        65        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
 
 ## Behind the scenes
 
@@ -87,8 +87,9 @@ rstcheck -c .rstcheck.cfg myfile.rst
  Usage: rstcheck [OPTIONS] FILES...                                             
                                                                                 
  CLI of rstcheck.
+
  Enabled features: ['Sphinx']
- Pass one ore more rst FILES to check. Can be files or directories if 
+ Pass one or more RST FILES to check. Can be files or directories if 
  --recursive is passed too. Pass "-" if you want to read from stdin.
 
 ╭─ Options ────────────────────────────────────────────────────────────────────╮
@@ -138,7 +139,7 @@ rstcheck -c .rstcheck.cfg myfile.rst
 │                                         linting issue messages against to    │
 │                                         ignore. Can be set in config file.   │
 │                                         [default: None]                      │
-│ --version                                                                    │
+│ --version                               Print versions and exit.             │
 │ --help                                  Show this message and exit.          │
 ╰──────────────────────────────────────────────────────────────────────────────╯
 
@@ -146,5 +147,11 @@ rstcheck -c .rstcheck.cfg myfile.rst
 
 ### Installation on mega-linter Docker image
 
+- Dockerfile commands :
+```dockerfile
+# renovate: datasource=pypi depName=rstcheck
+ARG PIP_RSTCHECK_VERSION=6.2.4
+```
+
 - PIP packages (Python):
-  - [rstcheck[toml,sphinx]](https://pypi.org/project/rstcheck[toml,sphinx])
+  - [rstcheck[toml,sphinx]==6.2.4](https://pypi.org/project/rstcheck[toml,sphinx]/6.2.4)

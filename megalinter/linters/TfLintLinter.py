@@ -24,16 +24,20 @@ class TfLintLinter(megalinter.Linter):
             == "false"
             else True
         )
+        replacement_def = dict(
+            {"var_dest": "GITHUB_TOKEN", "var_src": "PAT_GITHUB_COM"}
+        )
         tflint_pre_command = {
             "command": tflint_init_command,
             "cwd": self.workspace,
             "secured_env": tflint_secured_env,
+            "replacement_env_vars": [replacement_def],
         }
         if self.pre_commands is None:
             self.pre_commands = []
         self.pre_commands.append(tflint_pre_command)
 
-    def pre_test(self):
+    def pre_test(self, test_name):
         config.set_value(
             self.request_id, "TERRAFORM_TFLINT_UNSECURED_ENV_VARIABLES", "GITHUB_TOKEN"
         )

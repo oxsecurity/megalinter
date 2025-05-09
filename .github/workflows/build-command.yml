@@ -81,13 +81,13 @@ jobs:
             > Running script `./build.sh`
       - name: Run build script
         run: ./build.sh
-      - run: git pull
+      - run: git pull --unshallow || git pull
       - uses: stefanzweifel/git-auto-commit-action@v5
         id: auto-commit-action
         with:
           commit_message: "[build-command] Update generated files"
           commit_user_name: megalinter-bot
-          commit_user_email: nicolas.vuillamy@ox.security
+          commit_user_email: 129584137+megalinter-bot@users.noreply.github.com
       - name: Add reaction
         uses: peter-evans/create-or-update-comment@v4
         with:

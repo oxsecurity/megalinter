@@ -13,9 +13,6 @@
 #######################################
 # Start the job on all push to main #
 #######################################
-#############################
-# Start the job on all push #
-#############################
 name: "Build & Deploy - DEV"
 on:
   push:
@@ -29,14 +26,6 @@ on:
       - .github/workflows/help-command.yml
       - .github/workflows/build-command.yml
   pull_request:
-    branches-ignore: []
-    paths-ignore:
-      - .github/CONTRIBUTING.md
-      - CHANGELOG.md
-      - README.md
-      - .github/workflows/slash-command-dispatch.yml
-      - .github/workflows/help-command.yml
-      - .github/workflows/build-command.yml
 
 ###############
 # Set the Job #
@@ -46,7 +35,6 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-
   build:
     # Name the Job
     name: Tests + Deploy Docker Image - DEV
@@ -76,7 +64,7 @@ jobs:
           sudo rm -rf "$AGENT_TOOLSDIRECTORY"
 
       - name: Docker Metadata action
-        uses: docker/metadata-action@v5.5.1
+        uses: docker/metadata-action@v5.7.0
         id: meta
         with:
           images: |
@@ -92,9 +80,9 @@ jobs:
       # Build image locally for testing #
       ###################################
       - name: Build MegaLinter Docker Image (quick)
-        if: "contains(github.event.head_commit.message, 'quick build')"
+        if: ${{ contains(github.event.head_commit.message, 'quick build') }}
         id: docker_build_quick
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: .
           file: Dockerfile-quick
@@ -123,7 +111,7 @@ jobs:
           &&
           !contains(github.event.head_commit.message, 'quick build')
         id: docker_build
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: .
           file: Dockerfile
@@ -150,7 +138,7 @@ jobs:
           )
           &&
           !contains(github.event.head_commit.message, 'quick build')
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: .
           file: Dockerfile
@@ -208,6 +196,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: MegaLinter reports
+          include-hidden-files: "true"
           path: |
             megalinter-reports
             mega-linter.log
@@ -230,12 +219,12 @@ jobs:
       # Test mega-linter-runner with newly created image
       - name: Setup Node
         if: ${{ steps.docker_build.outcome }} == 'success' && !contains(github.event.head_commit.message, 'quick build')
-        uses: actions/setup-node@v4.0.2
+        uses: actions/setup-node@v4.4.0
         with:
-          node-version: "18.x"
+          node-version: "22.x"
       - name: Install NPM dependencies
         if: ${{ steps.docker_build.outcome }} == 'success' && !contains(github.event.head_commit.message, 'quick build')
-        run: cd mega-linter-runner && sudo yarn install --frozen-lockfile && sudo npm link
+        run: cd mega-linter-runner && yarn install --frozen-lockfile && npm link
       - name: Run mega-linter-runner tests
         if: ${{ steps.docker_build.outcome }} == 'success' && !contains(github.event.head_commit.message, 'quick build')
         run: cd mega-linter-runner && MEGALINTER_RELEASE=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.version'] }} MEGALINTER_IMAGE=${{ fromJson(steps.meta.outputs.json).tags[0]}} MEGALINTER_NO_DOCKER_PULL=true npm run test
@@ -253,7 +242,7 @@ jobs:
       # - name: Run Trivy vulnerability scanner
       #   uses: aquasecurity/trivy-action@master
       #   with:
-      #     image-ref: "docker.io/${{ fromJson(steps.meta.outputs.json).tags[0]}}"
+      #     image-ref: "${{ fromJson(steps.meta.outputs.json).tags[0]}}"
       #     format: 'table'
       #     exit-code: '1'
       #     ignore-unfixed: true

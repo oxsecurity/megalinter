@@ -1,29 +1,52 @@
-# .NET sdk
-# https://github.com/dotnet/sdk/issues/37790#issuecomment-1918068016
+# .NET SDK
 CVE-2024-0057
+CVE-2024-30105
+CVE-2024-38095
+CVE-2024-38168
+CVE-2024-43483
+CVE-2024-43484
+CVE-2024-43485
+
+# Docker
+CVE-2024-41110
 
 # Devskim
 CVE-2018-8292
 CVE-2019-0820
 
-# gitleaks
-# Solved in next gitleaks release: https://github.com/gitleaks/gitleaks/pull/1342
-CVE-2021-38561
-CVE-2022-32149
-
 # Go stdlib (all go based linters)
-CVE-2023-45283
-CVE-2023-45287
+CVE-2024-6257
 CVE-2023-45288
 CVE-2024-24788
+CVE-2024-24790
+CVE-2024-45337
+CVE-2024-45338
+CVE-2025-22869
+CVE-2025-30204
+
+# go-git
+CVE-2025-21613
+CVE-2025-21614
+
+# java PMD 
+CVE-2024-7254
 
 # Kubescape
 # https://github.com/oxsecurity/megalinter/issues/3519
 GHSA-9763-4f94-gfch
 GHSA-m425-mq94-257g
 CVE-2023-39325
+CVE-2023-45283
 CVE-2023-49569
 CVE-2023-49568
+
+# node
+# json-path
+CVE-2024-21534
+
+# python
+CVE-2024-6232
+CVE-2024-7592
 
 # powershell
 CVE-2024-21907
@@ -34,16 +57,24 @@ CVE-2018-8292
 CVE-2023-29331
 CVE-2019-0820
 
-# sfdx-scanner
-CVE-2023-6378
-CVE-2020-36518
-CVE-2021-46877
-CVE-2022-42003
-CVE-2022-42004
-CVE-2022-33980
-CVE-2022-42889
-CVE-2022-1471
-CVE-2022-25857
+# Lightning flow scanner
+CVE-2020-26226
+
+# sfdx
+CVE-2025-24970
+GHSA-xpw8-rcwv-8f8p
+
+# octokit
+CVE-2025-25288
+CVE-2025-25289
+CVE-2025-25290
+
+# spectral
+CVE-2024-47068
+CVE-2025-1302
+
+# terraform
+CVE-2025-0377
 
 # terrascan
 # https://github.com/tenable/terrascan/issues/1674
@@ -55,10 +86,33 @@ CVE-2024-26147
 # tflint
 CVE-2024-3817
 
+# tsqllint
+CVE-2023-36414
+CVE-2024-0056
+
+# vale
+CVE-2025-29786
+
 # Misc
 # Not fixed yet https://avd.aquasec.com/nvd/2024/cve-2024-29415/
 CVE-2024-29415
-
+# axios
+CVE-2024-39338
+# mega-linter-runner
+CVE-2024-4067
+# libexpat
+CVE-2024-45490
+CVE-2024-45491
+CVE-2024-45492
+# stdlib  
+CVE-2024-34156
+# mega-linter-runner cross-spawn
+CVE-2024-21538
+# other
+CVE-2024-47535
+CVE-2024-12797
+# https://avd.aquasec.com/nvd/cve-2025-46569 : Linters in MegaLinter do not run servers.
+CVE-2025-46569
 # Dockerfile
 DS001
 DS002

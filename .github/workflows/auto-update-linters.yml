@@ -77,7 +77,7 @@ jobs:
       # Build image locally for testing #
       ###################################
       - name: Build MegaLinter Docker Image
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: .
           file: Dockerfile
@@ -114,15 +114,16 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: MegaLinter reports
+          include-hidden-files: "true"
           path: |
             docs
             megalinter-reports
 
-      # Create pull request if there are updates
+      # Create pull request if there are updates or if the workflow has been launched manually
       - name: Create Pull Request
         id: cpr
-        if: steps.compute_versions.outputs.has_updated_versions == 1
-        uses: peter-evans/create-pull-request@v6
+        if: (github.event_name == 'workflow_dispatch' || steps.compute_versions.outputs.has_updated_versions == 1)
+        uses: peter-evans/create-pull-request@v7
         with:
           token: ${{ secrets.PAT || secrets.GITHUB_TOKEN  }}
           author: "Nicolas Vuillamy <nicolas.vuillamy@gmail.com>"
@@ -131,7 +132,8 @@ jobs:
           title: "[automation] Auto-update linters version, help and documentation"
           body: "[automation] Auto-update linters version, help and documentation"
           labels: dependencies,automerge
-      - name: Create PR output
+      - name: Display Pull Request Info
+        if: (github.event_name == 'workflow_dispatch' || steps.compute_versions.outputs.has_updated_versions == 1)
         run: |
           echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
           echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"

@@ -11,7 +11,7 @@ An extremely fast Python linter, written in Rust.
 
 ## ruff documentation
 
-- Version in MegaLinter: **0.4.8**
+- Version in MegaLinter: **0.11.8**
 - Visit [Official Web Site](https://github.com/astral-sh/ruff#readme){target=_blank}
 - See [How to configure ruff rules](https://docs.astral.sh/ruff/configuration/){target=_blank}
   - If custom `.ruff.toml` config file isn't found, [.ruff.toml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.ruff.toml){target=_blank} will be used
@@ -54,15 +54,15 @@ Use ruff in your favorite IDE to catch errors before MegaLinter !
 |  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a>  | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [Ruff](https://plugins.jetbrains.com/plugin/20574-ruff)                        |                      <iframe frameborder="none" width="245px" height="48px" src="https://plugins.jetbrains.com/embeddable/install/20574"></iframe>                      |
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/)     | [Ruff](https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff) | [![Install in VSCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/charliermarsh.ruff){target=_blank} |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
-This linter is available in the following flavours
+This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                     | Embedded linters |                                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       124        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        83        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)   | Optimized for PYTHON based projects             |        63        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       127        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        88        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)   | Optimized for PYTHON based projects             |        65        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
 
 ## Behind the scenes
 
@@ -90,18 +90,19 @@ ruff check --config .ruff.toml myfile.py
 ### Help content
 
 ```shell
-Ruff: An extremely fast Python linter.
+Ruff: An extremely fast Python linter and code formatter.
 
 Usage: ruff [OPTIONS] <COMMAND>
 
 Commands:
-  check    Run Ruff on the given files or directories (default)
+  check    Run Ruff on the given files or directories
   rule     Explain a rule (or all rules)
   config   List or describe the available configuration options
   linter   List all supported upstream linters
   clean    Clear any caches in the current directory and any subdirectories
   format   Run the Ruff formatter on the given files or directories
   server   Run the language server
+  analyze  Run analysis over Python source code
   version  Display Ruff's version
   help     Print this message or the help of the given subcommand(s)
 
@@ -130,5 +131,11 @@ For help with a specific command, see: `ruff help <command>`.
 
 ### Installation on mega-linter Docker image
 
+- Dockerfile commands :
+```dockerfile
+# renovate: datasource=pypi depName=ruff
+ARG PIP_RUFF_VERSION=0.11.8
+```
+
 - PIP packages (Python):
-  - [ruff](https://pypi.org/project/ruff)
+  - [ruff==0.11.8](https://pypi.org/project/ruff/0.11.8)

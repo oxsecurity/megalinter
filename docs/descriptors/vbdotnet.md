@@ -9,9 +9,9 @@ description: dotnet-format is available to analyze VBDOTNET files in MegaLinter
 
 ## Linters
 
-| Linter                                                                                                   | Additional                                                                                                                                                                     |
-|----------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [**dotnet-format**](vbdotnet_dotnet_format.md)<br/>[_VBDOTNET_DOTNET_FORMAT_](vbdotnet_dotnet_format.md) | [![GitHub stars](https://img.shields.io/github/stars/dotnet/format?cacheSeconds=3600)](https://github.com/dotnet/format) ![formatter](https://shields.io/badge/-format-yellow) |
+| Linter                                                                                                   | Additional                                                                                                                                                               |
+|----------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [**dotnet-format**](vbdotnet_dotnet_format.md)<br/>[_VBDOTNET_DOTNET_FORMAT_](vbdotnet_dotnet_format.md) | [![GitHub stars](https://img.shields.io/github/stars/dotnet/sdk?cacheSeconds=3600)](https://github.com/dotnet/sdk) ![formatter](https://shields.io/badge/-format-yellow) |
 
 ## Linted files
 
@@ -34,7 +34,7 @@ description: dotnet-format is available to analyze VBDOTNET files in MegaLinter
 
 - Dockerfile commands :
 ```dockerfile
-RUN apk add --no-cache dotnet8-sdk --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community
+RUN apk add --no-cache dotnet9-sdk
 ENV PATH="${PATH}:/root/.dotnet/tools"
 ```
 

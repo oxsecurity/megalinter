@@ -12,7 +12,7 @@ description: ktlint, detekt are available to analyze KOTLIN files in MegaLinter
 | Linter                                                                 | Additional                                                                                                                                                                                                                          |
 |------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [**ktlint**](kotlin_ktlint.md)<br/>[_KOTLIN_KTLINT_](kotlin_ktlint.md) | [![GitHub stars](https://img.shields.io/github/stars/pinterest/ktlint?cacheSeconds=3600)](https://github.com/pinterest/ktlint) ![autofix](https://shields.io/badge/-autofix-green) ![sarif](https://shields.io/badge/-SARIF-orange) |
-| [**detekt**](kotlin_detekt.md)<br/>[_KOTLIN_DETEKT_](kotlin_detekt.md) | [![GitHub stars](https://img.shields.io/github/stars/detekt/detekt?cacheSeconds=3600)](https://github.com/detekt/detekt)                                                                                                            |
+| [**detekt**](kotlin_detekt.md)<br/>[_KOTLIN_DETEKT_](kotlin_detekt.md) | [![GitHub stars](https://img.shields.io/github/stars/detekt/detekt?cacheSeconds=3600)](https://github.com/detekt/detekt) ![sarif](https://shields.io/badge/-SARIF-orange)                                                           |
 
 ## Linted files
 
@@ -41,4 +41,4 @@ ENV PATH="$JAVA_HOME/bin:${PATH}"
 ```
 
 - APK packages (Linux):
-  - [openjdk21](https://pkgs.alpinelinux.org/packages?branch=edge&name=openjdk21)
+  - [openjdk21](https://pkgs.alpinelinux.org/packages?branch=v3.21&arch=x86_64&name=openjdk21)

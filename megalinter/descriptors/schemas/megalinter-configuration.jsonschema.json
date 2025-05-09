@@ -15,8 +15,8 @@
           "type": "string"
         },
         "continue_if_failed": {
-          "Description": "If command fails, continue MegaLinter process or not",
           "default": true,
+          "description": "If command fails, continue MegaLinter process or not",
           "title": "Continue if failed",
           "type": "boolean"
         },
@@ -30,6 +30,34 @@
             "workspace"
           ],
           "title": "Folder where to run the command",
+          "type": "string"
+        },
+        "output_variables": {
+          "description": "ENV variables to get from output after running the commands, and store in MegaLinter ENV context",
+          "items": {
+            "type": "string"
+          },
+          "title": "Output ENV variables",
+          "type": "array"
+        },
+        "secured_env": {
+          "default": true,
+          "description": "Apply filtering of secured env variables before calling the command (default true). Be careful if you disable it.",
+          "title": "Secured ENV variables",
+          "type": "boolean"
+        },
+        "tag": {
+          "examples": [
+            "before_plugins"
+          ],
+          "title": "Tag defining at which commands entry point the command will be run",
+          "type": "string"
+        },
+        "venv": {
+          "examples": [
+            "flake8"
+          ],
+          "title": "Name of the python venv to run the command in.",
           "type": "string"
         }
       },
@@ -74,7 +102,6 @@
         "LUA",
         "MAKEFILE",
         "MARKDOWN",
-        "OPENAPI",
         "PERL",
         "PHP",
         "POWERSHELL",
@@ -119,14 +146,16 @@
         "COFFEE_COFFEELINT",
         "COPYPASTE_JSCPD",
         "CPP_CLANG_FORMAT",
+        "CPP_CPPCHECK",
         "CPP_CPPLINT",
         "CREDENTIALS_SECRETLINT",
         "CSHARP_CSHARPIER",
         "CSHARP_DOTNET_FORMAT",
         "CSHARP_ROSLYNATOR",
-        "CSS_SCSS_LINT",
+        "CSS_SCSSLINT",
         "CSS_STYLELINT",
         "C_CLANG_FORMAT",
+        "C_CPPCHECK",
         "C_CPPLINT",
         "DART_DARTANALYZER",
         "DOCKERFILE_DOCKERFILELINT",
@@ -160,6 +189,8 @@
         "KUBERNETES_KUBEVAL",
         "LATEX_CHKTEX",
         "LUA_LUACHECK",
+        "LUA_SELENE",
+        "LUA_STYLUA",
         "MAKEFILE_CHECKMAKE",
         "MARKDOWN_MARKDOWNLINT",
         "MARKDOWN_MARKDOWN_LINK_CHECK",
@@ -185,6 +216,7 @@
         "PYTHON_PYLINT",
         "PYTHON_PYRIGHT",
         "PYTHON_RUFF",
+        "PYTHON_RUFF_FORMAT",
         "RAKU_RAKU",
         "REPOSITORY_CHECKOV",
         "REPOSITORY_DEVSKIM",
@@ -194,6 +226,7 @@
         "REPOSITORY_GOODCHECK",
         "REPOSITORY_GRYPE",
         "REPOSITORY_KICS",
+        "REPOSITORY_LS_LINT",
         "REPOSITORY_SECRETLINT",
         "REPOSITORY_SEMGREP",
         "REPOSITORY_SYFT",
@@ -496,6 +529,17 @@
       },
       "title": "ANSIBLE_ANSIBLE_LINT: CLI Executable",
       "type": "array"
+    },
+    "ANSIBLE_ANSIBLE_LINT_CLI_LINT_MODE": {
+      "$id": "#/properties/ANSIBLE_ANSIBLE_LINT_CLI_LINT_MODE",
+      "default": "project",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "ANSIBLE_ANSIBLE_LINT: Override default cli lint mode",
+      "type": "string"
     },
     "ANSIBLE_ANSIBLE_LINT_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/ANSIBLE_ANSIBLE_LINT_COMMAND_REMOVE_ARGUMENTS",
@@ -2673,6 +2717,17 @@
       "title": "COPYPASTE_JSCPD: CLI Executable",
       "type": "array"
     },
+    "COPYPASTE_JSCPD_CLI_LINT_MODE": {
+      "$id": "#/properties/COPYPASTE_JSCPD_CLI_LINT_MODE",
+      "default": "project",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "COPYPASTE_JSCPD: Override default cli lint mode",
+      "type": "string"
+    },
     "COPYPASTE_JSCPD_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/COPYPASTE_JSCPD_COMMAND_REMOVE_ARGUMENTS",
       "description": "COPYPASTE_JSCPD: User custom arguments to remove before calling linter",
@@ -2956,6 +3011,151 @@
         "type": "string"
       },
       "title": "CPP_CLANG_FORMAT: Unsecured env variables",
+      "type": "array"
+    },
+    "CPP_CPPCHECK_ARGUMENTS": {
+      "$id": "#/properties/CPP_CPPCHECK_ARGUMENTS",
+      "description": "CPP_CPPCHECK: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "CPP_CPPCHECK: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "CPP_CPPCHECK_CLI_EXECUTABLE": {
+      "$id": "#/properties/CPP_CPPCHECK_CLI_EXECUTABLE",
+      "default": [
+        [
+          "cppcheck"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "CPP_CPPCHECK: CLI Executable",
+      "type": "array"
+    },
+    "CPP_CPPCHECK_CLI_LINT_MODE": {
+      "$id": "#/properties/CPP_CPPCHECK_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "project"
+      ],
+      "title": "CPP_CPPCHECK: Override default cli lint mode",
+      "type": "string"
+    },
+    "CPP_CPPCHECK_COMMAND_REMOVE_ARGUMENTS": {
+      "$id": "#/properties/CPP_CPPCHECK_COMMAND_REMOVE_ARGUMENTS",
+      "description": "CPP_CPPCHECK: User custom arguments to remove before calling linter",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "CPP_CPPCHECK: Custom remove arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "CPP_CPPCHECK_DISABLE_ERRORS": {
+      "$id": "#/properties/CPP_CPPCHECK_DISABLE_ERRORS",
+      "default": false,
+      "title": "CPP_CPPCHECK: Linter doesn't make MegaLinter fail even if errors are found",
+      "type": "boolean"
+    },
+    "CPP_CPPCHECK_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/CPP_CPPCHECK_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "CPP_CPPCHECK: Maximum number of errors allowed",
+      "type": "number"
+    },
+    "CPP_CPPCHECK_FILE_EXTENSIONS": {
+      "$id": "#/properties/CPP_CPPCHECK_FILE_EXTENSIONS",
+      "examples:": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "CPP_CPPCHECK: Override descriptor/linter matching files extensions",
+      "type": "array"
+    },
+    "CPP_CPPCHECK_FILE_NAMES_REGEX": {
+      "$id": "#/properties/CPP_CPPCHECK_FILE_NAMES_REGEX",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "CPP_CPPCHECK: Override descriptor/linter matching file name regex",
+      "type": "array"
+    },
+    "CPP_CPPCHECK_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/CPP_CPPCHECK_FILTER_REGEX_EXCLUDE",
+      "title": "CPP_CPPCHECK: Excluding Regex",
+      "type": "string"
+    },
+    "CPP_CPPCHECK_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/CPP_CPPCHECK_FILTER_REGEX_INCLUDE",
+      "title": "CPP_CPPCHECK: Including Regex",
+      "type": "string"
+    },
+    "CPP_CPPCHECK_POST_COMMANDS": {
+      "$id": "#/properties/CPP_CPPCHECK_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "CPP_CPPCHECK: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "CPP_CPPCHECK_PRE_COMMANDS": {
+      "$id": "#/properties/CPP_CPPCHECK_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "CPP_CPPCHECK: Define or override a list of bash commands to run before the linter",
+      "type": "array"
+    },
+    "CPP_CPPCHECK_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/CPP_CPPCHECK_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling CPP_CPPCHECK and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "CPP_CPPCHECK: Unsecured env variables",
       "type": "array"
     },
     "CPP_CPPLINT_ARGUMENTS": {
@@ -3277,7 +3477,7 @@
       "$id": "#/properties/CSHARP_CSHARPIER_CLI_EXECUTABLE",
       "default": [
         [
-          "dotnet-csharpier"
+          "csharpier"
         ]
       ],
       "items": {
@@ -3312,6 +3512,13 @@
         "array",
         "string"
       ]
+    },
+    "CSHARP_CSHARPIER_CONFIG_FILE": {
+      "$id": "#/properties/CSHARP_CSHARPIER_CONFIG_FILE",
+      "default": ".csharpierrc",
+      "description": "CSHARP_CSHARPIER: User custom config file name if different from default",
+      "title": "CSHARP_CSHARPIER: Custom config file name",
+      "type": "string"
     },
     "CSHARP_CSHARPIER_DISABLE_ERRORS": {
       "$id": "#/properties/CSHARP_CSHARPIER_DISABLE_ERRORS",
@@ -3393,6 +3600,12 @@
       "title": "CSHARP_CSHARPIER: Define or override a list of bash commands to run before the linter",
       "type": "array"
     },
+    "CSHARP_CSHARPIER_RULES_PATH": {
+      "$id": "#/properties/CSHARP_CSHARPIER_RULES_PATH",
+      "description": "CSHARP_CSHARPIER: Path where to find linter configuration file",
+      "title": "CSHARP_CSHARPIER: Custom config file path",
+      "type": "string"
+    },
     "CSHARP_CSHARPIER_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/CSHARP_CSHARPIER_UNSECURED_ENV_VARIABLES",
       "default": [],
@@ -3434,9 +3647,10 @@
     },
     "CSHARP_DOTNET_FORMAT_CLI_LINT_MODE": {
       "$id": "#/properties/CSHARP_DOTNET_FORMAT_CLI_LINT_MODE",
-      "default": "file",
+      "default": "project",
       "enum": [
         "file",
+        "list_of_files",
         "project"
       ],
       "title": "CSHARP_DOTNET_FORMAT: Override default cli lint mode",
@@ -3493,16 +3707,6 @@
       },
       "title": "CSHARP_DOTNET_FORMAT: Override descriptor/linter matching file name regex",
       "type": "array"
-    },
-    "CSHARP_DOTNET_FORMAT_FILTER_REGEX_EXCLUDE": {
-      "$id": "#/properties/CSHARP_DOTNET_FORMAT_FILTER_REGEX_EXCLUDE",
-      "title": "CSHARP_DOTNET_FORMAT: Excluding Regex",
-      "type": "string"
-    },
-    "CSHARP_DOTNET_FORMAT_FILTER_REGEX_INCLUDE": {
-      "$id": "#/properties/CSHARP_DOTNET_FORMAT_FILTER_REGEX_INCLUDE",
-      "title": "CSHARP_DOTNET_FORMAT: Including Regex",
-      "type": "string"
     },
     "CSHARP_DOTNET_FORMAT_POST_COMMANDS": {
       "$id": "#/properties/CSHARP_DOTNET_FORMAT_POST_COMMANDS",
@@ -4271,6 +4475,151 @@
       "title": "C_CLANG_FORMAT: Unsecured env variables",
       "type": "array"
     },
+    "C_CPPCHECK_ARGUMENTS": {
+      "$id": "#/properties/C_CPPCHECK_ARGUMENTS",
+      "description": "C_CPPCHECK: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "C_CPPCHECK: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "C_CPPCHECK_CLI_EXECUTABLE": {
+      "$id": "#/properties/C_CPPCHECK_CLI_EXECUTABLE",
+      "default": [
+        [
+          "cppcheck"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "C_CPPCHECK: CLI Executable",
+      "type": "array"
+    },
+    "C_CPPCHECK_CLI_LINT_MODE": {
+      "$id": "#/properties/C_CPPCHECK_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "project"
+      ],
+      "title": "C_CPPCHECK: Override default cli lint mode",
+      "type": "string"
+    },
+    "C_CPPCHECK_COMMAND_REMOVE_ARGUMENTS": {
+      "$id": "#/properties/C_CPPCHECK_COMMAND_REMOVE_ARGUMENTS",
+      "description": "C_CPPCHECK: User custom arguments to remove before calling linter",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "C_CPPCHECK: Custom remove arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "C_CPPCHECK_DISABLE_ERRORS": {
+      "$id": "#/properties/C_CPPCHECK_DISABLE_ERRORS",
+      "default": false,
+      "title": "C_CPPCHECK: Linter doesn't make MegaLinter fail even if errors are found",
+      "type": "boolean"
+    },
+    "C_CPPCHECK_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/C_CPPCHECK_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "C_CPPCHECK: Maximum number of errors allowed",
+      "type": "number"
+    },
+    "C_CPPCHECK_FILE_EXTENSIONS": {
+      "$id": "#/properties/C_CPPCHECK_FILE_EXTENSIONS",
+      "examples:": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "C_CPPCHECK: Override descriptor/linter matching files extensions",
+      "type": "array"
+    },
+    "C_CPPCHECK_FILE_NAMES_REGEX": {
+      "$id": "#/properties/C_CPPCHECK_FILE_NAMES_REGEX",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "C_CPPCHECK: Override descriptor/linter matching file name regex",
+      "type": "array"
+    },
+    "C_CPPCHECK_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/C_CPPCHECK_FILTER_REGEX_EXCLUDE",
+      "title": "C_CPPCHECK: Excluding Regex",
+      "type": "string"
+    },
+    "C_CPPCHECK_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/C_CPPCHECK_FILTER_REGEX_INCLUDE",
+      "title": "C_CPPCHECK: Including Regex",
+      "type": "string"
+    },
+    "C_CPPCHECK_POST_COMMANDS": {
+      "$id": "#/properties/C_CPPCHECK_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "C_CPPCHECK: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "C_CPPCHECK_PRE_COMMANDS": {
+      "$id": "#/properties/C_CPPCHECK_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "C_CPPCHECK: Define or override a list of bash commands to run before the linter",
+      "type": "array"
+    },
+    "C_CPPCHECK_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/C_CPPCHECK_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling C_CPPCHECK and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "C_CPPCHECK: Unsecured env variables",
+      "type": "array"
+    },
     "C_CPPLINT_ARGUMENTS": {
       "$id": "#/properties/C_CPPLINT_ARGUMENTS",
       "description": "C_CPPLINT: User custom arguments to add in linter CLI call",
@@ -4481,7 +4830,7 @@
       "$id": "#/properties/DART_DARTANALYZER_CLI_EXECUTABLE",
       "default": [
         [
-          "dartanalyzer"
+          "dart"
         ]
       ],
       "items": {
@@ -4518,7 +4867,7 @@
     },
     "DART_DARTANALYZER_CONFIG_FILE": {
       "$id": "#/properties/DART_DARTANALYZER_CONFIG_FILE",
-      "default": "analysis_options.yml",
+      "default": "analysis_options.yaml",
       "description": "DART_DARTANALYZER: User custom config file name if different from default",
       "title": "DART_DARTANALYZER: Custom config file name",
       "type": "string"
@@ -5135,7 +5484,7 @@
     },
     "EDITORCONFIG_EDITORCONFIG_CHECKER_CONFIG_FILE": {
       "$id": "#/properties/EDITORCONFIG_EDITORCONFIG_CHECKER_CONFIG_FILE",
-      "default": ".ecrc",
+      "default": ".editorconfig-checker.json",
       "description": "EDITORCONFIG_EDITORCONFIG_CHECKER: User custom config file name if different from default",
       "title": "EDITORCONFIG_EDITORCONFIG_CHECKER: Custom config file name",
       "type": "string"
@@ -5350,6 +5699,21 @@
         "$ref": "#/definitions/enum_descriptor_keys"
       },
       "title": "Enabled descriptor keys",
+      "type": "array"
+    },
+    "ENABLE_ERRORS_LINTERS": {
+      "$id": "#/properties/ENABLE_ERRORS_LINTERS",
+      "description": "If ENABLE_ERRORS_LINTERS is set, only the listed linters will be considered as blocking",
+      "examples": [
+        [
+          "REPOSITORY_TRIVY",
+          "REPOSITORY_GITLEAKS"
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/enum_linter_keys"
+      },
+      "title": "Disabled errors linter keys",
       "type": "array"
     },
     "ENABLE_LINTERS": {
@@ -6076,6 +6440,17 @@
       },
       "title": "GO_GOLANGCI_LINT: CLI Executable",
       "type": "array"
+    },
+    "GO_GOLANGCI_LINT_CLI_LINT_MODE": {
+      "$id": "#/properties/GO_GOLANGCI_LINT_CLI_LINT_MODE",
+      "default": "project",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "GO_GOLANGCI_LINT: Override default cli lint mode",
+      "type": "string"
     },
     "GO_GOLANGCI_LINT_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/GO_GOLANGCI_LINT_COMMAND_REMOVE_ARGUMENTS",
@@ -8071,6 +8446,12 @@
       "title": "Pre commands for JAVA descriptor",
       "type": "array"
     },
+    "JOB_SUMMARY_ADDITIONAL_MARKDOWN": {
+      "$id": "#/properties/JOB_SUMMARY_ADDITIONAL_MARKDOWN",
+      "description": "Custom markdown to add at the end of the summary message posted on a PR/MR",
+      "title": "Job Summary additional markdown",
+      "type": "string"
+    },
     "JSON_ESLINT_PLUGIN_JSONC_ARGUMENTS": {
       "$id": "#/properties/JSON_ESLINT_PLUGIN_JSONC_ARGUMENTS",
       "description": "JSON_ESLINT_PLUGIN_JSONC: User custom arguments to add in linter CLI call",
@@ -8434,6 +8815,17 @@
       },
       "title": "JSON_NPM_PACKAGE_JSON_LINT: CLI Executable",
       "type": "array"
+    },
+    "JSON_NPM_PACKAGE_JSON_LINT_CLI_LINT_MODE": {
+      "$id": "#/properties/JSON_NPM_PACKAGE_JSON_LINT_CLI_LINT_MODE",
+      "default": "project",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "JSON_NPM_PACKAGE_JSON_LINT: Override default cli lint mode",
+      "type": "string"
     },
     "JSON_NPM_PACKAGE_JSON_LINT_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/JSON_NPM_PACKAGE_JSON_LINT_COMMAND_REMOVE_ARGUMENTS",
@@ -8959,7 +9351,7 @@
     },
     "JSX_ESLINT_CONFIG_FILE": {
       "$id": "#/properties/JSX_ESLINT_CONFIG_FILE",
-      "default": ".eslintrc.json",
+      "default": "eslint.config.js",
       "description": "JSX_ESLINT: User custom config file name if different from default",
       "title": "JSX_ESLINT: Custom config file name",
       "type": "string"
@@ -9139,6 +9531,17 @@
       },
       "title": "KOTLIN_DETEKT: CLI Executable",
       "type": "array"
+    },
+    "KOTLIN_DETEKT_CLI_LINT_MODE": {
+      "$id": "#/properties/KOTLIN_DETEKT_CLI_LINT_MODE",
+      "default": "project",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "KOTLIN_DETEKT: Override default cli lint mode",
+      "type": "string"
     },
     "KOTLIN_DETEKT_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/KOTLIN_DETEKT_COMMAND_REMOVE_ARGUMENTS",
@@ -9470,6 +9873,17 @@
       "title": "KUBERNETES_HELM: CLI Executable",
       "type": "array"
     },
+    "KUBERNETES_HELM_CLI_LINT_MODE": {
+      "$id": "#/properties/KUBERNETES_HELM_CLI_LINT_MODE",
+      "default": "project",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "KUBERNETES_HELM: Override default cli lint mode",
+      "type": "string"
+    },
     "KUBERNETES_HELM_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/KUBERNETES_HELM_COMMAND_REMOVE_ARGUMENTS",
       "description": "KUBERNETES_HELM: User custom arguments to remove before calling linter",
@@ -9754,6 +10168,17 @@
       },
       "title": "KUBERNETES_KUBESCAPE: CLI Executable",
       "type": "array"
+    },
+    "KUBERNETES_KUBESCAPE_CLI_LINT_MODE": {
+      "$id": "#/properties/KUBERNETES_KUBESCAPE_CLI_LINT_MODE",
+      "default": "project",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "KUBERNETES_KUBESCAPE: Override default cli lint mode",
+      "type": "string"
     },
     "KUBERNETES_KUBESCAPE_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/KUBERNETES_KUBESCAPE_COMMAND_REMOVE_ARGUMENTS",
@@ -10464,6 +10889,322 @@
         "$ref": "#/definitions/command_info"
       },
       "title": "Pre commands for LUA descriptor",
+      "type": "array"
+    },
+    "LUA_SELENE_ARGUMENTS": {
+      "$id": "#/properties/LUA_SELENE_ARGUMENTS",
+      "description": "LUA_SELENE: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "LUA_SELENE: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "LUA_SELENE_CLI_EXECUTABLE": {
+      "$id": "#/properties/LUA_SELENE_CLI_EXECUTABLE",
+      "default": [
+        [
+          "selene"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "LUA_SELENE: CLI Executable",
+      "type": "array"
+    },
+    "LUA_SELENE_CLI_LINT_MODE": {
+      "$id": "#/properties/LUA_SELENE_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "project"
+      ],
+      "title": "LUA_SELENE: Override default cli lint mode",
+      "type": "string"
+    },
+    "LUA_SELENE_COMMAND_REMOVE_ARGUMENTS": {
+      "$id": "#/properties/LUA_SELENE_COMMAND_REMOVE_ARGUMENTS",
+      "description": "LUA_SELENE: User custom arguments to remove before calling linter",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "LUA_SELENE: Custom remove arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "LUA_SELENE_CONFIG_FILE": {
+      "$id": "#/properties/LUA_SELENE_CONFIG_FILE",
+      "default": "selene.toml",
+      "description": "LUA_SELENE: User custom config file name if different from default",
+      "title": "LUA_SELENE: Custom config file name",
+      "type": "string"
+    },
+    "LUA_SELENE_DISABLE_ERRORS": {
+      "$id": "#/properties/LUA_SELENE_DISABLE_ERRORS",
+      "default": false,
+      "title": "LUA_SELENE: Linter doesn't make MegaLinter fail even if errors are found",
+      "type": "boolean"
+    },
+    "LUA_SELENE_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/LUA_SELENE_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "LUA_SELENE: Maximum number of errors allowed",
+      "type": "number"
+    },
+    "LUA_SELENE_FILE_EXTENSIONS": {
+      "$id": "#/properties/LUA_SELENE_FILE_EXTENSIONS",
+      "examples:": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "LUA_SELENE: Override descriptor/linter matching files extensions",
+      "type": "array"
+    },
+    "LUA_SELENE_FILE_NAMES_REGEX": {
+      "$id": "#/properties/LUA_SELENE_FILE_NAMES_REGEX",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "LUA_SELENE: Override descriptor/linter matching file name regex",
+      "type": "array"
+    },
+    "LUA_SELENE_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/LUA_SELENE_FILTER_REGEX_EXCLUDE",
+      "title": "LUA_SELENE: Excluding Regex",
+      "type": "string"
+    },
+    "LUA_SELENE_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/LUA_SELENE_FILTER_REGEX_INCLUDE",
+      "title": "LUA_SELENE: Including Regex",
+      "type": "string"
+    },
+    "LUA_SELENE_POST_COMMANDS": {
+      "$id": "#/properties/LUA_SELENE_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "LUA_SELENE: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "LUA_SELENE_PRE_COMMANDS": {
+      "$id": "#/properties/LUA_SELENE_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "LUA_SELENE: Define or override a list of bash commands to run before the linter",
+      "type": "array"
+    },
+    "LUA_SELENE_RULES_PATH": {
+      "$id": "#/properties/LUA_SELENE_RULES_PATH",
+      "description": "LUA_SELENE: Path where to find linter configuration file",
+      "title": "LUA_SELENE: Custom config file path",
+      "type": "string"
+    },
+    "LUA_SELENE_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/LUA_SELENE_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling LUA_SELENE and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "LUA_SELENE: Unsecured env variables",
+      "type": "array"
+    },
+    "LUA_STYLUA_ARGUMENTS": {
+      "$id": "#/properties/LUA_STYLUA_ARGUMENTS",
+      "description": "LUA_STYLUA: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "LUA_STYLUA: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "LUA_STYLUA_CLI_EXECUTABLE": {
+      "$id": "#/properties/LUA_STYLUA_CLI_EXECUTABLE",
+      "default": [
+        [
+          "stylua"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "LUA_STYLUA: CLI Executable",
+      "type": "array"
+    },
+    "LUA_STYLUA_CLI_LINT_MODE": {
+      "$id": "#/properties/LUA_STYLUA_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "project"
+      ],
+      "title": "LUA_STYLUA: Override default cli lint mode",
+      "type": "string"
+    },
+    "LUA_STYLUA_COMMAND_REMOVE_ARGUMENTS": {
+      "$id": "#/properties/LUA_STYLUA_COMMAND_REMOVE_ARGUMENTS",
+      "description": "LUA_STYLUA: User custom arguments to remove before calling linter",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "LUA_STYLUA: Custom remove arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "LUA_STYLUA_CONFIG_FILE": {
+      "$id": "#/properties/LUA_STYLUA_CONFIG_FILE",
+      "default": "stylua.toml",
+      "description": "LUA_STYLUA: User custom config file name if different from default",
+      "title": "LUA_STYLUA: Custom config file name",
+      "type": "string"
+    },
+    "LUA_STYLUA_DISABLE_ERRORS": {
+      "$id": "#/properties/LUA_STYLUA_DISABLE_ERRORS",
+      "default": false,
+      "title": "LUA_STYLUA: Linter doesn't make MegaLinter fail even if errors are found",
+      "type": "boolean"
+    },
+    "LUA_STYLUA_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/LUA_STYLUA_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "LUA_STYLUA: Maximum number of errors allowed",
+      "type": "number"
+    },
+    "LUA_STYLUA_FILE_EXTENSIONS": {
+      "$id": "#/properties/LUA_STYLUA_FILE_EXTENSIONS",
+      "examples:": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "LUA_STYLUA: Override descriptor/linter matching files extensions",
+      "type": "array"
+    },
+    "LUA_STYLUA_FILE_NAMES_REGEX": {
+      "$id": "#/properties/LUA_STYLUA_FILE_NAMES_REGEX",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "LUA_STYLUA: Override descriptor/linter matching file name regex",
+      "type": "array"
+    },
+    "LUA_STYLUA_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/LUA_STYLUA_FILTER_REGEX_EXCLUDE",
+      "title": "LUA_STYLUA: Excluding Regex",
+      "type": "string"
+    },
+    "LUA_STYLUA_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/LUA_STYLUA_FILTER_REGEX_INCLUDE",
+      "title": "LUA_STYLUA: Including Regex",
+      "type": "string"
+    },
+    "LUA_STYLUA_POST_COMMANDS": {
+      "$id": "#/properties/LUA_STYLUA_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "LUA_STYLUA: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "LUA_STYLUA_PRE_COMMANDS": {
+      "$id": "#/properties/LUA_STYLUA_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "LUA_STYLUA: Define or override a list of bash commands to run before the linter",
+      "type": "array"
+    },
+    "LUA_STYLUA_RULES_PATH": {
+      "$id": "#/properties/LUA_STYLUA_RULES_PATH",
+      "description": "LUA_STYLUA: Path where to find linter configuration file",
+      "title": "LUA_STYLUA: Custom config file path",
+      "type": "string"
+    },
+    "LUA_STYLUA_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/LUA_STYLUA_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling LUA_STYLUA and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "LUA_STYLUA: Unsecured env variables",
       "type": "array"
     },
     "MAKEFILE_CHECKMAKE_ARGUMENTS": {
@@ -12032,6 +12773,17 @@
       "title": "PHP_PHPCSFIXER: CLI Executable",
       "type": "array"
     },
+    "PHP_PHPCSFIXER_CLI_LINT_MODE": {
+      "$id": "#/properties/PHP_PHPCSFIXER_CLI_LINT_MODE",
+      "default": "project",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "PHP_PHPCSFIXER: Override default cli lint mode",
+      "type": "string"
+    },
     "PHP_PHPCSFIXER_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/PHP_PHPCSFIXER_COMMAND_REMOVE_ARGUMENTS",
       "description": "PHP_PHPCSFIXER: User custom arguments to remove before calling linter",
@@ -13136,6 +13888,13 @@
       "title": "POWERSHELL_POWERSHELL_FORMATTER: Including Regex",
       "type": "string"
     },
+    "POWERSHELL_POWERSHELL_FORMATTER_OUTPUT_ENCODING": {
+      "$id": "#/properties/POWERSHELL_POWERSHELL_FORMATTER_OUTPUT_ENCODING",
+      "default": "utf8",
+      "description": "POWERSHELL_POWERSHELL_FORMATTER: `-Encoding` to be used when writing content to the file",
+      "title": "POWERSHELL_POWERSHELL_FORMATTER: Output encoding type",
+      "type": "string"
+    },
     "POWERSHELL_POWERSHELL_FORMATTER_POST_COMMANDS": {
       "$id": "#/properties/POWERSHELL_POWERSHELL_FORMATTER_POST_COMMANDS",
       "examples": [
@@ -14032,6 +14791,20 @@
       },
       "title": "PYTHON_BLACK: Unsecured env variables",
       "type": "array"
+    },
+    "PYTHON_DEFAULT_STYLE": {
+      "$id": "#/properties/PYTHON_DEFAULT_STYLE",
+      "description": "Style of python formatting to apply",
+      "enum": [
+        "black",
+        "ruff"
+      ],
+      "examples": [
+        "black",
+        "ruff"
+      ],
+      "title": "Python default style",
+      "type": "string"
     },
     "PYTHON_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/PYTHON_FILTER_REGEX_EXCLUDE",
@@ -15002,6 +15775,165 @@
       "title": "PYTHON_RUFF: Including Regex",
       "type": "string"
     },
+    "PYTHON_RUFF_FORMAT_ARGUMENTS": {
+      "$id": "#/properties/PYTHON_RUFF_FORMAT_ARGUMENTS",
+      "description": "PYTHON_RUFF_FORMAT: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "PYTHON_RUFF_FORMAT: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "PYTHON_RUFF_FORMAT_CLI_EXECUTABLE": {
+      "$id": "#/properties/PYTHON_RUFF_FORMAT_CLI_EXECUTABLE",
+      "default": [
+        [
+          "ruff"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "PYTHON_RUFF_FORMAT: CLI Executable",
+      "type": "array"
+    },
+    "PYTHON_RUFF_FORMAT_CLI_LINT_MODE": {
+      "$id": "#/properties/PYTHON_RUFF_FORMAT_CLI_LINT_MODE",
+      "default": "list_of_files",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "PYTHON_RUFF_FORMAT: Override default cli lint mode",
+      "type": "string"
+    },
+    "PYTHON_RUFF_FORMAT_COMMAND_REMOVE_ARGUMENTS": {
+      "$id": "#/properties/PYTHON_RUFF_FORMAT_COMMAND_REMOVE_ARGUMENTS",
+      "description": "PYTHON_RUFF_FORMAT: User custom arguments to remove before calling linter",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "PYTHON_RUFF_FORMAT: Custom remove arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "PYTHON_RUFF_FORMAT_CONFIG_FILE": {
+      "$id": "#/properties/PYTHON_RUFF_FORMAT_CONFIG_FILE",
+      "default": ".ruff.toml",
+      "description": "PYTHON_RUFF_FORMAT: User custom config file name if different from default",
+      "title": "PYTHON_RUFF_FORMAT: Custom config file name",
+      "type": "string"
+    },
+    "PYTHON_RUFF_FORMAT_DISABLE_ERRORS": {
+      "$id": "#/properties/PYTHON_RUFF_FORMAT_DISABLE_ERRORS",
+      "default": false,
+      "title": "PYTHON_RUFF_FORMAT: Linter doesn't make MegaLinter fail even if errors are found",
+      "type": "boolean"
+    },
+    "PYTHON_RUFF_FORMAT_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/PYTHON_RUFF_FORMAT_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "PYTHON_RUFF_FORMAT: Maximum number of errors allowed",
+      "type": "number"
+    },
+    "PYTHON_RUFF_FORMAT_FILE_EXTENSIONS": {
+      "$id": "#/properties/PYTHON_RUFF_FORMAT_FILE_EXTENSIONS",
+      "examples:": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "PYTHON_RUFF_FORMAT: Override descriptor/linter matching files extensions",
+      "type": "array"
+    },
+    "PYTHON_RUFF_FORMAT_FILE_NAMES_REGEX": {
+      "$id": "#/properties/PYTHON_RUFF_FORMAT_FILE_NAMES_REGEX",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "PYTHON_RUFF_FORMAT: Override descriptor/linter matching file name regex",
+      "type": "array"
+    },
+    "PYTHON_RUFF_FORMAT_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/PYTHON_RUFF_FORMAT_FILTER_REGEX_EXCLUDE",
+      "title": "PYTHON_RUFF_FORMAT: Excluding Regex",
+      "type": "string"
+    },
+    "PYTHON_RUFF_FORMAT_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/PYTHON_RUFF_FORMAT_FILTER_REGEX_INCLUDE",
+      "title": "PYTHON_RUFF_FORMAT: Including Regex",
+      "type": "string"
+    },
+    "PYTHON_RUFF_FORMAT_POST_COMMANDS": {
+      "$id": "#/properties/PYTHON_RUFF_FORMAT_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "PYTHON_RUFF_FORMAT: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "PYTHON_RUFF_FORMAT_PRE_COMMANDS": {
+      "$id": "#/properties/PYTHON_RUFF_FORMAT_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "PYTHON_RUFF_FORMAT: Define or override a list of bash commands to run before the linter",
+      "type": "array"
+    },
+    "PYTHON_RUFF_FORMAT_RULES_PATH": {
+      "$id": "#/properties/PYTHON_RUFF_FORMAT_RULES_PATH",
+      "description": "PYTHON_RUFF_FORMAT: Path where to find linter configuration file",
+      "title": "PYTHON_RUFF_FORMAT: Custom config file path",
+      "type": "string"
+    },
+    "PYTHON_RUFF_FORMAT_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/PYTHON_RUFF_FORMAT_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling PYTHON_RUFF_FORMAT and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "PYTHON_RUFF_FORMAT: Unsecured env variables",
+      "type": "array"
+    },
     "PYTHON_RUFF_POST_COMMANDS": {
       "$id": "#/properties/PYTHON_RUFF_POST_COMMANDS",
       "examples": [
@@ -15308,6 +16240,17 @@
       "title": "REPOSITORY_CHECKOV: CLI Executable",
       "type": "array"
     },
+    "REPOSITORY_CHECKOV_CLI_LINT_MODE": {
+      "$id": "#/properties/REPOSITORY_CHECKOV_CLI_LINT_MODE",
+      "default": "project",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "REPOSITORY_CHECKOV: Override default cli lint mode",
+      "type": "string"
+    },
     "REPOSITORY_CHECKOV_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/REPOSITORY_CHECKOV_COMMAND_REMOVE_ARGUMENTS",
       "description": "REPOSITORY_CHECKOV: User custom arguments to remove before calling linter",
@@ -15421,6 +16364,17 @@
       },
       "title": "REPOSITORY_DEVSKIM: CLI Executable",
       "type": "array"
+    },
+    "REPOSITORY_DEVSKIM_CLI_LINT_MODE": {
+      "$id": "#/properties/REPOSITORY_DEVSKIM_CLI_LINT_MODE",
+      "default": "project",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "REPOSITORY_DEVSKIM: Override default cli lint mode",
+      "type": "string"
     },
     "REPOSITORY_DEVSKIM_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/REPOSITORY_DEVSKIM_COMMAND_REMOVE_ARGUMENTS",
@@ -15536,6 +16490,17 @@
       "title": "REPOSITORY_DUSTILOCK: CLI Executable",
       "type": "array"
     },
+    "REPOSITORY_DUSTILOCK_CLI_LINT_MODE": {
+      "$id": "#/properties/REPOSITORY_DUSTILOCK_CLI_LINT_MODE",
+      "default": "project",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "REPOSITORY_DUSTILOCK: Override default cli lint mode",
+      "type": "string"
+    },
     "REPOSITORY_DUSTILOCK_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/REPOSITORY_DUSTILOCK_COMMAND_REMOVE_ARGUMENTS",
       "description": "REPOSITORY_DUSTILOCK: User custom arguments to remove before calling linter",
@@ -15647,6 +16612,17 @@
       "title": "REPOSITORY_GITLEAKS: CLI Executable",
       "type": "array"
     },
+    "REPOSITORY_GITLEAKS_CLI_LINT_MODE": {
+      "$id": "#/properties/REPOSITORY_GITLEAKS_CLI_LINT_MODE",
+      "default": "project",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "REPOSITORY_GITLEAKS: Override default cli lint mode",
+      "type": "string"
+    },
     "REPOSITORY_GITLEAKS_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/REPOSITORY_GITLEAKS_COMMAND_REMOVE_ARGUMENTS",
       "description": "REPOSITORY_GITLEAKS: User custom arguments to remove before calling linter",
@@ -15716,6 +16692,24 @@
       "title": "REPOSITORY_GITLEAKS: Define or override a list of bash commands to run before the linter",
       "type": "array"
     },
+    "REPOSITORY_GITLEAKS_PR_COMMITS_SCAN": {
+      "$id": "#/properties/REPOSITORY_GITLEAKS_PR_COMMITS_SCAN",
+      "default": false,
+      "title": "REPOSITORY_GITLEAKS: Scan only commits in the current Pull Request/Merge Request",
+      "type": "boolean"
+    },
+    "REPOSITORY_GITLEAKS_PR_SOURCE_SHA": {
+      "$id": "#/properties/REPOSITORY_GITLEAKS_PR_SOURCE_SHA",
+      "default": "",
+      "title": "REPOSITORY_GITLEAKS: Source commit SHA of the Pull Request/Merge Request",
+      "type": "string"
+    },
+    "REPOSITORY_GITLEAKS_PR_TARGET_SHA": {
+      "$id": "#/properties/REPOSITORY_GITLEAKS_PR_TARGET_SHA",
+      "default": "",
+      "title": "REPOSITORY_GITLEAKS: Target commit SHA of the Pull Request/Merge Request",
+      "type": "string"
+    },
     "REPOSITORY_GITLEAKS_RULES_PATH": {
       "$id": "#/properties/REPOSITORY_GITLEAKS_RULES_PATH",
       "description": "REPOSITORY_GITLEAKS: Path where to find linter configuration file",
@@ -15760,6 +16754,17 @@
       },
       "title": "REPOSITORY_GIT_DIFF: CLI Executable",
       "type": "array"
+    },
+    "REPOSITORY_GIT_DIFF_CLI_LINT_MODE": {
+      "$id": "#/properties/REPOSITORY_GIT_DIFF_CLI_LINT_MODE",
+      "default": "project",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "REPOSITORY_GIT_DIFF: Override default cli lint mode",
+      "type": "string"
     },
     "REPOSITORY_GIT_DIFF_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/REPOSITORY_GIT_DIFF_COMMAND_REMOVE_ARGUMENTS",
@@ -15950,6 +16955,17 @@
       "title": "REPOSITORY_GRYPE: CLI Executable",
       "type": "array"
     },
+    "REPOSITORY_GRYPE_CLI_LINT_MODE": {
+      "$id": "#/properties/REPOSITORY_GRYPE_CLI_LINT_MODE",
+      "default": "project",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "REPOSITORY_GRYPE: Override default cli lint mode",
+      "type": "string"
+    },
     "REPOSITORY_GRYPE_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/REPOSITORY_GRYPE_COMMAND_REMOVE_ARGUMENTS",
       "description": "REPOSITORY_GRYPE: User custom arguments to remove before calling linter",
@@ -16064,6 +17080,17 @@
       "title": "REPOSITORY_KICS: CLI Executable",
       "type": "array"
     },
+    "REPOSITORY_KICS_CLI_LINT_MODE": {
+      "$id": "#/properties/REPOSITORY_KICS_CLI_LINT_MODE",
+      "default": "project",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "REPOSITORY_KICS: Override default cli lint mode",
+      "type": "string"
+    },
     "REPOSITORY_KICS_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/REPOSITORY_KICS_COMMAND_REMOVE_ARGUMENTS",
       "description": "REPOSITORY_KICS: User custom arguments to remove before calling linter",
@@ -16149,6 +17176,131 @@
       "title": "REPOSITORY_KICS: Unsecured env variables",
       "type": "array"
     },
+    "REPOSITORY_LS_LINT_ARGUMENTS": {
+      "$id": "#/properties/REPOSITORY_LS_LINT_ARGUMENTS",
+      "description": "REPOSITORY_LS_LINT: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_LS_LINT: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "REPOSITORY_LS_LINT_CLI_EXECUTABLE": {
+      "$id": "#/properties/REPOSITORY_LS_LINT_CLI_EXECUTABLE",
+      "default": [
+        [
+          "ls-lint"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_LS_LINT: CLI Executable",
+      "type": "array"
+    },
+    "REPOSITORY_LS_LINT_CLI_LINT_MODE": {
+      "$id": "#/properties/REPOSITORY_LS_LINT_CLI_LINT_MODE",
+      "default": "project",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "REPOSITORY_LS_LINT: Override default cli lint mode",
+      "type": "string"
+    },
+    "REPOSITORY_LS_LINT_COMMAND_REMOVE_ARGUMENTS": {
+      "$id": "#/properties/REPOSITORY_LS_LINT_COMMAND_REMOVE_ARGUMENTS",
+      "description": "REPOSITORY_LS_LINT: User custom arguments to remove before calling linter",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_LS_LINT: Custom remove arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "REPOSITORY_LS_LINT_CONFIG_FILE": {
+      "$id": "#/properties/REPOSITORY_LS_LINT_CONFIG_FILE",
+      "default": ".ls-lint.yml",
+      "description": "REPOSITORY_LS_LINT: User custom config file name if different from default",
+      "title": "REPOSITORY_LS_LINT: Custom config file name",
+      "type": "string"
+    },
+    "REPOSITORY_LS_LINT_DISABLE_ERRORS": {
+      "$id": "#/properties/REPOSITORY_LS_LINT_DISABLE_ERRORS",
+      "default": false,
+      "title": "REPOSITORY_LS_LINT: Linter doesn't make MegaLinter fail even if errors are found",
+      "type": "boolean"
+    },
+    "REPOSITORY_LS_LINT_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/REPOSITORY_LS_LINT_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "REPOSITORY_LS_LINT: Maximum number of errors allowed",
+      "type": "number"
+    },
+    "REPOSITORY_LS_LINT_POST_COMMANDS": {
+      "$id": "#/properties/REPOSITORY_LS_LINT_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "REPOSITORY_LS_LINT: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "REPOSITORY_LS_LINT_PRE_COMMANDS": {
+      "$id": "#/properties/REPOSITORY_LS_LINT_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "REPOSITORY_LS_LINT: Define or override a list of bash commands to run before the linter",
+      "type": "array"
+    },
+    "REPOSITORY_LS_LINT_RULES_PATH": {
+      "$id": "#/properties/REPOSITORY_LS_LINT_RULES_PATH",
+      "description": "REPOSITORY_LS_LINT: Path where to find linter configuration file",
+      "title": "REPOSITORY_LS_LINT: Custom config file path",
+      "type": "string"
+    },
+    "REPOSITORY_LS_LINT_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/REPOSITORY_LS_LINT_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling REPOSITORY_LS_LINT and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_LS_LINT: Unsecured env variables",
+      "type": "array"
+    },
     "REPOSITORY_POST_COMMANDS": {
       "$id": "#/properties/REPOSITORY_POST_COMMANDS",
       "examples": [
@@ -16211,6 +17363,17 @@
       },
       "title": "REPOSITORY_SECRETLINT: CLI Executable",
       "type": "array"
+    },
+    "REPOSITORY_SECRETLINT_CLI_LINT_MODE": {
+      "$id": "#/properties/REPOSITORY_SECRETLINT_CLI_LINT_MODE",
+      "default": "project",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "REPOSITORY_SECRETLINT: Override default cli lint mode",
+      "type": "string"
     },
     "REPOSITORY_SECRETLINT_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/REPOSITORY_SECRETLINT_COMMAND_REMOVE_ARGUMENTS",
@@ -16325,6 +17488,17 @@
       },
       "title": "REPOSITORY_SEMGREP: CLI Executable",
       "type": "array"
+    },
+    "REPOSITORY_SEMGREP_CLI_LINT_MODE": {
+      "$id": "#/properties/REPOSITORY_SEMGREP_CLI_LINT_MODE",
+      "default": "project",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "REPOSITORY_SEMGREP: Override default cli lint mode",
+      "type": "string"
     },
     "REPOSITORY_SEMGREP_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/REPOSITORY_SEMGREP_COMMAND_REMOVE_ARGUMENTS",
@@ -16443,6 +17617,17 @@
       "title": "REPOSITORY_SYFT: CLI Executable",
       "type": "array"
     },
+    "REPOSITORY_SYFT_CLI_LINT_MODE": {
+      "$id": "#/properties/REPOSITORY_SYFT_CLI_LINT_MODE",
+      "default": "project",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "REPOSITORY_SYFT: Override default cli lint mode",
+      "type": "string"
+    },
     "REPOSITORY_SYFT_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/REPOSITORY_SYFT_COMMAND_REMOVE_ARGUMENTS",
       "description": "REPOSITORY_SYFT: User custom arguments to remove before calling linter",
@@ -16557,6 +17742,17 @@
       "title": "REPOSITORY_TRIVY: CLI Executable",
       "type": "array"
     },
+    "REPOSITORY_TRIVY_CLI_LINT_MODE": {
+      "$id": "#/properties/REPOSITORY_TRIVY_CLI_LINT_MODE",
+      "default": "project",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "REPOSITORY_TRIVY: Override default cli lint mode",
+      "type": "string"
+    },
     "REPOSITORY_TRIVY_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/REPOSITORY_TRIVY_COMMAND_REMOVE_ARGUMENTS",
       "description": "REPOSITORY_TRIVY: User custom arguments to remove before calling linter",
@@ -16660,6 +17856,17 @@
       },
       "title": "REPOSITORY_TRIVY_SBOM: CLI Executable",
       "type": "array"
+    },
+    "REPOSITORY_TRIVY_SBOM_CLI_LINT_MODE": {
+      "$id": "#/properties/REPOSITORY_TRIVY_SBOM_CLI_LINT_MODE",
+      "default": "project",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "REPOSITORY_TRIVY_SBOM: Override default cli lint mode",
+      "type": "string"
     },
     "REPOSITORY_TRIVY_SBOM_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/REPOSITORY_TRIVY_SBOM_COMMAND_REMOVE_ARGUMENTS",
@@ -16784,6 +17991,17 @@
       },
       "title": "REPOSITORY_TRUFFLEHOG: CLI Executable",
       "type": "array"
+    },
+    "REPOSITORY_TRUFFLEHOG_CLI_LINT_MODE": {
+      "$id": "#/properties/REPOSITORY_TRUFFLEHOG_CLI_LINT_MODE",
+      "default": "project",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "REPOSITORY_TRUFFLEHOG: Override default cli lint mode",
+      "type": "string"
     },
     "REPOSITORY_TRUFFLEHOG_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/REPOSITORY_TRUFFLEHOG_COMMAND_REMOVE_ARGUMENTS",
@@ -17607,6 +18825,17 @@
       "title": "RUST_CLIPPY: CLI Executable",
       "type": "array"
     },
+    "RUST_CLIPPY_CLI_LINT_MODE": {
+      "$id": "#/properties/RUST_CLIPPY_CLI_LINT_MODE",
+      "default": "project",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "RUST_CLIPPY: Override default cli lint mode",
+      "type": "string"
+    },
     "RUST_CLIPPY_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/RUST_CLIPPY_COMMAND_REMOVE_ARGUMENTS",
       "description": "RUST_CLIPPY: User custom arguments to remove before calling linter",
@@ -18021,6 +19250,17 @@
       "title": "SALESFORCE_LIGHTNING_FLOW_SCANNER: CLI Executable",
       "type": "array"
     },
+    "SALESFORCE_LIGHTNING_FLOW_SCANNER_CLI_LINT_MODE": {
+      "$id": "#/properties/SALESFORCE_LIGHTNING_FLOW_SCANNER_CLI_LINT_MODE",
+      "default": "project",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "SALESFORCE_LIGHTNING_FLOW_SCANNER: Override default cli lint mode",
+      "type": "string"
+    },
     "SALESFORCE_LIGHTNING_FLOW_SCANNER_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/SALESFORCE_LIGHTNING_FLOW_SCANNER_COMMAND_REMOVE_ARGUMENTS",
       "description": "SALESFORCE_LIGHTNING_FLOW_SCANNER: User custom arguments to remove before calling linter",
@@ -18176,6 +19416,17 @@
       "title": "SALESFORCE_SFDX_SCANNER_APEX: CLI Executable",
       "type": "array"
     },
+    "SALESFORCE_SFDX_SCANNER_APEX_CLI_LINT_MODE": {
+      "$id": "#/properties/SALESFORCE_SFDX_SCANNER_APEX_CLI_LINT_MODE",
+      "default": "project",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "SALESFORCE_SFDX_SCANNER_APEX: Override default cli lint mode",
+      "type": "string"
+    },
     "SALESFORCE_SFDX_SCANNER_APEX_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_APEX_COMMAND_REMOVE_ARGUMENTS",
       "description": "SALESFORCE_SFDX_SCANNER_APEX: User custom arguments to remove before calling linter",
@@ -18312,6 +19563,17 @@
       },
       "title": "SALESFORCE_SFDX_SCANNER_AURA: CLI Executable",
       "type": "array"
+    },
+    "SALESFORCE_SFDX_SCANNER_AURA_CLI_LINT_MODE": {
+      "$id": "#/properties/SALESFORCE_SFDX_SCANNER_AURA_CLI_LINT_MODE",
+      "default": "project",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "SALESFORCE_SFDX_SCANNER_AURA: Override default cli lint mode",
+      "type": "string"
     },
     "SALESFORCE_SFDX_SCANNER_AURA_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_AURA_COMMAND_REMOVE_ARGUMENTS",
@@ -18485,6 +19747,17 @@
       },
       "title": "SALESFORCE_SFDX_SCANNER_LWC: CLI Executable",
       "type": "array"
+    },
+    "SALESFORCE_SFDX_SCANNER_LWC_CLI_LINT_MODE": {
+      "$id": "#/properties/SALESFORCE_SFDX_SCANNER_LWC_CLI_LINT_MODE",
+      "default": "project",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "SALESFORCE_SFDX_SCANNER_LWC: Override default cli lint mode",
+      "type": "string"
     },
     "SALESFORCE_SFDX_SCANNER_LWC_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_LWC_COMMAND_REMOVE_ARGUMENTS",
@@ -20647,6 +21920,17 @@
       "title": "SWIFT_SWIFTLINT: CLI Executable",
       "type": "array"
     },
+    "SWIFT_SWIFTLINT_CLI_LINT_MODE": {
+      "$id": "#/properties/SWIFT_SWIFTLINT_CLI_LINT_MODE",
+      "default": "project",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "SWIFT_SWIFTLINT: Override default cli lint mode",
+      "type": "string"
+    },
     "SWIFT_SWIFTLINT_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/SWIFT_SWIFTLINT_COMMAND_REMOVE_ARGUMENTS",
       "description": "SWIFT_SWIFTLINT: User custom arguments to remove before calling linter",
@@ -21600,6 +22884,17 @@
       "title": "TERRAFORM_TERRASCAN: CLI Executable",
       "type": "array"
     },
+    "TERRAFORM_TERRASCAN_CLI_LINT_MODE": {
+      "$id": "#/properties/TERRAFORM_TERRASCAN_CLI_LINT_MODE",
+      "default": "project",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "TERRAFORM_TERRASCAN: Override default cli lint mode",
+      "type": "string"
+    },
     "TERRAFORM_TERRASCAN_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/TERRAFORM_TERRASCAN_COMMAND_REMOVE_ARGUMENTS",
       "description": "TERRAFORM_TERRASCAN: User custom arguments to remove before calling linter",
@@ -21618,7 +22913,7 @@
     },
     "TERRAFORM_TERRASCAN_CONFIG_FILE": {
       "$id": "#/properties/TERRAFORM_TERRASCAN_CONFIG_FILE",
-      "default": "terrascan-config.toml",
+      "default": "terrascan.toml",
       "description": "TERRAFORM_TERRASCAN: User custom config file name if different from default",
       "title": "TERRAFORM_TERRASCAN: Custom config file name",
       "type": "string"
@@ -21738,6 +23033,17 @@
       "title": "TERRAFORM_TFLINT: CLI Executable",
       "type": "array"
     },
+    "TERRAFORM_TFLINT_CLI_LINT_MODE": {
+      "$id": "#/properties/TERRAFORM_TFLINT_CLI_LINT_MODE",
+      "default": "project",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "TERRAFORM_TFLINT: Override default cli lint mode",
+      "type": "string"
+    },
     "TERRAFORM_TFLINT_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/TERRAFORM_TFLINT_COMMAND_REMOVE_ARGUMENTS",
       "description": "TERRAFORM_TFLINT: User custom arguments to remove before calling linter",
@@ -21843,6 +23149,13 @@
       "description": "TERRAFORM_TFLINT: Path where to find linter configuration file",
       "title": "TERRAFORM_TFLINT: Custom config file path",
       "type": "string"
+    },
+    "TERRAFORM_TFLINT_SECURED_ENV": {
+      "$id": "#/properties/TERRAFORM_TFLINT_SECURED_ENV",
+      "default": true,
+      "description": "TERRAFORM_TFLINT: Allows to send the full env to **tflint --init**. Initialized with default value `true`. Set to `false` to allow `tflint --init` to access your env vars.",
+      "title": "TERRAFORM_TFLINT: Secured Environment Flag",
+      "type": "boolean"
     },
     "TERRAFORM_TFLINT_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/TERRAFORM_TFLINT_UNSECURED_ENV_VARIABLES",
@@ -22655,9 +23968,10 @@
     },
     "VBDOTNET_DOTNET_FORMAT_CLI_LINT_MODE": {
       "$id": "#/properties/VBDOTNET_DOTNET_FORMAT_CLI_LINT_MODE",
-      "default": "file",
+      "default": "project",
       "enum": [
         "file",
+        "list_of_files",
         "project"
       ],
       "title": "VBDOTNET_DOTNET_FORMAT: Override default cli lint mode",
@@ -22714,16 +24028,6 @@
       },
       "title": "VBDOTNET_DOTNET_FORMAT: Override descriptor/linter matching file name regex",
       "type": "array"
-    },
-    "VBDOTNET_DOTNET_FORMAT_FILTER_REGEX_EXCLUDE": {
-      "$id": "#/properties/VBDOTNET_DOTNET_FORMAT_FILTER_REGEX_EXCLUDE",
-      "title": "VBDOTNET_DOTNET_FORMAT: Excluding Regex",
-      "type": "string"
-    },
-    "VBDOTNET_DOTNET_FORMAT_FILTER_REGEX_INCLUDE": {
-      "$id": "#/properties/VBDOTNET_DOTNET_FORMAT_FILTER_REGEX_INCLUDE",
-      "title": "VBDOTNET_DOTNET_FORMAT: Including Regex",
-      "type": "string"
     },
     "VBDOTNET_DOTNET_FORMAT_POST_COMMANDS": {
       "$id": "#/properties/VBDOTNET_DOTNET_FORMAT_POST_COMMANDS",
@@ -22873,6 +24177,12 @@
         "string"
       ]
     },
+    "XML_XMLLINT_AUTOFORMAT": {
+      "$id": "#/properties/XML_XMLLINT_AUTOFORMAT",
+      "default": false,
+      "title": "XML_XMLLINT: If set to `true`, it will reformat and reindent the output",
+      "type": "boolean"
+    },
     "XML_XMLLINT_CLI_EXECUTABLE": {
       "$id": "#/properties/XML_XMLLINT_CLI_EXECUTABLE",
       "default": [
@@ -22957,6 +24267,12 @@
     "XML_XMLLINT_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/XML_XMLLINT_FILTER_REGEX_INCLUDE",
       "title": "XML_XMLLINT: Including Regex",
+      "type": "string"
+    },
+    "XML_XMLLINT_INDENT": {
+      "$id": "#/properties/XML_XMLLINT_INDENT",
+      "default": "  ",
+      "title": "XML_XMLLINT: The number of indentation spaces when `XML_XMLLINT_AUTOFORMAT` is `true`",
       "type": "string"
     },
     "XML_XMLLINT_POST_COMMANDS": {

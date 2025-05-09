@@ -33,7 +33,10 @@ linters:
     install:
       dockerfile:
         - |
-          RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/releases/latest/download/ktlint && \
+          # renovate: datasource=github-tags depName=pinterest/ktlint
+          ARG KTLINT_VERSION=1.5.0
+        - |
+          RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/releases/download/${KTLINT_VERSION}/ktlint && \
               chmod a+x ktlint && \
               mv "ktlint" /usr/bin/
     ide:
@@ -45,7 +48,7 @@ linters:
           url: https://github.com/w0rp/ale
   # DETEKT
   - linter_name: detekt
-    can_output_sarif: false
+    can_output_sarif: true
     linter_url: https://detekt.dev/
     linter_repo: https://github.com/detekt/detekt
     linter_rules_url: https://detekt.dev/docs/rules/comments
@@ -53,6 +56,10 @@ linters:
     linter_megalinter_ref_url: https://detekt.dev/docs/intro
     cli_executable: detekt-cli
     cli_lint_mode: project
+    cli_lint_errors_count: total_lines
+    cli_sarif_args:
+      - --report
+      - "sarif:{{SARIF_OUTPUT_FILE}}"
     examples:
       - "detekt-cli"
       - "detekt-cli --report html:folder/kotlin_detekt_result.html"
@@ -61,7 +68,7 @@ linters:
       dockerfile:
         - |
           # renovate: datasource=github-tags depName=detekt/detekt
-          ARG DETEKT_VERSION=1.23.6
+          ARG DETEKT_VERSION=1.23.8
         - |
           RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/detekt/detekt/releases/download/v${DETEKT_VERSION}/detekt-cli-${DETEKT_VERSION}.zip && \
               unzip detekt-cli-${DETEKT_VERSION}.zip && \

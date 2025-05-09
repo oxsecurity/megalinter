@@ -10,10 +10,12 @@ file_extensions:
   - ".edn"
 install:
   dockerfile:
+    - |-
+      # renovate: datasource=github-tags depName=sgerrand/alpine-pkg-glibc
+      ARG ALPINE_GLIBC_PACKAGE_VERSION=2.34-r0
     - ENV LANG=C.UTF-8
     - |
       RUN ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases/download" && \
-          ALPINE_GLIBC_PACKAGE_VERSION="2.34-r0" && \
           ALPINE_GLIBC_BASE_PACKAGE_FILENAME="glibc-$ALPINE_GLIBC_PACKAGE_VERSION.apk" && \
           ALPINE_GLIBC_BIN_PACKAGE_FILENAME="glibc-bin-$ALPINE_GLIBC_PACKAGE_VERSION.apk" && \
           ALPINE_GLIBC_I18N_PACKAGE_FILENAME="glibc-i18n-$ALPINE_GLIBC_PACKAGE_VERSION.apk" && \
@@ -71,7 +73,10 @@ linters:
     install:
       dockerfile:
         - |
-          RUN curl --retry 5 --retry-delay 5 -sLO https://raw.githubusercontent.com/clj-kondo/clj-kondo/master/script/install-clj-kondo \
+          # renovate: datasource=github-tags depName=clj-kondo/clj-kondo
+          ARG CLJ_KONDO_VERSION=2025.01.16
+        - |
+          RUN curl --retry 5 --retry-delay 5 -sLO https://raw.githubusercontent.com/clj-kondo/clj-kondo/refs/tags/v${CLJ_KONDO_VERSION}/script/install-clj-kondo \
               && chmod +x install-clj-kondo \
               && ./install-clj-kondo
     ide:
@@ -89,8 +94,6 @@ linters:
 
     # cljstyle
   - linter_name: cljstyle
-    disabled: true
-    disabled_reason: "Bug on cljstyle on alpine linux: https://github.com/greglook/cljstyle/issues/104"
     linter_url: https://github.com/greglook/cljstyle
     linter_repo: https://github.com/greglook/cljstyle
     linter_rules_url: https://github.com/greglook/cljstyle/blob/main/doc/configuration.md#format-rules
@@ -110,13 +113,16 @@ linters:
     examples:
       - "cljstyle check"
       - "cljstyle fix"
-      - "clj-kondo fix myfile.clj path/to/myfile.clj"
+      - "cljstyle fix myfile.clj path/to/myfile.clj"
     install:
       dockerfile:
+        - |-
+          # renovate: datasource=github-tags depName=greglook/cljstyle
+          ARG CLJ_STYLE_VERSION=0.17.642
         - |
           RUN curl --retry 5 --retry-delay 5 -sLO https://raw.githubusercontent.com/greglook/cljstyle/main/util/install-cljstyle \
               && chmod +x install-cljstyle \
-              && ./install-cljstyle
+              && ./install-cljstyle --static --version "$CLJ_STYLE_VERSION"
     ide:
       emacs:
         - name: cljstyle-mode

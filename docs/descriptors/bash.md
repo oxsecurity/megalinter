@@ -18,10 +18,16 @@ description: bash-exec, shellcheck, shfmt are available to analyze BASH files in
 ## Linted files
 
 - File extensions:
+  - ``
   - `.sh`
   - `.bash`
   - `.dash`
   - `.ksh`
+
+- Detected file content:
+  - `^#!/usr/bin/env bash`
+  - `^#!/bin/bash`
+  - `^#!/bin/sh`
 
 ## Configuration in MegaLinter
 
@@ -38,4 +44,4 @@ description: bash-exec, shellcheck, shfmt are available to analyze BASH files in
 ### Installation
 
 - APK packages (Linux):
-  - [bash](https://pkgs.alpinelinux.org/packages?branch=edge&name=bash)
+  - [bash](https://pkgs.alpinelinux.org/packages?branch=v3.21&arch=x86_64&name=bash)

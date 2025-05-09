@@ -34,16 +34,23 @@ description: sfdx-scanner-apex, sfdx-scanner-aura, sfdx-scanner-lwc, lightning-f
 
 - Dockerfile commands :
 ```dockerfile
+# renovate: datasource=npm depName=@salesforce/cli
+ARG NPM_SALESFORCE_CLI_VERSION=2.84.6
+# renovate: datasource=npm depName=@salesforce/plugin-packaging
+ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.13.1
+# renovate: datasource=npm depName=sfdx-hardis
+ARG SFDX_HARDIS_VERSION=5.32.0
 ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
-RUN sf plugins install @salesforce/plugin-packaging \
-    && echo y|sf plugins install sfdx-hardis \
-    && npm cache clean --force || true \
+RUN sf plugins install @salesforce/plugin-packaging@${NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION} \
+    && echo y|sf plugins install sfdx-hardis@${SFDX_HARDIS_VERSION} \
+    && (npm cache clean --force || true) \
     && rm -rf /root/.npm/_cacache
-
+ENV SF_AUTOUPDATE_DISABLE=true SF_CLI_DISABLE_AUTOUPDATE=true
 ```
 
 - APK packages (Linux):
-  - [openjdk21](https://pkgs.alpinelinux.org/packages?branch=edge&name=openjdk21)
+  - [coreutils](https://pkgs.alpinelinux.org/packages?branch=v3.21&arch=x86_64&name=coreutils)
+  - [openjdk21](https://pkgs.alpinelinux.org/packages?branch=v3.21&arch=x86_64&name=openjdk21)
 - NPM packages (node.js):
-  - [@salesforce/cli](https://www.npmjs.com/package/@salesforce/cli)
+  - [@salesforce/cli@2.84.6](https://www.npmjs.com/package/@salesforce/cli/v/2.84.6)

@@ -19,7 +19,7 @@ If you don't use python static typing, you should disable this linter by adding 
 
 ## mypy documentation
 
-- Version in MegaLinter: **1.10.0**
+- Version in MegaLinter: **1.15.0**
 - Visit [Official Web Site](https://mypy.readthedocs.io/en/stable/){target=_blank}
 - See [How to configure mypy rules](https://mypy.readthedocs.io/en/stable/config_file.html){target=_blank}
   - If custom `.mypy.ini` config file isn't found, [.mypy.ini](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.mypy.ini){target=_blank} will be used
@@ -64,15 +64,15 @@ Use mypy in your favorite IDE to catch errors before MegaLinter !
 |   <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a>   | [vim](https://www.vim.org/)                              | [Syntastic](https://github.com/vim-syntastic/syntastic)                                  |                                             [Visit Web Site](https://github.com/vim-syntastic/syntastic){target=_blank}                                              |
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/)     | [Mypy](https://marketplace.visualstudio.com/items?itemName=matangover.mypy)              | [![Install in VSCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/matangover.mypy){target=_blank} |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
-This linter is available in the following flavours
+This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                     | Embedded linters |                                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       124        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        83        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)   | Optimized for PYTHON based projects             |        63        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       127        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        88        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)   | Optimized for PYTHON based projects             |        65        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
 
 ## Behind the scenes
 
@@ -125,7 +125,7 @@ command line flags. For more details, see:
 - https://mypy.readthedocs.io/en/stable/config_file.html
 
 options:
-  --enable-incomplete-feature {PreciseTupleTypes}
+  --enable-incomplete-feature {InlineTypedDict,PreciseTupleTypes}
                             Enable support of incomplete/experimental features
                             for early preview
 
@@ -133,6 +133,8 @@ Optional arguments:
   -h, --help                Show this help message and exit
   -v, --verbose             More verbose messages
   -V, --version             Show program's version number and exit
+  -O FORMAT, --output FORMAT
+                            Set a custom output format
 
 Config file:
   Use a config file instead of command line arguments. This is useful if you
@@ -141,7 +143,7 @@ Config file:
   --config-file CONFIG_FILE
                             Configuration file, must have a [mypy] section
                             (defaults to mypy.ini, .mypy.ini, pyproject.toml,
-                            setup.cfg, ~/.config/mypy/config, ~/.mypy.ini)
+                            setup.cfg)
   --warn-unused-configs     Warn about unused '[mypy-<pattern>]' or
                             '[[tool.mypy.overrides]]' config sections
                             (inverse: --no-warn-unused-configs)
@@ -149,9 +151,10 @@ Config file:
 Import discovery:
   Configure how imports are discovered and followed.
 
-  --no-namespace-packages   Support namespace packages (PEP 420, __init__.py-
-                            less) (inverse: --namespace-packages)
+  --no-namespace-packages   Disable support for namespace packages (PEP 420,
+                            __init__.py-less) (inverse: --namespace-packages)
   --ignore-missing-imports  Silently ignore imports of missing modules
+  --follow-untyped-imports  Typecheck modules without stubs or py.typed marker
   --follow-imports {normal,silent,skip,error}
                             How to treat imports (default normal)
   --python-executable EXECUTABLE
@@ -184,9 +187,6 @@ Platform configuration:
 Disallow dynamic typing:
   Disallow the use of the dynamic 'Any' type under certain conditions.
 
-  --disallow-any-unimported
-                            Disallow Any types resulting from unfollowed
-                            imports
   --disallow-any-expr       Disallow all expressions that have type Any
   --disallow-any-decorated  Disallow functions that have Any in their
                             signature after decorator transformation
@@ -194,6 +194,9 @@ Disallow dynamic typing:
   --disallow-any-generics   Disallow usage of generic types that do not
                             specify explicit type parameters (inverse:
                             --allow-any-generics)
+  --disallow-any-unimported
+                            Disallow Any types resulting from unfollowed
+                            imports (inverse: --allow-any-unimported)
   --disallow-subclassing-any
                             Disallow subclassing values of type 'Any' when
                             defining classes (inverse: --allow-subclassing-
@@ -250,6 +253,10 @@ Configuring warnings:
                             any)
   --warn-unreachable        Warn about statements or expressions inferred to
                             be unreachable (inverse: --no-warn-unreachable)
+  --report-deprecated-as-note
+                            Report importing or using deprecated features as
+                            notes instead of errors (inverse: --no-report-
+                            deprecated-as-note)
 
 Miscellaneous strictness flags:
   --allow-untyped-globals   Suppress toplevel errors caused by missing
@@ -261,6 +268,8 @@ Miscellaneous strictness flags:
   --strict-equality         Prohibit equality, identity, and container checks
                             for non-overlapping types (inverse: --no-strict-
                             equality)
+  --strict-bytes            Disable treating bytearray and memoryview as
+                            subtypes of bytes (inverse: --no-strict-bytes)
   --extra-checks            Enable additional checks that are technically
                             correct but may be impractical in real code. For
                             example, this prohibits partial overlap in
@@ -396,8 +405,10 @@ Environment variables:
 
 - Dockerfile commands :
 ```dockerfile
+# renovate: datasource=pypi depName=mypy
+ARG PIP_MYPY_VERSION=1.15.0
 ENV MYPY_CACHE_DIR=/tmp
 ```
 
 - PIP packages (Python):
-  - [mypy](https://pypi.org/project/mypy)
+  - [mypy==1.15.0](https://pypi.org/project/mypy/1.15.0)

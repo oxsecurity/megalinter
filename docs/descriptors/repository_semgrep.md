@@ -36,18 +36,19 @@ Exception for standalone and security flavors docker images, that use a list of 
 - Enable semgrep by adding `REPOSITORY_SEMGREP` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 - Disable semgrep by adding `REPOSITORY_SEMGREP` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-| Variable                                       | Description                                                                                               | Default value |
-|------------------------------------------------|-----------------------------------------------------------------------------------------------------------|---------------|
-| REPOSITORY_SEMGREP_RULESETS                    | List of semgrep rulesets identifiers that you want to enforce                                             | `auto`        |
-| REPOSITORY_SEMGREP_RULESETS_TYPE               | MegaLinter semgrep ruleset list preset id . Available values: security                                    | ``            |
-| REPOSITORY_SEMGREP_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                  |               |
-| REPOSITORY_SEMGREP_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`      |               |
-| REPOSITORY_SEMGREP_PRE_COMMANDS                | List of bash commands to run before the linter                                                            | None          |
-| REPOSITORY_SEMGREP_POST_COMMANDS               | List of bash commands to run after the linter                                                             | None          |
-| REPOSITORY_SEMGREP_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling REPOSITORY_SEMGREP and its pre/post commands | None          |
-| REPOSITORY_SEMGREP_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                | `false`       |
-| REPOSITORY_SEMGREP_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                          | `0`           |
-| REPOSITORY_SEMGREP_CLI_EXECUTABLE              | Override CLI executable                                                                                   | `['semgrep']` |
+| Variable                                       | Description                                                                                                                                                                                                                                                                           | Default value |
+|------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|
+| REPOSITORY_SEMGREP_RULESETS                    | List of semgrep rulesets identifiers that you want to enforce                                                                                                                                                                                                                         | `auto`        |
+| REPOSITORY_SEMGREP_RULESETS_TYPE               | MegaLinter semgrep ruleset list preset id . Available values: security                                                                                                                                                                                                                | ``            |
+| REPOSITORY_SEMGREP_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                                                                                              |               |
+| REPOSITORY_SEMGREP_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                                                                                                  |               |
+| REPOSITORY_SEMGREP_CLI_LINT_MODE               | Override default CLI lint mode<br/>⚠️ As default value is **project**, overriding might not work<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `project`     |
+| REPOSITORY_SEMGREP_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                                                                                        | None          |
+| REPOSITORY_SEMGREP_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                                                                                         | None          |
+| REPOSITORY_SEMGREP_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling REPOSITORY_SEMGREP and its pre/post commands                                                                                                                                                                             | None          |
+| REPOSITORY_SEMGREP_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                                                                                            | `false`       |
+| REPOSITORY_SEMGREP_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                                                                                      | `0`           |
+| REPOSITORY_SEMGREP_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                                                                                               | `['semgrep']` |
 
 ## IDE Integration
 
@@ -57,29 +58,29 @@ Use semgrep in your favorite IDE to catch errors before MegaLinter !
 |:-------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|---------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [VSCode SemGrep](https://marketplace.visualstudio.com/items?itemName=semgrep.semgrep) | [![Install in VSCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/semgrep.semgrep){target=_blank} |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
-This linter is available in the following flavours
+This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                             | Description                                              | Embedded linters |                                                                                                                                                                                                   Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------|:---------------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)               | Default MegaLinter Flavor                                |       124        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/c_cpp.ico" alt="" height="32px" class="megalinter-icon"></a>        | [c_cpp](https://megalinter.io/beta/flavors/c_cpp/)                 | Optimized for pure C/C++ projects                        |        54        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-c_cpp/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-c_cpp) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)             | MegaLinter for the most commonly used languages          |        83        |             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
-|    <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/documentation.ico" alt="" height="32px" class="megalinter-icon"></a>    | [documentation](https://megalinter.io/beta/flavors/documentation/) | MegaLinter for documentation projects                    |        50        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-documentation/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-documentation) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/)               | Optimized for C, C++, C# or VB based projects            |        62        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
-|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/)         | Optimized for C, C++, C# or VB based projects with JS/TS |        71        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
-|         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a>          | [go](https://megalinter.io/beta/flavors/go/)                       | Optimized for GO based projects                          |        52        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-go/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-go) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)               | Default MegaLinter Flavor                                |       127        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/c_cpp.ico" alt="" height="32px" class="megalinter-icon"></a>        | [c_cpp](https://megalinter.io/beta/flavors/c_cpp/)                 | Optimized for pure C/C++ projects                        |        56        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-c_cpp/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-c_cpp) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)             | MegaLinter for the most commonly used languages          |        88        |             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+|    <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/documentation.ico" alt="" height="32px" class="megalinter-icon"></a>    | [documentation](https://megalinter.io/beta/flavors/documentation/) | MegaLinter for documentation projects                    |        49        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-documentation/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-documentation) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/)               | Optimized for C, C++, C# or VB based projects            |        64        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/)         | Optimized for C, C++, C# or VB based projects with JS/TS |        73        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
+|         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a>          | [go](https://megalinter.io/beta/flavors/go/)                       | Optimized for GO based projects                          |        51        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-go/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-go) |
 |        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.io/beta/flavors/java/)                   | Optimized for JAVA based projects                        |        53        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
-|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.io/beta/flavors/javascript/)       | Optimized for JAVASCRIPT or TYPESCRIPT based projects    |        60        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript) |
-|         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://megalinter.io/beta/flavors/php/)                     | Optimized for PHP based projects                         |        55        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-php) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)               | Optimized for PYTHON based projects                      |        63        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
-|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/ruby.ico" alt="" height="32px" class="megalinter-icon"></a>         | [ruby](https://megalinter.io/beta/flavors/ruby/)                   | Optimized for RUBY based projects                        |        51        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-ruby/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-ruby) |
-|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/rust.ico" alt="" height="32px" class="megalinter-icon"></a>         | [rust](https://megalinter.io/beta/flavors/rust/)                   | Optimized for RUST based projects                        |        51        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-rust/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-rust) |
-|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://megalinter.io/beta/flavors/salesforce/)       | Optimized for Salesforce based projects                  |        55        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce) |
+|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.io/beta/flavors/javascript/)       | Optimized for JAVASCRIPT or TYPESCRIPT based projects    |        59        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript) |
+|         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://megalinter.io/beta/flavors/php/)                     | Optimized for PHP based projects                         |        54        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-php) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)               | Optimized for PYTHON based projects                      |        65        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/ruby.ico" alt="" height="32px" class="megalinter-icon"></a>         | [ruby](https://megalinter.io/beta/flavors/ruby/)                   | Optimized for RUBY based projects                        |        50        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-ruby/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-ruby) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/rust.ico" alt="" height="32px" class="megalinter-icon"></a>         | [rust](https://megalinter.io/beta/flavors/rust/)                   | Optimized for RUST based projects                        |        50        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-rust/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-rust) |
+|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://megalinter.io/beta/flavors/salesforce/)       | Optimized for Salesforce based projects                  |        54        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://megalinter.io/beta/flavors/security/)           | Optimized for security                                   |        24        |           ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
-|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/swift.ico" alt="" height="32px" class="megalinter-icon"></a>        | [swift](https://megalinter.io/beta/flavors/swift/)                 | Optimized for SWIFT based projects                       |        51        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-swift/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-swift) |
-|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://megalinter.io/beta/flavors/terraform/)         | Optimized for TERRAFORM based projects                   |        55        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/swift.ico" alt="" height="32px" class="megalinter-icon"></a>        | [swift](https://megalinter.io/beta/flavors/swift/)                 | Optimized for SWIFT based projects                       |        50        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-swift/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-swift) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://megalinter.io/beta/flavors/terraform/)         | Optimized for TERRAFORM based projects                   |        54        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform) |
 
 ## Behind the scenes
 
@@ -147,6 +148,14 @@ OPTIONS
            Note that this mode is experimental and not guaranteed to function
            properly.
 
+       --allow-local-builds
+           Experimental: allow building projects contained in the repository.
+           This allows Semgrep to identify dependencies and dependency
+           relationships when lockfiles are not present or are insufficient.
+           However, building code may inherently require the execution of
+           code contained in the scanned project or in its dependencies,
+           which is a security risk.
+
        --allow-untrusted-validators
            Allows running rules with validators from origins other than
            semgrep.dev. Avoid running rules from origins you don't trust.
@@ -203,8 +212,7 @@ OPTIONS
            Output results in Emacs single-line format.
 
        --emacs-output=VAL
-           Write a copy of the emacs output to a file or post to or post to
-           URL.
+           Write a copy of the emacs output to a file or post to URL.
 
        --enable-nosem
            Enables 'nosem'. Findings will not be reported on lines containing
@@ -227,6 +235,11 @@ OPTIONS
            which is documented at
            https://git-scm.com/docs/gitignore#_pattern_format
 
+       --exclude-minified-files
+           Skip minified files. These are files that are > 7% whitespace, or
+           who have a large number of bytes per line. By default minified
+           files are scanned
+
        --exclude-rule=VAL
            Skip any rule with the given id. Can add multiple times.
 
@@ -246,7 +259,8 @@ OPTIONS
            on configuration file format.
 
        --files-with-matches
-           Output only the names of files containing matches
+           Output only the names of files containing matches. REQUIRES
+           --experimental
 
        --force-color (absent SEMGREP_FORCE_COLOR env)
            Always include ANSI color in the output, even if not writing to a
@@ -256,15 +270,14 @@ OPTIONS
            Output results in GitLab SAST format.
 
        --gitlab-sast-output=VAL
-           Write a copy of the GitLab SAST output to a file or post to or
-           post to URL.
+           Write a copy of the GitLab SAST output to a file or post to URL.
 
        --gitlab-secrets
            Output results in GitLab Secrets format.
 
        --gitlab-secrets-output=VAL
-           Write a copy of the GitLab Secrets output to a file or post to or
-           post to URL.
+           Write a copy of the GitLab Secrets output to a file or post to
+           URL.
 
        --historical-secrets
            Scans git history using Secrets rules.
@@ -288,7 +301,7 @@ OPTIONS
            https://git-scm.com/docs/gitignore#_pattern_format
 
        --incremental-output
-           Output results incrementally.
+           Output results incrementally. REQUIRES --experimental
 
        --interfile-timeout=VAL (absent=0)
            Maximum time to spend on interfile analysis. If set to 0 will not
@@ -303,15 +316,13 @@ OPTIONS
            Output results in Semgrep's JSON format.
 
        --json-output=VAL
-           Write a copy of the json output to a file or post to or post to
-           URL.
+           Write a copy of the json output to a file or post to URL.
 
        --junit-xml
            Output results in JUnit XML format.
 
        --junit-xml-output=VAL
-           Write a copy of the JUnit XML output to a file or post to or post
-           to URL.
+           Write a copy of the JUnit XML output to a file or post to URL.
 
        -l VAL, --lang=VAL
            Parse pattern and all files in specified language. Must be used
@@ -331,6 +342,11 @@ OPTIONS
        --max-lines-per-finding=VAL (absent=10)
            Maximum number of lines of code that will be shown for each match
            before trimming (set to 0 for unlimited).
+
+       --max-log-list-entries=VAL (absent=100)
+           Maximum number of entries that will be shown in the log (e.g.,
+           list of rule ids, list of skipped files). A zero or negative value
+           disables this filter. Defaults to 100
 
        --max-memory=VAL (absent=0)
            Maximum system memory in MiB to use during the interfile
@@ -360,6 +376,9 @@ OPTIONS
        --no-error
            negates --error
 
+       --no-exclude-minified-files
+           negates --exclude-minified-files
+
        --no-force-color
            negates --force-color
 
@@ -371,6 +390,9 @@ OPTIONS
 
        --no-secrets-validation
            Disables secret validation.
+
+       --no-semgrepignore-v2
+           negates --semgrepignore-v2
 
        --no-strict
            negates --strict
@@ -384,6 +406,12 @@ OPTIONS
        --no-trace
            negates --trace
 
+       --novcs
+           Assume the project is not managed by a version control system
+           (VCS), even if the project appears to be under version control
+           based on the presence of files such as '.git' or similar. REQUIRES
+           --experimental or --semgrepignore-v2.
+
        -o VAL, --output=VAL
            Save search results to a file or post to URL. Default is to print
            to stdout.
@@ -393,11 +421,12 @@ OPTIONS
            optimizations off.
 
        --oss-only
-           Run using only OSS features, even if the Semgrep Pro toggle is on.
+           Run using only the OSS engine, even if the Semgrep Pro toggle is
+           on. This may still run Pro rules, but only using the OSS features.
 
        --pro
-           Inter-file analysis and Pro languages (currently Apex and Elixir).
-           Requires Semgrep Pro Engine. See
+           Inter-file analysis and Pro languages (currently Apex, C#, and
+           Elixir. Requires Semgrep Pro Engine. See
            https://semgrep.dev/products/pro-engine/ for more.
 
        --pro-intrafile
@@ -406,30 +435,45 @@ OPTIONS
            https://semgrep.dev/products/pro-engine/ for more.
 
        --pro-languages
-           Enable Pro languages (currently Apex and Elixir). Requires Semgrep
-           Pro Engine. See https://semgrep.dev/products/pro-engine/ for more.
+           Enable Pro languages (currently Apex, C#, and Elixir). Requires
+           Semgrep Pro Engine. See https://semgrep.dev/products/pro-engine/
+           for more.
+
+       --pro-path-sensitive
+           Path sensitivity. Implies --pro-intrafile. Requires Semgrep Pro
+           Engine. See https://semgrep.dev/products/pro-engine/ for more.
 
        --profile
            <undocumented>
 
        --project-root=VAL
-           The project root for gitignore and semgrepignore purposes is
-           detected automatically from the presence of a .git/ directory in
-           the current directory or one of its parents. If not found, the
-           current directory is used as the project root. This option forces
-           a specific directory to be the project root. This is useful for
-           testing or for restoring compatibility with older semgrep
-           implementations that only looked for a .semgrepignore file in the
-           current directory.
+           Semgrep normally determines the type of project (git or novcs) and
+           the project root automatically. The project root is then used to
+           locate and use '.gitignore' and '.semgrepignore' files which
+           determine target files that should be ignored by semgrep. This
+           option forces the project root to be a specific folder and assumes
+           a local project without version control (novcs). This option is
+           useful to ensure the '.semgrepignore' file that may exist at the
+           project root is consulted when the scanning root is not the
+           current folder '.'. A valid project root must be a folder (path
+           referencing a directory) whose physical path is a prefix of the
+           physical path of the scanning roots passed on the command line.
+           For example, the command 'semgrep scan --project-root . src' is
+           valid if '.' is '/home/me' and 'src' is a directory or a symbolic
+           link to a '/home/me/sources' directory or a symbolic link to a
+           'sources' directory but not if it is a symbolic link to a
+           directory '/var/sources' (assuming '/var' is not a symbolic link).
+           REQUIRES --experimental or --semgrepignore-v2.
 
        -q, --quiet
            Only output findings.
 
        --remote=VAL
-           Remote will quickly checkout and scan a remote git repository of
+           Remote will quickly check out and scan a remote git repository of
            the format "http[s]://<WEBSITE>/.../<REPO>.git". Must be run with
-           --pro Incompatible with --project-root. Note this requires an
-           empty CWD as this command will clone the repository into the CWD
+           --pro. Incompatible with --project-root. Note this requires an
+           empty CWD as this command will clone the repository into the CWD.
+           REQUIRES --experimental
 
        --replacement=VAL
            An autofix expression that will be applied to any matches found
@@ -443,8 +487,7 @@ OPTIONS
            Output results in SARIF format.
 
        --sarif-output=VAL
-           Write a copy of the SARIF output to a file or post to or post to
-           URL.
+           Write a copy of the SARIF output to a file or post to URL.
 
        --scan-unknown-extensions
            If true, target files specified directly on the command line will
@@ -458,6 +501,15 @@ OPTIONS
            Run Semgrep Secrets product, including support for secret
            validation. Requires access to Secrets, contact
            support@semgrep.com for more information.
+
+       --semgrepignore-v2
+           '--semgrepignore-v2' forces the use of the newer Semgrepignore v2
+           implementation for discovering and filtering target files.
+           Conversely, '--no-semgrepignore-v2' is the deprecated option that
+           forces the use of the legacy Semgrepignore v1.
+           '--semgrepignore-v2' is the default for Semgrep Community Edition,
+           and for now '--no-semgrepignore-v2' is still the default when
+           using the '--pro*' options.
 
        --severity=VAL
            Report findings only from rules matching the supplied severity
@@ -486,12 +538,13 @@ OPTIONS
            Output results in text format.
 
        --text-output=VAL
-           Write a copy of the text output to a file or post to or post to
-           URL.
+           Write a copy of the text output to a file or post to URL.
 
        --time
            Include a timing summary with the results. If output format is
-           json, provides times for each pair (rule, target).
+           json, provides times for each pair (rule, target). This feature is
+           meant for internal use and may be changed or removed without
+           warning. At the current moment, --trace is better supported.
 
        --timeout=VAL (absent=5.)
            Maximum time to spend running a rule on a single file in seconds.
@@ -506,23 +559,22 @@ OPTIONS
            is meant for internal use and may be changed or removed without
            warning.
 
-       --trace-endpoint=VAL
+       --trace-endpoint=VAL (absent SEMGREP_OTEL_ENDPOINT env)
            Endpoint to send OpenTelemetry traces to, if `--trace` is present.
            The value may be `semgrep-prod` (default), `semgrep-dev`,
            `semgrep-local`, or any valid URL. This feature is meant for
-           internal use and may be changed or removed wihtout warning.
+           internal use and may be changed or removed without warning.
 
        --use-git-ignore
-           Skip files ignored by git. Scanning starts from the root folder
-           specified on the Semgrep command line. Normally, if the scanning
-           root is within a git repository, only the tracked files and the
-           new files would be scanned. Git submodules and git- ignored files
-           would normally be skipped. --no-git-ignore will disable git-aware
-           filtering. Setting this flag does nothing if the scanning root is
-           not in a git repository.
-
-       --use-osemgrep-sarif
-           Output results using osemgrep.
+           '--use-git-ignore' is Semgrep's default behavior. Under the
+           default behavior, Git-tracked files are not excluded by Gitignore
+           rules and only untracked files are excluded by Gitignore rules.
+           '--no-git-ignore' causes semgrep to not call 'git' and not consult
+           '.gitignore' files to determine which files semgrep should scan.
+           As a result of '--no-git-ignore', gitignored files and Git
+           submodules will be scanned unless excluded by other means
+           ('.semgrepignore', '--exclude', etc.). This flag has no effect if
+           the scanning root is not in a Git repository.
 
        -v, --verbose
            Show more details about what rules are running, which files failed
@@ -540,15 +592,28 @@ OPTIONS
            Output results in vim single-line format.
 
        --vim-output=VAL
-           Write a copy of the vim output to a file or post to or post to
-           URL.
+           Write a copy of the vim output to a file or post to URL.
+
+       --x-ignore-semgrepignore-files
+           [INTERNAL] Ignore all '.semgrepignore' files found in the project
+           tree for the purpose of selecting target files to be scanned by
+           semgrep. Other filters may still apply. THIS OPTION IS NOT PART OF
+           THE SEMGREP API AND MAY CHANGE OR DISAPPEAR WITHOUT NOTICE.
 
        --x-ls
-           [INTERNAL] List the selected target files and the skipped target
-           files before any rule-specific or language-specific filtering.
-           Then exit. The output format is unspecified. THIS OPTION IS NOT
-           PART OF THE SEMGREP API AND MAY CHANGE OR DISAPPEAR WITHOUT
-           NOTICE.
+           [INTERNAL] List the selected target files before any rule-specific
+           or language-specific filtering. Then exit. The default output
+           format is one path per line. THIS OPTION IS NOT PART OF THE
+           SEMGREP API AND MAY CHANGE OR DISAPPEAR WITHOUT NOTICE.
+
+       --x-ls-long
+           [INTERNAL] Show selected targets and skipped targets with reasons
+           why they were skipped, using an unspecified output format. Implies
+           --x-ls. THIS OPTION IS NOT PART OF THE SEMGREP API AND MAY CHANGE
+           OR DISAPPEAR WITHOUT NOTICE.
+
+       --x-tr
+           <internal, do not use>
 
 COMMON OPTIONS
        --help[=FMT] (default=auto)
@@ -579,6 +644,9 @@ ENVIRONMENT
        SEMGREP_FORCE_COLOR
            See option --force-color.
 
+       SEMGREP_OTEL_ENDPOINT
+           See option --trace-endpoint.
+
        SEMGREP_RULES
            See option --config.
 
@@ -596,5 +664,11 @@ BUGS
 
 ### Installation on mega-linter Docker image
 
+- Dockerfile commands :
+```dockerfile
+# renovate: datasource=pypi depName=semgrep
+ARG PIP_SEMGREP_VERSION=1.116.0
+```
+
 - PIP packages (Python):
-  - [semgrep](https://pypi.org/project/semgrep)
+  - [semgrep==1.116.0](https://pypi.org/project/semgrep/1.116.0)

@@ -22,3 +22,4 @@ Click on hyperlinks to access detailed logs
 | GITHUB_SERVER_URL       | URL of the GitHub instance<br/>Must be overridden if using GitHub Enterprise              | `https://github.com`     |                                              |
 | CI_ACTION_RUN_URL       | URL of the CI job visualization page url (if using Github but not GitHub Actions)         | <!--  -->                |                                              |
 | REPORTERS_MARKDOWN_TYPE | Set to `simple` to avoid external images in generated markdown                            | `advanced`               |                                              |
+| JOB_SUMMARY_ADDITIONAL_MARKDOWN              | Custom markdown to add at the end of the summary message                                     | <!-- -->      |

@@ -31,8 +31,12 @@ linters:
       - "cfn-lint myfile.yml"
       - "cfn-lint --config-file .cfnlintrc.yml myfile.yml"
     install:
+      dockerfile:
+        - |-
+          # renovate: datasource=pypi depName=cfn-lint
+          ARG PIP_CFN_LINT_VERSION=1.34.2
       pip:
-        - cfn-lint
+        - cfn-lint[sarif]==${PIP_CFN_LINT_VERSION}
     ide:
       atom:
         - name: atom-cfn-lint

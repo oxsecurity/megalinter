@@ -20,6 +20,21 @@ file_extensions:
   - ".h++"
   - ".cuh"
 linters:
+  # Cppcheck
+  - linter_name: cppcheck
+    name: CPP_CPPCHECK
+    linter_url: https://cppcheck.sourceforge.io/
+    linter_repo: https://cppcheck.sourceforge.io/
+    linter_rules_url: https://sourceforge.net/p/cppcheck/wiki/ListOfChecks/
+    cli_lint_extra_args:
+      - --error-exitcode=1
+    cli_lint_errors_count: regex_count
+    cli_lint_errors_regex: "error:"
+    examples:
+      - "cppcheck myfile.cpp"
+    install:
+      apk:
+        - cppcheck
   # CPPLINT
   - class: CppLintLinter
     linter_name: cpplint
@@ -34,8 +49,12 @@ linters:
     examples:
       - "cpplint myfile.cpp"
     install:
+      dockerfile:
+        - |-
+          # renovate: datasource=pypi depName=cpplint
+          ARG PIP_CPPLINT_VERSION=2.0.2
       pip:
-        - cpplint
+        - cpplint==${PIP_CPPLINT_VERSION}
   # clang-format
   - linter_name: clang-format
     name: CPP_CLANG_FORMAT
@@ -62,7 +81,7 @@ linters:
       - "clang-format --Werror --dry-run myfile.cpp"
     install:
       apk:
-        - clang17-extra-tools
+        - clang19-extra-tools
     ide:
       vscode:
         - name: Clang-Format

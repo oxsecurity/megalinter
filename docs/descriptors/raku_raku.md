@@ -9,7 +9,7 @@ description: How to use raku (configure, ignore files, ignore errors, help & ver
 
 ## raku documentation
 
-- Version in MegaLinter: **2020.10**
+- Version in MegaLinter: **2024.12**
 - Visit [Official Web Site](https://raku.org/){target=_blank}
 
 [![rakudo - GitHub](https://gh-card.dev/repos/rakudo/rakudo.svg?fullname=)](https://github.com/rakudo/rakudo){target=_blank}
@@ -47,13 +47,13 @@ Use raku in your favorite IDE to catch errors before MegaLinter !
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/default.ico" alt="" height="32px" class="megalinter-icon"></a> | comma                                                | [Native Support](https://commaide.com/)                                                          |                                                         [Visit Web Site](https://commaide.com/){target=_blank}                                                          |
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/) | [Perl6 Language Support](https://marketplace.visualstudio.com/items?itemName=scriplit.perl6-lsp) | [![Install in VSCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/scriplit.perl6-lsp){target=_blank} |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
-This linter is available in the following flavours
+This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                               | Description               | Embedded linters |                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       124        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       127        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 
 ## Behind the scenes
 
@@ -77,7 +77,7 @@ raku -I ./lib -c myfile.raku
 ### Help content
 
 ```shell
-/opt/rakudo-pkg/share/perl6/runtime/perl6.moarvm [switches] [--] [programfile] [arguments]
+/opt/rakudo-pkg/bin/../share/perl6/runtime/perl6.moarvm [switches] [--] [programfile] [arguments]
 
 With no arguments, enters a REPL (see --repl-mode option).
 With a "[programfile]" or the "-e" option, compiles the given program
@@ -85,7 +85,8 @@ and, by default, also executes the compiled code.
 
   -                    read program source from STDIN or start REPL if a TTY
   -c                   check syntax only (runs BEGIN and CHECK blocks)
-  --doc                extract documentation and print it as text
+  --rakudoc            extract documentation and print it as text
+  --rakudoc=module     use RakuDoc::To::[module] to render inline documentation
   -e program           one line of program, strict is enabled by default
   -h, --help           display this help text
   -n                   run program once for each line of input
@@ -100,16 +101,24 @@ and, by default, also executes the compiled code.
   -V                   print configuration summary
   --stagestats         display time spent in the compilation stages
   --ll-exception       display a low level backtrace on errors
+  --doc                extract documentation and print it as text
   --doc=module         use Pod::To::[module] to render inline documentation
-  --repl-mode=interactive|non-interactive
-                       when running without "-e" or filename arguments,
-                       a REPL is started. By default, if STDIN is a TTY,
-                       "interactive" REPL is started that shows extra messages and
-                       prompts, otherwise a "non-interactive" mode is used where
-                       STDIN is read entirely and evaluated as if it were a program,
-                       without any extra output (in fact, no REPL machinery is even
-                       loaded). This option allows to bypass TTY detection and
-                       force one of the REPL modes.
+  --repl-mode=tty|process|disabled
+                       when running without "-e", a REPL is started.
+                       In this scenario, the repl-mode is automatically set
+                       to 'tty'. A user may choose to specify 'tty' explicitly
+                       in order to ensure that the REPL is only run under a TTY.
+                       In cases where a REPL session may be running outside
+                       of a TTY, such as in a spawned sub-process, the
+                       user should specify a repl-mode of 'process'.
+                       If the user desires to have no REPL machinery loaded
+                       at all, the repl-mode can be set to 'disabled'.
+                       With this setting STDIN is read entirely (until EOF)
+                       and evaluated as if it were a program, without any
+                       extra output.
+                       Both 'process' and 'disabled' options bypass
+                       TTY detection.
+
   --profile[=name]     write profile information to a file
                        Extension controls format:
                            .json outputs in JSON
@@ -140,17 +149,18 @@ and, by default, also executes the compiled code.
   --full-cleanup       try to free all memory and exit cleanly
   --debug-port=port    listen for incoming debugger connections
   --debug-suspend      pause execution at the entry point
-  --tracing            output a line to stderr on every interpreter instr (only if
-                       enabled in MoarVM)
+  --tracing            output a line to stderr on every interpreter instr
+                       (only if enabled in MoarVM)
 
 Note that only boolean single-letter options may be bundled.
 
 The following environment variables are respected:
 
-  RAKULIB     Modify the module search path
-  PERL6LIB    Modify the module search path # to be deprecated
-  RAKUDO_HOME Override the path of the Rakudo runtime files
-  NQP_HOME    Override the path of the NQP runtime files
+  RAKULIB       Modify the module search path
+  PERL6LIB      Modify the module search path (DEPRECATED)
+  NQP_HOME      Override the path of the NQP runtime files
+  RAKUDO_HOME   Override the path of the Rakudo runtime files
+
 
 
 ```
@@ -159,12 +169,13 @@ The following environment variables are respected:
 
 - Dockerfile commands :
 ```dockerfile
-RUN curl -L https://github.com/nxadm/rakudo-pkg/releases/download/v2020.10-02/rakudo-pkg-Alpine3.12_2020.10-02_x86_64.apk > rakudo-pkg-Alpine3.12_2020.10-02_x86_64.apk \
-    && apk add --no-cache --allow-untrusted rakudo-pkg-Alpine3.12_2020.10-02_x86_64.apk \
-    && rm rakudo-pkg-Alpine3.12_2020.10-02_x86_64.apk \
-    && /opt/rakudo-pkg/bin/add-rakudo-to-path \
-    # && source /root/.profile \
-    && /opt/rakudo-pkg/bin/install-zef-as-user
+# renovate: datasource=github-tags depName=nxadm/rakudo-pkg
+ARG RAKU_RAKU_VERSION=2024.12
+ARG RAKU_RAKU_ALPINE_VERSION=3.20
+
+RUN curl -L "https://github.com/nxadm/rakudo-pkg/releases/download/v${RAKU_RAKU_VERSION}/rakudo-pkg-Alpine${RAKU_RAKU_ALPINE_VERSION}_${RAKU_RAKU_VERSION}-01_x86_64.apk" > "rakudo-pkg-Alpine${RAKU_RAKU_ALPINE_VERSION}_${RAKU_RAKU_VERSION}-01_x86_64.apk" \
+    && apk add --no-cache --allow-untrusted "rakudo-pkg-Alpine${RAKU_RAKU_ALPINE_VERSION}_${RAKU_RAKU_VERSION}-01_x86_64.apk" \
+    && rm "rakudo-pkg-Alpine${RAKU_RAKU_ALPINE_VERSION}_${RAKU_RAKU_VERSION}-01_x86_64.apk"
 
 ENV PATH="~/.raku/bin:/opt/rakudo-pkg/bin:/opt/rakudo-pkg/share/perl6/site/bin:$PATH"
 ```

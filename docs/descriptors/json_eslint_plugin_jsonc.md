@@ -11,9 +11,11 @@ description: How to use eslint-plugin-jsonc (configure, ignore files, ignore err
   </a>
 </div>
 
-[![GitHub stars](https://img.shields.io/github/stars/ota-meshi/eslint-plugin-jsonc?cacheSeconds=3600)](https://github.com/ota-meshi/eslint-plugin-jsonc) ![autofix](https://shields.io/badge/-autofix-green) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/ota-meshi/eslint-plugin-jsonc?sort=semver)](https://github.com/ota-meshi/eslint-plugin-jsonc/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/ota-meshi/eslint-plugin-jsonc)](https://github.com/ota-meshi/eslint-plugin-jsonc/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/ota-meshi/eslint-plugin-jsonc)](https://github.com/ota-meshi/eslint-plugin-jsonc/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/ota-meshi/eslint-plugin-jsonc)](https://github.com/ota-meshi/eslint-plugin-jsonc/graphs/contributors/)
+![disabled](https://shields.io/badge/-disabled-orange) [![GitHub stars](https://img.shields.io/github/stars/ota-meshi/eslint-plugin-jsonc?cacheSeconds=3600)](https://github.com/ota-meshi/eslint-plugin-jsonc) ![autofix](https://shields.io/badge/-autofix-green) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/ota-meshi/eslint-plugin-jsonc?sort=semver)](https://github.com/ota-meshi/eslint-plugin-jsonc/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/ota-meshi/eslint-plugin-jsonc)](https://github.com/ota-meshi/eslint-plugin-jsonc/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/ota-meshi/eslint-plugin-jsonc)](https://github.com/ota-meshi/eslint-plugin-jsonc/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/ota-meshi/eslint-plugin-jsonc)](https://github.com/ota-meshi/eslint-plugin-jsonc/graphs/contributors/)
 
 _This linter has been disabled in this version_
+
+_Disabled reason: Bug in eslint-plugin-jsonc: <https://github.com/ota-meshi/eslint-plugin-jsonc/issues/328>_
 
 **eslint-plugin-jsonc** uses eslint to lint [**json**](https://www.json.org/), [**jsonc**](https://github.com/microsoft/node-jsonc-parser) and [**json5**](https://json5.org/) (extended JSON with comments & more).
 
@@ -118,13 +120,13 @@ Use eslint-plugin-jsonc in your favorite IDE to catch errors before MegaLinter !
 |:-------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|--------------------------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------:|
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [vscode-eslint](https://github.com/ota-meshi/eslint-plugin-jsonc#visual-studio-code) | [Visit Web Site](https://github.com/ota-meshi/eslint-plugin-jsonc#visual-studio-code){target=_blank} |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
-This linter is available in the following flavours
+This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                               | Description               | Embedded linters |                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       124        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       127        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 
 ## Behind the scenes
 
@@ -228,7 +230,17 @@ Miscellaneous:
 
 ### Installation on mega-linter Docker image
 
+- Dockerfile commands :
+```dockerfile
+# renovate: datasource=npm depName=eslint
+ARG NPM_ESLINT_VERSION=8.57.1
+# renovate: datasource=npm depName=eslint-plugin-jsonc
+ARG NPM_ESLINT_PLUGIN_JSONC_VERSION=2.20.0
+# renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
+ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
+```
+
 - NPM packages (node.js):
-  - [eslint](https://www.npmjs.com/package/eslint)
+  - [eslint@8.57.1](https://www.npmjs.com/package/eslint/v/8.57.1)
   - [eslint-plugin-jsonc](https://www.npmjs.com/package/eslint-plugin-jsonc)
-  - [@microsoft/eslint-formatter-sarif](https://www.npmjs.com/package/@microsoft/eslint-formatter-sarif)
+  - [@microsoft/eslint-formatter-sarif@3.1.0](https://www.npmjs.com/package/@microsoft/eslint-formatter-sarif/v/3.1.0)

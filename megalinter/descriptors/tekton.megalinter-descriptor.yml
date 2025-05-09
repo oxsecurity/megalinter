@@ -20,5 +20,9 @@ linters:
     examples:
       - "tekton-lint myfile.yml"
     install:
+      dockerfile:
+        - |-
+          # renovate: datasource=npm depName=@ibm/tekton-lint
+          ARG NPM_IBM_TEKTON_LINT_VERSION=1.1.0
       npm:
-        - "@ibm/tekton-lint"
+        - "@ibm/tekton-lint@${NPM_IBM_TEKTON_LINT_VERSION}"
