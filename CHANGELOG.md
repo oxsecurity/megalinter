@@ -39,6 +39,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.88.27 to **3.88.28** on 2025-05-06
   - [rubocop](https://rubocop.org/) from 1.75.4 to **1.75.5** on 2025-05-06
   - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.11.0 to **3.12.0** on 2025-05-06
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.62.0 to **0.62.1** on 2025-05-09
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.62.0 to **0.62.1** on 2025-05-09
+  - [scalafix](https://scalacenter.github.io/scalafix/) from 0.14.2 to **0.14.3** on 2025-05-09
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.19.4 to **9.0.1** on 2025-05-09
 <!-- linter-versions-end -->
 
 ## [v8.7.0] - 2024-05-04
