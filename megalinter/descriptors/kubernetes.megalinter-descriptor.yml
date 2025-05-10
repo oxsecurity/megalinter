@@ -70,7 +70,8 @@ linters:
       apk:
         - helm
     # KUBESCAPE
-  - linter_name: kubescape
+  - class: KubescapeLinter
+    linter_name: kubescape
     name: KUBERNETES_KUBESCAPE
     can_output_sarif: true
     files_sub_directory: ""
