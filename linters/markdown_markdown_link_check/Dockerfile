@@ -49,7 +49,7 @@ FROM python:3.12.10-alpine3.21
 #############################################################################################
 #ARG__START
 # renovate: datasource=npm depName=markdown-link-check
-ARG NPM_MARKDOWN_LINK_CHECK_VERSION=3.12.2
+ARG NPM_MARKDOWN_LINK_CHECK_VERSION=3.13.7
 #ARG__END
 
 ####################
