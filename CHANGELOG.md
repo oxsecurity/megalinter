@@ -45,6 +45,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.19.4 to **9.0.1** on 2025-05-09
   - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.12.0 to **3.12.1** on 2025-05-09
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.88.28 to **3.88.29** on 2025-05-09
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.34.2 to **1.35.1** on 2025-05-10
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.11.8 to **0.11.9** on 2025-05-10
+  - [ruff](https://github.com/astral-sh/ruff) from 0.11.8 to **0.11.9** on 2025-05-10
 <!-- linter-versions-end -->
 
 ## [v8.7.0] - 2024-05-04
