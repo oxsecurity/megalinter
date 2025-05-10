@@ -76,7 +76,7 @@ DEFAULT_DOCKERFILE_RUST_ARGS = [
 ]
 
 DEFAULT_DOCKERFILE_FLAVOR_ARGS = [
-    "# renovate: datasource=crate depName=sarif-fmt\nARG CARGO_SARIF_FMT_VERSION=0.7.0",
+    "# renovate: datasource=crate depName=sarif-fmt\nARG CARGO_SARIF_FMT_VERSION=0.8.0",
 ]
 
 DEFAULT_DOCKERFILE_FLAVOR_CARGO_PACKAGES = [
