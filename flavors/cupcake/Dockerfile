@@ -108,7 +108,7 @@ ARG NPM_TYPESCRIPT_VERSION=5.8.3
 # renovate: datasource=pypi depName=ansible-lint
 ARG PIP_ANSIBLE_LINT_VERSION=25.4.0
 # renovate: datasource=crate depName=shellcheck-sarif
-ARG CARGO_SHELLCHECK_SARIF_VERSION=0.7.0
+ARG CARGO_SHELLCHECK_SARIF_VERSION=0.8.0
 # renovate: datasource=pypi depName=cpplint
 ARG PIP_CPPLINT_VERSION=2.0.2
 # renovate: datasource=github-tags depName=clj-kondo/clj-kondo
