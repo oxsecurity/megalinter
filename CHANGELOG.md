@@ -48,6 +48,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.34.2 to **1.35.1** on 2025-05-10
   - [ruff-format](https://github.com/astral-sh/ruff) from 0.11.8 to **0.11.9** on 2025-05-10
   - [ruff](https://github.com/astral-sh/ruff) from 0.11.8 to **0.11.9** on 2025-05-10
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.12.1 to **3.13.0** on 2025-05-10
 <!-- linter-versions-end -->
 
 ## [v8.7.0] - 2024-05-04
