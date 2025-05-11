@@ -49,6 +49,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [ruff-format](https://github.com/astral-sh/ruff) from 0.11.8 to **0.11.9** on 2025-05-10
   - [ruff](https://github.com/astral-sh/ruff) from 0.11.8 to **0.11.9** on 2025-05-10
   - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.12.1 to **3.13.0** on 2025-05-10
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.78.0 to **0.78.2** on 2025-05-11
 <!-- linter-versions-end -->
 
 ## [v8.7.0] - 2024-05-04

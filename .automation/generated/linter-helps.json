@@ -3821,7 +3821,7 @@
         "      --server string         Backend discovery server URL",
         "",
         "Use \"kubescape [command] --help\" for more information about a command.",
-        "{\"level\":\"info\",\"ts\":\"2025-05-10T08:16:37Z\",\"msg\":\"Received interrupt signal, exiting...\"}"
+        "{\"level\":\"info\",\"ts\":\"2025-05-11T08:53:30Z\",\"msg\":\"Received interrupt signal, exiting...\"}"
     ],
     "kubeval": [
         "Validate a Kubernetes YAML file against the relevant schema",
@@ -11042,7 +11042,7 @@
         "   --help, -h                 Show help. (default: false)",
         "   --version, -v              Show terragrunt version. (default: false)",
         "",
-        "Version: v0.78.0",
+        "Version: v0.78.2",
         "",
         "Author: Gruntwork <www.gruntwork.io>"
     ],
