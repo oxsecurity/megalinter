@@ -151,7 +151,10 @@ rstcheck -c .rstcheck.cfg myfile.rst
 ```dockerfile
 # renovate: datasource=pypi depName=rstcheck
 ARG PIP_RSTCHECK_VERSION=6.2.4
+# renovate: datasource=pypi depName=click
+ARG PIP_RSTCHECK_CLICK_VERSION=8.1.8
 ```
 
 - PIP packages (Python):
+  - [click==8.1.8](https://pypi.org/project/click/8.1.8)
   - [rstcheck[toml,sphinx]==6.2.4](https://pypi.org/project/rstcheck[toml,sphinx]/6.2.4)
