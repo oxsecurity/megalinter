@@ -4037,7 +4037,7 @@
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile"># renovate: datasource=crate depName=shellcheck-sarif
-ARG CARGO_SHELLCHECK_SARIF_VERSION=0.7.0
+ARG CARGO_SHELLCHECK_SARIF_VERSION=0.8.0
 # renovate: datasource=docker depName=koalaman/shellcheck
 ARG BASH_SHELLCHECK_VERSION=v0.10.0
 FROM koalaman/shellcheck:${BASH_SHELLCHECK_VERSION} AS shellcheck
@@ -4045,7 +4045,7 @@ COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
 </code></pre>
 <ul>
 <li>Cargo packages (Rust):<ul>
-<li><a href="https://crates.io/crates/shellcheck-sarif/0.7.0">shellcheck-sarif@0.7.0</a></li>
+<li><a href="https://crates.io/crates/shellcheck-sarif/0.8.0">shellcheck-sarif@0.8.0</a></li>
 </ul>
 </li>
 </ul>
