@@ -50,7 +50,7 @@
     "kubeconform": "0.6.7",
     "kubescape": "3.0.34",
     "kubeval": "0.16.1",
-    "lightning-flow-scanner": "3.13.0",
+    "lightning-flow-scanner": "3.13.1",
     "lintr": "0.0.0",
     "ls-lint": "2.3.0",
     "luacheck": "1.2.0",
