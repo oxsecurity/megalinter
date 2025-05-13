@@ -3698,7 +3698,7 @@
 <p><code>kubeconform</code> is a schema-aware Kubernetes manifest validation tool, that tends to have more up-to-date schema definitions than <code>kubeval</code>.</p>
 <h2 id="kubeconform-documentation">kubeconform documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>0.6.7</strong></li>
+<li>Version in MegaLinter: <strong>0.7.0</strong></li>
 <li>Visit <a href="https://github.com/yannh/kubeconform#readme" target="_blank">Official Web Site</a></li>
 </ul>
 <p><a href="https://github.com/yannh/kubeconform" target="_blank"><img alt="kubeconform - GitHub" src="https://gh-card.dev/repos/yannh/kubeconform.svg?fullname="/></a></p>
@@ -3981,7 +3981,7 @@
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile"># renovate: datasource=docker depName=ghcr.io/yannh/kubeconform
-ARG KUBERNETES_KUBECONFORM_VERSION=v0.6.7-alpine
+ARG KUBERNETES_KUBECONFORM_VERSION=v0.7.0-alpine
 FROM ghcr.io/yannh/kubeconform:${KUBERNETES_KUBECONFORM_VERSION} AS kubeconform
 COPY --link --from=kubeconform /kubeconform /usr/bin/
 </code></pre>
