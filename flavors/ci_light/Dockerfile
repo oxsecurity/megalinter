@@ -19,9 +19,9 @@ ARG BASH_SHFMT_VERSION=v3.11.0-alpine
 # renovate: datasource=docker depName=hadolint/hadolint
 ARG DOCKERFILE_HADOLINT_VERSION=v2.12.0-alpine
 # renovate: datasource=docker depName=zricethezav/gitleaks
-ARG REPOSITORY_GITLEAKS_VERSION=v8.24.3
+ARG REPOSITORY_GITLEAKS_VERSION=v8.25.1
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
-ARG REPOSITORY_TRUFFLEHOG_VERSION=3.88.25
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.88.29
 #ARGTOP__END
 
 #############################################################################################
@@ -38,7 +38,7 @@ FROM trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION} AS trufflehog
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.6.16 AS uv
+FROM ghcr.io/astral-sh/uv:0.7.2 AS uv
 FROM python:3.12.10-alpine3.21 AS build-ml-core
 WORKDIR /
 COPY --from=uv /uv /uvx /bin/
@@ -63,13 +63,13 @@ FROM python:3.12.10-alpine3.21
 #############################################################################################
 #ARG__START
 # renovate: datasource=crate depName=sarif-fmt
-ARG CARGO_SARIF_FMT_VERSION=0.7.0
+ARG CARGO_SARIF_FMT_VERSION=0.8.0
 # renovate: datasource=crate depName=shellcheck-sarif
-ARG CARGO_SHELLCHECK_SARIF_VERSION=0.7.0
+ARG CARGO_SHELLCHECK_SARIF_VERSION=0.8.0
 # renovate: datasource=npm depName=jscpd
 ARG NPM_JSCPD_VERSION=4.0.5
 # renovate: datasource=npm depName=npm-groovy-lint
-ARG NPM_GROOVY_LINT_VERSION=15.1.0
+ARG NPM_GROOVY_LINT_VERSION=15.2.0
 # renovate: datasource=npm depName=@prantlf/jsonlint
 ARG NPM_PRANTLF_JSONLINT_VERSION=16.0.0
 # renovate: datasource=npm depName=v8r
@@ -81,23 +81,23 @@ ARG REPOSITORY_GRYPE_VERSION=0.91.2
 # renovate: datasource=npm depName=@ls-lint/ls-lint
 ARG NPM_LS_LINT_LS_LINT_VERSION=2.3.0
 # renovate: datasource=npm depName=secretlint
-ARG NPM_SECRETLINT_VERSION=9.3.1
+ARG NPM_SECRETLINT_VERSION=9.3.2
 # renovate: datasource=npm depName=@secretlint/secretlint-rule-preset-recommend
-ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=9.3.1
+ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=9.3.2
 # renovate: datasource=npm depName=@secretlint/secretlint-formatter-sarif
-ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=9.3.1
+ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=9.3.2
 # renovate: datasource=github-tags depName=anchore/syft
-ARG REPOSITORY_SYFT_VERSION=1.22.0
+ARG REPOSITORY_SYFT_VERSION=1.23.1
 # renovate: datasource=github-tags depName=aquasecurity/trivy
-ARG REPOSITORY_TRIVY_VERSION=0.61.1
+ARG REPOSITORY_TRIVY_VERSION=0.62.1
 # renovate: datasource=github-tags depName=aquasecurity/trivy
-ARG REPOSITORY_TRIVY_SBOM_VERSION=0.61.1
+ARG REPOSITORY_TRIVY_SBOM_VERSION=0.62.1
 # renovate: datasource=pypi depName=yamllint
-ARG PIP_YAMLLINT_VERSION=1.37.0
+ARG PIP_YAMLLINT_VERSION=1.37.1
 # renovate: datasource=pypi depName=pip
-ARG PIP_PIP_VERSION=25.0.1
+ARG PIP_PIP_VERSION=25.1.1
 # renovate: datasource=pypi depName=virtualenv
-ARG PIP_VIRTUALENV_VERSION=20.30.0
+ARG PIP_VIRTUALENV_VERSION=20.31.2
 # renovate: datasource=github-tags depName=rust-lang/rust
 ARG RUST_RUST_VERSION=1.86.0
 

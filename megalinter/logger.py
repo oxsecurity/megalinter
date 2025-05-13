@@ -5,7 +5,6 @@ import re
 import sys
 import tomllib
 
-import chalk as c
 import requests
 from megalinter import config, utils
 from megalinter.constants import ML_DOC_URL
@@ -72,20 +71,20 @@ def manage_upgrade_message():
         or "v5" in mega_linter_version
     ):
         logging.warning(
-            c.yellow(
+            utils.yellow(
                 "#######################################################################"
             )
         )
         logging.warning(
-            c.yellow(
+            utils.yellow(
                 "MEGA-LINTER HAS A NEW V7 VERSION at https://github.com/oxsecurity/megalinter .\n"
                 + "Please upgrade your configuration by running the following command at the "
                 + "root of your repository (requires node.js): \n"
-                + c.green("npx mega-linter-runner --upgrade")
+                + utils.green("npx mega-linter-runner --upgrade")
             )
         )
         logging.warning(
-            c.yellow(
+            utils.yellow(
                 "#######################################################################"
             )
         )
@@ -199,6 +198,9 @@ def fetch_gitleaks_regexes(force_use_local_file=False):
 
 
 def sanitize_string(input_string):
+    if os.environ.get("SKIP_LINTER_OUTPUT_SANITIZATION", "") == "true":
+        # Don't sanitize in test mode
+        return input_string
     regex_patterns = fetch_gitleaks_regexes()
     sanitized_string = input_string
     for pattern in regex_patterns:

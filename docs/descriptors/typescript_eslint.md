@@ -186,7 +186,7 @@ ARG NPM_ESLINT_VERSION=8.57.1
 # renovate: datasource=npm depName=eslint-config-airbnb
 ARG NPM_ESLINT_CONFIG_AIRBNB_VERSION=19.0.4
 # renovate: datasource=npm depName=eslint-config-prettier
-ARG NPM_ESLINT_CONFIG_PRETTIER_VERSION=10.1.2
+ARG NPM_ESLINT_CONFIG_PRETTIER_VERSION=10.1.5
 # renovate: datasource=npm depName=eslint-config-standard
 ARG NPM_ESLINT_CONFIG_STANDARD_VERSION=17.1.0
 # renovate: datasource=npm depName=eslint-plugin-import
@@ -196,19 +196,19 @@ ARG NPM_ESLINT_PLUGIN_JEST_VERSION=28.11.0
 # renovate: datasource=npm depName=eslint-plugin-n
 ARG NPM_ESLINT_PLUGIN_N_VERSION=16.6.2
 # renovate: datasource=npm depName=eslint-plugin-prettier
-ARG NPM_ESLINT_PLUGIN_PRETTIER_VERSION=5.2.6
+ARG NPM_ESLINT_PLUGIN_PRETTIER_VERSION=5.4.0
 # renovate: datasource=npm depName=eslint-plugin-promise
 ARG NPM_ESLINT_PLUGIN_PROMISE_VERSION=6.6.0
 # renovate: datasource=npm depName=@babel/eslint-parser
-ARG NPM_BABEL_ESLINT_PARSER_VERSION=7.27.0
+ARG NPM_BABEL_ESLINT_PARSER_VERSION=7.27.1
 # renovate: datasource=npm depName=prettier
 ARG NPM_PRETTIER_VERSION=3.5.3
 # renovate: datasource=npm depName=prettyjson
 ARG NPM_PRETTYJSON_VERSION=1.2.5
 # renovate: datasource=npm depName=@typescript-eslint/eslint-plugin
-ARG NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION=8.31.0
+ARG NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION=8.32.1
 # renovate: datasource=npm depName=@typescript-eslint/parser
-ARG NPM_TYPESCRIPT_ESLINT_PARSER_VERSION=8.31.0
+ARG NPM_TYPESCRIPT_ESLINT_PARSER_VERSION=8.32.1
 # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
 ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
 ```
@@ -217,16 +217,16 @@ ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
   - [typescript@5.8.3](https://www.npmjs.com/package/typescript/v/5.8.3)
   - [eslint@8.57.1](https://www.npmjs.com/package/eslint/v/8.57.1)
   - [eslint-config-airbnb@19.0.4](https://www.npmjs.com/package/eslint-config-airbnb/v/19.0.4)
-  - [eslint-config-prettier@10.1.2](https://www.npmjs.com/package/eslint-config-prettier/v/10.1.2)
+  - [eslint-config-prettier@10.1.5](https://www.npmjs.com/package/eslint-config-prettier/v/10.1.5)
   - [eslint-config-standard@17.1.0](https://www.npmjs.com/package/eslint-config-standard/v/17.1.0)
   - [eslint-plugin-import@2.31.0](https://www.npmjs.com/package/eslint-plugin-import/v/2.31.0)
   - [eslint-plugin-jest@28.11.0](https://www.npmjs.com/package/eslint-plugin-jest/v/28.11.0)
   - [eslint-plugin-n@16.6.2](https://www.npmjs.com/package/eslint-plugin-n/v/16.6.2)
-  - [eslint-plugin-prettier@5.2.6](https://www.npmjs.com/package/eslint-plugin-prettier/v/5.2.6)
+  - [eslint-plugin-prettier@5.4.0](https://www.npmjs.com/package/eslint-plugin-prettier/v/5.4.0)
   - [eslint-plugin-promise@6.6.0](https://www.npmjs.com/package/eslint-plugin-promise/v/6.6.0)
-  - [@babel/eslint-parser@7.27.0](https://www.npmjs.com/package/@babel/eslint-parser/v/7.27.0)
+  - [@babel/eslint-parser@7.27.1](https://www.npmjs.com/package/@babel/eslint-parser/v/7.27.1)
   - [prettier@3.5.3](https://www.npmjs.com/package/prettier/v/3.5.3)
   - [prettyjson@1.2.5](https://www.npmjs.com/package/prettyjson/v/1.2.5)
-  - [@typescript-eslint/eslint-plugin@8.31.0](https://www.npmjs.com/package/@typescript-eslint/eslint-plugin/v/8.31.0)
-  - [@typescript-eslint/parser@8.31.0](https://www.npmjs.com/package/@typescript-eslint/parser/v/8.31.0)
+  - [@typescript-eslint/eslint-plugin@8.32.1](https://www.npmjs.com/package/@typescript-eslint/eslint-plugin/v/8.32.1)
+  - [@typescript-eslint/parser@8.32.1](https://www.npmjs.com/package/@typescript-eslint/parser/v/8.32.1)
   - [@microsoft/eslint-formatter-sarif@3.1.0](https://www.npmjs.com/package/@microsoft/eslint-formatter-sarif/v/3.1.0)

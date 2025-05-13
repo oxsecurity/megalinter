@@ -24,7 +24,7 @@
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.6.16 AS uv
+FROM ghcr.io/astral-sh/uv:0.7.2 AS uv
 FROM python:3.12.10-alpine3.21 AS build-ml-core
 WORKDIR /
 COPY --from=uv /uv /uvx /bin/
@@ -53,9 +53,9 @@ ARG NPM_SALESFORCE_CLI_VERSION=2.84.6
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
 ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.13.1
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=5.28.0
+ARG SFDX_HARDIS_VERSION=5.33.0
 # renovate: datasource=npm depName=lightning-flow-scanner
-ARG LIGHTNING_FLOW_SCANNER_VERSION=3.4.0
+ARG LIGHTNING_FLOW_SCANNER_VERSION=3.14.0
 #ARG__END
 
 ####################

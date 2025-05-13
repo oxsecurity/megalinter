@@ -24,7 +24,7 @@
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.6.16 AS uv
+FROM ghcr.io/astral-sh/uv:0.7.2 AS uv
 FROM python:3.12.10-alpine3.21 AS build-ml-core
 WORKDIR /
 COPY --from=uv /uv /uvx /bin/
@@ -49,19 +49,19 @@ FROM python:3.12.10-alpine3.21
 #############################################################################################
 #ARG__START
 # renovate: datasource=npm depName=stylelint
-ARG NPM_STYLELINT_VERSION=16.19.0
+ARG NPM_STYLELINT_VERSION=16.19.1
 # renovate: datasource=npm depName=stylelint-config-standard
 ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=38.0.0
 # renovate: datasource=npm depName=stylelint-config-sass-guidelines
 ARG NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION=12.1.0
 # renovate: datasource=npm depName=stylelint-scss
-ARG NPM_STYLELINT_SCSS_VERSION=6.11.1
+ARG NPM_STYLELINT_SCSS_VERSION=6.12.0
 # renovate: datasource=pypi depName=cpplint
 ARG PIP_CPPLINT_VERSION=2.0.2
 # renovate: datasource=pypi depName=pip
-ARG PIP_PIP_VERSION=25.0.1
+ARG PIP_PIP_VERSION=25.1.1
 # renovate: datasource=pypi depName=virtualenv
-ARG PIP_VIRTUALENV_VERSION=20.30.0
+ARG PIP_VIRTUALENV_VERSION=20.31.2
 #ARG__END
 
 ####################

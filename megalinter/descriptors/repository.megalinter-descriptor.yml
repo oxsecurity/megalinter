@@ -270,7 +270,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=docker depName=zricethezav/gitleaks
-          ARG REPOSITORY_GITLEAKS_VERSION=v8.24.3
+          ARG REPOSITORY_GITLEAKS_VERSION=v8.25.1
         - FROM zricethezav/gitleaks:${REPOSITORY_GITLEAKS_VERSION} AS gitleaks
         - COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
     variables:
@@ -433,13 +433,13 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=secretlint
-          ARG NPM_SECRETLINT_VERSION=9.3.1
+          ARG NPM_SECRETLINT_VERSION=9.3.2
         - |-
           # renovate: datasource=npm depName=@secretlint/secretlint-rule-preset-recommend
-          ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=9.3.1
+          ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=9.3.2
         - |-
           # renovate: datasource=npm depName=@secretlint/secretlint-formatter-sarif
-          ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=9.3.1
+          ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=9.3.2
       npm:
         - secretlint@${NPM_SECRETLINT_VERSION}
         - "@secretlint/secretlint-rule-preset-recommend@${NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION}"
@@ -542,7 +542,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=github-tags depName=anchore/syft
-          ARG REPOSITORY_SYFT_VERSION=1.22.0
+          ARG REPOSITORY_SYFT_VERSION=1.23.1
         - RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/refs/tags/v${REPOSITORY_SYFT_VERSION}/install.sh | sh -s -- -b /usr/local/bin
 
   # TRIVY
@@ -586,7 +586,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=github-tags depName=aquasecurity/trivy
-          ARG REPOSITORY_TRIVY_VERSION=0.61.1
+          ARG REPOSITORY_TRIVY_VERSION=0.62.1
         - |
           RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin "v${REPOSITORY_TRIVY_VERSION}" \
               && (trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress)
@@ -636,7 +636,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=github-tags depName=aquasecurity/trivy
-          ARG REPOSITORY_TRIVY_SBOM_VERSION=0.61.1
+          ARG REPOSITORY_TRIVY_SBOM_VERSION=0.62.1
         - |
           RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin "v${REPOSITORY_TRIVY_SBOM_VERSION}" \
               && (trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress)
@@ -676,7 +676,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=docker depName=trufflesecurity/trufflehog
-          ARG REPOSITORY_TRUFFLEHOG_VERSION=3.88.25
+          ARG REPOSITORY_TRUFFLEHOG_VERSION=3.88.29
         - FROM trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION} AS trufflehog
         - COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
     test_folder: gitleaks

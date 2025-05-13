@@ -126,7 +126,7 @@ Usage: shellcheck [OPTIONS...] FILES...
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=crate depName=shellcheck-sarif
-ARG CARGO_SHELLCHECK_SARIF_VERSION=0.7.0
+ARG CARGO_SHELLCHECK_SARIF_VERSION=0.8.0
 # renovate: datasource=docker depName=koalaman/shellcheck
 ARG BASH_SHELLCHECK_VERSION=v0.10.0
 FROM koalaman/shellcheck:${BASH_SHELLCHECK_VERSION} AS shellcheck
@@ -134,4 +134,4 @@ COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
 ```
 
 - Cargo packages (Rust):
-  - [shellcheck-sarif@0.7.0](https://crates.io/crates/shellcheck-sarif/0.7.0)
+  - [shellcheck-sarif@0.8.0](https://crates.io/crates/shellcheck-sarif/0.8.0)

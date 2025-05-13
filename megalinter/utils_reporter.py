@@ -14,15 +14,25 @@ from megalinter.constants import (
     ML_REPO_ISSUES_URL,
     OX_MARKDOWN_LINK,
 )
-from pytablewriter import MarkdownTableWriter
+from pytablewriter import Align, MarkdownTableWriter
+from pytablewriter.style import Style
 from redis import Redis
 
 
 def build_markdown_summary(reporter_self, action_run_url=""):
     table_header = ["Descriptor", "Linter", "Files", "Fixed", "Errors", "Warnings"]
+    table_column_styles = [
+        Style(align=Align.LEFT),
+        Style(align=Align.LEFT),
+        Style(align=Align.RIGHT),
+        Style(align=Align.RIGHT),
+        Style(align=Align.RIGHT),
+        Style(align=Align.RIGHT),
+    ]
     if reporter_self.master.show_elapsed_time is True:
         table_header += ["Elapsed time"]
-    table_data_raw = [table_header]
+        table_column_styles += [Style(align=Align.RIGHT)]
+    table_data_raw = []
     for linter in reporter_self.master.linters:
         if linter.is_active is True:
             status = (
@@ -81,8 +91,11 @@ def build_markdown_summary(reporter_self, action_run_url=""):
                 table_line += [str(round(linter.elapsed_time_s, 2)) + "s"]
             table_data_raw += [table_line]
     # Build markdown table
-    table_data_raw.pop(0)
-    writer = MarkdownTableWriter(headers=table_header, value_matrix=table_data_raw)
+    writer = MarkdownTableWriter(
+        headers=table_header,
+        column_styles=table_column_styles,
+        value_matrix=table_data_raw,
+    )
     table_content = str(writer)
     status = (
         "✅"

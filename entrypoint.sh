@@ -62,7 +62,7 @@ if [ "${TEST_CASE_RUN}" == "true" ]; then
   fi
   # Upload to codecov.io if all tests run
   if [ -z "${TEST_KEYWORDS}" ]; then
-    codecov
+    codecov upload-process || true
     exit $?
   fi
   exit $?

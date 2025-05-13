@@ -9,7 +9,7 @@ description: How to use terragrunt (configure, ignore files, ignore errors, help
 
 ## terragrunt documentation
 
-- Version in MegaLinter: **0.77.22**
+- Version in MegaLinter: **0.78.2**
 - Visit [Official Web Site](https://terragrunt.gruntwork.io){target=_blank}
 - See [How to configure terragrunt rules](https://terragrunt.gruntwork.io/docs/getting-started/configuration/#terragrunt-configuration-file){target=_blank}
 
@@ -84,47 +84,38 @@ Usage: terragrunt [global options] <command> [options]
    For documentation, see https://terragrunt.gruntwork.io/.
 
 Main commands:
-   backend                Interact with OpenTofu/Terraform backend infrastructure.
-   exec                   Execute an arbitrary command.
-   graph                  Execute commands on the full graph of dependent modules for the current module, ensuring correct execution order.
-   run                    Run an OpenTofu/Terraform command.
-   run-all                Run a terraform command against a 'stack' by running the specified command in each subfolder.
-   stack                  Terragrunt stack commands.
+   backend        Interact with OpenTofu/Terraform backend infrastructure.
+   exec           Execute an arbitrary command.
+   run            Run an OpenTofu/Terraform command.
+   stack          Terragrunt stack commands.
 
 Catalog commands:
-   catalog                Launch the user interface for searching and managing your module catalog.
-   scaffold               Scaffold a new Terragrunt module.
+   catalog        Launch the user interface for searching and managing your module catalog.
+   scaffold       Scaffold a new Terragrunt module.
 
 Discovery commands:
-   find, fd               Find relevant Terragrunt configurations.
-   list, ls               List relevant Terragrunt configurations.
+   find, fd       Find relevant Terragrunt configurations.
+   list, ls       List relevant Terragrunt configurations.
 
 Configuration commands:
-   dag                    Interact with the Directed Acyclic Graph (DAG).
-   graph-dependencies     Prints the terragrunt dependency graph to stdout.
-   hcl                    Interact with HCL files.
-   hclfmt                 Recursively find hcl files and rewrite them into a canonical format.
-   hclvalidate            Find all hcl files from the config stack and validate them.
-   info                   List of commands to display Terragrunt settings.
-   output-module-groups   Output groups of modules ordered by command (apply or destroy) as a list of list in JSON (useful for CI use cases).
-   render                 Render the final terragrunt config, with all variables, includes, and functions resolved, in the specified format.
-   render-json            Render the final terragrunt config, with all variables, includes, and functions resolved, as json.
-   terragrunt-info        Emits limited terragrunt state on stdout and exits.
-   validate-inputs        Checks if the terragrunt configured inputs align with the terraform defined variables.
+   dag            Interact with the Directed Acyclic Graph (DAG).
+   hcl            Interact with HCL files.
+   info           List of commands to display Terragrunt settings.
+   render         Render the final terragrunt config, with all variables, includes, and functions resolved, in the specified format.
 
 OpenTofu shortcuts:
-   apply                  Create or update infrastructure.
-   destroy                Destroy previously-created infrastructure.
-   force-unlock           Release a stuck lock on the current workspace.
-   import                 Associate existing infrastructure with a OpenTofu/Terraform resource.
-   init                   Prepare your working directory for other commands.
-   output                 Show output values from your root module.
-   plan                   Show changes required by the current configuration.
-   refresh                Update the state to match remote systems.
-   show                   Show the current state or a saved plan.
-   state                  Advanced state management.
-   test                   Execute integration tests for OpenTofu/Terraform modules.
-   validate               Check whether the configuration is valid.
+   apply          Create or update infrastructure.
+   destroy        Destroy previously-created infrastructure.
+   force-unlock   Release a stuck lock on the current workspace.
+   import         Associate existing infrastructure with a OpenTofu/Terraform resource.
+   init           Prepare your working directory for other commands.
+   output         Show output values from your root module.
+   plan           Show changes required by the current configuration.
+   refresh        Update the state to match remote systems.
+   show           Show the current state or a saved plan.
+   state          Advanced state management.
+   test           Execute integration tests for OpenTofu/Terraform modules.
+   validate       Check whether the configuration is valid.
 
 Global Options:
    --experiment value         Enables specific experiments. For a list of available experiments, see https://terragrunt.gruntwork.io/docs/reference/experiment-mode . [$TG_EXPERIMENT]
@@ -142,7 +133,7 @@ Global Options:
    --help, -h                 Show help. (default: false)
    --version, -v              Show terragrunt version. (default: false)
 
-Version: v0.77.22
+Version: v0.78.2
 
 Author: Gruntwork <www.gruntwork.io>
 ```

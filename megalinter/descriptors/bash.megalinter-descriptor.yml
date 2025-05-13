@@ -86,7 +86,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=crate depName=shellcheck-sarif
-          ARG CARGO_SHELLCHECK_SARIF_VERSION=0.7.0
+          ARG CARGO_SHELLCHECK_SARIF_VERSION=0.8.0
         # Also update shellcheck version in action.megalinter-descriptor.yml
         - |-
           # renovate: datasource=docker depName=koalaman/shellcheck

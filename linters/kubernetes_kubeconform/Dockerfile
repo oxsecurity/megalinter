@@ -12,7 +12,7 @@
 #############################################################################################
 #ARGTOP__START
 # renovate: datasource=docker depName=ghcr.io/yannh/kubeconform
-ARG KUBERNETES_KUBECONFORM_VERSION=v0.6.7-alpine
+ARG KUBERNETES_KUBECONFORM_VERSION=v0.7.0-alpine
 #ARGTOP__END
 
 #############################################################################################
@@ -25,7 +25,7 @@ FROM ghcr.io/yannh/kubeconform:${KUBERNETES_KUBECONFORM_VERSION} AS kubeconform
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.6.16 AS uv
+FROM ghcr.io/astral-sh/uv:0.7.2 AS uv
 FROM python:3.12.10-alpine3.21 AS build-ml-core
 WORKDIR /
 COPY --from=uv /uv /uvx /bin/

@@ -19,6 +19,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Linters enhancements
 
 - Fixes
+  - Fix crash when the markdown table summary is empty
 
 - Reporters
 
@@ -31,9 +32,74 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - mega-linter-runner
 
 - Linter versions upgrades (N)
-  - [checkstyle](https://checkstyle.org/) from 10.23.0 to **10.23.1** on 2025-04-29
-  - [v8r](https://github.com/chris48s/v8r) from 4.3.0 to **4.4.0** on 2025-04-29
+  - [golangci-lint](https://golangci-lint.run/) from 2.1.5 to **2.1.6** on 2025-05-04
+  - [pylint](https://pylint.readthedocs.io) from 3.3.6 to **3.3.7** on 2025-05-04
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.8.0 to **3.11.0** on 2025-05-05
+  - [psalm](https://psalm.dev) from Psalm.6.10.2@ to **Psalm.6.10.3@** on 2025-05-06
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.88.27 to **3.88.28** on 2025-05-06
+  - [rubocop](https://rubocop.org/) from 1.75.4 to **1.75.5** on 2025-05-06
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.11.0 to **3.12.0** on 2025-05-06
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.62.0 to **0.62.1** on 2025-05-09
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.62.0 to **0.62.1** on 2025-05-09
+  - [scalafix](https://scalacenter.github.io/scalafix/) from 0.14.2 to **0.14.3** on 2025-05-09
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.19.4 to **9.0.1** on 2025-05-09
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.12.0 to **3.12.1** on 2025-05-09
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.88.28 to **3.88.29** on 2025-05-09
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.34.2 to **1.35.1** on 2025-05-10
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.11.8 to **0.11.9** on 2025-05-10
+  - [ruff](https://github.com/astral-sh/ruff) from 0.11.8 to **0.11.9** on 2025-05-10
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.12.1 to **3.13.0** on 2025-05-10
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.78.0 to **0.78.2** on 2025-05-11
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.13.0 to **3.13.1** on 2025-05-12
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.13.1 to **3.14.0** on 2025-05-13
+  - [editorconfig-checker](https://editorconfig-checker.github.io/) from 3.2.1 to **3.3.0** on 2025-05-13
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 15.1.0 to **15.2.0** on 2025-05-13
+  - [kubeconform](https://github.com/yannh/kubeconform) from 0.6.7 to **0.7.0** on 2025-05-13
+  - [phpcs](https://github.com/PHPCSStandards/PHP_CodeSniffer) from 3.12.2 to **3.13.0** on 2025-05-13
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.54.1 to **0.55.2** on 2025-05-13
 <!-- linter-versions-end -->
+
+## [v8.7.0] - 2024-05-04
+
+- Core
+  - Replace pychalk (not maintained for 7 years) by termcolor, by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/5316>
+  - Update make scripts so they also work on Windows, by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/5316>
+  - Align number columns of markdown tables in reports, by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/4835>
+
+- Linters enhancements
+  - Add new CSharpier supported file extensions, by @bdovaz in <https://github.com/oxsecurity/megalinter/pull/5292>
+
+- Fixes
+  - Exclude from sanitization the regular expressions that have awful performances, by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/5308>
+  - New variable SKIP_LINTER_OUTPUT_SANITIZATION to skip sanitization to improve performances if you are on a private repository with secured access, by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/5308>
+
+- Linter versions upgrades (27)
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 25.2.1 to **25.4.0**  
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.34.44 to **0.35.1**  
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.34.1 to **1.34.2**  
+  - [checkov](https://www.checkov.io/) from 3.2.404 to **3.2.413**  
+  - [checkstyle](https://checkstyle.org/) from 10.23.0 to **10.23.1**  
+  - [csharpier](https://csharpier.com/) from 0.30.6 to **1.0.1**  
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.19.2 to **8.19.4**  
+  - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.24.3 to **8.25.1**  
+  - [golangci-lint](https://golangci-lint.run/) from 1.64.8 to **2.1.5**  
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.4.0 to **3.8.0**  
+  - [phpstan](https://phpstan.org/) from 2.1.12 to **2.1.14**  
+  - [pmd](https://pmd.github.io/) from 7.12.0 to **7.13.0**  
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.5.0 to **7.5.1**  
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.53.0 to **0.54.1**  
+  - [psalm](https://psalm.dev) from 6.10.1 to **6.10.2**  
+  - [rubocop](https://rubocop.org/) from 1.75.3 to **1.75.4**  
+  - [ruff](https://github.com/astral-sh/ruff) from 0.11.6 to **0.11.8**  
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.11.6 to **0.11.8**  
+  - [secretlint](https://github.com/secretlint/secretlint) from 9.3.1 to **9.3.2**  
+  - [stylelint](https://stylelint.io) from 16.19.0 to **16.19.1**  
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.77.22 to **0.78.0**  
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.56.0 to **0.57.0**  
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.61.1 to **0.62.0**  
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.61.1 to **0.62.0**  
+  - [v8r](https://github.com/chris48s/v8r) from 4.3.0 to **4.4.0**  
+  - [yamllint](https://yamllint.readthedocs.io/) from 1.37.0 to **1.37.1**
 
 ## [v8.6.0] - 2024-04-27
 

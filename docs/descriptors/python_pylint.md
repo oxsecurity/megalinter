@@ -9,7 +9,7 @@ description: How to use pylint (configure, ignore files, ignore errors, help & v
 
 ## pylint documentation
 
-- Version in MegaLinter: **3.3.6**
+- Version in MegaLinter: **3.3.7**
 - Visit [Official Web Site](https://pylint.readthedocs.io){target=_blank}
 - See [How to configure pylint rules](https://pylint.readthedocs.io/en/stable/user_guide/configuration/index.html){target=_blank}
   - If custom `.pylintrc` config file isn't found, [.pylintrc](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.pylintrc){target=_blank} will be used
@@ -443,7 +443,7 @@ Typecheck:
                         register other decorators that produce valid context
                         managers. (default: ['contextlib.contextmanager'])
   --missing-member-hint-distance <member hint edit distance>
-                        The minimum edit distance a name should have in order
+                        The maximum edit distance a name should have in order
                         to be considered a similar match for a missing member
                         name. (default: 1)
   --missing-member-max-choices <member hint max choices>
@@ -766,11 +766,11 @@ Basic:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=pylint
-ARG PIP_PYLINT_VERSION=3.3.6
+ARG PIP_PYLINT_VERSION=3.3.7
 # renovate: datasource=pypi depName=typing-extensions
 ARG PIP_TYPING_EXTENSIONS_VERSION=4.13.2
 ```
 
 - PIP packages (Python):
-  - [pylint==3.3.6](https://pypi.org/project/pylint/3.3.6)
+  - [pylint==3.3.7](https://pypi.org/project/pylint/3.3.7)
   - [typing-extensions==4.13.2](https://pypi.org/project/typing-extensions/4.13.2)

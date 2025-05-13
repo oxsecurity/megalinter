@@ -24,7 +24,7 @@
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.6.16 AS uv
+FROM ghcr.io/astral-sh/uv:0.7.2 AS uv
 FROM python:3.12.10-alpine3.21 AS build-ml-core
 WORKDIR /
 COPY --from=uv /uv /uvx /bin/
@@ -49,7 +49,7 @@ FROM python:3.12.10-alpine3.21
 #############################################################################################
 #ARG__START
 # renovate: datasource=github-tags depName=Azure/bicep
-ARG BICEP_VERSION=0.34.44
+ARG BICEP_VERSION=0.35.1
 ARG BICEP_EXE='bicep'
 ARG BICEP_DIR='/usr/local/bin'
 #ARG__END
