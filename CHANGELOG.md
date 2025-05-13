@@ -52,6 +52,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.78.0 to **0.78.2** on 2025-05-11
   - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.13.0 to **3.13.1** on 2025-05-12
   - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.13.1 to **3.14.0** on 2025-05-13
+  - [editorconfig-checker](https://editorconfig-checker.github.io/) from 3.2.1 to **3.3.0** on 2025-05-13
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 15.1.0 to **15.2.0** on 2025-05-13
+  - [kubeconform](https://github.com/yannh/kubeconform) from 0.6.7 to **0.7.0** on 2025-05-13
+  - [phpcs](https://github.com/PHPCSStandards/PHP_CodeSniffer) from 3.12.2 to **3.13.0** on 2025-05-13
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.54.1 to **0.55.2** on 2025-05-13
 <!-- linter-versions-end -->
 
 ## [v8.7.0] - 2024-05-04
