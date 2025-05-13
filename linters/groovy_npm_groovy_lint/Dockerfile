@@ -49,7 +49,7 @@ FROM python:3.12.10-alpine3.21
 #############################################################################################
 #ARG__START
 # renovate: datasource=npm depName=npm-groovy-lint
-ARG NPM_GROOVY_LINT_VERSION=15.1.0
+ARG NPM_GROOVY_LINT_VERSION=15.2.0
 #ARG__END
 
 ####################
