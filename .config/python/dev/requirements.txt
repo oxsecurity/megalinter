@@ -15,7 +15,7 @@ mdx_truly_sane_lists==1.3
 mike==2.1.3
 mkdocs==1.6.1
 mkdocs-glightbox==0.3.2
-mkdocs-material==9.6.13
+mkdocs-material==9.6.14
 multiprocessing_logging==0.3.4
 pygithub==2.6.1
 pymdown-extensions==10.15
