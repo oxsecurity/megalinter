@@ -27,7 +27,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=docker depName=yoheimuta/protolint
-          ARG PROTOBUF_PROTOLINT_VERSION=0.54.1
+          ARG PROTOBUF_PROTOLINT_VERSION=0.55.2
         - FROM yoheimuta/protolint:${PROTOBUF_PROTOLINT_VERSION} AS protolint
         - COPY --link --from=protolint /usr/local/bin/protolint /usr/bin/
     ide:
