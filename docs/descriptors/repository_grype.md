@@ -15,7 +15,7 @@ description: How to use grype (configure, ignore files, ignore errors, help & ve
 
 ## grype documentation
 
-- Version in MegaLinter: **0.91.2**
+- Version in MegaLinter: **0.92.0**
 - Visit [Official Web Site](https://github.com/anchore/grype#readme){target=_blank}
 - See [How to configure grype rules](https://github.com/anchore/grype#configuration){target=_blank}
   - If custom `.grype.yaml` config file isn't found, [.grype.yaml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.grype.yaml){target=_blank} will be used
@@ -111,6 +111,7 @@ You can also explicitly specify the scheme to use:
     grype registry:yourrepo/yourimage:tag        pull image directly from a registry (no container runtime required)
     grype purl:path/to/purl/file                 read a newline separated file of package URLs from a path on disk
     grype PURL                                   read a single package PURL directly (e.g. pkg:apk/openssl@3.2.1?distro=alpine-3.20.3)
+    grype CPE                                    read a single CPE directly (e.g. cpe:2.3:a:openssl:openssl:3.0.14:*:*:*:*:*)
 
 You can also pipe in Syft JSON directly:
   syft yourimage:tag -o json | grype
@@ -144,8 +145,9 @@ Flags:
       --platform string        an optional platform specifier for container image sources (e.g. 'linux/arm64', 'linux/arm64/v8', 'arm64', 'linux')
       --profile stringArray    configuration profiles to use
   -q, --quiet                  suppress all logging output
-  -s, --scope string           selection of layers to analyze, options=[squashed all-layers] (default "squashed")
+  -s, --scope string           selection of layers to analyze, options=[squashed all-layers deep-squashed] (default "squashed")
       --show-suppressed        show suppressed/ignored vulnerabilities in the output (only supported with table output format)
+      --sort-by string         sort the match results with the given strategy, options=[package severity epss risk kev vulnerability] (default "risk")
   -t, --template string        specify the path to a Go template file (requires 'template' output to be selected)
   -v, --verbose count          increase verbosity (-v = info, -vv = debug)
       --version                version for grype
@@ -159,7 +161,7 @@ Use "grype [command] --help" for more information about a command.
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=github-tags depName=anchore/grype
-ARG REPOSITORY_GRYPE_VERSION=0.91.2
+ARG REPOSITORY_GRYPE_VERSION=0.92.0
 RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/refs/tags/v${REPOSITORY_GRYPE_VERSION}/install.sh | sh -s -- -b /usr/local/bin
 ```
 

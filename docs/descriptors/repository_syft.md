@@ -17,7 +17,7 @@ Builds a SBOM (Software Build Of Materials) from your repository
 
 ## syft documentation
 
-- Version in MegaLinter: **1.23.1**
+- Version in MegaLinter: **1.24.0**
 - Visit [Official Web Site](https://github.com/anchore/syft#readme){target=_blank}
 
 [![syft - GitHub](https://gh-card.dev/repos/anchore/syft.svg?fullname=)](https://github.com/anchore/syft){target=_blank}
@@ -144,13 +144,13 @@ Flags:
       --file string                               file to write the default report output to (default is STDOUT) (DEPRECATED: use: --output FORMAT=PATH)
       --from stringArray                          specify the source behavior to use (e.g. docker, registry, oci-dir, ...)
   -h, --help                                      help for syft
-  -o, --output stringArray                        report output format (<format>=<file> to output to a file), formats=[cyclonedx-json cyclonedx-xml github-json spdx-json spdx-tag-value syft-json syft-table syft-text template] (default [syft-table])
+  -o, --output stringArray                        report output format (<format>=<file> to output to a file), formats=[cyclonedx-json cyclonedx-xml github-json purls spdx-json spdx-tag-value syft-json syft-table syft-text template] (default [syft-table])
       --override-default-catalogers stringArray   set the base set of catalogers to use (defaults to 'image' or 'directory' depending on the scan source)
       --parallelism int                           number of cataloger workers to run in parallel
       --platform string                           an optional platform specifier for container image sources (e.g. 'linux/arm64', 'linux/arm64/v8', 'arm64', 'linux')
       --profile stringArray                       configuration profiles to use
   -q, --quiet                                     suppress all logging output
-  -s, --scope string                              selection of layers to catalog, options=[squashed all-layers] (default "squashed")
+  -s, --scope string                              selection of layers to catalog, options=[squashed all-layers deep-squashed] (default "squashed")
       --select-catalogers stringArray             add, remove, and filter the catalogers to be used
       --source-name string                        set the name of the target being analyzed
       --source-version string                     set the version of the target being analyzed
@@ -166,7 +166,7 @@ Use "syft [command] --help" for more information about a command.
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=github-tags depName=anchore/syft
-ARG REPOSITORY_SYFT_VERSION=1.23.1
+ARG REPOSITORY_SYFT_VERSION=1.24.0
 RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/refs/tags/v${REPOSITORY_SYFT_VERSION}/install.sh | sh -s -- -b /usr/local/bin
 ```
 
