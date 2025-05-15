@@ -57,6 +57,14 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [kubeconform](https://github.com/yannh/kubeconform) from 0.6.7 to **0.7.0** on 2025-05-13
   - [phpcs](https://github.com/PHPCSStandards/PHP_CodeSniffer) from 3.12.2 to **3.13.0** on 2025-05-13
   - [protolint](https://github.com/yoheimuta/protolint) from 0.54.1 to **0.55.2** on 2025-05-13
+  - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.25.1 to **8.26.0** on 2025-05-14
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 4.11.0 to **4.12.0** on 2025-05-14
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 4.11.0 to **4.12.0** on 2025-05-14
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 4.11.0 to **4.12.0** on 2025-05-14
+  - [phpstan](https://phpstan.org/) from 2.1.14 to **2.1.15** on 2025-05-14
+  - [v8r](https://github.com/chris48s/v8r) from 4.4.0 to **5.0.0** on 2025-05-14
+  - [grype](https://github.com/anchore/grype) from 0.91.2 to **0.92.0** on 2025-05-14
+  - [syft](https://github.com/anchore/syft) from 1.23.1 to **1.24.0** on 2025-05-14
 <!-- linter-versions-end -->
 
 ## [v8.7.0] - 2024-05-04

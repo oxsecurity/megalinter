@@ -11,7 +11,7 @@ v8r checks the validity of JSON/YAML files if they have a matching schema define
 
 ## v8r documentation
 
-- Version in MegaLinter: **4.4.0**
+- Version in MegaLinter: **5.0.0**
 - Visit [Official Web Site](https://github.com/chris48s/v8r#readme){target=_blank}
 - See [Index of problems detected by v8r](https://www.schemastore.org/json/){target=_blank}
 
@@ -111,31 +111,30 @@ Positionals:
             s to validate
 
 Options:
-      --help                     Show help                             [boolean]
-      --version                  Show version number                   [boolean]
-  -v, --verbose                  Run with verbose logging. Can be stacked e.g: -
-                                 vv -vvv                                 [count]
-  -s, --schema                   Local path or URL of a schema to validate again
-                                 st. If not supplied, we will attempt to find an
-                                  appropriate schema on schemastore.org using th
-                                 e filename. If passed with glob pattern(s) matc
-                                 hing multiple files, all matching files will be
-                                  validated against this schema         [string]
-  -c, --catalogs                 A list of local paths or URLs of custom catalog
-                                 s to use prior to schemastore.org       [array]
-      --ignore-errors            Exit with code 0 even if an error was encounter
-                                 ed. Passing this flag means a non-zero exit cod
-                                 e is only issued if validation could be complet
-                                 ed successfully and one or more files were inva
-                                 lid                  [boolean] [default: false]
-      --ignore-pattern-files     A list of files containing glob patterns to ign
-                                 ore           [array] [default: [".v8rignore"]]
-      --no-ignore                Disable all ignore files              [boolean]
-      --cache-ttl                Remove cached HTTP responses older than <cache-
-                                 ttl> seconds old. Passing 0 clears and disables
-                                  cache completely       [number] [default: 600]
-      --output-format, --format  Output format for validation results. The '--fo
-                                 rmat' alias is deprecated.
+      --help                  Show help                                [boolean]
+      --version               Show version number                      [boolean]
+  -v, --verbose               Run with verbose logging. Can be stacked e.g: -vv
+                              -vvv                                       [count]
+  -s, --schema                Local path or URL of a schema to validate against.
+                               If not supplied, we will attempt to find an appro
+                              priate schema on schemastore.org using the filenam
+                              e. If passed with glob pattern(s) matching multipl
+                              e files, all matching files will be validated agai
+                              nst this schema                           [string]
+  -c, --catalogs              A list of local paths or URLs of custom catalogs t
+                              o use prior to schemastore.org             [array]
+      --ignore-errors         Exit with code 0 even if an error was encountered.
+                               Passing this flag means a non-zero exit code is o
+                              nly issued if validation could be completed succes
+                              sfully and one or more files were invalid
+                                                      [boolean] [default: false]
+      --ignore-pattern-files  A list of files containing glob patterns to ignore
+                                  [array] [default: [".v8rignore",".gitignore"]]
+      --no-ignore             Disable all ignore files                 [boolean]
+      --cache-ttl             Remove cached HTTP responses older than <cache-ttl
+                              > seconds old. Passing 0 clears and disables cache
+                               completely                [number] [default: 600]
+      --output-format         Output format for validation results
                             [string] [choices: "text", "json"] [default: "text"]
 
 Examples:
@@ -149,8 +148,8 @@ Examples:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=v8r
-ARG NPM_V8R_VERSION=4.4.0
+ARG NPM_V8R_VERSION=5.0.0
 ```
 
 - NPM packages (node.js):
-  - [v8r@4.4.0](https://www.npmjs.com/package/v8r/v/4.4.0)
+  - [v8r@5.0.0](https://www.npmjs.com/package/v8r/v/5.0.0)
