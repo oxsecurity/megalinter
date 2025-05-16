@@ -990,7 +990,7 @@ def generate_descriptor_documentation(descriptor):
     ]
     # Title
     descriptor_md += [
-        f"# {descriptor.get('descriptor_label', descriptor.get('descriptor_id'))}",
+        f"# {descriptor.get('descriptor_label', descriptor.get('descriptor_id')).replace('#', '\\#')}",
         "",
     ]
     # List of linters
