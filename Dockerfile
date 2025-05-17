@@ -496,7 +496,7 @@ ENV PATH="/root/.cargo/bin:${PATH}"
 #############################################################################################
 
 #PIPVENV__START
-RUN PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir pip==${PIP_PIP_VERSION} virtualenv==${PIP_VIRTUALENV_VERSION} \
+RUN uv pip install --system --no-cache pip==${PIP_PIP_VERSION} virtualenv==${PIP_VIRTUALENV_VERSION} \
     && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/ansible-lint" && VIRTUAL_ENV="/venvs/ansible-lint" uv pip install --no-cache ansible-lint==${PIP_ANSIBLE_LINT_VERSION} \
     && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/cpplint" && VIRTUAL_ENV="/venvs/cpplint" uv pip install --no-cache cpplint==${PIP_CPPLINT_VERSION} \
     && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/cfn-lint" && VIRTUAL_ENV="/venvs/cfn-lint" uv pip install --no-cache cfn-lint[sarif]==${PIP_CFN_LINT_VERSION} \
