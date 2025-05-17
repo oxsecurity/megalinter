@@ -11,8 +11,6 @@ linters:
   # Internal snakemake linter
   - linter_name: snakemake
     name: SNAKEMAKE_LINT
-    disabled: true
-    disabled_reason: Dependency datrie not maintained, and issue open in snakemake repo since july - https://github.com/snakemake/snakemake/issues/2970
     linter_url: https://snakemake.readthedocs.io/en/stable/
     linter_repo: https://github.com/snakemake/snakemake
     linter_banner_image_url: https://github.com/snakemake/snakemake/raw/6fcdc8a22db5522e232638bff16da9b50996eb45/images/biglogo.png
