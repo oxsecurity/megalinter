@@ -155,10 +155,10 @@ ENV PATH="/root/.cargo/bin:${PATH}"
 
 #PIPVENV__START
 RUN PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir pip==${PIP_PIP_VERSION} virtualenv==${PIP_VIRTUALENV_VERSION} \
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/black" && VIRTUAL_ENV="/venvs/black" uv pip install --no-cache black==${PIP_BLACK_VERSION} 
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/isort" && VIRTUAL_ENV="/venvs/isort" uv pip install --no-cache black==${PIP_BLACK_VERSION} isort==${PIP_ISORT_VERSION} 
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/ruff-format" && VIRTUAL_ENV="/venvs/ruff-format" uv pip install --no-cache ruff==${PIP_RUFF_VERSION} 
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/rstfmt" && VIRTUAL_ENV="/venvs/rstfmt" uv pip install --no-cache rstfmt==${PIP_RSTFMT_VERSION} 
+    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/black" && VIRTUAL_ENV="/venvs/black" uv pip install --no-cache black==${PIP_BLACK_VERSION} \
+    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/isort" && VIRTUAL_ENV="/venvs/isort" uv pip install --no-cache black==${PIP_BLACK_VERSION} isort==${PIP_ISORT_VERSION} \
+    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/ruff-format" && VIRTUAL_ENV="/venvs/ruff-format" uv pip install --no-cache ruff==${PIP_RUFF_VERSION} \
+    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/rstfmt" && VIRTUAL_ENV="/venvs/rstfmt" uv pip install --no-cache rstfmt==${PIP_RSTFMT_VERSION} \
     && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/snakefmt" && VIRTUAL_ENV="/venvs/snakefmt" uv pip install --no-cache snakefmt==${PIP_SNAKEFMT_VERSION}  \
     && find /venvs \( -type f \( -iname \*.pyc -o -iname \*.pyo \) -o -type d -iname __pycache__ \) -delete \
     && rm -rf /root/.cache

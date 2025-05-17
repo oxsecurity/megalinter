@@ -401,25 +401,25 @@ ENV PATH="/root/.cargo/bin:${PATH}"
 
 #PIPVENV__START
 RUN PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir pip==${PIP_PIP_VERSION} virtualenv==${PIP_VIRTUALENV_VERSION} \
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/ansible-lint" && VIRTUAL_ENV="/venvs/ansible-lint" uv pip install --no-cache ansible-lint==${PIP_ANSIBLE_LINT_VERSION} 
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/cpplint" && VIRTUAL_ENV="/venvs/cpplint" uv pip install --no-cache cpplint==${PIP_CPPLINT_VERSION} 
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/cfn-lint" && VIRTUAL_ENV="/venvs/cfn-lint" uv pip install --no-cache cfn-lint[sarif]==${PIP_CFN_LINT_VERSION} 
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/stylelint" && VIRTUAL_ENV="/venvs/stylelint" uv pip install --no-cache cpplint==${PIP_CPPLINT_VERSION} 
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/djlint" && VIRTUAL_ENV="/venvs/djlint" uv pip install --no-cache djlint==${PIP_DJLINT_VERSION} 
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/pylint" && VIRTUAL_ENV="/venvs/pylint" uv pip install --no-cache pylint==${PIP_PYLINT_VERSION} typing-extensions==${PIP_TYPING_EXTENSIONS_VERSION} 
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/black" && VIRTUAL_ENV="/venvs/black" uv pip install --no-cache black==${PIP_BLACK_VERSION} 
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/flake8" && VIRTUAL_ENV="/venvs/flake8" uv pip install --no-cache flake8==${PIP_FLAKE8_VERSION} 
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/isort" && VIRTUAL_ENV="/venvs/isort" uv pip install --no-cache black==${PIP_BLACK_VERSION} isort==${PIP_ISORT_VERSION} 
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/mypy" && VIRTUAL_ENV="/venvs/mypy" uv pip install --no-cache mypy==${PIP_MYPY_VERSION} 
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/ruff" && VIRTUAL_ENV="/venvs/ruff" uv pip install --no-cache ruff==${PIP_RUFF_VERSION} 
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/ruff-format" && VIRTUAL_ENV="/venvs/ruff-format" uv pip install --no-cache ruff==${PIP_RUFF_VERSION} 
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/checkov" && VIRTUAL_ENV="/venvs/checkov" uv pip install --no-cache checkov==${PIP_CHECKOV_VERSION} 
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/semgrep" && VIRTUAL_ENV="/venvs/semgrep" uv pip install --no-cache semgrep==${PIP_SEMGREP_VERSION} 
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/rst-lint" && VIRTUAL_ENV="/venvs/rst-lint" uv pip install --no-cache Pygments==${PIP_PYGMENTS_VERSION} restructuredtext_lint==${PIP_RESTRUCTUREDTEXT_LINT_VERSION} 
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/rstcheck" && VIRTUAL_ENV="/venvs/rstcheck" uv pip install --no-cache click==${PIP_RSTCHECK_CLICK_VERSION} rstcheck[toml,sphinx]==${PIP_RSTCHECK_VERSION} 
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/rstfmt" && VIRTUAL_ENV="/venvs/rstfmt" uv pip install --no-cache rstfmt==${PIP_RSTFMT_VERSION} 
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/proselint" && VIRTUAL_ENV="/venvs/proselint" uv pip install --no-cache proselint==${PIP_PROSELINT_VERSION} 
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/sqlfluff" && VIRTUAL_ENV="/venvs/sqlfluff" uv pip install --no-cache sqlfluff==${PIP_SQLFLUFF_VERSION} 
+    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/ansible-lint" && VIRTUAL_ENV="/venvs/ansible-lint" uv pip install --no-cache ansible-lint==${PIP_ANSIBLE_LINT_VERSION} \
+    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/cpplint" && VIRTUAL_ENV="/venvs/cpplint" uv pip install --no-cache cpplint==${PIP_CPPLINT_VERSION} \
+    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/cfn-lint" && VIRTUAL_ENV="/venvs/cfn-lint" uv pip install --no-cache cfn-lint[sarif]==${PIP_CFN_LINT_VERSION} \
+    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/stylelint" && VIRTUAL_ENV="/venvs/stylelint" uv pip install --no-cache cpplint==${PIP_CPPLINT_VERSION} \
+    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/djlint" && VIRTUAL_ENV="/venvs/djlint" uv pip install --no-cache djlint==${PIP_DJLINT_VERSION} \
+    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/pylint" && VIRTUAL_ENV="/venvs/pylint" uv pip install --no-cache pylint==${PIP_PYLINT_VERSION} typing-extensions==${PIP_TYPING_EXTENSIONS_VERSION} \
+    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/black" && VIRTUAL_ENV="/venvs/black" uv pip install --no-cache black==${PIP_BLACK_VERSION} \
+    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/flake8" && VIRTUAL_ENV="/venvs/flake8" uv pip install --no-cache flake8==${PIP_FLAKE8_VERSION} \
+    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/isort" && VIRTUAL_ENV="/venvs/isort" uv pip install --no-cache black==${PIP_BLACK_VERSION} isort==${PIP_ISORT_VERSION} \
+    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/mypy" && VIRTUAL_ENV="/venvs/mypy" uv pip install --no-cache mypy==${PIP_MYPY_VERSION} \
+    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/ruff" && VIRTUAL_ENV="/venvs/ruff" uv pip install --no-cache ruff==${PIP_RUFF_VERSION} \
+    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/ruff-format" && VIRTUAL_ENV="/venvs/ruff-format" uv pip install --no-cache ruff==${PIP_RUFF_VERSION} \
+    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/checkov" && VIRTUAL_ENV="/venvs/checkov" uv pip install --no-cache checkov==${PIP_CHECKOV_VERSION} \
+    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/semgrep" && VIRTUAL_ENV="/venvs/semgrep" uv pip install --no-cache semgrep==${PIP_SEMGREP_VERSION} \
+    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/rst-lint" && VIRTUAL_ENV="/venvs/rst-lint" uv pip install --no-cache Pygments==${PIP_PYGMENTS_VERSION} restructuredtext_lint==${PIP_RESTRUCTUREDTEXT_LINT_VERSION} \
+    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/rstcheck" && VIRTUAL_ENV="/venvs/rstcheck" uv pip install --no-cache click==${PIP_RSTCHECK_CLICK_VERSION} rstcheck[toml,sphinx]==${PIP_RSTCHECK_VERSION} \
+    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/rstfmt" && VIRTUAL_ENV="/venvs/rstfmt" uv pip install --no-cache rstfmt==${PIP_RSTFMT_VERSION} \
+    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/proselint" && VIRTUAL_ENV="/venvs/proselint" uv pip install --no-cache proselint==${PIP_PROSELINT_VERSION} \
+    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/sqlfluff" && VIRTUAL_ENV="/venvs/sqlfluff" uv pip install --no-cache sqlfluff==${PIP_SQLFLUFF_VERSION} \
     && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/yamllint" && VIRTUAL_ENV="/venvs/yamllint" uv pip install --no-cache yamllint==${PIP_YAMLLINT_VERSION}  \
     && find /venvs \( -type f \( -iname \*.pyc -o -iname \*.pyo \) -o -type d -iname __pycache__ \) -delete \
     && rm -rf /root/.cache
