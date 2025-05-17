@@ -62,6 +62,7 @@ jobs:
             "rust",
             "salesforce",
             "security",
+            "snakemake",
             "swift",
             "terraform",
           ]
