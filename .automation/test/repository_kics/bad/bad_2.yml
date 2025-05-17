@@ -1,0 +1,12 @@
+---
+- name: Install Apache from an MSI 
+  hosts: all 
+ 
+  tasks:
+    - name: Create (or update) Firewall Rule1
+      azure_rm_sqlfirewallrule:
+        resource_group: myResourceGroup1
+        server_name: firewallrulecrudtest-6285
+        name: firewallrulecrudtest-5370
+        start_ip_address: 0.0.0.0
+        end_ip_address: 172.28.11.138

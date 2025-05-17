@@ -1,0 +1,11 @@
+potential-bugs:
+  active: true
+  ExplicitGarbageCollectionCall:
+    active: true
+    severity: error
+
+style:
+  active: true
+  ModifierOrder:
+    active: true
+    severity: warning
