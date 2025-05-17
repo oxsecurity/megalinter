@@ -81,8 +81,8 @@ jobs:
             > Running script `./build.sh`
       - name: Run build script
         run: ./build.sh
+      - run: git pull --unshallow || git pull
       - uses: stefanzweifel/git-auto-commit-action@v5
-        continue-on-error: true
         id: auto-commit-action
         with:
           commit_message: "[build-command] Update generated files"
