@@ -65,6 +65,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [v8r](https://github.com/chris48s/v8r) from 4.4.0 to **5.0.0** on 2025-05-14
   - [grype](https://github.com/anchore/grype) from 0.91.2 to **0.92.0** on 2025-05-14
   - [syft](https://github.com/anchore/syft) from 1.23.1 to **1.24.0** on 2025-05-14
+  - [grype](https://github.com/anchore/grype) from 0.92.0 to **0.92.1** on 2025-05-16
+  - [syft](https://github.com/anchore/syft) from 1.24.0 to **1.25.1** on 2025-05-16
 <!-- linter-versions-end -->
 
 ## [v8.7.0] - 2024-05-04
