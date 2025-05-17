@@ -6,6 +6,8 @@ CVE-2024-38168
 CVE-2024-43483
 CVE-2024-43484
 CVE-2024-43485
+# https://avd.aquasec.com/nvd/2025/cve-2025-26646/ Not applicable in MegaLinter context
+CVE-2025-26646
 
 # Docker
 CVE-2024-41110
