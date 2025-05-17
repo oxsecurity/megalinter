@@ -138,6 +138,7 @@ jobs:
             "salesforce_lightning_flow_scanner",
             "scala_scalafix",
             "snakemake_snakefmt",
+            "snakemake_snakemake",
             "spell_cspell",
             "spell_proselint",
             "spell_vale",
