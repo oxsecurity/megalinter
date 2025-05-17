@@ -9,7 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
 - Core
-  - Use uv to create the venv folder for pip-installed linters 
+  - Use uv to create the venv folder for pip-installed linters
 
 - New linters
 
