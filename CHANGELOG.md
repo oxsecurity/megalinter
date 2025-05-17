@@ -71,6 +71,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [ruff](https://github.com/astral-sh/ruff) from 0.11.9 to **0.11.10** on 2025-05-17
   - [rubocop](https://rubocop.org/) from 1.75.5 to **1.75.6** on 2025-05-17
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.27.1 to **9.3.5** on 2025-05-17
+  - [phpstan](https://phpstan.org/) from 2.1.15 to **2.1.16** on 2025-05-17
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.14.0 to **3.14.1** on 2025-05-17
 <!-- linter-versions-end -->
 
 ## [v8.7.0] - 2024-05-04
