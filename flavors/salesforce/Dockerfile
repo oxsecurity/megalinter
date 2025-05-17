@@ -167,6 +167,8 @@ ARG REPOSITORY_TRIVY_SBOM_VERSION=0.62.1
 ARG SALESFORCE_SFDX_SCANNER_VERSION=4.12.0
 # renovate: datasource=npm depName=lightning-flow-scanner
 ARG LIGHTNING_FLOW_SCANNER_VERSION=3.14.0
+# renovate: datasource=pypi depName=snakemake
+ARG PIP_SNAKEMAKE_VERSION=9.3.5
 # renovate: datasource=pypi depName=snakefmt
 ARG PIP_SNAKEFMT_VERSION=0.11.0
 # renovate: datasource=npm depName=cspell
@@ -274,13 +276,14 @@ RUN PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir pip==${PIP_PIP_VERSION
     && mkdir -p "/venvs/djlint" && cd "/venvs/djlint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir djlint==${PIP_DJLINT_VERSION} && deactivate && cd ./../.. \
     && mkdir -p "/venvs/checkov" && cd "/venvs/checkov" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir checkov==${PIP_CHECKOV_VERSION} && deactivate && cd ./../.. \
     && mkdir -p "/venvs/semgrep" && cd "/venvs/semgrep" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir semgrep==${PIP_SEMGREP_VERSION} && deactivate && cd ./../.. \
+    && mkdir -p "/venvs/snakemake" && cd "/venvs/snakemake" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir snakemake==${PIP_SNAKEMAKE_VERSION} && deactivate && cd ./../.. \
     && mkdir -p "/venvs/snakefmt" && cd "/venvs/snakefmt" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir snakefmt==${PIP_SNAKEFMT_VERSION} && deactivate && cd ./../.. \
     && mkdir -p "/venvs/proselint" && cd "/venvs/proselint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir proselint==${PIP_PROSELINT_VERSION} && deactivate && cd ./../.. \
     && mkdir -p "/venvs/sqlfluff" && cd "/venvs/sqlfluff" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir sqlfluff==${PIP_SQLFLUFF_VERSION} && deactivate && cd ./../.. \
     && mkdir -p "/venvs/yamllint" && cd "/venvs/yamllint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir yamllint==${PIP_YAMLLINT_VERSION} && deactivate && cd ./../..  \
     && find /venvs \( -type f \( -iname \*.pyc -o -iname \*.pyo \) -o -type d -iname __pycache__ \) -delete \
     && rm -rf /root/.cache
-ENV PATH="${PATH}":/venvs/ansible-lint/bin:/venvs/stylelint/bin:/venvs/djlint/bin:/venvs/checkov/bin:/venvs/semgrep/bin:/venvs/snakefmt/bin:/venvs/proselint/bin:/venvs/sqlfluff/bin:/venvs/yamllint/bin
+ENV PATH="${PATH}":/venvs/ansible-lint/bin:/venvs/stylelint/bin:/venvs/djlint/bin:/venvs/checkov/bin:/venvs/semgrep/bin:/venvs/snakemake/bin:/venvs/snakefmt/bin:/venvs/proselint/bin:/venvs/sqlfluff/bin:/venvs/yamllint/bin
 #PIPVENV__END
 
 ############################
@@ -513,6 +516,8 @@ RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/rel
     && echo y|sf plugins install lightning-flow-scanner@${LIGHTNING_FLOW_SCANNER_VERSION} \
     && (npm cache clean --force || true) \
     && rm -rf /root/.npm/_cacache
+#
+# snakemake installation
 #
 # snakefmt installation
 #
