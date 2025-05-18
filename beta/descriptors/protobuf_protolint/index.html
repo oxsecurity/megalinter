@@ -3706,7 +3706,7 @@
 <p><a href="https://github.com/yoheimuta/protolint"><img alt="GitHub stars" src="https://img.shields.io/github/stars/yoheimuta/protolint?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-autofix-green"><img alt="autofix" src="https://shields.io/badge/-autofix-green"/></a> <a href="https://github.com/yoheimuta/protolint/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/yoheimuta/protolint?sort=semver"/></a> <a href="https://github.com/yoheimuta/protolint/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/yoheimuta/protolint"/></a> <a href="https://github.com/yoheimuta/protolint/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/yoheimuta/protolint"/></a> <a href="https://github.com/yoheimuta/protolint/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/yoheimuta/protolint"/></a></p>
 <h2 id="protolint-documentation">protolint documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>0.55.2</strong></li>
+<li>Version in MegaLinter: <strong>0.55.5</strong></li>
 <li>Visit <a href="https://github.com/yoheimuta/protolint#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/yoheimuta/protolint#rules" target="_blank">How to configure protolint rules</a><ul>
 <li>If custom <code>.protolintrc.yml</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.protolintrc.yml" target="_blank">.protolintrc.yml</a> will be used</li>
@@ -4000,7 +4000,7 @@
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile"># renovate: datasource=docker depName=yoheimuta/protolint
-ARG PROTOBUF_PROTOLINT_VERSION=0.55.2
+ARG PROTOBUF_PROTOLINT_VERSION=0.55.5
 FROM yoheimuta/protolint:${PROTOBUF_PROTOLINT_VERSION} AS protolint
 COPY --link --from=protolint /usr/local/bin/protolint /usr/bin/
 </code></pre>
