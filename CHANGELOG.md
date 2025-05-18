@@ -73,6 +73,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.27.1 to **9.3.5** on 2025-05-17
   - [phpstan](https://phpstan.org/) from 2.1.15 to **2.1.16** on 2025-05-17
   - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.14.0 to **3.14.1** on 2025-05-17
+  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 9.0.105 to **9.0.106** on 2025-05-18
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.55.2 to **0.55.5** on 2025-05-18
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.88.29 to **3.88.30** on 2025-05-18
 <!-- linter-versions-end -->
 
 ## [v8.7.0] - 2024-05-04
