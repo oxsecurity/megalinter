@@ -15,7 +15,7 @@ description: How to use snakemake (configure, ignore files, ignore errors, help 
 
 ## snakemake documentation
 
-- Version in MegaLinter: **9.3.5**
+- Version in MegaLinter: **9.4.0**
 - Visit [Official Web Site](https://snakemake.readthedocs.io/en/stable/){target=_blank}
 
 [![snakemake - GitHub](https://gh-card.dev/repos/snakemake/snakemake.svg?fullname=)](https://github.com/snakemake/snakemake){target=_blank}
@@ -182,7 +182,7 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--scheduler-solver-path SCHEDULER_SOLVER_PATH]
                  [--deploy-sources QUERY CHECKSUM]
                  [--target-jobs TARGET_JOBS [TARGET_JOBS ...]]
-                 [--mode {remote,default,subprocess}]
+                 [--mode {default,subprocess,remote}]
                  [--report-html-path VALUE]
                  [--report-html-stylesheet-path VALUE]
                  [targets ...]
@@ -912,7 +912,7 @@ REMOTE EXECUTION:
                         is up to your responsibility. Any used image has to
                         contain a working snakemake installation that is
                         compatible with (or ideally the same as) the currently
-                        running version. (default: snakemake/snakemake:v9.3.5)
+                        running version. (default: snakemake/snakemake:v9.4.0)
   --immediate-submit, --is
                         Immediately submit all jobs to the cluster instead of
                         waiting for present input files. This will fail,
@@ -1032,7 +1032,7 @@ INTERNAL:
   --target-jobs TARGET_JOBS [TARGET_JOBS ...]
                         Internal use only: Target particular jobs by
                         RULE:WILDCARD1=VALUE,WILDCARD2=VALUE,...
-  --mode {remote,default,subprocess}
+  --mode {default,subprocess,remote}
                         Internal use only: Set execution mode of Snakemake.
                         (default: default)
 
@@ -1053,8 +1053,8 @@ defaults.
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=snakemake
-ARG PIP_SNAKEMAKE_VERSION=9.3.5
+ARG PIP_SNAKEMAKE_VERSION=9.4.0
 ```
 
 - PIP packages (Python):
-  - [snakemake==9.3.5](https://pypi.org/project/snakemake/9.3.5)
+  - [snakemake==9.4.0](https://pypi.org/project/snakemake/9.4.0)

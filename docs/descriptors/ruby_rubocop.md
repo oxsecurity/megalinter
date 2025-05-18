@@ -295,7 +295,7 @@ ARG GEM_RUBOCOP_GITHUB_VERSION=0.23.0
 # renovate: datasource=rubygems depName=rubocop-performance
 ARG GEM_RUBOCOP_PERFORMANCE_VERSION=1.25.0
 # renovate: datasource=rubygems depName=rubocop-rails
-ARG GEM_RUBOCOP_RAILS_VERSION=2.31.0
+ARG GEM_RUBOCOP_RAILS_VERSION=2.32.0
 # renovate: datasource=rubygems depName=rubocop-rake
 ARG GEM_RUBOCOP_RAKE_VERSION=0.7.1
 # renovate: datasource=rubygems depName=rubocop-rspec
@@ -306,6 +306,6 @@ ARG GEM_RUBOCOP_RSPEC_VERSION=3.6.0
   - [rubocop:1.75.6](https://rubygems.org/gems/rubocop/versions/1.75.6)
   - [rubocop-github:0.23.0](https://rubygems.org/gems/rubocop-github/versions/0.23.0)
   - [rubocop-performance:1.25.0](https://rubygems.org/gems/rubocop-performance/versions/1.25.0)
-  - [rubocop-rails:2.31.0](https://rubygems.org/gems/rubocop-rails/versions/2.31.0)
+  - [rubocop-rails:2.32.0](https://rubygems.org/gems/rubocop-rails/versions/2.32.0)
   - [rubocop-rake:0.7.1](https://rubygems.org/gems/rubocop-rake/versions/0.7.1)
   - [rubocop-rspec:3.6.0](https://rubygems.org/gems/rubocop-rspec/versions/3.6.0)
