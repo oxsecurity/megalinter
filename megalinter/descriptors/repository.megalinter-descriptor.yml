@@ -318,7 +318,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=github-tags depName=anchore/grype
-          ARG REPOSITORY_GRYPE_VERSION=0.92.0
+          ARG REPOSITORY_GRYPE_VERSION=0.92.1
         - RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/refs/tags/v${REPOSITORY_GRYPE_VERSION}/install.sh | sh -s -- -b /usr/local/bin
     test_folder: repository_grype
 
@@ -542,7 +542,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=github-tags depName=anchore/syft
-          ARG REPOSITORY_SYFT_VERSION=1.24.0
+          ARG REPOSITORY_SYFT_VERSION=1.25.1
         - RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/refs/tags/v${REPOSITORY_SYFT_VERSION}/install.sh | sh -s -- -b /usr/local/bin
 
   # TRIVY
@@ -676,7 +676,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=docker depName=trufflesecurity/trufflehog
-          ARG REPOSITORY_TRUFFLEHOG_VERSION=3.88.29
+          ARG REPOSITORY_TRUFFLEHOG_VERSION=3.88.30
         - FROM trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION} AS trufflehog
         - COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
     test_folder: gitleaks

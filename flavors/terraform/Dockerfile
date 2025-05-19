@@ -25,13 +25,13 @@ ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=v3.3.0
 # renovate: datasource=docker depName=ghcr.io/yannh/kubeconform
 ARG KUBERNETES_KUBECONFORM_VERSION=v0.7.0-alpine
 # renovate: datasource=docker depName=yoheimuta/protolint
-ARG PROTOBUF_PROTOLINT_VERSION=0.55.2
+ARG PROTOBUF_PROTOLINT_VERSION=0.55.5
 # renovate: datasource=docker depName=zricethezav/gitleaks
 ARG REPOSITORY_GITLEAKS_VERSION=v8.26.0
 # renovate: datasource=docker depName=checkmarx/kics
 ARG REPOSITORY_KICS_VERSION=v2.1.7-alpine
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
-ARG REPOSITORY_TRUFFLEHOG_VERSION=3.88.29
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.88.30
 # renovate: datasource=docker depName=jdkato/vale
 ARG SPELL_VALE_VERSION=v3.11.2
 # renovate: datasource=docker depName=lycheeverse/lychee
@@ -41,7 +41,7 @@ ARG TERRAFORM_TFLINT_VERSION=0.57.0
 # renovate: datasource=docker depName=tenable/terrascan
 ARG TERRAFORM_TERRASCAN_VERSION=1.19.9
 # renovate: datasource=docker depName=alpine/terragrunt
-ARG TERRAFORM_TERRAGRUNT_VERSION=1.11.4
+ARG TERRAFORM_TERRAGRUNT_VERSION=1.12.0
 #ARGTOP__END
 
 #############################################################################################
@@ -142,7 +142,7 @@ ARG DETEKT_VERSION=1.23.8
 # renovate: datasource=github-tags depName=kubescape/kubescape
 ARG KUBERNETES_KUBESCAPE_VERSION=3.0.34
 # renovate: datasource=npm depName=markdownlint-cli
-ARG NPM_MARKDOWNLINT_CLI_VERSION=0.44.0
+ARG NPM_MARKDOWNLINT_CLI_VERSION=0.45.0
 # renovate: datasource=npm depName=markdown-link-check
 ARG NPM_MARKDOWN_LINK_CHECK_VERSION=3.12.2
 # renovate: datasource=npm depName=markdown-table-formatter
@@ -150,7 +150,7 @@ ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.6.1
 # renovate: datasource=pypi depName=checkov
 ARG PIP_CHECKOV_VERSION=3.2.413
 # renovate: datasource=github-tags depName=anchore/grype
-ARG REPOSITORY_GRYPE_VERSION=0.92.0
+ARG REPOSITORY_GRYPE_VERSION=0.92.1
 # renovate: datasource=npm depName=@ls-lint/ls-lint
 ARG NPM_LS_LINT_LS_LINT_VERSION=2.3.0
 # renovate: datasource=npm depName=secretlint
@@ -162,11 +162,13 @@ ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=9.3.2
 # renovate: datasource=pypi depName=semgrep
 ARG PIP_SEMGREP_VERSION=1.116.0
 # renovate: datasource=github-tags depName=anchore/syft
-ARG REPOSITORY_SYFT_VERSION=1.24.0
+ARG REPOSITORY_SYFT_VERSION=1.25.1
 # renovate: datasource=github-tags depName=aquasecurity/trivy
 ARG REPOSITORY_TRIVY_VERSION=0.62.1
 # renovate: datasource=github-tags depName=aquasecurity/trivy
 ARG REPOSITORY_TRIVY_SBOM_VERSION=0.62.1
+# renovate: datasource=pypi depName=snakemake
+ARG PIP_SNAKEMAKE_VERSION=9.4.0
 # renovate: datasource=pypi depName=snakefmt
 ARG PIP_SNAKEFMT_VERSION=0.11.0
 # renovate: datasource=npm depName=cspell
@@ -184,7 +186,7 @@ ARG PIP_PIP_VERSION=25.1.1
 # renovate: datasource=pypi depName=virtualenv
 ARG PIP_VIRTUALENV_VERSION=20.31.2
 # renovate: datasource=github-tags depName=rust-lang/rust
-ARG RUST_RUST_VERSION=1.86.0
+ARG RUST_RUST_VERSION=1.87.0
 
 ARG ACTION_ACTIONLINT_VERSION
 ARG BASH_SHELLCHECK_VERSION
@@ -277,13 +279,14 @@ RUN PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir pip==${PIP_PIP_VERSION
     && mkdir -p "/venvs/djlint" && cd "/venvs/djlint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir djlint==${PIP_DJLINT_VERSION} && deactivate && cd ./../.. \
     && mkdir -p "/venvs/checkov" && cd "/venvs/checkov" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir checkov==${PIP_CHECKOV_VERSION} && deactivate && cd ./../.. \
     && mkdir -p "/venvs/semgrep" && cd "/venvs/semgrep" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir semgrep==${PIP_SEMGREP_VERSION} && deactivate && cd ./../.. \
+    && mkdir -p "/venvs/snakemake" && cd "/venvs/snakemake" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir snakemake==${PIP_SNAKEMAKE_VERSION} && deactivate && cd ./../.. \
     && mkdir -p "/venvs/snakefmt" && cd "/venvs/snakefmt" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir snakefmt==${PIP_SNAKEFMT_VERSION} && deactivate && cd ./../.. \
     && mkdir -p "/venvs/proselint" && cd "/venvs/proselint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir proselint==${PIP_PROSELINT_VERSION} && deactivate && cd ./../.. \
     && mkdir -p "/venvs/sqlfluff" && cd "/venvs/sqlfluff" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir sqlfluff==${PIP_SQLFLUFF_VERSION} && deactivate && cd ./../.. \
     && mkdir -p "/venvs/yamllint" && cd "/venvs/yamllint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir yamllint==${PIP_YAMLLINT_VERSION} && deactivate && cd ./../..  \
     && find /venvs \( -type f \( -iname \*.pyc -o -iname \*.pyo \) -o -type d -iname __pycache__ \) -delete \
     && rm -rf /root/.cache
-ENV PATH="${PATH}":/venvs/ansible-lint/bin:/venvs/stylelint/bin:/venvs/djlint/bin:/venvs/checkov/bin:/venvs/semgrep/bin:/venvs/snakefmt/bin:/venvs/proselint/bin:/venvs/sqlfluff/bin:/venvs/yamllint/bin
+ENV PATH="${PATH}":/venvs/ansible-lint/bin:/venvs/stylelint/bin:/venvs/djlint/bin:/venvs/checkov/bin:/venvs/semgrep/bin:/venvs/snakemake/bin:/venvs/snakefmt/bin:/venvs/proselint/bin:/venvs/sqlfluff/bin:/venvs/yamllint/bin
 #PIPVENV__END
 
 ############################
@@ -490,6 +493,8 @@ RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/refs/tags/v${REPOS
 #
 # trufflehog installation
 # Managed with COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
+#
+# snakemake installation
 #
 # snakefmt installation
 #

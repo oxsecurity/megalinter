@@ -67,6 +67,20 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [syft](https://github.com/anchore/syft) from 1.23.1 to **1.24.0** on 2025-05-14
   - [grype](https://github.com/anchore/grype) from 0.92.0 to **0.92.1** on 2025-05-16
   - [syft](https://github.com/anchore/syft) from 1.24.0 to **1.25.1** on 2025-05-16
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.11.9 to **0.11.10** on 2025-05-17
+  - [ruff](https://github.com/astral-sh/ruff) from 0.11.9 to **0.11.10** on 2025-05-17
+  - [rubocop](https://rubocop.org/) from 1.75.5 to **1.75.6** on 2025-05-17
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.27.1 to **9.3.5** on 2025-05-17
+  - [phpstan](https://phpstan.org/) from 2.1.15 to **2.1.16** on 2025-05-17
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.14.0 to **3.14.1** on 2025-05-17
+  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 9.0.105 to **9.0.106** on 2025-05-18
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.55.2 to **0.55.5** on 2025-05-18
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.88.29 to **3.88.30** on 2025-05-18
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.14.1 to **3.15.0** on 2025-05-18
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 9.3.5 to **9.4.0** on 2025-05-18
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.11.4 to **1.12.0** on 2025-05-18
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.78.2 to **0.78.4** on 2025-05-18
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.86 to **0.1.87** on 2025-05-18
 <!-- linter-versions-end -->
 
 ## [v8.7.0] - 2024-05-04

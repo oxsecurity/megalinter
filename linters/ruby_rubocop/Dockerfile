@@ -49,13 +49,13 @@ FROM python:3.12.10-alpine3.21
 #############################################################################################
 #ARG__START
 # renovate: datasource=rubygems depName=rubocop
-ARG GEM_RUBOCOP_VERSION=1.75.5
+ARG GEM_RUBOCOP_VERSION=1.75.6
 # renovate: datasource=rubygems depName=rubocop-github
 ARG GEM_RUBOCOP_GITHUB_VERSION=0.23.0
 # renovate: datasource=rubygems depName=rubocop-performance
 ARG GEM_RUBOCOP_PERFORMANCE_VERSION=1.25.0
 # renovate: datasource=rubygems depName=rubocop-rails
-ARG GEM_RUBOCOP_RAILS_VERSION=2.31.0
+ARG GEM_RUBOCOP_RAILS_VERSION=2.32.0
 # renovate: datasource=rubygems depName=rubocop-rake
 ARG GEM_RUBOCOP_RAKE_VERSION=0.7.1
 # renovate: datasource=rubygems depName=rubocop-rspec

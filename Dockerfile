@@ -26,7 +26,7 @@ ARG GO_REVIVE_VERSION=v1.9.0
 # renovate: datasource=docker depName=ghcr.io/yannh/kubeconform
 ARG KUBERNETES_KUBECONFORM_VERSION=v0.7.0-alpine
 # renovate: datasource=docker depName=yoheimuta/protolint
-ARG PROTOBUF_PROTOLINT_VERSION=0.55.2
+ARG PROTOBUF_PROTOLINT_VERSION=0.55.5
 # renovate: datasource=github-tags depName=checkmarx/dustilock
 ARG REPOSITORY_DUSTILOCK_VERSION=1.2.0
 # renovate: datasource=docker depName=zricethezav/gitleaks
@@ -34,7 +34,7 @@ ARG REPOSITORY_GITLEAKS_VERSION=v8.26.0
 # renovate: datasource=docker depName=checkmarx/kics
 ARG REPOSITORY_KICS_VERSION=v2.1.7-alpine
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
-ARG REPOSITORY_TRUFFLEHOG_VERSION=3.88.29
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.88.30
 # renovate: datasource=docker depName=jdkato/vale
 ARG SPELL_VALE_VERSION=v3.11.2
 # renovate: datasource=docker depName=lycheeverse/lychee
@@ -44,7 +44,7 @@ ARG TERRAFORM_TFLINT_VERSION=0.57.0
 # renovate: datasource=docker depName=tenable/terrascan
 ARG TERRAFORM_TERRASCAN_VERSION=1.19.9
 # renovate: datasource=docker depName=alpine/terragrunt
-ARG TERRAFORM_TERRAGRUNT_VERSION=1.11.4
+ARG TERRAFORM_TERRAGRUNT_VERSION=1.12.0
 #ARGTOP__END
 
 #############################################################################################
@@ -124,7 +124,7 @@ ARG NPM_SALESFORCE_CLI_VERSION=2.87.7
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
 ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.13.1
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=5.34.1
+ARG SFDX_HARDIS_VERSION=5.36.1
 # renovate: datasource=npm depName=typescript
 ARG NPM_TYPESCRIPT_VERSION=5.8.3
 # renovate: datasource=pypi depName=ansible-lint
@@ -243,7 +243,7 @@ ARG CARGO_SELENE_VERSION=0.28.0
 # renovate: datasource=crate depName=stylua
 ARG CARGO_STYLUA_VERSION=2.0.0
 # renovate: datasource=npm depName=markdownlint-cli
-ARG NPM_MARKDOWNLINT_CLI_VERSION=0.44.0
+ARG NPM_MARKDOWNLINT_CLI_VERSION=0.45.0
 # renovate: datasource=npm depName=markdown-link-check
 ARG NPM_MARKDOWN_LINK_CHECK_VERSION=3.12.2
 # renovate: datasource=npm depName=markdown-table-formatter
@@ -256,7 +256,7 @@ ARG PHP_SQUIZLABS_PHP_CODESNIFFER_VERSION=3.13.0
 # renovate: datasource=packagist depName=bartlett/sarif-php-converters
 ARG PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION=1.1.2
 # renovate: datasource=packagist depName=phpstan/phpstan
-ARG PHP_PHPSTAN_PHPSTAN_VERSION=2.1.15
+ARG PHP_PHPSTAN_PHPSTAN_VERSION=2.1.16
 # renovate: datasource=packagist depName=phpstan/extension-installer
 ARG PHP_PHPSTAN_EXTENSION_INSTALLER_VERSION=1.4.3
 # renovate: datasource=packagist depName=vimeo/psalm
@@ -289,7 +289,7 @@ ARG PIP_MYPY_VERSION=1.15.0
 # renovate: datasource=npm depName=pyright
 ARG NPM_PYRIGHT_VERSION=1.1.400
 # renovate: datasource=pypi depName=ruff
-ARG PIP_RUFF_VERSION=0.11.9
+ARG PIP_RUFF_VERSION=0.11.10
 # renovate: datasource=github-tags depName=nxadm/rakudo-pkg
 ARG RAKU_RAKU_VERSION=2024.12
 ARG RAKU_RAKU_ALPINE_VERSION=3.20
@@ -299,7 +299,7 @@ ARG PIP_CHECKOV_VERSION=3.2.413
 # renovate: datasource=nuget depName=Microsoft.CST.DevSkim.CLI
 ARG REPOSITORY_DEVSKIM_VERSION=1.0.56
 # renovate: datasource=github-tags depName=anchore/grype
-ARG REPOSITORY_GRYPE_VERSION=0.92.0
+ARG REPOSITORY_GRYPE_VERSION=0.92.1
 # renovate: datasource=npm depName=@ls-lint/ls-lint
 ARG NPM_LS_LINT_LS_LINT_VERSION=2.3.0
 # renovate: datasource=npm depName=secretlint
@@ -311,7 +311,7 @@ ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=9.3.2
 # renovate: datasource=pypi depName=semgrep
 ARG PIP_SEMGREP_VERSION=1.116.0
 # renovate: datasource=github-tags depName=anchore/syft
-ARG REPOSITORY_SYFT_VERSION=1.24.0
+ARG REPOSITORY_SYFT_VERSION=1.25.1
 # renovate: datasource=github-tags depName=aquasecurity/trivy
 ARG REPOSITORY_TRIVY_VERSION=0.62.1
 # renovate: datasource=github-tags depName=aquasecurity/trivy
@@ -327,13 +327,13 @@ ARG PIP_RSTCHECK_CLICK_VERSION=8.1.8
 # renovate: datasource=pypi depName=rstfmt
 ARG PIP_RSTFMT_VERSION=0.0.14
 # renovate: datasource=rubygems depName=rubocop
-ARG GEM_RUBOCOP_VERSION=1.75.5
+ARG GEM_RUBOCOP_VERSION=1.75.6
 # renovate: datasource=rubygems depName=rubocop-github
 ARG GEM_RUBOCOP_GITHUB_VERSION=0.23.0
 # renovate: datasource=rubygems depName=rubocop-performance
 ARG GEM_RUBOCOP_PERFORMANCE_VERSION=1.25.0
 # renovate: datasource=rubygems depName=rubocop-rails
-ARG GEM_RUBOCOP_RAILS_VERSION=2.31.0
+ARG GEM_RUBOCOP_RAILS_VERSION=2.32.0
 # renovate: datasource=rubygems depName=rubocop-rake
 ARG GEM_RUBOCOP_RAKE_VERSION=0.7.1
 # renovate: datasource=rubygems depName=rubocop-rspec
@@ -341,7 +341,9 @@ ARG GEM_RUBOCOP_RSPEC_VERSION=3.6.0
 # renovate: datasource=npm depName=@salesforce/sfdx-scanner
 ARG SALESFORCE_SFDX_SCANNER_VERSION=4.12.0
 # renovate: datasource=npm depName=lightning-flow-scanner
-ARG LIGHTNING_FLOW_SCANNER_VERSION=3.14.0
+ARG LIGHTNING_FLOW_SCANNER_VERSION=3.15.0
+# renovate: datasource=pypi depName=snakemake
+ARG PIP_SNAKEMAKE_VERSION=9.4.0
 # renovate: datasource=pypi depName=snakefmt
 ARG PIP_SNAKEFMT_VERSION=0.11.0
 # renovate: datasource=npm depName=cspell
@@ -369,7 +371,7 @@ ARG PIP_PIP_VERSION=25.1.1
 # renovate: datasource=pypi depName=virtualenv
 ARG PIP_VIRTUALENV_VERSION=20.31.2
 # renovate: datasource=github-tags depName=rust-lang/rust
-ARG RUST_RUST_VERSION=1.86.0
+ARG RUST_RUST_VERSION=1.87.0
 
 ARG ACTION_ACTIONLINT_VERSION
 ARG BASH_SHELLCHECK_VERSION
@@ -512,13 +514,14 @@ RUN PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir pip==${PIP_PIP_VERSION
     && mkdir -p "/venvs/rst-lint" && cd "/venvs/rst-lint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir Pygments==${PIP_PYGMENTS_VERSION} restructuredtext_lint==${PIP_RESTRUCTUREDTEXT_LINT_VERSION} && deactivate && cd ./../.. \
     && mkdir -p "/venvs/rstcheck" && cd "/venvs/rstcheck" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir click==${PIP_RSTCHECK_CLICK_VERSION} rstcheck[toml,sphinx]==${PIP_RSTCHECK_VERSION} && deactivate && cd ./../.. \
     && mkdir -p "/venvs/rstfmt" && cd "/venvs/rstfmt" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir rstfmt==${PIP_RSTFMT_VERSION} && deactivate && cd ./../.. \
+    && mkdir -p "/venvs/snakemake" && cd "/venvs/snakemake" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir snakemake==${PIP_SNAKEMAKE_VERSION} && deactivate && cd ./../.. \
     && mkdir -p "/venvs/snakefmt" && cd "/venvs/snakefmt" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir snakefmt==${PIP_SNAKEFMT_VERSION} && deactivate && cd ./../.. \
     && mkdir -p "/venvs/proselint" && cd "/venvs/proselint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir proselint==${PIP_PROSELINT_VERSION} && deactivate && cd ./../.. \
     && mkdir -p "/venvs/sqlfluff" && cd "/venvs/sqlfluff" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir sqlfluff==${PIP_SQLFLUFF_VERSION} && deactivate && cd ./../.. \
     && mkdir -p "/venvs/yamllint" && cd "/venvs/yamllint" && virtualenv . && source bin/activate && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir yamllint==${PIP_YAMLLINT_VERSION} && deactivate && cd ./../..  \
     && find /venvs \( -type f \( -iname \*.pyc -o -iname \*.pyo \) -o -type d -iname __pycache__ \) -delete \
     && rm -rf /root/.cache
-ENV PATH="${PATH}":/venvs/ansible-lint/bin:/venvs/cpplint/bin:/venvs/cfn-lint/bin:/venvs/stylelint/bin:/venvs/djlint/bin:/venvs/pylint/bin:/venvs/black/bin:/venvs/flake8/bin:/venvs/isort/bin:/venvs/bandit/bin:/venvs/mypy/bin:/venvs/ruff/bin:/venvs/ruff-format/bin:/venvs/checkov/bin:/venvs/semgrep/bin:/venvs/rst-lint/bin:/venvs/rstcheck/bin:/venvs/rstfmt/bin:/venvs/snakefmt/bin:/venvs/proselint/bin:/venvs/sqlfluff/bin:/venvs/yamllint/bin
+ENV PATH="${PATH}":/venvs/ansible-lint/bin:/venvs/cpplint/bin:/venvs/cfn-lint/bin:/venvs/stylelint/bin:/venvs/djlint/bin:/venvs/pylint/bin:/venvs/black/bin:/venvs/flake8/bin:/venvs/isort/bin:/venvs/bandit/bin:/venvs/mypy/bin:/venvs/ruff/bin:/venvs/ruff-format/bin:/venvs/checkov/bin:/venvs/semgrep/bin:/venvs/rst-lint/bin:/venvs/rstcheck/bin:/venvs/rstfmt/bin:/venvs/snakemake/bin:/venvs/snakefmt/bin:/venvs/proselint/bin:/venvs/sqlfluff/bin:/venvs/yamllint/bin
 #PIPVENV__END
 
 ############################
@@ -1126,6 +1129,8 @@ RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/refs/tags/v${REPOS
 #
 # scalafix installation
     && ./coursier install scalafix --quiet --install-dir /usr/bin && rm -rf /root/.cache \
+#
+# snakemake installation
 #
 # snakefmt installation
 #

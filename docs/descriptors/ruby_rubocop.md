@@ -15,7 +15,7 @@ description: How to use rubocop (configure, ignore files, ignore errors, help & 
 
 ## rubocop documentation
 
-- Version in MegaLinter: **1.75.5**
+- Version in MegaLinter: **1.75.6**
 - Visit [Official Web Site](https://rubocop.org/){target=_blank}
 - See [How to configure rubocop rules](https://docs.rubocop.org/rubocop/0.92/configuration.html){target=_blank}
   - If custom `.ruby-lint.yml` config file isn't found, [.ruby-lint.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.ruby-lint.yml){target=_blank} will be used
@@ -73,7 +73,7 @@ This linter is available in the following flavors
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       127        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        88        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
-|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/ruby.ico" alt="" height="32px" class="megalinter-icon"></a>         | [ruby](https://megalinter.io/beta/flavors/ruby/)       | Optimized for RUBY based projects               |        50        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-ruby/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-ruby) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/ruby.ico" alt="" height="32px" class="megalinter-icon"></a>         | [ruby](https://megalinter.io/beta/flavors/ruby/)       | Optimized for RUBY based projects               |        51        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-ruby/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-ruby) |
 
 ## Behind the scenes
 
@@ -289,13 +289,13 @@ Profiling Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=rubygems depName=rubocop
-ARG GEM_RUBOCOP_VERSION=1.75.5
+ARG GEM_RUBOCOP_VERSION=1.75.6
 # renovate: datasource=rubygems depName=rubocop-github
 ARG GEM_RUBOCOP_GITHUB_VERSION=0.23.0
 # renovate: datasource=rubygems depName=rubocop-performance
 ARG GEM_RUBOCOP_PERFORMANCE_VERSION=1.25.0
 # renovate: datasource=rubygems depName=rubocop-rails
-ARG GEM_RUBOCOP_RAILS_VERSION=2.31.0
+ARG GEM_RUBOCOP_RAILS_VERSION=2.32.0
 # renovate: datasource=rubygems depName=rubocop-rake
 ARG GEM_RUBOCOP_RAKE_VERSION=0.7.1
 # renovate: datasource=rubygems depName=rubocop-rspec
@@ -303,9 +303,9 @@ ARG GEM_RUBOCOP_RSPEC_VERSION=3.6.0
 ```
 
 - GEM packages (Ruby) :
-  - [rubocop:1.75.5](https://rubygems.org/gems/rubocop/versions/1.75.5)
+  - [rubocop:1.75.6](https://rubygems.org/gems/rubocop/versions/1.75.6)
   - [rubocop-github:0.23.0](https://rubygems.org/gems/rubocop-github/versions/0.23.0)
   - [rubocop-performance:1.25.0](https://rubygems.org/gems/rubocop-performance/versions/1.25.0)
-  - [rubocop-rails:2.31.0](https://rubygems.org/gems/rubocop-rails/versions/2.31.0)
+  - [rubocop-rails:2.32.0](https://rubygems.org/gems/rubocop-rails/versions/2.32.0)
   - [rubocop-rake:0.7.1](https://rubygems.org/gems/rubocop-rake/versions/0.7.1)
   - [rubocop-rspec:3.6.0](https://rubygems.org/gems/rubocop-rspec/versions/3.6.0)

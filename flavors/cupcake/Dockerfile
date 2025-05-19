@@ -31,7 +31,7 @@ ARG REPOSITORY_GITLEAKS_VERSION=v8.26.0
 # renovate: datasource=docker depName=checkmarx/kics
 ARG REPOSITORY_KICS_VERSION=v2.1.7-alpine
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
-ARG REPOSITORY_TRUFFLEHOG_VERSION=3.88.29
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.88.30
 # renovate: datasource=docker depName=lycheeverse/lychee
 ARG SPELL_LYCHEE_VERSION=sha-7c4b132-alpine
 # renovate: datasource=docker depName=ghcr.io/terraform-linters/tflint
@@ -39,7 +39,7 @@ ARG TERRAFORM_TFLINT_VERSION=0.57.0
 # renovate: datasource=docker depName=tenable/terrascan
 ARG TERRAFORM_TERRASCAN_VERSION=1.19.9
 # renovate: datasource=docker depName=alpine/terragrunt
-ARG TERRAFORM_TERRAGRUNT_VERSION=1.11.4
+ARG TERRAFORM_TERRAGRUNT_VERSION=1.12.0
 #ARGTOP__END
 
 #############################################################################################
@@ -194,7 +194,7 @@ ARG DETEKT_VERSION=1.23.8
 # renovate: datasource=github-tags depName=kubescape/kubescape
 ARG KUBERNETES_KUBESCAPE_VERSION=3.0.34
 # renovate: datasource=npm depName=markdownlint-cli
-ARG NPM_MARKDOWNLINT_CLI_VERSION=0.44.0
+ARG NPM_MARKDOWNLINT_CLI_VERSION=0.45.0
 # renovate: datasource=npm depName=markdown-link-check
 ARG NPM_MARKDOWN_LINK_CHECK_VERSION=3.12.2
 # renovate: datasource=npm depName=markdown-table-formatter
@@ -204,7 +204,7 @@ ARG PHP_SQUIZLABS_PHP_CODESNIFFER_VERSION=3.13.0
 # renovate: datasource=packagist depName=bartlett/sarif-php-converters
 ARG PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION=1.1.2
 # renovate: datasource=packagist depName=phpstan/phpstan
-ARG PHP_PHPSTAN_PHPSTAN_VERSION=2.1.15
+ARG PHP_PHPSTAN_PHPSTAN_VERSION=2.1.16
 # renovate: datasource=packagist depName=phpstan/extension-installer
 ARG PHP_PHPSTAN_EXTENSION_INSTALLER_VERSION=1.4.3
 # renovate: datasource=packagist depName=vimeo/psalm
@@ -228,11 +228,11 @@ ARG PIP_MYPY_VERSION=1.15.0
 # renovate: datasource=npm depName=pyright
 ARG NPM_PYRIGHT_VERSION=1.1.400
 # renovate: datasource=pypi depName=ruff
-ARG PIP_RUFF_VERSION=0.11.9
+ARG PIP_RUFF_VERSION=0.11.10
 # renovate: datasource=pypi depName=checkov
 ARG PIP_CHECKOV_VERSION=3.2.413
 # renovate: datasource=github-tags depName=anchore/grype
-ARG REPOSITORY_GRYPE_VERSION=0.92.0
+ARG REPOSITORY_GRYPE_VERSION=0.92.1
 # renovate: datasource=npm depName=@ls-lint/ls-lint
 ARG NPM_LS_LINT_LS_LINT_VERSION=2.3.0
 # renovate: datasource=npm depName=secretlint
@@ -244,7 +244,7 @@ ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=9.3.2
 # renovate: datasource=pypi depName=semgrep
 ARG PIP_SEMGREP_VERSION=1.116.0
 # renovate: datasource=github-tags depName=anchore/syft
-ARG REPOSITORY_SYFT_VERSION=1.24.0
+ARG REPOSITORY_SYFT_VERSION=1.25.1
 # renovate: datasource=github-tags depName=aquasecurity/trivy
 ARG REPOSITORY_TRIVY_VERSION=0.62.1
 # renovate: datasource=github-tags depName=aquasecurity/trivy
@@ -260,13 +260,13 @@ ARG PIP_RSTCHECK_CLICK_VERSION=8.1.8
 # renovate: datasource=pypi depName=rstfmt
 ARG PIP_RSTFMT_VERSION=0.0.14
 # renovate: datasource=rubygems depName=rubocop
-ARG GEM_RUBOCOP_VERSION=1.75.5
+ARG GEM_RUBOCOP_VERSION=1.75.6
 # renovate: datasource=rubygems depName=rubocop-github
 ARG GEM_RUBOCOP_GITHUB_VERSION=0.23.0
 # renovate: datasource=rubygems depName=rubocop-performance
 ARG GEM_RUBOCOP_PERFORMANCE_VERSION=1.25.0
 # renovate: datasource=rubygems depName=rubocop-rails
-ARG GEM_RUBOCOP_RAILS_VERSION=2.31.0
+ARG GEM_RUBOCOP_RAILS_VERSION=2.32.0
 # renovate: datasource=rubygems depName=rubocop-rake
 ARG GEM_RUBOCOP_RAKE_VERSION=0.7.1
 # renovate: datasource=rubygems depName=rubocop-rspec
@@ -292,7 +292,7 @@ ARG PIP_PIP_VERSION=25.1.1
 # renovate: datasource=pypi depName=virtualenv
 ARG PIP_VIRTUALENV_VERSION=20.31.2
 # renovate: datasource=github-tags depName=rust-lang/rust
-ARG RUST_RUST_VERSION=1.86.0
+ARG RUST_RUST_VERSION=1.87.0
 
 ARG ACTION_ACTIONLINT_VERSION
 ARG BASH_SHELLCHECK_VERSION
