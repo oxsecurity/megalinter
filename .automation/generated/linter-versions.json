@@ -57,7 +57,7 @@
     "lychee": "0.18.0",
     "markdown-link-check": "3.12.2",
     "markdown-table-formatter": "1.6.1",
-    "markdownlint": "0.44.0",
+    "markdownlint": "0.45.0",
     "misspell": "0.3.4",
     "mypy": "1.15.0",
     "npm-groovy-lint": "15.2.0",

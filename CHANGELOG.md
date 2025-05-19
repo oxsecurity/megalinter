@@ -81,6 +81,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.11.4 to **1.12.0** on 2025-05-18
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.78.2 to **0.78.4** on 2025-05-18
   - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.86 to **0.1.87** on 2025-05-18
+  - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.44.0 to **0.45.0** on 2025-05-19
 <!-- linter-versions-end -->
 
 ## [v8.7.0] - 2024-05-04
