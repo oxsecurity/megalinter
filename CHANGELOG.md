@@ -82,6 +82,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.78.2 to **0.78.4** on 2025-05-18
   - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.86 to **0.1.87** on 2025-05-18
   - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.44.0 to **0.45.0** on 2025-05-19
+  - [ktlint](https://ktlint.github.io) from 1.5.0 to **1.6.0** on 2025-05-20
+  - [syft](https://github.com/anchore/syft) from 1.25.1 to **1.26.0** on 2025-05-20
 <!-- linter-versions-end -->
 
 ## [v8.7.0] - 2024-05-04
