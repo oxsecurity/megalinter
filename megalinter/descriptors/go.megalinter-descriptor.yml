@@ -62,7 +62,9 @@ linters:
         - name: vscode.Go
           url: https://marketplace.visualstudio.com/items?itemName=ms-vscode.Go
   # REVIVE
-  - linter_name: revive
+  - class: ReviveLinter
+    linter_name: revive
+    test_folder: golang_revive
     can_output_sarif: true
     linter_url: https://revive.run/
     linter_repo: https://github.com/mgechev/revive
