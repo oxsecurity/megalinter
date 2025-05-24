@@ -88,6 +88,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [kics](https://www.kics.io) from 2.1.7 to **2.1.8** on 2025-05-21
   - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.15.0 to **3.15.1** on 2025-05-21
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 9.0.1 to **9.0.2** on 2025-05-21
+  - [checkstyle](https://checkstyle.org/) from 10.23.1 to **10.24.0** on 2025-05-24
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.400 to **1.1.401** on 2025-05-24
+  - [syft](https://github.com/anchore/syft) from 1.26.0 to **1.26.1** on 2025-05-24
 <!-- linter-versions-end -->
 
 ## [v8.7.0] - 2024-05-04
