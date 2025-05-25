@@ -91,6 +91,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkstyle](https://checkstyle.org/) from 10.23.1 to **10.24.0** on 2025-05-24
   - [pyright](https://github.com/Microsoft/pyright) from 1.1.400 to **1.1.401** on 2025-05-24
   - [syft](https://github.com/anchore/syft) from 1.26.0 to **1.26.1** on 2025-05-24
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.35.1 to **1.35.3** on 2025-05-25
+  - [csharpier](https://csharpier.com/) from 1.0.1 to **1.0.2** on 2025-05-25
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.12.0 to **1.12.1** on 2025-05-25
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.78.4 to **0.80.2** on 2025-05-25
 <!-- linter-versions-end -->
 
 ## [v8.7.0] - 2024-05-04
