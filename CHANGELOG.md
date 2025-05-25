@@ -95,6 +95,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [csharpier](https://csharpier.com/) from 1.0.1 to **1.0.2** on 2025-05-25
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.12.0 to **1.12.1** on 2025-05-25
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.78.4 to **0.80.2** on 2025-05-25
+  - [phpstan](https://phpstan.org/) from 2.1.16 to **2.1.17** on 2025-05-25
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.11.10 to **0.11.11** on 2025-05-25
+  - [ruff](https://github.com/astral-sh/ruff) from 0.11.10 to **0.11.11** on 2025-05-25
+  - [rubocop](https://rubocop.org/) from 1.75.6 to **1.75.7** on 2025-05-25
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 9.4.0 to **9.4.1** on 2025-05-25
 <!-- linter-versions-end -->
 
 ## [v8.7.0] - 2024-05-04
