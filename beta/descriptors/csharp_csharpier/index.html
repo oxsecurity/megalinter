@@ -3706,7 +3706,7 @@
 <p><a href="https://github.com/belav/csharpier"><img alt="GitHub stars" src="https://img.shields.io/github/stars/belav/csharpier?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-format-yellow"><img alt="formatter" src="https://shields.io/badge/-format-yellow"/></a> <a href="https://github.com/belav/csharpier/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/belav/csharpier?sort=semver"/></a> <a href="https://github.com/belav/csharpier/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/belav/csharpier"/></a> <a href="https://github.com/belav/csharpier/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/belav/csharpier"/></a> <a href="https://github.com/belav/csharpier/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/belav/csharpier"/></a></p>
 <h2 id="csharpier-documentation">csharpier documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>1.0.1</strong></li>
+<li>Version in MegaLinter: <strong>1.0.2</strong></li>
 <li>Visit <a href="https://csharpier.com/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://csharpier.com/docs/Configuration" target="_blank">How to configure csharpier rules</a></li>
 <li>See <a href="https://csharpier.com/docs/Ignore" target="_blank">How to ignore files and directories with csharpier</a><ul>
@@ -3926,7 +3926,7 @@ RUN apk add --no-cache dotnet9-sdk
 ENV PATH="${PATH}:/root/.dotnet/tools"
 # Linter install
 # renovate: datasource=nuget depName=csharpier
-ARG CSHARP_CSHARPIER_VERSION=1.0.1
+ARG CSHARP_CSHARPIER_VERSION=1.0.2
 RUN dotnet tool install --allow-roll-forward --global csharpier --version "${CSHARP_CSHARPIER_VERSION}"
 </code></pre>
 </article>
