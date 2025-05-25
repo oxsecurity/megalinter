@@ -3711,7 +3711,7 @@
 <p><a href="https://github.com/snakemake/snakemake"><img alt="GitHub stars" src="https://img.shields.io/github/stars/snakemake/snakemake?cacheSeconds=3600"/></a> <a href="https://github.com/snakemake/snakemake/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/snakemake/snakemake?sort=semver"/></a> <a href="https://github.com/snakemake/snakemake/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/snakemake/snakemake"/></a> <a href="https://github.com/snakemake/snakemake/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/snakemake/snakemake"/></a> <a href="https://github.com/snakemake/snakemake/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/snakemake/snakemake"/></a></p>
 <h2 id="snakemake-documentation">snakemake documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>9.4.0</strong></li>
+<li>Version in MegaLinter: <strong>9.4.1</strong></li>
 <li>Visit <a href="https://snakemake.readthedocs.io/en/stable/" target="_blank">Official Web Site</a></li>
 </ul>
 <p><a href="https://github.com/snakemake/snakemake" target="_blank"><img alt="snakemake - GitHub" src="https://gh-card.dev/repos/snakemake/snakemake.svg?fullname="/></a></p>
@@ -3999,7 +3999,7 @@
                  [--filegraph] [--d3dag] [--summary] [--detailed-summary]
                  [--archive FILE] [--cleanup-metadata FILE [FILE ...]]
                  [--cleanup-shadow] [--skip-script-cleanup] [--unlock]
-                 [--list-changes {code,input,params}] [--list-input-changes]
+                 [--list-changes {code,params,input}] [--list-input-changes]
                  [--list-params-changes] [--list-untracked]
                  [--delete-all-output | --delete-temp-output]
                  [--keep-incomplete] [--drop-metadata] [--version]
@@ -4045,7 +4045,7 @@
                  [--scheduler-solver-path SCHEDULER_SOLVER_PATH]
                  [--deploy-sources QUERY CHECKSUM]
                  [--target-jobs TARGET_JOBS [TARGET_JOBS ...]]
-                 [--mode {remote,default,subprocess}]
+                 [--mode {remote,subprocess,default}]
                  [--report-html-path VALUE]
                  [--report-html-stylesheet-path VALUE]
                  [targets ...]
@@ -4536,7 +4536,7 @@ UTILITIES:
                         (default: False)
   --unlock              Remove a lock on the working directory. (default:
                         False)
-  --list-changes {code,input,params}, --lc {code,input,params}
+  --list-changes {code,params,input}, --lc {code,params,input}
                         List all output files for which the given items (code,
                         input, params) have changed since creation.
   --list-input-changes, --li
@@ -4775,7 +4775,7 @@ REMOTE EXECUTION:
                         is up to your responsibility. Any used image has to
                         contain a working snakemake installation that is
                         compatible with (or ideally the same as) the currently
-                        running version. (default: snakemake/snakemake:v9.4.0)
+                        running version. (default: snakemake/snakemake:v9.4.1)
   --immediate-submit, --is
                         Immediately submit all jobs to the cluster instead of
                         waiting for present input files. This will fail,
@@ -4895,7 +4895,7 @@ INTERNAL:
   --target-jobs TARGET_JOBS [TARGET_JOBS ...]
                         Internal use only: Target particular jobs by
                         RULE:WILDCARD1=VALUE,WILDCARD2=VALUE,...
-  --mode {remote,default,subprocess}
+  --mode {remote,subprocess,default}
                         Internal use only: Set execution mode of Snakemake.
                         (default: default)
 
@@ -4915,11 +4915,11 @@ defaults.
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile"># renovate: datasource=pypi depName=snakemake
-ARG PIP_SNAKEMAKE_VERSION=9.4.0
+ARG PIP_SNAKEMAKE_VERSION=9.4.1
 </code></pre>
 <ul>
 <li>PIP packages (Python):<ul>
-<li><a href="https://pypi.org/project/snakemake/9.4.0">snakemake==9.4.0</a></li>
+<li><a href="https://pypi.org/project/snakemake/9.4.1">snakemake==9.4.1</a></li>
 </ul>
 </li>
 </ul>
