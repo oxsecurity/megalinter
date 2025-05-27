@@ -15,7 +15,7 @@
 # renovate: datasource=docker depName=rhysd/actionlint
 ARG BASH_SHFMT_VERSION=v3.11.0-alpine
 # renovate: datasource=docker depName=alpine/terragrunt
-ARG TERRAFORM_TERRAGRUNT_VERSION=1.12.0
+ARG TERRAFORM_TERRAGRUNT_VERSION=1.12.1
 #ARGTOP__END
 
 #############################################################################################
@@ -61,7 +61,7 @@ ARG POWERSHELL_VERSION=7.5.1
 # renovate: datasource=npm depName=typescript
 ARG NPM_TYPESCRIPT_VERSION=5.8.3
 # renovate: datasource=nuget depName=csharpier
-ARG CSHARP_CSHARPIER_VERSION=1.0.1
+ARG CSHARP_CSHARPIER_VERSION=1.0.2
 # renovate: datasource=nuget depName=roslynator.dotnet.cli
 ARG CSHARP_ROSLYNATOR_VERSION=0.10.1
 # renovate: datasource=npm depName=prettier
@@ -78,7 +78,7 @@ ARG PIP_BLACK_VERSION=25.1.0
 # renovate: datasource=pypi depName=isort
 ARG PIP_ISORT_VERSION=6.0.1
 # renovate: datasource=pypi depName=ruff
-ARG PIP_RUFF_VERSION=0.11.10
+ARG PIP_RUFF_VERSION=0.11.11
 # renovate: datasource=pypi depName=rstfmt
 ARG PIP_RSTFMT_VERSION=0.0.14
 # renovate: datasource=pypi depName=snakefmt

@@ -81,6 +81,31 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.11.4 to **1.12.0** on 2025-05-18
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.78.2 to **0.78.4** on 2025-05-18
   - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.86 to **0.1.87** on 2025-05-18
+  - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.44.0 to **0.45.0** on 2025-05-19
+  - [ktlint](https://ktlint.github.io) from 1.5.0 to **1.6.0** on 2025-05-20
+  - [syft](https://github.com/anchore/syft) from 1.25.1 to **1.26.0** on 2025-05-20
+  - [grype](https://github.com/anchore/grype) from 0.92.1 to **0.92.2** on 2025-05-21
+  - [kics](https://www.kics.io) from 2.1.7 to **2.1.8** on 2025-05-21
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.15.0 to **3.15.1** on 2025-05-21
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 9.0.1 to **9.0.2** on 2025-05-21
+  - [checkstyle](https://checkstyle.org/) from 10.23.1 to **10.24.0** on 2025-05-24
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.400 to **1.1.401** on 2025-05-24
+  - [syft](https://github.com/anchore/syft) from 1.26.0 to **1.26.1** on 2025-05-24
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.35.1 to **1.35.3** on 2025-05-25
+  - [csharpier](https://csharpier.com/) from 1.0.1 to **1.0.2** on 2025-05-25
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.12.0 to **1.12.1** on 2025-05-25
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.78.4 to **0.80.2** on 2025-05-25
+  - [phpstan](https://phpstan.org/) from 2.1.16 to **2.1.17** on 2025-05-25
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.11.10 to **0.11.11** on 2025-05-25
+  - [ruff](https://github.com/astral-sh/ruff) from 0.11.10 to **0.11.11** on 2025-05-25
+  - [rubocop](https://rubocop.org/) from 1.75.6 to **1.75.7** on 2025-05-25
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 9.4.0 to **9.4.1** on 2025-05-25
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 25.4.0 to **25.5.0** on 2025-05-27
+  - [dartanalyzer](https://dart.dev/tools/dart-analyze) from 3.7.3 to **3.8.0** on 2025-05-27
+  - [htmlhint](https://htmlhint.com/) from 1.1.4 to **1.2.0** on 2025-05-27
+  - [secretlint](https://github.com/secretlint/secretlint) from 9.3.2 to **9.3.3** on 2025-05-27
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.88.30 to **3.88.34** on 2025-05-27
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.15.1 to **3.16.0** on 2025-05-27
 <!-- linter-versions-end -->
 
 ## [v8.7.0] - 2024-05-04

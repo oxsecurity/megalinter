@@ -12,7 +12,7 @@
 #############################################################################################
 #ARGTOP__START
 # renovate: datasource=docker depName=checkmarx/kics
-ARG REPOSITORY_KICS_VERSION=v2.1.7-alpine
+ARG REPOSITORY_KICS_VERSION=v2.1.9-alpine
 #ARGTOP__END
 
 #############################################################################################

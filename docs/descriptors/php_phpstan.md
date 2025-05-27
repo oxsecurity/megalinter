@@ -9,7 +9,7 @@ description: How to use phpstan (configure, ignore files, ignore errors, help & 
 
 ## phpstan documentation
 
-- Version in MegaLinter: **2.1.16**
+- Version in MegaLinter: **2.1.17**
 - Visit [Official Web Site](https://phpstan.org/){target=_blank}
 - See [How to configure phpstan rules](https://phpstan.org/config-reference#neon-format){target=_blank}
   - If custom `phpstan.neon.dist` config file isn't found, [phpstan.neon.dist](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/phpstan.neon.dist){target=_blank} will be used
@@ -105,6 +105,8 @@ Options:
       --allow-empty-baseline                   Do not error out when the generated baseline is empty
       --memory-limit=MEMORY-LIMIT              Memory limit for analysis
       --xdebug                                 Allow running with Xdebug for debugging purposes
+      --tmp-file=TMP-FILE                      (Editor mode) Edited file used in place of --instead-of file
+      --instead-of=INSTEAD-OF                  (Editor mode) File being replaced by --tmp-file
       --fix                                    Launch PHPStan Pro
       --watch                                  Launch PHPStan Pro
       --pro                                    Launch PHPStan Pro
@@ -128,7 +130,7 @@ ENV PATH="/root/.composer/vendor/bin:${PATH}"
 ENV PHP_CS_FIXER_IGNORE_ENV=true
 # Linter install
 # renovate: datasource=packagist depName=phpstan/phpstan
-ARG PHP_PHPSTAN_PHPSTAN_VERSION=2.1.16
+ARG PHP_PHPSTAN_PHPSTAN_VERSION=2.1.17
 # renovate: datasource=packagist depName=phpstan/extension-installer
 ARG PHP_PHPSTAN_EXTENSION_INSTALLER_VERSION=1.4.3
 # renovate: datasource=packagist depName=bartlett/sarif-php-converters

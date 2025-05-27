@@ -9,7 +9,7 @@ description: How to use csharpier (configure, ignore files, ignore errors, help 
 
 ## csharpier documentation
 
-- Version in MegaLinter: **1.0.1**
+- Version in MegaLinter: **1.0.2**
 - Visit [Official Web Site](https://csharpier.com/){target=_blank}
 - See [How to configure csharpier rules](https://csharpier.com/docs/Configuration){target=_blank}
 - See [How to ignore files and directories with csharpier](https://csharpier.com/docs/Ignore){target=_blank}
@@ -115,7 +115,7 @@ RUN apk add --no-cache dotnet9-sdk
 ENV PATH="${PATH}:/root/.dotnet/tools"
 # Linter install
 # renovate: datasource=nuget depName=csharpier
-ARG CSHARP_CSHARPIER_VERSION=1.0.1
+ARG CSHARP_CSHARPIER_VERSION=1.0.2
 RUN dotnet tool install --allow-roll-forward --global csharpier --version "${CSHARP_CSHARPIER_VERSION}"
 ```
 
