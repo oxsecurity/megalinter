@@ -3706,7 +3706,7 @@
 <p><a href="https://github.com/dart-lang/sdk"><img alt="GitHub stars" src="https://img.shields.io/github/stars/dart-lang/sdk?cacheSeconds=3600"/></a> <a href="https://github.com/dart-lang/sdk/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/dart-lang/sdk?sort=semver"/></a> <a href="https://github.com/dart-lang/sdk/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/dart-lang/sdk"/></a> <a href="https://github.com/dart-lang/sdk/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/dart-lang/sdk"/></a> <a href="https://github.com/dart-lang/sdk/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/dart-lang/sdk"/></a></p>
 <h2 id="dartanalyzer-documentation">dartanalyzer documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>3.7.3</strong></li>
+<li>Version in MegaLinter: <strong>3.8.0</strong></li>
 <li>Visit <a href="https://dart.dev/tools/dart-analyze" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://dart.dev/tools/analysis" target="_blank">How to configure dartanalyzer rules</a></li>
 <li>See <a href="https://dart.dev/tools/analysis#ignoring-rules" target="_blank">How to disable dartanalyzer rules in files</a></li>
@@ -3926,7 +3926,7 @@ RUN ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases
 
 # Linter install
 # renovate: datasource=dart-version depName=dart
-ARG DART_VERSION='3.7.3'
+ARG DART_VERSION='3.8.0'
 RUN wget --tries=5 https://storage.googleapis.com/dart-archive/channels/stable/release/${DART_VERSION}/sdk/dartsdk-linux-x64-release.zip -O - -q | unzip -q - \
     &amp;&amp; mkdir -p /usr/lib/dart \
     &amp;&amp; mv dart-sdk/* /usr/lib/dart/ \
