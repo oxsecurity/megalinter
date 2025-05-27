@@ -3822,7 +3822,8 @@
         "  -l, --logger string         Logger level. Supported: debug/info/success/warning/error/fatal [$KS_LOGGER] (default \"info\")",
         "      --server string         Backend discovery server URL",
         "",
-        "Use \"kubescape [command] --help\" for more information about a command."
+        "Use \"kubescape [command] --help\" for more information about a command.",
+        "{\"level\":\"info\",\"ts\":\"2025-05-27T10:51:08Z\",\"msg\":\"Received interrupt signal, exiting...\"}"
     ],
     "kubeval": [
         "Validate a Kubernetes YAML file against the relevant schema",
@@ -9553,7 +9554,7 @@
         "                 [--filegraph] [--d3dag] [--summary] [--detailed-summary]",
         "                 [--archive FILE] [--cleanup-metadata FILE [FILE ...]]",
         "                 [--cleanup-shadow] [--skip-script-cleanup] [--unlock]",
-        "                 [--list-changes {code,params,input}] [--list-input-changes]",
+        "                 [--list-changes {input,code,params}] [--list-input-changes]",
         "                 [--list-params-changes] [--list-untracked]",
         "                 [--delete-all-output | --delete-temp-output]",
         "                 [--keep-incomplete] [--drop-metadata] [--version]",
@@ -10090,7 +10091,7 @@
         "                        (default: False)",
         "  --unlock              Remove a lock on the working directory. (default:",
         "                        False)",
-        "  --list-changes {code,params,input}, --lc {code,params,input}",
+        "  --list-changes {input,code,params}, --lc {input,code,params}",
         "                        List all output files for which the given items (code,",
         "                        input, params) have changed since creation.",
         "  --list-input-changes, --li",
@@ -11422,6 +11423,9 @@
         "",
         "huggingface [<flags>]",
         "    Find credentials in HuggingFace datasets, models and spaces.",
+        "",
+        "stdin",
+        "    Find credentials from stdin.",
         "",
         "analyze",
         "    Analyze API keys for fine-grained permissions information.",

@@ -9,7 +9,7 @@ description: How to use htmlhint (configure, ignore files, ignore errors, help &
 
 ## htmlhint documentation
 
-- Version in MegaLinter: **1.1.4**
+- Version in MegaLinter: **1.2.0**
 - Visit [Official Web Site](https://htmlhint.com/){target=_blank}
 - See [How to configure htmlhint rules](https://htmlhint.com/docs/user-guide/configuration){target=_blank}
   - If custom `.htmlhintrc` config file isn't found, [.htmlhintrc](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.htmlhintrc){target=_blank} will be used
@@ -136,8 +136,8 @@ Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=htmlhint
-ARG NPM_HTMLHINT_VERSION=1.1.4
+ARG NPM_HTMLHINT_VERSION=1.2.0
 ```
 
 - NPM packages (node.js):
-  - [htmlhint@1.1.4](https://www.npmjs.com/package/htmlhint/v/1.1.4)
+  - [htmlhint@1.2.0](https://www.npmjs.com/package/htmlhint/v/1.2.0)

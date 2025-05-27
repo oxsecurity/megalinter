@@ -100,6 +100,12 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [ruff](https://github.com/astral-sh/ruff) from 0.11.10 to **0.11.11** on 2025-05-25
   - [rubocop](https://rubocop.org/) from 1.75.6 to **1.75.7** on 2025-05-25
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 9.4.0 to **9.4.1** on 2025-05-25
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 25.4.0 to **25.5.0** on 2025-05-27
+  - [dartanalyzer](https://dart.dev/tools/dart-analyze) from 3.7.3 to **3.8.0** on 2025-05-27
+  - [htmlhint](https://htmlhint.com/) from 1.1.4 to **1.2.0** on 2025-05-27
+  - [secretlint](https://github.com/secretlint/secretlint) from 9.3.2 to **9.3.3** on 2025-05-27
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.88.30 to **3.88.34** on 2025-05-27
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.15.1 to **3.16.0** on 2025-05-27
 <!-- linter-versions-end -->
 
 ## [v8.7.0] - 2024-05-04
