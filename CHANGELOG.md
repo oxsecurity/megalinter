@@ -106,6 +106,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [secretlint](https://github.com/secretlint/secretlint) from 9.3.2 to **9.3.3** on 2025-05-27
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.88.30 to **3.88.34** on 2025-05-27
   - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.15.1 to **3.16.0** on 2025-05-27
+  - [psalm](https://psalm.dev) from Psalm.6.10.3@ to **Psalm.6.11.0@** on 2025-05-28
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.55.5 to **0.55.6** on 2025-05-28
+  - [kics](https://www.kics.io) from 2.1.8 to **2.1.9** on 2025-05-28
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 9.4.1 to **9.5.1** on 2025-05-28
 <!-- linter-versions-end -->
 
 ## [v8.7.0] - 2024-05-04
