@@ -113,7 +113,7 @@
     "terraform-fmt": "1.12.1",
     "terragrunt": "0.80.2",
     "terrascan": "1.19.9",
-    "tflint": "0.57.0",
+    "tflint": "0.58.0",
     "trivy": "0.62.1",
     "trivy-sbom": "0.62.1",
     "trufflehog": "3.88.34",

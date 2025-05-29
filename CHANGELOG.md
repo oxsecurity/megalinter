@@ -110,6 +110,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [protolint](https://github.com/yoheimuta/protolint) from 0.55.5 to **0.55.6** on 2025-05-28
   - [kics](https://www.kics.io) from 2.1.8 to **2.1.9** on 2025-05-28
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 9.4.1 to **9.5.1** on 2025-05-28
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.57.0 to **0.58.0** on 2025-05-29
 <!-- linter-versions-end -->
 
 ## [v8.7.0] - 2024-05-04
