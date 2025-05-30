@@ -1059,7 +1059,7 @@ class Linter:
                 ),
             )
             return_code = process.returncode
-            return_stdout = utils.decode_utf8(process.stdout)
+            return_stdout = utils.clean_string(process.stdout, not self.is_formatter)
         else:
             # Use full executable path if we are on Windows
             if sys.platform == "win32":
@@ -1081,7 +1081,9 @@ class Linter:
                     cwd=cwd,
                 )
                 return_code = process.returncode
-                return_stdout = utils.decode_utf8(process.stdout)
+                return_stdout = utils.clean_string(
+                    process.stdout, not self.is_formatter
+                )
             except FileNotFoundError as err:
                 return_code = 999
                 return_stdout = (
@@ -1198,7 +1200,7 @@ class Linter:
                 env=subprocess_env,
             )
             return_code = process.returncode
-            output = utils.decode_utf8(process.stdout)
+            output = utils.clean_string(process.stdout)
             logging.debug("Linter version result: " + str(return_code) + " " + output)
         except FileNotFoundError:
             logging.warning("Unable to call command [" + " ".join(command) + "]")
@@ -1246,7 +1248,7 @@ class Linter:
                     env=subprocess_env,
                 )
                 return_code = process.returncode
-                output += utils.decode_utf8(process.stdout)
+                output += utils.clean_string(process.stdout)
                 logging.debug("Linter help result: " + str(return_code) + " " + output)
             except FileNotFoundError:
                 logging.warning("Unable to call command [" + " ".join(command) + "]")

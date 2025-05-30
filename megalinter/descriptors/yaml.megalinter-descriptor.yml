@@ -95,7 +95,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=yamllint
-          ARG PIP_YAMLLINT_VERSION=1.37.0
+          ARG PIP_YAMLLINT_VERSION=1.37.1
       pip:
         - yamllint==${PIP_YAMLLINT_VERSION}
     ide:
@@ -127,7 +127,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=v8r
-          ARG NPM_V8R_VERSION=4.2.1
+          ARG NPM_V8R_VERSION=5.0.0
       npm:
         - v8r@${NPM_V8R_VERSION}
     ide:

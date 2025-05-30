@@ -151,7 +151,7 @@ def run_command(command_info, log_key, mega_linter, linter=None):
         env=subprocess_env,
     )
     return_code = process.returncode
-    return_stdout = utils.decode_utf8(process.stdout)
+    return_stdout = utils.clean_string(process.stdout)
     if return_code == 0:
         add_in_logs(linter, log_key, [f"{log_key} result:\n{return_stdout}"])
     else:

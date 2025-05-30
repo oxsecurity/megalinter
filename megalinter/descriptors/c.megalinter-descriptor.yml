@@ -10,6 +10,21 @@ file_extensions:
   - ".c"
   - ".h"
 linters:
+  # Cppcheck
+  - linter_name: cppcheck
+    name: C_CPPCHECK
+    linter_url: https://cppcheck.sourceforge.io/
+    linter_repo: https://cppcheck.sourceforge.io/
+    linter_rules_url: https://sourceforge.net/p/cppcheck/wiki/ListOfChecks/
+    cli_lint_extra_args:
+      - --error-exitcode=1
+    cli_lint_errors_count: regex_count
+    cli_lint_errors_regex: "error:"
+    examples:
+      - "cppcheck myfile.cpp"
+    install:
+      apk:
+        - cppcheck
   # CPPLINT
   - class: CppLintLinter
     linter_name: cpplint

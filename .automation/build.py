@@ -990,7 +990,7 @@ def generate_descriptor_documentation(descriptor):
     ]
     # Title
     descriptor_md += [
-        f"# {descriptor.get('descriptor_label', descriptor.get('descriptor_id'))}",
+        f"# {descriptor.get('descriptor_label', descriptor.get('descriptor_id')).replace('#', '\\#')}",
         "",
     ]
     # List of linters
@@ -2887,8 +2887,8 @@ def collect_linter_previews():
                 logging.error(str(e))
             if title is not None:
                 item = {
-                    "title": megalinter.utils.decode_utf8(title),
-                    "description": megalinter.utils.decode_utf8(description),
+                    "title": megalinter.utils.clean_string(title),
+                    "description": megalinter.utils.clean_string(description),
                     "image": image,
                 }
                 data[linter.linter_name] = item
@@ -3378,7 +3378,7 @@ def reformat_markdown_tables():
         shell=True,
         executable=None if sys.platform == "win32" else which("bash"),
     )
-    stdout = utils.decode_utf8(process.stdout)
+    stdout = utils.clean_string(process.stdout)
     logging.info(f"Format table results: ({process.returncode})\n" + stdout)
 
 

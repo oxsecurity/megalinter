@@ -146,6 +146,7 @@
         "COFFEE_COFFEELINT",
         "COPYPASTE_JSCPD",
         "CPP_CLANG_FORMAT",
+        "CPP_CPPCHECK",
         "CPP_CPPLINT",
         "CREDENTIALS_SECRETLINT",
         "CSHARP_CSHARPIER",
@@ -154,6 +155,7 @@
         "CSS_SCSSLINT",
         "CSS_STYLELINT",
         "C_CLANG_FORMAT",
+        "C_CPPCHECK",
         "C_CPPLINT",
         "DART_DARTANALYZER",
         "DOCKERFILE_DOCKERFILELINT",
@@ -3011,6 +3013,151 @@
       "title": "CPP_CLANG_FORMAT: Unsecured env variables",
       "type": "array"
     },
+    "CPP_CPPCHECK_ARGUMENTS": {
+      "$id": "#/properties/CPP_CPPCHECK_ARGUMENTS",
+      "description": "CPP_CPPCHECK: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "CPP_CPPCHECK: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "CPP_CPPCHECK_CLI_EXECUTABLE": {
+      "$id": "#/properties/CPP_CPPCHECK_CLI_EXECUTABLE",
+      "default": [
+        [
+          "cppcheck"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "CPP_CPPCHECK: CLI Executable",
+      "type": "array"
+    },
+    "CPP_CPPCHECK_CLI_LINT_MODE": {
+      "$id": "#/properties/CPP_CPPCHECK_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "project"
+      ],
+      "title": "CPP_CPPCHECK: Override default cli lint mode",
+      "type": "string"
+    },
+    "CPP_CPPCHECK_COMMAND_REMOVE_ARGUMENTS": {
+      "$id": "#/properties/CPP_CPPCHECK_COMMAND_REMOVE_ARGUMENTS",
+      "description": "CPP_CPPCHECK: User custom arguments to remove before calling linter",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "CPP_CPPCHECK: Custom remove arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "CPP_CPPCHECK_DISABLE_ERRORS": {
+      "$id": "#/properties/CPP_CPPCHECK_DISABLE_ERRORS",
+      "default": false,
+      "title": "CPP_CPPCHECK: Linter doesn't make MegaLinter fail even if errors are found",
+      "type": "boolean"
+    },
+    "CPP_CPPCHECK_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/CPP_CPPCHECK_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "CPP_CPPCHECK: Maximum number of errors allowed",
+      "type": "number"
+    },
+    "CPP_CPPCHECK_FILE_EXTENSIONS": {
+      "$id": "#/properties/CPP_CPPCHECK_FILE_EXTENSIONS",
+      "examples:": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "CPP_CPPCHECK: Override descriptor/linter matching files extensions",
+      "type": "array"
+    },
+    "CPP_CPPCHECK_FILE_NAMES_REGEX": {
+      "$id": "#/properties/CPP_CPPCHECK_FILE_NAMES_REGEX",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "CPP_CPPCHECK: Override descriptor/linter matching file name regex",
+      "type": "array"
+    },
+    "CPP_CPPCHECK_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/CPP_CPPCHECK_FILTER_REGEX_EXCLUDE",
+      "title": "CPP_CPPCHECK: Excluding Regex",
+      "type": "string"
+    },
+    "CPP_CPPCHECK_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/CPP_CPPCHECK_FILTER_REGEX_INCLUDE",
+      "title": "CPP_CPPCHECK: Including Regex",
+      "type": "string"
+    },
+    "CPP_CPPCHECK_POST_COMMANDS": {
+      "$id": "#/properties/CPP_CPPCHECK_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "CPP_CPPCHECK: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "CPP_CPPCHECK_PRE_COMMANDS": {
+      "$id": "#/properties/CPP_CPPCHECK_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "CPP_CPPCHECK: Define or override a list of bash commands to run before the linter",
+      "type": "array"
+    },
+    "CPP_CPPCHECK_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/CPP_CPPCHECK_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling CPP_CPPCHECK and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "CPP_CPPCHECK: Unsecured env variables",
+      "type": "array"
+    },
     "CPP_CPPLINT_ARGUMENTS": {
       "$id": "#/properties/CPP_CPPLINT_ARGUMENTS",
       "description": "CPP_CPPLINT: User custom arguments to add in linter CLI call",
@@ -3330,7 +3477,7 @@
       "$id": "#/properties/CSHARP_CSHARPIER_CLI_EXECUTABLE",
       "default": [
         [
-          "dotnet-csharpier"
+          "csharpier"
         ]
       ],
       "items": {
@@ -4326,6 +4473,151 @@
         "type": "string"
       },
       "title": "C_CLANG_FORMAT: Unsecured env variables",
+      "type": "array"
+    },
+    "C_CPPCHECK_ARGUMENTS": {
+      "$id": "#/properties/C_CPPCHECK_ARGUMENTS",
+      "description": "C_CPPCHECK: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "C_CPPCHECK: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "C_CPPCHECK_CLI_EXECUTABLE": {
+      "$id": "#/properties/C_CPPCHECK_CLI_EXECUTABLE",
+      "default": [
+        [
+          "cppcheck"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "C_CPPCHECK: CLI Executable",
+      "type": "array"
+    },
+    "C_CPPCHECK_CLI_LINT_MODE": {
+      "$id": "#/properties/C_CPPCHECK_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "project"
+      ],
+      "title": "C_CPPCHECK: Override default cli lint mode",
+      "type": "string"
+    },
+    "C_CPPCHECK_COMMAND_REMOVE_ARGUMENTS": {
+      "$id": "#/properties/C_CPPCHECK_COMMAND_REMOVE_ARGUMENTS",
+      "description": "C_CPPCHECK: User custom arguments to remove before calling linter",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "C_CPPCHECK: Custom remove arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "C_CPPCHECK_DISABLE_ERRORS": {
+      "$id": "#/properties/C_CPPCHECK_DISABLE_ERRORS",
+      "default": false,
+      "title": "C_CPPCHECK: Linter doesn't make MegaLinter fail even if errors are found",
+      "type": "boolean"
+    },
+    "C_CPPCHECK_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/C_CPPCHECK_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "C_CPPCHECK: Maximum number of errors allowed",
+      "type": "number"
+    },
+    "C_CPPCHECK_FILE_EXTENSIONS": {
+      "$id": "#/properties/C_CPPCHECK_FILE_EXTENSIONS",
+      "examples:": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "C_CPPCHECK: Override descriptor/linter matching files extensions",
+      "type": "array"
+    },
+    "C_CPPCHECK_FILE_NAMES_REGEX": {
+      "$id": "#/properties/C_CPPCHECK_FILE_NAMES_REGEX",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "C_CPPCHECK: Override descriptor/linter matching file name regex",
+      "type": "array"
+    },
+    "C_CPPCHECK_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/C_CPPCHECK_FILTER_REGEX_EXCLUDE",
+      "title": "C_CPPCHECK: Excluding Regex",
+      "type": "string"
+    },
+    "C_CPPCHECK_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/C_CPPCHECK_FILTER_REGEX_INCLUDE",
+      "title": "C_CPPCHECK: Including Regex",
+      "type": "string"
+    },
+    "C_CPPCHECK_POST_COMMANDS": {
+      "$id": "#/properties/C_CPPCHECK_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "C_CPPCHECK: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "C_CPPCHECK_PRE_COMMANDS": {
+      "$id": "#/properties/C_CPPCHECK_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "C_CPPCHECK: Define or override a list of bash commands to run before the linter",
+      "type": "array"
+    },
+    "C_CPPCHECK_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/C_CPPCHECK_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling C_CPPCHECK and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "C_CPPCHECK: Unsecured env variables",
       "type": "array"
     },
     "C_CPPLINT_ARGUMENTS": {

@@ -6,6 +6,8 @@ CVE-2024-38168
 CVE-2024-43483
 CVE-2024-43484
 CVE-2024-43485
+# https://avd.aquasec.com/nvd/2025/cve-2025-26646/ Not applicable in MegaLinter context
+CVE-2025-26646
 
 # Docker
 CVE-2024-41110
@@ -21,6 +23,7 @@ CVE-2024-24788
 CVE-2024-24790
 CVE-2024-45337
 CVE-2024-45338
+CVE-2025-22869
 CVE-2025-30204
 
 # go-git
@@ -110,6 +113,8 @@ CVE-2024-21538
 # other
 CVE-2024-47535
 CVE-2024-12797
+# https://avd.aquasec.com/nvd/cve-2025-46569 : Linters in MegaLinter do not run servers.
+CVE-2025-46569
 # Dockerfile
 DS001
 DS002

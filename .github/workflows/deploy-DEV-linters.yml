@@ -31,7 +31,7 @@ jobs:
     permissions: read-all
     strategy:
       fail-fast: false
-      max-parallel: 14
+      max-parallel: 18
       matrix:
         # linters-start
         linter:
@@ -44,6 +44,7 @@ jobs:
             "bash_shellcheck",
             "bash_shfmt",
             "bicep_bicep_linter",
+            "c_cppcheck",
             "c_cpplint",
             "c_clang_format",
             "clojure_clj_kondo",
@@ -51,6 +52,7 @@ jobs:
             "cloudformation_cfn_lint",
             "coffee_coffeelint",
             "copypaste_jscpd",
+            "cpp_cppcheck",
             "cpp_cpplint",
             "cpp_clang_format",
             "csharp_dotnet_format",
@@ -135,6 +137,7 @@ jobs:
             "salesforce_sfdx_scanner_lwc",
             "salesforce_lightning_flow_scanner",
             "scala_scalafix",
+            "snakemake_lint",
             "snakemake_snakefmt",
             "spell_cspell",
             "spell_proselint",
