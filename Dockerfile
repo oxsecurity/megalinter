@@ -327,7 +327,7 @@ ARG PIP_RSTCHECK_CLICK_VERSION=8.1.8
 # renovate: datasource=pypi depName=rstfmt
 ARG PIP_RSTFMT_VERSION=0.0.14
 # renovate: datasource=rubygems depName=rubocop
-ARG GEM_RUBOCOP_VERSION=1.75.7
+ARG GEM_RUBOCOP_VERSION=1.75.8
 # renovate: datasource=rubygems depName=rubocop-github
 ARG GEM_RUBOCOP_GITHUB_VERSION=0.25.0
 # renovate: datasource=rubygems depName=rubocop-performance
