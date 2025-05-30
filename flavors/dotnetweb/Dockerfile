@@ -187,8 +187,8 @@ ARG DETEKT_VERSION=1.23.8
 # renovate: datasource=github-tags depName=kubescape/kubescape
 ARG KUBERNETES_KUBESCAPE_VERSION=3.0.34
 # renovate: datasource=npm depName=markdownlint-cli2
-ARG NPM_MARKDOWNLINT_CLI2_VERSION=0.17.2
-# renovate: datasource=npm depName=markdown-link-check
+ARG NPM_MARKDOWNLINT_CLI2_VERSION=0.18.1
+# reNPM_MARKDOWNLINT_CLI2_VERSION=0.18.1own-link-check
 ARG NPM_MARKDOWN_LINK_CHECK_VERSION=3.12.2
 # renovate: datasource=npm depName=markdown-table-formatter
 ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.6.1

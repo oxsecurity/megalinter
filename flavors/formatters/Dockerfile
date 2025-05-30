@@ -67,8 +67,8 @@ ARG CSHARP_ROSLYNATOR_VERSION=0.10.1
 # renovate: datasource=npm depName=prettier
 ARG NPM_PRETTIER_VERSION=3.5.3
 # renovate: datasource=npm depName=markdownlint-cli2
-ARG NPM_MARKDOWNLINT_CLI2_VERSION=0.17.2
-# renovate: datasource=npm depName=markdown-table-formatter
+ARG NPM_MARKDOWNLINT_CLI2_VERSION=0.18.1
+# reNPM_MARKDOWNLINT_CLI2_VERSION=0.18.1own-table-formatter
 ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.6.1
 # renovate: datasource=nuget depName=PSScriptAnalyzer registryUrl=https://www.powershellgallery.com/api/v2/
 ARG PSSA_VERSION='1.24.0'

@@ -49,7 +49,7 @@ FROM python:3.12.10-alpine3.21
 #############################################################################################
 #ARG__START
 # renovate: datasource=npm depName=markdownlint-cli2
-ARG NPM_MARKDOWNLINT_CLI2_VERSION=0.17.2
+ARG NPM_MARKDOWNLINT_CLI2_VERSION=0.18.1
 #ARG__END
 
 ####################

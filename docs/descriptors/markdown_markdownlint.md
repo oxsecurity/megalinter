@@ -15,7 +15,7 @@ To see markdownlint version, you can have a look in the dependencies of latest m
 
 ## markdownlint documentation
 
-- Version in MegaLinter: **0.17.2**
+- Version in MegaLinter: **0.18.1**
 - Visit [Official Web Site](https://github.com/DavidAnson/markdownlint#readme){target=_blank}
 - See [How to configure markdownlint rules](https://github.com/DavidAnson/markdownlint-cli2#configuration){target=_blank}
   - If custom `.markdownlint.json` config file isn't found, [.markdownlint.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.markdownlint.json){target=_blank} will be used
@@ -146,8 +146,8 @@ Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=markdownlint-cli2
-ARG NPM_MARKDOWNLINT_CLI2_VERSION=0.17.2
+ARG NPM_MARKDOWNLINT_CLI2_VERSION=0.18.1
 ```
 
 - NPM packages (node.js):
-  - [markdownlint-cli2@0.17.2](https://www.npmjs.com/package/markdownlint-cli2/v/0.17.2)
+  - [markdownlint-cli2@0.18.1](https://www.npmjs.com/package/markdownlint-cli2/v/0.18.1)
