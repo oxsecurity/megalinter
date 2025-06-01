@@ -112,6 +112,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 9.4.1 to **9.5.1** on 2025-05-28
   - [tflint](https://github.com/terraform-linters/tflint) from 0.57.0 to **0.58.0** on 2025-05-29
   - [dartanalyzer](https://dart.dev/tools/dart-analyze) from 3.8.0 to **3.8.1** on 2025-05-30
+  - [checkstyle](https://checkstyle.org/) from 10.24.0 to **10.25.0** on 2025-05-31
 <!-- linter-versions-end -->
 
 ## [v8.7.0] - 2024-05-04

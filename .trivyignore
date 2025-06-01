@@ -66,6 +66,10 @@ CVE-2020-26226
 CVE-2025-24970
 GHSA-xpw8-rcwv-8f8p
 
+# sfdx-scanner
+# https://avd.aquasec.com/nvd/cve-2025-48734 Not dangerous in MegaLinter context, and sfdx-scanner will be soon replaced by code-analyzer plugin
+CVE-2025-48734
+
 # octokit
 CVE-2025-25288
 CVE-2025-25289
