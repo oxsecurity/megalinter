@@ -113,6 +113,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [tflint](https://github.com/terraform-linters/tflint) from 0.57.0 to **0.58.0** on 2025-05-29
   - [dartanalyzer](https://dart.dev/tools/dart-analyze) from 3.8.0 to **3.8.1** on 2025-05-30
   - [checkstyle](https://checkstyle.org/) from 10.24.0 to **10.25.0** on 2025-05-31
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.80.2 to **0.80.4** on 2025-06-01
 <!-- linter-versions-end -->
 
 ## [v8.7.0] - 2024-05-04
