@@ -9,7 +9,7 @@ description: How to use rstcheck (configure, ignore files, ignore errors, help &
 
 ## rstcheck documentation
 
-- Version in MegaLinter: **6.2.4**
+- Version in MegaLinter: **6.2.5**
 - Visit [Official Web Site](https://github.com/myint/rstcheck#readme){target=_blank}
 - See [How to configure rstcheck rules](https://github.com/myint/rstcheck#configuration-file){target=_blank}
 - See [How to disable rstcheck rules in files](https://github.com/myint/rstcheck#ignore-specific-errors){target=_blank}
@@ -150,11 +150,11 @@ rstcheck -c .rstcheck.cfg myfile.rst
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=rstcheck
-ARG PIP_RSTCHECK_VERSION=6.2.4
+ARG PIP_RSTCHECK_VERSION=6.2.5
 # renovate: datasource=pypi depName=click
 ARG PIP_RSTCHECK_CLICK_VERSION=8.1.8
 ```
 
 - PIP packages (Python):
   - [click==8.1.8](https://pypi.org/project/click/8.1.8)
-  - [rstcheck[toml,sphinx]==6.2.4](https://pypi.org/project/rstcheck[toml,sphinx]/6.2.4)
+  - [rstcheck[toml,sphinx]==6.2.5](https://pypi.org/project/rstcheck[toml,sphinx]/6.2.5)
