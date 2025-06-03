@@ -114,6 +114,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [dartanalyzer](https://dart.dev/tools/dart-analyze) from 3.8.0 to **3.8.1** on 2025-05-30
   - [checkstyle](https://checkstyle.org/) from 10.24.0 to **10.25.0** on 2025-05-31
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.80.2 to **0.80.4** on 2025-06-01
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.11.11 to **0.11.12** on 2025-06-02
+  - [ruff](https://github.com/astral-sh/ruff) from 0.11.11 to **0.11.12** on 2025-06-02
+  - [rstcheck](https://github.com/myint/rstcheck) from 6.2.4 to **6.2.5** on 2025-06-02
+  - [rubocop](https://rubocop.org/) from 1.75.7 to **1.75.8** on 2025-06-02
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.16.0 to **3.16.1** on 2025-06-02
 <!-- linter-versions-end -->
 
 ## [v8.7.0] - 2024-05-04
