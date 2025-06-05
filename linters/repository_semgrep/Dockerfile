@@ -49,7 +49,7 @@ FROM python:3.12.10-alpine3.21
 #############################################################################################
 #ARG__START
 # renovate: datasource=pypi depName=semgrep
-ARG PIP_SEMGREP_VERSION=1.116.0
+ARG PIP_SEMGREP_VERSION=1.124.0
 # renovate: datasource=pypi depName=pip
 ARG PIP_PIP_VERSION=25.1.1
 # renovate: datasource=pypi depName=virtualenv
