@@ -119,6 +119,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [rstcheck](https://github.com/myint/rstcheck) from 6.2.4 to **6.2.5** on 2025-06-02
   - [rubocop](https://rubocop.org/) from 1.75.7 to **1.75.8** on 2025-06-02
   - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.16.0 to **3.16.1** on 2025-06-02
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2025.04.07 to **2025.06.05** on 2025-06-06
 <!-- linter-versions-end -->
 
 ## [v8.7.0] - 2024-05-04
