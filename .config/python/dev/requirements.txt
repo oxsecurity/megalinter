@@ -29,7 +29,7 @@ python-multipart==0.0.20
 pyyaml==6.0.2
 redis==6.2.0
 regex==2024.11.6
-requests==2.32.3
+requests==2.32.4
 terminaltables==3.1.10
 termcolor==3.1.0
 urllib3==2.4.0
