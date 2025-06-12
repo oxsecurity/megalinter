@@ -27,7 +27,7 @@ ARG REPOSITORY_KICS_VERSION=v2.1.9-alpine
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
 ARG REPOSITORY_TRUFFLEHOG_VERSION=3.88.34
 # renovate: datasource=docker depName=ghcr.io/terraform-linters/tflint
-ARG TERRAFORM_TFLINT_VERSION=0.57.0
+ARG TERRAFORM_TFLINT_VERSION=0.58.0
 # renovate: datasource=docker depName=tenable/terrascan
 ARG TERRAFORM_TERRASCAN_VERSION=1.19.9
 # renovate: datasource=docker depName=alpine/terragrunt
@@ -55,7 +55,7 @@ FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} AS terragrunt
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.7.2 AS uv
+FROM ghcr.io/astral-sh/uv:0.7.9 AS uv
 FROM python:3.12.10-alpine3.21 AS build-ml-core
 WORKDIR /
 COPY --from=uv /uv /uvx /bin/
@@ -86,7 +86,7 @@ ARG PIP_ANSIBLE_LINT_VERSION=25.5.0
 # renovate: datasource=crate depName=shellcheck-sarif
 ARG CARGO_SHELLCHECK_SARIF_VERSION=0.8.0
 # renovate: datasource=pypi depName=cfn-lint
-ARG PIP_CFN_LINT_VERSION=1.35.3
+ARG PIP_CFN_LINT_VERSION=1.35.4
 # renovate: datasource=github-tags depName=kubescape/kubescape
 ARG KUBERNETES_KUBESCAPE_VERSION=3.0.34
 # renovate: datasource=pypi depName=bandit

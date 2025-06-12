@@ -24,7 +24,7 @@
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.7.2 AS uv
+FROM ghcr.io/astral-sh/uv:0.7.9 AS uv
 FROM python:3.12.10-alpine3.21 AS build-ml-core
 WORKDIR /
 COPY --from=uv /uv /uvx /bin/
@@ -51,7 +51,7 @@ FROM python:3.12.10-alpine3.21
 # renovate: datasource=github-tags depName=sgerrand/alpine-pkg-glibc
 ARG ALPINE_GLIBC_PACKAGE_VERSION=2.34-r0
 # renovate: datasource=dart-version depName=dart
-ARG DART_VERSION='3.8.0'
+ARG DART_VERSION='3.8.1'
 #ARG__END
 
 ####################

@@ -24,7 +24,7 @@
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.7.2 AS uv
+FROM ghcr.io/astral-sh/uv:0.7.9 AS uv
 FROM python:3.12.10-alpine3.21 AS build-ml-core
 WORKDIR /
 COPY --from=uv /uv /uvx /bin/
@@ -59,17 +59,17 @@ ARG NPM_ESLINT_CONFIG_STANDARD_VERSION=17.1.0
 # renovate: datasource=npm depName=eslint-plugin-import
 ARG NPM_ESLINT_PLUGIN_IMPORT_VERSION=2.31.0
 # renovate: datasource=npm depName=eslint-plugin-jest
-ARG NPM_ESLINT_PLUGIN_JEST_VERSION=28.11.0
+ARG NPM_ESLINT_PLUGIN_JEST_VERSION=28.11.2
 # renovate: datasource=npm depName=eslint-plugin-n
 ARG NPM_ESLINT_PLUGIN_N_VERSION=16.6.2
 # renovate: datasource=npm depName=eslint-plugin-prettier
-ARG NPM_ESLINT_PLUGIN_PRETTIER_VERSION=5.4.0
+ARG NPM_ESLINT_PLUGIN_PRETTIER_VERSION=5.4.1
 # renovate: datasource=npm depName=eslint-plugin-promise
 ARG NPM_ESLINT_PLUGIN_PROMISE_VERSION=6.6.0
 # renovate: datasource=npm depName=eslint-plugin-vue
 ARG NPM_ESLINT_PLUGIN_VUE_VERSION=10.1.0
 # renovate: datasource=npm depName=@babel/core
-ARG NPM_BABEL_CORE_VERSION=7.27.3
+ARG NPM_BABEL_CORE_VERSION=7.27.4
 # renovate: datasource=npm depName=@babel/eslint-parser
 ARG NPM_BABEL_ESLINT_PARSER_VERSION=7.27.1
 # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif

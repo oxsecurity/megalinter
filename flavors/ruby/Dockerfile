@@ -59,7 +59,7 @@ FROM lycheeverse/lychee:${SPELL_LYCHEE_VERSION} AS lychee
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.7.2 AS uv
+FROM ghcr.io/astral-sh/uv:0.7.9 AS uv
 FROM python:3.12.10-alpine3.21 AS build-ml-core
 WORKDIR /
 COPY --from=uv /uv /uvx /bin/
@@ -154,9 +154,9 @@ ARG REPOSITORY_TRIVY_VERSION=0.62.1
 # renovate: datasource=github-tags depName=aquasecurity/trivy
 ARG REPOSITORY_TRIVY_SBOM_VERSION=0.62.1
 # renovate: datasource=rubygems depName=rubocop
-ARG GEM_RUBOCOP_VERSION=1.75.7
+ARG GEM_RUBOCOP_VERSION=1.75.8
 # renovate: datasource=rubygems depName=rubocop-github
-ARG GEM_RUBOCOP_GITHUB_VERSION=0.24.0
+ARG GEM_RUBOCOP_GITHUB_VERSION=0.25.0
 # renovate: datasource=rubygems depName=rubocop-performance
 ARG GEM_RUBOCOP_PERFORMANCE_VERSION=1.25.0
 # renovate: datasource=rubygems depName=rubocop-rails
@@ -166,7 +166,7 @@ ARG GEM_RUBOCOP_RAKE_VERSION=0.7.1
 # renovate: datasource=rubygems depName=rubocop-rspec
 ARG GEM_RUBOCOP_RSPEC_VERSION=3.6.0
 # renovate: datasource=pypi depName=snakemake
-ARG PIP_SNAKEMAKE_VERSION=9.4.1
+ARG PIP_SNAKEMAKE_VERSION=9.5.1
 # renovate: datasource=pypi depName=snakefmt
 ARG PIP_SNAKEFMT_VERSION=0.11.0
 # renovate: datasource=npm depName=cspell

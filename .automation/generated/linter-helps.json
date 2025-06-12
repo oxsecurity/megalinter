@@ -805,7 +805,7 @@
         "               [--secrets-scan-file-type SECRETS_SCAN_FILE_TYPE]",
         "               [--enable-secret-scan-all-files]",
         "               [--block-list-secret-scan BLOCK_LIST_SECRET_SCAN]",
-        "               [--summary-position {bottom,top}]",
+        "               [--summary-position {top,bottom}]",
         "               [--skip-resources-without-violations] [--deep-analysis]",
         "               [--no-fail-on-crash] [--mask MASK] [--scan-secrets-history]",
         "               [--secrets-history-timeout SECRETS_HISTORY_TIMEOUT]",
@@ -1120,7 +1120,7 @@
         "  --block-list-secret-scan BLOCK_LIST_SECRET_SCAN",
         "                        List of files to filter out from the secret scanner",
         "                        [env var: CKV_SECRETS_SCAN_BLOCK_LIST]",
-        "  --summary-position {bottom,top}",
+        "  --summary-position {top,bottom}",
         "                        Chose whether the summary will be appended on top",
         "                        (before the checks results) or on bottom (after check",
         "                        results), default is on top.",
@@ -3823,7 +3823,7 @@
         "      --server string         Backend discovery server URL",
         "",
         "Use \"kubescape [command] --help\" for more information about a command.",
-        "{\"level\":\"info\",\"ts\":\"2025-05-27T10:51:08Z\",\"msg\":\"Received interrupt signal, exiting...\"}"
+        "{\"level\":\"info\",\"ts\":\"2025-06-02T22:18:39Z\",\"msg\":\"Received interrupt signal, exiting...\"}"
     ],
     "kubeval": [
         "Validate a Kubernetes YAML file against the relevant schema",
@@ -3854,7 +3854,6 @@
         "      --version                               version for kubeval"
     ],
     "lightning-flow-scanner": [
-        " \u203a   Warning: @salesforce/cli update available from 2.87.7 to 2.89.8.",
         "Find and fix potential bugs in Salesforce flows.",
         "",
         "USAGE",
@@ -8578,7 +8577,6 @@
         "@typescript-eslint/unbound-method                  typescript   Best Practices    Best Practices                                    eslint-typescript"
     ],
     "sfdx-scanner-apex": [
-        " \u203a   Warning: @salesforce/cli update available from 2.87.7 to 2.89.8.",
         "Scan a codebase with all the rules in the registry, or use parameters to filter the rules based on rulename, category, or ruleset.",
         "",
         "USAGE",
@@ -8632,7 +8630,6 @@
         "COMMANDS",
         "  scanner run dfa  Scan codebase with all DFA rules by default.",
         "",
-        " \u203a   Warning: @salesforce/cli update available from 2.87.7 to 2.89.8.",
         "Warning: Starting May 1, 2025, we no longer support v4.x of Code Analyzer. You should use v5.x of Code Analyzer instead. See https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/code-analyzer.html. For information about migrating from v4.x to v5.x, see https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/migrate.html.",
         " name                                                   languages   categories            rulesets [dep] engine            is dfa is pilot",
         " \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 \u2500\u2500\u2500\u2500\u2500\u2500 \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500",
@@ -8854,7 +8851,6 @@
         " UnimplementedTypeRule                                  apex        Performance                          sfge              N      N"
     ],
     "sfdx-scanner-aura": [
-        " \u203a   Warning: @salesforce/cli update available from 2.87.7 to 2.89.8.",
         "Scan a codebase with all the rules in the registry, or use parameters to filter the rules based on rulename, category, or ruleset.",
         "",
         "USAGE",
@@ -8908,7 +8904,6 @@
         "COMMANDS",
         "  scanner run dfa  Scan codebase with all DFA rules by default.",
         "",
-        " \u203a   Warning: @salesforce/cli update available from 2.87.7 to 2.89.8.",
         "Warning: Starting May 1, 2025, we no longer support v4.x of Code Analyzer. You should use v5.x of Code Analyzer instead. See https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/code-analyzer.html. For information about migrating from v4.x to v5.x, see https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/migrate.html.",
         " name                                                   languages   categories            rulesets [dep] engine            is dfa is pilot",
         " \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 \u2500\u2500\u2500\u2500\u2500\u2500 \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500",
@@ -9130,7 +9125,6 @@
         " UnimplementedTypeRule                                  apex        Performance                          sfge              N      N"
     ],
     "sfdx-scanner-lwc": [
-        " \u203a   Warning: @salesforce/cli update available from 2.87.7 to 2.89.8.",
         "Scan a codebase with all the rules in the registry, or use parameters to filter the rules based on rulename, category, or ruleset.",
         "",
         "USAGE",
@@ -9184,7 +9178,6 @@
         "COMMANDS",
         "  scanner run dfa  Scan codebase with all DFA rules by default.",
         "",
-        " \u203a   Warning: @salesforce/cli update available from 2.87.7 to 2.89.8.",
         "Warning: Starting May 1, 2025, we no longer support v4.x of Code Analyzer. You should use v5.x of Code Analyzer instead. See https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/code-analyzer.html. For information about migrating from v4.x to v5.x, see https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/migrate.html.",
         " name                                                   languages   categories            rulesets [dep] engine            is dfa is pilot",
         " \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 \u2500\u2500\u2500\u2500\u2500\u2500 \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500",
@@ -10330,7 +10323,7 @@
         "                        is up to your responsibility. Any used image has to",
         "                        contain a working snakemake installation that is",
         "                        compatible with (or ideally the same as) the currently",
-        "                        running version. (default: snakemake/snakemake:v9.4.1)",
+        "                        running version. (default: snakemake/snakemake:v9.5.1)",
         "  --immediate-submit, --is",
         "                        Immediately submit all jobs to the cluster instead of",
         "                        waiting for present input files. This will fail,",
@@ -11074,7 +11067,7 @@
         "   --help, -h                 Show help. (default: false)",
         "   --version, -v              Show terragrunt version. (default: false)",
         "",
-        "Version: v0.80.2",
+        "Version: v0.80.4",
         "",
         "Author: Gruntwork <www.gruntwork.io>"
     ],

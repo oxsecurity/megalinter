@@ -24,7 +24,7 @@
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.7.2 AS uv
+FROM ghcr.io/astral-sh/uv:0.7.9 AS uv
 FROM python:3.12.10-alpine3.21 AS build-ml-core
 WORKDIR /
 COPY --from=uv /uv /uvx /bin/
@@ -49,7 +49,7 @@ FROM python:3.12.10-alpine3.21
 #############################################################################################
 #ARG__START
 # renovate: datasource=pypi depName=snakemake
-ARG PIP_SNAKEMAKE_VERSION=9.4.1
+ARG PIP_SNAKEMAKE_VERSION=9.5.1
 # renovate: datasource=pypi depName=pip
 ARG PIP_PIP_VERSION=25.1.1
 # renovate: datasource=pypi depName=virtualenv

@@ -24,7 +24,7 @@
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.7.2 AS uv
+FROM ghcr.io/astral-sh/uv:0.7.9 AS uv
 FROM python:3.12.10-alpine3.21 AS build-ml-core
 WORKDIR /
 COPY --from=uv /uv /uvx /bin/
@@ -49,7 +49,7 @@ FROM python:3.12.10-alpine3.21
 #############################################################################################
 #ARG__START
 # renovate: datasource=packagist depName=vimeo/psalm
-ARG PHP_VIMEO_PSALM_VERSION=6.10.3
+ARG PHP_VIMEO_PSALM_VERSION=6.11.0
 #ARG__END
 
 ####################

@@ -90,7 +90,6 @@ sf scanner:run
 ### Help content
 
 ```shell
- ›   Warning: @salesforce/cli update available from 2.87.7 to 2.89.8.
 Scan a codebase with all the rules in the registry, or use parameters to filter the rules based on rulename, category, or ruleset.
 
 USAGE
@@ -144,7 +143,6 @@ GLOBAL FLAGS
 COMMANDS
   scanner run dfa  Scan codebase with all DFA rules by default.
 
- ›   Warning: @salesforce/cli update available from 2.87.7 to 2.89.8.
 Warning: Starting May 1, 2025, we no longer support v4.x of Code Analyzer. You should use v5.x of Code Analyzer instead. See https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/code-analyzer.html. For information about migrating from v4.x to v5.x, see https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/migrate.html.
  name                                                   languages   categories            rulesets [dep] engine            is dfa is pilot
  ────────────────────────────────────────────────────── ─────────── ───────────────────── ────────────── ───────────────── ────── ────────
@@ -372,11 +370,11 @@ Warning: Starting May 1, 2025, we no longer support v4.x of Code Analyzer. You s
 ```dockerfile
 # Parent descriptor install
 # renovate: datasource=npm depName=@salesforce/cli
-ARG NPM_SALESFORCE_CLI_VERSION=2.87.7
+ARG NPM_SALESFORCE_CLI_VERSION=2.90.4
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
-ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.13.1
+ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.13.6
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=5.36.3
+ARG SFDX_HARDIS_VERSION=5.38.0
 ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 RUN sf plugins install @salesforce/plugin-packaging@${NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION} \

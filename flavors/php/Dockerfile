@@ -59,7 +59,7 @@ FROM lycheeverse/lychee:${SPELL_LYCHEE_VERSION} AS lychee
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.7.2 AS uv
+FROM ghcr.io/astral-sh/uv:0.7.9 AS uv
 FROM python:3.12.10-alpine3.21 AS build-ml-core
 WORKDIR /
 COPY --from=uv /uv /uvx /bin/
@@ -142,7 +142,7 @@ ARG PHP_PHPSTAN_PHPSTAN_VERSION=2.1.17
 # renovate: datasource=packagist depName=phpstan/extension-installer
 ARG PHP_PHPSTAN_EXTENSION_INSTALLER_VERSION=1.4.3
 # renovate: datasource=packagist depName=vimeo/psalm
-ARG PHP_VIMEO_PSALM_VERSION=6.10.3
+ARG PHP_VIMEO_PSALM_VERSION=6.11.0
 # renovate: datasource=packagist depName=overtrue/phplint
 ARG PHP_OVERTRUE_PHPLINT_VERSION=9.6.2
 # renovate: datasource=packagist depName=friendsofphp/php-cs-fixer
@@ -168,7 +168,7 @@ ARG REPOSITORY_TRIVY_VERSION=0.62.1
 # renovate: datasource=github-tags depName=aquasecurity/trivy
 ARG REPOSITORY_TRIVY_SBOM_VERSION=0.62.1
 # renovate: datasource=pypi depName=snakemake
-ARG PIP_SNAKEMAKE_VERSION=9.4.1
+ARG PIP_SNAKEMAKE_VERSION=9.5.1
 # renovate: datasource=pypi depName=snakefmt
 ARG PIP_SNAKEFMT_VERSION=0.11.0
 # renovate: datasource=npm depName=cspell

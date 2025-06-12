@@ -11,13 +11,13 @@ install:
   dockerfile:
     - |-
       # renovate: datasource=npm depName=@salesforce/cli
-      ARG NPM_SALESFORCE_CLI_VERSION=2.87.7
+      ARG NPM_SALESFORCE_CLI_VERSION=2.91.6
     - |-
       # renovate: datasource=npm depName=@salesforce/plugin-packaging
-      ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.13.1
+      ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.15.3
     - |-
       # renovate: datasource=npm depName=sfdx-hardis
-      ARG SFDX_HARDIS_VERSION=5.38.0
+      ARG SFDX_HARDIS_VERSION=5.39.1
     - ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
     - ENV PATH="$JAVA_HOME/bin:${PATH}"
     - |-
@@ -262,7 +262,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=lightning-flow-scanner
-          ARG LIGHTNING_FLOW_SCANNER_VERSION=3.16.0
+          ARG LIGHTNING_FLOW_SCANNER_VERSION=3.16.1
         - |-
           RUN echo y|sf plugins install lightning-flow-scanner@${LIGHTNING_FLOW_SCANNER_VERSION} \
               && (npm cache clean --force || true) \

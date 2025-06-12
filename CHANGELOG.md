@@ -106,6 +106,19 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [secretlint](https://github.com/secretlint/secretlint) from 9.3.2 to **9.3.3** on 2025-05-27
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.88.30 to **3.88.34** on 2025-05-27
   - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.15.1 to **3.16.0** on 2025-05-27
+  - [psalm](https://psalm.dev) from Psalm.6.10.3@ to **Psalm.6.11.0@** on 2025-05-28
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.55.5 to **0.55.6** on 2025-05-28
+  - [kics](https://www.kics.io) from 2.1.8 to **2.1.9** on 2025-05-28
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 9.4.1 to **9.5.1** on 2025-05-28
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.57.0 to **0.58.0** on 2025-05-29
+  - [dartanalyzer](https://dart.dev/tools/dart-analyze) from 3.8.0 to **3.8.1** on 2025-05-30
+  - [checkstyle](https://checkstyle.org/) from 10.24.0 to **10.25.0** on 2025-05-31
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.80.2 to **0.80.4** on 2025-06-01
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.11.11 to **0.11.12** on 2025-06-02
+  - [ruff](https://github.com/astral-sh/ruff) from 0.11.11 to **0.11.12** on 2025-06-02
+  - [rstcheck](https://github.com/myint/rstcheck) from 6.2.4 to **6.2.5** on 2025-06-02
+  - [rubocop](https://rubocop.org/) from 1.75.7 to **1.75.8** on 2025-06-02
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.16.0 to **3.16.1** on 2025-06-02
 <!-- linter-versions-end -->
 
 ## [v8.7.0] - 2024-05-04

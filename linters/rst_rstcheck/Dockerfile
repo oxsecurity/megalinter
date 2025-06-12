@@ -24,7 +24,7 @@
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.7.2 AS uv
+FROM ghcr.io/astral-sh/uv:0.7.9 AS uv
 FROM python:3.12.10-alpine3.21 AS build-ml-core
 WORKDIR /
 COPY --from=uv /uv /uvx /bin/
@@ -49,7 +49,7 @@ FROM python:3.12.10-alpine3.21
 #############################################################################################
 #ARG__START
 # renovate: datasource=pypi depName=rstcheck
-ARG PIP_RSTCHECK_VERSION=6.2.4
+ARG PIP_RSTCHECK_VERSION=6.2.5
 # renovate: datasource=pypi depName=click
 ARG PIP_RSTCHECK_CLICK_VERSION=8.1.8
 # renovate: datasource=pypi depName=pip
