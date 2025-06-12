@@ -119,6 +119,13 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [rstcheck](https://github.com/myint/rstcheck) from 6.2.4 to **6.2.5** on 2025-06-02
   - [rubocop](https://rubocop.org/) from 1.75.7 to **1.75.8** on 2025-06-02
   - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.16.0 to **3.16.1** on 2025-06-02
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2025.04.07 to **2025.06.05** on 2025-06-11
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.35.3 to **1.35.4** on 2025-06-11
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.11.12 to **0.11.13** on 2025-06-11
+  - [ruff](https://github.com/astral-sh/ruff) from 0.11.12 to **0.11.13** on 2025-06-11
+  - [grype](https://github.com/anchore/grype) from 0.92.2 to **0.93.0** on 2025-06-11
+  - [syft](https://github.com/anchore/syft) from 1.26.1 to **1.27.0** on 2025-06-11
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.80.4 to **0.81.0** on 2025-06-11
 <!-- linter-versions-end -->
 
 ## [v8.7.0] - 2024-05-04
