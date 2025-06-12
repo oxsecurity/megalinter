@@ -119,6 +119,8 @@ CVE-2024-47535
 CVE-2024-12797
 # https://avd.aquasec.com/nvd/cve-2025-46569 : Linters in MegaLinter do not run servers.
 CVE-2025-46569
+# https://avd.aquasec.com/nvd/cve-2025-48387 : tar-fs, not applicable in MegaLinter context
+CVE-2025-48387
 # https://avd.aquasec.com/nvd/cve-2025-5889 : brace-expansion, ddos attack, not applicable in MegaLinter context
 CVE-2025-5889
 # Dockerfile
