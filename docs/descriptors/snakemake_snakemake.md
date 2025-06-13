@@ -103,8 +103,7 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--max-threads MAX_THREADS]
                  [--set-resources RULE:RESOURCE=VALUE [RULE:RESOURCE=VALUE ...]]
                  [--set-scatter NAME=SCATTERITEMS [NAME=SCATTERITEMS ...]]
-                 [--set-resource-scopes RESOURCE=[global|local]
-                 [RESOURCE=[global|local] ...]]
+                 [--set-resource-scopes RESOURCE=[global|local] [RESOURCE=[global|local] ...]]
                  [--default-resources [NAME=INT ...]]
                  [--preemptible-rules [PREEMPTIBLE_RULES ...]]
                  [--preemptible-retries PREEMPTIBLE_RETRIES]
@@ -136,7 +135,7 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--filegraph] [--d3dag] [--summary] [--detailed-summary]
                  [--archive FILE] [--cleanup-metadata FILE [FILE ...]]
                  [--cleanup-shadow] [--skip-script-cleanup] [--unlock]
-                 [--list-changes {params,code,input}] [--list-input-changes]
+                 [--list-changes {params,input,code}] [--list-input-changes]
                  [--list-params-changes] [--list-untracked]
                  [--delete-all-output | --delete-temp-output]
                  [--keep-incomplete] [--drop-metadata] [--version]
@@ -182,7 +181,7 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--scheduler-solver-path SCHEDULER_SOLVER_PATH]
                  [--deploy-sources QUERY CHECKSUM]
                  [--target-jobs TARGET_JOBS [TARGET_JOBS ...]]
-                 [--mode {remote,subprocess,default}]
+                 [--mode {default,subprocess,remote}]
                  [--report-html-path VALUE]
                  [--report-html-stylesheet-path VALUE]
                  [targets ...]
@@ -246,15 +245,14 @@ EXECUTION:
                         Output files are identified by hashing all steps,
                         parameters and software stack (conda envs or
                         containers) needed to create them.
-  --snakefile FILE, -s FILE
-                        The workflow definition in form of a snakefile.
+  --snakefile, -s FILE  The workflow definition in form of a snakefile.
                         Usually, you should not need to specify this. By
                         default, Snakemake will search for `Snakefile`,
                         `snakefile`, `workflow/Snakefile`,
                         `workflow/snakefile` beneath the current working
                         directory, in this order. Only if you definitely want
                         a different layout, you need to use this parameter.
-  --cores N, -c N       Use at most N CPU cores/jobs in parallel. If N is
+  --cores, -c N         Use at most N CPU cores/jobs in parallel. If N is
                         omitted or `all`, the limit is set to the number of
                         available CPU cores. In case of cluster/cloud
                         execution, this argument sets the maximum number of
@@ -263,7 +261,7 @@ EXECUTION:
                         iles/rules.html#resources-remote-execution for more
                         info.) This number is available to rules via
                         workflow.cores.
-  --jobs N, -j N        Use at most N CPU cluster/cloud jobs in parallel. For
+  --jobs, -j N          Use at most N CPU cluster/cloud jobs in parallel. For
                         local execution this is an alias for `--cores` (it is
                         though recommended to use `--cores` in that case).
                         Note: Set to `unlimited` to allow any number of
@@ -272,7 +270,7 @@ EXECUTION:
                         machine in parallel (default: number of CPU cores of
                         the host). The cores are used to execute local rules.
                         This option is ignored when not in cluster/cloud mode.
-  --resources NAME=INT [NAME=INT ...], --res NAME=INT [NAME=INT ...]
+  --resources, --res NAME=INT [NAME=INT ...]
                         Define additional resources that shall constrain the
                         scheduling analogously to `--cores` (see above). A
                         resource is defined as a name and an integer value.
@@ -331,7 +329,7 @@ EXECUTION:
                         is always considered local. (See https://snakemake.rea
                         dthedocs.io/en/stable/snakefiles/rules.html#resources-
                         remote-execution for more info) (default: )
-  --default-resources [NAME=INT ...], --default-res [NAME=INT ...]
+  --default-resources, --default-res [NAME=INT ...]
                         Define default values of resources for rules that do
                         not define their own values. In addition to plain
                         integers, python expressions over inputsize are
@@ -371,7 +369,7 @@ EXECUTION:
                         Number of retries that shall be made in order to
                         finish a job from of rule that has been marked as
                         preemptible via the --preemptible-rules setting.
-  --configfile FILE [FILE ...], --configfiles FILE [FILE ...]
+  --configfile, --configfiles FILE [FILE ...]
                         Specify or overwrite the config file of the workflow
                         (see the docs). Values specified in JSON or YAML
                         format are available in the global config dictionary
@@ -381,7 +379,7 @@ EXECUTION:
                         configfiles. Note that this order also includes a
                         config file defined in the workflow definition itself
                         (which will come first). (default: )
-  --config [KEY=VALUE ...], -C [KEY=VALUE ...]
+  --config, -C [KEY=VALUE ...]
                         Set or overwrite values in the workflow config object.
                         The workflow config object is accessible as variable
                         config inside the workflow. Default values can be set
@@ -395,8 +393,7 @@ EXECUTION:
                         specified within the workflow config. (default: False)
   --envvars VARNAME [VARNAME ...]
                         Environment variables to pass to cloud jobs.
-  --directory DIR, -d DIR
-                        Specify working directory (relative paths in the
+  --directory, -d DIR   Specify working directory (relative paths in the
                         snakefile will use this as their origin).
   --touch, -t           Touch output files (mark them up to date without
                         really changing them) instead of running their
@@ -423,13 +420,13 @@ EXECUTION:
   --force, -f           Force the execution of the selected target or the
                         first rule regardless of already created output.
                         (default: False)
-  --executor {local,dryrun,touch}, -e {local,dryrun,touch}
+  --executor, -e {local,dryrun,touch}
                         Specify a custom executor, available via an executor
                         plugin: snakemake_executor_<name>
   --forceall, -F        Force the execution of the selected (or the first)
                         rule and all rules it is dependent on regardless of
                         already created output. (default: False)
-  --forcerun [TARGET ...], -R [TARGET ...]
+  --forcerun, -R [TARGET ...]
                         Force the re-execution or creation of the given rules
                         or files. Use this option if you changed a rule and
                         want to have all its output in your workflow updated.
@@ -443,7 +440,7 @@ EXECUTION:
                         INPUTITEMS is a comma separated list of input items of
                         the rule (given as name or index (0-based)). (default:
                         )
-  --prioritize TARGET [TARGET ...], -P TARGET [TARGET ...]
+  --prioritize, -P TARGET [TARGET ...]
                         Tell the scheduler to assign creation of given targets
                         (and all their dependencies) highest priority.
   --batch RULE=BATCH/BATCHES
@@ -458,11 +455,11 @@ EXECUTION:
                         once, and has a large number of input files. For
                         example, it can be a rule that aggregates over
                         samples.
-  --until TARGET [TARGET ...], -U TARGET [TARGET ...]
+  --until, -U TARGET [TARGET ...]
                         Runs the pipeline until it reaches the specified rules
                         or files. Only runs jobs that are dependencies of the
                         specified rule or files, does not run sibling DAGs.
-  --omit-from TARGET [TARGET ...], -O TARGET [TARGET ...]
+  --omit-from, -O TARGET [TARGET ...]
                         Prevent the execution or creation of the given rules
                         or files as well as any rules or files that are
                         downstream of these targets in the DAG. Also runs jobs
@@ -661,7 +658,7 @@ UTILITIES:
                         and conda environments. Note that symlinks are
                         dereferenced. Supported formats are .tar, .tar.gz,
                         .tar.bz2 and .tar.xz.
-  --cleanup-metadata FILE [FILE ...], --cm FILE [FILE ...]
+  --cleanup-metadata, --cm FILE [FILE ...]
                         Cleanup the metadata of given files. That means that
                         snakemake removes any tracked version info, and any
                         marks that files are incomplete.
@@ -673,7 +670,7 @@ UTILITIES:
                         (default: False)
   --unlock              Remove a lock on the working directory. (default:
                         False)
-  --list-changes {params,code,input}, --lc {params,code,input}
+  --list-changes, --lc {params,input,code}
                         List all output files for which the given items (code,
                         input, params) have changed since creation.
   --list-input-changes, --li
@@ -715,7 +712,7 @@ OUTPUT:
                         wildcards) while inferring DAG. This can help to debug
                         unexpected DAG topology or errors. (default: False)
   --nocolor             Do not use a colored output. (default: False)
-  --quiet [{all,host,progress,reason,rules} ...], -q [{all,host,progress,reason,rules} ...]
+  --quiet, -q [{all,host,progress,reason,rules} ...]
                         Do not output certain information. If used without
                         arguments, do not output any progress or rule
                         information. Defining `all` results in no information
@@ -760,7 +757,7 @@ BEHAVIOR:
                         the provided threshold (given in any valid size unit,
                         e.g. 1MB, which is also the default). (default:
                         1000000)
-  --latency-wait SECONDS, --output-wait SECONDS, -w SECONDS
+  --latency-wait, --output-wait, -w SECONDS
                         Wait given seconds if an output file of a job is not
                         present after the job finished. This helps if your
                         filesystem suffers from latency. (default: 5)
@@ -820,7 +817,7 @@ BEHAVIOR:
   --seconds-between-status-checks SECONDS_BETWEEN_STATUS_CHECKS
                         Number of seconds to wait between two rounds of status
                         checks. (default: 10)
-  --retries RETRIES, --restart-times RETRIES, -T RETRIES
+  --retries, --restart-times, -T RETRIES
                         Number of times to restart failing jobs. (default: 0)
   --wrapper-prefix WRAPPER_PREFIX
                         URL prefix for wrapper directive. Set this to use your
@@ -866,7 +863,7 @@ BEHAVIOR:
                         storage provider. (default: input-output persistence
                         software-deployment source-cache sources storage-
                         local-copies)
-  --scheduler-greediness SCHEDULER_GREEDINESS, --greediness SCHEDULER_GREEDINESS
+  --scheduler-greediness, --greediness SCHEDULER_GREEDINESS
                         Set the greediness of scheduling. This value between 0
                         and 1 determines how careful jobs are selected for
                         execution. The default value (1.0) provides the best
@@ -924,12 +921,11 @@ REMOTE EXECUTION:
                         space separated job ids this job depends on. Does not
                         work for workflows that contain checkpoint rules.
                         (default: False)
-  --jobscript SCRIPT, --js SCRIPT
+  --jobscript, --js SCRIPT
                         Provide a custom job script for submission to the
                         cluster. The default script resides as `jobscript.sh`
                         in the installation directory.
-  --jobname NAME, --jn NAME
-                        Provide a custom name for the jobscript that is
+  --jobname, --jn NAME  Provide a custom name for the jobscript that is
                         submitted to the cluster (see `--cluster`). The
                         wildcard `{jobid}` has to be present in the name.
                         (default: snakejob.{name}.{jobid}.sh)
@@ -942,7 +938,7 @@ FLUX:
                         False)
 
 SOFTWARE DEPLOYMENT:
-  --software-deployment-method {apptainer,conda,env-modules} [{apptainer,conda,env-modules} ...], --deployment-method {apptainer,conda,env-modules} [{apptainer,conda,env-modules} ...], --deployment {apptainer,conda,env-modules} [{apptainer,conda,env-modules} ...], --sdm {apptainer,conda,env-modules} [{apptainer,conda,env-modules} ...]
+  --software-deployment-method, --deployment-method, --deployment, --sdm {apptainer,conda,env-modules} [{apptainer,conda,env-modules} ...]
                         Specify software environment deployment method.
   --container-cleanup-images
                         Remove unused containers (default: False)
@@ -994,7 +990,7 @@ APPTAINER/SINGULARITY:
                         apptainer/singularity container. If this flag is not
                         set, the singularity directive is ignored. (default:
                         False)
-  --apptainer-prefix DIR, --singularity-prefix DIR
+  --apptainer-prefix, --singularity-prefix DIR
                         Specify a directory in which apptainer/singularity
                         images will be stored.If not supplied, the value is
                         set to the `.snakemake` directory relative to the
@@ -1009,7 +1005,7 @@ APPTAINER/SINGULARITY:
                         specific values for this, you should disable assuming
                         shared fs for software-deployment (see `--shared-fs-
                         usage`).
-  --apptainer-args ARGS, --singularity-args ARGS
+  --apptainer-args, --singularity-args ARGS
                         Pass additional args to apptainer/singularity.
 
 ENVIRONMENT MODULES:
@@ -1032,7 +1028,7 @@ INTERNAL:
   --target-jobs TARGET_JOBS [TARGET_JOBS ...]
                         Internal use only: Target particular jobs by
                         RULE:WILDCARD1=VALUE,WILDCARD2=VALUE,...
-  --mode {remote,subprocess,default}
+  --mode {default,subprocess,remote}
                         Internal use only: Set execution mode of Snakemake.
                         (default: default)
 
