@@ -9,7 +9,7 @@ description: How to use htmlhint (configure, ignore files, ignore errors, help &
 
 ## htmlhint documentation
 
-- Version in MegaLinter: **1.2.0**
+- Version in MegaLinter: **1.5.1**
 - Visit [Official Web Site](https://htmlhint.com/){target=_blank}
 - See [How to configure htmlhint rules](https://htmlhint.com/docs/user-guide/configuration){target=_blank}
   - If custom `.htmlhintrc` config file isn't found, [.htmlhintrc](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.htmlhintrc){target=_blank} will be used
@@ -104,16 +104,17 @@ htmlhint --config .htmlhintrc myfile.html
 Usage: htmlhint <file|folder|pattern|stdin|url ...> [options]
 
 Options:
-  -V, --version                                                    output the version number
-  -l, --list                                                       show all of the rules available
-  -c, --config <file>                                              custom configuration file
-  -r, --rules <ruleid, ruleid=value ...>                           set all of the rules available
-  -R, --rulesdir <file|folder>                                     load custom rules from file or folder
-  -f, --format <checkstyle|compact|html|json|junit|markdown|unix>  output messages as custom format
-  -i, --ignore <pattern, pattern ...>                              add pattern to exclude matches
-  --nocolor                                                        disable color
-  --warn                                                           Warn only, exit with 0
-  -h, --help                                                       display help for command
+  -V, --version                                                          output the version number
+  -l, --list                                                             show all of the rules available
+  --init                                                                 create a new .htmlhintrc config file with default rules
+  -c, --config <file>                                                    custom configuration file
+  -r, --rules <ruleid, ruleid=value ...>                                 set all of the rules available
+  -R, --rulesdir <file|folder>                                           load custom rules from file or folder
+  -f, --format <checkstyle|compact|html|json|junit|markdown|sarif|unix>  output messages as custom format
+  -i, --ignore <pattern, pattern ...>                                    add pattern to exclude matches
+  --nocolor                                                              disable color
+  --warn                                                                 Warn only, exit with 0
+  -h, --help                                                             display help for command
   Examples:
 
     htmlhint
@@ -121,9 +122,10 @@ Options:
     htmlhint www/test.html
     htmlhint www/**/*.xhtml
     htmlhint www/**/*.{htm,html}
-    htmlhint http://www.alibaba.com/
+    htmlhint https://www.example.com/
     cat test.html | htmlhint stdin
     htmlhint --list
+    htmlhint --init
     htmlhint --rules tag-pair,id-class-value=underline test.html
     htmlhint --config .htmlhintrc test.html
     htmlhint --ignore **/build/**,**/test/**
@@ -136,8 +138,8 @@ Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=htmlhint
-ARG NPM_HTMLHINT_VERSION=1.2.0
+ARG NPM_HTMLHINT_VERSION=1.5.1
 ```
 
 - NPM packages (node.js):
-  - [htmlhint@1.2.0](https://www.npmjs.com/package/htmlhint/v/1.2.0)
+  - [htmlhint@1.5.1](https://www.npmjs.com/package/htmlhint/v/1.5.1)

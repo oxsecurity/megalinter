@@ -176,7 +176,7 @@ options:
   --no-show-source      Negate --show-source
   --statistics          Count errors.
   --exit-zero           Exit with status code "0" even if there are errors.
-  -j JOBS, --jobs JOBS  Number of subprocesses to use to run checks in
+  -j, --jobs JOBS       Number of subprocesses to use to run checks in
                         parallel. This is ignored on Windows. The default,
                         "auto", will auto-detect the number of processors
                         available to use. (Default: auto)
