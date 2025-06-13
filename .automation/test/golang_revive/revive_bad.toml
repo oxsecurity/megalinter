@@ -1,0 +1,2 @@
+[rule.package-comments]
+    severity = "error"
