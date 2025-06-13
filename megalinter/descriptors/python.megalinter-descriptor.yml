@@ -33,7 +33,7 @@ linters:
           ARG PIP_PYLINT_VERSION=3.3.7
         - |-
           # renovate: datasource=pypi depName=typing-extensions
-          ARG PIP_TYPING_EXTENSIONS_VERSION=4.13.2
+          ARG PIP_TYPING_EXTENSIONS_VERSION=4.14.0
       pip:
         - pylint==${PIP_PYLINT_VERSION}
         - typing-extensions==${PIP_TYPING_EXTENSIONS_VERSION}
