@@ -3900,9 +3900,9 @@
 </code></pre>
 <h3 id="help-content">Help content</h3>
 <pre><code class="language-shell">usage: bandit [-h] [-r] [-a {file,vuln}] [-n CONTEXT_LINES] [-c CONFIG_FILE]
-              [-p PROFILE] [-t TESTS] [-s SKIPS]
-              [-l | --severity-level {all,low,medium,high}]
-              [-i | --confidence-level {all,low,medium,high}]
+              [-p PROFILE] [-t TESTS] [-s SKIPS] [-l |
+              --severity-level {all,low,medium,high}] [-i |
+              --confidence-level {all,low,medium,high}]
               [-f {csv,custom,html,json,sarif,sarif,screen,txt,xml,yaml}]
               [--msg-template MSG_TEMPLATE] [-o [OUTPUT_FILE]] [-v] [-d] [-q]
               [--ignore-nosec] [-x EXCLUDED_PATHS] [-b BASELINE]
@@ -3917,20 +3917,18 @@ positional arguments:
 options:
   -h, --help            show this help message and exit
   -r, --recursive       find and process files in subdirectories
-  -a {file,vuln}, --aggregate {file,vuln}
+  -a, --aggregate {file,vuln}
                         aggregate output by vulnerability (default) or by
                         filename
-  -n CONTEXT_LINES, --number CONTEXT_LINES
+  -n, --number CONTEXT_LINES
                         maximum number of code lines to output for each issue
-  -c CONFIG_FILE, --configfile CONFIG_FILE
+  -c, --configfile CONFIG_FILE
                         optional config file to use for selecting plugins and
                         overriding defaults
-  -p PROFILE, --profile PROFILE
+  -p, --profile PROFILE
                         profile to use (defaults to executing all tests)
-  -t TESTS, --tests TESTS
-                        comma-separated list of test IDs to run
-  -s SKIPS, --skip SKIPS
-                        comma-separated list of test IDs to skip
+  -t, --tests TESTS     comma-separated list of test IDs to run
+  -s, --skip SKIPS      comma-separated list of test IDs to skip
   -l, --level           report only issues of a given severity level or higher
                         (-l for LOW, -ll for MEDIUM, -lll for HIGH)
   --severity-level {all,low,medium,high}
@@ -3945,13 +3943,13 @@ options:
                         higher. "all" and "low" are likely to produce the same
                         results, but it is possible for rules to be undefined
                         which will not be listed in "low".
-  -f {csv,custom,html,json,sarif,sarif,screen,txt,xml,yaml}, --format {csv,custom,html,json,sarif,sarif,screen,txt,xml,yaml}
+  -f, --format {csv,custom,html,json,sarif,sarif,screen,txt,xml,yaml}
                         specify output format
   --msg-template MSG_TEMPLATE
                         specify output message template (only usable with
                         --format custom), see CUSTOM FORMAT section for list
                         of available values
-  -o [OUTPUT_FILE], --output [OUTPUT_FILE]
+  -o, --output [OUTPUT_FILE]
                         write report to filename
   -v, --verbose         output extra information like excluded and included
                         files
@@ -3959,13 +3957,13 @@ options:
   -q, --quiet, --silent
                         only show output in the case of an error
   --ignore-nosec        do not skip lines with # nosec comments
-  -x EXCLUDED_PATHS, --exclude EXCLUDED_PATHS
+  -x, --exclude EXCLUDED_PATHS
                         comma-separated list of paths (glob patterns
                         supported) to exclude from scan (note that these are
                         in addition to the excluded paths provided in the
                         config file) (default:
                         .svn,CVS,.bzr,.hg,.git,__pycache__,.tox,.eggs,*.egg)
-  -b BASELINE, --baseline BASELINE
+  -b, --baseline BASELINE
                         path of a baseline report to compare against (only
                         JSON-formatted files are accepted)
   --ini INI_PATH        path to a .bandit file that supplies command line

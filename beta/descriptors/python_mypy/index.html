@@ -3955,8 +3955,7 @@ Optional arguments:
   -h, --help                Show this help message and exit
   -v, --verbose             More verbose messages
   -V, --version             Show program's version number and exit
-  -O FORMAT, --output FORMAT
-                            Set a custom output format
+  -O, --output FORMAT       Set a custom output format
 
 Config file:
   Use a config file instead of command line arguments. This is useful if you
@@ -4217,11 +4216,9 @@ Running code:
   --exclude-gitignore       Use .gitignore file(s) to exclude files from
                             checking (in addition to any explicit --exclude if
                             present) (inverse: --no-exclude-gitignore)
-  -m MODULE, --module MODULE
-                            Type-check module; can repeat for more modules
-  -p PACKAGE, --package PACKAGE
-                            Type-check package recursively; can be repeated
-  -c PROGRAM_TEXT, --command PROGRAM_TEXT
+  -m, --module MODULE       Type-check module; can repeat for more modules
+  -p, --package PACKAGE     Type-check package recursively; can be repeated
+  -c, --command PROGRAM_TEXT
                             Type-check program passed in as string
   files                     Type-check given files or directories
 

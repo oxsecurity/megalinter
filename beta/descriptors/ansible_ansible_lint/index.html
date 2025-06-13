@@ -3959,7 +3959,7 @@ options:
   -P, --list-profiles   List all profiles.
   -L, --list-rules      List all the rules.
   -T, --list-tags       List all the tags and the rules they cover.
-  -f {brief,full,md,json,codeclimate,quiet,pep8,sarif}, --format {brief,full,md,json,codeclimate,quiet,pep8,sarif}
+  -f, --format {brief,full,md,json,codeclimate,quiet,pep8,sarif}
                         stdout formatting, json being an alias for codeclimate. (default: None)
   --sarif-file SARIF_FILE
                         SARIF output file
@@ -3969,18 +3969,18 @@ options:
   -p, --parseable       parseable output, same as '-f pep8'
   --project-dir PROJECT_DIR
                         Location of project/repository, autodetected based on location of configuration file.
-  -r RULESDIR, --rules-dir RULESDIR
-                        Specify custom rule directories. Add -R to keep using embedded rules from /venvs/ansible-lint/lib/python3.12/site-packages/ansiblelint/rules
+  -r, --rules-dir RULESDIR
+                        Specify custom rule directories. Add -R to keep using embedded rules from /venvs/ansible-lint/lib/python3.13/site-packages/ansiblelint/rules
   -R                    Keep default rules when using -r
   -s, --strict          Return non-zero exit code on warnings as well as errors
   --fix [WRITE_LIST]    Allow ansible-lint to perform auto-fixes, including YAML reformatting. You can limit the effective rule transforms (the 'write_list') by passing a keywords 'all' or 'none' or a comma separated list of rule ids or rule tags. YAML reformatting happens whenever '--fix' or '--fix=' is used. '--fix' and '--fix=all' are equivalent: they allow all transforms to run. Presence of --fix in command overrides config file value.
   --show-relpath        Display path relative to CWD
-  -t TAGS, --tags TAGS  only check rules whose id/tags match these values
+  -t, --tags TAGS       only check rules whose id/tags match these values
   -v                    Increase verbosity level (-vv for more)
-  -x SKIP_LIST, --skip-list SKIP_LIST
+  -x, --skip-list SKIP_LIST
                         only check rules whose id/tags do not match these values.             e.g: --skip-list=name,run-once
   --generate-ignore     Generate a text file '.ansible-lint-ignore' that ignores all found violations. Each line contains filename and rule id separated by a space.
-  -w WARN_LIST, --warn-list WARN_LIST
+  -w, --warn-list WARN_LIST
                         only warn about these rules, unless overridden in config file. Current version default value is: experimental, jinja[spacing], fqcn[deep]
   --enable-list ENABLE_LIST
                         activate optional rules by their tag name
@@ -3988,9 +3988,9 @@ options:
   --force-color         Force colored output, same as FORCE_COLOR=1
   --exclude EXCLUDE_PATHS [EXCLUDE_PATHS ...]
                         path to directories or files to skip. This option is repeatable.
-  -c CONFIG_FILE, --config-file CONFIG_FILE
+  -c, --config-file CONFIG_FILE
                         Specify configuration file to use. By default it will look for '.ansible-lint', '.ansible-lint.yml', '.ansible-lint.yaml', '.config/ansible-lint.yml', or '.config/ansible-lint.yaml'
-  -i IGNORE_FILE, --ignore-file IGNORE_FILE
+  -i, --ignore-file IGNORE_FILE
                         Specify ignore file to use. By default it will look for '.ansible-lint-ignore' or '.config/ansible-lint-ignore.txt'
   --offline             Disable installation of requirements.yml and schema refreshing
   --version

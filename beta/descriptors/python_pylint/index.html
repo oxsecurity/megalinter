@@ -3939,7 +3939,7 @@ Main:
                         or FATAL are suppressed, and no reports are done by
                         default. Error mode is compatible with disabling
                         specific errors.
-  --verbose , -v        In verbose mode, extra non-checker-related info will
+  --verbose, -v         In verbose mode, extra non-checker-related info will
                         be displayed.
   --enable-all-extensions
                         Load and enable all available extensions. Use --list-
@@ -3973,7 +3973,7 @@ Main:
                         above --fail-under value. Syntax same as enable.
                         Messages specified are enabled, while categories only
                         check already-enabled messages. (default: )
-  --jobs &lt;n-processes&gt;, -j &lt;n-processes&gt;
+  --jobs, -j &lt;n-processes&gt;
                         Use multiple processes to speed up Pylint. Specifying
                         0 will auto-detect the number of processors available
                         to use, and will cap the count on Windows to avoid
@@ -4016,7 +4016,7 @@ Main:
   --py-version &lt;py_version&gt;
                         Minimum Python version to use for version dependent
                         checks. Will default to the version used to run
-                        pylint. (default: (3, 12))
+                        pylint. (default: (3, 13))
   --ignored-modules &lt;module names&gt;
                         List of module names for which member attributes
                         should not be checked and will not be imported (useful
@@ -4043,14 +4043,14 @@ Main:
 Reports:
   Options related to output formatting and reporting
 
-  --output-format &lt;format&gt;, -f &lt;format&gt;
+  --output-format, -f &lt;format&gt;
                         Set the output format. Available formats are: 'text',
                         'parseable', 'colorized', 'json2' (improved json
                         format), 'json' (old json format), msvs (visual
                         studio) and 'github' (GitHub actions). You can also
                         give a reporter class, e.g.
                         mypackage.mymodule.MyReporterClass.
-  --reports &lt;y or n&gt;, -r &lt;y or n&gt;
+  --reports, -r &lt;y or n&gt;
                         Tells whether to display a full report or only the
                         messages. (default: False)
   --evaluation &lt;python_expression&gt;
@@ -4064,8 +4064,7 @@ Reports:
                         (default: max(0, 0 if fatal else 10.0 - ((float(5 *
                         error + warning + refactor + convention) / statement)
                         * 10)))
-  --score &lt;y or n&gt;, -s &lt;y or n&gt;
-                        Activate the evaluation score. (default: True)
+  --score, -s &lt;y or n&gt;  Activate the evaluation score. (default: True)
   --msg-template &lt;template&gt;
                         Template used to display messages. This is a python
                         new-style format string used to format the message
@@ -4080,14 +4079,14 @@ Messages control:
                         CONTROL_FLOW, INFERENCE, INFERENCE_FAILURE, UNDEFINED.
                         (default: ['HIGH', 'CONTROL_FLOW', 'INFERENCE',
                         'INFERENCE_FAILURE', 'UNDEFINED'])
-  --enable &lt;msg ids&gt;, -e &lt;msg ids&gt;
+  --enable, -e &lt;msg ids&gt;
                         Enable the message, report, category or checker with
                         the given id(s). You can either give multiple
                         identifier separated by comma (,) or put this option
                         multiple time (only on the command line, not in the
                         configuration file where it should appear only once).
                         See also the "--disable" option for examples.
-  --disable &lt;msg ids&gt;, -d &lt;msg ids&gt;
+  --disable, -d &lt;msg ids&gt;
                         Disable the message, report, category or checker with
                         the given id(s). You can either give multiple
                         identifiers separated by comma (,) or put this option
@@ -4577,12 +4576,12 @@ Similarities:
 <pre><code class="language-dockerfile"># renovate: datasource=pypi depName=pylint
 ARG PIP_PYLINT_VERSION=3.3.7
 # renovate: datasource=pypi depName=typing-extensions
-ARG PIP_TYPING_EXTENSIONS_VERSION=4.13.2
+ARG PIP_TYPING_EXTENSIONS_VERSION=4.14.0
 </code></pre>
 <ul>
 <li>PIP packages (Python):<ul>
 <li><a href="https://pypi.org/project/pylint/3.3.7">pylint==3.3.7</a></li>
-<li><a href="https://pypi.org/project/typing-extensions/4.13.2">typing-extensions==4.13.2</a></li>
+<li><a href="https://pypi.org/project/typing-extensions/4.14.0">typing-extensions==4.14.0</a></li>
 </ul>
 </li>
 </ul>
