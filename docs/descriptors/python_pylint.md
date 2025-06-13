@@ -129,7 +129,7 @@ Main:
                         or FATAL are suppressed, and no reports are done by
                         default. Error mode is compatible with disabling
                         specific errors.
-  --verbose , -v        In verbose mode, extra non-checker-related info will
+  --verbose, -v         In verbose mode, extra non-checker-related info will
                         be displayed.
   --enable-all-extensions
                         Load and enable all available extensions. Use --list-
@@ -163,7 +163,7 @@ Main:
                         above --fail-under value. Syntax same as enable.
                         Messages specified are enabled, while categories only
                         check already-enabled messages. (default: )
-  --jobs <n-processes>, -j <n-processes>
+  --jobs, -j <n-processes>
                         Use multiple processes to speed up Pylint. Specifying
                         0 will auto-detect the number of processors available
                         to use, and will cap the count on Windows to avoid
@@ -206,7 +206,7 @@ Main:
   --py-version <py_version>
                         Minimum Python version to use for version dependent
                         checks. Will default to the version used to run
-                        pylint. (default: (3, 12))
+                        pylint. (default: (3, 13))
   --ignored-modules <module names>
                         List of module names for which member attributes
                         should not be checked and will not be imported (useful
@@ -233,14 +233,14 @@ Main:
 Reports:
   Options related to output formatting and reporting
 
-  --output-format <format>, -f <format>
+  --output-format, -f <format>
                         Set the output format. Available formats are: 'text',
                         'parseable', 'colorized', 'json2' (improved json
                         format), 'json' (old json format), msvs (visual
                         studio) and 'github' (GitHub actions). You can also
                         give a reporter class, e.g.
                         mypackage.mymodule.MyReporterClass.
-  --reports <y or n>, -r <y or n>
+  --reports, -r <y or n>
                         Tells whether to display a full report or only the
                         messages. (default: False)
   --evaluation <python_expression>
@@ -254,8 +254,7 @@ Reports:
                         (default: max(0, 0 if fatal else 10.0 - ((float(5 *
                         error + warning + refactor + convention) / statement)
                         * 10)))
-  --score <y or n>, -s <y or n>
-                        Activate the evaluation score. (default: True)
+  --score, -s <y or n>  Activate the evaluation score. (default: True)
   --msg-template <template>
                         Template used to display messages. This is a python
                         new-style format string used to format the message
@@ -270,14 +269,14 @@ Messages control:
                         CONTROL_FLOW, INFERENCE, INFERENCE_FAILURE, UNDEFINED.
                         (default: ['HIGH', 'CONTROL_FLOW', 'INFERENCE',
                         'INFERENCE_FAILURE', 'UNDEFINED'])
-  --enable <msg ids>, -e <msg ids>
+  --enable, -e <msg ids>
                         Enable the message, report, category or checker with
                         the given id(s). You can either give multiple
                         identifier separated by comma (,) or put this option
                         multiple time (only on the command line, not in the
                         configuration file where it should appear only once).
                         See also the "--disable" option for examples.
-  --disable <msg ids>, -d <msg ids>
+  --disable, -d <msg ids>
                         Disable the message, report, category or checker with
                         the given id(s). You can either give multiple
                         identifiers separated by comma (,) or put this option
@@ -768,9 +767,9 @@ Similarities:
 # renovate: datasource=pypi depName=pylint
 ARG PIP_PYLINT_VERSION=3.3.7
 # renovate: datasource=pypi depName=typing-extensions
-ARG PIP_TYPING_EXTENSIONS_VERSION=4.13.2
+ARG PIP_TYPING_EXTENSIONS_VERSION=4.14.0
 ```
 
 - PIP packages (Python):
   - [pylint==3.3.7](https://pypi.org/project/pylint/3.3.7)
-  - [typing-extensions==4.13.2](https://pypi.org/project/typing-extensions/4.13.2)
+  - [typing-extensions==4.14.0](https://pypi.org/project/typing-extensions/4.14.0)

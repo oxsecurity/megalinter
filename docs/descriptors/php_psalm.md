@@ -15,7 +15,7 @@ description: How to use psalm (configure, ignore files, ignore errors, help & ve
 
 ## psalm documentation
 
-- Version in MegaLinter: **Psalm.6.11.0@**
+- Version in MegaLinter: **Psalm.6.12.0@**
 - Visit [Official Web Site](https://psalm.dev){target=_blank}
 - See [How to configure psalm rules](https://psalm.dev/docs/running_psalm/configuration/){target=_blank}
   - If custom `psalm.xml` config file isn't found, [psalm.xml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/psalm.xml){target=_blank} will be used
@@ -215,6 +215,11 @@ Reports:
         Whether the report should include non-errors in its output (defaults to true)
 
 Caching:
+    --consolidate-cache
+        Consolidates all cache files that Psalm uses for this specific project into a single file,
+        for quicker runs when doing whole project scans.
+        Make sure to consolidate the cache again after running Psalm before saving the cache via CI.
+
     --clear-cache
         Clears all cache files that Psalm uses for this specific project
 
@@ -227,6 +232,9 @@ Caching:
     --no-reflection-cache
         Runs Psalm without using cached representations of unchanged classes and files.
         Useful if you want the afterClassLikeVisit plugin hook to run every time you visit a file.
+
+    --no-reference-cache
+        Runs Psalm without using cached representations of unchanged methods.
 
     --no-file-cache
         Runs Psalm without using caching every single file for later diffing.
@@ -285,7 +293,7 @@ ENV PATH="/root/.composer/vendor/bin:${PATH}"
 ENV PHP_CS_FIXER_IGNORE_ENV=true
 # Linter install
 # renovate: datasource=packagist depName=vimeo/psalm
-ARG PHP_VIMEO_PSALM_VERSION=6.11.0
+ARG PHP_VIMEO_PSALM_VERSION=6.12.0
 RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require vimeo/psalm:${PHP_VIMEO_PSALM_VERSION}
 
 ```

@@ -106,32 +106,32 @@ options:
 
 Standard:
   TEMPLATE              The CloudFormation template to be linted
-  -t TEMPLATE [TEMPLATE ...], --template TEMPLATE [TEMPLATE ...]
+  -t, --template TEMPLATE [TEMPLATE ...]
                         The CloudFormation template to be linted
   -b, --ignore-bad-template
                         Ignore failures with Bad template
   --ignore-templates IGNORE_TEMPLATES [IGNORE_TEMPLATES ...]
                         Ignore templates
-  -f {quiet,parseable,json,junit,pretty,sarif}, --format {quiet,parseable,json,junit,pretty,sarif}
+  -f, --format {quiet,parseable,json,junit,pretty,sarif}
                         Output Format
   -l, --list-rules      list all the rules
-  -r REGIONS [REGIONS ...], --regions REGIONS [REGIONS ...]
+  -r, --regions REGIONS [REGIONS ...]
                         list the regions to validate against.
-  -i IGNORE_CHECKS [IGNORE_CHECKS ...], --ignore-checks IGNORE_CHECKS [IGNORE_CHECKS ...]
+  -i, --ignore-checks IGNORE_CHECKS [IGNORE_CHECKS ...]
                         only check rules whose id do not match these values
-  -c INCLUDE_CHECKS [INCLUDE_CHECKS ...], --include-checks INCLUDE_CHECKS [INCLUDE_CHECKS ...]
+  -c, --include-checks INCLUDE_CHECKS [INCLUDE_CHECKS ...]
                         include rules whose id match these values
-  -m MANDATORY_CHECKS [MANDATORY_CHECKS ...], --mandatory-checks MANDATORY_CHECKS [MANDATORY_CHECKS ...]
+  -m, --mandatory-checks MANDATORY_CHECKS [MANDATORY_CHECKS ...]
                         always check rules whose id match these values,
                         regardless of template exclusions
   -e, --include-experimental
                         Include experimental rules
-  -x CONFIGURE_RULES [CONFIGURE_RULES ...], --configure-rule CONFIGURE_RULES [CONFIGURE_RULES ...]
+  -x, --configure-rule CONFIGURE_RULES [CONFIGURE_RULES ...]
                         Provide configuration for a rule. Format
                         RuleId:key=value. Example: E3012:strict=true
   --config-file CONFIG_FILE
                         Specify the cfnlintrc file to use
-  -z CUSTOM_RULES, --custom-rules CUSTOM_RULES
+  -z, --custom-rules CUSTOM_RULES
                         Allows specification of a custom rule file.
   -v, --version         Version of cfn-lint
   --output-file OUTPUT_FILE
@@ -145,15 +145,15 @@ Standard:
 Advanced / Debugging:
   -D, --debug           Enable debug logging
   -I, --info            Enable information logging
-  -a APPEND_RULES [APPEND_RULES ...], --append-rules APPEND_RULES [APPEND_RULES ...]
+  -a, --append-rules APPEND_RULES [APPEND_RULES ...]
                         specify one or more rules directories using one or
                         more --append-rules arguments.
-  -o OVERRIDE_SPEC, --override-spec OVERRIDE_SPEC
+  -o, --override-spec OVERRIDE_SPEC
                         A CloudFormation Spec override file that allows
                         customization
   -g, --build-graph     Creates a file in the same directory as the template
                         that models the template's resources in DOT format
-  -s REGISTRY_SCHEMAS [REGISTRY_SCHEMAS ...], --registry-schemas REGISTRY_SCHEMAS [REGISTRY_SCHEMAS ...]
+  -s, --registry-schemas REGISTRY_SCHEMAS [REGISTRY_SCHEMAS ...]
                         one or more directories of CloudFormation Registry
                         Schemas
   -u, --update-specs    Update the CloudFormation Specs
