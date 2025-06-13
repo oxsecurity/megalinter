@@ -216,7 +216,7 @@ def test_linter_success(linter, test_self):
 def test_linter_failure(linter, test_self):
     if (
         (linter.disabled is True)
-        or (linter.linter_name in ["dustilock", "syft"]) # ugly
+        or (linter.linter_name in ["dustilock", "syft"])  # ugly
         or ("all" in getattr(linter, "descriptor_flavors_exclude", []))
     ):
         raise unittest.SkipTest("Linter or test has been disabled")
@@ -300,7 +300,7 @@ def test_linter_failure(linter, test_self):
     # Check if number of errors is correctly generated
     if (
         mega_linter_linter.cli_lint_errors_count is not None
-        and mega_linter_linter.linter_name != "mypy" # ugly
+        and mega_linter_linter.linter_name != "mypy"  # ugly
     ):
         test_self.assertTrue(
             mega_linter_linter.total_number_errors > 1,
@@ -612,7 +612,7 @@ def test_linter_report_sarif(linter, test_self):
                 "REPOSITORY_SYFT",
             ]
         ):
-            if (linter.name != "REPOSITORY_GITLEAKS"): # does not report errors
+            if linter.name != "REPOSITORY_GITLEAKS":  # does not report errors
                 test_self.assertTrue(
                     linter.total_number_errors > 1,
                     f"Missing multiple sarif errors in {linter.name}"
