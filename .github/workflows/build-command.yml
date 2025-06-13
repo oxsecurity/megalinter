@@ -82,7 +82,7 @@ jobs:
       - name: Run build script
         run: ./build.sh
       - run: git pull --unshallow || git pull
-      - uses: stefanzweifel/git-auto-commit-action@v5
+      - uses: stefanzweifel/git-auto-commit-action@v6
         id: auto-commit-action
         with:
           commit_message: "[build-command] Update generated files"
