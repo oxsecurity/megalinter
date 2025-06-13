@@ -32,7 +32,7 @@ ARG REPOSITORY_DUSTILOCK_VERSION=1.2.0
 # renovate: datasource=docker depName=zricethezav/gitleaks
 ARG REPOSITORY_GITLEAKS_VERSION=v8.27.2
 # renovate: datasource=docker depName=checkmarx/kics
-ARG REPOSITORY_KICS_VERSION=v2.1.9-alpine
+ARG REPOSITORY_KICS_VERSION=v2.1.10-alpine
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
 ARG REPOSITORY_TRUFFLEHOG_VERSION=3.89.1
 # renovate: datasource=docker depName=jdkato/vale

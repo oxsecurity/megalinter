@@ -29,7 +29,7 @@ ARG KUBERNETES_KUBECONFORM_VERSION=v0.7.0-alpine
 # renovate: datasource=docker depName=zricethezav/gitleaks
 ARG REPOSITORY_GITLEAKS_VERSION=v8.27.2
 # renovate: datasource=docker depName=checkmarx/kics
-ARG REPOSITORY_KICS_VERSION=v2.1.9-alpine
+ARG REPOSITORY_KICS_VERSION=v2.1.10-alpine
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
 ARG REPOSITORY_TRUFFLEHOG_VERSION=3.89.1
 # renovate: datasource=docker depName=lycheeverse/lychee
