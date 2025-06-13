@@ -126,6 +126,12 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [grype](https://github.com/anchore/grype) from 0.92.2 to **0.93.0** on 2025-06-11
   - [syft](https://github.com/anchore/syft) from 1.26.1 to **1.27.0** on 2025-06-11
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.80.4 to **0.81.0** on 2025-06-11
+  - [pmd](https://pmd.github.io/) from 7.13.0 to **7.14.0** on 2025-06-13
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.15.0 to **1.16.0** on 2025-06-13
+  - [grype](https://github.com/anchore/grype) from 0.93.0 to **0.94.0** on 2025-06-13
+  - [ls-lint](https://ls-lint.org/) from 2.3.0 to **2.3.1** on 2025-06-13
+  - [secretlint](https://github.com/secretlint/secretlint) from 9.3.3 to **9.3.4** on 2025-06-13
+  - [syft](https://github.com/anchore/syft) from 1.27.0 to **1.27.1** on 2025-06-13
 <!-- linter-versions-end -->
 
 ## [v8.7.0] - 2024-05-04
