@@ -19,7 +19,7 @@ If you don't use python static typing, you should disable this linter by adding 
 
 ## mypy documentation
 
-- Version in MegaLinter: **1.15.0**
+- Version in MegaLinter: **1.16.0**
 - Visit [Official Web Site](https://mypy.readthedocs.io/en/stable/){target=_blank}
 - See [How to configure mypy rules](https://mypy.readthedocs.io/en/stable/config_file.html){target=_blank}
   - If custom `.mypy.ini` config file isn't found, [.mypy.ini](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.mypy.ini){target=_blank} will be used
@@ -257,12 +257,16 @@ Configuring warnings:
                             Report importing or using deprecated features as
                             notes instead of errors (inverse: --no-report-
                             deprecated-as-note)
+  --deprecated-calls-exclude MODULE
+                            Disable deprecated warnings for functions/methods
+                            coming from specific package, module, or class
 
 Miscellaneous strictness flags:
   --allow-untyped-globals   Suppress toplevel errors caused by missing
                             annotations (inverse: --disallow-untyped-globals)
-  --allow-redefinition      Allow unconditional variable redefinition with a
-                            new type (inverse: --disallow-redefinition)
+  --allow-redefinition      Allow restricted, unconditional variable
+                            redefinition with a new type (inverse: --disallow-
+                            redefinition)
   --no-implicit-reexport    Treat imports as private unless aliased (inverse:
                             --implicit-reexport)
   --strict-equality         Prohibit equality, identity, and container checks
@@ -283,8 +287,8 @@ Miscellaneous strictness flags:
                             incomplete-defs, --check-untyped-defs, --disallow-
                             untyped-decorators, --warn-redundant-casts,
                             --warn-unused-ignores, --warn-return-any, --no-
-                            implicit-reexport, --strict-equality, --extra-
-                            checks
+                            implicit-reexport, --strict-equality, --strict-
+                            bytes, --extra-checks
   --disable-error-code NAME
                             Disable a specific error code
   --enable-error-code NAME  Enable a specific error code
@@ -388,6 +392,9 @@ Running code:
                             recursively discovering files to check, e.g.
                             --exclude '/setup\.py$'. May be specified more
                             than once, eg. --exclude a --exclude b
+  --exclude-gitignore       Use .gitignore file(s) to exclude files from
+                            checking (in addition to any explicit --exclude if
+                            present) (inverse: --no-exclude-gitignore)
   -m MODULE, --module MODULE
                             Type-check module; can repeat for more modules
   -p PACKAGE, --package PACKAGE
@@ -406,9 +413,9 @@ Environment variables:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=mypy
-ARG PIP_MYPY_VERSION=1.15.0
+ARG PIP_MYPY_VERSION=1.16.0
 ENV MYPY_CACHE_DIR=/tmp
 ```
 
 - PIP packages (Python):
-  - [mypy==1.15.0](https://pypi.org/project/mypy/1.15.0)
+  - [mypy==1.16.0](https://pypi.org/project/mypy/1.16.0)
