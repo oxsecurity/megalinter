@@ -301,7 +301,7 @@ def test_linter_failure(linter, test_self):
     if (
         mega_linter_linter.cli_lint_errors_count is not None
         and mega_linter_linter.linter_name != "mypy"  # ugly
-        and mega_linter_linter.linter_name != "gitleaks" # does not report errors
+        and mega_linter_linter.linter_name != "gitleaks"  # does not report errors
     ):
         test_self.assertTrue(
             mega_linter_linter.total_number_errors > 1,
