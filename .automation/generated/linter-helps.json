@@ -3823,7 +3823,7 @@
         "      --server string         Backend discovery server URL",
         "",
         "Use \"kubescape [command] --help\" for more information about a command.",
-        "{\"level\":\"info\",\"ts\":\"2025-06-14T08:11:35Z\",\"msg\":\"Received interrupt signal, exiting...\"}"
+        "{\"level\":\"info\",\"ts\":\"2025-06-14T13:54:24Z\",\"msg\":\"Received interrupt signal, exiting...\"}"
     ],
     "kubeval": [
         "Validate a Kubernetes YAML file against the relevant schema",
@@ -9562,7 +9562,7 @@
         "                 [--filegraph] [--d3dag] [--summary] [--detailed-summary]",
         "                 [--archive FILE] [--cleanup-metadata FILE [FILE ...]]",
         "                 [--cleanup-shadow] [--skip-script-cleanup] [--unlock]",
-        "                 [--list-changes {code,input,params}] [--list-input-changes]",
+        "                 [--list-changes {input,code,params}] [--list-input-changes]",
         "                 [--list-params-changes] [--list-untracked]",
         "                 [--delete-all-output | --delete-temp-output]",
         "                 [--keep-incomplete] [--drop-metadata] [--version]",
@@ -10097,7 +10097,7 @@
         "                        (default: False)",
         "  --unlock              Remove a lock on the working directory. (default:",
         "                        False)",
-        "  --list-changes, --lc {code,input,params}",
+        "  --list-changes, --lc {input,code,params}",
         "                        List all output files for which the given items (code,",
         "                        input, params) have changed since creation.",
         "  --list-input-changes, --li",

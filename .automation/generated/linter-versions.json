@@ -65,7 +65,7 @@
     "perlcritic": "1.156",
     "php": "7.4.26",
     "php-cs-fixer": "3.75.0",
-    "phpcs": "3.13.0",
+    "phpcs": "3.13.1",
     "phplint": "9.6.2",
     "phpstan": "2.1.17",
     "pmd": "7.14.0",
