@@ -152,6 +152,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.35.4 to **1.36.0** on 2025-06-14
   - [devskim](https://github.com/microsoft/DevSkim) from 1.0.56 to **1.0.59** on 2025-06-14
   - [sqlfluff](https://www.sqlfluff.com/) from 3.4.0 to **3.4.1** on 2025-06-14
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 9.0.2 to **9.1.1** on 2025-06-14
 <!-- linter-versions-end -->
 
 ## [v8.7.0] - 2024-05-04

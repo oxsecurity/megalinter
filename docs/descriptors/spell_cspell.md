@@ -15,7 +15,7 @@ If you do not want cspell to analyze the files names, define `SPELL_CSPELL_ANALY
 
 ## cspell documentation
 
-- Version in MegaLinter: **9.0.2**
+- Version in MegaLinter: **9.1.1**
 - Visit [Official Web Site](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#readme){target=_blank}
 - See [How to configure cspell rules](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#customization){target=_blank}
 - See [How to disable cspell rules in files](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#enable--disable-checking-sections-of-code){target=_blank}
@@ -119,8 +119,10 @@ Commands:
                                         result. The full file is displayed in
                                         color.
   suggestions|sug [options] [words...]  Spelling Suggestions for words.
+  init [options]                        Initialize a CSpell configuration file.
   link                                  Link dictionaries and other settings to
                                         the cspell global config.
+  dictionaries [options]                List dictionaries
   help [command]                        display help for command
 ```
 
@@ -129,8 +131,8 @@ Commands:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=cspell
-ARG NPM_CSPELL_VERSION=9.0.2
+ARG NPM_CSPELL_VERSION=9.1.1
 ```
 
 - NPM packages (node.js):
-  - [cspell@9.0.2](https://www.npmjs.com/package/cspell/v/9.0.2)
+  - [cspell@9.1.1](https://www.npmjs.com/package/cspell/v/9.1.1)

@@ -2159,8 +2159,10 @@
         "                                        result. The full file is displayed in",
         "                                        color.",
         "  suggestions|sug [options] [words...]  Spelling Suggestions for words.",
+        "  init [options]                        Initialize a CSpell configuration file.",
         "  link                                  Link dictionaries and other settings to",
         "                                        the cspell global config.",
+        "  dictionaries [options]                List dictionaries",
         "  help [command]                        display help for command"
     ],
     "dartanalyzer": [
@@ -3822,7 +3824,8 @@
         "  -l, --logger string         Logger level. Supported: debug/info/success/warning/error/fatal [$KS_LOGGER] (default \"info\")",
         "      --server string         Backend discovery server URL",
         "",
-        "Use \"kubescape [command] --help\" for more information about a command."
+        "Use \"kubescape [command] --help\" for more information about a command.",
+        "{\"level\":\"info\",\"ts\":\"2025-06-14T22:21:46Z\",\"msg\":\"Received interrupt signal, exiting...\"}"
     ],
     "kubeval": [
         "Validate a Kubernetes YAML file against the relevant schema",
@@ -9554,7 +9557,7 @@
         "                 [--filegraph] [--d3dag] [--summary] [--detailed-summary]",
         "                 [--archive FILE] [--cleanup-metadata FILE [FILE ...]]",
         "                 [--cleanup-shadow] [--skip-script-cleanup] [--unlock]",
-        "                 [--list-changes {code,params,input}] [--list-input-changes]",
+        "                 [--list-changes {params,code,input}] [--list-input-changes]",
         "                 [--list-params-changes] [--list-untracked]",
         "                 [--delete-all-output | --delete-temp-output]",
         "                 [--keep-incomplete] [--drop-metadata] [--version]",
@@ -9600,7 +9603,7 @@
         "                 [--scheduler-solver-path SCHEDULER_SOLVER_PATH]",
         "                 [--deploy-sources QUERY CHECKSUM]",
         "                 [--target-jobs TARGET_JOBS [TARGET_JOBS ...]]",
-        "                 [--mode {subprocess,remote,default}]",
+        "                 [--mode {default,remote,subprocess}]",
         "                 [--report-html-path VALUE]",
         "                 [--report-html-stylesheet-path VALUE]",
         "                 [targets ...]",
@@ -10089,7 +10092,7 @@
         "                        (default: False)",
         "  --unlock              Remove a lock on the working directory. (default:",
         "                        False)",
-        "  --list-changes, --lc {code,params,input}",
+        "  --list-changes, --lc {params,code,input}",
         "                        List all output files for which the given items (code,",
         "                        input, params) have changed since creation.",
         "  --list-input-changes, --li",
@@ -10447,7 +10450,7 @@
         "  --target-jobs TARGET_JOBS [TARGET_JOBS ...]",
         "                        Internal use only: Target particular jobs by",
         "                        RULE:WILDCARD1=VALUE,WILDCARD2=VALUE,...",
-        "  --mode {subprocess,remote,default}",
+        "  --mode {default,remote,subprocess}",
         "                        Internal use only: Set execution mode of Snakemake.",
         "                        (default: default)",
         "",
