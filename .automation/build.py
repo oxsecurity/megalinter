@@ -565,7 +565,7 @@ def build_dockerfile(
             "RUN curl https://sh.rustup.rs -sSf |"
             + " sh -s -- -y --profile minimal --default-toolchain ${RUST_RUST_VERSION} \\\n"
             + '    && export PATH="/root/.cargo/bin:/root/.cargo/env:${PATH}" \\\n'
-            + '    && rustup default stable \\\n'
+            + "    && rustup default stable \\\n"
             + f"    && {rustup_cargo_cmd} \\\n"
             + "    && rm -rf /root/.cargo/registry /root/.cargo/git "
             + "/root/.cache/sccache"
