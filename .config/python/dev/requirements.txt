@@ -20,7 +20,7 @@ multiprocessing_logging==0.3.4
 pygithub==2.6.1
 pymdown-extensions==10.15
 pytablewriter==1.2.1
-pytest-cov==6.1.1
+pytest-cov==6.2.1
 pytest-timeout==2.4.0
 pytest-xdist==3.7.0
 pytest-rerunfailures==15.1
