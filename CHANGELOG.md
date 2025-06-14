@@ -27,6 +27,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Doc
 
 - Flavors
+  - Add Gherkin descriptor in java flavor
 
 - CI
 
