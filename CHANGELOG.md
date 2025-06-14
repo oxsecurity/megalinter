@@ -146,6 +146,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.88.34 to **3.89.1** on 2025-06-13
   - [rubocop](https://rubocop.org/) from 1.75.8 to **1.76.1** on 2025-06-13
   - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.16.1 to **3.23.0** on 2025-06-13
+  - [phpcs](https://github.com/PHPCSStandards/PHP_CodeSniffer) from 3.13.0 to **3.13.1** on 2025-06-14
 <!-- linter-versions-end -->
 
 ## [v8.7.0] - 2024-05-04
