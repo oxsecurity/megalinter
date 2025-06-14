@@ -19,7 +19,7 @@ If you don't use python static typing, you should disable this linter by adding 
 
 ## mypy documentation
 
-- Version in MegaLinter: **1.15.0**
+- Version in MegaLinter: **1.16.0**
 - Visit [Official Web Site](https://mypy.readthedocs.io/en/stable/){target=_blank}
 - See [How to configure mypy rules](https://mypy.readthedocs.io/en/stable/config_file.html){target=_blank}
   - If custom `.mypy.ini` config file isn't found, [.mypy.ini](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.mypy.ini){target=_blank} will be used
@@ -133,8 +133,7 @@ Optional arguments:
   -h, --help                Show this help message and exit
   -v, --verbose             More verbose messages
   -V, --version             Show program's version number and exit
-  -O FORMAT, --output FORMAT
-                            Set a custom output format
+  -O, --output FORMAT       Set a custom output format
 
 Config file:
   Use a config file instead of command line arguments. This is useful if you
@@ -257,12 +256,16 @@ Configuring warnings:
                             Report importing or using deprecated features as
                             notes instead of errors (inverse: --no-report-
                             deprecated-as-note)
+  --deprecated-calls-exclude MODULE
+                            Disable deprecated warnings for functions/methods
+                            coming from specific package, module, or class
 
 Miscellaneous strictness flags:
   --allow-untyped-globals   Suppress toplevel errors caused by missing
                             annotations (inverse: --disallow-untyped-globals)
-  --allow-redefinition      Allow unconditional variable redefinition with a
-                            new type (inverse: --disallow-redefinition)
+  --allow-redefinition      Allow restricted, unconditional variable
+                            redefinition with a new type (inverse: --disallow-
+                            redefinition)
   --no-implicit-reexport    Treat imports as private unless aliased (inverse:
                             --implicit-reexport)
   --strict-equality         Prohibit equality, identity, and container checks
@@ -283,8 +286,8 @@ Miscellaneous strictness flags:
                             incomplete-defs, --check-untyped-defs, --disallow-
                             untyped-decorators, --warn-redundant-casts,
                             --warn-unused-ignores, --warn-return-any, --no-
-                            implicit-reexport, --strict-equality, --extra-
-                            checks
+                            implicit-reexport, --strict-equality, --strict-
+                            bytes, --extra-checks
   --disable-error-code NAME
                             Disable a specific error code
   --enable-error-code NAME  Enable a specific error code
@@ -388,11 +391,12 @@ Running code:
                             recursively discovering files to check, e.g.
                             --exclude '/setup\.py$'. May be specified more
                             than once, eg. --exclude a --exclude b
-  -m MODULE, --module MODULE
-                            Type-check module; can repeat for more modules
-  -p PACKAGE, --package PACKAGE
-                            Type-check package recursively; can be repeated
-  -c PROGRAM_TEXT, --command PROGRAM_TEXT
+  --exclude-gitignore       Use .gitignore file(s) to exclude files from
+                            checking (in addition to any explicit --exclude if
+                            present) (inverse: --no-exclude-gitignore)
+  -m, --module MODULE       Type-check module; can repeat for more modules
+  -p, --package PACKAGE     Type-check package recursively; can be repeated
+  -c, --command PROGRAM_TEXT
                             Type-check program passed in as string
   files                     Type-check given files or directories
 
@@ -406,9 +410,9 @@ Environment variables:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=mypy
-ARG PIP_MYPY_VERSION=1.15.0
+ARG PIP_MYPY_VERSION=1.16.0
 ENV MYPY_CACHE_DIR=/tmp
 ```
 
 - PIP packages (Python):
-  - [mypy==1.15.0](https://pypi.org/project/mypy/1.15.0)
+  - [mypy==1.16.0](https://pypi.org/project/mypy/1.16.0)

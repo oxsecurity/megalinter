@@ -45,27 +45,29 @@ fi
 # Run test cases with pytest
 if [ "${TEST_CASE_RUN}" == "true" ]; then
   echo "[MegaLinter init] RUNNING TEST CASES"
-  pip install pytest-cov codecov-cli pytest-timeout pytest-xdist pytest-rerunfailures
+  # pip install pytest-cov codecov-cli pytest-timeout pytest-xdist pytest-rerunfailures # temp remove codecov-cli to avoid issues with codecov upload
+  pip install pytest-cov pytest-timeout pytest-xdist pytest-rerunfailures
   if [ -z "${TEST_KEYWORDS}" ]; then
     pytest --reruns 3 --reruns-delay 10 -v --timeout=300 --durations=0 --cov=megalinter --cov-report=xml --numprocesses auto --dist loadscope megalinter/
   else
-    pytest --reruns 3 --reruns-delay 10 -v --timeout=300 --durations=0 --numprocesses auto --dist loadscope -k "${TEST_KEYWORDS}" megalinter/
+    pytest --reruns 3 --reruns-delay 10 -v --timeout=300 --durations=0 --numprocesses 2 --dist loadscope -k "${TEST_KEYWORDS}" megalinter/
   fi
   PYTEST_STATUS=$?
   echo Pytest exited $PYTEST_STATUS
   # Manage return code
   if [ $PYTEST_STATUS -eq 0 ]; then
     echo "Successfully executed Pytest"
+    exit 0 # Added with disable codecov upload
   else
     echo "Error(s) found by Pytest"
     exit 1
   fi
-  # Upload to codecov.io if all tests run
-  if [ -z "${TEST_KEYWORDS}" ]; then
-    codecov upload-process || true
-    exit $?
-  fi
-  exit $?
+  # Upload to codecov.io if all tests run (temporary disabled)
+  # if [ -z "${TEST_KEYWORDS}" ]; then
+  #   codecov upload-process || true
+  #   exit $?
+  # fi
+  # exit $?
 fi
 
 if [ "${MEGALINTER_SERVER}" == "true" ]; then

@@ -59,7 +59,7 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # Set a variable for packages version
 # renovate: datasource=npm depName=npm
-ARG NPM_VERSION=11.4.1
+ARG NPM_VERSION=11.4.2
 # renovate: datasource=npm depName=ungit
 ARG UNGIT_VERSION=1.5.28
 # renovate: datasource=npm depName=mega-linter-runner
@@ -97,7 +97,7 @@ USER gitpod
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 # renovate: datasource=github-releases depName=astral-sh/uv
-ARG UV_VERSION=0.7.8
+ARG UV_VERSION=0.7.13
 # hadolint ignore=SC1090,SC1091
 RUN curl -LsSf "https://astral.sh/uv/${UV_VERSION}/install.sh" | sh \
     && source "$HOME/.local/bin/env"

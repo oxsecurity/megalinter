@@ -6,6 +6,12 @@ abstract internal class A {
 }
 
 class B : A() {
+    public fun test() {
+        System.gc()
+        Runtime.getRuntime().gc()
+        System.runFinalization()
+    }
+
     override public val v = ""
     override suspend fun f(v: Any): Any = ""
     override tailrec fun findFixPoint(x: Double): Double

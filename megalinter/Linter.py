@@ -1427,89 +1427,10 @@ class Linter:
 
     # Find number of errors in linter stdout log
     def get_total_number_errors(self, stdout: str):
-        total_errors = 0
+        total_errors = self.get_result_count(
+            stdout, "error", "cli_lint_errors_count", "cli_lint_errors_regex"
+        )
 
-        # Count using SARIF output file
-        if self.output_sarif is True:
-            try:
-                # SARIF is in MegaLinter named file
-                if self.sarif_output_file is not None and os.path.isfile(
-                    self.sarif_output_file
-                ):
-                    with open(
-                        self.sarif_output_file, "r", encoding="utf-8"
-                    ) as sarif_file:
-                        sarif_output = yaml.safe_load(sarif_file)
-                        # SARIF is in default output file
-                elif self.sarif_default_output_file is not None and os.path.isfile(
-                    self.sarif_default_output_file
-                ):
-                    with open(
-                        self.sarif_default_output_file, "r", encoding="utf-8"
-                    ) as sarif_file:
-                        sarif_output = yaml.safe_load(sarif_file)
-                        # SARIF is in stdout
-                else:
-                    # SARIF is in stdout
-                    sarif_output = yaml.safe_load(stdout)
-                if "results" in sarif_output["runs"][0]:
-                    # Get number of results
-                    total_errors = len(sarif_output["runs"][0]["results"])
-                    # Append number of invocation config notifications (other type of errors, not in result)
-                    if "invocations" in sarif_output["runs"][0]:
-                        for invocation in sarif_output["runs"][0]["invocations"]:
-                            if "toolConfigurationNotifications" in invocation:
-                                total_errors += len(
-                                    invocation["toolConfigurationNotifications"]
-                                )
-                # If we got here, we should have found a number of errors from SARIF output
-                if total_errors == 0:
-                    logging.warning(
-                        "Unable to get total errors from SARIF output.\nSARIF:"
-                        + str(sarif_output)
-                    )
-                return total_errors
-            except Exception as e:
-                total_errors = 1
-                logging.error(
-                    "Error while getting total errors from SARIF output.\nError:"
-                    + str(e)
-                    + "\nstdout: "
-                    + stdout
-                )
-                return total_errors
-        # Get number with a single regex. Used when linter prints out Found _ errors
-        elif self.cli_lint_errors_count == "regex_number":
-            reg = self.get_regex(self.cli_lint_errors_regex)
-            m = re.search(reg, utils.normalize_log_string(stdout))
-            if m:
-                total_errors = int(m.group(1))
-        # Count the number of occurrences of a regex corresponding to an error in linter log (parses linter log)
-        elif self.cli_lint_errors_count == "regex_count":
-            reg = self.get_regex(self.cli_lint_errors_regex)
-            total_errors = len(re.findall(reg, utils.normalize_log_string(stdout)))
-        # Sum of all numbers found in linter logs with a regex. Found when each file prints out total number of errors
-        elif self.cli_lint_errors_count == "regex_sum":
-            reg = self.get_regex(self.cli_lint_errors_regex)
-            matches = re.findall(reg, utils.normalize_log_string(stdout))
-            total_errors = sum(int(m) for m in matches)
-        # Count all lines of the linter log
-        elif self.cli_lint_errors_count == "total_lines":
-            total_errors = sum(
-                not line.isspace() and line != "" for line in stdout.splitlines()
-            )
-        # Count number of results in sarif format
-        elif self.cli_lint_errors_count == "sarif":
-            sarif = None
-            sarif_stdout = utils.find_json_in_stdout(stdout)
-            try:
-                sarif = json.loads(sarif_stdout)
-            except ValueError as e:
-                logging.warning(f"Unable to parse sarif ({str(e)}):" + stdout)
-            if sarif and sarif["runs"] and sarif["runs"][0]["results"]:
-                total_errors = len(sarif["runs"][0]["results"])
-            else:
-                logging.warning("Unable to find results in :" + stdout)
         # Return result if found, else default value according to status
         if total_errors > 0:
             return total_errors
@@ -1527,28 +1448,10 @@ class Linter:
 
     # Find number of warnings in linter stdout log
     def get_total_number_warnings(self, stdout: str):
-        total_warnings = None
+        total_warnings = self.get_result_count(
+            stdout, "warning", "cli_lint_warnings_count", "cli_lint_warnings_regex"
+        )
 
-        # Get number with a single regex.
-        if self.cli_lint_warnings_count == "regex_number":
-            reg = self.get_regex(self.cli_lint_warnings_regex)
-            m = re.search(reg, utils.normalize_log_string(stdout))
-            if m:
-                total_warnings = int(m.group(1))
-        # Count the number of occurrences of a regex corresponding to an error in linter log (parses linter log)
-        elif self.cli_lint_warnings_count == "regex_count":
-            reg = self.get_regex(self.cli_lint_warnings_regex)
-            total_warnings = len(re.findall(reg, utils.normalize_log_string(stdout)))
-        # Sum of all numbers found in linter logs with a regex. Found when each file prints out total number of errors
-        elif self.cli_lint_warnings_count == "regex_sum":
-            reg = self.get_regex(self.cli_lint_warnings_regex)
-            matches = re.findall(reg, utils.normalize_log_string(stdout))
-            total_warnings = sum(int(m) for m in matches)
-        # Count all lines of the linter log
-        elif self.cli_lint_warnings_count == "total_lines":
-            total_warnings = sum(
-                not line.isspace() and line != "" for line in stdout.splitlines()
-            )
         if self.cli_lint_warnings_count is not None and total_warnings is None:
             logging.warning(
                 f"Unable to get number of warnings with {self.cli_lint_warnings_count} "
@@ -1559,6 +1462,133 @@ class Linter:
             total_warnings = 0
 
         return total_warnings
+
+    # Find number of results by level in linter stdout log
+    def get_result_count(
+        self, stdout: str, level: str, count_property: str, regex_property: str
+    ):
+        total_result = 0
+
+        # Count using SARIF output file
+        if self.output_sarif is True:
+            return self.get_sarif_result_count(stdout, level)
+        # Get number with a single regex. Used when linter prints out Found _ errors/warnings
+        elif getattr(self, count_property) == "regex_number":
+            reg = self.get_regex(getattr(self, regex_property))
+            m = re.search(reg, utils.normalize_log_string(stdout))
+            if m:
+                total_result = int(m.group(1))
+        # Count the number of occurrences of a regex corresponding to
+        # an error or warning in linter log (parses linter log)
+        elif getattr(self, count_property) == "regex_count":
+            reg = self.get_regex(getattr(self, regex_property))
+            total_result = len(re.findall(reg, utils.normalize_log_string(stdout)))
+        # Sum of all numbers found in linter logs with a regex.
+        # Found when each file prints out total number of errors or warnings
+        elif getattr(self, count_property) == "regex_sum":
+            reg = self.get_regex(self.cli_lint_errors_regex)
+            matches = re.findall(reg, utils.normalize_log_string(stdout))
+            total_result = sum(int(m) for m in matches)
+        # Count all lines of the linter log
+        elif getattr(self, count_property) == "total_lines":
+            total_result = sum(
+                not line.isspace() and line != "" for line in stdout.splitlines()
+            )
+        # Count number of results in sarif format
+        elif getattr(self, count_property) == "sarif":
+            sarif = None
+            sarif_stdout = utils.find_json_in_stdout(stdout)
+            try:
+                sarif = json.loads(sarif_stdout)
+            except ValueError as e:
+                logging.warning(f"Unable to parse sarif ({str(e)}):" + stdout)
+            if sarif and sarif["runs"]:
+                for run in sarif["runs"]:
+                    for result in run["results"]:
+                        if result["level"] == level:
+                            total_result += 1
+            else:
+                logging.warning("Unable to find results in:" + stdout)
+        return total_result
+
+    def get_sarif_result_count(self, stdout: str, level: str):
+        total_result = 0
+
+        try:
+            # SARIF is in MegaLinter named file
+            if self.sarif_output_file is not None and os.path.isfile(
+                self.sarif_output_file
+            ):
+                with open(self.sarif_output_file, "r", encoding="utf-8") as sarif_file:
+                    sarif_output = yaml.safe_load(sarif_file)
+                    # SARIF is in default output file
+            elif self.sarif_default_output_file is not None and os.path.isfile(
+                self.sarif_default_output_file
+            ):
+                with open(
+                    self.sarif_default_output_file, "r", encoding="utf-8"
+                ) as sarif_file:
+                    sarif_output = yaml.safe_load(sarif_file)
+                    # SARIF is in stdout
+            else:
+                # SARIF is in stdout
+                sarif_output = yaml.safe_load(stdout)
+
+            for run in sarif_output["runs"]:
+                rule_default_level_map = {}
+
+                if "rules" in run["tool"]["driver"]:
+                    for rule in run["tool"]["driver"]["rules"]:
+                        if (
+                            "defaultConfiguration" in rule
+                            and "level" in rule["defaultConfiguration"]
+                        ):
+                            rule_default_level_map[rule["id"]] = rule[
+                                "defaultConfiguration"
+                            ]["level"]
+
+                for result in run["results"]:
+                    count_results = False
+
+                    if "level" in result:
+                        # Check if the level matches. Otherwise, if the level to be checked is "warning",
+                        # counts them as if they were to cover "note" and "none" levels
+                        # https://docs.oasis-open.org/sarif/sarif/v2.1.0/errata01/os/sarif-v2.1.0-errata01-os-complete.html#_Toc141790898
+                        if result["level"] == level or (
+                            result["level"] not in ["error", "warning"]
+                            and level == "warning"
+                        ):
+                            count_results = True
+                    elif (
+                        "ruleId" in result
+                        and result["ruleId"] in rule_default_level_map
+                        and rule_default_level_map[result["ruleId"]] == level
+                    ):
+                        count_results = True
+                    # If the level property does not exist, the default value is warning
+                    # https://json.schemastore.org/sarif-2.1.0.json
+                    elif level == "warning":
+                        count_results = True
+
+                    if count_results is True:
+                        total_result += len(result["locations"])
+
+            # If we got here, we should have found a number of results from SARIF output
+            if total_result == 0:
+                logging.warning(
+                    f"Unable to get total {level}s from SARIF output.\nSARIF:"
+                    + str(sarif_output)
+                )
+            return total_result
+        except Exception as e:
+            total_result = 1
+            logging.error(
+                f"Error while getting total {level}s from SARIF output.\nError:"
+                + str(e)
+                + "\nstdout: "
+                + stdout
+            )
+            return total_result
 
     # Build the CLI command to get linter version (can be overridden if --version is not the way to get the version)
     def build_version_command(self):
