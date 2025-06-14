@@ -4,6 +4,7 @@ descriptor_flavors:
   - c_cpp
   - dotnet
   - dotnetweb
+  - java
 file_extensions:
   - ".feature"
 linters:
