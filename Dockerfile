@@ -482,10 +482,11 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin || true && \
 
 #CARGO__START
 RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --profile minimal --default-toolchain ${RUST_RUST_VERSION} \
-    && export PATH="/root/.cargo/bin:${PATH}" \
+    && export PATH="/root/.cargo/bin:/root/.cargo/env:${PATH}" \
+    && rustup default stable \
     && rustup component add clippy && cargo install --force --locked sarif-fmt@${CARGO_SARIF_FMT_VERSION} shellcheck-sarif@${CARGO_SHELLCHECK_SARIF_VERSION} selene@${CARGO_SELENE_VERSION} stylua@${CARGO_STYLUA_VERSION} \
     && rm -rf /root/.cargo/registry /root/.cargo/git /root/.cache/sccache
-ENV PATH="/root/.cargo/bin:${PATH}"
+ENV PATH="/root/.cargo/bin:/root/.cargo/env:${PATH}"
 #CARGO__END
 
 ################################
