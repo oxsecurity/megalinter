@@ -79,21 +79,19 @@ usage: rstfmt [-h] [--version] [--check] [--diff] [-w WIDTH] [--ext EXT]
               [path ...]
 
 positional arguments:
-  path                  files/directories to run on
+  path               files/directories to run on
 
 options:
-  -h, --help            show this help message and exit
-  --version             show rstfmt version and exit
-  --check               don't update files, but exit with nonzero status if
-                        any files are not formatted
-  --diff                don't update files, but show a diff of what would
-                        change
-  -w WIDTH, --width WIDTH
-                        the target line length in characters
-  --ext EXT             the extension of files to look at when passed a
-                        directory (default `rst`)
-  --test                [internal] run tests instead of updating files
-  -v, --verbose         [internal] print extra debugging information
+  -h, --help         show this help message and exit
+  --version          show rstfmt version and exit
+  --check            don't update files, but exit with nonzero status if any
+                     files are not formatted
+  --diff             don't update files, but show a diff of what would change
+  -w, --width WIDTH  the target line length in characters
+  --ext EXT          the extension of files to look at when passed a directory
+                     (default `rst`)
+  --test             [internal] run tests instead of updating files
+  -v, --verbose      [internal] print extra debugging information
 ```
 
 ### Installation on mega-linter Docker image

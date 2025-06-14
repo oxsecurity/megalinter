@@ -122,12 +122,12 @@ positional arguments:
 options:
   -h, --help            show this help message and exit
   -                     read from standard input
-  -c CONFIG_FILE, --config-file CONFIG_FILE
+  -c, --config-file CONFIG_FILE
                         path to a custom configuration
-  -d CONFIG_DATA, --config-data CONFIG_DATA
+  -d, --config-data CONFIG_DATA
                         custom configuration (as YAML source)
   --list-files          list files to lint and exit
-  -f {parsable,standard,colored,github,auto}, --format {parsable,standard,colored,github,auto}
+  -f, --format {parsable,standard,colored,github,auto}
                         format for parsing output
   -s, --strict          return non-zero exit code on warnings as well as
                         errors

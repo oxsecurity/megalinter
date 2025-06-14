@@ -9559,6 +9559,13 @@
         "string"
       ]
     },
+    "KOTLIN_DETEKT_CONFIG_FILE": {
+      "$id": "#/properties/KOTLIN_DETEKT_CONFIG_FILE",
+      "default": "detekt-config.yml",
+      "description": "KOTLIN_DETEKT: User custom config file name if different from default",
+      "title": "KOTLIN_DETEKT: Custom config file name",
+      "type": "string"
+    },
     "KOTLIN_DETEKT_DISABLE_ERRORS": {
       "$id": "#/properties/KOTLIN_DETEKT_DISABLE_ERRORS",
       "default": false,
@@ -9628,6 +9635,12 @@
       },
       "title": "KOTLIN_DETEKT: Define or override a list of bash commands to run before the linter",
       "type": "array"
+    },
+    "KOTLIN_DETEKT_RULES_PATH": {
+      "$id": "#/properties/KOTLIN_DETEKT_RULES_PATH",
+      "description": "KOTLIN_DETEKT: Path where to find linter configuration file",
+      "title": "KOTLIN_DETEKT: Custom config file path",
+      "type": "string"
     },
     "KOTLIN_DETEKT_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/KOTLIN_DETEKT_UNSECURED_ENV_VARIABLES",

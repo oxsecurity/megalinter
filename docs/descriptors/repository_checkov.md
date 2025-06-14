@@ -135,7 +135,7 @@ usage: checkov [-h] [-v] [--support] [-d DIRECTORY] [--add-check]
                [--secrets-scan-file-type SECRETS_SCAN_FILE_TYPE]
                [--enable-secret-scan-all-files]
                [--block-list-secret-scan BLOCK_LIST_SECRET_SCAN]
-               [--summary-position {bottom,top}]
+               [--summary-position {top,bottom}]
                [--skip-resources-without-violations] [--deep-analysis]
                [--no-fail-on-crash] [--mask MASK] [--scan-secrets-history]
                [--secrets-history-timeout SECRETS_HISTORY_TIMEOUT]
@@ -149,11 +149,11 @@ options:
   -v, --version         version
   --support             Enable debug logs and upload the logs to the server.
                         Requires a Bridgecrew or Prisma Cloud API key.
-  -d DIRECTORY, --directory DIRECTORY
+  -d, --directory DIRECTORY
                         IaC root directory (can not be used together with
                         --file).
   --add-check           Generate a new check via CLI prompt
-  -f FILE [FILE ...], --file FILE [FILE ...]
+  -f, --file FILE [FILE ...]
                         File to scan (can not be used together with
                         --directory). With this option, Checkov will attempt
                         to filter the runners based on the file type. For
@@ -183,7 +183,7 @@ options:
                         directory, so only use this option with trusted
                         repositories.
   -l, --list            List checks
-  -o {cli,csv,cyclonedx,cyclonedx_json,json,junitxml,github_failed_only,gitlab_sast,sarif,spdx}, --output {cli,csv,cyclonedx,cyclonedx_json,json,junitxml,github_failed_only,gitlab_sast,sarif,spdx}
+  -o, --output {cli,csv,cyclonedx,cyclonedx_json,json,junitxml,github_failed_only,gitlab_sast,sarif,spdx}
                         Report output format. Add multiple outputs by using
                         the flag multiple times (-o sarif -o cli)
   --output-file-path OUTPUT_FILE_PATH
@@ -246,8 +246,7 @@ options:
                         serverless, terraform, terraform_json, terraform_plan,
                         sast, sast_python, sast_java, sast_javascript,
                         sast_typescript, sast_golang, 3d_policy
-  -c CHECK, --check CHECK
-                        Checks to run; any other checks will be skipped. Enter
+  -c, --check CHECK     Checks to run; any other checks will be skipped. Enter
                         one or more items separated by commas. Each item may
                         be either a Checkov check ID (CKV_AWS_123), a BC check
                         ID (BC_AWS_GENERAL_123), or a severity (LOW, MEDIUM,
@@ -335,7 +334,7 @@ options:
                         the console. Results are only available locally. If
                         you use the --support flag, logs will still get
                         uploaded.
-  --docker-image DOCKER_IMAGE, --image DOCKER_IMAGE
+  --docker-image, --image DOCKER_IMAGE
                         Scan docker images by name or ID. Only works with
                         --bc-api-key flag
   --dockerfile-path DOCKERFILE_PATH
@@ -343,8 +342,7 @@ options:
   --repo-id REPO_ID     Identity string of the repository, with form
                         <repo_owner>/<repo_name>. Required when using the
                         platform integration (API key).
-  -b BRANCH, --branch BRANCH
-                        Selected branch of the persisted repository. Only has
+  -b, --branch BRANCH   Selected branch of the persisted repository. Only has
                         effect when using the --bc-api-key flag
   --skip-download       Do not download any data from Prisma Cloud. This will
                         omit doc links, severities, etc., as well as custom
@@ -387,7 +385,7 @@ options:
   --evaluate-variables EVALUATE_VARIABLES
                         evaluate the values of variables and locals [env var:
                         CKV_EVAL_VARS]
-  -ca CA_CERTIFICATE, --ca-certificate CA_CERTIFICATE
+  -ca, --ca-certificate CA_CERTIFICATE
                         Custom CA certificate (bundle) file [env var:
                         BC_CA_BUNDLE]
   --no-cert-verify      Skip SSL certificate verification. Use this to bypass
@@ -450,7 +448,7 @@ options:
   --block-list-secret-scan BLOCK_LIST_SECRET_SCAN
                         List of files to filter out from the secret scanner
                         [env var: CKV_SECRETS_SCAN_BLOCK_LIST]
-  --summary-position {bottom,top}
+  --summary-position {top,bottom}
                         Chose whether the summary will be appended on top
                         (before the checks results) or on bottom (after check
                         results), default is on top.

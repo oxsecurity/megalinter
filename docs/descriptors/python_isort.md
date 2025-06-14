@@ -178,10 +178,10 @@ general options:
   --ws, --ignore-whitespace
                         Tells isort to ignore whitespace differences when
                         --check-only is being used.
-  --sp SETTINGS_PATH, --settings-path SETTINGS_PATH, --settings-file SETTINGS_PATH, --settings SETTINGS_PATH
+  --sp, --settings-path, --settings-file, --settings SETTINGS_PATH
                         Explicitly set the settings path or file instead of
                         auto determining based on file location.
-  --cr CONFIG_ROOT, --config-root CONFIG_ROOT
+  --cr, --config-root CONFIG_ROOT
                         Explicitly set the config root for resolving all
                         configs. When used with the --resolve-all-configs
                         flag, isort will look at all sub-folders in this
@@ -198,8 +198,7 @@ general options:
   --old-finders, --magic-placement
                         Use the old deprecated finder logic that relies on
                         environment introspection magic.
-  -j [JOBS], --jobs [JOBS]
-                        Number of files to process in parallel. Negative value
+  -j, --jobs [JOBS]     Number of files to process in parallel. Negative value
                         means use number of CPUs.
   --ac, --atomic        Ensures the output doesn't save if the resulting file
                         contains syntax errors.
@@ -217,7 +216,7 @@ target options:
                         imports sorted.
   --filter-files        Tells isort to filter files even when they are
                         explicitly passed in as part of the CLI command.
-  -s SKIP, --skip SKIP  Files that isort should skip over. If you want to skip
+  -s, --skip SKIP       Files that isort should skip over. If you want to skip
                         multiple files you should specify twice: --skip file1
                         --skip file2. Values can be file names, directory
                         names or file paths. To skip all files in a nested
@@ -229,7 +228,7 @@ target options:
                         Values can be file names, directory names or file
                         paths. To skip all files in a nested path use --skip-
                         glob.
-  --sg SKIP_GLOB, --skip-glob SKIP_GLOB
+  --sg, --skip-glob SKIP_GLOB
                         Files that isort should skip over.
   --extend-skip-glob EXTEND_SKIP_GLOB
                         Additional files that isort should skip over
@@ -238,7 +237,7 @@ target options:
                         Treat project as a git repository and ignore files
                         listed in .gitignore. NOTE: This requires git to be
                         installed and accessible from the same shell as isort.
-  --ext SUPPORTED_EXTENSIONS, --extension SUPPORTED_EXTENSIONS, --supported-extension SUPPORTED_EXTENSIONS
+  --ext, --extension, --supported-extension SUPPORTED_EXTENSIONS
                         Specifies what extensions isort can be run against.
   --blocked-extension BLOCKED_EXTENSIONS
                         Specifies what extensions isort can never be run
@@ -250,14 +249,14 @@ target options:
                         be run against the root dir.
 
 general output options:
-  -a ADD_IMPORTS, --add-import ADD_IMPORTS
+  -a, --add-import ADD_IMPORTS
                         Adds the specified import line to all files,
                         automatically determining correct placement.
   --append, --append-only
                         Only adds the imports specified in --add-import if the
                         file contains existing imports.
   --af, --force-adds    Forces import adds even if the original file is empty.
-  --rm REMOVE_IMPORTS, --remove-import REMOVE_IMPORTS
+  --rm, --remove-import REMOVE_IMPORTS
                         Removes the specified import from all files.
   --float-to-top        Causes all non-indented imports to float to the top of
                         the file having its imports sorted (immediately below
@@ -276,18 +275,17 @@ general output options:
                         length possible
   --ff, --from-first    Switches the typical ordering preference, showing from
                         imports first then straight ones.
-  --fgw [FORCE_GRID_WRAP], --force-grid-wrap [FORCE_GRID_WRAP]
+  --fgw, --force-grid-wrap [FORCE_GRID_WRAP]
                         Force number of from imports (defaults to 2 when
                         passed as CLI flag without value) to be grid wrapped
                         regardless of line length. If 0 is passed in (the
                         global default) only line length is considered.
-  -i INDENT, --indent INDENT
-                        String to place for indents defaults to " " (4
+  -i, --indent INDENT   String to place for indents defaults to " " (4
                         spaces).
-  --lbi LINES_BEFORE_IMPORTS, --lines-before-imports LINES_BEFORE_IMPORTS
-  --lai LINES_AFTER_IMPORTS, --lines-after-imports LINES_AFTER_IMPORTS
-  --lbt LINES_BETWEEN_TYPES, --lines-between-types LINES_BETWEEN_TYPES
-  --le LINE_ENDING, --line-ending LINE_ENDING
+  --lbi, --lines-before-imports LINES_BEFORE_IMPORTS
+  --lai, --lines-after-imports LINES_AFTER_IMPORTS
+  --lbt, --lines-between-types LINES_BETWEEN_TYPES
+  --le, --line-ending LINE_ENDING
                         Forces line endings to the specified value. If not
                         set, values will be guessed per-file.
   --ls, --length-sort   Sort imports by their string length.
@@ -295,7 +293,7 @@ general output options:
                         Sort straight imports by their string length. Similar
                         to `length_sort` but applies only to straight imports
                         and doesn't affect from imports.
-  -m {GRID,VERTICAL,HANGING_INDENT,VERTICAL_HANGING_INDENT,VERTICAL_GRID,VERTICAL_GRID_GROUPED,VERTICAL_GRID_GROUPED_NO_COMMA,NOQA,VERTICAL_HANGING_INDENT_BRACKET,VERTICAL_PREFIX_FROM_MODULE_IMPORT,HANGING_INDENT_WITH_PARENTHESES,BACKSLASH_GRID,0,1,2,3,4,5,6,7,8,9,10,11}, --multi-line {GRID,VERTICAL,HANGING_INDENT,VERTICAL_HANGING_INDENT,VERTICAL_GRID,VERTICAL_GRID_GROUPED,VERTICAL_GRID_GROUPED_NO_COMMA,NOQA,VERTICAL_HANGING_INDENT_BRACKET,VERTICAL_PREFIX_FROM_MODULE_IMPORT,HANGING_INDENT_WITH_PARENTHESES,BACKSLASH_GRID,0,1,2,3,4,5,6,7,8,9,10,11}
+  -m, --multi-line {GRID,VERTICAL,HANGING_INDENT,VERTICAL_HANGING_INDENT,VERTICAL_GRID,VERTICAL_GRID_GROUPED,VERTICAL_GRID_GROUPED_NO_COMMA,NOQA,VERTICAL_HANGING_INDENT_BRACKET,VERTICAL_PREFIX_FROM_MODULE_IMPORT,HANGING_INDENT_WITH_PARENTHESES,BACKSLASH_GRID,0,1,2,3,4,5,6,7,8,9,10,11}
                         Multi line output (0-grid, 1-vertical, 2-hanging,
                         3-vert-hanging, 4-vert-grid, 5-vert-grid-grouped,
                         6-deprecated-alias-for-5, 7-noqa, 8-vertical-hanging-
@@ -340,7 +338,7 @@ general output options:
                         installable plugin.
   --sl, --force-single-line-imports
                         Forces all from imports to appear on their own line
-  --nsl SINGLE_LINE_EXCLUSIONS, --single-line-exclusions SINGLE_LINE_EXCLUSIONS
+  --nsl, --single-line-exclusions SINGLE_LINE_EXCLUSIONS
                         One or more modules to exclude from the single line
                         rule.
   --tc, --trailing-comma
@@ -352,10 +350,10 @@ general output options:
                         wrap modes, and only affects how individual lines that
                         are too long get continued, not sections of multiple
                         imports.
-  -l LINE_LENGTH, -w LINE_LENGTH, --line-length LINE_LENGTH, --line-width LINE_LENGTH
+  -l, -w, --line-length, --line-width LINE_LENGTH
                         The max length of an import line (used for wrapping
                         long imports).
-  --wl WRAP_LENGTH, --wrap-length WRAP_LENGTH
+  --wl, --wrap-length WRAP_LENGTH
                         Specifies how long lines that are wrapped should be,
                         if not set line_length is used. NOTE: wrap_length must
                         be LOWER than or equal to line_length.
@@ -389,7 +387,7 @@ general output options:
                         VERTICAL_HANGING_INDENT mode
 
 section output options:
-  --sd DEFAULT_SECTION, --section-default DEFAULT_SECTION
+  --sd, --section-default DEFAULT_SECTION
                         Sets the default section for import options:
                         ('FUTURE', 'STDLIB', 'THIRDPARTY', 'FIRSTPARTY',
                         'LOCALFOLDER')
@@ -418,28 +416,28 @@ section output options:
   --fass, --force-alphabetical-sort-within-sections
                         Force all imports to be sorted alphabetically within a
                         section
-  -t FORCE_TO_TOP, --top FORCE_TO_TOP
+  -t, --top FORCE_TO_TOP
                         Force specific imports to the top of their appropriate
                         section.
   --combine-straight-imports, --csi
                         Combines all the bare straight imports of the same
                         section in a single line. Won't work with sections
                         which have 'as' imports
-  --nlb NO_LINES_BEFORE, --no-lines-before NO_LINES_BEFORE
+  --nlb, --no-lines-before NO_LINES_BEFORE
                         Sections which should not be split with previous by
                         empty lines
-  --src SRC_PATHS, --src-path SRC_PATHS
+  --src, --src-path SRC_PATHS
                         Add an explicitly defined source path (modules within
                         src paths have their imports automatically categorized
                         as first_party). Glob expansion (`*` and `**`) is
                         supported for this option.
-  -b KNOWN_STANDARD_LIBRARY, --builtin KNOWN_STANDARD_LIBRARY
+  -b, --builtin KNOWN_STANDARD_LIBRARY
                         Force isort to recognize a module as part of Python's
                         standard library.
   --extra-builtin EXTRA_STANDARD_LIBRARY
                         Extra modules to be included in the list of ones in
                         Python's standard library.
-  -f KNOWN_FUTURE_LIBRARY, --future KNOWN_FUTURE_LIBRARY
+  -f, --future KNOWN_FUTURE_LIBRARY
                         Force isort to recognize a module as part of Python's
                         internal future compatibility libraries. WARNING: this
                         overrides the behavior of __future__ handling and
@@ -450,10 +448,10 @@ section output options:
                         https://github.com/PyCQA/isort#custom-sections-and-
                         ordering and the discussion here:
                         https://github.com/PyCQA/isort/issues/1463.
-  -o KNOWN_THIRD_PARTY, --thirdparty KNOWN_THIRD_PARTY
+  -o, --thirdparty KNOWN_THIRD_PARTY
                         Force isort to recognize a module as being part of a
                         third party library.
-  -p KNOWN_FIRST_PARTY, --project KNOWN_FIRST_PARTY
+  -p, --project KNOWN_FIRST_PARTY
                         Force isort to recognize a module as being part of the
                         current python project.
   --known-local-folder KNOWN_LOCAL_FOLDER
@@ -466,13 +464,13 @@ section output options:
   --conda-env CONDA_ENV
                         Conda environment to use for determining whether a
                         package is third-party
-  --py {all,2,27,3,310,311,312,313,36,37,38,39,auto}, --python-version {all,2,27,3,310,311,312,313,36,37,38,39,auto}
+  --py, --python-version {all,2,27,3,310,311,312,313,36,37,38,39,auto}
                         Tells isort to set the known standard library based on
                         the specified Python version. Default is to assume any
                         Python 3 version could be the target, and use a union
                         of all stdlib modules across versions. If auto is
                         specified, the version of the interpreter used to run
-                        isort (currently: 312) will be used.
+                        isort (currently: 313) will be used.
 ```
 
 ### Installation on mega-linter Docker image
