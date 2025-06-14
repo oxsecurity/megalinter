@@ -3709,7 +3709,7 @@
 <p>If you do not want cspell to analyze the files names, define <code>SPELL_CSPELL_ANALYZE_FILE_NAMES</code> to <code>false</code></p>
 <h2 id="cspell-documentation">cspell documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>9.0.2</strong></li>
+<li>Version in MegaLinter: <strong>9.1.1</strong></li>
 <li>Visit <a href="https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#customization" target="_blank">How to configure cspell rules</a></li>
 <li>See <a href="https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#enable--disable-checking-sections-of-code" target="_blank">How to disable cspell rules in files</a></li>
@@ -3991,8 +3991,10 @@ Commands:
                                         result. The full file is displayed in
                                         color.
   suggestions|sug [options] [words...]  Spelling Suggestions for words.
+  init [options]                        Initialize a CSpell configuration file.
   link                                  Link dictionaries and other settings to
                                         the cspell global config.
+  dictionaries [options]                List dictionaries
   help [command]                        display help for command
 </code></pre>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
@@ -4000,11 +4002,11 @@ Commands:
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile"># renovate: datasource=npm depName=cspell
-ARG NPM_CSPELL_VERSION=9.0.2
+ARG NPM_CSPELL_VERSION=9.1.1
 </code></pre>
 <ul>
 <li>NPM packages (node.js):<ul>
-<li><a href="https://www.npmjs.com/package/cspell/v/9.0.2">cspell@9.0.2</a></li>
+<li><a href="https://www.npmjs.com/package/cspell/v/9.1.1">cspell@9.1.1</a></li>
 </ul>
 </li>
 </ul>
