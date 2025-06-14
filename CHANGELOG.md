@@ -17,6 +17,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Media
 
 - Linters enhancements
+  - More config file name checks for ansible-lint activation
 
 - Fixes
   - Fix crash when the markdown table summary is empty
