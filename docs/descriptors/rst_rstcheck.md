@@ -152,9 +152,9 @@ rstcheck -c .rstcheck.cfg myfile.rst
 # renovate: datasource=pypi depName=rstcheck
 ARG PIP_RSTCHECK_VERSION=6.2.5
 # renovate: datasource=pypi depName=click
-ARG PIP_RSTCHECK_CLICK_VERSION=8.1.8
+ARG PIP_RSTCHECK_CLICK_VERSION=8.2.1
 ```
 
 - PIP packages (Python):
-  - [click==8.1.8](https://pypi.org/project/click/8.1.8)
+  - [click==8.2.1](https://pypi.org/project/click/8.2.1)
   - [rstcheck[toml,sphinx]==6.2.5](https://pypi.org/project/rstcheck[toml,sphinx]/6.2.5)
