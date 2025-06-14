@@ -133,7 +133,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=markdown-link-check
-          ARG NPM_MARKDOWN_LINK_CHECK_VERSION=3.12.2
+          ARG NPM_MARKDOWN_LINK_CHECK_VERSION=3.13.7
       npm:
         - markdown-link-check@${NPM_MARKDOWN_LINK_CHECK_VERSION}
   # Markdown table formatter
