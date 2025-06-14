@@ -57,6 +57,7 @@ if [ "${TEST_CASE_RUN}" == "true" ]; then
   # Manage return code
   if [ $PYTEST_STATUS -eq 0 ]; then
     echo "Successfully executed Pytest"
+    exit 0 # Added with disable codecov upload
   else
     echo "Error(s) found by Pytest"
     exit 1
@@ -66,7 +67,7 @@ if [ "${TEST_CASE_RUN}" == "true" ]; then
   #   codecov upload-process || true
   #   exit $?
   # fi
-  exit $?
+  # exit $?
 fi
 
 if [ "${MEGALINTER_SERVER}" == "true" ]; then
