@@ -5,4 +5,4 @@ python-multipart==0.0.20
 pygments==2.19.1
 uvicorn[standard]==0.34.3
 redis==6.2.0
-rq==2.3.3
+rq==2.4.0
