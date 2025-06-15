@@ -83,6 +83,7 @@
     "rstcheck": "MIT",
     "rubocop": "MIT",
     "ruff": "MIT",
+    "ruff-format": "MIT",
     "scalafix": "Other",
     "scss-lint": "MIT",
     "secretlint": "MIT",

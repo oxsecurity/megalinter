@@ -17,146 +17,97 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Media
 
 - Linters enhancements
-  - More config file name checks for ansible-lint activation
 
 - Fixes
-  - Fix crash when the markdown table summary is empty
 
 - Reporters
 
 - Doc
 
 - Flavors
-  - Add Gherkin descriptor in java flavor
 
 - CI
 
 - mega-linter-runner
 
 - Linter versions upgrades (N)
-  - [golangci-lint](https://golangci-lint.run/) from 2.1.5 to **2.1.6** on 2025-05-04
-  - [pylint](https://pylint.readthedocs.io) from 3.3.6 to **3.3.7** on 2025-05-04
-  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.8.0 to **3.11.0** on 2025-05-05
-  - [psalm](https://psalm.dev) from Psalm.6.10.2@ to **Psalm.6.10.3@** on 2025-05-06
-  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.88.27 to **3.88.28** on 2025-05-06
-  - [rubocop](https://rubocop.org/) from 1.75.4 to **1.75.5** on 2025-05-06
-  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.11.0 to **3.12.0** on 2025-05-06
-  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.62.0 to **0.62.1** on 2025-05-09
-  - [trivy](https://aquasecurity.github.io/trivy/) from 0.62.0 to **0.62.1** on 2025-05-09
-  - [scalafix](https://scalacenter.github.io/scalafix/) from 0.14.2 to **0.14.3** on 2025-05-09
-  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.19.4 to **9.0.1** on 2025-05-09
-  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.12.0 to **3.12.1** on 2025-05-09
-  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.88.28 to **3.88.29** on 2025-05-09
-  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.34.2 to **1.35.1** on 2025-05-10
-  - [ruff-format](https://github.com/astral-sh/ruff) from 0.11.8 to **0.11.9** on 2025-05-10
-  - [ruff](https://github.com/astral-sh/ruff) from 0.11.8 to **0.11.9** on 2025-05-10
-  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.12.1 to **3.13.0** on 2025-05-10
-  - [terragrunt](https://terragrunt.gruntwork.io) from 0.78.0 to **0.78.2** on 2025-05-11
-  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.13.0 to **3.13.1** on 2025-05-12
-  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.13.1 to **3.14.0** on 2025-05-13
-  - [editorconfig-checker](https://editorconfig-checker.github.io/) from 3.2.1 to **3.3.0** on 2025-05-13
-  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 15.1.0 to **15.2.0** on 2025-05-13
-  - [kubeconform](https://github.com/yannh/kubeconform) from 0.6.7 to **0.7.0** on 2025-05-13
-  - [phpcs](https://github.com/PHPCSStandards/PHP_CodeSniffer) from 3.12.2 to **3.13.0** on 2025-05-13
-  - [protolint](https://github.com/yoheimuta/protolint) from 0.54.1 to **0.55.2** on 2025-05-13
-  - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.25.1 to **8.26.0** on 2025-05-14
-  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 4.11.0 to **4.12.0** on 2025-05-14
-  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 4.11.0 to **4.12.0** on 2025-05-14
-  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 4.11.0 to **4.12.0** on 2025-05-14
-  - [phpstan](https://phpstan.org/) from 2.1.14 to **2.1.15** on 2025-05-14
-  - [v8r](https://github.com/chris48s/v8r) from 4.4.0 to **5.0.0** on 2025-05-14
-  - [grype](https://github.com/anchore/grype) from 0.91.2 to **0.92.0** on 2025-05-14
-  - [syft](https://github.com/anchore/syft) from 1.23.1 to **1.24.0** on 2025-05-14
-  - [grype](https://github.com/anchore/grype) from 0.92.0 to **0.92.1** on 2025-05-16
-  - [syft](https://github.com/anchore/syft) from 1.24.0 to **1.25.1** on 2025-05-16
-  - [ruff-format](https://github.com/astral-sh/ruff) from 0.11.9 to **0.11.10** on 2025-05-17
-  - [ruff](https://github.com/astral-sh/ruff) from 0.11.9 to **0.11.10** on 2025-05-17
-  - [rubocop](https://rubocop.org/) from 1.75.5 to **1.75.6** on 2025-05-17
-  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.27.1 to **9.3.5** on 2025-05-17
-  - [phpstan](https://phpstan.org/) from 2.1.15 to **2.1.16** on 2025-05-17
-  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.14.0 to **3.14.1** on 2025-05-17
-  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 9.0.105 to **9.0.106** on 2025-05-18
-  - [protolint](https://github.com/yoheimuta/protolint) from 0.55.2 to **0.55.5** on 2025-05-18
-  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.88.29 to **3.88.30** on 2025-05-18
-  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.14.1 to **3.15.0** on 2025-05-18
-  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 9.3.5 to **9.4.0** on 2025-05-18
-  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.11.4 to **1.12.0** on 2025-05-18
-  - [terragrunt](https://terragrunt.gruntwork.io) from 0.78.2 to **0.78.4** on 2025-05-18
-  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.86 to **0.1.87** on 2025-05-18
-  - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.44.0 to **0.45.0** on 2025-05-19
-  - [ktlint](https://ktlint.github.io) from 1.5.0 to **1.6.0** on 2025-05-20
-  - [syft](https://github.com/anchore/syft) from 1.25.1 to **1.26.0** on 2025-05-20
-  - [grype](https://github.com/anchore/grype) from 0.92.1 to **0.92.2** on 2025-05-21
-  - [kics](https://www.kics.io) from 2.1.7 to **2.1.8** on 2025-05-21
-  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.15.0 to **3.15.1** on 2025-05-21
-  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 9.0.1 to **9.0.2** on 2025-05-21
-  - [checkstyle](https://checkstyle.org/) from 10.23.1 to **10.24.0** on 2025-05-24
-  - [pyright](https://github.com/Microsoft/pyright) from 1.1.400 to **1.1.401** on 2025-05-24
-  - [syft](https://github.com/anchore/syft) from 1.26.0 to **1.26.1** on 2025-05-24
-  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.35.1 to **1.35.3** on 2025-05-25
-  - [csharpier](https://csharpier.com/) from 1.0.1 to **1.0.2** on 2025-05-25
-  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.12.0 to **1.12.1** on 2025-05-25
-  - [terragrunt](https://terragrunt.gruntwork.io) from 0.78.4 to **0.80.2** on 2025-05-25
-  - [phpstan](https://phpstan.org/) from 2.1.16 to **2.1.17** on 2025-05-25
-  - [ruff-format](https://github.com/astral-sh/ruff) from 0.11.10 to **0.11.11** on 2025-05-25
-  - [ruff](https://github.com/astral-sh/ruff) from 0.11.10 to **0.11.11** on 2025-05-25
-  - [rubocop](https://rubocop.org/) from 1.75.6 to **1.75.7** on 2025-05-25
-  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 9.4.0 to **9.4.1** on 2025-05-25
-  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 25.4.0 to **25.5.0** on 2025-05-27
-  - [dartanalyzer](https://dart.dev/tools/dart-analyze) from 3.7.3 to **3.8.0** on 2025-05-27
-  - [htmlhint](https://htmlhint.com/) from 1.1.4 to **1.2.0** on 2025-05-27
-  - [secretlint](https://github.com/secretlint/secretlint) from 9.3.2 to **9.3.3** on 2025-05-27
-  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.88.30 to **3.88.34** on 2025-05-27
-  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.15.1 to **3.16.0** on 2025-05-27
-  - [psalm](https://psalm.dev) from Psalm.6.10.3@ to **Psalm.6.11.0@** on 2025-05-28
-  - [protolint](https://github.com/yoheimuta/protolint) from 0.55.5 to **0.55.6** on 2025-05-28
-  - [kics](https://www.kics.io) from 2.1.8 to **2.1.9** on 2025-05-28
-  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 9.4.1 to **9.5.1** on 2025-05-28
-  - [tflint](https://github.com/terraform-linters/tflint) from 0.57.0 to **0.58.0** on 2025-05-29
-  - [dartanalyzer](https://dart.dev/tools/dart-analyze) from 3.8.0 to **3.8.1** on 2025-05-30
-  - [checkstyle](https://checkstyle.org/) from 10.24.0 to **10.25.0** on 2025-05-31
-  - [terragrunt](https://terragrunt.gruntwork.io) from 0.80.2 to **0.80.4** on 2025-06-01
-  - [ruff-format](https://github.com/astral-sh/ruff) from 0.11.11 to **0.11.12** on 2025-06-02
-  - [ruff](https://github.com/astral-sh/ruff) from 0.11.11 to **0.11.12** on 2025-06-02
-  - [rstcheck](https://github.com/myint/rstcheck) from 6.2.4 to **6.2.5** on 2025-06-02
-  - [rubocop](https://rubocop.org/) from 1.75.7 to **1.75.8** on 2025-06-02
-  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.16.0 to **3.16.1** on 2025-06-02
-  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2025.04.07 to **2025.06.05** on 2025-06-11
-  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.35.3 to **1.35.4** on 2025-06-11
-  - [ruff-format](https://github.com/astral-sh/ruff) from 0.11.12 to **0.11.13** on 2025-06-11
-  - [ruff](https://github.com/astral-sh/ruff) from 0.11.12 to **0.11.13** on 2025-06-11
-  - [grype](https://github.com/anchore/grype) from 0.92.2 to **0.93.0** on 2025-06-11
-  - [syft](https://github.com/anchore/syft) from 1.26.1 to **1.27.0** on 2025-06-11
-  - [terragrunt](https://terragrunt.gruntwork.io) from 0.80.4 to **0.81.0** on 2025-06-11
-  - [pmd](https://pmd.github.io/) from 7.13.0 to **7.14.0** on 2025-06-13
-  - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.15.0 to **1.16.0** on 2025-06-13
-  - [grype](https://github.com/anchore/grype) from 0.93.0 to **0.94.0** on 2025-06-13
-  - [ls-lint](https://ls-lint.org/) from 2.3.0 to **2.3.1** on 2025-06-13
-  - [secretlint](https://github.com/secretlint/secretlint) from 9.3.3 to **9.3.4** on 2025-06-13
-  - [syft](https://github.com/anchore/syft) from 1.27.0 to **1.27.1** on 2025-06-13
-  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.35.1 to **0.36.1** on 2025-06-13
-  - [stylelint](https://stylelint.io) from 16.19.1 to **16.20.0** on 2025-06-13
-  - [revive](https://revive.run/) from 1.9.0 to **1.10.0** on 2025-06-13
-  - [htmlhint](https://htmlhint.com/) from 1.2.0 to **1.5.1** on 2025-06-13
-  - [psalm](https://psalm.dev) from Psalm.6.11.0@ to **Psalm.6.12.0@** on 2025-06-13
-  - [pyright](https://github.com/Microsoft/pyright) from 1.1.401 to **1.1.402** on 2025-06-13
-  - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.26.0 to **8.27.2** on 2025-06-13
-  - [kics](https://www.kics.io) from 2.1.9 to **2.1.10** on 2025-06-13
-  - [semgrep](https://semgrep.dev/) from 3.12 to **3.13** on 2025-06-13
-  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.62.1 to **0.63.0** on 2025-06-13
-  - [trivy](https://aquasecurity.github.io/trivy/) from 0.62.1 to **0.63.0** on 2025-06-13
-  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.88.34 to **3.89.1** on 2025-06-13
-  - [rubocop](https://rubocop.org/) from 1.75.8 to **1.76.1** on 2025-06-13
-  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.16.1 to **3.23.0** on 2025-06-13
-  - [phpcs](https://github.com/PHPCSStandards/PHP_CodeSniffer) from 3.13.0 to **3.13.1** on 2025-06-14
-  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.35.4 to **1.36.0** on 2025-06-14
-  - [devskim](https://github.com/microsoft/DevSkim) from 1.0.56 to **1.0.59** on 2025-06-14
-  - [sqlfluff](https://www.sqlfluff.com/) from 3.4.0 to **3.4.1** on 2025-06-14
-  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 9.0.2 to **9.1.1** on 2025-06-14
-  - [secretlint](https://github.com/secretlint/secretlint) from 9.3.4 to **10.1.0** on 2025-06-15
-  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.12.1 to **1.12.2** on 2025-06-15
-  - [terragrunt](https://terragrunt.gruntwork.io) from 0.81.0 to **0.81.6** on 2025-06-15
 <!-- linter-versions-end -->
+
+## [v8.8.0] - 2024-06-15
+
+- Core
+  - Retrieve SARIF errors and warnings correctly, by @bdovaz in https://github.com/oxsecurity/megalinter/pull/4837
+
+- Linters enhancements
+  - More config file name checks for ansible-lint activation, by @nvuillam in https://github.com/oxsecurity/megalinter/pull/5590
+
+- Fixes
+  - Fix crash when the markdown table summary is empty, by @nvuillam in https://github.com/oxsecurity/megalinter/pull/5363
+  - Downgrade click to make rstcheck work again, by @nvuillam in https://github.com/oxsecurity/megalinter/pull/5387
+
+- Doc
+  - Display hash as plain text in markdown, by @johndutchover in https://github.com/oxsecurity/megalinter/pull/5420
+
+- Flavors
+  - Add Gherkin descriptor in java flavor, by @nvuillam in https://github.com/oxsecurity/megalinter/pull/5592
+
+- CI
+  - Fix rust setup & disable codecov-cli, by @nvuillam in https://github.com/oxsecurity/megalinter/pull/5579
+
+- Linter versions upgrades (50)
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 25.4.0 to **25.5.0**
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.35.1 to **0.36.1**
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.34.2 to **1.36.0**
+  - [checkstyle](https://checkstyle.org/) from 10.23.1 to **10.25.0**
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.86 to **0.1.87**
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2025.04.07 to **2025.06.05**
+  - [csharpier](https://csharpier.com/) from 1.0.1 to **1.0.2**
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.19.4 to **9.1.1**
+  - [dartanalyzer](https://dart.dev/tools/dart-analyze) from 3.7.3 to **3.8.1**
+  - [devskim](https://github.com/microsoft/DevSkim) from 1.0.56 to **1.0.59**
+  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 9.0.105 to **9.0.106**
+  - [editorconfig-checker](https://editorconfig-checker.github.io/) from 3.2.1 to **3.3.0**
+  - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.25.1 to **8.27.2**
+  - [golangci-lint](https://golangci-lint.run/) from 2.1.5 to **2.1.6**
+  - [grype](https://github.com/anchore/grype) from 0.91.2 to **0.94.0**
+  - [htmlhint](https://htmlhint.com/) from 1.1.4 to **1.5.1**
+  - [kics](https://www.kics.io) from 2.1.7 to **2.1.10**
+  - [ktlint](https://ktlint.github.io) from 1.5.0 to **1.6.0**
+  - [kubeconform](https://github.com/yannh/kubeconform) from 0.6.7 to **0.7.0**
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.8.0 to **3.23.0**
+  - [ls-lint](https://ls-lint.org/) from 2.3.0 to **2.3.1**
+  - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.44.0 to **0.45.0**
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.15.0 to **1.16.0**
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 15.1.0 to **15.2.0**
+  - [phpcs](https://github.com/PHPCSStandards/PHP_CodeSniffer) from 3.12.2 to **3.13.1**
+  - [phpstan](https://phpstan.org/) from 2.1.14 to **2.1.17**
+  - [pmd](https://pmd.github.io/) from 7.13.0 to **7.14.0**
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.54.1 to **0.55.6**
+  - [psalm](https://psalm.dev) from Psalm.6.10.2@ to **Psalm.6.12.0@**
+  - [pylint](https://pylint.readthedocs.io) from 3.3.6 to **3.3.7**
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.400 to **1.1.402**
+  - [revive](https://revive.run/) from 1.9.0 to **1.10.0**
+  - [rstcheck](https://github.com/myint/rstcheck) from 6.2.4 to **6.2.5**
+  - [rubocop](https://rubocop.org/) from 1.75.4 to **1.76.1**
+  - [ruff](https://github.com/astral-sh/ruff) from 0.11.8 to **0.11.13**
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.11.8 to **0.11.13**
+  - [scalafix](https://scalacenter.github.io/scalafix/) from 0.14.2 to **0.14.3**
+  - [secretlint](https://github.com/secretlint/secretlint) from 9.3.2 to **10.1.0**
+  - [semgrep](https://semgrep.dev/) from 3.12 to **3.13**
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 4.11.0 to **4.12.0**
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 4.11.0 to **4.12.0**
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 4.11.0 to **4.12.0**
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 8.27.1 to **9.5.1**
+  - [sqlfluff](https://www.sqlfluff.com/) from 3.4.0 to **3.4.1**
+  - [stylelint](https://stylelint.io) from 16.19.1 to **16.20.0**
+  - [syft](https://github.com/anchore/syft) from 1.23.1 to **1.27.1**
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.11.4 to **1.12.2**
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.78.0 to **0.81.6**
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.57.0 to **0.58.0**
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.62.0 to **0.63.0**
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.62.0 to **0.63.0**
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.88.27 to **3.89.1**
+  - [v8r](https://github.com/chris48s/v8r) from 4.4.0 to **5.0.0**
 
 ## [v8.7.0] - 2024-05-04
 
