@@ -24,10 +24,10 @@ _Disabled reason: Bug in remark-lint: https://github.com/remarkjs/remark-lint/is
 
 ## Configuration in MegaLinter
 
-- Enable remark-lint by adding `MARKDOWN_REMARK_LINT` in [ENABLE_LINTERS variable](https://megalinter.io/8.8.0/configuration/#activation-and-deactivation)
-- Disable remark-lint by adding `MARKDOWN_REMARK_LINT` in [DISABLE_LINTERS variable](https://megalinter.io/8.8.0/configuration/#activation-and-deactivation)
+- Enable remark-lint by adding `MARKDOWN_REMARK_LINT` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
+- Disable remark-lint by adding `MARKDOWN_REMARK_LINT` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-- Enable **autofixes** by adding `MARKDOWN_REMARK_LINT` in [APPLY_FIXES variable](https://megalinter.io/8.8.0/configuration/#apply-fixes)
+- Enable **autofixes** by adding `MARKDOWN_REMARK_LINT` in [APPLY_FIXES variable](https://megalinter.io/beta/configuration/#apply-fixes)
 
 | Variable                                         | Description                                                                                                                                                                                  | Default value                                   |
 |--------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
@@ -63,9 +63,9 @@ Use remark-lint in your favorite IDE to catch errors before MegaLinter !
 
 This linter is available in the following flavors
 
-|                                                                         <!-- -->                                                                         | Flavor                                                | Description               | Embedded linters |                                                                                                                                                                         Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------|:--------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/8.8.0/supported-linters/) | Default MegaLinter Flavor |       127        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v8.8.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|                                                                         <!-- -->                                                                         | Flavor                                               | Description               | Embedded linters |                                                                                                                                                                       Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       127        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 
 ## Behind the scenes
 
