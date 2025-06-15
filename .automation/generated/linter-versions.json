@@ -90,7 +90,7 @@
     "ruff-format": "0.11.13",
     "scalafix": "0.14.3",
     "scss-lint": "0.60.0",
-    "secretlint": "9.3.4",
+    "secretlint": "10.1.0",
     "selene": "0.28.0",
     "semgrep": "3.13",
     "sfdx-scanner": "2.8.0",
