@@ -36,23 +36,23 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 ## [v8.8.0] - 2024-06-15
 
 - Core
-  - Retrieve SARIF errors and warnings correctly, by @bdovaz in https://github.com/oxsecurity/megalinter/pull/4837
+  - Retrieve SARIF errors and warnings correctly, by @bdovaz in <https://github.com/oxsecurity/megalinter/pull/4837>
 
 - Linters enhancements
-  - More config file name checks for ansible-lint activation, by @nvuillam in https://github.com/oxsecurity/megalinter/pull/5590
+  - More config file name checks for ansible-lint activation, by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/5590>
 
 - Fixes
-  - Fix crash when the markdown table summary is empty, by @nvuillam in https://github.com/oxsecurity/megalinter/pull/5363
-  - Downgrade click to make rstcheck work again, by @nvuillam in https://github.com/oxsecurity/megalinter/pull/5387
+  - Fix crash when the markdown table summary is empty, by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/5363>
+  - Downgrade click to make rstcheck work again, by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/5387>
 
 - Doc
-  - Display hash as plain text in markdown, by @johndutchover in https://github.com/oxsecurity/megalinter/pull/5420
+  - Display hash as plain text in markdown, by @johndutchover in <https://github.com/oxsecurity/megalinter/pull/5420>
 
 - Flavors
-  - Add Gherkin descriptor in java flavor, by @nvuillam in https://github.com/oxsecurity/megalinter/pull/5592
+  - Add Gherkin descriptor in java flavor, by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/5592>
 
 - CI
-  - Fix rust setup & disable codecov-cli, by @nvuillam in https://github.com/oxsecurity/megalinter/pull/5579
+  - Fix rust setup & disable codecov-cli, by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/5579>
 
 - Linter versions upgrades (50)
   - [ansible-lint](https://ansible-lint.readthedocs.io/) from 25.4.0 to **25.5.0**
