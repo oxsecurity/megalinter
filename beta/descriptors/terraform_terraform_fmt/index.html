@@ -3711,7 +3711,7 @@
 <p><a href="https://github.com/hashicorp/terraform"><img alt="GitHub stars" src="https://img.shields.io/github/stars/hashicorp/terraform?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-format-yellow"><img alt="formatter" src="https://shields.io/badge/-format-yellow"/></a> <a href="https://github.com/hashicorp/terraform/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/hashicorp/terraform?sort=semver"/></a> <a href="https://github.com/hashicorp/terraform/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/hashicorp/terraform"/></a> <a href="https://github.com/hashicorp/terraform/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/hashicorp/terraform"/></a> <a href="https://github.com/hashicorp/terraform/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/hashicorp/terraform"/></a></p>
 <h2 id="terraform-fmt-documentation">terraform-fmt documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>1.12.1</strong></li>
+<li>Version in MegaLinter: <strong>1.12.2</strong></li>
 <li>Visit <a href="https://developer.hashicorp.com/terraform/cli/commands/fmt" target="_blank">Official Web Site</a></li>
 </ul>
 <p><a href="https://github.com/hashicorp/terraform" target="_blank"><img alt="terraform - GitHub" src="https://gh-card.dev/repos/hashicorp/terraform.svg?fullname="/></a></p>
@@ -3941,7 +3941,7 @@ Global options (use these before the subcommand, if any):
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile"># renovate: datasource=docker depName=alpine/terragrunt
-ARG TERRAFORM_TERRAGRUNT_VERSION=1.12.1
+ARG TERRAFORM_TERRAGRUNT_VERSION=1.12.2
 FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} AS terragrunt
 COPY --link --from=terragrunt /bin/terraform /usr/bin/
 </code></pre>
