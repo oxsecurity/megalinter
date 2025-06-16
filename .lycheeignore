@@ -24,3 +24,4 @@ https?://twitter\.com/intent/tweet.*
 https?://x\.com/intent/tweet.*
 https?://github\.com/sgerrand/alpine-pkg-glibc/releases/download
 https?:\/\/(www\.)?makeapullrequest\.com\/.*
+https?://.*VERSION.*

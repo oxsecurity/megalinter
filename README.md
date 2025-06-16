@@ -1249,7 +1249,7 @@ If you run it from your **CI/CD pipelines**, the docker image may have **access 
 
 As it can be complicated to **trust** the authors of all the open-source linters, **MegaLinter removes variables from the environment used to call linters**.
 
-Thanks to this feature, you only need to [**trust MegaLinter and its internal python dependencies**](https://github.com/oxsecurity/megalinter/blob/main/megalinter/setup.py), but there is **no need to trust all the linters that are used** !
+Thanks to this feature, you only need to [**trust MegaLinter and its internal python dependencies**](https://github.com/oxsecurity/megalinter/blob/main/pyproject.toml), but there is **no need to trust all the linters that are used** !
 
 You can add secured variables to the default list using configuration property **SECURED_ENV_VARIABLES** in .mega-linter.yml or in an environment variable (priority is given to ENV variables above `.mega-linter.yml` property).
 
@@ -1565,7 +1565,6 @@ description: List of all known articles, blog posts and videos that talk about M
 | [Linting - What is all the fluff about?](https://rse.shef.ac.uk/blog/2022-04-19-linting/){target=_blank}                                                                                                                                                  | [Neil Shepard](https://www.linkedin.com/in/neil-shephard-a43a83211/?originalSubdomain=uk){target=_blank}, University Of Sheffield                                                                   |
 | [How to apply security at the source using GitOps](https://dev.to/minwi/how-to-apply-security-at-the-source-using-gitops-21bk){target=_blank}                                                                                                             | [Edu Minguez](https://dev.to/minwi){target=_blank}                                                                                                                                                  |
 | [How to linter basic things like trailing whitespaces and newlines](https://nklya.medium.com/hot-to-linter-basic-things-like-trailing-whitespaces-and-newlines-7b40da8f688d){target=_blank}                                                               | [Nicolai Antiferov](https://nklya.medium.com/){target=_blank}                                                                                                                                       |
-| [Open-source linters landscape in 2021](https://promyze.com/open-source-linters-2021/){target=_blank}                                                                                                                                                     | [Cédric Teyton](https://www.linkedin.com/in/cedricteyton/){target=_blank}                                                                                                                           |
 | [Node.js Coding Standard Tools with MegaLinter on Gitlab CI](https://javascript.plainenglish.io/node-js-coding-standard-tools-with-megalinter-on-gitlab-ci-a43b55915811){target=_blank}                                                                   | [Albion Bame](https://www.linkedin.com/in/albion-bame/){target=_blank}                                                                                                                              |
 | [Linting a Jekyll blog with MegaLinter](https://www.ayyjohn.com/posts/linting-a-jekyll-blog-with-mega-linter){target=_blank}                                                                                                                              | [Alec Johnson](https://www.linkedin.com/in/ayyjohn/){target=_blank}                                                                                                                                 |
 | [MegaLinter sells his soul and joins OX Security](https://nicolas.vuillamy.fr/megalinter-sells-his-soul-and-joins-ox-security-2a91a0027628){target=_blank}                                                                                                | [Nicolas Vuillamy](https://nvuillam.github.io){target=_blank}                                                                                                                                       |
@@ -1639,7 +1638,7 @@ description: List of all known articles, blog posts and videos that talk about M
 - [eslint](https://eslint.org/docs/latest/use/integrations#source-control){target=_blank}
 - [eslint-plugin-jsonc](https://eslint.org/docs/latest/use/integrations#source-control){target=_blank}
 - [hadolint](https://github.com/hadolint/hadolint/blob/master/docs/INTEGRATION.md#mega-linter){target=_blank}
-- [htmlhint](https://htmlhint.com/docs/user-guide/integrations/task-runner){target=_blank}
+- [htmlhint](https://htmlhint.com/integrations/task-runner/){target=_blank}
 - [jscpd](https://github.com/kucherenko/jscpd#who-uses-jscpd){target=_blank}
 - [kics](https://docs.kics.io/latest/integrations/){target=_blank}
 - [ktlint](https://github.com/pinterest/ktlint#-with-continuous-integration){target=_blank}
