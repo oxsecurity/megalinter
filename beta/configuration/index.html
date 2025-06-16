@@ -3958,7 +3958,7 @@ You can apply filters to a single linter by defining variable <code>&lt;LINTER_K
 <p>MegaLinter runs on a docker image and calls the linters via command line to gather their results.</p>
 <p>If you run it from your <strong>CI/CD pipelines</strong>, the docker image may have <strong>access to your environment variables, that can contain secrets</strong> defined in CI/CD variables.</p>
 <p>As it can be complicated to <strong>trust</strong> the authors of all the open-source linters, <strong>MegaLinter removes variables from the environment used to call linters</strong>.</p>
-<p>Thanks to this feature, you only need to <a href="https://github.com/oxsecurity/megalinter/blob/main/megalinter/setup.py"><strong>trust MegaLinter and its internal python dependencies</strong></a>, but there is <strong>no need to trust all the linters that are used</strong> !</p>
+<p>Thanks to this feature, you only need to <a href="https://github.com/oxsecurity/megalinter/blob/main/pyproject.toml"><strong>trust MegaLinter and its internal python dependencies</strong></a>, but there is <strong>no need to trust all the linters that are used</strong> !</p>
 <p>You can add secured variables to the default list using configuration property <strong>SECURED_ENV_VARIABLES</strong> in .mega-linter.yml or in an environment variable (priority is given to ENV variables above <code>.mega-linter.yml</code> property).</p>
 <p>SECURED_ENV_VARIABLES_DEFAULT contains:</p>
 <ul>
