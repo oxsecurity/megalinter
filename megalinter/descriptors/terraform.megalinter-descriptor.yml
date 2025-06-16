@@ -115,7 +115,7 @@ linters:
       - security
     linter_url: https://terragrunt.gruntwork.io
     linter_repo: https://github.com/gruntwork-io/terragrunt
-    linter_rules_configuration_url: https://terragrunt.gruntwork.io/docs/getting-started/configuration/#terragrunt-configuration-file
+    linter_rules_configuration_url: https://terragrunt.gruntwork.io/docs/getting-started/quick-start/#add-terragrunthcl-to-your-project
     linter_image_url: https://github.com/gruntwork-io/terragrunt/blob/master/docs/assets/img/favicon/ms-icon-310x310.png
     linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/terragrunt.png
     config_file_name: terragrunt.hcl

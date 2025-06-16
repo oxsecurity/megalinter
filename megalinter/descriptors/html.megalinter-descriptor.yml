@@ -54,9 +54,9 @@ linters:
     linter_repo: https://github.com/htmlhint/HTMLHint
     linter_spdx_license: MIT
     linter_rules_url: https://htmlhint.com/docs/user-guide/list-rules
-    linter_image_url: https://raw.githubusercontent.com/htmlhint/HTMLHint/master/website/static/img/htmlhint.png
-    linter_rules_configuration_url: https://htmlhint.com/docs/user-guide/configuration
-    linter_rules_inline_disable_url: https://htmlhint.com/docs/user-guide/configuration
+    linter_image_url: https://htmlhint.com/_astro/htmlhint.DIRCoA_t_Z1czEXa.webp
+    linter_rules_configuration_url: https://htmlhint.com/configuration/
+    linter_rules_inline_disable_url: https://htmlhint.com/configuration/
     linter_megalinter_ref_url: https://htmlhint.com/integrations/task-runner/
     cli_lint_mode: list_of_files
     config_file_name: .htmlhintrc

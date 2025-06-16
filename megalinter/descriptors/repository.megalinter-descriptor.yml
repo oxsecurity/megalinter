@@ -51,10 +51,6 @@ linters:
           ARG PIP_CHECKOV_VERSION=3.2.413
       pip:
         - checkov==${PIP_CHECKOV_VERSION}
-    ide:
-      vscode:
-        - name: Checkov
-          url: https://marketplace.visualstudio.com/items?itemName=Bridgecrew.checkov
     test_folder: repository_checkov
 
   # DEVSKIM

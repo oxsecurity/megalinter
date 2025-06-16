@@ -34,7 +34,7 @@ linters:
     linter_name: powershell
     linter_url: https://github.com/PowerShell/PSScriptAnalyzer
     linter_repo: https://github.com/PowerShell/PSScriptAnalyzer
-    linter_image_url: https://github.com/PowerShell/PSScriptAnalyzer/raw/master/logo.png
+    linter_image_url: https://raw.githubusercontent.com/PowerShell/PSScriptAnalyzer/refs/heads/main/logo.png
     linter_rules_url: https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/readme?view=ps-modules
     linter_rules_configuration_url: https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/using-scriptanalyzer?view=ps-modules#explicit
     linter_rules_inline_disable_url: https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/using-scriptanalyzer?view=ps-modules#suppressing-rules
@@ -68,7 +68,7 @@ linters:
     is_formatter: true
     linter_url: https://github.com/PowerShell/PSScriptAnalyzer
     linter_repo: https://github.com/PowerShell/PSScriptAnalyzer
-    linter_image_url: https://github.com/PowerShell/PSScriptAnalyzer/raw/master/logo.png
+    linter_image_url: https://raw.githubusercontent.com/PowerShell/PSScriptAnalyzer/refs/heads/main/logo.png
     linter_rules_url: https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/readme?view=ps-modules
     linter_rules_configuration_url: https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/using-scriptanalyzer?view=ps-modules#explicit
     linter_rules_inline_disable_url: https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/using-scriptanalyzer?view=ps-modules#suppressing-rules

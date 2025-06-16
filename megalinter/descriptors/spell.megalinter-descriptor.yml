@@ -140,9 +140,6 @@ linters:
       emacs:
         - name: flymake-vale
           url: https://github.com/tpeacock19/flymake-vale
-      jetbrains:
-        - name: Vale
-          url: https://vale.sh/docs/integrations/jetbrains/
       sublime:
         - name: SublimeLinter-contrib-vale
           url: https://packagecontrol.io/packages/SublimeLinter-contrib-vale

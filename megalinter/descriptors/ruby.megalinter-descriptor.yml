@@ -58,9 +58,6 @@ linters:
           url: https://github.com/rubocop-hq/rubocop-emacs
         - name: flycheck
           url: https://github.com/flycheck/flycheck
-      idea:
-        - name: RubyMine
-          url: https://www.jetbrains.com/help/idea/2017.1/rubocop.html
       sublime:
         - name: sublime_rubocop
           url: https://github.com/pderichs/sublime_rubocop

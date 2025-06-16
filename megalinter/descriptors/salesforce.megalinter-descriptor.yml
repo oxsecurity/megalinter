@@ -47,7 +47,6 @@ linters:
     linter_url: https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html
     linter_repo: https://github.com/forcedotcom/code-analyzer
     linter_rules_url: https://docs.pmd-code.org/latest/pmd_rules_apex.html
-    linter_image_url: https://raw.githubusercontent.com/forcedotcom/code-analyzer/master/src/resources/logo.png
     linter_rules_configuration_url: https://docs.pmd-code.org/latest/pmd_userdocs_making_rulesets.html
     linter_rules_inline_disable_url: https://docs.pmd-code.org/latest/pmd_userdocs_suppressing_warnings.html
     linter_megalinter_ref_url: https://github.com/forcedotcom/code-analyzer
@@ -121,7 +120,6 @@ linters:
     linter_url: https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html
     linter_repo: https://github.com/forcedotcom/code-analyzer
     linter_rules_url: https://github.com/forcedotcom/eslint-plugin-aura#rules
-    linter_image_url: https://raw.githubusercontent.com/forcedotcom/code-analyzer/master/src/resources/logo.png
     linter_rules_configuration_url: https://eslint.org/docs/latest/use/configure
     linter_rules_inline_disable_url: https://eslint.org/docs/latest/use/configure/rules#disabling-rules
     linter_megalinter_ref_url: https://github.com/forcedotcom/code-analyzer
@@ -185,7 +183,6 @@ linters:
     linter_url: https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html
     linter_repo: https://github.com/forcedotcom/code-analyzer
     linter_rules_url: https://github.com/salesforce/eslint-plugin-lwc#rules
-    linter_image_url: https://raw.githubusercontent.com/forcedotcom/code-analyzer/master/src/resources/logo.png
     linter_rules_configuration_url: https://eslint.org/docs/latest/use/configure
     linter_rules_inline_disable_url: https://eslint.org/docs/latest/use/configure/rules#disabling-rules
     linter_megalinter_ref_url: https://github.com/forcedotcom/code-analyzer
