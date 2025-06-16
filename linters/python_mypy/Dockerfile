@@ -49,7 +49,7 @@ FROM python:3.13-alpine3.21
 #############################################################################################
 #ARG__START
 # renovate: datasource=pypi depName=mypy
-ARG PIP_MYPY_VERSION=1.16.0
+ARG PIP_MYPY_VERSION=1.16.1
 # renovate: datasource=pypi depName=pip
 ARG PIP_PIP_VERSION=25.1.1
 # renovate: datasource=pypi depName=virtualenv

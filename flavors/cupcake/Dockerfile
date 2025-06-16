@@ -31,7 +31,7 @@ ARG REPOSITORY_GITLEAKS_VERSION=v8.27.2
 # renovate: datasource=docker depName=checkmarx/kics
 ARG REPOSITORY_KICS_VERSION=v2.1.10-alpine
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
-ARG REPOSITORY_TRUFFLEHOG_VERSION=3.89.1
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.89.2
 # renovate: datasource=docker depName=lycheeverse/lychee
 ARG SPELL_LYCHEE_VERSION=sha-7c4b132-alpine
 # renovate: datasource=docker depName=ghcr.io/terraform-linters/tflint
@@ -224,7 +224,7 @@ ARG PIP_FLAKE8_VERSION=7.2.0
 # renovate: datasource=pypi depName=isort
 ARG PIP_ISORT_VERSION=6.0.1
 # renovate: datasource=pypi depName=mypy
-ARG PIP_MYPY_VERSION=1.16.0
+ARG PIP_MYPY_VERSION=1.16.1
 # renovate: datasource=npm depName=pyright
 ARG NPM_PYRIGHT_VERSION=1.1.402
 # renovate: datasource=pypi depName=ruff
