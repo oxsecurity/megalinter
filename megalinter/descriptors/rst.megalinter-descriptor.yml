@@ -11,6 +11,9 @@ linters:
   - linter_name: rst-lint
     linter_url: https://github.com/twolfson/restructuredtext-lint
     linter_repo: https://github.com/twolfson/restructuredtext-lint
+    linter_spdx_license: Unlicense
+    linter_rules_configuration_url: https://github.com/twolfson/restructuredtext-lint#cli-utility
+    linter_rules_inline_disable_url: https://docutils.sourceforge.io/docs/ref/rst/directives.html#raw-data-pass-through
     linter_megalinter_ref_url: https://github.com/twolfson/restructuredtext-lint/wiki/Integration-in-other-tools#integration-in-other-tools
     examples:
       - "rst-lint myfile.rst"
@@ -29,6 +32,7 @@ linters:
   - linter_name: rstcheck
     linter_url: https://github.com/myint/rstcheck
     linter_repo: https://github.com/myint/rstcheck
+    linter_spdx_license: MIT
     config_file_name: ".rstcheck.cfg"
     linter_rules_configuration_url: https://github.com/myint/rstcheck#configuration-file
     linter_rules_inline_disable_url: https://github.com/myint/rstcheck#ignore-specific-errors
@@ -56,6 +60,9 @@ linters:
   - linter_name: rstfmt
     is_formatter: true
     linter_url: https://github.com/dzhu/rstfmt
+    linter_spdx_license: MIT
+    linter_rules_configuration_url: https://github.com/dzhu/rstfmt#usage
+    linter_rules_inline_disable_url: https://docutils.sourceforge.io/docs/ref/rst/directives.html#raw-data-pass-through
     linter_megalinter_ref_url: https://github.com/dzhu/rstfmt/pull/1
     cli_lint_extra_args:
       - "--check"

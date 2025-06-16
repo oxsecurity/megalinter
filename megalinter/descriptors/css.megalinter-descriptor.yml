@@ -12,6 +12,7 @@ linters:
   - class: StyleLintLinter
     linter_name: stylelint
     name: CSS_STYLELINT
+    linter_spdx_license: MIT
     linter_url: https://stylelint.io
     linter_rules_url: https://stylelint.io/user-guide/rules/list
     linter_repo: https://github.com/stylelint/stylelint
@@ -56,9 +57,6 @@ linters:
       pip:
         - cpplint==${PIP_CPPLINT_VERSION}
     ide:
-      atom:
-        - name: linter-stylelint
-          url: https://github.com/AtomLinter/linter-stylelint
       emacs:
         - name: flycheck
           url: https://github.com/flycheck/flycheck

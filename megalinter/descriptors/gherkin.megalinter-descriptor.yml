@@ -10,10 +10,12 @@ file_extensions:
 linters:
   # GHERKIN-LINT
   - linter_name: gherkin-lint
-    linter_url: https://github.com/vsiakka/gherkin-lint
-    linter_repo: https://github.com/vsiakka/gherkin-lint
-    linter_rules_url: https://github.com/vsiakka/gherkin-lint#available-rules
-    linter_rules_configuration_url: https://github.com/vsiakka/gherkin-lint#rule-configuration
+    linter_url: https://github.com/gherkin-lint/gherkin-lint
+    linter_repo: https://github.com/gherkin-lint/gherkin-lint
+    linter_spdx_license: ISC
+    linter_rules_url: https://github.com/gherkin-lint/gherkin-lint#available-rules
+    linter_rules_configuration_url: https://github.com/gherkin-lint/gherkin-lint#rule-configuration
+    linter_rules_inline_disable_url: https://github.com/gherkin-lint/gherkin-lint#ignoring-feature-files
     config_file_name: ".gherkin-lintrc"
     linter_version_cache: "0.0.0" # Not implemented on gherkin-lint
     examples:

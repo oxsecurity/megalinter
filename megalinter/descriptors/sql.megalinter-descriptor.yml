@@ -10,6 +10,7 @@ linters:
   - linter_name: sqlfluff
     linter_url: https://www.sqlfluff.com/
     linter_repo: https://github.com/sqlfluff/sqlfluff
+    linter_spdx_license: MIT
     linter_banner_image_url: https://raw.githubusercontent.com/sqlfluff/sqlfluff/main/images/sqlfluff-wide.png
     linter_image_url: https://docs.sqlfluff.com/en/stable/_static/images/sqlfluff-lrg.png
     linter_rules_url: https://docs.sqlfluff.com/en/stable/rules.html
@@ -38,6 +39,7 @@ linters:
   # TSQL
   - linter_name: tsqllint
     disabled: false
+    linter_spdx_license: MIT
     descriptor_flavors:
       - dotnet
       - dotnetweb

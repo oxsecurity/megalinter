@@ -20,6 +20,7 @@ linters:
     linter_name: eslint
     name: TYPESCRIPT_ES
     can_output_sarif: true
+    linter_spdx_license: MIT
     linter_text: |
       eslint requires a custom configuration file applicable to your project.
 
@@ -29,9 +30,9 @@ linters:
     linter_rules_url: https://typescript-eslint.io/rules/
     linter_banner_image_url: https://typescript-eslint.io/img/logo.svg
     linter_rules_configuration_url: https://typescript-eslint.io/getting-started/#configuration-values
-    linter_rules_inline_disable_url: https://eslint.org/docs/user-guide/configuring#disabling-rules-with-inline-comments
-    linter_rules_ignore_config_url: https://eslint.org/docs/latest/user-guide/configuring/ignoring-code#the-eslintignore-file
-    linter_megalinter_ref_url: https://eslint.org/docs/user-guide/integrations#source-control
+    linter_rules_inline_disable_url: https://eslint.org/docs/latest/use/configure/rules#disabling-rules
+    linter_rules_ignore_config_url: https://eslint.org/docs/latest/use/configure/ignore#the-eslintignore-file
+    linter_megalinter_ref_url: https://eslint.org/docs/latest/use/integrations#source-control
     active_only_if_file_found:
       - ".eslintrc.json"
       - ".eslintrc.yml"
@@ -151,6 +152,7 @@ linters:
   - class: TypeScriptStandardLinter
     linter_name: ts-standard
     name: TYPESCRIPT_STANDARD
+    linter_spdx_license: MIT
     activation_rules:
       - type: variable
         variable: TYPESCRIPT_STANDARD
@@ -159,6 +161,8 @@ linters:
     linter_url: https://standardjs.com/
     linter_repo: https://github.com/standard/ts-standard
     linter_rules_url: https://standardjs.com/rules.html
+    linter_rules_configuration_url: https://github.com/standard/ts-standard#readme
+    linter_rules_inline_disable_url: https://standardjs.com/#how-do-i-disable-a-rule
     linter_banner_image_url: https://github.com/standard/standard/raw/master/sticker.png
     cli_lint_mode: list_of_files
     cli_lint_fix_arg_name: "--fix"
@@ -187,6 +191,7 @@ linters:
   # PRETTIER
   - linter_name: prettier
     is_formatter: true
+    linter_spdx_license: MIT
     activation_rules:
       - type: variable
         variable: TYPESCRIPT_DEFAULT_STYLE
