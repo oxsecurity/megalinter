@@ -107,8 +107,8 @@ linters:
     linter_repo: https://github.com/chris48s/v8r
     linter_spdx_license: MIT
     linter_speed: 1
-    linter_text: v8r checks the validity of JSON/YAML files if they have a matching schema defined on [schemastore.org](https://www.schemastore.org/json/)
-    linter_rules_url: https://www.schemastore.org/json/
+    linter_text: v8r checks the validity of JSON/YAML files if they have a matching schema defined on [schemastore.org](https://www.schemastore.org/)
+    linter_rules_url: https://www.schemastore.org/
     linter_megalinter_ref_url: "no"
     config_file_name: ".v8rrc.yml"
     cli_config_arg_name: ""

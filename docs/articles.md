@@ -84,15 +84,12 @@ description: List of all known articles, blog posts and videos that talk about M
 
 <div style="text-align:center"><iframe width="560" height="315" src="https://www.youtube.com/embed/oegOSmVegiQ?start=1510" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
 
-- (FR) Coding Tech - L'importance de la CI/CD dans le développement de logiciels, by [Arsene Fougerouse](https://github.com/GridexX) from [R2DevOps](https://r2devops.io/)
-
-<div style="text-align:center"><iframe width="560" height="315" src="https://www.youtube.com/embed/raCDpsP9O78" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 
 ## Web Sites
 
 - [analysis-tools.dev](https://analysis-tools.dev/tool/mega-linter){target=_blank}
 - [awesome-linters](https://github.com/caramelomartins/awesome-linters#language-agnostic){target=_blank}
-- [schemastore.org](https://www.schemastore.org/json/){target=_blank}
+- [schemastore.org](https://www.schemastore.org/){target=_blank}
 - [abhith.net](https://www.abhith.net/recommended/){target=_blank}
 <!-- - [iac-analyzers.dev/](https://iac-analyzers.dev/){target=_blank} -->
 - [my-devops-lab.com](https://www.my-devops-lab.com/tools){target=_blank}
