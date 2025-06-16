@@ -24,6 +24,7 @@ linters:
     linter_rules_inline_disable_url: https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter#silencing-false-positives
     linter_rules_url: https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter#default-rules
     linter_url: https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter
+    linter_spdx_license: MIT
     examples:
       - |
         # Bicep CLI 

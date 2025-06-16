@@ -24,6 +24,7 @@ linters:
       To see MarkdownLint version, you can have a look in the dependencies of latest markdownlint-cli version.
     linter_url: https://github.com/DavidAnson/markdownlint
     linter_repo: https://github.com/DavidAnson/markdownlint
+    linter_spdx_license: MIT
     linter_rules_url: https://github.com/DavidAnson/markdownlint#rules--aliases
     linter_image_url: https://davidanson.gallerycdn.vsassets.io/extensions/davidanson/vscode-markdownlint/0.37.1/1601748708034/Microsoft.VisualStudio.Services.Icons.Default
     linter_rules_configuration_url: https://github.com/igorshubovych/markdownlint-cli#configuration
@@ -45,9 +46,6 @@ linters:
       npm:
         - markdownlint-cli@${NPM_MARKDOWNLINT_CLI_VERSION}
     ide:
-      atom:
-        - name: linter-node-markdownlint
-          url: https://atom.io/packages/linter-node-markdownlint
       sublime:
         - name: SublimeLinter-contrib-markdownlint
           url: https://packagecontrol.io/packages/SublimeLinter-contrib-markdownlint
@@ -69,6 +67,7 @@ linters:
         default_value: markdownlint
     linter_url: https://remark.js.org/
     linter_repo: https://github.com/remarkjs/remark-lint
+    linter_spdx_license: MIT
     linter_image_url: https://raw.githubusercontent.com/remarkjs/remark-lint/02295bc/logo.svg?sanitize=true
     linter_rules_url: https://github.com/remarkjs/remark-lint/blob/main/doc/rules.md#list-of-rules
     linter_rules_configuration_url: https://github.com/remarkjs/remark-lint#configuring-remark-lint
@@ -98,9 +97,6 @@ linters:
         - remark-cli@${NPM_REMARK_CLI_VERSION}
         - remark-preset-lint-recommended@${NPM_REMARK_PRESET_LINT_RECOMMENDED_VERSION}
     ide:
-      atom:
-        - name: linter-remark
-          url: https://github.com/wooorm/linter-remark
       sublime:
         - name: SublimeLinter-contrib-remark-lint
           url: https://packagecontrol.io/packages/SublimeLinter-contrib-remark-lint
@@ -114,6 +110,7 @@ linters:
   - linter_name: markdown-link-check
     linter_url: https://github.com/tcort/markdown-link-check
     linter_repo: https://github.com/tcort/markdown-link-check
+    linter_spdx_license: ISC
     linter_speed: 1
     linter_rules_configuration_url: https://github.com/tcort/markdown-link-check#config-file-format
     linter_rules_inline_disable_url: https://github.com/tcort/markdown-link-check#disable-comments
@@ -143,6 +140,9 @@ linters:
       markdown-table-formatter detects wrongly formatted markdown tables and can automatically reformat them
     linter_url: https://www.npmjs.com/package/markdown-table-formatter
     linter_repo: https://github.com/nvuillam/markdown-table-formatter
+    linter_spdx_license: MIT
+    linter_rules_configuration_url: https://github.com/nvuillam/markdown-table-formatter#options
+    linter_rules_inline_disable_url: https://github.com/nvuillam/markdown-table-formatter#ignoring-code-blocks
     cli_lint_mode: list_of_files
     cli_lint_extra_args:
       - "--check"

@@ -13,6 +13,9 @@ linters:
     linter_name: raku
     linter_url: https://raku.org/
     linter_repo: https://github.com/rakudo/rakudo
+    linter_spdx_license: Artistic-2.0
+    linter_rules_configuration_url: https://docs.raku.org/language/pragmas
+    linter_rules_inline_disable_url: https://docs.raku.org/language/pragmas#no
     linter_image_url: https://raku.org/camelia-logo.png
     config_file_name: META6.json
     cli_lint_extra_args:
@@ -33,9 +36,6 @@ linters:
               && rm "rakudo-pkg-Alpine${RAKU_RAKU_ALPINE_VERSION}_${RAKU_RAKU_VERSION}-01_x86_64.apk"
         - ENV PATH="~/.raku/bin:/opt/rakudo-pkg/bin:/opt/rakudo-pkg/share/perl6/site/bin:$PATH"
     ide:
-      atom:
-        - name: language-perl6
-          url: https://atom.io/packages/language-perl6
       comma:
         - name: Native Support
           url: https://commaide.com/

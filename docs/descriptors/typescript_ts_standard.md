@@ -17,6 +17,8 @@ description: How to use ts-standard (configure, ignore files, ignore errors, hel
 
 - Version in MegaLinter: **12.0.2**
 - Visit [Official Web Site](https://standardjs.com/){target=_blank}
+- See [How to configure ts-standard rules](https://github.com/standard/ts-standard#readme){target=_blank}
+- See [How to disable ts-standard rules in files](https://standardjs.com/#how-do-i-disable-a-rule){target=_blank}
 - See [Index of problems detected by ts-standard](https://standardjs.com/rules.html){target=_blank}
 
 [![ts-standard - GitHub](https://gh-card.dev/repos/standard/ts-standard.svg?fullname=)](https://github.com/standard/ts-standard){target=_blank}

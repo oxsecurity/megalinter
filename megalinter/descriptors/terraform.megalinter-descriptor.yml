@@ -11,6 +11,7 @@ linters:
   - class: TfLintLinter
     can_output_sarif: true
     linter_name: tflint
+    linter_spdx_license: MPL-2.0
     name: TERRAFORM_TFLINT
     descriptor_flavors:
       - cupcake
@@ -63,6 +64,7 @@ linters:
   - class: TerrascanLinter
     linter_name: terrascan
     can_output_sarif: true
+    linter_spdx_license: Apache-2.0
     name: TERRAFORM_TERRASCAN
     descriptor_flavors:
       - cupcake
@@ -102,6 +104,7 @@ linters:
   # TERRAGRUNT
   - linter_name: terragrunt
     name: TERRAFORM_TERRAGRUNT
+    linter_spdx_license: MIT
     file_extensions:
       - ".hcl"
     file_names_not_ends_with:
@@ -141,6 +144,7 @@ linters:
   - linter_name: terraform-fmt
     name: TERRAFORM_TERRAFORM_FMT
     is_formatter: true
+    linter_spdx_license: BUSL-1.1
     linter_url: https://developer.hashicorp.com/terraform/cli/commands/fmt
     linter_repo: https://github.com/hashicorp/terraform
     linter_banner_image_url: https://www.datocms-assets.com/2885/1629941242-logo-terraform-main.svg
@@ -163,9 +167,6 @@ linters:
         - FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} AS terragrunt
         - COPY --link --from=terragrunt /bin/terraform /usr/bin/
     ide:
-      atom:
-        - name: terraform-fmt
-          url: https://atom.io/packages/terraform-fmt
       idea:
         - name: HashiCorp Terraform / HCL language support
           url: https://plugins.jetbrains.com/plugin/7808-hashicorp-terraform--hcl-language-support

@@ -13,6 +13,7 @@ linters:
     name: PYTHON_PYLINT
     linter_url: https://pylint.readthedocs.io
     linter_repo: https://github.com/pylint-dev/pylint
+    linter_spdx_license: GPL-2.0
     linter_speed: 2
     linter_rules_url: https://pylint.readthedocs.io/en/stable/user_guide/messages/index.html
     linter_image_url: https://raw.githubusercontent.com/pylint-dev/pylint/main/doc/logo.svg
@@ -61,6 +62,7 @@ linters:
         default_value: black
     linter_url: https://black.readthedocs.io/en/stable/
     linter_repo: https://github.com/psf/black
+    linter_spdx_license: MIT
     linter_speed: 3
     linter_banner_image_url: https://raw.githubusercontent.com/psf/black/master/docs/_static/logo2-readme.png
     linter_rules_configuration_url: https://black.readthedocs.io/en/stable/usage_and_configuration/the_basics.html#configuration-format
@@ -86,9 +88,6 @@ linters:
       pip:
         - black==${PIP_BLACK_VERSION}
     ide:
-      atom:
-        - name: python-black
-          url: https://atom.io/packages/python-black
       emacs:
         - name: blacken
           url: https://github.com/pythonic-emacs/blacken
@@ -130,9 +129,6 @@ linters:
       pip:
         - flake8==${PIP_FLAKE8_VERSION}
     ide:
-      atom:
-        - name: linter-flake8
-          url: https://atom.io/packages/linter-flake8
       idea:
         - name: flake8-support
           url: https://plugins.jetbrains.com/plugin/11563-flake8-support
@@ -146,6 +142,7 @@ linters:
     is_formatter: true
     linter_url: https://pycqa.github.io/isort/
     linter_repo: https://github.com/PyCQA/isort
+    linter_spdx_license: MIT
     linter_speed: 5
     linter_banner_image_url: https://raw.githubusercontent.com/pycqa/isort/develop/art/logo_large.png
     linter_rules_configuration_url: https://pycqa.github.io/isort/docs/configuration/config_files.html
@@ -180,11 +177,6 @@ linters:
         - black==${PIP_BLACK_VERSION}
         - isort==${PIP_ISORT_VERSION}
     ide:
-      atom:
-        - name: atom-python-isort
-          url: https://github.com/bh/atom-python-isort
-        - name: atom-isort
-          url: https://atom.io/packages/atom-isort
       emacs:
         - name: py-isort.el
           url: https://github.com/paetzke/py-isort.el
@@ -209,6 +201,7 @@ linters:
       If you find it too harsh, you may define `PYTHON_BANDIT_DISABLE_ERRORS: true` in your `.mega-linter.yml` config file
     linter_url: https://bandit.readthedocs.io/en/latest/
     linter_repo: https://github.com/PyCQA/bandit
+    linter_spdx_license: Apache-2.0
     linter_rules_url: https://bandit.readthedocs.io/en/latest/plugins/index.html#complete-test-plugin-listing
     linter_banner_image_url: https://github.com/PyCQA/bandit/raw/main/logo/logotype-sm.png
     linter_image_url: https://github.com/PyCQA/bandit/raw/main/logo/logomark.png
@@ -244,9 +237,6 @@ linters:
         - bandit_sarif_formatter==${PIP_BANDIT_SARIF_FORMATTER_VERSION}
         - bandit[toml]==${PIP_BANDIT_VERSION}
     ide:
-      atom:
-        - name: bandit-lint
-          url: https://atom.io/packages/bandit-lint
       sublime:
         - name: SublimeLinter-bandit
           url: https://github.com/SublimeLinter/SublimeLinter-bandit
@@ -291,9 +281,6 @@ linters:
       pip:
         - mypy==${PIP_MYPY_VERSION}
     ide:
-      atom:
-        - name: linter-mypy
-          url: https://atom.io/packages/linter-mypy
       emacs:
         - name: Flycheck mypy
           url: https://github.com/lbolla/emacs-flycheck-mypy
@@ -348,6 +335,7 @@ linters:
     linter_url: https://github.com/Microsoft/pyright
     linter_rules_url: https://github.com/microsoft/pyright#type-checking-features
     linter_repo: https://github.com/microsoft/pyright
+    linter_spdx_license: MIT
     linter_banner_image_url: https://github.com/microsoft/pyright/raw/main/docs/img/PyrightLarge.png
     linter_speed: 1
     linter_rules_configuration_url: https://github.com/microsoft/pyright/blob/main/docs/configuration.md

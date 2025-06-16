@@ -13,6 +13,7 @@ linters:
   # GOLANG CI LINT
   - linter_name: golangci-lint
     can_output_sarif: true
+    linter_spdx_license: GPL-3.0
     linter_url: https://golangci-lint.run/
     linter_repo: https://github.com/golangci/golangci-lint
     linter_rules_url: https://golangci-lint.run/usage/linters/
@@ -41,9 +42,6 @@ linters:
           RUN wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s "v${GO_GOLANGCI_LINT_VERSION}" \
               && golangci-lint --version
     ide:
-      atom:
-        - name: go-plus
-          url: https://atom.io/packages/go-plus
       emacs:
         - name: flycheck-golandci-lint
           url: https://github.com/weijiangan/flycheck-golangci-lint
@@ -66,11 +64,13 @@ linters:
     linter_name: revive
     test_folder: golang_revive
     can_output_sarif: true
+    linter_spdx_license: MIT
     linter_url: https://revive.run/
     linter_repo: https://github.com/mgechev/revive
     linter_rules_url: https://revive.run/r
     linter_image_url: https://github.com/mgechev/revive/raw/master/assets/logo.png
     linter_rules_configuration_url: https://revive.run/docs#custom-configuration
+    linter_rules_inline_disable_url: https://revive.run/docs#comment-directives
     config_file_name: revive.toml
     cli_config_arg_name: "-config"
     cli_lint_mode: list_of_files
@@ -102,9 +102,6 @@ linters:
           RUN GOBIN=/usr/bin go install github.com/mgechev/revive@$GO_REVIVE_VERSION
         - COPY --link --from=revive /usr/bin/revive /usr/bin/revive
     ide:
-      atom:
-        - name: linter-revive
-          url: https://github.com/morphy2k/linter-revive
       vim:
         - name: ale
           url: https://github.com/dense-analysis/ale

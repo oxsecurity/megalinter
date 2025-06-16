@@ -9,7 +9,7 @@ description: How to use remark-lint (configure, ignore files, ignore errors, hel
 
 _This linter has been disabled in this version_
 
-_Disabled reason: Bug in remark-lint: <https://github.com/remarkjs/remark-lint/issues/322>_
+_Disabled reason: Bug in remark-lint: https://github.com/remarkjs/remark-lint/issues/322_
 
 ## remark-lint documentation
 
@@ -54,7 +54,6 @@ Use remark-lint in your favorite IDE to catch errors before MegaLinter !
 
 |                                                                   <!-- -->                                                                   | IDE                                                  | Extension Name                                                                                            |                                                Install                                                |
 |:--------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|-----------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------:|
-|  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Atom](https://atom.io/)                             | [linter-remark](https://github.com/wooorm/linter-remark)                                                  |               [Visit Web Site](https://github.com/wooorm/linter-remark){target=_blank}                |
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/)         | [SublimeLinter-contrib-remark-lint](https://packagecontrol.io/packages/SublimeLinter-contrib-remark-lint) | [Visit Web Site](https://packagecontrol.io/packages/SublimeLinter-contrib-remark-lint){target=_blank} |
 |   <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a>   | [vim](https://www.vim.org/)                          | [ale](https://github.com/w0rp/ale)                                                                        |                     [Visit Web Site](https://github.com/w0rp/ale){target=_blank}                      |
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/) | [vscode-remark-lint](https://github.com/drewbourne/vscode-remark-lint)                                    |           [Visit Web Site](https://github.com/drewbourne/vscode-remark-lint){target=_blank}           |

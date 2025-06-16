@@ -42,9 +42,9 @@ description: How to use clippy (configure, ignore files, ignore errors, help & v
 
 Use clippy in your favorite IDE to catch errors before MegaLinter !
 
-|                                                                 <!-- -->                                                                  | IDE                      | Extension Name                                              |                                   Install                                   |
-|:-----------------------------------------------------------------------------------------------------------------------------------------:|--------------------------|-------------------------------------------------------------|:---------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a> | [Atom](https://atom.io/) | [Atom IDE Rest](https://github.com/rust-lang/atom-ide-rust) | [Visit Web Site](https://github.com/rust-lang/atom-ide-rust){target=_blank} |
+|                                                                  <!-- -->                                                                   | IDE                                                  | Extension Name                                                                               |                                                                                   Install                                                                                    |
+|:-------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|----------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer) | [![Install in VSCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/rust-lang.rust-analyzer){target=_blank} |
 
 ## MegaLinter Flavors
 

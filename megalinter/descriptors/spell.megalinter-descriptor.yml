@@ -9,6 +9,7 @@ linters:
   - class: CSpellLinter
     linter_name: cspell
     name: SPELL_CSPELL
+    linter_spdx_license: MIT
     variables:
       - name: SPELL_CSPELL_ANALYZE_FILE_NAMES
         default_value: "true"
@@ -48,6 +49,7 @@ linters:
   - class: ProselintLinter
     linter_name: proselint
     name: SPELL_PROSELINT
+    linter_spdx_license: BSD-3-Clause
     lint_all_other_linters_files: false
     file_extensions:
       - ".md"
@@ -78,9 +80,6 @@ linters:
       pip:
         - proselint==${PIP_PROSELINT_VERSION}
     ide:
-      atom:
-        - name: linter-proselint
-          url: https://atom.io/packages/linter-proselint
       idea:
         - name: Proselint
           url: https://plugins.jetbrains.com/plugin/9854-proselint
@@ -97,6 +96,7 @@ linters:
     linter_name: vale
     name: SPELL_VALE
     can_output_sarif: false
+    linter_spdx_license: MIT
     lint_all_other_linters_files: false
     file_extensions:
       - ".md"
@@ -157,6 +157,7 @@ linters:
   - class: LycheeLinter
     linter_name: lychee
     name: SPELL_LYCHEE
+    linter_spdx_license: Apache-2.0
     linter_text: |
       A file **.lycheeignore** can be defined at the root of the repository to ignore some urls.
 
@@ -179,8 +180,9 @@ linters:
     linter_repo: https://github.com/lycheeverse/lychee
     linter_banner_image_url: https://raw.githubusercontent.com/lycheeverse/lychee/master/assets/banner.svg
     linter_image_url: https://raw.githubusercontent.com/lycheeverse/lychee/master/assets/logo.svg
-    linter_rules_url: https://lychee.cli.rs/#/usage/cli
-    linter_rules_configuration_url: https://lychee.cli.rs/#/usage/config
+    linter_rules_url: https://lychee.cli.rs/usage/cli/
+    linter_rules_configuration_url: https://lychee.cli.rs/usage/config/
+    linter_rules_ignore_config_url: https://lychee.cli.rs/recipes/excluding-links/
     linter_speed: 2
     lint_all_other_linters_files: false
     lint_all_files: false

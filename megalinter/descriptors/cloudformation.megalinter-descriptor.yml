@@ -16,7 +16,10 @@ linters:
     can_output_sarif: true
     linter_url: https://github.com/aws-cloudformation/cfn-lint
     linter_repo: https://github.com/aws-cloudformation/cfn-lint
+    linter_spdx_license: MIT-0
     linter_rules_url: https://github.com/aws-cloudformation/cfn-lint/blob/main/docs/rules.md
+    linter_rules_configuration_url: https://github.com/aws-cloudformation/cfn-lint#configuration
+    linter_rules_inline_disable_url: https://github.com/aws-cloudformation/cfn-lint#metadata
     linter_banner_image_url: https://raw.githubusercontent.com/aws-cloudformation/cfn-lint/main/logo.png
     linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/cfn-lint.png
     config_file_name: .cfnlintrc.yml
@@ -38,9 +41,6 @@ linters:
       pip:
         - cfn-lint[sarif]==${PIP_CFN_LINT_VERSION}
     ide:
-      atom:
-        - name: atom-cfn-lint
-          url: https://atom.io/packages/atom-cfn-lint
       idea:
         - name: cfn-lint
           url: https://plugins.jetbrains.com/plugin/10973-cfn-lint
