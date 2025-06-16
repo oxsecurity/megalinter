@@ -34,6 +34,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - mega-linter-runner
 
 - Linter versions upgrades (N)
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.16.0 to **1.16.1** on 2025-06-16
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.89.1 to **3.89.2** on 2025-06-16
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15
