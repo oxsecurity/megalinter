@@ -23,7 +23,6 @@ linters:
         description: The number of indentation spaces when `XML_XMLLINT_AUTOFORMAT` is `true`
     linter_url: https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home
     linter_rules_configuration_url: https://gnome.pages.gitlab.gnome.org/libxml2/xmllint.html
-    linter_rules_inline_disable_url: https://gnome.pages.gitlab.gnome.org/libxml2/xmllint.html
     version_extract_regex: "(?<=libxml version )\\d+(\\d+)+"
     cli_lint_mode: list_of_files
     cli_lint_fix_arg_name: "--format"

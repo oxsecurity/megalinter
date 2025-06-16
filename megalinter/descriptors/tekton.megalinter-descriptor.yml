@@ -14,7 +14,6 @@ linters:
     linter_repo: https://github.com/IBM/tekton-lint
     linter_rules_url: https://github.com/IBM/tekton-lint#rules
     linter_rules_configuration_url: https://github.com/IBM/tekton-lint#configuring-tekton-lint
-    linter_rules_inline_disable_url: https://github.com/IBM/tekton-lint#ignore-errors
     linter_spdx_license: Apache-2.0
     config_file_name: .tektonlintrc.yaml
     cli_config_arg_name: ""

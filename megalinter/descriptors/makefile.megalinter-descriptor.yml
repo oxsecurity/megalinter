@@ -23,7 +23,7 @@ linters:
     linter_url: https://github.com/mrtazz/checkmake
     linter_repo: https://github.com/mrtazz/checkmake
     linter_rules_configuration_url: https://github.com/mrtazz/checkmake/blob/main/fixtures/exampleConfig.ini
-    linter_rules_inline_disable_url: https://github.com/mrtazz/checkmake#usage
+    linter_megalinter_ref_url: https://github.com/checkmake/checkmake?tab=readme-ov-file#megalinter
     linter_spdx_license: MIT
     cli_config_arg_name: "--config"
     config_file_name: .checkmake.ini

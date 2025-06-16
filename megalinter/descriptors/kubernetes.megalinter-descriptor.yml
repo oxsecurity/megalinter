@@ -88,8 +88,6 @@ linters:
     linter_banner_image_url: https://www.armosec.io/wp-content/uploads/2022/11/Kubescape_BY_ARMO.png
     linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/kubescape.png
     linter_spdx_license: Apache-2.0
-    linter_rules_configuration_url: https://github.com/kubescape/kubescape/blob/master/docs/scan.md
-    linter_rules_inline_disable_url: https://github.com/kubescape/kubescape/blob/master/docs/scan.md#exclude
     active_only_if_file_found:
       - Chart.yml
       - Chart.yaml

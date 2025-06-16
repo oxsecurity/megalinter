@@ -14,7 +14,6 @@ linters:
     linter_url: https://snakemake.github.io/
     linter_repo: https://github.com/snakemake/snakemake
     linter_rules_configuration_url: https://snakemake.readthedocs.io/en/stable/snakefiles/configuration.html
-    linter_rules_inline_disable_url: https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#rule-dependencies
     linter_banner_image_url: https://github.com/snakemake/snakemake/raw/6fcdc8a22db5522e232638bff16da9b50996eb45/images/biglogo.png
     linter_spdx_license: MIT
     cli_lint_extra_args:
@@ -44,7 +43,6 @@ linters:
     linter_url: https://github.com/snakemake/snakefmt
     linter_repo: https://github.com/snakemake/snakefmt
     linter_rules_configuration_url: https://github.com/snakemake/snakefmt#configuration
-    linter_rules_inline_disable_url: https://github.com/snakemake/snakefmt#usage
     linter_spdx_license: MIT
     config_file_name: .snakefmt.toml
     cli_lint_extra_args:

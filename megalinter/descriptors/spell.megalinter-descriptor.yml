@@ -64,7 +64,6 @@ linters:
     linter_banner_image_url: https://raw.githubusercontent.com/amperser/proselint/main/logo.png
     linter_rules_url: https://github.com/amperser/proselint#checks
     linter_rules_configuration_url: https://github.com/amperser/proselint#checks
-    linter_rules_inline_disable_url: https://github.com/amperser/proselint#config
     cli_config_arg_name: --config
     config_file_name: .proselintrc
     cli_lint_mode: list_of_files
@@ -181,9 +180,9 @@ linters:
     linter_repo: https://github.com/lycheeverse/lychee
     linter_banner_image_url: https://raw.githubusercontent.com/lycheeverse/lychee/master/assets/banner.svg
     linter_image_url: https://raw.githubusercontent.com/lycheeverse/lychee/master/assets/logo.svg
-    linter_rules_url: https://lychee.cli.rs/#/usage/cli
-    linter_rules_configuration_url: https://lychee.cli.rs/#/usage/config
-    linter_rules_inline_disable_url: https://lychee.cli.rs/#/usage/config?id=ignoring-checks
+    linter_rules_url: https://lychee.cli.rs/usage/cli/
+    linter_rules_configuration_url: https://lychee.cli.rs/usage/config/
+    linter_rules_ignore_config_url: https://lychee.cli.rs/recipes/excluding-links/
     linter_speed: 2
     lint_all_other_linters_files: false
     lint_all_files: false

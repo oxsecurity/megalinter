@@ -28,7 +28,6 @@ linters:
     linter_spdx_license: GPL-3.0
     linter_rules_url: https://sourceforge.net/p/cppcheck/wiki/ListOfChecks/
     linter_rules_configuration_url: https://cppcheck.sourceforge.io/manual.html#configuration
-    linter_rules_inline_disable_url: https://cppcheck.sourceforge.io/manual.html#idm140024569734528
     cli_lint_extra_args:
       - --error-exitcode=1
     cli_lint_errors_count: regex_count
@@ -46,8 +45,6 @@ linters:
     linter_repo: https://github.com/cpplint/cpplint
     linter_spdx_license: BSD-3-Clause
     linter_rules_url: https://google.github.io/styleguide/cppguide.html
-    linter_rules_configuration_url: https://github.com/cpplint/cpplint#flags
-    linter_rules_inline_disable_url: https://github.com/cpplint/cpplint#line-by-line-suppression
     cli_lint_mode: list_of_files
     cli_help_arg_name: "--help"
     cli_lint_errors_count: regex_number

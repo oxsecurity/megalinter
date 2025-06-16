@@ -27,7 +27,6 @@ linters:
     linter_url: https://github.com/Azure/arm-ttk
     linter_repo: https://github.com/Azure/arm-ttk
     linter_rules_configuration_url: https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/test-toolkit#customize-tests
-    linter_rules_inline_disable_url: https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/test-toolkit#test-parameters
     linter_spdx_license: MIT
     config_file_name: .arm-ttk.psd1
     linter_version_cache: "0.0.0" # TODO: retrieve arm-ttk version
