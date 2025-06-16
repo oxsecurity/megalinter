@@ -36,9 +36,6 @@ linters:
               && rm "rakudo-pkg-Alpine${RAKU_RAKU_ALPINE_VERSION}_${RAKU_RAKU_VERSION}-01_x86_64.apk"
         - ENV PATH="~/.raku/bin:/opt/rakudo-pkg/bin:/opt/rakudo-pkg/share/perl6/site/bin:$PATH"
     ide:
-      comma:
-        - name: Native Support
-          url: https://commaide.com/
       vscode:
         - name: Perl6 Language Support
           url: https://marketplace.visualstudio.com/items?itemName=scriplit.perl6-lsp
