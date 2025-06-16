@@ -11,8 +11,10 @@ linters:
     linter_name: lintr
     linter_url: https://lintr.r-lib.org/
     linter_repo: https://github.com/r-lib/lintr
+    linter_spdx_license: MIT
     linter_rules_url: https://lintr.r-lib.org/reference/index.html
     linter_rules_configuration_url: https://lintr.r-lib.org/articles/lintr.html#configuring-linters
+    linter_rules_inline_disable_url: https://lintr.r-lib.org/articles/lintr.html#exclusions
     linter_megalinter_ref_url: https://lintr.r-lib.org/articles/continuous-integration.html
     config_file_name: .lintr
     linter_version_cache: "0.0.0"

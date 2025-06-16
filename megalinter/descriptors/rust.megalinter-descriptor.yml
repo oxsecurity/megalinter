@@ -11,6 +11,7 @@ linters:
     linter_name: clippy
     linter_url: https://github.com/rust-lang/rust-clippy
     linter_repo: https://github.com/rust-lang/rust-clippy
+    linter_spdx_license: Apache-2.0
     linter_rules_url: https://rust-lang.github.io/rust-clippy/stable/index.html
     linter_rules_configuration_url: https://github.com/rust-lang/rust-clippy#configuration
     linter_rules_inline_disable_url: https://github.com/rust-lang/rust-clippy#allowingdenying-lints
@@ -24,6 +25,6 @@ linters:
       cargo:
         - clippy
     ide:
-      atom:
-        - name: Atom IDE Rest
-          url: https://github.com/rust-lang/atom-ide-rust
+      vscode:
+        - name: rust-analyzer
+          url: https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer

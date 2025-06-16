@@ -18,6 +18,7 @@ linters:
     can_output_sarif: true
     linter_url: https://ansible-lint.readthedocs.io/
     linter_repo: https://github.com/ansible/ansible-lint
+    linter_spdx_license: GPL-3.0-only
     linter_rules_url: https://ansible-lint.readthedocs.io/rules/
     linter_rules_configuration_url: https://ansible-lint.readthedocs.io/configuring/#configuration-file
     linter_rules_inline_disable_url: https://ansible-lint.readthedocs.io/usage/#muting-warnings-to-avoid-false-positives

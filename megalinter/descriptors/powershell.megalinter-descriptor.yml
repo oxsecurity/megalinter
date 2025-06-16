@@ -38,6 +38,7 @@ linters:
     linter_rules_url: https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/readme?view=ps-modules
     linter_rules_configuration_url: https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/using-scriptanalyzer?view=ps-modules#explicit
     linter_rules_inline_disable_url: https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/using-scriptanalyzer?view=ps-modules#suppressing-rules
+    linter_spdx_license: MIT
     config_file_name: .powershell-psscriptanalyzer.psd1
     cli_lint_errors_regex: "(?m)^\\s*(Information|Warning|Error|ParseError)\\s"
     cli_lint_errors_count: regex_count
@@ -71,6 +72,7 @@ linters:
     linter_rules_url: https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/readme?view=ps-modules
     linter_rules_configuration_url: https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/using-scriptanalyzer?view=ps-modules#explicit
     linter_rules_inline_disable_url: https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/using-scriptanalyzer?view=ps-modules#suppressing-rules
+    linter_spdx_license: MIT
     config_file_name: .powershell-formatter.psd1
     test_folder: powershell_formatter
     cli_lint_fix_arg_name: "--megalinter-fix-flag" # Workaround for PowershellLinter class behavior

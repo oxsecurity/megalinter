@@ -31,6 +31,7 @@ linters:
   - linter_name: phpcs
     name: PHP_PHPCS
     can_output_sarif: true
+    linter_spdx_license: BSD-3-Clause
     linter_url: https://github.com/PHPCSStandards/PHP_CodeSniffer
     linter_repo: https://github.com/PHPCSStandards/PHP_CodeSniffer
     linter_rules_configuration_url: https://github.com/PHPCSStandards/PHP_CodeSniffer/wiki/Advanced-Usage#using-a-default-configuration-file
@@ -61,11 +62,7 @@ linters:
         - |
           RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require squizlabs/php_codesniffer:${PHP_SQUIZLABS_PHP_CODESNIFFER_VERSION} bartlett/sarif-php-converters:${PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION}
     ide:
-      atom:
-        - name: linter-phpcs
-          url: https://atom.io/packages/linter-phpcs
-        - name: atom-phpcs
-          url: https://github.com/bpearson/atom-phpcs
+
       idea:
         - name: phpcs
           url: https://www.jetbrains.com/help/phpstorm/2019.1/using-php-code-sniffer.html
@@ -81,6 +78,7 @@ linters:
   - linter_name: phpstan
     name: PHP_PHPSTAN
     can_output_sarif: true
+    linter_spdx_license: MIT
     linter_url: https://phpstan.org/
     linter_repo: https://github.com/phpstan/phpstan
     linter_image_url: https://i.imgur.com/WaRKPlC.png
@@ -125,6 +123,7 @@ linters:
   - linter_name: psalm
     name: PHP_PSALM
     can_output_sarif: true
+    linter_spdx_license: MIT
     linter_url: https://psalm.dev
     linter_repo: https://github.com/vimeo/psalm
     linter_rules_url: https://psalm.dev/docs/running_psalm/issues/
@@ -166,6 +165,8 @@ linters:
     can_output_sarif: true
     linter_url: https://github.com/overtrue/phplint
     linter_repo: https://github.com/overtrue/phplint
+    linter_spdx_license: MIT
+    linter_rules_configuration_url: https://github.com/overtrue/phplint/blob/main/docs/configuration.md#configuration
     config_file_name: .phplint.yml
     cli_lint_mode: list_of_files
     cli_sarif_args:
@@ -196,6 +197,10 @@ linters:
       - Add "--allow-risky=yes" option in PHP_PHPCSFIXER_ARGUMENTS variable
     linter_url: https://cs.symfony.com/
     linter_repo: https://github.com/PHP-CS-Fixer/PHP-CS-Fixer
+    linter_spdx_license: MIT
+    linter_rules_url: https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/blob/master/doc/rules/index.rst
+    linter_rules_configuration_url: https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/blob/master/doc/config.rst
+    linter_rules_inline_disable_url: https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/blob/master/doc/usage.rst#ignoring-code
     linter_image_url: https://cs.symfony.com/_static/images/logo.png
     config_file_name: .php-cs-fixer.dist.php
     cli_lint_mode: project

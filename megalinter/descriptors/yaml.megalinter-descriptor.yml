@@ -13,6 +13,7 @@ linters:
     is_formatter: true
     linter_url: https://prettier.io/
     linter_repo: https://github.com/prettier/prettier
+    linter_spdx_license: MIT
     linter_rules_url: https://prettier.io/docs/en/options.html
     linter_rules_configuration_url: https://prettier.io/docs/en/configuration.html
     linter_rules_inline_disable_url: https://prettier.io/docs/en/ignore.html#yaml
@@ -41,13 +42,6 @@ linters:
       npm:
         - "prettier@${NPM_PRETTIER_VERSION}"
     ide:
-      atom:
-        - name: prettier-atom
-          url: https://github.com/prettier/prettier-atom
-        - name: atom-mprettier
-          url: https://github.com/t9md/atom-mprettier
-        - name: atom-miniprettier
-          url: https://github.com/duailibe/atom-miniprettier
       emacs:
         - name: prettier-emacs
           url: https://github.com/prettier/prettier-emacs
@@ -75,9 +69,11 @@ linters:
   - linter_name: yamllint
     linter_url: https://yamllint.readthedocs.io/
     linter_repo: https://github.com/adrienverge/yamllint
+    linter_spdx_license: GPL-3.0
     linter_speed: 3
     linter_rules_url: https://yamllint.readthedocs.io/en/stable/rules.html
     linter_rules_configuration_url: https://yamllint.readthedocs.io/en/stable/configuration.html#configuration
+    linter_rules_inline_disable_url: https://yamllint.readthedocs.io/en/stable/disable_with_comments.html
     linter_megalinter_ref_url: "no"
     config_file_name: ".yamllint.yml"
     cli_lint_mode: list_of_files
@@ -109,6 +105,7 @@ linters:
   - linter_name: v8r
     linter_url: https://github.com/chris48s/v8r
     linter_repo: https://github.com/chris48s/v8r
+    linter_spdx_license: MIT
     linter_speed: 1
     linter_text: v8r checks the validity of JSON/YAML files if they have a matching schema defined on [schemastore.org](https://www.schemastore.org/json/)
     linter_rules_url: https://www.schemastore.org/json/

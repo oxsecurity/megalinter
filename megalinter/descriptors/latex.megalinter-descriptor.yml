@@ -6,7 +6,11 @@ linters:
   # Check TEX
   - linter_name: chktex
     linter_url: https://www.nongnu.org/chktex
+    linter_repo: https://git.savannah.nongnu.org/git/chktex.git
+    linter_spdx_license: GPL-2.0
+    linter_rules_url: https://www.nongnu.org/chktex/
     linter_rules_configuration_url: https://github.com/amaloz/dotfiles/blob/master/chktexrc
+    linter_rules_inline_disable_url: https://www.nongnu.org/chktex/
     config_file_name: .chktexrc
     cli_lint_extra_args:
       - "-q"
@@ -23,9 +27,7 @@ linters:
         - COPY --link --from=chktex /usr/bin/chktex /usr/bin/
         - RUN cd ~ && touch .chktexrc && cd /
     ide:
-      atom:
-        - name: linter-chktex
-          url: https://atom.io/packages/linter-chktex
+
       vscode:
         - name: latex-workshop
           url: https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop
