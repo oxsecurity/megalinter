@@ -167,7 +167,6 @@ linters:
         - FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} AS terragrunt
         - COPY --link --from=terragrunt /bin/terraform /usr/bin/
     ide:
-
       idea:
         - name: HashiCorp Terraform / HCL language support
           url: https://plugins.jetbrains.com/plugin/7808-hashicorp-terraform--hcl-language-support

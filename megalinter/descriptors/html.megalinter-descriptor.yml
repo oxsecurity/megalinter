@@ -74,7 +74,6 @@ linters:
       npm:
         - htmlhint@${NPM_HTMLHINT_VERSION}
     ide:
-
       brackets:
         - name: brackets-htmlhint
           url: https://github.com/htmlhint/brackets-htmlhint

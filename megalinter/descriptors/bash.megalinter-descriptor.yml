@@ -97,7 +97,6 @@ linters:
         - FROM koalaman/shellcheck:${BASH_SHELLCHECK_VERSION} AS shellcheck
         - COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
     ide:
-
       emacs:
         - name: flycheck
           url: https://github.com/flycheck/flycheck
@@ -147,7 +146,6 @@ linters:
         - FROM mvdan/shfmt:${BASH_SHFMT_VERSION} AS shfmt
         - COPY --link --from=shfmt /bin/shfmt /usr/bin/
     ide:
-
       emacs:
         - name: emacs-shfmt
           url: https://github.com/purcell/emacs-shfmt/

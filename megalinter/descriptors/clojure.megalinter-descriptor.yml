@@ -81,7 +81,6 @@ linters:
               && chmod +x install-clj-kondo \
               && ./install-clj-kondo
     ide:
-
       emacs:
         - name: flycheck-clj-kondo
           url: https://github.com/borkdude/flycheck-clj-kondo

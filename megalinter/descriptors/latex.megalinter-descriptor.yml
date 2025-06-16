@@ -27,7 +27,6 @@ linters:
         - COPY --link --from=chktex /usr/bin/chktex /usr/bin/
         - RUN cd ~ && touch .chktexrc && cd /
     ide:
-
       vscode:
         - name: latex-workshop
           url: https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop

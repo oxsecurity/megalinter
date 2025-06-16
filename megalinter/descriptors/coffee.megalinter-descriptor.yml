@@ -28,7 +28,6 @@ linters:
       npm:
         - "@coffeelint/cli@${NPM_COFFEELINT_CLI_VERSION}"
     ide:
-
       idea:
         - name: coffeelint
           url: https://plugins.jetbrains.com/plugin/7723-coffeelint

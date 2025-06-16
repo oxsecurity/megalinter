@@ -44,7 +44,6 @@ linters:
               && luarocks install luacheck \
               && cd /
     ide:
-
       brackets:
         - name: brackets-luacheck
           url: https://github.com/Malcolm3141/brackets-luacheck

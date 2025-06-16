@@ -41,7 +41,6 @@ linters:
       pip:
         - cfn-lint[sarif]==${PIP_CFN_LINT_VERSION}
     ide:
-
       idea:
         - name: cfn-lint
           url: https://plugins.jetbrains.com/plugin/10973-cfn-lint

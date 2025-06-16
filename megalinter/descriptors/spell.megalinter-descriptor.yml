@@ -81,7 +81,6 @@ linters:
       pip:
         - proselint==${PIP_PROSELINT_VERSION}
     ide:
-
       idea:
         - name: Proselint
           url: https://plugins.jetbrains.com/plugin/9854-proselint

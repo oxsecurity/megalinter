@@ -44,7 +44,6 @@ linters:
         - FROM hadolint/hadolint:${DOCKERFILE_HADOLINT_VERSION} AS hadolint
         - COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
     ide:
-
       vscode:
         - name: hadolint
           url: https://marketplace.visualstudio.com/items?itemName=exiasr.hadolint

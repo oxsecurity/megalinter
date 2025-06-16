@@ -217,7 +217,6 @@ linters:
       npm:
         - "prettier@${NPM_PRETTIER_VERSION}"
     ide:
-
       emacs:
         - name: prettier-emacs
           url: https://github.com/prettier/prettier-emacs
