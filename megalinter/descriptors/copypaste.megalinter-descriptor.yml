@@ -12,6 +12,7 @@ linters:
     linter_url: https://github.com/kucherenko/jscpd/tree/master/apps/jscpd
     linter_repo: https://github.com/kucherenko/jscpd
     linter_speed: 1
+    linter_spdx_license: MIT
     linter_text: |
       JSCPD browses all files of your repository to detect excessive copy-pastes
 

@@ -20,6 +20,7 @@ linters:
       - security
     linter_url: https://github.com/hadolint/hadolint
     linter_repo: https://github.com/hadolint/hadolint
+    linter_spdx_license: GPL-3.0-only
     linter_rules_url: https://github.com/hadolint/hadolint#rules
     linter_image_url: https://hadolint.github.io/hadolint/img/cat_container.png
     linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/hadolint.png
@@ -43,9 +44,6 @@ linters:
         - FROM hadolint/hadolint:${DOCKERFILE_HADOLINT_VERSION} AS hadolint
         - COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
     ide:
-      atom:
-        - name: linter-hadolint
-          url: https://atom.io/packages/linter-hadolint
       vscode:
         - name: hadolint
           url: https://marketplace.visualstudio.com/items?itemName=exiasr.hadolint

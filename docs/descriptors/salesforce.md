@@ -11,9 +11,9 @@ description: sfdx-scanner-apex, sfdx-scanner-aura, sfdx-scanner-lwc, lightning-f
 
 | Linter                                                                                                                                             | Additional                                                                                                                                                                                         |
 |----------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [**sfdx-scanner-apex**](salesforce_sfdx_scanner_apex.md)<br/>[_SALESFORCE_SFDX_SCANNER_APEX_](salesforce_sfdx_scanner_apex.md)                     | [![GitHub stars](https://img.shields.io/github/stars/forcedotcom/sfdx-scanner?cacheSeconds=3600)](https://github.com/forcedotcom/sfdx-scanner)                                                     |
-| [**sfdx-scanner-aura**](salesforce_sfdx_scanner_aura.md)<br/>[_SALESFORCE_SFDX_SCANNER_AURA_](salesforce_sfdx_scanner_aura.md)                     | [![GitHub stars](https://img.shields.io/github/stars/forcedotcom/sfdx-scanner?cacheSeconds=3600)](https://github.com/forcedotcom/sfdx-scanner)                                                     |
-| [**sfdx-scanner-lwc**](salesforce_sfdx_scanner_lwc.md)<br/>[_SALESFORCE_SFDX_SCANNER_LWC_](salesforce_sfdx_scanner_lwc.md)                         | [![GitHub stars](https://img.shields.io/github/stars/forcedotcom/sfdx-scanner?cacheSeconds=3600)](https://github.com/forcedotcom/sfdx-scanner)                                                     |
+| [**sfdx-scanner-apex**](salesforce_sfdx_scanner_apex.md)<br/>[_SALESFORCE_SFDX_SCANNER_APEX_](salesforce_sfdx_scanner_apex.md)                     | [![GitHub stars](https://img.shields.io/github/stars/forcedotcom/code-analyzer?cacheSeconds=3600)](https://github.com/forcedotcom/code-analyzer)                                                   |
+| [**sfdx-scanner-aura**](salesforce_sfdx_scanner_aura.md)<br/>[_SALESFORCE_SFDX_SCANNER_AURA_](salesforce_sfdx_scanner_aura.md)                     | [![GitHub stars](https://img.shields.io/github/stars/forcedotcom/code-analyzer?cacheSeconds=3600)](https://github.com/forcedotcom/code-analyzer)                                                   |
+| [**sfdx-scanner-lwc**](salesforce_sfdx_scanner_lwc.md)<br/>[_SALESFORCE_SFDX_SCANNER_LWC_](salesforce_sfdx_scanner_lwc.md)                         | [![GitHub stars](https://img.shields.io/github/stars/forcedotcom/code-analyzer?cacheSeconds=3600)](https://github.com/forcedotcom/code-analyzer)                                                   |
 | [**lightning-flow-scanner**](salesforce_lightning_flow_scanner.md)<br/>[_SALESFORCE_LIGHTNING_FLOW_SCANNER_](salesforce_lightning_flow_scanner.md) | [![GitHub stars](https://img.shields.io/github/stars/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx?cacheSeconds=3600)](https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx) |
 
 ## Linted files
@@ -39,7 +39,7 @@ ARG NPM_SALESFORCE_CLI_VERSION=2.92.7
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
 ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.16.0
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=5.40.0
+ARG SFDX_HARDIS_VERSION=5.41.0
 ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 RUN sf plugins install @salesforce/plugin-packaging@${NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION} \

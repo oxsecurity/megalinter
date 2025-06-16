@@ -23,6 +23,7 @@ linters:
       For example, define `HTML_DJLINT_ARGUMENTS: ["--profile", "django"]` to select django format
     linter_url: https://djlint.com/
     linter_repo: https://github.com/Riverside-Healthcare/djlint
+    linter_spdx_license: GPL-3.0-only
     linter_rules_url: https://djlint.com/docs/linter/
     linter_banner_image_url: https://raw.githubusercontent.com/Riverside-Healthcare/djLint/master/docs/src/static/img/icon.png
     linter_rules_configuration_url: https://djlint.com/docs/configuration/
@@ -51,11 +52,12 @@ linters:
   - linter_name: htmlhint
     linter_url: https://htmlhint.com/
     linter_repo: https://github.com/htmlhint/HTMLHint
+    linter_spdx_license: MIT
     linter_rules_url: https://htmlhint.com/docs/user-guide/list-rules
-    linter_image_url: https://raw.githubusercontent.com/htmlhint/HTMLHint/master/website/static/img/htmlhint.png
-    linter_rules_configuration_url: https://htmlhint.com/docs/user-guide/configuration
-    linter_rules_inline_disable_url: https://htmlhint.com/docs/user-guide/configuration
-    linter_megalinter_ref_url: https://htmlhint.com/docs/user-guide/integrations/task-runner
+    linter_image_url: https://htmlhint.com/_astro/htmlhint.DIRCoA_t_Z1czEXa.webp
+    linter_rules_configuration_url: https://htmlhint.com/configuration/
+    linter_rules_inline_disable_url: https://htmlhint.com/configuration/
+    linter_megalinter_ref_url: https://htmlhint.com/integrations/task-runner/
     cli_lint_mode: list_of_files
     config_file_name: .htmlhintrc
     cli_config_arg_name: "--config"
@@ -72,9 +74,6 @@ linters:
       npm:
         - htmlhint@${NPM_HTMLHINT_VERSION}
     ide:
-      atom:
-        - name: atom-htmlhint
-          url: https://github.com/htmlhint/atom-htmlhint
       brackets:
         - name: brackets-htmlhint
           url: https://github.com/htmlhint/brackets-htmlhint

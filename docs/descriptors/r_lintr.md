@@ -11,6 +11,7 @@ description: How to use lintr (configure, ignore files, ignore errors, help & ve
 
 - Visit [Official Web Site](https://lintr.r-lib.org/){target=_blank}
 - See [How to configure lintr rules](https://lintr.r-lib.org/articles/lintr.html#configuring-linters){target=_blank}
+- See [How to disable lintr rules in files](https://lintr.r-lib.org/articles/lintr.html#exclusions){target=_blank}
 - See [Index of problems detected by lintr](https://lintr.r-lib.org/reference/index.html){target=_blank}
 
 [![lintr - GitHub](https://gh-card.dev/repos/r-lib/lintr.svg?fullname=)](https://github.com/r-lib/lintr){target=_blank}

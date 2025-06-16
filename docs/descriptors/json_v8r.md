@@ -7,13 +7,13 @@ description: How to use v8r (configure, ignore files, ignore errors, help & vers
 # v8r
 [![GitHub stars](https://img.shields.io/github/stars/chris48s/v8r?cacheSeconds=3600)](https://github.com/chris48s/v8r) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/chris48s/v8r?sort=semver)](https://github.com/chris48s/v8r/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/chris48s/v8r)](https://github.com/chris48s/v8r/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/chris48s/v8r)](https://github.com/chris48s/v8r/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/chris48s/v8r)](https://github.com/chris48s/v8r/graphs/contributors/)
 
-v8r checks the validity of JSON/YAML files if they have a matching schema defined on [schemastore.org](https://www.schemastore.org/json/)
+v8r checks the validity of JSON/YAML files if they have a matching schema defined on [schemastore.org](https://www.schemastore.org/)
 
 ## v8r documentation
 
 - Version in MegaLinter: **5.0.0**
 - Visit [Official Web Site](https://github.com/chris48s/v8r#readme){target=_blank}
-- See [Index of problems detected by v8r](https://www.schemastore.org/json/){target=_blank}
+- See [Index of problems detected by v8r](https://www.schemastore.org/){target=_blank}
 
 [![v8r - GitHub](https://gh-card.dev/repos/chris48s/v8r.svg?fullname=)](https://github.com/chris48s/v8r){target=_blank}
 

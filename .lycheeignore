@@ -24,3 +24,8 @@ https?://twitter\.com/intent/tweet.*
 https?://x\.com/intent/tweet.*
 https?://github\.com/sgerrand/alpine-pkg-glibc/releases/download
 https?:\/\/(www\.)?makeapullrequest\.com\/.*
+https?://ox\.security/\?ref=megalinter
+https?://www\.ox\.security/\?ref=megalinter
+https?://sourceforge\.net/p/cppcheck/wiki/ListOfChecks/
+https?://fr\.outscale\.com/?$
+https?://.*VERSION.*

@@ -14,6 +14,7 @@ Note: You can run `git add --chmod=+x myfile.sh` to make a file executable on Wi
 
 - Version in MegaLinter: **5.2.37**
 - Visit [Official Web Site](https://www.gnu.org/software/bash/){target=_blank}
+- See [How to configure bash-exec rules](https://www.gnu.org/software/bash/manual/bash.html){target=_blank}
 
 ## Configuration in MegaLinter
 

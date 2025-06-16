@@ -10,10 +10,11 @@ linters:
   - linter_name: rubocop
     linter_url: https://rubocop.org/
     linter_repo: https://github.com/rubocop-hq/rubocop
+    linter_spdx_license: MIT
     linter_rules_url: https://docs.rubocop.org/rubocop/cops.html
     linter_banner_image_url: https://raw.githubusercontent.com/rubocop-hq/rubocop/master/logo/rubo-logo-horizontal.png
-    linter_rules_configuration_url: https://docs.rubocop.org/rubocop/0.92/configuration.html
-    linter_rules_inline_disable_url: https://docs.rubocop.org/rubocop/0.92/configuration.html#disabling-cops-within-source-code
+    linter_rules_configuration_url: https://docs.rubocop.org/rubocop/configuration.html
+    linter_rules_inline_disable_url: https://docs.rubocop.org/rubocop/configuration.html#disabling-cops-within-source-code
     linter_megalinter_ref_url: https://docs.rubocop.org/rubocop/integration_with_other_tools.html#mega-linter-integration
     config_file_name: .ruby-lint.yml
     cli_lint_fix_arg_name: "--safe-auto-correct"
@@ -49,9 +50,6 @@ linters:
         - rubocop-rake:${GEM_RUBOCOP_RAKE_VERSION}
         - rubocop-rspec:${GEM_RUBOCOP_RSPEC_VERSION}
     ide:
-      atom:
-        - name: linter-rubocop
-          url: https://github.com/AtomLinter/linter-rubocop
       brackets:
         - name: brackets-rubocop
           url: https://github.com/smockle-archive/brackets-rubocop
@@ -60,9 +58,6 @@ linters:
           url: https://github.com/rubocop-hq/rubocop-emacs
         - name: flycheck
           url: https://github.com/flycheck/flycheck
-      idea:
-        - name: RubyMine
-          url: https://www.jetbrains.com/help/idea/2017.1/rubocop.html
       sublime:
         - name: sublime_rubocop
           url: https://github.com/pderichs/sublime_rubocop

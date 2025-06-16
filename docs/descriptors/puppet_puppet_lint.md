@@ -10,10 +10,10 @@ description: How to use puppet-lint (configure, ignore files, ignore errors, hel
 ## puppet-lint documentation
 
 - Version in MegaLinter: **4.3.0**
-- Visit [Official Web Site](http://puppet-lint.com/){target=_blank}
+- Visit [Official Web Site](https://github.com/puppetlabs/puppet-lint#readme){target=_blank}
 - See [How to configure puppet-lint rules](https://github.com/puppetlabs/puppet-lint#configuration-file){target=_blank}
-- See [How to disable puppet-lint rules in files](http://puppet-lint.com/controlcomments/){target=_blank}
-- See [Index of problems detected by puppet-lint](http://puppet-lint.com/checks/){target=_blank}
+- See [How to disable puppet-lint rules in files](https://github.com/puppetlabs/puppet-lint#disable-checks-within-puppet-code){target=_blank}
+- See [Index of problems detected by puppet-lint](https://github.com/puppetlabs/puppet-lint#checks){target=_blank}
 
 [![puppet-lint - GitHub](https://gh-card.dev/repos/puppetlabs/puppet-lint.svg?fullname=)](https://github.com/puppetlabs/puppet-lint){target=_blank}
 

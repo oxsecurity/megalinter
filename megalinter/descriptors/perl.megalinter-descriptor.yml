@@ -19,6 +19,7 @@ linters:
   - linter_name: perlcritic
     linter_url: https://metacpan.org/pod/Perl::Critic
     linter_repo: https://github.com/Perl-Critic/Perl-Critic
+    linter_spdx_license: Artistic-1.0-Perl OR GPL-1.0-or-later
     linter_rules_url: https://metacpan.org/pod/Perl::Critic#THE-POLICIES
     linter_banner_image_url: https://chrisdolan.net/madmongers/images/perl-critic-logo.gif
     linter_rules_configuration_url: https://metacpan.org/pod/Perl::Critic#CONFIGURATION

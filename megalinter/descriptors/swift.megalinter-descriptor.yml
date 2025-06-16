@@ -13,6 +13,7 @@ linters:
     linter_rules_url: https://realm.github.io/SwiftLint/rule-directory.html
     linter_rules_configuration_url: https://github.com/realm/SwiftLint#configuration
     linter_rules_inline_disable_url: https://github.com/realm/SwiftLint#disable-rules-in-code
+    linter_spdx_license: MIT
     active_only_if_file_found:
       - ".swiftlint.yml"
     cli_lint_mode: project
@@ -45,9 +46,6 @@ linters:
           # renovate: datasource=docker depName=ghcr.io/realm/swiftlint
           ENV SWIFT_SWIFTLINT_VERSION=0.59.1
     ide:
-      atom:
-        - name: linter-swiftlint
-          url: https://atom.io/packages/linter-swiftlint
       idea:
         - name: swiftlint
           url: https://plugins.jetbrains.com/plugin/9175-swiftlint

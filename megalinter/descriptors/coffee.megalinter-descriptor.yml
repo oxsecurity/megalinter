@@ -12,6 +12,9 @@ linters:
     linter_url: https://coffeelint.github.io/
     linter_rules_url: https://coffeelint.github.io/#options
     linter_repo: https://github.com/clutchski/coffeelint
+    linter_spdx_license: MIT
+    linter_rules_configuration_url: https://coffeelint.github.io/#options
+    linter_rules_inline_disable_url: https://coffeelint.github.io/#options
     config_file_name: .coffee-lint.json
     cli_config_arg_name: "-f"
     examples:
@@ -25,9 +28,6 @@ linters:
       npm:
         - "@coffeelint/cli@${NPM_COFFEELINT_CLI_VERSION}"
     ide:
-      atom:
-        - name: linter-coffeelint
-          url: https://atom.io/packages/linter-coffeelint
       idea:
         - name: coffeelint
           url: https://plugins.jetbrains.com/plugin/7723-coffeelint

@@ -16,7 +16,8 @@ linters:
   # LUACHECK
   - linter_name: luacheck
     linter_url: https://luacheck.readthedocs.io
-    linter_repo: https://github.com/luarocks/luacheck
+    linter_repo: https://github.com/lunarmodules/luacheck
+    linter_spdx_license: MIT
     linter_rules_url: https://luacheck.readthedocs.io/en/stable/warnings.html
     linter_rules_configuration_url: https://luacheck.readthedocs.io/en/stable/config.html
     linter_rules_inline_disable_url: https://luacheck.readthedocs.io/en/stable/inline.html
@@ -43,9 +44,6 @@ linters:
               && luarocks install luacheck \
               && cd /
     ide:
-      atom:
-        - name: linter-luacheck
-          url: https://atom.io/packages/linter-luacheck
       brackets:
         - name: brackets-luacheck
           url: https://github.com/Malcolm3141/brackets-luacheck

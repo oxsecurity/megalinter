@@ -14,6 +14,7 @@ dotnet-format requires a `.sln` or `.csproj` file to run correctly.
 - Version in MegaLinter: **9.0.106**
 - Visit [Official Web Site](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format){target=_blank}
 - See [How to configure dotnet-format rules](https://github.com/dotnet/sdk/tree/main/documentation/format/docs){target=_blank}
+- See [How to disable dotnet-format rules in files](https://docs.microsoft.com/en-us/dotnet/fundamentals/code-analysis/suppress-warnings){target=_blank}
 
 [![sdk - GitHub](https://gh-card.dev/repos/dotnet/sdk.svg?fullname=)](https://github.com/dotnet/sdk){target=_blank}
 

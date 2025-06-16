@@ -16,7 +16,7 @@ If you run it from your **CI/CD pipelines**, the docker image may have **access 
 
 As it can be complicated to **trust** the authors of all the open-source linters, **MegaLinter removes variables from the environment used to call linters**.
 
-Thanks to this feature, you only need to [**trust MegaLinter and its internal python dependencies**](https://github.com/oxsecurity/megalinter/blob/main/megalinter/setup.py), but there is **no need to trust all the linters that are used** !
+Thanks to this feature, you only need to [**trust MegaLinter and its internal python dependencies**](https://github.com/oxsecurity/megalinter/blob/main/pyproject.toml), but there is **no need to trust all the linters that are used** !
 
 You can add secured variables to the default list using configuration property **SECURED_ENV_VARIABLES** in .mega-linter.yml or in an environment variable (priority is given to ENV variables above `.mega-linter.yml` property).
 

@@ -20,7 +20,9 @@ linters:
       dotnet-format requires a `.sln` or `.csproj` file to run correctly.
     linter_url: https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format
     linter_repo: https://github.com/dotnet/sdk
+    linter_spdx_license: MIT
     linter_rules_configuration_url: https://github.com/dotnet/sdk/tree/main/documentation/format/docs
+    linter_rules_inline_disable_url: https://docs.microsoft.com/en-us/dotnet/fundamentals/code-analysis/suppress-warnings
     linter_image_url: https://user-images.githubusercontent.com/9797472/61659851-6bbdc880-ac7d-11e9-95f7-d30c7de1a18a.png
     cli_lint_errors_count: regex_count
     cli_lint_errors_regex: ".cs\\([0-9]+,[0-9]+\\):\\s(?:warning|error)"
@@ -48,8 +50,10 @@ linters:
     is_formatter: true
     linter_url: https://csharpier.com/
     linter_repo: https://github.com/belav/csharpier
+    linter_spdx_license: MIT
     linter_image_url: https://csharpier.com/img/logo.svg
     linter_rules_configuration_url: https://csharpier.com/docs/Configuration
+    linter_rules_inline_disable_url: https://csharpier.com/docs/Ignore
     linter_rules_ignore_config_url: https://csharpier.com/docs/Ignore
     file_extensions:
       - ".config"
@@ -96,6 +100,7 @@ linters:
     is_formatter: true
     linter_url: https://github.com/dotnet/Roslynator
     linter_repo: https://github.com/dotnet/Roslynator
+    linter_spdx_license: Apache-2.0
     linter_image_url: https://github.com/dotnet/roslynator/raw/main/images/roslynator-logo-small.png
     linter_rules_url: https://josefpihrt.github.io/docs/roslynator/analyzers
     linter_rules_configuration_url: https://josefpihrt.github.io/docs/roslynator/configuration

@@ -18,7 +18,10 @@ linters:
     can_output_sarif: true
     linter_url: https://ktlint.github.io
     linter_repo: https://github.com/pinterest/ktlint
+    linter_spdx_license: MIT
     linter_rules_url: https://ktlint.github.io/#rules
+    linter_rules_configuration_url: https://pinterest.github.io/ktlint/latest/rules/configuration-ktlint/
+    linter_rules_inline_disable_url: https://pinterest.github.io/ktlint/latest/faq/#how-do-i-suppress-errors-for-a-lineblockfile
     linter_banner_image_url: https://miro.medium.com/max/655/1*sLboL6JnC9yUodFsdSMB-w.png
     linter_megalinter_ref_url: https://github.com/pinterest/ktlint#-with-continuous-integration
     cli_lint_fix_arg_name: "--format"
@@ -52,7 +55,10 @@ linters:
     can_output_sarif: true
     linter_url: https://detekt.dev/
     linter_repo: https://github.com/detekt/detekt
+    linter_spdx_license: Apache-2.0
     linter_rules_url: https://detekt.dev/docs/rules/comments
+    linter_rules_configuration_url: https://detekt.dev/configurations.html
+    linter_rules_inline_disable_url: https://detekt.dev/suppressing-rules.html
     linter_banner_image_url: https://repository-images.githubusercontent.com/71729669/8b793230-5d85-4c36-b72e-6911dd7bf6d3
     linter_megalinter_ref_url: https://detekt.dev/docs/intro
     config_file_name: detekt-config.yml

@@ -58,6 +58,7 @@ linters:
   - linter_name: clj-kondo
     linter_url: https://github.com/borkdude/clj-kondo
     linter_repo: https://github.com/borkdude/clj-kondo
+    linter_spdx_license: EPL-1.0
     linter_rules_url: https://github.com/borkdude/clj-kondo#features
     linter_banner_image_url: https://github.com/borkdude/clj-kondo/raw/master/logo/logo-300dpi.png
     linter_rules_configuration_url: https://github.com/borkdude/clj-kondo/blob/master/doc/config.md#configuration
@@ -80,9 +81,6 @@ linters:
               && chmod +x install-clj-kondo \
               && ./install-clj-kondo
     ide:
-      atom:
-        - name: linter-kondo
-          url: https://atom.io/packages/linter-kondo
       emacs:
         - name: flycheck-clj-kondo
           url: https://github.com/borkdude/flycheck-clj-kondo
@@ -96,6 +94,7 @@ linters:
   - linter_name: cljstyle
     linter_url: https://github.com/greglook/cljstyle
     linter_repo: https://github.com/greglook/cljstyle
+    linter_spdx_license: EPL-1.0
     linter_rules_url: https://github.com/greglook/cljstyle/blob/main/doc/configuration.md#format-rules
     # linter_banner_image_url: https://github.com/borkdude/clj-kondo/raw/master/logo/logo-300dpi.png
     linter_rules_configuration_url: https://github.com/greglook/cljstyle/blob/main/doc/configuration.md#format-rules

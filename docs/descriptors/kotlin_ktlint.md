@@ -17,6 +17,8 @@ description: How to use ktlint (configure, ignore files, ignore errors, help & v
 
 - Version in MegaLinter: **1.6.0**
 - Visit [Official Web Site](https://ktlint.github.io){target=_blank}
+- See [How to configure ktlint rules](https://pinterest.github.io/ktlint/latest/rules/configuration-ktlint/){target=_blank}
+- See [How to disable ktlint rules in files](https://pinterest.github.io/ktlint/latest/faq/#how-do-i-suppress-errors-for-a-lineblockfile){target=_blank}
 - See [Index of problems detected by ktlint](https://ktlint.github.io/#rules){target=_blank}
 
 [![ktlint - GitHub](https://gh-card.dev/repos/pinterest/ktlint.svg?fullname=)](https://github.com/pinterest/ktlint){target=_blank}

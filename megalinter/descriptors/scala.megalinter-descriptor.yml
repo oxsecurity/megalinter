@@ -16,6 +16,7 @@ linters:
   - linter_name: scalafix
     linter_url: https://scalacenter.github.io/scalafix/
     linter_repo: https://github.com/scalacenter/scalafix
+    linter_spdx_license: BSD-3-Clause
     linter_text: |
       Scalafix lints and fixes scala files
 

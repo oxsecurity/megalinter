@@ -11,6 +11,7 @@ linters:
     name: GRAPHQL_GRAPHQL_SCHEMA_LINTER
     linter_url: https://github.com/cjoudrey/graphql-schema-linter
     linter_repo: https://github.com/cjoudrey/graphql-schema-linter
+    linter_spdx_license: MIT
     linter_rules_url: https://github.com/cjoudrey/graphql-schema-linter#built-in-rules
     linter_rules_configuration_url: https://github.com/cjoudrey/graphql-schema-linter#configuration-file
     linter_rules_inline_disable_url: https://github.com/cjoudrey/graphql-schema-linter#inline-rule-overrides

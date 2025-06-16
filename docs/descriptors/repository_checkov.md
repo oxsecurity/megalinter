@@ -43,14 +43,6 @@ description: How to use checkov (configure, ignore files, ignore errors, help & 
 | REPOSITORY_CHECKOV_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                                                                                      | `0`                                             |
 | REPOSITORY_CHECKOV_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                                                                                               | `['checkov']`                                   |
 
-## IDE Integration
-
-Use checkov in your favorite IDE to catch errors before MegaLinter !
-
-|                                                                  <!-- -->                                                                   | IDE                                                  | Extension Name                                                                    |                                                                                 Install                                                                                 |
-|:-------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|-----------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [Checkov](https://marketplace.visualstudio.com/items?itemName=Bridgecrew.checkov) | [![Install in VSCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/Bridgecrew.checkov){target=_blank} |
-
 ## MegaLinter Flavors
 
 This linter is available in the following flavors

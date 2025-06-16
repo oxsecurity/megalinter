@@ -22,6 +22,7 @@ linters:
     linter_rules_configuration_url: https://github.com/nvuillam/npm-groovy-lint#configuration
     linter_rules_inline_disable_url: https://github.com/nvuillam/npm-groovy-lint#disabling-rules-in-source
     linter_megalinter_ref_url: https://nvuillam.github.io/npm-groovy-lint/#mega-linter
+    linter_spdx_license: MIT
     cli_lint_mode: list_of_files
     config_file_name: .groovylintrc.json
     cli_lint_extra_args:

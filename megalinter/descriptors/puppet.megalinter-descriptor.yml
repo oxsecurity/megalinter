@@ -5,11 +5,12 @@ file_extensions:
 linters:
   # PuppetLint
   - linter_name: puppet-lint
-    linter_url: http://puppet-lint.com/
+    linter_url: https://github.com/puppetlabs/puppet-lint
     linter_repo: https://github.com/puppetlabs/puppet-lint
-    linter_rules_url: http://puppet-lint.com/checks/
+    linter_spdx_license: MIT
+    linter_rules_url: https://github.com/puppetlabs/puppet-lint#checks
     linter_rules_configuration_url: https://github.com/puppetlabs/puppet-lint#configuration-file
-    linter_rules_inline_disable_url: http://puppet-lint.com/controlcomments/
+    linter_rules_inline_disable_url: https://github.com/puppetlabs/puppet-lint#disable-checks-within-puppet-code
     config_file_name: .puppet-lint.rc
     cli_config_arg_name: ""
     cli_lint_fix_arg_name: "--fix"

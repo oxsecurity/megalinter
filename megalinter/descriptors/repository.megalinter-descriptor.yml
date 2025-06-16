@@ -24,6 +24,7 @@ linters:
     linter_rules_inline_disable_url: https://www.checkov.io/2.Basics/Suppressing%20and%20Skipping%20Policies.html
     linter_rules_url: https://www.checkov.io/5.Policy%20Index/all.html
     linter_megalinter_ref_url: "no"
+    linter_spdx_license: Apache-2.0
     cli_lint_mode: project
     cli_config_arg_name: "--config-file"
     config_file_name: .checkov.yml
@@ -50,10 +51,6 @@ linters:
           ARG PIP_CHECKOV_VERSION=3.2.413
       pip:
         - checkov==${PIP_CHECKOV_VERSION}
-    ide:
-      vscode:
-        - name: Checkov
-          url: https://marketplace.visualstudio.com/items?itemName=Bridgecrew.checkov
     test_folder: repository_checkov
 
   # DEVSKIM
@@ -83,6 +80,7 @@ linters:
     linter_rules_ignore_config_url: https://github.com/microsoft/DevSkim/wiki/Analyze-Command
     linter_image_url: https://github.com/microsoft/DevSkim/raw/main/media/devskim_logo.svg
     linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/devskim.png
+    linter_spdx_license: MIT
     config_file_name: .devskim.json
     cli_config_arg_name: "--options-json"
     cli_lint_mode: project
@@ -129,6 +127,7 @@ linters:
     linter_repo: https://github.com/Checkmarx/dustilock
     linter_banner_image_url: https://user-images.githubusercontent.com/1287098/142776854-83abf265-a1ba-485f-a8b6-995da7f7ef8b.png
     linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/dustilock.png
+    linter_spdx_license: Apache-2.0
     cli_lint_mode: project
     cli_lint_extra_args:
       - --recursive

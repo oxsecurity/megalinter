@@ -12,6 +12,7 @@ description: How to use csharpier (configure, ignore files, ignore errors, help 
 - Version in MegaLinter: **1.0.2**
 - Visit [Official Web Site](https://csharpier.com/){target=_blank}
 - See [How to configure csharpier rules](https://csharpier.com/docs/Configuration){target=_blank}
+- See [How to disable csharpier rules in files](https://csharpier.com/docs/Ignore){target=_blank}
 - See [How to ignore files and directories with csharpier](https://csharpier.com/docs/Ignore){target=_blank}
   - You can define a `.csharpierignore` file to ignore files and folders
 

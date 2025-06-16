@@ -16,7 +16,10 @@ PHP-CS-Fixer is able to fix rule violations detected, and even those marked as (
 
 - Version in MegaLinter: **3.75.0**
 - Visit [Official Web Site](https://cs.symfony.com/){target=_blank}
+- See [How to configure php-cs-fixer rules](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/blob/master/doc/config.rst){target=_blank}
   - If custom `.php-cs-fixer.dist.php` config file isn't found, [.php-cs-fixer.dist.php](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.php-cs-fixer.dist.php){target=_blank} will be used
+- See [How to disable php-cs-fixer rules in files](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/blob/master/doc/usage.rst#ignoring-code){target=_blank}
+- See [Index of problems detected by php-cs-fixer](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/blob/master/doc/rules/index.rst){target=_blank}
 
 [![PHP-CS-Fixer - GitHub](https://gh-card.dev/repos/PHP-CS-Fixer/PHP-CS-Fixer.svg?fullname=)](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer){target=_blank}
 

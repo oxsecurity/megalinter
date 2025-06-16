@@ -19,6 +19,9 @@ linters:
     name: KUBERNETES_KUBECONFORM
     linter_repo: https://github.com/yannh/kubeconform
     linter_url: https://github.com/yannh/kubeconform
+    linter_spdx_license: Apache-2.0
+    linter_rules_configuration_url: https://github.com/yannh/kubeconform#usage
+    linter_rules_inline_disable_url: https://github.com/yannh/kubeconform#disabling-validation-for-specific-resources
     linter_banner_image_url: https://user-images.githubusercontent.com/19731161/142411871-f695e40c-bfa8-43ca-97c0-94c256749732.png
     linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/kubeconform.png
     linter_text: |
@@ -49,6 +52,9 @@ linters:
     name: KUBERNETES_HELM
     linter_repo: https://github.com/helm/helm
     linter_url: https://helm.sh/docs/helm/helm_lint/
+    linter_spdx_license: Apache-2.0
+    linter_rules_configuration_url: https://helm.sh/docs/helm/helm_lint/
+    linter_rules_inline_disable_url: https://helm.sh/docs/topics/charts/#schema-files
     files_sub_directory: ""
     test_folder: kubernetes_helm
     active_only_if_file_found:

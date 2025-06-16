@@ -21,7 +21,9 @@ linters:
     linter_url: https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format
     linter_repo: https://github.com/dotnet/sdk
     linter_rules_configuration_url: https://github.com/dotnet/sdk/tree/main/documentation/format/docs
+    linter_rules_inline_disable_url: https://docs.microsoft.com/en-us/dotnet/fundamentals/code-analysis/suppress-warnings
     linter_image_url: https://user-images.githubusercontent.com/9797472/61659851-6bbdc880-ac7d-11e9-95f7-d30c7de1a18a.png
+    linter_spdx_license: MIT
     cli_lint_errors_count: regex_count
     cli_lint_errors_regex: ".vb\\([0-9]+,[0-9]+\\):\\s(?:warning|error)"
     cli_executable: dotnet

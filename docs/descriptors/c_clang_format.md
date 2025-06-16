@@ -11,6 +11,7 @@ description: How to use clang-format (configure, ignore files, ignore errors, he
 
 - Version in MegaLinter: **19.1.4**
 - Visit [Official Web Site](https://releases.llvm.org/17.0.1/tools/clang/docs/ClangFormat.html){target=_blank}
+- See [How to configure clang-format rules](https://releases.llvm.org/17.0.1/tools/clang/docs/ClangFormatStyleOptions.html){target=_blank}
 - See [How to disable clang-format rules in files](https://releases.llvm.org/17.0.1/tools/clang/docs/ClangFormatStyleOptions.html#disabling-formatting-on-a-piece-of-code){target=_blank}
 - See [Index of problems detected by clang-format](https://releases.llvm.org/17.0.1/tools/clang/docs/ClangFormat.html){target=_blank}
 

@@ -15,6 +15,7 @@ linters:
     linter_url: https://rhysd.github.io/actionlint/
     linter_repo: https://github.com/rhysd/actionlint
     linter_rules_configuration_url: https://github.com/rhysd/actionlint/blob/main/docs/config.md
+    linter_spdx_license: MIT
     config_file_name: actionlint.yml
     cli_lint_mode: list_of_files
     cli_config_arg_name: "-config-file"

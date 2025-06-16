@@ -17,6 +17,8 @@ description: How to use detekt (configure, ignore files, ignore errors, help & v
 
 - Version in MegaLinter: **1.23.8**
 - Visit [Official Web Site](https://detekt.dev/){target=_blank}
+- See [How to configure detekt rules](https://detekt.dev/configurations.html){target=_blank}
+- See [How to disable detekt rules in files](https://detekt.dev/suppressing-rules.html){target=_blank}
 - See [Index of problems detected by detekt](https://detekt.dev/docs/rules/comments){target=_blank}
 
 [![detekt - GitHub](https://gh-card.dev/repos/detekt/detekt.svg?fullname=)](https://github.com/detekt/detekt){target=_blank}

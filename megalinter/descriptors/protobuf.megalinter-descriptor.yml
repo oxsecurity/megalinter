@@ -12,6 +12,8 @@ linters:
     linter_repo: https://github.com/yoheimuta/protolint
     linter_rules_url: https://github.com/yoheimuta/protolint#rules
     linter_rules_configuration_url: https://github.com/yoheimuta/protolint#rules
+    linter_rules_inline_disable_url: https://github.com/yoheimuta/protolint#configuring
+    linter_spdx_license: MIT
     config_file_name: .protolintrc.yml
     cli_config_arg_name: "--config_path"
     cli_lint_extra_args:

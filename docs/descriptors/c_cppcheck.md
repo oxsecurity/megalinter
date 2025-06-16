@@ -10,6 +10,7 @@ description: How to use cppcheck (configure, ignore files, ignore errors, help &
 
 - Version in MegaLinter: **2.14.2**
 - Visit [Official Web Site](https://cppcheck.sourceforge.io/){target=_blank}
+- See [How to configure cppcheck rules](https://cppcheck.sourceforge.io/manual.html#configuration){target=_blank}
 - See [Index of problems detected by cppcheck](https://sourceforge.net/p/cppcheck/wiki/ListOfChecks/){target=_blank}
 
 ## Configuration in MegaLinter

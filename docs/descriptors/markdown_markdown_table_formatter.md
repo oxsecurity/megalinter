@@ -13,6 +13,8 @@ markdown-table-formatter detects wrongly formatted markdown tables and can autom
 
 - Version in MegaLinter: **1.6.1**
 - Visit [Official Web Site](https://www.npmjs.com/package/markdown-table-formatter){target=_blank}
+- See [How to configure markdown-table-formatter rules](https://github.com/nvuillam/markdown-table-formatter#options){target=_blank}
+- See [How to disable markdown-table-formatter rules in files](https://github.com/nvuillam/markdown-table-formatter#ignoring-code-blocks){target=_blank}
 
 [![markdown-table-formatter - GitHub](https://gh-card.dev/repos/nvuillam/markdown-table-formatter.svg?fullname=)](https://github.com/nvuillam/markdown-table-formatter){target=_blank}
 
