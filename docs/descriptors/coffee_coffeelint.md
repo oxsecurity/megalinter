@@ -11,7 +11,9 @@ description: How to use coffeelint (configure, ignore files, ignore errors, help
 
 - Version in MegaLinter: **5.2.11**
 - Visit [Official Web Site](https://coffeelint.github.io/){target=_blank}
+- See [How to configure coffeelint rules](https://coffeelint.github.io/#options){target=_blank}
   - If custom `.coffee-lint.json` config file isn't found, [.coffee-lint.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.coffee-lint.json){target=_blank} will be used
+- See [How to disable coffeelint rules in files](https://coffeelint.github.io/#options){target=_blank}
 - See [Index of problems detected by coffeelint](https://coffeelint.github.io/#options){target=_blank}
 
 [![coffeelint - GitHub](https://gh-card.dev/repos/clutchski/coffeelint.svg?fullname=)](https://github.com/clutchski/coffeelint){target=_blank}
@@ -45,7 +47,6 @@ Use coffeelint in your favorite IDE to catch errors before MegaLinter !
 
 |                                                                 <!-- -->                                                                  | IDE                                                      | Extension Name                                                     |                                                           Install                                                            |
 |:-----------------------------------------------------------------------------------------------------------------------------------------:|----------------------------------------------------------|--------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a> | [Atom](https://atom.io/)                                 | [linter-coffeelint](https://atom.io/packages/linter-coffeelint)    |                         [Visit Web Site](https://atom.io/packages/linter-coffeelint){target=_blank}                          |
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a> | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [coffeelint](https://plugins.jetbrains.com/plugin/7723-coffeelint) | <iframe frameborder="none" width="245px" height="48px" src="https://plugins.jetbrains.com/embeddable/install/7723"></iframe> |
 
 ## MegaLinter Flavors

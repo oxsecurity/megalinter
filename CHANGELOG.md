@@ -23,6 +23,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Reporters
 
 - Doc
+  - Update documentation in all megalinter descriptor files to improve accuracy and consistency
+  - Fix incorrect information in linters documentation and descriptors
+  - Remove dead links
 
 - Flavors
 

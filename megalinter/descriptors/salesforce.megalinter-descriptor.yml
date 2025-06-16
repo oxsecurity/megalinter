@@ -44,13 +44,13 @@ linters:
       See more details in [Help](#help-content)
 
       **Workaround: Restricted to PMD**
-    linter_url: https://forcedotcom.github.io/sfdx-scanner/
-    linter_repo: https://github.com/forcedotcom/sfdx-scanner
+    linter_url: https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html
+    linter_repo: https://github.com/forcedotcom/code-analyzer
     linter_rules_url: https://docs.pmd-code.org/latest/pmd_rules_apex.html
-    linter_image_url: https://forcedotcom.github.io/sfdx-scanner/assets/images/sfdx_scanner_logo.png
     linter_rules_configuration_url: https://docs.pmd-code.org/latest/pmd_userdocs_making_rulesets.html
     linter_rules_inline_disable_url: https://docs.pmd-code.org/latest/pmd_userdocs_suppressing_warnings.html
-    linter_megalinter_ref_url: https://github.com/forcedotcom/sfdx-scanner/pull/307
+    linter_megalinter_ref_url: https://github.com/forcedotcom/code-analyzer
+    linter_spdx_license: BSD-3-Clause
     config_file_name: apex-pmd-ruleset.xml
     cli_executable: sf
     cli_config_arg_name: "--pmdconfig"
@@ -117,13 +117,13 @@ linters:
       See more details in [Help](#help-content)
 
       **Workaround: Restricted to Aura**
-    linter_url: https://forcedotcom.github.io/sfdx-scanner/
-    linter_repo: https://github.com/forcedotcom/sfdx-scanner
+    linter_url: https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html
+    linter_repo: https://github.com/forcedotcom/code-analyzer
     linter_rules_url: https://github.com/forcedotcom/eslint-plugin-aura#rules
-    linter_image_url: https://forcedotcom.github.io/sfdx-scanner/assets/images/sfdx_scanner_logo.png
-    linter_rules_configuration_url: https://eslint.org/docs/user-guide/configuring
-    linter_rules_inline_disable_url: https://eslint.org/docs/user-guide/configuring/rules#disabling-rules
-    linter_megalinter_ref_url: https://github.com/forcedotcom/sfdx-scanner/pull/307
+    linter_rules_configuration_url: https://eslint.org/docs/latest/use/configure
+    linter_rules_inline_disable_url: https://eslint.org/docs/latest/use/configure/rules#disabling-rules
+    linter_megalinter_ref_url: https://github.com/forcedotcom/code-analyzer
+    linter_spdx_license: BSD-3-Clause
     config_file_name: --eslintconfig
     cli_config_arg_name: ".eslintrc-aura.json"
     cli_executable: sf
@@ -180,13 +180,13 @@ linters:
       See more details in [Help](#help-content)
 
       **Workaround: Restricted to LWC**
-    linter_url: https://forcedotcom.github.io/sfdx-scanner/
-    linter_repo: https://github.com/forcedotcom/sfdx-scanner
+    linter_url: https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html
+    linter_repo: https://github.com/forcedotcom/code-analyzer
     linter_rules_url: https://github.com/salesforce/eslint-plugin-lwc#rules
-    linter_image_url: https://forcedotcom.github.io/sfdx-scanner/assets/images/sfdx_scanner_logo.png
-    linter_rules_configuration_url: https://eslint.org/docs/user-guide/configuring
-    linter_rules_inline_disable_url: https://eslint.org/docs/user-guide/configuring/rules#disabling-rules
-    linter_megalinter_ref_url: https://github.com/forcedotcom/sfdx-scanner/pull/307
+    linter_rules_configuration_url: https://eslint.org/docs/latest/use/configure
+    linter_rules_inline_disable_url: https://eslint.org/docs/latest/use/configure/rules#disabling-rules
+    linter_megalinter_ref_url: https://github.com/forcedotcom/code-analyzer
+    linter_spdx_license: BSD-3-Clause
     config_file_name: --eslintconfig
     cli_config_arg_name: ".eslintrc-lwc.json"
     cli_executable: sf
@@ -241,6 +241,7 @@ linters:
     linter_rules_url: https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-core#rules
     linter_banner_image_url: https://raw.githubusercontent.com/Lightning-Flow-Scanner/.github/main/docs/images/bannerslim.png
     linter_rules_configuration_url: https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx#configuration
+    linter_spdx_license: AGPL-3.0
     config_file_name: .flow-scanner.json
     cli_config_arg_name: --config
     cli_executable: sf

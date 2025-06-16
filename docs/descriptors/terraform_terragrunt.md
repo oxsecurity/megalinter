@@ -11,7 +11,7 @@ description: How to use terragrunt (configure, ignore files, ignore errors, help
 
 - Version in MegaLinter: **0.81.6**
 - Visit [Official Web Site](https://terragrunt.gruntwork.io){target=_blank}
-- See [How to configure terragrunt rules](https://terragrunt.gruntwork.io/docs/getting-started/configuration/#terragrunt-configuration-file){target=_blank}
+- See [How to configure terragrunt rules](https://terragrunt.gruntwork.io/docs/getting-started/quick-start/#add-terragrunthcl-to-your-project){target=_blank}
 
 [![terragrunt - GitHub](https://gh-card.dev/repos/gruntwork-io/terragrunt.svg?fullname=)](https://github.com/gruntwork-io/terragrunt){target=_blank}
 

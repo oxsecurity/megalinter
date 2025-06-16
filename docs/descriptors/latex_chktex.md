@@ -12,6 +12,8 @@ description: How to use chktex (configure, ignore files, ignore errors, help & v
 - Visit [Official Web Site](https://www.nongnu.org/chktex){target=_blank}
 - See [How to configure chktex rules](https://github.com/amaloz/dotfiles/blob/master/chktexrc){target=_blank}
   - If custom `.chktexrc` config file isn't found, [.chktexrc](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.chktexrc){target=_blank} will be used
+- See [How to disable chktex rules in files](https://www.nongnu.org/chktex/){target=_blank}
+- See [Index of problems detected by chktex](https://www.nongnu.org/chktex/){target=_blank}
 
 ## Configuration in MegaLinter
 
@@ -42,7 +44,6 @@ Use chktex in your favorite IDE to catch errors before MegaLinter !
 
 |                                                                  <!-- -->                                                                   | IDE                                                  | Extension Name                                                                                |                                                                                   Install                                                                                    |
 |:-------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|-----------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-|  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Atom](https://atom.io/)                             | [linter-chktex](https://atom.io/packages/linter-chktex)                                       |                                                   [Visit Web Site](https://atom.io/packages/linter-chktex){target=_blank}                                                    |
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [latex-workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop) | [![Install in VSCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/James-Yu.latex-workshop){target=_blank} |
 
 ## MegaLinter Flavors

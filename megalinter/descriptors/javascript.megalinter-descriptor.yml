@@ -13,6 +13,7 @@ linters:
     linter_name: eslint
     name: JAVASCRIPT_ES
     can_output_sarif: true
+    linter_spdx_license: MIT
     file_extensions:
       - ".js"
       - ".vue"
@@ -22,12 +23,12 @@ linters:
       You can create it by typing `npx eslint --init` in the root of your repository
     linter_url: https://eslint.org
     linter_repo: https://github.com/eslint/eslint
-    linter_rules_url: https://eslint.org/docs/rules/
+    linter_rules_url: https://eslint.org/docs/latest/rules/
     linter_banner_image_url: https://d33wubrfki0l68.cloudfront.net/3b5ac7586466159bb6f237b633bfc4f5a8d5acf8/ee0a1/assets/img/posts/eslint-collective.png
-    linter_rules_configuration_url: https://eslint.org/docs/user-guide/configuring
-    linter_rules_inline_disable_url: https://eslint.org/docs/user-guide/configuring#disabling-rules-with-inline-comments
-    linter_rules_ignore_config_url: https://eslint.org/docs/latest/user-guide/configuring/ignoring-code#the-eslintignore-file
-    linter_megalinter_ref_url: https://eslint.org/docs/user-guide/integrations#source-control
+    linter_rules_configuration_url: https://eslint.org/docs/latest/use/configure
+    linter_rules_inline_disable_url: https://eslint.org/docs/latest/use/configure/rules#disabling-rules
+    linter_rules_ignore_config_url: https://eslint.org/docs/latest/use/configure/ignore#the-eslintignore-file
+    linter_megalinter_ref_url: https://eslint.org/docs/latest/use/integrations#source-control
     active_only_if_file_found:
       - ".eslintrc.json"
       - ".eslintrc.yml"
@@ -111,9 +112,6 @@ linters:
         - "@babel/eslint-parser@${NPM_BABEL_ESLINT_PARSER_VERSION}"
         - "@microsoft/eslint-formatter-sarif@${NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION}"
     ide:
-      atom:
-        - name: linter-eslint
-          url: https://atom.io/packages/linter-eslint
       brackets:
         - name: brackets-eslint
           url: https://github.com/brackets-userland/brackets-eslint
@@ -141,6 +139,7 @@ linters:
   # STANDARD
   - class: JavaScriptStandardLinter
     linter_name: standard
+    linter_spdx_license: MIT
     activation_rules:
       - type: variable
         variable: JAVASCRIPT_DEFAULT_STYLE
@@ -149,6 +148,8 @@ linters:
     linter_url: https://standardjs.com/
     linter_repo: https://github.com/standard/standard
     linter_rules_url: https://standardjs.com/rules.html
+    linter_rules_configuration_url: https://standardjs.com/#how-do-i-ignore-files
+    linter_rules_inline_disable_url: https://standardjs.com/#how-do-i-disable-a-rule
     linter_banner_image_url: https://github.com/standard/standard/raw/master/sticker.png
     name: JAVASCRIPT_STANDARD
     cli_lint_mode: list_of_files
@@ -165,13 +166,6 @@ linters:
       npm:
         - standard@${NPM_STANDARD_VERSION}
     ide:
-      atom:
-        - name: linter-js-standard
-          url: https://atom.io/packages/linter-js-standard
-        - name: linter-js-standard-engine
-          url: https://atom.io/packages/linter-js-standard-engine
-        - name: standard-formatter
-          url: https://atom.io/packages/standard-formatter
       brackets:
         - name: brackets-standard
           url: https://github.com/ishamf/brackets-standard/
@@ -189,6 +183,7 @@ linters:
   # PRETTIER
   - linter_name: prettier
     is_formatter: true
+    linter_spdx_license: MIT
     activation_rules:
       - type: variable
         variable: JAVASCRIPT_DEFAULT_STYLE
@@ -223,13 +218,6 @@ linters:
       npm:
         - "prettier@${NPM_PRETTIER_VERSION}"
     ide:
-      atom:
-        - name: prettier-atom
-          url: https://github.com/prettier/prettier-atom
-        - name: atom-mprettier
-          url: https://github.com/t9md/atom-mprettier
-        - name: atom-miniprettier
-          url: https://github.com/duailibe/atom-miniprettier
       emacs:
         - name: prettier-emacs
           url: https://github.com/prettier/prettier-emacs

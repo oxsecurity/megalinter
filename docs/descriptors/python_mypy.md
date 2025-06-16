@@ -56,7 +56,6 @@ Use mypy in your favorite IDE to catch errors before MegaLinter !
 
 |                                                                   <!-- -->                                                                   | IDE                                                      | Extension Name                                                                           |                                                                               Install                                                                                |
 |:--------------------------------------------------------------------------------------------------------------------------------------------:|----------------------------------------------------------|------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-|  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Atom](https://atom.io/)                                 | [linter-mypy](https://atom.io/packages/linter-mypy)                                      |                                                [Visit Web Site](https://atom.io/packages/linter-mypy){target=_blank}                                                 |
 |  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Emacs](https://www.gnu.org/software/emacs/)             | [Flycheck mypy](https://github.com/lbolla/emacs-flycheck-mypy)                           |                                            [Visit Web Site](https://github.com/lbolla/emacs-flycheck-mypy){target=_blank}                                            |
 |  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a>   | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [mypy-official](https://plugins.jetbrains.com/plugin/13348-mypy-official-/)              |                                     [Visit Web Site](https://plugins.jetbrains.com/plugin/13348-mypy-official-/){target=_blank}                                      |
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/)             | [SublimeLinter-contrib-mypy](https://github.com/fredcallaway/SublimeLinter-contrib-mypy) |                                     [Visit Web Site](https://github.com/fredcallaway/SublimeLinter-contrib-mypy){target=_blank}                                      |
@@ -410,9 +409,9 @@ Environment variables:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=mypy
-ARG PIP_MYPY_VERSION=1.16.0
+ARG PIP_MYPY_VERSION=1.16.1
 ENV MYPY_CACHE_DIR=/tmp
 ```
 
 - PIP packages (Python):
-  - [mypy==1.16.0](https://pypi.org/project/mypy/1.16.0)
+  - [mypy==1.16.1](https://pypi.org/project/mypy/1.16.1)

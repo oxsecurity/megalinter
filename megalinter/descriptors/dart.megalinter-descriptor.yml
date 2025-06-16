@@ -52,6 +52,7 @@ linters:
   - linter_name: dartanalyzer
     linter_url: https://dart.dev/tools/dart-analyze
     linter_repo: https://github.com/dart-lang/sdk
+    linter_spdx_license: BSD-3-Clause
     linter_image_url: https://dart.dev/assets/img/logo/logo-white-text.svg
     linter_rules_url: https://dart.dev/tools/linter-rules#rules
     linter_rules_configuration_url: https://dart.dev/tools/analysis

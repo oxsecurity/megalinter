@@ -29,8 +29,10 @@ https://github.com/sgerrand/alpine-pkg-glibc/releases/download
 
 - Version in MegaLinter: **0.18.0**
 - Visit [Official Web Site](https://lychee.cli.rs){target=_blank}
-- See [How to configure lychee rules](https://lychee.cli.rs/#/usage/config){target=_blank}
-- See [Index of problems detected by lychee](https://lychee.cli.rs/#/usage/cli){target=_blank}
+- See [How to configure lychee rules](https://lychee.cli.rs/usage/config/){target=_blank}
+- See [How to ignore files and directories with lychee](https://lychee.cli.rs/recipes/excluding-links/){target=_blank}
+  - You can define a `.lycheeignore` file to ignore files and folders
+- See [Index of problems detected by lychee](https://lychee.cli.rs/usage/cli/){target=_blank}
 
 [![lychee - GitHub](https://gh-card.dev/repos/lycheeverse/lychee.svg?fullname=)](https://github.com/lycheeverse/lychee){target=_blank}
 
