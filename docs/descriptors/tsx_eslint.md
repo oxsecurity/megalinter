@@ -22,8 +22,8 @@ You can create it by typing `npx eslint --init` in the root of your repository
 - Version in MegaLinter: **8.57.1**
 - Visit [Official Web Site](https://github.com/jsx-eslint/eslint-plugin-react#readme){target=_blank}
 - See [How to configure eslint rules](https://github.com/jsx-eslint/eslint-plugin-react#configuration-legacy-eslintrc){target=_blank}
-- See [How to disable eslint rules in files](https://eslint.org/docs/user-guide/configuring#disabling-rules-with-inline-comments){target=_blank}
-- See [How to ignore files and directories with eslint](https://eslint.org/docs/latest/user-guide/configuring/ignoring-code#the-eslintignore-file){target=_blank}
+- See [How to disable eslint rules in files](https://eslint.org/docs/latest/use/configure/rules#disabling-rules){target=_blank}
+- See [How to ignore files and directories with eslint](https://eslint.org/docs/latest/use/configure/ignore#the-eslintignore-file){target=_blank}
   - You can define a `.eslintignore` file to ignore files and folders
 - See [Index of problems detected by eslint](https://github.com/jsx-eslint/eslint-plugin-react#list-of-supported-rules){target=_blank}
 
@@ -60,7 +60,6 @@ Use eslint in your favorite IDE to catch errors before MegaLinter !
 
 |                                                                   <!-- -->                                                                    | IDE                                                      | Extension Name                                                                                 |                                                                                   Install                                                                                   |
 |:---------------------------------------------------------------------------------------------------------------------------------------------:|----------------------------------------------------------|------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-|   <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Atom](https://atom.io/)                                 | [linter-eslint](https://atom.io/packages/linter-eslint)                                        |                                                   [Visit Web Site](https://atom.io/packages/linter-eslint){target=_blank}                                                   |
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/brackets.ico" alt="" height="32px" class="megalinter-icon"></a> | [Brackets](https://brackets.io/)                         | [brackets-eslint](https://github.com/brackets-userland/brackets-eslint)                        |                                            [Visit Web Site](https://github.com/brackets-userland/brackets-eslint){target=_blank}                                            |
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/eclipse.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Eclipse](https://www.eclipse.org/)                      | [Tern-Linter-ESLint](https://github.com/angelozerr/tern.java/wiki/Tern-Linter-ESLint)          |                                      [Visit Web Site](https://github.com/angelozerr/tern.java/wiki/Tern-Linter-ESLint){target=_blank}                                       |
 |  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Emacs](https://www.gnu.org/software/emacs/)             | [flycheck](http://www.flycheck.org/en/latest/languages.html#javascript)                        |                                        [Visit Web Site](http://www.flycheck.org/en/latest/languages.html#javascript){target=_blank}                                         |
@@ -187,7 +186,7 @@ ARG NPM_ESLINT_CONFIG_AIRBNB_VERSION=19.0.4
 # renovate: datasource=npm depName=eslint-config-prettier
 ARG NPM_ESLINT_CONFIG_PRETTIER_VERSION=10.1.5
 # renovate: datasource=npm depName=eslint-plugin-jest
-ARG NPM_ESLINT_PLUGIN_JEST_VERSION=28.13.5
+ARG NPM_ESLINT_PLUGIN_JEST_VERSION=28.14.0
 # renovate: datasource=npm depName=eslint-plugin-prettier
 ARG NPM_ESLINT_PLUGIN_PRETTIER_VERSION=5.4.1
 # renovate: datasource=npm depName=eslint-plugin-react
@@ -211,7 +210,7 @@ ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
   - [eslint@8.57.1](https://www.npmjs.com/package/eslint/v/8.57.1)
   - [eslint-config-airbnb@19.0.4](https://www.npmjs.com/package/eslint-config-airbnb/v/19.0.4)
   - [eslint-config-prettier@10.1.5](https://www.npmjs.com/package/eslint-config-prettier/v/10.1.5)
-  - [eslint-plugin-jest@28.13.5](https://www.npmjs.com/package/eslint-plugin-jest/v/28.13.5)
+  - [eslint-plugin-jest@28.14.0](https://www.npmjs.com/package/eslint-plugin-jest/v/28.14.0)
   - [eslint-plugin-prettier@5.4.1](https://www.npmjs.com/package/eslint-plugin-prettier/v/5.4.1)
   - [eslint-plugin-react@7.37.5](https://www.npmjs.com/package/eslint-plugin-react/v/7.37.5)
   - [@babel/eslint-parser@7.27.5](https://www.npmjs.com/package/@babel/eslint-parser/v/7.27.5)

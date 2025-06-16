@@ -12,6 +12,7 @@ description: How to use revive (configure, ignore files, ignore errors, help & v
 - Version in MegaLinter: **1.10.0**
 - Visit [Official Web Site](https://revive.run/){target=_blank}
 - See [How to configure revive rules](https://revive.run/docs#custom-configuration){target=_blank}
+- See [How to disable revive rules in files](https://revive.run/docs#comment-directives){target=_blank}
 - See [Index of problems detected by revive](https://revive.run/r){target=_blank}
 
 [![revive - GitHub](https://gh-card.dev/repos/mgechev/revive.svg?fullname=)](https://github.com/mgechev/revive){target=_blank}
@@ -45,7 +46,6 @@ Use revive in your favorite IDE to catch errors before MegaLinter !
 
 |                                                                  <!-- -->                                                                   | IDE                                                  | Extension Name                                                                |                                                                              Install                                                                              |
 |:-------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|-------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-|  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Atom](https://atom.io/)                             | [linter-revive](https://github.com/morphy2k/linter-revive)                    |                                            [Visit Web Site](https://github.com/morphy2k/linter-revive){target=_blank}                                             |
 |  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a>   | [vim](https://www.vim.org/)                          | [ale](https://github.com/dense-analysis/ale)                                  |                                              [Visit Web Site](https://github.com/dense-analysis/ale){target=_blank}                                               |
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [vscode.Go](https://marketplace.visualstudio.com/items?itemName=ms-vscode.Go) | [![Install in VSCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/ms-vscode.Go){target=_blank} |
 

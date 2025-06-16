@@ -17,6 +17,8 @@ description: How to use dotenv-linter (configure, ignore files, ignore errors, h
 
 - Version in MegaLinter: **3.3.0**
 - Visit [Official Web Site](https://dotenv-linter.github.io/){target=_blank}
+- See [How to configure dotenv-linter rules](https://dotenv-linter.github.io/#/usage/check){target=_blank}
+- See [How to disable dotenv-linter rules in files](https://dotenv-linter.github.io/#/usage/check?id=skip-checks){target=_blank}
 - See [Index of problems detected by dotenv-linter](https://dotenv-linter.github.io/#/?id=dotenv-linter){target=_blank}
 
 [![dotenv-linter - GitHub](https://gh-card.dev/repos/dotenv-linter/dotenv-linter.svg?fullname=)](https://github.com/dotenv-linter/dotenv-linter){target=_blank}

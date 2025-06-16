@@ -13,6 +13,7 @@ description: How to use protolint (configure, ignore files, ignore errors, help 
 - Visit [Official Web Site](https://github.com/yoheimuta/protolint#readme){target=_blank}
 - See [How to configure protolint rules](https://github.com/yoheimuta/protolint#rules){target=_blank}
   - If custom `.protolintrc.yml` config file isn't found, [.protolintrc.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.protolintrc.yml){target=_blank} will be used
+- See [How to disable protolint rules in files](https://github.com/yoheimuta/protolint#configuring){target=_blank}
 - See [Index of problems detected by protolint](https://github.com/yoheimuta/protolint#rules){target=_blank}
 
 [![protolint - GitHub](https://gh-card.dev/repos/yoheimuta/protolint.svg?fullname=)](https://github.com/yoheimuta/protolint){target=_blank}

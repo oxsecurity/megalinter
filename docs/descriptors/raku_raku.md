@@ -11,6 +11,8 @@ description: How to use raku (configure, ignore files, ignore errors, help & ver
 
 - Version in MegaLinter: **2024.12**
 - Visit [Official Web Site](https://raku.org/){target=_blank}
+- See [How to configure raku rules](https://docs.raku.org/language/pragmas){target=_blank}
+- See [How to disable raku rules in files](https://docs.raku.org/language/pragmas#no){target=_blank}
 
 [![rakudo - GitHub](https://gh-card.dev/repos/rakudo/rakudo.svg?fullname=)](https://github.com/rakudo/rakudo){target=_blank}
 
@@ -43,7 +45,6 @@ Use raku in your favorite IDE to catch errors before MegaLinter !
 
 |                                                                   <!-- -->                                                                   | IDE                                                  | Extension Name                                                                                   |                                                                                 Install                                                                                 |
 |:--------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|--------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-|  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Atom](https://atom.io/)                             | [language-perl6](https://atom.io/packages/language-perl6)                                        |                                                [Visit Web Site](https://atom.io/packages/language-perl6){target=_blank}                                                 |
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/default.ico" alt="" height="32px" class="megalinter-icon"></a> | comma                                                | [Native Support](https://commaide.com/)                                                          |                                                         [Visit Web Site](https://commaide.com/){target=_blank}                                                          |
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/) | [Perl6 Language Support](https://marketplace.visualstudio.com/items?itemName=scriplit.perl6-lsp) | [![Install in VSCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/scriplit.perl6-lsp){target=_blank} |
 

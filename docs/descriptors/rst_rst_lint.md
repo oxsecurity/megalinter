@@ -11,6 +11,8 @@ description: How to use rst-lint (configure, ignore files, ignore errors, help &
 
 - Version in MegaLinter: **1.4.0**
 - Visit [Official Web Site](https://github.com/twolfson/restructuredtext-lint#readme){target=_blank}
+- See [How to configure rst-lint rules](https://github.com/twolfson/restructuredtext-lint#cli-utility){target=_blank}
+- See [How to disable rst-lint rules in files](https://docutils.sourceforge.io/docs/ref/rst/directives.html#raw-data-pass-through){target=_blank}
 
 [![restructuredtext-lint - GitHub](https://gh-card.dev/repos/twolfson/restructuredtext-lint.svg?fullname=)](https://github.com/twolfson/restructuredtext-lint){target=_blank}
 

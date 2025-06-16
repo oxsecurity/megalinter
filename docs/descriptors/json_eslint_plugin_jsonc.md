@@ -15,7 +15,7 @@ description: How to use eslint-plugin-jsonc (configure, ignore files, ignore err
 
 _This linter has been disabled in this version_
 
-_Disabled reason: Bug in eslint-plugin-jsonc: <https://github.com/ota-meshi/eslint-plugin-jsonc/issues/328>_
+_Disabled reason: Bug in eslint-plugin-jsonc: https://github.com/ota-meshi/eslint-plugin-jsonc/issues/328_
 
 **eslint-plugin-jsonc** uses eslint to lint [**json**](https://www.json.org/), [**jsonc**](https://github.com/microsoft/node-jsonc-parser) and [**json5**](https://json5.org/) (extended JSON with comments & more).
 
@@ -78,9 +78,9 @@ DISABLE_LINTERS:
 
 - Version in MegaLinter: **2.15.1**
 - Visit [Official Web Site](https://ota-meshi.github.io/eslint-plugin-jsonc/){target=_blank}
-- See [How to configure eslint-plugin-jsonc rules](https://eslint.org/docs/user-guide/configuring){target=_blank}
+- See [How to configure eslint-plugin-jsonc rules](https://eslint.org/docs/latest/use/configure){target=_blank}
   - If custom `.eslintrc-json.json` config file isn't found, [.eslintrc-json.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.eslintrc-json.json){target=_blank} will be used
-- See [How to disable eslint-plugin-jsonc rules in files](https://eslint.org/docs/user-guide/configuring#disabling-rules-with-inline-comments){target=_blank}
+- See [How to disable eslint-plugin-jsonc rules in files](https://eslint.org/docs/latest/use/configure/rules#disabling-rules){target=_blank}
 - See [How to ignore files and directories with eslint-plugin-jsonc](https://eslint.org/docs/latest/user-guide/configuring/ignoring-code#the-eslintignore-file){target=_blank}
   - You can define a `.eslintignore` file to ignore files and folders
 - See [Index of problems detected by eslint-plugin-jsonc](https://ota-meshi.github.io/eslint-plugin-jsonc/rules/){target=_blank}
