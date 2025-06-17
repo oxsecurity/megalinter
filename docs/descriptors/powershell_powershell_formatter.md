@@ -41,7 +41,7 @@ description: How to use powershell_formatter (configure, ignore files, ignore er
 | POWERSHELL_POWERSHELL_FORMATTER_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                 | Workspace folder, then MegaLinter default rules                     |
 | POWERSHELL_POWERSHELL_FORMATTER_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `true`                                                              |
 | POWERSHELL_POWERSHELL_FORMATTER_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                                                 |
-| POWERSHELL_POWERSHELL_FORMATTER_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `['powershell']`                                                    |
+| POWERSHELL_POWERSHELL_FORMATTER_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `['pwsh']`                                                          |
 
 ## IDE Integration
 
