@@ -59,7 +59,7 @@ ARG NPM_ESLINT_CONFIG_PRETTIER_VERSION=10.1.5
 # renovate: datasource=npm depName=eslint-plugin-jest
 ARG NPM_ESLINT_PLUGIN_JEST_VERSION=28.14.0
 # renovate: datasource=npm depName=eslint-plugin-prettier
-ARG NPM_ESLINT_PLUGIN_PRETTIER_VERSION=5.4.1
+ARG NPM_ESLINT_PLUGIN_PRETTIER_VERSION=5.5.0
 # renovate: datasource=npm depName=eslint-plugin-react
 ARG NPM_ESLINT_PLUGIN_REACT_VERSION=7.37.5
 # renovate: datasource=npm depName=@babel/eslint-parser
