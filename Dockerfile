@@ -181,7 +181,7 @@ ARG NPM_GROOVY_LINT_VERSION=15.2.0
 # renovate: datasource=pypi depName=djlint
 ARG PIP_DJLINT_VERSION=1.36.4
 # renovate: datasource=npm depName=htmlhint
-ARG NPM_HTMLHINT_VERSION=1.5.1
+ARG NPM_HTMLHINT_VERSION=1.6.1
 # renovate: datasource=github-tags depName=pmd/pmd extractVersion=^pmd_releases/(?<version>.*)$
 ARG PMD_VERSION=7.14.0
 
