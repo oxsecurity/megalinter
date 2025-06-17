@@ -19,7 +19,7 @@ If you find it too harsh, you may define `PYTHON_BANDIT_DISABLE_ERRORS: true` in
 
 ## bandit documentation
 
-- Version in MegaLinter: **1.8.3**
+- Version in MegaLinter: **1.8.5**
 - Visit [Official Web Site](https://bandit.readthedocs.io/en/latest/){target=_blank}
 - See [How to configure bandit rules](https://bandit.readthedocs.io/en/latest/config.html#){target=_blank}
   - If custom `.bandit.yml` config file isn't found, [.bandit.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.bandit.yml){target=_blank} will be used
@@ -275,12 +275,12 @@ The following tests were discovered and loaded:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=bandit
-ARG PIP_BANDIT_VERSION=1.8.3
+ARG PIP_BANDIT_VERSION=1.8.5
 # renovate: datasource=pypi depName=bandit_sarif_formatter
 ARG PIP_BANDIT_SARIF_FORMATTER_VERSION=1.1.1
 ```
 
 - PIP packages (Python):
-  - [bandit==1.8.3](https://pypi.org/project/bandit/1.8.3)
+  - [bandit==1.8.5](https://pypi.org/project/bandit/1.8.5)
   - [bandit_sarif_formatter==1.1.1](https://pypi.org/project/bandit_sarif_formatter/1.1.1)
-  - [bandit[toml]==1.8.3](https://pypi.org/project/bandit[toml]/1.8.3)
+  - [bandit[toml]==1.8.5](https://pypi.org/project/bandit[toml]/1.8.5)
