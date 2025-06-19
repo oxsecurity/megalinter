@@ -108,7 +108,7 @@ ARG CARGO_SHELLCHECK_SARIF_VERSION=0.8.0
 # renovate: datasource=npm depName=jscpd
 ARG NPM_JSCPD_VERSION=4.0.5
 # renovate: datasource=npm depName=stylelint
-ARG NPM_STYLELINT_VERSION=16.20.0
+ARG NPM_STYLELINT_VERSION=16.21.0
 # renovate: datasource=npm depName=stylelint-config-standard
 ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=38.0.0
 # renovate: datasource=npm depName=stylelint-config-sass-guidelines
