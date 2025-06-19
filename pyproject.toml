@@ -33,7 +33,7 @@ dependencies = [
   "requests",
   "terminaltables",
   "termcolor",
-  "urllib3",
+  "urllib3>=2.5.0",
 ]
 
 [project.urls]
