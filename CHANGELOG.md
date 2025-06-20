@@ -43,6 +43,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [stylelint](https://stylelint.io) from 16.20.0 to **16.21.0** on 2025-06-20
   - [htmlhint](https://htmlhint.com/) from 1.5.1 to **1.6.3** on 2025-06-20
   - [phpcs](https://github.com/PHPCSStandards/PHP_CodeSniffer) from 3.13.1 to **3.13.2** on 2025-06-20
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.11.13 to **0.12.0** on 2025-06-20
+  - [ruff](https://github.com/astral-sh/ruff) from 0.11.13 to **0.12.0** on 2025-06-20
+  - [rubocop](https://rubocop.org/) from 1.76.2 to **1.77.0** on 2025-06-20
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15
