@@ -31,7 +31,7 @@
     "editorconfig-checker": "3.3.0",
     "eslint": "8.57.1",
     "eslint-plugin-jsonc": "2.15.1",
-    "flake8": "7.2.0",
+    "flake8": "7.3.0",
     "gherkin-lint": "0.0.0",
     "git_diff": "2.47.2",
     "gitleaks": "8.27.2",
