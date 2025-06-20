@@ -39,6 +39,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [bandit](https://bandit.readthedocs.io/en/latest/) from 1.8.3 to **1.8.5** on 2025-06-17
   - [rubocop](https://rubocop.org/) from 1.76.1 to **1.76.2** on 2025-06-17
   - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.23.0 to **3.24.0** on 2025-06-17
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.36.0 to **1.36.1** on 2025-06-20
+  - [stylelint](https://stylelint.io) from 16.20.0 to **16.21.0** on 2025-06-20
+  - [htmlhint](https://htmlhint.com/) from 1.5.1 to **1.6.3** on 2025-06-20
+  - [phpcs](https://github.com/PHPCSStandards/PHP_CodeSniffer) from 3.13.1 to **3.13.2** on 2025-06-20
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15
