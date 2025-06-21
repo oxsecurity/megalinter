@@ -47,6 +47,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [ruff](https://github.com/astral-sh/ruff) from 0.11.13 to **0.12.0** on 2025-06-20
   - [rubocop](https://rubocop.org/) from 1.76.2 to **1.77.0** on 2025-06-20
   - [flake8](https://flake8.pycqa.org) from 7.2.0 to **7.3.0** on 2025-06-20
+  - [checkstyle](https://checkstyle.org/) from 10.25.0 to **10.25.1** on 2025-06-21
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15
