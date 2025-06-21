@@ -21,7 +21,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=Pygments
-          ARG PIP_PYGMENTS_VERSION=2.19.1
+          ARG PIP_PYGMENTS_VERSION=2.19.2
         - |-
           # renovate: datasource=pypi depName=restructuredtext_lint
           ARG PIP_RESTRUCTUREDTEXT_LINT_VERSION=1.4.0

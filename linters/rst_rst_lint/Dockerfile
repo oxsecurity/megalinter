@@ -49,7 +49,7 @@ FROM python:3.13-alpine3.21
 #############################################################################################
 #ARG__START
 # renovate: datasource=pypi depName=Pygments
-ARG PIP_PYGMENTS_VERSION=2.19.1
+ARG PIP_PYGMENTS_VERSION=2.19.2
 # renovate: datasource=pypi depName=restructuredtext_lint
 ARG PIP_RESTRUCTUREDTEXT_LINT_VERSION=1.4.0
 # renovate: datasource=pypi depName=pip
