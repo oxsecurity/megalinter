@@ -174,7 +174,7 @@ ARG REPOSITORY_TRIVY_VERSION=0.63.0
 # renovate: datasource=github-tags depName=aquasecurity/trivy
 ARG REPOSITORY_TRIVY_SBOM_VERSION=0.63.0
 # renovate: datasource=pypi depName=Pygments
-ARG PIP_PYGMENTS_VERSION=2.19.1
+ARG PIP_PYGMENTS_VERSION=2.19.2
 # renovate: datasource=pypi depName=restructuredtext_lint
 ARG PIP_RESTRUCTUREDTEXT_LINT_VERSION=1.4.0
 # renovate: datasource=pypi depName=rstcheck
