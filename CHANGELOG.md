@@ -48,6 +48,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [rubocop](https://rubocop.org/) from 1.76.2 to **1.77.0** on 2025-06-20
   - [flake8](https://flake8.pycqa.org) from 7.2.0 to **7.3.0** on 2025-06-20
   - [checkstyle](https://checkstyle.org/) from 10.25.0 to **10.25.1** on 2025-06-21
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.81.6 to **0.81.10** on 2025-06-22
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15
