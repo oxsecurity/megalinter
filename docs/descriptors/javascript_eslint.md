@@ -186,7 +186,7 @@ ARG NPM_ESLINT_CONFIG_PRETTIER_VERSION=10.1.5
 # renovate: datasource=npm depName=eslint-config-standard
 ARG NPM_ESLINT_CONFIG_STANDARD_VERSION=17.1.0
 # renovate: datasource=npm depName=eslint-plugin-import
-ARG NPM_ESLINT_PLUGIN_IMPORT_VERSION=2.31.0
+ARG NPM_ESLINT_PLUGIN_IMPORT_VERSION=2.32.0
 # renovate: datasource=npm depName=eslint-plugin-jest
 ARG NPM_ESLINT_PLUGIN_JEST_VERSION=29.0.1
 # renovate: datasource=npm depName=eslint-plugin-n
@@ -210,7 +210,7 @@ ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
   - [eslint-config-airbnb@19.0.4](https://www.npmjs.com/package/eslint-config-airbnb/v/19.0.4)
   - [eslint-config-prettier@10.1.5](https://www.npmjs.com/package/eslint-config-prettier/v/10.1.5)
   - [eslint-config-standard@17.1.0](https://www.npmjs.com/package/eslint-config-standard/v/17.1.0)
-  - [eslint-plugin-import@2.31.0](https://www.npmjs.com/package/eslint-plugin-import/v/2.31.0)
+  - [eslint-plugin-import@2.32.0](https://www.npmjs.com/package/eslint-plugin-import/v/2.32.0)
   - [eslint-plugin-jest@29.0.1](https://www.npmjs.com/package/eslint-plugin-jest/v/29.0.1)
   - [eslint-plugin-n@16.6.2](https://www.npmjs.com/package/eslint-plugin-n/v/16.6.2)
   - [eslint-plugin-prettier@5.5.0](https://www.npmjs.com/package/eslint-plugin-prettier/v/5.5.0)
