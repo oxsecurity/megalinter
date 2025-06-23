@@ -79,7 +79,7 @@ linters:
           ARG NPM_BABEL_ESLINT_PARSER_VERSION=7.27.5
         - |-
           # renovate: datasource=npm depName=prettier
-          ARG NPM_PRETTIER_VERSION=3.5.3
+          ARG NPM_PRETTIER_VERSION=3.6.0
         - |-
           # renovate: datasource=npm depName=prettyjson
           ARG NPM_PRETTYJSON_VERSION=1.2.5
