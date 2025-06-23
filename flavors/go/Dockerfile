@@ -128,7 +128,7 @@ ARG NPM_PRANTLF_JSONLINT_VERSION=16.0.0
 # renovate: datasource=npm depName=v8r
 ARG NPM_V8R_VERSION=5.0.0
 # renovate: datasource=npm depName=prettier
-ARG NPM_PRETTIER_VERSION=3.5.3
+ARG NPM_PRETTIER_VERSION=3.6.0
 # renovate: datasource=github-tags depName=pinterest/ktlint
 ARG KTLINT_VERSION=1.6.0
 
