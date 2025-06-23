@@ -49,6 +49,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [flake8](https://flake8.pycqa.org) from 7.2.0 to **7.3.0** on 2025-06-20
   - [checkstyle](https://checkstyle.org/) from 10.25.0 to **10.25.1** on 2025-06-21
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.81.6 to **0.81.10** on 2025-06-22
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.24.0 to **3.25.0** on 2025-06-23
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15
