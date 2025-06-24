@@ -50,6 +50,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkstyle](https://checkstyle.org/) from 10.25.0 to **10.25.1** on 2025-06-21
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.81.6 to **0.81.10** on 2025-06-22
   - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.24.0 to **3.25.0** on 2025-06-23
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 25.5.0 to **25.6.1** on 2025-06-24
+  - [checkstyle](https://checkstyle.org/) from 10.25.1 to **10.26.0** on 2025-06-24
+  - [prettier](https://prettier.io/) from 3.5.3 to **3.6.0** on 2025-06-24
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.25.0 to **3.26.0** on 2025-06-24
+  - [snakemake](https://snakemake.github.io/) from 9.5.1 to **9.6.1** on 2025-06-24
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15
