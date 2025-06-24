@@ -15,7 +15,7 @@ description: How to use prettier (configure, ignore files, ignore errors, help &
 
 ## prettier documentation
 
-- Version in MegaLinter: **3.5.3**
+- Version in MegaLinter: **3.6.0**
 - Visit [Official Web Site](https://prettier.io/){target=_blank}
 - See [How to configure prettier rules](https://prettier.io/docs/en/configuration.html){target=_blank}
 - See [How to disable prettier rules in files](https://prettier.io/docs/en/ignore.html#javascript){target=_blank}
@@ -145,7 +145,7 @@ Format options:
   --object-wrap <preserve|collapse>
                            How to wrap object literals.
                            Defaults to preserve.
-  --parser <flow|babel|babel-flow|babel-ts|typescript|acorn|espree|meriyah|css|less|scss|json|json5|jsonc|json-stringify|graphql|markdown|mdx|vue|yaml|glimmer|html|angular|lwc>
+  --parser <flow|babel|babel-flow|babel-ts|typescript|acorn|espree|meriyah|css|less|scss|json|json5|jsonc|json-stringify|graphql|markdown|mdx|vue|yaml|glimmer|html|angular|lwc|mjml>
                            Which parser to use.
   --print-width <int>      The line length where Prettier will try wrap.
                            Defaults to 80.
@@ -207,6 +207,8 @@ Other options:
   --cache-location <path>  Path to the cache file.
   --cache-strategy <metadata|content>
                            Strategy for the cache to use for detecting changed files.
+  --check-ignore-pragma    Check whether the file's first docblock comment contains '@noprettier' or '@noformat' to determine if it should be formatted.
+                           Defaults to false.
   --no-color               Do not colorize error messages.
   --no-error-on-unmatched-pattern
                            Prevent errors when pattern is unmatched.
@@ -221,8 +223,7 @@ Other options:
   --log-level <silent|error|warn|log|debug>
                            What level of logs to report.
                            Defaults to log.
-  --require-pragma         Require either '@prettier' or '@format' to be present in the file's first docblock comment
-                           in order for it to be formatted.
+  --require-pragma         Require either '@prettier' or '@format' to be present in the file's first docblock comment in order for it to be formatted.
                            Defaults to false.
   --stdin-filepath <path>  Path to the file to pretend that stdin comes from.
   --support-info           Print support information as JSON.
@@ -236,8 +237,8 @@ Other options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=prettier
-ARG NPM_PRETTIER_VERSION=3.5.3
+ARG NPM_PRETTIER_VERSION=3.6.0
 ```
 
 - NPM packages (node.js):
-  - [prettier@3.5.3](https://www.npmjs.com/package/prettier/v/3.5.3)
+  - [prettier@3.6.0](https://www.npmjs.com/package/prettier/v/3.6.0)

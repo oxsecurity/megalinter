@@ -9,7 +9,7 @@ description: How to use ansible-lint (configure, ignore files, ignore errors, he
 
 ## ansible-lint documentation
 
-- Version in MegaLinter: **25.5.0**
+- Version in MegaLinter: **25.6.1**
 - Visit [Official Web Site](https://ansible-lint.readthedocs.io/){target=_blank}
 - See [How to configure ansible-lint rules](https://ansible-lint.readthedocs.io/configuring/#configuration-file){target=_blank}
   - If custom `.ansible-lint` config file isn't found, [.ansible-lint](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.ansible-lint){target=_blank} will be used
@@ -104,7 +104,8 @@ usage: ansible-lint [-h] [-P | -L | -T]
                     [-x SKIP_LIST] [--generate-ignore] [-w WARN_LIST]
                     [--enable-list ENABLE_LIST] [--nocolor] [--force-color]
                     [--exclude EXCLUDE_PATHS [EXCLUDE_PATHS ...]]
-                    [-c CONFIG_FILE] [-i IGNORE_FILE] [--offline] [--version]
+                    [-c CONFIG_FILE] [-i IGNORE_FILE]
+                    [--offline | --no-offline] [--version]
                     [lintables ...]
 
 positional arguments:
@@ -148,7 +149,8 @@ options:
                         Specify configuration file to use. By default it will look for '.ansible-lint', '.ansible-lint.yml', '.ansible-lint.yaml', '.config/ansible-lint.yml', or '.config/ansible-lint.yaml'
   -i, --ignore-file IGNORE_FILE
                         Specify ignore file to use. By default it will look for '.ansible-lint-ignore' or '.config/ansible-lint-ignore.txt'
-  --offline             Disable installation of requirements.yml and schema refreshing
+  --offline, --no-offline
+                        Disable installation of requirements.yml and schema refreshing
   --version
 
 The following environment variables are also recognized but there is no guarantee that they will work in future versions:
@@ -169,8 +171,8 @@ ANSIBLE_LINT_NODEPS: Avoids installing content dependencies and avoids performin
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=ansible-lint
-ARG PIP_ANSIBLE_LINT_VERSION=25.5.0
+ARG PIP_ANSIBLE_LINT_VERSION=25.6.1
 ```
 
 - PIP packages (Python):
-  - [ansible-lint==25.5.0](https://pypi.org/project/ansible-lint/25.5.0)
+  - [ansible-lint==25.6.1](https://pypi.org/project/ansible-lint/25.6.1)
