@@ -3692,7 +3692,7 @@
 <p><a href="https://github.com/ansible/ansible-lint"><img alt="GitHub stars" src="https://img.shields.io/github/stars/ansible/ansible-lint?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-SARIF-orange"><img alt="sarif" src="https://shields.io/badge/-SARIF-orange"/></a> <a href="https://github.com/ansible/ansible-lint/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/ansible/ansible-lint?sort=semver"/></a> <a href="https://github.com/ansible/ansible-lint/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/ansible/ansible-lint"/></a> <a href="https://github.com/ansible/ansible-lint/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/ansible/ansible-lint"/></a> <a href="https://github.com/ansible/ansible-lint/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/ansible/ansible-lint"/></a></p>
 <h2 id="ansible-lint-documentation">ansible-lint documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>25.5.0</strong></li>
+<li>Version in MegaLinter: <strong>25.6.1</strong></li>
 <li>Visit <a href="https://ansible-lint.readthedocs.io/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://ansible-lint.readthedocs.io/configuring/#configuration-file" target="_blank">How to configure ansible-lint rules</a><ul>
 <li>If custom <code>.ansible-lint</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.ansible-lint" target="_blank">.ansible-lint</a> will be used</li>
@@ -3948,7 +3948,8 @@ usage: ansible-lint [-h] [-P | -L | -T]
                     [-x SKIP_LIST] [--generate-ignore] [-w WARN_LIST]
                     [--enable-list ENABLE_LIST] [--nocolor] [--force-color]
                     [--exclude EXCLUDE_PATHS [EXCLUDE_PATHS ...]]
-                    [-c CONFIG_FILE] [-i IGNORE_FILE] [--offline] [--version]
+                    [-c CONFIG_FILE] [-i IGNORE_FILE]
+                    [--offline | --no-offline] [--version]
                     [lintables ...]
 
 positional arguments:
@@ -3992,7 +3993,8 @@ options:
                         Specify configuration file to use. By default it will look for '.ansible-lint', '.ansible-lint.yml', '.ansible-lint.yaml', '.config/ansible-lint.yml', or '.config/ansible-lint.yaml'
   -i, --ignore-file IGNORE_FILE
                         Specify ignore file to use. By default it will look for '.ansible-lint-ignore' or '.config/ansible-lint-ignore.txt'
-  --offline             Disable installation of requirements.yml and schema refreshing
+  --offline, --no-offline
+                        Disable installation of requirements.yml and schema refreshing
   --version
 
 The following environment variables are also recognized but there is no guarantee that they will work in future versions:
@@ -4012,11 +4014,11 @@ ANSIBLE_LINT_NODEPS: Avoids installing content dependencies and avoids performin
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile"># renovate: datasource=pypi depName=ansible-lint
-ARG PIP_ANSIBLE_LINT_VERSION=25.5.0
+ARG PIP_ANSIBLE_LINT_VERSION=25.6.1
 </code></pre>
 <ul>
 <li>PIP packages (Python):<ul>
-<li><a href="https://pypi.org/project/ansible-lint/25.5.0">ansible-lint==25.5.0</a></li>
+<li><a href="https://pypi.org/project/ansible-lint/25.6.1">ansible-lint==25.6.1</a></li>
 </ul>
 </li>
 </ul>

@@ -3711,7 +3711,7 @@
 <p><a href="https://github.com/prettier/prettier"><img alt="GitHub stars" src="https://img.shields.io/github/stars/prettier/prettier?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-format-yellow"><img alt="formatter" src="https://shields.io/badge/-format-yellow"/></a> <a href="https://github.com/prettier/prettier/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/prettier/prettier?sort=semver"/></a> <a href="https://github.com/prettier/prettier/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/prettier/prettier"/></a> <a href="https://github.com/prettier/prettier/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/prettier/prettier"/></a> <a href="https://github.com/prettier/prettier/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/prettier/prettier"/></a></p>
 <h2 id="prettier-documentation">prettier documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>3.5.3</strong></li>
+<li>Version in MegaLinter: <strong>3.6.0</strong></li>
 <li>Visit <a href="https://prettier.io/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://prettier.io/docs/en/configuration.html" target="_blank">How to configure prettier rules</a></li>
 <li>See <a href="https://prettier.io/docs/en/ignore.html#javascript" target="_blank">How to disable prettier rules in files</a></li>
@@ -3987,7 +3987,7 @@ Format options:
   --object-wrap &lt;preserve|collapse&gt;
                            How to wrap object literals.
                            Defaults to preserve.
-  --parser &lt;flow|babel|babel-flow|babel-ts|typescript|acorn|espree|meriyah|css|less|scss|json|json5|jsonc|json-stringify|graphql|markdown|mdx|vue|yaml|glimmer|html|angular|lwc&gt;
+  --parser &lt;flow|babel|babel-flow|babel-ts|typescript|acorn|espree|meriyah|css|less|scss|json|json5|jsonc|json-stringify|graphql|markdown|mdx|vue|yaml|glimmer|html|angular|lwc|mjml&gt;
                            Which parser to use.
   --print-width &lt;int&gt;      The line length where Prettier will try wrap.
                            Defaults to 80.
@@ -4049,6 +4049,8 @@ Other options:
   --cache-location &lt;path&gt;  Path to the cache file.
   --cache-strategy &lt;metadata|content&gt;
                            Strategy for the cache to use for detecting changed files.
+  --check-ignore-pragma    Check whether the file's first docblock comment contains '@noprettier' or '@noformat' to determine if it should be formatted.
+                           Defaults to false.
   --no-color               Do not colorize error messages.
   --no-error-on-unmatched-pattern
                            Prevent errors when pattern is unmatched.
@@ -4063,8 +4065,7 @@ Other options:
   --log-level &lt;silent|error|warn|log|debug&gt;
                            What level of logs to report.
                            Defaults to log.
-  --require-pragma         Require either '@prettier' or '@format' to be present in the file's first docblock comment
-                           in order for it to be formatted.
+  --require-pragma         Require either '@prettier' or '@format' to be present in the file's first docblock comment in order for it to be formatted.
                            Defaults to false.
   --stdin-filepath &lt;path&gt;  Path to the file to pretend that stdin comes from.
   --support-info           Print support information as JSON.
@@ -4077,11 +4078,11 @@ Other options:
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile"># renovate: datasource=npm depName=prettier
-ARG NPM_PRETTIER_VERSION=3.5.3
+ARG NPM_PRETTIER_VERSION=3.6.0
 </code></pre>
 <ul>
 <li>NPM packages (node.js):<ul>
-<li><a href="https://www.npmjs.com/package/prettier/v/3.5.3">prettier@3.5.3</a></li>
+<li><a href="https://www.npmjs.com/package/prettier/v/3.6.0">prettier@3.6.0</a></li>
 </ul>
 </li>
 </ul>

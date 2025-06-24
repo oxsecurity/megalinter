@@ -3711,7 +3711,7 @@
 <p><a href="https://github.com/snakemake/snakemake"><img alt="GitHub stars" src="https://img.shields.io/github/stars/snakemake/snakemake?cacheSeconds=3600"/></a> <a href="https://github.com/snakemake/snakemake/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/snakemake/snakemake?sort=semver"/></a> <a href="https://github.com/snakemake/snakemake/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/snakemake/snakemake"/></a> <a href="https://github.com/snakemake/snakemake/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/snakemake/snakemake"/></a> <a href="https://github.com/snakemake/snakemake/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/snakemake/snakemake"/></a></p>
 <h2 id="snakemake-documentation">snakemake documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>9.5.1</strong></li>
+<li>Version in MegaLinter: <strong>9.6.1</strong></li>
 <li>Visit <a href="https://snakemake.github.io/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://snakemake.readthedocs.io/en/stable/snakefiles/configuration.html" target="_blank">How to configure snakemake rules</a></li>
 </ul>
@@ -3983,8 +3983,7 @@
                  [--omit-from TARGET [TARGET ...]] [--rerun-incomplete]
                  [--shadow-prefix DIR]
                  [--strict-dag-evaluation {cyclic-graph,functions,periodic-wildcards} [{cyclic-graph,functions,periodic-wildcards} ...]]
-                 [--scheduler [{ilp,greedy}]] [--wms-monitor [WMS_MONITOR]]
-                 [--wms-monitor-arg [NAME=VALUE ...]]
+                 [--scheduler [{ilp,greedy}]]
                  [--scheduler-ilp-solver {PULP_CBC_CMD}]
                  [--conda-base-path CONDA_BASE_PATH] [--no-subworkflows]
                  [--precommand PRECOMMAND] [--groups GROUPS [GROUPS ...]]
@@ -3999,7 +3998,7 @@
                  [--filegraph] [--d3dag] [--summary] [--detailed-summary]
                  [--archive FILE] [--cleanup-metadata FILE [FILE ...]]
                  [--cleanup-shadow] [--skip-script-cleanup] [--unlock]
-                 [--list-changes {input,code,params}] [--list-input-changes]
+                 [--list-changes {code,input,params}] [--list-input-changes]
                  [--list-params-changes] [--list-untracked]
                  [--delete-all-output | --delete-temp-output]
                  [--keep-incomplete] [--drop-metadata] [--version]
@@ -4045,7 +4044,7 @@
                  [--scheduler-solver-path SCHEDULER_SOLVER_PATH]
                  [--deploy-sources QUERY CHECKSUM]
                  [--target-jobs TARGET_JOBS [TARGET_JOBS ...]]
-                 [--mode {subprocess,remote,default}]
+                 [--mode {subprocess,default,remote}]
                  [--report-html-path VALUE]
                  [--report-html-stylesheet-path VALUE]
                  [targets ...]
@@ -4344,19 +4343,6 @@ EXECUTION:
                         or by solving an ilp. The ilp scheduler aims to reduce
                         runtime and hdd usage by best possible use of
                         resources. (default: greedy)
-  --wms-monitor [WMS_MONITOR]
-                        IP and port of workflow management system to monitor
-                        the execution of snakemake (e.g.
-                        http://127.0.0.1:5000) Note that if your service
-                        requires an authorization token, you must export
-                        WMS_MONITOR_TOKEN in the environment.
-  --wms-monitor-arg [NAME=VALUE ...]
-                        If the workflow management service accepts extra
-                        arguments, provide. them in key value pairs with
-                        `--wms-monitor-arg`. For example, to run an existing
-                        workflow using a wms monitor, you can provide the pair
-                        `id=12345` and the arguments will be provided to the
-                        endpoint to first interact with the workflow
   --scheduler-ilp-solver {PULP_CBC_CMD}
                         Specifies solver to be utilized when selecting ilp-
                         scheduler. (default: COIN_CMD)
@@ -4534,7 +4520,7 @@ UTILITIES:
                         (default: False)
   --unlock              Remove a lock on the working directory. (default:
                         False)
-  --list-changes, --lc {input,code,params}
+  --list-changes, --lc {code,input,params}
                         List all output files for which the given items (code,
                         input, params) have changed since creation.
   --list-input-changes, --li
@@ -4773,7 +4759,7 @@ REMOTE EXECUTION:
                         is up to your responsibility. Any used image has to
                         contain a working snakemake installation that is
                         compatible with (or ideally the same as) the currently
-                        running version. (default: snakemake/snakemake:v9.5.1)
+                        running version. (default: snakemake/snakemake:v9.6.1)
   --immediate-submit, --is
                         Immediately submit all jobs to the cluster instead of
                         waiting for present input files. This will fail,
@@ -4892,7 +4878,7 @@ INTERNAL:
   --target-jobs TARGET_JOBS [TARGET_JOBS ...]
                         Internal use only: Target particular jobs by
                         RULE:WILDCARD1=VALUE,WILDCARD2=VALUE,...
-  --mode {subprocess,remote,default}
+  --mode {subprocess,default,remote}
                         Internal use only: Set execution mode of Snakemake.
                         (default: default)
 
@@ -4912,11 +4898,11 @@ defaults.
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile"># renovate: datasource=pypi depName=snakemake
-ARG PIP_SNAKEMAKE_VERSION=9.5.1
+ARG PIP_SNAKEMAKE_VERSION=9.6.1
 </code></pre>
 <ul>
 <li>PIP packages (Python):<ul>
-<li><a href="https://pypi.org/project/snakemake/9.5.1">snakemake==9.5.1</a></li>
+<li><a href="https://pypi.org/project/snakemake/9.6.1">snakemake==9.6.1</a></li>
 </ul>
 </li>
 </ul>
