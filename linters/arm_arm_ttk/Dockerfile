@@ -49,7 +49,7 @@ FROM python:3.13-alpine3.21
 #############################################################################################
 #ARG__START
 # renovate: datasource=github-tags depName=PowerShell/PowerShell
-ARG POWERSHELL_VERSION=7.5.1
+ARG POWERSHELL_VERSION=7.5.2
 # renovate: datasource=github-tags depName=Azure/arm-ttk
 ARG ARM_TTK_VERSION=20250401
 ARG ARM_TTK_NAME='arm-ttk.zip'
