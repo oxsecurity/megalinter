@@ -55,6 +55,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [prettier](https://prettier.io/) from 3.5.3 to **3.6.0** on 2025-06-24
   - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.25.0 to **3.26.0** on 2025-06-24
   - [snakemake](https://snakemake.github.io/) from 9.5.1 to **9.6.1** on 2025-06-24
+  - [prettier](https://prettier.io/) from 3.6.0 to **3.6.1** on 2025-06-25
+  - [powershell_formatter](https://github.com/PowerShell/PSScriptAnalyzer) from 7.5.1 to **7.5.2** on 2025-06-25
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.5.1 to **7.5.2** on 2025-06-25
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 9.1.1 to **9.1.2** on 2025-06-25
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15
