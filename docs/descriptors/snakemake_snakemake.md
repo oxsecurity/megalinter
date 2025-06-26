@@ -15,7 +15,7 @@ description: How to use snakemake (configure, ignore files, ignore errors, help 
 
 ## snakemake documentation
 
-- Version in MegaLinter: **9.6.1**
+- Version in MegaLinter: **9.6.2**
 - Visit [Official Web Site](https://snakemake.github.io/){target=_blank}
 - See [How to configure snakemake rules](https://snakemake.readthedocs.io/en/stable/snakefiles/configuration.html){target=_blank}
 
@@ -181,7 +181,7 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--scheduler-solver-path SCHEDULER_SOLVER_PATH]
                  [--deploy-sources QUERY CHECKSUM]
                  [--target-jobs TARGET_JOBS [TARGET_JOBS ...]]
-                 [--mode {remote,default,subprocess}]
+                 [--mode {subprocess,remote,default}]
                  [--report-html-path VALUE]
                  [--report-html-stylesheet-path VALUE]
                  [targets ...]
@@ -789,7 +789,8 @@ BEHAVIOR:
                         Only consider given rules. If omitted, all rules in
                         Snakefile are used. Note that this is intended
                         primarily for internal use and may lead to unexpected
-                        results otherwise.
+                        results otherwise. Meant for internal use or
+                        debugging.
   --max-jobs-per-timespan MAX_JOBS_PER_TIMESPAN
                         Maximal number of job submissions/executions per
                         timespan. Format: <number><timespan>, e.g. 50/1m or
@@ -896,7 +897,7 @@ REMOTE EXECUTION:
                         is up to your responsibility. Any used image has to
                         contain a working snakemake installation that is
                         compatible with (or ideally the same as) the currently
-                        running version. (default: snakemake/snakemake:v9.6.1)
+                        running version. (default: snakemake/snakemake:v9.6.2)
   --immediate-submit, --is
                         Immediately submit all jobs to the cluster instead of
                         waiting for present input files. This will fail,
@@ -1015,7 +1016,7 @@ INTERNAL:
   --target-jobs TARGET_JOBS [TARGET_JOBS ...]
                         Internal use only: Target particular jobs by
                         RULE:WILDCARD1=VALUE,WILDCARD2=VALUE,...
-  --mode {remote,default,subprocess}
+  --mode {subprocess,remote,default}
                         Internal use only: Set execution mode of Snakemake.
                         (default: default)
 
@@ -1036,8 +1037,8 @@ defaults.
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=snakemake
-ARG PIP_SNAKEMAKE_VERSION=9.6.1
+ARG PIP_SNAKEMAKE_VERSION=9.6.2
 ```
 
 - PIP packages (Python):
-  - [snakemake==9.6.1](https://pypi.org/project/snakemake/9.6.1)
+  - [snakemake==9.6.2](https://pypi.org/project/snakemake/9.6.2)
