@@ -52,7 +52,7 @@ FROM python:3.13-alpine3.21
 # renovate: datasource=crate depName=shellcheck-sarif
 ARG CARGO_SHELLCHECK_SARIF_VERSION=0.8.0
 # renovate: datasource=github-tags depName=rust-lang/rust
-ARG RUST_RUST_VERSION=1.87.0
+ARG RUST_RUST_VERSION=1.88.0
 
 ARG BASH_SHELLCHECK_VERSION
 #ARG__END
