@@ -15,7 +15,7 @@ description: How to use secretlint (configure, ignore files, ignore errors, help
 
 ## secretlint documentation
 
-- Version in MegaLinter: **10.1.0**
+- Version in MegaLinter: **10.1.1**
 - Visit [Official Web Site](https://github.com/secretlint/secretlint#readme){target=_blank}
 - See [How to configure secretlint rules](https://github.com/secretlint/secretlint#configuration){target=_blank}
   - If custom `.secretlintrc.json` config file isn't found, [.secretlintrc.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.secretlintrc.json){target=_blank} will be used
@@ -152,14 +152,14 @@ Exit Status
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=secretlint
-ARG NPM_SECRETLINT_VERSION=10.1.0
+ARG NPM_SECRETLINT_VERSION=10.1.1
 # renovate: datasource=npm depName=@secretlint/secretlint-rule-preset-recommend
-ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=10.1.0
+ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=10.1.1
 # renovate: datasource=npm depName=@secretlint/secretlint-formatter-sarif
-ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=10.1.0
+ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=10.1.1
 ```
 
 - NPM packages (node.js):
-  - [secretlint@10.1.0](https://www.npmjs.com/package/secretlint/v/10.1.0)
-  - [@secretlint/secretlint-rule-preset-recommend@10.1.0](https://www.npmjs.com/package/@secretlint/secretlint-rule-preset-recommend/v/10.1.0)
-  - [@secretlint/secretlint-formatter-sarif@10.1.0](https://www.npmjs.com/package/@secretlint/secretlint-formatter-sarif/v/10.1.0)
+  - [secretlint@10.1.1](https://www.npmjs.com/package/secretlint/v/10.1.1)
+  - [@secretlint/secretlint-rule-preset-recommend@10.1.1](https://www.npmjs.com/package/@secretlint/secretlint-rule-preset-recommend/v/10.1.1)
+  - [@secretlint/secretlint-formatter-sarif@10.1.1](https://www.npmjs.com/package/@secretlint/secretlint-formatter-sarif/v/10.1.1)
