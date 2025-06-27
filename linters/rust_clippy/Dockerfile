@@ -49,7 +49,7 @@ FROM python:3.13-alpine3.21
 #############################################################################################
 #ARG__START
 # renovate: datasource=github-tags depName=rust-lang/rust
-ARG RUST_RUST_VERSION=1.87.0
+ARG RUST_RUST_VERSION=1.88.0
 #ARG__END
 
 ####################
