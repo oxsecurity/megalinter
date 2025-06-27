@@ -3826,8 +3826,7 @@
         "  -l, --logger string         Logger level. Supported: debug/info/success/warning/error/fatal [$KS_LOGGER] (default \"info\")",
         "      --server string         Backend discovery server URL",
         "",
-        "Use \"kubescape [command] --help\" for more information about a command.",
-        "{\"level\":\"info\",\"ts\":\"2025-06-27T19:19:57Z\",\"msg\":\"Received interrupt signal, exiting...\"}"
+        "Use \"kubescape [command] --help\" for more information about a command."
     ],
     "kubeval": [
         "Validate a Kubernetes YAML file against the relevant schema",
@@ -9612,7 +9611,7 @@
         "                 [--scheduler-solver-path SCHEDULER_SOLVER_PATH]",
         "                 [--deploy-sources QUERY CHECKSUM]",
         "                 [--target-jobs TARGET_JOBS [TARGET_JOBS ...]]",
-        "                 [--mode {subprocess,default,remote}]",
+        "                 [--mode {default,subprocess,remote}]",
         "                 [--report-html-path VALUE]",
         "                 [--report-html-stylesheet-path VALUE]",
         "                 [targets ...]",
@@ -10447,7 +10446,7 @@
         "  --target-jobs TARGET_JOBS [TARGET_JOBS ...]",
         "                        Internal use only: Target particular jobs by",
         "                        RULE:WILDCARD1=VALUE,WILDCARD2=VALUE,...",
-        "  --mode {subprocess,default,remote}",
+        "  --mode {default,subprocess,remote}",
         "                        Internal use only: Set execution mode of Snakemake.",
         "                        (default: default)",
         "",

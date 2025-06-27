@@ -65,6 +65,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [pmd](https://pmd.github.io/) from 7.14.0 to **7.15.0** on 2025-06-27
   - [ruff-format](https://github.com/astral-sh/ruff) from 0.12.0 to **0.12.1** on 2025-06-27
   - [ruff](https://github.com/astral-sh/ruff) from 0.12.0 to **0.12.1** on 2025-06-27
+  - [prettier](https://prettier.io/) from 3.6.1 to **3.6.2** on 2025-06-27
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15
