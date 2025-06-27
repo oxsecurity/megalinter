@@ -62,6 +62,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [secretlint](https://github.com/secretlint/secretlint) from 10.1.0 to **10.1.1** on 2025-06-26
   - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.87 to **0.1.88** on 2025-06-26
   - [snakemake](https://snakemake.github.io/) from 9.6.1 to **9.6.2** on 2025-06-26
+  - [pmd](https://pmd.github.io/) from 7.14.0 to **7.15.0** on 2025-06-27
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.12.0 to **0.12.1** on 2025-06-27
+  - [ruff](https://github.com/astral-sh/ruff) from 0.12.0 to **0.12.1** on 2025-06-27
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15
