@@ -28,7 +28,6 @@ linters:
       - **Native Modularity**: Built-in module system for code reuse and better organization
       - **ARM Template Compatibility**: Transpiles to standard ARM Template JSON files, treating ARM as Intermediate Language
       - **Built-in Linting**: Comprehensive linting with customizable rules via `bicepconfig.json`
-      - **IDE Support**: Rich development experience with IntelliSense, validation, and debugging capabilities
       - **Zero-Downtime Deployment**: Supports incremental deployments and what-if operations for safe infrastructure changes
 
       By default, Bicep linter errors are set as warnings. To customize linter settings, use a `bicepconfig.json` file. For more information, see the [documentation for the Bicep Linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/bicep-config-linter#customize-linter)

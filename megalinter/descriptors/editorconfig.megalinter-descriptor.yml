@@ -15,13 +15,12 @@ linters:
       **editorconfig-checker** is a language-agnostic tool that validates files against EditorConfig definitions to ensure consistent formatting across your entire codebase. Unlike language-specific linters, it works for every file type and programming language.
 
       **Key Features:**
-      
+
       - **Universal Validation**: Works with any file type including code, configuration files, plain text, XML, and more
       - **EditorConfig Compliance**: Enforces indentation, line endings, character encoding, and whitespace rules from `.editorconfig`
       - **Multi-Platform Support**: Available as native binaries, npm package, PHP composer package, Python pip package, and Docker image
       - **Configurable Rules**: Fine-tune validation with `.ecrc` configuration files and command-line flags
       - **Comprehensive Checks**: Validates indent style, insert final newline, trim trailing whitespace, and end-of-line characters
-      - **IDE Integration**: Works alongside major editors that support EditorConfig for consistent development experience
       - **Flexible Exclusions**: Exclude specific files, directories, or content types from validation
     linter_url: https://editorconfig-checker.github.io/
     linter_repo: https://github.com/editorconfig-checker/editorconfig-checker

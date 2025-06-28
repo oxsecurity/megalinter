@@ -60,13 +60,12 @@ linters:
       **clj-kondo** is a static analyzer and linter for Clojure code that sparks joy. It performs static analysis on Clojure, ClojureScript and EDN files to detect potential errors without executing your program.
 
       **Key Features:**
-      
+
       - **Comprehensive Error Detection**: Detects arity errors, unused private vars, unresolved symbols, redefined vars, missing map keys, and many other issues
       - **Style Guide Recommendations**: Enforces best practices from Stuart Sierra's "how to ns" and the Clojure Style Guide
       - **Advanced Analysis**: Provides type checking, format string validation, shadowed vars detection, and Datalog syntax checking
       - **Macro Support**: Built-in support for core macros and popular community libraries, with extensible configuration for custom macros
       - **Fast Performance**: Compiled to native code using GraalVM for fast startup and execution
-      - **Editor Integration**: Works seamlessly with all major editors through Language Server Protocol
       - **Cache System**: Incremental analysis with project-wide cache for cross-namespace lint detection
     linter_url: https://github.com/borkdude/clj-kondo
     linter_repo: https://github.com/borkdude/clj-kondo
@@ -112,7 +111,6 @@ linters:
       - **Comprehensive Rules**: Handles indentation, spacing, line breaks, namespace formatting, and function definitions
       - **Highly Configurable**: Extensive configuration options through `.cljstyle` files with format rules and width constraints
       - **Multi-Command Interface**: Supports check, fix, pipe, find, and config commands for different workflows
-      - **Integration Ready**: Works with editors, build tools, and CI/CD pipelines through various integration options
       - **Form Ignoring**: Flexible ignore patterns with comment forms, discard macros, and metadata tags
       - **Native Performance**: Compiled to native binary for fast startup and execution
     linter_url: https://github.com/greglook/cljstyle

@@ -21,7 +21,6 @@ linters:
       - **Best Practices Enforcement**: Checks for adherence to Tekton development guidelines and conventions
       - **Required Fields Verification**: Validates that all mandatory fields and properties are present and properly configured
       - **Early Error Detection**: Catches configuration issues before pipeline deployment to Tekton clusters
-      - **CI/CD Integration**: Seamlessly integrates into development workflows for continuous validation
       - **Comprehensive Rule Set**: Covers common Tekton anti-patterns and configuration mistakes
     linter_url: https://github.com/IBM/tekton-lint
     linter_repo: https://github.com/IBM/tekton-lint

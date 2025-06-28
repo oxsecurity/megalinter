@@ -65,7 +65,6 @@ linters:
       - **Configuration support** via `.snakefmt.toml` for project-specific settings
       - **Compact diff output** showing precise formatting changes
       - **Workflow compatibility** working with complex Snakemake workflow definitions
-      - **CI/CD integration** for automated code formatting validation
       - **Team collaboration** ensuring consistent style across development teams
       - **Performance optimized** for handling large Snakemake projects efficiently
     is_formatter: true

@@ -38,7 +38,6 @@ linters:
 
       - Inline and global ignore pragmas for rule exceptions
       - Custom severity levels (error, warning, info, style)
-      - Integration with major CI/CD platforms and editors
       - Support for both Dockerfile and Containerfile formats
 
       Hadolint ensures your Dockerfiles are secure, efficient, and maintainable while following industry best practices.

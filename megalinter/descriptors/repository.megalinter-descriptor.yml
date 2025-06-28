@@ -9,7 +9,7 @@ linters:
   # CHECKOV
   - linter_name: checkov
     linter_text: |
-      **Checkov** is a comprehensive static code analysis tool for Infrastructure as Code (IaC) that prevents cloud security misconfigurations before they reach production. It serves as an essential security scanning tool for modern cloud-native development workflows.
+      **Checkov** is a comprehensive static code analysis tool for Infrastructure as Code (IaC) that prevents cloud security misconfigurations before they reach production.
 
       **Key Features:**
       
@@ -19,7 +19,6 @@ linters:
       - **Security Focus**: Detects unencrypted storage, overly permissive security groups, missing logging, exposed secrets, and compliance violations
       - **SARIF Output**: Modern security report format for integration with development platforms and security tools
       - **Custom Policies**: Support for custom security policies written in Python or YAML for organization-specific requirements
-      - **CI/CD Integration**: Seamless integration with popular CI/CD platforms for shift-left security practices
       - **Policy Suppression**: Granular control over policy enforcement with inline and configuration-based suppression
       - **Graph-Based Analysis**: Advanced analysis using dependency graphs for complex infrastructure relationships
     name: REPOSITORY_CHECKOV
@@ -75,15 +74,13 @@ linters:
       - security
     ignore_for_flavor_suggestions: true
     linter_text: |
-      **DevSkim** is a security analysis tool that provides inline security guidance for developers by detecting security vulnerabilities and anti-patterns in source code. It serves as a real-time security companion that helps prevent security issues from entering the codebase.
+      **DevSkim** is a security analysis tool that provides inline security guidance for developers by detecting security vulnerabilities and anti-patterns in source code.
 
       **Key Features:**
       
       - **Multi-Language Support**: Analyzes code in dozens of programming languages including C#, Java, JavaScript, Python, C/C++, and more
-      - **Real-Time Analysis**: Provides instant feedback with security guidance as developers write code
       - **Comprehensive Rule Set**: Over 500 built-in security rules covering common vulnerabilities like injection flaws, cryptographic issues, and authentication problems
       - **SARIF Output**: Modern security report format for integration with development platforms and security tools
-      - **IDE Integration**: Native support for Visual Studio Code and other editors with inline security suggestions
       - **Custom Rules**: Extensible rule engine allowing organizations to create custom security policies
       - **Quick Fixes**: Automated remediation suggestions for many detected security issues
       - **Severity Classification**: Categorizes findings by severity level to help prioritize security fixes
@@ -156,7 +153,6 @@ linters:
       - **Real-Time Vulnerability Database**: Uses up-to-date vulnerability databases to detect the latest security issues
       - **Supply Chain Security**: Identifies compromised or malicious packages in the dependency tree
       - **SARIF Output**: Modern security report format for integration with development platforms and security tools
-      - **CI/CD Integration**: Seamless integration with continuous integration pipelines for automated security scanning
       - **Detailed Reporting**: Comprehensive reports with vulnerability details, severity scores, and remediation guidance
       - **Version Upgrade Suggestions**: Recommends safer, newer versions to resolve vulnerabilities
       - **Transitive Dependency Analysis**: Scans both direct and indirect dependencies for comprehensive coverage
@@ -205,7 +201,6 @@ linters:
       - **Conflict Marker Detection**: Identifies Git conflict markers (`<<<<<<<`, `=======`, `>>>>>>>`) that weren't properly resolved
       - **Merge Safety**: Prevents accidentally committing unresolved merge conflicts to version control
       - **Repository Hygiene**: Helps maintain clean codebases by catching leftover merge artifacts
-      - **CI/CD Integration**: Essential for automated workflows to ensure code quality before deployment
       - **Fast Scanning**: Efficiently processes files to detect problematic patterns without performance overhead
     linter_url: https://git-scm.com
     linter_repo: https://github.com/git/git
@@ -250,7 +245,6 @@ linters:
       - **Pre-commit hook integration** to prevent secrets from being committed
       - **Baseline support** to ignore existing secrets while catching new ones
       - **Configuration flexibility** via `.gitleaks.toml` files
-      - **CI/CD integration** with proper exit codes for automation
       - **Redaction support** to safely share scan results
       - **Entropy detection** for finding high-entropy strings that may be secrets
 
@@ -415,7 +409,6 @@ linters:
       - **SARIF Output**: Modern security report format for integration with development platforms and security tools
       - **Custom Query Engine**: Rego-based policy engine allowing custom security rules for organization-specific requirements
       - **Remediation Guidance**: Detailed fix suggestions and best practice recommendations for identified issues
-      - **CI/CD Integration**: Seamless integration with development workflows and automated security validation
       - **Inline Suppression**: Comment-based suppression system for managing false positives and accepted risks
       - **Performance Optimized**: Fast scanning suitable for large Infrastructure as Code repositories
       - **Open Source**: Community-driven development with transparent security rules and continuous updates
@@ -479,7 +472,6 @@ linters:
       - **Cross-Platform Compatibility**: Prevents naming conflicts between different operating systems (Windows, macOS, Linux)
       - **Multiple Naming Conventions**: Built-in support for camelCase, PascalCase, snake_case, kebab-case, and custom patterns
       - **Directory Structure Validation**: Enforces consistent naming across both files and directory hierarchies
-      - **CI/CD Integration**: Perfect for automated workflows to maintain naming standards across development teams
       - **Zero Dependencies**: Standalone binary with no external dependencies for easy installation and deployment
       - **Globbing Support**: Advanced pattern matching for applying different rules to specific file types or directories
       - **Team Collaboration**: Ensures consistent naming conventions across large development teams and projects
@@ -525,9 +517,7 @@ linters:
       - **Pluggable Architecture**: Modular rule system allowing custom secret patterns and organization-specific detection
       - **Multiple Output Formats**: Supports JSON, SARIF, and other formats for integration with security tools and platforms
       - **Configuration Flexibility**: Highly configurable with support for custom rules, ignore patterns, and severity levels
-      - **CI/CD Integration**: Designed for seamless integration into development workflows and automated security checks
       - **Ignore System**: Sophisticated ignore patterns for managing false positives and legacy secrets
-      - **Real-Time Detection**: Can be integrated into editors and IDEs for immediate feedback during development
       - **Team Collaboration**: Shared configuration files ensure consistent secret detection across development teams
       - **Performance Optimized**: Fast scanning suitable for large repositories and automated workflows
       - **Open Source**: Community-driven with transparent detection rules and continuous updates
@@ -592,8 +582,6 @@ linters:
       - **Custom Rule Engine**: Simple, code-like syntax for writing custom rules that match your organization's coding standards
       - **Lightning Fast**: Median CI scan time of 10 seconds, designed for developer workflow integration
       - **Extensive Rule Registry**: Thousands of community and expert-maintained rules covering security, correctness, and performance
-      - **CI/CD Integration**: Seamless integration with GitHub, GitLab, and other platforms with PR comment support
-
       To use SemGrep in MegaLinter you must define a list of rulesets to use.
       Example: `REPOSITORY_SEMGREP_RULESETS: ["p/docker-compose","p/owasp-top-ten"]`
       Exception for standalone and security flavors docker images, that use a list of security rulesets by default.
@@ -779,7 +767,6 @@ linters:
       - **Dependency Mapping**: Provides complete dependency graphs showing relationships between components
       - **License Information**: Includes license details for each component to support compliance and legal reviews
       - **Vulnerability Context**: Links SBOM data with security information for comprehensive risk assessment
-      - **CI/CD Integration**: Seamlessly integrates into development pipelines for automated SBOM generation
       - **Supply Chain Transparency**: Enables organizations to meet regulatory requirements and industry standards
       - **Audit Trail**: Creates detailed records of software composition for security auditing and compliance reporting
     linter_url: https://aquasecurity.github.io/trivy/
@@ -832,7 +819,6 @@ linters:
       - **Secret Verification**: Validates detected secrets by attempting authentication with the actual services
       - **Multi-Source Support**: Scans git repositories, filesystems, cloud storage, databases, and container images
       - **Custom Detectors**: Extensible framework for adding organization-specific secret detection patterns
-      - **CI/CD Integration**: Designed for automated scanning in development pipelines with configurable failure modes
       - **Performance Optimized**: Efficient scanning algorithms suitable for large repositories and continuous monitoring
       - **Detailed Reporting**: Comprehensive output with context, verification status, and remediation guidance
       - **False Positive Management**: Sophisticated filtering and ignore systems to reduce noise and focus on real threats

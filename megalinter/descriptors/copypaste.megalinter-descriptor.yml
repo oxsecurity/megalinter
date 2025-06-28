@@ -24,7 +24,6 @@ linters:
       - **Configurable Thresholds**: Set minimum clone sizes, similarity percentages, and detection sensitivity for different file types
       - **Blame Integration**: Shows Git blame information to identify when and who introduced duplicated code
       - **Performance Optimization**: Efficient scanning algorithms that can handle large codebases with millions of lines
-      - **CI/CD Integration**: Command-line interface perfect for automated quality gates in continuous integration pipelines
       - **Flexible Ignore Patterns**: Sophisticated filtering with glob patterns, file extensions, and content-based exclusions
       - **Statistical Analysis**: Provides detailed metrics on duplication levels, affected files, and codebase health indicators
 

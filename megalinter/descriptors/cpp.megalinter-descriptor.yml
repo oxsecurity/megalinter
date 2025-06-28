@@ -33,7 +33,6 @@ linters:
       - **Multi-Platform Support**: Works across different platforms and doesn't require specific build environments
       - **Low False Positives**: Focuses on finding real bugs with minimal false alarms
       - **Extensive Checks**: Covers over 200 different types of errors and suspicious code patterns
-      - **Integration Ready**: Easily integrates with build systems, IDEs, and CI/CD pipelines
     name: CPP_CPPCHECK
     linter_url: https://cppcheck.sourceforge.io/
     linter_repo: https://cppcheck.sourceforge.io/
@@ -63,7 +62,7 @@ linters:
       - **Formatting Compliance**: Checks indentation, line length, spacing, and comment formatting
       - **Best Practices**: Detects deprecated constructs, improper use of C++ features, and potential style issues
       - **Configurable Rules**: Allows filtering and customization of specific style checks
-      - **Incremental Checking**: Can be run on individual files or integrated into development workflows
+      - **Incremental Checking**: Can be run on individual files or as part of code quality validation
     name: CPP_CPPLINT
     linter_url: https://github.com/cpplint/cpplint
     linter_repo: https://github.com/cpplint/cpplint
@@ -88,14 +87,13 @@ linters:
       **clang-format** is a powerful code formatter for C, C++, Java, JavaScript, JSON, Objective-C, Protobuf, and C# that automatically formats code according to configurable style guidelines. It's part of the LLVM project and provides consistent, automated formatting.
 
       **Key Features:**
-      
+
       - **Multi-Language Support**: Formats C/C++, Java, JavaScript, JSON, Objective-C, Protobuf, and C# code with language-specific rules
       - **Predefined Styles**: Built-in styles including LLVM, Google, Chromium, Mozilla, Microsoft, WebKit, and GNU coding standards
       - **Highly Configurable**: Extensive customization options through `.clang-format` files with hundreds of style parameters
-      - **Editor Integration**: Native support for Vim, Emacs, Visual Studio, VS Code, CLion, and other major editors
       - **Selective Formatting**: Format specific lines, ranges, or regions with precise control over what gets formatted
       - **Git Integration**: Built-in tools for formatting only changed lines in git commits and diffs
-      - **In-Place Editing**: Can modify files directly or output formatted code to stdout for pipeline integration
+      - **In-Place Editing**: Can modify files directly or output formatted code to stdout
     name: CPP_CLANG_FORMAT
     descriptor_flavors:
       - c_cpp

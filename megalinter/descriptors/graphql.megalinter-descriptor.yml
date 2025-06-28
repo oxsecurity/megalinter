@@ -21,7 +21,6 @@ linters:
       - **Field and type description enforcement** for better API documentation
       - **Naming convention validation** ensuring consistent schema structure
       - **Type usage optimization** to prevent common GraphQL anti-patterns
-      - **CI/CD integration** with proper exit codes and detailed reporting
     name: GRAPHQL_GRAPHQL_SCHEMA_LINTER
     linter_url: https://github.com/cjoudrey/graphql-schema-linter
     linter_repo: https://github.com/cjoudrey/graphql-schema-linter

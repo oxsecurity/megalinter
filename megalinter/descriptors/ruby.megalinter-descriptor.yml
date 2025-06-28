@@ -18,8 +18,6 @@ linters:
       - **Automatic Code Fixing**: Safe auto-correction capabilities for many style violations and formatting issues
       - **Highly Configurable**: Flexible configuration system allowing teams to customize rules, severity levels, and enforcement patterns
       - **Multiple Extensions**: Rich ecosystem with specialized cops for Rails, RSpec, Performance, and other Ruby frameworks
-      - **IDE Integration**: Seamless integration with major editors and development environments for real-time feedback
-      - **CI/CD Ready**: Designed for continuous integration workflows with detailed reporting and exit code control
       - **Performance Analysis**: Built-in performance cops to identify inefficient code patterns and suggest optimizations
       - **Gradual Adoption**: Supports incremental adoption with file exclusions and rule-by-rule enabling for legacy codebases
     linter_url: https://rubocop.org/

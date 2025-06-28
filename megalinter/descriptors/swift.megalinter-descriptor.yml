@@ -19,7 +19,6 @@ linters:
       - **Highly Configurable**: Extensive configuration options with support for enabling/disabling rules and custom severity levels
       - **Custom Rules**: Support for project-specific custom rules using regular expressions and AST patterns
       - **Xcode Integration**: Seamless integration with Xcode projects through build phases and scheme actions
-      - **CI/CD Ready**: Perfect for continuous integration pipelines with detailed reporting and exit codes
       - **Performance Optimized**: Fast analysis even for large Swift projects with incremental linting support
       - **Multiple Output Formats**: Supports various report formats including JSON, HTML, and checkstyle for tool integration
     linter_url: https://github.com/realm/SwiftLint

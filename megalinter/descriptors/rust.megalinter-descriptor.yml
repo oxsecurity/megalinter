@@ -20,7 +20,6 @@ linters:
       - **MSRV Support**: Respects Minimum Supported Rust Version (MSRV) to ensure compatibility with older Rust versions
       - **Cargo Integration**: Seamlessly integrates with Cargo build system for zero-configuration usage
       - **Configurable Rules**: Extensive configuration options through `clippy.toml` for project-specific requirements
-      - **IDE Support**: Native support in rust-analyzer and other development environments
       - **Performance Focus**: Identifies optimization opportunities and suggests more efficient Rust patterns
       - **Safety Enforcement**: Helps prevent common programming errors and promotes memory-safe, thread-safe code
     linter_url: https://github.com/rust-lang/rust-clippy

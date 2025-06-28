@@ -19,10 +19,9 @@ linters:
       - **Consistent Output**: Deterministic formatting ensures identical results regardless of environment or developer
       - **YAML Optimization**: Specialized handling of YAML syntax including proper indentation, spacing, and structure
       - **Multi-Language Support**: Part of a comprehensive formatting ecosystem covering 20+ languages
-      - **Editor Integration**: Seamless integration with VS Code, WebStorm, and other popular development environments
       - **Parse Safety**: Validates that formatted code maintains semantic equivalence to the original
       - **Configuration Flexibility**: Supports project-specific settings through .prettierrc files when customization is needed
-      - **Fast Performance**: High-speed formatting suitable for large YAML files and real-time editor integration
+      - **Fast Performance**: High-speed formatting suitable for large YAML files
       - **Team Standardization**: Eliminates style discussions and ensures consistent formatting across team members
     is_formatter: true
     linter_url: https://prettier.io/
@@ -94,7 +93,6 @@ linters:
       - **Custom rule configuration** via `.yamllint.yml` configuration files
       - **Multiple output formats** including standard and colored output
       - **Inline comment disabling** for granular rule control
-      - **CI/CD integration** with proper exit codes and error reporting
       - **Performance optimized** for handling large YAML files efficiently
       - **Strict mode support** for maximum validation rigor
     linter_url: https://yamllint.readthedocs.io/
@@ -147,7 +145,6 @@ linters:
       - **Zero Configuration**: Works out-of-the-box for common configuration files without requiring explicit schema specification
       - **Schema Store Integration**: Leverages the extensive collection of schemas from schemastore.org for popular tools and frameworks
       - **Detailed Error Reporting**: Provides clear, actionable validation error messages with line and column information
-      - **CI/CD Ready**: Designed for integration into automated workflows and continuous integration pipelines
     linter_rules_url: https://www.schemastore.org/
     linter_megalinter_ref_url: "no"
     config_file_name: ".v8rrc.yml"

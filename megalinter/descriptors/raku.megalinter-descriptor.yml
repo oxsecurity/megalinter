@@ -24,7 +24,6 @@ linters:
       - **Pragma Support**: Validates pragma usage and ensures correct language feature configuration
       - **Multi-File Analysis**: Can analyze entire project structures with proper library path inclusion
       - **Zero Execution**: Validates code without running it, making it safe for untrusted or incomplete code
-      - **IDE Integration**: Powers language server features for real-time development feedback
     linter_url: https://raku.org/
     linter_repo: https://github.com/rakudo/rakudo
     linter_spdx_license: Artistic-2.0

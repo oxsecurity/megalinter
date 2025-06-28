@@ -15,8 +15,6 @@ linters:
       - **Automatic Fixing**: Built-in auto-fix capability for many common style violations
       - **Selective Control**: Enable or disable specific checks based on project requirements
       - **Configuration Files**: Project-specific configuration through `.puppet-lint.rc` files
-      - **CI/CD Integration**: Seamless integration with development workflows, Rake tasks, and GitHub Actions
-      - **IDE Support**: Plugin support for major editors and development environments
       - **Resource Analysis**: Validates conditional statements, class structure, and resource declarations
       - **Best Practices Enforcement**: Identifies and corrects common Puppet coding antipatterns
       

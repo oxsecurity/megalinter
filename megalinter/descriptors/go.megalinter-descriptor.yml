@@ -22,7 +22,6 @@ linters:
       - **⚙️ YAML Configuration**: Flexible configuration system with sensible defaults and extensive customization options
       - **🥇 Minimal False Positives**: Carefully tuned default settings to reduce noise and focus on real issues
       - **🔥 Rich Output Formats**: Multiple output formats including text with colors, JSON, SARIF, HTML, JUnit-XML, and more
-      - **🖥 IDE Integration**: Native integration with VS Code, GoLand, Vim, Emacs, and GitHub Actions
 
       **Comprehensive linting coverage:**
 
@@ -47,7 +46,7 @@ linters:
       **Advanced capabilities:**
 
       - **Smart Caching**: Dramatically speeds up repeated runs by caching results
-      - **Incremental Analysis**: Can analyze only changed files for faster CI/CD integration
+      - **Incremental Analysis**: Can analyze only changed files for faster analysis
       - **Custom Rules**: Support for custom linters and configuration
       - **Issue Filtering**: Sophisticated filtering and suppression of false positives
       - **Parallel Execution**: Concurrent linter execution for maximum speed
@@ -116,7 +115,6 @@ linters:
       - **Inline Rule Control**: Comment-based directives for disabling specific rules on particular lines or sections
       - **Beautiful Output**: Clean, readable error messages with helpful suggestions and context
       - **Extensible Architecture**: Plugin system for custom rules and project-specific requirements
-      - **IDE Integration**: Native support for major editors and development environments
     test_folder: golang_revive
     can_output_sarif: true
     linter_spdx_license: MIT

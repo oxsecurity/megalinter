@@ -26,8 +26,7 @@ linters:
       - **Flexible Configuration**: Extensive customization through JSON configuration files with rule-specific settings and style presets
       - **Inline Control**: HTML comment syntax for enabling/disabling rules within documents (`<!-- markdownlint-disable -->`)
       - **Custom Rules**: Extensible architecture allowing project-specific linting requirements
-      - **Wide Integration**: Available for major editors, build systems, and CI/CD platforms with comprehensive tooling support
-      - **Performance Optimized**: Fast analysis suitable for large documentation projects and automated workflows
+      - **Performance Optimized**: Fast analysis suitable for large documentation projects
 
       [MarkdownLint](https://github.com/DavidAnson/markdownlint) is run through [markdownlint-cli](https://github.com/igorshubovych/markdownlint-cli)
     linter_url: https://github.com/DavidAnson/markdownlint
@@ -77,7 +76,6 @@ linters:
       - **AST-Based Processing**: Uses Abstract Syntax Tree parsing for deep, accurate Markdown analysis
       - **Configurable Presets**: Pre-configured rule sets for common style guides and formatting conventions
       - **Inline Control**: Marker-based comments for enabling/disabling rules within documents
-      - **Integration Ready**: Seamless integration with build tools, editors, and continuous integration workflows
       - **Performance Optimized**: Efficient processing suitable for large documentation projects and automated pipelines
       - **Standards Compliant**: Supports CommonMark and GitHub Flavored Markdown specifications with extension support
     disabled: true
@@ -142,7 +140,6 @@ linters:
       - **Configurable Timeouts**: Adjustable request timeouts and retry logic for reliable network-dependent testing
       - **Pattern Matching**: Supports regex patterns for excluding specific links or domains from validation
       - **Detailed Reporting**: Clear output showing which links passed, failed, or were skipped with specific error details
-      - **CI/CD Integration**: Perfect for automated documentation quality checks in build pipelines
       - **Bulk Processing**: Efficiently processes multiple Markdown files with consolidated reporting
       - **Inline Control**: Comment-based directives for disabling checks on specific links when needed
     linter_url: https://github.com/tcort/markdown-link-check
@@ -184,7 +181,6 @@ linters:
       - **Preserves Content**: Maintains all table data while improving presentation and formatting
       - **Batch Processing**: Efficiently formats multiple tables within single or multiple Markdown files
       - **Non-Destructive**: Only modifies table formatting without affecting other Markdown content
-      - **Editor Integration**: Works seamlessly with development workflows and automated formatting pipelines
       - **Standards Compliance**: Ensures tables follow Markdown table formatting best practices and conventions
     linter_url: https://www.npmjs.com/package/markdown-table-formatter
     linter_repo: https://github.com/nvuillam/markdown-table-formatter

@@ -9,7 +9,7 @@ linters:
   # SQLFLUFF
   - linter_name: sqlfluff
     linter_text: |
-      **SQLFluff** is a dialect-flexible and configurable SQL linter designed for ELT applications that works with Jinja templating and dbt. It provides comprehensive SQL code analysis including syntax checking, style validation, and formatting with support for multiple SQL dialects and integrates well with CI/CD workflows.
+      **SQLFluff** is a dialect-flexible and configurable SQL linter designed for ELT applications that works with Jinja templating and dbt. It provides comprehensive SQL code analysis including syntax checking, style validation, and formatting with support for multiple SQL dialects.
 
       **Key Features:**
       
@@ -18,11 +18,9 @@ linters:
       - **Auto-Fix Capability**: Automatically repairs most linting errors and formatting issues with --fix option
       - **Configurable Rules**: Extensive rule set with granular configuration options for team-specific standards
       - **dbt Integration**: Seamless integration with dbt projects including macro and model analysis
-      - **CI/CD Ready**: Easy integration with continuous integration pipelines and pre-commit hooks
       - **Detailed Reporting**: Comprehensive error reporting with line numbers, positions, and fix suggestions
       - **Custom Rules**: Extensible architecture allowing custom rule development for specific requirements
       - **Performance Optimized**: Fast parsing and analysis even for large SQL codebases
-      - **IDE Integration**: Plugin support for popular editors with real-time linting feedback
     linter_url: https://www.sqlfluff.com/
     linter_repo: https://github.com/sqlfluff/sqlfluff
     linter_spdx_license: MIT
@@ -63,8 +61,6 @@ linters:
       - **Configurable Analysis**: Customizable rule configuration to match team coding standards
       - **Inline Rule Control**: Support for comment-based rule disabling and configuration within scripts
       - **Detailed Error Reporting**: Clear error messages with line numbers and rule explanations
-      - **CI/CD Integration**: Command-line interface suitable for automated build and deployment pipelines
-      - **Visual Studio Integration**: Plugin available for real-time linting within Visual Studio IDE
       - **Performance Optimized**: Fast analysis suitable for large T-SQL codebases and stored procedures
       - **Cross-Platform**: Runs on Windows, macOS, and Linux environments
       - **Extensible Architecture**: Plugin system for custom rule development and organizational standards

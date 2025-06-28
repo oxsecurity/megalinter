@@ -18,7 +18,7 @@ linters:
       - **Inconsistent formatting detection** across document sections
       - **Fully customizable rules** via `.chktexrc` configuration files
       - **Intelligent warning suppression** for context-specific exceptions
-      - **Flexible output formats** for seamless editor integration
+      - **Flexible output formats** for various reporting needs
       - **\input command support** for multi-file LaTeX projects
       - **CWEB document support** for literate programming workflows
     linter_url: https://www.nongnu.org/chktex

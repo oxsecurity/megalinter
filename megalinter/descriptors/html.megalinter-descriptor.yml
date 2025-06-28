@@ -66,8 +66,6 @@ linters:
       - **Multiple output formats** including JSON and XML for tool integration
       - **Inline rule configuration** for granular control over validation
       - **Template support** working with various HTML template engines
-      - **CI/CD integration** with proper exit codes and reporting
-      - **Editor integrations** supporting major development environments
     linter_url: https://htmlhint.com/
     linter_repo: https://github.com/htmlhint/HTMLHint
     linter_spdx_license: MIT

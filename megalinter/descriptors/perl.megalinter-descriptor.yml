@@ -29,7 +29,6 @@ linters:
       - **Inline Annotations**: Selective policy disabling through source code comments and annotations
       - **Extensible Framework**: Support for custom policies and organizational coding standards
       - **Detailed Reporting**: Comprehensive violation reports with explanations and suggested fixes
-      - **IDE Integration**: Works with various editors and development environments for real-time feedback
       - **Flexible Configuration**: Project-specific configuration files for team-wide standards enforcement
     linter_url: https://metacpan.org/pod/Perl::Critic
     linter_repo: https://github.com/Perl-Critic/Perl-Critic

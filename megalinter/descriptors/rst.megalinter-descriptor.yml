@@ -59,7 +59,6 @@ linters:
       - **Custom error handling** allowing for project-specific validation rules
       - **Code block syntax checking** validating embedded programming language syntax
       - **Recursive directory scanning** for bulk validation of documentation trees
-      - **CI/CD integration** with proper exit codes for automated workflows
       - **Extensible architecture** supporting custom validation rules and directives
       - **Performance optimized** for handling large documentation projects efficiently
     linter_url: https://github.com/myint/rstcheck

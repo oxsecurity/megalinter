@@ -27,8 +27,7 @@ linters:
       - **Solution/Project Scope**: Can format entire solutions, specific projects, or individual files with precise control
       - **Incremental Formatting**: Only formats changed files or specific file patterns to optimize performance
       - **Multiple Rule Categories**: Handles whitespace, style preferences, and third-party analyzer rules
-      - **CI/CD Verification**: Verify mode ensures code is properly formatted without making changes
-      - **IDE Integration**: Works seamlessly with Visual Studio, VS Code, and other .NET-compatible editors
+      - **Verification Mode**: Verify mode ensures code is properly formatted without making changes
 
       **Note**: dotnet-format requires a `.sln` or `.csproj` file to run correctly.
     linter_url: https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format
@@ -69,8 +68,6 @@ linters:
       - **Opinionated Formatting**: Consistent, predictable formatting that eliminates style discussions
       - **Comprehensive C# Support**: Handles all modern C# language features, syntax, and constructs
       - **Fast Performance**: Lightning-fast formatting with minimal overhead for large codebases
-      - **Editor Integration**: Seamless integration with VS Code, Visual Studio, and other popular C# development environments
-      - **CI/CD Ready**: Perfect for automated formatting validation and enforcement in build pipelines
       - **Ignore Support**: Flexible ignore patterns for excluding specific files or code sections from formatting
       - **Diff-Friendly**: Produces minimal, clean git diffs by maintaining consistent formatting rules
       - **Team Consistency**: Ensures identical formatting across all team members and development environments
@@ -134,7 +131,6 @@ linters:
       - **Code Simplification**: Identifies opportunities to simplify complex code structures and expressions
       - **Modern C# Support**: Full support for latest C# language features and syntax constructs
       - **Configurable Rules**: Extensive configuration options to customize analysis rules and severity levels
-      - **IDE Integration**: Seamless integration with Visual Studio and VS Code for real-time analysis and refactoring
     file_extensions:
       - ".csproj"
     is_formatter: true

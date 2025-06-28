@@ -34,9 +34,7 @@ linters:
       
       - **Permission Validation**: Checks if shell script files have executable permissions set correctly
       - **Cross-Platform Support**: Works across different operating systems with appropriate permission handling
-      - **Early Detection**: Catches permission issues before deployment or CI/CD pipeline execution
       - **Zero Configuration**: Requires no setup or configuration files - works out of the box
-      - **Integration Ready**: Seamlessly integrates with development workflows and automated testing
       - **Quick Feedback**: Provides immediate feedback about file permission status
       
       **Note**: You can run `git add --chmod=+x myfile.sh` to make a file executable on Windows
@@ -78,7 +76,7 @@ linters:
       - **Best Practices Enforcement**: Promotes modern shell scripting practices and warns against deprecated or dangerous patterns
       - **Detailed Explanations**: Each warning includes links to explanations with examples and recommended fixes
       - **Multi-Shell Support**: Analyzes bash, sh, dash, and ksh scripts with shell-specific checking
-      - **CI/CD Integration**: SARIF output support for seamless integration with modern development platforms
+      - **SARIF Output**: Modern security report format for integration with development platforms and security tools
       - **Extensive Rule Coverage**: Over 100 different checks covering everything from quoting to array usage
     name: BASH_SHELLCHECK
     can_output_sarif: true
@@ -151,8 +149,6 @@ linters:
       - **Parse Validation**: Built-in parser that catches syntax errors while formatting
       - **Diff-Friendly Output**: Generates minimal, clean diffs that focus on meaningful changes
       - **Language Constructs**: Proper handling of functions, conditionals, loops, arrays, and complex expansions
-      - **Editor Integration**: Works seamlessly with major editors and IDEs for real-time formatting
-      - **CI/CD Ready**: Perfect for automated code formatting and style enforcement in pipelines
       - **Zero Dependencies**: Single binary with no external dependencies for easy deployment
     is_formatter: true
     linter_url: https://github.com/mvdan/sh

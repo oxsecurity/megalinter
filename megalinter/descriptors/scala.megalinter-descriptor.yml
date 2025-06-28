@@ -27,7 +27,6 @@ linters:
       - **Syntactic and Semantic Rules**: Supports both syntax-based rules (no compilation needed) and semantic rules (requires compilation)
       - **Built-in Rule Library**: Extensive collection of rules for common Scala patterns, deprecations, and best practices
       - **Custom Rule Development**: Extensible architecture for writing project-specific rules and transformations
-      - **CI/CD Integration**: Automatically enforces refactoring and linting rules during code reviews and builds
       - **Configuration Flexibility**: Highly configurable through `.scalafix.conf` files with rule-specific settings
       
       **Note**: In MegaLinter, only syntactic rules are applied as there is no prior compilation or semantic database generation. Semantic options cannot be used in this context.

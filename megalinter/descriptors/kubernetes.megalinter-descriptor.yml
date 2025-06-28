@@ -90,7 +90,6 @@ linters:
       - **Best Practice Enforcement**: Checks for common Helm chart antipatterns and recommended practices
       - **Dependency Validation**: Verifies chart dependencies are properly declared and accessible
       - **Subchart Support**: Can recursively lint subcharts and their dependencies
-      - **CI/CD Integration**: Suitable for automated testing in continuous integration pipelines
     examples:
       - helm lint .
       - helm lint --with-subcharts .

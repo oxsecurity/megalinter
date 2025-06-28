@@ -30,12 +30,10 @@ linters:
       - **Deep Terraform Analysis**: Goes beyond basic syntax checking to validate Terraform semantics and logic
       - **Provider-Specific Rules**: Specialized rule sets for AWS, Azure, GCP, and other cloud providers
       - **Plugin Architecture**: Extensible with community and custom plugins for specific use cases
-      - **Performance Optimized**: Fast analysis suitable for large Terraform codebases and CI/CD pipelines
+      - **Performance Optimized**: Fast analysis suitable for large Terraform codebases
       - **Configuration Flexibility**: Highly configurable with .tflint.hcl files for project-specific requirements
       - **Error Prevention**: Catches common issues before terraform plan/apply execution
       - **Module Support**: Analyzes Terraform modules and their usage patterns
-      - **IDE Integration**: Works with editors and IDEs for real-time feedback during development
-      - **CI/CD Ready**: Easy integration with automated workflows and pre-commit hooks
       - **Detailed Reporting**: Clear error messages with file locations and remediation suggestions
 
       > If you are using the GitHub action please use the `TERRAFORM_TFLINT_UNSECURED_ENV_VARIABLES: GITHUB_TOKEN` to prevent plugin download issues
@@ -89,8 +87,6 @@ linters:
       - **Cloud Provider Coverage**: Comprehensive rules for AWS, Azure, GCP, and Kubernetes environments
       - **Custom Policy Engine**: Create custom policies using Rego (Open Policy Agent) for organization-specific requirements
       - **SARIF Output**: Modern security report format for integration with development platforms and security tools
-      - **CI/CD Integration**: Seamless integration with continuous integration pipelines and GitOps workflows
-      - **Admission Controller**: Kubernetes admission controller to prevent policy violations at deployment time
       - **Detailed Reporting**: Comprehensive vulnerability reports with severity levels and remediation guidance
       - **Policy as Code**: Version-controlled security policies that evolve with your infrastructure
     can_output_sarif: true
@@ -147,7 +143,6 @@ linters:
       - **Dependency Graph**: Automatically manages dependencies between Terraform modules and configurations
       - **Parallel Execution**: Runs Terraform operations in parallel where dependencies allow
       - **Error Handling**: Enhanced error handling and debugging capabilities for complex infrastructure deployments
-      - **Integration Ready**: Works seamlessly with existing Terraform workflows and CI/CD pipelines
     name: TERRAFORM_TERRAGRUNT
     linter_spdx_license: MIT
     file_extensions:
@@ -197,7 +192,7 @@ linters:
       - **Automatic Fixing**: Rewrites files in-place to fix formatting issues automatically
       - **Diff Mode**: Shows formatting differences without modifying files for review purposes
       - **Recursive Processing**: Can format entire directory trees and module structures
-      - **Check Mode**: Validates formatting without making changes, perfect for CI/CD validation
+      - **Check Mode**: Validates formatting without making changes, perfect for validation
       - **HCL Syntax Support**: Handles all HashiCorp Configuration Language constructs correctly
       - **Fast Performance**: Optimized for quick formatting of large Terraform codebases
       - **Zero Configuration**: Works out of the box with no setup or configuration required

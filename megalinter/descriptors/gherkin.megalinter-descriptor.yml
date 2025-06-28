@@ -23,7 +23,7 @@ linters:
       - **Custom rules support** for project-specific requirements
       - **Ignore patterns** to exclude specific files or directories
       - **Granular configuration** for different Gherkin elements (Feature, Background, Scenario, Steps)
-      - **JSON output format** for CI/CD integration and automation
+      - **JSON output format** for structured reporting and automation
       - **File-level rule overriding** for flexibility in large projects
       - **Step definition validation** to ensure proper Given/When/Then structure
     linter_url: https://github.com/gherkin-lint/gherkin-lint

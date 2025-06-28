@@ -23,7 +23,7 @@ linters:
       - **Best Practice Enforcement**: Identifies CloudFormation best practices and anti-patterns
       - **SAM Support**: Fully supports AWS Serverless Application Model (SAM) templates with transformation validation
       - **Custom Rules**: Supports custom one-line rules for organization-specific requirements
-      - **Multiple Output Formats**: Supports JSON, JUnit, SARIF, and other output formats for CI/CD integration
+      - **Multiple Output Formats**: Supports JSON, JUnit, SARIF, and other output formats
       - **Region-Specific Validation**: Tests templates against multiple AWS regions to catch region-specific issues
       - **Extensible Rules Engine**: Comprehensive collection of rules with support for custom rule extensions
 

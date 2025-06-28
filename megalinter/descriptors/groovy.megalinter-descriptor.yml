@@ -25,9 +25,7 @@ linters:
       - **Flexible configuration** with preset configs for different use cases
       - **Jenkinsfile-specific rules** optimized for Jenkins pipeline development
       - **Inline rule disabling** using comments for granular control
-      - **CI/CD integration** with proper exit codes and reporting formats
       - **Gradle script support** for build file quality analysis
-      - **VS Code extension** for real-time linting and fixing
       - **Multi-file processing** for batch operations on large codebases
       - **Java 17 compatibility** ensuring modern runtime support
     can_output_sarif: true

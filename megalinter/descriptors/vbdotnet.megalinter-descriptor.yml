@@ -26,7 +26,6 @@ linters:
       - **Multi-Language Support**: Works with C#, Visual Basic .NET, and F# projects within .NET solutions
       - **Configurable Severity**: Allows filtering by diagnostic severity levels (info, warn, error)
       - **Selective Processing**: Include/exclude specific files or folders with fine-grained control
-      - **CI/CD Integration**: Verification mode for continuous integration with non-zero exit codes on formatting violations
       - **MSBuild Integration**: Seamlessly works with .NET projects and solutions without additional configuration
       
       **Note**: Requires a `.sln` or `.vbproj` file to run correctly.

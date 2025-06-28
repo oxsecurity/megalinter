@@ -25,7 +25,7 @@ linters:
       - **Static Code Analysis**: Quickly finds problems in JavaScript code without executing it
       - **Automatic Fixing**: Many problems can be automatically fixed with syntax-aware corrections
       - **Highly Configurable**: Completely customizable rules, parsers, and plugins ecosystem
-      - **Built-in Editor Integration**: Works seamlessly with most text editors and IDEs
+      - **Built-in Editor Integration**: Works seamlessly with most text editors
       - **Extensible Plugin System**: Thousands of community plugins for frameworks like React, Vue, Node.js
       - **Multiple Output Formats**: Supports various output formats including SARIF for security tools
       - **Custom Rules**: Write your own rules that work alongside ESLint's built-in rules
@@ -175,8 +175,7 @@ linters:
       - **Strict Style Rules**: Enforces 2-space indentation, single quotes, no semicolons, and other proven conventions
       - **Wide Adoption**: Used by thousands of projects including npm, GitHub, Zeit, MongoDB, and Express
       - **Comprehensive Coverage**: Catches stylistic errors, potential bugs, and dangerous patterns
-      - **Fast Performance**: Quick analysis suitable for real-time editor integration and large codebases
-      - **Editor Integration**: Seamless integration with VS Code, Atom, Sublime Text, and other popular editors
+      - **Fast Performance**: Quick analysis suitable for large codebases
       - **Plugin Ecosystem**: Extensions available for React, Flow, TypeScript, and other JavaScript variants
       - **Clear Error Messages**: Helpful error descriptions with links to explanations and examples
     linter_spdx_license: MIT
@@ -230,10 +229,9 @@ linters:
       - **Multi-Language Support**: Formats JavaScript, TypeScript, CSS, HTML, JSON, Markdown, YAML, and 20+ other languages
       - **Opinionated Formatting**: Zero-configuration approach with sensible defaults that work well for most projects
       - **Parse Safety**: Ensures formatted code maintains semantic equivalence to the original through AST-based processing
-      - **Editor Integration**: Seamless integration with VS Code, WebStorm, and other popular development environments
       - **Consistent Output**: Deterministic formatting produces identical results regardless of environment or developer
       - **Team Standardization**: Eliminates style discussions and ensures consistent formatting across team members
-      - **Fast Performance**: High-speed formatting suitable for large codebases and real-time editor integration
+      - **Fast Performance**: High-speed formatting suitable for large codebases
       - **Configuration Flexibility**: Supports project-specific settings through .prettierrc files when customization is needed
       - **Git Integration**: Reduces merge conflicts by maintaining consistent formatting across branches
     is_formatter: true

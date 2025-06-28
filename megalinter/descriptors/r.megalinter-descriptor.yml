@@ -16,9 +16,7 @@ linters:
       
       - **Comprehensive Analysis**: Over 100 built-in linters covering style consistency, potential bugs, performance issues, and best practices
       - **Configurable Rulesets**: Supports tidyverse, full, or custom ruleset configurations for different project requirements
-      - **IDE Integration**: Seamless integration with RStudio, VS Code, Emacs, Vim, and other popular R development environments
       - **Inline Exclusions**: Flexible system for excluding specific lines or blocks of code from linting
-      - **CI/CD Support**: Easy integration with continuous integration systems for automated code quality checks
       - **Styler Complement**: Works alongside the styler package by identifying issues requiring manual attention
       - **Extensive Rule Coverage**: Detects issues with object naming, spacing, line length, assignment operators, and function usage
       - **Customizable Output**: Multiple output formats and severity levels for different development workflows

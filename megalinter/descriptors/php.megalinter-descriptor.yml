@@ -38,7 +38,7 @@ linters:
       - **Tokenization Engine**: Advanced PHP tokenizer that understands PHP syntax and language constructs for accurate analysis
       - **Extensive Rule Set**: Comprehensive checks for code formatting, naming conventions, documentation, and structural issues
       - **Custom Standards**: Create and configure custom coding standards tailored to project or organizational requirements
-      - **Detailed Reports**: Multiple report formats including full, summary, checkstyle, CSV, JSON, and SARIF for CI/CD integration
+      - **Detailed Reports**: Multiple report formats including full, summary, checkstyle, CSV, JSON, and SARIF
       - **Inline Suppression**: Flexible system for suppressing specific violations using comment annotations
       - **File Exclusions**: Sophisticated ignore patterns for excluding files, directories, or specific code sections
       - **Performance Optimized**: Efficient scanning designed for large codebases with minimal memory usage
@@ -99,7 +99,6 @@ linters:
       - **10 Strictness Levels**: Configurable analysis levels from basic checks to extremely strict type safety enforcement
       - **Framework Integration**: Built-in support for Symfony, Laravel, Doctrine, PHPUnit, and other popular PHP frameworks
       - **Custom Rules**: Extensible architecture supporting custom rules and organization-specific analysis requirements
-      - **IDE Integration**: Real-time error reporting in PhpStorm, VS Code, and other popular PHP development environments
       - **Baseline Support**: Generate baselines to introduce PHPStan gradually into existing projects without fixing all issues
       - **Memory Efficient**: Optimized for large codebases with intelligent memory management and parallel processing
     name: PHP_PHPSTAN
@@ -212,7 +211,6 @@ linters:
       - **Comprehensive Error Detection**: Catches syntax errors, parse errors, and fundamental PHP language issues
       - **Multiple PHP Versions**: Supports validation against different PHP versions to ensure compatibility
       - **Batch Processing**: Validates entire directories and project structures efficiently
-      - **CI/CD Optimization**: Specifically designed for integration into automated testing and deployment pipelines
       - **SARIF Support**: Modern report formats for seamless integration with development tools and platforms
       - **Memory Efficient**: Minimal memory footprint for scanning large PHP projects
       - **Configurable Scanning**: Flexible file inclusion/exclusion patterns and custom validation rules
@@ -256,7 +254,6 @@ linters:
       - **Multiple Standards**: Supports PSR standards, Symfony coding standards, and custom rule sets
       - **Dry-Run Mode**: Preview changes without modifying files to review proposed fixes
       - **Incremental Fixing**: Can target specific directories, files, or rule sets for focused improvements
-      - **CI/CD Integration**: Designed for continuous integration workflows with detailed reporting
       - **Performance Optimized**: Fast execution with caching capabilities for large codebases
 
       - Enable **autofixes** by adding `PHP_PHPCSFIXER` in [APPLY_FIXES variable](https://megalinter.io/beta/configuration/#apply-fixes)

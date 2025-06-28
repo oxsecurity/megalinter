@@ -16,14 +16,13 @@ linters:
         description: If set to `true`, MegaLinter will also send file names to cspell for analysis. Disable by defining `SPELL_CSPELL_ANALYZE_FILE_NAMES` to `false`
     linter_speed: 1
     linter_text: |
-      **CSpell** is a comprehensive spell checker for code that helps catch spelling errors in source code, documentation, and comments. Part of the popular Code Spell Checker VS Code extension ecosystem, it's designed specifically for developers and technical writers.
+      **CSpell** is a comprehensive spell checker for code that helps catch spelling errors in source code, documentation, and comments designed specifically for developers and technical writers.
 
       **Key Features:**
 
       - **Code-Aware Checking**: Understands programming languages and technical terminology, avoiding false positives on variable names, APIs, and technical terms
       - **Multi-Language Support**: Supports 30+ programming languages with specialized dictionaries for each language and framework
       - **Custom Dictionaries**: Extensive collection of domain-specific dictionaries (medical, scientific, legal, etc.) plus ability to create custom word lists
-      - **VS Code Integration**: Powers the popular Code Spell Checker extension with over 9M downloads
       - **Flexible Configuration**: Highly configurable via JSON files with support for workspace-specific settings and ignore patterns
       - **Performance Optimized**: Fast scanning designed for large codebases with minimal performance impact
       - **Developer-Friendly**: Handles camelCase, PascalCase, snake_case, and other programming conventions intelligently
@@ -77,7 +76,6 @@ linters:
       - **Industry-Specific Guidance**: Detects jargon, corporate buzzwords, archaic forms, and domain-specific writing issues
       - **Security Awareness**: Identifies sensitive information like credit card numbers and passwords in text
       - **Rich Output Formats**: Provides detailed suggestions with source attribution, severity levels, and potential replacements
-      - **Cross-Platform Integration**: Available as plugins for major editors including VS Code, Sublime Text, Vim, and Emacs
       - **Extensible Configuration**: Fully customizable checks through JSON configuration files
     linter_speed: 2
     linter_url: https://github.com/amperser/proselint
@@ -133,12 +131,10 @@ linters:
 
       **Key Features:**
 
-      - **Style Guide Automation**: Transforms your editorial style guide into automated, actionable feedback for writers and developers  
       - **Privacy-First**: Runs entirely offline with no server-side processing - your content never leaves your machine
       - **Multi-Format Support**: Understands markup and code, working seamlessly with Markdown, reStructuredText, HTML, and more
       - **Extensive Rule Library**: Pre-built implementations of popular style guides (Microsoft, Google, write-good, and many others)
       - **Custom Rule Creation**: Powerful rule engine allows you to create and share custom style rules tailored to your organization
-      - **Wide Integration**: Works with VS Code, GitHub Actions, Google Chrome, Slack, and dozens of other platforms
       - **Industry-Tested**: Trusted by thousands of writers, editors, and developers worldwide across different industries
 
       To be active within MegaLinter, you need to [initialize a .vale.ini configuration file](https://vale.sh/docs/vale-cli/structure/) at the root of your repository.
@@ -194,9 +190,8 @@ linters:
       - **Multi-Format Support**: Checks links in Markdown, HTML, reStructuredText, plain text files, and websites
       - **Advanced Filtering**: Regex-based include/exclude patterns, custom headers, and flexible URL scheme filtering
       - **Smart Caching**: Disk-based response caching with configurable expiration to avoid re-checking unchanged links
-      - **GitHub Integration**: Built-in GitHub token support to avoid rate limiting when checking GitHub URLs
       - **Robust Error Handling**: Configurable retries, redirects, timeouts, and custom status code acceptance
-      - **Multiple Output Formats**: JSON, Markdown, detailed, and compact reporting formats for CI/CD integration
+      - **Multiple Output Formats**: JSON, Markdown, detailed, and compact reporting formats
       - **Privacy-Aware**: Options to exclude private IPs, link-local addresses, and localhost from checking
 
       A file **.lycheeignore** can be defined at the root of the repository to ignore some urls.

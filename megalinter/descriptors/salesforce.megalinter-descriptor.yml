@@ -45,7 +45,6 @@ linters:
       - **Code Quality Rules**: Comprehensive rule sets covering best practices, naming conventions, and maintainability
       - **Configurable Severity**: Customizable severity thresholds and rule categories for different project needs
       - **Multiple Output Formats**: Supports CSV, JSON, SARIF, and other formats for integration with development tools
-      - **CI/CD Integration**: Seamless integration with continuous integration pipelines and automated testing
       - **Lightning Platform Specific**: Rules tailored for Salesforce platform constraints and governor limits
       - **Custom Rule Sets**: Support for custom PMD rule sets and organization-specific coding standards
 
