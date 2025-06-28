@@ -3718,24 +3718,30 @@
 </div>
 <p><a href="https://github.com/PyCQA/bandit"><img alt="GitHub stars" src="https://img.shields.io/github/stars/PyCQA/bandit?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-SARIF-orange"><img alt="sarif" src="https://shields.io/badge/-SARIF-orange"/></a> <a href="https://github.com/PyCQA/bandit/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/PyCQA/bandit?sort=semver"/></a> <a href="https://github.com/PyCQA/bandit/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/PyCQA/bandit"/></a> <a href="https://github.com/PyCQA/bandit/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/PyCQA/bandit"/></a> <a href="https://github.com/PyCQA/bandit/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/PyCQA/bandit"/></a></p>
 <p><strong>Bandit</strong> is a specialized security-focused tool designed to find common security issues in Python code. It processes each file by building an AST (Abstract Syntax Tree) and runs appropriate security plugins against the AST nodes to identify potential vulnerabilities.</p>
-<p><strong>Key features:</strong>
-- <strong>Security-Focused Analysis</strong>: Specifically designed to detect security vulnerabilities and weaknesses
-- <strong>AST-Based Scanning</strong>: Builds abstract syntax trees for thorough code analysis
-- <strong>Plugin Architecture</strong>: Extensible system with test plugins and blacklist plugins for comprehensive coverage
-- <strong>Multiple Output Formats</strong>: Supports various report formats including SARIF for security tool integration
-- <strong>Configurable Severity</strong>: Customizable severity levels and rule configurations</p>
-<p><strong>Common security issues detected:</strong>
-- <strong>Injection Vulnerabilities</strong>: SQL injection, command injection, code injection patterns
-- <strong>Cryptographic Issues</strong>: Weak cryptographic algorithms, insecure random number generation
-- <strong>Authentication Problems</strong>: Hardcoded passwords, weak authentication mechanisms<br/>
-- <strong>File System Security</strong>: Insecure file permissions, path traversal vulnerabilities
-- <strong>Network Security</strong>: Insecure SSL/TLS configurations, unverified HTTPS requests
-- <strong>Code Execution</strong>: Use of dangerous functions like <code>eval()</code>, <code>exec()</code>, <code>pickle.loads()</code>
-- <strong>Input Validation</strong>: Missing input sanitization and validation</p>
-<p><strong>Advanced capabilities:</strong>
-- <strong>Blacklist Detection</strong>: Identifies usage of known insecure or deprecated functions
-- <strong>Context-Aware Analysis</strong>: Understands code context to reduce false positives
-- <strong>Baseline Support</strong>: Can track security issues over time and focus on new problems</p>
+<p><strong>Key features:</strong></p>
+<ul>
+<li><strong>Security-Focused Analysis</strong>: Specifically designed to detect security vulnerabilities and weaknesses</li>
+<li><strong>AST-Based Scanning</strong>: Builds abstract syntax trees for thorough code analysis</li>
+<li><strong>Plugin Architecture</strong>: Extensible system with test plugins and blacklist plugins for comprehensive coverage</li>
+<li><strong>Multiple Output Formats</strong>: Supports various report formats including SARIF for security tool integration</li>
+<li><strong>Configurable Severity</strong>: Customizable severity levels and rule configurations</li>
+</ul>
+<p><strong>Common security issues detected:</strong></p>
+<ul>
+<li><strong>Injection Vulnerabilities</strong>: SQL injection, command injection, code injection patterns</li>
+<li><strong>Cryptographic Issues</strong>: Weak cryptographic algorithms, insecure random number generation</li>
+<li><strong>Authentication Problems</strong>: Hardcoded passwords, weak authentication mechanisms  </li>
+<li><strong>File System Security</strong>: Insecure file permissions, path traversal vulnerabilities</li>
+<li><strong>Network Security</strong>: Insecure SSL/TLS configurations, unverified HTTPS requests</li>
+<li><strong>Code Execution</strong>: Use of dangerous functions like <code>eval()</code>, <code>exec()</code>, <code>pickle.loads()</code></li>
+<li><strong>Input Validation</strong>: Missing input sanitization and validation</li>
+</ul>
+<p><strong>Advanced capabilities:</strong></p>
+<ul>
+<li><strong>Blacklist Detection</strong>: Identifies usage of known insecure or deprecated functions</li>
+<li><strong>Context-Aware Analysis</strong>: Understands code context to reduce false positives</li>
+<li><strong>Baseline Support</strong>: Can track security issues over time and focus on new problems</li>
+</ul>
 <p>If you find Bandit too strict for your use case, you can define <code>PYTHON_BANDIT_DISABLE_ERRORS: true</code> in your <code>.mega-linter.yml</code> config file to treat findings as warnings instead of errors.</p>
 <p>Bandit is essential for maintaining secure Python codebases and is widely used in security-conscious development environments.</p>
 <h2 id="bandit-documentation">bandit documentation</h2>
