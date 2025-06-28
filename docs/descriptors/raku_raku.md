@@ -7,6 +7,19 @@ description: How to use raku (configure, ignore files, ignore errors, help & ver
 # <a href="https://raku.org/" target="blank" title="Visit linter Web Site"><img src="https://raku.org/camelia-logo.png" alt="raku" height="100px" class="megalinter-logo"></a>raku
 [![GitHub stars](https://img.shields.io/github/stars/rakudo/rakudo?cacheSeconds=3600)](https://github.com/rakudo/rakudo) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/rakudo/rakudo?sort=semver)](https://github.com/rakudo/rakudo/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/rakudo/rakudo)](https://github.com/rakudo/rakudo/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/rakudo/rakudo)](https://github.com/rakudo/rakudo/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/rakudo/rakudo)](https://github.com/rakudo/rakudo/graphs/contributors/)
 
+**Raku** compiler provides comprehensive built-in syntax checking and validation through its compile-check mode (`-c` flag). It performs thorough code analysis without execution, ensuring Raku programs are syntactically correct and semantically valid.
+
+**Key Features:**
+
+- **Built-in Compiler Validation**: Native syntax checking integrated directly into the Rakudo compiler
+- **Comprehensive Analysis**: Validates syntax, semantics, type consistency, and language specification compliance
+- **Type System Integration**: Leverages Raku's gradual type system for enhanced error detection
+- **Detailed Error Reporting**: Provides comprehensive error messages with line numbers, context, and suggestions
+- **Module Resolution**: Checks module imports, dependencies, and library path resolution
+- **Pragma Support**: Validates pragma usage and ensures correct language feature configuration
+- **Multi-File Analysis**: Can analyze entire project structures with proper library path inclusion
+- **Zero Execution**: Validates code without running it, making it safe for untrusted or incomplete code
+
 ## raku documentation
 
 - Version in MegaLinter: **2024.12**

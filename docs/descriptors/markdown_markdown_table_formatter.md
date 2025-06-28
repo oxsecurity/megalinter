@@ -7,7 +7,17 @@ description: How to use markdown-table-formatter (configure, ignore files, ignor
 # markdown-table-formatter
 [![GitHub stars](https://img.shields.io/github/stars/nvuillam/markdown-table-formatter?cacheSeconds=3600)](https://github.com/nvuillam/markdown-table-formatter) ![formatter](https://shields.io/badge/-format-yellow) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/nvuillam/markdown-table-formatter?sort=semver)](https://github.com/nvuillam/markdown-table-formatter/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/nvuillam/markdown-table-formatter)](https://github.com/nvuillam/markdown-table-formatter/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/nvuillam/markdown-table-formatter)](https://github.com/nvuillam/markdown-table-formatter/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/nvuillam/markdown-table-formatter)](https://github.com/nvuillam/markdown-table-formatter/graphs/contributors/)
 
-markdown-table-formatter detects wrongly formatted markdown tables and can automatically reformat them
+**markdown-table-formatter** is a specialized formatting tool that detects and automatically corrects improperly formatted Markdown tables, ensuring consistent presentation and improved readability across documentation.
+
+**Key Features:**
+
+- **Automatic Table Detection**: Identifies poorly formatted Markdown tables with misaligned columns and inconsistent spacing
+- **Intelligent Alignment**: Automatically aligns table columns and adjusts padding for optimal readability
+- **Consistent Formatting**: Standardizes table structure with uniform spacing, borders, and column alignment
+- **Preserves Content**: Maintains all table data while improving presentation and formatting
+- **Batch Processing**: Efficiently formats multiple tables within single or multiple Markdown files
+- **Non-Destructive**: Only modifies table formatting without affecting other Markdown content
+- **Standards Compliance**: Ensures tables follow Markdown table formatting best practices and conventions
 
 ## markdown-table-formatter documentation
 

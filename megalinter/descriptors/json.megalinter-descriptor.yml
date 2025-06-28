@@ -10,6 +10,19 @@ file_extensions:
 linters:
   # JSONLINT
   - linter_name: jsonlint
+    linter_text: |
+      **jsonlint** is a comprehensive JSON validation tool that provides command-line interface for ensuring JSON files conform to specifications and maintain proper structure. It serves as the essential validator for JSON data integrity across web applications, APIs, and configuration systems.
+
+      **Key Features:**
+
+      - **Pure JavaScript Implementation**: Native JavaScript JSON parser ensuring accurate validation without external dependencies
+      - **Strict JSON Compliance**: Validates against official JSON specification to ensure maximum compatibility
+      - **Syntax Error Detection**: Identifies malformed JSON structures, missing brackets, invalid characters, and formatting issues
+      - **Fast Validation**: High-performance parsing suitable for large JSON files and batch processing
+      - **Detailed Error Reporting**: Clear error messages with line and column information for easy debugging
+      - **Configurable Options**: Flexible validation options through .jsonlintrc configuration files
+      - **Batch Processing**: Efficient validation of multiple JSON files in a single command
+      - **Cross-Platform**: Consistent validation behavior across Windows, macOS, and Linux environments
     linter_url: https://github.com/prantlf/jsonlint
     linter_repo: https://github.com/prantlf/jsonlint
     linter_spdx_license: MIT
@@ -156,7 +169,16 @@ linters:
     linter_repo: https://github.com/chris48s/v8r
     linter_spdx_license: MIT
     linter_speed: 1
-    linter_text: v8r checks the validity of JSON/YAML files if they have a matching schema defined on [schemastore.org](https://www.schemastore.org/)
+    linter_text: |
+      **v8r** is a command-line validator for JSON, YAML, and TOML files that automatically detects and applies appropriate schemas from the Schema Store based on filename patterns, providing intelligent validation without manual schema configuration.
+
+      **Key Features:**
+
+      - **Automatic Schema Detection**: Uses [Schema Store](https://www.schemastore.org/) to intelligently match files with appropriate schemas based on filename patterns
+      - **Multi-Format Support**: Validates JSON, YAML, and TOML files with consistent interface across formats
+      - **Zero Configuration**: Works out-of-the-box for common configuration files without requiring explicit schema specification
+      - **Schema Store Integration**: Leverages the extensive collection of schemas from schemastore.org for popular tools and frameworks
+      - **Detailed Error Reporting**: Provides clear, actionable validation error messages with line and column information
     linter_rules_url: https://www.schemastore.org/
     linter_megalinter_ref_url: "no"
     cli_lint_mode: list_of_files
@@ -188,6 +210,19 @@ linters:
           url: https://code.visualstudio.com/
   # PRETTIER
   - linter_name: prettier
+    linter_text: |
+      **Prettier** is the industry-standard opinionated code formatter with excellent JSON support that automatically formats JSON files for consistency and readability. It brings professional formatting standards to JSON data across configuration files, APIs, and data structures.
+
+      **Key Features:**
+
+      - **JSON-Specific Formatting**: Specialized handling of JSON syntax with proper indentation, spacing, and structure
+      - **Consistent Output**: Deterministic formatting ensures identical results across different environments and developers
+      - **Parse Safety**: AST-based processing validates JSON syntax while formatting, catching errors during formatting
+      - **Opinionated Approach**: Zero-configuration setup with sensible defaults optimized for JSON readability
+      - **Fast Performance**: High-speed formatting suitable for large JSON files
+      - **Nested Structure Handling**: Intelligent formatting of complex nested objects and arrays for optimal readability
+      - **Team Standardization**: Eliminates JSON formatting debates and ensures uniform data structure presentation
+      - **Configuration Flexibility**: Supports project-specific formatting rules through .prettierrc when customization is needed
     is_formatter: true
     linter_url: https://prettier.io/
     linter_repo: https://github.com/prettier/prettier
@@ -242,6 +277,19 @@ linters:
           url: https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode
   # npm-package-json-lint
   - linter_name: npm-package-json-lint
+    linter_text: |
+      **npm-package-json-lint** is a specialized linter designed specifically for npm package.json files that ensures consistency, correctness, and adherence to best practices in Node.js project configuration. It serves as an essential tool for maintaining professional npm package standards.
+
+      **Key Features:**
+
+      - **Package.json Focused**: Specialized validation specifically for npm package.json structure and content
+      - **Comprehensive Rule Set**: Extensive collection of rules covering dependencies, metadata, scripts, and package configuration
+      - **Best Practices Enforcement**: Validates against npm and Node.js ecosystem best practices and conventions
+      - **Configurable Validation**: Highly customizable rules through .npmpackagejsonlintrc.json configuration files
+      - **Dependency Analysis**: Checks for missing dependencies, version format consistency, and dependency organization
+      - **Metadata Validation**: Ensures required fields like name, version, description are present and properly formatted
+      - **Script Analysis**: Validates npm scripts for common patterns and potential issues
+      - **Multi-Project Support**: Handles monorepos and complex project structures with hierarchical configuration
     linter_url: https://npmpackagejsonlint.org/
     linter_repo: https://github.com/tclindner/npm-package-json-lint
     linter_spdx_license: MIT

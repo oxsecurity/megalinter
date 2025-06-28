@@ -11,7 +11,18 @@ test_folder: action
 linters:
   # ACTIONLINT
   - linter_name: actionlint
-    linter_text: Static checker for GitHub Actions workflow files
+    linter_text: |
+      **actionlint** is a static checker for GitHub Actions workflow files that helps you catch errors and improve workflow quality before they cause issues in your CI/CD pipelines.
+
+      **Key Features:**
+
+      - **Comprehensive Syntax Validation**: Checks workflow files against GitHub Actions syntax requirements and catches unexpected or missing keys
+      - **Strong Type Checking**: Validates `${{ }}` expressions with semantic analysis to detect type mismatches and access to non-existing properties
+      - **Actions Usage Verification**: Validates inputs at `with:` and outputs in `steps.{id}.outputs` are correct for specific action versions
+      - **Security Analysis**: Detects script injection vulnerabilities, hard-coded credentials, and untrusted input usage patterns
+      - **Tool Integration**: Built-in shellcheck and pyflakes integration for validating scripts in `run:` steps
+      - **Reusable Workflow Support**: Validates inputs, outputs, and secrets for reusable workflows and workflow calls
+      - **Advanced Validations**: Includes glob syntax validation, dependency checks for `needs:`, runner label validation, and cron syntax validation
     linter_url: https://rhysd.github.io/actionlint/
     linter_repo: https://github.com/rhysd/actionlint
     linter_rules_configuration_url: https://github.com/rhysd/actionlint/blob/main/docs/config.md

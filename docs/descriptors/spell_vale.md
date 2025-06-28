@@ -7,10 +7,17 @@ description: How to use vale (configure, ignore files, ignore errors, help & ver
 # vale
 [![GitHub stars](https://img.shields.io/github/stars/errata-ai/vale?cacheSeconds=3600)](https://github.com/errata-ai/vale) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/errata-ai/vale?sort=semver)](https://github.com/errata-ai/vale/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/errata-ai/vale)](https://github.com/errata-ai/vale/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/errata-ai/vale)](https://github.com/errata-ai/vale/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/errata-ai/vale)](https://github.com/errata-ai/vale/graphs/contributors/)
 
-Vale brings your editorial style to life !
+**Vale** is a command-line tool that brings your editorial style guide to life, helping maintain consistent writing quality across documentation, marketing content, and technical writing.
+
+**Key Features:**
+
+- **Privacy-First**: Runs entirely offline with no server-side processing - your content never leaves your machine
+- **Multi-Format Support**: Understands markup and code, working seamlessly with Markdown, reStructuredText, HTML, and more
+- **Extensive Rule Library**: Pre-built implementations of popular style guides (Microsoft, Google, write-good, and many others)
+- **Custom Rule Creation**: Powerful rule engine allows you to create and share custom style rules tailored to your organization
+- **Industry-Tested**: Trusted by thousands of writers, editors, and developers worldwide across different industries
 
 To be active within MegaLinter, you need to [initialize a .vale.ini configuration file](https://vale.sh/docs/vale-cli/structure/) at the root of your repository.
-
 MegaLinter analyze markdown and restructuredText files by default, you can change that using SPELL_VALE_FILE_EXTENSIONS variable.
 
 ## vale documentation

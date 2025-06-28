@@ -7,6 +7,19 @@ description: How to use flake8 (configure, ignore files, ignore errors, help & v
 # flake8
 [![GitHub stars](https://img.shields.io/github/stars/PyCQA/flake8?cacheSeconds=3600)](https://github.com/PyCQA/flake8) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/PyCQA/flake8?sort=semver)](https://github.com/PyCQA/flake8/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/PyCQA/flake8)](https://github.com/PyCQA/flake8/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/PyCQA/flake8)](https://github.com/PyCQA/flake8/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/PyCQA/flake8)](https://github.com/PyCQA/flake8/graphs/contributors/)
 
+**Flake8** is a comprehensive Python code quality checker that combines three powerful tools—pycodestyle, pyflakes, and mccabe—into a unified linting solution. It serves as the go-to tool for enforcing Python coding standards and catching potential issues.
+
+**Key Features:**
+
+- **Multi-Tool Integration**: Combines pycodestyle (PEP 8 compliance), pyflakes (logical errors), and mccabe (complexity analysis)
+- **PEP 8 Enforcement**: Comprehensive style checking against Python's official style guide
+- **Error Detection**: Identifies undefined names, unused imports, syntax errors, and logical inconsistencies
+- **Complexity Analysis**: Measures cyclomatic complexity to identify overly complex functions and methods
+- **Highly Configurable**: Extensive configuration options for customizing rules, ignoring specific errors, and setting complexity thresholds
+- **Plugin Ecosystem**: Rich ecosystem of plugins for additional checks (security, documentation, imports, etc.)
+- **Fast Performance**: Efficient scanning with parallel processing capabilities for large codebases
+- **Inline Suppression**: Granular control with per-line and per-file error suppression options
+
 ## flake8 documentation
 
 - Version in MegaLinter: **7.3.0**

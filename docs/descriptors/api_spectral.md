@@ -13,6 +13,19 @@ description: How to use spectral (configure, ignore files, ignore errors, help &
 
 [![GitHub stars](https://img.shields.io/github/stars/stoplightio/spectral?cacheSeconds=3600)](https://github.com/stoplightio/spectral) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/stoplightio/spectral?sort=semver)](https://github.com/stoplightio/spectral/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/stoplightio/spectral)](https://github.com/stoplightio/spectral/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/stoplightio/spectral)](https://github.com/stoplightio/spectral/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/stoplightio/spectral)](https://github.com/stoplightio/spectral/graphs/contributors/)
 
+**Spectral** is a flexible JSON/YAML linter for creating automated style guides, with built-in support for **OpenAPI** (v3.1, v3.0, and v2.0), **Arazzo** v1.0, and **AsyncAPI** v2.x specifications.
+
+**Key Features:**
+
+- **Custom Rulesets**: Create custom rules to lint JSON or YAML objects
+- **Ready-to-use Rulesets**: Validate and lint OpenAPI, AsyncAPI, and Arazzo documents out of the box
+- **API Style Guides**: Automated API style guides using rulesets improve consistency across all your APIs
+- **Built-in Functions**: Pattern checks, parameter validation, alphabetical ordering, character limits, and key presence validation
+- **Custom Functions**: Create advanced custom functions for complex use cases
+- **Multiple Output Formats**: Support for various output formats including SARIF, JUnit, HTML, and more
+
+Spectral helps ensure your API specifications follow best practices and maintain consistency across your organization. It's particularly useful for enforcing API governance and automated quality checks in CI/CD pipelines.
+
 ## spectral documentation
 
 - Version in MegaLinter: **6.15.0**

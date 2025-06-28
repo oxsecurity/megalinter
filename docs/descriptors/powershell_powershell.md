@@ -7,6 +7,19 @@ description: How to use powershell (configure, ignore files, ignore errors, help
 # <a href="https://github.com/PowerShell/PSScriptAnalyzer" target="blank" title="Visit linter Web Site"><img src="https://raw.githubusercontent.com/PowerShell/PSScriptAnalyzer/refs/heads/main/logo.png" alt="powershell" height="100px" class="megalinter-logo"></a>powershell
 [![GitHub stars](https://img.shields.io/github/stars/PowerShell/PSScriptAnalyzer?cacheSeconds=3600)](https://github.com/PowerShell/PSScriptAnalyzer) ![autofix](https://shields.io/badge/-autofix-green) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/PowerShell/PSScriptAnalyzer?sort=semver)](https://github.com/PowerShell/PSScriptAnalyzer/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/PowerShell/PSScriptAnalyzer)](https://github.com/PowerShell/PSScriptAnalyzer/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/PowerShell/PSScriptAnalyzer)](https://github.com/PowerShell/PSScriptAnalyzer/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/PowerShell/PSScriptAnalyzer)](https://github.com/PowerShell/PSScriptAnalyzer/graphs/contributors/)
 
+**PSScriptAnalyzer** is the premier static code analysis tool for PowerShell modules and scripts that enforces best practices and detects potential issues. Developed by the PowerShell Team and community, it serves as the standard for PowerShell code quality analysis.
+
+**Key Features:**
+
+- **Comprehensive Rule Set**: 100+ built-in rules covering security, performance, style, and best practice violations
+- **Security Analysis**: Detects dangerous use of Invoke-Expression, improper credential handling, and security vulnerabilities
+- **Code Quality Checks**: Identifies uninitialized variables, unused parameters, incorrect cmdlet usage, and logic errors
+- **Customizable Severity**: Rules categorized by severity levels (Error, Warning, Information) with configurable thresholds
+- **Custom Rules Support**: Extensible framework for creating organization-specific analysis rules
+- **Auto-Fix Capability**: Automatic correction for many rule violations using the -Fix parameter
+- **Configuration Flexibility**: Detailed configuration through .psd1 files for team-specific standards
+- **Diagnostic Reporting**: Comprehensive reports with file locations, rule descriptions, and remediation suggestions
+
 ## powershell documentation
 
 - Version in MegaLinter: **7.5.2**
@@ -40,7 +53,7 @@ description: How to use powershell (configure, ignore files, ignore errors, help
 | POWERSHELL_POWERSHELL_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                 | Workspace folder, then MegaLinter default rules                     |
 | POWERSHELL_POWERSHELL_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`                                                             |
 | POWERSHELL_POWERSHELL_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                                                 |
-| POWERSHELL_POWERSHELL_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `['pwsh']`                                                          |
+| POWERSHELL_POWERSHELL_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `['powershell']`                                                    |
 
 ## IDE Integration
 

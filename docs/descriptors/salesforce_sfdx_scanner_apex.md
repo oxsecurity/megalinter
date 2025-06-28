@@ -7,7 +7,18 @@ description: How to use sfdx-scanner-apex (configure, ignore files, ignore error
 # sfdx-scanner-apex
 [![GitHub stars](https://img.shields.io/github/stars/forcedotcom/code-analyzer?cacheSeconds=3600)](https://github.com/forcedotcom/code-analyzer) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/forcedotcom/code-analyzer?sort=semver)](https://github.com/forcedotcom/code-analyzer/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/forcedotcom/code-analyzer)](https://github.com/forcedotcom/code-analyzer/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/forcedotcom/code-analyzer)](https://github.com/forcedotcom/code-analyzer/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/forcedotcom/code-analyzer)](https://github.com/forcedotcom/code-analyzer/graphs/contributors/)
 
-sfdx-scanner is a sfdx plugin scanning apex and triggers using Apex PMD, and javascript using eslint
+**Salesforce Code Analyzer (SFDX Scanner)** is the official Salesforce CLI plugin for scanning Apex code, triggers, and other Salesforce components to identify potential issues, security vulnerabilities, and code quality problems. It uses industry-standard tools like PMD and ESLint to provide comprehensive analysis of Salesforce development artifacts.
+
+**Key Features:**
+
+- **Multi-Engine Analysis**: Combines PMD for Apex analysis with ESLint for JavaScript/Lightning Web Components
+- **Security Focus**: Identifies security vulnerabilities and potential attack vectors in Salesforce code
+- **Performance Optimization**: Detects performance anti-patterns and inefficient code constructs
+- **Code Quality Rules**: Comprehensive rule sets covering best practices, naming conventions, and maintainability
+- **Configurable Severity**: Customizable severity thresholds and rule categories for different project needs
+- **Multiple Output Formats**: Supports CSV, JSON, SARIF, and other formats for integration with development tools
+- **Lightning Platform Specific**: Rules tailored for Salesforce platform constraints and governor limits
+- **Custom Rule Sets**: Support for custom PMD rule sets and organization-specific coding standards
 
 If your root folder is not **force-app**, please set variable `SALESFORCE_SFDX_SCANNER_DIRECTORY`
 

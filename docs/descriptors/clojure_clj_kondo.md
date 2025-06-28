@@ -13,6 +13,17 @@ description: How to use clj-kondo (configure, ignore files, ignore errors, help 
 
 [![GitHub stars](https://img.shields.io/github/stars/borkdude/clj-kondo?cacheSeconds=3600)](https://github.com/borkdude/clj-kondo) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/borkdude/clj-kondo?sort=semver)](https://github.com/borkdude/clj-kondo/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/borkdude/clj-kondo)](https://github.com/borkdude/clj-kondo/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/borkdude/clj-kondo)](https://github.com/borkdude/clj-kondo/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/borkdude/clj-kondo)](https://github.com/borkdude/clj-kondo/graphs/contributors/)
 
+**clj-kondo** is a static analyzer and linter for Clojure code that sparks joy. It performs static analysis on Clojure, ClojureScript and EDN files to detect potential errors without executing your program.
+
+**Key Features:**
+
+- **Comprehensive Error Detection**: Detects arity errors, unused private vars, unresolved symbols, redefined vars, missing map keys, and many other issues
+- **Style Guide Recommendations**: Enforces best practices from Stuart Sierra's "how to ns" and the Clojure Style Guide
+- **Advanced Analysis**: Provides type checking, format string validation, shadowed vars detection, and Datalog syntax checking
+- **Macro Support**: Built-in support for core macros and popular community libraries, with extensible configuration for custom macros
+- **Fast Performance**: Compiled to native code using GraalVM for fast startup and execution
+- **Cache System**: Incremental analysis with project-wide cache for cross-namespace lint detection
+
 ## clj-kondo documentation
 
 - Version in MegaLinter: **2025.06.05**

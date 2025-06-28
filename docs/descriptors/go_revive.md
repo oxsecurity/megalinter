@@ -7,6 +7,19 @@ description: How to use revive (configure, ignore files, ignore errors, help & v
 # <a href="https://revive.run/" target="blank" title="Visit linter Web Site"><img src="https://github.com/mgechev/revive/raw/master/assets/logo.png" alt="revive" height="100px" class="megalinter-logo"></a>revive
 [![GitHub stars](https://img.shields.io/github/stars/mgechev/revive?cacheSeconds=3600)](https://github.com/mgechev/revive) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/mgechev/revive?sort=semver)](https://github.com/mgechev/revive/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/mgechev/revive)](https://github.com/mgechev/revive/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/mgechev/revive)](https://github.com/mgechev/revive/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/mgechev/revive)](https://github.com/mgechev/revive/graphs/contributors/)
 
+**Revive** is a fast, configurable, and extensible linter for Go that serves as a modern replacement for the deprecated golint tool. It provides comprehensive code quality analysis with superior performance and flexibility, making it an essential tool for maintaining high-quality Go codebases.
+
+**Key Features:**
+
+- **High Performance**: Significantly faster than golint with efficient parallel processing and optimized analysis algorithms
+- **Drop-in Replacement**: Seamless migration from golint with improved functionality and additional rule coverage
+- **Extensive Rule Set**: Comprehensive collection of rules covering style, complexity, naming conventions, and potential bugs
+- **Highly Configurable**: Flexible TOML-based configuration system allowing fine-tuned rule customization and project-specific settings
+- **SARIF Output**: Modern reporting format support for integration with security tools and development platforms
+- **Inline Rule Control**: Comment-based directives for disabling specific rules on particular lines or sections
+- **Beautiful Output**: Clean, readable error messages with helpful suggestions and context
+- **Extensible Architecture**: Plugin system for custom rules and project-specific requirements
+
 ## revive documentation
 
 - Version in MegaLinter: **1.10.0**

@@ -29,6 +29,19 @@ install:
 linters:
   # PHPCS
   - linter_name: phpcs
+    linter_text: |
+      **PHP_CodeSniffer (phpcs)** is a powerful static analysis tool that tokenizes PHP files and detects violations of defined coding standards. It serves as the industry standard for enforcing PHP coding conventions and maintaining consistent code quality across projects.
+
+      **Key Features:**
+
+      - **Multiple Coding Standards**: Built-in support for PSR-1, PSR-2, PSR-12, PEAR, Zend, WordPress, Drupal, and many other standards
+      - **Tokenization Engine**: Advanced PHP tokenizer that understands PHP syntax and language constructs for accurate analysis
+      - **Extensive Rule Set**: Comprehensive checks for code formatting, naming conventions, documentation, and structural issues
+      - **Custom Standards**: Create and configure custom coding standards tailored to project or organizational requirements
+      - **Detailed Reports**: Multiple report formats including full, summary, checkstyle, CSV, JSON, and SARIF
+      - **Inline Suppression**: Flexible system for suppressing specific violations using comment annotations
+      - **File Exclusions**: Sophisticated ignore patterns for excluding files, directories, or specific code sections
+      - **Performance Optimized**: Efficient scanning designed for large codebases with minimal memory usage
     name: PHP_PHPCS
     can_output_sarif: true
     linter_spdx_license: BSD-3-Clause
@@ -75,6 +88,19 @@ linters:
           url: https://marketplace.visualstudio.com/items?itemName=ikappas.phpcs
   # PHP Stan
   - linter_name: phpstan
+    linter_text: |
+      **PHPStan** is a comprehensive static analysis tool for PHP that focuses on finding errors in your code without executing it. It catches whole classes of bugs even before you write tests, providing deep code analysis and type safety for PHP applications.
+
+      **Key Features:**
+
+      - **Advanced Type Analysis**: Deep understanding of PHP types with support for generics, intersection types, and complex type relationships
+      - **Zero-Configuration Start**: Works out of the box with sensible defaults, no configuration files required initially
+      - **Incremental Analysis**: Smart caching and incremental checking for fast analysis of large codebases
+      - **10 Strictness Levels**: Configurable analysis levels from basic checks to extremely strict type safety enforcement
+      - **Framework Integration**: Built-in support for Symfony, Laravel, Doctrine, PHPUnit, and other popular PHP frameworks
+      - **Custom Rules**: Extensible architecture supporting custom rules and organization-specific analysis requirements
+      - **Baseline Support**: Generate baselines to introduce PHPStan gradually into existing projects without fixing all issues
+      - **Memory Efficient**: Optimized for large codebases with intelligent memory management and parallel processing
     name: PHP_PHPSTAN
     can_output_sarif: true
     linter_spdx_license: MIT
@@ -120,6 +146,20 @@ linters:
           url: https://marketplace.visualstudio.com/items?itemName=calsmurf2904.vscode-phpstan
   # PSALM
   - linter_name: psalm
+    linter_text: |
+      **Psalm** is an advanced static analysis tool for PHP that provides comprehensive type checking, security analysis, and code quality assessment. Developed by Vimeo, it offers sophisticated analysis capabilities that go beyond traditional linting to catch subtle bugs and security vulnerabilities.
+
+      **Key Features:**
+
+      - **Gradual Type Checking**: Intelligent type inference that works with existing PHP code, gradually adding type safety
+      - **Security Analysis**: Built-in taint analysis to detect potential security vulnerabilities like SQL injection and XSS
+      - **Advanced Type System**: Support for generics, template types, conditional return types, and complex type relationships
+      - **Dead Code Detection**: Identifies unused variables, methods, properties, and imports to help reduce codebase bloat
+      - **Immutability Analysis**: Tracks object mutability and detects potential side effects in functional programming patterns
+      - **Language Server**: Real-time analysis and intelligent code completion through Language Server Protocol
+      - **Migration Tools**: Automated refactoring tools to add type annotations and improve code quality
+      - **Framework Integration**: Specialized support for popular PHP frameworks with framework-specific analysis rules
+      - **Performance Optimized**: Fast analysis with caching and incremental checking for large codebases
     name: PHP_PSALM
     can_output_sarif: true
     linter_spdx_license: MIT
@@ -161,6 +201,19 @@ linters:
           url: https://marketplace.visualstudio.com/items?itemName=getpsalm.psalm-vscode-plugin
   # PHPLint
   - linter_name: phplint
+    linter_text: |
+      **PHPLint** is a high-performance syntax validation tool for PHP that provides rapid syntax checking without code execution. It serves as an essential first line of defense for catching PHP syntax errors and parse issues.
+
+      **Key Features:**
+
+      - **Fast Syntax Validation**: Lightning-fast PHP syntax checking without executing code for safe validation
+      - **Parallel Processing**: Multi-threaded scanning that efficiently handles large codebases
+      - **Comprehensive Error Detection**: Catches syntax errors, parse errors, and fundamental PHP language issues
+      - **Multiple PHP Versions**: Supports validation against different PHP versions to ensure compatibility
+      - **Batch Processing**: Validates entire directories and project structures efficiently
+      - **SARIF Support**: Modern report formats for seamless integration with development tools and platforms
+      - **Memory Efficient**: Minimal memory footprint for scanning large PHP projects
+      - **Configurable Scanning**: Flexible file inclusion/exclusion patterns and custom validation rules
     can_output_sarif: true
     linter_url: https://github.com/overtrue/phplint
     linter_repo: https://github.com/overtrue/phplint
@@ -190,7 +243,18 @@ linters:
   - linter_name: php-cs-fixer
     name: PHP_PHPCSFIXER
     linter_text: |
-      PHP-CS-Fixer is able to fix rule violations detected, and even those marked as (risky)
+      **PHP-CS-Fixer** is a comprehensive tool that automatically fixes PHP code to follow coding standards and style guidelines. It can repair code style violations and even risky issues, making it an essential formatter for maintaining consistent PHP codebases.
+
+      **Key Features:**
+
+      - **Automatic Code Fixing**: Repairs coding standard violations and formatting issues automatically
+      - **Extensive Rule Set**: 200+ built-in rules covering PSR-1, PSR-2, PSR-12, Symfony, and custom standards
+      - **Risky Fixes Support**: Can apply potentially risky fixes that modify code behavior when enabled
+      - **Highly Configurable**: Flexible configuration through PHP configuration files with rule customization
+      - **Multiple Standards**: Supports PSR standards, Symfony coding standards, and custom rule sets
+      - **Dry-Run Mode**: Preview changes without modifying files to review proposed fixes
+      - **Incremental Fixing**: Can target specific directories, files, or rule sets for focused improvements
+      - **Performance Optimized**: Fast execution with caching capabilities for large codebases
 
       - Enable **autofixes** by adding `PHP_PHPCSFIXER` in [APPLY_FIXES variable](https://megalinter.io/beta/configuration/#apply-fixes)
       - Add "--allow-risky=yes" option in PHP_PHPCSFIXER_ARGUMENTS variable

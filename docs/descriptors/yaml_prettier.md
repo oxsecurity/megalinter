@@ -13,6 +13,19 @@ description: How to use prettier (configure, ignore files, ignore errors, help &
 
 [![GitHub stars](https://img.shields.io/github/stars/prettier/prettier?cacheSeconds=3600)](https://github.com/prettier/prettier) ![formatter](https://shields.io/badge/-format-yellow) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/prettier/prettier?sort=semver)](https://github.com/prettier/prettier/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/prettier/prettier)](https://github.com/prettier/prettier/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/prettier/prettier)](https://github.com/prettier/prettier/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/prettier/prettier)](https://github.com/prettier/prettier/graphs/contributors/)
 
+**Prettier** is the industry-standard opinionated code formatter that brings consistency to YAML files by enforcing a unified style across projects. It eliminates formatting debates by automatically reformatting code according to its proven formatting principles.
+
+**Key Features:**
+
+- **Opinionated Formatting**: Zero-configuration approach with sensible defaults that work well for most projects
+- **Consistent Output**: Deterministic formatting ensures identical results regardless of environment or developer
+- **YAML Optimization**: Specialized handling of YAML syntax including proper indentation, spacing, and structure
+- **Multi-Language Support**: Part of a comprehensive formatting ecosystem covering 20+ languages
+- **Parse Safety**: Validates that formatted code maintains semantic equivalence to the original
+- **Configuration Flexibility**: Supports project-specific settings through .prettierrc files when customization is needed
+- **Fast Performance**: High-speed formatting suitable for large YAML files
+- **Team Standardization**: Eliminates style discussions and ensures consistent formatting across team members
+
 ## prettier documentation
 
 - Version in MegaLinter: **3.6.2**

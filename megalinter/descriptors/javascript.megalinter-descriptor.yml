@@ -18,9 +18,35 @@ linters:
       - ".js"
       - ".vue"
     linter_text: |
-      eslint requires a custom configuration file applicable to your project.
+      **ESLint** is the #1 JavaScript linter by downloads on npm (over 77M weekly downloads) and the most widely adopted pluggable linting utility for JavaScript and JSX. It helps you find and fix problems with your JavaScript code through static analysis.
 
-      You can create it by typing `npx eslint --init` in the root of your repository
+      **Key features:**
+
+      - **Static Code Analysis**: Quickly finds problems in JavaScript code without executing it
+      - **Automatic Fixing**: Many problems can be automatically fixed with syntax-aware corrections
+      - **Highly Configurable**: Completely customizable rules, parsers, and plugins ecosystem
+      - **Built-in Editor Integration**: Works seamlessly with most text editors
+      - **Extensible Plugin System**: Thousands of community plugins for frameworks like React, Vue, Node.js
+      - **Multiple Output Formats**: Supports various output formats including SARIF for security tools
+      - **Custom Rules**: Write your own rules that work alongside ESLint's built-in rules
+
+      **Common code quality checks:**
+
+      - **Syntax Errors**: Catches JavaScript syntax issues and typos
+      - **Code Style**: Enforces consistent formatting, naming conventions, and code structure
+      - **Best Practices**: Identifies problematic patterns and suggests improvements
+      - **Security Issues**: Detects potential security vulnerabilities (with security plugins)
+      - **Performance**: Identifies performance anti-patterns and optimizations
+
+      **Popular configurations:**
+
+      - **Airbnb Style Guide**: Industry-standard JavaScript style guide
+      - **Standard**: Minimal, opinionated code style with no configuration
+      - **Prettier Integration**: Seamless integration with Prettier for code formatting
+
+      ESLint requires a custom configuration file applicable to your project. You can create it by typing `npx eslint --init` in the root of your repository.
+
+      Used by companies like Microsoft, Airbnb, Netflix, and Facebook, ESLint helps maintain code quality and consistency across JavaScript projects of all sizes.
     linter_url: https://eslint.org
     linter_repo: https://github.com/eslint/eslint
     linter_rules_url: https://eslint.org/docs/latest/rules/
@@ -139,6 +165,19 @@ linters:
   # STANDARD
   - class: JavaScriptStandardLinter
     linter_name: standard
+    linter_text: |
+      **JavaScript Standard Style** is a popular zero-configuration JavaScript linter and code formatter that eliminates endless debates about code style by providing a strict, opinionated set of rules. It serves as both a style guide and automated enforcement tool for clean, consistent JavaScript.
+
+      **Key Features:**
+
+      - **Zero Configuration**: No configuration files, command-line flags, or setup required - just install and run
+      - **Automatic Fixing**: Built-in `--fix` option automatically corrects most style violations
+      - **Strict Style Rules**: Enforces 2-space indentation, single quotes, no semicolons, and other proven conventions
+      - **Wide Adoption**: Used by thousands of projects including npm, GitHub, Zeit, MongoDB, and Express
+      - **Comprehensive Coverage**: Catches stylistic errors, potential bugs, and dangerous patterns
+      - **Fast Performance**: Quick analysis suitable for large codebases
+      - **Plugin Ecosystem**: Extensions available for React, Flow, TypeScript, and other JavaScript variants
+      - **Clear Error Messages**: Helpful error descriptions with links to explanations and examples
     linter_spdx_license: MIT
     activation_rules:
       - type: variable
@@ -182,6 +221,19 @@ linters:
           url: https://marketplace.visualstudio.com/items?itemName=standard.vscode-standard
   # PRETTIER
   - linter_name: prettier
+    linter_text: |
+      **Prettier** is the industry-leading opinionated code formatter that brings consistency to JavaScript and many other languages by automatically reformatting code according to proven formatting principles. It eliminates formatting debates and ensures uniform code style across entire development teams.
+
+      **Key Features:**
+
+      - **Multi-Language Support**: Formats JavaScript, TypeScript, CSS, HTML, JSON, Markdown, YAML, and 20+ other languages
+      - **Opinionated Formatting**: Zero-configuration approach with sensible defaults that work well for most projects
+      - **Parse Safety**: Ensures formatted code maintains semantic equivalence to the original through AST-based processing
+      - **Consistent Output**: Deterministic formatting produces identical results regardless of environment or developer
+      - **Team Standardization**: Eliminates style discussions and ensures consistent formatting across team members
+      - **Fast Performance**: High-speed formatting suitable for large codebases
+      - **Configuration Flexibility**: Supports project-specific settings through .prettierrc files when customization is needed
+      - **Git Integration**: Reduces merge conflicts by maintaining consistent formatting across branches
     is_formatter: true
     linter_spdx_license: MIT
     activation_rules:

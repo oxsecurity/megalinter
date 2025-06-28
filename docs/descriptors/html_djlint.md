@@ -13,15 +13,17 @@ description: How to use djlint (configure, ignore files, ignore errors, help & v
 
 [![GitHub stars](https://img.shields.io/github/stars/Riverside-Healthcare/djlint?cacheSeconds=3600)](https://github.com/Riverside-Healthcare/djlint) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/Riverside-Healthcare/djlint?sort=semver)](https://github.com/Riverside-Healthcare/djlint/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/Riverside-Healthcare/djlint)](https://github.com/Riverside-Healthcare/djlint/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/Riverside-Healthcare/djlint)](https://github.com/Riverside-Healthcare/djlint/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/Riverside-Healthcare/djlint)](https://github.com/Riverside-Healthcare/djlint/graphs/contributors/)
 
-DjLint can analyse multiple formats of HTML:
+**djLint** is a comprehensive linter and formatter for HTML templates that supports multiple template languages. Originally created for use in the Atlas projects, it helps you find common syntax errors and reformat your HTML templates to make them shine.
 
-- html (default)
-- django
-- jinja
-- nunjucks (for nunjucks and twig)
-- handlebars (for handlebars and mustache)
-- golang
-- angular
+**Key Features:**
+
+- **Multi-Language Support**: Supports Django, Jinja, Nunjucks, Twig, Handlebars, Mustache, Golang templates, and Angular
+- **Comprehensive Rule Set**: 60+ built-in rules covering HTML standards, accessibility, security, and template-specific best practices
+- **Language-Specific Rules**: Specialized rules for Django (D-codes), Jinja (J-codes), HTML (H-codes), and general templates (T-codes)
+- **Auto-Formatting**: Automatically formats and beautifies HTML templates with consistent indentation and structure
+- **Configurable Profiles**: Pre-configured profiles for different template languages with appropriate rule sets
+- **Custom Rules**: Support for custom pattern-based and Python module rules for project-specific requirements
+- **Flexible Configuration**: Enable/disable rules via command line, configuration files, or inline comments
 
 For example, define `HTML_DJLINT_ARGUMENTS: ["--profile", "django"]` to select django format
 

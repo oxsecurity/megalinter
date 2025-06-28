@@ -13,6 +13,21 @@ description: How to use grype (configure, ignore files, ignore errors, help & ve
 
 ![downgraded version](https://shields.io/badge/-downgraded%20version-orange) [![GitHub stars](https://img.shields.io/github/stars/anchore/grype?cacheSeconds=3600)](https://github.com/anchore/grype) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/anchore/grype?sort=semver)](https://github.com/anchore/grype/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/anchore/grype)](https://github.com/anchore/grype/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/anchore/grype)](https://github.com/anchore/grype/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/anchore/grype)](https://github.com/anchore/grype/graphs/contributors/)
 
+**Grype** is a comprehensive vulnerability scanner for container images and filesystems that quickly identifies known security vulnerabilities in packages and dependencies. It serves as an essential tool for supply chain security by detecting CVEs across multiple vulnerability databases.
+
+**Key Features:**
+
+- **Multi-Source Scanning**: Analyzes container images, directories, SBOM files, and archives for comprehensive vulnerability coverage
+- **Extensive Database Coverage**: Leverages multiple vulnerability databases including NVD, Alpine SecDB, Ubuntu, Debian, and more
+- **Package Manager Support**: Detects vulnerabilities in packages from npm, pip, gem, Maven, Go modules, and other popular package managers
+- **SARIF Output**: Modern security report format for integration with development platforms and security tools
+- **Container Registry Integration**: Direct scanning of images from Docker Hub, ECR, GCR, and other container registries
+- **SBOM Analysis**: Can analyze Software Bill of Materials files for vulnerability assessment
+- **CI/CD Ready**: Designed for integration into continuous integration pipelines with configurable failure thresholds
+- **Detailed Reporting**: Comprehensive vulnerability reports with CVSS scores, severity levels, and remediation guidance
+- **Fast Performance**: Optimized scanning engine suitable for large-scale container and filesystem analysis
+- **Offline Support**: Can operate with cached vulnerability databases for air-gapped environments
+
 ## grype documentation
 
 - Version in MegaLinter: **0.94.0**

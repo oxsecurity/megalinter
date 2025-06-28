@@ -25,7 +25,18 @@ linters:
     linter_banner_image_url: https://user-images.githubusercontent.com/19731161/142411871-f695e40c-bfa8-43ca-97c0-94c256749732.png
     linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/kubeconform.png
     linter_text: |
-      `kubeconform` is a schema-aware Kubernetes manifest validation tool, that tends to have more up-to-date schema definitions than `kubeval`.
+      **kubeconform** is a FAST Kubernetes manifest validation tool with support for Custom Resources. It's designed as a more up-to-date and feature-rich alternative to kubeval, with significant performance improvements and enhanced functionality.
+
+      **Key Features:**
+
+      - **High Performance**: Multi-threaded validation with caching and concurrent routines for superior speed compared to kubeval
+      - **Up-to-Date Schemas**: Uses self-updating fork of kubernetes-json-schema with guaranteed current schemas for all recent Kubernetes versions
+      - **Custom Resource Support**: Validates CustomResourceDefinitions (CRDs) with configurable schema locations and CRDs-catalog integration
+      - **OpenShift Compatibility**: Built-in support for OpenShift manifest validation with version-specific schemas
+      - **Flexible Schema Sources**: Supports multiple schema locations (HTTP/HTTPS URLs, local filesystem) with templated paths
+      - **Multiple Output Formats**: JSON, JUnit, TAP, and text outputs with detailed validation summaries
+      - **Advanced Filtering**: Skip specific resource kinds, ignore missing schemas, and use regex patterns for file exclusion
+      - **CI/CD Ready**: Optimized for integration with GitHub Actions, GitLab CI, and other continuous integration platforms
     cli_version_arg_name: -v
     cli_help_arg_name: -h
     cli_lint_extra_args:
@@ -68,7 +79,17 @@ linters:
     linter_banner_image_url: https://helm.sh/img/helm.svg
     linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/helm.png
     linter_text: |
-      `helm lint` examine a chart for possible issues.
+      **Helm Lint** examines Helm charts for potential issues, misconfigurations, and adherence to best practices. It validates chart structure, templates, and values to ensure charts can be successfully deployed and function correctly in Kubernetes environments.
+
+      **Key Features:**
+
+      - **Chart Validation**: Verifies chart structure, metadata, and required files are present and correctly formatted
+      - **Template Rendering**: Tests that all templates render properly with default and provided values
+      - **YAML Syntax Checking**: Validates YAML syntax and structure across all chart files
+      - **Kubernetes API Compliance**: Ensures generated manifests comply with Kubernetes API schemas and versions
+      - **Best Practice Enforcement**: Checks for common Helm chart antipatterns and recommended practices
+      - **Dependency Validation**: Verifies chart dependencies are properly declared and accessible
+      - **Subchart Support**: Can recursively lint subcharts and their dependencies
     examples:
       - helm lint .
       - helm lint --with-subcharts .
@@ -84,7 +105,19 @@ linters:
     linter_repo: https://github.com/kubescape/kubescape
     linter_url: https://github.com/kubescape/kubescape
     linter_text: |
-      `kubescape scan` examines charts and kubernetes files for possible issues, best practices and security vulnerabilities.
+      **Kubescape** is a comprehensive Kubernetes security scanner that examines charts and Kubernetes files for security vulnerabilities, misconfigurations, and compliance violations. It provides security analysis based on established frameworks and best practices.
+
+      **Key Features:**
+
+      - **Multi-Framework Security Scanning**: Supports NSA/CISA guidelines, MITRE ATT&CK, CIS Kubernetes Benchmark, and custom frameworks
+      - **Vulnerability Assessment**: Scans container images for known CVEs and security vulnerabilities
+      - **Configuration Analysis**: Detects misconfigurations in Kubernetes manifests, Helm charts, and cluster configurations
+      - **Compliance Reporting**: Generates compliance reports against security standards and regulatory requirements
+      - **SARIF Output**: Modern security report format for integration with development platforms and security tools
+      - **Risk Scoring**: Provides risk assessment and prioritization of security findings
+      - **CI/CD Integration**: Seamlessly integrates into development pipelines for shift-left security practices
+      - **Custom Policies**: Supports custom security policies and rules for organization-specific requirements
+      - **Multi-Format Support**: Analyzes YAML manifests, Helm charts, and live cluster configurations
     linter_banner_image_url: https://www.armosec.io/wp-content/uploads/2022/11/Kubescape_BY_ARMO.png
     linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/kubescape.png
     linter_spdx_license: Apache-2.0

@@ -13,7 +13,18 @@ description: How to use trivy-sbom (configure, ignore files, ignore errors, help
 
 [![GitHub stars](https://img.shields.io/github/stars/aquasecurity/trivy?cacheSeconds=3600)](https://github.com/aquasecurity/trivy) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/aquasecurity/trivy?sort=semver)](https://github.com/aquasecurity/trivy/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/aquasecurity/trivy)](https://github.com/aquasecurity/trivy/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/aquasecurity/trivy)](https://github.com/aquasecurity/trivy/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/aquasecurity/trivy)](https://github.com/aquasecurity/trivy/graphs/contributors/)
 
-Generates SBOM (Software Bill Of Material) using Trivy
+**Trivy SBOM** is a specialized component of Trivy that generates comprehensive Software Bill of Materials (SBOM) documents for enhanced supply chain security and compliance. It provides detailed inventory management for software components and dependencies.
+
+**Key Features:**
+
+- **Comprehensive Component Discovery**: Automatically detects and catalogs all software components, libraries, and dependencies in projects
+- **Multi-Format SBOM Output**: Generates SBOMs in industry-standard formats including SPDX and CycloneDX for maximum compatibility
+- **Container and Filesystem Analysis**: Creates SBOMs for container images, filesystems, and source code repositories
+- **Dependency Mapping**: Provides complete dependency graphs showing relationships between components
+- **License Information**: Includes license details for each component to support compliance and legal reviews
+- **Vulnerability Context**: Links SBOM data with security information for comprehensive risk assessment
+- **Supply Chain Transparency**: Enables organizations to meet regulatory requirements and industry standards
+- **Audit Trail**: Creates detailed records of software composition for security auditing and compliance reporting
 
 ## trivy-sbom documentation
 
@@ -170,7 +181,7 @@ Use "trivy [command] --help" for more information about a command.
 # renovate: datasource=github-tags depName=aquasecurity/trivy
 ARG REPOSITORY_TRIVY_SBOM_VERSION=0.63.0
 RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin "v${REPOSITORY_TRIVY_SBOM_VERSION}" \
-    && (trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress)
+    && (trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress)
 
 ```
 

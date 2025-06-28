@@ -7,6 +7,19 @@ description: How to use graphql-schema-linter (configure, ignore files, ignore e
 # graphql-schema-linter
 [![GitHub stars](https://img.shields.io/github/stars/cjoudrey/graphql-schema-linter?cacheSeconds=3600)](https://github.com/cjoudrey/graphql-schema-linter) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/cjoudrey/graphql-schema-linter?sort=semver)](https://github.com/cjoudrey/graphql-schema-linter/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/cjoudrey/graphql-schema-linter)](https://github.com/cjoudrey/graphql-schema-linter/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/cjoudrey/graphql-schema-linter)](https://github.com/cjoudrey/graphql-schema-linter/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/cjoudrey/graphql-schema-linter)](https://github.com/cjoudrey/graphql-schema-linter/graphs/contributors/)
 
+**graphql-schema-linter** validates GraphQL schema definitions against a comprehensive set of rules to ensure consistency, best practices, and adherence to GraphQL conventions. It helps maintain high-quality, well-documented GraphQL APIs with consistent structure and proper documentation.
+
+**Key Features:**
+- **20+ built-in rules** covering descriptions, naming conventions, field sorting, and type usage
+- **Relay specification compliance** validation for modern GraphQL APIs
+- **Custom rules support** for project-specific validation requirements
+- **Inline rule overrides** using GraphQL comments to disable specific rules
+- **Multiple output formats** including text, compact, and JSON formats
+- **Granular configuration** with support for `.graphql-schema-linterrc` files
+- **Field and type description enforcement** for better API documentation
+- **Naming convention validation** ensuring consistent schema structure
+- **Type usage optimization** to prevent common GraphQL anti-patterns
+
 ## graphql-schema-linter documentation
 
 - Version in MegaLinter: **3.0.1**

@@ -7,7 +7,20 @@ description: How to use xmllint (configure, ignore files, ignore errors, help & 
 # xmllint
 ![autofix](https://shields.io/badge/-autofix-green)
 
-To apply file formatting you must set `XML_XMLLINT_CLI_LINT_MODE: file` and `XML_XMLLINT_AUTOFORMAT: true`.
+**xmllint** is a command-line XML tool from the libxml2 library that provides comprehensive XML parsing, validation, and formatting capabilities for XML documents and related technologies.
+
+**Key Features:**
+
+- **Multiple Validation Types**: Supports DTD, XML Schema (XSD), RelaxNG, and Schematron validation with detailed error reporting
+- **Well-Formedness Checking**: Ensures XML documents conform to fundamental XML syntax rules and structure requirements
+- **XPath Support**: Execute XPath expressions for querying and extracting specific nodes or data from XML documents
+- **Format and Reindent**: Automatic formatting and indentation with customizable spacing for improved readability
+- **HTML Parsing**: Can parse and validate HTML documents, with XML serialization output options
+- **XInclude Processing**: Handles XML Inclusions for modular document composition and content reuse
+- **Interactive Shell**: Provides a navigating shell mode for exploring document structure and testing operations
+- **Performance Tools**: Built-in timing, memory usage monitoring, and streaming support for large documents
+
+**Note**: To apply file formatting you must set `XML_XMLLINT_CLI_LINT_MODE: file` and `XML_XMLLINT_AUTOFORMAT: true`.
 
 ## xmllint documentation
 

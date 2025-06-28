@@ -7,6 +7,19 @@ description: How to use phpcs (configure, ignore files, ignore errors, help & ve
 # phpcs
 [![GitHub stars](https://img.shields.io/github/stars/PHPCSStandards/PHP_CodeSniffer?cacheSeconds=3600)](https://github.com/PHPCSStandards/PHP_CodeSniffer) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/PHPCSStandards/PHP_CodeSniffer?sort=semver)](https://github.com/PHPCSStandards/PHP_CodeSniffer/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/PHPCSStandards/PHP_CodeSniffer)](https://github.com/PHPCSStandards/PHP_CodeSniffer/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/PHPCSStandards/PHP_CodeSniffer)](https://github.com/PHPCSStandards/PHP_CodeSniffer/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/PHPCSStandards/PHP_CodeSniffer)](https://github.com/PHPCSStandards/PHP_CodeSniffer/graphs/contributors/)
 
+**PHP_CodeSniffer (phpcs)** is a powerful static analysis tool that tokenizes PHP files and detects violations of defined coding standards. It serves as the industry standard for enforcing PHP coding conventions and maintaining consistent code quality across projects.
+
+**Key Features:**
+
+- **Multiple Coding Standards**: Built-in support for PSR-1, PSR-2, PSR-12, PEAR, Zend, WordPress, Drupal, and many other standards
+- **Tokenization Engine**: Advanced PHP tokenizer that understands PHP syntax and language constructs for accurate analysis
+- **Extensive Rule Set**: Comprehensive checks for code formatting, naming conventions, documentation, and structural issues
+- **Custom Standards**: Create and configure custom coding standards tailored to project or organizational requirements
+- **Detailed Reports**: Multiple report formats including full, summary, checkstyle, CSV, JSON, and SARIF
+- **Inline Suppression**: Flexible system for suppressing specific violations using comment annotations
+- **File Exclusions**: Sophisticated ignore patterns for excluding files, directories, or specific code sections
+- **Performance Optimized**: Efficient scanning designed for large codebases with minimal memory usage
+
 ## phpcs documentation
 
 - Version in MegaLinter: **3.13.2**

@@ -13,6 +13,20 @@ description: How to use ls-lint (configure, ignore files, ignore errors, help & 
 
 [![GitHub stars](https://img.shields.io/github/stars/loeffel-io/ls-lint?cacheSeconds=3600)](https://github.com/loeffel-io/ls-lint) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/loeffel-io/ls-lint?sort=semver)](https://github.com/loeffel-io/ls-lint/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/loeffel-io/ls-lint)](https://github.com/loeffel-io/ls-lint/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/loeffel-io/ls-lint)](https://github.com/loeffel-io/ls-lint/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/loeffel-io/ls-lint)](https://github.com/loeffel-io/ls-lint/graphs/contributors/)
 
+**ls-lint** is an extremely fast file and directory name linter that helps maintain consistent naming conventions across your project. It validates file and directory names against configurable rules to enforce naming patterns, prevent problematic characters, and ensure cross-platform compatibility.
+
+**Key Features:**
+
+- **Lightning Fast Performance**: Written in Go for extremely fast scanning of large directory structures and file systems
+- **Configurable Rules**: Flexible YAML configuration supporting regex patterns, case conventions, and custom naming rules
+- **Cross-Platform Compatibility**: Prevents naming conflicts between different operating systems (Windows, macOS, Linux)
+- **Multiple Naming Conventions**: Built-in support for camelCase, PascalCase, snake_case, kebab-case, and custom patterns
+- **Directory Structure Validation**: Enforces consistent naming across both files and directory hierarchies
+- **Zero Dependencies**: Standalone binary with no external dependencies for easy installation and deployment
+- **Globbing Support**: Advanced pattern matching for applying different rules to specific file types or directories
+- **Team Collaboration**: Ensures consistent naming conventions across large development teams and projects
+- **Error Prevention**: Catches naming issues early to prevent problems with case-sensitive filesystems and tools
+
 ## ls-lint documentation
 
 - Version in MegaLinter: **2.3.1**

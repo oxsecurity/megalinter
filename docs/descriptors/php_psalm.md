@@ -13,6 +13,20 @@ description: How to use psalm (configure, ignore files, ignore errors, help & ve
 
 [![GitHub stars](https://img.shields.io/github/stars/vimeo/psalm?cacheSeconds=3600)](https://github.com/vimeo/psalm) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/vimeo/psalm?sort=semver)](https://github.com/vimeo/psalm/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/vimeo/psalm)](https://github.com/vimeo/psalm/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/vimeo/psalm)](https://github.com/vimeo/psalm/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/vimeo/psalm)](https://github.com/vimeo/psalm/graphs/contributors/)
 
+**Psalm** is an advanced static analysis tool for PHP that provides comprehensive type checking, security analysis, and code quality assessment. Developed by Vimeo, it offers sophisticated analysis capabilities that go beyond traditional linting to catch subtle bugs and security vulnerabilities.
+
+**Key Features:**
+
+- **Gradual Type Checking**: Intelligent type inference that works with existing PHP code, gradually adding type safety
+- **Security Analysis**: Built-in taint analysis to detect potential security vulnerabilities like SQL injection and XSS
+- **Advanced Type System**: Support for generics, template types, conditional return types, and complex type relationships
+- **Dead Code Detection**: Identifies unused variables, methods, properties, and imports to help reduce codebase bloat
+- **Immutability Analysis**: Tracks object mutability and detects potential side effects in functional programming patterns
+- **Language Server**: Real-time analysis and intelligent code completion through Language Server Protocol
+- **Migration Tools**: Automated refactoring tools to add type annotations and improve code quality
+- **Framework Integration**: Specialized support for popular PHP frameworks with framework-specific analysis rules
+- **Performance Optimized**: Fast analysis with caching and incremental checking for large codebases
+
 ## psalm documentation
 
 - Version in MegaLinter: **Psalm.6.12.0@**

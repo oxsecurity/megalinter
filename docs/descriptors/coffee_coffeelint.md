@@ -7,6 +7,17 @@ description: How to use coffeelint (configure, ignore files, ignore errors, help
 # coffeelint
 [![GitHub stars](https://img.shields.io/github/stars/clutchski/coffeelint?cacheSeconds=3600)](https://github.com/clutchski/coffeelint) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/clutchski/coffeelint?sort=semver)](https://github.com/clutchski/coffeelint/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/clutchski/coffeelint)](https://github.com/clutchski/coffeelint/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/clutchski/coffeelint)](https://github.com/clutchski/coffeelint/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/clutchski/coffeelint)](https://github.com/clutchski/coffeelint/graphs/contributors/)
 
+**CoffeeLint** is a style checker that helps keep CoffeeScript code clean and consistent. While CoffeeScript insulates programmers from many of JavaScript's problematic features, it doesn't enforce consistent style across a codebase - that's where CoffeeLint comes in.
+
+**Key Features:**
+
+- **Comprehensive Style Checking**: Enforces consistent formatting, spacing, indentation, and naming conventions
+- **Configurable Rules**: Over 50+ rules covering everything from arrow spacing to variable naming, all customizable
+- **Code Quality Checks**: Detects issues like unused variables, missing fat arrows, duplicate keys, and cyclomatic complexity
+- **Inline Rule Control**: Disable/enable rules on specific lines or sections using comment directives
+- **Multiple Output Formats**: Supports various reporting formats including JSON, CSV, and checkstyle XML
+- **Custom Rules Support**: Extensible architecture allows loading of third-party and custom rules
+
 ## coffeelint documentation
 
 - Version in MegaLinter: **5.2.11**

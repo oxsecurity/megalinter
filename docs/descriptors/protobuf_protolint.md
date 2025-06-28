@@ -7,6 +7,19 @@ description: How to use protolint (configure, ignore files, ignore errors, help 
 # protolint
 [![GitHub stars](https://img.shields.io/github/stars/yoheimuta/protolint?cacheSeconds=3600)](https://github.com/yoheimuta/protolint) ![autofix](https://shields.io/badge/-autofix-green) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/yoheimuta/protolint?sort=semver)](https://github.com/yoheimuta/protolint/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/yoheimuta/protolint)](https://github.com/yoheimuta/protolint/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/yoheimuta/protolint)](https://github.com/yoheimuta/protolint/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/yoheimuta/protolint)](https://github.com/yoheimuta/protolint/graphs/contributors/)
 
+**protolint** is a fast, pluggable linting and fixing utility for Protocol Buffer files that enforces the official Google Protocol Buffer style guide. It operates without requiring compilation, making it ideal for rapid development feedback.
+
+**Key Features:**
+
+- **Official Style Guide Compliance**: Rules correspond exactly to Google's Protocol Buffer style guide recommendations
+- **Fast Performance**: Operates without compilation, providing rapid feedback during development
+- **Automatic Fixing**: Built-in auto-fix capability for many style violations and formatting issues
+- **Proto2 and Proto3 Support**: Full compatibility with both Protocol Buffer syntax versions
+- **Inline Rule Disabling**: Selective rule disabling through comments for API compatibility requirements
+- **Pluggable Architecture**: Support for custom rule plugins and organization-specific standards
+- **Comprehensive Coverage**: Validates naming conventions, field ordering, imports, indentation, and syntax
+- **Configuration Flexibility**: YAML-based configuration for team-specific linting preferences
+
 ## protolint documentation
 
 - Version in MegaLinter: **0.55.6**

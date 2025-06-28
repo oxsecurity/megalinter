@@ -7,6 +7,16 @@ description: How to use cljstyle (configure, ignore files, ignore errors, help &
 # cljstyle
 [![GitHub stars](https://img.shields.io/github/stars/greglook/cljstyle?cacheSeconds=3600)](https://github.com/greglook/cljstyle) ![autofix](https://shields.io/badge/-autofix-green) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/greglook/cljstyle?sort=semver)](https://github.com/greglook/cljstyle/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/greglook/cljstyle)](https://github.com/greglook/cljstyle/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/greglook/cljstyle)](https://github.com/greglook/cljstyle/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/greglook/cljstyle)](https://github.com/greglook/cljstyle/graphs/contributors/)
 
+**cljstyle** is a comprehensive tool for formatting Clojure code that transforms messy, inconsistent code into beautifully formatted, readable source files. It's a rewrite of the original cljfmt tool with enhanced capabilities and native compilation.
+
+**Key Features:**
+- **Automatic Code Formatting**: Transforms poorly formatted Clojure code into clean, consistent, and readable format
+- **Comprehensive Rules**: Handles indentation, spacing, line breaks, namespace formatting, and function definitions
+- **Highly Configurable**: Extensive configuration options through `.cljstyle` files with format rules and width constraints
+- **Multi-Command Interface**: Supports check, fix, pipe, find, and config commands for different workflows
+- **Form Ignoring**: Flexible ignore patterns with comment forms, discard macros, and metadata tags
+- **Native Performance**: Compiled to native binary for fast startup and execution
+
 ## cljstyle documentation
 
 - Version in MegaLinter: **0.17.642**

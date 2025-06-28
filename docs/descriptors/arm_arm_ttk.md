@@ -7,6 +7,21 @@ description: How to use arm-ttk (configure, ignore files, ignore errors, help & 
 # arm-ttk
 [![GitHub stars](https://img.shields.io/github/stars/Azure/arm-ttk?cacheSeconds=3600)](https://github.com/Azure/arm-ttk) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/Azure/arm-ttk?sort=semver)](https://github.com/Azure/arm-ttk/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/Azure/arm-ttk)](https://github.com/Azure/arm-ttk/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/Azure/arm-ttk)](https://github.com/Azure/arm-ttk/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/Azure/arm-ttk)](https://github.com/Azure/arm-ttk/graphs/contributors/)
 
+**ARM TTK (Azure Resource Manager Template Toolkit)** is the official Microsoft toolkit for analyzing and testing Azure Resource Manager Templates. It validates ARM templates for coding best practices and ensures they follow recommended guidelines.
+
+**Key Features:**
+
+- **Best Practice Validation**: Checks templates against Microsoft's recommended ARM template coding standards
+- **Security Analysis**: Validates security practices such as preventing secrets from being output in plain text
+- **Intent Validation**: Identifies unused parameters, variables, and resources to ensure clean template code
+- **Language Best Practices**: Ensures proper use of ARM template language constructs (e.g., using environment functions instead of hard-coded values)
+- **Azure Marketplace Compliance**: Same tests used to validate templates for Azure QuickStart Repository and Azure Marketplace
+- **Extensible Framework**: Allows for easy expansion and individual selection of tests
+
+**Note**: Starting with ARM TTK v0.10, investment in new tests is being moved to the Bicep linter. ARM TTK remains available to support JSON ARM templates and createUiDefinition scenarios.
+
+ARM TTK helps ensure your ARM templates are secure, maintainable, and follow Azure best practices for infrastructure as code.
+
 ## arm-ttk documentation
 
 - Visit [Official Web Site](https://github.com/Azure/arm-ttk#readme){target=_blank}

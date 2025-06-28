@@ -7,6 +7,36 @@ description: How to use hadolint (configure, ignore files, ignore errors, help &
 # <a href="https://github.com/hadolint/hadolint" target="blank" title="Visit linter Web Site"><img src="https://hadolint.github.io/hadolint/img/cat_container.png" alt="hadolint" height="100px" class="megalinter-logo"></a>hadolint
 [![GitHub stars](https://img.shields.io/github/stars/hadolint/hadolint?cacheSeconds=3600)](https://github.com/hadolint/hadolint) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/hadolint/hadolint?sort=semver)](https://github.com/hadolint/hadolint/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/hadolint/hadolint)](https://github.com/hadolint/hadolint/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/hadolint/hadolint)](https://github.com/hadolint/hadolint/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/hadolint/hadolint)](https://github.com/hadolint/hadolint/graphs/contributors/)
 
+**Hadolint** is a smarter Dockerfile linter that helps you build best practice Docker images. The linter parses the Dockerfile into an AST and performs rules on top of the AST. It stands on the shoulders of **ShellCheck** to lint the Bash code inside `RUN` instructions.
+
+**Key Features:**
+
+- **AST-based Analysis**: Parses Dockerfile into Abstract Syntax Tree for comprehensive analysis
+- **ShellCheck Integration**: Automatically lints Bash/shell code within RUN instructions using ShellCheck
+- **Best Practice Enforcement**: Validates against Docker best practices and security guidelines
+- **Extensive Rule Set**: 60+ rules covering security, performance, maintainability, and style
+- **Multiple Output Formats**: Supports TTY, JSON, CheckStyle, CodeClimate, SARIF, and more
+- **Label Schema Validation**: Validates Docker labels against predefined schemas (semver, RFC3339, SPDX, etc.)
+- **Flexible Configuration**: Highly configurable via YAML config files or command-line options
+- **Trusted Registry Support**: Warns when using images from untrusted registries
+- **Multi-shell Support**: Handles non-POSIX shells (e.g., PowerShell for Windows containers)
+
+**Common checks include:**
+
+- **Security**: Non-root user requirements, sudo usage, trusted base images
+- **Performance**: Layer optimization, package manager best practices, caching strategies
+- **Maintainability**: Explicit versioning, proper instruction order, WORKDIR usage
+- **Style**: Consistent formatting, proper JSON notation for CMD/ENTRYPOINT
+- **Shell Safety**: Proper quoting, pipefail options, variable handling
+
+**Advanced features:**
+
+- Inline and global ignore pragmas for rule exceptions
+- Custom severity levels (error, warning, info, style)
+- Support for both Dockerfile and Containerfile formats
+
+Hadolint ensures your Dockerfiles are secure, efficient, and maintainable while following industry best practices.
+
 ## hadolint documentation
 
 - Version in MegaLinter: **2.12.0**

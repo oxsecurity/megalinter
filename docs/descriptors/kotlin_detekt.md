@@ -13,6 +13,22 @@ description: How to use detekt (configure, ignore files, ignore errors, help & v
 
 [![GitHub stars](https://img.shields.io/github/stars/detekt/detekt?cacheSeconds=3600)](https://github.com/detekt/detekt) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/detekt/detekt?sort=semver)](https://github.com/detekt/detekt/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/detekt/detekt)](https://github.com/detekt/detekt/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/detekt/detekt)](https://github.com/detekt/detekt/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/detekt/detekt)](https://github.com/detekt/detekt/graphs/contributors/)
 
+**detekt** is a comprehensive static code analysis tool for Kotlin that helps developers write cleaner, safer code. It performs code smell analysis with highly configurable rule sets covering complexity, style, performance, naming conventions, and potential bugs.
+
+**Key Features:**
+- **300+ built-in rules** across categories like coroutines, exceptions, and documentation
+- **Code smell analysis** with highly configurable rule sets
+- **Complexity metrics** measuring cyclomatic and cognitive complexity
+- **Baseline generation** for legacy projects to track only new issues
+- **Custom rule support** for project-specific analysis requirements
+- **Multiple report formats** including HTML, Markdown, SARIF, and XML
+- **Gradle/Maven integration** for seamless build process integration
+- **Performance analysis** detecting inefficient code patterns
+- **Naming convention validation** ensuring consistent code style
+- **Coroutines analysis** for modern Kotlin async programming patterns
+- **Documentation enforcement** ensuring proper code documentation
+- **SARIF output support** for security and quality reporting tools
+
 ## detekt documentation
 
 - Version in MegaLinter: **1.23.8**

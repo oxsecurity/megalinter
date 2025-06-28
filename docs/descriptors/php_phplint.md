@@ -7,6 +7,19 @@ description: How to use phplint (configure, ignore files, ignore errors, help & 
 # phplint
 [![GitHub stars](https://img.shields.io/github/stars/overtrue/phplint?cacheSeconds=3600)](https://github.com/overtrue/phplint) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/overtrue/phplint?sort=semver)](https://github.com/overtrue/phplint/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/overtrue/phplint)](https://github.com/overtrue/phplint/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/overtrue/phplint)](https://github.com/overtrue/phplint/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/overtrue/phplint)](https://github.com/overtrue/phplint/graphs/contributors/)
 
+**PHPLint** is a high-performance syntax validation tool for PHP that provides rapid syntax checking without code execution. It serves as an essential first line of defense for catching PHP syntax errors and parse issues.
+
+**Key Features:**
+
+- **Fast Syntax Validation**: Lightning-fast PHP syntax checking without executing code for safe validation
+- **Parallel Processing**: Multi-threaded scanning that efficiently handles large codebases
+- **Comprehensive Error Detection**: Catches syntax errors, parse errors, and fundamental PHP language issues
+- **Multiple PHP Versions**: Supports validation against different PHP versions to ensure compatibility
+- **Batch Processing**: Validates entire directories and project structures efficiently
+- **SARIF Support**: Modern report formats for seamless integration with development tools and platforms
+- **Memory Efficient**: Minimal memory footprint for scanning large PHP projects
+- **Configurable Scanning**: Flexible file inclusion/exclusion patterns and custom validation rules
+
 ## phplint documentation
 
 - Version in MegaLinter: **9.6.2**

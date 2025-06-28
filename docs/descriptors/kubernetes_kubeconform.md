@@ -13,7 +13,18 @@ description: How to use kubeconform (configure, ignore files, ignore errors, hel
 
 [![GitHub stars](https://img.shields.io/github/stars/yannh/kubeconform?cacheSeconds=3600)](https://github.com/yannh/kubeconform) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/yannh/kubeconform?sort=semver)](https://github.com/yannh/kubeconform/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/yannh/kubeconform)](https://github.com/yannh/kubeconform/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/yannh/kubeconform)](https://github.com/yannh/kubeconform/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/yannh/kubeconform)](https://github.com/yannh/kubeconform/graphs/contributors/)
 
-`kubeconform` is a schema-aware Kubernetes manifest validation tool, that tends to have more up-to-date schema definitions than `kubeval`.
+**kubeconform** is a FAST Kubernetes manifest validation tool with support for Custom Resources. It's designed as a more up-to-date and feature-rich alternative to kubeval, with significant performance improvements and enhanced functionality.
+
+**Key Features:**
+
+- **High Performance**: Multi-threaded validation with caching and concurrent routines for superior speed compared to kubeval
+- **Up-to-Date Schemas**: Uses self-updating fork of kubernetes-json-schema with guaranteed current schemas for all recent Kubernetes versions
+- **Custom Resource Support**: Validates CustomResourceDefinitions (CRDs) with configurable schema locations and CRDs-catalog integration
+- **OpenShift Compatibility**: Built-in support for OpenShift manifest validation with version-specific schemas
+- **Flexible Schema Sources**: Supports multiple schema locations (HTTP/HTTPS URLs, local filesystem) with templated paths
+- **Multiple Output Formats**: JSON, JUnit, TAP, and text outputs with detailed validation summaries
+- **Advanced Filtering**: Skip specific resource kinds, ignore missing schemas, and use regex patterns for file exclusion
+- **CI/CD Ready**: Optimized for integration with GitHub Actions, GitLab CI, and other continuous integration platforms
 
 ## kubeconform documentation
 

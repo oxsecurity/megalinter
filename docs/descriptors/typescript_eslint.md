@@ -13,9 +13,18 @@ description: How to use eslint (configure, ignore files, ignore errors, help & v
 
 [![GitHub stars](https://img.shields.io/github/stars/typescript-eslint/typescript-eslint?cacheSeconds=3600)](https://github.com/typescript-eslint/typescript-eslint) ![autofix](https://shields.io/badge/-autofix-green) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/typescript-eslint/typescript-eslint?sort=semver)](https://github.com/typescript-eslint/typescript-eslint/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/typescript-eslint/typescript-eslint)](https://github.com/typescript-eslint/typescript-eslint/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/typescript-eslint/typescript-eslint)](https://github.com/typescript-eslint/typescript-eslint/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/typescript-eslint/typescript-eslint)](https://github.com/typescript-eslint/typescript-eslint/graphs/contributors/)
 
-eslint requires a custom configuration file applicable to your project.
+**TypeScript ESLint** enables ESLint to run on TypeScript code, bringing together the best of both tools to help you write high-quality TypeScript applications.
 
-You can create it by typing `npx eslint --init` in the root of your repository
+**Key Features:**
+
+- **TypeScript Parser**: Allows ESLint to parse TypeScript syntax natively, understanding decorators, interfaces, enums, and modern TypeScript features
+- **Type-Aware Linting**: Leverages TypeScript's type information for advanced static analysis that can catch type-related errors and enforce type safety
+- **100+ TypeScript-Specific Rules**: Comprehensive rule set covering TypeScript best practices, type definitions, naming conventions, and code quality
+- **Seamless Integration**: Drop-in replacement for standard ESLint with TypeScript projects, maintaining all existing ESLint functionality
+- **Multiple Configuration Presets**: Recommended, strict, and stylistic configurations for different project requirements
+- **Performance Optimized**: Efficient parsing and linting designed for large TypeScript codebases with minimal performance impact
+
+ESLint requires a custom configuration file applicable to your project. You can create it by typing `npx eslint --init` in the root of your repository
 
 ## eslint documentation
 

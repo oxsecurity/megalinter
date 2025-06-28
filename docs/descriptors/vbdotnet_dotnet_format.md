@@ -7,7 +7,18 @@ description: How to use dotnet-format (configure, ignore files, ignore errors, h
 # <a href="https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format" target="blank" title="Visit linter Web Site"><img src="https://user-images.githubusercontent.com/9797472/61659851-6bbdc880-ac7d-11e9-95f7-d30c7de1a18a.png" alt="dotnet-format" height="100px" class="megalinter-logo"></a>dotnet-format
 [![GitHub stars](https://img.shields.io/github/stars/dotnet/sdk?cacheSeconds=3600)](https://github.com/dotnet/sdk) ![formatter](https://shields.io/badge/-format-yellow) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/dotnet/sdk?sort=semver)](https://github.com/dotnet/sdk/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/dotnet/sdk)](https://github.com/dotnet/sdk/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/dotnet/sdk)](https://github.com/dotnet/sdk/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/dotnet/sdk)](https://github.com/dotnet/sdk/graphs/contributors/)
 
-dotnet-format requires a `.sln` or `.vbproj` file to run correctly.
+**dotnet format** is the official .NET code formatter that automatically applies style preferences and static analysis recommendations to enforce consistent formatting across .NET projects.
+
+**Key Features:**
+
+- **EditorConfig Integration**: Reads formatting preferences from .editorconfig files or applies sensible defaults
+- **Comprehensive Formatting**: Handles whitespace, code style, and analyzer rule violations with targeted subcommands
+- **Multi-Language Support**: Works with C#, Visual Basic .NET, and F# projects within .NET solutions
+- **Configurable Severity**: Allows filtering by diagnostic severity levels (info, warn, error)
+- **Selective Processing**: Include/exclude specific files or folders with fine-grained control
+- **MSBuild Integration**: Seamlessly works with .NET projects and solutions without additional configuration
+
+**Note**: Requires a `.sln` or `.vbproj` file to run correctly.
 
 ## dotnet-format documentation
 

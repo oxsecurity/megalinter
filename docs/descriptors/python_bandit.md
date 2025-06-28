@@ -13,9 +13,32 @@ description: How to use bandit (configure, ignore files, ignore errors, help & v
 
 [![GitHub stars](https://img.shields.io/github/stars/PyCQA/bandit?cacheSeconds=3600)](https://github.com/PyCQA/bandit) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/PyCQA/bandit?sort=semver)](https://github.com/PyCQA/bandit/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/PyCQA/bandit)](https://github.com/PyCQA/bandit/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/PyCQA/bandit)](https://github.com/PyCQA/bandit/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/PyCQA/bandit)](https://github.com/PyCQA/bandit/graphs/contributors/)
 
-bandit checks for security risks
+**Bandit** is a specialized security-focused tool designed to find common security issues in Python code. It processes each file by building an AST (Abstract Syntax Tree) and runs appropriate security plugins against the AST nodes to identify potential vulnerabilities.
 
-If you find it too harsh, you may define `PYTHON_BANDIT_DISABLE_ERRORS: true` in your `.mega-linter.yml` config file
+**Key features:**
+- **Security-Focused Analysis**: Specifically designed to detect security vulnerabilities and weaknesses
+- **AST-Based Scanning**: Builds abstract syntax trees for thorough code analysis
+- **Plugin Architecture**: Extensible system with test plugins and blacklist plugins for comprehensive coverage
+- **Multiple Output Formats**: Supports various report formats including SARIF for security tool integration
+- **Configurable Severity**: Customizable severity levels and rule configurations
+
+**Common security issues detected:**
+- **Injection Vulnerabilities**: SQL injection, command injection, code injection patterns
+- **Cryptographic Issues**: Weak cryptographic algorithms, insecure random number generation
+- **Authentication Problems**: Hardcoded passwords, weak authentication mechanisms  
+- **File System Security**: Insecure file permissions, path traversal vulnerabilities
+- **Network Security**: Insecure SSL/TLS configurations, unverified HTTPS requests
+- **Code Execution**: Use of dangerous functions like `eval()`, `exec()`, `pickle.loads()`
+- **Input Validation**: Missing input sanitization and validation
+
+**Advanced capabilities:**
+- **Blacklist Detection**: Identifies usage of known insecure or deprecated functions
+- **Context-Aware Analysis**: Understands code context to reduce false positives
+- **Baseline Support**: Can track security issues over time and focus on new problems
+
+If you find Bandit too strict for your use case, you can define `PYTHON_BANDIT_DISABLE_ERRORS: true` in your `.mega-linter.yml` config file to treat findings as warnings instead of errors.
+
+Bandit is essential for maintaining secure Python codebases and is widely used in security-conscious development environments.
 
 ## bandit documentation
 

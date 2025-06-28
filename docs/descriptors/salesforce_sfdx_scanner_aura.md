@@ -7,9 +7,21 @@ description: How to use sfdx-scanner-aura (configure, ignore files, ignore error
 # sfdx-scanner-aura
 [![GitHub stars](https://img.shields.io/github/stars/forcedotcom/code-analyzer?cacheSeconds=3600)](https://github.com/forcedotcom/code-analyzer) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/forcedotcom/code-analyzer?sort=semver)](https://github.com/forcedotcom/code-analyzer/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/forcedotcom/code-analyzer)](https://github.com/forcedotcom/code-analyzer/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/forcedotcom/code-analyzer)](https://github.com/forcedotcom/code-analyzer/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/forcedotcom/code-analyzer)](https://github.com/forcedotcom/code-analyzer/graphs/contributors/)
 
-sfdx-scanner is a sfdx plugin scanning apex and triggers using Apex PMD, and javascript using eslint
+**Salesforce Code Analyzer for Aura Components** is a specialized linting tool that focuses on Aura Lightning components, using ESLint with Salesforce-specific rules to ensure Aura components follow best practices and platform guidelines.
 
-If your root folder is not **force-app**, please set variable SALESFORCE_SFDX_SCANNER_AURA_DIRECTORY
+**Key Features:**
+
+- **Aura-Specific Rules**: Specialized ESLint rules designed for Aura Lightning component development patterns
+- **JavaScript Analysis**: Comprehensive JavaScript linting for Aura component controllers, helpers, and renderers
+- **Security Validation**: Identifies security vulnerabilities specific to Aura component architecture
+- **Platform Compliance**: Ensures components follow Salesforce Lightning platform requirements and constraints
+- **Event Handling**: Validates proper event handling patterns and component communication
+- **Performance Optimization**: Detects inefficient patterns that could impact component performance
+- **API Usage Validation**: Ensures proper use of Aura framework APIs and deprecated method detection
+- **Configurable Rules**: Customizable ESLint configuration for organization-specific coding standards
+- **Integration Ready**: Seamless integration with Salesforce development workflows and CI/CD pipelines
+
+If your root folder is not **force-app**, please set variable `SALESFORCE_SFDX_SCANNER_AURA_DIRECTORY`
 
 You can select categories and single rules by defining custom arguments (example: `SALESFORCE_SFDX_SCANNER_ARGUMENTS: -c "Best Practices,Security"`)
 

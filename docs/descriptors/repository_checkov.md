@@ -13,6 +13,19 @@ description: How to use checkov (configure, ignore files, ignore errors, help & 
 
 [![GitHub stars](https://img.shields.io/github/stars/bridgecrewio/checkov?cacheSeconds=3600)](https://github.com/bridgecrewio/checkov) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/bridgecrewio/checkov?sort=semver)](https://github.com/bridgecrewio/checkov/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/bridgecrewio/checkov)](https://github.com/bridgecrewio/checkov/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/bridgecrewio/checkov)](https://github.com/bridgecrewio/checkov/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/bridgecrewio/checkov)](https://github.com/bridgecrewio/checkov/graphs/contributors/)
 
+**Checkov** is a comprehensive static code analysis tool for Infrastructure as Code (IaC) that prevents cloud security misconfigurations before they reach production.
+
+**Key Features:**
+
+- **Multi-Platform IaC Support**: Analyzes Terraform, CloudFormation, Kubernetes, Helm, ARM templates, Docker, Serverless, and more
+- **Extensive Policy Library**: Over 1,000 built-in security and compliance policies covering CIS benchmarks, PCI-DSS, HIPAA, and other standards
+- **Cloud Provider Coverage**: Comprehensive rules for AWS, Azure, GCP, Oracle Cloud, and Alibaba Cloud services
+- **Security Focus**: Detects unencrypted storage, overly permissive security groups, missing logging, exposed secrets, and compliance violations
+- **SARIF Output**: Modern security report format for integration with development platforms and security tools
+- **Custom Policies**: Support for custom security policies written in Python or YAML for organization-specific requirements
+- **Policy Suppression**: Granular control over policy enforcement with inline and configuration-based suppression
+- **Graph-Based Analysis**: Advanced analysis using dependency graphs for complex infrastructure relationships
+
 ## checkov documentation
 
 - Version in MegaLinter: **3.2.413**
