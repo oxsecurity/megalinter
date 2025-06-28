@@ -140,6 +140,13 @@ def build_markdown_summary_sections(reporter_self, action_run_url=""):
             try:
                 with open(text_file_name, "r", encoding="utf-8") as text_file:
                     linter_output = text_file.read()
+                    # Remove all lines until the first "-----------------------------------------------", including such line
+                    separator_pos = linter_output.find("-----------------------------------------------")
+                    if separator_pos != -1:
+                        # Find the end of the line containing the separator
+                        next_newline = linter_output.find('\n', separator_pos)
+                        if next_newline != -1:
+                            linter_output = linter_output[next_newline + 1:].strip()
                     # Truncate long output to 1000 characters
                     if len(linter_output) > max_chars_per_linter:
                         total_chars = len(linter_output)
