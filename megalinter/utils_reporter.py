@@ -185,9 +185,13 @@ def build_markdown_summary_sections(reporter_self, action_run_url=""):
                 else:
                     linter_text += f" ({linter.number_fixed} fixes)"
             
-            ok_linter_names.append(linter_text)
+            ok_linter_names.append((linter.linter_name, linter_text))
         
-        p_r_msg += ", ".join(ok_linter_names) + "\n\n"
+        # Sort alphabetically by linter name and extract the formatted text
+        ok_linter_names.sort(key=lambda x: x[0])
+        sorted_linter_texts = [text for _, text in ok_linter_names]
+        
+        p_r_msg += ", ".join(sorted_linter_texts) + "\n\n"
     
     # Add footer content
     p_r_msg += build_markdown_summary_footer(reporter_self, action_run_url)
