@@ -10,6 +10,18 @@ file_contains_regex:
 linters:
   # TEKTON-LINT
   - linter_name: tekton-lint
+    linter_text: |
+      **tekton-lint** is a specialized linter designed for validating Tekton CI/CD pipeline files and ensuring they follow best practices. It provides comprehensive validation of Tekton Tasks, Pipelines, and other Kubernetes-native CI/CD resources.
+
+      **Key Features:**
+      
+      - **Tekton-Specific Validation**: Deep understanding of Tekton resource types, parameters, workspaces, and volume claims
+      - **YAML Syntax Checking**: Validates proper YAML structure and formatting in pipeline definitions
+      - **Resource Reference Validation**: Ensures that references between Tasks, Pipelines, and other resources are correct and valid
+      - **Best Practices Enforcement**: Checks for adherence to Tekton development guidelines and conventions
+      - **Required Fields Verification**: Validates that all mandatory fields and properties are present and properly configured
+      - **Early Error Detection**: Catches configuration issues before pipeline deployment to Tekton clusters
+      - **Comprehensive Rule Set**: Covers common Tekton anti-patterns and configuration mistakes
     linter_url: https://github.com/IBM/tekton-lint
     linter_repo: https://github.com/IBM/tekton-lint
     linter_rules_url: https://github.com/IBM/tekton-lint#rules

@@ -9,6 +9,17 @@ linters:
   # Lintr
   - class: RLinter
     linter_name: lintr
+    linter_text: |
+      **lintr** is a comprehensive static code analysis tool for R that checks for adherence to coding style guidelines, identifies syntax errors, and detects potential semantic issues. It serves as the primary linting solution for R codebases, ensuring code quality and consistency across projects.
+
+      **Key Features:**
+      
+      - **Comprehensive Analysis**: Over 100 built-in linters covering style consistency, potential bugs, performance issues, and best practices
+      - **Configurable Rulesets**: Supports tidyverse, full, or custom ruleset configurations for different project requirements
+      - **Inline Exclusions**: Flexible system for excluding specific lines or blocks of code from linting
+      - **Styler Complement**: Works alongside the styler package by identifying issues requiring manual attention
+      - **Extensive Rule Coverage**: Detects issues with object naming, spacing, line length, assignment operators, and function usage
+      - **Customizable Output**: Multiple output formats and severity levels for different development workflows
     linter_url: https://lintr.r-lib.org/
     linter_repo: https://github.com/r-lib/lintr
     linter_spdx_license: MIT

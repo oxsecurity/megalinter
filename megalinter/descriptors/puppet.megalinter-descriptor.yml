@@ -5,6 +5,20 @@ file_extensions:
 linters:
   # PuppetLint
   - linter_name: puppet-lint
+    linter_text: |
+      **puppet-lint** is the standard linting tool for Puppet code that enforces the recommended Puppet language style guide and ensures consistent code formatting across Puppet manifests. It focuses on style and formatting rather than syntax validation.
+
+      **Key Features:**
+      
+      - **Style Guide Compliance**: Enforces Puppet's official language style guide for consistent code appearance
+      - **Comprehensive Checks**: Validates spacing, indentation, whitespace, quoting, capitalization, and resource formatting
+      - **Automatic Fixing**: Built-in auto-fix capability for many common style violations
+      - **Selective Control**: Enable or disable specific checks based on project requirements
+      - **Configuration Files**: Project-specific configuration through `.puppet-lint.rc` files
+      - **Resource Analysis**: Validates conditional statements, class structure, and resource declarations
+      - **Best Practices Enforcement**: Identifies and corrects common Puppet coding antipatterns
+      
+      **Note**: puppet-lint validates only code style. Use `puppet parser validate` for syntax validation.
     linter_url: https://github.com/puppetlabs/puppet-lint
     linter_repo: https://github.com/puppetlabs/puppet-lint
     linter_spdx_license: MIT

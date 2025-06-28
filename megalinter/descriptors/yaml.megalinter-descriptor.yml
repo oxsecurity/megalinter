@@ -10,6 +10,19 @@ file_extensions:
 linters:
   # PRETTIER
   - linter_name: prettier
+    linter_text: |
+      **Prettier** is the industry-standard opinionated code formatter that brings consistency to YAML files by enforcing a unified style across projects. It eliminates formatting debates by automatically reformatting code according to its proven formatting principles.
+
+      **Key Features:**
+      
+      - **Opinionated Formatting**: Zero-configuration approach with sensible defaults that work well for most projects
+      - **Consistent Output**: Deterministic formatting ensures identical results regardless of environment or developer
+      - **YAML Optimization**: Specialized handling of YAML syntax including proper indentation, spacing, and structure
+      - **Multi-Language Support**: Part of a comprehensive formatting ecosystem covering 20+ languages
+      - **Parse Safety**: Validates that formatted code maintains semantic equivalence to the original
+      - **Configuration Flexibility**: Supports project-specific settings through .prettierrc files when customization is needed
+      - **Fast Performance**: High-speed formatting suitable for large YAML files
+      - **Team Standardization**: Eliminates style discussions and ensures consistent formatting across team members
     is_formatter: true
     linter_url: https://prettier.io/
     linter_repo: https://github.com/prettier/prettier
@@ -67,6 +80,21 @@ linters:
           url: https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode
   # YAMLLINT
   - linter_name: yamllint
+    linter_text: |
+      **yamllint** is a linter for YAML files that checks for syntax validity, key repetition, lines length, trailing spaces, indentation, and other common YAML issues. It helps ensure YAML files are well-formed, follow consistent formatting conventions, and avoid common pitfalls.
+
+      **Key Features:**
+      - **Syntax validity checking** to catch malformed YAML documents
+      - **Key repetition detection** preventing duplicate keys in mappings
+      - **Line length validation** ensuring consistent formatting standards
+      - **Trailing whitespace detection** for cleaner file maintenance
+      - **Indentation validation** enforcing consistent YAML structure
+      - **Document structure analysis** checking for proper YAML document format
+      - **Custom rule configuration** via `.yamllint.yml` configuration files
+      - **Multiple output formats** including standard and colored output
+      - **Inline comment disabling** for granular rule control
+      - **Performance optimized** for handling large YAML files efficiently
+      - **Strict mode support** for maximum validation rigor
     linter_url: https://yamllint.readthedocs.io/
     linter_repo: https://github.com/adrienverge/yamllint
     linter_spdx_license: GPL-3.0
@@ -107,7 +135,16 @@ linters:
     linter_repo: https://github.com/chris48s/v8r
     linter_spdx_license: MIT
     linter_speed: 1
-    linter_text: v8r checks the validity of JSON/YAML files if they have a matching schema defined on [schemastore.org](https://www.schemastore.org/)
+    linter_text: |
+      **v8r** is a command-line validator for JSON, YAML, and TOML files that automatically detects and applies appropriate schemas from the Schema Store based on filename patterns, providing intelligent validation without manual schema configuration.
+
+      **Key Features:**
+      
+      - **Automatic Schema Detection**: Uses Schema Store to intelligently match files with appropriate schemas based on filename patterns
+      - **Multi-Format Support**: Validates JSON, YAML, and TOML files with consistent interface across formats
+      - **Zero Configuration**: Works out-of-the-box for common configuration files without requiring explicit schema specification
+      - **Schema Store Integration**: Leverages the extensive collection of schemas from schemastore.org for popular tools and frameworks
+      - **Detailed Error Reporting**: Provides clear, actionable validation error messages with line and column information
     linter_rules_url: https://www.schemastore.org/
     linter_megalinter_ref_url: "no"
     config_file_name: ".v8rrc.yml"

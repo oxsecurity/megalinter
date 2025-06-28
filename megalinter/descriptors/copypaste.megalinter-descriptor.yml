@@ -14,7 +14,18 @@ linters:
     linter_speed: 1
     linter_spdx_license: MIT
     linter_text: |
-      JSCPD browses all files of your repository to detect excessive copy-pastes
+      **JSCPD** (JavaScript Copy-Paste Detector) is a sophisticated copy-paste detection tool that scans codebases across multiple programming languages to identify duplicated code blocks. It helps maintain code quality by finding excessive code duplication that can lead to maintenance issues and technical debt.
+
+      **Key Features:**
+      
+      - **Multi-Language Support**: Detects copy-paste across 170+ programming languages including JavaScript, TypeScript, Python, Java, C#, and more
+      - **Flexible Detection Algorithms**: Multiple algorithms for finding duplicates including token-based and semantic matching
+      - **Comprehensive Reporting**: Generates detailed reports in HTML, JSON, XML, Markdown, and other formats with visual diff highlighting
+      - **Configurable Thresholds**: Set minimum clone sizes, similarity percentages, and detection sensitivity for different file types
+      - **Blame Integration**: Shows Git blame information to identify when and who introduced duplicated code
+      - **Performance Optimization**: Efficient scanning algorithms that can handle large codebases with millions of lines
+      - **Flexible Ignore Patterns**: Sophisticated filtering with glob patterns, file extensions, and content-based exclusions
+      - **Statistical Analysis**: Provides detailed metrics on duplication levels, affected files, and codebase health indicators
 
       If you need to ignore folders, files or file extensions, use glob expressions `ignore` property of local `.jscpd.json` file
 

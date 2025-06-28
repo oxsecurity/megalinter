@@ -14,6 +14,17 @@ install:
 linters:
   # Java Checkstyle
   - linter_name: checkstyle
+    linter_text: |
+      **Checkstyle** is a comprehensive development tool that helps programmers write Java code adhering to coding standards. It automates the tedious but crucial task of checking Java code for style violations, making it ideal for projects that want to enforce consistent coding practices.
+
+      **Key Features:**
+
+      - **Comprehensive Code Analysis**: Checks class design, method design, code layout, and formatting issues across your entire codebase
+      - **Highly Configurable**: Supports almost any coding standard with extensive configuration options and rule customization
+      - **Standard Compliance**: Built-in support for Sun Code Conventions, Google Java Style, and other popular style guides
+      - **Detailed Reporting**: Generates comprehensive reports highlighting violations with file locations and descriptions
+      - **200+ Built-in Checks**: Covers naming conventions, imports, whitespace, modifiers, blocks, and design patterns
+      - **SARIF Output**: Supports SARIF format for enhanced integration with modern development tools and platforms
     can_output_sarif: true
     linter_url: https://checkstyle.org/
     linter_repo: https://github.com/checkstyle/checkstyle
@@ -69,6 +80,18 @@ linters:
   - class: JavaPmdLinter
     can_output_sarif: true
     linter_name: pmd
+    linter_text: |
+      **PMD** is an extensible cross-language static code analyzer that finds common programming flaws and code quality issues. It focuses on detecting potential bugs, inefficient code patterns, and maintainability issues rather than just style violations.
+
+      **Key Features:**
+
+      - **Multi-Language Support**: Analyzes Java, JavaScript, Apex, Swift, Kotlin, and 16 other languages with 400+ built-in rules
+      - **Advanced Bug Detection**: Identifies unused variables, empty catch blocks, unnecessary object creation, and potential null pointer exceptions
+      - **Code Quality Analysis**: Detects complex code patterns, inefficient algorithms, and design principle violations
+      - **Copy-Paste Detection**: Includes CPD (Copy-Paste Detector) to find duplicated code across multiple languages
+      - **AST-Based Analysis**: Uses JavaCC and ANTLR parsers to analyze abstract syntax trees for deep code understanding
+      - **Custom Rule Support**: Extensible with custom rules written in Java or XPath queries
+      - **Comprehensive Reporting**: Supports multiple output formats including SARIF for modern toolchain integration
     linter_repo: https://github.com/pmd/pmd
     linter_url: https://pmd.github.io/
     linter_spdx_license: BSD-2-Clause

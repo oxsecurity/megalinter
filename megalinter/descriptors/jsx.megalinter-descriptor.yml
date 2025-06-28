@@ -12,8 +12,18 @@ linters:
     linter_name: eslint
     can_output_sarif: true
     linter_text: |
-      eslint requires a custom configuration file applicable to your project.
-      You can create it by typing `npx eslint --init` in the root of your repository
+      **ESLint with React Plugin** provides comprehensive linting for JSX files, combining ESLint's powerful static analysis with React-specific rules to ensure high-quality React applications written in JavaScript.
+
+      **Key Features:**
+
+      - **React-Specific Linting**: 90+ rules covering React best practices, hooks usage, JSX syntax, and component lifecycle patterns
+      - **JSX Syntax Validation**: Comprehensive validation of JSX syntax, prop types, and component structure with intelligent error reporting
+      - **Hooks Rules**: Thorough validation of React Hooks usage patterns, dependencies arrays, and effect cleanup to prevent common bugs
+      - **Accessibility Integration**: Built-in support for jsx-a11y plugin ensuring accessible React components and WCAG compliance
+      - **Performance Optimization**: Rules to detect unnecessary re-renders, missing keys in lists, and performance anti-patterns
+      - **Modern React Patterns**: Support for latest React features including fragments, context, refs, and concurrent features
+
+      ESLint requires a custom configuration file applicable to your project. You can create it by typing `npx eslint --init` in the root of your repository
     linter_url: https://github.com/yannickcr/eslint-plugin-react
     linter_repo: https://github.com/yannickcr/eslint-plugin-react
     linter_spdx_license: MIT

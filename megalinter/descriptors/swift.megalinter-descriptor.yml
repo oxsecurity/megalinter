@@ -8,6 +8,19 @@ file_extensions:
 linters:
   # Swift lint
   - linter_name: swiftlint
+    linter_text: |
+      **SwiftLint** is the industry-standard linter and formatter for Swift code that enforces style guidelines and best practices based on the community-driven Swift Style Guide. It serves as an essential tool for maintaining high-quality, consistent Swift codebases.
+
+      **Key Features:**
+      
+      - **Comprehensive Rule Set**: Over 200 built-in rules covering code style, performance, best practices, and potential bug detection
+      - **SourceKit Integration**: Leverages Apple's SourceKit for accurate AST-based analysis and precise error detection
+      - **Automatic Fixing**: Intelligent auto-correction for many rule violations, saving manual effort
+      - **Highly Configurable**: Extensive configuration options with support for enabling/disabling rules and custom severity levels
+      - **Custom Rules**: Support for project-specific custom rules using regular expressions and AST patterns
+      - **Xcode Integration**: Seamless integration with Xcode projects through build phases and scheme actions
+      - **Performance Optimized**: Fast analysis even for large Swift projects with incremental linting support
+      - **Multiple Output Formats**: Supports various report formats including JSON, HTML, and checkstyle for tool integration
     linter_url: https://github.com/realm/SwiftLint
     linter_repo: https://github.com/realm/SwiftLint
     linter_rules_url: https://realm.github.io/SwiftLint/rule-directory.html

@@ -15,13 +15,20 @@ linters:
         variable: MARKDOWN_DEFAULT_STYLE
         expected_value: markdownlint
         default_value: markdownlint
-    linter_text: Checks for errors in Markdown files, and can also auto-fix some of them.
+    linter_text: |
+      **markdownlint** is a Node.js static analysis tool and linter for Markdown files that enforces standards and consistency across your documentation. It uses the micromark parser and honors CommonMark specifications while supporting popular GitHub Flavored Markdown extensions.
 
+      **Key Features:**
+      
+      - **Comprehensive Rule Set**: Over 50 built-in rules covering heading styles, list formatting, line length, whitespace management, and link validation
+      - **Format Support**: Full CommonMark compliance with GitHub Flavored Markdown, tables, autolinks, and extension support for directives, footnotes, and math
+      - **Automatic Fixing**: Many rules can automatically repair formatting issues, saving manual effort
+      - **Flexible Configuration**: Extensive customization through JSON configuration files with rule-specific settings and style presets
+      - **Inline Control**: HTML comment syntax for enabling/disabling rules within documents (`<!-- markdownlint-disable -->`)
+      - **Custom Rules**: Extensible architecture allowing project-specific linting requirements
+      - **Performance Optimized**: Fast analysis suitable for large documentation projects
 
       [MarkdownLint](https://github.com/DavidAnson/markdownlint) is run through [markdownlint-cli](https://github.com/igorshubovych/markdownlint-cli)
-
-
-      To see MarkdownLint version, you can have a look in the dependencies of latest markdownlint-cli version.
     linter_url: https://github.com/DavidAnson/markdownlint
     linter_repo: https://github.com/DavidAnson/markdownlint
     linter_spdx_license: MIT
@@ -57,6 +64,20 @@ linters:
           url: https://marketplace.visualstudio.com/items/DavidAnson.vscode-markdownlint
   # remark-lint
   - linter_name: remark-lint
+    linter_text: |
+      **remark-lint** is a powerful plugin for the remark markdown processor that provides comprehensive linting and formatting capabilities for Markdown files. Built on the unified collective's remark ecosystem, it offers extensive rule-based validation with automatic fixing capabilities and a rich plugin architecture for customized Markdown processing workflows.
+
+      **Key Features:**
+      
+      - **Unified Ecosystem**: Part of the remark/unified processing pipeline with access to a vast plugin ecosystem
+      - **Comprehensive Rule Set**: Extensive built-in rules for syntax consistency, formatting standards, and structural validation
+      - **Automatic Fixing**: Many rules can automatically repair Markdown issues, improving workflow efficiency
+      - **Plugin Architecture**: Highly extensible with 100+ community plugins for specialized linting requirements
+      - **AST-Based Processing**: Uses Abstract Syntax Tree parsing for deep, accurate Markdown analysis
+      - **Configurable Presets**: Pre-configured rule sets for common style guides and formatting conventions
+      - **Inline Control**: Marker-based comments for enabling/disabling rules within documents
+      - **Performance Optimized**: Efficient processing suitable for large documentation projects and automated pipelines
+      - **Standards Compliant**: Supports CommonMark and GitHub Flavored Markdown specifications with extension support
     disabled: true
     disabled_reason: "Bug in remark-lint: https://github.com/remarkjs/remark-lint/issues/322"
     is_formatter: true
@@ -108,6 +129,19 @@ linters:
           url: https://github.com/drewbourne/vscode-remark-lint
   # Markdown Link Check
   - linter_name: markdown-link-check
+    linter_text: |
+      **markdown-link-check** is a specialized tool for validating link integrity in Markdown documentation that ensures all links remain functional and accessible. It serves as an essential quality assurance tool for maintaining reliable documentation with working references.
+
+      **Key Features:**
+      
+      - **Comprehensive Link Validation**: Tests HTTP/HTTPS links, relative file paths, anchor links, and email addresses
+      - **Dead Link Detection**: Identifies broken external links, missing internal files, and invalid anchor references
+      - **HTTP Status Checking**: Validates that external links return successful HTTP responses (200 status codes)
+      - **Configurable Timeouts**: Adjustable request timeouts and retry logic for reliable network-dependent testing
+      - **Pattern Matching**: Supports regex patterns for excluding specific links or domains from validation
+      - **Detailed Reporting**: Clear output showing which links passed, failed, or were skipped with specific error details
+      - **Bulk Processing**: Efficiently processes multiple Markdown files with consolidated reporting
+      - **Inline Control**: Comment-based directives for disabling checks on specific links when needed
     linter_url: https://github.com/tcort/markdown-link-check
     linter_repo: https://github.com/tcort/markdown-link-check
     linter_spdx_license: ISC
@@ -137,7 +171,17 @@ linters:
   - linter_name: markdown-table-formatter
     is_formatter: true
     linter_text: |
-      markdown-table-formatter detects wrongly formatted markdown tables and can automatically reformat them
+      **markdown-table-formatter** is a specialized formatting tool that detects and automatically corrects improperly formatted Markdown tables, ensuring consistent presentation and improved readability across documentation.
+
+      **Key Features:**
+      
+      - **Automatic Table Detection**: Identifies poorly formatted Markdown tables with misaligned columns and inconsistent spacing
+      - **Intelligent Alignment**: Automatically aligns table columns and adjusts padding for optimal readability
+      - **Consistent Formatting**: Standardizes table structure with uniform spacing, borders, and column alignment
+      - **Preserves Content**: Maintains all table data while improving presentation and formatting
+      - **Batch Processing**: Efficiently formats multiple tables within single or multiple Markdown files
+      - **Non-Destructive**: Only modifies table formatting without affecting other Markdown content
+      - **Standards Compliance**: Ensures tables follow Markdown table formatting best practices and conventions
     linter_url: https://www.npmjs.com/package/markdown-table-formatter
     linter_repo: https://github.com/nvuillam/markdown-table-formatter
     linter_spdx_license: MIT
