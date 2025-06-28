@@ -14,7 +14,7 @@ linters:
     linter_text: |
       **Hadolint** is a smarter Dockerfile linter that helps you build best practice Docker images. The linter parses the Dockerfile into an AST and performs rules on top of the AST. It stands on the shoulders of **ShellCheck** to lint the Bash code inside `RUN` instructions.
 
-      **Key features:**
+      **Key Features:**
 
       - **AST-based Analysis**: Parses Dockerfile into Abstract Syntax Tree for comprehensive analysis
       - **ShellCheck Integration**: Automatically lints Bash/shell code within RUN instructions using ShellCheck
@@ -35,7 +35,7 @@ linters:
       - **Shell Safety**: Proper quoting, pipefail options, variable handling
 
       **Advanced features:**
-      
+
       - Inline and global ignore pragmas for rule exceptions
       - Custom severity levels (error, warning, info, style)
       - Integration with major CI/CD platforms and editors

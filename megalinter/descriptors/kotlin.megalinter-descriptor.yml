@@ -16,7 +16,21 @@ linters:
   # KTLINT
   - linter_name: ktlint
     linter_text: |
-      **ktlint** is an anti-bikeshedding Kotlin linter with a built-in formatter inspired by JavaScript Standard and Go's gofmt. It enforces **consistent code style** with **zero configuration required** by default, following Kotlin's official coding conventions. Features include **automatic code formatting**, **`.editorconfig` support**, **multiple output formats** (plain, JSON, HTML, checkstyle), and **extensibility** with custom rule sets. The tool provides both command-line interface and IDE integrations, making it essential for maintaining clean, readable Kotlin code across teams and projects.
+      **ktlint** is an anti-bikeshedding Kotlin linter with a built-in formatter inspired by JavaScript Standard and Go's gofmt. It enforces consistent code style with zero configuration required by default, following Kotlin's official coding conventions.
+
+      **Key Features:**
+      - **Zero configuration** required by default, following Kotlin's official coding conventions
+      - **Automatic code formatting** with built-in formatter capabilities
+      - **Anti-bikeshedding approach** eliminating debates about code style
+      - **`.editorconfig` support** for project-specific formatting rules
+      - **Multiple output formats** including plain, JSON, HTML, and checkstyle
+      - **Extensibility** with custom rule sets for specialized requirements
+      - **Command-line interface** and IDE integrations for seamless workflow
+      - **SARIF output support** for security and code quality reporting
+      - **Error suppression** with inline comments for specific cases
+      - **Gradle and Maven integration** for build-time validation
+      - **Git pre-commit hook** support for automated quality gates
+      - **Continuous Integration** friendly with proper exit codes
     can_output_sarif: true
     linter_url: https://ktlint.github.io
     linter_repo: https://github.com/pinterest/ktlint
@@ -55,7 +69,21 @@ linters:
   - class: DetektLinter
     linter_name: detekt
     linter_text: |
-      **detekt** is a comprehensive static code analysis tool for Kotlin that helps developers write cleaner, safer code. It performs **code smell analysis** with **highly configurable rule sets** covering complexity, style, performance, naming conventions, and potential bugs. Features include **baseline generation** for legacy projects, **custom rule support**, **multiple report formats** (HTML, Markdown, SARIF, XML), **complexity metrics**, and **seamless Gradle/Maven integration**. With **300+ built-in rules** across categories like coroutines, exceptions, and documentation, detekt is essential for maintaining high code quality in Kotlin projects.
+      **detekt** is a comprehensive static code analysis tool for Kotlin that helps developers write cleaner, safer code. It performs code smell analysis with highly configurable rule sets covering complexity, style, performance, naming conventions, and potential bugs.
+
+      **Key Features:**
+      - **300+ built-in rules** across categories like coroutines, exceptions, and documentation
+      - **Code smell analysis** with highly configurable rule sets
+      - **Complexity metrics** measuring cyclomatic and cognitive complexity
+      - **Baseline generation** for legacy projects to track only new issues
+      - **Custom rule support** for project-specific analysis requirements
+      - **Multiple report formats** including HTML, Markdown, SARIF, and XML
+      - **Gradle/Maven integration** for seamless build process integration
+      - **Performance analysis** detecting inefficient code patterns
+      - **Naming convention validation** ensuring consistent code style
+      - **Coroutines analysis** for modern Kotlin async programming patterns
+      - **Documentation enforcement** ensuring proper code documentation
+      - **SARIF output support** for security and quality reporting tools
     can_output_sarif: true
     linter_url: https://detekt.dev/
     linter_repo: https://github.com/detekt/detekt

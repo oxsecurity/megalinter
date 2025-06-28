@@ -12,7 +12,19 @@ linters:
   - class: RakuLinter
     linter_name: raku
     linter_text: |
-      **Raku** compiler provides built-in syntax checking capabilities through the `-c` flag (compile check) that validates Raku code without executing it. It performs comprehensive syntax validation, type checking, and semantic analysis to ensure code correctness. The compiler detects syntax errors, undefined variables, type mismatches, and other compilation issues while providing detailed error messages with line numbers and context. This built-in linting functionality is part of the Rakudo compiler and ensures code follows Raku language specifications before execution.
+      **Raku** compiler provides comprehensive built-in syntax checking and validation through its compile-check mode (`-c` flag). It performs thorough code analysis without execution, ensuring Raku programs are syntactically correct and semantically valid.
+
+      **Key Features:**
+      
+      - **Built-in Compiler Validation**: Native syntax checking integrated directly into the Rakudo compiler
+      - **Comprehensive Analysis**: Validates syntax, semantics, type consistency, and language specification compliance
+      - **Type System Integration**: Leverages Raku's gradual type system for enhanced error detection
+      - **Detailed Error Reporting**: Provides comprehensive error messages with line numbers, context, and suggestions
+      - **Module Resolution**: Checks module imports, dependencies, and library path resolution
+      - **Pragma Support**: Validates pragma usage and ensures correct language feature configuration
+      - **Multi-File Analysis**: Can analyze entire project structures with proper library path inclusion
+      - **Zero Execution**: Validates code without running it, making it safe for untrusted or incomplete code
+      - **IDE Integration**: Powers language server features for real-time development feedback
     linter_url: https://raku.org/
     linter_repo: https://github.com/rakudo/rakudo
     linter_spdx_license: Artistic-2.0

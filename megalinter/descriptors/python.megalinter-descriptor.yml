@@ -37,7 +37,7 @@ linters:
       - **Security**: Basic security anti-patterns and vulnerable code constructs
 
       **Additional tools included:**
-      
+
       - **Pyreverse**: Generates UML package and class diagrams
       - **Symilar**: Duplicate code detection integrated into pylint
 
@@ -171,7 +171,19 @@ linters:
   # FLAKE8
   - linter_name: flake8
     linter_text: |
-      **Flake8** is a popular Python tool that glues together pycodestyle (formerly pep8), pyflakes, and mccabe to check the style and quality of Python code. It's a wrapper around these tools that provides a unified interface for checking Python code against coding standards. Flake8 helps ensure code follows PEP 8 style guidelines, catches potential errors, and identifies code complexity issues, making it an essential tool for maintaining clean, readable Python codebases.
+      **Flake8** is a comprehensive Python code quality checker that combines three powerful tools—pycodestyle, pyflakes, and mccabe—into a unified linting solution. It serves as the go-to tool for enforcing Python coding standards and catching potential issues.
+
+      **Key Features:**
+      
+      - **Multi-Tool Integration**: Combines pycodestyle (PEP 8 compliance), pyflakes (logical errors), and mccabe (complexity analysis)
+      - **PEP 8 Enforcement**: Comprehensive style checking against Python's official style guide
+      - **Error Detection**: Identifies undefined names, unused imports, syntax errors, and logical inconsistencies
+      - **Complexity Analysis**: Measures cyclomatic complexity to identify overly complex functions and methods
+      - **Highly Configurable**: Extensive configuration options for customizing rules, ignoring specific errors, and setting complexity thresholds
+      - **Plugin Ecosystem**: Rich ecosystem of plugins for additional checks (security, documentation, imports, etc.)
+      - **Fast Performance**: Efficient scanning with parallel processing capabilities for large codebases
+      - **CI/CD Integration**: Seamless integration with development workflows and automated testing pipelines
+      - **Inline Suppression**: Granular control with per-line and per-file error suppression options
     name: PYTHON_FLAKE8
     linter_url: https://flake8.pycqa.org
     linter_repo: https://github.com/PyCQA/flake8
@@ -205,7 +217,19 @@ linters:
   # ISORT
   - linter_name: isort
     linter_text: |
-      **isort** is a Python utility and library that automatically sorts and organizes Python imports alphabetically and separates them into sections and by type. It helps maintain clean, consistent import organization across Python projects by automatically grouping standard library imports, third-party imports, and local imports. isort is highly configurable and can be integrated with other tools like Black for comprehensive Python code formatting.
+      **isort** is the definitive Python import sorting tool that automatically organizes and standardizes import statements according to configurable rules. It serves as an essential companion to code formatters for maintaining clean, professional Python codebases.
+
+      **Key Features:**
+      
+      - **Intelligent Import Grouping**: Automatically separates standard library, third-party, and local imports into distinct sections
+      - **Alphabetical Sorting**: Sorts imports within each group alphabetically for consistent ordering
+      - **Multiple Profiles**: Built-in profiles for popular formatters (Black, Django, Google, etc.) ensuring seamless integration
+      - **Highly Configurable**: Extensive configuration options for custom sorting rules, line lengths, and import styles
+      - **Multi-line Import Handling**: Smart formatting of long import statements with various wrapping styles
+      - **Namespace Package Support**: Proper handling of namespace packages and relative imports
+      - **Performance Optimized**: Fast processing suitable for large codebases and real-time editor integration
+      - **Format Compatibility**: Perfect integration with Black, autopep8, and other Python formatting tools
+      - **Diff Mode**: Check-only mode for validation without modification, ideal for CI/CD pipelines
     name: PYTHON_ISORT
     is_formatter: true
     linter_url: https://pycqa.github.io/isort/
@@ -339,9 +363,21 @@ linters:
   - linter_name: mypy
     name: PYTHON_MYPY
     linter_text: |
-      Optional static typing checks for python
+      **MyPy** is Python's premier static type checker that brings optional static typing to Python through gradual typing. It analyzes type annotations and infers types to catch bugs before runtime, bridging the gap between Python's dynamic nature and static analysis benefits.
 
-      If you don't use python static typing, you should disable this linter by adding `PYTHON_MYPY` in `DISABLE_LINTERS` variable in your `.mega-linter.yml` config file
+      **Key Features:**
+      
+      - **Gradual Typing Support**: Add type checking incrementally to existing codebases without requiring full annotation coverage
+      - **Type Inference**: Advanced type inference engine that understands Python idioms and can deduce types even without explicit annotations
+      - **Protocol Support**: Duck typing through protocols, enabling structural subtyping for flexible type checking
+      - **Generic Types**: Full support for generic types, type variables, and complex type relationships
+      - **Plugin Architecture**: Extensible with plugins for popular frameworks like Django, SQLAlchemy, and dataclasses
+      - **IDE Integration**: Excellent editor support with real-time type checking and error highlighting
+      - **Incremental Checking**: Fast incremental analysis that only re-checks modified files and their dependencies
+      - **Strict Mode Options**: Configurable strictness levels from permissive to extremely strict type checking
+      - **Python Version Compatibility**: Supports multiple Python versions and can check compatibility across versions
+
+      **Note**: If you don't use Python static typing, disable this linter by adding `PYTHON_MYPY` to `DISABLE_LINTERS` in your `.mega-linter.yml` config file.
     linter_url: https://mypy.readthedocs.io/en/stable/
     linter_repo: https://github.com/python/mypy
     linter_spdx_license: MIT
@@ -421,9 +457,21 @@ linters:
     linter_name: pyright
     name: PYTHON_PYRIGHT
     linter_text: |
-      Optional static typing checks for python, by Microsoft
+      **Pyright** is Microsoft's high-performance static type checker for Python that provides fast, accurate type analysis with excellent integration into modern development workflows. It serves as a powerful alternative to MyPy with focus on speed and developer experience.
 
-      If you don't use python static typing, you should disable this linter by adding `PYTHON_PYRIGHT` in `DISABLE_LINTERS` variable in your `.mega-linter.yml` config file
+      **Key Features:**
+      
+      - **High Performance**: Lightning-fast type checking with incremental analysis and efficient caching
+      - **Advanced Type Features**: Full support for generics, protocols, type unions, literal types, and advanced Python typing features
+      - **Language Server Protocol**: Native LSP support providing excellent IDE integration with real-time error checking
+      - **Configuration Flexibility**: Comprehensive configuration options through pyrightconfig.json for fine-tuned type checking
+      - **Multi-Python Support**: Can analyze code for different Python versions and check version compatibility
+      - **Import Resolution**: Sophisticated import resolution handling complex package structures and namespace packages
+      - **Type Inference**: Advanced type inference engine that minimizes the need for explicit type annotations
+      - **Strict Mode Support**: Configurable strictness levels from basic checking to comprehensive type safety enforcement
+      - **Cross-Platform**: Consistent behavior across Windows, macOS, and Linux development environments
+
+      **Note**: If you don't use Python static typing, disable this linter by adding `PYTHON_PYRIGHT` to `DISABLE_LINTERS` in your `.mega-linter.yml` config file.
     linter_url: https://github.com/Microsoft/pyright
     linter_rules_url: https://github.com/microsoft/pyright#type-checking-features
     linter_repo: https://github.com/microsoft/pyright
@@ -468,7 +516,17 @@ linters:
     name: PYTHON_RUFF
     can_output_sarif: true
     linter_text: |
-      An extremely fast Python linter, written in Rust.
+      **Ruff** is an extremely fast Python linter and code formatter written in Rust that aims to be 10-100x faster than existing tools while providing comprehensive functionality behind a single interface.
+
+      **Key Features:**
+
+      - **Lightning Performance**: 10-100x faster than Flake8, Black, and other traditional Python tools, with built-in caching for unchanged files
+      - **800+ Built-in Rules**: Comprehensive rule set with native re-implementations of popular Flake8 plugins like flake8-bugbear, bandit, and more
+      - **Drop-in Compatibility**: Parity with Flake8, isort, and Black - can replace multiple tools with a single fast solution
+      - **Auto-fixing**: Automatic error correction for many violations (unused imports, formatting issues, etc.)
+      - **Modern Python Support**: Full Python 3.13 compatibility with pyproject.toml configuration support
+      - **Editor Integration**: First-party integrations for VS Code and other major editors with real-time feedback
+      - **Monorepo-Friendly**: Hierarchical and cascading configuration for complex project structures
     linter_url: https://github.com/astral-sh/ruff
     linter_repo: https://github.com/astral-sh/ruff
     linter_spdx_license: MIT
@@ -522,7 +580,16 @@ linters:
         expected_value: ruff
         default_value: black
     linter_text: |
-      An extremely fast Python linter, written in Rust. Configured for formatting only.
+      **Ruff Formatter** is the formatting component of Ruff, an extremely fast Python code formatter written in Rust. Designed as a drop-in replacement for Black, it provides consistent Python code formatting at unprecedented speed.
+
+      **Key Features:**
+
+      - **Black Compatibility**: Drop-in replacement for Black with 99.9% compatibility and identical formatting output
+      - **Extreme Performance**: 10-100x faster than Black, making it practical for real-time formatting in large codebases
+      - **Modern Python Support**: Full Python 3.13 compatibility with support for all modern Python syntax features
+      - **Editor Integration**: Seamless integration with VS Code, PyCharm, and other editors for format-on-save functionality
+      - **Zero Configuration**: Works out of the box with sensible defaults, or customize via pyproject.toml
+      - **Incremental Formatting**: Built-in caching avoids re-formatting unchanged files for maximum efficiency
     linter_url: https://github.com/astral-sh/ruff
     linter_repo: https://github.com/astral-sh/ruff
     linter_spdx_license: MIT

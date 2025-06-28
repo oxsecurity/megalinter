@@ -23,6 +23,21 @@ linters:
     linter_rules_configuration_url: https://github.com/terraform-linters/tflint/blob/master/docs/user-guide/config.md
     linter_rules_inline_disable_url: https://github.com/terraform-linters/tflint/blob/master/docs/user-guide/annotations.md
     linter_text: |
+      **TFLint** is a pluggable Terraform linter that provides deep inspection of Terraform configurations with a focus on catching errors that terraform plan might miss. It offers extensive static analysis capabilities including provider-specific checks, deprecated syntax detection, and infrastructure best practices validation.
+
+      **Key Features:**
+      
+      - **Deep Terraform Analysis**: Goes beyond basic syntax checking to validate Terraform semantics and logic
+      - **Provider-Specific Rules**: Specialized rule sets for AWS, Azure, GCP, and other cloud providers
+      - **Plugin Architecture**: Extensible with community and custom plugins for specific use cases
+      - **Performance Optimized**: Fast analysis suitable for large Terraform codebases and CI/CD pipelines
+      - **Configuration Flexibility**: Highly configurable with .tflint.hcl files for project-specific requirements
+      - **Error Prevention**: Catches common issues before terraform plan/apply execution
+      - **Module Support**: Analyzes Terraform modules and their usage patterns
+      - **IDE Integration**: Works with editors and IDEs for real-time feedback during development
+      - **CI/CD Ready**: Easy integration with automated workflows and pre-commit hooks
+      - **Detailed Reporting**: Clear error messages with file locations and remediation suggestions
+
       > If you are using the GitHub action please use the `TERRAFORM_TFLINT_UNSECURED_ENV_VARIABLES: GITHUB_TOKEN` to prevent plugin download issues
 
       > If you have issues with tflint --init, create a GitHub Personal Access Token and set its value to PAT_GITHUB_COM variable.
@@ -64,7 +79,20 @@ linters:
   - class: TerrascanLinter
     linter_name: terrascan
     linter_text: |
-      **Terrascan** is a comprehensive static code analyzer for Infrastructure as Code that detects security vulnerabilities, compliance violations, and misconfigurations in cloud infrastructure. It supports multiple IaC tools including Terraform, Kubernetes, Docker, AWS CloudFormation, and more. Terrascan provides over 1000 built-in policies across major cloud providers and compliance frameworks like CIS, NIST, and PCI.
+      **Terrascan** is a comprehensive static code analyzer for Infrastructure as Code that detects security vulnerabilities, compliance violations, and misconfigurations in cloud infrastructure. It supports multiple IaC tools including Terraform, Kubernetes, Docker, AWS CloudFormation, and more, providing over 1000 built-in policies across major cloud providers and compliance frameworks.
+
+      **Key Features:**
+      
+      - **Multi-IaC Support**: Analyzes Terraform, Kubernetes, Docker, CloudFormation, ARM templates, and more
+      - **1000+ Security Policies**: Extensive library of pre-built security and compliance policies
+      - **Compliance Frameworks**: Built-in support for CIS, NIST, PCI, SOC 2, and other compliance standards
+      - **Cloud Provider Coverage**: Comprehensive rules for AWS, Azure, GCP, and Kubernetes environments
+      - **Custom Policy Engine**: Create custom policies using Rego (Open Policy Agent) for organization-specific requirements
+      - **SARIF Output**: Modern security report format for integration with development platforms and security tools
+      - **CI/CD Integration**: Seamless integration with continuous integration pipelines and GitOps workflows
+      - **Admission Controller**: Kubernetes admission controller to prevent policy violations at deployment time
+      - **Detailed Reporting**: Comprehensive vulnerability reports with severity levels and remediation guidance
+      - **Policy as Code**: Version-controlled security policies that evolve with your infrastructure
     can_output_sarif: true
     linter_spdx_license: Apache-2.0
     name: TERRAFORM_TERRASCAN
@@ -106,7 +134,20 @@ linters:
   # TERRAGRUNT
   - linter_name: terragrunt
     linter_text: |
-      **Terragrunt** is a thin wrapper for Terraform that provides tools for keeping your Terraform configurations DRY, working with multiple Terraform modules, and managing remote state. It helps validate Terragrunt configurations and ensures that your infrastructure code follows best practices for modularity, reusability, and maintainability. Terragrunt can catch configuration errors and enforce consistent patterns across your Terraform projects.
+      **Terragrunt** is a thin wrapper for Terraform that provides tools for keeping your Terraform configurations DRY, working with multiple Terraform modules, and managing remote state. It helps validate Terragrunt configurations and ensures that your infrastructure code follows best practices for modularity, reusability, and maintainability.
+
+      **Key Features:**
+      
+      - **DRY Terraform Code**: Eliminates repetition by allowing shared configurations across multiple environments
+      - **Remote State Management**: Simplifies backend configuration and remote state management across projects
+      - **Module Composition**: Orchestrates multiple Terraform modules with dependency management
+      - **Configuration Validation**: Validates Terragrunt HCL configurations for syntax and semantic errors
+      - **Environment Management**: Provides patterns for managing infrastructure across multiple environments
+      - **Lock File Support**: Handles Terraform provider lock files consistently across environments
+      - **Dependency Graph**: Automatically manages dependencies between Terraform modules and configurations
+      - **Parallel Execution**: Runs Terraform operations in parallel where dependencies allow
+      - **Error Handling**: Enhanced error handling and debugging capabilities for complex infrastructure deployments
+      - **Integration Ready**: Works seamlessly with existing Terraform workflows and CI/CD pipelines
     name: TERRAFORM_TERRAGRUNT
     linter_spdx_license: MIT
     file_extensions:
@@ -143,7 +184,20 @@ linters:
   # TERRAFORM_FMT
   - linter_name: terraform-fmt
     linter_text: |
-      **terraform fmt** is the built-in Terraform command for automatically formatting Terraform configuration files to ensure consistent style and formatting. It rewrites Terraform configuration files to a canonical format and style, making code more readable and maintainable. This formatter is the standard tool for Terraform code formatting and follows HashiCorp's official style conventions.
+      **terraform fmt** is the built-in Terraform command for automatically formatting Terraform configuration files to ensure consistent style and formatting. It rewrites Terraform configuration files to a canonical format and style, making code more readable and maintainable, following HashiCorp's official style conventions.
+
+      **Key Features:**
+      
+      - **Official Formatter**: Built into Terraform core, ensuring compatibility and consistency with HashiCorp standards
+      - **Canonical Formatting**: Applies consistent indentation, spacing, and line breaks across all Terraform files
+      - **Automatic Fixing**: Rewrites files in-place to fix formatting issues automatically
+      - **Diff Mode**: Shows formatting differences without modifying files for review purposes
+      - **Recursive Processing**: Can format entire directory trees and module structures
+      - **Check Mode**: Validates formatting without making changes, perfect for CI/CD validation
+      - **HCL Syntax Support**: Handles all HashiCorp Configuration Language constructs correctly
+      - **Fast Performance**: Optimized for quick formatting of large Terraform codebases
+      - **Zero Configuration**: Works out of the box with no setup or configuration required
+      - **Team Consistency**: Ensures uniform code style across development teams and projects
     name: TERRAFORM_TERRAFORM_FMT
     is_formatter: true
     linter_spdx_license: BUSL-1.1

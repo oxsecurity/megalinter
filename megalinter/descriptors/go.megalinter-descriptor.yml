@@ -45,7 +45,7 @@ linters:
       - **gosec**: Security-focused static analysis
 
       **Advanced capabilities:**
-      
+
       - **Smart Caching**: Dramatically speeds up repeated runs by caching results
       - **Incremental Analysis**: Can analyze only changed files for faster CI/CD integration
       - **Custom Rules**: Support for custom linters and configuration
@@ -104,7 +104,19 @@ linters:
   - class: ReviveLinter
     linter_name: revive
     linter_text: |
-      **Revive** is a fast, configurable, extensible, flexible, and beautiful linter for Go. It's designed as a drop-in replacement for golint with significant improvements in performance and functionality. Revive provides a comprehensive set of rules for identifying code quality issues, style violations, and potential bugs in Go code while being highly customizable to fit different coding standards and project requirements.
+      **Revive** is a fast, configurable, and extensible linter for Go that serves as a modern replacement for the deprecated golint tool. It provides comprehensive code quality analysis with superior performance and flexibility, making it an essential tool for maintaining high-quality Go codebases.
+
+      **Key Features:**
+      
+      - **High Performance**: Significantly faster than golint with efficient parallel processing and optimized analysis algorithms
+      - **Drop-in Replacement**: Seamless migration from golint with improved functionality and additional rule coverage
+      - **Extensive Rule Set**: Comprehensive collection of rules covering style, complexity, naming conventions, and potential bugs
+      - **Highly Configurable**: Flexible TOML-based configuration system allowing fine-tuned rule customization and project-specific settings
+      - **SARIF Output**: Modern reporting format support for integration with security tools and development platforms
+      - **Inline Rule Control**: Comment-based directives for disabling specific rules on particular lines or sections
+      - **Beautiful Output**: Clean, readable error messages with helpful suggestions and context
+      - **Extensible Architecture**: Plugin system for custom rules and project-specific requirements
+      - **IDE Integration**: Native support for major editors and development environments
     test_folder: golang_revive
     can_output_sarif: true
     linter_spdx_license: MIT

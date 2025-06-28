@@ -28,9 +28,18 @@ linters:
     linter_name: bash-exec
     linter_url: https://www.gnu.org/software/bash/
     linter_text: |
-      Checks if shell files are executable
+      **bash-exec** is a simple but essential linter that verifies shell scripts have proper executable permissions, preventing deployment issues where scripts fail to run due to missing execute permissions.
 
-      Note: You can run `git add --chmod=+x myfile.sh` to make a file executable on Windows
+      **Key Features:**
+      
+      - **Permission Validation**: Checks if shell script files have executable permissions set correctly
+      - **Cross-Platform Support**: Works across different operating systems with appropriate permission handling
+      - **Early Detection**: Catches permission issues before deployment or CI/CD pipeline execution
+      - **Zero Configuration**: Requires no setup or configuration files - works out of the box
+      - **Integration Ready**: Seamlessly integrates with development workflows and automated testing
+      - **Quick Feedback**: Provides immediate feedback about file permission status
+      
+      **Note**: You can run `git add --chmod=+x myfile.sh` to make a file executable on Windows
     linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/bash-exec.png
     linter_megalinter_ref_url: never
     linter_rules_configuration_url: https://www.gnu.org/software/bash/manual/bash.html
@@ -58,7 +67,19 @@ linters:
   - class: ShellcheckLinter
     linter_name: shellcheck
     linter_text: |
-      **ShellCheck** is a static analysis tool for shell scripts that helps identify and fix common errors, bugs, and anti-patterns in bash/sh scripts. It provides warnings and suggestions for issues like syntax errors, portability problems, security vulnerabilities, and style inconsistencies. ShellCheck can catch subtle bugs that might cause scripts to fail unexpectedly, making it an essential tool for writing robust and reliable shell scripts.
+      **ShellCheck** is a comprehensive static analysis tool for shell scripts that identifies bugs, security issues, and stylistic problems before they cause runtime failures. It serves as the gold standard for shell script quality assurance and reliability.
+
+      **Key Features:**
+      
+      - **Advanced Bug Detection**: Catches common shell scripting mistakes like unquoted variables, incorrect conditionals, and path expansion issues
+      - **Security Analysis**: Identifies potential security vulnerabilities including command injection risks and unsafe variable usage
+      - **Portability Checking**: Warns about bashisms and non-portable constructs to ensure scripts work across different shells (bash, dash, sh)
+      - **Syntax Validation**: Comprehensive parsing that catches syntax errors and malformed constructs
+      - **Best Practices Enforcement**: Promotes modern shell scripting practices and warns against deprecated or dangerous patterns
+      - **Detailed Explanations**: Each warning includes links to explanations with examples and recommended fixes
+      - **Multi-Shell Support**: Analyzes bash, sh, dash, and ksh scripts with shell-specific checking
+      - **CI/CD Integration**: SARIF output support for seamless integration with modern development platforms
+      - **Extensive Rule Coverage**: Over 100 different checks covering everything from quoting to array usage
     name: BASH_SHELLCHECK
     can_output_sarif: true
     descriptor_flavors:
@@ -120,7 +141,19 @@ linters:
   # SHFMT
   - linter_name: shfmt
     linter_text: |
-      **shfmt** is a shell script formatter that parses and reformats shell scripts to ensure consistent styling and formatting. It supports multiple shell dialects (bash, POSIX sh, mksh) and can automatically fix indentation, spacing, and other formatting issues. As both a linter and formatter, shfmt helps maintain clean, readable shell scripts by enforcing consistent code style across projects and teams.
+      **shfmt** is a powerful shell script formatter and parser that automatically standardizes shell script formatting to ensure consistent style across projects. It serves as both a formatter and validator for shell scripting best practices.
+
+      **Key Features:**
+      
+      - **Multi-Shell Support**: Handles bash, POSIX sh, mksh, and bats scripts with shell-specific formatting rules
+      - **Intelligent Formatting**: Smart indentation, spacing, and alignment that respects shell syntax and semantics
+      - **Customizable Styles**: Configurable indentation size, binary operator positioning, and case statement formatting
+      - **Parse Validation**: Built-in parser that catches syntax errors while formatting
+      - **Diff-Friendly Output**: Generates minimal, clean diffs that focus on meaningful changes
+      - **Language Constructs**: Proper handling of functions, conditionals, loops, arrays, and complex expansions
+      - **Editor Integration**: Works seamlessly with major editors and IDEs for real-time formatting
+      - **CI/CD Ready**: Perfect for automated code formatting and style enforcement in pipelines
+      - **Zero Dependencies**: Single binary with no external dependencies for easy deployment
     is_formatter: true
     linter_url: https://github.com/mvdan/sh
     linter_repo: https://github.com/mvdan/sh

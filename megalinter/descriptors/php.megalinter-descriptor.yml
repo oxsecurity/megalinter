@@ -168,7 +168,19 @@ linters:
   # PHPLint
   - linter_name: phplint
     linter_text: |
-      **PHPLint** is a tool for fast syntax checking of PHP files. It validates PHP syntax quickly and efficiently, helping catch basic PHP syntax errors, parse errors, and other fundamental issues without executing the code. This lightweight tool is particularly useful for quickly validating large codebases and catching basic PHP syntax issues in CI/CD pipelines.
+      **PHPLint** is a high-performance syntax validation tool for PHP that provides rapid syntax checking without code execution. It serves as an essential first line of defense for catching PHP syntax errors and parse issues.
+
+      **Key Features:**
+      
+      - **Fast Syntax Validation**: Lightning-fast PHP syntax checking without executing code for safe validation
+      - **Parallel Processing**: Multi-threaded scanning that efficiently handles large codebases
+      - **Comprehensive Error Detection**: Catches syntax errors, parse errors, and fundamental PHP language issues
+      - **Multiple PHP Versions**: Supports validation against different PHP versions to ensure compatibility
+      - **Batch Processing**: Validates entire directories and project structures efficiently
+      - **CI/CD Optimization**: Specifically designed for integration into automated testing and deployment pipelines
+      - **SARIF Support**: Modern report formats for seamless integration with development tools and platforms
+      - **Memory Efficient**: Minimal memory footprint for scanning large PHP projects
+      - **Configurable Scanning**: Flexible file inclusion/exclusion patterns and custom validation rules
     can_output_sarif: true
     linter_url: https://github.com/overtrue/phplint
     linter_repo: https://github.com/overtrue/phplint
@@ -198,7 +210,19 @@ linters:
   - linter_name: php-cs-fixer
     name: PHP_PHPCSFIXER
     linter_text: |
-      PHP-CS-Fixer is able to fix rule violations detected, and even those marked as (risky)
+      **PHP-CS-Fixer** is a comprehensive tool that automatically fixes PHP code to follow coding standards and style guidelines. It can repair code style violations and even risky issues, making it an essential formatter for maintaining consistent PHP codebases.
+
+      **Key Features:**
+      
+      - **Automatic Code Fixing**: Repairs coding standard violations and formatting issues automatically
+      - **Extensive Rule Set**: 200+ built-in rules covering PSR-1, PSR-2, PSR-12, Symfony, and custom standards
+      - **Risky Fixes Support**: Can apply potentially risky fixes that modify code behavior when enabled
+      - **Highly Configurable**: Flexible configuration through PHP configuration files with rule customization
+      - **Multiple Standards**: Supports PSR standards, Symfony coding standards, and custom rule sets
+      - **Dry-Run Mode**: Preview changes without modifying files to review proposed fixes
+      - **Incremental Fixing**: Can target specific directories, files, or rule sets for focused improvements
+      - **CI/CD Integration**: Designed for continuous integration workflows with detailed reporting
+      - **Performance Optimized**: Fast execution with caching capabilities for large codebases
 
       - Enable **autofixes** by adding `PHP_PHPCSFIXER` in [APPLY_FIXES variable](https://megalinter.io/beta/configuration/#apply-fixes)
       - Add "--allow-risky=yes" option in PHP_PHPCSFIXER_ARGUMENTS variable

@@ -9,7 +9,19 @@ linters:
   # CHECKOV
   - linter_name: checkov
     linter_text: |
-      **Checkov** is a static code analysis tool for Infrastructure as Code (IaC) that scans cloud infrastructure configurations to detect security and compliance misconfigurations. It supports Terraform, CloudFormation, Kubernetes, Helm, ARM templates, and more. Checkov helps prevent cloud security issues by identifying over 1000 built-in policies for misconfigurations such as unencrypted storage, overly permissive security groups, missing logging, and compliance violations across major cloud providers (AWS, Azure, GCP).
+      **Checkov** is a comprehensive static code analysis tool for Infrastructure as Code (IaC) that prevents cloud security misconfigurations before they reach production. It serves as an essential security scanning tool for modern cloud-native development workflows.
+
+      **Key Features:**
+      
+      - **Multi-Platform IaC Support**: Analyzes Terraform, CloudFormation, Kubernetes, Helm, ARM templates, Docker, Serverless, and more
+      - **Extensive Policy Library**: Over 1,000 built-in security and compliance policies covering CIS benchmarks, PCI-DSS, HIPAA, and other standards
+      - **Cloud Provider Coverage**: Comprehensive rules for AWS, Azure, GCP, Oracle Cloud, and Alibaba Cloud services
+      - **Security Focus**: Detects unencrypted storage, overly permissive security groups, missing logging, exposed secrets, and compliance violations
+      - **SARIF Output**: Modern security report format for integration with development platforms and security tools
+      - **Custom Policies**: Support for custom security policies written in Python or YAML for organization-specific requirements
+      - **CI/CD Integration**: Seamless integration with popular CI/CD platforms for shift-left security practices
+      - **Policy Suppression**: Granular control over policy enforcement with inline and configuration-based suppression
+      - **Graph-Based Analysis**: Advanced analysis using dependency graphs for complex infrastructure relationships
     name: REPOSITORY_CHECKOV
     can_output_sarif: true
     descriptor_flavors:
@@ -63,6 +75,20 @@ linters:
       - security
     ignore_for_flavor_suggestions: true
     linter_text: |
+      **DevSkim** is a security analysis tool that provides inline security guidance for developers by detecting security vulnerabilities and anti-patterns in source code. It serves as a real-time security companion that helps prevent security issues from entering the codebase.
+
+      **Key Features:**
+      
+      - **Multi-Language Support**: Analyzes code in dozens of programming languages including C#, Java, JavaScript, Python, C/C++, and more
+      - **Real-Time Analysis**: Provides instant feedback with security guidance as developers write code
+      - **Comprehensive Rule Set**: Over 500 built-in security rules covering common vulnerabilities like injection flaws, cryptographic issues, and authentication problems
+      - **SARIF Output**: Modern security report format for integration with development platforms and security tools
+      - **IDE Integration**: Native support for Visual Studio Code and other editors with inline security suggestions
+      - **Custom Rules**: Extensible rule engine allowing organizations to create custom security policies
+      - **Quick Fixes**: Automated remediation suggestions for many detected security issues
+      - **Severity Classification**: Categorizes findings by severity level to help prioritize security fixes
+      - **False Positive Management**: Configurable suppression system to reduce noise and focus on critical issues
+
       If you need to ignore folders,files or file extensions, use glob expressions `Glob` property of local `.devskim.json` file
 
       Example:
@@ -121,7 +147,20 @@ linters:
   - class: DustilockLinter
     linter_name: dustilock
     linter_text: |
-      **Dustilock** is a tool that analyzes your dependencies for known security vulnerabilities and checks if there are newer, safer versions available. It scans various dependency files (package.json, requirements.txt, etc.) and provides alerts about vulnerable packages in your project, helping you maintain secure dependencies by identifying outdated packages with known CVEs.
+      **Dustilock** is a dependency vulnerability scanner that analyzes your dependencies for known security vulnerabilities and checks if there are newer, safer versions available. It scans various dependency files (package.json, requirements.txt, etc.) and provides alerts about vulnerable packages in your project, helping you maintain secure dependencies by identifying outdated packages with known CVEs.
+
+      **Key Features:**
+      
+      - **Multi-Package Manager Support**: Analyzes dependencies from npm, pip, composer, Maven, Gradle, and other popular package managers
+      - **Lock File Analysis**: Deep inspection of lock files to identify exact vulnerable versions and transitive dependencies
+      - **Real-Time Vulnerability Database**: Uses up-to-date vulnerability databases to detect the latest security issues
+      - **Supply Chain Security**: Identifies compromised or malicious packages in the dependency tree
+      - **SARIF Output**: Modern security report format for integration with development platforms and security tools
+      - **CI/CD Integration**: Seamless integration with continuous integration pipelines for automated security scanning
+      - **Detailed Reporting**: Comprehensive reports with vulnerability details, severity scores, and remediation guidance
+      - **Version Upgrade Suggestions**: Recommends safer, newer versions to resolve vulnerabilities
+      - **Transitive Dependency Analysis**: Scans both direct and indirect dependencies for comprehensive coverage
+      - **Policy Enforcement**: Configurable security policies to block builds with critical vulnerabilities
     can_output_sarif: true
     descriptor_flavors:
       - all
@@ -158,7 +197,16 @@ linters:
   - linter_name: git_diff
     lint_all_files: true
     test_folder: git_diff
-    linter_text: Git diff checks for git conflicts markers in files
+    linter_text: |
+      **git diff** is a conflict detection checker that scans files for Git conflict markers and other merge-related issues that may have been inadvertently left in the codebase after resolving merge conflicts.
+
+      **Key Features:**
+      
+      - **Conflict Marker Detection**: Identifies Git conflict markers (`<<<<<<<`, `=======`, `>>>>>>>`) that weren't properly resolved
+      - **Merge Safety**: Prevents accidentally committing unresolved merge conflicts to version control
+      - **Repository Hygiene**: Helps maintain clean codebases by catching leftover merge artifacts
+      - **CI/CD Integration**: Essential for automated workflows to ensure code quality before deployment
+      - **Fast Scanning**: Efficiently processes files to detect problematic patterns without performance overhead
     linter_url: https://git-scm.com
     linter_repo: https://github.com/git/git
     linter_speed: 5
@@ -192,6 +240,20 @@ linters:
     linter_rules_inline_disable_url: https://github.com/gitleaks/gitleaks#gitleaksallow
     linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/gitleaks.png
     linter_text: |
+      **gitleaks** is a SAST tool for detecting and preventing secrets like passwords, API keys, and tokens in git repos. It scans the entire history of a git repository, not just the current state, making it effective at finding secrets that may have been accidentally committed.
+
+      **Key Features:**
+      - **Full git history scanning** including all branches and commits
+      - **High accuracy detection** with minimal false positives
+      - **Custom rule support** for organization-specific secret patterns
+      - **Multiple output formats** including JSON, CSV, and SARIF
+      - **Pre-commit hook integration** to prevent secrets from being committed
+      - **Baseline support** to ignore existing secrets while catching new ones
+      - **Configuration flexibility** via `.gitleaks.toml` files
+      - **CI/CD integration** with proper exit codes for automation
+      - **Redaction support** to safely share scan results
+      - **Entropy detection** for finding high-entropy strings that may be secrets
+
       ## Scan only Pull Request commits
 
       `VALIDATE_ALL_CODEBASE: false` doesn't make gitleaks analyze only updated files. To analyze only commits on Pull Request, set `VALIDATE_ALL_CODEBASE: false` together with `REPOSITORY_GITLEAKS_PR_COMMITS_SCAN: true` (you have to specify it explicitly), but only works for selected platforms: GitHub Actions, Azure Pipelines, GitLab Pipelines\* (Merge Requests and External Pull Requests)
@@ -466,10 +528,20 @@ linters:
     linter_repo: https://github.com/returntocorp/semgrep
     linter_speed: 1
     linter_text: |
+      **Semgrep** is a fast, AI-powered static analysis tool that finds bugs, detects security vulnerabilities, and enforces code standards across 30+ programming languages and frameworks. Unlike traditional SAST tools, Semgrep provides high-confidence findings with minimal false positives.
+
+      **Key Features:**
+
+      - **Multi-Language Support**: Comprehensive analysis for 30+ languages including Python, JavaScript, Java, Go, C/C++, and more
+      - **High-Precision Analysis**: AI-powered noise filtering reduces false positives by up to 98% compared to traditional SAST tools
+      - **Security-Focused**: Built-in rulesets for OWASP Top 10, CWE vulnerabilities, and framework-specific security patterns
+      - **Custom Rule Engine**: Simple, code-like syntax for writing custom rules that match your organization's coding standards
+      - **Lightning Fast**: Median CI scan time of 10 seconds, designed for developer workflow integration
+      - **Extensive Rule Registry**: Thousands of community and expert-maintained rules covering security, correctness, and performance
+      - **CI/CD Integration**: Seamless integration with GitHub, GitLab, and other platforms with PR comment support
+
       To use SemGrep in MegaLinter you must define a list of rulesets to use.
-
       Example: `REPOSITORY_SEMGREP_RULESETS: ["p/docker-compose","p/owasp-top-ten"]`
-
       Exception for standalone and security flavors docker images, that use a list of security rulesets by default.
     linter_rules_url: https://semgrep.dev/r
     linter_rules_configuration_url: https://semgrep.dev/docs/running-rules/
@@ -531,7 +603,19 @@ linters:
     linter_url: https://github.com/anchore/syft
     linter_repo: https://github.com/anchore/syft
     linter_text: |
-      Builds a SBOM (Software Build Of Materials) from your repository
+      **Syft** is a comprehensive Software Bill of Materials (SBOM) generation tool that creates detailed inventories of software components and dependencies in your projects. It serves as an essential tool for software supply chain security and compliance management.
+
+      **Key Features:**
+      
+      - **Multi-Format SBOM Generation**: Creates SBOMs in SPDX, CycloneDX, and Syft native formats for maximum compatibility
+      - **Extensive Ecosystem Support**: Analyzes container images, filesystems, archives, and source code across multiple programming languages
+      - **Language Coverage**: Supports packages from npm, pip, gems, Java/Maven/Gradle, Go modules, .NET, and many more
+      - **Container Analysis**: Deep inspection of container images including OS packages and application dependencies
+      - **Fast Scanning**: High-performance analysis suitable for CI/CD pipelines and large codebases
+      - **Flexible Output**: Multiple output formats including JSON, XML, and human-readable tables
+      - **Supply Chain Visibility**: Provides complete transparency into software components and their origins
+      - **Compliance Ready**: Supports regulatory requirements and industry standards for software transparency
+      - **Integration Friendly**: Seamlessly integrates with vulnerability scanners and security tools for comprehensive analysis
     linter_banner_image_url: https://user-images.githubusercontent.com/5199289/136844524-1527b09f-c5cb-4aa9-be54-5aa92a6086c1.png
     cli_lint_mode: project
     config_file_name: .syft.yaml
@@ -564,7 +648,21 @@ linters:
       - cupcake
       - security
     linter_text: |
-      You can ignore a list of errors by defining a [.trivyignore file](https://aquasecurity.github.io/trivy/latest/docs/configuration/filtering/#by-finding-ids)
+      **Trivy** is a comprehensive security scanner that detects vulnerabilities, misconfigurations, secrets, and license issues in container images, filesystems, and git repositories. It serves as an all-in-one security solution for modern development workflows.
+
+      **Key Features:**
+      
+      - **Multi-Target Scanning**: Analyzes container images, filesystem directories, git repositories, Kubernetes clusters, and cloud infrastructure
+      - **Vulnerability Detection**: Comprehensive CVE database covering OS packages, language-specific libraries, and application dependencies
+      - **Misconfiguration Scanning**: Built-in policies for Infrastructure as Code including Terraform, CloudFormation, Kubernetes, and Docker
+      - **Secret Detection**: Identifies hardcoded secrets, API keys, passwords, and sensitive information in source code
+      - **License Scanning**: Analyzes software licenses to ensure compliance with organizational policies
+      - **SARIF Output**: Modern security report format for integration with development platforms and security tools
+      - **High Performance**: Fast scanning optimized for CI/CD pipelines with efficient caching mechanisms
+      - **Offline Support**: Can operate in air-gapped environments with offline vulnerability databases
+      - **Extensive Integration**: Works with major CI/CD platforms, container registries, and security orchestration tools
+
+      **Note**: You can ignore specific findings by defining a [.trivyignore file](https://aquasecurity.github.io/trivy/latest/docs/configuration/filtering/#by-finding-ids) at your repository root.
     linter_url: https://aquasecurity.github.io/trivy/
     linter_repo: https://github.com/aquasecurity/trivy
     linter_speed: 2
@@ -617,7 +715,19 @@ linters:
       - cupcake
       - security
     linter_text: |
-      Generates SBOM (Software Bill Of Material) using Trivy
+      **Trivy SBOM** is a specialized component of Trivy that generates comprehensive Software Bill of Materials (SBOM) documents for enhanced supply chain security and compliance. It provides detailed inventory management for software components and dependencies.
+
+      **Key Features:**
+      
+      - **Comprehensive Component Discovery**: Automatically detects and catalogs all software components, libraries, and dependencies in projects
+      - **Multi-Format SBOM Output**: Generates SBOMs in industry-standard formats including SPDX and CycloneDX for maximum compatibility
+      - **Container and Filesystem Analysis**: Creates SBOMs for container images, filesystems, and source code repositories
+      - **Dependency Mapping**: Provides complete dependency graphs showing relationships between components
+      - **License Information**: Includes license details for each component to support compliance and legal reviews
+      - **Vulnerability Context**: Links SBOM data with security information for comprehensive risk assessment
+      - **CI/CD Integration**: Seamlessly integrates into development pipelines for automated SBOM generation
+      - **Supply Chain Transparency**: Enables organizations to meet regulatory requirements and industry standards
+      - **Audit Trail**: Creates detailed records of software composition for security auditing and compliance reporting
     linter_url: https://aquasecurity.github.io/trivy/
     linter_repo: https://github.com/aquasecurity/trivy
     linter_speed: 2

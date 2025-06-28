@@ -10,15 +10,17 @@ linters:
   # DJLINT
   - linter_name: djlint
     linter_text: |
-      DjLint can analyse multiple formats of HTML:
+      **djLint** is a comprehensive linter and formatter for HTML templates that supports multiple template languages. Originally created for use in the Atlas projects, it helps you find common syntax errors and reformat your HTML templates to make them shine.
 
-      - html (default)
-      - django
-      - jinja
-      - nunjucks (for nunjucks and twig)
-      - handlebars (for handlebars and mustache)
-      - golang
-      - angular
+      **Key Features:**
+
+      - **Multi-Language Support**: Supports Django, Jinja, Nunjucks, Twig, Handlebars, Mustache, Golang templates, and Angular
+      - **Comprehensive Rule Set**: 60+ built-in rules covering HTML standards, accessibility, security, and template-specific best practices
+      - **Language-Specific Rules**: Specialized rules for Django (D-codes), Jinja (J-codes), HTML (H-codes), and general templates (T-codes)
+      - **Auto-Formatting**: Automatically formats and beautifies HTML templates with consistent indentation and structure
+      - **Configurable Profiles**: Pre-configured profiles for different template languages with appropriate rule sets
+      - **Custom Rules**: Support for custom pattern-based and Python module rules for project-specific requirements
+      - **Flexible Configuration**: Enable/disable rules via command line, configuration files, or inline comments
 
       For example, define `HTML_DJLINT_ARGUMENTS: ["--profile", "django"]` to select django format
     linter_url: https://djlint.com/
@@ -51,7 +53,21 @@ linters:
   # HTML HINT
   - linter_name: htmlhint
     linter_text: |
-      **HTMLHint** is a static code analysis tool for HTML that helps developers write better HTML code by detecting errors, enforcing best practices, and ensuring compliance with HTML standards. It provides a comprehensive set of rules to catch common HTML issues such as unclosed tags, invalid attributes, accessibility problems, and performance concerns. HTMLHint is designed to be fast, configurable, and easy to integrate into development workflows.
+      **HTMLHint** is a static code analysis tool for HTML that helps developers write better HTML code by detecting errors, enforcing best practices, and ensuring compliance with HTML standards. It provides fast, configurable HTML validation with comprehensive rule coverage.
+
+      **Key Features:**
+      - **Comprehensive rule set** covering common HTML issues and best practices
+      - **Unclosed tag detection** preventing malformed HTML structure
+      - **Invalid attribute validation** ensuring proper HTML5 compliance
+      - **Accessibility checking** helping meet WCAG and accessibility standards
+      - **Performance optimization** detecting performance-impacting HTML patterns
+      - **Configurable rules** via `.htmlhintrc` for project-specific requirements
+      - **Fast processing** optimized for large HTML files and projects
+      - **Multiple output formats** including JSON and XML for tool integration
+      - **Inline rule configuration** for granular control over validation
+      - **Template support** working with various HTML template engines
+      - **CI/CD integration** with proper exit codes and reporting
+      - **Editor integrations** supporting major development environments
     linter_url: https://htmlhint.com/
     linter_repo: https://github.com/htmlhint/HTMLHint
     linter_spdx_license: MIT

@@ -15,7 +15,21 @@ linters:
   # npm-groovy-lint
   - linter_name: npm-groovy-lint
     linter_text: |
-      **npm-groovy-lint** is a comprehensive linter, formatter, and auto-fixer for Groovy files, Jenkinsfiles, and Gradle scripts. Built on **CodeNarc**, it provides extensive code quality analysis with **60+ auto-fixable rules** covering formatting, style, and best practices. Features include **automatic code formatting**, **intelligent auto-fixing**, **SARIF report generation**, and **flexible configuration** with preset configs for different use cases (recommended, Jenkinsfile-specific, all rules). Supports **inline rule disabling**, **CI/CD integration**, and works seamlessly with Jenkins pipelines, making it essential for maintaining high-quality Groovy codebases.
+      **npm-groovy-lint** is a comprehensive linter, formatter, and auto-fixer for Groovy files, Jenkinsfiles, and Gradle scripts. Built on CodeNarc, it provides extensive code quality analysis with intelligent auto-fixing capabilities for maintaining high-quality Groovy codebases.
+
+      **Key Features:**
+      - **60+ auto-fixable rules** covering formatting, style, and best practices validation
+      - **Built on CodeNarc** leveraging the proven Groovy static analysis framework
+      - **Automatic code formatting** with intelligent indentation and style correction
+      - **SARIF report generation** for integration with security and quality tools
+      - **Flexible configuration** with preset configs for different use cases
+      - **Jenkinsfile-specific rules** optimized for Jenkins pipeline development
+      - **Inline rule disabling** using comments for granular control
+      - **CI/CD integration** with proper exit codes and reporting formats
+      - **Gradle script support** for build file quality analysis
+      - **VS Code extension** for real-time linting and fixing
+      - **Multi-file processing** for batch operations on large codebases
+      - **Java 17 compatibility** ensuring modern runtime support
     can_output_sarif: true
     linter_url: https://nvuillam.github.io/npm-groovy-lint/
     linter_repo: https://github.com/nvuillam/npm-groovy-lint

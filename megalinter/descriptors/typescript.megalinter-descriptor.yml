@@ -22,9 +22,18 @@ linters:
     can_output_sarif: true
     linter_spdx_license: MIT
     linter_text: |
-      eslint requires a custom configuration file applicable to your project.
+      **TypeScript ESLint** enables ESLint to run on TypeScript code, bringing together the best of both tools to help you write high-quality TypeScript applications.
 
-      You can create it by typing `npx eslint --init` in the root of your repository
+      **Key Features:**
+
+      - **TypeScript Parser**: Allows ESLint to parse TypeScript syntax natively, understanding decorators, interfaces, enums, and modern TypeScript features
+      - **Type-Aware Linting**: Leverages TypeScript's type information for advanced static analysis that can catch type-related errors and enforce type safety
+      - **100+ TypeScript-Specific Rules**: Comprehensive rule set covering TypeScript best practices, type definitions, naming conventions, and code quality
+      - **Seamless Integration**: Drop-in replacement for standard ESLint with TypeScript projects, maintaining all existing ESLint functionality
+      - **Multiple Configuration Presets**: Recommended, strict, and stylistic configurations for different project requirements
+      - **Performance Optimized**: Efficient parsing and linting designed for large TypeScript codebases with minimal performance impact
+
+      ESLint requires a custom configuration file applicable to your project. You can create it by typing `npx eslint --init` in the root of your repository
     linter_url: https://typescript-eslint.io/
     linter_repo: https://github.com/typescript-eslint/typescript-eslint
     linter_rules_url: https://typescript-eslint.io/rules/
@@ -152,7 +161,19 @@ linters:
   - class: TypeScriptStandardLinter
     linter_name: ts-standard
     linter_text: |
-      **TypeScript Standard Style** is a TypeScript style guide, linter, and automatic code fixer that extends JavaScript Standard Style for TypeScript. It provides zero-configuration TypeScript linting with a predefined set of rules that promote readability and consistency. ts-standard enforces the same styling rules as JavaScript Standard but with TypeScript-specific adaptations and type checking support.
+      **TypeScript Standard Style** is the TypeScript edition of the popular JavaScript Standard Style that brings zero-configuration linting and formatting to TypeScript projects. It extends the proven JavaScript Standard rules with TypeScript-specific enhancements and type-aware analysis.
+
+      **Key Features:**
+      
+      - **Zero Configuration**: No setup files or configuration required - install and run immediately
+      - **TypeScript-Aware**: Built-in understanding of TypeScript syntax, types, interfaces, and modern features
+      - **Automatic Fixing**: Built-in `--fix` option automatically corrects most style violations and type issues
+      - **Standard Rules**: Maintains the same proven style rules as JavaScript Standard (2-space indent, single quotes, no semicolons)
+      - **Type Safety**: Enforces TypeScript best practices and type safety patterns
+      - **Fast Performance**: Quick analysis suitable for real-time editor integration and large TypeScript codebases
+      - **Wide Adoption**: Used by TypeScript projects that prefer the Standard style approach over ESLint configurations
+      - **Editor Integration**: Seamless integration with VS Code, WebStorm, and other TypeScript development environments
+      - **Consistent Output**: Deterministic formatting across different development environments and team members
     name: TYPESCRIPT_STANDARD
     linter_spdx_license: MIT
     activation_rules:
@@ -193,7 +214,19 @@ linters:
   # PRETTIER
   - linter_name: prettier
     linter_text: |
-      **Prettier** is an opinionated code formatter that supports many languages including TypeScript. It removes all original styling and ensures that all outputted code conforms to a consistent style by parsing your code and re-printing it according to its own rules. For TypeScript files, Prettier enforces consistent code style while preserving TypeScript-specific syntax and type annotations, making code more readable and maintainable.
+      **Prettier** is the industry-leading opinionated code formatter with first-class TypeScript support that automatically formats TypeScript code to ensure consistency and readability. It handles TypeScript's complex syntax including generics, decorators, and type annotations with intelligent formatting rules.
+
+      **Key Features:**
+      
+      - **TypeScript-Native**: Deep understanding of TypeScript syntax, types, interfaces, generics, and decorators
+      - **Type Annotation Preservation**: Carefully formats complex type definitions while maintaining readability
+      - **Opinionated Formatting**: Zero-configuration approach with sensible defaults optimized for TypeScript development
+      - **Parse Safety**: AST-based processing ensures formatted code maintains semantic equivalence to the original
+      - **Modern TypeScript Support**: Full compatibility with latest TypeScript features and syntax
+      - **Editor Integration**: Seamless integration with VS Code TypeScript support and other TypeScript-enabled editors
+      - **Consistent Output**: Deterministic formatting produces identical results across different development environments
+      - **Fast Performance**: High-speed formatting suitable for large TypeScript codebases and real-time integration
+      - **Team Standardization**: Eliminates formatting debates and ensures uniform TypeScript code style across teams
     is_formatter: true
     linter_spdx_license: MIT
     activation_rules:

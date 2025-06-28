@@ -27,8 +27,8 @@ linters:
     linter_text: |
       **ARM TTK (Azure Resource Manager Template Toolkit)** is the official Microsoft toolkit for analyzing and testing Azure Resource Manager Templates. It validates ARM templates for coding best practices and ensures they follow recommended guidelines.
 
-      **Key features:**
-      
+      **Key Features:**
+
       - **Best Practice Validation**: Checks templates against Microsoft's recommended ARM template coding standards
       - **Security Analysis**: Validates security practices such as preventing secrets from being output in plain text
       - **Intent Validation**: Identifies unused parameters, variables, and resources to ensure clean template code

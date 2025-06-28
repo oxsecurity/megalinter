@@ -17,7 +17,20 @@ linters:
     linter_name: dotnet-format
     is_formatter: true
     linter_text: |
-      dotnet-format requires a `.sln` or `.csproj` file to run correctly.
+      **dotnet format** is the official .NET code formatter that automatically applies consistent code styling and formatting rules to C# and VB.NET projects. It integrates directly with the .NET SDK and uses EditorConfig settings and analyzer rules to ensure uniform code appearance.
+
+      **Key Features:**
+      
+      - **Official .NET Tool**: Native integration with .NET SDK and MSBuild for seamless project integration
+      - **EditorConfig Support**: Respects .editorconfig files for consistent formatting across teams and editors
+      - **Analyzer Integration**: Works with .NET analyzers and code style rules for comprehensive formatting
+      - **Solution/Project Scope**: Can format entire solutions, specific projects, or individual files with precise control
+      - **Incremental Formatting**: Only formats changed files or specific file patterns to optimize performance
+      - **Multiple Rule Categories**: Handles whitespace, style preferences, and third-party analyzer rules
+      - **CI/CD Verification**: Verify mode ensures code is properly formatted without making changes
+      - **IDE Integration**: Works seamlessly with Visual Studio, VS Code, and other .NET-compatible editors
+
+      **Note**: dotnet-format requires a `.sln` or `.csproj` file to run correctly.
     linter_url: https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format
     linter_repo: https://github.com/dotnet/sdk
     linter_spdx_license: MIT
@@ -48,7 +61,19 @@ linters:
   # CSharpier
   - linter_name: csharpier
     linter_text: |
-      **CSharpier** is an opinionated code formatter for C# that takes the decision-making out of formatting. It reformats C# code to ensure consistent style across your codebase by automatically handling indentation, spacing, line breaks, and other formatting concerns. CSharpier aims to be the "Prettier for C#" by providing a zero-configuration formatting experience that eliminates debates about code style within development teams.
+      **CSharpier** is the definitive opinionated code formatter for C# that eliminates formatting debates by automatically standardizing code style across entire projects. Inspired by Prettier's philosophy, it provides zero-configuration formatting that just works.
+
+      **Key Features:**
+      
+      - **Zero Configuration**: Works out of the box with sensible defaults, no setup required
+      - **Opinionated Formatting**: Consistent, predictable formatting that eliminates style discussions
+      - **Comprehensive C# Support**: Handles all modern C# language features, syntax, and constructs
+      - **Fast Performance**: Lightning-fast formatting with minimal overhead for large codebases
+      - **Editor Integration**: Seamless integration with VS Code, Visual Studio, and other popular C# development environments
+      - **CI/CD Ready**: Perfect for automated formatting validation and enforcement in build pipelines
+      - **Ignore Support**: Flexible ignore patterns for excluding specific files or code sections from formatting
+      - **Diff-Friendly**: Produces minimal, clean git diffs by maintaining consistent formatting rules
+      - **Team Consistency**: Ensures identical formatting across all team members and development environments
     is_formatter: true
     linter_url: https://csharpier.com/
     linter_repo: https://github.com/belav/csharpier

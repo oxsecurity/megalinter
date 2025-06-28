@@ -18,7 +18,19 @@ linters:
   # PERL CRITIC
   - linter_name: perlcritic
     linter_text: |
-      **perlcritic** is an extensible framework for creating and applying coding standards to Perl source code, functioning as a static source code analysis engine. It detects various issues such as usage of undefined global variables, unused variables and values, accessing uninitialized variables, unreachable code and more. Most Policy modules are based on Damian Conway's "Perl Best Practices" book, with configurable severity levels (1-5), theme-based policy selection, and support for inline annotations to selectively disable checks. The tool provides comprehensive analysis with over 100 built-in policies covering areas like bugs, security, maintainability, complexity, and code style.
+      **perlcritic** is a comprehensive static source code analysis engine for Perl that enforces coding standards and best practices. Based primarily on Damian Conway's "Perl Best Practices" book, it serves as an extensible framework for creating and applying consistent coding standards across Perl projects.
+
+      **Key Features:**
+      
+      - **Extensive Policy Library**: Over 100 built-in policies covering bugs, security, maintainability, complexity, and code style
+      - **Configurable Severity Levels**: Five severity levels (1-5) allowing fine-tuned control over policy enforcement
+      - **Best Practices Foundation**: Policies based on "Perl Best Practices" and community-established coding standards
+      - **Theme-Based Organization**: Policies grouped by themes like bugs, security, performance, and maintainability
+      - **Inline Annotations**: Selective policy disabling through source code comments and annotations
+      - **Extensible Framework**: Support for custom policies and organizational coding standards
+      - **Detailed Reporting**: Comprehensive violation reports with explanations and suggested fixes
+      - **IDE Integration**: Works with various editors and development environments for real-time feedback
+      - **Flexible Configuration**: Project-specific configuration files for team-wide standards enforcement
     linter_url: https://metacpan.org/pod/Perl::Critic
     linter_repo: https://github.com/Perl-Critic/Perl-Critic
     linter_spdx_license: Artistic-1.0-Perl OR GPL-1.0-or-later

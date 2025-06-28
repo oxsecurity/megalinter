@@ -19,8 +19,8 @@ linters:
     linter_text: |
       **Spectral** is a flexible JSON/YAML linter for creating automated style guides, with built-in support for **OpenAPI** (v3.1, v3.0, and v2.0), **Arazzo** v1.0, and **AsyncAPI** v2.x specifications.
 
-      **Key features:**
-      
+      **Key Features:**
+
       - **Custom Rulesets**: Create custom rules to lint JSON or YAML objects
       - **Ready-to-use Rulesets**: Validate and lint OpenAPI, AsyncAPI, and Arazzo documents out of the box
       - **API Style Guides**: Automated API style guides using rulesets improve consistency across all your APIs

@@ -16,7 +16,21 @@ linters:
   # LUACHECK
   - linter_name: luacheck
     linter_text: |
-      **luacheck** is a static analyzer and linter for Lua code that detects various issues such as usage of undefined global variables, unused variables and values, accessing uninitialized variables, unreachable code and more. It supports checking Lua files using syntax of Lua 5.1-5.4 and LuaJIT, with configurable options for defining custom project-related globals, selecting standard library versions, and filtering warnings by type and variable name. The tool provides comprehensive code quality analysis with support for inline configuration comments, project-wide config files, and integration with various editors and CI systems.
+      **luacheck** is a static analyzer and linter for Lua code that detects various issues such as usage of undefined global variables, unused variables and values, accessing uninitialized variables, and unreachable code. It provides comprehensive code quality analysis for Lua projects.
+
+      **Key Features:**
+      - **Multi-version Lua support** for Lua 5.1-5.4 and LuaJIT syntax checking
+      - **Undefined global variable detection** to catch common runtime errors
+      - **Unused variable and value analysis** to improve code cleanliness
+      - **Uninitialized variable access detection** for safer code
+      - **Unreachable code identification** to optimize program flow
+      - **Custom project globals** configuration for specific environments
+      - **Standard library version selection** matching your Lua version
+      - **Warning filtering** by type and variable name patterns
+      - **Inline configuration comments** for granular control
+      - **Project-wide config files** using `.luacheckrc`
+      - **Editor and CI integration** support for automated workflows
+      - **Detailed error reporting** with line numbers and suggestions
     linter_url: https://luacheck.readthedocs.io
     linter_repo: https://github.com/lunarmodules/luacheck
     linter_spdx_license: MIT
@@ -65,7 +79,21 @@ linters:
   # SELENE
   - linter_name: selene
     linter_text: |
-      **Selene** is a blazing-fast modern Lua linter written in Rust that provides comprehensive static analysis for Lua code. It offers extensive configurability and can be tailored to specific Lua environments like Roblox, World of Warcraft addons, or standard Lua. Selene helps catch common errors, enforces coding standards, and provides suggestions for improving code quality and performance.
+      **Selene** is a blazing-fast modern Lua linter written in Rust that provides comprehensive static analysis for Lua code. It offers extensive configurability and can be tailored to specific Lua environments like Roblox, World of Warcraft addons, or standard Lua.
+
+      **Key Features:**
+      - **Rust-powered performance** for extremely fast static analysis
+      - **Environment-specific configurations** for Roblox, WoW addons, and standard Lua
+      - **Comprehensive lint rules** covering code quality, style, and correctness
+      - **Custom rule creation** for project-specific requirements
+      - **TOML configuration files** for easy project setup and sharing
+      - **Detailed error messages** with context and suggestions for fixes
+      - **Multiple output formats** including JSON for tool integration
+      - **Incremental analysis** for fast checking of large codebases
+      - **Standard library definitions** for accurate global variable validation
+      - **Inline rule filtering** using comments to disable specific checks
+      - **Performance suggestions** to optimize Lua code execution
+      - **CI/CD integration** with proper exit codes and reporting
     linter_url: https://kampfkarren.github.io/selene/
     linter_repo: https://github.com/Kampfkarren/selene
     linter_rules_url: https://kampfkarren.github.io/selene/lints/index.html
@@ -101,7 +129,21 @@ linters:
   # STYLUA
   - linter_name: stylua
     linter_text: |
-      **StyLua** is an opinionated code formatter for Lua that automatically formats Lua code to enforce consistent style. It removes the need for debates about formatting by providing sensible defaults while still allowing some configuration. StyLua helps maintain clean, readable Lua code by handling indentation, spacing, line breaks, and other formatting concerns automatically.
+      **StyLua** is an opinionated code formatter for Lua that automatically formats Lua code to enforce consistent style. It removes the need for debates about formatting by providing sensible defaults while still allowing some configuration.
+
+      **Key Features:**
+      - **Opinionated formatting** with sensible defaults for consistent Lua code style
+      - **Automatic indentation** and spacing management
+      - **Line break optimization** for improved code readability
+      - **Configurable options** via `stylua.toml` for project-specific needs
+      - **Lua 5.1-5.4 support** covering all modern Lua versions
+      - **LuaJIT compatibility** for Just-In-Time compiled Lua code
+      - **Roblox Luau support** with specialized formatting rules
+      - **Fast performance** for formatting large codebases quickly
+      - **Editor integration** with VS Code, Neovim, and other popular editors
+      - **CI/CD integration** with check mode for automated validation
+      - **Ignore comments** to exclude specific code sections from formatting
+      - **Range formatting** to format only selected portions of files
     linter_url: https://github.com/JohnnyMorganz/StyLua
     linter_repo: https://github.com/JohnnyMorganz/StyLua
     linter_rules_url: https://roblox.github.io/lua-style-guide/

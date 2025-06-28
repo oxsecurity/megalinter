@@ -6,7 +6,21 @@ linters:
   # PuppetLint
   - linter_name: puppet-lint
     linter_text: |
-      **puppet-lint** tests Puppet code against the recommended Puppet language style guide to ensure consistent code style and best practices. It validates various aspects including spacing, indentation, whitespace, quoting, capitalization, resource formatting, conditionals, and class structure. The tool provides automatic fixing capabilities for many issues, supports selective check enabling/disabling, configuration files, and integrates with development workflows through Rake tasks, GitHub Actions, and IDE plugins. It validates only code style and does not check syntax (use `puppet parser validate` for syntax validation).
+      **puppet-lint** is the standard linting tool for Puppet code that enforces the recommended Puppet language style guide and ensures consistent code formatting across Puppet manifests. It focuses on style and formatting rather than syntax validation.
+
+      **Key Features:**
+      
+      - **Style Guide Compliance**: Enforces Puppet's official language style guide for consistent code appearance
+      - **Comprehensive Checks**: Validates spacing, indentation, whitespace, quoting, capitalization, and resource formatting
+      - **Automatic Fixing**: Built-in auto-fix capability for many common style violations
+      - **Selective Control**: Enable or disable specific checks based on project requirements
+      - **Configuration Files**: Project-specific configuration through `.puppet-lint.rc` files
+      - **CI/CD Integration**: Seamless integration with development workflows, Rake tasks, and GitHub Actions
+      - **IDE Support**: Plugin support for major editors and development environments
+      - **Resource Analysis**: Validates conditional statements, class structure, and resource declarations
+      - **Best Practices Enforcement**: Identifies and corrects common Puppet coding antipatterns
+      
+      **Note**: puppet-lint validates only code style. Use `puppet parser validate` for syntax validation.
     linter_url: https://github.com/puppetlabs/puppet-lint
     linter_repo: https://github.com/puppetlabs/puppet-lint
     linter_spdx_license: MIT

@@ -17,18 +17,19 @@ linters:
     linter_image_url: https://raw.githubusercontent.com/Azure/bicep/main/docs/images/BicepLogoImage.png
     linter_name: bicep_linter
     linter_text: |
-      **Bicep** is a Domain Specific Language (DSL) for deploying Azure resources declaratively. It aims to drastically simplify the authoring experience with a cleaner syntax, improved type safety, and better support for modularity and code re-use.
-      
-      Bicep is a transparent abstraction over ARM templates, which means anything that can be done in an ARM Template can be done in Bicep. It transpiles to standard ARM Template JSON files, treating ARM Template as an Intermediate Language (IL).
+      **Bicep** is a Domain Specific Language (DSL) for deploying Azure resources that provides a cleaner, more maintainable alternative to ARM templates. It serves as a transparent abstraction over ARM templates while offering significantly improved authoring experience and enhanced type safety.
 
-      **Key features:**
+      **Key Features:**
       
-      - **Day 0 resource provider support** - Any Azure resource can be provisioned using Bicep
-      - **Much simpler syntax** compared to equivalent ARM Template JSON
-      - **No state files to manage** - All state is stored in Azure
-      - **Advanced type validation** based on Azure resource type API definitions
-      - **Native modules** for code modularity and reuse
-      - **Built-in linting** with customizable rules via `bicepconfig.json`
+      - **Simplified Syntax**: Drastically cleaner and more readable syntax compared to equivalent ARM Template JSON
+      - **Day 0 Resource Support**: Any Azure resource can be provisioned using Bicep on the day it's available
+      - **Advanced Type Validation**: Built-in type checking based on Azure resource type API definitions
+      - **No State Management**: All deployment state is stored in Azure, eliminating external state file management
+      - **Native Modularity**: Built-in module system for code reuse and better organization
+      - **ARM Template Compatibility**: Transpiles to standard ARM Template JSON files, treating ARM as Intermediate Language
+      - **Built-in Linting**: Comprehensive linting with customizable rules via `bicepconfig.json`
+      - **IDE Support**: Rich development experience with IntelliSense, validation, and debugging capabilities
+      - **Zero-Downtime Deployment**: Supports incremental deployments and what-if operations for safe infrastructure changes
 
       By default, Bicep linter errors are set as warnings. To customize linter settings, use a `bicepconfig.json` file. For more information, see the [documentation for the Bicep Linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/bicep-config-linter#customize-linter)
     linter_repo: https://github.com/Azure/bicep

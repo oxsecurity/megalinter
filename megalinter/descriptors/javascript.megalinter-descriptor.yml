@@ -39,7 +39,7 @@ linters:
       - **Performance**: Identifies performance anti-patterns and optimizations
 
       **Popular configurations:**
-      
+
       - **Airbnb Style Guide**: Industry-standard JavaScript style guide
       - **Standard**: Minimal, opinionated code style with no configuration
       - **Prettier Integration**: Seamless integration with Prettier for code formatting
@@ -166,7 +166,19 @@ linters:
   - class: JavaScriptStandardLinter
     linter_name: standard
     linter_text: |
-      **JavaScript Standard Style** is a JavaScript style guide, linter, and automatic code fixer that aims to eliminate bike-shedding around code style. It provides a zero-configuration approach to JavaScript linting with a predefined set of rules that promote readability and consistency. Standard Style enforces 2-space indentation, single quotes, no semicolons, and many other conventions to keep JavaScript code clean and consistent across projects.
+      **JavaScript Standard Style** is a popular zero-configuration JavaScript linter and code formatter that eliminates endless debates about code style by providing a strict, opinionated set of rules. It serves as both a style guide and automated enforcement tool for clean, consistent JavaScript.
+
+      **Key Features:**
+      
+      - **Zero Configuration**: No configuration files, command-line flags, or setup required - just install and run
+      - **Automatic Fixing**: Built-in `--fix` option automatically corrects most style violations
+      - **Strict Style Rules**: Enforces 2-space indentation, single quotes, no semicolons, and other proven conventions
+      - **Wide Adoption**: Used by thousands of projects including npm, GitHub, Zeit, MongoDB, and Express
+      - **Comprehensive Coverage**: Catches stylistic errors, potential bugs, and dangerous patterns
+      - **Fast Performance**: Quick analysis suitable for real-time editor integration and large codebases
+      - **Editor Integration**: Seamless integration with VS Code, Atom, Sublime Text, and other popular editors
+      - **Plugin Ecosystem**: Extensions available for React, Flow, TypeScript, and other JavaScript variants
+      - **Clear Error Messages**: Helpful error descriptions with links to explanations and examples
     linter_spdx_license: MIT
     activation_rules:
       - type: variable
@@ -211,7 +223,19 @@ linters:
   # PRETTIER
   - linter_name: prettier
     linter_text: |
-      **Prettier** is an opinionated code formatter that supports many languages including JavaScript, TypeScript, CSS, HTML, JSON, and more. It removes all original styling and ensures that all outputted code conforms to a consistent style by parsing your code and re-printing it according to its own rules. Prettier enforces a consistent code style across your entire codebase by automatically formatting code, eliminating debates about formatting in code reviews.
+      **Prettier** is the industry-leading opinionated code formatter that brings consistency to JavaScript and many other languages by automatically reformatting code according to proven formatting principles. It eliminates formatting debates and ensures uniform code style across entire development teams.
+
+      **Key Features:**
+      
+      - **Multi-Language Support**: Formats JavaScript, TypeScript, CSS, HTML, JSON, Markdown, YAML, and 20+ other languages
+      - **Opinionated Formatting**: Zero-configuration approach with sensible defaults that work well for most projects
+      - **Parse Safety**: Ensures formatted code maintains semantic equivalence to the original through AST-based processing
+      - **Editor Integration**: Seamless integration with VS Code, WebStorm, and other popular development environments
+      - **Consistent Output**: Deterministic formatting produces identical results regardless of environment or developer
+      - **Team Standardization**: Eliminates style discussions and ensures consistent formatting across team members
+      - **Fast Performance**: High-speed formatting suitable for large codebases and real-time editor integration
+      - **Configuration Flexibility**: Supports project-specific settings through .prettierrc files when customization is needed
+      - **Git Integration**: Reduces merge conflicts by maintaining consistent formatting across branches
     is_formatter: true
     linter_spdx_license: MIT
     activation_rules:

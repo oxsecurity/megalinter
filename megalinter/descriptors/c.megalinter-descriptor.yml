@@ -15,7 +15,7 @@ linters:
     linter_text: |
       **Cppcheck** is a static analysis tool for C/C++ code that provides unique code analysis to detect bugs and focuses on detecting undefined behaviour and dangerous coding constructs. The goal is to have very few false positives.
 
-      **Key features:**
+      **Key Features:**
 
       - **Unique Analysis**: Uses unsound flow sensitive analysis with bi-directional data flow analysis
       - **Undefined Behavior Detection**: Detects dead pointers, division by zero, integer overflows, null pointer dereferences, out of bounds checking, uninitialized variables, and more
@@ -54,7 +54,7 @@ linters:
     linter_text: |
       **Cpplint** is a command-line tool to check C/C++ files for style issues according to **Google's C++ style guide**. Originally developed by Google, this community-maintained fork aims to update cpplint to modern specifications and be more open to fixes and features.
 
-      **Key features:**
+      **Key Features:**
 
       - **Google Style Guide Enforcement**: Checks code against Google's comprehensive C++ style guidelines
       - **Style Issue Detection**: Identifies formatting, naming, and structural style violations
@@ -65,7 +65,7 @@ linters:
       - **Pragma Once Support**: Recognizes `#pragma once` as an alternative to traditional header include guards
 
       **Common style checks include:**
-      
+
       - Include guard patterns and header organization
       - Naming conventions for classes, functions, and variables  
       - Whitespace and indentation formatting
@@ -94,7 +94,19 @@ linters:
   # clang-format
   - linter_name: clang-format
     linter_text: |
-      **clang-format** is a tool to automatically format C/C++/Objective-C code according to a set of rules and heuristics. It's part of the LLVM project and provides highly configurable formatting options to ensure consistent code style across projects. It can handle complex formatting scenarios including template instantiations, lambda expressions, and macro definitions while preserving the semantic meaning of the code.
+      **clang-format** is a comprehensive code formatter for C/C++/Objective-C code that automatically enforces consistent coding style according to configurable rules and heuristics. As part of the LLVM project, it provides industry-leading formatting capabilities for complex C++ codebases.
+
+      **Key Features:**
+      
+      - **Advanced C++ Support**: Handles modern C++ features including templates, lambda expressions, auto declarations, and range-based for loops
+      - **Highly Configurable**: Extensive style options covering indentation, spacing, alignment, line breaks, and brace placement
+      - **Predefined Styles**: Built-in support for popular style guides including LLVM, Google, Chromium, Mozilla, and WebKit
+      - **Semantic Preservation**: Maintains code functionality while reformatting, never changing the program's behavior
+      - **Complex Expression Handling**: Intelligent formatting of complex expressions, nested templates, and macro definitions
+      - **Editor Integration**: Seamless integration with major IDEs and editors through plugins and extensions
+      - **Custom Configuration**: Fine-grained control through `.clang-format` files with inheritance and directory-specific rules
+      - **Incremental Formatting**: Can format specific ranges or files without affecting the entire codebase
+      - **Cross-Platform Support**: Works consistently across different operating systems and development environments
     name: C_CLANG_FORMAT
     descriptor_flavors:
       - c_cpp

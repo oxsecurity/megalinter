@@ -16,7 +16,7 @@ linters:
     linter_text: |
       **CFN-Lint** (CloudFormation Linter) is the official AWS tool for validating AWS CloudFormation yaml/json templates against the AWS CloudFormation resource provider schemas and additional best practice checks.
 
-      **Key features:**
+      **Key Features:**
 
       - **AWS Schema Validation**: Validates templates against official AWS CloudFormation resource provider schemas
       - **Property Validation**: Checks valid values for resource properties and ensures correct data types
@@ -37,7 +37,7 @@ linters:
       - Cross-reference validation between resources
 
       **Advanced features:**
-      
+
       - Template metadata configuration for granular control
       - Graph visualization of template resources
       - Experimental rules for cutting-edge CloudFormation features
