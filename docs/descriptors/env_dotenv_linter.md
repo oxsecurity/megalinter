@@ -16,6 +16,7 @@ description: How to use dotenv-linter (configure, ignore files, ignore errors, h
 **dotenv-linter** is a lightning-fast linter for `.env` files written in Rust. It can check, fix, and compare environment files for problems that may cause applications to malfunction in production environments.
 
 **Key Features:**
+
 - **13 different checks** including duplicated keys, incorrect delimiters, unordered keys, and trailing whitespace
 - **Automatic fixing** of many common issues with the `fix` command
 - **File comparison** to identify missing keys between different `.env` files

@@ -10,6 +10,7 @@ description: How to use gherkin-lint (configure, ignore files, ignore errors, he
 **gherkin-lint** is a comprehensive linter for Gherkin feature files used in BDD (Behavior-Driven Development) testing with tools like Cucumber. It helps maintain consistent, readable, and error-free feature files in BDD test suites.
 
 **Key Features:**
+
 - **26+ configurable rules** covering style, structure, and format validation
 - **Duplicate scenario detection** to prevent naming conflicts
 - **Indentation validation** ensuring proper Gherkin file structure

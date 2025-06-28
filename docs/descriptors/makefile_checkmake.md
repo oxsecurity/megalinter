@@ -9,11 +9,12 @@ description: How to use checkmake (configure, ignore files, ignore errors, help 
 
 _This linter has been disabled in this version_
 
-_Disabled reason: Security issues: <https://github.com/checkmake/checkmake/issues/99>_
+_Disabled reason: Security issues: https://github.com/checkmake/checkmake/issues/99_
 
 **checkmake** is a linter for Makefiles that helps enforce best practices and identify common issues in Makefile syntax and structure. It helps prevent common Makefile pitfalls and makes build processes more reliable and maintainable.
 
 **Key Features:**
+
 - **Makefile rule validation** ensuring proper target and dependency syntax
 - **Proper indentation checking** verifying correct tab usage vs. spaces
 - **Variable usage verification** detecting undefined or misused variables

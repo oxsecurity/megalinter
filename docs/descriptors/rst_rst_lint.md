@@ -10,6 +10,7 @@ description: How to use rst-lint (configure, ignore files, ignore errors, help &
 **restructuredtext-lint** (rst-lint) is a reStructuredText linter that validates RST syntax and helps prevent frustrating errors when uploading documentation to PyPI. It checks for common reStructuredText issues and provides comprehensive validation for documentation workflows.
 
 **Key Features:**
+
 - **Malformed directive detection** catching invalid reStructuredText directives
 - **Invalid syntax validation** ensuring proper RST document structure
 - **Title underline problem detection** verifying consistent heading formatting

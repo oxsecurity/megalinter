@@ -16,6 +16,7 @@ description: How to use detekt (configure, ignore files, ignore errors, help & v
 **detekt** is a comprehensive static code analysis tool for Kotlin that helps developers write cleaner, safer code. It performs code smell analysis with highly configurable rule sets covering complexity, style, performance, naming conventions, and potential bugs.
 
 **Key Features:**
+
 - **300+ built-in rules** across categories like coroutines, exceptions, and documentation
 - **Code smell analysis** with highly configurable rule sets
 - **Complexity metrics** measuring cyclomatic and cognitive complexity

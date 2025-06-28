@@ -18,6 +18,7 @@ linters:
       **npm-groovy-lint** is a comprehensive linter, formatter, and auto-fixer for Groovy files, Jenkinsfiles, and Gradle scripts. Built on CodeNarc, it provides extensive code quality analysis with intelligent auto-fixing capabilities for maintaining high-quality Groovy codebases.
 
       **Key Features:**
+      
       - **60+ auto-fixable rules** covering formatting, style, and best practices validation
       - **Built on CodeNarc** leveraging the proven Groovy static analysis framework
       - **Automatic code formatting** with intelligent indentation and style correction

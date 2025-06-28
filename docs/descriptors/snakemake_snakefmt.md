@@ -10,6 +10,7 @@ description: How to use snakefmt (configure, ignore files, ignore errors, help &
 **snakefmt** is a formatter for Snakemake files that applies consistent styling and formatting to Snakefiles and .smk files. It standardizes indentation, spacing, line breaks, and overall code structure while preserving the semantic meaning of Snakemake workflows.
 
 **Key Features:**
+
 - **Consistent indentation** standardizing whitespace across Snakemake files
 - **Spacing normalization** ensuring uniform spacing around operators and keywords
 - **Line break optimization** improving code readability and structure
