@@ -106,14 +106,18 @@ def build_markdown_summary_sections(reporter_self, action_run_url=""):
         linter_status_icon = (
             "✅"
             if linter.status == "success" and linter.return_code == 0
-            else ("⚠️" if linter.status != "success" and linter.return_code == 0 else "❌")
+            else (
+                "⚠️" if linter.status != "success" and linter.return_code == 0 else "❌"
+            )
         )
-        
+
         # Return tuple for sorting: (icon_priority, linter_name)
         # icon_priority: 0 for ❌ (error - highest priority), 1 for ⚠️ (warning), 2 for ✅ (success)
-        icon_priority = 0 if linter_status_icon == "❌" else (1 if linter_status_icon == "⚠️" else 2)
+        icon_priority = (
+            0 if linter_status_icon == "❌" else (1 if linter_status_icon == "⚠️" else 2)
+        )
         return (icon_priority, linter.linter_name.lower())
-    
+
     linters_with_issues.sort(key=sort_linters_by_icon_severity)
 
     # Calculate available space per linter based on total linters with issues
