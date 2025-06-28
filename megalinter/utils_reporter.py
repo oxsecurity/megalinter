@@ -20,12 +20,12 @@ from pytablewriter.style import Style
 from redis import Redis
 
 
-def build_markdown_summary(reporter_self, action_run_url=""):
+def build_markdown_summary(reporter_self, action_run_url="", max_total_chars = 40000):
     markdown_summary_type = config.get(
         reporter_self.master.request_id, "REPORTERS_MARKDOWN_SUMMARY_TYPE", "table"
     )
     if markdown_summary_type == "sections":
-        return build_markdown_summary_sections(reporter_self, action_run_url)
+        return build_markdown_summary_sections(reporter_self, action_run_url, max_total_chars)
     else:
         return build_markdown_summary_table(reporter_self, action_run_url)
 
@@ -79,7 +79,7 @@ def build_markdown_summary_table(reporter_self, action_run_url=""):
     return p_r_msg
 
 
-def build_markdown_summary_sections(reporter_self, action_run_url=""):
+def build_markdown_summary_sections(reporter_self, action_run_url="", max_total_chars = 40000):
     """Build markdown summary using HTML sections with summary/details tags for each linter"""
 
     # Build complete message using helper functions
@@ -121,7 +121,6 @@ def build_markdown_summary_sections(reporter_self, action_run_url=""):
     linters_with_issues.sort(key=sort_linters_by_icon_severity)
 
     # Calculate available space per linter based on total linters with issues
-    max_total_chars = 40000
     total_linters_with_issues = len(linters_with_issues)
     max_chars_per_linter = max_total_chars // max(total_linters_with_issues, 1)
 

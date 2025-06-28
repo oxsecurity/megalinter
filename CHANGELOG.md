@@ -23,7 +23,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Reporters
   - New default display for Pull Request comments, with expandable sections containing the first 1000 lines of the output log. Former display remains available by defining `REPORTERS_MARKDOWN_SUMMARY_TYPE=table`
-  - Markdown reporter: Write a file for Github integration if GITHUB_STEP_SUMMARY is set
+  - Markdown summary reporter:
+    - Write a file for Github integration if GITHUB_STEP_SUMMARY is set
+    - Truncate less linter output lines
 
 - Doc
   - Update documentation in all megalinter descriptor files to improve accuracy and consistency
