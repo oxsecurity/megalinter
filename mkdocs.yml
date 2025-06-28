@@ -400,6 +400,7 @@ nav:
   - "Contribute":
       - "How-to Contribute": "how-to-contribute.md"
       - "Contributing Guide": "contributing.md"
+      - "Copilot Instructions ": "copilot-instructions.md"
   - "License":
       - "AGPL V3 License": "license.md"
       - "License explanations": "license-explanations.md"
