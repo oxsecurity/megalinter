@@ -27,7 +27,9 @@ class MarkdownSummaryReporter(Reporter):
             self.is_active = False
 
     def produce_report(self):
-        summary = build_markdown_summary(self)
+        summary = build_markdown_summary(
+            self, action_run_url="", max_total_chars=800000
+        )
 
         # Write output file
         summary_file_name = f"{self.report_folder}{os.path.sep}" + config.get(
