@@ -167,6 +167,7 @@ def build_markdown_summary_sections(reporter_self, action_run_url=""):
     # Add summary section for OK linters
     if linters_ok:
         p_r_msg += "### ✅ Linters with no issues\n\n"
+        ok_linter_names = []
         for linter in linters_ok:
             linter_data = get_linter_summary_data(linter, action_run_url)
             
@@ -175,18 +176,18 @@ def build_markdown_summary_sections(reporter_self, action_run_url=""):
                         ((linter.cli_lint_mode != "project" and linter.number_fixed > 0) or
                          (linter.cli_lint_mode == "project" and linter.number_fixed > 0)))
             
-            # Build bullet point with linter info
-            bullet_text = f"- {linter_data['descriptor_id']} / {linter_data['linter_link']}"
+            # Build linter name with fix info in parentheses
+            linter_text = linter_data['linter_link']
             
             if has_fixes:
                 if linter.cli_lint_mode == "project":
-                    bullet_text += " - ✨ fixes applied"
+                    linter_text += " (fixes applied)"
                 else:
-                    bullet_text += f" - ✨ {linter.number_fixed} fixes applied"
+                    linter_text += f" ({linter.number_fixed} fixes)"
             
-            p_r_msg += bullet_text + "\n"
+            ok_linter_names.append(linter_text)
         
-        p_r_msg += "\n"
+        p_r_msg += ", ".join(ok_linter_names) + "\n\n"
     
     # Add footer content
     p_r_msg += build_markdown_summary_footer(reporter_self, action_run_url)
