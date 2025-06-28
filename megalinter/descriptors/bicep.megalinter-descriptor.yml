@@ -20,7 +20,7 @@ linters:
       **Bicep** is a Domain Specific Language (DSL) for deploying Azure resources that provides a cleaner, more maintainable alternative to ARM templates. It serves as a transparent abstraction over ARM templates while offering significantly improved authoring experience and enhanced type safety.
 
       **Key Features:**
-      
+
       - **Simplified Syntax**: Drastically cleaner and more readable syntax compared to equivalent ARM Template JSON
       - **Day 0 Resource Support**: Any Azure resource can be provisioned using Bicep on the day it's available
       - **Advanced Type Validation**: Built-in type checking based on Azure resource type API definitions

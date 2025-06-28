@@ -20,7 +20,7 @@ linters:
       **dotnet format** is the official .NET code formatter that automatically applies consistent code styling and formatting rules to C# and VB.NET projects. It integrates directly with the .NET SDK and uses EditorConfig settings and analyzer rules to ensure uniform code appearance.
 
       **Key Features:**
-      
+
       - **Official .NET Tool**: Native integration with .NET SDK and MSBuild for seamless project integration
       - **EditorConfig Support**: Respects .editorconfig files for consistent formatting across teams and editors
       - **Analyzer Integration**: Works with .NET analyzers and code style rules for comprehensive formatting
@@ -63,7 +63,7 @@ linters:
       **CSharpier** is the definitive opinionated code formatter for C# that eliminates formatting debates by automatically standardizing code style across entire projects. Inspired by Prettier's philosophy, it provides zero-configuration formatting that just works.
 
       **Key Features:**
-      
+
       - **Zero Configuration**: Works out of the box with sensible defaults, no setup required
       - **Opinionated Formatting**: Consistent, predictable formatting that eliminates style discussions
       - **Comprehensive C# Support**: Handles all modern C# language features, syntax, and constructs

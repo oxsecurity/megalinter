@@ -205,7 +205,7 @@ linters:
       **PHPLint** is a high-performance syntax validation tool for PHP that provides rapid syntax checking without code execution. It serves as an essential first line of defense for catching PHP syntax errors and parse issues.
 
       **Key Features:**
-      
+
       - **Fast Syntax Validation**: Lightning-fast PHP syntax checking without executing code for safe validation
       - **Parallel Processing**: Multi-threaded scanning that efficiently handles large codebases
       - **Comprehensive Error Detection**: Catches syntax errors, parse errors, and fundamental PHP language issues
@@ -246,7 +246,7 @@ linters:
       **PHP-CS-Fixer** is a comprehensive tool that automatically fixes PHP code to follow coding standards and style guidelines. It can repair code style violations and even risky issues, making it an essential formatter for maintaining consistent PHP codebases.
 
       **Key Features:**
-      
+
       - **Automatic Code Fixing**: Repairs coding standard violations and formatting issues automatically
       - **Extensive Rule Set**: 200+ built-in rules covering PSR-1, PSR-2, PSR-12, Symfony, and custom standards
       - **Risky Fixes Support**: Can apply potentially risky fixes that modify code behavior when enabled

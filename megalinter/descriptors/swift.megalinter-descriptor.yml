@@ -12,7 +12,7 @@ linters:
       **SwiftLint** is the industry-standard linter and formatter for Swift code that enforces style guidelines and best practices based on the community-driven Swift Style Guide. It serves as an essential tool for maintaining high-quality, consistent Swift codebases.
 
       **Key Features:**
-      
+
       - **Comprehensive Rule Set**: Over 200 built-in rules covering code style, performance, best practices, and potential bug detection
       - **SourceKit Integration**: Leverages Apple's SourceKit for accurate AST-based analysis and precise error detection
       - **Automatic Fixing**: Intelligent auto-correction for many rule violations, saving manual effort

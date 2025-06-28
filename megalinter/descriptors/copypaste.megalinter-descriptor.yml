@@ -17,7 +17,7 @@ linters:
       **JSCPD** (JavaScript Copy-Paste Detector) is a sophisticated copy-paste detection tool that scans codebases across multiple programming languages to identify duplicated code blocks. It helps maintain code quality by finding excessive code duplication that can lead to maintenance issues and technical debt.
 
       **Key Features:**
-      
+
       - **Multi-Language Support**: Detects copy-paste across 170+ programming languages including JavaScript, TypeScript, Python, Java, C#, and more
       - **Flexible Detection Algorithms**: Multiple algorithms for finding duplicates including token-based and semantic matching
       - **Comprehensive Reporting**: Generates detailed reports in HTML, JSON, XML, Markdown, and other formats with visual diff highlighting

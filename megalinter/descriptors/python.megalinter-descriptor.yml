@@ -173,7 +173,7 @@ linters:
       **Flake8** is a comprehensive Python code quality checker that combines three powerful tools—pycodestyle, pyflakes, and mccabe—into a unified linting solution. It serves as the go-to tool for enforcing Python coding standards and catching potential issues.
 
       **Key Features:**
-      
+
       - **Multi-Tool Integration**: Combines pycodestyle (PEP 8 compliance), pyflakes (logical errors), and mccabe (complexity analysis)
       - **PEP 8 Enforcement**: Comprehensive style checking against Python's official style guide
       - **Error Detection**: Identifies undefined names, unused imports, syntax errors, and logical inconsistencies
@@ -218,7 +218,7 @@ linters:
       **isort** is the definitive Python import sorting tool that automatically organizes and standardizes import statements according to configurable rules. It serves as an essential companion to code formatters for maintaining clean, professional Python codebases.
 
       **Key Features:**
-      
+
       - **Intelligent Import Grouping**: Automatically separates standard library, third-party, and local imports into distinct sections
       - **Alphabetical Sorting**: Sorts imports within each group alphabetically for consistent ordering
       - **Multiple Profiles**: Built-in profiles for popular formatters (Black, Django, Google, etc.) ensuring seamless integration
@@ -363,7 +363,7 @@ linters:
       **MyPy** is Python's premier static type checker that brings optional static typing to Python through gradual typing. It analyzes type annotations and infers types to catch bugs before runtime, bridging the gap between Python's dynamic nature and static analysis benefits.
 
       **Key Features:**
-      
+
       - **Gradual Typing Support**: Add type checking incrementally to existing codebases without requiring full annotation coverage
       - **Type Inference**: Advanced type inference engine that understands Python idioms and can deduce types even without explicit annotations
       - **Protocol Support**: Duck typing through protocols, enabling structural subtyping for flexible type checking
@@ -456,7 +456,7 @@ linters:
       **Pyright** is Microsoft's high-performance static type checker for Python that provides fast, accurate type analysis. It serves as a powerful alternative to MyPy with focus on speed and developer experience.
 
       **Key Features:**
-      
+
       - **High Performance**: Lightning-fast type checking with incremental analysis and efficient caching
       - **Advanced Type Features**: Full support for generics, protocols, type unions, literal types, and advanced Python typing features
       - **Configuration Flexibility**: Comprehensive configuration options through pyrightconfig.json for fine-tuned type checking

@@ -21,7 +21,7 @@ linters:
       **perlcritic** is a comprehensive static source code analysis engine for Perl that enforces coding standards and best practices. Based primarily on Damian Conway's "Perl Best Practices" book, it serves as an extensible framework for creating and applying consistent coding standards across Perl projects.
 
       **Key Features:**
-      
+
       - **Extensive Policy Library**: Over 100 built-in policies covering bugs, security, maintainability, complexity, and code style
       - **Configurable Severity Levels**: Five severity levels (1-5) allowing fine-tuned control over policy enforcement
       - **Best Practices Foundation**: Policies based on "Perl Best Practices" and community-established coding standards

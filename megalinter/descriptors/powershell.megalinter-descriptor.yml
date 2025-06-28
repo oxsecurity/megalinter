@@ -36,7 +36,7 @@ linters:
       **PSScriptAnalyzer** is the premier static code analysis tool for PowerShell modules and scripts that enforces best practices and detects potential issues. Developed by the PowerShell Team and community, it serves as the standard for PowerShell code quality analysis.
 
       **Key Features:**
-      
+
       - **Comprehensive Rule Set**: 100+ built-in rules covering security, performance, style, and best practice violations
       - **Security Analysis**: Detects dangerous use of Invoke-Expression, improper credential handling, and security vulnerabilities
       - **Code Quality Checks**: Identifies uninitialized variables, unused parameters, incorrect cmdlet usage, and logic errors
@@ -78,7 +78,7 @@ linters:
       **PowerShell Formatter** provides automatic code formatting for PowerShell scripts and modules through PSScriptAnalyzer's Invoke-Formatter cmdlet. It ensures consistent code appearance and structure across PowerShell projects by applying standardized formatting rules.
 
       **Key Features:**
-      
+
       - **Automatic Formatting**: Consistent indentation, spacing, and code structure formatting
       - **Configurable Rules**: Customizable formatting settings through .psd1 configuration files
       - **Code Standardization**: Enforces uniform code style across teams and projects

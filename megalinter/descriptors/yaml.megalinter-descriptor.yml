@@ -14,7 +14,7 @@ linters:
       **Prettier** is the industry-standard opinionated code formatter that brings consistency to YAML files by enforcing a unified style across projects. It eliminates formatting debates by automatically reformatting code according to its proven formatting principles.
 
       **Key Features:**
-      
+
       - **Opinionated Formatting**: Zero-configuration approach with sensible defaults that work well for most projects
       - **Consistent Output**: Deterministic formatting ensures identical results regardless of environment or developer
       - **YAML Optimization**: Specialized handling of YAML syntax including proper indentation, spacing, and structure
@@ -139,7 +139,7 @@ linters:
       **v8r** is a command-line validator for JSON, YAML, and TOML files that automatically detects and applies appropriate schemas from the Schema Store based on filename patterns, providing intelligent validation without manual schema configuration.
 
       **Key Features:**
-      
+
       - **Automatic Schema Detection**: Uses Schema Store to intelligently match files with appropriate schemas based on filename patterns
       - **Multi-Format Support**: Validates JSON, YAML, and TOML files with consistent interface across formats
       - **Zero Configuration**: Works out-of-the-box for common configuration files without requiring explicit schema specification

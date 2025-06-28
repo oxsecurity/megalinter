@@ -15,7 +15,7 @@ linters:
       **Raku** compiler provides comprehensive built-in syntax checking and validation through its compile-check mode (`-c` flag). It performs thorough code analysis without execution, ensuring Raku programs are syntactically correct and semantically valid.
 
       **Key Features:**
-      
+
       - **Built-in Compiler Validation**: Native syntax checking integrated directly into the Rakudo compiler
       - **Comprehensive Analysis**: Validates syntax, semantics, type consistency, and language specification compliance
       - **Type System Integration**: Leverages Raku's gradual type system for enhanced error detection

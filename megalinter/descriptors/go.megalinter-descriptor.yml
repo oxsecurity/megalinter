@@ -106,7 +106,7 @@ linters:
       **Revive** is a fast, configurable, and extensible linter for Go that serves as a modern replacement for the deprecated golint tool. It provides comprehensive code quality analysis with superior performance and flexibility, making it an essential tool for maintaining high-quality Go codebases.
 
       **Key Features:**
-      
+
       - **High Performance**: Significantly faster than golint with efficient parallel processing and optimized analysis algorithms
       - **Drop-in Replacement**: Seamless migration from golint with improved functionality and additional rule coverage
       - **Extensive Rule Set**: Comprehensive collection of rules covering style, complexity, naming conventions, and potential bugs

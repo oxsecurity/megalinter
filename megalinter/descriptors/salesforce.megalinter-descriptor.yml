@@ -8,8 +8,8 @@ install:
   apk:
     - coreutils
     - openjdk21
-  dockerfile: 
-    - |-   
+  dockerfile:
+    - |-
       # renovate: datasource=npm depName=@salesforce/cli
       ARG NPM_SALESFORCE_CLI_VERSION=2.93.7
     - |-
@@ -38,7 +38,7 @@ linters:
       **Salesforce Code Analyzer (SFDX Scanner)** is the official Salesforce CLI plugin for scanning Apex code, triggers, and other Salesforce components to identify potential issues, security vulnerabilities, and code quality problems. It uses industry-standard tools like PMD and ESLint to provide comprehensive analysis of Salesforce development artifacts.
 
       **Key Features:**
-      
+
       - **Multi-Engine Analysis**: Combines PMD for Apex analysis with ESLint for JavaScript/Lightning Web Components
       - **Security Focus**: Identifies security vulnerabilities and potential attack vectors in Salesforce code
       - **Performance Optimization**: Detects performance anti-patterns and inefficient code constructs
@@ -122,7 +122,7 @@ linters:
       **Salesforce Code Analyzer for Aura Components** is a specialized linting tool that focuses on Aura Lightning components, using ESLint with Salesforce-specific rules to ensure Aura components follow best practices and platform guidelines.
 
       **Key Features:**
-      
+
       - **Aura-Specific Rules**: Specialized ESLint rules designed for Aura Lightning component development patterns
       - **JavaScript Analysis**: Comprehensive JavaScript linting for Aura component controllers, helpers, and renderers
       - **Security Validation**: Identifies security vulnerabilities specific to Aura component architecture
@@ -197,7 +197,7 @@ linters:
       **Salesforce Code Analyzer for Lightning Web Components** is a specialized linting tool that focuses on Lightning Web Components (LWC), using ESLint with LWC-specific rules to ensure components follow modern web standards and Salesforce platform best practices.
 
       **Key Features:**
-      
+
       - **LWC-Specific Rules**: Comprehensive ESLint rules designed specifically for Lightning Web Component development patterns
       - **Modern JavaScript Analysis**: Validates modern JavaScript/ES6+ usage within the LWC framework constraints
       - **Security Validation**: Identifies security vulnerabilities and potential XSS issues in LWC components
@@ -272,7 +272,7 @@ linters:
       **Lightning Flow Scanner** is a specialized SFDX plugin that analyzes Salesforce Flows for integrity issues, performance problems, and adherence to best practices. It helps developers build reliable and maintainable Flow automations.
 
       **Key Features:**
-      
+
       - **Flow Integrity Analysis**: Validates Flow logic, connections, and component configurations for correctness
       - **Best Practice Enforcement**: Checks against established Salesforce Flow development best practices
       - **Performance Optimization**: Identifies potential performance bottlenecks and inefficient Flow patterns

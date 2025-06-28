@@ -15,7 +15,7 @@ linters:
       **Stylelint** is a mighty CSS linter that helps you avoid errors and enforce coding conventions in your stylesheets. It's designed to catch both syntax errors and problematic patterns while maintaining code consistency across projects.
 
       **Key Features:**
-      
+
       - **Comprehensive Rule Set**: Over 100 built-in rules covering modern CSS syntax, features, and best practices
       - **Multi-Language Support**: Handles CSS, SCSS, Sass, Less, SugarSS, and CSS-in-JS with embedded style extraction
       - **Automatic Fixing**: Automatically repairs problems where possible, saving manual effort

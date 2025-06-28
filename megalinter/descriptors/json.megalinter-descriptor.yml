@@ -14,7 +14,7 @@ linters:
       **jsonlint** is a comprehensive JSON validation tool that provides command-line interface for ensuring JSON files conform to specifications and maintain proper structure. It serves as the essential validator for JSON data integrity across web applications, APIs, and configuration systems.
 
       **Key Features:**
-      
+
       - **Pure JavaScript Implementation**: Native JavaScript JSON parser ensuring accurate validation without external dependencies
       - **Strict JSON Compliance**: Validates against official JSON specification to ensure maximum compatibility
       - **Syntax Error Detection**: Identifies malformed JSON structures, missing brackets, invalid characters, and formatting issues
@@ -173,7 +173,7 @@ linters:
       **v8r** is a command-line validator for JSON, YAML, and TOML files that automatically detects and applies appropriate schemas from the Schema Store based on filename patterns, providing intelligent validation without manual schema configuration.
 
       **Key Features:**
-      
+
       - **Automatic Schema Detection**: Uses [Schema Store](https://www.schemastore.org/) to intelligently match files with appropriate schemas based on filename patterns
       - **Multi-Format Support**: Validates JSON, YAML, and TOML files with consistent interface across formats
       - **Zero Configuration**: Works out-of-the-box for common configuration files without requiring explicit schema specification
@@ -214,7 +214,7 @@ linters:
       **Prettier** is the industry-standard opinionated code formatter with excellent JSON support that automatically formats JSON files for consistency and readability. It brings professional formatting standards to JSON data across configuration files, APIs, and data structures.
 
       **Key Features:**
-      
+
       - **JSON-Specific Formatting**: Specialized handling of JSON syntax with proper indentation, spacing, and structure
       - **Consistent Output**: Deterministic formatting ensures identical results across different environments and developers
       - **Parse Safety**: AST-based processing validates JSON syntax while formatting, catching errors during formatting
@@ -281,7 +281,7 @@ linters:
       **npm-package-json-lint** is a specialized linter designed specifically for npm package.json files that ensures consistency, correctness, and adherence to best practices in Node.js project configuration. It serves as an essential tool for maintaining professional npm package standards.
 
       **Key Features:**
-      
+
       - **Package.json Focused**: Specialized validation specifically for npm package.json structure and content
       - **Comprehensive Rule Set**: Extensive collection of rules covering dependencies, metadata, scripts, and package configuration
       - **Best Practices Enforcement**: Validates against npm and Node.js ecosystem best practices and conventions

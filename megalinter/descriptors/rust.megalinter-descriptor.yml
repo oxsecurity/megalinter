@@ -13,7 +13,7 @@ linters:
       **Clippy** is Rust's official linter that serves as an essential code quality tool, providing comprehensive analysis to catch common mistakes and improve code quality. It's maintained by the Rust team and integrated into the standard Rust toolchain.
 
       **Key Features:**
-      
+
       - **Extensive Rule Coverage**: Over 750+ categorized lints covering correctness, performance, style, complexity, and pedantic guidelines
       - **Intelligent Categorization**: Organizes lints by severity - correctness (bugs), performance (optimizations), style (idiomatic patterns), complexity (simplification), and pedantic (strict standards)
       - **Automatic Fixes**: Machine-applicable suggestions that can automatically fix many issues with `cargo clippy --fix`

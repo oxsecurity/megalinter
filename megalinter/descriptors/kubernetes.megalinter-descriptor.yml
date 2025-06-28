@@ -82,7 +82,7 @@ linters:
       **Helm Lint** examines Helm charts for potential issues, misconfigurations, and adherence to best practices. It validates chart structure, templates, and values to ensure charts can be successfully deployed and function correctly in Kubernetes environments.
 
       **Key Features:**
-      
+
       - **Chart Validation**: Verifies chart structure, metadata, and required files are present and correctly formatted
       - **Template Rendering**: Tests that all templates render properly with default and provided values
       - **YAML Syntax Checking**: Validates YAML syntax and structure across all chart files
@@ -108,7 +108,7 @@ linters:
       **Kubescape** is a comprehensive Kubernetes security scanner that examines charts and Kubernetes files for security vulnerabilities, misconfigurations, and compliance violations. It provides security analysis based on established frameworks and best practices.
 
       **Key Features:**
-      
+
       - **Multi-Framework Security Scanning**: Supports NSA/CISA guidelines, MITRE ATT&CK, CIS Kubernetes Benchmark, and custom frameworks
       - **Vulnerability Assessment**: Scans container images for known CVEs and security vulnerabilities
       - **Configuration Analysis**: Detects misconfigurations in Kubernetes manifests, Helm charts, and cluster configurations

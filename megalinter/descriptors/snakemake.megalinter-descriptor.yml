@@ -14,7 +14,7 @@ linters:
       **Snakemake** is a comprehensive workflow management system with powerful built-in linting capabilities for validating computational workflow definitions. It ensures Snakefiles are properly structured and follow best practices for reproducible research.
 
       **Key Features:**
-      
+
       - **Workflow Validation**: Comprehensive checking of Snakefile syntax, rule definitions, and workflow structure
       - **Dependency Analysis**: Validates input/output file specifications and dependency chains between rules
       - **Configuration Checking**: Ensures proper configuration file structure and parameter definitions

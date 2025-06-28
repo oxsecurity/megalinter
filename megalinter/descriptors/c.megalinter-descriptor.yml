@@ -96,7 +96,7 @@ linters:
       **clang-format** is a comprehensive code formatter for C/C++/Objective-C code that automatically enforces consistent coding style according to configurable rules and heuristics. As part of the LLVM project, it provides industry-leading formatting capabilities for complex C++ codebases.
 
       **Key Features:**
-      
+
       - **Advanced C++ Support**: Handles modern C++ features including templates, lambda expressions, auto declarations, and range-based for loops
       - **Highly Configurable**: Extensive style options covering indentation, spacing, alignment, line breaks, and brace placement
       - **Predefined Styles**: Built-in support for popular style guides including LLVM, Google, Chromium, Mozilla, and WebKit

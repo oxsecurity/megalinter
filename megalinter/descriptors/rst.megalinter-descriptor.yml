@@ -93,7 +93,7 @@ linters:
       **rstfmt** is a specialized formatter for reStructuredText (RST) files that automatically standardizes documentation formatting for consistency and readability. It serves as the definitive tool for maintaining professional RST documentation standards.
 
       **Key Features:**
-      
+
       - **Smart Formatting**: Intelligent reStructuredText parsing that preserves semantic meaning while improving presentation
       - **Consistent Styling**: Standardizes indentation, spacing, line lengths, and structural elements across documents
       - **Directive Handling**: Proper formatting of RST directives, roles, and special markup constructs

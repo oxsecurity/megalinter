@@ -21,14 +21,14 @@ linters:
       **Scalafix** is a refactoring and linting tool for Scala that automates code quality maintenance, enabling both one-time migrations and continuous code health enforcement.
 
       **Key Features:**
-      
+
       - **Automated Refactoring**: Handles day-to-day code maintenance tasks and complex migration scripts with precision
       - **Comprehensive Linting**: Reports errors for code patterns that cause production bugs or violate coding standards
       - **Syntactic and Semantic Rules**: Supports both syntax-based rules (no compilation needed) and semantic rules (requires compilation)
       - **Built-in Rule Library**: Extensive collection of rules for common Scala patterns, deprecations, and best practices
       - **Custom Rule Development**: Extensible architecture for writing project-specific rules and transformations
       - **Configuration Flexibility**: Highly configurable through `.scalafix.conf` files with rule-specific settings
-      
+
       **Note**: In MegaLinter, only syntactic rules are applied as there is no prior compilation or semantic database generation. Semantic options cannot be used in this context.
     linter_rules_url: https://scalacenter.github.io/scalafix/docs/rules/overview.html
     linter_rules_configuration_url: https://scalacenter.github.io/scalafix/docs/users/configuration.html

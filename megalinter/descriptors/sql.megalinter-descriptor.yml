@@ -12,7 +12,7 @@ linters:
       **SQLFluff** is a dialect-flexible and configurable SQL linter designed for ELT applications that works with Jinja templating and dbt. It provides comprehensive SQL code analysis including syntax checking, style validation, and formatting with support for multiple SQL dialects.
 
       **Key Features:**
-      
+
       - **Multi-Dialect Support**: Compatible with ANSI SQL, BigQuery, Snowflake, Postgres, MySQL, SparkSQL, and more SQL dialects
       - **Jinja Templating**: Native support for Jinja templating commonly used in dbt and other ELT frameworks
       - **Auto-Fix Capability**: Automatically repairs most linting errors and formatting issues with --fix option
@@ -55,7 +55,7 @@ linters:
       **tsqllint** is a specialized linter for T-SQL (Transact-SQL) code used with Microsoft SQL Server. It analyzes T-SQL scripts for syntax errors, style violations, and adherence to best practices with configurable rules, helping ensure T-SQL code quality and consistency in SQL Server database development projects.
 
       **Key Features:**
-      
+
       - **T-SQL Specialized**: Purpose-built for Microsoft SQL Server T-SQL syntax and features
       - **Comprehensive Rule Set**: Extensive collection of rules covering syntax, style, and best practices
       - **Configurable Analysis**: Customizable rule configuration to match team coding standards

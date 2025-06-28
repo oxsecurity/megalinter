@@ -15,7 +15,7 @@ linters:
       **actionlint** is a static checker for GitHub Actions workflow files that helps you catch errors and improve workflow quality before they cause issues in your CI/CD pipelines.
 
       **Key Features:**
-      
+
       - **Comprehensive Syntax Validation**: Checks workflow files against GitHub Actions syntax requirements and catches unexpected or missing keys
       - **Strong Type Checking**: Validates `${{ }}` expressions with semantic analysis to detect type mismatches and access to non-existing properties
       - **Actions Usage Verification**: Validates inputs at `with:` and outputs in `steps.{id}.outputs` are correct for specific action versions

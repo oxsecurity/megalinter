@@ -157,7 +157,9 @@ def build_markdown_summary_sections(reporter_self, action_run_url=""):
                         # Find the end of the line containing the separator
                         next_newline = linter_output.find("\n", separator_pos)
                         if next_newline != -1:
-                            linter_output = linter_output[next_newline + 1 :].strip()  # noqa: E203
+                            linter_output = linter_output[
+                                next_newline + 1 :
+                            ].strip()  # noqa: E203
                     # Truncate long output to 1000 characters
                     if len(linter_output) > max_chars_per_linter:
                         total_chars = len(linter_output)

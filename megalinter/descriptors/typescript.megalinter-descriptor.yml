@@ -164,7 +164,7 @@ linters:
       **TypeScript Standard Style** is the TypeScript edition of the popular JavaScript Standard Style that brings zero-configuration linting and formatting to TypeScript projects. It extends the proven JavaScript Standard rules with TypeScript-specific enhancements and type-aware analysis.
 
       **Key Features:**
-      
+
       - **Zero Configuration**: No setup files or configuration required - install and run immediately
       - **TypeScript-Aware**: Built-in understanding of TypeScript syntax, types, interfaces, and modern features
       - **Automatic Fixing**: Built-in `--fix` option automatically corrects most style violations and type issues
@@ -216,7 +216,7 @@ linters:
       **Prettier** is the industry-leading opinionated code formatter with first-class TypeScript support that automatically formats TypeScript code to ensure consistency and readability. It handles TypeScript's complex syntax including generics, decorators, and type annotations with intelligent formatting rules.
 
       **Key Features:**
-      
+
       - **TypeScript-Native**: Deep understanding of TypeScript syntax, types, interfaces, generics, and decorators
       - **Type Annotation Preservation**: Carefully formats complex type definitions while maintaining readability
       - **Opinionated Formatting**: Zero-configuration approach with sensible defaults optimized for TypeScript development

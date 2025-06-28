@@ -19,7 +19,7 @@ linters:
       **markdownlint** is a Node.js static analysis tool and linter for Markdown files that enforces standards and consistency across your documentation. It uses the micromark parser and honors CommonMark specifications while supporting popular GitHub Flavored Markdown extensions.
 
       **Key Features:**
-      
+
       - **Comprehensive Rule Set**: Over 50 built-in rules covering heading styles, list formatting, line length, whitespace management, and link validation
       - **Format Support**: Full CommonMark compliance with GitHub Flavored Markdown, tables, autolinks, and extension support for directives, footnotes, and math
       - **Automatic Fixing**: Many rules can automatically repair formatting issues, saving manual effort
@@ -68,7 +68,7 @@ linters:
       **remark-lint** is a powerful plugin for the remark markdown processor that provides comprehensive linting and formatting capabilities for Markdown files. Built on the unified collective's remark ecosystem, it offers extensive rule-based validation with automatic fixing capabilities and a rich plugin architecture for customized Markdown processing workflows.
 
       **Key Features:**
-      
+
       - **Unified Ecosystem**: Part of the remark/unified processing pipeline with access to a vast plugin ecosystem
       - **Comprehensive Rule Set**: Extensive built-in rules for syntax consistency, formatting standards, and structural validation
       - **Automatic Fixing**: Many rules can automatically repair Markdown issues, improving workflow efficiency
@@ -133,7 +133,7 @@ linters:
       **markdown-link-check** is a specialized tool for validating link integrity in Markdown documentation that ensures all links remain functional and accessible. It serves as an essential quality assurance tool for maintaining reliable documentation with working references.
 
       **Key Features:**
-      
+
       - **Comprehensive Link Validation**: Tests HTTP/HTTPS links, relative file paths, anchor links, and email addresses
       - **Dead Link Detection**: Identifies broken external links, missing internal files, and invalid anchor references
       - **HTTP Status Checking**: Validates that external links return successful HTTP responses (200 status codes)
@@ -174,7 +174,7 @@ linters:
       **markdown-table-formatter** is a specialized formatting tool that detects and automatically corrects improperly formatted Markdown tables, ensuring consistent presentation and improved readability across documentation.
 
       **Key Features:**
-      
+
       - **Automatic Table Detection**: Identifies poorly formatted Markdown tables with misaligned columns and inconsistent spacing
       - **Intelligent Alignment**: Automatically aligns table columns and adjusts padding for optimal readability
       - **Consistent Formatting**: Standardizes table structure with uniform spacing, borders, and column alignment

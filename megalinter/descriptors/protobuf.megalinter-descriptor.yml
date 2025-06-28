@@ -12,7 +12,7 @@ linters:
       **protolint** is a fast, pluggable linting and fixing utility for Protocol Buffer files that enforces the official Google Protocol Buffer style guide. It operates without requiring compilation, making it ideal for rapid development feedback.
 
       **Key Features:**
-      
+
       - **Official Style Guide Compliance**: Rules correspond exactly to Google's Protocol Buffer style guide recommendations
       - **Fast Performance**: Operates without compilation, providing rapid feedback during development
       - **Automatic Fixing**: Built-in auto-fix capability for many style violations and formatting issues

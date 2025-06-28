@@ -12,7 +12,7 @@ linters:
       **RuboCop** is a comprehensive Ruby code style checker and formatter that enforces the community-driven Ruby Style Guide while providing extensive customization options. It serves as the definitive tool for maintaining consistent Ruby code quality across projects and teams.
 
       **Key Features:**
-      
+
       - **Extensive Rule Set**: Over 400 built-in cops (rules) covering style violations, potential bugs, complexity issues, and best practices
       - **Community-Driven Standards**: Based on the widely-adopted Ruby Style Guide maintained by the Ruby community
       - **Automatic Code Fixing**: Safe auto-correction capabilities for many style violations and formatting issues

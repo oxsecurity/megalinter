@@ -26,7 +26,7 @@ linters:
       **TFLint** is a pluggable Terraform linter that provides deep inspection of Terraform configurations with a focus on catching errors that terraform plan might miss. It offers extensive static analysis capabilities including provider-specific checks, deprecated syntax detection, and infrastructure best practices validation.
 
       **Key Features:**
-      
+
       - **Deep Terraform Analysis**: Goes beyond basic syntax checking to validate Terraform semantics and logic
       - **Provider-Specific Rules**: Specialized rule sets for AWS, Azure, GCP, and other cloud providers
       - **Plugin Architecture**: Extensible with community and custom plugins for specific use cases
@@ -80,7 +80,7 @@ linters:
       **Terrascan** is a comprehensive static code analyzer for Infrastructure as Code that detects security vulnerabilities, compliance violations, and misconfigurations in cloud infrastructure. It supports multiple IaC tools including Terraform, Kubernetes, Docker, AWS CloudFormation, and more, providing over 1000 built-in policies across major cloud providers and compliance frameworks.
 
       **Key Features:**
-      
+
       - **Multi-IaC Support**: Analyzes Terraform, Kubernetes, Docker, CloudFormation, ARM templates, and more
       - **1000+ Security Policies**: Extensive library of pre-built security and compliance policies
       - **Compliance Frameworks**: Built-in support for CIS, NIST, PCI, SOC 2, and other compliance standards
@@ -133,7 +133,7 @@ linters:
       **Terragrunt** is a thin wrapper for Terraform that provides tools for keeping your Terraform configurations DRY, working with multiple Terraform modules, and managing remote state. It helps validate Terragrunt configurations and ensures that your infrastructure code follows best practices for modularity, reusability, and maintainability.
 
       **Key Features:**
-      
+
       - **DRY Terraform Code**: Eliminates repetition by allowing shared configurations across multiple environments
       - **Remote State Management**: Simplifies backend configuration and remote state management across projects
       - **Module Composition**: Orchestrates multiple Terraform modules with dependency management
@@ -186,7 +186,7 @@ linters:
       **terraform fmt** is the built-in Terraform command for automatically formatting Terraform configuration files to ensure consistent style and formatting. It rewrites Terraform configuration files to a canonical format and style, making code more readable and maintainable, following HashiCorp's official style conventions.
 
       **Key Features:**
-      
+
       - **Official Formatter**: Built into Terraform core, ensuring compatibility and consistency with HashiCorp standards
       - **Canonical Formatting**: Applies consistent indentation, spacing, and line breaks across all Terraform files
       - **Automatic Fixing**: Rewrites files in-place to fix formatting issues automatically
