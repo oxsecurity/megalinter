@@ -27,6 +27,6 @@ If you really want a new PR comment for each MegaLinter run, define variable `BI
 | BITBUCKET_COMMENT_REPORTER                   | Activates/deactivates reporter                                                               | `true`        |
 | BITBUCKET_REPO_ACCESS_TOKEN                  | Must contain a Bitbucket repository access token defined with api access                     | <!-- -->      |
 | BITBUCKET_COMMENT_REPORTER_OVERWRITE_COMMENT | Set to false to not overwrite existing comments in case of new runs on the same Pull Request | `true`        |
-| REPORTERS_MARKDOWN_TYPE                    | Set to `simple` to avoid external images in generated markdown                     | `advanced`    |
-| REPORTERS_MARKDOWN_SUMMARY_TYPE            | Display summary in PR/MR comments as sections or as a table                        | `sections`    |
+| REPORTERS_MARKDOWN_TYPE                      | Set to `simple` to avoid external images in generated markdown                               | `advanced`    |
+| REPORTERS_MARKDOWN_SUMMARY_TYPE              | Display summary in PR/MR comments as sections or as a table                                  | `sections`    |
 | JOB_SUMMARY_ADDITIONAL_MARKDOWN              | Custom markdown to add at the end of the summary message                                     | <!-- -->      |
