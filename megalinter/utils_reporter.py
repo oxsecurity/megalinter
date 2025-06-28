@@ -140,8 +140,8 @@ def build_markdown_summary_sections(reporter_self, action_run_url=""):
             try:
                 with open(text_file_name, "r", encoding="utf-8") as text_file:
                     linter_output = text_file.read()
-                    # Remove all lines until the first "-----------------------------------------------", including such line
-                    separator_pos = linter_output.find("-----------------------------------------------")
+                    # Remove all lines until the first "Linter raw log:", including such line
+                    separator_pos = linter_output.find("Linter raw log:")
                     if separator_pos != -1:
                         # Find the end of the line containing the separator
                         next_newline = linter_output.find('\n', separator_pos)
