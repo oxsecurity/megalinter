@@ -183,7 +183,8 @@ def build_markdown_summary_sections(reporter_self, action_run_url=""):
                 if linter.cli_lint_mode == "project":
                     linter_text += " (fixes applied)"
                 else:
-                    linter_text += f" ({linter.number_fixed} fixes)"
+                    fix_word = "fix" if linter.number_fixed == 1 else "fixes"
+                    linter_text += f" ({linter.number_fixed} {fix_word})"
             
             ok_linter_names.append((linter.linter_name, linter_text))
         
