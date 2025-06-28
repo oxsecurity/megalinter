@@ -24,7 +24,7 @@ pytest-cov==6.2.1
 pytest-timeout==2.4.0
 pytest-xdist==3.7.0
 pytest-rerunfailures==15.1
-python-gitlab==6.0.0
+python-gitlab==6.1.0
 python-multipart==0.0.20
 pyyaml==6.0.2
 redis==6.2.0
