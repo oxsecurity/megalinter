@@ -174,9 +174,9 @@ linters:
     cli_lint_extra_args_after:
       - "--terragrunt-hclfmt-file"
     test_folder: terraform_terragrunt
-    cli_help_arg_name: "--help"
     examples:
-      - "terragrunt hclfmt --terragrunt-check"
+      - "terragrunt hclfmt --terragrunt-check --terragrunt-hclfmt-file myfile.hcl"
+      - "terragrunt hclfmt --terragrunt-check --terragrunt-config terragrunt.hcl --terragrunt-hclfmt-file myfile.hcl"
     install:
       dockerfile:
         - |-
