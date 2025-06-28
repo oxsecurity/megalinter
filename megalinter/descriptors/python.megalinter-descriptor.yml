@@ -311,7 +311,7 @@ linters:
       - **Input Validation**: Missing input sanitization and validation
 
       **Advanced capabilities:**
-      
+
       - **Blacklist Detection**: Identifies usage of known insecure or deprecated functions
       - **Context-Aware Analysis**: Understands code context to reduce false positives
       - **Baseline Support**: Can track security issues over time and focus on new problems

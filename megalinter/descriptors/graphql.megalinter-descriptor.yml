@@ -12,7 +12,7 @@ linters:
       **graphql-schema-linter** validates GraphQL schema definitions against a comprehensive set of rules to ensure consistency, best practices, and adherence to GraphQL conventions. It helps maintain high-quality, well-documented GraphQL APIs with consistent structure and proper documentation.
 
       **Key Features:**
-      
+
       - **20+ built-in rules** covering descriptions, naming conventions, field sorting, and type usage
       - **Relay specification compliance** validation for modern GraphQL APIs
       - **Custom rules support** for project-specific validation requirements
