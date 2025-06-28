@@ -9,7 +9,7 @@ Generates a summary of SAST results in Markdown within a file named **megalinter
 
 If GITHUB_STEP_SUMMARY is set, the related file will also be written.
 
-This reporter **is deactivated by default**.
+This reporter **is deactivated by default**, except if env variable GITHUB_STEP_SUMMARY is found.
 
 ![Screenshot](../assets/images/MarkdownSummaryReporter_1.png)
 

@@ -20,6 +20,7 @@ class MarkdownSummaryReporter(Reporter):
         elif (
             config.get(self.master.request_id, "MARKDOWN_SUMMARY_REPORTER", "false")
             == "true"
+            or "GITHUB_STEP_SUMMARY" in os.environ
         ):
             self.is_active = True
         else:
