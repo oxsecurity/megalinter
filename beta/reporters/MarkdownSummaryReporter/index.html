@@ -3590,7 +3590,8 @@
 <article class="md-content__inner md-typeset">
 <h1 id="markdown-summary-reporter">Markdown Summary Reporter</h1>
 <p>Generates a summary of SAST results in Markdown within a file named <strong>megalinter-report.md</strong>, located in the report folder.</p>
-<p>This reporter <strong>is deactivated by default</strong>.</p>
+<p>If GITHUB_STEP_SUMMARY is set, the related file will also be written.</p>
+<p>This reporter <strong>is deactivated by default</strong>, except if env variable GITHUB_STEP_SUMMARY is found.</p>
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../../assets/images/MarkdownSummaryReporter_1.png"><img alt="Screenshot" src="../../assets/images/MarkdownSummaryReporter_1.png"/></a></p>
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../../assets/images/MarkdownSummaryReporter_2.png"><img alt="Screenshot" src="../../assets/images/MarkdownSummaryReporter_2.png"/></a></p>
 <h2 id="usage">Usage</h2>
