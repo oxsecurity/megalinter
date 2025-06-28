@@ -111,7 +111,7 @@ def build_markdown_summary_sections(reporter_self, action_run_url=""):
         linter_name = linter.linter_name
         
         # Start with basic info
-        summary_text = f"{status_icon} {descriptor} ({linter_name})"
+        summary_text = f"{status_icon} {descriptor} / {linter_name}"
         
         # Add most critical info only (without hyperlinks for sections format)
         if linter.number_errors > 0:
