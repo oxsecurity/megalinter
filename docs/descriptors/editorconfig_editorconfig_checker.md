@@ -13,6 +13,17 @@ description: How to use editorconfig-checker (configure, ignore files, ignore er
 
 [![GitHub stars](https://img.shields.io/github/stars/editorconfig-checker/editorconfig-checker?cacheSeconds=3600)](https://github.com/editorconfig-checker/editorconfig-checker) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/editorconfig-checker/editorconfig-checker?sort=semver)](https://github.com/editorconfig-checker/editorconfig-checker/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/editorconfig-checker/editorconfig-checker)](https://github.com/editorconfig-checker/editorconfig-checker/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/editorconfig-checker/editorconfig-checker)](https://github.com/editorconfig-checker/editorconfig-checker/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/editorconfig-checker/editorconfig-checker)](https://github.com/editorconfig-checker/editorconfig-checker/graphs/contributors/)
 
+**editorconfig-checker** is a language-agnostic tool that validates files against EditorConfig definitions to ensure consistent formatting across your entire codebase. Unlike language-specific linters, it works for every file type and programming language.
+
+**Key Features:**
+
+- **Universal Validation**: Works with any file type including code, configuration files, plain text, XML, and more
+- **EditorConfig Compliance**: Enforces indentation, line endings, character encoding, and whitespace rules from `.editorconfig`
+- **Multi-Platform Support**: Available as native binaries, npm package, PHP composer package, Python pip package, and Docker image
+- **Configurable Rules**: Fine-tune validation with `.ecrc` configuration files and command-line flags
+- **Comprehensive Checks**: Validates indent style, insert final newline, trim trailing whitespace, and end-of-line characters
+- **Flexible Exclusions**: Exclude specific files, directories, or content types from validation
+
 ## editorconfig-checker documentation
 
 - Version in MegaLinter: **3.3.0**

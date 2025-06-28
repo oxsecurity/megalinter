@@ -13,6 +13,19 @@ description: How to use sqlfluff (configure, ignore files, ignore errors, help &
 
 [![GitHub stars](https://img.shields.io/github/stars/sqlfluff/sqlfluff?cacheSeconds=3600)](https://github.com/sqlfluff/sqlfluff) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/sqlfluff/sqlfluff?sort=semver)](https://github.com/sqlfluff/sqlfluff/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/sqlfluff/sqlfluff)](https://github.com/sqlfluff/sqlfluff/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/sqlfluff/sqlfluff)](https://github.com/sqlfluff/sqlfluff/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/sqlfluff/sqlfluff)](https://github.com/sqlfluff/sqlfluff/graphs/contributors/)
 
+**SQLFluff** is a dialect-flexible and configurable SQL linter designed for ELT applications that works with Jinja templating and dbt. It provides comprehensive SQL code analysis including syntax checking, style validation, and formatting with support for multiple SQL dialects.
+
+**Key Features:**
+
+- **Multi-Dialect Support**: Compatible with ANSI SQL, BigQuery, Snowflake, Postgres, MySQL, SparkSQL, and more SQL dialects
+- **Jinja Templating**: Native support for Jinja templating commonly used in dbt and other ELT frameworks
+- **Auto-Fix Capability**: Automatically repairs most linting errors and formatting issues with --fix option
+- **Configurable Rules**: Extensive rule set with granular configuration options for team-specific standards
+- **dbt Integration**: Seamless integration with dbt projects including macro and model analysis
+- **Detailed Reporting**: Comprehensive error reporting with line numbers, positions, and fix suggestions
+- **Custom Rules**: Extensible architecture allowing custom rule development for specific requirements
+- **Performance Optimized**: Fast parsing and analysis even for large SQL codebases
+
 ## sqlfluff documentation
 
 - Version in MegaLinter: **3.4.1**

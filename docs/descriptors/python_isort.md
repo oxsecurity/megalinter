@@ -13,6 +13,20 @@ description: How to use isort (configure, ignore files, ignore errors, help & ve
 
 [![GitHub stars](https://img.shields.io/github/stars/PyCQA/isort?cacheSeconds=3600)](https://github.com/PyCQA/isort) ![formatter](https://shields.io/badge/-format-yellow) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/PyCQA/isort?sort=semver)](https://github.com/PyCQA/isort/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/PyCQA/isort)](https://github.com/PyCQA/isort/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/PyCQA/isort)](https://github.com/PyCQA/isort/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/PyCQA/isort)](https://github.com/PyCQA/isort/graphs/contributors/)
 
+**isort** is the definitive Python import sorting tool that automatically organizes and standardizes import statements according to configurable rules. It serves as an essential companion to code formatters for maintaining clean, professional Python codebases.
+
+**Key Features:**
+
+- **Intelligent Import Grouping**: Automatically separates standard library, third-party, and local imports into distinct sections
+- **Alphabetical Sorting**: Sorts imports within each group alphabetically for consistent ordering
+- **Multiple Profiles**: Built-in profiles for popular formatters (Black, Django, Google, etc.) ensuring seamless integration
+- **Highly Configurable**: Extensive configuration options for custom sorting rules, line lengths, and import styles
+- **Multi-line Import Handling**: Smart formatting of long import statements with various wrapping styles
+- **Namespace Package Support**: Proper handling of namespace packages and relative imports
+- **Performance Optimized**: Fast processing suitable for large codebases
+- **Format Compatibility**: Perfect integration with Black, autopep8, and other Python formatting tools
+- **Diff Mode**: Check-only mode for validation without modification
+
 ## isort documentation
 
 - Version in MegaLinter: **6.0.1**

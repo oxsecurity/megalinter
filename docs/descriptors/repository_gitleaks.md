@@ -7,6 +7,19 @@ description: How to use gitleaks (configure, ignore files, ignore errors, help &
 # gitleaks
 [![GitHub stars](https://img.shields.io/github/stars/gitleaks/gitleaks?cacheSeconds=3600)](https://github.com/gitleaks/gitleaks) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/gitleaks/gitleaks?sort=semver)](https://github.com/gitleaks/gitleaks/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/gitleaks/gitleaks)](https://github.com/gitleaks/gitleaks/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/gitleaks/gitleaks)](https://github.com/gitleaks/gitleaks/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/gitleaks/gitleaks)](https://github.com/gitleaks/gitleaks/graphs/contributors/)
 
+**gitleaks** is a SAST tool for detecting and preventing secrets like passwords, API keys, and tokens in git repos. It scans the entire history of a git repository, not just the current state, making it effective at finding secrets that may have been accidentally committed.
+
+**Key Features:**
+- **Full git history scanning** including all branches and commits
+- **High accuracy detection** with minimal false positives
+- **Custom rule support** for organization-specific secret patterns
+- **Multiple output formats** including JSON, CSV, and SARIF
+- **Pre-commit hook integration** to prevent secrets from being committed
+- **Baseline support** to ignore existing secrets while catching new ones
+- **Configuration flexibility** via `.gitleaks.toml` files
+- **Redaction support** to safely share scan results
+- **Entropy detection** for finding high-entropy strings that may be secrets
+
 ## Scan only Pull Request commits
 
 `VALIDATE_ALL_CODEBASE: false` doesn't make gitleaks analyze only updated files. To analyze only commits on Pull Request, set `VALIDATE_ALL_CODEBASE: false` together with `REPOSITORY_GITLEAKS_PR_COMMITS_SCAN: true` (you have to specify it explicitly), but only works for selected platforms: GitHub Actions, Azure Pipelines, GitLab Pipelines\* (Merge Requests and External Pull Requests)

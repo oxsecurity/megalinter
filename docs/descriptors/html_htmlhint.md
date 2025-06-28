@@ -7,6 +7,20 @@ description: How to use htmlhint (configure, ignore files, ignore errors, help &
 # <a href="https://htmlhint.com/" target="blank" title="Visit linter Web Site"><img src="https://htmlhint.com/_astro/htmlhint.DIRCoA_t_Z1czEXa.webp" alt="htmlhint" height="100px" class="megalinter-logo"></a>htmlhint
 [![GitHub stars](https://img.shields.io/github/stars/htmlhint/HTMLHint?cacheSeconds=3600)](https://github.com/htmlhint/HTMLHint) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/htmlhint/HTMLHint?sort=semver)](https://github.com/htmlhint/HTMLHint/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/htmlhint/HTMLHint)](https://github.com/htmlhint/HTMLHint/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/htmlhint/HTMLHint)](https://github.com/htmlhint/HTMLHint/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/htmlhint/HTMLHint)](https://github.com/htmlhint/HTMLHint/graphs/contributors/)
 
+**HTMLHint** is a static code analysis tool for HTML that helps developers write better HTML code by detecting errors, enforcing best practices, and ensuring compliance with HTML standards. It provides fast, configurable HTML validation with comprehensive rule coverage.
+
+**Key Features:**
+- **Comprehensive rule set** covering common HTML issues and best practices
+- **Unclosed tag detection** preventing malformed HTML structure
+- **Invalid attribute validation** ensuring proper HTML5 compliance
+- **Accessibility checking** helping meet WCAG and accessibility standards
+- **Performance optimization** detecting performance-impacting HTML patterns
+- **Configurable rules** via `.htmlhintrc` for project-specific requirements
+- **Fast processing** optimized for large HTML files and projects
+- **Multiple output formats** including JSON and XML for tool integration
+- **Inline rule configuration** for granular control over validation
+- **Template support** working with various HTML template engines
+
 ## htmlhint documentation
 
 - Version in MegaLinter: **1.6.3**

@@ -13,9 +13,20 @@ description: How to use pyright (configure, ignore files, ignore errors, help & 
 
 [![GitHub stars](https://img.shields.io/github/stars/microsoft/pyright?cacheSeconds=3600)](https://github.com/microsoft/pyright) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/microsoft/pyright?sort=semver)](https://github.com/microsoft/pyright/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/microsoft/pyright)](https://github.com/microsoft/pyright/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/microsoft/pyright)](https://github.com/microsoft/pyright/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/microsoft/pyright)](https://github.com/microsoft/pyright/graphs/contributors/)
 
-Optional static typing checks for python, by Microsoft
+**Pyright** is Microsoft's high-performance static type checker for Python that provides fast, accurate type analysis. It serves as a powerful alternative to MyPy with focus on speed and developer experience.
 
-If you don't use python static typing, you should disable this linter by adding `PYTHON_PYRIGHT` in `DISABLE_LINTERS` variable in your `.mega-linter.yml` config file
+**Key Features:**
+
+- **High Performance**: Lightning-fast type checking with incremental analysis and efficient caching
+- **Advanced Type Features**: Full support for generics, protocols, type unions, literal types, and advanced Python typing features
+- **Configuration Flexibility**: Comprehensive configuration options through pyrightconfig.json for fine-tuned type checking
+- **Multi-Python Support**: Can analyze code for different Python versions and check version compatibility
+- **Import Resolution**: Sophisticated import resolution handling complex package structures and namespace packages
+- **Type Inference**: Advanced type inference engine that minimizes the need for explicit type annotations
+- **Strict Mode Support**: Configurable strictness levels from basic checking to comprehensive type safety enforcement
+- **Cross-Platform**: Consistent behavior across Windows, macOS, and Linux development environments
+
+**Note**: If you don't use Python static typing, disable this linter by adding `PYTHON_PYRIGHT` to `DISABLE_LINTERS` in your `.mega-linter.yml` config file.
 
 ## pyright documentation
 

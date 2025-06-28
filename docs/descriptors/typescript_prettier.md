@@ -13,6 +13,19 @@ description: How to use prettier (configure, ignore files, ignore errors, help &
 
 [![GitHub stars](https://img.shields.io/github/stars/prettier/prettier?cacheSeconds=3600)](https://github.com/prettier/prettier) ![formatter](https://shields.io/badge/-format-yellow) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/prettier/prettier?sort=semver)](https://github.com/prettier/prettier/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/prettier/prettier)](https://github.com/prettier/prettier/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/prettier/prettier)](https://github.com/prettier/prettier/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/prettier/prettier)](https://github.com/prettier/prettier/graphs/contributors/)
 
+**Prettier** is the industry-leading opinionated code formatter with first-class TypeScript support that automatically formats TypeScript code to ensure consistency and readability. It handles TypeScript's complex syntax including generics, decorators, and type annotations with intelligent formatting rules.
+
+**Key Features:**
+
+- **TypeScript-Native**: Deep understanding of TypeScript syntax, types, interfaces, generics, and decorators
+- **Type Annotation Preservation**: Carefully formats complex type definitions while maintaining readability
+- **Opinionated Formatting**: Zero-configuration approach with sensible defaults optimized for TypeScript development
+- **Parse Safety**: AST-based processing ensures formatted code maintains semantic equivalence to the original
+- **Modern TypeScript Support**: Full compatibility with latest TypeScript features and syntax
+- **Consistent Output**: Deterministic formatting produces identical results across different development environments
+- **Fast Performance**: High-speed formatting suitable for large TypeScript codebases
+- **Team Standardization**: Eliminates formatting debates and ensures uniform TypeScript code style across teams
+
 ## prettier documentation
 
 - Version in MegaLinter: **3.6.2**

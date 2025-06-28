@@ -7,10 +7,18 @@ description: How to use scalafix (configure, ignore files, ignore errors, help &
 # <a href="https://scalacenter.github.io/scalafix/" target="blank" title="Visit linter Web Site"><img src="https://scalacenter.github.io/scalafix/img/scalacenter2x.png" alt="scalafix" height="100px" class="megalinter-logo"></a>scalafix
 [![GitHub stars](https://img.shields.io/github/stars/scalacenter/scalafix?cacheSeconds=3600)](https://github.com/scalacenter/scalafix) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/scalacenter/scalafix?sort=semver)](https://github.com/scalacenter/scalafix/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/scalacenter/scalafix)](https://github.com/scalacenter/scalafix/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/scalacenter/scalafix)](https://github.com/scalacenter/scalafix/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/scalacenter/scalafix)](https://github.com/scalacenter/scalafix/graphs/contributors/)
 
-Scalafix lints and fixes scala files
+**Scalafix** is a refactoring and linting tool for Scala that automates code quality maintenance, enabling both one-time migrations and continuous code health enforcement.
 
-- As there is no prior compilation or semantic db generation, the linting is applied only with [built-in syntactic rules](https://scalacenter.github.io/scalafix/docs/rules/overview.html)
-- scalafix arguments related to [semantic options](https://megalinter.io/descriptors/scala_scalafix/#help-content) can not be used
+**Key Features:**
+
+- **Automated Refactoring**: Handles day-to-day code maintenance tasks and complex migration scripts with precision
+- **Comprehensive Linting**: Reports errors for code patterns that cause production bugs or violate coding standards
+- **Syntactic and Semantic Rules**: Supports both syntax-based rules (no compilation needed) and semantic rules (requires compilation)
+- **Built-in Rule Library**: Extensive collection of rules for common Scala patterns, deprecations, and best practices
+- **Custom Rule Development**: Extensible architecture for writing project-specific rules and transformations
+- **Configuration Flexibility**: Highly configurable through `.scalafix.conf` files with rule-specific settings
+
+**Note**: In MegaLinter, only syntactic rules are applied as there is no prior compilation or semantic database generation. Semantic options cannot be used in this context.
 
 ## scalafix documentation
 

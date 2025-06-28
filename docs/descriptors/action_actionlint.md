@@ -7,7 +7,17 @@ description: How to use actionlint (configure, ignore files, ignore errors, help
 # actionlint
 [![GitHub stars](https://img.shields.io/github/stars/rhysd/actionlint?cacheSeconds=3600)](https://github.com/rhysd/actionlint) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/rhysd/actionlint?sort=semver)](https://github.com/rhysd/actionlint/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/rhysd/actionlint)](https://github.com/rhysd/actionlint/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/rhysd/actionlint)](https://github.com/rhysd/actionlint/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/rhysd/actionlint)](https://github.com/rhysd/actionlint/graphs/contributors/)
 
-Static checker for GitHub Actions workflow files
+**actionlint** is a static checker for GitHub Actions workflow files that helps you catch errors and improve workflow quality before they cause issues in your CI/CD pipelines.
+
+**Key Features:**
+
+- **Comprehensive Syntax Validation**: Checks workflow files against GitHub Actions syntax requirements and catches unexpected or missing keys
+- **Strong Type Checking**: Validates `${{ }}` expressions with semantic analysis to detect type mismatches and access to non-existing properties
+- **Actions Usage Verification**: Validates inputs at `with:` and outputs in `steps.{id}.outputs` are correct for specific action versions
+- **Security Analysis**: Detects script injection vulnerabilities, hard-coded credentials, and untrusted input usage patterns
+- **Tool Integration**: Built-in shellcheck and pyflakes integration for validating scripts in `run:` steps
+- **Reusable Workflow Support**: Validates inputs, outputs, and secrets for reusable workflows and workflow calls
+- **Advanced Validations**: Includes glob syntax validation, dependency checks for `needs:`, runner label validation, and cron syntax validation
 
 ## actionlint documentation
 

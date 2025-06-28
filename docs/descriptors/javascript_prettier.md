@@ -13,6 +13,19 @@ description: How to use prettier (configure, ignore files, ignore errors, help &
 
 [![GitHub stars](https://img.shields.io/github/stars/prettier/prettier?cacheSeconds=3600)](https://github.com/prettier/prettier) ![formatter](https://shields.io/badge/-format-yellow) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/prettier/prettier?sort=semver)](https://github.com/prettier/prettier/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/prettier/prettier)](https://github.com/prettier/prettier/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/prettier/prettier)](https://github.com/prettier/prettier/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/prettier/prettier)](https://github.com/prettier/prettier/graphs/contributors/)
 
+**Prettier** is the industry-leading opinionated code formatter that brings consistency to JavaScript and many other languages by automatically reformatting code according to proven formatting principles. It eliminates formatting debates and ensures uniform code style across entire development teams.
+
+**Key Features:**
+
+- **Multi-Language Support**: Formats JavaScript, TypeScript, CSS, HTML, JSON, Markdown, YAML, and 20+ other languages
+- **Opinionated Formatting**: Zero-configuration approach with sensible defaults that work well for most projects
+- **Parse Safety**: Ensures formatted code maintains semantic equivalence to the original through AST-based processing
+- **Consistent Output**: Deterministic formatting produces identical results regardless of environment or developer
+- **Team Standardization**: Eliminates style discussions and ensures consistent formatting across team members
+- **Fast Performance**: High-speed formatting suitable for large codebases
+- **Configuration Flexibility**: Supports project-specific settings through .prettierrc files when customization is needed
+- **Git Integration**: Reduces merge conflicts by maintaining consistent formatting across branches
+
 ## prettier documentation
 
 - Version in MegaLinter: **3.6.2**

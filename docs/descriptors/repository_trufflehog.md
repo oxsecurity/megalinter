@@ -13,6 +13,20 @@ description: How to use trufflehog (configure, ignore files, ignore errors, help
 
 [![GitHub stars](https://img.shields.io/github/stars/trufflesecurity/trufflehog?cacheSeconds=3600)](https://github.com/trufflesecurity/trufflehog) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/trufflesecurity/trufflehog?sort=semver)](https://github.com/trufflesecurity/trufflehog/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/trufflesecurity/trufflehog)](https://github.com/trufflesecurity/trufflehog/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/trufflesecurity/trufflehog)](https://github.com/trufflesecurity/trufflehog/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/trufflesecurity/trufflehog)](https://github.com/trufflesecurity/trufflehog/graphs/contributors/)
 
+**TruffleHog** is an advanced secrets scanner that searches through git repositories, files, and other sources to find secrets, passwords, API keys, and other sensitive information that may have been accidentally committed to code. It combines pattern matching, entropy analysis, and verification capabilities to provide comprehensive secret detection.
+
+**Key Features:**
+
+- **Git History Scanning**: Deep analysis of entire git history including all branches, commits, and deleted files
+- **Entropy Analysis**: Advanced mathematical analysis to detect high-entropy strings that may be secrets
+- **Pattern Matching**: Extensive library of regex patterns for detecting known secret formats from popular services
+- **Secret Verification**: Validates detected secrets by attempting authentication with the actual services
+- **Multi-Source Support**: Scans git repositories, filesystems, cloud storage, databases, and container images
+- **Custom Detectors**: Extensible framework for adding organization-specific secret detection patterns
+- **Performance Optimized**: Efficient scanning algorithms suitable for large repositories and continuous monitoring
+- **Detailed Reporting**: Comprehensive output with context, verification status, and remediation guidance
+- **False Positive Management**: Sophisticated filtering and ignore systems to reduce noise and focus on real threats
+
 ## trufflehog documentation
 
 - Version in MegaLinter: **3.89.2**

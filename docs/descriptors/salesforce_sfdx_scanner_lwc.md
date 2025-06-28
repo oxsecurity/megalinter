@@ -7,9 +7,22 @@ description: How to use sfdx-scanner-lwc (configure, ignore files, ignore errors
 # sfdx-scanner-lwc
 [![GitHub stars](https://img.shields.io/github/stars/forcedotcom/code-analyzer?cacheSeconds=3600)](https://github.com/forcedotcom/code-analyzer) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/forcedotcom/code-analyzer?sort=semver)](https://github.com/forcedotcom/code-analyzer/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/forcedotcom/code-analyzer)](https://github.com/forcedotcom/code-analyzer/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/forcedotcom/code-analyzer)](https://github.com/forcedotcom/code-analyzer/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/forcedotcom/code-analyzer)](https://github.com/forcedotcom/code-analyzer/graphs/contributors/)
 
-sfdx-scanner is a sfdx plugin scanning apex and triggers using Apex PMD, and javascript using eslint
+**Salesforce Code Analyzer for Lightning Web Components** is a specialized linting tool that focuses on Lightning Web Components (LWC), using ESLint with LWC-specific rules to ensure components follow modern web standards and Salesforce platform best practices.
 
-If your root folder is not **force-app**, please set variable SALESFORCE_SFDX_SCANNER_LWC_DIRECTORY
+**Key Features:**
+
+- **LWC-Specific Rules**: Comprehensive ESLint rules designed specifically for Lightning Web Component development patterns
+- **Modern JavaScript Analysis**: Validates modern JavaScript/ES6+ usage within the LWC framework constraints
+- **Security Validation**: Identifies security vulnerabilities and potential XSS issues in LWC components
+- **Performance Optimization**: Detects performance anti-patterns and inefficient rendering patterns
+- **Lightning Platform Integration**: Ensures proper use of Lightning platform APIs and decorators (@api, @track, @wire)
+- **Component Lifecycle**: Validates correct component lifecycle method usage and patterns
+- **Wire Service Validation**: Ensures proper use of @wire decorators and Lightning Data Service
+- **Event Handling**: Validates custom event creation and handling patterns
+- **Template Validation**: Analyzes HTML templates for proper binding and directive usage
+- **Accessibility Compliance**: Built-in accessibility checks for inclusive Lightning component design
+
+If your root folder is not **force-app**, please set variable `SALESFORCE_SFDX_SCANNER_LWC_DIRECTORY`
 
 You can select categories and single rules by defining custom arguments (example: `SALESFORCE_SFDX_SCANNER_ARGUMENTS: -c "Best Practices,Security"`)
 

@@ -13,6 +13,18 @@ description: How to use rubocop (configure, ignore files, ignore errors, help & 
 
 [![GitHub stars](https://img.shields.io/github/stars/rubocop-hq/rubocop?cacheSeconds=3600)](https://github.com/rubocop-hq/rubocop) ![autofix](https://shields.io/badge/-autofix-green) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/rubocop-hq/rubocop?sort=semver)](https://github.com/rubocop-hq/rubocop/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/rubocop-hq/rubocop)](https://github.com/rubocop-hq/rubocop/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/rubocop-hq/rubocop)](https://github.com/rubocop-hq/rubocop/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/rubocop-hq/rubocop)](https://github.com/rubocop-hq/rubocop/graphs/contributors/)
 
+**RuboCop** is a comprehensive Ruby code style checker and formatter that enforces the community-driven Ruby Style Guide while providing extensive customization options. It serves as the definitive tool for maintaining consistent Ruby code quality across projects and teams.
+
+**Key Features:**
+
+- **Extensive Rule Set**: Over 400 built-in cops (rules) covering style violations, potential bugs, complexity issues, and best practices
+- **Community-Driven Standards**: Based on the widely-adopted Ruby Style Guide maintained by the Ruby community
+- **Automatic Code Fixing**: Safe auto-correction capabilities for many style violations and formatting issues
+- **Highly Configurable**: Flexible configuration system allowing teams to customize rules, severity levels, and enforcement patterns
+- **Multiple Extensions**: Rich ecosystem with specialized cops for Rails, RSpec, Performance, and other Ruby frameworks
+- **Performance Analysis**: Built-in performance cops to identify inefficient code patterns and suggest optimizations
+- **Gradual Adoption**: Supports incremental adoption with file exclusions and rule-by-rule enabling for legacy codebases
+
 ## rubocop documentation
 
 - Version in MegaLinter: **1.77.0**

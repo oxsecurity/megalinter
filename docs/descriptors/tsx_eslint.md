@@ -13,9 +13,18 @@ description: How to use eslint (configure, ignore files, ignore errors, help & v
 
 [![GitHub stars](https://img.shields.io/github/stars/jsx-eslint/eslint-plugin-react?cacheSeconds=3600)](https://github.com/jsx-eslint/eslint-plugin-react) ![autofix](https://shields.io/badge/-autofix-green) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/jsx-eslint/eslint-plugin-react?sort=semver)](https://github.com/jsx-eslint/eslint-plugin-react/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/jsx-eslint/eslint-plugin-react)](https://github.com/jsx-eslint/eslint-plugin-react/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/jsx-eslint/eslint-plugin-react)](https://github.com/jsx-eslint/eslint-plugin-react/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/jsx-eslint/eslint-plugin-react)](https://github.com/jsx-eslint/eslint-plugin-react/graphs/contributors/)
 
-eslint requires a custom configuration file applicable to your project.
+**ESLint with React Plugin** provides comprehensive linting for TSX (TypeScript React) files, combining ESLint's powerful static analysis with React-specific rules to ensure high-quality React applications written in TypeScript.
 
-You can create it by typing `npx eslint --init` in the root of your repository
+**Key Features:**
+
+- **React-Specific Linting**: 90+ rules covering React best practices, hooks usage, JSX syntax, and component lifecycle patterns
+- **TypeScript Integration**: Full TypeScript support for type-aware linting in React components with proper TSX syntax validation
+- **Hooks Rules**: Comprehensive validation of React Hooks usage patterns, dependencies, and effect cleanup
+- **Accessibility Integration**: Built-in support for jsx-a11y plugin ensuring accessible React components
+- **Performance Optimization**: Rules to detect unnecessary re-renders, missing dependency arrays, and performance anti-patterns
+- **Modern React Patterns**: Support for latest React features including Suspense, Error Boundaries, and concurrent features
+
+ESLint requires a custom configuration file applicable to your project. You can create it by typing `npx eslint --init` in the root of your repository
 
 ## eslint documentation
 

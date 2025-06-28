@@ -7,6 +7,17 @@ description: How to use clang-format (configure, ignore files, ignore errors, he
 # clang-format
 [![GitHub stars](https://img.shields.io/github/stars/llvm/llvm-project?cacheSeconds=3600)](https://github.com/llvm/llvm-project) ![autofix](https://shields.io/badge/-autofix-green) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/llvm/llvm-project?sort=semver)](https://github.com/llvm/llvm-project/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/llvm/llvm-project)](https://github.com/llvm/llvm-project/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/llvm/llvm-project)](https://github.com/llvm/llvm-project/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/llvm/llvm-project)](https://github.com/llvm/llvm-project/graphs/contributors/)
 
+**clang-format** is a powerful code formatter for C, C++, Java, JavaScript, JSON, Objective-C, Protobuf, and C# that automatically formats code according to configurable style guidelines. It's part of the LLVM project and provides consistent, automated formatting.
+
+**Key Features:**
+
+- **Multi-Language Support**: Formats C/C++, Java, JavaScript, JSON, Objective-C, Protobuf, and C# code with language-specific rules
+- **Predefined Styles**: Built-in styles including LLVM, Google, Chromium, Mozilla, Microsoft, WebKit, and GNU coding standards
+- **Highly Configurable**: Extensive customization options through `.clang-format` files with hundreds of style parameters
+- **Selective Formatting**: Format specific lines, ranges, or regions with precise control over what gets formatted
+- **Git Integration**: Built-in tools for formatting only changed lines in git commits and diffs
+- **In-Place Editing**: Can modify files directly or output formatted code to stdout
+
 ## clang-format documentation
 
 - Version in MegaLinter: **19.1.4**

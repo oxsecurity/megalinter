@@ -13,6 +13,21 @@ description: How to use terraform-fmt (configure, ignore files, ignore errors, h
 
 [![GitHub stars](https://img.shields.io/github/stars/hashicorp/terraform?cacheSeconds=3600)](https://github.com/hashicorp/terraform) ![formatter](https://shields.io/badge/-format-yellow) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/hashicorp/terraform?sort=semver)](https://github.com/hashicorp/terraform/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/hashicorp/terraform)](https://github.com/hashicorp/terraform/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/hashicorp/terraform)](https://github.com/hashicorp/terraform/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/hashicorp/terraform)](https://github.com/hashicorp/terraform/graphs/contributors/)
 
+**terraform fmt** is the built-in Terraform command for automatically formatting Terraform configuration files to ensure consistent style and formatting. It rewrites Terraform configuration files to a canonical format and style, making code more readable and maintainable, following HashiCorp's official style conventions.
+
+**Key Features:**
+
+- **Official Formatter**: Built into Terraform core, ensuring compatibility and consistency with HashiCorp standards
+- **Canonical Formatting**: Applies consistent indentation, spacing, and line breaks across all Terraform files
+- **Automatic Fixing**: Rewrites files in-place to fix formatting issues automatically
+- **Diff Mode**: Shows formatting differences without modifying files for review purposes
+- **Recursive Processing**: Can format entire directory trees and module structures
+- **Check Mode**: Validates formatting without making changes, perfect for validation
+- **HCL Syntax Support**: Handles all HashiCorp Configuration Language constructs correctly
+- **Fast Performance**: Optimized for quick formatting of large Terraform codebases
+- **Zero Configuration**: Works out of the box with no setup or configuration required
+- **Team Consistency**: Ensures uniform code style across development teams and projects
+
 ## terraform-fmt documentation
 
 - Version in MegaLinter: **1.12.2**

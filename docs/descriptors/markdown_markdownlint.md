@@ -7,11 +7,19 @@ description: How to use markdownlint (configure, ignore files, ignore errors, he
 # <a href="https://github.com/DavidAnson/markdownlint" target="blank" title="Visit linter Web Site"><img src="https://davidanson.gallerycdn.vsassets.io/extensions/davidanson/vscode-markdownlint/0.37.1/1601748708034/Microsoft.VisualStudio.Services.Icons.Default" alt="markdownlint" height="100px" class="megalinter-logo"></a>markdownlint
 [![GitHub stars](https://img.shields.io/github/stars/DavidAnson/markdownlint?cacheSeconds=3600)](https://github.com/DavidAnson/markdownlint) ![formatter](https://shields.io/badge/-format-yellow) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/DavidAnson/markdownlint?sort=semver)](https://github.com/DavidAnson/markdownlint/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/DavidAnson/markdownlint)](https://github.com/DavidAnson/markdownlint/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/DavidAnson/markdownlint)](https://github.com/DavidAnson/markdownlint/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/DavidAnson/markdownlint)](https://github.com/DavidAnson/markdownlint/graphs/contributors/)
 
-Checks for errors in Markdown files, and can also auto-fix some of them.
+**markdownlint** is a Node.js static analysis tool and linter for Markdown files that enforces standards and consistency across your documentation. It uses the micromark parser and honors CommonMark specifications while supporting popular GitHub Flavored Markdown extensions.
+
+**Key Features:**
+
+- **Comprehensive Rule Set**: Over 50 built-in rules covering heading styles, list formatting, line length, whitespace management, and link validation
+- **Format Support**: Full CommonMark compliance with GitHub Flavored Markdown, tables, autolinks, and extension support for directives, footnotes, and math
+- **Automatic Fixing**: Many rules can automatically repair formatting issues, saving manual effort
+- **Flexible Configuration**: Extensive customization through JSON configuration files with rule-specific settings and style presets
+- **Inline Control**: HTML comment syntax for enabling/disabling rules within documents (`<!-- markdownlint-disable -->`)
+- **Custom Rules**: Extensible architecture allowing project-specific linting requirements
+- **Performance Optimized**: Fast analysis suitable for large documentation projects
 
 [MarkdownLint](https://github.com/DavidAnson/markdownlint) is run through [markdownlint-cli](https://github.com/igorshubovych/markdownlint-cli)
-
-To see MarkdownLint version, you can have a look in the dependencies of latest markdownlint-cli version.
 
 ## markdownlint documentation
 

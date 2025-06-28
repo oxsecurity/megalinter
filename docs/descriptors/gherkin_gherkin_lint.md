@@ -7,6 +7,22 @@ description: How to use gherkin-lint (configure, ignore files, ignore errors, he
 # gherkin-lint
 [![GitHub stars](https://img.shields.io/github/stars/gherkin-lint/gherkin-lint?cacheSeconds=3600)](https://github.com/gherkin-lint/gherkin-lint) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/gherkin-lint/gherkin-lint?sort=semver)](https://github.com/gherkin-lint/gherkin-lint/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/gherkin-lint/gherkin-lint)](https://github.com/gherkin-lint/gherkin-lint/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/gherkin-lint/gherkin-lint)](https://github.com/gherkin-lint/gherkin-lint/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/gherkin-lint/gherkin-lint)](https://github.com/gherkin-lint/gherkin-lint/graphs/contributors/)
 
+**gherkin-lint** is a comprehensive linter for Gherkin feature files used in BDD (Behavior-Driven Development) testing with tools like Cucumber. It helps maintain consistent, readable, and error-free feature files in BDD test suites.
+
+**Key Features:**
+- **26+ configurable rules** covering style, structure, and format validation
+- **Duplicate scenario detection** to prevent naming conflicts
+- **Indentation validation** ensuring proper Gherkin file structure
+- **Trailing whitespace detection** for cleaner feature files
+- **Unnamed element detection** for Features, Scenarios, and Background sections
+- **Tag validation** with customizable tag naming conventions
+- **Custom rules support** for project-specific requirements
+- **Ignore patterns** to exclude specific files or directories
+- **Granular configuration** for different Gherkin elements (Feature, Background, Scenario, Steps)
+- **JSON output format** for structured reporting and automation
+- **File-level rule overriding** for flexibility in large projects
+- **Step definition validation** to ensure proper Given/When/Then structure
+
 ## gherkin-lint documentation
 
 - Visit [Official Web Site](https://github.com/gherkin-lint/gherkin-lint#readme){target=_blank}

@@ -7,6 +7,27 @@ description: How to use ansible-lint (configure, ignore files, ignore errors, he
 # ansible-lint
 [![GitHub stars](https://img.shields.io/github/stars/ansible/ansible-lint?cacheSeconds=3600)](https://github.com/ansible/ansible-lint) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/ansible/ansible-lint?sort=semver)](https://github.com/ansible/ansible-lint/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/ansible/ansible-lint)](https://github.com/ansible/ansible-lint/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/ansible/ansible-lint)](https://github.com/ansible/ansible-lint/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/ansible/ansible-lint)](https://github.com/ansible/ansible-lint/graphs/contributors/)
 
+**Ansible-lint** checks Ansible playbooks for practices and behavior that could potentially be improved. It's a community-backed project that helps enforce best practices and maintain high-quality Ansible code.
+
+**Key Features:**
+
+- **Best Practice Validation**: Checks playbooks against Ansible community best practices and conventions
+- **Auto-fixing**: Can automatically fix some of the most common issues found in playbooks
+- **Extensible Rules**: Comprehensive set of built-in rules with support for custom rules
+- **Multiple Output Formats**: Supports various output formats including SARIF for integration with security tools
+- **Configuration Flexibility**: Highly configurable with support for `.ansible-lint` configuration files
+- **Community Support**: Supports only the last two major versions of Ansible, ensuring compatibility
+
+**Common checks include:**
+
+- YAML syntax and formatting
+- Task and playbook structure validation
+- Security best practices (avoiding plain text secrets)
+- Proper use of Ansible modules and features
+- Naming conventions and documentation standards
+
+Ansible-lint helps teams maintain consistent, secure, and well-structured Ansible automation code.
+
 ## ansible-lint documentation
 
 - Version in MegaLinter: **25.6.1**

@@ -13,9 +13,35 @@ description: How to use eslint (configure, ignore files, ignore errors, help & v
 
 [![GitHub stars](https://img.shields.io/github/stars/eslint/eslint?cacheSeconds=3600)](https://github.com/eslint/eslint) ![autofix](https://shields.io/badge/-autofix-green) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/eslint/eslint?sort=semver)](https://github.com/eslint/eslint/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/eslint/eslint)](https://github.com/eslint/eslint/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/eslint/eslint)](https://github.com/eslint/eslint/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/eslint/eslint)](https://github.com/eslint/eslint/graphs/contributors/)
 
-eslint requires a custom configuration file applicable to your project.
+**ESLint** is the #1 JavaScript linter by downloads on npm (over 77M weekly downloads) and the most widely adopted pluggable linting utility for JavaScript and JSX. It helps you find and fix problems with your JavaScript code through static analysis.
 
-You can create it by typing `npx eslint --init` in the root of your repository
+**Key features:**
+
+- **Static Code Analysis**: Quickly finds problems in JavaScript code without executing it
+- **Automatic Fixing**: Many problems can be automatically fixed with syntax-aware corrections
+- **Highly Configurable**: Completely customizable rules, parsers, and plugins ecosystem
+- **Built-in Editor Integration**: Works seamlessly with most text editors
+- **Extensible Plugin System**: Thousands of community plugins for frameworks like React, Vue, Node.js
+- **Multiple Output Formats**: Supports various output formats including SARIF for security tools
+- **Custom Rules**: Write your own rules that work alongside ESLint's built-in rules
+
+**Common code quality checks:**
+
+- **Syntax Errors**: Catches JavaScript syntax issues and typos
+- **Code Style**: Enforces consistent formatting, naming conventions, and code structure
+- **Best Practices**: Identifies problematic patterns and suggests improvements
+- **Security Issues**: Detects potential security vulnerabilities (with security plugins)
+- **Performance**: Identifies performance anti-patterns and optimizations
+
+**Popular configurations:**
+
+- **Airbnb Style Guide**: Industry-standard JavaScript style guide
+- **Standard**: Minimal, opinionated code style with no configuration
+- **Prettier Integration**: Seamless integration with Prettier for code formatting
+
+ESLint requires a custom configuration file applicable to your project. You can create it by typing `npx eslint --init` in the root of your repository.
+
+Used by companies like Microsoft, Airbnb, Netflix, and Facebook, ESLint helps maintain code quality and consistency across JavaScript projects of all sizes.
 
 ## eslint documentation
 

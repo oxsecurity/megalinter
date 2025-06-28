@@ -13,6 +13,37 @@ description: How to use black (configure, ignore files, ignore errors, help & ve
 
 [![GitHub stars](https://img.shields.io/github/stars/psf/black?cacheSeconds=3600)](https://github.com/psf/black) ![formatter](https://shields.io/badge/-format-yellow) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/psf/black?sort=semver)](https://github.com/psf/black/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/psf/black)](https://github.com/psf/black/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/psf/black)](https://github.com/psf/black/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/psf/black)](https://github.com/psf/black/graphs/contributors/)
 
+**Black** is "the uncompromising code formatter" for Python that automatically formats your code to be consistent and PEP 8 compliant. By using Black, you agree to cede control over minutiae of hand-formatting in return for speed, determinism, and freedom from formatting debates.
+
+**Key features:**
+- **Opinionated Formatting**: Minimal configuration with sensible defaults - "Black is opinionated so you don't have to be"
+- **Deterministic Output**: Same code always produces identical formatting, regardless of environment
+- **Speed and Efficiency**: Fast formatting with parallel processing capabilities
+- **Smallest Diffs**: Produces minimal git diffs by being consistent across all projects
+- **AST Safety**: Verifies that reformatted code produces a valid AST equivalent to the original
+- **Wide Compatibility**: Supports multiple Python versions and syntax features
+
+**Formatting principles:**
+- **Consistency Over Preferences**: Uniform style across all Python projects using Black
+- **Readability First**: Optimizes for code readability and maintainability
+- **Minimal Configuration**: Works out of the box with virtually no setup required
+
+**What Black formats:**
+- **Code Structure**: Consistent indentation, line breaks, and whitespace
+- **String Formatting**: Standardizes quote usage and multi-line strings
+- **Import Organization**: Works well with isort for import formatting
+- **Expression Layout**: Optimizes function calls, list comprehensions, and complex expressions
+
+**Benefits:**
+- **Faster Code Reviews**: Eliminates style discussions and focuses on logic
+- **Mental Energy Savings**: No time spent on formatting decisions
+- **Team Consistency**: Entire team uses identical formatting standards
+- **Reduced Conflicts**: Fewer git merge conflicts due to formatting differences
+
+Black is successfully used by many projects, small and big, and has become the de facto standard for Python code formatting. It's now stable with comprehensive test coverage and should not expect large formatting changes in the future.
+
+**Note**: Black formats code according to its opinionated style. If you prefer different formatting options, you might consider other formatters, though Black's consistency is its main strength.
+
 ## black documentation
 
 - Version in MegaLinter: **25.1.0**

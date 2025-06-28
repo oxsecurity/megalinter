@@ -13,6 +13,19 @@ description: How to use secretlint (configure, ignore files, ignore errors, help
 
 [![GitHub stars](https://img.shields.io/github/stars/secretlint/secretlint?cacheSeconds=3600)](https://github.com/secretlint/secretlint) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/secretlint/secretlint?sort=semver)](https://github.com/secretlint/secretlint/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/secretlint/secretlint)](https://github.com/secretlint/secretlint/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/secretlint/secretlint)](https://github.com/secretlint/secretlint/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/secretlint/secretlint)](https://github.com/secretlint/secretlint/graphs/contributors/)
 
+**SecretLint** is a comprehensive secrets detection tool that prevents sensitive information like API keys, passwords, and tokens from being committed to version control. It provides pluggable architecture with extensive rule sets for detecting various types of secrets across different platforms and services.
+
+**Key Features:**
+
+- **Extensive Rule Library**: Built-in detection for AWS, GitHub, Slack, Google, and dozens of other service credentials
+- **Pluggable Architecture**: Modular rule system allowing custom secret patterns and organization-specific detection
+- **Multiple Output Formats**: Supports JSON, SARIF, and other formats for integration with security tools and platforms
+- **Configuration Flexibility**: Highly configurable with support for custom rules, ignore patterns, and severity levels
+- **Ignore System**: Sophisticated ignore patterns for managing false positives and legacy secrets
+- **Team Collaboration**: Shared configuration files ensure consistent secret detection across development teams
+- **Performance Optimized**: Fast scanning suitable for large repositories and automated workflows
+- **Open Source**: Community-driven with transparent detection rules and continuous updates
+
 ## secretlint documentation
 
 - Version in MegaLinter: **10.1.1**

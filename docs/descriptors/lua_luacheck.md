@@ -7,6 +7,21 @@ description: How to use luacheck (configure, ignore files, ignore errors, help &
 # luacheck
 [![GitHub stars](https://img.shields.io/github/stars/lunarmodules/luacheck?cacheSeconds=3600)](https://github.com/lunarmodules/luacheck) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/lunarmodules/luacheck?sort=semver)](https://github.com/lunarmodules/luacheck/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/lunarmodules/luacheck)](https://github.com/lunarmodules/luacheck/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/lunarmodules/luacheck)](https://github.com/lunarmodules/luacheck/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/lunarmodules/luacheck)](https://github.com/lunarmodules/luacheck/graphs/contributors/)
 
+**luacheck** is a static analyzer and linter for Lua code that detects various issues such as usage of undefined global variables, unused variables and values, accessing uninitialized variables, and unreachable code. It provides comprehensive code quality analysis for Lua projects.
+
+**Key Features:**
+- **Multi-version Lua support** for Lua 5.1-5.4 and LuaJIT syntax checking
+- **Undefined global variable detection** to catch common runtime errors
+- **Unused variable and value analysis** to improve code cleanliness
+- **Uninitialized variable access detection** for safer code
+- **Unreachable code identification** to optimize program flow
+- **Custom project globals** configuration for specific environments
+- **Standard library version selection** matching your Lua version
+- **Warning filtering** by type and variable name patterns
+- **Inline configuration comments** for granular control
+- **Project-wide config files** using `.luacheckrc`
+- **Detailed error reporting** with line numbers and suggestions
+
 ## luacheck documentation
 
 - Version in MegaLinter: **1.2.0**

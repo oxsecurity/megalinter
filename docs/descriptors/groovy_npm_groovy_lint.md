@@ -7,6 +7,20 @@ description: How to use npm-groovy-lint (configure, ignore files, ignore errors,
 # <a href="https://nvuillam.github.io/npm-groovy-lint/" target="blank" title="Visit linter Web Site"><img src="https://repository-images.githubusercontent.com/240214900/1dcdef80-773c-11ea-8c94-305acc58f5c6" alt="npm-groovy-lint" height="100px" class="megalinter-logo"></a>npm-groovy-lint
 [![GitHub stars](https://img.shields.io/github/stars/nvuillam/npm-groovy-lint?cacheSeconds=3600)](https://github.com/nvuillam/npm-groovy-lint) ![autofix](https://shields.io/badge/-autofix-green) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/nvuillam/npm-groovy-lint?sort=semver)](https://github.com/nvuillam/npm-groovy-lint/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/nvuillam/npm-groovy-lint)](https://github.com/nvuillam/npm-groovy-lint/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/nvuillam/npm-groovy-lint)](https://github.com/nvuillam/npm-groovy-lint/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/nvuillam/npm-groovy-lint)](https://github.com/nvuillam/npm-groovy-lint/graphs/contributors/)
 
+**npm-groovy-lint** is a comprehensive linter, formatter, and auto-fixer for Groovy files, Jenkinsfiles, and Gradle scripts. Built on CodeNarc, it provides extensive code quality analysis with intelligent auto-fixing capabilities for maintaining high-quality Groovy codebases.
+
+**Key Features:**
+- **60+ auto-fixable rules** covering formatting, style, and best practices validation
+- **Built on CodeNarc** leveraging the proven Groovy static analysis framework
+- **Automatic code formatting** with intelligent indentation and style correction
+- **SARIF report generation** for integration with security and quality tools
+- **Flexible configuration** with preset configs for different use cases
+- **Jenkinsfile-specific rules** optimized for Jenkins pipeline development
+- **Inline rule disabling** using comments for granular control
+- **Gradle script support** for build file quality analysis
+- **Multi-file processing** for batch operations on large codebases
+- **Java 17 compatibility** ensuring modern runtime support
+
 ## npm-groovy-lint documentation
 
 - Version in MegaLinter: **15.2.0**

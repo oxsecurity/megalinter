@@ -13,7 +13,17 @@ description: How to use helm (configure, ignore files, ignore errors, help & ver
 
 [![GitHub stars](https://img.shields.io/github/stars/helm/helm?cacheSeconds=3600)](https://github.com/helm/helm) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/helm/helm?sort=semver)](https://github.com/helm/helm/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/helm/helm)](https://github.com/helm/helm/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/helm/helm)](https://github.com/helm/helm/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/helm/helm)](https://github.com/helm/helm/graphs/contributors/)
 
-`helm lint` examine a chart for possible issues.
+**Helm Lint** examines Helm charts for potential issues, misconfigurations, and adherence to best practices. It validates chart structure, templates, and values to ensure charts can be successfully deployed and function correctly in Kubernetes environments.
+
+**Key Features:**
+
+- **Chart Validation**: Verifies chart structure, metadata, and required files are present and correctly formatted
+- **Template Rendering**: Tests that all templates render properly with default and provided values
+- **YAML Syntax Checking**: Validates YAML syntax and structure across all chart files
+- **Kubernetes API Compliance**: Ensures generated manifests comply with Kubernetes API schemas and versions
+- **Best Practice Enforcement**: Checks for common Helm chart antipatterns and recommended practices
+- **Dependency Validation**: Verifies chart dependencies are properly declared and accessible
+- **Subchart Support**: Can recursively lint subcharts and their dependencies
 
 ## helm documentation
 

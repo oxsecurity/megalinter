@@ -7,6 +7,19 @@ description: How to use markdown-link-check (configure, ignore files, ignore err
 # markdown-link-check
 ![downgraded version](https://shields.io/badge/-downgraded%20version-orange) [![GitHub stars](https://img.shields.io/github/stars/tcort/markdown-link-check?cacheSeconds=3600)](https://github.com/tcort/markdown-link-check) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/tcort/markdown-link-check?sort=semver)](https://github.com/tcort/markdown-link-check/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/tcort/markdown-link-check)](https://github.com/tcort/markdown-link-check/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/tcort/markdown-link-check)](https://github.com/tcort/markdown-link-check/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/tcort/markdown-link-check)](https://github.com/tcort/markdown-link-check/graphs/contributors/)
 
+**markdown-link-check** is a specialized tool for validating link integrity in Markdown documentation that ensures all links remain functional and accessible. It serves as an essential quality assurance tool for maintaining reliable documentation with working references.
+
+**Key Features:**
+
+- **Comprehensive Link Validation**: Tests HTTP/HTTPS links, relative file paths, anchor links, and email addresses
+- **Dead Link Detection**: Identifies broken external links, missing internal files, and invalid anchor references
+- **HTTP Status Checking**: Validates that external links return successful HTTP responses (200 status codes)
+- **Configurable Timeouts**: Adjustable request timeouts and retry logic for reliable network-dependent testing
+- **Pattern Matching**: Supports regex patterns for excluding specific links or domains from validation
+- **Detailed Reporting**: Clear output showing which links passed, failed, or were skipped with specific error details
+- **Bulk Processing**: Efficiently processes multiple Markdown files with consolidated reporting
+- **Inline Control**: Comment-based directives for disabling checks on specific links when needed
+
 ## markdown-link-check documentation
 
 - Version in MegaLinter: **3.12.2**

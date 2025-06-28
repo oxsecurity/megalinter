@@ -13,6 +13,19 @@ description: How to use stylelint (configure, ignore files, ignore errors, help 
 
 [![GitHub stars](https://img.shields.io/github/stars/stylelint/stylelint?cacheSeconds=3600)](https://github.com/stylelint/stylelint) ![autofix](https://shields.io/badge/-autofix-green) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/stylelint/stylelint?sort=semver)](https://github.com/stylelint/stylelint/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/stylelint/stylelint)](https://github.com/stylelint/stylelint/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/stylelint/stylelint)](https://github.com/stylelint/stylelint/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/stylelint/stylelint)](https://github.com/stylelint/stylelint/graphs/contributors/)
 
+**Stylelint** is a mighty CSS linter that helps you avoid errors and enforce coding conventions in your stylesheets. It's designed to catch both syntax errors and problematic patterns while maintaining code consistency across projects.
+
+**Key Features:**
+
+- **Comprehensive Rule Set**: Over 100 built-in rules covering modern CSS syntax, features, and best practices
+- **Multi-Language Support**: Handles CSS, SCSS, Sass, Less, SugarSS, and CSS-in-JS with embedded style extraction
+- **Automatic Fixing**: Automatically repairs problems where possible, saving manual effort
+- **Highly Extensible**: Plugin architecture allows custom rules and shareable configurations
+- **Error Prevention**: Detects invalid syntax, problematic patterns, unknown properties, and malformed selectors
+- **Convention Enforcement**: Enforces naming patterns, limits complexity, and maintains consistent code style
+- **Robust Testing**: 15,000+ unit tests ensure reliability and accuracy
+- **Industry Trusted**: Used by major companies like Google and GitHub for production codebases
+
 ## stylelint documentation
 
 - Version in MegaLinter: **16.21.0**

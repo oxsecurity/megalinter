@@ -13,6 +13,19 @@ description: How to use prettier (configure, ignore files, ignore errors, help &
 
 [![GitHub stars](https://img.shields.io/github/stars/prettier/prettier?cacheSeconds=3600)](https://github.com/prettier/prettier) ![formatter](https://shields.io/badge/-format-yellow) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/prettier/prettier?sort=semver)](https://github.com/prettier/prettier/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/prettier/prettier)](https://github.com/prettier/prettier/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/prettier/prettier)](https://github.com/prettier/prettier/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/prettier/prettier)](https://github.com/prettier/prettier/graphs/contributors/)
 
+**Prettier** is the industry-standard opinionated code formatter with excellent JSON support that automatically formats JSON files for consistency and readability. It brings professional formatting standards to JSON data across configuration files, APIs, and data structures.
+
+**Key Features:**
+
+- **JSON-Specific Formatting**: Specialized handling of JSON syntax with proper indentation, spacing, and structure
+- **Consistent Output**: Deterministic formatting ensures identical results across different environments and developers
+- **Parse Safety**: AST-based processing validates JSON syntax while formatting, catching errors during formatting
+- **Opinionated Approach**: Zero-configuration setup with sensible defaults optimized for JSON readability
+- **Fast Performance**: High-speed formatting suitable for large JSON files
+- **Nested Structure Handling**: Intelligent formatting of complex nested objects and arrays for optimal readability
+- **Team Standardization**: Eliminates JSON formatting debates and ensures uniform data structure presentation
+- **Configuration Flexibility**: Supports project-specific formatting rules through .prettierrc when customization is needed
+
 ## prettier documentation
 
 - Version in MegaLinter: **3.6.2**

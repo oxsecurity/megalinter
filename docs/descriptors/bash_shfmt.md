@@ -7,6 +7,18 @@ description: How to use shfmt (configure, ignore files, ignore errors, help & ve
 # shfmt
 [![GitHub stars](https://img.shields.io/github/stars/mvdan/sh?cacheSeconds=3600)](https://github.com/mvdan/sh) ![formatter](https://shields.io/badge/-format-yellow) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/mvdan/sh?sort=semver)](https://github.com/mvdan/sh/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/mvdan/sh)](https://github.com/mvdan/sh/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/mvdan/sh)](https://github.com/mvdan/sh/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/mvdan/sh)](https://github.com/mvdan/sh/graphs/contributors/)
 
+**shfmt** is a powerful shell script formatter and parser that automatically standardizes shell script formatting to ensure consistent style across projects. It serves as both a formatter and validator for shell scripting best practices.
+
+**Key Features:**
+
+- **Multi-Shell Support**: Handles bash, POSIX sh, mksh, and bats scripts with shell-specific formatting rules
+- **Intelligent Formatting**: Smart indentation, spacing, and alignment that respects shell syntax and semantics
+- **Customizable Styles**: Configurable indentation size, binary operator positioning, and case statement formatting
+- **Parse Validation**: Built-in parser that catches syntax errors while formatting
+- **Diff-Friendly Output**: Generates minimal, clean diffs that focus on meaningful changes
+- **Language Constructs**: Proper handling of functions, conditionals, loops, arrays, and complex expansions
+- **Zero Dependencies**: Single binary with no external dependencies for easy deployment
+
 ## shfmt documentation
 
 - Version in MegaLinter: **3.11.0**

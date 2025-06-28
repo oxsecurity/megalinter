@@ -13,8 +13,18 @@ description: How to use eslint (configure, ignore files, ignore errors, help & v
 
 [![GitHub stars](https://img.shields.io/github/stars/yannickcr/eslint-plugin-react?cacheSeconds=3600)](https://github.com/yannickcr/eslint-plugin-react) ![autofix](https://shields.io/badge/-autofix-green) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/yannickcr/eslint-plugin-react?sort=semver)](https://github.com/yannickcr/eslint-plugin-react/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/yannickcr/eslint-plugin-react)](https://github.com/yannickcr/eslint-plugin-react/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/yannickcr/eslint-plugin-react)](https://github.com/yannickcr/eslint-plugin-react/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/yannickcr/eslint-plugin-react)](https://github.com/yannickcr/eslint-plugin-react/graphs/contributors/)
 
-eslint requires a custom configuration file applicable to your project.
-You can create it by typing `npx eslint --init` in the root of your repository
+**ESLint with React Plugin** provides comprehensive linting for JSX files, combining ESLint's powerful static analysis with React-specific rules to ensure high-quality React applications written in JavaScript.
+
+**Key Features:**
+
+- **React-Specific Linting**: 90+ rules covering React best practices, hooks usage, JSX syntax, and component lifecycle patterns
+- **JSX Syntax Validation**: Comprehensive validation of JSX syntax, prop types, and component structure with intelligent error reporting
+- **Hooks Rules**: Thorough validation of React Hooks usage patterns, dependencies arrays, and effect cleanup to prevent common bugs
+- **Accessibility Integration**: Built-in support for jsx-a11y plugin ensuring accessible React components and WCAG compliance
+- **Performance Optimization**: Rules to detect unnecessary re-renders, missing keys in lists, and performance anti-patterns
+- **Modern React Patterns**: Support for latest React features including fragments, context, refs, and concurrent features
+
+ESLint requires a custom configuration file applicable to your project. You can create it by typing `npx eslint --init` in the root of your repository
 
 ## eslint documentation
 

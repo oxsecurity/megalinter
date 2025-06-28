@@ -7,6 +7,18 @@ description: How to use pmd (configure, ignore files, ignore errors, help & vers
 # <a href="https://pmd.github.io/" target="blank" title="Visit linter Web Site"><img src="https://pmd.github.io/img/pmd-logo-white-600px.png" alt="pmd" height="100px" class="megalinter-logo"></a>pmd
 [![GitHub stars](https://img.shields.io/github/stars/pmd/pmd?cacheSeconds=3600)](https://github.com/pmd/pmd) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/pmd/pmd?sort=semver)](https://github.com/pmd/pmd/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/pmd/pmd)](https://github.com/pmd/pmd/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/pmd/pmd)](https://github.com/pmd/pmd/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/pmd/pmd)](https://github.com/pmd/pmd/graphs/contributors/)
 
+**PMD** is an extensible cross-language static code analyzer that finds common programming flaws and code quality issues. It focuses on detecting potential bugs, inefficient code patterns, and maintainability issues rather than just style violations.
+
+**Key Features:**
+
+- **Multi-Language Support**: Analyzes Java, JavaScript, Apex, Swift, Kotlin, and 16 other languages with 400+ built-in rules
+- **Advanced Bug Detection**: Identifies unused variables, empty catch blocks, unnecessary object creation, and potential null pointer exceptions
+- **Code Quality Analysis**: Detects complex code patterns, inefficient algorithms, and design principle violations
+- **Copy-Paste Detection**: Includes CPD (Copy-Paste Detector) to find duplicated code across multiple languages
+- **AST-Based Analysis**: Uses JavaCC and ANTLR parsers to analyze abstract syntax trees for deep code understanding
+- **Custom Rule Support**: Extensible with custom rules written in Java or XPath queries
+- **Comprehensive Reporting**: Supports multiple output formats including SARIF for modern toolchain integration
+
 ## pmd documentation
 
 - Version in MegaLinter: **7.15.0**

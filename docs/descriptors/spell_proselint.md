@@ -13,7 +13,16 @@ description: How to use proselint (configure, ignore files, ignore errors, help 
 
 [![GitHub stars](https://img.shields.io/github/stars/amperser/proselint?cacheSeconds=3600)](https://github.com/amperser/proselint) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/amperser/proselint?sort=semver)](https://github.com/amperser/proselint/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/amperser/proselint)](https://github.com/amperser/proselint/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/amperser/proselint)](https://github.com/amperser/proselint/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/amperser/proselint)](https://github.com/amperser/proselint/graphs/contributors/)
 
-a linter for prose
+**proselint** is a powerful linter for English prose that places the world's greatest writers and editors by your side, offering intelligent suggestions to improve your writing quality and style.
+
+**Key Features:**
+
+- **Expert-Driven Advice**: Aggregates wisdom from renowned writers like David Foster Wallace, Chuck Palahniuk, Steve Pinker, Mark Twain, and George Orwell
+- **Comprehensive Style Checks**: Over 50 different categories covering everything from redundancy and clichés to typography and consistency
+- **Industry-Specific Guidance**: Detects jargon, corporate buzzwords, archaic forms, and domain-specific writing issues
+- **Security Awareness**: Identifies sensitive information like credit card numbers and passwords in text
+- **Rich Output Formats**: Provides detailed suggestions with source attribution, severity levels, and potential replacements
+- **Extensible Configuration**: Fully customizable checks through JSON configuration files
 
 ## proselint documentation
 
