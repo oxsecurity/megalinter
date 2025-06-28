@@ -3552,6 +3552,14 @@
   </span>
 </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../copilot-instructions/">
+<span class="md-ellipsis">
+    Copilot Instructions 
+    
+  </span>
+</a>
+</li>
 </ul>
 </nav>
 </li>
@@ -3709,7 +3717,20 @@
 </img></a>
 </div>
 <p><a href="https://github.com/aquasecurity/trivy"><img alt="GitHub stars" src="https://img.shields.io/github/stars/aquasecurity/trivy?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-SARIF-orange"><img alt="sarif" src="https://shields.io/badge/-SARIF-orange"/></a> <a href="https://github.com/aquasecurity/trivy/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/aquasecurity/trivy?sort=semver"/></a> <a href="https://github.com/aquasecurity/trivy/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/aquasecurity/trivy"/></a> <a href="https://github.com/aquasecurity/trivy/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/aquasecurity/trivy"/></a> <a href="https://github.com/aquasecurity/trivy/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/aquasecurity/trivy"/></a></p>
-<p>You can ignore a list of errors by defining a <a href="https://aquasecurity.github.io/trivy/latest/docs/configuration/filtering/#by-finding-ids">.trivyignore file</a></p>
+<p><strong>Trivy</strong> is a comprehensive security scanner that detects vulnerabilities, misconfigurations, secrets, and license issues in container images, filesystems, and git repositories. It serves as an all-in-one security solution for modern development workflows.</p>
+<p><strong>Key Features:</strong></p>
+<ul>
+<li><strong>Multi-Target Scanning</strong>: Analyzes container images, filesystem directories, git repositories, Kubernetes clusters, and cloud infrastructure</li>
+<li><strong>Vulnerability Detection</strong>: Comprehensive CVE database covering OS packages, language-specific libraries, and application dependencies</li>
+<li><strong>Misconfiguration Scanning</strong>: Built-in policies for Infrastructure as Code including Terraform, CloudFormation, Kubernetes, and Docker</li>
+<li><strong>Secret Detection</strong>: Identifies hardcoded secrets, API keys, passwords, and sensitive information in source code</li>
+<li><strong>License Scanning</strong>: Analyzes software licenses to ensure compliance with organizational policies</li>
+<li><strong>SARIF Output</strong>: Modern security report format for integration with development platforms and security tools</li>
+<li><strong>High Performance</strong>: Fast scanning optimized for CI/CD pipelines with efficient caching mechanisms</li>
+<li><strong>Offline Support</strong>: Can operate in air-gapped environments with offline vulnerability databases</li>
+<li><strong>Extensive Integration</strong>: Works with major CI/CD platforms, container registries, and security orchestration tools</li>
+</ul>
+<p><strong>Note</strong>: You can ignore specific findings by defining a <a href="https://aquasecurity.github.io/trivy/latest/docs/configuration/filtering/#by-finding-ids">.trivyignore file</a> at your repository root.</p>
 <h2 id="trivy-documentation">trivy documentation</h2>
 <ul>
 <li>Version in MegaLinter: <strong>0.63.0</strong></li>
@@ -4031,7 +4052,7 @@ Use "trivy [command] --help" for more information about a command.
 <pre><code class="language-dockerfile"># renovate: datasource=github-tags depName=aquasecurity/trivy
 ARG REPOSITORY_TRIVY_VERSION=0.63.0
 RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin "v${REPOSITORY_TRIVY_VERSION}" \
-    &amp;&amp; (trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress)
+    &amp;&amp; (trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress)
 
 </code></pre>
 </article>

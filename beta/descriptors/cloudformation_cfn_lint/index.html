@@ -3552,6 +3552,14 @@
   </span>
 </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../copilot-instructions/">
+<span class="md-ellipsis">
+    Copilot Instructions 
+    
+  </span>
+</a>
+</li>
 </ul>
 </nav>
 </li>
@@ -3709,6 +3717,35 @@
 </img></a>
 </div>
 <p><a href="https://github.com/aws-cloudformation/cfn-lint"><img alt="GitHub stars" src="https://img.shields.io/github/stars/aws-cloudformation/cfn-lint?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-SARIF-orange"><img alt="sarif" src="https://shields.io/badge/-SARIF-orange"/></a> <a href="https://github.com/aws-cloudformation/cfn-lint/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/aws-cloudformation/cfn-lint?sort=semver"/></a> <a href="https://github.com/aws-cloudformation/cfn-lint/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/aws-cloudformation/cfn-lint"/></a> <a href="https://github.com/aws-cloudformation/cfn-lint/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/aws-cloudformation/cfn-lint"/></a> <a href="https://github.com/aws-cloudformation/cfn-lint/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/aws-cloudformation/cfn-lint"/></a></p>
+<p><strong>CFN-Lint</strong> (CloudFormation Linter) is the official AWS tool for validating AWS CloudFormation yaml/json templates against the AWS CloudFormation resource provider schemas and additional best practice checks.</p>
+<p><strong>Key Features:</strong></p>
+<ul>
+<li><strong>AWS Schema Validation</strong>: Validates templates against official AWS CloudFormation resource provider schemas</li>
+<li><strong>Property Validation</strong>: Checks valid values for resource properties and ensures correct data types</li>
+<li><strong>Best Practice Enforcement</strong>: Identifies CloudFormation best practices and anti-patterns</li>
+<li><strong>SAM Support</strong>: Fully supports AWS Serverless Application Model (SAM) templates with transformation validation</li>
+<li><strong>Custom Rules</strong>: Supports custom one-line rules for organization-specific requirements</li>
+<li><strong>Multiple Output Formats</strong>: Supports JSON, JUnit, SARIF, and other output formats</li>
+<li><strong>Region-Specific Validation</strong>: Tests templates against multiple AWS regions to catch region-specific issues</li>
+<li><strong>Extensible Rules Engine</strong>: Comprehensive collection of rules with support for custom rule extensions</li>
+</ul>
+<p><strong>Common validations include:</strong></p>
+<ul>
+<li>Resource type and property validation</li>
+<li>Parameter constraints and dependencies  </li>
+<li>Output and condition logic validation</li>
+<li>Security best practices (IAM policies, encryption, etc.)</li>
+<li>Resource naming and tagging conventions</li>
+<li>Cross-reference validation between resources</li>
+</ul>
+<p><strong>Advanced features:</strong></p>
+<ul>
+<li>Template metadata configuration for granular control</li>
+<li>Graph visualization of template resources</li>
+<li>Experimental rules for cutting-edge CloudFormation features</li>
+<li>Override specifications for custom organizational requirements</li>
+</ul>
+<p>CFN-Lint helps ensure your CloudFormation templates are valid, secure, and follow AWS best practices before deployment.</p>
 <h2 id="cfn-lint-documentation">cfn-lint documentation</h2>
 <ul>
 <li>Version in MegaLinter: <strong>1.36.1</strong></li>

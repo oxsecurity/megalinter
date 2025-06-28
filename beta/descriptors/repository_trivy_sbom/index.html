@@ -3552,6 +3552,14 @@
   </span>
 </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../copilot-instructions/">
+<span class="md-ellipsis">
+    Copilot Instructions 
+    
+  </span>
+</a>
+</li>
 </ul>
 </nav>
 </li>
@@ -3709,7 +3717,18 @@
 </img></a>
 </div>
 <p><a href="https://github.com/aquasecurity/trivy"><img alt="GitHub stars" src="https://img.shields.io/github/stars/aquasecurity/trivy?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-SARIF-orange"><img alt="sarif" src="https://shields.io/badge/-SARIF-orange"/></a> <a href="https://github.com/aquasecurity/trivy/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/aquasecurity/trivy?sort=semver"/></a> <a href="https://github.com/aquasecurity/trivy/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/aquasecurity/trivy"/></a> <a href="https://github.com/aquasecurity/trivy/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/aquasecurity/trivy"/></a> <a href="https://github.com/aquasecurity/trivy/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/aquasecurity/trivy"/></a></p>
-<p>Generates SBOM (Software Bill Of Material) using Trivy</p>
+<p><strong>Trivy SBOM</strong> is a specialized component of Trivy that generates comprehensive Software Bill of Materials (SBOM) documents for enhanced supply chain security and compliance. It provides detailed inventory management for software components and dependencies.</p>
+<p><strong>Key Features:</strong></p>
+<ul>
+<li><strong>Comprehensive Component Discovery</strong>: Automatically detects and catalogs all software components, libraries, and dependencies in projects</li>
+<li><strong>Multi-Format SBOM Output</strong>: Generates SBOMs in industry-standard formats including SPDX and CycloneDX for maximum compatibility</li>
+<li><strong>Container and Filesystem Analysis</strong>: Creates SBOMs for container images, filesystems, and source code repositories</li>
+<li><strong>Dependency Mapping</strong>: Provides complete dependency graphs showing relationships between components</li>
+<li><strong>License Information</strong>: Includes license details for each component to support compliance and legal reviews</li>
+<li><strong>Vulnerability Context</strong>: Links SBOM data with security information for comprehensive risk assessment</li>
+<li><strong>Supply Chain Transparency</strong>: Enables organizations to meet regulatory requirements and industry standards</li>
+<li><strong>Audit Trail</strong>: Creates detailed records of software composition for security auditing and compliance reporting</li>
+</ul>
 <h2 id="trivy-sbom-documentation">trivy-sbom documentation</h2>
 <ul>
 <li>Version in MegaLinter: <strong>0.63.0</strong></li>
@@ -4033,7 +4052,7 @@ Use "trivy [command] --help" for more information about a command.
 <pre><code class="language-dockerfile"># renovate: datasource=github-tags depName=aquasecurity/trivy
 ARG REPOSITORY_TRIVY_SBOM_VERSION=0.63.0
 RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin "v${REPOSITORY_TRIVY_SBOM_VERSION}" \
-    &amp;&amp; (trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress)
+    &amp;&amp; (trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress)
 
 </code></pre>
 </article>

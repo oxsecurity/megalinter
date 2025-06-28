@@ -3552,6 +3552,14 @@
   </span>
 </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../copilot-instructions/">
+<span class="md-ellipsis">
+    Copilot Instructions 
+    
+  </span>
+</a>
+</li>
 </ul>
 </nav>
 </li>
@@ -3709,9 +3717,19 @@
 </img></a>
 </div>
 <p><a href="https://github.com/returntocorp/semgrep"><img alt="GitHub stars" src="https://img.shields.io/github/stars/returntocorp/semgrep?cacheSeconds=3600"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="https://shields.io/badge/-SARIF-orange"><img alt="sarif" src="https://shields.io/badge/-SARIF-orange"/></a> <a href="https://github.com/returntocorp/semgrep/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/returntocorp/semgrep?sort=semver"/></a> <a href="https://github.com/returntocorp/semgrep/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/returntocorp/semgrep"/></a> <a href="https://github.com/returntocorp/semgrep/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/returntocorp/semgrep"/></a> <a href="https://github.com/returntocorp/semgrep/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/returntocorp/semgrep"/></a></p>
-<p>To use SemGrep in MegaLinter you must define a list of rulesets to use.</p>
-<p>Example: <code>REPOSITORY_SEMGREP_RULESETS: ["p/docker-compose","p/owasp-top-ten"]</code></p>
-<p>Exception for standalone and security flavors docker images, that use a list of security rulesets by default.</p>
+<p><strong>Semgrep</strong> is a fast, AI-powered static analysis tool that finds bugs, detects security vulnerabilities, and enforces code standards across 30+ programming languages and frameworks. Unlike traditional SAST tools, Semgrep provides high-confidence findings with minimal false positives.</p>
+<p><strong>Key Features:</strong></p>
+<ul>
+<li><strong>Multi-Language Support</strong>: Comprehensive analysis for 30+ languages including Python, JavaScript, Java, Go, C/C++, and more</li>
+<li><strong>High-Precision Analysis</strong>: AI-powered noise filtering reduces false positives by up to 98% compared to traditional SAST tools</li>
+<li><strong>Security-Focused</strong>: Built-in rulesets for OWASP Top 10, CWE vulnerabilities, and framework-specific security patterns</li>
+<li><strong>Custom Rule Engine</strong>: Simple, code-like syntax for writing custom rules that match your organization's coding standards</li>
+<li><strong>Lightning Fast</strong>: Median CI scan time of 10 seconds, designed for developer workflow integration</li>
+<li><strong>Extensive Rule Registry</strong>: Thousands of community and expert-maintained rules covering security, correctness, and performance
+To use SemGrep in MegaLinter you must define a list of rulesets to use.
+Example: <code>REPOSITORY_SEMGREP_RULESETS: ["p/docker-compose","p/owasp-top-ten"]</code>
+Exception for standalone and security flavors docker images, that use a list of security rulesets by default.</li>
+</ul>
 <h2 id="semgrep-documentation">semgrep documentation</h2>
 <ul>
 <li>Version in MegaLinter: <strong>3.13</strong></li>

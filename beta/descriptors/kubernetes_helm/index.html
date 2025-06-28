@@ -3545,6 +3545,14 @@
   </span>
 </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../copilot-instructions/">
+<span class="md-ellipsis">
+    Copilot Instructions 
+    
+  </span>
+</a>
+</li>
 </ul>
 </nav>
 </li>
@@ -3695,7 +3703,17 @@
 </img></a>
 </div>
 <p><a href="https://github.com/helm/helm"><img alt="GitHub stars" src="https://img.shields.io/github/stars/helm/helm?cacheSeconds=3600"/></a> <a href="https://github.com/helm/helm/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/helm/helm?sort=semver"/></a> <a href="https://github.com/helm/helm/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/helm/helm"/></a> <a href="https://github.com/helm/helm/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/helm/helm"/></a> <a href="https://github.com/helm/helm/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/helm/helm"/></a></p>
-<p><code>helm lint</code> examine a chart for possible issues.</p>
+<p><strong>Helm Lint</strong> examines Helm charts for potential issues, misconfigurations, and adherence to best practices. It validates chart structure, templates, and values to ensure charts can be successfully deployed and function correctly in Kubernetes environments.</p>
+<p><strong>Key Features:</strong></p>
+<ul>
+<li><strong>Chart Validation</strong>: Verifies chart structure, metadata, and required files are present and correctly formatted</li>
+<li><strong>Template Rendering</strong>: Tests that all templates render properly with default and provided values</li>
+<li><strong>YAML Syntax Checking</strong>: Validates YAML syntax and structure across all chart files</li>
+<li><strong>Kubernetes API Compliance</strong>: Ensures generated manifests comply with Kubernetes API schemas and versions</li>
+<li><strong>Best Practice Enforcement</strong>: Checks for common Helm chart antipatterns and recommended practices</li>
+<li><strong>Dependency Validation</strong>: Verifies chart dependencies are properly declared and accessible</li>
+<li><strong>Subchart Support</strong>: Can recursively lint subcharts and their dependencies</li>
+</ul>
 <h2 id="helm-documentation">helm documentation</h2>
 <ul>
 <li>Version in MegaLinter: <strong>3.16.3</strong></li>
