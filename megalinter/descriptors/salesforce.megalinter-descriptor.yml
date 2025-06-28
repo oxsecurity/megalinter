@@ -8,23 +8,8 @@ install:
   apk:
     - coreutils
     - openjdk21
-  dockerfile:    linter_text: |
-      **Lightning Flow Scanner** is a specialized Salesforce CLI plugin that analyzes Salesforce Flow metadata to ensure flows follow best practices, maintain optimal performance, and avoid common pitfalls that can impact user experience and system performance.
-
-      **Key Features:**
-      
-      - **Flow Best Practices**: Validates flows against Salesforce recommended patterns and anti-patterns
-      - **Performance Analysis**: Identifies performance bottlenecks and inefficient flow designs
-      - **Complexity Detection**: Measures flow complexity and suggests simplification opportunities
-      - **DML Operation Optimization**: Analyzes and optimizes data manipulation operations within flows
-      - **Loop Analysis**: Validates loop efficiency and detects potential infinite loop scenarios
-      - **Security Validation**: Ensures flows follow security best practices and proper user context handling
-      - **Governance Compliance**: Enforces organizational flow development standards and naming conventions
-      - **Metadata Integrity**: Verifies flow metadata consistency and identifies structural issues
-      - **CI/CD Integration**: Seamless integration with Salesforce DevOps workflows and deployment pipelines
-      - **Configurable Rules**: Customizable rule sets for different flow types and organizational requirements
-
-      If your root folder is not **force-app**, please set variable `SALESFORCE_LIGHTNING_FLOW_SCANNER_DIRECTORY` - |-
+  dockerfile: 
+    - |-   
       # renovate: datasource=npm depName=@salesforce/cli
       ARG NPM_SALESFORCE_CLI_VERSION=2.93.7
     - |-
