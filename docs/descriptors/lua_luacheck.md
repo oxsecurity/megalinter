@@ -10,6 +10,7 @@ description: How to use luacheck (configure, ignore files, ignore errors, help &
 **luacheck** is a static analyzer and linter for Lua code that detects various issues such as usage of undefined global variables, unused variables and values, accessing uninitialized variables, and unreachable code. It provides comprehensive code quality analysis for Lua projects.
 
 **Key Features:**
+
 - **Multi-version Lua support** for Lua 5.1-5.4 and LuaJIT syntax checking
 - **Undefined global variable detection** to catch common runtime errors
 - **Unused variable and value analysis** to improve code cleanliness

@@ -16,6 +16,7 @@ description: How to use black (configure, ignore files, ignore errors, help & ve
 **Black** is "the uncompromising code formatter" for Python that automatically formats your code to be consistent and PEP 8 compliant. By using Black, you agree to cede control over minutiae of hand-formatting in return for speed, determinism, and freedom from formatting debates.
 
 **Key features:**
+
 - **Opinionated Formatting**: Minimal configuration with sensible defaults - "Black is opinionated so you don't have to be"
 - **Deterministic Output**: Same code always produces identical formatting, regardless of environment
 - **Speed and Efficiency**: Fast formatting with parallel processing capabilities
@@ -24,17 +25,20 @@ description: How to use black (configure, ignore files, ignore errors, help & ve
 - **Wide Compatibility**: Supports multiple Python versions and syntax features
 
 **Formatting principles:**
+
 - **Consistency Over Preferences**: Uniform style across all Python projects using Black
 - **Readability First**: Optimizes for code readability and maintainability
 - **Minimal Configuration**: Works out of the box with virtually no setup required
 
 **What Black formats:**
+
 - **Code Structure**: Consistent indentation, line breaks, and whitespace
 - **String Formatting**: Standardizes quote usage and multi-line strings
 - **Import Organization**: Works well with isort for import formatting
 - **Expression Layout**: Optimizes function calls, list comprehensions, and complex expressions
 
 **Benefits:**
+
 - **Faster Code Reviews**: Eliminates style discussions and focuses on logic
 - **Mental Energy Savings**: No time spent on formatting decisions
 - **Team Consistency**: Entire team uses identical formatting standards

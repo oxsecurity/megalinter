@@ -13,6 +13,7 @@ linters:
       **restructuredtext-lint** (rst-lint) is a reStructuredText linter that validates RST syntax and helps prevent frustrating errors when uploading documentation to PyPI. It checks for common reStructuredText issues and provides comprehensive validation for documentation workflows.
 
       **Key Features:**
+
       - **Malformed directive detection** catching invalid reStructuredText directives
       - **Invalid syntax validation** ensuring proper RST document structure
       - **Title underline problem detection** verifying consistent heading formatting
@@ -50,6 +51,7 @@ linters:
       **rstcheck** is a comprehensive reStructuredText checker that validates RST syntax while also checking the validity of code blocks in various programming languages. It goes beyond basic RST syntax to ensure code examples and embedded content are also valid.
 
       **Key Features:**
+
       - **Multi-language code validation** for Python, C, C++, JSON, XML, and other embedded code blocks
       - **RST syntax validation** ensuring proper reStructuredText document structure
       - **Configuration file support** via `.rstcheck.cfg` for project-specific settings

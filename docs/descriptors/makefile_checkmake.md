@@ -14,6 +14,7 @@ _Disabled reason: Security issues: <https://github.com/checkmake/checkmake/issue
 **checkmake** is a linter for Makefiles that helps enforce best practices and identify common issues in Makefile syntax and structure. It helps prevent common Makefile pitfalls and makes build processes more reliable and maintainable.
 
 **Key Features:**
+
 - **Makefile rule validation** ensuring proper target and dependency syntax
 - **Proper indentation checking** verifying correct tab usage vs. spaces
 - **Variable usage verification** detecting undefined or misused variables

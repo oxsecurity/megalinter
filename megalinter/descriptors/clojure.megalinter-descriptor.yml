@@ -107,6 +107,7 @@ linters:
       **cljstyle** is a comprehensive tool for formatting Clojure code that transforms messy, inconsistent code into beautifully formatted, readable source files. It's a rewrite of the original cljfmt tool with enhanced capabilities and native compilation.
 
       **Key Features:**
+
       - **Automatic Code Formatting**: Transforms poorly formatted Clojure code into clean, consistent, and readable format
       - **Comprehensive Rules**: Handles indentation, spacing, line breaks, namespace formatting, and function definitions
       - **Highly Configurable**: Extensive configuration options through `.cljstyle` files with format rules and width constraints

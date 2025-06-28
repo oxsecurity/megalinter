@@ -10,6 +10,7 @@ description: How to use selene (configure, ignore files, ignore errors, help & v
 **Selene** is a blazing-fast modern Lua linter written in Rust that provides comprehensive static analysis for Lua code. It offers extensive configurability and can be tailored to specific Lua environments like Roblox, World of Warcraft addons, or standard Lua.
 
 **Key Features:**
+
 - **Rust-powered performance** for extremely fast static analysis
 - **Environment-specific configurations** for Roblox, WoW addons, and standard Lua
 - **Comprehensive lint rules** covering code quality, style, and correctness

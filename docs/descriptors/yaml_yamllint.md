@@ -10,6 +10,7 @@ description: How to use yamllint (configure, ignore files, ignore errors, help &
 **yamllint** is a linter for YAML files that checks for syntax validity, key repetition, lines length, trailing spaces, indentation, and other common YAML issues. It helps ensure YAML files are well-formed, follow consistent formatting conventions, and avoid common pitfalls.
 
 **Key Features:**
+
 - **Syntax validity checking** to catch malformed YAML documents
 - **Key repetition detection** preventing duplicate keys in mappings
 - **Line length validation** ensuring consistent formatting standards

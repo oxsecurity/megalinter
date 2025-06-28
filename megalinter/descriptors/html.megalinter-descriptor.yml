@@ -56,6 +56,7 @@ linters:
       **HTMLHint** is a static code analysis tool for HTML that helps developers write better HTML code by detecting errors, enforcing best practices, and ensuring compliance with HTML standards. It provides fast, configurable HTML validation with comprehensive rule coverage.
 
       **Key Features:**
+
       - **Comprehensive rule set** covering common HTML issues and best practices
       - **Unclosed tag detection** preventing malformed HTML structure
       - **Invalid attribute validation** ensuring proper HTML5 compliance

@@ -19,6 +19,7 @@ linters:
       **luacheck** is a static analyzer and linter for Lua code that detects various issues such as usage of undefined global variables, unused variables and values, accessing uninitialized variables, and unreachable code. It provides comprehensive code quality analysis for Lua projects.
 
       **Key Features:**
+
       - **Multi-version Lua support** for Lua 5.1-5.4 and LuaJIT syntax checking
       - **Undefined global variable detection** to catch common runtime errors
       - **Unused variable and value analysis** to improve code cleanliness
@@ -81,6 +82,7 @@ linters:
       **Selene** is a blazing-fast modern Lua linter written in Rust that provides comprehensive static analysis for Lua code. It offers extensive configurability and can be tailored to specific Lua environments like Roblox, World of Warcraft addons, or standard Lua.
 
       **Key Features:**
+
       - **Rust-powered performance** for extremely fast static analysis
       - **Environment-specific configurations** for Roblox, WoW addons, and standard Lua
       - **Comprehensive lint rules** covering code quality, style, and correctness
@@ -130,6 +132,7 @@ linters:
       **StyLua** is an opinionated code formatter for Lua that automatically formats Lua code to enforce consistent style. It removes the need for debates about formatting by providing sensible defaults while still allowing some configuration.
 
       **Key Features:**
+
       - **Opinionated formatting** with sensible defaults for consistent Lua code style
       - **Automatic indentation** and spacing management
       - **Line break optimization** for improved code readability
