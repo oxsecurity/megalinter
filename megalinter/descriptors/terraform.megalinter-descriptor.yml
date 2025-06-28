@@ -163,13 +163,17 @@ linters:
     linter_rules_configuration_url: https://terragrunt.gruntwork.io/docs/getting-started/quick-start/#add-terragrunthcl-to-your-project
     linter_image_url: https://github.com/gruntwork-io/terragrunt/blob/master/docs/assets/img/favicon/ms-icon-310x310.png
     linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/terragrunt.png
-    cli_lint_mode: project
+    config_file_name: terragrunt.hcl
+    cli_config_arg_name: "--terragrunt-config"
     cli_lint_extra_args:
       - "hclfmt"
       - "--terragrunt-check"
     cli_lint_fix_arg_name: "--megalinter-fix-flag" # Workaround for MegaLinter
     cli_lint_fix_remove_args:
       - "--terragrunt-check"
+    cli_lint_extra_args_after:
+      - "--terragrunt-hclfmt-file"
+    test_folder: terraform_terragrunt
     cli_help_arg_name: "--help"
     examples:
       - "terragrunt hclfmt --terragrunt-check"
