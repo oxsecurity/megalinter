@@ -82,63 +82,89 @@ def build_markdown_summary_sections(reporter_self, action_run_url=""):
     # Build complete message using helper functions
     p_r_msg = build_markdown_summary_header(reporter_self, action_run_url)
     
-    # Build sections for each active linter
+    # Separate linters into two groups: those with issues and those that are OK
+    linters_with_issues = []
+    linters_ok = []
+    
     for linter in reporter_self.master.linters:
         if linter.is_active is True:
+            # Check if linter has errors, warnings, or fixes
+            has_errors = linter.number_errors > 0
+            has_warnings = linter.total_number_warnings > 0
+            has_fixes = (linter.try_fix is True and 
+                        ((linter.cli_lint_mode != "project" and linter.number_fixed > 0) or
+                         (linter.cli_lint_mode == "project" and linter.number_fixed > 0)))
+            
+            if has_errors or has_warnings or has_fixes:
+                linters_with_issues.append(linter)
+            else:
+                linters_ok.append(linter)
+    
+    # Build sections for linters with issues first
+    for linter in linters_with_issues:
+        linter_data = get_linter_summary_data(linter, action_run_url)
+        
+        # Build section header summary
+        # Build concise single-line summary
+        status_icon = linter_data['status']
+        descriptor = linter_data['descriptor_id']
+        linter_name = linter.linter_name
+        
+        # Start with basic info
+        summary_text = f"{status_icon} {descriptor} ({linter_name})"
+        
+        # Add most critical info only (without hyperlinks for sections format)
+        if linter.number_errors > 0:
+            summary_text += f" - {linter.total_number_errors} errors"
+        elif linter.total_number_warnings > 0:
+            summary_text += f" - {linter.total_number_warnings} warnings"
+        elif linter_data['nb_fixed_cell'] and linter_data['nb_fixed_cell'] != "":
+            # For nb_fixed_cell, use the plain value without links
+            fixed_count = str(linter.number_fixed) if linter.try_fix is True and linter.cli_lint_mode != "project" else "yes"
+            summary_text += f" - {fixed_count} fixed"
+        
+        # Get linter text output for details section
+        text_report_sub_folder = config.get(
+            reporter_self.master.request_id, "TEXT_REPORTER_SUB_FOLDER", "linters_logs"
+        )
+        text_file_name = (
+            f"{reporter_self.report_folder}{os.path.sep}"
+            f"{text_report_sub_folder}{os.path.sep}"
+            f"{linter.status.upper()}-{linter.name}.log"
+        )
+        
+        linter_output = ""
+        if os.path.isfile(text_file_name):
+            try:
+                with open(text_file_name, "r", encoding="utf-8") as text_file:
+                    linter_output = text_file.read()
+                    # Truncate long output to 1000 characters
+                    if len(linter_output) > 1000:
+                        total_chars = len(linter_output)
+                        linter_output = linter_output[:1000] + f"\n\n(Truncated to 1000 characters on {total_chars})"
+                    if linter_output.strip():
+                        # Escape any HTML in the output and wrap in code block
+                        linter_output = f"```\n{linter_output.strip()}\n```"
+                    else:
+                        linter_output = "No output available"
+            except Exception as e:
+                linter_output = f"Error reading linter output: {str(e)}"
+        else:
+            linter_output = "Linter output file not found"
+        
+        # Build HTML section
+        p_r_msg += f"<details>\n<summary>{summary_text}</summary>\n\n{linter_output}\n\n</details>\n\n"
+    
+    # Add summary section for OK linters
+    if linters_ok:
+        p_r_msg += "### ✅ Linters with no issues\n\n"
+        ok_linter_names = []
+        for linter in linters_ok:
             linter_data = get_linter_summary_data(linter, action_run_url)
-            
-            # Build section header summary
-            # Build concise single-line summary
-            status_icon = linter_data['status']
-            descriptor = linter_data['descriptor_id']
-            linter_name = linter.linter_name
-            
-            # Start with basic info
-            summary_text = f"{status_icon} {descriptor} ({linter_name})"
-            
-            # Add most critical info only (without hyperlinks for sections format)
-            if linter.number_errors > 0:
-                summary_text += f" - {linter.total_number_errors} errors"
-            elif linter.total_number_warnings > 0:
-                summary_text += f" - {linter.total_number_warnings} warnings"
-            elif linter_data['nb_fixed_cell'] and linter_data['nb_fixed_cell'] != "":
-                # For nb_fixed_cell, use the plain value without links
-                fixed_count = str(linter.number_fixed) if linter.try_fix is True and linter.cli_lint_mode != "project" else "yes"
-                summary_text += f" - {fixed_count} fixed"
-            else:
-                summary_text += " - OK"
-            
-            # Get linter text output for details section
-            text_report_sub_folder = config.get(
-                reporter_self.master.request_id, "TEXT_REPORTER_SUB_FOLDER", "linters_logs"
-            )
-            text_file_name = (
-                f"{reporter_self.report_folder}{os.path.sep}"
-                f"{text_report_sub_folder}{os.path.sep}"
-                f"{linter.status.upper()}-{linter.name}.log"
-            )
-            
-            linter_output = ""
-            if os.path.isfile(text_file_name):
-                try:
-                    with open(text_file_name, "r", encoding="utf-8") as text_file:
-                        linter_output = text_file.read()
-                        # Truncate long output to 1000 characters
-                        if len(linter_output) > 1000:
-                            total_chars = len(linter_output)
-                            linter_output = linter_output[:1000] + f"\n\n(Truncated to 1000 characters on {total_chars})"
-                        if linter_output.strip():
-                            # Escape any HTML in the output and wrap in code block
-                            linter_output = f"```\n{linter_output.strip()}\n```"
-                        else:
-                            linter_output = "No output available"
-                except Exception as e:
-                    linter_output = f"Error reading linter output: {str(e)}"
-            else:
-                linter_output = "Linter output file not found"
-            
-            # Build HTML section
-            p_r_msg += f"<details>\n<summary>{summary_text}</summary>\n\n{linter_output}\n\n</details>\n\n"
+            # Use linter link for OK linters to provide documentation access
+            ok_linter_names.append(f"{linter_data['descriptor_id']} ({linter_data['linter_link']})")
+        
+        p_r_msg += ", ".join(ok_linter_names) + "\n\n"
     
     # Add footer content
     p_r_msg += build_markdown_summary_footer(reporter_self, action_run_url)
