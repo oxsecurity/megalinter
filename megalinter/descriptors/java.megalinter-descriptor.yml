@@ -79,12 +79,13 @@ linters:
           url: https://marketplace.visualstudio.com/items?itemName=shengchen.vscode-checkstyle
   # PMD for java
   - class: JavaPmdLinter
+    can_output_sarif: true
     linter_name: pmd
     linter_text: |
       **PMD** is an extensible cross-language static code analyzer that finds common programming flaws and code quality issues. It focuses on detecting potential bugs, inefficient code patterns, and maintainability issues rather than just style violations.
 
       **Key Features:**
-      
+
       - **Multi-Language Support**: Analyzes Java, JavaScript, Apex, Swift, Kotlin, and 16 other languages with 400+ built-in rules
       - **Advanced Bug Detection**: Identifies unused variables, empty catch blocks, unnecessary object creation, and potential null pointer exceptions
       - **Code Quality Analysis**: Detects complex code patterns, inefficient algorithms, and design principle violations

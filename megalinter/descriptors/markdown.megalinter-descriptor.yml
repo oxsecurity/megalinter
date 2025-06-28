@@ -28,6 +28,8 @@ linters:
       - **Custom Rules**: Extensible architecture allowing project-specific linting requirements
       - **Wide Integration**: Available for major editors, build systems, and CI/CD platforms with comprehensive tooling support
       - **Performance Optimized**: Fast analysis suitable for large documentation projects and automated workflows
+
+      [MarkdownLint](https://github.com/DavidAnson/markdownlint) is run through [markdownlint-cli](https://github.com/igorshubovych/markdownlint-cli)
     linter_url: https://github.com/DavidAnson/markdownlint
     linter_repo: https://github.com/DavidAnson/markdownlint
     linter_spdx_license: MIT

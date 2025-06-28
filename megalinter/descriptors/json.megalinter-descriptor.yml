@@ -175,7 +175,7 @@ linters:
 
       **Key Features:**
       
-      - **Automatic Schema Detection**: Uses Schema Store to intelligently match files with appropriate schemas based on filename patterns
+      - **Automatic Schema Detection**: Uses [Schema Store](https://www.schemastore.org/) to intelligently match files with appropriate schemas based on filename patterns
       - **Multi-Format Support**: Validates JSON, YAML, and TOML files with consistent interface across formats
       - **Zero Configuration**: Works out-of-the-box for common configuration files without requiring explicit schema specification
       - **Schema Store Integration**: Leverages the extensive collection of schemas from schemastore.org for popular tools and frameworks

@@ -30,7 +30,18 @@ linters:
   # PHPCS
   - linter_name: phpcs
     linter_text: |
-      **PHP_CodeSniffer (phpcs)** is a powerful tool that tokenizes PHP files and detects violations of a defined coding standard. It helps ensure your PHP code adheres to coding standards such as PSR-1, PSR-12, PEAR, Zend, and many others. PHPCS can detect issues with code formatting, naming conventions, documentation, and structure, helping maintain consistent, readable PHP code across projects.
+      **PHP_CodeSniffer (phpcs)** is a powerful static analysis tool that tokenizes PHP files and detects violations of defined coding standards. It serves as the industry standard for enforcing PHP coding conventions and maintaining consistent code quality across projects.
+
+      **Key Features:**
+
+      - **Multiple Coding Standards**: Built-in support for PSR-1, PSR-2, PSR-12, PEAR, Zend, WordPress, Drupal, and many other standards
+      - **Tokenization Engine**: Advanced PHP tokenizer that understands PHP syntax and language constructs for accurate analysis
+      - **Extensive Rule Set**: Comprehensive checks for code formatting, naming conventions, documentation, and structural issues
+      - **Custom Standards**: Create and configure custom coding standards tailored to project or organizational requirements
+      - **Detailed Reports**: Multiple report formats including full, summary, checkstyle, CSV, JSON, and SARIF for CI/CD integration
+      - **Inline Suppression**: Flexible system for suppressing specific violations using comment annotations
+      - **File Exclusions**: Sophisticated ignore patterns for excluding files, directories, or specific code sections
+      - **Performance Optimized**: Efficient scanning designed for large codebases with minimal memory usage
     name: PHP_PHPCS
     can_output_sarif: true
     linter_spdx_license: BSD-3-Clause
@@ -78,7 +89,19 @@ linters:
   # PHP Stan
   - linter_name: phpstan
     linter_text: |
-      **PHPStan** is a static analysis tool for PHP that focuses on finding errors in your code without actually running it. It catches whole classes of bugs even before you write tests for the code. PHPStan analyzes your PHP code and finds potential issues such as type mismatches, undefined variables, calling methods on null, accessing non-existent properties, and many other potential runtime errors.
+      **PHPStan** is a comprehensive static analysis tool for PHP that focuses on finding errors in your code without executing it. It catches whole classes of bugs even before you write tests, providing deep code analysis and type safety for PHP applications.
+
+      **Key Features:**
+
+      - **Advanced Type Analysis**: Deep understanding of PHP types with support for generics, intersection types, and complex type relationships
+      - **Zero-Configuration Start**: Works out of the box with sensible defaults, no configuration files required initially
+      - **Incremental Analysis**: Smart caching and incremental checking for fast analysis of large codebases
+      - **10 Strictness Levels**: Configurable analysis levels from basic checks to extremely strict type safety enforcement
+      - **Framework Integration**: Built-in support for Symfony, Laravel, Doctrine, PHPUnit, and other popular PHP frameworks
+      - **Custom Rules**: Extensible architecture supporting custom rules and organization-specific analysis requirements
+      - **IDE Integration**: Real-time error reporting in PhpStorm, VS Code, and other popular PHP development environments
+      - **Baseline Support**: Generate baselines to introduce PHPStan gradually into existing projects without fixing all issues
+      - **Memory Efficient**: Optimized for large codebases with intelligent memory management and parallel processing
     name: PHP_PHPSTAN
     can_output_sarif: true
     linter_spdx_license: MIT
@@ -125,7 +148,19 @@ linters:
   # PSALM
   - linter_name: psalm
     linter_text: |
-      **Psalm** is a static analysis tool for PHP that helps identify type errors, logic errors, and potential security issues in PHP code. It provides comprehensive type checking, can catch subtle bugs that other tools miss, and offers advanced features like taint analysis to detect potential security vulnerabilities. Psalm helps improve code quality by providing detailed type information and catching errors before runtime.
+      **Psalm** is an advanced static analysis tool for PHP that provides comprehensive type checking, security analysis, and code quality assessment. Developed by Vimeo, it offers sophisticated analysis capabilities that go beyond traditional linting to catch subtle bugs and security vulnerabilities.
+
+      **Key Features:**
+
+      - **Gradual Type Checking**: Intelligent type inference that works with existing PHP code, gradually adding type safety
+      - **Security Analysis**: Built-in taint analysis to detect potential security vulnerabilities like SQL injection and XSS
+      - **Advanced Type System**: Support for generics, template types, conditional return types, and complex type relationships
+      - **Dead Code Detection**: Identifies unused variables, methods, properties, and imports to help reduce codebase bloat
+      - **Immutability Analysis**: Tracks object mutability and detects potential side effects in functional programming patterns
+      - **Language Server**: Real-time analysis and intelligent code completion through Language Server Protocol
+      - **Migration Tools**: Automated refactoring tools to add type annotations and improve code quality
+      - **Framework Integration**: Specialized support for popular PHP frameworks with framework-specific analysis rules
+      - **Performance Optimized**: Fast analysis with caching and incremental checking for large codebases
     name: PHP_PSALM
     can_output_sarif: true
     linter_spdx_license: MIT
