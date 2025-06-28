@@ -20,6 +20,7 @@ class MarkdownSummaryReporter(Reporter):
         elif (
             config.get(self.master.request_id, "MARKDOWN_SUMMARY_REPORTER", "false")
             == "true"
+            or "GITHUB_STEP_SUMMARY" in os.environ
         ):
             self.is_active = True
         else:
@@ -37,8 +38,18 @@ class MarkdownSummaryReporter(Reporter):
         if os.path.isfile(summary_file_name):
             # Remove from previous run
             os.remove(summary_file_name)
-        with open(summary_file_name, "w", encoding="utf-8") as sarif_file:
-            sarif_file.write(summary)
+        with open(summary_file_name, "w", encoding="utf-8") as summary_file:
+            summary_file.write(summary)
+        # if GITHUB_STEP_SUMMARY is set, append to it
+        if "GITHUB_STEP_SUMMARY" in os.environ:
+            with open(
+                os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8"
+            ) as summary_file:
+                summary_file.write(summary)
         logging.info(
             f"[MARKDOWN_SUMMARY Reporter] Generated {self.name} report: {summary_file_name}"
         )
+        if "GITHUB_STEP_SUMMARY" in os.environ:
+            logging.info(
+                f"[MARKDOWN_SUMMARY Reporter] Also appended to GITHUB_STEP_SUMMARY: {os.environ['GITHUB_STEP_SUMMARY']}"
+            )
