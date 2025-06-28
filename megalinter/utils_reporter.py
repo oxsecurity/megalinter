@@ -88,14 +88,11 @@ def build_markdown_summary_sections(reporter_self, action_run_url=""):
     
     for linter in reporter_self.master.linters:
         if linter.is_active is True:
-            # Check if linter has errors, warnings, or fixes
+            # Check if linter has errors or warnings (fixes alone are not considered issues)
             has_errors = linter.number_errors > 0
             has_warnings = linter.total_number_warnings > 0
-            has_fixes = (linter.try_fix is True and 
-                        ((linter.cli_lint_mode != "project" and linter.number_fixed > 0) or
-                         (linter.cli_lint_mode == "project" and linter.number_fixed > 0)))
             
-            if has_errors or has_warnings or has_fixes:
+            if has_errors or has_warnings:
                 linters_with_issues.append(linter)
             else:
                 linters_ok.append(linter)
@@ -163,13 +160,26 @@ def build_markdown_summary_sections(reporter_self, action_run_url=""):
     # Add summary section for OK linters
     if linters_ok:
         p_r_msg += "### ✅ Linters with no issues\n\n"
-        ok_linter_names = []
         for linter in linters_ok:
             linter_data = get_linter_summary_data(linter, action_run_url)
-            # Use linter link for OK linters to provide documentation access
-            ok_linter_names.append(f"{linter_data['descriptor_id']} ({linter_data['linter_link']})")
+            
+            # Check if this linter has fixes
+            has_fixes = (linter.try_fix is True and 
+                        ((linter.cli_lint_mode != "project" and linter.number_fixed > 0) or
+                         (linter.cli_lint_mode == "project" and linter.number_fixed > 0)))
+            
+            # Build bullet point with linter info
+            bullet_text = f"- {linter_data['descriptor_id']} / {linter_data['linter_link']}"
+            
+            if has_fixes:
+                if linter.cli_lint_mode == "project":
+                    bullet_text += " - ✨ fixes applied"
+                else:
+                    bullet_text += f" - ✨ {linter.number_fixed} fixes applied"
+            
+            p_r_msg += bullet_text + "\n"
         
-        p_r_msg += ", ".join(ok_linter_names) + "\n\n"
+        p_r_msg += "\n"
     
     # Add footer content
     p_r_msg += build_markdown_summary_footer(reporter_self, action_run_url)
