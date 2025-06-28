@@ -100,6 +100,11 @@ def build_markdown_summary_sections(reporter_self, action_run_url=""):
             else:
                 linters_ok.append(linter)
     
+    # Calculate available space per linter based on total linters with issues
+    max_total_chars = 40000
+    total_linters_with_issues = len(linters_with_issues)
+    max_chars_per_linter = max_total_chars // max(total_linters_with_issues, 1)
+
     # Build sections for linters with issues first
     for linter in linters_with_issues:
         linter_data = get_linter_summary_data(linter, action_run_url)
@@ -139,9 +144,9 @@ def build_markdown_summary_sections(reporter_self, action_run_url=""):
                 with open(text_file_name, "r", encoding="utf-8") as text_file:
                     linter_output = text_file.read()
                     # Truncate long output to 1000 characters
-                    if len(linter_output) > 1000:
+                    if len(linter_output) > max_chars_per_linter:
                         total_chars = len(linter_output)
-                        linter_output = linter_output[:1000] + f"\n\n(Truncated to 1000 characters on {total_chars})"
+                        linter_output = linter_output[:max_chars_per_linter] + f"\n\n(Truncated to {max_chars_per_linter} characters out of {total_chars})"
                     if linter_output.strip():
                         # Escape any HTML in the output and wrap in code block
                         linter_output = f"```\n{linter_output.strip()}\n```"
