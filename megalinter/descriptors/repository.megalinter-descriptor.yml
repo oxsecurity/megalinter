@@ -238,6 +238,7 @@ linters:
       **gitleaks** is a SAST tool for detecting and preventing secrets like passwords, API keys, and tokens in git repos. It scans the entire history of a git repository, not just the current state, making it effective at finding secrets that may have been accidentally committed.
 
       **Key Features:**
+      
       - **Full git history scanning** including all branches and commits
       - **High accuracy detection** with minimal false positives
       - **Custom rule support** for organization-specific secret patterns

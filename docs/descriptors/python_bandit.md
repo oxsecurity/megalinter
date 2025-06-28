@@ -16,6 +16,7 @@ description: How to use bandit (configure, ignore files, ignore errors, help & v
 **Bandit** is a specialized security-focused tool designed to find common security issues in Python code. It processes each file by building an AST (Abstract Syntax Tree) and runs appropriate security plugins against the AST nodes to identify potential vulnerabilities.
 
 **Key features:**
+
 - **Security-Focused Analysis**: Specifically designed to detect security vulnerabilities and weaknesses
 - **AST-Based Scanning**: Builds abstract syntax trees for thorough code analysis
 - **Plugin Architecture**: Extensible system with test plugins and blacklist plugins for comprehensive coverage
@@ -23,6 +24,7 @@ description: How to use bandit (configure, ignore files, ignore errors, help & v
 - **Configurable Severity**: Customizable severity levels and rule configurations
 
 **Common security issues detected:**
+
 - **Injection Vulnerabilities**: SQL injection, command injection, code injection patterns
 - **Cryptographic Issues**: Weak cryptographic algorithms, insecure random number generation
 - **Authentication Problems**: Hardcoded passwords, weak authentication mechanisms  
@@ -32,6 +34,7 @@ description: How to use bandit (configure, ignore files, ignore errors, help & v
 - **Input Validation**: Missing input sanitization and validation
 
 **Advanced capabilities:**
+
 - **Blacklist Detection**: Identifies usage of known insecure or deprecated functions
 - **Context-Aware Analysis**: Understands code context to reduce false positives
 - **Baseline Support**: Can track security issues over time and focus on new problems

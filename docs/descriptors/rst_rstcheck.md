@@ -10,6 +10,7 @@ description: How to use rstcheck (configure, ignore files, ignore errors, help &
 **rstcheck** is a comprehensive reStructuredText checker that validates RST syntax while also checking the validity of code blocks in various programming languages. It goes beyond basic RST syntax to ensure code examples and embedded content are also valid.
 
 **Key Features:**
+
 - **Multi-language code validation** for Python, C, C++, JSON, XML, and other embedded code blocks
 - **RST syntax validation** ensuring proper reStructuredText document structure
 - **Configuration file support** via `.rstcheck.cfg` for project-specific settings

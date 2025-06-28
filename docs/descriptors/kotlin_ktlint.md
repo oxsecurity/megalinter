@@ -16,6 +16,7 @@ description: How to use ktlint (configure, ignore files, ignore errors, help & v
 **ktlint** is an anti-bikeshedding Kotlin linter with a built-in formatter inspired by JavaScript Standard and Go's gofmt. It enforces consistent code style with zero configuration required by default, following Kotlin's official coding conventions.
 
 **Key Features:**
+
 - **Zero configuration** required by default, following Kotlin's official coding conventions
 - **Automatic code formatting** with built-in formatter capabilities
 - **Anti-bikeshedding approach** eliminating debates about code style

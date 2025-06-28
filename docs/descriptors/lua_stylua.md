@@ -10,6 +10,7 @@ description: How to use stylua (configure, ignore files, ignore errors, help & v
 **StyLua** is an opinionated code formatter for Lua that automatically formats Lua code to enforce consistent style. It removes the need for debates about formatting by providing sensible defaults while still allowing some configuration.
 
 **Key Features:**
+
 - **Opinionated formatting** with sensible defaults for consistent Lua code style
 - **Automatic indentation** and spacing management
 - **Line break optimization** for improved code readability
