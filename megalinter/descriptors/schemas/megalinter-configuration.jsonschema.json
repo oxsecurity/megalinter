@@ -16206,6 +16206,17 @@
       "title": "RAKU_RAKU: Unsecured env variables",
       "type": "array"
     },
+    "REPORTERS_MARKDOWN_SUMMARY_TYPE": {
+      "$id": "#/properties/REPORTERS_MARKDOWN_SUMMARY_TYPE",
+      "default": "sections",
+      "description": "Display summary in PR/MR comments as sections or as a table",
+      "enum": [
+        "sections",
+        "table"
+      ],
+      "title": "Reporters Markdown Summary type",
+      "type": "string"
+    },
     "REPORTERS_MARKDOWN_TYPE": {
       "$id": "#/properties/REPORTERS_MARKDOWN_TYPE",
       "default": "advanced",
