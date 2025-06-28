@@ -7,6 +7,8 @@ description: Generates a summary of SAST results in Markdown within a file named
 
 Generates a summary of SAST results in Markdown within a file named **megalinter-report.md**, located in the report folder.
 
+If GITHUB_STEP_SUMMARY is set, the related file will also be written.
+
 This reporter **is deactivated by default**.
 
 ![Screenshot](../assets/images/MarkdownSummaryReporter_1.png)
