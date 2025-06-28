@@ -7,7 +7,14 @@ description: How to use git_diff (configure, ignore files, ignore errors, help &
 # git_diff
 [![GitHub stars](https://img.shields.io/github/stars/git/git?cacheSeconds=3600)](https://github.com/git/git) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/git/git?sort=semver)](https://github.com/git/git/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/git/git)](https://github.com/git/git/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/git/git)](https://github.com/git/git/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/git/git)](https://github.com/git/git/graphs/contributors/)
 
-Git diff checks for git conflicts markers in files
+**git diff** is a conflict detection checker that scans files for Git conflict markers and other merge-related issues that may have been inadvertently left in the codebase after resolving merge conflicts.
+
+**Key Features:**
+
+- **Conflict Marker Detection**: Identifies Git conflict markers (`<<<<<<<`, `=======`, `>>>>>>>`) that weren't properly resolved
+- **Merge Safety**: Prevents accidentally committing unresolved merge conflicts to version control
+- **Repository Hygiene**: Helps maintain clean codebases by catching leftover merge artifacts
+- **Fast Scanning**: Efficiently processes files to detect problematic patterns without performance overhead
 
 ## git_diff documentation
 

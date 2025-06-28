@@ -7,6 +7,18 @@ description: How to use devskim (configure, ignore files, ignore errors, help & 
 # <a href="https://github.com/microsoft/DevSkim" target="blank" title="Visit linter Web Site"><img src="https://github.com/microsoft/DevSkim/raw/main/media/devskim_logo.svg" alt="devskim" height="100px" class="megalinter-logo"></a>devskim
 [![GitHub stars](https://img.shields.io/github/stars/microsoft/DevSkim?cacheSeconds=3600)](https://github.com/microsoft/DevSkim) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/microsoft/DevSkim?sort=semver)](https://github.com/microsoft/DevSkim/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/microsoft/DevSkim)](https://github.com/microsoft/DevSkim/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/microsoft/DevSkim)](https://github.com/microsoft/DevSkim/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/microsoft/DevSkim)](https://github.com/microsoft/DevSkim/graphs/contributors/)
 
+**DevSkim** is a security analysis tool that provides inline security guidance for developers by detecting security vulnerabilities and anti-patterns in source code.
+
+**Key Features:**
+
+- **Multi-Language Support**: Analyzes code in dozens of programming languages including C#, Java, JavaScript, Python, C/C++, and more
+- **Comprehensive Rule Set**: Over 500 built-in security rules covering common vulnerabilities like injection flaws, cryptographic issues, and authentication problems
+- **SARIF Output**: Modern security report format for integration with development platforms and security tools
+- **Custom Rules**: Extensible rule engine allowing organizations to create custom security policies
+- **Quick Fixes**: Automated remediation suggestions for many detected security issues
+- **Severity Classification**: Categorizes findings by severity level to help prioritize security fixes
+- **False Positive Management**: Configurable suppression system to reduce noise and focus on critical issues
+
 If you need to ignore folders,files or file extensions, use glob expressions `Glob` property of local `.devskim.json` file
 
 Example:

@@ -13,6 +13,18 @@ description: How to use ktlint (configure, ignore files, ignore errors, help & v
 
 [![GitHub stars](https://img.shields.io/github/stars/pinterest/ktlint?cacheSeconds=3600)](https://github.com/pinterest/ktlint) ![autofix](https://shields.io/badge/-autofix-green) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/pinterest/ktlint?sort=semver)](https://github.com/pinterest/ktlint/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/pinterest/ktlint)](https://github.com/pinterest/ktlint/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/pinterest/ktlint)](https://github.com/pinterest/ktlint/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/pinterest/ktlint)](https://github.com/pinterest/ktlint/graphs/contributors/)
 
+**ktlint** is an anti-bikeshedding Kotlin linter with a built-in formatter inspired by JavaScript Standard and Go's gofmt. It enforces consistent code style with zero configuration required by default, following Kotlin's official coding conventions.
+
+**Key Features:**
+- **Zero configuration** required by default, following Kotlin's official coding conventions
+- **Automatic code formatting** with built-in formatter capabilities
+- **Anti-bikeshedding approach** eliminating debates about code style
+- **`.editorconfig` support** for project-specific formatting rules
+- **Multiple output formats** including plain, JSON, HTML, and checkstyle
+- **Extensibility** with custom rule sets for specialized requirements
+- **SARIF output support** for security and code quality reporting
+- **Error suppression** with inline comments for specific cases
+
 ## ktlint documentation
 
 - Version in MegaLinter: **1.6.0**

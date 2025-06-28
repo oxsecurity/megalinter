@@ -7,6 +7,19 @@ description: How to use jsonlint (configure, ignore files, ignore errors, help &
 # jsonlint
 [![GitHub stars](https://img.shields.io/github/stars/prantlf/jsonlint?cacheSeconds=3600)](https://github.com/prantlf/jsonlint) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/prantlf/jsonlint?sort=semver)](https://github.com/prantlf/jsonlint/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/prantlf/jsonlint)](https://github.com/prantlf/jsonlint/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/prantlf/jsonlint)](https://github.com/prantlf/jsonlint/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/prantlf/jsonlint)](https://github.com/prantlf/jsonlint/graphs/contributors/)
 
+**jsonlint** is a comprehensive JSON validation tool that provides command-line interface for ensuring JSON files conform to specifications and maintain proper structure. It serves as the essential validator for JSON data integrity across web applications, APIs, and configuration systems.
+
+**Key Features:**
+
+- **Pure JavaScript Implementation**: Native JavaScript JSON parser ensuring accurate validation without external dependencies
+- **Strict JSON Compliance**: Validates against official JSON specification to ensure maximum compatibility
+- **Syntax Error Detection**: Identifies malformed JSON structures, missing brackets, invalid characters, and formatting issues
+- **Fast Validation**: High-performance parsing suitable for large JSON files and batch processing
+- **Detailed Error Reporting**: Clear error messages with line and column information for easy debugging
+- **Configurable Options**: Flexible validation options through .jsonlintrc configuration files
+- **Batch Processing**: Efficient validation of multiple JSON files in a single command
+- **Cross-Platform**: Consistent validation behavior across Windows, macOS, and Linux environments
+
 ## jsonlint documentation
 
 - Version in MegaLinter: **16.0.0**

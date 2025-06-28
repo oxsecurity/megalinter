@@ -7,6 +7,20 @@ description: How to use shellcheck (configure, ignore files, ignore errors, help
 # shellcheck
 [![GitHub stars](https://img.shields.io/github/stars/koalaman/shellcheck?cacheSeconds=3600)](https://github.com/koalaman/shellcheck) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/koalaman/shellcheck?sort=semver)](https://github.com/koalaman/shellcheck/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/koalaman/shellcheck)](https://github.com/koalaman/shellcheck/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/koalaman/shellcheck)](https://github.com/koalaman/shellcheck/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/koalaman/shellcheck)](https://github.com/koalaman/shellcheck/graphs/contributors/)
 
+**ShellCheck** is a comprehensive static analysis tool for shell scripts that identifies bugs, security issues, and stylistic problems before they cause runtime failures. It serves as the gold standard for shell script quality assurance and reliability.
+
+**Key Features:**
+
+- **Advanced Bug Detection**: Catches common shell scripting mistakes like unquoted variables, incorrect conditionals, and path expansion issues
+- **Security Analysis**: Identifies potential security vulnerabilities including command injection risks and unsafe variable usage
+- **Portability Checking**: Warns about bashisms and non-portable constructs to ensure scripts work across different shells (bash, dash, sh)
+- **Syntax Validation**: Comprehensive parsing that catches syntax errors and malformed constructs
+- **Best Practices Enforcement**: Promotes modern shell scripting practices and warns against deprecated or dangerous patterns
+- **Detailed Explanations**: Each warning includes links to explanations with examples and recommended fixes
+- **Multi-Shell Support**: Analyzes bash, sh, dash, and ksh scripts with shell-specific checking
+- **SARIF Output**: Modern security report format for integration with development platforms and security tools
+- **Extensive Rule Coverage**: Over 100 different checks covering everything from quoting to array usage
+
 ## shellcheck documentation
 
 - Version in MegaLinter: **0.10.0**

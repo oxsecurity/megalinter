@@ -7,6 +7,20 @@ description: How to use stylua (configure, ignore files, ignore errors, help & v
 # stylua
 [![GitHub stars](https://img.shields.io/github/stars/JohnnyMorganz/StyLua?cacheSeconds=3600)](https://github.com/JohnnyMorganz/StyLua) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/JohnnyMorganz/StyLua?sort=semver)](https://github.com/JohnnyMorganz/StyLua/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/JohnnyMorganz/StyLua)](https://github.com/JohnnyMorganz/StyLua/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/JohnnyMorganz/StyLua)](https://github.com/JohnnyMorganz/StyLua/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/JohnnyMorganz/StyLua)](https://github.com/JohnnyMorganz/StyLua/graphs/contributors/)
 
+**StyLua** is an opinionated code formatter for Lua that automatically formats Lua code to enforce consistent style. It removes the need for debates about formatting by providing sensible defaults while still allowing some configuration.
+
+**Key Features:**
+- **Opinionated formatting** with sensible defaults for consistent Lua code style
+- **Automatic indentation** and spacing management
+- **Line break optimization** for improved code readability
+- **Configurable options** via `stylua.toml` for project-specific needs
+- **Lua 5.1-5.4 support** covering all modern Lua versions
+- **LuaJIT compatibility** for Just-In-Time compiled Lua code
+- **Roblox Luau support** with specialized formatting rules
+- **Fast performance** for formatting large codebases quickly
+- **Ignore comments** to exclude specific code sections from formatting
+- **Range formatting** to format only selected portions of files
+
 ## stylua documentation
 
 - Version in MegaLinter: **2.0.0**

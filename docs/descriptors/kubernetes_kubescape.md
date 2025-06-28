@@ -13,7 +13,19 @@ description: How to use kubescape (configure, ignore files, ignore errors, help 
 
 [![GitHub stars](https://img.shields.io/github/stars/kubescape/kubescape?cacheSeconds=3600)](https://github.com/kubescape/kubescape) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/kubescape/kubescape?sort=semver)](https://github.com/kubescape/kubescape/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/kubescape/kubescape)](https://github.com/kubescape/kubescape/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/kubescape/kubescape)](https://github.com/kubescape/kubescape/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/kubescape/kubescape)](https://github.com/kubescape/kubescape/graphs/contributors/)
 
-`kubescape scan` examines charts and kubernetes files for possible issues, best practices and security vulnerabilities.
+**Kubescape** is a comprehensive Kubernetes security scanner that examines charts and Kubernetes files for security vulnerabilities, misconfigurations, and compliance violations. It provides security analysis based on established frameworks and best practices.
+
+**Key Features:**
+
+- **Multi-Framework Security Scanning**: Supports NSA/CISA guidelines, MITRE ATT&CK, CIS Kubernetes Benchmark, and custom frameworks
+- **Vulnerability Assessment**: Scans container images for known CVEs and security vulnerabilities
+- **Configuration Analysis**: Detects misconfigurations in Kubernetes manifests, Helm charts, and cluster configurations
+- **Compliance Reporting**: Generates compliance reports against security standards and regulatory requirements
+- **SARIF Output**: Modern security report format for integration with development platforms and security tools
+- **Risk Scoring**: Provides risk assessment and prioritization of security findings
+- **CI/CD Integration**: Seamlessly integrates into development pipelines for shift-left security practices
+- **Custom Policies**: Supports custom security policies and rules for organization-specific requirements
+- **Multi-Format Support**: Analyzes YAML manifests, Helm charts, and live cluster configurations
 
 ## kubescape documentation
 

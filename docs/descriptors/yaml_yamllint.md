@@ -7,6 +7,21 @@ description: How to use yamllint (configure, ignore files, ignore errors, help &
 # yamllint
 [![GitHub stars](https://img.shields.io/github/stars/adrienverge/yamllint?cacheSeconds=3600)](https://github.com/adrienverge/yamllint) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/adrienverge/yamllint?sort=semver)](https://github.com/adrienverge/yamllint/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/adrienverge/yamllint)](https://github.com/adrienverge/yamllint/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/adrienverge/yamllint)](https://github.com/adrienverge/yamllint/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/adrienverge/yamllint)](https://github.com/adrienverge/yamllint/graphs/contributors/)
 
+**yamllint** is a linter for YAML files that checks for syntax validity, key repetition, lines length, trailing spaces, indentation, and other common YAML issues. It helps ensure YAML files are well-formed, follow consistent formatting conventions, and avoid common pitfalls.
+
+**Key Features:**
+- **Syntax validity checking** to catch malformed YAML documents
+- **Key repetition detection** preventing duplicate keys in mappings
+- **Line length validation** ensuring consistent formatting standards
+- **Trailing whitespace detection** for cleaner file maintenance
+- **Indentation validation** enforcing consistent YAML structure
+- **Document structure analysis** checking for proper YAML document format
+- **Custom rule configuration** via `.yamllint.yml` configuration files
+- **Multiple output formats** including standard and colored output
+- **Inline comment disabling** for granular rule control
+- **Performance optimized** for handling large YAML files efficiently
+- **Strict mode support** for maximum validation rigor
+
 ## yamllint documentation
 
 - Version in MegaLinter: **1.37.1**

@@ -10,6 +10,22 @@ file_extensions:
 linters:
   # GHERKIN-LINT
   - linter_name: gherkin-lint
+    linter_text: |
+      **gherkin-lint** is a comprehensive linter for Gherkin feature files used in BDD (Behavior-Driven Development) testing with tools like Cucumber. It helps maintain consistent, readable, and error-free feature files in BDD test suites.
+
+      **Key Features:**
+      - **26+ configurable rules** covering style, structure, and format validation
+      - **Duplicate scenario detection** to prevent naming conflicts
+      - **Indentation validation** ensuring proper Gherkin file structure
+      - **Trailing whitespace detection** for cleaner feature files
+      - **Unnamed element detection** for Features, Scenarios, and Background sections
+      - **Tag validation** with customizable tag naming conventions
+      - **Custom rules support** for project-specific requirements
+      - **Ignore patterns** to exclude specific files or directories
+      - **Granular configuration** for different Gherkin elements (Feature, Background, Scenario, Steps)
+      - **JSON output format** for structured reporting and automation
+      - **File-level rule overriding** for flexibility in large projects
+      - **Step definition validation** to ensure proper Given/When/Then structure
     linter_url: https://github.com/gherkin-lint/gherkin-lint
     linter_repo: https://github.com/gherkin-lint/gherkin-lint
     linter_spdx_license: ISC

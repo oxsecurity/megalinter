@@ -13,10 +13,18 @@ description: How to use semgrep (configure, ignore files, ignore errors, help & 
 
 [![GitHub stars](https://img.shields.io/github/stars/returntocorp/semgrep?cacheSeconds=3600)](https://github.com/returntocorp/semgrep) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/returntocorp/semgrep?sort=semver)](https://github.com/returntocorp/semgrep/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/returntocorp/semgrep)](https://github.com/returntocorp/semgrep/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/returntocorp/semgrep)](https://github.com/returntocorp/semgrep/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/returntocorp/semgrep)](https://github.com/returntocorp/semgrep/graphs/contributors/)
 
+**Semgrep** is a fast, AI-powered static analysis tool that finds bugs, detects security vulnerabilities, and enforces code standards across 30+ programming languages and frameworks. Unlike traditional SAST tools, Semgrep provides high-confidence findings with minimal false positives.
+
+**Key Features:**
+
+- **Multi-Language Support**: Comprehensive analysis for 30+ languages including Python, JavaScript, Java, Go, C/C++, and more
+- **High-Precision Analysis**: AI-powered noise filtering reduces false positives by up to 98% compared to traditional SAST tools
+- **Security-Focused**: Built-in rulesets for OWASP Top 10, CWE vulnerabilities, and framework-specific security patterns
+- **Custom Rule Engine**: Simple, code-like syntax for writing custom rules that match your organization's coding standards
+- **Lightning Fast**: Median CI scan time of 10 seconds, designed for developer workflow integration
+- **Extensive Rule Registry**: Thousands of community and expert-maintained rules covering security, correctness, and performance
 To use SemGrep in MegaLinter you must define a list of rulesets to use.
-
 Example: `REPOSITORY_SEMGREP_RULESETS: ["p/docker-compose","p/owasp-top-ten"]`
-
 Exception for standalone and security flavors docker images, that use a list of security rulesets by default.
 
 ## semgrep documentation

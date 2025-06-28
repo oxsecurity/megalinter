@@ -7,6 +7,21 @@ description: How to use rstcheck (configure, ignore files, ignore errors, help &
 # rstcheck
 [![GitHub stars](https://img.shields.io/github/stars/myint/rstcheck?cacheSeconds=3600)](https://github.com/myint/rstcheck) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/myint/rstcheck?sort=semver)](https://github.com/myint/rstcheck/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/myint/rstcheck)](https://github.com/myint/rstcheck/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/myint/rstcheck)](https://github.com/myint/rstcheck/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/myint/rstcheck)](https://github.com/myint/rstcheck/graphs/contributors/)
 
+**rstcheck** is a comprehensive reStructuredText checker that validates RST syntax while also checking the validity of code blocks in various programming languages. It goes beyond basic RST syntax to ensure code examples and embedded content are also valid.
+
+**Key Features:**
+- **Multi-language code validation** for Python, C, C++, JSON, XML, and other embedded code blocks
+- **RST syntax validation** ensuring proper reStructuredText document structure
+- **Configuration file support** via `.rstcheck.cfg` for project-specific settings
+- **Sphinx integration** supporting Sphinx-specific directives and extensions
+- **Detailed error reporting** with precise error locations and descriptions
+- **Ignore pattern support** for excluding specific files or error types
+- **Custom error handling** allowing for project-specific validation rules
+- **Code block syntax checking** validating embedded programming language syntax
+- **Recursive directory scanning** for bulk validation of documentation trees
+- **Extensible architecture** supporting custom validation rules and directives
+- **Performance optimized** for handling large documentation projects efficiently
+
 ## rstcheck documentation
 
 - Version in MegaLinter: **6.2.5**

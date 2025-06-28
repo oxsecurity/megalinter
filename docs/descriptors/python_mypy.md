@@ -13,9 +13,20 @@ description: How to use mypy (configure, ignore files, ignore errors, help & ver
 
 [![GitHub stars](https://img.shields.io/github/stars/python/mypy?cacheSeconds=3600)](https://github.com/python/mypy) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/python/mypy?sort=semver)](https://github.com/python/mypy/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/python/mypy)](https://github.com/python/mypy/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/python/mypy)](https://github.com/python/mypy/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/python/mypy)](https://github.com/python/mypy/graphs/contributors/)
 
-Optional static typing checks for python
+**MyPy** is Python's premier static type checker that brings optional static typing to Python through gradual typing. It analyzes type annotations and infers types to catch bugs before runtime, bridging the gap between Python's dynamic nature and static analysis benefits.
 
-If you don't use python static typing, you should disable this linter by adding `PYTHON_MYPY` in `DISABLE_LINTERS` variable in your `.mega-linter.yml` config file
+**Key Features:**
+
+- **Gradual Typing Support**: Add type checking incrementally to existing codebases without requiring full annotation coverage
+- **Type Inference**: Advanced type inference engine that understands Python idioms and can deduce types even without explicit annotations
+- **Protocol Support**: Duck typing through protocols, enabling structural subtyping for flexible type checking
+- **Generic Types**: Full support for generic types, type variables, and complex type relationships
+- **Plugin Architecture**: Extensible with plugins for popular frameworks like Django, SQLAlchemy, and dataclasses
+- **Incremental Checking**: Fast incremental analysis that only re-checks modified files and their dependencies
+- **Strict Mode Options**: Configurable strictness levels from permissive to extremely strict type checking
+- **Python Version Compatibility**: Supports multiple Python versions and can check compatibility across versions
+
+**Note**: If you don't use Python static typing, disable this linter by adding `PYTHON_MYPY` to `DISABLE_LINTERS` in your `.mega-linter.yml` config file.
 
 ## mypy documentation
 

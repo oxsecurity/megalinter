@@ -13,7 +13,19 @@ description: How to use syft (configure, ignore files, ignore errors, help & ver
 
 [![GitHub stars](https://img.shields.io/github/stars/anchore/syft?cacheSeconds=3600)](https://github.com/anchore/syft) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/anchore/syft?sort=semver)](https://github.com/anchore/syft/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/anchore/syft)](https://github.com/anchore/syft/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/anchore/syft)](https://github.com/anchore/syft/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/anchore/syft)](https://github.com/anchore/syft/graphs/contributors/)
 
-Builds a SBOM (Software Build Of Materials) from your repository
+**Syft** is a comprehensive Software Bill of Materials (SBOM) generation tool that creates detailed inventories of software components and dependencies in your projects. It serves as an essential tool for software supply chain security and compliance management.
+
+**Key Features:**
+
+- **Multi-Format SBOM Generation**: Creates SBOMs in SPDX, CycloneDX, and Syft native formats for maximum compatibility
+- **Extensive Ecosystem Support**: Analyzes container images, filesystems, archives, and source code across multiple programming languages
+- **Language Coverage**: Supports packages from npm, pip, gems, Java/Maven/Gradle, Go modules, .NET, and many more
+- **Container Analysis**: Deep inspection of container images including OS packages and application dependencies
+- **Fast Scanning**: High-performance analysis suitable for CI/CD pipelines and large codebases
+- **Flexible Output**: Multiple output formats including JSON, XML, and human-readable tables
+- **Supply Chain Visibility**: Provides complete transparency into software components and their origins
+- **Compliance Ready**: Supports regulatory requirements and industry standards for software transparency
+- **Integration Friendly**: Seamlessly integrates with vulnerability scanners and security tools for comprehensive analysis
 
 ## syft documentation
 

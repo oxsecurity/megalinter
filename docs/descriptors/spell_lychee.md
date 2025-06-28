@@ -13,12 +13,21 @@ description: How to use lychee (configure, ignore files, ignore errors, help & v
 
 [![GitHub stars](https://img.shields.io/github/stars/lycheeverse/lychee?cacheSeconds=3600)](https://github.com/lycheeverse/lychee) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/lycheeverse/lychee?sort=semver)](https://github.com/lycheeverse/lychee/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/lycheeverse/lychee)](https://github.com/lycheeverse/lychee/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/lycheeverse/lychee)](https://github.com/lycheeverse/lychee/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/lycheeverse/lychee)](https://github.com/lycheeverse/lychee/graphs/contributors/)
 
+**Lychee** is a fast, async, stream-based link checker written in Rust that finds broken hyperlinks and mail addresses inside Markdown, HTML, reStructuredText, websites, and any other text files.
+
+**Key Features:**
+
+- **Lightning Fast**: Async, parallel processing with typical scan times under 10 seconds for most repositories  
+- **Multi-Format Support**: Checks links in Markdown, HTML, reStructuredText, plain text files, and websites
+- **Advanced Filtering**: Regex-based include/exclude patterns, custom headers, and flexible URL scheme filtering
+- **Smart Caching**: Disk-based response caching with configurable expiration to avoid re-checking unchanged links
+- **Robust Error Handling**: Configurable retries, redirects, timeouts, and custom status code acceptance
+- **Multiple Output Formats**: JSON, Markdown, detailed, and compact reporting formats
+- **Privacy-Aware**: Options to exclude private IPs, link-local addresses, and localhost from checking
+
 A file **.lycheeignore** can be defined at the root of the repository to ignore some urls.
-
 Each line can contain Regular Expressions or glob format.
-
 Example with glob, regex and full url:
-
 ```
 https://twitter.com/intent/tweet*
 (.*some_url_part)

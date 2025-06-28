@@ -13,7 +13,18 @@ description: How to use jscpd (configure, ignore files, ignore errors, help & ve
 
 [![GitHub stars](https://img.shields.io/github/stars/kucherenko/jscpd?cacheSeconds=3600)](https://github.com/kucherenko/jscpd) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/kucherenko/jscpd?sort=semver)](https://github.com/kucherenko/jscpd/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/kucherenko/jscpd)](https://github.com/kucherenko/jscpd/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/kucherenko/jscpd)](https://github.com/kucherenko/jscpd/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/kucherenko/jscpd)](https://github.com/kucherenko/jscpd/graphs/contributors/)
 
-JSCPD browses all files of your repository to detect excessive copy-pastes
+**JSCPD** (JavaScript Copy-Paste Detector) is a sophisticated copy-paste detection tool that scans codebases across multiple programming languages to identify duplicated code blocks. It helps maintain code quality by finding excessive code duplication that can lead to maintenance issues and technical debt.
+
+**Key Features:**
+
+- **Multi-Language Support**: Detects copy-paste across 170+ programming languages including JavaScript, TypeScript, Python, Java, C#, and more
+- **Flexible Detection Algorithms**: Multiple algorithms for finding duplicates including token-based and semantic matching
+- **Comprehensive Reporting**: Generates detailed reports in HTML, JSON, XML, Markdown, and other formats with visual diff highlighting
+- **Configurable Thresholds**: Set minimum clone sizes, similarity percentages, and detection sensitivity for different file types
+- **Blame Integration**: Shows Git blame information to identify when and who introduced duplicated code
+- **Performance Optimization**: Efficient scanning algorithms that can handle large codebases with millions of lines
+- **Flexible Ignore Patterns**: Sophisticated filtering with glob patterns, file extensions, and content-based exclusions
+- **Statistical Analysis**: Provides detailed metrics on duplication levels, affected files, and codebase health indicators
 
 If you need to ignore folders, files or file extensions, use glob expressions `ignore` property of local `.jscpd.json` file
 

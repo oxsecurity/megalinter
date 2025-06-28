@@ -7,6 +7,19 @@ description: How to use phpstan (configure, ignore files, ignore errors, help & 
 # <a href="https://phpstan.org/" target="blank" title="Visit linter Web Site"><img src="https://i.imgur.com/WaRKPlC.png" alt="phpstan" height="100px" class="megalinter-logo"></a>phpstan
 [![GitHub stars](https://img.shields.io/github/stars/phpstan/phpstan?cacheSeconds=3600)](https://github.com/phpstan/phpstan) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/phpstan/phpstan?sort=semver)](https://github.com/phpstan/phpstan/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/phpstan/phpstan)](https://github.com/phpstan/phpstan/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/phpstan/phpstan)](https://github.com/phpstan/phpstan/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/phpstan/phpstan)](https://github.com/phpstan/phpstan/graphs/contributors/)
 
+**PHPStan** is a comprehensive static analysis tool for PHP that focuses on finding errors in your code without executing it. It catches whole classes of bugs even before you write tests, providing deep code analysis and type safety for PHP applications.
+
+**Key Features:**
+
+- **Advanced Type Analysis**: Deep understanding of PHP types with support for generics, intersection types, and complex type relationships
+- **Zero-Configuration Start**: Works out of the box with sensible defaults, no configuration files required initially
+- **Incremental Analysis**: Smart caching and incremental checking for fast analysis of large codebases
+- **10 Strictness Levels**: Configurable analysis levels from basic checks to extremely strict type safety enforcement
+- **Framework Integration**: Built-in support for Symfony, Laravel, Doctrine, PHPUnit, and other popular PHP frameworks
+- **Custom Rules**: Extensible architecture supporting custom rules and organization-specific analysis requirements
+- **Baseline Support**: Generate baselines to introduce PHPStan gradually into existing projects without fixing all issues
+- **Memory Efficient**: Optimized for large codebases with intelligent memory management and parallel processing
+
 ## phpstan documentation
 
 - Version in MegaLinter: **2.1.17**

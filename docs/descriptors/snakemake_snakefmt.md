@@ -7,6 +7,21 @@ description: How to use snakefmt (configure, ignore files, ignore errors, help &
 # snakefmt
 [![GitHub stars](https://img.shields.io/github/stars/snakemake/snakefmt?cacheSeconds=3600)](https://github.com/snakemake/snakefmt) ![formatter](https://shields.io/badge/-format-yellow) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/snakemake/snakefmt?sort=semver)](https://github.com/snakemake/snakefmt/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/snakemake/snakefmt)](https://github.com/snakemake/snakefmt/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/snakemake/snakefmt)](https://github.com/snakemake/snakefmt/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/snakemake/snakefmt)](https://github.com/snakemake/snakefmt/graphs/contributors/)
 
+**snakefmt** is a formatter for Snakemake files that applies consistent styling and formatting to Snakefiles and .smk files. It standardizes indentation, spacing, line breaks, and overall code structure while preserving the semantic meaning of Snakemake workflows.
+
+**Key Features:**
+- **Consistent indentation** standardizing whitespace across Snakemake files
+- **Spacing normalization** ensuring uniform spacing around operators and keywords
+- **Line break optimization** improving code readability and structure
+- **Code structure preservation** maintaining semantic meaning while improving format
+- **Check mode support** (`--check`) for validation without modification
+- **Automatic formatting** with intelligent handling of Snakemake syntax
+- **Configuration support** via `.snakefmt.toml` for project-specific settings
+- **Compact diff output** showing precise formatting changes
+- **Workflow compatibility** working with complex Snakemake workflow definitions
+- **Team collaboration** ensuring consistent style across development teams
+- **Performance optimized** for handling large Snakemake projects efficiently
+
 ## snakefmt documentation
 
 - Version in MegaLinter: **0.11.0**

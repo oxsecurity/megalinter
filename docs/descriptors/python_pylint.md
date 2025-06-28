@@ -7,6 +7,38 @@ description: How to use pylint (configure, ignore files, ignore errors, help & v
 # <a href="https://pylint.readthedocs.io" target="blank" title="Visit linter Web Site"><img src="https://raw.githubusercontent.com/pylint-dev/pylint/main/doc/logo.svg" alt="pylint" height="100px" class="megalinter-logo"></a>pylint
 [![GitHub stars](https://img.shields.io/github/stars/pylint-dev/pylint?cacheSeconds=3600)](https://github.com/pylint-dev/pylint) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/pylint-dev/pylint?sort=semver)](https://github.com/pylint-dev/pylint/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/pylint-dev/pylint)](https://github.com/pylint-dev/pylint/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/pylint-dev/pylint)](https://github.com/pylint-dev/pylint/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/pylint-dev/pylint)](https://github.com/pylint-dev/pylint/graphs/contributors/)
 
+**Pylint** is a comprehensive static code analyzer for Python that goes beyond simple syntax checking. It analyzes your code without actually running it, checking for errors, enforcing coding standards, detecting code smells, and suggesting refactoring opportunities.
+
+**Key features:**
+
+- **Advanced Code Inference**: Uses internal code representation (astroid) to infer actual values and types, catching more complex issues
+- **Comprehensive Analysis**: Checks for errors, style violations, code complexity, and potential bugs
+- **Highly Configurable**: Extensive configuration options to customize rules and integrate with any coding standard
+- **Plugin Ecosystem**: Rich ecosystem of plugins for popular frameworks (Django, Pydantic, etc.)
+- **Smart Detection**: Not just trusting type hints - infers actual usage patterns and relationships
+- **Refactoring Suggestions**: Identifies code smells and suggests improvements for maintainability
+
+**What makes Pylint unique:**
+
+- **Deep Inference Engine**: Can detect issues like `import logging as argparse` and catch calls like `argparse.error()` as incorrect
+- **Thorough Analysis**: More comprehensive than other linters, though slower due to detailed inspection
+- **Opinionated Checks**: Includes optional checks for code quality beyond basic syntax
+
+**Common checks include:**
+
+- **Error Detection**: Syntax errors, undefined variables, import issues
+- **Code Quality**: Unused variables, too many arguments, complex functions
+- **Style Enforcement**: PEP 8 compliance, naming conventions, documentation standards
+- **Design Analysis**: Class design, inheritance issues, interface violations
+- **Security**: Basic security anti-patterns and vulnerable code constructs
+
+**Additional tools included:**
+
+- **Pyreverse**: Generates UML package and class diagrams
+- **Symilar**: Duplicate code detection integrated into pylint
+
+For legacy projects, start with `--errors-only` flag and progressively enable more checks. Works best alongside other tools like ruff, mypy, black, and isort for comprehensive Python code quality.
+
 ## pylint documentation
 
 - Version in MegaLinter: **3.3.7**

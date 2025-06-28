@@ -7,7 +7,16 @@ description: How to use ruff (configure, ignore files, ignore errors, help & ver
 # ruff
 [![GitHub stars](https://img.shields.io/github/stars/astral-sh/ruff?cacheSeconds=3600)](https://github.com/astral-sh/ruff) ![autofix](https://shields.io/badge/-autofix-green) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/astral-sh/ruff?sort=semver)](https://github.com/astral-sh/ruff/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/astral-sh/ruff)](https://github.com/astral-sh/ruff/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/astral-sh/ruff)](https://github.com/astral-sh/ruff/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/astral-sh/ruff)](https://github.com/astral-sh/ruff/graphs/contributors/)
 
-An extremely fast Python linter, written in Rust.
+**Ruff** is an extremely fast Python linter and code formatter written in Rust that aims to be 10-100x faster than existing tools while providing comprehensive functionality behind a single interface.
+
+**Key Features:**
+
+- **Lightning Performance**: 10-100x faster than Flake8, Black, and other traditional Python tools, with built-in caching for unchanged files
+- **800+ Built-in Rules**: Comprehensive rule set with native re-implementations of popular Flake8 plugins like flake8-bugbear, bandit, and more
+- **Drop-in Compatibility**: Parity with Flake8, isort, and Black - can replace multiple tools with a single fast solution
+- **Auto-fixing**: Automatic error correction for many violations (unused imports, formatting issues, etc.)
+- **Modern Python Support**: Full Python 3.13 compatibility with pyproject.toml configuration support
+- **Monorepo-Friendly**: Hierarchical and cascading configuration for complex project structures
 
 ## ruff documentation
 

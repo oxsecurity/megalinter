@@ -13,6 +13,20 @@ description: How to use snakemake (configure, ignore files, ignore errors, help 
 
 [![GitHub stars](https://img.shields.io/github/stars/snakemake/snakemake?cacheSeconds=3600)](https://github.com/snakemake/snakemake) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/snakemake/snakemake?sort=semver)](https://github.com/snakemake/snakemake/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/snakemake/snakemake)](https://github.com/snakemake/snakemake/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/snakemake/snakemake)](https://github.com/snakemake/snakemake/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/snakemake/snakemake)](https://github.com/snakemake/snakemake/graphs/contributors/)
 
+**Snakemake** is a comprehensive workflow management system with powerful built-in linting capabilities for validating computational workflow definitions. It ensures Snakefiles are properly structured and follow best practices for reproducible research.
+
+**Key Features:**
+
+- **Workflow Validation**: Comprehensive checking of Snakefile syntax, rule definitions, and workflow structure
+- **Dependency Analysis**: Validates input/output file specifications and dependency chains between rules
+- **Configuration Checking**: Ensures proper configuration file structure and parameter definitions
+- **Python Integration**: Validates embedded Python code within rules and workflow logic
+- **Resource Specification**: Checks resource requirements (memory, CPU, time) and cluster configurations
+- **File Path Validation**: Verifies that file paths and wildcards are correctly specified and resolvable
+- **Best Practices Enforcement**: Promotes reproducible workflow design and scientific computing standards
+- **Early Error Detection**: Catches workflow issues before expensive computational runs begin
+- **Bioinformatics Ready**: Specialized support for scientific computing, bioinformatics, and data analysis pipelines
+
 ## snakemake documentation
 
 - Version in MegaLinter: **9.6.2**

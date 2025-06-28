@@ -7,6 +7,20 @@ description: How to use terragrunt (configure, ignore files, ignore errors, help
 # <a href="https://terragrunt.gruntwork.io" target="blank" title="Visit linter Web Site"><img src="https://github.com/gruntwork-io/terragrunt/blob/master/docs/assets/img/favicon/ms-icon-310x310.png" alt="terragrunt" height="100px" class="megalinter-logo"></a>terragrunt
 [![GitHub stars](https://img.shields.io/github/stars/gruntwork-io/terragrunt?cacheSeconds=3600)](https://github.com/gruntwork-io/terragrunt) ![autofix](https://shields.io/badge/-autofix-green) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/gruntwork-io/terragrunt?sort=semver)](https://github.com/gruntwork-io/terragrunt/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/gruntwork-io/terragrunt)](https://github.com/gruntwork-io/terragrunt/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/gruntwork-io/terragrunt)](https://github.com/gruntwork-io/terragrunt/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/gruntwork-io/terragrunt)](https://github.com/gruntwork-io/terragrunt/graphs/contributors/)
 
+**Terragrunt** is a thin wrapper for Terraform that provides tools for keeping your Terraform configurations DRY, working with multiple Terraform modules, and managing remote state. It helps validate Terragrunt configurations and ensures that your infrastructure code follows best practices for modularity, reusability, and maintainability.
+
+**Key Features:**
+
+- **DRY Terraform Code**: Eliminates repetition by allowing shared configurations across multiple environments
+- **Remote State Management**: Simplifies backend configuration and remote state management across projects
+- **Module Composition**: Orchestrates multiple Terraform modules with dependency management
+- **Configuration Validation**: Validates Terragrunt HCL configurations for syntax and semantic errors
+- **Environment Management**: Provides patterns for managing infrastructure across multiple environments
+- **Lock File Support**: Handles Terraform provider lock files consistently across environments
+- **Dependency Graph**: Automatically manages dependencies between Terraform modules and configurations
+- **Parallel Execution**: Runs Terraform operations in parallel where dependencies allow
+- **Error Handling**: Enhanced error handling and debugging capabilities for complex infrastructure deployments
+
 ## terragrunt documentation
 
 - Version in MegaLinter: **0.81.10**

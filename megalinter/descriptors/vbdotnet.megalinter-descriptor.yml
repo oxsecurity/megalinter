@@ -17,7 +17,18 @@ linters:
     linter_name: dotnet-format
     is_formatter: true
     linter_text: |
-      dotnet-format requires a `.sln` or `.vbproj` file to run correctly.
+      **dotnet format** is the official .NET code formatter that automatically applies style preferences and static analysis recommendations to enforce consistent formatting across .NET projects.
+
+      **Key Features:**
+
+      - **EditorConfig Integration**: Reads formatting preferences from .editorconfig files or applies sensible defaults
+      - **Comprehensive Formatting**: Handles whitespace, code style, and analyzer rule violations with targeted subcommands
+      - **Multi-Language Support**: Works with C#, Visual Basic .NET, and F# projects within .NET solutions
+      - **Configurable Severity**: Allows filtering by diagnostic severity levels (info, warn, error)
+      - **Selective Processing**: Include/exclude specific files or folders with fine-grained control
+      - **MSBuild Integration**: Seamlessly works with .NET projects and solutions without additional configuration
+
+      **Note**: Requires a `.sln` or `.vbproj` file to run correctly.
     linter_url: https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format
     linter_repo: https://github.com/dotnet/sdk
     linter_rules_configuration_url: https://github.com/dotnet/sdk/tree/main/documentation/format/docs

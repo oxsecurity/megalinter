@@ -7,6 +7,19 @@ description: How to use clang-format (configure, ignore files, ignore errors, he
 # clang-format
 [![GitHub stars](https://img.shields.io/github/stars/llvm/llvm-project?cacheSeconds=3600)](https://github.com/llvm/llvm-project) ![autofix](https://shields.io/badge/-autofix-green) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/llvm/llvm-project?sort=semver)](https://github.com/llvm/llvm-project/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/llvm/llvm-project)](https://github.com/llvm/llvm-project/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/llvm/llvm-project)](https://github.com/llvm/llvm-project/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/llvm/llvm-project)](https://github.com/llvm/llvm-project/graphs/contributors/)
 
+**clang-format** is a comprehensive code formatter for C/C++/Objective-C code that automatically enforces consistent coding style according to configurable rules and heuristics. As part of the LLVM project, it provides industry-leading formatting capabilities for complex C++ codebases.
+
+**Key Features:**
+
+- **Advanced C++ Support**: Handles modern C++ features including templates, lambda expressions, auto declarations, and range-based for loops
+- **Highly Configurable**: Extensive style options covering indentation, spacing, alignment, line breaks, and brace placement
+- **Predefined Styles**: Built-in support for popular style guides including LLVM, Google, Chromium, Mozilla, and WebKit
+- **Semantic Preservation**: Maintains code functionality while reformatting, never changing the program's behavior
+- **Complex Expression Handling**: Intelligent formatting of complex expressions, nested templates, and macro definitions
+- **Custom Configuration**: Fine-grained control through `.clang-format` files with inheritance and directory-specific rules
+- **Incremental Formatting**: Can format specific ranges or files without affecting the entire codebase
+- **Cross-Platform Support**: Works consistently across different operating systems and development environments
+
 ## clang-format documentation
 
 - Version in MegaLinter: **19.1.4**

@@ -35,7 +35,18 @@ linters:
     name: SALESFORCE_SFDX_SCANNER_APEX
     files_sub_directory: force-app
     linter_text: |
-      sfdx-scanner is a sfdx plugin scanning apex and triggers using Apex PMD, and javascript using eslint
+      **Salesforce Code Analyzer (SFDX Scanner)** is the official Salesforce CLI plugin for scanning Apex code, triggers, and other Salesforce components to identify potential issues, security vulnerabilities, and code quality problems. It uses industry-standard tools like PMD and ESLint to provide comprehensive analysis of Salesforce development artifacts.
+
+      **Key Features:**
+
+      - **Multi-Engine Analysis**: Combines PMD for Apex analysis with ESLint for JavaScript/Lightning Web Components
+      - **Security Focus**: Identifies security vulnerabilities and potential attack vectors in Salesforce code
+      - **Performance Optimization**: Detects performance anti-patterns and inefficient code constructs
+      - **Code Quality Rules**: Comprehensive rule sets covering best practices, naming conventions, and maintainability
+      - **Configurable Severity**: Customizable severity thresholds and rule categories for different project needs
+      - **Multiple Output Formats**: Supports CSV, JSON, SARIF, and other formats for integration with development tools
+      - **Lightning Platform Specific**: Rules tailored for Salesforce platform constraints and governor limits
+      - **Custom Rule Sets**: Support for custom PMD rule sets and organization-specific coding standards
 
       If your root folder is not **force-app**, please set variable `SALESFORCE_SFDX_SCANNER_DIRECTORY`
 
@@ -108,9 +119,21 @@ linters:
     name: SALESFORCE_SFDX_SCANNER_AURA
     files_sub_directory: force-app
     linter_text: |
-      sfdx-scanner is a sfdx plugin scanning apex and triggers using Apex PMD, and javascript using eslint
+      **Salesforce Code Analyzer for Aura Components** is a specialized linting tool that focuses on Aura Lightning components, using ESLint with Salesforce-specific rules to ensure Aura components follow best practices and platform guidelines.
 
-      If your root folder is not **force-app**, please set variable SALESFORCE_SFDX_SCANNER_AURA_DIRECTORY
+      **Key Features:**
+
+      - **Aura-Specific Rules**: Specialized ESLint rules designed for Aura Lightning component development patterns
+      - **JavaScript Analysis**: Comprehensive JavaScript linting for Aura component controllers, helpers, and renderers
+      - **Security Validation**: Identifies security vulnerabilities specific to Aura component architecture
+      - **Platform Compliance**: Ensures components follow Salesforce Lightning platform requirements and constraints
+      - **Event Handling**: Validates proper event handling patterns and component communication
+      - **Performance Optimization**: Detects inefficient patterns that could impact component performance
+      - **API Usage Validation**: Ensures proper use of Aura framework APIs and deprecated method detection
+      - **Configurable Rules**: Customizable ESLint configuration for organization-specific coding standards
+      - **Integration Ready**: Seamless integration with Salesforce development workflows and CI/CD pipelines
+
+      If your root folder is not **force-app**, please set variable `SALESFORCE_SFDX_SCANNER_AURA_DIRECTORY`
 
       You can select categories and single rules by defining custom arguments (example: `SALESFORCE_SFDX_SCANNER_ARGUMENTS: -c "Best Practices,Security"`)
 
@@ -171,9 +194,22 @@ linters:
     name: SALESFORCE_SFDX_SCANNER_LWC
     files_sub_directory: force-app
     linter_text: |
-      sfdx-scanner is a sfdx plugin scanning apex and triggers using Apex PMD, and javascript using eslint
+      **Salesforce Code Analyzer for Lightning Web Components** is a specialized linting tool that focuses on Lightning Web Components (LWC), using ESLint with LWC-specific rules to ensure components follow modern web standards and Salesforce platform best practices.
 
-      If your root folder is not **force-app**, please set variable SALESFORCE_SFDX_SCANNER_LWC_DIRECTORY
+      **Key Features:**
+
+      - **LWC-Specific Rules**: Comprehensive ESLint rules designed specifically for Lightning Web Component development patterns
+      - **Modern JavaScript Analysis**: Validates modern JavaScript/ES6+ usage within the LWC framework constraints
+      - **Security Validation**: Identifies security vulnerabilities and potential XSS issues in LWC components
+      - **Performance Optimization**: Detects performance anti-patterns and inefficient rendering patterns
+      - **Lightning Platform Integration**: Ensures proper use of Lightning platform APIs and decorators (@api, @track, @wire)
+      - **Component Lifecycle**: Validates correct component lifecycle method usage and patterns
+      - **Wire Service Validation**: Ensures proper use of @wire decorators and Lightning Data Service
+      - **Event Handling**: Validates custom event creation and handling patterns
+      - **Template Validation**: Analyzes HTML templates for proper binding and directive usage
+      - **Accessibility Compliance**: Built-in accessibility checks for inclusive Lightning component design
+
+      If your root folder is not **force-app**, please set variable `SALESFORCE_SFDX_SCANNER_LWC_DIRECTORY`
 
       You can select categories and single rules by defining custom arguments (example: `SALESFORCE_SFDX_SCANNER_ARGUMENTS: -c "Best Practices,Security"`)
 
@@ -233,7 +269,19 @@ linters:
   - linter_name: lightning-flow-scanner
     files_sub_directory: force-app
     linter_text: |
-      Lightning Flow Scanner is a sfdx plugin scanning the integrity and best practices of Salesforce Flows
+      **Lightning Flow Scanner** is a specialized SFDX plugin that analyzes Salesforce Flows for integrity issues, performance problems, and adherence to best practices. It helps developers build reliable and maintainable Flow automations.
+
+      **Key Features:**
+
+      - **Flow Integrity Analysis**: Validates Flow logic, connections, and component configurations for correctness
+      - **Best Practice Enforcement**: Checks against established Salesforce Flow development best practices
+      - **Performance Optimization**: Identifies potential performance bottlenecks and inefficient Flow patterns
+      - **Error Prevention**: Detects common Flow configuration errors before deployment
+      - **Comprehensive Rule Set**: Multiple rule categories covering design, performance, and maintainability
+      - **Configurable Scanning**: Customizable rules and thresholds through configuration files
+      - **CI/CD Integration**: Seamless integration with Salesforce development pipelines
+      - **Detailed Reporting**: Clear error messages with specific recommendations for improvement
+      - **SFDX Native**: Built as a native SFDX plugin for consistent Salesforce toolchain integration
 
       If your root folder is not **force-app**, please set variable SALESFORCE_LIGHTNING_FLOW_SCANNER_DIRECTORY
     linter_url: https://github.com/Lightning-Flow-Scanner

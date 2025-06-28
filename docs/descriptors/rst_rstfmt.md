@@ -7,6 +7,20 @@ description: How to use rstfmt (configure, ignore files, ignore errors, help & v
 # rstfmt
 ![formatter](https://shields.io/badge/-format-yellow)
 
+**rstfmt** is a specialized formatter for reStructuredText (RST) files that automatically standardizes documentation formatting for consistency and readability. It serves as the definitive tool for maintaining professional RST documentation standards.
+
+**Key Features:**
+
+- **Smart Formatting**: Intelligent reStructuredText parsing that preserves semantic meaning while improving presentation
+- **Consistent Styling**: Standardizes indentation, spacing, line lengths, and structural elements across documents
+- **Directive Handling**: Proper formatting of RST directives, roles, and special markup constructs
+- **Table Formatting**: Automatic alignment and formatting of RST tables and grid structures
+- **Link Standardization**: Consistent formatting of internal and external links, references, and citations
+- **Check Mode**: Validation mode that reports formatting issues without making changes
+- **Batch Processing**: Efficient formatting of multiple RST files and entire documentation projects
+- **Documentation Standards**: Ensures adherence to reStructuredText formatting conventions and best practices
+- **Sphinx Compatibility**: Fully compatible with Sphinx documentation builds and workflows
+
 ## rstfmt documentation
 
 - Version in MegaLinter: **0.0.14**

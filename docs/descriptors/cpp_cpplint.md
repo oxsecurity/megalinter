@@ -7,6 +7,18 @@ description: How to use cpplint (configure, ignore files, ignore errors, help & 
 # cpplint
 [![GitHub stars](https://img.shields.io/github/stars/cpplint/cpplint?cacheSeconds=3600)](https://github.com/cpplint/cpplint) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/cpplint/cpplint?sort=semver)](https://github.com/cpplint/cpplint/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/cpplint/cpplint)](https://github.com/cpplint/cpplint/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/cpplint/cpplint)](https://github.com/cpplint/cpplint/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/cpplint/cpplint)](https://github.com/cpplint/cpplint/graphs/contributors/)
 
+**cpplint** is a command-line tool that enforces Google's C++ Style Guide, helping teams maintain consistent and readable C++ code. It focuses on style, formatting, and best practice compliance rather than logic errors.
+
+**Key Features:**
+
+- **Google C++ Style Guide**: Enforces comprehensive style guidelines used by Google's C++ projects
+- **Header File Checking**: Validates include guards, header ordering, and proper header usage
+- **Naming Conventions**: Ensures consistent naming for variables, functions, classes, and namespaces
+- **Formatting Compliance**: Checks indentation, line length, spacing, and comment formatting
+- **Best Practices**: Detects deprecated constructs, improper use of C++ features, and potential style issues
+- **Configurable Rules**: Allows filtering and customization of specific style checks
+- **Incremental Checking**: Can be run on individual files or as part of code quality validation
+
 ## cpplint documentation
 
 - Version in MegaLinter: **2.0.2**

@@ -32,6 +32,19 @@ linters:
   # Internal powershell linter
   - class: PowershellLinter
     linter_name: powershell
+    linter_text: |
+      **PSScriptAnalyzer** is the premier static code analysis tool for PowerShell modules and scripts that enforces best practices and detects potential issues. Developed by the PowerShell Team and community, it serves as the standard for PowerShell code quality analysis.
+
+      **Key Features:**
+
+      - **Comprehensive Rule Set**: 100+ built-in rules covering security, performance, style, and best practice violations
+      - **Security Analysis**: Detects dangerous use of Invoke-Expression, improper credential handling, and security vulnerabilities
+      - **Code Quality Checks**: Identifies uninitialized variables, unused parameters, incorrect cmdlet usage, and logic errors
+      - **Customizable Severity**: Rules categorized by severity levels (Error, Warning, Information) with configurable thresholds
+      - **Custom Rules Support**: Extensible framework for creating organization-specific analysis rules
+      - **Auto-Fix Capability**: Automatic correction for many rule violations using the -Fix parameter
+      - **Configuration Flexibility**: Detailed configuration through .psd1 files for team-specific standards
+      - **Diagnostic Reporting**: Comprehensive reports with file locations, rule descriptions, and remediation suggestions
     linter_url: https://github.com/PowerShell/PSScriptAnalyzer
     linter_repo: https://github.com/PowerShell/PSScriptAnalyzer
     linter_image_url: https://raw.githubusercontent.com/PowerShell/PSScriptAnalyzer/refs/heads/main/logo.png
@@ -61,6 +74,17 @@ linters:
   # Internal powershell formatter
   - class: PowershellLinter
     linter_name: powershell_formatter
+    linter_text: |
+      **PowerShell Formatter** provides automatic code formatting for PowerShell scripts and modules through PSScriptAnalyzer's Invoke-Formatter cmdlet. It ensures consistent code appearance and structure across PowerShell projects by applying standardized formatting rules.
+
+      **Key Features:**
+
+      - **Automatic Formatting**: Consistent indentation, spacing, and code structure formatting
+      - **Configurable Rules**: Customizable formatting settings through .psd1 configuration files
+      - **Code Standardization**: Enforces uniform code style across teams and projects
+      - **Encoding Support**: Configurable output encoding (UTF-8, ASCII, Unicode, etc.) for different environments
+      - **Preserve Semantics**: Formats code while maintaining original functionality and behavior
+      - **Team Collaboration**: Shared configuration ensures consistent formatting across development teams
     variables:
       - name: POWERSHELL_POWERSHELL_FORMATTER_OUTPUT_ENCODING
         default_value: "utf8"

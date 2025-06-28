@@ -7,6 +7,22 @@ description: How to use rst-lint (configure, ignore files, ignore errors, help &
 # rst-lint
 [![GitHub stars](https://img.shields.io/github/stars/twolfson/restructuredtext-lint?cacheSeconds=3600)](https://github.com/twolfson/restructuredtext-lint) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/twolfson/restructuredtext-lint?sort=semver)](https://github.com/twolfson/restructuredtext-lint/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/twolfson/restructuredtext-lint)](https://github.com/twolfson/restructuredtext-lint/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/twolfson/restructuredtext-lint)](https://github.com/twolfson/restructuredtext-lint/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/twolfson/restructuredtext-lint)](https://github.com/twolfson/restructuredtext-lint/graphs/contributors/)
 
+**restructuredtext-lint** (rst-lint) is a reStructuredText linter that validates RST syntax and helps prevent frustrating errors when uploading documentation to PyPI. It checks for common reStructuredText issues and provides comprehensive validation for documentation workflows.
+
+**Key Features:**
+- **Malformed directive detection** catching invalid reStructuredText directives
+- **Invalid syntax validation** ensuring proper RST document structure
+- **Title underline problem detection** verifying consistent heading formatting
+- **Multiple formatting error checks** covering common RST pitfalls
+- **Docutils integration** leveraging the standard RST parsing library
+- **Detailed error messages** with precise line numbers for quick fixes
+- **Multiple output formats** supporting both text and JSON output
+- **Custom directive support** extensible with custom directives and roles
+- **Sphinx documentation compatibility** for specialized documentation workflows
+- **PyPI upload validation** preventing documentation upload failures
+- **Command-line interface** for easy integration into build processes
+- **Fast processing** optimized for large documentation projects
+
 ## rst-lint documentation
 
 - Version in MegaLinter: **1.4.0**

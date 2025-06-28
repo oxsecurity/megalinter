@@ -7,7 +7,15 @@ description: How to use v8r (configure, ignore files, ignore errors, help & vers
 # v8r
 [![GitHub stars](https://img.shields.io/github/stars/chris48s/v8r?cacheSeconds=3600)](https://github.com/chris48s/v8r) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/chris48s/v8r?sort=semver)](https://github.com/chris48s/v8r/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/chris48s/v8r)](https://github.com/chris48s/v8r/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/chris48s/v8r)](https://github.com/chris48s/v8r/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/chris48s/v8r)](https://github.com/chris48s/v8r/graphs/contributors/)
 
-v8r checks the validity of JSON/YAML files if they have a matching schema defined on [schemastore.org](https://www.schemastore.org/)
+**v8r** is a command-line validator for JSON, YAML, and TOML files that automatically detects and applies appropriate schemas from the Schema Store based on filename patterns, providing intelligent validation without manual schema configuration.
+
+**Key Features:**
+
+- **Automatic Schema Detection**: Uses Schema Store to intelligently match files with appropriate schemas based on filename patterns
+- **Multi-Format Support**: Validates JSON, YAML, and TOML files with consistent interface across formats
+- **Zero Configuration**: Works out-of-the-box for common configuration files without requiring explicit schema specification
+- **Schema Store Integration**: Leverages the extensive collection of schemas from schemastore.org for popular tools and frameworks
+- **Detailed Error Reporting**: Provides clear, actionable validation error messages with line and column information
 
 ## v8r documentation
 

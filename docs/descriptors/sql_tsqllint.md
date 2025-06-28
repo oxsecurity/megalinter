@@ -7,6 +7,19 @@ description: How to use tsqllint (configure, ignore files, ignore errors, help &
 # <a href="https://github.com/tsqllint/tsqllint" target="blank" title="Visit linter Web Site"><img src="https://tsqllint.gallerycdn.vsassets.io/extensions/tsqllint/tsqllint/1.2.0/1528922982751/Microsoft.VisualStudio.Services.Icons.Default" alt="tsqllint" height="100px" class="megalinter-logo"></a>tsqllint
 [![GitHub stars](https://img.shields.io/github/stars/tsqllint/tsqllint?cacheSeconds=3600)](https://github.com/tsqllint/tsqllint) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/tsqllint/tsqllint?sort=semver)](https://github.com/tsqllint/tsqllint/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/tsqllint/tsqllint)](https://github.com/tsqllint/tsqllint/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/tsqllint/tsqllint)](https://github.com/tsqllint/tsqllint/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/tsqllint/tsqllint)](https://github.com/tsqllint/tsqllint/graphs/contributors/)
 
+**tsqllint** is a specialized linter for T-SQL (Transact-SQL) code used with Microsoft SQL Server. It analyzes T-SQL scripts for syntax errors, style violations, and adherence to best practices with configurable rules, helping ensure T-SQL code quality and consistency in SQL Server database development projects.
+
+**Key Features:**
+
+- **T-SQL Specialized**: Purpose-built for Microsoft SQL Server T-SQL syntax and features
+- **Comprehensive Rule Set**: Extensive collection of rules covering syntax, style, and best practices
+- **Configurable Analysis**: Customizable rule configuration to match team coding standards
+- **Inline Rule Control**: Support for comment-based rule disabling and configuration within scripts
+- **Detailed Error Reporting**: Clear error messages with line numbers and rule explanations
+- **Performance Optimized**: Fast analysis suitable for large T-SQL codebases and stored procedures
+- **Cross-Platform**: Runs on Windows, macOS, and Linux environments
+- **Extensible Architecture**: Plugin system for custom rule development and organizational standards
+
 ## tsqllint documentation
 
 - Version in MegaLinter: **1.16.0.0**

@@ -100,6 +100,26 @@ def build_markdown_summary_sections(reporter_self, action_run_url=""):
             else:
                 linters_ok.append(linter)
 
+    # Sort linters with issues: error icons (❌) first, then warning icons (⚠️)
+    def sort_linters_by_icon_severity(linter):
+        # Get the linter status icon to determine sorting priority
+        linter_status_icon = (
+            "✅"
+            if linter.status == "success" and linter.return_code == 0
+            else (
+                "⚠️" if linter.status != "success" and linter.return_code == 0 else "❌"
+            )
+        )
+
+        # Return tuple for sorting: (icon_priority, linter_name)
+        # icon_priority: 0 for ❌ (error - highest priority), 1 for ⚠️ (warning), 2 for ✅ (success)
+        icon_priority = (
+            0 if linter_status_icon == "❌" else (1 if linter_status_icon == "⚠️" else 2)
+        )
+        return (icon_priority, linter.linter_name.lower())
+
+    linters_with_issues.sort(key=sort_linters_by_icon_severity)
+
     # Calculate available space per linter based on total linters with issues
     max_total_chars = 40000
     total_linters_with_issues = len(linters_with_issues)

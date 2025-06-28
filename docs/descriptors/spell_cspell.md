@@ -7,10 +7,19 @@ description: How to use cspell (configure, ignore files, ignore errors, help & v
 # <a href="https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell" target="blank" title="Visit linter Web Site"><img src="https://streetsidesoftware.gallerycdn.vsassets.io/extensions/streetsidesoftware/code-spell-checker/1.9.2/1601218033318/Microsoft.VisualStudio.Services.Icons.Default" alt="cspell" height="100px" class="megalinter-logo"></a>cspell
 [![GitHub stars](https://img.shields.io/github/stars/streetsidesoftware/cspell?cacheSeconds=3600)](https://github.com/streetsidesoftware/cspell) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/streetsidesoftware/cspell?sort=semver)](https://github.com/streetsidesoftware/cspell/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/streetsidesoftware/cspell)](https://github.com/streetsidesoftware/cspell/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/streetsidesoftware/cspell)](https://github.com/streetsidesoftware/cspell/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/streetsidesoftware/cspell)](https://github.com/streetsidesoftware/cspell/graphs/contributors/)
 
-MegaLinter generates content of a `.cspell.json` config file at the end of its TextReporter artifact
+**CSpell** is a comprehensive spell checker for code that helps catch spelling errors in source code, documentation, and comments designed specifically for developers and technical writers.
 
-Copy it at the root of your repository, read it, remove real spelling errors (after have corrected them in the source), and you're good to go !
+**Key Features:**
 
+- **Code-Aware Checking**: Understands programming languages and technical terminology, avoiding false positives on variable names, APIs, and technical terms
+- **Multi-Language Support**: Supports 30+ programming languages with specialized dictionaries for each language and framework
+- **Custom Dictionaries**: Extensive collection of domain-specific dictionaries (medical, scientific, legal, etc.) plus ability to create custom word lists
+- **Flexible Configuration**: Highly configurable via JSON files with support for workspace-specific settings and ignore patterns
+- **Performance Optimized**: Fast scanning designed for large codebases with minimal performance impact
+- **Developer-Friendly**: Handles camelCase, PascalCase, snake_case, and other programming conventions intelligently
+
+MegaLinter generates content of a `.cspell.json` config file at the end of its TextReporter artifact.
+Copy it at the root of your repository, read it, remove real spelling errors (after have corrected them in the source), and you're good to go!
 If you do not want cspell to analyze the files names, define `SPELL_CSPELL_ANALYZE_FILE_NAMES` to `false`
 
 ## cspell documentation

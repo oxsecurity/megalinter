@@ -13,6 +13,17 @@ description: How to use checkstyle (configure, ignore files, ignore errors, help
 
 [![GitHub stars](https://img.shields.io/github/stars/checkstyle/checkstyle?cacheSeconds=3600)](https://github.com/checkstyle/checkstyle) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/checkstyle/checkstyle?sort=semver)](https://github.com/checkstyle/checkstyle/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/checkstyle/checkstyle)](https://github.com/checkstyle/checkstyle/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/checkstyle/checkstyle)](https://github.com/checkstyle/checkstyle/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/checkstyle/checkstyle)](https://github.com/checkstyle/checkstyle/graphs/contributors/)
 
+**Checkstyle** is a comprehensive development tool that helps programmers write Java code adhering to coding standards. It automates the tedious but crucial task of checking Java code for style violations, making it ideal for projects that want to enforce consistent coding practices.
+
+**Key Features:**
+
+- **Comprehensive Code Analysis**: Checks class design, method design, code layout, and formatting issues across your entire codebase
+- **Highly Configurable**: Supports almost any coding standard with extensive configuration options and rule customization
+- **Standard Compliance**: Built-in support for Sun Code Conventions, Google Java Style, and other popular style guides
+- **Detailed Reporting**: Generates comprehensive reports highlighting violations with file locations and descriptions
+- **200+ Built-in Checks**: Covers naming conventions, imports, whitespace, modifiers, blocks, and design patterns
+- **SARIF Output**: Supports SARIF format for enhanced integration with modern development tools and platforms
+
 ## checkstyle documentation
 
 - Version in MegaLinter: **10.26.0**

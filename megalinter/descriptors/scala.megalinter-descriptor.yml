@@ -18,10 +18,18 @@ linters:
     linter_repo: https://github.com/scalacenter/scalafix
     linter_spdx_license: BSD-3-Clause
     linter_text: |
-      Scalafix lints and fixes scala files
+      **Scalafix** is a refactoring and linting tool for Scala that automates code quality maintenance, enabling both one-time migrations and continuous code health enforcement.
 
-      - As there is no prior compilation or semantic db generation, the linting is applied only with [built-in syntactic rules](https://scalacenter.github.io/scalafix/docs/rules/overview.html)
-      - scalafix arguments related to [semantic options](https://megalinter.io/descriptors/scala_scalafix/#help-content) can not be used
+      **Key Features:**
+
+      - **Automated Refactoring**: Handles day-to-day code maintenance tasks and complex migration scripts with precision
+      - **Comprehensive Linting**: Reports errors for code patterns that cause production bugs or violate coding standards
+      - **Syntactic and Semantic Rules**: Supports both syntax-based rules (no compilation needed) and semantic rules (requires compilation)
+      - **Built-in Rule Library**: Extensive collection of rules for common Scala patterns, deprecations, and best practices
+      - **Custom Rule Development**: Extensible architecture for writing project-specific rules and transformations
+      - **Configuration Flexibility**: Highly configurable through `.scalafix.conf` files with rule-specific settings
+
+      **Note**: In MegaLinter, only syntactic rules are applied as there is no prior compilation or semantic database generation. Semantic options cannot be used in this context.
     linter_rules_url: https://scalacenter.github.io/scalafix/docs/rules/overview.html
     linter_rules_configuration_url: https://scalacenter.github.io/scalafix/docs/users/configuration.html
     linter_rules_inline_disable_url: https://scalacenter.github.io/scalafix/docs/users/suppression.html

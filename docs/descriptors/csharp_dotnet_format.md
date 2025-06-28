@@ -7,7 +7,19 @@ description: How to use dotnet-format (configure, ignore files, ignore errors, h
 # <a href="https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format" target="blank" title="Visit linter Web Site"><img src="https://user-images.githubusercontent.com/9797472/61659851-6bbdc880-ac7d-11e9-95f7-d30c7de1a18a.png" alt="dotnet-format" height="100px" class="megalinter-logo"></a>dotnet-format
 [![GitHub stars](https://img.shields.io/github/stars/dotnet/sdk?cacheSeconds=3600)](https://github.com/dotnet/sdk) ![formatter](https://shields.io/badge/-format-yellow) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/dotnet/sdk?sort=semver)](https://github.com/dotnet/sdk/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/dotnet/sdk)](https://github.com/dotnet/sdk/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/dotnet/sdk)](https://github.com/dotnet/sdk/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/dotnet/sdk)](https://github.com/dotnet/sdk/graphs/contributors/)
 
-dotnet-format requires a `.sln` or `.csproj` file to run correctly.
+**dotnet format** is the official .NET code formatter that automatically applies consistent code styling and formatting rules to C# and VB.NET projects. It integrates directly with the .NET SDK and uses EditorConfig settings and analyzer rules to ensure uniform code appearance.
+
+**Key Features:**
+
+- **Official .NET Tool**: Native integration with .NET SDK and MSBuild for seamless project integration
+- **EditorConfig Support**: Respects .editorconfig files for consistent formatting across teams and editors
+- **Analyzer Integration**: Works with .NET analyzers and code style rules for comprehensive formatting
+- **Solution/Project Scope**: Can format entire solutions, specific projects, or individual files with precise control
+- **Incremental Formatting**: Only formats changed files or specific file patterns to optimize performance
+- **Multiple Rule Categories**: Handles whitespace, style preferences, and third-party analyzer rules
+- **Verification Mode**: Verify mode ensures code is properly formatted without making changes
+
+**Note**: dotnet-format requires a `.sln` or `.csproj` file to run correctly.
 
 ## dotnet-format documentation
 

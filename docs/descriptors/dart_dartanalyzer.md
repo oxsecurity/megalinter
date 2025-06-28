@@ -7,6 +7,17 @@ description: How to use dartanalyzer (configure, ignore files, ignore errors, he
 # <a href="https://dart.dev/tools/dart-analyze" target="blank" title="Visit linter Web Site"><img src="https://dart.dev/assets/img/logo/logo-white-text.svg" alt="dartanalyzer" height="100px" class="megalinter-logo"></a>dartanalyzer
 [![GitHub stars](https://img.shields.io/github/stars/dart-lang/sdk?cacheSeconds=3600)](https://github.com/dart-lang/sdk) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/dart-lang/sdk?sort=semver)](https://github.com/dart-lang/sdk/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/dart-lang/sdk)](https://github.com/dart-lang/sdk/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/dart-lang/sdk)](https://github.com/dart-lang/sdk/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/dart-lang/sdk)](https://github.com/dart-lang/sdk/graphs/contributors/)
 
+**Dart Analyzer** performs comprehensive static analysis on Dart code to identify errors, warnings, and style issues before execution. It's the same powerful analysis engine used by IDEs and editors with Dart support.
+
+**Key Features:**
+
+- **Static Code Analysis**: Detects typos, type errors, dead code, and potential runtime issues without executing code
+- **Comprehensive Linter Rules**: Enforces Dart Style Guide and Effective Dart best practices with 200+ configurable rules
+- **Strict Type Checking**: Optional stricter modes for casts, inference, and raw types to catch more subtle type issues
+- **Configurable Severity**: Customize rule severity levels (info, warning, error) and exclude specific files or rules
+- **Customizable Analysis**: Fine-tune analysis through `analysis_options.yaml` with include/exclude patterns and rule configurations
+- **Plugin Support**: Extensible architecture supports analyzer plugins for custom diagnostics and functionality
+
 ## dartanalyzer documentation
 
 - Version in MegaLinter: **3.8.1**

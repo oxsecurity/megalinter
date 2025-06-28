@@ -13,6 +13,19 @@ description: How to use ts-standard (configure, ignore files, ignore errors, hel
 
 [![GitHub stars](https://img.shields.io/github/stars/standard/ts-standard?cacheSeconds=3600)](https://github.com/standard/ts-standard) ![autofix](https://shields.io/badge/-autofix-green) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/standard/ts-standard?sort=semver)](https://github.com/standard/ts-standard/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/standard/ts-standard)](https://github.com/standard/ts-standard/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/standard/ts-standard)](https://github.com/standard/ts-standard/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/standard/ts-standard)](https://github.com/standard/ts-standard/graphs/contributors/)
 
+**TypeScript Standard Style** is the TypeScript edition of the popular JavaScript Standard Style that brings zero-configuration linting and formatting to TypeScript projects. It extends the proven JavaScript Standard rules with TypeScript-specific enhancements and type-aware analysis.
+
+**Key Features:**
+
+- **Zero Configuration**: No setup files or configuration required - install and run immediately
+- **TypeScript-Aware**: Built-in understanding of TypeScript syntax, types, interfaces, and modern features
+- **Automatic Fixing**: Built-in `--fix` option automatically corrects most style violations and type issues
+- **Standard Rules**: Maintains the same proven style rules as JavaScript Standard (2-space indent, single quotes, no semicolons)
+- **Type Safety**: Enforces TypeScript best practices and type safety patterns
+- **Fast Performance**: Quick analysis suitable for large TypeScript codebases
+- **Wide Adoption**: Used by TypeScript projects that prefer the Standard style approach over ESLint configurations
+- **Consistent Output**: Deterministic formatting across different development environments and team members
+
 ## ts-standard documentation
 
 - Version in MegaLinter: **12.0.2**

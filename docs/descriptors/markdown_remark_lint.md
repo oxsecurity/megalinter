@@ -11,6 +11,20 @@ _This linter has been disabled in this version_
 
 _Disabled reason: Bug in remark-lint: <https://github.com/remarkjs/remark-lint/issues/322>_
 
+**remark-lint** is a powerful plugin for the remark markdown processor that provides comprehensive linting and formatting capabilities for Markdown files. Built on the unified collective's remark ecosystem, it offers extensive rule-based validation with automatic fixing capabilities and a rich plugin architecture for customized Markdown processing workflows.
+
+**Key Features:**
+
+- **Unified Ecosystem**: Part of the remark/unified processing pipeline with access to a vast plugin ecosystem
+- **Comprehensive Rule Set**: Extensive built-in rules for syntax consistency, formatting standards, and structural validation
+- **Automatic Fixing**: Many rules can automatically repair Markdown issues, improving workflow efficiency
+- **Plugin Architecture**: Highly extensible with 100+ community plugins for specialized linting requirements
+- **AST-Based Processing**: Uses Abstract Syntax Tree parsing for deep, accurate Markdown analysis
+- **Configurable Presets**: Pre-configured rule sets for common style guides and formatting conventions
+- **Inline Control**: Marker-based comments for enabling/disabling rules within documents
+- **Performance Optimized**: Efficient processing suitable for large documentation projects and automated pipelines
+- **Standards Compliant**: Supports CommonMark and GitHub Flavored Markdown specifications with extension support
+
 ## remark-lint documentation
 
 - Version in MegaLinter: **14.0.2**

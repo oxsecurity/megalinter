@@ -7,7 +7,18 @@ description: How to use php-cs-fixer (configure, ignore files, ignore errors, he
 # <a href="https://cs.symfony.com/" target="blank" title="Visit linter Web Site"><img src="https://cs.symfony.com/_static/images/logo.png" alt="php-cs-fixer" height="100px" class="megalinter-logo"></a>php-cs-fixer
 [![GitHub stars](https://img.shields.io/github/stars/PHP-CS-Fixer/PHP-CS-Fixer?cacheSeconds=3600)](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/PHP-CS-Fixer/PHP-CS-Fixer?sort=semver)](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/PHP-CS-Fixer/PHP-CS-Fixer)](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/PHP-CS-Fixer/PHP-CS-Fixer)](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/PHP-CS-Fixer/PHP-CS-Fixer)](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/graphs/contributors/)
 
-PHP-CS-Fixer is able to fix rule violations detected, and even those marked as (risky)
+**PHP-CS-Fixer** is a comprehensive tool that automatically fixes PHP code to follow coding standards and style guidelines. It can repair code style violations and even risky issues, making it an essential formatter for maintaining consistent PHP codebases.
+
+**Key Features:**
+
+- **Automatic Code Fixing**: Repairs coding standard violations and formatting issues automatically
+- **Extensive Rule Set**: 200+ built-in rules covering PSR-1, PSR-2, PSR-12, Symfony, and custom standards
+- **Risky Fixes Support**: Can apply potentially risky fixes that modify code behavior when enabled
+- **Highly Configurable**: Flexible configuration through PHP configuration files with rule customization
+- **Multiple Standards**: Supports PSR standards, Symfony coding standards, and custom rule sets
+- **Dry-Run Mode**: Preview changes without modifying files to review proposed fixes
+- **Incremental Fixing**: Can target specific directories, files, or rule sets for focused improvements
+- **Performance Optimized**: Fast execution with caching capabilities for large codebases
 
 - Enable **autofixes** by adding `PHP_PHPCSFIXER` in [APPLY_FIXES variable](https://megalinter.io/beta/configuration/#apply-fixes)
 - Add "--allow-risky=yes" option in PHP_PHPCSFIXER_ARGUMENTS variable

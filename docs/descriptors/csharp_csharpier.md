@@ -7,6 +7,18 @@ description: How to use csharpier (configure, ignore files, ignore errors, help 
 # <a href="https://csharpier.com/" target="blank" title="Visit linter Web Site"><img src="https://csharpier.com/img/logo.svg" alt="csharpier" height="100px" class="megalinter-logo"></a>csharpier
 [![GitHub stars](https://img.shields.io/github/stars/belav/csharpier?cacheSeconds=3600)](https://github.com/belav/csharpier) ![formatter](https://shields.io/badge/-format-yellow) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/belav/csharpier?sort=semver)](https://github.com/belav/csharpier/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/belav/csharpier)](https://github.com/belav/csharpier/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/belav/csharpier)](https://github.com/belav/csharpier/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/belav/csharpier)](https://github.com/belav/csharpier/graphs/contributors/)
 
+**CSharpier** is the definitive opinionated code formatter for C# that eliminates formatting debates by automatically standardizing code style across entire projects. Inspired by Prettier's philosophy, it provides zero-configuration formatting that just works.
+
+**Key Features:**
+
+- **Zero Configuration**: Works out of the box with sensible defaults, no setup required
+- **Opinionated Formatting**: Consistent, predictable formatting that eliminates style discussions
+- **Comprehensive C# Support**: Handles all modern C# language features, syntax, and constructs
+- **Fast Performance**: Lightning-fast formatting with minimal overhead for large codebases
+- **Ignore Support**: Flexible ignore patterns for excluding specific files or code sections from formatting
+- **Diff-Friendly**: Produces minimal, clean git diffs by maintaining consistent formatting rules
+- **Team Consistency**: Ensures identical formatting across all team members and development environments
+
 ## csharpier documentation
 
 - Version in MegaLinter: **1.0.2**

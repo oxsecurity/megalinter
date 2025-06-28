@@ -13,6 +13,46 @@ description: How to use golangci-lint (configure, ignore files, ignore errors, h
 
 [![GitHub stars](https://img.shields.io/github/stars/golangci/golangci-lint?cacheSeconds=3600)](https://github.com/golangci/golangci-lint) ![autofix](https://shields.io/badge/-autofix-green) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/golangci/golangci-lint?sort=semver)](https://github.com/golangci/golangci-lint/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/golangci/golangci-lint)](https://github.com/golangci/golangci-lint/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/golangci/golangci-lint)](https://github.com/golangci/golangci-lint/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/golangci/golangci-lint)](https://github.com/golangci/golangci-lint/graphs/contributors/)
 
+**Golangci-lint** is a fast, comprehensive linters runner for Go that provides a unified interface to over 100 different Go linters. It's designed to be the ultimate Go code quality tool, combining multiple linters into a single, efficient, and highly configurable solution.
+
+**Key features:**
+
+- **⚡ Extremely Fast**: Runs linters in parallel, reuses Go build cache, and caches analysis results for optimal performance
+- **📦 100+ Linters Included**: Comprehensive collection of linters covering all aspects of Go code quality - no need to install them separately
+- **⚙️ YAML Configuration**: Flexible configuration system with sensible defaults and extensive customization options
+- **🥇 Minimal False Positives**: Carefully tuned default settings to reduce noise and focus on real issues
+- **🔥 Rich Output Formats**: Multiple output formats including text with colors, JSON, SARIF, HTML, JUnit-XML, and more
+
+**Comprehensive linting coverage:**
+
+- **Code Quality**: Detects bugs, performance issues, and maintainability problems
+- **Style Enforcement**: Ensures consistent formatting and coding conventions
+- **Security Analysis**: Identifies potential security vulnerabilities and unsafe patterns
+- **Performance Optimization**: Finds inefficient code patterns and suggests improvements
+- **Complexity Analysis**: Measures and controls code complexity and cognitive load
+- **Error Handling**: Validates proper error handling patterns in Go
+
+**Popular included linters:**
+
+- **staticcheck**: Advanced static analysis for Go
+- **govet**: Official Go static analyzer
+- **errcheck**: Checks for unchecked errors
+- **gosimple**: Suggests code simplifications  
+- **ineffassign**: Detects ineffectual assignments
+- **misspell**: Finds commonly misspelled words
+- **gocyclo**: Cyclomatic complexity analysis
+- **gosec**: Security-focused static analysis
+
+**Advanced capabilities:**
+
+- **Smart Caching**: Dramatically speeds up repeated runs by caching results
+- **Incremental Analysis**: Can analyze only changed files for faster analysis
+- **Custom Rules**: Support for custom linters and configuration
+- **Issue Filtering**: Sophisticated filtering and suppression of false positives
+- **Parallel Execution**: Concurrent linter execution for maximum speed
+
+Golangci-lint is the industry standard for Go code quality and is used by thousands of Go projects for maintaining high code standards and catching issues early in the development process.
+
 ## golangci-lint documentation
 
 - Version in MegaLinter: **2.1.6**

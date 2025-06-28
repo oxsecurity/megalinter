@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
 - Core
+  - Add copilot instructions for GitHub Copilot
 
 - New linters
 
@@ -27,6 +28,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Update documentation in all megalinter descriptor files to improve accuracy and consistency
   - Fix incorrect information in linters documentation and descriptors
   - Remove dead links
+  - Add linter description (linter_text) in all linter descriptor, to generate a more exhaustive documentation.
 
 - Flavors
 
