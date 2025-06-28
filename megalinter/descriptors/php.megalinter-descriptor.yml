@@ -29,6 +29,8 @@ install:
 linters:
   # PHPCS
   - linter_name: phpcs
+    linter_text: |
+      **PHP_CodeSniffer (phpcs)** is a powerful tool that tokenizes PHP files and detects violations of a defined coding standard. It helps ensure your PHP code adheres to coding standards such as PSR-1, PSR-12, PEAR, Zend, and many others. PHPCS can detect issues with code formatting, naming conventions, documentation, and structure, helping maintain consistent, readable PHP code across projects.
     name: PHP_PHPCS
     can_output_sarif: true
     linter_spdx_license: BSD-3-Clause
@@ -75,6 +77,8 @@ linters:
           url: https://marketplace.visualstudio.com/items?itemName=ikappas.phpcs
   # PHP Stan
   - linter_name: phpstan
+    linter_text: |
+      **PHPStan** is a static analysis tool for PHP that focuses on finding errors in your code without actually running it. It catches whole classes of bugs even before you write tests for the code. PHPStan analyzes your PHP code and finds potential issues such as type mismatches, undefined variables, calling methods on null, accessing non-existent properties, and many other potential runtime errors.
     name: PHP_PHPSTAN
     can_output_sarif: true
     linter_spdx_license: MIT
@@ -120,6 +124,8 @@ linters:
           url: https://marketplace.visualstudio.com/items?itemName=calsmurf2904.vscode-phpstan
   # PSALM
   - linter_name: psalm
+    linter_text: |
+      **Psalm** is a static analysis tool for PHP that helps identify type errors, logic errors, and potential security issues in PHP code. It provides comprehensive type checking, can catch subtle bugs that other tools miss, and offers advanced features like taint analysis to detect potential security vulnerabilities. Psalm helps improve code quality by providing detailed type information and catching errors before runtime.
     name: PHP_PSALM
     can_output_sarif: true
     linter_spdx_license: MIT
@@ -161,6 +167,8 @@ linters:
           url: https://marketplace.visualstudio.com/items?itemName=getpsalm.psalm-vscode-plugin
   # PHPLint
   - linter_name: phplint
+    linter_text: |
+      **PHPLint** is a tool for fast syntax checking of PHP files. It validates PHP syntax quickly and efficiently, helping catch basic PHP syntax errors, parse errors, and other fundamental issues without executing the code. This lightweight tool is particularly useful for quickly validating large codebases and catching basic PHP syntax issues in CI/CD pipelines.
     can_output_sarif: true
     linter_url: https://github.com/overtrue/phplint
     linter_repo: https://github.com/overtrue/phplint

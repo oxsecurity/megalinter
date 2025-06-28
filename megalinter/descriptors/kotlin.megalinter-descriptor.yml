@@ -15,6 +15,8 @@ install:
 linters:
   # KTLINT
   - linter_name: ktlint
+    linter_text: |
+      **ktlint** is an anti-bikeshedding Kotlin linter with a built-in formatter inspired by JavaScript Standard and Go's gofmt. It enforces **consistent code style** with **zero configuration required** by default, following Kotlin's official coding conventions. Features include **automatic code formatting**, **`.editorconfig` support**, **multiple output formats** (plain, JSON, HTML, checkstyle), and **extensibility** with custom rule sets. The tool provides both command-line interface and IDE integrations, making it essential for maintaining clean, readable Kotlin code across teams and projects.
     can_output_sarif: true
     linter_url: https://ktlint.github.io
     linter_repo: https://github.com/pinterest/ktlint
@@ -52,6 +54,8 @@ linters:
   # DETEKT
   - class: DetektLinter
     linter_name: detekt
+    linter_text: |
+      **detekt** is a comprehensive static code analysis tool for Kotlin that helps developers write cleaner, safer code. It performs **code smell analysis** with **highly configurable rule sets** covering complexity, style, performance, naming conventions, and potential bugs. Features include **baseline generation** for legacy projects, **custom rule support**, **multiple report formats** (HTML, Markdown, SARIF, XML), **complexity metrics**, and **seamless Gradle/Maven integration**. With **300+ built-in rules** across categories like coroutines, exceptions, and documentation, detekt is essential for maintaining high code quality in Kotlin projects.
     can_output_sarif: true
     linter_url: https://detekt.dev/
     linter_repo: https://github.com/detekt/detekt

@@ -151,6 +151,8 @@ linters:
   # STANDARD
   - class: TypeScriptStandardLinter
     linter_name: ts-standard
+    linter_text: |
+      **TypeScript Standard Style** is a TypeScript style guide, linter, and automatic code fixer that extends JavaScript Standard Style for TypeScript. It provides zero-configuration TypeScript linting with a predefined set of rules that promote readability and consistency. ts-standard enforces the same styling rules as JavaScript Standard but with TypeScript-specific adaptations and type checking support.
     name: TYPESCRIPT_STANDARD
     linter_spdx_license: MIT
     activation_rules:
@@ -190,6 +192,8 @@ linters:
           url: vscode-standard
   # PRETTIER
   - linter_name: prettier
+    linter_text: |
+      **Prettier** is an opinionated code formatter that supports many languages including TypeScript. It removes all original styling and ensures that all outputted code conforms to a consistent style by parsing your code and re-printing it according to its own rules. For TypeScript files, Prettier enforces consistent code style while preserving TypeScript-specific syntax and type annotations, making code more readable and maintainable.
     is_formatter: true
     linter_spdx_license: MIT
     activation_rules:

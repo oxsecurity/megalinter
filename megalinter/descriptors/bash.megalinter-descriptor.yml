@@ -57,6 +57,8 @@ linters:
   # Shellcheck
   - class: ShellcheckLinter
     linter_name: shellcheck
+    linter_text: |
+      **ShellCheck** is a static analysis tool for shell scripts that helps identify and fix common errors, bugs, and anti-patterns in bash/sh scripts. It provides warnings and suggestions for issues like syntax errors, portability problems, security vulnerabilities, and style inconsistencies. ShellCheck can catch subtle bugs that might cause scripts to fail unexpectedly, making it an essential tool for writing robust and reliable shell scripts.
     name: BASH_SHELLCHECK
     can_output_sarif: true
     descriptor_flavors:
@@ -117,6 +119,8 @@ linters:
           url: https://marketplace.visualstudio.com/items?itemName=timonwong.shellcheck
   # SHFMT
   - linter_name: shfmt
+    linter_text: |
+      **shfmt** is a shell script formatter that parses and reformats shell scripts to ensure consistent styling and formatting. It supports multiple shell dialects (bash, POSIX sh, mksh) and can automatically fix indentation, spacing, and other formatting issues. As both a linter and formatter, shfmt helps maintain clean, readable shell scripts by enforcing consistent code style across projects and teams.
     is_formatter: true
     linter_url: https://github.com/mvdan/sh
     linter_repo: https://github.com/mvdan/sh

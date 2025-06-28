@@ -8,6 +8,8 @@ lint_all_files: true
 linters:
   # CHECKOV
   - linter_name: checkov
+    linter_text: |
+      **Checkov** is a static code analysis tool for Infrastructure as Code (IaC) that scans cloud infrastructure configurations to detect security and compliance misconfigurations. It supports Terraform, CloudFormation, Kubernetes, Helm, ARM templates, and more. Checkov helps prevent cloud security issues by identifying over 1000 built-in policies for misconfigurations such as unencrypted storage, overly permissive security groups, missing logging, and compliance violations across major cloud providers (AWS, Azure, GCP).
     name: REPOSITORY_CHECKOV
     can_output_sarif: true
     descriptor_flavors:
@@ -118,6 +120,8 @@ linters:
   # DUSTILOCK
   - class: DustilockLinter
     linter_name: dustilock
+    linter_text: |
+      **Dustilock** is a tool that analyzes your dependencies for known security vulnerabilities and checks if there are newer, safer versions available. It scans various dependency files (package.json, requirements.txt, etc.) and provides alerts about vulnerable packages in your project, helping you maintain secure dependencies by identifying outdated packages with known CVEs.
     can_output_sarif: true
     descriptor_flavors:
       - all
@@ -258,7 +262,7 @@ linters:
       - "--source"
       - "."
     cli_help_arg_name: help
-    cli_version_arg_name: version
+    cli_version_arg_name: --version
     cli_lint_errors_count: regex_sum
     cli_lint_errors_regex: "leaks found: ([0-9]+)"
     test_folder: gitleaks
@@ -285,6 +289,8 @@ linters:
 
   # GRYPE
   - linter_name: grype
+    linter_text: |
+      **Grype** is a vulnerability scanner for container images and filesystems that quickly scans for known security vulnerabilities in packages and dependencies. It can scan container images, directories, SBOM files, and more to detect vulnerabilities from various databases including NVD, Alpine SecDB, and others. Grype provides detailed vulnerability reports and can be integrated into CI/CD pipelines to ensure security compliance.
     can_output_sarif: true
     descriptor_flavors:
       - all_flavors # Applicable to CI in any language project
@@ -323,6 +329,8 @@ linters:
 
   # KICS
   - linter_name: kics
+    linter_text: |
+      **KICS** (Keeping Infrastructure as Code Secure) is an open-source security scanner that identifies security vulnerabilities, compliance issues, and infrastructure misconfigurations in Infrastructure as Code files. It supports over 20 platforms including Terraform, CloudFormation, Kubernetes, Docker, Ansible, and more. KICS uses over 2000 built-in queries to detect security risks and provides remediation guidance to help fix issues.
     can_output_sarif: true
     descriptor_flavors:
       - cupcake
@@ -373,6 +381,8 @@ linters:
 
   # LS-LINT
   - linter_name: ls-lint
+    linter_text: |
+      **ls-lint** is an extremely fast file and directory name linter that helps maintain consistent naming conventions across your project. It validates file and directory names against configurable rules to enforce naming patterns, prevent problematic characters, and ensure cross-platform compatibility. This tool is particularly useful for large projects where consistent file naming is crucial for maintainability and collaboration.
     linter_url: https://ls-lint.org/
     linter_repo: https://github.com/loeffel-io/ls-lint
     linter_rules_url: https://ls-lint.org/2.2/configuration/the-rules.html
@@ -588,7 +598,7 @@ linters:
           ARG REPOSITORY_TRIVY_VERSION=0.63.0
         - |
           RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin "v${REPOSITORY_TRIVY_VERSION}" \
-              && (trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress)
+              && (trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress)
     ide:
       vscode:
         - name: VSCode Trivy
@@ -638,7 +648,7 @@ linters:
           ARG REPOSITORY_TRIVY_SBOM_VERSION=0.63.0
         - |
           RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin "v${REPOSITORY_TRIVY_SBOM_VERSION}" \
-              && (trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress)
+              && (trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress)
     ide:
       vscode:
         - name: VSCode Trivy
@@ -647,6 +657,8 @@ linters:
   # TRUFFLEHOG
   - class: TruffleHogLinter
     linter_name: trufflehog
+    linter_text: |
+      **TruffleHog** is a secrets scanner that searches through git repositories, files, and other sources to find secrets, passwords, API keys, and other sensitive information that may have been accidentally committed to code. It uses both pattern matching and entropy analysis to detect various types of secrets, helping prevent security breaches by identifying exposed credentials before they reach production.
     descriptor_flavors:
       - all_flavors # Applicable to CI in any language project
       - ci_light

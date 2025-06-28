@@ -9,6 +9,18 @@ test_folder: coffeescript
 linters:
   # Coffee Lint
   - linter_name: coffeelint
+    linter_text: |
+      **CoffeeLint** is a style checker that helps keep CoffeeScript code clean and consistent. While CoffeeScript insulates programmers from many of JavaScript's problematic features, it doesn't enforce consistent style across a codebase - that's where CoffeeLint comes in.
+
+      **Key Features:**
+      
+      - **Comprehensive Style Checking**: Enforces consistent formatting, spacing, indentation, and naming conventions
+      - **Configurable Rules**: Over 50+ rules covering everything from arrow spacing to variable naming, all customizable
+      - **Code Quality Checks**: Detects issues like unused variables, missing fat arrows, duplicate keys, and cyclomatic complexity
+      - **Inline Rule Control**: Disable/enable rules on specific lines or sections using comment directives
+      - **Multiple Output Formats**: Supports various reporting formats including JSON, CSV, and checkstyle XML
+      - **Editor Integration**: Works with major editors and build systems through extensive plugin ecosystem
+      - **Custom Rules Support**: Extensible architecture allows loading of third-party and custom rules
     linter_url: https://coffeelint.github.io/
     linter_rules_url: https://coffeelint.github.io/#options
     linter_repo: https://github.com/clutchski/coffeelint

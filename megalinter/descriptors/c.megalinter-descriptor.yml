@@ -12,6 +12,27 @@ file_extensions:
 linters:
   # Cppcheck
   - linter_name: cppcheck
+    linter_text: |
+      **Cppcheck** is a static analysis tool for C/C++ code that provides unique code analysis to detect bugs and focuses on detecting undefined behaviour and dangerous coding constructs. The goal is to have very few false positives.
+
+      **Key features:**
+
+      - **Unique Analysis**: Uses unsound flow sensitive analysis with bi-directional data flow analysis
+      - **Undefined Behavior Detection**: Detects dead pointers, division by zero, integer overflows, null pointer dereferences, out of bounds checking, uninitialized variables, and more
+      - **Security Analysis**: Helps detect buffer errors, improper access control, and other security vulnerabilities
+      - **Coding Standards**: Supports MISRA C 2012/2023, MISRA C++ 2008/2023, CERT C/C++, and AUTOSAR standards
+      - **Non-standard Syntax**: Can analyze C/C++ code even with non-standard syntax (common in embedded projects)
+      - **Minimal False Positives**: Designed to have very few false positives while maintaining high detection accuracy
+
+      **Common vulnerability detection:**
+
+      - Buffer overflows and underflows
+      - Memory leaks and invalid memory access
+      - Integer overflow and underflow
+      - Use of uninitialized variables
+      - Invalid STL usage
+
+      Cppcheck helps ensure your C/C++ code is secure, reliable, and follows best practices for memory management and undefined behavior prevention.
     name: C_CPPCHECK
     linter_url: https://cppcheck.sourceforge.io/
     linter_repo: https://cppcheck.sourceforge.io/
@@ -30,6 +51,28 @@ linters:
   # CPPLINT
   - class: CppLintLinter
     linter_name: cpplint
+    linter_text: |
+      **Cpplint** is a command-line tool to check C/C++ files for style issues according to **Google's C++ style guide**. Originally developed by Google, this community-maintained fork aims to update cpplint to modern specifications and be more open to fixes and features.
+
+      **Key features:**
+
+      - **Google Style Guide Enforcement**: Checks code against Google's comprehensive C++ style guidelines
+      - **Style Issue Detection**: Identifies formatting, naming, and structural style violations
+      - **Customizable Rules**: Supports filtering and customization of specific checks via command-line arguments
+      - **Modern Features**: Includes Python 3 compatibility, customizable file extensions, and recursive file discovery
+      - **CI/CD Integration**: Easy integration with continuous integration systems and pre-commit hooks
+      - **Multiple Output Formats**: Supports standard output and JUnit XML format for integration with testing frameworks
+      - **Pragma Once Support**: Recognizes `#pragma once` as an alternative to traditional header include guards
+
+      **Common style checks include:**
+      
+      - Include guard patterns and header organization
+      - Naming conventions for classes, functions, and variables  
+      - Whitespace and indentation formatting
+      - Line length and comment formatting
+      - Function parameter and return value formatting
+
+      Cpplint helps maintain consistent, readable C++ code that follows industry-standard style guidelines, making code easier to review, maintain, and collaborate on.
     name: C_CPPLINT
     linter_url: https://github.com/cpplint/cpplint
     linter_repo: https://github.com/cpplint/cpplint
@@ -50,6 +93,8 @@ linters:
         - cpplint==${PIP_CPPLINT_VERSION}
   # clang-format
   - linter_name: clang-format
+    linter_text: |
+      **clang-format** is a tool to automatically format C/C++/Objective-C code according to a set of rules and heuristics. It's part of the LLVM project and provides highly configurable formatting options to ensure consistent code style across projects. It can handle complex formatting scenarios including template instantiations, lambda expressions, and macro definitions while preserving the semantic meaning of the code.
     name: C_CLANG_FORMAT
     descriptor_flavors:
       - c_cpp

@@ -63,6 +63,8 @@ linters:
   # TERRASCAN
   - class: TerrascanLinter
     linter_name: terrascan
+    linter_text: |
+      **Terrascan** is a comprehensive static code analyzer for Infrastructure as Code that detects security vulnerabilities, compliance violations, and misconfigurations in cloud infrastructure. It supports multiple IaC tools including Terraform, Kubernetes, Docker, AWS CloudFormation, and more. Terrascan provides over 1000 built-in policies across major cloud providers and compliance frameworks like CIS, NIST, and PCI.
     can_output_sarif: true
     linter_spdx_license: Apache-2.0
     name: TERRAFORM_TERRASCAN
@@ -103,6 +105,8 @@ linters:
 
   # TERRAGRUNT
   - linter_name: terragrunt
+    linter_text: |
+      **Terragrunt** is a thin wrapper for Terraform that provides tools for keeping your Terraform configurations DRY, working with multiple Terraform modules, and managing remote state. It helps validate Terragrunt configurations and ensures that your infrastructure code follows best practices for modularity, reusability, and maintainability. Terragrunt can catch configuration errors and enforce consistent patterns across your Terraform projects.
     name: TERRAFORM_TERRAGRUNT
     linter_spdx_license: MIT
     file_extensions:
@@ -118,20 +122,16 @@ linters:
     linter_rules_configuration_url: https://terragrunt.gruntwork.io/docs/getting-started/quick-start/#add-terragrunthcl-to-your-project
     linter_image_url: https://github.com/gruntwork-io/terragrunt/blob/master/docs/assets/img/favicon/ms-icon-310x310.png
     linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/terragrunt.png
-    config_file_name: terragrunt.hcl
-    cli_config_arg_name: "--terragrunt-config"
+    cli_lint_mode: project
     cli_lint_extra_args:
       - "hclfmt"
       - "--terragrunt-check"
     cli_lint_fix_arg_name: "--megalinter-fix-flag" # Workaround for MegaLinter
     cli_lint_fix_remove_args:
       - "--terragrunt-check"
-    cli_lint_extra_args_after:
-      - "--terragrunt-hclfmt-file"
-    test_folder: terraform_terragrunt
+    cli_help_arg_name: "--help"
     examples:
-      - "terragrunt hclfmt --terragrunt-check --terragrunt-hclfmt-file myfile.hcl"
-      - "terragrunt hclfmt --terragrunt-check --terragrunt-config terragrunt.hcl --terragrunt-hclfmt-file myfile.hcl"
+      - "terragrunt hclfmt --terragrunt-check"
     install:
       dockerfile:
         - |-
@@ -142,6 +142,8 @@ linters:
 
   # TERRAFORM_FMT
   - linter_name: terraform-fmt
+    linter_text: |
+      **terraform fmt** is the built-in Terraform command for automatically formatting Terraform configuration files to ensure consistent style and formatting. It rewrites Terraform configuration files to a canonical format and style, making code more readable and maintainable. This formatter is the standard tool for Terraform code formatting and follows HashiCorp's official style conventions.
     name: TERRAFORM_TERRAFORM_FMT
     is_formatter: true
     linter_spdx_license: BUSL-1.1

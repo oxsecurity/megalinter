@@ -17,6 +17,8 @@ test_folder: makefile
 linters:
   # Checkmake
   - linter_name: checkmake
+    linter_text: |
+      **checkmake** is a linter for Makefiles that helps enforce best practices and identify common issues in Makefile syntax and structure. It validates Makefile rules, checks for proper indentation, verifies variable usage, and ensures that targets follow naming conventions. The tool helps prevent common Makefile pitfalls such as missing dependencies, incorrect tab usage, and unreachable targets, making build processes more reliable and maintainable.
     disabled: true
     disabled_reason: "Security issues: https://github.com/checkmake/checkmake/issues/99"
     name: MAKEFILE_CHECKMAKE

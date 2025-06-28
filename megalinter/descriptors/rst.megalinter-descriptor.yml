@@ -9,6 +9,8 @@ file_extensions:
 linters:
   # restructuredtext-lint
   - linter_name: rst-lint
+    linter_text: |
+      **restructuredtext-lint** (rst-lint) is a reStructuredText linter that validates RST syntax and helps prevent frustrating errors when uploading documentation to PyPI. It checks for common reStructuredText issues including malformed directives, invalid syntax, title underline problems, and various formatting errors. The tool leverages docutils for parsing and provides detailed error messages with line numbers, supports multiple output formats (text/JSON), and can be extended with custom directives and roles for specialized use cases like Sphinx documentation.
     linter_url: https://github.com/twolfson/restructuredtext-lint
     linter_repo: https://github.com/twolfson/restructuredtext-lint
     linter_spdx_license: Unlicense
@@ -30,6 +32,8 @@ linters:
         - restructuredtext_lint==${PIP_RESTRUCTUREDTEXT_LINT_VERSION}
   # rstcheck
   - linter_name: rstcheck
+    linter_text: |
+      **rstcheck** is a more comprehensive reStructuredText checker that validates RST syntax while also checking the validity of code blocks in various programming languages. It can validate syntax for embedded code in Python, C, C++, JSON, XML, and other languages within RST code blocks. The tool supports configuration files, Sphinx integration, and provides detailed error reporting with support for ignore patterns and custom error handling. It goes beyond basic RST syntax to ensure code examples and embedded content are also valid.
     linter_url: https://github.com/myint/rstcheck
     linter_repo: https://github.com/myint/rstcheck
     linter_spdx_license: MIT
@@ -58,6 +62,8 @@ linters:
           url: https://marketplace.visualstudio.com/items/lextudio.restructuredtext
   # rstfmt
   - linter_name: rstfmt
+    linter_text: |
+      **rstfmt** is a reStructuredText formatter that automatically reformats RST files for consistent styling and readability. It standardizes indentation, spacing, line lengths, and other formatting aspects of reStructuredText documents while preserving the semantic content. The tool can check formatting compliance (--check mode) or automatically apply formatting fixes, making it useful for maintaining consistent documentation style across projects and teams. It helps ensure RST files follow formatting best practices and conventions.
     is_formatter: true
     linter_url: https://github.com/dzhu/rstfmt
     linter_spdx_license: MIT

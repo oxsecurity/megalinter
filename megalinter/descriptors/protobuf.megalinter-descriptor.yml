@@ -8,6 +8,8 @@ linters:
   # Protolint
   - class: ProtolintLinter
     linter_name: protolint
+    linter_text: |
+      **protolint** is a pluggable linting and fixing utility for Protocol Buffer files (proto2+proto3) that runs fast without requiring compilation. It helps enforce the official Protocol Buffer style guide with rules that correspond exactly to Google's style guide recommendations. The tool provides automatic fixing of style violations, supports disabling rules with inline comments for API compatibility, allows custom rule plugins, and includes comprehensive integration support for editors, CI/CD systems, and development workflows. It covers various aspects including naming conventions, field ordering, imports, indentation, and syntax validation.
     linter_url: https://github.com/yoheimuta/protolint
     linter_repo: https://github.com/yoheimuta/protolint
     linter_rules_url: https://github.com/yoheimuta/protolint#rules

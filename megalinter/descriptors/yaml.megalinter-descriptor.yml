@@ -10,6 +10,8 @@ file_extensions:
 linters:
   # PRETTIER
   - linter_name: prettier
+    linter_text: |
+      **Prettier** is an opinionated code formatter that supports many languages including YAML. It removes all original styling and ensures that all outputted code conforms to a consistent style by parsing your code and re-printing it according to its own rules. For YAML files, Prettier enforces consistent indentation, spacing, and formatting, making YAML data more readable and maintainable.
     is_formatter: true
     linter_url: https://prettier.io/
     linter_repo: https://github.com/prettier/prettier
@@ -67,6 +69,8 @@ linters:
           url: https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode
   # YAMLLINT
   - linter_name: yamllint
+    linter_text: |
+      **yamllint** is a linter for YAML files that checks for syntax validity, key repetition, lines length, trailing spaces, indentation, and other common YAML issues. It helps ensure YAML files are well-formed, follow consistent formatting conventions, and avoid common pitfalls that could cause parsing errors or configuration issues in applications that consume YAML files.
     linter_url: https://yamllint.readthedocs.io/
     linter_repo: https://github.com/adrienverge/yamllint
     linter_spdx_license: GPL-3.0

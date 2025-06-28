@@ -8,6 +8,8 @@ file_extensions:
 linters:
   # Swift lint
   - linter_name: swiftlint
+    linter_text: |
+      **SwiftLint** is a tool to enforce Swift style and conventions based on the community-driven Swift Style Guide. It provides over 200 rules for code quality, style consistency, and best practices including layout, naming conventions, performance optimizations, and potential bug detection. The tool hooks into SourceKit for accurate AST-based analysis, supports automatic fixing of violations, extensive configuration options, and integrates well with Xcode, CI/CD systems, and development workflows. SwiftLint helps maintain consistent, readable, and maintainable Swift code across projects and teams.
     linter_url: https://github.com/realm/SwiftLint
     linter_repo: https://github.com/realm/SwiftLint
     linter_rules_url: https://realm.github.io/SwiftLint/rule-directory.html

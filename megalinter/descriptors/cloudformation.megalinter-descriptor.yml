@@ -13,6 +13,37 @@ file_contains_regex:
 linters:
   # AWS CloudFormation Lint
   - linter_name: cfn-lint
+    linter_text: |
+      **CFN-Lint** (CloudFormation Linter) is the official AWS tool for validating AWS CloudFormation yaml/json templates against the AWS CloudFormation resource provider schemas and additional best practice checks.
+
+      **Key features:**
+
+      - **AWS Schema Validation**: Validates templates against official AWS CloudFormation resource provider schemas
+      - **Property Validation**: Checks valid values for resource properties and ensures correct data types
+      - **Best Practice Enforcement**: Identifies CloudFormation best practices and anti-patterns
+      - **SAM Support**: Fully supports AWS Serverless Application Model (SAM) templates with transformation validation
+      - **Custom Rules**: Supports custom one-line rules for organization-specific requirements
+      - **Multiple Output Formats**: Supports JSON, JUnit, SARIF, and other output formats for CI/CD integration
+      - **Region-Specific Validation**: Tests templates against multiple AWS regions to catch region-specific issues
+      - **Extensible Rules Engine**: Comprehensive collection of rules with support for custom rule extensions
+
+      **Common validations include:**
+
+      - Resource type and property validation
+      - Parameter constraints and dependencies  
+      - Output and condition logic validation
+      - Security best practices (IAM policies, encryption, etc.)
+      - Resource naming and tagging conventions
+      - Cross-reference validation between resources
+
+      **Advanced features:**
+      
+      - Template metadata configuration for granular control
+      - Graph visualization of template resources
+      - Experimental rules for cutting-edge CloudFormation features
+      - Override specifications for custom organizational requirements
+
+      CFN-Lint helps ensure your CloudFormation templates are valid, secure, and follow AWS best practices before deployment.
     can_output_sarif: true
     linter_url: https://github.com/aws-cloudformation/cfn-lint
     linter_repo: https://github.com/aws-cloudformation/cfn-lint

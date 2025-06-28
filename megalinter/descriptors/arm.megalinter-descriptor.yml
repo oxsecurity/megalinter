@@ -24,6 +24,21 @@ linters:
   # ARM TTK
   - class: ArmLinter
     linter_name: arm-ttk
+    linter_text: |
+      **ARM TTK (Azure Resource Manager Template Toolkit)** is the official Microsoft toolkit for analyzing and testing Azure Resource Manager Templates. It validates ARM templates for coding best practices and ensures they follow recommended guidelines.
+
+      **Key features:**
+      
+      - **Best Practice Validation**: Checks templates against Microsoft's recommended ARM template coding standards
+      - **Security Analysis**: Validates security practices such as preventing secrets from being output in plain text
+      - **Intent Validation**: Identifies unused parameters, variables, and resources to ensure clean template code
+      - **Language Best Practices**: Ensures proper use of ARM template language constructs (e.g., using environment functions instead of hard-coded values)
+      - **Azure Marketplace Compliance**: Same tests used to validate templates for Azure QuickStart Repository and Azure Marketplace
+      - **Extensible Framework**: Allows for easy expansion and individual selection of tests
+
+      **Note**: Starting with ARM TTK v0.10, investment in new tests is being moved to the Bicep linter. ARM TTK remains available to support JSON ARM templates and createUiDefinition scenarios.
+
+      ARM TTK helps ensure your ARM templates are secure, maintainable, and follow Azure best practices for infrastructure as code.
     linter_url: https://github.com/Azure/arm-ttk
     linter_repo: https://github.com/Azure/arm-ttk
     linter_rules_configuration_url: https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/test-toolkit#customize-tests

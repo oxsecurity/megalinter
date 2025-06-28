@@ -8,6 +8,8 @@ file_extensions:
 linters:
   # SQLFLUFF
   - linter_name: sqlfluff
+    linter_text: |
+      **SQLFluff** is a dialect-flexible and configurable SQL linter designed for ELT applications that works with Jinja templating and dbt. It provides comprehensive SQL code analysis including syntax checking, style validation, and formatting with support for multiple SQL dialects (ANSI, BigQuery, Snowflake, Postgres, etc.). The tool can automatically fix most linting errors, offers detailed error reporting with line/position information, and integrates well with CI/CD workflows. SQLFluff helps maintain consistent SQL code quality and readability across data engineering projects.
     linter_url: https://www.sqlfluff.com/
     linter_repo: https://github.com/sqlfluff/sqlfluff
     linter_spdx_license: MIT
@@ -38,6 +40,8 @@ linters:
         - sqlfluff==${PIP_SQLFLUFF_VERSION}
   # TSQL
   - linter_name: tsqllint
+    linter_text: |
+      **tsqllint** is a linter specifically designed for T-SQL (Transact-SQL) code used with Microsoft SQL Server. It analyzes T-SQL scripts for syntax errors, style violations, and adherence to best practices with configurable rules. The tool provides detailed error and warning reporting, supports inline comment-based rule disabling, and can be integrated into development workflows. TSQLLint helps ensure T-SQL code quality and consistency in SQL Server database development projects.
     disabled: false
     linter_spdx_license: MIT
     descriptor_flavors:

@@ -9,6 +9,8 @@ linters:
   # CLIPPY
   - class: ClippyLinter
     linter_name: clippy
+    linter_text: |
+      **clippy** is Rust's official linter that catches common mistakes and improves code quality through **750+ categorized lints**. It organizes lints into groups like **correctness** (code that's wrong), **performance** (optimization opportunities), **style** (idiomatic patterns), **complexity** (simplification suggestions), and **pedantic** (strict guidelines). Features include **automatic fixes** for many issues, **extensive configuration options**, **MSRV support** for older Rust versions, and **seamless Cargo integration**. Essential for maintaining high-quality, idiomatic Rust code and preventing common programming errors before they reach production.
     linter_url: https://github.com/rust-lang/rust-clippy
     linter_repo: https://github.com/rust-lang/rust-clippy
     linter_spdx_license: Apache-2.0

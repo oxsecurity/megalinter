@@ -5,6 +5,8 @@ file_extensions:
 linters:
   # Check TEX
   - linter_name: chktex
+    linter_text: |
+      **chktex** is a semantic checker and linter for LaTeX documents that catches typographic and stylistic errors that LaTeX's built-in checker might miss. It provides **40+ different warnings** covering common LaTeX mistakes like incorrect spacing, missing italic corrections, wrong quote types, math-mode errors, punctuation issues, and inconsistent formatting. Features include **fully customizable rules**, **intelligent warning suppression**, **flexible output formats** for editor integration, support for `\input` commands, and **CWEB document support**. Essential for maintaining professional LaTeX document quality and catching subtle typographic errors that affect document appearance.
     linter_url: https://www.nongnu.org/chktex
     linter_repo: https://git.savannah.nongnu.org/git/chktex.git
     linter_spdx_license: GPL-2.0

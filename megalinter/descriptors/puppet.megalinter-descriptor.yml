@@ -5,6 +5,8 @@ file_extensions:
 linters:
   # PuppetLint
   - linter_name: puppet-lint
+    linter_text: |
+      **puppet-lint** tests Puppet code against the recommended Puppet language style guide to ensure consistent code style and best practices. It validates various aspects including spacing, indentation, whitespace, quoting, capitalization, resource formatting, conditionals, and class structure. The tool provides automatic fixing capabilities for many issues, supports selective check enabling/disabling, configuration files, and integrates with development workflows through Rake tasks, GitHub Actions, and IDE plugins. It validates only code style and does not check syntax (use `puppet parser validate` for syntax validation).
     linter_url: https://github.com/puppetlabs/puppet-lint
     linter_repo: https://github.com/puppetlabs/puppet-lint
     linter_spdx_license: MIT

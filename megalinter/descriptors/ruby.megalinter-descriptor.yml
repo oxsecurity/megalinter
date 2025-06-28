@@ -8,6 +8,8 @@ file_extensions:
 linters:
   # RUBOCOP
   - linter_name: rubocop
+    linter_text: |
+      **RuboCop** is a Ruby code style checker (linter) and formatter based on the community-driven Ruby Style Guide. It analyzes Ruby code for style violations, potential bugs, complexity issues, and adherence to best practices with over 400 built-in cops (rules). The tool is extremely flexible with extensive configuration options, supports automatic fixing of many issues, and can be tailored to match virtually any coding style. RuboCop helps maintain consistent code quality across Ruby projects and integrates well with editors, CI systems, and development workflows.
     linter_url: https://rubocop.org/
     linter_repo: https://github.com/rubocop-hq/rubocop
     linter_spdx_license: MIT

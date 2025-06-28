@@ -10,6 +10,8 @@ file_names_regex:
 linters:
   # Internal snakemake linter
   - linter_name: snakemake
+    linter_text: |
+      **Snakemake** is a workflow management system with built-in linting capabilities that checks Snakefile syntax and workflow definitions. The `--lint` flag validates workflow structure, rule definitions, input/output specifications, and configuration correctness without executing the workflow. It ensures Snakemake workflows are syntactically correct and follow best practices for reproducible computational workflows. The linter helps catch errors early in workflow development for scientific computing, bioinformatics, and data analysis pipelines.
     name: SNAKEMAKE_LINT
     linter_url: https://snakemake.github.io/
     linter_repo: https://github.com/snakemake/snakemake
@@ -38,6 +40,8 @@ linters:
           url: https://marketplace.visualstudio.com/items?itemName=alping.vscode-snakemake
   # Snake Fmt
   - linter_name: snakefmt
+    linter_text: |
+      **snakefmt** is a formatter for Snakemake files that applies consistent styling and formatting to Snakefiles and .smk files. It standardizes indentation, spacing, line breaks, and overall code structure while preserving the semantic meaning of Snakemake workflows. The tool can check formatting compliance (--check mode) or automatically apply formatting fixes, helping maintain readable and consistent Snakemake workflow code across projects and teams.
     is_formatter: true
     name: SNAKEMAKE_SNAKEFMT
     linter_url: https://github.com/snakemake/snakefmt

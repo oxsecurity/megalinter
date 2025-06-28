@@ -15,6 +15,28 @@ file_extensions:
 linters:
   # ANSIBLE LINT
   - linter_name: ansible-lint
+    linter_text: |
+      **Ansible-lint** checks Ansible playbooks for practices and behavior that could potentially be improved. It's a community-backed project that helps enforce best practices and maintain high-quality Ansible code.
+
+      **Key features:**
+
+      - **Best Practice Validation**: Checks playbooks against Ansible community best practices and conventions
+      - **Auto-fixing**: Can automatically fix some of the most common issues found in playbooks
+      - **Extensible Rules**: Comprehensive set of built-in rules with support for custom rules
+      - **Multiple Output Formats**: Supports various output formats including SARIF for integration with security tools
+      - **CI/CD Integration**: Easy integration with GitHub Actions and other CI/CD pipelines
+      - **Configuration Flexibility**: Highly configurable with support for `.ansible-lint` configuration files
+      - **Community Support**: Supports only the last two major versions of Ansible, ensuring compatibility
+
+      **Common checks include:**
+      
+      - YAML syntax and formatting
+      - Task and playbook structure validation
+      - Security best practices (avoiding plain text secrets)
+      - Proper use of Ansible modules and features
+      - Naming conventions and documentation standards
+
+      Ansible-lint helps teams maintain consistent, secure, and well-structured Ansible automation code.
     can_output_sarif: true
     linter_url: https://ansible-lint.readthedocs.io/
     linter_repo: https://github.com/ansible/ansible-lint

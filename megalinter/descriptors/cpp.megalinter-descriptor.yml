@@ -22,6 +22,18 @@ file_extensions:
 linters:
   # Cppcheck
   - linter_name: cppcheck
+    linter_text: |
+      **Cppcheck** is a powerful static analysis tool for C and C++ code that detects bugs and undefined behavior that compilers typically miss. It performs deep code analysis without requiring code execution or special build configurations.
+
+      **Key Features:**
+
+      - **Memory Safety**: Detects buffer overflows, memory leaks, null pointer dereferences, and use-after-free errors
+      - **Logic Error Detection**: Identifies unreachable code, infinite loops, invalid iterator usage, and logic mistakes
+      - **Standards Compliance**: Checks adherence to C and C++ standards and catches undefined behavior
+      - **Multi-Platform Support**: Works across different platforms and doesn't require specific build environments
+      - **Low False Positives**: Focuses on finding real bugs with minimal false alarms
+      - **Extensive Checks**: Covers over 200 different types of errors and suspicious code patterns
+      - **Integration Ready**: Easily integrates with build systems, IDEs, and CI/CD pipelines
     name: CPP_CPPCHECK
     linter_url: https://cppcheck.sourceforge.io/
     linter_repo: https://cppcheck.sourceforge.io/
@@ -40,6 +52,18 @@ linters:
   # CPPLINT
   - class: CppLintLinter
     linter_name: cpplint
+    linter_text: |
+      **cpplint** is a command-line tool that enforces Google's C++ Style Guide, helping teams maintain consistent and readable C++ code. It focuses on style, formatting, and best practice compliance rather than logic errors.
+
+      **Key Features:**
+
+      - **Google C++ Style Guide**: Enforces comprehensive style guidelines used by Google's C++ projects
+      - **Header File Checking**: Validates include guards, header ordering, and proper header usage
+      - **Naming Conventions**: Ensures consistent naming for variables, functions, classes, and namespaces
+      - **Formatting Compliance**: Checks indentation, line length, spacing, and comment formatting
+      - **Best Practices**: Detects deprecated constructs, improper use of C++ features, and potential style issues
+      - **Configurable Rules**: Allows filtering and customization of specific style checks
+      - **Incremental Checking**: Can be run on individual files or integrated into development workflows
     name: CPP_CPPLINT
     linter_url: https://github.com/cpplint/cpplint
     linter_repo: https://github.com/cpplint/cpplint
@@ -60,6 +84,18 @@ linters:
         - cpplint==${PIP_CPPLINT_VERSION}
   # clang-format
   - linter_name: clang-format
+    linter_text: |
+      **clang-format** is a powerful code formatter for C, C++, Java, JavaScript, JSON, Objective-C, Protobuf, and C# that automatically formats code according to configurable style guidelines. It's part of the LLVM project and provides consistent, automated formatting.
+
+      **Key Features:**
+      
+      - **Multi-Language Support**: Formats C/C++, Java, JavaScript, JSON, Objective-C, Protobuf, and C# code with language-specific rules
+      - **Predefined Styles**: Built-in styles including LLVM, Google, Chromium, Mozilla, Microsoft, WebKit, and GNU coding standards
+      - **Highly Configurable**: Extensive customization options through `.clang-format` files with hundreds of style parameters
+      - **Editor Integration**: Native support for Vim, Emacs, Visual Studio, VS Code, CLion, and other major editors
+      - **Selective Formatting**: Format specific lines, ranges, or regions with precise control over what gets formatted
+      - **Git Integration**: Built-in tools for formatting only changed lines in git commits and diffs
+      - **In-Place Editing**: Can modify files directly or output formatted code to stdout for pipeline integration
     name: CPP_CLANG_FORMAT
     descriptor_flavors:
       - c_cpp

@@ -47,6 +47,8 @@ linters:
 
   # CSharpier
   - linter_name: csharpier
+    linter_text: |
+      **CSharpier** is an opinionated code formatter for C# that takes the decision-making out of formatting. It reformats C# code to ensure consistent style across your codebase by automatically handling indentation, spacing, line breaks, and other formatting concerns. CSharpier aims to be the "Prettier for C#" by providing a zero-configuration formatting experience that eliminates debates about code style within development teams.
     is_formatter: true
     linter_url: https://csharpier.com/
     linter_repo: https://github.com/belav/csharpier
@@ -95,6 +97,8 @@ linters:
   # Roslynator
   - class: RoslynatorLinter
     linter_name: roslynator
+    linter_text: |
+      **Roslynator** is a collection of 500+ code analyzers, refactorings and fixes for C# powered by the Roslyn compiler platform. It helps identify code quality issues, suggests improvements, and can automatically fix many common problems in C# code. Roslynator provides both analysis capabilities to detect potential issues and formatting/refactoring tools to improve code structure and readability.
     file_extensions:
       - ".csproj"
     is_formatter: true

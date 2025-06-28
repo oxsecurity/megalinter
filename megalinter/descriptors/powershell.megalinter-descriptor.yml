@@ -32,6 +32,8 @@ linters:
   # Internal powershell linter
   - class: PowershellLinter
     linter_name: powershell
+    linter_text: |
+      **PSScriptAnalyzer** is a static code checker for PowerShell modules and scripts that analyzes code quality by running a comprehensive set of rules based on PowerShell best practices identified by the PowerShell Team and community. It detects various aspects such as uninitialized variables, improper use of PSCredential type, dangerous use of Invoke-Expression, and many other potential code defects. The tool generates DiagnosticResults (errors and warnings) to inform users about issues and suggests possible solutions for improvements, supporting both built-in rules and custom rule creation.
     linter_url: https://github.com/PowerShell/PSScriptAnalyzer
     linter_repo: https://github.com/PowerShell/PSScriptAnalyzer
     linter_image_url: https://raw.githubusercontent.com/PowerShell/PSScriptAnalyzer/refs/heads/main/logo.png
@@ -61,6 +63,8 @@ linters:
   # Internal powershell formatter
   - class: PowershellLinter
     linter_name: powershell_formatter
+    linter_text: |
+      **PowerShell Formatter** (via PSScriptAnalyzer) provides automatic code formatting for PowerShell scripts and modules using the Invoke-Formatter cmdlet. It applies consistent formatting rules to improve code readability and maintainability, including proper indentation, spacing, and code structure. The formatter supports configurable settings through .psd1 configuration files and can be integrated into development workflows to ensure consistent PowerShell code style across projects.
     variables:
       - name: POWERSHELL_POWERSHELL_FORMATTER_OUTPUT_ENCODING
         default_value: "utf8"

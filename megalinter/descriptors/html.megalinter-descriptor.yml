@@ -50,6 +50,8 @@ linters:
           url: https://marketplace.visualstudio.com/items?itemName=monosans.djlint
   # HTML HINT
   - linter_name: htmlhint
+    linter_text: |
+      **HTMLHint** is a static code analysis tool for HTML that helps developers write better HTML code by detecting errors, enforcing best practices, and ensuring compliance with HTML standards. It provides a comprehensive set of rules to catch common HTML issues such as unclosed tags, invalid attributes, accessibility problems, and performance concerns. HTMLHint is designed to be fast, configurable, and easy to integrate into development workflows.
     linter_url: https://htmlhint.com/
     linter_repo: https://github.com/htmlhint/HTMLHint
     linter_spdx_license: MIT

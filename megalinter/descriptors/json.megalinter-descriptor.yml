@@ -10,6 +10,8 @@ file_extensions:
 linters:
   # JSONLINT
   - linter_name: jsonlint
+    linter_text: |
+      **jsonlint** is a pure JavaScript version of the service provided at jsonlint.com. It provides a command-line interface for validating JSON files, ensuring they conform to the JSON specification. This tool is useful for catching syntax errors, malformed JSON structures, and ensuring data integrity in JSON files used in web applications, APIs, and configuration files.
     linter_url: https://github.com/prantlf/jsonlint
     linter_repo: https://github.com/prantlf/jsonlint
     linter_spdx_license: MIT
@@ -188,6 +190,8 @@ linters:
           url: https://code.visualstudio.com/
   # PRETTIER
   - linter_name: prettier
+    linter_text: |
+      **Prettier** is an opinionated code formatter that supports many languages including JSON. It removes all original styling and ensures that all outputted code conforms to a consistent style by parsing your code and re-printing it according to its own rules. For JSON files, Prettier enforces consistent indentation, spacing, and formatting, making JSON data more readable and maintainable.
     is_formatter: true
     linter_url: https://prettier.io/
     linter_repo: https://github.com/prettier/prettier
@@ -242,6 +246,8 @@ linters:
           url: https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode
   # npm-package-json-lint
   - linter_name: npm-package-json-lint
+    linter_text: |
+      **npm-package-json-lint** is a configurable linter to help keep npm package.json files organized and consistent. It validates package.json files against a set of configurable rules to ensure they follow best practices, contain required fields, and maintain consistency across projects. This tool helps catch common mistakes in package.json files such as missing dependencies, incorrect version formats, and inconsistent metadata.
     linter_url: https://npmpackagejsonlint.org/
     linter_repo: https://github.com/tclindner/npm-package-json-lint
     linter_spdx_license: MIT

@@ -14,6 +14,8 @@ file_names_regex:
 linters:
   # npm-groovy-lint
   - linter_name: npm-groovy-lint
+    linter_text: |
+      **npm-groovy-lint** is a comprehensive linter, formatter, and auto-fixer for Groovy files, Jenkinsfiles, and Gradle scripts. Built on **CodeNarc**, it provides extensive code quality analysis with **60+ auto-fixable rules** covering formatting, style, and best practices. Features include **automatic code formatting**, **intelligent auto-fixing**, **SARIF report generation**, and **flexible configuration** with preset configs for different use cases (recommended, Jenkinsfile-specific, all rules). Supports **inline rule disabling**, **CI/CD integration**, and works seamlessly with Jenkins pipelines, making it essential for maintaining high-quality Groovy codebases.
     can_output_sarif: true
     linter_url: https://nvuillam.github.io/npm-groovy-lint/
     linter_repo: https://github.com/nvuillam/npm-groovy-lint

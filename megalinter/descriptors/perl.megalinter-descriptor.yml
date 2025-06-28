@@ -17,6 +17,8 @@ install:
 linters:
   # PERL CRITIC
   - linter_name: perlcritic
+    linter_text: |
+      **perlcritic** is an extensible framework for creating and applying coding standards to Perl source code, functioning as a static source code analysis engine. It detects various issues such as usage of undefined global variables, unused variables and values, accessing uninitialized variables, unreachable code and more. Most Policy modules are based on Damian Conway's "Perl Best Practices" book, with configurable severity levels (1-5), theme-based policy selection, and support for inline annotations to selectively disable checks. The tool provides comprehensive analysis with over 100 built-in policies covering areas like bugs, security, maintainability, complexity, and code style.
     linter_url: https://metacpan.org/pod/Perl::Critic
     linter_repo: https://github.com/Perl-Critic/Perl-Critic
     linter_spdx_license: Artistic-1.0-Perl OR GPL-1.0-or-later
