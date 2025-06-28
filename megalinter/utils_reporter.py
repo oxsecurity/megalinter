@@ -96,13 +96,15 @@ def build_markdown_summary_sections(reporter_self, action_run_url=""):
             # Start with basic info
             summary_text = f"{status_icon} {descriptor} ({linter_name})"
             
-            # Add most critical info only
-            if linter_data['errors_cell'] != 0 and linter_data['errors_cell'] != "no":
-                summary_text += f" - {linter_data['errors_cell']} errors"
-            elif linter_data['warnings_cell'] != 0 and linter_data['warnings_cell'] != "no":
-                summary_text += f" - {linter_data['warnings_cell']} warnings"
+            # Add most critical info only (without hyperlinks for sections format)
+            if linter.number_errors > 0:
+                summary_text += f" - {linter.total_number_errors} errors"
+            elif linter.total_number_warnings > 0:
+                summary_text += f" - {linter.total_number_warnings} warnings"
             elif linter_data['nb_fixed_cell'] and linter_data['nb_fixed_cell'] != "":
-                summary_text += f" - {linter_data['nb_fixed_cell']} fixed"
+                # For nb_fixed_cell, use the plain value without links
+                fixed_count = str(linter.number_fixed) if linter.try_fix is True and linter.cli_lint_mode != "project" else "yes"
+                summary_text += f" - {fixed_count} fixed"
             else:
                 summary_text += " - OK"
             
