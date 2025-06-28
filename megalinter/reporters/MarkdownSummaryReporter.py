@@ -42,12 +42,14 @@ class MarkdownSummaryReporter(Reporter):
             summary_file.write(summary)
         # if GITHUB_STEP_SUMMARY is set, append to it
         if "GITHUB_STEP_SUMMARY" in os.environ:
-            with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as summary_file:
+            with open(
+                os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8"
+            ) as summary_file:
                 summary_file.write(summary)
         logging.info(
             f"[MARKDOWN_SUMMARY Reporter] Generated {self.name} report: {summary_file_name}"
         )
         if "GITHUB_STEP_SUMMARY" in os.environ:
             logging.info(
-            f"[MARKDOWN_SUMMARY Reporter] Also appended to GITHUB_STEP_SUMMARY: {os.environ['GITHUB_STEP_SUMMARY']}"
+                f"[MARKDOWN_SUMMARY Reporter] Also appended to GITHUB_STEP_SUMMARY: {os.environ['GITHUB_STEP_SUMMARY']}"
             )
