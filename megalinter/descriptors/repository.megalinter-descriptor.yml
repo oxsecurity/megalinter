@@ -324,7 +324,7 @@ linters:
       - "--source"
       - "."
     cli_help_arg_name: help
-    cli_version_arg_name: --version
+    cli_version_arg_name: version
     cli_lint_errors_count: regex_sum
     cli_lint_errors_regex: "leaks found: ([0-9]+)"
     test_folder: gitleaks
