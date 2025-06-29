@@ -48,6 +48,8 @@ LLM_TEMPERATURE: 0.1
 ```yaml
 LLM_ADVISOR_ENABLED: true          # Enable/disable AI advisor
 LLM_ADVISOR_LEVEL: ERROR           # When to trigger: ERROR (default) or WARNING
+LLM_ADVISOR_ENABLE_LINTERS: []     # Only analyze these linters (linter names)
+LLM_ADVISOR_DISABLE_LINTERS: []    # Never analyze these linters (linter names)
 LLM_PROVIDER: openai               # Provider: see supported providers above
 LLM_MODEL_NAME: gpt-3.5-turbo      # Model name (provider-specific)
 LLM_MAX_TOKENS: 1000               # Maximum tokens for response
@@ -82,6 +84,40 @@ LLM_ADVISOR_LEVEL: WARNING
 - Helps improve code quality beyond just fixing build-breaking errors
 
 Choose `ERROR` for cost-sensitive environments or `WARNING` for comprehensive code quality improvements.
+
+## Linter-Specific Configuration
+
+You can control which specific linters the AI advisor should analyze using these settings:
+
+### LLM_ADVISOR_ENABLE_LINTERS
+
+```yaml
+LLM_ADVISOR_ENABLE_LINTERS:
+  - PYTHON_PYLINT
+  - JAVASCRIPT_ESLINT
+  - TYPESCRIPT_ESLINT
+```
+
+- Only the specified linters will be analyzed by the AI advisor
+- Takes precedence over `LLM_ADVISOR_DISABLE_LINTERS` if both are set
+- Useful for focusing on critical linters to reduce API costs
+
+### LLM_ADVISOR_DISABLE_LINTERS
+
+```yaml
+LLM_ADVISOR_DISABLE_LINTERS:
+  - PYTHON_BANDIT
+  - DOCKERFILE_HADOLINT
+```
+
+- These linters will never be analyzed by the AI advisor
+- Ignored if `LLM_ADVISOR_ENABLE_LINTERS` is also set
+- Useful for excluding noisy or less critical linters
+
+### Priority Order
+1. **Enable List**: If `LLM_ADVISOR_ENABLE_LINTERS` is set, only those linters are analyzed
+2. **Disable List**: If only `LLM_ADVISOR_DISABLE_LINTERS` is set, all linters except those are analyzed
+3. **Level Filter**: `LLM_ADVISOR_LEVEL` (ERROR/WARNING) is then applied to the filtered linters
 
 ## Security Considerations
 

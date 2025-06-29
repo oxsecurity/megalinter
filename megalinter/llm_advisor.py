@@ -54,6 +54,14 @@ class LLMAdvisor:
         if self.advisor_level not in ["ERROR", "WARNING"]:
             logging.warning(f"Invalid LLM_ADVISOR_LEVEL '{self.advisor_level}'. Using 'ERROR' as default.")
             self.advisor_level = "ERROR"
+        
+        # Load linter-specific enable/disable lists
+        self.enable_linters = config.get_list(
+            self.request_id, "LLM_ADVISOR_ENABLE_LINTERS", []
+        )
+        self.disable_linters = config.get_list(
+            self.request_id, "LLM_ADVISOR_DISABLE_LINTERS", []
+        )
 
     def _initialize_provider(self):
         """Initialize the LLM provider"""
@@ -220,7 +228,7 @@ Your response must not exceed 1000 characters, so prioritize the most critical i
 
     def should_analyze_linter(self, linter) -> bool:
         """
-        Check if LLM advisor should analyze this linter based on the configured level
+        Check if LLM advisor should analyze this linter based on the configured level and linter lists
         
         Args:
             linter: The linter object with error/warning counts
@@ -230,6 +238,15 @@ Your response must not exceed 1000 characters, so prioritize the most critical i
         """
         if not self.is_available():
             return False
+        
+        # Check linter-specific enable/disable lists first
+        # If both are set, enable list wins
+        if len(self.enable_linters) > 0:
+            if linter.name not in self.enable_linters:
+                return False
+        elif len(self.disable_linters) > 0:
+            if linter.name in self.disable_linters:
+                return False
         
         # Check if linter has any issues to analyze
         has_errors_or_warnings = (
