@@ -34,19 +34,4 @@ terminaltables==3.1.10
 termcolor==3.1.0
 urllib3==2.5.0
 webpreview==1.7.2
-
-# LLM Advisor dependencies
-langchain
-langchain-anthropic
-langchain-community
-langchain-google-genai
-langchain-huggingface
-langchain-mistralai
-langchain-ollama
-langchain-openai
-
-# Additional dependencies from pyproject.toml
-lxml
-packaging
-psutil
-
+yq==3.4.3
