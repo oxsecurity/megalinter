@@ -3725,7 +3725,7 @@
 </ul>
 <h2 id="csharpier-documentation">csharpier documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>1.0.2</strong></li>
+<li>Version in MegaLinter: <strong>1.0.3</strong></li>
 <li>Visit <a href="https://csharpier.com/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://csharpier.com/docs/Configuration" target="_blank">How to configure csharpier rules</a></li>
 <li>See <a href="https://csharpier.com/docs/Ignore" target="_blank">How to disable csharpier rules in files</a></li>
@@ -3946,7 +3946,7 @@ RUN apk add --no-cache dotnet9-sdk
 ENV PATH="${PATH}:/root/.dotnet/tools"
 # Linter install
 # renovate: datasource=nuget depName=csharpier
-ARG CSHARP_CSHARPIER_VERSION=1.0.2
+ARG CSHARP_CSHARPIER_VERSION=1.0.3
 RUN dotnet tool install --allow-roll-forward --global csharpier --version "${CSHARP_CSHARPIER_VERSION}"
 </code></pre>
 </article>
