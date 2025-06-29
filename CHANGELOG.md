@@ -72,6 +72,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [ruff-format](https://github.com/astral-sh/ruff) from 0.12.0 to **0.12.1** on 2025-06-27
   - [ruff](https://github.com/astral-sh/ruff) from 0.12.0 to **0.12.1** on 2025-06-27
   - [prettier](https://prettier.io/) from 3.6.1 to **3.6.2** on 2025-06-27
+  - [golangci-lint](https://golangci-lint.run/) from 2.1.6 to **2.2.0** on 2025-06-29
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15
