@@ -103,7 +103,7 @@ provider = ProviderClass(config)
 To use centralized defaults in your `load_config()` method:
 
 ```python
-def load_config(self, request_id: str = None) -> Dict[str, Any]:
+def load_config(self, request_id: str = None) -> Dict[str, str | float]:
     return {
         "api_key": config.get(request_id, "PROVIDER_API_KEY", ""),
         "model_name": config.get(request_id, "LLM_MODEL_NAME", ""),
