@@ -23,6 +23,11 @@ dependencies = [
   "gitpython",
   "importlib-metadata>=3.10; python_version < '3.9'",
   "jsonpickle",
+  "langchain-core",
+  "langchain-openai",
+  "langchain-anthropic",
+  "langchain-google-genai",
+  "langchain-community",
   "multiprocessing_logging",
   "pygithub",
   "pytablewriter",
@@ -35,6 +40,8 @@ dependencies = [
   "termcolor",
   "urllib3>=2.5.0",
 ]
+
+[project.optional-dependencies]
 
 [project.urls]
 Homepage = "https://megalinter.io/"

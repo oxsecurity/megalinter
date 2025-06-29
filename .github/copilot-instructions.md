@@ -17,7 +17,8 @@ megalinter/
 │   ├── flavor_factory.py  # Factory for MegaLinter flavors
 │   ├── descriptors/       # YAML descriptor files for each linter
 │   ├── linters/           # Custom linter implementations
-│   └── reporters/         # Report generators
+│   ├── reporters/         # Report generators
+│   └── llm_advisor.py     # LLM Advisor for AI-powered fix suggestions
 ├── flavors/               # Different MegaLinter variants (language-specific)
 ├── docs/                  # Documentation
 ├── mega-linter-runner/    # NPM package for local execution
@@ -56,12 +57,29 @@ megalinter/
 - Updates flavor configurations
 - Validates descriptor schemas
 
+**LLM Advisor (llm_advisor.py)**: AI-powered fix suggestions
+
+- Integrates with multiple LLM providers via LangChain
+- Analyzes linter errors and provides intelligent fix suggestions
+- Supports OpenAI, Anthropic, Google Gemini, and local Ollama models
+- Generates context-aware recommendations for code improvements
+
 ### 3. Linter Categories
 
 - **Languages**: Programming languages (Python, Java, JavaScript, etc.)
 - **Formats**: Data formats (JSON, YAML, XML, etc.)
 - **Tooling formats**: Infrastructure files (Terraform, Docker, etc.)
 - **Other**: Repository-level tools (security, copy-paste detection, etc.)
+
+### 4. AI-Powered Features
+
+**LLM Advisor Integration**:
+
+- Configurable AI-powered fix suggestions for linter errors
+- Multi-provider support (OpenAI, Anthropic, Google, Ollama)
+- Context-aware analysis using code snippets and error details
+- Integrated into markdown reports with actionable recommendations
+- Optional feature with privacy controls (local/cloud processing)
 
 ## Development Guidelines
 
@@ -156,6 +174,7 @@ megalinter/tests/test_megalinter/
 - Use type hints where possible
 - Add docstrings for public methods
 - Handle errors gracefully with appropriate logging
+- Do not test if imports work, assume they are always available
 
 ### Descriptor Guidelines
 
@@ -169,6 +188,7 @@ megalinter/tests/test_megalinter/
 - Auto-generated from descriptors - don't edit generated files directly
 - Update descriptor metadata to improve documentation
 - Include examples and configuration tips
+- Built with mkdocs-material then displayed in the MegaLinter documentation site
 
 ## Common Operations
 

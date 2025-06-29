@@ -18,6 +18,7 @@ from megalinter.constants import (
 from pytablewriter import Align, MarkdownTableWriter
 from pytablewriter.style import Style
 from redis import Redis
+from megalinter.llm_advisor import LLMAdvisor
 
 
 def build_markdown_summary(reporter_self, action_run_url="", max_total_chars=40000):
@@ -233,6 +234,11 @@ def build_markdown_summary_sections(
         sorted_linter_texts = [text for _, text in ok_linter_names]
 
         p_r_msg += ", ".join(sorted_linter_texts) + "\n\n"
+
+    # Add AI-powered suggestions if enabled and available
+    ai_suggestions = get_ai_fix_suggestions(reporter_self, linters_with_issues)
+    if ai_suggestions:
+        p_r_msg += ai_suggestions + "\n\n"
 
     # Add footer content
     p_r_msg += build_markdown_summary_footer(reporter_self, action_run_url)
@@ -627,3 +633,78 @@ def send_redis_message(reporter_self, message_data):
                 f"[Redis Reporter] Error posting message for MegaLinter: Error {str(e)}"
             )
             logging.warning("[Redis Reporter] Redis Message data: " + str(message_data))
+
+
+def get_ai_fix_suggestions(reporter_self, linters_with_issues):
+    """Generate AI-powered fix suggestions for linters with errors or warnings"""
+    try:
+        llm_advisor = LLMAdvisor(reporter_self.master.request_id)
+        
+        if not llm_advisor.is_available():
+            return None
+        
+        # Collect suggestions from all linters with issues
+        all_suggestions = []
+        
+        for linter in linters_with_issues:
+            if linter.number_errors == 0 and linter.total_number_warnings == 0:
+                continue
+                
+            # Get linter output for AI analysis
+            text_report_sub_folder = config.get(
+                reporter_self.master.request_id, "TEXT_REPORTER_SUB_FOLDER", "linters_logs"
+            )
+            text_file_name = (
+                f"{reporter_self.report_folder}{os.path.sep}"
+                f"{text_report_sub_folder}{os.path.sep}"
+                f"{linter.status.upper()}-{linter.name}.log"
+            )
+            
+            linter_output = ""
+            if os.path.isfile(text_file_name):
+                try:
+                    with open(text_file_name, "r", encoding="utf-8") as text_file:
+                        linter_output = text_file.read()
+                        # Remove everything before "Linter raw log:" if present
+                        separator_pos = linter_output.find("Linter raw log:")
+                        if separator_pos != -1:
+                            next_newline = linter_output.find("\n", separator_pos)
+                            if next_newline != -1:
+                                linter_output = linter_output[next_newline + 1:].strip()
+                except Exception as e:
+                    logging.warning(f"Error reading linter output for AI analysis: {str(e)}")
+                    continue
+            
+            if not linter_output.strip():
+                continue
+                
+            # Get file paths for this linter if available
+            # Get AI suggestions for this linter's output
+            suggestions_data = llm_advisor.get_fix_suggestions(
+                linter.linter_name, 
+                linter_output,
+                max_errors=3  # Limit per linter to avoid overwhelming output
+            )
+            
+            if suggestions_data.get("suggestions"):
+                all_suggestions.extend(suggestions_data["suggestions"])
+        
+        if not all_suggestions:
+            return None
+        
+        # Format combined suggestions
+        combined_data = {
+            "enabled": True,
+            "provider": llm_advisor.provider,
+            "model": llm_advisor.model_name,
+            "total_errors": len(all_suggestions),
+            "processed_errors": len(all_suggestions),
+            "suggestions": all_suggestions
+        }
+        
+        return llm_advisor.format_suggestions_for_output(combined_data)
+        
+    except Exception as e:
+        logging.warning(f"Error generating AI fix suggestions: {str(e)}")
+    
+    return None
