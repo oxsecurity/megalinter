@@ -71,37 +71,32 @@ class LLMAdvisor:
         """Backwards compatibility property for supported providers"""
         return self.get_supported_providers()
     
-    def get_fix_suggestions(self, linter_key: str, linter_name: str, linter_output: str, max_errors: int = 5) -> Dict[str, Any]:
+    def get_fix_suggestions(self, linter_name: str, linter_output: str) -> Dict[str, Any]:
         """
         Get AI-powered fix suggestions for linter errors
         
         Args:
-            linter_key: Key identifying the linter
             linter_name: Name of the linter
-            linter_output: Raw output from the linter
-            max_errors: Maximum number of errors to process (to avoid token limits)
+            linter_output: Full raw output from the linter
             
         Returns:
-            Dictionary containing fix suggestions and metadata
+            Dictionary containing a single fix suggestion and metadata
         """
         if not self.is_available():
-            return {"enabled": False, "suggestions": []}
+            return {"enabled": False, "suggestion": None}
         
-        # Work directly with raw output - much more reliable than trying to parse
-        return self._get_suggestions_from_raw_output(linter_key, linter_name, linter_output, max_errors)
+        return self._get_suggestion_from_raw_output(linter_name, linter_output)
     
-    def _get_suggestions_from_raw_output(self, linter_key: str, linter_name: str, linter_output: str, max_errors: int = 5) -> Dict[str, Any]:
+    def _get_suggestion_from_raw_output(self, linter_name: str, linter_output: str) -> Dict[str, Any]:
         """
-        Get AI suggestions directly from raw linter output
+        Get AI suggestion directly from raw linter output
         
         Args:
-            linter_key: Key identifying the linter
             linter_name: Name of the linter
-            linter_output: Raw output from the linter
-            max_errors: Maximum number of suggestions to generate
+            linter_output: Full raw output from the linter
             
         Returns:
-            Dictionary containing fix suggestions and metadata
+            Dictionary containing a single fix suggestion and metadata
         """
         try:
             # Build a prompt for analyzing the raw output
@@ -112,34 +107,25 @@ class LLMAdvisor:
             suggestion_text = self.provider.invoke(prompt, system_prompt)
             
             # Return as a single suggestion for the raw output
-            suggestions = [{
-                "file_path": "Multiple files",
-                "line_number": None,
-                "error_message": f"{linter_name} issues detected",
-                "rule_id": None,
-                "linter": linter_key,
-                "suggestion": suggestion_text.strip(),
-                "severity": "mixed"
-            }]
+            suggestion = {
+                "linter": linter_name,
+                "suggestion": suggestion_text.strip()
+            }
             
             return {
                 "enabled": True,
                 "provider": self.provider_name,
                 "model": self.model_name,
-                "total_errors": 1,
-                "processed_errors": 1,
-                "suggestions": suggestions
+                "suggestion": suggestion
             }
             
         except Exception as e:
-            logging.warning(f"Failed to get suggestions from raw output: {str(e)}")
+            logging.warning(f"Failed to get suggestion from raw output: {str(e)}")
             return {
                 "enabled": True,
                 "provider": self.provider_name,
                 "model": self.model_name,
-                "total_errors": 0,
-                "processed_errors": 0,
-                "suggestions": []
+                "suggestion": None
             }
     
     def _get_system_prompt(self) -> str:
@@ -183,29 +169,23 @@ Your response must not exceed 1000 characters, so prioritize the most critical i
         return "\n".join(prompt_parts)
 
     def format_suggestions_for_output(self, suggestions_data: Dict[str, Any]) -> str:
-        """Format suggestions for display in reports"""
+        """Format suggestion for display in reports"""
         if not suggestions_data.get("enabled", False):
             return ""
         
-        if not suggestions_data.get("suggestions"):
+        suggestion = suggestions_data.get("suggestion")
+        if not suggestion:
             return "No AI suggestions available for the detected errors."
         
         output_lines = [
             f"## 🤖 AI-Powered Fix Suggestions ({suggestions_data['provider']} - {suggestions_data['model']})",
             "",
-            f"Analyzed {suggestions_data['processed_errors']} out of {suggestions_data['total_errors']} errors:",
+            f"**{suggestion['linter']} - AI Analysis:**",
+            "",
+            suggestion['suggestion'],
+            "",
+            "---",
             ""
         ]
-        
-        for i, suggestion in enumerate(suggestions_data["suggestions"], 1):
-            output_lines.extend([
-                f"### {i}. {suggestion['linter']} Issues",
-                "",
-                f"**AI Suggestion:**",
-                suggestion['suggestion'],
-                "",
-                "---",
-                ""
-            ])
         
         return "\n".join(output_lines)
