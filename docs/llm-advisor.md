@@ -1,6 +1,6 @@
 # AI-Powered Fix Suggestions (LLM Advisor)
 
-MegaLinter now includes an AI-powered advisor that provides intelligent fix suggestions for linter errors using various Large Language Models (LLMs) through LangChain.
+MegaLinter includes an AI-powered advisor that provides intelligent fix suggestions for linter errors using various Large Language Models (LLMs) through LangChain.
 
 ## Features
 
@@ -11,29 +11,24 @@ MegaLinter now includes an AI-powered advisor that provides intelligent fix sugg
 
 ## Supported LLM Providers
 
-| Provider | Models | API Key Required | Local/Cloud | Installation |
-|----------|---------|------------------|-------------|--------------|
-| OpenAI | GPT-3.5, GPT-4, GPT-4o | Yes | Cloud | Built-in |
-| Anthropic | Claude 3 (Haiku, Sonnet, Opus) | Yes | Cloud | Built-in |
-| Google | Gemini Pro, Gemini Pro Vision | Yes | Cloud | Built-in |
-| Mistral AI | Mistral Small, Medium, Large | Yes | Cloud | Built-in |
-| DeepSeek | DeepSeek Chat, DeepSeek Coder | Yes | Cloud | Built-in |
-| Grok | Grok Beta (xAI) | Yes | Cloud | Built-in |
-| Ollama | Llama 2, CodeLlama, Mistral, etc. | No | Local | Built-in |
-| Hugging Face | Any HF model (DialoGPT, CodeT5, etc.) | Optional | Local/Cloud | `pip install 'megalinter[huggingface]'` |
+| Provider | Models | API Key Required | Local/Cloud | Documentation |
+|----------|---------|------------------|-------------|---------------|
+| [OpenAI](llm-provider/llm_provider_openai.md) | GPT-3.5, GPT-4, GPT-4o | Yes | Cloud | [Setup Guide](llm-provider/llm_provider_openai.md) |
+| [Anthropic](llm-provider/llm_provider_anthropic.md) | Claude 3 (Haiku, Sonnet, Opus) | Yes | Cloud | [Setup Guide](llm-provider/llm_provider_anthropic.md) |
+| [Google GenAI](llm-provider/llm_provider_google_genai.md) | Gemini Pro, Gemini Pro Vision | Yes | Cloud | [Setup Guide](llm-provider/llm_provider_google_genai.md) |
+| [Mistral AI](llm-provider/llm_provider_mistralai.md) | Mistral Small, Medium, Large | Yes | Cloud | [Setup Guide](llm-provider/llm_provider_mistralai.md) |
+| [DeepSeek](llm-provider/llm_provider_deepseek.md) | DeepSeek Chat, DeepSeek Coder | Yes | Cloud | [Setup Guide](llm-provider/llm_provider_deepseek.md) |
+| [Grok](llm-provider/llm_provider_grok.md) | Grok Beta | Yes | Cloud | [Setup Guide](llm-provider/llm_provider_grok.md) |
+| [Ollama](llm-provider/llm_provider_ollama.md) | Llama 2, CodeLlama, Mistral, etc. | No | Local | [Setup Guide](llm-provider/llm_provider_ollama.md) |
+| [Hugging Face](llm-provider/llm_provider_huggingface.md) | Any HF model (DialoGPT, CodeT5, etc.) | Optional | Local/Cloud | [Setup Guide](llm-provider/llm_provider_huggingface.md) |
 
-## Optional Dependencies
+See [All LLM Providers](llm-providers.md) for a complete comparison and setup instructions.
 
-For additional providers that require heavy dependencies, define the following command as  [PRE_COMMAND](./config-precommands.md)
+## Quick Start
 
-```bash
-# Optional: Hugging Face support (heavy dependencies)
-pip install langchain-huggingface transformers torch
-```
-
-## Configure Your LLM Provider
-
-Add to your `.mega-linter.yml`:
+1. **Choose your provider** from the [supported providers](llm-providers.md)
+2. **Set your API key** as an environment variable
+3. **Configure MegaLinter** in your `.mega-linter.yml`:
 
 ```yaml
 # Enable AI-powered fix suggestions
@@ -46,136 +41,30 @@ LLM_MAX_TOKENS: 1000
 LLM_TEMPERATURE: 0.1
 ```
 
-## Set API Credentials
+4. **Run MegaLinter** - AI suggestions will appear in your reports
 
-Define CI/CD environment variables for your chosen provider.
-
-Do not define your tokens in `.mega-linter.yml` !
-
-```bash
-# For OpenAI
-OPENAI_API_KEY=sk-your-api-key
-
-# For Anthropic
-ANTHROPIC_API_KEY=sk-ant-your-api-key
-
-# For Google
-GOOGLE_API_KEY=AIza-your-api-key
-
-# For Hugging Face (optional, for private models)
-HUGGINGFACE_API_TOKEN=hf_your-token
-
-# For Mistral AI
-MISTRAL_API_KEY=your-mistral-api-key
-
-# For DeepSeek
-DEEPSEEK_API_KEY=your-deepseek-api-key
-
-# For Grok (xAI)
-GROK_API_KEY=your-grok-api-key
-```
-
-## Configuration Options
-
-### Basic Configuration
+## Basic Configuration
 
 ```yaml
 LLM_ADVISOR_ENABLED: true          # Enable/disable AI advisor
-LLM_PROVIDER: openai               # Provider: openai, anthropic, google, huggingface, mistral, deepseek, grok, ollama
-LLM_MODEL_NAME: gpt-3.5-turbo      # Model name
+LLM_PROVIDER: openai               # Provider: see supported providers above
+LLM_MODEL_NAME: gpt-3.5-turbo      # Model name (provider-specific)
 LLM_MAX_TOKENS: 1000               # Maximum tokens for response
 LLM_TEMPERATURE: 0.1               # Temperature for generation (0.0-1.0)
 ```
 
-### Provider-Specific Examples
+## Security Considerations
 
-#### OpenAI Configuration
+⚠️ **Important**: Set API credentials as environment variables in your CI/CD system, not in `.mega-linter.yml` files.
 
-```yaml
-LLM_PROVIDER: openai
-LLM_MODEL_NAME: gpt-4o-mini        # or gpt-3.5-turbo, gpt-4
-# Set OPENAI_API_KEY environment variable
+```bash
+# Examples (choose your provider)
+OPENAI_API_KEY=sk-your-api-key
+ANTHROPIC_API_KEY=sk-ant-your-api-key
+GOOGLE_API_KEY=AIza-your-api-key
 ```
 
-#### Anthropic Configuration
-
-```yaml
-LLM_PROVIDER: anthropic
-LLM_MODEL_NAME: claude-3-haiku-20240307  # or claude-3-sonnet-20240229
-# Set ANTHROPIC_API_KEY environment variable
-```
-
-#### Google Gemini Configuration
-
-```yaml
-LLM_PROVIDER: google
-LLM_MODEL_NAME: gemini-pro         # or gemini-pro-vision
-# Set GOOGLE_API_KEY environment variable
-```
-
-#### Local Ollama Configuration
-
-```yaml
-LLM_PROVIDER: ollama
-LLM_MODEL_NAME: llama2             # or codellama, mistral, etc.
-OLLAMA_BASE_URL: http://localhost:11434  # Optional: custom Ollama URL
-```
-
-#### Hugging Face Configuration
-
-```yaml
-LLM_PROVIDER: huggingface
-LLM_MODEL_NAME: microsoft/DialoGPT-medium  # or any HF model
-HUGGINGFACE_TASK: text-generation  # Task type
-HUGGINGFACE_DEVICE: -1             # -1 for CPU, 0+ for GPU
-# Set HUGGINGFACE_API_TOKEN environment variable for private models
-```
-
-#### Mistral AI Configuration
-
-```yaml
-LLM_PROVIDER: mistral
-LLM_MODEL_NAME: mistral-small-latest  # or mistral-medium, mistral-large
-# Set MISTRAL_API_KEY environment variable
-```
-
-#### DeepSeek Configuration
-
-```yaml
-LLM_PROVIDER: deepseek
-LLM_MODEL_NAME: deepseek-chat      # or deepseek-coder
-# Set DEEPSEEK_API_KEY environment variable
-```
-
-#### Grok Configuration
-
-```yaml
-LLM_PROVIDER: grok
-LLM_MODEL_NAME: grok-beta
-# Set GROK_API_KEY environment variable
-```
-
-**Popular Hugging Face Models for Code Analysis:**
-- `microsoft/DialoGPT-medium` - General purpose conversational model
-- `Salesforce/codet5-base` - Code understanding and generation
-- `microsoft/codebert-base` - Code representation model
-- `codeparrot/codeparrot-small` - Small code generation model
-- `bigcode/starcoder` - Large code generation model
-
-### Advanced Configuration
-
-```yaml
-# Custom API endpoints
-OPENAI_BASE_URL: https://api.openai.com/v1  # For OpenAI-compatible APIs
-OLLAMA_BASE_URL: http://localhost:11434     # For custom Ollama instances
-MISTRAL_BASE_URL: https://api.mistral.ai    # Custom Mistral endpoint (optional)
-DEEPSEEK_BASE_URL: https://api.deepseek.com/v1  # Custom DeepSeek endpoint (optional)
-GROK_BASE_URL: https://api.x.ai/v1          # Custom Grok endpoint (optional)
-
-# Hugging Face specific settings
-HUGGINGFACE_TASK: text-generation           # HF task type
-HUGGINGFACE_DEVICE: 0                       # GPU device (0, 1, 2...) or -1 for CPU
-```
+For detailed provider setup instructions, see the individual provider documentation pages linked above.
 
 ## How It Works
 
@@ -239,30 +128,30 @@ Example fix:
 ---
 ```
 
-## Provider Highlights
+## Benefits & Use Cases
 
-## Benefits
+- **Learning Tool**: Helps developers understand why errors occur and how to fix them
+- **Faster Development**: Provides immediate, actionable suggestions without context switching
+- **Code Quality**: Explains best practices to prevent similar issues in the future
+- **Time Saving**: Reduces time spent researching error meanings and solutions
+- **Context-Aware**: Analyzes actual code context for better, more relevant recommendations
 
-- **Learning Tool**: Helps developers understand why errors occur
-- **Faster Fixes**: Provides immediate, actionable suggestions
-- **Code Quality**: Explains best practices to prevent similar issues
-- **Time Saving**: Reduces time spent researching error meanings
-- **Context-Aware**: Analyzes actual code for better recommendations
-
-## Limitations
+## Limitations & Considerations
 
 - **API Costs**: Cloud providers charge for API usage
 - **Rate Limits**: Providers may have request limits
 - **Token Limits**: Large files may be truncated for analysis
 - **Accuracy**: AI suggestions should be reviewed before applying
-- **Dependencies**: Requires additional Python packages
+- **Privacy**: Code snippets are sent to the LLM provider for analysis (use local Ollama for private code)
 
-## Privacy and Security
+## Getting Started
 
-- **Code Analysis**: Code snippets are sent to the LLM provider for analysis
-- **Data Handling**: Follows each provider's data usage policies
-- **Local Option**: Use Ollama for completely local processing
-- **Configurable**: Can be disabled entirely if not desired
+1. **[Choose a Provider](llm-providers.md)** - Compare all available LLM providers
+2. **Set up credentials** - Follow the provider-specific setup guide
+3. **Configure MegaLinter** - Add configuration to your `.mega-linter.yml`
+4. **Run and review** - Check the AI suggestions in your MegaLinter reports
+
+For detailed setup instructions, see the documentation for your chosen provider.
 
 ## Troubleshooting
 
