@@ -181,6 +181,25 @@ megalinter/tests/test_megalinter/
 
 - If you want to run python scripts, always run `make bootstrap` first to set up the environment
 
+### Python Package Management
+
+MegaLinter uses **uv** (fast Python package installer) and **hatch** (modern Python project manager):
+
+#### Adding Python Dependencies
+
+1. **Core dependencies**: Add to `dependencies` array in `pyproject.toml`
+2. **Optional dependencies**: Add to `[project.optional-dependencies]` sections
+3. **Development dependencies**: Add to `.config/python/dev/requirements.txt`
+4. **Lock file**: Always run `uv lock` after modifying `pyproject.toml`
+5. **Install locally**: Run `make bootstrap` or `uv pip install -e .`
+
+#### Common Commands
+
+- `make bootstrap` - Set up development environment
+- `uv lock` - Update dependency lock file
+- `uv pip install -e .` - Install project in editable mode
+- `hatch shell` - Enter hatch development environment
+
 ### Descriptor Guidelines
 
 - Keep descriptors minimal and focused

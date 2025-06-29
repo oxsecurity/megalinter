@@ -109,6 +109,101 @@ Draft pull requests are also welcome to get feedback early on, or if there is so
 1. `/Dockerfile` file has to be updated
 2. Run `make megalinter-build` or `bash build.sh`, and it will automatically propagate to all the other Dockerfiles
 
+### Managing Python Dependencies
+
+MegaLinter uses **uv** (fast Python package installer) and **hatch** (modern Python project manager) for dependency management.
+
+#### Adding a New Python Package
+
+1. **Add to pyproject.toml**: Add the package to the appropriate section in `pyproject.toml`:
+   - **Core dependencies**: Add to `dependencies` array
+   - **Optional dependencies**: Add to `[project.optional-dependencies]` sections (e.g., `huggingface`, `all-llm`)
+   - **Development dependencies**: Add to `.config/python/dev/requirements.txt`
+
+2. **Example - Adding a core dependency**:
+   ```toml
+   dependencies = [
+     "azure-devops==6.0.0b4",
+     "new-package>=1.0.0",  # Add your package here
+     "commentjson",
+     # ... other dependencies
+   ]
+   ```
+
+3. **Example - Adding an optional dependency**:
+   ```toml
+   [project.optional-dependencies]
+   huggingface = [
+     "langchain-huggingface",
+     "new-ai-package==2.1.0",  # Add your package here
+     "transformers",
+     "torch",
+   ]
+   ```
+
+4. **Update lock file**: Run `uv lock` to update `uv.lock` with the new dependencies
+
+5. **Install locally**: Run `make bootstrap` or `uv pip install -e .` to install the updated dependencies
+
+#### Upgrading Python Packages
+
+1. **Update version in pyproject.toml**: Change the version constraint
+   ```toml
+   "package-name>=2.0.0",  # Updated from 1.0.0
+   ```
+
+2. **Update lock file**: Run `uv lock` to resolve and lock new versions
+
+3. **Install updates**: Run `make python-venv-editable-install` or `uv pip install --upgrade -e .`
+
+#### Development Environment Commands
+
+- **Bootstrap environment**: `make bootstrap` (sets up venv, installs all dependencies)
+- **Install dev requirements**: `make python-bootstrap-dev`
+- **Install package in editable mode**: `make python-venv-editable-install`
+- **Upgrade pip**: `make python-venv-upgrade`
+- **Clean environment**: `make python-venv-purge`
+
+#### Using uv directly
+
+If you prefer using uv commands directly:
+
+```bash
+# Install dependencies
+uv pip install -r .config/python/dev/requirements.txt
+
+# Install project in editable mode
+uv pip install -e .
+
+# Add a new package
+uv add package-name
+
+# Upgrade packages
+uv pip install --upgrade package-name
+
+# Lock dependencies
+uv lock
+```
+
+#### Using hatch environments
+
+```bash
+# Install hatch (if not already installed)
+pip install pipx && pipx install hatch
+
+# Enter hatch shell
+hatch shell
+
+# Run commands in specific environments
+hatch run docs:serve  # Run docs server
+hatch run build:all   # Run build commands
+```
+
+**Important Notes**:
+- Always run `uv lock` after modifying `pyproject.toml` to update the lock file
+- Test your changes locally with `make tests-fast` before submitting PR
+- Update `CHANGELOG.md` when adding or upgrading significant dependencies
+
 ### Improve documentation
 
 Apart from the descriptors, it will usually involve modifying files such as [.automation/build.py](https://github.com/oxsecurity/megalinter/blob/main/.automation/build.py)
