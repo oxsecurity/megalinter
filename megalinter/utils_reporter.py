@@ -219,7 +219,7 @@ def build_markdown_summary_sections(
         if (
             llm_advisor
             and raw_linter_output.strip()
-            and (linter.number_errors > 0 or linter.total_number_warnings > 0)
+            and llm_advisor.should_analyze_linter(linter)
         ):
             try:
                 suggestion_data = llm_advisor.get_fix_suggestions(

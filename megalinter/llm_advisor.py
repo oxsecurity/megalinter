@@ -44,6 +44,16 @@ class LLMAdvisor:
         self.provider_name = config.get(
             self.request_id, "LLM_PROVIDER", "openai"
         ).lower()
+        
+        # Load LLM advisor level (ERROR or WARNING)
+        self.advisor_level = config.get(
+            self.request_id, "LLM_ADVISOR_LEVEL", "ERROR"
+        ).upper()
+        
+        # Validate advisor level
+        if self.advisor_level not in ["ERROR", "WARNING"]:
+            logging.warning(f"Invalid LLM_ADVISOR_LEVEL '{self.advisor_level}'. Using 'ERROR' as default.")
+            self.advisor_level = "ERROR"
 
     def _initialize_provider(self):
         """Initialize the LLM provider"""
@@ -207,3 +217,38 @@ Your response must not exceed 1000 characters, so prioritize the most critical i
         ]
 
         return "\n".join(output_lines)
+
+    def should_analyze_linter(self, linter) -> bool:
+        """
+        Check if LLM advisor should analyze this linter based on the configured level
+        
+        Args:
+            linter: The linter object with error/warning counts
+            
+        Returns:
+            bool: True if the linter should be analyzed, False otherwise
+        """
+        if not self.is_available():
+            return False
+        
+        # Check if linter has any issues to analyze
+        has_errors_or_warnings = (
+            linter.number_errors > 0 or linter.total_number_warnings > 0
+        )
+        
+        if not has_errors_or_warnings:
+            return False
+        
+        # Determine if this is an error linter (blocking) or warning linter (non-blocking)
+        is_error_linter = linter.return_code != 0
+        is_warning_linter = linter.return_code == 0 and has_errors_or_warnings
+        
+        # Always analyze error linters (blocking linters)
+        if is_error_linter:
+            return True
+        
+        # Only analyze warning linters (non-blocking) if level is set to WARNING
+        if self.advisor_level == "WARNING" and is_warning_linter:
+            return True
+        
+        return False

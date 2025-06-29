@@ -250,6 +250,272 @@ script.js:8:1: no-undef 'console' is not defined"""
         # Verify the provider was called for each test case
         self.assertEqual(mock_provider.invoke.call_count, len(test_cases))
 
+    @patch("megalinter.config.get")
+    @patch(
+        "megalinter.llm_provider.llm_provider_factory.LLMProviderFactory.create_provider"
+    )
+    def test_llm_advisor_level_error_default(self, mock_create_provider, mock_config):
+        """Test LLM advisor level defaults to ERROR"""
+        # Mock configuration - no LLM_ADVISOR_LEVEL specified
+        mock_config.side_effect = lambda req_id, key, default: {
+            "LLM_ADVISOR_ENABLED": "true",
+            "LLM_PROVIDER": "openai",
+        }.get(key, default)
+
+        # Mock provider
+        mock_provider = Mock()
+        mock_provider.get_config_value.return_value = "gpt-3.5-turbo"
+        mock_provider.get_default_model.return_value = "gpt-3.5-turbo"
+        mock_provider.is_available.return_value = True
+        mock_create_provider.return_value = mock_provider
+
+        advisor = LLMAdvisor("test-request")
+
+        self.assertEqual(advisor.advisor_level, "ERROR")
+
+    @patch("megalinter.config.get")
+    @patch(
+        "megalinter.llm_provider.llm_provider_factory.LLMProviderFactory.create_provider"
+    )
+    def test_llm_advisor_level_warning(self, mock_create_provider, mock_config):
+        """Test LLM advisor level set to WARNING"""
+        # Mock configuration with WARNING level
+        mock_config.side_effect = lambda req_id, key, default: {
+            "LLM_ADVISOR_ENABLED": "true",
+            "LLM_PROVIDER": "openai",
+            "LLM_ADVISOR_LEVEL": "WARNING",
+        }.get(key, default)
+
+        # Mock provider
+        mock_provider = Mock()
+        mock_provider.get_config_value.return_value = "gpt-3.5-turbo"
+        mock_provider.get_default_model.return_value = "gpt-3.5-turbo"
+        mock_provider.is_available.return_value = True
+        mock_create_provider.return_value = mock_provider
+
+        advisor = LLMAdvisor("test-request")
+
+        self.assertEqual(advisor.advisor_level, "WARNING")
+
+    @patch("megalinter.config.get")
+    @patch(
+        "megalinter.llm_provider.llm_provider_factory.LLMProviderFactory.create_provider"
+    )
+    def test_llm_advisor_level_invalid_fallback(self, mock_create_provider, mock_config):
+        """Test LLM advisor level falls back to ERROR for invalid values"""
+        # Mock configuration with invalid level
+        mock_config.side_effect = lambda req_id, key, default: {
+            "LLM_ADVISOR_ENABLED": "true",
+            "LLM_PROVIDER": "openai", 
+            "LLM_ADVISOR_LEVEL": "INVALID",
+        }.get(key, default)
+
+        # Mock provider
+        mock_provider = Mock()
+        mock_provider.get_config_value.return_value = "gpt-3.5-turbo"
+        mock_provider.get_default_model.return_value = "gpt-3.5-turbo"
+        mock_provider.is_available.return_value = True
+        mock_create_provider.return_value = mock_provider
+
+        advisor = LLMAdvisor("test-request")
+
+        self.assertEqual(advisor.advisor_level, "ERROR")
+
+    def test_should_analyze_linter_error_level(self):
+        """Test should_analyze_linter with ERROR level"""
+        # Mock linter with errors (blocking - return_code != 0)
+        mock_linter_errors = Mock()
+        mock_linter_errors.number_errors = 2
+        mock_linter_errors.total_number_warnings = 0
+        mock_linter_errors.return_code = 1  # Blocking
+
+        # Mock linter with warnings only (non-blocking - return_code == 0)
+        mock_linter_warnings = Mock()
+        mock_linter_warnings.number_errors = 0
+        mock_linter_warnings.total_number_warnings = 3
+        mock_linter_warnings.return_code = 0  # Non-blocking
+
+        # Mock linter with both errors and warnings (blocking)
+        mock_linter_both = Mock()
+        mock_linter_both.number_errors = 1
+        mock_linter_both.total_number_warnings = 2
+        mock_linter_both.return_code = 1  # Blocking
+
+        # Mock linter with ignored/non-blocking errors
+        mock_linter_ignored_errors = Mock()
+        mock_linter_ignored_errors.number_errors = 2
+        mock_linter_ignored_errors.total_number_warnings = 0
+        mock_linter_ignored_errors.return_code = 0  # Non-blocking (ignored errors)
+
+        with patch("megalinter.config.get") as mock_config:
+            mock_config.side_effect = lambda req_id, key, default: {
+                "LLM_ADVISOR_ENABLED": "false",  # Disabled for this test
+                "LLM_ADVISOR_LEVEL": "ERROR",
+            }.get(key, default)
+
+            advisor = LLMAdvisor()
+            advisor.advisor_level = "ERROR"  # Set manually since provider is disabled
+
+            # Should not analyze any linters when disabled
+            self.assertFalse(advisor.should_analyze_linter(mock_linter_errors))
+            self.assertFalse(advisor.should_analyze_linter(mock_linter_warnings))
+            self.assertFalse(advisor.should_analyze_linter(mock_linter_both))
+            self.assertFalse(advisor.should_analyze_linter(mock_linter_ignored_errors))
+
+        # Test with enabled advisor
+        with patch("megalinter.config.get") as mock_config, \
+             patch("megalinter.llm_provider.llm_provider_factory.LLMProviderFactory.create_provider") as mock_create_provider:
+            
+            mock_config.side_effect = lambda req_id, key, default: {
+                "LLM_ADVISOR_ENABLED": "true",
+                "LLM_PROVIDER": "openai",
+                "LLM_ADVISOR_LEVEL": "ERROR",
+            }.get(key, default)
+
+            # Mock provider
+            mock_provider = Mock()
+            mock_provider.get_config_value.return_value = "gpt-3.5-turbo"
+            mock_provider.get_default_model.return_value = "gpt-3.5-turbo"
+            mock_provider.is_available.return_value = True
+            mock_create_provider.return_value = mock_provider
+
+            advisor = LLMAdvisor("test-request")
+
+            # Should analyze only blocking linters (return_code != 0)
+            self.assertTrue(advisor.should_analyze_linter(mock_linter_errors))  # Blocking errors
+            self.assertFalse(advisor.should_analyze_linter(mock_linter_warnings))  # Non-blocking warnings
+            self.assertTrue(advisor.should_analyze_linter(mock_linter_both))  # Blocking errors+warnings
+            self.assertFalse(advisor.should_analyze_linter(mock_linter_ignored_errors))  # Non-blocking ignored errors
+
+    def test_should_analyze_linter_warning_level(self):
+        """Test should_analyze_linter with WARNING level"""
+        # Mock linter with errors (blocking)
+        mock_linter_errors = Mock()
+        mock_linter_errors.number_errors = 2
+        mock_linter_errors.total_number_warnings = 0
+        mock_linter_errors.return_code = 1  # Blocking
+
+        # Mock linter with warnings only (non-blocking)
+        mock_linter_warnings = Mock()
+        mock_linter_warnings.number_errors = 0
+        mock_linter_warnings.total_number_warnings = 3
+        mock_linter_warnings.return_code = 0  # Non-blocking
+
+        # Mock linter with both errors and warnings (blocking)
+        mock_linter_both = Mock()
+        mock_linter_both.number_errors = 1
+        mock_linter_both.total_number_warnings = 2
+        mock_linter_both.return_code = 1  # Blocking
+
+        # Mock linter with ignored/non-blocking errors
+        mock_linter_ignored_errors = Mock()
+        mock_linter_ignored_errors.number_errors = 2
+        mock_linter_ignored_errors.total_number_warnings = 0
+        mock_linter_ignored_errors.return_code = 0  # Non-blocking (ignored errors)
+
+        # Mock linter with no issues
+        mock_linter_clean = Mock()
+        mock_linter_clean.number_errors = 0
+        mock_linter_clean.total_number_warnings = 0
+        mock_linter_clean.return_code = 0
+
+        with patch("megalinter.config.get") as mock_config, \
+             patch("megalinter.llm_provider.llm_provider_factory.LLMProviderFactory.create_provider") as mock_create_provider:
+            
+            mock_config.side_effect = lambda req_id, key, default: {
+                "LLM_ADVISOR_ENABLED": "true",
+                "LLM_PROVIDER": "openai",
+                "LLM_ADVISOR_LEVEL": "WARNING",
+            }.get(key, default)
+
+            # Mock provider
+            mock_provider = Mock()
+            mock_provider.get_config_value.return_value = "gpt-3.5-turbo"
+            mock_provider.get_default_model.return_value = "gpt-3.5-turbo"
+            mock_provider.is_available.return_value = True
+            mock_create_provider.return_value = mock_provider
+
+            advisor = LLMAdvisor("test-request")
+
+            # Should analyze both blocking and non-blocking linters
+            self.assertTrue(advisor.should_analyze_linter(mock_linter_errors))  # Blocking errors
+            self.assertTrue(advisor.should_analyze_linter(mock_linter_warnings))  # Non-blocking warnings
+            self.assertTrue(advisor.should_analyze_linter(mock_linter_both))  # Blocking errors+warnings
+            self.assertTrue(advisor.should_analyze_linter(mock_linter_ignored_errors))  # Non-blocking ignored errors
+            self.assertFalse(advisor.should_analyze_linter(mock_linter_clean))  # No issues
+
+    @patch("megalinter.config.get")
+    @patch(
+        "megalinter.llm_provider.llm_provider_factory.LLMProviderFactory.create_provider"
+    )
+    def test_should_analyze_linter_blocking_vs_nonblocking(self, mock_create_provider, mock_config):
+        """Test should_analyze_linter distinguishes between blocking and non-blocking linters"""
+        # Mock a linter with errors that are blocking the build
+        mock_blocking_linter = Mock()
+        mock_blocking_linter.number_errors = 5
+        mock_blocking_linter.total_number_warnings = 2
+        mock_blocking_linter.return_code = 1  # Blocking (build fails)
+
+        # Mock a linter with errors that are ignored/non-blocking
+        mock_nonblocking_linter = Mock()
+        mock_nonblocking_linter.number_errors = 3
+        mock_nonblocking_linter.total_number_warnings = 1
+        mock_nonblocking_linter.return_code = 0  # Non-blocking (errors ignored)
+
+        # Mock a linter with only warnings (non-blocking)
+        mock_warning_linter = Mock()
+        mock_warning_linter.number_errors = 0
+        mock_warning_linter.total_number_warnings = 4
+        mock_warning_linter.return_code = 0  # Non-blocking
+
+        with patch("megalinter.config.get") as mock_config, \
+             patch("megalinter.llm_provider.llm_provider_factory.LLMProviderFactory.create_provider") as mock_create_provider:
+            
+            # Test ERROR level
+            mock_config.side_effect = lambda req_id, key, default: {
+                "LLM_ADVISOR_ENABLED": "true",
+                "LLM_PROVIDER": "openai",
+                "LLM_ADVISOR_LEVEL": "ERROR",
+            }.get(key, default)
+
+            # Mock provider
+            mock_provider = Mock()
+            mock_provider.get_config_value.return_value = "gpt-3.5-turbo"
+            mock_provider.get_default_model.return_value = "gpt-3.5-turbo"
+            mock_provider.is_available.return_value = True
+            mock_create_provider.return_value = mock_provider
+
+            advisor = LLMAdvisor("test-request")
+
+            # ERROR level: Only blocking linters should be analyzed
+            self.assertTrue(advisor.should_analyze_linter(mock_blocking_linter))
+            self.assertFalse(advisor.should_analyze_linter(mock_nonblocking_linter))
+            self.assertFalse(advisor.should_analyze_linter(mock_warning_linter))
+
+        with patch("megalinter.config.get") as mock_config, \
+             patch("megalinter.llm_provider.llm_provider_factory.LLMProviderFactory.create_provider") as mock_create_provider:
+            
+            # Test WARNING level
+            mock_config.side_effect = lambda req_id, key, default: {
+                "LLM_ADVISOR_ENABLED": "true",
+                "LLM_PROVIDER": "openai",
+                "LLM_ADVISOR_LEVEL": "WARNING",
+            }.get(key, default)
+
+            # Mock provider
+            mock_provider = Mock()
+            mock_provider.get_config_value.return_value = "gpt-3.5-turbo"
+            mock_provider.get_default_model.return_value = "gpt-3.5-turbo"
+            mock_provider.is_available.return_value = True
+            mock_create_provider.return_value = mock_provider
+
+            advisor = LLMAdvisor("test-request")
+
+            # WARNING level: Both blocking and non-blocking linters should be analyzed
+            self.assertTrue(advisor.should_analyze_linter(mock_blocking_linter))
+            self.assertTrue(advisor.should_analyze_linter(mock_nonblocking_linter))
+            self.assertTrue(advisor.should_analyze_linter(mock_warning_linter))
+
 
 if __name__ == "__main__":
     unittest.main()

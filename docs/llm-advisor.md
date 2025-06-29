@@ -47,11 +47,41 @@ LLM_TEMPERATURE: 0.1
 
 ```yaml
 LLM_ADVISOR_ENABLED: true          # Enable/disable AI advisor
+LLM_ADVISOR_LEVEL: ERROR           # When to trigger: ERROR (default) or WARNING
 LLM_PROVIDER: openai               # Provider: see supported providers above
 LLM_MODEL_NAME: gpt-3.5-turbo      # Model name (provider-specific)
 LLM_MAX_TOKENS: 1000               # Maximum tokens for response
 LLM_TEMPERATURE: 0.1               # Temperature for generation (0.0-1.0)
 ```
+
+## Advisor Level Configuration
+
+The `LLM_ADVISOR_LEVEL` setting controls when AI suggestions are triggered:
+
+### ERROR (Default)
+
+```yaml
+LLM_ADVISOR_LEVEL: ERROR
+```
+
+- AI advisor analyzes **only linters that are blocking** (return code != 0)
+- Most cost-effective approach
+- Focuses on critical issues that break builds
+- Includes linters with errors that cause build failures
+
+### WARNING
+
+```yaml
+LLM_ADVISOR_LEVEL: WARNING  
+```
+
+- AI advisor analyzes **both blocking and non-blocking linters**
+- Includes linters with errors/warnings that don't fail the build (return code == 0)
+- More comprehensive analysis covering ignored errors and warnings
+- Higher API costs due to increased usage
+- Helps improve code quality beyond just fixing build-breaking errors
+
+Choose `ERROR` for cost-sensitive environments or `WARNING` for comprehensive code quality improvements.
 
 ## Security Considerations
 
