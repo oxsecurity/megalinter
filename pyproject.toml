@@ -27,6 +27,8 @@ dependencies = [
   "langchain-openai",
   "langchain-anthropic",
   "langchain-google-genai",
+  "langchain-mistralai",
+  "langchain-ollama",
   "langchain-community",
   "multiprocessing_logging",
   "pygithub",
@@ -42,6 +44,16 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
+huggingface = [
+  "langchain-huggingface",
+  "transformers",
+  "torch",
+]
+all-llm = [
+  "langchain-huggingface",
+  "transformers",
+  "torch",
+]
 
 [project.urls]
 Homepage = "https://megalinter.io/"

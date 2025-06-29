@@ -36,15 +36,17 @@ urllib3==2.5.0
 webpreview==1.7.2
 
 # LLM Advisor dependencies
-langchain==0.3.14
-langchain-anthropic==0.2.8
-langchain-community==0.3.14
-langchain-google-genai==2.1.0
-langchain-ollama==0.2.4
-langchain-openai==0.2.15
+langchain
+langchain-anthropic
+langchain-community
+langchain-google-genai
+langchain-huggingface
+langchain-mistralai
+langchain-ollama
+langchain-openai
 
 # Additional dependencies from pyproject.toml
-lxml==5.3.0
-packaging==24.2
-psutil==6.1.0
-shlex==0.1.1
+lxml
+packaging
+psutil
+

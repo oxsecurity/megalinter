@@ -116,7 +116,7 @@ script.js:8:1: no-undef 'console' is not defined"""
             advisor = LLMAdvisor()
             
             # Should return disabled result
-            result = advisor.get_fix_suggestions("test_linter", linter_output)
+            result = advisor.get_fix_suggestions("test_linter", "test_linter", linter_output)
             self.assertFalse(result["enabled"])
 
     def test_disabled_when_advisor_disabled(self):

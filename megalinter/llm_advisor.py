@@ -7,16 +7,9 @@ Provides AI-powered hints for fixing linter errors using various LLM providers t
 import logging
 import os
 from typing import Dict, List, Optional, Any
-from dataclasses import dataclass
-
-from langchain_openai import ChatOpenAI
-from langchain_anthropic import ChatAnthropic
-from langchain_google_genai import ChatGoogleGenerativeAI
-from langchain_community.llms import Ollama
-from langchain_core.messages import HumanMessage, SystemMessage
-from langchain_core.prompts import ChatPromptTemplate
 
 from megalinter import config
+from megalinter.llm_provider.llm_provider_factory import LLMProviderFactory
 
 
 class LLMAdvisor:
@@ -24,27 +17,20 @@ class LLMAdvisor:
     AI-powered advisor for providing linter error fix suggestions using various LLM providers
     """
     
-    SUPPORTED_PROVIDERS = {
-        "openai": "OpenAI GPT models",
-        "anthropic": "Anthropic Claude models", 
-        "google": "Google Gemini models",
-        "ollama": "Local Ollama models"
-    }
-    
     def __init__(self, request_id: str = None):
         """Initialize LLM Advisor with configuration"""
         self.request_id = request_id
         self.enabled = False
-        self.llm = None
         self.provider = None
+        self.provider_name = None
         self.model_name = None
             
         # Load configuration
         self._load_config()
         
-        # Initialize LLM if enabled
+        # Initialize LLM provider if enabled
         if self.enabled:
-            self._initialize_llm()
+            self._initialize_provider()
     
     def _load_config(self):
         """Load LLM configuration from environment/config"""
@@ -53,94 +39,44 @@ class LLMAdvisor:
         if not self.enabled:
             return
             
-        self.provider = config.get(self.request_id, "LLM_PROVIDER", "openai").lower()
-        self.model_name = config.get(self.request_id, "LLM_MODEL_NAME", self._get_default_model())
-        self.max_tokens = int(config.get(self.request_id, "LLM_MAX_TOKENS", "1000"))
-        self.temperature = float(config.get(self.request_id, "LLM_TEMPERATURE", "0.1"))
-        
-        # Provider-specific settings
-        if self.provider == "openai":
-            self.api_key = config.get(self.request_id, "OPENAI_API_KEY", "")
-            self.base_url = config.get(self.request_id, "OPENAI_BASE_URL", None)
-        elif self.provider == "anthropic":
-            self.api_key = config.get(self.request_id, "ANTHROPIC_API_KEY", "")
-        elif self.provider == "google":
-            self.api_key = config.get(self.request_id, "GOOGLE_API_KEY", "")
-        elif self.provider == "ollama":
-            self.base_url = config.get(self.request_id, "OLLAMA_BASE_URL", "http://localhost:11434")
-            self.api_key = None  # Ollama doesn't require API key
+        self.provider_name = config.get(self.request_id, "LLM_PROVIDER", "openai").lower()
     
-    def _get_default_model(self) -> str:
-        """Get default model name for the provider"""
-        defaults = {
-            "openai": "gpt-4o-mini",
-            "anthropic": "claude-3-5-haiku-20241022",
-            "google": "gemini-1.5-flash",
-            "ollama": "llama3.2"
-        }
-        return defaults.get(self.provider, "gpt-3.5-turbo")
-    
-    def _initialize_llm(self):
-        """Initialize the LLM based on provider configuration"""
+    def _initialize_provider(self):
+        """Initialize the LLM provider"""
         try:
-            if self.provider == "openai":
-                kwargs = {
-                    "model": self.model_name,
-                    "temperature": self.temperature,
-                    "max_tokens": self.max_tokens,
-                }
-                if self.api_key:
-                    kwargs["api_key"] = self.api_key
-                if self.base_url:
-                    kwargs["base_url"] = self.base_url
-                self.llm = ChatOpenAI(**kwargs)
-                
-            elif self.provider == "anthropic":
-                if not self.api_key:
-                    raise ValueError("Anthropic API key is required")
-                self.llm = ChatAnthropic(
-                    model=self.model_name,
-                    temperature=self.temperature,
-                    max_tokens=self.max_tokens,
-                    api_key=self.api_key
-                )
-                
-            elif self.provider == "google":
-                if not self.api_key:
-                    raise ValueError("Google API key is required")
-                self.llm = ChatGoogleGenerativeAI(
-                    model=self.model_name,
-                    temperature=self.temperature,
-                    max_output_tokens=self.max_tokens,
-                    google_api_key=self.api_key
-                )
-                
-            elif self.provider == "ollama":
-                self.llm = Ollama(
-                    model=self.model_name,
-                    base_url=self.base_url,
-                    temperature=self.temperature
-                )
-                
-            else:
-                raise ValueError(f"Unsupported LLM provider: {self.provider}")
-                
-            logging.info(f"LLM Advisor initialized with {self.provider} ({self.model_name})")
+            self.provider = LLMProviderFactory.create_provider(self.provider_name, self.request_id)
             
+            if self.provider:
+                self.model_name = self.provider.get_config_value("model_name") or self.provider.get_default_model()
+                logging.info(f"LLM Advisor initialized with {self.provider_name} ({self.model_name})")
+            else:
+                self.enabled = False
+                logging.error(f"Failed to create provider: {self.provider_name}")
+                
         except Exception as e:
-            logging.error(f"Failed to initialize LLM ({self.provider}): {str(e)}")
+            logging.error(f"Failed to initialize LLM provider ({self.provider_name}): {str(e)}")
             self.enabled = False
-            self.llm = None
+            self.provider = None
     
     def is_available(self) -> bool:
         """Check if LLM advisor is available and properly configured"""
-        return self.enabled and self.llm is not None
+        return self.enabled and self.provider is not None and self.provider.is_available()
     
-    def get_fix_suggestions(self, linter_name: str, linter_output: str, max_errors: int = 5) -> Dict[str, Any]:
+    def get_supported_providers(self) -> Dict[str, str]:
+        """Get list of supported providers"""
+        return LLMProviderFactory.get_supported_providers()
+    
+    @property
+    def SUPPORTED_PROVIDERS(self) -> Dict[str, str]:
+        """Backwards compatibility property for supported providers"""
+        return self.get_supported_providers()
+    
+    def get_fix_suggestions(self, linter_key: str, linter_name: str, linter_output: str, max_errors: int = 5) -> Dict[str, Any]:
         """
         Get AI-powered fix suggestions for linter errors
         
         Args:
+            linter_key: Key identifying the linter
             linter_name: Name of the linter
             linter_output: Raw output from the linter
             max_errors: Maximum number of errors to process (to avoid token limits)
@@ -152,13 +88,14 @@ class LLMAdvisor:
             return {"enabled": False, "suggestions": []}
         
         # Work directly with raw output - much more reliable than trying to parse
-        return self._get_suggestions_from_raw_output(linter_name, linter_output, max_errors)
+        return self._get_suggestions_from_raw_output(linter_key, linter_name, linter_output, max_errors)
     
-    def _get_suggestions_from_raw_output(self, linter_name: str, linter_output: str, max_errors: int = 5) -> Dict[str, Any]:
+    def _get_suggestions_from_raw_output(self, linter_key: str, linter_name: str, linter_output: str, max_errors: int = 5) -> Dict[str, Any]:
         """
         Get AI suggestions directly from raw linter output
         
         Args:
+            linter_key: Key identifying the linter
             linter_name: Name of the linter
             linter_output: Raw output from the linter
             max_errors: Maximum number of suggestions to generate
@@ -169,18 +106,10 @@ class LLMAdvisor:
         try:
             # Build a prompt for analyzing the raw output
             prompt = self._build_raw_output_prompt(linter_name, linter_output)
+            system_prompt = self._get_system_prompt()
             
-            # Get response from LLM
-            if self.provider == "ollama":
-                response = self.llm.invoke(prompt)
-                suggestion_text = response
-            else:
-                messages = [
-                    SystemMessage(content=self._get_system_prompt()),
-                    HumanMessage(content=prompt)
-                ]
-                response = self.llm.invoke(messages)
-                suggestion_text = response.content
+            # Get response from LLM provider
+            suggestion_text = self.provider.invoke(prompt, system_prompt)
             
             # Return as a single suggestion for the raw output
             suggestions = [{
@@ -188,14 +117,14 @@ class LLMAdvisor:
                 "line_number": None,
                 "error_message": f"{linter_name} issues detected",
                 "rule_id": None,
-                "linter": linter_name,
+                "linter": linter_key,
                 "suggestion": suggestion_text.strip(),
                 "severity": "mixed"
             }]
             
             return {
                 "enabled": True,
-                "provider": self.provider,
+                "provider": self.provider_name,
                 "model": self.model_name,
                 "total_errors": 1,
                 "processed_errors": 1,
@@ -206,7 +135,7 @@ class LLMAdvisor:
             logging.warning(f"Failed to get suggestions from raw output: {str(e)}")
             return {
                 "enabled": True,
-                "provider": self.provider,
+                "provider": self.provider_name,
                 "model": self.model_name,
                 "total_errors": 0,
                 "processed_errors": 0,

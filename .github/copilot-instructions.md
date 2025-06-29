@@ -175,6 +175,11 @@ megalinter/tests/test_megalinter/
 - Add docstrings for public methods
 - Handle errors gracefully with appropriate logging
 - Do not test if imports work, assume they are always available
+- Place imports at the top of the files
+
+### Copilot assistant
+
+- If you want to run python scripts, always run `make bootstrap` first to set up the environment
 
 ### Descriptor Guidelines
 

@@ -25,6 +25,17 @@ def test_llm_advisor():
         "eslint": "script.js:8:5: 'console' is not defined (no-undef)\nscript.js:12:3: Missing semicolon (semi)"
     }
     
+    print("Supported LLM providers:")
+    print("- openai: OpenAI GPT models")
+    print("- anthropic: Anthropic Claude models")
+    print("- google: Google Gemini models")
+    print("- huggingface: Hugging Face models")
+    print("- mistral: Mistral AI models")
+    print("- deepseek: DeepSeek models")
+    print("- grok: Grok (xAI) models")
+    print("- ollama: Local Ollama models")
+    print()
+    
     # Test LLM Advisor (will only work if properly configured)
     print("Testing LLM Advisor...")
     advisor = LLMAdvisor()
@@ -39,7 +50,7 @@ def test_llm_advisor():
         for linter_name, output in sample_outputs.items():
             print(f"\nTesting suggestions for {linter_name}...")
             
-            suggestions = advisor.get_fix_suggestions(linter_name, output)
+            suggestions = advisor.get_fix_suggestions(linter_name, linter_name, output)
             
             if suggestions.get("suggestions"):
                 print(f"Got {len(suggestions['suggestions'])} suggestions")
