@@ -13,14 +13,11 @@ from .llm_provider import LLMProvider
 
 
 class MistralProvider(LLMProvider):
-    """Mistral AI provider implementation"""
 
     def get_default_model(self) -> str:
-        """Get default Mistral model"""
-        return "mistral-small-latest"
+        return "mistral-large-latest"
 
     def load_config(self, request_id: str = None) -> Dict[str, Any]:
-        """Load Mistral-specific configuration"""
         return {
             "api_key": config.get(request_id, "MISTRAL_API_KEY", ""),
             "base_url": config.get(request_id, "MISTRAL_BASE_URL", None),
@@ -42,7 +39,6 @@ class MistralProvider(LLMProvider):
         }
 
     def initialize(self) -> bool:
-        """Initialize Mistral provider"""
         try:
             api_key = self.get_config_value("api_key")
             if not api_key:

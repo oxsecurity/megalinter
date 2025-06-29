@@ -18,7 +18,6 @@ from .llm_provider_openai import OpenAIProvider
 
 
 class LLMProviderFactory:
-    """Factory for creating LLM providers"""
 
     SUPPORTED_PROVIDERS = {
         "openai": OpenAIProvider,
@@ -35,16 +34,6 @@ class LLMProviderFactory:
     def create_provider(
         cls, provider_name: str, request_id: str = None
     ) -> Optional[LLMProvider]:
-        """
-        Create an LLM provider instance
-
-        Args:
-            provider_name: Name of the provider (e.g., 'openai', 'anthropic')
-            request_id: Request ID for configuration context
-
-        Returns:
-            LLMProvider instance or None if creation failed
-        """
         provider_name = provider_name.lower()
 
         if provider_name not in cls.SUPPORTED_PROVIDERS:
@@ -71,12 +60,6 @@ class LLMProviderFactory:
 
     @classmethod
     def get_supported_providers(cls) -> Dict[str, str]:
-        """
-        Get list of supported providers
-
-        Returns:
-            Dictionary mapping provider names to descriptions
-        """
         return {
             "openai": "OpenAI GPT models",
             "anthropic": "Anthropic Claude models",

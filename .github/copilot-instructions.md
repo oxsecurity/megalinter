@@ -176,6 +176,7 @@ megalinter/tests/test_megalinter/
 - Handle errors gracefully with appropriate logging
 - Do not test if imports work, assume they are always available
 - Place imports at the top of the files
+- Do not add docstrings at the beginning of the classes or methods.
 
 ### Copilot assistant
 

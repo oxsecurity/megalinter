@@ -104,22 +104,26 @@ HUGGINGFACE_USE_API: true
 ### Common Issues
 
 1. **"Model not found"**
+
    - Verify model name and repository exists
    - Check if model requires authentication
    - Ensure model supports the specified task
 
 2. **"Out of memory"**
+
    - Use smaller models
    - Enable CPU-only mode: `HUGGINGFACE_DEVICE: -1`
    - Close other applications
 
 3. **"Import errors"**
+
    - Install required dependencies:
      ```bash
      pip install langchain-huggingface transformers torch
      ```
 
 4. **"Slow inference"**
+
    - Use GPU if available: `HUGGINGFACE_DEVICE: 0`
    - Consider smaller models
    - Use hosted API for large models

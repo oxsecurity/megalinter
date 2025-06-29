@@ -13,14 +13,11 @@ from .llm_provider import LLMProvider
 
 
 class OpenAIProvider(LLMProvider):
-    """OpenAI GPT provider implementation"""
 
     def get_default_model(self) -> str:
-        """Get default OpenAI model"""
         return "gpt-4o-mini"
 
     def load_config(self, request_id: str = None) -> Dict[str, Any]:
-        """Load OpenAI-specific configuration"""
         return {
             "api_key": config.get(request_id, "OPENAI_API_KEY", ""),
             "base_url": config.get(request_id, "OPENAI_BASE_URL", None),
@@ -42,7 +39,6 @@ class OpenAIProvider(LLMProvider):
         }
 
     def initialize(self) -> bool:
-        """Initialize OpenAI provider"""
         try:
             api_key = self.get_config_value("api_key")
             if not api_key:

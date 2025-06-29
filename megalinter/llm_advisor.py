@@ -12,12 +12,8 @@ from megalinter.llm_provider.llm_provider_factory import LLMProviderFactory
 
 
 class LLMAdvisor:
-    """
-    AI-powered advisor for providing linter error fix suggestions using various LLM providers
-    """
 
     def __init__(self, request_id: str = None):
-        """Initialize LLM Advisor with configuration"""
         self.request_id = request_id
         self.enabled = False
         self.provider = None
@@ -32,7 +28,6 @@ class LLMAdvisor:
             self._initialize_provider()
 
     def _load_config(self):
-        """Load LLM configuration from environment/config"""
         self.enabled = (
             config.get(self.request_id, "LLM_ADVISOR_ENABLED", "false").lower()
             == "true"
@@ -64,7 +59,6 @@ class LLMAdvisor:
         )
 
     def _initialize_provider(self):
-        """Initialize the LLM provider"""
         try:
             self.provider = LLMProviderFactory.create_provider(
                 self.provider_name, self.request_id
@@ -90,33 +84,16 @@ class LLMAdvisor:
             self.provider = None
 
     def is_available(self) -> bool:
-        """Check if LLM advisor is available and properly configured"""
         return (
             self.enabled and self.provider is not None and self.provider.is_available()
         )
 
     def get_supported_providers(self) -> Dict[str, str]:
-        """Get list of supported providers"""
         return LLMProviderFactory.get_supported_providers()
-
-    @property
-    def SUPPORTED_PROVIDERS(self) -> Dict[str, str]:
-        """Backwards compatibility property for supported providers"""
-        return self.get_supported_providers()
 
     def get_fix_suggestions(
         self, linter_name: str, linter_output: str
     ) -> Dict[str, Any]:
-        """
-        Get AI-powered fix suggestions for linter errors
-
-        Args:
-            linter_name: Name of the linter
-            linter_output: Full raw output from the linter
-
-        Returns:
-            Dictionary containing a single fix suggestion and metadata
-        """
         if not self.is_available():
             return {"enabled": False, "suggestion": None}
 
@@ -125,16 +102,6 @@ class LLMAdvisor:
     def _get_suggestion_from_raw_output(
         self, linter_name: str, linter_output: str
     ) -> Dict[str, Any]:
-        """
-        Get AI suggestion directly from raw linter output
-
-        Args:
-            linter_name: Name of the linter
-            linter_output: Full raw output from the linter
-
-        Returns:
-            Dictionary containing a single fix suggestion and metadata
-        """
         try:
             # Build a prompt for analyzing the raw output
             prompt = self._build_raw_output_prompt(linter_name, linter_output)
@@ -163,7 +130,6 @@ class LLMAdvisor:
             }
 
     def _get_system_prompt(self) -> str:
-        """Get the system prompt for the LLM"""
         return """You are an expert code reviewer and linter error analyst. Your job is to help developers understand and fix linting errors in their code.
 
 For each linter error, provide:
@@ -178,7 +144,6 @@ Keep your responses concise but comprehensive. Focus on practical solutions that
 Your response must not exceed 1000 characters, so prioritize the most critical issues and solutions. If there are multiple errors, focus on the most common or critical ones first."""
 
     def _build_raw_output_prompt(self, linter_name: str, linter_output: str) -> str:
-        """Build a prompt for analyzing raw linter output"""
         # Truncate long output to avoid token limits
         max_output_length = 10000
         if len(linter_output) > max_output_length:
@@ -205,7 +170,6 @@ Your response must not exceed 1000 characters, so prioritize the most critical i
         return "\n".join(prompt_parts)
 
     def format_suggestions_for_output(self, suggestions_data: Dict[str, Any]) -> str:
-        """Format suggestion for display in reports"""
         if not suggestions_data.get("enabled", False):
             return ""
 
@@ -227,15 +191,6 @@ Your response must not exceed 1000 characters, so prioritize the most critical i
         return "\n".join(output_lines)
 
     def should_analyze_linter(self, linter) -> bool:
-        """
-        Check if LLM advisor should analyze this linter based on the configured level and linter lists
-        
-        Args:
-            linter: The linter object with error/warning counts
-            
-        Returns:
-            bool: True if the linter should be analyzed, False otherwise
-        """
         if not self.is_available():
             return False
         

@@ -13,14 +13,11 @@ from .llm_provider import LLMProvider
 
 
 class AnthropicProvider(LLMProvider):
-    """Anthropic Claude provider implementation"""
 
     def get_default_model(self) -> str:
-        """Get default Anthropic model"""
         return "claude-3-5-haiku-20241022"
 
     def load_config(self, request_id: str = None) -> Dict[str, Any]:
-        """Load Anthropic-specific configuration"""
         return {
             "api_key": config.get(request_id, "ANTHROPIC_API_KEY", ""),
             "model_name": config.get(request_id, "LLM_MODEL_NAME", ""),
@@ -41,7 +38,6 @@ class AnthropicProvider(LLMProvider):
         }
 
     def initialize(self) -> bool:
-        """Initialize Anthropic provider"""
         try:
             api_key = self.get_config_value("api_key")
             if not api_key:

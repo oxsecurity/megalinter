@@ -12,14 +12,11 @@ from .llm_provider import LLMProvider
 
 
 class HuggingFaceProvider(LLMProvider):
-    """Hugging Face transformer models provider implementation"""
 
     def get_default_model(self) -> str:
-        """Get default Hugging Face model"""
         return "microsoft/DialoGPT-medium"
 
     def load_config(self, request_id: str = None) -> Dict[str, Any]:
-        """Load Hugging Face-specific configuration"""
         return {
             "api_key": config.get(request_id, "HUGGINGFACE_API_TOKEN", ""),
             "task": config.get(request_id, "HUGGINGFACE_TASK", "text-generation"),
@@ -44,7 +41,6 @@ class HuggingFaceProvider(LLMProvider):
         }
 
     def initialize(self) -> bool:
-        """Initialize Hugging Face provider"""
         try:
             # Check for required optional dependencies
             try:

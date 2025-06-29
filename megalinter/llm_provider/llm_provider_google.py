@@ -13,14 +13,11 @@ from .llm_provider import LLMProvider
 
 
 class GoogleProvider(LLMProvider):
-    """Google Gemini provider implementation"""
 
     def get_default_model(self) -> str:
-        """Get default Google model"""
         return "gemini-1.5-flash"
 
     def load_config(self, request_id: str = None) -> Dict[str, Any]:
-        """Load Google-specific configuration"""
         return {
             "api_key": config.get(request_id, "GOOGLE_API_KEY", ""),
             "model_name": config.get(request_id, "LLM_MODEL_NAME", ""),
@@ -41,7 +38,6 @@ class GoogleProvider(LLMProvider):
         }
 
     def initialize(self) -> bool:
-        """Initialize Google provider"""
         try:
             api_key = self.get_config_value("api_key")
             if not api_key:

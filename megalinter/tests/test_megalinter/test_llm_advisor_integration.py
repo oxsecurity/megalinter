@@ -15,10 +15,8 @@ from megalinter.llm_advisor import LLMAdvisor
 
 
 class TestLLMAdvisorIntegration(unittest.TestCase):
-    """Test LLM Advisor integration with MegaLinter"""
 
     def setUp(self):
-        """Set up test fixtures"""
         pass
 
     @patch("megalinter.config.get")
@@ -26,7 +24,7 @@ class TestLLMAdvisorIntegration(unittest.TestCase):
         "megalinter.llm_provider.llm_provider_factory.LLMProviderFactory.create_provider"
     )
     def test_llm_advisor_initialization(self, mock_create_provider, mock_config):
-        """Test LLM advisor initialization"""
+
         # Mock configuration
         mock_config.side_effect = lambda req_id, key, default: {
             "LLM_ADVISOR_ENABLED": "true",
@@ -56,7 +54,7 @@ class TestLLMAdvisorIntegration(unittest.TestCase):
         "megalinter.llm_provider.llm_provider_factory.LLMProviderFactory.create_provider"
     )
     def test_ai_suggestions_with_linter_output(self, mock_create_provider, mock_config):
-        """Test AI suggestions generation with real linter output"""
+
         # Mock configuration
         mock_config.side_effect = lambda req_id, key, default: {
             "LLM_ADVISOR_ENABLED": "true",
@@ -94,7 +92,7 @@ class TestLLMAdvisorIntegration(unittest.TestCase):
         self.assertIn("F401", call_args[0][0])  # prompt contains the error
 
     def test_raw_output_processing(self):
-        """Test raw linter output processing"""
+
         linter_output = """test.py:10:5: F401 'os' imported but unused
 style.css:23:12: block-no-empty Unexpected empty block
 script.js:8:1: no-undef 'console' is not defined"""
@@ -113,7 +111,7 @@ script.js:8:1: no-undef 'console' is not defined"""
             self.assertIsNone(result["suggestion"])
 
     def test_disabled_when_advisor_disabled(self):
-        """Test that LLM advisor is disabled when configuration is disabled"""
+
         with patch("megalinter.config.get") as mock_config:
             mock_config.side_effect = lambda req_id, key, default: {
                 "LLM_ADVISOR_ENABLED": "false",
@@ -124,7 +122,7 @@ script.js:8:1: no-undef 'console' is not defined"""
 
     @patch("megalinter.config.get")
     def test_ai_suggestions_not_available_when_disabled(self, mock_config):
-        """Test that AI suggestions are not available when LLM advisor is disabled"""
+
         mock_config.side_effect = lambda req_id, key, default: {
             "LLM_ADVISOR_ENABLED": "false"
         }.get(key, default)
@@ -144,7 +142,7 @@ script.js:8:1: no-undef 'console' is not defined"""
         "megalinter.llm_provider.llm_provider_factory.LLMProviderFactory.create_provider"
     )
     def test_format_suggestions_for_output(self, mock_create_provider, mock_config):
-        """Test formatting suggestions for output"""
+
         # Mock configuration
         mock_config.side_effect = lambda req_id, key, default: {
             "LLM_ADVISOR_ENABLED": "true",
@@ -180,7 +178,7 @@ script.js:8:1: no-undef 'console' is not defined"""
 
     @patch("megalinter.config.get")
     def test_disabled_formatting(self, mock_config):
-        """Test formatting when advisor is disabled"""
+
         mock_config.side_effect = lambda req_id, key, default: {
             "LLM_ADVISOR_ENABLED": "false"
         }.get(key, default)
@@ -199,7 +197,7 @@ script.js:8:1: no-undef 'console' is not defined"""
     def test_prompt_building_with_various_linter_outputs(
         self, mock_create_provider, mock_config
     ):
-        """Test that prompts are built correctly for different linter outputs"""
+
         # Mock configuration
         mock_config.side_effect = lambda req_id, key, default: {
             "LLM_ADVISOR_ENABLED": "true",
@@ -255,7 +253,7 @@ script.js:8:1: no-undef 'console' is not defined"""
         "megalinter.llm_provider.llm_provider_factory.LLMProviderFactory.create_provider"
     )
     def test_llm_advisor_level_error_default(self, mock_create_provider, mock_config):
-        """Test LLM advisor level defaults to ERROR"""
+
         # Mock configuration - no LLM_ADVISOR_LEVEL specified
         mock_config.side_effect = lambda req_id, key, default: {
             "LLM_ADVISOR_ENABLED": "true",
@@ -278,7 +276,7 @@ script.js:8:1: no-undef 'console' is not defined"""
         "megalinter.llm_provider.llm_provider_factory.LLMProviderFactory.create_provider"
     )
     def test_llm_advisor_level_warning(self, mock_create_provider, mock_config):
-        """Test LLM advisor level set to WARNING"""
+
         # Mock configuration with WARNING level
         mock_config.side_effect = lambda req_id, key, default: {
             "LLM_ADVISOR_ENABLED": "true",
@@ -302,7 +300,7 @@ script.js:8:1: no-undef 'console' is not defined"""
         "megalinter.llm_provider.llm_provider_factory.LLMProviderFactory.create_provider"
     )
     def test_llm_advisor_level_invalid_fallback(self, mock_create_provider, mock_config):
-        """Test LLM advisor level falls back to ERROR for invalid values"""
+
         # Mock configuration with invalid level
         mock_config.side_effect = lambda req_id, key, default: {
             "LLM_ADVISOR_ENABLED": "true",
@@ -322,7 +320,7 @@ script.js:8:1: no-undef 'console' is not defined"""
         self.assertEqual(advisor.advisor_level, "ERROR")
 
     def test_should_analyze_linter_error_level(self):
-        """Test should_analyze_linter with ERROR level"""
+
         # Mock linter with errors (blocking - return_code != 0)
         mock_linter_errors = Mock()
         mock_linter_errors.number_errors = 2
@@ -388,7 +386,7 @@ script.js:8:1: no-undef 'console' is not defined"""
             self.assertFalse(advisor.should_analyze_linter(mock_linter_ignored_errors))  # Non-blocking ignored errors
 
     def test_should_analyze_linter_warning_level(self):
-        """Test should_analyze_linter with WARNING level"""
+
         # Mock linter with errors (blocking)
         mock_linter_errors = Mock()
         mock_linter_errors.number_errors = 2
@@ -449,7 +447,7 @@ script.js:8:1: no-undef 'console' is not defined"""
         "megalinter.llm_provider.llm_provider_factory.LLMProviderFactory.create_provider"
     )
     def test_should_analyze_linter_blocking_vs_nonblocking(self, mock_create_provider, mock_config):
-        """Test should_analyze_linter distinguishes between blocking and non-blocking linters"""
+
         # Mock a linter with errors that are blocking the build
         mock_blocking_linter = Mock()
         mock_blocking_linter.number_errors = 5
@@ -521,7 +519,7 @@ script.js:8:1: no-undef 'console' is not defined"""
         "megalinter.llm_provider.llm_provider_factory.LLMProviderFactory.create_provider"
     )
     def test_linter_enable_disable_lists(self, mock_create_provider, mock_config):
-        """Test LLM_ADVISOR_ENABLE_LINTERS and LLM_ADVISOR_DISABLE_LINTERS functionality"""
+
         # Mock linters with different names
         mock_linter_eslint = Mock()
         mock_linter_eslint.name = "JAVASCRIPT_ESLINT"
@@ -632,7 +630,7 @@ script.js:8:1: no-undef 'console' is not defined"""
             self.assertTrue(advisor.should_analyze_linter(mock_linter_bandit))
 
     def test_linter_enable_disable_lists_with_no_issues(self):
-        """Test that linters with no errors/warnings are not analyzed even if enabled"""
+
         # Mock linter with no issues
         mock_linter_clean = Mock()
         mock_linter_clean.name = "JAVASCRIPT_ESLINT"

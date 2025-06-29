@@ -13,14 +13,11 @@ from .llm_provider import LLMProvider
 
 
 class GrokProvider(LLMProvider):
-    """Grok (xAI) provider implementation using OpenAI-compatible API"""
 
     def get_default_model(self) -> str:
-        """Get default Grok model"""
         return "grok-beta"
 
     def load_config(self, request_id: str = None) -> Dict[str, Any]:
-        """Load Grok-specific configuration"""
         return {
             "api_key": config.get(request_id, "GROK_API_KEY", ""),
             "model_name": config.get(request_id, "LLM_MODEL_NAME", ""),
@@ -42,7 +39,6 @@ class GrokProvider(LLMProvider):
         }
 
     def initialize(self) -> bool:
-        """Initialize Grok provider"""
         try:
             api_key = self.get_config_value("api_key")
             if not api_key:

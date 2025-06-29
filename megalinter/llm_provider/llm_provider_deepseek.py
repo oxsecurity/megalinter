@@ -13,14 +13,11 @@ from .llm_provider import LLMProvider
 
 
 class DeepSeekProvider(LLMProvider):
-    """DeepSeek provider implementation"""
 
     def get_default_model(self) -> str:
-        """Get default DeepSeek model"""
         return "deepseek-chat"
 
     def load_config(self, request_id: str = None) -> Dict[str, Any]:
-        """Load DeepSeek-specific configuration"""
         return {
             "api_key": config.get(request_id, "DEEPSEEK_API_KEY", ""),
             "base_url": config.get(
@@ -44,7 +41,6 @@ class DeepSeekProvider(LLMProvider):
         }
 
     def initialize(self) -> bool:
-        """Initialize DeepSeek provider"""
         try:
             api_key = self.get_config_value("api_key")
             if not api_key:

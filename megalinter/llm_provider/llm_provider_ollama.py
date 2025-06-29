@@ -13,14 +13,11 @@ from .llm_provider import LLMProvider
 
 
 class OllamaProvider(LLMProvider):
-    """Ollama local LLM provider implementation"""
 
     def get_default_model(self) -> str:
-        """Get default Ollama model"""
         return "llama3.2"
 
     def load_config(self, request_id: str = None) -> Dict[str, Any]:
-        """Load Ollama-specific configuration"""
         return {
             "base_url": config.get(
                 request_id, "OLLAMA_BASE_URL", "http://localhost:11434"
@@ -36,7 +33,6 @@ class OllamaProvider(LLMProvider):
         }
 
     def initialize(self) -> bool:
-        """Initialize Ollama provider"""
         try:
             model_name = self.get_config_value("model_name") or self.get_default_model()
             base_url = self.get_config_value("base_url", "http://localhost:11434")
