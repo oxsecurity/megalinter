@@ -29,6 +29,7 @@ dependencies = [
   "langchain-google-genai",
   "langchain-mistralai",
   "langchain-ollama",
+  "langchain-deepseek",
   "langchain-community",
   "multiprocessing_logging",
   "pygithub",

@@ -5,7 +5,7 @@ DeepSeek LLM Provider for MegaLinter
 
 import logging
 from typing import Dict, Any
-from langchain_community.chat_models import ChatDeepSeek
+from langchain_deepseek import ChatDeepSeek
 from megalinter import config
 from .llm_provider import LLMProvider
 
