@@ -15,7 +15,6 @@ from megalinter.constants import (
     ML_REPO_ISSUES_URL,
     OX_MARKDOWN_LINK,
 )
-from megalinter.llm_advisor import LLMAdvisor
 from pytablewriter import Align, MarkdownTableWriter
 from pytablewriter.style import Style
 from redis import Redis
@@ -130,16 +129,6 @@ def build_markdown_summary_sections(
     max_chars_per_linter = max_total_chars // max(total_linters_with_issues, 1)
 
     # Build sections for linters with issues first
-    llm_advisor = None
-    try:
-        # Initialize LLM advisor once for all linters
-        llm_advisor = LLMAdvisor(reporter_self.master.request_id)
-        if not llm_advisor.is_available():
-            llm_advisor = None
-    except Exception as e:
-        logging.warning(f"Error initializing LLM advisor: {str(e)}")
-        llm_advisor = None
-
     for linter in linters_with_issues:
         linter_data = get_linter_summary_data(linter, action_run_url)
 
@@ -217,28 +206,18 @@ def build_markdown_summary_sections(
         # Get AI suggestions for this specific linter if available
         ai_suggestion_content = ""
         if (
-            llm_advisor
-            and raw_linter_output.strip()
-            and llm_advisor.should_analyze_linter(linter)
+            hasattr(linter, 'llm_suggestion')
+            and linter.llm_suggestion is not None
+            and linter.llm_suggestion.get("suggestion")
         ):
-            try:
-                suggestion_data = llm_advisor.get_fix_suggestions(
-                    linter.linter_name, raw_linter_output
-                )
-
-                if suggestion_data.get("suggestion"):
-                    suggestion = suggestion_data["suggestion"]
-                    ai_suggestion_content = f"""
+            suggestion = linter.llm_suggestion["suggestion"]
+            ai_suggestion_content = f"""
 
 ### 🤖 AI-Powered Fix Suggestions for {suggestion['linter']}
 
 {suggestion['suggestion']}
 
 """
-            except Exception as e:
-                logging.warning(
-                    f"Error getting AI suggestions for {linter.linter_name}: {str(e)}"
-                )
 
         # Build HTML section with AI suggestions integrated
         details_content = linter_output + ai_suggestion_content
