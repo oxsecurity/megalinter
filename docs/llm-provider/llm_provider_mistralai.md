@@ -4,11 +4,11 @@ Mistral AI provides high-quality language models with European data residency an
 
 ## Supported Models
 
-| Model | Context Length | Cost | Best For |
-|-------|---------------|------|----------|
-| `mistral-small-latest` | 32K tokens | $ | Cost-effective analysis |
-| `mistral-medium-latest` | 32K tokens | $$ | Balanced performance |
-| `mistral-large-latest` | 32K tokens | $$$ | Highest quality |
+| Model                   | Context Length | Cost | Best For                |
+|-------------------------|----------------|------|-------------------------|
+| `mistral-small-latest`  | 32K tokens     | $    | Cost-effective analysis |
+| `mistral-medium-latest` | 32K tokens     | $$   | Balanced performance    |
+| `mistral-large-latest`  | 32K tokens     | $$$  | Highest quality         |
 
 ## Setup
 

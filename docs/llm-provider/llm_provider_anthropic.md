@@ -4,11 +4,11 @@ Anthropic's Claude models excel at code analysis with a strong focus on safety a
 
 ## Supported Models
 
-| Model | Context Length | Cost | Best For |
-|-------|---------------|------|----------|
-| `claude-3-haiku-20240307` | 200K tokens | $ | Fast, cost-effective analysis |
-| `claude-3-sonnet-20240229` | 200K tokens | $$ | Balanced performance |
-| `claude-3-opus-20240229` | 200K tokens | $$$ | Highest quality analysis |
+| Model                      | Context Length | Cost | Best For                      |
+|----------------------------|----------------|------|-------------------------------|
+| `claude-3-haiku-20240307`  | 200K tokens    | $    | Fast, cost-effective analysis |
+| `claude-3-sonnet-20240229` | 200K tokens    | $$   | Balanced performance          |
+| `claude-3-opus-20240229`   | 200K tokens    | $$$  | Highest quality analysis      |
 
 ## Setup
 

@@ -4,9 +4,9 @@ Grok is xAI's conversational AI model, designed for real-time information and en
 
 ## Supported Models
 
-| Model | Context Length | Cost | Best For |
-|-------|---------------|------|----------|
-| `grok-beta` | 128K tokens | $$ | Conversational code analysis |
+| Model       | Context Length | Cost | Best For                     |
+|-------------|----------------|------|------------------------------|
+| `grok-beta` | 128K tokens    | $$   | Conversational code analysis |
 
 ## Setup
 

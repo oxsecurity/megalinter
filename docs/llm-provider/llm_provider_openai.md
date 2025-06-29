@@ -4,12 +4,12 @@ OpenAI provides state-of-the-art language models including GPT-3.5, GPT-4, and G
 
 ## Supported Models
 
-| Model | Context Length | Cost | Best For |
-|-------|---------------|------|----------|
-| `gpt-3.5-turbo` | 16K tokens | $ | General use, fast responses |
-| `gpt-4o-mini` | 128K tokens | $$ | Better analysis, longer context |
-| `gpt-4o` | 128K tokens | $$$ | Highest quality, complex code |
-| `gpt-4-turbo` | 128K tokens | $$$ | Advanced reasoning |
+| Model           | Context Length | Cost | Best For                        |
+|-----------------|----------------|------|---------------------------------|
+| `gpt-3.5-turbo` | 16K tokens     | $    | General use, fast responses     |
+| `gpt-4o-mini`   | 128K tokens    | $$   | Better analysis, longer context |
+| `gpt-4o`        | 128K tokens    | $$$  | Highest quality, complex code   |
+| `gpt-4-turbo`   | 128K tokens    | $$$  | Advanced reasoning              |
 
 ## Setup
 

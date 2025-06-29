@@ -11,16 +11,16 @@ MegaLinter includes an AI-powered advisor that provides intelligent fix suggesti
 
 ## Supported LLM Providers
 
-| Provider | Models | API Key Required | Local/Cloud | Documentation |
-|----------|---------|------------------|-------------|---------------|
-| [OpenAI](llm-provider/llm_provider_openai.md) | GPT-3.5, GPT-4, GPT-4o | Yes | Cloud | [Setup Guide](llm-provider/llm_provider_openai.md) |
-| [Anthropic](llm-provider/llm_provider_anthropic.md) | Claude 3 (Haiku, Sonnet, Opus) | Yes | Cloud | [Setup Guide](llm-provider/llm_provider_anthropic.md) |
-| [Google GenAI](llm-provider/llm_provider_google_genai.md) | Gemini Pro, Gemini Pro Vision | Yes | Cloud | [Setup Guide](llm-provider/llm_provider_google_genai.md) |
-| [Mistral AI](llm-provider/llm_provider_mistralai.md) | Mistral Small, Medium, Large | Yes | Cloud | [Setup Guide](llm-provider/llm_provider_mistralai.md) |
-| [DeepSeek](llm-provider/llm_provider_deepseek.md) | DeepSeek Chat, DeepSeek Coder | Yes | Cloud | [Setup Guide](llm-provider/llm_provider_deepseek.md) |
-| [Grok](llm-provider/llm_provider_grok.md) | Grok Beta | Yes | Cloud | [Setup Guide](llm-provider/llm_provider_grok.md) |
-| [Ollama](llm-provider/llm_provider_ollama.md) | Llama 2, CodeLlama, Mistral, etc. | No | Local | [Setup Guide](llm-provider/llm_provider_ollama.md) |
-| [Hugging Face](llm-provider/llm_provider_huggingface.md) | Any HF model (DialoGPT, CodeT5, etc.) | Optional | Local/Cloud | [Setup Guide](llm-provider/llm_provider_huggingface.md) |
+| Provider                                                  | Models                                | API Key Required | Local/Cloud | Documentation                                            |
+|-----------------------------------------------------------|---------------------------------------|------------------|-------------|----------------------------------------------------------|
+| [OpenAI](llm-provider/llm_provider_openai.md)             | GPT-3.5, GPT-4, GPT-4o                | Yes              | Cloud       | [Setup Guide](llm-provider/llm_provider_openai.md)       |
+| [Anthropic](llm-provider/llm_provider_anthropic.md)       | Claude 3 (Haiku, Sonnet, Opus)        | Yes              | Cloud       | [Setup Guide](llm-provider/llm_provider_anthropic.md)    |
+| [Google GenAI](llm-provider/llm_provider_google_genai.md) | Gemini Pro, Gemini Pro Vision         | Yes              | Cloud       | [Setup Guide](llm-provider/llm_provider_google_genai.md) |
+| [Mistral AI](llm-provider/llm_provider_mistralai.md)      | Mistral Small, Medium, Large          | Yes              | Cloud       | [Setup Guide](llm-provider/llm_provider_mistralai.md)    |
+| [DeepSeek](llm-provider/llm_provider_deepseek.md)         | DeepSeek Chat, DeepSeek Coder         | Yes              | Cloud       | [Setup Guide](llm-provider/llm_provider_deepseek.md)     |
+| [Grok](llm-provider/llm_provider_grok.md)                 | Grok Beta                             | Yes              | Cloud       | [Setup Guide](llm-provider/llm_provider_grok.md)         |
+| [Ollama](llm-provider/llm_provider_ollama.md)             | Llama 2, CodeLlama, Mistral, etc.     | No               | Local       | [Setup Guide](llm-provider/llm_provider_ollama.md)       |
+| [Hugging Face](llm-provider/llm_provider_huggingface.md)  | Any HF model (DialoGPT, CodeT5, etc.) | Optional         | Local/Cloud | [Setup Guide](llm-provider/llm_provider_huggingface.md)  |
 
 See [All LLM Providers](llm-providers.md) for a complete comparison and setup instructions.
 

@@ -6,13 +6,13 @@ Ollama enables running large language models locally, providing complete privacy
 
 Popular models available through Ollama:
 
-| Model | Size | Best For |
-|-------|------|----------|
-| `llama2` | 7B-70B | General purpose |
-| `codellama` | 7B-34B | Code-specific tasks |
-| `mistral` | 7B | Fast, efficient |
-| `dolphin-mixtral` | 8x7B | Code and reasoning |
-| `deepseek-coder` | 6.7B-33B | Code generation |
+| Model             | Size     | Best For            |
+|-------------------|----------|---------------------|
+| `llama2`          | 7B-70B   | General purpose     |
+| `codellama`       | 7B-34B   | Code-specific tasks |
+| `mistral`         | 7B       | Fast, efficient     |
+| `dolphin-mixtral` | 8x7B     | Code and reasoning  |
+| `deepseek-coder`  | 6.7B-33B | Code generation     |
 
 See [Ollama Model Library](https://ollama.ai/library) for complete list.
 
@@ -80,11 +80,11 @@ OLLAMA_BASE_URL: http://your-server:11434
 
 ## Hardware Requirements
 
-| Model Size | RAM Required | Speed |
-|------------|-------------|-------|
-| 7B models | 8GB+ | Fast |
-| 13B models | 16GB+ | Medium |
-| 33B+ models | 32GB+ | Slow |
+| Model Size  | RAM Required | Speed  |
+|-------------|--------------|--------|
+| 7B models   | 8GB+         | Fast   |
+| 13B models  | 16GB+        | Medium |
+| 33B+ models | 32GB+        | Slow   |
 
 ## Troubleshooting
 

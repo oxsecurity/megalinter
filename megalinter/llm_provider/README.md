@@ -12,16 +12,16 @@ This directory contains the modular LLM provider system for MegaLinter's AI-powe
 
 ### Supported Providers
 
-| Provider | File | LLM Models | API Required |
-|----------|------|------------|--------------|
-| OpenAI | `llm_provider_openai.py` | GPT-3.5, GPT-4, GPT-4o | Yes |
-| Anthropic | `llm_provider_anthropic.py` | Claude 3 (Haiku, Sonnet, Opus) | Yes |
-| Google | `llm_provider_google.py` | Gemini Pro, Gemini Flash | Yes |
-| Mistral AI | `llm_provider_mistral.py` | Mistral Small, Medium, Large | Yes |
-| DeepSeek | `llm_provider_deepseek.py` | DeepSeek Chat, DeepSeek Coder | Yes |
-| Grok | `llm_provider_grok.py` | Grok Beta (xAI) | Yes |
-| Hugging Face | `llm_provider_huggingface.py` | Any HF transformer model | Optional |
-| Ollama | `llm_provider_ollama.py` | Llama, CodeLlama, Mistral, etc. | No |
+| Provider     | File                          | LLM Models                      | API Required |
+|--------------|-------------------------------|---------------------------------|--------------|
+| OpenAI       | `llm_provider_openai.py`      | GPT-3.5, GPT-4, GPT-4o          | Yes          |
+| Anthropic    | `llm_provider_anthropic.py`   | Claude 3 (Haiku, Sonnet, Opus)  | Yes          |
+| Google       | `llm_provider_google.py`      | Gemini Pro, Gemini Flash        | Yes          |
+| Mistral AI   | `llm_provider_mistral.py`     | Mistral Small, Medium, Large    | Yes          |
+| DeepSeek     | `llm_provider_deepseek.py`    | DeepSeek Chat, DeepSeek Coder   | Yes          |
+| Grok         | `llm_provider_grok.py`        | Grok Beta (xAI)                 | Yes          |
+| Hugging Face | `llm_provider_huggingface.py` | Any HF transformer model        | Optional     |
+| Ollama       | `llm_provider_ollama.py`      | Llama, CodeLlama, Mistral, etc. | No           |
 
 ## Adding a New Provider
 

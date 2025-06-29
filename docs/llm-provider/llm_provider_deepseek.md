@@ -4,10 +4,10 @@ DeepSeek offers specialized code-focused models at competitive prices, optimized
 
 ## Supported Models
 
-| Model | Context Length | Cost | Best For |
-|-------|---------------|------|----------|
-| `deepseek-chat` | 32K tokens | $ | General purpose |
-| `deepseek-coder` | 16K tokens | $ | Code-specific tasks |
+| Model            | Context Length | Cost | Best For            |
+|------------------|----------------|------|---------------------|
+| `deepseek-chat`  | 32K tokens     | $    | General purpose     |
+| `deepseek-coder` | 16K tokens     | $    | Code-specific tasks |
 
 ## Setup
 

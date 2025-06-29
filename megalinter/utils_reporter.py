@@ -15,10 +15,10 @@ from megalinter.constants import (
     ML_REPO_ISSUES_URL,
     OX_MARKDOWN_LINK,
 )
+from megalinter.llm_advisor import LLMAdvisor
 from pytablewriter import Align, MarkdownTableWriter
 from pytablewriter.style import Style
 from redis import Redis
-from megalinter.llm_advisor import LLMAdvisor
 
 
 def build_markdown_summary(reporter_self, action_run_url="", max_total_chars=40000):
@@ -191,10 +191,10 @@ def build_markdown_summary_sections(
                     if separator_pos != -1:
                         next_newline = full_output.find("\n", separator_pos)
                         if next_newline != -1:
-                            raw_linter_output = full_output[next_newline + 1:].strip()
+                            raw_linter_output = full_output[next_newline + 1 :].strip()
                     else:
                         raw_linter_output = full_output
-                    
+
                     # Process output for display
                     linter_output = raw_linter_output
                     # Truncate long output for display
@@ -216,14 +216,16 @@ def build_markdown_summary_sections(
 
         # Get AI suggestions for this specific linter if available
         ai_suggestion_content = ""
-        if (llm_advisor and raw_linter_output.strip() and 
-            (linter.number_errors > 0 or linter.total_number_warnings > 0)):
+        if (
+            llm_advisor
+            and raw_linter_output.strip()
+            and (linter.number_errors > 0 or linter.total_number_warnings > 0)
+        ):
             try:
                 suggestion_data = llm_advisor.get_fix_suggestions(
-                    linter.linter_name, 
-                    raw_linter_output
+                    linter.linter_name, raw_linter_output
                 )
-                
+
                 if suggestion_data.get("suggestion"):
                     suggestion = suggestion_data["suggestion"]
                     ai_suggestion_content = f"""
@@ -234,7 +236,9 @@ def build_markdown_summary_sections(
 
 """
             except Exception as e:
-                logging.warning(f"Error getting AI suggestions for {linter.linter_name}: {str(e)}")
+                logging.warning(
+                    f"Error getting AI suggestions for {linter.linter_name}: {str(e)}"
+                )
 
         # Build HTML section with AI suggestions integrated
         details_content = linter_output + ai_suggestion_content

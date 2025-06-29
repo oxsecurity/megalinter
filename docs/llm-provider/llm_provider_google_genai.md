@@ -4,14 +4,14 @@ Google's Gemini models offer excellent performance at competitive prices with st
 
 ## Supported Models
 
-| Model | Context Length | Cost | Best For |
-|-------|---------------|------|----------|
-| `gemini-pro` | 30K tokens | $ | General code analysis |
-| `gemini-pro-vision` | 30K tokens | $ | Code with visual elements |
+| Model               | Context Length | Cost | Best For                  |
+|---------------------|----------------|------|---------------------------|
+| `gemini-pro`        | 30K tokens     | $    | General code analysis     |
+| `gemini-pro-vision` | 30K tokens     | $    | Code with visual elements |
 
 ## Setup
 
-1. **Get API Key**: 
+1. **Get API Key**:
    - Go to [Google AI Studio](https://makersuite.google.com/app/apikey)
    - Create a new API key
 2. **Set Environment Variable**:

@@ -6,12 +6,12 @@ Hugging Face provides access to thousands of open-source models that can run loc
 
 Popular models for code analysis:
 
-| Model | Size | Type | Best For |
-|-------|------|------|----------|
+| Model                       | Size | Type    | Best For                |
+|-----------------------------|------|---------|-------------------------|
 | `microsoft/DialoGPT-medium` | 345M | General | Conversational analysis |
-| `Salesforce/codet5-base` | 220M | Code | Code understanding |
-| `microsoft/codebert-base` | 125M | Code | Code representation |
-| `bigcode/starcoder` | 15B | Code | Advanced code tasks |
+| `Salesforce/codet5-base`    | 220M | Code    | Code understanding      |
+| `microsoft/codebert-base`   | 125M | Code    | Code representation     |
+| `bigcode/starcoder`         | 15B  | Code    | Advanced code tasks     |
 
 ## Setup
 
@@ -92,12 +92,12 @@ HUGGINGFACE_USE_API: true
 
 ## Hardware Requirements
 
-| Model Size | RAM Required | GPU Memory | Speed |
-|------------|-------------|------------|-------|
-| < 500M | 4GB+ | Optional | Fast |
-| 500M-2B | 8GB+ | 4GB+ | Medium |
-| 2B-7B | 16GB+ | 8GB+ | Slow |
-| 7B+ | 32GB+ | 16GB+ | Very Slow |
+| Model Size | RAM Required | GPU Memory | Speed     |
+|------------|--------------|------------|-----------|
+| < 500M     | 4GB+         | Optional   | Fast      |
+| 500M-2B    | 8GB+         | 4GB+       | Medium    |
+| 2B-7B      | 16GB+        | 8GB+       | Slow      |
+| 7B+        | 32GB+        | 16GB+      | Very Slow |
 
 ## Troubleshooting
 

@@ -4,16 +4,16 @@ This page provides a comprehensive comparison of all supported LLM providers for
 
 ## Provider Comparison
 
-| Provider | API Cost | Local/Cloud | Setup Complexity | Best For |
-|----------|----------|-------------|------------------|----------|
-| [OpenAI](llm-provider/llm_provider_openai.md) | $$ | Cloud | Easy | General use, high quality |
-| [Anthropic](llm-provider/llm_provider_anthropic.md) | $$ | Cloud | Easy | Code analysis, safety |
-| [Google GenAI](llm-provider/llm_provider_google_genai.md) | $ | Cloud | Easy | Cost-effective, multilingual |
-| [Mistral AI](llm-provider/llm_provider_mistralai.md) | $ | Cloud | Easy | European alternative |
-| [DeepSeek](llm-provider/llm_provider_deepseek.md) | $ | Cloud | Easy | Code-focused models |
-| [Grok](llm-provider/llm_provider_grok.md) | $$ | Cloud | Easy | xAI's conversational model |
-| [Ollama](llm-provider/llm_provider_ollama.md) | Free | Local | Medium | Privacy, offline use |
-| [Hugging Face](llm-provider/llm_provider_huggingface.md) | Free* | Local/Cloud | Hard | Open models, customization |
+| Provider                                                  | API Cost | Local/Cloud | Setup Complexity | Best For                     |
+|-----------------------------------------------------------|----------|-------------|------------------|------------------------------|
+| [OpenAI](llm-provider/llm_provider_openai.md)             | $$       | Cloud       | Easy             | General use, high quality    |
+| [Anthropic](llm-provider/llm_provider_anthropic.md)       | $$       | Cloud       | Easy             | Code analysis, safety        |
+| [Google GenAI](llm-provider/llm_provider_google_genai.md) | $        | Cloud       | Easy             | Cost-effective, multilingual |
+| [Mistral AI](llm-provider/llm_provider_mistralai.md)      | $        | Cloud       | Easy             | European alternative         |
+| [DeepSeek](llm-provider/llm_provider_deepseek.md)         | $        | Cloud       | Easy             | Code-focused models          |
+| [Grok](llm-provider/llm_provider_grok.md)                 | $$       | Cloud       | Easy             | xAI's conversational model   |
+| [Ollama](llm-provider/llm_provider_ollama.md)             | Free     | Local       | Medium           | Privacy, offline use         |
+| [Hugging Face](llm-provider/llm_provider_huggingface.md)  | Free*    | Local/Cloud | Hard             | Open models, customization   |
 
 *Free for local models, paid for hosted inference
 
