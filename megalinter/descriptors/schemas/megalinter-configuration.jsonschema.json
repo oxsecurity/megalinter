@@ -10690,6 +10690,51 @@
       "title": "LLM Advisor trigger level",
       "type": "string"
     },
+    "LLM_ADVISOR_DISABLE_LINTERS": {
+      "$id": "#/properties/LLM_ADVISOR_DISABLE_LINTERS",
+      "description": "If LLM_ADVISOR_DISABLE_LINTERS is set, LLM advisor will NOT process these ones",
+      "examples": [
+        [
+          "JAVASCRIPT_ES",
+          "PYTHON_PYLINT"
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/enum_linter_keys"
+      },
+      "title": "LLM Advisor Disabled linter keys",
+      "type": "array"
+    },
+    "LLM_ADVISOR_ENABLE_LINTERS": {
+      "$id": "#/properties/LLM_ADVISOR_ENABLE_LINTERS",
+      "description": "If LLM_ADVISOR_ENABLE_LINTERS is set, LLM advisor will only process these ones",
+      "examples": [
+        [
+          "JAVASCRIPT_ES",
+          "PYTHON_PYLINT"
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/enum_linter_keys"
+      },
+      "title": "LLM Advisor Enabled linter keys",
+      "type": "array"
+    },
+    "LLM_ADVISOR_POSITION": {
+      "$id": "#/properties/LLM_ADVISOR_POSITION",
+      "default": "after_linter_output",
+      "description": "Display LLM Advisor suggestions before or after linter output",
+      "enum": [
+        "after_linter_output",
+        "before_linter_output"
+      ],
+      "examples": [
+        "after_linter_output",
+        "before_linter_output"
+      ],
+      "title": "LLM Advisor trigger level",
+      "type": "string"
+    },
     "LLM_MAX_TOKENS": {
       "$id": "#/properties/LLM_MAX_TOKENS",
       "default": "1000",

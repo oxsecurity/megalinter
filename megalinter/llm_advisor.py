@@ -70,7 +70,7 @@ class LLMAdvisor:
                     or self.provider.get_default_model()
                 )
                 logging.info(
-                    f"[LLM ADvisor] LLM Advisor initialized with {self.provider_name} ({self.model_name})"
+                    f"[LLM Advisor] LLM Advisor initialized with {self.provider_name} ({self.model_name})"
                 )
             else:
                 self.enabled = False
@@ -132,12 +132,11 @@ class LLMAdvisor:
     def _get_system_prompt(self) -> str:
         return """You are an expert code reviewer and linter error analyst. Your job is to help developers understand and fix linting errors in their code.
 
-For each linter error, provide:
+For each error, provide:
 1. A clear explanation of what the error means
 2. Why this error occurs
 3. Specific, actionable steps to fix it
 4. If applicable, a code example showing the fix
-5. Best practices to prevent similar errors
 
 Keep your responses concise but comprehensive. Focus on practical solutions that developers can immediately apply.
 
@@ -162,9 +161,8 @@ Your response must not exceed 1000 characters, so prioritize the most critical i
             "Please analyze this linter output and provide:",
             "1. A summary of the main issues found",
             "2. General advice on how to fix the most common/critical issues",
-            "3. Best practices to prevent these types of errors",
             "",
-            "Focus on the most actionable and important suggestions.",
+            "Stay concise, and focus on the most actionable and important suggestions.",
         ]
 
         return "\n".join(prompt_parts)

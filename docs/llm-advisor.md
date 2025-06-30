@@ -46,14 +46,15 @@ LLM_TEMPERATURE: 0.1
 ## Basic Configuration
 
 ```yaml
-LLM_ADVISOR_ENABLED: true          # Enable/disable AI advisor
-LLM_ADVISOR_LEVEL: ERROR           # When to trigger: ERROR (default) or WARNING
-LLM_ADVISOR_ENABLE_LINTERS: []     # Only analyze these linters (linter names)
-LLM_ADVISOR_DISABLE_LINTERS: []    # Never analyze these linters (linter names)
-LLM_PROVIDER: openai               # Provider: see supported providers above
-LLM_MODEL_NAME: gpt-3.5-turbo      # Model name (provider-specific)
-LLM_MAX_TOKENS: 1000               # Maximum tokens for response
-LLM_TEMPERATURE: 0.1               # Temperature for generation (0.0-1.0)
+LLM_ADVISOR_ENABLED: true                  # Enable/disable AI advisor
+LLM_ADVISOR_LEVEL: ERROR                   # When to trigger: ERROR (default) or WARNING
+LLM_ADVISOR_ENABLE_LINTERS: []             # Only analyze these linters (linter names)
+LLM_ADVISOR_DISABLE_LINTERS: []            # Never analyze these linters (linter names)
+LLM_PROVIDER: openai                       # Provider: see supported providers above
+LLM_MODEL_NAME: gpt-3.5-turbo              # Model name (provider-specific)
+LLM_MAX_TOKENS: 1000                       # Maximum tokens for response
+LLM_TEMPERATURE: 0.1                       # Temperature for generation (0.0-1.0)
+LLM_ADVISOR_POSITION: after_linter_output  # Display Advisor suggestions before or after linter output
 ```
 
 ## Advisor Level Configuration
@@ -84,6 +85,32 @@ LLM_ADVISOR_LEVEL: WARNING
 - Helps improve code quality beyond just fixing build-breaking errors
 
 Choose `ERROR` for cost-sensitive environments or `WARNING` for comprehensive code quality improvements.
+
+## Position Configuration
+
+The `LLM_ADVISOR_POSITION` setting controls where AI suggestions appear in the linter output:
+
+### after_linter_output (Default)
+
+```yaml
+LLM_ADVISOR_POSITION: after_linter_output
+```
+
+- AI suggestions appear **after** the original linter error messages
+- Maintains traditional linter output format at the top
+- Better for users who want to see standard linter output first
+- Recommended for most use cases
+
+### before_linter_output
+
+```yaml
+LLM_ADVISOR_POSITION: before_linter_output
+```
+
+- AI suggestions appear **before** the original linter error messages
+- Prioritizes AI guidance over raw linter output
+- Useful when AI suggestions are the primary focus
+- May help users understand errors before seeing technical details
 
 ## Linter-Specific Configuration
 

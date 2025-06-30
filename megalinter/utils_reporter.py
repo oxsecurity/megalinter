@@ -219,7 +219,16 @@ def build_markdown_summary_sections(
 """
 
         # Build HTML section with AI suggestions integrated
-        details_content = linter_output + ai_suggestion_content
+        LLM_ADVISOR_POSITION = config.get(
+            reporter_self.master.request_id,
+            "LLM_ADVISOR_POSITION",
+            "after_linter_output",
+        )
+        if LLM_ADVISOR_POSITION == "after_linter_output":
+            details_content = linter_output + ai_suggestion_content
+        else:
+            # If LLM_ADVISOR_POSITION is before_linter_output, put AI suggestions first
+            details_content = ai_suggestion_content + linter_output
         p_r_msg += f"<details>\n<summary>{summary_text}</summary>\n\n{details_content}\n\n</details>\n\n"
 
     # Add summary section for OK linters
