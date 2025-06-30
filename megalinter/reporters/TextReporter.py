@@ -91,19 +91,6 @@ class TextReporter(Reporter):
         # Complete lines
         text_report_lines += self.master.complete_text_reporter_report(self)
 
-        ## Add LLM suggestions if available
-        if (
-            hasattr(self.master, 'llm_suggestion')
-            and self.master.llm_suggestion is not None
-            and self.master.llm_suggestion.get("suggestion")
-        ):
-            text_report_lines += [
-                "",
-                "-----------LLM Advisor suggestion---------",
-                "",
-                f"  {self.master.llm_suggestion['suggestion']}",
-            ]
-        
         # Write to file
         text_report_sub_folder = config.get(
             self.master.request_id, "TEXT_REPORTER_SUB_FOLDER", "linters_logs"
@@ -121,3 +108,27 @@ class TextReporter(Reporter):
             logging.debug(
                 f"[Text Reporter] Generated {self.name} report: {text_file_name}"
             )
+
+        ## Add LLM suggestions if available, in same file name with "suggestions" suffix
+        if (
+            hasattr(self.master, 'llm_suggestion')
+            and self.master.llm_suggestion is not None
+            and self.master.llm_suggestion.get("suggestion")
+        ):
+            suggestions_report_lines += [
+                "",
+                "-----------LLM Advisor suggestion---------",
+                "",
+                f"  {self.master.llm_suggestion['suggestion']}",
+            ]
+            suggestions_file_name = (
+                f"{self.report_folder}{os.path.sep}"
+                f"{text_report_sub_folder}{os.path.sep}"
+                f"{self.master.status.upper()}-{self.master.name}-suggestions.log"
+            )
+            with open(suggestions_file_name, "w", encoding="utf-8") as suggestions_file:
+                suggestions_file_content = "\n".join(suggestions_report_lines) + "\n"
+                suggestions_file.write(suggestions_file_content)
+                logging.debug(
+                    f"[Text Reporter] Generated {self.name} suggestions report: {suggestions_file_name}"
+                )
