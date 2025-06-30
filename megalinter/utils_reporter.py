@@ -631,8 +631,7 @@ def _build_sections_content(linters_with_issues, linters_ok, reporter_self, acti
         ):
             suggestion = linter.llm_suggestion["suggestion"]
             ai_suggestion_content = f"""
-
-### 🤖 AI-Powered Fix Suggestions for {suggestion['linter']}
+🤖 AI-Powered Fix Suggestions for {suggestion['linter']}
 
 {suggestion['suggestion']}
 
