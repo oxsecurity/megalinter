@@ -70,15 +70,15 @@ class LLMAdvisor:
                     or self.provider.get_default_model()
                 )
                 logging.info(
-                    f"LLM Advisor initialized with {self.provider_name} ({self.model_name})"
+                    f"[LLM ADvisor] LLM Advisor initialized with {self.provider_name} ({self.model_name})"
                 )
             else:
                 self.enabled = False
-                logging.error(f"Failed to create provider: {self.provider_name}")
+                logging.error(f"[LLM Advisor] Failed to create provider: {self.provider_name}")
 
         except Exception as e:
             logging.error(
-                f"Failed to initialize LLM provider ({self.provider_name}): {str(e)}"
+                f"[LLM Advisor] Failed to initialize LLM provider ({self.provider_name}): {str(e)}"
             )
             self.enabled = False
             self.provider = None
