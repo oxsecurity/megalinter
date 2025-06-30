@@ -49,7 +49,7 @@ class HuggingFaceProvider(LLMProvider):
             except ImportError as e:
                 logging.error(
                     f"Hugging Face dependencies not found: {str(e)}. "
-                    f"Install with: pip install megalinter[huggingface] or pip install langchain-huggingface transformers torch"
+                    f"Install in PRE_COMMANDS with: pip install langchain-huggingface transformers torch"
                 )
                 return False
 
