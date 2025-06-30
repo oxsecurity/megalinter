@@ -152,6 +152,7 @@ class ConsoleLinterReporter(Reporter):
                 logging.info(f"--Log detail:\n{stdout}")
         # Display LLM Avisor suggestions if available
         if self.master.llm_suggestion is not None:
+            logging.info(f"LLM Suggestion object: {self.master.llm_suggestion}")
             logging.info(
                 utils.blue(
                     f"🤖 AI-Powered Fix Suggestions ({self.master.llm_suggestion['provider']} - {self.master.llm_suggestion['model']})"
