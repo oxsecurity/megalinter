@@ -32,7 +32,7 @@ If you really want a new MR comment for each MegaLinter run, define variable `GI
 | GITLAB_CUSTOM_CERTIFICATE                 | SSL certificate value to connect to Gitlab                                                             | <!-- -->      |
 | GITLAB_CERTIFICATE_PATH                   | Path to SSL certificate to connect to Gitlab (if SSL cert has been manually defined with PRE_COMMANDS) | <!-- -->      |
 | REPORTERS_MARKDOWN_TYPE                   | Set to `simple` to avoid external images in generated markdown                                         | `advanced`    |
-| REPORTERS_MARKDOWN_SUMMARY_TYPE           | Display summary in PR/MR comments as sections or as a table                                            | `sections`    |
+| REPORTERS_MARKDOWN_SUMMARY_TYPE           | Display summary in PR/MR comments as `sections`, `table` or both (`sections-table` or `table-sections`)                                            | `sections`    |
 | JOB_SUMMARY_ADDITIONAL_MARKDOWN           | Custom markdown to add at the end of the summary message                                               | <!-- -->      |
 
 ## Special Thanks

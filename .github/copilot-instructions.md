@@ -176,11 +176,12 @@ megalinter/tests/test_megalinter/
 - Handle errors gracefully with appropriate logging
 - Do not test if imports work, assume they are always available
 - Place imports at the top of the files
-- Do not add docstrings at the beginning of the classes or methods.
+- Do NOT use docstrings for classes and methods.
 
-### Copilot assistant
+### Copilot CLI Commands
 
-- If you want to run python scripts, always run `make bootstrap` first to set up the environment
+- If you want to run python scripts, always **activate python venv** before.
+- If there is no venv, or if it not up to date,S run `make bootstrap` first to set up the environment
 
 ### Python Package Management
 

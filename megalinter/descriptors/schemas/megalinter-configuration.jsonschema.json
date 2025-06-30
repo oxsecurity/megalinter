@@ -16340,10 +16340,12 @@
     "REPORTERS_MARKDOWN_SUMMARY_TYPE": {
       "$id": "#/properties/REPORTERS_MARKDOWN_SUMMARY_TYPE",
       "default": "sections",
-      "description": "Display summary in PR/MR comments as sections or as a table",
+      "description": "Display summary in PR/MR comments as sections, table or both",
       "enum": [
         "sections",
-        "table"
+        "table",
+        "sections-table",
+        "table-sections"
       ],
       "title": "Reporters Markdown Summary type",
       "type": "string"
