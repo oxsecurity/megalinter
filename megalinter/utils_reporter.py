@@ -84,7 +84,6 @@ def build_markdown_summary_table(reporter_self, action_run_url=""):
 def build_markdown_summary_sections(
     reporter_self, action_run_url="", max_total_chars=40000
 ):
-    """Build markdown summary using HTML sections with summary/details tags for each linter"""
 
     # Build complete message using helper functions
     p_r_msg = build_markdown_summary_header(reporter_self, action_run_url)
@@ -262,7 +261,6 @@ def build_markdown_summary_sections(
 
 
 def build_markdown_summary_header(reporter_self, action_run_url=""):
-    """Build the common header for markdown summaries"""
     status = (
         "✅"
         if reporter_self.master.return_code == 0
@@ -282,7 +280,6 @@ def build_markdown_summary_header(reporter_self, action_run_url=""):
 
 
 def get_linter_summary_data(linter, action_run_url=""):
-    """Extract common linter data used by both table and sections formats"""
     # Build linter status icon
     linter_status = (
         "✅"
@@ -340,7 +337,6 @@ def get_linter_summary_data(linter, action_run_url=""):
 
 
 def build_markdown_summary_footer(reporter_self, action_run_url=""):
-    """Build the common footer for markdown summaries"""
     footer = ""
 
     if reporter_self.master.result_message != "":
