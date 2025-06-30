@@ -116,8 +116,7 @@ class TextReporter(Reporter):
             and self.master.llm_suggestion.get("suggestion")
         ):
             suggestions_report_lines += [
-                "",
-                "-----------LLM Advisor suggestion---------",
+                f"🤖 AI-Powered Fix Suggestions for {self.master.llm_suggestion['linter']},
                 "",
                 f"  {self.master.llm_suggestion['suggestion']}",
             ]
