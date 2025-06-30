@@ -84,7 +84,6 @@ def build_markdown_summary_table(reporter_self, action_run_url=""):
 def build_markdown_summary_sections(
     reporter_self, action_run_url="", max_total_chars=40000
 ):
-    """Build markdown summary using HTML sections with summary/details tags for each linter"""
 
     # Build complete message using helper functions
     p_r_msg = build_markdown_summary_header(reporter_self, action_run_url)
@@ -170,20 +169,23 @@ def build_markdown_summary_sections(
         )
 
         linter_output = ""
+        raw_linter_output = ""
         if os.path.isfile(text_file_name):
             try:
                 with open(text_file_name, "r", encoding="utf-8") as text_file:
-                    linter_output = text_file.read()
-                    # Remove all lines until the first "Linter raw log:", including such line
-                    separator_pos = linter_output.find("Linter raw log:")
+                    full_output = text_file.read()
+                    # Store raw output for AI analysis
+                    separator_pos = full_output.find("Linter raw log:")
                     if separator_pos != -1:
-                        # Find the end of the line containing the separator
-                        next_newline = linter_output.find("\n", separator_pos)
+                        next_newline = full_output.find("\n", separator_pos)
                         if next_newline != -1:
-                            linter_output = linter_output[
-                                next_newline + 1 :
-                            ].strip()  # noqa: E203
-                    # Truncate long output to 1000 characters
+                            raw_linter_output = full_output[next_newline + 1 :].strip()
+                    else:
+                        raw_linter_output = full_output
+
+                    # Process output for display
+                    linter_output = raw_linter_output
+                    # Truncate long output for display
                     if len(linter_output) > max_chars_per_linter:
                         total_chars = len(linter_output)
                         linter_output = (
@@ -200,8 +202,25 @@ def build_markdown_summary_sections(
         else:
             linter_output = "Linter output file not found"
 
-        # Build HTML section
-        p_r_msg += f"<details>\n<summary>{summary_text}</summary>\n\n{linter_output}\n\n</details>\n\n"
+        # Get AI suggestions for this specific linter if available
+        ai_suggestion_content = ""
+        if (
+            hasattr(linter, 'llm_suggestion')
+            and linter.llm_suggestion is not None
+            and linter.llm_suggestion.get("suggestion")
+        ):
+            suggestion = linter.llm_suggestion["suggestion"]
+            ai_suggestion_content = f"""
+
+### 🤖 AI-Powered Fix Suggestions for {suggestion['linter']}
+
+{suggestion['suggestion']}
+
+"""
+
+        # Build HTML section with AI suggestions integrated
+        details_content = linter_output + ai_suggestion_content
+        p_r_msg += f"<details>\n<summary>{summary_text}</summary>\n\n{details_content}\n\n</details>\n\n"
 
     # Add summary section for OK linters
     if linters_ok:
@@ -242,7 +261,6 @@ def build_markdown_summary_sections(
 
 
 def build_markdown_summary_header(reporter_self, action_run_url=""):
-    """Build the common header for markdown summaries"""
     status = (
         "✅"
         if reporter_self.master.return_code == 0
@@ -262,7 +280,6 @@ def build_markdown_summary_header(reporter_self, action_run_url=""):
 
 
 def get_linter_summary_data(linter, action_run_url=""):
-    """Extract common linter data used by both table and sections formats"""
     # Build linter status icon
     linter_status = (
         "✅"
@@ -320,7 +337,6 @@ def get_linter_summary_data(linter, action_run_url=""):
 
 
 def build_markdown_summary_footer(reporter_self, action_run_url=""):
-    """Build the common footer for markdown summaries"""
     footer = ""
 
     if reporter_self.master.result_message != "":

@@ -32,6 +32,7 @@ from time import perf_counter
 
 import yaml
 from megalinter import config, pre_post_factory, utils, utils_reporter, utils_sarif
+from megalinter.llm_advisor import LLMAdvisor
 from megalinter.constants import DEFAULT_DOCKER_WORKSPACE_DIR
 
 
@@ -386,6 +387,7 @@ class Linter:
             self.elapsed_time_s = 0
             self.remote_config_file_to_delete = None
             self.remote_ignore_file_to_delete = None
+            self.llm_suggestion = None  # Store LLM advisor suggestions
 
     # Enable or disable linter
     def manage_activation(self, params):
@@ -893,6 +895,53 @@ class Linter:
                 and self.total_number_errors < self.disable_errors_if_less_than
             ):
                 self.return_code = 0
+
+        # Set LLM Advisor suggestions if available
+        try:
+            llm_advisor = LLMAdvisor(self.request_id)
+            if llm_advisor.is_available() and llm_advisor.should_analyze_linter(self):
+                # Get raw linter output for AI analysis
+                raw_linter_output = ""
+                if self.stdout is not None:
+                    raw_linter_output = self.stdout
+                else:
+                    # Try to read from the linter output file
+                    text_report_sub_folder = config.get(
+                        self.request_id, "TEXT_REPORTER_SUB_FOLDER", "linters_logs"
+                    )
+                    text_file_name = (
+                        f"{self.report_folder}{os.path.sep}"
+                        f"{text_report_sub_folder}{os.path.sep}"
+                        f"{self.status.upper()}-{self.name}.log"
+                    )
+                    if os.path.isfile(text_file_name):
+                        try:
+                            with open(text_file_name, "r", encoding="utf-8") as text_file:
+                                full_output = text_file.read()
+                                # Extract raw linter output (after "Linter raw log:" separator if present)
+                                separator_pos = full_output.find("Linter raw log:")
+                                if separator_pos != -1:
+                                    next_newline = full_output.find("\n", separator_pos)
+                                    if next_newline != -1:
+                                        raw_linter_output = full_output[next_newline + 1 :].strip()
+                                else:
+                                    raw_linter_output = full_output.strip()
+                        except Exception as e:
+                            logging.warning(f"Error reading linter output for LLM analysis: {str(e)}")
+
+                # Get AI suggestions if we have output to analyze
+                if raw_linter_output.strip():
+                    self.llm_suggestion = llm_advisor.get_fix_suggestions(
+                        self.linter_name, raw_linter_output
+                    )
+                else:
+                    logging.debug(f"No linter output available for LLM analysis for {self.name}")
+            else:
+                logging.debug(f"LLM advisor not available or not analyzing {self.name}")
+        except Exception as e:
+            logging.warning(f"Error initializing LLM advisor for {self.name}: {str(e)}")
+            self.llm_suggestion = None
+
 
         # Delete locally copied remote config file if necessary
         if self.remote_config_file_to_delete is not None:

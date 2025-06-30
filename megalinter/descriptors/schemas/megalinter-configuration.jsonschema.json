@@ -10664,6 +10664,92 @@
       "title": "Pre commands for LATEX descriptor",
       "type": "array"
     },
+    "LLM_ADVISOR_ENABLED": {
+      "$id": "#/properties/LLM_ADVISOR_ENABLED",
+      "default": "false",
+      "description": "Enable AI-powered fix suggestions using Large Language Models",
+      "examples": [
+        "true",
+        "false"
+      ],
+      "title": "LLM Advisor enabled",
+      "type": "string"
+    },
+    "LLM_ADVISOR_LEVEL": {
+      "$id": "#/properties/LLM_ADVISOR_LEVEL",
+      "default": "ERROR",
+      "description": "When to trigger AI suggestions: ERROR (only for blocking linters with return_code != 0) or WARNING (for both blocking and non-blocking linters)",
+      "enum": [
+        "ERROR",
+        "WARNING"
+      ],
+      "examples": [
+        "ERROR",
+        "WARNING"
+      ],
+      "title": "LLM Advisor trigger level",
+      "type": "string"
+    },
+    "LLM_MAX_TOKENS": {
+      "$id": "#/properties/LLM_MAX_TOKENS",
+      "default": "1000",
+      "description": "Maximum number of tokens for LLM response",
+      "examples": [
+        "500",
+        "1000",
+        "2000"
+      ],
+      "title": "LLM maximum tokens",
+      "type": "string"
+    },
+    "LLM_MODEL_NAME": {
+      "$id": "#/properties/LLM_MODEL_NAME",
+      "description": "Name of the LLM model to use (provider-specific)",
+      "examples": [
+        "gpt-3.5-turbo",
+        "gpt-4",
+        "claude-3-haiku-20240307",
+        "gemini-pro"
+      ],
+      "title": "LLM model name",
+      "type": "string"
+    },
+    "LLM_PROVIDER": {
+      "$id": "#/properties/LLM_PROVIDER",
+      "default": "openai",
+      "description": "LLM provider to use for AI suggestions",
+      "enum": [
+        "openai",
+        "anthropic",
+        "google",
+        "huggingface",
+        "mistral",
+        "deepseek",
+        "grok",
+        "ollama"
+      ],
+      "examples": [
+        "openai",
+        "anthropic",
+        "google",
+        "ollama"
+      ],
+      "title": "LLM provider",
+      "type": "string"
+    },
+    "LLM_TEMPERATURE": {
+      "$id": "#/properties/LLM_TEMPERATURE",
+      "default": "0.1",
+      "description": "Temperature for LLM generation (0.0 = deterministic, 1.0 = creative)",
+      "examples": [
+        "0.0",
+        "0.1",
+        "0.5",
+        "1.0"
+      ],
+      "title": "LLM temperature",
+      "type": "string"
+    },
     "LINTER_RULES_PATH": {
       "$id": "#/properties/LINTER_RULES_PATH",
       "default": ".github/linters",
