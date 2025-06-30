@@ -55,7 +55,7 @@ Golangci-lint is the industry standard for Go code quality and is used by thousa
 
 ## golangci-lint documentation
 
-- Version in MegaLinter: **2.2.0**
+- Version in MegaLinter: **2.2.1**
 - Visit [Official Web Site](https://golangci-lint.run/){target=_blank}
 - See [How to configure golangci-lint rules](https://golangci-lint.run/usage/configuration/#config-file){target=_blank}
   - If custom `.golangci.yml` config file isn't found, [.golangci.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.golangci.yml){target=_blank} will be used
@@ -172,7 +172,7 @@ Use "golangci-lint [command] --help" for more information about a command.
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=github-tags depName=golangci/golangci-lint
-ARG GO_GOLANGCI_LINT_VERSION=2.2.0
+ARG GO_GOLANGCI_LINT_VERSION=2.2.1
 RUN wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s "v${GO_GOLANGCI_LINT_VERSION}" \
     && golangci-lint --version
 
