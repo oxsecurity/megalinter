@@ -173,6 +173,7 @@ This error occurs because you've imported the `os` module but haven't used it an
 **Error:** Unexpected empty block
 
 **AI Suggestion:**
+
 Empty CSS blocks serve no purpose and should be removed. To fix this:
 
 1. **Remove the empty block entirely** if it's not needed
@@ -191,17 +192,6 @@ Example fix:
 }
 ```
 
----
-```
-
-## Benefits & Use Cases
-
-- **Learning Tool**: Helps developers understand why errors occur and how to fix them
-- **Faster Development**: Provides immediate, actionable suggestions without context switching
-- **Code Quality**: Explains best practices to prevent similar issues in the future
-- **Time Saving**: Reduces time spent researching error meanings and solutions
-- **Context-Aware**: Analyzes actual code context for better, more relevant recommendations
-
 ## Limitations & Considerations
 
 - **API Costs**: Cloud providers charge for API usage
@@ -209,15 +199,6 @@ Example fix:
 - **Token Limits**: Large files may be truncated for analysis
 - **Accuracy**: AI suggestions should be reviewed before applying
 - **Privacy**: Code snippets are sent to the LLM provider for analysis (use local Ollama for private code)
-
-## Getting Started
-
-1. **[Choose a Provider](llm-providers.md)** - Compare all available LLM providers
-2. **Set up credentials** - Follow the provider-specific setup guide
-3. **Configure MegaLinter** - Add configuration to your `.mega-linter.yml`
-4. **Run and review** - Check the AI suggestions in your MegaLinter reports
-
-For detailed setup instructions, see the documentation for your chosen provider.
 
 ## Troubleshooting
 

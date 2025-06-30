@@ -116,11 +116,13 @@ MegaLinter uses **uv** (fast Python package installer) and **hatch** (modern Pyt
 #### Adding a New Python Package
 
 1. **Add to pyproject.toml**: Add the package to the appropriate section in `pyproject.toml`:
+
    - **Core dependencies**: Add to `dependencies` array
    - **Optional dependencies**: Add to `[project.optional-dependencies]` sections (e.g., `huggingface`, `all-llm`)
    - **Development dependencies**: Add to `.config/python/dev/requirements.txt`
 
 2. **Example - Adding a core dependency**:
+
    ```toml
    dependencies = [
      "azure-devops==6.0.0b4",
@@ -131,6 +133,7 @@ MegaLinter uses **uv** (fast Python package installer) and **hatch** (modern Pyt
    ```
 
 3. **Example - Adding an optional dependency**:
+
    ```toml
    [project.optional-dependencies]
    huggingface = [
@@ -200,6 +203,7 @@ hatch run build:all   # Run build commands
 ```
 
 **Important Notes**:
+
 - Always run `uv lock` after modifying `pyproject.toml` to update the lock file
 - Test your changes locally with `make tests-fast` before submitting PR
 - Update `CHANGELOG.md` when adding or upgrading significant dependencies

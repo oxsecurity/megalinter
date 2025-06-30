@@ -214,6 +214,7 @@ MegaLinter uses **uv** (fast Python package installer) and **hatch** (modern Pyt
 - Update descriptor metadata to improve documentation
 - Include examples and configuration tips
 - Built with mkdocs-material then displayed in the MegaLinter documentation site
+- Markdown files must be mkdos-material compliant, meaning always have a blank line after a header (ex: ##) or before a bulleted list (ex: - item1)
 
 ## Common Operations
 
