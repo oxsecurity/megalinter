@@ -152,6 +152,7 @@ class ConsoleLinterReporter(Reporter):
                 logging.info(f"--Log detail:\n{stdout}")
         # Display LLM Avisor suggestions if available
         if (
+            hasattr(self.master, 'llm_suggestion')
             and linter.llm_suggestion is not None
             and linter.llm_suggestion.get("suggestion")
         ):
