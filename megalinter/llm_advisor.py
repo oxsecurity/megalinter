@@ -167,26 +167,6 @@ Your response must not exceed 1000 characters, so prioritize the most critical i
 
         return "\n".join(prompt_parts)
 
-    def format_suggestions_for_output(self, suggestions_data: Dict[str, Any]) -> str:
-        if not suggestions_data.get("enabled", False):
-            return ""
-
-        suggestion = suggestions_data.get("suggestion")
-        if not suggestion:
-            return "No AI suggestions available for the detected errors."
-
-        output_lines = [
-            f"## 🤖 AI-Powered Fix Suggestions ({suggestions_data['provider']} - {suggestions_data['model']})",
-            "",
-            f"**{suggestion['linter']} - AI Analysis:**",
-            "",
-            suggestion["suggestion"],
-            "",
-            "---",
-            "",
-        ]
-
-        return "\n".join(output_lines)
 
     def should_analyze_linter(self, linter) -> bool:
         if not self.is_available():

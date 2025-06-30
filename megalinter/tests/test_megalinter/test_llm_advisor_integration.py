@@ -141,7 +141,7 @@ script.js:8:1: no-undef 'console' is not defined"""
     @patch(
         "megalinter.llm_provider.llm_provider_factory.LLMProviderFactory.create_provider"
     )
-    def test_format_suggestions_for_output(self, mock_create_provider, mock_config):
+    def test_get_fix_suggestions_data_structure(self, mock_create_provider, mock_config):
 
         # Mock configuration
         mock_config.side_effect = lambda req_id, key, default: {
@@ -154,30 +154,24 @@ script.js:8:1: no-undef 'console' is not defined"""
         mock_provider.get_config_value.return_value = "gpt-3.5-turbo"
         mock_provider.get_default_model.return_value = "gpt-3.5-turbo"
         mock_provider.is_available.return_value = True
+        mock_provider.invoke.return_value = "Remove unused imports to clean up your code"
         mock_create_provider.return_value = mock_provider
 
         advisor = LLMAdvisor("test-request")
 
-        # Test formatting
-        suggestions_data = {
-            "enabled": True,
-            "provider": "openai",
-            "model": "gpt-3.5-turbo",
-            "suggestion": {
-                "linter": "flake8",
-                "suggestion": "Remove unused imports to clean up your code",
-            },
-        }
+        # Test getting suggestions
+        result = advisor.get_fix_suggestions("flake8", "test.py:1:1: F401 'os' imported but unused")
 
-        formatted = advisor.format_suggestions_for_output(suggestions_data)
-
-        self.assertIn("AI-Powered Fix Suggestions", formatted)
-        self.assertIn("openai - gpt-3.5-turbo", formatted)
-        self.assertIn("flake8 - AI Analysis", formatted)
-        self.assertIn("Remove unused imports", formatted)
+        # Verify data structure
+        self.assertTrue(result["enabled"])
+        self.assertEqual(result["provider"], "openai")
+        self.assertEqual(result["model"], "gpt-3.5-turbo")
+        self.assertIsNotNone(result["suggestion"])
+        self.assertEqual(result["suggestion"]["linter"], "flake8")
+        self.assertIn("Remove unused imports", result["suggestion"]["suggestion"])
 
     @patch("megalinter.config.get")
-    def test_disabled_formatting(self, mock_config):
+    def test_disabled_advisor_returns_proper_structure(self, mock_config):
 
         mock_config.side_effect = lambda req_id, key, default: {
             "LLM_ADVISOR_ENABLED": "false"
@@ -185,10 +179,10 @@ script.js:8:1: no-undef 'console' is not defined"""
 
         advisor = LLMAdvisor()
 
-        suggestions_data = {"enabled": False, "suggestion": None}
-        formatted = advisor.format_suggestions_for_output(suggestions_data)
+        result = advisor.get_fix_suggestions("flake8", "test.py:1:1: F401 'os' imported but unused")
 
-        self.assertEqual(formatted, "")
+        self.assertFalse(result["enabled"])
+        self.assertIsNone(result["suggestion"])
 
     @patch("megalinter.config.get")
     @patch(

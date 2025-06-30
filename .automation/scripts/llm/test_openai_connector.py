@@ -104,10 +104,7 @@ def test_openai_connector():
                     print(f"✅ Got suggestion from {result['provider']} ({result['model']})")
                     print(f"   Linter: {suggestion['linter']}")
                     print(f"   Suggestion preview: {suggestion['suggestion'][:100]}...")
-                    
-                    # Test formatting
-                    formatted = advisor.format_suggestions_for_output(result)
-                    print(f"   Formatted output length: {len(formatted)} characters")
+                    print(f"   Full suggestion length: {len(suggestion['suggestion'])} characters")
                     
                 else:
                     print(f"❌ No suggestion received")
