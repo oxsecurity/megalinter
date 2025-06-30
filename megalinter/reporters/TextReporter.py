@@ -90,6 +90,20 @@ class TextReporter(Reporter):
                 text_report_lines += [f"Linter raw log:\n{stdout}"]
         # Complete lines
         text_report_lines += self.master.complete_text_reporter_report(self)
+
+        ## Add LLM suggestions if available
+        if (
+            hasattr(self.master, 'llm_suggestion')
+            and self.master.llm_suggestion is not None
+            and self.master.llm_suggestion.get("suggestion")
+        ):
+            text_report_lines += [
+                "",
+                "-----------LLM Advisor suggestion---------",
+                "",
+                f"  {self.master.llm_suggestion['suggestion']}",
+            ]
+        
         # Write to file
         text_report_sub_folder = config.get(
             self.master.request_id, "TEXT_REPORTER_SUB_FOLDER", "linters_logs"
