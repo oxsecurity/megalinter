@@ -73,7 +73,7 @@ class HuggingFaceProvider(LLMProvider):
                 model_kwargs={"temperature": temperature, "max_length": max_tokens},
             )
 
-            logging.info(f"Hugging Face provider initialized with model {model_name}")
+            logging.debug(f"Hugging Face provider initialized with model {model_name}")
             return True
 
         except ImportError:

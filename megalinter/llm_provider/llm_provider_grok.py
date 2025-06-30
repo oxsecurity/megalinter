@@ -58,7 +58,7 @@ class GrokProvider(LLMProvider):
                 base_url=base_url,
             )
 
-            logging.info(f"Grok provider initialized with model {model_name}")
+            logging.debug(f"Grok provider initialized with model {model_name}")
             return True
 
         except Exception as e:

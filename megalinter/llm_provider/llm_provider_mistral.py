@@ -61,7 +61,7 @@ class MistralProvider(LLMProvider):
 
             self.llm = ChatMistralAI(**kwargs)
 
-            logging.info(f"Mistral provider initialized with model {model_name}")
+            logging.debug(f"Mistral provider initialized with model {model_name}")
             return True
 
         except Exception as e:

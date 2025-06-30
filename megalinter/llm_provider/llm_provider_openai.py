@@ -60,7 +60,7 @@ class OpenAIProvider(LLMProvider):
                 kwargs["base_url"] = base_url
 
             self.llm = ChatOpenAI(**kwargs)
-            logging.info(f"OpenAI provider initialized with model {model_name}")
+            logging.debug(f"OpenAI provider initialized with model {model_name}")
             return True
 
         except Exception as e:

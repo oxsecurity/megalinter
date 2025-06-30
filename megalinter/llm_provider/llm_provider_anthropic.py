@@ -54,7 +54,7 @@ class AnthropicProvider(LLMProvider):
                 api_key=api_key,
             )
 
-            logging.info(f"Anthropic provider initialized with model {model_name}")
+            logging.debug(f"Anthropic provider initialized with model {model_name}")
             return True
 
         except Exception as e:

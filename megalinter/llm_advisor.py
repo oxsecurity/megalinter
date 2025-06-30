@@ -69,7 +69,7 @@ class LLMAdvisor:
                     self.provider.get_config_value("model_name")
                     or self.provider.get_default_model()
                 )
-                logging.info(
+                logging.debug(
                     f"[LLM Advisor] LLM Advisor initialized with {self.provider_name} ({self.model_name})"
                 )
             else:

@@ -42,7 +42,7 @@ class OllamaProvider(LLMProvider):
                 model=model_name, base_url=base_url, temperature=temperature
             )
 
-            logging.info(
+            logging.debug(
                 f"Ollama provider initialized with model {model_name} at {base_url}"
             )
             return True

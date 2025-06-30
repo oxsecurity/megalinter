@@ -54,7 +54,7 @@ class GoogleProvider(LLMProvider):
                 google_api_key=api_key,
             )
 
-            logging.info(f"Google provider initialized with model {model_name}")
+            logging.debug(f"Google provider initialized with model {model_name}")
             return True
 
         except Exception as e:

@@ -59,7 +59,7 @@ class DeepSeekProvider(LLMProvider):
                 base_url=base_url,
             )
 
-            logging.info(f"DeepSeek provider initialized with model {model_name}")
+            logging.debug(f"DeepSeek provider initialized with model {model_name}")
             return True
 
         except Exception as e:
