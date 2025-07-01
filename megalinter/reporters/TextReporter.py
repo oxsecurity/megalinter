@@ -111,14 +111,12 @@ class TextReporter(Reporter):
 
         ## Add LLM suggestions if available, in same file name with "suggestions" suffix
         if (
-            hasattr(self.master, 'llm_suggestion')
-            and self.master.llm_suggestion is not None
-            and self.master.llm_suggestion.get("suggestion")
+            self.master.llm_suggestion is not None
         ):
             suggestions_report_lines += [
-                f"🤖 AI-Powered Fix Suggestions for {self.master.llm_suggestion['linter']}",
+                f"🤖 AI-Powered Fix Suggestions for {self.master.llm_suggestion['linter']} (by {self.master.llm_suggestion['provider']} {self.master.llm_suggestion['model']})",
                 "",
-                f"  {self.master.llm_suggestion['suggestion']}",
+                f"  {self.master.llm_suggestion['text']}",
             ]
             suggestions_file_name = (
                 f"{self.report_folder}{os.path.sep}"

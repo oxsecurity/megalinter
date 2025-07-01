@@ -152,18 +152,15 @@ class ConsoleLinterReporter(Reporter):
                 logging.info(f"--Log detail:\n{stdout}")
         # Display LLM Avisor suggestions if available
         if (
-            hasattr(self.master, 'llm_suggestion')
-            and linter.llm_suggestion is not None
-            and linter.llm_suggestion.get("suggestion")
+            linter.llm_suggestion is not None
         ):
-            logging.info(f"LLM Suggestion object: {self.master.llm_suggestion}")
             logging.info(
                 utils.blue(
-                    f"🤖 AI-Powered Fix Suggestions ({self.master.llm_suggestion['provider']} - {self.master.llm_suggestion['model']})"
+                    f"🤖 AI-Powered Fix Suggestions for {linter.llm_suggestion['linter']} (by {linter.llm_suggestion['provider']} {linter.llm_suggestion['model']})"
                 )
             )
             logging.info(
-                f"**{self.master.llm_suggestion['linter']} - AI Analysis:**\n\n{self.master.llm_suggestion['suggestion']}\n"
+                f"{self.master.llm_suggestion['text']}\n"
             )
         # Post-commands logs
         if len(self.master.log_lines_post) > 0:

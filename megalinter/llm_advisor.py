@@ -95,8 +95,7 @@ class LLMAdvisor:
         self, linter_name: str, linter_output: str
     ) -> Dict[str, Any]:
         if not self.is_available():
-            return {"enabled": False, "suggestion": None}
-
+            return None
         return self._get_suggestion_from_raw_output(linter_name, linter_output)
 
     def _get_suggestion_from_raw_output(
@@ -110,24 +109,16 @@ class LLMAdvisor:
             # Get response from LLM provider
             suggestion_text = self.provider.invoke(prompt, system_prompt)
 
-            # Return as a single suggestion for the raw output
-            suggestion = {"linter": linter_name, "suggestion": suggestion_text.strip()}
-
             return {
-                "enabled": True,
                 "provider": self.provider_name,
                 "model": self.model_name,
-                "suggestion": suggestion,
+                "linter": linter_name,
+                "text": suggestion_text.strip(),
             }
 
         except Exception as e:
             logging.warning(f"Failed to get suggestion from raw output: {str(e)}")
-            return {
-                "enabled": True,
-                "provider": self.provider_name,
-                "model": self.model_name,
-                "suggestion": None,
-            }
+            return None
 
     def _get_system_prompt(self) -> str:
         return """You are an expert code reviewer and linter error analyst. Your job is to help developers understand and fix linting errors in their code.

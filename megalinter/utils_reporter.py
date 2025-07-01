@@ -625,15 +625,12 @@ def _build_sections_content(linters_with_issues, linters_ok, reporter_self, acti
         # Get AI suggestions for this specific linter if available
         ai_suggestion_content = ""
         if (
-            hasattr(linter, 'llm_suggestion')
-            and linter.llm_suggestion is not None
-            and linter.llm_suggestion.get("suggestion")
+            linter.llm_suggestion is not None
         ):
-            suggestion = linter.llm_suggestion["suggestion"]
             ai_suggestion_content = f"""
-🤖 AI-Powered Fix Suggestions for {suggestion['linter']}
+🤖 AI-Powered Fix Suggestions for {linter.llm_suggestion['linter']} (by {linter.llm_suggestion['provider']} {linter.llm_suggestion['model']})
 
-{suggestion['suggestion']}
+{linter.llm_suggestion['text']}
 
 """
 
