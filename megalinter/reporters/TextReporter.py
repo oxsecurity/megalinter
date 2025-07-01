@@ -113,7 +113,7 @@ class TextReporter(Reporter):
         if (
             self.master.llm_suggestion is not None
         ):
-            suggestions_report_lines += [
+            suggestions_report_lines = [
                 f"🤖 AI-Powered Fix Suggestions for {self.master.llm_suggestion['linter']} (by {self.master.llm_suggestion['provider']} {self.master.llm_suggestion['model']})",
                 "",
                 f"  {self.master.llm_suggestion['text']}",
@@ -127,5 +127,5 @@ class TextReporter(Reporter):
                 suggestions_file_content = "\n".join(suggestions_report_lines) + "\n"
                 suggestions_file.write(suggestions_file_content)
                 logging.debug(
-                    f"[Text Reporter] Generated {self.name} suggestions report: {suggestions_file_name}"
+                    f"[Text Reporter] Generated {self.name} LLM Advisor suggestions: {suggestions_file_name}"
                 )
