@@ -260,7 +260,7 @@ ENV PHP_CS_FIXER_IGNORE_ENV=true
 # renovate: datasource=packagist depName=squizlabs/php_codesniffer
 ARG PHP_SQUIZLABS_PHP_CODESNIFFER_VERSION=3.13.2
 # renovate: datasource=packagist depName=bartlett/sarif-php-converters
-ARG PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION=1.1.2
+ARG PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION=1.2.0
 RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require squizlabs/php_codesniffer:${PHP_SQUIZLABS_PHP_CODESNIFFER_VERSION} bartlett/sarif-php-converters:${PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION}
 
 ```
