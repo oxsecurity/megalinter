@@ -16339,7 +16339,7 @@
     },
     "REPORTERS_MARKDOWN_SUMMARY_TYPE": {
       "$id": "#/properties/REPORTERS_MARKDOWN_SUMMARY_TYPE",
-      "default": "sections",
+      "default": "table-sections",
       "description": "Display summary in PR/MR comments as sections, table or both",
       "enum": [
         "sections",

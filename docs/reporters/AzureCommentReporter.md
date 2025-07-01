@@ -49,5 +49,5 @@ Example:
 | AZURE_COMMENT_REPORTER_LINKS_TYPE          | Set to `build` if you want comments linking to target Build and not artifacts page | `artifacts`   |
 | AZURE_COMMENT_REPORTER_REPLACE_WITH_SPACES | Do not replaces %20 by spaces in repo name if set to false                         | `true`        |
 | REPORTERS_MARKDOWN_TYPE                    | Set to `simple` to avoid external images in generated markdown                     | `advanced`    |
-| REPORTERS_MARKDOWN_SUMMARY_TYPE            | Display summary in PR/MR comments as `sections`, `table` or both (`sections-table` or `table-sections`)                       | `sections`    |
+| REPORTERS_MARKDOWN_SUMMARY_TYPE            | Display summary in PR/MR comments as `sections`, `table` or both (`sections-table` or `table-sections`)                       | `table-sections`    |
 | JOB_SUMMARY_ADDITIONAL_MARKDOWN            | Custom markdown to add at the end of the summary message                           | <!-- -->      |

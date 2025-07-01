@@ -22,7 +22,7 @@ from redis import Redis
 
 def build_markdown_summary(reporter_self, action_run_url="", max_total_chars=40000):
     markdown_summary_type = config.get(
-        reporter_self.master.request_id, "REPORTERS_MARKDOWN_SUMMARY_TYPE", "sections"
+        reporter_self.master.request_id, "REPORTERS_MARKDOWN_SUMMARY_TYPE", "table-sections"
     )
     if markdown_summary_type == "sections":
         return build_markdown_summary_sections(
@@ -36,8 +36,13 @@ def build_markdown_summary(reporter_self, action_run_url="", max_total_chars=400
         return build_markdown_summary_table_sections(
             reporter_self, action_run_url, max_total_chars
         )
-    else:
+    else markdown_summary_type == "table"::
         return build_markdown_summary_table(reporter_self, action_run_url)
+    else:
+        raise ValueError(
+            f"Invalid REPORTERS_MARKDOWN_SUMMARY_TYPE: {markdown_summary_type}. "
+            "Valid values are 'sections', 'table-sections', 'sections-table', and 'table'."
+        )
 
 
 def build_markdown_summary_table(reporter_self, action_run_url=""):
