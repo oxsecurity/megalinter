@@ -254,7 +254,7 @@ ARG PERL_PERLCRITIC_VERSION=0.997023
 # renovate: datasource=packagist depName=squizlabs/php_codesniffer
 ARG PHP_SQUIZLABS_PHP_CODESNIFFER_VERSION=3.13.2
 # renovate: datasource=packagist depName=bartlett/sarif-php-converters
-ARG PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION=1.1.2
+ARG PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION=1.2.0
 # renovate: datasource=packagist depName=phpstan/phpstan
 ARG PHP_PHPSTAN_PHPSTAN_VERSION=2.1.17
 # renovate: datasource=packagist depName=phpstan/extension-installer
