@@ -36,7 +36,7 @@ def build_markdown_summary(reporter_self, action_run_url="", max_total_chars=400
         return build_markdown_summary_table_sections(
             reporter_self, action_run_url, max_total_chars
         )
-    else markdown_summary_type == "table"::
+    elif markdown_summary_type == "table":
         return build_markdown_summary_table(reporter_self, action_run_url)
     else:
         raise ValueError(
