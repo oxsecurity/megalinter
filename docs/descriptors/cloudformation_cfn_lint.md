@@ -46,7 +46,7 @@ CFN-Lint helps ensure your CloudFormation templates are valid, secure, and follo
 
 ## cfn-lint documentation
 
-- Version in MegaLinter: **1.36.1**
+- Version in MegaLinter: **1.37.0**
 - Visit [Official Web Site](https://github.com/aws-cloudformation/cfn-lint#readme){target=_blank}
 - See [How to configure cfn-lint rules](https://github.com/aws-cloudformation/cfn-lint#configuration){target=_blank}
   - If custom `.cfnlintrc.yml` config file isn't found, [.cfnlintrc.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.cfnlintrc.yml){target=_blank} will be used
@@ -144,6 +144,12 @@ Standard:
                         Ignore failures with Bad template
   --ignore-templates IGNORE_TEMPLATES [IGNORE_TEMPLATES ...]
                         Ignore templates
+  --deployment-files DEPLOYMENT_FILES [DEPLOYMENT_FILES ...]
+                        Deployment files
+  --parameters PARAMETERS [PARAMETERS ...]
+                        A list of parameters
+  --parameter-files PARAMETER_FILES [PARAMETER_FILES ...]
+                        A list of parameter files
   -f, --format {quiet,parseable,json,junit,pretty,sarif}
                         Output Format
   -l, --list-rules      list all the rules
@@ -197,8 +203,8 @@ Advanced / Debugging:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=cfn-lint
-ARG PIP_CFN_LINT_VERSION=1.36.1
+ARG PIP_CFN_LINT_VERSION=1.37.0
 ```
 
 - PIP packages (Python):
-  - [cfn-lint[sarif]==1.36.1](https://pypi.org/project/cfn-lint[sarif]/1.36.1)
+  - [cfn-lint[sarif]==1.37.0](https://pypi.org/project/cfn-lint[sarif]/1.37.0)
