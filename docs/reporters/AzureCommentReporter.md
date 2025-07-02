@@ -11,6 +11,8 @@ Posts Mega-Linter results summary in the comments of the related Azure Pipelines
 
 Click on **MegaLinter-reports** artifact from the main job log to view or download results.
 
+If [LLM Advisor](../llm-advisor.md) is activated, it will also show its suggestions to fix linter errors.
+
 ![Screenshot](../assets/images/AzureCommentReporter.jpg)
 
 ## Configuration

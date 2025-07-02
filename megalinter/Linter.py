@@ -912,7 +912,7 @@ class Linter:
                     text_file_name = (
                         f"{self.report_folder}{os.path.sep}"
                         f"{text_report_sub_folder}{os.path.sep}"
-                        f"{self.status.upper()}-{self.name}.log"
+                        f"{self.name}-{self.status.upper()}.log"
                     )
                     if os.path.isfile(text_file_name):
                         try:

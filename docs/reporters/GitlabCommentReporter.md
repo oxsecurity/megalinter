@@ -11,6 +11,8 @@ Posts MegaLinter results summary in the comments of the related Gitlab merge req
 
 Click on hyperlinks to access detailed logs (click on **Download** in **Artifacts section** at the left of a CI job page)
 
+If [LLM Advisor](../llm-advisor.md) is activated, it will also show its suggestions to fix linter errors.
+
 ![Screenshot](../assets/images/GitlabCommentReporter.jpg)
 
 After a first MegaLinter run, a comment is posted on the MR. To avoid multiplicating MegaLinter MR comments, future MegaLinter runs will update the existing MR comment instead of posting a new one.

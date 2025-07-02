@@ -379,7 +379,7 @@ def build_linter_reporter_external_result(reporter, redis_stream=False) -> dict:
         text_file_name = (
             f"{reporter.report_folder}{os.path.sep}"
             f"{text_report_sub_folder}{os.path.sep}"
-            f"{reporter.master.status.upper()}-{reporter.master.name}.log"
+            f"{reporter.master.name}-{reporter.master.status.upper()}.log"
         )
         if os.path.isfile(text_file_name):
             with open(text_file_name, "r", encoding="utf-8") as text_file:
@@ -590,7 +590,7 @@ def _build_sections_content(linters_with_issues, linters_ok, reporter_self, acti
         text_file_name = (
             f"{reporter_self.report_folder}{os.path.sep}"
             f"{text_report_sub_folder}{os.path.sep}"
-            f"{linter.status.upper()}-{linter.name}.log"
+            f"{linter.name}-{linter.status.upper()}.log"
         )
 
         linter_output = ""

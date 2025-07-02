@@ -11,6 +11,8 @@ Posts MegaLinter results summary in the comments of the related Bitbucket pull r
 
 Click on hyperlinks to access detailed logs (click on **Download** in **Artifacts section** at the left of a CI job page)
 
+If [LLM Advisor](../llm-advisor.md) is activated, it will also show its suggestions to fix linter errors.
+
 ![Screenshot](../assets/images/BitbucketCommentReporter.png)
 
 After a first MegaLinter run, a comment is posted on the PR. To avoid multiplicating MegaLinter PR comments, future MegaLinter runs will update the existing PR comment instead of posting a new one.

@@ -8,6 +8,7 @@ Generate text logs for each linter
 
 - General execution log `mega-linter.log` (same as [ConsoleReporter](ConsoleReporter.md) log)
 - A separate log file for each processed linter
+- If [LLM Advisor](../llm-advisor.md) is activated, it will also show its suggestions to fix linter errors in a **-suggestions.log** file.
 
 ## Usage
 

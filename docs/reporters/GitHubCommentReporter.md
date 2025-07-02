@@ -9,7 +9,9 @@ Posts MegaLinter results summary in the comments of the related pull request (if
 
 ## Usage
 
-Click on hyperlinks to access detailed logs
+Click on hyperlinks to access detailed logs.
+
+If [LLM Advisor](../llm-advisor.md) is activated, it will also show its suggestions to fix linter errors.
 
 ![Screenshot](../assets/images/GitHubCommentReporter.jpg)
 

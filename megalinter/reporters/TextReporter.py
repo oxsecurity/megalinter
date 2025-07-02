@@ -98,7 +98,7 @@ class TextReporter(Reporter):
         text_file_name = (
             f"{self.report_folder}{os.path.sep}"
             f"{text_report_sub_folder}{os.path.sep}"
-            f"{self.master.status.upper()}-{self.master.name}.log"
+            f"{self.master.name}-{self.master.status.upper()}.log"
         )
         if not os.path.isdir(os.path.dirname(text_file_name)):
             os.makedirs(os.path.dirname(text_file_name), exist_ok=True)
@@ -121,7 +121,7 @@ class TextReporter(Reporter):
             suggestions_file_name = (
                 f"{self.report_folder}{os.path.sep}"
                 f"{text_report_sub_folder}{os.path.sep}"
-                f"{self.master.status.upper()}-{self.master.name}-suggestions.log"
+                f"{self.master.name}-advisor-suggestions.log"
             )
             with open(suggestions_file_name, "w", encoding="utf-8") as suggestions_file:
                 suggestions_file_content = "\n".join(suggestions_report_lines) + "\n"
