@@ -3748,7 +3748,7 @@
 <p>CFN-Lint helps ensure your CloudFormation templates are valid, secure, and follow AWS best practices before deployment.</p>
 <h2 id="cfn-lint-documentation">cfn-lint documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>1.36.1</strong></li>
+<li>Version in MegaLinter: <strong>1.37.0</strong></li>
 <li>Visit <a href="https://github.com/aws-cloudformation/cfn-lint#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/aws-cloudformation/cfn-lint#configuration" target="_blank">How to configure cfn-lint rules</a><ul>
 <li>If custom <code>.cfnlintrc.yml</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.cfnlintrc.yml" target="_blank">.cfnlintrc.yml</a> will be used</li>
@@ -3954,6 +3954,12 @@ Standard:
                         Ignore failures with Bad template
   --ignore-templates IGNORE_TEMPLATES [IGNORE_TEMPLATES ...]
                         Ignore templates
+  --deployment-files DEPLOYMENT_FILES [DEPLOYMENT_FILES ...]
+                        Deployment files
+  --parameters PARAMETERS [PARAMETERS ...]
+                        A list of parameters
+  --parameter-files PARAMETER_FILES [PARAMETER_FILES ...]
+                        A list of parameter files
   -f, --format {quiet,parseable,json,junit,pretty,sarif}
                         Output Format
   -l, --list-rules      list all the rules
@@ -4006,11 +4012,11 @@ Advanced / Debugging:
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile"># renovate: datasource=pypi depName=cfn-lint
-ARG PIP_CFN_LINT_VERSION=1.36.1
+ARG PIP_CFN_LINT_VERSION=1.37.0
 </code></pre>
 <ul>
 <li>PIP packages (Python):<ul>
-<li><a href="https://pypi.org/project/cfn-lint[sarif]/1.36.1">cfn-lint[sarif]==1.36.1</a></li>
+<li><a href="https://pypi.org/project/cfn-lint[sarif]/1.37.0">cfn-lint[sarif]==1.37.0</a></li>
 </ul>
 </li>
 </ul>
