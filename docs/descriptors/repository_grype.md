@@ -30,7 +30,7 @@ description: How to use grype (configure, ignore files, ignore errors, help & ve
 
 ## grype documentation
 
-- Version in MegaLinter: **0.94.0**
+- Version in MegaLinter: **0.95.0**
 - Visit [Official Web Site](https://github.com/anchore/grype#readme){target=_blank}
 - See [How to configure grype rules](https://github.com/anchore/grype#configuration){target=_blank}
   - If custom `.grype.yaml` config file isn't found, [.grype.yaml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.grype.yaml){target=_blank} will be used
