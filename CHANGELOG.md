@@ -79,6 +79,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkstyle](https://checkstyle.org/) from 10.26.0 to **10.26.1** on 2025-06-29
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.81.10 to **0.82.3** on 2025-06-29
   - [golangci-lint](https://golangci-lint.run/) from 2.2.0 to **2.2.1** on 2025-06-30
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.63.0 to **0.64.0** on 2025-07-01
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.63.0 to **0.64.0** on 2025-07-01
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15
