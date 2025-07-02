@@ -80,6 +80,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.63.0 to **0.64.0** on 2025-07-01
   - [trivy](https://aquasecurity.github.io/trivy/) from 0.63.0 to **0.64.0** on 2025-07-01
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.36.1 to **1.37.0** on 2025-07-02
+  - [grype](https://github.com/anchore/grype) from 0.94.0 to **0.95.0** on 2025-07-02
+  - [syft](https://github.com/anchore/syft) from 1.27.1 to **1.28.0** on 2025-07-02
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15
