@@ -8,6 +8,7 @@ from abc import ABC, abstractmethod
 from typing import Any, Dict
 
 from langchain_core.messages import HumanMessage, SystemMessage
+import httpx
 
 
 class LLMProvider(ABC):
@@ -56,7 +57,7 @@ class LLMProvider(ABC):
                     full_prompt = f"System: {system_prompt}\n\nUser: {prompt}"
                 else:
                     full_prompt = prompt
-                response = self.llm.invoke(full_prompt)
+                response = self._invoke_with_logging_suppression(full_prompt)
                 return response
             else:
                 # Chat-based providers use message format
@@ -65,12 +66,24 @@ class LLMProvider(ABC):
                     messages.append(SystemMessage(content=system_prompt))
                 messages.append(HumanMessage(content=prompt))
 
-                response = self.llm.invoke(messages)
+                response = self._invoke_with_logging_suppression(messages)
                 return response.content
 
         except Exception as e:
             logging.error(f"Error invoking {self.provider_name}: {str(e)}")
             raise
+
+    def _invoke_with_logging_suppression(self, prompt: Any) -> Any:
+        original_level = logging.getLogger().level
+        logging.getLogger().setLevel(logging.WARNING)
+        try:
+            response = self.llm.invoke(prompt)
+            return response
+        except Exception as e:
+            logging.error(f"Error during LLM invocation: {str(e)}")
+            raise
+        finally:
+            logging.getLogger().setLevel(original_level)
 
     def get_config_value(self, key: str, default: Any = None) -> Any:
         # First check provider config, then fall back to centralized defaults, then provided default
