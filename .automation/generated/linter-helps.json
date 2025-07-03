@@ -3832,7 +3832,8 @@
         "  -l, --logger string         Logger level. Supported: debug/info/success/warning/error/fatal [$KS_LOGGER] (default \"info\")",
         "      --server string         Backend discovery server URL",
         "",
-        "Use \"kubescape [command] --help\" for more information about a command."
+        "Use \"kubescape [command] --help\" for more information about a command.",
+        "{\"level\":\"info\",\"ts\":\"2025-07-03T22:19:13Z\",\"msg\":\"Received interrupt signal, exiting...\"}"
     ],
     "kubeval": [
         "Validate a Kubernetes YAML file against the relevant schema",
@@ -4850,9 +4851,7 @@
         ""
     ],
     "php-cs-fixer": [
-        "PHP needs to be a minimum version of PHP 7.4.0 and maximum version of PHP 8.3.*.",
-        "Current PHP version: 8.4.5.",
-        "Ignoring environment requirements because `PHP_CS_FIXER_IGNORE_ENV` is set. Execution may be unstable.",
+        "Setting PHP_CS_FIXER_IGNORE_ENV environment variable is deprecated and will be removed in 4.0, use unsupportedPhpVersionAllowed config instead.",
         "Description:",
         "  List commands",
         "",
@@ -9571,7 +9570,7 @@
         "                 [--filegraph] [--d3dag] [--summary] [--detailed-summary]",
         "                 [--archive FILE] [--cleanup-metadata FILE [FILE ...]]",
         "                 [--cleanup-shadow] [--skip-script-cleanup] [--unlock]",
-        "                 [--list-changes {params,code,input}] [--list-input-changes]",
+        "                 [--list-changes {code,input,params}] [--list-input-changes]",
         "                 [--list-params-changes] [--list-untracked]",
         "                 [--delete-all-output | --delete-temp-output]",
         "                 [--keep-incomplete] [--drop-metadata] [--version]",
@@ -10093,7 +10092,7 @@
         "                        (default: False)",
         "  --unlock              Remove a lock on the working directory. (default:",
         "                        False)",
-        "  --list-changes, --lc {params,code,input}",
+        "  --list-changes, --lc {code,input,params}",
         "                        List all output files for which the given items (code,",
         "                        input, params) have changed since creation.",
         "  --list-input-changes, --li",
