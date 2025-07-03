@@ -264,7 +264,7 @@ ARG PHP_VIMEO_PSALM_VERSION=6.12.0
 # renovate: datasource=packagist depName=overtrue/phplint
 ARG PHP_OVERTRUE_PHPLINT_VERSION=9.6.2
 # renovate: datasource=packagist depName=friendsofphp/php-cs-fixer
-ARG PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION=v3.75.0
+ARG PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION=v3.76.0
 # renovate: datasource=nuget depName=PSScriptAnalyzer registryUrl=https://www.powershellgallery.com/api/v2/
 ARG PSSA_VERSION='1.24.0'
 
