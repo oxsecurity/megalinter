@@ -58,4 +58,5 @@ ENV PHP_CS_FIXER_IGNORE_ENV=true
   - [php84-openssl](https://pkgs.alpinelinux.org/packages?branch=v3.21&arch=x86_64&name=php84-openssl)
   - [php84-common](https://pkgs.alpinelinux.org/packages?branch=v3.21&arch=x86_64&name=php84-common)
   - [php84-simplexml](https://pkgs.alpinelinux.org/packages?branch=v3.21&arch=x86_64&name=php84-simplexml)
+  - [php84-iconv](https://pkgs.alpinelinux.org/packages?branch=v3.21&arch=x86_64&name=php84-iconv)
   - [dpkg](https://pkgs.alpinelinux.org/packages?branch=v3.21&arch=x86_64&name=dpkg)

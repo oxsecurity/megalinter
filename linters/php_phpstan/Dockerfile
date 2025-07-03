@@ -91,6 +91,7 @@ RUN apk -U --no-cache upgrade \
                 php84-openssl \
                 php84-common \
                 php84-simplexml \
+                php84-iconv \
                 dpkg \
     && git config --global core.autocrlf true
 #APK__END
