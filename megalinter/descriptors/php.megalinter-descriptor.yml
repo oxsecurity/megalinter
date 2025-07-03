@@ -20,6 +20,7 @@ install:
     - php84-openssl
     - php84-common
     - php84-simplexml
+    - php84-iconv
     - dpkg
   dockerfile:
     - RUN update-alternatives --install /usr/bin/php php /usr/bin/php84 110
