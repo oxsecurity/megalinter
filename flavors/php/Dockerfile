@@ -237,6 +237,7 @@ RUN apk -U --no-cache upgrade \
                 php84-openssl \
                 php84-common \
                 php84-simplexml \
+                php84-iconv \
                 dpkg \
                 py3-pyflakes \
                 openjdk17 \
