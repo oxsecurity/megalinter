@@ -83,6 +83,12 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.36.1 to **1.37.0** on 2025-07-02
   - [grype](https://github.com/anchore/grype) from 0.94.0 to **0.95.0** on 2025-07-02
   - [syft](https://github.com/anchore/syft) from 1.27.1 to **1.28.0** on 2025-07-02
+  - [stylelint](https://stylelint.io) from 16.21.0 to **16.21.1** on 2025-07-03
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.75.0 to **3.76.0** on 2025-07-03
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.12.1 to **0.12.2** on 2025-07-03
+  - [ruff](https://github.com/astral-sh/ruff) from 0.12.1 to **0.12.2** on 2025-07-03
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.64.0 to **0.64.1** on 2025-07-03
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.64.0 to **0.64.1** on 2025-07-03
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15
