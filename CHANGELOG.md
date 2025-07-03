@@ -18,6 +18,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Media
 
 - Linters enhancements
+  - PHP-CS-Fixer is able to run on PHP 8.4 without error (change default configuration) by @llaville
 
 - Fixes
 
