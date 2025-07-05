@@ -141,17 +141,17 @@ Your response must not exceed 1000 characters, so prioritize the most critical i
                 linter_output[:max_output_length] + "\n\n(Output truncated...)"
             )
         commands_part = []
-        if len(self.lint_command_log) == 1:
-            end = "" if len(self.lint_command_log[0]) < 250 else "...(truncated)"
+        if hasattr(linter, 'lint_command_log') and len(linter.lint_command_log) == 1:
+            end = "" if len(linter.lint_command_log[0]) < 250 else "...(truncated)"
             commands_part += [
                 "Command used to run the linter:",
-                f"`{self.master.lint_command_log[0][:250]}{end}`"]
-        elif len(self.master.lint_command_log) > 1:
+                f"`{linter.lint_command_log[0][:250]}{end}`"]
+        elif hasattr(linter, 'lint_command_log') and len(linter.lint_command_log) > 1:
             commands_part += ["Commands used to run the linter:"]
-            for command_log in self.lint_command_log:
+            for command_log in linter.lint_command_log:
                 end = (
                     ""
-                    if len(self.master.lint_command_log[0]) < 250
+                    if len(command_log) < 250
                     else "...(truncated)"
                 )
                 commands_part += [f"`{command_log[:250]}{end}`"]
@@ -160,7 +160,7 @@ Your response must not exceed 1000 characters, so prioritize the most critical i
             ""]
         prompt_parts += commands_part
         prompt_parts += [
-            ""
+            "",
             "Raw linter output:",
             "```",
             linter_output.strip(),

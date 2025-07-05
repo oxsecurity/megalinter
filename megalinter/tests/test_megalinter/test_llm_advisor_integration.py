@@ -73,17 +73,22 @@ class TestLLMAdvisorIntegration(unittest.TestCase):
 
         advisor = LLMAdvisor("test-request")
 
+        # Create mock linter object
+        mock_linter = Mock()
+        mock_linter.name = "PYTHON_FLAKE8"
+        mock_linter.linter_name = "flake8"
+        mock_linter.lint_command_log = ["flake8 test.py"]
+
         # Test with real linter output
         linter_output = "test.py:10:5: F401 'os' imported but unused\nfile.py:20:1: E302 expected 2 blank lines"
-        result = advisor.get_fix_suggestions("flake8", linter_output)
+        result = advisor.get_fix_suggestions(mock_linter, linter_output)
 
         # Verify result structure
-        self.assertTrue(result["enabled"])
+        self.assertIsNotNone(result)
         self.assertEqual(result["provider"], "openai")
         self.assertEqual(result["model"], "gpt-3.5-turbo")
-        self.assertIsNotNone(result["suggestion"])
-        self.assertEqual(result["suggestion"]["linter"], "flake8")
-        self.assertIn("Remove the unused import", result["suggestion"]["suggestion"])
+        self.assertEqual(result["linter"], "PYTHON_FLAKE8")
+        self.assertIn("Remove the unused import", result["text"])
 
         # Verify provider was called correctly
         mock_provider.invoke.assert_called_once()
@@ -105,10 +110,15 @@ script.js:8:1: no-undef 'console' is not defined"""
 
             advisor = LLMAdvisor()
 
-            # Should return disabled result
-            result = advisor.get_fix_suggestions("test_linter", linter_output)
-            self.assertFalse(result["enabled"])
-            self.assertIsNone(result["suggestion"])
+            # Create mock linter object
+            mock_linter = Mock()
+            mock_linter.name = "TEST_LINTER"
+            mock_linter.linter_name = "test_linter"
+            mock_linter.lint_command_log = ["test_linter input.py"]
+
+            # Should return None when disabled
+            result = advisor.get_fix_suggestions(mock_linter, linter_output)
+            self.assertIsNone(result)
 
     def test_disabled_when_advisor_disabled(self):
 
@@ -129,13 +139,18 @@ script.js:8:1: no-undef 'console' is not defined"""
 
         advisor = LLMAdvisor()
 
+        # Create mock linter object
+        mock_linter = Mock()
+        mock_linter.name = "PYTHON_FLAKE8"
+        mock_linter.linter_name = "flake8"
+        mock_linter.lint_command_log = ["flake8 test.py"]
+
         # Test with linter output
         linter_output = "test.py:10:5: F401 'os' imported but unused"
-        result = advisor.get_fix_suggestions("flake8", linter_output)
+        result = advisor.get_fix_suggestions(mock_linter, linter_output)
 
-        # Should return disabled result
-        self.assertFalse(result["enabled"])
-        self.assertIsNone(result["suggestion"])
+        # Should return None when disabled
+        self.assertIsNone(result)
 
     @patch("megalinter.config.get")
     @patch(
@@ -159,16 +174,21 @@ script.js:8:1: no-undef 'console' is not defined"""
 
         advisor = LLMAdvisor("test-request")
 
+        # Create mock linter object
+        mock_linter = Mock()
+        mock_linter.name = "PYTHON_FLAKE8"
+        mock_linter.linter_name = "flake8"
+        mock_linter.lint_command_log = ["flake8 test.py"]
+
         # Test getting suggestions
-        result = advisor.get_fix_suggestions("flake8", "test.py:1:1: F401 'os' imported but unused")
+        result = advisor.get_fix_suggestions(mock_linter, "test.py:1:1: F401 'os' imported but unused")
 
         # Verify data structure
-        self.assertTrue(result["enabled"])
+        self.assertIsNotNone(result)
         self.assertEqual(result["provider"], "openai")
         self.assertEqual(result["model"], "gpt-3.5-turbo")
-        self.assertIsNotNone(result["suggestion"])
-        self.assertEqual(result["suggestion"]["linter"], "flake8")
-        self.assertIn("Remove unused imports", result["suggestion"]["suggestion"])
+        self.assertEqual(result["linter"], "PYTHON_FLAKE8")
+        self.assertIn("Remove unused imports", result["text"])
 
     @patch("megalinter.config.get")
     def test_disabled_advisor_returns_proper_structure(self, mock_config):
@@ -179,10 +199,15 @@ script.js:8:1: no-undef 'console' is not defined"""
 
         advisor = LLMAdvisor()
 
-        result = advisor.get_fix_suggestions("flake8", "test.py:1:1: F401 'os' imported but unused")
+        # Create mock linter object
+        mock_linter = Mock()
+        mock_linter.name = "PYTHON_FLAKE8"
+        mock_linter.linter_name = "flake8"
+        mock_linter.lint_command_log = ["flake8 test.py"]
 
-        self.assertFalse(result["enabled"])
-        self.assertIsNone(result["suggestion"])
+        result = advisor.get_fix_suggestions(mock_linter, "test.py:1:1: F401 'os' imported but unused")
+
+        self.assertIsNone(result)
 
     @patch("megalinter.config.get")
     @patch(
@@ -211,19 +236,27 @@ script.js:8:1: no-undef 'console' is not defined"""
         # Test with different linter outputs
         test_cases = [
             (
+                "PYTHON_PYLINT",
                 "pylint",
                 "module.py:1:0: C0111: Missing module docstring (missing-docstring)",
             ),
-            ("flake8", "test.py:10:5: F401 'os' imported but unused"),
+            ("PYTHON_FLAKE8", "flake8", "test.py:10:5: F401 'os' imported but unused"),
             (
+                "JAVASCRIPT_ESLINT",
                 "eslint",
                 "file.js:15:1: error no-unused-vars 'variable' is defined but never used",
             ),
         ]
 
-        for linter_name, linter_output in test_cases:
+        for linter_key, linter_name, linter_output in test_cases:
             with self.subTest(linter=linter_name):
-                result = advisor.get_fix_suggestions(linter_name, linter_output)
+                # Create mock linter object
+                mock_linter = Mock()
+                mock_linter.name = linter_key
+                mock_linter.linter_name = linter_name
+                mock_linter.lint_command_log = [f"{linter_name} input.py"]
+
+                result = advisor.get_fix_suggestions(mock_linter, linter_output)
 
                 # Verify the provider was called
                 mock_provider.invoke.assert_called()
@@ -236,8 +269,11 @@ script.js:8:1: no-undef 'console' is not defined"""
                 self.assertIn("Raw linter output:", prompt)
 
                 # Verify result structure
-                self.assertTrue(result["enabled"])
-                self.assertEqual(result["suggestion"]["linter"], linter_name)
+                self.assertIsNotNone(result)
+                self.assertEqual(result["linter"], linter_key)
+                self.assertEqual(result["provider"], "openai")
+                self.assertEqual(result["model"], "gpt-3.5-turbo")
+                self.assertEqual(result["text"], "Test suggestion")
 
         # Verify the provider was called for each test case
         self.assertEqual(mock_provider.invoke.call_count, len(test_cases))

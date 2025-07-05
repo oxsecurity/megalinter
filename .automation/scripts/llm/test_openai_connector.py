@@ -79,32 +79,41 @@ def test_openai_connector():
         
         test_cases = [
             {
-                "linter": "flake8",
+                "linter_name": "PYTHON_FLAKE8",
+                "linter_tool": "flake8",
                 "output": "test.py:10:5: F401 'os' imported but unused\ntest.py:15:1: E302 expected 2 blank lines, found 1"
             },
             {
-                "linter": "pylint", 
+                "linter_name": "PYTHON_PYLINT",
+                "linter_tool": "pylint", 
                 "output": "module.py:1:0: C0111: Missing module docstring (missing-docstring)\nmodule.py:5:0: W0613: Unused argument 'args' (unused-argument)"
             },
             {
-                "linter": "eslint",
+                "linter_name": "JAVASCRIPT_ESLINT",
+                "linter_tool": "eslint",
                 "output": "script.js:8:1: error no-unused-vars 'console' is defined but never used\nscript.js:12:5: error no-undef 'undefinedVar' is not defined"
             }
         ]
         
         for i, test_case in enumerate(test_cases, 1):
-            print(f"\n📋 Test {i}: {test_case['linter']} linter")
+            print(f"\n📋 Test {i}: {test_case['linter_tool']} linter")
             print(f"   Input: {test_case['output'][:60]}...")
             
             try:
-                result = advisor.get_fix_suggestions(test_case['linter'], test_case['output'])
+                # Create mock linter object
+                from unittest.mock import Mock
+                mock_linter = Mock()
+                mock_linter.name = test_case['linter_name']
+                mock_linter.linter_name = test_case['linter_tool']
+                mock_linter.lint_command_log = [f"{test_case['linter_tool']} --check input.py"]
                 
-                if result.get("enabled") and result.get("suggestion"):
-                    suggestion = result["suggestion"]
+                result = advisor.get_fix_suggestions(mock_linter, test_case['output'])
+                
+                if result is not None:
                     print(f"✅ Got suggestion from {result['provider']} ({result['model']})")
-                    print(f"   Linter: {suggestion['linter']}")
-                    print(f"   Suggestion preview: {suggestion['suggestion'][:100]}...")
-                    print(f"   Full suggestion length: {len(suggestion['suggestion'])} characters")
+                    print(f"   Linter: {result['linter']}")
+                    print(f"   Suggestion preview: {result['text'][:100]}...")
+                    print(f"   Full suggestion length: {len(result['text'])} characters")
                     
                 else:
                     print(f"❌ No suggestion received")
