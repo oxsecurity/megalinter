@@ -260,7 +260,7 @@ ARG PHP_PHPSTAN_PHPSTAN_VERSION=2.1.17
 # renovate: datasource=packagist depName=phpstan/extension-installer
 ARG PHP_PHPSTAN_EXTENSION_INSTALLER_VERSION=1.4.3
 # renovate: datasource=packagist depName=vimeo/psalm
-ARG PHP_VIMEO_PSALM_VERSION=6.12.0
+ARG PHP_VIMEO_PSALM_VERSION=6.12.1
 # renovate: datasource=packagist depName=overtrue/phplint
 ARG PHP_OVERTRUE_PHPLINT_VERSION=9.6.2
 # renovate: datasource=packagist depName=friendsofphp/php-cs-fixer
@@ -273,7 +273,7 @@ ARG GEM_PUPPET_LINT_VERSION=4.3.0
 # renovate: datasource=pypi depName=pylint
 ARG PIP_PYLINT_VERSION=3.3.7
 # renovate: datasource=pypi depName=typing-extensions
-ARG PIP_TYPING_EXTENSIONS_VERSION=4.14.0
+ARG PIP_TYPING_EXTENSIONS_VERSION=4.14.1
 # renovate: datasource=pypi depName=black
 ARG PIP_BLACK_VERSION=25.1.0
 # renovate: datasource=pypi depName=flake8
@@ -343,11 +343,11 @@ ARG SALESFORCE_SFDX_SCANNER_VERSION=4.12.0
 # renovate: datasource=npm depName=lightning-flow-scanner
 ARG LIGHTNING_FLOW_SCANNER_VERSION=3.26.0
 # renovate: datasource=pypi depName=snakemake
-ARG PIP_SNAKEMAKE_VERSION=9.6.2
+ARG PIP_SNAKEMAKE_VERSION=9.6.3
 # renovate: datasource=pypi depName=snakefmt
 ARG PIP_SNAKEFMT_VERSION=0.11.0
 # renovate: datasource=npm depName=cspell
-ARG NPM_CSPELL_VERSION=9.1.2
+ARG NPM_CSPELL_VERSION=9.1.3
 # renovate: datasource=pypi depName=proselint
 ARG PIP_PROSELINT_VERSION=0.14.0
 # renovate: datasource=pypi depName=sqlfluff

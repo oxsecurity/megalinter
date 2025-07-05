@@ -136,7 +136,7 @@ ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.6.1
 # renovate: datasource=pypi depName=pylint
 ARG PIP_PYLINT_VERSION=3.3.7
 # renovate: datasource=pypi depName=typing-extensions
-ARG PIP_TYPING_EXTENSIONS_VERSION=4.14.0
+ARG PIP_TYPING_EXTENSIONS_VERSION=4.14.1
 # renovate: datasource=pypi depName=black
 ARG PIP_BLACK_VERSION=25.1.0
 # renovate: datasource=pypi depName=flake8
@@ -184,11 +184,11 @@ ARG PIP_RSTCHECK_CLICK_VERSION=8.2.1
 # renovate: datasource=pypi depName=rstfmt
 ARG PIP_RSTFMT_VERSION=0.0.14
 # renovate: datasource=pypi depName=snakemake
-ARG PIP_SNAKEMAKE_VERSION=9.6.2
+ARG PIP_SNAKEMAKE_VERSION=9.6.3
 # renovate: datasource=pypi depName=snakefmt
 ARG PIP_SNAKEFMT_VERSION=0.11.0
 # renovate: datasource=npm depName=cspell
-ARG NPM_CSPELL_VERSION=9.1.2
+ARG NPM_CSPELL_VERSION=9.1.3
 # renovate: datasource=pypi depName=proselint
 ARG PIP_PROSELINT_VERSION=0.14.0
 # renovate: datasource=pypi depName=sqlfluff

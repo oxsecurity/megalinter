@@ -142,7 +142,7 @@ ARG PHP_PHPSTAN_PHPSTAN_VERSION=2.1.17
 # renovate: datasource=packagist depName=phpstan/extension-installer
 ARG PHP_PHPSTAN_EXTENSION_INSTALLER_VERSION=1.4.3
 # renovate: datasource=packagist depName=vimeo/psalm
-ARG PHP_VIMEO_PSALM_VERSION=6.12.0
+ARG PHP_VIMEO_PSALM_VERSION=6.12.1
 # renovate: datasource=packagist depName=overtrue/phplint
 ARG PHP_OVERTRUE_PHPLINT_VERSION=9.6.2
 # renovate: datasource=packagist depName=friendsofphp/php-cs-fixer
@@ -168,11 +168,11 @@ ARG REPOSITORY_TRIVY_VERSION=0.64.1
 # renovate: datasource=github-tags depName=aquasecurity/trivy
 ARG REPOSITORY_TRIVY_SBOM_VERSION=0.64.1
 # renovate: datasource=pypi depName=snakemake
-ARG PIP_SNAKEMAKE_VERSION=9.6.2
+ARG PIP_SNAKEMAKE_VERSION=9.6.3
 # renovate: datasource=pypi depName=snakefmt
 ARG PIP_SNAKEFMT_VERSION=0.11.0
 # renovate: datasource=npm depName=cspell
-ARG NPM_CSPELL_VERSION=9.1.2
+ARG NPM_CSPELL_VERSION=9.1.3
 # renovate: datasource=pypi depName=proselint
 ARG PIP_PROSELINT_VERSION=0.14.0
 # renovate: datasource=pypi depName=sqlfluff
