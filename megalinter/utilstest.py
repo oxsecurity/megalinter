@@ -198,7 +198,7 @@ def test_linter_success(linter, test_self):
             rf"Linted \[{linter.descriptor_id}\] files with \[{linter_name}\] successfully",
         )
     # Check text reporter output log
-    report_file_name = f"SUCCESS-{linter.name}.log"
+    report_file_name = f"{linter.name}-SUCCESS.log"
     text_report_file = (
         f"{tmp_report_folder}{os.path.sep}linters_logs"
         f"{os.path.sep}{report_file_name}"
@@ -285,9 +285,9 @@ def test_linter_failure(linter, test_self):
 
     # Check text reporter output log
     if mega_linter_linter.disable_errors is True:
-        report_file_name = f"WARNING-{linter.name}.log"
+        report_file_name = f"{linter.name}-WARNING.log"
     else:
-        report_file_name = f"ERROR-{linter.name}.log"
+        report_file_name = f"{linter.name}-ERROR.log"
     text_report_file = (
         f"{tmp_report_folder}{os.path.sep}linters_logs"
         f"{os.path.sep}{report_file_name}"
@@ -741,7 +741,7 @@ def test_linter_format_fix(linter, test_self):
             rf"Linted \[{linter.descriptor_id}\] files with \[{linter_name}\] successfully",
         )
     # Check text reporter output log
-    report_file_name = f"SUCCESS-{linter.name}.log"
+    report_file_name = f"{linter.name}-SUCCESS.log"
     text_report_file = (
         f"{tmp_report_folder}{os.path.sep}linters_logs"
         f"{os.path.sep}{report_file_name}"

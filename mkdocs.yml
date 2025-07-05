@@ -85,6 +85,17 @@ nav:
     - "Post-commands": "config-postcommands.md"
     - "ENV variables security": "config-variables-security.md"
     - "CLI lint mode": "config-cli-lint-mode.md"
+  - LLM Advisor:
+      - "LLM Advisor": "llm-advisor.md"
+      - "LLM Providers":
+          - "All LLM providers": "llm-providers.md"
+          - "Anthropic": "llm-provider/llm_provider_anthropic.md"
+          - "DeepSeek": "llm-provider/llm_provider_deepseek.md"
+          - "Google GenAI": "llm-provider/llm_provider_google_genai.md"
+          - "MistralAI": "llm-provider/llm_provider_mistralai.md"
+          - "OpenAI": "llm-provider/llm_provider_openai.md"
+          - "Ollama": "llm-provider/llm_provider_ollama.md"
+          - "Hugging Face": "llm-provider/llm_provider_huggingface.md"
   - "Linters":
       - "All supported linters": "supported-linters.md"
       - "Languages linters":
