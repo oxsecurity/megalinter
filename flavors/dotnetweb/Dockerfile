@@ -59,7 +59,7 @@ FROM lycheeverse/lychee:${SPELL_LYCHEE_VERSION} AS lychee
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.7.15 AS uv
+FROM ghcr.io/astral-sh/uv:0.7.19 AS uv
 FROM python:3.13-alpine3.21 AS build-ml-core
 WORKDIR /
 COPY --from=uv /uv /uvx /bin/
@@ -117,7 +117,7 @@ ARG CSHARP_CSHARPIER_VERSION=1.0.3
 # renovate: datasource=nuget depName=roslynator.dotnet.cli
 ARG CSHARP_ROSLYNATOR_VERSION=0.10.1
 # renovate: datasource=npm depName=stylelint
-ARG NPM_STYLELINT_VERSION=16.21.0
+ARG NPM_STYLELINT_VERSION=16.21.1
 # renovate: datasource=npm depName=stylelint-config-standard
 ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=38.0.0
 # renovate: datasource=npm depName=stylelint-config-sass-guidelines
@@ -155,11 +155,11 @@ ARG NPM_ESLINT_PLUGIN_PRETTIER_VERSION=5.5.1
 # renovate: datasource=npm depName=eslint-plugin-promise
 ARG NPM_ESLINT_PLUGIN_PROMISE_VERSION=6.6.0
 # renovate: datasource=npm depName=eslint-plugin-vue
-ARG NPM_ESLINT_PLUGIN_VUE_VERSION=10.2.0
+ARG NPM_ESLINT_PLUGIN_VUE_VERSION=10.3.0
 # renovate: datasource=npm depName=@babel/core
-ARG NPM_BABEL_CORE_VERSION=7.27.7
+ARG NPM_BABEL_CORE_VERSION=7.28.0
 # renovate: datasource=npm depName=@babel/eslint-parser
-ARG NPM_BABEL_ESLINT_PARSER_VERSION=7.27.5
+ARG NPM_BABEL_ESLINT_PARSER_VERSION=7.28.0
 # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
 ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
 # renovate: datasource=npm depName=standard
@@ -198,7 +198,7 @@ ARG PSSA_VERSION='1.24.0'
 # renovate: datasource=pypi depName=checkov
 ARG PIP_CHECKOV_VERSION=3.2.413
 # renovate: datasource=github-tags depName=anchore/grype
-ARG REPOSITORY_GRYPE_VERSION=0.94.0
+ARG REPOSITORY_GRYPE_VERSION=0.95.0
 # renovate: datasource=npm depName=@ls-lint/ls-lint
 ARG NPM_LS_LINT_LS_LINT_VERSION=2.3.1
 # renovate: datasource=npm depName=secretlint
@@ -210,11 +210,11 @@ ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=10.1.1
 # renovate: datasource=pypi depName=semgrep
 ARG PIP_SEMGREP_VERSION=1.116.0
 # renovate: datasource=github-tags depName=anchore/syft
-ARG REPOSITORY_SYFT_VERSION=1.27.1
+ARG REPOSITORY_SYFT_VERSION=1.28.0
 # renovate: datasource=github-tags depName=aquasecurity/trivy
-ARG REPOSITORY_TRIVY_VERSION=0.64.0
+ARG REPOSITORY_TRIVY_VERSION=0.64.1
 # renovate: datasource=github-tags depName=aquasecurity/trivy
-ARG REPOSITORY_TRIVY_SBOM_VERSION=0.64.0
+ARG REPOSITORY_TRIVY_SBOM_VERSION=0.64.1
 # renovate: datasource=pypi depName=snakemake
 ARG PIP_SNAKEMAKE_VERSION=9.6.2
 # renovate: datasource=pypi depName=snakefmt

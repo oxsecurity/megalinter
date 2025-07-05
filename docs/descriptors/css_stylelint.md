@@ -28,7 +28,7 @@ description: How to use stylelint (configure, ignore files, ignore errors, help 
 
 ## stylelint documentation
 
-- Version in MegaLinter: **16.21.0**
+- Version in MegaLinter: **16.21.1**
 - Visit [Official Web Site](https://stylelint.io){target=_blank}
 - See [How to configure stylelint rules](https://stylelint.io/user-guide/configure){target=_blank}
   - If custom `.stylelintrc.json` config file isn't found, [.stylelintrc.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.stylelintrc.json){target=_blank} will be used
@@ -319,7 +319,7 @@ stylelint --fix --config .stylelintrc.json myfile.css myfile2.css myfile3.css
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=stylelint
-ARG NPM_STYLELINT_VERSION=16.21.0
+ARG NPM_STYLELINT_VERSION=16.21.1
 # renovate: datasource=npm depName=stylelint-config-standard
 ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=38.0.0
 # renovate: datasource=npm depName=stylelint-config-sass-guidelines
@@ -331,7 +331,7 @@ ARG PIP_CPPLINT_VERSION=2.0.2
 ```
 
 - NPM packages (node.js):
-  - [stylelint@16.21.0](https://www.npmjs.com/package/stylelint/v/16.21.0)
+  - [stylelint@16.21.1](https://www.npmjs.com/package/stylelint/v/16.21.1)
   - [stylelint-config-standard@38.0.0](https://www.npmjs.com/package/stylelint-config-standard/v/38.0.0)
   - [stylelint-config-sass-guidelines@12.1.0](https://www.npmjs.com/package/stylelint-config-sass-guidelines/v/12.1.0)
   - [stylelint-scss@6.12.1](https://www.npmjs.com/package/stylelint-scss/v/6.12.1)
