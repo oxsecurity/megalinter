@@ -932,14 +932,14 @@ class Linter:
                 # Get AI suggestions if we have output to analyze
                 if raw_linter_output.strip():
                     self.llm_suggestion = llm_advisor.get_fix_suggestions(
-                        self.linter_name, raw_linter_output
+                        self, raw_linter_output
                     )
                 else:
-                    logging.debug(f"No linter output available for LLM analysis for {self.name}")
+                    logging.debug(f"[LLM Advisor] No linter output available for LLM analysis for {self.name}")
             else:
-                logging.debug(f"LLM advisor not available or not analyzing {self.name}")
+                logging.debug(f"[LLM Advisor] LLM advisor not available or not analyzing {self.name}")
         except Exception as e:
-            logging.warning(f"Error initializing LLM advisor for {self.name}: {str(e)}")
+            logging.warning(f"[LLM Advisor] Error initializing LLM advisor for {self.name}: {str(e)}")
             self.llm_suggestion = None
 
 

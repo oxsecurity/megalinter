@@ -92,18 +92,18 @@ class LLMAdvisor:
         return LLMProviderFactory.get_supported_providers()
 
     def get_fix_suggestions(
-        self, linter_name: str, linter_output: str
+        self, linter: Any, linter_output: str
     ) -> Dict[str, Any]:
         if not self.is_available():
             return None
-        return self._get_suggestion_from_raw_output(linter_name, linter_output)
+        return self._get_suggestion_from_raw_output(linter, linter_output)
 
     def _get_suggestion_from_raw_output(
-        self, linter_name: str, linter_output: str
+        self, linter: Any, linter_output: str
     ) -> Dict[str, Any]:
         try:
             # Build a prompt for analyzing the raw output
-            prompt = self._build_raw_output_prompt(linter_name, linter_output)
+            prompt = self._build_raw_output_prompt(linter, linter_output)
             system_prompt = self._get_system_prompt()
 
             # Get response from LLM provider
@@ -112,7 +112,7 @@ class LLMAdvisor:
             return {
                 "provider": self.provider_name,
                 "model": self.model_name,
-                "linter": linter_name,
+                "linter": linter.name,
                 "text": suggestion_text.strip(),
             }
 
@@ -133,17 +133,34 @@ Keep your responses concise but comprehensive. Focus on practical solutions that
 
 Your response must not exceed 1000 characters, so prioritize the most critical issues and solutions. If there are multiple errors, focus on the most common or critical ones first."""
 
-    def _build_raw_output_prompt(self, linter_name: str, linter_output: str) -> str:
+    def _build_raw_output_prompt(self, linter: Any, linter_output: str) -> str:
         # Truncate long output to avoid token limits
         max_output_length = 10000
         if len(linter_output) > max_output_length:
             linter_output = (
                 linter_output[:max_output_length] + "\n\n(Output truncated...)"
             )
-
+        commands_part = []
+        if len(self.lint_command_log) == 1:
+            end = "" if len(self.lint_command_log[0]) < 250 else "...(truncated)"
+            commands_part += [
+                "Command used to run the linter:",
+                f"`{self.master.lint_command_log[0][:250]}{end}`"]
+        elif len(self.master.lint_command_log) > 1:
+            commands_part += ["Commands used to run the linter:"]
+            for command_log in self.lint_command_log:
+                end = (
+                    ""
+                    if len(self.master.lint_command_log[0]) < 250
+                    else "...(truncated)"
+                )
+                commands_part += [f"`{command_log[:250]}{end}`"]
         prompt_parts = [
-            f"Linter: {linter_name}",
-            "",
+            f"Linter: {linter.linter_name}",
+            ""]
+        prompt_parts += commands_part
+        prompt_parts += [
+            ""
             "Raw linter output:",
             "```",
             linter_output.strip(),
