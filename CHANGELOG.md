@@ -89,6 +89,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [ruff](https://github.com/astral-sh/ruff) from 0.12.1 to **0.12.2** on 2025-07-03
   - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.64.0 to **0.64.1** on 2025-07-03
   - [trivy](https://aquasecurity.github.io/trivy/) from 0.64.0 to **0.64.1** on 2025-07-03
+  - [snakemake](https://snakemake.github.io/) from 9.6.2 to **9.6.3** on 2025-07-05
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15
