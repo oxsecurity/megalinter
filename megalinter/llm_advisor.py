@@ -37,9 +37,22 @@ class LLMAdvisor:
             return
 
         self.provider_name = config.get(
-            self.request_id, "LLM_PROVIDER", "openai"
+            self.request_id, "LLM_PROVIDER", "none"
         ).lower()
+
+        if self.provider_name == "none":
+            self.enabled = False
+            return
         
+        # Check that at least one of the LLM providers API Key is defined
+        # use get_supported_providers_api_key_var_names
+        supported_providers_api_keys = LLMProviderFactory.get_supported_providers_api_key_var_names()
+        if not any(
+            config.get(self.request_id, key, None) for key in supported_providers_api_keys
+        ):
+            self.enabled = False
+            return
+
         # Load LLM advisor level (ERROR or WARNING)
         self.advisor_level = config.get(
             self.request_id, "LLM_ADVISOR_LEVEL", "ERROR"

@@ -70,3 +70,16 @@ class LLMProviderFactory:
             "deepseek": "DeepSeek models",
             "grok": "Grok (xAI) models",
         }
+
+    @classmethod
+    def get_supported_providers_api_key_var_names(cls) -> list[str]:
+        return [
+            "OPENAI_API_KEY",
+            "ANTHROPIC_API_KEY",
+            "GOOGLE_API_KEY",
+            "OLLAMA_API_KEY",
+            "HUGGINGFACE_API_KEY",
+            "MISTRAL_API_KEY",
+            "DEEPSEEK_API_KEY",
+            "GROK_API_KEY",
+        ]
