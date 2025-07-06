@@ -2,6 +2,8 @@
 
 MegaLinter includes an AI-powered advisor that provides intelligent fix suggestions for linter errors using various Large Language Models (LLMs) through LangChain.
 
+![Advisor](assets/images/megalinter-llm-advisor.gif)
+
 ## Features
 
 - **Multi-Provider Support**: Works with OpenAI, Anthropic, Google Gemini, Hugging Face, Mistral AI, DeepSeek, Grok, and local Ollama models
