@@ -157,7 +157,8 @@ class ConsoleLinterReporter(Reporter):
             logging.info("")
             logging.info(
                 utils.blue(
-                    f"\n🤖 AI-Powered Fix Suggestions for {self.master.llm_suggestion['linter']} (by {self.master.llm_suggestion['provider']} {self.master.llm_suggestion['model']})"
+                    f"\n🤖 AI-Powered Fix Suggestions for {self.master.llm_suggestion['linter']} "
+                    f"(by {self.master.llm_suggestion['provider']} {self.master.llm_suggestion['model']})"
                 )
             )
             logging.info(
