@@ -4,6 +4,7 @@ on:
     branches:
       - main
       - features/doc-versioning
+      - doc
     paths:
       - "**/build.py"
       - "docs/**"
