@@ -90,7 +90,7 @@ ARG PIP_CFN_LINT_VERSION=1.37.0
 # renovate: datasource=github-tags depName=kubescape/kubescape
 ARG KUBERNETES_KUBESCAPE_VERSION=3.0.34
 # renovate: datasource=pypi depName=bandit
-ARG PIP_BANDIT_VERSION=1.8.5
+ARG PIP_BANDIT_VERSION=1.8.6
 # renovate: datasource=pypi depName=bandit_sarif_formatter
 ARG PIP_BANDIT_SARIF_FORMATTER_VERSION=1.1.1
 # renovate: datasource=pypi depName=checkov
@@ -100,11 +100,11 @@ ARG REPOSITORY_DEVSKIM_VERSION=1.0.59
 # renovate: datasource=github-tags depName=anchore/grype
 ARG REPOSITORY_GRYPE_VERSION=0.95.0
 # renovate: datasource=npm depName=secretlint
-ARG NPM_SECRETLINT_VERSION=10.1.1
+ARG NPM_SECRETLINT_VERSION=10.2.0
 # renovate: datasource=npm depName=@secretlint/secretlint-rule-preset-recommend
-ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=10.1.1
+ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=10.2.0
 # renovate: datasource=npm depName=@secretlint/secretlint-formatter-sarif
-ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=10.1.1
+ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=10.2.0
 # renovate: datasource=pypi depName=semgrep
 ARG PIP_SEMGREP_VERSION=1.116.0
 # renovate: datasource=github-tags depName=anchore/syft

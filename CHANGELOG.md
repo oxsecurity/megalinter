@@ -97,6 +97,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.64.0 to **0.64.1** on 2025-07-03
   - [trivy](https://aquasecurity.github.io/trivy/) from 0.64.0 to **0.64.1** on 2025-07-03
   - [snakemake](https://snakemake.github.io/) from 9.6.2 to **9.6.3** on 2025-07-05
+  - [psalm](https://psalm.dev) from Psalm.6.12.0@ to **Psalm.6.12.1@** on 2025-07-06
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 9.1.2 to **9.1.3** on 2025-07-06
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15
