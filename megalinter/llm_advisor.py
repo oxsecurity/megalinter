@@ -37,7 +37,9 @@ class LLMAdvisor:
         if not self.enabled:
             return
 
-        self.provider_name = config.get(self.request_id, "LLM_PROVIDER", "openai").lower()
+        self.provider_name = config.get(
+            self.request_id, "LLM_PROVIDER", "openai"
+        ).lower()
 
         # Check that at least one of the LLM providers API Key is defined
         # use get_supported_providers_api_key_var_names
