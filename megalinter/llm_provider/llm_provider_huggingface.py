@@ -78,7 +78,8 @@ class HuggingFaceProvider(LLMProvider):
 
         except ImportError:
             logging.error(
-                "transformers library is required for Hugging Face integration. Install with: pip install megalinter[huggingface]"
+                "transformers library is required for Hugging Face integration. Install with: "
+                "pip install langchain-huggingface transformers torch"
             )
             return False
         except Exception as e:

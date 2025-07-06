@@ -8,7 +8,6 @@ from abc import ABC, abstractmethod
 from typing import Any, Dict, Optional
 
 from langchain_core.messages import HumanMessage, SystemMessage
-import httpx
 
 
 class LLMProvider(ABC):
