@@ -66,7 +66,7 @@ steps:
 
 trigger:
   event:
-  - push
+- push
 ```
 
 The workflow above should only trigger on push, not on any other situation. For more information about how to configure Drone CI trigger rules, [click here](https://docs.drone.io/pipeline/triggers/).

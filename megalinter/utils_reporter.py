@@ -22,7 +22,9 @@ from redis import Redis
 
 def build_markdown_summary(reporter_self, action_run_url="", max_total_chars=40000):
     markdown_summary_type = config.get(
-        reporter_self.master.request_id, "REPORTERS_MARKDOWN_SUMMARY_TYPE", "table-sections"
+        reporter_self.master.request_id,
+        "REPORTERS_MARKDOWN_SUMMARY_TYPE",
+        "table-sections",
     )
     if markdown_summary_type == "sections":
         return build_markdown_summary_sections(
@@ -48,9 +50,11 @@ def build_markdown_summary(reporter_self, action_run_url="", max_total_chars=400
 def build_markdown_summary_table(reporter_self, action_run_url=""):
     # Build complete message using helper functions
     p_r_msg = build_markdown_summary_header(reporter_self, action_run_url)
-    
+
     # Build table content using helper function
-    table_content = _build_table_content(reporter_self.master.linters, reporter_self, action_run_url)
+    table_content = _build_table_content(
+        reporter_self.master.linters, reporter_self, action_run_url
+    )
     p_r_msg += table_content + os.linesep
     p_r_msg += build_markdown_summary_footer(reporter_self, action_run_url)
 
@@ -65,7 +69,9 @@ def build_markdown_summary_sections(
     p_r_msg = build_markdown_summary_header(reporter_self, action_run_url)
 
     # Separate linters into two groups: those with issues and those that are OK
-    linters_with_issues, linters_ok = _separate_linters_by_issues(reporter_self.master.linters)
+    linters_with_issues, linters_ok = _separate_linters_by_issues(
+        reporter_self.master.linters
+    )
 
     # Sort linters with issues by severity
     linters_with_issues.sort(key=_sort_linters_by_icon_severity)
@@ -491,9 +497,7 @@ def _sort_linters_by_icon_severity(linter):
     linter_status_icon = (
         "✅"
         if linter.status == "success" and linter.return_code == 0
-        else (
-            "⚠️" if linter.status != "success" and linter.return_code == 0 else "❌"
-        )
+        else ("⚠️" if linter.status != "success" and linter.return_code == 0 else "❌")
     )
 
     # Return tuple for sorting: (icon_priority, linter_name)
@@ -545,9 +549,11 @@ def _build_table_content(linters, reporter_self, action_run_url):
     return str(writer)
 
 
-def _build_sections_content(linters_with_issues, linters_ok, reporter_self, action_run_url, max_total_chars):
+def _build_sections_content(
+    linters_with_issues, linters_ok, reporter_self, action_run_url, max_total_chars
+):
     content = ""
-    
+
     # Calculate available space per linter based on total linters with issues
     total_linters_with_issues = len(linters_with_issues)
     max_chars_per_linter = max_total_chars // max(total_linters_with_issues, 1)
@@ -629,9 +635,7 @@ def _build_sections_content(linters_with_issues, linters_ok, reporter_self, acti
 
         # Get AI suggestions for this specific linter if available
         ai_suggestion_content = ""
-        if (
-            linter.llm_suggestion is not None
-        ):
+        if linter.llm_suggestion is not None:
             ai_suggestion_content = f"""
 🤖 AI-Powered Fix Suggestions for {linter.llm_suggestion['linter']} (by {linter.llm_suggestion['provider']} {linter.llm_suggestion['model']})
 
@@ -693,7 +697,9 @@ def build_markdown_summary_sections_table(
     p_r_msg = build_markdown_summary_header(reporter_self, action_run_url)
 
     # Separate linters into two groups: those with issues and those that are OK
-    linters_with_issues, linters_ok = _separate_linters_by_issues(reporter_self.master.linters)
+    linters_with_issues, linters_ok = _separate_linters_by_issues(
+        reporter_self.master.linters
+    )
 
     # Sort linters with issues by severity
     linters_with_issues.sort(key=_sort_linters_by_icon_severity)
@@ -708,7 +714,9 @@ def build_markdown_summary_sections_table(
 
     # Build table for all linters
     p_r_msg += "## All Linters Summary\n\n"
-    table_content = _build_table_content(reporter_self.master.linters, reporter_self, action_run_url)
+    table_content = _build_table_content(
+        reporter_self.master.linters, reporter_self, action_run_url
+    )
     p_r_msg += table_content + os.linesep
 
     # Add footer content
@@ -726,11 +734,15 @@ def build_markdown_summary_table_sections(
 
     # Build table for all linters first
     p_r_msg += "## All Linters Summary\n\n"
-    table_content = _build_table_content(reporter_self.master.linters, reporter_self, action_run_url)
+    table_content = _build_table_content(
+        reporter_self.master.linters, reporter_self, action_run_url
+    )
     p_r_msg += table_content + os.linesep
 
     # Separate linters into two groups: those with issues and those that are OK
-    linters_with_issues, linters_ok = _separate_linters_by_issues(reporter_self.master.linters)
+    linters_with_issues, linters_ok = _separate_linters_by_issues(
+        reporter_self.master.linters
+    )
 
     # Sort linters with issues by severity
     linters_with_issues.sort(key=_sort_linters_by_icon_severity)

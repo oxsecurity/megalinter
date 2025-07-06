@@ -4,7 +4,7 @@ Anthropic Claude LLM Provider for MegaLinter
 """
 
 import logging
-from typing import Any, Dict
+from typing import Any, Dict, Optional
 
 from langchain_anthropic import ChatAnthropic
 from megalinter import config
@@ -17,7 +17,7 @@ class AnthropicProvider(LLMProvider):
     def get_default_model(self) -> str:
         return "claude-3-7-sonnet-latest"
 
-    def load_config(self, request_id: str = None) -> Dict[str, Any]:
+    def load_config(self, request_id: Optional[str] = None) -> Dict[str, Any]:
         return {
             "api_key": config.get(request_id, "ANTHROPIC_API_KEY", ""),
             "model_name": config.get(request_id, "LLM_MODEL_NAME", ""),
@@ -41,7 +41,7 @@ class AnthropicProvider(LLMProvider):
         try:
             api_key = self.get_config_value("api_key")
             if not api_key:
-                raise ValueError("Anthropic API key is required")
+                raise ValueError("ANTHROPIC_API_KEY is required")
 
             model_name = self.get_config_value("model_name") or self.get_default_model()
             temperature = self.get_config_value("temperature")

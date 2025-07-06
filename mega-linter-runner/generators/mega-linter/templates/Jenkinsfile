@@ -3,28 +3,28 @@
 
 pipeline {
     agent any
-    
+
     environment {
         // All available variables are described in documentation
         // https://megalinter.io/latest/config-file/
         DEFAULT_WORKSPACE = "${WORKSPACE}"
-        
+
         // Disable LLM Advisor for bot PRs (dependabot, renovate, etc.)
         // Note: Jenkins has limited access to PR metadata, this is a basic check
         LLM_ADVISOR_ENABLED = script {
             def branchName = env.BRANCH_NAME ?: env.GIT_BRANCH ?: ''
             def changeAuthor = env.CHANGE_AUTHOR ?: ''
             def changeTitle = env.CHANGE_TITLE ?: ''
-            
+
             if (branchName =~ /^(dependabot|renovate)\/.*/ ||
                 changeAuthor =~ /^(dependabot|renovate)(\[bot\])?$/ ||
                 changeTitle =~ /^(chore|fix|deps?|bump)(\(.*\))?: /) {
                 return 'false'
-            }
+                }
             return 'true'
         }
     }
-    
+
     stages {
         stage('MegaLinter') {
             agent {
