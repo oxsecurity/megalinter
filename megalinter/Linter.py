@@ -1,4 +1,5 @@
-#!/usr/bin/env python3
+#!/usr/bin/env 
+# flake8: noqa: E203
 """
 Template class for custom linters: any linter class in /linters folder must inherit from this class
 The following list of items can/must be overridden on custom linter local class:

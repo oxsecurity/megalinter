@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# flake8: noqa: E501
 """
 LLM Advisor for MegaLinter
 Provides AI-powered hints for fixing linter errors using various LLM providers through LangChain
