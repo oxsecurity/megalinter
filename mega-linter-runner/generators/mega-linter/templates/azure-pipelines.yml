@@ -11,7 +11,7 @@ variables:
   # All available variables are described in documentation
   # https://megalinter.io/latest/config-file/
   DEFAULT_WORKSPACE: $(System.DefaultWorkingDirectory)
-  
+
   # Disable LLM Advisor for bot PRs (dependabot, renovate, etc.)
   # Note: Azure Pipelines has limited access to PR author info, this is a basic check
   LLM_ADVISOR_ENABLED: >-

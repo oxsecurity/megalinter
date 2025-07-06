@@ -110,9 +110,7 @@ class TextReporter(Reporter):
             )
 
         # Add LLM suggestions if available, in same file name with "suggestions" suffix
-        if (
-            self.master.llm_suggestion is not None
-        ):
+        if self.master.llm_suggestion is not None:
             suggestions_report_lines = [
                 f"🤖 AI-Powered Fix Suggestions for "
                 f"{self.master.llm_suggestion['linter']} (by {self.master.llm_suggestion['provider']} "

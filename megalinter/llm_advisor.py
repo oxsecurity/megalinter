@@ -5,8 +5,8 @@ LLM Advisor for MegaLinter
 Provides AI-powered hints for fixing linter errors using various LLM providers through LangChain
 """
 
-from typing import Any, Dict, Optional
 import logging
+from typing import Any, Dict, Optional
 
 from megalinter import config
 from megalinter.llm_provider.llm_provider_factory import LLMProviderFactory
@@ -37,19 +37,20 @@ class LLMAdvisor:
         if not self.enabled:
             return
 
-        self.provider_name = config.get(
-            self.request_id, "LLM_PROVIDER", "none"
-        ).lower()
+        self.provider_name = config.get(self.request_id, "LLM_PROVIDER", "none").lower()
 
         if self.provider_name == "none":
             self.enabled = False
             return
-        
+
         # Check that at least one of the LLM providers API Key is defined
         # use get_supported_providers_api_key_var_names
-        supported_providers_api_keys = LLMProviderFactory.get_supported_providers_api_key_var_names()
+        supported_providers_api_keys = (
+            LLMProviderFactory.get_supported_providers_api_key_var_names()
+        )
         if not any(
-            config.get(self.request_id, key, None) for key in supported_providers_api_keys
+            config.get(self.request_id, key, None)
+            for key in supported_providers_api_keys
         ):
             self.enabled = False
             return
@@ -58,12 +59,14 @@ class LLMAdvisor:
         self.advisor_level = config.get(
             self.request_id, "LLM_ADVISOR_LEVEL", "ERROR"
         ).upper()
-        
+
         # Validate advisor level
         if self.advisor_level not in ["ERROR", "WARNING"]:
-            logging.warning(f"Invalid LLM_ADVISOR_LEVEL '{self.advisor_level}'. Using 'ERROR' as default.")
+            logging.warning(
+                f"Invalid LLM_ADVISOR_LEVEL '{self.advisor_level}'. Using 'ERROR' as default."
+            )
             self.advisor_level = "ERROR"
-        
+
         # Load linter-specific enable/disable lists
         self.enable_linters = config.get_list(
             self.request_id, "LLM_ADVISOR_ENABLE_LINTERS", []
@@ -108,9 +111,7 @@ class LLMAdvisor:
     def get_supported_providers(self) -> Dict[str, str]:
         return LLMProviderFactory.get_supported_providers()
 
-    def get_fix_suggestions(
-        self, linter: Any, linter_output: str
-    ) -> dict[str, Any]:
+    def get_fix_suggestions(self, linter: Any, linter_output: str) -> dict[str, Any]:
         if not self.is_available():
             return {}  # type: ignore[return-value]
         return self._get_suggestion_from_raw_output(linter, linter_output)
@@ -160,23 +161,18 @@ Your response must not exceed 1000 characters, so prioritize the most critical i
                 linter_output[:max_output_length] + "\n\n(Output truncated...)"
             )
         commands_part = []
-        if hasattr(linter, 'lint_command_log') and len(linter.lint_command_log) == 1:
+        if hasattr(linter, "lint_command_log") and len(linter.lint_command_log) == 1:
             end = "" if len(linter.lint_command_log[0]) < 250 else "...(truncated)"
             commands_part += [
                 "Command used to run the linter:",
-                f"`{linter.lint_command_log[0][:250]}{end}`"]
-        elif hasattr(linter, 'lint_command_log') and len(linter.lint_command_log) > 1:
+                f"`{linter.lint_command_log[0][:250]}{end}`",
+            ]
+        elif hasattr(linter, "lint_command_log") and len(linter.lint_command_log) > 1:
             commands_part += ["Commands used to run the linter:"]
             for command_log in linter.lint_command_log:
-                end = (
-                    ""
-                    if len(command_log) < 250
-                    else "...(truncated)"
-                )
+                end = "" if len(command_log) < 250 else "...(truncated)"
                 commands_part += [f"`{command_log[:250]}{end}`"]
-        prompt_parts = [
-            f"Linter: {linter.linter_name}",
-            ""]
+        prompt_parts = [f"Linter: {linter.linter_name}", ""]
         prompt_parts += commands_part
         prompt_parts += [
             "",
@@ -194,11 +190,10 @@ Your response must not exceed 1000 characters, so prioritize the most critical i
 
         return "\n".join(prompt_parts)
 
-
     def should_analyze_linter(self, linter) -> bool:
         if not self.is_available():
             return False
-        
+
         # Check linter-specific enable/disable lists first
         # If both are set, enable list wins
         if len(self.enable_linters) > 0:
@@ -207,25 +202,25 @@ Your response must not exceed 1000 characters, so prioritize the most critical i
         elif len(self.disable_linters) > 0:
             if linter.name in self.disable_linters:
                 return False
-        
+
         # Check if linter has any issues to analyze
         has_errors_or_warnings = (
             linter.number_errors > 0 or linter.total_number_warnings > 0
         )
-        
+
         if not has_errors_or_warnings:
             return False
-        
+
         # Determine if this is an error linter (blocking) or warning linter (non-blocking)
         is_error_linter = linter.return_code != 0
         is_warning_linter = linter.return_code == 0 and has_errors_or_warnings
-        
+
         # Always analyze error linters (blocking linters)
         if is_error_linter:
             return True
-        
+
         # Only analyze warning linters (non-blocking) if level is set to WARNING
         if self.advisor_level == "WARNING" and is_warning_linter:
             return True
-        
+
         return False

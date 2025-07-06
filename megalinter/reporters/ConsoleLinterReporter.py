@@ -151,9 +151,7 @@ class ConsoleLinterReporter(Reporter):
             elif self.report_type == "detailed":
                 logging.info(f"--Log detail:\n{stdout}")
         # Display LLM Advisor suggestions if available
-        if (
-            self.master.llm_suggestion is not None
-        ):
+        if self.master.llm_suggestion is not None:
             logging.info("")
             logging.info(
                 utils.blue(
@@ -161,9 +159,7 @@ class ConsoleLinterReporter(Reporter):
                     f"(by {self.master.llm_suggestion['provider']} {self.master.llm_suggestion['model']})"
                 )
             )
-            logging.info(
-                f"{self.master.llm_suggestion['text']}\n"
-            )
+            logging.info(f"{self.master.llm_suggestion['text']}\n")
         # Post-commands logs
         if len(self.master.log_lines_post) > 0:
             logging.info("\n".join(self.master.log_lines_post))
