@@ -2,23 +2,21 @@
 
 Google's Gemini models offer excellent performance at competitive prices with strong multilingual support.
 
-## Supported Models
-
-| Model               | Context Length | Cost | Best For                  |
-|---------------------|----------------|------|---------------------------|
-| `gemini-pro`        | 30K tokens     | $    | General code analysis     |
-| `gemini-pro-vision` | 30K tokens     | $    | Code with visual elements |
-
 ## Setup
 
 1. **Get API Key**:
+
    - Go to [Google AI Studio](https://makersuite.google.com/app/apikey)
    - Create a new API key
+
 2. **Set Environment Variable**:
+
    ```bash
    export GOOGLE_API_KEY=AIza-your-api-key
    ```
+
 3. **Configure MegaLinter**:
+
    ```yaml
    LLM_ADVISOR_ENABLED: true
    LLM_PROVIDER: google
@@ -42,25 +40,6 @@ LLM_MODEL_NAME: gemini-pro          # or gemini-pro-vision
 # Custom settings (rarely needed)
 GOOGLE_APPLICATION_CREDENTIALS: /path/to/service-account.json
 ```
-
-## Model Recommendations
-
-- **Standard Use**: `gemini-pro` - Excellent for most code analysis tasks
-- **Visual Content**: `gemini-pro-vision` - When dealing with diagrams, screenshots in docs
-
-## Advantages
-
-- **Cost-Effective**: Very competitive pricing
-- **Fast Responses**: Quick analysis and suggestions
-- **Multilingual**: Excellent support for non-English codebases
-- **Google Integration**: Works well with Google Cloud ecosystem
-
-## Cost Considerations
-
-Google offers very competitive pricing:
-- Free tier available with rate limits
-- Pay-per-use pricing for production
-- Monitor usage in [Google Cloud Console](https://console.cloud.google.com/)
 
 ## Troubleshooting
 
@@ -86,11 +65,3 @@ Google offers very competitive pricing:
 ```yaml
 LOG_LEVEL: DEBUG
 ```
-
-## Best Practices
-
-- Start with the free tier for testing
-- Use `gemini-pro` for most code analysis tasks
-- Monitor usage to stay within quotas
-- Consider regional data residency requirements
-- Use appropriate temperature settings (0.1-0.3) for technical tasks

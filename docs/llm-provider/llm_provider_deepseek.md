@@ -2,21 +2,18 @@
 
 DeepSeek offers specialized code-focused models at competitive prices, optimized for programming tasks.
 
-## Supported Models
-
-| Model            | Context Length | Cost | Best For            |
-|------------------|----------------|------|---------------------|
-| `deepseek-chat`  | 32K tokens     | $    | General purpose     |
-| `deepseek-coder` | 16K tokens     | $    | Code-specific tasks |
-
 ## Setup
 
 1. **Get API Key**: Sign up at [DeepSeek Platform](https://platform.deepseek.com/)
+
 2. **Set Environment Variable**:
+
    ```bash
    export DEEPSEEK_API_KEY=your-deepseek-api-key
    ```
+
 3. **Configure MegaLinter**:
+
    ```yaml
    LLM_ADVISOR_ENABLED: true
    LLM_PROVIDER: deepseek
@@ -41,25 +38,6 @@ LLM_MODEL_NAME: deepseek-chat       # or deepseek-coder
 DEEPSEEK_BASE_URL: https://api.deepseek.com/v1
 ```
 
-## Model Recommendations
-
-- **General Use**: `deepseek-chat` - Good for all types of code analysis
-- **Code-Specific**: `deepseek-coder` - Optimized for programming tasks
-
-## Advantages
-
-- **Code-Focused**: Models trained specifically for programming
-- **Cost-Effective**: Competitive pricing for quality
-- **Good Performance**: Strong code understanding capabilities
-- **Fast Responses**: Quick analysis and suggestions
-
-## Cost Considerations
-
-DeepSeek offers competitive pricing:
-- Pay-per-token model
-- Generally more affordable than major providers
-- Monitor usage on your dashboard
-
 ## Troubleshooting
 
 ### Common Issues
@@ -79,9 +57,3 @@ DeepSeek offers competitive pricing:
    - Check if model is available in your region
    - Some models may require special access
 
-## Best Practices
-
-- Use `deepseek-chat` for general code analysis
-- Use `deepseek-coder` for specialized programming tasks
-- Monitor token usage to control costs
-- Set appropriate temperature (0.1-0.3) for consistent technical advice

@@ -36,32 +36,6 @@ LLM_TEMPERATURE: 0.1               # Creativity (0.0-1.0)
 - **Rate Limiting**: Monitor API usage to avoid unexpected costs
 - **Review Suggestions**: Always review AI suggestions before applying changes
 
-## Provider Selection Guide
-
-### For Production Use
-
-- **OpenAI**: Best overall quality and reliability
-- **Anthropic**: Excellent for code analysis with safety focus
-- **Google GenAI**: Good balance of cost and performance
-
-### For Privacy-Sensitive Projects
-
-- **Ollama**: Complete local processing
-- **Hugging Face (local)**: Open models with local inference
-
-### For Cost-Conscious Teams
-
-- **Google GenAI**: Competitive pricing
-- **DeepSeek**: Affordable code-focused models
-- **Ollama**: Free local processing
-
-### For Specific Use Cases
-
-- **DeepSeek**: Code generation and analysis
-- **Mistral AI**: European data residency requirements
-- **Grok**: Conversational analysis with recent training data
-- **Hugging Face**: Custom model fine-tuning
-
 ## Next Steps
 
 1. **Choose a provider** based on your requirements
