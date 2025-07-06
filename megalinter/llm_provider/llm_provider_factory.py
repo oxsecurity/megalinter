@@ -42,7 +42,8 @@ class LLMProviderFactory:
 
         try:
             provider_class = cls.SUPPORTED_PROVIDERS[provider_name]
-            provider = provider_class()
+            provider: LLMProvider  # type: ignore[assignment]
+            provider = provider_class()  # type: ignore[abstract]
 
             # Load configuration using the provider's own method
             config = provider.load_config(request_id)

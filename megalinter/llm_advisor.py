@@ -109,20 +109,22 @@ class LLMAdvisor:
 
     def get_fix_suggestions(
         self, linter: Any, linter_output: str
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         if not self.is_available():
-            return None
+            return {}  # type: ignore[return-value]
         return self._get_suggestion_from_raw_output(linter, linter_output)
 
     def _get_suggestion_from_raw_output(
         self, linter: Any, linter_output: str
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         try:
             # Build a prompt for analyzing the raw output
             prompt = self._build_raw_output_prompt(linter, linter_output)
             system_prompt = self._get_system_prompt()
 
             # Get response from LLM provider
+            if self.provider is None:
+                return {}  # type: ignore[return-value]
             suggestion_text = self.provider.invoke(prompt, system_prompt)
 
             return {
@@ -134,7 +136,7 @@ class LLMAdvisor:
 
         except Exception as e:
             logging.warning(f"Failed to get suggestion from raw output: {str(e)}")
-            return None
+            return {}  # type: ignore[return-value]
 
     def _get_system_prompt(self) -> str:
         return """You are an expert code reviewer and linter error analyst. Your job is to help developers understand and fix linting errors in their code.
