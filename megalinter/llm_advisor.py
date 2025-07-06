@@ -141,7 +141,7 @@ class LLMAdvisor:
             return {}  # type: ignore[return-value]
 
     def _get_system_prompt(self) -> str:
-        return """You are an expert code reviewer and linter error analyst. Your job is to help developers understand and fix linting errors in their code.
+        return """You are an expert code reviewer and linter error analyst. Your job is to help developers understand and fix linting errors in their code. Linters have been run by MegaLinter.
 
 For each error, provide:
 1. A clear explanation of what the error means
