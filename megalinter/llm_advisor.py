@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
+# flake8: noqa: E501
 """
 LLM Advisor for MegaLinter
 Provides AI-powered hints for fixing linter errors using various LLM providers through LangChain
 """
 
+from typing import Any, Dict, Optional
 import logging
-from typing import Any, Dict
 
 from megalinter import config
 from megalinter.llm_provider.llm_provider_factory import LLMProviderFactory
@@ -13,7 +14,7 @@ from megalinter.llm_provider.llm_provider_factory import LLMProviderFactory
 
 class LLMAdvisor:
 
-    def __init__(self, request_id: str = None):
+    def __init__(self, request_id: Optional[str] = None):
         self.request_id = request_id
         self.enabled = False
         self.provider = None
@@ -37,9 +38,22 @@ class LLMAdvisor:
             return
 
         self.provider_name = config.get(
-            self.request_id, "LLM_PROVIDER", "openai"
+            self.request_id, "LLM_PROVIDER", "none"
         ).lower()
+
+        if self.provider_name == "none":
+            self.enabled = False
+            return
         
+        # Check that at least one of the LLM providers API Key is defined
+        # use get_supported_providers_api_key_var_names
+        supported_providers_api_keys = LLMProviderFactory.get_supported_providers_api_key_var_names()
+        if not any(
+            config.get(self.request_id, key, None) for key in supported_providers_api_keys
+        ):
+            self.enabled = False
+            return
+
         # Load LLM advisor level (ERROR or WARNING)
         self.advisor_level = config.get(
             self.request_id, "LLM_ADVISOR_LEVEL", "ERROR"
@@ -70,11 +84,14 @@ class LLMAdvisor:
                     or self.provider.get_default_model()
                 )
                 logging.debug(
-                    f"[LLM Advisor] LLM Advisor initialized with {self.provider_name} ({self.model_name})"
+                    f"[LLM Advisor] LLM Advisor initialized with {self.provider_name} ("
+                    f"{self.model_name})"
                 )
             else:
                 self.enabled = False
-                logging.error(f"[LLM Advisor] Failed to create provider: {self.provider_name}")
+                logging.error(
+                    f"[LLM Advisor] Failed to create provider: {self.provider_name}"
+                )
 
         except Exception as e:
             logging.error(
@@ -93,20 +110,22 @@ class LLMAdvisor:
 
     def get_fix_suggestions(
         self, linter: Any, linter_output: str
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         if not self.is_available():
-            return None
+            return {}  # type: ignore[return-value]
         return self._get_suggestion_from_raw_output(linter, linter_output)
 
     def _get_suggestion_from_raw_output(
         self, linter: Any, linter_output: str
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         try:
             # Build a prompt for analyzing the raw output
             prompt = self._build_raw_output_prompt(linter, linter_output)
             system_prompt = self._get_system_prompt()
 
             # Get response from LLM provider
+            if self.provider is None:
+                return {}  # type: ignore[return-value]
             suggestion_text = self.provider.invoke(prompt, system_prompt)
 
             return {
@@ -118,7 +137,7 @@ class LLMAdvisor:
 
         except Exception as e:
             logging.warning(f"Failed to get suggestion from raw output: {str(e)}")
-            return None
+            return {}  # type: ignore[return-value]
 
     def _get_system_prompt(self) -> str:
         return """You are an expert code reviewer and linter error analyst. Your job is to help developers understand and fix linting errors in their code.

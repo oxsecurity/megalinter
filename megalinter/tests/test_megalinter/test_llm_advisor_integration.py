@@ -8,14 +8,13 @@ import sys
 import unittest
 from unittest.mock import Mock, patch
 
+from megalinter.llm_advisor import LLMAdvisor
+
 # Add megalinter to path
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", ".."))
 
-from megalinter.llm_advisor import LLMAdvisor
-
 
 class TestLLMAdvisorIntegration(unittest.TestCase):
-
     def setUp(self):
         pass
 
@@ -334,7 +333,7 @@ script.js:8:1: no-undef 'console' is not defined"""
         # Mock configuration with invalid level
         mock_config.side_effect = lambda req_id, key, default: {
             "LLM_ADVISOR_ENABLED": "true",
-            "LLM_PROVIDER": "openai", 
+            "LLM_PROVIDER": "openai",
             "LLM_ADVISOR_LEVEL": "INVALID",
         }.get(key, default)
 

@@ -150,14 +150,15 @@ class ConsoleLinterReporter(Reporter):
                 logging.error(f"--Error detail:\n{stdout}")
             elif self.report_type == "detailed":
                 logging.info(f"--Log detail:\n{stdout}")
-        # Display LLM Avisor suggestions if available
+        # Display LLM Advisor suggestions if available
         if (
             self.master.llm_suggestion is not None
         ):
             logging.info("")
             logging.info(
                 utils.blue(
-                    f"\n🤖 AI-Powered Fix Suggestions for {self.master.llm_suggestion['linter']} (by {self.master.llm_suggestion['provider']} {self.master.llm_suggestion['model']})"
+                    f"\n🤖 AI-Powered Fix Suggestions for {self.master.llm_suggestion['linter']} "
+                    f"(by {self.master.llm_suggestion['provider']} {self.master.llm_suggestion['model']})"
                 )
             )
             logging.info(

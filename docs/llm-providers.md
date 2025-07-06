@@ -5,7 +5,7 @@ This page provides a comprehensive comparison of all supported LLM providers for
 ## Provider Comparison
 
 | Provider                                                  | API Cost | Local/Cloud | Setup Complexity | Best For                     |
-|-----------------------------------------------------------|----------|-------------|------------------|------------------------------|
+|-----------------------------------------------------------|:--------:|:-----------:|:----------------:|------------------------------|
 | [OpenAI](llm-provider/llm_provider_openai.md)             | $$       | Cloud       | Easy             | General use, high quality    |
 | [Anthropic](llm-provider/llm_provider_anthropic.md)       | $$       | Cloud       | Easy             | Code analysis, safety        |
 | [Google GenAI](llm-provider/llm_provider_google_genai.md) | $        | Cloud       | Easy             | Cost-effective, multilingual |

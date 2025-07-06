@@ -32,7 +32,7 @@ class LLMProviderFactory:
 
     @classmethod
     def create_provider(
-        cls, provider_name: str, request_id: str = None
+        cls, provider_name: str, request_id: Optional[str] = None
     ) -> Optional[LLMProvider]:
         provider_name = provider_name.lower()
 
@@ -42,7 +42,8 @@ class LLMProviderFactory:
 
         try:
             provider_class = cls.SUPPORTED_PROVIDERS[provider_name]
-            provider = provider_class()
+            provider: LLMProvider  # type: ignore[assignment]
+            provider = provider_class()  # type: ignore[abstract]
 
             # Load configuration using the provider's own method
             config = provider.load_config(request_id)
@@ -70,3 +71,16 @@ class LLMProviderFactory:
             "deepseek": "DeepSeek models",
             "grok": "Grok (xAI) models",
         }
+
+    @classmethod
+    def get_supported_providers_api_key_var_names(cls) -> list[str]:
+        return [
+            "OPENAI_API_KEY",
+            "ANTHROPIC_API_KEY",
+            "GOOGLE_API_KEY",
+            "OLLAMA_API_KEY",
+            "HUGGINGFACE_API_KEY",
+            "MISTRAL_API_KEY",
+            "DEEPSEEK_API_KEY",
+            "GROK_API_KEY",
+        ]

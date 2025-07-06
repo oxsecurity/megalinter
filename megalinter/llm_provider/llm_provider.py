@@ -5,10 +5,9 @@ Base LLM Provider class for MegaLinter
 
 import logging
 from abc import ABC, abstractmethod
-from typing import Any, Dict
+from typing import Any, Dict, Optional
 
 from langchain_core.messages import HumanMessage, SystemMessage
-import httpx
 
 
 class LLMProvider(ABC):
@@ -35,7 +34,7 @@ class LLMProvider(ABC):
         pass
 
     @abstractmethod
-    def load_config(self, request_id: str = None) -> Dict[str, Any]:
+    def load_config(self, request_id: Optional[str] = None) -> Dict[str, Any]:
         pass
 
     def get_default_config_value(self, key: str) -> Any:
@@ -44,7 +43,7 @@ class LLMProvider(ABC):
     def is_available(self) -> bool:
         return self.llm is not None
 
-    def invoke(self, prompt: str, system_prompt: str = None) -> str:
+    def invoke(self, prompt: str, system_prompt: Optional[str] = None) -> str:
         if not self.is_available():
             raise ValueError(
                 f"{self.provider_name} provider is not properly initialized"
