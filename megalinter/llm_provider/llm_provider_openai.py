@@ -4,7 +4,7 @@ OpenAI LLM Provider for MegaLinter
 """
 
 import logging
-from typing import Any, Dict
+from typing import Any, Dict, Optional
 
 from langchain_openai import ChatOpenAI
 from megalinter import config
@@ -17,7 +17,7 @@ class OpenAIProvider(LLMProvider):
     def get_default_model(self) -> str:
         return "gpt-4.1-mini"
 
-    def load_config(self, request_id: str = None) -> Dict[str, Any]:
+    def load_config(self, request_id: Optional[str] = None) -> Dict[str, Any]:
         return {
             "api_key": config.get(request_id, "OPENAI_API_KEY", ""),
             "base_url": config.get(request_id, "OPENAI_BASE_URL", None),

@@ -32,7 +32,7 @@ class LLMProviderFactory:
 
     @classmethod
     def create_provider(
-        cls, provider_name: str, request_id: str = None
+        cls, provider_name: str, request_id: Optional[str] = None
     ) -> Optional[LLMProvider]:
         provider_name = provider_name.lower()
 

@@ -4,7 +4,7 @@ Ollama LLM Provider for MegaLinter
 """
 
 import logging
-from typing import Any, Dict
+from typing import Any, Dict, Optional
 
 from langchain_community.llms import Ollama
 from megalinter import config
@@ -17,7 +17,7 @@ class OllamaProvider(LLMProvider):
     def get_default_model(self) -> str:
         return "llama3.2"
 
-    def load_config(self, request_id: str = None) -> Dict[str, Any]:
+    def load_config(self, request_id: Optional[str] = None) -> Dict[str, Any]:
         return {
             "base_url": config.get(
                 request_id, "OLLAMA_BASE_URL", "http://localhost:11434"

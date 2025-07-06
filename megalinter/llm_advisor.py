@@ -4,8 +4,8 @@ LLM Advisor for MegaLinter
 Provides AI-powered hints for fixing linter errors using various LLM providers through LangChain
 """
 
+from typing import Any, Dict, Optional
 import logging
-from typing import Any, Dict
 
 from megalinter import config
 from megalinter.llm_provider.llm_provider_factory import LLMProviderFactory
@@ -13,7 +13,7 @@ from megalinter.llm_provider.llm_provider_factory import LLMProviderFactory
 
 class LLMAdvisor:
 
-    def __init__(self, request_id: str = None):
+    def __init__(self, request_id: Optional[str] = None):
         self.request_id = request_id
         self.enabled = False
         self.provider = None

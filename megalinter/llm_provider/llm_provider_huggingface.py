@@ -4,7 +4,7 @@ Hugging Face LLM Provider for MegaLinter
 """
 
 import logging
-from typing import Any, Dict
+from typing import Any, Dict, Optional
 
 from megalinter import config
 
@@ -16,7 +16,7 @@ class HuggingFaceProvider(LLMProvider):
     def get_default_model(self) -> str:
         return "microsoft/DialoGPT-medium"
 
-    def load_config(self, request_id: str = None) -> Dict[str, Any]:
+    def load_config(self, request_id: Optional[str] = None) -> Dict[str, Any]:
         return {
             "api_key": config.get(request_id, "HUGGINGFACE_API_TOKEN", ""),
             "task": config.get(request_id, "HUGGINGFACE_TASK", "text-generation"),
