@@ -24,14 +24,6 @@ mega-linter:
     # All available variables are described in documentation
     # https://megalinter.io/configuration/
     DEFAULT_WORKSPACE: $CI_PROJECT_DIR
-    
-    # Disable LLM Advisor for bot MRs (merge-train, dependabot, renovate, etc.)
-    LLM_ADVISOR_ENABLED: >-
-      ${CI_PIPELINE_SOURCE != 'merge_request_event' ||
-        (CI_MERGE_REQUEST_SOURCE_PROJECT_PATH == CI_PROJECT_PATH &&
-         CI_MERGE_REQUEST_AUTHOR_LOGIN !~ /^(dependabot|renovate|github-actions)(\[bot\])?$/ &&
-         CI_MERGE_REQUEST_TITLE !~ /^(chore|fix|deps?|bump)(\(.*\))?: /)}
-    
     # ADD YOUR CUSTOM ENV VARIABLES HERE TO OVERRIDE VALUES OF .mega-linter.yml AT THE ROOT OF YOUR REPOSITORY
   artifacts:
     when: always
