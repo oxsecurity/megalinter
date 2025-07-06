@@ -20,6 +20,9 @@ class LLMAdvisor:
         self.provider = None
         self.provider_name = None
         self.model_name = None
+        self.advisor_level = "ERROR"  # Always set, even if disabled
+        self.enable_linters = []
+        self.disable_linters = []
 
         # Load configuration
         self._load_config()
@@ -29,6 +32,11 @@ class LLMAdvisor:
             self._initialize_provider()
 
     def _load_config(self):
+        self.advisor_level = config.get(
+            self.request_id, "LLM_ADVISOR_LEVEL", "ERROR"
+        ).upper()
+        self.enable_linters = []
+        self.disable_linters = []
         self.enabled = (
             config.get(self.request_id, "LLM_ADVISOR_ENABLED", "false").lower()
             == "true"
@@ -41,22 +49,20 @@ class LLMAdvisor:
             self.request_id, "LLM_PROVIDER", "openai"
         ).lower()
 
-        # Check that at least one of the LLM providers API Key is defined
-        # use get_supported_providers_api_key_var_names
-        supported_providers_api_keys = (
-            LLMProviderFactory.get_supported_providers_api_key_var_names()
-        )
-        if not any(
-            config.get(self.request_id, key, None)
-            for key in supported_providers_api_keys
-        ):
+        # Allow test override for API key check
+        if config.get(self.request_id, "LLM_TEST_API_KEY_PRESENT", "false").lower() == "true":
+            api_key_present = True
+        else:
+            supported_providers_api_keys = (
+                LLMProviderFactory.get_supported_providers_api_key_var_names()
+            )
+            api_key_present = any(
+                config.get(self.request_id, key, None)
+                for key in supported_providers_api_keys
+            )
+        if not api_key_present:
             self.enabled = False
             return
-
-        # Load LLM advisor level (ERROR or WARNING)
-        self.advisor_level = config.get(
-            self.request_id, "LLM_ADVISOR_LEVEL", "ERROR"
-        ).upper()
 
         # Validate advisor level
         if self.advisor_level not in ["ERROR", "WARNING"]:
@@ -109,14 +115,14 @@ class LLMAdvisor:
     def get_supported_providers(self) -> Dict[str, str]:
         return LLMProviderFactory.get_supported_providers()
 
-    def get_fix_suggestions(self, linter: Any, linter_output: str) -> dict[str, Any]:
+    def get_fix_suggestions(self, linter: Any, linter_output: str) -> Optional[dict[str, Any]]:
         if not self.is_available():
-            return {}  # type: ignore[return-value]
+            return None
         return self._get_suggestion_from_raw_output(linter, linter_output)
 
     def _get_suggestion_from_raw_output(
         self, linter: Any, linter_output: str
-    ) -> dict[str, Any]:
+    ) -> Optional[dict[str, Any]]:
         try:
             # Build a prompt for analyzing the raw output
             prompt = self._build_raw_output_prompt(linter, linter_output)
@@ -124,7 +130,7 @@ class LLMAdvisor:
 
             # Get response from LLM provider
             if self.provider is None:
-                return {}  # type: ignore[return-value]
+                return None
             suggestion_text = self.provider.invoke(prompt, system_prompt)
 
             return {
@@ -136,7 +142,7 @@ class LLMAdvisor:
 
         except Exception as e:
             logging.warning(f"Failed to get suggestion from raw output: {str(e)}")
-            return {}  # type: ignore[return-value]
+            return None
 
     def _get_system_prompt(self) -> str:
         return """You are an expert code reviewer and linter error analyst. Your job is to help developers understand and fix linting errors in their code. Linters have been run by MegaLinter.
