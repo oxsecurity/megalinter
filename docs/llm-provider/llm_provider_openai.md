@@ -21,7 +21,7 @@ OpenAI provides state-of-the-art language models offering excellent code analysi
    ```yaml
    LLM_ADVISOR_ENABLED: true
    LLM_PROVIDER: openai
-   LLM_MODEL_NAME: gpt-3.5-turbo
+   LLM_MODEL_NAME: gpt-4.1-mini
    LLM_MAX_TOKENS: 1000
    LLM_TEMPERATURE: 0.1
    ```
@@ -38,7 +38,7 @@ For the most up-to-date list of OpenAI models and their capabilities, see the of
 
 ```yaml
 LLM_PROVIDER: openai
-LLM_MODEL_NAME: gpt-3.5-turbo      # or gpt-4o-mini, gpt-4o
+LLM_MODEL_NAME: gpt-4.1-mini      # or gpt-4o-mini, gpt-4o
 ```
 
 ### Advanced Configuration

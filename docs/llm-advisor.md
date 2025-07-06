@@ -11,16 +11,16 @@ MegaLinter includes an AI-powered advisor that provides intelligent fix suggesti
 
 ## Supported LLM Providers
 
-| Provider                                                  | Models                                | API Key Required | Local/Cloud | Documentation                                            |
-|-----------------------------------------------------------|---------------------------------------|------------------|-------------|----------------------------------------------------------|
-| [OpenAI](llm-provider/llm_provider_openai.md)             | GPT-3.5, GPT-4, GPT-4o                | Yes              | Cloud       | [Setup Guide](llm-provider/llm_provider_openai.md)       |
-| [Anthropic](llm-provider/llm_provider_anthropic.md)       | Claude 3 (Haiku, Sonnet, Opus)        | Yes              | Cloud       | [Setup Guide](llm-provider/llm_provider_anthropic.md)    |
-| [Google GenAI](llm-provider/llm_provider_google_genai.md) | Gemini Pro, Gemini Pro Vision         | Yes              | Cloud       | [Setup Guide](llm-provider/llm_provider_google_genai.md) |
-| [Mistral AI](llm-provider/llm_provider_mistralai.md)      | Mistral Small, Medium, Large          | Yes              | Cloud       | [Setup Guide](llm-provider/llm_provider_mistralai.md)    |
-| [DeepSeek](llm-provider/llm_provider_deepseek.md)         | DeepSeek Chat, DeepSeek Coder         | Yes              | Cloud       | [Setup Guide](llm-provider/llm_provider_deepseek.md)     |
-| [Grok](llm-provider/llm_provider_grok.md)                 | Grok Beta                             | Yes              | Cloud       | [Setup Guide](llm-provider/llm_provider_grok.md)         |
-| [Ollama](llm-provider/llm_provider_ollama.md)             | Llama 2, CodeLlama, Mistral, etc.     | No               | Local       | [Setup Guide](llm-provider/llm_provider_ollama.md)       |
-| [Hugging Face](llm-provider/llm_provider_huggingface.md)  | Any HF model (DialoGPT, CodeT5, etc.) | Optional         | Local/Cloud | [Setup Guide](llm-provider/llm_provider_huggingface.md)  |
+| Provider                                                  | API Key Required | Local/Cloud | Documentation                                            |
+|-----------------------------------------------------------|------------------|-------------|----------------------------------------------------------|
+| [OpenAI](llm-provider/llm_provider_openai.md)             | Yes              | Cloud       | [Setup Guide](llm-provider/llm_provider_openai.md)       |
+| [Anthropic](llm-provider/llm_provider_anthropic.md)       | Yes              | Cloud       | [Setup Guide](llm-provider/llm_provider_anthropic.md)    |
+| [Google GenAI](llm-provider/llm_provider_google_genai.md) | Yes              | Cloud       | [Setup Guide](llm-provider/llm_provider_google_genai.md) |
+| [Mistral AI](llm-provider/llm_provider_mistralai.md)      | Yes              | Cloud       | [Setup Guide](llm-provider/llm_provider_mistralai.md)    |
+| [DeepSeek](llm-provider/llm_provider_deepseek.md)         | Yes              | Cloud       | [Setup Guide](llm-provider/llm_provider_deepseek.md)     |
+| [Grok](llm-provider/llm_provider_grok.md)                 | Yes              | Cloud       | [Setup Guide](llm-provider/llm_provider_grok.md)         |
+| [Ollama](llm-provider/llm_provider_ollama.md)             | No               | Local       | [Setup Guide](llm-provider/llm_provider_ollama.md)       |
+| [Hugging Face](llm-provider/llm_provider_huggingface.md)  | Optional         | Local/Cloud | [Setup Guide](llm-provider/llm_provider_huggingface.md)  |
 
 See [All LLM Providers](llm-providers.md) for a complete comparison and setup instructions.
 
@@ -36,7 +36,7 @@ LLM_ADVISOR_ENABLED: true
 
 # Choose your provider and model
 LLM_PROVIDER: openai  # openai, anthropic, google, huggingface, mistral, deepseek, grok, ollama
-LLM_MODEL_NAME: gpt-3.5-turbo
+LLM_MODEL_NAME: gpt-4.1-mini
 LLM_MAX_TOKENS: 1000
 LLM_TEMPERATURE: 0.1
 ```
@@ -51,7 +51,7 @@ LLM_ADVISOR_LEVEL: ERROR                   # When to trigger: ERROR (default) or
 LLM_ADVISOR_ENABLE_LINTERS: []             # Only analyze these linters (linter names)
 LLM_ADVISOR_DISABLE_LINTERS: []            # Never analyze these linters (linter names)
 LLM_PROVIDER: openai                       # Provider: see supported providers above
-LLM_MODEL_NAME: gpt-3.5-turbo              # Model name (provider-specific)
+LLM_MODEL_NAME: gpt-4.1-mini               # Model name (provider-specific)
 LLM_MAX_TOKENS: 1000                       # Maximum tokens for response
 LLM_TEMPERATURE: 0.1                       # Temperature for generation (0.0-1.0)
 LLM_ADVISOR_POSITION: after_linter_output  # Display Advisor suggestions before or after linter output
@@ -142,6 +142,7 @@ LLM_ADVISOR_DISABLE_LINTERS:
 - Useful for excluding noisy or less critical linters
 
 ### Priority Order
+
 1. **Enable List**: If `LLM_ADVISOR_ENABLE_LINTERS` is set, only those linters are analyzed
 2. **Disable List**: If only `LLM_ADVISOR_DISABLE_LINTERS` is set, all linters except those are analyzed
 3. **Level Filter**: `LLM_ADVISOR_LEVEL` (ERROR/WARNING) is then applied to the filtered linters
@@ -161,7 +162,7 @@ For detailed provider setup instructions, see the individual provider documentat
 
 ## Bot Detection & Cost Control
 
-To prevent unnecessary API costs and avoid analyzing automated dependency updates, MegaLinter automatically disables LLM Advisor for bot-generated pull requests in CI/CD environments.
+To prevent unnecessary API costs and avoid analyzing automated dependency updates, MegaLinter automatically disables LLM Advisor for bot-generated pull requests in CI/CD environments (requires an up to date CI/CD workflow)
 
 ### Automatic Bot Detection
 
@@ -180,10 +181,12 @@ MegaLinter includes built-in logic to detect common bots and automated PRs:
 The following patterns automatically disable LLM Advisor:
 
 **Bot Accounts:**
+
 - `dependabot[bot]`, `renovate[bot]`, `github-actions[bot]`
 - User names starting with `dependabot` or `renovate`
 
 **PR/MR Titles:**
+
 - Commits starting with `chore:`, `fix:`, `deps:`, `bump:`
 - Dependency update patterns like `Bump package from x.x.x to y.y.y`
 
@@ -214,7 +217,7 @@ LLM_ADVISOR_ENABLED: false
 When AI advisor is enabled, you'll see a new section in your MegaLinter reports:
 
 ```markdown
-## 🤖 AI-Powered Fix Suggestions (openai - gpt-3.5-turbo)
+## 🤖 AI-Powered Fix Suggestions (openai - gpt-4.1-mini)
 
 Analyzed 3 out of 5 errors:
 

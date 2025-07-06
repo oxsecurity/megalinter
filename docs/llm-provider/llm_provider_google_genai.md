@@ -24,7 +24,7 @@ Google's Gemini models offer excellent performance at competitive prices with st
    ```yaml
    LLM_ADVISOR_ENABLED: true
    LLM_PROVIDER: google
-   LLM_MODEL_NAME: gemini-pro
+   LLM_MODEL_NAME: gemini-2.5-flash
    LLM_MAX_TOKENS: 1000
    LLM_TEMPERATURE: 0.1
    ```

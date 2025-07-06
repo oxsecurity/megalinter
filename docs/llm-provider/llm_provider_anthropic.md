@@ -21,7 +21,7 @@ Anthropic's Claude models excel at code analysis with a strong focus on safety a
    ```yaml
    LLM_ADVISOR_ENABLED: true
    LLM_PROVIDER: anthropic
-   LLM_MODEL_NAME: claude-3-haiku-20240307
+   LLM_MODEL_NAME: claude-3-7-sonnet-latest
    LLM_MAX_TOKENS: 1000
    LLM_TEMPERATURE: 0.1
    ```
@@ -38,7 +38,7 @@ For the most up-to-date list of Claude models and their capabilities, see the of
 
 ```yaml
 LLM_PROVIDER: anthropic
-LLM_MODEL_NAME: claude-3-haiku-20240307
+LLM_MODEL_NAME: claude-3-7-sonnet-latest
 ```
 
 ### Advanced Configuration

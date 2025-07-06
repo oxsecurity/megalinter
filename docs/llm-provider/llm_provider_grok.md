@@ -21,7 +21,7 @@ Grok is xAI's conversational AI model, designed for real-time information and en
    ```yaml
    LLM_ADVISOR_ENABLED: true
    LLM_PROVIDER: grok
-   LLM_MODEL_NAME: grok-beta
+   LLM_MODEL_NAME: grok-3-mini
    LLM_MAX_TOKENS: 1000
    LLM_TEMPERATURE: 0.1
    ```
@@ -38,7 +38,7 @@ For the most up-to-date list of Grok models and their capabilities, see the offi
 
 ```yaml
 LLM_PROVIDER: grok
-LLM_MODEL_NAME: grok-beta
+LLM_MODEL_NAME: grok-3-mini
 ```
 
 ### Advanced Configuration
@@ -53,17 +53,20 @@ GROK_BASE_URL: https://api.x.ai/v1
 ### Common Issues
 
 1. **"Invalid API key"**
+
    - Verify API key is correct
    - Check account status and access
    - Ensure Grok API access is enabled
 
 2. **"Rate limit exceeded"**
+
    - Check your plan's rate limits
    - Implement exponential backoff
    - Contact xAI support for higher limits
 
 3. **"Model not available"**
-   - Verify model name: `grok-beta`
+
+   - Verify model name: `grok-3-mini`
    - Check regional availability
    - Ensure you have access to the model
 

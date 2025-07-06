@@ -15,7 +15,7 @@ from .llm_provider import LLMProvider
 class OpenAIProvider(LLMProvider):
 
     def get_default_model(self) -> str:
-        return "gpt-4o-mini"
+        return "gpt-4.1-mini"
 
     def load_config(self, request_id: str = None) -> Dict[str, Any]:
         return {

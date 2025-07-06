@@ -15,7 +15,7 @@ from .llm_provider import LLMProvider
 class GrokProvider(LLMProvider):
 
     def get_default_model(self) -> str:
-        return "grok-beta"
+        return "grok-3-mini"
 
     def load_config(self, request_id: str = None) -> Dict[str, Any]:
         return {

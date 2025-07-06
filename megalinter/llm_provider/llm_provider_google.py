@@ -15,7 +15,7 @@ from .llm_provider import LLMProvider
 class GoogleProvider(LLMProvider):
 
     def get_default_model(self) -> str:
-        return "gemini-1.5-flash"
+        return "gemini-2.5-flash"
 
     def load_config(self, request_id: str = None) -> Dict[str, Any]:
         return {
