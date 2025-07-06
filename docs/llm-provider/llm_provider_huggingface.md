@@ -35,6 +35,12 @@ pip install langchain-huggingface transformers torch
    LLM_TEMPERATURE: 0.1
    ```
 
+## Official Model List
+
+For the most up-to-date list of Hugging Face models and their capabilities, see the official Hugging Face model hub:
+
+- [Hugging Face Model Hub](https://huggingface.co/models?pipeline_tag=text-generation)
+
 ## Configuration Options
 
 ### Basic Configuration

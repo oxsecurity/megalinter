@@ -22,6 +22,12 @@ Mistral AI provides high-quality language models with European data residency an
    LLM_TEMPERATURE: 0.1
    ```
 
+## Official Model List
+
+For the most up-to-date list of Mistral models and their capabilities, see the official Mistral AI documentation:
+
+- [Mistral AI Model List](https://docs.mistral.ai/platform/endpoints/)
+
 ## Configuration Options
 
 ### Basic Configuration

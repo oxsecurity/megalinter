@@ -22,6 +22,12 @@ Grok is xAI's conversational AI model, designed for real-time information and en
    LLM_TEMPERATURE: 0.1
    ```
 
+## Official Model List
+
+For the most up-to-date list of Grok models and their capabilities, see the official xAI documentation:
+
+- [xAI Grok Model List](https://docs.x.ai/docs/models)
+
 ## Configuration Options
 
 ### Basic Configuration

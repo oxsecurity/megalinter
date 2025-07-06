@@ -25,6 +25,12 @@ Google's Gemini models offer excellent performance at competitive prices with st
    LLM_TEMPERATURE: 0.1
    ```
 
+## Official Model List
+
+For the most up-to-date list of Gemini models and their capabilities, see the official Google documentation:
+
+- [Google Gemini Model List](https://ai.google.dev/models/gemini)
+
 ## Configuration Options
 
 ### Basic Configuration

@@ -32,6 +32,12 @@ LLM_MAX_TOKENS: 1000
 LLM_TEMPERATURE: 0.1
 ```
 
+## Official Model List
+
+For the most up-to-date list of models available for Ollama, see the official Ollama model library:
+
+- [Ollama Model Library](https://ollama.com/library)
+
 ## Configuration Options
 
 ### Basic Configuration

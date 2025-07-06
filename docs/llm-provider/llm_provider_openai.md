@@ -22,6 +22,12 @@ OpenAI provides state-of-the-art language models offering excellent code analysi
    LLM_TEMPERATURE: 0.1
    ```
 
+## Official Model List
+
+For the most up-to-date list of OpenAI models and their capabilities, see the official OpenAI documentation:
+
+- [OpenAI Model List](https://platform.openai.com/docs/models)
+
 ## Configuration Options
 
 ### Basic Configuration

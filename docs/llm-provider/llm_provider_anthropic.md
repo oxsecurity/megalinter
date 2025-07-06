@@ -22,6 +22,12 @@ Anthropic's Claude models excel at code analysis with a strong focus on safety a
    LLM_TEMPERATURE: 0.1
    ```
 
+## Official Model List
+
+For the most up-to-date list of Claude models and their capabilities, see the official Anthropic documentation:
+
+- [Anthropic Claude Model List](https://docs.anthropic.com/claude/docs/models-overview)
+
 ## Configuration Options
 
 ### Basic Configuration

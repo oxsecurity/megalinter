@@ -22,6 +22,12 @@ DeepSeek offers specialized code-focused models at competitive prices, optimized
    LLM_TEMPERATURE: 0.1
    ```
 
+## Official Model List
+
+For the most up-to-date list of DeepSeek models and their capabilities, see the official DeepSeek documentation:
+
+- [DeepSeek Model List](https://platform.deepseek.com/docs/model)
+
 ## Configuration Options
 
 ### Basic Configuration
