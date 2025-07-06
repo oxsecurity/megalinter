@@ -41,7 +41,7 @@ class AnthropicProvider(LLMProvider):
         try:
             api_key = self.get_config_value("api_key")
             if not api_key:
-                raise ValueError("Anthropic API key is required")
+                raise ValueError("ANTHROPIC_API_KEY is required")
 
             model_name = self.get_config_value("model_name") or self.get_default_model()
             temperature = self.get_config_value("temperature")

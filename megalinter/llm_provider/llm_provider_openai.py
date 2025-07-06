@@ -42,7 +42,7 @@ class OpenAIProvider(LLMProvider):
         try:
             api_key = self.get_config_value("api_key")
             if not api_key:
-                raise ValueError("OpenAI API key is required")
+                raise ValueError("OPENAI_API_KEY key is required")
 
             model_name = self.get_config_value("model_name") or self.get_default_model()
             base_url = self.get_config_value("base_url")
