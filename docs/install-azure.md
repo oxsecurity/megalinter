@@ -17,34 +17,56 @@ You can configure a [build validation](https://learn.microsoft.com/en-us/azure/d
 Add the following to an `azure-pipelines.yaml` file within your code repository:
 
 ```yaml
-  # Run MegaLinter to detect linting and security issues
-  - job: MegaLinter
-    pool:
-      vmImage: ubuntu-latest
-    steps:
-      # Checkout repo
-      - checkout: self
+# Run MegaLinter to detect linting and security issues
+trigger:
+  - main
 
-      # Pull MegaLinter docker image
-      - script: docker pull oxsecurity/megalinter:v8
-        displayName: Pull MegaLinter
+pool:
+  vmImage: ubuntu-latest
 
-      # Run MegaLinter
-      - script: |
-          docker run -v $(System.DefaultWorkingDirectory):/tmp/lint \
-            --env-file <(env | grep -e SYSTEM_ -e BUILD_ -e TF_ -e AGENT_) \
-            -e SYSTEM_ACCESSTOKEN=$(System.AccessToken) \
-            -e GIT_AUTHORIZATION_BEARER=$(System.AccessToken) \
-            oxsecurity/megalinter:v8
-        displayName: Run MegaLinter
+variables:
+  # All available variables are described in documentation
+  # https://megalinter.io/latest/config-file/
+  DEFAULT_WORKSPACE: $(System.DefaultWorkingDirectory)
+  
+  # Disable LLM Advisor for bot PRs (dependabot, renovate, etc.)
+  # Note: Azure Pipelines has limited access to PR author info, this is a basic check
+  LLM_ADVISOR_ENABLED: >-
+    ${{ not(or(
+      contains(variables['Build.SourceBranch'], 'dependabot'),
+      contains(variables['Build.SourceBranch'], 'renovate'),
+      contains(variables['System.PullRequest.SourceBranch'], 'dependabot'),
+      contains(variables['System.PullRequest.SourceBranch'], 'renovate'),
+      startsWith(variables['Build.RequestedFor'], 'dependabot'),
+      startsWith(variables['Build.RequestedFor'], 'renovate')
+    )) }}
 
-      # Upload MegaLinter reports
-      - task: PublishPipelineArtifact@1
-        condition: succeededOrFailed()
-        displayName: Upload MegaLinter reports
-        inputs:
-          targetPath: "$(System.DefaultWorkingDirectory)/megalinter-reports/"
-          artifactName: MegaLinterReport
+steps:
+  # Checkout repo
+  - checkout: self
+
+  # Pull MegaLinter docker image
+  - script: docker pull oxsecurity/megalinter:v8
+    displayName: Pull MegaLinter
+
+  # Run MegaLinter
+  - script: |
+      docker run -v $(System.DefaultWorkingDirectory):/tmp/lint \
+        --env-file <(env | grep -e SYSTEM_ -e BUILD_ -e TF_ -e AGENT_) \
+        -e SYSTEM_ACCESSTOKEN=$(System.AccessToken) \
+        -e GIT_AUTHORIZATION_BEARER=$(System.AccessToken) \
+        -e DEFAULT_WORKSPACE=/tmp/lint \
+        -e LLM_ADVISOR_ENABLED=$(LLM_ADVISOR_ENABLED) \
+        oxsecurity/megalinter:v8
+    displayName: Run MegaLinter
+
+  # Upload MegaLinter reports
+  - task: PublishPipelineArtifact@1
+    condition: succeededOrFailed()
+    displayName: Upload MegaLinter reports
+    inputs:
+      targetPath: "$(System.DefaultWorkingDirectory)/megalinter-reports/"
+      artifactName: MegaLinterReport
 ```
 
 ## Central Repository
@@ -61,6 +83,18 @@ pool:
 
 variables:
   repoName: $[ replace(split(variables['System.PullRequest.SourceRepositoryURI'], '/')[6], '%20', ' ') ]
+  
+  # Disable LLM Advisor for bot PRs (dependabot, renovate, etc.)
+  # Note: Azure Pipelines has limited access to PR author info, this is a basic check
+  LLM_ADVISOR_ENABLED: >-
+    ${{ not(or(
+      contains(variables['Build.SourceBranch'], 'dependabot'),
+      contains(variables['Build.SourceBranch'], 'renovate'),
+      contains(variables['System.PullRequest.SourceBranch'], 'dependabot'),
+      contains(variables['System.PullRequest.SourceBranch'], 'renovate'),
+      startsWith(variables['Build.RequestedFor'], 'dependabot'),
+      startsWith(variables['Build.RequestedFor'], 'renovate')
+    )) }}
 
 steps:
   # Checkout triggering repo
@@ -77,6 +111,8 @@ steps:
         --env-file <(env | grep -e SYSTEM_ -e BUILD_ -e TF_ -e AGENT_) \
         -e SYSTEM_ACCESSTOKEN=$(System.AccessToken) \
         -e GIT_AUTHORIZATION_BEARER=$(System.AccessToken) \
+        -e DEFAULT_WORKSPACE=/tmp/lint \
+        -e LLM_ADVISOR_ENABLED=$(LLM_ADVISOR_ENABLED) \
         oxsecurity/megalinter:v8
     displayName: Run MegaLinter
 

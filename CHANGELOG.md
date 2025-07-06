@@ -45,6 +45,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - CI
 
 - mega-linter-runner
+  - Add all CI/CD providers in the --install command
 
 - Linter versions upgrades (N)
   - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.16.0 to **1.16.1** on 2025-06-16

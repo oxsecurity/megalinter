@@ -154,6 +154,7 @@ class ConsoleLinterReporter(Reporter):
         if (
             self.master.llm_suggestion is not None
         ):
+            logging.info("")
             logging.info(
                 utils.blue(
                     f"🤖 AI-Powered Fix Suggestions for {self.master.llm_suggestion['linter']} (by {self.master.llm_suggestion['provider']} {self.master.llm_suggestion['model']})"

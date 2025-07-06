@@ -159,6 +159,48 @@ GOOGLE_API_KEY=AIza-your-api-key
 
 For detailed provider setup instructions, see the individual provider documentation pages linked above.
 
+## Bot Detection & Cost Control
+
+To prevent unnecessary API costs and avoid analyzing automated dependency updates, MegaLinter automatically disables LLM Advisor for bot-generated pull requests in CI/CD environments.
+
+### Automatic Bot Detection
+
+MegaLinter includes built-in logic to detect common bots and automated PRs:
+
+- **GitHub Actions**: Detects Dependabot, Renovate, and GitHub Actions bot PRs
+- **GitLab CI**: Identifies bot merge requests using author and title patterns
+- **Azure Pipelines**: Checks branch names and requestor information for bot patterns
+- **Bitbucket**: Analyzes branch names and PR titles for automation patterns
+- **Jenkins**: Examines branch names and change authors for bot signatures
+- **Drone CI**: Filters based on PR titles and commit authors
+- **Concourse CI**: Uses pipeline and job names for bot detection
+
+### Detection Patterns
+
+The following patterns automatically disable LLM Advisor:
+
+**Bot Accounts:**
+- `dependabot[bot]`, `renovate[bot]`, `github-actions[bot]`
+- User names starting with `dependabot` or `renovate`
+
+**PR/MR Titles:**
+- Commits starting with `chore:`, `fix:`, `deps:`, `bump:`
+- Dependency update patterns like `Bump package from x.x.x to y.y.y`
+
+### Manual Override
+
+You can manually control LLM Advisor activation:
+
+```yaml
+# Force enable even for detected bots (not recommended due to costs)
+LLM_ADVISOR_ENABLED: true
+
+# Force disable for specific branches or conditions
+LLM_ADVISOR_ENABLED: false
+```
+
+⚠️ **Cost Warning**: Enabling LLM Advisor for bot PRs can lead to significant API costs since dependency update PRs are frequent and often contain many changes.
+
 ## How It Works
 
 1. **Error Collection**: MegaLinter collects errors from active linters
