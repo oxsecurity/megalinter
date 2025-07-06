@@ -24,6 +24,8 @@
     "**/megalinter/tests/test_megalinter/mega_linter*",
     "**/megalinter/tests/test_megalinter/plugins_test.py*",
     "**/megalinter/tests/test_megalinter/config_test.py",
+    "**/megalinter/llm_provider/*.py",
+    "**/test_llm_advisor_integration.py",
     "**/TrivySbomLinter.py",
     "**/repository_trivy_sbom_test.py",
     "**/megalinter/utilstest.py",

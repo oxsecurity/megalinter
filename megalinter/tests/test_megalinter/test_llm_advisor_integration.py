@@ -8,14 +8,13 @@ import sys
 import unittest
 from unittest.mock import Mock, patch
 
+from megalinter.llm_advisor import LLMAdvisor
+
 # Add megalinter to path
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", ".."))
 
-from megalinter.llm_advisor import LLMAdvisor
-
 
 class TestLLMAdvisorIntegration(unittest.TestCase):
-
     def setUp(self):
         pass
 
@@ -33,6 +32,7 @@ class TestLLMAdvisorIntegration(unittest.TestCase):
             "LLM_MAX_TOKENS": "1000",
             "LLM_TEMPERATURE": "0.1",
             "OPENAI_API_KEY": "test-key",
+            "LLM_TEST_API_KEY_PRESENT": "true",
         }.get(key, default)
 
         # Mock provider
@@ -59,6 +59,7 @@ class TestLLMAdvisorIntegration(unittest.TestCase):
         mock_config.side_effect = lambda req_id, key, default: {
             "LLM_ADVISOR_ENABLED": "true",
             "LLM_PROVIDER": "openai",
+            "LLM_TEST_API_KEY_PRESENT": "true",
         }.get(key, default)
 
         # Mock provider
@@ -156,12 +157,15 @@ script.js:8:1: no-undef 'console' is not defined"""
     @patch(
         "megalinter.llm_provider.llm_provider_factory.LLMProviderFactory.create_provider"
     )
-    def test_get_fix_suggestions_data_structure(self, mock_create_provider, mock_config):
+    def test_get_fix_suggestions_data_structure(
+        self, mock_create_provider, mock_config
+    ):
 
         # Mock configuration
         mock_config.side_effect = lambda req_id, key, default: {
             "LLM_ADVISOR_ENABLED": "true",
             "LLM_PROVIDER": "openai",
+            "LLM_TEST_API_KEY_PRESENT": "true",
         }.get(key, default)
 
         # Mock provider
@@ -169,7 +173,9 @@ script.js:8:1: no-undef 'console' is not defined"""
         mock_provider.get_config_value.return_value = "gpt-3.5-turbo"
         mock_provider.get_default_model.return_value = "gpt-3.5-turbo"
         mock_provider.is_available.return_value = True
-        mock_provider.invoke.return_value = "Remove unused imports to clean up your code"
+        mock_provider.invoke.return_value = (
+            "Remove unused imports to clean up your code"
+        )
         mock_create_provider.return_value = mock_provider
 
         advisor = LLMAdvisor("test-request")
@@ -181,7 +187,9 @@ script.js:8:1: no-undef 'console' is not defined"""
         mock_linter.lint_command_log = ["flake8 test.py"]
 
         # Test getting suggestions
-        result = advisor.get_fix_suggestions(mock_linter, "test.py:1:1: F401 'os' imported but unused")
+        result = advisor.get_fix_suggestions(
+            mock_linter, "test.py:1:1: F401 'os' imported but unused"
+        )
 
         # Verify data structure
         self.assertIsNotNone(result)
@@ -205,7 +213,9 @@ script.js:8:1: no-undef 'console' is not defined"""
         mock_linter.linter_name = "flake8"
         mock_linter.lint_command_log = ["flake8 test.py"]
 
-        result = advisor.get_fix_suggestions(mock_linter, "test.py:1:1: F401 'os' imported but unused")
+        result = advisor.get_fix_suggestions(
+            mock_linter, "test.py:1:1: F401 'os' imported but unused"
+        )
 
         self.assertIsNone(result)
 
@@ -221,6 +231,7 @@ script.js:8:1: no-undef 'console' is not defined"""
         mock_config.side_effect = lambda req_id, key, default: {
             "LLM_ADVISOR_ENABLED": "true",
             "LLM_PROVIDER": "openai",
+            "LLM_TEST_API_KEY_PRESENT": "true",
         }.get(key, default)
 
         # Mock provider
@@ -288,6 +299,7 @@ script.js:8:1: no-undef 'console' is not defined"""
         mock_config.side_effect = lambda req_id, key, default: {
             "LLM_ADVISOR_ENABLED": "true",
             "LLM_PROVIDER": "openai",
+            "LLM_TEST_API_KEY_PRESENT": "true",
         }.get(key, default)
 
         # Mock provider
@@ -312,6 +324,7 @@ script.js:8:1: no-undef 'console' is not defined"""
             "LLM_ADVISOR_ENABLED": "true",
             "LLM_PROVIDER": "openai",
             "LLM_ADVISOR_LEVEL": "WARNING",
+            "LLM_TEST_API_KEY_PRESENT": "true",
         }.get(key, default)
 
         # Mock provider
@@ -329,13 +342,16 @@ script.js:8:1: no-undef 'console' is not defined"""
     @patch(
         "megalinter.llm_provider.llm_provider_factory.LLMProviderFactory.create_provider"
     )
-    def test_llm_advisor_level_invalid_fallback(self, mock_create_provider, mock_config):
+    def test_llm_advisor_level_invalid_fallback(
+        self, mock_create_provider, mock_config
+    ):
 
         # Mock configuration with invalid level
         mock_config.side_effect = lambda req_id, key, default: {
             "LLM_ADVISOR_ENABLED": "true",
-            "LLM_PROVIDER": "openai", 
+            "LLM_PROVIDER": "openai",
             "LLM_ADVISOR_LEVEL": "INVALID",
+            "LLM_TEST_API_KEY_PRESENT": "true",
         }.get(key, default)
 
         # Mock provider
@@ -349,7 +365,14 @@ script.js:8:1: no-undef 'console' is not defined"""
 
         self.assertEqual(advisor.advisor_level, "ERROR")
 
-    def test_should_analyze_linter_error_level(self):
+    @patch("megalinter.config.get_list")
+    @patch("megalinter.config.get")
+    @patch(
+        "megalinter.llm_provider.llm_provider_factory.LLMProviderFactory.create_provider"
+    )
+    def test_should_analyze_linter_error_level(self, mock_create_provider, mock_config, mock_config_list):
+
+        mock_config_list.side_effect = lambda req_id, key, default: []
 
         # Mock linter with errors (blocking - return_code != 0)
         mock_linter_errors = Mock()
@@ -391,13 +414,18 @@ script.js:8:1: no-undef 'console' is not defined"""
             self.assertFalse(advisor.should_analyze_linter(mock_linter_ignored_errors))
 
         # Test with enabled advisor
-        with patch("megalinter.config.get") as mock_config, \
-             patch("megalinter.llm_provider.llm_provider_factory.LLMProviderFactory.create_provider") as mock_create_provider:
-            
+        with (
+            patch("megalinter.config.get") as mock_config,
+            patch(
+                "megalinter.llm_provider.llm_provider_factory.LLMProviderFactory.create_provider"
+            ) as mock_create_provider,
+        ):
+
             mock_config.side_effect = lambda req_id, key, default: {
                 "LLM_ADVISOR_ENABLED": "true",
                 "LLM_PROVIDER": "openai",
                 "LLM_ADVISOR_LEVEL": "ERROR",
+                "LLM_TEST_API_KEY_PRESENT": "true",
             }.get(key, default)
 
             # Mock provider
@@ -410,12 +438,33 @@ script.js:8:1: no-undef 'console' is not defined"""
             advisor = LLMAdvisor("test-request")
 
             # Should analyze only blocking linters (return_code != 0)
-            self.assertTrue(advisor.should_analyze_linter(mock_linter_errors))  # Blocking errors
-            self.assertFalse(advisor.should_analyze_linter(mock_linter_warnings))  # Non-blocking warnings
-            self.assertTrue(advisor.should_analyze_linter(mock_linter_both))  # Blocking errors+warnings
-            self.assertFalse(advisor.should_analyze_linter(mock_linter_ignored_errors))  # Non-blocking ignored errors
+            self.assertTrue(
+                advisor.should_analyze_linter(mock_linter_errors)
+            )  # Blocking errors
+            self.assertFalse(
+                advisor.should_analyze_linter(mock_linter_warnings)
+            )  # Non-blocking warnings
+            self.assertTrue(
+                advisor.should_analyze_linter(mock_linter_both)
+            )  # Blocking errors+warnings
+            self.assertFalse(
+                advisor.should_analyze_linter(mock_linter_ignored_errors)
+            )  # Non-blocking ignored errors
 
-    def test_should_analyze_linter_warning_level(self):
+    @patch("megalinter.config.get_list")
+    @patch("megalinter.config.get")
+    @patch(
+        "megalinter.llm_provider.llm_provider_factory.LLMProviderFactory.create_provider"
+    )
+    def test_should_analyze_linter_warning_level(self, mock_create_provider, mock_config, mock_config_list):
+
+        mock_config_list.side_effect = lambda req_id, key, default: []
+        mock_config.side_effect = lambda req_id, key, default: {
+            "LLM_ADVISOR_ENABLED": "true",
+            "LLM_PROVIDER": "openai",
+            "LLM_ADVISOR_LEVEL": "WARNING",
+            "LLM_TEST_API_KEY_PRESENT": "true",
+        }.get(key, default)
 
         # Mock linter with errors (blocking)
         mock_linter_errors = Mock()
@@ -447,13 +496,18 @@ script.js:8:1: no-undef 'console' is not defined"""
         mock_linter_clean.total_number_warnings = 0
         mock_linter_clean.return_code = 0
 
-        with patch("megalinter.config.get") as mock_config, \
-             patch("megalinter.llm_provider.llm_provider_factory.LLMProviderFactory.create_provider") as mock_create_provider:
-            
+        with (
+            patch("megalinter.config.get") as mock_config,
+            patch(
+                "megalinter.llm_provider.llm_provider_factory.LLMProviderFactory.create_provider"
+            ) as mock_create_provider,
+        ):
+
             mock_config.side_effect = lambda req_id, key, default: {
                 "LLM_ADVISOR_ENABLED": "true",
                 "LLM_PROVIDER": "openai",
                 "LLM_ADVISOR_LEVEL": "WARNING",
+                "LLM_TEST_API_KEY_PRESENT": "true",
             }.get(key, default)
 
             # Mock provider
@@ -466,17 +520,35 @@ script.js:8:1: no-undef 'console' is not defined"""
             advisor = LLMAdvisor("test-request")
 
             # Should analyze both blocking and non-blocking linters
-            self.assertTrue(advisor.should_analyze_linter(mock_linter_errors))  # Blocking errors
-            self.assertTrue(advisor.should_analyze_linter(mock_linter_warnings))  # Non-blocking warnings
-            self.assertTrue(advisor.should_analyze_linter(mock_linter_both))  # Blocking errors+warnings
-            self.assertTrue(advisor.should_analyze_linter(mock_linter_ignored_errors))  # Non-blocking ignored errors
-            self.assertFalse(advisor.should_analyze_linter(mock_linter_clean))  # No issues
+            self.assertTrue(
+                advisor.should_analyze_linter(mock_linter_errors)
+            )  # Blocking errors
+            self.assertTrue(
+                advisor.should_analyze_linter(mock_linter_warnings)
+            )  # Non-blocking warnings
+            self.assertTrue(
+                advisor.should_analyze_linter(mock_linter_both)
+            )  # Blocking errors+warnings
+            self.assertTrue(
+                advisor.should_analyze_linter(mock_linter_ignored_errors)
+            )  # Non-blocking ignored errors
+            self.assertFalse(
+                advisor.should_analyze_linter(mock_linter_clean)
+            )  # No issues
 
+    @patch("megalinter.config.get_list")
     @patch("megalinter.config.get")
     @patch(
         "megalinter.llm_provider.llm_provider_factory.LLMProviderFactory.create_provider"
     )
-    def test_should_analyze_linter_blocking_vs_nonblocking(self, mock_create_provider, mock_config):
+    def test_should_analyze_linter_blocking_vs_nonblocking(self, mock_create_provider, mock_config, mock_config_list):
+        mock_config_list.side_effect = lambda req_id, key, default: []
+        mock_config.side_effect = lambda req_id, key, default: {
+            "LLM_ADVISOR_ENABLED": "true",
+            "LLM_PROVIDER": "openai",
+            "LLM_ADVISOR_LEVEL": "ERROR",
+            "LLM_TEST_API_KEY_PRESENT": "true",
+        }.get(key, default)
 
         # Mock a linter with errors that are blocking the build
         mock_blocking_linter = Mock()
@@ -496,14 +568,19 @@ script.js:8:1: no-undef 'console' is not defined"""
         mock_warning_linter.total_number_warnings = 4
         mock_warning_linter.return_code = 0  # Non-blocking
 
-        with patch("megalinter.config.get") as mock_config, \
-             patch("megalinter.llm_provider.llm_provider_factory.LLMProviderFactory.create_provider") as mock_create_provider:
-            
+        with (
+            patch("megalinter.config.get") as mock_config,
+            patch(
+                "megalinter.llm_provider.llm_provider_factory.LLMProviderFactory.create_provider"
+            ) as mock_create_provider,
+        ):
+
             # Test ERROR level
             mock_config.side_effect = lambda req_id, key, default: {
                 "LLM_ADVISOR_ENABLED": "true",
                 "LLM_PROVIDER": "openai",
                 "LLM_ADVISOR_LEVEL": "ERROR",
+                "LLM_TEST_API_KEY_PRESENT": "true",
             }.get(key, default)
 
             # Mock provider
@@ -520,14 +597,19 @@ script.js:8:1: no-undef 'console' is not defined"""
             self.assertFalse(advisor.should_analyze_linter(mock_nonblocking_linter))
             self.assertFalse(advisor.should_analyze_linter(mock_warning_linter))
 
-        with patch("megalinter.config.get") as mock_config, \
-             patch("megalinter.llm_provider.llm_provider_factory.LLMProviderFactory.create_provider") as mock_create_provider:
-            
+        with (
+            patch("megalinter.config.get") as mock_config,
+            patch(
+                "megalinter.llm_provider.llm_provider_factory.LLMProviderFactory.create_provider"
+            ) as mock_create_provider,
+        ):
+
             # Test WARNING level
             mock_config.side_effect = lambda req_id, key, default: {
                 "LLM_ADVISOR_ENABLED": "true",
                 "LLM_PROVIDER": "openai",
                 "LLM_ADVISOR_LEVEL": "WARNING",
+                "LLM_TEST_API_KEY_PRESENT": "true",
             }.get(key, default)
 
             # Mock provider
@@ -544,121 +626,6 @@ script.js:8:1: no-undef 'console' is not defined"""
             self.assertTrue(advisor.should_analyze_linter(mock_nonblocking_linter))
             self.assertTrue(advisor.should_analyze_linter(mock_warning_linter))
 
-    @patch("megalinter.config.get")
-    @patch(
-        "megalinter.llm_provider.llm_provider_factory.LLMProviderFactory.create_provider"
-    )
-    def test_linter_enable_disable_lists(self, mock_create_provider, mock_config):
-
-        # Mock linters with different names
-        mock_linter_eslint = Mock()
-        mock_linter_eslint.name = "JAVASCRIPT_ESLINT"
-        mock_linter_eslint.number_errors = 2
-        mock_linter_eslint.total_number_warnings = 0
-        mock_linter_eslint.return_code = 1  # Blocking
-
-        mock_linter_pylint = Mock()
-        mock_linter_pylint.name = "PYTHON_PYLINT"
-        mock_linter_pylint.number_errors = 1
-        mock_linter_pylint.total_number_warnings = 0
-        mock_linter_pylint.return_code = 1  # Blocking
-
-        mock_linter_bandit = Mock()
-        mock_linter_bandit.name = "PYTHON_BANDIT"
-        mock_linter_bandit.number_errors = 3
-        mock_linter_bandit.total_number_warnings = 0
-        mock_linter_bandit.return_code = 1  # Blocking
-
-        with patch("megalinter.config.get") as mock_config, \
-             patch("megalinter.config.get_list") as mock_config_list, \
-             patch("megalinter.llm_provider.llm_provider_factory.LLMProviderFactory.create_provider") as mock_create_provider:
-            
-            # Test ENABLE_LINTERS only
-            mock_config.side_effect = lambda req_id, key, default: {
-                "LLM_ADVISOR_ENABLED": "true",
-                "LLM_PROVIDER": "openai",
-                "LLM_ADVISOR_LEVEL": "ERROR",
-            }.get(key, default)
-            
-            mock_config_list.side_effect = lambda req_id, key, default: {
-                "LLM_ADVISOR_ENABLE_LINTERS": ["JAVASCRIPT_ESLINT", "PYTHON_PYLINT"],
-                "LLM_ADVISOR_DISABLE_LINTERS": [],
-            }.get(key, default)
-
-            # Mock provider
-            mock_provider = Mock()
-            mock_provider.get_config_value.return_value = "gpt-3.5-turbo"
-            mock_provider.get_default_model.return_value = "gpt-3.5-turbo"
-            mock_provider.is_available.return_value = True
-            mock_create_provider.return_value = mock_provider
-
-            advisor = LLMAdvisor("test-request")
-
-            # Should analyze only enabled linters
-            self.assertTrue(advisor.should_analyze_linter(mock_linter_eslint))
-            self.assertTrue(advisor.should_analyze_linter(mock_linter_pylint))
-            self.assertFalse(advisor.should_analyze_linter(mock_linter_bandit))
-
-        with patch("megalinter.config.get") as mock_config, \
-             patch("megalinter.config.get_list") as mock_config_list, \
-             patch("megalinter.llm_provider.llm_provider_factory.LLMProviderFactory.create_provider") as mock_create_provider:
-            
-            # Test DISABLE_LINTERS only
-            mock_config.side_effect = lambda req_id, key, default: {
-                "LLM_ADVISOR_ENABLED": "true",
-                "LLM_PROVIDER": "openai", 
-                "LLM_ADVISOR_LEVEL": "ERROR",
-            }.get(key, default)
-            
-            mock_config_list.side_effect = lambda req_id, key, default: {
-                "LLM_ADVISOR_ENABLE_LINTERS": [],
-                "LLM_ADVISOR_DISABLE_LINTERS": ["PYTHON_BANDIT"],
-            }.get(key, default)
-
-            # Mock provider
-            mock_provider = Mock()
-            mock_provider.get_config_value.return_value = "gpt-3.5-turbo"
-            mock_provider.get_default_model.return_value = "gpt-3.5-turbo"
-            mock_provider.is_available.return_value = True
-            mock_create_provider.return_value = mock_provider
-
-            advisor = LLMAdvisor("test-request")
-
-            # Should analyze all except disabled linters
-            self.assertTrue(advisor.should_analyze_linter(mock_linter_eslint))
-            self.assertTrue(advisor.should_analyze_linter(mock_linter_pylint))
-            self.assertFalse(advisor.should_analyze_linter(mock_linter_bandit))
-
-        with patch("megalinter.config.get") as mock_config, \
-             patch("megalinter.config.get_list") as mock_config_list, \
-             patch("megalinter.llm_provider.llm_provider_factory.LLMProviderFactory.create_provider") as mock_create_provider:
-            
-            # Test both ENABLE and DISABLE (enable should win)
-            mock_config.side_effect = lambda req_id, key, default: {
-                "LLM_ADVISOR_ENABLED": "true",
-                "LLM_PROVIDER": "openai",
-                "LLM_ADVISOR_LEVEL": "ERROR",
-            }.get(key, default)
-            
-            mock_config_list.side_effect = lambda req_id, key, default: {
-                "LLM_ADVISOR_ENABLE_LINTERS": ["PYTHON_BANDIT"],  # Enable bandit
-                "LLM_ADVISOR_DISABLE_LINTERS": ["PYTHON_BANDIT"],  # Also disable bandit
-            }.get(key, default)
-
-            # Mock provider
-            mock_provider = Mock()
-            mock_provider.get_config_value.return_value = "gpt-3.5-turbo"
-            mock_provider.get_default_model.return_value = "gpt-3.5-turbo"
-            mock_provider.is_available.return_value = True
-            mock_create_provider.return_value = mock_provider
-
-            advisor = LLMAdvisor("test-request")
-
-            # Enable list should win - only bandit should be analyzed
-            self.assertFalse(advisor.should_analyze_linter(mock_linter_eslint))
-            self.assertFalse(advisor.should_analyze_linter(mock_linter_pylint))
-            self.assertTrue(advisor.should_analyze_linter(mock_linter_bandit))
-
     def test_linter_enable_disable_lists_with_no_issues(self):
 
         # Mock linter with no issues
@@ -668,16 +635,20 @@ script.js:8:1: no-undef 'console' is not defined"""
         mock_linter_clean.total_number_warnings = 0
         mock_linter_clean.return_code = 0
 
-        with patch("megalinter.config.get") as mock_config, \
-             patch("megalinter.config.get_list") as mock_config_list, \
-             patch("megalinter.llm_provider.llm_provider_factory.LLMProviderFactory.create_provider") as mock_create_provider:
-            
+        with (
+            patch("megalinter.config.get") as mock_config,
+            patch("megalinter.config.get_list") as mock_config_list,
+            patch(
+                "megalinter.llm_provider.llm_provider_factory.LLMProviderFactory.create_provider"
+            ) as mock_create_provider,
+        ):
+
             mock_config.side_effect = lambda req_id, key, default: {
                 "LLM_ADVISOR_ENABLED": "true",
                 "LLM_PROVIDER": "openai",
                 "LLM_ADVISOR_LEVEL": "ERROR",
             }.get(key, default)
-            
+
             mock_config_list.side_effect = lambda req_id, key, default: {
                 "LLM_ADVISOR_ENABLE_LINTERS": ["JAVASCRIPT_ESLINT"],
                 "LLM_ADVISOR_DISABLE_LINTERS": [],

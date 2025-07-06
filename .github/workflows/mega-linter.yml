@@ -95,6 +95,7 @@ jobs:
           #   }}
 
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           EMAIL_REPORTER_SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }} # ml workflow addtion
 
           # Disable LLM Advisor for bot PRs (dependabot, renovate, etc.)

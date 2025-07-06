@@ -1,4 +1,5 @@
-#!/usr/bin/env python3
+#!/usr/bin/env
+# flake8: noqa: E203
 """
 Template class for custom linters: any linter class in /linters folder must inherit from this class
 The following list of items can/must be overridden on custom linter local class:
@@ -32,8 +33,8 @@ from time import perf_counter
 
 import yaml
 from megalinter import config, pre_post_factory, utils, utils_reporter, utils_sarif
-from megalinter.llm_advisor import LLMAdvisor
 from megalinter.constants import DEFAULT_DOCKER_WORKSPACE_DIR
+from megalinter.llm_advisor import LLMAdvisor
 
 
 class Linter:
@@ -916,18 +917,24 @@ class Linter:
                     )
                     if os.path.isfile(text_file_name):
                         try:
-                            with open(text_file_name, "r", encoding="utf-8") as text_file:
+                            with open(
+                                text_file_name, "r", encoding="utf-8"
+                            ) as text_file:
                                 full_output = text_file.read()
                                 # Extract raw linter output (after "Linter raw log:" separator if present)
                                 separator_pos = full_output.find("Linter raw log:")
                                 if separator_pos != -1:
                                     next_newline = full_output.find("\n", separator_pos)
                                     if next_newline != -1:
-                                        raw_linter_output = full_output[next_newline + 1 :].strip()
+                                        raw_linter_output = full_output[
+                                            next_newline + 1 :
+                                        ].strip()
                                 else:
                                     raw_linter_output = full_output.strip()
                         except Exception as e:
-                            logging.warning(f"Error reading linter output for LLM analysis: {str(e)}")
+                            logging.warning(
+                                f"Error reading linter output for LLM analysis: {str(e)}"
+                            )
 
                 # Get AI suggestions if we have output to analyze
                 if raw_linter_output.strip():
@@ -935,13 +942,18 @@ class Linter:
                         self, raw_linter_output
                     )
                 else:
-                    logging.debug(f"[LLM Advisor] No linter output available for LLM analysis for {self.name}")
+                    logging.debug(
+                        f"[LLM Advisor] No linter output available for LLM analysis for {self.name}"
+                    )
             else:
-                logging.debug(f"[LLM Advisor] LLM advisor not available or not analyzing {self.name}")
+                logging.debug(
+                    f"[LLM Advisor] LLM advisor not available or not analyzing {self.name}"
+                )
         except Exception as e:
-            logging.warning(f"[LLM Advisor] Error initializing LLM advisor for {self.name}: {str(e)}")
+            logging.warning(
+                f"[LLM Advisor] Error initializing LLM advisor for {self.name}: {str(e)}"
+            )
             self.llm_suggestion = None
-
 
         # Delete locally copied remote config file if necessary
         if self.remote_config_file_to_delete is not None:
