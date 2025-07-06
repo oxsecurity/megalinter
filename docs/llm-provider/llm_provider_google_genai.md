@@ -1,3 +1,7 @@
+<div align="center">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/8/8a/Google_Gemini_logo.svg" alt="Google Gemini Logo" style="max-width: 100px; margin-bottom: 1em;" />
+</div>
+
 # Google GenAI Provider
 
 Google's Gemini models offer excellent performance at competitive prices with strong multilingual support.

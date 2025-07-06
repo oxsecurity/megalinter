@@ -1,3 +1,7 @@
+<div align="center">
+  <img src="https://ollama.com/public/ollama.png" alt="Ollama Logo" height="64" />
+</div>
+
 # Ollama Provider
 
 Ollama enables running large language models locally, providing complete privacy and no API costs.

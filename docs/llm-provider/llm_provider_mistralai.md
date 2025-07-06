@@ -1,3 +1,7 @@
+<div align="center">
+  <img src="https://mistral.ai/favicon.ico" alt="Mistral AI Logo" style="max-width: 120px; margin-bottom: 1em;" />
+</div>
+
 # Mistral AI Provider
 
 Mistral AI provides high-quality language models with European data residency and competitive pricing.

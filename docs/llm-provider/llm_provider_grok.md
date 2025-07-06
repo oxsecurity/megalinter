@@ -1,3 +1,7 @@
+<div align="center">
+  <img src="https://grok.com/favicon.ico" alt="Grok Logo" height="64" />
+</div>
+
 # Grok Provider
 
 Grok is xAI's conversational AI model, designed for real-time information and engaging interactions. It uses the OpenAI-compatible API format.

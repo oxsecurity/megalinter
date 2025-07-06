@@ -1,3 +1,7 @@
+<div align="center">
+  <img src="https://openai.com/favicon.ico" alt="OpenAI Logo" height="64" />
+</div>
+
 # OpenAI Provider
 
 OpenAI provides state-of-the-art language models offering excellent code analysis and fix suggestions.

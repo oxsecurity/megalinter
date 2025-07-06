@@ -1,3 +1,7 @@
+<div align="center">
+  <img src="https://avatars.githubusercontent.com/u/148330874?s=200&v=4" alt="DeepSeek Logo" height="64" />
+</div>
+
 # DeepSeek Provider
 
 DeepSeek offers specialized code-focused models at competitive prices, optimized for programming tasks.

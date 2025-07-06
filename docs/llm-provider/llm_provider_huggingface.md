@@ -1,3 +1,7 @@
+<div align="center">
+  <img src="https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.png" alt="Hugging Face Logo" style="max-width: 100px; margin-bottom: 1em;" />
+</div>
+
 # Hugging Face Provider
 
 Hugging Face provides access to thousands of open-source models that can run locally or via their inference API.

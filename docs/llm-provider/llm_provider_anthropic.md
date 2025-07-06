@@ -1,3 +1,7 @@
+<div align="center">
+  <img src="https://mintlify.s3.us-west-1.amazonaws.com/anthropic/images/claude-wordmark-slate.svg" alt="Anthropic Claude Logo" height="64" />
+</div>
+
 # Anthropic Provider
 
 Anthropic's Claude models excel at code analysis with a strong focus on safety and helpful responses.
