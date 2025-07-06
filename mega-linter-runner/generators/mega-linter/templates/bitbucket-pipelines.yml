@@ -13,7 +13,7 @@ pipelines:
             # Disable LLM Advisor for bot PRs (dependabot, renovate, etc.)
             # Note: Bitbucket has limited access to PR metadata, this is a basic check
             - |
-              if [[ "$BITBUCKET_BRANCH" =~ ^(dependabot|renovate)/ ]] || 
+              if [[ "$BITBUCKET_BRANCH" =~ ^(dependabot|renovate)/ ]] ||
                  [[ "$BITBUCKET_PR_TITLE" =~ ^(chore|fix|deps?|bump)(\(.*\))?: ]] ||
                  [[ "$BITBUCKET_STEP_TRIGGERER_UUID" =~ dependabot|renovate ]]; then
                 export LLM_ADVISOR_ENABLED=false
