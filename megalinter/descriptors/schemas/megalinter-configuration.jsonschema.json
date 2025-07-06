@@ -10675,6 +10675,137 @@
       "title": "Linter rules path",
       "type": "string"
     },
+    "LLM_ADVISOR_DISABLE_LINTERS": {
+      "$id": "#/properties/LLM_ADVISOR_DISABLE_LINTERS",
+      "description": "If LLM_ADVISOR_DISABLE_LINTERS is set, LLM advisor will NOT process these ones",
+      "examples": [
+        [
+          "JAVASCRIPT_ES",
+          "PYTHON_PYLINT"
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/enum_linter_keys"
+      },
+      "title": "LLM Advisor Disabled linter keys",
+      "type": "array"
+    },
+    "LLM_ADVISOR_ENABLED": {
+      "$id": "#/properties/LLM_ADVISOR_ENABLED",
+      "default": "false",
+      "description": "Enable AI-powered fix suggestions using Large Language Models",
+      "examples": [
+        "true",
+        "false"
+      ],
+      "title": "LLM Advisor enabled",
+      "type": "string"
+    },
+    "LLM_ADVISOR_ENABLE_LINTERS": {
+      "$id": "#/properties/LLM_ADVISOR_ENABLE_LINTERS",
+      "description": "If LLM_ADVISOR_ENABLE_LINTERS is set, LLM advisor will only process these ones",
+      "examples": [
+        [
+          "JAVASCRIPT_ES",
+          "PYTHON_PYLINT"
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/enum_linter_keys"
+      },
+      "title": "LLM Advisor Enabled linter keys",
+      "type": "array"
+    },
+    "LLM_ADVISOR_LEVEL": {
+      "$id": "#/properties/LLM_ADVISOR_LEVEL",
+      "default": "ERROR",
+      "description": "When to trigger AI suggestions: ERROR (only for blocking linters with return_code != 0) or WARNING (for both blocking and non-blocking linters)",
+      "enum": [
+        "ERROR",
+        "WARNING"
+      ],
+      "examples": [
+        "ERROR",
+        "WARNING"
+      ],
+      "title": "LLM Advisor trigger level",
+      "type": "string"
+    },
+    "LLM_ADVISOR_POSITION": {
+      "$id": "#/properties/LLM_ADVISOR_POSITION",
+      "default": "after_linter_output",
+      "description": "Display LLM Advisor suggestions before or after linter output",
+      "enum": [
+        "after_linter_output",
+        "before_linter_output"
+      ],
+      "examples": [
+        "after_linter_output",
+        "before_linter_output"
+      ],
+      "title": "LLM Advisor trigger level",
+      "type": "string"
+    },
+    "LLM_MAX_TOKENS": {
+      "$id": "#/properties/LLM_MAX_TOKENS",
+      "default": "1000",
+      "description": "Maximum number of tokens for LLM response",
+      "examples": [
+        "500",
+        "1000",
+        "2000"
+      ],
+      "title": "LLM maximum tokens",
+      "type": "string"
+    },
+    "LLM_MODEL_NAME": {
+      "$id": "#/properties/LLM_MODEL_NAME",
+      "description": "Name of the LLM model to use (provider-specific)",
+      "examples": [
+        "gpt-3.5-turbo",
+        "gpt-4",
+        "claude-3-haiku-20240307",
+        "gemini-pro"
+      ],
+      "title": "LLM model name",
+      "type": "string"
+    },
+    "LLM_PROVIDER": {
+      "$id": "#/properties/LLM_PROVIDER",
+      "default": "openai",
+      "description": "LLM provider to use for AI suggestions",
+      "enum": [
+        "openai",
+        "anthropic",
+        "google",
+        "huggingface",
+        "mistral",
+        "deepseek",
+        "grok",
+        "ollama"
+      ],
+      "examples": [
+        "openai",
+        "anthropic",
+        "google",
+        "ollama"
+      ],
+      "title": "LLM provider",
+      "type": "string"
+    },
+    "LLM_TEMPERATURE": {
+      "$id": "#/properties/LLM_TEMPERATURE",
+      "default": "0.1",
+      "description": "Temperature for LLM generation (0.0 = deterministic, 1.0 = creative)",
+      "examples": [
+        "0.0",
+        "0.1",
+        "0.5",
+        "1.0"
+      ],
+      "title": "LLM temperature",
+      "type": "string"
+    },
     "LOG_FILE": {
       "$id": "#/properties/LOG_FILE",
       "default": "mega-linter.log",
@@ -16208,11 +16339,13 @@
     },
     "REPORTERS_MARKDOWN_SUMMARY_TYPE": {
       "$id": "#/properties/REPORTERS_MARKDOWN_SUMMARY_TYPE",
-      "default": "sections",
-      "description": "Display summary in PR/MR comments as sections or as a table",
+      "default": "table-sections",
+      "description": "Display summary in PR/MR comments as sections, table or both",
       "enum": [
         "sections",
-        "table"
+        "table",
+        "sections-table",
+        "table-sections"
       ],
       "title": "Reporters Markdown Summary type",
       "type": "string"

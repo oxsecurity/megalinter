@@ -17,7 +17,8 @@ megalinter/
 │   ├── flavor_factory.py  # Factory for MegaLinter flavors
 │   ├── descriptors/       # YAML descriptor files for each linter
 │   ├── linters/           # Custom linter implementations
-│   └── reporters/         # Report generators
+│   ├── reporters/         # Report generators
+│   └── llm_advisor.py     # LLM Advisor for AI-powered fix suggestions
 ├── flavors/               # Different MegaLinter variants (language-specific)
 ├── docs/                  # Documentation
 ├── mega-linter-runner/    # NPM package for local execution
@@ -56,12 +57,29 @@ megalinter/
 - Updates flavor configurations
 - Validates descriptor schemas
 
+**LLM Advisor (llm_advisor.py)**: AI-powered fix suggestions
+
+- Integrates with multiple LLM providers via LangChain
+- Analyzes linter errors and provides intelligent fix suggestions
+- Supports OpenAI, Anthropic, Google Gemini, and local Ollama models
+- Generates context-aware recommendations for code improvements
+
 ### 3. Linter Categories
 
 - **Languages**: Programming languages (Python, Java, JavaScript, etc.)
 - **Formats**: Data formats (JSON, YAML, XML, etc.)
 - **Tooling formats**: Infrastructure files (Terraform, Docker, etc.)
 - **Other**: Repository-level tools (security, copy-paste detection, etc.)
+
+### 4. AI-Powered Features
+
+**LLM Advisor Integration**:
+
+- Configurable AI-powered fix suggestions for linter errors
+- Multi-provider support (OpenAI, Anthropic, Google, Ollama)
+- Context-aware analysis using code snippets and error details
+- Integrated into markdown reports with actionable recommendations
+- Optional feature with privacy controls (local/cloud processing)
 
 ## Development Guidelines
 
@@ -156,6 +174,33 @@ megalinter/tests/test_megalinter/
 - Use type hints where possible
 - Add docstrings for public methods
 - Handle errors gracefully with appropriate logging
+- Do not test if imports work, assume they are always available
+- Place imports at the top of the files
+- Do NOT use docstrings for classes and methods.
+
+### Copilot CLI Commands
+
+- If you want to run python scripts, always **activate python venv** before.
+- If there is no venv, or if it not up to date,S run `make bootstrap` first to set up the environment
+
+### Python Package Management
+
+MegaLinter uses **uv** (fast Python package installer) and **hatch** (modern Python project manager):
+
+#### Adding Python Dependencies
+
+1. **Core dependencies**: Add to `dependencies` array in `pyproject.toml`
+2. **Optional dependencies**: Add to `[project.optional-dependencies]` sections
+3. **Development dependencies**: Add to `.config/python/dev/requirements.txt`
+4. **Lock file**: Always run `uv lock` after modifying `pyproject.toml`
+5. **Install locally**: Run `make bootstrap` or `uv pip install -e .`
+
+#### Common Commands
+
+- `make bootstrap` - Set up development environment
+- `uv lock` - Update dependency lock file
+- `uv pip install -e .` - Install project in editable mode
+- `hatch shell` - Enter hatch development environment
 
 ### Descriptor Guidelines
 
@@ -169,6 +214,8 @@ megalinter/tests/test_megalinter/
 - Auto-generated from descriptors - don't edit generated files directly
 - Update descriptor metadata to improve documentation
 - Include examples and configuration tips
+- Built with mkdocs-material then displayed in the MegaLinter documentation site
+- Markdown files must be mkdos-material compliant, meaning always have a blank line after a header (ex: ##) or before a bulleted list (ex: - item1)
 
 ## Common Operations
 

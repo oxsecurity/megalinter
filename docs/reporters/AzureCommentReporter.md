@@ -11,6 +11,8 @@ Posts Mega-Linter results summary in the comments of the related Azure Pipelines
 
 Click on **MegaLinter-reports** artifact from the main job log to view or download results.
 
+If [LLM Advisor](../llm-advisor.md) is activated, it will also show its suggestions to fix linter errors.
+
 ![Screenshot](../assets/images/AzureCommentReporter.jpg)
 
 ## Configuration
@@ -43,11 +45,11 @@ Example:
 
 ![Screenshot](../assets/images/AzureReporterConfigContribute.jpg)
 
-| Variable                                   | Description                                                                        | Default value |
-|--------------------------------------------|------------------------------------------------------------------------------------|---------------|
-| AZURE_COMMENT_REPORTER                     | Activates/deactivates reporter                                                     | `true`        |
-| AZURE_COMMENT_REPORTER_LINKS_TYPE          | Set to `build` if you want comments linking to target Build and not artifacts page | `artifacts`   |
-| AZURE_COMMENT_REPORTER_REPLACE_WITH_SPACES | Do not replaces %20 by spaces in repo name if set to false                         | `true`        |
-| REPORTERS_MARKDOWN_TYPE                    | Set to `simple` to avoid external images in generated markdown                     | `advanced`    |
-| REPORTERS_MARKDOWN_SUMMARY_TYPE            | Display summary in PR/MR comments as sections or as a table                        | `sections`    |
-| JOB_SUMMARY_ADDITIONAL_MARKDOWN            | Custom markdown to add at the end of the summary message                           | <!-- -->      |
+| Variable                                   | Description                                                                                             | Default value    |
+|--------------------------------------------|---------------------------------------------------------------------------------------------------------|------------------|
+| AZURE_COMMENT_REPORTER                     | Activates/deactivates reporter                                                                          | `true`           |
+| AZURE_COMMENT_REPORTER_LINKS_TYPE          | Set to `build` if you want comments linking to target Build and not artifacts page                      | `artifacts`      |
+| AZURE_COMMENT_REPORTER_REPLACE_WITH_SPACES | Do not replaces %20 by spaces in repo name if set to false                                              | `true`           |
+| REPORTERS_MARKDOWN_TYPE                    | Set to `simple` to avoid external images in generated markdown                                          | `advanced`       |
+| REPORTERS_MARKDOWN_SUMMARY_TYPE            | Display summary in PR/MR comments as `sections`, `table` or both (`sections-table` or `table-sections`) | `table-sections` |
+| JOB_SUMMARY_ADDITIONAL_MARKDOWN            | Custom markdown to add at the end of the summary message                                                | <!-- -->         |

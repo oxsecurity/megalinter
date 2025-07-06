@@ -90,6 +90,7 @@ class TextReporter(Reporter):
                 text_report_lines += [f"Linter raw log:\n{stdout}"]
         # Complete lines
         text_report_lines += self.master.complete_text_reporter_report(self)
+
         # Write to file
         text_report_sub_folder = config.get(
             self.master.request_id, "TEXT_REPORTER_SUB_FOLDER", "linters_logs"
@@ -97,7 +98,7 @@ class TextReporter(Reporter):
         text_file_name = (
             f"{self.report_folder}{os.path.sep}"
             f"{text_report_sub_folder}{os.path.sep}"
-            f"{self.master.status.upper()}-{self.master.name}.log"
+            f"{self.master.name}-{self.master.status.upper()}.log"
         )
         if not os.path.isdir(os.path.dirname(text_file_name)):
             os.makedirs(os.path.dirname(text_file_name), exist_ok=True)
@@ -107,3 +108,24 @@ class TextReporter(Reporter):
             logging.debug(
                 f"[Text Reporter] Generated {self.name} report: {text_file_name}"
             )
+
+        ## Add LLM suggestions if available, in same file name with "suggestions" suffix
+        if (
+            self.master.llm_suggestion is not None
+        ):
+            suggestions_report_lines = [
+                f"🤖 AI-Powered Fix Suggestions for {self.master.llm_suggestion['linter']} (by {self.master.llm_suggestion['provider']} {self.master.llm_suggestion['model']})",
+                "",
+                f"  {self.master.llm_suggestion['text']}",
+            ]
+            suggestions_file_name = (
+                f"{self.report_folder}{os.path.sep}"
+                f"{text_report_sub_folder}{os.path.sep}"
+                f"{self.master.name}-advisor-suggestions.log"
+            )
+            with open(suggestions_file_name, "w", encoding="utf-8") as suggestions_file:
+                suggestions_file_content = "\n".join(suggestions_report_lines) + "\n"
+                suggestions_file.write(suggestions_file_content)
+                logging.debug(
+                    f"[Text Reporter] Generated {self.name} LLM Advisor suggestions: {suggestions_file_name}"
+                )

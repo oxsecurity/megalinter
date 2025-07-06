@@ -124,6 +124,8 @@ CVE-2025-46569
 CVE-2025-48387
 # https://avd.aquasec.com/nvd/cve-2025-5889 : brace-expansion, ddos attack, not applicable in MegaLinter context
 CVE-2025-5889
+# https://avd.aquasec.com/nvd/cve-2025-3730 : torch, not applicable in MegaLinter context    
+CVE-2025-3730
 # Dockerfile
 DS001
 DS002

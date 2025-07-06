@@ -23,6 +23,14 @@ dependencies = [
   "gitpython",
   "importlib-metadata>=3.10; python_version < '3.9'",
   "jsonpickle",
+  "langchain-core",
+  "langchain-openai",
+  "langchain-anthropic",
+  "langchain-google-genai",
+  "langchain-mistralai",
+  "langchain-ollama",
+  "langchain-deepseek",
+  "langchain-community",
   "multiprocessing_logging",
   "pygithub",
   "pytablewriter",
@@ -34,6 +42,18 @@ dependencies = [
   "terminaltables",
   "termcolor",
   "urllib3>=2.5.0",
+]
+
+[project.optional-dependencies]
+huggingface = [
+  "langchain-huggingface",
+  "transformers",
+  "torch",
+]
+all-llm = [
+  "langchain-huggingface",
+  "transformers",
+  "torch",
 ]
 
 [project.urls]

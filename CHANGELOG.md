@@ -9,6 +9,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
 - Core
+  - New LLM Advisor: call external LLMs to get hints to solve linter errors, available in:
+    - Console Reporter
+    - Text Reporter
+    - Git platforms PR/MR comments Reporter
   - Add copilot instructions for GitHub Copilot
 
 - New linters
@@ -19,6 +23,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Linters enhancements
   - PHP-CS-Fixer is able to run on PHP 8.4 without error (change default configuration) by @llaville
+  - [cspell](https://megalinter.io/latest/descriptors/spell_cspell/): Filter output lines that do not contain found issues
 
 - Fixes
 
@@ -27,18 +32,22 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Markdown summary reporter:
     - Write a file for Github integration if GITHUB_STEP_SUMMARY is set
     - Truncate less linter output lines
+  - Text reporter: Change the output file names to put the linter name first, then the status
 
 - Doc
   - Update documentation in all megalinter descriptor files to improve accuracy and consistency
   - Fix incorrect information in linters documentation and descriptors
   - Remove dead links
   - Add linter description (linter_text) in all linter descriptor, to generate a more exhaustive documentation.
+  - Update contributing guide to explain how to manage python dependencies in the codebase
 
 - Flavors
 
 - CI
+  - Update default MegaLinter CI/CD workflows to disable LLM_ADVISOR in case of bot pull requests
 
 - mega-linter-runner
+  - Add all CI/CD providers in the --install command
 
 - Linter versions upgrades (N)
   - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.16.0 to **1.16.1** on 2025-06-16

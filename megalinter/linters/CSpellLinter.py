@@ -60,12 +60,23 @@ class CSpellLinter(Linter):
             self.cli_lint_extra_args_after.append(".")
         return super().build_lint_command(file)
 
-    # Remove temp file with file names if existing
+
     def execute_lint_command(self, command):
-        res = super().execute_lint_command(command)
+        return_code, return_stdout = super().execute_lint_command(command)
+        # Filter out progress lines that don't contain spelling errors
+        if return_stdout:
+            lines = return_stdout.split('\n')
+            filtered_lines = []
+            for line in lines:
+                # Skip lines that match the pattern "XXX/XXX filename" but don't contain "Unknown word"
+                if re.match(r'^\s*\d+/\d+\s+\S+', line) and 'Unknown word' not in line:
+                    continue
+                filtered_lines.append(line)
+            return_stdout = '\n'.join(filtered_lines)
+        # Remove temp file with file names if existing
         if self.temp_file_name is not None:
             os.remove(self.temp_file_name)
-        return res
+        return return_code, return_stdout
 
     # Provide additional details in text reporter logs
     # noinspection PyMethodMayBeStatic

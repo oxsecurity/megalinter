@@ -14,20 +14,47 @@ You may activate [File.io reporter](https://megalinter.io/reporters/FileIoReport
 
 ```groovy
 // Lint with MegaLinter: https://megalinter.io/
-stage('MegaLinter') {
-    agent {
-        docker {
-            image 'oxsecurity/megalinter:v8'
-            args "-u root -e VALIDATE_ALL_CODEBASE=true -v ${WORKSPACE}:/tmp/lint --entrypoint=''"
-            reuseNode true
+pipeline {
+    agent any
+    
+    environment {
+        // All available variables are described in documentation
+        // https://megalinter.io/latest/config-file/
+        DEFAULT_WORKSPACE = "${WORKSPACE}"
+        
+        // Disable LLM Advisor for bot PRs (dependabot, renovate, etc.)
+        // Note: Jenkins has limited access to PR metadata, this is a basic check
+        LLM_ADVISOR_ENABLED = script {
+            def branchName = env.BRANCH_NAME ?: env.GIT_BRANCH ?: ''
+            def changeAuthor = env.CHANGE_AUTHOR ?: ''
+            def changeTitle = env.CHANGE_TITLE ?: ''
+            
+            if (branchName =~ /^(dependabot|renovate)\/.*/ ||
+                changeAuthor =~ /^(dependabot|renovate)(\[bot\])?$/ ||
+                changeTitle =~ /^(chore|fix|deps?|bump)(\(.*\))?: /) {
+                return 'false'
+            }
+            return 'true'
         }
     }
-    steps {
-        sh '/entrypoint.sh'
-    }
-    post {
-        always {
-            archiveArtifacts allowEmptyArchive: true, artifacts: 'mega-linter.log,megalinter-reports/**/*', defaultExcludes: false, followSymlinks: false
+    
+    stages {
+        stage('MegaLinter') {
+            agent {
+                docker {
+                    image 'oxsecurity/megalinter:v8'
+                    args "-u root -e VALIDATE_ALL_CODEBASE=true -v ${WORKSPACE}:/tmp/lint -e DEFAULT_WORKSPACE=/tmp/lint -e LLM_ADVISOR_ENABLED=${LLM_ADVISOR_ENABLED} --entrypoint=''"
+                    reuseNode true
+                }
+            }
+            steps {
+                sh '/entrypoint.sh'
+            }
+            post {
+                always {
+                    archiveArtifacts allowEmptyArchive: true, artifacts: 'mega-linter.log,megalinter-reports/**/*', defaultExcludes: false, followSymlinks: false
+                }
+            }
         }
     }
 }

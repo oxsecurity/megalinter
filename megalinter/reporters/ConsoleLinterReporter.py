@@ -150,6 +150,19 @@ class ConsoleLinterReporter(Reporter):
                 logging.error(f"--Error detail:\n{stdout}")
             elif self.report_type == "detailed":
                 logging.info(f"--Log detail:\n{stdout}")
+        # Display LLM Avisor suggestions if available
+        if (
+            self.master.llm_suggestion is not None
+        ):
+            logging.info("")
+            logging.info(
+                utils.blue(
+                    f"\n🤖 AI-Powered Fix Suggestions for {self.master.llm_suggestion['linter']} (by {self.master.llm_suggestion['provider']} {self.master.llm_suggestion['model']})"
+                )
+            )
+            logging.info(
+                f"{self.master.llm_suggestion['text']}\n"
+            )
         # Post-commands logs
         if len(self.master.log_lines_post) > 0:
             logging.info("\n".join(self.master.log_lines_post))
