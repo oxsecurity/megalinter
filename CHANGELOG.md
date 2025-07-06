@@ -39,10 +39,12 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Fix incorrect information in linters documentation and descriptors
   - Remove dead links
   - Add linter description (linter_text) in all linter descriptor, to generate a more exhaustive documentation.
+  - Update contributing guide to explain how to manage python dependencies in the codebase
 
 - Flavors
 
 - CI
+  - Update default MegaLinter CI/CD workflows to disable LLM_ADVISOR in case of bot pull requests
 
 - mega-linter-runner
   - Add all CI/CD providers in the --install command
