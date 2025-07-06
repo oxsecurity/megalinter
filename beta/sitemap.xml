@@ -149,6 +149,14 @@
          <lastmod>2025-07-06</lastmod>
     </url>
     <url>
+         <loc>https://megalinter.io/beta/llm-advisor/</loc>
+         <lastmod>2025-07-06</lastmod>
+    </url>
+    <url>
+         <loc>https://megalinter.io/beta/llm-providers/</loc>
+         <lastmod>2025-07-06</lastmod>
+    </url>
+    <url>
          <loc>https://megalinter.io/beta/mega-linter-runner/</loc>
          <lastmod>2025-07-06</lastmod>
     </url>
@@ -1482,6 +1490,38 @@
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/yamllint/</loc>
+         <lastmod>2025-07-06</lastmod>
+    </url>
+    <url>
+         <loc>https://megalinter.io/beta/llm-provider/llm_provider_anthropic/</loc>
+         <lastmod>2025-07-06</lastmod>
+    </url>
+    <url>
+         <loc>https://megalinter.io/beta/llm-provider/llm_provider_deepseek/</loc>
+         <lastmod>2025-07-06</lastmod>
+    </url>
+    <url>
+         <loc>https://megalinter.io/beta/llm-provider/llm_provider_google_genai/</loc>
+         <lastmod>2025-07-06</lastmod>
+    </url>
+    <url>
+         <loc>https://megalinter.io/beta/llm-provider/llm_provider_grok/</loc>
+         <lastmod>2025-07-06</lastmod>
+    </url>
+    <url>
+         <loc>https://megalinter.io/beta/llm-provider/llm_provider_huggingface/</loc>
+         <lastmod>2025-07-06</lastmod>
+    </url>
+    <url>
+         <loc>https://megalinter.io/beta/llm-provider/llm_provider_mistralai/</loc>
+         <lastmod>2025-07-06</lastmod>
+    </url>
+    <url>
+         <loc>https://megalinter.io/beta/llm-provider/llm_provider_ollama/</loc>
+         <lastmod>2025-07-06</lastmod>
+    </url>
+    <url>
+         <loc>https://megalinter.io/beta/llm-provider/llm_provider_openai/</loc>
          <lastmod>2025-07-06</lastmod>
     </url>
     <url>
