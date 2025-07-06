@@ -10664,30 +10664,15 @@
       "title": "Pre commands for LATEX descriptor",
       "type": "array"
     },
-    "LLM_ADVISOR_ENABLED": {
-      "$id": "#/properties/LLM_ADVISOR_ENABLED",
-      "default": "false",
-      "description": "Enable AI-powered fix suggestions using Large Language Models",
+    "LINTER_RULES_PATH": {
+      "$id": "#/properties/LINTER_RULES_PATH",
+      "default": ".github/linters",
+      "description": "Directory for all linter configuration rules. Can be a local folder or a remote URL. Not necessary if your linters configuration files are at the root of your repository",
       "examples": [
-        "true",
-        "false"
+        "myrulesfolder",
+        "https://raw.githubusercontent.com/some_org/some_repo/mega-linter-rules"
       ],
-      "title": "LLM Advisor enabled",
-      "type": "string"
-    },
-    "LLM_ADVISOR_LEVEL": {
-      "$id": "#/properties/LLM_ADVISOR_LEVEL",
-      "default": "ERROR",
-      "description": "When to trigger AI suggestions: ERROR (only for blocking linters with return_code != 0) or WARNING (for both blocking and non-blocking linters)",
-      "enum": [
-        "ERROR",
-        "WARNING"
-      ],
-      "examples": [
-        "ERROR",
-        "WARNING"
-      ],
-      "title": "LLM Advisor trigger level",
+      "title": "Linter rules path",
       "type": "string"
     },
     "LLM_ADVISOR_DISABLE_LINTERS": {
@@ -10705,6 +10690,17 @@
       "title": "LLM Advisor Disabled linter keys",
       "type": "array"
     },
+    "LLM_ADVISOR_ENABLED": {
+      "$id": "#/properties/LLM_ADVISOR_ENABLED",
+      "default": "false",
+      "description": "Enable AI-powered fix suggestions using Large Language Models",
+      "examples": [
+        "true",
+        "false"
+      ],
+      "title": "LLM Advisor enabled",
+      "type": "string"
+    },
     "LLM_ADVISOR_ENABLE_LINTERS": {
       "$id": "#/properties/LLM_ADVISOR_ENABLE_LINTERS",
       "description": "If LLM_ADVISOR_ENABLE_LINTERS is set, LLM advisor will only process these ones",
@@ -10719,6 +10715,21 @@
       },
       "title": "LLM Advisor Enabled linter keys",
       "type": "array"
+    },
+    "LLM_ADVISOR_LEVEL": {
+      "$id": "#/properties/LLM_ADVISOR_LEVEL",
+      "default": "ERROR",
+      "description": "When to trigger AI suggestions: ERROR (only for blocking linters with return_code != 0) or WARNING (for both blocking and non-blocking linters)",
+      "enum": [
+        "ERROR",
+        "WARNING"
+      ],
+      "examples": [
+        "ERROR",
+        "WARNING"
+      ],
+      "title": "LLM Advisor trigger level",
+      "type": "string"
     },
     "LLM_ADVISOR_POSITION": {
       "$id": "#/properties/LLM_ADVISOR_POSITION",
@@ -10793,17 +10804,6 @@
         "1.0"
       ],
       "title": "LLM temperature",
-      "type": "string"
-    },
-    "LINTER_RULES_PATH": {
-      "$id": "#/properties/LINTER_RULES_PATH",
-      "default": ".github/linters",
-      "description": "Directory for all linter configuration rules. Can be a local folder or a remote URL. Not necessary if your linters configuration files are at the root of your repository",
-      "examples": [
-        "myrulesfolder",
-        "https://raw.githubusercontent.com/some_org/some_repo/mega-linter-rules"
-      ],
-      "title": "Linter rules path",
       "type": "string"
     },
     "LOG_FILE": {
