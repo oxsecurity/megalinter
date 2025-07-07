@@ -105,6 +105,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [bandit](https://bandit.readthedocs.io/en/latest/) from 1.8.5 to **1.8.6** on 2025-07-06
   - [secretlint](https://github.com/secretlint/secretlint) from 10.1.1 to **10.2.0** on 2025-07-06
   - [snakemake](https://snakemake.github.io/) from 9.6.3 to **9.7.1** on 2025-07-06
+  - [kics](https://www.kics.io) from 2.1.10 to **2.1.11** on 2025-07-07
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15
