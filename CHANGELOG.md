@@ -101,6 +101,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [snakemake](https://snakemake.github.io/) from 9.6.2 to **9.6.3** on 2025-07-05
   - [psalm](https://psalm.dev) from Psalm.6.12.0@ to **Psalm.6.12.1@** on 2025-07-06
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 9.1.2 to **9.1.3** on 2025-07-06
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.76.0 to **3.77.0** on 2025-07-06
+  - [bandit](https://bandit.readthedocs.io/en/latest/) from 1.8.5 to **1.8.6** on 2025-07-06
+  - [secretlint](https://github.com/secretlint/secretlint) from 10.1.1 to **10.2.0** on 2025-07-06
+  - [snakemake](https://snakemake.github.io/) from 9.6.3 to **9.7.1** on 2025-07-06
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15

@@ -21,8 +21,8 @@ class LLMAdvisor:
         self.provider_name = None
         self.model_name = None
         self.advisor_level = "ERROR"  # Always set, even if disabled
-        self.enable_linters = []
-        self.disable_linters = []
+        self.enable_linters: list[str] = []
+        self.disable_linters: list[str] = []
 
         # Load configuration
         self._load_config()
