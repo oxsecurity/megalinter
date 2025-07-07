@@ -3854,7 +3854,7 @@
 <p>Bandit is essential for maintaining secure Python codebases and is widely used in security-conscious development environments.</p>
 <h2 id="bandit-documentation">bandit documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>1.8.5</strong></li>
+<li>Version in MegaLinter: <strong>1.8.6</strong></li>
 <li>Visit <a href="https://bandit.readthedocs.io/en/latest/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://bandit.readthedocs.io/en/latest/config.html#" target="_blank">How to configure bandit rules</a><ul>
 <li>If custom <code>.bandit.yml</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.bandit.yml" target="_blank">.bandit.yml</a> will be used</li>
@@ -4202,6 +4202,7 @@ The following tests were discovered and loaded:
   B612  logging_config_insecure_listen
   B613  trojansource
   B614  pytorch_load
+  B615  huggingface_unsafe_download
   B701  jinja2_autoescape_false
   B702  use_of_mako_templates
   B703  django_mark_safe
@@ -4212,15 +4213,15 @@ The following tests were discovered and loaded:
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile"># renovate: datasource=pypi depName=bandit
-ARG PIP_BANDIT_VERSION=1.8.5
+ARG PIP_BANDIT_VERSION=1.8.6
 # renovate: datasource=pypi depName=bandit_sarif_formatter
 ARG PIP_BANDIT_SARIF_FORMATTER_VERSION=1.1.1
 </code></pre>
 <ul>
 <li>PIP packages (Python):<ul>
-<li><a href="https://pypi.org/project/bandit/1.8.5">bandit==1.8.5</a></li>
+<li><a href="https://pypi.org/project/bandit/1.8.6">bandit==1.8.6</a></li>
 <li><a href="https://pypi.org/project/bandit_sarif_formatter/1.1.1">bandit_sarif_formatter==1.1.1</a></li>
-<li><a href="https://pypi.org/project/bandit[toml]/1.8.5">bandit[toml]==1.8.5</a></li>
+<li><a href="https://pypi.org/project/bandit[toml]/1.8.6">bandit[toml]==1.8.6</a></li>
 </ul>
 </li>
 </ul>

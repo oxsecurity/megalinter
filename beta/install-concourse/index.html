@@ -3725,18 +3725,6 @@
             - |
               cd repo
               export DEFAULT_WORKSPACE=$(pwd)
-
-              # Disable LLM Advisor for bot PRs (dependabot, renovate, etc.)
-              # Note: Concourse CI has limited access to PR metadata, this is a basic check
-              # Users should manually configure this based on their pipeline setup
-              if [[ "${BUILD_PIPELINE_NAME:-}" =~ (dependabot|renovate) ]] ||
-                 [[ "${BUILD_JOB_NAME:-}" =~ (dependabot|renovate) ]] ||
-                 [[ "${GIT_BRANCH:-}" =~ ^(dependabot|renovate)/ ]]; then
-                export LLM_ADVISOR_ENABLED=false
-              else
-                export LLM_ADVISOR_ENABLED=true
-              fi
-
               bash -ex /entrypoint.sh
               ## doing this because concourse doesn't work as other CI systems
           # params:

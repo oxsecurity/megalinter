@@ -3732,56 +3732,34 @@
 <p>You can configure a <a href="https://learn.microsoft.com/en-us/azure/devops/repos/git/branch-policies?view=azure-devops&amp;tabs=browser#build-validation">build validation</a> branch policy against a single repository or across all repositories. If you configure across all repositories then your pipeline is stored in a central repository.</p>
 <h2 id="single-repository">Single Repository</h2>
 <p>Add the following to an <code>azure-pipelines.yaml</code> file within your code repository:</p>
-<pre><code class="language-yaml"># Run MegaLinter to detect linting and security issues
-trigger:
-  - main
+<pre><code class="language-yaml">  # Run MegaLinter to detect linting and security issues
+  - job: MegaLinter
+    pool:
+      vmImage: ubuntu-latest
+    steps:
+      # Checkout repo
+      - checkout: self
 
-pool:
-  vmImage: ubuntu-latest
+      # Pull MegaLinter docker image
+      - script: docker pull oxsecurity/megalinter:v8
+        displayName: Pull MegaLinter
 
-variables:
-  # All available variables are described in documentation
-  # https://megalinter.io/latest/config-file/
-  DEFAULT_WORKSPACE: $(System.DefaultWorkingDirectory)
+      # Run MegaLinter
+      - script: |
+          docker run -v $(System.DefaultWorkingDirectory):/tmp/lint \
+            --env-file &lt;(env | grep -e SYSTEM_ -e BUILD_ -e TF_ -e AGENT_) \
+            -e SYSTEM_ACCESSTOKEN=$(System.AccessToken) \
+            -e GIT_AUTHORIZATION_BEARER=$(System.AccessToken) \
+            oxsecurity/megalinter:v8
+        displayName: Run MegaLinter
 
-  # Disable LLM Advisor for bot PRs (dependabot, renovate, etc.)
-  # Note: Azure Pipelines has limited access to PR author info, this is a basic check
-  LLM_ADVISOR_ENABLED: &gt;-
-    ${{ not(or(
-      contains(variables['Build.SourceBranch'], 'dependabot'),
-      contains(variables['Build.SourceBranch'], 'renovate'),
-      contains(variables['System.PullRequest.SourceBranch'], 'dependabot'),
-      contains(variables['System.PullRequest.SourceBranch'], 'renovate'),
-      startsWith(variables['Build.RequestedFor'], 'dependabot'),
-      startsWith(variables['Build.RequestedFor'], 'renovate')
-    )) }}
-
-steps:
-  # Checkout repo
-  - checkout: self
-
-  # Pull MegaLinter docker image
-  - script: docker pull oxsecurity/megalinter:v8
-    displayName: Pull MegaLinter
-
-  # Run MegaLinter
-  - script: |
-      docker run -v $(System.DefaultWorkingDirectory):/tmp/lint \
-        --env-file &lt;(env | grep -e SYSTEM_ -e BUILD_ -e TF_ -e AGENT_) \
-        -e SYSTEM_ACCESSTOKEN=$(System.AccessToken) \
-        -e GIT_AUTHORIZATION_BEARER=$(System.AccessToken) \
-        -e DEFAULT_WORKSPACE=/tmp/lint \
-        -e LLM_ADVISOR_ENABLED=$(LLM_ADVISOR_ENABLED) \
-        oxsecurity/megalinter:v8
-    displayName: Run MegaLinter
-
-  # Upload MegaLinter reports
-  - task: PublishPipelineArtifact@1
-    condition: succeededOrFailed()
-    displayName: Upload MegaLinter reports
-    inputs:
-      targetPath: "$(System.DefaultWorkingDirectory)/megalinter-reports/"
-      artifactName: MegaLinterReport
+      # Upload MegaLinter reports
+      - task: PublishPipelineArtifact@1
+        condition: succeededOrFailed()
+        displayName: Upload MegaLinter reports
+        inputs:
+          targetPath: "$(System.DefaultWorkingDirectory)/megalinter-reports/"
+          artifactName: MegaLinterReport
 </code></pre>
 <h2 id="central-repository">Central Repository</h2>
 <p>Add the following to an <code>azure-pipelines.yaml</code> file within a separate repository e.g. 'MegaLinter' repository:</p>
@@ -3794,18 +3772,6 @@ pool:
 
 variables:
   repoName: $[ replace(split(variables['System.PullRequest.SourceRepositoryURI'], '/')[6], '%20', ' ') ]
-
-  # Disable LLM Advisor for bot PRs (dependabot, renovate, etc.)
-  # Note: Azure Pipelines has limited access to PR author info, this is a basic check
-  LLM_ADVISOR_ENABLED: &gt;-
-    ${{ not(or(
-      contains(variables['Build.SourceBranch'], 'dependabot'),
-      contains(variables['Build.SourceBranch'], 'renovate'),
-      contains(variables['System.PullRequest.SourceBranch'], 'dependabot'),
-      contains(variables['System.PullRequest.SourceBranch'], 'renovate'),
-      startsWith(variables['Build.RequestedFor'], 'dependabot'),
-      startsWith(variables['Build.RequestedFor'], 'renovate')
-    )) }}
 
 steps:
   # Checkout triggering repo
@@ -3822,8 +3788,6 @@ steps:
         --env-file &lt;(env | grep -e SYSTEM_ -e BUILD_ -e TF_ -e AGENT_) \
         -e SYSTEM_ACCESSTOKEN=$(System.AccessToken) \
         -e GIT_AUTHORIZATION_BEARER=$(System.AccessToken) \
-        -e DEFAULT_WORKSPACE=/tmp/lint \
-        -e LLM_ADVISOR_ENABLED=$(LLM_ADVISOR_ENABLED) \
         oxsecurity/megalinter:v8
     displayName: Run MegaLinter
 
