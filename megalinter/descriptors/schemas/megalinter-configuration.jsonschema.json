@@ -11593,7 +11593,7 @@
       "$id": "#/properties/MARKDOWN_MARKDOWNLINT_CLI2_EXECUTABLE",
       "default": [
         [
-          "markdownlint"
+          "markdownlint-cli-2"
         ]
       ],
       "items": {
@@ -11610,7 +11610,7 @@
         "list_of_files",
         "project"
       ],
-      "title": "MARKDOWN_MARKDOWNLINT: Override default cli lint mode",
+      "title": "MARKDOWN_MARKDOWNLINT: Override default CLI lint mode",
       "type": "string"
     },
     "MARKDOWN_MARKDOWNLINT_COMMAND_REMOVE_ARGUMENTS": {
@@ -11631,7 +11631,7 @@
     },
     "MARKDOWN_MARKDOWNLINT_CONFIG_FILE": {
       "$id": "#/properties/MARKDOWN_MARKDOWNLINT_CONFIG_FILE",
-      "default": "LINTER_DEFAULT",
+      "default": ".markdownlint.json",
       "description": "MARKDOWN_MARKDOWNLINT: User custom config file name if different from default",
       "title": "MARKDOWN_MARKDOWNLINT: Custom config file name",
       "type": "string"
