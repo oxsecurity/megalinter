@@ -564,13 +564,14 @@ def build_dockerfile(
         cargo_install_command = (
             "RUN curl https://sh.rustup.rs -sSf |"
             + " sh -s -- -y --profile minimal --default-toolchain ${RUST_RUST_VERSION} \\\n"
-            + '    && export PATH="/root/.cargo/bin:${PATH}" \\\n'
+            + '    && export PATH="/root/.cargo/bin:/root/.cargo/env:${PATH}" \\\n'
+            + "    && rustup default stable \\\n"
             + f"    && {rustup_cargo_cmd} \\\n"
             + "    && rm -rf /root/.cargo/registry /root/.cargo/git "
             + "/root/.cache/sccache"
             + (" /root/.rustup" if keep_rustup is False else "")
             + "\n"
-            + 'ENV PATH="/root/.cargo/bin:${PATH}"'
+            + 'ENV PATH="/root/.cargo/bin:/root/.cargo/env:${PATH}"'
         )
     replace_in_file(dockerfile, "#CARGO__START", "#CARGO__END", cargo_install_command)
     # NPM packages

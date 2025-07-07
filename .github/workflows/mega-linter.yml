@@ -95,7 +95,21 @@ jobs:
           #   }}
 
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           EMAIL_REPORTER_SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }} # ml workflow addtion
+
+          # Disable LLM Advisor for bot PRs (dependabot, renovate, etc.)
+          LLM_ADVISOR_ENABLED: >-
+            ${{
+              github.event_name != 'pull_request' ||
+              (
+                github.event.pull_request.user.login != 'dependabot[bot]' &&
+                github.event.pull_request.user.login != 'renovate[bot]' &&
+                github.event.pull_request.user.login != 'github-actions[bot]' &&
+                !startsWith(github.event.pull_request.user.login, 'dependabot') &&
+                !startsWith(github.event.pull_request.user.login, 'renovate')
+              )
+            }}
 
           # Uncomment to use ApiReporter (Grafana)
           API_REPORTER: true
@@ -177,7 +191,7 @@ jobs:
         run: sudo chown -Rc $UID .git/
 
       - name: Commit and push applied linter fixes
-        uses: stefanzweifel/git-auto-commit-action@v5
+        uses: stefanzweifel/git-auto-commit-action@v6
         if: env.APPLY_FIXES_IF_COMMIT == 'true'
         with:
           branch: >-

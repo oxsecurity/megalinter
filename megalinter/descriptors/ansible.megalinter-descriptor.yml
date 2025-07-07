@@ -15,15 +15,41 @@ file_extensions:
 linters:
   # ANSIBLE LINT
   - linter_name: ansible-lint
+    linter_text: |
+      **Ansible-lint** checks Ansible playbooks for practices and behavior that could potentially be improved. It's a community-backed project that helps enforce best practices and maintain high-quality Ansible code.
+
+      **Key Features:**
+
+      - **Best Practice Validation**: Checks playbooks against Ansible community best practices and conventions
+      - **Auto-fixing**: Can automatically fix some of the most common issues found in playbooks
+      - **Extensible Rules**: Comprehensive set of built-in rules with support for custom rules
+      - **Multiple Output Formats**: Supports various output formats including SARIF for integration with security tools
+      - **Configuration Flexibility**: Highly configurable with support for `.ansible-lint` configuration files
+      - **Community Support**: Supports only the last two major versions of Ansible, ensuring compatibility
+
+      **Common checks include:**
+
+      - YAML syntax and formatting
+      - Task and playbook structure validation
+      - Security best practices (avoiding plain text secrets)
+      - Proper use of Ansible modules and features
+      - Naming conventions and documentation standards
+
+      Ansible-lint helps teams maintain consistent, secure, and well-structured Ansible automation code.
     can_output_sarif: true
     linter_url: https://ansible-lint.readthedocs.io/
     linter_repo: https://github.com/ansible/ansible-lint
+    linter_spdx_license: GPL-3.0-only
     linter_rules_url: https://ansible-lint.readthedocs.io/rules/
     linter_rules_configuration_url: https://ansible-lint.readthedocs.io/configuring/#configuration-file
     linter_rules_inline_disable_url: https://ansible-lint.readthedocs.io/usage/#muting-warnings-to-avoid-false-positives
     linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/ansible-lint.png
     active_only_if_file_found:
       - ".ansible-lint"
+      - ".ansible-lint.yml"
+      - ".ansible-lint.yaml"
+      - ".config/ansible-lint.yml"
+      - ".config/ansible-lint.yaml"
     config_file_name: .ansible-lint
     cli_lint_mode: project
     cli_config_extra_args:
@@ -41,6 +67,6 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=ansible-lint
-          ARG PIP_ANSIBLE_LINT_VERSION=25.5.0
+          ARG PIP_ANSIBLE_LINT_VERSION=25.6.1
       pip:
         - ansible-lint==${PIP_ANSIBLE_LINT_VERSION}

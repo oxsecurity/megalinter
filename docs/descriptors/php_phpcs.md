@@ -7,9 +7,22 @@ description: How to use phpcs (configure, ignore files, ignore errors, help & ve
 # phpcs
 [![GitHub stars](https://img.shields.io/github/stars/PHPCSStandards/PHP_CodeSniffer?cacheSeconds=3600)](https://github.com/PHPCSStandards/PHP_CodeSniffer) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/PHPCSStandards/PHP_CodeSniffer?sort=semver)](https://github.com/PHPCSStandards/PHP_CodeSniffer/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/PHPCSStandards/PHP_CodeSniffer)](https://github.com/PHPCSStandards/PHP_CodeSniffer/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/PHPCSStandards/PHP_CodeSniffer)](https://github.com/PHPCSStandards/PHP_CodeSniffer/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/PHPCSStandards/PHP_CodeSniffer)](https://github.com/PHPCSStandards/PHP_CodeSniffer/graphs/contributors/)
 
+**PHP_CodeSniffer (phpcs)** is a powerful static analysis tool that tokenizes PHP files and detects violations of defined coding standards. It serves as the industry standard for enforcing PHP coding conventions and maintaining consistent code quality across projects.
+
+**Key Features:**
+
+- **Multiple Coding Standards**: Built-in support for PSR-1, PSR-2, PSR-12, PEAR, Zend, WordPress, Drupal, and many other standards
+- **Tokenization Engine**: Advanced PHP tokenizer that understands PHP syntax and language constructs for accurate analysis
+- **Extensive Rule Set**: Comprehensive checks for code formatting, naming conventions, documentation, and structural issues
+- **Custom Standards**: Create and configure custom coding standards tailored to project or organizational requirements
+- **Detailed Reports**: Multiple report formats including full, summary, checkstyle, CSV, JSON, and SARIF
+- **Inline Suppression**: Flexible system for suppressing specific violations using comment annotations
+- **File Exclusions**: Sophisticated ignore patterns for excluding files, directories, or specific code sections
+- **Performance Optimized**: Efficient scanning designed for large codebases with minimal memory usage
+
 ## phpcs documentation
 
-- Version in MegaLinter: **3.13.0**
+- Version in MegaLinter: **3.13.2**
 - Visit [Official Web Site](https://github.com/PHPCSStandards/PHP_CodeSniffer#readme){target=_blank}
 - See [How to configure phpcs rules](https://github.com/PHPCSStandards/PHP_CodeSniffer/wiki/Advanced-Usage#using-a-default-configuration-file){target=_blank}
   - If custom `phpcs.xml` config file isn't found, [phpcs.xml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/phpcs.xml){target=_blank} will be used
@@ -48,8 +61,6 @@ Use phpcs in your favorite IDE to catch errors before MegaLinter !
 
 |                                                                   <!-- -->                                                                   | IDE                                                      | Extension Name                                                                      |                                                                              Install                                                                               |
 |:--------------------------------------------------------------------------------------------------------------------------------------------:|----------------------------------------------------------|-------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-|  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Atom](https://atom.io/)                                 | [linter-phpcs](https://atom.io/packages/linter-phpcs)                               |                                               [Visit Web Site](https://atom.io/packages/linter-phpcs){target=_blank}                                               |
-|  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Atom](https://atom.io/)                                 | [atom-phpcs](https://github.com/bpearson/atom-phpcs)                                |                                              [Visit Web Site](https://github.com/bpearson/atom-phpcs){target=_blank}                                               |
 |  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a>   | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [phpcs](https://www.jetbrains.com/help/phpstorm/2019.1/using-php-code-sniffer.html) |                            [Visit Web Site](https://www.jetbrains.com/help/phpstorm/2019.1/using-php-code-sniffer.html){target=_blank}                             |
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/)             | [sublime-phpcs](https://github.com/benmatselby/sublime-phpcs)                       |                                           [Visit Web Site](https://github.com/benmatselby/sublime-phpcs){target=_blank}                                            |
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/)             | [SublimeLinter-phpcs](https://github.com/SublimeLinter/SublimeLinter-phpcs)         |                                       [Visit Web Site](https://github.com/SublimeLinter/SublimeLinter-phpcs){target=_blank}                                        |
@@ -247,9 +258,9 @@ ENV PATH="/root/.composer/vendor/bin:${PATH}"
 ENV PHP_CS_FIXER_IGNORE_ENV=true
 # Linter install
 # renovate: datasource=packagist depName=squizlabs/php_codesniffer
-ARG PHP_SQUIZLABS_PHP_CODESNIFFER_VERSION=3.13.0
+ARG PHP_SQUIZLABS_PHP_CODESNIFFER_VERSION=3.13.2
 # renovate: datasource=packagist depName=bartlett/sarif-php-converters
-ARG PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION=1.1.2
+ARG PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION=1.2.0
 RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require squizlabs/php_codesniffer:${PHP_SQUIZLABS_PHP_CODESNIFFER_VERSION} bartlett/sarif-php-converters:${PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION}
 
 ```

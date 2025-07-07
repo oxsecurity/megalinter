@@ -13,13 +13,39 @@ description: How to use bandit (configure, ignore files, ignore errors, help & v
 
 [![GitHub stars](https://img.shields.io/github/stars/PyCQA/bandit?cacheSeconds=3600)](https://github.com/PyCQA/bandit) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/PyCQA/bandit?sort=semver)](https://github.com/PyCQA/bandit/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/PyCQA/bandit)](https://github.com/PyCQA/bandit/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/PyCQA/bandit)](https://github.com/PyCQA/bandit/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/PyCQA/bandit)](https://github.com/PyCQA/bandit/graphs/contributors/)
 
-bandit checks for security risks
+**Bandit** is a specialized security-focused tool designed to find common security issues in Python code. It processes each file by building an AST (Abstract Syntax Tree) and runs appropriate security plugins against the AST nodes to identify potential vulnerabilities.
 
-If you find it too harsh, you may define `PYTHON_BANDIT_DISABLE_ERRORS: true` in your `.mega-linter.yml` config file
+**Key features:**
+
+- **Security-Focused Analysis**: Specifically designed to detect security vulnerabilities and weaknesses
+- **AST-Based Scanning**: Builds abstract syntax trees for thorough code analysis
+- **Plugin Architecture**: Extensible system with test plugins and blacklist plugins for comprehensive coverage
+- **Multiple Output Formats**: Supports various report formats including SARIF for security tool integration
+- **Configurable Severity**: Customizable severity levels and rule configurations
+
+**Common security issues detected:**
+
+- **Injection Vulnerabilities**: SQL injection, command injection, code injection patterns
+- **Cryptographic Issues**: Weak cryptographic algorithms, insecure random number generation
+- **Authentication Problems**: Hardcoded passwords, weak authentication mechanisms  
+- **File System Security**: Insecure file permissions, path traversal vulnerabilities
+- **Network Security**: Insecure SSL/TLS configurations, unverified HTTPS requests
+- **Code Execution**: Use of dangerous functions like `eval()`, `exec()`, `pickle.loads()`
+- **Input Validation**: Missing input sanitization and validation
+
+**Advanced capabilities:**
+
+- **Blacklist Detection**: Identifies usage of known insecure or deprecated functions
+- **Context-Aware Analysis**: Understands code context to reduce false positives
+- **Baseline Support**: Can track security issues over time and focus on new problems
+
+If you find Bandit too strict for your use case, you can define `PYTHON_BANDIT_DISABLE_ERRORS: true` in your `.mega-linter.yml` config file to treat findings as warnings instead of errors.
+
+Bandit is essential for maintaining secure Python codebases and is widely used in security-conscious development environments.
 
 ## bandit documentation
 
-- Version in MegaLinter: **1.8.3**
+- Version in MegaLinter: **1.8.5**
 - Visit [Official Web Site](https://bandit.readthedocs.io/en/latest/){target=_blank}
 - See [How to configure bandit rules](https://bandit.readthedocs.io/en/latest/config.html#){target=_blank}
   - If custom `.bandit.yml` config file isn't found, [.bandit.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.bandit.yml){target=_blank} will be used
@@ -57,7 +83,6 @@ Use bandit in your favorite IDE to catch errors before MegaLinter !
 
 |                                                                   <!-- -->                                                                   | IDE                                                  | Extension Name                                                                |                                          Install                                           |
 |:--------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|-------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------:|
-|  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Atom](https://atom.io/)                             | [bandit-lint](https://atom.io/packages/bandit-lint)                           |           [Visit Web Site](https://atom.io/packages/bandit-lint){target=_blank}            |
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/)         | [SublimeLinter-bandit](https://github.com/SublimeLinter/SublimeLinter-bandit) |   [Visit Web Site](https://github.com/SublimeLinter/SublimeLinter-bandit){target=_blank}   |
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/) | [Native Support](https://code.visualstudio.com/docs/python/linting#_bandit)   | [Visit Web Site](https://code.visualstudio.com/docs/python/linting#_bandit){target=_blank} |
 
@@ -98,9 +123,9 @@ bandit --configfile .bandit.yml myfile.py
 
 ```shell
 usage: bandit [-h] [-r] [-a {file,vuln}] [-n CONTEXT_LINES] [-c CONFIG_FILE]
-              [-p PROFILE] [-t TESTS] [-s SKIPS]
-              [-l | --severity-level {all,low,medium,high}]
-              [-i | --confidence-level {all,low,medium,high}]
+              [-p PROFILE] [-t TESTS] [-s SKIPS] [-l |
+              --severity-level {all,low,medium,high}] [-i |
+              --confidence-level {all,low,medium,high}]
               [-f {csv,custom,html,json,sarif,sarif,screen,txt,xml,yaml}]
               [--msg-template MSG_TEMPLATE] [-o [OUTPUT_FILE]] [-v] [-d] [-q]
               [--ignore-nosec] [-x EXCLUDED_PATHS] [-b BASELINE]
@@ -115,20 +140,18 @@ positional arguments:
 options:
   -h, --help            show this help message and exit
   -r, --recursive       find and process files in subdirectories
-  -a {file,vuln}, --aggregate {file,vuln}
+  -a, --aggregate {file,vuln}
                         aggregate output by vulnerability (default) or by
                         filename
-  -n CONTEXT_LINES, --number CONTEXT_LINES
+  -n, --number CONTEXT_LINES
                         maximum number of code lines to output for each issue
-  -c CONFIG_FILE, --configfile CONFIG_FILE
+  -c, --configfile CONFIG_FILE
                         optional config file to use for selecting plugins and
                         overriding defaults
-  -p PROFILE, --profile PROFILE
+  -p, --profile PROFILE
                         profile to use (defaults to executing all tests)
-  -t TESTS, --tests TESTS
-                        comma-separated list of test IDs to run
-  -s SKIPS, --skip SKIPS
-                        comma-separated list of test IDs to skip
+  -t, --tests TESTS     comma-separated list of test IDs to run
+  -s, --skip SKIPS      comma-separated list of test IDs to skip
   -l, --level           report only issues of a given severity level or higher
                         (-l for LOW, -ll for MEDIUM, -lll for HIGH)
   --severity-level {all,low,medium,high}
@@ -143,13 +166,13 @@ options:
                         higher. "all" and "low" are likely to produce the same
                         results, but it is possible for rules to be undefined
                         which will not be listed in "low".
-  -f {csv,custom,html,json,sarif,sarif,screen,txt,xml,yaml}, --format {csv,custom,html,json,sarif,sarif,screen,txt,xml,yaml}
+  -f, --format {csv,custom,html,json,sarif,sarif,screen,txt,xml,yaml}
                         specify output format
   --msg-template MSG_TEMPLATE
                         specify output message template (only usable with
                         --format custom), see CUSTOM FORMAT section for list
                         of available values
-  -o [OUTPUT_FILE], --output [OUTPUT_FILE]
+  -o, --output [OUTPUT_FILE]
                         write report to filename
   -v, --verbose         output extra information like excluded and included
                         files
@@ -157,13 +180,13 @@ options:
   -q, --quiet, --silent
                         only show output in the case of an error
   --ignore-nosec        do not skip lines with # nosec comments
-  -x EXCLUDED_PATHS, --exclude EXCLUDED_PATHS
+  -x, --exclude EXCLUDED_PATHS
                         comma-separated list of paths (glob patterns
                         supported) to exclude from scan (note that these are
                         in addition to the excluded paths provided in the
                         config file) (default:
                         .svn,CVS,.bzr,.hg,.git,__pycache__,.tox,.eggs,*.egg)
-  -b BASELINE, --baseline BASELINE
+  -b, --baseline BASELINE
                         path of a baseline report to compare against (only
                         JSON-formatted files are accepted)
   --ini INI_PATH        path to a .bandit file that supplies command line
@@ -278,12 +301,12 @@ The following tests were discovered and loaded:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=bandit
-ARG PIP_BANDIT_VERSION=1.8.3
+ARG PIP_BANDIT_VERSION=1.8.5
 # renovate: datasource=pypi depName=bandit_sarif_formatter
 ARG PIP_BANDIT_SARIF_FORMATTER_VERSION=1.1.1
 ```
 
 - PIP packages (Python):
-  - [bandit==1.8.3](https://pypi.org/project/bandit/1.8.3)
+  - [bandit==1.8.5](https://pypi.org/project/bandit/1.8.5)
   - [bandit_sarif_formatter==1.1.1](https://pypi.org/project/bandit_sarif_formatter/1.1.1)
-  - [bandit[toml]==1.8.3](https://pypi.org/project/bandit[toml]/1.8.3)
+  - [bandit[toml]==1.8.5](https://pypi.org/project/bandit[toml]/1.8.5)

@@ -13,12 +13,21 @@ description: How to use lychee (configure, ignore files, ignore errors, help & v
 
 [![GitHub stars](https://img.shields.io/github/stars/lycheeverse/lychee?cacheSeconds=3600)](https://github.com/lycheeverse/lychee) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/lycheeverse/lychee?sort=semver)](https://github.com/lycheeverse/lychee/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/lycheeverse/lychee)](https://github.com/lycheeverse/lychee/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/lycheeverse/lychee)](https://github.com/lycheeverse/lychee/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/lycheeverse/lychee)](https://github.com/lycheeverse/lychee/graphs/contributors/)
 
+**Lychee** is a fast, async, stream-based link checker written in Rust that finds broken hyperlinks and mail addresses inside Markdown, HTML, reStructuredText, websites, and any other text files.
+
+**Key Features:**
+
+- **Lightning Fast**: Async, parallel processing with typical scan times under 10 seconds for most repositories  
+- **Multi-Format Support**: Checks links in Markdown, HTML, reStructuredText, plain text files, and websites
+- **Advanced Filtering**: Regex-based include/exclude patterns, custom headers, and flexible URL scheme filtering
+- **Smart Caching**: Disk-based response caching with configurable expiration to avoid re-checking unchanged links
+- **Robust Error Handling**: Configurable retries, redirects, timeouts, and custom status code acceptance
+- **Multiple Output Formats**: JSON, Markdown, detailed, and compact reporting formats
+- **Privacy-Aware**: Options to exclude private IPs, link-local addresses, and localhost from checking
+
 A file **.lycheeignore** can be defined at the root of the repository to ignore some urls.
-
 Each line can contain Regular Expressions or glob format.
-
 Example with glob, regex and full url:
-
 ```
 https://twitter.com/intent/tweet*
 (.*some_url_part)
@@ -29,8 +38,10 @@ https://github.com/sgerrand/alpine-pkg-glibc/releases/download
 
 - Version in MegaLinter: **0.18.0**
 - Visit [Official Web Site](https://lychee.cli.rs){target=_blank}
-- See [How to configure lychee rules](https://lychee.cli.rs/#/usage/config){target=_blank}
-- See [Index of problems detected by lychee](https://lychee.cli.rs/#/usage/cli){target=_blank}
+- See [How to configure lychee rules](https://lychee.cli.rs/usage/config/){target=_blank}
+- See [How to ignore files and directories with lychee](https://lychee.cli.rs/recipes/excluding-links/){target=_blank}
+  - You can define a `.lycheeignore` file to ignore files and folders
+- See [Index of problems detected by lychee](https://lychee.cli.rs/usage/cli/){target=_blank}
 
 [![lychee - GitHub](https://gh-card.dev/repos/lycheeverse/lychee.svg?fullname=)](https://github.com/lycheeverse/lychee){target=_blank}
 
@@ -70,7 +81,7 @@ This linter is available in the following flavors
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/)               | Optimized for C, C++, C# or VB based projects            |        65        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/)         | Optimized for C, C++, C# or VB based projects with JS/TS |        74        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
 |         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a>          | [go](https://megalinter.io/beta/flavors/go/)                       | Optimized for GO based projects                          |        52        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-go/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-go) |
-|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.io/beta/flavors/java/)                   | Optimized for JAVA based projects                        |        54        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.io/beta/flavors/java/)                   | Optimized for JAVA based projects                        |        55        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
 |     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.io/beta/flavors/javascript/)       | Optimized for JAVASCRIPT or TYPESCRIPT based projects    |        60        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript) |
 |         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://megalinter.io/beta/flavors/php/)                     | Optimized for PHP based projects                         |        55        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-php) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)               | Optimized for PYTHON based projects                      |        66        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |

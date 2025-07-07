@@ -7,6 +7,20 @@ description: How to use gitleaks (configure, ignore files, ignore errors, help &
 # gitleaks
 [![GitHub stars](https://img.shields.io/github/stars/gitleaks/gitleaks?cacheSeconds=3600)](https://github.com/gitleaks/gitleaks) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/gitleaks/gitleaks?sort=semver)](https://github.com/gitleaks/gitleaks/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/gitleaks/gitleaks)](https://github.com/gitleaks/gitleaks/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/gitleaks/gitleaks)](https://github.com/gitleaks/gitleaks/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/gitleaks/gitleaks)](https://github.com/gitleaks/gitleaks/graphs/contributors/)
 
+**gitleaks** is a SAST tool for detecting and preventing secrets like passwords, API keys, and tokens in git repos. It scans the entire history of a git repository, not just the current state, making it effective at finding secrets that may have been accidentally committed.
+
+**Key Features:**
+
+- **Full git history scanning** including all branches and commits
+- **High accuracy detection** with minimal false positives
+- **Custom rule support** for organization-specific secret patterns
+- **Multiple output formats** including JSON, CSV, and SARIF
+- **Pre-commit hook integration** to prevent secrets from being committed
+- **Baseline support** to ignore existing secrets while catching new ones
+- **Configuration flexibility** via `.gitleaks.toml` files
+- **Redaction support** to safely share scan results
+- **Entropy detection** for finding high-entropy strings that may be secrets
+
 ## Scan only Pull Request commits
 
 `VALIDATE_ALL_CODEBASE: false` doesn't make gitleaks analyze only updated files. To analyze only commits on Pull Request, set `VALIDATE_ALL_CODEBASE: false` together with `REPOSITORY_GITLEAKS_PR_COMMITS_SCAN: true` (you have to specify it explicitly), but only works for selected platforms: GitHub Actions, Azure Pipelines, GitLab Pipelines\* (Merge Requests and External Pull Requests)
@@ -63,7 +77,7 @@ git fetch --depth=0
 
 ## gitleaks documentation
 
-- Version in MegaLinter: **8.26.0**
+- Version in MegaLinter: **8.27.2**
 - Visit [Official Web Site](https://github.com/gitleaks/gitleaks#readme){target=_blank}
 - See [How to configure gitleaks rules](https://github.com/gitleaks/gitleaks#configuration){target=_blank}
   - If custom `.gitleaks.toml` config file isn't found, [.gitleaks.toml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.gitleaks.toml){target=_blank} will be used
@@ -108,7 +122,7 @@ This linter is available in the following flavors
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/)               | Optimized for C, C++, C# or VB based projects                          |        65        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/)         | Optimized for C, C++, C# or VB based projects with JS/TS               |        74        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
 |         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a>          | [go](https://megalinter.io/beta/flavors/go/)                       | Optimized for GO based projects                                        |        52        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-go/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-go) |
-|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.io/beta/flavors/java/)                   | Optimized for JAVA based projects                                      |        54        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.io/beta/flavors/java/)                   | Optimized for JAVA based projects                                      |        55        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
 |     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.io/beta/flavors/javascript/)       | Optimized for JAVASCRIPT or TYPESCRIPT based projects                  |        60        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript) |
 |         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://megalinter.io/beta/flavors/php/)                     | Optimized for PHP based projects                                       |        55        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-php) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)               | Optimized for PYTHON based projects                                    |        66        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
@@ -170,12 +184,16 @@ Flags:
                                       3. env var GITLEAKS_CONFIG_TOML with the file content
                                       4. (target path)/.gitleaks.toml
                                       If none of the four options are used, then gitleaks will use the default config
+      --diagnostics string            enable diagnostics (http OR comma-separated list: cpu,mem,trace). cpu=CPU prof, mem=memory prof, trace=exec tracing, http=serve via net/http/pprof
+      --diagnostics-dir string        directory to store diagnostics output files when not using http mode (defaults to current directory)
       --enable-rule strings           only enable specific rules by id
       --exit-code int                 exit code when leaks have been encountered (default 1)
+      --experimental-optimizations    enables experimental allowlist optimizations, increasing performance at the cost of startup time
   -i, --gitleaks-ignore-path string   path to .gitleaksignore file or folder containing one (default ".")
   -h, --help                          help for gitleaks
       --ignore-gitleaks-allow         ignore gitleaks:allow comments
   -l, --log-level string              log level (trace, debug, info, warn, error, fatal) (default "info")
+      --max-archive-depth int         allow scanning into nested archives up to this depth (default "0", no archive traversal is done)
       --max-decode-depth int          allow recursive decoding up to this depth (default "0", no decoding is done)
       --max-target-megabytes int      files larger than this will be skipped
       --no-banner                     suppress banner
@@ -195,7 +213,7 @@ Use "gitleaks [command] --help" for more information about a command.
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=docker depName=zricethezav/gitleaks
-ARG REPOSITORY_GITLEAKS_VERSION=v8.26.0
+ARG REPOSITORY_GITLEAKS_VERSION=v8.27.2
 FROM zricethezav/gitleaks:${REPOSITORY_GITLEAKS_VERSION} AS gitleaks
 COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 ```

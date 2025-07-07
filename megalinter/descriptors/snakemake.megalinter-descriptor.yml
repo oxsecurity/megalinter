@@ -10,10 +10,26 @@ file_names_regex:
 linters:
   # Internal snakemake linter
   - linter_name: snakemake
+    linter_text: |
+      **Snakemake** is a comprehensive workflow management system with powerful built-in linting capabilities for validating computational workflow definitions. It ensures Snakefiles are properly structured and follow best practices for reproducible research.
+
+      **Key Features:**
+
+      - **Workflow Validation**: Comprehensive checking of Snakefile syntax, rule definitions, and workflow structure
+      - **Dependency Analysis**: Validates input/output file specifications and dependency chains between rules
+      - **Configuration Checking**: Ensures proper configuration file structure and parameter definitions
+      - **Python Integration**: Validates embedded Python code within rules and workflow logic
+      - **Resource Specification**: Checks resource requirements (memory, CPU, time) and cluster configurations
+      - **File Path Validation**: Verifies that file paths and wildcards are correctly specified and resolvable
+      - **Best Practices Enforcement**: Promotes reproducible workflow design and scientific computing standards
+      - **Early Error Detection**: Catches workflow issues before expensive computational runs begin
+      - **Bioinformatics Ready**: Specialized support for scientific computing, bioinformatics, and data analysis pipelines
     name: SNAKEMAKE_LINT
-    linter_url: https://snakemake.readthedocs.io/en/stable/
+    linter_url: https://snakemake.github.io/
     linter_repo: https://github.com/snakemake/snakemake
+    linter_rules_configuration_url: https://snakemake.readthedocs.io/en/stable/snakefiles/configuration.html
     linter_banner_image_url: https://github.com/snakemake/snakemake/raw/6fcdc8a22db5522e232638bff16da9b50996eb45/images/biglogo.png
+    linter_spdx_license: MIT
     cli_lint_extra_args:
       - "--lint"
       - "-s"
@@ -23,7 +39,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=snakemake
-          ARG PIP_SNAKEMAKE_VERSION=9.5.1
+          ARG PIP_SNAKEMAKE_VERSION=9.7.1
       pip:
         - snakemake==${PIP_SNAKEMAKE_VERSION}
     ide:
@@ -36,11 +52,28 @@ linters:
           url: https://marketplace.visualstudio.com/items?itemName=alping.vscode-snakemake
   # Snake Fmt
   - linter_name: snakefmt
+    linter_text: |
+      **snakefmt** is a formatter for Snakemake files that applies consistent styling and formatting to Snakefiles and .smk files. It standardizes indentation, spacing, line breaks, and overall code structure while preserving the semantic meaning of Snakemake workflows.
+
+      **Key Features:**
+
+      - **Consistent indentation** standardizing whitespace across Snakemake files
+      - **Spacing normalization** ensuring uniform spacing around operators and keywords
+      - **Line break optimization** improving code readability and structure
+      - **Code structure preservation** maintaining semantic meaning while improving format
+      - **Check mode support** (`--check`) for validation without modification
+      - **Automatic formatting** with intelligent handling of Snakemake syntax
+      - **Configuration support** via `.snakefmt.toml` for project-specific settings
+      - **Compact diff output** showing precise formatting changes
+      - **Workflow compatibility** working with complex Snakemake workflow definitions
+      - **Team collaboration** ensuring consistent style across development teams
+      - **Performance optimized** for handling large Snakemake projects efficiently
     is_formatter: true
     name: SNAKEMAKE_SNAKEFMT
     linter_url: https://github.com/snakemake/snakefmt
     linter_repo: https://github.com/snakemake/snakefmt
     linter_rules_configuration_url: https://github.com/snakemake/snakefmt#configuration
+    linter_spdx_license: MIT
     config_file_name: .snakefmt.toml
     cli_lint_extra_args:
       - "--check"

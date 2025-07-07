@@ -2,7 +2,7 @@ version: "3"
 services:
   # Redis server to manage request queues and results
   megalinter_server_redis:
-    image: redis:8.0.1-alpine
+    image: redis:8.0.2-alpine
     ports:
       - "6379:6379"
     volumes:
@@ -10,7 +10,7 @@ services:
 
   # Server to receive requests and post them in redis queue
   megalinter_server_api:
-    image: ghcr.io/oxsecurity/megalinter-server:alpha
+    image: ghcr.io/oxsecurity/megalinter-server:latest
     command: uvicorn server.server:app --host 0.0.0.0 --port 8000
     environment:
       - MEGALINTER_SERVER_REDIS_HOST=megalinter_server_redis
@@ -27,10 +27,10 @@ services:
 
   # Worker to process requests and post results in redis stream or pubsub
   megalinter_server_worker:
-    #image: ghcr.io/oxsecurity/megalinter-ci_light:alpha # ci_light is lighter
-    #image: ghcr.io/oxsecurity/megalinter-javascript:alpha # javascript projects
-    image: ghcr.io/oxsecurity/megalinter-worker-security:alpha # cupcake is more complete
-    #image: ghcr.io/oxsecurity/megalinter:alpha # all linters
+    #image: ghcr.io/oxsecurity/megalinter-ci_light:latest # ci_light is lighter
+    #image: ghcr.io/oxsecurity/megalinter-javascript:latest # javascript projects
+    image: ghcr.io/oxsecurity/megalinter-worker-security:latest # cupcake is more complete
+    #image: ghcr.io/oxsecurity/megalinter:latest # all linters
     environment:
       # Megalinter variables
       - FLAVOR_SUGGESTIONS=false

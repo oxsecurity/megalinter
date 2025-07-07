@@ -1,3 +1,4 @@
+# flake8: noqa: E203
 import json
 import logging
 import os
@@ -19,84 +20,76 @@ from pytablewriter.style import Style
 from redis import Redis
 
 
-def build_markdown_summary(reporter_self, action_run_url=""):
-    table_header = ["Descriptor", "Linter", "Files", "Fixed", "Errors", "Warnings"]
-    table_column_styles = [
-        Style(align=Align.LEFT),
-        Style(align=Align.LEFT),
-        Style(align=Align.RIGHT),
-        Style(align=Align.RIGHT),
-        Style(align=Align.RIGHT),
-        Style(align=Align.RIGHT),
-    ]
-    if reporter_self.master.show_elapsed_time is True:
-        table_header += ["Elapsed time"]
-        table_column_styles += [Style(align=Align.RIGHT)]
-    table_data_raw = []
-    for linter in reporter_self.master.linters:
-        if linter.is_active is True:
-            status = (
-                "✅"
-                if linter.status == "success" and linter.return_code == 0
-                else (
-                    "⚠️"
-                    if linter.status != "success" and linter.return_code == 0
-                    else "❌"
-                )
-            )
-            first_col = f"{status} {linter.descriptor_id}"
-            lang_lower = linter.descriptor_id.lower()
-            linter_name_lower = linter.linter_name.lower().replace("-", "_")
-            linter_doc_url = (
-                f"{ML_DOC_URL_DESCRIPTORS_ROOT}/{lang_lower}_{linter_name_lower}"
-            )
-            linter_link = f"[{linter.linter_name}]({linter_doc_url})"
-            nb_fixed_cell = str(linter.number_fixed) if linter.try_fix is True else ""
-            # Project count
-            if linter.cli_lint_mode == "project":
-                found = "yes"
-                nb_fixed_cell = "yes" if nb_fixed_cell != "" else nb_fixed_cell
-                errors_cell = (
-                    log_link(f"{linter.total_number_errors}", action_run_url)
-                    if linter.number_errors > 0
-                    else "no"
-                )
-                warnings_cell = (
-                    log_link(f"{linter.total_number_warnings}", action_run_url)
-                    if linter.total_number_warnings > 0
-                    else "no"
-                )
-            # Count using files
-            else:
-                found = str(len(linter.files))
-                errors_cell = (
-                    log_link(f"{linter.total_number_errors}", action_run_url)
-                    if linter.number_errors > 0
-                    else linter.number_errors
-                )
-                warnings_cell = (
-                    log_link(f"{linter.total_number_warnings}", action_run_url)
-                    if linter.total_number_warnings > 0
-                    else linter.total_number_warnings
-                )
-            table_line = [
-                first_col,
-                linter_link,
-                found,
-                nb_fixed_cell,
-                errors_cell,
-                warnings_cell,
-            ]
-            if reporter_self.master.show_elapsed_time is True:
-                table_line += [str(round(linter.elapsed_time_s, 2)) + "s"]
-            table_data_raw += [table_line]
-    # Build markdown table
-    writer = MarkdownTableWriter(
-        headers=table_header,
-        column_styles=table_column_styles,
-        value_matrix=table_data_raw,
+def build_markdown_summary(reporter_self, action_run_url="", max_total_chars=40000):
+    markdown_summary_type = config.get(
+        reporter_self.master.request_id,
+        "REPORTERS_MARKDOWN_SUMMARY_TYPE",
+        "table-sections",
     )
-    table_content = str(writer)
+    if markdown_summary_type == "sections":
+        return build_markdown_summary_sections(
+            reporter_self, action_run_url, max_total_chars
+        )
+    elif markdown_summary_type == "sections-table":
+        return build_markdown_summary_sections_table(
+            reporter_self, action_run_url, max_total_chars
+        )
+    elif markdown_summary_type == "table-sections":
+        return build_markdown_summary_table_sections(
+            reporter_self, action_run_url, max_total_chars
+        )
+    elif markdown_summary_type == "table":
+        return build_markdown_summary_table(reporter_self, action_run_url)
+    else:
+        raise ValueError(
+            f"Invalid REPORTERS_MARKDOWN_SUMMARY_TYPE: {markdown_summary_type}. "
+            "Valid values are 'sections', 'table-sections', 'sections-table', and 'table'."
+        )
+
+
+def build_markdown_summary_table(reporter_self, action_run_url=""):
+    # Build complete message using helper functions
+    p_r_msg = build_markdown_summary_header(reporter_self, action_run_url)
+
+    # Build table content using helper function
+    table_content = _build_table_content(
+        reporter_self.master.linters, reporter_self, action_run_url
+    )
+    p_r_msg += table_content + os.linesep
+    p_r_msg += build_markdown_summary_footer(reporter_self, action_run_url)
+
+    logging.debug("\n" + p_r_msg)
+    return p_r_msg
+
+
+def build_markdown_summary_sections(
+    reporter_self, action_run_url="", max_total_chars=40000
+):
+    # Build complete message using helper functions
+    p_r_msg = build_markdown_summary_header(reporter_self, action_run_url)
+
+    # Separate linters into two groups: those with issues and those that are OK
+    linters_with_issues, linters_ok = _separate_linters_by_issues(
+        reporter_self.master.linters
+    )
+
+    # Sort linters with issues by severity
+    linters_with_issues.sort(key=_sort_linters_by_icon_severity)
+
+    # Build sections content
+    sections_content = _build_sections_content(
+        linters_with_issues, linters_ok, reporter_self, action_run_url, max_total_chars
+    )
+    p_r_msg += sections_content
+
+    # Add footer content
+    p_r_msg += build_markdown_summary_footer(reporter_self, action_run_url)
+
+    logging.debug("\n" + p_r_msg)
+    return p_r_msg
+
+
+def build_markdown_summary_header(reporter_self, action_run_url=""):
     status = (
         "✅"
         if reporter_self.master.return_code == 0
@@ -108,32 +101,94 @@ def build_markdown_summary(reporter_self, action_run_url=""):
         + " "
         + log_link(f"{reporter_self.master.status.upper()}", action_run_url)
     )
-    p_r_msg = (
+    return (
         f"## [\U0001f999 MegaLinter]({ML_DOC_URL}) status: {status_with_href}"
         + os.linesep
         + os.linesep
     )
-    p_r_msg += table_content + os.linesep
+
+
+def get_linter_summary_data(linter, action_run_url=""):
+    # Build linter status icon
+    linter_status = (
+        "✅"
+        if linter.status == "success" and linter.return_code == 0
+        else ("⚠️" if linter.status != "success" and linter.return_code == 0 else "❌")
+    )
+
+    # Build linter documentation link
+    lang_lower = linter.descriptor_id.lower()
+    linter_name_lower = linter.linter_name.lower().replace("-", "_")
+    linter_doc_url = f"{ML_DOC_URL_DESCRIPTORS_ROOT}/{lang_lower}_{linter_name_lower}"
+    linter_link = f"[{linter.linter_name}]({linter_doc_url})"
+
+    # Calculate files/fixes/errors/warnings
+    nb_fixed_cell = str(linter.number_fixed) if linter.try_fix is True else ""
+
+    if linter.cli_lint_mode == "project":
+        found = "yes"
+        nb_fixed_cell = "yes" if nb_fixed_cell != "" else nb_fixed_cell
+        errors_cell = (
+            log_link(f"{linter.total_number_errors}", action_run_url)
+            if linter.number_errors > 0
+            else "no"
+        )
+        warnings_cell = (
+            log_link(f"{linter.total_number_warnings}", action_run_url)
+            if linter.total_number_warnings > 0
+            else "no"
+        )
+    else:
+        found = str(len(linter.files))
+        errors_cell = (
+            log_link(f"{linter.total_number_errors}", action_run_url)
+            if linter.number_errors > 0
+            else linter.number_errors
+        )
+        warnings_cell = (
+            log_link(f"{linter.total_number_warnings}", action_run_url)
+            if linter.total_number_warnings > 0
+            else linter.total_number_warnings
+        )
+
+    return {
+        "status": linter_status,
+        "descriptor_id": linter.descriptor_id,
+        "linter_link": linter_link,
+        "found": found,
+        "nb_fixed_cell": nb_fixed_cell,
+        "errors_cell": errors_cell,
+        "warnings_cell": warnings_cell,
+        "elapsed_time": (
+            round(linter.elapsed_time_s, 2) if hasattr(linter, "elapsed_time_s") else 0
+        ),
+    }
+
+
+def build_markdown_summary_footer(reporter_self, action_run_url=""):
+    footer = ""
 
     if reporter_self.master.result_message != "":
-        p_r_msg += reporter_self.master.result_message + os.linesep
+        footer += reporter_self.master.result_message + os.linesep
 
     if action_run_url != "":
-        p_r_msg += (
+        footer += (
             "See detailed report in [MegaLinter reports"
             f"]({action_run_url})" + os.linesep
         )
     else:
-        p_r_msg += "See detailed report in MegaLinter reports" + os.linesep
+        footer += "See detailed report in MegaLinter reports" + os.linesep
+
     if reporter_self.master.validate_all_code_base is False:
-        p_r_msg += (
+        footer += (
             "_Set `VALIDATE_ALL_CODEBASE: true` in mega-linter.yml to validate "
             + "all sources, not only the diff_"
             + os.linesep
         )
+
     if reporter_self.master.flavor_suggestions is not None:
         if reporter_self.master.flavor_suggestions[0] == "new":
-            p_r_msg += (
+            footer += (
                 os.linesep
                 + "You could have same capabilities but better runtime performances"
                 " if you request a new MegaLinter flavor.\n"
@@ -148,9 +203,9 @@ def build_markdown_summary(reporter_self, action_run_url=""):
                 f"&title={urllib.parse.quote('Request new MegaLinter flavor')}"
                 f"&body={urllib.parse.quote(body)}"
             )
-            p_r_msg += f"- [Click here to request the new flavor]({new_flavor_url})"
+            footer += f"- [Click here to request the new flavor]({new_flavor_url})"
         else:
-            p_r_msg += (
+            footer += (
                 os.linesep
                 + "You could have the same capabilities but better runtime performances"
                 " if you use a MegaLinter flavor:" + os.linesep
@@ -163,11 +218,12 @@ def build_markdown_summary(reporter_self, action_run_url=""):
                 action_path = (
                     f"{ML_REPO}/flavors/{suggestion['flavor']}@{action_version}"
                 )
-                p_r_msg += (
+                footer += (
                     f"- [{action_path}]({ML_DOC_URL}/flavors/{suggestion['flavor']}/)"
                     f" ({suggestion['linters_number']} linters)" + os.linesep
                 )
-        p_r_msg += os.linesep
+        footer += os.linesep
+
     # Link to ox
     if (
         config.get(
@@ -175,21 +231,22 @@ def build_markdown_summary(reporter_self, action_run_url=""):
         )
         == "simple"
     ):
-        p_r_msg += (
+        footer += (
             os.linesep
             + "MegaLinter is graciously provided by [OX Security]"
             + "(https://www.ox.security/?ref=megalinter)"
         )
     else:
-        p_r_msg += os.linesep + OX_MARKDOWN_LINK
+        footer += os.linesep + OX_MARKDOWN_LINK
+
     if config.exists(
         reporter_self.master.request_id, "JOB_SUMMARY_ADDITIONAL_MARKDOWN"
     ):
-        p_r_msg += os.linesep + config.get(
+        footer += os.linesep + config.get(
             reporter_self.master.request_id, "JOB_SUMMARY_ADDITIONAL_MARKDOWN", ""
         )
-    logging.debug("\n" + p_r_msg)
-    return p_r_msg
+
+    return footer
 
 
 def log_link(label, url):
@@ -328,7 +385,7 @@ def build_linter_reporter_external_result(reporter, redis_stream=False) -> dict:
         text_file_name = (
             f"{reporter.report_folder}{os.path.sep}"
             f"{text_report_sub_folder}{os.path.sep}"
-            f"{reporter.master.status.upper()}-{reporter.master.name}.log"
+            f"{reporter.master.name}-{reporter.master.status.upper()}.log"
         )
         if os.path.isfile(text_file_name):
             with open(text_file_name, "r", encoding="utf-8") as text_file:
@@ -415,3 +472,291 @@ def send_redis_message(reporter_self, message_data):
                 f"[Redis Reporter] Error posting message for MegaLinter: Error {str(e)}"
             )
             logging.warning("[Redis Reporter] Redis Message data: " + str(message_data))
+
+
+def _separate_linters_by_issues(linters):
+    linters_with_issues = []
+    linters_ok = []
+
+    for linter in linters:
+        if linter.is_active is True:
+            # Check if linter has errors or warnings (fixes alone are not considered issues)
+            has_errors = linter.number_errors > 0
+            has_warnings = linter.total_number_warnings > 0
+
+            if has_errors or has_warnings:
+                linters_with_issues.append(linter)
+            else:
+                linters_ok.append(linter)
+
+    return linters_with_issues, linters_ok
+
+
+def _sort_linters_by_icon_severity(linter):
+    # Get the linter status icon to determine sorting priority
+    linter_status_icon = (
+        "✅"
+        if linter.status == "success" and linter.return_code == 0
+        else ("⚠️" if linter.status != "success" and linter.return_code == 0 else "❌")
+    )
+
+    # Return tuple for sorting: (icon_priority, linter_name)
+    # icon_priority: 0 for ❌ (error - highest priority), 1 for ⚠️ (warning), 2 for ✅ (success)
+    icon_priority = (
+        0 if linter_status_icon == "❌" else (1 if linter_status_icon == "⚠️" else 2)
+    )
+    return (icon_priority, linter.linter_name.lower())
+
+
+def _build_table_content(linters, reporter_self, action_run_url):
+    table_header = ["Descriptor", "Linter", "Files", "Fixed", "Errors", "Warnings"]
+    table_column_styles = [
+        Style(align=Align.LEFT),
+        Style(align=Align.LEFT),
+        Style(align=Align.RIGHT),
+        Style(align=Align.RIGHT),
+        Style(align=Align.RIGHT),
+        Style(align=Align.RIGHT),
+    ]
+    if reporter_self.master.show_elapsed_time is True:
+        table_header += ["Elapsed time"]
+        table_column_styles += [Style(align=Align.RIGHT)]
+
+    table_data_raw = []
+    for linter in linters:
+        if linter.is_active is True:
+            linter_data = get_linter_summary_data(linter, action_run_url)
+
+            first_col = f"{linter_data['status']} {linter_data['descriptor_id']}"
+            table_line = [
+                first_col,
+                linter_data["linter_link"],
+                linter_data["found"],
+                linter_data["nb_fixed_cell"],
+                linter_data["errors_cell"],
+                linter_data["warnings_cell"],
+            ]
+            if reporter_self.master.show_elapsed_time is True:
+                table_line += [str(linter_data["elapsed_time"]) + "s"]
+            table_data_raw += [table_line]
+
+    # Build markdown table
+    writer = MarkdownTableWriter(
+        headers=table_header,
+        column_styles=table_column_styles,
+        value_matrix=table_data_raw,
+    )
+    return str(writer)
+
+
+def _build_sections_content(
+    linters_with_issues, linters_ok, reporter_self, action_run_url, max_total_chars
+):
+    content = ""
+
+    # Calculate available space per linter based on total linters with issues
+    total_linters_with_issues = len(linters_with_issues)
+    max_chars_per_linter = max_total_chars // max(total_linters_with_issues, 1)
+
+    # Build sections for linters with issues first
+    for linter in linters_with_issues:
+        linter_data = get_linter_summary_data(linter, action_run_url)
+
+        # Build section header summary
+        # Build concise single-line summary
+        status_icon = linter_data["status"]
+        descriptor = linter_data["descriptor_id"]
+        linter_name = linter.linter_name
+
+        # Start with basic info
+        summary_text = f"{status_icon} {descriptor} / {linter_name}"
+
+        # Add most critical info only (without hyperlinks for sections format)
+        if linter.number_errors > 0:
+            error_word = "error" if linter.total_number_errors == 1 else "errors"
+            summary_text += f" - {linter.total_number_errors} {error_word}"
+        elif linter.total_number_warnings > 0:
+            warning_word = (
+                "warning" if linter.total_number_warnings == 1 else "warnings"
+            )
+            summary_text += f" - {linter.total_number_warnings} {warning_word}"
+        elif linter_data["nb_fixed_cell"] and linter_data["nb_fixed_cell"] != "":
+            # For nb_fixed_cell, use the plain value without links
+            fixed_count = (
+                str(linter.number_fixed)
+                if linter.try_fix is True and linter.cli_lint_mode != "project"
+                else "yes"
+            )
+            summary_text += f" - {fixed_count} fixed"
+
+        # Get linter text output for details section
+        text_report_sub_folder = config.get(
+            reporter_self.master.request_id, "TEXT_REPORTER_SUB_FOLDER", "linters_logs"
+        )
+        text_file_name = (
+            f"{reporter_self.report_folder}{os.path.sep}"
+            f"{text_report_sub_folder}{os.path.sep}"
+            f"{linter.name}-{linter.status.upper()}.log"
+        )
+
+        linter_output = ""
+        raw_linter_output = ""
+        if os.path.isfile(text_file_name):
+            try:
+                with open(text_file_name, "r", encoding="utf-8") as text_file:
+                    full_output = text_file.read()
+                    # Store raw output for AI analysis
+                    separator_pos = full_output.find("Linter raw log:")
+                    if separator_pos != -1:
+                        next_newline = full_output.find("\n", separator_pos)
+                        if next_newline != -1:
+                            raw_linter_output = full_output[next_newline + 1 :].strip()
+                    else:
+                        raw_linter_output = full_output
+
+                    # Process output for display
+                    linter_output = raw_linter_output
+                    # Truncate long output for display
+                    if len(linter_output) > max_chars_per_linter:
+                        total_chars = len(linter_output)
+                        linter_output = (
+                            linter_output[:max_chars_per_linter]
+                            + f"\n\n(Truncated to {max_chars_per_linter} characters out of {total_chars})"
+                        )
+                    if linter_output.strip():
+                        # Escape any HTML in the output and wrap in code block
+                        linter_output = f"```\n{linter_output.strip()}\n```"
+                    else:
+                        linter_output = "No output available"
+            except Exception as e:
+                linter_output = f"Error reading linter output: {str(e)}"
+        else:
+            linter_output = "Linter output file not found"
+
+        # Get AI suggestions for this specific linter if available
+        ai_suggestion_content = ""
+        if linter.llm_suggestion is not None:
+            ai_suggestion_content = f"""
+🤖 AI-Powered Fix Suggestions for {linter.llm_suggestion['linter']} (by {linter.llm_suggestion['provider']} {linter.llm_suggestion['model']})
+
+{linter.llm_suggestion['text']}
+
+"""
+
+        # Build HTML section with AI suggestions integrated
+        LLM_ADVISOR_POSITION = config.get(
+            reporter_self.master.request_id,
+            "LLM_ADVISOR_POSITION",
+            "after_linter_output",
+        )
+        if LLM_ADVISOR_POSITION == "after_linter_output":
+            details_content = linter_output + ai_suggestion_content
+        else:
+            # If LLM_ADVISOR_POSITION is before_linter_output, put AI suggestions first
+            details_content = ai_suggestion_content + linter_output
+        content += f"<details>\n<summary>{summary_text}</summary>\n\n{details_content}\n\n</details>\n\n"
+
+    # Add summary section for OK linters
+    if linters_ok:
+        content += "### ✅ Linters with no issues\n\n"
+        ok_linter_names = []
+        for linter in linters_ok:
+            linter_data = get_linter_summary_data(linter, action_run_url)
+
+            # Check if this linter has fixes
+            has_fixes = linter.try_fix is True and (
+                (linter.cli_lint_mode != "project" and linter.number_fixed > 0)
+                or (linter.cli_lint_mode == "project" and linter.number_fixed > 0)
+            )
+
+            # Build linter name with fix info in parentheses
+            linter_text = linter_data["linter_link"]
+
+            if has_fixes:
+                if linter.cli_lint_mode == "project":
+                    linter_text += " (fixes applied)"
+                else:
+                    fix_word = "fix" if linter.number_fixed == 1 else "fixes"
+                    linter_text += f" ({linter.number_fixed} {fix_word})"
+
+            ok_linter_names.append((linter.linter_name, linter_text))
+
+        # Sort alphabetically by linter name and extract the formatted text
+        ok_linter_names.sort(key=lambda x: x[0])
+        sorted_linter_texts = [text for _, text in ok_linter_names]
+
+        content += ", ".join(sorted_linter_texts) + "\n\n"
+
+    return content
+
+
+def build_markdown_summary_sections_table(
+    reporter_self, action_run_url="", max_total_chars=40000
+):
+    # Build complete message using helper functions
+    p_r_msg = build_markdown_summary_header(reporter_self, action_run_url)
+
+    # Separate linters into two groups: those with issues and those that are OK
+    linters_with_issues, linters_ok = _separate_linters_by_issues(
+        reporter_self.master.linters
+    )
+
+    # Sort linters with issues by severity
+    linters_with_issues.sort(key=_sort_linters_by_icon_severity)
+
+    # Build sections content for linters with issues only
+    if linters_with_issues:
+        p_r_msg += "## Linters with Issues\n\n"
+        sections_content = _build_sections_content(
+            linters_with_issues, [], reporter_self, action_run_url, max_total_chars
+        )
+        p_r_msg += sections_content
+
+    # Build table for all linters
+    p_r_msg += "## All Linters Summary\n\n"
+    table_content = _build_table_content(
+        reporter_self.master.linters, reporter_self, action_run_url
+    )
+    p_r_msg += table_content + os.linesep
+
+    # Add footer content
+    p_r_msg += build_markdown_summary_footer(reporter_self, action_run_url)
+
+    logging.debug("\n" + p_r_msg)
+    return p_r_msg
+
+
+def build_markdown_summary_table_sections(
+    reporter_self, action_run_url="", max_total_chars=40000
+):
+    # Build complete message using helper functions
+    p_r_msg = build_markdown_summary_header(reporter_self, action_run_url)
+
+    # Build table for all linters first
+    p_r_msg += "## All Linters Summary\n\n"
+    table_content = _build_table_content(
+        reporter_self.master.linters, reporter_self, action_run_url
+    )
+    p_r_msg += table_content + os.linesep
+
+    # Separate linters into two groups: those with issues and those that are OK
+    linters_with_issues, linters_ok = _separate_linters_by_issues(
+        reporter_self.master.linters
+    )
+
+    # Sort linters with issues by severity
+    linters_with_issues.sort(key=_sort_linters_by_icon_severity)
+
+    # Build sections content for linters with issues only
+    if linters_with_issues:
+        p_r_msg += "## Detailed Issues\n\n"
+        sections_content = _build_sections_content(
+            linters_with_issues, [], reporter_self, action_run_url, max_total_chars
+        )
+        p_r_msg += sections_content
+
+    # Add footer content
+    p_r_msg += build_markdown_summary_footer(reporter_self, action_run_url)
+
+    logging.debug("\n" + p_r_msg)
+    return p_r_msg

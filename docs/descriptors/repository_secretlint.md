@@ -13,9 +13,22 @@ description: How to use secretlint (configure, ignore files, ignore errors, help
 
 [![GitHub stars](https://img.shields.io/github/stars/secretlint/secretlint?cacheSeconds=3600)](https://github.com/secretlint/secretlint) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/secretlint/secretlint?sort=semver)](https://github.com/secretlint/secretlint/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/secretlint/secretlint)](https://github.com/secretlint/secretlint/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/secretlint/secretlint)](https://github.com/secretlint/secretlint/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/secretlint/secretlint)](https://github.com/secretlint/secretlint/graphs/contributors/)
 
+**SecretLint** is a comprehensive secrets detection tool that prevents sensitive information like API keys, passwords, and tokens from being committed to version control. It provides pluggable architecture with extensive rule sets for detecting various types of secrets across different platforms and services.
+
+**Key Features:**
+
+- **Extensive Rule Library**: Built-in detection for AWS, GitHub, Slack, Google, and dozens of other service credentials
+- **Pluggable Architecture**: Modular rule system allowing custom secret patterns and organization-specific detection
+- **Multiple Output Formats**: Supports JSON, SARIF, and other formats for integration with security tools and platforms
+- **Configuration Flexibility**: Highly configurable with support for custom rules, ignore patterns, and severity levels
+- **Ignore System**: Sophisticated ignore patterns for managing false positives and legacy secrets
+- **Team Collaboration**: Shared configuration files ensure consistent secret detection across development teams
+- **Performance Optimized**: Fast scanning suitable for large repositories and automated workflows
+- **Open Source**: Community-driven with transparent detection rules and continuous updates
+
 ## secretlint documentation
 
-- Version in MegaLinter: **9.3.3**
+- Version in MegaLinter: **10.1.1**
 - Visit [Official Web Site](https://github.com/secretlint/secretlint#readme){target=_blank}
 - See [How to configure secretlint rules](https://github.com/secretlint/secretlint#configuration){target=_blank}
   - If custom `.secretlintrc.json` config file isn't found, [.secretlintrc.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.secretlintrc.json){target=_blank} will be used
@@ -58,7 +71,7 @@ This linter is available in the following flavors
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/)               | Optimized for C, C++, C# or VB based projects                          |        65        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/)         | Optimized for C, C++, C# or VB based projects with JS/TS               |        74        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
 |         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a>          | [go](https://megalinter.io/beta/flavors/go/)                       | Optimized for GO based projects                                        |        52        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-go/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-go) |
-|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.io/beta/flavors/java/)                   | Optimized for JAVA based projects                                      |        54        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.io/beta/flavors/java/)                   | Optimized for JAVA based projects                                      |        55        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
 |     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.io/beta/flavors/javascript/)       | Optimized for JAVASCRIPT or TYPESCRIPT based projects                  |        60        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript) |
 |         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://megalinter.io/beta/flavors/php/)                     | Optimized for PHP based projects                                       |        55        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-php) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)               | Optimized for PYTHON based projects                                    |        66        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
@@ -112,7 +125,7 @@ Options
   --output           [path:String] output file path that is written of reported result.
   --no-color         disable ANSI-color of output.
   --no-terminalLink  disable terminalLink of output.
-  --maskSecrets      enable masking of secret values. replace actual secrets with "***".
+  --no-maskSecrets   disable masking of secret values; secrets are masked by default.
   --secretlintrc     [path:String] path to .secretlintrc config file. Default: .secretlintrc.*
   --secretlintignore [path:String] path to .secretlintignore file. Default: .secretlintignore
   --stdinFileName    [String] filename to process STDIN content. Some rules depend on filename to check content.
@@ -129,7 +142,7 @@ Examples
   # glob pattern should be wrapped with double quote
   $ secretlint "**/*"
   $ secretlint "source/**/*.ini"
-  # found secrets and mask the secrets
+  # output masked result to file
   $ secretlint .zsh_history --format=mask-result --output=.zsh_history
   # lint STDIN content instead of file
   $ echo "SECRET CONTENT" | secretlint --stdinFileName=secret.txt
@@ -152,14 +165,14 @@ Exit Status
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=secretlint
-ARG NPM_SECRETLINT_VERSION=9.3.3
+ARG NPM_SECRETLINT_VERSION=10.1.1
 # renovate: datasource=npm depName=@secretlint/secretlint-rule-preset-recommend
-ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=9.3.3
+ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=10.1.1
 # renovate: datasource=npm depName=@secretlint/secretlint-formatter-sarif
-ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=9.3.3
+ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=10.1.1
 ```
 
 - NPM packages (node.js):
-  - [secretlint@9.3.3](https://www.npmjs.com/package/secretlint/v/9.3.3)
-  - [@secretlint/secretlint-rule-preset-recommend@9.3.3](https://www.npmjs.com/package/@secretlint/secretlint-rule-preset-recommend/v/9.3.3)
-  - [@secretlint/secretlint-formatter-sarif@9.3.3](https://www.npmjs.com/package/@secretlint/secretlint-formatter-sarif/v/9.3.3)
+  - [secretlint@10.1.1](https://www.npmjs.com/package/secretlint/v/10.1.1)
+  - [@secretlint/secretlint-rule-preset-recommend@10.1.1](https://www.npmjs.com/package/@secretlint/secretlint-rule-preset-recommend/v/10.1.1)
+  - [@secretlint/secretlint-formatter-sarif@10.1.1](https://www.npmjs.com/package/@secretlint/secretlint-formatter-sarif/v/10.1.1)

@@ -13,15 +13,25 @@ description: How to use eslint (configure, ignore files, ignore errors, help & v
 
 [![GitHub stars](https://img.shields.io/github/stars/yannickcr/eslint-plugin-react?cacheSeconds=3600)](https://github.com/yannickcr/eslint-plugin-react) ![autofix](https://shields.io/badge/-autofix-green) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/yannickcr/eslint-plugin-react?sort=semver)](https://github.com/yannickcr/eslint-plugin-react/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/yannickcr/eslint-plugin-react)](https://github.com/yannickcr/eslint-plugin-react/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/yannickcr/eslint-plugin-react)](https://github.com/yannickcr/eslint-plugin-react/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/yannickcr/eslint-plugin-react)](https://github.com/yannickcr/eslint-plugin-react/graphs/contributors/)
 
-eslint requires a custom configuration file applicable to your project.
-You can create it by typing `npx eslint --init` in the root of your repository
+**ESLint with React Plugin** provides comprehensive linting for JSX files, combining ESLint's powerful static analysis with React-specific rules to ensure high-quality React applications written in JavaScript.
+
+**Key Features:**
+
+- **React-Specific Linting**: 90+ rules covering React best practices, hooks usage, JSX syntax, and component lifecycle patterns
+- **JSX Syntax Validation**: Comprehensive validation of JSX syntax, prop types, and component structure with intelligent error reporting
+- **Hooks Rules**: Thorough validation of React Hooks usage patterns, dependencies arrays, and effect cleanup to prevent common bugs
+- **Accessibility Integration**: Built-in support for jsx-a11y plugin ensuring accessible React components and WCAG compliance
+- **Performance Optimization**: Rules to detect unnecessary re-renders, missing keys in lists, and performance anti-patterns
+- **Modern React Patterns**: Support for latest React features including fragments, context, refs, and concurrent features
+
+ESLint requires a custom configuration file applicable to your project. You can create it by typing `npx eslint --init` in the root of your repository
 
 ## eslint documentation
 
 - Version in MegaLinter: **8.57.1**
 - Visit [Official Web Site](https://github.com/yannickcr/eslint-plugin-react#readme){target=_blank}
 - See [How to configure eslint rules](https://github.com/yannickcr/eslint-plugin-react#configuration){target=_blank}
-- See [How to disable eslint rules in files](https://eslint.org/docs/user-guide/configuring#disabling-rules-with-inline-comments){target=_blank}
+- See [How to disable eslint rules in files](https://eslint.org/docs/latest/use/configure/rules#disabling-rules){target=_blank}
 - See [How to ignore files and directories with eslint](https://eslint.org/docs/latest/user-guide/configuring/ignoring-code#the-eslintignore-file){target=_blank}
   - You can define a `.eslintignore` file to ignore files and folders
 - See [Index of problems detected by eslint](https://github.com/yannickcr/eslint-plugin-react#list-of-supported-rules){target=_blank}
@@ -59,7 +69,6 @@ Use eslint in your favorite IDE to catch errors before MegaLinter !
 
 |                                                                   <!-- -->                                                                    | IDE                                                      | Extension Name                                                                                 |                                                                                   Install                                                                                   |
 |:---------------------------------------------------------------------------------------------------------------------------------------------:|----------------------------------------------------------|------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-|   <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Atom](https://atom.io/)                                 | [linter-eslint](https://atom.io/packages/linter-eslint)                                        |                                                   [Visit Web Site](https://atom.io/packages/linter-eslint){target=_blank}                                                   |
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/brackets.ico" alt="" height="32px" class="megalinter-icon"></a> | [Brackets](https://brackets.io/)                         | [brackets-eslint](https://github.com/brackets-userland/brackets-eslint)                        |                                            [Visit Web Site](https://github.com/brackets-userland/brackets-eslint){target=_blank}                                            |
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/eclipse.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Eclipse](https://www.eclipse.org/)                      | [Tern-Linter-ESLint](https://github.com/angelozerr/tern.java/wiki/Tern-Linter-ESLint)          |                                      [Visit Web Site](https://github.com/angelozerr/tern.java/wiki/Tern-Linter-ESLint){target=_blank}                                       |
 |  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Emacs](https://www.gnu.org/software/emacs/)             | [flycheck](http://www.flycheck.org/en/latest/languages.html#javascript)                        |                                        [Visit Web Site](http://www.flycheck.org/en/latest/languages.html#javascript){target=_blank}                                         |

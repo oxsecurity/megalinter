@@ -13,9 +13,23 @@ description: How to use kics (configure, ignore files, ignore errors, help & ver
 
 [![GitHub stars](https://img.shields.io/github/stars/checkmarx/kics?cacheSeconds=3600)](https://github.com/checkmarx/kics) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/checkmarx/kics?sort=semver)](https://github.com/checkmarx/kics/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/checkmarx/kics)](https://github.com/checkmarx/kics/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/checkmarx/kics)](https://github.com/checkmarx/kics/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/checkmarx/kics)](https://github.com/checkmarx/kics/graphs/contributors/)
 
+**KICS** (Keeping Infrastructure as Code Secure) is a comprehensive open-source security scanner that identifies security vulnerabilities, compliance issues, and infrastructure misconfigurations in Infrastructure as Code files. It serves as a critical tool for preventing security risks before deployment to production environments.
+
+**Key Features:**
+
+- **Multi-Platform IaC Support**: Analyzes over 20 platforms including Terraform, CloudFormation, Kubernetes, Docker, Ansible, Helm, and more
+- **Extensive Query Library**: Over 2000+ built-in security queries covering OWASP Top 10, CWE, and platform-specific vulnerabilities
+- **Compliance Framework Support**: Built-in checks for CIS benchmarks, NIST, PCI-DSS, HIPAA, and other regulatory standards
+- **SARIF Output**: Modern security report format for integration with development platforms and security tools
+- **Custom Query Engine**: Rego-based policy engine allowing custom security rules for organization-specific requirements
+- **Remediation Guidance**: Detailed fix suggestions and best practice recommendations for identified issues
+- **Inline Suppression**: Comment-based suppression system for managing false positives and accepted risks
+- **Performance Optimized**: Fast scanning suitable for large Infrastructure as Code repositories
+- **Open Source**: Community-driven development with transparent security rules and continuous updates
+
 ## kics documentation
 
-- Version in MegaLinter: **2.1.9**
+- Version in MegaLinter: **2.1.10**
 - Visit [Official Web Site](https://www.kics.io){target=_blank}
 - See [How to configure kics rules](https://docs.kics.io/latest/configuration-file/){target=_blank}
 - See [How to disable kics rules in files](https://docs.kics.io/latest/running-kics/#using_commands_on_scanned_files_as_comments){target=_blank}
@@ -111,7 +125,7 @@ Use "kics [command] --help" for more information about a command.
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=docker depName=checkmarx/kics
-ARG REPOSITORY_KICS_VERSION=v2.1.9-alpine
+ARG REPOSITORY_KICS_VERSION=v2.1.10-alpine
 FROM checkmarx/kics:${REPOSITORY_KICS_VERSION} AS kics
 COPY --link --from=kics /app/bin/kics /usr/bin/kics
 ENV KICS_QUERIES_PATH=/usr/bin/assets/queries KICS_LIBRARIES_PATH=/usr/bin/assets/libraries

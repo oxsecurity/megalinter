@@ -23,11 +23,16 @@ workspace:
   path: /tmp/lint
 
 steps:
-
 - name: megalinter
   image: oxsecurity/megalinter:v8
   environment:
     DEFAULT_WORKSPACE: /tmp/lint
+    # Disable LLM Advisor for bot PRs (dependabot, renovate, etc.)
+    # Note: Drone CI has limited access to PR metadata, this is a basic check
+    LLM_ADVISOR_ENABLED: >-
+      ${DRONE_BUILD_EVENT != 'pull_request' ||
+       (DRONE_PULL_REQUEST_TITLE !~ /^(chore|fix|deps?|bump)(\(.*\))?: / &&
+        DRONE_COMMIT_AUTHOR !~ /^(dependabot|renovate|github-actions)(\[bot\])?$/)}
 ```
 
 This uses the [Drone CI docker runner](https://docs.drone.io/pipeline/docker/overview/), so it's needed to install and configure it beforehand on your Drone CI server.
@@ -45,15 +50,23 @@ workspace:
   path: /tmp/lint
 
 steps:
-
 - name: megalinter
   image: oxsecurity/megalinter:v8
+  environment:
+    DEFAULT_WORKSPACE: /tmp/lint
+    # Disable LLM Advisor for bot PRs (dependabot, renovate, etc.)
+    # Note: Drone CI has limited access to PR metadata, this is a basic check
+    LLM_ADVISOR_ENABLED: >-
+      ${DRONE_BUILD_EVENT != 'pull_request' ||
+       (DRONE_PULL_REQUEST_TITLE !~ /^(chore|fix|deps?|bump)(\(.*\))?: / &&
+        DRONE_COMMIT_AUTHOR !~ /^(dependabot|renovate|github-actions)(\[bot\])?$/)}
+```
   environment:
     DEFAULT_WORKSPACE: /tmp/lint
 
 trigger:
   event:
-  - push
+- push
 ```
 
 The workflow above should only trigger on push, not on any other situation. For more information about how to configure Drone CI trigger rules, [click here](https://docs.drone.io/pipeline/triggers/).

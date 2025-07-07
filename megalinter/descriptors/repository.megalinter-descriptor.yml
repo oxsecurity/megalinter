@@ -8,6 +8,19 @@ lint_all_files: true
 linters:
   # CHECKOV
   - linter_name: checkov
+    linter_text: |
+      **Checkov** is a comprehensive static code analysis tool for Infrastructure as Code (IaC) that prevents cloud security misconfigurations before they reach production.
+
+      **Key Features:**
+
+      - **Multi-Platform IaC Support**: Analyzes Terraform, CloudFormation, Kubernetes, Helm, ARM templates, Docker, Serverless, and more
+      - **Extensive Policy Library**: Over 1,000 built-in security and compliance policies covering CIS benchmarks, PCI-DSS, HIPAA, and other standards
+      - **Cloud Provider Coverage**: Comprehensive rules for AWS, Azure, GCP, Oracle Cloud, and Alibaba Cloud services
+      - **Security Focus**: Detects unencrypted storage, overly permissive security groups, missing logging, exposed secrets, and compliance violations
+      - **SARIF Output**: Modern security report format for integration with development platforms and security tools
+      - **Custom Policies**: Support for custom security policies written in Python or YAML for organization-specific requirements
+      - **Policy Suppression**: Granular control over policy enforcement with inline and configuration-based suppression
+      - **Graph-Based Analysis**: Advanced analysis using dependency graphs for complex infrastructure relationships
     name: REPOSITORY_CHECKOV
     can_output_sarif: true
     descriptor_flavors:
@@ -24,6 +37,7 @@ linters:
     linter_rules_inline_disable_url: https://www.checkov.io/2.Basics/Suppressing%20and%20Skipping%20Policies.html
     linter_rules_url: https://www.checkov.io/5.Policy%20Index/all.html
     linter_megalinter_ref_url: "no"
+    linter_spdx_license: Apache-2.0
     cli_lint_mode: project
     cli_config_arg_name: "--config-file"
     config_file_name: .checkov.yml
@@ -50,10 +64,6 @@ linters:
           ARG PIP_CHECKOV_VERSION=3.2.413
       pip:
         - checkov==${PIP_CHECKOV_VERSION}
-    ide:
-      vscode:
-        - name: Checkov
-          url: https://marketplace.visualstudio.com/items?itemName=Bridgecrew.checkov
     test_folder: repository_checkov
 
   # DEVSKIM
@@ -64,6 +74,18 @@ linters:
       - security
     ignore_for_flavor_suggestions: true
     linter_text: |
+      **DevSkim** is a security analysis tool that provides inline security guidance for developers by detecting security vulnerabilities and anti-patterns in source code.
+
+      **Key Features:**
+
+      - **Multi-Language Support**: Analyzes code in dozens of programming languages including C#, Java, JavaScript, Python, C/C++, and more
+      - **Comprehensive Rule Set**: Over 500 built-in security rules covering common vulnerabilities like injection flaws, cryptographic issues, and authentication problems
+      - **SARIF Output**: Modern security report format for integration with development platforms and security tools
+      - **Custom Rules**: Extensible rule engine allowing organizations to create custom security policies
+      - **Quick Fixes**: Automated remediation suggestions for many detected security issues
+      - **Severity Classification**: Categorizes findings by severity level to help prioritize security fixes
+      - **False Positive Management**: Configurable suppression system to reduce noise and focus on critical issues
+
       If you need to ignore folders,files or file extensions, use glob expressions `Glob` property of local `.devskim.json` file
 
       Example:
@@ -83,6 +105,7 @@ linters:
     linter_rules_ignore_config_url: https://github.com/microsoft/DevSkim/wiki/Analyze-Command
     linter_image_url: https://github.com/microsoft/DevSkim/raw/main/media/devskim_logo.svg
     linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/devskim.png
+    linter_spdx_license: MIT
     config_file_name: .devskim.json
     cli_config_arg_name: "--options-json"
     cli_lint_mode: project
@@ -98,6 +121,7 @@ linters:
     cli_help_arg_name: --help
     cli_version_arg_name: --version
     cli_lint_errors_count: sarif
+    cli_lint_warnings_count: sarif
     test_folder: devskim
     examples:
       - "devskim analyze --source-code ."
@@ -107,7 +131,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=nuget depName=Microsoft.CST.DevSkim.CLI
-          ARG REPOSITORY_DEVSKIM_VERSION=1.0.56
+          ARG REPOSITORY_DEVSKIM_VERSION=1.0.59
         - RUN apk add --no-cache dotnet9-sdk
         - ENV PATH="${PATH}:/root/.dotnet/tools"
         - RUN dotnet tool install --allow-roll-forward --global Microsoft.CST.DevSkim.CLI --version ${REPOSITORY_DEVSKIM_VERSION}
@@ -119,6 +143,20 @@ linters:
   # DUSTILOCK
   - class: DustilockLinter
     linter_name: dustilock
+    linter_text: |
+      **Dustilock** is a dependency vulnerability scanner that analyzes your dependencies for known security vulnerabilities and checks if there are newer, safer versions available. It scans various dependency files (package.json, requirements.txt, etc.) and provides alerts about vulnerable packages in your project, helping you maintain secure dependencies by identifying outdated packages with known CVEs.
+
+      **Key Features:**
+
+      - **Multi-Package Manager Support**: Analyzes dependencies from npm, pip, composer, Maven, Gradle, and other popular package managers
+      - **Lock File Analysis**: Deep inspection of lock files to identify exact vulnerable versions and transitive dependencies
+      - **Real-Time Vulnerability Database**: Uses up-to-date vulnerability databases to detect the latest security issues
+      - **Supply Chain Security**: Identifies compromised or malicious packages in the dependency tree
+      - **SARIF Output**: Modern security report format for integration with development platforms and security tools
+      - **Detailed Reporting**: Comprehensive reports with vulnerability details, severity scores, and remediation guidance
+      - **Version Upgrade Suggestions**: Recommends safer, newer versions to resolve vulnerabilities
+      - **Transitive Dependency Analysis**: Scans both direct and indirect dependencies for comprehensive coverage
+      - **Policy Enforcement**: Configurable security policies to block builds with critical vulnerabilities
     can_output_sarif: true
     descriptor_flavors:
       - all
@@ -128,6 +166,7 @@ linters:
     linter_repo: https://github.com/Checkmarx/dustilock
     linter_banner_image_url: https://user-images.githubusercontent.com/1287098/142776854-83abf265-a1ba-485f-a8b6-995da7f7ef8b.png
     linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/dustilock.png
+    linter_spdx_license: Apache-2.0
     cli_lint_mode: project
     cli_lint_extra_args:
       - --recursive
@@ -154,7 +193,15 @@ linters:
   - linter_name: git_diff
     lint_all_files: true
     test_folder: git_diff
-    linter_text: Git diff checks for git conflicts markers in files
+    linter_text: |
+      **git diff** is a conflict detection checker that scans files for Git conflict markers and other merge-related issues that may have been inadvertently left in the codebase after resolving merge conflicts.
+
+      **Key Features:**
+
+      - **Conflict Marker Detection**: Identifies Git conflict markers (`<<<<<<<`, `=======`, `>>>>>>>`) that weren't properly resolved
+      - **Merge Safety**: Prevents accidentally committing unresolved merge conflicts to version control
+      - **Repository Hygiene**: Helps maintain clean codebases by catching leftover merge artifacts
+      - **Fast Scanning**: Efficiently processes files to detect problematic patterns without performance overhead
     linter_url: https://git-scm.com
     linter_repo: https://github.com/git/git
     linter_speed: 5
@@ -188,6 +235,20 @@ linters:
     linter_rules_inline_disable_url: https://github.com/gitleaks/gitleaks#gitleaksallow
     linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/gitleaks.png
     linter_text: |
+      **gitleaks** is a SAST tool for detecting and preventing secrets like passwords, API keys, and tokens in git repos. It scans the entire history of a git repository, not just the current state, making it effective at finding secrets that may have been accidentally committed.
+
+      **Key Features:**
+
+      - **Full git history scanning** including all branches and commits
+      - **High accuracy detection** with minimal false positives
+      - **Custom rule support** for organization-specific secret patterns
+      - **Multiple output formats** including JSON, CSV, and SARIF
+      - **Pre-commit hook integration** to prevent secrets from being committed
+      - **Baseline support** to ignore existing secrets while catching new ones
+      - **Configuration flexibility** via `.gitleaks.toml` files
+      - **Redaction support** to safely share scan results
+      - **Entropy detection** for finding high-entropy strings that may be secrets
+
       ## Scan only Pull Request commits
 
       `VALIDATE_ALL_CODEBASE: false` doesn't make gitleaks analyze only updated files. To analyze only commits on Pull Request, set `VALIDATE_ALL_CODEBASE: false` together with `REPOSITORY_GITLEAKS_PR_COMMITS_SCAN: true` (you have to specify it explicitly), but only works for selected platforms: GitHub Actions, Azure Pipelines, GitLab Pipelines\* (Merge Requests and External Pull Requests)
@@ -269,7 +330,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=docker depName=zricethezav/gitleaks
-          ARG REPOSITORY_GITLEAKS_VERSION=v8.26.0
+          ARG REPOSITORY_GITLEAKS_VERSION=v8.27.2
         - FROM zricethezav/gitleaks:${REPOSITORY_GITLEAKS_VERSION} AS gitleaks
         - COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
     variables:
@@ -285,6 +346,21 @@ linters:
 
   # GRYPE
   - linter_name: grype
+    linter_text: |
+      **Grype** is a comprehensive vulnerability scanner for container images and filesystems that quickly identifies known security vulnerabilities in packages and dependencies. It serves as an essential tool for supply chain security by detecting CVEs across multiple vulnerability databases.
+
+      **Key Features:**
+
+      - **Multi-Source Scanning**: Analyzes container images, directories, SBOM files, and archives for comprehensive vulnerability coverage
+      - **Extensive Database Coverage**: Leverages multiple vulnerability databases including NVD, Alpine SecDB, Ubuntu, Debian, and more
+      - **Package Manager Support**: Detects vulnerabilities in packages from npm, pip, gem, Maven, Go modules, and other popular package managers
+      - **SARIF Output**: Modern security report format for integration with development platforms and security tools
+      - **Container Registry Integration**: Direct scanning of images from Docker Hub, ECR, GCR, and other container registries
+      - **SBOM Analysis**: Can analyze Software Bill of Materials files for vulnerability assessment
+      - **CI/CD Ready**: Designed for integration into continuous integration pipelines with configurable failure thresholds
+      - **Detailed Reporting**: Comprehensive vulnerability reports with CVSS scores, severity levels, and remediation guidance
+      - **Fast Performance**: Optimized scanning engine suitable for large-scale container and filesystem analysis
+      - **Offline Support**: Can operate with cached vulnerability databases for air-gapped environments
     can_output_sarif: true
     descriptor_flavors:
       - all_flavors # Applicable to CI in any language project
@@ -317,12 +393,26 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=github-tags depName=anchore/grype
-          ARG REPOSITORY_GRYPE_VERSION=0.92.2
+          ARG REPOSITORY_GRYPE_VERSION=0.95.0
         - RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/refs/tags/v${REPOSITORY_GRYPE_VERSION}/install.sh | sh -s -- -b /usr/local/bin
     test_folder: repository_grype
 
   # KICS
   - linter_name: kics
+    linter_text: |
+      **KICS** (Keeping Infrastructure as Code Secure) is a comprehensive open-source security scanner that identifies security vulnerabilities, compliance issues, and infrastructure misconfigurations in Infrastructure as Code files. It serves as a critical tool for preventing security risks before deployment to production environments.
+
+      **Key Features:**
+
+      - **Multi-Platform IaC Support**: Analyzes over 20 platforms including Terraform, CloudFormation, Kubernetes, Docker, Ansible, Helm, and more
+      - **Extensive Query Library**: Over 2000+ built-in security queries covering OWASP Top 10, CWE, and platform-specific vulnerabilities
+      - **Compliance Framework Support**: Built-in checks for CIS benchmarks, NIST, PCI-DSS, HIPAA, and other regulatory standards
+      - **SARIF Output**: Modern security report format for integration with development platforms and security tools
+      - **Custom Query Engine**: Rego-based policy engine allowing custom security rules for organization-specific requirements
+      - **Remediation Guidance**: Detailed fix suggestions and best practice recommendations for identified issues
+      - **Inline Suppression**: Comment-based suppression system for managing false positives and accepted risks
+      - **Performance Optimized**: Fast scanning suitable for large Infrastructure as Code repositories
+      - **Open Source**: Community-driven development with transparent security rules and continuous updates
     can_output_sarif: true
     descriptor_flavors:
       - cupcake
@@ -364,7 +454,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=docker depName=checkmarx/kics
-          ARG REPOSITORY_KICS_VERSION=v2.1.9-alpine
+          ARG REPOSITORY_KICS_VERSION=v2.1.10-alpine
         - FROM checkmarx/kics:${REPOSITORY_KICS_VERSION} AS kics
         - COPY --link --from=kics /app/bin/kics /usr/bin/kics
         - ENV KICS_QUERIES_PATH=/usr/bin/assets/queries KICS_LIBRARIES_PATH=/usr/bin/assets/libraries
@@ -373,6 +463,20 @@ linters:
 
   # LS-LINT
   - linter_name: ls-lint
+    linter_text: |
+      **ls-lint** is an extremely fast file and directory name linter that helps maintain consistent naming conventions across your project. It validates file and directory names against configurable rules to enforce naming patterns, prevent problematic characters, and ensure cross-platform compatibility.
+
+      **Key Features:**
+
+      - **Lightning Fast Performance**: Written in Go for extremely fast scanning of large directory structures and file systems
+      - **Configurable Rules**: Flexible YAML configuration supporting regex patterns, case conventions, and custom naming rules
+      - **Cross-Platform Compatibility**: Prevents naming conflicts between different operating systems (Windows, macOS, Linux)
+      - **Multiple Naming Conventions**: Built-in support for camelCase, PascalCase, snake_case, kebab-case, and custom patterns
+      - **Directory Structure Validation**: Enforces consistent naming across both files and directory hierarchies
+      - **Zero Dependencies**: Standalone binary with no external dependencies for easy installation and deployment
+      - **Globbing Support**: Advanced pattern matching for applying different rules to specific file types or directories
+      - **Team Collaboration**: Ensures consistent naming conventions across large development teams and projects
+      - **Error Prevention**: Catches naming issues early to prevent problems with case-sensitive filesystems and tools
     linter_url: https://ls-lint.org/
     linter_repo: https://github.com/loeffel-io/ls-lint
     linter_rules_url: https://ls-lint.org/2.2/configuration/the-rules.html
@@ -391,7 +495,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=@ls-lint/ls-lint
-          ARG NPM_LS_LINT_LS_LINT_VERSION=2.3.0
+          ARG NPM_LS_LINT_LS_LINT_VERSION=2.3.1
       npm:
         - "@ls-lint/ls-lint@${NPM_LS_LINT_LS_LINT_VERSION}"
 
@@ -405,6 +509,19 @@ linters:
       - cupcake
       - security
     linter_speed: 1
+    linter_text: |
+      **SecretLint** is a comprehensive secrets detection tool that prevents sensitive information like API keys, passwords, and tokens from being committed to version control. It provides pluggable architecture with extensive rule sets for detecting various types of secrets across different platforms and services.
+
+      **Key Features:**
+
+      - **Extensive Rule Library**: Built-in detection for AWS, GitHub, Slack, Google, and dozens of other service credentials
+      - **Pluggable Architecture**: Modular rule system allowing custom secret patterns and organization-specific detection
+      - **Multiple Output Formats**: Supports JSON, SARIF, and other formats for integration with security tools and platforms
+      - **Configuration Flexibility**: Highly configurable with support for custom rules, ignore patterns, and severity levels
+      - **Ignore System**: Sophisticated ignore patterns for managing false positives and legacy secrets
+      - **Team Collaboration**: Shared configuration files ensure consistent secret detection across development teams
+      - **Performance Optimized**: Fast scanning suitable for large repositories and automated workflows
+      - **Open Source**: Community-driven with transparent detection rules and continuous updates
     linter_url: https://github.com/secretlint/secretlint
     linter_repo: https://github.com/secretlint/secretlint
     linter_banner_image_url: https://github.com/secretlint/secretlint/raw/master/docs/assets/SecretLintLP.png
@@ -432,13 +549,13 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=secretlint
-          ARG NPM_SECRETLINT_VERSION=9.3.3
+          ARG NPM_SECRETLINT_VERSION=10.2.0
         - |-
           # renovate: datasource=npm depName=@secretlint/secretlint-rule-preset-recommend
-          ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=9.3.3
+          ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=10.2.0
         - |-
           # renovate: datasource=npm depName=@secretlint/secretlint-formatter-sarif
-          ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=9.3.3
+          ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=10.2.0
       npm:
         - secretlint@${NPM_SECRETLINT_VERSION}
         - "@secretlint/secretlint-rule-preset-recommend@${NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION}"
@@ -456,10 +573,18 @@ linters:
     linter_repo: https://github.com/returntocorp/semgrep
     linter_speed: 1
     linter_text: |
+      **Semgrep** is a fast, AI-powered static analysis tool that finds bugs, detects security vulnerabilities, and enforces code standards across 30+ programming languages and frameworks. Unlike traditional SAST tools, Semgrep provides high-confidence findings with minimal false positives.
+
+      **Key Features:**
+
+      - **Multi-Language Support**: Comprehensive analysis for 30+ languages including Python, JavaScript, Java, Go, C/C++, and more
+      - **High-Precision Analysis**: AI-powered noise filtering reduces false positives by up to 98% compared to traditional SAST tools
+      - **Security-Focused**: Built-in rulesets for OWASP Top 10, CWE vulnerabilities, and framework-specific security patterns
+      - **Custom Rule Engine**: Simple, code-like syntax for writing custom rules that match your organization's coding standards
+      - **Lightning Fast**: Median CI scan time of 10 seconds, designed for developer workflow integration
+      - **Extensive Rule Registry**: Thousands of community and expert-maintained rules covering security, correctness, and performance
       To use SemGrep in MegaLinter you must define a list of rulesets to use.
-
       Example: `REPOSITORY_SEMGREP_RULESETS: ["p/docker-compose","p/owasp-top-ten"]`
-
       Exception for standalone and security flavors docker images, that use a list of security rulesets by default.
     linter_rules_url: https://semgrep.dev/r
     linter_rules_configuration_url: https://semgrep.dev/docs/running-rules/
@@ -521,7 +646,19 @@ linters:
     linter_url: https://github.com/anchore/syft
     linter_repo: https://github.com/anchore/syft
     linter_text: |
-      Builds a SBOM (Software Build Of Materials) from your repository
+      **Syft** is a comprehensive Software Bill of Materials (SBOM) generation tool that creates detailed inventories of software components and dependencies in your projects. It serves as an essential tool for software supply chain security and compliance management.
+
+      **Key Features:**
+
+      - **Multi-Format SBOM Generation**: Creates SBOMs in SPDX, CycloneDX, and Syft native formats for maximum compatibility
+      - **Extensive Ecosystem Support**: Analyzes container images, filesystems, archives, and source code across multiple programming languages
+      - **Language Coverage**: Supports packages from npm, pip, gems, Java/Maven/Gradle, Go modules, .NET, and many more
+      - **Container Analysis**: Deep inspection of container images including OS packages and application dependencies
+      - **Fast Scanning**: High-performance analysis suitable for CI/CD pipelines and large codebases
+      - **Flexible Output**: Multiple output formats including JSON, XML, and human-readable tables
+      - **Supply Chain Visibility**: Provides complete transparency into software components and their origins
+      - **Compliance Ready**: Supports regulatory requirements and industry standards for software transparency
+      - **Integration Friendly**: Seamlessly integrates with vulnerability scanners and security tools for comprehensive analysis
     linter_banner_image_url: https://user-images.githubusercontent.com/5199289/136844524-1527b09f-c5cb-4aa9-be54-5aa92a6086c1.png
     cli_lint_mode: project
     config_file_name: .syft.yaml
@@ -541,7 +678,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=github-tags depName=anchore/syft
-          ARG REPOSITORY_SYFT_VERSION=1.26.1
+          ARG REPOSITORY_SYFT_VERSION=1.28.0
         - RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/refs/tags/v${REPOSITORY_SYFT_VERSION}/install.sh | sh -s -- -b /usr/local/bin
 
   # TRIVY
@@ -554,7 +691,21 @@ linters:
       - cupcake
       - security
     linter_text: |
-      You can ignore a list of errors by defining a [.trivyignore file](https://aquasecurity.github.io/trivy/latest/docs/configuration/filtering/#by-finding-ids)
+      **Trivy** is a comprehensive security scanner that detects vulnerabilities, misconfigurations, secrets, and license issues in container images, filesystems, and git repositories. It serves as an all-in-one security solution for modern development workflows.
+
+      **Key Features:**
+
+      - **Multi-Target Scanning**: Analyzes container images, filesystem directories, git repositories, Kubernetes clusters, and cloud infrastructure
+      - **Vulnerability Detection**: Comprehensive CVE database covering OS packages, language-specific libraries, and application dependencies
+      - **Misconfiguration Scanning**: Built-in policies for Infrastructure as Code including Terraform, CloudFormation, Kubernetes, and Docker
+      - **Secret Detection**: Identifies hardcoded secrets, API keys, passwords, and sensitive information in source code
+      - **License Scanning**: Analyzes software licenses to ensure compliance with organizational policies
+      - **SARIF Output**: Modern security report format for integration with development platforms and security tools
+      - **High Performance**: Fast scanning optimized for CI/CD pipelines with efficient caching mechanisms
+      - **Offline Support**: Can operate in air-gapped environments with offline vulnerability databases
+      - **Extensive Integration**: Works with major CI/CD platforms, container registries, and security orchestration tools
+
+      **Note**: You can ignore specific findings by defining a [.trivyignore file](https://aquasecurity.github.io/trivy/latest/docs/configuration/filtering/#by-finding-ids) at your repository root.
     linter_url: https://aquasecurity.github.io/trivy/
     linter_repo: https://github.com/aquasecurity/trivy
     linter_speed: 2
@@ -585,10 +736,10 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=github-tags depName=aquasecurity/trivy
-          ARG REPOSITORY_TRIVY_VERSION=0.62.1
+          ARG REPOSITORY_TRIVY_VERSION=0.64.1
         - |
           RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin "v${REPOSITORY_TRIVY_VERSION}" \
-              && (trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress)
+              && (trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress)
     ide:
       vscode:
         - name: VSCode Trivy
@@ -607,7 +758,18 @@ linters:
       - cupcake
       - security
     linter_text: |
-      Generates SBOM (Software Bill Of Material) using Trivy
+      **Trivy SBOM** is a specialized component of Trivy that generates comprehensive Software Bill of Materials (SBOM) documents for enhanced supply chain security and compliance. It provides detailed inventory management for software components and dependencies.
+
+      **Key Features:**
+
+      - **Comprehensive Component Discovery**: Automatically detects and catalogs all software components, libraries, and dependencies in projects
+      - **Multi-Format SBOM Output**: Generates SBOMs in industry-standard formats including SPDX and CycloneDX for maximum compatibility
+      - **Container and Filesystem Analysis**: Creates SBOMs for container images, filesystems, and source code repositories
+      - **Dependency Mapping**: Provides complete dependency graphs showing relationships between components
+      - **License Information**: Includes license details for each component to support compliance and legal reviews
+      - **Vulnerability Context**: Links SBOM data with security information for comprehensive risk assessment
+      - **Supply Chain Transparency**: Enables organizations to meet regulatory requirements and industry standards
+      - **Audit Trail**: Creates detailed records of software composition for security auditing and compliance reporting
     linter_url: https://aquasecurity.github.io/trivy/
     linter_repo: https://github.com/aquasecurity/trivy
     linter_speed: 2
@@ -635,10 +797,10 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=github-tags depName=aquasecurity/trivy
-          ARG REPOSITORY_TRIVY_SBOM_VERSION=0.62.1
+          ARG REPOSITORY_TRIVY_SBOM_VERSION=0.64.1
         - |
           RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin "v${REPOSITORY_TRIVY_SBOM_VERSION}" \
-              && (trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress)
+              && (trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress)
     ide:
       vscode:
         - name: VSCode Trivy
@@ -647,6 +809,20 @@ linters:
   # TRUFFLEHOG
   - class: TruffleHogLinter
     linter_name: trufflehog
+    linter_text: |
+      **TruffleHog** is an advanced secrets scanner that searches through git repositories, files, and other sources to find secrets, passwords, API keys, and other sensitive information that may have been accidentally committed to code. It combines pattern matching, entropy analysis, and verification capabilities to provide comprehensive secret detection.
+
+      **Key Features:**
+
+      - **Git History Scanning**: Deep analysis of entire git history including all branches, commits, and deleted files
+      - **Entropy Analysis**: Advanced mathematical analysis to detect high-entropy strings that may be secrets
+      - **Pattern Matching**: Extensive library of regex patterns for detecting known secret formats from popular services
+      - **Secret Verification**: Validates detected secrets by attempting authentication with the actual services
+      - **Multi-Source Support**: Scans git repositories, filesystems, cloud storage, databases, and container images
+      - **Custom Detectors**: Extensible framework for adding organization-specific secret detection patterns
+      - **Performance Optimized**: Efficient scanning algorithms suitable for large repositories and continuous monitoring
+      - **Detailed Reporting**: Comprehensive output with context, verification status, and remediation guidance
+      - **False Positive Management**: Sophisticated filtering and ignore systems to reduce noise and focus on real threats
     descriptor_flavors:
       - all_flavors # Applicable to CI in any language project
       - ci_light
@@ -675,7 +851,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=docker depName=trufflesecurity/trufflehog
-          ARG REPOSITORY_TRUFFLEHOG_VERSION=3.88.34
+          ARG REPOSITORY_TRUFFLEHOG_VERSION=3.89.2
         - FROM trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION} AS trufflehog
         - COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
     test_folder: gitleaks

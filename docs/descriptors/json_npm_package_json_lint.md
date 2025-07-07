@@ -7,6 +7,19 @@ description: How to use npm-package-json-lint (configure, ignore files, ignore e
 # <a href="https://npmpackagejsonlint.org/" target="blank" title="Visit linter Web Site"><img src="https://npmpackagejsonlint.org/img/logo.svg" alt="npm-package-json-lint" height="100px" class="megalinter-logo"></a>npm-package-json-lint
 [![GitHub stars](https://img.shields.io/github/stars/tclindner/npm-package-json-lint?cacheSeconds=3600)](https://github.com/tclindner/npm-package-json-lint) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/tclindner/npm-package-json-lint?sort=semver)](https://github.com/tclindner/npm-package-json-lint/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/tclindner/npm-package-json-lint)](https://github.com/tclindner/npm-package-json-lint/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/tclindner/npm-package-json-lint)](https://github.com/tclindner/npm-package-json-lint/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/tclindner/npm-package-json-lint)](https://github.com/tclindner/npm-package-json-lint/graphs/contributors/)
 
+**npm-package-json-lint** is a specialized linter designed specifically for npm package.json files that ensures consistency, correctness, and adherence to best practices in Node.js project configuration. It serves as an essential tool for maintaining professional npm package standards.
+
+**Key Features:**
+
+- **Package.json Focused**: Specialized validation specifically for npm package.json structure and content
+- **Comprehensive Rule Set**: Extensive collection of rules covering dependencies, metadata, scripts, and package configuration
+- **Best Practices Enforcement**: Validates against npm and Node.js ecosystem best practices and conventions
+- **Configurable Validation**: Highly customizable rules through .npmpackagejsonlintrc.json configuration files
+- **Dependency Analysis**: Checks for missing dependencies, version format consistency, and dependency organization
+- **Metadata Validation**: Ensures required fields like name, version, description are present and properly formatted
+- **Script Analysis**: Validates npm scripts for common patterns and potential issues
+- **Multi-Project Support**: Handles monorepos and complex project structures with hierarchical configuration
+
 ## npm-package-json-lint documentation
 
 - Version in MegaLinter: **8.0.0**

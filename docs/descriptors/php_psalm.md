@@ -13,9 +13,23 @@ description: How to use psalm (configure, ignore files, ignore errors, help & ve
 
 [![GitHub stars](https://img.shields.io/github/stars/vimeo/psalm?cacheSeconds=3600)](https://github.com/vimeo/psalm) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/vimeo/psalm?sort=semver)](https://github.com/vimeo/psalm/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/vimeo/psalm)](https://github.com/vimeo/psalm/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/vimeo/psalm)](https://github.com/vimeo/psalm/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/vimeo/psalm)](https://github.com/vimeo/psalm/graphs/contributors/)
 
+**Psalm** is an advanced static analysis tool for PHP that provides comprehensive type checking, security analysis, and code quality assessment. Developed by Vimeo, it offers sophisticated analysis capabilities that go beyond traditional linting to catch subtle bugs and security vulnerabilities.
+
+**Key Features:**
+
+- **Gradual Type Checking**: Intelligent type inference that works with existing PHP code, gradually adding type safety
+- **Security Analysis**: Built-in taint analysis to detect potential security vulnerabilities like SQL injection and XSS
+- **Advanced Type System**: Support for generics, template types, conditional return types, and complex type relationships
+- **Dead Code Detection**: Identifies unused variables, methods, properties, and imports to help reduce codebase bloat
+- **Immutability Analysis**: Tracks object mutability and detects potential side effects in functional programming patterns
+- **Language Server**: Real-time analysis and intelligent code completion through Language Server Protocol
+- **Migration Tools**: Automated refactoring tools to add type annotations and improve code quality
+- **Framework Integration**: Specialized support for popular PHP frameworks with framework-specific analysis rules
+- **Performance Optimized**: Fast analysis with caching and incremental checking for large codebases
+
 ## psalm documentation
 
-- Version in MegaLinter: **Psalm.6.11.0@**
+- Version in MegaLinter: **Psalm.6.12.1@**
 - Visit [Official Web Site](https://psalm.dev){target=_blank}
 - See [How to configure psalm rules](https://psalm.dev/docs/running_psalm/configuration/){target=_blank}
   - If custom `psalm.xml` config file isn't found, [psalm.xml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/psalm.xml){target=_blank} will be used
@@ -215,6 +229,11 @@ Reports:
         Whether the report should include non-errors in its output (defaults to true)
 
 Caching:
+    --consolidate-cache
+        Consolidates all cache files that Psalm uses for this specific project into a single file,
+        for quicker runs when doing whole project scans.
+        Make sure to consolidate the cache again after running Psalm before saving the cache via CI.
+
     --clear-cache
         Clears all cache files that Psalm uses for this specific project
 
@@ -227,6 +246,9 @@ Caching:
     --no-reflection-cache
         Runs Psalm without using cached representations of unchanged classes and files.
         Useful if you want the afterClassLikeVisit plugin hook to run every time you visit a file.
+
+    --no-reference-cache
+        Runs Psalm without using cached representations of unchanged methods.
 
     --no-file-cache
         Runs Psalm without using caching every single file for later diffing.
@@ -285,7 +307,7 @@ ENV PATH="/root/.composer/vendor/bin:${PATH}"
 ENV PHP_CS_FIXER_IGNORE_ENV=true
 # Linter install
 # renovate: datasource=packagist depName=vimeo/psalm
-ARG PHP_VIMEO_PSALM_VERSION=6.11.0
+ARG PHP_VIMEO_PSALM_VERSION=6.12.1
 RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require vimeo/psalm:${PHP_VIMEO_PSALM_VERSION}
 
 ```

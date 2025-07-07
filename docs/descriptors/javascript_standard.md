@@ -13,10 +13,25 @@ description: How to use standard (configure, ignore files, ignore errors, help &
 
 [![GitHub stars](https://img.shields.io/github/stars/standard/standard?cacheSeconds=3600)](https://github.com/standard/standard) ![autofix](https://shields.io/badge/-autofix-green) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/standard/standard?sort=semver)](https://github.com/standard/standard/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/standard/standard)](https://github.com/standard/standard/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/standard/standard)](https://github.com/standard/standard/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/standard/standard)](https://github.com/standard/standard/graphs/contributors/)
 
+**JavaScript Standard Style** is a popular zero-configuration JavaScript linter and code formatter that eliminates endless debates about code style by providing a strict, opinionated set of rules. It serves as both a style guide and automated enforcement tool for clean, consistent JavaScript.
+
+**Key Features:**
+
+- **Zero Configuration**: No configuration files, command-line flags, or setup required - just install and run
+- **Automatic Fixing**: Built-in `--fix` option automatically corrects most style violations
+- **Strict Style Rules**: Enforces 2-space indentation, single quotes, no semicolons, and other proven conventions
+- **Wide Adoption**: Used by thousands of projects including npm, GitHub, Zeit, MongoDB, and Express
+- **Comprehensive Coverage**: Catches stylistic errors, potential bugs, and dangerous patterns
+- **Fast Performance**: Quick analysis suitable for large codebases
+- **Plugin Ecosystem**: Extensions available for React, Flow, TypeScript, and other JavaScript variants
+- **Clear Error Messages**: Helpful error descriptions with links to explanations and examples
+
 ## standard documentation
 
 - Version in MegaLinter: **17.1.2**
 - Visit [Official Web Site](https://standardjs.com/){target=_blank}
+- See [How to configure standard rules](https://standardjs.com/#how-do-i-ignore-files){target=_blank}
+- See [How to disable standard rules in files](https://standardjs.com/#how-do-i-disable-a-rule){target=_blank}
 - See [Index of problems detected by standard](https://standardjs.com/rules.html){target=_blank}
 
 [![standard - GitHub](https://gh-card.dev/repos/standard/standard.svg?fullname=)](https://github.com/standard/standard){target=_blank}
@@ -51,9 +66,6 @@ Use standard in your favorite IDE to catch errors before MegaLinter !
 
 |                                                                   <!-- -->                                                                    | IDE                                                      | Extension Name                                                                                      |                                                                                    Install                                                                                    |
 |:---------------------------------------------------------------------------------------------------------------------------------------------:|----------------------------------------------------------|-----------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-|   <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Atom](https://atom.io/)                                 | [linter-js-standard](https://atom.io/packages/linter-js-standard)                                   |                                                 [Visit Web Site](https://atom.io/packages/linter-js-standard){target=_blank}                                                  |
-|   <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Atom](https://atom.io/)                                 | [linter-js-standard-engine](https://atom.io/packages/linter-js-standard-engine)                     |                                              [Visit Web Site](https://atom.io/packages/linter-js-standard-engine){target=_blank}                                              |
-|   <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Atom](https://atom.io/)                                 | [standard-formatter](https://atom.io/packages/standard-formatter)                                   |                                                 [Visit Web Site](https://atom.io/packages/standard-formatter){target=_blank}                                                  |
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/brackets.ico" alt="" height="32px" class="megalinter-icon"></a> | [Brackets](https://brackets.io/)                         | [brackets-standard](https://github.com/ishamf/brackets-standard/)                                   |                                                 [Visit Web Site](https://github.com/ishamf/brackets-standard/){target=_blank}                                                 |
 |   <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a>   | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [native support](https://blog.jetbrains.com/webstorm/2017/01/webstorm-2017-1-eap-171-2272/)         |                                  [Visit Web Site](https://blog.jetbrains.com/webstorm/2017/01/webstorm-2017-1-eap-171-2272/){target=_blank}                                   |
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Sublime Text](https://www.sublimetext.com/)             | [SublimeLinter-contrib-standard](https://packagecontrol.io/packages/SublimeLinter-contrib-standard) |                                      [Visit Web Site](https://packagecontrol.io/packages/SublimeLinter-contrib-standard){target=_blank}                                       |

@@ -13,21 +13,48 @@ linters:
     linter_name: eslint
     name: JAVASCRIPT_ES
     can_output_sarif: true
+    linter_spdx_license: MIT
     file_extensions:
       - ".js"
       - ".vue"
     linter_text: |
-      eslint requires a custom configuration file applicable to your project.
+      **ESLint** is the #1 JavaScript linter by downloads on npm (over 77M weekly downloads) and the most widely adopted pluggable linting utility for JavaScript and JSX. It helps you find and fix problems with your JavaScript code through static analysis.
 
-      You can create it by typing `npx eslint --init` in the root of your repository
+      **Key features:**
+
+      - **Static Code Analysis**: Quickly finds problems in JavaScript code without executing it
+      - **Automatic Fixing**: Many problems can be automatically fixed with syntax-aware corrections
+      - **Highly Configurable**: Completely customizable rules, parsers, and plugins ecosystem
+      - **Built-in Editor Integration**: Works seamlessly with most text editors
+      - **Extensible Plugin System**: Thousands of community plugins for frameworks like React, Vue, Node.js
+      - **Multiple Output Formats**: Supports various output formats including SARIF for security tools
+      - **Custom Rules**: Write your own rules that work alongside ESLint's built-in rules
+
+      **Common code quality checks:**
+
+      - **Syntax Errors**: Catches JavaScript syntax issues and typos
+      - **Code Style**: Enforces consistent formatting, naming conventions, and code structure
+      - **Best Practices**: Identifies problematic patterns and suggests improvements
+      - **Security Issues**: Detects potential security vulnerabilities (with security plugins)
+      - **Performance**: Identifies performance anti-patterns and optimizations
+
+      **Popular configurations:**
+
+      - **Airbnb Style Guide**: Industry-standard JavaScript style guide
+      - **Standard**: Minimal, opinionated code style with no configuration
+      - **Prettier Integration**: Seamless integration with Prettier for code formatting
+
+      ESLint requires a custom configuration file applicable to your project. You can create it by typing `npx eslint --init` in the root of your repository.
+
+      Used by companies like Microsoft, Airbnb, Netflix, and Facebook, ESLint helps maintain code quality and consistency across JavaScript projects of all sizes.
     linter_url: https://eslint.org
     linter_repo: https://github.com/eslint/eslint
-    linter_rules_url: https://eslint.org/docs/rules/
+    linter_rules_url: https://eslint.org/docs/latest/rules/
     linter_banner_image_url: https://d33wubrfki0l68.cloudfront.net/3b5ac7586466159bb6f237b633bfc4f5a8d5acf8/ee0a1/assets/img/posts/eslint-collective.png
-    linter_rules_configuration_url: https://eslint.org/docs/user-guide/configuring
-    linter_rules_inline_disable_url: https://eslint.org/docs/user-guide/configuring#disabling-rules-with-inline-comments
-    linter_rules_ignore_config_url: https://eslint.org/docs/latest/user-guide/configuring/ignoring-code#the-eslintignore-file
-    linter_megalinter_ref_url: https://eslint.org/docs/user-guide/integrations#source-control
+    linter_rules_configuration_url: https://eslint.org/docs/latest/use/configure
+    linter_rules_inline_disable_url: https://eslint.org/docs/latest/use/configure/rules#disabling-rules
+    linter_rules_ignore_config_url: https://eslint.org/docs/latest/use/configure/ignore#the-eslintignore-file
+    linter_megalinter_ref_url: https://eslint.org/docs/latest/use/integrations#source-control
     active_only_if_file_found:
       - ".eslintrc.json"
       - ".eslintrc.yml"
@@ -71,28 +98,28 @@ linters:
           ARG NPM_ESLINT_CONFIG_STANDARD_VERSION=17.1.0
         - |-
           # renovate: datasource=npm depName=eslint-plugin-import
-          ARG NPM_ESLINT_PLUGIN_IMPORT_VERSION=2.31.0
+          ARG NPM_ESLINT_PLUGIN_IMPORT_VERSION=2.32.0
         - |-
           # renovate: datasource=npm depName=eslint-plugin-jest
-          ARG NPM_ESLINT_PLUGIN_JEST_VERSION=28.11.0
+          ARG NPM_ESLINT_PLUGIN_JEST_VERSION=29.0.1
         - |-
           # renovate: datasource=npm depName=eslint-plugin-n
           ARG NPM_ESLINT_PLUGIN_N_VERSION=16.6.2
         - |-
           # renovate: datasource=npm depName=eslint-plugin-prettier
-          ARG NPM_ESLINT_PLUGIN_PRETTIER_VERSION=5.4.0
+          ARG NPM_ESLINT_PLUGIN_PRETTIER_VERSION=5.5.1
         - |-
           # renovate: datasource=npm depName=eslint-plugin-promise
           ARG NPM_ESLINT_PLUGIN_PROMISE_VERSION=6.6.0
         - |-
           # renovate: datasource=npm depName=eslint-plugin-vue
-          ARG NPM_ESLINT_PLUGIN_VUE_VERSION=10.1.0
+          ARG NPM_ESLINT_PLUGIN_VUE_VERSION=10.3.0
         - |-
           # renovate: datasource=npm depName=@babel/core
-          ARG NPM_BABEL_CORE_VERSION=7.27.3
+          ARG NPM_BABEL_CORE_VERSION=7.28.0
         - |-
           # renovate: datasource=npm depName=@babel/eslint-parser
-          ARG NPM_BABEL_ESLINT_PARSER_VERSION=7.27.1
+          ARG NPM_BABEL_ESLINT_PARSER_VERSION=7.28.0
         - |-
           # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
           ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
@@ -111,9 +138,6 @@ linters:
         - "@babel/eslint-parser@${NPM_BABEL_ESLINT_PARSER_VERSION}"
         - "@microsoft/eslint-formatter-sarif@${NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION}"
     ide:
-      atom:
-        - name: linter-eslint
-          url: https://atom.io/packages/linter-eslint
       brackets:
         - name: brackets-eslint
           url: https://github.com/brackets-userland/brackets-eslint
@@ -141,6 +165,20 @@ linters:
   # STANDARD
   - class: JavaScriptStandardLinter
     linter_name: standard
+    linter_text: |
+      **JavaScript Standard Style** is a popular zero-configuration JavaScript linter and code formatter that eliminates endless debates about code style by providing a strict, opinionated set of rules. It serves as both a style guide and automated enforcement tool for clean, consistent JavaScript.
+
+      **Key Features:**
+
+      - **Zero Configuration**: No configuration files, command-line flags, or setup required - just install and run
+      - **Automatic Fixing**: Built-in `--fix` option automatically corrects most style violations
+      - **Strict Style Rules**: Enforces 2-space indentation, single quotes, no semicolons, and other proven conventions
+      - **Wide Adoption**: Used by thousands of projects including npm, GitHub, Zeit, MongoDB, and Express
+      - **Comprehensive Coverage**: Catches stylistic errors, potential bugs, and dangerous patterns
+      - **Fast Performance**: Quick analysis suitable for large codebases
+      - **Plugin Ecosystem**: Extensions available for React, Flow, TypeScript, and other JavaScript variants
+      - **Clear Error Messages**: Helpful error descriptions with links to explanations and examples
+    linter_spdx_license: MIT
     activation_rules:
       - type: variable
         variable: JAVASCRIPT_DEFAULT_STYLE
@@ -149,6 +187,8 @@ linters:
     linter_url: https://standardjs.com/
     linter_repo: https://github.com/standard/standard
     linter_rules_url: https://standardjs.com/rules.html
+    linter_rules_configuration_url: https://standardjs.com/#how-do-i-ignore-files
+    linter_rules_inline_disable_url: https://standardjs.com/#how-do-i-disable-a-rule
     linter_banner_image_url: https://github.com/standard/standard/raw/master/sticker.png
     name: JAVASCRIPT_STANDARD
     cli_lint_mode: list_of_files
@@ -165,13 +205,6 @@ linters:
       npm:
         - standard@${NPM_STANDARD_VERSION}
     ide:
-      atom:
-        - name: linter-js-standard
-          url: https://atom.io/packages/linter-js-standard
-        - name: linter-js-standard-engine
-          url: https://atom.io/packages/linter-js-standard-engine
-        - name: standard-formatter
-          url: https://atom.io/packages/standard-formatter
       brackets:
         - name: brackets-standard
           url: https://github.com/ishamf/brackets-standard/
@@ -188,7 +221,21 @@ linters:
           url: https://marketplace.visualstudio.com/items?itemName=standard.vscode-standard
   # PRETTIER
   - linter_name: prettier
+    linter_text: |
+      **Prettier** is the industry-leading opinionated code formatter that brings consistency to JavaScript and many other languages by automatically reformatting code according to proven formatting principles. It eliminates formatting debates and ensures uniform code style across entire development teams.
+
+      **Key Features:**
+
+      - **Multi-Language Support**: Formats JavaScript, TypeScript, CSS, HTML, JSON, Markdown, YAML, and 20+ other languages
+      - **Opinionated Formatting**: Zero-configuration approach with sensible defaults that work well for most projects
+      - **Parse Safety**: Ensures formatted code maintains semantic equivalence to the original through AST-based processing
+      - **Consistent Output**: Deterministic formatting produces identical results regardless of environment or developer
+      - **Team Standardization**: Eliminates style discussions and ensures consistent formatting across team members
+      - **Fast Performance**: High-speed formatting suitable for large codebases
+      - **Configuration Flexibility**: Supports project-specific settings through .prettierrc files when customization is needed
+      - **Git Integration**: Reduces merge conflicts by maintaining consistent formatting across branches
     is_formatter: true
+    linter_spdx_license: MIT
     activation_rules:
       - type: variable
         variable: JAVASCRIPT_DEFAULT_STYLE
@@ -219,17 +266,10 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=prettier
-          ARG NPM_PRETTIER_VERSION=3.5.3
+          ARG NPM_PRETTIER_VERSION=3.6.2
       npm:
         - "prettier@${NPM_PRETTIER_VERSION}"
     ide:
-      atom:
-        - name: prettier-atom
-          url: https://github.com/prettier/prettier-atom
-        - name: atom-mprettier
-          url: https://github.com/t9md/atom-mprettier
-        - name: atom-miniprettier
-          url: https://github.com/duailibe/atom-miniprettier
       emacs:
         - name: prettier-emacs
           url: https://github.com/prettier/prettier-emacs

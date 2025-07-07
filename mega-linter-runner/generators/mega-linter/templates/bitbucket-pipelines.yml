@@ -1,0 +1,25 @@
+# MegaLinter Bitbucket Pipelines configuration file
+# More info at https://megalinter.io
+
+image: atlassian/default-image:3
+
+pipelines:
+  default:
+    - parallel:
+        - step:
+            name: Run MegaLinter
+            image: <%= DOCKER_IMAGE_NAME %>:<%= DOCKER_IMAGE_VERSION %>
+            script:
+              # Disable LLM Advisor for bot PRs (dependabot, renovate, etc.)
+              # Note: Bitbucket has limited access to PR metadata, this is a basic check
+              - |
+                if [[ "$BITBUCKET_BRANCH" =~ ^(dependabot|renovate)/ ]] ||
+                   [[ "$BITBUCKET_PR_TITLE" =~ ^(chore|fix|deps?|bump)(\(.*\))?: ]] ||
+                   [[ "$BITBUCKET_STEP_TRIGGERER_UUID" =~ dependabot|renovate ]]; then
+                  export LLM_ADVISOR_ENABLED=false
+                else
+                  export LLM_ADVISOR_ENABLED=true
+                fi
+              - export DEFAULT_WORKSPACE=$BITBUCKET_CLONE_DIR && bash /entrypoint.sh
+            artifacts:
+              - megalinter-reports/**

@@ -13,9 +13,23 @@ description: How to use ls-lint (configure, ignore files, ignore errors, help & 
 
 [![GitHub stars](https://img.shields.io/github/stars/loeffel-io/ls-lint?cacheSeconds=3600)](https://github.com/loeffel-io/ls-lint) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/loeffel-io/ls-lint?sort=semver)](https://github.com/loeffel-io/ls-lint/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/loeffel-io/ls-lint)](https://github.com/loeffel-io/ls-lint/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/loeffel-io/ls-lint)](https://github.com/loeffel-io/ls-lint/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/loeffel-io/ls-lint)](https://github.com/loeffel-io/ls-lint/graphs/contributors/)
 
+**ls-lint** is an extremely fast file and directory name linter that helps maintain consistent naming conventions across your project. It validates file and directory names against configurable rules to enforce naming patterns, prevent problematic characters, and ensure cross-platform compatibility.
+
+**Key Features:**
+
+- **Lightning Fast Performance**: Written in Go for extremely fast scanning of large directory structures and file systems
+- **Configurable Rules**: Flexible YAML configuration supporting regex patterns, case conventions, and custom naming rules
+- **Cross-Platform Compatibility**: Prevents naming conflicts between different operating systems (Windows, macOS, Linux)
+- **Multiple Naming Conventions**: Built-in support for camelCase, PascalCase, snake_case, kebab-case, and custom patterns
+- **Directory Structure Validation**: Enforces consistent naming across both files and directory hierarchies
+- **Zero Dependencies**: Standalone binary with no external dependencies for easy installation and deployment
+- **Globbing Support**: Advanced pattern matching for applying different rules to specific file types or directories
+- **Team Collaboration**: Ensures consistent naming conventions across large development teams and projects
+- **Error Prevention**: Catches naming issues early to prevent problems with case-sensitive filesystems and tools
+
 ## ls-lint documentation
 
-- Version in MegaLinter: **2.3.0**
+- Version in MegaLinter: **2.3.1**
 - Visit [Official Web Site](https://ls-lint.org/){target=_blank}
 - See [Index of problems detected by ls-lint](https://ls-lint.org/2.2/configuration/the-rules.html){target=_blank}
 
@@ -54,7 +68,7 @@ This linter is available in the following flavors
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/)               | Optimized for C, C++, C# or VB based projects                          |        65        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/)         | Optimized for C, C++, C# or VB based projects with JS/TS               |        74        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
 |         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a>          | [go](https://megalinter.io/beta/flavors/go/)                       | Optimized for GO based projects                                        |        52        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-go/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-go) |
-|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.io/beta/flavors/java/)                   | Optimized for JAVA based projects                                      |        54        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.io/beta/flavors/java/)                   | Optimized for JAVA based projects                                      |        55        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
 |     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.io/beta/flavors/javascript/)       | Optimized for JAVASCRIPT or TYPESCRIPT based projects                  |        60        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript) |
 |         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://megalinter.io/beta/flavors/php/)                     | Optimized for PHP based projects                                       |        55        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-php) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)               | Optimized for PYTHON based projects                                    |        66        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
@@ -115,8 +129,8 @@ Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=@ls-lint/ls-lint
-ARG NPM_LS_LINT_LS_LINT_VERSION=2.3.0
+ARG NPM_LS_LINT_LS_LINT_VERSION=2.3.1
 ```
 
 - NPM packages (node.js):
-  - [@ls-lint/ls-lint@2.3.0](https://www.npmjs.com/package/@ls-lint/ls-lint/v/2.3.0)
+  - [@ls-lint/ls-lint@2.3.1](https://www.npmjs.com/package/@ls-lint/ls-lint/v/2.3.1)

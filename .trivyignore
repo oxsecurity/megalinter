@@ -24,6 +24,7 @@ CVE-2024-24790
 CVE-2024-45337
 CVE-2024-45338
 CVE-2025-22869
+CVE-2025-22874
 CVE-2025-30204
 
 # go-git
@@ -65,6 +66,10 @@ CVE-2020-26226
 # sfdx
 CVE-2025-24970
 GHSA-xpw8-rcwv-8f8p
+
+# sfdx-scanner
+# https://avd.aquasec.com/nvd/cve-2025-48734 Not dangerous in MegaLinter context, and sfdx-scanner will be soon replaced by code-analyzer plugin
+CVE-2025-48734
 
 # octokit
 CVE-2025-25288
@@ -115,6 +120,12 @@ CVE-2024-47535
 CVE-2024-12797
 # https://avd.aquasec.com/nvd/cve-2025-46569 : Linters in MegaLinter do not run servers.
 CVE-2025-46569
+# https://avd.aquasec.com/nvd/cve-2025-48387 : tar-fs, not applicable in MegaLinter context
+CVE-2025-48387
+# https://avd.aquasec.com/nvd/cve-2025-5889 : brace-expansion, ddos attack, not applicable in MegaLinter context
+CVE-2025-5889
+# https://avd.aquasec.com/nvd/cve-2025-3730 : torch, not applicable in MegaLinter context    
+CVE-2025-3730
 # Dockerfile
 DS001
 DS002

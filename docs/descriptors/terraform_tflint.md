@@ -7,6 +7,19 @@ description: How to use tflint (configure, ignore files, ignore errors, help & v
 # tflint
 [![GitHub stars](https://img.shields.io/github/stars/terraform-linters/tflint?cacheSeconds=3600)](https://github.com/terraform-linters/tflint) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/terraform-linters/tflint?sort=semver)](https://github.com/terraform-linters/tflint/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/terraform-linters/tflint)](https://github.com/terraform-linters/tflint/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/terraform-linters/tflint)](https://github.com/terraform-linters/tflint/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/terraform-linters/tflint)](https://github.com/terraform-linters/tflint/graphs/contributors/)
 
+**TFLint** is a pluggable Terraform linter that provides deep inspection of Terraform configurations with a focus on catching errors that terraform plan might miss. It offers extensive static analysis capabilities including provider-specific checks, deprecated syntax detection, and infrastructure best practices validation.
+
+**Key Features:**
+
+- **Deep Terraform Analysis**: Goes beyond basic syntax checking to validate Terraform semantics and logic
+- **Provider-Specific Rules**: Specialized rule sets for AWS, Azure, GCP, and other cloud providers
+- **Plugin Architecture**: Extensible with community and custom plugins for specific use cases
+- **Performance Optimized**: Fast analysis suitable for large Terraform codebases
+- **Configuration Flexibility**: Highly configurable with .tflint.hcl files for project-specific requirements
+- **Error Prevention**: Catches common issues before terraform plan/apply execution
+- **Module Support**: Analyzes Terraform modules and their usage patterns
+- **Detailed Reporting**: Clear error messages with file locations and remediation suggestions
+
 > If you are using the GitHub action please use the `TERRAFORM_TFLINT_UNSECURED_ENV_VARIABLES: GITHUB_TOKEN` to prevent plugin download issues
 
 > If you have issues with tflint --init, create a GitHub Personal Access Token and set its value to PAT_GITHUB_COM variable.

@@ -7,7 +7,11 @@ description: Generates a summary of SAST results in Markdown within a file named
 
 Generates a summary of SAST results in Markdown within a file named **megalinter-report.md**, located in the report folder.
 
-This reporter **is deactivated by default**.
+If [LLM Advisor](../llm-advisor.md) is activated, it will also show its suggestions to fix linter errors.
+
+If **GITHUB_STEP_SUMMARY** is set, the related file will also be written.
+
+This reporter **is deactivated by default**, except if env variable GITHUB_STEP_SUMMARY is found.
 
 ![Screenshot](../assets/images/MarkdownSummaryReporter_1.png)
 

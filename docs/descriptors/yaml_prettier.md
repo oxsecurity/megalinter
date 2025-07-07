@@ -13,9 +13,22 @@ description: How to use prettier (configure, ignore files, ignore errors, help &
 
 [![GitHub stars](https://img.shields.io/github/stars/prettier/prettier?cacheSeconds=3600)](https://github.com/prettier/prettier) ![formatter](https://shields.io/badge/-format-yellow) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/prettier/prettier?sort=semver)](https://github.com/prettier/prettier/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/prettier/prettier)](https://github.com/prettier/prettier/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/prettier/prettier)](https://github.com/prettier/prettier/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/prettier/prettier)](https://github.com/prettier/prettier/graphs/contributors/)
 
+**Prettier** is the industry-standard opinionated code formatter that brings consistency to YAML files by enforcing a unified style across projects. It eliminates formatting debates by automatically reformatting code according to its proven formatting principles.
+
+**Key Features:**
+
+- **Opinionated Formatting**: Zero-configuration approach with sensible defaults that work well for most projects
+- **Consistent Output**: Deterministic formatting ensures identical results regardless of environment or developer
+- **YAML Optimization**: Specialized handling of YAML syntax including proper indentation, spacing, and structure
+- **Multi-Language Support**: Part of a comprehensive formatting ecosystem covering 20+ languages
+- **Parse Safety**: Validates that formatted code maintains semantic equivalence to the original
+- **Configuration Flexibility**: Supports project-specific settings through .prettierrc files when customization is needed
+- **Fast Performance**: High-speed formatting suitable for large YAML files
+- **Team Standardization**: Eliminates style discussions and ensures consistent formatting across team members
+
 ## prettier documentation
 
-- Version in MegaLinter: **3.5.3**
+- Version in MegaLinter: **3.6.2**
 - Visit [Official Web Site](https://prettier.io/){target=_blank}
 - See [How to configure prettier rules](https://prettier.io/docs/en/configuration.html){target=_blank}
 - See [How to disable prettier rules in files](https://prettier.io/docs/en/ignore.html#yaml){target=_blank}
@@ -54,9 +67,6 @@ Use prettier in your favorite IDE to catch errors before MegaLinter !
 
 |                                                                   <!-- -->                                                                   | IDE                                                      | Extension Name                                                                                |                                                                                   Install                                                                                   |
 |:--------------------------------------------------------------------------------------------------------------------------------------------:|----------------------------------------------------------|-----------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-|  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Atom](https://atom.io/)                                 | [prettier-atom](https://github.com/prettier/prettier-atom)                                    |                                                 [Visit Web Site](https://github.com/prettier/prettier-atom){target=_blank}                                                  |
-|  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Atom](https://atom.io/)                                 | [atom-mprettier](https://github.com/t9md/atom-mprettier)                                      |                                                   [Visit Web Site](https://github.com/t9md/atom-mprettier){target=_blank}                                                   |
-|  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Atom](https://atom.io/)                                 | [atom-miniprettier](https://github.com/duailibe/atom-miniprettier)                            |                                               [Visit Web Site](https://github.com/duailibe/atom-miniprettier){target=_blank}                                                |
 |  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Emacs](https://www.gnu.org/software/emacs/)             | [prettier-emacs](https://github.com/prettier/prettier-emacs)                                  |                                                 [Visit Web Site](https://github.com/prettier/prettier-emacs){target=_blank}                                                 |
 |  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Emacs](https://www.gnu.org/software/emacs/)             | [prettier.el](https://github.com/jscheid/prettier.el)                                         |                                                   [Visit Web Site](https://github.com/jscheid/prettier.el){target=_blank}                                                   |
 |  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Emacs](https://www.gnu.org/software/emacs/)             | [apheleia](https://github.com/raxod502/apheleia)                                              |                                                    [Visit Web Site](https://github.com/raxod502/apheleia){target=_blank}                                                    |
@@ -81,7 +91,7 @@ This linter is available in the following flavors
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/)         | Optimized for C, C++, C# or VB based projects with JS/TS               |        74        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
 |     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/formatters.ico" alt="" height="32px" class="megalinter-icon"></a>      | [formatters](https://megalinter.io/beta/flavors/formatters/)       | Contains only formatters                                               |        18        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-formatters/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-formatters) |
 |         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a>          | [go](https://megalinter.io/beta/flavors/go/)                       | Optimized for GO based projects                                        |        52        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-go/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-go) |
-|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.io/beta/flavors/java/)                   | Optimized for JAVA based projects                                      |        54        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.io/beta/flavors/java/)                   | Optimized for JAVA based projects                                      |        55        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
 |     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.io/beta/flavors/javascript/)       | Optimized for JAVASCRIPT or TYPESCRIPT based projects                  |        60        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript) |
 |         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://megalinter.io/beta/flavors/php/)                     | Optimized for PHP based projects                                       |        55        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-php) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)               | Optimized for PYTHON based projects                                    |        66        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
@@ -160,7 +170,7 @@ Format options:
   --object-wrap <preserve|collapse>
                            How to wrap object literals.
                            Defaults to preserve.
-  --parser <flow|babel|babel-flow|babel-ts|typescript|acorn|espree|meriyah|css|less|scss|json|json5|jsonc|json-stringify|graphql|markdown|mdx|vue|yaml|glimmer|html|angular|lwc>
+  --parser <flow|babel|babel-flow|babel-ts|typescript|acorn|espree|meriyah|css|less|scss|json|json5|jsonc|json-stringify|graphql|markdown|mdx|vue|yaml|glimmer|html|angular|lwc|mjml>
                            Which parser to use.
   --print-width <int>      The line length where Prettier will try wrap.
                            Defaults to 80.
@@ -222,6 +232,8 @@ Other options:
   --cache-location <path>  Path to the cache file.
   --cache-strategy <metadata|content>
                            Strategy for the cache to use for detecting changed files.
+  --check-ignore-pragma    Check whether the file's first docblock comment contains '@noprettier' or '@noformat' to determine if it should be formatted.
+                           Defaults to false.
   --no-color               Do not colorize error messages.
   --no-error-on-unmatched-pattern
                            Prevent errors when pattern is unmatched.
@@ -236,8 +248,7 @@ Other options:
   --log-level <silent|error|warn|log|debug>
                            What level of logs to report.
                            Defaults to log.
-  --require-pragma         Require either '@prettier' or '@format' to be present in the file's first docblock comment
-                           in order for it to be formatted.
+  --require-pragma         Require either '@prettier' or '@format' to be present in the file's first docblock comment in order for it to be formatted.
                            Defaults to false.
   --stdin-filepath <path>  Path to the file to pretend that stdin comes from.
   --support-info           Print support information as JSON.
@@ -251,8 +262,8 @@ Other options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=prettier
-ARG NPM_PRETTIER_VERSION=3.5.3
+ARG NPM_PRETTIER_VERSION=3.6.2
 ```
 
 - NPM packages (node.js):
-  - [prettier@3.5.3](https://www.npmjs.com/package/prettier/v/3.5.3)
+  - [prettier@3.6.2](https://www.npmjs.com/package/prettier/v/3.6.2)

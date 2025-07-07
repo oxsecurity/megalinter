@@ -7,12 +7,26 @@ description: How to use protolint (configure, ignore files, ignore errors, help 
 # protolint
 [![GitHub stars](https://img.shields.io/github/stars/yoheimuta/protolint?cacheSeconds=3600)](https://github.com/yoheimuta/protolint) ![autofix](https://shields.io/badge/-autofix-green) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/yoheimuta/protolint?sort=semver)](https://github.com/yoheimuta/protolint/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/yoheimuta/protolint)](https://github.com/yoheimuta/protolint/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/yoheimuta/protolint)](https://github.com/yoheimuta/protolint/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/yoheimuta/protolint)](https://github.com/yoheimuta/protolint/graphs/contributors/)
 
+**protolint** is a fast, pluggable linting and fixing utility for Protocol Buffer files that enforces the official Google Protocol Buffer style guide. It operates without requiring compilation, making it ideal for rapid development feedback.
+
+**Key Features:**
+
+- **Official Style Guide Compliance**: Rules correspond exactly to Google's Protocol Buffer style guide recommendations
+- **Fast Performance**: Operates without compilation, providing rapid feedback during development
+- **Automatic Fixing**: Built-in auto-fix capability for many style violations and formatting issues
+- **Proto2 and Proto3 Support**: Full compatibility with both Protocol Buffer syntax versions
+- **Inline Rule Disabling**: Selective rule disabling through comments for API compatibility requirements
+- **Pluggable Architecture**: Support for custom rule plugins and organization-specific standards
+- **Comprehensive Coverage**: Validates naming conventions, field ordering, imports, indentation, and syntax
+- **Configuration Flexibility**: YAML-based configuration for team-specific linting preferences
+
 ## protolint documentation
 
 - Version in MegaLinter: **0.55.6**
 - Visit [Official Web Site](https://github.com/yoheimuta/protolint#readme){target=_blank}
 - See [How to configure protolint rules](https://github.com/yoheimuta/protolint#rules){target=_blank}
   - If custom `.protolintrc.yml` config file isn't found, [.protolintrc.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.protolintrc.yml){target=_blank} will be used
+- See [How to disable protolint rules in files](https://github.com/yoheimuta/protolint#configuring){target=_blank}
 - See [Index of problems detected by protolint](https://github.com/yoheimuta/protolint#rules){target=_blank}
 
 [![protolint - GitHub](https://gh-card.dev/repos/yoheimuta/protolint.svg?fullname=)](https://github.com/yoheimuta/protolint){target=_blank}
@@ -63,7 +77,7 @@ This linter is available in the following flavors
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/)               | Optimized for C, C++, C# or VB based projects            |        65        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/)         | Optimized for C, C++, C# or VB based projects with JS/TS |        74        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
 |         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a>          | [go](https://megalinter.io/beta/flavors/go/)                       | Optimized for GO based projects                          |        52        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-go/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-go) |
-|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.io/beta/flavors/java/)                   | Optimized for JAVA based projects                        |        54        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.io/beta/flavors/java/)                   | Optimized for JAVA based projects                        |        55        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
 |     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.io/beta/flavors/javascript/)       | Optimized for JAVASCRIPT or TYPESCRIPT based projects    |        60        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript) |
 |         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://megalinter.io/beta/flavors/php/)                     | Optimized for PHP based projects                         |        55        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-php) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)               | Optimized for PYTHON based projects                      |        66        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |

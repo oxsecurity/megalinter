@@ -7,6 +7,19 @@ description: How to use swiftlint (configure, ignore files, ignore errors, help 
 # swiftlint
 [![GitHub stars](https://img.shields.io/github/stars/realm/SwiftLint?cacheSeconds=3600)](https://github.com/realm/SwiftLint) ![autofix](https://shields.io/badge/-autofix-green) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/realm/SwiftLint?sort=semver)](https://github.com/realm/SwiftLint/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/realm/SwiftLint)](https://github.com/realm/SwiftLint/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/realm/SwiftLint)](https://github.com/realm/SwiftLint/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/realm/SwiftLint)](https://github.com/realm/SwiftLint/graphs/contributors/)
 
+**SwiftLint** is the industry-standard linter and formatter for Swift code that enforces style guidelines and best practices based on the community-driven Swift Style Guide. It serves as an essential tool for maintaining high-quality, consistent Swift codebases.
+
+**Key Features:**
+
+- **Comprehensive Rule Set**: Over 200 built-in rules covering code style, performance, best practices, and potential bug detection
+- **SourceKit Integration**: Leverages Apple's SourceKit for accurate AST-based analysis and precise error detection
+- **Automatic Fixing**: Intelligent auto-correction for many rule violations, saving manual effort
+- **Highly Configurable**: Extensive configuration options with support for enabling/disabling rules and custom severity levels
+- **Custom Rules**: Support for project-specific custom rules using regular expressions and AST patterns
+- **Xcode Integration**: Seamless integration with Xcode projects through build phases and scheme actions
+- **Performance Optimized**: Fast analysis even for large Swift projects with incremental linting support
+- **Multiple Output Formats**: Supports various report formats including JSON, HTML, and checkstyle for tool integration
+
 ## swiftlint documentation
 
 - Version in MegaLinter: **0.59.1**
@@ -49,7 +62,6 @@ Use swiftlint in your favorite IDE to catch errors before MegaLinter !
 
 |                                                                   <!-- -->                                                                   | IDE                                                      | Extension Name                                                   |                                                           Install                                                            |
 |:--------------------------------------------------------------------------------------------------------------------------------------------:|----------------------------------------------------------|------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------:|
-|  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Atom](https://atom.io/)                                 | [linter-swiftlint](https://atom.io/packages/linter-swiftlint)    |                          [Visit Web Site](https://atom.io/packages/linter-swiftlint){target=_blank}                          |
 |  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a>   | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [swiftlint](https://plugins.jetbrains.com/plugin/9175-swiftlint) | <iframe frameborder="none" width="245px" height="48px" src="https://plugins.jetbrains.com/embeddable/install/9175"></iframe> |
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/default.ico" alt="" height="32px" class="megalinter-icon"></a> | xcode                                                    | [Configure manually](https://github.com/realm/SwiftLint#xcode)   |                          [Visit Web Site](https://github.com/realm/SwiftLint#xcode){target=_blank}                           |
 

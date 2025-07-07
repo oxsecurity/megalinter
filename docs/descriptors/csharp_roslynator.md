@@ -7,6 +7,18 @@ description: How to use roslynator (configure, ignore files, ignore errors, help
 # <a href="https://github.com/dotnet/Roslynator" target="blank" title="Visit linter Web Site"><img src="https://github.com/dotnet/roslynator/raw/main/images/roslynator-logo-small.png" alt="roslynator" height="100px" class="megalinter-logo"></a>roslynator
 [![GitHub stars](https://img.shields.io/github/stars/dotnet/Roslynator?cacheSeconds=3600)](https://github.com/dotnet/Roslynator) ![formatter](https://shields.io/badge/-format-yellow) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/dotnet/Roslynator?sort=semver)](https://github.com/dotnet/Roslynator/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/dotnet/Roslynator)](https://github.com/dotnet/Roslynator/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/dotnet/Roslynator)](https://github.com/dotnet/Roslynator/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/dotnet/Roslynator)](https://github.com/dotnet/Roslynator/graphs/contributors/)
 
+**Roslynator** is a comprehensive collection of 500+ analyzers, refactorings, and fixes for C# powered by the Roslyn compiler platform. It provides deep code analysis and automatic improvement capabilities to enhance code quality, maintainability, and performance across C# projects.
+
+**Key Features:**
+
+- **Extensive Analyzer Collection**: 500+ built-in analyzers covering code quality, performance, style, and best practices
+- **Automatic Code Fixes**: Intelligent refactoring and fixing capabilities for common code issues and patterns
+- **Roslyn Integration**: Built on Microsoft's Roslyn compiler platform for accurate semantic analysis
+- **Performance Optimization**: Detects performance anti-patterns and suggests optimizations for better runtime efficiency
+- **Code Simplification**: Identifies opportunities to simplify complex code structures and expressions
+- **Modern C# Support**: Full support for latest C# language features and syntax constructs
+- **Configurable Rules**: Extensive configuration options to customize analysis rules and severity levels
+
 ## roslynator documentation
 
 - Version in MegaLinter: **0.10.1.0**

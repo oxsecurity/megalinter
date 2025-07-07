@@ -7,13 +7,27 @@ description: How to use puppet-lint (configure, ignore files, ignore errors, hel
 # puppet-lint
 [![GitHub stars](https://img.shields.io/github/stars/puppetlabs/puppet-lint?cacheSeconds=3600)](https://github.com/puppetlabs/puppet-lint) ![autofix](https://shields.io/badge/-autofix-green) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/puppetlabs/puppet-lint?sort=semver)](https://github.com/puppetlabs/puppet-lint/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/puppetlabs/puppet-lint)](https://github.com/puppetlabs/puppet-lint/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/puppetlabs/puppet-lint)](https://github.com/puppetlabs/puppet-lint/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/puppetlabs/puppet-lint)](https://github.com/puppetlabs/puppet-lint/graphs/contributors/)
 
+**puppet-lint** is the standard linting tool for Puppet code that enforces the recommended Puppet language style guide and ensures consistent code formatting across Puppet manifests. It focuses on style and formatting rather than syntax validation.
+
+**Key Features:**
+
+- **Style Guide Compliance**: Enforces Puppet's official language style guide for consistent code appearance
+- **Comprehensive Checks**: Validates spacing, indentation, whitespace, quoting, capitalization, and resource formatting
+- **Automatic Fixing**: Built-in auto-fix capability for many common style violations
+- **Selective Control**: Enable or disable specific checks based on project requirements
+- **Configuration Files**: Project-specific configuration through `.puppet-lint.rc` files
+- **Resource Analysis**: Validates conditional statements, class structure, and resource declarations
+- **Best Practices Enforcement**: Identifies and corrects common Puppet coding antipatterns
+
+**Note**: puppet-lint validates only code style. Use `puppet parser validate` for syntax validation.
+
 ## puppet-lint documentation
 
 - Version in MegaLinter: **4.3.0**
-- Visit [Official Web Site](http://puppet-lint.com/){target=_blank}
+- Visit [Official Web Site](https://github.com/puppetlabs/puppet-lint#readme){target=_blank}
 - See [How to configure puppet-lint rules](https://github.com/puppetlabs/puppet-lint#configuration-file){target=_blank}
-- See [How to disable puppet-lint rules in files](http://puppet-lint.com/controlcomments/){target=_blank}
-- See [Index of problems detected by puppet-lint](http://puppet-lint.com/checks/){target=_blank}
+- See [How to disable puppet-lint rules in files](https://github.com/puppetlabs/puppet-lint#disable-checks-within-puppet-code){target=_blank}
+- See [Index of problems detected by puppet-lint](https://github.com/puppetlabs/puppet-lint#checks){target=_blank}
 
 [![puppet-lint - GitHub](https://gh-card.dev/repos/puppetlabs/puppet-lint.svg?fullname=)](https://github.com/puppetlabs/puppet-lint){target=_blank}
 

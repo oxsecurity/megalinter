@@ -13,9 +13,22 @@ description: How to use sqlfluff (configure, ignore files, ignore errors, help &
 
 [![GitHub stars](https://img.shields.io/github/stars/sqlfluff/sqlfluff?cacheSeconds=3600)](https://github.com/sqlfluff/sqlfluff) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/sqlfluff/sqlfluff?sort=semver)](https://github.com/sqlfluff/sqlfluff/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/sqlfluff/sqlfluff)](https://github.com/sqlfluff/sqlfluff/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/sqlfluff/sqlfluff)](https://github.com/sqlfluff/sqlfluff/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/sqlfluff/sqlfluff)](https://github.com/sqlfluff/sqlfluff/graphs/contributors/)
 
+**SQLFluff** is a dialect-flexible and configurable SQL linter designed for ELT applications that works with Jinja templating and dbt. It provides comprehensive SQL code analysis including syntax checking, style validation, and formatting with support for multiple SQL dialects.
+
+**Key Features:**
+
+- **Multi-Dialect Support**: Compatible with ANSI SQL, BigQuery, Snowflake, Postgres, MySQL, SparkSQL, and more SQL dialects
+- **Jinja Templating**: Native support for Jinja templating commonly used in dbt and other ELT frameworks
+- **Auto-Fix Capability**: Automatically repairs most linting errors and formatting issues with --fix option
+- **Configurable Rules**: Extensive rule set with granular configuration options for team-specific standards
+- **dbt Integration**: Seamless integration with dbt projects including macro and model analysis
+- **Detailed Reporting**: Comprehensive error reporting with line numbers, positions, and fix suggestions
+- **Custom Rules**: Extensible architecture allowing custom rule development for specific requirements
+- **Performance Optimized**: Fast parsing and analysis even for large SQL codebases
+
 ## sqlfluff documentation
 
-- Version in MegaLinter: **3.4.0**
+- Version in MegaLinter: **3.4.1**
 - Visit [Official Web Site](https://www.sqlfluff.com/){target=_blank}
 - See [How to configure sqlfluff rules](https://docs.sqlfluff.com/en/stable/configuration/index.html){target=_blank}
   - If custom `.sqlfluff` config file isn't found, [.sqlfluff](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.sqlfluff){target=_blank} will be used
@@ -59,7 +72,7 @@ This linter is available in the following flavors
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/)               | Optimized for C, C++, C# or VB based projects            |        65        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/)         | Optimized for C, C++, C# or VB based projects with JS/TS |        74        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
 |         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a>          | [go](https://megalinter.io/beta/flavors/go/)                       | Optimized for GO based projects                          |        52        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-go/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-go) |
-|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.io/beta/flavors/java/)                   | Optimized for JAVA based projects                        |        54        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.io/beta/flavors/java/)                   | Optimized for JAVA based projects                        |        55        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
 |     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.io/beta/flavors/javascript/)       | Optimized for JAVASCRIPT or TYPESCRIPT based projects    |        60        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript) |
 |         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://megalinter.io/beta/flavors/php/)                     | Optimized for PHP based projects                         |        55        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-php) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)               | Optimized for PYTHON based projects                      |        66        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
@@ -132,8 +145,8 @@ Commands:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=sqlfluff
-ARG PIP_SQLFLUFF_VERSION=3.4.0
+ARG PIP_SQLFLUFF_VERSION=3.4.1
 ```
 
 - PIP packages (Python):
-  - [sqlfluff==3.4.0](https://pypi.org/project/sqlfluff/3.4.0)
+  - [sqlfluff==3.4.1](https://pypi.org/project/sqlfluff/3.4.1)

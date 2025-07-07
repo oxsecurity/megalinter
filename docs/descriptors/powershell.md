@@ -42,7 +42,7 @@ description: powershell, powershell_formatter are available to analyze POWERSHEL
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=github-tags depName=PowerShell/PowerShell
-ARG POWERSHELL_VERSION=7.5.1
+ARG POWERSHELL_VERSION=7.5.2
 
 RUN curl -L https://github.com/PowerShell/PowerShell/releases/download/v${POWERSHELL_VERSION}/powershell-${POWERSHELL_VERSION}-linux-musl-x64.tar.gz -o /tmp/powershell.tar.gz \
     && mkdir -p /opt/microsoft/powershell/7 \

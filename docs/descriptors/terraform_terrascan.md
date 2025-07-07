@@ -13,6 +13,19 @@ description: How to use terrascan (configure, ignore files, ignore errors, help 
 
 ![downgraded version](https://shields.io/badge/-downgraded%20version-orange) [![GitHub stars](https://img.shields.io/github/stars/tenable/terrascan?cacheSeconds=3600)](https://github.com/tenable/terrascan) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/tenable/terrascan?sort=semver)](https://github.com/tenable/terrascan/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/tenable/terrascan)](https://github.com/tenable/terrascan/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/tenable/terrascan)](https://github.com/tenable/terrascan/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/tenable/terrascan)](https://github.com/tenable/terrascan/graphs/contributors/)
 
+**Terrascan** is a comprehensive static code analyzer for Infrastructure as Code that detects security vulnerabilities, compliance violations, and misconfigurations in cloud infrastructure. It supports multiple IaC tools including Terraform, Kubernetes, Docker, AWS CloudFormation, and more, providing over 1000 built-in policies across major cloud providers and compliance frameworks.
+
+**Key Features:**
+
+- **Multi-IaC Support**: Analyzes Terraform, Kubernetes, Docker, CloudFormation, ARM templates, and more
+- **1000+ Security Policies**: Extensive library of pre-built security and compliance policies
+- **Compliance Frameworks**: Built-in support for CIS, NIST, PCI, SOC 2, and other compliance standards
+- **Cloud Provider Coverage**: Comprehensive rules for AWS, Azure, GCP, and Kubernetes environments
+- **Custom Policy Engine**: Create custom policies using Rego (Open Policy Agent) for organization-specific requirements
+- **SARIF Output**: Modern security report format for integration with development platforms and security tools
+- **Detailed Reporting**: Comprehensive vulnerability reports with severity levels and remediation guidance
+- **Policy as Code**: Version-controlled security policies that evolve with your infrastructure
+
 ## terrascan documentation
 
 - Version in MegaLinter: **1.19.9**

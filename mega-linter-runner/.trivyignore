@@ -19,3 +19,6 @@ CVE-2024-4067
 CVE-2025-25288
 CVE-2025-25289
 CVE-2025-25290
+
+# https://avd.aquasec.com/nvd/cve-2025-5889 : brace-expansion, ddos attack, not applicable in MegaLinter context
+CVE-2025-5889

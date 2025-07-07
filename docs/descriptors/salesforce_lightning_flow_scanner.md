@@ -13,13 +13,25 @@ description: How to use lightning-flow-scanner (configure, ignore files, ignore 
 
 [![GitHub stars](https://img.shields.io/github/stars/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx?cacheSeconds=3600)](https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx?sort=semver)](https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx)](https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx)](https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx)](https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx/graphs/contributors/)
 
-Lightning Flow Scanner is a sfdx plugin scanning the integrity and best practices of Salesforce Flows
+**Lightning Flow Scanner** is a specialized SFDX plugin that analyzes Salesforce Flows for integrity issues, performance problems, and adherence to best practices. It helps developers build reliable and maintainable Flow automations.
+
+**Key Features:**
+
+- **Flow Integrity Analysis**: Validates Flow logic, connections, and component configurations for correctness
+- **Best Practice Enforcement**: Checks against established Salesforce Flow development best practices
+- **Performance Optimization**: Identifies potential performance bottlenecks and inefficient Flow patterns
+- **Error Prevention**: Detects common Flow configuration errors before deployment
+- **Comprehensive Rule Set**: Multiple rule categories covering design, performance, and maintainability
+- **Configurable Scanning**: Customizable rules and thresholds through configuration files
+- **CI/CD Integration**: Seamless integration with Salesforce development pipelines
+- **Detailed Reporting**: Clear error messages with specific recommendations for improvement
+- **SFDX Native**: Built as a native SFDX plugin for consistent Salesforce toolchain integration
 
 If your root folder is not **force-app**, please set variable SALESFORCE_LIGHTNING_FLOW_SCANNER_DIRECTORY
 
 ## lightning-flow-scanner documentation
 
-- Version in MegaLinter: **3.16.0**
+- Version in MegaLinter: **3.26.0**
 - Visit [Official Web Site](https://github.com/Lightning-Flow-Scanner#readme){target=_blank}
 - See [How to configure lightning-flow-scanner rules](https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx#configuration){target=_blank}
   - If custom `.flow-scanner.json` config file isn't found, [.flow-scanner.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.flow-scanner.json){target=_blank} will be used
@@ -90,7 +102,7 @@ sf flow:scan
 ### Help content
 
 ```shell
- ›   Warning: @salesforce/cli update available from 2.87.7 to 2.90.4.
+ ›   Warning: @salesforce/cli update available from 2.94.6 to 2.95.6.
 Find and fix potential bugs in Salesforce flows.
 
 USAGE
@@ -122,11 +134,11 @@ GLOBAL FLAGS
 ```dockerfile
 # Parent descriptor install
 # renovate: datasource=npm depName=@salesforce/cli
-ARG NPM_SALESFORCE_CLI_VERSION=2.87.7
+ARG NPM_SALESFORCE_CLI_VERSION=2.94.6
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
-ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.13.1
+ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.16.0
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=5.38.0
+ARG SFDX_HARDIS_VERSION=5.44.0
 ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 RUN sf plugins install @salesforce/plugin-packaging@${NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION} \
@@ -136,7 +148,7 @@ RUN sf plugins install @salesforce/plugin-packaging@${NPM_SALESFORCE_PLUGIN_PACK
 ENV SF_AUTOUPDATE_DISABLE=true SF_CLI_DISABLE_AUTOUPDATE=true
 # Linter install
 # renovate: datasource=npm depName=lightning-flow-scanner
-ARG LIGHTNING_FLOW_SCANNER_VERSION=3.16.0
+ARG LIGHTNING_FLOW_SCANNER_VERSION=3.26.0
 RUN echo y|sf plugins install lightning-flow-scanner@${LIGHTNING_FLOW_SCANNER_VERSION} \
     && (npm cache clean --force || true) \
     && rm -rf /root/.npm/_cacache

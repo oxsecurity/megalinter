@@ -13,12 +13,25 @@ description: How to use kubeconform (configure, ignore files, ignore errors, hel
 
 [![GitHub stars](https://img.shields.io/github/stars/yannh/kubeconform?cacheSeconds=3600)](https://github.com/yannh/kubeconform) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/yannh/kubeconform?sort=semver)](https://github.com/yannh/kubeconform/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/yannh/kubeconform)](https://github.com/yannh/kubeconform/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/yannh/kubeconform)](https://github.com/yannh/kubeconform/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/yannh/kubeconform)](https://github.com/yannh/kubeconform/graphs/contributors/)
 
-`kubeconform` is a schema-aware Kubernetes manifest validation tool, that tends to have more up-to-date schema definitions than `kubeval`.
+**kubeconform** is a FAST Kubernetes manifest validation tool with support for Custom Resources. It's designed as a more up-to-date and feature-rich alternative to kubeval, with significant performance improvements and enhanced functionality.
+
+**Key Features:**
+
+- **High Performance**: Multi-threaded validation with caching and concurrent routines for superior speed compared to kubeval
+- **Up-to-Date Schemas**: Uses self-updating fork of kubernetes-json-schema with guaranteed current schemas for all recent Kubernetes versions
+- **Custom Resource Support**: Validates CustomResourceDefinitions (CRDs) with configurable schema locations and CRDs-catalog integration
+- **OpenShift Compatibility**: Built-in support for OpenShift manifest validation with version-specific schemas
+- **Flexible Schema Sources**: Supports multiple schema locations (HTTP/HTTPS URLs, local filesystem) with templated paths
+- **Multiple Output Formats**: JSON, JUnit, TAP, and text outputs with detailed validation summaries
+- **Advanced Filtering**: Skip specific resource kinds, ignore missing schemas, and use regex patterns for file exclusion
+- **CI/CD Ready**: Optimized for integration with GitHub Actions, GitLab CI, and other continuous integration platforms
 
 ## kubeconform documentation
 
 - Version in MegaLinter: **0.7.0**
 - Visit [Official Web Site](https://github.com/yannh/kubeconform#readme){target=_blank}
+- See [How to configure kubeconform rules](https://github.com/yannh/kubeconform#usage){target=_blank}
+- See [How to disable kubeconform rules in files](https://github.com/yannh/kubeconform#disabling-validation-for-specific-resources){target=_blank}
 
 [![kubeconform - GitHub](https://gh-card.dev/repos/yannh/kubeconform.svg?fullname=)](https://github.com/yannh/kubeconform){target=_blank}
 
@@ -57,7 +70,7 @@ This linter is available in the following flavors
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/)               | Optimized for C, C++, C# or VB based projects            |        65        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/)         | Optimized for C, C++, C# or VB based projects with JS/TS |        74        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
 |         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a>          | [go](https://megalinter.io/beta/flavors/go/)                       | Optimized for GO based projects                          |        52        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-go/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-go) |
-|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.io/beta/flavors/java/)                   | Optimized for JAVA based projects                        |        54        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.io/beta/flavors/java/)                   | Optimized for JAVA based projects                        |        55        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
 |     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.io/beta/flavors/javascript/)       | Optimized for JAVASCRIPT or TYPESCRIPT based projects    |        60        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript) |
 |         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://megalinter.io/beta/flavors/php/)                     | Optimized for PHP based projects                         |        55        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-php) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)               | Optimized for PYTHON based projects                      |        66        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
