@@ -29,7 +29,7 @@ description: How to use snakemake (configure, ignore files, ignore errors, help 
 
 ## snakemake documentation
 
-- Version in MegaLinter: **9.6.3**
+- Version in MegaLinter: **9.7.1**
 - Visit [Official Web Site](https://snakemake.github.io/){target=_blank}
 - See [How to configure snakemake rules](https://snakemake.readthedocs.io/en/stable/snakefiles/configuration.html){target=_blank}
 
@@ -149,7 +149,7 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--filegraph] [--d3dag] [--summary] [--detailed-summary]
                  [--archive FILE] [--cleanup-metadata FILE [FILE ...]]
                  [--cleanup-shadow] [--skip-script-cleanup] [--unlock]
-                 [--list-changes {params,code,input}] [--list-input-changes]
+                 [--list-changes {params,input,code}] [--list-input-changes]
                  [--list-params-changes] [--list-untracked]
                  [--delete-all-output | --delete-temp-output]
                  [--keep-incomplete] [--drop-metadata] [--version]
@@ -161,8 +161,9 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--max-checksum-file-size SIZE] [--latency-wait SECONDS]
                  [--wait-for-free-local-storage WAIT_FOR_FREE_LOCAL_STORAGE]
                  [--wait-for-files [FILE ...]] [--wait-for-files-file FILE]
-                 [--queue-input-wait-time SECONDS] [--notemp] [--all-temp]
-                 [--unneeded-temp-files FILE [FILE ...]]
+                 [--queue-input-wait-time SECONDS]
+                 [--omit-flags OMIT_FLAGS [OMIT_FLAGS ...]] [--notemp]
+                 [--all-temp] [--unneeded-temp-files FILE [FILE ...]]
                  [--keep-storage-local-copies] [--not-retrieve-storage]
                  [--target-files-omit-workdir-adjustment]
                  [--allowed-rules ALLOWED_RULES [ALLOWED_RULES ...]]
@@ -258,7 +259,9 @@ EXECUTION:
                         cache), instead of actually executing the rules.
                         Output files are identified by hashing all steps,
                         parameters and software stack (conda envs or
-                        containers) needed to create them.
+                        containers) needed to create them. If no rules are
+                        given, all rules that are eligible for caching (have a
+                        cache directive, see docs) are cached.
   --snakefile, -s FILE  The workflow definition in form of a snakefile.
                         Usually, you should not need to specify this. By
                         default, Snakemake will search for `Snakefile`,
@@ -671,7 +674,7 @@ UTILITIES:
                         (default: False)
   --unlock              Remove a lock on the working directory. (default:
                         False)
-  --list-changes, --lc {params,code,input}
+  --list-changes, --lc {params,input,code}
                         List all output files for which the given items (code,
                         input, params) have changed since creation.
   --list-input-changes, --li
@@ -780,6 +783,9 @@ BEHAVIOR:
                         Set the interval in seconds to check for new input in
                         rules that use from_queue to obtain input files.
                         (default: 10)
+  --omit-flags OMIT_FLAGS [OMIT_FLAGS ...]
+                        Omit the given input and output file flags (e.g.
+                        pipe). This can be useful for debugging.
   --notemp, --nt        Ignore temp() declarations. This is useful when
                         running only a part of the workflow, since temp()
                         would lead to deletion of probably needed files by
@@ -911,7 +917,7 @@ REMOTE EXECUTION:
                         is up to your responsibility. Any used image has to
                         contain a working snakemake installation that is
                         compatible with (or ideally the same as) the currently
-                        running version. (default: snakemake/snakemake:v9.6.3)
+                        running version. (default: snakemake/snakemake:v9.7.1)
   --immediate-submit, --is
                         Immediately submit all jobs to the cluster instead of
                         waiting for present input files. This will fail,
@@ -1051,8 +1057,8 @@ defaults.
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=snakemake
-ARG PIP_SNAKEMAKE_VERSION=9.6.3
+ARG PIP_SNAKEMAKE_VERSION=9.7.1
 ```
 
 - PIP packages (Python):
-  - [snakemake==9.6.3](https://pypi.org/project/snakemake/9.6.3)
+  - [snakemake==9.7.1](https://pypi.org/project/snakemake/9.7.1)
