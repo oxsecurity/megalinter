@@ -245,4 +245,3 @@ ARG REPOSITORY_TRUFFLEHOG_VERSION=3.89.2
 FROM trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION} AS trufflehog
 COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
 ```
-

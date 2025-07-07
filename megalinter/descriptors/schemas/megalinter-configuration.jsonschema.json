@@ -11593,7 +11593,7 @@
       "$id": "#/properties/MARKDOWN_MARKDOWNLINT_CLI_EXECUTABLE",
       "default": [
         [
-          "markdownlint"
+          "markdownlint-cli2"
         ]
       ],
       "items": {
@@ -11631,7 +11631,7 @@
     },
     "MARKDOWN_MARKDOWNLINT_CONFIG_FILE": {
       "$id": "#/properties/MARKDOWN_MARKDOWNLINT_CONFIG_FILE",
-      "default": ".markdownlint.json",
+      "default": "LINTER_DEFAULT",
       "description": "MARKDOWN_MARKDOWNLINT: User custom config file name if different from default",
       "title": "MARKDOWN_MARKDOWNLINT: Custom config file name",
       "type": "string"

@@ -24,6 +24,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Linters enhancements
   - PHP-CS-Fixer is able to run on PHP 8.4 without error (change default configuration) by @llaville
   - [cspell](https://megalinter.io/latest/descriptors/spell_cspell/): Filter output lines that do not contain found issues
+  - Use `markdownlint-cli2` instead of `markdownlint-cli`
 
 - Fixes
 
@@ -198,31 +199,31 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - New variable SKIP_LINTER_OUTPUT_SANITIZATION to skip sanitization to improve performances if you are on a private repository with secured access, by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/5308>
 
 - Linter versions upgrades (27)
-  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 25.2.1 to **25.4.0**  
-  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.34.44 to **0.35.1**  
-  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.34.1 to **1.34.2**  
-  - [checkov](https://www.checkov.io/) from 3.2.404 to **3.2.413**  
-  - [checkstyle](https://checkstyle.org/) from 10.23.0 to **10.23.1**  
-  - [csharpier](https://csharpier.com/) from 0.30.6 to **1.0.1**  
-  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.19.2 to **8.19.4**  
-  - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.24.3 to **8.25.1**  
-  - [golangci-lint](https://golangci-lint.run/) from 1.64.8 to **2.1.5**  
-  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.4.0 to **3.8.0**  
-  - [phpstan](https://phpstan.org/) from 2.1.12 to **2.1.14**  
-  - [pmd](https://pmd.github.io/) from 7.12.0 to **7.13.0**  
-  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.5.0 to **7.5.1**  
-  - [protolint](https://github.com/yoheimuta/protolint) from 0.53.0 to **0.54.1**  
-  - [psalm](https://psalm.dev) from 6.10.1 to **6.10.2**  
-  - [rubocop](https://rubocop.org/) from 1.75.3 to **1.75.4**  
-  - [ruff](https://github.com/astral-sh/ruff) from 0.11.6 to **0.11.8**  
-  - [ruff-format](https://github.com/astral-sh/ruff) from 0.11.6 to **0.11.8**  
-  - [secretlint](https://github.com/secretlint/secretlint) from 9.3.1 to **9.3.2**  
-  - [stylelint](https://stylelint.io) from 16.19.0 to **16.19.1**  
-  - [terragrunt](https://terragrunt.gruntwork.io) from 0.77.22 to **0.78.0**  
-  - [tflint](https://github.com/terraform-linters/tflint) from 0.56.0 to **0.57.0**  
-  - [trivy](https://aquasecurity.github.io/trivy/) from 0.61.1 to **0.62.0**  
-  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.61.1 to **0.62.0**  
-  - [v8r](https://github.com/chris48s/v8r) from 4.3.0 to **4.4.0**  
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 25.2.1 to **25.4.0**
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.34.44 to **0.35.1**
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.34.1 to **1.34.2**
+  - [checkov](https://www.checkov.io/) from 3.2.404 to **3.2.413**
+  - [checkstyle](https://checkstyle.org/) from 10.23.0 to **10.23.1**
+  - [csharpier](https://csharpier.com/) from 0.30.6 to **1.0.1**
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 8.19.2 to **8.19.4**
+  - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.24.3 to **8.25.1**
+  - [golangci-lint](https://golangci-lint.run/) from 1.64.8 to **2.1.5**
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.4.0 to **3.8.0**
+  - [phpstan](https://phpstan.org/) from 2.1.12 to **2.1.14**
+  - [pmd](https://pmd.github.io/) from 7.12.0 to **7.13.0**
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.5.0 to **7.5.1**
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.53.0 to **0.54.1**
+  - [psalm](https://psalm.dev) from 6.10.1 to **6.10.2**
+  - [rubocop](https://rubocop.org/) from 1.75.3 to **1.75.4**
+  - [ruff](https://github.com/astral-sh/ruff) from 0.11.6 to **0.11.8**
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.11.6 to **0.11.8**
+  - [secretlint](https://github.com/secretlint/secretlint) from 9.3.1 to **9.3.2**
+  - [stylelint](https://stylelint.io) from 16.19.0 to **16.19.1**
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.77.22 to **0.78.0**
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.56.0 to **0.57.0**
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.61.1 to **0.62.0**
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.61.1 to **0.62.0**
+  - [v8r](https://github.com/chris48s/v8r) from 4.3.0 to **4.4.0**
   - [yamllint](https://yamllint.readthedocs.io/) from 1.37.0 to **1.37.1**
 
 ## [v8.6.0] - 2024-04-27

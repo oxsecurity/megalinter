@@ -755,6 +755,7 @@
         "dataclasses",
         "datasource",
         "dateformat",
+        "davidanson",
         "davidjeddy",
         "dclint",
         "deadlink",

@@ -19,16 +19,15 @@ description: How to use markdownlint (configure, ignore files, ignore errors, he
 - **Custom Rules**: Extensible architecture allowing project-specific linting requirements
 - **Performance Optimized**: Fast analysis suitable for large documentation projects
 
-[MarkdownLint](https://github.com/DavidAnson/markdownlint) is run through [markdownlint-cli](https://github.com/igorshubovych/markdownlint-cli)
+[markdownlint](https://github.com/DavidAnson/markdownlint) is run through [markdownlint-cli2](https://github.com/DavidAnson/markdownlint-cli2)
 
 ## markdownlint documentation
 
-- Version in MegaLinter: **0.45.0**
+- Version in MegaLinter: **0.18.1**
 - Visit [Official Web Site](https://github.com/DavidAnson/markdownlint#readme){target=_blank}
-- See [How to configure markdownlint rules](https://github.com/igorshubovych/markdownlint-cli#configuration){target=_blank}
-  - If custom `.markdownlint.json` config file isn't found, [.markdownlint.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.markdownlint.json){target=_blank} will be used
+- See [How to configure markdownlint rules](https://github.com/DavidAnson/markdownlint-cli2#configuration){target=_blank}
 - See [How to disable markdownlint rules in files](https://github.com/DavidAnson/markdownlint#configuration){target=_blank}
-- See [How to ignore files and directories with markdownlint](https://github.com/igorshubovych/markdownlint-cli#ignoring-files){target=_blank}
+- See [How to ignore files and directories with markdownlint](https://github.com/DavidAnson/markdownlint-cli2#configuration){target=_blank}
 - See [Index of problems detected by markdownlint](https://github.com/DavidAnson/markdownlint#rules--aliases){target=_blank}
 
 [![markdownlint - GitHub](https://gh-card.dev/repos/DavidAnson/markdownlint.svg?fullname=)](https://github.com/DavidAnson/markdownlint){target=_blank}
@@ -53,11 +52,11 @@ description: How to use markdownlint (configure, ignore files, ignore errors, he
 | MARKDOWN_MARKDOWNLINT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                                            |
 | MARKDOWN_MARKDOWNLINT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                                            |
 | MARKDOWN_MARKDOWNLINT_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling MARKDOWN_MARKDOWNLINT and its pre/post commands                                                                                                        | None                                            |
-| MARKDOWN_MARKDOWNLINT_CONFIG_FILE                 | markdownlint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                             | `.markdownlint.json`                            |
+| MARKDOWN_MARKDOWNLINT_CONFIG_FILE                 | markdownlint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                             | `LINTER_DEFAULT`                                |
 | MARKDOWN_MARKDOWNLINT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
 | MARKDOWN_MARKDOWNLINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `true`                                          |
 | MARKDOWN_MARKDOWNLINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
-| MARKDOWN_MARKDOWNLINT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `['markdownlint']`                              |
+| MARKDOWN_MARKDOWNLINT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `['markdownlint-cli2']`                         |
 
 ## IDE Integration
 
@@ -108,15 +107,19 @@ This linter is available in the following flavors
 ### Example calls
 
 ```shell
-markdownlint myfile.md
+markdownlint-cli2 --help
 ```
 
 ```shell
-markdownlint -c .markdownlint.json myfile.md
+markdownlint-cli2 myfile.md
 ```
 
 ```shell
-markdownlint --fix -c .markdownlint.json myfile.md
+markdownlint-cli2 --fix myfile.md
+```
+
+```shell
+markdownlint-cli2 --config .markdownlint.jsonc myfile.md
 ```
 
 
@@ -125,7 +128,7 @@ markdownlint --fix -c .markdownlint.json myfile.md
 ```shell
 Usage: markdownlint [options] [files|directories|globs...]
 
-MarkdownLint Command Line Interface
+markdownlint command line interface
 
 Arguments:
   files|directories|globs                    files, directories, and/or globs to lint
@@ -152,9 +155,9 @@ Options:
 
 - Dockerfile commands :
 ```dockerfile
-# renovate: datasource=npm depName=markdownlint-cli
-ARG NPM_MARKDOWNLINT_CLI_VERSION=0.45.0
+# renovate: datasource=npm depName=markdownlint-cli2
+ARG NPM_MARKDOWNLINT_CLI2_VERSION=0.18.1
 ```
 
 - NPM packages (node.js):
-  - [markdownlint-cli@0.45.0](https://www.npmjs.com/package/markdownlint-cli/v/0.45.0)
+  - [markdownlint-cli2@0.18.1](https://www.npmjs.com/package/markdownlint-cli2/v/0.18.1)
