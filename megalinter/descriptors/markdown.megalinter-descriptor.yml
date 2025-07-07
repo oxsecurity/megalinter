@@ -127,46 +127,6 @@ linters:
       vscode:
         - name: vscode-remark-lint
           url: https://github.com/drewbourne/vscode-remark-lint
-  # Markdown Link Check
-  - linter_name: markdown-link-check
-    linter_text: |
-      **markdown-link-check** is a specialized tool for validating link integrity in Markdown documentation that ensures all links remain functional and accessible. It serves as an essential quality assurance tool for maintaining reliable documentation with working references.
-
-      **Key Features:**
-
-      - **Comprehensive Link Validation**: Tests HTTP/HTTPS links, relative file paths, anchor links, and email addresses
-      - **Dead Link Detection**: Identifies broken external links, missing internal files, and invalid anchor references
-      - **HTTP Status Checking**: Validates that external links return successful HTTP responses (200 status codes)
-      - **Configurable Timeouts**: Adjustable request timeouts and retry logic for reliable network-dependent testing
-      - **Pattern Matching**: Supports regex patterns for excluding specific links or domains from validation
-      - **Detailed Reporting**: Clear output showing which links passed, failed, or were skipped with specific error details
-      - **Bulk Processing**: Efficiently processes multiple Markdown files with consolidated reporting
-      - **Inline Control**: Comment-based directives for disabling checks on specific links when needed
-    linter_url: https://github.com/tcort/markdown-link-check
-    linter_repo: https://github.com/tcort/markdown-link-check
-    linter_spdx_license: ISC
-    linter_speed: 1
-    linter_rules_configuration_url: https://github.com/tcort/markdown-link-check#config-file-format
-    linter_rules_inline_disable_url: https://github.com/tcort/markdown-link-check#disable-comments
-    linter_megalinter_ref_url: https://github.com/tcort/markdown-link-check#run-in-other-tools
-    cli_lint_mode: list_of_files
-    config_file_name: .markdown-link-check.json
-    cli_lint_extra_args:
-      - --quiet
-    cli_lint_errors_count: regex_sum
-    cli_lint_errors_regex: "ERROR: ([0-9]+) dead links found"
-    examples:
-      - "markdown-link-check myfile.md"
-      - "markdown-link-check -c .markdown-link-check.json myfile.md"
-    downgraded_version: true
-    downgraded_reason: https://github.com/tcort/markdown-link-check/issues/369
-    install:
-      dockerfile:
-        - |-
-          # renovate: datasource=npm depName=markdown-link-check
-          ARG NPM_MARKDOWN_LINK_CHECK_VERSION=3.12.2
-      npm:
-        - markdown-link-check@${NPM_MARKDOWN_LINK_CHECK_VERSION}
   # Markdown table formatter
   - linter_name: markdown-table-formatter
     is_formatter: true

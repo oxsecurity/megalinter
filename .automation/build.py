@@ -143,6 +143,7 @@ DEPRECATED_LINTERS = [
     "CSS_SCSSLINT",  # Removed in v8
     "OPENAPI_SPECTRAL",  # Removed in v8
     "SQL_SQL_LINT",  # Removed in v8
+    "MARKDOWN_MARKDOWN_LINK_CHECK" # Removed in v9
 ]
 
 DESCRIPTORS_FOR_BUILD_CACHE = None

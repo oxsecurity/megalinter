@@ -64,7 +64,6 @@ linters:
       - **Performance Optimized**: Fast analysis suitable for large T-SQL codebases and stored procedures
       - **Cross-Platform**: Runs on Windows, macOS, and Linux environments
       - **Extensible Architecture**: Plugin system for custom rule development and organizational standards
-    disabled: false
     linter_spdx_license: MIT
     descriptor_flavors:
       - dotnet

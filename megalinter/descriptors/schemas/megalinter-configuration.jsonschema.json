@@ -11749,7 +11749,7 @@
       "items": {
         "type": "string"
       },
-      "title": "MARKDOWN_MARKDOWN_LINK_CHECK: Custom arguments",
+      "title": "(deprecated) MARKDOWN_MARKDOWN_LINK_CHECK: Custom arguments",
       "type": [
         "array",
         "string"
@@ -11765,7 +11765,7 @@
       "items": {
         "type": "string"
       },
-      "title": "MARKDOWN_MARKDOWN_LINK_CHECK: CLI Executable",
+      "title": "(deprecated) MARKDOWN_MARKDOWN_LINK_CHECK: CLI Executable",
       "type": "array"
     },
     "MARKDOWN_MARKDOWN_LINK_CHECK_CLI_LINT_MODE": {
@@ -11776,7 +11776,7 @@
         "list_of_files",
         "project"
       ],
-      "title": "MARKDOWN_MARKDOWN_LINK_CHECK: Override default cli lint mode",
+      "title": "(deprecated) MARKDOWN_MARKDOWN_LINK_CHECK: Override default cli lint mode",
       "type": "string"
     },
     "MARKDOWN_MARKDOWN_LINK_CHECK_COMMAND_REMOVE_ARGUMENTS": {
@@ -11789,7 +11789,7 @@
       "items": {
         "type": "string"
       },
-      "title": "MARKDOWN_MARKDOWN_LINK_CHECK: Custom remove arguments",
+      "title": "(deprecated) MARKDOWN_MARKDOWN_LINK_CHECK: Custom remove arguments",
       "type": [
         "array",
         "string"
@@ -11799,19 +11799,19 @@
       "$id": "#/properties/MARKDOWN_MARKDOWN_LINK_CHECK_CONFIG_FILE",
       "default": ".markdown-link-check.json",
       "description": "MARKDOWN_MARKDOWN_LINK_CHECK: User custom config file name if different from default",
-      "title": "MARKDOWN_MARKDOWN_LINK_CHECK: Custom config file name",
+      "title": "(deprecated) MARKDOWN_MARKDOWN_LINK_CHECK: Custom config file name",
       "type": "string"
     },
     "MARKDOWN_MARKDOWN_LINK_CHECK_DISABLE_ERRORS": {
       "$id": "#/properties/MARKDOWN_MARKDOWN_LINK_CHECK_DISABLE_ERRORS",
       "default": false,
-      "title": "MARKDOWN_MARKDOWN_LINK_CHECK: Linter doesn't make MegaLinter fail even if errors are found",
+      "title": "(deprecated) MARKDOWN_MARKDOWN_LINK_CHECK: Linter doesn't make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "MARKDOWN_MARKDOWN_LINK_CHECK_DISABLE_ERRORS_IF_LESS_THAN": {
       "$id": "#/properties/MARKDOWN_MARKDOWN_LINK_CHECK_DISABLE_ERRORS_IF_LESS_THAN",
       "default": 0,
-      "title": "MARKDOWN_MARKDOWN_LINK_CHECK: Maximum number of errors allowed",
+      "title": "(deprecated) MARKDOWN_MARKDOWN_LINK_CHECK: Maximum number of errors allowed",
       "type": "number"
     },
     "MARKDOWN_MARKDOWN_LINK_CHECK_FILE_EXTENSIONS": {
@@ -11823,14 +11823,14 @@
       "items": {
         "type": "string"
       },
-      "title": "MARKDOWN_MARKDOWN_LINK_CHECK: Override descriptor/linter matching files extensions",
+      "title": "(deprecated) MARKDOWN_MARKDOWN_LINK_CHECK: Override descriptor/linter matching files extensions",
       "type": "array"
     },
     "MARKDOWN_MARKDOWN_LINK_CHECK_FILE_NAME": {
       "$id": "#/properties/MARKDOWN_MARKDOWN_LINK_CHECK_FILE_NAME",
       "default": ".markdown-link-check.json",
       "description": "MARKDOWN_MARKDOWN_LINK_CHECK: User custom config file name if different from default",
-      "title": "MARKDOWN_MARKDOWN_LINK_CHECK: Custom config file name",
+      "title": "(deprecated) MARKDOWN_MARKDOWN_LINK_CHECK: Custom config file name",
       "type": "string"
     },
     "MARKDOWN_MARKDOWN_LINK_CHECK_FILE_NAMES_REGEX": {
@@ -11842,17 +11842,17 @@
       "items": {
         "type": "string"
       },
-      "title": "MARKDOWN_MARKDOWN_LINK_CHECK: Override descriptor/linter matching file name regex",
+      "title": "(deprecated) MARKDOWN_MARKDOWN_LINK_CHECK: Override descriptor/linter matching file name regex",
       "type": "array"
     },
     "MARKDOWN_MARKDOWN_LINK_CHECK_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/MARKDOWN_MARKDOWN_LINK_CHECK_FILTER_REGEX_EXCLUDE",
-      "title": "MARKDOWN_MARKDOWN_LINK_CHECK: Excluding Regex",
+      "title": "(deprecated) MARKDOWN_MARKDOWN_LINK_CHECK: Excluding Regex",
       "type": "string"
     },
     "MARKDOWN_MARKDOWN_LINK_CHECK_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/MARKDOWN_MARKDOWN_LINK_CHECK_FILTER_REGEX_INCLUDE",
-      "title": "MARKDOWN_MARKDOWN_LINK_CHECK: Including Regex",
+      "title": "(deprecated) MARKDOWN_MARKDOWN_LINK_CHECK: Including Regex",
       "type": "string"
     },
     "MARKDOWN_MARKDOWN_LINK_CHECK_POST_COMMANDS": {
@@ -11869,7 +11869,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "MARKDOWN_MARKDOWN_LINK_CHECK: Define or override a list of bash commands to run after the linter",
+      "title": "(deprecated) MARKDOWN_MARKDOWN_LINK_CHECK: Define or override a list of bash commands to run after the linter",
       "type": "array"
     },
     "MARKDOWN_MARKDOWN_LINK_CHECK_PRE_COMMANDS": {
@@ -11886,13 +11886,13 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "MARKDOWN_MARKDOWN_LINK_CHECK: Define or override a list of bash commands to run before the linter",
+      "title": "(deprecated) MARKDOWN_MARKDOWN_LINK_CHECK: Define or override a list of bash commands to run before the linter",
       "type": "array"
     },
     "MARKDOWN_MARKDOWN_LINK_CHECK_RULES_PATH": {
       "$id": "#/properties/MARKDOWN_MARKDOWN_LINK_CHECK_RULES_PATH",
       "description": "MARKDOWN_MARKDOWN_LINK_CHECK: Path where to find linter configuration file",
-      "title": "MARKDOWN_MARKDOWN_LINK_CHECK: Custom config file path",
+      "title": "(deprecated) MARKDOWN_MARKDOWN_LINK_CHECK: Custom config file path",
       "type": "string"
     },
     "MARKDOWN_MARKDOWN_LINK_CHECK_UNSECURED_ENV_VARIABLES": {
@@ -11902,7 +11902,7 @@
       "items": {
         "type": "string"
       },
-      "title": "MARKDOWN_MARKDOWN_LINK_CHECK: Unsecured env variables",
+      "title": "(deprecated) MARKDOWN_MARKDOWN_LINK_CHECK: Unsecured env variables",
       "type": "array"
     },
     "MARKDOWN_MARKDOWN_TABLE_FORMATTER_ARGUMENTS": {
