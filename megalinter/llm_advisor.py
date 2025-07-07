@@ -50,7 +50,10 @@ class LLMAdvisor:
         ).lower()
 
         # Allow test override for API key check
-        if config.get(self.request_id, "LLM_TEST_API_KEY_PRESENT", "false").lower() == "true":
+        if (
+            config.get(self.request_id, "LLM_TEST_API_KEY_PRESENT", "false").lower()
+            == "true"
+        ):
             api_key_present = True
         else:
             supported_providers_api_keys = (
@@ -115,7 +118,9 @@ class LLMAdvisor:
     def get_supported_providers(self) -> Dict[str, str]:
         return LLMProviderFactory.get_supported_providers()
 
-    def get_fix_suggestions(self, linter: Any, linter_output: str) -> Optional[dict[str, Any]]:
+    def get_fix_suggestions(
+        self, linter: Any, linter_output: str
+    ) -> Optional[dict[str, Any]]:
         if not self.is_available():
             return None
         return self._get_suggestion_from_raw_output(linter, linter_output)

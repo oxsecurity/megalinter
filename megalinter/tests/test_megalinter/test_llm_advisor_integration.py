@@ -370,7 +370,9 @@ script.js:8:1: no-undef 'console' is not defined"""
     @patch(
         "megalinter.llm_provider.llm_provider_factory.LLMProviderFactory.create_provider"
     )
-    def test_should_analyze_linter_error_level(self, mock_create_provider, mock_config, mock_config_list):
+    def test_should_analyze_linter_error_level(
+        self, mock_create_provider, mock_config, mock_config_list
+    ):
 
         mock_config_list.side_effect = lambda req_id, key, default: []
 
@@ -456,7 +458,9 @@ script.js:8:1: no-undef 'console' is not defined"""
     @patch(
         "megalinter.llm_provider.llm_provider_factory.LLMProviderFactory.create_provider"
     )
-    def test_should_analyze_linter_warning_level(self, mock_create_provider, mock_config, mock_config_list):
+    def test_should_analyze_linter_warning_level(
+        self, mock_create_provider, mock_config, mock_config_list
+    ):
 
         mock_config_list.side_effect = lambda req_id, key, default: []
         mock_config.side_effect = lambda req_id, key, default: {
@@ -541,7 +545,9 @@ script.js:8:1: no-undef 'console' is not defined"""
     @patch(
         "megalinter.llm_provider.llm_provider_factory.LLMProviderFactory.create_provider"
     )
-    def test_should_analyze_linter_blocking_vs_nonblocking(self, mock_create_provider, mock_config, mock_config_list):
+    def test_should_analyze_linter_blocking_vs_nonblocking(
+        self, mock_create_provider, mock_config, mock_config_list
+    ):
         mock_config_list.side_effect = lambda req_id, key, default: []
         mock_config.side_effect = lambda req_id, key, default: {
             "LLM_ADVISOR_ENABLED": "true",
