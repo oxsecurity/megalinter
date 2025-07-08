@@ -103,7 +103,6 @@ jobs:
             "lua_selene",
             "lua_stylua",
             "markdown_markdownlint",
-            "markdown_markdown_link_check",
             "markdown_markdown_table_formatter",
             "perl_perlcritic",
             "php_phpcs",

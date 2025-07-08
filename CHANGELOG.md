@@ -19,6 +19,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Disabled linters
 
+- Removed linters
+  - **markdown-link-check** has been removed because [**lychee**](https://megalinter.io/latest/descriptors/spell_lychee/) can be used instead, and has much better performances
+
 - Media
 
 - Linters enhancements
