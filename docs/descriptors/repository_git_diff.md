@@ -18,7 +18,7 @@ description: How to use git_diff (configure, ignore files, ignore errors, help &
 
 ## git_diff documentation
 
-- Version in MegaLinter: **2.47.2**
+- Version in MegaLinter: **2.47.3**
 - Visit [Official Web Site](https://git-scm.com){target=_blank}
 
 [![git - GitHub](https://gh-card.dev/repos/git/git.svg?fullname=)](https://github.com/git/git){target=_blank}
