@@ -111,6 +111,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [kics](https://www.kics.io) from 2.1.10 to **2.1.11** on 2025-07-07
   - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.36.1 to **0.36.177** on 2025-07-08
   - [php-cs-fixer](https://cs.symfony.com/) from 3.77.0 to **3.82.0** on 2025-07-08
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.37.0 to **1.37.2** on 2025-07-11
+  - [git_diff](https://git-scm.com) from 2.47.2 to **2.47.3** on 2025-07-11
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15
