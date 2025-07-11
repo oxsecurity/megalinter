@@ -3,7 +3,7 @@ aiofiles==24.1.0
 azure-devops==6.0.0b4
 beautifulsoup4==4.13.4
 commentjson==0.9.0
-fastapi==0.116.0
+fastapi==0.116.1
 gitpython==3.1.44
 giturlparse==0.12.0
 importlib-metadata==8.7.0
