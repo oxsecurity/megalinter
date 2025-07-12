@@ -113,6 +113,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [php-cs-fixer](https://cs.symfony.com/) from 3.77.0 to **3.82.0** on 2025-07-08
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.37.0 to **1.37.2** on 2025-07-11
   - [git_diff](https://git-scm.com) from 2.47.2 to **2.47.3** on 2025-07-11
+  - [shfmt](https://github.com/mvdan/sh) from 3.11.0 to **3.12.0** on 2025-07-12
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15
