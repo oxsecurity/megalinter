@@ -114,6 +114,16 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.37.0 to **1.37.2** on 2025-07-11
   - [git_diff](https://git-scm.com) from 2.47.2 to **2.47.3** on 2025-07-11
   - [shfmt](https://github.com/mvdan/sh) from 3.11.0 to **3.12.0** on 2025-07-12
+  - [shfmt](https://github.com/mvdan/sh) from 3.12.0 to **3.11.0** on 2025-07-13
+  - [golangci-lint](https://golangci-lint.run/) from 2.2.1 to **2.2.2** on 2025-07-13
+  - [revive](https://revive.run/) from 1.10.0 to **1.11.0** on 2025-07-13
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.82.0 to **3.82.2** on 2025-07-13
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.402 to **1.1.403** on 2025-07-13
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.12.2 to **0.12.3** on 2025-07-13
+  - [ruff](https://github.com/astral-sh/ruff) from 0.12.2 to **0.12.3** on 2025-07-13
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 9.1.3 to **9.1.5** on 2025-07-13
+  - [sqlfluff](https://www.sqlfluff.com/) from 3.4.1 to **3.4.2** on 2025-07-13
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.58.0 to **0.58.1** on 2025-07-13
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15
