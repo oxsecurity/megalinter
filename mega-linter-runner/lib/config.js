@@ -1,12 +1,12 @@
 import * as path from "path";
 
-const DEFAULT_RELEASE = 'v8';
+const DEFAULT_RELEASE = "v8";
 const OX_PROTOCOL = process.env.OX_PROTOCOL || "https";
 const OX_BASE_URL =
   process.env.OX_BASE_URL || `${OX_PROTOCOL}://app.ox.security`;
 const OX_PORT = process.env.OX_PORT || 443;
 const OX_LOGIN_URL = `${OX_BASE_URL}:${OX_PORT}/login`;
-const OX_HOMEPAGE_URL = 'https://www.ox.security/';
+const OX_HOMEPAGE_URL = "https://www.ox.security/";
 const OX_REPO_LOCAL_CONFIG_FILE =
   process.OX_REPO_AUTH_FILE || path.join(process.cwd(), ".ox/auth.json");
 const ALLOWED_ORIGINS = {

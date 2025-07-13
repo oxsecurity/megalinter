@@ -1,0 +1,10 @@
+# Requirements for MegaLinter Custom Flavor Builder
+PyYAML>=6.0
+jsonschema>=4.17.0
+markdown>=3.4.0
+requests>=2.28.0
+terminaltables>=3.1.0
+git-python>=1.0.3
+webpreview>=1.6.0
+beautifulsoup4>=4.11.0
+giturlparse>=0.10.0

@@ -1,0 +1,11 @@
+flavor_name: "my-test-flavor"
+description: "Custom flavor for testing Python and JavaScript"
+linters:
+  - PYTHON_PYLINT
+  - PYTHON_BLACK
+  - JAVASCRIPT_ESLINT
+  - JSON_JSONLINT
+docker_image:
+  base_image: "python:3.11-alpine"
+  name: "my-custom-linter"
+  registry: "ghcr.io/myuser"

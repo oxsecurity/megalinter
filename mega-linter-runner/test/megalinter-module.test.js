@@ -1,5 +1,5 @@
 import { MegaLinterRunner } from "../lib/index.js";
-import assert from 'assert';
+import assert from "assert";
 
 const release = process.env.MEGALINTER_RELEASE || "beta";
 const nodockerpull =
@@ -14,7 +14,7 @@ describe("Module", function () {
     assert(res.status === 0, `status is 0 (${res.status} returned)`);
     assert(
       res.stdout.includes("mega-linter [options]"),
-      "stdout contains help content"
+      "stdout contains help content",
     );
   });
 
@@ -26,7 +26,7 @@ describe("Module", function () {
     assert(res.status === 0, `status is 0 (${res.status} returned)`);
     assert(
       res.stdout.includes("mega-linter-runner version"),
-      'stdout should contains "mega-linter-runner version"'
+      'stdout should contains "mega-linter-runner version"',
     );
   });
 

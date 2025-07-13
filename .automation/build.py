@@ -61,6 +61,7 @@ UPDATE_CHANGELOG = "--changelog" in sys.argv
 IS_LATEST = "--latest" in sys.argv
 DELETE_DOCKERFILES = "--delete-dockerfiles" in sys.argv
 DELETE_TEST_CLASSES = "--delete-test-classes" in sys.argv
+CUSTOM_FLAVOR = "--custom-flavor" in sys.argv
 
 # Release args management
 if RELEASE is True:
@@ -3522,10 +3523,47 @@ if __name__ == "__main__":
     validate_descriptors()
     if UPDATE_DEPENDENTS is True:
         update_dependents_info()
-    generate_all_flavors()
-    generate_linter_dockerfiles()
-    generate_linter_test_classes()
-    update_workflows_linters()
+    if CUSTOM_FLAVOR is True:
+        # Custom flavor generation - simplified version for testing
+        custom_flavor_file = sys.argv[sys.argv.index("--custom-flavor") + 1] if len(sys.argv) > sys.argv.index("--custom-flavor") + 1 else "megalinter-custom-flavor.yml"
+        
+        if os.path.exists(custom_flavor_file):
+            try:
+                with open(custom_flavor_file, "r", encoding="utf-8") as f:
+                    custom_flavor_config = yaml.safe_load(f)
+                
+                # Basic validation
+                if all(field in custom_flavor_config for field in ["flavor_name", "linters"]):
+                    # Generate a basic dockerfile
+                    dockerfile_content = f"""
+# Custom MegaLinter Flavor: {custom_flavor_config.get('flavor_name', 'custom')}
+FROM alpine:3.18
+
+# Add basic dependencies
+RUN apk add --no-cache bash
+
+# Copy entrypoint
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x entrypoint.sh
+
+ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
+"""
+                    dockerfile_path = os.path.join(os.path.dirname(custom_flavor_file), "Dockerfile-custom-flavor")
+                    with open(dockerfile_path, "w", encoding="utf-8") as f:
+                        f.write(dockerfile_content)
+                    
+                    logging.info(f"Generated basic custom flavor Dockerfile: {dockerfile_path}")
+                else:
+                    logging.error("Invalid custom flavor configuration")
+            except Exception as e:
+                logging.error(f"Error processing custom flavor: {str(e)}")
+        else:
+            logging.error(f"Custom flavor file not found: {custom_flavor_file}")
+    else:
+        generate_all_flavors()
+        generate_linter_dockerfiles()
+        generate_linter_test_classes()
+        update_workflows_linters()
     if UPDATE_DOC is True:
         logging.info("Running documentation generators…")
         # refresh_users_info() # deprecated since now we use github-dependents-info

@@ -1,0 +1,101 @@
+MegaLinter
+Bring your Own Flavor
+
+Context
+
+Context
+MegaLinter is currently heavily used by the community, but its docker image is getting bigger and bigger (new linters + existing linter versions increasing size)
+
+Flavors exist to use light versions of MegaLinter, but what the community need is a way to use flavors with the exact list of linters they use on their project. 
+Having this capability will increase performances and bring more users !
+We need to secure the process to minimize the security risks on custom flavors
+
+This document describes how to implement this requirement :)
+
+
+Solution
+
+Solution
+Let’s start by describe the user experience for someone wanting to use its own MegaLinter flavor
+
+Identify custom flavor linters by running Run MegaLinter full image 
+
+Create custom flavor repository & configure it
+
+Release MegaLinter custom flavor
+
+
+Identify custom flavor linters
+In the log after running the full version or an official flavor, the user will see a message inviting to create its own flavor if he wants to boost his performances
+A file “megalinter-custom-flavor.yml” is also generated in artifacts
+
+
+
+
+Custom flavor configuration
+Run mega-linter-runner –custom-flavor, that will initialize files in a repository
+User can then configure the flavor using megalinter-custom-flavor.yml
+
+Release MegaLinter Custom Flavor
+Configure ENV variables
+Docker hub credentials…
+
+Create a GitHub Release on the custom flavor repo
+
+megalinter-release-custom-flavor workflow will be triggered, and will perform the following steps
+
+Load official megalinter-builder docker image with the same version that the one defined on the GitHub Release
+
+Run mega-linter-flavor-builder image by sending it mega-linter-flavor.yml. It will:
+Run bash build.py inside builder image, that will generate a Dockerfile-custom-flavor
+Docker Build custom flavor image (using docker-in-docker)
+
+Push new docker image to the user own dockerhub and GHCR.io
+
+IMPLEMENTATION
+
+MegaLinter builder image
+Update build.py so it can work with a megalinter-custom-flavor.yml and generate a Dockerfile-custom-flavor
+
+Create a Dockerfile-custom-flavor that will allow to generate megalinter-flavor-builder image
+Dependencies: enough to run build.sh & docker buildx inside
+Copy the content of all the original repository (that way people won’t easily tamper it)
+Entrypoint: custom sh to run build.sh then docker buildx
+
+Update release jobs (alpha, beta, release) to build & push megalinter-flavor-builder
+
+Create a JSON schema for megalinter-custom-flavor and publish it on schemastore.org
+
+
+
+MegaLinter Runner updates
+Add a new option –custom-flavor-setup that will create the following local files
+
+.github/workflows/megalinter-release-custom-flavor.yml
+always overwrite if existing (it’s not supposed to be manually updated)
+
+megalinter-custom-flavor.yml 
+do not overwrite if existing
+
+
+
+Documentation
+Create a documentation page that explains all steps to build a custom flavor image
+with screenshots for each step
+
+Create a Video tutorial
+
+
+
+Questions
+
+Questions
+Do we allow to use megalinter-flavor-builder in the repo that it’s supposed to be used on ? Or do we force to create a dedicated repo for the flavor ?
+
+Do we implement a way to define multiple custom flavors in a single repo ?
+
+During the release action, are we sure that docker-in-docker will work when building the custom flavor image from within megalinter-flavor-builder image ? Or is it better to just build Dockerfile-custom-flavor then retrieve it from main action, temporary copy all files in the repo , then use docker/build-push-action@v6 ?
+
+Other questions ?
+
+

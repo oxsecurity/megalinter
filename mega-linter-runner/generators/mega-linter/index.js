@@ -1,5 +1,5 @@
 import { asciiArt } from "../../lib/ascii.js";
-import Generator from 'yeoman-generator';
+import Generator from "yeoman-generator";
 import { OXSecuritySetup } from "../../lib/ox-setup.js";
 import { DEFAULT_RELEASE } from "../../lib/config.js";
 
@@ -8,7 +8,7 @@ export default class GeneratorMegaLinter extends Generator {
     console.log(asciiArt());
     this.log(
       `Welcome to the MegaLinter configuration generator !
-When you don't know what option to select, please use default values`
+When you don't know what option to select, please use default values`,
     );
 
     const prompts = [
@@ -72,7 +72,10 @@ When you don't know what option to select, please use default values`
         message: "Which MegaLinter version do you want to use ?",
         default: DEFAULT_RELEASE,
         choices: [
-          { name: `${DEFAULT_RELEASE} (Latest official release)`, value: DEFAULT_RELEASE },
+          {
+            name: `${DEFAULT_RELEASE} (Latest official release)`,
+            value: DEFAULT_RELEASE,
+          },
           {
             name: "Beta (main branch of MegaLinter repository)",
             value: "beta",
@@ -136,10 +139,10 @@ When you don't know what option to select, please use default values`
     this._generateConcourseCI();
     if (this.props.ci === "other") {
       this.log(
-        "Please follow manual instructions to define CI job at https://megalinter.io/installation/"
+        "Please follow manual instructions to define CI job at https://megalinter.io/installation/",
       );
       this.log(
-        "You may call `npx mega-linter-runner` to run MegaLinter from any system (requires node.js & docker)"
+        "You may call `npx mega-linter-runner` to run MegaLinter from any system (requires node.js & docker)",
       );
     }
     // Generate .mega-linter.yml config
@@ -159,7 +162,7 @@ When you don't know what option to select, please use default values`
   end() {
     this.log("You're all set !");
     this.log(
-      "Now commit, push and create a pull request to see MegaLinter catching errors !"
+      "Now commit, push and create a pull request to see MegaLinter catching errors !",
     );
   }
 
@@ -185,10 +188,12 @@ When you don't know what option to select, please use default values`
     if (this.props.validateAllCodeBase === "all") {
       this.validateAllCodeBaseGha = "true";
     } else {
-      this.validateAllCodeBaseGha  = ">-\n"
+      this.validateAllCodeBaseGha = ">-\n";
       this.validateAllCodeBaseGha += "            ${{";
-      this.validateAllCodeBaseGha += "              github.event_name == 'push' &&"
-      this.validateAllCodeBaseGha += "              github.ref == 'refs/heads/main'"
+      this.validateAllCodeBaseGha +=
+        "              github.event_name == 'push' &&";
+      this.validateAllCodeBaseGha +=
+        "              github.ref == 'refs/heads/main'";
       this.validateAllCodeBaseGha += "            }}";
     }
     this.disable = false;
@@ -225,7 +230,7 @@ When you don't know what option to select, please use default values`
         GITHUB_ACTION_NAME: this.gitHubActionName,
         GITHUB_ACTION_VERSION: this.gitHubActionVersion,
         VALIDATE_ALL_CODE_BASE_GHA: this.validateAllCodeBaseGha,
-      }
+      },
     );
   }
   _generateDroneCI() {
@@ -240,7 +245,7 @@ When you don't know what option to select, please use default values`
         DEFAULT_BRANCH: this.props.defaultBranch,
         DOCKER_IMAGE_NAME: this.dockerImageName,
         DOCKER_IMAGE_VERSION: this.dockerImageVersion,
-      }
+      },
     );
   }
   _generateJenkinsfile() {
@@ -255,7 +260,7 @@ When you don't know what option to select, please use default values`
         DEFAULT_BRANCH: this.props.defaultBranch,
         DOCKER_IMAGE_NAME: this.dockerImageName,
         DOCKER_IMAGE_VERSION: this.dockerImageVersion,
-      }
+      },
     );
   }
 
@@ -270,7 +275,7 @@ When you don't know what option to select, please use default values`
         DEFAULT_BRANCH: this.props.defaultBranch,
         DOCKER_IMAGE_NAME: this.dockerImageName,
         DOCKER_IMAGE_VERSION: this.dockerImageVersion,
-      }
+      },
     );
   }
 
@@ -286,7 +291,7 @@ When you don't know what option to select, please use default values`
         DEFAULT_BRANCH: this.props.defaultBranch,
         DOCKER_IMAGE_NAME: this.dockerImageName,
         DOCKER_IMAGE_VERSION: this.dockerImageVersion,
-      }
+      },
     );
   }
 
@@ -302,7 +307,7 @@ When you don't know what option to select, please use default values`
         DEFAULT_BRANCH: this.props.defaultBranch,
         DOCKER_IMAGE_NAME: this.dockerImageName,
         DOCKER_IMAGE_VERSION: this.dockerImageVersion,
-      }
+      },
     );
   }
 
@@ -318,7 +323,7 @@ When you don't know what option to select, please use default values`
         DEFAULT_BRANCH: this.props.defaultBranch,
         DOCKER_IMAGE_NAME: this.dockerImageName,
         DOCKER_IMAGE_VERSION: this.dockerImageVersion,
-      }
+      },
     );
   }
 
@@ -331,8 +336,8 @@ When you don't know what option to select, please use default values`
         DEFAULT_BRANCH: this.props.defaultBranch,
         DISABLE: this.disable === true ? "DISABLE:" : "# DISABLE:",
         COPYPASTE: this.configCopyPaste,
-        SPELL: this.configSpell
-      }
+        SPELL: this.configSpell,
+      },
     );
   }
 
@@ -343,7 +348,7 @@ When you don't know what option to select, please use default values`
     this.fs.copyTpl(
       this.templatePath(".cspell.json"),
       this.destinationPath(".cspell.json"),
-      {}
+      {},
     );
   }
 
@@ -354,7 +359,7 @@ When you don't know what option to select, please use default values`
     this.fs.copyTpl(
       this.templatePath(".jscpd.json"),
       this.destinationPath(".jscpd.json"),
-      {}
+      {},
     );
   }
 
@@ -373,7 +378,7 @@ When you don't know what option to select, please use default values`
     if (doWrite) {
       this.fs.write(gitIgnoreFile, gitIgnoreTextLines.join("\n") + "\n");
       this.log(
-        "Updated .gitignore file to exclude megalinter-reports from commits"
+        "Updated .gitignore file to exclude megalinter-reports from commits",
       );
     }
   }

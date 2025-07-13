@@ -1,15 +1,15 @@
-import { optionsDefinition } from "./options.js"
+import { optionsDefinition } from "./options.js";
 import { spawnSync } from "child_process";
-import { default as c } from 'chalk';
-import * as path from 'path';
-import { dirname } from 'path';
-import { fileURLToPath } from 'url';
+import { default as c } from "chalk";
+import * as path from "path";
+import { dirname } from "path";
+import { fileURLToPath } from "url";
 import which from "which";
 import { default as fs } from "fs-extra";
 import { MegaLinterUpgrader } from "./upgrade.js";
 import { CodeTotalRunner } from "./codetotal.js";
 import { DEFAULT_RELEASE } from "./config.js";
-import { createEnv} from "yeoman-environment";
+import { createEnv } from "yeoman-environment";
 import { default as FindPackageJson } from "find-package-json";
 
 export class MegaLinterRunner {
@@ -47,10 +47,16 @@ export class MegaLinterRunner {
       const env = createEnv();
       const __dirname = dirname(fileURLToPath(import.meta.url));
       const generatorPath = path.resolve(
-        path.join(__dirname, "..", "generators", "mega-linter")
+        path.join(__dirname, "..", "generators", "mega-linter"),
       );
       console.log("Yeoman generator used: " + generatorPath);
       env.run(generatorPath);
+      return { status: 0 };
+    }
+
+    // Run custom flavor setup
+    if (options["custom-flavor-setup"]) {
+      await this.setupCustomFlavor();
       return { status: 0 };
     }
 
@@ -64,11 +70,12 @@ export class MegaLinterRunner {
     if (options.codetotal) {
       const codeTotalRunner = new CodeTotalRunner(options);
       await codeTotalRunner.run();
-      return { status: 0 }
+      return { status: 0 };
     }
 
     // Build MegaLinter docker image name with flavor and release version
-    const release = options.release in ["stable"] ? DEFAULT_RELEASE : options.release;
+    const release =
+      options.release in ["stable"] ? DEFAULT_RELEASE : options.release;
     const dockerImageName =
       // v4 retrocompatibility >>
       (options.flavor === "all" || options.flavor == null) && this.isv4(release)
@@ -76,14 +83,14 @@ export class MegaLinterRunner {
         : options.flavor !== "all" && this.isv4(release)
           ? `nvuillam/mega-linter-${options.flavor}`
           : // << v4 retrocompatibility
-          // v5 retrocompatibility >>
-          (options.flavor === "all" || options.flavor == null) &&
-            this.isv5(release)
+            // v5 retrocompatibility >>
+            (options.flavor === "all" || options.flavor == null) &&
+              this.isv5(release)
             ? "megalinter/megalinter"
             : options.flavor !== "all" && this.isv5(release)
               ? `megalinter/megalinter-${options.flavor}`
               : // << v5 retrocompatibility
-              options.flavor === "all" || options.flavor == null
+                options.flavor === "all" || options.flavor == null
                 ? "oxsecurity/megalinter"
                 : `oxsecurity/megalinter-${options.flavor}`;
     this.checkPreviousVersion(release);
@@ -105,10 +112,10 @@ ERROR: Docker engine has not been found on your system.
     if (options.nodockerpull !== true) {
       console.info(`Pulling docker image ${dockerImage} ... `);
       console.info(
-        "INFO: this operation can be long during the first use of mega-linter-runner"
+        "INFO: this operation can be long during the first use of mega-linter-runner",
       );
       console.info(
-        "The next runs, it will be immediate (thanks to docker cache !)"
+        "The next runs, it will be immediate (thanks to docker cache !)",
       );
       const spawnResPull = spawnSync(
         "docker",
@@ -118,7 +125,7 @@ ERROR: Docker engine has not been found on your system.
           stdio: "inherit",
           windowsHide: true,
           windowsVerbatimArguments: true,
-        }
+        },
       );
       // Manage case when unable to pull docker image
       if (spawnResPull.status !== 0) {
@@ -127,7 +134,7 @@ ERROR: Docker engine has not been found on your system.
           errorMsg: `Unable to pull [${dockerImage}]: \n${JSON.stringify(
             spawnResPull,
             null,
-            2
+            2,
           )}`,
         };
       }
@@ -138,7 +145,11 @@ ERROR: Docker engine has not been found on your system.
     // Build docker run options
     const lintPath = path.resolve(options.path || ".");
     const commandArgs = ["run", "--platform", imagePlatform];
-    const removeContainer = options["removeContainer"] ? true: options["noRemoveContainer"] ? false: true ;
+    const removeContainer = options["removeContainer"]
+      ? true
+      : options["noRemoveContainer"]
+        ? false
+        : true;
     if (removeContainer) {
       commandArgs.push("--rm");
     }
@@ -169,7 +180,7 @@ ERROR: Docker engine has not been found on your system.
     if ((options._ || []).length > 0) {
       commandArgs.push(
         ...["-e"],
-        `MEGALINTER_FILES_TO_LINT=${options._.join(",")}`
+        `MEGALINTER_FILES_TO_LINT=${options._.join(",")}`,
       );
     }
     commandArgs.push(dockerImage);
@@ -187,7 +198,7 @@ ERROR: Docker engine has not been found on your system.
       const jsonOutputFile = path.join(
         lintPath,
         process.env.REPORT_OUTPUT_FOLDER || "report",
-        "mega-linter-report.json"
+        "mega-linter-report.json",
       );
       if (fs.existsSync(jsonOutputFile)) {
         const jsonRaw = await fs.readFile(jsonOutputFile, "utf8");
@@ -208,30 +219,205 @@ ERROR: Docker engine has not been found on your system.
   }
 
   checkPreviousVersion(release) {
-    if (release.includes("v4") || release.includes("v5") || release.includes("v6")) {
+    if (
+      release.includes("v4") ||
+      release.includes("v5") ||
+      release.includes("v6")
+    ) {
       console.warn(
         c.bold(
-          "#######################################################################"
-        )
-      );
-      console.warn(
-        c.bold(`MEGA-LINTER HAS A NEW ${DEFAULT_RELEASE} VERSION. Please upgrade to benefit of latest features :)`)
-      );
-      console.warn(
-        c.bold(
-          "- Running the command at the root of your repo (requires node.js): npx mega-linter-runner@latest --upgrade"
-        )
+          "#######################################################################",
+        ),
       );
       console.warn(
         c.bold(
-          `- or replace ${release} by ${DEFAULT_RELEASE} in your scripts`
-        )
+          `MEGA-LINTER HAS A NEW ${DEFAULT_RELEASE} VERSION. Please upgrade to benefit of latest features :)`,
+        ),
       );
       console.warn(
         c.bold(
-          "#######################################################################"
-        )
+          "- Running the command at the root of your repo (requires node.js): npx mega-linter-runner@latest --upgrade",
+        ),
+      );
+      console.warn(
+        c.bold(`- or replace ${release} by ${DEFAULT_RELEASE} in your scripts`),
+      );
+      console.warn(
+        c.bold(
+          "#######################################################################",
+        ),
       );
     }
+  }
+
+  async setupCustomFlavor() {
+    console.info(
+      c.cyan("Setting up custom MegaLinter flavor configuration..."),
+    );
+
+    // Create .github/workflows directory if it doesn't exist
+    const workflowsDir = path.join(process.cwd(), ".github", "workflows");
+    if (!fs.existsSync(workflowsDir)) {
+      fs.mkdirSync(workflowsDir, { recursive: true });
+      console.info(`Created directory: ${workflowsDir}`);
+    }
+
+    // Copy workflow template from MegaLinter templates
+    const workflowTemplate = `name: MegaLinter Custom Flavor Release
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  build-custom-flavor:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: \${{ github.actor }}
+          password: \${{ secrets.GITHUB_TOKEN }}
+
+      - name: Login to Docker Hub (if using Docker Hub)
+        if: contains(fromJSON('["dockerhub"]'), fromJSON(fromJSON(steps.load-config.outputs.config).registry.type))
+        uses: docker/login-action@v3
+        with:
+          username: \${{ secrets.DOCKERHUB_USERNAME }}
+          password: \${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Load MegaLinter builder image
+        run: |
+          MEGALINTER_VERSION=\${{ github.event.release.tag_name }}
+          if [[ "\$MEGALINTER_VERSION" != v* ]]; then
+            MEGALINTER_VERSION="v\$MEGALINTER_VERSION"
+          fi
+          docker pull ghcr.io/oxsecurity/megalinter-flavor-builder:\$MEGALINTER_VERSION
+
+      - name: Load custom flavor config
+        id: load-config
+        run: |
+          if [ ! -f "megalinter-custom-flavor.yml" ]; then
+            echo "Error: megalinter-custom-flavor.yml not found"
+            exit 1
+          fi
+          echo "config=\$(cat megalinter-custom-flavor.yml | yq -o=json)" >> \$GITHUB_OUTPUT
+
+      - name: Generate custom flavor Dockerfile
+        run: |
+          MEGALINTER_VERSION=\${{ github.event.release.tag_name }}
+          if [[ "\$MEGALINTER_VERSION" != v* ]]; then
+            MEGALINTER_VERSION="v\$MEGALINTER_VERSION"
+          fi
+          docker run --rm \\
+            -v \${{ github.workspace }}:/workspace \\
+            ghcr.io/oxsecurity/megalinter-flavor-builder:\$MEGALINTER_VERSION \\
+            python /automation/build.py --custom-flavor /workspace/megalinter-custom-flavor.yml
+
+      - name: Build and push custom flavor image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./Dockerfile-custom-flavor
+          push: true
+          platforms: linux/amd64,linux/arm64
+          tags: |
+            \${{ fromJSON(steps.load-config.outputs.config).docker_image }}:latest
+            \${{ fromJSON(steps.load-config.outputs.config).docker_image }}:\${{ github.event.release.tag_name }}
+`;
+
+    const workflowFile = path.join(
+      workflowsDir,
+      "megalinter-release-custom-flavor.yml",
+    );
+    fs.writeFileSync(workflowFile, workflowTemplate);
+    console.info(`Created workflow: ${workflowFile}`);
+
+    // Create megalinter-custom-flavor.yml if it doesn't exist
+    const customFlavorFile = path.join(
+      process.cwd(),
+      "megalinter-custom-flavor.yml",
+    );
+    if (!fs.existsSync(customFlavorFile)) {
+      const customFlavorTemplate = `# MegaLinter Custom Flavor Configuration
+# Generated by mega-linter-runner --custom-flavor-setup
+# Customize this file with your specific linters and configuration
+
+flavor_name: "my-custom-flavor"
+flavor_description: "Custom MegaLinter flavor for my project"
+
+# List of linters to include (run MegaLinter once to see which linters were used)
+linters:
+  - "JAVASCRIPT_ES"
+  - "YAML_YAMLLINT"
+  - "MARKDOWN_MARKDOWNLINT"
+  - "DOCKERFILE_HADOLINT"
+  # Add more linters as needed
+
+# Docker image configuration
+docker_image: "ghcr.io/my-organization/my-custom-megalinter"
+docker_tags:
+  - "latest"
+
+# Registry configuration
+registry:
+  type: "ghcr"  # Options: "ghcr", "dockerhub", "custom"
+  # url: "https://my-registry.com"  # For custom registries
+  # username: "my-username"  # Use GitHub secrets in workflows
+
+# Optional: Additional dependencies
+# additional_dependencies:
+#   apk:
+#     - "curl"
+#   npm:
+#     - "some-package"
+#   pip:
+#     - "some-python-package"
+
+# Optional: Custom Dockerfile commands
+# custom_dockerfile_commands:
+#   - "RUN echo 'Custom command'"
+
+# Optional: Default environment variables
+# environment_variables:
+#   CUSTOM_VAR: "value"
+`;
+
+      fs.writeFileSync(customFlavorFile, customFlavorTemplate);
+      console.info(`Created custom flavor configuration: ${customFlavorFile}`);
+    } else {
+      console.info(
+        `Custom flavor configuration already exists: ${customFlavorFile}`,
+      );
+    }
+
+    console.info(c.green("✅ Custom flavor setup completed!"));
+    console.info("");
+    console.info(c.yellow("Next steps:"));
+    console.info(
+      "1. Run MegaLinter to analyze your project and generate linter usage data",
+    );
+    console.info(
+      "2. Update megalinter-custom-flavor.yml with the linters actually used in your project",
+    );
+    console.info("3. Customize the docker_image name and registry settings");
+    console.info(
+      "4. Create a GitHub release to trigger the custom flavor build workflow",
+    );
+    console.info("");
+    console.info(
+      c.blue("Documentation: https://megalinter.io/custom-flavors/"),
+    );
   }
 }

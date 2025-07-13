@@ -185,6 +185,20 @@ jobs:
             GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
           tags: ${{ steps.meta.outputs.tags }}
 
+      - name: Build & Push Docker Flavor Builder Image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: Dockerfile-custom-flavor
+          platforms: linux/amd64
+          build-args: |
+            BUILD_DATE=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.created'] }}
+            BUILD_VERSION=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.version'] }}
+            BUILD_REVISION=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.revision'] }}
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: |
+            ghcr.io/oxsecurity/megalinter-flavor-builder:beta
+
       - name: Invoke Mirror docker image workflow (Main image)
         uses: benc-uk/workflow-dispatch@v1
         with:

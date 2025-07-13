@@ -1,0 +1,131 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/json-schemas/megalinter-custom-flavor.jsonschema.json",
+  "title": "MegaLinter Custom Flavor Configuration",
+  "description": "Configuration file for creating custom MegaLinter flavors",
+  "type": "object",
+  "properties": {
+    "flavor_name": {
+      "type": "string",
+      "description": "Name of the custom flavor (alphanumeric and dashes only)",
+      "pattern": "^[a-z0-9-]+$",
+      "minLength": 3,
+      "maxLength": 50
+    },
+    "flavor_description": {
+      "type": "string",
+      "description": "Description of the custom flavor",
+      "minLength": 10,
+      "maxLength": 200
+    },
+    "base_image": {
+      "type": "string",
+      "description": "Base Docker image for the flavor",
+      "default": "alpine:3.18",
+      "examples": ["alpine:3.18", "ubuntu:22.04"]
+    },
+    "linters": {
+      "type": "array",
+      "description": "List of linter names to include in the custom flavor",
+      "items": {
+        "type": "string",
+        "description": "Linter name (e.g., JAVASCRIPT_ES, PYTHON_FLAKE8)",
+        "pattern": "^[A-Z_]+$"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "docker_image": {
+      "type": "string",
+      "description": "Docker image name for the custom flavor",
+      "pattern": "^[a-z0-9.-]+(/[a-z0-9.-]+)*$",
+      "examples": ["my-company/my-megalinter", "ghcr.io/username/my-flavor"]
+    },
+    "docker_tags": {
+      "type": "array",
+      "description": "Docker tags to apply to the image",
+      "items": {
+        "type": "string"
+      },
+      "default": ["latest"],
+      "examples": [["latest", "v1.0.0"]]
+    },
+    "registry": {
+      "type": "object",
+      "description": "Registry configuration for pushing the image",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["dockerhub", "ghcr", "custom"],
+          "default": "ghcr"
+        },
+        "url": {
+          "type": "string",
+          "description": "Registry URL (for custom registries)"
+        },
+        "username": {
+          "type": "string",
+          "description": "Registry username (use GitHub secrets in workflows)"
+        }
+      },
+      "required": ["type"]
+    },
+    "additional_dependencies": {
+      "type": "object",
+      "description": "Additional dependencies to install",
+      "properties": {
+        "apk": {
+          "type": "array",
+          "description": "Alpine packages to install",
+          "items": {
+            "type": "string"
+          }
+        },
+        "npm": {
+          "type": "array",
+          "description": "NPM packages to install",
+          "items": {
+            "type": "string"
+          }
+        },
+        "pip": {
+          "type": "array",
+          "description": "Python packages to install",
+          "items": {
+            "type": "string"
+          }
+        },
+        "gem": {
+          "type": "array",
+          "description": "Ruby gems to install",
+          "items": {
+            "type": "string"
+          }
+        },
+        "cargo": {
+          "type": "array",
+          "description": "Rust packages to install",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "custom_dockerfile_commands": {
+      "type": "array",
+      "description": "Custom Dockerfile commands to add",
+      "items": {
+        "type": "string"
+      }
+    },
+    "environment_variables": {
+      "type": "object",
+      "description": "Default environment variables for the flavor",
+      "additionalProperties": {
+        "type": "string"
+      }
+    }
+  },
+  "required": ["flavor_name", "flavor_description", "linters", "docker_image"],
+  "additionalProperties": false
+}

@@ -1,4 +1,4 @@
-import assert from 'assert';
+import assert from "assert";
 import { MegaLinterUpgrader } from "../lib/upgrade.js";
 
 describe("Upgrade config", function () {
@@ -10,7 +10,7 @@ describe("Upgrade config", function () {
       const replaceRes = item.test.replace(item.regex, item.replacement);
       assert(
         replaceRes === item.testRes,
-        `${replaceRes} should be ${item.testRes}`
+        `${replaceRes} should be ${item.testRes}`,
       );
     });
   }

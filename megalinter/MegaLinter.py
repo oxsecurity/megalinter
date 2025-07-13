@@ -10,6 +10,7 @@ import multiprocessing as mp
 import os
 import shutil
 import sys
+import yaml
 from shutil import copytree
 from uuid import uuid1
 
@@ -306,6 +307,10 @@ class Megalinter:
         # Generate reports
         for reporter in self.reporters:
             reporter.produce_report()
+        
+        # Generate custom flavor suggestion file
+        self.generate_custom_flavor_file()
+        
         # Process commmands before closing MegaLinter
         self.before_exit()
         # Manage return code
@@ -952,6 +957,64 @@ class Megalinter:
                 )
             )
             sys.exit(1)
+
+    def generate_custom_flavor_file(self):
+        """Generate megalinter-custom-flavor.yml file based on used linters"""
+        generate_custom_flavor = config.get(self.request_id, "GENERATE_CUSTOM_FLAVOR", "false")
+        logging.info(f"[Custom Flavor] GENERATE_CUSTOM_FLAVOR={generate_custom_flavor}, validate_all_code_base={self.validate_all_code_base}")
+        
+        if generate_custom_flavor == "true":
+            # Collect all linters that were actually used
+            used_linter_names = []
+            for linter in self.linters:
+                if linter.is_active and linter.nb_files > 0:
+                    linter_key = f"{linter.descriptor_id}_{linter.linter_name}"
+                    used_linter_names.append(linter_key)
+            
+            logging.info(f"[Custom Flavor] Found {len(used_linter_names)} active linters with files")
+            
+            if len(used_linter_names) > 0:
+                # Create custom flavor configuration
+                custom_flavor_config = {
+                    "flavor_name": "my-custom-flavor",
+                    "flavor_description": f"Custom MegaLinter flavor with {len(used_linter_names)} linters for this project",
+                    "linters": sorted(used_linter_names),
+                    "docker_image": "ghcr.io/my-organization/my-custom-megalinter",
+                    "docker_tags": ["latest"],
+                    "registry": {
+                        "type": "ghcr"
+                    }
+                }
+                
+                # Write the custom flavor file to workspace root
+                custom_flavor_file = os.path.join(self.github_workspace, "megalinter-custom-flavor.yml")
+                try:
+                    with open(custom_flavor_file, "w", encoding="utf-8") as file:
+                        yaml.dump(
+                            custom_flavor_config,
+                            file,
+                            default_flow_style=False,
+                            sort_keys=False,
+                            allow_unicode=True
+                        )
+                    logging.info(f"Generated custom flavor configuration: {custom_flavor_file}")
+                    
+                    # Add message about custom flavor creation
+                    if hasattr(self, 'flavor_suggestions'):
+                        self.flavor_suggestions.append(
+                            f"💡 A custom flavor configuration has been generated at {custom_flavor_file}. "
+                            f"You can use this to create your own optimized MegaLinter Docker image with only "
+                            f"the {len(used_linter_names)} linters used in your project for better performance!"
+                        )
+                    else:
+                        self.flavor_suggestions = [
+                            f"💡 A custom flavor configuration has been generated at {custom_flavor_file}. "
+                            f"You can use this to create your own optimized MegaLinter Docker image with only "
+                            f"the {len(used_linter_names)} linters used in your project for better performance!"
+                        ]
+                        
+                except Exception as e:
+                    logging.warning(f"Unable to generate custom flavor file: {str(e)}")
 
     def before_exit(self):
         # Clean git repository

@@ -1,7 +1,7 @@
 /* jscpd:ignore-start */
-import assert from 'assert';
+import assert from "assert";
 import { exec as childProcessExec } from "child_process";
-import * as  util from "util";
+import * as util from "util";
 const exec = util.promisify(childProcessExec);
 
 const release = process.env.MEGALINTER_RELEASE || "beta";
@@ -20,7 +20,7 @@ describe("CLI", function () {
     assert(stdout, "stdout is set");
     assert(
       stdout.includes("mega-linter [options]"),
-      "stdout contains help content"
+      "stdout contains help content",
     );
   });
 
@@ -33,7 +33,7 @@ describe("CLI", function () {
     assert(stdout, "stdout is set");
     assert(
       stdout.includes("mega-linter-runner version"),
-      'stdout should contains "mega-linter-runner version"'
+      'stdout should contains "mega-linter-runner version"',
     );
   });
 
@@ -54,7 +54,7 @@ describe("CLI", function () {
         assert(stdout, "stdout is set");
         assert(
           stdout.includes("mega-linter-runner applied"),
-          'stdout should contains "mega-linter-runner applied"'
+          'stdout should contains "mega-linter-runner applied"',
         );
         done();
       })

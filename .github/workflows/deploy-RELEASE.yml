@@ -103,6 +103,22 @@ jobs:
             ghcr.io/oxsecurity/megalinter:${{ github.event.release.tag_name }}
             ghcr.io/oxsecurity/megalinter:latest
 
+      - name: Build Flavor Builder Image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: Dockerfile-custom-flavor
+          platforms: linux/amd64
+          build-args: |
+            BUILD_DATE=${{ env.BUILD_DATE }}
+            BUILD_REVISION=${{ github.sha }}
+            BUILD_VERSION=${{ github.event.release.tag_name }}
+          push: true
+          tags: |
+            ghcr.io/oxsecurity/megalinter-flavor-builder:v8
+            ghcr.io/oxsecurity/megalinter-flavor-builder:${{ github.event.release.tag_name }}
+            ghcr.io/oxsecurity/megalinter-flavor-builder:latest
+
       - name: Invoke Mirror docker image workflow (Main image)
         uses: benc-uk/workflow-dispatch@v1
         with:

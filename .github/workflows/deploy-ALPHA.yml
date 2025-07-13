@@ -125,6 +125,20 @@ jobs:
             ghcr.io/oxsecurity/megalinter:alpha
           # ghcr.io/oxsecurity/megalinter:alpha-${{ github.sha }}
 
+      - name: Build & Push Docker Flavor Builder Image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: Dockerfile-custom-flavor
+          platforms: linux/amd64
+          build-args: |
+            BUILD_DATE=${{ env.BUILD_DATE }}
+            BUILD_REVISION=${{ github.sha }}
+            BUILD_VERSION=alpha
+          push: true
+          tags: |
+            ghcr.io/oxsecurity/megalinter-flavor-builder:alpha
+
       # - name: Build & Push Worker Docker Image
       #   uses: docker/build-push-action@v6
       #   with:
