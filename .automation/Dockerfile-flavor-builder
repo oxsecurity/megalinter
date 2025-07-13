@@ -1,0 +1,50 @@
+# MegaLinter Flavor Builder Image
+# This image contains all necessary tools to generate custom MegaLinter flavors
+# from any repository without requiring the MegaLinter source code
+
+FROM python:3.13-alpine
+
+# Install system dependencies
+RUN apk add --no-cache \
+    bash \
+    ca-certificates \
+    curl \
+    git \
+    docker \
+    nodejs \
+    npm \
+    build-base \
+    libffi-dev \
+    openssl-dev \
+    && rm -rf /var/cache/apk/*
+
+# Install Python dependencies for MegaLinter build system
+COPY .automation/requirements.txt /tmp/requirements.txt
+RUN pip install --no-cache-dir -r /tmp/requirements.txt
+
+# Install additional Python packages for the build system
+RUN pip install --no-cache-dir \
+    pyyaml \
+    jsonschema \
+    requests \
+    gitpython
+
+# Create workspace directory
+WORKDIR /workspace
+
+# Copy MegaLinter source code and build system
+COPY . /megalinter-src
+
+# Copy the build script
+COPY .automation/build.py /usr/local/bin/megalinter-build.py
+COPY .automation/custom-flavor-entrypoint.sh /usr/local/bin/custom-flavor-entrypoint.sh
+
+# Make scripts executable
+RUN chmod +x /usr/local/bin/custom-flavor-entrypoint.sh
+
+# Set environment variables
+ENV PYTHONPATH=/megalinter-src:$PYTHONPATH
+ENV MEGALINTER_FLAVOR_BUILDER=true
+
+# Entry point for custom flavor generation
+ENTRYPOINT ["/usr/local/bin/custom-flavor-entrypoint.sh"]
