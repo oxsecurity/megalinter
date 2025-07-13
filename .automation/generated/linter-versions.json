@@ -98,7 +98,7 @@
     "sfdx-scanner-aura": "4.12.0",
     "sfdx-scanner-lwc": "4.12.0",
     "shellcheck": "0.10.0",
-    "shfmt": "3.11.0",
+    "shfmt": "3.12.0",
     "snakefmt": "0.11.0",
     "snakemake": "9.7.1",
     "spectral": "6.15.0",
