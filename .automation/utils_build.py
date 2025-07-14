@@ -22,7 +22,7 @@ from giturlparse import parse
 from requests.adapters import HTTPAdapter
 from urllib3.util import Retry
 
-from build_constants import *
+from build_constants import ALPINE_VERSION, IDE_LIST
 
 
 def get_linter_base_info(linter):
