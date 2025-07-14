@@ -9,7 +9,6 @@ import re
 import time
 from datetime import datetime, timezone
 
-import gitlab
 import megalinter
 import megalinter.linter_factory
 import megalinter.config
