@@ -51,14 +51,13 @@ class {linter_name_lower}_test(TestCase, LinterTestRoot):
 """
         test_class_file_name = f"{test_linters_root}/{linter_name_lower}_test.py"
         if not os.path.isfile(test_class_file_name):
-            file = open(
+            with open(
                 test_class_file_name,
                 "w",
                 encoding="utf-8",
-            )
-            file.write(test_class_code)
-            file.close()
-            logging.info("Updated " + file.name)
+            ) as test_file:
+                test_file.write(test_class_code)
+            logging.info("Updated " + test_class_file_name)
 
 
 def list_descriptors_for_build():
