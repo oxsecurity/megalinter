@@ -72,7 +72,7 @@ DOCS_URL_FLAVORS_ROOT = DOCS_URL_ROOT + "/flavors"
 DOCS_URL_RAW_ROOT = URL_RAW_ROOT + "/docs"
 
 # Path construction
-REPO_HOME = os.path.dirname(os.path.abspath(__file__)) + os.path.sep + ".."
+REPO_HOME = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 REPO_ICONS = REPO_HOME + "/docs/assets/icons"
 REPO_IMAGES = REPO_HOME + "/docs/assets/images"
 
