@@ -494,7 +494,7 @@ def build_flavors_md_table(filter_linter_name=None, replace_link=False):
         len(linters_by_type["language"])
         + len(linters_by_type["format"])
         + len(linters_by_type["tooling_format"])
-        + +len(linters_by_type["other"])
+        + len(linters_by_type["other"])
     )
     docker_image_badge = f"![Docker Image Size (tag)]({BASE_SHIELD_IMAGE_LINK}/{ML_DOCKER_IMAGE}/{VERSION_V})"
     docker_pulls_badge = (
