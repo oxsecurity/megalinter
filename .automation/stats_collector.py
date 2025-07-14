@@ -11,68 +11,57 @@ import urllib.request
 from datetime import datetime, timezone
 
 import gitlab
+import megalinter
+import megalinter.linter_factory
+import megalinter.config
+import megalinter.utils
 import requests
 import yaml
+from webpreview import web_preview
+import webpreview.excepts
 
 from build_constants import *
 
 
 def collect_linter_previews():
-    """Collect previews from linters and store them in a JSON file"""
-    previews = {}
-    try:
-        with urllib.request.urlopen(URL_ROOT + "/megalinter/descriptors/info.txt") as response:
-            descriptors_list = response.read().decode("utf-8").split("\n")
-        for descriptor_name in descriptors_list:
-            descriptor_file = f"{REPO_HOME}/megalinter/descriptors/{descriptor_name}.yml"
-            if os.path.exists(descriptor_file):
-                with open(descriptor_file, "r", encoding="utf-8") as f:
-                    descriptor = yaml.load(f, Loader=yaml.FullLoader)
-                    for linter in descriptor.get("linters", []):
-                        if "linter_name" in linter and "linter_url" in linter:
-                            linter_name = linter["linter_name"]
-                            linter_url = linter["linter_url"]
-                            preview = collect_preview_from_url(linter_url)
-                            if preview:
-                                previews[linter_name] = preview
-                                time.sleep(1)  # Rate limiting
-    except Exception as e:
-        logging.warning(f"Error collecting linter previews: {e}")
+    """Collect linter info from linter url, later used to build link preview card within linter documentation"""
+    linters = megalinter.linter_factory.list_all_linters({"request_id": "build"})
     
-    # Save previews to JSON file
-    previews_file = f"{REPO_HOME}/.automation/generated/linter_previews.json"
-    os.makedirs(os.path.dirname(previews_file), exist_ok=True)
-    with open(previews_file, "w", encoding="utf-8") as f:
-        json.dump(previews, f, indent=2)
-    logging.info(f"Collected previews for {len(previews)} linters")
-
-
-def collect_preview_from_url(url):
-    """Collect preview information from a linter's URL"""
-    try:
-        headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
-        }
-        response = requests.get(url, headers=headers, timeout=10)
-        if response.status_code == 200:
-            content = response.text
-            # Extract title
-            title_match = re.search(r'<title>(.*?)</title>', content, re.IGNORECASE)
-            title = title_match.group(1).strip() if title_match else ""
-            # Extract description from meta tags
-            desc_match = re.search(
-                r'<meta\s+name=["\']description["\']\s+content=["\']([^"\']*)["\']',
-                content, re.IGNORECASE
-            )
-            description = desc_match.group(1).strip() if desc_match else ""
-            return {
-                "title": title,
-                "description": description,
-                "url": url
-            }
-    except Exception as e:
-        logging.debug(f"Error collecting preview from {url}: {e}")
-    return None
+    # Read file
+    with open(LINKS_PREVIEW_FILE, "r", encoding="utf-8") as json_file:
+        data = json.load(json_file)
+    
+    updated = False
+    
+    # Collect info using web_preview
+    for linter in linters:
+        if (
+            linter.linter_name not in data
+            or megalinter.config.get(None, "REFRESH_LINTER_PREVIEWS", "false") == "true"
+        ):
+            logging.info(f"Collecting link preview info for {linter.linter_name} at {linter.linter_url}")
+            title = None
+            try:
+                title, description, image = web_preview(
+                    linter.linter_url, parser="html.parser", timeout=1000
+                )
+            except webpreview.excepts.URLUnreachable as e:
+                logging.error("URLUnreachable: " + str(e))
+            except Exception as e:
+                logging.error(str(e))
+            if title is not None:
+                item = {
+                    "title": megalinter.utils.clean_string(title),
+                    "description": megalinter.utils.clean_string(description),
+                    "image": image,
+                }
+                data[linter.linter_name] = item
+                updated = True
+    
+    # Update file
+    if updated is True:
+        with open(LINKS_PREVIEW_FILE, "w", encoding="utf-8") as outfile:
+            json.dump(data, outfile, indent=2, sort_keys=True)
 
 
 def update_docker_pulls_counter():
@@ -122,38 +111,24 @@ def update_docker_pulls_counter():
 
 
 def manage_output_variables():
-    """Manage output variables for CI/CD integration"""
-    output_vars = {}
-    
-    # Set version information
-    output_vars["megalinter_version"] = VERSION
-    output_vars["megalinter_docker_image"] = f"{ML_DOCKER_IMAGE}:{VERSION_V}"
-    
-    # Set build timestamp
-    output_vars["build_timestamp"] = datetime.now(timezone.utc).isoformat()
-    
-    # Set GitHub Action version
-    if VERSION.startswith("v"):
-        output_vars["github_action_version"] = VERSION
-    else:
-        output_vars["github_action_version"] = f"v{VERSION}"
-    
-    # Write to GitHub Actions output if in CI
-    if os.getenv("GITHUB_ACTIONS") == "true":
-        output_file = os.getenv("GITHUB_OUTPUT")
-        if output_file:
-            with open(output_file, "a", encoding="utf-8") as f:
-                for key, value in output_vars.items():
-                    f.write(f"{key}={value}\n")
-    
-    # Save to local file for other CI systems
-    output_file_local = f"{REPO_HOME}/.automation/generated/output_variables.json"
-    os.makedirs(os.path.dirname(output_file_local), exist_ok=True)
-    with open(output_file_local, "w", encoding="utf-8") as f:
-        json.dump(output_vars, f, indent=2)
-    
-    logging.info("Output variables managed successfully")
-    return output_vars
+    if os.environ.get("UPGRADE_LINTERS_VERSION", "") == "true":
+        updated_files = megalinter.utils.list_updated_files("..")
+        updated_versions = 0
+        for updated_file in updated_files:
+            updated_file_clean = megalinter.utils.normalize_log_string(updated_file)
+            if os.path.basename(updated_file_clean) == "linter-versions.json":
+                updated_versions = 1
+                break
+        if updated_versions == 1:
+            if "GITHUB_OUTPUT" in os.environ:
+                github_output_file = os.environ["GITHUB_OUTPUT"]
+                if not os.path.isfile(github_output_file):
+                    github_output_file = github_output_file.replace(
+                        "/home/runner/work/_temp/_runner_file_commands",
+                        "/github/file_commands",
+                    )
+                with open(github_output_file, "a", encoding="utf-8") as output_stream:
+                    output_stream.write("has_updated_versions=1\n")
 
 
 def collect_usage_stats():
