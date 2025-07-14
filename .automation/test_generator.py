@@ -20,8 +20,10 @@ def generate_linter_test_classes():
 
     if DELETE_TEST_CLASSES is True:
         # Remove all the contents of test_linters_root beforehand so that the result is deterministic
-        shutil.rmtree(os.path.realpath(test_linters_root))
-        os.makedirs(os.path.realpath(test_linters_root))
+        test_linters_root_path = os.path.realpath(test_linters_root)
+        if os.path.exists(test_linters_root_path):
+            shutil.rmtree(test_linters_root_path)
+        os.makedirs(test_linters_root_path)
 
     linters = megalinter.linter_factory.list_all_linters(({"request_id": "build"}))
     for linter in linters:
