@@ -124,6 +124,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 9.1.3 to **9.1.5** on 2025-07-13
   - [sqlfluff](https://www.sqlfluff.com/) from 3.4.1 to **3.4.2** on 2025-07-13
   - [tflint](https://github.com/terraform-linters/tflint) from 0.58.0 to **0.58.1** on 2025-07-13
+  - [shfmt](https://github.com/mvdan/sh) from 3.11.0 to **3.12.0** on 2025-07-14
+  - [rubocop](https://rubocop.org/) from 1.77.0 to **1.78.0** on 2025-07-14
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15

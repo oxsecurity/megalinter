@@ -21,7 +21,7 @@ description: How to use shfmt (configure, ignore files, ignore errors, help & ve
 
 ## shfmt documentation
 
-- Version in MegaLinter: **3.11.0**
+- Version in MegaLinter: **3.12.0**
 - Visit [Official Web Site](https://github.com/mvdan/sh#readme){target=_blank}
 - See [How to configure shfmt rules](https://github.com/mvdan/sh/blob/master/cmd/shfmt/shfmt.1.scd){target=_blank}
 - See [How to disable shfmt rules in files](https://github.com/mvdan/sh/blob/master/cmd/shfmt/shfmt.1.scd){target=_blank}
@@ -128,8 +128,6 @@ directory, all shell scripts found under that directory will be used.
                       paths are separated by a newline or a null character if -l=0
   -w,     --write     write result to file instead of stdout
   -d,     --diff      error with a diff when the formatting differs
-  -s,     --simplify  simplify the code
-  -mn,    --minify    minify the code to reduce its size (implies -s)
   --apply-ignore      always apply EditorConfig ignore rules
   --filename str      provide a name for the standard input file
 
@@ -137,6 +135,7 @@ Parser options:
 
   -ln, --language-dialect str  bash/posix/mksh/bats, default "auto"
   -p,  --posix                 shorthand for -ln=posix
+  -s,  --simplify              simplify the code
 
 Printer options:
 
@@ -146,6 +145,7 @@ Printer options:
   -sr, --space-redirects   redirect operators will be followed by a space
   -kp, --keep-padding      keep column alignment paddings
   -fn, --func-next-line    function opening braces are placed on a separate line
+  -mn, --minify             minify the code to reduce its size (implies -s)
 
 Utilities:
 
