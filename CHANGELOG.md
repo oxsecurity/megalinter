@@ -126,6 +126,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [tflint](https://github.com/terraform-linters/tflint) from 0.58.0 to **0.58.1** on 2025-07-13
   - [shfmt](https://github.com/mvdan/sh) from 3.11.0 to **3.12.0** on 2025-07-14
   - [rubocop](https://rubocop.org/) from 1.77.0 to **1.78.0** on 2025-07-14
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.37.2 to **1.38.0** on 2025-07-15
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.82.2 to **3.83.0** on 2025-07-15
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.26.0 to **3.26.1** on 2025-07-15
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15
