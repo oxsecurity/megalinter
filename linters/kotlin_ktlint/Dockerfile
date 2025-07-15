@@ -49,7 +49,7 @@ FROM python:3.13-alpine3.21
 #############################################################################################
 #ARG__START
 # renovate: datasource=github-tags depName=pinterest/ktlint
-ARG KTLINT_VERSION=1.6.0
+ARG KTLINT_VERSION=1.7.0
 
 #ARG__END
 
