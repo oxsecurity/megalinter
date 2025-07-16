@@ -163,8 +163,8 @@ For more information and to report bugs, see https://github.com/mvdan/sh.
 
 - Dockerfile commands :
 ```dockerfile
-# renovate: datasource=docker depName=rhysd/actionlint
-ARG BASH_SHFMT_VERSION=v3.11.0-alpine
+# renovate: datasource=docker depName=mvdan/shfmt
+ARG BASH_SHFMT_VERSION=v3.12.0-alpine
 FROM mvdan/shfmt:${BASH_SHFMT_VERSION} AS shfmt
 COPY --link --from=shfmt /bin/shfmt /usr/bin/
 ```
