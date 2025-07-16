@@ -79,7 +79,6 @@
         "COFFEE",
         "COPYPASTE",
         "CPP",
-        "CREDENTIALS",
         "CSHARP",
         "CSS",
         "DART",
@@ -87,7 +86,6 @@
         "EDITORCONFIG",
         "ENV",
         "GHERKIN",
-        "GIT",
         "GO",
         "GRAPHQL",
         "GROOVY",
@@ -126,7 +124,9 @@
         "TYPESCRIPT",
         "VBDOTNET",
         "XML",
-        "YAML"
+        "YAML",
+        "CREDENTIALS",
+        "GIT"
       ],
       "type": "string"
     },
