@@ -28,7 +28,7 @@ description: How to use ktlint (configure, ignore files, ignore errors, help & v
 
 ## ktlint documentation
 
-- Version in MegaLinter: **1.6.0**
+- Version in MegaLinter: **1.7.0**
 - Visit [Official Web Site](https://ktlint.github.io){target=_blank}
 - See [How to configure ktlint rules](https://pinterest.github.io/ktlint/latest/rules/configuration-ktlint/){target=_blank}
 - See [How to disable ktlint rules in files](https://pinterest.github.io/ktlint/latest/faq/#how-do-i-suppress-errors-for-a-lineblockfile){target=_blank}
@@ -223,7 +223,7 @@ ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 # Linter install
 # renovate: datasource=github-tags depName=pinterest/ktlint
-ARG KTLINT_VERSION=1.6.0
+ARG KTLINT_VERSION=1.7.0
 
 RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/releases/download/${KTLINT_VERSION}/ktlint && \
     chmod a+x ktlint && \

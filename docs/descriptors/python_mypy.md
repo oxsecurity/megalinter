@@ -30,7 +30,7 @@ description: How to use mypy (configure, ignore files, ignore errors, help & ver
 
 ## mypy documentation
 
-- Version in MegaLinter: **1.16.1**
+- Version in MegaLinter: **1.17.0**
 - Visit [Official Web Site](https://mypy.readthedocs.io/en/stable/){target=_blank}
 - See [How to configure mypy rules](https://mypy.readthedocs.io/en/stable/config_file.html){target=_blank}
   - If custom `.mypy.ini` config file isn't found, [.mypy.ini](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.mypy.ini){target=_blank} will be used
@@ -240,8 +240,8 @@ Untyped definitions and calls:
 None and Optional handling:
   Adjust how values of type 'None' are handled. For more context on how mypy
   handles values of type 'None', see:
-  https://mypy.readthedocs.io/en/stable/kinds_of_types.html#no-strict-
-  optional
+  https://mypy.readthedocs.io/en/stable/kinds_of_types.html#optional-types-
+  and-the-none-type
 
   --implicit-optional       Assume arguments with default values of None are
                             Optional (inverse: --no-implicit-optional)
@@ -420,9 +420,9 @@ Environment variables:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=mypy
-ARG PIP_MYPY_VERSION=1.16.1
+ARG PIP_MYPY_VERSION=1.17.0
 ENV MYPY_CACHE_DIR=/tmp
 ```
 
 - PIP packages (Python):
-  - [mypy==1.16.1](https://pypi.org/project/mypy/1.16.1)
+  - [mypy==1.17.0](https://pypi.org/project/mypy/1.17.0)
