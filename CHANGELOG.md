@@ -137,6 +137,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.89.2 to **3.90.0** on 2025-07-16
   - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.26.1 to **3.27.0** on 2025-07-16
   - [snakemake](https://snakemake.github.io/) from 9.7.1 to **9.8.0** on 2025-07-16
+  - [dartanalyzer](https://dart.dev/tools/dart-analyze) from 3.8.1 to **3.8.2** on 2025-07-17
+  - [secretlint](https://github.com/secretlint/secretlint) from 10.2.0 to **10.2.1** on 2025-07-17
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15
