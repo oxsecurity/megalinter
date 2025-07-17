@@ -13,6 +13,41 @@ description: How to use black (configure, ignore files, ignore errors, help & ve
 
 [![GitHub stars](https://img.shields.io/github/stars/psf/black?cacheSeconds=3600)](https://github.com/psf/black) ![formatter](https://shields.io/badge/-format-yellow) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/psf/black?sort=semver)](https://github.com/psf/black/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/psf/black)](https://github.com/psf/black/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/psf/black)](https://github.com/psf/black/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/psf/black)](https://github.com/psf/black/graphs/contributors/)
 
+**Black** is "the uncompromising code formatter" for Python that automatically formats your code to be consistent and PEP 8 compliant. By using Black, you agree to cede control over minutiae of hand-formatting in return for speed, determinism, and freedom from formatting debates.
+
+**Key features:**
+
+- **Opinionated Formatting**: Minimal configuration with sensible defaults - "Black is opinionated so you don't have to be"
+- **Deterministic Output**: Same code always produces identical formatting, regardless of environment
+- **Speed and Efficiency**: Fast formatting with parallel processing capabilities
+- **Smallest Diffs**: Produces minimal git diffs by being consistent across all projects
+- **AST Safety**: Verifies that reformatted code produces a valid AST equivalent to the original
+- **Wide Compatibility**: Supports multiple Python versions and syntax features
+
+**Formatting principles:**
+
+- **Consistency Over Preferences**: Uniform style across all Python projects using Black
+- **Readability First**: Optimizes for code readability and maintainability
+- **Minimal Configuration**: Works out of the box with virtually no setup required
+
+**What Black formats:**
+
+- **Code Structure**: Consistent indentation, line breaks, and whitespace
+- **String Formatting**: Standardizes quote usage and multi-line strings
+- **Import Organization**: Works well with isort for import formatting
+- **Expression Layout**: Optimizes function calls, list comprehensions, and complex expressions
+
+**Benefits:**
+
+- **Faster Code Reviews**: Eliminates style discussions and focuses on logic
+- **Mental Energy Savings**: No time spent on formatting decisions
+- **Team Consistency**: Entire team uses identical formatting standards
+- **Reduced Conflicts**: Fewer git merge conflicts due to formatting differences
+
+Black is successfully used by many projects, small and big, and has become the de facto standard for Python code formatting. It's now stable with comprehensive test coverage and should not expect large formatting changes in the future.
+
+**Note**: Black formats code according to its opinionated style. If you prefer different formatting options, you might consider other formatters, though Black's consistency is its main strength.
+
 ## black documentation
 
 - Version in MegaLinter: **25.1.0**
@@ -54,7 +89,6 @@ Use black in your favorite IDE to catch errors before MegaLinter !
 
 |                                                                   <!-- -->                                                                   | IDE                                                      | Extension Name                                                                                  |                                                                                Install                                                                                |
 |:--------------------------------------------------------------------------------------------------------------------------------------------:|----------------------------------------------------------|-------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-|  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Atom](https://atom.io/)                                 | [python-black](https://atom.io/packages/python-black)                                           |                                                [Visit Web Site](https://atom.io/packages/python-black){target=_blank}                                                 |
 |  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Emacs](https://www.gnu.org/software/emacs/)             | [blacken](https://github.com/pythonic-emacs/blacken)                                            |                                              [Visit Web Site](https://github.com/pythonic-emacs/blacken){target=_blank}                                               |
 |  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Emacs](https://www.gnu.org/software/emacs/)             | [reformatter.el](https://github.com/purcell/reformatter.el)                                     |                                              [Visit Web Site](https://github.com/purcell/reformatter.el){target=_blank}                                               |
 |  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Emacs](https://www.gnu.org/software/emacs/)             | [elpy](https://github.com/jorgenschaefer/elpy)                                                  |                                                [Visit Web Site](https://github.com/jorgenschaefer/elpy){target=_blank}                                                |
@@ -68,8 +102,8 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                       | Description                                     | Embedded linters |                                                                                                                                                                                             Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor                       |       127        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)       | MegaLinter for the most commonly used languages |        88        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor                       |       126        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)       | MegaLinter for the most commonly used languages |        87        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
 |     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/formatters.ico" alt="" height="32px" class="megalinter-icon"></a>      | [formatters](https://megalinter.io/beta/flavors/formatters/) | Contains only formatters                        |        18        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-formatters/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-formatters) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)         | Optimized for PYTHON based projects             |        65        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
 

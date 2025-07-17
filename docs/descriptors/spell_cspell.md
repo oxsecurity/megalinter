@@ -7,15 +7,24 @@ description: How to use cspell (configure, ignore files, ignore errors, help & v
 # <a href="https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell" target="blank" title="Visit linter Web Site"><img src="https://streetsidesoftware.gallerycdn.vsassets.io/extensions/streetsidesoftware/code-spell-checker/1.9.2/1601218033318/Microsoft.VisualStudio.Services.Icons.Default" alt="cspell" height="100px" class="megalinter-logo"></a>cspell
 [![GitHub stars](https://img.shields.io/github/stars/streetsidesoftware/cspell?cacheSeconds=3600)](https://github.com/streetsidesoftware/cspell) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/streetsidesoftware/cspell?sort=semver)](https://github.com/streetsidesoftware/cspell/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/streetsidesoftware/cspell)](https://github.com/streetsidesoftware/cspell/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/streetsidesoftware/cspell)](https://github.com/streetsidesoftware/cspell/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/streetsidesoftware/cspell)](https://github.com/streetsidesoftware/cspell/graphs/contributors/)
 
-MegaLinter generates content of a `.cspell.json` config file at the end of its TextReporter artifact
+**CSpell** is a comprehensive spell checker for code that helps catch spelling errors in source code, documentation, and comments designed specifically for developers and technical writers.
 
-Copy it at the root of your repository, read it, remove real spelling errors (after have corrected them in the source), and you're good to go !
+**Key Features:**
 
+- **Code-Aware Checking**: Understands programming languages and technical terminology, avoiding false positives on variable names, APIs, and technical terms
+- **Multi-Language Support**: Supports 30+ programming languages with specialized dictionaries for each language and framework
+- **Custom Dictionaries**: Extensive collection of domain-specific dictionaries (medical, scientific, legal, etc.) plus ability to create custom word lists
+- **Flexible Configuration**: Highly configurable via JSON files with support for workspace-specific settings and ignore patterns
+- **Performance Optimized**: Fast scanning designed for large codebases with minimal performance impact
+- **Developer-Friendly**: Handles camelCase, PascalCase, snake_case, and other programming conventions intelligently
+
+MegaLinter generates content of a `.cspell.json` config file at the end of its TextReporter artifact.
+Copy it at the root of your repository, read it, remove real spelling errors (after have corrected them in the source), and you're good to go!
 If you do not want cspell to analyze the files names, define `SPELL_CSPELL_ANALYZE_FILE_NAMES` to `false`
 
 ## cspell documentation
 
-- Version in MegaLinter: **9.0.1**
+- Version in MegaLinter: **9.1.3**
 - Visit [Official Web Site](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#readme){target=_blank}
 - See [How to configure cspell rules](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#customization){target=_blank}
 - See [How to disable cspell rules in files](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#enable--disable-checking-sections-of-code){target=_blank}
@@ -60,14 +69,14 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                             | Description                                              | Embedded linters |                                                                                                                                                                                                   Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------|:---------------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)               | Default MegaLinter Flavor                                |       127        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)               | Default MegaLinter Flavor                                |       126        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 |        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/c_cpp.ico" alt="" height="32px" class="megalinter-icon"></a>        | [c_cpp](https://megalinter.io/beta/flavors/c_cpp/)                 | Optimized for pure C/C++ projects                        |        56        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-c_cpp/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-c_cpp) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)             | MegaLinter for the most commonly used languages          |        88        |             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)             | MegaLinter for the most commonly used languages          |        87        |             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
 |    <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/documentation.ico" alt="" height="32px" class="megalinter-icon"></a>    | [documentation](https://megalinter.io/beta/flavors/documentation/) | MegaLinter for documentation projects                    |        49        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-documentation/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-documentation) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/)               | Optimized for C, C++, C# or VB based projects            |        64        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/)         | Optimized for C, C++, C# or VB based projects with JS/TS |        73        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
 |         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a>          | [go](https://megalinter.io/beta/flavors/go/)                       | Optimized for GO based projects                          |        51        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-go/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-go) |
-|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.io/beta/flavors/java/)                   | Optimized for JAVA based projects                        |        53        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.io/beta/flavors/java/)                   | Optimized for JAVA based projects                        |        54        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
 |     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.io/beta/flavors/javascript/)       | Optimized for JAVASCRIPT or TYPESCRIPT based projects    |        59        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript) |
 |         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://megalinter.io/beta/flavors/php/)                     | Optimized for PHP based projects                         |        54        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-php) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)               | Optimized for PYTHON based projects                      |        65        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
@@ -119,8 +128,10 @@ Commands:
                                         result. The full file is displayed in
                                         color.
   suggestions|sug [options] [words...]  Spelling Suggestions for words.
+  init [options]                        Initialize a CSpell configuration file.
   link                                  Link dictionaries and other settings to
                                         the cspell global config.
+  dictionaries [options]                List dictionaries
   help [command]                        display help for command
 ```
 
@@ -129,8 +140,8 @@ Commands:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=cspell
-ARG NPM_CSPELL_VERSION=9.0.1
+ARG NPM_CSPELL_VERSION=9.1.3
 ```
 
 - NPM packages (node.js):
-  - [cspell@9.0.1](https://www.npmjs.com/package/cspell/v/9.0.1)
+  - [cspell@9.1.3](https://www.npmjs.com/package/cspell/v/9.1.3)

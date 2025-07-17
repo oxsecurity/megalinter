@@ -45,10 +45,12 @@ When you don't know what option to select, please use default values`
         default: "gitHubActions",
         choices: [
           { name: "GitHub Actions", value: "gitHubActions" },
-          { name: "Drone CI", value: "droneCI" },
-          { name: "Jenkins", value: "jenkins" },
           { name: "GitLab CI", value: "gitLabCI" },
           { name: "Azure Pipelines", value: "azure" },
+          { name: "Bitbucket Pipelines", value: "bitbucket" },
+          { name: "Jenkins", value: "jenkins" },
+          { name: "Drone CI", value: "droneCI" },
+          { name: "Concourse CI", value: "concourse" },
           { name: "Other, I will install workflow manually", value: "other" },
         ],
       },
@@ -126,10 +128,12 @@ When you don't know what option to select, please use default values`
   writing() {
     // Generate workflow config
     this._generateGitHubAction();
-    this._generateDroneCI();
-    this._generateJenkinsfile();
     this._generateGitLabCi();
     this._generateAzurePipelines();
+    this._generateBitbucketPipelines();
+    this._generateJenkinsfile();
+    this._generateDroneCI();
+    this._generateConcourseCI();
     if (this.props.ci === "other") {
       this.log(
         "Please follow manual instructions to define CI job at https://megalinter.io/installation/"
@@ -234,6 +238,8 @@ When you don't know what option to select, please use default values`
       {
         APPLY_FIXES: this.props.applyFixes === true ? "all" : "none",
         DEFAULT_BRANCH: this.props.defaultBranch,
+        DOCKER_IMAGE_NAME: this.dockerImageName,
+        DOCKER_IMAGE_VERSION: this.dockerImageVersion,
       }
     );
   }
@@ -241,8 +247,15 @@ When you don't know what option to select, please use default values`
     if (this.props.ci !== "jenkins") {
       return;
     }
-    this.log(
-      "Jenkinsfile config generation not implemented yet, please follow manual instructions at https://megalinter.io/installation/#jenkins"
+    this.fs.copyTpl(
+      this.templatePath("Jenkinsfile"),
+      this.destinationPath("Jenkinsfile"),
+      {
+        APPLY_FIXES: this.props.applyFixes === true ? "all" : "none",
+        DEFAULT_BRANCH: this.props.defaultBranch,
+        DOCKER_IMAGE_NAME: this.dockerImageName,
+        DOCKER_IMAGE_VERSION: this.dockerImageVersion,
+      }
     );
   }
 
@@ -265,8 +278,47 @@ When you don't know what option to select, please use default values`
     if (this.props.ci !== "azure") {
       return;
     }
-    this.log(
-      "Azure pipelines config generation not implemented yet, please follow manual instructions at https://megalinter.io/installation/#azure-pipelines"
+    this.fs.copyTpl(
+      this.templatePath("azure-pipelines.yml"),
+      this.destinationPath("azure-pipelines.yml"),
+      {
+        APPLY_FIXES: this.props.applyFixes === true ? "all" : "none",
+        DEFAULT_BRANCH: this.props.defaultBranch,
+        DOCKER_IMAGE_NAME: this.dockerImageName,
+        DOCKER_IMAGE_VERSION: this.dockerImageVersion,
+      }
+    );
+  }
+
+  _generateBitbucketPipelines() {
+    if (this.props.ci !== "bitbucket") {
+      return;
+    }
+    this.fs.copyTpl(
+      this.templatePath("bitbucket-pipelines.yml"),
+      this.destinationPath("bitbucket-pipelines.yml"),
+      {
+        APPLY_FIXES: this.props.applyFixes === true ? "all" : "none",
+        DEFAULT_BRANCH: this.props.defaultBranch,
+        DOCKER_IMAGE_NAME: this.dockerImageName,
+        DOCKER_IMAGE_VERSION: this.dockerImageVersion,
+      }
+    );
+  }
+
+  _generateConcourseCI() {
+    if (this.props.ci !== "concourse") {
+      return;
+    }
+    this.fs.copyTpl(
+      this.templatePath("concourse-task.yml"),
+      this.destinationPath("concourse-task.yml"),
+      {
+        APPLY_FIXES: this.props.applyFixes === true ? "all" : "none",
+        DEFAULT_BRANCH: this.props.defaultBranch,
+        DOCKER_IMAGE_NAME: this.dockerImageName,
+        DOCKER_IMAGE_VERSION: this.dockerImageVersion,
+      }
     );
   }
 

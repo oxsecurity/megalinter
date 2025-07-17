@@ -7,6 +7,22 @@ description: How to use selene (configure, ignore files, ignore errors, help & v
 # selene
 [![GitHub stars](https://img.shields.io/github/stars/Kampfkarren/selene?cacheSeconds=3600)](https://github.com/Kampfkarren/selene) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/Kampfkarren/selene?sort=semver)](https://github.com/Kampfkarren/selene/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/Kampfkarren/selene)](https://github.com/Kampfkarren/selene/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/Kampfkarren/selene)](https://github.com/Kampfkarren/selene/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/Kampfkarren/selene)](https://github.com/Kampfkarren/selene/graphs/contributors/)
 
+**Selene** is a blazing-fast modern Lua linter written in Rust that provides comprehensive static analysis for Lua code. It offers extensive configurability and can be tailored to specific Lua environments like Roblox, World of Warcraft addons, or standard Lua.
+
+**Key Features:**
+
+- **Rust-powered performance** for extremely fast static analysis
+- **Environment-specific configurations** for Roblox, WoW addons, and standard Lua
+- **Comprehensive lint rules** covering code quality, style, and correctness
+- **Custom rule creation** for project-specific requirements
+- **TOML configuration files** for easy project setup and sharing
+- **Detailed error messages** with context and suggestions for fixes
+- **Multiple output formats** including JSON for tool integration
+- **Incremental analysis** for fast checking of large codebases
+- **Standard library definitions** for accurate global variable validation
+- **Inline rule filtering** using comments to disable specific checks
+- **Performance suggestions** to optimize Lua code execution
+
 ## selene documentation
 
 - Version in MegaLinter: **0.28.0**
@@ -56,7 +72,7 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                               | Description               | Embedded linters |                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       127        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       126        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 
 ## Behind the scenes
 

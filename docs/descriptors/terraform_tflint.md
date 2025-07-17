@@ -7,6 +7,19 @@ description: How to use tflint (configure, ignore files, ignore errors, help & v
 # tflint
 [![GitHub stars](https://img.shields.io/github/stars/terraform-linters/tflint?cacheSeconds=3600)](https://github.com/terraform-linters/tflint) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/terraform-linters/tflint?sort=semver)](https://github.com/terraform-linters/tflint/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/terraform-linters/tflint)](https://github.com/terraform-linters/tflint/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/terraform-linters/tflint)](https://github.com/terraform-linters/tflint/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/terraform-linters/tflint)](https://github.com/terraform-linters/tflint/graphs/contributors/)
 
+**TFLint** is a pluggable Terraform linter that provides deep inspection of Terraform configurations with a focus on catching errors that terraform plan might miss. It offers extensive static analysis capabilities including provider-specific checks, deprecated syntax detection, and infrastructure best practices validation.
+
+**Key Features:**
+
+- **Deep Terraform Analysis**: Goes beyond basic syntax checking to validate Terraform semantics and logic
+- **Provider-Specific Rules**: Specialized rule sets for AWS, Azure, GCP, and other cloud providers
+- **Plugin Architecture**: Extensible with community and custom plugins for specific use cases
+- **Performance Optimized**: Fast analysis suitable for large Terraform codebases
+- **Configuration Flexibility**: Highly configurable with .tflint.hcl files for project-specific requirements
+- **Error Prevention**: Catches common issues before terraform plan/apply execution
+- **Module Support**: Analyzes Terraform modules and their usage patterns
+- **Detailed Reporting**: Clear error messages with file locations and remediation suggestions
+
 > If you are using the GitHub action please use the `TERRAFORM_TFLINT_UNSECURED_ENV_VARIABLES: GITHUB_TOKEN` to prevent plugin download issues
 
 > If you have issues with tflint --init, create a GitHub Personal Access Token and set its value to PAT_GITHUB_COM variable.
@@ -16,7 +29,7 @@ The default configuration enables all supported languages and rules, which may n
 
 ## tflint documentation
 
-- Version in MegaLinter: **0.57.0**
+- Version in MegaLinter: **0.58.0**
 - Visit [Official Web Site](https://github.com/terraform-linters/tflint#readme){target=_blank}
 - See [How to configure tflint rules](https://github.com/terraform-linters/tflint/blob/master/docs/user-guide/config.md){target=_blank}
   - If custom `.tflint.hcl` config file isn't found, [.tflint.hcl](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.tflint.hcl){target=_blank} will be used
@@ -54,8 +67,8 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                     | Description                                     | Embedded linters |                                                                                                                                                                                           Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------|:------------------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)       | Default MegaLinter Flavor                       |       127        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)     | MegaLinter for the most commonly used languages |        88        |     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)       | Default MegaLinter Flavor                       |       126        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)     | MegaLinter for the most commonly used languages |        87        |     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://megalinter.io/beta/flavors/security/)   | Optimized for security                          |        24        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://megalinter.io/beta/flavors/terraform/) | Optimized for TERRAFORM based projects          |        54        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform) |
 
@@ -177,7 +190,7 @@ Help Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=docker depName=ghcr.io/terraform-linters/tflint
-ARG TERRAFORM_TFLINT_VERSION=0.57.0
+ARG TERRAFORM_TFLINT_VERSION=0.58.0
 FROM ghcr.io/terraform-linters/tflint:v${TERRAFORM_TFLINT_VERSION} AS tflint
 COPY --link --from=tflint /usr/local/bin/tflint /usr/bin/
 ```

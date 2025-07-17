@@ -5,7 +5,7 @@ repo_url: https://github.com/oxsecurity/megalinter
 edit_uri: tree/main/docs
 site_author: Nicolas Vuillamy
 # site_description-start
-site_description: MegaLinter is an Open-Source tool for CI/CD workflows that analyzes the consistency of your code, IAC, configuration, and scripts in your repository sources, to ensure all your projects sources are clean and formatted whatever IDE/toolbox is used by their developers, powered by OX Security.Supporting 65 languages, 23 formats, 20 tooling formats and ready to use out of the box, as a GitHub action or any CI system, highly configurable and free for all uses.MegaLinter has native integrations with many of the major CI/CD tools of the market.
+site_description: MegaLinter is an Open-Source tool for CI/CD workflows that analyzes the consistency of your code, IAC, configuration, and scripts in your repository sources, to ensure all your projects sources are clean and formatted whatever IDE/toolbox is used by their developers, powered by OX Security.Supporting 65 languages, 22 formats, 20 tooling formats and ready to use out of the box, as a GitHub action or any CI system, highly configurable and free for all uses.MegaLinter has native integrations with many of the major CI/CD tools of the market.
 # site_description-end
 copyright: Copyright &copy; 2024 <a href="https://www.ox.security/?ref=megalinter" target= "_blank">OX Security</a> &amp; <a href="https://github.com/nvuillam" target="_blank">Nicolas Vuillamy</a>
 theme:
@@ -246,7 +246,6 @@ nav:
               - "All MARKDOWN linters": "descriptors/markdown.md"
               - "markdownlint": "descriptors/markdown_markdownlint.md"
               - "remark-lint": "descriptors/markdown_remark_lint.md"
-              - "markdown-link-check": "descriptors/markdown_markdown_link_check.md"
               - "markdown-table-formatter": "descriptors/markdown_markdown_table_formatter.md"
           - "PROTOBUF":
               - "All PROTOBUF linters": "descriptors/protobuf.md"
@@ -364,6 +363,17 @@ nav:
       - "Console": "reporters/ConsoleReporter.md"
       - "JSON": "reporters/JsonReporter.md"
       - "Markdown Summary": "reporters/MarkdownSummaryReporter.md"
+  - "LLM Advisor":
+      - "LLM Advisor": "llm-advisor.md"
+      - "LLM Providers":
+          - "All LLM providers": "llm-providers.md"
+          - "Anthropic": "llm-provider/llm_provider_anthropic.md"
+          - "DeepSeek": "llm-provider/llm_provider_deepseek.md"
+          - "Google GenAI": "llm-provider/llm_provider_google_genai.md"
+          - "MistralAI": "llm-provider/llm_provider_mistralai.md"
+          - "OpenAI": "llm-provider/llm_provider_openai.md"
+          - "Ollama": "llm-provider/llm_provider_ollama.md"
+          - "Hugging Face": "llm-provider/llm_provider_huggingface.md"
   - "Flavors":
       - "All flavors": "flavors.md"
       # flavors-start
@@ -400,6 +410,7 @@ nav:
   - "Contribute":
       - "How-to Contribute": "how-to-contribute.md"
       - "Contributing Guide": "contributing.md"
+      - "Copilot Instructions ": "copilot-instructions.md"
   - "License":
       - "AGPL V3 License": "license.md"
       - "License explanations": "license-explanations.md"

@@ -11,6 +11,8 @@ Posts MegaLinter results summary in the comments of the related Gitlab merge req
 
 Click on hyperlinks to access detailed logs (click on **Download** in **Artifacts section** at the left of a CI job page)
 
+If [LLM Advisor](../llm-advisor.md) is activated, it will also show its suggestions to fix linter errors.
+
 ![Screenshot](../assets/images/GitlabCommentReporter.jpg)
 
 After a first MegaLinter run, a comment is posted on the MR. To avoid multiplicating MegaLinter MR comments, future MegaLinter runs will update the existing MR comment instead of posting a new one.
@@ -24,15 +26,16 @@ If you really want a new MR comment for each MegaLinter run, define variable `GI
 
 ![config-gitlab-access-token](https://user-images.githubusercontent.com/17500430/151674446-1bcb1420-d9aa-4ae1-aaae-dcf51afb36ab.gif)
 
-| Variable                                  | Description                                                                                            | Default value |
-|-------------------------------------------|--------------------------------------------------------------------------------------------------------|---------------|
-| GITLAB_COMMENT_REPORTER                   | Activates/deactivates reporter                                                                         | `true`        |
-| GITLAB_ACCESS_TOKEN_MEGALINTER            | Must contain a Gitlab private access token defined with api access                                     | <!-- -->      |
-| GITLAB_COMMENT_REPORTER_OVERWRITE_COMMENT | Set to false to not overwrite existing comments in case of new runs on the same Merge Request          | `true`        |
-| GITLAB_CUSTOM_CERTIFICATE                 | SSL certificate value to connect to Gitlab                                                             | <!-- -->      |
-| GITLAB_CERTIFICATE_PATH                   | Path to SSL certificate to connect to Gitlab (if SSL cert has been manually defined with PRE_COMMANDS) | <!-- -->      |
-| REPORTERS_MARKDOWN_TYPE                   | Set to `simple` to avoid external images in generated markdown                                         | `advanced`    |
-| JOB_SUMMARY_ADDITIONAL_MARKDOWN           | Custom markdown to add at the end of the summary message                                               | <!-- -->      |
+| Variable                                  | Description                                                                                             | Default value    |
+|-------------------------------------------|---------------------------------------------------------------------------------------------------------|------------------|
+| GITLAB_COMMENT_REPORTER                   | Activates/deactivates reporter                                                                          | `true`           |
+| GITLAB_ACCESS_TOKEN_MEGALINTER            | Must contain a Gitlab private access token defined with api access                                      | <!-- -->         |
+| GITLAB_COMMENT_REPORTER_OVERWRITE_COMMENT | Set to false to not overwrite existing comments in case of new runs on the same Merge Request           | `true`           |
+| GITLAB_CUSTOM_CERTIFICATE                 | SSL certificate value to connect to Gitlab                                                              | <!-- -->         |
+| GITLAB_CERTIFICATE_PATH                   | Path to SSL certificate to connect to Gitlab (if SSL cert has been manually defined with PRE_COMMANDS)  | <!-- -->         |
+| REPORTERS_MARKDOWN_TYPE                   | Set to `simple` to avoid external images in generated markdown                                          | `advanced`       |
+| REPORTERS_MARKDOWN_SUMMARY_TYPE           | Display summary in PR/MR comments as `sections`, `table` or both (`sections-table` or `table-sections`) | `table-sections` |
+| JOB_SUMMARY_ADDITIONAL_MARKDOWN           | Custom markdown to add at the end of the summary message                                                | <!-- -->         |
 
 ## Special Thanks
 

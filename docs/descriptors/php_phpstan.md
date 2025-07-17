@@ -7,9 +7,22 @@ description: How to use phpstan (configure, ignore files, ignore errors, help & 
 # <a href="https://phpstan.org/" target="blank" title="Visit linter Web Site"><img src="https://i.imgur.com/WaRKPlC.png" alt="phpstan" height="100px" class="megalinter-logo"></a>phpstan
 [![GitHub stars](https://img.shields.io/github/stars/phpstan/phpstan?cacheSeconds=3600)](https://github.com/phpstan/phpstan) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/phpstan/phpstan?sort=semver)](https://github.com/phpstan/phpstan/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/phpstan/phpstan)](https://github.com/phpstan/phpstan/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/phpstan/phpstan)](https://github.com/phpstan/phpstan/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/phpstan/phpstan)](https://github.com/phpstan/phpstan/graphs/contributors/)
 
+**PHPStan** is a comprehensive static analysis tool for PHP that focuses on finding errors in your code without executing it. It catches whole classes of bugs even before you write tests, providing deep code analysis and type safety for PHP applications.
+
+**Key Features:**
+
+- **Advanced Type Analysis**: Deep understanding of PHP types with support for generics, intersection types, and complex type relationships
+- **Zero-Configuration Start**: Works out of the box with sensible defaults, no configuration files required initially
+- **Incremental Analysis**: Smart caching and incremental checking for fast analysis of large codebases
+- **10 Strictness Levels**: Configurable analysis levels from basic checks to extremely strict type safety enforcement
+- **Framework Integration**: Built-in support for Symfony, Laravel, Doctrine, PHPUnit, and other popular PHP frameworks
+- **Custom Rules**: Extensible architecture supporting custom rules and organization-specific analysis requirements
+- **Baseline Support**: Generate baselines to introduce PHPStan gradually into existing projects without fixing all issues
+- **Memory Efficient**: Optimized for large codebases with intelligent memory management and parallel processing
+
 ## phpstan documentation
 
-- Version in MegaLinter: **2.1.15**
+- Version in MegaLinter: **2.1.17**
 - Visit [Official Web Site](https://phpstan.org/){target=_blank}
 - See [How to configure phpstan rules](https://phpstan.org/config-reference#neon-format){target=_blank}
   - If custom `phpstan.neon.dist` config file isn't found, [phpstan.neon.dist](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/phpstan.neon.dist){target=_blank} will be used
@@ -46,8 +59,8 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                     | Embedded linters |                                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       127        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        88        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       126        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        87        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
 |         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://megalinter.io/beta/flavors/php/)         | Optimized for PHP based projects                |        54        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-php) |
 
 ## Behind the scenes
@@ -105,6 +118,8 @@ Options:
       --allow-empty-baseline                   Do not error out when the generated baseline is empty
       --memory-limit=MEMORY-LIMIT              Memory limit for analysis
       --xdebug                                 Allow running with Xdebug for debugging purposes
+      --tmp-file=TMP-FILE                      (Editor mode) Edited file used in place of --instead-of file
+      --instead-of=INSTEAD-OF                  (Editor mode) File being replaced by --tmp-file
       --fix                                    Launch PHPStan Pro
       --watch                                  Launch PHPStan Pro
       --pro                                    Launch PHPStan Pro
@@ -128,11 +143,11 @@ ENV PATH="/root/.composer/vendor/bin:${PATH}"
 ENV PHP_CS_FIXER_IGNORE_ENV=true
 # Linter install
 # renovate: datasource=packagist depName=phpstan/phpstan
-ARG PHP_PHPSTAN_PHPSTAN_VERSION=2.1.15
+ARG PHP_PHPSTAN_PHPSTAN_VERSION=2.1.17
 # renovate: datasource=packagist depName=phpstan/extension-installer
 ARG PHP_PHPSTAN_EXTENSION_INSTALLER_VERSION=1.4.3
 # renovate: datasource=packagist depName=bartlett/sarif-php-converters
-ARG PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION=1.1.2
+ARG PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION=1.2.0
 RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer config --global allow-plugins.phpstan/extension-installer true && composer global require phpstan/phpstan:${PHP_PHPSTAN_PHPSTAN_VERSION} phpstan/extension-installer:${PHP_PHPSTAN_EXTENSION_INSTALLER_VERSION} bartlett/sarif-php-converters:${PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION}
 ```
 

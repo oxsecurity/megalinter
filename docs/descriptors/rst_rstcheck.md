@@ -7,9 +7,25 @@ description: How to use rstcheck (configure, ignore files, ignore errors, help &
 # rstcheck
 [![GitHub stars](https://img.shields.io/github/stars/myint/rstcheck?cacheSeconds=3600)](https://github.com/myint/rstcheck) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/myint/rstcheck?sort=semver)](https://github.com/myint/rstcheck/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/myint/rstcheck)](https://github.com/myint/rstcheck/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/myint/rstcheck)](https://github.com/myint/rstcheck/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/myint/rstcheck)](https://github.com/myint/rstcheck/graphs/contributors/)
 
+**rstcheck** is a comprehensive reStructuredText checker that validates RST syntax while also checking the validity of code blocks in various programming languages. It goes beyond basic RST syntax to ensure code examples and embedded content are also valid.
+
+**Key Features:**
+
+- **Multi-language code validation** for Python, C, C++, JSON, XML, and other embedded code blocks
+- **RST syntax validation** ensuring proper reStructuredText document structure
+- **Configuration file support** via `.rstcheck.cfg` for project-specific settings
+- **Sphinx integration** supporting Sphinx-specific directives and extensions
+- **Detailed error reporting** with precise error locations and descriptions
+- **Ignore pattern support** for excluding specific files or error types
+- **Custom error handling** allowing for project-specific validation rules
+- **Code block syntax checking** validating embedded programming language syntax
+- **Recursive directory scanning** for bulk validation of documentation trees
+- **Extensible architecture** supporting custom validation rules and directives
+- **Performance optimized** for handling large documentation projects efficiently
+
 ## rstcheck documentation
 
-- Version in MegaLinter: **6.2.4**
+- Version in MegaLinter: **6.2.5**
 - Visit [Official Web Site](https://github.com/myint/rstcheck#readme){target=_blank}
 - See [How to configure rstcheck rules](https://github.com/myint/rstcheck#configuration-file){target=_blank}
 - See [How to disable rstcheck rules in files](https://github.com/myint/rstcheck#ignore-specific-errors){target=_blank}
@@ -53,8 +69,8 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                     | Embedded linters |                                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       127        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        88        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       126        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        87        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)   | Optimized for PYTHON based projects             |        65        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
 
 ## Behind the scenes
@@ -150,11 +166,11 @@ rstcheck -c .rstcheck.cfg myfile.rst
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=rstcheck
-ARG PIP_RSTCHECK_VERSION=6.2.4
+ARG PIP_RSTCHECK_VERSION=6.2.5
 # renovate: datasource=pypi depName=click
-ARG PIP_RSTCHECK_CLICK_VERSION=8.1.8
+ARG PIP_RSTCHECK_CLICK_VERSION=8.2.1
 ```
 
 - PIP packages (Python):
-  - [click==8.1.8](https://pypi.org/project/click/8.1.8)
-  - [rstcheck[toml,sphinx]==6.2.4](https://pypi.org/project/rstcheck[toml,sphinx]/6.2.4)
+  - [click==8.2.1](https://pypi.org/project/click/8.2.1)
+  - [rstcheck[toml,sphinx]==6.2.5](https://pypi.org/project/rstcheck[toml,sphinx]/6.2.5)

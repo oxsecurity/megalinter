@@ -7,10 +7,25 @@ description: How to use rstfmt (configure, ignore files, ignore errors, help & v
 # rstfmt
 ![formatter](https://shields.io/badge/-format-yellow)
 
+**rstfmt** is a specialized formatter for reStructuredText (RST) files that automatically standardizes documentation formatting for consistency and readability. It serves as the definitive tool for maintaining professional RST documentation standards.
+
+**Key Features:**
+
+- **Smart Formatting**: Intelligent reStructuredText parsing that preserves semantic meaning while improving presentation
+- **Consistent Styling**: Standardizes indentation, spacing, line lengths, and structural elements across documents
+- **Directive Handling**: Proper formatting of RST directives, roles, and special markup constructs
+- **Table Formatting**: Automatic alignment and formatting of RST tables and grid structures
+- **Link Standardization**: Consistent formatting of internal and external links, references, and citations
+- **Check Mode**: Validation mode that reports formatting issues without making changes
+- **Batch Processing**: Efficient formatting of multiple RST files and entire documentation projects
+- **Documentation Standards**: Ensures adherence to reStructuredText formatting conventions and best practices
+- **Sphinx Compatibility**: Fully compatible with Sphinx documentation builds and workflows
+
 ## rstfmt documentation
 
 - Version in MegaLinter: **0.0.14**
 - Visit [Official Web Site](https://github.com/dzhu/rstfmt#readme){target=_blank}
+- See [How to configure rstfmt rules](https://github.com/dzhu/rstfmt#usage){target=_blank}
 
 [![rstfmt - GitHub](https://gh-card.dev/repos/dzhu/rstfmt.svg?fullname=)](https://github.com/dzhu/rstfmt){target=_blank}
 
@@ -43,8 +58,8 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                       | Description                                     | Embedded linters |                                                                                                                                                                                             Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor                       |       127        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)       | MegaLinter for the most commonly used languages |        88        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor                       |       126        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)       | MegaLinter for the most commonly used languages |        87        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
 |     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/formatters.ico" alt="" height="32px" class="megalinter-icon"></a>      | [formatters](https://megalinter.io/beta/flavors/formatters/) | Contains only formatters                        |        18        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-formatters/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-formatters) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)         | Optimized for PYTHON based projects             |        65        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
 
@@ -79,21 +94,19 @@ usage: rstfmt [-h] [--version] [--check] [--diff] [-w WIDTH] [--ext EXT]
               [path ...]
 
 positional arguments:
-  path                  files/directories to run on
+  path               files/directories to run on
 
 options:
-  -h, --help            show this help message and exit
-  --version             show rstfmt version and exit
-  --check               don't update files, but exit with nonzero status if
-                        any files are not formatted
-  --diff                don't update files, but show a diff of what would
-                        change
-  -w WIDTH, --width WIDTH
-                        the target line length in characters
-  --ext EXT             the extension of files to look at when passed a
-                        directory (default `rst`)
-  --test                [internal] run tests instead of updating files
-  -v, --verbose         [internal] print extra debugging information
+  -h, --help         show this help message and exit
+  --version          show rstfmt version and exit
+  --check            don't update files, but exit with nonzero status if any
+                     files are not formatted
+  --diff             don't update files, but show a diff of what would change
+  -w, --width WIDTH  the target line length in characters
+  --ext EXT          the extension of files to look at when passed a directory
+                     (default `rst`)
+  --test             [internal] run tests instead of updating files
+  -v, --verbose      [internal] print extra debugging information
 ```
 
 ### Installation on mega-linter Docker image

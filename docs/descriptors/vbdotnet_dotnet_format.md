@@ -7,13 +7,25 @@ description: How to use dotnet-format (configure, ignore files, ignore errors, h
 # <a href="https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format" target="blank" title="Visit linter Web Site"><img src="https://user-images.githubusercontent.com/9797472/61659851-6bbdc880-ac7d-11e9-95f7-d30c7de1a18a.png" alt="dotnet-format" height="100px" class="megalinter-logo"></a>dotnet-format
 [![GitHub stars](https://img.shields.io/github/stars/dotnet/sdk?cacheSeconds=3600)](https://github.com/dotnet/sdk) ![formatter](https://shields.io/badge/-format-yellow) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/dotnet/sdk?sort=semver)](https://github.com/dotnet/sdk/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/dotnet/sdk)](https://github.com/dotnet/sdk/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/dotnet/sdk)](https://github.com/dotnet/sdk/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/dotnet/sdk)](https://github.com/dotnet/sdk/graphs/contributors/)
 
-dotnet-format requires a `.sln` or `.vbproj` file to run correctly.
+**dotnet format** is the official .NET code formatter that automatically applies style preferences and static analysis recommendations to enforce consistent formatting across .NET projects.
+
+**Key Features:**
+
+- **EditorConfig Integration**: Reads formatting preferences from .editorconfig files or applies sensible defaults
+- **Comprehensive Formatting**: Handles whitespace, code style, and analyzer rule violations with targeted subcommands
+- **Multi-Language Support**: Works with C#, Visual Basic .NET, and F# projects within .NET solutions
+- **Configurable Severity**: Allows filtering by diagnostic severity levels (info, warn, error)
+- **Selective Processing**: Include/exclude specific files or folders with fine-grained control
+- **MSBuild Integration**: Seamlessly works with .NET projects and solutions without additional configuration
+
+**Note**: Requires a `.sln` or `.vbproj` file to run correctly.
 
 ## dotnet-format documentation
 
-- Version in MegaLinter: **9.0.105**
+- Version in MegaLinter: **9.0.106**
 - Visit [Official Web Site](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format){target=_blank}
 - See [How to configure dotnet-format rules](https://github.com/dotnet/sdk/tree/main/documentation/format/docs){target=_blank}
+- See [How to disable dotnet-format rules in files](https://docs.microsoft.com/en-us/dotnet/fundamentals/code-analysis/suppress-warnings){target=_blank}
 
 [![sdk - GitHub](https://gh-card.dev/repos/dotnet/sdk.svg?fullname=)](https://github.com/dotnet/sdk){target=_blank}
 
@@ -44,7 +56,7 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                       | Description                                              | Embedded linters |                                                                                                                                                                                             Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------|:---------------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor                                |       127        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor                                |       126        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/)         | Optimized for C, C++, C# or VB based projects            |        64        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/)   | Optimized for C, C++, C# or VB based projects with JS/TS |        73        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
 |     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/formatters.ico" alt="" height="32px" class="megalinter-icon"></a>      | [formatters](https://megalinter.io/beta/flavors/formatters/) | Contains only formatters                                 |        18        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-formatters/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-formatters) |

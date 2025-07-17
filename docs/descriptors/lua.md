@@ -9,11 +9,11 @@ description: luacheck, selene, stylua are available to analyze LUA files in Mega
 
 ## Linters
 
-| Linter                                                                | Additional                                                                                                                             |
-|-----------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
-| [**luacheck**](lua_luacheck.md)<br/>[_LUA_LUACHECK_](lua_luacheck.md) | [![GitHub stars](https://img.shields.io/github/stars/luarocks/luacheck?cacheSeconds=3600)](https://github.com/luarocks/luacheck)       |
-| [**selene**](lua_selene.md)<br/>[_LUA_SELENE_](lua_selene.md)         | [![GitHub stars](https://img.shields.io/github/stars/Kampfkarren/selene?cacheSeconds=3600)](https://github.com/Kampfkarren/selene)     |
-| [**stylua**](lua_stylua.md)<br/>[_LUA_STYLUA_](lua_stylua.md)         | [![GitHub stars](https://img.shields.io/github/stars/JohnnyMorganz/StyLua?cacheSeconds=3600)](https://github.com/JohnnyMorganz/StyLua) |
+| Linter                                                                | Additional                                                                                                                               |
+|-----------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
+| [**luacheck**](lua_luacheck.md)<br/>[_LUA_LUACHECK_](lua_luacheck.md) | [![GitHub stars](https://img.shields.io/github/stars/lunarmodules/luacheck?cacheSeconds=3600)](https://github.com/lunarmodules/luacheck) |
+| [**selene**](lua_selene.md)<br/>[_LUA_SELENE_](lua_selene.md)         | [![GitHub stars](https://img.shields.io/github/stars/Kampfkarren/selene?cacheSeconds=3600)](https://github.com/Kampfkarren/selene)       |
+| [**stylua**](lua_stylua.md)<br/>[_LUA_STYLUA_](lua_stylua.md)         | [![GitHub stars](https://img.shields.io/github/stars/JohnnyMorganz/StyLua?cacheSeconds=3600)](https://github.com/JohnnyMorganz/StyLua)   |
 
 ## Linted files
 

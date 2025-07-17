@@ -7,12 +7,29 @@ description: How to use yamllint (configure, ignore files, ignore errors, help &
 # yamllint
 [![GitHub stars](https://img.shields.io/github/stars/adrienverge/yamllint?cacheSeconds=3600)](https://github.com/adrienverge/yamllint) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/adrienverge/yamllint?sort=semver)](https://github.com/adrienverge/yamllint/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/adrienverge/yamllint)](https://github.com/adrienverge/yamllint/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/adrienverge/yamllint)](https://github.com/adrienverge/yamllint/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/adrienverge/yamllint)](https://github.com/adrienverge/yamllint/graphs/contributors/)
 
+**yamllint** is a linter for YAML files that checks for syntax validity, key repetition, lines length, trailing spaces, indentation, and other common YAML issues. It helps ensure YAML files are well-formed, follow consistent formatting conventions, and avoid common pitfalls.
+
+**Key Features:**
+
+- **Syntax validity checking** to catch malformed YAML documents
+- **Key repetition detection** preventing duplicate keys in mappings
+- **Line length validation** ensuring consistent formatting standards
+- **Trailing whitespace detection** for cleaner file maintenance
+- **Indentation validation** enforcing consistent YAML structure
+- **Document structure analysis** checking for proper YAML document format
+- **Custom rule configuration** via `.yamllint.yml` configuration files
+- **Multiple output formats** including standard and colored output
+- **Inline comment disabling** for granular rule control
+- **Performance optimized** for handling large YAML files efficiently
+- **Strict mode support** for maximum validation rigor
+
 ## yamllint documentation
 
 - Version in MegaLinter: **1.37.1**
 - Visit [Official Web Site](https://yamllint.readthedocs.io/){target=_blank}
 - See [How to configure yamllint rules](https://yamllint.readthedocs.io/en/stable/configuration.html#configuration){target=_blank}
   - If custom `.yamllint.yml` config file isn't found, [.yamllint.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.yamllint.yml){target=_blank} will be used
+- See [How to disable yamllint rules in files](https://yamllint.readthedocs.io/en/stable/disable_with_comments.html){target=_blank}
 - See [Index of problems detected by yamllint](https://yamllint.readthedocs.io/en/stable/rules.html){target=_blank}
 
 [![yamllint - GitHub](https://gh-card.dev/repos/adrienverge/yamllint.svg?fullname=)](https://github.com/adrienverge/yamllint){target=_blank}
@@ -55,15 +72,15 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                             | Description                                                            | Embedded linters |                                                                                                                                                                                                   Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------|:-----------------------------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)               | Default MegaLinter Flavor                                              |       127        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)               | Default MegaLinter Flavor                                              |       126        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 |        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/c_cpp.ico" alt="" height="32px" class="megalinter-icon"></a>        | [c_cpp](https://megalinter.io/beta/flavors/c_cpp/)                 | Optimized for pure C/C++ projects                                      |        56        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-c_cpp/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-c_cpp) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/ci_light.ico" alt="" height="32px" class="megalinter-icon"></a>       | [ci_light](https://megalinter.io/beta/flavors/ci_light/)           | Optimized for CI items (Dockerfile, Jenkinsfile, JSON/YAML schemas,XML |        22        |           ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-ci_light/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-ci_light) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)             | MegaLinter for the most commonly used languages                        |        88        |             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)             | MegaLinter for the most commonly used languages                        |        87        |             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
 |    <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/documentation.ico" alt="" height="32px" class="megalinter-icon"></a>    | [documentation](https://megalinter.io/beta/flavors/documentation/) | MegaLinter for documentation projects                                  |        49        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-documentation/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-documentation) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/)               | Optimized for C, C++, C# or VB based projects                          |        64        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/)         | Optimized for C, C++, C# or VB based projects with JS/TS               |        73        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
 |         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a>          | [go](https://megalinter.io/beta/flavors/go/)                       | Optimized for GO based projects                                        |        51        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-go/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-go) |
-|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.io/beta/flavors/java/)                   | Optimized for JAVA based projects                                      |        53        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.io/beta/flavors/java/)                   | Optimized for JAVA based projects                                      |        54        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
 |     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.io/beta/flavors/javascript/)       | Optimized for JAVASCRIPT or TYPESCRIPT based projects                  |        59        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript) |
 |         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://megalinter.io/beta/flavors/php/)                     | Optimized for PHP based projects                                       |        54        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-php) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)               | Optimized for PYTHON based projects                                    |        65        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
@@ -122,12 +139,12 @@ positional arguments:
 options:
   -h, --help            show this help message and exit
   -                     read from standard input
-  -c CONFIG_FILE, --config-file CONFIG_FILE
+  -c, --config-file CONFIG_FILE
                         path to a custom configuration
-  -d CONFIG_DATA, --config-data CONFIG_DATA
+  -d, --config-data CONFIG_DATA
                         custom configuration (as YAML source)
   --list-files          list files to lint and exit
-  -f {parsable,standard,colored,github,auto}, --format {parsable,standard,colored,github,auto}
+  -f, --format {parsable,standard,colored,github,auto}
                         format for parsing output
   -s, --strict          return non-zero exit code on warnings as well as
                         errors

@@ -7,10 +7,22 @@ description: How to use lintr (configure, ignore files, ignore errors, help & ve
 # lintr
 [![GitHub stars](https://img.shields.io/github/stars/r-lib/lintr?cacheSeconds=3600)](https://github.com/r-lib/lintr) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/r-lib/lintr?sort=semver)](https://github.com/r-lib/lintr/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/r-lib/lintr)](https://github.com/r-lib/lintr/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/r-lib/lintr)](https://github.com/r-lib/lintr/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/r-lib/lintr)](https://github.com/r-lib/lintr/graphs/contributors/)
 
+**lintr** is a comprehensive static code analysis tool for R that checks for adherence to coding style guidelines, identifies syntax errors, and detects potential semantic issues. It serves as the primary linting solution for R codebases, ensuring code quality and consistency across projects.
+
+**Key Features:**
+
+- **Comprehensive Analysis**: Over 100 built-in linters covering style consistency, potential bugs, performance issues, and best practices
+- **Configurable Rulesets**: Supports tidyverse, full, or custom ruleset configurations for different project requirements
+- **Inline Exclusions**: Flexible system for excluding specific lines or blocks of code from linting
+- **Styler Complement**: Works alongside the styler package by identifying issues requiring manual attention
+- **Extensive Rule Coverage**: Detects issues with object naming, spacing, line length, assignment operators, and function usage
+- **Customizable Output**: Multiple output formats and severity levels for different development workflows
+
 ## lintr documentation
 
 - Visit [Official Web Site](https://lintr.r-lib.org/){target=_blank}
 - See [How to configure lintr rules](https://lintr.r-lib.org/articles/lintr.html#configuring-linters){target=_blank}
+- See [How to disable lintr rules in files](https://lintr.r-lib.org/articles/lintr.html#exclusions){target=_blank}
 - See [Index of problems detected by lintr](https://lintr.r-lib.org/reference/index.html){target=_blank}
 
 [![lintr - GitHub](https://gh-card.dev/repos/r-lib/lintr.svg?fullname=)](https://github.com/r-lib/lintr){target=_blank}
@@ -56,7 +68,7 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                               | Description               | Embedded linters |                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       127        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       126        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 
 ## Behind the scenes
 

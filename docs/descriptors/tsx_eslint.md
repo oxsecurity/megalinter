@@ -13,17 +13,26 @@ description: How to use eslint (configure, ignore files, ignore errors, help & v
 
 [![GitHub stars](https://img.shields.io/github/stars/jsx-eslint/eslint-plugin-react?cacheSeconds=3600)](https://github.com/jsx-eslint/eslint-plugin-react) ![autofix](https://shields.io/badge/-autofix-green) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/jsx-eslint/eslint-plugin-react?sort=semver)](https://github.com/jsx-eslint/eslint-plugin-react/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/jsx-eslint/eslint-plugin-react)](https://github.com/jsx-eslint/eslint-plugin-react/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/jsx-eslint/eslint-plugin-react)](https://github.com/jsx-eslint/eslint-plugin-react/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/jsx-eslint/eslint-plugin-react)](https://github.com/jsx-eslint/eslint-plugin-react/graphs/contributors/)
 
-eslint requires a custom configuration file applicable to your project.
+**ESLint with React Plugin** provides comprehensive linting for TSX (TypeScript React) files, combining ESLint's powerful static analysis with React-specific rules to ensure high-quality React applications written in TypeScript.
 
-You can create it by typing `npx eslint --init` in the root of your repository
+**Key Features:**
+
+- **React-Specific Linting**: 90+ rules covering React best practices, hooks usage, JSX syntax, and component lifecycle patterns
+- **TypeScript Integration**: Full TypeScript support for type-aware linting in React components with proper TSX syntax validation
+- **Hooks Rules**: Comprehensive validation of React Hooks usage patterns, dependencies, and effect cleanup
+- **Accessibility Integration**: Built-in support for jsx-a11y plugin ensuring accessible React components
+- **Performance Optimization**: Rules to detect unnecessary re-renders, missing dependency arrays, and performance anti-patterns
+- **Modern React Patterns**: Support for latest React features including Suspense, Error Boundaries, and concurrent features
+
+ESLint requires a custom configuration file applicable to your project. You can create it by typing `npx eslint --init` in the root of your repository
 
 ## eslint documentation
 
 - Version in MegaLinter: **8.57.1**
 - Visit [Official Web Site](https://github.com/jsx-eslint/eslint-plugin-react#readme){target=_blank}
 - See [How to configure eslint rules](https://github.com/jsx-eslint/eslint-plugin-react#configuration-legacy-eslintrc){target=_blank}
-- See [How to disable eslint rules in files](https://eslint.org/docs/user-guide/configuring#disabling-rules-with-inline-comments){target=_blank}
-- See [How to ignore files and directories with eslint](https://eslint.org/docs/latest/user-guide/configuring/ignoring-code#the-eslintignore-file){target=_blank}
+- See [How to disable eslint rules in files](https://eslint.org/docs/latest/use/configure/rules#disabling-rules){target=_blank}
+- See [How to ignore files and directories with eslint](https://eslint.org/docs/latest/use/configure/ignore#the-eslintignore-file){target=_blank}
   - You can define a `.eslintignore` file to ignore files and folders
 - See [Index of problems detected by eslint](https://github.com/jsx-eslint/eslint-plugin-react#list-of-supported-rules){target=_blank}
 
@@ -60,7 +69,6 @@ Use eslint in your favorite IDE to catch errors before MegaLinter !
 
 |                                                                   <!-- -->                                                                    | IDE                                                      | Extension Name                                                                                 |                                                                                   Install                                                                                   |
 |:---------------------------------------------------------------------------------------------------------------------------------------------:|----------------------------------------------------------|------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-|   <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Atom](https://atom.io/)                                 | [linter-eslint](https://atom.io/packages/linter-eslint)                                        |                                                   [Visit Web Site](https://atom.io/packages/linter-eslint){target=_blank}                                                   |
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/brackets.ico" alt="" height="32px" class="megalinter-icon"></a> | [Brackets](https://brackets.io/)                         | [brackets-eslint](https://github.com/brackets-userland/brackets-eslint)                        |                                            [Visit Web Site](https://github.com/brackets-userland/brackets-eslint){target=_blank}                                            |
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/eclipse.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Eclipse](https://www.eclipse.org/)                      | [Tern-Linter-ESLint](https://github.com/angelozerr/tern.java/wiki/Tern-Linter-ESLint)          |                                      [Visit Web Site](https://github.com/angelozerr/tern.java/wiki/Tern-Linter-ESLint){target=_blank}                                       |
 |  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Emacs](https://www.gnu.org/software/emacs/)             | [flycheck](http://www.flycheck.org/en/latest/languages.html#javascript)                        |                                        [Visit Web Site](http://www.flycheck.org/en/latest/languages.html#javascript){target=_blank}                                         |
@@ -76,8 +84,8 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                       | Description                                              | Embedded linters |                                                                                                                                                                                             Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------|:---------------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor                                |       127        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)       | MegaLinter for the most commonly used languages          |        88        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor                                |       126        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)       | MegaLinter for the most commonly used languages          |        87        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/)   | Optimized for C, C++, C# or VB based projects with JS/TS |        73        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
 |     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.io/beta/flavors/javascript/) | Optimized for JAVASCRIPT or TYPESCRIPT based projects    |        59        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript) |
 
@@ -187,21 +195,21 @@ ARG NPM_ESLINT_CONFIG_AIRBNB_VERSION=19.0.4
 # renovate: datasource=npm depName=eslint-config-prettier
 ARG NPM_ESLINT_CONFIG_PRETTIER_VERSION=10.1.5
 # renovate: datasource=npm depName=eslint-plugin-jest
-ARG NPM_ESLINT_PLUGIN_JEST_VERSION=28.11.0
+ARG NPM_ESLINT_PLUGIN_JEST_VERSION=29.0.1
 # renovate: datasource=npm depName=eslint-plugin-prettier
-ARG NPM_ESLINT_PLUGIN_PRETTIER_VERSION=5.4.0
+ARG NPM_ESLINT_PLUGIN_PRETTIER_VERSION=5.5.1
 # renovate: datasource=npm depName=eslint-plugin-react
 ARG NPM_ESLINT_PLUGIN_REACT_VERSION=7.37.5
 # renovate: datasource=npm depName=@babel/eslint-parser
-ARG NPM_BABEL_ESLINT_PARSER_VERSION=7.27.1
+ARG NPM_BABEL_ESLINT_PARSER_VERSION=7.28.0
 # renovate: datasource=npm depName=prettier
-ARG NPM_PRETTIER_VERSION=3.5.3
+ARG NPM_PRETTIER_VERSION=3.6.2
 # renovate: datasource=npm depName=prettyjson
 ARG NPM_PRETTYJSON_VERSION=1.2.5
 # renovate: datasource=npm depName=@typescript-eslint/eslint-plugin
-ARG NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION=8.32.1
+ARG NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION=8.35.1
 # renovate: datasource=npm depName=@typescript-eslint/parser
-ARG NPM_TYPESCRIPT_ESLINT_PARSER_VERSION=8.32.1
+ARG NPM_TYPESCRIPT_ESLINT_PARSER_VERSION=8.35.1
 # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
 ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
 ```
@@ -211,12 +219,12 @@ ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
   - [eslint@8.57.1](https://www.npmjs.com/package/eslint/v/8.57.1)
   - [eslint-config-airbnb@19.0.4](https://www.npmjs.com/package/eslint-config-airbnb/v/19.0.4)
   - [eslint-config-prettier@10.1.5](https://www.npmjs.com/package/eslint-config-prettier/v/10.1.5)
-  - [eslint-plugin-jest@28.11.0](https://www.npmjs.com/package/eslint-plugin-jest/v/28.11.0)
-  - [eslint-plugin-prettier@5.4.0](https://www.npmjs.com/package/eslint-plugin-prettier/v/5.4.0)
+  - [eslint-plugin-jest@29.0.1](https://www.npmjs.com/package/eslint-plugin-jest/v/29.0.1)
+  - [eslint-plugin-prettier@5.5.1](https://www.npmjs.com/package/eslint-plugin-prettier/v/5.5.1)
   - [eslint-plugin-react@7.37.5](https://www.npmjs.com/package/eslint-plugin-react/v/7.37.5)
-  - [@babel/eslint-parser@7.27.1](https://www.npmjs.com/package/@babel/eslint-parser/v/7.27.1)
-  - [prettier@3.5.3](https://www.npmjs.com/package/prettier/v/3.5.3)
+  - [@babel/eslint-parser@7.28.0](https://www.npmjs.com/package/@babel/eslint-parser/v/7.28.0)
+  - [prettier@3.6.2](https://www.npmjs.com/package/prettier/v/3.6.2)
   - [prettyjson@1.2.5](https://www.npmjs.com/package/prettyjson/v/1.2.5)
-  - [@typescript-eslint/eslint-plugin@8.32.1](https://www.npmjs.com/package/@typescript-eslint/eslint-plugin/v/8.32.1)
-  - [@typescript-eslint/parser@8.32.1](https://www.npmjs.com/package/@typescript-eslint/parser/v/8.32.1)
+  - [@typescript-eslint/eslint-plugin@8.35.1](https://www.npmjs.com/package/@typescript-eslint/eslint-plugin/v/8.35.1)
+  - [@typescript-eslint/parser@8.35.1](https://www.npmjs.com/package/@typescript-eslint/parser/v/8.35.1)
   - [@microsoft/eslint-formatter-sarif@3.1.0](https://www.npmjs.com/package/@microsoft/eslint-formatter-sarif/v/3.1.0)

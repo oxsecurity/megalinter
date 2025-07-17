@@ -15,10 +15,26 @@ install:
 linters:
   # KTLINT
   - linter_name: ktlint
+    linter_text: |
+      **ktlint** is an anti-bikeshedding Kotlin linter with a built-in formatter inspired by JavaScript Standard and Go's gofmt. It enforces consistent code style with zero configuration required by default, following Kotlin's official coding conventions.
+
+      **Key Features:**
+
+      - **Zero configuration** required by default, following Kotlin's official coding conventions
+      - **Automatic code formatting** with built-in formatter capabilities
+      - **Anti-bikeshedding approach** eliminating debates about code style
+      - **`.editorconfig` support** for project-specific formatting rules
+      - **Multiple output formats** including plain, JSON, HTML, and checkstyle
+      - **Extensibility** with custom rule sets for specialized requirements
+      - **SARIF output support** for security and code quality reporting
+      - **Error suppression** with inline comments for specific cases
     can_output_sarif: true
     linter_url: https://ktlint.github.io
     linter_repo: https://github.com/pinterest/ktlint
+    linter_spdx_license: MIT
     linter_rules_url: https://ktlint.github.io/#rules
+    linter_rules_configuration_url: https://pinterest.github.io/ktlint/latest/rules/configuration-ktlint/
+    linter_rules_inline_disable_url: https://pinterest.github.io/ktlint/latest/faq/#how-do-i-suppress-errors-for-a-lineblockfile
     linter_banner_image_url: https://miro.medium.com/max/655/1*sLboL6JnC9yUodFsdSMB-w.png
     linter_megalinter_ref_url: https://github.com/pinterest/ktlint#-with-continuous-integration
     cli_lint_fix_arg_name: "--format"
@@ -34,7 +50,7 @@ linters:
       dockerfile:
         - |
           # renovate: datasource=github-tags depName=pinterest/ktlint
-          ARG KTLINT_VERSION=1.5.0
+          ARG KTLINT_VERSION=1.6.0
         - |
           RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/releases/download/${KTLINT_VERSION}/ktlint && \
               chmod a+x ktlint && \
@@ -47,13 +63,35 @@ linters:
         - name: ale
           url: https://github.com/w0rp/ale
   # DETEKT
-  - linter_name: detekt
+  - class: DetektLinter
+    linter_name: detekt
+    linter_text: |
+      **detekt** is a comprehensive static code analysis tool for Kotlin that helps developers write cleaner, safer code. It performs code smell analysis with highly configurable rule sets covering complexity, style, performance, naming conventions, and potential bugs.
+
+      **Key Features:**
+
+      - **300+ built-in rules** across categories like coroutines, exceptions, and documentation
+      - **Code smell analysis** with highly configurable rule sets
+      - **Complexity metrics** measuring cyclomatic and cognitive complexity
+      - **Baseline generation** for legacy projects to track only new issues
+      - **Custom rule support** for project-specific analysis requirements
+      - **Multiple report formats** including HTML, Markdown, SARIF, and XML
+      - **Gradle/Maven integration** for seamless build process integration
+      - **Performance analysis** detecting inefficient code patterns
+      - **Naming convention validation** ensuring consistent code style
+      - **Coroutines analysis** for modern Kotlin async programming patterns
+      - **Documentation enforcement** ensuring proper code documentation
+      - **SARIF output support** for security and quality reporting tools
     can_output_sarif: true
     linter_url: https://detekt.dev/
     linter_repo: https://github.com/detekt/detekt
+    linter_spdx_license: Apache-2.0
     linter_rules_url: https://detekt.dev/docs/rules/comments
+    linter_rules_configuration_url: https://detekt.dev/configurations.html
+    linter_rules_inline_disable_url: https://detekt.dev/suppressing-rules.html
     linter_banner_image_url: https://repository-images.githubusercontent.com/71729669/8b793230-5d85-4c36-b72e-6911dd7bf6d3
     linter_megalinter_ref_url: https://detekt.dev/docs/intro
+    config_file_name: detekt-config.yml
     cli_executable: detekt-cli
     cli_lint_mode: project
     cli_lint_errors_count: total_lines

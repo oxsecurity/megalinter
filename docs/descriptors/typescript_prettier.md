@@ -13,9 +13,22 @@ description: How to use prettier (configure, ignore files, ignore errors, help &
 
 [![GitHub stars](https://img.shields.io/github/stars/prettier/prettier?cacheSeconds=3600)](https://github.com/prettier/prettier) ![formatter](https://shields.io/badge/-format-yellow) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/prettier/prettier?sort=semver)](https://github.com/prettier/prettier/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/prettier/prettier)](https://github.com/prettier/prettier/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/prettier/prettier)](https://github.com/prettier/prettier/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/prettier/prettier)](https://github.com/prettier/prettier/graphs/contributors/)
 
+**Prettier** is the industry-leading opinionated code formatter with first-class TypeScript support that automatically formats TypeScript code to ensure consistency and readability. It handles TypeScript's complex syntax including generics, decorators, and type annotations with intelligent formatting rules.
+
+**Key Features:**
+
+- **TypeScript-Native**: Deep understanding of TypeScript syntax, types, interfaces, generics, and decorators
+- **Type Annotation Preservation**: Carefully formats complex type definitions while maintaining readability
+- **Opinionated Formatting**: Zero-configuration approach with sensible defaults optimized for TypeScript development
+- **Parse Safety**: AST-based processing ensures formatted code maintains semantic equivalence to the original
+- **Modern TypeScript Support**: Full compatibility with latest TypeScript features and syntax
+- **Consistent Output**: Deterministic formatting produces identical results across different development environments
+- **Fast Performance**: High-speed formatting suitable for large TypeScript codebases
+- **Team Standardization**: Eliminates formatting debates and ensures uniform TypeScript code style across teams
+
 ## prettier documentation
 
-- Version in MegaLinter: **3.5.3**
+- Version in MegaLinter: **3.6.2**
 - Visit [Official Web Site](https://prettier.io/){target=_blank}
 - See [How to configure prettier rules](https://prettier.io/docs/en/configuration.html){target=_blank}
 - See [How to disable prettier rules in files](https://prettier.io/docs/en/ignore.html#javascript){target=_blank}
@@ -70,8 +83,8 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                       | Description                                              | Embedded linters |                                                                                                                                                                                             Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------|:---------------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor                                |       127        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)       | MegaLinter for the most commonly used languages          |        88        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor                                |       126        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)       | MegaLinter for the most commonly used languages          |        87        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/)   | Optimized for C, C++, C# or VB based projects with JS/TS |        73        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
 |     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/formatters.ico" alt="" height="32px" class="megalinter-icon"></a>      | [formatters](https://megalinter.io/beta/flavors/formatters/) | Contains only formatters                                 |        18        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-formatters/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-formatters) |
 |     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.io/beta/flavors/javascript/) | Optimized for JAVASCRIPT or TYPESCRIPT based projects    |        59        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript) |
@@ -145,7 +158,7 @@ Format options:
   --object-wrap <preserve|collapse>
                            How to wrap object literals.
                            Defaults to preserve.
-  --parser <flow|babel|babel-flow|babel-ts|typescript|acorn|espree|meriyah|css|less|scss|json|json5|jsonc|json-stringify|graphql|markdown|mdx|vue|yaml|glimmer|html|angular|lwc>
+  --parser <flow|babel|babel-flow|babel-ts|typescript|acorn|espree|meriyah|css|less|scss|json|json5|jsonc|json-stringify|graphql|markdown|mdx|vue|yaml|glimmer|html|angular|lwc|mjml>
                            Which parser to use.
   --print-width <int>      The line length where Prettier will try wrap.
                            Defaults to 80.
@@ -207,6 +220,8 @@ Other options:
   --cache-location <path>  Path to the cache file.
   --cache-strategy <metadata|content>
                            Strategy for the cache to use for detecting changed files.
+  --check-ignore-pragma    Check whether the file's first docblock comment contains '@noprettier' or '@noformat' to determine if it should be formatted.
+                           Defaults to false.
   --no-color               Do not colorize error messages.
   --no-error-on-unmatched-pattern
                            Prevent errors when pattern is unmatched.
@@ -221,8 +236,7 @@ Other options:
   --log-level <silent|error|warn|log|debug>
                            What level of logs to report.
                            Defaults to log.
-  --require-pragma         Require either '@prettier' or '@format' to be present in the file's first docblock comment
-                           in order for it to be formatted.
+  --require-pragma         Require either '@prettier' or '@format' to be present in the file's first docblock comment in order for it to be formatted.
                            Defaults to false.
   --stdin-filepath <path>  Path to the file to pretend that stdin comes from.
   --support-info           Print support information as JSON.
@@ -240,9 +254,9 @@ Other options:
 ARG NPM_TYPESCRIPT_VERSION=5.8.3
 # Linter install
 # renovate: datasource=npm depName=prettier
-ARG NPM_PRETTIER_VERSION=3.5.3
+ARG NPM_PRETTIER_VERSION=3.6.2
 ```
 
 - NPM packages (node.js):
   - [typescript@5.8.3](https://www.npmjs.com/package/typescript/v/5.8.3)
-  - [prettier@3.5.3](https://www.npmjs.com/package/prettier/v/3.5.3)
+  - [prettier@3.6.2](https://www.npmjs.com/package/prettier/v/3.6.2)

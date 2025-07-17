@@ -7,10 +7,24 @@ description: How to use phplint (configure, ignore files, ignore errors, help & 
 # phplint
 [![GitHub stars](https://img.shields.io/github/stars/overtrue/phplint?cacheSeconds=3600)](https://github.com/overtrue/phplint) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/overtrue/phplint?sort=semver)](https://github.com/overtrue/phplint/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/overtrue/phplint)](https://github.com/overtrue/phplint/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/overtrue/phplint)](https://github.com/overtrue/phplint/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/overtrue/phplint)](https://github.com/overtrue/phplint/graphs/contributors/)
 
+**PHPLint** is a high-performance syntax validation tool for PHP that provides rapid syntax checking without code execution. It serves as an essential first line of defense for catching PHP syntax errors and parse issues.
+
+**Key Features:**
+
+- **Fast Syntax Validation**: Lightning-fast PHP syntax checking without executing code for safe validation
+- **Parallel Processing**: Multi-threaded scanning that efficiently handles large codebases
+- **Comprehensive Error Detection**: Catches syntax errors, parse errors, and fundamental PHP language issues
+- **Multiple PHP Versions**: Supports validation against different PHP versions to ensure compatibility
+- **Batch Processing**: Validates entire directories and project structures efficiently
+- **SARIF Support**: Modern report formats for seamless integration with development tools and platforms
+- **Memory Efficient**: Minimal memory footprint for scanning large PHP projects
+- **Configurable Scanning**: Flexible file inclusion/exclusion patterns and custom validation rules
+
 ## phplint documentation
 
 - Version in MegaLinter: **9.6.2**
 - Visit [Official Web Site](https://github.com/overtrue/phplint#readme){target=_blank}
+- See [How to configure phplint rules](https://github.com/overtrue/phplint/blob/main/docs/configuration.md#configuration){target=_blank}
   - If custom `.phplint.yml` config file isn't found, [.phplint.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.phplint.yml){target=_blank} will be used
 
 [![phplint - GitHub](https://gh-card.dev/repos/overtrue/phplint.svg?fullname=)](https://github.com/overtrue/phplint){target=_blank}
@@ -44,8 +58,8 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                     | Embedded linters |                                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       127        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        88        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       126        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        87        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
 |         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://megalinter.io/beta/flavors/php/)         | Optimized for PHP based projects                |        54        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-php) |
 
 ## Behind the scenes
@@ -131,7 +145,7 @@ ENV PHP_CS_FIXER_IGNORE_ENV=true
 # renovate: datasource=packagist depName=overtrue/phplint
 ARG PHP_OVERTRUE_PHPLINT_VERSION=9.6.2
 # renovate: datasource=packagist depName=bartlett/sarif-php-converters
-ARG PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION=1.1.2
+ARG PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION=1.2.0
 RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require overtrue/phplint:${PHP_OVERTRUE_PHPLINT_VERSION} bartlett/sarif-php-converters:${PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION}
 
 ```

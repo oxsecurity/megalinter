@@ -13,13 +13,25 @@ description: How to use rubocop (configure, ignore files, ignore errors, help & 
 
 [![GitHub stars](https://img.shields.io/github/stars/rubocop-hq/rubocop?cacheSeconds=3600)](https://github.com/rubocop-hq/rubocop) ![autofix](https://shields.io/badge/-autofix-green) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/rubocop-hq/rubocop?sort=semver)](https://github.com/rubocop-hq/rubocop/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/rubocop-hq/rubocop)](https://github.com/rubocop-hq/rubocop/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/rubocop-hq/rubocop)](https://github.com/rubocop-hq/rubocop/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/rubocop-hq/rubocop)](https://github.com/rubocop-hq/rubocop/graphs/contributors/)
 
+**RuboCop** is a comprehensive Ruby code style checker and formatter that enforces the community-driven Ruby Style Guide while providing extensive customization options. It serves as the definitive tool for maintaining consistent Ruby code quality across projects and teams.
+
+**Key Features:**
+
+- **Extensive Rule Set**: Over 400 built-in cops (rules) covering style violations, potential bugs, complexity issues, and best practices
+- **Community-Driven Standards**: Based on the widely-adopted Ruby Style Guide maintained by the Ruby community
+- **Automatic Code Fixing**: Safe auto-correction capabilities for many style violations and formatting issues
+- **Highly Configurable**: Flexible configuration system allowing teams to customize rules, severity levels, and enforcement patterns
+- **Multiple Extensions**: Rich ecosystem with specialized cops for Rails, RSpec, Performance, and other Ruby frameworks
+- **Performance Analysis**: Built-in performance cops to identify inefficient code patterns and suggest optimizations
+- **Gradual Adoption**: Supports incremental adoption with file exclusions and rule-by-rule enabling for legacy codebases
+
 ## rubocop documentation
 
-- Version in MegaLinter: **1.75.5**
+- Version in MegaLinter: **1.77.0**
 - Visit [Official Web Site](https://rubocop.org/){target=_blank}
-- See [How to configure rubocop rules](https://docs.rubocop.org/rubocop/0.92/configuration.html){target=_blank}
+- See [How to configure rubocop rules](https://docs.rubocop.org/rubocop/configuration.html){target=_blank}
   - If custom `.ruby-lint.yml` config file isn't found, [.ruby-lint.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.ruby-lint.yml){target=_blank} will be used
-- See [How to disable rubocop rules in files](https://docs.rubocop.org/rubocop/0.92/configuration.html#disabling-cops-within-source-code){target=_blank}
+- See [How to disable rubocop rules in files](https://docs.rubocop.org/rubocop/configuration.html#disabling-cops-within-source-code){target=_blank}
 - See [Index of problems detected by rubocop](https://docs.rubocop.org/rubocop/cops.html){target=_blank}
 
 [![rubocop - GitHub](https://gh-card.dev/repos/rubocop-hq/rubocop.svg?fullname=)](https://github.com/rubocop-hq/rubocop){target=_blank}
@@ -53,17 +65,15 @@ description: How to use rubocop (configure, ignore files, ignore errors, help & 
 
 Use rubocop in your favorite IDE to catch errors before MegaLinter !
 
-|                                                                   <!-- -->                                                                    | IDE                                                      | Extension Name                                                                             |                                                                              Install                                                                               |
-|:---------------------------------------------------------------------------------------------------------------------------------------------:|----------------------------------------------------------|--------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-|   <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Atom](https://atom.io/)                                 | [linter-rubocop](https://github.com/AtomLinter/linter-rubocop)                             |                                           [Visit Web Site](https://github.com/AtomLinter/linter-rubocop){target=_blank}                                            |
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/brackets.ico" alt="" height="32px" class="megalinter-icon"></a> | [Brackets](https://brackets.io/)                         | [brackets-rubocop](https://github.com/smockle-archive/brackets-rubocop)                    |                                        [Visit Web Site](https://github.com/smockle-archive/brackets-rubocop){target=_blank}                                        |
-|  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Emacs](https://www.gnu.org/software/emacs/)             | [rubocop-emacs](https://github.com/rubocop-hq/rubocop-emacs)                               |                                            [Visit Web Site](https://github.com/rubocop-hq/rubocop-emacs){target=_blank}                                            |
-|  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Emacs](https://www.gnu.org/software/emacs/)             | [flycheck](https://github.com/flycheck/flycheck)                                           |                                               [Visit Web Site](https://github.com/flycheck/flycheck){target=_blank}                                                |
-|   <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a>   | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [RubyMine](https://www.jetbrains.com/help/idea/2017.1/rubocop.html)                        |                                      [Visit Web Site](https://www.jetbrains.com/help/idea/2017.1/rubocop.html){target=_blank}                                      |
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Sublime Text](https://www.sublimetext.com/)             | [sublime_rubocop](https://github.com/pderichs/sublime_rubocop)                             |                                            [Visit Web Site](https://github.com/pderichs/sublime_rubocop){target=_blank}                                            |
-|   <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a>    | [vim](https://www.vim.org/)                              | [vim-rubocop](https://github.com/ngmy/vim-rubocop)                                         |                                                [Visit Web Site](https://github.com/ngmy/vim-rubocop){target=_blank}                                                |
-|   <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a>    | [vim](https://www.vim.org/)                              | [ale](https://github.com/w0rp/ale)                                                         |                                                    [Visit Web Site](https://github.com/w0rp/ale){target=_blank}                                                    |
-|  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/)     | [VSCode Ruby Extension](https://marketplace.visualstudio.com/items?itemName=rebornix.Ruby) | [![Install in VSCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/rebornix.Ruby){target=_blank} |
+|                                                                   <!-- -->                                                                    | IDE                                                  | Extension Name                                                                             |                                                                              Install                                                                               |
+|:---------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|--------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/brackets.ico" alt="" height="32px" class="megalinter-icon"></a> | [Brackets](https://brackets.io/)                     | [brackets-rubocop](https://github.com/smockle-archive/brackets-rubocop)                    |                                        [Visit Web Site](https://github.com/smockle-archive/brackets-rubocop){target=_blank}                                        |
+|  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Emacs](https://www.gnu.org/software/emacs/)         | [rubocop-emacs](https://github.com/rubocop-hq/rubocop-emacs)                               |                                            [Visit Web Site](https://github.com/rubocop-hq/rubocop-emacs){target=_blank}                                            |
+|  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Emacs](https://www.gnu.org/software/emacs/)         | [flycheck](https://github.com/flycheck/flycheck)                                           |                                               [Visit Web Site](https://github.com/flycheck/flycheck){target=_blank}                                                |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Sublime Text](https://www.sublimetext.com/)         | [sublime_rubocop](https://github.com/pderichs/sublime_rubocop)                             |                                            [Visit Web Site](https://github.com/pderichs/sublime_rubocop){target=_blank}                                            |
+|   <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a>    | [vim](https://www.vim.org/)                          | [vim-rubocop](https://github.com/ngmy/vim-rubocop)                                         |                                                [Visit Web Site](https://github.com/ngmy/vim-rubocop){target=_blank}                                                |
+|   <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a>    | [vim](https://www.vim.org/)                          | [ale](https://github.com/w0rp/ale)                                                         |                                                    [Visit Web Site](https://github.com/w0rp/ale){target=_blank}                                                    |
+|  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/) | [VSCode Ruby Extension](https://marketplace.visualstudio.com/items?itemName=rebornix.Ruby) | [![Install in VSCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/rebornix.Ruby){target=_blank} |
 
 ## MegaLinter Flavors
 
@@ -71,8 +81,8 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                     | Embedded linters |                                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       127        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        88        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       126        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        87        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
 |        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/ruby.ico" alt="" height="32px" class="megalinter-icon"></a>         | [ruby](https://megalinter.io/beta/flavors/ruby/)       | Optimized for RUBY based projects               |        50        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-ruby/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-ruby) |
 
 ## Behind the scenes
@@ -289,13 +299,13 @@ Profiling Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=rubygems depName=rubocop
-ARG GEM_RUBOCOP_VERSION=1.75.5
+ARG GEM_RUBOCOP_VERSION=1.77.0
 # renovate: datasource=rubygems depName=rubocop-github
-ARG GEM_RUBOCOP_GITHUB_VERSION=0.23.0
+ARG GEM_RUBOCOP_GITHUB_VERSION=0.26.0
 # renovate: datasource=rubygems depName=rubocop-performance
 ARG GEM_RUBOCOP_PERFORMANCE_VERSION=1.25.0
 # renovate: datasource=rubygems depName=rubocop-rails
-ARG GEM_RUBOCOP_RAILS_VERSION=2.31.0
+ARG GEM_RUBOCOP_RAILS_VERSION=2.32.0
 # renovate: datasource=rubygems depName=rubocop-rake
 ARG GEM_RUBOCOP_RAKE_VERSION=0.7.1
 # renovate: datasource=rubygems depName=rubocop-rspec
@@ -303,9 +313,9 @@ ARG GEM_RUBOCOP_RSPEC_VERSION=3.6.0
 ```
 
 - GEM packages (Ruby) :
-  - [rubocop:1.75.5](https://rubygems.org/gems/rubocop/versions/1.75.5)
-  - [rubocop-github:0.23.0](https://rubygems.org/gems/rubocop-github/versions/0.23.0)
+  - [rubocop:1.77.0](https://rubygems.org/gems/rubocop/versions/1.77.0)
+  - [rubocop-github:0.26.0](https://rubygems.org/gems/rubocop-github/versions/0.26.0)
   - [rubocop-performance:1.25.0](https://rubygems.org/gems/rubocop-performance/versions/1.25.0)
-  - [rubocop-rails:2.31.0](https://rubygems.org/gems/rubocop-rails/versions/2.31.0)
+  - [rubocop-rails:2.32.0](https://rubygems.org/gems/rubocop-rails/versions/2.32.0)
   - [rubocop-rake:0.7.1](https://rubygems.org/gems/rubocop-rake/versions/0.7.1)
   - [rubocop-rspec:3.6.0](https://rubygems.org/gems/rubocop-rspec/versions/3.6.0)

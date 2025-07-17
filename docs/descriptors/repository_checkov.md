@@ -13,6 +13,19 @@ description: How to use checkov (configure, ignore files, ignore errors, help & 
 
 [![GitHub stars](https://img.shields.io/github/stars/bridgecrewio/checkov?cacheSeconds=3600)](https://github.com/bridgecrewio/checkov) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/bridgecrewio/checkov?sort=semver)](https://github.com/bridgecrewio/checkov/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/bridgecrewio/checkov)](https://github.com/bridgecrewio/checkov/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/bridgecrewio/checkov)](https://github.com/bridgecrewio/checkov/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/bridgecrewio/checkov)](https://github.com/bridgecrewio/checkov/graphs/contributors/)
 
+**Checkov** is a comprehensive static code analysis tool for Infrastructure as Code (IaC) that prevents cloud security misconfigurations before they reach production.
+
+**Key Features:**
+
+- **Multi-Platform IaC Support**: Analyzes Terraform, CloudFormation, Kubernetes, Helm, ARM templates, Docker, Serverless, and more
+- **Extensive Policy Library**: Over 1,000 built-in security and compliance policies covering CIS benchmarks, PCI-DSS, HIPAA, and other standards
+- **Cloud Provider Coverage**: Comprehensive rules for AWS, Azure, GCP, Oracle Cloud, and Alibaba Cloud services
+- **Security Focus**: Detects unencrypted storage, overly permissive security groups, missing logging, exposed secrets, and compliance violations
+- **SARIF Output**: Modern security report format for integration with development platforms and security tools
+- **Custom Policies**: Support for custom security policies written in Python or YAML for organization-specific requirements
+- **Policy Suppression**: Granular control over policy enforcement with inline and configuration-based suppression
+- **Graph-Based Analysis**: Advanced analysis using dependency graphs for complex infrastructure relationships
+
 ## checkov documentation
 
 - Version in MegaLinter: **3.2.413**
@@ -43,28 +56,20 @@ description: How to use checkov (configure, ignore files, ignore errors, help & 
 | REPOSITORY_CHECKOV_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                                                                                      | `0`                                             |
 | REPOSITORY_CHECKOV_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                                                                                               | `['checkov']`                                   |
 
-## IDE Integration
-
-Use checkov in your favorite IDE to catch errors before MegaLinter !
-
-|                                                                  <!-- -->                                                                   | IDE                                                  | Extension Name                                                                    |                                                                                 Install                                                                                 |
-|:-------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|-----------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [Checkov](https://marketplace.visualstudio.com/items?itemName=Bridgecrew.checkov) | [![Install in VSCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/Bridgecrew.checkov){target=_blank} |
-
 ## MegaLinter Flavors
 
 This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                             | Description                                              | Embedded linters |                                                                                                                                                                                                   Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------|:---------------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)               | Default MegaLinter Flavor                                |       127        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)               | Default MegaLinter Flavor                                |       126        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 |        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/c_cpp.ico" alt="" height="32px" class="megalinter-icon"></a>        | [c_cpp](https://megalinter.io/beta/flavors/c_cpp/)                 | Optimized for pure C/C++ projects                        |        56        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-c_cpp/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-c_cpp) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)             | MegaLinter for the most commonly used languages          |        88        |             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)             | MegaLinter for the most commonly used languages          |        87        |             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
 |    <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/documentation.ico" alt="" height="32px" class="megalinter-icon"></a>    | [documentation](https://megalinter.io/beta/flavors/documentation/) | MegaLinter for documentation projects                    |        49        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-documentation/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-documentation) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/)               | Optimized for C, C++, C# or VB based projects            |        64        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/)         | Optimized for C, C++, C# or VB based projects with JS/TS |        73        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
 |         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a>          | [go](https://megalinter.io/beta/flavors/go/)                       | Optimized for GO based projects                          |        51        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-go/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-go) |
-|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.io/beta/flavors/java/)                   | Optimized for JAVA based projects                        |        53        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.io/beta/flavors/java/)                   | Optimized for JAVA based projects                        |        54        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
 |     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.io/beta/flavors/javascript/)       | Optimized for JAVASCRIPT or TYPESCRIPT based projects    |        59        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript) |
 |         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://megalinter.io/beta/flavors/php/)                     | Optimized for PHP based projects                         |        54        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-php) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)               | Optimized for PYTHON based projects                      |        65        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
@@ -149,11 +154,11 @@ options:
   -v, --version         version
   --support             Enable debug logs and upload the logs to the server.
                         Requires a Bridgecrew or Prisma Cloud API key.
-  -d DIRECTORY, --directory DIRECTORY
+  -d, --directory DIRECTORY
                         IaC root directory (can not be used together with
                         --file).
   --add-check           Generate a new check via CLI prompt
-  -f FILE [FILE ...], --file FILE [FILE ...]
+  -f, --file FILE [FILE ...]
                         File to scan (can not be used together with
                         --directory). With this option, Checkov will attempt
                         to filter the runners based on the file type. For
@@ -183,7 +188,7 @@ options:
                         directory, so only use this option with trusted
                         repositories.
   -l, --list            List checks
-  -o {cli,csv,cyclonedx,cyclonedx_json,json,junitxml,github_failed_only,gitlab_sast,sarif,spdx}, --output {cli,csv,cyclonedx,cyclonedx_json,json,junitxml,github_failed_only,gitlab_sast,sarif,spdx}
+  -o, --output {cli,csv,cyclonedx,cyclonedx_json,json,junitxml,github_failed_only,gitlab_sast,sarif,spdx}
                         Report output format. Add multiple outputs by using
                         the flag multiple times (-o sarif -o cli)
   --output-file-path OUTPUT_FILE_PATH
@@ -246,8 +251,7 @@ options:
                         serverless, terraform, terraform_json, terraform_plan,
                         sast, sast_python, sast_java, sast_javascript,
                         sast_typescript, sast_golang, 3d_policy
-  -c CHECK, --check CHECK
-                        Checks to run; any other checks will be skipped. Enter
+  -c, --check CHECK     Checks to run; any other checks will be skipped. Enter
                         one or more items separated by commas. Each item may
                         be either a Checkov check ID (CKV_AWS_123), a BC check
                         ID (BC_AWS_GENERAL_123), or a severity (LOW, MEDIUM,
@@ -335,7 +339,7 @@ options:
                         the console. Results are only available locally. If
                         you use the --support flag, logs will still get
                         uploaded.
-  --docker-image DOCKER_IMAGE, --image DOCKER_IMAGE
+  --docker-image, --image DOCKER_IMAGE
                         Scan docker images by name or ID. Only works with
                         --bc-api-key flag
   --dockerfile-path DOCKERFILE_PATH
@@ -343,8 +347,7 @@ options:
   --repo-id REPO_ID     Identity string of the repository, with form
                         <repo_owner>/<repo_name>. Required when using the
                         platform integration (API key).
-  -b BRANCH, --branch BRANCH
-                        Selected branch of the persisted repository. Only has
+  -b, --branch BRANCH   Selected branch of the persisted repository. Only has
                         effect when using the --bc-api-key flag
   --skip-download       Do not download any data from Prisma Cloud. This will
                         omit doc links, severities, etc., as well as custom
@@ -387,7 +390,7 @@ options:
   --evaluate-variables EVALUATE_VARIABLES
                         evaluate the values of variables and locals [env var:
                         CKV_EVAL_VARS]
-  -ca CA_CERTIFICATE, --ca-certificate CA_CERTIFICATE
+  -ca, --ca-certificate CA_CERTIFICATE
                         Custom CA certificate (bundle) file [env var:
                         BC_CA_BUNDLE]
   --no-cert-verify      Skip SSL certificate verification. Use this to bypass

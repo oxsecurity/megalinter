@@ -7,11 +7,19 @@ description: How to use ruff-format (configure, ignore files, ignore errors, hel
 # ruff-format
 [![GitHub stars](https://img.shields.io/github/stars/astral-sh/ruff?cacheSeconds=3600)](https://github.com/astral-sh/ruff) ![formatter](https://shields.io/badge/-format-yellow) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/astral-sh/ruff?sort=semver)](https://github.com/astral-sh/ruff/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/astral-sh/ruff)](https://github.com/astral-sh/ruff/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/astral-sh/ruff)](https://github.com/astral-sh/ruff/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/astral-sh/ruff)](https://github.com/astral-sh/ruff/graphs/contributors/)
 
-An extremely fast Python linter, written in Rust. Configured for formatting only.
+**Ruff Formatter** is the formatting component of Ruff, an extremely fast Python code formatter written in Rust. Designed as a drop-in replacement for Black, it provides consistent Python code formatting at unprecedented speed.
+
+**Key Features:**
+
+- **Black Compatibility**: Drop-in replacement for Black with 99.9% compatibility and identical formatting output
+- **Extreme Performance**: 10-100x faster than Black, making it practical for large codebases
+- **Modern Python Support**: Full Python 3.13 compatibility with support for all modern Python syntax features
+- **Zero Configuration**: Works out of the box with sensible defaults, or customize via pyproject.toml
+- **Incremental Formatting**: Built-in caching avoids re-formatting unchanged files for maximum efficiency
 
 ## ruff-format documentation
 
-- Version in MegaLinter: **0.11.9**
+- Version in MegaLinter: **0.12.2**
 - Visit [Official Web Site](https://github.com/astral-sh/ruff#readme){target=_blank}
 - See [How to configure ruff-format rules](https://docs.astral.sh/ruff/configuration/){target=_blank}
   - If custom `.ruff.toml` config file isn't found, [.ruff.toml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.ruff.toml){target=_blank} will be used
@@ -59,8 +67,8 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                       | Description                                     | Embedded linters |                                                                                                                                                                                             Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor                       |       127        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)       | MegaLinter for the most commonly used languages |        88        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor                       |       126        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)       | MegaLinter for the most commonly used languages |        87        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
 |     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/formatters.ico" alt="" height="32px" class="megalinter-icon"></a>      | [formatters](https://megalinter.io/beta/flavors/formatters/) | Contains only formatters                        |        18        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-formatters/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-formatters) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)         | Optimized for PYTHON based projects             |        65        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
 
@@ -134,8 +142,8 @@ For help with a specific command, see: `ruff help <command>`.
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=ruff
-ARG PIP_RUFF_VERSION=0.11.9
+ARG PIP_RUFF_VERSION=0.12.2
 ```
 
 - PIP packages (Python):
-  - [ruff==0.11.9](https://pypi.org/project/ruff/0.11.9)
+  - [ruff==0.12.2](https://pypi.org/project/ruff/0.12.2)

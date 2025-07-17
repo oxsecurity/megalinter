@@ -7,9 +7,20 @@ description: How to use dartanalyzer (configure, ignore files, ignore errors, he
 # <a href="https://dart.dev/tools/dart-analyze" target="blank" title="Visit linter Web Site"><img src="https://dart.dev/assets/img/logo/logo-white-text.svg" alt="dartanalyzer" height="100px" class="megalinter-logo"></a>dartanalyzer
 [![GitHub stars](https://img.shields.io/github/stars/dart-lang/sdk?cacheSeconds=3600)](https://github.com/dart-lang/sdk) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/dart-lang/sdk?sort=semver)](https://github.com/dart-lang/sdk/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/dart-lang/sdk)](https://github.com/dart-lang/sdk/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/dart-lang/sdk)](https://github.com/dart-lang/sdk/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/dart-lang/sdk)](https://github.com/dart-lang/sdk/graphs/contributors/)
 
+**Dart Analyzer** performs comprehensive static analysis on Dart code to identify errors, warnings, and style issues before execution. It's the same powerful analysis engine used by IDEs and editors with Dart support.
+
+**Key Features:**
+
+- **Static Code Analysis**: Detects typos, type errors, dead code, and potential runtime issues without executing code
+- **Comprehensive Linter Rules**: Enforces Dart Style Guide and Effective Dart best practices with 200+ configurable rules
+- **Strict Type Checking**: Optional stricter modes for casts, inference, and raw types to catch more subtle type issues
+- **Configurable Severity**: Customize rule severity levels (info, warning, error) and exclude specific files or rules
+- **Customizable Analysis**: Fine-tune analysis through `analysis_options.yaml` with include/exclude patterns and rule configurations
+- **Plugin Support**: Extensible architecture supports analyzer plugins for custom diagnostics and functionality
+
 ## dartanalyzer documentation
 
-- Version in MegaLinter: **3.7.3**
+- Version in MegaLinter: **3.8.1**
 - Visit [Official Web Site](https://dart.dev/tools/dart-analyze){target=_blank}
 - See [How to configure dartanalyzer rules](https://dart.dev/tools/analysis){target=_blank}
 - See [How to disable dartanalyzer rules in files](https://dart.dev/tools/analysis#ignoring-rules){target=_blank}
@@ -55,7 +66,7 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                               | Description               | Embedded linters |                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       127        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       126        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 
 ## Behind the scenes
 
@@ -139,7 +150,7 @@ RUN ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases
 
 # Linter install
 # renovate: datasource=dart-version depName=dart
-ARG DART_VERSION='3.7.3'
+ARG DART_VERSION='3.8.1'
 RUN wget --tries=5 https://storage.googleapis.com/dart-archive/channels/stable/release/${DART_VERSION}/sdk/dartsdk-linux-x64-release.zip -O - -q | unzip -q - \
     && mkdir -p /usr/lib/dart \
     && mv dart-sdk/* /usr/lib/dart/ \

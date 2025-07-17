@@ -9559,6 +9559,13 @@
         "string"
       ]
     },
+    "KOTLIN_DETEKT_CONFIG_FILE": {
+      "$id": "#/properties/KOTLIN_DETEKT_CONFIG_FILE",
+      "default": "detekt-config.yml",
+      "description": "KOTLIN_DETEKT: User custom config file name if different from default",
+      "title": "KOTLIN_DETEKT: Custom config file name",
+      "type": "string"
+    },
     "KOTLIN_DETEKT_DISABLE_ERRORS": {
       "$id": "#/properties/KOTLIN_DETEKT_DISABLE_ERRORS",
       "default": false,
@@ -9628,6 +9635,12 @@
       },
       "title": "KOTLIN_DETEKT: Define or override a list of bash commands to run before the linter",
       "type": "array"
+    },
+    "KOTLIN_DETEKT_RULES_PATH": {
+      "$id": "#/properties/KOTLIN_DETEKT_RULES_PATH",
+      "description": "KOTLIN_DETEKT: Path where to find linter configuration file",
+      "title": "KOTLIN_DETEKT: Custom config file path",
+      "type": "string"
     },
     "KOTLIN_DETEKT_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/KOTLIN_DETEKT_UNSECURED_ENV_VARIABLES",
@@ -10662,6 +10675,137 @@
       "title": "Linter rules path",
       "type": "string"
     },
+    "LLM_ADVISOR_DISABLE_LINTERS": {
+      "$id": "#/properties/LLM_ADVISOR_DISABLE_LINTERS",
+      "description": "If LLM_ADVISOR_DISABLE_LINTERS is set, LLM advisor will NOT process these ones",
+      "examples": [
+        [
+          "JAVASCRIPT_ES",
+          "PYTHON_PYLINT"
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/enum_linter_keys"
+      },
+      "title": "LLM Advisor Disabled linter keys",
+      "type": "array"
+    },
+    "LLM_ADVISOR_ENABLED": {
+      "$id": "#/properties/LLM_ADVISOR_ENABLED",
+      "default": "false",
+      "description": "Enable AI-powered fix suggestions using Large Language Models",
+      "examples": [
+        "true",
+        "false"
+      ],
+      "title": "LLM Advisor enabled",
+      "type": "string"
+    },
+    "LLM_ADVISOR_ENABLE_LINTERS": {
+      "$id": "#/properties/LLM_ADVISOR_ENABLE_LINTERS",
+      "description": "If LLM_ADVISOR_ENABLE_LINTERS is set, LLM advisor will only process these ones",
+      "examples": [
+        [
+          "JAVASCRIPT_ES",
+          "PYTHON_PYLINT"
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/enum_linter_keys"
+      },
+      "title": "LLM Advisor Enabled linter keys",
+      "type": "array"
+    },
+    "LLM_ADVISOR_LEVEL": {
+      "$id": "#/properties/LLM_ADVISOR_LEVEL",
+      "default": "ERROR",
+      "description": "When to trigger AI suggestions: ERROR (only for blocking linters with return_code != 0) or WARNING (for both blocking and non-blocking linters)",
+      "enum": [
+        "ERROR",
+        "WARNING"
+      ],
+      "examples": [
+        "ERROR",
+        "WARNING"
+      ],
+      "title": "LLM Advisor trigger level",
+      "type": "string"
+    },
+    "LLM_ADVISOR_POSITION": {
+      "$id": "#/properties/LLM_ADVISOR_POSITION",
+      "default": "after_linter_output",
+      "description": "Display LLM Advisor suggestions before or after linter output",
+      "enum": [
+        "after_linter_output",
+        "before_linter_output"
+      ],
+      "examples": [
+        "after_linter_output",
+        "before_linter_output"
+      ],
+      "title": "LLM Advisor trigger level",
+      "type": "string"
+    },
+    "LLM_MAX_TOKENS": {
+      "$id": "#/properties/LLM_MAX_TOKENS",
+      "default": "1000",
+      "description": "Maximum number of tokens for LLM response",
+      "examples": [
+        "500",
+        "1000",
+        "2000"
+      ],
+      "title": "LLM maximum tokens",
+      "type": "string"
+    },
+    "LLM_MODEL_NAME": {
+      "$id": "#/properties/LLM_MODEL_NAME",
+      "description": "Name of the LLM model to use (provider-specific)",
+      "examples": [
+        "gpt-3.5-turbo",
+        "gpt-4",
+        "claude-3-haiku-20240307",
+        "gemini-pro"
+      ],
+      "title": "LLM model name",
+      "type": "string"
+    },
+    "LLM_PROVIDER": {
+      "$id": "#/properties/LLM_PROVIDER",
+      "default": "openai",
+      "description": "LLM provider to use for AI suggestions",
+      "enum": [
+        "openai",
+        "anthropic",
+        "google",
+        "huggingface",
+        "mistral",
+        "deepseek",
+        "grok",
+        "ollama"
+      ],
+      "examples": [
+        "openai",
+        "anthropic",
+        "google",
+        "ollama"
+      ],
+      "title": "LLM provider",
+      "type": "string"
+    },
+    "LLM_TEMPERATURE": {
+      "$id": "#/properties/LLM_TEMPERATURE",
+      "default": "0.1",
+      "description": "Temperature for LLM generation (0.0 = deterministic, 1.0 = creative)",
+      "examples": [
+        "0.0",
+        "0.1",
+        "0.5",
+        "1.0"
+      ],
+      "title": "LLM temperature",
+      "type": "string"
+    },
     "LOG_FILE": {
       "$id": "#/properties/LOG_FILE",
       "default": "mega-linter.log",
@@ -11605,7 +11749,7 @@
       "items": {
         "type": "string"
       },
-      "title": "MARKDOWN_MARKDOWN_LINK_CHECK: Custom arguments",
+      "title": "(deprecated) MARKDOWN_MARKDOWN_LINK_CHECK: Custom arguments",
       "type": [
         "array",
         "string"
@@ -11621,7 +11765,7 @@
       "items": {
         "type": "string"
       },
-      "title": "MARKDOWN_MARKDOWN_LINK_CHECK: CLI Executable",
+      "title": "(deprecated) MARKDOWN_MARKDOWN_LINK_CHECK: CLI Executable",
       "type": "array"
     },
     "MARKDOWN_MARKDOWN_LINK_CHECK_CLI_LINT_MODE": {
@@ -11632,7 +11776,7 @@
         "list_of_files",
         "project"
       ],
-      "title": "MARKDOWN_MARKDOWN_LINK_CHECK: Override default cli lint mode",
+      "title": "(deprecated) MARKDOWN_MARKDOWN_LINK_CHECK: Override default cli lint mode",
       "type": "string"
     },
     "MARKDOWN_MARKDOWN_LINK_CHECK_COMMAND_REMOVE_ARGUMENTS": {
@@ -11645,7 +11789,7 @@
       "items": {
         "type": "string"
       },
-      "title": "MARKDOWN_MARKDOWN_LINK_CHECK: Custom remove arguments",
+      "title": "(deprecated) MARKDOWN_MARKDOWN_LINK_CHECK: Custom remove arguments",
       "type": [
         "array",
         "string"
@@ -11655,19 +11799,19 @@
       "$id": "#/properties/MARKDOWN_MARKDOWN_LINK_CHECK_CONFIG_FILE",
       "default": ".markdown-link-check.json",
       "description": "MARKDOWN_MARKDOWN_LINK_CHECK: User custom config file name if different from default",
-      "title": "MARKDOWN_MARKDOWN_LINK_CHECK: Custom config file name",
+      "title": "(deprecated) MARKDOWN_MARKDOWN_LINK_CHECK: Custom config file name",
       "type": "string"
     },
     "MARKDOWN_MARKDOWN_LINK_CHECK_DISABLE_ERRORS": {
       "$id": "#/properties/MARKDOWN_MARKDOWN_LINK_CHECK_DISABLE_ERRORS",
       "default": false,
-      "title": "MARKDOWN_MARKDOWN_LINK_CHECK: Linter doesn't make MegaLinter fail even if errors are found",
+      "title": "(deprecated) MARKDOWN_MARKDOWN_LINK_CHECK: Linter doesn't make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "MARKDOWN_MARKDOWN_LINK_CHECK_DISABLE_ERRORS_IF_LESS_THAN": {
       "$id": "#/properties/MARKDOWN_MARKDOWN_LINK_CHECK_DISABLE_ERRORS_IF_LESS_THAN",
       "default": 0,
-      "title": "MARKDOWN_MARKDOWN_LINK_CHECK: Maximum number of errors allowed",
+      "title": "(deprecated) MARKDOWN_MARKDOWN_LINK_CHECK: Maximum number of errors allowed",
       "type": "number"
     },
     "MARKDOWN_MARKDOWN_LINK_CHECK_FILE_EXTENSIONS": {
@@ -11679,14 +11823,14 @@
       "items": {
         "type": "string"
       },
-      "title": "MARKDOWN_MARKDOWN_LINK_CHECK: Override descriptor/linter matching files extensions",
+      "title": "(deprecated) MARKDOWN_MARKDOWN_LINK_CHECK: Override descriptor/linter matching files extensions",
       "type": "array"
     },
     "MARKDOWN_MARKDOWN_LINK_CHECK_FILE_NAME": {
       "$id": "#/properties/MARKDOWN_MARKDOWN_LINK_CHECK_FILE_NAME",
       "default": ".markdown-link-check.json",
       "description": "MARKDOWN_MARKDOWN_LINK_CHECK: User custom config file name if different from default",
-      "title": "MARKDOWN_MARKDOWN_LINK_CHECK: Custom config file name",
+      "title": "(deprecated) MARKDOWN_MARKDOWN_LINK_CHECK: Custom config file name",
       "type": "string"
     },
     "MARKDOWN_MARKDOWN_LINK_CHECK_FILE_NAMES_REGEX": {
@@ -11698,17 +11842,17 @@
       "items": {
         "type": "string"
       },
-      "title": "MARKDOWN_MARKDOWN_LINK_CHECK: Override descriptor/linter matching file name regex",
+      "title": "(deprecated) MARKDOWN_MARKDOWN_LINK_CHECK: Override descriptor/linter matching file name regex",
       "type": "array"
     },
     "MARKDOWN_MARKDOWN_LINK_CHECK_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/MARKDOWN_MARKDOWN_LINK_CHECK_FILTER_REGEX_EXCLUDE",
-      "title": "MARKDOWN_MARKDOWN_LINK_CHECK: Excluding Regex",
+      "title": "(deprecated) MARKDOWN_MARKDOWN_LINK_CHECK: Excluding Regex",
       "type": "string"
     },
     "MARKDOWN_MARKDOWN_LINK_CHECK_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/MARKDOWN_MARKDOWN_LINK_CHECK_FILTER_REGEX_INCLUDE",
-      "title": "MARKDOWN_MARKDOWN_LINK_CHECK: Including Regex",
+      "title": "(deprecated) MARKDOWN_MARKDOWN_LINK_CHECK: Including Regex",
       "type": "string"
     },
     "MARKDOWN_MARKDOWN_LINK_CHECK_POST_COMMANDS": {
@@ -11725,7 +11869,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "MARKDOWN_MARKDOWN_LINK_CHECK: Define or override a list of bash commands to run after the linter",
+      "title": "(deprecated) MARKDOWN_MARKDOWN_LINK_CHECK: Define or override a list of bash commands to run after the linter",
       "type": "array"
     },
     "MARKDOWN_MARKDOWN_LINK_CHECK_PRE_COMMANDS": {
@@ -11742,13 +11886,13 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "MARKDOWN_MARKDOWN_LINK_CHECK: Define or override a list of bash commands to run before the linter",
+      "title": "(deprecated) MARKDOWN_MARKDOWN_LINK_CHECK: Define or override a list of bash commands to run before the linter",
       "type": "array"
     },
     "MARKDOWN_MARKDOWN_LINK_CHECK_RULES_PATH": {
       "$id": "#/properties/MARKDOWN_MARKDOWN_LINK_CHECK_RULES_PATH",
       "description": "MARKDOWN_MARKDOWN_LINK_CHECK: Path where to find linter configuration file",
-      "title": "MARKDOWN_MARKDOWN_LINK_CHECK: Custom config file path",
+      "title": "(deprecated) MARKDOWN_MARKDOWN_LINK_CHECK: Custom config file path",
       "type": "string"
     },
     "MARKDOWN_MARKDOWN_LINK_CHECK_UNSECURED_ENV_VARIABLES": {
@@ -11758,7 +11902,7 @@
       "items": {
         "type": "string"
       },
-      "title": "MARKDOWN_MARKDOWN_LINK_CHECK: Unsecured env variables",
+      "title": "(deprecated) MARKDOWN_MARKDOWN_LINK_CHECK: Unsecured env variables",
       "type": "array"
     },
     "MARKDOWN_MARKDOWN_TABLE_FORMATTER_ARGUMENTS": {
@@ -16192,6 +16336,19 @@
       },
       "title": "RAKU_RAKU: Unsecured env variables",
       "type": "array"
+    },
+    "REPORTERS_MARKDOWN_SUMMARY_TYPE": {
+      "$id": "#/properties/REPORTERS_MARKDOWN_SUMMARY_TYPE",
+      "default": "table-sections",
+      "description": "Display summary in PR/MR comments as sections, table or both",
+      "enum": [
+        "sections",
+        "table",
+        "sections-table",
+        "table-sections"
+      ],
+      "title": "Reporters Markdown Summary type",
+      "type": "string"
     },
     "REPORTERS_MARKDOWN_TYPE": {
       "$id": "#/properties/REPORTERS_MARKDOWN_TYPE",

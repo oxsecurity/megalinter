@@ -13,6 +13,20 @@ description: How to use dustilock (configure, ignore files, ignore errors, help 
 
 [![GitHub stars](https://img.shields.io/github/stars/Checkmarx/dustilock?cacheSeconds=3600)](https://github.com/Checkmarx/dustilock) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/Checkmarx/dustilock?sort=semver)](https://github.com/Checkmarx/dustilock/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/Checkmarx/dustilock)](https://github.com/Checkmarx/dustilock/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/Checkmarx/dustilock)](https://github.com/Checkmarx/dustilock/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/Checkmarx/dustilock)](https://github.com/Checkmarx/dustilock/graphs/contributors/)
 
+**Dustilock** is a dependency vulnerability scanner that analyzes your dependencies for known security vulnerabilities and checks if there are newer, safer versions available. It scans various dependency files (package.json, requirements.txt, etc.) and provides alerts about vulnerable packages in your project, helping you maintain secure dependencies by identifying outdated packages with known CVEs.
+
+**Key Features:**
+
+- **Multi-Package Manager Support**: Analyzes dependencies from npm, pip, composer, Maven, Gradle, and other popular package managers
+- **Lock File Analysis**: Deep inspection of lock files to identify exact vulnerable versions and transitive dependencies
+- **Real-Time Vulnerability Database**: Uses up-to-date vulnerability databases to detect the latest security issues
+- **Supply Chain Security**: Identifies compromised or malicious packages in the dependency tree
+- **SARIF Output**: Modern security report format for integration with development platforms and security tools
+- **Detailed Reporting**: Comprehensive reports with vulnerability details, severity scores, and remediation guidance
+- **Version Upgrade Suggestions**: Recommends safer, newer versions to resolve vulnerabilities
+- **Transitive Dependency Analysis**: Scans both direct and indirect dependencies for comprehensive coverage
+- **Policy Enforcement**: Configurable security policies to block builds with critical vulnerabilities
+
 ## dustilock documentation
 
 - Version in MegaLinter: **1.2.0**
@@ -43,7 +57,7 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                   | Description               | Embedded linters |                                                                                                                                                                                         Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)     | Default MegaLinter Flavor |       127        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)     | Default MegaLinter Flavor |       126        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://megalinter.io/beta/flavors/security/) | Optimized for security    |        24        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
 
 ## Behind the scenes

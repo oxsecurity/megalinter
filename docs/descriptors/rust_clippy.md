@@ -7,9 +7,22 @@ description: How to use clippy (configure, ignore files, ignore errors, help & v
 # clippy
 [![GitHub stars](https://img.shields.io/github/stars/rust-lang/rust-clippy?cacheSeconds=3600)](https://github.com/rust-lang/rust-clippy) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/rust-lang/rust-clippy?sort=semver)](https://github.com/rust-lang/rust-clippy/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/rust-lang/rust-clippy)](https://github.com/rust-lang/rust-clippy/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/rust-lang/rust-clippy)](https://github.com/rust-lang/rust-clippy/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/rust-lang/rust-clippy)](https://github.com/rust-lang/rust-clippy/graphs/contributors/)
 
+**Clippy** is Rust's official linter that serves as an essential code quality tool, providing comprehensive analysis to catch common mistakes and improve code quality. It's maintained by the Rust team and integrated into the standard Rust toolchain.
+
+**Key Features:**
+
+- **Extensive Rule Coverage**: Over 750+ categorized lints covering correctness, performance, style, complexity, and pedantic guidelines
+- **Intelligent Categorization**: Organizes lints by severity - correctness (bugs), performance (optimizations), style (idiomatic patterns), complexity (simplification), and pedantic (strict standards)
+- **Automatic Fixes**: Machine-applicable suggestions that can automatically fix many issues with `cargo clippy --fix`
+- **MSRV Support**: Respects Minimum Supported Rust Version (MSRV) to ensure compatibility with older Rust versions
+- **Cargo Integration**: Seamlessly integrates with Cargo build system for zero-configuration usage
+- **Configurable Rules**: Extensive configuration options through `clippy.toml` for project-specific requirements
+- **Performance Focus**: Identifies optimization opportunities and suggests more efficient Rust patterns
+- **Safety Enforcement**: Helps prevent common programming errors and promotes memory-safe, thread-safe code
+
 ## clippy documentation
 
-- Version in MegaLinter: **0.1.86**
+- Version in MegaLinter: **0.1.88**
 - Visit [Official Web Site](https://github.com/rust-lang/rust-clippy#readme){target=_blank}
 - See [How to configure clippy rules](https://github.com/rust-lang/rust-clippy#configuration){target=_blank}
 - See [How to disable clippy rules in files](https://github.com/rust-lang/rust-clippy#allowingdenying-lints){target=_blank}
@@ -42,9 +55,9 @@ description: How to use clippy (configure, ignore files, ignore errors, help & v
 
 Use clippy in your favorite IDE to catch errors before MegaLinter !
 
-|                                                                 <!-- -->                                                                  | IDE                      | Extension Name                                              |                                   Install                                   |
-|:-----------------------------------------------------------------------------------------------------------------------------------------:|--------------------------|-------------------------------------------------------------|:---------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a> | [Atom](https://atom.io/) | [Atom IDE Rest](https://github.com/rust-lang/atom-ide-rust) | [Visit Web Site](https://github.com/rust-lang/atom-ide-rust){target=_blank} |
+|                                                                  <!-- -->                                                                   | IDE                                                  | Extension Name                                                                               |                                                                                   Install                                                                                    |
+|:-------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|----------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer) | [![Install in VSCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/rust-lang.rust-analyzer){target=_blank} |
 
 ## MegaLinter Flavors
 
@@ -52,8 +65,8 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                     | Embedded linters |                                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       127        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        88        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       126        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        87        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
 |        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/rust.ico" alt="" height="32px" class="megalinter-icon"></a>         | [rust](https://megalinter.io/beta/flavors/rust/)       | Optimized for RUST based projects               |        50        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-rust/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-rust) |
 
 ## Behind the scenes

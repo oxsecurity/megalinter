@@ -13,10 +13,44 @@ file_contains_regex:
 linters:
   # AWS CloudFormation Lint
   - linter_name: cfn-lint
+    linter_text: |
+      **CFN-Lint** (CloudFormation Linter) is the official AWS tool for validating AWS CloudFormation yaml/json templates against the AWS CloudFormation resource provider schemas and additional best practice checks.
+
+      **Key Features:**
+
+      - **AWS Schema Validation**: Validates templates against official AWS CloudFormation resource provider schemas
+      - **Property Validation**: Checks valid values for resource properties and ensures correct data types
+      - **Best Practice Enforcement**: Identifies CloudFormation best practices and anti-patterns
+      - **SAM Support**: Fully supports AWS Serverless Application Model (SAM) templates with transformation validation
+      - **Custom Rules**: Supports custom one-line rules for organization-specific requirements
+      - **Multiple Output Formats**: Supports JSON, JUnit, SARIF, and other output formats
+      - **Region-Specific Validation**: Tests templates against multiple AWS regions to catch region-specific issues
+      - **Extensible Rules Engine**: Comprehensive collection of rules with support for custom rule extensions
+
+      **Common validations include:**
+
+      - Resource type and property validation
+      - Parameter constraints and dependencies  
+      - Output and condition logic validation
+      - Security best practices (IAM policies, encryption, etc.)
+      - Resource naming and tagging conventions
+      - Cross-reference validation between resources
+
+      **Advanced features:**
+
+      - Template metadata configuration for granular control
+      - Graph visualization of template resources
+      - Experimental rules for cutting-edge CloudFormation features
+      - Override specifications for custom organizational requirements
+
+      CFN-Lint helps ensure your CloudFormation templates are valid, secure, and follow AWS best practices before deployment.
     can_output_sarif: true
     linter_url: https://github.com/aws-cloudformation/cfn-lint
     linter_repo: https://github.com/aws-cloudformation/cfn-lint
+    linter_spdx_license: MIT-0
     linter_rules_url: https://github.com/aws-cloudformation/cfn-lint/blob/main/docs/rules.md
+    linter_rules_configuration_url: https://github.com/aws-cloudformation/cfn-lint#configuration
+    linter_rules_inline_disable_url: https://github.com/aws-cloudformation/cfn-lint#metadata
     linter_banner_image_url: https://raw.githubusercontent.com/aws-cloudformation/cfn-lint/main/logo.png
     linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/cfn-lint.png
     config_file_name: .cfnlintrc.yml
@@ -34,13 +68,10 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=cfn-lint
-          ARG PIP_CFN_LINT_VERSION=1.35.1
+          ARG PIP_CFN_LINT_VERSION=1.37.2
       pip:
         - cfn-lint[sarif]==${PIP_CFN_LINT_VERSION}
     ide:
-      atom:
-        - name: atom-cfn-lint
-          url: https://atom.io/packages/atom-cfn-lint
       idea:
         - name: cfn-lint
           url: https://plugins.jetbrains.com/plugin/10973-cfn-lint

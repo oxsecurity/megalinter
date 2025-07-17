@@ -7,6 +7,19 @@ description: How to use tsqllint (configure, ignore files, ignore errors, help &
 # <a href="https://github.com/tsqllint/tsqllint" target="blank" title="Visit linter Web Site"><img src="https://tsqllint.gallerycdn.vsassets.io/extensions/tsqllint/tsqllint/1.2.0/1528922982751/Microsoft.VisualStudio.Services.Icons.Default" alt="tsqllint" height="100px" class="megalinter-logo"></a>tsqllint
 [![GitHub stars](https://img.shields.io/github/stars/tsqllint/tsqllint?cacheSeconds=3600)](https://github.com/tsqllint/tsqllint) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/tsqllint/tsqllint?sort=semver)](https://github.com/tsqllint/tsqllint/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/tsqllint/tsqllint)](https://github.com/tsqllint/tsqllint/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/tsqllint/tsqllint)](https://github.com/tsqllint/tsqllint/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/tsqllint/tsqllint)](https://github.com/tsqllint/tsqllint/graphs/contributors/)
 
+**tsqllint** is a specialized linter for T-SQL (Transact-SQL) code used with Microsoft SQL Server. It analyzes T-SQL scripts for syntax errors, style violations, and adherence to best practices with configurable rules, helping ensure T-SQL code quality and consistency in SQL Server database development projects.
+
+**Key Features:**
+
+- **T-SQL Specialized**: Purpose-built for Microsoft SQL Server T-SQL syntax and features
+- **Comprehensive Rule Set**: Extensive collection of rules covering syntax, style, and best practices
+- **Configurable Analysis**: Customizable rule configuration to match team coding standards
+- **Inline Rule Control**: Support for comment-based rule disabling and configuration within scripts
+- **Detailed Error Reporting**: Clear error messages with line numbers and rule explanations
+- **Performance Optimized**: Fast analysis suitable for large T-SQL codebases and stored procedures
+- **Cross-Platform**: Runs on Windows, macOS, and Linux environments
+- **Extensible Architecture**: Plugin system for custom rule development and organizational standards
+
 ## tsqllint documentation
 
 - Version in MegaLinter: **1.16.0.0**
@@ -54,7 +67,7 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                     | Description                                              | Embedded linters |                                                                                                                                                                                           Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------|:---------------------------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)       | Default MegaLinter Flavor                                |       127        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)       | Default MegaLinter Flavor                                |       126        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/)       | Optimized for C, C++, C# or VB based projects            |        64        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/) | Optimized for C, C++, C# or VB based projects with JS/TS |        73        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
 

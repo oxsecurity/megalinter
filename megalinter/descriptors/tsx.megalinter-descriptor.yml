@@ -12,17 +12,27 @@ linters:
     linter_name: eslint
     can_output_sarif: true
     linter_text: |
-      eslint requires a custom configuration file applicable to your project.
+      **ESLint with React Plugin** provides comprehensive linting for TSX (TypeScript React) files, combining ESLint's powerful static analysis with React-specific rules to ensure high-quality React applications written in TypeScript.
 
-      You can create it by typing `npx eslint --init` in the root of your repository
+      **Key Features:**
+
+      - **React-Specific Linting**: 90+ rules covering React best practices, hooks usage, JSX syntax, and component lifecycle patterns
+      - **TypeScript Integration**: Full TypeScript support for type-aware linting in React components with proper TSX syntax validation
+      - **Hooks Rules**: Comprehensive validation of React Hooks usage patterns, dependencies, and effect cleanup
+      - **Accessibility Integration**: Built-in support for jsx-a11y plugin ensuring accessible React components
+      - **Performance Optimization**: Rules to detect unnecessary re-renders, missing dependency arrays, and performance anti-patterns
+      - **Modern React Patterns**: Support for latest React features including Suspense, Error Boundaries, and concurrent features
+
+      ESLint requires a custom configuration file applicable to your project. You can create it by typing `npx eslint --init` in the root of your repository
     linter_url: https://github.com/jsx-eslint/eslint-plugin-react
     linter_repo: https://github.com/jsx-eslint/eslint-plugin-react
     linter_rules_url: https://github.com/jsx-eslint/eslint-plugin-react#list-of-supported-rules
     linter_banner_image_url: https://d33wubrfki0l68.cloudfront.net/3b5ac7586466159bb6f237b633bfc4f5a8d5acf8/ee0a1/assets/img/posts/eslint-collective.png
     linter_rules_configuration_url: https://github.com/jsx-eslint/eslint-plugin-react#configuration-legacy-eslintrc
-    linter_rules_inline_disable_url: https://eslint.org/docs/user-guide/configuring#disabling-rules-with-inline-comments
-    linter_rules_ignore_config_url: https://eslint.org/docs/latest/user-guide/configuring/ignoring-code#the-eslintignore-file
-    linter_megalinter_ref_url: https://eslint.org/docs/user-guide/integrations#source-control
+    linter_rules_inline_disable_url: https://eslint.org/docs/latest/use/configure/rules#disabling-rules
+    linter_rules_ignore_config_url: https://eslint.org/docs/latest/use/configure/ignore#the-eslintignore-file
+    linter_megalinter_ref_url: https://eslint.org/docs/latest/use/integrations#source-control
+    linter_spdx_license: MIT
     active_only_if_file_found:
       - ".eslintrc.json"
       - ".eslintrc.yml"
@@ -66,28 +76,28 @@ linters:
           ARG NPM_ESLINT_CONFIG_PRETTIER_VERSION=10.1.5
         - |-
           # renovate: datasource=npm depName=eslint-plugin-jest
-          ARG NPM_ESLINT_PLUGIN_JEST_VERSION=28.11.0
+          ARG NPM_ESLINT_PLUGIN_JEST_VERSION=29.0.1
         - |-
           # renovate: datasource=npm depName=eslint-plugin-prettier
-          ARG NPM_ESLINT_PLUGIN_PRETTIER_VERSION=5.4.0
+          ARG NPM_ESLINT_PLUGIN_PRETTIER_VERSION=5.5.1
         - |-
           # renovate: datasource=npm depName=eslint-plugin-react
           ARG NPM_ESLINT_PLUGIN_REACT_VERSION=7.37.5
         - |-
           # renovate: datasource=npm depName=@babel/eslint-parser
-          ARG NPM_BABEL_ESLINT_PARSER_VERSION=7.27.1
+          ARG NPM_BABEL_ESLINT_PARSER_VERSION=7.28.0
         - |-
           # renovate: datasource=npm depName=prettier
-          ARG NPM_PRETTIER_VERSION=3.5.3
+          ARG NPM_PRETTIER_VERSION=3.6.2
         - |-
           # renovate: datasource=npm depName=prettyjson
           ARG NPM_PRETTYJSON_VERSION=1.2.5
         - |-
           # renovate: datasource=npm depName=@typescript-eslint/eslint-plugin
-          ARG NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION=8.32.1
+          ARG NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION=8.36.0
         - |-
           # renovate: datasource=npm depName=@typescript-eslint/parser
-          ARG NPM_TYPESCRIPT_ESLINT_PARSER_VERSION=8.32.1
+          ARG NPM_TYPESCRIPT_ESLINT_PARSER_VERSION=8.36.0
         - |-
           # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
           ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
@@ -106,9 +116,6 @@ linters:
         - "@typescript-eslint/parser@${NPM_TYPESCRIPT_ESLINT_PARSER_VERSION}"
         - "@microsoft/eslint-formatter-sarif@${NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION}"
     ide:
-      atom:
-        - name: linter-eslint
-          url: https://atom.io/packages/linter-eslint
       brackets:
         - name: brackets-eslint
           url: https://github.com/brackets-userland/brackets-eslint

@@ -7,6 +7,27 @@ description: How to use cpplint (configure, ignore files, ignore errors, help & 
 # cpplint
 [![GitHub stars](https://img.shields.io/github/stars/cpplint/cpplint?cacheSeconds=3600)](https://github.com/cpplint/cpplint) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/cpplint/cpplint?sort=semver)](https://github.com/cpplint/cpplint/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/cpplint/cpplint)](https://github.com/cpplint/cpplint/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/cpplint/cpplint)](https://github.com/cpplint/cpplint/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/cpplint/cpplint)](https://github.com/cpplint/cpplint/graphs/contributors/)
 
+**Cpplint** is a command-line tool to check C/C++ files for style issues according to **Google's C++ style guide**. Originally developed by Google, this community-maintained fork aims to update cpplint to modern specifications and be more open to fixes and features.
+
+**Key Features:**
+
+- **Google Style Guide Enforcement**: Checks code against Google's comprehensive C++ style guidelines
+- **Style Issue Detection**: Identifies formatting, naming, and structural style violations
+- **Customizable Rules**: Supports filtering and customization of specific checks via command-line arguments
+- **Modern Features**: Includes Python 3 compatibility, customizable file extensions, and recursive file discovery
+- **Multiple Output Formats**: Supports standard output and JUnit XML format for integration with testing frameworks
+- **Pragma Once Support**: Recognizes `#pragma once` as an alternative to traditional header include guards
+
+**Common style checks include:**
+
+- Include guard patterns and header organization
+- Naming conventions for classes, functions, and variables  
+- Whitespace and indentation formatting
+- Line length and comment formatting
+- Function parameter and return value formatting
+
+Cpplint helps maintain consistent, readable C++ code that follows industry-standard style guidelines, making code easier to review, maintain, and collaborate on.
+
 ## cpplint documentation
 
 - Version in MegaLinter: **2.0.2**
@@ -42,9 +63,9 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                     | Description                                              | Embedded linters |                                                                                                                                                                                           Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------|:---------------------------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)       | Default MegaLinter Flavor                                |       127        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)       | Default MegaLinter Flavor                                |       126        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 |        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/c_cpp.ico" alt="" height="32px" class="megalinter-icon"></a>        | [c_cpp](https://megalinter.io/beta/flavors/c_cpp/)         | Optimized for pure C/C++ projects                        |        56        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-c_cpp/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-c_cpp) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)     | MegaLinter for the most commonly used languages          |        88        |     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)     | MegaLinter for the most commonly used languages          |        87        |     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/)       | Optimized for C, C++, C# or VB based projects            |        64        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/) | Optimized for C, C++, C# or VB based projects with JS/TS |        73        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)       | Optimized for PYTHON based projects                      |        65        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |

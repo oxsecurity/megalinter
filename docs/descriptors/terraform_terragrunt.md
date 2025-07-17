@@ -7,11 +7,25 @@ description: How to use terragrunt (configure, ignore files, ignore errors, help
 # <a href="https://terragrunt.gruntwork.io" target="blank" title="Visit linter Web Site"><img src="https://github.com/gruntwork-io/terragrunt/blob/master/docs/assets/img/favicon/ms-icon-310x310.png" alt="terragrunt" height="100px" class="megalinter-logo"></a>terragrunt
 [![GitHub stars](https://img.shields.io/github/stars/gruntwork-io/terragrunt?cacheSeconds=3600)](https://github.com/gruntwork-io/terragrunt) ![autofix](https://shields.io/badge/-autofix-green) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/gruntwork-io/terragrunt?sort=semver)](https://github.com/gruntwork-io/terragrunt/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/gruntwork-io/terragrunt)](https://github.com/gruntwork-io/terragrunt/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/gruntwork-io/terragrunt)](https://github.com/gruntwork-io/terragrunt/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/gruntwork-io/terragrunt)](https://github.com/gruntwork-io/terragrunt/graphs/contributors/)
 
+**Terragrunt** is a thin wrapper for Terraform that provides tools for keeping your Terraform configurations DRY, working with multiple Terraform modules, and managing remote state. It helps validate Terragrunt configurations and ensures that your infrastructure code follows best practices for modularity, reusability, and maintainability.
+
+**Key Features:**
+
+- **DRY Terraform Code**: Eliminates repetition by allowing shared configurations across multiple environments
+- **Remote State Management**: Simplifies backend configuration and remote state management across projects
+- **Module Composition**: Orchestrates multiple Terraform modules with dependency management
+- **Configuration Validation**: Validates Terragrunt HCL configurations for syntax and semantic errors
+- **Environment Management**: Provides patterns for managing infrastructure across multiple environments
+- **Lock File Support**: Handles Terraform provider lock files consistently across environments
+- **Dependency Graph**: Automatically manages dependencies between Terraform modules and configurations
+- **Parallel Execution**: Runs Terraform operations in parallel where dependencies allow
+- **Error Handling**: Enhanced error handling and debugging capabilities for complex infrastructure deployments
+
 ## terragrunt documentation
 
-- Version in MegaLinter: **0.78.2**
+- Version in MegaLinter: **0.82.3**
 - Visit [Official Web Site](https://terragrunt.gruntwork.io){target=_blank}
-- See [How to configure terragrunt rules](https://terragrunt.gruntwork.io/docs/getting-started/configuration/#terragrunt-configuration-file){target=_blank}
+- See [How to configure terragrunt rules](https://terragrunt.gruntwork.io/docs/getting-started/quick-start/#add-terragrunthcl-to-your-project){target=_blank}
 
 [![terragrunt - GitHub](https://gh-card.dev/repos/gruntwork-io/terragrunt.svg?fullname=)](https://github.com/gruntwork-io/terragrunt){target=_blank}
 
@@ -46,8 +60,8 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                     | Description                                     | Embedded linters |                                                                                                                                                                                           Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------|:------------------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)       | Default MegaLinter Flavor                       |       127        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)     | MegaLinter for the most commonly used languages |        88        |     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)       | Default MegaLinter Flavor                       |       126        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)     | MegaLinter for the most commonly used languages |        87        |     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://megalinter.io/beta/flavors/security/)   | Optimized for security                          |        24        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://megalinter.io/beta/flavors/terraform/) | Optimized for TERRAFORM based projects          |        54        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform) |
 
@@ -133,7 +147,7 @@ Global Options:
    --help, -h                 Show help. (default: false)
    --version, -v              Show terragrunt version. (default: false)
 
-Version: v0.78.2
+Version: v0.82.3
 
 Author: Gruntwork <www.gruntwork.io>
 ```
@@ -143,7 +157,7 @@ Author: Gruntwork <www.gruntwork.io>
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=docker depName=alpine/terragrunt
-ARG TERRAFORM_TERRAGRUNT_VERSION=1.11.4
+ARG TERRAFORM_TERRAGRUNT_VERSION=1.12.2
 FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} AS terragrunt
 COPY --link --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
 ```

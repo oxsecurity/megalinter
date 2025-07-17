@@ -7,11 +7,24 @@ description: How to use coffeelint (configure, ignore files, ignore errors, help
 # coffeelint
 [![GitHub stars](https://img.shields.io/github/stars/clutchski/coffeelint?cacheSeconds=3600)](https://github.com/clutchski/coffeelint) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/clutchski/coffeelint?sort=semver)](https://github.com/clutchski/coffeelint/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/clutchski/coffeelint)](https://github.com/clutchski/coffeelint/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/clutchski/coffeelint)](https://github.com/clutchski/coffeelint/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/clutchski/coffeelint)](https://github.com/clutchski/coffeelint/graphs/contributors/)
 
+**CoffeeLint** is a style checker that helps keep CoffeeScript code clean and consistent. While CoffeeScript insulates programmers from many of JavaScript's problematic features, it doesn't enforce consistent style across a codebase - that's where CoffeeLint comes in.
+
+**Key Features:**
+
+- **Comprehensive Style Checking**: Enforces consistent formatting, spacing, indentation, and naming conventions
+- **Configurable Rules**: Over 50+ rules covering everything from arrow spacing to variable naming, all customizable
+- **Code Quality Checks**: Detects issues like unused variables, missing fat arrows, duplicate keys, and cyclomatic complexity
+- **Inline Rule Control**: Disable/enable rules on specific lines or sections using comment directives
+- **Multiple Output Formats**: Supports various reporting formats including JSON, CSV, and checkstyle XML
+- **Custom Rules Support**: Extensible architecture allows loading of third-party and custom rules
+
 ## coffeelint documentation
 
 - Version in MegaLinter: **5.2.11**
 - Visit [Official Web Site](https://coffeelint.github.io/){target=_blank}
+- See [How to configure coffeelint rules](https://coffeelint.github.io/#options){target=_blank}
   - If custom `.coffee-lint.json` config file isn't found, [.coffee-lint.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.coffee-lint.json){target=_blank} will be used
+- See [How to disable coffeelint rules in files](https://coffeelint.github.io/#options){target=_blank}
 - See [Index of problems detected by coffeelint](https://coffeelint.github.io/#options){target=_blank}
 
 [![coffeelint - GitHub](https://gh-card.dev/repos/clutchski/coffeelint.svg?fullname=)](https://github.com/clutchski/coffeelint){target=_blank}
@@ -45,7 +58,6 @@ Use coffeelint in your favorite IDE to catch errors before MegaLinter !
 
 |                                                                 <!-- -->                                                                  | IDE                                                      | Extension Name                                                     |                                                           Install                                                            |
 |:-----------------------------------------------------------------------------------------------------------------------------------------:|----------------------------------------------------------|--------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a> | [Atom](https://atom.io/)                                 | [linter-coffeelint](https://atom.io/packages/linter-coffeelint)    |                         [Visit Web Site](https://atom.io/packages/linter-coffeelint){target=_blank}                          |
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a> | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [coffeelint](https://plugins.jetbrains.com/plugin/7723-coffeelint) | <iframe frameborder="none" width="245px" height="48px" src="https://plugins.jetbrains.com/embeddable/install/7723"></iframe> |
 
 ## MegaLinter Flavors
@@ -54,7 +66,7 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                       | Description                                              | Embedded linters |                                                                                                                                                                                             Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------|:---------------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor                                |       127        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor                                |       126        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/)   | Optimized for C, C++, C# or VB based projects with JS/TS |        73        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
 |     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.io/beta/flavors/javascript/) | Optimized for JAVASCRIPT or TYPESCRIPT based projects    |        59        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript) |
 

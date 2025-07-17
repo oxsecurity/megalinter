@@ -13,6 +13,19 @@ description: How to use terrascan (configure, ignore files, ignore errors, help 
 
 ![downgraded version](https://shields.io/badge/-downgraded%20version-orange) [![GitHub stars](https://img.shields.io/github/stars/tenable/terrascan?cacheSeconds=3600)](https://github.com/tenable/terrascan) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/tenable/terrascan?sort=semver)](https://github.com/tenable/terrascan/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/tenable/terrascan)](https://github.com/tenable/terrascan/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/tenable/terrascan)](https://github.com/tenable/terrascan/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/tenable/terrascan)](https://github.com/tenable/terrascan/graphs/contributors/)
 
+**Terrascan** is a comprehensive static code analyzer for Infrastructure as Code that detects security vulnerabilities, compliance violations, and misconfigurations in cloud infrastructure. It supports multiple IaC tools including Terraform, Kubernetes, Docker, AWS CloudFormation, and more, providing over 1000 built-in policies across major cloud providers and compliance frameworks.
+
+**Key Features:**
+
+- **Multi-IaC Support**: Analyzes Terraform, Kubernetes, Docker, CloudFormation, ARM templates, and more
+- **1000+ Security Policies**: Extensive library of pre-built security and compliance policies
+- **Compliance Frameworks**: Built-in support for CIS, NIST, PCI, SOC 2, and other compliance standards
+- **Cloud Provider Coverage**: Comprehensive rules for AWS, Azure, GCP, and Kubernetes environments
+- **Custom Policy Engine**: Create custom policies using Rego (Open Policy Agent) for organization-specific requirements
+- **SARIF Output**: Modern security report format for integration with development platforms and security tools
+- **Detailed Reporting**: Comprehensive vulnerability reports with severity levels and remediation guidance
+- **Policy as Code**: Version-controlled security policies that evolve with your infrastructure
+
 ## terrascan documentation
 
 - Version in MegaLinter: **1.19.9**
@@ -49,8 +62,8 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                     | Description                                     | Embedded linters |                                                                                                                                                                                           Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------|:------------------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)       | Default MegaLinter Flavor                       |       127        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)     | MegaLinter for the most commonly used languages |        88        |     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)       | Default MegaLinter Flavor                       |       126        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)     | MegaLinter for the most commonly used languages |        87        |     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://megalinter.io/beta/flavors/security/)   | Optimized for security                          |        24        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://megalinter.io/beta/flavors/terraform/) | Optimized for TERRAFORM based projects          |        54        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform) |
 

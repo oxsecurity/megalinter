@@ -8,12 +8,25 @@ file_extensions:
 linters:
   # RUBOCOP
   - linter_name: rubocop
+    linter_text: |
+      **RuboCop** is a comprehensive Ruby code style checker and formatter that enforces the community-driven Ruby Style Guide while providing extensive customization options. It serves as the definitive tool for maintaining consistent Ruby code quality across projects and teams.
+
+      **Key Features:**
+
+      - **Extensive Rule Set**: Over 400 built-in cops (rules) covering style violations, potential bugs, complexity issues, and best practices
+      - **Community-Driven Standards**: Based on the widely-adopted Ruby Style Guide maintained by the Ruby community
+      - **Automatic Code Fixing**: Safe auto-correction capabilities for many style violations and formatting issues
+      - **Highly Configurable**: Flexible configuration system allowing teams to customize rules, severity levels, and enforcement patterns
+      - **Multiple Extensions**: Rich ecosystem with specialized cops for Rails, RSpec, Performance, and other Ruby frameworks
+      - **Performance Analysis**: Built-in performance cops to identify inefficient code patterns and suggest optimizations
+      - **Gradual Adoption**: Supports incremental adoption with file exclusions and rule-by-rule enabling for legacy codebases
     linter_url: https://rubocop.org/
     linter_repo: https://github.com/rubocop-hq/rubocop
+    linter_spdx_license: MIT
     linter_rules_url: https://docs.rubocop.org/rubocop/cops.html
     linter_banner_image_url: https://raw.githubusercontent.com/rubocop-hq/rubocop/master/logo/rubo-logo-horizontal.png
-    linter_rules_configuration_url: https://docs.rubocop.org/rubocop/0.92/configuration.html
-    linter_rules_inline_disable_url: https://docs.rubocop.org/rubocop/0.92/configuration.html#disabling-cops-within-source-code
+    linter_rules_configuration_url: https://docs.rubocop.org/rubocop/configuration.html
+    linter_rules_inline_disable_url: https://docs.rubocop.org/rubocop/configuration.html#disabling-cops-within-source-code
     linter_megalinter_ref_url: https://docs.rubocop.org/rubocop/integration_with_other_tools.html#mega-linter-integration
     config_file_name: .ruby-lint.yml
     cli_lint_fix_arg_name: "--safe-auto-correct"
@@ -25,16 +38,16 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=rubygems depName=rubocop
-          ARG GEM_RUBOCOP_VERSION=1.75.6
+          ARG GEM_RUBOCOP_VERSION=1.77.0
         - |-
           # renovate: datasource=rubygems depName=rubocop-github
-          ARG GEM_RUBOCOP_GITHUB_VERSION=0.23.0
+          ARG GEM_RUBOCOP_GITHUB_VERSION=0.26.0
         - |-
           # renovate: datasource=rubygems depName=rubocop-performance
           ARG GEM_RUBOCOP_PERFORMANCE_VERSION=1.25.0
         - |-
           # renovate: datasource=rubygems depName=rubocop-rails
-          ARG GEM_RUBOCOP_RAILS_VERSION=2.31.0
+          ARG GEM_RUBOCOP_RAILS_VERSION=2.32.0
         - |-
           # renovate: datasource=rubygems depName=rubocop-rake
           ARG GEM_RUBOCOP_RAKE_VERSION=0.7.1
@@ -49,9 +62,6 @@ linters:
         - rubocop-rake:${GEM_RUBOCOP_RAKE_VERSION}
         - rubocop-rspec:${GEM_RUBOCOP_RSPEC_VERSION}
     ide:
-      atom:
-        - name: linter-rubocop
-          url: https://github.com/AtomLinter/linter-rubocop
       brackets:
         - name: brackets-rubocop
           url: https://github.com/smockle-archive/brackets-rubocop
@@ -60,9 +70,6 @@ linters:
           url: https://github.com/rubocop-hq/rubocop-emacs
         - name: flycheck
           url: https://github.com/flycheck/flycheck
-      idea:
-        - name: RubyMine
-          url: https://www.jetbrains.com/help/idea/2017.1/rubocop.html
       sublime:
         - name: sublime_rubocop
           url: https://github.com/pderichs/sublime_rubocop

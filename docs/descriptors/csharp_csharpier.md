@@ -7,11 +7,24 @@ description: How to use csharpier (configure, ignore files, ignore errors, help 
 # <a href="https://csharpier.com/" target="blank" title="Visit linter Web Site"><img src="https://csharpier.com/img/logo.svg" alt="csharpier" height="100px" class="megalinter-logo"></a>csharpier
 [![GitHub stars](https://img.shields.io/github/stars/belav/csharpier?cacheSeconds=3600)](https://github.com/belav/csharpier) ![formatter](https://shields.io/badge/-format-yellow) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/belav/csharpier?sort=semver)](https://github.com/belav/csharpier/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/belav/csharpier)](https://github.com/belav/csharpier/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/belav/csharpier)](https://github.com/belav/csharpier/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/belav/csharpier)](https://github.com/belav/csharpier/graphs/contributors/)
 
+**CSharpier** is the definitive opinionated code formatter for C# that eliminates formatting debates by automatically standardizing code style across entire projects. Inspired by Prettier's philosophy, it provides zero-configuration formatting that just works.
+
+**Key Features:**
+
+- **Zero Configuration**: Works out of the box with sensible defaults, no setup required
+- **Opinionated Formatting**: Consistent, predictable formatting that eliminates style discussions
+- **Comprehensive C# Support**: Handles all modern C# language features, syntax, and constructs
+- **Fast Performance**: Lightning-fast formatting with minimal overhead for large codebases
+- **Ignore Support**: Flexible ignore patterns for excluding specific files or code sections from formatting
+- **Diff-Friendly**: Produces minimal, clean git diffs by maintaining consistent formatting rules
+- **Team Consistency**: Ensures identical formatting across all team members and development environments
+
 ## csharpier documentation
 
-- Version in MegaLinter: **1.0.1**
+- Version in MegaLinter: **1.0.3**
 - Visit [Official Web Site](https://csharpier.com/){target=_blank}
 - See [How to configure csharpier rules](https://csharpier.com/docs/Configuration){target=_blank}
+- See [How to disable csharpier rules in files](https://csharpier.com/docs/Ignore){target=_blank}
 - See [How to ignore files and directories with csharpier](https://csharpier.com/docs/Ignore){target=_blank}
   - You can define a `.csharpierignore` file to ignore files and folders
 
@@ -58,7 +71,7 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                       | Description                                              | Embedded linters |                                                                                                                                                                                             Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------|:---------------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor                                |       127        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor                                |       126        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/)         | Optimized for C, C++, C# or VB based projects            |        64        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/)   | Optimized for C, C++, C# or VB based projects with JS/TS |        73        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
 |     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/formatters.ico" alt="" height="32px" class="megalinter-icon"></a>      | [formatters](https://megalinter.io/beta/flavors/formatters/) | Contains only formatters                                 |        18        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-formatters/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-formatters) |
@@ -115,7 +128,7 @@ RUN apk add --no-cache dotnet9-sdk
 ENV PATH="${PATH}:/root/.dotnet/tools"
 # Linter install
 # renovate: datasource=nuget depName=csharpier
-ARG CSHARP_CSHARPIER_VERSION=1.0.1
+ARG CSHARP_CSHARPIER_VERSION=1.0.3
 RUN dotnet tool install --allow-roll-forward --global csharpier --version "${CSHARP_CSHARPIER_VERSION}"
 ```
 

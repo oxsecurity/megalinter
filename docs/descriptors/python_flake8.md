@@ -7,9 +7,22 @@ description: How to use flake8 (configure, ignore files, ignore errors, help & v
 # flake8
 [![GitHub stars](https://img.shields.io/github/stars/PyCQA/flake8?cacheSeconds=3600)](https://github.com/PyCQA/flake8) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/PyCQA/flake8?sort=semver)](https://github.com/PyCQA/flake8/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/PyCQA/flake8)](https://github.com/PyCQA/flake8/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/PyCQA/flake8)](https://github.com/PyCQA/flake8/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/PyCQA/flake8)](https://github.com/PyCQA/flake8/graphs/contributors/)
 
+**Flake8** is a comprehensive Python code quality checker that combines three powerful tools—pycodestyle, pyflakes, and mccabe—into a unified linting solution. It serves as the go-to tool for enforcing Python coding standards and catching potential issues.
+
+**Key Features:**
+
+- **Multi-Tool Integration**: Combines pycodestyle (PEP 8 compliance), pyflakes (logical errors), and mccabe (complexity analysis)
+- **PEP 8 Enforcement**: Comprehensive style checking against Python's official style guide
+- **Error Detection**: Identifies undefined names, unused imports, syntax errors, and logical inconsistencies
+- **Complexity Analysis**: Measures cyclomatic complexity to identify overly complex functions and methods
+- **Highly Configurable**: Extensive configuration options for customizing rules, ignoring specific errors, and setting complexity thresholds
+- **Plugin Ecosystem**: Rich ecosystem of plugins for additional checks (security, documentation, imports, etc.)
+- **Fast Performance**: Efficient scanning with parallel processing capabilities for large codebases
+- **Inline Suppression**: Granular control with per-line and per-file error suppression options
+
 ## flake8 documentation
 
-- Version in MegaLinter: **7.2.0**
+- Version in MegaLinter: **7.3.0**
 - Visit [Official Web Site](https://flake8.pycqa.org){target=_blank}
 - See [How to configure flake8 rules](https://flake8.pycqa.org/en/latest/user/configuration.html#project-configuration){target=_blank}
   - If custom `.flake8` config file isn't found, [.flake8](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.flake8){target=_blank} will be used
@@ -47,7 +60,6 @@ Use flake8 in your favorite IDE to catch errors before MegaLinter !
 
 |                                                                  <!-- -->                                                                   | IDE                                                      | Extension Name                                                              |                                                            Install                                                            |
 |:-------------------------------------------------------------------------------------------------------------------------------------------:|----------------------------------------------------------|-----------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------:|
-|  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Atom](https://atom.io/)                                 | [linter-flake8](https://atom.io/packages/linter-flake8)                     |                            [Visit Web Site](https://atom.io/packages/linter-flake8){target=_blank}                            |
 |  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a>  | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [flake8-support](https://plugins.jetbrains.com/plugin/11563-flake8-support) | <iframe frameborder="none" width="245px" height="48px" src="https://plugins.jetbrains.com/embeddable/install/11563"></iframe> |
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/)     | [Native Support](https://code.visualstudio.com/docs/python/linting#_flake8) |                  [Visit Web Site](https://code.visualstudio.com/docs/python/linting#_flake8){target=_blank}                   |
 
@@ -57,8 +69,8 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                     | Embedded linters |                                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       127        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        88        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       126        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        87        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)   | Optimized for PYTHON based projects             |        65        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
 
 ## Behind the scenes
@@ -176,7 +188,7 @@ options:
   --no-show-source      Negate --show-source
   --statistics          Count errors.
   --exit-zero           Exit with status code "0" even if there are errors.
-  -j JOBS, --jobs JOBS  Number of subprocesses to use to run checks in
+  -j, --jobs JOBS       Number of subprocesses to use to run checks in
                         parallel. This is ignored on Windows. The default,
                         "auto", will auto-detect the number of processors
                         available to use. (Default: auto)
@@ -193,7 +205,7 @@ pyflakes:
   --builtins BUILTINS   define more built-ins, comma separated
   --doctests            also check syntax of the doctests
 
-Installed plugins: mccabe: 0.7.0, pycodestyle: 2.13.0, pyflakes: 3.3.2
+Installed plugins: mccabe: 0.7.0, pycodestyle: 2.14.0, pyflakes: 3.4.0
 ```
 
 ### Installation on mega-linter Docker image
@@ -201,8 +213,8 @@ Installed plugins: mccabe: 0.7.0, pycodestyle: 2.13.0, pyflakes: 3.3.2
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=flake8
-ARG PIP_FLAKE8_VERSION=7.2.0
+ARG PIP_FLAKE8_VERSION=7.3.0
 ```
 
 - PIP packages (Python):
-  - [flake8==7.2.0](https://pypi.org/project/flake8/7.2.0)
+  - [flake8==7.3.0](https://pypi.org/project/flake8/7.3.0)
