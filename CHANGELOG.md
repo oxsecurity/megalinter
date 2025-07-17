@@ -9,12 +9,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
 - Core
-  - Use uv to create the venv folder for pip-installed linte
+  - Use uv to create the venv folder for pip-installed linters
   - New LLM Advisor: call external LLMs to get hints to solve linter errors, available in:
     - Console Reporter
     - Text Reporter
     - Git platforms PR/MR comments Reporter
-  - Add copilot instructions for GitHub Copil
+  - Add copilot instructions for GitHub Copilot
 
 - New linters
 
