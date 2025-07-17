@@ -114,6 +114,30 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [php-cs-fixer](https://cs.symfony.com/) from 3.77.0 to **3.82.0** on 2025-07-08
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.37.0 to **1.37.2** on 2025-07-11
   - [git_diff](https://git-scm.com) from 2.47.2 to **2.47.3** on 2025-07-11
+  - [shfmt](https://github.com/mvdan/sh) from 3.11.0 to **3.12.0** on 2025-07-12
+  - [shfmt](https://github.com/mvdan/sh) from 3.12.0 to **3.11.0** on 2025-07-13
+  - [golangci-lint](https://golangci-lint.run/) from 2.2.1 to **2.2.2** on 2025-07-13
+  - [revive](https://revive.run/) from 1.10.0 to **1.11.0** on 2025-07-13
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.82.0 to **3.82.2** on 2025-07-13
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.402 to **1.1.403** on 2025-07-13
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.12.2 to **0.12.3** on 2025-07-13
+  - [ruff](https://github.com/astral-sh/ruff) from 0.12.2 to **0.12.3** on 2025-07-13
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 9.1.3 to **9.1.5** on 2025-07-13
+  - [sqlfluff](https://www.sqlfluff.com/) from 3.4.1 to **3.4.2** on 2025-07-13
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.58.0 to **0.58.1** on 2025-07-13
+  - [shfmt](https://github.com/mvdan/sh) from 3.11.0 to **3.12.0** on 2025-07-14
+  - [rubocop](https://rubocop.org/) from 1.77.0 to **1.78.0** on 2025-07-14
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.37.2 to **1.38.0** on 2025-07-15
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.82.2 to **3.83.0** on 2025-07-15
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.26.0 to **3.26.1** on 2025-07-15
+  - [ktlint](https://ktlint.github.io) from 1.6.0 to **1.7.0** on 2025-07-16
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.83.0 to **3.84.0** on 2025-07-16
+  - [psalm](https://psalm.dev) from Psalm.6.12.1@ to **Psalm.6.13.0@** on 2025-07-16
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.16.1 to **1.17.0** on 2025-07-16
+  - [grype](https://github.com/anchore/grype) from 0.95.0 to **0.96.0** on 2025-07-16
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.89.2 to **3.90.0** on 2025-07-16
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.26.1 to **3.27.0** on 2025-07-16
+  - [snakemake](https://snakemake.github.io/) from 9.7.1 to **9.8.0** on 2025-07-16
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15
