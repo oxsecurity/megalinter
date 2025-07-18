@@ -42,6 +42,13 @@ if [ "${UPGRADE_LINTERS_VERSION}" == "true" ]; then
   exit $?
 fi
 
+# Called by custom flavor image
+if [ "${BUILD_CUSTOM_FLAVOR}" == "true" ]; then
+  echo "[MegaLinter init] BUILD CUSTOM FLAVOR"
+  GITHUB_TOKEN="${GITHUB_TOKEN}" python ./.automation/build.py --custom-flavor
+  exit $?
+fi
+
 # Run test cases with pytest
 if [ "${TEST_CASE_RUN}" == "true" ]; then
   echo "[MegaLinter init] RUNNING TEST CASES"

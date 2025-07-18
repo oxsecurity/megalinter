@@ -61,6 +61,7 @@ UPDATE_CHANGELOG = "--changelog" in sys.argv
 IS_LATEST = "--latest" in sys.argv
 DELETE_DOCKERFILES = "--delete-dockerfiles" in sys.argv
 DELETE_TEST_CLASSES = "--delete-test-classes" in sys.argv
+CUSTOM_FLAVOR = "--custom-flavor" in sys.argv
 
 # Release args management
 if RELEASE is True:
@@ -316,6 +317,7 @@ branding:
         DEFAULT_DOCKERFILE_FLAVOR_ARGS.copy(),
         {"cargo": DEFAULT_DOCKERFILE_FLAVOR_CARGO_PACKAGES.copy()},
     )
+    return dockerfile
 
 
 def build_dockerfile(
@@ -3490,6 +3492,14 @@ def update_workflow_linters(file_path, linters):
     with open(file_path, "w") as f:
         f.write(file_content)
 
+def generate_custom_flavor():
+    work_dir = "/github/workspace" if os.path.isdir("/github/workspace") else "./test"
+    flavor_file = f"{work_dir}/megalinter-custom-flavor.yml"
+    with open(flavor_file, "r", encoding="utf-8") as f:
+        flavor_info = yaml.safe_load(f)
+    dockerfile = generate_flavor("CUSTOM", flavor_info)
+    copyfile(dockerfile,f"{work_dir}/Dockerfile-megalinter-custom")
+
 
 if __name__ == "__main__":
     logging_format = (
@@ -3511,25 +3521,28 @@ if __name__ == "__main__":
             handlers=[logging.StreamHandler(sys.stdout)],
         )
     config.init_config("build")
-    # noinspection PyTypeChecker
-    collect_linter_previews()
-    generate_json_schema_enums()
-    validate_descriptors()
-    if UPDATE_DEPENDENTS is True:
-        update_dependents_info()
-    generate_all_flavors()
-    generate_linter_dockerfiles()
-    generate_linter_test_classes()
-    update_workflows_linters()
-    if UPDATE_DOC is True:
-        logging.info("Running documentation generators…")
-        # refresh_users_info() # deprecated since now we use github-dependents-info
-        generate_documentation()
-        generate_documentation_all_linters()
-        # generate_documentation_all_users() # deprecated since now we use github-dependents-info
-        generate_mkdocs_yml()
-    validate_own_megalinter_config()
-    manage_output_variables()
-    reformat_markdown_tables()
-    if RELEASE is True:
-        generate_version()
+    if CUSTOM_FLAVOR is True:
+        generate_custom_flavor()
+    else:
+        # noinspection PyTypeChecker
+        collect_linter_previews()
+        generate_json_schema_enums()
+        validate_descriptors()
+        if UPDATE_DEPENDENTS is True:
+            update_dependents_info()
+        generate_all_flavors()
+        generate_linter_dockerfiles()
+        generate_linter_test_classes()
+        update_workflows_linters()
+        if UPDATE_DOC is True:
+            logging.info("Running documentation generators…")
+            # refresh_users_info() # deprecated since now we use github-dependents-info
+            generate_documentation()
+            generate_documentation_all_linters()
+            # generate_documentation_all_users() # deprecated since now we use github-dependents-info
+            generate_mkdocs_yml()
+        validate_own_megalinter_config()
+        manage_output_variables()
+        reformat_markdown_tables()
+        if RELEASE is True:
+            generate_version()

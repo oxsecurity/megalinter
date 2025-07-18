@@ -1,0 +1,68 @@
+# syntax=docker/dockerfile:1
+###############################################
+###############################################
+## Dockerfile to build a custom flavor image ##
+###############################################
+###############################################
+
+FROM ghcr.io/astral-sh/uv:0.7.19 AS uv
+
+##################
+# Get base image #
+##################
+FROM python:3.13-alpine3.21
+
+RUN apk -U --no-cache upgrade \
+    && apk add --no-cache \
+                bash \
+                curl \
+                git \
+                git-lfs \
+                make \
+                docker \
+                npm \
+                nodejs-current \
+                yarn \
+    && git config --global core.autocrlf true
+
+ENV NODE_OPTIONS="--max-old-space-size=8192" \
+    NODE_ENV=production \
+    BUILD_CUSTOM_FLAVOR=true
+
+COPY --from=uv /uv /uvx /bin/
+RUN uv pip install --system -e .
+
+###########################
+# Get the build arguments #
+###########################
+ARG BUILD_DATE
+ARG BUILD_REVISION
+ARG BUILD_VERSION
+
+#################################################
+# Set ENV values used for debugging the version #
+#################################################
+ENV BUILD_DATE=$BUILD_DATE \
+    BUILD_REVISION=$BUILD_REVISION \
+    BUILD_VERSION=$BUILD_VERSION
+
+#########################################
+# Label the instance and set maintainer #
+#########################################
+LABEL com.github.actions.name="MegaLinter Flavor Builder" \
+      com.github.actions.description="The ultimate linters aggregator to make sure your projects are clean" \
+      com.github.actions.icon="code" \
+      com.github.actions.color="red" \
+      maintainer="Nicolas Vuillamy <nicolas.vuillamy@gmail.com>" \
+      org.opencontainers.image.created=$BUILD_DATE \
+      org.opencontainers.image.revision=$BUILD_REVISION \
+      org.opencontainers.image.version=$BUILD_VERSION \
+      org.opencontainers.image.authors="Nicolas Vuillamy <nicolas.vuillamy@gmail.com>" \
+      org.opencontainers.image.url="https://megalinter.io" \
+      org.opencontainers.image.source="https://github.com/oxsecurity/megalinter" \
+      org.opencontainers.image.documentation="https://megalinter.io" \
+      org.opencontainers.image.vendor="Nicolas Vuillamy" \
+      org.opencontainers.image.description="Generate your custom MegaLinter flavor"
+
+RUN chmod +x entrypoint.sh
+ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]

@@ -1,0 +1,8 @@
+label: Test Custom Flavor
+linters: 
+  - BASH_SHELLCHECK
+  - BASH_SHFM
+  - C_CPPCHECK
+  - CSS_STYLELINT
+  - DOCKERFILE_HADOLINT
+  - YAML_V8R
