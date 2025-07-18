@@ -303,7 +303,14 @@ branding:
         with open(flavor_action_yml, "w", encoding="utf-8") as file:
             file.write(action_yml)
             logging.info(f"Updated {flavor_action_yml}")
-    extra_lines = [
+    extra_lines = []
+    if CUSTOM_FLAVOR is True:
+        extra_lines += [
+            "ENV CUSTOM_FLAVOR=true"
+            "ENV BASE_MEGALINTER_VERSION=TODO"
+        ]
+
+    extra_lines += [
         "COPY entrypoint.sh /entrypoint.sh",
         "RUN chmod +x entrypoint.sh",
         'ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]',
@@ -3493,7 +3500,7 @@ def update_workflow_linters(file_path, linters):
         f.write(file_content)
 
 def generate_custom_flavor():
-    work_dir = "/github/workspace" if os.path.isdir("/github/workspace") else "./test"
+    work_dir = "/github/workspace" if os.path.isdir("/github/workspace") else f"{REPO_HOME}/.automation/test"
     flavor_file = f"{work_dir}/megalinter-custom-flavor.yml"
     with open(flavor_file, "r", encoding="utf-8") as f:
         flavor_info = yaml.safe_load(f)
