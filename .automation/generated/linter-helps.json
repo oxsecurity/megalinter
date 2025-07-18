@@ -3834,7 +3834,7 @@
         "      --server string         Backend discovery server URL",
         "",
         "Use \"kubescape [command] --help\" for more information about a command.",
-        "{\"level\":\"info\",\"ts\":\"2025-07-17T19:35:36Z\",\"msg\":\"Received interrupt signal, exiting...\"}"
+        "{\"level\":\"info\",\"ts\":\"2025-07-18T22:17:34Z\",\"msg\":\"Received interrupt signal, exiting...\"}"
     ],
     "kubeval": [
         "Validate a Kubernetes YAML file against the relevant schema",
@@ -9611,7 +9611,7 @@
         "                 [--scheduler-solver-path SCHEDULER_SOLVER_PATH]",
         "                 [--deploy-sources QUERY CHECKSUM]",
         "                 [--target-jobs TARGET_JOBS [TARGET_JOBS ...]]",
-        "                 [--mode {subprocess,default,remote}]",
+        "                 [--mode {remote,default,subprocess}]",
         "                 [--report-html-path VALUE]",
         "                 [--report-html-stylesheet-path VALUE]",
         "                 [targets ...]",
@@ -10452,11 +10452,11 @@
         "  --target-jobs TARGET_JOBS [TARGET_JOBS ...]",
         "                        Internal use only: Target particular jobs by",
         "                        RULE:WILDCARD1=VALUE,WILDCARD2=VALUE,...",
-        "  --mode {subprocess,default,remote}",
+        "  --mode {remote,default,subprocess}",
         "                        Internal use only: Set execution mode of Snakemake.",
         "                        (default: default)",
         "",
-        "html executor settings:",
+        "html plugin settings:",
         "  --report-html-path VALUE",
         "                        Path to the report file (either .html or .zip). Use",
         "                        zip if your report contains large results or",
