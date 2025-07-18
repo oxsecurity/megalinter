@@ -31,6 +31,7 @@ ARG REPOSITORY_TRUFFLEHOG_VERSION=3.90.0
 FROM koalaman/shellcheck:${BASH_SHELLCHECK_VERSION} AS shellcheck
 FROM mvdan/shfmt:${BASH_SHFMT_VERSION} AS shfmt
 FROM hadolint/hadolint:${DOCKERFILE_HADOLINT_VERSION} AS hadolint
+FROM mrtazz/checkmake:latest AS checkmake
 FROM zricethezav/gitleaks:${REPOSITORY_GITLEAKS_VERSION} AS gitleaks
 FROM trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION} AS trufflehog
 #FROM__END
@@ -234,6 +235,7 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
 COPY --link --from=shfmt /bin/shfmt /usr/bin/
 COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
+COPY --link --from=checkmake /checkmake /usr/bin/checkmake
 COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
 #COPY__END
@@ -264,6 +266,9 @@ ENV JAVA_HOME_17=/usr/lib/jvm/java-17-openjdk
 # v8r installation
 #
 # prettier installation
+#
+# checkmake installation
+# Managed with COPY --link --from=checkmake /checkmake /usr/bin/checkmake
 #
 # gitleaks installation
 # Managed with COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/

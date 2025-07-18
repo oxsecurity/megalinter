@@ -102,6 +102,7 @@ jobs:
             "lua_luacheck",
             "lua_selene",
             "lua_stylua",
+            "makefile_checkmake",
             "markdown_markdownlint",
             "markdown_markdown_table_formatter",
             "perl_perlcritic",
