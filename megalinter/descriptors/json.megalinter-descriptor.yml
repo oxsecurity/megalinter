@@ -326,10 +326,10 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=npm-package-json-lint
-          ARG NPM_PACKAGE_JSON_LINT_VERSION=8.0.0
+          ARG NPM_PACKAGE_JSON_LINT_VERSION=9.0.0
         - |-
           # renovate: datasource=npm depName=npm-package-json-lint-config-default
-          ARG NPM_PACKAGE_JSON_LINT_CONFIG_DEFAULT_VERSION=7.0.1
+          ARG NPM_PACKAGE_JSON_LINT_CONFIG_DEFAULT_VERSION=8.0.1
       npm:
         - "npm-package-json-lint@${NPM_PACKAGE_JSON_LINT_VERSION}"
         - "npm-package-json-lint-config-default@${NPM_PACKAGE_JSON_LINT_CONFIG_DEFAULT_VERSION}"
