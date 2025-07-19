@@ -140,6 +140,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [snakemake](https://snakemake.github.io/) from 9.7.1 to **9.8.0** on 2025-07-16
   - [dartanalyzer](https://dart.dev/tools/dart-analyze) from 3.8.1 to **3.8.2** on 2025-07-17
   - [secretlint](https://github.com/secretlint/secretlint) from 10.2.0 to **10.2.1** on 2025-07-17
+  - [stylelint](https://stylelint.io) from 16.21.1 to **16.22.0** on 2025-07-19
+  - [npm-package-json-lint](https://npmpackagejsonlint.org/) from 8.0.0 to **9.0.0** on 2025-07-19
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.12.3 to **0.12.4** on 2025-07-19
+  - [ruff](https://github.com/astral-sh/ruff) from 0.12.3 to **0.12.4** on 2025-07-19
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15
