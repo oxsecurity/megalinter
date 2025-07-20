@@ -306,8 +306,10 @@ branding:
     extra_lines = []
     if CUSTOM_FLAVOR is True:
         extra_lines += [
-            "ENV CUSTOM_FLAVOR=true"
-            "ENV BASE_MEGALINTER_VERSION=TODO"
+            "ENV CUSTOM_FLAVOR=true \\",
+            f"    BASE_MEGALINTER_BUILD_VERSION={os.getenv('BUILD_VERSION', 'local_build')} \\",
+            f"    BASE_MEGALINTER_BUILD_DATE={os.getenv('BUILD_DATE', 'local_build')} \\",
+            f"    BASE_MEGALINTER_BUILD_REVISION={os.getenv('BUILD_REVISION', 'local_build')}",
         ]
 
     extra_lines += [
