@@ -253,12 +253,13 @@ branding:
             json.dump(flavor_info, outfile, indent=4, sort_keys=True)
             outfile.write("\n")
         # Write in global flavors files
-        with open(GLOBAL_FLAVORS_FILE, "r", encoding="utf-8") as json_file:
-            global_flavors = json.load(json_file)
-            global_flavors[flavor] = flavor_info
-        with open(GLOBAL_FLAVORS_FILE, "w", encoding="utf-8") as outfile:
-            json.dump(global_flavors, outfile, indent=4, sort_keys=True)
-            outfile.write("\n")
+        if CUSTOM_FLAVOR is not True:
+            with open(GLOBAL_FLAVORS_FILE, "r", encoding="utf-8") as json_file:
+                global_flavors = json.load(json_file)
+                global_flavors[flavor] = flavor_info
+            with open(GLOBAL_FLAVORS_FILE, "w", encoding="utf-8") as outfile:
+                json.dump(global_flavors, outfile, indent=4, sort_keys=True)
+                outfile.write("\n")
         # Flavored dockerfile
         dockerfile = f"{FLAVORS_DIR}/{flavor}/Dockerfile"
         if not os.path.isdir(os.path.dirname(dockerfile)):
@@ -700,6 +701,20 @@ def match_flavor(item, flavor, flavor_info):
             return True
         else:
             return False
+    # Custom flavor
+    elif flavor == "CUSTOM":
+        descriptors, linters_by_type = list_descriptors_for_build()
+        # Item is a linter: check if present in the flavor
+        if "linter_name" in item and item["name"] in flavor_info["linters"]:
+            return True
+        # Item is a descriptor and it contains one of the linters included in the flavor info
+        if "linters" in item:
+            for descriptor in descriptors:
+                if item["descriptor_id"] == descriptor["descriptor_id"]:
+                    descriptor_linters = descriptor["linter_instances"]
+                    for descriptor_linter in descriptor_linters:
+                        if descriptor_linter.name in flavor_info["linters"]:
+                            return True
     # Other flavors
     elif "descriptor_flavors" in item:
         if flavor in item["descriptor_flavors"] or (
@@ -871,10 +886,11 @@ def list_descriptors_for_build():
     descriptors = []
     for descriptor_file in descriptor_files:
         descriptor = megalinter.linter_factory.build_descriptor_info(descriptor_file)
-        descriptors += [descriptor]
         descriptor_linters = megalinter.linter_factory.build_descriptor_linters(
             descriptor_file, {"request_id": "build"}
         )
+        descriptor["linter_instances"] = descriptor_linters
+        descriptors += [descriptor]
         linters_by_type[descriptor_linters[0].descriptor_type] += descriptor_linters
     DESCRIPTORS_FOR_BUILD_CACHE = descriptors, linters_by_type
     return descriptors, linters_by_type
@@ -3507,6 +3523,7 @@ def generate_custom_flavor():
     flavor_file = f"{work_dir}/megalinter-custom-flavor.yml"
     with open(flavor_file, "r", encoding="utf-8") as f:
         flavor_info = yaml.safe_load(f)
+        flavor_info["strict"] = True
     dockerfile = generate_flavor("CUSTOM", flavor_info)
     copyfile(dockerfile,f"{work_dir}/Dockerfile-megalinter-custom")
     # Delete folder containing dockerfile

@@ -29,6 +29,19 @@
       }
     },
     {
+      "name": "Python Debugger: Build MegaLinter with --custom-flavor",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/.automation/build.py",
+      "args": ["--custom-flavor"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "env": {
+        "PYTHONPATH": "${workspaceFolder}"
+      },
+      "justMyCode": false
+    },
+    {
       "name": "Python Debugger: pytest",
       "type": "debugpy",
       "request": "launch",
