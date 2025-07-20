@@ -3528,7 +3528,7 @@ def generate_custom_flavor():
     copyfile(dockerfile,f"{work_dir}/Dockerfile-megalinter-custom")
     # Delete folder containing dockerfile
     dockerfile_dir = os.path.dirname(dockerfile)
-    if os.path.isdir(dockerfile_dir):
+    if os.path.isdir(dockerfile_dir) and '/.automation/test' in work_dir:
         logging.info(f"Deleting folder {dockerfile_dir} containing custom flavor dockerfile")
         shutil.rmtree(dockerfile_dir, ignore_errors=True)
 
