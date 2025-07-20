@@ -3501,6 +3501,7 @@ def update_workflow_linters(file_path, linters):
     with open(file_path, "w") as f:
         f.write(file_content)
 
+
 def generate_custom_flavor():
     work_dir = "/github/workspace" if os.path.isdir("/github/workspace") else f"{REPO_HOME}/.automation/test"
     flavor_file = f"{work_dir}/megalinter-custom-flavor.yml"
@@ -3508,6 +3509,11 @@ def generate_custom_flavor():
         flavor_info = yaml.safe_load(f)
     dockerfile = generate_flavor("CUSTOM", flavor_info)
     copyfile(dockerfile,f"{work_dir}/Dockerfile-megalinter-custom")
+    # Delete folder containing dockerfile
+    dockerfile_dir = os.path.dirname(dockerfile)
+    if os.path.isdir(dockerfile_dir):
+        logging.info(f"Deleting folder {dockerfile_dir} containing custom flavor dockerfile")
+        shutil.rmtree(dockerfile_dir, ignore_errors=True)
 
 
 if __name__ == "__main__":
