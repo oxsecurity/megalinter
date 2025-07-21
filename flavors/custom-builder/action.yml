@@ -4,7 +4,7 @@ author: "Nicolas Vuillamy"
 description: "Create your own MegaLinter flavor to have even better performances !"
 runs:
   using: "docker"
-  image: "docker://oxsecurity/megalinter-custom-flavor-builder:v8"
+  image: "docker://oxsecurity/megalinter-custom-flavor-builder:alpha" # TODO: use build.py to set latest version here
   args:
     - "-v"
     - "/var/run/docker.sock:/var/run/docker.sock:rw"
