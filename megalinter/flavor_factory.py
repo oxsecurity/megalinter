@@ -38,6 +38,10 @@ def list_flavor_linters(flavor_id):
     return flavor_definition["linters"]
 
 
+def is_custom_flavor():
+    return os.getenv("CUSTOM_FLAVOR", "false").lower() == "true"
+
+
 def list_megalinter_flavors():
     flavors = {
         "all": {"label": "MegaLinter for any type of project"},

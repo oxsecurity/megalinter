@@ -253,7 +253,7 @@ branding:
             json.dump(flavor_info, outfile, indent=4, sort_keys=True)
             outfile.write("\n")
         # Write in global flavors files
-        if CUSTOM_FLAVOR is not True:
+        if CUSTOM_FLAVOR is not True or os.path.isdir("/megalinter-builder"):
             with open(GLOBAL_FLAVORS_FILE, "r", encoding="utf-8") as json_file:
                 global_flavors = json.load(json_file)
                 global_flavors[flavor] = flavor_info
@@ -308,9 +308,9 @@ branding:
     if CUSTOM_FLAVOR is True:
         extra_lines += [
             "ENV CUSTOM_FLAVOR=true \\",
-            f"    BASE_MEGALINTER_BUILD_VERSION={os.getenv('BUILD_VERSION', 'local_build')} \\",
-            f"    BASE_MEGALINTER_BUILD_DATE={os.getenv('BUILD_DATE', 'local_build')} \\",
-            f"    BASE_MEGALINTER_BUILD_REVISION={os.getenv('BUILD_REVISION', 'local_build')}",
+            f"    BUILD_VERSION={os.getenv('BUILD_VERSION', 'local_build')} \\",
+            f"    BUILD_DATE={os.getenv('BUILD_DATE', 'local_build')} \\",
+            f"    BUILD_REVISION={os.getenv('BUILD_REVISION', 'local_build')}",
         ]
 
     extra_lines += [
