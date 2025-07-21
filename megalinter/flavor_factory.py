@@ -84,6 +84,11 @@ def check_active_linters_match_flavor(active_linters, request_id):
             "MegaLinter image contains a single linter, no need to check match with linters"
         )
         return True
+    elif flavor == "CUSTOM":
+        logging.debug(
+            "MegaLinter image is a custom flavor, no need to check match with linters"
+        )
+        return True
     all_flavors = get_all_flavors()
     flavor_linters = all_flavors[flavor]["linters"]
     missing_linters = []
