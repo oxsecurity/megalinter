@@ -3519,14 +3519,15 @@ def update_workflow_linters(file_path, linters):
 
 
 def generate_custom_flavor():
-    work_dir = "/megalinter-builder" if os.path.isdir("/megalinter-builder") else f"{REPO_HOME}/.automation/test"
+    megalinter_dir = "/megalinter-builder" if os.path.isdir("/megalinter-builder") else f"{REPO_HOME}/.automation/test"
+    work_dir = "/github/workspace" if os.path.isdir("/github/workspace") else work_dir
     flavor_file = f"{work_dir}/megalinter-custom-flavor.yml"
     with open(flavor_file, "r", encoding="utf-8") as f:
         flavor_info = yaml.safe_load(f)
         flavor_info["strict"] = True
-    logging.info(f"Generating custom flavor from {flavor_file} in {work_dir}")
+    logging.info(f"Generating custom flavor from {flavor_file} in {megalinter_dir}")
     dockerfile_tmp = generate_flavor("CUSTOM", flavor_info)
-    dockerfile = f"{work_dir}/Dockerfile-megalinter-custom"
+    dockerfile = f"{megalinter_dir}/Dockerfile-megalinter-custom"
     copyfile(dockerfile_tmp, dockerfile)
     # Delete folder containing dockerfile if runned locally
     dockerfile_tmp_dir = os.path.dirname(dockerfile_tmp)
