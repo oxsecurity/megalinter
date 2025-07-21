@@ -19,7 +19,7 @@ description: How to use v8r (configure, ignore files, ignore errors, help & vers
 
 ## v8r documentation
 
-- Version in MegaLinter: **5.0.0**
+- Version in MegaLinter: **5.1.0**
 - Visit [Official Web Site](https://github.com/chris48s/v8r#readme){target=_blank}
 - See [Index of problems detected by v8r](https://www.schemastore.org/){target=_blank}
 
@@ -109,8 +109,8 @@ v8r <patterns..>
 Validate local json/json5/toml/yaml files against schema(s)
 
 Positionals:
-  patterns  One or more filenames or glob patterns describing local file or file
-            s to validate
+  patterns  One or more filenames or glob patterns describing local file or
+            files to validate
 
 Options:
       --help                  Show help                                [boolean]
@@ -118,24 +118,24 @@ Options:
   -v, --verbose               Run with verbose logging. Can be stacked e.g: -vv
                               -vvv                                       [count]
   -s, --schema                Local path or URL of a schema to validate against.
-                               If not supplied, we will attempt to find an appro
-                              priate schema on schemastore.org using the filenam
-                              e. If passed with glob pattern(s) matching multipl
-                              e files, all matching files will be validated agai
-                              nst this schema                           [string]
-  -c, --catalogs              A list of local paths or URLs of custom catalogs t
-                              o use prior to schemastore.org             [array]
+                              If not supplied, we will attempt to find an
+                              appropriate schema on schemastore.org using the
+                              filename. If passed with glob pattern(s) matching
+                              multiple files, all matching files will be
+                              validated against this schema             [string]
+  -c, --catalogs              A list of local paths or URLs of custom catalogs
+                              to use prior to schemastore.org            [array]
       --ignore-errors         Exit with code 0 even if an error was encountered.
-                               Passing this flag means a non-zero exit code is o
-                              nly issued if validation could be completed succes
-                              sfully and one or more files were invalid
+                              Passing this flag means a non-zero exit code is
+                              only issued if validation could be completed
+                              successfully and one or more files were invalid
                                                       [boolean] [default: false]
       --ignore-pattern-files  A list of files containing glob patterns to ignore
                                   [array] [default: [".v8rignore",".gitignore"]]
       --no-ignore             Disable all ignore files                 [boolean]
-      --cache-ttl             Remove cached HTTP responses older than <cache-ttl
-                              > seconds old. Passing 0 clears and disables cache
-                               completely                [number] [default: 600]
+      --cache-ttl             Remove cached HTTP responses older than
+                              <cache-ttl> seconds old. Passing 0 clears and
+                              disables cache completely  [number] [default: 600]
       --output-format         Output format for validation results
                             [string] [choices: "text", "json"] [default: "text"]
 
@@ -150,8 +150,8 @@ Examples:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=v8r
-ARG NPM_V8R_VERSION=5.0.0
+ARG NPM_V8R_VERSION=5.1.0
 ```
 
 - NPM packages (node.js):
-  - [v8r@5.0.0](https://www.npmjs.com/package/v8r/v/5.0.0)
+  - [v8r@5.1.0](https://www.npmjs.com/package/v8r/v/5.1.0)
