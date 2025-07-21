@@ -70,5 +70,5 @@ LABEL com.github.actions.name="MegaLinter Flavor Builder" \
       org.opencontainers.image.vendor="Nicolas Vuillamy" \
       org.opencontainers.image.description="Generate your custom MegaLinter flavor"
 
-RUN chmod +x entrypoint.sh
-ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
+RUN chmod +x /megalinter-builder/entrypoint.sh
+ENTRYPOINT ["/bin/bash", "/megalinter-builder/entrypoint.sh"]
