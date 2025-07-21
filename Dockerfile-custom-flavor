@@ -29,7 +29,13 @@ ENV NODE_OPTIONS="--max-old-space-size=8192" \
     NODE_ENV=production \
     BUILD_CUSTOM_FLAVOR=true
 
+# Copy the content of the current directory into the image
+
+
 COPY --from=uv /uv /uvx /bin/
+
+COPY . /megalinter-builder
+WORKDIR /megalinter-builder
 RUN uv pip install --system -e .
 
 ###########################
