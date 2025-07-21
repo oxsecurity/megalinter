@@ -144,6 +144,13 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [npm-package-json-lint](https://npmpackagejsonlint.org/) from 8.0.0 to **9.0.0** on 2025-07-19
   - [ruff-format](https://github.com/astral-sh/ruff) from 0.12.3 to **0.12.4** on 2025-07-19
   - [ruff](https://github.com/astral-sh/ruff) from 0.12.3 to **0.12.4** on 2025-07-19
+  - [phpstan](https://phpstan.org/) from 2.1.17 to **2.1.18** on 2025-07-20
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.90.0 to **3.90.1** on 2025-07-20
+  - [v8r](https://github.com/chris48s/v8r) from 5.0.0 to **5.1.0** on 2025-07-21
+  - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.27.2 to **8.28.0** on 2025-07-21
+  - [golangci-lint](https://golangci-lint.run/) from 2.2.2 to **2.3.0** on 2025-07-21
+  - [snakemake](https://snakemake.github.io/) from 9.8.0 to **9.8.1** on 2025-07-21
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 9.1.5 to **9.2.0** on 2025-07-21
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15
