@@ -8,6 +8,7 @@ import tomllib
 import requests
 from megalinter import config, utils
 from megalinter.constants import ML_DOC_URL
+from megalinter.flavor_factory import is_custom_flavor
 from megalinter.utils_reporter import log_section_start
 
 
