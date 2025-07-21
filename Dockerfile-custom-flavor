@@ -36,7 +36,8 @@ COPY --from=uv /uv /uvx /bin/
 
 COPY . /megalinter-builder
 WORKDIR /megalinter-builder
-RUN uv pip install --system -e .
+RUN uv pip install --system -e . \
+    && uv pip install --system --requirement .config/python/dev/requirements.txt
 
 ###########################
 # Get the build arguments #
