@@ -45,7 +45,11 @@ fi
 # Called by custom flavor image
 if [ "${BUILD_CUSTOM_FLAVOR}" == "true" ]; then
   echo "[MegaLinter init] BUILD CUSTOM FLAVOR"
-  GITHUB_TOKEN="${GITHUB_TOKEN}" python ./.automation/build.py --custom-flavor
+  if [ -d "/megalinter-builder" ]; then
+    GITHUB_TOKEN="${GITHUB_TOKEN}" python /megalinter-builder/.automation/build.py --custom-flavor
+  else
+    GITHUB_TOKEN="${GITHUB_TOKEN}" python ./.automation/build.py --custom-flavor
+  fi
   exit $?
 fi
 
