@@ -146,6 +146,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [ruff](https://github.com/astral-sh/ruff) from 0.12.3 to **0.12.4** on 2025-07-19
   - [phpstan](https://phpstan.org/) from 2.1.17 to **2.1.18** on 2025-07-20
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.90.0 to **3.90.1** on 2025-07-20
+  - [v8r](https://github.com/chris48s/v8r) from 5.0.0 to **5.1.0** on 2025-07-21
+  - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.27.2 to **8.28.0** on 2025-07-21
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15
