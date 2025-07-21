@@ -101,7 +101,7 @@ def check_active_linters_match_flavor(active_linters, request_id):
     if len(missing_linters) > 0:
         # Don't warn/stop if missing linters are repository ones (mostly OX.security related)
         if not are_all_repository_linters(missing_linters):
-            missing_linters_str = ",".join(missing_linters)
+            missing_linters_str = ", ".join(missing_linters)
             logging.warning(
                 f"MegaLinter flavor [{flavor}] doesn't contain linters {missing_linters_str}.\n"
                 "As they're not available in this docker image, they will not be processed\n"
