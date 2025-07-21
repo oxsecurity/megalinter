@@ -3519,18 +3519,48 @@ def update_workflow_linters(file_path, linters):
 
 
 def generate_custom_flavor():
-    work_dir = "/github/workspace" if os.path.isdir("/github/workspace") else f"{REPO_HOME}/.automation/test"
+    work_dir = "/megalinter-builder" if os.path.isdir("/megalinter-builder") else f"{REPO_HOME}/.automation/test"
     flavor_file = f"{work_dir}/megalinter-custom-flavor.yml"
     with open(flavor_file, "r", encoding="utf-8") as f:
         flavor_info = yaml.safe_load(f)
         flavor_info["strict"] = True
-    dockerfile = generate_flavor("CUSTOM", flavor_info)
-    copyfile(dockerfile,f"{work_dir}/Dockerfile-megalinter-custom")
-    # Delete folder containing dockerfile
-    dockerfile_dir = os.path.dirname(dockerfile)
-    if os.path.isdir(dockerfile_dir) and '/.automation/test' in work_dir:
-        logging.info(f"Deleting folder {dockerfile_dir} containing custom flavor dockerfile")
-        shutil.rmtree(dockerfile_dir, ignore_errors=True)
+    logging.info(f"Generating custom flavor from {flavor_file} in {work_dir}")
+    dockerfile_tmp = generate_flavor("CUSTOM", flavor_info)
+    dockerfile = f"{work_dir}/Dockerfile-megalinter-custom"
+    copyfile(dockerfile_tmp, dockerfile)
+    # Delete folder containing dockerfile if runned locally
+    dockerfile_tmp_dir = os.path.dirname(dockerfile_tmp)
+    if os.path.isdir(dockerfile_tmp_dir) and '/.automation/test' in work_dir:
+        logging.info(f"Deleting folder {dockerfile_tmp_dir} containing custom flavor dockerfile")
+        shutil.rmtree(dockerfile_tmp_dir, ignore_errors=True)
+    # Display dockerfile content in log
+    with open(dockerfile, "r", encoding="utf-8") as f:
+        dockerfile_content = f.read()
+        logging.info(f"Generated custom flavor dockerfile:\n\n{dockerfile_content}\n")
+    return dockerfile
+
+
+def build_custom_flavor(dockerfile):
+    logging.info("Building custom flavor docker image…")
+    work_dir = "/megalinter-builder" if os.path.isdir("/megalinter-builder") else REPO_HOME
+    command = [
+        "docker",
+        "build",
+        "-t",
+        "megalinter-custom",
+        "-f",
+        dockerfile,
+        work_dir,
+    ]
+    logging.info("Running command: " + " ".join(command))
+    process = subprocess.run(
+        command,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        universal_newlines=True,
+    )
+    stdout = utils.clean_string(process.stdout)
+    logging.info(f"Build custom flavor results: ({process.returncode})\n" + stdout)
 
 
 if __name__ == "__main__":
@@ -3554,7 +3584,8 @@ if __name__ == "__main__":
         )
     config.init_config("build")
     if CUSTOM_FLAVOR is True:
-        generate_custom_flavor()
+        dockerfile = generate_custom_flavor()
+        build_custom_flavor(dockerfile)
     else:
         # noinspection PyTypeChecker
         collect_linter_previews()
