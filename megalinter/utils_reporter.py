@@ -90,19 +90,20 @@ def build_markdown_summary_sections(
 
 
 def build_markdown_summary_header(reporter_self, action_run_url=""):
-    status = (
+    status_icon = (
         "✅"
         if reporter_self.master.return_code == 0
         and reporter_self.master.status == "success"
-        else "⚠️" if reporter_self.master.status == "warning" else "❌"
+        else "✅⚠️" if reporter_self.master.status == "warning" else "❌"
     )
-    status_with_href = (
-        status
-        + " "
-        + log_link(f"{reporter_self.master.status.upper()}", action_run_url)
-    )
+    # Build status label 
+    if reporter_self.master.status == "warning":
+        status_label = "Success with warnings"
+    else:
+        status_label = reporter_self.master.status.capitalize()
+    status_with_href = log_link(status_label, action_run_url)
     return (
-        f"## [\U0001f999 MegaLinter]({ML_DOC_URL}) status: {status_with_href}"
+        f"## {status_icon}[MegaLinter]({ML_DOC_URL}) analysis: {status_with_href}"
         + os.linesep
         + os.linesep
     )
@@ -173,11 +174,11 @@ def build_markdown_summary_footer(reporter_self, action_run_url=""):
 
     if action_run_url != "":
         footer += (
-            "See detailed report in [MegaLinter reports"
+            "See detailed reports in [MegaLinter artifacts"
             f"]({action_run_url})" + os.linesep
         )
     else:
-        footer += "See detailed report in MegaLinter reports" + os.linesep
+        footer += "See detailed reports in MegaLinter artifacts" + os.linesep
 
     if reporter_self.master.validate_all_code_base is False:
         footer += (
@@ -713,7 +714,7 @@ def build_markdown_summary_sections_table(
         p_r_msg += sections_content
 
     # Build table for all linters
-    p_r_msg += "## All Linters Summary\n\n"
+    p_r_msg += "\n\n"
     table_content = _build_table_content(
         reporter_self.master.linters, reporter_self, action_run_url
     )
@@ -733,7 +734,7 @@ def build_markdown_summary_table_sections(
     p_r_msg = build_markdown_summary_header(reporter_self, action_run_url)
 
     # Build table for all linters first
-    p_r_msg += "## All Linters Summary\n\n"
+    p_r_msg += "\n\n"
     table_content = _build_table_content(
         reporter_self.master.linters, reporter_self, action_run_url
     )
