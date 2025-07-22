@@ -318,8 +318,11 @@ branding:
             f"    CUSTOM_FLAVOR_BUILD_USER={os.getenv('CUSTOM_FLAVOR_BUILD_USER', 'local_build')}",
             "",
             'LABEL com.github.actions.name="MegaLinter Custom Flavor" \\',
-            f'     maintainer="{os.getenv("CUSTOM_FLAVOR_BUILD_USER", "local_build")}" \\',
-            f'     org.opencontainers.image.source="{os.getenv("CUSTOM_FLAVOR_BUILD_REPO_URL", "local_build")}"'
+            f'      maintainer="{os.getenv("CUSTOM_FLAVOR_BUILD_USER", "local_build")}" \\',
+            f'      org.opencontainers.image.source="{os.getenv("CUSTOM_FLAVOR_BUILD_REPO_URL", "local_build")}" \\',
+            f'      org.opencontainers.image.created="{os.getenv("BUILD_DATE", "local_build")}" \\',
+            f'      org.opencontainers.image.revision="{os.getenv("BUILD_REVISION", "local_build")}" \\',
+            f'      org.opencontainers.image.version="{os.getenv("BUILD_VERSION", "local_build")}"'
         ]
     extra_lines += [
         "COPY entrypoint.sh /entrypoint.sh",
