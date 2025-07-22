@@ -306,13 +306,13 @@ branding:
             logging.info(f"Updated {flavor_action_yml}")
     extra_lines = []
     if CUSTOM_FLAVOR is True:
-        current_date_iso = date.today().isoformat()
+        current_date_time_iso = datetime.now().isoformat()
         extra_lines += [
             "ENV CUSTOM_FLAVOR=true \\",
             f"    BUILD_VERSION={os.getenv('BUILD_VERSION', 'local_build')} \\",
             f"    BUILD_DATE={os.getenv('BUILD_DATE', 'local_build')} \\",
             f"    BUILD_REVISION={os.getenv('BUILD_REVISION', 'local_build')} \\",
-            f"    CUSTOM_FLAVOR_BUILD_DATE={current_date_iso} \\",
+            f"    CUSTOM_FLAVOR_BUILD_DATE={current_date_time_iso} \\",
             f"    CUSTOM_FLAVOR_BUILD_REPO={os.getenv('CUSTOM_FLAVOR_BUILD_REPO', 'local_build')} \\", 
             f"    CUSTOM_FLAVOR_BUILD_REPO_URL={os.getenv('CUSTOM_FLAVOR_BUILD_REPO_URL', 'local_build')} \\", 
             f"    CUSTOM_FLAVOR_BUILD_USER={os.getenv('CUSTOM_FLAVOR_BUILD_USER', 'local_build')}",
