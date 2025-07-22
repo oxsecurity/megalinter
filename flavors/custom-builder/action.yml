@@ -12,6 +12,7 @@ runs:
   steps:
     - name: Build Custom MegaLinter Flavor
       run: |
+        # BUILD CUSTOM MEGALINTER FLAVOR
         docker run --rm \
           -v /var/run/docker.sock:/var/run/docker.sock:rw \
           -v ${{ github.workspace }}:/github/workspace \
@@ -24,6 +25,7 @@ runs:
     
     - name: Tag and Push Docker Image
       run: |
+        # TAG AND PUSH DOCKER IMAGE
         # Replace "/" with "_" in repository name for image naming
         IMAGE_NAME=$(echo "${{ github.repository }}" | tr '/' '_')
         # Set the same image version than LABEL org.opencontainers.image.version of $IMAGE_NAME
@@ -43,6 +45,16 @@ runs:
         echo "Pushed custom flavor image: ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}/megalinter-custom-flavor:latest"
         echo "Pushed custom flavor image: ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}/megalinter-custom-flavor:$IMAGE_VERSION"
       shell: bash
+
+    - name: Upload build artifacts
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: megalinter-custom-flavor-artifacts
+        path: |
+          megalinter-reports/
+        retention-days: 365
+
 branding:
   icon: "check"
   color: "green"
