@@ -152,6 +152,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [golangci-lint](https://golangci-lint.run/) from 2.2.2 to **2.3.0** on 2025-07-21
   - [snakemake](https://snakemake.github.io/) from 9.8.0 to **9.8.1** on 2025-07-21
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 9.1.5 to **9.2.0** on 2025-07-21
+  - [ktlint](https://ktlint.github.io) from 1.7.0 to **1.7.1** on 2025-07-21
+  - [phpstan](https://phpstan.org/) from 2.1.18 to **2.1.19** on 2025-07-21
+  - [grype](https://github.com/anchore/grype) from 0.96.0 to **0.96.1** on 2025-07-21
+  - [syft](https://github.com/anchore/syft) from 1.28.0 to **1.29.0** on 2025-07-21
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15
