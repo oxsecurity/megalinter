@@ -2,12 +2,43 @@
 name: "MegaLinter Custom Flavor Builder"
 author: "Nicolas Vuillamy"
 description: "Create your own MegaLinter flavor to have even better performances !"
+inputs:
+  megalinter-custom-flavor-builder-tag:
+    description: "Tag of the megalinter-custom-flavor-builder Docker image to use"
+    required: true
+    default: "alpha"
 runs:
-  using: "docker"
-  image: "docker://ghcr.io/oxsecurity/megalinter-custom-flavor-builder:alpha" # TODO: use build.py to set latest version here
-  args:
-    - "-v"
-    - "/var/run/docker.sock:/var/run/docker.sock:rw"
+  using: "composite"
+  steps:
+    - name: Build Custom MegaLinter Flavor
+      run: |
+        docker run --rm \
+          -v /var/run/docker.sock:/var/run/docker.sock:rw \
+          -v ${{ github.workspace }}:/github/workspace \
+          ghcr.io/oxsecurity/megalinter-custom-flavor-builder:${{ inputs.megalinter-custom-flavor-builder-tag }}
+      shell: bash
+    
+    - name: Tag and Push Docker Image
+      run: |
+        # Replace "/" with "_" in repository name for image naming
+        IMAGE_NAME=$(echo "${{ github.repository }}" | tr '/' '_')
+        # Set the same image version than LABEL org.opencontainers.image.version of $IMAGE_NAME
+        IMAGE_VERSION=$(docker inspect --format='{{index .Config.Labels "org.opencontainers.image.version"}}' $IMAGE_NAME)
+        echo "Custom flavor Image Name: $IMAGE_NAME"
+        echo "Custom flavor Image Version: $IMAGE_VERSION"
+
+        # Tag the existing image built in the previous step
+        docker tag $IMAGE_NAME ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}/megalinter-custom-flavor:latest
+        docker tag $IMAGE_NAME ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}/megalinter-custom-flavor:$IMAGE_VERSION
+        
+        # Push both tags
+        docker push ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}/megalinter-custom-flavor:latest
+        docker push ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}/megalinter-custom-flavor:$IMAGE_VERSION
+
+        # Echo newly pushed image tags
+        echo "Pushed custom flavor image: ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}/megalinter-custom-flavor:latest"
+        echo "Pushed custom flavor image: ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}/megalinter-custom-flavor:$IMAGE_VERSION"
+      shell: bash
 branding:
   icon: "check"
   color: "green"
