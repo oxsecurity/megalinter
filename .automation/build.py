@@ -3557,11 +3557,12 @@ def generate_custom_flavor():
 def build_custom_flavor(dockerfile):
     logging.info("Building custom flavor docker image…")
     work_dir = "/megalinter-builder" if os.path.isdir("/megalinter-builder") else REPO_HOME
+    tag_id = os.getenv('CUSTOM_FLAVOR_BUILD_REPO', 'megalinter-custom').replace('/', '_')
     command = [
         "docker",
         "build",
         "-t",
-        "megalinter-custom",
+        tag_id,
         "-f",
         dockerfile,
         work_dir,
