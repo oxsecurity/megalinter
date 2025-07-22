@@ -97,8 +97,17 @@ def display_header(mega_linter):
     logging.info(utils.format_hyphens("MegaLinter, by OX Security"))
     logging.info(utils.format_hyphens(""))
     if is_custom_flavor():
-        logging.info(
+        logging.warning(
             "YOU ARE USING A MEGALINTER CUSTOM FLAVOR"
+        )
+        logging.warning(
+            " - Custom flavor build repository: " + config.get(None, "CUSTOM_FLAVOR_BUILD_REPO", "SHOULD BE SET")
+        )
+        logging.warning(
+            " - Custom flavor build user: " + config.get(None, "CUSTOM_FLAVOR_BUILD_USER", "SHOULD BE SET")
+        )
+        logging.warning(
+            " - Custom flavor build date: " + config.get(None, "CUSTOM_FLAVOR_BUILD_DATE", "SHOULD BE SET")
         )
         logging.info(
             " - Flavor Builder Image Creation Date: " + config.get(None, "BUILD_DATE", "No docker image")

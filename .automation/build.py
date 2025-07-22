@@ -306,13 +306,21 @@ branding:
             logging.info(f"Updated {flavor_action_yml}")
     extra_lines = []
     if CUSTOM_FLAVOR is True:
+        current_date_iso = date.today().isoformat()
         extra_lines += [
             "ENV CUSTOM_FLAVOR=true \\",
             f"    BUILD_VERSION={os.getenv('BUILD_VERSION', 'local_build')} \\",
             f"    BUILD_DATE={os.getenv('BUILD_DATE', 'local_build')} \\",
-            f"    BUILD_REVISION={os.getenv('BUILD_REVISION', 'local_build')}",
+            f"    BUILD_REVISION={os.getenv('BUILD_REVISION', 'local_build')} \\",
+            f"    CUSTOM_FLAVOR_BUILD_DATE={current_date_iso} \\",
+            f"    CUSTOM_FLAVOR_BUILD_REPO={os.getenv('CUSTOM_FLAVOR_BUILD_REPO', 'local_build')} \\", 
+            f"    CUSTOM_FLAVOR_BUILD_REPO_URL={os.getenv('CUSTOM_FLAVOR_BUILD_REPO_URL', 'local_build')} \\", 
+            f"    CUSTOM_FLAVOR_BUILD_USER={os.getenv('CUSTOM_FLAVOR_BUILD_USER', 'local_build')}",
+            "",
+            'LABEL com.github.actions.name="MegaLinter Custom Flavor" \\',
+            f'     maintainer="{os.getenv("CUSTOM_FLAVOR_BUILD_USER", "local_build")}" \\',
+            f'     org.opencontainers.image.source="{os.getenv("CUSTOM_FLAVOR_BUILD_REPO_URL", "local_build")}"'
         ]
-
     extra_lines += [
         "COPY entrypoint.sh /entrypoint.sh",
         "RUN chmod +x entrypoint.sh",
@@ -3520,7 +3528,7 @@ def update_workflow_linters(file_path, linters):
 
 def generate_custom_flavor():
     megalinter_dir = "/megalinter-builder" if os.path.isdir("/megalinter-builder") else f"{REPO_HOME}/.automation/test"
-    work_dir = "/github/workspace" if os.path.isdir("/github/workspace") else work_dir
+    work_dir = "/github/workspace" if os.path.isdir("/github/workspace") else megalinter_dir
     reports_dir = f"{work_dir}/megalinter-reports" if work_dir == "/github/workspace" else f"{REPO_HOME}/megalinter-reports"
     flavor_file = f"{work_dir}/megalinter-custom-flavor.yml"
     with open(flavor_file, "r", encoding="utf-8") as f:
