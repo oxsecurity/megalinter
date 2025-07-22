@@ -101,7 +101,7 @@ def display_header(mega_linter):
             "YOU ARE USING A MEGALINTER CUSTOM FLAVOR"
         )
         logging.warning(
-            " - Custom flavor build repository: " + config.get(None, "CUSTOM_FLAVOR_BUILD_REPO", "SHOULD BE SET")
+            " - Custom flavor build repository URL: " + config.get(None, "CUSTOM_FLAVOR_BUILD_REPO_URL", "SHOULD BE SET")
         )
         logging.warning(
             " - Custom flavor build user: " + config.get(None, "CUSTOM_FLAVOR_BUILD_USER", "SHOULD BE SET")
