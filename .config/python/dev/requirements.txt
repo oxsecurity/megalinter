@@ -4,7 +4,7 @@ azure-devops==6.0.0b4
 beautifulsoup4==4.13.4
 commentjson==0.9.0
 fastapi==0.116.1
-gitpython==3.1.44
+gitpython==3.1.45
 giturlparse==0.12.0
 importlib-metadata==8.7.0
 json-schema-for-humans==1.4.1
