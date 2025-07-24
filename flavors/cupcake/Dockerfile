@@ -61,6 +61,7 @@ FROM golang:1-alpine AS revive
 ARG GO_REVIVE_VERSION
 RUN GOBIN=/usr/bin go install github.com/mgechev/revive@$GO_REVIVE_VERSION
 FROM ghcr.io/yannh/kubeconform:${KUBERNETES_KUBECONFORM_VERSION} AS kubeconform
+FROM mrtazz/checkmake:latest AS checkmake
 FROM zricethezav/gitleaks:${REPOSITORY_GITLEAKS_VERSION} AS gitleaks
 FROM checkmarx/kics:${REPOSITORY_KICS_VERSION} AS kics
 FROM trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION} AS trufflehog
@@ -530,6 +531,7 @@ COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
 COPY --link --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
 COPY --link --from=revive /usr/bin/revive /usr/bin/revive
 COPY --link --from=kubeconform /kubeconform /usr/bin/
+COPY --link --from=checkmake /checkmake /usr/bin/checkmake
 COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 COPY --link --from=kics /app/bin/kics /usr/bin/kics
 COPY --from=kics /app/bin/assets /usr/bin/assets
@@ -724,6 +726,9 @@ RUN wget --quiet https://github.com/pmd/pmd/releases/download/pmd_releases%2F${P
 # kubescape installation
     && ln -s /lib/libc.so.6 /usr/lib/libresolv.so.2 && \
     curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash -s -- -v "v${KUBERNETES_KUBESCAPE_VERSION}"
+#
+# checkmake installation
+# Managed with COPY --link --from=checkmake /checkmake /usr/bin/checkmake
 #
 # markdownlint installation
 #
