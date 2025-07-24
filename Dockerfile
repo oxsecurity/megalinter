@@ -239,7 +239,7 @@ ARG KUBERNETES_KUBESCAPE_VERSION=3.0.34
 ARG LUA_LUACHECK_VERSION=3.3.1
 
 # renovate: datasource=crate depName=selene
-ARG CARGO_SELENE_VERSION=0.28.0
+ARG CARGO_SELENE_VERSION=0.29.0
 # renovate: datasource=crate depName=stylua
 ARG CARGO_STYLUA_VERSION=2.0.0
 # renovate: datasource=npm depName=markdownlint-cli
