@@ -1,0 +1,3 @@
+label: <%= CUSTOM_FLAVOR_LABEL %>
+linters: 
+<%= CUSTOM_FLAVOR_LINTERS %>
