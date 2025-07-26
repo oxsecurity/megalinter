@@ -64,7 +64,7 @@ runs:
           echo "Pushing to DockerHub..."
           DOCKERHUB_IMAGE="${{ github.repository_owner }}/${{ github.event.repository.name }}-megalinter-custom-flavor"
           docker tag $IMAGE_NAME $DOCKERHUB_IMAGE:$IMAGE_VERSION
-          docker push $IMAGE_NAME $DOCKERHUB_IMAGE:$IMAGE_VERSION
+          docker push $DOCKERHUB_IMAGE:$IMAGE_VERSION
           if [ "${{ inputs.is-latest }}" = "true" ]; then
             docker tag $IMAGE_NAME $DOCKERHUB_IMAGE:latest
             docker push $DOCKERHUB_IMAGE:latest
@@ -83,7 +83,7 @@ runs:
         name: megalinter-custom-flavor-artifacts
         path: |
           megalinter-reports/
-        retention-days: 365
+        retention-days: 90
 
 branding:
   icon: "check"
