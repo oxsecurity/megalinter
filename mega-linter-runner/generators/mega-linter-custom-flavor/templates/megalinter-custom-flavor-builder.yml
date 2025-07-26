@@ -26,8 +26,9 @@ name: Build & Push MegaLinter Custom Flavor
 
 on:
   push:
+    branches-ignore: [ main ]
   release:
-    types: [ created, edited, published ]
+    types: [ edited, published ]
   workflow_dispatch:
 
 concurrency:

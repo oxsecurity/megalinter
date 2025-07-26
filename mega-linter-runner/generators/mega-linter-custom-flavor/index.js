@@ -2,6 +2,8 @@ import { asciiArt } from "../../lib/ascii.js";
 import Generator from 'yeoman-generator';
 import { simpleGit } from 'simple-git';
 import c from 'chalk';
+import fs from "fs"
+import yaml from "js-yaml";
 
 export default class GeneratorMegaLinter extends Generator {
   async prompting() {
@@ -32,6 +34,7 @@ Example: 'megalinter-custom-flavor-python-light'
     const schema = await response.json();
     const linterKeys = schema.definitions.enum_linter_keys.enum || [];
 
+    let defaultFlavorLabel = "MyCustomFlavor";
     let defaultSelectedLinters = [];
     if (globalThis.customFlavorLinters) {
       // Check if linters are valid , and crash if there is an invalid linter key
@@ -42,13 +45,27 @@ Example: 'megalinter-custom-flavor-python-light'
       });
       defaultSelectedLinters = globalThis.customFlavorLinters;
     }
+    else {
+      // Initialize data from existing configuration
+      const customFlavorConfigPath = this.destinationPath('megalinter-custom-flavor.yml');
+      if (fs.existsSync(customFlavorConfigPath)) {
+        const customFlavorConfigContent = fs.readFileSync(customFlavorConfigPath, 'utf8');
+        const customFlavorConfig = yaml.load(customFlavorConfigContent);
+        if (customFlavorConfig.label) {
+          defaultFlavorLabel = customFlavorConfig.label;
+        }
+        if (customFlavorConfig.linters) {
+          defaultSelectedLinters = customFlavorConfig.linters.map((linter) => linter.replace(/^\s*-\s*/, '').trim());
+        }
+      }
+    }
 
     const prompts = [
       {
         type: 'input',
         name: 'customFlavorLabel',
         message: 'What is the label of your custom flavor?',
-        default: 'my-custom-flavor'
+        default: defaultFlavorLabel
       },
       {
         type: 'checkbox',
