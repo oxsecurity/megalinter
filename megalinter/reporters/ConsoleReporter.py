@@ -120,25 +120,20 @@ class ConsoleReporter(Reporter):
             logging.info(table_line)
         logging.info("")
         if self.master.flavor_suggestions is not None:
-            if self.master.flavor_suggestions[0] == "new":
-                logging.warning(
-                    "[flavors] You could have same capabilities but better runtime performances"
-                    " if you request a new MegaLinter flavor."
-                )
-                linters_list_formatted = ", ".join(self.master.flavor_suggestions[1])
-                body = (
-                    "MegaLinter would run faster on my project if I had a flavor containing the following "
-                    f"list of linters:\n\n{linters_list_formatted}\n\n"
-                    "Would it be possible to create one ? Thanks :relaxed:"
-                )
-                new_flavor_url = (
-                    f"{self.issues_root}/new?assignees=&labels=enhancement&template=feature_request.md"
-                    f"&title={urllib.parse.quote('Request new MegaLinter flavor')}"
-                    f"&body={urllib.parse.quote(body)}"
-                )
-                logging.warning(
-                    f"[flavors] Use the following link to request the new flavor: {new_flavor_url}"
-                )
+            active_linter_names = [linter.name for linter in self.master.active_linters]
+            custom_flavor_command = (
+                "npx mega-linter-runner --custom-flavor-setup --custom-flavor-linters "
+                + ",".join(active_linter_names)
+            )
+            custom_flavor_message = (
+                "Your project could benefit from a custom flavor, "
+                "which would allow you to run only the linters you need, and thus improve runtime performances.\n\n"
+                "To create your custom flavor, follow the related documentation and commands: \n"
+                f"- Documentation: {ML_DOC_URL}/custom-flavors/\n"
+                f"- Command: `{custom_flavor_command}`"
+            )
+            if len(self.master.flavor_suggestions) == 1:
+                logging.warning(custom_flavor_message)
             else:
                 build_version = config.get(None, "BUILD_VERSION", DEFAULT_RELEASE)
                 action_version = (
@@ -161,4 +156,5 @@ class ConsoleReporter(Reporter):
                         f"{self.gh_url}/flavors/{suggestion['flavor']}/"
                     )
                     logging.warning(flavor_msg)
+                logging.warning(custom_flavor_message)
             logging.info("")
