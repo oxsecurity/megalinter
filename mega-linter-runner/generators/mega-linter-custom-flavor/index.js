@@ -1,22 +1,26 @@
 import { asciiArt } from "../../lib/ascii.js";
 import Generator from 'yeoman-generator';
 import { simpleGit } from 'simple-git';
+import c from 'chalk';
 
 export default class GeneratorMegaLinter extends Generator {
   async prompting() {
     console.log(asciiArt());
-    this.log(
+    this.log(c.cyan(
       `Welcome to the MegaLinter Custom Flavor generator !
 When you don't know what option to select, please use default values`
-    );
+    ));
 
     // Verify that the repo name contains "megalinter-custom-flavor"
     const git = simpleGit();
     const remote = await git.getRemotes(true);
     if (!remote[0].refs.fetch.includes("megalinter-custom-flavor")) {
-      throw new Error(
-        "This generator must be run in a repository whose name includes 'megalinter-custom-flavor'\nExample: 'megalinter-custom-flavor-python-light'"
-      );
+      const errorMessage = `
+ERROR: This generator must be run in a repository whose name includes 'megalinter-custom-flavor'
+Example: 'megalinter-custom-flavor-python-light'
+`
+      this.log(c.red(c.bold(errorMessage)));
+      throw new Error(errorMessage);
     }
     // Fetch https://raw.githubusercontent.com/megalinter/megalinter/main/megalinter/descriptors/schemas/megalinter-configuration.jsonschema.json
     this.log("Fetching MegaLinter configuration schema...");
@@ -70,8 +74,8 @@ When you don't know what option to select, please use default values`
 
   end() {
     this.log("You're all set !");
-    this.log(
-      "Now commit, push and create a pull request to see MegaLinter catching errors !"
+    this.log(c.green(
+      "Now commit, push then create a GitHub Release to generate your custom flavor !")
     );
   }
 
@@ -109,7 +113,7 @@ When you don't know what option to select, please use default values`
   _generateGitHubWorkflow() {
     this.fs.copyTpl(
       this.templatePath("megalinter-custom-flavor-builder.yml"),
-      this.destinationPath("./.github/wokflows/megalinter-custom-flavor-builder.yml"),
+      this.destinationPath("./.github/workflows/megalinter-custom-flavor-builder.yml"),
       {}
     );
   }
@@ -134,6 +138,7 @@ When you don't know what option to select, please use default values`
         CUSTOM_FLAVOR_LABEL: this.customFlavorLabel,
         CUSTOM_FLAVOR_LINTERS: this.selectedLinters,
         DOCKER_IMAGE_VERSION: this.customFlavorDockerImageVersion,
+        CUSTOM_FLAVOR_GITHUB_ACTION: this.customFlavorRepo
       }
     );
   }

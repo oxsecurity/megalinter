@@ -1,0 +1,4 @@
+# MegaLinter Custom Flavor configuration
+label: <%= CUSTOM_FLAVOR_LABEL %>
+linters:
+<%= CUSTOM_FLAVOR_LINTERS %>
