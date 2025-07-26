@@ -1,7 +1,6 @@
 import { asciiArt } from "../../lib/ascii.js";
 import Generator from 'yeoman-generator';
 import { simpleGit } from 'simple-git';
-import { DEFAULT_RELEASE } from "../../lib/config.js";
 
 export default class GeneratorMegaLinter extends Generator {
   async prompting() {
@@ -11,6 +10,14 @@ export default class GeneratorMegaLinter extends Generator {
 When you don't know what option to select, please use default values`
     );
 
+    // Verify that the repo name contains "megalinter-custom-flavor"
+    const git = simpleGit();
+    const remote = await git.getRemotes(true);
+    if (!remote[0].refs.fetch.includes("megalinter-custom-flavor")) {
+      throw new Error(
+        "This generator must be run in a repository whose name includes 'megalinter-custom-flavor'\nExample: 'megalinter-custom-flavor-python-light'"
+      );
+    }
     // Fetch https://raw.githubusercontent.com/megalinter/megalinter/main/megalinter/descriptors/schemas/megalinter-configuration.jsonschema.json
     this.log("Fetching MegaLinter configuration schema...");
     const url = 'https://raw.githubusercontent.com/megalinter/megalinter/main/megalinter/descriptors/schemas/megalinter-configuration.jsonschema.json';
@@ -19,7 +26,18 @@ When you don't know what option to select, please use default values`
       throw new Error(`Failed to fetch schema from ${url}`);
     }
     const schema = await response.json();
-    const linterKeys = schema.definition.enum_linter_keys.enum || [];
+    const linterKeys = schema.definitions.enum_linter_keys.enum || [];
+
+    let defaultSelectedLinters = [];
+    if (globalThis.customFlavorLinters) {
+      // Check if linters are valid , and crash if there is an invalid linter key
+      globalThis.customFlavorLinters.forEach((linter) => {
+        if (!linterKeys.includes(linter)) {
+          throw new Error(`Invalid linter key: ${linter}`);
+        }
+      });
+      defaultSelectedLinters = globalThis.customFlavorLinters;
+    }
 
     const prompts = [
       {
@@ -32,7 +50,8 @@ When you don't know what option to select, please use default values`
         type: 'checkbox',
         name: 'selectedLinters',
         message: 'Please select the linters you want to include in your custom flavor:',
-        choices: linterKeys
+        choices: linterKeys,
+        default: defaultSelectedLinters
       }
     ];
 
@@ -61,15 +80,19 @@ When you don't know what option to select, please use default values`
     this.customFlavorLabel = this.props.customFlavorLabel;
     // Custom flavor selected linters
     this.selectedLinters = this.props.selectedLinters.map((linter) => `  - ${linter}`).join("\n");
+    // Check at least one linter is selected
+    if (this.selectedLinters.length === 0) {
+      throw new Error("You must select at least one linter for your custom flavor");
+    }
     // Custom flavor author is git username
     const git = simpleGit();
     const user = await git.getConfig('user.name');
     this.customFlavorAuthor = user.value;
     // Get remote repo
     const remote = await git.getRemotes(true);
-      this.customFlavorRepo = remote[0].refs.fetch;
+    this.customFlavorRepo = remote[0].refs.fetch.replace('https://github.com/', '').replace('.git', '');
     // Custom flavor docker image version
-    this.customFlavorDockerImageVersion = `ghcr.io/${customFlavorRepo}/megalinter-custom-flavor:latest`;
+    this.customFlavorDockerImageVersion = `ghcr.io/${this.customFlavorRepo}/megalinter-custom-flavor:latest`;
   }
 
   _generateFlavorConfig() {
@@ -85,7 +108,7 @@ When you don't know what option to select, please use default values`
 
   _generateGitHubWorkflow() {
     this.fs.copyTpl(
-      this.templatePath(".github/wokflows/megalinter-custom-flavor-builder.yml"),
+      this.templatePath("megalinter-custom-flavor-builder.yml"),
       this.destinationPath("./.github/wokflows/megalinter-custom-flavor-builder.yml"),
       {}
     );
