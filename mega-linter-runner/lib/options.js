@@ -123,6 +123,17 @@ export const optionsDefinition = optionator.default({
       description: "Generate MegaLinter configuration in your project",
     },
     {
+      option: "custom-flavor-setup",
+      alias: "cfs",
+      type: "Boolean",
+      description: "Generate files to create a custom flavor",
+    },
+    {
+      option: "custom-flavor-linters",
+      type: "String",
+      description: "comma-separated list of linters to include in custom flavor",
+    },
+    {
       option: "upgrade",
       alias: "u",
       type: "Boolean",

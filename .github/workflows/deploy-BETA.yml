@@ -116,6 +116,15 @@ jobs:
           tags: |
             type=raw,value=beta
 
+      - name: Docker Metadata action (Server)
+        uses: docker/metadata-action@v5.7.0
+        id: meta-cfb
+        with:
+          images: |
+            name=ghcr.io/${{ github.repository }}-custom-flavor-builder
+          tags: |
+            type=raw,value=beta
+
       # - name: Docker Metadata action (Worker)
       #   uses: docker/metadata-action@v5.5.1
       #   id: meta-w
@@ -168,6 +177,22 @@ jobs:
         with:
           workflow: mirror-docker-image.yml
           inputs: '{ "source-image": "${{ steps.meta-s.outputs.tags }}", "target-image": "${{ steps.meta-s-dhub.outputs.tags }}" }'
+
+      - name: Build & Push Docker Image (Custom flavor builder)
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: Dockerfile-custom-flavor
+          platforms: linux/amd64
+          build-args: |
+            BUILD_DATE=${{ fromJSON(steps.meta-cfb.outputs.json).labels['org.opencontainers.image.created'] }}
+            BUILD_VERSION=${{ fromJSON(steps.meta-cfb.outputs.json).labels['org.opencontainers.image.version'] }}
+            BUILD_REVISION=${{ fromJSON(steps.meta-cfb.outputs.json).labels['org.opencontainers.image.revision'] }}
+          load: false
+          push: ${{ github.event_name != 'pull_request' }}
+          secrets: |
+            GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
+          tags: ${{ steps.meta-cfb.outputs.tags }}
 
       - name: Build & Push Docker Image
         uses: docker/build-push-action@v6

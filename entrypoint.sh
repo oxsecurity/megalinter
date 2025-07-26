@@ -42,6 +42,19 @@ if [ "${UPGRADE_LINTERS_VERSION}" == "true" ]; then
   exit $?
 fi
 
+# Called by custom flavor image
+if [ "${BUILD_CUSTOM_FLAVOR}" == "true" ]; then
+  echo "[MegaLinter init] BUILD CUSTOM FLAVOR"
+  if [ -d "/megalinter-builder" ]; then
+    # For when in megalinter-flavor-builder docker image !
+    GITHUB_TOKEN="${GITHUB_TOKEN}" python /megalinter-builder/.automation/build.py --custom-flavor
+  else
+    # For local tests only
+    GITHUB_TOKEN="${GITHUB_TOKEN}" python ./.automation/build.py --custom-flavor
+  fi
+  exit $?
+fi
+
 # Run test cases with pytest
 if [ "${TEST_CASE_RUN}" == "true" ]; then
   echo "[MegaLinter init] RUNNING TEST CASES"

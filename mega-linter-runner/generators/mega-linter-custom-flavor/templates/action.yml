@@ -1,0 +1,16 @@
+name: "MegaLinter Custom Flavor: <%= CUSTOM_FLAVOR_LABEL %>"
+author: "<%= CUSTOM_FLAVOR_AUTHOR %>"
+description: "MegaLinter Custom Flavor <%= CUSTOM_FLAVOR_LABEL %>"
+outputs:
+  has_updated_sources:
+    description: "0 if no source file has been updated, 1 if source files has been updated"
+runs:
+  using: "docker"
+  # You can manually update the Docker image version here, or use the latest tag
+  image: "docker://<%= DOCKER_IMAGE_VERSION %>"
+  args:
+    - "-v"
+    - "/var/run/docker.sock:/var/run/docker.sock:rw"
+branding:
+  icon: "check"
+  color: "green"

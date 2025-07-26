@@ -37,6 +37,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - Write a file for Github integration if GITHUB_STEP_SUMMARY is set
     - Truncate less linter output lines
   - Text reporter: Change the output file names to put the linter name first, then the status
+  - Enhance display of markdown summary
 
 - Doc
   - Update documentation in all megalinter descriptor files to improve accuracy and consistency
