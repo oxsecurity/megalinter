@@ -155,6 +155,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [phpstan](https://phpstan.org/) from 2.1.18 to **2.1.19** on 2025-07-21
   - [grype](https://github.com/anchore/grype) from 0.96.0 to **0.96.1** on 2025-07-21
   - [syft](https://github.com/anchore/syft) from 1.28.0 to **1.29.0** on 2025-07-21
+  - [selene](https://kampfkarren.github.io/selene/) from 0.28.0 to **0.29.0** on 2025-07-25
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15
