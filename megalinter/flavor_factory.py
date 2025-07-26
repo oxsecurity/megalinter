@@ -131,9 +131,6 @@ def check_active_linters_match_flavor(active_linters, request_id):
 
 # Compare active linters with available flavors to make suggestions to improve CI performances
 def get_megalinter_flavor_suggestions(active_linters):
-    flavor = get_image_flavor()
-    if flavor != "all":
-        return None
     all_flavors = get_all_flavors()
     matching_flavors = []
     for flavor_id, flavor_info in all_flavors.items():
@@ -152,19 +149,23 @@ def get_megalinter_flavor_suggestions(active_linters):
                 "linters_number": len(flavor_info["linters"]),
             }
             matching_flavors += [matching_flavor]
-    if len(matching_flavors) > 0:
-        # There are matching flavors
-        return sorted(
-            matching_flavors, key=lambda i: (i["linters_number"], i["flavor"])
-        )
-    # Propose user to request a new flavor for the list of linters
+    
+    results = []
 
+    # Propose user to request a new flavor for the list of linters
     new_flavor_linters = filter(
         lambda linter: linter.ignore_for_flavor_suggestions is False,
         active_linters,
     )
     new_flavor_linters_names = map(lambda linter: linter.name, new_flavor_linters)
-    return ["new", new_flavor_linters_names]
+    results += [new_flavor_linters_names]
+
+    if len(matching_flavors) > 0:
+        # There are matching flavors
+        results += sorted(
+            matching_flavors, key=lambda i: (i["linters_number"], i["flavor"])
+        )
+    return results
 
 
 def are_all_repository_linters(linter_names: list[str]) -> bool:
