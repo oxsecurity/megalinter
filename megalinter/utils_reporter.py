@@ -188,23 +188,20 @@ def build_markdown_summary_footer(reporter_self, action_run_url=""):
         )
 
     if reporter_self.master.flavor_suggestions is not None:
-        if reporter_self.master.flavor_suggestions[0] == "new":
-            footer += (
-                os.linesep
-                + "You could have same capabilities but better runtime performances"
-                " if you request a new MegaLinter flavor.\n"
-            )
-            body = (
-                "MegaLinter would run faster on my project if I had a flavor containing the following "
-                "list of linters: \n\n - Add languages/linters list here\n\n"
-                "Would it be possible to create one ? Thanks :relaxed:"
-            )
-            new_flavor_url = (
-                f"{ML_REPO_ISSUES_URL}/new?assignees=&labels=enhancement&template=feature_request.md"
-                f"&title={urllib.parse.quote('Request new MegaLinter flavor')}"
-                f"&body={urllib.parse.quote(body)}"
-            )
-            footer += f"- [Click here to request the new flavor]({new_flavor_url})"
+        active_linter_names = [linter.name for linter in reporter_self.master.active_linters]
+        custom_flavor_command = (
+            "npx mega-linter-runner --custom-flavor-setup --custom-flavor-linters "
+            + ",".join(active_linter_names)
+        )
+        custom_flavor_message = (
+            "Your project could benefit from a custom flavor, "
+            "which would allow you to run only the linters you need, and thus improve runtime performances.\n\n"
+            "To create your custom flavor, follow the related documentation and commands"
+            f"  - Documentation: [Custom Flavors]({ML_DOC_URL}/custom-flavors/)"
+            f"  - Command: `{custom_flavor_command}`"
+        )
+        if len(reporter_self.master.flavor_suggestions) == 1:
+            footer += os.linesep + os.linesep + custom_flavor_message
         else:
             footer += (
                 os.linesep
@@ -212,6 +209,8 @@ def build_markdown_summary_footer(reporter_self, action_run_url=""):
                 " if you use a MegaLinter flavor:" + os.linesep
             )
             for suggestion in reporter_self.master.flavor_suggestions:
+                if suggestion == "new":
+                    continue
                 build_version = config.get(None, "BUILD_VERSION", DEFAULT_RELEASE)
                 action_version = (
                     DEFAULT_RELEASE if len(build_version) > 20 else build_version
@@ -223,6 +222,7 @@ def build_markdown_summary_footer(reporter_self, action_run_url=""):
                     f"- [{action_path}]({ML_DOC_URL}/flavors/{suggestion['flavor']}/)"
                     f" ({suggestion['linters_number']} linters)" + os.linesep
                 )
+                footer += os.linesep + os.linesep + custom_flavor_message
         footer += os.linesep
 
     # Link to ox
