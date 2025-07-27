@@ -116,6 +116,7 @@ Example: 'megalinter-custom-flavor-python-light'
     // Get remote repo
     const remote = await git.getRemotes(true);
     this.customFlavorRepo = remote[0].refs.fetch.replace('https://github.com/', '').replace('.git', '');
+    this.customFlavorRepoUrl = remote[0].refs.fetch.replace('.git', '');
     // Custom flavor docker image version
     this.customFlavorDockerImageVersion = `ghcr.io/${this.customFlavorRepo}/megalinter-custom-flavor:latest`;
   }
@@ -160,7 +161,7 @@ Example: 'megalinter-custom-flavor-python-light'
         CUSTOM_FLAVOR_LINTERS_WITH_LINKS: this.selectedLintersWithLinks,
         DOCKER_IMAGE_VERSION: this.customFlavorDockerImageVersion,
         CUSTOM_FLAVOR_GITHUB_ACTION: this.customFlavorRepo,
-        CUSTOM_FLAVOR_REPO: this.customFlavorRepo,
+        CUSTOM_FLAVOR_REPO_URL: this.customFlavorRepoUrl,
         CUSTOM_FLAVOR_AUTHOR: this.customFlavorAuthor,
       }
     );

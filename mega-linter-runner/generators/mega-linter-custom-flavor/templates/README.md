@@ -2,7 +2,7 @@
 
 This custom MegaLinter aims to have an optimized Docker image size.
 
-It is built from official MegaLinter images, but maintained on <%= CUSTOM_FLAVOR_REPO %> by <%= CUSTOM_FLAVOR_AUTHOR %>
+It is built from official MegaLinter images, but is maintained on <%= CUSTOM_FLAVOR_REPO_URL %> by <%= CUSTOM_FLAVOR_AUTHOR %>
 
 ## Embedded linters
 
