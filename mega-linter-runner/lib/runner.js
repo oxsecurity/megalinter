@@ -54,6 +54,21 @@ export class MegaLinterRunner {
       return { status: 0 };
     }
 
+    // Run custom flavor generator
+    if (options.customFlavorSetup) {
+      if (options.customFlavorLinters) {
+        globalThis.customFlavorLinters = options.customFlavorLinters.split(",").map((linter) => linter.trim());
+      }
+      const env = createEnv();
+      const __dirname = dirname(fileURLToPath(import.meta.url));
+      const generatorPath = path.resolve(
+        path.join(__dirname, "..", "generators", "mega-linter-custom-flavor")
+      );
+      console.log("Yeoman generator used: " + generatorPath);
+      env.run(generatorPath);
+      return { status: 0 };
+    }
+
     // Run upgrader from v4 to v5
     if (options.upgrade) {
       const megaLinterUpgrader = new MegaLinterUpgrader();

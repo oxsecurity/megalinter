@@ -121,6 +121,26 @@ jobs:
           workflow: mirror-docker-image.yml
           inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter:v8", "target-image": "docker.io/oxsecurity/megalinter:latest" }'
           ref: main
+
+      - name: Build Flavor Builder Image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: Dockerfile-custom-flavor
+          platforms: linux/amd64
+          build-args: |
+            BUILD_DATE=${{ env.BUILD_DATE }}
+            BUILD_REVISION=${{ github.sha }}
+            BUILD_VERSION=${{ github.event.release.tag_name }}
+          load: false
+          push: true
+          secrets: |
+            GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
+          tags: |
+            ghcr.io/oxsecurity/megalinter-custom-flavor-builder:v9
+            ghcr.io/oxsecurity/megalinter-custom-flavor-builder:${{ github.event.release.tag_name }}
+            ghcr.io/oxsecurity/megalinter-custom-flavor-builder:latest
+
       # - name: Build Worker Image
       #   uses: docker/build-push-action@v6
       #   with:

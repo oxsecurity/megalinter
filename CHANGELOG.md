@@ -9,11 +9,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
 - Core
-  - Use uv to create the venv folder for pip-installed linters
+  - Create your own Megalinter Custom Flavors to dramatically improve your performances
+    - See [documentation](https://megalinter.io/beta/custom-flavors/) for usage
+    - Use `npx mega-linter-runner@beta --custom-flavor-setup` to initialize repo
+    - Suggest new flavors in reporters with a mega-linter-runner including the list of linters
   - New LLM Advisor: call external LLMs to get hints to solve linter errors, available in:
     - Console Reporter
     - Text Reporter
     - Git platforms PR/MR comments Reporter
+  - Use uv to create the venv folder for pip-installed linters
   - Add copilot instructions for GitHub Copilot
 
 - New linters
@@ -37,6 +41,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - Write a file for Github integration if GITHUB_STEP_SUMMARY is set
     - Truncate less linter output lines
   - Text reporter: Change the output file names to put the linter name first, then the status
+  - Enhance display of markdown summary
 
 - Doc
   - Update documentation in all megalinter descriptor files to improve accuracy and consistency
@@ -140,6 +145,29 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [snakemake](https://snakemake.github.io/) from 9.7.1 to **9.8.0** on 2025-07-16
   - [dartanalyzer](https://dart.dev/tools/dart-analyze) from 3.8.1 to **3.8.2** on 2025-07-17
   - [secretlint](https://github.com/secretlint/secretlint) from 10.2.0 to **10.2.1** on 2025-07-17
+  - [stylelint](https://stylelint.io) from 16.21.1 to **16.22.0** on 2025-07-19
+  - [npm-package-json-lint](https://npmpackagejsonlint.org/) from 8.0.0 to **9.0.0** on 2025-07-19
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.12.3 to **0.12.4** on 2025-07-19
+  - [ruff](https://github.com/astral-sh/ruff) from 0.12.3 to **0.12.4** on 2025-07-19
+  - [phpstan](https://phpstan.org/) from 2.1.17 to **2.1.18** on 2025-07-20
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.90.0 to **3.90.1** on 2025-07-20
+  - [v8r](https://github.com/chris48s/v8r) from 5.0.0 to **5.1.0** on 2025-07-21
+  - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.27.2 to **8.28.0** on 2025-07-21
+  - [golangci-lint](https://golangci-lint.run/) from 2.2.2 to **2.3.0** on 2025-07-21
+  - [snakemake](https://snakemake.github.io/) from 9.8.0 to **9.8.1** on 2025-07-21
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 9.1.5 to **9.2.0** on 2025-07-21
+  - [ktlint](https://ktlint.github.io) from 1.7.0 to **1.7.1** on 2025-07-21
+  - [phpstan](https://phpstan.org/) from 2.1.18 to **2.1.19** on 2025-07-21
+  - [grype](https://github.com/anchore/grype) from 0.96.0 to **0.96.1** on 2025-07-21
+  - [syft](https://github.com/anchore/syft) from 1.28.0 to **1.29.0** on 2025-07-21
+  - [selene](https://kampfkarren.github.io/selene/) from 0.28.0 to **0.29.0** on 2025-07-25
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2025.06.05 to **2025.07.26** on 2025-07-27
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.12.4 to **0.12.5** on 2025-07-27
+  - [ruff](https://github.com/astral-sh/ruff) from 0.12.4 to **0.12.5** on 2025-07-27
+  - [rubocop](https://rubocop.org/) from 1.78.0 to **1.79.0** on 2025-07-27
+  - [roslynator](https://github.com/dotnet/Roslynator) from 0.10.1.0 to **0.10.2.0** on 2025-07-27
+  - [kubescape](https://github.com/kubescape/kubescape) from 3.0.34 to **3.0.36** on 2025-07-27
+  - [phpstan](https://phpstan.org/) from 2.1.19 to **2.1.20** on 2025-07-27
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15

@@ -128,6 +128,10 @@ CVE-2025-5889
 CVE-2025-3730
 # https://avd.aquasec.com/nvd/cve-2025-53547 : helm, not applicable in MegaLinter context
 CVE-2025-53547
+# https://avd.aquasec.com/nvd/cve-2025-22868: golang.org/x/oauth2 unexpected memory consumption, not applicable in MegaLinter context   
+CVE-2025-22868
+# Not applicable in MegaLinter context as it is not used as server
+CVE-2025-7783
 # Dockerfile
 DS001
 DS002
