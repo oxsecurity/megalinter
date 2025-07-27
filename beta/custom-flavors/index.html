@@ -3318,13 +3318,27 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#prerequisites">
+<a class="md-nav__link" href="#create-a-custom-flavor">
 <span class="md-ellipsis">
-      Prerequisites
+      Create a custom flavor
     </span>
 </a>
-<nav aria-label="Prerequisites" class="md-nav">
+<nav aria-label="Create a custom flavor" class="md-nav">
 <ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#pre-requisites">
+<span class="md-ellipsis">
+      Pre-requisites
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#create-a-new-repository">
+<span class="md-ellipsis">
+      Create a new repository
+    </span>
+</a>
+</li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#clone-your-new-repository-locally">
 <span class="md-ellipsis">
@@ -3371,9 +3385,41 @@
 </nav>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#notes">
+<a class="md-nav__link" href="#use-a-custom-flavor">
 <span class="md-ellipsis">
-      Notes
+      Use a Custom Flavor
+    </span>
+</a>
+<nav aria-label="Use a Custom Flavor" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#github-action">
+<span class="md-ellipsis">
+      GitHub Action
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#docker-image">
+<span class="md-ellipsis">
+      Docker image
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#update-your-custom-flavor">
+<span class="md-ellipsis">
+      Update your custom flavor
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#upgrade-your-custom-flavor">
+<span class="md-ellipsis">
+      Upgrade your custom flavor
     </span>
 </a>
 </li>
@@ -3722,13 +3768,27 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#prerequisites">
+<a class="md-nav__link" href="#create-a-custom-flavor">
 <span class="md-ellipsis">
-      Prerequisites
+      Create a custom flavor
     </span>
 </a>
-<nav aria-label="Prerequisites" class="md-nav">
+<nav aria-label="Create a custom flavor" class="md-nav">
 <ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#pre-requisites">
+<span class="md-ellipsis">
+      Pre-requisites
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#create-a-new-repository">
+<span class="md-ellipsis">
+      Create a new repository
+    </span>
+</a>
+</li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#clone-your-new-repository-locally">
 <span class="md-ellipsis">
@@ -3775,9 +3835,41 @@
 </nav>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#notes">
+<a class="md-nav__link" href="#use-a-custom-flavor">
 <span class="md-ellipsis">
-      Notes
+      Use a Custom Flavor
+    </span>
+</a>
+<nav aria-label="Use a Custom Flavor" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#github-action">
+<span class="md-ellipsis">
+      GitHub Action
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#docker-image">
+<span class="md-ellipsis">
+      Docker image
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#update-your-custom-flavor">
+<span class="md-ellipsis">
+      Update your custom flavor
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#upgrade-your-custom-flavor">
+<span class="md-ellipsis">
+      Upgrade your custom flavor
     </span>
 </a>
 </li>
@@ -3791,11 +3883,16 @@
 <!-- markdownlint-disable MD013 -->
 <h1 id="custom-megalinter-flavors">Custom MegaLinter Flavors</h1>
 <p>You can easily generate your own MegaLinter custom flavor using the <code>mega-linter-runner</code> generator.</p>
-<h2 id="prerequisites">Prerequisites</h2>
+<h2 id="create-a-custom-flavor">Create a custom flavor</h2>
+<h3 id="pre-requisites">Pre-requisites</h3>
 <ul>
-<li>Create a new GitHub public repository whose name starts with <code>megalinter-custom-flavor</code> (e.g., <code>megalinter-custom-flavor-python-light</code>), with default README.</li>
 <li>Make sure you have <a href="https://nodejs.org/">Node.js</a> installed.</li>
 </ul>
+<h3 id="create-a-new-repository">Create a new repository</h3>
+<ul>
+<li>Create a new GitHub public repository whose name starts with <code>megalinter-custom-flavor</code> (example: <code>megalinter-custom-flavor-npm-groovy-lint</code>), with default README checked.</li>
+</ul>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../assets/images/custom-flavor-new-repo.png"><img alt="" src="../assets/images/custom-flavor-new-repo.png"/></a></p>
 <h3 id="clone-your-new-repository-locally">Clone your new repository locally</h3>
 <p>Clone your new repository to your local machine.
 You can work directly on <strong>main</strong> branch, or create a sub-branch if you prefer.</p>
@@ -3803,27 +3900,65 @@ You can work directly on <strong>main</strong> branch, or create a sub-branch if
 <p>Run the following command in your repository folder:</p>
 <pre><code class="language-bash">npx mega-linter-runner@beta --custom-flavor-setup
 </code></pre>
-<p>You can also send the list of linters as parameters</p>
+<p>You can also send the list of linters as parameters, available from the logs of any official MegaLinter flavor (if you don't see it, make sure <code>FLAVOR_SUGGESTIONS: true</code> is defined in your <code>.mega-linter.yml</code> config file).</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../assets/images/custom-flavor-command.png"><img alt="" src="../assets/images/custom-flavor-command.png"/></a></p>
 <pre><code class="language-bash">npx mega-linter-runner@beta --custom-flavor-setup --custom-flavor-linters "PYTHON_BANDIT,PYTHON_BLACK,PYTHON_RUFF,REPOSITORY_TRIVY"
 </code></pre>
 <h3 id="follow-the-interactive-prompts">Follow the interactive prompts</h3>
 <p>Select your custom flavor label and the linters you want to include.</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../assets/images/custom-flavor-linter-select.png"><img alt="" src="../assets/images/custom-flavor-linter-select.png"/></a></p>
 <h3 id="generated-files">Generated files</h3>
 <p>The generator will create all necessary configuration files, GitHub Actions workflow, and documentation in your repository.</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../assets/images/custom-flavor-generated-files.png"><img alt="" src="../assets/images/custom-flavor-generated-files.png"/></a></p>
 <h3 id="commit-and-push-your-changes">Commit and push your changes</h3>
-<p>Commit and push your changes to GitHub.</p>
+<p>Commit and push the generated files to GitHub.</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../assets/images/custom-flavor-commit-push.png"><img alt="" src="../assets/images/custom-flavor-commit-push.png"/></a></p>
 <h3 id="build-and-publish-your-custom-flavor">Build and publish your custom flavor</h3>
 <p>Create a GitHub release or push to any branch to trigger the GitHub action workflow that builds and publish your custom MegaLinter Docker image.</p>
-<h2 id="notes">Notes</h2>
+<p>The generated workflow will build and publish your custom flavor to GitHub Container Registry (ghcr.io) and optionally Docker Hub if you define variables and secrets:
+  - <code>DOCKERHUB_REPO</code> (variable)
+  - <code>DOCKERHUB_USERNAME</code> (secret)
+  - <code>DOCKERHUB_PASSWORD</code> (secret)</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../assets/images/custom-flavor-release-1.png"><img alt="" src="../assets/images/custom-flavor-release-1.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../assets/images/custom-flavor-release-2.png"><img alt="" src="../assets/images/custom-flavor-release-2.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="assets/images/custom-flavor-build-job.png"><img alt="" src="assets/images/custom-flavor-build-job.png"/></a></p>
+<h2 id="use-a-custom-flavor">Use a Custom Flavor</h2>
+<p>Follow <a href="https://megalinter.io/latest/install-assisted/">MegaLinter installation guide</a>, and replace related elements in the workflow.</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../assets/images/custom-flavor-run.png"><img alt="" src="../assets/images/custom-flavor-run.png"/></a></p>
+<h3 id="github-action">GitHub Action</h3>
+<p>On MegaLinter step in <code>.github/workflows/mega-linter.yml</code>, replace the official GitHub Action with your custom flavor repo action.</p>
+<p>Example:</p>
+<pre><code class="language-yaml">      # Mega-Linter
+      - name: Mega-Linter
+        id: ml
+        uses: nvuillam/megalinter-custom-flavor-npm-groovy-lint@main
+        env:
+          # All available variables are described in documentation
+          # https://megalinter.io/#configuration
+          VALIDATE_ALL_CODEBASE: true # ${{ github.event_name == 'push' &amp;&amp; github.ref == 'refs/heads/master' }} # Validates all source when push on master, else just the git diff with master. Override with true if you always want to lint all sources
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # ADD YOUR CUSTOM ENV VARIABLES HERE OR DEFINE THEM IN A FILE .mega-linter.yml AT THE ROOT OF YOUR REPOSITORY
+          # DISABLE: COPYPASTE,SPELL # Uncomment to disable copy-paste and spell checks
+</code></pre>
+<h3 id="docker-image">Docker image</h3>
+<p>Replace official MegaLinter image wih your custom flavor docker image</p>
+<p>Example with gitlab-ci.yml:</p>
+<pre><code class="language-yaml">mega-linter:
+  stage: test
+
+  # You can override MegaLinter flavor used to have faster performances
+  # More info at https://megalinter.io/latest/flavors/
+  image: ghcr.io/nvuillam/megalinter-custom-flavor-npm-groovy-lint/megalinter-custom-flavor:latest
+</code></pre>
+<h2 id="update-your-custom-flavor">Update your custom flavor</h2>
+<p>If you add/remove linters in your <code>mega-linter-flavor.yml</code>:</p>
 <ul>
-<li>The generated workflow will build and publish your custom flavor to GitHub Container Registry (ghcr.io) and optionally Docker Hub if you define variables and secrets:<ul>
-<li><code>DOCKERHUB_REPO</code> (variable)</li>
-<li><code>DOCKERHUB_USERNAME</code> (secret)</li>
-<li><code>DOCKERHUB_PASSWORD</code> (secret)</li>
+<li>Run <code>npx mega-linter-runner@beta --custom-flavor-setup</code> to apply upgrades to other files</li>
+<li>Delete your release and associated tag, then recreate the release with the same tag name.</li>
 </ul>
-</li>
-<li>You can customize the generated files as needed before publishing.</li>
-</ul>
+<h2 id="upgrade-your-custom-flavor">Upgrade your custom flavor</h2>
+<p>When a new MegaLinter official release is published, you can create a new version of your custom flavor.</p>
+<p>Just create a GitHub Release with the same version (tag) than the MegaLinter release you want to use to generate your upgraded flavor.</p>
 </article>
 </div>
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
