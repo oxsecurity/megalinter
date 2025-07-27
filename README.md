@@ -1419,6 +1419,8 @@ _The following table doesn't display docker pulls from [MegaLinter v4 & v5 image
 
 If you need a new flavor, [post an issue](https://github.com/oxsecurity/megalinter/issues) :wink:
 
+You can also generate your own [Custom Flavors](https://megalinter.io/beta/custom-flavors/) to have exactly the linters you need in your MegaLinter Docker image
+
 <!-- flavors-section-end -->
 
 <!-- badge-section-start -->

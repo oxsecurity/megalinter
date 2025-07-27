@@ -105,6 +105,10 @@ Example: 'megalinter-custom-flavor-python-light'
     if (this.selectedLinters.length === 0) {
       throw new Error("You must select at least one linter for your custom flavor");
     }
+    this.selectedLintersWithLinks = this.props.selectedLinters.map((linter) => {
+      const linterUrl = `https://megalinter.io/latest/descriptors/${linter.toLowerCase()}/`;
+      return `  - [${linter}](${linterUrl})`;
+    }).join("\n");
     // Custom flavor author is git username
     const git = simpleGit();
     const user = await git.getConfig('user.name');
@@ -153,9 +157,11 @@ Example: 'megalinter-custom-flavor-python-light'
       this.destinationPath("README.md"),
       {
         CUSTOM_FLAVOR_LABEL: this.customFlavorLabel,
-        CUSTOM_FLAVOR_LINTERS: this.selectedLinters,
+        CUSTOM_FLAVOR_LINTERS_WITH_LINKS: this.selectedLintersWithLinks,
         DOCKER_IMAGE_VERSION: this.customFlavorDockerImageVersion,
-        CUSTOM_FLAVOR_GITHUB_ACTION: this.customFlavorRepo
+        CUSTOM_FLAVOR_GITHUB_ACTION: this.customFlavorRepo,
+        CUSTOM_FLAVOR_REPO: this.customFlavorRepo,
+        CUSTOM_FLAVOR_AUTHOR: this.customFlavorAuthor,
       }
     );
   }
