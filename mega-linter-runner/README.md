@@ -105,6 +105,7 @@ The options are only related to mega-linter-runner. For MegaLinter options, plea
 | `-h` <br/> `--help`    | Show mega-linter-runner help                                                                                                                                                                    | <!-- -->          |
 | `-v` <br/> `--version` | Show mega-linter-runner version                                                                                                                                                                 | <!-- -->          |
 | `-i` <br/> `--install` | Generate MegaLinter configuration files                                                                                                                                                         | <!-- -->          |
+| `--container-engine`   | Allows to specify a docker engine (`docker` or `podman`)                                                                                                                                        | `docker`          |
 | `--container-name`     | Specify MegaLinter container name                                                                                                                                                               | <!-- -->          |
 | `--remove-container`   | Remove MegaLinter Docker container when done                                                                                                                                                    | <!-- -->          |
 
