@@ -165,6 +165,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [ruff-format](https://github.com/astral-sh/ruff) from 0.12.4 to **0.12.5** on 2025-07-27
   - [ruff](https://github.com/astral-sh/ruff) from 0.12.4 to **0.12.5** on 2025-07-27
   - [rubocop](https://rubocop.org/) from 1.78.0 to **1.79.0** on 2025-07-27
+  - [roslynator](https://github.com/dotnet/Roslynator) from 0.10.1.0 to **0.10.2.0** on 2025-07-27
+  - [kubescape](https://github.com/kubescape/kubescape) from 3.0.34 to **3.0.36** on 2025-07-27
+  - [phpstan](https://phpstan.org/) from 2.1.19 to **2.1.20** on 2025-07-27
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15
