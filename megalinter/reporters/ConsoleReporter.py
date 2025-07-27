@@ -3,7 +3,6 @@
 Output results in console
 """
 import logging
-import urllib
 
 import terminaltables
 from megalinter import Reporter, config
