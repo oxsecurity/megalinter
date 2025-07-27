@@ -115,9 +115,7 @@ DESCRIPTOR_JSON_SCHEMA = (
     f"{REPO_HOME}/megalinter/descriptors/schemas/megalinter-descriptor.jsonschema.json"
 )
 CONFIG_JSON_SCHEMA = f"{REPO_HOME}/megalinter/descriptors/schemas/megalinter-configuration.jsonschema.json"
-CUSTOM_FLAVOR_JSON_SCHEMA = (
-    f"{REPO_HOME}/megalinter/descriptors/schemas/megalinter-custom-flavor.jsonschema.json"
-)
+CUSTOM_FLAVOR_JSON_SCHEMA = f"{REPO_HOME}/megalinter/descriptors/schemas/megalinter-custom-flavor.jsonschema.json"
 OWN_MEGALINTER_CONFIG_FILE = f"{REPO_HOME}/.mega-linter.yml"
 
 IDE_LIST = {
@@ -2898,11 +2896,14 @@ def generate_json_schema_enums():
         outfile.write("\n")
     # Also update megalinter custom flavor schema
     with open(CUSTOM_FLAVOR_JSON_SCHEMA, "r", encoding="utf-8") as json_flavor_file:
-        json_flavor_schema = json.load(json_flavor_file)    
-    json_flavor_schema["definitions"]["enum_linter_keys"]["enum"] = json_schema["definitions"]["enum_linter_keys"]["enum"]
+        json_flavor_schema = json.load(json_flavor_file)
+    json_flavor_schema["definitions"]["enum_linter_keys"]["enum"] = json_schema[
+        "definitions"
+    ]["enum_linter_keys"]["enum"]
     with open(CUSTOM_FLAVOR_JSON_SCHEMA, "w", encoding="utf-8") as outfile_flavor:
         json.dump(json_flavor_schema, outfile_flavor, indent=2, sort_keys=True)
         outfile_flavor.write("\n")
+
 
 # Collect linters info from linter url, later used to build link preview card within linter documentation
 def collect_linter_previews():

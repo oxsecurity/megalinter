@@ -6,7 +6,13 @@ import logging
 
 import terminaltables
 from megalinter import Reporter, config
-from megalinter.constants import DEFAULT_RELEASE, ML_DOC_URL, ML_REPO, ML_REPO_URL, ML_VERSION
+from megalinter.constants import (
+    DEFAULT_RELEASE,
+    ML_DOC_URL,
+    ML_REPO,
+    ML_REPO_URL,
+    ML_VERSION,
+)
 from megalinter.utils import blue
 from megalinter.utils_reporter import log_section_end
 
