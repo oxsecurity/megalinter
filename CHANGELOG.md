@@ -168,6 +168,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [roslynator](https://github.com/dotnet/Roslynator) from 0.10.1.0 to **0.10.2.0** on 2025-07-27
   - [kubescape](https://github.com/kubescape/kubescape) from 3.0.34 to **3.0.36** on 2025-07-27
   - [phpstan](https://phpstan.org/) from 2.1.19 to **2.1.20** on 2025-07-27
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 15.2.0 to **15.2.1** on 2025-07-27
+  - [pmd](https://pmd.github.io/) from 7.15.0 to **7.16.0** on 2025-07-27
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.90.1 to **3.90.2** on 2025-07-27
+  - [snakemake](https://snakemake.github.io/) from 9.8.1 to **9.8.2** on 2025-07-27
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15
