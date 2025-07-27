@@ -653,6 +653,8 @@ steps:
 
 To benefit from Pull Request comments, please follow [configuration instructions](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/AzureCommentReporter.md)
 
+Note: If your pipelines run on Azure DevOps but your source code is hosted on GitHub, and you want status reports to appear on GitHub, you must provide additional repository information to the pipeline. See this [example](https://github.com/firedigger/megalinter-azure-pipelines-with-github-repository) for guidance.
+
 #### Detailed Tutorial
 
 You can also follow this [detailed tutorial](https://github.com/DonKoning/megaLinter) by [DonKoning](https://github.com/DonKoning)
