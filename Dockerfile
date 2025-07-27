@@ -122,7 +122,7 @@ ARG POWERSHELL_VERSION=7.5.2
 # renovate: datasource=npm depName=@salesforce/cli
 ARG NPM_SALESFORCE_CLI_VERSION=2.97.6
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
-ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.18.0
+ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.18.1
 # renovate: datasource=npm depName=sfdx-hardis
 ARG SFDX_HARDIS_VERSION=5.45.0
 # renovate: datasource=npm depName=typescript
@@ -287,7 +287,7 @@ ARG PIP_MYPY_VERSION=1.17.0
 # renovate: datasource=npm depName=pyright
 ARG NPM_PYRIGHT_VERSION=1.1.403
 # renovate: datasource=pypi depName=ruff
-ARG PIP_RUFF_VERSION=0.12.4
+ARG PIP_RUFF_VERSION=0.12.5
 # renovate: datasource=github-tags depName=nxadm/rakudo-pkg
 ARG RAKU_RAKU_VERSION=2024.12
 ARG RAKU_RAKU_ALPINE_VERSION=3.20
@@ -325,7 +325,7 @@ ARG PIP_RSTCHECK_CLICK_VERSION=8.2.1
 # renovate: datasource=pypi depName=rstfmt
 ARG PIP_RSTFMT_VERSION=0.0.14
 # renovate: datasource=rubygems depName=rubocop
-ARG GEM_RUBOCOP_VERSION=1.78.0
+ARG GEM_RUBOCOP_VERSION=1.79.0
 # renovate: datasource=rubygems depName=rubocop-github
 ARG GEM_RUBOCOP_GITHUB_VERSION=0.26.0
 # renovate: datasource=rubygems depName=rubocop-performance
