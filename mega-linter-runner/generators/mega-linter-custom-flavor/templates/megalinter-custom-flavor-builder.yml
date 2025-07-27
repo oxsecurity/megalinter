@@ -66,7 +66,7 @@ jobs:
         continue-on-error: true
 
       - name: Build MegaLinter Custom Flavor
-        uses: oxsecurity/megalinter/flavors/custom-builder@alpha
+        uses: oxsecurity/megalinter/flavors/custom-builder@main
         with:
           megalinter-custom-flavor-builder-tag: ${{ github.event_name == 'release' && github.event.release.tag_name || 'alpha' }}
           is-latest: ${{ github.event_name == 'release' && 'true' || 'false' }}
