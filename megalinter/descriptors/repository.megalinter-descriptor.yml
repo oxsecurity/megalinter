@@ -597,6 +597,7 @@ linters:
     cli_config_default_value: auto
     ignore_file_name: .semgrepignore
     cli_lint_extra_args:
+      - --no-git
       - --error # Exit 1 when errors are found
     cli_lint_extra_args_after:
       - "{{WORKSPACE}}"
