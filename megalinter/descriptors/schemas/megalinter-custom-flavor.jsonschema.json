@@ -1,7 +1,6 @@
 {
   "$id": "http://github.com/oxsecurity/megalinter-custom-flavor.json",
   "$schema": "http://json-schema.org/draft-07/schema",
-  "type": "object",
   "additionalProperties": false,
   "definitions": {
     "enum_linter_keys": {
@@ -152,16 +151,20 @@
   "description": "MegaLinter Custom Flavor configuration file",
   "properties": {
     "label": {
-      "type": "string",
-      "description": "Label for the custom MegaLinter flavor."
+      "description": "Label for the custom MegaLinter flavor.",
+      "type": "string"
     },
     "linters": {
-      "type": "array",
+      "description": "List of linter IDs to include in the flavor.",
       "items": {
         "$ref": "#/definitions/enum_linter_keys"
       },
-      "description": "List of linter IDs to include in the flavor."
+      "type": "array"
     }
   },
-  "required": ["label", "linters"]
+  "required": [
+    "label",
+    "linters"
+  ],
+  "type": "object"
 }
