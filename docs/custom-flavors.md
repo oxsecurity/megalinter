@@ -23,13 +23,13 @@ You can work directly on **main** branch, or create a sub-branch if you prefer.
 Run the following command in your repository folder:
 
 ```bash
-npx mega-linter-runner --custom-flavor-setup
+npx mega-linter-runner@beta --custom-flavor-setup
 ```
 
 You can also send the list of linters as parameters
 
 ```bash
-npx mega-linter-runner --custom-flavor-setup --custom-flavor-linters "PYTHON_BANDIT,PYTHON_BLACK,PYTHON_RUFF,REPOSITORY_TRIVY"
+npx mega-linter-runner@beta --custom-flavor-setup --custom-flavor-linters "PYTHON_BANDIT,PYTHON_BLACK,PYTHON_RUFF,REPOSITORY_TRIVY"
 ```
 
 ### Follow the interactive prompts

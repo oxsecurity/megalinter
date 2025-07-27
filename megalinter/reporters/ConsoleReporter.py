@@ -6,7 +6,7 @@ import logging
 
 import terminaltables
 from megalinter import Reporter, config
-from megalinter.constants import DEFAULT_RELEASE, ML_DOC_URL, ML_REPO, ML_REPO_URL
+from megalinter.constants import DEFAULT_RELEASE, ML_DOC_URL, ML_REPO, ML_REPO_URL, ML_VERSION
 from megalinter.utils import blue
 from megalinter.utils_reporter import log_section_end
 
@@ -121,7 +121,7 @@ class ConsoleReporter(Reporter):
         if self.master.flavor_suggestions is not None:
             active_linter_names = [linter.name for linter in self.master.active_linters]
             custom_flavor_command = (
-                "npx mega-linter-runner --custom-flavor-setup --custom-flavor-linters "
+                f"npx mega-linter-runner@{ML_VERSION} --custom-flavor-setup --custom-flavor-linters "
                 + ",".join(active_linter_names)
             )
             custom_flavor_message = (

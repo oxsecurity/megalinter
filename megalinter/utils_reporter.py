@@ -11,6 +11,7 @@ from megalinter.constants import (
     ML_DOC_URL,
     ML_DOC_URL_DESCRIPTORS_ROOT,
     ML_REPO,
+    ML_VERSION,
     OX_MARKDOWN_LINK,
 )
 from pytablewriter import Align, MarkdownTableWriter
@@ -190,7 +191,7 @@ def build_markdown_summary_footer(reporter_self, action_run_url=""):
             linter.name for linter in reporter_self.master.active_linters
         ]
         custom_flavor_command = (
-            "npx mega-linter-runner --custom-flavor-setup --custom-flavor-linters "
+            f"npx mega-linter-runner@{ML_VERSION} --custom-flavor-setup --custom-flavor-linters "
             + ",".join(active_linter_names)
         )
         custom_flavor_message = (
