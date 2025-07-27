@@ -49,6 +49,7 @@ from megalinter.constants import (
     ML_DOCKER_IMAGE_LEGACY,
     ML_DOCKER_IMAGE_LEGACY_V5,
     ML_DOCKER_IMAGE_WITH_HOST,
+    ML_DOCKER_NAME,
     ML_REPO,
     ML_REPO_URL,
 )
