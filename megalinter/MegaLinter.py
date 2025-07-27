@@ -296,6 +296,7 @@ class Megalinter:
         if (
             self.validate_all_code_base is True
             and config.get(self.request_id, "FLAVOR_SUGGESTIONS", "true") == "true"
+            and not flavor_factory.is_custom_flavor()
         ):
             self.flavor_suggestions = flavor_factory.get_megalinter_flavor_suggestions(
                 self.active_linters
