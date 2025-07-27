@@ -162,6 +162,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [syft](https://github.com/anchore/syft) from 1.28.0 to **1.29.0** on 2025-07-21
   - [selene](https://kampfkarren.github.io/selene/) from 0.28.0 to **0.29.0** on 2025-07-25
   - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2025.06.05 to **2025.07.26** on 2025-07-27
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.12.4 to **0.12.5** on 2025-07-27
+  - [ruff](https://github.com/astral-sh/ruff) from 0.12.4 to **0.12.5** on 2025-07-27
+  - [rubocop](https://rubocop.org/) from 1.78.0 to **1.79.0** on 2025-07-27
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15
