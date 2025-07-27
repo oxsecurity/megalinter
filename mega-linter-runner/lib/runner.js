@@ -99,8 +99,8 @@ export class MegaLinterRunner {
               ? `megalinter/megalinter-${options.flavor}`
               : // << v5 retrocompatibility
               options.flavor === "all" || options.flavor == null
-                ? "oxsecurity/megalinter"
-                : `oxsecurity/megalinter-${options.flavor}`;
+                ? "ghcr.io/oxsecurity/megalinter"
+                : `ghcr.io/oxsecurity/megalinter-${options.flavor}`;
     this.checkPreviousVersion(release);
     const dockerImage = options.image || `${dockerImageName}:${release}`; // Docker image can be directly sent in options
 

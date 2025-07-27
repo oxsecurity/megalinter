@@ -17,6 +17,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - Console Reporter
     - Text Reporter
     - Git platforms PR/MR comments Reporter
+  - Use ghcr.io docker images by default because of rate limits on docker.io
   - Use uv to create the venv folder for pip-installed linters
   - Add copilot instructions for GitHub Copilot
 
