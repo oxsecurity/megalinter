@@ -4,7 +4,6 @@ import logging
 import os
 import subprocess
 import time
-import urllib
 
 from megalinter import config, utils
 from megalinter.constants import (
@@ -12,7 +11,6 @@ from megalinter.constants import (
     ML_DOC_URL,
     ML_DOC_URL_DESCRIPTORS_ROOT,
     ML_REPO,
-    ML_REPO_ISSUES_URL,
     OX_MARKDOWN_LINK,
 )
 from pytablewriter import Align, MarkdownTableWriter
@@ -96,7 +94,7 @@ def build_markdown_summary_header(reporter_self, action_run_url=""):
         and reporter_self.master.status == "success"
         else "✅⚠️" if reporter_self.master.status == "warning" else "❌"
     )
-    # Build status label 
+    # Build status label
     if reporter_self.master.status == "warning":
         status_label = "Success with warnings"
     else:
@@ -188,7 +186,9 @@ def build_markdown_summary_footer(reporter_self, action_run_url=""):
         )
 
     if reporter_self.master.flavor_suggestions is not None:
-        active_linter_names = [linter.name for linter in reporter_self.master.active_linters]
+        active_linter_names = [
+            linter.name for linter in reporter_self.master.active_linters
+        ]
         custom_flavor_command = (
             "npx mega-linter-runner --custom-flavor-setup --custom-flavor-linters "
             + ",".join(active_linter_names)

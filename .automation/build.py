@@ -313,8 +313,8 @@ branding:
             f"    BUILD_DATE={os.getenv('BUILD_DATE', 'local_build')} \\",
             f"    BUILD_REVISION={os.getenv('BUILD_REVISION', 'local_build')} \\",
             f"    CUSTOM_FLAVOR_BUILD_DATE={current_date_time_iso} \\",
-            f"    CUSTOM_FLAVOR_BUILD_REPO={os.getenv('CUSTOM_FLAVOR_BUILD_REPO', 'local_build')} \\", 
-            f"    CUSTOM_FLAVOR_BUILD_REPO_URL={os.getenv('CUSTOM_FLAVOR_BUILD_REPO_URL', 'local_build')} \\", 
+            f"    CUSTOM_FLAVOR_BUILD_REPO={os.getenv('CUSTOM_FLAVOR_BUILD_REPO', 'local_build')} \\",
+            f"    CUSTOM_FLAVOR_BUILD_REPO_URL={os.getenv('CUSTOM_FLAVOR_BUILD_REPO_URL', 'local_build')} \\",
             f"    CUSTOM_FLAVOR_BUILD_USER={os.getenv('CUSTOM_FLAVOR_BUILD_USER', 'local_build')}",
             "",
             'LABEL com.github.actions.name="MegaLinter Custom Flavor" \\',
@@ -322,7 +322,7 @@ branding:
             f'      org.opencontainers.image.source="{os.getenv("CUSTOM_FLAVOR_BUILD_REPO_URL", "local_build")}" \\',
             f'      org.opencontainers.image.created="{os.getenv("BUILD_DATE", "local_build")}" \\',
             f'      org.opencontainers.image.revision="{os.getenv("BUILD_REVISION", "local_build")}" \\',
-            f'      org.opencontainers.image.version="{os.getenv("BUILD_VERSION", "local_build")}"'
+            f'      org.opencontainers.image.version="{os.getenv("BUILD_VERSION", "local_build")}"',
         ]
     extra_lines += [
         "COPY entrypoint.sh /entrypoint.sh",
@@ -3530,9 +3530,19 @@ def update_workflow_linters(file_path, linters):
 
 
 def generate_custom_flavor():
-    megalinter_dir = "/megalinter-builder" if os.path.isdir("/megalinter-builder") else f"{REPO_HOME}/.automation/test"
-    work_dir = "/github/workspace" if os.path.isdir("/github/workspace") else megalinter_dir
-    reports_dir = f"{work_dir}/megalinter-reports" if work_dir == "/github/workspace" else f"{REPO_HOME}/megalinter-reports"
+    megalinter_dir = (
+        "/megalinter-builder"
+        if os.path.isdir("/megalinter-builder")
+        else f"{REPO_HOME}/.automation/test"
+    )
+    work_dir = (
+        "/github/workspace" if os.path.isdir("/github/workspace") else megalinter_dir
+    )
+    reports_dir = (
+        f"{work_dir}/megalinter-reports"
+        if work_dir == "/github/workspace"
+        else f"{REPO_HOME}/megalinter-reports"
+    )
     flavor_file = f"{work_dir}/megalinter-custom-flavor.yml"
     with open(flavor_file, "r", encoding="utf-8") as f:
         flavor_info = yaml.safe_load(f)
@@ -3547,8 +3557,10 @@ def generate_custom_flavor():
     shutil.copyfile(dockerfile, f"{reports_dir}/Dockerfile-megalinter-custom")
     # Delete folder containing dockerfile if runned locally
     dockerfile_tmp_dir = os.path.dirname(dockerfile_tmp)
-    if os.path.isdir(dockerfile_tmp_dir) and '/.automation/test' in work_dir:
-        logging.info(f"Deleting folder {dockerfile_tmp_dir} containing custom flavor dockerfile")
+    if os.path.isdir(dockerfile_tmp_dir) and "/.automation/test" in work_dir:
+        logging.info(
+            f"Deleting folder {dockerfile_tmp_dir} containing custom flavor dockerfile"
+        )
         shutil.rmtree(dockerfile_tmp_dir, ignore_errors=True)
     # Display dockerfile content in log
     with open(dockerfile, "r", encoding="utf-8") as f:
@@ -3559,8 +3571,12 @@ def generate_custom_flavor():
 
 def build_custom_flavor(dockerfile):
     logging.info("Building custom flavor docker image…")
-    work_dir = "/megalinter-builder" if os.path.isdir("/megalinter-builder") else REPO_HOME
-    tag_id = os.getenv('CUSTOM_FLAVOR_BUILD_REPO', 'megalinter-custom').replace('/', '_')
+    work_dir = (
+        "/megalinter-builder" if os.path.isdir("/megalinter-builder") else REPO_HOME
+    )
+    tag_id = os.getenv("CUSTOM_FLAVOR_BUILD_REPO", "megalinter-custom").replace(
+        "/", "_"
+    )
     command = [
         "docker",
         "build",

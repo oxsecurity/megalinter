@@ -26,9 +26,9 @@ name: Build & Push MegaLinter Custom Flavor
 
 on:
   push:
-    branches-ignore: [ main ]
+    branches-ignore: [main]
   release:
-    types: [ edited, published ]
+    types: [edited, published]
   workflow_dispatch:
 
 concurrency:
@@ -42,13 +42,13 @@ jobs:
     permissions:
       contents: read
       packages: write
-    
+
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      
+
       - name: Log in to GitHub Container Registry
         uses: docker/login-action@v3
         with:
@@ -78,4 +78,3 @@ jobs:
           CUSTOM_FLAVOR_BUILD_REPO: ${{ github.repository }}
           CUSTOM_FLAVOR_BUILD_REPO_URL: ${{ github.repositoryUrl }}
           CUSTOM_FLAVOR_BUILD_USER: ${{ github.actor }}
-
