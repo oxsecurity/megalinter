@@ -68,7 +68,7 @@ jobs:
       - name: Build MegaLinter Custom Flavor
         uses: oxsecurity/megalinter/flavors/custom-builder@main
         with:
-          megalinter-custom-flavor-builder-tag: ${{ github.event_name == 'release' && github.event.release.tag_name || 'alpha' }}
+          megalinter-custom-flavor-builder-tag: ${{ github.event_name == 'release' && github.event.release.tag_name || 'beta' }}
           is-latest: ${{ github.event_name == 'release' && 'true' || 'false' }}
           upload-to-ghcr: "true"
           upload-to-dockerhub: ${{ secrets.DOCKERHUB_USERNAME != '' && secrets.DOCKERHUB_PASSWORD != '' && 'true' || 'false' }}
