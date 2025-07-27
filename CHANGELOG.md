@@ -9,11 +9,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
 - Core
-  - Use uv to create the venv folder for pip-installed linters
+  - Create your own Megalinter Custom Flavors to dramatically improve your performances
+    - See [documentation](https://megalinter.io/beta/custom-flavors/) for usage
+    - Use `npx mega-linter-runner@beta --custom-flavor-setup` to initialize repo
+    - Suggest new flavors in reporters with a mega-linter-runner including the list of linters
   - New LLM Advisor: call external LLMs to get hints to solve linter errors, available in:
     - Console Reporter
     - Text Reporter
     - Git platforms PR/MR comments Reporter
+  - Use uv to create the venv folder for pip-installed linters
   - Add copilot instructions for GitHub Copilot
 
 - New linters
@@ -37,6 +41,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - Write a file for Github integration if GITHUB_STEP_SUMMARY is set
     - Truncate less linter output lines
   - Text reporter: Change the output file names to put the linter name first, then the status
+  - Enhance display of markdown summary
 
 - Doc
   - Update documentation in all megalinter descriptor files to improve accuracy and consistency

@@ -8,6 +8,7 @@ import tomllib
 import requests
 from megalinter import config, utils
 from megalinter.constants import ML_DOC_URL
+from megalinter.flavor_factory import is_custom_flavor
 from megalinter.utils_reporter import log_section_start
 
 
@@ -95,15 +96,44 @@ def display_header(mega_linter):
     logging.info(utils.format_hyphens(""))
     logging.info(utils.format_hyphens("MegaLinter, by OX Security"))
     logging.info(utils.format_hyphens(""))
-    logging.info(
-        " - Image Creation Date: " + config.get(None, "BUILD_DATE", "No docker image")
-    )
-    logging.info(
-        " - Image Revision: " + config.get(None, "BUILD_REVISION", "No docker image")
-    )
-    logging.info(
-        " - Image Version: " + config.get(None, "BUILD_VERSION", "No docker image")
-    )
+    if is_custom_flavor():
+        logging.warning("YOU ARE USING A MEGALINTER CUSTOM FLAVOR")
+        logging.warning(
+            " - Custom flavor build repository URL: "
+            + config.get(None, "CUSTOM_FLAVOR_BUILD_REPO_URL", "SHOULD BE SET")
+        )
+        logging.warning(
+            " - Custom flavor build user: "
+            + config.get(None, "CUSTOM_FLAVOR_BUILD_USER", "SHOULD BE SET")
+        )
+        logging.warning(
+            " - Custom flavor build date: "
+            + config.get(None, "CUSTOM_FLAVOR_BUILD_DATE", "SHOULD BE SET")
+        )
+        logging.info(
+            " - Flavor Builder Image Creation Date: "
+            + config.get(None, "BUILD_DATE", "No docker image")
+        )
+        logging.info(
+            " - Flavor Builder Image Revision: "
+            + config.get(None, "BUILD_REVISION", "No docker image")
+        )
+        logging.info(
+            " - Flavor Builder Image Version: "
+            + config.get(None, "BUILD_VERSION", "No docker image")
+        )
+    else:
+        logging.info(
+            " - Image Creation Date: "
+            + config.get(None, "BUILD_DATE", "No docker image")
+        )
+        logging.info(
+            " - Image Revision: "
+            + config.get(None, "BUILD_REVISION", "No docker image")
+        )
+        logging.info(
+            " - Image Version: " + config.get(None, "BUILD_VERSION", "No docker image")
+        )
     logging.info(utils.format_hyphens(""))
     logging.info("The MegaLinter documentation can be found at:")
     logging.info(" - " + ML_DOC_URL)

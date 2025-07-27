@@ -130,6 +130,7 @@ class Megalinter:
         # Runtime properties
         self.reporters = []
         self.linters: list[Linter] = []
+        self.active_linters: list[Linter] = []
         self.file_extensions = []
         self.file_names_regex = []
         self.status = "success"
@@ -201,24 +202,24 @@ class Megalinter:
         self.collect_files()
 
         # Process linters serial or parallel according to configuration
-        active_linters = []
+        self.active_linters = []
         linters_do_fixes = False
         for linter in self.linters:
             if linter.is_active is True:
-                active_linters += [linter]
+                self.active_linters += [linter]
                 if linter.apply_fixes is True:
                     linters_do_fixes = True
 
         # Display warning if selected flavors doesn't match all linters
         if (
             flavor_factory.check_active_linters_match_flavor(
-                active_linters, self.request_id
+                self.active_linters, self.request_id
             )
             is False
         ):
             # Remove linters that are not existing in the flavor
-            active_linters = [
-                linter for linter in active_linters if linter.is_active is True
+            self.active_linters = [
+                linter for linter in self.active_linters if linter.is_active is True
             ]
 
         # Initialize reports
@@ -227,7 +228,7 @@ class Megalinter:
 
         active_descriptor_ids = []
 
-        for active_linter in active_linters:
+        for active_linter in self.active_linters:
             if active_linter.descriptor_id not in active_descriptor_ids:
                 active_descriptor_ids += [active_linter.descriptor_id]
 
@@ -236,21 +237,21 @@ class Megalinter:
 
         if (
             config.get(self.request_id, "PARALLEL", "true") == "true"
-            and len(active_linters) > 1
+            and len(self.active_linters) > 1
         ):
-            for active_linter in active_linters:
+            for active_linter in self.active_linters:
                 pre_post_factory.run_linter_pre_commands(
                     active_linter.master, active_linter, run_before_linters=True
                 )
 
-            self.process_linters_parallel(active_linters, linters_do_fixes)
+            self.process_linters_parallel(self.active_linters, linters_do_fixes)
 
-            for active_linter in active_linters:
+            for active_linter in self.active_linters:
                 pre_post_factory.run_linter_post_commands(
                     active_linter.master, active_linter, run_after_linters=True
                 )
         else:
-            self.process_linters_serial(active_linters)
+            self.process_linters_serial(self.active_linters)
 
         for active_descriptor_id in active_descriptor_ids:
             pre_post_factory.run_descriptor_post_commands(self, active_descriptor_id)
@@ -297,7 +298,7 @@ class Megalinter:
             and config.get(self.request_id, "FLAVOR_SUGGESTIONS", "true") == "true"
         ):
             self.flavor_suggestions = flavor_factory.get_megalinter_flavor_suggestions(
-                active_linters
+                self.active_linters
             )
 
         # Run user-defined commands

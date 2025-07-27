@@ -61,6 +61,7 @@ UPDATE_CHANGELOG = "--changelog" in sys.argv
 IS_LATEST = "--latest" in sys.argv
 DELETE_DOCKERFILES = "--delete-dockerfiles" in sys.argv
 DELETE_TEST_CLASSES = "--delete-test-classes" in sys.argv
+CUSTOM_FLAVOR = "--custom-flavor" in sys.argv
 
 # Release args management
 if RELEASE is True:
@@ -114,6 +115,7 @@ DESCRIPTOR_JSON_SCHEMA = (
     f"{REPO_HOME}/megalinter/descriptors/schemas/megalinter-descriptor.jsonschema.json"
 )
 CONFIG_JSON_SCHEMA = f"{REPO_HOME}/megalinter/descriptors/schemas/megalinter-configuration.jsonschema.json"
+CUSTOM_FLAVOR_JSON_SCHEMA = f"{REPO_HOME}/megalinter/descriptors/schemas/megalinter-custom-flavor.jsonschema.json"
 OWN_MEGALINTER_CONFIG_FILE = f"{REPO_HOME}/.mega-linter.yml"
 
 IDE_LIST = {
@@ -252,12 +254,13 @@ branding:
             json.dump(flavor_info, outfile, indent=4, sort_keys=True)
             outfile.write("\n")
         # Write in global flavors files
-        with open(GLOBAL_FLAVORS_FILE, "r", encoding="utf-8") as json_file:
-            global_flavors = json.load(json_file)
-            global_flavors[flavor] = flavor_info
-        with open(GLOBAL_FLAVORS_FILE, "w", encoding="utf-8") as outfile:
-            json.dump(global_flavors, outfile, indent=4, sort_keys=True)
-            outfile.write("\n")
+        if CUSTOM_FLAVOR is not True or os.path.isdir("/megalinter-builder"):
+            with open(GLOBAL_FLAVORS_FILE, "r", encoding="utf-8") as json_file:
+                global_flavors = json.load(json_file)
+                global_flavors[flavor] = flavor_info
+            with open(GLOBAL_FLAVORS_FILE, "w", encoding="utf-8") as outfile:
+                json.dump(global_flavors, outfile, indent=4, sort_keys=True)
+                outfile.write("\n")
         # Flavored dockerfile
         dockerfile = f"{FLAVORS_DIR}/{flavor}/Dockerfile"
         if not os.path.isdir(os.path.dirname(dockerfile)):
@@ -302,7 +305,27 @@ branding:
         with open(flavor_action_yml, "w", encoding="utf-8") as file:
             file.write(action_yml)
             logging.info(f"Updated {flavor_action_yml}")
-    extra_lines = [
+    extra_lines = []
+    if CUSTOM_FLAVOR is True:
+        current_date_time_iso = datetime.now().isoformat()
+        extra_lines += [
+            "ENV CUSTOM_FLAVOR=true \\",
+            f"    BUILD_VERSION={os.getenv('BUILD_VERSION', 'local_build')} \\",
+            f"    BUILD_DATE={os.getenv('BUILD_DATE', 'local_build')} \\",
+            f"    BUILD_REVISION={os.getenv('BUILD_REVISION', 'local_build')} \\",
+            f"    CUSTOM_FLAVOR_BUILD_DATE={current_date_time_iso} \\",
+            f"    CUSTOM_FLAVOR_BUILD_REPO={os.getenv('CUSTOM_FLAVOR_BUILD_REPO', 'local_build')} \\",
+            f"    CUSTOM_FLAVOR_BUILD_REPO_URL={os.getenv('CUSTOM_FLAVOR_BUILD_REPO_URL', 'local_build')} \\",
+            f"    CUSTOM_FLAVOR_BUILD_USER={os.getenv('CUSTOM_FLAVOR_BUILD_USER', 'local_build')}",
+            "",
+            'LABEL com.github.actions.name="MegaLinter Custom Flavor" \\',
+            f'      maintainer="{os.getenv("CUSTOM_FLAVOR_BUILD_USER", "local_build")}" \\',
+            f'      org.opencontainers.image.source="{os.getenv("CUSTOM_FLAVOR_BUILD_REPO_URL", "local_build")}" \\',
+            f'      org.opencontainers.image.created="{os.getenv("BUILD_DATE", "local_build")}" \\',
+            f'      org.opencontainers.image.revision="{os.getenv("BUILD_REVISION", "local_build")}" \\',
+            f'      org.opencontainers.image.version="{os.getenv("BUILD_VERSION", "local_build")}"',
+        ]
+    extra_lines += [
         "COPY entrypoint.sh /entrypoint.sh",
         "RUN chmod +x entrypoint.sh",
         'ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]',
@@ -316,6 +339,7 @@ branding:
         DEFAULT_DOCKERFILE_FLAVOR_ARGS.copy(),
         {"cargo": DEFAULT_DOCKERFILE_FLAVOR_CARGO_PACKAGES.copy()},
     )
+    return dockerfile
 
 
 def build_dockerfile(
@@ -689,6 +713,20 @@ def match_flavor(item, flavor, flavor_info):
             return True
         else:
             return False
+    # Custom flavor
+    elif flavor == "CUSTOM":
+        descriptors, linters_by_type = list_descriptors_for_build()
+        # Item is a linter: check if present in the flavor
+        if "linter_name" in item and item["name"] in flavor_info["linters"]:
+            return True
+        # Item is a descriptor and it contains one of the linters included in the flavor info
+        if "linters" in item:
+            for descriptor in descriptors:
+                if item["descriptor_id"] == descriptor["descriptor_id"]:
+                    descriptor_linters = descriptor["linter_instances"]
+                    for descriptor_linter in descriptor_linters:
+                        if descriptor_linter.name in flavor_info["linters"]:
+                            return True
     # Other flavors
     elif "descriptor_flavors" in item:
         if flavor in item["descriptor_flavors"] or (
@@ -860,10 +898,11 @@ def list_descriptors_for_build():
     descriptors = []
     for descriptor_file in descriptor_files:
         descriptor = megalinter.linter_factory.build_descriptor_info(descriptor_file)
-        descriptors += [descriptor]
         descriptor_linters = megalinter.linter_factory.build_descriptor_linters(
             descriptor_file, {"request_id": "build"}
         )
+        descriptor["linter_instances"] = descriptor_linters
+        descriptors += [descriptor]
         linters_by_type[descriptor_linters[0].descriptor_type] += descriptor_linters
     DESCRIPTORS_FOR_BUILD_CACHE = descriptors, linters_by_type
     return descriptors, linters_by_type
@@ -2855,6 +2894,15 @@ def generate_json_schema_enums():
     with open(CONFIG_JSON_SCHEMA, "w", encoding="utf-8") as outfile:
         json.dump(json_schema, outfile, indent=2, sort_keys=True)
         outfile.write("\n")
+    # Also update megalinter custom flavor schema
+    with open(CUSTOM_FLAVOR_JSON_SCHEMA, "r", encoding="utf-8") as json_flavor_file:
+        json_flavor_schema = json.load(json_flavor_file)
+    json_flavor_schema["definitions"]["enum_linter_keys"]["enum"] = json_schema[
+        "definitions"
+    ]["enum_linter_keys"]["enum"]
+    with open(CUSTOM_FLAVOR_JSON_SCHEMA, "w", encoding="utf-8") as outfile_flavor:
+        json.dump(json_flavor_schema, outfile_flavor, indent=2, sort_keys=True)
+        outfile_flavor.write("\n")
 
 
 # Collect linters info from linter url, later used to build link preview card within linter documentation
@@ -3491,6 +3539,74 @@ def update_workflow_linters(file_path, linters):
         f.write(file_content)
 
 
+def generate_custom_flavor():
+    megalinter_dir = (
+        "/megalinter-builder"
+        if os.path.isdir("/megalinter-builder")
+        else f"{REPO_HOME}/.automation/test"
+    )
+    work_dir = (
+        "/github/workspace" if os.path.isdir("/github/workspace") else megalinter_dir
+    )
+    reports_dir = (
+        f"{work_dir}/megalinter-reports"
+        if work_dir == "/github/workspace"
+        else f"{REPO_HOME}/megalinter-reports"
+    )
+    flavor_file = f"{work_dir}/megalinter-custom-flavor.yml"
+    with open(flavor_file, "r", encoding="utf-8") as f:
+        flavor_info = yaml.safe_load(f)
+        flavor_info["strict"] = True
+    logging.info(f"Generating custom flavor from {flavor_file} in {megalinter_dir}")
+    dockerfile_tmp = generate_flavor("CUSTOM", flavor_info)
+    dockerfile = f"{megalinter_dir}/Dockerfile-megalinter-custom"
+    copyfile(dockerfile_tmp, dockerfile)
+    # Copy to reports dir
+    if not os.path.isdir(reports_dir):
+        os.makedirs(reports_dir, exist_ok=True)
+    shutil.copyfile(dockerfile, f"{reports_dir}/Dockerfile-megalinter-custom")
+    # Delete folder containing dockerfile if runned locally
+    dockerfile_tmp_dir = os.path.dirname(dockerfile_tmp)
+    if os.path.isdir(dockerfile_tmp_dir) and "/.automation/test" in work_dir:
+        logging.info(
+            f"Deleting folder {dockerfile_tmp_dir} containing custom flavor dockerfile"
+        )
+        shutil.rmtree(dockerfile_tmp_dir, ignore_errors=True)
+    # Display dockerfile content in log
+    with open(dockerfile, "r", encoding="utf-8") as f:
+        dockerfile_content = f.read()
+        logging.info(f"Generated custom flavor dockerfile:\n\n{dockerfile_content}\n")
+    return dockerfile
+
+
+def build_custom_flavor(dockerfile):
+    logging.info("Building custom flavor docker image…")
+    work_dir = (
+        "/megalinter-builder" if os.path.isdir("/megalinter-builder") else REPO_HOME
+    )
+    tag_id = os.getenv("CUSTOM_FLAVOR_BUILD_REPO", "megalinter-custom").replace(
+        "/", "_"
+    )
+    command = [
+        "docker",
+        "build",
+        "-t",
+        tag_id,
+        "-f",
+        dockerfile,
+        work_dir,
+    ]
+    logging.info("Running command: " + " ".join(command))
+    process = subprocess.run(
+        command,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        universal_newlines=True,
+    )
+    stdout = utils.clean_string(process.stdout)
+    logging.info(f"Build custom flavor results: ({process.returncode})\n" + stdout)
+
+
 if __name__ == "__main__":
     logging_format = (
         "[%(levelname)s] %(message)s"
@@ -3511,25 +3627,29 @@ if __name__ == "__main__":
             handlers=[logging.StreamHandler(sys.stdout)],
         )
     config.init_config("build")
-    # noinspection PyTypeChecker
-    collect_linter_previews()
-    generate_json_schema_enums()
-    validate_descriptors()
-    if UPDATE_DEPENDENTS is True:
-        update_dependents_info()
-    generate_all_flavors()
-    generate_linter_dockerfiles()
-    generate_linter_test_classes()
-    update_workflows_linters()
-    if UPDATE_DOC is True:
-        logging.info("Running documentation generators…")
-        # refresh_users_info() # deprecated since now we use github-dependents-info
-        generate_documentation()
-        generate_documentation_all_linters()
-        # generate_documentation_all_users() # deprecated since now we use github-dependents-info
-        generate_mkdocs_yml()
-    validate_own_megalinter_config()
-    manage_output_variables()
-    reformat_markdown_tables()
-    if RELEASE is True:
-        generate_version()
+    if CUSTOM_FLAVOR is True:
+        dockerfile = generate_custom_flavor()
+        build_custom_flavor(dockerfile)
+    else:
+        # noinspection PyTypeChecker
+        collect_linter_previews()
+        generate_json_schema_enums()
+        validate_descriptors()
+        if UPDATE_DEPENDENTS is True:
+            update_dependents_info()
+        generate_all_flavors()
+        generate_linter_dockerfiles()
+        generate_linter_test_classes()
+        update_workflows_linters()
+        if UPDATE_DOC is True:
+            logging.info("Running documentation generators…")
+            # refresh_users_info() # deprecated since now we use github-dependents-info
+            generate_documentation()
+            generate_documentation_all_linters()
+            # generate_documentation_all_users() # deprecated since now we use github-dependents-info
+            generate_mkdocs_yml()
+        validate_own_megalinter_config()
+        manage_output_variables()
+        reformat_markdown_tables()
+        if RELEASE is True:
+            generate_version()
