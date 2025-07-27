@@ -9,10 +9,11 @@ import { default as fs } from "fs-extra";
 import { MegaLinterUpgrader } from "./upgrade.js";
 import { CodeTotalRunner } from "./codetotal.js";
 import { DEFAULT_RELEASE } from "./config.js";
-import { createEnv} from "yeoman-environment";
+import { createEnv } from "yeoman-environment";
 import { default as FindPackageJson } from "find-package-json";
 
 export class MegaLinterRunner {
+  containerEngine = "docker"
   async run(options) {
     // Show help ( index or for an options)
     if (options.help) {
@@ -83,6 +84,10 @@ export class MegaLinterRunner {
     }
 
     // Build MegaLinter docker image name with flavor and release version
+    this.containerEngine = options.containerEngine || "docker";
+    if (options.containerEngine !== "docker" && options.containerEngine !== "podman") {
+      throw new Error(`Invalid container engine: ${options.containerEngine}. Supported engines are 'docker' and 'podman'.`);
+    }
     const release = options.release in ["stable"] ? DEFAULT_RELEASE : options.release;
     const dockerImageName =
       // v4 retrocompatibility >>
@@ -105,12 +110,20 @@ export class MegaLinterRunner {
     const dockerImage = options.image || `${dockerImageName}:${release}`; // Docker image can be directly sent in options
 
     // Check for docker installation
-    const whichPromise = which("docker");
+    const whichPromise = which(this.containerEngine);
     whichPromise.catch(() => {
-      console.error(`
-ERROR: Docker engine has not been found on your system.
-- to run MegaLinter locally, please install docker desktop: https://www.docker.com/products/docker-desktop
-- to run docker on CI, use a base image containing docker engine`);
+      if (this.containerEngine === "podman") {
+        console.error(`
+  ERROR: Podman engine has not been found on your system.
+  - To run MegaLinter locally, please install Podman: https://podman.io/docs/installation
+  - To run Podman on CI, use a base image containing Podman engine`);
+      }
+      else {
+        console.error(`
+  ERROR: Docker engine has not been found on your system.
+  - to run MegaLinter locally, please install docker desktop: https://www.docker.com/products/docker-desktop
+  - to run docker on CI, use a base image containing docker engine`);
+      }
     });
 
     // Get platform to use with docker pull & run
@@ -126,7 +139,7 @@ ERROR: Docker engine has not been found on your system.
         "The next runs, it will be immediate (thanks to docker cache !)"
       );
       const spawnResPull = spawnSync(
-        "docker",
+        this.containerEngine,
         ["pull", "--platform", imagePlatform, dockerImage],
         {
           detached: false,
@@ -153,7 +166,7 @@ ERROR: Docker engine has not been found on your system.
     // Build docker run options
     const lintPath = path.resolve(options.path || ".");
     const commandArgs = ["run", "--platform", imagePlatform];
-    const removeContainer = options["removeContainer"] ? true: options["noRemoveContainer"] ? false: true ;
+    const removeContainer = options["removeContainer"] ? true : options["noRemoveContainer"] ? false : true;
     if (removeContainer) {
       commandArgs.push("--rm");
     }
@@ -190,13 +203,13 @@ ERROR: Docker engine has not been found on your system.
     commandArgs.push(dockerImage);
 
     // Call docker run
-    console.log(`Command: docker ${commandArgs.join(" ")}`);
+    console.log(`Command: ${this.containerEngine} ${commandArgs.join(" ")}`);
     const spawnOptions = {
       env: Object.assign({}, process.env),
       stdio: "inherit",
       windowsHide: true,
     };
-    const spawnRes = spawnSync("docker", commandArgs, spawnOptions);
+    const spawnRes = spawnSync(this.containerEngine, commandArgs, spawnOptions);
     // Output json if requested
     if (options.json === true) {
       const jsonOutputFile = path.join(
