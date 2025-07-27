@@ -196,8 +196,7 @@ def build_markdown_summary_footer(reporter_self, action_run_url=""):
         custom_flavor_message = (
             "Your project could benefit from a custom flavor, "
             "which would allow you to run only the linters you need, and thus improve runtime performances.\n\n"
-            "To create your custom flavor, follow the related documentation and commands\n"
-            f"  - Documentation: [Custom Flavors]({ML_DOC_URL}/custom-flavors/)"
+            f"  - Documentation: [Custom Flavors]({ML_DOC_URL}/custom-flavors/)\n"
             f"  - Command: `{custom_flavor_command}`"
         )
         if len(reporter_self.master.flavor_suggestions) == 1:
