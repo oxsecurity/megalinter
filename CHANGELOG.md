@@ -156,6 +156,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [grype](https://github.com/anchore/grype) from 0.96.0 to **0.96.1** on 2025-07-21
   - [syft](https://github.com/anchore/syft) from 1.28.0 to **1.29.0** on 2025-07-21
   - [selene](https://kampfkarren.github.io/selene/) from 0.28.0 to **0.29.0** on 2025-07-25
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2025.06.05 to **2025.07.26** on 2025-07-27
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15
