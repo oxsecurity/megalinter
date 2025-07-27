@@ -196,7 +196,7 @@ def build_markdown_summary_footer(reporter_self, action_run_url=""):
         custom_flavor_message = (
             "Your project could benefit from a custom flavor, "
             "which would allow you to run only the linters you need, and thus improve runtime performances.\n\n"
-            "To create your custom flavor, follow the related documentation and commands"
+            "To create your custom flavor, follow the related documentation and commands\n"
             f"  - Documentation: [Custom Flavors]({ML_DOC_URL}/custom-flavors/)"
             f"  - Command: `{custom_flavor_command}`"
         )
@@ -222,7 +222,7 @@ def build_markdown_summary_footer(reporter_self, action_run_url=""):
                     f"- [{action_path}]({ML_DOC_URL}/flavors/{suggestion['flavor']}/)"
                     f" ({suggestion['linters_number']} linters)" + os.linesep
                 )
-                footer += os.linesep + os.linesep + custom_flavor_message
+            footer += os.linesep + os.linesep + custom_flavor_message
         footer += os.linesep
 
     # Link to ox
