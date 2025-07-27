@@ -29,7 +29,7 @@ ARG PROTOBUF_PROTOLINT_VERSION=0.55.6
 # renovate: datasource=docker depName=zricethezav/gitleaks
 ARG REPOSITORY_GITLEAKS_VERSION=v8.28.0
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
-ARG REPOSITORY_TRUFFLEHOG_VERSION=3.90.1
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.90.2
 # renovate: datasource=docker depName=jdkato/vale
 ARG SPELL_VALE_VERSION=v3.11.2
 # renovate: datasource=docker depName=lycheeverse/lychee
@@ -108,7 +108,7 @@ ARG NPM_GRAPHQL_VERSION=16.11.0
 # renovate: datasource=npm depName=graphql-schema-linter
 ARG NPM_GRAPHQL_SCHEMA_LINTER_VERSION=3.0.1
 # renovate: datasource=npm depName=npm-groovy-lint
-ARG NPM_GROOVY_LINT_VERSION=15.2.0
+ARG NPM_GROOVY_LINT_VERSION=15.2.1
 # renovate: datasource=pypi depName=djlint
 ARG PIP_DJLINT_VERSION=1.36.4
 # renovate: datasource=npm depName=htmlhint
@@ -126,7 +126,7 @@ ARG KTLINT_VERSION=1.7.1
 ARG DETEKT_VERSION=1.23.8
 
 # renovate: datasource=github-tags depName=kubescape/kubescape
-ARG KUBERNETES_KUBESCAPE_VERSION=3.0.34
+ARG KUBERNETES_KUBESCAPE_VERSION=3.0.36
 # renovate: datasource=npm depName=markdownlint-cli
 ARG NPM_MARKDOWNLINT_CLI_VERSION=0.45.0
 # renovate: datasource=npm depName=markdown-table-formatter
@@ -152,7 +152,7 @@ ARG REPOSITORY_TRIVY_VERSION=0.64.1
 # renovate: datasource=github-tags depName=aquasecurity/trivy
 ARG REPOSITORY_TRIVY_SBOM_VERSION=0.64.1
 # renovate: datasource=rubygems depName=rubocop
-ARG GEM_RUBOCOP_VERSION=1.78.0
+ARG GEM_RUBOCOP_VERSION=1.79.0
 # renovate: datasource=rubygems depName=rubocop-github
 ARG GEM_RUBOCOP_GITHUB_VERSION=0.26.0
 # renovate: datasource=rubygems depName=rubocop-performance
@@ -164,7 +164,7 @@ ARG GEM_RUBOCOP_RAKE_VERSION=0.7.1
 # renovate: datasource=rubygems depName=rubocop-rspec
 ARG GEM_RUBOCOP_RSPEC_VERSION=3.6.0
 # renovate: datasource=pypi depName=snakemake
-ARG PIP_SNAKEMAKE_VERSION=9.8.1
+ARG PIP_SNAKEMAKE_VERSION=9.8.2
 # renovate: datasource=pypi depName=snakefmt
 ARG PIP_SNAKEFMT_VERSION=0.11.0
 # renovate: datasource=npm depName=cspell

@@ -4,7 +4,6 @@ import logging
 import os
 import subprocess
 import time
-import urllib
 
 from megalinter import config, utils
 from megalinter.constants import (
@@ -12,7 +11,7 @@ from megalinter.constants import (
     ML_DOC_URL,
     ML_DOC_URL_DESCRIPTORS_ROOT,
     ML_REPO,
-    ML_REPO_ISSUES_URL,
+    ML_VERSION,
     OX_MARKDOWN_LINK,
 )
 from pytablewriter import Align, MarkdownTableWriter
@@ -90,19 +89,20 @@ def build_markdown_summary_sections(
 
 
 def build_markdown_summary_header(reporter_self, action_run_url=""):
-    status = (
+    status_icon = (
         "✅"
         if reporter_self.master.return_code == 0
         and reporter_self.master.status == "success"
-        else "⚠️" if reporter_self.master.status == "warning" else "❌"
+        else "✅⚠️" if reporter_self.master.status == "warning" else "❌"
     )
-    status_with_href = (
-        status
-        + " "
-        + log_link(f"{reporter_self.master.status.upper()}", action_run_url)
-    )
+    # Build status label
+    if reporter_self.master.status == "warning":
+        status_label = "Success with warnings"
+    else:
+        status_label = reporter_self.master.status.capitalize()
+    status_with_href = log_link(status_label, action_run_url)
     return (
-        f"## [\U0001f999 MegaLinter]({ML_DOC_URL}) status: {status_with_href}"
+        f"## {status_icon}[MegaLinter]({ML_DOC_URL}) analysis: {status_with_href}"
         + os.linesep
         + os.linesep
     )
@@ -173,11 +173,11 @@ def build_markdown_summary_footer(reporter_self, action_run_url=""):
 
     if action_run_url != "":
         footer += (
-            "See detailed report in [MegaLinter reports"
+            "See detailed reports in [MegaLinter artifacts"
             f"]({action_run_url})" + os.linesep
         )
     else:
-        footer += "See detailed report in MegaLinter reports" + os.linesep
+        footer += "See detailed reports in MegaLinter artifacts" + os.linesep
 
     if reporter_self.master.validate_all_code_base is False:
         footer += (
@@ -187,23 +187,21 @@ def build_markdown_summary_footer(reporter_self, action_run_url=""):
         )
 
     if reporter_self.master.flavor_suggestions is not None:
-        if reporter_self.master.flavor_suggestions[0] == "new":
-            footer += (
-                os.linesep
-                + "You could have same capabilities but better runtime performances"
-                " if you request a new MegaLinter flavor.\n"
-            )
-            body = (
-                "MegaLinter would run faster on my project if I had a flavor containing the following "
-                "list of linters: \n\n - Add languages/linters list here\n\n"
-                "Would it be possible to create one ? Thanks :relaxed:"
-            )
-            new_flavor_url = (
-                f"{ML_REPO_ISSUES_URL}/new?assignees=&labels=enhancement&template=feature_request.md"
-                f"&title={urllib.parse.quote('Request new MegaLinter flavor')}"
-                f"&body={urllib.parse.quote(body)}"
-            )
-            footer += f"- [Click here to request the new flavor]({new_flavor_url})"
+        active_linter_names = [
+            linter.name for linter in reporter_self.master.active_linters
+        ]
+        custom_flavor_command = (
+            f"npx mega-linter-runner@{ML_VERSION} --custom-flavor-setup --custom-flavor-linters "
+            + ",".join(active_linter_names)
+        )
+        custom_flavor_message = (
+            "Your project could benefit from a custom flavor, "
+            "which would allow you to run only the linters you need, and thus improve runtime performances.\n\n"
+            f"  - Documentation: [Custom Flavors]({ML_DOC_URL}/custom-flavors/)\n"
+            f"  - Command: `{custom_flavor_command}`"
+        )
+        if len(reporter_self.master.flavor_suggestions) == 1:
+            footer += os.linesep + os.linesep + custom_flavor_message
         else:
             footer += (
                 os.linesep
@@ -211,6 +209,8 @@ def build_markdown_summary_footer(reporter_self, action_run_url=""):
                 " if you use a MegaLinter flavor:" + os.linesep
             )
             for suggestion in reporter_self.master.flavor_suggestions:
+                if "new_flavor_linter_names" in suggestion:
+                    continue
                 build_version = config.get(None, "BUILD_VERSION", DEFAULT_RELEASE)
                 action_version = (
                     DEFAULT_RELEASE if len(build_version) > 20 else build_version
@@ -222,6 +222,7 @@ def build_markdown_summary_footer(reporter_self, action_run_url=""):
                     f"- [{action_path}]({ML_DOC_URL}/flavors/{suggestion['flavor']}/)"
                     f" ({suggestion['linters_number']} linters)" + os.linesep
                 )
+            footer += os.linesep + os.linesep + custom_flavor_message
         footer += os.linesep
 
     # Link to ox
@@ -713,7 +714,7 @@ def build_markdown_summary_sections_table(
         p_r_msg += sections_content
 
     # Build table for all linters
-    p_r_msg += "## All Linters Summary\n\n"
+    p_r_msg += "\n\n"
     table_content = _build_table_content(
         reporter_self.master.linters, reporter_self, action_run_url
     )
@@ -733,7 +734,7 @@ def build_markdown_summary_table_sections(
     p_r_msg = build_markdown_summary_header(reporter_self, action_run_url)
 
     # Build table for all linters first
-    p_r_msg += "## All Linters Summary\n\n"
+    p_r_msg += "\n\n"
     table_content = _build_table_content(
         reporter_self.master.linters, reporter_self, action_run_url
     )

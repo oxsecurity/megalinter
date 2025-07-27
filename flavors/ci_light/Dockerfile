@@ -21,7 +21,7 @@ ARG DOCKERFILE_HADOLINT_VERSION=v2.12.0-alpine
 # renovate: datasource=docker depName=zricethezav/gitleaks
 ARG REPOSITORY_GITLEAKS_VERSION=v8.28.0
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
-ARG REPOSITORY_TRUFFLEHOG_VERSION=3.90.1
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.90.2
 #ARGTOP__END
 
 #############################################################################################
@@ -69,7 +69,7 @@ ARG CARGO_SHELLCHECK_SARIF_VERSION=0.8.0
 # renovate: datasource=npm depName=jscpd
 ARG NPM_JSCPD_VERSION=4.0.5
 # renovate: datasource=npm depName=npm-groovy-lint
-ARG NPM_GROOVY_LINT_VERSION=15.2.0
+ARG NPM_GROOVY_LINT_VERSION=15.2.1
 # renovate: datasource=npm depName=@prantlf/jsonlint
 ARG NPM_PRANTLF_JSONLINT_VERSION=16.0.0
 # renovate: datasource=npm depName=v8r

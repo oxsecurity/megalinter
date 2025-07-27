@@ -29,7 +29,7 @@ ARG PROTOBUF_PROTOLINT_VERSION=0.55.6
 # renovate: datasource=docker depName=zricethezav/gitleaks
 ARG REPOSITORY_GITLEAKS_VERSION=v8.28.0
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
-ARG REPOSITORY_TRUFFLEHOG_VERSION=3.90.1
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.90.2
 # renovate: datasource=docker depName=jdkato/vale
 ARG SPELL_VALE_VERSION=v3.11.2
 # renovate: datasource=docker depName=lycheeverse/lychee
@@ -108,7 +108,7 @@ ARG NPM_GRAPHQL_VERSION=16.11.0
 # renovate: datasource=npm depName=graphql-schema-linter
 ARG NPM_GRAPHQL_SCHEMA_LINTER_VERSION=3.0.1
 # renovate: datasource=npm depName=npm-groovy-lint
-ARG NPM_GROOVY_LINT_VERSION=15.2.0
+ARG NPM_GROOVY_LINT_VERSION=15.2.1
 # renovate: datasource=pypi depName=djlint
 ARG PIP_DJLINT_VERSION=1.36.4
 # renovate: datasource=npm depName=htmlhint
@@ -126,7 +126,7 @@ ARG KTLINT_VERSION=1.7.1
 ARG DETEKT_VERSION=1.23.8
 
 # renovate: datasource=github-tags depName=kubescape/kubescape
-ARG KUBERNETES_KUBESCAPE_VERSION=3.0.34
+ARG KUBERNETES_KUBESCAPE_VERSION=3.0.36
 # renovate: datasource=npm depName=markdownlint-cli
 ARG NPM_MARKDOWNLINT_CLI_VERSION=0.45.0
 # renovate: datasource=npm depName=markdown-table-formatter
@@ -150,7 +150,7 @@ ARG PIP_MYPY_VERSION=1.17.0
 # renovate: datasource=npm depName=pyright
 ARG NPM_PYRIGHT_VERSION=1.1.403
 # renovate: datasource=pypi depName=ruff
-ARG PIP_RUFF_VERSION=0.12.4
+ARG PIP_RUFF_VERSION=0.12.5
 # renovate: datasource=pypi depName=checkov
 ARG PIP_CHECKOV_VERSION=3.2.413
 # renovate: datasource=github-tags depName=anchore/grype
@@ -182,7 +182,7 @@ ARG PIP_RSTCHECK_CLICK_VERSION=8.2.1
 # renovate: datasource=pypi depName=rstfmt
 ARG PIP_RSTFMT_VERSION=0.0.14
 # renovate: datasource=pypi depName=snakemake
-ARG PIP_SNAKEMAKE_VERSION=9.8.1
+ARG PIP_SNAKEMAKE_VERSION=9.8.2
 # renovate: datasource=pypi depName=snakefmt
 ARG PIP_SNAKEFMT_VERSION=0.11.0
 # renovate: datasource=npm depName=cspell

@@ -25,7 +25,7 @@ ARG REPOSITORY_GITLEAKS_VERSION=v8.28.0
 # renovate: datasource=docker depName=checkmarx/kics
 ARG REPOSITORY_KICS_VERSION=v2.1.11-alpine
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
-ARG REPOSITORY_TRUFFLEHOG_VERSION=3.90.1
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.90.2
 # renovate: datasource=docker depName=ghcr.io/terraform-linters/tflint
 ARG TERRAFORM_TFLINT_VERSION=0.58.1
 # renovate: datasource=docker depName=tenable/terrascan
@@ -88,7 +88,7 @@ ARG CARGO_SHELLCHECK_SARIF_VERSION=0.8.0
 # renovate: datasource=pypi depName=cfn-lint
 ARG PIP_CFN_LINT_VERSION=1.38.0
 # renovate: datasource=github-tags depName=kubescape/kubescape
-ARG KUBERNETES_KUBESCAPE_VERSION=3.0.34
+ARG KUBERNETES_KUBESCAPE_VERSION=3.0.36
 # renovate: datasource=pypi depName=bandit
 ARG PIP_BANDIT_VERSION=1.8.6
 # renovate: datasource=pypi depName=bandit_sarif_formatter
