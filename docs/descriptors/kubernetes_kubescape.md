@@ -29,7 +29,7 @@ description: How to use kubescape (configure, ignore files, ignore errors, help 
 
 ## kubescape documentation
 
-- Version in MegaLinter: **3.0.34**
+- Version in MegaLinter: **3.0.36**
 - Visit [Official Web Site](https://github.com/kubescape/kubescape#readme){target=_blank}
 
 [![kubescape - GitHub](https://gh-card.dev/repos/kubescape/kubescape.svg?fullname=)](https://github.com/kubescape/kubescape){target=_blank}
@@ -141,6 +141,7 @@ Available Commands:
   fix           Propose a fix for the misconfiguration found when scanning Kubernetes manifest files
   help          Help about any command
   list          List frameworks/controls will list the supported frameworks and controls
+  mcpserver     Start the Kubescape MCP server
   operator      The operator is used to communicate with the Kubescape Operator within the cluster components.
   patch         Patch container images with vulnerabilities
   prerequisites Check prerequisites for installing Kubescape Operator
@@ -157,7 +158,6 @@ Flags:
       --server string         Backend discovery server URL
 
 Use "kubescape [command] --help" for more information about a command.
-{"level":"info","ts":"2025-07-27T10:09:13Z","msg":"Received interrupt signal, exiting..."}
 ```
 
 ### Installation on mega-linter Docker image
