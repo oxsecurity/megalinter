@@ -13,7 +13,10 @@ import { createEnv } from "yeoman-environment";
 import { default as FindPackageJson } from "find-package-json";
 
 export class MegaLinterRunner {
-  containerEngine = "docker";
+  constructor() {
+    this.containerEngine = "docker";
+  }
+  
   async run(options) {
     // Show help ( index or for an options)
     if (options.help) {
