@@ -14,7 +14,12 @@ Optimized for PYTHON based projects
 ## Usage
 
 - [GitHub Action](https://megalinter.io/beta/installation/#github-action): **oxsecurity/megalinter/flavors/python@beta**
-- Docker image: **oxsecurity/megalinter-python:beta**
+
+- Docker images:
+
+  - GitHub Packages: **ghcr.io/oxsecurity/megalinter-python:beta**
+  - Docker Hub: **docker.io/oxsecurity/megalinter-python:beta**
+
 - [mega-linter-runner](https://megalinter.io/beta/mega-linter-runner/): `mega-linter-runner --flavor python`
 
 ## Embedded linters

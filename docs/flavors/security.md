@@ -14,7 +14,12 @@ Optimized for security
 ## Usage
 
 - [GitHub Action](https://megalinter.io/beta/installation/#github-action): **oxsecurity/megalinter/flavors/security@beta**
-- Docker image: **oxsecurity/megalinter-security:beta**
+
+- Docker images:
+
+  - GitHub Packages: **ghcr.io/oxsecurity/megalinter-security:beta**
+  - Docker Hub: **docker.io/oxsecurity/megalinter-security:beta**
+
 - [mega-linter-runner](https://megalinter.io/beta/mega-linter-runner/): `mega-linter-runner --flavor security`
 
 ## Embedded linters

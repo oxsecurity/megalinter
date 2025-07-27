@@ -14,7 +14,12 @@ Optimized for JAVA based projects
 ## Usage
 
 - [GitHub Action](https://megalinter.io/beta/installation/#github-action): **oxsecurity/megalinter/flavors/java@beta**
-- Docker image: **oxsecurity/megalinter-java:beta**
+
+- Docker images:
+
+  - GitHub Packages: **ghcr.io/oxsecurity/megalinter-java:beta**
+  - Docker Hub: **docker.io/oxsecurity/megalinter-java:beta**
+
 - [mega-linter-runner](https://megalinter.io/beta/mega-linter-runner/): `mega-linter-runner --flavor java`
 
 ## Embedded linters

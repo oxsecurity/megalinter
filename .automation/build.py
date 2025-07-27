@@ -1165,6 +1165,7 @@ def generate_descriptor_documentation(descriptor):
 def generate_flavor_documentation(flavor_id, flavor, linters_tables_md):
     flavor_github_action = f"{ML_REPO}/flavors/{flavor_id}@{VERSION_V}"
     flavor_docker_image = f"{ML_DOCKER_IMAGE_WITH_HOST}-{flavor_id}:{VERSION_V}"
+    flavor_docker_image_dockerhub = f"docker.io/{ML_DOCKER_IMAGE}-{flavor_id}:{VERSION_V}"
     docker_image_badge = (
         f"![Docker Image Size (tag)]({BASE_SHIELD_IMAGE_LINK}/"
         f"{ML_DOCKER_IMAGE}-{flavor_id}/{VERSION_V})"
@@ -1190,7 +1191,12 @@ def generate_flavor_documentation(flavor_id, flavor, linters_tables_md):
         "## Usage",
         "",
         f"- [GitHub Action]({MKDOCS_URL_ROOT}/installation/#github-action): **{flavor_github_action}**",
-        f"- Docker image: **{flavor_docker_image}**",
+        "",
+        "- Docker images:",
+        "",
+        f"  - GitHub Packages: **{flavor_docker_image}**",
+        f"  - Docker Hub: **{flavor_docker_image_dockerhub}**",
+        "",
         f"- [mega-linter-runner]({MKDOCS_URL_ROOT}/mega-linter-runner/): `mega-linter-runner --flavor {flavor_id}`",
         "",
         "## Embedded linters",

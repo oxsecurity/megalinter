@@ -14,7 +14,12 @@ Optimized for RUBY based projects
 ## Usage
 
 - [GitHub Action](https://megalinter.io/beta/installation/#github-action): **oxsecurity/megalinter/flavors/ruby@beta**
-- Docker image: **oxsecurity/megalinter-ruby:beta**
+
+- Docker images:
+
+  - GitHub Packages: **ghcr.io/oxsecurity/megalinter-ruby:beta**
+  - Docker Hub: **docker.io/oxsecurity/megalinter-ruby:beta**
+
 - [mega-linter-runner](https://megalinter.io/beta/mega-linter-runner/): `mega-linter-runner --flavor ruby`
 
 ## Embedded linters

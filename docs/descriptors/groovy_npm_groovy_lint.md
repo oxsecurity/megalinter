@@ -165,10 +165,10 @@ Note: command-line arguments have priority on config file properties - default: 
 ```dockerfile
 ENV JAVA_HOME_17=/usr/lib/jvm/java-17-openjdk
 # renovate: datasource=npm depName=npm-groovy-lint
-ARG NPM_GROOVY_LINT_VERSION=15.2.0
+ARG NPM_GROOVY_LINT_VERSION=15.2.1
 ```
 
 - APK packages (Linux):
   - [openjdk17](https://pkgs.alpinelinux.org/packages?branch=v3.21&arch=x86_64&name=openjdk17)
 - NPM packages (node.js):
-  - [npm-groovy-lint@15.2.0](https://www.npmjs.com/package/npm-groovy-lint/v/15.2.0)
+  - [npm-groovy-lint@15.2.1](https://www.npmjs.com/package/npm-groovy-lint/v/15.2.1)

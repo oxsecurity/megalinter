@@ -14,7 +14,12 @@ Optimized for RUST based projects
 ## Usage
 
 - [GitHub Action](https://megalinter.io/beta/installation/#github-action): **oxsecurity/megalinter/flavors/rust@beta**
-- Docker image: **oxsecurity/megalinter-rust:beta**
+
+- Docker images:
+
+  - GitHub Packages: **ghcr.io/oxsecurity/megalinter-rust:beta**
+  - Docker Hub: **docker.io/oxsecurity/megalinter-rust:beta**
+
 - [mega-linter-runner](https://megalinter.io/beta/mega-linter-runner/): `mega-linter-runner --flavor rust`
 
 ## Embedded linters
