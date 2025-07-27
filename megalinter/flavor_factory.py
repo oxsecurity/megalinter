@@ -167,9 +167,13 @@ def get_megalinter_flavor_suggestions(active_linters):
 
     if len(matching_flavors) > 0:
         # There are matching flavors
-        results += sorted(
+        matching_flavors = sorted(
             matching_flavors, key=lambda i: (i["linters_number"], i["flavor"])
         )
+        # Truncate flavors to 5
+        if len(matching_flavors) > 3:
+            matching_flavors = matching_flavors[:3]
+        results += matching_flavors
     return results
 
 
