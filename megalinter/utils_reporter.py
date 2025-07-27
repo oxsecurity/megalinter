@@ -208,10 +208,8 @@ def build_markdown_summary_footer(reporter_self, action_run_url=""):
                 + "You could have the same capabilities but better runtime performances"
                 " if you use a MegaLinter flavor:" + os.linesep
             )
-            counter = 0
             for suggestion in reporter_self.master.flavor_suggestions:
-                counter += 1
-                if counter == 1:
+                if "new_flavor_linter_names" in suggestion:
                     continue
                 build_version = config.get(None, "BUILD_VERSION", DEFAULT_RELEASE)
                 action_version = (

@@ -158,7 +158,7 @@ def get_megalinter_flavor_suggestions(active_linters):
         active_linters,
     )
     new_flavor_linters_names = map(lambda linter: linter.name, new_flavor_linters)
-    results += [new_flavor_linters_names]
+    results += [{ "new_flavor_linter_names": new_flavor_linters_names}]
 
     if len(matching_flavors) > 0:
         # There are matching flavors

@@ -148,6 +148,8 @@ class ConsoleReporter(Reporter):
                     )
                 )
                 for suggestion in self.master.flavor_suggestions:
+                    if "new_flavor_linter_names" in suggestion:
+                        continue
                     action_path = (
                         f"{ML_REPO}/flavors/{suggestion['flavor']}@{action_version}"
                     )
