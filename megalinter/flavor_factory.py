@@ -135,6 +135,10 @@ def get_megalinter_flavor_suggestions(active_linters):
     matching_flavors = []
     for flavor_id, flavor_info in all_flavors.items():
         match = True
+        # Exclude current flavor
+        if flavor_id == get_image_flavor():
+            continue
+        # Check if all active linters are in flavor linters
         for active_linter in active_linters:
             if (
                 active_linter.name not in flavor_info["linters"]
@@ -142,6 +146,7 @@ def get_megalinter_flavor_suggestions(active_linters):
             ):
                 match = False
                 break
+        # If match, add to matching flavors
         if match is True:
             matching_flavor = {
                 "flavor": flavor_id,
