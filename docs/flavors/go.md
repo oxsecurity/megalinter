@@ -14,7 +14,12 @@ Optimized for GO based projects
 ## Usage
 
 - [GitHub Action](https://megalinter.io/beta/installation/#github-action): **oxsecurity/megalinter/flavors/go@beta**
-- Docker image: **oxsecurity/megalinter-go:beta**
+
+- Docker images:
+
+  - GitHub Packages: **ghcr.io/oxsecurity/megalinter-go:beta**
+  - Docker Hub: **docker.io/oxsecurity/megalinter-go:beta**
+
 - [mega-linter-runner](https://megalinter.io/beta/mega-linter-runner/): `mega-linter-runner --flavor go`
 
 ## Embedded linters

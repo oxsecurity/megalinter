@@ -14,7 +14,12 @@ Optimized for C, C++, C# or VB based projects
 ## Usage
 
 - [GitHub Action](https://megalinter.io/beta/installation/#github-action): **oxsecurity/megalinter/flavors/dotnet@beta**
-- Docker image: **oxsecurity/megalinter-dotnet:beta**
+
+- Docker images:
+
+  - GitHub Packages: **ghcr.io/oxsecurity/megalinter-dotnet:beta**
+  - Docker Hub: **docker.io/oxsecurity/megalinter-dotnet:beta**
+
 - [mega-linter-runner](https://megalinter.io/beta/mega-linter-runner/): `mega-linter-runner --flavor dotnet`
 
 ## Embedded linters

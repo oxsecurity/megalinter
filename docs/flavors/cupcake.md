@@ -14,7 +14,12 @@ MegaLinter for the most commonly used languages
 ## Usage
 
 - [GitHub Action](https://megalinter.io/beta/installation/#github-action): **oxsecurity/megalinter/flavors/cupcake@beta**
-- Docker image: **oxsecurity/megalinter-cupcake:beta**
+
+- Docker images:
+
+  - GitHub Packages: **ghcr.io/oxsecurity/megalinter-cupcake:beta**
+  - Docker Hub: **docker.io/oxsecurity/megalinter-cupcake:beta**
+
 - [mega-linter-runner](https://megalinter.io/beta/mega-linter-runner/): `mega-linter-runner --flavor cupcake`
 
 ## Embedded linters

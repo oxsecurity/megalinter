@@ -14,7 +14,12 @@ MegaLinter for documentation projects
 ## Usage
 
 - [GitHub Action](https://megalinter.io/beta/installation/#github-action): **oxsecurity/megalinter/flavors/documentation@beta**
-- Docker image: **oxsecurity/megalinter-documentation:beta**
+
+- Docker images:
+
+  - GitHub Packages: **ghcr.io/oxsecurity/megalinter-documentation:beta**
+  - Docker Hub: **docker.io/oxsecurity/megalinter-documentation:beta**
+
 - [mega-linter-runner](https://megalinter.io/beta/mega-linter-runner/): `mega-linter-runner --flavor documentation`
 
 ## Embedded linters

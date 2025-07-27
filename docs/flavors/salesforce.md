@@ -14,7 +14,12 @@ Optimized for Salesforce based projects
 ## Usage
 
 - [GitHub Action](https://megalinter.io/beta/installation/#github-action): **oxsecurity/megalinter/flavors/salesforce@beta**
-- Docker image: **oxsecurity/megalinter-salesforce:beta**
+
+- Docker images:
+
+  - GitHub Packages: **ghcr.io/oxsecurity/megalinter-salesforce:beta**
+  - Docker Hub: **docker.io/oxsecurity/megalinter-salesforce:beta**
+
 - [mega-linter-runner](https://megalinter.io/beta/mega-linter-runner/): `mega-linter-runner --flavor salesforce`
 
 ## Embedded linters

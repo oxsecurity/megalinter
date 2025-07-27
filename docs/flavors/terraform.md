@@ -14,7 +14,12 @@ Optimized for TERRAFORM based projects
 ## Usage
 
 - [GitHub Action](https://megalinter.io/beta/installation/#github-action): **oxsecurity/megalinter/flavors/terraform@beta**
-- Docker image: **oxsecurity/megalinter-terraform:beta**
+
+- Docker images:
+
+  - GitHub Packages: **ghcr.io/oxsecurity/megalinter-terraform:beta**
+  - Docker Hub: **docker.io/oxsecurity/megalinter-terraform:beta**
+
 - [mega-linter-runner](https://megalinter.io/beta/mega-linter-runner/): `mega-linter-runner --flavor terraform`
 
 ## Embedded linters
