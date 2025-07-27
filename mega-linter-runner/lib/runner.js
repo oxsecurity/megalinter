@@ -13,10 +13,7 @@ import { createEnv } from "yeoman-environment";
 import { default as FindPackageJson } from "find-package-json";
 
 export class MegaLinterRunner {
-  constructor() {
-    this.containerEngine = "docker";
-  }
-  
+
   async run(options) {
     // Show help ( index or for an options)
     if (options.help) {
@@ -88,8 +85,8 @@ export class MegaLinterRunner {
 
     // Build MegaLinter docker image name with flavor and release version
     this.containerEngine = options.containerEngine || "docker";
-    if (options.containerEngine !== "docker" && options.containerEngine !== "podman") {
-      throw new Error(`Invalid container engine: ${options.containerEngine}. Supported engines are 'docker' and 'podman'.`);
+    if (this.containerEngine !== "docker" && this.containerEngine !== "podman") {
+      throw new Error(`Invalid container engine: ${this.containerEngine}. Supported engines are 'docker' and 'podman'.`);
     }
     const release = options.release in ["stable"] ? DEFAULT_RELEASE : options.release;
     const dockerImageName =
