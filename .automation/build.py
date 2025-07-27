@@ -812,7 +812,9 @@ def generate_linter_dockerfiles():
                 dockerfile, descriptor_and_linter, requires_docker, "none", extra_lines
             )
             gha_workflow_yml += [f'            "{linter_lower_name}",']
-            docker_image = f"{ML_DOCKER_IMAGE_WITH_HOST}-only-{linter_lower_name}:{VERSION_V}"
+            docker_image = (
+                f"{ML_DOCKER_IMAGE_WITH_HOST}-only-{linter_lower_name}:{VERSION_V}"
+            )
             docker_image_badge = (
                 f"![Docker Image Size (tag)]({BASE_SHIELD_IMAGE_LINK}/"
                 f"{ML_DOCKER_IMAGE}-only-{linter_lower_name}/{VERSION_V})"
@@ -1166,7 +1168,9 @@ def generate_descriptor_documentation(descriptor):
 def generate_flavor_documentation(flavor_id, flavor, linters_tables_md):
     flavor_github_action = f"{ML_REPO}/flavors/{flavor_id}@{VERSION_V}"
     flavor_docker_image = f"{ML_DOCKER_IMAGE_WITH_HOST}-{flavor_id}:{VERSION_V}"
-    flavor_docker_image_dockerhub = f"docker.io/{ML_DOCKER_IMAGE}-{flavor_id}:{VERSION_V}"
+    flavor_docker_image_dockerhub = (
+        f"docker.io/{ML_DOCKER_IMAGE}-{flavor_id}:{VERSION_V}"
+    )
     docker_image_badge = (
         f"![Docker Image Size (tag)]({BASE_SHIELD_IMAGE_LINK}/"
         f"{ML_DOCKER_IMAGE}-{flavor_id}/{VERSION_V})"
@@ -2013,9 +2017,7 @@ def build_flavors_md_table(filter_linter_name=None, replace_link=False):
         + +len(linters_by_type["other"])
     )
     docker_image_badge = f"![Docker Image Size (tag)]({BASE_SHIELD_IMAGE_LINK}/{ML_DOCKER_IMAGE}/{VERSION_V})"
-    docker_pulls_badge = (
-        f"![Docker Pulls]({BASE_SHIELD_COUNT_LINK}/{ML_DOCKER_IMAGE})"
-    )
+    docker_pulls_badge = f"![Docker Pulls]({BASE_SHIELD_COUNT_LINK}/{ML_DOCKER_IMAGE})"
     md_line_all = (
         f"| {icon_html} | [all]({MKDOCS_URL_ROOT}/supported-linters/) | "
         f"Default MegaLinter Flavor | {str(linters_number)} | {docker_image_badge} {docker_pulls_badge} |"
@@ -2116,12 +2118,8 @@ def update_docker_pulls_counter():
     now_str = datetime.now().replace(microsecond=0).isoformat()
     for flavor_id in all_flavors_ids:
         if flavor_id == "all":
-            ghcr_image_url = (
-                f"{GHCR_PACKAGES_ROOT_URL}/{ML_DOCKER_NAME}"
-            )
-            docker_image_url = (
-                f"{DOCKER_PACKAGES_ROOT_URL}/{ML_DOCKER_IMAGE}"
-            )
+            ghcr_image_url = f"{GHCR_PACKAGES_ROOT_URL}/{ML_DOCKER_NAME}"
+            docker_image_url = f"{DOCKER_PACKAGES_ROOT_URL}/{ML_DOCKER_IMAGE}"
             legacy_docker_image_url = (
                 f"{DOCKER_PACKAGES_ROOT_URL}/{ML_DOCKER_IMAGE_LEGACY}"
             )
@@ -2129,13 +2127,13 @@ def update_docker_pulls_counter():
                 f"{DOCKER_PACKAGES_ROOT_URL}/{ML_DOCKER_IMAGE_LEGACY_V5}"
             )
         else:
-            ghcr_image_url = (
-                f"{GHCR_PACKAGES_ROOT_URL}/{ML_DOCKER_NAME}-{flavor_id}"
-            )
+            ghcr_image_url = f"{GHCR_PACKAGES_ROOT_URL}/{ML_DOCKER_NAME}-{flavor_id}"
             docker_image_url = (
                 f"{DOCKER_PACKAGES_ROOT_URL}/{ML_DOCKER_IMAGE}-{flavor_id}"
             )
-            legacy_docker_image_url = f"{DOCKER_PACKAGES_ROOT_URL}/{ML_DOCKER_IMAGE_LEGACY}-{flavor_id}"
+            legacy_docker_image_url = (
+                f"{DOCKER_PACKAGES_ROOT_URL}/{ML_DOCKER_IMAGE_LEGACY}-{flavor_id}"
+            )
             legacy_v5_docker_image_url = (
                 f"{DOCKER_PACKAGES_ROOT_URL}/"
                 + f"{ML_DOCKER_IMAGE_LEGACY_V5}-{flavor_id}"
