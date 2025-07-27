@@ -105,6 +105,10 @@ Example: 'megalinter-custom-flavor-python-light'
     if (this.selectedLinters.length === 0) {
       throw new Error("You must select at least one linter for your custom flavor");
     }
+    this.selectedLintersWithLinks = this.props.selectedLinters.map((linter) => {
+      const linterUrl = `https://megalinter.io/latest/descriptors/${linter.toLowerCase()}/`;
+      return `  - [${linter}](${linterUrl})`;
+    }).join("\n");
     // Custom flavor author is git username
     const git = simpleGit();
     const user = await git.getConfig('user.name');
@@ -112,6 +116,7 @@ Example: 'megalinter-custom-flavor-python-light'
     // Get remote repo
     const remote = await git.getRemotes(true);
     this.customFlavorRepo = remote[0].refs.fetch.replace('https://github.com/', '').replace('.git', '');
+    this.customFlavorRepoUrl = remote[0].refs.fetch.replace('.git', '');
     // Custom flavor docker image version
     this.customFlavorDockerImageVersion = `ghcr.io/${this.customFlavorRepo}/megalinter-custom-flavor:latest`;
   }
@@ -153,9 +158,11 @@ Example: 'megalinter-custom-flavor-python-light'
       this.destinationPath("README.md"),
       {
         CUSTOM_FLAVOR_LABEL: this.customFlavorLabel,
-        CUSTOM_FLAVOR_LINTERS: this.selectedLinters,
+        CUSTOM_FLAVOR_LINTERS_WITH_LINKS: this.selectedLintersWithLinks,
         DOCKER_IMAGE_VERSION: this.customFlavorDockerImageVersion,
-        CUSTOM_FLAVOR_GITHUB_ACTION: this.customFlavorRepo
+        CUSTOM_FLAVOR_GITHUB_ACTION: this.customFlavorRepo,
+        CUSTOM_FLAVOR_REPO_URL: this.customFlavorRepoUrl,
+        CUSTOM_FLAVOR_AUTHOR: this.customFlavorAuthor,
       }
     );
   }
