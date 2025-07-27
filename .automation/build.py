@@ -814,7 +814,7 @@ def generate_linter_dockerfiles():
             docker_image = f"{ML_DOCKER_IMAGE_WITH_HOST}-only-{linter_lower_name}:{VERSION_V}"
             docker_image_badge = (
                 f"![Docker Image Size (tag)]({BASE_SHIELD_IMAGE_LINK}/"
-                f"{ML_DOCKER_IMAGE_WITH_HOST}-only-{linter_lower_name}/{VERSION_V})"
+                f"{ML_DOCKER_IMAGE}-only-{linter_lower_name}/{VERSION_V})"
             )
             linters_md += (
                 f"| {linter.name} | {docker_image} | {docker_image_badge}  |\n"
@@ -1167,10 +1167,10 @@ def generate_flavor_documentation(flavor_id, flavor, linters_tables_md):
     flavor_docker_image = f"{ML_DOCKER_IMAGE_WITH_HOST}-{flavor_id}:{VERSION_V}"
     docker_image_badge = (
         f"![Docker Image Size (tag)]({BASE_SHIELD_IMAGE_LINK}/"
-        f"{ML_DOCKER_IMAGE_WITH_HOST}-{flavor_id}/{VERSION_V})"
+        f"{ML_DOCKER_IMAGE}-{flavor_id}/{VERSION_V})"
     )
     docker_pulls_badge = (
-        f"![Docker Pulls]({BASE_SHIELD_COUNT_LINK}/" f"{ML_DOCKER_IMAGE_WITH_HOST}-{flavor_id})"
+        f"![Docker Pulls]({BASE_SHIELD_COUNT_LINK}/{ML_DOCKER_IMAGE}-{flavor_id})"
     )
     flavor_doc_md = [
         "---",
@@ -2007,7 +2007,7 @@ def build_flavors_md_table(filter_linter_name=None, replace_link=False):
     )
     docker_image_badge = f"![Docker Image Size (tag)]({BASE_SHIELD_IMAGE_LINK}/{ML_DOCKER_IMAGE}/{VERSION_V})"
     docker_pulls_badge = (
-        f"![Docker Pulls]({BASE_SHIELD_COUNT_LINK}/" f"{ML_DOCKER_IMAGE_WITH_HOST})"
+        f"![Docker Pulls]({BASE_SHIELD_COUNT_LINK}/{ML_DOCKER_IMAGE})"
     )
     md_line_all = (
         f"| {icon_html} | [all]({MKDOCS_URL_ROOT}/supported-linters/) | "
@@ -2032,11 +2032,11 @@ def build_flavors_md_table(filter_linter_name=None, replace_link=False):
         flavor_doc_url = f"{DOCS_URL_FLAVORS_ROOT}/{flavor_id}.md"
         docker_image_badge = (
             f"![Docker Image Size (tag)]({BASE_SHIELD_IMAGE_LINK}/"
-            f"{ML_DOCKER_IMAGE_WITH_HOST}-{flavor_id}/{VERSION_V})"
+            f"{ML_DOCKER_IMAGE}-{flavor_id}/{VERSION_V})"
         )
         docker_pulls_badge = (
             f"![Docker Pulls]({BASE_SHIELD_COUNT_LINK}/"
-            f"{ML_DOCKER_IMAGE_WITH_HOST}-{flavor_id})"
+            f"{ML_DOCKER_IMAGE}-{flavor_id})"
         )
         md_line = (
             f"| {icon_html} | [{flavor_id}]({doc_url(flavor_doc_url)}) |"
