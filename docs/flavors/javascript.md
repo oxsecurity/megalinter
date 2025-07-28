@@ -14,7 +14,12 @@ Optimized for JAVASCRIPT or TYPESCRIPT based projects
 ## Usage
 
 - [GitHub Action](https://megalinter.io/beta/installation/#github-action): **oxsecurity/megalinter/flavors/javascript@beta**
-- Docker image: **oxsecurity/megalinter-javascript:beta**
+
+- Docker images:
+
+  - GitHub Packages: **ghcr.io/oxsecurity/megalinter-javascript:beta**
+  - Docker Hub: **docker.io/oxsecurity/megalinter-javascript:beta**
+
 - [mega-linter-runner](https://megalinter.io/beta/mega-linter-runner/): `mega-linter-runner --flavor javascript`
 
 ## Embedded linters

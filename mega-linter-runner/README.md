@@ -94,38 +94,51 @@ mega-linter-runner [OPTIONS] [FILES]
 
 The options are only related to mega-linter-runner. For MegaLinter options, please use a `.mega-linter.yml` [configuration file](#configuration)
 
-| Option                 | Description                                                                                                                                                                                     | Default           |
-|------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------|
-| `-p` <br/> `--path`    | Directory containing the files to lint                                                                                                                                                          | current directory |
-| `-f` <br/> `--flavor`  | Set this parameter to use a [MegaLinter flavor](https://megalinter.io/flavors/)                                                                                                                 | `all`             |
-| `-d` <br/> `--image`   | You can override the used docker image, including if it's on another docker registry                                                                                                            | <!-- -->          |
-| `-e` <br/> `--env`     | Environment variables for MegaLinter, following format **'ENV_VAR_NAME=VALUE'** for a single value or **"'ENV_VAR_NAME=VALUE1,VALUE2'"** for a list of values<br/>Warning: Quotes are mandatory | <!-- -->          |
-| `--fix`                | Automatically apply formatting and fixes in your files                                                                                                                                          | <!-- -->          |
-| `-r` <br/> `--release` | Allows to override MegaLinter version used                                                                                                                                                      | `v5`              |
-| `-h` <br/> `--help`    | Show mega-linter-runner help                                                                                                                                                                    | <!-- -->          |
-| `-v` <br/> `--version` | Show mega-linter-runner version                                                                                                                                                                 | <!-- -->          |
-| `-i` <br/> `--install` | Generate MegaLinter configuration files                                                                                                                                                         | <!-- -->          |
-| `--container-name`     | Specify MegaLinter container name                                                                                                                                                               | <!-- -->          |
-| `--remove-container`   | Remove MegaLinter Docker container when done                                                                                                                                                    | <!-- -->          |
+| Option                    | Description                                                                                                                                                                                     | Default           |
+|---------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------|
+| `-p` <br/> `--path`       | Directory containing the files to lint                                                                                                                                                          | current directory |
+| `-f` <br/> `--flavor`     | Set this parameter to use a [MegaLinter flavor](https://megalinter.io/flavors/)                                                                                                                 | `all`             |
+| `-d` <br/> `--image`      | You can override the used docker image, including if it's on another docker registry                                                                                                            | <!-- -->          |
+| `-e` <br/> `--env`        | Environment variables for MegaLinter, following format **'ENV_VAR_NAME=VALUE'** for a single value or **"'ENV_VAR_NAME=VALUE1,VALUE2'"** for a list of values<br/>Warning: Quotes are mandatory | <!-- -->          |
+| `--fix`                   | Automatically apply formatting and fixes in your files                                                                                                                                          | <!-- -->          |
+| `-r` <br/> `--release`    | Allows to override MegaLinter version used                                                                                                                                                      | `v5`              |
+| `-h` <br/> `--help`       | Show mega-linter-runner help                                                                                                                                                                    | <!-- -->          |
+| `-v` <br/> `--version`    | Show mega-linter-runner version                                                                                                                                                                 | <!-- -->          |
+| `--container-engine`      | Allows to specify a docker engine (`docker` or `podman`)                                                                                                                                        | `docker`          |
+| `--container-name`        | Specify MegaLinter container name                                                                                                                                                               | <!-- -->          |
+| `--remove-container`      | Remove MegaLinter Docker container when done                                                                                                                                                    | <!-- -->          |
+| `-i` <br/> `--install`    | Generate [MegaLinter local configuration](https://megalinter.io/beta/install-assisted/) files and CI/CD workflows                                                                               | <!-- -->          |
+| `-i` <br/> `--upgrade`    | Upgrade your MegaLinter configuration files to use the latest version                                                                                                                           | <!-- -->          |
+| `--custom-flavor-setup`   | Initialize a new repository to generate a [custom flavor](https://megalinter.io/beta/custom-flavors/)                                                                                           | <!-- -->          |
+| `--custom-flavor-linters` | Comma-separated list of linter keys if using `--custom-flavor-setup`                                                                                                                            | <!-- -->          |
 
 _You can also use `npx mega-linter-runner` if you do not want to install the package_
 
 ### Examples
 
 ```shell
+# Run with all defaults
 mega-linter-runner
 ```
 
 ```shell
+# Scan a folder and apply fixes
 mega-linter-runner -p myFolder --fix
 ```
 
 ```shell
+# Send environment variables
 mega-linter-runner -r beta -e "'ENABLE=MARKDOWN,YAML'" -e 'SHOW_ELAPSED_TIME=true'
 ```
 
 ```shell
+# Use python flavor beta version, only on some files
 mega-linter-runner --flavor python --release beta --filesonly path/to/my/file1.py another/path/to/a/file.js and/another/file.py
+```
+
+```shell
+# Use Podman as engine
+mega-linter-runner --flavor documentation --container-engine podman
 ```
 
 ## Configuration

@@ -1058,8 +1058,8 @@ defaults.
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=snakemake
-ARG PIP_SNAKEMAKE_VERSION=9.8.1
+ARG PIP_SNAKEMAKE_VERSION=9.8.2
 ```
 
 - PIP packages (Python):
-  - [snakemake==9.8.1](https://pypi.org/project/snakemake/9.8.1)
+  - [snakemake==9.8.2](https://pypi.org/project/snakemake/9.8.2)

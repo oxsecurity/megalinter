@@ -14,7 +14,12 @@ Optimized for pure C/C++ projects
 ## Usage
 
 - [GitHub Action](https://megalinter.io/beta/installation/#github-action): **oxsecurity/megalinter/flavors/c_cpp@beta**
-- Docker image: **oxsecurity/megalinter-c_cpp:beta**
+
+- Docker images:
+
+  - GitHub Packages: **ghcr.io/oxsecurity/megalinter-c_cpp:beta**
+  - Docker Hub: **docker.io/oxsecurity/megalinter-c_cpp:beta**
+
 - [mega-linter-runner](https://megalinter.io/beta/mega-linter-runner/): `mega-linter-runner --flavor c_cpp`
 
 ## Embedded linters

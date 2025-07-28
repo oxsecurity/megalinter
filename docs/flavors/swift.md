@@ -14,7 +14,12 @@ Optimized for SWIFT based projects
 ## Usage
 
 - [GitHub Action](https://megalinter.io/beta/installation/#github-action): **oxsecurity/megalinter/flavors/swift@beta**
-- Docker image: **oxsecurity/megalinter-swift:beta**
+
+- Docker images:
+
+  - GitHub Packages: **ghcr.io/oxsecurity/megalinter-swift:beta**
+  - Docker Hub: **docker.io/oxsecurity/megalinter-swift:beta**
+
 - [mega-linter-runner](https://megalinter.io/beta/mega-linter-runner/): `mega-linter-runner --flavor swift`
 
 ## Embedded linters
