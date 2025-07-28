@@ -28,6 +28,10 @@ FROM ghcr.io/astral-sh/uv:0.8.0 AS uv
 FROM python:3.13-alpine3.21 AS build-ml-core
 WORKDIR /
 COPY --from=uv /uv /uvx /bin/
+ARG TARGETPLATFORM
+RUN [ "$TARGETPLATFORM" = "linux/arm64" ] && apk -U --no-cache upgrade && apk add --no-cache curl libgcc build-base musl-dev \
+    && curl https://sh.rustup.rs -sSf | sh -s -- -y || true
+ENV PATH="/root/.cargo/bin:${PATH}"
 # Install dependencies
 RUN --mount=type=cache,target=/root/.cache/uv \
     --mount=type=bind,source=uv.lock,target=uv.lock \
