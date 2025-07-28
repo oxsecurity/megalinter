@@ -131,7 +131,7 @@ jobs:
         with:
           context: .
           file: Dockerfile
-          platforms: linux/amd64
+          platforms: linux/amd64,linux/arm64
           build-args: |
             BUILD_DATE=${{ env.BUILD_DATE }}
             BUILD_REVISION=${{ github.sha }}
@@ -149,7 +149,7 @@ jobs:
       #   with:
       #     context: .
       #     file: Dockerfile-worker
-      #     platforms: linux/amd64
+      #     platforms: linux/amd64,linux/arm64
       #     build-args: |
       #       MEGALINTER_BASE_IMAGE=ghcr.io/oxsecurity/megalinter:alpha
       #       BUILD_DATE=${{ env.BUILD_DATE }}
