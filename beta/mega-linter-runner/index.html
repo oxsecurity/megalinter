@@ -3909,9 +3909,9 @@
 <td><!-- --></td>
 </tr>
 <tr>
-<td><code>-i</code> <br/> <code>--install</code></td>
-<td>Generate MegaLinter configuration files</td>
-<td><!-- --></td>
+<td><code>--container-engine</code></td>
+<td>Allows to specify a docker engine (<code>docker</code> or <code>podman</code>)</td>
+<td><code>docker</code></td>
 </tr>
 <tr>
 <td><code>--container-name</code></td>
@@ -3923,17 +3923,44 @@
 <td>Remove MegaLinter Docker container when done</td>
 <td><!-- --></td>
 </tr>
+<tr>
+<td><code>-i</code> <br/> <code>--install</code></td>
+<td>Generate <a href="https://megalinter.io/beta/install-assisted/">MegaLinter local configuration</a> files and CI/CD workflows</td>
+<td><!-- --></td>
+</tr>
+<tr>
+<td><code>-i</code> <br/> <code>--upgrade</code></td>
+<td>Upgrade your MegaLinter configuration files to use the latest version</td>
+<td><!-- --></td>
+</tr>
+<tr>
+<td><code>--custom-flavor-setup</code></td>
+<td>Initialize a new repository to generate a <a href="https://megalinter.io/beta/custom-flavors/">custom flavor</a></td>
+<td><!-- --></td>
+</tr>
+<tr>
+<td><code>--custom-flavor-linters</code></td>
+<td>Comma-separated list of linter keys if using <code>--custom-flavor-setup</code></td>
+<td><!-- --></td>
+</tr>
 </tbody>
 </table>
 <p><em>You can also use <code>npx mega-linter-runner</code> if you do not want to install the package</em></p>
 <h3 id="examples">Examples</h3>
-<pre><code class="language-shell">mega-linter-runner
+<pre><code class="language-shell"># Run with all defaults
+mega-linter-runner
 </code></pre>
-<pre><code class="language-shell">mega-linter-runner -p myFolder --fix
+<pre><code class="language-shell"># Scan a folder and apply fixes
+mega-linter-runner -p myFolder --fix
 </code></pre>
-<pre><code class="language-shell">mega-linter-runner -r beta -e "'ENABLE=MARKDOWN,YAML'" -e 'SHOW_ELAPSED_TIME=true'
+<pre><code class="language-shell"># Send environment variables
+mega-linter-runner -r beta -e "'ENABLE=MARKDOWN,YAML'" -e 'SHOW_ELAPSED_TIME=true'
 </code></pre>
-<pre><code class="language-shell">mega-linter-runner --flavor python --release beta --filesonly path/to/my/file1.py another/path/to/a/file.js and/another/file.py
+<pre><code class="language-shell"># Use python flavor beta version, only on some files
+mega-linter-runner --flavor python --release beta --filesonly path/to/my/file1.py another/path/to/a/file.js and/another/file.py
+</code></pre>
+<pre><code class="language-shell"># Use Podman as engine
+mega-linter-runner --flavor documentation --container-engine podman
 </code></pre>
 <h2 id="configuration">Configuration</h2>
 <p>You can generate a ready-to-use <a href="https://megalinter.io/configuration/">.mega-linter.yml configuration file</a> by running <code>npx mega-linter-runner --install</code> at the root of your repository</p>
