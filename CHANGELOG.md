@@ -175,6 +175,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [pmd](https://pmd.github.io/) from 7.15.0 to **7.16.0** on 2025-07-28
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.90.1 to **3.90.2** on 2025-07-28
   - [snakemake](https://snakemake.github.io/) from 9.8.1 to **9.8.2** on 2025-07-28
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2025.07.26 to **2025.07.28** on 2025-07-28
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15
