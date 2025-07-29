@@ -52,6 +52,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Update contributing guide to explain how to manage python dependencies in the codebase
 
 - Flavors
+  - Do not suggest flavors that have more linters than the current one
 
 - CI
   - Update default MegaLinter CI/CD workflows to disable LLM_ADVISOR in case of bot pull requests

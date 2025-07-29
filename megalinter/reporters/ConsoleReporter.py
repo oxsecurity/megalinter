@@ -13,6 +13,7 @@ from megalinter.constants import (
     ML_REPO_URL,
     ML_VERSION,
 )
+from megalinter.flavor_factory import is_custom_flavor
 from megalinter.utils import blue
 from megalinter.utils_reporter import log_section_end
 
@@ -133,13 +134,15 @@ class ConsoleReporter(Reporter):
             custom_flavor_message = (
                 blue(
                     "Your project could benefit from a custom flavor, "
-                    + "which would allow you to run only the linters you need, and thus improve runtime performances.\n"
+                    + "which would allow you to run only the linters you need, and thus improve runtime performances. "
+                    + "(Skip this info by defining `FLAVOR_SUGGESTIONS: false`)\n"
                 )
                 + f"- Documentation: {ML_DOC_URL}/custom-flavors/\n"
                 f"- Command: `{custom_flavor_command}`"
             )
             if len(self.master.flavor_suggestions) == 1:
-                logging.warning(custom_flavor_message)
+                if not is_custom_flavor():
+                    logging.warning(custom_flavor_message)
             else:
                 build_version = config.get(None, "BUILD_VERSION", DEFAULT_RELEASE)
                 action_version = (
@@ -164,5 +167,6 @@ class ConsoleReporter(Reporter):
                         f"{self.gh_url}/flavors/{suggestion['flavor']}/"
                     )
                     logging.warning(flavor_msg)
-                logging.warning(custom_flavor_message)
+                if not is_custom_flavor():
+                    logging.warning(custom_flavor_message)
             logging.info("")

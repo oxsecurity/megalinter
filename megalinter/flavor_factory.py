@@ -133,10 +133,18 @@ def check_active_linters_match_flavor(active_linters, request_id):
 def get_megalinter_flavor_suggestions(active_linters):
     all_flavors = get_all_flavors()
     matching_flavors = []
+    current_flavor = get_image_flavor()
+    current_flavor_linters_number = 1000
+    if current_flavor in all_flavors:
+        current_flavor_info = all_flavors[current_flavor]
+        current_flavor_linters_number = len(current_flavor_info["linters"])
     for flavor_id, flavor_info in all_flavors.items():
         match = True
         # Exclude current flavor
-        if flavor_id == get_image_flavor():
+        if flavor_id == current_flavor:
+            continue
+        # Exclude flavor if it is has more linters than the current flavor
+        if len(flavor_info["linters"]) > current_flavor_linters_number:
             continue
         # Check if all active linters are in flavor linters
         for active_linter in active_linters:
