@@ -161,7 +161,7 @@ ARG CSHARP_ROSLYNATOR_VERSION=0.10.2
 # renovate: datasource=npm depName=stylelint
 ARG NPM_STYLELINT_VERSION=16.23.0
 # renovate: datasource=npm depName=stylelint-config-standard
-ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=38.0.0
+ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=39.0.0
 # renovate: datasource=npm depName=stylelint-config-sass-guidelines
 ARG NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION=12.1.0
 # renovate: datasource=npm depName=stylelint-scss
