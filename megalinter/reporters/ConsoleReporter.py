@@ -13,6 +13,7 @@ from megalinter.constants import (
     ML_REPO_URL,
     ML_VERSION,
 )
+from megalinter.flavor_factory import is_custom_flavor
 from megalinter.utils import blue
 from megalinter.utils_reporter import log_section_end
 
@@ -140,7 +141,8 @@ class ConsoleReporter(Reporter):
                 f"- Command: `{custom_flavor_command}`"
             )
             if len(self.master.flavor_suggestions) == 1:
-                logging.warning(custom_flavor_message)
+                if not is_custom_flavor():
+                    logging.warning(custom_flavor_message)
             else:
                 build_version = config.get(None, "BUILD_VERSION", DEFAULT_RELEASE)
                 action_version = (
@@ -165,5 +167,6 @@ class ConsoleReporter(Reporter):
                         f"{self.gh_url}/flavors/{suggestion['flavor']}/"
                     )
                     logging.warning(flavor_msg)
-                logging.warning(custom_flavor_message)
+                if not is_custom_flavor():
+                    logging.warning(custom_flavor_message)
             logging.info("")

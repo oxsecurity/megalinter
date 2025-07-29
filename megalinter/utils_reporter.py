@@ -14,6 +14,7 @@ from megalinter.constants import (
     ML_VERSION,
     OX_MARKDOWN_LINK,
 )
+from megalinter.flavor_factory import is_custom_flavor
 from pytablewriter import Align, MarkdownTableWriter
 from pytablewriter.style import Style
 from redis import Redis
@@ -202,7 +203,8 @@ def build_markdown_summary_footer(reporter_self, action_run_url=""):
             f"  - Command: `{custom_flavor_command}`"
         )
         if len(reporter_self.master.flavor_suggestions) == 1:
-            footer += os.linesep + os.linesep + custom_flavor_message
+            if not is_custom_flavor():
+                footer += os.linesep + os.linesep + custom_flavor_message
         else:
             footer += (
                 os.linesep
@@ -223,7 +225,8 @@ def build_markdown_summary_footer(reporter_self, action_run_url=""):
                     f"- [{action_path}]({ML_DOC_URL}/flavors/{suggestion['flavor']}/)"
                     f" ({suggestion['linters_number']} linters)" + os.linesep
                 )
-            footer += os.linesep + os.linesep + custom_flavor_message
+            if not is_custom_flavor():
+                footer += os.linesep + os.linesep + custom_flavor_message
         footer += os.linesep
 
     # Link to ox
