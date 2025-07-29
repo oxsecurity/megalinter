@@ -133,7 +133,8 @@ class ConsoleReporter(Reporter):
             custom_flavor_message = (
                 blue(
                     "Your project could benefit from a custom flavor, "
-                    + "which would allow you to run only the linters you need, and thus improve runtime performances.\n"
+                    + "which would allow you to run only the linters you need, and thus improve runtime performances. "
+                    + "(Skip this info by defining `FLAVOR_SUGGESTIONS: false`)\n"
                 )
                 + f"- Documentation: {ML_DOC_URL}/custom-flavors/\n"
                 f"- Command: `{custom_flavor_command}`"
