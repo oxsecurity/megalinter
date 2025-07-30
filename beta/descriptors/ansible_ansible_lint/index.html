@@ -3827,7 +3827,7 @@
 <p>Ansible-lint helps teams maintain consistent, secure, and well-structured Ansible automation code.</p>
 <h2 id="ansible-lint-documentation">ansible-lint documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>25.6.1</strong></li>
+<li>Version in MegaLinter: <strong>25.7.0</strong></li>
 <li>Visit <a href="https://ansible-lint.readthedocs.io/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://ansible-lint.readthedocs.io/configuring/#configuration-file" target="_blank">How to configure ansible-lint rules</a><ul>
 <li>If custom <code>.ansible-lint</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.ansible-lint" target="_blank">.ansible-lint</a> will be used</li>
@@ -4084,7 +4084,8 @@ usage: ansible-lint [-h] [-P | -L | -T]
                     [--enable-list ENABLE_LIST] [--nocolor] [--force-color]
                     [--exclude EXCLUDE_PATHS [EXCLUDE_PATHS ...]]
                     [-c CONFIG_FILE] [-i IGNORE_FILE]
-                    [--offline | --no-offline] [--version]
+                    [--yamllint-file YAMLLINT_FILE] [--offline | --no-offline]
+                    [--version]
                     [lintables ...]
 
 positional arguments:
@@ -4128,6 +4129,8 @@ options:
                         Specify configuration file to use. By default it will look for '.ansible-lint', '.ansible-lint.yml', '.ansible-lint.yaml', '.config/ansible-lint.yml', or '.config/ansible-lint.yaml'
   -i, --ignore-file IGNORE_FILE
                         Specify ignore file to use. By default it will look for '.ansible-lint-ignore' or '.config/ansible-lint-ignore.txt'
+  --yamllint-file YAMLLINT_FILE
+                        Specify yamllint config file to use. By default it will look for '.yamllint', '.yamllint.yaml', '.yamllint.yml', '~/.config/yamllint/config' or environment variables XDG_CONFIG_HOME and YAMLLINT_CONFIG_FILE.
   --offline, --no-offline
                         Disable installation of requirements.yml and schema refreshing
   --version
@@ -4149,11 +4152,11 @@ ANSIBLE_LINT_NODEPS: Avoids installing content dependencies and avoids performin
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile"># renovate: datasource=pypi depName=ansible-lint
-ARG PIP_ANSIBLE_LINT_VERSION=25.6.1
+ARG PIP_ANSIBLE_LINT_VERSION=25.7.0
 </code></pre>
 <ul>
 <li>PIP packages (Python):<ul>
-<li><a href="https://pypi.org/project/ansible-lint/25.6.1">ansible-lint==25.6.1</a></li>
+<li><a href="https://pypi.org/project/ansible-lint/25.7.0">ansible-lint==25.7.0</a></li>
 </ul>
 </li>
 </ul>
