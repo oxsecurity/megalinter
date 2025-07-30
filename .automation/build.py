@@ -829,7 +829,7 @@ def generate_linter_dockerfiles():
     with open(linters_matrix_file, "w", encoding="utf-8") as file:
         json.dump(active_linter_list_lower, file, indent=2, sort_keys=True)
         file.write("\n")
-        logging.info(f"Updated {linters_matrix_file}")  
+        logging.info(f"Updated {linters_matrix_file}")
 
     # Write MD file
     file = open(f"{REPO_HOME}/docs/standalone-linters.md", "w", encoding="utf-8")
