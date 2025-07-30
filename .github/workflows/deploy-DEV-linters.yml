@@ -31,10 +31,41 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
-      - name: Read linters_matrix.json
+      - name: Get PR title or commit message
+        id: get-title
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            echo "title=${{ github.event.pull_request.title }}" >> $GITHUB_OUTPUT
+          else
+            echo "title=${{ github.event.head_commit.message }}" >> $GITHUB_OUTPUT
+      - name: Read linters_matrix.json and filter
         id: set-matrix
         run: |
-          echo "linters=$(cat .automation/generated/linters_matrix.json | jq -c)" >> $GITHUB_OUTPUT
+          title="${{ steps.get-title.outputs.title }}"
+          matrix=$(cat .automation/generated/linters_matrix.json | jq -c)
+          extract_pkg() {
+            # Extract after 'upgrade', 'update dependency', 'update docker tag', etc.
+            pkg=$(echo "$1" | sed -E 's/^chore\(deps\): (upgrade|update dependency|update docker tag|update .* plugin|update .* docker tag) ([^ ]+).*/\2/i')
+            # If not found, try generic extraction for dependency lines
+            if [ -z "$pkg" ]; then
+              pkg=$(echo "$1" | sed -E 's/^chore\(deps\): update dependency ([^ ]+).*/\1/i')
+            fi
+            # Extract last segment after / or @ (e.g., friendsofphp/php-cs-fixer -> php-cs-fixer, @salesforce/plugin-packaging -> plugin-packaging)
+            pkg=$(echo "$pkg" | sed -E 's/^.*[\/@]//')
+            # Normalize: replace - and / with _, lowercase
+            pkg=$(echo "$pkg" | sed 's/@//g; s/[-\/]/_/g' | tr '[:upper:]' '[:lower:]')
+            echo "$pkg"
+          }
+          pkg=$(extract_pkg "$title")
+          if [ -n "$pkg" ] && echo "$title" | grep -iq '^chore(deps)'; then
+            matches=$(echo "$matrix" | jq -c --arg pkg "$pkg" '[.[] | select(. == $pkg)]')
+            if [ "$(echo "$matches" | jq 'length')" -gt 0 ]; then
+              echo "linters=$matches" >> $GITHUB_OUTPUT
+              exit 0
+            fi
+          fi
+          # Default: return all
+          echo "linters=$matrix" >> $GITHUB_OUTPUT
 
   build:
     # Name the Job
