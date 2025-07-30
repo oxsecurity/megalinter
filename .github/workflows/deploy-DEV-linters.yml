@@ -38,11 +38,10 @@ jobs:
             echo "title=${{ github.event.pull_request.title }}" >> $GITHUB_OUTPUT
           else
             echo "title=${{ github.event.head_commit.message }}" >> $GITHUB_OUTPUT
+          fi
       - name: Read linters_matrix.json and filter
         id: set-matrix
         run: |
-          title="${{ steps.get-title.outputs.title }}"
-          matrix=$(cat .automation/generated/linters_matrix.json | jq -c)
           extract_pkg() {
             # Extract after 'upgrade', 'update dependency', 'update docker tag', etc.
             pkg=$(echo "$1" | sed -E 's/^chore\(deps\): (upgrade|update dependency|update docker tag|update .* plugin|update .* docker tag) ([^ ]+).*/\2/i')
@@ -56,6 +55,8 @@ jobs:
             pkg=$(echo "$pkg" | sed 's/@//g; s/[-\/]/_/g' | tr '[:upper:]' '[:lower:]')
             echo "$pkg"
           }
+          title="${{ steps.get-title.outputs.title }}"
+          matrix=$(cat .automation/generated/linters_matrix.json | jq -c)
           pkg=$(extract_pkg "$title")
           if [ -n "$pkg" ] && echo "$title" | grep -iq '^chore(deps)'; then
             matches=$(echo "$matrix" | jq -c --arg pkg "$pkg" '[.[] | select(. == $pkg)]')
