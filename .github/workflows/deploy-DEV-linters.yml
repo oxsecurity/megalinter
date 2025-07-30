@@ -61,11 +61,13 @@ jobs:
           if [ -n "$pkg" ] && echo "$title" | grep -iq '^chore(deps)'; then
             matches=$(echo "$matrix" | jq -c --arg pkg "$pkg" '[.[] | select(. == $pkg)]')
             if [ "$(echo "$matches" | jq 'length')" -gt 0 ]; then
+              echo "Filtered linters: $matches"
               echo "linters=$matches" >> $GITHUB_OUTPUT
               exit 0
             fi
           fi
           # Default: return all
+          echo "No specific package found or not a chore(deps) commit, using all linters."
           echo "linters=$matrix" >> $GITHUB_OUTPUT
 
   build:
