@@ -177,6 +177,14 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.90.1 to **3.90.2** on 2025-07-28
   - [snakemake](https://snakemake.github.io/) from 9.8.1 to **9.8.2** on 2025-07-28
   - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2025.07.26 to **2025.07.28** on 2025-07-28
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 25.6.1 to **25.7.0** on 2025-07-30
+  - [stylelint](https://stylelint.io) from 16.22.0 to **16.23.0** on 2025-07-30
+  - [kubescape](https://github.com/kubescape/kubescape) from 3.0.36 to **3.0.37** on 2025-07-30
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.84.0 to **3.85.1** on 2025-07-30
+  - [phpstan](https://phpstan.org/) from 2.1.20 to **2.1.21** on 2025-07-30
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.12.5 to **0.12.7** on 2025-07-30
+  - [ruff](https://github.com/astral-sh/ruff) from 0.12.5 to **0.12.7** on 2025-07-30
+  - [kics](https://www.kics.io) from 2.1.11 to **2.1.12** on 2025-07-30
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15
