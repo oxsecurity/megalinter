@@ -753,7 +753,7 @@ def generate_linter_dockerfiles():
     linters_md += "| Linter key | Docker image | Size |\n"
     linters_md += "| :----------| :----------- | :--: |\n"
     descriptor_files = megalinter.linter_factory.list_descriptor_files()
-    gha_workflow_yml = ["        linter:", "          ["]
+    active_linter_list_lower = []
     for descriptor_file in descriptor_files:
         descriptor_items = []
         with open(descriptor_file, "r", encoding="utf-8") as f:
@@ -811,7 +811,6 @@ def generate_linter_dockerfiles():
             build_dockerfile(
                 dockerfile, descriptor_and_linter, requires_docker, "none", extra_lines
             )
-            gha_workflow_yml += [f'            "{linter_lower_name}",']
             docker_image = (
                 f"{ML_DOCKER_IMAGE_WITH_HOST}-only-{linter_lower_name}:{VERSION_V}"
             )
@@ -822,27 +821,16 @@ def generate_linter_dockerfiles():
             linters_md += (
                 f"| {linter.name} | {docker_image} | {docker_image_badge}  |\n"
             )
+            if not (hasattr(linter, "disabled") and linter.disabled is True):
+                active_linter_list_lower += [linter_lower_name]
 
-    # Update github action workflow
-    gha_workflow_yml += ["          ]"]
-    replace_in_file(
-        f"{REPO_HOME}/.github/workflows/deploy-DEV-linters.yml",
-        "# linters-start",
-        "# linters-end",
-        "\n".join(gha_workflow_yml),
-    )
-    replace_in_file(
-        f"{REPO_HOME}/.github/workflows/deploy-BETA-linters.yml",
-        "# linters-start",
-        "# linters-end",
-        "\n".join(gha_workflow_yml),
-    )
-    replace_in_file(
-        f"{REPO_HOME}/.github/workflows/deploy-RELEASE-linters.yml",
-        "# linters-start",
-        "# linters-end",
-        "\n".join(gha_workflow_yml),
-    )
+    # Write linter_list_lower in .automation/generated/linters_matrix.json
+    linters_matrix_file = f"{REPO_HOME}/.automation/generated/linters_matrix.json"
+    with open(linters_matrix_file, "w", encoding="utf-8") as file:
+        json.dump(active_linter_list_lower, file, indent=2, sort_keys=True)
+        file.write("\n")
+        logging.info(f"Updated {linters_matrix_file}")
+
     # Write MD file
     file = open(f"{REPO_HOME}/docs/standalone-linters.md", "w", encoding="utf-8")
     file.write(linters_md + "\n")
@@ -3518,29 +3506,6 @@ def update_dependents_info():
     os.system(" ".join(command))
 
 
-def update_workflows_linters():
-    descriptors, _ = list_descriptors_for_build()
-
-    linters = ""
-
-    for descriptor in descriptors:
-        for linter in descriptor["linters"]:
-            if "disabled" in linter and linter["disabled"] is True:
-                continue
-            if "name" in linter:
-                name = linter["name"].lower()
-            else:
-                lang_lower = descriptor["descriptor_id"].lower()
-                linter_name_lower = linter["linter_name"].lower().replace("-", "_")
-                name = f"{lang_lower}_{linter_name_lower}"
-
-            linters += f'            "{name}",\n'
-
-    update_workflow_linters(".github/workflows/deploy-DEV-linters.yml", linters)
-    update_workflow_linters(".github/workflows/deploy-BETA-linters.yml", linters)
-    update_workflow_linters(".github/workflows/deploy-RELEASE-linters.yml", linters)
-
-
 def update_workflow_linters(file_path, linters):
     with open(file_path, "r", encoding="utf-8") as f:
         file_content = f.read()
@@ -3655,7 +3620,6 @@ if __name__ == "__main__":
         generate_all_flavors()
         generate_linter_dockerfiles()
         generate_linter_test_classes()
-        update_workflows_linters()
         if UPDATE_DOC is True:
             logging.info("Running documentation generators…")
             # refresh_users_info() # deprecated since now we use github-dependents-info
