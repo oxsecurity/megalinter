@@ -114,7 +114,7 @@ ARG REPOSITORY_TRIVY_VERSION=0.64.1
 # renovate: datasource=github-tags depName=aquasecurity/trivy
 ARG REPOSITORY_TRIVY_SBOM_VERSION=0.64.1
 # renovate: datasource=pypi depName=pip
-ARG PIP_PIP_VERSION=25.1.1
+ARG PIP_PIP_VERSION=25.2
 # renovate: datasource=pypi depName=virtualenv
 ARG PIP_VIRTUALENV_VERSION=20.32.0
 # renovate: datasource=github-tags depName=rust-lang/rust
