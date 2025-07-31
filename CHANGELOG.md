@@ -189,6 +189,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [grype](https://github.com/anchore/grype) from 0.96.1 to **0.97.0** on 2025-07-30
   - [syft](https://github.com/anchore/syft) from 1.29.0 to **1.29.1** on 2025-07-30
   - [snakemake](https://snakemake.github.io/) from 9.8.2 to **9.9.0** on 2025-07-30
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.38.0 to **1.38.1** on 2025-07-31
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.64.1 to **0.65.0** on 2025-07-31
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.64.1 to **0.65.0** on 2025-07-31
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15
