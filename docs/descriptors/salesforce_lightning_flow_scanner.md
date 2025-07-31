@@ -102,7 +102,7 @@ sf flow:scan
 ### Help content
 
 ```shell
- ›   Warning: @salesforce/cli update available from 2.97.6 to 2.98.6.
+ ›   Warning: @salesforce/cli update available from 2.97.6 to 2.99.6.
 Find and fix potential bugs in Salesforce flows.
 
 USAGE
