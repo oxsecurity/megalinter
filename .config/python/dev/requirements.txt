@@ -17,7 +17,7 @@ mkdocs==1.6.1
 mkdocs-glightbox==0.3.2
 mkdocs-material==9.6.16
 multiprocessing_logging==0.3.4
-pygithub==2.6.1
+pygithub==2.7.0
 pymdown-extensions==10.16.1
 pytablewriter==1.2.1
 pytest-cov==6.2.1
