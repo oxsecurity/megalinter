@@ -61,7 +61,7 @@ jobs:
           pkg=$(extract_pkg "$title")
           echo "Extracted package: $pkg"
           if [ -n "$pkg" ] && echo "$title" | grep -iq '^chore(deps)'; then
-            matches=$(echo "$matrix" | jq -c --arg pkg "$pkg" '[.[] | select(ascii_downcase(.) | contains($pkg))]')
+            matches=$(echo "$matrix" | jq -c --arg pkg "$pkg" '[.[] | select(tostring | match($pkg;"i"))]')
             if [ "$(echo "$matches" | jq 'length')" -gt 0 ]; then
               echo "Filtered linters: $matches"
               echo "linters=$matches" >> $GITHUB_OUTPUT
