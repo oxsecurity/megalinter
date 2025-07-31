@@ -185,6 +185,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [ruff-format](https://github.com/astral-sh/ruff) from 0.12.5 to **0.12.7** on 2025-07-30
   - [ruff](https://github.com/astral-sh/ruff) from 0.12.5 to **0.12.7** on 2025-07-30
   - [kics](https://www.kics.io) from 2.1.11 to **2.1.12** on 2025-07-30
+  - [devskim](https://github.com/microsoft/DevSkim) from 1.0.59 to **1.0.63** on 2025-07-30
+  - [grype](https://github.com/anchore/grype) from 0.96.1 to **0.97.0** on 2025-07-30
+  - [syft](https://github.com/anchore/syft) from 1.29.0 to **1.29.1** on 2025-07-30
+  - [snakemake](https://snakemake.github.io/) from 9.8.2 to **9.9.0** on 2025-07-30
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15
