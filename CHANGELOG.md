@@ -194,6 +194,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [trivy](https://aquasecurity.github.io/trivy/) from 0.64.1 to **0.65.0** on 2025-07-31
   - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.17.0 to **1.17.1** on 2025-07-31
   - [rubocop](https://rubocop.org/) from 1.79.0 to **1.79.1** on 2025-07-31
+  - [grype](https://github.com/anchore/grype) from 0.97.0 to **0.97.1** on 2025-08-01
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15
