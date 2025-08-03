@@ -196,6 +196,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [rubocop](https://rubocop.org/) from 1.79.0 to **1.79.1** on 2025-07-31
   - [grype](https://github.com/anchore/grype) from 0.97.0 to **0.97.1** on 2025-08-01
   - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.36.177 to **0.37.4** on 2025-08-02
+  - [csharpier](https://csharpier.com/) from 1.0.3 to **1.1.0** on 2025-08-03
+  - [golangci-lint](https://golangci-lint.run/) from 2.3.0 to **2.3.1** on 2025-08-03
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15
