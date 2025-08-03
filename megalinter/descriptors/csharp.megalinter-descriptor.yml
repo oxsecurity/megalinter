@@ -103,7 +103,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=nuget depName=csharpier
-          ARG CSHARP_CSHARPIER_VERSION=1.0.3
+          ARG CSHARP_CSHARPIER_VERSION=1.1.0
         - RUN dotnet tool install --allow-roll-forward --global csharpier --version "${CSHARP_CSHARPIER_VERSION}"
     ide:
       rider:
