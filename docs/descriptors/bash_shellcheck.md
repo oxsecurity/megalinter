@@ -23,7 +23,7 @@ description: How to use shellcheck (configure, ignore files, ignore errors, help
 
 ## shellcheck documentation
 
-- Version in MegaLinter: **0.10.0**
+- Version in MegaLinter: **0.11.0**
 - Visit [Official Web Site](https://github.com/koalaman/shellcheck#readme){target=_blank}
 - See [How to disable shellcheck rules in files](https://github.com/koalaman/shellcheck/wiki/Ignore){target=_blank}
 - See [Index of problems detected by shellcheck](https://github.com/koalaman/shellcheck#gallery-of-bad-code){target=_blank}
@@ -141,7 +141,7 @@ Usage: shellcheck [OPTIONS...] FILES...
 # renovate: datasource=crate depName=shellcheck-sarif
 ARG CARGO_SHELLCHECK_SARIF_VERSION=0.8.0
 # renovate: datasource=docker depName=koalaman/shellcheck
-ARG BASH_SHELLCHECK_VERSION=v0.10.0
+ARG BASH_SHELLCHECK_VERSION=v0.11.0
 FROM koalaman/shellcheck:${BASH_SHELLCHECK_VERSION} AS shellcheck
 COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
 ```
