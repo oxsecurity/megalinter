@@ -14,7 +14,7 @@
 # renovate: datasource=docker depName=rhysd/actionlint
 ARG ACTION_ACTIONLINT_VERSION=1.7.7
 # renovate: datasource=docker depName=koalaman/shellcheck
-ARG BASH_SHELLCHECK_VERSION=v0.10.0
+ARG BASH_SHELLCHECK_VERSION=v0.11.0
 #ARGTOP__END
 
 #############################################################################################

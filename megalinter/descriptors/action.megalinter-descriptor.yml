@@ -45,7 +45,7 @@ linters:
           ARG ACTION_ACTIONLINT_VERSION=1.7.7
         - |-
           # renovate: datasource=docker depName=koalaman/shellcheck
-          ARG BASH_SHELLCHECK_VERSION=v0.10.0
+          ARG BASH_SHELLCHECK_VERSION=v0.11.0
         - |-
           FROM rhysd/actionlint:${ACTION_ACTIONLINT_VERSION} AS actionlint
           # shellcheck is a dependency for actionlint
