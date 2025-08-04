@@ -12,7 +12,7 @@
 #############################################################################################
 #ARGTOP__START
 # renovate: datasource=docker depName=koalaman/shellcheck
-ARG BASH_SHELLCHECK_VERSION=v0.10.0
+ARG BASH_SHELLCHECK_VERSION=v0.11.0
 #ARGTOP__END
 
 #############################################################################################
