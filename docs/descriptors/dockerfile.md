@@ -17,7 +17,7 @@ description: hadolint is available to analyze DOCKERFILE files in MegaLinter
 
 - File names:
   - `Containerfile`
-  - `Dockerfile`
+  - `.*Dockerfile`
 
 ## Configuration in MegaLinter
 
