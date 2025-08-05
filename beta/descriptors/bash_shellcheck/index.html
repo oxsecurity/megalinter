@@ -3835,7 +3835,7 @@
 </ul>
 <h2 id="shellcheck-documentation">shellcheck documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>0.10.0</strong></li>
+<li>Version in MegaLinter: <strong>0.11.0</strong></li>
 <li>Visit <a href="https://github.com/koalaman/shellcheck#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/koalaman/shellcheck/wiki/Ignore" target="_blank">How to disable shellcheck rules in files</a></li>
 <li>See <a href="https://github.com/koalaman/shellcheck#gallery-of-bad-code" target="_blank">Index of problems detected by shellcheck</a></li>
@@ -4162,7 +4162,7 @@
 <pre><code class="language-dockerfile"># renovate: datasource=crate depName=shellcheck-sarif
 ARG CARGO_SHELLCHECK_SARIF_VERSION=0.8.0
 # renovate: datasource=docker depName=koalaman/shellcheck
-ARG BASH_SHELLCHECK_VERSION=v0.10.0
+ARG BASH_SHELLCHECK_VERSION=v0.11.0
 FROM koalaman/shellcheck:${BASH_SHELLCHECK_VERSION} AS shellcheck
 COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
 </code></pre>
