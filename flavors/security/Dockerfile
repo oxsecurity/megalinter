@@ -86,7 +86,7 @@ ARG PIP_ANSIBLE_LINT_VERSION=25.7.0
 # renovate: datasource=crate depName=shellcheck-sarif
 ARG CARGO_SHELLCHECK_SARIF_VERSION=0.8.0
 # renovate: datasource=pypi depName=cfn-lint
-ARG PIP_CFN_LINT_VERSION=1.38.1
+ARG PIP_CFN_LINT_VERSION=1.38.2
 # renovate: datasource=github-tags depName=kubescape/kubescape
 ARG KUBERNETES_KUBESCAPE_VERSION=3.0.37
 # renovate: datasource=pypi depName=bandit
