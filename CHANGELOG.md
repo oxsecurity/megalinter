@@ -33,6 +33,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Linters enhancements
   - PHP-CS-Fixer is able to run on PHP 8.4 without error (change default configuration) by @llaville
   - [cspell](https://megalinter.io/latest/descriptors/spell_cspell/): Filter output lines that do not contain found issues
+  - [hadolinter](https://megalinter.io/latest/descriptors/docker_hadolint/): Extend DOCKERFILE_HADOLINT_FILE_NAMES_REGEX to include the `purpose.Dockerfile` convention eg service.Dockerfile.
 
 - Fixes
 
