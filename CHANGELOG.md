@@ -201,6 +201,12 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [shellcheck](https://github.com/koalaman/shellcheck) from 0.10.0 to **0.11.0** on 2025-08-04
   - [csharpier](https://csharpier.com/) from 1.1.0 to **1.1.1** on 2025-08-04
   - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.27.0 to **3.27.1** on 2025-08-04
+  - [dartanalyzer](https://dart.dev/tools/dart-analyze) from 3.8.2 to **3.8.3** on 2025-08-05
+  - [phpstan](https://phpstan.org/) from 2.1.21 to **2.1.22** on 2025-08-05
+  - [secretlint](https://github.com/secretlint/secretlint) from 10.2.1 to **10.2.2** on 2025-08-05
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.90.2 to **3.90.3** on 2025-08-05
+  - [rubocop](https://rubocop.org/) from 1.79.1 to **1.79.2** on 2025-08-05
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.27.1 to **3.29.0** on 2025-08-05
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15
