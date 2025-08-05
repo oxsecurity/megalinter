@@ -207,6 +207,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.90.2 to **3.90.3** on 2025-08-05
   - [rubocop](https://rubocop.org/) from 1.79.1 to **1.79.2** on 2025-08-05
   - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.27.1 to **3.29.0** on 2025-08-05
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.38.1 to **1.38.2** on 2025-08-05
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15
