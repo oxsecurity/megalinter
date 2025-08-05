@@ -199,6 +199,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.36.177 to **0.37.4** on 2025-08-02
   - [csharpier](https://csharpier.com/) from 1.0.3 to **1.1.0** on 2025-08-03
   - [golangci-lint](https://golangci-lint.run/) from 2.3.0 to **2.3.1** on 2025-08-03
+  - [shellcheck](https://github.com/koalaman/shellcheck) from 0.10.0 to **0.11.0** on 2025-08-04
+  - [csharpier](https://csharpier.com/) from 1.1.0 to **1.1.1** on 2025-08-04
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.27.0 to **3.27.1** on 2025-08-04
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15
