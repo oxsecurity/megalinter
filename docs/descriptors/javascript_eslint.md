@@ -218,11 +218,11 @@ ARG NPM_ESLINT_PLUGIN_JEST_VERSION=29.0.1
 # renovate: datasource=npm depName=eslint-plugin-n
 ARG NPM_ESLINT_PLUGIN_N_VERSION=16.6.2
 # renovate: datasource=npm depName=eslint-plugin-prettier
-ARG NPM_ESLINT_PLUGIN_PRETTIER_VERSION=5.5.3
+ARG NPM_ESLINT_PLUGIN_PRETTIER_VERSION=5.5.4
 # renovate: datasource=npm depName=eslint-plugin-promise
 ARG NPM_ESLINT_PLUGIN_PROMISE_VERSION=6.6.0
 # renovate: datasource=npm depName=eslint-plugin-vue
-ARG NPM_ESLINT_PLUGIN_VUE_VERSION=10.3.0
+ARG NPM_ESLINT_PLUGIN_VUE_VERSION=10.4.0
 # renovate: datasource=npm depName=@babel/core
 ARG NPM_BABEL_CORE_VERSION=7.28.0
 # renovate: datasource=npm depName=@babel/eslint-parser
@@ -239,9 +239,9 @@ ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
   - [eslint-plugin-import@2.32.0](https://www.npmjs.com/package/eslint-plugin-import/v/2.32.0)
   - [eslint-plugin-jest@29.0.1](https://www.npmjs.com/package/eslint-plugin-jest/v/29.0.1)
   - [eslint-plugin-n@16.6.2](https://www.npmjs.com/package/eslint-plugin-n/v/16.6.2)
-  - [eslint-plugin-prettier@5.5.3](https://www.npmjs.com/package/eslint-plugin-prettier/v/5.5.3)
+  - [eslint-plugin-prettier@5.5.4](https://www.npmjs.com/package/eslint-plugin-prettier/v/5.5.4)
   - [eslint-plugin-promise@6.6.0](https://www.npmjs.com/package/eslint-plugin-promise/v/6.6.0)
-  - [eslint-plugin-vue@10.3.0](https://www.npmjs.com/package/eslint-plugin-vue/v/10.3.0)
+  - [eslint-plugin-vue@10.4.0](https://www.npmjs.com/package/eslint-plugin-vue/v/10.4.0)
   - [@babel/core@7.28.0](https://www.npmjs.com/package/@babel/core/v/7.28.0)
   - [@babel/eslint-parser@7.28.0](https://www.npmjs.com/package/@babel/eslint-parser/v/7.28.0)
   - [@microsoft/eslint-formatter-sarif@3.1.0](https://www.npmjs.com/package/@microsoft/eslint-formatter-sarif/v/3.1.0)

@@ -17,6 +17,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - Console Reporter
     - Text Reporter
     - Git platforms PR/MR comments Reporter
+  - Use ghcr.io docker images by default because of rate limits on docker.io
   - Use uv to create the venv folder for pip-installed linters
   - Add copilot instructions for GitHub Copilot
 
@@ -32,6 +33,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Linters enhancements
   - PHP-CS-Fixer is able to run on PHP 8.4 without error (change default configuration) by @llaville
   - [cspell](https://megalinter.io/latest/descriptors/spell_cspell/): Filter output lines that do not contain found issues
+  - [hadolint](https://megalinter.io/latest/descriptors/docker_hadolint/): Extend DOCKERFILE_HADOLINT_FILE_NAMES_REGEX to include the `purpose.Dockerfile` convention eg service.Dockerfile.
 
 - Fixes
 
@@ -51,12 +53,15 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Update contributing guide to explain how to manage python dependencies in the codebase
 
 - Flavors
+  - Do not suggest flavors that have more linters than the current one
 
 - CI
   - Update default MegaLinter CI/CD workflows to disable LLM_ADVISOR in case of bot pull requests
 
 - mega-linter-runner
   - Add all CI/CD providers in the --install command
+  - Use ghcr.io docker images by default
+  - New parameter **--container-engine** allowing to use **podman** as runner.
 
 - Linter versions upgrades (N)
   - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.16.0 to **1.16.1** on 2025-06-16
@@ -168,6 +173,46 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [roslynator](https://github.com/dotnet/Roslynator) from 0.10.1.0 to **0.10.2.0** on 2025-07-27
   - [kubescape](https://github.com/kubescape/kubescape) from 3.0.34 to **3.0.36** on 2025-07-27
   - [phpstan](https://phpstan.org/) from 2.1.19 to **2.1.20** on 2025-07-27
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 15.2.0 to **15.2.1** on 2025-07-28
+  - [pmd](https://pmd.github.io/) from 7.15.0 to **7.16.0** on 2025-07-28
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.90.1 to **3.90.2** on 2025-07-28
+  - [snakemake](https://snakemake.github.io/) from 9.8.1 to **9.8.2** on 2025-07-28
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2025.07.26 to **2025.07.28** on 2025-07-28
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 25.6.1 to **25.7.0** on 2025-07-30
+  - [stylelint](https://stylelint.io) from 16.22.0 to **16.23.0** on 2025-07-30
+  - [kubescape](https://github.com/kubescape/kubescape) from 3.0.36 to **3.0.37** on 2025-07-30
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.84.0 to **3.85.1** on 2025-07-30
+  - [phpstan](https://phpstan.org/) from 2.1.20 to **2.1.21** on 2025-07-30
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.12.5 to **0.12.7** on 2025-07-30
+  - [ruff](https://github.com/astral-sh/ruff) from 0.12.5 to **0.12.7** on 2025-07-30
+  - [kics](https://www.kics.io) from 2.1.11 to **2.1.12** on 2025-07-30
+  - [devskim](https://github.com/microsoft/DevSkim) from 1.0.59 to **1.0.63** on 2025-07-30
+  - [grype](https://github.com/anchore/grype) from 0.96.1 to **0.97.0** on 2025-07-30
+  - [syft](https://github.com/anchore/syft) from 1.29.0 to **1.29.1** on 2025-07-30
+  - [snakemake](https://snakemake.github.io/) from 9.8.2 to **9.9.0** on 2025-07-30
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.38.0 to **1.38.1** on 2025-07-31
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.64.1 to **0.65.0** on 2025-07-31
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.64.1 to **0.65.0** on 2025-07-31
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.17.0 to **1.17.1** on 2025-07-31
+  - [rubocop](https://rubocop.org/) from 1.79.0 to **1.79.1** on 2025-07-31
+  - [grype](https://github.com/anchore/grype) from 0.97.0 to **0.97.1** on 2025-08-01
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.36.177 to **0.37.4** on 2025-08-02
+  - [csharpier](https://csharpier.com/) from 1.0.3 to **1.1.0** on 2025-08-03
+  - [golangci-lint](https://golangci-lint.run/) from 2.3.0 to **2.3.1** on 2025-08-03
+  - [shellcheck](https://github.com/koalaman/shellcheck) from 0.10.0 to **0.11.0** on 2025-08-04
+  - [csharpier](https://csharpier.com/) from 1.1.0 to **1.1.1** on 2025-08-04
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.27.0 to **3.27.1** on 2025-08-04
+  - [dartanalyzer](https://dart.dev/tools/dart-analyze) from 3.8.2 to **3.8.3** on 2025-08-05
+  - [phpstan](https://phpstan.org/) from 2.1.21 to **2.1.22** on 2025-08-05
+  - [secretlint](https://github.com/secretlint/secretlint) from 10.2.1 to **10.2.2** on 2025-08-05
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.90.2 to **3.90.3** on 2025-08-05
+  - [rubocop](https://rubocop.org/) from 1.79.1 to **1.79.2** on 2025-08-05
+  - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.27.1 to **3.29.0** on 2025-08-05
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.38.1 to **1.38.2** on 2025-08-05
+  - [checkstyle](https://checkstyle.org/) from 10.26.1 to **11.0.0** on 2025-08-11
+  - [grype](https://github.com/anchore/grype) from 0.97.1 to **0.97.2** on 2025-08-11
+  - [syft](https://github.com/anchore/syft) from 1.29.1 to **1.30.0** on 2025-08-11
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.88 to **0.1.89** on 2025-08-11
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15

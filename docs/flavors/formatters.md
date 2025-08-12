@@ -14,7 +14,12 @@ Contains only formatters
 ## Usage
 
 - [GitHub Action](https://megalinter.io/beta/installation/#github-action): **oxsecurity/megalinter/flavors/formatters@beta**
-- Docker image: **oxsecurity/megalinter-formatters:beta**
+
+- Docker images:
+
+  - GitHub Packages: **ghcr.io/oxsecurity/megalinter-formatters:beta**
+  - Docker Hub: **docker.io/oxsecurity/megalinter-formatters:beta**
+
 - [mega-linter-runner](https://megalinter.io/beta/mega-linter-runner/): `mega-linter-runner --flavor formatters`
 
 ## Embedded linters

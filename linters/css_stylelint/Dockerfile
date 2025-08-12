@@ -49,9 +49,9 @@ FROM python:3.13-alpine3.21
 #############################################################################################
 #ARG__START
 # renovate: datasource=npm depName=stylelint
-ARG NPM_STYLELINT_VERSION=16.22.0
+ARG NPM_STYLELINT_VERSION=16.23.1
 # renovate: datasource=npm depName=stylelint-config-standard
-ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=38.0.0
+ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=39.0.0
 # renovate: datasource=npm depName=stylelint-config-sass-guidelines
 ARG NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION=12.1.0
 # renovate: datasource=npm depName=stylelint-scss
@@ -59,9 +59,9 @@ ARG NPM_STYLELINT_SCSS_VERSION=6.12.1
 # renovate: datasource=pypi depName=cpplint
 ARG PIP_CPPLINT_VERSION=2.0.2
 # renovate: datasource=pypi depName=pip
-ARG PIP_PIP_VERSION=25.1.1
+ARG PIP_PIP_VERSION=25.2
 # renovate: datasource=pypi depName=virtualenv
-ARG PIP_VIRTUALENV_VERSION=20.32.0
+ARG PIP_VIRTUALENV_VERSION=20.33.1
 #ARG__END
 
 ####################

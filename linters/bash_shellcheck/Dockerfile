@@ -12,7 +12,7 @@
 #############################################################################################
 #ARGTOP__START
 # renovate: datasource=docker depName=koalaman/shellcheck
-ARG BASH_SHELLCHECK_VERSION=v0.10.0
+ARG BASH_SHELLCHECK_VERSION=v0.11.0
 #ARGTOP__END
 
 #############################################################################################
@@ -52,7 +52,7 @@ FROM python:3.13-alpine3.21
 # renovate: datasource=crate depName=shellcheck-sarif
 ARG CARGO_SHELLCHECK_SARIF_VERSION=0.8.0
 # renovate: datasource=github-tags depName=rust-lang/rust
-ARG RUST_RUST_VERSION=1.88.0
+ARG RUST_RUST_VERSION=1.89.0
 
 ARG BASH_SHELLCHECK_VERSION
 #ARG__END

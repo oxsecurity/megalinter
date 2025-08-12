@@ -53,9 +53,9 @@ ARG PIP_RSTCHECK_VERSION=6.2.5
 # renovate: datasource=pypi depName=click
 ARG PIP_RSTCHECK_CLICK_VERSION=8.2.1
 # renovate: datasource=pypi depName=pip
-ARG PIP_PIP_VERSION=25.1.1
+ARG PIP_PIP_VERSION=25.2
 # renovate: datasource=pypi depName=virtualenv
-ARG PIP_VIRTUALENV_VERSION=20.32.0
+ARG PIP_VIRTUALENV_VERSION=20.33.1
 #ARG__END
 
 ####################

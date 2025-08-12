@@ -146,6 +146,13 @@ export const optionsDefinition = optionator.default({
       description: "Specify MegaLinter container name",
     },
     {
+      option: "container-engine",
+      alias: "",
+      type: "String",
+      default: "docker",
+      description: "Use docker or podman as container engine",
+    },    
+    {
       option: "remove-container",
       type: "Boolean",
       description: "Remove MegaLinter Docker container when done (default: true since v7.8.0)",

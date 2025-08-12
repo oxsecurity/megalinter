@@ -14,7 +14,12 @@ Optimized for PHP based projects
 ## Usage
 
 - [GitHub Action](https://megalinter.io/beta/installation/#github-action): **oxsecurity/megalinter/flavors/php@beta**
-- Docker image: **oxsecurity/megalinter-php:beta**
+
+- Docker images:
+
+  - GitHub Packages: **ghcr.io/oxsecurity/megalinter-php:beta**
+  - Docker Hub: **docker.io/oxsecurity/megalinter-php:beta**
+
 - [mega-linter-runner](https://megalinter.io/beta/mega-linter-runner/): `mega-linter-runner --flavor php`
 
 ## Embedded linters

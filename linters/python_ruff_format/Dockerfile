@@ -49,11 +49,11 @@ FROM python:3.13-alpine3.21
 #############################################################################################
 #ARG__START
 # renovate: datasource=pypi depName=ruff
-ARG PIP_RUFF_VERSION=0.12.5
+ARG PIP_RUFF_VERSION=0.12.8
 # renovate: datasource=pypi depName=pip
-ARG PIP_PIP_VERSION=25.1.1
+ARG PIP_PIP_VERSION=25.2
 # renovate: datasource=pypi depName=virtualenv
-ARG PIP_VIRTUALENV_VERSION=20.32.0
+ARG PIP_VIRTUALENV_VERSION=20.33.1
 #ARG__END
 
 ####################

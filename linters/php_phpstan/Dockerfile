@@ -49,11 +49,11 @@ FROM python:3.13-alpine3.21
 #############################################################################################
 #ARG__START
 # renovate: datasource=packagist depName=phpstan/phpstan
-ARG PHP_PHPSTAN_PHPSTAN_VERSION=2.1.20
+ARG PHP_PHPSTAN_PHPSTAN_VERSION=2.1.22
 # renovate: datasource=packagist depName=phpstan/extension-installer
 ARG PHP_PHPSTAN_EXTENSION_INSTALLER_VERSION=1.4.3
 # renovate: datasource=packagist depName=bartlett/sarif-php-converters
-ARG PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION=1.2.0
+ARG PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION=1.3.1
 #ARG__END
 
 ####################
