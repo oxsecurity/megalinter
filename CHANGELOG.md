@@ -209,6 +209,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [rubocop](https://rubocop.org/) from 1.79.1 to **1.79.2** on 2025-08-05
   - [lightning-flow-scanner](https://github.com/Lightning-Flow-Scanner) from 3.27.1 to **3.29.0** on 2025-08-05
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.38.1 to **1.38.2** on 2025-08-05
+  - [checkstyle](https://checkstyle.org/) from 10.26.1 to **11.0.0** on 2025-08-11
+  - [grype](https://github.com/anchore/grype) from 0.97.1 to **0.97.2** on 2025-08-11
+  - [syft](https://github.com/anchore/syft) from 1.29.1 to **1.30.0** on 2025-08-11
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.88 to **0.1.89** on 2025-08-11
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15
