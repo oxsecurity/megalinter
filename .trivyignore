@@ -26,6 +26,8 @@ CVE-2024-45338
 CVE-2025-22869
 CVE-2025-22874
 CVE-2025-30204
+# https://avd.aquasec.com/nvd/2025/cve-2025-47907/ , not a security issue in MegaLinter context
+CVE-2025-47907
 
 # go-git
 CVE-2025-21613
