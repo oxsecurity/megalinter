@@ -218,6 +218,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [ruff-format](https://github.com/astral-sh/ruff) from 0.12.7 to **0.12.8** on 2025-08-12
   - [ruff](https://github.com/astral-sh/ruff) from 0.12.7 to **0.12.8** on 2025-08-12
   - [kics](https://www.kics.io) from 2.1.12 to **2.1.13** on 2025-08-12
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.38.2 to **1.38.3** on 2025-08-13
+  - [pylint](https://pylint.readthedocs.io) from 3.3.7 to **3.3.8** on 2025-08-13
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15
