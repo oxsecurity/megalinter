@@ -41,7 +41,7 @@ For legacy projects, start with `--errors-only` flag and progressively enable mo
 
 ## pylint documentation
 
-- Version in MegaLinter: **3.3.7**
+- Version in MegaLinter: **3.3.8**
 - Visit [Official Web Site](https://pylint.readthedocs.io){target=_blank}
 - See [How to configure pylint rules](https://pylint.readthedocs.io/en/stable/user_guide/configuration/index.html){target=_blank}
   - If custom `.pylintrc` config file isn't found, [.pylintrc](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.pylintrc){target=_blank} will be used
@@ -797,11 +797,11 @@ Typecheck:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=pylint
-ARG PIP_PYLINT_VERSION=3.3.7
+ARG PIP_PYLINT_VERSION=3.3.8
 # renovate: datasource=pypi depName=typing-extensions
 ARG PIP_TYPING_EXTENSIONS_VERSION=4.14.1
 ```
 
 - PIP packages (Python):
-  - [pylint==3.3.7](https://pypi.org/project/pylint/3.3.7)
+  - [pylint==3.3.8](https://pypi.org/project/pylint/3.3.8)
   - [typing-extensions==4.14.1](https://pypi.org/project/typing-extensions/4.14.1)
