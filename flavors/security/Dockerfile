@@ -98,7 +98,7 @@ ARG PIP_CHECKOV_VERSION=3.2.413
 # renovate: datasource=nuget depName=Microsoft.CST.DevSkim.CLI
 ARG REPOSITORY_DEVSKIM_VERSION=1.0.63
 # renovate: datasource=github-tags depName=anchore/grype
-ARG REPOSITORY_GRYPE_VERSION=0.97.1
+ARG REPOSITORY_GRYPE_VERSION=0.97.2
 # renovate: datasource=npm depName=secretlint
 ARG NPM_SECRETLINT_VERSION=10.2.2
 # renovate: datasource=npm depName=@secretlint/secretlint-rule-preset-recommend

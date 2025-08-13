@@ -393,7 +393,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=github-tags depName=anchore/grype
-          ARG REPOSITORY_GRYPE_VERSION=0.97.1
+          ARG REPOSITORY_GRYPE_VERSION=0.97.2
         - RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/refs/tags/v${REPOSITORY_GRYPE_VERSION}/install.sh | sh -s -- -b /usr/local/bin
     test_folder: repository_grype
 
