@@ -49,7 +49,7 @@ FROM python:3.13-alpine3.21
 #############################################################################################
 #ARG__START
 # renovate: datasource=github-tags depName=anchore/grype
-ARG REPOSITORY_GRYPE_VERSION=0.97.1
+ARG REPOSITORY_GRYPE_VERSION=0.97.2
 #ARG__END
 
 ####################
