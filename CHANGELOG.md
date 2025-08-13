@@ -213,6 +213,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [grype](https://github.com/anchore/grype) from 0.97.1 to **0.97.2** on 2025-08-11
   - [syft](https://github.com/anchore/syft) from 1.29.1 to **1.30.0** on 2025-08-11
   - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.88 to **0.1.89** on 2025-08-11
+  - [stylelint](https://stylelint.io) from 16.23.0 to **16.23.1** on 2025-08-12
+  - [psalm](https://psalm.dev) from Psalm.6.13.0@ to **Psalm.6.13.1@** on 2025-08-12
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.12.7 to **0.12.8** on 2025-08-12
+  - [ruff](https://github.com/astral-sh/ruff) from 0.12.7 to **0.12.8** on 2025-08-12
+  - [kics](https://www.kics.io) from 2.1.12 to **2.1.13** on 2025-08-12
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15
