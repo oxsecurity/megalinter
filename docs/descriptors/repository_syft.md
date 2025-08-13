@@ -29,7 +29,7 @@ description: How to use syft (configure, ignore files, ignore errors, help & ver
 
 ## syft documentation
 
-- Version in MegaLinter: **1.30.0**
+- Version in MegaLinter: **1.31.0**
 - Visit [Official Web Site](https://github.com/anchore/syft#readme){target=_blank}
 
 [![syft - GitHub](https://gh-card.dev/repos/anchore/syft.svg?fullname=)](https://github.com/anchore/syft){target=_blank}
@@ -165,6 +165,7 @@ Flags:
   -s, --scope string                              selection of layers to catalog, options=[squashed all-layers deep-squashed] (default "squashed")
       --select-catalogers stringArray             add, remove, and filter the catalogers to be used
       --source-name string                        set the name of the target being analyzed
+      --source-supplier string                    the organization that supplied the component, which often may be the manufacturer, distributor, or repackager
       --source-version string                     set the version of the target being analyzed
   -t, --template string                           specify the path to a Go template file
   -v, --verbose count                             increase verbosity (-v = info, -vv = debug)
