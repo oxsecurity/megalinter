@@ -220,6 +220,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [kics](https://www.kics.io) from 2.1.12 to **2.1.13** on 2025-08-12
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.38.2 to **1.38.3** on 2025-08-13
   - [pylint](https://pylint.readthedocs.io) from 3.3.7 to **3.3.8** on 2025-08-13
+  - [editorconfig-checker](https://editorconfig-checker.github.io/) from 3.3.0 to **3.4.0** on 2025-08-13
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15

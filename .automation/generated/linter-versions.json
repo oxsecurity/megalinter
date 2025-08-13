@@ -28,7 +28,7 @@
     "dotenv-linter": "3.3.0",
     "dotnet-format": "9.0.106",
     "dustilock": "1.2.0",
-    "editorconfig-checker": "3.3.0",
+    "editorconfig-checker": "3.4.0",
     "eslint": "8.57.1",
     "eslint-plugin-jsonc": "2.15.1",
     "flake8": "7.3.0",
