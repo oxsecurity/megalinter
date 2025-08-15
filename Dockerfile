@@ -563,6 +563,7 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 @babel/core@${NPM_BABEL_CORE_VERSION} \
                 @babel/eslint-parser@${NPM_BABEL_ESLINT_PARSER_VERSION} \
                 @microsoft/eslint-formatter-sarif@${NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION} \
+                @creedengo/eslint-plugin@${NPM_CREENDEGO_ESLINT_PLUGIN_VERSION} \
                 standard@${NPM_STANDARD_VERSION} \
                 prettier@${NPM_PRETTIER_VERSION} \
                 @prantlf/jsonlint@${NPM_PRANTLF_JSONLINT_VERSION} \
