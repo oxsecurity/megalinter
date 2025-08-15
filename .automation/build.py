@@ -1019,9 +1019,8 @@ def generate_descriptor_documentation(descriptor):
         f"<!-- Instead, update descriptor file at {descriptor_url} -->",
     ]
     # Title
-    descriptor_title = descriptor.get('descriptor_label', descriptor.get('descriptor_id')).replace('#', '\\#')
     descriptor_md += [
-        f"# {descriptor_title}",
+        f"# {descriptor.get('descriptor_label', descriptor.get('descriptor_id')).replace('#', '\\#')}",
         "",
     ]
     # List of linters
