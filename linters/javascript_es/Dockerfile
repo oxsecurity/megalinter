@@ -74,6 +74,8 @@ ARG NPM_BABEL_CORE_VERSION=7.28.0
 ARG NPM_BABEL_ESLINT_PARSER_VERSION=7.28.0
 # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
 ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
+# renovate: datasource=npm depName=@creedengo/eslint-plugin
+ARG NPM_CREENDEGO_ESLINT_PLUGIN_VERSION=2.1.0
 #ARG__END
 
 ####################
@@ -158,8 +160,8 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 eslint-plugin-vue@${NPM_ESLINT_PLUGIN_VUE_VERSION} \
                 @babel/core@${NPM_BABEL_CORE_VERSION} \
                 @babel/eslint-parser@${NPM_BABEL_ESLINT_PARSER_VERSION} \
-                @microsoft/eslint-formatter-sarif@${NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION} && \
-                @creedengo/eslint-plugin@${NPM_CREENDEGO_ESLINT_PLUGIN_VERSION} \
+                @microsoft/eslint-formatter-sarif@${NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION} \
+                @creedengo/eslint-plugin@${NPM_CREENDEGO_ESLINT_PLUGIN_VERSION} && \
     echo "Cleaning npm cache…" \
     && (npm cache clean --force || true) \
     && echo "Changing owner of node_modules files…" \
