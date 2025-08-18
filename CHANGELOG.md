@@ -223,6 +223,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [editorconfig-checker](https://editorconfig-checker.github.io/) from 3.3.0 to **3.4.0** on 2025-08-13
   - [grype](https://github.com/anchore/grype) from 0.97.2 to **0.98.0** on 2025-08-13
   - [syft](https://github.com/anchore/syft) from 1.30.0 to **1.31.0** on 2025-08-13
+  - [csharpier](https://csharpier.com/) from 1.1.1 to **1.1.2** on 2025-08-18
+  - [kubescape](https://github.com/kubescape/kubescape) from 3.0.37 to **3.0.38** on 2025-08-18
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15
