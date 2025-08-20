@@ -27,7 +27,7 @@ pytest-rerunfailures==15.1
 python-gitlab==6.2.0
 python-multipart==0.0.20
 pyyaml==6.0.2
-redis==6.3.0
+redis==6.4.0
 regex==2025.7.34
 requests==2.32.5
 terminaltables==3.1.10
