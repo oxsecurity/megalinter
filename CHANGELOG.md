@@ -225,6 +225,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [syft](https://github.com/anchore/syft) from 1.30.0 to **1.31.0** on 2025-08-13
   - [csharpier](https://csharpier.com/) from 1.1.1 to **1.1.2** on 2025-08-18
   - [kubescape](https://github.com/kubescape/kubescape) from 3.0.37 to **3.0.38** on 2025-08-18
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.12.8 to **0.12.9** on 2025-08-20
+  - [ruff](https://github.com/astral-sh/ruff) from 0.12.8 to **0.12.9** on 2025-08-20
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15
