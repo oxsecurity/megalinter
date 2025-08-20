@@ -49,7 +49,7 @@ FROM python:3.13-alpine3.21
 #############################################################################################
 #ARG__START
 # renovate: datasource=nuget depName=csharpier
-ARG CSHARP_CSHARPIER_VERSION=1.1.1
+ARG CSHARP_CSHARPIER_VERSION=1.1.2
 #ARG__END
 
 ####################

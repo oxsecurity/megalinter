@@ -126,7 +126,7 @@ ARG KTLINT_VERSION=1.7.1
 ARG DETEKT_VERSION=1.23.8
 
 # renovate: datasource=github-tags depName=kubescape/kubescape
-ARG KUBERNETES_KUBESCAPE_VERSION=3.0.37
+ARG KUBERNETES_KUBESCAPE_VERSION=3.0.38
 # renovate: datasource=npm depName=markdownlint-cli
 ARG NPM_MARKDOWNLINT_CLI_VERSION=0.45.0
 # renovate: datasource=npm depName=markdown-table-formatter
@@ -150,7 +150,7 @@ ARG PIP_MYPY_VERSION=1.17.1
 # renovate: datasource=npm depName=pyright
 ARG NPM_PYRIGHT_VERSION=1.1.403
 # renovate: datasource=pypi depName=ruff
-ARG PIP_RUFF_VERSION=0.12.8
+ARG PIP_RUFF_VERSION=0.12.9
 # renovate: datasource=pypi depName=checkov
 ARG PIP_CHECKOV_VERSION=3.2.413
 # renovate: datasource=github-tags depName=anchore/grype
