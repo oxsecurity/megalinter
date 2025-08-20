@@ -24,7 +24,7 @@ jobs:
       contents: write
     if: github.repository == 'oxsecurity/megalinter'
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0
       - uses: actions/setup-python@v5
