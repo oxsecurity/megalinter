@@ -120,9 +120,9 @@ ARG ALPINE_GLIBC_PACKAGE_VERSION=2.34-r0
 ARG POWERSHELL_VERSION=7.5.2
 
 # renovate: datasource=npm depName=@salesforce/cli
-ARG NPM_SALESFORCE_CLI_VERSION=2.97.6
+ARG NPM_SALESFORCE_CLI_VERSION=2.101.5
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
-ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.18.4
+ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.19.5
 # renovate: datasource=npm depName=sfdx-hardis
 ARG SFDX_HARDIS_VERSION=5.45.0
 # renovate: datasource=npm depName=typescript
