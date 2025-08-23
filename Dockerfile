@@ -126,7 +126,7 @@ ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.19.5
 # renovate: datasource=npm depName=sfdx-hardis
 ARG SFDX_HARDIS_VERSION=5.45.0
 # renovate: datasource=npm depName=typescript
-ARG NPM_TYPESCRIPT_VERSION=5.8.3
+ARG NPM_TYPESCRIPT_VERSION=5.9.2
 # renovate: datasource=pypi depName=ansible-lint
 ARG PIP_ANSIBLE_LINT_VERSION=25.7.0
 # renovate: datasource=npm depName=@stoplight/spectral-cli
