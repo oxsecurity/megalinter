@@ -59,7 +59,7 @@ ARG CARGO_SARIF_FMT_VERSION=0.8.0
 ARG POWERSHELL_VERSION=7.5.2
 
 # renovate: datasource=npm depName=typescript
-ARG NPM_TYPESCRIPT_VERSION=5.8.3
+ARG NPM_TYPESCRIPT_VERSION=5.9.2
 # renovate: datasource=nuget depName=csharpier
 ARG CSHARP_CSHARPIER_VERSION=1.1.2
 # renovate: datasource=nuget depName=roslynator.dotnet.cli
@@ -78,7 +78,7 @@ ARG PIP_BLACK_VERSION=25.1.0
 # renovate: datasource=pypi depName=isort
 ARG PIP_ISORT_VERSION=6.0.1
 # renovate: datasource=pypi depName=ruff
-ARG PIP_RUFF_VERSION=0.12.9
+ARG PIP_RUFF_VERSION=0.12.10
 # renovate: datasource=pypi depName=rstfmt
 ARG PIP_RSTFMT_VERSION=0.0.14
 # renovate: datasource=pypi depName=snakefmt

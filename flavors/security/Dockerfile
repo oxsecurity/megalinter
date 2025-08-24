@@ -25,7 +25,7 @@ ARG REPOSITORY_GITLEAKS_VERSION=v8.28.0
 # renovate: datasource=docker depName=checkmarx/kics
 ARG REPOSITORY_KICS_VERSION=v2.1.13-alpine
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
-ARG REPOSITORY_TRUFFLEHOG_VERSION=3.90.3
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.90.5
 # renovate: datasource=docker depName=ghcr.io/terraform-linters/tflint
 ARG TERRAFORM_TFLINT_VERSION=0.58.1
 # renovate: datasource=docker depName=tenable/terrascan
@@ -108,7 +108,7 @@ ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=10.2.2
 # renovate: datasource=pypi depName=semgrep
 ARG PIP_SEMGREP_VERSION=1.116.0
 # renovate: datasource=github-tags depName=anchore/syft
-ARG REPOSITORY_SYFT_VERSION=1.30.0
+ARG REPOSITORY_SYFT_VERSION=1.31.0
 # renovate: datasource=github-tags depName=aquasecurity/trivy
 ARG REPOSITORY_TRIVY_VERSION=0.65.0
 # renovate: datasource=github-tags depName=aquasecurity/trivy

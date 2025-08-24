@@ -31,7 +31,7 @@ ARG REPOSITORY_GITLEAKS_VERSION=v8.28.0
 # renovate: datasource=docker depName=checkmarx/kics
 ARG REPOSITORY_KICS_VERSION=v2.1.13-alpine
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
-ARG REPOSITORY_TRUFFLEHOG_VERSION=3.90.3
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.90.5
 # renovate: datasource=docker depName=lycheeverse/lychee
 ARG SPELL_LYCHEE_VERSION=sha-7c4b132-alpine
 # renovate: datasource=docker depName=ghcr.io/terraform-linters/tflint
@@ -104,7 +104,7 @@ ARG CARGO_SARIF_FMT_VERSION=0.8.0
 # renovate: datasource=github-tags depName=sgerrand/alpine-pkg-glibc
 ARG ALPINE_GLIBC_PACKAGE_VERSION=2.34-r0
 # renovate: datasource=npm depName=typescript
-ARG NPM_TYPESCRIPT_VERSION=5.8.3
+ARG NPM_TYPESCRIPT_VERSION=5.9.2
 # renovate: datasource=pypi depName=ansible-lint
 ARG PIP_ANSIBLE_LINT_VERSION=25.7.0
 # renovate: datasource=crate depName=shellcheck-sarif
@@ -226,7 +226,7 @@ ARG PIP_MYPY_VERSION=1.17.1
 # renovate: datasource=npm depName=pyright
 ARG NPM_PYRIGHT_VERSION=1.1.404
 # renovate: datasource=pypi depName=ruff
-ARG PIP_RUFF_VERSION=0.12.9
+ARG PIP_RUFF_VERSION=0.12.10
 # renovate: datasource=pypi depName=checkov
 ARG PIP_CHECKOV_VERSION=3.2.413
 # renovate: datasource=github-tags depName=anchore/grype
@@ -242,7 +242,7 @@ ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=10.2.2
 # renovate: datasource=pypi depName=semgrep
 ARG PIP_SEMGREP_VERSION=1.116.0
 # renovate: datasource=github-tags depName=anchore/syft
-ARG REPOSITORY_SYFT_VERSION=1.30.0
+ARG REPOSITORY_SYFT_VERSION=1.31.0
 # renovate: datasource=github-tags depName=aquasecurity/trivy
 ARG REPOSITORY_TRIVY_VERSION=0.65.0
 # renovate: datasource=github-tags depName=aquasecurity/trivy

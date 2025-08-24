@@ -678,7 +678,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=github-tags depName=anchore/syft
-          ARG REPOSITORY_SYFT_VERSION=1.30.0
+          ARG REPOSITORY_SYFT_VERSION=1.31.0
         - RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/refs/tags/v${REPOSITORY_SYFT_VERSION}/install.sh | sh -s -- -b /usr/local/bin
 
   # TRIVY
@@ -851,7 +851,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=docker depName=trufflesecurity/trufflehog
-          ARG REPOSITORY_TRUFFLEHOG_VERSION=3.90.3
+          ARG REPOSITORY_TRUFFLEHOG_VERSION=3.90.5
         - FROM trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION} AS trufflehog
         - COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
     test_folder: gitleaks
