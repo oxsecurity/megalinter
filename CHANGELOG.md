@@ -227,6 +227,12 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [kubescape](https://github.com/kubescape/kubescape) from 3.0.37 to **3.0.38** on 2025-08-18
   - [ruff-format](https://github.com/astral-sh/ruff) from 0.12.8 to **0.12.9** on 2025-08-20
   - [ruff](https://github.com/astral-sh/ruff) from 0.12.8 to **0.12.9** on 2025-08-20
+  - [golangci-lint](https://golangci-lint.run/) from 2.3.1 to **2.4.0** on 2025-08-24
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.55.6 to **0.55.7** on 2025-08-24
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.403 to **1.1.404** on 2025-08-24
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.12.9 to **0.12.10** on 2025-08-24
+  - [ruff](https://github.com/astral-sh/ruff) from 0.12.9 to **0.12.10** on 2025-08-24
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.90.3 to **3.90.5** on 2025-08-24
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15

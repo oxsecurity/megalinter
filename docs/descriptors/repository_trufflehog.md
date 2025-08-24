@@ -29,7 +29,7 @@ description: How to use trufflehog (configure, ignore files, ignore errors, help
 
 ## trufflehog documentation
 
-- Version in MegaLinter: **3.90.3**
+- Version in MegaLinter: **3.90.5**
 - Visit [Official Web Site](https://github.com/trufflesecurity/trufflehog#readme){target=_blank}
 - See [How to configure trufflehog rules](https://github.com/trufflesecurity/trufflehog#regex-detector-alpha){target=_blank}
 
@@ -200,7 +200,7 @@ s3 [<flags>]
 gcs [<flags>]
     Find credentials in GCS buckets.
 
-syslog [<flags>]
+syslog --format=FORMAT [<flags>]
     Scan syslog
 
 circleci --token=TOKEN
@@ -241,7 +241,7 @@ analyze
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
-ARG REPOSITORY_TRUFFLEHOG_VERSION=3.90.3
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.90.5
 FROM trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION} AS trufflehog
 COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
 ```
