@@ -233,6 +233,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [ruff-format](https://github.com/astral-sh/ruff) from 0.12.9 to **0.12.10** on 2025-08-24
   - [ruff](https://github.com/astral-sh/ruff) from 0.12.9 to **0.12.10** on 2025-08-24
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.90.3 to **3.90.5** on 2025-08-24
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 25.7.0 to **25.8.2** on 2025-08-24
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.38.3 to **1.39.0** on 2025-08-24
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.85.1 to **3.86.0** on 2025-08-24
+  - [rubocop](https://rubocop.org/) from 1.79.2 to **1.80.0** on 2025-08-24
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15
