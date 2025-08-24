@@ -30,7 +30,7 @@ description: How to use pyright (configure, ignore files, ignore errors, help & 
 
 ## pyright documentation
 
-- Version in MegaLinter: **1.1.403**
+- Version in MegaLinter: **1.1.404**
 - Visit [Official Web Site](https://github.com/Microsoft/pyright#readme){target=_blank}
 - See [How to configure pyright rules](https://github.com/microsoft/pyright/blob/main/docs/configuration.md){target=_blank}
 - See [How to disable pyright rules in files](https://github.com/microsoft/pyright/blob/main/docs/comments.md#file-level-type-controls){target=_blank}
@@ -140,8 +140,8 @@ Usage: pyright [options] files...
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=pyright
-ARG NPM_PYRIGHT_VERSION=1.1.403
+ARG NPM_PYRIGHT_VERSION=1.1.404
 ```
 
 - NPM packages (node.js):
-  - [pyright@1.1.403](https://www.npmjs.com/package/pyright/v/1.1.403)
+  - [pyright@1.1.404](https://www.npmjs.com/package/pyright/v/1.1.404)
