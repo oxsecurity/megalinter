@@ -3834,7 +3834,7 @@
 </ul>
 <h2 id="protolint-documentation">protolint documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>0.55.6</strong></li>
+<li>Version in MegaLinter: <strong>0.55.7</strong></li>
 <li>Visit <a href="https://github.com/yoheimuta/protolint#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/yoheimuta/protolint#rules" target="_blank">How to configure protolint rules</a><ul>
 <li>If custom <code>.protolintrc.yml</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.protolintrc.yml" target="_blank">.protolintrc.yml</a> will be used</li>
@@ -4129,7 +4129,7 @@
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile"># renovate: datasource=docker depName=yoheimuta/protolint
-ARG PROTOBUF_PROTOLINT_VERSION=0.55.6
+ARG PROTOBUF_PROTOLINT_VERSION=0.55.7
 FROM yoheimuta/protolint:${PROTOBUF_PROTOLINT_VERSION} AS protolint
 COPY --link --from=protolint /usr/local/bin/protolint /usr/bin/
 </code></pre>
