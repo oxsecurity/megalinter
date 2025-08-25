@@ -214,7 +214,7 @@ ARG PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION=v3.86.0
 # renovate: datasource=pypi depName=pylint
 ARG PIP_PYLINT_VERSION=3.3.8
 # renovate: datasource=pypi depName=typing-extensions
-ARG PIP_TYPING_EXTENSIONS_VERSION=4.14.1
+ARG PIP_TYPING_EXTENSIONS_VERSION=4.15.0
 # renovate: datasource=pypi depName=black
 ARG PIP_BLACK_VERSION=25.1.0
 # renovate: datasource=pypi depName=flake8
