@@ -799,9 +799,9 @@ Typecheck:
 # renovate: datasource=pypi depName=pylint
 ARG PIP_PYLINT_VERSION=3.3.8
 # renovate: datasource=pypi depName=typing-extensions
-ARG PIP_TYPING_EXTENSIONS_VERSION=4.14.1
+ARG PIP_TYPING_EXTENSIONS_VERSION=4.15.0
 ```
 
 - PIP packages (Python):
   - [pylint==3.3.8](https://pypi.org/project/pylint/3.3.8)
-  - [typing-extensions==4.14.1](https://pypi.org/project/typing-extensions/4.14.1)
+  - [typing-extensions==4.15.0](https://pypi.org/project/typing-extensions/4.15.0)
