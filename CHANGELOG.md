@@ -237,6 +237,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.38.3 to **1.39.0** on 2025-08-24
   - [php-cs-fixer](https://cs.symfony.com/) from 3.85.1 to **3.86.0** on 2025-08-24
   - [rubocop](https://rubocop.org/) from 1.79.2 to **1.80.0** on 2025-08-24
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.55.7 to **0.56.4** on 2025-08-25
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15
