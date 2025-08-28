@@ -253,9 +253,23 @@ linters:
 
       `VALIDATE_ALL_CODEBASE: false` doesn't make gitleaks analyze only updated files. To analyze only commits on Pull Request, set `VALIDATE_ALL_CODEBASE: false` together with `REPOSITORY_GITLEAKS_PR_COMMITS_SCAN: true` (you have to specify it explicitly), but only works for selected platforms: GitHub Actions, Azure Pipelines, GitLab Pipelines\* (Merge Requests and External Pull Requests)
 
-      - \* Only GitLab self-managed and GitLab SaaS (Premium and Ultimate) are supported (limitation due to GitLab itself) and [Merge result pipelines](https://docs.gitlab.com/ee/ci/pipelines/merged_results_pipelines.html#enable-merged-results-pipelines){target=_blank} feature has to be enabled.
-      - If MegaLinter with gitleaks runs against a PR on a platform not listed above, then the analysis is performed on the whole repository - default gitleaks behavior (checked-out commits, depends on fetch-depth configuration).
-        - You can still scan only PR commits in your CI/CD platform by setting MegaLinter envs: `PULL_REQUEST=true`\*, `REPOSITORY_GITLEAKS_PR_COMMITS_SCAN: true`, `REPOSITORY_GITLEAKS_PR_SOURCE_SHA` with last commit sha from your PR and `REPOSITORY_GITLEAKS_PR_TARGET_SHA` commit sha from your target branch (for example, `main` if you do PR to main branch). Example on how to get source commit sha `git rev-list -n 1 refs/remotes/origin/<source_branch>` and target commit sha `git rev-parse refs/remotes/origin/<target_branch>`
+        - **Note:** Only GitLab self-managed and GitLab SaaS (Premium and Ultimate) are supported (limitation due to GitLab itself). Additionally, the [Merge result pipelines](https://docs.gitlab.com/ee/ci/pipelines/merged_results_pipelines.html#enable-merged-results-pipelines){target=_blank} feature has to be enabled.
+        - If MegaLinter with gitleaks runs against a PR on a platform not listed above, analysis is performed on the whole repository (default gitleaks behavior; checked-out commits, depends on fetch-depth configuration).
+          - You can still choose to scan only PR commits in your CI/CD platform by setting the following MegaLinter environment variables:
+            - `PULL_REQUEST=true`\*
+            - `REPOSITORY_GITLEAKS_PR_COMMITS_SCAN: true`
+            - `REPOSITORY_GITLEAKS_PR_SOURCE_SHA` with last commit sha from your PR and `REPOSITORY_GITLEAKS_PR_TARGET_SHA` commit sha from your target branch (for example, `main` if you do PR to main branch)
+
+            Example commands:
+              - Source commit SHA:
+                ```
+                git rev-list -n 1 refs/remotes/origin/<source_branch>
+                ```
+
+              - Target commit SHA:
+                ```
+                git rev-parse refs/remotes/origin/<target_branch>
+                ```
           - \* `PULL_REQUEST` environment variable must be set to `true` only on Pull Requests, so you must calculate the value in your pipeline and pass the outcome.
       - PR commits scan feature, if applicable, will override your `--log-opts` argument if you used it in the `REPOSITORY_GITLEAKS_ARGUMENTS`.
 
