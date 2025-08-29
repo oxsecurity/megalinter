@@ -238,6 +238,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [php-cs-fixer](https://cs.symfony.com/) from 3.85.1 to **3.86.0** on 2025-08-24
   - [rubocop](https://rubocop.org/) from 1.79.2 to **1.80.0** on 2025-08-24
   - [protolint](https://github.com/yoheimuta/protolint) from 0.55.7 to **0.56.4** on 2025-08-25
+  - [grype](https://github.com/anchore/grype) from 0.98.0 to **0.99.0** on 2025-08-28
+  - [secretlint](https://github.com/secretlint/secretlint) from 10.2.2 to **11.2.0** on 2025-08-28
+  - [syft](https://github.com/anchore/syft) from 1.31.0 to **1.32.0** on 2025-08-28
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15
