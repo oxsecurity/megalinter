@@ -241,6 +241,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [grype](https://github.com/anchore/grype) from 0.98.0 to **0.99.0** on 2025-08-28
   - [secretlint](https://github.com/secretlint/secretlint) from 10.2.2 to **11.2.0** on 2025-08-28
   - [syft](https://github.com/anchore/syft) from 1.31.0 to **1.32.0** on 2025-08-28
+  - [vale](https://vale.sh/) from 3.11.2 to **3.12.0** on 2025-08-29
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15
