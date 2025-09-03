@@ -134,6 +134,8 @@ CVE-2025-53547
 CVE-2025-22868
 # Not applicable in MegaLinter context as it is not used as server
 CVE-2025-7783
+# https://avd.aquasec.com/nvd/cve-2025-8959: go-getter Arbitrary File Read. Not applicable in MegaLinter context
+CVE-2025-8959
 # Dockerfile
 DS001
 DS002
