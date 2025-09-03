@@ -163,8 +163,6 @@ ARG REPOSITORY_TRIVY_VERSION=0.66.0
 ARG REPOSITORY_TRIVY_SBOM_VERSION=0.66.0
 # renovate: datasource=npm depName=@salesforce/sfdx-scanner
 ARG SALESFORCE_SFDX_SCANNER_VERSION=4.12.0
-# renovate: datasource=npm depName=lightning-flow-scanner
-ARG LIGHTNING_FLOW_SCANNER_VERSION=3.29.0
 # renovate: datasource=pypi depName=snakemake
 ARG PIP_SNAKEMAKE_VERSION=9.9.0
 # renovate: datasource=pypi depName=snakefmt
@@ -495,7 +493,7 @@ RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/rel
 # sfdx-scanner-apex installation
     && sf plugins install @salesforce/sfdx-scanner@${SALESFORCE_SFDX_SCANNER_VERSION} \
     && (npm cache clean --force || true) \
-    && rm -rf /root/.npm/_cacache \
+    && rm -rf /root/.npm/_cacache
 #
 # sfdx-scanner-aura installation
 # Next line commented because already managed by another linter
@@ -508,11 +506,6 @@ RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/rel
 # RUN sf plugins install @salesforce/sfdx-scanner@${SALESFORCE_SFDX_SCANNER_VERSION} \
 #     && (npm cache clean --force || true) \
 #     && rm -rf /root/.npm/_cacache
-#
-# lightning-flow-scanner installation
-    && echo y|sf plugins install lightning-flow-scanner@${LIGHTNING_FLOW_SCANNER_VERSION} \
-    && (npm cache clean --force || true) \
-    && rm -rf /root/.npm/_cacache
 #
 # snakemake installation
 #

@@ -136,6 +136,8 @@ CVE-2025-22868
 CVE-2025-7783
 # https://avd.aquasec.com/nvd/cve-2025-8959: go-getter Arbitrary File Read. Not applicable in MegaLinter context
 CVE-2025-8959
+# https://avd.aquasec.com/nvd/cve-2025-9288 : sha.js: Missing type checks leading to hash rewind and passing on crafte. Harmless in MegaLinter because Salesforce linters do not connect to Salesforce orgs
+CVE-2025-9288
 # Dockerfile
 DS001
 DS002
