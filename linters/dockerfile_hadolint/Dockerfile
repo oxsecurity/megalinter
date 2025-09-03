@@ -12,7 +12,7 @@
 #############################################################################################
 #ARGTOP__START
 # renovate: datasource=docker depName=hadolint/hadolint
-ARG DOCKERFILE_HADOLINT_VERSION=v2.12.0-alpine
+ARG DOCKERFILE_HADOLINT_VERSION=v2.13.1-alpine
 #ARGTOP__END
 
 #############################################################################################
