@@ -39,7 +39,7 @@ Hadolint ensures your Dockerfiles are secure, efficient, and maintainable while 
 
 ## hadolint documentation
 
-- Version in MegaLinter: **2.12.0**
+- Version in MegaLinter: **2.13.1**
 - Visit [Official Web Site](https://github.com/hadolint/hadolint#readme){target=_blank}
 - See [How to configure hadolint rules](https://github.com/hadolint/hadolint#configure){target=_blank}
   - If custom `.hadolint.yaml` config file isn't found, [.hadolint.yaml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.hadolint.yaml){target=_blank} will be used

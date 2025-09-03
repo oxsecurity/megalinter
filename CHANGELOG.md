@@ -241,6 +241,12 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [grype](https://github.com/anchore/grype) from 0.98.0 to **0.99.0** on 2025-08-28
   - [secretlint](https://github.com/secretlint/secretlint) from 10.2.2 to **11.2.0** on 2025-08-28
   - [syft](https://github.com/anchore/syft) from 1.31.0 to **1.32.0** on 2025-08-28
+  - [hadolint](https://github.com/hadolint/hadolint) from 2.12.0 to **2.13.1** on 2025-09-03
+  - [checkstyle](https://checkstyle.org/) from 11.0.0 to **11.0.1** on 2025-09-03
+  - [grype](https://github.com/anchore/grype) from 0.99.0 to **0.99.1** on 2025-09-03
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.65.0 to **0.66.0** on 2025-09-03
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.65.0 to **0.66.0** on 2025-09-03
+  - [vale](https://vale.sh/) from 3.11.2 to **3.12.0** on 2025-09-03
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15
