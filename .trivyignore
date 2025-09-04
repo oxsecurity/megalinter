@@ -72,6 +72,7 @@ GHSA-xpw8-rcwv-8f8p
 # sfdx-scanner
 # https://avd.aquasec.com/nvd/cve-2025-48734 Not dangerous in MegaLinter context, and sfdx-scanner will be soon replaced by code-analyzer plugin
 CVE-2025-48734
+CVE-2025-55163
 
 # octokit
 CVE-2025-25288
@@ -134,6 +135,10 @@ CVE-2025-53547
 CVE-2025-22868
 # Not applicable in MegaLinter context as it is not used as server
 CVE-2025-7783
+# https://avd.aquasec.com/nvd/cve-2025-8959: go-getter Arbitrary File Read. Not applicable in MegaLinter context
+CVE-2025-8959
+# https://avd.aquasec.com/nvd/cve-2025-9288 : sha.js: Missing type checks leading to hash rewind and passing on crafte. Harmless in MegaLinter because Salesforce linters do not connect to Salesforce orgs
+CVE-2025-9288
 # Dockerfile
 DS001
 DS002
