@@ -247,6 +247,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.65.0 to **0.66.0** on 2025-09-03
   - [trivy](https://aquasecurity.github.io/trivy/) from 0.65.0 to **0.66.0** on 2025-09-03
   - [vale](https://vale.sh/) from 3.11.2 to **3.12.0** on 2025-09-03
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.39.0 to **1.39.1** on 2025-09-04
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 9.2.0 to **9.2.1** on 2025-09-04
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15
