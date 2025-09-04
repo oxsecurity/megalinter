@@ -40,4 +40,4 @@ langchain_anthropic==0.3.19
 langchain_deepseek==0.1.4
 langchain_google_genai==2.1.10
 langchain_mistralai==0.2.11
-langchain_community==0.3.27
+langchain_community==0.3.29
