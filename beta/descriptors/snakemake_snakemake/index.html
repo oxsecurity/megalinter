@@ -10359,7 +10359,7 @@
 <td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" data-desc-position="bottom"><img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a></td>
 <td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/salesforce/">salesforce</a></td>
 <td style="text-align: left;">Optimized for Salesforce based projects</td>
-<td style="text-align: center;">54</td>
+<td style="text-align: center;">53</td>
 <td style="text-align: right;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/beta" data-desc-position="bottom"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/beta"></a> <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce" data-desc-position="bottom"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce"></a></td>
 </tr>
 <tr>
@@ -10433,7 +10433,7 @@
                  [--filegraph] [--d3dag] [--summary] [--detailed-summary]
                  [--archive FILE] [--cleanup-metadata FILE [FILE ...]]
                  [--cleanup-shadow] [--skip-script-cleanup] [--unlock]
-                 [--list-changes {code,params,input}] [--list-input-changes]
+                 [--list-changes {input,code,params}] [--list-input-changes]
                  [--list-params-changes] [--list-untracked]
                  [--delete-all-output | --delete-temp-output]
                  [--keep-incomplete] [--drop-metadata] [--version]
@@ -10480,7 +10480,7 @@
                  [--scheduler-solver-path SCHEDULER_SOLVER_PATH]
                  [--deploy-sources QUERY CHECKSUM]
                  [--target-jobs TARGET_JOBS [TARGET_JOBS ...]]
-                 [--mode {subprocess,remote,default}]
+                 [--mode {remote,default,subprocess}]
                  [--report-html-path VALUE]
                  [--report-html-stylesheet-path VALUE]
                  [targets ...]
@@ -10958,7 +10958,7 @@ UTILITIES:
                         (default: False)
   --unlock              Remove a lock on the working directory. (default:
                         False)
-  --list-changes, --lc {code,params,input}
+  --list-changes, --lc {input,code,params}
                         List all output files for which the given items (code,
                         input, params) have changed since creation.
   --list-input-changes, --li
@@ -11321,7 +11321,7 @@ INTERNAL:
   --target-jobs TARGET_JOBS [TARGET_JOBS ...]
                         Internal use only: Target particular jobs by
                         RULE:WILDCARD1=VALUE,WILDCARD2=VALUE,...
-  --mode {subprocess,remote,default}
+  --mode {remote,default,subprocess}
                         Internal use only: Set execution mode of Snakemake.
                         (default: default)
 
