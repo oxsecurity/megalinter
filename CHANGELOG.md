@@ -249,6 +249,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [vale](https://vale.sh/) from 3.11.2 to **3.12.0** on 2025-09-03
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.39.0 to **1.39.1** on 2025-09-04
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 9.2.0 to **9.2.1** on 2025-09-04
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.404 to **1.1.405** on 2025-09-04
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15
