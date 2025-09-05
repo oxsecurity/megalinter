@@ -255,6 +255,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [ruff](https://github.com/astral-sh/ruff) from 0.12.10 to **0.12.12** on 2025-09-05
   - [rubocop](https://rubocop.org/) from 1.80.0 to **1.80.2** on 2025-09-05
   - [snakefmt](https://github.com/snakemake/snakefmt) from 0.11.0 to **0.11.2** on 2025-09-05
+  - [revive](https://revive.run/) from 1.11.0 to **1.12.0** on 2025-09-05
+  - [phpcs](https://github.com/PHPCSStandards/PHP_CodeSniffer) from 3.13.2 to **3.13.4** on 2025-09-05
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.90.5 to **3.90.6** on 2025-09-05
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15
