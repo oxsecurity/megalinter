@@ -250,6 +250,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.39.0 to **1.39.1** on 2025-09-04
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 9.2.0 to **9.2.1** on 2025-09-04
   - [pyright](https://github.com/Microsoft/pyright) from 1.1.404 to **1.1.405** on 2025-09-04
+  - [kubescape](https://github.com/kubescape/kubescape) from 3.0.38 to **3.0.40** on 2025-09-05
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.12.10 to **0.12.12** on 2025-09-05
+  - [ruff](https://github.com/astral-sh/ruff) from 0.12.10 to **0.12.12** on 2025-09-05
+  - [rubocop](https://rubocop.org/) from 1.80.0 to **1.80.2** on 2025-09-05
+  - [snakefmt](https://github.com/snakemake/snakefmt) from 0.11.0 to **0.11.2** on 2025-09-05
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15
