@@ -64,7 +64,7 @@
     "npm-package-json-lint": "9.0.0",
     "perlcritic": "1.156",
     "php": "7.4.26",
-    "php-cs-fixer": "3.86.0",
+    "php-cs-fixer": "3.87.1",
     "phpcs": "3.13.4",
     "phplint": "9.6.2",
     "phpstan": "2.1.22",
