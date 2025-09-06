@@ -258,6 +258,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [revive](https://revive.run/) from 1.11.0 to **1.12.0** on 2025-09-05
   - [phpcs](https://github.com/PHPCSStandards/PHP_CodeSniffer) from 3.13.2 to **3.13.4** on 2025-09-05
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.90.5 to **3.90.6** on 2025-09-05
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.86.0 to **3.87.1** on 2025-09-06
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15
