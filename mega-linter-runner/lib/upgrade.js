@@ -476,17 +476,17 @@ jobs:
       },
       // Create pull request action
       {
-        regex: /peter-evans\/create-pull-request@v(3|4|5)/gm,
-        replacement: `peter-evans/create-pull-request@v6`,
-        test: "peter-evans/create-pull-request@v5",
-        testRes: `peter-evans/create-pull-request@v6`,
+        regex: /peter-evans\/create-pull-request@v(3|4|5|6)/gm,
+        replacement: `peter-evans/create-pull-request@v7`,
+        test: "peter-evans/create-pull-request@v6",
+        testRes: `peter-evans/create-pull-request@v7`,
       },
       // Auto-commit action
       {
-        regex: /stefanzweifel\/git-auto-commit-action@v(2|3|4)/gm,
-        replacement: `stefanzweifel/git-auto-commit-action@v5`,
-        test: "stefanzweifel/git-auto-commit-action@v4",
-        testRes: `stefanzweifel/git-auto-commit-action@v5`,
+        regex: /stefanzweifel\/git-auto-commit-action@v(2|3|4|5)/gm,
+        replacement: `stefanzweifel/git-auto-commit-action@v6`,
+        test: "stefanzweifel/git-auto-commit-action@v5",
+        testRes: `stefanzweifel/git-auto-commit-action@v6`,
       },
       // All remaining cases... cross fingers :)
       {
@@ -494,6 +494,20 @@ jobs:
         replacement: "oxsecurity/megalinter",
         test: "wesh megalinter/megalinter",
         testRes: "wesh oxsecurity/megalinter",
+      },
+      // v8 to v9 migrations rules
+      {
+        regex: /actions\/checkout@v4/gm,
+        replacement: "actions/checkout@v5",
+        test: "uses: actions/checkout@v4",
+        testRes: "uses: actions/checkout@v5",
+      },
+      // Upload artifact action
+      {
+        regex: /actions\/upload-artifact@v(1|2|3)/gm,
+        replacement: "actions/upload-artifact@v3",
+        test: "uses: actions/upload-artifact@v3",
+        testRes: "uses: actions/upload-artifact@v4",
       },
     ];
   }
