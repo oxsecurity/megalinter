@@ -159,24 +159,25 @@ linters:
     linter_image_url: https://github.com/gruntwork-io/terragrunt/blob/master/docs/assets/img/favicon/ms-icon-310x310.png
     linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/terragrunt.png
     config_file_name: terragrunt.hcl
-    cli_config_arg_name: "--terragrunt-config"
+    cli_config_arg_name: "--config"
     cli_lint_extra_args:
-      - "hclfmt"
-      - "--terragrunt-check"
+      - "hcl"
+      - "fmt"
+      - "--check"
     cli_lint_fix_arg_name: "--megalinter-fix-flag" # Workaround for MegaLinter
     cli_lint_fix_remove_args:
-      - "--terragrunt-check"
+      - "--check"
     cli_lint_extra_args_after:
-      - "--terragrunt-hclfmt-file"
+      - "--file"
     test_folder: terraform_terragrunt
     examples:
-      - "terragrunt hclfmt --terragrunt-check --terragrunt-hclfmt-file myfile.hcl"
-      - "terragrunt hclfmt --terragrunt-check --terragrunt-config terragrunt.hcl --terragrunt-hclfmt-file myfile.hcl"
+      - "terragrunt hcl fmt --check --file myfile.hcl"
+      - "terragrunt hcl fmt --check --config terragrunt.hcl --file myfile.hcl"
     install:
       dockerfile:
         - |-
           # renovate: datasource=docker depName=alpine/terragrunt
-          ARG TERRAFORM_TERRAGRUNT_VERSION=1.12.2
+          ARG TERRAFORM_TERRAGRUNT_VERSION=1.13.1
         - FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} AS terragrunt
         - COPY --link --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
 
@@ -218,7 +219,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=docker depName=alpine/terragrunt
-          ARG TERRAFORM_TERRAGRUNT_VERSION=1.12.2
+          ARG TERRAFORM_TERRAGRUNT_VERSION=1.13.1
         - FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} AS terragrunt
         - COPY --link --from=terragrunt /bin/terraform /usr/bin/
     ide:
