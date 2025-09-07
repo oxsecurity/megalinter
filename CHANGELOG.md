@@ -260,6 +260,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [phpcs](https://github.com/PHPCSStandards/PHP_CodeSniffer) from 3.13.2 to **3.13.4** on 2025-09-05
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.90.5 to **3.90.6** on 2025-09-05
   - [php-cs-fixer](https://cs.symfony.com/) from 3.86.0 to **3.87.1** on 2025-09-06
+  - [secretlint](https://github.com/secretlint/secretlint) from 11.2.0 to **11.2.3** on 2025-09-07
+  - [snakemake](https://snakemake.github.io/) from 9.9.0 to **3.13** on 2025-09-07
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.58.1 to **0.59.1** on 2025-09-07
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15
