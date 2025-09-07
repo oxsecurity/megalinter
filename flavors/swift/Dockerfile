@@ -483,7 +483,7 @@ RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/rel
 #
 # swiftlint installation
 # renovate: datasource=docker depName=ghcr.io/realm/swiftlint
-ENV SWIFT_SWIFTLINT_VERSION=0.59.1
+ENV SWIFT_SWIFTLINT_VERSION=0.61.0
 #
 # tekton-lint installation
 #
