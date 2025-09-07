@@ -15,7 +15,7 @@ description: How to use lightning-flow-scanner (configure, ignore files, ignore 
 
 _This linter has been disabled in this version_
 
-_Disabled reason: Repo archived -> <https://github.com/Lightning-Flow-Scanner>_
+_Disabled reason: Repo archived -> https://github.com/Lightning-Flow-Scanner_
 
 **Lightning Flow Scanner** is a specialized SFDX plugin that analyzes Salesforce Flows for integrity issues, performance problems, and adherence to best practices. It helps developers build reliable and maintainable Flow automations.
 
@@ -151,7 +151,7 @@ RUN sf plugins install @salesforce/plugin-packaging@${NPM_SALESFORCE_PLUGIN_PACK
 ENV SF_AUTOUPDATE_DISABLE=true SF_CLI_DISABLE_AUTOUPDATE=true
 # Linter install
 # renovate: datasource=npm depName=lightning-flow-scanner
-ARG LIGHTNING_FLOW_SCANNER_VERSION=3.29.0
+ARG LIGHTNING_FLOW_SCANNER_VERSION=5.2.0
 RUN echo y|sf plugins install lightning-flow-scanner@${LIGHTNING_FLOW_SCANNER_VERSION} \
     && (npm cache clean --force || true) \
     && rm -rf /root/.npm/_cacache
