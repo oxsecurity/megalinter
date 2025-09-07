@@ -36,6 +36,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [hadolint](https://megalinter.io/latest/descriptors/docker_hadolint/): Extend DOCKERFILE_HADOLINT_FILE_NAMES_REGEX to include the `purpose.Dockerfile` convention eg service.Dockerfile.
 
 - Fixes
+  - When linter is docker based, force `--platform=linux/amd64` so it works when running locally on Mac
 
 - Reporters
   - New default display for Pull Request comments, with expandable sections containing the first 1000 lines of the output log. Former display remains available by defining `REPORTERS_MARKDOWN_SUMMARY_TYPE=table`
@@ -259,6 +260,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [phpcs](https://github.com/PHPCSStandards/PHP_CodeSniffer) from 3.13.2 to **3.13.4** on 2025-09-05
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.90.5 to **3.90.6** on 2025-09-05
   - [php-cs-fixer](https://cs.symfony.com/) from 3.86.0 to **3.87.1** on 2025-09-06
+  - [secretlint](https://github.com/secretlint/secretlint) from 11.2.0 to **11.2.3** on 2025-09-07
+  - [snakemake](https://snakemake.github.io/) from 9.9.0 to **3.13** on 2025-09-07
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.58.1 to **0.59.1** on 2025-09-07
+  - [stylelint](https://stylelint.io) from 16.23.1 to **16.24.0** on 2025-09-07
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15

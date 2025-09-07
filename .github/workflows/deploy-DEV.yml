@@ -165,8 +165,7 @@ jobs:
 
           export CI_ENV="$(bash <(curl -s https://codecov.io/env)) -e GITHUB_ACTIONS"
           TEST_KEYWORDS_TO_USE=""
-          if [[ "${{ github.event.head_commit.message }}" == *"TEST_KEYWORDS="* ]]; then
-            COMMIT_MSG="${{ github.event.head_commit.message }}"
+          if [[ "${COMMIT_MSG}" == *"TEST_KEYWORDS="* ]]; then
             TEST_KEYWORDS_TO_USE=${COMMIT_MSG#*TEST_KEYWORDS=}
             echo "Run only tests with keywords ${TEST_KEYWORDS_TO_USE}"
             if [[ "${TEST_KEYWORDS_TO_USE}" =~ $'\r' ]]; then
@@ -177,6 +176,8 @@ jobs:
           docker image ls
           docker run $CI_ENV -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=text -e OUTPUT_FOLDER=${{ github.sha }} -e OUTPUT_DETAIL=detailed -e GITHUB_SHA=${{ github.sha }} -e GITHUB_REPOSITORY=${GITHUB_REPOSITORY} -e GITHUB_BRANCH=${GITHUB_BRANCH} -e GITHUB_TOKEN="${{ secrets.GITHUB_TOKEN }}" -e TEST_KEYWORDS="${TEST_KEYWORDS_TO_USE}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint ${{ fromJson(steps.meta.outputs.json).tags[0]}}
         timeout-minutes: 90
+        env:
+          COMMIT_MSG: ${{ github.event.head_commit.message }}
 
       #####################################
       # Run Linter against ALL code base  #
@@ -216,7 +217,7 @@ jobs:
       # Test mega-linter-runner with newly created image
       - name: Setup Node
         if: ${{ steps.docker_build.outcome }} == 'success' && !contains(github.event.head_commit.message, 'quick build')
-        uses: actions/setup-node@v4.4.0
+        uses: actions/setup-node@v5.0.0
         with:
           node-version: "22.x"
       - name: Install NPM dependencies
