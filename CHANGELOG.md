@@ -263,6 +263,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [secretlint](https://github.com/secretlint/secretlint) from 11.2.0 to **11.2.3** on 2025-09-07
   - [snakemake](https://snakemake.github.io/) from 9.9.0 to **3.13** on 2025-09-07
   - [tflint](https://github.com/terraform-linters/tflint) from 0.58.1 to **0.59.1** on 2025-09-07
+  - [stylelint](https://stylelint.io) from 16.23.1 to **16.24.0** on 2025-09-07
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15
