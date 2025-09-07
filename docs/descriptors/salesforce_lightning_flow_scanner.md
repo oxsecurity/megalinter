@@ -15,7 +15,7 @@ description: How to use lightning-flow-scanner (configure, ignore files, ignore 
 
 _This linter has been disabled in this version_
 
-_Disabled reason: Repo archived -> <https://github.com/Lightning-Flow-Scanner>_
+_Disabled reason: Repo archived -> https://github.com/Lightning-Flow-Scanner_
 
 **Lightning Flow Scanner** is a specialized SFDX plugin that analyzes Salesforce Flows for integrity issues, performance problems, and adherence to best practices. It helps developers build reliable and maintainable Flow automations.
 
@@ -139,9 +139,9 @@ GLOBAL FLAGS
 # renovate: datasource=npm depName=@salesforce/cli
 ARG NPM_SALESFORCE_CLI_VERSION=2.102.6
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
-ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.19.7
+ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.19.10
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=6.1.4
+ARG SFDX_HARDIS_VERSION=6.3.2
 ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 RUN sf plugins install @salesforce/plugin-packaging@${NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION} \

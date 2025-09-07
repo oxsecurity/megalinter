@@ -29,7 +29,7 @@ description: How to use snakemake (configure, ignore files, ignore errors, help 
 
 ## snakemake documentation
 
-- Version in MegaLinter: **9.9.0**
+- Version in MegaLinter: **3.13**
 - Visit [Official Web Site](https://snakemake.github.io/){target=_blank}
 - See [How to configure snakemake rules](https://snakemake.readthedocs.io/en/stable/snakefiles/configuration.html){target=_blank}
 
@@ -134,22 +134,22 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--omit-from TARGET [TARGET ...]] [--rerun-incomplete]
                  [--shadow-prefix DIR]
                  [--strict-dag-evaluation {cyclic-graph,functions,periodic-wildcards} [{cyclic-graph,functions,periodic-wildcards} ...]]
-                 [--scheduler [{ilp,greedy}]]
-                 [--scheduler-ilp-solver {PULP_CBC_CMD}]
+                 [--scheduler [{greedy,ilp}]]
                  [--conda-base-path CONDA_BASE_PATH] [--no-subworkflows]
                  [--precommand PRECOMMAND] [--groups GROUPS [GROUPS ...]]
                  [--group-components GROUP_COMPONENTS [GROUP_COMPONENTS ...]]
                  [--report [FILE]] [--report-after-run]
-                 [--report-stylesheet CSSFILE] [--reporter PLUGIN]
-                 [--draft-notebook TARGET] [--edit-notebook TARGET]
-                 [--notebook-listen IP:PORT] [--lint [{text,json}]]
-                 [--generate-unit-tests [TESTPATH]] [--containerize]
-                 [--export-cwl FILE] [--list-rules] [--list-target-rules]
-                 [--dag [{dot,mermaid-js}]] [--rulegraph [{dot,mermaid-js}]]
-                 [--filegraph] [--d3dag] [--summary] [--detailed-summary]
-                 [--archive FILE] [--cleanup-metadata FILE [FILE ...]]
-                 [--cleanup-shadow] [--skip-script-cleanup] [--unlock]
-                 [--list-changes {params,input,code}] [--list-input-changes]
+                 [--report-stylesheet CSSFILE] [--report-metadata FILE]
+                 [--reporter PLUGIN] [--draft-notebook TARGET]
+                 [--edit-notebook TARGET] [--notebook-listen IP:PORT]
+                 [--lint [{text,json}]] [--generate-unit-tests [TESTPATH]]
+                 [--containerize] [--export-cwl FILE] [--list-rules]
+                 [--list-target-rules] [--dag [{dot,mermaid-js}]]
+                 [--rulegraph [{dot,mermaid-js}]] [--filegraph] [--d3dag]
+                 [--summary] [--detailed-summary] [--archive FILE]
+                 [--cleanup-metadata FILE [FILE ...]] [--cleanup-shadow]
+                 [--skip-script-cleanup] [--unlock]
+                 [--list-changes {input,code,params}] [--list-input-changes]
                  [--list-params-changes] [--list-untracked]
                  [--delete-all-output | --delete-temp-output]
                  [--keep-incomplete] [--drop-metadata] [--version]
@@ -168,7 +168,6 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--target-files-omit-workdir-adjustment]
                  [--allowed-rules ALLOWED_RULES [ALLOWED_RULES ...]]
                  [--max-jobs-per-timespan MAX_JOBS_PER_TIMESPAN]
-                 [--max-jobs-per-second MAX_JOBS_PER_SECOND]
                  [--max-status-checks-per-second MAX_STATUS_CHECKS_PER_SECOND]
                  [--seconds-between-status-checks SECONDS_BETWEEN_STATUS_CHECKS]
                  [--retries RETRIES] [--wrapper-prefix WRAPPER_PREFIX]
@@ -184,7 +183,7 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--show-failed-logs] [--logger {} [{} ...]]
                  [--job-deploy-sources] [--benchmark-extended]
                  [--container-image IMAGE] [--immediate-submit]
-                 [--jobscript SCRIPT] [--jobname NAME] [--flux]
+                 [--jobscript SCRIPT] [--jobname NAME]
                  [--software-deployment-method {apptainer,conda,env-modules} [{apptainer,conda,env-modules} ...]]
                  [--container-cleanup-images] [--use-conda]
                  [--conda-not-block-search-path-envvars] [--list-conda-envs]
@@ -193,12 +192,17 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--conda-create-envs-only] [--conda-frontend {conda,mamba}]
                  [--use-apptainer] [--apptainer-prefix DIR]
                  [--apptainer-args ARGS] [--use-envmodules]
-                 [--scheduler-solver-path SCHEDULER_SOLVER_PATH]
                  [--deploy-sources QUERY CHECKSUM]
                  [--target-jobs TARGET_JOBS [TARGET_JOBS ...]]
-                 [--mode {default,remote,subprocess}]
+                 [--mode {remote,default,subprocess}]
+                 [--scheduler-solver-path SCHEDULER_SOLVER_PATH]
+                 [--max-jobs-per-second MAX_JOBS_PER_SECOND]
                  [--report-html-path VALUE]
                  [--report-html-stylesheet-path VALUE]
+                 [--scheduler-greedy-greediness VALUE]
+                 [--scheduler-greedy-omit-prioritize-by-temp-and-input]
+                 [--scheduler-ilp-solver VALUE]
+                 [--scheduler-ilp-solver-path VALUE]
                  [targets ...]
 
 Snakemake is a Python based language and execution environment for GNU Make-
@@ -424,8 +428,10 @@ EXECUTION:
                         however that you lose the provenance information when
                         the files have been created in reality. Hence, this
                         should be used only as a last resort. (default: False)
-  --keep-going, -k      Go on with independent jobs if a job fails. (default:
-                        False)
+  --keep-going, -k      Go on with independent jobs if a job fails during
+                        execution. This only applies to runtime failures in
+                        job execution, not to errors during workflow parsing
+                        or DAG construction. (default: False)
   --rerun-triggers {code,input,mtime,params,software-env} [{code,input,mtime,params,software-env} ...]
                         Define what triggers the rerunning of a job. By
                         default, all triggers are used, which guarantees that
@@ -492,14 +498,11 @@ EXECUTION:
   --strict-dag-evaluation {cyclic-graph,functions,periodic-wildcards} [{cyclic-graph,functions,periodic-wildcards} ...]
                         Strict evaluation of rules' correctness even when not
                         required to produce the output files.
-  --scheduler [{ilp,greedy}]
-                        Specifies if jobs are selected by a greedy algorithm
-                        or by solving an ilp. The ilp scheduler aims to reduce
-                        runtime and hdd usage by best possible use of
-                        resources. (default: greedy)
-  --scheduler-ilp-solver {PULP_CBC_CMD}
-                        Specifies solver to be utilized when selecting ilp-
-                        scheduler. (default: COIN_CMD)
+  --scheduler [{greedy,ilp}]
+                        Specifies the scheduling plugin to use. Builtin
+                        plugins are greedy (fast) and ilp, while the latter
+                        scheduler aims to reduce runtime and hdd usage by best
+                        possible use of resources. (default: ilp)
   --conda-base-path CONDA_BASE_PATH
                         Path of conda base installation (home of conda, mamba,
                         activate) (internal use only).
@@ -550,6 +553,11 @@ REPORTS:
                         Custom stylesheet to use for report. In particular,
                         this can be used for branding the report with e.g. a
                         custom logo, see docs.
+  --report-metadata FILE
+                        Custom metadata to use for the landing page of the
+                        report. In particular, this can be used to provide
+                        metadata in the report e.g. the work directory, see
+                        docs.
   --reporter PLUGIN     Specify a custom report plugin. By default,
                         Snakemake's builtin html reporter will be used. For
                         custom reporters, check out their command line options
@@ -674,7 +682,7 @@ UTILITIES:
                         (default: False)
   --unlock              Remove a lock on the working directory. (default:
                         False)
-  --list-changes, --lc {params,input,code}
+  --list-changes, --lc {input,code,params}
                         List all output files for which the given items (code,
                         input, params) have changed since creation.
   --list-input-changes, --li
@@ -816,10 +824,6 @@ BEHAVIOR:
                         Maximal number of job submissions/executions per
                         timespan. Format: <number><timespan>, e.g. 50/1m or
                         0.5/1s. (default: 100/1s)
-  --max-jobs-per-second MAX_JOBS_PER_SECOND
-                        Maximal number of job submissions/executions per
-                        second. Deprecated in favor of `--max-jobs-per-
-                        timespan`.
   --max-status-checks-per-second MAX_STATUS_CHECKS_PER_SECOND
                         Maximal number of job status checks per second;
                         fractions allowed. (default: 10)
@@ -877,7 +881,8 @@ BEHAVIOR:
                         and 1 determines how careful jobs are selected for
                         execution. The default value (1.0) provides the best
                         speed and still acceptable scheduling quality.
-                        (default: 1.0)
+                        Deprecated in favor of `--scheduler-greedy-
+                        greediness`. (default: 1.0)
   --scheduler-subsample SCHEDULER_SUBSAMPLE
                         Set the number of jobs to be considered for
                         scheduling. If number of ready jobs is greater than
@@ -918,7 +923,8 @@ REMOTE EXECUTION:
                         is up to your responsibility. Any used image has to
                         contain a working snakemake installation that is
                         compatible with (or ideally the same as) the currently
-                        running version. (default: snakemake/snakemake:v9.9.0)
+                        running version. (default:
+                        snakemake/snakemake:v9.11.0)
   --immediate-submit, --is
                         Immediately submit all jobs to the cluster instead of
                         waiting for present input files. This will fail,
@@ -928,8 +934,12 @@ REMOTE EXECUTION:
                         (here sbatch) outputs the generated job id to the
                         first stdout line, {dependencies} will be filled with
                         space separated job ids this job depends on. Does not
-                        work for workflows that contain checkpoint rules.
-                        (default: False)
+                        work for workflows that contain checkpoint rules, and
+                        localrules will be skipped. The additional argument
+                        `--notemp` should be specified. Most often, `--not-
+                        retrieve-storage` is also recommended to avoid
+                        Snakemake trying to download output files before the
+                        jobs producing them are executed. (default: False)
   --jobscript, --js SCRIPT
                         Provide a custom job script for submission to the
                         cluster. The default script resides as `jobscript.sh`
@@ -938,13 +948,6 @@ REMOTE EXECUTION:
                         submitted to the cluster (see `--cluster`). The
                         wildcard `{jobid}` has to be present in the name.
                         (default: snakejob.{name}.{jobid}.sh)
-
-FLUX:
-  --flux                Execute your workflow on a flux cluster. Flux can work
-                        with both a shared network filesystem (like NFS) or
-                        without. If you don't have a shared filesystem,
-                        additionally specify `--no-shared-fs`. (default:
-                        False)
 
 SOFTWARE DEPLOYMENT:
   --software-deployment-method, --deployment-method, --deployment, --sdm {apptainer,conda,env-modules} [{apptainer,conda,env-modules} ...]
@@ -1026,9 +1029,6 @@ ENVIRONMENT MODULES:
                         modules. (default: False)
 
 INTERNAL:
-  --scheduler-solver-path SCHEDULER_SOLVER_PATH
-                        Internal use only: Set the PATH to search for
-                        scheduler solver binaries.
   --deploy-sources QUERY CHECKSUM
                         Internal use only: Deploy sources archive from given
                         storage provider query to the current working
@@ -1037,9 +1037,19 @@ INTERNAL:
   --target-jobs TARGET_JOBS [TARGET_JOBS ...]
                         Internal use only: Target particular jobs by
                         RULE:WILDCARD1=VALUE,WILDCARD2=VALUE,...
-  --mode {default,remote,subprocess}
+  --mode {remote,default,subprocess}
                         Internal use only: Set execution mode of Snakemake.
                         (default: default)
+  --scheduler-solver-path SCHEDULER_SOLVER_PATH
+                        Internal use only: Set the PATH to search for
+                        scheduler solver binaries. Deprecated, use
+                        --scheduler-ilp-solver-path instead.
+
+DEPRECATED:
+  --max-jobs-per-second MAX_JOBS_PER_SECOND
+                        Maximal number of job submissions/executions per
+                        second. Deprecated in favor of `--max-jobs-per-
+                        timespan`.
 
 html report plugin settings:
   --report-html-path VALUE
@@ -1048,6 +1058,25 @@ html report plugin settings:
                         directories with htmlindex as results.
   --report-html-stylesheet-path VALUE
                         Path to a custom stylesheet for the report.
+
+greedy scheduler plugin settings:
+  --scheduler-greedy-greediness VALUE
+                        Set the greediness of scheduling. This value between 0
+                        and 1 determines how careful jobs are selected for
+                        execution. The default value (1.0) provides the best
+                        speed and still acceptable scheduling quality.
+  --scheduler-greedy-omit-prioritize-by-temp-and-input
+                        If set, jobs with larger temporary or input files are
+                        not prioritized. The rationale of the prioritization
+                        is that temp files should be removed as soon as
+                        possible, and larger input files may take longer to
+                        process, so it is better to start them earlier.
+
+ilp scheduler plugin settings:
+  --scheduler-ilp-solver VALUE
+                        Set MILP solver to use
+  --scheduler-ilp-solver-path VALUE
+                        Set the PATH to search for scheduler solver binaries.
 
  In general, command-line values override environment variables which override
 defaults.
@@ -1058,8 +1087,8 @@ defaults.
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=snakemake
-ARG PIP_SNAKEMAKE_VERSION=9.9.0
+ARG PIP_SNAKEMAKE_VERSION=9.11.0
 ```
 
 - PIP packages (Python):
-  - [snakemake==9.9.0](https://pypi.org/project/snakemake/9.9.0)
+  - [snakemake==9.11.0](https://pypi.org/project/snakemake/9.11.0)
