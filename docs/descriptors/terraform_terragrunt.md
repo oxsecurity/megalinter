@@ -23,7 +23,7 @@ description: How to use terragrunt (configure, ignore files, ignore errors, help
 
 ## terragrunt documentation
 
-- Version in MegaLinter: **0.82.3**
+- Version in MegaLinter: **0.87.0**
 - Visit [Official Web Site](https://terragrunt.gruntwork.io){target=_blank}
 - See [How to configure terragrunt rules](https://terragrunt.gruntwork.io/docs/getting-started/quick-start/#add-terragrunthcl-to-your-project){target=_blank}
 
@@ -81,11 +81,11 @@ This linter is available in the following flavors
 ### Example calls
 
 ```shell
-terragrunt hclfmt --terragrunt-check --terragrunt-hclfmt-file myfile.hcl
+terragrunt hcl fmt --check --file myfile.hcl
 ```
 
 ```shell
-terragrunt hclfmt --terragrunt-check --terragrunt-config terragrunt.hcl --terragrunt-hclfmt-file myfile.hcl
+terragrunt hcl fmt --check --config terragrunt.hcl --file myfile.hcl
 ```
 
 
@@ -147,7 +147,7 @@ Global Options:
    --help, -h                 Show help. (default: false)
    --version, -v              Show terragrunt version. (default: false)
 
-Version: v0.82.3
+Version: v0.87.0
 
 Author: Gruntwork <www.gruntwork.io>
 ```
@@ -157,7 +157,7 @@ Author: Gruntwork <www.gruntwork.io>
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=docker depName=alpine/terragrunt
-ARG TERRAFORM_TERRAGRUNT_VERSION=1.12.2
+ARG TERRAFORM_TERRAGRUNT_VERSION=1.13.1
 FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} AS terragrunt
 COPY --link --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
 ```
