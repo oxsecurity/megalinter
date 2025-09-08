@@ -19,7 +19,7 @@
       
       
       <link rel="icon" href="../../assets/images/mega-linter-square.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.18">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.19">
     
     
       
@@ -10144,7 +10144,7 @@
 </ul>
 <h2 id="swiftlint-documentation">swiftlint documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>0.59.1</strong></li>
+<li>Version in MegaLinter: <strong>0.61.0</strong></li>
 <li>Visit <a href="https://github.com/realm/SwiftLint#readme" target="_blank">Official Web Site</a></li>
 <li>Docker image: <a href="https://hub.docker.com/r/ghcr.io/realm/swiftlint" target="_blank">ghcr.io/realm/swiftlint:SWIFT_SWIFTLINT_VERSION</a><ul>
 <li>arguments: <code>-v {{WORKSPACE}}:/tmp/lint:rw -w /tmp/lint</code></li>
@@ -10326,34 +10326,73 @@
 <pre><code class="language-shell">docker run -v /tmp/lint:/tmp/lint:rw ghcr.io/realm/swiftlint:latest swiftlint --fix --strict
 </code></pre>
 <h3 id="help-content">Help content</h3>
-<pre><code class="language-shell">OVERVIEW: A tool to enforce Swift style and conventions.
+<pre><code class="language-shell">OVERVIEW: Print lint warnings and errors
 
-USAGE: swiftlint &lt;subcommand&gt;
+USAGE: swiftlint lint [&lt;options&gt;] [&lt;paths&gt; ...]
+
+ARGUMENTS:
+  &lt;paths&gt;                 List of paths to the files or directories to lint.
 
 OPTIONS:
+  --config &lt;config&gt;       The path to one or more SwiftLint configuration
+                          files, evaluated as a parent-child hierarchy.
+  --fix, --autocorrect    Correct violations whenever possible.
+  --format                Should reformat the Swift files using the same
+                          mechanism used by Xcode (via SourceKit).
+                          Only applied with `--fix`/`--autocorrect`.
+  --use-alternative-excluding
+                          Use an alternative algorithm to exclude paths for
+                          `excluded`, which may be faster in some cases.
+  --use-script-input-files
+                          Read SCRIPT_INPUT_FILE* environment variables as
+                          files.
+  --use-script-input-file-lists
+                          Read SCRIPT_INPUT_FILE_LIST* environment variables as
+                          file lists.
+  --strict                Upgrades warnings to serious violations (errors).
+  --lenient               Downgrades serious violations to warnings, warning
+                          threshold is disabled.
+  --force-exclude         Exclude files in config `excluded` even if their
+                          paths are explicitly specified.
+  --benchmark             Save benchmarks to `benchmark_files.txt` and
+                          `benchmark_rules.txt`.
+  --reporter &lt;reporter&gt;   The reporter used to log errors and warnings.
+  --baseline &lt;baseline&gt;   The path to a baseline file, which will be used to
+                          filter out detected violations.
+  --write-baseline &lt;write-baseline&gt;
+                          The path to save detected violations to as a new
+                          baseline.
+  --working-directory &lt;working-directory&gt;
+                          The working directory to use when running SwiftLint.
+  --output &lt;output&gt;       The file where violations should be saved. Prints to
+                          stdout by default.
+  --progress              Show a live-updating progress bar instead of each
+                          file being processed.
+  --check-for-updates     Check whether a later version of SwiftLint is
+                          available after processing all files.
+  --only-rule &lt;only-rule&gt; Run only the specified rule, ignoring `only_rules`,
+                          `opt_in_rules` and `disabled_rules`.
+                          Can be specified repeatedly to run multiple rules.
+  --use-stdin             Lint standard input.
+  --quiet                 Don't print status logs like 'Linting &lt;file&gt;' &amp; 'Done
+                          linting'.
+  --silence-deprecation-warnings
+                          Don't print deprecation warnings.
+  --cache-path &lt;cache-path&gt;
+                          The directory of the cache used when linting.
+  --no-cache              Ignore cache when linting.
+  --enable-all-rules      Run all rules, even opt-in and disabled ones,
+                          ignoring `only_rules`.
   --version               Show the version.
   -h, --help              Show help information.
 
-SUBCOMMANDS:
-  analyze                 Run analysis rules
-  docs                    Open SwiftLint documentation website in the default
-                          web browser
-  generate-docs           Generates markdown documentation for selected group
-                          of rules
-  lint (default)          Print lint warnings and errors
-  baseline                Operations on existing baselines
-  reporters               Display the list of reporters and their identifiers
-  rules                   Display the list of rules and their identifiers
-  version                 Display the current version of SwiftLint
-
-  See 'swiftlint help &lt;subcommand&gt;' for detailed help.
 </code></pre>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
 <ul>
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile"># renovate: datasource=docker depName=ghcr.io/realm/swiftlint
-ENV SWIFT_SWIFTLINT_VERSION=0.59.1
+ENV SWIFT_SWIFTLINT_VERSION=0.61.0
 </code></pre>
 
 

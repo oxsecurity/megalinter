@@ -19,7 +19,7 @@
       
       
       <link rel="icon" href="../../assets/images/mega-linter-square.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.18">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.19">
     
     
       
@@ -10127,7 +10127,7 @@
 </ul>
 <h2 id="terragrunt-documentation">terragrunt documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>0.82.3</strong></li>
+<li>Version in MegaLinter: <strong>0.87.0</strong></li>
 <li>Visit <a href="https://terragrunt.gruntwork.io" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://terragrunt.gruntwork.io/docs/getting-started/quick-start/#add-terragrunthcl-to-your-project" target="_blank">How to configure terragrunt rules</a></li>
 </ul>
@@ -10282,9 +10282,9 @@
 <li>terragrunt is called one time by identified file (<code>file</code> CLI lint mode)</li>
 </ul>
 <h3 id="example-calls">Example calls</h3>
-<pre><code class="language-shell">terragrunt hclfmt --terragrunt-check --terragrunt-hclfmt-file myfile.hcl
+<pre><code class="language-shell">terragrunt hcl fmt --check --file myfile.hcl
 </code></pre>
-<pre><code class="language-shell">terragrunt hclfmt --terragrunt-check --terragrunt-config terragrunt.hcl --terragrunt-hclfmt-file myfile.hcl
+<pre><code class="language-shell">terragrunt hcl fmt --check --config terragrunt.hcl --file myfile.hcl
 </code></pre>
 <h3 id="help-content">Help content</h3>
 <pre><code class="language-shell">Usage: terragrunt [global options] &lt;command&gt; [options]
@@ -10342,7 +10342,7 @@ Global Options:
    --help, -h                 Show help. (default: false)
    --version, -v              Show terragrunt version. (default: false)
 
-Version: v0.82.3
+Version: v0.87.0
 
 Author: Gruntwork &lt;www.gruntwork.io&gt;
 </code></pre>
@@ -10351,7 +10351,7 @@ Author: Gruntwork &lt;www.gruntwork.io&gt;
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile"># renovate: datasource=docker depName=alpine/terragrunt
-ARG TERRAFORM_TERRAGRUNT_VERSION=1.12.2
+ARG TERRAFORM_TERRAGRUNT_VERSION=1.13.1
 FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} AS terragrunt
 COPY --link --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
 </code></pre>

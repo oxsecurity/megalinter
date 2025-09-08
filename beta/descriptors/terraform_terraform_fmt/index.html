@@ -19,7 +19,7 @@
       
       
       <link rel="icon" href="../../assets/images/mega-linter-square.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.18">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.19">
     
     
       
@@ -10147,7 +10147,7 @@
 </ul>
 <h2 id="terraform-fmt-documentation">terraform-fmt documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>1.12.2</strong></li>
+<li>Version in MegaLinter: <strong>1.13.1</strong></li>
 <li>Visit <a href="https://developer.hashicorp.com/terraform/cli/commands/fmt" target="_blank">Official Web Site</a></li>
 </ul>
 <p><a href="https://github.com/hashicorp/terraform" target="_blank"><img alt="terraform - GitHub" src="https://gh-card.dev/repos/hashicorp/terraform.svg?fullname="></a></p>
@@ -10353,6 +10353,7 @@ All other commands:
   providers     Show the providers required for this configuration
   refresh       Update the state to match remote systems
   show          Show the current state or a saved plan
+  stacks        Manage HCP Terraform stack operations
   state         Advanced state management
   taint         Mark a resource instance as not fully functional
   test          Execute integration tests for Terraform modules
@@ -10363,7 +10364,7 @@ All other commands:
 Global options (use these before the subcommand, if any):
   -chdir=DIR    Switch to a different working directory before executing the
                 given subcommand.
-  -help         Show this help output, or the help for a specified subcommand.
+  -help         Show this help output or the help for a specified subcommand.
   -version      An alias for the "version" subcommand.
 </code></pre>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
@@ -10371,7 +10372,7 @@ Global options (use these before the subcommand, if any):
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile"># renovate: datasource=docker depName=alpine/terragrunt
-ARG TERRAFORM_TERRAGRUNT_VERSION=1.12.2
+ARG TERRAFORM_TERRAGRUNT_VERSION=1.13.1
 FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} AS terragrunt
 COPY --link --from=terragrunt /bin/terraform /usr/bin/
 </code></pre>
