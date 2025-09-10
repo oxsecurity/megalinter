@@ -268,6 +268,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.12.2 to **1.13.1** on 2025-09-07
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.82.3 to **0.87.0** on 2025-09-07
   - [snakemake](https://snakemake.github.io/) from 3.13 to **9.11.1** on 2025-09-08
+  - [secretlint](https://github.com/secretlint/secretlint) from 11.2.3 to **11.2.4** on 2025-09-09
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15
