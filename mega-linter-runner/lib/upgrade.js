@@ -505,7 +505,7 @@ jobs:
       // Upload artifact action
       {
         regex: /actions\/upload-artifact@v(1|2|3)/gm,
-        replacement: "actions/upload-artifact@v3",
+        replacement: "actions/upload-artifact@v4",
         test: "uses: actions/upload-artifact@v3",
         testRes: "uses: actions/upload-artifact@v4",
       },
