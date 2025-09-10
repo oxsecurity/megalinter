@@ -287,7 +287,7 @@ ARG PIP_MYPY_VERSION=1.17.1
 # renovate: datasource=npm depName=pyright
 ARG NPM_PYRIGHT_VERSION=1.1.405
 # renovate: datasource=pypi depName=ruff
-ARG PIP_RUFF_VERSION=0.12.12
+ARG PIP_RUFF_VERSION=0.13.0
 # renovate: datasource=github-tags depName=nxadm/rakudo-pkg
 ARG RAKU_RAKU_VERSION=2024.12
 ARG RAKU_RAKU_ALPINE_VERSION=3.20
