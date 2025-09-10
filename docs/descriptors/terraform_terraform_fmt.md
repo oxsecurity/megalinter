@@ -30,7 +30,7 @@ description: How to use terraform-fmt (configure, ignore files, ignore errors, h
 
 ## terraform-fmt documentation
 
-- Version in MegaLinter: **1.12.2**
+- Version in MegaLinter: **1.13.1**
 - Visit [Official Web Site](https://developer.hashicorp.com/terraform/cli/commands/fmt){target=_blank}
 
 [![terraform - GitHub](https://gh-card.dev/repos/hashicorp/terraform.svg?fullname=)](https://github.com/hashicorp/terraform){target=_blank}
@@ -129,6 +129,7 @@ All other commands:
   providers     Show the providers required for this configuration
   refresh       Update the state to match remote systems
   show          Show the current state or a saved plan
+  stacks        Manage HCP Terraform stack operations
   state         Advanced state management
   taint         Mark a resource instance as not fully functional
   test          Execute integration tests for Terraform modules
@@ -139,7 +140,7 @@ All other commands:
 Global options (use these before the subcommand, if any):
   -chdir=DIR    Switch to a different working directory before executing the
                 given subcommand.
-  -help         Show this help output, or the help for a specified subcommand.
+  -help         Show this help output or the help for a specified subcommand.
   -version      An alias for the "version" subcommand.
 ```
 
@@ -148,7 +149,7 @@ Global options (use these before the subcommand, if any):
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=docker depName=alpine/terragrunt
-ARG TERRAFORM_TERRAGRUNT_VERSION=1.12.2
+ARG TERRAFORM_TERRAGRUNT_VERSION=1.13.1
 FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} AS terragrunt
 COPY --link --from=terragrunt /bin/terraform /usr/bin/
 ```
