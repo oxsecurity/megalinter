@@ -77,7 +77,7 @@ dependencies = [
   "mike",
   "mkdocs-material",
   "pymdown-extensions",
-  "mkdocs-glightbox==0.3.2",
+  "mkdocs-glightbox==0.5.1",
   "mdx_truly_sane_lists",
   "jsonschema",
   "json-schema-for-humans",

@@ -24,7 +24,7 @@
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.8.0 AS uv
+FROM ghcr.io/astral-sh/uv:0.8.17 AS uv
 FROM python:3.13-alpine3.21 AS build-ml-core
 WORKDIR /
 COPY --from=uv /uv /uvx /bin/
@@ -49,11 +49,11 @@ FROM python:3.13-alpine3.21
 #############################################################################################
 #ARG__START
 # renovate: datasource=npm depName=secretlint
-ARG NPM_SECRETLINT_VERSION=10.2.2
+ARG NPM_SECRETLINT_VERSION=11.2.4
 # renovate: datasource=npm depName=@secretlint/secretlint-rule-preset-recommend
-ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=10.2.2
+ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=11.2.4
 # renovate: datasource=npm depName=@secretlint/secretlint-formatter-sarif
-ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=10.2.2
+ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=11.2.4
 #ARG__END
 
 ####################

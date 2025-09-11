@@ -55,7 +55,7 @@ Golangci-lint is the industry standard for Go code quality and is used by thousa
 
 ## golangci-lint documentation
 
-- Version in MegaLinter: **2.3.1**
+- Version in MegaLinter: **2.4.0**
 - Visit [Official Web Site](https://golangci-lint.run/){target=_blank}
 - See [How to configure golangci-lint rules](https://golangci-lint.run/usage/configuration/#config-file){target=_blank}
   - If custom `.golangci.yml` config file isn't found, [.golangci.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.golangci.yml){target=_blank} will be used
@@ -146,17 +146,17 @@ Usage:
   golangci-lint [command]
 
 Available Commands:
-  cache       Cache control and information
+  cache       Cache control and information.
   completion  Generate the autocompletion script for the specified shell
-  config      Config file information
-  custom      Build a version of golangci-lint with custom linters
-  fmt         Format Go source files
-  formatters  List current formatters configuration
-  help        Help
-  linters     List current linters configuration
-  migrate     Migrate configuration file from v1 to v2
-  run         Run the linters
-  version     Version
+  config      Configuration file information and verification.
+  custom      Build a version of golangci-lint with custom linters.
+  fmt         Format Go source files.
+  formatters  List current formatters configuration.
+  help        Display extra help
+  linters     List current linters configuration.
+  migrate     Migrate configuration file from v1 to v2.
+  run         Lint the code.
+  version     Display the golangci-lint version.
 
 Flags:
       --color string   Use color when printing; can be 'always', 'auto', or 'never' (default "auto")
@@ -172,7 +172,7 @@ Use "golangci-lint [command] --help" for more information about a command.
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=github-tags depName=golangci/golangci-lint
-ARG GO_GOLANGCI_LINT_VERSION=2.3.1
+ARG GO_GOLANGCI_LINT_VERSION=2.4.0
 RUN wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s "v${GO_GOLANGCI_LINT_VERSION}" \
     && golangci-lint --version
 

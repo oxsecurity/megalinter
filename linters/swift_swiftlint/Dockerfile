@@ -24,7 +24,7 @@
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.8.0 AS uv
+FROM ghcr.io/astral-sh/uv:0.8.17 AS uv
 FROM python:3.13-alpine3.21 AS build-ml-core
 WORKDIR /
 COPY --from=uv /uv /uvx /bin/
@@ -152,7 +152,7 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 RUN rc-update add docker boot && (rc-service docker start || true)
 # swiftlint installation
 # renovate: datasource=docker depName=ghcr.io/realm/swiftlint
-ENV SWIFT_SWIFTLINT_VERSION=0.59.1
+ENV SWIFT_SWIFTLINT_VERSION=0.61.0
 #
 #OTHER__END
 

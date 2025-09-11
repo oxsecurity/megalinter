@@ -12,7 +12,7 @@
 #############################################################################################
 #ARGTOP__START
 # renovate: datasource=docker depName=yoheimuta/protolint
-ARG PROTOBUF_PROTOLINT_VERSION=0.55.6
+ARG PROTOBUF_PROTOLINT_VERSION=0.56.4
 #ARGTOP__END
 
 #############################################################################################
@@ -25,7 +25,7 @@ FROM yoheimuta/protolint:${PROTOBUF_PROTOLINT_VERSION} AS protolint
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.8.0 AS uv
+FROM ghcr.io/astral-sh/uv:0.8.17 AS uv
 FROM python:3.13-alpine3.21 AS build-ml-core
 WORKDIR /
 COPY --from=uv /uv /uvx /bin/

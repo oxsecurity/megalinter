@@ -36,6 +36,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [hadolint](https://megalinter.io/latest/descriptors/docker_hadolint/): Extend DOCKERFILE_HADOLINT_FILE_NAMES_REGEX to include the `purpose.Dockerfile` convention eg service.Dockerfile.
 
 - Fixes
+  - When linter is docker based, force `--platform=linux/amd64` so it works when running locally on Mac
 
 - Reporters
   - New default display for Pull Request comments, with expandable sections containing the first 1000 lines of the output log. Former display remains available by defining `REPORTERS_MARKDOWN_SUMMARY_TYPE=table`
@@ -61,7 +62,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - mega-linter-runner
   - Add all CI/CD providers in the --install command
   - Use ghcr.io docker images by default
-  - New parameter **--container-engine** allowing to use **podman** as runner.
+  - New parameter **--container-engine** allowing to use **podman** as runner
+  - mega-linter-runner --upgrade: Handle upgrade of github actions to their latest version
 
 - Linter versions upgrades (N)
   - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.16.0 to **1.16.1** on 2025-06-16
@@ -213,6 +215,69 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [grype](https://github.com/anchore/grype) from 0.97.1 to **0.97.2** on 2025-08-11
   - [syft](https://github.com/anchore/syft) from 1.29.1 to **1.30.0** on 2025-08-11
   - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.88 to **0.1.89** on 2025-08-11
+  - [stylelint](https://stylelint.io) from 16.23.0 to **16.23.1** on 2025-08-12
+  - [psalm](https://psalm.dev) from Psalm.6.13.0@ to **Psalm.6.13.1@** on 2025-08-12
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.12.7 to **0.12.8** on 2025-08-12
+  - [ruff](https://github.com/astral-sh/ruff) from 0.12.7 to **0.12.8** on 2025-08-12
+  - [kics](https://www.kics.io) from 2.1.12 to **2.1.13** on 2025-08-12
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.38.2 to **1.38.3** on 2025-08-13
+  - [pylint](https://pylint.readthedocs.io) from 3.3.7 to **3.3.8** on 2025-08-13
+  - [editorconfig-checker](https://editorconfig-checker.github.io/) from 3.3.0 to **3.4.0** on 2025-08-13
+  - [grype](https://github.com/anchore/grype) from 0.97.2 to **0.98.0** on 2025-08-13
+  - [syft](https://github.com/anchore/syft) from 1.30.0 to **1.31.0** on 2025-08-13
+  - [csharpier](https://csharpier.com/) from 1.1.1 to **1.1.2** on 2025-08-18
+  - [kubescape](https://github.com/kubescape/kubescape) from 3.0.37 to **3.0.38** on 2025-08-18
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.12.8 to **0.12.9** on 2025-08-20
+  - [ruff](https://github.com/astral-sh/ruff) from 0.12.8 to **0.12.9** on 2025-08-20
+  - [golangci-lint](https://golangci-lint.run/) from 2.3.1 to **2.4.0** on 2025-08-24
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.55.6 to **0.55.7** on 2025-08-24
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.403 to **1.1.404** on 2025-08-24
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.12.9 to **0.12.10** on 2025-08-24
+  - [ruff](https://github.com/astral-sh/ruff) from 0.12.9 to **0.12.10** on 2025-08-24
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.90.3 to **3.90.5** on 2025-08-24
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 25.7.0 to **25.8.2** on 2025-08-24
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.38.3 to **1.39.0** on 2025-08-24
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.85.1 to **3.86.0** on 2025-08-24
+  - [rubocop](https://rubocop.org/) from 1.79.2 to **1.80.0** on 2025-08-24
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.55.7 to **0.56.4** on 2025-08-25
+  - [grype](https://github.com/anchore/grype) from 0.98.0 to **0.99.0** on 2025-08-28
+  - [secretlint](https://github.com/secretlint/secretlint) from 10.2.2 to **11.2.0** on 2025-08-28
+  - [syft](https://github.com/anchore/syft) from 1.31.0 to **1.32.0** on 2025-08-28
+  - [hadolint](https://github.com/hadolint/hadolint) from 2.12.0 to **2.13.1** on 2025-09-03
+  - [checkstyle](https://checkstyle.org/) from 11.0.0 to **11.0.1** on 2025-09-03
+  - [grype](https://github.com/anchore/grype) from 0.99.0 to **0.99.1** on 2025-09-03
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.65.0 to **0.66.0** on 2025-09-03
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.65.0 to **0.66.0** on 2025-09-03
+  - [vale](https://vale.sh/) from 3.11.2 to **3.12.0** on 2025-09-03
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.39.0 to **1.39.1** on 2025-09-04
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 9.2.0 to **9.2.1** on 2025-09-04
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.404 to **1.1.405** on 2025-09-04
+  - [kubescape](https://github.com/kubescape/kubescape) from 3.0.38 to **3.0.40** on 2025-09-05
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.12.10 to **0.12.12** on 2025-09-05
+  - [ruff](https://github.com/astral-sh/ruff) from 0.12.10 to **0.12.12** on 2025-09-05
+  - [rubocop](https://rubocop.org/) from 1.80.0 to **1.80.2** on 2025-09-05
+  - [snakefmt](https://github.com/snakemake/snakefmt) from 0.11.0 to **0.11.2** on 2025-09-05
+  - [revive](https://revive.run/) from 1.11.0 to **1.12.0** on 2025-09-05
+  - [phpcs](https://github.com/PHPCSStandards/PHP_CodeSniffer) from 3.13.2 to **3.13.4** on 2025-09-05
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.90.5 to **3.90.6** on 2025-09-05
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.86.0 to **3.87.1** on 2025-09-06
+  - [secretlint](https://github.com/secretlint/secretlint) from 11.2.0 to **11.2.3** on 2025-09-07
+  - [snakemake](https://snakemake.github.io/) from 9.9.0 to **3.13** on 2025-09-07
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.58.1 to **0.59.1** on 2025-09-07
+  - [stylelint](https://stylelint.io) from 16.23.1 to **16.24.0** on 2025-09-07
+  - [swiftlint](https://github.com/realm/SwiftLint) from 0.59.1 to **0.61.0** on 2025-09-07
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.12.2 to **1.13.1** on 2025-09-07
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.82.3 to **0.87.0** on 2025-09-07
+  - [snakemake](https://snakemake.github.io/) from 3.13 to **9.11.1** on 2025-09-08
+  - [secretlint](https://github.com/secretlint/secretlint) from 11.2.3 to **11.2.4** on 2025-09-09
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.87.1 to **3.87.2** on 2025-09-10
+  - [phpstan](https://phpstan.org/) from 2.1.22 to **2.1.23** on 2025-09-10
+  - [powershell_formatter](https://github.com/PowerShell/PSScriptAnalyzer) from 7.5.2 to **7.5.3** on 2025-09-10
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.5.2 to **7.5.3** on 2025-09-10
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.12.12 to **0.13.0** on 2025-09-10
+  - [ruff](https://github.com/astral-sh/ruff) from 0.12.12 to **0.13.0** on 2025-09-10
+  - [snakemake](https://snakemake.github.io/) from 9.11.1 to **9.11.2** on 2025-09-10
+  - [htmlhint](https://htmlhint.com/) from 1.6.3 to **1.7.0** on 2025-09-11
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15

@@ -224,9 +224,9 @@ ARG NPM_ESLINT_PLUGIN_PROMISE_VERSION=6.6.0
 # renovate: datasource=npm depName=eslint-plugin-vue
 ARG NPM_ESLINT_PLUGIN_VUE_VERSION=10.4.0
 # renovate: datasource=npm depName=@babel/core
-ARG NPM_BABEL_CORE_VERSION=7.28.0
+ARG NPM_BABEL_CORE_VERSION=7.28.4
 # renovate: datasource=npm depName=@babel/eslint-parser
-ARG NPM_BABEL_ESLINT_PARSER_VERSION=7.28.0
+ARG NPM_BABEL_ESLINT_PARSER_VERSION=7.28.4
 # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
 ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
 ```
@@ -242,6 +242,6 @@ ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
   - [eslint-plugin-prettier@5.5.4](https://www.npmjs.com/package/eslint-plugin-prettier/v/5.5.4)
   - [eslint-plugin-promise@6.6.0](https://www.npmjs.com/package/eslint-plugin-promise/v/6.6.0)
   - [eslint-plugin-vue@10.4.0](https://www.npmjs.com/package/eslint-plugin-vue/v/10.4.0)
-  - [@babel/core@7.28.0](https://www.npmjs.com/package/@babel/core/v/7.28.0)
-  - [@babel/eslint-parser@7.28.0](https://www.npmjs.com/package/@babel/eslint-parser/v/7.28.0)
+  - [@babel/core@7.28.4](https://www.npmjs.com/package/@babel/core/v/7.28.4)
+  - [@babel/eslint-parser@7.28.4](https://www.npmjs.com/package/@babel/eslint-parser/v/7.28.4)
   - [@microsoft/eslint-formatter-sarif@3.1.0](https://www.npmjs.com/package/@microsoft/eslint-formatter-sarif/v/3.1.0)

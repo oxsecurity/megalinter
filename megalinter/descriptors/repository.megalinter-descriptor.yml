@@ -251,13 +251,33 @@ linters:
 
       ## Scan only Pull Request commits
 
-      `VALIDATE_ALL_CODEBASE: false` doesn't make gitleaks analyze only updated files. To analyze only commits on Pull Request, set `VALIDATE_ALL_CODEBASE: false` together with `REPOSITORY_GITLEAKS_PR_COMMITS_SCAN: true` (you have to specify it explicitly), but only works for selected platforms: GitHub Actions, Azure Pipelines, GitLab Pipelines\* (Merge Requests and External Pull Requests)
+      `VALIDATE_ALL_CODEBASE: false` doesn't make gitleaks analyze only updated files. To analyze only commits on a Pull Request, set `VALIDATE_ALL_CODEBASE: false` together with `REPOSITORY_GITLEAKS_PR_COMMITS_SCAN: true` (you have to specify it explicitly); however, this only works for select platforms:
+      * GitHub Actions
+      * Azure Pipelines
+      * GitLab Pipelines\* (Merge Requests and External Pull Requests)
 
-      - \* Only GitLab self-managed and GitLab SaaS (Premium and Ultimate) are supported (limitation due to GitLab itself) and [Merge result pipelines](https://docs.gitlab.com/ee/ci/pipelines/merged_results_pipelines.html#enable-merged-results-pipelines){target=_blank} feature has to be enabled.
-      - If MegaLinter with the gitleaks runs on PR on the not listed platform above, then the analysis is performed on the whole repository - default gitleaks behavior (checked-out commits, depends on fetch-depth configuration).
-        - You can still scan only PR commits in your CI/CD platform by setting MegaLinter envs: `PULL_REQUEST=true`\*, `REPOSITORY_GITLEAKS_PR_COMMITS_SCAN: true`, `REPOSITORY_GITLEAKS_PR_SOURCE_SHA` with last commit sha from your PR and `REPOSITORY_GITLEAKS_PR_TARGET_SHA` commit sha from your target branch (for example, `main` if you do PR to main branch). Example on how to get source commit sha `git rev-list -n 1 refs/remotes/origin/<source_branch>` and target commit sha `git rev-parse refs/remotes/origin/<target_branch>`
-          - \* `PULL_REQUEST` environment variable must be set to `true` only on Pull Requests, so you must calculate the value in your pipeline and pass the outcome.
-      - PR commits scan feature, if applicable, will override your `--log-opts` argument if you used it in the `REPOSITORY_GITLEAKS_ARGUMENTS`.
+      **Note:** Only GitLab self-managed and GitLab SaaS (Premium and Ultimate) are supported (this is a GitLab-specific limitation). Additionally, the [Merge result pipelines](https://docs.gitlab.com/ee/ci/pipelines/merged_results_pipelines.html#enable-merged-results-pipelines){target=_blank} feature has to be enabled.
+
+      If MegaLinter with gitleaks runs against a PR on a platform not listed above, analysis is performed on the whole repository (this is the default gitleaks behavior; the commits scanned depend on the fetch-depth configuration).
+
+      You can still choose to scan only PR commits in your CI/CD platform by setting the following MegaLinter environment variables:
+        - `PULL_REQUEST=true`\*
+        - `REPOSITORY_GITLEAKS_PR_COMMITS_SCAN: true`
+        - `REPOSITORY_GITLEAKS_PR_SOURCE_SHA` with last commit sha from your PR and `REPOSITORY_GITLEAKS_PR_TARGET_SHA` commit sha from your target branch (for example, `main` if you do PR to main branch)
+
+          Example commands:
+            - Source commit SHA:
+              ```bash
+              git rev-list -n 1 refs/remotes/origin/<source_branch>
+              ```
+
+            - Target commit SHA:
+              ```bash
+              git rev-parse refs/remotes/origin/<target_branch>
+              ```
+      \* `PULL_REQUEST` environment variable must be set to `true` only on Pull Requests, so you must calculate the value in your pipeline and pass the outcome.
+
+      The PR commits scan feature, if applicable, will override your `--log-opts` argument if you used it in the `REPOSITORY_GITLEAKS_ARGUMENTS`.
 
       ### Azure Pipelines environment variables on Pull Requests
 
@@ -278,7 +298,7 @@ linters:
       #### GitHub Actions
 
       ```yml
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0
       ```
@@ -393,7 +413,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=github-tags depName=anchore/grype
-          ARG REPOSITORY_GRYPE_VERSION=0.97.1
+          ARG REPOSITORY_GRYPE_VERSION=0.99.1
         - RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/refs/tags/v${REPOSITORY_GRYPE_VERSION}/install.sh | sh -s -- -b /usr/local/bin
     test_folder: repository_grype
 
@@ -549,13 +569,13 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=secretlint
-          ARG NPM_SECRETLINT_VERSION=10.2.2
+          ARG NPM_SECRETLINT_VERSION=11.2.4
         - |-
           # renovate: datasource=npm depName=@secretlint/secretlint-rule-preset-recommend
-          ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=10.2.2
+          ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=11.2.4
         - |-
           # renovate: datasource=npm depName=@secretlint/secretlint-formatter-sarif
-          ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=10.2.2
+          ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=11.2.4
       npm:
         - secretlint@${NPM_SECRETLINT_VERSION}
         - "@secretlint/secretlint-rule-preset-recommend@${NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION}"
@@ -679,7 +699,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=github-tags depName=anchore/syft
-          ARG REPOSITORY_SYFT_VERSION=1.29.1
+          ARG REPOSITORY_SYFT_VERSION=1.32.0
         - RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/refs/tags/v${REPOSITORY_SYFT_VERSION}/install.sh | sh -s -- -b /usr/local/bin
 
   # TRIVY
@@ -737,7 +757,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=github-tags depName=aquasecurity/trivy
-          ARG REPOSITORY_TRIVY_VERSION=0.65.0
+          ARG REPOSITORY_TRIVY_VERSION=0.66.0
         - |
           RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin "v${REPOSITORY_TRIVY_VERSION}" \
               && (trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress)
@@ -798,7 +818,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=github-tags depName=aquasecurity/trivy
-          ARG REPOSITORY_TRIVY_SBOM_VERSION=0.65.0
+          ARG REPOSITORY_TRIVY_SBOM_VERSION=0.66.0
         - |
           RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin "v${REPOSITORY_TRIVY_SBOM_VERSION}" \
               && (trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress)
@@ -852,7 +872,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=docker depName=trufflesecurity/trufflehog
-          ARG REPOSITORY_TRUFFLEHOG_VERSION=3.90.3
+          ARG REPOSITORY_TRUFFLEHOG_VERSION=3.90.6
         - FROM trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION} AS trufflehog
         - COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
     test_folder: gitleaks
