@@ -41,7 +41,7 @@
     "grype": "0.99.1",
     "hadolint": "2.13.1",
     "helm": "3.16.3",
-    "htmlhint": "1.6.3",
+    "htmlhint": "1.7.0",
     "isort": "6.0.1",
     "jscpd": "4.0.5",
     "jsonlint": "16.0.0",
