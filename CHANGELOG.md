@@ -277,6 +277,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [ruff-format](https://github.com/astral-sh/ruff) from 0.12.12 to **0.13.0** on 2025-09-10
   - [ruff](https://github.com/astral-sh/ruff) from 0.12.12 to **0.13.0** on 2025-09-10
   - [snakemake](https://snakemake.github.io/) from 9.11.1 to **9.11.2** on 2025-09-10
+  - [htmlhint](https://htmlhint.com/) from 1.6.3 to **1.7.0** on 2025-09-11
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15
