@@ -291,7 +291,7 @@ ARG RAKU_RAKU_VERSION=2024.12
 ARG RAKU_RAKU_ALPINE_VERSION=3.20
 
 # renovate: datasource=nuget depName=Microsoft.CST.DevSkim.CLI
-ARG REPOSITORY_DEVSKIM_VERSION=1.0.63
+ARG REPOSITORY_DEVSKIM_VERSION=1.0.67
 # renovate: datasource=github-tags depName=anchore/grype
 ARG REPOSITORY_GRYPE_VERSION=0.99.1
 # renovate: datasource=npm depName=@ls-lint/ls-lint
