@@ -20,6 +20,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Use ghcr.io docker images by default because of rate limits on docker.io
   - Use uv to create the venv folder for pip-installed linters
   - Add copilot instructions for GitHub Copilot
+  - Update base image to python:3.13-alpine3.21 (also embeds go 1.24)
 
 - New linters
 
