@@ -213,7 +213,7 @@ RUN apk -U --no-cache upgrade \
                 openjdk21 \
                 py3-pyflakes \
                 cppcheck \
-                clang19-extra-tools \
+                clang20-extra-tools \
                 openjdk17 \
                 helm \
                 gcompat \
