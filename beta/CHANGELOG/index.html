@@ -12563,6 +12563,7 @@
 <li>Use ghcr.io docker images by default because of rate limits on docker.io</li>
 <li>Use uv to create the venv folder for pip-installed linters</li>
 <li>Add copilot instructions for GitHub Copilot</li>
+<li>Update base image to python:3.13-alpine3.21 (also embeds go 1.24)</li>
 </ul>
 </li>
 </ul>
@@ -12570,7 +12571,11 @@
 <li>New linters</li>
 </ul>
 <ul>
-<li>Disabled linters</li>
+<li>Disabled linters<ul>
+<li><a href="https://megalinter.io/beta/descriptors/puppet_puppet_lint/">puppet-lint</a>: Disabled Until fix is provided for <a href="https://github.com/puppetlabs/puppet-lint/issues/251">https://github.com/puppetlabs/puppet-lint/issues/251</a></li>
+<li><a href="https://megalinter.io/beta/descriptors/repository_checkov/">checkov</a>: Disabled until fix is provided for <a href="https://github.com/bridgecrewio/checkov/issues/7263">https://github.com/bridgecrewio/checkov/issues/7263</a></li>
+</ul>
+</li>
 </ul>
 <ul>
 <li>Removed linters<ul>
