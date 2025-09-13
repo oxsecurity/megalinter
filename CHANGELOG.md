@@ -26,6 +26,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Disabled linters
   - [puppet-lint](https://megalinter.io/beta/descriptors/puppet_puppet_lint/): Disabled Until fix is provided for <https://github.com/puppetlabs/puppet-lint/issues/251>
+  - [checkov](https://megalinter.io/beta/descriptors/repository_checkov/): Disabled until fix is provided for https://github.com/bridgecrewio/checkov/issues/7263
 
 - Removed linters
   - **markdown-link-check** has been removed because [**lychee**](https://megalinter.io/latest/descriptors/spell_lychee/) can be used instead, and has much better performances
