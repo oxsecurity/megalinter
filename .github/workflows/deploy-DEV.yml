@@ -175,7 +175,7 @@ jobs:
           fi
           docker image ls
           docker run $CI_ENV -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=text -e OUTPUT_FOLDER=${{ github.sha }} -e OUTPUT_DETAIL=detailed -e GITHUB_SHA=${{ github.sha }} -e GITHUB_REPOSITORY=${GITHUB_REPOSITORY} -e GITHUB_BRANCH=${GITHUB_BRANCH} -e GITHUB_TOKEN="${{ secrets.GITHUB_TOKEN }}" -e TEST_KEYWORDS="${TEST_KEYWORDS_TO_USE}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint ${{ fromJson(steps.meta.outputs.json).tags[0]}}
-        timeout-minutes: 90
+        timeout-minutes: 120
         env:
           COMMIT_MSG: ${{ github.event.head_commit.message }}
 
