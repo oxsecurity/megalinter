@@ -266,8 +266,6 @@ ARG PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION=v3.87.2
 # renovate: datasource=nuget depName=PSScriptAnalyzer registryUrl=https://www.powershellgallery.com/api/v2/
 ARG PSSA_VERSION='1.24.0'
 
-# renovate: datasource=rubygems depName=puppet-lint
-ARG GEM_PUPPET_LINT_VERSION=4.3.0
 # renovate: datasource=pypi depName=pylint
 ARG PIP_PYLINT_VERSION=3.3.8
 # renovate: datasource=pypi depName=typing-extensions
@@ -605,7 +603,6 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #GEM__START
 RUN echo 'gem: --no-document' >> ~/.gemrc && \
     gem install \
-          puppet-lint:${GEM_PUPPET_LINT_VERSION} \
           rubocop:${GEM_RUBOCOP_VERSION} \
           rubocop-github:${GEM_RUBOCOP_GITHUB_VERSION} \
           rubocop-performance:${GEM_RUBOCOP_PERFORMANCE_VERSION} \
@@ -1014,8 +1011,6 @@ RUN pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSI
 #
 # protolint installation
 # Managed with COPY --link --from=protolint /usr/local/bin/protolint /usr/bin/
-#
-# puppet-lint installation
 #
 # pylint installation
 #
