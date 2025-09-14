@@ -386,8 +386,8 @@ description: You can use latest release or beta version of MegaLinter, know the 
 
 The following instructions examples are using latest MegaLinter stable version (**v8** , always corresponding to the [latest release](https://github.com/oxsecurity/megalinter/releases))
 
-- Docker image: `oxsecurity/megalinter:v8`
-- GitHub Action: `oxsecurity/megalinter@v8`
+- Docker image: `oxsecurity/megalinter:v9`
+- GitHub Action: `oxsecurity/megalinter@v9`
 
 You can also use **beta** version (corresponding to the content of main branch)
 
@@ -538,7 +538,7 @@ mega-linter:
   stage: test
   # You can override MegaLinter flavor used to have faster performances
   # More info at https://megalinter.io/flavors/
-  image: oxsecurity/megalinter:v8
+  image: oxsecurity/megalinter:v9
   script: [ "true" ] # if script: ["true"] doesn't work, you may try ->  script: [ "/bin/bash /entrypoint.sh" ]
   variables:
     # All available variables are described in documentation
@@ -586,7 +586,7 @@ Add the following to an `azure-pipelines.yaml` file within your code repository:
       - checkout: self
 
       # Pull MegaLinter docker image
-      - script: docker pull oxsecurity/megalinter:v8
+      - script: docker pull oxsecurity/megalinter:v9
         displayName: Pull MegaLinter
 
       # Run MegaLinter
@@ -595,7 +595,7 @@ Add the following to an `azure-pipelines.yaml` file within your code repository:
             --env-file <(env | grep -e SYSTEM_ -e BUILD_ -e TF_ -e AGENT_) \
             -e SYSTEM_ACCESSTOKEN=$(System.AccessToken) \
             -e GIT_AUTHORIZATION_BEARER=$(System.AccessToken) \
-            oxsecurity/megalinter:v8
+            oxsecurity/megalinter:v9
         displayName: Run MegaLinter
 
       # Upload MegaLinter reports
@@ -628,7 +628,7 @@ steps:
     displayName: Checkout Triggering Repository
 
   # Pull MegaLinter docker image
-  - script: docker pull oxsecurity/megalinter:v8
+  - script: docker pull oxsecurity/megalinter:v9
     displayName: Pull MegaLinter
 
   # Run MegaLinter
@@ -637,7 +637,7 @@ steps:
         --env-file <(env | grep -e SYSTEM_ -e BUILD_ -e TF_ -e AGENT_) \
         -e SYSTEM_ACCESSTOKEN=$(System.AccessToken) \
         -e GIT_AUTHORIZATION_BEARER=$(System.AccessToken) \
-        oxsecurity/megalinter:v8
+        oxsecurity/megalinter:v9
     displayName: Run MegaLinter
 
   # Upload MegaLinter reports
@@ -680,7 +680,7 @@ pipelines:
     - parallel:
       - step:
           name: Run MegaLinter
-          image: oxsecurity/megalinter:v8
+          image: oxsecurity/megalinter:v9
           script:
             - export DEFAULT_WORKSPACE=$BITBUCKET_CLONE_DIR && bash /entrypoint.sh
           artifacts:
@@ -706,7 +706,7 @@ You may activate [File.io reporter](https://megalinter.io/reporters/FileIoReport
 stage('MegaLinter') {
     agent {
         docker {
-            image 'oxsecurity/megalinter:v8'
+            image 'oxsecurity/megalinter:v9'
             args "-u root -e VALIDATE_ALL_CODEBASE=true -v ${WORKSPACE}:/tmp/lint --entrypoint=''"
             reuseNode true
         }
@@ -861,7 +861,7 @@ workspace:
 steps:
 
 - name: megalinter
-  image: oxsecurity/megalinter:v8
+  image: oxsecurity/megalinter:v9
   environment:
     DEFAULT_WORKSPACE: /tmp/lint
 ```
@@ -883,7 +883,7 @@ workspace:
 steps:
 
 - name: megalinter
-  image: oxsecurity/megalinter:v8
+  image: oxsecurity/megalinter:v9
   environment:
     DEFAULT_WORKSPACE: /tmp/lint
 
@@ -906,14 +906,14 @@ description: Manual instructions to run MegaLinter as a docker image
 
 You can also run megalinter with its Docker container, just execute this command:
 
-`docker run --rm -v /var/run/docker.sock:/var/run/docker.sock:rw -v $(pwd):/tmp/lint:rw oxsecurity/megalinter:v8`
+`docker run --rm -v /var/run/docker.sock:/var/run/docker.sock:rw -v $(pwd):/tmp/lint:rw oxsecurity/megalinter:v9`
 
 **No extra arguments are needed,** however, megalinter will lint all of the files inside the `/tmp/lint` folder, so it may be needed to configure your tool of choice to use the `/tmp/lint` folder as workspace.
 This can also be changed:
 
 _Example:_
 
-`docker run --rm -v /var/run/docker.sock:/var/run/docker.sock:rw -v $(pwd):/example/folder:rw oxsecurity/megalinter:v8`
+`docker run --rm -v /var/run/docker.sock:/var/run/docker.sock:rw -v $(pwd):/example/folder:rw oxsecurity/megalinter:v9`
 
 <!-- install-docker-section-end -->
 <!-- install-locally-section-start -->
