@@ -10302,7 +10302,7 @@
       -e SYSTEM_PULLREQUEST_SOURCECOMMITID=$(System.PullRequest.SourceCommitId) \
       -e SYSTEM_PULLREQUEST_TARGETBRANCH=$(System.PullRequest.TargetBranch) \
       -e BUILD_REASON=$(Build.Reason) \
-      oxsecurity/megalinter:v8
+      oxsecurity/megalinter:v9
 </code></pre>
 <h3 id="repository-checkout-on-pull-requests">Repository checkout on Pull Requests</h3>
 <p>To scan only PR commits, the <a href="https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---depthltdepthgt" target="_blank">shallow fetch</a> for a repository checkout has to be 0. Below is an example configuration for supported platforms:</p>

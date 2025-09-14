@@ -9907,7 +9907,7 @@ pipelines:
     - parallel:
       - step:
           name: Run MegaLinter
-          image: oxsecurity/megalinter:v8
+          image: oxsecurity/megalinter:v9
           script:
             - export DEFAULT_WORKSPACE=$BITBUCKET_CLONE_DIR &amp;&amp; bash /entrypoint.sh
           artifacts:
