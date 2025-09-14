@@ -26,7 +26,7 @@ Add the following to an `azure-pipelines.yaml` file within your code repository:
       - checkout: self
 
       # Pull MegaLinter docker image
-      - script: docker pull oxsecurity/megalinter:v8
+      - script: docker pull oxsecurity/megalinter:v9
         displayName: Pull MegaLinter
 
       # Run MegaLinter
@@ -35,7 +35,7 @@ Add the following to an `azure-pipelines.yaml` file within your code repository:
             --env-file <(env | grep -e SYSTEM_ -e BUILD_ -e TF_ -e AGENT_) \
             -e SYSTEM_ACCESSTOKEN=$(System.AccessToken) \
             -e GIT_AUTHORIZATION_BEARER=$(System.AccessToken) \
-            oxsecurity/megalinter:v8
+            oxsecurity/megalinter:v9
         displayName: Run MegaLinter
 
       # Upload MegaLinter reports
@@ -68,7 +68,7 @@ steps:
     displayName: Checkout Triggering Repository
 
   # Pull MegaLinter docker image
-  - script: docker pull oxsecurity/megalinter:v8
+  - script: docker pull oxsecurity/megalinter:v9
     displayName: Pull MegaLinter
 
   # Run MegaLinter
@@ -77,7 +77,7 @@ steps:
         --env-file <(env | grep -e SYSTEM_ -e BUILD_ -e TF_ -e AGENT_) \
         -e SYSTEM_ACCESSTOKEN=$(System.AccessToken) \
         -e GIT_AUTHORIZATION_BEARER=$(System.AccessToken) \
-        oxsecurity/megalinter:v8
+        oxsecurity/megalinter:v9
     displayName: Run MegaLinter
 
   # Upload MegaLinter reports

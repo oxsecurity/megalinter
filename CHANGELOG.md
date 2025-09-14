@@ -66,7 +66,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Add all CI/CD providers in the --install command
   - Use ghcr.io docker images by default
   - New parameter **--container-engine** allowing to use **podman** as runner
-  - mega-linter-runner --upgrade: Handle upgrade of github actions to their latest version
+  - `mega-linter-runner --upgrade`: Handle upgrade of github actions to their latest version
+  - `mega-linter-runner --upgrade`: Upgrades MegaLinter actions and images to v9
 
 - Linter versions upgrades (N)
   - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.16.0 to **1.16.1** on 2025-06-16
