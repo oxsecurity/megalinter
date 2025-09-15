@@ -96,7 +96,7 @@ ARG PIP_BANDIT_SARIF_FORMATTER_VERSION=1.1.1
 # renovate: datasource=nuget depName=Microsoft.CST.DevSkim.CLI
 ARG REPOSITORY_DEVSKIM_VERSION=1.0.67
 # renovate: datasource=github-tags depName=anchore/grype
-ARG REPOSITORY_GRYPE_VERSION=0.99.1
+ARG REPOSITORY_GRYPE_VERSION=0.100.0
 # renovate: datasource=npm depName=secretlint
 ARG NPM_SECRETLINT_VERSION=11.2.4
 # renovate: datasource=npm depName=@secretlint/secretlint-rule-preset-recommend
