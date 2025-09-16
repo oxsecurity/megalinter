@@ -39,7 +39,7 @@ ARG NPM_SALESFORCE_CLI_VERSION=2.105.6
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
 ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.20.1
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=6.4.1
+ARG SFDX_HARDIS_VERSION=6.4.3
 ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 RUN sf plugins install @salesforce/plugin-packaging@${NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION} \
@@ -50,7 +50,7 @@ ENV SF_AUTOUPDATE_DISABLE=true SF_CLI_DISABLE_AUTOUPDATE=true
 ```
 
 - APK packages (Linux):
-  - [coreutils](https://pkgs.alpinelinux.org/packages?branch=v3.21&arch=x86_64&name=coreutils)
-  - [openjdk21](https://pkgs.alpinelinux.org/packages?branch=v3.21&arch=x86_64&name=openjdk21)
+  - [coreutils](https://pkgs.alpinelinux.org/packages?branch=v3.22&arch=x86_64&name=coreutils)
+  - [openjdk21](https://pkgs.alpinelinux.org/packages?branch=v3.22&arch=x86_64&name=openjdk21)
 - NPM packages (node.js):
   - [@salesforce/cli@2.105.6](https://www.npmjs.com/package/@salesforce/cli/v/2.105.6)

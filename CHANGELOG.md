@@ -282,6 +282,20 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [ruff](https://github.com/astral-sh/ruff) from 0.12.12 to **0.13.0** on 2025-09-10
   - [snakemake](https://snakemake.github.io/) from 9.11.1 to **9.11.2** on 2025-09-10
   - [htmlhint](https://htmlhint.com/) from 1.6.3 to **1.7.0** on 2025-09-11
+  - [clang-format](https://releases.llvm.org/17.0.1/tools/clang/docs/ClangFormat.html) from 19.1.4 to **20.1.8** on 2025-09-16
+  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 9.0.106 to **9.0.110** on 2025-09-16
+  - [pmd](https://pmd.github.io/) from 7.16.0 to **7.17.0** on 2025-09-16
+  - [helm](https://helm.sh/docs/helm/helm_lint/) from 3.16.3 to **3.18.4** on 2025-09-16
+  - [phpcs](https://github.com/PHPCSStandards/PHP_CodeSniffer) from 3.13.4 to **4.0.0** on 2025-09-16
+  - [phpstan](https://phpstan.org/) from 2.1.23 to **2.1.25** on 2025-09-16
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.17.1 to **1.18.1** on 2025-09-16
+  - [devskim](https://github.com/microsoft/DevSkim) from 1.0.63 to **1.0.67** on 2025-09-16
+  - [git_diff](https://git-scm.com) from 2.47.3 to **2.49.1** on 2025-09-16
+  - [grype](https://github.com/anchore/grype) from 0.99.1 to **0.100.0** on 2025-09-16
+  - [syft](https://github.com/anchore/syft) from 1.32.0 to **1.33.0** on 2025-09-16
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.13.1 to **1.13.2** on 2025-09-16
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.87.0 to **0.87.2** on 2025-09-16
+  - [xmllint](https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home) from 21304 to **21308** on 2025-09-16
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15
