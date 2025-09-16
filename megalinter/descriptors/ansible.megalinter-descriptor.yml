@@ -58,7 +58,7 @@ linters:
       - --format
       - sarif
     cli_lint_errors_count: regex_number
-    cli_lint_errors_regex: ": ([0-9]+) failure\\(s\\), .* warning\\(s\\) on .* files"
+    cli_lint_errors_regex: ": ([0-9]+) failure\\(s\\), .* warning\\(s\\) in .* files processed"
     cli_version_arg_name: "--version"
     examples:
       - "ansible-lint -v"
@@ -67,6 +67,6 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=ansible-lint
-          ARG PIP_ANSIBLE_LINT_VERSION=25.8.2
+          ARG PIP_ANSIBLE_LINT_VERSION=25.9.0
       pip:
         - ansible-lint==${PIP_ANSIBLE_LINT_VERSION}
