@@ -10146,7 +10146,7 @@
 <p><strong>Note</strong>: If you don't use Python static typing, disable this linter by adding <code>PYTHON_MYPY</code> to <code>DISABLE_LINTERS</code> in your <code>.mega-linter.yml</code> config file.</p>
 <h2 id="mypy-documentation">mypy documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>1.17.1</strong></li>
+<li>Version in MegaLinter: <strong>1.18.1</strong></li>
 <li>Visit <a href="https://mypy.readthedocs.io/en/stable/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://mypy.readthedocs.io/en/stable/config_file.html" target="_blank">How to configure mypy rules</a><ul>
 <li>If custom <code>.mypy.ini</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.mypy.ini" target="_blank">.mypy.ini</a> will be used</li>
@@ -10320,14 +10320,14 @@
 <td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" data-desc-position="bottom"><img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a></td>
 <td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/cupcake/">cupcake</a></td>
 <td style="text-align: left;">MegaLinter for the most commonly used languages</td>
-<td style="text-align: center;">87</td>
+<td style="text-align: center;">86</td>
 <td style="text-align: right;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta" data-desc-position="bottom"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta"></a> <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake" data-desc-position="bottom"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake"></a></td>
 </tr>
 <tr>
 <td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" data-desc-position="bottom"><img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a></td>
 <td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/python/">python</a></td>
 <td style="text-align: left;">Optimized for PYTHON based projects</td>
-<td style="text-align: center;">65</td>
+<td style="text-align: center;">64</td>
 <td style="text-align: right;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta" data-desc-position="bottom"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta"></a> <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-python" data-desc-position="bottom"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-python"></a></td>
 </tr>
 </tbody>
@@ -10515,11 +10515,17 @@ Miscellaneous strictness flags:
   --allow-redefinition      Allow restricted, unconditional variable
                             redefinition with a new type (inverse: --disallow-
                             redefinition)
+  --allow-redefinition-new  Allow more flexible variable redefinition
+                            semantics (experimental) (inverse: --disallow-
+                            redefinition-new)
   --no-implicit-reexport    Treat imports as private unless aliased (inverse:
                             --implicit-reexport)
   --strict-equality         Prohibit equality, identity, and container checks
-                            for non-overlapping types (inverse: --no-strict-
-                            equality)
+                            for non-overlapping types (except `None`)
+                            (inverse: --no-strict-equality)
+  --strict-equality-for-none
+                            Extend `--strict-equality` for `None` checks
+                            (inverse: --no-strict-equality-for-none)
   --strict-bytes            Disable treating bytearray and memoryview as
                             subtypes of bytes (inverse: --no-strict-bytes)
   --extra-checks            Enable additional checks that are technically
@@ -10578,6 +10584,8 @@ Incremental mode:
                             --no-sqlite-cache)
   --cache-fine-grained      Include fine-grained dependency information in the
                             cache for the mypy daemon
+  --fixed-format-cache      Use experimental fast and compact fixed format
+                            cache
   --skip-version-check      Allow using cache written by older mypy version
   --skip-cache-mtime-checks
                             Skip cache internal consistency checks based on
@@ -10591,7 +10599,6 @@ Advanced options:
   --raise-exceptions        Raise exception on fatal error
   --custom-typing-module MODULE
                             Use a custom typing module
-  --old-type-inference      Disable new experimental type inference algorithm
   --custom-typeshed-dir DIR
                             Use the custom typeshed in DIR
   --warn-incomplete-stub    Warn if missing type annotation in typeshed, only
@@ -10658,12 +10665,12 @@ Environment variables:
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile"># renovate: datasource=pypi depName=mypy
-ARG PIP_MYPY_VERSION=1.17.1
+ARG PIP_MYPY_VERSION=1.18.1
 ENV MYPY_CACHE_DIR=/tmp
 </code></pre>
 <ul>
 <li>PIP packages (Python):<ul>
-<li><a href="https://pypi.org/project/mypy/1.17.1">mypy==1.17.1</a></li>
+<li><a href="https://pypi.org/project/mypy/1.18.1">mypy==1.18.1</a></li>
 </ul>
 </li>
 </ul>

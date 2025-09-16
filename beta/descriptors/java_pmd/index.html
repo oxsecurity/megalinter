@@ -10125,7 +10125,7 @@
 </ul>
 <h2 id="pmd-documentation">pmd documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>7.16.0</strong></li>
+<li>Version in MegaLinter: <strong>7.17.0</strong></li>
 <li>Visit <a href="https://pmd.github.io/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://docs.pmd-code.org/pmd-doc-6.55.0/pmd_userdocs_configuring_rules.html" target="_blank">How to configure pmd rules</a><ul>
 <li>If custom <code>java-pmd-ruleset.xml</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/java-pmd-ruleset.xml" target="_blank">java-pmd-ruleset.xml</a> will be used</li>
@@ -10250,14 +10250,14 @@
 <td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" data-desc-position="bottom"><img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a></td>
 <td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/cupcake/">cupcake</a></td>
 <td style="text-align: left;">MegaLinter for the most commonly used languages</td>
-<td style="text-align: center;">87</td>
+<td style="text-align: center;">86</td>
 <td style="text-align: right;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta" data-desc-position="bottom"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta"></a> <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake" data-desc-position="bottom"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake"></a></td>
 </tr>
 <tr>
 <td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" data-desc-position="bottom"><img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a></td>
 <td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/java/">java</a></td>
 <td style="text-align: left;">Optimized for JAVA based projects</td>
-<td style="text-align: center;">54</td>
+<td style="text-align: center;">53</td>
 <td style="text-align: right;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta" data-desc-position="bottom"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta"></a> <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-java" data-desc-position="bottom"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-java"></a></td>
 </tr>
 </tbody>
@@ -10307,7 +10307,7 @@ ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 # Linter install
 # renovate: datasource=github-tags depName=pmd/pmd extractVersion=^pmd_releases/(?&lt;version&gt;.*)$
-ARG PMD_VERSION=7.16.0
+ARG PMD_VERSION=7.17.0
 
 RUN wget --quiet https://github.com/pmd/pmd/releases/download/pmd_releases%2F${PMD_VERSION}/pmd-dist-${PMD_VERSION}-bin.zip &amp;&amp; \
     unzip pmd-dist-${PMD_VERSION}-bin.zip || echo "Error unzipping" &amp;&amp; \

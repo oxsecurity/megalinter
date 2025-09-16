@@ -10144,7 +10144,7 @@
 </ul>
 <h2 id="phpcs-documentation">phpcs documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>3.13.4</strong></li>
+<li>Version in MegaLinter: <strong>4.0.0</strong></li>
 <li>Visit <a href="https://github.com/PHPCSStandards/PHP_CodeSniffer#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/PHPCSStandards/PHP_CodeSniffer/wiki/Advanced-Usage#using-a-default-configuration-file" target="_blank">How to configure phpcs rules</a><ul>
 <li>If custom <code>phpcs.xml</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/phpcs.xml" target="_blank">phpcs.xml</a> will be used</li>
@@ -10308,14 +10308,14 @@
 <td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" data-desc-position="bottom"><img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a></td>
 <td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/cupcake/">cupcake</a></td>
 <td style="text-align: left;">MegaLinter for the most commonly used languages</td>
-<td style="text-align: center;">87</td>
+<td style="text-align: center;">86</td>
 <td style="text-align: right;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta" data-desc-position="bottom"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta"></a> <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake" data-desc-position="bottom"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake"></a></td>
 </tr>
 <tr>
 <td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico" data-desc-position="bottom"><img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a></td>
 <td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/php/">php</a></td>
 <td style="text-align: left;">Optimized for PHP based projects</td>
-<td style="text-align: center;">54</td>
+<td style="text-align: center;">53</td>
 <td style="text-align: right;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/beta" data-desc-position="bottom"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/beta"></a> <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-php" data-desc-position="bottom"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-php"></a></td>
 </tr>
 </tbody>
@@ -10360,10 +10360,7 @@ Scan targets:
   --ignore=&lt;patterns&gt;            Ignore files based on a comma-separated list of
                                  patterns matching files and/or directories.
   --extensions=&lt;extensions&gt;      Check files with the specified file extensions
-                                 (comma-separated list). Defaults to
-                                 php,inc/php,js,css.
-                                 The type of the file can be specified using:
-                                 ext/type; e.g. module/php,es/js.
+                                 (comma-separated list). Defaults to "php,inc".
   -l                             Check local directory only, no recursion.
 
 Rule Selection Options:
@@ -10459,7 +10456,7 @@ Configuration Options:
   "tab_width", "encoding", "severity", "error_severity", "warning_severity",
   "show_warnings", "report_width", "show_progress", "quiet", "colors", "cache",
   "parallel", "installed_paths", "php_version", "ignore_errors_on_exit",
-  "ignore_warnings_on_exit".
+  "ignore_warnings_on_exit", "ignore_non_auto_fixable_on_exit".
   --config-show                  Show the configuration options which are
                                  currently stored in the applicable
                                  CodeSniffer.conf file.
@@ -10489,7 +10486,7 @@ COPY --from=composer/composer:2-bin /composer /usr/bin/composer
 ENV PATH="/root/.composer/vendor/bin:${PATH}"
 # Linter install
 # renovate: datasource=packagist depName=squizlabs/php_codesniffer
-ARG PHP_SQUIZLABS_PHP_CODESNIFFER_VERSION=3.13.4
+ARG PHP_SQUIZLABS_PHP_CODESNIFFER_VERSION=4.0.0
 # renovate: datasource=packagist depName=bartlett/sarif-php-converters
 ARG PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION=1.3.1
 RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" &amp;&amp; export GITHUB_AUTH_TOKEN &amp;&amp; composer global require squizlabs/php_codesniffer:${PHP_SQUIZLABS_PHP_CODESNIFFER_VERSION} bartlett/sarif-php-converters:${PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION}
