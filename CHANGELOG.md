@@ -296,6 +296,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.13.1 to **1.13.2** on 2025-09-16
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.87.0 to **0.87.2** on 2025-09-16
   - [xmllint](https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home) from 21304 to **21308** on 2025-09-16
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 25.8.2 to **25.9.0** on 2025-09-16
+  - [htmlhint](https://htmlhint.com/) from 1.7.0 to **1.7.1** on 2025-09-16
+  - [phpstan](https://phpstan.org/) from 2.1.25 to **2.1.26** on 2025-09-16
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15
