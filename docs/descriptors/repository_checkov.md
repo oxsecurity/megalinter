@@ -490,7 +490,7 @@ config file values which override defaults.
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=checkov
-ARG PIP_CHECKOV_VERSION=3.2.470
+ARG PIP_CHECKOV_VERSION=3.2.471
 ```
 
 - PIP packages (Python):
