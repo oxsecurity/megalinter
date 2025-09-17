@@ -24,7 +24,7 @@ description: How to use htmlhint (configure, ignore files, ignore errors, help &
 
 ## htmlhint documentation
 
-- Version in MegaLinter: **1.7.0**
+- Version in MegaLinter: **1.7.1**
 - Visit [Official Web Site](https://htmlhint.com/){target=_blank}
 - See [How to configure htmlhint rules](https://htmlhint.com/configuration/){target=_blank}
   - If custom `.htmlhintrc` config file isn't found, [.htmlhintrc](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.htmlhintrc){target=_blank} will be used
@@ -124,7 +124,7 @@ Options:
   -c, --config <file>                                                    custom configuration file
   -r, --rules <ruleid, ruleid=value ...>                                 set all of the rules available
   -R, --rulesdir <file|folder>                                           load custom rules from file or folder
-  -f, --format <checkstyle|compact|html|json|junit|markdown|sarif|unix>  output messages as custom format
+  -f, --format <unix|sarif|markdown|junit|json|html|compact|checkstyle>  output messages as custom format
   -i, --ignore <pattern, pattern ...>                                    add pattern to exclude matches
   --nocolor                                                              disable color
   --warn                                                                 Warn only, exit with 0
@@ -152,8 +152,8 @@ Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=htmlhint
-ARG NPM_HTMLHINT_VERSION=1.7.0
+ARG NPM_HTMLHINT_VERSION=1.7.1
 ```
 
 - NPM packages (node.js):
-  - [htmlhint@1.7.0](https://www.npmjs.com/package/htmlhint/v/1.7.0)
+  - [htmlhint@1.7.1](https://www.npmjs.com/package/htmlhint/v/1.7.1)
