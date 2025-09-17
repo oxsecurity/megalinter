@@ -299,6 +299,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [ansible-lint](https://ansible-lint.readthedocs.io/) from 25.8.2 to **25.9.0** on 2025-09-16
   - [htmlhint](https://htmlhint.com/) from 1.7.0 to **1.7.1** on 2025-09-16
   - [phpstan](https://phpstan.org/) from 2.1.25 to **2.1.26** on 2025-09-16
+  - [kubescape](https://github.com/kubescape/kubescape) from 3.0.40 to **3.0.41** on 2025-09-17
+  - [phpstan](https://phpstan.org/) from 2.1.26 to **2.1.27** on 2025-09-17
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15
