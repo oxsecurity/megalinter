@@ -114,7 +114,7 @@ linters:
         # Also update shellcheck version in action.megalinter-descriptor.yml
         - |-
           # renovate: datasource=docker depName=koalaman/shellcheck
-          ARG BASH_SHELLCHECK_VERSION=v0.10.0
+          ARG BASH_SHELLCHECK_VERSION=v0.11.0
         - FROM koalaman/shellcheck:${BASH_SHELLCHECK_VERSION} AS shellcheck
         - COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
     ide:

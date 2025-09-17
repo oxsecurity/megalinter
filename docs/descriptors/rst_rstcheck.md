@@ -70,8 +70,8 @@ This linter is available in the following flavors
 |                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                     | Embedded linters |                                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       126        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        87        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)   | Optimized for PYTHON based projects             |        65        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        86        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)   | Optimized for PYTHON based projects             |        64        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
 
 ## Behind the scenes
 
@@ -115,7 +115,6 @@ rstcheck -c .rstcheck.cfg myfile.rst
 │                                         .rstcheck.cfg | setup.cfg. If 'NONE' │
 │                                         is passed no config file is loaded   │
 │                                         at all.                              │
-│                                         [default: None]                      │
 │ --warn-unknown-settings                 Log a WARNING for unknown settings   │
 │                                         in config files. Can be hidden via   │
 │                                         --log-level.                         │
@@ -126,7 +125,6 @@ rstcheck -c .rstcheck.cfg myfile.rst
 │                                         | WARNING | ERROR | SEVERE | NONE.   │
 │                                         Defaults to INFO. Can be set in      │
 │                                         config file.                         │
-│                                         [default: None]                      │
 │ --log-level                      LEVEL  The log level of the application for │
 │                                         information that is not a linting    │
 │                                         issue. Valid levels are: DEBUG |     │
@@ -136,25 +134,20 @@ rstcheck -c .rstcheck.cfg myfile.rst
 │ --ignore-directives              TEXT   Comma-separated-list of directives   │
 │                                         to add to the ignore list. Can be    │
 │                                         set in config file.                  │
-│                                         [default: None]                      │
 │ --ignore-roles                   TEXT   Comma-separated-list of roles to add │
 │                                         to the ignore list. Can be set in    │
 │                                         config file.                         │
-│                                         [default: None]                      │
 │ --ignore-substitutions           TEXT   Comma-separated-list of              │
 │                                         substitutions to add to the ignore   │
 │                                         list. Can be set in config file.     │
-│                                         [default: None]                      │
 │ --ignore-languages               TEXT   Comma-separated-list of languages    │
 │                                         for code-blocks to add to the ignore │
 │                                         list. The code in ignored            │
 │                                         code-blocks will not be checked for  │
 │                                         errors. Can be set in config file.   │
-│                                         [default: None]                      │
 │ --ignore-messages                REGEX  A regular expression to match        │
 │                                         linting issue messages against to    │
 │                                         ignore. Can be set in config file.   │
-│                                         [default: None]                      │
 │ --version                               Print versions and exit.             │
 │ --help                                  Show this message and exit.          │
 ╰──────────────────────────────────────────────────────────────────────────────╯

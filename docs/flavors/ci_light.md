@@ -14,7 +14,12 @@ Optimized for CI items (Dockerfile, Jenkinsfile, JSON/YAML schemas,XML
 ## Usage
 
 - [GitHub Action](https://megalinter.io/beta/installation/#github-action): **oxsecurity/megalinter/flavors/ci_light@beta**
-- Docker image: **oxsecurity/megalinter-ci_light:beta**
+
+- Docker images:
+
+  - GitHub Packages: **ghcr.io/oxsecurity/megalinter-ci_light:beta**
+  - Docker Hub: **docker.io/oxsecurity/megalinter-ci_light:beta**
+
 - [mega-linter-runner](https://megalinter.io/beta/mega-linter-runner/): `mega-linter-runner --flavor ci_light`
 
 ## Embedded linters
