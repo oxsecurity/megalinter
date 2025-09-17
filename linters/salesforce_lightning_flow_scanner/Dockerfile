@@ -51,7 +51,7 @@ FROM python:3.13-alpine3.22
 # renovate: datasource=npm depName=@salesforce/cli
 ARG NPM_SALESFORCE_CLI_VERSION=2.105.6
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
-ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.20.1
+ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.20.3
 # renovate: datasource=npm depName=sfdx-hardis
 ARG SFDX_HARDIS_VERSION=6.4.4
 # renovate: datasource=npm depName=lightning-flow-scanner
