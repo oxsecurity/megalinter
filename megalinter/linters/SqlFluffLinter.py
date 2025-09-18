@@ -5,7 +5,7 @@ Use SqlFluff to lint any type of file according to local config
 
 import logging
 
-from megalinter import Linter, config, flavor_factory, utils
+from megalinter import Linter
 
 
 class SqlFluffLinter(Linter):
