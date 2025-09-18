@@ -8,6 +8,7 @@ file_extensions:
 linters:
   # SQLFLUFF
   - linter_name: sqlfluff
+    class: SqlFluffLinter
     linter_text: |
       **SQLFluff** is a dialect-flexible and configurable SQL linter designed for ELT applications that works with Jinja templating and dbt. It provides comprehensive SQL code analysis including syntax checking, style validation, and formatting with support for multiple SQL dialects.
 
@@ -32,6 +33,9 @@ linters:
     active_only_if_file_found:
       - .sqlfluff
     cli_lint_mode: list_of_files
+    cli_lint_fix_arg_name: fix
+    cli_lint_fix_remove_args:
+      - lint
     cli_lint_errors_count: regex_count
     cli_lint_errors_regex: "L:(.*)P:(.*)"
     cli_lint_extra_args:

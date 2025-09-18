@@ -37,6 +37,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - PHP-CS-Fixer is able to run on PHP 8.4 without error (change default configuration) by @llaville
   - [cspell](https://megalinter.io/latest/descriptors/spell_cspell/): Filter output lines that do not contain found issues
   - [hadolint](https://megalinter.io/latest/descriptors/docker_hadolint/): Extend DOCKERFILE_HADOLINT_FILE_NAMES_REGEX to include the `purpose.Dockerfile` convention eg service.Dockerfile.
+  - [sqlfluff](https://megalinter.io/beta/descriptors/sql_sqlfluff/): Handle fixing of issues
 
 - Fixes
   - When linter is docker based, force `--platform=linux/amd64` so it works when running locally on Mac
