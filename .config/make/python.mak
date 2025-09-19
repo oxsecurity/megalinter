@@ -1,6 +1,5 @@
 # Python default launcher
-python_launcher ?= python3.11
-python_requirements_file ?= .config/python/dev/requirements.txt
+python_launcher ?= python3.12
 python_requirements_dev_file ?= .config/python/dev/requirements.txt
 
 UV = $(shell command -v uv 2> /dev/null)
@@ -10,7 +9,7 @@ UV = $(shell command -v uv 2> /dev/null)
 python-bootstrap: ## Bootstrap python
 	$(MAKE) python-venv-init
 	$(MAKE) python-venv-upgrade
-	$(MAKE) python-venv-requirements
+	$(MAKE) python-venv-editable-install
 
 .PHONY: python-bootstrap-dev
 python-bootstrap-dev: ## Bootstrap python for dev env
@@ -33,28 +32,49 @@ else
 endif
 
 .PHONY: python-venv-upgrade
-python-venv-upgrade: ## Upgrade venv with pip, setuptools and wheel
+python-venv-upgrade: ## Upgrade venv with pip
 ifeq ($(strip $(UV)),)
-	source .venv/bin/activate
-	pip install --upgrade pip setuptools wheel
+	@if [ -f .venv/bin/activate ]; then \
+		. .venv/bin/activate; \
+	elif [ -f .venv/Scripts/activate ]; then \
+		. .venv/Scripts/activate; \
+	else \
+		echo "No venv activation script found! Try command 'make bootstrap'" >&2; \
+		exit 1; \
+	fi; \
+	pip install --upgrade pip
 else
-	$(UV) pip install --upgrade pip setuptools wheel
+	$(UV) pip install --upgrade pip
 endif
 
 
-.PHONY: python-venv-requirements
-python-venv-requirements: ## Install or upgrade from $(python_requirements_file)
+.PHONY: python-venv-editable-install
+python-venv-editable-install: ## Install or upgrade from local project's pyproject.toml
 ifeq ($(strip $(UV)),)
-	source .venv/bin/activate
-	pip install --upgrade --requirement $(python_requirements_file)
+	@if [ -f .venv/bin/activate ]; then \
+		. .venv/bin/activate; \
+	elif [ -f .venv/Scripts/activate ]; then \
+		. .venv/Scripts/activate; \
+	else \
+		echo "No venv activation script found! Try command 'make bootstrap'" >&2; \
+		exit 1; \
+	fi; \
+	pip install --upgrade -e .
 else
-	$(UV) pip install --upgrade --requirement $(python_requirements_file)
+	$(UV) pip install --upgrade -e .
 endif
 
 .PHONY: python-venv-requirements-dev
 python-venv-requirements-dev: ## Install or upgrade from $(python_requirements_dev_file)
 ifeq ($(strip $(UV)),)
-	source .venv/bin/activate
+	@if [ -f .venv/bin/activate ]; then \
+		. .venv/bin/activate; \
+	elif [ -f .venv/Scripts/activate ]; then \
+		. .venv/Scripts/activate; \
+	else \
+		echo "No venv activation script found! Try command 'make bootstrap'" >&2; \
+		exit 1; \
+	fi; \
 	pip install --upgrade --requirement $(python_requirements_dev_file)
 else
 	$(UV) pip install --upgrade --requirement $(python_requirements_dev_file)
@@ -63,7 +83,14 @@ endif
 .PHONY: python-venv-linters-install
 python-venv-linters-install: ## Install or upgrade linters
 ifeq ($(strip $(UV)),)
-	source .venv/bin/activate
+	@if [ -f .venv/bin/activate ]; then \
+		. .venv/bin/activate; \
+	elif [ -f .venv/Scripts/activate ]; then \
+		. .venv/Scripts/activate; \
+	else \
+		echo "No venv activation script found! Try command 'make bootstrap'" >&2; \
+		exit 1; \
+	fi; \
 	pip install --upgrade flake8
 else
 	$(UV) pip install --upgrade flake8
@@ -79,7 +106,14 @@ python-venv-purge: ## Remove venv ".venv/" folder
 .PHONY: python-purge-cache
 python-purge-cache: ## Purge cache to avoid used cached files
 	if [ -d .venv ] ; then
-		source .venv/bin/activate
+		@if [ -f .venv/bin/activate ]; then \
+			. .venv/bin/activate; \
+		elif [ -f .venv/Scripts/activate ]; then \
+			. .venv/Scripts/activate; \
+		else \
+			echo "No venv activation script found! Try command 'make bootstrap'" >&2; \
+			exit 1; \
+		fi; \
 		pip cache purge
 	fi
 ifneq ($(strip $(UV)),)
@@ -88,16 +122,37 @@ endif
 
 .PHONY: python-version
 python-version: ## Displays the python version used for the .venv
-	source .venv/bin/activate
+	@if [ -f .venv/bin/activate ]; then \
+		. .venv/bin/activate; \
+	elif [ -f .venv/Scripts/activate ]; then \
+		. .venv/Scripts/activate; \
+	else \
+		echo "No venv activation script found! Try command 'make bootstrap'" >&2; \
+		exit 1; \
+	fi; \
 	$(python_launcher) --version
 
 .PHONY: python-flake8
 python-flake8: ## Run flake8 linter for python
-	source .venv/bin/activate
+	@if [ -f .venv/bin/activate ]; then \
+		. .venv/bin/activate; \
+	elif [ -f .venv/Scripts/activate ]; then \
+		. .venv/Scripts/activate; \
+	else \
+		echo "No venv activation script found! Try command 'make bootstrap'" >&2; \
+		exit 1; \
+	fi; \
 	flake8 --config .config/.flake8
 
 .PHONY: python-pytest
 python-pytest: ## Run pytest to test python scripts
-	source .venv/bin/activate
+	@if [ -f .venv/bin/activate ]; then \
+		. .venv/bin/activate; \
+	elif [ -f .venv/Scripts/activate ]; then \
+		. .venv/Scripts/activate; \
+	else \
+		echo "No venv activation script found! Try command 'make bootstrap'" >&2; \
+		exit 1; \
+	fi; \
 	cd scripts/
 	$(python_launcher) -m pytest

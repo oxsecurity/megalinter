@@ -7,10 +7,24 @@ description: How to use clang-format (configure, ignore files, ignore errors, he
 # clang-format
 [![GitHub stars](https://img.shields.io/github/stars/llvm/llvm-project?cacheSeconds=3600)](https://github.com/llvm/llvm-project) ![autofix](https://shields.io/badge/-autofix-green) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/llvm/llvm-project?sort=semver)](https://github.com/llvm/llvm-project/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/llvm/llvm-project)](https://github.com/llvm/llvm-project/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/llvm/llvm-project)](https://github.com/llvm/llvm-project/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/llvm/llvm-project)](https://github.com/llvm/llvm-project/graphs/contributors/)
 
+**clang-format** is a comprehensive code formatter for C/C++/Objective-C code that automatically enforces consistent coding style according to configurable rules and heuristics. As part of the LLVM project, it provides industry-leading formatting capabilities for complex C++ codebases.
+
+**Key Features:**
+
+- **Advanced C++ Support**: Handles modern C++ features including templates, lambda expressions, auto declarations, and range-based for loops
+- **Highly Configurable**: Extensive style options covering indentation, spacing, alignment, line breaks, and brace placement
+- **Predefined Styles**: Built-in support for popular style guides including LLVM, Google, Chromium, Mozilla, and WebKit
+- **Semantic Preservation**: Maintains code functionality while reformatting, never changing the program's behavior
+- **Complex Expression Handling**: Intelligent formatting of complex expressions, nested templates, and macro definitions
+- **Custom Configuration**: Fine-grained control through `.clang-format` files with inheritance and directory-specific rules
+- **Incremental Formatting**: Can format specific ranges or files without affecting the entire codebase
+- **Cross-Platform Support**: Works consistently across different operating systems and development environments
+
 ## clang-format documentation
 
-- Version in MegaLinter: **17.0.5**
+- Version in MegaLinter: **20.1.8**
 - Visit [Official Web Site](https://releases.llvm.org/17.0.1/tools/clang/docs/ClangFormat.html){target=_blank}
+- See [How to configure clang-format rules](https://releases.llvm.org/17.0.1/tools/clang/docs/ClangFormatStyleOptions.html){target=_blank}
 - See [How to disable clang-format rules in files](https://releases.llvm.org/17.0.1/tools/clang/docs/ClangFormatStyleOptions.html#disabling-formatting-on-a-piece-of-code){target=_blank}
 - See [Index of problems detected by clang-format](https://releases.llvm.org/17.0.1/tools/clang/docs/ClangFormat.html){target=_blank}
 
@@ -50,14 +64,14 @@ Use clang-format in your favorite IDE to catch errors before MegaLinter !
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [Clang-Format](https://marketplace.visualstudio.com/items?itemName=xaver.clang-format)               | [![Install in VSCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/xaver.clang-format){target=_blank} |
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Emacs](https://www.gnu.org/software/emacs/)         | [clang-format](https://releases.llvm.org/17.0.1/tools/clang/docs/ClangFormat.html#emacs-integration) |                          [Visit Web Site](https://releases.llvm.org/17.0.1/tools/clang/docs/ClangFormat.html#emacs-integration){target=_blank}                          |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
-This linter is available in the following flavours
+This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                               | Description                       | Embedded linters |                                                                                                                                                                                   Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------|:----------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor         |       124        |             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/c_cpp.ico" alt="" height="32px" class="megalinter-icon"></a>        | [c_cpp](https://megalinter.io/beta/flavors/c_cpp/)   | Optimized for pure C/C++ projects |        54        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-c_cpp/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-c_cpp) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor         |       126        |             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/c_cpp.ico" alt="" height="32px" class="megalinter-icon"></a>        | [c_cpp](https://megalinter.io/beta/flavors/c_cpp/)   | Optimized for pure C/C++ projects |        55        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-c_cpp/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-c_cpp) |
 
 ## Behind the scenes
 
@@ -89,14 +103,14 @@ If <file>s are given, it reformats the files. If -i is specified
 together with <file>s, the files are edited in-place. Otherwise, the
 result is written to the standard output.
 
-USAGE: clang-format [options] [<file> ...]
+USAGE: clang-format [options] [@<file>] [<file> ...]
 
 OPTIONS:
 
 Clang-format options:
 
   --Werror                       - If set, changes formatting warnings to errors
-  --Wno-error=<value>            - If set don't error out on the specified warning type.
+  --Wno-error=<value>            - If set, don't error out on the specified warning type.
     =unknown                     -   If set, unknown format options are only warned about.
                                      This can be used to enable formatting, even if the
                                      configuration contains unknown (newer) options.
@@ -112,18 +126,19 @@ Clang-format options:
                                    supported:
                                      CSharp: .cs
                                      Java: .java
-                                     JavaScript: .mjs .js .ts
+                                     JavaScript: .js .mjs .cjs .ts
                                      Json: .json
                                      Objective-C: .m .mm
                                      Proto: .proto .protodevel
                                      TableGen: .td
-                                     TextProto: .textpb .pb.txt .textproto .asciipb
+                                     TextProto: .txtpb .textpb .pb.txt .textproto .asciipb
                                      Verilog: .sv .svh .v .vh
   --cursor=<uint>                - The position of the cursor when invoking
                                    clang-format from an editor integration
   --dry-run                      - If set, do not actually make the formatting changes
   --dump-config                  - Dump configuration options to stdout and exit.
                                    Can be used with -style option.
+  --fail-on-incomplete-format    - If set, fail with exit code 1 on incomplete format.
   --fallback-style=<string>      - The name of the predefined style used as a
                                    fallback in case clang-format is invoked with
                                    -style=file, but can not find the .clang-format
@@ -182,4 +197,4 @@ Generic Options:
 ### Installation on mega-linter Docker image
 
 - APK packages (Linux):
-  - [clang17-extra-tools](https://pkgs.alpinelinux.org/packages?branch=edge&name=clang17-extra-tools)
+  - [clang20-extra-tools](https://pkgs.alpinelinux.org/packages?branch=v3.22&arch=x86_64&name=clang20-extra-tools)

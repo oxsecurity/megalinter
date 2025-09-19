@@ -4,6 +4,7 @@ on:
     branches:
       - main
       - features/doc-versioning
+      - doc
     paths:
       - "**/build.py"
       - "docs/**"
@@ -23,18 +24,18 @@ jobs:
       contents: write
     if: github.repository == 'oxsecurity/megalinter'
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
-          python-version: 3.12.0
+          python-version: 3.12.11
       - run: pip install --upgrade -r .config/python/dev/requirements.txt
       - run: cd .automation && bash build_schemas_doc.sh && cd ..
       # - run: mkdocs gh-deploy --force
       - run: |
           git config --global user.name megalinter-bot
-          git config --global user.email nicolas.vuillamy@ox.security
+          git config --global user.email 129584137+megalinter-bot@users.noreply.github.com
       - run: mike deploy beta --push
 
  

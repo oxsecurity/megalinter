@@ -9,8 +9,7 @@ file_extensions:
   - ".cs"
 install:
   dockerfile:
-    # https://github.com/dotnet/sdk/issues/37790#issuecomment-1918068016
-    - RUN apk add --no-cache dotnet8-sdk --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community
+    - RUN apk add --no-cache dotnet9-sdk
     - ENV PATH="${PATH}:/root/.dotnet/tools"
 linters:
   # DOTNET FORMAT
@@ -18,14 +17,33 @@ linters:
     linter_name: dotnet-format
     is_formatter: true
     linter_text: |
-      dotnet-format requires a `.sln` or `.csproj` file to run correctly.
+      **dotnet format** is the official .NET code formatter that automatically applies consistent code styling and formatting rules to C# and VB.NET projects. It integrates directly with the .NET SDK and uses EditorConfig settings and analyzer rules to ensure uniform code appearance.
+
+      **Key Features:**
+
+      - **Official .NET Tool**: Native integration with .NET SDK and MSBuild for seamless project integration
+      - **EditorConfig Support**: Respects .editorconfig files for consistent formatting across teams and editors
+      - **Analyzer Integration**: Works with .NET analyzers and code style rules for comprehensive formatting
+      - **Solution/Project Scope**: Can format entire solutions, specific projects, or individual files with precise control
+      - **Incremental Formatting**: Only formats changed files or specific file patterns to optimize performance
+      - **Multiple Rule Categories**: Handles whitespace, style preferences, and third-party analyzer rules
+      - **Verification Mode**: Verify mode ensures code is properly formatted without making changes
+
+      **Note**: dotnet-format requires a `.sln` or `.csproj` file to run correctly.
     linter_url: https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format
-    linter_repo: https://github.com/dotnet/format
+    linter_repo: https://github.com/dotnet/sdk
+    linter_spdx_license: MIT
+    linter_rules_configuration_url: https://github.com/dotnet/sdk/tree/main/documentation/format/docs
+    linter_rules_inline_disable_url: https://docs.microsoft.com/en-us/dotnet/fundamentals/code-analysis/suppress-warnings
     linter_image_url: https://user-images.githubusercontent.com/9797472/61659851-6bbdc880-ac7d-11e9-95f7-d30c7de1a18a.png
+    cli_lint_errors_count: regex_count
+    cli_lint_errors_regex: ".cs\\([0-9]+,[0-9]+\\):\\s(?:warning|error)"
     cli_executable: dotnet
+    cli_lint_mode: project
     cli_lint_extra_args:
       - "format"
-      - "{{WORKSPACE}}"
+    cli_lint_extra_args_after:
+      - "--include **/*.cs"
       - "--verify-no-changes"
     cli_lint_fix_arg_name: "--megalinter-fix-flag" # Workaround for DotnetFormatLinter class behavior
     cli_lint_fix_remove_args:
@@ -33,36 +51,63 @@ linters:
     cli_help_extra_args:
       - format
     examples:
-      - "dotnet format {{WORKSPACE}} --verify-no-changes"
-      - "dotnet format {{WORKSPACE}}" # Fix
+      - "dotnet format --verify-no-changes"
+      - "dotnet format Solution.sln --verify-no-changes"
+      - "dotnet format Folder/Solution.sln --verify-no-changes"
+      - "dotnet format Project.csproj --verify-no-changes"
+      - "dotnet format" # Fix
     supported_platforms:
       platform:
         - linux/amd64
         - linux/arm64
   # CSharpier
-  - class: DotNetToolLinter
-    linter_name: csharpier
+  - linter_name: csharpier
+    linter_text: |
+      **CSharpier** is the definitive opinionated code formatter for C# that eliminates formatting debates by automatically standardizing code style across entire projects. Inspired by Prettier's philosophy, it provides zero-configuration formatting that just works.
+
+      **Key Features:**
+
+      - **Zero Configuration**: Works out of the box with sensible defaults, no setup required
+      - **Opinionated Formatting**: Consistent, predictable formatting that eliminates style discussions
+      - **Comprehensive C# Support**: Handles all modern C# language features, syntax, and constructs
+      - **Fast Performance**: Lightning-fast formatting with minimal overhead for large codebases
+      - **Ignore Support**: Flexible ignore patterns for excluding specific files or code sections from formatting
+      - **Diff-Friendly**: Produces minimal, clean git diffs by maintaining consistent formatting rules
+      - **Team Consistency**: Ensures identical formatting across all team members and development environments
     is_formatter: true
     linter_url: https://csharpier.com/
     linter_repo: https://github.com/belav/csharpier
+    linter_spdx_license: MIT
     linter_image_url: https://csharpier.com/img/logo.svg
     linter_rules_configuration_url: https://csharpier.com/docs/Configuration
+    linter_rules_inline_disable_url: https://csharpier.com/docs/Ignore
     linter_rules_ignore_config_url: https://csharpier.com/docs/Ignore
+    file_extensions:
+      - ".config"
+      - ".cs"
+      - ".csproj"
+      - ".props"
+      - ".targets"
     ignore_file_name: .csharpierignore
-    cli_executable: dotnet-csharpier
+    config_file_name: .csharpierrc
+    cli_config_arg_name: "--config-path"
+    cli_executable: csharpier
     cli_lint_mode: list_of_files
     cli_lint_extra_args:
-      - "--check"
-    cli_lint_fix_arg_name: "--megalinter-fix-flag" # Workaround for DotnetFormatLinter class behavior
+      - "check"
+    cli_lint_fix_arg_name: "format"
     cli_lint_fix_remove_args:
-      - "--check"
+      - "check"
     test_folder: csharp_csharpier
     examples:
-      - "dotnet csharpier --check myfile.cs myfile2.cs"
-      - "dotnet csharpier myfile.cs myfile2.cs" # Fix
+      - "csharpier check myfile.cs myfile2.cs"
+      - "csharpier format myfile.cs myfile2.cs" # Fix
     install:
       dockerfile:
-        - RUN dotnet tool install --global csharpier
+        - |-
+          # renovate: datasource=nuget depName=csharpier
+          ARG CSHARP_CSHARPIER_VERSION=1.1.2
+        - RUN dotnet tool install --allow-roll-forward --global csharpier --version "${CSHARP_CSHARPIER_VERSION}"
     supported_platforms:
       platform:
         - linux/amd64
@@ -77,14 +122,28 @@ linters:
       vscode:
         - name: csharpier-vscode
           url: https://marketplace.visualstudio.com/items?itemName=csharpier.csharpier-vscode
+
   # Roslynator
   - class: RoslynatorLinter
     linter_name: roslynator
+    linter_text: |
+      **Roslynator** is a comprehensive collection of 500+ analyzers, refactorings, and fixes for C# powered by the Roslyn compiler platform. It provides deep code analysis and automatic improvement capabilities to enhance code quality, maintainability, and performance across C# projects.
+
+      **Key Features:**
+
+      - **Extensive Analyzer Collection**: 500+ built-in analyzers covering code quality, performance, style, and best practices
+      - **Automatic Code Fixes**: Intelligent refactoring and fixing capabilities for common code issues and patterns
+      - **Roslyn Integration**: Built on Microsoft's Roslyn compiler platform for accurate semantic analysis
+      - **Performance Optimization**: Detects performance anti-patterns and suggests optimizations for better runtime efficiency
+      - **Code Simplification**: Identifies opportunities to simplify complex code structures and expressions
+      - **Modern C# Support**: Full support for latest C# language features and syntax constructs
+      - **Configurable Rules**: Extensive configuration options to customize analysis rules and severity levels
     file_extensions:
       - ".csproj"
     is_formatter: true
     linter_url: https://github.com/dotnet/Roslynator
     linter_repo: https://github.com/dotnet/Roslynator
+    linter_spdx_license: Apache-2.0
     linter_image_url: https://github.com/dotnet/roslynator/raw/main/images/roslynator-logo-small.png
     linter_rules_url: https://josefpihrt.github.io/docs/roslynator/analyzers
     linter_rules_configuration_url: https://josefpihrt.github.io/docs/roslynator/configuration
@@ -103,7 +162,10 @@ linters:
       - "roslynator fix myproject.csproj" # Fix
     install:
       dockerfile:
-        - RUN dotnet tool install -g roslynator.dotnet.cli
+        - |-
+          # renovate: datasource=nuget depName=roslynator.dotnet.cli
+          ARG CSHARP_ROSLYNATOR_VERSION=0.10.2
+        - RUN dotnet tool install --allow-roll-forward --global roslynator.dotnet.cli --version "${CSHARP_ROSLYNATOR_VERSION}"
     supported_platforms:
       platform:
         - linux/amd64

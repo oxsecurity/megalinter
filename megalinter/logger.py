@@ -1,11 +1,14 @@
 #!/usr/bin/env python3
 import logging
 import os
+import re
 import sys
+import tomllib
 
-import chalk as c
+import requests
 from megalinter import config, utils
 from megalinter.constants import ML_DOC_URL
+from megalinter.flavor_factory import is_custom_flavor
 from megalinter.utils_reporter import log_section_start
 
 
@@ -69,20 +72,20 @@ def manage_upgrade_message():
         or "v5" in mega_linter_version
     ):
         logging.warning(
-            c.yellow(
+            utils.yellow(
                 "#######################################################################"
             )
         )
         logging.warning(
-            c.yellow(
+            utils.yellow(
                 "MEGA-LINTER HAS A NEW V7 VERSION at https://github.com/oxsecurity/megalinter .\n"
                 + "Please upgrade your configuration by running the following command at the "
                 + "root of your repository (requires node.js): \n"
-                + c.green("npx mega-linter-runner --upgrade")
+                + utils.green("npx mega-linter-runner --upgrade")
             )
         )
         logging.warning(
-            c.yellow(
+            utils.yellow(
                 "#######################################################################"
             )
         )
@@ -93,15 +96,44 @@ def display_header(mega_linter):
     logging.info(utils.format_hyphens(""))
     logging.info(utils.format_hyphens("MegaLinter, by OX Security"))
     logging.info(utils.format_hyphens(""))
-    logging.info(
-        " - Image Creation Date: " + config.get(None, "BUILD_DATE", "No docker image")
-    )
-    logging.info(
-        " - Image Revision: " + config.get(None, "BUILD_REVISION", "No docker image")
-    )
-    logging.info(
-        " - Image Version: " + config.get(None, "BUILD_VERSION", "No docker image")
-    )
+    if is_custom_flavor():
+        logging.warning("YOU ARE USING A MEGALINTER CUSTOM FLAVOR")
+        logging.warning(
+            " - Custom flavor build repository URL: "
+            + config.get(None, "CUSTOM_FLAVOR_BUILD_REPO_URL", "SHOULD BE SET")
+        )
+        logging.warning(
+            " - Custom flavor build user: "
+            + config.get(None, "CUSTOM_FLAVOR_BUILD_USER", "SHOULD BE SET")
+        )
+        logging.warning(
+            " - Custom flavor build date: "
+            + config.get(None, "CUSTOM_FLAVOR_BUILD_DATE", "SHOULD BE SET")
+        )
+        logging.info(
+            " - Flavor Builder Image Creation Date: "
+            + config.get(None, "BUILD_DATE", "No docker image")
+        )
+        logging.info(
+            " - Flavor Builder Image Revision: "
+            + config.get(None, "BUILD_REVISION", "No docker image")
+        )
+        logging.info(
+            " - Flavor Builder Image Version: "
+            + config.get(None, "BUILD_VERSION", "No docker image")
+        )
+    else:
+        logging.info(
+            " - Image Creation Date: "
+            + config.get(None, "BUILD_DATE", "No docker image")
+        )
+        logging.info(
+            " - Image Revision: "
+            + config.get(None, "BUILD_REVISION", "No docker image")
+        )
+        logging.info(
+            " - Image Version: " + config.get(None, "BUILD_VERSION", "No docker image")
+        )
     logging.info(utils.format_hyphens(""))
     logging.info("The MegaLinter documentation can be found at:")
     logging.info(" - " + ML_DOC_URL)
@@ -139,3 +171,79 @@ def display_header(mega_linter):
             logging.debug("" + name + "=HIDDEN_BY_MEGALINTER")
     logging.debug(utils.format_hyphens(""))
     logging.info("")
+
+
+GITLEAKS_REGEXES = None
+
+
+def fetch_gitleaks_regexes(force_use_local_file=False):
+    global GITLEAKS_REGEXES
+    if GITLEAKS_REGEXES is not None:
+        return GITLEAKS_REGEXES
+
+    # Use local file for test cases to improve speed
+    current_test_name = utils.get_current_test_name()
+    if (
+        current_test_name
+        and "test_fetch_gitleaks_regexes_remote" not in current_test_name
+    ):
+        force_use_local_file = True
+
+    config_data = None
+    if not force_use_local_file:
+        url = "https://raw.githubusercontent.com/gitleaks/gitleaks/refs/heads/master/config/gitleaks.toml"
+        try:
+            response = requests.get(url)
+            if response.status_code == 200:
+                config_data = (
+                    response.text
+                )  # Fix: Pass string to tomllib.loads instead of bytes
+            else:
+                logging.warning(
+                    f"Failed to fetch Gitleaks config from URL: {response.status_code}"
+                )
+        except Exception as e:
+            logging.warning(f"Could not fetch Gitleaks config from URL. Error: {e}")
+
+    if config_data is None:
+        logging.info("Using local Gitleaks config file.")
+        descriptors_dir = utils.get_descriptor_dir()
+        with open(
+            f"{descriptors_dir}/additional/gitleaks-default.toml", "r", encoding="utf-8"
+        ) as file:
+            config_data = file.read()
+
+    config = tomllib.loads(config_data)
+    regex_patterns = []
+    for rule in config.get("rules", []):
+        rule_id = rule.get("id")
+        if rule_id == "generic-api-key":
+            continue
+        pattern = rule.get("regex")
+        if pattern:
+            regex_patterns.append(pattern)
+    regex_patterns = utils.keep_only_valid_regex_patterns(regex_patterns)
+    GITLEAKS_REGEXES = regex_patterns
+    return regex_patterns
+
+
+def sanitize_string(input_string):
+    if os.environ.get("SKIP_LINTER_OUTPUT_SANITIZATION", "") == "true":
+        # Don't sanitize in test mode
+        return input_string
+    regex_patterns = fetch_gitleaks_regexes()
+    sanitized_string = input_string
+    for pattern in regex_patterns:
+        while True:
+            match = re.search(pattern, sanitized_string)
+            if not match:
+                break
+            if sanitized_string[match.end() - 1] == '"':
+                sanitized_string = re.sub(
+                    pattern, 'HIDDEN_BY_MEGALINTER"', sanitized_string, count=1
+                )
+            else:
+                sanitized_string = re.sub(
+                    pattern, "HIDDEN_BY_MEGALINTER", sanitized_string, count=1
+                )
+    return sanitized_string

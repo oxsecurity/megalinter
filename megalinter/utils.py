@@ -6,13 +6,16 @@ import logging
 import os
 import re
 import tempfile
+import urllib.parse
 from fnmatch import fnmatch
+from pathlib import Path
 from typing import Any, Optional, Pattern, Sequence
 
 import git
 import regex
-from megalinter import config
+from megalinter import config, logger
 from megalinter.constants import DEFAULT_DOCKER_WORKSPACE_DIR
+from termcolor import colored
 
 SIZE_MAX_SOURCEFILEHEADER = 1024
 
@@ -70,6 +73,22 @@ if DEFAULT_WORKSPACE != "":
         [f"/{DEFAULT_WORKSPACE}/", ""],
         [f"{DEFAULT_WORKSPACE}/", ""],
     ]
+
+
+# Returns directory where all .yml language descriptors are defined
+def get_descriptor_dir():
+    # Compiled version (copied from DockerFile)
+    if os.path.isdir("/megalinter-descriptors"):
+        return "/megalinter-descriptors"
+    # Dev / Test version
+    else:
+        descriptor_dir = os.path.realpath(
+            os.path.dirname(os.path.abspath(__file__)) + "/descriptors"
+        )
+        assert os.path.isdir(
+            descriptor_dir
+        ), f"Descriptor dir {descriptor_dir} not found !"
+        return descriptor_dir
 
 
 def get_excluded_directories(request_id):
@@ -243,6 +262,10 @@ def list_active_reporters_for_scope(scope, reporter_init_params):
         if reporter_class.scope == scope:
             reporter = reporter_class(reporter_init_params)
             scope_reporters += [reporter]
+    logging.debug(
+        f"[Reporters] Available reporters for scope {scope}: "
+        + ",".join([obj.name for obj in scope_reporters])
+    )
     # Keep only active reporters
     for reporter in scope_reporters:
         if reporter.is_active is False:
@@ -250,6 +273,10 @@ def list_active_reporters_for_scope(scope, reporter_init_params):
         reporters += [reporter]
     # Sort reporters by name
     reporters = sorted(reporters, key=lambda r: r.processing_order)
+    logging.debug(
+        f"[Reporters] Active reporters for scope {scope}: "
+        + ",".join([obj.name for obj in reporters])
+    )
     return reporters
 
 
@@ -287,12 +314,29 @@ def file_is_generated(file_name: str) -> bool:
     return b"@generated" in content and b"@not-generated" not in content
 
 
-def decode_utf8(stdout):
+def get_default_rules_location() -> str:
+    default_rules_location = (
+        "/action/lib/.automation"
+        if os.path.isdir("/action/lib/.automation")
+        else os.path.relpath(
+            os.path.relpath(
+                os.path.dirname(os.path.abspath(__file__)) + "/../TEMPLATES"
+            )
+        )
+    )
+    return default_rules_location
+
+
+def clean_string(stdout, sanitize=True) -> str:
     # noinspection PyBroadException
     try:
         res = stdout.decode("utf-8")
+        if sanitize is True:
+            res = logger.sanitize_string(res)
     except Exception:
         res = str(stdout)
+        if sanitize is True:
+            res = logger.sanitize_string(res)
     return res
 
 
@@ -305,6 +349,11 @@ def list_updated_files(repo_home):
         except git.InvalidGitRepositoryError:
             logging.warning("Unable to find git repository to list updated files")
             return []
+    if not Path(repo.git_dir).resolve().is_relative_to(Path(repo_home).resolve()):
+        logging.warning(
+            "Your workspace is not a Git working copy root (e.g., the workspace is inside a submodule)"
+        )
+        return []
     changed_files = [item.a_path for item in repo.index.diff(None)]
     return changed_files
 
@@ -315,6 +364,98 @@ def is_git_repo(path):
         return True
     except git.InvalidGitRepositoryError:
         return False
+
+
+def get_git_context_info(request_id, path):
+    # Repo name
+    repo_name = config.get_first_var_set(
+        request_id,
+        [
+            "GITHUB_REPOSITORY",
+            "GIT_URL",
+            "CI_PROJECT_NAME",
+            "BITBUCKET_REPO_SLUG",
+            "BUILD_REPOSITORYNAME",
+        ],
+        None,
+    )
+    if repo_name is not None:
+        repo_name = repo_name.split("/")[-1]  # Get last portion
+    # Branch name
+    branch_name = config.get_first_var_set(
+        request_id,
+        [
+            "GITHUB_HEAD_REF",
+            "GITHUB_REF_NAME",
+            "GIT_BRANCH",
+            "CI_COMMIT_REF_NAME",
+            "BITBUCKET_BRANCH",
+            "BUILD_SOURCEBRANCHNAME",
+        ],
+        None,
+    )
+    if repo_name is None:
+        try:
+            repo = git.Repo(
+                path,
+                search_parent_directories=True,
+            )
+            repo_name = repo.working_tree_dir.split("/")[-1]
+        except Exception:
+            repo_name = "?"
+    if branch_name is None:
+        try:
+            repo = git.Repo(
+                path,
+                search_parent_directories=True,
+            )
+            repo_name_1 = repo.working_tree_dir.split("/")[-1]
+            branch = repo_name_1.active_branch
+            branch_name = branch.name
+        except Exception:
+            branch_name = "?"
+    # Job URL
+    job_url = config.get_first_var_set(
+        request_id,
+        [
+            "GITHUB_JOB_URL",
+            "CI_JOB_URL",
+        ],
+        "",
+    )
+    # GitHub job url
+    if job_url == "" and config.get(request_id, "GITHUB_REPOSITORY", "") != "":
+        github_server_url = config.get(
+            request_id, "GITHUB_SERVER_URL", "https://github.com"
+        )
+        github_repo = config.get(request_id, "GITHUB_REPOSITORY")
+        run_id = config.get(request_id, "GITHUB_RUN_ID")
+        job_url = f"{github_server_url}/{github_repo}/actions/runs/{run_id}"
+    # Azure Job url
+    elif job_url == "" and config.get(request_id, "SYSTEM_COLLECTIONURI", "") != "":
+        SYSTEM_COLLECTIONURI = config.get(request_id, "SYSTEM_COLLECTIONURI")
+        SYSTEM_TEAMPROJECT = urllib.parse.quote(
+            config.get(request_id, "SYSTEM_TEAMPROJECT")
+        )
+        BUILD_BUILDID = config.get(
+            request_id,
+            "BUILD_BUILDID",
+            config.get(request_id, "BUILD_BUILD_ID"),
+        )
+        job_url = f"{SYSTEM_COLLECTIONURI}{SYSTEM_TEAMPROJECT}/_build/results?buildId={BUILD_BUILDID}"
+    # BitBucket job url
+    elif job_url == "" and config.get(request_id, "BITBUCKET_STEP_UUID", "") != "":
+        bitbucket_project_url = config.get(request_id, "BITBUCKET_GIT_HTTP_ORIGIN", "")
+        bitbucket_pipeline_job_number = config.get(
+            request_id, "BITBUCKET_BUILD_NUMBER", ""
+        )
+        pipeline_step_run_uuid = config.get(request_id, "BITBUCKET_STEP_UUID", "")
+        pipeline_step_run_uuid = urllib.parse.quote(pipeline_step_run_uuid)
+        job_url = (
+            f"{bitbucket_project_url}/pipelines/results/"
+            f"{bitbucket_pipeline_job_number}/steps/{pipeline_step_run_uuid}"
+        )
+    return {"repo_name": repo_name, "branch_name": branch_name, "job_url": job_url}
 
 
 def check_updated_file(file, repo_home, changed_files=None):
@@ -328,6 +469,8 @@ def check_updated_file(file, repo_home, changed_files=None):
 
 
 def normalize_log_string(str_in):
+    if str_in == "" or str_in is None:
+        return ""
     str_in = ANSI_ESCAPE_REGEX.sub("", str_in)
     for replacement in LIST_OF_REPLACEMENTS:
         str_in = str_in.replace(replacement[0], replacement[1])
@@ -476,3 +619,61 @@ def is_pr() -> bool:
         )
         else False
     )
+
+
+def fix_regex_pattern(pattern):
+    # 1. Fix global flags not at the start of the expression
+    if "(?i)" in pattern:
+        if pattern.find("(?i)") > 0:
+            parts = pattern.split("(?i)")
+            pattern = "(?i)" + "".join(parts[0:])
+    # 2. Replace invalid escape sequences like `\z` with `$`
+    pattern = re.sub(r"\\z", "$", pattern)
+    return pattern
+
+
+def keep_only_valid_regex_patterns(patterns, fail=False):
+    fixed_patterns = []
+    # Heuristic regex to detect nested quantifiers (potential ReDoS risk)
+    nested_quantifier_regex = re.compile(r"\((?:[^()]*[+*][^()]*){2,}\)[+*?]")
+    for pattern in patterns:
+        # First, attempt to fix the pattern
+        fixed_pattern = fix_regex_pattern(pattern)
+        try:
+            re.compile(fixed_pattern)  # Check if the pattern is valid
+            # Skip if pattern has nested quantifiers (ReDoS risk)
+            if nested_quantifier_regex.search(fixed_pattern):
+                logging.debug(
+                    f"Skipped potentially unsafe regex pattern (possible ReDoS): {fixed_pattern}"
+                )
+                continue
+            fixed_patterns.append(fixed_pattern)  # Pattern is valid and safe, add it
+        except re.error as e:
+            if fail is True:
+                raise
+            else:
+                logging.debug(
+                    f"Invalid regex pattern after fix: {fixed_pattern}. Error: {e}"
+                )
+
+    return fixed_patterns
+
+
+def yellow(text):
+    return colored(text, "yellow", force_color=True)
+
+
+def green(text):
+    return colored(text, "green", force_color=True)
+
+
+def red(text):
+    return colored(text, "red", force_color=True)
+
+
+def blue(text):
+    return colored(text, "blue", force_color=True)
+
+
+def cyan(text):
+    return colored(text, "cyan", force_color=True)

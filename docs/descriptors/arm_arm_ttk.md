@@ -7,6 +7,21 @@ description: How to use arm-ttk (configure, ignore files, ignore errors, help & 
 # arm-ttk
 [![GitHub stars](https://img.shields.io/github/stars/Azure/arm-ttk?cacheSeconds=3600)](https://github.com/Azure/arm-ttk) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/Azure/arm-ttk?sort=semver)](https://github.com/Azure/arm-ttk/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/Azure/arm-ttk)](https://github.com/Azure/arm-ttk/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/Azure/arm-ttk)](https://github.com/Azure/arm-ttk/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/Azure/arm-ttk)](https://github.com/Azure/arm-ttk/graphs/contributors/)
 
+**ARM TTK (Azure Resource Manager Template Toolkit)** is the official Microsoft toolkit for analyzing and testing Azure Resource Manager Templates. It validates ARM templates for coding best practices and ensures they follow recommended guidelines.
+
+**Key Features:**
+
+- **Best Practice Validation**: Checks templates against Microsoft's recommended ARM template coding standards
+- **Security Analysis**: Validates security practices such as preventing secrets from being output in plain text
+- **Intent Validation**: Identifies unused parameters, variables, and resources to ensure clean template code
+- **Language Best Practices**: Ensures proper use of ARM template language constructs (e.g., using environment functions instead of hard-coded values)
+- **Azure Marketplace Compliance**: Same tests used to validate templates for Azure QuickStart Repository and Azure Marketplace
+- **Extensible Framework**: Allows for easy expansion and individual selection of tests
+
+**Note**: Starting with ARM TTK v0.10, investment in new tests is being moved to the Bicep linter. ARM TTK remains available to support JSON ARM templates and createUiDefinition scenarios.
+
+ARM TTK helps ensure your ARM templates are secure, maintainable, and follow Azure best practices for infrastructure as code.
+
 ## arm-ttk documentation
 
 - Visit [Official Web Site](https://github.com/Azure/arm-ttk#readme){target=_blank}
@@ -46,15 +61,15 @@ Use arm-ttk in your favorite IDE to catch errors before MegaLinter !
 |:-------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|--------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [ARMTTKExtension](https://marketplace.visualstudio.com/items?itemName=Sam-Cogan.ARMTTKExtension) | [![Install in VSCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/Sam-Cogan.ARMTTKExtension){target=_blank} |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
-This linter is available in the following flavours
+This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                     | Description                                              | Embedded linters |                                                                                                                                                                                           Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------|:---------------------------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)       | Default MegaLinter Flavor                                |       124        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/)       | Optimized for C, C++, C# or VB based projects            |        62        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
-|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/) | Optimized for C, C++, C# or VB based projects with JS/TS |        71        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)       | Default MegaLinter Flavor                                |       126        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/)       | Optimized for C, C++, C# or VB based projects            |        63        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/) | Optimized for C, C++, C# or VB based projects with JS/TS |        72        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
 
 ## Behind the scenes
 
@@ -112,23 +127,21 @@ Check the spelling of the name, or if a path was included, verify that the path 
 - Dockerfile commands :
 ```dockerfile
 # Parent descriptor install
-ARG TARGETPLATFORM
-RUN case ${TARGETPLATFORM} in \
-  "linux/amd64")  POWERSHELL_ARCH=musl-x64 ;; \
-  "linux/arm64")  POWERSHELL_ARCH=arm64    ;; \
-esac \
-&& curl -L https://github.com/PowerShell/PowerShell/releases/download/v7.4.2/powershell-7.4.2-linux-${POWERSHELL_ARCH}.tar.gz -o /tmp/powershell.tar.gz \
-&& mkdir -p /opt/microsoft/powershell/7 \
-&& tar zxf /tmp/powershell.tar.gz -C /opt/microsoft/powershell/7 \
-&& chmod +x /opt/microsoft/powershell/7/pwsh \
-&& ln -s /opt/microsoft/powershell/7/pwsh /usr/bin/pwsh
+# renovate: datasource=github-tags depName=PowerShell/PowerShell
+ARG POWERSHELL_VERSION=7.5.3
+RUN curl -L https://github.com/PowerShell/PowerShell/releases/download/v${POWERSHELL_VERSION}/powershell-${POWERSHELL_VERSION}-linux-musl-x64.tar.gz -o /tmp/powershell.tar.gz \
+    && mkdir -p /opt/microsoft/powershell/7 \
+    && tar zxf /tmp/powershell.tar.gz -C /opt/microsoft/powershell/7 \
+    && chmod +x /opt/microsoft/powershell/7/pwsh \
+    && ln -s /opt/microsoft/powershell/7/pwsh /usr/bin/pwsh
 
 # Linter install
-ARG ARM_TTK_NAME='master.zip'
-ARG ARM_TTK_URI='https://github.com/Azure/arm-ttk/archive/master.zip'
+# renovate: datasource=github-tags depName=Azure/arm-ttk
+ARG ARM_TTK_VERSION=20250401
+ARG ARM_TTK_NAME='arm-ttk.zip'
 ARG ARM_TTK_DIRECTORY='/opt/microsoft'
-ENV ARM_TTK_PSD1="${ARM_TTK_DIRECTORY}/arm-ttk-master/arm-ttk/arm-ttk.psd1"
-RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
+ENV ARM_TTK_PSD1="${ARM_TTK_DIRECTORY}/arm-ttk/arm-ttk/arm-ttk.psd1"
+RUN curl --retry 5 --retry-delay 5 -sLO "https://github.com/Azure/arm-ttk/releases/download/${ARM_TTK_VERSION}/${ARM_TTK_NAME}" \
     && unzip "${ARM_TTK_NAME}" -d "${ARM_TTK_DIRECTORY}" \
     && rm "${ARM_TTK_NAME}" \
     && ln -sTf "${ARM_TTK_PSD1}" /usr/bin/arm-ttk \

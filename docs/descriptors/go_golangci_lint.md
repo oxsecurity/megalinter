@@ -11,11 +11,51 @@ description: How to use golangci-lint (configure, ignore files, ignore errors, h
   </a>
 </div>
 
-[![GitHub stars](https://img.shields.io/github/stars/golangci/golangci-lint?cacheSeconds=3600)](https://github.com/golangci/golangci-lint) ![autofix](https://shields.io/badge/-autofix-green) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/golangci/golangci-lint?sort=semver)](https://github.com/golangci/golangci-lint/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/golangci/golangci-lint)](https://github.com/golangci/golangci-lint/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/golangci/golangci-lint)](https://github.com/golangci/golangci-lint/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/golangci/golangci-lint)](https://github.com/golangci/golangci-lint/graphs/contributors/)
+[![GitHub stars](https://img.shields.io/github/stars/golangci/golangci-lint?cacheSeconds=3600)](https://github.com/golangci/golangci-lint) ![autofix](https://shields.io/badge/-autofix-green) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/golangci/golangci-lint?sort=semver)](https://github.com/golangci/golangci-lint/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/golangci/golangci-lint)](https://github.com/golangci/golangci-lint/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/golangci/golangci-lint)](https://github.com/golangci/golangci-lint/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/golangci/golangci-lint)](https://github.com/golangci/golangci-lint/graphs/contributors/)
+
+**Golangci-lint** is a fast, comprehensive linters runner for Go that provides a unified interface to over 100 different Go linters. It's designed to be the ultimate Go code quality tool, combining multiple linters into a single, efficient, and highly configurable solution.
+
+**Key features:**
+
+- **⚡ Extremely Fast**: Runs linters in parallel, reuses Go build cache, and caches analysis results for optimal performance
+- **📦 100+ Linters Included**: Comprehensive collection of linters covering all aspects of Go code quality - no need to install them separately
+- **⚙️ YAML Configuration**: Flexible configuration system with sensible defaults and extensive customization options
+- **🥇 Minimal False Positives**: Carefully tuned default settings to reduce noise and focus on real issues
+- **🔥 Rich Output Formats**: Multiple output formats including text with colors, JSON, SARIF, HTML, JUnit-XML, and more
+
+**Comprehensive linting coverage:**
+
+- **Code Quality**: Detects bugs, performance issues, and maintainability problems
+- **Style Enforcement**: Ensures consistent formatting and coding conventions
+- **Security Analysis**: Identifies potential security vulnerabilities and unsafe patterns
+- **Performance Optimization**: Finds inefficient code patterns and suggests improvements
+- **Complexity Analysis**: Measures and controls code complexity and cognitive load
+- **Error Handling**: Validates proper error handling patterns in Go
+
+**Popular included linters:**
+
+- **staticcheck**: Advanced static analysis for Go
+- **govet**: Official Go static analyzer
+- **errcheck**: Checks for unchecked errors
+- **gosimple**: Suggests code simplifications  
+- **ineffassign**: Detects ineffectual assignments
+- **misspell**: Finds commonly misspelled words
+- **gocyclo**: Cyclomatic complexity analysis
+- **gosec**: Security-focused static analysis
+
+**Advanced capabilities:**
+
+- **Smart Caching**: Dramatically speeds up repeated runs by caching results
+- **Incremental Analysis**: Can analyze only changed files for faster analysis
+- **Custom Rules**: Support for custom linters and configuration
+- **Issue Filtering**: Sophisticated filtering and suppression of false positives
+- **Parallel Execution**: Concurrent linter execution for maximum speed
+
+Golangci-lint is the industry standard for Go code quality and is used by thousands of Go projects for maintaining high code standards and catching issues early in the development process.
 
 ## golangci-lint documentation
 
-- Version in MegaLinter: **1.59.1**
+- Version in MegaLinter: **2.4.0**
 - Visit [Official Web Site](https://golangci-lint.run/){target=_blank}
 - See [How to configure golangci-lint rules](https://golangci-lint.run/usage/configuration/#config-file){target=_blank}
   - If custom `.golangci.yml` config file isn't found, [.golangci.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.golangci.yml){target=_blank} will be used
@@ -31,20 +71,21 @@ description: How to use golangci-lint (configure, ignore files, ignore errors, h
 
 - Enable **autofixes** by adding `GO_GOLANGCI_LINT` in [APPLY_FIXES variable](https://megalinter.io/beta/configuration/#apply-fixes)
 
-| Variable                                     | Description                                                                                                                                                                                  | Default value                                   |
-|----------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
-| GO_GOLANGCI_LINT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                                                 |
-| GO_GOLANGCI_LINT_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                         |                                                 |
-| GO_GOLANGCI_LINT_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                      | `[".go"]`                                       |
-| GO_GOLANGCI_LINT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file                              |
-| GO_GOLANGCI_LINT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                               | None                                            |
-| GO_GOLANGCI_LINT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                | None                                            |
-| GO_GOLANGCI_LINT_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling GO_GOLANGCI_LINT and its pre/post commands                                                                                      | None                                            |
-| GO_GOLANGCI_LINT_CONFIG_FILE                 | golangci-lint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                     | `.golangci.yml`                                 |
-| GO_GOLANGCI_LINT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                 | Workspace folder, then MegaLinter default rules |
-| GO_GOLANGCI_LINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`                                         |
-| GO_GOLANGCI_LINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                             |
-| GO_GOLANGCI_LINT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `['golangci-lint']`                             |
+| Variable                                     | Description                                                                                                                                                                                                                                                                           | Default value                                   |
+|----------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
+| GO_GOLANGCI_LINT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                                                                                              |                                                 |
+| GO_GOLANGCI_LINT_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                                                                                                  |                                                 |
+| GO_GOLANGCI_LINT_CLI_LINT_MODE               | Override default CLI lint mode<br/>⚠️ As default value is **project**, overriding might not work<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `project`                                       |
+| GO_GOLANGCI_LINT_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                                                                                               | `[".go"]`                                       |
+| GO_GOLANGCI_LINT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                                                                                          | Include every file                              |
+| GO_GOLANGCI_LINT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                                                                                        | None                                            |
+| GO_GOLANGCI_LINT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                                                                                         | None                                            |
+| GO_GOLANGCI_LINT_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling GO_GOLANGCI_LINT and its pre/post commands                                                                                                                                                                               | None                                            |
+| GO_GOLANGCI_LINT_CONFIG_FILE                 | golangci-lint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                                                                              | `.golangci.yml`                                 |
+| GO_GOLANGCI_LINT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                                                                                          | Workspace folder, then MegaLinter default rules |
+| GO_GOLANGCI_LINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                                                                                            | `false`                                         |
+| GO_GOLANGCI_LINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                                                                                      | `0`                                             |
+| GO_GOLANGCI_LINT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                                                                                               | `['golangci-lint']`                             |
 
 ## IDE Integration
 
@@ -52,7 +93,6 @@ Use golangci-lint in your favorite IDE to catch errors before MegaLinter !
 
 |                                                                   <!-- -->                                                                   | IDE                                                  | Extension Name                                                                                            |                                                                              Install                                                                              |
 |:--------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|-----------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-|  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Atom](https://atom.io/)                             | [go-plus](https://atom.io/packages/go-plus)                                                               |                                                 [Visit Web Site](https://atom.io/packages/go-plus){target=_blank}                                                 |
 |  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Emacs](https://www.gnu.org/software/emacs/)         | [flycheck-golandci-lint](https://github.com/weijiangan/flycheck-golangci-lint)                            |                                       [Visit Web Site](https://github.com/weijiangan/flycheck-golangci-lint){target=_blank}                                       |
 |  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Emacs](https://www.gnu.org/software/emacs/)         | [SpaceMacs](https://github.com/syl20bnr/spacemacs/blob/develop/layers/+lang/go/README.org#pre-requisites) |                   [Visit Web Site](https://github.com/syl20bnr/spacemacs/blob/develop/layers/+lang/go/README.org#pre-requisites){target=_blank}                   |
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/default.ico" alt="" height="32px" class="megalinter-icon"></a> | goland                                               | [goland](https://www.jetbrains.com/help/go/settings-tools-file-watchers.html)                             |                               [Visit Web Site](https://www.jetbrains.com/help/go/settings-tools-file-watchers.html){target=_blank}                                |
@@ -60,15 +100,15 @@ Use golangci-lint in your favorite IDE to catch errors before MegaLinter !
 |   <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a>   | [vim](https://www.vim.org/)                          | [vim-go](https://github.com/fatih/vim-go)                                                                 |                                                 [Visit Web Site](https://github.com/fatih/vim-go){target=_blank}                                                  |
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/) | [vscode.Go](https://marketplace.visualstudio.com/items?itemName=ms-vscode.Go)                             | [![Install in VSCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/ms-vscode.Go){target=_blank} |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
-This linter is available in the following flavours
+This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                     | Embedded linters |                                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       124        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        83        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
-|         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a>          | [go](https://megalinter.io/beta/flavors/go/)           | Optimized for GO based projects                 |        52        |           ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-go/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-go) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       126        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        86        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+|         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a>          | [go](https://megalinter.io/beta/flavors/go/)           | Optimized for GO based projects                 |        50        |           ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-go/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-go) |
 
 ## Behind the scenes
 
@@ -106,14 +146,17 @@ Usage:
   golangci-lint [command]
 
 Available Commands:
-  cache       Cache control and information
+  cache       Cache control and information.
   completion  Generate the autocompletion script for the specified shell
-  config      Config file information
-  custom      Build a version of golangci-lint with custom linters
-  help        Help
-  linters     List current linters configuration
-  run         Run the linters
-  version     Version
+  config      Configuration file information and verification.
+  custom      Build a version of golangci-lint with custom linters.
+  fmt         Format Go source files.
+  formatters  List current formatters configuration.
+  help        Display extra help
+  linters     List current linters configuration.
+  migrate     Migrate configuration file from v1 to v2.
+  run         Lint the code.
+  version     Display the golangci-lint version.
 
 Flags:
       --color string   Use color when printing; can be 'always', 'auto', or 'never' (default "auto")
@@ -128,10 +171,10 @@ Use "golangci-lint [command] --help" for more information about a command.
 
 - Dockerfile commands :
 ```dockerfile
-RUN wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh \
+# renovate: datasource=github-tags depName=golangci/golangci-lint
+ARG GO_GOLANGCI_LINT_VERSION=2.4.0
+RUN wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s "v${GO_GOLANGCI_LINT_VERSION}" \
     && golangci-lint --version
 
 ```
 
-- APK packages (Linux):
-  - [go](https://pkgs.alpinelinux.org/packages?branch=edge&name=go)

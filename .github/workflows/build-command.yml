@@ -57,13 +57,13 @@ jobs:
           INPUTS_CONTEXT: ${{ toJson(github.event.inputs) }}
         run: echo "$INPUTS_CONTEXT"
       # Checkout the pull request branch
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           repository: ${{ github.event.inputs.checkout-repository }}
           ref: ${{ github.event.inputs.checkout-ref }}
       - name: Setup Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           # Version range or exact version of Python or PyPy to use, using SemVer's version range syntax. Reads from .python-version if unset.
           python-version-file: '.python-version' # Read python version from a file .python-version
@@ -81,13 +81,12 @@ jobs:
             > Running script `./build.sh`
       - name: Run build script
         run: ./build.sh
-      - run: git pull
-      - uses: stefanzweifel/git-auto-commit-action@v5
+      - uses: stefanzweifel/git-auto-commit-action@v6
         id: auto-commit-action
         with:
           commit_message: "[build-command] Update generated files"
           commit_user_name: megalinter-bot
-          commit_user_email: nicolas.vuillamy@ox.security
+          commit_user_email: 129584137+megalinter-bot@users.noreply.github.com
       - name: Add reaction
         uses: peter-evans/create-or-update-comment@v4
         with:

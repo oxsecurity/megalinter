@@ -50,7 +50,7 @@ jobs:
     steps:
       # Git Checkout
       - name: Checkout Code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
 
@@ -84,7 +84,28 @@ jobs:
           #   }}
           VALIDATE_ALL_CODEBASE: <%- VALIDATE_ALL_CODE_BASE_GHA %>
 
+          # Disable LLM Advisor for bot PRs (dependabot, renovate, etc.)
+          LLM_ADVISOR_ENABLED: >-
+            ${{
+              github.event_name != 'pull_request' ||
+              (github.event.pull_request.user.login != 'dependabot[bot]' &&
+               github.event.pull_request.user.login != 'renovate[bot]' &&
+               github.event.pull_request.user.login != 'github-actions[bot]' &&
+               !startsWith(github.event.pull_request.user.login, 'dependabot') &&
+               !startsWith(github.event.pull_request.user.login, 'renovate'))
+            }}
+
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+          # Uncomment to use ApiReporter (Grafana)
+          # API_REPORTER: true
+          # API_REPORTER_URL: ${{ secrets.API_REPORTER_URL }}
+          # API_REPORTER_BASIC_AUTH_USERNAME: ${{ secrets.API_REPORTER_BASIC_AUTH_USERNAME }}
+          # API_REPORTER_BASIC_AUTH_PASSWORD: ${{ secrets.API_REPORTER_BASIC_AUTH_PASSWORD }}
+          # API_REPORTER_METRICS_URL: ${{ secrets.API_REPORTER_METRICS_URL }}
+          # API_REPORTER_METRICS_BASIC_AUTH_USERNAME: ${{ secrets.API_REPORTER_METRICS_BASIC_AUTH_USERNAME }}
+          # API_REPORTER_METRICS_BASIC_AUTH_PASSWORD: ${{ secrets.API_REPORTER_METRICS_BASIC_AUTH_PASSWORD }}
+          # API_REPORTER_DEBUG: false
 
           # ADD YOUR CUSTOM ENV VARIABLES HERE TO OVERRIDE VALUES OF
           # .mega-linter.yml AT THE ROOT OF YOUR REPOSITORY
@@ -95,6 +116,7 @@ jobs:
         if: success() || failure()
         with:
           name: MegaLinter reports
+          include-hidden-files: "true"
           path: |
             megalinter-reports
             mega-linter.log
@@ -102,7 +124,7 @@ jobs:
       # Create pull request if applicable
       # (for now works only on PR from same repository, not from forks)
       - name: Create Pull Request with applied fixes
-        uses: peter-evans/create-pull-request@v6
+        uses: peter-evans/create-pull-request@v7
         id: cpr
         if: >-
           steps.ml.outputs.has_updated_sources == 1 &&
@@ -158,7 +180,7 @@ jobs:
         run: sudo chown -Rc $UID .git/
 
       - name: Commit and push applied linter fixes
-        uses: stefanzweifel/git-auto-commit-action@v5
+        uses: stefanzweifel/git-auto-commit-action@v6
         if: >-
           steps.ml.outputs.has_updated_sources == 1 &&
           (
@@ -181,4 +203,4 @@ jobs:
             }}
           commit_message: "[MegaLinter] Apply linters fixes"
           commit_user_name: megalinter-bot
-          commit_user_email: nicolas.vuillamy@ox.security
+          commit_user_email: 129584137+megalinter-bot@users.noreply.github.com

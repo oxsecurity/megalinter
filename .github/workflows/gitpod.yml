@@ -12,16 +12,19 @@ on:
 jobs:
   build:
     runs-on: ubuntu-24.04
+    env:
+      # renovate: datasource=github-releases depName=astral-sh/uv
+      UV_VERSION: 0.5.7
 
     steps:
       - name: Set TERM environment variable
         run: echo "TERM=xterm" >> $GITHUB_ENV
 
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version-file: '.python-version' # Read python version from a file .python-version
 
@@ -33,8 +36,9 @@ jobs:
           pip cache purge
 
       - run: |
-          curl  -LsSf https://astral.sh/uv/install.sh | sh
-          source "$HOME/.cargo/env"
+          # Show available shell options
+          curl -LsSf https://astral.sh/uv/install.sh | sh -s -- --help
+          curl -LsSf "https://astral.sh/uv/${UV_VERSION}/install.sh" | sh -s -- -v
 
       - name: Install dependencies (uv)
         run: make bootstrap --debug

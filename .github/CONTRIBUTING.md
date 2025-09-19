@@ -23,22 +23,18 @@ git clone git@github.com:YOURNAMESPACE/megalinter.git
 
 ### 4. Test your changes
 
-#### 4.1 Gitpod
+#### 4.1 Visual Studio Code Dev Containers
 
-Use Gitpod for a cloud-based development environment:
+The Visual Studio Code Dev Containers extension lets you use a container as a full-featured development environment:
 
-1. Sign up for Gitpod: <https://gitpod.io>
-2. Fork the `megalinter` repository
-3. Open your fork in Gitpod: `https://gitpod.io/#https://github.com/username/megalinter`
-4. Create a new branch: `git checkout -b my-feature-branch`
-5. Make your changes and commit: `git add .` and `git commit -m "chore: description of changes"`
-6. Test all : `make tests` or `make tests-fast` for TDD mode
-7. Test with megalinter: `make megalinter-tests`
-8. Push your changes: `git push origin my-feature-branch`
-9. Create a pull request on GitHub
-10. Wait for a review
-
-Keep your Gitpod workspace synced with the main repository.
+1. Fork the `megalinter` repository
+2. [Open your fork](https://docs.github.com/en/codespaces/developing-in-a-codespace/rebuilding-the-container-in-a-codespace#rebuilding-a-container) in VS Code
+3. Create a new branch: `git checkout -b my-feature-branch`
+4. Make your changes and commit: `git add .` and `git commit -m "chore: description of changes"`
+5. [Run tests](https://code.visualstudio.com/docs/editor/testing#_automatic-test-discovery-in-testing-view)
+6. Push your changes: `git push origin my-feature-branch`
+7. Create a pull request on GitHub
+8. Wait for a review
 
 #### 4.2 Desktop
 
@@ -47,6 +43,8 @@ Install [make](https://www.gnu.org/software/make/), [Python3.11](https://www.pyt
 Run `make` for Makefile help. Initialize virtualenv and install dependencies with `make reinitialization` or `make bootstrap`. Test your changes with `make tests` or `make tests-fast`.
 
 You can lint with `make megalinter` (Incoming)
+
+If you need to run `build.sh` commands manually (instead of `make megalinter-build`), you need to run `source .venv/bin/activate` (or `source .venv/Scripts/activate` on Windows) first.
 
 ### 5. Submit a pull request
 
@@ -64,7 +62,7 @@ Consider sponsoring the maintainer via [GitHub](https://github.com/sponsors/nvui
 2. Create a new branch: `git checkout -b my-branch-name`
 3. Make your change
 4. Update **CHANGELOG.md** (the root one, not the one in /docs)
-5. Run `bash build.sh` to regenerate dockerfile from updated sources (run `bash build.sh --doc` if you want to also regenerate documentation)
+5. Run `make megalinter-build` or `bash build.sh` to regenerate dockerfile from updated sources (run `make megalinter-build --doc` or `bash build.sh --doc` if you want to also regenerate documentation)
 6. Push and [submit a pull request][pr]
 7. Pat yourself on the back and wait for your pull request to be reviewed and merged.
 
@@ -78,6 +76,7 @@ Available commands can be listed with the help command by posting the following 
 /help
 ```
 Which returns:
+>
 > Command | Description
 > --- | ---
 > /build | Updates the Dockerfile, documentation, and other files from the yml descriptors
@@ -90,7 +89,7 @@ Which returns:
 2. Create a new branch: `git checkout -b my-branch-name`
 3. Make your change
 4. Update **CHANGELOG.md** (the root one, not the one in /docs)
-5. Run `bash build.sh` to regenerate dockerfile from updated sources (run `bash build.sh --doc` if you want to also regenerate documentation)
+5. Run `make megalinter-build` or `bash build.sh` to regenerate dockerfile from updated sources (run `make megalinter-build --doc` or `bash build.sh --doc` if you want to also regenerate documentation)
 6. Push to your fork and [submit a pull request][pr]
 7. Pat your self on the back and wait for your pull request to be reviewed and merged.
 
@@ -108,7 +107,106 @@ Draft pull requests are also welcome to get feedback early on, or if there is so
 ### Update Dockerfile base image
 
 1. `/Dockerfile` file has to be updated
-2. Run `bash build.sh`, and it will automatically propagate to all the other Dockerfiles
+2. Run `make megalinter-build` or `bash build.sh`, and it will automatically propagate to all the other Dockerfiles
+
+### Managing Python Dependencies
+
+MegaLinter uses **uv** (fast Python package installer) and **hatch** (modern Python project manager) for dependency management.
+
+#### Adding a New Python Package
+
+1. **Add to pyproject.toml**: Add the package to the appropriate section in `pyproject.toml`:
+
+   - **Core dependencies**: Add to `dependencies` array
+   - **Optional dependencies**: Add to `[project.optional-dependencies]` sections (e.g., `huggingface`, `all-llm`)
+   - **Development dependencies**: Add to `.config/python/dev/requirements.txt`
+
+2. **Example - Adding a core dependency**:
+
+   ```toml
+   dependencies = [
+     "azure-devops==6.0.0b4",
+     "new-package>=1.0.0",  # Add your package here
+     "commentjson",
+     # ... other dependencies
+   ]
+   ```
+
+3. **Example - Adding an optional dependency**:
+
+   ```toml
+   [project.optional-dependencies]
+   huggingface = [
+     "langchain-huggingface",
+     "new-ai-package==2.1.0",  # Add your package here
+     "transformers",
+     "torch",
+   ]
+   ```
+
+4. **Update lock file**: Run `uv lock` to update `uv.lock` with the new dependencies
+
+5. **Install locally**: Run `make bootstrap` or `uv pip install -e .` to install the updated dependencies
+
+#### Upgrading Python Packages
+
+1. **Update version in pyproject.toml**: Change the version constraint
+   ```toml
+   "package-name>=2.0.0",  # Updated from 1.0.0
+   ```
+
+2. **Update lock file**: Run `uv lock` to resolve and lock new versions
+
+3. **Install updates**: Run `make python-venv-editable-install` or `uv pip install --upgrade -e .`
+
+#### Development Environment Commands
+
+- **Bootstrap environment**: `make bootstrap` (sets up venv, installs all dependencies)
+- **Install dev requirements**: `make python-bootstrap-dev`
+- **Install package in editable mode**: `make python-venv-editable-install`
+- **Upgrade pip**: `make python-venv-upgrade`
+- **Clean environment**: `make python-venv-purge`
+
+#### Using uv directly
+
+If you prefer using uv commands directly:
+
+```bash
+# Install dependencies
+uv pip install -r .config/python/dev/requirements.txt
+
+# Install project in editable mode
+uv pip install -e .
+
+# Add a new package
+uv add package-name
+
+# Upgrade packages
+uv pip install --upgrade package-name
+
+# Lock dependencies
+uv lock
+```
+
+#### Using hatch environments
+
+```bash
+# Install hatch (if not already installed)
+pip install pipx && pipx install hatch
+
+# Enter hatch shell
+hatch shell
+
+# Run commands in specific environments
+hatch run docs:serve  # Run docs server
+hatch run build:all   # Run build commands
+```
+
+**Important Notes**:
+
+- Always run `uv lock` after modifying `pyproject.toml` to update the lock file
+- Test your changes locally with `make tests-fast` before submitting PR
+- Update `CHANGELOG.md` when adding or upgrading significant dependencies
 
 ### Improve documentation
 
@@ -119,24 +217,22 @@ In order to be able to run locally a server that serves all the documentation an
 Commands to execute (only one time):
 
 ```bash
-mkdir venv
-python -m venv venv/
-source venv/bin/activate
-pip install --upgrade -r .config/python/dev/requirements.txt
+pip install pipx
+pipx install hatch
+hatch shell
 ```
 
-Commands to run every time you want to enter the environment and run the server:
+Commands to run every time you want to build the docs and run the server:
 
 ```bash
-source venv/bin/activate
-mkdocs serve
+hatch run build:serve
 ```
 
 By default it listens on `http://127.0.0.1:8000/`.
 
 Every time a change is made to a `.md` file it will automatically update if the server is up.
 
-Once you think everything is correct run `bash build.sh --doc` and it will generate all the rest!
+Once you think everything is correct run `make megalinter-build --doc` or  `bash build.sh --doc` and it will generate all the rest!
 
 ### Add a new linter
 
@@ -145,7 +241,7 @@ Each linter must:
 - Be defined in a descriptor file. Few properties are required ([see json schema documentation](https://megalinter.io/json-schemas/descriptor.html)), but please think to input doc URLs and `ide` section for documentation
 - Have two test files in `.automation/test`: one for success and one for failure
 
-Then run `bash build.sh` and it will generate all the rest!
+Then run `make megalinter-build` or `bash build.sh` and it will generate all the rest!
 
 - Documentation (markdown)
 - Dockerfile (main and flavors)
@@ -167,19 +263,19 @@ If you are creating a linter or making changes to a linter, you may want to run 
 
 When running them, you may encounter several problems:
 
-* it's not installed on the machine locally and you don't want to install it.
+* It's not installed on the machine locally and you don't want to install it.
 * The OS doesn't allow the installation of the linter because it's not cross-platform.
 * The behavior between running it on the local machine (host) and the container is different.
 
 For those cases, it's important to have the possibility to run the tests inside the container. To do so:
 
-1. Run `bash build.sh` to update the Dockerfile files of each linter.
+1. Run `make megalinter-build` or `bash build.sh` to update the Dockerfile files of each linter.
 2. Execute the following commands in a ***.sh** script. Example:
 
 ```bash
-docker buildx build -f linters/spell_misspell/Dockerfile . --tag spell_misspell
-TEST_KEYWORDS_TO_USE="spell_misspell"
-docker run -e TEST_CASE_RUN=true -e OUTPUT_DETAIL=detailed -e TEST_KEYWORDS="${TEST_KEYWORDS_TO_USE}" -e MEGALINTER_VOLUME_ROOT="." -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v $(pwd):/tmp/lint spell_misspell
+LINTER="spell_misspell"
+docker buildx build -f linters/$LINTER/Dockerfile . --tag $LINTER
+docker run -e TEST_CASE_RUN=true -e OUTPUT_DETAIL=detailed -e TEST_KEYWORDS="${LINTER}" -e MEGALINTER_VOLUME_ROOT="." -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v $(pwd):/tmp/lint $LINTER
 ```
 
 In the above example, it builds the **misspell** linter image and then runs its tests. To do the same for another linter you would have to:

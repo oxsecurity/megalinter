@@ -1,4 +1,5 @@
-#!/usr/bin/env python3
+#!/usr/bin/env
+# flake8: noqa: E203
 """
 Template class for custom linters: any linter class in /linters folder must inherit from this class
 The following list of items can/must be overridden on custom linter local class:
@@ -33,6 +34,7 @@ from time import perf_counter
 import yaml
 from megalinter import config, pre_post_factory, utils, utils_reporter, utils_sarif
 from megalinter.constants import DEFAULT_DOCKER_WORKSPACE_DIR
+from megalinter.llm_advisor import LLMAdvisor
 
 
 class Linter:
@@ -129,6 +131,8 @@ class Linter:
         self.cli_lint_extra_args_after = []
         self.cli_lint_errors_count = None
         self.cli_lint_errors_regex = None
+        self.cli_lint_warnings_count = None
+        self.cli_lint_warnings_regex = None
         # Default arg name for configurations to use in linter version call
         self.cli_version_arg_name = "--version"
         self.cli_version_extra_args = []  # Extra arguments to send to cli everytime
@@ -146,7 +150,7 @@ class Linter:
 
         self.report_folder = ""
         self.reporters = []
-        self.lint_command_log: list(str) | str | None = None
+        self.lint_command_log: list(str) = []
 
         # Initialize parameters
         default_params = {
@@ -155,6 +159,7 @@ class Linter:
             "enable_linters": [],
             "disable_descriptors": [],
             "disable_linters": [],
+            "enable_errors_linters": [],
             "disable_errors_linters": [],
             "post_linter_status": True,
         }
@@ -251,32 +256,8 @@ class Linter:
 
         if self.is_active is True:
             self.show_elapsed_time = params.get("show_elapsed_time", False)
-            # Manage apply fixes flag on linter
-            param_apply_fixes = params.get("apply_fixes", "none")
-            # No fixing config on linter descriptor
-            if self.cli_lint_fix_arg_name is None:
-                self.apply_fixes = False
-            # APPLY_FIXES is "all"
-            elif param_apply_fixes == "all" or (
-                isinstance(param_apply_fixes, bool) and param_apply_fixes is True
-            ):
-                self.apply_fixes = True
-            # APPLY_FIXES is a comma-separated list in a single string
-            elif (
-                param_apply_fixes != "none"
-                and isinstance(param_apply_fixes, str)
-                and self.name in param_apply_fixes.split(",")
-            ):
-                self.apply_fixes = True
-            # APPLY_FIXES is a list of strings
-            elif (
-                param_apply_fixes != "none"
-                and isinstance(param_apply_fixes, list)
-                and (self.name in param_apply_fixes or param_apply_fixes[0] == "all")
-            ):
-                self.apply_fixes = True
-            else:
-                self.apply_fixes = False
+
+            self.manage_apply_fixes(params)
 
             # Disable lint_all_other_linters_files=true if we are in a standalone linter docker image,
             # because there are no other linters
@@ -400,12 +381,14 @@ class Linter:
             self.return_code = 0
             self.number_errors = 0
             self.total_number_errors = 0
+            self.total_number_warnings = 0
             self.number_fixed = 0
             self.files_lint_results = []
             self.start_perf = None
             self.elapsed_time_s = 0
             self.remote_config_file_to_delete = None
             self.remote_ignore_file_to_delete = None
+            self.llm_suggestion = None  # Store LLM advisor suggestions
 
     # Enable or disable linter
     def manage_activation(self, params):
@@ -482,6 +465,43 @@ class Linter:
                 f"[Activation] - {self.name} ({self.descriptor_id}) was not activated by {strategiesUsed} strategies"
             )
 
+    # Manage apply fixes flag on linter
+    def manage_apply_fixes(self, params):
+        self.apply_fixes = False
+
+        param_apply_fixes = params.get("apply_fixes", "none")
+
+        # APPLY_FIXES is "all"
+        if param_apply_fixes == "all" or (
+            isinstance(param_apply_fixes, bool) and param_apply_fixes is True
+        ):
+            self.apply_fixes = True
+        # APPLY_FIXES is a comma-separated list in a single string
+        elif (
+            param_apply_fixes != "none"
+            and isinstance(param_apply_fixes, str)
+            and self.name in param_apply_fixes.split(",")
+        ):
+            self.apply_fixes = True
+        # APPLY_FIXES is a list of strings
+        elif (
+            param_apply_fixes != "none"
+            and isinstance(param_apply_fixes, list)
+            and (self.name in param_apply_fixes or param_apply_fixes[0] == "all")
+        ):
+            self.apply_fixes = True
+        else:
+            self.apply_fixes = False
+
+        if self.apply_fixes:
+            logging.debug(
+                f"[Apply Fixes] is enabled for + {self.name} ({self.descriptor_id})"
+            )
+        else:
+            logging.debug(
+                f"[Apply Fixes] is disabled for + {self.name} ({self.descriptor_id})"
+            )
+
     # Manage configuration variables
     def load_config_vars(self, params):
         # Configuration file name: try first NAME + _FILE_NAME, then LANGUAGE + _FILE_NAME
@@ -543,9 +563,10 @@ class Linter:
                 local_config_file = self.workspace + os.path.sep + self.config_file_name
                 existing_before = os.path.isfile(local_config_file)
                 try:
-                    with urllib.request.urlopen(remote_config_file) as response, open(
-                        local_config_file, "wb"
-                    ) as out_file:
+                    with (
+                        urllib.request.urlopen(remote_config_file) as response,
+                        open(local_config_file, "wb") as out_file,
+                    ):
                         shutil.copyfileobj(response, out_file)
                         self.config_file_label = remote_config_file
                         if existing_before is False:
@@ -621,9 +642,10 @@ class Linter:
                 local_ignore_file = self.workspace + os.path.sep + self.ignore_file_name
                 existing_before = os.path.isfile(local_ignore_file)
                 try:
-                    with urllib.request.urlopen(remote_ignore_file) as response, open(
-                        local_ignore_file, "wb"
-                    ) as out_file:
+                    with (
+                        urllib.request.urlopen(remote_ignore_file) as response,
+                        open(local_ignore_file, "wb") as out_file,
+                    ):
                         shutil.copyfileobj(response, out_file)
                         self.ignore_file_label = remote_ignore_file
                         if existing_before is False:
@@ -683,17 +705,17 @@ class Linter:
                 self.request_id, self.name + "_CLI_LINT_MODE"
             )
             if cli_lint_mode_descriptor == "project":
-                raise KeyError(
-                    f"You can not override {self.name} cli_lint_mode as it can "
-                    "not process a file or a list of files. If you think this could be, post an issue :)"
+                logging.warning(
+                    f"Override {self.name} cli_lint_mode with {cli_lint_mode_config} at your own risk, "
+                    "as command line arguments are built for project mode"
                 )
             elif (
                 cli_lint_mode_descriptor == "file"
                 and cli_lint_mode_config == "list_of_files"
             ):
-                raise KeyError(
-                    f"You can not override {self.name} cli_lint_mode with {cli_lint_mode_config}, "
-                    "as it can process files only one by one. If you think it could be done, post an issue :)"
+                logging.warning(
+                    f"Override {self.name} cli_lint_mode with {cli_lint_mode_config} at your own risk, "
+                    f"as command line arguments are built for {cli_lint_mode_descriptor} mode"
                 )
             self.cli_lint_mode = cli_lint_mode_config
 
@@ -750,6 +772,18 @@ class Linter:
             self.disable_errors = False
         elif self.name in params["disable_errors_linters"]:
             self.disable_errors = True
+        elif (
+            "enable_errors_linters" in params
+            and len(params["enable_errors_linters"]) > 0
+            and self.name in params["enable_errors_linters"]
+        ):
+            self.disable_errors = False
+        elif (
+            "enable_errors_linters" in params
+            and len(params["enable_errors_linters"]) > 0
+            and self.name not in params["enable_errors_linters"]
+        ):
+            self.disable_errors = True
         elif config.get(self.request_id, self.name + "_DISABLE_ERRORS", "") == "false":
             self.disable_errors = False
         elif config.get(self.request_id, self.name + "_DISABLE_ERRORS", "") == "true":
@@ -790,7 +824,7 @@ class Linter:
             self.active_only_if_file_found.append(self.config_file_name)
 
     # Processes the linter
-    def run(self):
+    def run(self, run_commands_before_linters=None, run_commands_after_linters=None):
         self.start_perf = perf_counter()
 
         # Initialize linter reports
@@ -801,7 +835,9 @@ class Linter:
         self.before_lint_files()
 
         # Run commands defined in descriptor, or overridden by user in configuration
-        pre_post_factory.run_linter_pre_commands(self.master, self)
+        pre_post_factory.run_linter_pre_commands(
+            self.master, self, run_commands_before_linters
+        )
 
         # Lint each file one by one
         if self.cli_lint_mode == "file":
@@ -811,6 +847,9 @@ class Linter:
                 index = index + 1
                 return_code, stdout = self.process_linter(file)
                 file_errors_number = 0
+                file_warnings_number = 0
+                file_warnings_number = self.get_total_number_warnings(stdout)
+                self.total_number_warnings += file_warnings_number
                 if return_code > 0:
                     file_status = "error"
                     self.status = "warning" if self.disable_errors is True else "error"
@@ -818,23 +857,34 @@ class Linter:
                         self.return_code if self.disable_errors is True else 1
                     )
                     self.number_errors += 1
+                    # Calls external functions to count the number of warnings and errors
                     file_errors_number = self.get_total_number_errors(stdout)
+
                     self.total_number_errors += file_errors_number
                 self.update_files_lint_results(
-                    [file], return_code, file_status, stdout, file_errors_number
+                    [file],
+                    return_code,
+                    file_status,
+                    stdout,
+                    file_errors_number,
+                    file_warnings_number,
                 )
         else:
             # Lint all workspace in one command
             return_code, stdout = self.process_linter()
             self.stdout = stdout
+            # Count warnings regardless of return code
+            self.total_number_warnings += self.get_total_number_warnings(stdout)
             if return_code != 0:
                 self.status = "warning" if self.disable_errors is True else "error"
                 self.return_code = 0 if self.disable_errors is True else 1
                 self.number_errors += 1
                 self.total_number_errors += self.get_total_number_errors(stdout)
+            elif self.total_number_warnings > 0:
+                self.status = "warning"
             # Build result for list of files
             if self.cli_lint_mode == "list_of_files":
-                self.update_files_lint_results(self.files, None, None, None, None)
+                self.update_files_lint_results(self.files, None, None, None, None, None)
 
         # Set return code to 0 if failures in this linter must not make the MegaLinter run fail
         if self.return_code != 0:
@@ -847,6 +897,64 @@ class Linter:
             ):
                 self.return_code = 0
 
+        # Set LLM Advisor suggestions if available
+        try:
+            llm_advisor = LLMAdvisor(self.request_id)
+            if llm_advisor.is_available() and llm_advisor.should_analyze_linter(self):
+                # Get raw linter output for AI analysis
+                raw_linter_output = ""
+                if self.stdout is not None:
+                    raw_linter_output = self.stdout
+                else:
+                    # Try to read from the linter output file
+                    text_report_sub_folder = config.get(
+                        self.request_id, "TEXT_REPORTER_SUB_FOLDER", "linters_logs"
+                    )
+                    text_file_name = (
+                        f"{self.report_folder}{os.path.sep}"
+                        f"{text_report_sub_folder}{os.path.sep}"
+                        f"{self.name}-{self.status.upper()}.log"
+                    )
+                    if os.path.isfile(text_file_name):
+                        try:
+                            with open(
+                                text_file_name, "r", encoding="utf-8"
+                            ) as text_file:
+                                full_output = text_file.read()
+                                # Extract raw linter output (after "Linter raw log:" separator if present)
+                                separator_pos = full_output.find("Linter raw log:")
+                                if separator_pos != -1:
+                                    next_newline = full_output.find("\n", separator_pos)
+                                    if next_newline != -1:
+                                        raw_linter_output = full_output[
+                                            next_newline + 1 :
+                                        ].strip()
+                                else:
+                                    raw_linter_output = full_output.strip()
+                        except Exception as e:
+                            logging.warning(
+                                f"Error reading linter output for LLM analysis: {str(e)}"
+                            )
+
+                # Get AI suggestions if we have output to analyze
+                if raw_linter_output.strip():
+                    self.llm_suggestion = llm_advisor.get_fix_suggestions(
+                        self, raw_linter_output
+                    )
+                else:
+                    logging.debug(
+                        f"[LLM Advisor] No linter output available for LLM analysis for {self.name}"
+                    )
+            else:
+                logging.debug(
+                    f"[LLM Advisor] LLM advisor not available or not analyzing {self.name}"
+                )
+        except Exception as e:
+            logging.warning(
+                f"[LLM Advisor] Error initializing LLM advisor for {self.name}: {str(e)}"
+            )
+            self.llm_suggestion = None
+
         # Delete locally copied remote config file if necessary
         if self.remote_config_file_to_delete is not None:
             os.remove(self.remote_config_file_to_delete)
@@ -856,7 +964,9 @@ class Linter:
             os.remove(self.remote_ignore_file_to_delete)
 
         # Run commands defined in descriptor, or overridden by user in configuration
-        pre_post_factory.run_linter_post_commands(self.master, self)
+        pre_post_factory.run_linter_post_commands(
+            self.master, self, run_commands_after_linters
+        )
 
         # Generate linter reports
         self.elapsed_time_s = perf_counter() - self.start_perf
@@ -865,6 +975,7 @@ class Linter:
                 reporter.produce_report()
             except Exception as e:
                 logging.error("Unable to process reporter " + reporter.name + str(e))
+
         return self
 
     def replace_vars(self, variables):
@@ -881,7 +992,13 @@ class Linter:
         return variables_with_replacements
 
     def update_files_lint_results(
-        self, linted_files, return_code, file_status, stdout, file_errors_number
+        self,
+        linted_files,
+        return_code,
+        file_status,
+        stdout,
+        file_errors_number,
+        file_warnings_number,
     ):
         if self.try_fix is True:
             updated_files = utils.list_updated_files(self.github_workspace)
@@ -905,6 +1022,7 @@ class Linter:
                     "stdout": stdout,
                     "fixed": fixed,
                     "errors_number": file_errors_number,
+                    "warnings_number": file_warnings_number,
                 }
             ]
 
@@ -971,7 +1089,6 @@ class Linter:
         command = self.build_lint_command(file)
         # Output command if debug mode
         logging.debug(f"[{self.linter_name}] command: {str(command)}")
-        self.lint_command_log = command
         # Run command via CLI
         return_code, return_output = self.execute_lint_command(command)
         logging.debug(
@@ -989,6 +1106,7 @@ class Linter:
             "FORCE_COLOR": "0",
         }
         if isinstance(command, str):
+            self.lint_command_log.append(command)
             # Call linter with a sub-process
             process = subprocess.run(
                 command,
@@ -1002,7 +1120,7 @@ class Linter:
                 ),
             )
             return_code = process.returncode
-            return_stdout = utils.decode_utf8(process.stdout)
+            return_stdout = utils.clean_string(process.stdout, not self.is_formatter)
         else:
             # Use full executable path if we are on Windows
             if sys.platform == "win32":
@@ -1013,7 +1131,7 @@ class Linter:
                     msg = "Unable to find command: " + command[0]
                     logging.error(msg)
                     return errno.ESRCH, msg
-
+            self.lint_command_log.append(" ".join(command))
             # Call linter with a sub-process (RECOMMENDED: with a list of strings corresponding to the command)
             try:
                 process = subprocess.run(
@@ -1024,7 +1142,9 @@ class Linter:
                     cwd=cwd,
                 )
                 return_code = process.returncode
-                return_stdout = utils.decode_utf8(process.stdout)
+                return_stdout = utils.clean_string(
+                    process.stdout, not self.is_formatter
+                )
             except FileNotFoundError as err:
                 return_code = 999
                 return_stdout = (
@@ -1130,6 +1250,7 @@ class Linter:
         subprocess_env = {
             **config.build_env(self.request_id, True, self.unsecured_env_variables),
             "FORCE_COLOR": "0",
+            "NO_COLOR": "true",
         }
         try:
             process = subprocess.run(
@@ -1140,7 +1261,7 @@ class Linter:
                 env=subprocess_env,
             )
             return_code = process.returncode
-            output = utils.decode_utf8(process.stdout)
+            output = utils.clean_string(process.stdout)
             logging.debug("Linter version result: " + str(return_code) + " " + output)
         except FileNotFoundError:
             logging.warning("Unable to call command [" + " ".join(command) + "]")
@@ -1188,7 +1309,7 @@ class Linter:
                     env=subprocess_env,
                 )
                 return_code = process.returncode
-                output += utils.decode_utf8(process.stdout)
+                output += utils.clean_string(process.stdout)
                 logging.debug("Linter help result: " + str(return_code) + " " + output)
             except FileNotFoundError:
                 logging.warning("Unable to call command [" + " ".join(command) + "]")
@@ -1214,7 +1335,7 @@ class Linter:
     def manage_docker_command(self, command):
         if self.cli_docker_image is None:
             return command
-        docker_command = ["docker", "run", "--rm"]
+        docker_command = ["docker", "run", "--platform=linux/amd64", "--rm"]
         if hasattr(self, "workspace"):
             volume_root = config.get(self.request_id, "MEGALINTER_VOLUME_ROOT", "")
             if volume_root != "":
@@ -1231,7 +1352,10 @@ class Linter:
             lambda arg, w=workspace_value: arg.replace("{{WORKSPACE}}", w),
             self.cli_docker_args,
         )
-        docker_command += [f"{self.cli_docker_image}:{self.cli_docker_image_version}"]
+        docker_command += [
+            f"{self.cli_docker_image}:"
+            + f"{os.environ.get(self.cli_docker_image_version, self.cli_docker_image_version)}"
+        ]
         if isinstance(command, str):
             command = " ".join(docker_command) + " " + command
         else:
@@ -1258,12 +1382,14 @@ class Linter:
         # Add fix argument if defined
         if self.apply_fixes is True and (
             self.cli_lint_fix_arg_name is not None
+            or len(self.cli_lint_fix_remove_args) > 0
             or str(self.cli_executable_fix) != str(self.cli_executable)
         ):
             args_pos = len(self.cli_executable)
             cmd = cmd[args_pos:]  # Remove executable elements
             cmd = self.cli_executable_fix + cmd
-            cmd += [self.cli_lint_fix_arg_name]
+            if self.cli_lint_fix_arg_name is not None:
+                cmd += [self.cli_lint_fix_arg_name]
             self.try_fix = True
 
         # Add user-defined extra arguments if defined
@@ -1362,88 +1488,10 @@ class Linter:
 
     # Find number of errors in linter stdout log
     def get_total_number_errors(self, stdout: str):
-        total_errors = 0
-        # Count using SARIF output file
-        if self.output_sarif is True:
-            try:
-                # SARIF is in MegaLinter named file
-                if self.sarif_output_file is not None and os.path.isfile(
-                    self.sarif_output_file
-                ):
-                    with open(
-                        self.sarif_output_file, "r", encoding="utf-8"
-                    ) as sarif_file:
-                        sarif_output = yaml.safe_load(sarif_file)
-                        # SARIF is in default output file
-                elif self.sarif_default_output_file is not None and os.path.isfile(
-                    self.sarif_default_output_file
-                ):
-                    with open(
-                        self.sarif_default_output_file, "r", encoding="utf-8"
-                    ) as sarif_file:
-                        sarif_output = yaml.safe_load(sarif_file)
-                        # SARIF is in stdout
-                else:
-                    # SARIF is in stdout
-                    sarif_output = yaml.safe_load(stdout)
-                if "results" in sarif_output["runs"][0]:
-                    # Get number of results
-                    total_errors = len(sarif_output["runs"][0]["results"])
-                    # Append number of invocation config notifications (other type of errors, not in result)
-                    if "invocations" in sarif_output["runs"][0]:
-                        for invocation in sarif_output["runs"][0]["invocations"]:
-                            if "toolConfigurationNotifications" in invocation:
-                                total_errors += len(
-                                    invocation["toolConfigurationNotifications"]
-                                )
-                # If we got here, we should have found a number of errors from SARIF output
-                if total_errors == 0:
-                    logging.warning(
-                        "Unable to get total errors from SARIF output.\nSARIF:"
-                        + str(sarif_output)
-                    )
-                return total_errors
-            except Exception as e:
-                total_errors = 1
-                logging.error(
-                    "Error while getting total errors from SARIF output.\nError:"
-                    + str(e)
-                    + "\nstdout: "
-                    + stdout
-                )
-                return total_errors
-        # Get number with a single regex.
-        elif self.cli_lint_errors_count == "regex_number":
-            reg = self.get_regex(self.cli_lint_errors_regex)
-            m = re.search(reg, utils.normalize_log_string(stdout))
-            if m:
-                total_errors = int(m.group(1))
-        # Count the number of occurrences of a regex corresponding to an error in linter log
-        elif self.cli_lint_errors_count == "regex_count":
-            reg = self.get_regex(self.cli_lint_errors_regex)
-            total_errors = len(re.findall(reg, utils.normalize_log_string(stdout)))
-        # Sum of all numbers found in linter logs with a regex
-        elif self.cli_lint_errors_count == "regex_sum":
-            reg = self.get_regex(self.cli_lint_errors_regex)
-            matches = re.findall(reg, utils.normalize_log_string(stdout))
-            total_errors = sum(int(m) for m in matches)
-        # Count all lines of the linter log
-        elif self.cli_lint_errors_count == "total_lines":
-            total_errors = sum(
-                not line.isspace() and line != "" for line in stdout.splitlines()
-            )
-        # Count number of results in sarif format
-        elif self.cli_lint_errors_count == "sarif":
-            sarif = None
-            sarif_stdout = utils.find_json_in_stdout(stdout)
-            try:
-                sarif = json.loads(sarif_stdout)
-            except ValueError as e:
-                logging.warning(f"Unable to parse sarif ({str(e)}):" + stdout)
-            if sarif and sarif["runs"] and sarif["runs"][0]["results"]:
-                total_errors = len(sarif["runs"][0]["results"])
-            else:
-                logging.warning("Unable to find results in :" + stdout)
+        total_errors = self.get_result_count(
+            stdout, "error", "cli_lint_errors_count", "cli_lint_errors_regex"
+        )
+
         # Return result if found, else default value according to status
         if total_errors > 0:
             return total_errors
@@ -1452,10 +1500,156 @@ class Linter:
                 f"Unable to get number of errors with {self.cli_lint_errors_count} "
                 f"and {str(self.cli_lint_errors_regex)}"
             )
+
+        # If no regex is defined, return 0 errors if there is a success or 1 error if there are any
         if self.status == "success":
             return 0
         else:
             return 1
+
+    # Find number of warnings in linter stdout log
+    def get_total_number_warnings(self, stdout: str):
+        total_warnings = self.get_result_count(
+            stdout, "warning", "cli_lint_warnings_count", "cli_lint_warnings_regex"
+        )
+
+        if self.cli_lint_warnings_count is not None and total_warnings is None:
+            logging.warning(
+                f"Unable to get number of warnings with {self.cli_lint_warnings_count} "
+                f"and {str(self.cli_lint_warnings_regex)}"
+            )
+
+        if total_warnings is None:
+            total_warnings = 0
+
+        return total_warnings
+
+    # Find number of results by level in linter stdout log
+    def get_result_count(
+        self, stdout: str, level: str, count_property: str, regex_property: str
+    ):
+        total_result = 0
+
+        # Count using SARIF output file
+        if self.output_sarif is True:
+            return self.get_sarif_result_count(stdout, level)
+        # Get number with a single regex. Used when linter prints out Found _ errors/warnings
+        elif getattr(self, count_property) == "regex_number":
+            reg = self.get_regex(getattr(self, regex_property))
+            m = re.search(reg, utils.normalize_log_string(stdout))
+            if m:
+                total_result = int(m.group(1))
+        # Count the number of occurrences of a regex corresponding to
+        # an error or warning in linter log (parses linter log)
+        elif getattr(self, count_property) == "regex_count":
+            reg = self.get_regex(getattr(self, regex_property))
+            total_result = len(re.findall(reg, utils.normalize_log_string(stdout)))
+        # Sum of all numbers found in linter logs with a regex.
+        # Found when each file prints out total number of errors or warnings
+        elif getattr(self, count_property) == "regex_sum":
+            reg = self.get_regex(self.cli_lint_errors_regex)
+            matches = re.findall(reg, utils.normalize_log_string(stdout))
+            total_result = sum(int(m) for m in matches)
+        # Count all lines of the linter log
+        elif getattr(self, count_property) == "total_lines":
+            total_result = sum(
+                not line.isspace() and line != "" for line in stdout.splitlines()
+            )
+        # Count number of results in sarif format
+        elif getattr(self, count_property) == "sarif":
+            sarif = None
+            sarif_stdout = utils.find_json_in_stdout(stdout)
+            try:
+                sarif = json.loads(sarif_stdout)
+            except ValueError as e:
+                logging.warning(f"Unable to parse sarif ({str(e)}):" + stdout)
+            if sarif and sarif["runs"]:
+                for run in sarif["runs"]:
+                    for result in run["results"]:
+                        if result["level"] == level:
+                            total_result += 1
+            else:
+                logging.warning("Unable to find results in:" + stdout)
+        return total_result
+
+    def get_sarif_result_count(self, stdout: str, level: str):
+        total_result = 0
+
+        try:
+            # SARIF is in MegaLinter named file
+            if self.sarif_output_file is not None and os.path.isfile(
+                self.sarif_output_file
+            ):
+                with open(self.sarif_output_file, "r", encoding="utf-8") as sarif_file:
+                    sarif_output = yaml.safe_load(sarif_file)
+                    # SARIF is in default output file
+            elif self.sarif_default_output_file is not None and os.path.isfile(
+                self.sarif_default_output_file
+            ):
+                with open(
+                    self.sarif_default_output_file, "r", encoding="utf-8"
+                ) as sarif_file:
+                    sarif_output = yaml.safe_load(sarif_file)
+                    # SARIF is in stdout
+            else:
+                # SARIF is in stdout
+                sarif_output = yaml.safe_load(stdout)
+
+            for run in sarif_output["runs"]:
+                rule_default_level_map = {}
+
+                if "rules" in run["tool"]["driver"]:
+                    for rule in run["tool"]["driver"]["rules"]:
+                        if (
+                            "defaultConfiguration" in rule
+                            and "level" in rule["defaultConfiguration"]
+                        ):
+                            rule_default_level_map[rule["id"]] = rule[
+                                "defaultConfiguration"
+                            ]["level"]
+
+                for result in run["results"]:
+                    count_results = False
+
+                    if "level" in result:
+                        # Check if the level matches. Otherwise, if the level to be checked is "warning",
+                        # counts them as if they were to cover "note" and "none" levels
+                        # https://docs.oasis-open.org/sarif/sarif/v2.1.0/errata01/os/sarif-v2.1.0-errata01-os-complete.html#_Toc141790898
+                        if result["level"] == level or (
+                            result["level"] not in ["error", "warning"]
+                            and level == "warning"
+                        ):
+                            count_results = True
+                    elif (
+                        "ruleId" in result
+                        and result["ruleId"] in rule_default_level_map
+                        and rule_default_level_map[result["ruleId"]] == level
+                    ):
+                        count_results = True
+                    # If the level property does not exist, the default value is warning
+                    # https://json.schemastore.org/sarif-2.1.0.json
+                    elif level == "warning":
+                        count_results = True
+
+                    if count_results is True:
+                        total_result += len(result["locations"])
+
+            # If we got here, we should have found a number of results from SARIF output
+            if total_result == 0:
+                logging.warning(
+                    f"Unable to get total {level}s from SARIF output.\nSARIF:"
+                    + str(sarif_output)
+                )
+            return total_result
+        except Exception as e:
+            total_result = 1
+            logging.error(
+                f"Error while getting total {level}s from SARIF output.\nError:"
+                + str(e)
+                + "\nstdout: "
+                + stdout
+            )
+            return total_result
 
     # Build the CLI command to get linter version (can be overridden if --version is not the way to get the version)
     def build_version_command(self):
@@ -1480,8 +1674,8 @@ class Linter:
     def complete_text_reporter_report(self, _reporter_self):
         return []
 
-    def pre_test(self):
+    def pre_test(self, test_name):
         pass
 
-    def post_test(self):
+    def post_test(self, test_name):
         pass

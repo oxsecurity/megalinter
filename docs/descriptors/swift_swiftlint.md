@@ -7,12 +7,25 @@ description: How to use swiftlint (configure, ignore files, ignore errors, help 
 # swiftlint
 [![GitHub stars](https://img.shields.io/github/stars/realm/SwiftLint?cacheSeconds=3600)](https://github.com/realm/SwiftLint) ![autofix](https://shields.io/badge/-autofix-green) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/realm/SwiftLint?sort=semver)](https://github.com/realm/SwiftLint/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/realm/SwiftLint)](https://github.com/realm/SwiftLint/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/realm/SwiftLint)](https://github.com/realm/SwiftLint/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/realm/SwiftLint)](https://github.com/realm/SwiftLint/graphs/contributors/)
 
+**SwiftLint** is the industry-standard linter and formatter for Swift code that enforces style guidelines and best practices based on the community-driven Swift Style Guide. It serves as an essential tool for maintaining high-quality, consistent Swift codebases.
+
+**Key Features:**
+
+- **Comprehensive Rule Set**: Over 200 built-in rules covering code style, performance, best practices, and potential bug detection
+- **SourceKit Integration**: Leverages Apple's SourceKit for accurate AST-based analysis and precise error detection
+- **Automatic Fixing**: Intelligent auto-correction for many rule violations, saving manual effort
+- **Highly Configurable**: Extensive configuration options with support for enabling/disabling rules and custom severity levels
+- **Custom Rules**: Support for project-specific custom rules using regular expressions and AST patterns
+- **Xcode Integration**: Seamless integration with Xcode projects through build phases and scheme actions
+- **Performance Optimized**: Fast analysis even for large Swift projects with incremental linting support
+- **Multiple Output Formats**: Supports various report formats including JSON, HTML, and checkstyle for tool integration
+
 ## swiftlint documentation
 
-- Version in MegaLinter: **0.55.1**
+- Version in MegaLinter: **0.61.0**
 - Visit [Official Web Site](https://github.com/realm/SwiftLint#readme){target=_blank}
-- Docker image: [norionomura/swiftlint:latest](https://hub.docker.com/r/norionomura/swiftlint){target=_blank}
-  - arguments: `-v {{WORKSPACE}}:/tmp/lint:rw`
+- Docker image: [ghcr.io/realm/swiftlint:SWIFT_SWIFTLINT_VERSION](https://hub.docker.com/r/ghcr.io/realm/swiftlint){target=_blank}
+  - arguments: `-v {{WORKSPACE}}:/tmp/lint:rw -w /tmp/lint`
 - See [How to configure swiftlint rules](https://github.com/realm/SwiftLint#configuration){target=_blank}
 - See [How to disable swiftlint rules in files](https://github.com/realm/SwiftLint#disable-rules-in-code){target=_blank}
 - See [Index of problems detected by swiftlint](https://realm.github.io/SwiftLint/rule-directory.html){target=_blank}
@@ -26,21 +39,22 @@ description: How to use swiftlint (configure, ignore files, ignore errors, help 
 
 - Enable **autofixes** by adding `SWIFT_SWIFTLINT` in [APPLY_FIXES variable](https://megalinter.io/beta/configuration/#apply-fixes)
 
-| Variable                                    | Description                                                                                                                                                                                  | Default value                                   |
-|---------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
-| SWIFT_SWIFTLINT_DOCKER_IMAGE_VERSION        | Docker image version                                                                                                                                                                         | `latest`                                        |
-| SWIFT_SWIFTLINT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                                                 |
-| SWIFT_SWIFTLINT_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                         |                                                 |
-| SWIFT_SWIFTLINT_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                      | `[".swift"]`                                    |
-| SWIFT_SWIFTLINT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file                              |
-| SWIFT_SWIFTLINT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                               | None                                            |
-| SWIFT_SWIFTLINT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                | None                                            |
-| SWIFT_SWIFTLINT_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling SWIFT_SWIFTLINT and its pre/post commands                                                                                       | None                                            |
-| SWIFT_SWIFTLINT_CONFIG_FILE                 | swiftlint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                         | `.swiftlint.yml`                                |
-| SWIFT_SWIFTLINT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                 | Workspace folder, then MegaLinter default rules |
-| SWIFT_SWIFTLINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`                                         |
-| SWIFT_SWIFTLINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                             |
-| SWIFT_SWIFTLINT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `['swiftlint']`                                 |
+| Variable                                    | Description                                                                                                                                                                                                                                                                           | Default value                                   |
+|---------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
+| SWIFT_SWIFTLINT_DOCKER_IMAGE_VERSION        | Docker image version                                                                                                                                                                                                                                                                  | `SWIFT_SWIFTLINT_VERSION`                       |
+| SWIFT_SWIFTLINT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                                                                                              |                                                 |
+| SWIFT_SWIFTLINT_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                                                                                                  |                                                 |
+| SWIFT_SWIFTLINT_CLI_LINT_MODE               | Override default CLI lint mode<br/>⚠️ As default value is **project**, overriding might not work<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `project`                                       |
+| SWIFT_SWIFTLINT_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                                                                                               | `[".swift"]`                                    |
+| SWIFT_SWIFTLINT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                                                                                          | Include every file                              |
+| SWIFT_SWIFTLINT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                                                                                        | None                                            |
+| SWIFT_SWIFTLINT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                                                                                         | None                                            |
+| SWIFT_SWIFTLINT_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling SWIFT_SWIFTLINT and its pre/post commands                                                                                                                                                                                | None                                            |
+| SWIFT_SWIFTLINT_CONFIG_FILE                 | swiftlint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                                                                                  | `.swiftlint.yml`                                |
+| SWIFT_SWIFTLINT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                                                                                          | Workspace folder, then MegaLinter default rules |
+| SWIFT_SWIFTLINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                                                                                            | `false`                                         |
+| SWIFT_SWIFTLINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                                                                                      | `0`                                             |
+| SWIFT_SWIFTLINT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                                                                                               | `['swiftlint']`                                 |
 
 ## IDE Integration
 
@@ -48,19 +62,18 @@ Use swiftlint in your favorite IDE to catch errors before MegaLinter !
 
 |                                                                   <!-- -->                                                                   | IDE                                                      | Extension Name                                                   |                                                           Install                                                            |
 |:--------------------------------------------------------------------------------------------------------------------------------------------:|----------------------------------------------------------|------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------:|
-|  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Atom](https://atom.io/)                                 | [linter-swiftlint](https://atom.io/packages/linter-swiftlint)    |                          [Visit Web Site](https://atom.io/packages/linter-swiftlint){target=_blank}                          |
 |  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a>   | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [swiftlint](https://plugins.jetbrains.com/plugin/9175-swiftlint) | <iframe frameborder="none" width="245px" height="48px" src="https://plugins.jetbrains.com/embeddable/install/9175"></iframe> |
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/default.ico" alt="" height="32px" class="megalinter-icon"></a> | xcode                                                    | [Configure manually](https://github.com/realm/SwiftLint#xcode)   |                          [Visit Web Site](https://github.com/realm/SwiftLint#xcode){target=_blank}                           |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
-This linter is available in the following flavours
+This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                     | Embedded linters |                                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       124        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        83        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
-|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/swift.ico" alt="" height="32px" class="megalinter-icon"></a>        | [swift](https://megalinter.io/beta/flavors/swift/)     | Optimized for SWIFT based projects              |        51        |     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-swift/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-swift) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       126        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        86        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/swift.ico" alt="" height="32px" class="megalinter-icon"></a>        | [swift](https://megalinter.io/beta/flavors/swift/)     | Optimized for SWIFT based projects              |        49        |     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-swift/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-swift) |
 
 ## Behind the scenes
 
@@ -81,40 +94,84 @@ swiftlint is called once on the whole project directory (`project` CLI lint mode
 ### Example calls
 
 ```shell
-docker run -v /tmp/lint:/tmp/lint:rw norionomura/swiftlint:latest swiftlint lint --path /tmp/lint --strict
+docker run -v /tmp/lint:/tmp/lint:rw ghcr.io/realm/swiftlint:latest swiftlint --strict
 ```
 
 ```shell
-docker run -v /tmp/lint:/tmp/lint:rw norionomura/swiftlint:latest swiftlint --fix --path /tmp/lint --strict
+docker run -v /tmp/lint:/tmp/lint:rw ghcr.io/realm/swiftlint:latest swiftlint --fix --strict
 ```
 
 
 ### Help content
 
 ```shell
-OVERVIEW: A tool to enforce Swift style and conventions.
+OVERVIEW: Print lint warnings and errors
 
-USAGE: swiftlint <subcommand>
+USAGE: swiftlint lint [<options>] [<paths> ...]
+
+ARGUMENTS:
+  <paths>                 List of paths to the files or directories to lint.
 
 OPTIONS:
+  --config <config>       The path to one or more SwiftLint configuration
+                          files, evaluated as a parent-child hierarchy.
+  --fix, --autocorrect    Correct violations whenever possible.
+  --format                Should reformat the Swift files using the same
+                          mechanism used by Xcode (via SourceKit).
+                          Only applied with `--fix`/`--autocorrect`.
+  --use-alternative-excluding
+                          Use an alternative algorithm to exclude paths for
+                          `excluded`, which may be faster in some cases.
+  --use-script-input-files
+                          Read SCRIPT_INPUT_FILE* environment variables as
+                          files.
+  --use-script-input-file-lists
+                          Read SCRIPT_INPUT_FILE_LIST* environment variables as
+                          file lists.
+  --strict                Upgrades warnings to serious violations (errors).
+  --lenient               Downgrades serious violations to warnings, warning
+                          threshold is disabled.
+  --force-exclude         Exclude files in config `excluded` even if their
+                          paths are explicitly specified.
+  --benchmark             Save benchmarks to `benchmark_files.txt` and
+                          `benchmark_rules.txt`.
+  --reporter <reporter>   The reporter used to log errors and warnings.
+  --baseline <baseline>   The path to a baseline file, which will be used to
+                          filter out detected violations.
+  --write-baseline <write-baseline>
+                          The path to save detected violations to as a new
+                          baseline.
+  --working-directory <working-directory>
+                          The working directory to use when running SwiftLint.
+  --output <output>       The file where violations should be saved. Prints to
+                          stdout by default.
+  --progress              Show a live-updating progress bar instead of each
+                          file being processed.
+  --check-for-updates     Check whether a later version of SwiftLint is
+                          available after processing all files.
+  --only-rule <only-rule> Run only the specified rule, ignoring `only_rules`,
+                          `opt_in_rules` and `disabled_rules`.
+                          Can be specified repeatedly to run multiple rules.
+  --use-stdin             Lint standard input.
+  --quiet                 Don't print status logs like 'Linting <file>' & 'Done
+                          linting'.
+  --silence-deprecation-warnings
+                          Don't print deprecation warnings.
+  --cache-path <cache-path>
+                          The directory of the cache used when linting.
+  --no-cache              Ignore cache when linting.
+  --enable-all-rules      Run all rules, even opt-in and disabled ones,
+                          ignoring `only_rules`.
   --version               Show the version.
   -h, --help              Show help information.
 
-SUBCOMMANDS:
-  analyze                 Run analysis rules
-  docs                    Open SwiftLint documentation website in the default
-                          web browser
-  generate-docs           Generates markdown documentation for selected group
-                          of rules
-  lint (default)          Print lint warnings and errors
-  baseline                Operations on existing baselines
-  reporters               Display the list of reporters and their identifiers
-  rules                   Display the list of rules and their identifiers
-  version                 Display the current version of SwiftLint
-
-  See 'swiftlint help <subcommand>' for detailed help.
 ```
 
 ### Installation on mega-linter Docker image
 
-None
+- Dockerfile commands :
+```dockerfile
+# renovate: datasource=docker depName=ghcr.io/realm/swiftlint
+ENV SWIFT_SWIFTLINT_VERSION=0.61.0
+```
+

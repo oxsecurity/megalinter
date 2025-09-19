@@ -1,0 +1,6 @@
+---
+- hosts: all
+  tasks:
+    - shell: echo "This is bad practice"
+    - command: /bin/false
+      ignore_errors: true

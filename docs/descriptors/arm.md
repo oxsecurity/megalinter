@@ -37,18 +37,15 @@ description: arm-ttk is available to analyze ARM files in MegaLinter
 
 - Dockerfile commands :
 ```dockerfile
-ARG TARGETPLATFORM
-RUN case ${TARGETPLATFORM} in \
-  "linux/amd64")  POWERSHELL_ARCH=musl-x64 ;; \
-  "linux/arm64")  POWERSHELL_ARCH=arm64    ;; \
-esac \
-&& curl -L https://github.com/PowerShell/PowerShell/releases/download/v7.4.2/powershell-7.4.2-linux-${POWERSHELL_ARCH}.tar.gz -o /tmp/powershell.tar.gz \
-&& mkdir -p /opt/microsoft/powershell/7 \
-&& tar zxf /tmp/powershell.tar.gz -C /opt/microsoft/powershell/7 \
-&& chmod +x /opt/microsoft/powershell/7/pwsh \
-&& ln -s /opt/microsoft/powershell/7/pwsh /usr/bin/pwsh
+# renovate: datasource=github-tags depName=PowerShell/PowerShell
+ARG POWERSHELL_VERSION=7.5.3
+RUN curl -L https://github.com/PowerShell/PowerShell/releases/download/v${POWERSHELL_VERSION}/powershell-${POWERSHELL_VERSION}-linux-musl-x64.tar.gz -o /tmp/powershell.tar.gz \
+    && mkdir -p /opt/microsoft/powershell/7 \
+    && tar zxf /tmp/powershell.tar.gz -C /opt/microsoft/powershell/7 \
+    && chmod +x /opt/microsoft/powershell/7/pwsh \
+    && ln -s /opt/microsoft/powershell/7/pwsh /usr/bin/pwsh
 
 ```
 
 - APK packages (Linux):
-  - [icu-libs](https://pkgs.alpinelinux.org/packages?branch=edge&name=icu-libs)
+  - [icu-libs](https://pkgs.alpinelinux.org/packages?branch=v3.22&arch=x86_64&name=icu-libs)

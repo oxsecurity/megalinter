@@ -1,47 +1,45 @@
 {
-	"name": "MegaLinter",
-	"build": {
-		"dockerfile": "Dockerfile",
-		"context": "..",
-		"args": { 
-			"VARIANT": "3.10",
-			"NODE_VERSION": "16"
-		}
-	},
-	"customizations": {
-		"vscode": {
-			"settings": { 
-				"python.defaultInterpreterPath": "/usr/local/bin/python",
-				"python.linting.enabled": true,
-				"python.linting.pylintEnabled": true,
-				"python.formatting.autopep8Path": "/usr/local/py-utils/bin/autopep8",
-				"python.formatting.blackPath": "/usr/local/py-utils/bin/black",
-				"python.formatting.yapfPath": "/usr/local/py-utils/bin/yapf",
-				"python.linting.banditPath": "/usr/local/py-utils/bin/bandit",
-				"python.linting.flake8Path": "/usr/local/py-utils/bin/flake8",
-				"python.linting.mypyPath": "/usr/local/py-utils/bin/mypy",
-				"python.linting.pycodestylePath": "/usr/local/py-utils/bin/pycodestyle",
-				"python.linting.pydocstylePath": "/usr/local/py-utils/bin/pydocstyle",
-				"python.linting.pylintPath": "/usr/local/py-utils/bin/pylint"
-			},
-			
-			"extensions": [
-				"esbenp.prettier-vscode",
-				"exiasr.hadolint",
-				"foxundermoon.shell-format",
-				"github.vscode-pull-request-github",
-				"hbenl.vscode-test-explorer",
-				"LittleFoxTeam.vscode-python-test-adapter",
-				"mhutchie.git-graph",
-				"matangover.mypy",
-				"ms-python.python",
-				"ms-python.vscode-pylance",
-				"rogalmic.bash-debug",
-				"streetsidesoftware.code-spell-checker",
-				"stylelint.vscode-stylelint",
-				"timonwong.shellcheck"
-			]
-		}
-	},
-	"remoteUser": "vscode"
+  "name": "MegaLinter",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".."
+  },
+  "features": {
+    "ghcr.io/devcontainers-extra/features/coverage-py:2": {}
+  },
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "python.defaultInterpreterPath": "/usr/local/bin/python",
+        "python.linting.enabled": true,
+        "python.linting.pylintEnabled": true,
+        "python.formatting.autopep8Path": "/usr/local/py-utils/bin/autopep8",
+        "python.formatting.blackPath": "/usr/local/py-utils/bin/black",
+        "python.formatting.yapfPath": "/usr/local/py-utils/bin/yapf",
+        "python.linting.banditPath": "/usr/local/py-utils/bin/bandit",
+        "python.linting.flake8Path": "/usr/local/py-utils/bin/flake8",
+        "python.linting.mypyPath": "/usr/local/py-utils/bin/mypy",
+        "python.linting.pycodestylePath": "/usr/local/py-utils/bin/pycodestyle",
+        "python.linting.pydocstylePath": "/usr/local/py-utils/bin/pydocstyle",
+        "python.linting.pylintPath": "/usr/local/py-utils/bin/pylint"
+      },
+      "extensions": [
+        "esbenp.prettier-vscode",
+        "exiasr.hadolint",
+        "foxundermoon.shell-format",
+        "github.vscode-pull-request-github",
+        "hbenl.vscode-test-explorer",
+        "LittleFoxTeam.vscode-python-test-adapter",
+        "mhutchie.git-graph",
+        "matangover.mypy",
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "rogalmic.bash-debug",
+        "streetsidesoftware.code-spell-checker",
+        "stylelint.vscode-stylelint",
+        "timonwong.shellcheck"
+      ]
+    }
+  },
+  "remoteUser": "vscode"
 }

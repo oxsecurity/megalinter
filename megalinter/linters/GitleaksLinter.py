@@ -12,6 +12,8 @@ from megalinter import Linter, config
 class GitleaksLinter(Linter):
     def __init__(self, params=None, linter_config=None):
         super().__init__(params, linter_config)
+        if self.is_active is False:
+            return
         self.pr_commits_scan = config.get(
             self.request_id, "REPOSITORY_GITLEAKS_PR_COMMITS_SCAN", "false"
         )

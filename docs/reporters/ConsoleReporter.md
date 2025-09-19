@@ -10,6 +10,8 @@ Posts MegaLinter results execution logs in the console
 
 Open GitHub action (or other CI tool) logs and look in MegaLinter step
 
+If [LLM Advisor](../llm-advisor.md) is activated, it will also show its suggestions to fix linter errors.
+
 ![Screenshot](../assets/images/ConsoleReporter.jpg)
 
 ## Configuration

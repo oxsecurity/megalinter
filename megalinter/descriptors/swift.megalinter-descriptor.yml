@@ -8,44 +8,61 @@ file_extensions:
 linters:
   # Swift lint
   - linter_name: swiftlint
+    linter_text: |
+      **SwiftLint** is the industry-standard linter and formatter for Swift code that enforces style guidelines and best practices based on the community-driven Swift Style Guide. It serves as an essential tool for maintaining high-quality, consistent Swift codebases.
+
+      **Key Features:**
+
+      - **Comprehensive Rule Set**: Over 200 built-in rules covering code style, performance, best practices, and potential bug detection
+      - **SourceKit Integration**: Leverages Apple's SourceKit for accurate AST-based analysis and precise error detection
+      - **Automatic Fixing**: Intelligent auto-correction for many rule violations, saving manual effort
+      - **Highly Configurable**: Extensive configuration options with support for enabling/disabling rules and custom severity levels
+      - **Custom Rules**: Support for project-specific custom rules using regular expressions and AST patterns
+      - **Xcode Integration**: Seamless integration with Xcode projects through build phases and scheme actions
+      - **Performance Optimized**: Fast analysis even for large Swift projects with incremental linting support
+      - **Multiple Output Formats**: Supports various report formats including JSON, HTML, and checkstyle for tool integration
     linter_url: https://github.com/realm/SwiftLint
     linter_repo: https://github.com/realm/SwiftLint
     linter_rules_url: https://realm.github.io/SwiftLint/rule-directory.html
     linter_rules_configuration_url: https://github.com/realm/SwiftLint#configuration
     linter_rules_inline_disable_url: https://github.com/realm/SwiftLint#disable-rules-in-code
+    linter_spdx_license: MIT
     active_only_if_file_found:
       - ".swiftlint.yml"
     cli_lint_mode: project
     cli_lint_extra_args:
       - "lint"
     cli_lint_extra_args_after:
-      - "--path"
-      - "/tmp/lint"
       - "--strict"
     cli_lint_fix_arg_name: "--fix"
     cli_lint_fix_remove_args:
       - "lint"
-    cli_docker_image: norionomura/swiftlint
+    cli_docker_image: ghcr.io/realm/swiftlint
+    cli_docker_image_version: "SWIFT_SWIFTLINT_VERSION"
     cli_docker_args:
       - "-v"
       - "{{WORKSPACE}}:/tmp/lint:rw"
+      - "-w"
+      - "/tmp/lint"
     config_file_name: ".swiftlint.yml"
     cli_config_arg_name: ""
-    cli_help_arg_name: "help"
-    cli_version_arg_name: "version"
+    cli_help_arg_name: "--help"
+    cli_version_arg_name: "--version"
     cli_lint_errors_count: regex_number
     cli_lint_errors_regex: "Found ([0-9]+) violations"
     examples:
-      - "docker run -v /tmp/lint:/tmp/lint:rw norionomura/swiftlint:latest swiftlint lint --path /tmp/lint --strict"
-      - "docker run -v /tmp/lint:/tmp/lint:rw norionomura/swiftlint:latest swiftlint --fix --path /tmp/lint --strict"
+      - "docker run -v /tmp/lint:/tmp/lint:rw ghcr.io/realm/swiftlint:latest swiftlint --strict"
+      - "docker run -v /tmp/lint:/tmp/lint:rw ghcr.io/realm/swiftlint:latest swiftlint --fix --strict"
+    install:
+      dockerfile:
+        - |-
+          # renovate: datasource=docker depName=ghcr.io/realm/swiftlint
+          ENV SWIFT_SWIFTLINT_VERSION=0.61.0
     supported_platforms:
       platform:
         - linux/amd64
         - linux/arm64
     ide:
-      atom:
-        - name: linter-swiftlint
-          url: https://atom.io/packages/linter-swiftlint
       idea:
         - name: swiftlint
           url: https://plugins.jetbrains.com/plugin/9175-swiftlint

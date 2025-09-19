@@ -1,0 +1,3 @@
+linters: linters_with_defaults(
+   assignment_linter = NULL
+  )

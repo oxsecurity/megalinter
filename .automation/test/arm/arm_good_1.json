@@ -30,7 +30,7 @@
         {
             "name": "[variables('Network.Name')]",
             "type": "Microsoft.Network/virtualNetworks",
-            "apiVersion": "2023-04-01",
+            "apiVersion": "2024-05-01",
             "location": "[variables('Network.Location')]",
             "tags": "[variables('Network.Tags')]",
             "properties": {
@@ -47,7 +47,7 @@
     "outputs": {
         "state": {
             "type": "object",
-            "value": "[reference(resourceId('Microsoft.Network/virtualNetworks',variables('Network.Name')), '2023-04-01', 'Full')]"
+            "value": "[reference(resourceId('Microsoft.Network/virtualNetworks',variables('Network.Name')), '2024-05-01', 'Full')]"
         }
     }
 }

@@ -1,0 +1,5 @@
+{
+    "imageRepositoryAllowList": [],
+    "publicRegistries": [],
+    "untrustedRegistries": ["k8s.gcr.io/pause"]
+}

@@ -29,43 +29,58 @@ git config --global --add safe.directory /tmp/lint
 # Called by Auto-update CI job
 if [ "${UPGRADE_LINTERS_VERSION}" == "true" ]; then
   echo "[MegaLinter init] UPGRADING LINTER VERSION"
-  pip install pytest-cov pytest-timeout
+  pip install pytest-cov pytest-timeout pytest-rerunfailures
   # Run only get_linter_version test methods
-  pytest -v --durations=0 -k _get_linter_version megalinter/
+  pytest --reruns 3 --reruns-delay 1 -v --durations=0 -k _get_linter_version megalinter/
   # Run only get_linter_help test methods
-  pytest -v --durations=0 -k _get_linter_help megalinter/
+  pytest --reruns 3 --reruns-delay 1 -v --durations=0 -k _get_linter_help megalinter/
   # Reinstall mkdocs-material because of broken dependency
-  pip3 install --upgrade markdown mike mkdocs-material pymdown-extensions "mkdocs-glightbox==0.3.2" mdx_truly_sane_lists jsonschema json-schema-for-humans giturlparse webpreview github-dependents-info
+  pip3 install --upgrade markdown mike mkdocs-material pymdown-extensions mkdocs-glightbox mdx_truly_sane_lists jsonschema json-schema-for-humans giturlparse webpreview github-dependents-info
   cd /tmp/lint || exit 1
   chmod +x build.sh
   GITHUB_TOKEN="${GITHUB_TOKEN}" bash build.sh --doc --dependents --stats
   exit $?
 fi
 
+# Called by custom flavor image
+if [ "${BUILD_CUSTOM_FLAVOR}" == "true" ]; then
+  echo "[MegaLinter init] BUILD CUSTOM FLAVOR"
+  if [ -d "/megalinter-builder" ]; then
+    # For when in megalinter-flavor-builder docker image !
+    GITHUB_TOKEN="${GITHUB_TOKEN}" python /megalinter-builder/.automation/build.py --custom-flavor
+  else
+    # For local tests only
+    GITHUB_TOKEN="${GITHUB_TOKEN}" python ./.automation/build.py --custom-flavor
+  fi
+  exit $?
+fi
+
 # Run test cases with pytest
 if [ "${TEST_CASE_RUN}" == "true" ]; then
   echo "[MegaLinter init] RUNNING TEST CASES"
-  pip install pytest-cov pytest-timeout pytest-xdist
+  # pip install pytest-cov codecov-cli pytest-timeout pytest-xdist pytest-rerunfailures # temp remove codecov-cli to avoid issues with codecov upload
+  pip install pytest-cov pytest-timeout pytest-xdist pytest-rerunfailures
   if [ -z "${TEST_KEYWORDS}" ]; then
-    pytest -v --timeout=300 --durations=0 --cov=megalinter --cov-report=xml --numprocesses auto --dist loadscope megalinter/
+    pytest --reruns 3 --reruns-delay 10 -v --timeout=300 --durations=0 --cov=megalinter --cov-report=xml --numprocesses auto --dist loadscope megalinter/
   else
-    pytest -v --timeout=300 --durations=0 --numprocesses auto --dist loadscope -k "${TEST_KEYWORDS}" megalinter/
+    pytest --reruns 3 --reruns-delay 10 -v --timeout=300 --durations=0 --numprocesses 2 --dist loadscope -k "${TEST_KEYWORDS}" megalinter/
   fi
   PYTEST_STATUS=$?
   echo Pytest exited $PYTEST_STATUS
   # Manage return code
   if [ $PYTEST_STATUS -eq 0 ]; then
     echo "Successfully executed Pytest"
+    exit 0 # Added with disable codecov upload
   else
     echo "Error(s) found by Pytest"
     exit 1
   fi
-  # Upload to codecov.io if all tests run
-  if [ -z "${TEST_KEYWORDS}" ]; then
-    bash <(curl -s https://codecov.io/bash)
-    exit $?
-  fi
-  exit $?
+  # Upload to codecov.io if all tests run (temporary disabled)
+  # if [ -z "${TEST_KEYWORDS}" ]; then
+  #   codecov upload-process || true
+  #   exit $?
+  # fi
+  # exit $?
 fi
 
 if [ "${MEGALINTER_SERVER}" == "true" ]; then

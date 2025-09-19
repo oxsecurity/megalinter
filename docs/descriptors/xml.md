@@ -17,6 +17,7 @@ description: xmllint is available to analyze XML files in MegaLinter
 
 - File extensions:
   - `.xml`
+  - `.xsd`
 
 ## Configuration in MegaLinter
 

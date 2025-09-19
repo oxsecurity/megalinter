@@ -13,10 +13,25 @@ description: How to use ts-standard (configure, ignore files, ignore errors, hel
 
 [![GitHub stars](https://img.shields.io/github/stars/standard/ts-standard?cacheSeconds=3600)](https://github.com/standard/ts-standard) ![autofix](https://shields.io/badge/-autofix-green) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/standard/ts-standard?sort=semver)](https://github.com/standard/ts-standard/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/standard/ts-standard)](https://github.com/standard/ts-standard/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/standard/ts-standard)](https://github.com/standard/ts-standard/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/standard/ts-standard)](https://github.com/standard/ts-standard/graphs/contributors/)
 
+**TypeScript Standard Style** is the TypeScript edition of the popular JavaScript Standard Style that brings zero-configuration linting and formatting to TypeScript projects. It extends the proven JavaScript Standard rules with TypeScript-specific enhancements and type-aware analysis.
+
+**Key Features:**
+
+- **Zero Configuration**: No setup files or configuration required - install and run immediately
+- **TypeScript-Aware**: Built-in understanding of TypeScript syntax, types, interfaces, and modern features
+- **Automatic Fixing**: Built-in `--fix` option automatically corrects most style violations and type issues
+- **Standard Rules**: Maintains the same proven style rules as JavaScript Standard (2-space indent, single quotes, no semicolons)
+- **Type Safety**: Enforces TypeScript best practices and type safety patterns
+- **Fast Performance**: Quick analysis suitable for large TypeScript codebases
+- **Wide Adoption**: Used by TypeScript projects that prefer the Standard style approach over ESLint configurations
+- **Consistent Output**: Deterministic formatting across different development environments and team members
+
 ## ts-standard documentation
 
 - Version in MegaLinter: **12.0.2**
 - Visit [Official Web Site](https://standardjs.com/){target=_blank}
+- See [How to configure ts-standard rules](https://github.com/standard/ts-standard#readme){target=_blank}
+- See [How to disable ts-standard rules in files](https://standardjs.com/#how-do-i-disable-a-rule){target=_blank}
 - See [Index of problems detected by ts-standard](https://standardjs.com/rules.html){target=_blank}
 
 [![ts-standard - GitHub](https://gh-card.dev/repos/standard/ts-standard.svg?fullname=)](https://github.com/standard/ts-standard){target=_blank}
@@ -56,16 +71,16 @@ Use ts-standard in your favorite IDE to catch errors before MegaLinter !
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/)             | [StandardFormat](https://packagecontrol.io/packages/StandardFormat)                                 |             [Visit Web Site](https://packagecontrol.io/packages/StandardFormat){target=_blank}             |
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/)     | [https://marketplace.visualstudio.com/items?itemName=standard.vscode-standard](vscode-standard)     |                              [Visit Web Site](vscode-standard){target=_blank}                              |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
-This linter is available in the following flavours
+This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                       | Description                                              | Embedded linters |                                                                                                                                                                                             Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------|:---------------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor                                |       124        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)       | MegaLinter for the most commonly used languages          |        83        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
-|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/)   | Optimized for C, C++, C# or VB based projects with JS/TS |        71        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
-|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.io/beta/flavors/javascript/) | Optimized for JAVASCRIPT or TYPESCRIPT based projects    |        60        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor                                |       126        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)       | MegaLinter for the most commonly used languages          |        86        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/)   | Optimized for C, C++, C# or VB based projects with JS/TS |        72        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
+|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.io/beta/flavors/javascript/) | Optimized for JAVASCRIPT or TYPESCRIPT based projects    |        58        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript) |
 
 ## Behind the scenes
 
@@ -124,6 +139,16 @@ Flags (advanced):
 
 ### Installation on mega-linter Docker image
 
+- Dockerfile commands :
+```dockerfile
+# Parent descriptor install
+# renovate: datasource=npm depName=typescript
+ARG NPM_TYPESCRIPT_VERSION=5.9.2
+# Linter install
+# renovate: datasource=npm depName=ts-standard
+ARG NPM_TS_STANDARD_VERSION=12.0.2
+```
+
 - NPM packages (node.js):
-  - [typescript](https://www.npmjs.com/package/typescript)
-  - [ts-standard](https://www.npmjs.com/package/ts-standard)
+  - [typescript@5.9.2](https://www.npmjs.com/package/typescript/v/5.9.2)
+  - [ts-standard@12.0.2](https://www.npmjs.com/package/ts-standard/v/12.0.2)

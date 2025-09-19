@@ -9,16 +9,26 @@ linters:
   - class: CSpellLinter
     linter_name: cspell
     name: SPELL_CSPELL
+    linter_spdx_license: MIT
     variables:
       - name: SPELL_CSPELL_ANALYZE_FILE_NAMES
         default_value: "true"
         description: If set to `true`, MegaLinter will also send file names to cspell for analysis. Disable by defining `SPELL_CSPELL_ANALYZE_FILE_NAMES` to `false`
     linter_speed: 1
     linter_text: |
-      MegaLinter generates content of a `.cspell.json` config file at the end of its TextReporter artifact
+      **CSpell** is a comprehensive spell checker for code that helps catch spelling errors in source code, documentation, and comments designed specifically for developers and technical writers.
 
-      Copy it at the root of your repository, read it, remove real spelling errors (after have corrected them in the source), and you're good to go !
+      **Key Features:**
 
+      - **Code-Aware Checking**: Understands programming languages and technical terminology, avoiding false positives on variable names, APIs, and technical terms
+      - **Multi-Language Support**: Supports 30+ programming languages with specialized dictionaries for each language and framework
+      - **Custom Dictionaries**: Extensive collection of domain-specific dictionaries (medical, scientific, legal, etc.) plus ability to create custom word lists
+      - **Flexible Configuration**: Highly configurable via JSON files with support for workspace-specific settings and ignore patterns
+      - **Performance Optimized**: Fast scanning designed for large codebases with minimal performance impact
+      - **Developer-Friendly**: Handles camelCase, PascalCase, snake_case, and other programming conventions intelligently
+
+      MegaLinter generates content of a `.cspell.json` config file at the end of its TextReporter artifact.
+      Copy it at the root of your repository, read it, remove real spelling errors (after have corrected them in the source), and you're good to go!
       If you do not want cspell to analyze the files names, define `SPELL_CSPELL_ANALYZE_FILE_NAMES` to `false`
     linter_url: https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell
     linter_repo: https://github.com/streetsidesoftware/cspell
@@ -34,8 +44,12 @@ linters:
       - "cspell myfile.any"
       - "cspell -c cspell.json myfile.any"
     install:
+      dockerfile:
+        - |-
+          # renovate: datasource=npm depName=cspell
+          ARG NPM_CSPELL_VERSION=9.2.1
       npm:
-        - "cspell"
+        - "cspell@${NPM_CSPELL_VERSION}"
     supported_platforms:
       platform:
         - linux/amd64
@@ -48,6 +62,7 @@ linters:
   - class: ProselintLinter
     linter_name: proselint
     name: SPELL_PROSELINT
+    linter_spdx_license: BSD-3-Clause
     lint_all_other_linters_files: false
     file_extensions:
       - ".md"
@@ -55,7 +70,17 @@ linters:
     active_only_if_file_found:
       - .proselintrc
       - proselint/config.json
-    linter_text: a linter for prose
+    linter_text: |
+      **proselint** is a powerful linter for English prose that places the world's greatest writers and editors by your side, offering intelligent suggestions to improve your writing quality and style.
+
+      **Key Features:**
+
+      - **Expert-Driven Advice**: Aggregates wisdom from renowned writers like David Foster Wallace, Chuck Palahniuk, Steve Pinker, Mark Twain, and George Orwell
+      - **Comprehensive Style Checks**: Over 50 different categories covering everything from redundancy and clichés to typography and consistency
+      - **Industry-Specific Guidance**: Detects jargon, corporate buzzwords, archaic forms, and domain-specific writing issues
+      - **Security Awareness**: Identifies sensitive information like credit card numbers and passwords in text
+      - **Rich Output Formats**: Provides detailed suggestions with source attribution, severity levels, and potential replacements
+      - **Extensible Configuration**: Fully customizable checks through JSON configuration files
     linter_speed: 2
     linter_url: https://github.com/amperser/proselint
     linter_repo: https://github.com/amperser/proselint
@@ -71,16 +96,17 @@ linters:
     examples:
       - "proselint --config .proselintrc myfile.md myfile2.txt myfile3.rst"
     install:
+      dockerfile:
+        - |-
+          # renovate: datasource=pypi depName=proselint
+          ARG PIP_PROSELINT_VERSION=0.14.0
       pip:
-        - proselint
+        - proselint==${PIP_PROSELINT_VERSION}
     supported_platforms:
       platform:
         - linux/amd64
         - linux/arm64
     ide:
-      atom:
-        - name: linter-proselint
-          url: https://atom.io/packages/linter-proselint
       idea:
         - name: Proselint
           url: https://plugins.jetbrains.com/plugin/9854-proselint
@@ -97,6 +123,7 @@ linters:
     linter_name: vale
     name: SPELL_VALE
     can_output_sarif: false
+    linter_spdx_license: MIT
     lint_all_other_linters_files: false
     file_extensions:
       - ".md"
@@ -108,10 +135,17 @@ linters:
       - documentation
     linter_speed: 1
     linter_text: |
-      Vale brings your editorial style to life !
+      **Vale** is a command-line tool that brings your editorial style guide to life, helping maintain consistent writing quality across documentation, marketing content, and technical writing.
+
+      **Key Features:**
+
+      - **Privacy-First**: Runs entirely offline with no server-side processing - your content never leaves your machine
+      - **Multi-Format Support**: Understands markup and code, working seamlessly with Markdown, reStructuredText, HTML, and more
+      - **Extensive Rule Library**: Pre-built implementations of popular style guides (Microsoft, Google, write-good, and many others)
+      - **Custom Rule Creation**: Powerful rule engine allows you to create and share custom style rules tailored to your organization
+      - **Industry-Tested**: Trusted by thousands of writers, editors, and developers worldwide across different industries
 
       To be active within MegaLinter, you need to [initialize a .vale.ini configuration file](https://vale.sh/docs/vale-cli/structure/) at the root of your repository.
-
       MegaLinter analyze markdown and restructuredText files by default, you can change that using SPELL_VALE_FILE_EXTENSIONS variable.
     linter_url: https://vale.sh/
     linter_repo: https://github.com/errata-ai/vale
@@ -122,14 +156,19 @@ linters:
     cli_config_arg_name: "--config"
     config_file_name: .vale.ini
     cli_lint_errors_count: regex_number
-    cli_lint_errors_regex: ([0-9]+) errors, [0-9]+ warnings and [0-9]+ suggestions in [0-9]+ files
+    cli_lint_errors_regex: "([0-9]+) errors?"
+    cli_lint_warnings_count: regex_number
+    cli_lint_warnings_regex: "([0-9]+) warnings?"
     examples:
       - "vale README.md file1.md file2.md file3.md"
       - "vale --config .vale.ini README.md file1.md file2.md file3.md"
     test_folder: spell_vale
     install:
       dockerfile:
-        - FROM jdkato/vale:latest as vale
+        - |-
+          # renovate: datasource=docker depName=jdkato/vale
+          ARG SPELL_VALE_VERSION=v3.12.0
+        - FROM jdkato/vale:${SPELL_VALE_VERSION} AS vale
         - COPY --link --from=vale /bin/vale /bin/vale
     supported_platforms:
       platform:
@@ -139,9 +178,6 @@ linters:
       emacs:
         - name: flymake-vale
           url: https://github.com/tpeacock19/flymake-vale
-      jetbrains:
-        - name: Vale
-          url: https://vale.sh/docs/integrations/jetbrains/
       sublime:
         - name: SublimeLinter-contrib-vale
           url: https://packagecontrol.io/packages/SublimeLinter-contrib-vale
@@ -156,13 +192,23 @@ linters:
   - class: LycheeLinter
     linter_name: lychee
     name: SPELL_LYCHEE
+    linter_spdx_license: Apache-2.0
     linter_text: |
+      **Lychee** is a fast, async, stream-based link checker written in Rust that finds broken hyperlinks and mail addresses inside Markdown, HTML, reStructuredText, websites, and any other text files.
+
+      **Key Features:**
+
+      - **Lightning Fast**: Async, parallel processing with typical scan times under 10 seconds for most repositories  
+      - **Multi-Format Support**: Checks links in Markdown, HTML, reStructuredText, plain text files, and websites
+      - **Advanced Filtering**: Regex-based include/exclude patterns, custom headers, and flexible URL scheme filtering
+      - **Smart Caching**: Disk-based response caching with configurable expiration to avoid re-checking unchanged links
+      - **Robust Error Handling**: Configurable retries, redirects, timeouts, and custom status code acceptance
+      - **Multiple Output Formats**: JSON, Markdown, detailed, and compact reporting formats
+      - **Privacy-Aware**: Options to exclude private IPs, link-local addresses, and localhost from checking
+
       A file **.lycheeignore** can be defined at the root of the repository to ignore some urls.
-
       Each line can contain Regular Expressions or glob format.
-
       Example with glob, regex and full url:
-
       ```
       https://twitter.com/intent/tweet*
       (.*some_url_part)
@@ -178,8 +224,9 @@ linters:
     linter_repo: https://github.com/lycheeverse/lychee
     linter_banner_image_url: https://raw.githubusercontent.com/lycheeverse/lychee/master/assets/banner.svg
     linter_image_url: https://raw.githubusercontent.com/lycheeverse/lychee/master/assets/logo.svg
-    linter_rules_url: https://lychee.cli.rs/#/usage/cli
-    linter_rules_configuration_url: https://lychee.cli.rs/#/usage/config
+    linter_rules_url: https://lychee.cli.rs/usage/cli/
+    linter_rules_configuration_url: https://lychee.cli.rs/usage/config/
+    linter_rules_ignore_config_url: https://lychee.cli.rs/recipes/excluding-links/
     linter_speed: 2
     lint_all_other_linters_files: false
     lint_all_files: false
@@ -218,7 +265,10 @@ linters:
       - 'lychee --format detailed --no-progress --glob-ignore-case --verbose "~/projects/**/[r]eadme.*"'
     install:
       dockerfile:
-        - FROM lycheeverse/lychee:latest-alpine as lychee
+        - |-
+          # renovate: datasource=docker depName=lycheeverse/lychee
+          ARG SPELL_LYCHEE_VERSION=sha-7c4b132-alpine
+        - FROM lycheeverse/lychee:${SPELL_LYCHEE_VERSION} AS lychee
         - COPY --link --from=lychee /usr/local/bin/lychee /usr/bin/
     supported_platforms:
       platform:

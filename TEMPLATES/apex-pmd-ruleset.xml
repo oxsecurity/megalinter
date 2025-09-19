@@ -33,26 +33,4 @@
         <exclude name="ApexDoc"/>
     </rule>
 
-    <!-- CUSTOM RULES -->
-    <rule name="LeverageNamedCredentials" language="apex" class="net.sourceforge.pmd.lang.apex.rule.ApexXPathRule"
-          message="Don't hardcode Callout endpoint URLs in Apex code. Leverage Named Credential metadata instead.">
-
-        <description>Don't hardcode Callout endpoint URLs in Apex code. Leverage Named Credential metadata instead.</description>
-        <priority>2</priority>
-
-        <properties>
-            <property name="xpath">
-                <value><![CDATA[
-                        //MethodCallExpression[@MethodName="setEndpoint"]/LiteralExpression[@Image!="callout:"]
-                ]]></value>
-            </property>
-        </properties>
-
-        <example><![CDATA[
-            // this is OK
-            request.setEndpoint('callout:facebookApi/login');
-            // but this is not
-            request.setEndpoint('https://facebook.com/login');
-        ]]></example>
-    </rule>
 </ruleset>

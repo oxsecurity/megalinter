@@ -7,14 +7,22 @@ description: How to use scalafix (configure, ignore files, ignore errors, help &
 # <a href="https://scalacenter.github.io/scalafix/" target="blank" title="Visit linter Web Site"><img src="https://scalacenter.github.io/scalafix/img/scalacenter2x.png" alt="scalafix" height="100px" class="megalinter-logo"></a>scalafix
 [![GitHub stars](https://img.shields.io/github/stars/scalacenter/scalafix?cacheSeconds=3600)](https://github.com/scalacenter/scalafix) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/scalacenter/scalafix?sort=semver)](https://github.com/scalacenter/scalafix/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/scalacenter/scalafix)](https://github.com/scalacenter/scalafix/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/scalacenter/scalafix)](https://github.com/scalacenter/scalafix/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/scalacenter/scalafix)](https://github.com/scalacenter/scalafix/graphs/contributors/)
 
-Scalafix lints and fixes scala files
+**Scalafix** is a refactoring and linting tool for Scala that automates code quality maintenance, enabling both one-time migrations and continuous code health enforcement.
 
-- As there is no prior compilation or semantic db generation, the linting is applied only with [built-in syntactic rules](https://scalacenter.github.io/scalafix/docs/rules/overview.html)
-- scalafix arguments related to [semantic options](https://megalinter.io/descriptors/scala_scalafix/#help-content) can not be used
+**Key Features:**
+
+- **Automated Refactoring**: Handles day-to-day code maintenance tasks and complex migration scripts with precision
+- **Comprehensive Linting**: Reports errors for code patterns that cause production bugs or violate coding standards
+- **Syntactic and Semantic Rules**: Supports both syntax-based rules (no compilation needed) and semantic rules (requires compilation)
+- **Built-in Rule Library**: Extensive collection of rules for common Scala patterns, deprecations, and best practices
+- **Custom Rule Development**: Extensible architecture for writing project-specific rules and transformations
+- **Configuration Flexibility**: Highly configurable through `.scalafix.conf` files with rule-specific settings
+
+**Note**: In MegaLinter, only syntactic rules are applied as there is no prior compilation or semantic database generation. Semantic options cannot be used in this context.
 
 ## scalafix documentation
 
-- Version in MegaLinter: **0.12.1**
+- Version in MegaLinter: **0.14.3**
 - Visit [Official Web Site](https://scalacenter.github.io/scalafix/){target=_blank}
 - See [How to configure scalafix rules](https://scalacenter.github.io/scalafix/docs/users/configuration.html){target=_blank}
   - If custom `.scalafix.conf` config file isn't found, [.scalafix.conf](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.scalafix.conf){target=_blank} will be used
@@ -46,13 +54,13 @@ Scalafix lints and fixes scala files
 | SCALA_SCALAFIX_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                             |
 | SCALA_SCALAFIX_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `['scalafix']`                                  |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
-This linter is available in the following flavours
+This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                               | Description               | Embedded linters |                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       124        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       126        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 
 ## Behind the scenes
 
@@ -84,7 +92,7 @@ scalafix --config .scalafix.conf myfile.scala
 ### Help content
 
 ```shell
-Scalafix 0.12.1
+Scalafix 0.14.3
 Usage: scalafix [options] [<path> ...]
 
 Scalafix is a refactoring and linting tool. Scalafix supports both syntactic and
@@ -167,7 +175,7 @@ Semantic options:
     The scala compiler options used to compile this --classpath, for example
     -Ywarn-unused-import
 
-  --scala-version ScalaVersion (default: "2.13.14")
+  --scala-version ScalaVersion (default: "2.13.16")
     The major or binary Scala version that the provided files are targeting, or the
     full version that was used to compile them when a classpath is provided.
 

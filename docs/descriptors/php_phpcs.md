@@ -7,9 +7,22 @@ description: How to use phpcs (configure, ignore files, ignore errors, help & ve
 # phpcs
 [![GitHub stars](https://img.shields.io/github/stars/PHPCSStandards/PHP_CodeSniffer?cacheSeconds=3600)](https://github.com/PHPCSStandards/PHP_CodeSniffer) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/PHPCSStandards/PHP_CodeSniffer?sort=semver)](https://github.com/PHPCSStandards/PHP_CodeSniffer/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/PHPCSStandards/PHP_CodeSniffer)](https://github.com/PHPCSStandards/PHP_CodeSniffer/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/PHPCSStandards/PHP_CodeSniffer)](https://github.com/PHPCSStandards/PHP_CodeSniffer/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/PHPCSStandards/PHP_CodeSniffer)](https://github.com/PHPCSStandards/PHP_CodeSniffer/graphs/contributors/)
 
+**PHP_CodeSniffer (phpcs)** is a powerful static analysis tool that tokenizes PHP files and detects violations of defined coding standards. It serves as the industry standard for enforcing PHP coding conventions and maintaining consistent code quality across projects.
+
+**Key Features:**
+
+- **Multiple Coding Standards**: Built-in support for PSR-1, PSR-2, PSR-12, PEAR, Zend, WordPress, Drupal, and many other standards
+- **Tokenization Engine**: Advanced PHP tokenizer that understands PHP syntax and language constructs for accurate analysis
+- **Extensive Rule Set**: Comprehensive checks for code formatting, naming conventions, documentation, and structural issues
+- **Custom Standards**: Create and configure custom coding standards tailored to project or organizational requirements
+- **Detailed Reports**: Multiple report formats including full, summary, checkstyle, CSV, JSON, and SARIF
+- **Inline Suppression**: Flexible system for suppressing specific violations using comment annotations
+- **File Exclusions**: Sophisticated ignore patterns for excluding files, directories, or specific code sections
+- **Performance Optimized**: Efficient scanning designed for large codebases with minimal memory usage
+
 ## phpcs documentation
 
-- Version in MegaLinter: **3.10.1**
+- Version in MegaLinter: **4.0.0**
 - Visit [Official Web Site](https://github.com/PHPCSStandards/PHP_CodeSniffer#readme){target=_blank}
 - See [How to configure phpcs rules](https://github.com/PHPCSStandards/PHP_CodeSniffer/wiki/Advanced-Usage#using-a-default-configuration-file){target=_blank}
   - If custom `phpcs.xml` config file isn't found, [phpcs.xml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/phpcs.xml){target=_blank} will be used
@@ -48,22 +61,20 @@ Use phpcs in your favorite IDE to catch errors before MegaLinter !
 
 |                                                                   <!-- -->                                                                   | IDE                                                      | Extension Name                                                                      |                                                                              Install                                                                               |
 |:--------------------------------------------------------------------------------------------------------------------------------------------:|----------------------------------------------------------|-------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-|  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Atom](https://atom.io/)                                 | [linter-phpcs](https://atom.io/packages/linter-phpcs)                               |                                               [Visit Web Site](https://atom.io/packages/linter-phpcs){target=_blank}                                               |
-|  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Atom](https://atom.io/)                                 | [atom-phpcs](https://github.com/bpearson/atom-phpcs)                                |                                              [Visit Web Site](https://github.com/bpearson/atom-phpcs){target=_blank}                                               |
 |  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a>   | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [phpcs](https://www.jetbrains.com/help/phpstorm/2019.1/using-php-code-sniffer.html) |                            [Visit Web Site](https://www.jetbrains.com/help/phpstorm/2019.1/using-php-code-sniffer.html){target=_blank}                             |
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/)             | [sublime-phpcs](https://github.com/benmatselby/sublime-phpcs)                       |                                           [Visit Web Site](https://github.com/benmatselby/sublime-phpcs){target=_blank}                                            |
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/)             | [SublimeLinter-phpcs](https://github.com/SublimeLinter/SublimeLinter-phpcs)         |                                       [Visit Web Site](https://github.com/SublimeLinter/SublimeLinter-phpcs){target=_blank}                                        |
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/)     | [vscode-phpcs](https://marketplace.visualstudio.com/items?itemName=ikappas.phpcs)   | [![Install in VSCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/ikappas.phpcs){target=_blank} |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
-This linter is available in the following flavours
+This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                     | Embedded linters |                                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       124        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        83        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
-|         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://megalinter.io/beta/flavors/php/)         | Optimized for PHP based projects                |        55        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-php) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       126        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        86        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+|         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://megalinter.io/beta/flavors/php/)         | Optimized for PHP based projects                |        53        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-php) |
 
 ## Behind the scenes
 
@@ -116,10 +127,7 @@ Scan targets:
   --ignore=<patterns>            Ignore files based on a comma-separated list of
                                  patterns matching files and/or directories.
   --extensions=<extensions>      Check files with the specified file extensions
-                                 (comma-separated list). Defaults to
-                                 php,inc/php,js,css.
-                                 The type of the file can be specified using:
-                                 ext/type; e.g. module/php,es/js.
+                                 (comma-separated list). Defaults to "php,inc".
   -l                             Check local directory only, no recursion.
 
 Rule Selection Options:
@@ -166,11 +174,12 @@ Run Options:
                                  changed at runtime are supported.
 
 Reporting Options:
-  --report=<report>              Print either the "full", "xml", "checkstyle",
+  --report=<report(s)>           A comma-separated list of reports to print.
+                                 Available reports: "full", "xml", "checkstyle",
                                  "csv", "json", "junit", "emacs", "source",
                                  "summary", "diff", "svnblame", "gitblame",
-                                 "hgblame", "notifysend" or "performance" report
-                                 or specify the path to a custom report class.
+                                 "hgblame", "notifysend" or "performance".
+                                 Or specify the path to a custom report class.
                                  By default, the "full" report is displayed.
   --report-file=<reportFile>     Write the report to the specified file path.
   --report-<report>=<reportFile> Write the report specified in <report> to the
@@ -213,7 +222,8 @@ Configuration Options:
   This applies to the following options: "default_standard", "report_format",
   "tab_width", "encoding", "severity", "error_severity", "warning_severity",
   "show_warnings", "report_width", "show_progress", "quiet", "colors", "cache",
-  "parallel".
+  "parallel", "installed_paths", "php_version", "ignore_errors_on_exit",
+  "ignore_warnings_on_exit", "ignore_non_auto_fixable_on_exit".
   --config-show                  Show the configuration options which are
                                  currently stored in the applicable
                                  CodeSniffer.conf file.
@@ -239,25 +249,15 @@ Miscellaneous Options:
 - Dockerfile commands :
 ```dockerfile
 # Parent descriptor install
-RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" \
-    && export GITHUB_AUTH_TOKEN \
-    && wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
-    && wget --tries=5 -q -O phive.phar.asc https://phar.io/releases/phive.phar.asc \
-    && PHAR_KEY_ID="0x6AF725270AB81E04D79442549D8A98B29B2D5D79" \
-    && ( gpg --keyserver hkps://keys.openpgp.org --recv-keys "$PHAR_KEY_ID" \
-       || gpg --keyserver hkps://keyserver.ubuntu.com --recv-keys "$PHAR_KEY_ID" \
-       || gpg --keyserver keyserver.pgp.com --recv-keys "$PHAR_KEY_ID" \
-       || gpg --keyserver pgp.mit.edu --recv-keys "$PHAR_KEY_ID" ) \
-    && gpg --verify phive.phar.asc phive.phar \
-    && chmod +x phive.phar \
-    && mv phive.phar /usr/local/bin/phive \
-    && rm phive.phar.asc \
-    && update-alternatives --install /usr/bin/php php /usr/bin/php83 110
-
+RUN update-alternatives --install /usr/bin/php php /usr/bin/php84 110
 COPY --from=composer/composer:2-bin /composer /usr/bin/composer
 ENV PATH="/root/.composer/vendor/bin:${PATH}"
 # Linter install
-RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require squizlabs/php_codesniffer bartlett/sarif-php-sdk
+# renovate: datasource=packagist depName=squizlabs/php_codesniffer
+ARG PHP_SQUIZLABS_PHP_CODESNIFFER_VERSION=4.0.0
+# renovate: datasource=packagist depName=bartlett/sarif-php-converters
+ARG PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION=1.3.1
+RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require squizlabs/php_codesniffer:${PHP_SQUIZLABS_PHP_CODESNIFFER_VERSION} bartlett/sarif-php-converters:${PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION}
 
 ```
 

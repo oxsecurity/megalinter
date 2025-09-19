@@ -13,9 +13,44 @@ description: How to use black (configure, ignore files, ignore errors, help & ve
 
 [![GitHub stars](https://img.shields.io/github/stars/psf/black?cacheSeconds=3600)](https://github.com/psf/black) ![formatter](https://shields.io/badge/-format-yellow) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/psf/black?sort=semver)](https://github.com/psf/black/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/psf/black)](https://github.com/psf/black/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/psf/black)](https://github.com/psf/black/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/psf/black)](https://github.com/psf/black/graphs/contributors/)
 
+**Black** is "the uncompromising code formatter" for Python that automatically formats your code to be consistent and PEP 8 compliant. By using Black, you agree to cede control over minutiae of hand-formatting in return for speed, determinism, and freedom from formatting debates.
+
+**Key features:**
+
+- **Opinionated Formatting**: Minimal configuration with sensible defaults - "Black is opinionated so you don't have to be"
+- **Deterministic Output**: Same code always produces identical formatting, regardless of environment
+- **Speed and Efficiency**: Fast formatting with parallel processing capabilities
+- **Smallest Diffs**: Produces minimal git diffs by being consistent across all projects
+- **AST Safety**: Verifies that reformatted code produces a valid AST equivalent to the original
+- **Wide Compatibility**: Supports multiple Python versions and syntax features
+
+**Formatting principles:**
+
+- **Consistency Over Preferences**: Uniform style across all Python projects using Black
+- **Readability First**: Optimizes for code readability and maintainability
+- **Minimal Configuration**: Works out of the box with virtually no setup required
+
+**What Black formats:**
+
+- **Code Structure**: Consistent indentation, line breaks, and whitespace
+- **String Formatting**: Standardizes quote usage and multi-line strings
+- **Import Organization**: Works well with isort for import formatting
+- **Expression Layout**: Optimizes function calls, list comprehensions, and complex expressions
+
+**Benefits:**
+
+- **Faster Code Reviews**: Eliminates style discussions and focuses on logic
+- **Mental Energy Savings**: No time spent on formatting decisions
+- **Team Consistency**: Entire team uses identical formatting standards
+- **Reduced Conflicts**: Fewer git merge conflicts due to formatting differences
+
+Black is successfully used by many projects, small and big, and has become the de facto standard for Python code formatting. It's now stable with comprehensive test coverage and should not expect large formatting changes in the future.
+
+**Note**: Black formats code according to its opinionated style. If you prefer different formatting options, you might consider other formatters, though Black's consistency is its main strength.
+
 ## black documentation
 
-- Version in MegaLinter: **24.4.2**
+- Version in MegaLinter: **25.9.0**
 - Visit [Official Web Site](https://black.readthedocs.io/en/stable/){target=_blank}
 - See [How to configure black rules](https://black.readthedocs.io/en/stable/usage_and_configuration/the_basics.html#configuration-format){target=_blank}
   - If custom `pyproject.toml` config file isn't found, [pyproject.toml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/pyproject.toml){target=_blank} will be used
@@ -31,6 +66,7 @@ description: How to use black (configure, ignore files, ignore errors, help & ve
 
 | Variable                                 | Description                                                                                                                                                                                                         | Default value                                   |
 |------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
+| PYTHON_DEFAULT_STYLE                     | For black to be active, PYTHON_DEFAULT_STYLE must be `black`                                                                                                                                                        | `black`                                         |
 | PYTHON_BLACK_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                                                 |
 | PYTHON_BLACK_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                                |                                                 |
 | PYTHON_BLACK_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file                              |
@@ -53,7 +89,6 @@ Use black in your favorite IDE to catch errors before MegaLinter !
 
 |                                                                   <!-- -->                                                                   | IDE                                                      | Extension Name                                                                                  |                                                                                Install                                                                                |
 |:--------------------------------------------------------------------------------------------------------------------------------------------:|----------------------------------------------------------|-------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-|  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Atom](https://atom.io/)                                 | [python-black](https://atom.io/packages/python-black)                                           |                                                [Visit Web Site](https://atom.io/packages/python-black){target=_blank}                                                 |
 |  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Emacs](https://www.gnu.org/software/emacs/)             | [blacken](https://github.com/pythonic-emacs/blacken)                                            |                                              [Visit Web Site](https://github.com/pythonic-emacs/blacken){target=_blank}                                               |
 |  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Emacs](https://www.gnu.org/software/emacs/)             | [reformatter.el](https://github.com/purcell/reformatter.el)                                     |                                              [Visit Web Site](https://github.com/purcell/reformatter.el){target=_blank}                                               |
 |  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Emacs](https://www.gnu.org/software/emacs/)             | [elpy](https://github.com/jorgenschaefer/elpy)                                                  |                                                [Visit Web Site](https://github.com/jorgenschaefer/elpy){target=_blank}                                                |
@@ -61,16 +96,16 @@ Use black in your favorite IDE to catch errors before MegaLinter !
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/)             | [sublack](https://github.com/jgirardet/sublack)                                                 |                                                 [Visit Web Site](https://github.com/jgirardet/sublack){target=_blank}                                                 |
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/)     | [VSCode Python Extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python) | [![Install in VSCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/ms-python.python){target=_blank} |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
-This linter is available in the following flavours
+This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                       | Description                                     | Embedded linters |                                                                                                                                                                                             Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor                       |       124        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)       | MegaLinter for the most commonly used languages |        83        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
-|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/formatters.ico" alt="" height="32px" class="megalinter-icon"></a>      | [formatters](https://megalinter.io/beta/flavors/formatters/) | Contains only formatters                        |        17        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-formatters/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-formatters) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)         | Optimized for PYTHON based projects             |        63        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor                       |       126        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)       | MegaLinter for the most commonly used languages |        86        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/formatters.ico" alt="" height="32px" class="megalinter-icon"></a>      | [formatters](https://megalinter.io/beta/flavors/formatters/) | Contains only formatters                        |        18        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-formatters/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-formatters) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)         | Optimized for PYTHON based projects             |        64        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
 
 ## Behind the scenes
 
@@ -110,7 +145,7 @@ Options:
   -c, --code TEXT                 Format the code passed in as a string.
   -l, --line-length INTEGER       How many characters per line to allow.
                                   [default: 88]
-  -t, --target-version [py33|py34|py35|py36|py37|py38|py39|py310|py311|py312|py313]
+  -t, --target-version [py33|py34|py35|py36|py37|py38|py39|py310|py311|py312|py313|py314]
                                   Python versions that should be supported by
                                   Black's output. You should include all
                                   versions that your code supports. By
@@ -144,7 +179,7 @@ Options:
                                   expected to make it into the stable style
                                   Black's next major release. Implies
                                   --preview.
-  --enable-unstable-feature [hex_codes_in_unicode_sequences|string_processing|hug_parens_with_braces_and_square_brackets|unify_docstring_detection|no_normalize_fmt_skip_whitespace|wrap_long_dict_values_in_parens|multiline_string_handling|typed_params_trailing_comma|is_simple_lookup_for_doublestar_expression|docstring_check_for_newline|remove_redundant_guard_parens|parens_for_long_if_clauses_in_case_block]
+  --enable-unstable-feature [string_processing|hug_parens_with_braces_and_square_brackets|wrap_long_dict_values_in_parens|multiline_string_handling|always_one_newline_after_import|fix_fmt_skip_in_one_liners|wrap_comprehension_in|remove_parens_around_except_types|normalize_cr_newlines]
                                   Enable specific features included in the
                                   `--unstable` style. Requires `--preview`. No
                                   compatibility guarantees are provided on the
@@ -241,5 +276,11 @@ Options:
 
 ### Installation on mega-linter Docker image
 
+- Dockerfile commands :
+```dockerfile
+# renovate: datasource=pypi depName=black
+ARG PIP_BLACK_VERSION=25.1.0
+```
+
 - PIP packages (Python):
-  - [black](https://pypi.org/project/black)
+  - [black==25.1.0](https://pypi.org/project/black/25.1.0)

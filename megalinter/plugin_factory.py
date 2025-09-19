@@ -113,7 +113,7 @@ def process_install(install, request_id):
             env=config.build_env(request_id),
         )
         return_code = process.returncode
-        stdout = utils.decode_utf8(process.stdout)
+        stdout = utils.clean_string(process.stdout)
         logging.debug(f"[Plugins] Result ({str(return_code)}): {stdout}")
         if return_code != 0:
             raise Exception(

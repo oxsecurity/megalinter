@@ -6,18 +6,29 @@ lint_all_files: true
 install:
   # Java, because Apex is Java-based, so are related tools like PMD which is embedded in sfdx-scanner
   apk:
+    - coreutils
     - openjdk21
   dockerfile:
+    - |-
+      # renovate: datasource=npm depName=@salesforce/cli
+      ARG NPM_SALESFORCE_CLI_VERSION=2.105.6
+    - |-
+      # renovate: datasource=npm depName=@salesforce/plugin-packaging
+      ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.20.3
+    - |-
+      # renovate: datasource=npm depName=sfdx-hardis
+      ARG SFDX_HARDIS_VERSION=6.5.0
     - ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
     - ENV PATH="$JAVA_HOME/bin:${PATH}"
-    - |
-      RUN sf plugins install @salesforce/plugin-packaging \
-          && echo y|sf plugins install sfdx-hardis \
-          && npm cache clean --force || true \
+    - |-
+      RUN sf plugins install @salesforce/plugin-packaging@${NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION} \
+          && echo y|sf plugins install sfdx-hardis@${SFDX_HARDIS_VERSION} \
+          && (npm cache clean --force || true) \
           && rm -rf /root/.npm/_cacache
+    - ENV SF_AUTOUPDATE_DISABLE=true SF_CLI_DISABLE_AUTOUPDATE=true
   # Salesforce DX
   npm:
-    - "@salesforce/cli"
+    - "@salesforce/cli@${NPM_SALESFORCE_CLI_VERSION}"
 supported_platforms:
   platform:
     - linux/amd64
@@ -36,7 +47,18 @@ linters:
     name: SALESFORCE_SFDX_SCANNER_APEX
     files_sub_directory: force-app
     linter_text: |
-      sfdx-scanner is a sfdx plugin scanning apex and triggers using Apex PMD, and javascript using eslint
+      **Salesforce Code Analyzer (SFDX Scanner)** is the official Salesforce CLI plugin for scanning Apex code, triggers, and other Salesforce components to identify potential issues, security vulnerabilities, and code quality problems. It uses industry-standard tools like PMD and ESLint to provide comprehensive analysis of Salesforce development artifacts.
+
+      **Key Features:**
+
+      - **Multi-Engine Analysis**: Combines PMD for Apex analysis with ESLint for JavaScript/Lightning Web Components
+      - **Security Focus**: Identifies security vulnerabilities and potential attack vectors in Salesforce code
+      - **Performance Optimization**: Detects performance anti-patterns and inefficient code constructs
+      - **Code Quality Rules**: Comprehensive rule sets covering best practices, naming conventions, and maintainability
+      - **Configurable Severity**: Customizable severity thresholds and rule categories for different project needs
+      - **Multiple Output Formats**: Supports CSV, JSON, SARIF, and other formats for integration with development tools
+      - **Lightning Platform Specific**: Rules tailored for Salesforce platform constraints and governor limits
+      - **Custom Rule Sets**: Support for custom PMD rule sets and organization-specific coding standards
 
       If your root folder is not **force-app**, please set variable `SALESFORCE_SFDX_SCANNER_DIRECTORY`
 
@@ -45,13 +67,13 @@ linters:
       See more details in [Help](#help-content)
 
       **Workaround: Restricted to PMD**
-    linter_url: https://forcedotcom.github.io/sfdx-scanner/
-    linter_repo: https://github.com/forcedotcom/sfdx-scanner
+    linter_url: https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html
+    linter_repo: https://github.com/forcedotcom/code-analyzer
     linter_rules_url: https://docs.pmd-code.org/latest/pmd_rules_apex.html
-    linter_image_url: https://forcedotcom.github.io/sfdx-scanner/assets/images/sfdx_scanner_logo.png
     linter_rules_configuration_url: https://docs.pmd-code.org/latest/pmd_userdocs_making_rulesets.html
     linter_rules_inline_disable_url: https://docs.pmd-code.org/latest/pmd_userdocs_suppressing_warnings.html
-    linter_megalinter_ref_url: https://github.com/forcedotcom/sfdx-scanner/pull/307
+    linter_megalinter_ref_url: https://github.com/forcedotcom/code-analyzer
+    linter_spdx_license: BSD-3-Clause
     config_file_name: apex-pmd-ruleset.xml
     cli_executable: sf
     cli_config_arg_name: "--pmdconfig"
@@ -82,9 +104,12 @@ linters:
       - "sf scanner:run"
     install:
       dockerfile:
-        - |
-          RUN sf plugins install @salesforce/sfdx-scanner \
-              && npm cache clean --force || true \
+        - |-
+          # renovate: datasource=npm depName=@salesforce/sfdx-scanner
+          ARG SALESFORCE_SFDX_SCANNER_VERSION=4.12.0
+        - |-
+          RUN sf plugins install @salesforce/sfdx-scanner@${SALESFORCE_SFDX_SCANNER_VERSION} \
+              && (npm cache clean --force || true) \
               && rm -rf /root/.npm/_cacache
     supported_platforms:
       platform:
@@ -110,22 +135,34 @@ linters:
     name: SALESFORCE_SFDX_SCANNER_AURA
     files_sub_directory: force-app
     linter_text: |
-      sfdx-scanner is a sfdx plugin scanning apex and triggers using Apex PMD, and javascript using eslint
+      **Salesforce Code Analyzer for Aura Components** is a specialized linting tool that focuses on Aura Lightning components, using ESLint with Salesforce-specific rules to ensure Aura components follow best practices and platform guidelines.
 
-      If your root folder is not **force-app**, please set variable SALESFORCE_SFDX_SCANNER_AURA_DIRECTORY
+      **Key Features:**
+
+      - **Aura-Specific Rules**: Specialized ESLint rules designed for Aura Lightning component development patterns
+      - **JavaScript Analysis**: Comprehensive JavaScript linting for Aura component controllers, helpers, and renderers
+      - **Security Validation**: Identifies security vulnerabilities specific to Aura component architecture
+      - **Platform Compliance**: Ensures components follow Salesforce Lightning platform requirements and constraints
+      - **Event Handling**: Validates proper event handling patterns and component communication
+      - **Performance Optimization**: Detects inefficient patterns that could impact component performance
+      - **API Usage Validation**: Ensures proper use of Aura framework APIs and deprecated method detection
+      - **Configurable Rules**: Customizable ESLint configuration for organization-specific coding standards
+      - **Integration Ready**: Seamless integration with Salesforce development workflows and CI/CD pipelines
+
+      If your root folder is not **force-app**, please set variable `SALESFORCE_SFDX_SCANNER_AURA_DIRECTORY`
 
       You can select categories and single rules by defining custom arguments (example: `SALESFORCE_SFDX_SCANNER_ARGUMENTS: -c "Best Practices,Security"`)
 
       See more details in [Help](#help-content)
 
       **Workaround: Restricted to Aura**
-    linter_url: https://forcedotcom.github.io/sfdx-scanner/
-    linter_repo: https://github.com/forcedotcom/sfdx-scanner
+    linter_url: https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html
+    linter_repo: https://github.com/forcedotcom/code-analyzer
     linter_rules_url: https://github.com/forcedotcom/eslint-plugin-aura#rules
-    linter_image_url: https://forcedotcom.github.io/sfdx-scanner/assets/images/sfdx_scanner_logo.png
-    linter_rules_configuration_url: https://eslint.org/docs/user-guide/configuring
-    linter_rules_inline_disable_url: https://eslint.org/docs/user-guide/configuring/rules#disabling-rules
-    linter_megalinter_ref_url: https://github.com/forcedotcom/sfdx-scanner/pull/307
+    linter_rules_configuration_url: https://eslint.org/docs/latest/use/configure
+    linter_rules_inline_disable_url: https://eslint.org/docs/latest/use/configure/rules#disabling-rules
+    linter_megalinter_ref_url: https://github.com/forcedotcom/code-analyzer
+    linter_spdx_license: BSD-3-Clause
     config_file_name: --eslintconfig
     cli_config_arg_name: ".eslintrc-aura.json"
     cli_executable: sf
@@ -156,9 +193,12 @@ linters:
       - "sf scanner:run"
     install:
       dockerfile:
-        - |
-          RUN sf plugins install @salesforce/sfdx-scanner \
-              && npm cache clean --force || true \
+        - |-
+          # renovate: datasource=npm depName=@salesforce/sfdx-scanner
+          ARG SALESFORCE_SFDX_SCANNER_VERSION=4.12.0
+        - |-
+          RUN sf plugins install @salesforce/sfdx-scanner@${SALESFORCE_SFDX_SCANNER_VERSION} \
+              && (npm cache clean --force || true) \
               && rm -rf /root/.npm/_cacache
     supported_platforms:
       platform:
@@ -174,22 +214,35 @@ linters:
     name: SALESFORCE_SFDX_SCANNER_LWC
     files_sub_directory: force-app
     linter_text: |
-      sfdx-scanner is a sfdx plugin scanning apex and triggers using Apex PMD, and javascript using eslint
+      **Salesforce Code Analyzer for Lightning Web Components** is a specialized linting tool that focuses on Lightning Web Components (LWC), using ESLint with LWC-specific rules to ensure components follow modern web standards and Salesforce platform best practices.
 
-      If your root folder is not **force-app**, please set variable SALESFORCE_SFDX_SCANNER_LWC_DIRECTORY
+      **Key Features:**
+
+      - **LWC-Specific Rules**: Comprehensive ESLint rules designed specifically for Lightning Web Component development patterns
+      - **Modern JavaScript Analysis**: Validates modern JavaScript/ES6+ usage within the LWC framework constraints
+      - **Security Validation**: Identifies security vulnerabilities and potential XSS issues in LWC components
+      - **Performance Optimization**: Detects performance anti-patterns and inefficient rendering patterns
+      - **Lightning Platform Integration**: Ensures proper use of Lightning platform APIs and decorators (@api, @track, @wire)
+      - **Component Lifecycle**: Validates correct component lifecycle method usage and patterns
+      - **Wire Service Validation**: Ensures proper use of @wire decorators and Lightning Data Service
+      - **Event Handling**: Validates custom event creation and handling patterns
+      - **Template Validation**: Analyzes HTML templates for proper binding and directive usage
+      - **Accessibility Compliance**: Built-in accessibility checks for inclusive Lightning component design
+
+      If your root folder is not **force-app**, please set variable `SALESFORCE_SFDX_SCANNER_LWC_DIRECTORY`
 
       You can select categories and single rules by defining custom arguments (example: `SALESFORCE_SFDX_SCANNER_ARGUMENTS: -c "Best Practices,Security"`)
 
       See more details in [Help](#help-content)
 
       **Workaround: Restricted to LWC**
-    linter_url: https://forcedotcom.github.io/sfdx-scanner/
-    linter_repo: https://github.com/forcedotcom/sfdx-scanner
+    linter_url: https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html
+    linter_repo: https://github.com/forcedotcom/code-analyzer
     linter_rules_url: https://github.com/salesforce/eslint-plugin-lwc#rules
-    linter_image_url: https://forcedotcom.github.io/sfdx-scanner/assets/images/sfdx_scanner_logo.png
-    linter_rules_configuration_url: https://eslint.org/docs/user-guide/configuring
-    linter_rules_inline_disable_url: https://eslint.org/docs/user-guide/configuring/rules#disabling-rules
-    linter_megalinter_ref_url: https://github.com/forcedotcom/sfdx-scanner/pull/307
+    linter_rules_configuration_url: https://eslint.org/docs/latest/use/configure
+    linter_rules_inline_disable_url: https://eslint.org/docs/latest/use/configure/rules#disabling-rules
+    linter_megalinter_ref_url: https://github.com/forcedotcom/code-analyzer
+    linter_spdx_license: BSD-3-Clause
     config_file_name: --eslintconfig
     cli_config_arg_name: ".eslintrc-lwc.json"
     cli_executable: sf
@@ -220,9 +273,12 @@ linters:
       - "sf scanner:run"
     install:
       dockerfile:
-        - |
-          RUN sf plugins install @salesforce/sfdx-scanner \
-              && npm cache clean --force || true \
+        - |-
+          # renovate: datasource=npm depName=@salesforce/sfdx-scanner
+          ARG SALESFORCE_SFDX_SCANNER_VERSION=4.12.0
+        - |-
+          RUN sf plugins install @salesforce/sfdx-scanner@${SALESFORCE_SFDX_SCANNER_VERSION} \
+              && (npm cache clean --force || true) \
               && rm -rf /root/.npm/_cacache
     supported_platforms:
       platform:
@@ -235,9 +291,23 @@ linters:
 
   # Lightning Flow Scanner
   - linter_name: lightning-flow-scanner
+    disabled: true
+    disabled_reason: Repo archived -> https://github.com/Lightning-Flow-Scanner
     files_sub_directory: force-app
     linter_text: |
-      Lightning Flow Scanner is a sfdx plugin scanning the integrity and best practices of Salesforce Flows
+      **Lightning Flow Scanner** is a specialized SFDX plugin that analyzes Salesforce Flows for integrity issues, performance problems, and adherence to best practices. It helps developers build reliable and maintainable Flow automations.
+
+      **Key Features:**
+
+      - **Flow Integrity Analysis**: Validates Flow logic, connections, and component configurations for correctness
+      - **Best Practice Enforcement**: Checks against established Salesforce Flow development best practices
+      - **Performance Optimization**: Identifies potential performance bottlenecks and inefficient Flow patterns
+      - **Error Prevention**: Detects common Flow configuration errors before deployment
+      - **Comprehensive Rule Set**: Multiple rule categories covering design, performance, and maintainability
+      - **Configurable Scanning**: Customizable rules and thresholds through configuration files
+      - **CI/CD Integration**: Seamless integration with Salesforce development pipelines
+      - **Detailed Reporting**: Clear error messages with specific recommendations for improvement
+      - **SFDX Native**: Built as a native SFDX plugin for consistent Salesforce toolchain integration
 
       If your root folder is not **force-app**, please set variable SALESFORCE_LIGHTNING_FLOW_SCANNER_DIRECTORY
     linter_url: https://github.com/Lightning-Flow-Scanner
@@ -245,6 +315,7 @@ linters:
     linter_rules_url: https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-core#rules
     linter_banner_image_url: https://raw.githubusercontent.com/Lightning-Flow-Scanner/.github/main/docs/images/bannerslim.png
     linter_rules_configuration_url: https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx#configuration
+    linter_spdx_license: AGPL-3.0
     config_file_name: .flow-scanner.json
     cli_config_arg_name: --config
     cli_executable: sf
@@ -264,9 +335,12 @@ linters:
       - "sf flow:scan"
     install:
       dockerfile:
-        - |
-          RUN echo y|sf plugins install lightning-flow-scanner \
-              && npm cache clean --force || true \
+        - |-
+          # renovate: datasource=npm depName=lightning-flow-scanner
+          ARG LIGHTNING_FLOW_SCANNER_VERSION=5.2.0
+        - |-
+          RUN echo y|sf plugins install lightning-flow-scanner@${LIGHTNING_FLOW_SCANNER_VERSION} \
+              && (npm cache clean --force || true) \
               && rm -rf /root/.npm/_cacache
     ide:
       vscode:

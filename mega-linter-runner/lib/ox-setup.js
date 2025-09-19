@@ -1,5 +1,5 @@
 // const uuid = require("uuid");
-import { OX_LOGIN_URL } from "./config.js";
+import { OX_HOMEPAGE_URL } from "./config.js";
 import { default as open } from "open";
 
 // Class to setup OX security on the repository
@@ -8,7 +8,7 @@ export class OXSecuritySetup {
   // Once SSO (managed internally by OX app) is performed, we'll receive an ox token in response
   async run() {
     //,this.clientToken = uuid.v4(); // generate a random key
-    const registerUrl = OX_LOGIN_URL + "?ref=megalinter";
+    const registerUrl = OX_HOMEPAGE_URL + "?ref=megalinter";
     // console.log(`Waiting for response from OX.security app...`);
     open(registerUrl);
   }

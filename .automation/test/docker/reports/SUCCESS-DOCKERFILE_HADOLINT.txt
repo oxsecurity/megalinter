@@ -8,3 +8,6 @@ See documentation on https://megalinter.io/descriptors/dockerfile_hadolint/
 [SUCCESS] .automation/test/docker/good/Dockerfile.dev
     
 
+[SUCCESS] .automation/test/docker/good/test.Dockerfile
+    
+

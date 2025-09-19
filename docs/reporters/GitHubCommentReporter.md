@@ -9,7 +9,9 @@ Posts MegaLinter results summary in the comments of the related pull request (if
 
 ## Usage
 
-Click on hyperlinks to access detailed logs
+Click on hyperlinks to access detailed logs.
+
+If [LLM Advisor](../llm-advisor.md) is activated, it will also show its suggestions to fix linter errors.
 
 ![Screenshot](../assets/images/GitHubCommentReporter.jpg)
 
@@ -22,3 +24,5 @@ Click on hyperlinks to access detailed logs
 | GITHUB_SERVER_URL       | URL of the GitHub instance<br/>Must be overridden if using GitHub Enterprise              | `https://github.com`     |                                              |
 | CI_ACTION_RUN_URL       | URL of the CI job visualization page url (if using Github but not GitHub Actions)         | <!--  -->                |                                              |
 | REPORTERS_MARKDOWN_TYPE | Set to `simple` to avoid external images in generated markdown                            | `advanced`               |                                              |
+| REPORTERS_MARKDOWN_SUMMARY_TYPE            | Display summary in PR/MR comments as `sections`, `table` or both (`sections-table` or `table-sections`)                       | `table-sections`    |
+| JOB_SUMMARY_ADDITIONAL_MARKDOWN              | Custom markdown to add at the end of the summary message                                     | <!-- -->      |

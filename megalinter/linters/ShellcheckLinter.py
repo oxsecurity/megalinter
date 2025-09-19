@@ -24,7 +24,7 @@ class ShellcheckLinter(Linter):
                 env=config.build_env(self.request_id),
             )
             return_code = process.returncode
-            shellcheck_res_sarif = utils.decode_utf8(process.stdout)
+            shellcheck_res_sarif = utils.clean_string(process.stdout)
             logging.debug(
                 "shellcheck-sarif output"
                 + str(return_code)

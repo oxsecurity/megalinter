@@ -2,14 +2,14 @@
 
 ## Supported Versions
 
-Only the latest version (v7) is supported with security updates.
+Only the latest version (v8) is supported with security updates.
 
 it's recommended to use Docker image and Github action tagged versions:
 
-- v7
-- latest (latest patch of 7.x.x)
+- v8
+- latest (latest patch of 8.x.x)
 
-You can also use fixed version of 6.x.x, but make sure to have tools like dependabot or renovate to help you to upgrade when new releases are available
+You can also use fixed version of v8.x.x, but make sure to have tools like dependabot or renovate to help you to upgrade when new releases are available
 
 ## Reporting a Vulnerability
 

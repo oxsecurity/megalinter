@@ -3,4 +3,4 @@ parameters:
 
 services:
     errorFormatter.sarif:
-        class: Bartlett\Sarif\Converter\PhpStanConverter
+        class: Bartlett\Sarif\Converter\Reporter\PhpStanFormatter

@@ -4,22 +4,7 @@ import os
 
 import yaml
 from megalinter import Linter, flavor_factory
-
-
-# Returns directory where all .yml language descriptors are defined
-def get_descriptor_dir():
-    # Compiled version (copied from DockerFile)
-    if os.path.isdir("/megalinter-descriptors"):
-        return "/megalinter-descriptors"
-    # Dev / Test version
-    else:
-        descriptor_dir = os.path.realpath(
-            os.path.dirname(os.path.abspath(__file__)) + "/descriptors"
-        )
-        assert os.path.isdir(
-            descriptor_dir
-        ), f"Descriptor dir {descriptor_dir} not found !"
-        return descriptor_dir
+from megalinter.utils import get_descriptor_dir
 
 
 # List all defined linters

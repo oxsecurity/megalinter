@@ -8,9 +8,24 @@ file_extensions:
 linters:
   # GraphQL Schema Linter
   - linter_name: graphql-schema-linter
+    linter_text: |
+      **graphql-schema-linter** validates GraphQL schema definitions against a comprehensive set of rules to ensure consistency, best practices, and adherence to GraphQL conventions. It helps maintain high-quality, well-documented GraphQL APIs with consistent structure and proper documentation.
+
+      **Key Features:**
+
+      - **20+ built-in rules** covering descriptions, naming conventions, field sorting, and type usage
+      - **Relay specification compliance** validation for modern GraphQL APIs
+      - **Custom rules support** for project-specific validation requirements
+      - **Inline rule overrides** using GraphQL comments to disable specific rules
+      - **Multiple output formats** including text, compact, and JSON formats
+      - **Granular configuration** with support for `.graphql-schema-linterrc` files
+      - **Field and type description enforcement** for better API documentation
+      - **Naming convention validation** ensuring consistent schema structure
+      - **Type usage optimization** to prevent common GraphQL anti-patterns
     name: GRAPHQL_GRAPHQL_SCHEMA_LINTER
     linter_url: https://github.com/cjoudrey/graphql-schema-linter
     linter_repo: https://github.com/cjoudrey/graphql-schema-linter
+    linter_spdx_license: MIT
     linter_rules_url: https://github.com/cjoudrey/graphql-schema-linter#built-in-rules
     linter_rules_configuration_url: https://github.com/cjoudrey/graphql-schema-linter#configuration-file
     linter_rules_inline_disable_url: https://github.com/cjoudrey/graphql-schema-linter#inline-rule-overrides
@@ -20,9 +35,16 @@ linters:
     examples:
       - "graphql-schema-linter myfile.graphql"
     install:
+      dockerfile:
+        - |-
+          # renovate: datasource=npm depName=graphql
+          ARG NPM_GRAPHQL_VERSION=16.11.0
+        - |-
+          # renovate: datasource=npm depName=graphql-schema-linter
+          ARG NPM_GRAPHQL_SCHEMA_LINTER_VERSION=3.0.1
       npm:
-        - graphql
-        - graphql-schema-linter
+        - graphql@${NPM_GRAPHQL_VERSION}
+        - graphql-schema-linter@${NPM_GRAPHQL_SCHEMA_LINTER_VERSION}
     supported_platforms:
       platform:
         - linux/amd64

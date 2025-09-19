@@ -7,9 +7,25 @@ description: How to use rstcheck (configure, ignore files, ignore errors, help &
 # rstcheck
 [![GitHub stars](https://img.shields.io/github/stars/myint/rstcheck?cacheSeconds=3600)](https://github.com/myint/rstcheck) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/myint/rstcheck?sort=semver)](https://github.com/myint/rstcheck/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/myint/rstcheck)](https://github.com/myint/rstcheck/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/myint/rstcheck)](https://github.com/myint/rstcheck/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/myint/rstcheck)](https://github.com/myint/rstcheck/graphs/contributors/)
 
+**rstcheck** is a comprehensive reStructuredText checker that validates RST syntax while also checking the validity of code blocks in various programming languages. It goes beyond basic RST syntax to ensure code examples and embedded content are also valid.
+
+**Key Features:**
+
+- **Multi-language code validation** for Python, C, C++, JSON, XML, and other embedded code blocks
+- **RST syntax validation** ensuring proper reStructuredText document structure
+- **Configuration file support** via `.rstcheck.cfg` for project-specific settings
+- **Sphinx integration** supporting Sphinx-specific directives and extensions
+- **Detailed error reporting** with precise error locations and descriptions
+- **Ignore pattern support** for excluding specific files or error types
+- **Custom error handling** allowing for project-specific validation rules
+- **Code block syntax checking** validating embedded programming language syntax
+- **Recursive directory scanning** for bulk validation of documentation trees
+- **Extensible architecture** supporting custom validation rules and directives
+- **Performance optimized** for handling large documentation projects efficiently
+
 ## rstcheck documentation
 
-- Version in MegaLinter: **6.2.1**
+- Version in MegaLinter: **6.2.5**
 - Visit [Official Web Site](https://github.com/myint/rstcheck#readme){target=_blank}
 - See [How to configure rstcheck rules](https://github.com/myint/rstcheck#configuration-file){target=_blank}
 - See [How to disable rstcheck rules in files](https://github.com/myint/rstcheck#ignore-specific-errors){target=_blank}
@@ -47,15 +63,15 @@ Use rstcheck in your favorite IDE to catch errors before MegaLinter !
 |:-------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|-------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [vscode-restructuredtext](https://marketplace.visualstudio.com/items/lextudio.restructuredtext) | [![Install in VSCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/lextudio.restructuredtext){target=_blank} |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
-This linter is available in the following flavours
+This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                     | Embedded linters |                                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       124        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        83        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)   | Optimized for PYTHON based projects             |        63        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       126        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        86        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)   | Optimized for PYTHON based projects             |        64        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
 
 ## Behind the scenes
 
@@ -87,8 +103,9 @@ rstcheck -c .rstcheck.cfg myfile.rst
  Usage: rstcheck [OPTIONS] FILES...                                             
                                                                                 
  CLI of rstcheck.
+
  Enabled features: ['Sphinx']
- Pass one ore more rst FILES to check. Can be files or directories if 
+ Pass one or more RST FILES to check. Can be files or directories if 
  --recursive is passed too. Pass "-" if you want to read from stdin.
 
 ╭─ Options ────────────────────────────────────────────────────────────────────╮
@@ -98,7 +115,6 @@ rstcheck -c .rstcheck.cfg myfile.rst
 │                                         .rstcheck.cfg | setup.cfg. If 'NONE' │
 │                                         is passed no config file is loaded   │
 │                                         at all.                              │
-│                                         [default: None]                      │
 │ --warn-unknown-settings                 Log a WARNING for unknown settings   │
 │                                         in config files. Can be hidden via   │
 │                                         --log-level.                         │
@@ -109,7 +125,6 @@ rstcheck -c .rstcheck.cfg myfile.rst
 │                                         | WARNING | ERROR | SEVERE | NONE.   │
 │                                         Defaults to INFO. Can be set in      │
 │                                         config file.                         │
-│                                         [default: None]                      │
 │ --log-level                      LEVEL  The log level of the application for │
 │                                         information that is not a linting    │
 │                                         issue. Valid levels are: DEBUG |     │
@@ -119,26 +134,21 @@ rstcheck -c .rstcheck.cfg myfile.rst
 │ --ignore-directives              TEXT   Comma-separated-list of directives   │
 │                                         to add to the ignore list. Can be    │
 │                                         set in config file.                  │
-│                                         [default: None]                      │
 │ --ignore-roles                   TEXT   Comma-separated-list of roles to add │
 │                                         to the ignore list. Can be set in    │
 │                                         config file.                         │
-│                                         [default: None]                      │
 │ --ignore-substitutions           TEXT   Comma-separated-list of              │
 │                                         substitutions to add to the ignore   │
 │                                         list. Can be set in config file.     │
-│                                         [default: None]                      │
 │ --ignore-languages               TEXT   Comma-separated-list of languages    │
 │                                         for code-blocks to add to the ignore │
 │                                         list. The code in ignored            │
 │                                         code-blocks will not be checked for  │
 │                                         errors. Can be set in config file.   │
-│                                         [default: None]                      │
 │ --ignore-messages                REGEX  A regular expression to match        │
 │                                         linting issue messages against to    │
 │                                         ignore. Can be set in config file.   │
-│                                         [default: None]                      │
-│ --version                                                                    │
+│ --version                               Print versions and exit.             │
 │ --help                                  Show this message and exit.          │
 ╰──────────────────────────────────────────────────────────────────────────────╯
 
@@ -146,5 +156,14 @@ rstcheck -c .rstcheck.cfg myfile.rst
 
 ### Installation on mega-linter Docker image
 
+- Dockerfile commands :
+```dockerfile
+# renovate: datasource=pypi depName=rstcheck
+ARG PIP_RSTCHECK_VERSION=6.2.5
+# renovate: datasource=pypi depName=click
+ARG PIP_RSTCHECK_CLICK_VERSION=8.2.1
+```
+
 - PIP packages (Python):
-  - [rstcheck[toml,sphinx]](https://pypi.org/project/rstcheck[toml,sphinx])
+  - [click==8.2.1](https://pypi.org/project/click/8.2.1)
+  - [rstcheck[toml,sphinx]==6.2.5](https://pypi.org/project/rstcheck[toml,sphinx]/6.2.5)

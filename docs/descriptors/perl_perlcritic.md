@@ -13,9 +13,22 @@ description: How to use perlcritic (configure, ignore files, ignore errors, help
 
 [![GitHub stars](https://img.shields.io/github/stars/Perl-Critic/Perl-Critic?cacheSeconds=3600)](https://github.com/Perl-Critic/Perl-Critic) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/Perl-Critic/Perl-Critic?sort=semver)](https://github.com/Perl-Critic/Perl-Critic/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/Perl-Critic/Perl-Critic)](https://github.com/Perl-Critic/Perl-Critic/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/Perl-Critic/Perl-Critic)](https://github.com/Perl-Critic/Perl-Critic/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/Perl-Critic/Perl-Critic)](https://github.com/Perl-Critic/Perl-Critic/graphs/contributors/)
 
+**perlcritic** is a comprehensive static source code analysis engine for Perl that enforces coding standards and best practices. Based primarily on Damian Conway's "Perl Best Practices" book, it serves as an extensible framework for creating and applying consistent coding standards across Perl projects.
+
+**Key Features:**
+
+- **Extensive Policy Library**: Over 100 built-in policies covering bugs, security, maintainability, complexity, and code style
+- **Configurable Severity Levels**: Five severity levels (1-5) allowing fine-tuned control over policy enforcement
+- **Best Practices Foundation**: Policies based on "Perl Best Practices" and community-established coding standards
+- **Theme-Based Organization**: Policies grouped by themes like bugs, security, performance, and maintainability
+- **Inline Annotations**: Selective policy disabling through source code comments and annotations
+- **Extensible Framework**: Support for custom policies and organizational coding standards
+- **Detailed Reporting**: Comprehensive violation reports with explanations and suggested fixes
+- **Flexible Configuration**: Project-specific configuration files for team-wide standards enforcement
+
 ## perlcritic documentation
 
-- Version in MegaLinter: **1.152**
+- Version in MegaLinter: **1.156**
 - Visit [Official Web Site](https://metacpan.org/pod/Perl::Critic){target=_blank}
 - See [How to configure perlcritic rules](https://metacpan.org/pod/Perl::Critic#CONFIGURATION){target=_blank}
 - See [How to disable perlcritic rules in files](https://metacpan.org/pod/Perl::Critic#BENDING-THE-RULES){target=_blank}
@@ -44,20 +57,20 @@ description: How to use perlcritic (configure, ignore files, ignore errors, help
 | PERL_PERLCRITIC_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                        |
 | PERL_PERLCRITIC_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `['perlcritic']`           |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
-This linter is available in the following flavours
+This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                               | Description               | Embedded linters |                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       124        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       126        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 
 ## Behind the scenes
 
 ### How are identified applicable files
 
 - File extensions: `.pl`, `.pm`, `.t`, ``
-- Detected file content (regex): `#!/usr/bin/env perl`, `#!/usr/bin/perl`
+- Detected file content (regex): `^#!/usr/bin/env perl`, `^#!/usr/bin/perl`
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
@@ -106,7 +119,10 @@ Usage:
 
 - Dockerfile commands :
 ```dockerfile
-RUN curl -fsSL https://raw.githubusercontent.com/skaji/cpm/main/cpm | perl - install -g --show-build-log-on-failure --without-build --without-test --without-runtime Perl::Critic \
+# renovate: datasource=github-tags depName=skaji/cpm
+ARG PERL_PERLCRITIC_VERSION=0.997024
+
+RUN curl -fsSL https://raw.githubusercontent.com/skaji/cpm/refs/tags/${PERL_PERLCRITIC_VERSION}/cpm | perl - install -g --show-build-log-on-failure --without-build --without-test --without-runtime Perl::Critic \
     && rm -rf /root/.perl-cpm
 
 ```

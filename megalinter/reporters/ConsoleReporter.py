@@ -3,12 +3,18 @@
 Output results in console
 """
 import logging
-import urllib
 
-import chalk as c
 import terminaltables
 from megalinter import Reporter, config
-from megalinter.constants import DEFAULT_RELEASE, ML_DOC_URL, ML_REPO, ML_REPO_URL
+from megalinter.constants import (
+    DEFAULT_RELEASE,
+    ML_DOC_URL,
+    ML_REPO,
+    ML_REPO_URL,
+    ML_VERSION,
+)
+from megalinter.flavor_factory import is_custom_flavor
+from megalinter.utils import blue
 from megalinter.utils_reporter import log_section_end
 
 
@@ -58,7 +64,15 @@ class ConsoleReporter(Reporter):
         logging.info(log_section_end("megalinter-file-listing"))
 
     def produce_report(self):
-        table_header = ["Descriptor", "Linter", "Mode", "Files", "Fixed", "Errors"]
+        table_header = [
+            "Descriptor",
+            "Linter",
+            "Mode",
+            "Files",
+            "Fixed",
+            "Errors",
+            "Warnings",
+        ]
         if self.master.show_elapsed_time is True:
             table_header += ["Elapsed time"]
         table_data = [table_header]
@@ -77,12 +91,12 @@ class ConsoleReporter(Reporter):
                     )
                 )
                 errors = str(linter.total_number_errors)
+                warnings = str(linter.total_number_warnings)
                 if linter.cli_lint_mode == "project":
                     found = "n/a"
                     nb_fixed_cell = "yes" if nb_fixed_cell != "" else nb_fixed_cell
                 else:
                     found = str(len(linter.files))
-
                 table_line = [
                     status + " " + linter.descriptor_id,
                     linter.linter_name,
@@ -90,6 +104,7 @@ class ConsoleReporter(Reporter):
                     found,
                     nb_fixed_cell,
                     errors,
+                    warnings,
                 ]
                 if self.master.show_elapsed_time is True:
                     table_line += [str(round(linter.elapsed_time_s, 2)) + "s"]
@@ -111,25 +126,23 @@ class ConsoleReporter(Reporter):
             logging.info(table_line)
         logging.info("")
         if self.master.flavor_suggestions is not None:
-            if self.master.flavor_suggestions[0] == "new":
-                logging.warning(
-                    "[flavors] You could have same capabilities but better runtime performances"
-                    " if you request a new MegaLinter flavor."
+            active_linter_names = [linter.name for linter in self.master.active_linters]
+            custom_flavor_command = (
+                f"npx mega-linter-runner@{ML_VERSION} --custom-flavor-setup --custom-flavor-linters "
+                + ",".join(active_linter_names)
+            )
+            custom_flavor_message = (
+                blue(
+                    "Your project could benefit from a custom flavor, "
+                    + "which would allow you to run only the linters you need, and thus improve runtime performances. "
+                    + "(Skip this info by defining `FLAVOR_SUGGESTIONS: false`)\n"
                 )
-                linters_list_formatted = ", ".join(self.master.flavor_suggestions[1])
-                body = (
-                    "MegaLinter would run faster on my project if I had a flavor containing the following "
-                    f"list of linters:\n\n{linters_list_formatted}\n\n"
-                    "Would it be possible to create one ? Thanks :relaxed:"
-                )
-                new_flavor_url = (
-                    f"{self.issues_root}/new?assignees=&labels=enhancement&template=feature_request.md"
-                    f"&title={urllib.parse.quote('Request new MegaLinter flavor')}"
-                    f"&body={urllib.parse.quote(body)}"
-                )
-                logging.warning(
-                    f"[flavors] Use the following link to request the new flavor: {new_flavor_url}"
-                )
+                + f"- Documentation: {ML_DOC_URL}/custom-flavors/\n"
+                f"- Command: `{custom_flavor_command}`"
+            )
+            if len(self.master.flavor_suggestions) == 1:
+                if not is_custom_flavor():
+                    logging.warning(custom_flavor_message)
             else:
                 build_version = config.get(None, "BUILD_VERSION", DEFAULT_RELEASE)
                 action_version = (
@@ -138,12 +151,14 @@ class ConsoleReporter(Reporter):
                     else "beta" if build_version == "latest" else build_version
                 )
                 logging.warning(
-                    c.blue(
+                    blue(
                         "You could have same capabilities but better runtime performances"
                         " if you use a MegaLinter flavor:"
                     )
                 )
                 for suggestion in self.master.flavor_suggestions:
+                    if "new_flavor_linter_names" in suggestion:
+                        continue
                     action_path = (
                         f"{ML_REPO}/flavors/{suggestion['flavor']}@{action_version}"
                     )
@@ -152,4 +167,6 @@ class ConsoleReporter(Reporter):
                         f"{self.gh_url}/flavors/{suggestion['flavor']}/"
                     )
                     logging.warning(flavor_msg)
+                if not is_custom_flavor():
+                    logging.warning(custom_flavor_message)
             logging.info("")

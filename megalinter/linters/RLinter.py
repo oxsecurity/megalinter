@@ -3,8 +3,7 @@
 Use lintr to lint R files
 https://github.com/r-lib/lintr
 """
-import os
-from shutil import copyfile
+from pathlib import Path
 
 from megalinter import Linter
 
@@ -12,19 +11,23 @@ from megalinter import Linter
 class RLinter(Linter):
     # Build the CLI command to call to lint a file
     def build_lint_command(self, file=None):
-        # lintr requires .lintr in folder: copy it there if necessary
-        dir_name = os.path.dirname(file)
-        if not os.path.isfile(dir_name + os.path.sep + self.config_file_name):
-            copyfile(self.config_file, dir_name + os.path.sep + self.config_file_name)
         # Build command in R format
         r_commands = [
-            f"lints <- lintr::lint('{file}');",
-            "print(lints);",
-            "errors <- purrr::keep(lints, ~ .type == 'error');",
-            "quit(save = 'no', status = if (length(errors) > 0) 1 else 0)",
+            # Change the working directory to match the file
+            f"setwd('{Path(file).parent}')",
+            # Instruct lintr to walk up the directory tree
+            f"lintr:::read_settings('{self.config_file_name}')",
+            f"lints <- lintr::lint('{Path(file).name}')",
+            "print(lints)",
+            "quit(save = 'no', status = if (length(lints) > 0) 1 else 0)",
         ]
+
+        if self.config_file:
+            # Instruct lintr to load an absolute filepath
+            r_commands.insert(0, f"options('lintr.linter_file' = '{self.config_file}')")
+
         # Build shell command
-        cmd = ["R", "--slave", "-e", "".join(r_commands)]
+        cmd = ["R", "--slave", "-e", ";".join(r_commands)]
         return cmd
 
     # Build the CLI command to request lintr version

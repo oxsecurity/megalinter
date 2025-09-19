@@ -9,7 +9,7 @@ from megalinter import Linter
 
 
 class PyrightLinter(Linter):
-    def pre_test(self):
+    def pre_test(self, test_name):
         # The file must be in the root of the repository so we create it temporarily for the test.
         # By default pyright ignores files starting with "." so we override this behavior
         # to work with the .automation folder
@@ -26,5 +26,5 @@ exclude = [
 ]"""
             )
 
-    def post_test(self):
+    def post_test(self, test_name):
         os.remove(os.path.join(os.getcwd(), "pyproject.toml"))

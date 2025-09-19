@@ -24,11 +24,11 @@ You may see **github permission errors**, or workflows not run on the new commit
 To solve these issues, you can apply one of the following solutions.
 
 - Method 1: The most secured
-  - [Create Fine Grained Personal Access Token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-fine-grained-personal-access-token), scoped only on your repository and then copy the PAT value
+  - [Create Fine Grained Personal Access Token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-fine-grained-personal-access-token), scoped only on your repository and with **Contents: Read/Write** and then copy the PAT value
   - [Define environment secret variable](https://docs.github.com/en/actions/security-guides/encrypted-secrets#creating-encrypted-secrets-for-an-environment) named **PAT** on your repository, and paste the PAT value
   - Update your Github Actions Workflow to add the environment name
 
-- Method 2: Easier, but any contributor with write access can see your Personal Access Token
+- Method 2: Easier, but any contributor with write access can see your Personal Access Token, so use it only on private repositories.
   - [Create Classic Personal Access Token](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token#creating-a-token), then copy the PAT value
   - [Define secret variable](https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets#creating-encrypted-secrets-for-a-repository) named **PAT** on your repository, and paste the PAT value
 

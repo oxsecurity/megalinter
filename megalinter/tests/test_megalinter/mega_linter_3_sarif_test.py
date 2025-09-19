@@ -90,3 +90,30 @@ class mega_linter_3_sarif_test(unittest.TestCase):
             os.path.isfile(expected_output_file),
             "Output aggregated SARIF file " + expected_output_file + " should exist",
         )
+
+    def test_api_output(self):
+        self.before_start()
+        mega_linter, output = utilstest.call_mega_linter(
+            {
+                "APPLY_FIXES": "false",
+                "LOG_LEVEL": "DEBUG",
+                "MULTI_STATUS": "false",
+                "ENABLE_LINTERS": "JAVASCRIPT_ES,PYTHON_BANDIT",
+                "API_REPORTER": "true",
+                "API_REPORTER_URL": "https://jsonplaceholder.typicode.com/posts",
+                "API_REPORTER_METRICS_URL": "https://httpbin.org/anything",
+                "API_REPORTER_DEBUG": "true",
+                "request_id": self.request_id,
+            }
+        )
+        self.assertTrue(
+            len(mega_linter.linters) > 0, "Linters have been created and run"
+        )
+        self.assertTrue(
+            "[Api Reporter] Successfully posted data" in output,
+            "Api Reporter failed to post message",
+        )
+        self.assertTrue(
+            "[Api Reporter Metrics] Successfully posted data" in output,
+            "Api Reporter Metrics failed to post message",
+        )

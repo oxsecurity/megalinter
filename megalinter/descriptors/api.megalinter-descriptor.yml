@@ -16,11 +16,25 @@ file_contains_regex:
 linters:
   # Spectral
   - linter_name: spectral
-    linter_url: https://docs.stoplight.io/docs/spectral/674b27b261c3c-overview
+    linter_text: |
+      **Spectral** is a flexible JSON/YAML linter for creating automated style guides, with built-in support for **OpenAPI** (v3.1, v3.0, and v2.0), **Arazzo** v1.0, and **AsyncAPI** v2.x specifications.
+
+      **Key Features:**
+
+      - **Custom Rulesets**: Create custom rules to lint JSON or YAML objects
+      - **Ready-to-use Rulesets**: Validate and lint OpenAPI, AsyncAPI, and Arazzo documents out of the box
+      - **API Style Guides**: Automated API style guides using rulesets improve consistency across all your APIs
+      - **Built-in Functions**: Pattern checks, parameter validation, alphabetical ordering, character limits, and key presence validation
+      - **Custom Functions**: Create advanced custom functions for complex use cases
+      - **Multiple Output Formats**: Support for various output formats including SARIF, JUnit, HTML, and more
+
+      Spectral helps ensure your API specifications follow best practices and maintain consistency across your organization. It's particularly useful for enforcing API governance and automated quality checks in CI/CD pipelines.
+    linter_url: https://github.com/stoplightio/spectral
     linter_repo: https://github.com/stoplightio/spectral
     linter_rules_url: https://docs.stoplight.io/docs/spectral/4dec24461f3af-open-api-rules
     linter_banner_image_url: https://github.com/stoplightio/spectral/raw/develop/docs/img/spectral-banner.png
     linter_rules_configuration_url: https://docs.stoplight.io/docs/spectral/9ffa04e052cc1-spectral-cli#using-a-ruleset-file
+    linter_spdx_license: Apache-2.0
     config_file_name: .spectral.yaml
     cli_config_arg_name: "-r"
     cli_lint_extra_args:
@@ -33,8 +47,12 @@ linters:
       - "spectral lint -r .spectral.yaml myfile.yml"
     test_folder: api
     install:
+      dockerfile:
+        - |-
+          # renovate: datasource=npm depName=@stoplight/spectral-cli
+          ARG NPM_SPECTRAL_CLI_VERSION=6.15.0
       npm:
-        - "@stoplight/spectral-cli"
+        - "@stoplight/spectral-cli@${NPM_SPECTRAL_CLI_VERSION}"
     ide:
       stoplight:
         - name: Native integration

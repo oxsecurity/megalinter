@@ -11,13 +11,25 @@ test_folder: editorconfig-checker
 linters:
   # EDITORCONFIG-CHECKER
   - linter_name: editorconfig-checker
+    linter_text: |
+      **editorconfig-checker** is a language-agnostic tool that validates files against EditorConfig definitions to ensure consistent formatting across your entire codebase. Unlike language-specific linters, it works for every file type and programming language.
+
+      **Key Features:**
+
+      - **Universal Validation**: Works with any file type including code, configuration files, plain text, XML, and more
+      - **EditorConfig Compliance**: Enforces indentation, line endings, character encoding, and whitespace rules from `.editorconfig`
+      - **Multi-Platform Support**: Available as native binaries, npm package, PHP composer package, Python pip package, and Docker image
+      - **Configurable Rules**: Fine-tune validation with `.ecrc` configuration files and command-line flags
+      - **Comprehensive Checks**: Validates indent style, insert final newline, trim trailing whitespace, and end-of-line characters
+      - **Flexible Exclusions**: Exclude specific files, directories, or content types from validation
     linter_url: https://editorconfig-checker.github.io/
     linter_repo: https://github.com/editorconfig-checker/editorconfig-checker
     linter_banner_image_url: https://raw.githubusercontent.com/editorconfig-checker/editorconfig-checker/master/docs/logo.png
     linter_rules_configuration_url: https://github.com/editorconfig-checker/editorconfig-checker#configuration
     linter_rules_inline_disable_url: https://github.com/editorconfig-checker/editorconfig-checker#excluding
     linter_megalinter_ref_url: https://github.com/editorconfig-checker/editorconfig-checker#mega-linter
-    config_file_name: .ecrc
+    linter_spdx_license: MIT
+    config_file_name: .editorconfig-checker.json
     cli_lint_mode: list_of_files
     cli_config_arg_name: "-config"
     cli_version_arg_name: "-version"
@@ -25,10 +37,10 @@ linters:
       - "editorconfig-checker myfile.js"
     install:
       dockerfile:
-        - |
+        - |-
           # renovate: datasource=docker depName=mstruebing/editorconfig-checker
-          ARG EDITORCONFIG_CHECKER_VERSION=v3.0.1
-        - FROM mstruebing/editorconfig-checker:${EDITORCONFIG_CHECKER_VERSION} as editorconfig-checker
+          ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=v3.4.0
+        - FROM mstruebing/editorconfig-checker:${EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION} AS editorconfig-checker
         - COPY --link --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
     supported_platforms:
       platform:

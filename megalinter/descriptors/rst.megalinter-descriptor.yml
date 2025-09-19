@@ -9,23 +9,67 @@ file_extensions:
 linters:
   # restructuredtext-lint
   - linter_name: rst-lint
+    linter_text: |
+      **restructuredtext-lint** (rst-lint) is a reStructuredText linter that validates RST syntax and helps prevent frustrating errors when uploading documentation to PyPI. It checks for common reStructuredText issues and provides comprehensive validation for documentation workflows.
+
+      **Key Features:**
+
+      - **Malformed directive detection** catching invalid reStructuredText directives
+      - **Invalid syntax validation** ensuring proper RST document structure
+      - **Title underline problem detection** verifying consistent heading formatting
+      - **Multiple formatting error checks** covering common RST pitfalls
+      - **Docutils integration** leveraging the standard RST parsing library
+      - **Detailed error messages** with precise line numbers for quick fixes
+      - **Multiple output formats** supporting both text and JSON output
+      - **Custom directive support** extensible with custom directives and roles
+      - **Sphinx documentation compatibility** for specialized documentation workflows
+      - **PyPI upload validation** preventing documentation upload failures
+      - **Command-line interface** for easy integration into build processes
+      - **Fast processing** optimized for large documentation projects
     linter_url: https://github.com/twolfson/restructuredtext-lint
     linter_repo: https://github.com/twolfson/restructuredtext-lint
+    linter_spdx_license: Unlicense
+    linter_rules_configuration_url: https://github.com/twolfson/restructuredtext-lint#cli-utility
+    linter_rules_inline_disable_url: https://docutils.sourceforge.io/docs/ref/rst/directives.html#raw-data-pass-through
     linter_megalinter_ref_url: https://github.com/twolfson/restructuredtext-lint/wiki/Integration-in-other-tools#integration-in-other-tools
     examples:
       - "rst-lint myfile.rst"
     install:
+      dockerfile:
+        - |-
+          # renovate: datasource=pypi depName=Pygments
+          ARG PIP_PYGMENTS_VERSION=2.19.2
+        - |-
+          # renovate: datasource=pypi depName=restructuredtext_lint
+          ARG PIP_RESTRUCTUREDTEXT_LINT_VERSION=1.4.0
       pip:
-        - Pygments
-        - restructuredtext_lint
+        - Pygments==${PIP_PYGMENTS_VERSION}
+        - restructuredtext_lint==${PIP_RESTRUCTUREDTEXT_LINT_VERSION}
     supported_platforms:
       platform:
         - linux/amd64
         - linux/arm64
   # rstcheck
   - linter_name: rstcheck
+    linter_text: |
+      **rstcheck** is a comprehensive reStructuredText checker that validates RST syntax while also checking the validity of code blocks in various programming languages. It goes beyond basic RST syntax to ensure code examples and embedded content are also valid.
+
+      **Key Features:**
+
+      - **Multi-language code validation** for Python, C, C++, JSON, XML, and other embedded code blocks
+      - **RST syntax validation** ensuring proper reStructuredText document structure
+      - **Configuration file support** via `.rstcheck.cfg` for project-specific settings
+      - **Sphinx integration** supporting Sphinx-specific directives and extensions
+      - **Detailed error reporting** with precise error locations and descriptions
+      - **Ignore pattern support** for excluding specific files or error types
+      - **Custom error handling** allowing for project-specific validation rules
+      - **Code block syntax checking** validating embedded programming language syntax
+      - **Recursive directory scanning** for bulk validation of documentation trees
+      - **Extensible architecture** supporting custom validation rules and directives
+      - **Performance optimized** for handling large documentation projects efficiently
     linter_url: https://github.com/myint/rstcheck
     linter_repo: https://github.com/myint/rstcheck
+    linter_spdx_license: MIT
     config_file_name: ".rstcheck.cfg"
     linter_rules_configuration_url: https://github.com/myint/rstcheck#configuration-file
     linter_rules_inline_disable_url: https://github.com/myint/rstcheck#ignore-specific-errors
@@ -36,8 +80,15 @@ linters:
       - "rstcheck myfile.rst"
       - "rstcheck -c .rstcheck.cfg myfile.rst"
     install:
+      dockerfile:
+        - |-
+          # renovate: datasource=pypi depName=rstcheck
+          ARG PIP_RSTCHECK_VERSION=6.2.5
+          # renovate: datasource=pypi depName=click
+          ARG PIP_RSTCHECK_CLICK_VERSION=8.3.0
       pip:
-        - rstcheck[toml,sphinx]
+        - click==${PIP_RSTCHECK_CLICK_VERSION} # Downgrade click as 8.2.0 triggers and error
+        - rstcheck[toml,sphinx]==${PIP_RSTCHECK_VERSION}
     supported_platforms:
       platform:
         - linux/amd64
@@ -48,8 +99,24 @@ linters:
           url: https://marketplace.visualstudio.com/items/lextudio.restructuredtext
   # rstfmt
   - linter_name: rstfmt
+    linter_text: |
+      **rstfmt** is a specialized formatter for reStructuredText (RST) files that automatically standardizes documentation formatting for consistency and readability. It serves as the definitive tool for maintaining professional RST documentation standards.
+
+      **Key Features:**
+
+      - **Smart Formatting**: Intelligent reStructuredText parsing that preserves semantic meaning while improving presentation
+      - **Consistent Styling**: Standardizes indentation, spacing, line lengths, and structural elements across documents
+      - **Directive Handling**: Proper formatting of RST directives, roles, and special markup constructs
+      - **Table Formatting**: Automatic alignment and formatting of RST tables and grid structures
+      - **Link Standardization**: Consistent formatting of internal and external links, references, and citations
+      - **Check Mode**: Validation mode that reports formatting issues without making changes
+      - **Batch Processing**: Efficient formatting of multiple RST files and entire documentation projects
+      - **Documentation Standards**: Ensures adherence to reStructuredText formatting conventions and best practices
+      - **Sphinx Compatibility**: Fully compatible with Sphinx documentation builds and workflows
     is_formatter: true
     linter_url: https://github.com/dzhu/rstfmt
+    linter_spdx_license: MIT
+    linter_rules_configuration_url: https://github.com/dzhu/rstfmt#usage
     linter_megalinter_ref_url: https://github.com/dzhu/rstfmt/pull/1
     cli_lint_extra_args:
       - "--check"
@@ -61,8 +128,12 @@ linters:
       - "rstfmt --check myfile.rst"
       - "rstfmt myfile.rst" # Format
     install:
+      dockerfile:
+        - |-
+          # renovate: datasource=pypi depName=rstfmt
+          ARG PIP_RSTFMT_VERSION=0.0.14
       pip:
-        - rstfmt
+        - rstfmt==${PIP_RSTFMT_VERSION}
     version_extract_regex: "(?<=rstfmt )\\d+(\\.\\d+)+"
     supported_platforms:
       platform:

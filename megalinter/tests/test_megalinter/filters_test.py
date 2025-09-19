@@ -9,7 +9,7 @@ import unittest
 from megalinter import utils
 
 
-class utilsTest(unittest.TestCase):
+class filters_test(unittest.TestCase):
     def test_file_contains_true(self):
         repo_home = utils.REPO_HOME_DEFAULT
         regex_list = ["#!/usr/bin/env perl", "#!/usr/bin/perl"]

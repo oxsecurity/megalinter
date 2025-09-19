@@ -7,10 +7,29 @@ description: How to use rst-lint (configure, ignore files, ignore errors, help &
 # rst-lint
 [![GitHub stars](https://img.shields.io/github/stars/twolfson/restructuredtext-lint?cacheSeconds=3600)](https://github.com/twolfson/restructuredtext-lint) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/twolfson/restructuredtext-lint?sort=semver)](https://github.com/twolfson/restructuredtext-lint/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/twolfson/restructuredtext-lint)](https://github.com/twolfson/restructuredtext-lint/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/twolfson/restructuredtext-lint)](https://github.com/twolfson/restructuredtext-lint/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/twolfson/restructuredtext-lint)](https://github.com/twolfson/restructuredtext-lint/graphs/contributors/)
 
+**restructuredtext-lint** (rst-lint) is a reStructuredText linter that validates RST syntax and helps prevent frustrating errors when uploading documentation to PyPI. It checks for common reStructuredText issues and provides comprehensive validation for documentation workflows.
+
+**Key Features:**
+
+- **Malformed directive detection** catching invalid reStructuredText directives
+- **Invalid syntax validation** ensuring proper RST document structure
+- **Title underline problem detection** verifying consistent heading formatting
+- **Multiple formatting error checks** covering common RST pitfalls
+- **Docutils integration** leveraging the standard RST parsing library
+- **Detailed error messages** with precise line numbers for quick fixes
+- **Multiple output formats** supporting both text and JSON output
+- **Custom directive support** extensible with custom directives and roles
+- **Sphinx documentation compatibility** for specialized documentation workflows
+- **PyPI upload validation** preventing documentation upload failures
+- **Command-line interface** for easy integration into build processes
+- **Fast processing** optimized for large documentation projects
+
 ## rst-lint documentation
 
 - Version in MegaLinter: **1.4.0**
 - Visit [Official Web Site](https://github.com/twolfson/restructuredtext-lint#readme){target=_blank}
+- See [How to configure rst-lint rules](https://github.com/twolfson/restructuredtext-lint#cli-utility){target=_blank}
+- See [How to disable rst-lint rules in files](https://docutils.sourceforge.io/docs/ref/rst/directives.html#raw-data-pass-through){target=_blank}
 
 [![restructuredtext-lint - GitHub](https://gh-card.dev/repos/twolfson/restructuredtext-lint.svg?fullname=)](https://github.com/twolfson/restructuredtext-lint){target=_blank}
 
@@ -35,15 +54,15 @@ description: How to use rst-lint (configure, ignore files, ignore errors, help &
 | RST_RST_LINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                |
 | RST_RST_LINT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `['rst-lint']`     |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
-This linter is available in the following flavours
+This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                     | Embedded linters |                                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       124        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        83        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)   | Optimized for PYTHON based projects             |        63        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       126        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        86        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)   | Optimized for PYTHON based projects             |        64        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
 
 ## Behind the scenes
 
@@ -92,6 +111,14 @@ options:
 
 ### Installation on mega-linter Docker image
 
+- Dockerfile commands :
+```dockerfile
+# renovate: datasource=pypi depName=Pygments
+ARG PIP_PYGMENTS_VERSION=2.19.2
+# renovate: datasource=pypi depName=restructuredtext_lint
+ARG PIP_RESTRUCTUREDTEXT_LINT_VERSION=1.4.0
+```
+
 - PIP packages (Python):
-  - [Pygments](https://pypi.org/project/Pygments)
-  - [restructuredtext_lint](https://pypi.org/project/restructuredtext_lint)
+  - [Pygments==2.19.2](https://pypi.org/project/Pygments/2.19.2)
+  - [restructuredtext_lint==1.4.0](https://pypi.org/project/restructuredtext_lint/1.4.0)

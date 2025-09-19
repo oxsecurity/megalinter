@@ -1,0 +1,5 @@
+---
+- name: Download and run a script
+  shell: "curl http://example.com/script.sh | bash"
+
+- debug: msg="Undefined variable {{ undefined_var }}"

@@ -7,6 +7,12 @@ workspace:
 
 steps:
   - name: megalinter
-    image: oxsecurity/megalinter:v7
+    image: <%= DOCKER_IMAGE_NAME %>:<%= DOCKER_IMAGE_VERSION %>
     environment:
       DEFAULT_WORKSPACE: /tmp/lint
+      # Disable LLM Advisor for bot PRs (dependabot, renovate, etc.)
+      # Note: Drone CI has limited access to PR metadata, this is a basic check
+      LLM_ADVISOR_ENABLED: >-
+        ${DRONE_BUILD_EVENT != 'pull_request' ||
+         (DRONE_PULL_REQUEST_TITLE !~ /^(chore|fix|deps?|bump)(\(.*\))?: / &&
+          DRONE_COMMIT_AUTHOR !~ /^(dependabot|renovate|github-actions)(\[bot\])?$/)}

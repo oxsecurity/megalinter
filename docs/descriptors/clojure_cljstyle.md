@@ -7,11 +7,20 @@ description: How to use cljstyle (configure, ignore files, ignore errors, help &
 # cljstyle
 [![GitHub stars](https://img.shields.io/github/stars/greglook/cljstyle?cacheSeconds=3600)](https://github.com/greglook/cljstyle) ![autofix](https://shields.io/badge/-autofix-green) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/greglook/cljstyle?sort=semver)](https://github.com/greglook/cljstyle/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/greglook/cljstyle)](https://github.com/greglook/cljstyle/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/greglook/cljstyle)](https://github.com/greglook/cljstyle/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/greglook/cljstyle)](https://github.com/greglook/cljstyle/graphs/contributors/)
 
-_This linter has been disabled in this version_
+**cljstyle** is a comprehensive tool for formatting Clojure code that transforms messy, inconsistent code into beautifully formatted, readable source files. It's a rewrite of the original cljfmt tool with enhanced capabilities and native compilation.
+
+**Key Features:**
+
+- **Automatic Code Formatting**: Transforms poorly formatted Clojure code into clean, consistent, and readable format
+- **Comprehensive Rules**: Handles indentation, spacing, line breaks, namespace formatting, and function definitions
+- **Highly Configurable**: Extensive configuration options through `.cljstyle` files with format rules and width constraints
+- **Multi-Command Interface**: Supports check, fix, pipe, find, and config commands for different workflows
+- **Form Ignoring**: Flexible ignore patterns with comment forms, discard macros, and metadata tags
+- **Native Performance**: Compiled to native binary for fast startup and execution
 
 ## cljstyle documentation
 
-- Version in MegaLinter: **0.15.0**
+- Version in MegaLinter: **0.17.642**
 - Visit [Official Web Site](https://github.com/greglook/cljstyle#readme){target=_blank}
 - See [How to configure cljstyle rules](https://github.com/greglook/cljstyle/blob/main/doc/configuration.md#format-rules){target=_blank}
 - See [How to disable cljstyle rules in files](https://github.com/greglook/cljstyle#ignoring-forms){target=_blank}
@@ -52,13 +61,15 @@ Use cljstyle in your favorite IDE to catch errors before MegaLinter !
 |:------------------------------------------------------------------------------------------------------------------------------------------:|----------------------------------------------|-------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------:|
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a> | [Emacs](https://www.gnu.org/software/emacs/) | [cljstyle-mode](https://github.com/greglook/cljstyle/blob/main/doc/integrations.md#emacs) | [Visit Web Site](https://github.com/greglook/cljstyle/blob/main/doc/integrations.md#emacs){target=_blank} |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
-This linter is available in the following flavours
+This linter is available in the following flavors
 
-|                                                                         <!-- -->                                                                         | Flavor                                               | Description               | Embedded linters |                                                                                                                                                                       Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       124        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                     | Embedded linters |                                                                                                                                                                                       Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       126        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        86        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.io/beta/flavors/java/)       | Optimized for JAVA based projects               |        53        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
 
 ## Behind the scenes
 
@@ -83,7 +94,7 @@ cljstyle fix
 ```
 
 ```shell
-clj-kondo fix myfile.clj path/to/myfile.clj
+cljstyle fix myfile.clj path/to/myfile.clj
 ```
 
 
@@ -118,9 +129,10 @@ Options:
 - Dockerfile commands :
 ```dockerfile
 # Parent descriptor install
+# renovate: datasource=github-tags depName=sgerrand/alpine-pkg-glibc
+ARG ALPINE_GLIBC_PACKAGE_VERSION=2.34-r0
 ENV LANG=C.UTF-8
 RUN ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases/download" && \
-    ALPINE_GLIBC_PACKAGE_VERSION="2.34-r0" && \
     ALPINE_GLIBC_BASE_PACKAGE_FILENAME="glibc-$ALPINE_GLIBC_PACKAGE_VERSION.apk" && \
     ALPINE_GLIBC_BIN_PACKAGE_FILENAME="glibc-bin-$ALPINE_GLIBC_PACKAGE_VERSION.apk" && \
     ALPINE_GLIBC_I18N_PACKAGE_FILENAME="glibc-i18n-$ALPINE_GLIBC_PACKAGE_VERSION.apk" && \
@@ -160,9 +172,11 @@ RUN ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases
         "$ALPINE_GLIBC_I18N_PACKAGE_FILENAME"
 
 # Linter install
+# renovate: datasource=github-tags depName=greglook/cljstyle
+ARG CLJ_STYLE_VERSION=0.17.642
 RUN curl --retry 5 --retry-delay 5 -sLO https://raw.githubusercontent.com/greglook/cljstyle/main/util/install-cljstyle \
     && chmod +x install-cljstyle \
-    && ./install-cljstyle
+    && ./install-cljstyle --static --version "$CLJ_STYLE_VERSION"
 
 ```
 

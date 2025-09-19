@@ -51,14 +51,31 @@ class CSpellLinter(Linter):
                     "[cspell] Unable to check file names on a readonly workspace: "
                     + str(e)
                 )
+        # Add . parameter if cli_lint_mode is project
+        if (
+            self.cli_lint_mode == "project"
+            and "." not in self.cli_lint_extra_args_after
+            and "." not in self.cli_lint_extra_args
+        ):
+            self.cli_lint_extra_args_after.append(".")
         return super().build_lint_command(file)
 
-    # Remove temp file with file names if existing
     def execute_lint_command(self, command):
-        res = super().execute_lint_command(command)
+        return_code, return_stdout = super().execute_lint_command(command)
+        # Filter out progress lines that don't contain spelling errors
+        if return_stdout:
+            lines = return_stdout.split("\n")
+            filtered_lines = []
+            for line in lines:
+                # Skip lines that match the pattern "XXX/XXX filename" but don't contain "Unknown word"
+                if re.match(r"^\s*\d+/\d+\s+\S+", line) and "Unknown word" not in line:
+                    continue
+                filtered_lines.append(line)
+            return_stdout = "\n".join(filtered_lines)
+        # Remove temp file with file names if existing
         if self.temp_file_name is not None:
             os.remove(self.temp_file_name)
-        return res
+        return return_code, return_stdout
 
     # Provide additional details in text reporter logs
     # noinspection PyMethodMayBeStatic
@@ -137,7 +154,7 @@ Of course, please correct real typos before :)
         )
         return additional_report.splitlines()
 
-    def pre_test(self):
+    def pre_test(self, test_name):
         config.set_value(
             self.request_id, "SPELL_CSPELL_FILE_EXTENSIONS", [".js", ".md"]
         )

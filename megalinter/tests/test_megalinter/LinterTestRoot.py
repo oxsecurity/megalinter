@@ -34,33 +34,33 @@ class LinterTestRoot:
         self.request_id = str(uuid.uuid1())
         utilstest.linter_test_setup({"request_id": self.request_id})
         linter = self.get_linter_instance(self.request_id)
-        linter.pre_test()
+        linter.pre_test("test_success")
         utilstest.test_linter_success(linter, self)
-        linter.post_test()
+        linter.post_test("test_success")
 
     def test_failure(self):
         self.request_id = str(uuid.uuid1())
         utilstest.linter_test_setup({"request_id": self.request_id})
         linter = self.get_linter_instance(self.request_id)
-        linter.pre_test()
+        linter.pre_test("test_failure")
         utilstest.test_linter_failure(linter, self)
-        linter.post_test()
+        linter.post_test("test_failure")
 
     def test_get_linter_version(self):
         self.request_id = str(uuid.uuid1())
         utilstest.linter_test_setup({"request_id": self.request_id})
         linter = self.get_linter_instance(self.request_id)
-        linter.pre_test()
+        linter.pre_test("test_get_linter_version")
         utilstest.test_get_linter_version(linter, self)
-        linter.post_test()
+        linter.post_test("test_get_linter_version")
 
     def test_get_linter_help(self):
         self.request_id = str(uuid.uuid1())
         utilstest.linter_test_setup({"request_id": self.request_id})
         linter = self.get_linter_instance(self.request_id)
-        linter.pre_test()
+        linter.pre_test("test_get_linter_help")
         utilstest.test_get_linter_help(linter, self)
-        linter.post_test()
+        linter.post_test("test_get_linter_help")
 
     def test_report_tap(self):
         self.request_id = str(uuid.uuid1())
@@ -68,9 +68,9 @@ class LinterTestRoot:
             {"request_id": self.request_id, "report_type": "tap"}
         )
         linter = self.get_linter_instance(self.request_id)
-        linter.pre_test()
+        linter.pre_test("test_report_tap")
         utilstest.test_linter_report_tap(linter, self)
-        linter.post_test()
+        linter.post_test("test_report_tap")
 
     def test_report_sarif(self):
         self.request_id = str(uuid.uuid1())
@@ -78,14 +78,14 @@ class LinterTestRoot:
             {"request_id": self.request_id, "report_type": "SARIF"}
         )
         linter = self.get_linter_instance(self.request_id)
-        linter.pre_test()
+        linter.pre_test("test_report_sarif")
         utilstest.test_linter_report_sarif(linter, self)
-        linter.post_test()
+        linter.post_test("test_report_sarif")
 
     def test_format_fix(self):
         self.request_id = str(uuid.uuid1())
         utilstest.linter_test_setup({"request_id": self.request_id})
         linter = self.get_linter_instance(self.request_id)
-        linter.pre_test()
+        linter.pre_test("test_format_fix")
         utilstest.test_linter_format_fix(linter, self)
-        linter.post_test()
+        linter.post_test("test_format_fix")

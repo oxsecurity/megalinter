@@ -13,11 +13,44 @@ description: How to use cfn-lint (configure, ignore files, ignore errors, help &
 
 [![GitHub stars](https://img.shields.io/github/stars/aws-cloudformation/cfn-lint?cacheSeconds=3600)](https://github.com/aws-cloudformation/cfn-lint) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/aws-cloudformation/cfn-lint?sort=semver)](https://github.com/aws-cloudformation/cfn-lint/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/aws-cloudformation/cfn-lint)](https://github.com/aws-cloudformation/cfn-lint/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/aws-cloudformation/cfn-lint)](https://github.com/aws-cloudformation/cfn-lint/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/aws-cloudformation/cfn-lint)](https://github.com/aws-cloudformation/cfn-lint/graphs/contributors/)
 
+**CFN-Lint** (CloudFormation Linter) is the official AWS tool for validating AWS CloudFormation yaml/json templates against the AWS CloudFormation resource provider schemas and additional best practice checks.
+
+**Key Features:**
+
+- **AWS Schema Validation**: Validates templates against official AWS CloudFormation resource provider schemas
+- **Property Validation**: Checks valid values for resource properties and ensures correct data types
+- **Best Practice Enforcement**: Identifies CloudFormation best practices and anti-patterns
+- **SAM Support**: Fully supports AWS Serverless Application Model (SAM) templates with transformation validation
+- **Custom Rules**: Supports custom one-line rules for organization-specific requirements
+- **Multiple Output Formats**: Supports JSON, JUnit, SARIF, and other output formats
+- **Region-Specific Validation**: Tests templates against multiple AWS regions to catch region-specific issues
+- **Extensible Rules Engine**: Comprehensive collection of rules with support for custom rule extensions
+
+**Common validations include:**
+
+- Resource type and property validation
+- Parameter constraints and dependencies  
+- Output and condition logic validation
+- Security best practices (IAM policies, encryption, etc.)
+- Resource naming and tagging conventions
+- Cross-reference validation between resources
+
+**Advanced features:**
+
+- Template metadata configuration for granular control
+- Graph visualization of template resources
+- Experimental rules for cutting-edge CloudFormation features
+- Override specifications for custom organizational requirements
+
+CFN-Lint helps ensure your CloudFormation templates are valid, secure, and follow AWS best practices before deployment.
+
 ## cfn-lint documentation
 
-- Version in MegaLinter: **0.87.5**
+- Version in MegaLinter: **1.39.1**
 - Visit [Official Web Site](https://github.com/aws-cloudformation/cfn-lint#readme){target=_blank}
+- See [How to configure cfn-lint rules](https://github.com/aws-cloudformation/cfn-lint#configuration){target=_blank}
   - If custom `.cfnlintrc.yml` config file isn't found, [.cfnlintrc.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.cfnlintrc.yml){target=_blank} will be used
+- See [How to disable cfn-lint rules in files](https://github.com/aws-cloudformation/cfn-lint#metadata){target=_blank}
 - See [Index of problems detected by cfn-lint](https://github.com/aws-cloudformation/cfn-lint/blob/main/docs/rules.md){target=_blank}
 
 [![cfn-lint - GitHub](https://gh-card.dev/repos/aws-cloudformation/cfn-lint.svg?fullname=)](https://github.com/aws-cloudformation/cfn-lint){target=_blank}
@@ -51,20 +84,19 @@ Use cfn-lint in your favorite IDE to catch errors before MegaLinter !
 
 |                                                                   <!-- -->                                                                   | IDE                                                      | Extension Name                                                                                          |                                                                                    Install                                                                                    |
 |:--------------------------------------------------------------------------------------------------------------------------------------------:|----------------------------------------------------------|---------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-|  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Atom](https://atom.io/)                                 | [atom-cfn-lint](https://atom.io/packages/atom-cfn-lint)                                                 |                                                    [Visit Web Site](https://atom.io/packages/atom-cfn-lint){target=_blank}                                                    |
 |  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a>   | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [cfn-lint](https://plugins.jetbrains.com/plugin/10973-cfn-lint)                                         |                         <iframe frameborder="none" width="245px" height="48px" src="https://plugins.jetbrains.com/embeddable/install/10973"></iframe>                         |
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/)             | [SublimeLinter CloudFormation](https://packagecontrol.io/packages/SublimeLinter-contrib-cloudformation) |                                   [Visit Web Site](https://packagecontrol.io/packages/SublimeLinter-contrib-cloudformation){target=_blank}                                    |
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/)     | [vscode-cfn-lint](https://marketplace.visualstudio.com/items?itemName=kddejong.vscode-cfn-lint)         | [![Install in VSCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/kddejong.vscode-cfn-lint){target=_blank} |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
-This linter is available in the following flavours
+This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                   | Description                                     | Embedded linters |                                                                                                                                                                                         Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------|:------------------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)     | Default MegaLinter Flavor                       |       124        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)   | MegaLinter for the most commonly used languages |        83        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
-|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://megalinter.io/beta/flavors/security/) | Optimized for security                          |        24        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)     | Default MegaLinter Flavor                       |       126        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)   | MegaLinter for the most commonly used languages |        86        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://megalinter.io/beta/flavors/security/) | Optimized for security                          |        23        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
 
 ## Behind the scenes
 
@@ -106,32 +138,38 @@ options:
 
 Standard:
   TEMPLATE              The CloudFormation template to be linted
-  -t TEMPLATE [TEMPLATE ...], --template TEMPLATE [TEMPLATE ...]
+  -t, --template TEMPLATE [TEMPLATE ...]
                         The CloudFormation template to be linted
   -b, --ignore-bad-template
                         Ignore failures with Bad template
   --ignore-templates IGNORE_TEMPLATES [IGNORE_TEMPLATES ...]
                         Ignore templates
-  -f {quiet,parseable,json,junit,pretty,sarif}, --format {quiet,parseable,json,junit,pretty,sarif}
+  --deployment-files DEPLOYMENT_FILES [DEPLOYMENT_FILES ...]
+                        Deployment files
+  --parameters PARAMETERS [PARAMETERS ...]
+                        A list of parameters
+  --parameter-files PARAMETER_FILES [PARAMETER_FILES ...]
+                        A list of parameter files
+  -f, --format {quiet,parseable,json,junit,pretty,sarif}
                         Output Format
   -l, --list-rules      list all the rules
-  -r REGIONS [REGIONS ...], --regions REGIONS [REGIONS ...]
+  -r, --regions REGIONS [REGIONS ...]
                         list the regions to validate against.
-  -i IGNORE_CHECKS [IGNORE_CHECKS ...], --ignore-checks IGNORE_CHECKS [IGNORE_CHECKS ...]
+  -i, --ignore-checks IGNORE_CHECKS [IGNORE_CHECKS ...]
                         only check rules whose id do not match these values
-  -c INCLUDE_CHECKS [INCLUDE_CHECKS ...], --include-checks INCLUDE_CHECKS [INCLUDE_CHECKS ...]
+  -c, --include-checks INCLUDE_CHECKS [INCLUDE_CHECKS ...]
                         include rules whose id match these values
-  -m MANDATORY_CHECKS [MANDATORY_CHECKS ...], --mandatory-checks MANDATORY_CHECKS [MANDATORY_CHECKS ...]
+  -m, --mandatory-checks MANDATORY_CHECKS [MANDATORY_CHECKS ...]
                         always check rules whose id match these values,
                         regardless of template exclusions
   -e, --include-experimental
                         Include experimental rules
-  -x CONFIGURE_RULES [CONFIGURE_RULES ...], --configure-rule CONFIGURE_RULES [CONFIGURE_RULES ...]
+  -x, --configure-rule CONFIGURE_RULES [CONFIGURE_RULES ...]
                         Provide configuration for a rule. Format
                         RuleId:key=value. Example: E3012:strict=true
   --config-file CONFIG_FILE
                         Specify the cfnlintrc file to use
-  -z CUSTOM_RULES, --custom-rules CUSTOM_RULES
+  -z, --custom-rules CUSTOM_RULES
                         Allows specification of a custom rule file.
   -v, --version         Version of cfn-lint
   --output-file OUTPUT_FILE
@@ -145,21 +183,29 @@ Standard:
 Advanced / Debugging:
   -D, --debug           Enable debug logging
   -I, --info            Enable information logging
-  -a APPEND_RULES [APPEND_RULES ...], --append-rules APPEND_RULES [APPEND_RULES ...]
+  -L, --list-templates  List all the templates would have linted
+  -a, --append-rules APPEND_RULES [APPEND_RULES ...]
                         specify one or more rules directories using one or
                         more --append-rules arguments.
-  -o OVERRIDE_SPEC, --override-spec OVERRIDE_SPEC
+  -o, --override-spec OVERRIDE_SPEC
                         A CloudFormation Spec override file that allows
                         customization
   -g, --build-graph     Creates a file in the same directory as the template
                         that models the template's resources in DOT format
-  -s REGISTRY_SCHEMAS [REGISTRY_SCHEMAS ...], --registry-schemas REGISTRY_SCHEMAS [REGISTRY_SCHEMAS ...]
+  -s, --registry-schemas REGISTRY_SCHEMAS [REGISTRY_SCHEMAS ...]
                         one or more directories of CloudFormation Registry
                         Schemas
   -u, --update-specs    Update the CloudFormation Specs
+  -p, --patch-specs     Patch the CloudFormation Specs in place
 ```
 
 ### Installation on mega-linter Docker image
 
+- Dockerfile commands :
+```dockerfile
+# renovate: datasource=pypi depName=cfn-lint
+ARG PIP_CFN_LINT_VERSION=1.39.1
+```
+
 - PIP packages (Python):
-  - [cfn-lint](https://pypi.org/project/cfn-lint)
+  - [cfn-lint[sarif]==1.39.1](https://pypi.org/project/cfn-lint[sarif]/1.39.1)

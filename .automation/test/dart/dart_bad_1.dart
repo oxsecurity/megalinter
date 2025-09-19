@@ -1,5 +1,5 @@
-// empty_constructor_bodies bad {}
+// empty_constructor_bodies good ;
 class Point {
-  int x, y;
-  Point(this.x, this.y) {}
+  x, y;
+  Point(this.x, this.y);
 }

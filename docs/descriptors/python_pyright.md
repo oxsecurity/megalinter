@@ -13,13 +13,24 @@ description: How to use pyright (configure, ignore files, ignore errors, help & 
 
 [![GitHub stars](https://img.shields.io/github/stars/microsoft/pyright?cacheSeconds=3600)](https://github.com/microsoft/pyright) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/microsoft/pyright?sort=semver)](https://github.com/microsoft/pyright/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/microsoft/pyright)](https://github.com/microsoft/pyright/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/microsoft/pyright)](https://github.com/microsoft/pyright/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/microsoft/pyright)](https://github.com/microsoft/pyright/graphs/contributors/)
 
-Optional static typing checks for python, by Microsoft
+**Pyright** is Microsoft's high-performance static type checker for Python that provides fast, accurate type analysis. It serves as a powerful alternative to MyPy with focus on speed and developer experience.
 
-If you don't use python static typing, you should disable this linter by adding `PYTHON_PYRIGHT` in `DISABLE_LINTERS` variable in your `.mega-linter.yml` config file
+**Key Features:**
+
+- **High Performance**: Lightning-fast type checking with incremental analysis and efficient caching
+- **Advanced Type Features**: Full support for generics, protocols, type unions, literal types, and advanced Python typing features
+- **Configuration Flexibility**: Comprehensive configuration options through pyrightconfig.json for fine-tuned type checking
+- **Multi-Python Support**: Can analyze code for different Python versions and check version compatibility
+- **Import Resolution**: Sophisticated import resolution handling complex package structures and namespace packages
+- **Type Inference**: Advanced type inference engine that minimizes the need for explicit type annotations
+- **Strict Mode Support**: Configurable strictness levels from basic checking to comprehensive type safety enforcement
+- **Cross-Platform**: Consistent behavior across Windows, macOS, and Linux development environments
+
+**Note**: If you don't use Python static typing, disable this linter by adding `PYTHON_PYRIGHT` to `DISABLE_LINTERS` in your `.mega-linter.yml` config file.
 
 ## pyright documentation
 
-- Version in MegaLinter: **1.1.366**
+- Version in MegaLinter: **1.1.405**
 - Visit [Official Web Site](https://github.com/Microsoft/pyright#readme){target=_blank}
 - See [How to configure pyright rules](https://github.com/microsoft/pyright/blob/main/docs/configuration.md){target=_blank}
 - See [How to disable pyright rules in files](https://github.com/microsoft/pyright/blob/main/docs/comments.md#file-level-type-controls){target=_blank}
@@ -62,15 +73,15 @@ Use pyright in your favorite IDE to catch errors before MegaLinter !
 |   <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a>   | [vim](https://www.vim.org/)                          | [coc-pyright](https://github.com/fannheyward/coc-pyright)                         |                                               [Visit Web Site](https://github.com/fannheyward/coc-pyright){target=_blank}                                               |
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/) | [PyRight](https://marketplace.visualstudio.com/items?itemName=ms-pyright.pyright) | [![Install in VSCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/ms-pyright.pyright){target=_blank} |
 
-## MegaLinter Flavours
+## MegaLinter Flavors
 
-This linter is available in the following flavours
+This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                     | Embedded linters |                                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       124        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        83        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)   | Optimized for PYTHON based projects             |        63        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       126        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        86        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)   | Optimized for PYTHON based projects             |        64        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
 
 ## Behind the scenes
 
@@ -113,6 +124,7 @@ Usage: pyright [options] files...
   --skipunannotated                  Skip analysis of functions with no type annotations
   --stats                            Print detailed performance stats
   -t,--typeshedpath <DIRECTORY>      Use typeshed type stubs at this location
+  --threads <optional COUNT>         Use separate threads to parallelize type checking
   -v,--venvpath <DIRECTORY>          Directory that contains virtual environments
   --verbose                          Emit verbose diagnostics
   --verifytypes <PACKAGE>            Verify type completeness of a py.typed package
@@ -125,7 +137,11 @@ Usage: pyright [options] files...
 
 ### Installation on mega-linter Docker image
 
-- APK packages (Linux):
-  - [nodejs](https://pkgs.alpinelinux.org/packages?branch=edge&name=nodejs)
-- PIP packages (Python):
-  - [pyright](https://pypi.org/project/pyright)
+- Dockerfile commands :
+```dockerfile
+# renovate: datasource=npm depName=pyright
+ARG NPM_PYRIGHT_VERSION=1.1.405
+```
+
+- NPM packages (node.js):
+  - [pyright@1.1.405](https://www.npmjs.com/package/pyright/v/1.1.405)
