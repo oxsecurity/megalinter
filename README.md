@@ -1013,7 +1013,7 @@ description: List of common variables that you can use to customize MegaLinter b
 | **IGNORE_GENERATED_FILES**                                                                                                | `false`                                       | If set to `true`, MegaLinter will skip files containing `@generated` marker but without `@not-generated` marker (more info at [https://generated.at](https://generated.at/))                                                                                                                                  |
 | **IGNORE_GITIGNORED_FILES**                                                                                               | `true`                                        | If set to `true`, MegaLinter will skip files ignored by Git using the `.gitignore` file.                                                                                                                                                                                                                      |
 | **JAVASCRIPT_DEFAULT_STYLE**                                                                                              | `standard`                                    | Javascript default style to check/apply. `standard`,`prettier`                                                                                                                                                                                                                                                |
-| **LINTER_RULES_PATH**                                                                                                     | `.github/linters`                             | Directory for all linter configuration rules.<br/> Can be a local folder or a remote URL (e.g., `https://raw.githubusercontent.com/some_org/some_repo/mega-linter-rules`).                                                                                                                                   |
+| **LINTER_RULES_PATH**                                                                                                     | `.github/linters`                             | Directory for all linter configuration rules.<br/> Can be a local folder or a remote URL (e.g., `https://raw.githubusercontent.com/some_org/some_repo/mega-linter-rules`).                                                                                                                                    |
 | **LOG_FILE**                                                                                                              | `mega-linter.log`                             | The file name for outputting logs. All output is sent to the log file regardless of `LOG_LEVEL`. Use `none` to not generate this file.                                                                                                                                                                        |
 | **LOG_LEVEL**                                                                                                             | `INFO`                                        | How much output the script will generate to the console. One of `INFO`, `DEBUG`, `WARNING` or `ERROR`.                                                                                                                                                                                                        |
 | **MARKDOWN_DEFAULT_STYLE**                                                                                                | `markdownlint`                                | Markdown default style to check/apply. `markdownlint`, `remark-lint`                                                                                                                                                                                                                                          |
@@ -1139,8 +1139,8 @@ To solve these issues, apply one of the following solutions.
   - Update your GitHub Actions workflow to add the environment name
 
 -- Method 2: Easier, but any contributor with write access can see your Personal Access Token, so use it only on private repositories.
-  - [Create a Classic Personal Access Token](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token#creating-a-token), then copy the PAT value
-  - [Define secret variable](https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets#creating-encrypted-secrets-for-a-repository) named **PAT** on your repository, and paste the PAT value
+- [Create a Classic Personal Access Token](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token#creating-a-token), then copy the PAT value
+- [Define secret variable](https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets#creating-encrypted-secrets-for-a-repository) named **PAT** on your repository, and paste the PAT value
 
 #### Notes
 
@@ -1199,17 +1199,17 @@ PRE_COMMANDS:
     run_after_linters: True # Will be run after the execution of the linters themselves
 ```
 
-| Property               | Description                                                                                                                                     | Default value |
-|------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|---------------|
-| **command**            | Command line to run                                                                                                                             | Mandatory     |
-| **cwd**                | Directory where to run the command (`workspace` or `root`)                                                                                      | `workspace`   |
-| **run_before_linters** | If set to `true`, runs the command before the execution of the linters themselves, required for npm/pip commands that cannot be run in parallel | `false`       |
-| **run_after_linters**  | If set to `true`, runs the command after the execution of the linters themselves                                                                | `false`       |
-| **secured_env**        | Apply filtering of secured environment variables before calling the command (default true).<br/>Be careful if you disable it!                  | `true`        |
-| **continue_if_failed** | If set to `false`, stop the MegaLinter process in case of command failure                                                                       | `true`        |
-| **venv**               | If set, runs the command in the related Python venv                                                                                             | <!-- -->      |
+| Property               | Description                                                                                                                                      | Default value |
+|------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|---------------|
+| **command**            | Command line to run                                                                                                                              | Mandatory     |
+| **cwd**                | Directory where to run the command (`workspace` or `root`)                                                                                       | `workspace`   |
+| **run_before_linters** | If set to `true`, runs the command before the execution of the linters themselves, required for npm/pip commands that cannot be run in parallel  | `false`       |
+| **run_after_linters**  | If set to `true`, runs the command after the execution of the linters themselves                                                                 | `false`       |
+| **secured_env**        | Apply filtering of secured environment variables before calling the command (default true).<br/>Be careful if you disable it!                    | `true`        |
+| **continue_if_failed** | If set to `false`, stop the MegaLinter process in case of command failure                                                                        | `true`        |
+| **venv**               | If set, runs the command in the related Python venv                                                                                              | <!-- -->      |
 | **output_variables**   | ENV variables to read from output after running the commands, and store in MegaLinter's ENV context so they can be reused in subsequent commands | `[]`          |
-| **tag**                | Tag defining at which command entry point the command will be run (available tags: `before_plugins`)                                            | <!-- -->      |
+| **tag**                | Tag defining at which command entry point the command will be run (available tags: `before_plugins`)                                             | <!-- -->      |
 
 <!-- config-precommands-section-end -->
 <!-- config-postcommands-section-start -->
