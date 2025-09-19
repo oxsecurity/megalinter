@@ -932,29 +932,28 @@ def generate_documentation():
     )
     # Update welcome phrase
     welcome_phrase = (
-        "MegaLinter is an **Open-Source** tool for **CI/CD workflows** "
+        "MegaLinter is an **open-source** tool for **CI/CD workflows** "
         + "that analyzes the **consistency of your "
-        + "code**, **IAC**, **configuration**, and **scripts** in your repository "
-        + "sources, to **ensure all your projects "
-        + "sources are clean and formatted** whatever IDE/toolbox is used by "
-        + "their developers, powered by [**OX Security**](https://www.ox.security/?ref=megalinter).\n\n"
-        + f"Supporting [**{len(linters_by_type['language'])}** languages]"
+        + "code**, **IaC**, **configuration**, and **scripts** in your repository "
+        + "to **ensure all your project sources are clean and formatted**, no matter which IDE or toolbox is used by "
+        + "your developers. Powered by [**OX Security**](https://www.ox.security/?ref=megalinter).\n\n"
+        + f"Supports [**{len(linters_by_type['language'])}** languages]"
         + "(#languages), "
         + f"[**{len(linters_by_type['format'])}** formats](#formats), "
-        + f"[**{len(linters_by_type['tooling_format'])}** tooling formats](#tooling-formats) "
-        + "and **ready to use out of the box**, as a GitHub action or any CI system, "
-        + "**highly configurable** and **free for all uses**.\n\n"
-        + "MegaLinter has **native integrations** with many of the major CI/CD tools of the market.\n\n"
-        + "[![GitHub](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/github.png?raw=true>)](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/GitHubCommentReporter.md)\n"  # noqa: E501
-        + "[![Gitlab](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/gitlab.png?raw=true>)](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/GitlabCommentReporter.md)\n"  # noqa: E501
-        + "[![Azure](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/azure.png?raw=true>)](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/AzureCommentReporter.md)\n"  # noqa: E501
-        + "[![Bitbucket](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/bitbucket.png?raw=true>)](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/BitbucketCommentReporter.md)\n"  # noqa: E501
-        + "[![Jenkins](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/jenkins.png?raw=true>)](https://github.com/oxsecurity/megalinter/tree/main/docs/install-jenkins.md)\n"  # noqa: E501
-        + "[![Drone](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/drone.png?raw=true>)](https://github.com/oxsecurity/megalinter/tree/main/docs/install-drone.md)\n"  # noqa: E501
-        + "[![Concourse](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/concourse.png?raw=true>)](https://github.com/oxsecurity/megalinter/tree/main/docs/install-concourse.md)\n"  # noqa: E501
-        + "[![Docker](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/docker.png?raw=true>)](https://github.com/oxsecurity/megalinter/tree/main/docs/install-docker.md)\n"  # noqa: E501
-        + "[![SARIF](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/sarif.png?raw=true>)](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/SarifReporter.md)\n"  # noqa: E501
-        + "[![Grafana](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/grafana.png?raw=true>)](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/ApiReporter.md)\n\n"  # noqa: E501
+        + f"[**{len(linters_by_type['tooling_format'])}** tooling formats](#tooling-formats), "
+        + "and is **ready to use out of the box** as a GitHub Action or with any CI system. "
+        + "It is **highly configurable** and **free for all uses**.\n\n"
+        + "MegaLinter has **native integrations** with many major CI/CD tools.\n\n"
+        + "[![GitHub](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/github.png?raw=true>)](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/GitHubCommentReporter.md)\n"
+        + "[![GitLab](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/gitlab.png?raw=true>)](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/GitlabCommentReporter.md)\n"
+        + "[![Azure](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/azure.png?raw=true>)](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/AzureCommentReporter.md)\n"
+        + "[![Bitbucket](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/bitbucket.png?raw=true>)](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/BitbucketCommentReporter.md)\n"
+        + "[![Jenkins](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/jenkins.png?raw=true>)](https://github.com/oxsecurity/megalinter/tree/main/docs/install-jenkins.md)\n"
+        + "[![Drone](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/drone.png?raw=true>)](https://github.com/oxsecurity/megalinter/tree/main/docs/install-drone.md)\n"
+        + "[![Concourse](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/concourse.png?raw=true>)](https://github.com/oxsecurity/megalinter/tree/main/docs/install-concourse.md)\n"
+        + "[![Docker](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/docker.png?raw=true>)](https://github.com/oxsecurity/megalinter/tree/main/docs/install-docker.md)\n"
+        + "[![SARIF](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/sarif.png?raw=true>)](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/SarifReporter.md)\n"
+        + "[![Grafana](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/grafana.png?raw=true>)](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/ApiReporter.md)\n\n"
     )
     # Update README.md file
     replace_in_file(
