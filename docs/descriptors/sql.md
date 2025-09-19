@@ -9,10 +9,10 @@ description: sqlfluff, tsqllint are available to analyze SQL files in MegaLinter
 
 ## Linters
 
-| Linter                                                                | Additional                                                                                                                       |
-|-----------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------|
-| [**sqlfluff**](sql_sqlfluff.md)<br/>[_SQL_SQLFLUFF_](sql_sqlfluff.md) | [![GitHub stars](https://img.shields.io/github/stars/sqlfluff/sqlfluff?cacheSeconds=3600)](https://github.com/sqlfluff/sqlfluff) |
-| [**tsqllint**](sql_tsqllint.md)<br/>[_SQL_TSQLLINT_](sql_tsqllint.md) | [![GitHub stars](https://img.shields.io/github/stars/tsqllint/tsqllint?cacheSeconds=3600)](https://github.com/tsqllint/tsqllint) |
+| Linter                                                                | Additional                                                                                                                                                                           |
+|-----------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [**sqlfluff**](sql_sqlfluff.md)<br/>[_SQL_SQLFLUFF_](sql_sqlfluff.md) | [![GitHub stars](https://img.shields.io/github/stars/sqlfluff/sqlfluff?cacheSeconds=3600)](https://github.com/sqlfluff/sqlfluff) ![autofix](https://shields.io/badge/-autofix-green) |
+| [**tsqllint**](sql_tsqllint.md)<br/>[_SQL_TSQLLINT_](sql_tsqllint.md) | [![GitHub stars](https://img.shields.io/github/stars/tsqllint/tsqllint?cacheSeconds=3600)](https://github.com/tsqllint/tsqllint)                                                     |
 
 ## Linted files
 
