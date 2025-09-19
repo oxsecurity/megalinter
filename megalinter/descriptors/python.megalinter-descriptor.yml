@@ -517,6 +517,10 @@ linters:
   - linter_name: ruff
     name: PYTHON_RUFF
     can_output_sarif: true
+    file_extensions:
+      - ".py"
+      - ".pyi"
+      - ".ipynb"
     linter_text: |
       **Ruff** is an extremely fast Python linter and code formatter written in Rust that aims to be 10-100x faster than existing tools while providing comprehensive functionality behind a single interface.
 
@@ -575,6 +579,10 @@ linters:
     class: RuffFormatLinter
     name: PYTHON_RUFF_FORMAT
     is_formatter: true
+    file_extensions:
+      - ".py"
+      - ".pyi"
+      - ".ipynb"
     activation_rules:
       - type: variable
         variable: PYTHON_DEFAULT_STYLE
