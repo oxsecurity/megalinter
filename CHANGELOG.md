@@ -302,6 +302,12 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [phpstan](https://phpstan.org/) from 2.1.25 to **2.1.26** on 2025-09-16
   - [kubescape](https://github.com/kubescape/kubescape) from 3.0.40 to **3.0.41** on 2025-09-17
   - [phpstan](https://phpstan.org/) from 2.1.26 to **2.1.27** on 2025-09-17
+  - [black](https://black.readthedocs.io/en/stable/) from 25.1.0 to **25.9.0** on 2025-09-19
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.18.1 to **1.18.2** on 2025-09-19
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.13.0 to **0.13.1** on 2025-09-19
+  - [ruff](https://github.com/astral-sh/ruff) from 0.13.0 to **0.13.1** on 2025-09-19
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.90.6 to **3.90.8** on 2025-09-19
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.89 to **0.1.90** on 2025-09-19
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15
