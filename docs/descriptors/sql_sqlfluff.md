@@ -11,7 +11,7 @@ description: How to use sqlfluff (configure, ignore files, ignore errors, help &
   </a>
 </div>
 
-[![GitHub stars](https://img.shields.io/github/stars/sqlfluff/sqlfluff?cacheSeconds=3600)](https://github.com/sqlfluff/sqlfluff) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/sqlfluff/sqlfluff?sort=semver)](https://github.com/sqlfluff/sqlfluff/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/sqlfluff/sqlfluff)](https://github.com/sqlfluff/sqlfluff/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/sqlfluff/sqlfluff)](https://github.com/sqlfluff/sqlfluff/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/sqlfluff/sqlfluff)](https://github.com/sqlfluff/sqlfluff/graphs/contributors/)
+[![GitHub stars](https://img.shields.io/github/stars/sqlfluff/sqlfluff?cacheSeconds=3600)](https://github.com/sqlfluff/sqlfluff) ![autofix](https://shields.io/badge/-autofix-green) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/sqlfluff/sqlfluff?sort=semver)](https://github.com/sqlfluff/sqlfluff/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/sqlfluff/sqlfluff)](https://github.com/sqlfluff/sqlfluff/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/sqlfluff/sqlfluff)](https://github.com/sqlfluff/sqlfluff/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/sqlfluff/sqlfluff)](https://github.com/sqlfluff/sqlfluff/graphs/contributors/)
 
 **SQLFluff** is a dialect-flexible and configurable SQL linter designed for ELT applications that works with Jinja templating and dbt. It provides comprehensive SQL code analysis including syntax checking, style validation, and formatting with support for multiple SQL dialects.
 
@@ -40,6 +40,8 @@ description: How to use sqlfluff (configure, ignore files, ignore errors, help &
 
 - Enable sqlfluff by adding `SQL_SQLFLUFF` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 - Disable sqlfluff by adding `SQL_SQLFLUFF` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
+
+- Enable **autofixes** by adding `SQL_SQLFLUFF` in [APPLY_FIXES variable](https://megalinter.io/beta/configuration/#apply-fixes)
 
 | Variable                                 | Description                                                                                                                                                                                                         | Default value                                   |
 |------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
