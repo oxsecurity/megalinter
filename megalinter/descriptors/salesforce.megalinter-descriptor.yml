@@ -29,6 +29,18 @@ install:
   # Salesforce DX
   npm:
     - "@salesforce/cli@${NPM_SALESFORCE_CLI_VERSION}"
+supported_platforms:
+  platform:
+    - linux/amd64
+    - linux/arm64
+  install_override:
+    - platform: linux/arm64
+      install:
+        dockerfile:
+          - ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
+          - ENV PATH="$JAVA_HOME/bin:${PATH}"
+          - ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
+          - RUN echo y|sfdx plugins:install sfdx-hardis
 linters:
   # SFDX Scanner
   - linter_name: sfdx-scanner-apex
@@ -99,6 +111,10 @@ linters:
           RUN sf plugins install @salesforce/sfdx-scanner@${SALESFORCE_SFDX_SCANNER_VERSION} \
               && (npm cache clean --force || true) \
               && rm -rf /root/.npm/_cacache
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       eclipse:
         - name: pmd-eclipse-plugin
@@ -184,6 +200,10 @@ linters:
           RUN sf plugins install @salesforce/sfdx-scanner@${SALESFORCE_SFDX_SCANNER_VERSION} \
               && (npm cache clean --force || true) \
               && rm -rf /root/.npm/_cacache
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       vscode:
         - name: Salesforce Extension Pack
@@ -260,6 +280,10 @@ linters:
           RUN sf plugins install @salesforce/sfdx-scanner@${SALESFORCE_SFDX_SCANNER_VERSION} \
               && (npm cache clean --force || true) \
               && rm -rf /root/.npm/_cacache
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       vscode:
         - name: Salesforce Extension Pack

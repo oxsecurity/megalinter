@@ -50,6 +50,10 @@ linters:
           ARG NPM_CSPELL_VERSION=9.2.1
       npm:
         - "cspell@${NPM_CSPELL_VERSION}"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       vscode:
         - name: Code Spell Checker
@@ -98,6 +102,10 @@ linters:
           ARG PIP_PROSELINT_VERSION=0.14.0
       pip:
         - proselint==${PIP_PROSELINT_VERSION}
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       idea:
         - name: Proselint
@@ -162,6 +170,10 @@ linters:
           ARG SPELL_VALE_VERSION=v3.12.0
         - FROM jdkato/vale:${SPELL_VALE_VERSION} AS vale
         - COPY --link --from=vale /bin/vale /bin/vale
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       emacs:
         - name: flymake-vale
@@ -258,3 +270,7 @@ linters:
           ARG SPELL_LYCHEE_VERSION=sha-7c4b132-alpine
         - FROM lycheeverse/lychee:${SPELL_LYCHEE_VERSION} AS lychee
         - COPY --link --from=lychee /usr/local/bin/lychee /usr/bin/
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64

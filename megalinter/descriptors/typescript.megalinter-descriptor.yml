@@ -132,6 +132,10 @@ linters:
         - "@typescript-eslint/eslint-plugin@${NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION}"
         - "@typescript-eslint/parser@${NPM_TYPESCRIPT_ESLINT_PARSER_VERSION}"
         - "@microsoft/eslint-formatter-sarif@${NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION}"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       brackets:
         - name: brackets-eslint
@@ -198,6 +202,10 @@ linters:
           ARG NPM_TS_STANDARD_VERSION=12.0.2
       npm:
         - ts-standard@${NPM_TS_STANDARD_VERSION}
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       idea:
         - name: native support
@@ -260,6 +268,10 @@ linters:
           ARG NPM_PRETTIER_VERSION=3.6.2
       npm:
         - "prettier@${NPM_PRETTIER_VERSION}"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       emacs:
         - name: prettier-emacs

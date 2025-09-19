@@ -59,6 +59,10 @@ linters:
               && cd .. && rm -r luarocks-${LUA_LUACHECK_VERSION}-super-linter/ \
               && luarocks install luacheck \
               && cd /
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       brackets:
         - name: brackets-luacheck

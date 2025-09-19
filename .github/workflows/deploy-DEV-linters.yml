@@ -84,7 +84,7 @@ jobs:
       max-parallel: 18
       matrix:
         linter: ${{ fromJson(needs.get-linters-matrix.outputs.linters) }}
-        platform: ["linux/amd64"]
+        platform: ["linux/amd64", "linux/arm64"]
     # Only run this on the main repo
     if: |
       (

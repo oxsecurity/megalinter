@@ -70,3 +70,7 @@ linters:
           ARG PIP_ANSIBLE_LINT_VERSION=25.9.0
       pip:
         - ansible-lint==${PIP_ANSIBLE_LINT_VERSION}
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64

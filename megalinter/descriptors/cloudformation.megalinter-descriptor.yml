@@ -71,6 +71,10 @@ linters:
           ARG PIP_CFN_LINT_VERSION=1.39.1
       pip:
         - cfn-lint[sarif]==${PIP_CFN_LINT_VERSION}
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       idea:
         - name: cfn-lint

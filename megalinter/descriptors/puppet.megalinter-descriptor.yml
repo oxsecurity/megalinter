@@ -43,6 +43,10 @@ linters:
           ARG GEM_PUPPET_LINT_VERSION=4.3.0
       gem:
         - puppet-lint:${GEM_PUPPET_LINT_VERSION}
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       vscode:
         - name: Puppet VSCode Extension
