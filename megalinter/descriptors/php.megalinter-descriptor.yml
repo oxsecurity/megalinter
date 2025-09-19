@@ -256,9 +256,9 @@ linters:
         - |
           RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require overtrue/phplint:${PHP_OVERTRUE_PHPLINT_VERSION} bartlett/sarif-php-converters:${PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION}
     supported_platforms:
-        platform:
-          - linux/amd64
-          - linux/arm64
+      platform:
+        - linux/amd64
+        - linux/arm64
   # PHP-CS-Fixer
   - linter_name: php-cs-fixer
     name: PHP_PHPCSFIXER

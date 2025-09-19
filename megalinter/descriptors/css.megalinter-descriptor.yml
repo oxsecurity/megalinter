@@ -70,9 +70,9 @@ linters:
       pip:
         - cpplint==${PIP_CPPLINT_VERSION}
     supported_platforms:
-        platform:
-          - linux/amd64
-          - linux/arm64
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       emacs:
         - name: flycheck
