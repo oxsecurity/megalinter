@@ -309,6 +309,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [ruff](https://github.com/astral-sh/ruff) from 0.13.0 to **0.13.1** on 2025-09-19
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.90.6 to **3.90.8** on 2025-09-19
   - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.89 to **0.1.90** on 2025-09-19
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2025.07.28 to **2025.09.19** on 2025-09-19
+  - [phpstan](https://phpstan.org/) from 2.1.27 to **2.1.28** on 2025-09-19
+  - [snakemake](https://snakemake.github.io/) from 9.11.2 to **9.11.4** on 2025-09-19
 <!-- linter-versions-end -->
 
 ## [v8.8.0] - 2024-06-15
