@@ -34,7 +34,7 @@ ARG REPOSITORY_GITLEAKS_VERSION=v8.28.0
 # renovate: datasource=docker depName=checkmarx/kics
 ARG REPOSITORY_KICS_VERSION=v2.1.13-alpine
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
-ARG REPOSITORY_TRUFFLEHOG_VERSION=3.90.6
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.90.8
 # renovate: datasource=docker depName=jdkato/vale
 ARG SPELL_VALE_VERSION=v3.12.0
 # renovate: datasource=docker depName=lycheeverse/lychee
@@ -281,11 +281,11 @@ ARG PIP_BANDIT_VERSION=1.8.6
 # renovate: datasource=pypi depName=bandit_sarif_formatter
 ARG PIP_BANDIT_SARIF_FORMATTER_VERSION=1.1.1
 # renovate: datasource=pypi depName=mypy
-ARG PIP_MYPY_VERSION=1.18.1
+ARG PIP_MYPY_VERSION=1.18.2
 # renovate: datasource=npm depName=pyright
 ARG NPM_PYRIGHT_VERSION=1.1.405
 # renovate: datasource=pypi depName=ruff
-ARG PIP_RUFF_VERSION=0.13.0
+ARG PIP_RUFF_VERSION=0.13.1
 # renovate: datasource=github-tags depName=nxadm/rakudo-pkg
 ARG RAKU_RAKU_VERSION=2024.12
 ARG RAKU_RAKU_ALPINE_VERSION=3.20

@@ -28,7 +28,7 @@ python-gitlab==6.3.0
 python-multipart==0.0.20
 pyyaml==6.0.2
 redis==6.4.0
-regex==2025.9.1
+regex==2025.9.18
 requests==2.32.5
 terminaltables==3.1.10
 termcolor==3.1.0
@@ -39,5 +39,5 @@ langchain_core==0.3.76
 langchain_anthropic==0.3.20
 langchain_deepseek==0.1.4
 langchain_google_genai==2.1.12
-langchain_mistralai==0.2.11
+langchain_mistralai==0.2.12
 langchain_community==0.3.29
