@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block extrahead %}
+
+{% if page and page.meta and page.meta.title and page.meta.description %}
+<meta name="twitter:image:src" content="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-logo.png" />
+<meta name="twitter:site" content="@nvuillam" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="{{ page.meta.title }}" />
+<meta name="twitter:description" content="{{ page.meta.description }}" />
+<meta property="og:image" content="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-logo.png" />
+<meta property="og:image:alt" content="🦙 MegaLinter analyzes 48 languages, 22 formats, 19 tooling formats, excessive copy-pastes and spelling mistakes in your repository sources with a GitHub Action, other CI tools or locally." />
+<meta property="og:site_name" content="MegaLinter" />
+<meta property="og:title" content="{{ page.meta.title }}" />
+<meta property="og:description" content="{{ page.meta.description }}" />
+{% else %}
+<meta property="description" content="🦙 MegaLinter analyzes 48 languages, 22 formats, 19 tooling formats, excessive copy-pastes and spelling mistakes in your repository sources with a GitHub Action, other CI tools or locally." />
+<meta name="twitter:image:src" content="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-logo.png" />
+<meta name="twitter:site" content="@nvuillam" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="🦙 MegaLinter analyzes 48 languages, 22 formats, 19 tooling formats, excessive copy-pastes and spelling mistakes in your repository sources with a GitHub Action, other CI tools or locally." />
+<meta name="twitter:description" content="🦙 MegaLinter analyzes 48 languages, 22 formats, 19 tooling formats, excessive copy-pastes and spelling mistakes in your repository sources with a GitHub Action, other CI tools or locally." />
+<meta property="og:image" content="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-logo.png" />
+<meta property="og:image:alt" content="🦙 MegaLinter analyzes 48 languages, 22 formats, 19 tooling formats, excessive copy-pastes and spelling mistakes in your repository sources with a GitHub Action, other CI tools or locally." />
+<meta property="og:site_name" content="MegaLinter" />
+<meta property="og:type" content="object" />
+<meta property="og:title" content="🦙 MegaLinter analyzes 48 languages, 22 formats, 19 tooling formats, excessive copy-pastes and spelling mistakes in your repository sources with a GitHub Action, other CI tools or locally." />
+<meta property="og:url" content="https://megalinter.io" />
+<meta property="og:description" content="🦙 MegaLinter analyzes 48 languages, 22 formats, 19 tooling formats, excessive copy-pastes and spelling mistakes in your repository sources with a GitHub Action, other CI tools or locally." />
+{% endif %}
+
+{% endblock %}
+
+{% block disqus %}
+<script src="https://utteranc.es/client.js"
+        repo="oxsecurity/megalinter"
+        issue-term="pathname"
+        label="comments"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+{% endblock %}
