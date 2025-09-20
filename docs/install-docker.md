@@ -8,12 +8,12 @@ description: Manual instructions to run MegaLinter as a docker image
 
 # Docker container
 
-You can also run megalinter with its Docker container, just execute this command:
+You can also run MegaLinter with its Docker container. Execute this command:
 
 `docker run --rm -v /var/run/docker.sock:/var/run/docker.sock:rw -v $(pwd):/tmp/lint:rw oxsecurity/megalinter:v9`
 
-**No extra arguments are needed,** however, megalinter will lint all of the files inside the `/tmp/lint` folder, so it may be needed to configure your tool of choice to use the `/tmp/lint` folder as workspace.
-This can also be changed:
+No extra arguments are needed; however, MegaLinter will lint all files inside the `/tmp/lint` folder. You may need to configure your tool of choice to use `/tmp/lint` as its workspace.
+This can be changed:
 
 _Example:_
 

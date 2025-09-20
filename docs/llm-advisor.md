@@ -279,16 +279,19 @@ Example fix:
 ### Common Issues
 
 1. **"LLM Advisor not available"**
+
    - Check that `LLM_ADVISOR_ENABLED: true`
    - Verify LangChain dependencies are installed
    - Ensure API keys are set correctly
 
 2. **"Failed to initialize LLM"**
+
    - Verify API key is valid and has sufficient credits
    - Check internet connection for cloud providers
    - For Ollama, ensure the service is running locally
 
 3. **No suggestions generated**
+
    - Check if errors were detected by linters
    - Verify the linter output format is parseable
    - Review logs for parsing errors

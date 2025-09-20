@@ -8,35 +8,35 @@ description: Use MegaLinter to auto apply corrections on your repository files
 
 # Apply fixes
 
-Mega-linter is able to apply fixes provided by linters. To use this capability, you need 3 **env variables** defined at top level
+MegaLinter can apply fixes provided by linters. To use this capability, you need three environment variables defined at the top level.
 
 - **APPLY_FIXES**: `all` to apply fixes of all linters, or a list of linter keys (ex: `JAVASCRIPT_ES`,`MARKDOWN_MARKDOWNLINT`)
 
-Only for GitHub Action Workflow file if you use it:
+Only for the GitHub Actions workflow file, if you use it:
 
 - **APPLY_FIXES_EVENT**: `all`, `push`, `pull_request`, `none` _(use none in case of use of [Updated sources reporter](reporters/UpdatedSourcesReporter.md))_
 - **APPLY_FIXES_MODE**: `commit` to create a new commit and push it on the same branch, or `pull_request` to create a new PR targeting the branch.
 
 ## Apply fixes issues
 
-You may see **github permission errors**, or workflows not run on the new commit.
+You may see GitHub permission errors, or workflows not running on the new commit.
 
-To solve these issues, you can apply one of the following solutions.
+To solve these issues, apply one of the following solutions.
 
 - Method 1: The most secured
-  - [Create Fine Grained Personal Access Token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-fine-grained-personal-access-token), scoped only on your repository and with **Contents: Read/Write** and then copy the PAT value
+  - [Create a Fine-Grained Personal Access Token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-fine-grained-personal-access-token), scoped only to your repository and with **Contents: Read/Write**, then copy the PAT value
   - [Define environment secret variable](https://docs.github.com/en/actions/security-guides/encrypted-secrets#creating-encrypted-secrets-for-an-environment) named **PAT** on your repository, and paste the PAT value
-  - Update your Github Actions Workflow to add the environment name
+  - Update your GitHub Actions workflow to add the environment name
 
-- Method 2: Easier, but any contributor with write access can see your Personal Access Token, so use it only on private repositories.
-  - [Create Classic Personal Access Token](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token#creating-a-token), then copy the PAT value
-  - [Define secret variable](https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets#creating-encrypted-secrets-for-a-repository) named **PAT** on your repository, and paste the PAT value
+-- Method 2: Easier, but any contributor with write access can see your Personal Access Token, so use it only on private repositories.
+- [Create a Classic Personal Access Token](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token#creating-a-token), then copy the PAT value
+- [Define secret variable](https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets#creating-encrypted-secrets-for-a-repository) named **PAT** on your repository, and paste the PAT value
 
 ## Notes
 
-- You can use [**Updated sources reporter**](reporters/UpdatedSourcesReporter.md) if you don't want fixes to be automatically applied on git branch, but **download them in a zipped file** and manually **extract them in your project**
-- If used, **APPLY_FIXES_EVENT** and **APPLY_FIXES_MODE** can not be defined in `.mega-linter.yml`config file, they must be set as environment variables
-- If you use **APPLY_FIXES**, add the following line in your `.gitignore file`
+- You can use the [Updated sources reporter](reporters/UpdatedSourcesReporter.md) if you don't want fixes to be automatically applied on the Git branch. Instead, download them in a ZIP file and manually extract them into your project.
+- If used, `APPLY_FIXES_EVENT` and `APPLY_FIXES_MODE` cannot be defined in the `.mega-linter.yml` config file; they must be set as environment variables.
+- If you use `APPLY_FIXES`, add the following line to your `.gitignore` file:
 
 ```shell
 megalinter-reports/

@@ -49,7 +49,7 @@ Add the following to an `azure-pipelines.yaml` file within your code repository:
 
 ## Central Repository
 
-Add the following to an `azure-pipelines.yaml` file within a separate repository e.g. 'MegaLinter' repository:
+Add the following to an `azure-pipelines.yaml` file within a separate repository, for example a 'MegaLinter' repository:
 
 ```yaml
 # Run MegaLinter to detect linting and security issues
@@ -91,13 +91,13 @@ steps:
 
 ## Pull Request Comments
 
-To benefit from Pull Request comments, please follow [configuration instructions](reporters/AzureCommentReporter.md)
+To enable Pull Request comments, follow the [configuration instructions](reporters/AzureCommentReporter.md).
 
 Note: If your pipelines run on Azure DevOps but your source code is hosted on GitHub, and you want status reports to appear on GitHub, you must provide additional repository information to the pipeline. See this [example](https://github.com/firedigger/megalinter-azure-pipelines-with-github-repository) for guidance.
 
 ## Detailed Tutorial
 
-You can also follow this [detailed tutorial](https://github.com/DonKoning/megaLinter) by [DonKoning](https://github.com/DonKoning)
+You can also follow this [detailed tutorial](https://github.com/DonKoning/megaLinter) by [DonKoning](https://github.com/DonKoning).
 
 
 <!-- install-azure-section-end -->
