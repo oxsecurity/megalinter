@@ -8,13 +8,13 @@ description: List of recurrent questions about MegaLinter
 
 # Frequently Asked Questions
 
-> My repo CI already have linters and they're perfectly working, so why do I need MegaLinter ?
+> My repo CI already has linters and they're working perfectly, so why do I need MegaLinter?
 
-You can perfectly **continue using your installed linters** and deactivate them in `.mega-linter.yml`. For example, in a javascript project using eslint, you can configure MegaLinter with `DISABLE: JAVASCRIPT`. That way, you will benefit from both your installed linters but also from other MegaLinter linters checking JSON, YAML, Markdown, Dockerfile, Bash, spelling mistakes, dead URLs…
+You can continue using your installed linters and deactivate them in `.mega-linter.yml`. For example, in a JavaScript project using ESLint, configure MegaLinter with `DISABLE: JAVASCRIPT`. That way, you will benefit from both your installed linters and other MegaLinter linters checking JSON, YAML, Markdown, Dockerfile, Bash, spelling mistakes, dead URLs…
 
-> Ok but… how does it work ?
+> OK but… how does it work?
 
-MegaLinter is based on Docker images containing either all linters, or just a selection of linters if you are using a MegaLinter flavor for a project using a specific language / format
+MegaLinter is based on Docker images containing either all linters, or a selection of linters if you use a MegaLinter flavor for a project with a specific language or format.
 
 The core architecture does the following:
 

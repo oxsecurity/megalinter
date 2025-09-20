@@ -8,7 +8,7 @@ description: Manual instructions to setup MegaLinter as a Bitbucket Pipelines jo
 
 # Bitbucket Pipelines
 
-1. Create a `bitbucket-pipelines.yml` file on the root directory of your repository
+1. Create a `bitbucket-pipelines.yml` file at the root of your repository.
 
 2. Copy and paste the following template or add the step to your existing pipeline.
 

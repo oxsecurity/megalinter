@@ -8,9 +8,9 @@ description: Manual instructions to setup MegaLinter as a Jenkins job
 
 # Jenkins
 
-Add the following stage in your Jenkinsfile
+Add the following stage to your Jenkinsfile.
 
-You may activate [File.io reporter](https://megalinter.io/reporters/FileIoReporter/) or [E-mail reporter](https://megalinter.io/reporters/EmailReporter/) to access detailed logs and fixed source
+You may activate the [File.io reporter](https://megalinter.io/reporters/FileIoReporter/) or [Email reporter](https://megalinter.io/reporters/EmailReporter/) to access detailed logs and fixed sources.
 
 ```groovy
 // Lint with MegaLinter: https://megalinter.io/
@@ -33,7 +33,7 @@ stage('MegaLinter') {
 }
 ```
 
-CloudBees themselves made a nice tutorial about how to use MegaLinter with Jenkins !
+CloudBees has a helpful tutorial about how to use MegaLinter with Jenkins!
 
 <div style="text-align:center"><iframe width="560" height="315" src="https://www.youtube.com/embed/KhkNf2tQ3hM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 

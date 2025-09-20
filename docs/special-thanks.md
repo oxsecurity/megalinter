@@ -10,7 +10,7 @@ description: List of all contributors, websites and linters that help MegaLinter
 
 ## Maintainers
 
-MegaLinter wouldn't be what it is without its great team of maintainers !
+MegaLinter wouldn't be what it is without its great team of maintainers!
 
 - [Kurt Von Laven](https://github.com/Kurt-von-Laven)
 - [Borja Dominguez](https://github.com/bdovaz)
@@ -25,12 +25,12 @@ MegaLinter wouldn't be what it is without its great team of maintainers !
 
 ## Open-source teams
 
-MegaLinter obviously would not exist without its linters and libraries, so many thanks to all the dedicated Open-Source teams maintaining all these awesome linters !
+MegaLinter obviously would not exist without its linters and libraries: many thanks to all the dedicated open-source teams maintaining these awesome linters!
 
 ## Super-Linter team
 
 MegaLinter has been built on the ashes of a [rejected Pull Request](https://github.com/super-linter/super-linter/pull/791){target=_blank} on [GitHub Super-Linter](https://github.com/super-linter/super-linter){target=_blank}.
 
-Even if I disagree with their decision to remain in bash, the core team has always been nice and supporting [during the time I was a Super-Linter contributor](https://github.com/super-linter/super-linter/pulls?q=is%3Apr+is%3Aclosed+author%3Anvuillam+review%3Aapproved){target=_blank} :)
+Even if I disagree with their decision to remain in Bash, the core team has always been nice and supportive [during the time I was a Super-Linter contributor](https://github.com/super-linter/super-linter/pulls?q=is%3Apr+is%3Aclosed+author%3Anvuillam+review%3Aapproved){target=_blank} :)
 
 <!-- special-thanks-section-end -->

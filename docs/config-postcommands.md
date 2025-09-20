@@ -8,7 +8,7 @@ description: Customize your MegaLinter run by running commands after linters are
 
 # Post-commands
 
-MegaLinter can run custom commands after running linters (for example, running additional tests)
+MegaLinter can run custom commands after running linters (for example, running additional tests).
 
 Example in `.mega-linter.yml` config file
 
@@ -16,7 +16,7 @@ Example in `.mega-linter.yml` config file
 POST_COMMANDS:
   - command: npm run test
     cwd: "workspace"   # Will be run at the root of the workspace (usually your repository root)
-    continue_if_failed: False  # Will stop the process if command is failed (return code > 0)
+    continue_if_failed: False  # Will stop the process if the command fails (return code > 0)
 ```
 
 

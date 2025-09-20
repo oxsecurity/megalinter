@@ -8,10 +8,10 @@ description: Use one of the numerous MegaLinter flavors to run MegaLinter even f
 
 # Flavors
 
-To improve run performances, we generate **Flavored MegaLinter images** containing only the list of linters related to a project type
+To improve run performance, we provide **flavored MegaLinter images** containing only the linters related to a project type.
 
-- When using default MegaLinter, if a MegaLinter Flavor would cover all your project requirements, a message is added in the logs
-- If your project uses a MegaLinter Flavor not covering linter requirements, an error message will be thrown with instructions about how to solve the issue
+- When using the default MegaLinter, if a MegaLinter flavor would cover all your project requirements, a message is added in the logs.
+- If your project uses a MegaLinter flavor that doesn't cover linter requirements, an error message will be thrown with instructions on how to solve the issue.
 
 _The following table doesn't display docker pulls from [MegaLinter v4 & v5 images](https://hub.docker.com/r/nvuillam/mega-linter)._
 
@@ -41,7 +41,7 @@ _The following table doesn't display docker pulls from [MegaLinter v4 & v5 image
 
 If you need a new flavor, [post an issue](https://github.com/oxsecurity/megalinter/issues) :wink:
 
-You can also generate your own [Custom Flavors](https://megalinter.io/beta/custom-flavors/) to have exactly the linters you need in your MegaLinter Docker image
+You can also generate your own [custom flavors](https://megalinter.io/beta/custom-flavors/) to include exactly the linters you need in your MegaLinter Docker image.
 
 
 <!-- flavors-section-end -->
