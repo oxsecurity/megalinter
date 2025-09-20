@@ -42,6 +42,10 @@ linters:
           ARG PIP_SNAKEMAKE_VERSION=9.11.4
       pip:
         - snakemake==${PIP_SNAKEMAKE_VERSION}
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       idea:
         - name: SnakeCharm
@@ -94,3 +98,7 @@ linters:
           ARG PIP_SNAKEFMT_VERSION=0.11.2
       pip:
         - snakefmt==${PIP_SNAKEFMT_VERSION}
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
