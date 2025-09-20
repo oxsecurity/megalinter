@@ -36,6 +36,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Linter versions upgrades (N)
 <!-- linter-versions-end -->
 
+## [v9.0.1] - 2025-09-21
+
+- Fix v9 release issue
+
 ## [v9.0.0] - 2025-09-20
 
 - Core
