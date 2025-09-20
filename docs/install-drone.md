@@ -8,7 +8,7 @@ description: Manual instructions to setup MegaLinter as a Drone CI job
 
 # Drone CI
 
-**Warning: Drone CI support is experimental and is undergoing heavy modifications (see issue [#2047](https://github.com/oxsecurity/megalinter/issues/2047)).**
+Warning: Drone CI support is experimental and is undergoing significant modifications (see issue [#2047](https://github.com/oxsecurity/megalinter/issues/2047)).
 
 1. Create a `.drone.yml` file on the root directory of your repository
 
@@ -30,11 +30,11 @@ steps:
     DEFAULT_WORKSPACE: /tmp/lint
 ```
 
-This uses the [Drone CI docker runner](https://docs.drone.io/pipeline/docker/overview/), so it's needed to install and configure it beforehand on your Drone CI server.
+This uses the [Drone CI Docker runner](https://docs.drone.io/pipeline/docker/overview/), so you need to install and configure it beforehand on your Drone CI server.
 
 ## (Optional) Adjusting trigger rules
 
-The Drone CI workflow should trigger automatically for every scenario (push, pull request, sync…) however, you can _optionally_ change this behavior by changing the trigger. For example:
+The Drone CI workflow should trigger automatically for most scenarios (push, pull request, sync…). However, you can optionally change this behavior by modifying the trigger. For example:
 
 ```yaml
 kind: pipeline
@@ -56,7 +56,7 @@ trigger:
   - push
 ```
 
-The workflow above should only trigger on push, not on any other situation. For more information about how to configure Drone CI trigger rules, [click here](https://docs.drone.io/pipeline/triggers/).
+The workflow above triggers only on push, and not in other situations. For more information about configuring Drone CI trigger rules, see the [documentation](https://docs.drone.io/pipeline/triggers/).
 
 
 <!-- install-drone-section-end -->

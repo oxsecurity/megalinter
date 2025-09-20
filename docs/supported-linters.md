@@ -8,7 +8,7 @@ description: Full list of all linters for all languages and formats that are ava
 
 # Supported Linters
 
-All linters are integrated in the [MegaLinter docker image](https://hub.docker.com/r/oxsecurity/megalinter), which is frequently upgraded with their latest versions
+All linters are integrated into the [MegaLinter Docker image](https://hub.docker.com/r/oxsecurity/megalinter), which is frequently updated with their latest versions.
 
 <!-- languages-section-start-->
 <!-- linters-table-start -->

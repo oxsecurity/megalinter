@@ -12,17 +12,17 @@ description: Manual instructions to run MegaLinter locally on your computer
 [![Downloads/week](https://img.shields.io/npm/dw/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
 [![Downloads/total](https://img.shields.io/npm/dt/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
 
-You can use [mega-linter-runner](https://megalinter.io/mega-linter-runner/) to locally run MegaLinter with the same configuration defined in [.mega-linter.yml](config-file.md) file
+Use [mega-linter-runner](https://megalinter.io/mega-linter-runner/) to run MegaLinter locally with the same configuration defined in your [.mega-linter.yml](config-file.md) file.
 
-See [mega-linter-runner installation instructions](https://megalinter.io/mega-linter-runner/#installation)
+See the [mega-linter-runner installation instructions](https://megalinter.io/mega-linter-runner/#installation).
 
-Example
+Example:
 
 ```shell
 npx mega-linter-runner --flavor salesforce -e "'ENABLE=DOCKERFILE,MARKDOWN,YAML'" -e 'SHOW_ELAPSED_TIME=true'
 ```
 
-Note: You can also use such command line in your custom CI/CD pipelines
+Note: You can also use this command line in your custom CI/CD pipelines.
 
 
 <!-- install-locally-section-end -->
