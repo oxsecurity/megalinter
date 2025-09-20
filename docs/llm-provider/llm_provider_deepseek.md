@@ -12,9 +12,9 @@ DeepSeek offers specialized code-focused models at competitive prices, optimized
 
 2. **Set Environment Variable**:
 
-```bash
-export DEEPSEEK_API_KEY=your-deepseek-api-key
-```
+Set **DEEPSEEK_API_KEY=your-deepseek-api-key** in your CI/CD secret variables.
+
+> Make sure the secret variable is sent to MegaLinter from your CI/CD workflow. Example in GitHub Action: `DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}`
 
 3. **Configure MegaLinter**:
 

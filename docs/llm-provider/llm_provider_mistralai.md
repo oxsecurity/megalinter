@@ -12,9 +12,9 @@ Mistral AI provides high-quality language models with European data residency an
 
 2. **Set Environment Variable**:
 
-```bash
-export MISTRAL_API_KEY=your-mistral-api-key
-```
+Set **MISTRAL_API_KEY=your-mistral-api-key** in your CI/CD secret variables.
+
+> Make sure the secret variable is sent to MegaLinter from your CI/CD workflow. Example in GitHub Action: `MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}`
 
 3. **Configure MegaLinter**:
 

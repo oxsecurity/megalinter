@@ -12,9 +12,9 @@ Anthropic's Claude models excel at code analysis with a strong focus on safety a
 
 2. **Set Environment Variable**:
 
-```bash
-export ANTHROPIC_API_KEY=sk-ant-your-api-key
-```
+Set **ANTHROPIC_API_KEY=sk-ant-your-api-key** in your CI/CD secret variables.
+
+> Make sure the secret variable is sent to MegaLinter from your CI/CD workflow. Example in GitHub Action: `ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}`
 
 3. **Configure MegaLinter**:
 

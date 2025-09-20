@@ -15,9 +15,9 @@ Google's Gemini models offer excellent performance at competitive prices with st
 
 2. **Set Environment Variable**:
 
-```bash
-export GOOGLE_API_KEY=AIza-your-api-key
-```
+Set **GOOGLE_API_KEY=AIza-your-api-key** in your CI/CD secret variables.
+
+> Make sure the secret variable is sent to MegaLinter from your CI/CD workflow. Example in GitHub Action: `GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}`
 
 3. **Configure MegaLinter**:
 

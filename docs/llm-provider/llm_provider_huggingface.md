@@ -26,9 +26,9 @@ pip install langchain-huggingface transformers torch
 
 2. **Set Environment Variable** (optional):
 
-```bash
-export HUGGINGFACE_API_TOKEN=hf_your-token
-```
+Set **HUGGINGFACE_API_TOKEN=hf_your-token** in your CI/CD secret variables.
+
+> Make sure the secret variable is sent to MegaLinter from your CI/CD workflow. Example in GitHub Action: `HUGGINGFACE_API_TOKEN: ${{ secrets.HUGGINGFACE_API_TOKEN }}`
 
 3. **Configure MegaLinter**:
 

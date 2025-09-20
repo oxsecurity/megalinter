@@ -12,9 +12,9 @@ Grok is xAI's conversational AI model, designed for real-time information and en
 
 2. **Set Environment Variable**:
 
-```bash
-export GROK_API_KEY=your-grok-api-key
-```
+Set **GROK_API_KEY=your-grok-api-key** in your CI/CD secret variables.
+
+> Make sure the secret variable is sent to MegaLinter from your CI/CD workflow. Example in GitHub Action: `GROK_API_KEY: ${{ secrets.GROK_API_KEY }}`
 
 3. **Configure MegaLinter**:
 

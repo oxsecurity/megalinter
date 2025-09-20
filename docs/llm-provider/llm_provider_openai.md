@@ -12,9 +12,9 @@ OpenAI provides state-of-the-art language models offering excellent code analysi
 
 2. **Set Environment Variable**:
 
-```bash
-export OPENAI_API_KEY=sk-your-api-key-here
-```
+Set **OPENAI_API_KEY=sk-your-api-key-here** in your CI/CD secret variables.
+
+> Make sure the secret variable is sent to MegaLinter from your CI/CD workflow. Example in GitHub Action: `OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}`
 
 3. **Configure MegaLinter**:
 
