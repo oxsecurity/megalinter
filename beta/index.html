@@ -3,7 +3,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="MegaLinter is an Open-Source tool for CI/CD workflows that analyzes the consistency of your code, IAC, configuration, and scripts in your repository sources, to ensure all your projects sources are clean and formatted whatever IDE/toolbox is used by their developers, powered by OX Security.Supporting 65 languages, 22 formats, 20 tooling formats and ready to use out of the box, as a GitHub action or any CI system, highly configurable and free for all uses.MegaLinter has native integrations with many of the major CI/CD tools of the market.">
+        <meta name="description" content="MegaLinter is an open-source tool for CI/CD workflows that analyzes the consistency of your code, IaC, configuration, and scripts in your repository to ensure all your project sources are clean and formatted, no matter which IDE or toolbox is used by your developers. Powered by OX Security.Supports 65 languages, 22 formats, 20 tooling formats, and is ready to use out of the box as a GitHub Action or with any CI system. It is highly configurable and free for all uses.MegaLinter has native integrations with many major CI/CD tools.">
       
       
         <meta name="author" content="Nicolas Vuillamy">
@@ -10071,11 +10071,11 @@
 <!-- mega-linter-badges-end -->
 
 <!-- welcome-phrase-start -->
-<p>MegaLinter is an <strong>Open-Source</strong> tool for <strong>CI/CD workflows</strong> that analyzes the <strong>consistency of your code</strong>, <strong>IAC</strong>, <strong>configuration</strong>, and <strong>scripts</strong> in your repository sources, to <strong>ensure all your projects sources are clean and formatted</strong> whatever IDE/toolbox is used by their developers, powered by <a href="https://www.ox.security/?ref=megalinter"><strong>OX Security</strong></a>.</p>
-<p>Supporting <a href="supported-linters/#languages"><strong>65</strong> languages</a>, <a href="supported-linters/#formats"><strong>22</strong> formats</a>, <a href="supported-linters/#tooling-formats"><strong>20</strong> tooling formats</a> and <strong>ready to use out of the box</strong>, as a GitHub action or any CI system, <strong>highly configurable</strong> and <strong>free for all uses</strong>.</p>
-<p>MegaLinter has <strong>native integrations</strong> with many of the major CI/CD tools of the market.</p>
+<p>MegaLinter is an <strong>open-source</strong> tool for <strong>CI/CD workflows</strong> that analyzes the <strong>consistency of your code</strong>, <strong>IaC</strong>, <strong>configuration</strong>, and <strong>scripts</strong> in your repository to <strong>ensure all your project sources are clean and formatted</strong>, no matter which IDE or toolbox is used by your developers. Powered by <a href="https://www.ox.security/?ref=megalinter"><strong>OX Security</strong></a>.</p>
+<p>Supports <a href="supported-linters/#languages"><strong>65</strong> languages</a>, <a href="supported-linters/#formats"><strong>22</strong> formats</a>, <a href="supported-linters/#tooling-formats"><strong>20</strong> tooling formats</a>, and is <strong>ready to use out of the box</strong> as a GitHub Action or with any CI system. It is <strong>highly configurable</strong> and <strong>free for all uses</strong>.</p>
+<p>MegaLinter has <strong>native integrations</strong> with many major CI/CD tools.</p>
 <p><a href="reporters/GitHubCommentReporter/"><img alt="GitHub" src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/github.png?raw=true>"></a>
-<a href="reporters/GitlabCommentReporter/"><img alt="Gitlab" src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/gitlab.png?raw=true>"></a>
+<a href="reporters/GitlabCommentReporter/"><img alt="GitLab" src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/gitlab.png?raw=true>"></a>
 <a href="reporters/AzureCommentReporter/"><img alt="Azure" src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/azure.png?raw=true>"></a>
 <a href="reporters/BitbucketCommentReporter/"><img alt="Bitbucket" src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/bitbucket.png?raw=true>"></a>
 <a href="install-jenkins/"><img alt="Jenkins" src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/jenkins.png?raw=true>"></a>
@@ -10098,18 +10098,18 @@
 <!-- table-of-contents-end -->
 
 <h2 id="why-megalinter">Why MegaLinter</h2>
-<p>Projects need to contain clean code, in order to <strong>avoid technical debt</strong>, that makes <strong>evolutive maintenance harder and time consuming</strong>.</p>
-<p>By using <a href="supported-linters/"><strong>code formatters and code linters</strong></a>, you ensure that your code base is <strong>easier to read</strong> and <strong>respects best practices</strong>, from the kick-off to each step of the project lifecycle</p>
-<p>Not all developers have the good habit to use linters in their IDEs, making code reviews harder and longer to process</p>
-<p>By using <strong>MegaLinter</strong>, you'll enjoy the following benefits for you and your team:</p>
+<p>Projects need to contain clean code in order to <strong>avoid technical debt</strong>, which makes <strong>ongoing maintenance harder and more time-consuming</strong>.</p>
+<p>By using <a href="supported-linters/"><strong>code formatters and code linters</strong></a>, you ensure that your <strong>codebase is easier to read</strong> and <strong>follows best practices</strong>, from kickoff through each step of the project lifecycle.</p>
+<p>Not all developers use linters in their IDEs, which makes code reviews harder and longer to process.</p>
+<p>By using <strong>MegaLinter</strong>, you'll enjoy the following benefits for your team:</p>
 <ul>
-<li>At <strong>each pull request</strong> it will <strong>automatically analyze all updated code in all languages</strong></li>
-<li>Reading error logs, <strong>developers learn best practices</strong> of the language they're using</li>
-<li><a href="https://megalinter.io/"><strong>MegaLinter documentation</strong></a> provides the <strong>list of IDE plugins integrating each linter</strong>, so developers know which linter and plugins to install</li>
-<li>MegaLinter is <strong>ready out of the box</strong> after a <a href="quick-start/"><strong>quick setup</strong></a></li>
-<li><strong>Formatting and fixes</strong> can be automatically <a href="config-apply-fixes/"><strong>applied on the git branch</strong></a> or <a href="reporters/UpdatedSourcesReporter/"><strong>provided in reports</strong></a></li>
-<li>This tool is <strong>100% open-source</strong> and <strong>free for all uses</strong> (personal, professional, public and private repositories)</li>
-<li>MegaLinter can run on <a href="install-assisted/"><strong>any CI tool</strong></a> and be <a href="https://megalinter.io/mega-linter-runner/"><strong>run locally</strong></a>: <strong>no need to authorize an external application</strong>, and <strong>your code base never leaves your tooling ecosystem</strong></li>
+<li>At <strong>each pull request</strong>, it <strong>automatically analyzes all updated code across all languages</strong>.</li>
+<li>By reading error logs, <strong>developers learn best practices</strong> for the languages they use.</li>
+<li>The <a href="https://megalinter.io/"><strong>MegaLinter documentation</strong></a> provides a <strong>list of IDE plugins for each linter</strong>, so developers know which linter and plugins to install.</li>
+<li>MegaLinter <strong>works out of the box</strong> after a <a href="quick-start/"><strong>quick setup</strong></a>.</li>
+<li><strong>Formatting and fixes</strong> can be automatically <a href="config-apply-fixes/"><strong>applied directly to the Git branch</strong></a> or <a href="reporters/UpdatedSourcesReporter/"><strong>provided in reports</strong></a>.</li>
+<li>This tool is <strong>100% open source</strong> and <strong>free for all uses</strong> (personal, professional, public, and private repositories).</li>
+<li>MegaLinter can run on <a href="install-assisted/"><strong>any CI tool</strong></a> and be <a href="https://megalinter.io/mega-linter-runner/"><strong>run locally</strong></a>: <strong>no need to authorize an external application</strong>, and <strong>your codebase never leaves your tooling ecosystem</strong>.</li>
 </ul>
 <!-- quick-start-section-start -->
 
@@ -10123,7 +10123,7 @@ description: Full list of all linters for all languages and formats that are ava
 ---
 -->
 <h2 id="supported-linters">Supported Linters</h2>
-<p>All linters are integrated in the <a href="https://hub.docker.com/r/oxsecurity/megalinter">MegaLinter docker image</a>, which is frequently upgraded with their latest versions</p>
+<p>All linters are integrated into the <a href="https://hub.docker.com/r/oxsecurity/megalinter">MegaLinter Docker image</a>, which is frequently updated with their latest versions.</p>
 <!-- languages-section-start-->
 <!-- linters-table-start -->
 <h3 id="languages">Languages</h3>

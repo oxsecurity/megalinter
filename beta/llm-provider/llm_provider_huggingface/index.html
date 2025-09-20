@@ -3,7 +3,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="MegaLinter is an Open-Source tool for CI/CD workflows that analyzes the consistency of your code, IAC, configuration, and scripts in your repository sources, to ensure all your projects sources are clean and formatted whatever IDE/toolbox is used by their developers, powered by OX Security.Supporting 65 languages, 22 formats, 20 tooling formats and ready to use out of the box, as a GitHub action or any CI system, highly configurable and free for all uses.MegaLinter has native integrations with many of the major CI/CD tools of the market.">
+        <meta name="description" content="MegaLinter is an open-source tool for CI/CD workflows that analyzes the consistency of your code, IaC, configuration, and scripts in your repository to ensure all your project sources are clean and formatted, no matter which IDE or toolbox is used by your developers. Powered by OX Security.Supports 65 languages, 22 formats, 20 tooling formats, and is ready to use out of the box as a GitHub Action or with any CI system. It is highly configurable and free for all uses.MegaLinter has native integrations with many major CI/CD tools.">
       
       
         <meta name="author" content="Nicolas Vuillamy">
@@ -10176,19 +10176,21 @@ pip install langchain-huggingface transformers torch
 </li>
 <li>
 <p><strong>Set Environment Variable</strong> (optional):</p>
-<p><code>bash
- export HUGGINGFACE_API_TOKEN=hf_your-token</code></p>
-</li>
-<li>
-<p><strong>Configure MegaLinter</strong>:</p>
-<p><code>yaml
- LLM_ADVISOR_ENABLED: true
- LLM_PROVIDER: huggingface
- LLM_MODEL_NAME: microsoft/DialoGPT-medium
- LLM_MAX_TOKENS: 1000
- LLM_TEMPERATURE: 0.1</code></p>
 </li>
 </ol>
+<p>Set <strong>HUGGINGFACE_API_TOKEN=hf_your-token</strong> in your CI/CD secret variables.</p>
+<blockquote>
+<p>Make sure the secret variable is sent to MegaLinter from your CI/CD workflow. Example in GitHub Action: <code>HUGGINGFACE_API_TOKEN: ${{ secrets.HUGGINGFACE_API_TOKEN }}</code></p>
+</blockquote>
+<ol>
+<li><strong>Configure MegaLinter</strong>:</li>
+</ol>
+<pre><code class="language-yaml">LLM_ADVISOR_ENABLED: true
+LLM_PROVIDER: huggingface
+LLM_MODEL_NAME: microsoft/DialoGPT-medium
+LLM_MAX_TOKENS: 1000
+LLM_TEMPERATURE: 0.1
+</code></pre>
 <h2 id="official-model-list">Official Model List</h2>
 <p>For the most up-to-date list of Hugging Face models and their capabilities, see the official Hugging Face model hub:</p>
 <ul>
