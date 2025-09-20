@@ -12,19 +12,19 @@ Grok is xAI's conversational AI model, designed for real-time information and en
 
 2. **Set Environment Variable**:
 
-   ```bash
-   export GROK_API_KEY=your-grok-api-key
-   ```
+```bash
+export GROK_API_KEY=your-grok-api-key
+```
 
 3. **Configure MegaLinter**:
 
-   ```yaml
-   LLM_ADVISOR_ENABLED: true
-   LLM_PROVIDER: grok
-   LLM_MODEL_NAME: grok-3-mini
-   LLM_MAX_TOKENS: 1000
-   LLM_TEMPERATURE: 0.1
-   ```
+```yaml
+LLM_ADVISOR_ENABLED: true
+LLM_PROVIDER: grok
+LLM_MODEL_NAME: grok-3-mini
+LLM_MAX_TOKENS: 1000
+LLM_TEMPERATURE: 0.1
+```
 
 ## Official Model List
 

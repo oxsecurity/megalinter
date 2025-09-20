@@ -20,24 +20,25 @@ pip install langchain-huggingface transformers torch
 ### Configuration
 
 1. **Optional: Get API Token** (for private models or hosted inference):
+
    - Go to [Hugging Face Settings](https://huggingface.co/settings/tokens)
    - Create a new token
 
 2. **Set Environment Variable** (optional):
 
-   ```bash
-   export HUGGINGFACE_API_TOKEN=hf_your-token
-   ```
+```bash
+export HUGGINGFACE_API_TOKEN=hf_your-token
+```
 
 3. **Configure MegaLinter**:
 
-   ```yaml
-   LLM_ADVISOR_ENABLED: true
-   LLM_PROVIDER: huggingface
-   LLM_MODEL_NAME: microsoft/DialoGPT-medium
-   LLM_MAX_TOKENS: 1000
-   LLM_TEMPERATURE: 0.1
-   ```
+```yaml
+LLM_ADVISOR_ENABLED: true
+LLM_PROVIDER: huggingface
+LLM_MODEL_NAME: microsoft/DialoGPT-medium
+LLM_MAX_TOKENS: 1000
+LLM_TEMPERATURE: 0.1
+```
 
 ## Official Model List
 

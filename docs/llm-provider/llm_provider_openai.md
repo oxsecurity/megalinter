@@ -12,19 +12,19 @@ OpenAI provides state-of-the-art language models offering excellent code analysi
 
 2. **Set Environment Variable**:
 
-   ```bash
-   export OPENAI_API_KEY=sk-your-api-key-here
-   ```
+```bash
+export OPENAI_API_KEY=sk-your-api-key-here
+```
 
 3. **Configure MegaLinter**:
 
-   ```yaml
-   LLM_ADVISOR_ENABLED: true
-   LLM_PROVIDER: openai
-   LLM_MODEL_NAME: gpt-4.1-mini
-   LLM_MAX_TOKENS: 1000
-   LLM_TEMPERATURE: 0.1
-   ```
+```yaml
+LLM_ADVISOR_ENABLED: true
+LLM_PROVIDER: openai
+LLM_MODEL_NAME: gpt-4.1-mini
+LLM_MAX_TOKENS: 1000
+LLM_TEMPERATURE: 0.1
+```
 
 ## Official Model List
 
@@ -56,16 +56,19 @@ OPENAI_ORGANIZATION: org-your-org-id
 ### Common Issues
 
 1. **"Invalid API key"**
+
    - Verify your API key is correct
    - Check that your account has available credits
    - Ensure the key has proper permissions
 
 2. **"Rate limit exceeded"**
+
    - Reduce concurrent requests
    - Upgrade to a higher tier plan
    - Implement retry logic
 
 3. **"Model not found"**
+
    - Verify the model name is correct
    - Check if you have access to the model
    - Some models require special access
