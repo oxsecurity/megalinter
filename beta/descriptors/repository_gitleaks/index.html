@@ -10283,21 +10283,18 @@
 <p><strong>Note:</strong> Only GitLab self-managed and GitLab SaaS (Premium and Ultimate) are supported (this is a GitLab-specific limitation). Additionally, the <a href="https://docs.gitlab.com/ee/ci/pipelines/merged_results_pipelines.html#enable-merged-results-pipelines" target="_blank">Merge result pipelines</a> feature has to be enabled.</p>
 <p>If MegaLinter with gitleaks runs against a PR on a platform not listed above, analysis is performed on the whole repository (this is the default gitleaks behavior; the commits scanned depend on the fetch-depth configuration).</p>
 <p>You can still choose to scan only PR commits in your CI/CD platform by setting the following MegaLinter environment variables:
-  - <code>PULL_REQUEST=true</code>*
-  - <code>REPOSITORY_GITLEAKS_PR_COMMITS_SCAN: true</code>
-  - <code>REPOSITORY_GITLEAKS_PR_SOURCE_SHA</code> with last commit sha from your PR and <code>REPOSITORY_GITLEAKS_PR_TARGET_SHA</code> commit sha from your target branch (for example, <code>main</code> if you do PR to main branch)</p>
+- <code>PULL_REQUEST=true</code>*
+- <code>REPOSITORY_GITLEAKS_PR_COMMITS_SCAN: true</code>
+- <code>REPOSITORY_GITLEAKS_PR_SOURCE_SHA</code> with last commit sha from your PR and <code>REPOSITORY_GITLEAKS_PR_TARGET_SHA</code> commit sha from your target branch (for example, <code>main</code> if you do PR to main branch)</p>
 <pre><code>Example commands:
-  - Source commit SHA:
-    ```bash
-    git rev-list -n 1 refs/remotes/origin/&lt;source_branch&gt;
-    ```
-
-  - Target commit SHA:
-    ```bash
-    git rev-parse refs/remotes/origin/&lt;target_branch&gt;
-    ```
 </code></pre>
-<p>* <code>PULL_REQUEST</code> environment variable must be set to <code>true</code> only on Pull Requests, so you must calculate the value in your pipeline and pass the outcome.</p>
+<p>- Source commit SHA:
+        <code>bash
+        git rev-list -n 1 refs/remotes/origin/&lt;source_branch&gt;</code></p>
+<p>- Target commit SHA:
+        <code>bash
+        git rev-parse refs/remotes/origin/&lt;target_branch&gt;</code>
+* <code>PULL_REQUEST</code> environment variable must be set to <code>true</code> only on Pull Requests, so you must calculate the value in your pipeline and pass the outcome.</p>
 <p>The PR commits scan feature, if applicable, will override your <code>--log-opts</code> argument if you used it in the <code>REPOSITORY_GITLEAKS_ARGUMENTS</code>.</p>
 <h3 id="azure-pipelines-environment-variables-on-pull-requests">Azure Pipelines environment variables on Pull Requests</h3>
 <p>In the case of Azure Pipelines when running in a Docker container, we have to explicitly pass some environment variables:</p>
