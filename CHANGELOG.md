@@ -34,6 +34,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 
 - Linter versions upgrades (N)
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.13.2 to **1.13.3** on 2025-09-21
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.87.2 to **0.87.4** on 2025-09-21
 <!-- linter-versions-end -->
 
 ## [v9.0.1] - 2025-09-21
