@@ -9,7 +9,7 @@ description: How to use remark-lint (configure, ignore files, ignore errors, hel
 
 _This linter has been disabled in this version_
 
-_Disabled reason: Bug in remark-lint: https://github.com/remarkjs/remark-lint/issues/322_
+_Disabled reason: Bug in remark-lint: <https://github.com/remarkjs/remark-lint/issues/322>_
 
 **remark-lint** is a powerful plugin for the remark markdown processor that provides comprehensive linting and formatting capabilities for Markdown files. Built on the unified collective's remark ecosystem, it offers extensive rule-based validation with automatic fixing capabilities and a rich plugin architecture for customized Markdown processing workflows.
 
