@@ -19,6 +19,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Media
 
 - Linters enhancements
+  - Python Linting: Added more file type supports for various linters. Full description [here](https://github.com/oxsecurity/megalinter/pull/6214)
 
 - Fixes
 
