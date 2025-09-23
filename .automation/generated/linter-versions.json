@@ -13,7 +13,7 @@
     "chktex": "1.7.8",
     "clang-format": "20.1.8",
     "clippy": "0.1.90",
-    "clj-kondo": "2025.09.19",
+    "clj-kondo": "2025.09.22",
     "cljstyle": "0.17.642",
     "coffeelint": "5.2.11",
     "cppcheck": "2.14.2",
