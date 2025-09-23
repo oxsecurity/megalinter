@@ -12,19 +12,19 @@ DeepSeek offers specialized code-focused models at competitive prices, optimized
 
 2. **Set Environment Variable**:
 
-   ```bash
-   export DEEPSEEK_API_KEY=your-deepseek-api-key
-   ```
+Set **DEEPSEEK_API_KEY=your-deepseek-api-key** in your CI/CD secret variables.
+
+> Make sure the secret variable is sent to MegaLinter from your CI/CD workflow. Example in GitHub Action: `DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}`
 
 3. **Configure MegaLinter**:
 
-   ```yaml
-   LLM_ADVISOR_ENABLED: true
-   LLM_PROVIDER: deepseek
-   LLM_MODEL_NAME: deepseek-chat
-   LLM_MAX_TOKENS: 1000
-   LLM_TEMPERATURE: 0.1
-   ```
+```yaml
+LLM_ADVISOR_ENABLED: true
+LLM_PROVIDER: deepseek
+LLM_MODEL_NAME: deepseek-chat
+LLM_MAX_TOKENS: 1000
+LLM_TEMPERATURE: 0.1
+```
 
 ## Official Model List
 
@@ -53,16 +53,19 @@ DEEPSEEK_BASE_URL: https://api.deepseek.com/v1
 ### Common Issues
 
 1. **"Invalid API key"**
+
    - Verify your API key is correct
    - Check account status and credits
    - Ensure API access is enabled
 
 2. **"Rate limit exceeded"**
+
    - Check your plan's rate limits
    - Implement rate limiting in your requests
    - Consider upgrading your plan
 
 3. **"Model not available"**
+
    - Verify model name is correct
    - Check if model is available in your region
    - Some models may require special access

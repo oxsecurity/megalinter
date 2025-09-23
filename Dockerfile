@@ -44,7 +44,7 @@ ARG TERRAFORM_TFLINT_VERSION=0.59.1
 # renovate: datasource=docker depName=tenable/terrascan
 ARG TERRAFORM_TERRASCAN_VERSION=1.19.9
 # renovate: datasource=docker depName=alpine/terragrunt
-ARG TERRAFORM_TERRAGRUNT_VERSION=1.13.2
+ARG TERRAFORM_TERRAGRUNT_VERSION=1.13.3
 #ARGTOP__END
 
 #############################################################################################
@@ -120,11 +120,11 @@ ARG ALPINE_GLIBC_PACKAGE_VERSION=2.34-r0
 ARG POWERSHELL_VERSION=7.5.3
 
 # renovate: datasource=npm depName=@salesforce/cli
-ARG NPM_SALESFORCE_CLI_VERSION=2.105.6
+ARG NPM_SALESFORCE_CLI_VERSION=2.106.6
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
-ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.20.3
+ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.20.4
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=6.5.0
+ARG SFDX_HARDIS_VERSION=6.5.2
 # renovate: datasource=npm depName=typescript
 ARG NPM_TYPESCRIPT_VERSION=5.9.2
 # renovate: datasource=pypi depName=ansible-lint
@@ -171,7 +171,7 @@ ARG DART_VERSION='3.8.3'
 # renovate: datasource=npm depName=gherkin-lint
 ARG NPM_GHERKIN_LINT_VERSION=4.2.4
 # renovate: datasource=github-tags depName=golangci/golangci-lint
-ARG GO_GOLANGCI_LINT_VERSION=2.4.0
+ARG GO_GOLANGCI_LINT_VERSION=2.5.0
 # renovate: datasource=npm depName=graphql
 ARG NPM_GRAPHQL_VERSION=16.11.0
 # renovate: datasource=npm depName=graphql-schema-linter

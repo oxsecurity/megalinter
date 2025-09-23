@@ -8,8 +8,8 @@ description: Exclude files from linting
 
 # Filter linted files
 
-If you need to lint only a folder or exclude some files from linting, you can use optional environment parameters `FILTER_REGEX_INCLUDE` and `FILTER_REGEX_EXCLUDE`
-You can apply filters to a single linter by defining variable `<LINTER_KEY>_FILTER_REGEX_INCLUDE` and `<LINTER_KEY>_FILTER_REGEX_EXCLUDE`
+If you need to lint only a folder or exclude some files from linting, you can use the optional environment parameters `FILTER_REGEX_INCLUDE` and `FILTER_REGEX_EXCLUDE`.
+You can apply filters to a single linter by defining the variables `<LINTER_KEY>_FILTER_REGEX_INCLUDE` and `<LINTER_KEY>_FILTER_REGEX_EXCLUDE`.
 
 Examples:
 
@@ -17,7 +17,7 @@ Examples:
 - Don't lint files inside test and example folders: `FILTER_REGEX_EXCLUDE: (test/|examples/)`
 - Don't lint javascript files inside test folder: `FILTER_REGEX_EXCLUDE: (test/.*\.js)`
 
-Warning: not applicable with linters using CLI lint mode `project` ([see details](config-cli-lint-mode.md))
+Warning: Not applicable with linters using CLI lint mode `project` ([see details](config-cli-lint-mode.md)).
 
 
 <!-- config-filtering-section-end -->

@@ -66,21 +66,25 @@ OLLAMA_BASE_URL: http://your-server:11434
 ### Common Issues
 
 1. **"Connection refused"**
+
    - Ensure Ollama is running: `ollama serve`
    - Check the correct port (default: 11434)
    - Verify firewall settings
 
 2. **"Model not found"**
+
    - Pull the model first: `ollama pull model-name`
    - List available models: `ollama list`
    - Use exact model name with tag
 
 3. **"Out of memory"**
+
    - Use smaller models (7B instead of 13B)
    - Close other applications
    - Consider using quantized models
 
 4. **Slow responses**
+
    - Use smaller models for faster inference
    - Ensure sufficient RAM
    - Consider GPU acceleration if available
