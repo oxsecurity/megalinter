@@ -10223,7 +10223,7 @@
 <tr>
 <td>PYTHON_BLACK_FILE_EXTENSIONS</td>
 <td>Allowed file extensions. <code>"*"</code> matches any extension, <code>""</code> matches empty extension. Empty list excludes all files<br>Ex: <code>[".py", ""]</code></td>
-<td><code>[".py"]</code></td>
+<td><code>[".py", ".pyi", ".ipynb"]</code></td>
 </tr>
 <tr>
 <td>PYTHON_BLACK_FILE_NAMES_REGEX</td>
@@ -10368,7 +10368,7 @@
 <h2 id="behind-the-scenes">Behind the scenes</h2>
 <h3 id="how-are-identified-applicable-files">How are identified applicable files</h3>
 <ul>
-<li>File extensions: <code>.py</code></li>
+<li>File extensions: <code>.py</code>, <code>.pyi</code>, <code>.ipynb</code></li>
 </ul>
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
@@ -10529,7 +10529,7 @@ ARG PIP_BLACK_VERSION=25.9.0
 </code></pre>
 <ul>
 <li>PIP packages (Python):<ul>
-<li><a href="https://pypi.org/project/black/25.9.0">black==25.9.0</a></li>
+<li><a href="https://pypi.org/project/black[jupyter]/25.9.0">black[jupyter]==25.9.0</a></li>
 </ul>
 </li>
 </ul>
