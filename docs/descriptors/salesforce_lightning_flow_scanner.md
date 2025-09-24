@@ -15,7 +15,7 @@ description: How to use lightning-flow-scanner (configure, ignore files, ignore 
 
 _This linter has been disabled in this version_
 
-_Disabled reason: Repo archived -> <https://github.com/Lightning-Flow-Scanner>_
+_Disabled reason: Repo archived -> https://github.com/Lightning-Flow-Scanner_
 
 **Lightning Flow Scanner** is a specialized SFDX plugin that analyzes Salesforce Flows for integrity issues, performance problems, and adherence to best practices. It helps developers build reliable and maintainable Flow automations.
 

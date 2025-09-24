@@ -9,7 +9,7 @@ description: How to use puppet-lint (configure, ignore files, ignore errors, hel
 
 _This linter has been disabled in this version_
 
-_Disabled reason: <https://github.com/puppetlabs/puppet-lint/issues/251>_
+_Disabled reason: https://github.com/puppetlabs/puppet-lint/issues/251_
 
 **puppet-lint** is the standard linting tool for Puppet code that enforces the recommended Puppet language style guide and ensures consistent code formatting across Puppet manifests. It focuses on style and formatting rather than syntax validation.
 
@@ -220,7 +220,7 @@ puppet-lint --fail-on-warnings --no-autoloader_layout-check --fix myfile.pp
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=rubygems depName=puppet-lint
-ARG GEM_PUPPET_LINT_VERSION=4.3.0
+ARG GEM_PUPPET_LINT_VERSION=5.0.0
 ```
 
 - GEM packages (Ruby) :
