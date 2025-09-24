@@ -40,6 +40,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [golangci-lint](https://golangci-lint.run/) from 2.4.0 to **2.5.0** on 2025-09-22
   - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2025.09.19 to **2025.09.22** on 2025-09-23
   - [hadolint](https://github.com/hadolint/hadolint) from 2.13.1 to **2.14.0** on 2025-09-24
+  - [kics](https://www.kics.io) from 2.1.13 to **2.1.14** on 2025-09-24
 <!-- linter-versions-end -->
 
 ## [v9.0.1] - 2025-09-21
