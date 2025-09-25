@@ -598,7 +598,7 @@ ENV PATH="$JAVA_HOME/bin:${PATH}"
 # PHP installation
 RUN update-alternatives --install /usr/bin/php php /usr/bin/php84 110
 # Managed with COPY --from=composer/composer:2-bin /composer /usr/bin/composer
-ENV PATH="/root/.composer/vendor/bin:${PATH}"
+ENV PATH="/tmp/lint/vendor/bin:/root/.composer/vendor/bin:${PATH}"
 #
 # TYPESCRIPT installation
 #
