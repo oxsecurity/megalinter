@@ -3,8 +3,6 @@ descriptor_type: tooling_format
 descriptor_flavors:
   - cupcake
   - formatters
-file_extensions:
-  - ".robot"
 linters:
   # robotframework-robocop
   - linter_name: robocop
@@ -40,6 +38,9 @@ linters:
     cli_sarif_args:
       - --reports
       - sarif
+    file_extensions:
+      - ".robot"
+      - ".resource"
     sarif_default_output_file: .sarif.json
     examples:
       - "robocop check myfile.robot"
