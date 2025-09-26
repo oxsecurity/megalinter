@@ -40,6 +40,7 @@ linters:
     cli_sarif_args:
       - --reports
       - sarif
+    sarif_default_output_file: .sarif.json
     examples:
       - "robocop check myfile.robot"
     install:
