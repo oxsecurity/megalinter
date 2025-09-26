@@ -74,6 +74,7 @@
         "REPOSITORY_TRIVY",
         "REPOSITORY_TRIVY_SBOM",
         "REPOSITORY_TRUFFLEHOG",
+        "ROBOTFRAMEWORK_ROBOCOP",
         "RST_RST_LINT",
         "RST_RSTCHECK",
         "RST_RSTFMT",
