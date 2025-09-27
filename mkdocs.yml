@@ -5,7 +5,7 @@ repo_url: https://github.com/oxsecurity/megalinter
 edit_uri: tree/main/docs
 site_author: Nicolas Vuillamy
 # site_description-start
-site_description: MegaLinter is an open-source tool for CI/CD workflows that analyzes the consistency of your code, IaC, configuration, and scripts in your repository to ensure all your project sources are clean and formatted, no matter which IDE or toolbox is used by your developers. Powered by OX Security.Supports 65 languages, 22 formats, 20 tooling formats, and is ready to use out of the box as a GitHub Action or with any CI system. It is highly configurable and free for all uses.MegaLinter has native integrations with many major CI/CD tools.
+site_description: MegaLinter is an open-source tool for CI/CD workflows that analyzes the consistency of your code, IaC, configuration, and scripts in your repository to ensure all your project sources are clean and formatted, no matter which IDE or toolbox is used by your developers. Powered by OX Security.Supports 65 languages, 22 formats, 21 tooling formats, and is ready to use out of the box as a GitHub Action or with any CI system. It is highly configurable and free for all uses.MegaLinter has native integrations with many major CI/CD tools.
 # site_description-end
 copyright: Copyright &copy; 2024 <a href="https://www.ox.security/?ref=megalinter" target= "_blank">OX Security</a> &amp; <a href="https://github.com/nvuillam" target="_blank">Nicolas Vuillamy</a>
 theme:
@@ -302,6 +302,9 @@ nav:
           - "PUPPET":
               - "All PUPPET linters": "descriptors/puppet.md"
               - "puppet-lint": "descriptors/puppet_puppet_lint.md"
+          - "ROBOTFRAMEWORK":
+              - "All ROBOTFRAMEWORK linters": "descriptors/robotframework.md"
+              - "robocop": "descriptors/robotframework_robocop.md"
           - "SNAKEMAKE":
               - "All SNAKEMAKE linters": "descriptors/snakemake.md"
               - "snakemake": "descriptors/snakemake_snakemake.md"
