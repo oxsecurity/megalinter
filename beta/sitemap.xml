@@ -769,6 +769,14 @@
          <lastmod>2025-09-27</lastmod>
     </url>
     <url>
+         <loc>https://megalinter.io/beta/descriptors/robotframework/</loc>
+         <lastmod>2025-09-27</lastmod>
+    </url>
+    <url>
+         <loc>https://megalinter.io/beta/descriptors/robotframework_robocop/</loc>
+         <lastmod>2025-09-27</lastmod>
+    </url>
+    <url>
          <loc>https://megalinter.io/beta/descriptors/rst/</loc>
          <lastmod>2025-09-27</lastmod>
     </url>
