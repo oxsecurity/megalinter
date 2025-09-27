@@ -185,7 +185,7 @@ ARG KTLINT_VERSION=1.7.1
 ARG DETEKT_VERSION=1.23.8
 
 # renovate: datasource=github-tags depName=kubescape/kubescape
-ARG KUBERNETES_KUBESCAPE_VERSION=3.0.34
+ARG KUBERNETES_KUBESCAPE_VERSION=3.0.41
 # renovate: datasource=npm depName=markdownlint-cli2
 ARG NPM_MARKDOWNLINT_CLI2_VERSION=0.18.1
 # renovate: datasource=npm depName=markdown-table-formatter
