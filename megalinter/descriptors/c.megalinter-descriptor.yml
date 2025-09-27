@@ -131,7 +131,7 @@ linters:
       - "clang-format --Werror --dry-run myfile.c"
     install:
       apk:
-        - clang19-extra-tools
+        - clang20-extra-tools
     ide:
       vscode:
         - name: Clang-Format

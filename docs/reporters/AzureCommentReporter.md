@@ -33,7 +33,7 @@ Example:
             -e BUILD_BUILD_ID=$(Build.BuildId) \
             -e BUILD_REPOSITORY_ID=$(Build.Repository.ID) \
             -e GIT_AUTHORIZATION_BEARER=$(System.AccessToken) \
-            oxsecurity/megalinter:v8
+            oxsecurity/megalinter:v9
         displayName: Run MegaLinter
 ```
 

@@ -25,7 +25,7 @@ description: How to use selene (configure, ignore files, ignore errors, help & v
 
 ## selene documentation
 
-- Version in MegaLinter: **0.28.0**
+- Version in MegaLinter: **0.29.0**
 - Visit [Official Web Site](https://kampfkarren.github.io/selene/){target=_blank}
 - See [How to configure selene rules](https://kampfkarren.github.io/selene/usage/configuration.html){target=_blank}
 - See [How to disable selene rules in files](https://kampfkarren.github.io/selene/usage/filtering.html){target=_blank}
@@ -100,7 +100,7 @@ selene --config chktexrc.toml myfile.lua
 ### Help content
 
 ```shell
-selene 0.28.0
+selene 0.29.0
 
 USAGE:
     selene [FLAGS] [OPTIONS] <files>...
@@ -147,8 +147,8 @@ RUN wget --tries=5 https://www.lua.org/ftp/lua-5.3.5.tar.gz -O - -q | tar -xzf -
 
 # Linter install
 # renovate: datasource=crate depName=selene
-ARG CARGO_SELENE_VERSION=0.28.0
+ARG CARGO_SELENE_VERSION=0.29.0
 ```
 
 - Cargo packages (Rust):
-  - [selene@0.28.0](https://crates.io/crates/selene/0.28.0)
+  - [selene@0.29.0](https://crates.io/crates/selene/0.29.0)

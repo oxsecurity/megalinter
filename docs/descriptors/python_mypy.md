@@ -30,7 +30,7 @@ description: How to use mypy (configure, ignore files, ignore errors, help & ver
 
 ## mypy documentation
 
-- Version in MegaLinter: **1.16.1**
+- Version in MegaLinter: **1.18.2**
 - Visit [Official Web Site](https://mypy.readthedocs.io/en/stable/){target=_blank}
 - See [How to configure mypy rules](https://mypy.readthedocs.io/en/stable/config_file.html){target=_blank}
   - If custom `.mypy.ini` config file isn't found, [.mypy.ini](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.mypy.ini){target=_blank} will be used
@@ -50,7 +50,7 @@ description: How to use mypy (configure, ignore files, ignore errors, help & ver
 | PYTHON_MYPY_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file                              |
 | PYTHON_MYPY_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file                                 |
 | PYTHON_MYPY_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `list_of_files`                                 |
-| PYTHON_MYPY_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".py"]`                                       |
+| PYTHON_MYPY_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".py", ".pyi", ".ipynb"]`                     |
 | PYTHON_MYPY_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | Include every file                              |
 | PYTHON_MYPY_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                                            |
 | PYTHON_MYPY_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                                            |
@@ -81,14 +81,14 @@ This linter is available in the following flavors
 |                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                     | Embedded linters |                                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       127        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        88        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)   | Optimized for PYTHON based projects             |        66        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        87        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)   | Optimized for PYTHON based projects             |        64        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
 
 ## Behind the scenes
 
 ### How are identified applicable files
 
-- File extensions: `.py`
+- File extensions: `.py`, `.pyi`, `.ipynb`
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
@@ -240,8 +240,8 @@ Untyped definitions and calls:
 None and Optional handling:
   Adjust how values of type 'None' are handled. For more context on how mypy
   handles values of type 'None', see:
-  https://mypy.readthedocs.io/en/stable/kinds_of_types.html#no-strict-
-  optional
+  https://mypy.readthedocs.io/en/stable/kinds_of_types.html#optional-types-
+  and-the-none-type
 
   --implicit-optional       Assume arguments with default values of None are
                             Optional (inverse: --no-implicit-optional)
@@ -276,11 +276,17 @@ Miscellaneous strictness flags:
   --allow-redefinition      Allow restricted, unconditional variable
                             redefinition with a new type (inverse: --disallow-
                             redefinition)
+  --allow-redefinition-new  Allow more flexible variable redefinition
+                            semantics (experimental) (inverse: --disallow-
+                            redefinition-new)
   --no-implicit-reexport    Treat imports as private unless aliased (inverse:
                             --implicit-reexport)
   --strict-equality         Prohibit equality, identity, and container checks
-                            for non-overlapping types (inverse: --no-strict-
-                            equality)
+                            for non-overlapping types (except `None`)
+                            (inverse: --no-strict-equality)
+  --strict-equality-for-none
+                            Extend `--strict-equality` for `None` checks
+                            (inverse: --no-strict-equality-for-none)
   --strict-bytes            Disable treating bytearray and memoryview as
                             subtypes of bytes (inverse: --no-strict-bytes)
   --extra-checks            Enable additional checks that are technically
@@ -339,6 +345,8 @@ Incremental mode:
                             --no-sqlite-cache)
   --cache-fine-grained      Include fine-grained dependency information in the
                             cache for the mypy daemon
+  --fixed-format-cache      Use experimental fast and compact fixed format
+                            cache
   --skip-version-check      Allow using cache written by older mypy version
   --skip-cache-mtime-checks
                             Skip cache internal consistency checks based on
@@ -352,7 +360,6 @@ Advanced options:
   --raise-exceptions        Raise exception on fatal error
   --custom-typing-module MODULE
                             Use a custom typing module
-  --old-type-inference      Disable new experimental type inference algorithm
   --custom-typeshed-dir DIR
                             Use the custom typeshed in DIR
   --warn-incomplete-stub    Warn if missing type annotation in typeshed, only
@@ -420,9 +427,9 @@ Environment variables:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=mypy
-ARG PIP_MYPY_VERSION=1.16.1
+ARG PIP_MYPY_VERSION=1.18.2
 ENV MYPY_CACHE_DIR=/tmp
 ```
 
 - PIP packages (Python):
-  - [mypy==1.16.1](https://pypi.org/project/mypy/1.16.1)
+  - [mypy==1.18.2](https://pypi.org/project/mypy/1.18.2)

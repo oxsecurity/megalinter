@@ -38,6 +38,10 @@ def list_flavor_linters(flavor_id):
     return flavor_definition["linters"]
 
 
+def is_custom_flavor():
+    return os.getenv("CUSTOM_FLAVOR", "false").lower() == "true"
+
+
 def list_megalinter_flavors():
     flavors = {
         "all": {"label": "MegaLinter for any type of project"},
@@ -97,7 +101,7 @@ def check_active_linters_match_flavor(active_linters, request_id):
     if len(missing_linters) > 0:
         # Don't warn/stop if missing linters are repository ones (mostly OX.security related)
         if not are_all_repository_linters(missing_linters):
-            missing_linters_str = ",".join(missing_linters)
+            missing_linters_str = ", ".join(missing_linters)
             logging.warning(
                 f"MegaLinter flavor [{flavor}] doesn't contain linters {missing_linters_str}.\n"
                 "As they're not available in this docker image, they will not be processed\n"
@@ -127,13 +131,22 @@ def check_active_linters_match_flavor(active_linters, request_id):
 
 # Compare active linters with available flavors to make suggestions to improve CI performances
 def get_megalinter_flavor_suggestions(active_linters):
-    flavor = get_image_flavor()
-    if flavor != "all":
-        return None
     all_flavors = get_all_flavors()
     matching_flavors = []
+    current_flavor = get_image_flavor()
+    current_flavor_linters_number = 1000
+    if current_flavor in all_flavors:
+        current_flavor_info = all_flavors[current_flavor]
+        current_flavor_linters_number = len(current_flavor_info["linters"])
     for flavor_id, flavor_info in all_flavors.items():
         match = True
+        # Exclude current flavor
+        if flavor_id == current_flavor:
+            continue
+        # Exclude flavor if it is has more linters than the current flavor
+        if len(flavor_info["linters"]) > current_flavor_linters_number:
+            continue
+        # Check if all active linters are in flavor linters
         for active_linter in active_linters:
             if (
                 active_linter.name not in flavor_info["linters"]
@@ -141,6 +154,7 @@ def get_megalinter_flavor_suggestions(active_linters):
             ):
                 match = False
                 break
+        # If match, add to matching flavors
         if match is True:
             matching_flavor = {
                 "flavor": flavor_id,
@@ -148,19 +162,27 @@ def get_megalinter_flavor_suggestions(active_linters):
                 "linters_number": len(flavor_info["linters"]),
             }
             matching_flavors += [matching_flavor]
-    if len(matching_flavors) > 0:
-        # There are matching flavors
-        return sorted(
-            matching_flavors, key=lambda i: (i["linters_number"], i["flavor"])
-        )
-    # Propose user to request a new flavor for the list of linters
 
+    results = []
+
+    # Propose user to request a new flavor for the list of linters
     new_flavor_linters = filter(
         lambda linter: linter.ignore_for_flavor_suggestions is False,
         active_linters,
     )
     new_flavor_linters_names = map(lambda linter: linter.name, new_flavor_linters)
-    return ["new", new_flavor_linters_names]
+    results += [{"new_flavor_linter_names": new_flavor_linters_names}]
+
+    if len(matching_flavors) > 0:
+        # There are matching flavors
+        matching_flavors = sorted(
+            matching_flavors, key=lambda i: (i["linters_number"], i["flavor"])
+        )
+        # Truncate flavors to 5
+        if len(matching_flavors) > 3:
+            matching_flavors = matching_flavors[:3]
+        results += matching_flavors
+    return results
 
 
 def are_all_repository_linters(linter_names: list[str]) -> bool:

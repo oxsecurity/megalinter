@@ -8,7 +8,7 @@ description: Manual instructions to setup MegaLinter as a Bitbucket Pipelines jo
 
 # Bitbucket Pipelines
 
-1. Create a `bitbucket-pipelines.yml` file on the root directory of your repository
+1. Create a `bitbucket-pipelines.yml` file at the root of your repository.
 
 2. Copy and paste the following template or add the step to your existing pipeline.
 
@@ -19,7 +19,7 @@ pipelines:
     - parallel:
       - step:
           name: Run MegaLinter
-          image: oxsecurity/megalinter:v8
+          image: oxsecurity/megalinter:v9
           script:
             - export DEFAULT_WORKSPACE=$BITBUCKET_CLONE_DIR && bash /entrypoint.sh
           artifacts:

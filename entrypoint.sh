@@ -35,10 +35,23 @@ if [ "${UPGRADE_LINTERS_VERSION}" == "true" ]; then
   # Run only get_linter_help test methods
   pytest --reruns 3 --reruns-delay 1 -v --durations=0 -k _get_linter_help megalinter/
   # Reinstall mkdocs-material because of broken dependency
-  pip3 install --upgrade markdown mike mkdocs-material pymdown-extensions "mkdocs-glightbox==0.3.2" mdx_truly_sane_lists jsonschema json-schema-for-humans giturlparse webpreview github-dependents-info
+  pip3 install --upgrade markdown mike mkdocs-material pymdown-extensions mkdocs-glightbox mdx_truly_sane_lists jsonschema json-schema-for-humans giturlparse webpreview github-dependents-info
   cd /tmp/lint || exit 1
   chmod +x build.sh
   GITHUB_TOKEN="${GITHUB_TOKEN}" bash build.sh --doc --dependents --stats
+  exit $?
+fi
+
+# Called by custom flavor image
+if [ "${BUILD_CUSTOM_FLAVOR}" == "true" ]; then
+  echo "[MegaLinter init] BUILD CUSTOM FLAVOR"
+  if [ -d "/megalinter-builder" ]; then
+    # For when in megalinter-flavor-builder docker image !
+    GITHUB_TOKEN="${GITHUB_TOKEN}" python /megalinter-builder/.automation/build.py --custom-flavor
+  else
+    # For local tests only
+    GITHUB_TOKEN="${GITHUB_TOKEN}" python ./.automation/build.py --custom-flavor
+  fi
   exit $?
 fi
 

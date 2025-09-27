@@ -10,6 +10,9 @@ processing_order: -9
 linters:
   # PYLINT
   - linter_name: pylint
+    file_extensions:
+      - ".py"
+      - ".pyi"
     linter_text: |
       **Pylint** is a comprehensive static code analyzer for Python that goes beyond simple syntax checking. It analyzes your code without actually running it, checking for errors, enforcing coding standards, detecting code smells, and suggesting refactoring opportunities.
 
@@ -63,10 +66,10 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=pylint
-          ARG PIP_PYLINT_VERSION=3.3.7
+          ARG PIP_PYLINT_VERSION=3.3.8
         - |-
           # renovate: datasource=pypi depName=typing-extensions
-          ARG PIP_TYPING_EXTENSIONS_VERSION=4.14.1
+          ARG PIP_TYPING_EXTENSIONS_VERSION=4.15.0
       pip:
         - pylint==${PIP_PYLINT_VERSION}
         - typing-extensions==${PIP_TYPING_EXTENSIONS_VERSION}
@@ -85,6 +88,10 @@ linters:
           url: https://code.visualstudio.com/docs/python/linting#_pylint
   # BLACK
   - linter_name: black
+    file_extensions:
+      - ".py"
+      - ".pyi"
+      - ".ipynb"
     linter_text: |
       **Black** is "the uncompromising code formatter" for Python that automatically formats your code to be consistent and PEP 8 compliant. By using Black, you agree to cede control over minutiae of hand-formatting in return for speed, determinism, and freedom from formatting debates.
 
@@ -151,9 +158,9 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=black
-          ARG PIP_BLACK_VERSION=25.1.0
+          ARG PIP_BLACK_VERSION=25.9.0
       pip:
-        - black==${PIP_BLACK_VERSION}
+        - black[jupyter]==${PIP_BLACK_VERSION}
     ide:
       emacs:
         - name: blacken
@@ -218,6 +225,11 @@ linters:
           url: https://code.visualstudio.com/docs/python/linting#_flake8
   # ISORT
   - linter_name: isort
+    file_extensions:
+      - ".py"
+      - ".pyi"
+      - ".pyx"
+      - ".pxd"
     linter_text: |
       **isort** is the definitive Python import sorting tool that automatically organizes and standardizes import statements according to configurable rules. It serves as an essential companion to code formatters for maintaining clean, professional Python codebases.
 
@@ -263,7 +275,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=black
-          ARG PIP_BLACK_VERSION=25.1.0
+          ARG PIP_BLACK_VERSION=25.9.0
         - |-
           # renovate: datasource=pypi depName=isort
           ARG PIP_ISORT_VERSION=6.0.1
@@ -286,6 +298,10 @@ linters:
   - linter_name: bandit
     name: PYTHON_BANDIT
     can_output_sarif: true
+    file_extensions:
+      - ".py"
+      - ".pyi"
+      - ".ipynb"
     descriptor_flavors:
       - python
       - security
@@ -366,6 +382,10 @@ linters:
   # MYPY
   - linter_name: mypy
     name: PYTHON_MYPY
+    file_extensions:
+      - ".py"
+      - ".pyi"
+      - ".ipynb"
     linter_text: |
       **MyPy** is Python's premier static type checker that brings optional static typing to Python through gradual typing. It analyzes type annotations and infers types to catch bugs before runtime, bridging the gap between Python's dynamic nature and static analysis benefits.
 
@@ -407,7 +427,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=mypy
-          ARG PIP_MYPY_VERSION=1.16.1
+          ARG PIP_MYPY_VERSION=1.18.2
         - ENV MYPY_CACHE_DIR=/tmp # Avoid mypy cache to mess with other linters
       pip:
         - mypy==${PIP_MYPY_VERSION}
@@ -459,6 +479,9 @@ linters:
   - class: PyrightLinter
     linter_name: pyright
     name: PYTHON_PYRIGHT
+    file_extensions:
+      - ".py"
+      - ".pyi"
     linter_text: |
       **Pyright** is Microsoft's high-performance static type checker for Python that provides fast, accurate type analysis. It serves as a powerful alternative to MyPy with focus on speed and developer experience.
 
@@ -495,7 +518,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=pyright
-          ARG NPM_PYRIGHT_VERSION=1.1.402
+          ARG NPM_PYRIGHT_VERSION=1.1.405
       npm:
         - pyright@${NPM_PYRIGHT_VERSION}
     ide:
@@ -517,6 +540,10 @@ linters:
   - linter_name: ruff
     name: PYTHON_RUFF
     can_output_sarif: true
+    file_extensions:
+      - ".py"
+      - ".pyi"
+      - ".ipynb"
     linter_text: |
       **Ruff** is an extremely fast Python linter and code formatter written in Rust that aims to be 10-100x faster than existing tools while providing comprehensive functionality behind a single interface.
 
@@ -558,7 +585,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=ruff
-          ARG PIP_RUFF_VERSION=0.12.2
+          ARG PIP_RUFF_VERSION=0.13.2
       pip:
         - ruff==${PIP_RUFF_VERSION}
     ide:
@@ -575,6 +602,10 @@ linters:
     class: RuffFormatLinter
     name: PYTHON_RUFF_FORMAT
     is_formatter: true
+    file_extensions:
+      - ".py"
+      - ".pyi"
+      - ".ipynb"
     activation_rules:
       - type: variable
         variable: PYTHON_DEFAULT_STYLE
@@ -615,7 +646,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=ruff
-          ARG PIP_RUFF_VERSION=0.12.2
+          ARG PIP_RUFF_VERSION=0.13.2
       pip:
         - ruff==${PIP_RUFF_VERSION}
     ide:

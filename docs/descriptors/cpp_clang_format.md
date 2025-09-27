@@ -20,7 +20,7 @@ description: How to use clang-format (configure, ignore files, ignore errors, he
 
 ## clang-format documentation
 
-- Version in MegaLinter: **19.1.4**
+- Version in MegaLinter: **20.1.8**
 - Visit [Official Web Site](https://releases.llvm.org/17.0.1/tools/clang/docs/ClangFormat.html){target=_blank}
 - See [How to configure clang-format rules](https://releases.llvm.org/17.0.1/tools/clang/docs/ClangFormatStyleOptions.html){target=_blank}
 - See [How to disable clang-format rules in files](https://releases.llvm.org/17.0.1/tools/clang/docs/ClangFormatStyleOptions.html#disabling-formatting-on-a-piece-of-code){target=_blank}
@@ -69,7 +69,7 @@ This linter is available in the following flavors
 |                                                                         <!-- -->                                                                         | Flavor                                               | Description                       | Embedded linters |                                                                                                                                                                                   Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------|:----------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor         |       127        |             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/c_cpp.ico" alt="" height="32px" class="megalinter-icon"></a>        | [c_cpp](https://megalinter.io/beta/flavors/c_cpp/)   | Optimized for pure C/C++ projects |        57        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-c_cpp/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-c_cpp) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/c_cpp.ico" alt="" height="32px" class="megalinter-icon"></a>        | [c_cpp](https://megalinter.io/beta/flavors/c_cpp/)   | Optimized for pure C/C++ projects |        55        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-c_cpp/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-c_cpp) |
 
 ## Behind the scenes
 
@@ -108,7 +108,7 @@ OPTIONS:
 Clang-format options:
 
   --Werror                       - If set, changes formatting warnings to errors
-  --Wno-error=<value>            - If set don't error out on the specified warning type.
+  --Wno-error=<value>            - If set, don't error out on the specified warning type.
     =unknown                     -   If set, unknown format options are only warned about.
                                      This can be used to enable formatting, even if the
                                      configuration contains unknown (newer) options.
@@ -124,7 +124,7 @@ Clang-format options:
                                    supported:
                                      CSharp: .cs
                                      Java: .java
-                                     JavaScript: .mjs .js .ts
+                                     JavaScript: .js .mjs .cjs .ts
                                      Json: .json
                                      Objective-C: .m .mm
                                      Proto: .proto .protodevel
@@ -195,4 +195,4 @@ Generic Options:
 ### Installation on mega-linter Docker image
 
 - APK packages (Linux):
-  - [clang19-extra-tools](https://pkgs.alpinelinux.org/packages?branch=v3.21&arch=x86_64&name=clang19-extra-tools)
+  - [clang20-extra-tools](https://pkgs.alpinelinux.org/packages?branch=v3.22&arch=x86_64&name=clang20-extra-tools)

@@ -29,6 +29,7 @@ on:
       - "TEMPLATES/**"
       - ".trivyignore"
       - "**/.sh"
+      - "**/.py"
 
 ###############
 # Set the Job #
@@ -57,12 +58,12 @@ jobs:
       # Checkout the code base #
       ##########################
       - name: Checkout Code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       ########################################################
       # Publish updated version of mega-linter-runner on NPM #
       ########################################################
-      - uses: actions/setup-node@v4.4.0
+      - uses: actions/setup-node@v5.0.0
         with:
           node-version: "22.x"
           registry-url: "https://registry.npmjs.org"
@@ -105,6 +106,24 @@ jobs:
             GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
           tags: |
             ghcr.io/oxsecurity/megalinter-server:alpha
+          # ghcr.io/oxsecurity/megalinter-server:alpha-${{ github.sha }}
+
+      - name: Build & Push Docker Image (Custom Flavor Builder)
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: Dockerfile-custom-flavor
+          platforms: linux/amd64
+          build-args: |
+            BUILD_DATE=${{ env.BUILD_DATE }}
+            BUILD_REVISION=${{ github.sha }}
+            BUILD_VERSION=alpha
+          load: false
+          push: true
+          secrets: |
+            GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
+          tags: |
+            ghcr.io/oxsecurity/megalinter-custom-flavor-builder:alpha
           # ghcr.io/oxsecurity/megalinter-server:alpha-${{ github.sha }}
 
       - name: Build & Push Docker Image

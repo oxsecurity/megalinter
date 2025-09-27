@@ -55,12 +55,12 @@ jobs:
     ##################
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       ########################################################
       # Publish updated version of mega-linter-runner on NPM #
       ########################################################
-      - uses: actions/setup-node@v4.4.0
+      - uses: actions/setup-node@v5.0.0
         with:
           node-version: "22.x"
           registry-url: "https://registry.npmjs.org"
@@ -81,7 +81,7 @@ jobs:
           sudo rm -rf "$AGENT_TOOLSDIRECTORY"
 
       - name: Docker Metadata action
-        uses: docker/metadata-action@v5.7.0
+        uses: docker/metadata-action@v5.8.0
         id: meta
         with:
           images: |
@@ -90,7 +90,7 @@ jobs:
             type=raw,value=beta
 
       - name: Docker Metadata action (Docker Hub)
-        uses: docker/metadata-action@v5.7.0
+        uses: docker/metadata-action@v5.8.0
         id: meta-dhub
         with:
           images: |
@@ -99,7 +99,7 @@ jobs:
             type=raw,value=beta
 
       - name: Docker Metadata action (Server)
-        uses: docker/metadata-action@v5.7.0
+        uses: docker/metadata-action@v5.8.0
         id: meta-s
         with:
           images: |
@@ -108,11 +108,20 @@ jobs:
             type=raw,value=beta
 
       - name: Docker Metadata action (Server Docker Hub)
-        uses: docker/metadata-action@v5.7.0
+        uses: docker/metadata-action@v5.8.0
         id: meta-s-dhub
         with:
           images: |
             name=docker.io/${{ github.repository }}-server
+          tags: |
+            type=raw,value=beta
+
+      - name: Docker Metadata action (Server)
+        uses: docker/metadata-action@v5.8.0
+        id: meta-cfb
+        with:
+          images: |
+            name=ghcr.io/${{ github.repository }}-custom-flavor-builder
           tags: |
             type=raw,value=beta
 
@@ -126,7 +135,7 @@ jobs:
       #       type=raw,value=beta
 
       - name: Docker Metadata action (Worker Server)
-        uses: docker/metadata-action@v5.7.0
+        uses: docker/metadata-action@v5.8.0
         id: meta-w-dhub
         with:
           images: |
@@ -168,6 +177,22 @@ jobs:
         with:
           workflow: mirror-docker-image.yml
           inputs: '{ "source-image": "${{ steps.meta-s.outputs.tags }}", "target-image": "${{ steps.meta-s-dhub.outputs.tags }}" }'
+
+      - name: Build & Push Docker Image (Custom flavor builder)
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: Dockerfile-custom-flavor
+          platforms: linux/amd64
+          build-args: |
+            BUILD_DATE=${{ fromJSON(steps.meta-cfb.outputs.json).labels['org.opencontainers.image.created'] }}
+            BUILD_VERSION=${{ fromJSON(steps.meta-cfb.outputs.json).labels['org.opencontainers.image.version'] }}
+            BUILD_REVISION=${{ fromJSON(steps.meta-cfb.outputs.json).labels['org.opencontainers.image.revision'] }}
+          load: false
+          push: ${{ github.event_name != 'pull_request' }}
+          secrets: |
+            GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
+          tags: ${{ steps.meta-cfb.outputs.tags }}
 
       - name: Build & Push Docker Image
         uses: docker/build-push-action@v6

@@ -11,7 +11,11 @@ description: How to use lightning-flow-scanner (configure, ignore files, ignore 
   </a>
 </div>
 
-[![GitHub stars](https://img.shields.io/github/stars/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx?cacheSeconds=3600)](https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx?sort=semver)](https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx)](https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx)](https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx)](https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx/graphs/contributors/)
+![disabled](https://shields.io/badge/-disabled-orange) [![GitHub stars](https://img.shields.io/github/stars/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx?cacheSeconds=3600)](https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx?sort=semver)](https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx)](https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx)](https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx)](https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx/graphs/contributors/)
+
+_This linter has been disabled in this version_
+
+_Disabled reason: Repo archived -> <https://github.com/Lightning-Flow-Scanner>_
 
 **Lightning Flow Scanner** is a specialized SFDX plugin that analyzes Salesforce Flows for integrity issues, performance problems, and adherence to best practices. It helps developers build reliable and maintainable Flow automations.
 
@@ -31,7 +35,7 @@ If your root folder is not **force-app**, please set variable SALESFORCE_LIGHTNI
 
 ## lightning-flow-scanner documentation
 
-- Version in MegaLinter: **3.26.0**
+- Version in MegaLinter: **3.29.0**
 - Visit [Official Web Site](https://github.com/Lightning-Flow-Scanner#readme){target=_blank}
 - See [How to configure lightning-flow-scanner rules](https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx#configuration){target=_blank}
   - If custom `.flow-scanner.json` config file isn't found, [.flow-scanner.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.flow-scanner.json){target=_blank} will be used
@@ -71,10 +75,9 @@ Use lightning-flow-scanner in your favorite IDE to catch errors before MegaLinte
 
 This linter is available in the following flavors
 
-|                                                                         <!-- -->                                                                         | Flavor                                                       | Description                             | Embedded linters |                                                                                                                                                                                             Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------|:----------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor               |       127        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://megalinter.io/beta/flavors/salesforce/) | Optimized for Salesforce based projects |        55        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce) |
+|                                                                         <!-- -->                                                                         | Flavor                                               | Description               | Embedded linters |                                                                                                                                                                       Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       127        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 
 ## Behind the scenes
 
@@ -102,7 +105,7 @@ sf flow:scan
 ### Help content
 
 ```shell
- ›   Warning: @salesforce/cli update available from 2.94.6 to 2.95.6.
+ ›   Warning: @salesforce/cli update available from 2.102.6 to 2.104.6.
 Find and fix potential bugs in Salesforce flows.
 
 USAGE
@@ -134,11 +137,11 @@ GLOBAL FLAGS
 ```dockerfile
 # Parent descriptor install
 # renovate: datasource=npm depName=@salesforce/cli
-ARG NPM_SALESFORCE_CLI_VERSION=2.94.6
+ARG NPM_SALESFORCE_CLI_VERSION=2.107.6
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
-ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.16.0
+ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.20.4
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=5.44.0
+ARG SFDX_HARDIS_VERSION=6.5.3
 ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 RUN sf plugins install @salesforce/plugin-packaging@${NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION} \
@@ -148,7 +151,7 @@ RUN sf plugins install @salesforce/plugin-packaging@${NPM_SALESFORCE_PLUGIN_PACK
 ENV SF_AUTOUPDATE_DISABLE=true SF_CLI_DISABLE_AUTOUPDATE=true
 # Linter install
 # renovate: datasource=npm depName=lightning-flow-scanner
-ARG LIGHTNING_FLOW_SCANNER_VERSION=3.26.0
+ARG LIGHTNING_FLOW_SCANNER_VERSION=5.2.0
 RUN echo y|sf plugins install lightning-flow-scanner@${LIGHTNING_FLOW_SCANNER_VERSION} \
     && (npm cache clean --force || true) \
     && rm -rf /root/.npm/_cacache

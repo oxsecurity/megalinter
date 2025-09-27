@@ -57,13 +57,13 @@ jobs:
           INPUTS_CONTEXT: ${{ toJson(github.event.inputs) }}
         run: echo "$INPUTS_CONTEXT"
       # Checkout the pull request branch
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           repository: ${{ github.event.inputs.checkout-repository }}
           ref: ${{ github.event.inputs.checkout-ref }}
       - name: Setup Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           # Version range or exact version of Python or PyPy to use, using SemVer's version range syntax. Reads from .python-version if unset.
           python-version-file: '.python-version' # Read python version from a file .python-version

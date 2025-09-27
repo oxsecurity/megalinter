@@ -123,6 +123,17 @@ export const optionsDefinition = optionator.default({
       description: "Generate MegaLinter configuration in your project",
     },
     {
+      option: "custom-flavor-setup",
+      alias: "cfs",
+      type: "Boolean",
+      description: "Generate files to create a custom flavor",
+    },
+    {
+      option: "custom-flavor-linters",
+      type: "String",
+      description: "comma-separated list of linters to include in custom flavor",
+    },
+    {
       option: "upgrade",
       alias: "u",
       type: "Boolean",
@@ -134,6 +145,13 @@ export const optionsDefinition = optionator.default({
       type: "String",
       description: "Specify MegaLinter container name",
     },
+    {
+      option: "container-engine",
+      alias: "",
+      type: "String",
+      default: "docker",
+      description: "Use docker or podman as container engine",
+    },    
     {
       option: "remove-container",
       type: "Boolean",

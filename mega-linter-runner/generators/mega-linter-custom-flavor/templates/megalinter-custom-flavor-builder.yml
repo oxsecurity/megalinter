@@ -1,0 +1,80 @@
+# =============================================================
+# Build MegaLinter Custom Flavor Workflow
+#
+# This workflow builds and publishes a custom MegaLinter Docker image
+# to GitHub Container Registry (ghcr.io) and optionally Docker Hub.
+#
+# Usage:
+# - Triggers on push, release, or manual dispatch.
+# - Tags the image with the release tag (on release) or 'alpha' (otherwise).
+# - Pushes to ghcr.io and, if credentials are set, to Docker Hub.
+#
+# Required repository secrets:
+#   - GITHUB_TOKEN: Provided by GitHub Actions (for ghcr.io push)
+#   - DOCKERHUB_USERNAME: (optional) Docker Hub username for push
+#   - DOCKERHUB_PASSWORD: (optional) Docker Hub password/token for push
+#
+# Optional repository variables:
+#   - DOCKERHUB_REPO: Docker Hub repository name (e.g. nvuillam)
+#
+# The MegaLinter custom flavor image will be available at:
+#   - ghcr.io/<owner>/<repo>:<tag>
+#   - docker.io/<dockerhub_repo>/<repo>:<tag> (if Docker Hub credentials are set)
+# =============================================================
+
+name: Build & Push MegaLinter Custom Flavor
+
+on:
+  push:
+    branches-ignore: [main]
+  release:
+    types: [edited, published]
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-custom-flavor:
+    name: Build Custom MegaLinter Flavor
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      # Log in to Docker Hub only if credentials are provided
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          registry: docker.io
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+        continue-on-error: true
+
+      - name: Build MegaLinter Custom Flavor
+        uses: oxsecurity/megalinter/flavors/custom-builder@main
+        with:
+          megalinter-custom-flavor-builder-tag: ${{ github.event_name == 'release' && github.event.release.tag_name || 'beta' }}
+          is-latest: ${{ github.event_name == 'release' && 'true' || 'false' }}
+          upload-to-ghcr: "true"
+          upload-to-dockerhub: ${{ secrets.DOCKERHUB_USERNAME != '' && secrets.DOCKERHUB_PASSWORD != '' && 'true' || 'false' }}
+          dockerhub-repo: ${{ vars.DOCKERHUB_REPO }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CUSTOM_FLAVOR_BUILD_REPO: ${{ github.repository }}
+          CUSTOM_FLAVOR_BUILD_REPO_URL: ${{ github.repositoryUrl }}
+          CUSTOM_FLAVOR_BUILD_USER: ${{ github.actor }}
