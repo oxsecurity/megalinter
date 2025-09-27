@@ -42,6 +42,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2025.09.19 to **2025.09.22** on 2025-09-23
   - [hadolint](https://github.com/hadolint/hadolint) from 2.13.1 to **2.14.0** on 2025-09-24
   - [kics](https://www.kics.io) from 2.1.13 to **2.1.14** on 2025-09-24
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.87.2 to **3.88.2** on 2025-09-27
+  - [phpstan](https://phpstan.org/) from 2.1.28 to **2.1.29** on 2025-09-27
+  - [snakemake](https://snakemake.github.io/) from 9.11.4 to **9.11.6** on 2025-09-27
 <!-- linter-versions-end -->
 
 ## [v9.0.1] - 2025-09-21
