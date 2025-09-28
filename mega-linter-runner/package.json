@@ -94,7 +94,7 @@
     "simple-git": "^3.28.0",
     "uuid": "^13.0.0",
     "which": "^5.0.0",
-    "yeoman-environment": "^4.0.0",
+    "yeoman-environment": "^5.0.0",
     "yeoman-generator": "^7.1.0"
   },
   "devDependencies": {
