@@ -47,6 +47,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [snakemake](https://snakemake.github.io/) from 9.11.4 to **9.11.6** on 2025-09-27
   - [ruff-format](https://github.com/astral-sh/ruff) from 0.13.1 to **0.13.2** on 2025-09-27
   - [ruff](https://github.com/astral-sh/ruff) from 0.13.1 to **0.13.2** on 2025-09-27
+  - [rubocop](https://rubocop.org/) from 1.80.2 to **1.81.1** on 2025-09-28
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.87.4 to **0.88.0** on 2025-09-28
 <!-- linter-versions-end -->
 
 ## [v9.0.1] - 2025-09-21
