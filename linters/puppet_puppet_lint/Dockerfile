@@ -59,7 +59,7 @@ RUN apk add --update --no-cache libc6-compat \
 #############################################################################################
 #ARG__START
 # renovate: datasource=rubygems depName=puppet-lint
-ARG GEM_PUPPET_LINT_VERSION=4.3.0
+ARG GEM_PUPPET_LINT_VERSION=5.0.0
 #ARG__END
 
 ####################

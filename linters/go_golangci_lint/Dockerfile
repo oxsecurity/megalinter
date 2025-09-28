@@ -59,7 +59,7 @@ RUN apk add --update --no-cache libc6-compat \
 #############################################################################################
 #ARG__START
 # renovate: datasource=github-tags depName=golangci/golangci-lint
-ARG GO_GOLANGCI_LINT_VERSION=2.4.0
+ARG GO_GOLANGCI_LINT_VERSION=2.5.0
 #ARG__END
 
 ####################

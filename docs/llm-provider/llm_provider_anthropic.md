@@ -12,19 +12,19 @@ Anthropic's Claude models excel at code analysis with a strong focus on safety a
 
 2. **Set Environment Variable**:
 
-   ```bash
-   export ANTHROPIC_API_KEY=sk-ant-your-api-key
-   ```
+Set **ANTHROPIC_API_KEY=sk-ant-your-api-key** in your CI/CD secret variables.
+
+> Make sure the secret variable is sent to MegaLinter from your CI/CD workflow. Example in GitHub Action: `ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}`
 
 3. **Configure MegaLinter**:
 
-   ```yaml
-   LLM_ADVISOR_ENABLED: true
-   LLM_PROVIDER: anthropic
-   LLM_MODEL_NAME: claude-3-7-sonnet-latest
-   LLM_MAX_TOKENS: 1000
-   LLM_TEMPERATURE: 0.1
-   ```
+```yaml
+LLM_ADVISOR_ENABLED: true
+LLM_PROVIDER: anthropic
+LLM_MODEL_NAME: claude-3-7-sonnet-latest
+LLM_MAX_TOKENS: 1000
+LLM_TEMPERATURE: 0.1
+```
 
 ## Official Model List
 
@@ -56,16 +56,19 @@ ANTHROPIC_API_VERSION: 2023-06-01
 ### Common Issues
 
 1. **"Invalid API key"**
+
    - Verify API key format: `sk-ant-...`
    - Check account status and credits
    - Ensure API access is enabled
 
 2. **"Rate limit exceeded"**
+
    - Anthropic has generous rate limits
    - Implement exponential backoff
    - Contact support for higher limits
 
 3. **"Context too long"**
+
    - Claude handles very large contexts well
    - Consider reducing file context if needed
    - Use appropriate model for your needs

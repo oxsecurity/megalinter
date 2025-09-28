@@ -15,19 +15,19 @@ Google's Gemini models offer excellent performance at competitive prices with st
 
 2. **Set Environment Variable**:
 
-   ```bash
-   export GOOGLE_API_KEY=AIza-your-api-key
-   ```
+Set **GOOGLE_API_KEY=AIza-your-api-key** in your CI/CD secret variables.
+
+> Make sure the secret variable is sent to MegaLinter from your CI/CD workflow. Example in GitHub Action: `GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}`
 
 3. **Configure MegaLinter**:
 
-   ```yaml
-   LLM_ADVISOR_ENABLED: true
-   LLM_PROVIDER: google
-   LLM_MODEL_NAME: gemini-2.5-flash
-   LLM_MAX_TOKENS: 1000
-   LLM_TEMPERATURE: 0.1
-   ```
+```yaml
+LLM_ADVISOR_ENABLED: true
+LLM_PROVIDER: google
+LLM_MODEL_NAME: gemini-2.5-flash
+LLM_MAX_TOKENS: 1000
+LLM_TEMPERATURE: 0.1
+```
 
 ## Official Model List
 
@@ -56,16 +56,19 @@ GOOGLE_APPLICATION_CREDENTIALS: /path/to/service-account.json
 ### Common Issues
 
 1. **"API key not valid"**
+
    - Verify API key format: `AIza...`
    - Check that Generative AI API is enabled
    - Ensure you're in a supported region
 
 2. **"Quota exceeded"**
+
    - Check your quota limits in Google Cloud Console
    - Request quota increases if needed
    - Implement rate limiting
 
 3. **"Model not found"**
+
    - Verify model name is correct
    - Check regional availability
    - Some models may require special access

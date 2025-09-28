@@ -138,7 +138,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=packagist depName=phpstan/phpstan
-          ARG PHP_PHPSTAN_PHPSTAN_VERSION=2.1.28
+          ARG PHP_PHPSTAN_PHPSTAN_VERSION=2.1.29
         - |-
           # renovate: datasource=packagist depName=phpstan/extension-installer
           ARG PHP_PHPSTAN_EXTENSION_INSTALLER_VERSION=1.4.3
@@ -304,7 +304,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=packagist depName=friendsofphp/php-cs-fixer
-          ARG PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION=v3.87.2
+          ARG PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION=v3.88.2
         - |
           RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require friendsofphp/php-cs-fixer:${PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION} --with-all-dependencies
     ide:

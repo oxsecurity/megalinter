@@ -3,7 +3,7 @@ aiofiles==24.1.0
 azure-devops==6.0.0b4
 beautifulsoup4==4.13.5
 commentjson==0.9.0
-fastapi==0.116.2
+fastapi==0.117.1
 gitpython==3.1.45
 giturlparse==0.12.0
 importlib-metadata==8.7.0
@@ -26,7 +26,7 @@ pytest-xdist==3.8.0
 pytest-rerunfailures==16.0.1
 python-gitlab==6.3.0
 python-multipart==0.0.20
-pyyaml==6.0.2
+pyyaml==6.0.3
 redis==6.4.0
 regex==2025.9.18
 requests==2.32.5
@@ -40,4 +40,4 @@ langchain_anthropic==0.3.20
 langchain_deepseek==0.1.4
 langchain_google_genai==2.1.12
 langchain_mistralai==0.2.12
-langchain_community==0.3.29
+langchain_community==0.3.30

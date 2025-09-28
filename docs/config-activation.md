@@ -8,14 +8,14 @@ description: You can enable, disable, make not blocking, allow a minimum number 
 
 # Activation and deactivation
 
-MegaLinter have all linters enabled by default, but allows to enable only some, or disable only some
+MegaLinter has all linters enabled by default, but allows enabling or disabling specific ones.
 
-- If `ENABLE` isn't set, all descriptors are activated by default. If set, all linters of listed descriptors will be activated by default
-- If `ENABLE_LINTERS` is set, only listed linters will be processed
-- If `DISABLE` is set, the linters in the listed descriptors will be skipped
-- If `DISABLE_LINTERS` is set, the listed linters will be skipped
-- If `DISABLE_ERRORS_LINTERS` is set, the listed linters will be run, but if errors are found, they will be considered as non blocking
-- If `ENABLE_ERRORS_LINTERS` is set, only the linters in this list will be considered as blocking.
+- If `ENABLE` isn't set, all descriptors are activated by default. If set, all linters of listed descriptors are activated by default.
+- If `ENABLE_LINTERS` is set, only the listed linters are processed.
+- If `DISABLE` is set, the linters in the listed descriptors are skipped.
+- If `DISABLE_LINTERS` is set, the listed linters are skipped.
+- If `DISABLE_ERRORS_LINTERS` is set, the listed linters will run, but if errors are found, they will be considered non-blocking.
+- If `ENABLE_ERRORS_LINTERS` is set, only the linters in this list will be considered blocking.
 
 
 Examples:

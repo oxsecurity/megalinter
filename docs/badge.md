@@ -8,11 +8,11 @@ description: Show that your repositories are cleaned and secured with MegaLinter
 
 # Badge
 
-You can show MegaLinter status with a badge in your repository README
+You can show the MegaLinter status with a badge in your repository README.
 
 [![MegaLinter](https://github.com/oxsecurity/megalinter/workflows/MegaLinter/badge.svg?branch=main)](https://github.com/oxsecurity/megalinter/actions?query=workflow%3AMegaLinter+branch%3Amain)
 
-_If your main branch is **master** , replace **main** by **master** in URLs_
+If your main branch is named `master`, replace `main` with `master` in the URLs.
 
 ## Markdown
 

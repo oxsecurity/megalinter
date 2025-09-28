@@ -8,13 +8,13 @@ description: Help MegaLinter by starring the repo, post issues and Pull Requests
 
 # How to contribute
 
-Contributions to MegaLinter are very welcome, the more we're, the stronger MegaLinter is !
+Contributions to MegaLinter are very welcome: the more we are, the stronger MegaLinter becomes!
 Please follow [Contributing Guide](https://megalinter.io/contributing/)
 
 To help, you can also:
 
-- [:star: star the repository](https://github.com/oxsecurity/megalinter/stargazers)
-- [:beer: offer a beer !](https://github.com/sponsors/nvuillam)
+- [:star: Star the repository](https://github.com/oxsecurity/megalinter/stargazers)
+- [:beer: Offer a beer!](https://github.com/sponsors/nvuillam)
 - [report problems and request new features](https://github.com/oxsecurity/megalinter/issues)
 - [share on twitter](https://twitter.com/intent/tweet/?text=MegaLinter:%2070%20linters%20aggregator%20easy%20to%20use%20for%20all%20your%20projects&url=http://megalinter.io/&via=nvuillam){target=_blank}
 

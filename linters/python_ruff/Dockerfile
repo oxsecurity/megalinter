@@ -59,7 +59,7 @@ RUN apk add --update --no-cache libc6-compat \
 #############################################################################################
 #ARG__START
 # renovate: datasource=pypi depName=ruff
-ARG PIP_RUFF_VERSION=0.13.1
+ARG PIP_RUFF_VERSION=0.13.2
 # renovate: datasource=pypi depName=pip
 ARG PIP_PIP_VERSION=25.2
 # renovate: datasource=pypi depName=virtualenv

@@ -59,7 +59,7 @@ RUN apk add --update --no-cache libc6-compat \
 #############################################################################################
 #ARG__START
 # renovate: datasource=pypi depName=snakemake
-ARG PIP_SNAKEMAKE_VERSION=9.11.4
+ARG PIP_SNAKEMAKE_VERSION=9.11.6
 # renovate: datasource=pypi depName=pip
 ARG PIP_PIP_VERSION=25.2
 # renovate: datasource=pypi depName=virtualenv

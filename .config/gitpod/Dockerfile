@@ -59,11 +59,11 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # Set a variable for packages version
 # renovate: datasource=npm depName=npm
-ARG NPM_VERSION=11.6.0
+ARG NPM_VERSION=11.6.1
 # renovate: datasource=npm depName=ungit
 ARG UNGIT_VERSION=1.5.28
 # renovate: datasource=npm depName=mega-linter-runner
-ARG MEGA_LINTER_RUNNER_VERSION=8.8.0
+ARG MEGA_LINTER_RUNNER_VERSION=9.0.1
 # renovate: datasource=npm depName=markdown-table-formatter
 ARG MARKDOWN_TABLE_FORMATTER_VERSION=1.6.1
 

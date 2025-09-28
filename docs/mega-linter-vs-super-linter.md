@@ -8,7 +8,7 @@ description: Detailed differences between MegaLinter and SuperLinter (performanc
 
 # MegaLinter vs Super-Linter
 
-The hard-fork of Super-Linter to be rewritten in Python isn't just a language switch: use of python flexibility and libraries allowed to define lots of additional functions described below
+The hard fork of Super-Linter to Python isn't just a language switch: Python's flexibility and libraries enabled many additional features described below.
 
 ## Security
 
@@ -16,11 +16,11 @@ MegaLinter [hides many environment variables](config-variables-security.md) when
 
 That way you need to trust only MegaLinter core code with your secrets, not the 100+ embedded linters !
 
-## Performances
+## Performance
 
-- [MegaLinter Flavors](flavors.md) allow to use **smaller docker images**, so the pull time is reduced
-- Thanks to python multiprocessing capabilities, **linters are run in parallel**, which is way faster than Super-Linter bash script who runs all linters in sequence
-- When the linter allows it, call it **1 time with N files**, instead of calling **N times with one file**
+- [MegaLinter flavors](flavors.md) allow using smaller Docker images, reducing pull time.
+- Thanks to Python multiprocessing, linters are run in parallel, which is much faster than Super-Linter's Bash script that runs all linters sequentially.
+- When the linter allows it, call it once with N files, instead of calling it N times with one file.
 
 ## More languages and formats linted
 
@@ -28,21 +28,21 @@ That way you need to trust only MegaLinter core code with your secrets, not the 
 
 ## Automatically apply formatting and fixes
 
-MegaLinter can [**automatically apply fixes performed by linters**](config-apply-fixes.md), and **push them to the same branch**, or **create a Pull Request** that you can validate
+MegaLinter can [automatically apply fixes performed by linters](config-apply-fixes.md) and push them to the same branch, or create a Pull Request that you can validate.
 
 This is pretty handy, especially for linter errors related to formatting (in that case, you don't have any manual update to perform)
 
 ## Run locally
 
-MegaLinter can be run locally thanks to [mega-linter-runner](https://megalinter.io/mega-linter-runner/)
+MegaLinter can be run locally thanks to [mega-linter-runner](https://megalinter.io/mega-linter-runner/).
 
 ## Reports
 
 ### Capabilities
 
-- Accuracy: Count the total number of errors and not only the number of files in error
-- Show linter version and applied filters for each linter processed
-- Reports stored as artefacts on GitHub Action run or other remote files
+- Accuracy: Count the total number of errors, not only the number of files in error.
+- Show linter version and applied filters for each linter processed.
+- Reports stored as artifacts on GitHub Actions runs or other remote files
   - General log
   - One report file by linter
 
@@ -77,39 +77,39 @@ MegaLinter can be run locally thanks to [mega-linter-runner](https://megalinter.
 - [Email](reporters/EmailReporter.md)
 - [File.io](reporters/FileIoReporter.md)
 
-## Enhanced Configuration
+## Enhanced configuration
 
-- **Assisted installation and configuration** using a yeoman generator and JSON schemas for configuration file
+- Assisted installation and configuration using a Yeoman generator and JSON schemas for the configuration file
 
 ![Runner Install](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/mega-linter-runner-generator.gif?raw=true)
 
 ![Assisted configuration](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/assisted-configuration.gif)
 
-- Configure **include and exclude regexes** for a **single language or linter**: ex: `JAVASCRIPT_FILTER_REGEX_INCLUDE (src)`
-- Configure **additional CLI arguments** for a linter: ex: `JAVASCRIPT_ES_ARGUMENTS "--debug --env-info"`
-- Configure **non blocking errors** for a **single language or linter**: ex: `JAVASCRIPT_DISABLE_ERRORS`
-- **Simplify languages and linters variables**
+- Configure include and exclude regexes for a single language or linter: e.g., `JAVASCRIPT_FILTER_REGEX_INCLUDE (src)`
+- Configure additional CLI arguments for a linter: e.g., `JAVASCRIPT_ES_ARGUMENTS "--debug --env-info"`
+- Configure non-blocking errors for a single language or linter: e.g., `JAVASCRIPT_DISABLE_ERRORS`
+- Simplified languages and linters variables
   - ENABLE = list of languages and formats to apply lint on codebase (default: all)
   - ENABLE_LINTERS = list of linters to apply lint on codebase (default: all)
   - DISABLE = list of languages and formats to skip (default: none)
   - DISABLE_LINTERS = list of linters to skip (default: none)
   - Variables VALIDATE_XXX are still taken in account (but should not be used in association with ENABLE and DISABLE variables)
 
-## Enhanced Documentation
+## Enhanced documentation
 
-- [**HTML documentation**](https://megalinter.io/)
+- [HTML documentation](https://megalinter.io/)
 
 ![HTML doc home](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/html_doc_home.jpg)
 
-- **One page per linter documentation** :
+- One page per linter documentation:
   - **All variables** that can be used with this linter
   - List of **file extensions, names and filters** applied by the linter
-  - Link to **MegaLinter default linter configuration**
-  - Link to linter Web-Site
+  - Link to MegaLinter default linter configuration
+  - Link to linter website
   - Link to official page explaining **how to customize the linter rules**
   - Link to official page explaining **how to disable rules from source comments**
   - **Examples** of linter command line calls behind the hood
-  - **Help** command text
+  - Help command text
   - Installation commands
 
 ![HTML doc linter](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/html_doc_linter.jpg)
@@ -119,40 +119,40 @@ MegaLinter can be run locally thanks to [mega-linter-runner](https://megalinter.
 ![HTML doc IDE](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/html_doc_ide.jpg)
 
 - README
-  - Separate languages, formats and tooling formats in the linters table
+  - Separate languages, formats, and tooling formats in the linters table
   - Add logos for each descriptor
 
-## Plugins management
+## Plugin management
 
-For linters less commonly used, MegaLinters offers a plugins architecture so anyone can publish plugins
+For less commonly used linters, MegaLinter offers a plugin architecture so anyone can publish plugins.
 
-## Simplify architecture and evolutive maintenance
+## Simplify architecture and evolutionary maintenance
 
-- Refactoring runtime in Python, for easier handling than bash thanks to [classes](https://github.com/oxsecurity/megalinter/tree/main/megalinter) and python modules
-- Everything related to each linter [in a single descriptor YML file](https://github.com/oxsecurity/megalinter/tree/main/megalinter/descriptors)
-  - easier evolutive maintenance
-  - less conflicts to manage between PRs.
-  - Few special cases require a [python linter class](https://github.com/oxsecurity/megalinter/tree/main/megalinter/descriptors))
-- [Default behaviours for all linters](https://github.com/oxsecurity/megalinter/blob/main/megalinter/Linter.py), with possibility to override part of them for special cases
-- Hierarchical architecture: Apply fixes and new behaviours to all linters with a single code update
-- **Documentation as code**
-  - Generate linters tables (ordered by type: language, format & tooling format) and include it in README. [(see result)](https://megalinter.io/supported-linters/)
-  - Generate one markdown file per Linter, containing all configuration variables, infos and examples [(See examples)](https://megalinter.io/descriptors/javascript_eslint/)
-- **Automatic generation of Dockerfile** using YML descriptors, always using the linter latest version
-  - Dockerfile commands (FROM, ARG, ENV, COPY, RUN )
-  - APK packages (linux)
-  - NPM packages (node)
-  - PIP packages (python)
-  - GEM packages (ruby)
+- Refactoring runtime in Python, for easier handling than Bash thanks to [classes](https://github.com/oxsecurity/megalinter/tree/main/megalinter) and Python modules
+- Everything related to each linter is in a [single descriptor YAML file](https://github.com/oxsecurity/megalinter/tree/main/megalinter/descriptors)
+  - Easier ongoing maintenance
+  - Fewer conflicts to manage between PRs
+  - A few special cases require a [Python linter class](https://github.com/oxsecurity/megalinter/tree/main/megalinter/descriptors))
+- [Default behaviors for all linters](https://github.com/oxsecurity/megalinter/blob/main/megalinter/Linter.py), with the possibility to override parts of them for special cases
+- Hierarchical architecture: Apply fixes and new behaviors to all linters with a single code update
+- Documentation as code
+  - Generate linters tables (ordered by type: language, format, and tooling format) and include them in the README. [(see result)](https://megalinter.io/supported-linters/)
+  - Generate one markdown file per linter, containing all configuration variables, information, and examples [(see examples)](https://megalinter.io/descriptors/javascript_eslint/)
+- Automatic generation of Dockerfiles using YAML descriptors, always using the linter's latest version
+  - Dockerfile commands (FROM, ARG, ENV, COPY, RUN)
+  - APK packages (Linux)
+  - NPM packages (Node.js)
+  - PIP packages (Python)
+  - GEM packages (Ruby)
   - Phive packages (PHP)
-- Have a centralized exclude list (node_modules,.rbenv, etc…)
+- Have a centralized exclude list (node_modules, .rbenv, etc.)
 
 ## Improve robustness & stability
 
-- [Test classes](https://github.com/oxsecurity/megalinter/blob/main/megalinter/tests/test_megalinter) for each capability
-- [Test classes for each linter](https://github.com/oxsecurity/megalinter/tree/main/megalinter/tests/test_megalinter/linters): Automatic generation of test classes using [.automation/build.py](https://github.com/oxsecurity/megalinter/blob/main/.automation/build.py)
-- Setup **code coverage** [![codecov](https://codecov.io/gh/oxsecurity/megalinter/branch/main/graph/badge.svg)](https://codecov.io/gh/oxsecurity/megalinter)
-- **Development CD / CI**
+- Test classes for each capability
+- Test classes for each linter: automatic generation of test classes using [.automation/build.py](https://github.com/oxsecurity/megalinter/blob/main/.automation/build.py)
+- Set up code coverage [![codecov](https://codecov.io/gh/oxsecurity/megalinter/branch/main/graph/badge.svg)](https://codecov.io/gh/oxsecurity/megalinter)
+- Development CI/CD
   - Validate multi-status on PR inside each PR (posted from step "Run against all code base")
   - Run test classes and code coverage with pytest during validation GitHub Action
   - Validate descriptor YML files with json schema during build
