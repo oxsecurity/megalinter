@@ -1105,8 +1105,20 @@ class Linter:
             **config.build_env(self.request_id, True, self.unsecured_env_variables),
             "FORCE_COLOR": "0",
         }
+
         if isinstance(command, str):
-            self.lint_command_log.append(command)
+            cli_absolute = shutil.which(command)
+        else:
+            cli_absolute = shutil.which(command[0])
+
+        if cli_absolute is not None:
+            cmd_resolved = cli_absolute
+        else:
+            cmd_resolved = command
+        logging.debug(f"[{self.linter_name}] command resolved: {cmd_resolved}")
+        self.lint_command_log.append(cmd_resolved)
+
+        if isinstance(command, str):
             # Call linter with a sub-process
             process = subprocess.run(
                 command,
@@ -1131,7 +1143,6 @@ class Linter:
                     msg = "Unable to find command: " + command[0]
                     logging.error(msg)
                     return errno.ESRCH, msg
-            self.lint_command_log.append(" ".join(command))
             # Call linter with a sub-process (RECOMMENDED: with a list of strings corresponding to the command)
             try:
                 process = subprocess.run(
