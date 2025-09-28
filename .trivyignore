@@ -69,6 +69,7 @@ CVE-2020-26226
 
 # sfdx
 CVE-2025-24970
+CVE-2025-59343
 GHSA-xpw8-rcwv-8f8p
 
 # sfdx-scanner
