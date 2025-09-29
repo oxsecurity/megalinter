@@ -18,6 +18,7 @@
     "code-analyzer-apex": "5.6.1",
     "code-analyzer-aura": "5.6.1",
     "code-analyzer-lwc": "5.6.1",
+    "codespell": "2.4.1",
     "coffeelint": "5.2.11",
     "cppcheck": "2.14.2",
     "cpplint": "2.0.2",
