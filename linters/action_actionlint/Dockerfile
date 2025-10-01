@@ -33,6 +33,7 @@ FROM koalaman/shellcheck:${BASH_SHELLCHECK_VERSION} AS shellcheck
 ##################
 FROM ghcr.io/astral-sh/uv:0.8.17 AS uv
 FROM python:3.13-alpine3.22 AS build-ml-core
+ENV UV_LINK_MODE=copy
 ARG RUST_RUST_VERSION
 # https://github.com/oxsecurity/megalinter/pull/2273#issuecomment-3316202297
 RUN apk -U --no-cache upgrade \
@@ -49,6 +50,7 @@ RUN apk -U --no-cache upgrade \
 ENV PATH="/root/.cargo/bin:/root/.cargo/env:${PATH}"
 WORKDIR /
 COPY --from=uv /uv /uvx /bin/
+RUN uv cache dir
 RUN cargo -vV
 RUN rustup target list --installed
 RUN rustc -V
@@ -56,12 +58,12 @@ RUN rustc -V
 RUN --mount=type=cache,target=/root/.cache/uv \
     --mount=type=bind,source=uv.lock,target=uv.lock \
     --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
-    uv sync --frozen --no-install-project
+    uv sync --locked --no-install-project --no-dev
 # Copy the project into the image
 COPY . .
 # Sync the project
 RUN --mount=type=cache,target=/root/.cache/uv \
-    uv sync --frozen
+    uv sync --locked --no-dev
 
 ##################
 # Get base image #
@@ -194,6 +196,7 @@ COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
 ################################
 COPY --from=build-ml-core pyproject.toml README.md ./
 COPY --from=build-ml-core megalinter /megalinter/
+ENV UV_LINK_MODE=copy
 RUN --mount=type=cache,target=/root/.cache/uv,from=build-ml-core \
     --mount=from=uv,source=/uv,target=/bin/uv \
     uv pip install --system -e .
