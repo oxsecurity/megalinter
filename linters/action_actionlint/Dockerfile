@@ -36,7 +36,9 @@ FROM python:3.13-alpine3.22 AS build-ml-core
 ARG RUST_RUST_VERSION
 # https://github.com/oxsecurity/megalinter/pull/2273#issuecomment-3316202297
 RUN apk -U --no-cache upgrade \
-    && apk add --no-cache curl \
+    && apk add --no-cache \
+                curl \
+                libgcc \
     && curl https://sh.rustup.rs -sSf | sh -s -- -y --profile minimal --default-toolchain ${RUST_RUST_VERSION} \
     && export PATH="/root/.cargo/bin:/root/.cargo/env:${PATH}" \
     && rustup default stable \
