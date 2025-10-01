@@ -66,7 +66,8 @@ RUN uv cache dir
 RUN --mount=type=cache,target=/root/.cache/uv \
     --mount=type=bind,source=uv.lock,target=uv.lock \
     --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
-    uv sync --locked --no-install-project --no-dev
+    ls -la /root/.cache/uv && \
+    uv sync --locked --no-install-project --no-dev && ls -la /root/.cache/uv
 # Copy the project into the image
 COPY . .
 # Sync the project
@@ -201,7 +202,7 @@ COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
 COPY --from=build-ml-core pyproject.toml README.md ./
 COPY --from=build-ml-core megalinter /megalinter/
 ENV UV_LINK_MODE=copy
-RUN --mount=type=cache,target=/root/.cache/uv,from=build-ml-core \
+RUN --mount=type=cache,target=/root/.cache/uv,from=build-ml-core,source=/root/.cache/uv \
     --mount=from=uv,source=/uv,target=/bin/uv \
     ls -la /root/.cache/uv && \
     uv pip install --system -e .
