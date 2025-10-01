@@ -206,7 +206,7 @@ RUN --mount=type=cache,target=/root/.cache/uv,from=build-ml-core,sharing=locked 
     --mount=from=uv,source=/uv,target=/bin/uv \
     ls -la /root/.cache/uv && \
     ls -la /root/.cache/uv/root && \
-    ls -la /root/.cache/uv/root/.cache/uv && \
+    ls -la /root/.cache/uv/root/.local && \
     uv pip install --system -e .
 
 #######################################
