@@ -44,6 +44,9 @@ RUN apk -U --no-cache upgrade \
 ENV PATH="/root/.cargo/bin:/root/.cargo/env:${PATH}"
 WORKDIR /
 COPY --from=uv /uv /uvx /bin/
+RUN cargo -vV
+RUN rustup target list --installed
+RUN rustc -V
 # Install dependencies
 RUN --mount=type=cache,target=/root/.cache/uv \
     --mount=type=bind,source=uv.lock,target=uv.lock \
