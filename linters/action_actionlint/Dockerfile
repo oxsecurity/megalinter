@@ -31,6 +31,10 @@ FROM koalaman/shellcheck:${BASH_SHELLCHECK_VERSION} AS shellcheck
 ##################
 FROM ghcr.io/astral-sh/uv:0.8.17 AS uv
 FROM python:3.13-alpine3.22 AS build-ml-core
+# https://github.com/oxsecurity/megalinter/pull/2273#issuecomment-3316202297
+RUN apk -U --no-cache upgrade \
+    && apk add --no-cache curl \
+    && curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --profile minimal
 WORKDIR /
 COPY --from=uv /uv /uvx /bin/
 # Install dependencies
