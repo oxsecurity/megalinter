@@ -15,6 +15,8 @@
 ARG ACTION_ACTIONLINT_VERSION=1.7.7
 # renovate: datasource=docker depName=koalaman/shellcheck
 ARG BASH_SHELLCHECK_VERSION=v0.11.0
+# renovate: datasource=github-tags depName=rust-lang/rust
+ARG RUST_RUST_VERSION=1.90.0
 #ARGTOP__END
 
 #############################################################################################
