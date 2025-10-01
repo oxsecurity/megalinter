@@ -63,7 +63,7 @@ COPY --from=uv /uv /uvx /bin/
 RUN uv cache dir
 
 # Install dependencies
-RUN --mount=type=cache,target=/root/.cache/uv \
+RUN --mount=type=cache,target=/root/.cache/uv,sharing=locked \
     --mount=type=bind,source=uv.lock,target=uv.lock \
     --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
     ls -la /root/.cache/uv && \
@@ -202,7 +202,7 @@ COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
 COPY --from=build-ml-core pyproject.toml README.md ./
 COPY --from=build-ml-core megalinter /megalinter/
 ENV UV_LINK_MODE=copy
-RUN --mount=type=cache,target=/root/.cache/uv,from=build-ml-core,source=/root/.cache/uv \
+RUN --mount=type=cache,target=/root/.cache/uv,from=build-ml-core,sharing=locked \
     --mount=from=uv,source=/uv,target=/bin/uv \
     ls -la /root/.cache/uv && \
     uv pip install --system -e .
