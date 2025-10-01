@@ -38,10 +38,12 @@ ARG RUST_RUST_VERSION
 RUN apk -U --no-cache upgrade \
     && apk add --no-cache \
                 curl \
-                musl-dev \
+                build-base \
                 libgcc \
+                musl-dev \
     && curl https://sh.rustup.rs -sSf | sh -s -- -y --profile minimal --default-toolchain ${RUST_RUST_VERSION} \
     && export PATH="/root/.cargo/bin:/root/.cargo/env:${PATH}" \
+    && rustup default \
     && rustup default stable \
     && rm -rf /root/.cargo/registry /root/.cargo/git /root/.cache/sccache
 ENV PATH="/root/.cargo/bin:/root/.cargo/env:${PATH}"
