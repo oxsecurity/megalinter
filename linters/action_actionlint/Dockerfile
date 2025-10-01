@@ -71,7 +71,7 @@ RUN --mount=type=cache,target=/root/.cache/uv,sharing=locked \
 # Copy the project into the image
 COPY . .
 # Sync the project
-RUN --mount=type=cache,target=/root/.cache/uv \
+RUN --mount=type=cache,target=/root/.cache/uv,sharing=locked \
     ls -la /root/.cache/uv && \
     uv sync --locked --no-dev
 
@@ -202,12 +202,12 @@ COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
 COPY --from=build-ml-core pyproject.toml README.md ./
 COPY --from=build-ml-core megalinter /megalinter/
 ENV UV_LINK_MODE=copy
-RUN --mount=type=cache,target=/root/.cache/uv,from=build-ml-core,sharing=locked \
+RUN --mount=type=cache,target=/root/.cache/uv,sharing=locked \
     --mount=from=uv,source=/uv,target=/bin/uv \
     ls -la /root/.cache/uv && \
-    ls -la /root/.cache/uv/root && \
-    ls -la /root/.cache/uv/root/.local && \
     uv pip install --system -e .
+# ls -la /root/.cache/uv/root && \
+# ls -la /root/.cache/uv/root/.local && \
 
 #######################################
 # Copy scripts and rules to container #
