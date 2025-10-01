@@ -32,9 +32,9 @@ FROM koalaman/shellcheck:${BASH_SHELLCHECK_VERSION} AS shellcheck
 # Build wheel for megalinter python package
 ##################
 FROM ghcr.io/astral-sh/uv:0.8.17 AS uv
-FROM python:3.13-alpine3.22 AS build-ml-core-linux-amd64-
+FROM python:3.13-alpine3.22 AS build-ml-core-linux-amd64--x
 ENV UV_LINK_MODE=copy
-FROM python:3.13-alpine3.22 AS build-ml-core-linux-arm64-
+FROM python:3.13-alpine3.22 AS build-ml-core-linux-arm64--x
 ENV UV_LINK_MODE=copy
 ARG RUST_RUST_VERSION
 # https://github.com/oxsecurity/megalinter/pull/2273#issuecomment-3316202297
@@ -55,7 +55,7 @@ RUN rustup target list --installed
 RUN rustc -V
 
 
-FROM build-ml-core-${TARGETOS}-${TARGETARCH}-${TARGETVARIANT} AS build-ml-core
+FROM build-ml-core-${TARGETOS}-${TARGETARCH}-${TARGETVARIANT}-x AS build-ml-core
 WORKDIR /
 COPY --from=uv /uv /uvx /bin/
 RUN uv cache dir
