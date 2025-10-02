@@ -87,7 +87,7 @@ RUN apk -U --no-cache upgrade \
 #############################################################################################
 #ARG__START
 # renovate: datasource=pypi depName=robotframework-robocop
-ARG PIP_ROBOT_FRAMEWORK_ROBOCOP_VERSION=6.7.0
+ARG PIP_ROBOT_FRAMEWORK_ROBOCOP_VERSION=6.7.1
 # renovate: datasource=pypi depName=pip
 ARG PIP_PIP_VERSION=25.2
 # renovate: datasource=pypi depName=virtualenv
