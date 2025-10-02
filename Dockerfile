@@ -45,8 +45,6 @@ ARG TERRAFORM_TFLINT_VERSION=0.59.1
 ARG TERRAFORM_TERRASCAN_VERSION=1.19.9
 # renovate: datasource=docker depName=alpine/terragrunt
 ARG TERRAFORM_TERRAGRUNT_VERSION=1.13.3
-# renovate: datasource=github-tags depName=rust-lang/rust
-ARG RUST_RUST_VERSION=1.90.0
 #ARGTOP__END
 
 #############################################################################################

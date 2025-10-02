@@ -26,25 +26,54 @@ FROM mstruebing/editorconfig-checker:${EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION
 # Build wheel for megalinter python package
 ##################
 FROM ghcr.io/astral-sh/uv:0.8.17 AS uv
-FROM python:3.13-alpine3.22 AS build-ml-core
+# Steps specific to linux/amd64 needed before build-ml-core stage
+FROM python:3.13-alpine3.22 AS build-ml-core-linux-amd64--x
+# Steps specific to linux/arm64 needed before build-ml-core stage
+FROM python:3.13-alpine3.22 AS build-ml-core-linux-arm64--x
+ARG RUST_RUST_VERSION
+# https://github.com/oxsecurity/megalinter/pull/2273#issuecomment-3316202297
+RUN apk -U --no-cache upgrade \
+    && apk add --no-cache \
+                curl \
+                build-base \
+                libgcc \
+                musl-dev \
+    && curl https://sh.rustup.rs -sSf | sh -s -- -y --profile minimal --default-toolchain ${RUST_RUST_VERSION} \
+    && export PATH="/root/.cargo/bin:/root/.cargo/env:${PATH}" \
+    && rustup default \
+    && rustup default stable \
+    && rm -rf /root/.cargo/registry /root/.cargo/git /root/.cache/sccache
+ENV PATH="/root/.cargo/bin:/root/.cargo/env:${PATH}" 1Code has comments. Press enter to view.
+
+FROM build-ml-core-${TARGETOS}-${TARGETARCH}-${TARGETVARIANT}-x AS build-ml-core
+ENV UV_LINK_MODE=copy
+# Disable Python downloads, because we want to use the system interpreter
+# across images. If using a managed Python version, it needs to be
+# copied from the build image into the final image
+ENV UV_PYTHON_DOWNLOADS=0
 WORKDIR /
 COPY --from=uv /uv /uvx /bin/
 # Install dependencies
-RUN --mount=type=cache,target=/root/.cache/uv \
+RUN --mount=type=cache,target=/root/.cache/uv,sharing=locked \
     --mount=type=bind,source=uv.lock,target=uv.lock \
     --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
-    uv sync --frozen --no-install-project
+    uv sync --locked --no-install-project --no-dev
 # Copy the project into the image
 COPY . .
 # Sync the project
-RUN --mount=type=cache,target=/root/.cache/uv \
-    uv sync --frozen
+RUN --mount=type=cache,target=/root/.cache/uv,sharing=locked \
+    uv sync --locked --no-dev
 
 ##################
 # Get base image #
 ##################
 
-FROM python:3.13-alpine3.22
+FROM python:3.13-alpine3.22 AS final
+
+# Disable Python downloads, because we want to use the system interpreter
+# across images. If using a managed Python version, it needs to be
+# copied from the build image into the final image
+ENV UV_PYTHON_DOWNLOADS=0
 
 # https://github.com/oxsecurity/megalinter/pull/2273#issuecomment-3316202297
 RUN apk -U --no-cache upgrade \
@@ -165,7 +194,12 @@ COPY --link --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checke
 ################################
 COPY --from=build-ml-core pyproject.toml README.md ./
 COPY --from=build-ml-core megalinter /megalinter/
-RUN --mount=type=cache,target=/root/.cache/uv,from=build-ml-core \
+ENV UV_LINK_MODE=copy
+# TODO: technically, our builds should be working without the cache mount being available
+# Since we only install the rust toolchain in the linux/arm64 branch of build-ml-core to 
+# build wheels that aren't available for musl linux/arm64, this final stage will fail if
+# the pre-build wheels aren't available anymore in between the two stages.
+RUN --mount=type=cache,target=/root/.cache/uv,sharing=locked \\
     --mount=from=uv,source=/uv,target=/bin/uv \
     uv pip install --system -e .
 
