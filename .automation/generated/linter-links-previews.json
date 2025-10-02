@@ -260,7 +260,7 @@
     "title": "instrumenta/kubeval"
   },
   "lightning-flow-scanner-cli": {
-    "description": "Lightning-Flow-Scanner has 5 repositories available. Follow their code on GitHub.",
+    "description": "A Salesforce CLI Plugin designed to proactively enforce secure and maintainable Salesforce Flows. It detects unsafe running contexts, hardcoded IDs, unhandled nulls, inefficient database operations and more, helping teams ensure their automations are safe and reliable..",
     "image": "https://avatars.githubusercontent.com/u/148573214?s=280&v=4",
     "title": "Flow-Scanner"
   },

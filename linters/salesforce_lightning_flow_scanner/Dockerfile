@@ -179,7 +179,7 @@ RUN sf plugins install @salesforce/plugin-packaging@${NPM_SALESFORCE_PLUGIN_PACK
 ENV SF_AUTOUPDATE_DISABLE=true SF_CLI_DISABLE_AUTOUPDATE=true
 #
 # lightning-flow-scanner installation
-RUN echo y|sf plugins install lightning-flow-scanner-cli@${LIGHTNING_FLOW_SCANNER_VERSION} \
+RUN echo y|sf plugins install @rubenhalman/lightning-flow-scanner-cli@${LIGHTNING_FLOW_SCANNER_VERSION} \
     && (npm cache clean --force || true) \
     && rm -rf /root/.npm/_cacache
 #

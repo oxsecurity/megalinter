@@ -1116,7 +1116,7 @@ RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/refs/tags/v${REPOS
 #
 # lightning-flow-scanner installation
 
-    && echo y|sf plugins install lightning-flow-scanner-cli@${LIGHTNING_FLOW_SCANNER_VERSION} \
+    && echo y|sf plugins install @rubenhalman/lightning-flow-scanner-cli@${LIGHTNING_FLOW_SCANNER_VERSION} \
     && (npm cache clean --force || true) \
     && rm -rf /root/.npm/_cacache \
 
