@@ -204,7 +204,7 @@ ENV UV_LINK_MODE=copy
 # Since we only install the rust toolchain in the linux/arm64 branch of build-ml-core to 
 # build wheels that aren't available for musl linux/arm64, this final stage will fail if
 # the pre-build wheels aren't available anymore in between the two stages.
-RUN --mount=type=cache,target=/root/.cache/uv,sharing=locked \\
+RUN --mount=type=cache,target=/root/.cache/uv,sharing=locked \
     --mount=from=uv,source=/uv,target=/bin/uv \
     uv pip install --system -e .
 
