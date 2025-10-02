@@ -193,7 +193,7 @@ nav:
               - "sfdx-scanner-apex": "descriptors/salesforce_sfdx_scanner_apex.md"
               - "sfdx-scanner-aura": "descriptors/salesforce_sfdx_scanner_aura.md"
               - "sfdx-scanner-lwc": "descriptors/salesforce_sfdx_scanner_lwc.md"
-              - "lightning-flow-scanner-cli": "descriptors/salesforce_lightning_flow_scanner-cli.md"
+              - "lightning-flow-scanner-cli": "descriptors/salesforce_lightning_flow_scanner_cli.md"
           - "SCALA":
               - "All SCALA linters": "descriptors/scala.md"
               - "scalafix": "descriptors/scala_scalafix.md"

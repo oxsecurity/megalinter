@@ -336,7 +336,7 @@ ARG GEM_RUBOCOP_RAKE_VERSION=0.7.1
 ARG GEM_RUBOCOP_RSPEC_VERSION=3.7.0
 # renovate: datasource=npm depName=@salesforce/sfdx-scanner
 ARG SALESFORCE_SFDX_SCANNER_VERSION=4.12.0
-# renovate: datasource=npm depName=lightning-flow-scanner
+# renovate: datasource=npm depName=@rubenhalman/lightning-flow-scanner-cli
 ARG LIGHTNING_FLOW_SCANNER_VERSION=1.4.0
 # renovate: datasource=pypi depName=snakemake
 ARG PIP_SNAKEMAKE_VERSION=9.11.6
