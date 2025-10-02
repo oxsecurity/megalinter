@@ -11,4 +11,4 @@ from megalinter.tests.test_megalinter.LinterTestRoot import LinterTestRoot
 
 class salesforce_lightning_flow_scanner_test(TestCase, LinterTestRoot):
     descriptor_id = "SALESFORCE"
-    linter_name = "lightning-flow-scanner"
+    linter_name = "lightning-flow-scanner-cli"

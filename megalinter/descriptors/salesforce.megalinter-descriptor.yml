@@ -266,7 +266,7 @@ linters:
           url: https://marketplace.visualstudio.com/items?itemName=salesforce.salesforcedx-vscode
 
   # Lightning Flow Scanner
-  - linter_name: lightning-flow-scanner
+  - linter_name: lightning-flow-scanner-cli
     files_sub_directory: force-app
     linter_text: |
       **Lightning Flow Scanner** is a specialized SFDX plugin that analyzes Salesforce Flows for integrity issues, performance problems, and adherence to best practices. It helps developers build reliable and maintainable Flow automations.
@@ -284,7 +284,7 @@ linters:
       - **SFDX Native**: Built as a native SFDX plugin for consistent Salesforce toolchain integration
 
       If your root folder is not **force-app**, please set variable SALESFORCE_LIGHTNING_FLOW_SCANNER_DIRECTORY
-    linter_url: https://github.com/Lightning-Flow-Scanner
+    linter_url: https://github.com/Flow-Scanner
     linter_repo: https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx
     linter_rules_url: https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-core#rules
     linter_banner_image_url: https://raw.githubusercontent.com/Lightning-Flow-Scanner/.github/main/docs/images/bannerslim.png
@@ -301,7 +301,7 @@ linters:
     cli_version_extra_args:
       - "plugins"
     cli_version_arg_name: ""
-    version_extract_regex: "(?<=lightning-flow-scanner )\\d+(\\.\\d+)+"
+    version_extract_regex: "(?<=lightning-flow-scanner-cli )\\d+(\\.\\d+)+"
     cli_lint_errors_count: regex_number
     cli_lint_errors_regex: "- error: ([0-9]+)"
     test_folder: salesforce-lfs
@@ -310,13 +310,13 @@ linters:
     install:
       dockerfile:
         - |-
-          # renovate: datasource=npm depName=lightning-flow-scanner
+          # renovate: datasource=npm depName=lightning-flow-scanner-cli
           ARG LIGHTNING_FLOW_SCANNER_VERSION=5.2.0
         - |-
-          RUN echo y|sf plugins install lightning-flow-scanner@${LIGHTNING_FLOW_SCANNER_VERSION} \
+          RUN echo y|sf plugins install lightning-flow-scanner-cli@${LIGHTNING_FLOW_SCANNER_VERSION} \
               && (npm cache clean --force || true) \
               && rm -rf /root/.npm/_cacache
     ide:
       vscode:
         - name: Lightning Flow Scanner
-          url: https://marketplace.visualstudio.com/items?itemName=ForceConfigControl.lightningflowscanner
+          url: https://marketplace.visualstudio.com/items?itemName=ForceConfigControl.lightning-flow-scanner-vsx
