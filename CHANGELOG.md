@@ -52,6 +52,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkstyle](https://checkstyle.org/) from 11.0.1 to **11.1.0** on 2025-09-28
   - [isort](https://pycqa.github.io/isort/) from 6.0.1 to **6.1.0** on 2025-10-01
   - [robocop](https://github.com/MarketSquare/robotframework-robocop) from 6.7.0 to **6.7.1** on 2025-10-01
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 25.9.0 to **25.9.1** on 2025-10-03
 <!-- linter-versions-end -->
 
 ## [v9.0.1] - 2025-09-21
