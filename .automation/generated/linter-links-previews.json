@@ -84,6 +84,11 @@
     "image": "https://opengraph.githubassets.com/bf0d187aea6f03a804178458080b2be18a5fd1bf8d8cc353ff3150743aae9805/greglook/cljstyle",
     "title": "GitHub - greglook/cljstyle: A tool for formatting Clojure code"
   },
+  "codespell": {
+    "description": "codespell checks code and documentation for common misspellings.",
+    "image": null,
+    "title": "codespell-project/codespell: check code for common misspellings"
+  },
   "coffeelint": {
     "description": "\n          CoffeeLint is a style checker that helps keep\n          CoffeeScript\n          code clean and consistent. CoffeeScript does a great job at\n          insulating programmers from many of\n          JavaScript's bad parts, but it won't help enforce a consistent style\n          across a code base. CoffeeLint can help with that.\n        ",
     "image": null,

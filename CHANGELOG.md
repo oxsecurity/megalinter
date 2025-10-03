@@ -12,6 +12,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - New linters
   - Add [Robocop](https://github.com/MarketSquare/robotframework-robocop) linter, by @bdovaz in <https://github.com/oxsecurity/megalinter/pull/6232>
+  - Add [codespell](https://github.com/codespell-project/codespell)
 
 - Disabled linters
 
