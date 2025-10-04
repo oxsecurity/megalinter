@@ -149,9 +149,9 @@ RUN sf plugins install @salesforce/plugin-packaging@${NPM_SALESFORCE_PLUGIN_PACK
     && rm -rf /root/.npm/_cacache
 ENV SF_AUTOUPDATE_DISABLE=true SF_CLI_DISABLE_AUTOUPDATE=true
 # Linter install
-# renovate: datasource=npm depName=@rubenhalman/lightning-flow-scanner-cli
+# renovate: datasource=npm depName=@flow-scanner/lightning-flow-scanner-cli
 ARG LIGHTNING_FLOW_SCANNER_VERSION=1.4.0
-RUN echo y|sf plugins install @rubenhalman/lightning-flow-scanner-cli@${LIGHTNING_FLOW_SCANNER_VERSION} \
+RUN echo y|sf plugins install @flow-scanner/lightning-flow-scanner-cli@${LIGHTNING_FLOW_SCANNER_VERSION} \
     && (npm cache clean --force || true) \
     && rm -rf /root/.npm/_cacache
 ```
