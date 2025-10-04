@@ -47,7 +47,7 @@
     "kubeconform": "Apache-2.0",
     "kubescape": "Apache-2.0",
     "kubeval": "Other",
-    "lightning-flow-scanner-cli": "AGPL-3.0",
+    "lightning-flow-scanner": "AGPL-3.0",
     "lintr": "Other",
     "ls-lint": "MIT",
     "luacheck": "MIT",

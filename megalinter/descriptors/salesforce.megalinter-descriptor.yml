@@ -266,7 +266,7 @@ linters:
           url: https://marketplace.visualstudio.com/items?itemName=salesforce.salesforcedx-vscode
 
   # Lightning Flow Scanner
-  - linter_name: lightning-flow-scanner-cli
+  - linter_name: lightning-flow-scanner
     files_sub_directory: force-app
     linter_text: |
       **Lightning Flow Scanner** A Salesforce CLI Plugin designed to proactively enforce secure and maintainable Salesforce Flows. It detects unsafe running contexts, hardcoded IDs, unhandled nulls, inefficient database operations and more, helping teams ensure their automations are safe and reliable.

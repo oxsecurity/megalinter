@@ -3868,7 +3868,7 @@
         "      --strict                                Disallow additional properties not in schema",
         "      --version                               version for kubeval"
     ],
-    "lightning-flow-scanner-cli": [
+    "lightning-flow-scanner": [
         " \u203a   Warning: @salesforce/cli update available from 2.102.6 to 2.104.6.",
         "Find and fix potential bugs in Salesforce flows.",
         "",
