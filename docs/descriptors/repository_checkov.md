@@ -15,7 +15,7 @@ description: How to use checkov (configure, ignore files, ignore errors, help & 
 
 _This linter has been disabled in this version_
 
-_Disabled reason: <https://github.com/bridgecrewio/checkov/issues/7263>_
+_Disabled reason: https://github.com/bridgecrewio/checkov/issues/7263_
 
 **Checkov** is a comprehensive static code analysis tool for Infrastructure as Code (IaC) that prevents cloud security misconfigurations before they reach production.
 
