@@ -59,7 +59,7 @@ ARG CARGO_SARIF_FMT_VERSION=0.8.0
 ARG POWERSHELL_VERSION=7.5.3
 
 # renovate: datasource=npm depName=typescript
-ARG NPM_TYPESCRIPT_VERSION=5.9.2
+ARG NPM_TYPESCRIPT_VERSION=5.9.3
 # renovate: datasource=nuget depName=csharpier
 ARG CSHARP_CSHARPIER_VERSION=1.1.2
 # renovate: datasource=nuget depName=roslynator.dotnet.cli

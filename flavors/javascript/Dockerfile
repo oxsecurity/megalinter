@@ -86,7 +86,7 @@ FROM python:3.13-alpine3.22
 # renovate: datasource=crate depName=sarif-fmt
 ARG CARGO_SARIF_FMT_VERSION=0.8.0
 # renovate: datasource=npm depName=typescript
-ARG NPM_TYPESCRIPT_VERSION=5.9.2
+ARG NPM_TYPESCRIPT_VERSION=5.9.3
 # renovate: datasource=pypi depName=ansible-lint
 ARG PIP_ANSIBLE_LINT_VERSION=25.9.1
 # renovate: datasource=npm depName=@stoplight/spectral-cli
