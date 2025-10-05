@@ -53,6 +53,12 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [isort](https://pycqa.github.io/isort/) from 6.0.1 to **6.1.0** on 2025-10-01
   - [robocop](https://github.com/MarketSquare/robotframework-robocop) from 6.7.0 to **6.7.1** on 2025-10-01
   - [ansible-lint](https://ansible-lint.readthedocs.io/) from 25.9.0 to **25.9.1** on 2025-10-03
+  - [phpstan](https://phpstan.org/) from 2.1.29 to **2.1.30** on 2025-10-05
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.405 to **1.1.406** on 2025-10-05
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.13.2 to **0.13.3** on 2025-10-05
+  - [ruff](https://github.com/astral-sh/ruff) from 0.13.2 to **0.13.3** on 2025-10-05
+  - [robocop](https://github.com/MarketSquare/robotframework-robocop) from 6.7.1 to **6.7.2** on 2025-10-05
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.88.0 to **0.88.1** on 2025-10-05
 <!-- linter-versions-end -->
 
 ## [v9.0.1] - 2025-09-21
