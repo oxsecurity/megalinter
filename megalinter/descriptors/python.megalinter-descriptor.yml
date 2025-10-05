@@ -518,7 +518,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=pyright
-          ARG NPM_PYRIGHT_VERSION=1.1.405
+          ARG NPM_PYRIGHT_VERSION=1.1.406
       npm:
         - pyright@${NPM_PYRIGHT_VERSION}
     ide:
@@ -585,7 +585,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=ruff
-          ARG PIP_RUFF_VERSION=0.13.2
+          ARG PIP_RUFF_VERSION=0.13.3
       pip:
         - ruff==${PIP_RUFF_VERSION}
     ide:
@@ -646,7 +646,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=ruff
-          ARG PIP_RUFF_VERSION=0.13.2
+          ARG PIP_RUFF_VERSION=0.13.3
       pip:
         - ruff==${PIP_RUFF_VERSION}
     ide:
