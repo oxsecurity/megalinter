@@ -32,11 +32,11 @@ on:
   workflow_dispatch:
     inputs:
       megalinter-version:
-        description: 'MegaLinter version to build (e.g., v7.5.0)'
+        description: "MegaLinter version to build (e.g., v7.5.0)"
         required: false
         type: string
       is-latest:
-        description: 'Mark this version as latest'
+        description: "Mark this version as latest"
         required: false
         type: boolean
         default: false
@@ -73,7 +73,7 @@ jobs:
             echo "Using default tag: $TAG"
           fi
           echo "tag=$TAG" >> $GITHUB_OUTPUT
-          
+
           # Determine is-latest flag
           if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
             IS_LATEST="${{ inputs.is-latest }}"

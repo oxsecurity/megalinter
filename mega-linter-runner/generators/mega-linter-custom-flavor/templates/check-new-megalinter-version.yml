@@ -46,7 +46,7 @@ name: Check for New MegaLinter Version
 on:
   schedule:
     # Run daily at 00:00 UTC
-    - cron: '0 0 * * *'
+    - cron: "0 0 * * *"
   workflow_dispatch:
 
 permissions:
@@ -67,21 +67,21 @@ jobs:
         id: fetch-megalinter-tags
         run: |
           echo "Fetching tags from oxsecurity/megalinter..."
-          
+
           # Fetch all tags from MegaLinter repository (filtering for version tags only)
           MEGALINTER_TAGS=$(git ls-remote --tags --refs https://github.com/oxsecurity/megalinter.git | \
             grep -E 'refs/tags/v[0-9]+\.[0-9]+\.[0-9]+$' | \
             sed 's/.*refs\/tags\///' | \
             sort -V | \
             tail -n 20)
-          
+
           echo "Latest MegaLinter tags:"
           echo "$MEGALINTER_TAGS"
-          
+
           # Get the latest tag
           LATEST_MEGALINTER_TAG=$(echo "$MEGALINTER_TAGS" | tail -n 1)
           echo "latest_tag=$LATEST_MEGALINTER_TAG" >> $GITHUB_OUTPUT
-          
+
           # Save all tags to a file
           echo "$MEGALINTER_TAGS" > megalinter_tags.txt
 
@@ -89,13 +89,13 @@ jobs:
         id: fetch-repo-tags
         run: |
           echo "Fetching tags from current repository..."
-          
+
           # Fetch all version tags from current repository
           REPO_TAGS=$(git tag -l 'v*' | sort -V)
-          
+
           echo "Current repository tags:"
           echo "$REPO_TAGS"
-          
+
           # Get the latest tag from current repository
           if [ -z "$REPO_TAGS" ]; then
             LATEST_REPO_TAG=""
@@ -104,20 +104,20 @@ jobs:
             LATEST_REPO_TAG=$(echo "$REPO_TAGS" | tail -n 1)
             echo "Latest repository tag: $LATEST_REPO_TAG"
           fi
-          
+
           echo "latest_repo_tag=$LATEST_REPO_TAG" >> $GITHUB_OUTPUT
 
       - name: Find New Version
         id: find-new-version
         run: |
           echo "Comparing versions..."
-          
+
           LATEST_MEGALINTER_TAG="${{ steps.fetch-megalinter-tags.outputs.latest_tag }}"
           LATEST_REPO_TAG="${{ steps.fetch-repo-tags.outputs.latest_repo_tag }}"
-          
+
           echo "Latest MegaLinter tag: $LATEST_MEGALINTER_TAG"
           echo "Latest repository tag: $LATEST_REPO_TAG"
-          
+
           # Function to compare semantic versions
           version_greater_than() {
             # Remove 'v' prefix for comparison
@@ -131,7 +131,7 @@ jobs:
               return 1  # ver1 <= ver2
             fi
           }
-          
+
           # Check if we should create a new release
           if [ -z "$LATEST_REPO_TAG" ]; then
             echo "No existing tags in repository. Will create release for $LATEST_MEGALINTER_TAG"
@@ -153,14 +153,14 @@ jobs:
           NEW_VERSION: ${{ steps.find-new-version.outputs.new_version }}
         run: |
           echo "Creating release for version $NEW_VERSION..."
-          
+
           # Create a release using GitHub CLI (will also create the tag)
           gh release create "$NEW_VERSION" \
             --title "MegaLinter Custom Flavor $NEW_VERSION" \
             --notes "Automated release to sync with MegaLinter version $NEW_VERSION.
 
           This release was automatically created to build a custom MegaLinter flavor based on the upstream MegaLinter release $NEW_VERSION.
-          
+
           For more information about changes in this version, see the [MegaLinter changelog](https://github.com/oxsecurity/megalinter/releases/tag/$NEW_VERSION)." \
             --latest
 
@@ -172,9 +172,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.PAT_TOKEN || secrets.GITHUB_TOKEN }}
         run: |
           echo "Triggering megalinter-custom-flavor-builder workflow..."
-          
+
           NEW_VERSION="${{ steps.find-new-version.outputs.new_version }}"
-          
+
           # Trigger the workflow using GitHub CLI and capture output
           set +e  # Don't exit immediately on error
           gh workflow run megalinter-custom-flavor-builder.yml \
@@ -184,7 +184,7 @@ jobs:
             2>&1 | tee workflow_trigger.log
           EXIT_CODE=$?
           set -e  # Re-enable exit on error
-          
+
           # Check for errors in the output
           if grep -q "could not create workflow dispatch event" workflow_trigger.log || \
              grep -q "Resource not accessible by integration" workflow_trigger.log || \
@@ -226,7 +226,7 @@ jobs:
             
             exit 1
           fi
-          
+
           echo "✅ Builder workflow triggered successfully with version: $NEW_VERSION"
 
       - name: Summary
@@ -234,10 +234,10 @@ jobs:
         run: |
           echo "## Check for New MegaLinter Version Summary" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          
+
           LATEST_MEGALINTER_TAG="${{ steps.fetch-megalinter-tags.outputs.latest_tag }}"
           LATEST_REPO_TAG="${{ steps.fetch-repo-tags.outputs.latest_repo_tag }}"
-          
+
           if [ "${{ steps.find-new-version.outputs.new_version_found }}" == "true" ]; then
             echo "✅ New version found: **${{ steps.find-new-version.outputs.new_version }}**" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
@@ -269,11 +269,11 @@ jobs:
           else
             echo "ℹ️ No new versions found. Repository is up to date with MegaLinter." >> $GITHUB_STEP_SUMMARY
           fi
-          
+
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "**Version Comparison:**" >> $GITHUB_STEP_SUMMARY
           echo "- Latest MegaLinter version: **$LATEST_MEGALINTER_TAG**" >> $GITHUB_STEP_SUMMARY
-          
+
           if [ -n "$LATEST_REPO_TAG" ]; then
             echo "- Latest repository version: **$LATEST_REPO_TAG**" >> $GITHUB_STEP_SUMMARY
           else
