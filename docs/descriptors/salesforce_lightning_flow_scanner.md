@@ -32,7 +32,7 @@ If your root folder is not **force-app**, please set variable SALESFORCE_LIGHTNI
 
 ## lightning-flow-scanner documentation
 
-- Version in MegaLinter: **1.5.0**
+- Version in MegaLinter: **5.6.2**
 - Visit [Official Web Site](https://flow-scanner.github.io/lightning-flow-scanner-cli/){target=_blank}
 - See [How to configure lightning-flow-scanner rules](https://github.com/Flow-Scanner/lightning-flow-scanner-cli#configuration){target=_blank}
   - If custom `.flow-scanner.json` config file isn't found, [.flow-scanner.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.flow-scanner.json){target=_blank} will be used
@@ -149,9 +149,9 @@ RUN sf plugins install @salesforce/plugin-packaging@${NPM_SALESFORCE_PLUGIN_PACK
     && rm -rf /root/.npm/_cacache
 ENV SF_AUTOUPDATE_DISABLE=true SF_CLI_DISABLE_AUTOUPDATE=true
 # Linter install
-# renovate: datasource=npm depName=@flow-scanner/lightning-flow-scanner
-ARG LIGHTNING_FLOW_SCANNER_VERSION=1.5.0
-RUN echo y|sf plugins install @flow-scanner/lightning-flow-scanner@${LIGHTNING_FLOW_SCANNER_VERSION} \
+# renovate: datasource=npm depName=lightning-flow-scanner
+ARG LIGHTNING_FLOW_SCANNER_VERSION=5.6.2
+RUN echo y|sf plugins install lightning-flow-scanner@${LIGHTNING_FLOW_SCANNER_VERSION} \
     && (npm cache clean --force || true) \
     && rm -rf /root/.npm/_cacache
 ```
