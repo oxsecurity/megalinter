@@ -185,8 +185,10 @@ description: Setup MegaLinter in 5 minutes thanks to its assisted installation t
 
 **Notes**:
 
+<!-- # MAJOR-RELEASE-IMPACTED -->
+
 - This repo is a hard fork of [GitHub Super-Linter](https://github.com/super-linter/super-linter), rewritten in Python to add [many additional features](#mega-linter-vs-super-linter).
-- If you are a Super-Linter user, you can transparently **switch to MegaLinter and keep the same configuration** (just replace `super-linter/super-linter@v3` with `oxsecurity/megalinter@v8` in your GitHub Action YAML file, [like on this PR](https://github.com/nvuillam/npm-groovy-lint/pull/109)).
+- If you are a Super-Linter user, you can transparently **switch to MegaLinter and keep the same configuration** (just replace `super-linter/super-linter@v3` with `oxsecurity/megalinter@v9` in your GitHub Action YAML file, [like on this PR](https://github.com/nvuillam/npm-groovy-lint/pull/109)).
 - If you want to use MegaLinter's extra features (recommended), please take 5 minutes to use the [assisted installation](https://github.com/oxsecurity/megalinter/tree/main/docs/install-assisted.md).
 - For a beginner-friendly example of getting started with MegaLinter, check out [this blog post](https://ayyjohn.com/posts/linting-a-jekyll-blog-with-mega-linter) by Alec Johnson.
 <!-- quick-start-section-end -->
@@ -386,7 +388,9 @@ description: You can use latest release or beta version of MegaLinter, know the 
 -->
 ### Which version to use ?
 
-The following instructions examples are using latest MegaLinter stable version (**v8** , always corresponding to the [latest release](https://github.com/oxsecurity/megalinter/releases))
+<!-- # MAJOR-RELEASE-IMPACTED -->
+
+The following instructions examples are using latest MegaLinter stable version (**v9** , always corresponding to the [latest release](https://github.com/oxsecurity/megalinter/releases))
 
 - Docker image: `oxsecurity/megalinter:v9`
 - GitHub Action: `oxsecurity/megalinter@v9`
@@ -469,7 +473,8 @@ jobs:
         id: ml
         # You can override MegaLinter flavor used to have faster performances
         # More info at https://megalinter.io/flavors/
-        uses: oxsecurity/megalinter@v8
+        # MAJOR-RELEASE-IMPACTED
+        uses: oxsecurity/megalinter@v9
         env:
           # All available variables are described in documentation
           # https://megalinter.io/configuration/
@@ -744,6 +749,8 @@ Use the following job step in your pipeline template.
 
 Note: Make sure you have a `job.plan.get` step that retrieves the `repo` containing your repository, as shown in the example.
 
+<!-- # MAJOR-RELEASE-IMPACTED -->
+
 ```yaml
 ---
 
@@ -757,7 +764,7 @@ Note: Make sure you have a `job.plan.get` step that retrieves the `repo` contain
             type: docker-image
             source:
               repository: oxsecurity/megalinter
-              tag: v8
+              tag: v9
           inputs:
             - name: repo
           run:
@@ -785,6 +792,8 @@ Create a reusable Concourse task that can be used with multiple pipelines.
 
 1. Create task file `task-linting.yaml`
 
+<!-- # MAJOR-RELEASE-IMPACTED -->
+
 ```yaml
 ---
 platform: linux
@@ -792,7 +801,7 @@ image_resource:
   type: docker-image
   source:
     repository: oxsecurity/megalinter
-    tag: v8
+    tag: v9
 
 inputs:
 - name: repo

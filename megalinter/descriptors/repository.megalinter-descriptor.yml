@@ -285,6 +285,8 @@ linters:
 
       In the case of Azure Pipelines when running in a Docker container, we have to explicitly pass some environment variables:
 
+      <!-- # MAJOR-RELEASE-IMPACTED -->
+
       ```bash
         docker run -v $(System.DefaultWorkingDirectory):/tmp/lint \
             -e SYSTEM_PULLREQUEST_SOURCECOMMITID=$(System.PullRequest.SourceCommitId) \

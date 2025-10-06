@@ -797,11 +797,11 @@ Imports:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=pylint
-ARG PIP_PYLINT_VERSION=3.3.8
+ARG PIP_PYLINT_VERSION=3.3.9
 # renovate: datasource=pypi depName=typing-extensions
 ARG PIP_TYPING_EXTENSIONS_VERSION=4.15.0
 ```
 
 - PIP packages (Python):
-  - [pylint==3.3.8](https://pypi.org/project/pylint/3.3.8)
+  - [pylint==3.3.9](https://pypi.org/project/pylint/3.3.9)
   - [typing-extensions==4.15.0](https://pypi.org/project/typing-extensions/4.15.0)
