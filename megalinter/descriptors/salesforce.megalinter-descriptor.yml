@@ -301,7 +301,7 @@ linters:
     cli_version_extra_args:
       - "plugins"
     cli_version_arg_name: ""
-    version_extract_regex: "(?<=@flow-scanner/lightning-flow-scanner-cli )\\d+(\\.\\d+)+"
+    version_extract_regex: "(?<=@flow-scanner/lightning-flow-scanner )\\d+(\\.\\d+)+"
     cli_lint_errors_count: regex_number
     cli_lint_errors_regex: "- error: ([0-9]+)"
     test_folder: salesforce-lfs
@@ -310,10 +310,10 @@ linters:
     install:
       dockerfile:
         - |-
-          # renovate: datasource=npm depName=@flow-scanner/lightning-flow-scanner-cli
+          # renovate: datasource=npm depName=@flow-scanner/lightning-flow-scanner
           ARG LIGHTNING_FLOW_SCANNER_VERSION=1.5.0
         - |-
-          RUN echo y|sf plugins install @flow-scanner/lightning-flow-scanner-cli@${LIGHTNING_FLOW_SCANNER_VERSION} \
+          RUN echo y|sf plugins install @flow-scanner/lightning-flow-scanner@${LIGHTNING_FLOW_SCANNER_VERSION} \
               && (npm cache clean --force || true) \
               && rm -rf /root/.npm/_cacache
     ide:
