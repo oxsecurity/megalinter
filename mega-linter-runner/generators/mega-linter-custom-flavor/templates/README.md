@@ -35,9 +35,11 @@ This custom flavor is automatically kept up to date with MegaLinter releases:
 
 ### Required: Personal Access Token
 
-For automatic version checking to work, a `PAT_TOKEN` secret must be configured with:
-- Contents: Read and write
-- Actions: Read and write
+For automatic version checking to work, a `PAT_TOKEN` secret must be configured as a **repository-scoped fine-grained token** with:
+- **Repository access**: Only select repositories (select this repository)
+- **Repository permissions**:
+  - Contents: Read and write
+  - Actions: Read and write
 
 See the [Custom Flavors documentation](https://megalinter.io/beta/custom-flavors/) for detailed setup instructions.
 

@@ -65,20 +65,22 @@ Commit and push the generated files to GitHub.
 
 ### Configure Personal Access Token (Required)
 
-To enable automatic version checking and release creation, you need to configure a Personal Access Token:
+To enable automatic version checking and release creation, you need to configure a **repository-scoped fine-grained Personal Access Token**:
 
 1. Go to [GitHub Settings > Personal access tokens > Fine-grained tokens](https://github.com/settings/personal-access-tokens/new)
 2. Token name: `MegaLinter Auto-Release`
 3. Expiration: Choose 90 days or 1 year
-4. Repository access: **Only select repositories**
-5. Choose your custom flavor repository
-6. Repository permissions:
+4. **Repository access**: Select **Only select repositories**
+5. Choose your custom flavor repository from the dropdown
+6. **Repository permissions**:
    - **Contents**: Read and write
    - **Actions**: Read and write
 7. Click **Generate token** and copy it
 8. Go to your repository **Settings > Secrets and variables > Actions**
 9. Click **New repository secret**
 10. Name: `PAT_TOKEN`, Value: paste your token
+
+**Important**: The token must be scoped to your specific repository. Account-level tokens or tokens without repository selection will not work.
 
 Without this token, the automatic version checking workflow will fail, and you'll need to create releases manually.
 
