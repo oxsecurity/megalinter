@@ -27,6 +27,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Reporters
 
 - Doc
+  - Add OLLAMA_BASE_URL is MegaLinter config Json schema
 
 - Flavors
 
