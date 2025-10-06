@@ -21,6 +21,8 @@ If [LLM Advisor](../llm-advisor.md) is activated, it will also show its suggesti
 
 Example:
 
+<!-- # MAJOR-RELEASE-IMPACTED -->
+
 ```yaml
       - script: |
           docker run -v $(System.DefaultWorkingDirectory):/tmp/lint \

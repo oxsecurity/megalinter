@@ -8,7 +8,9 @@ description: You can use latest release or beta version of MegaLinter, know the 
 
 # Which version to use ?
 
-The following instructions examples are using latest MegaLinter stable version (**v8** , always corresponding to the [latest release](https://github.com/oxsecurity/megalinter/releases))
+<!-- # MAJOR-RELEASE-IMPACTED -->
+
+The following instructions examples are using latest MegaLinter stable version (**v9** , always corresponding to the [latest release](https://github.com/oxsecurity/megalinter/releases))
 
 - Docker image: `oxsecurity/megalinter:v9`
 - GitHub Action: `oxsecurity/megalinter@v9`
