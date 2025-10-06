@@ -154,7 +154,7 @@ jobs:
         run: |
           echo "Creating release for version $NEW_VERSION..."
           
-          # Create a release using GitHub CLI
+          # Create a release using GitHub CLI (will also create the tag)
           gh release create "$NEW_VERSION" \
             --title "MegaLinter Custom Flavor $NEW_VERSION" \
             --notes "Automated release to sync with MegaLinter version $NEW_VERSION.
