@@ -10071,6 +10071,8 @@
 <li>The following variables must be sent to the docker run command</li>
 </ul>
 <p>Example:</p>
+<!-- # MAJOR-RELEASE-IMPACTED -->
+
 <pre><code class="language-yaml">      - script: |
           docker run -v $(System.DefaultWorkingDirectory):/tmp/lint \
             --env-file &lt;(env | grep -e SYSTEM_ -e BUILD_ -e TF_ -e AGENT_) \
