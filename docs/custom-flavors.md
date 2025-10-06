@@ -49,7 +49,11 @@ Select your custom flavor label and the linters you want to include.
 
 ### Generated files
 
-The generator will create all necessary configuration files, GitHub Actions workflow, and documentation in your repository.
+The generator will create all necessary configuration files, GitHub Actions workflows, and documentation in your repository.
+
+Two workflows are generated:
+- **megalinter-custom-flavor-builder.yml**: Builds and publishes your custom flavor Docker image
+- **check-new-megalinter-version.yml**: Automatically checks daily for new MegaLinter releases and creates matching releases in your repository
 
 ![](assets/images/custom-flavor-generated-files.png)
 
@@ -59,14 +63,46 @@ Commit and push the generated files to GitHub.
 
 ![](assets/images/custom-flavor-commit-push.png)
 
+### Configure Personal Access Token (Required)
+
+To enable automatic version checking and release creation, you need to configure a Personal Access Token:
+
+1. Go to [GitHub Settings > Personal access tokens > Fine-grained tokens](https://github.com/settings/personal-access-tokens/new)
+2. Token name: `MegaLinter Auto-Release`
+3. Expiration: Choose 90 days or 1 year
+4. Repository access: **Only select repositories**
+5. Choose your custom flavor repository
+6. Repository permissions:
+   - **Contents**: Read and write
+   - **Actions**: Read and write
+7. Click **Generate token** and copy it
+8. Go to your repository **Settings > Secrets and variables > Actions**
+9. Click **New repository secret**
+10. Name: `PAT_TOKEN`, Value: paste your token
+
+Without this token, the automatic version checking workflow will fail, and you'll need to create releases manually.
+
+### Optional: Configure Docker Hub publishing
+
+By default, your custom flavor is published to GitHub Container Registry (ghcr.io). To also publish to Docker Hub:
+
+1. Go to your repository **Settings > Secrets and variables > Actions**
+2. Under **Variables**, create:
+   - `DOCKERHUB_REPO`: Your Docker Hub username/organization (e.g., `nvuillam`)
+3. Under **Secrets**, create:
+   - `DOCKERHUB_USERNAME`: Your Docker Hub username
+   - `DOCKERHUB_PASSWORD`: Your Docker Hub password or access token
+
 ### Build and publish your custom flavor
 
-Create a GitHub release or push to any branch to trigger the GitHub action workflow that builds and publish your custom MegaLinter Docker image.
+Your custom flavor will be built and published automatically in two ways:
 
-The generated workflow will build and publish your custom flavor to GitHub Container Registry (ghcr.io) and optionally Docker Hub if you define variables and secrets:
-  - `DOCKERHUB_REPO` (variable)
-  - `DOCKERHUB_USERNAME` (secret)
-  - `DOCKERHUB_PASSWORD` (secret)
+1. **Automatic version sync** (recommended): The `check-new-megalinter-version` workflow runs daily, checks for new MegaLinter releases, and automatically creates matching releases in your repository. Each release triggers the builder workflow.
+
+2. **Manual triggers**:
+   - Create a GitHub release to build a specific version
+   - Push to any branch (except main) to build a `beta` tagged image
+   - Manually run the `megalinter-custom-flavor-builder` workflow
 
 ![](assets/images/custom-flavor-release-1.png)
 
@@ -120,13 +156,23 @@ mega-linter:
 If you add/remove linters in your `mega-linter-flavor.yml`:
 
 - Run `npx mega-linter-runner@beta --custom-flavor-setup` to apply upgrades to other files
-- Delete your release and associated tag, then recreate the release with the same tag name.
+- Commit and push the changes
+- Create a new release or push to a branch to rebuild your custom flavor
 
 ## Upgrade your custom flavor
 
-When a new MegaLinter official release is published, you can create a new version of your custom flavor.
+Your custom flavor automatically stays up to date with MegaLinter releases:
 
-Just create a GitHub Release with the same version (tag) than the MegaLinter release you want to use to generate your upgraded flavor.
+- The `check-new-megalinter-version` workflow runs daily and automatically creates new releases when MegaLinter publishes new versions
+- Each release triggers the builder workflow to generate your updated custom flavor
+
+**Manual upgrade**: If you need to upgrade immediately or the automatic workflow isn't configured:
+
+1. Check the latest MegaLinter version at [oxsecurity/megalinter releases](https://github.com/oxsecurity/megalinter/releases)
+2. Create a GitHub Release in your repository with the same version tag (e.g., `v9.0.0`)
+3. The builder workflow will automatically create your custom flavor using that MegaLinter version
+
+**Troubleshooting**: If automatic version checking isn't working, ensure you have configured the `PAT_TOKEN` secret as described in the setup instructions above.
 
 
 
