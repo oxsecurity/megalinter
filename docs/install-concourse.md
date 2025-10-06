@@ -14,6 +14,8 @@ Use the following job step in your pipeline template.
 
 Note: Make sure you have a `job.plan.get` step that retrieves the `repo` containing your repository, as shown in the example.
 
+<!-- # MAJOR-RELEASE-IMPACTED -->
+
 ```yaml
 ---
 
@@ -27,7 +29,7 @@ Note: Make sure you have a `job.plan.get` step that retrieves the `repo` contain
             type: docker-image
             source:
               repository: oxsecurity/megalinter
-              tag: v8
+              tag: v9
           inputs:
             - name: repo
           run:
@@ -55,6 +57,8 @@ Create a reusable Concourse task that can be used with multiple pipelines.
 
 1. Create task file `task-linting.yaml`
 
+<!-- # MAJOR-RELEASE-IMPACTED -->
+
 ```yaml
 ---
 platform: linux
@@ -62,7 +66,7 @@ image_resource:
   type: docker-image
   source:
     repository: oxsecurity/megalinter
-    tag: v8
+    tag: v9
 
 inputs:
 - name: repo

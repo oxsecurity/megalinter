@@ -32,6 +32,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Flavors
 
 - CI
+  - Fix v9 release issue + mark hardcoded versions to upgrade at each new major release.
 
 - mega-linter-runner
 
