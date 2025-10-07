@@ -49,7 +49,7 @@ FROM python:3.13-alpine3.22
 #############################################################################################
 #ARG__START
 # renovate: datasource=github-tags depName=Azure/bicep
-ARG BICEP_VERSION=0.37.4
+ARG BICEP_VERSION=0.38.33
 ARG BICEP_EXE='bicep'
 ARG BICEP_DIR='/usr/local/bin'
 #ARG__END
