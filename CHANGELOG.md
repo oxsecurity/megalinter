@@ -66,6 +66,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [pylint](https://pylint.readthedocs.io) from 3.3.8 to **3.3.9** on 2025-10-06
   - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.66.0 to **0.67.0** on 2025-10-06
   - [trivy](https://aquasecurity.github.io/trivy/) from 0.66.0 to **0.67.0** on 2025-10-06
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 15.2.1 to **15.2.2** on 2025-10-07
 <!-- linter-versions-end -->
 
 ## [v9.0.1] - 2025-09-21
