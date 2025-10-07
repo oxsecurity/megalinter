@@ -55,7 +55,7 @@ ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.20.5
 # renovate: datasource=npm depName=sfdx-hardis
 ARG SFDX_HARDIS_VERSION=6.5.5
 # renovate: datasource=npm depName=lightning-flow-scanner
-ARG LIGHTNING_FLOW_SCANNER_VERSION=5.2.0
+ARG LIGHTNING_FLOW_SCANNER_VERSION=5.6.2
 #ARG__END
 
 ####################
