@@ -127,8 +127,8 @@ ARG DETEKT_VERSION=1.23.8
 
 # renovate: datasource=github-tags depName=kubescape/kubescape
 ARG KUBERNETES_KUBESCAPE_VERSION=3.0.41
-# renovate: datasource=npm depName=markdownlint-cli
-ARG NPM_MARKDOWNLINT_CLI_VERSION=0.45.0
+# renovate: datasource=npm depName=markdownlint-cli2
+ARG NPM_MARKDOWNLINT_CLI2_VERSION=0.18.1
 # renovate: datasource=npm depName=markdown-table-formatter
 ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.6.1
 # renovate: datasource=packagist depName=squizlabs/php_codesniffer
@@ -321,7 +321,7 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 @prantlf/jsonlint@${NPM_PRANTLF_JSONLINT_VERSION} \
                 v8r@${NPM_V8R_VERSION} \
                 prettier@${NPM_PRETTIER_VERSION} \
-                markdownlint-cli@${NPM_MARKDOWNLINT_CLI_VERSION} \
+                markdownlint-cli2@${NPM_MARKDOWNLINT_CLI2_VERSION} \
                 markdown-table-formatter@${NPM_MARKDOWN_TABLE_FORMATTER_VERSION} \
                 @ls-lint/ls-lint@${NPM_LS_LINT_LS_LINT_VERSION} \
                 secretlint@${NPM_SECRETLINT_VERSION} \

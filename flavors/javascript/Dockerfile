@@ -167,8 +167,8 @@ ARG DETEKT_VERSION=1.23.8
 
 # renovate: datasource=github-tags depName=kubescape/kubescape
 ARG KUBERNETES_KUBESCAPE_VERSION=3.0.41
-# renovate: datasource=npm depName=markdownlint-cli
-ARG NPM_MARKDOWNLINT_CLI_VERSION=0.45.0
+# renovate: datasource=npm depName=markdownlint-cli2
+ARG NPM_MARKDOWNLINT_CLI2_VERSION=0.18.1
 # renovate: datasource=npm depName=markdown-table-formatter
 ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.6.1
 # renovate: datasource=github-tags depName=anchore/grype
@@ -360,7 +360,7 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 npm-package-json-lint-config-default@${NPM_PACKAGE_JSON_LINT_CONFIG_DEFAULT_VERSION} \
                 eslint-plugin-react@${NPM_ESLINT_PLUGIN_REACT_VERSION} \
                 eslint-plugin-jsx-a11y@${NPM_ESLINT_PLUGIN_JSX_ALLY_VERSION} \
-                markdownlint-cli@${NPM_MARKDOWNLINT_CLI_VERSION} \
+                markdownlint-cli2@${NPM_MARKDOWNLINT_CLI2_VERSION} \
                 markdown-table-formatter@${NPM_MARKDOWN_TABLE_FORMATTER_VERSION} \
                 @ls-lint/ls-lint@${NPM_LS_LINT_LS_LINT_VERSION} \
                 secretlint@${NPM_SECRETLINT_VERSION} \
