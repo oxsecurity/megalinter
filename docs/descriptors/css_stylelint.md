@@ -321,7 +321,7 @@ stylelint --fix --config .stylelintrc.json myfile.css myfile2.css myfile3.css
 # renovate: datasource=npm depName=stylelint
 ARG NPM_STYLELINT_VERSION=16.24.0
 # renovate: datasource=npm depName=stylelint-config-standard
-ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=39.0.0
+ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=39.0.1
 # renovate: datasource=npm depName=stylelint-config-sass-guidelines
 ARG NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION=12.1.0
 # renovate: datasource=npm depName=stylelint-scss
@@ -332,7 +332,7 @@ ARG PIP_CPPLINT_VERSION=2.0.2
 
 - NPM packages (node.js):
   - [stylelint@16.24.0](https://www.npmjs.com/package/stylelint/v/16.24.0)
-  - [stylelint-config-standard@39.0.0](https://www.npmjs.com/package/stylelint-config-standard/v/39.0.0)
+  - [stylelint-config-standard@39.0.1](https://www.npmjs.com/package/stylelint-config-standard/v/39.0.1)
   - [stylelint-config-sass-guidelines@12.1.0](https://www.npmjs.com/package/stylelint-config-sass-guidelines/v/12.1.0)
   - [stylelint-scss@6.12.1](https://www.npmjs.com/package/stylelint-scss/v/6.12.1)
 - PIP packages (Python):
