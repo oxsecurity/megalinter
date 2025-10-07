@@ -67,6 +67,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.66.0 to **0.67.0** on 2025-10-06
   - [trivy](https://aquasecurity.github.io/trivy/) from 0.66.0 to **0.67.0** on 2025-10-06
   - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 15.2.1 to **15.2.2** on 2025-10-07
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.37.4 to **0.38.33** on 2025-10-07
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.39.1 to **1.40.0** on 2025-10-07
 <!-- linter-versions-end -->
 
 ## [v9.0.1] - 2025-09-21
