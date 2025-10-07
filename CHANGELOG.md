@@ -30,6 +30,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Add OLLAMA_BASE_URL is MegaLinter config Json schema
 
 - Flavors
+  - Custom flavors: Add workflow to automate detection of new MegaLinter versions and generation of new Custom Flavor
 
 - CI
   - Fix v9 release issue + mark hardcoded versions to upgrade at each new major release.

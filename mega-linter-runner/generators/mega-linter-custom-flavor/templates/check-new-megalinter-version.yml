@@ -1,0 +1,281 @@
+# =============================================================
+# Check for New MegaLinter Version Workflow
+#
+# This workflow checks daily for new versions of the MegaLinter
+# custom-builder action and creates a release if a new version is found.
+#
+# Usage:
+# - Runs daily at 00:00 UTC via schedule
+# - Can be manually triggered via workflow_dispatch
+# - Compares MegaLinter tags with current repository tags
+# - Creates a new release if a new MegaLinter version is detected
+#
+# The workflow will:
+# 1. Fetch all tags from oxsecurity/megalinter repository
+# 2. Fetch all tags from the current repository
+# 3. Find new tags that exist in MegaLinter but not in current repo
+# 4. Create a release with the new version tag
+# 5. The release will trigger megalinter-custom-flavor-builder.yml
+#
+# Required permissions:
+#   - contents: write (to create releases and tags)
+#
+# Required repository secrets:
+#   - PAT_TOKEN: Personal Access Token with 'contents' and 'actions' permissions
+#     This is required to trigger the builder workflow. Without it, the workflow
+#     will fail and the release will be deleted (to be recreated once the token is set).
+#
+# To create a Fine-grained PAT (recommended - more secure):
+#   1. Go to GitHub Settings > Developer settings > Personal access tokens > Fine-grained tokens
+#   2. Click "Generate new token"
+#   3. Give it a descriptive name (e.g., "MegaLinter Auto-Release")
+#   4. Set expiration (e.g., 90 days or 1 year)
+#   5. Under "Repository access", select "Only select repositories"
+#   6. Choose this repository (megalinter-custom-flavor-npm-groovy-lint)
+#   7. Under "Permissions" > "Repository permissions":
+#      - Contents: Read and write
+#      - Actions: Read and write
+#   8. Click "Generate token" and copy the token
+#   9. In your repository, go to Settings > Secrets and variables > Actions
+#   10. Click "New repository secret"
+#   11. Name: PAT_TOKEN, Value: paste your token
+# =============================================================
+
+name: Check for New MegaLinter Version
+
+on:
+  schedule:
+    # Run daily at 00:00 UTC
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  check-new-version:
+    name: Check for New MegaLinter Version
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Fetch MegaLinter Repository Tags
+        id: fetch-megalinter-tags
+        run: |
+          echo "Fetching tags from oxsecurity/megalinter..."
+
+          # Fetch all tags from MegaLinter repository (filtering for version tags only)
+          MEGALINTER_TAGS=$(git ls-remote --tags --refs https://github.com/oxsecurity/megalinter.git | \
+            grep -E 'refs/tags/v[0-9]+\.[0-9]+\.[0-9]+$' | \
+            sed 's/.*refs\/tags\///' | \
+            sort -V | \
+            tail -n 20)
+
+          echo "Latest MegaLinter tags:"
+          echo "$MEGALINTER_TAGS"
+
+          # Get the latest tag
+          LATEST_MEGALINTER_TAG=$(echo "$MEGALINTER_TAGS" | tail -n 1)
+          echo "latest_tag=$LATEST_MEGALINTER_TAG" >> $GITHUB_OUTPUT
+
+          # Save all tags to a file
+          echo "$MEGALINTER_TAGS" > megalinter_tags.txt
+
+      - name: Fetch Current Repository Tags
+        id: fetch-repo-tags
+        run: |
+          echo "Fetching tags from current repository..."
+
+          # Fetch all version tags from current repository
+          REPO_TAGS=$(git tag -l 'v*' | sort -V)
+
+          echo "Current repository tags:"
+          echo "$REPO_TAGS"
+
+          # Get the latest tag from current repository
+          if [ -z "$REPO_TAGS" ]; then
+            LATEST_REPO_TAG=""
+            echo "No existing tags in repository"
+          else
+            LATEST_REPO_TAG=$(echo "$REPO_TAGS" | tail -n 1)
+            echo "Latest repository tag: $LATEST_REPO_TAG"
+          fi
+
+          echo "latest_repo_tag=$LATEST_REPO_TAG" >> $GITHUB_OUTPUT
+
+      - name: Find New Version
+        id: find-new-version
+        run: |
+          echo "Comparing versions..."
+
+          LATEST_MEGALINTER_TAG="${{ steps.fetch-megalinter-tags.outputs.latest_tag }}"
+          LATEST_REPO_TAG="${{ steps.fetch-repo-tags.outputs.latest_repo_tag }}"
+
+          echo "Latest MegaLinter tag: $LATEST_MEGALINTER_TAG"
+          echo "Latest repository tag: $LATEST_REPO_TAG"
+
+          # Function to compare semantic versions
+          version_greater_than() {
+            # Remove 'v' prefix for comparison
+            ver1="${1#v}"
+            ver2="${2#v}"
+            
+            # Use sort -V to compare versions
+            if [ "$(printf '%s\n' "$ver1" "$ver2" | sort -V | tail -n1)" = "$ver1" ] && [ "$ver1" != "$ver2" ]; then
+              return 0  # ver1 > ver2
+            else
+              return 1  # ver1 <= ver2
+            fi
+          }
+
+          # Check if we should create a new release
+          if [ -z "$LATEST_REPO_TAG" ]; then
+            echo "No existing tags in repository. Will create release for $LATEST_MEGALINTER_TAG"
+            echo "new_version_found=true" >> $GITHUB_OUTPUT
+            echo "new_version=$LATEST_MEGALINTER_TAG" >> $GITHUB_OUTPUT
+          elif version_greater_than "$LATEST_MEGALINTER_TAG" "$LATEST_REPO_TAG"; then
+            echo "✅ New version found! $LATEST_MEGALINTER_TAG > $LATEST_REPO_TAG"
+            echo "new_version_found=true" >> $GITHUB_OUTPUT
+            echo "new_version=$LATEST_MEGALINTER_TAG" >> $GITHUB_OUTPUT
+          else
+            echo "ℹ️ No new version. Repository is up to date."
+            echo "new_version_found=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Create Release for New Version
+        if: steps.find-new-version.outputs.new_version_found == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NEW_VERSION: ${{ steps.find-new-version.outputs.new_version }}
+        run: |
+          echo "Creating release for version $NEW_VERSION..."
+
+          # Create a release using GitHub CLI (will also create the tag)
+          gh release create "$NEW_VERSION" \
+            --title "MegaLinter Custom Flavor $NEW_VERSION" \
+            --notes "Automated release to sync with MegaLinter version $NEW_VERSION.
+
+          This release was automatically created to build a custom MegaLinter flavor based on the upstream MegaLinter release $NEW_VERSION.
+
+          For more information about changes in this version, see the [MegaLinter changelog](https://github.com/oxsecurity/megalinter/releases/tag/$NEW_VERSION)." \
+            --latest
+
+      - name: Trigger Custom Flavor Builder Workflow
+        if: steps.find-new-version.outputs.new_version_found == 'true'
+        env:
+          # Use PAT_TOKEN if available, otherwise fall back to GITHUB_TOKEN
+          # Note: GITHUB_TOKEN doesn't have permission to trigger workflows
+          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN || secrets.GITHUB_TOKEN }}
+        run: |
+          echo "Triggering megalinter-custom-flavor-builder workflow..."
+
+          NEW_VERSION="${{ steps.find-new-version.outputs.new_version }}"
+
+          # Trigger the workflow using GitHub CLI and capture output
+          set +e  # Don't exit immediately on error
+          gh workflow run megalinter-custom-flavor-builder.yml \
+            --ref main \
+            --field megalinter-version="$NEW_VERSION" \
+            --field is-latest="true" \
+            2>&1 | tee workflow_trigger.log
+          EXIT_CODE=$?
+          set -e  # Re-enable exit on error
+
+          # Check for errors in the output
+          if grep -q "could not create workflow dispatch event" workflow_trigger.log || \
+             grep -q "Resource not accessible by integration" workflow_trigger.log || \
+             grep -q "HTTP 403" workflow_trigger.log || \
+             [ $EXIT_CODE -ne 0 ]; then
+            
+            echo "::error::❌ Failed to trigger workflow!"
+            echo ""
+            cat workflow_trigger.log
+            echo ""
+            
+            if grep -q "Resource not accessible by integration" workflow_trigger.log || grep -q "HTTP 403" workflow_trigger.log; then
+              echo "::error::The workflow could not be triggered due to insufficient token permissions."
+              echo "::error::"
+              echo "::error::Deleting the release so it can be recreated once PAT_TOKEN is configured..."
+              
+              # Delete the release and tag that was just created
+              gh release delete "$NEW_VERSION" --yes --cleanup-tag 2>&1 || echo "::warning::Could not delete release (it may not exist or already be deleted)"
+              
+              echo "::error::"
+              echo "::error::⚠️ PAT_TOKEN is REQUIRED to create releases and trigger the builder workflow."
+              echo "::error::"
+              echo "::error::To fix this, create a Fine-grained Personal Access Token (recommended - more secure):"
+              echo "::error::1. Go to: https://github.com/settings/personal-access-tokens/new"
+              echo "::error::2. Token name: 'MegaLinter Auto-Release'"
+              echo "::error::3. Expiration: Choose 90 days or 1 year"
+              echo "::error::4. Repository access: Select 'Only select repositories'"
+              echo "::error::5. Choose repository: ${{ github.repository }}"
+              echo "::error::6. Repository permissions:"
+              echo "::error::   - Contents: Read and write"
+              echo "::error::   - Actions: Read and write"
+              echo "::error::7. Click 'Generate token' and copy it"
+              echo "::error::8. Go to: https://github.com/${{ github.repository }}/settings/secrets/actions"
+              echo "::error::9. Click 'New repository secret'"
+              echo "::error::10. Name: 'PAT_TOKEN', Value: paste your token"
+              echo "::error::"
+              echo "::error::Once configured, run this workflow again (manually or wait for the next scheduled run)."
+            fi
+            
+            exit 1
+          fi
+
+          echo "✅ Builder workflow triggered successfully with version: $NEW_VERSION"
+
+      - name: Summary
+        if: always()
+        run: |
+          echo "## Check for New MegaLinter Version Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          LATEST_MEGALINTER_TAG="${{ steps.fetch-megalinter-tags.outputs.latest_tag }}"
+          LATEST_REPO_TAG="${{ steps.fetch-repo-tags.outputs.latest_repo_tag }}"
+
+          if [ "${{ steps.find-new-version.outputs.new_version_found }}" == "true" ]; then
+            echo "✅ New version found: **${{ steps.find-new-version.outputs.new_version }}**" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "A new release has been created, which will trigger the custom flavor builder workflow." >> $GITHUB_STEP_SUMMARY
+            
+            # Check if PAT_TOKEN is configured
+            if [ -z "${{ secrets.PAT_TOKEN }}" ]; then
+              echo "" >> $GITHUB_STEP_SUMMARY
+              echo "### ⚠️ REQUIRED: Configure PAT_TOKEN" >> $GITHUB_STEP_SUMMARY
+              echo "" >> $GITHUB_STEP_SUMMARY
+              echo "**PAT_TOKEN is required to trigger the builder workflow and create releases.**" >> $GITHUB_STEP_SUMMARY
+              echo "" >> $GITHUB_STEP_SUMMARY
+              echo "Without it, releases will be automatically deleted and the workflow will fail." >> $GITHUB_STEP_SUMMARY
+              echo "" >> $GITHUB_STEP_SUMMARY
+              echo "**To create a Fine-grained Personal Access Token (recommended - more secure):**" >> $GITHUB_STEP_SUMMARY
+              echo "1. Go to [GitHub Settings > Personal access tokens > Fine-grained tokens](https://github.com/settings/personal-access-tokens/new)" >> $GITHUB_STEP_SUMMARY
+              echo "2. Token name: \`MegaLinter Auto-Release\`" >> $GITHUB_STEP_SUMMARY
+              echo "3. Expiration: Choose 90 days or 1 year" >> $GITHUB_STEP_SUMMARY
+              echo "4. Repository access: **Only select repositories**" >> $GITHUB_STEP_SUMMARY
+              echo "5. Choose repository: \`${{ github.repository }}\`" >> $GITHUB_STEP_SUMMARY
+              echo "6. Repository permissions:" >> $GITHUB_STEP_SUMMARY
+              echo "   - **Contents**: Read and write" >> $GITHUB_STEP_SUMMARY
+              echo "   - **Actions**: Read and write" >> $GITHUB_STEP_SUMMARY
+              echo "7. Click **Generate token** and copy it" >> $GITHUB_STEP_SUMMARY
+              echo "8. Go to [Repository Settings > Secrets](https://github.com/${{ github.repository }}/settings/secrets/actions)" >> $GITHUB_STEP_SUMMARY
+              echo "9. Click **New repository secret**" >> $GITHUB_STEP_SUMMARY
+              echo "10. Name: \`PAT_TOKEN\`, Value: paste your token" >> $GITHUB_STEP_SUMMARY
+            fi
+          else
+            echo "ℹ️ No new versions found. Repository is up to date with MegaLinter." >> $GITHUB_STEP_SUMMARY
+          fi
+
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Version Comparison:**" >> $GITHUB_STEP_SUMMARY
+          echo "- Latest MegaLinter version: **$LATEST_MEGALINTER_TAG**" >> $GITHUB_STEP_SUMMARY
+
+          if [ -n "$LATEST_REPO_TAG" ]; then
+            echo "- Latest repository version: **$LATEST_REPO_TAG**" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "- Latest repository version: **No tags found**" >> $GITHUB_STEP_SUMMARY
+          fi
