@@ -15,7 +15,7 @@ description: How to use checkov (configure, ignore files, ignore errors, help & 
 
 _This linter has been disabled in this version_
 
-_Disabled reason: https://github.com/bridgecrewio/checkov/issues/7263_
+_Disabled reason: <https://github.com/bridgecrewio/checkov/issues/7263>_
 
 **Checkov** is a comprehensive static code analysis tool for Infrastructure as Code (IaC) that prevents cloud security misconfigurations before they reach production.
 
@@ -43,8 +43,8 @@ _Disabled reason: https://github.com/bridgecrewio/checkov/issues/7263_
 
 ## Configuration in MegaLinter
 
-- Enable checkov by adding `REPOSITORY_CHECKOV` in [ENABLE_LINTERS variable](https://megalinter.io/9.1.0/configuration/#activation-and-deactivation)
-- Disable checkov by adding `REPOSITORY_CHECKOV` in [DISABLE_LINTERS variable](https://megalinter.io/9.1.0/configuration/#activation-and-deactivation)
+- Enable checkov by adding `REPOSITORY_CHECKOV` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
+- Disable checkov by adding `REPOSITORY_CHECKOV` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
 | Variable                                       | Description                                                                                                                                                                                                                                                                           | Default value                                   |
 |------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
@@ -64,9 +64,9 @@ _Disabled reason: https://github.com/bridgecrewio/checkov/issues/7263_
 
 This linter is available in the following flavors
 
-|                                                                         <!-- -->                                                                         | Flavor                                                | Description               | Embedded linters |                                                                                                                                                                         Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------|:--------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/9.1.0/supported-linters/) | Default MegaLinter Flavor |       127        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v9.1.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|                                                                         <!-- -->                                                                         | Flavor                                               | Description               | Embedded linters |                                                                                                                                                                       Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       127        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 
 ## Behind the scenes
 
