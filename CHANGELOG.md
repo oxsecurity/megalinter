@@ -11,7 +11,6 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Core
 
 - New linters
-  - Add [Robocop](https://github.com/MarketSquare/robotframework-robocop) linter, by @bdovaz in <https://github.com/oxsecurity/megalinter/pull/6232>
 
 - Disabled linters
 
@@ -20,11 +19,29 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Media
 
 - Linters enhancements
-  - Python Linting: Added more file type supports for various linters. Full description [here](https://github.com/oxsecurity/megalinter/pull/6214)
 
 - Fixes
 
 - Reporters
+
+- Doc
+
+- Flavors
+
+- CI
+
+- mega-linter-runner
+
+- Linter versions upgrades (N)
+<!-- linter-versions-end -->
+
+## [v9.1.0] - 2025-10-07
+
+- New linters
+  - Add [Robocop](https://github.com/MarketSquare/robotframework-robocop) linter, by @bdovaz in <https://github.com/oxsecurity/megalinter/pull/6232>
+
+- Linters enhancements
+  - Python Linting: Added more file type supports for various linters. Full description [here](https://github.com/oxsecurity/megalinter/pull/6214)
 
 - Doc
   - Add OLLAMA_BASE_URL is MegaLinter config Json schema
@@ -34,9 +51,6 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - CI
   - Fix v9 release issue + mark hardcoded versions to upgrade at each new major release.
-
-- mega-linter-runner
-
 
 - Linter versions upgrades (N)
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.13.2 to **1.13.3** on 2025-09-21
@@ -69,7 +83,6 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 15.2.1 to **15.2.2** on 2025-10-07
   - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.37.4 to **0.38.33** on 2025-10-07
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.39.1 to **1.40.0** on 2025-10-07
-<!-- linter-versions-end -->
 
 ## [v9.0.1] - 2025-09-21
 
