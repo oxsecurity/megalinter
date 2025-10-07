@@ -7,7 +7,7 @@ outputs:
     description: "0 if no source file has been updated, 1 if source files has been updated"
 runs:
   using: "docker"
-  image: "docker://ghcr.io/oxsecurity/megalinter-php:v9.1.0"
+  image: "docker://ghcr.io/oxsecurity/megalinter-php:v9"
   args:
     - "-v"
     - "/var/run/docker.sock:/var/run/docker.sock:rw"
