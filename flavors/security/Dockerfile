@@ -93,6 +93,8 @@ ARG KUBERNETES_KUBESCAPE_VERSION=3.0.41
 ARG PIP_BANDIT_VERSION=1.8.6
 # renovate: datasource=pypi depName=bandit_sarif_formatter
 ARG PIP_BANDIT_SARIF_FORMATTER_VERSION=1.1.1
+# renovate: datasource=pypi depName=checkov
+ARG PIP_CHECKOV_VERSION=3.2.473
 # renovate: datasource=nuget depName=Microsoft.CST.DevSkim.CLI
 ARG REPOSITORY_DEVSKIM_VERSION=1.0.67
 # renovate: datasource=github-tags depName=anchore/grype
@@ -198,10 +200,11 @@ RUN uv pip install --system --no-cache pip==${PIP_PIP_VERSION} virtualenv==${PIP
     && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/ansible-lint" && VIRTUAL_ENV="/venvs/ansible-lint" uv pip install --no-cache ansible-lint==${PIP_ANSIBLE_LINT_VERSION} \
     && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/cfn-lint" && VIRTUAL_ENV="/venvs/cfn-lint" uv pip install --no-cache cfn-lint[sarif]==${PIP_CFN_LINT_VERSION} \
     && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/bandit" && VIRTUAL_ENV="/venvs/bandit" uv pip install --no-cache bandit==${PIP_BANDIT_VERSION} bandit_sarif_formatter==${PIP_BANDIT_SARIF_FORMATTER_VERSION} bandit[toml]==${PIP_BANDIT_VERSION} \
+    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/checkov" && VIRTUAL_ENV="/venvs/checkov" uv pip install --no-cache checkov==${PIP_CHECKOV_VERSION} \
     && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/semgrep" && VIRTUAL_ENV="/venvs/semgrep" uv pip install --no-cache semgrep==${PIP_SEMGREP_VERSION}  \
     && find /venvs \( -type f \( -iname \*.pyc -o -iname \*.pyo \) -o -type d -iname __pycache__ \) -delete \
     && rm -rf /root/.cache
-ENV PATH="${PATH}":/venvs/ansible-lint/bin:/venvs/cfn-lint/bin:/venvs/bandit/bin:/venvs/semgrep/bin
+ENV PATH="${PATH}":/venvs/ansible-lint/bin:/venvs/cfn-lint/bin:/venvs/bandit/bin:/venvs/checkov/bin:/venvs/semgrep/bin
 #PIPVENV__END
 
 ############################
@@ -288,6 +291,8 @@ RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: Fil
     curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash -s -- -v "v${KUBERNETES_KUBESCAPE_VERSION}" \
 #
 # bandit installation
+#
+# checkov installation
 #
 # devskim installation
     && apk add --no-cache dotnet9-sdk
