@@ -24,7 +24,7 @@ description: How to use xmllint (configure, ignore files, ignore errors, help & 
 
 ## xmllint documentation
 
-- Version in MegaLinter: **21308**
+- Version in MegaLinter: **21309**
 - Visit [Official Web Site](https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home){target=_blank}
 - See [How to configure xmllint rules](https://gnome.pages.gitlab.gnome.org/libxml2/xmllint.html){target=_blank}
 
