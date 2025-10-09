@@ -9,7 +9,7 @@
     "cfn-lint": "1.40.0",
     "checkmake": "0.2.0",
     "checkov": "3.2.413",
-    "checkstyle": "11.1.0",
+    "checkstyle": "12.0.0",
     "chktex": "1.7.8",
     "clang-format": "20.1.8",
     "clippy": "0.1.90",
@@ -89,7 +89,7 @@
     "rubocop": "1.81.1",
     "ruff": "0.13.3",
     "ruff-format": "0.13.3",
-    "scalafix": "0.14.3",
+    "scalafix": "0.14.4",
     "scss-lint": "0.60.0",
     "secretlint": "11.2.4",
     "selene": "0.29.0",
@@ -122,6 +122,6 @@
     "tsqllint": "1.16.0.0",
     "v8r": "5.1.0",
     "vale": "3.12.0",
-    "xmllint": "21308",
+    "xmllint": "21309",
     "yamllint": "1.37.1"
 }
