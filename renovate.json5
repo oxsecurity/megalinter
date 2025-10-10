@@ -9,7 +9,7 @@
     ':label(dependencies)',
     ':configMigration',
     ':combinePatchMinorReleases',
-    'npm:unpublishSafe',
+    'security:minimumReleaseAgeNpm',
     'preview:dockerVersions',
     'group:unitTestNonMajor',
     ':enableVulnerabilityAlerts',
