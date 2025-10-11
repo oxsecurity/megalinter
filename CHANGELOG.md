@@ -34,6 +34,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - mega-linter-runner
 
 - Linter versions upgrades (N)
+  - [checkstyle](https://checkstyle.org/) from 11.1.0 to **12.0.0** on 2025-10-09
+  - [scalafix](https://scalacenter.github.io/scalafix/) from 0.14.3 to **0.14.4** on 2025-10-09
+  - [xmllint](https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home) from 21308 to **21309** on 2025-10-09
 <!-- linter-versions-end -->
 
 ## [v9.1.0] - 2025-10-07
