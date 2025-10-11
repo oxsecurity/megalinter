@@ -74,6 +74,7 @@
   "python_ruff_format",
   "r_lintr",
   "raku_raku",
+  "repository_checkov",
   "repository_devskim",
   "repository_dustilock",
   "repository_git_diff",
