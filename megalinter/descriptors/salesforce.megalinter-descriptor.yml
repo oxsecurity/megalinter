@@ -267,11 +267,9 @@ linters:
 
   # Lightning Flow Scanner
   - linter_name: lightning-flow-scanner
-    disabled: true
-    disabled_reason: Repo archived -> https://github.com/Lightning-Flow-Scanner
     files_sub_directory: force-app
     linter_text: |
-      **Lightning Flow Scanner** is a specialized SFDX plugin that analyzes Salesforce Flows for integrity issues, performance problems, and adherence to best practices. It helps developers build reliable and maintainable Flow automations.
+      **Lightning Flow Scanner** A Salesforce CLI Plugin designed to proactively enforce secure and maintainable Salesforce Flows. It detects unsafe running contexts, hardcoded IDs, unhandled nulls, inefficient database operations and more, helping teams ensure their automations are safe and reliable.
 
       **Key Features:**
 
@@ -286,10 +284,10 @@ linters:
       - **SFDX Native**: Built as a native SFDX plugin for consistent Salesforce toolchain integration
 
       If your root folder is not **force-app**, please set variable SALESFORCE_LIGHTNING_FLOW_SCANNER_DIRECTORY
-    linter_url: https://github.com/Lightning-Flow-Scanner
+    linter_url: https://flow-scanner.github.io/lightning-flow-scanner-cli/
     linter_repo: https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx
     linter_rules_url: https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-core#rules
-    linter_banner_image_url: https://raw.githubusercontent.com/Lightning-Flow-Scanner/.github/main/docs/images/bannerslim.png
+    linter_banner_image_url: https://raw.githubusercontent.com/Flow-Scanner/lightning-flow-scanner-cli/main/docs/images/banner.png
     linter_rules_configuration_url: https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx#configuration
     linter_spdx_license: AGPL-3.0
     config_file_name: .flow-scanner.json
@@ -321,4 +319,4 @@ linters:
     ide:
       vscode:
         - name: Lightning Flow Scanner
-          url: https://marketplace.visualstudio.com/items?itemName=ForceConfigControl.lightningflowscanner
+          url: https://marketplace.visualstudio.com/items?itemName=ForceConfigControl.lightning-flow-scanner-vsx
