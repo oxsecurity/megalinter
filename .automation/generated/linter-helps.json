@@ -3838,8 +3838,7 @@
         "  -l, --logger string         Logger level. Supported: debug/info/success/warning/error/fatal [$KS_LOGGER] (default \"info\")",
         "      --server string         Backend discovery server URL",
         "",
-        "Use \"kubescape [command] --help\" for more information about a command.",
-        "{\"level\":\"info\",\"ts\":\"2025-10-09T22:20:57Z\",\"msg\":\"Received interrupt signal, exiting...\"}"
+        "Use \"kubescape [command] --help\" for more information about a command."
     ],
     "kubeval": [
         "Validate a Kubernetes YAML file against the relevant schema",
@@ -9646,7 +9645,7 @@
         "                 [--apptainer-args ARGS] [--use-envmodules]",
         "                 [--deploy-sources QUERY CHECKSUM]",
         "                 [--target-jobs TARGET_JOBS [TARGET_JOBS ...]]",
-        "                 [--mode {subprocess,default,remote}]",
+        "                 [--mode {remote,default,subprocess}]",
         "                 [--scheduler-solver-path SCHEDULER_SOLVER_PATH]",
         "                 [--max-jobs-per-second MAX_JOBS_PER_SECOND]",
         "                 [--report-html-path VALUE]",
@@ -10376,7 +10375,7 @@
         "                        contain a working snakemake installation that is",
         "                        compatible with (or ideally the same as) the currently",
         "                        running version. (default:",
-        "                        snakemake/snakemake:v9.11.9)",
+        "                        snakemake/snakemake:v9.13.2)",
         "  --immediate-submit, --is",
         "                        Immediately submit all jobs to the cluster instead of",
         "                        waiting for present input files. This will fail,",
@@ -10489,7 +10488,7 @@
         "  --target-jobs TARGET_JOBS [TARGET_JOBS ...]",
         "                        Internal use only: Target particular jobs by",
         "                        RULE:WILDCARD1=VALUE,WILDCARD2=VALUE,...",
-        "  --mode {subprocess,default,remote}",
+        "  --mode {remote,default,subprocess}",
         "                        Internal use only: Set execution mode of Snakemake.",
         "                        (default: default)",
         "  --scheduler-solver-path SCHEDULER_SOLVER_PATH",
@@ -11183,7 +11182,7 @@
         "   --help, -h                 Show help. (default: false)",
         "   --version, -v              Show terragrunt version. (default: false)",
         "",
-        "Version: v0.88.1",
+        "Version: v0.90.0",
         "",
         "Author: Gruntwork <www.gruntwork.io>"
     ],

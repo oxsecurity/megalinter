@@ -36,6 +36,13 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkstyle](https://checkstyle.org/) from 11.1.0 to **12.0.0** on 2025-10-09
   - [scalafix](https://scalacenter.github.io/scalafix/) from 0.14.3 to **0.14.4** on 2025-10-09
   - [xmllint](https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home) from 21308 to **21309** on 2025-10-09
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 25.9.1 to **25.9.2** on 2025-10-12
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.40.0 to **1.40.1** on 2025-10-12
+  - [checkstyle](https://checkstyle.org/) from 12.0.0 to **12.0.1** on 2025-10-12
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.67.0 to **0.67.2** on 2025-10-12
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.67.0 to **0.67.2** on 2025-10-12
+  - [snakemake](https://snakemake.github.io/) from 9.11.9 to **9.13.2** on 2025-10-12
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.88.1 to **0.90.0** on 2025-10-12
 <!-- linter-versions-end -->
 
 ## [v9.1.0] - 2025-10-07
