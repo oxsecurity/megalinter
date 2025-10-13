@@ -32,6 +32,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - CI
 
 - mega-linter-runner
+  - Handle upgrade of stefanzweifel/git-auto-commit-action to v7
 
 - Linter versions upgrades (N)
   - [checkstyle](https://checkstyle.org/) from 11.1.0 to **12.0.0** on 2025-10-09
@@ -44,6 +45,13 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [trivy](https://aquasecurity.github.io/trivy/) from 0.67.0 to **0.67.2** on 2025-10-12
   - [snakemake](https://snakemake.github.io/) from 9.11.9 to **9.13.2** on 2025-10-12
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.88.1 to **0.90.0** on 2025-10-12
+  - [actionlint](https://rhysd.github.io/actionlint/) from 1.7.7 to **1.7.8** on 2025-10-13
+  - [isort](https://pycqa.github.io/isort/) from 6.1.0 to **7.0.0** on 2025-10-13
+  - [pylint](https://pylint.readthedocs.io) from 3.3.9 to **4.0.0** on 2025-10-13
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.13.3 to **0.14.0** on 2025-10-13
+  - [ruff](https://github.com/astral-sh/ruff) from 0.13.3 to **0.14.0** on 2025-10-13
+  - [editorconfig-checker](https://editorconfig-checker.github.io/) from 3.4.0 to **3.4.1** on 2025-10-13
+  - [phpstan](https://phpstan.org/) from 2.1.30 to **2.1.31** on 2025-10-13
 <!-- linter-versions-end -->
 
 ## [v9.1.0] - 2025-10-07

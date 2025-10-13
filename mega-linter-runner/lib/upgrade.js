@@ -483,10 +483,10 @@ jobs:
       },
       // Auto-commit action
       {
-        regex: /stefanzweifel\/git-auto-commit-action@v(2|3|4|5)/gm,
-        replacement: `stefanzweifel/git-auto-commit-action@v6`,
-        test: "stefanzweifel/git-auto-commit-action@v5",
-        testRes: `stefanzweifel/git-auto-commit-action@v6`,
+        regex: /stefanzweifel\/git-auto-commit-action@v(2|3|4|5|6)/gm,
+        replacement: `stefanzweifel/git-auto-commit-action@v7`,
+        test: "stefanzweifel/git-auto-commit-action@v6",
+        testRes: `stefanzweifel/git-auto-commit-action@v7`,
       },
       // All remaining cases... cross fingers :)
       {
