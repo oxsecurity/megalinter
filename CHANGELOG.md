@@ -31,6 +31,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - CI
 
 - mega-linter-runner
+  - Handle upgrade of stefanzweifel/git-auto-commit-action to v7
 
 - Linter versions upgrades (N)
   - [checkstyle](https://checkstyle.org/) from 11.1.0 to **12.0.0** on 2025-10-09
