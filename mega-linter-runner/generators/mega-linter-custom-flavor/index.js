@@ -84,7 +84,7 @@ Example: 'megalinter-custom-flavor-python-light'
 
   writing() {
     this._generateFlavorConfig();
-    this._generateGitHubWorkflow();
+    this._generateGitHubWorkflows();
     this._generateGitHubAction();
     this._generateReadme();
   }
@@ -132,10 +132,15 @@ Example: 'megalinter-custom-flavor-python-light'
     );
   }
 
-  _generateGitHubWorkflow() {
+  _generateGitHubWorkflows() {
     this.fs.copyTpl(
       this.templatePath("megalinter-custom-flavor-builder.yml"),
       this.destinationPath("./.github/workflows/megalinter-custom-flavor-builder.yml"),
+      {}
+    );
+    this.fs.copyTpl(
+      this.templatePath("check-new-megalinter-version.yml"),
+      this.destinationPath("./.github/workflows/check-new-megalinter-version.yml"),
       {}
     );
   }

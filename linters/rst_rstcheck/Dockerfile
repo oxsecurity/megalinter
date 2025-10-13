@@ -51,7 +51,7 @@ FROM python:3.13-alpine3.22
 # renovate: datasource=pypi depName=rstcheck
 ARG PIP_RSTCHECK_VERSION=6.2.5
 # renovate: datasource=pypi depName=click
-ARG PIP_RSTCHECK_CLICK_VERSION=8.2.1
+ARG PIP_RSTCHECK_CLICK_VERSION=8.3.0
 # renovate: datasource=pypi depName=pip
 ARG PIP_PIP_VERSION=25.2
 # renovate: datasource=pypi depName=virtualenv

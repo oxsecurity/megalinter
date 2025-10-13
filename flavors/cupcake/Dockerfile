@@ -13,13 +13,13 @@
 #############################################################################################
 #ARGTOP__START
 # renovate: datasource=docker depName=rhysd/actionlint
-ARG ACTION_ACTIONLINT_VERSION=1.7.7
+ARG ACTION_ACTIONLINT_VERSION=1.7.8
 # renovate: datasource=docker depName=koalaman/shellcheck
 ARG BASH_SHELLCHECK_VERSION=v0.11.0
 # renovate: datasource=docker depName=mvdan/shfmt
 ARG BASH_SHFMT_VERSION=v3.12.0-alpine
 # renovate: datasource=docker depName=hadolint/hadolint
-ARG DOCKERFILE_HADOLINT_VERSION=v2.13.1-alpine
+ARG DOCKERFILE_HADOLINT_VERSION=v2.14.0-alpine
 # renovate: datasource=docker depName=mstruebing/editorconfig-checker
 ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=v3.4.0
 # renovate: datasource=github-tags depName=mgechev/revive
@@ -29,9 +29,9 @@ ARG KUBERNETES_KUBECONFORM_VERSION=v0.7.0-alpine
 # renovate: datasource=docker depName=zricethezav/gitleaks
 ARG REPOSITORY_GITLEAKS_VERSION=v8.28.0
 # renovate: datasource=docker depName=checkmarx/kics
-ARG REPOSITORY_KICS_VERSION=v2.1.13-alpine
+ARG REPOSITORY_KICS_VERSION=v2.1.14-alpine
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
-ARG REPOSITORY_TRUFFLEHOG_VERSION=3.90.6
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.90.8
 # renovate: datasource=docker depName=lycheeverse/lychee
 ARG SPELL_LYCHEE_VERSION=sha-7c4b132-alpine
 # renovate: datasource=docker depName=ghcr.io/terraform-linters/tflint
@@ -39,7 +39,7 @@ ARG TERRAFORM_TFLINT_VERSION=0.59.1
 # renovate: datasource=docker depName=tenable/terrascan
 ARG TERRAFORM_TERRASCAN_VERSION=1.19.9
 # renovate: datasource=docker depName=alpine/terragrunt
-ARG TERRAFORM_TERRAGRUNT_VERSION=1.13.2
+ARG TERRAFORM_TERRAGRUNT_VERSION=1.13.3
 #ARGTOP__END
 
 #############################################################################################
@@ -105,9 +105,9 @@ ARG CARGO_SARIF_FMT_VERSION=0.8.0
 # renovate: datasource=github-tags depName=sgerrand/alpine-pkg-glibc
 ARG ALPINE_GLIBC_PACKAGE_VERSION=2.34-r0
 # renovate: datasource=npm depName=typescript
-ARG NPM_TYPESCRIPT_VERSION=5.9.2
+ARG NPM_TYPESCRIPT_VERSION=5.9.3
 # renovate: datasource=pypi depName=ansible-lint
-ARG PIP_ANSIBLE_LINT_VERSION=25.9.0
+ARG PIP_ANSIBLE_LINT_VERSION=25.9.2
 # renovate: datasource=crate depName=shellcheck-sarif
 ARG CARGO_SHELLCHECK_SARIF_VERSION=0.8.0
 # renovate: datasource=pypi depName=cpplint
@@ -118,25 +118,25 @@ ARG CLJ_KONDO_VERSION=2025.01.16
 # renovate: datasource=github-tags depName=greglook/cljstyle
 ARG CLJ_STYLE_VERSION=0.17.642
 # renovate: datasource=pypi depName=cfn-lint
-ARG PIP_CFN_LINT_VERSION=1.39.1
+ARG PIP_CFN_LINT_VERSION=1.40.1
 # renovate: datasource=npm depName=jscpd
 ARG NPM_JSCPD_VERSION=4.0.5
 # renovate: datasource=npm depName=stylelint
 ARG NPM_STYLELINT_VERSION=16.24.0
 # renovate: datasource=npm depName=stylelint-config-standard
-ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=39.0.0
+ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=39.0.1
 # renovate: datasource=npm depName=stylelint-config-sass-guidelines
 ARG NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION=12.1.0
 # renovate: datasource=npm depName=stylelint-scss
 ARG NPM_STYLELINT_SCSS_VERSION=6.12.1
 # renovate: datasource=github-tags depName=golangci/golangci-lint
-ARG GO_GOLANGCI_LINT_VERSION=2.4.0
+ARG GO_GOLANGCI_LINT_VERSION=2.5.0
 # renovate: datasource=npm depName=graphql
 ARG NPM_GRAPHQL_VERSION=16.11.0
 # renovate: datasource=npm depName=graphql-schema-linter
 ARG NPM_GRAPHQL_SCHEMA_LINTER_VERSION=3.0.1
 # renovate: datasource=npm depName=npm-groovy-lint
-ARG NPM_GROOVY_LINT_VERSION=15.2.1
+ARG NPM_GROOVY_LINT_VERSION=15.2.2
 # renovate: datasource=pypi depName=djlint
 ARG PIP_DJLINT_VERSION=1.36.4
 # renovate: datasource=npm depName=htmlhint
@@ -163,7 +163,7 @@ ARG NPM_ESLINT_PLUGIN_PRETTIER_VERSION=5.5.4
 # renovate: datasource=npm depName=eslint-plugin-promise
 ARG NPM_ESLINT_PLUGIN_PROMISE_VERSION=6.6.0
 # renovate: datasource=npm depName=eslint-plugin-vue
-ARG NPM_ESLINT_PLUGIN_VUE_VERSION=10.4.0
+ARG NPM_ESLINT_PLUGIN_VUE_VERSION=10.5.0
 # renovate: datasource=npm depName=@babel/core
 ARG NPM_BABEL_CORE_VERSION=7.28.4
 # renovate: datasource=npm depName=@babel/eslint-parser
@@ -203,7 +203,7 @@ ARG PHP_SQUIZLABS_PHP_CODESNIFFER_VERSION=4.0.0
 # renovate: datasource=packagist depName=bartlett/sarif-php-converters
 ARG PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION=1.3.1
 # renovate: datasource=packagist depName=phpstan/phpstan
-ARG PHP_PHPSTAN_PHPSTAN_VERSION=2.1.27
+ARG PHP_PHPSTAN_PHPSTAN_VERSION=2.1.30
 # renovate: datasource=packagist depName=phpstan/extension-installer
 ARG PHP_PHPSTAN_EXTENSION_INSTALLER_VERSION=1.4.3
 # renovate: datasource=packagist depName=vimeo/psalm
@@ -211,23 +211,23 @@ ARG PHP_VIMEO_PSALM_VERSION=6.13.1
 # renovate: datasource=packagist depName=overtrue/phplint
 ARG PHP_OVERTRUE_PHPLINT_VERSION=9.6.2
 # renovate: datasource=packagist depName=friendsofphp/php-cs-fixer
-ARG PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION=v3.87.2
+ARG PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION=v3.88.2
 # renovate: datasource=pypi depName=pylint
-ARG PIP_PYLINT_VERSION=3.3.8
+ARG PIP_PYLINT_VERSION=4.0.0
 # renovate: datasource=pypi depName=typing-extensions
 ARG PIP_TYPING_EXTENSIONS_VERSION=4.15.0
 # renovate: datasource=pypi depName=black
-ARG PIP_BLACK_VERSION=25.1.0
+ARG PIP_BLACK_VERSION=25.9.0
 # renovate: datasource=pypi depName=flake8
 ARG PIP_FLAKE8_VERSION=7.3.0
 # renovate: datasource=pypi depName=isort
-ARG PIP_ISORT_VERSION=6.0.1
+ARG PIP_ISORT_VERSION=6.1.0
 # renovate: datasource=pypi depName=mypy
-ARG PIP_MYPY_VERSION=1.18.1
+ARG PIP_MYPY_VERSION=1.18.2
 # renovate: datasource=npm depName=pyright
-ARG NPM_PYRIGHT_VERSION=1.1.405
+ARG NPM_PYRIGHT_VERSION=1.1.406
 # renovate: datasource=pypi depName=ruff
-ARG PIP_RUFF_VERSION=0.13.0
+ARG PIP_RUFF_VERSION=0.14.0
 # renovate: datasource=github-tags depName=anchore/grype
 ARG REPOSITORY_GRYPE_VERSION=0.100.0
 # renovate: datasource=npm depName=@ls-lint/ls-lint
@@ -243,9 +243,11 @@ ARG PIP_SEMGREP_VERSION=1.116.0
 # renovate: datasource=github-tags depName=anchore/syft
 ARG REPOSITORY_SYFT_VERSION=1.33.0
 # renovate: datasource=github-tags depName=aquasecurity/trivy
-ARG REPOSITORY_TRIVY_VERSION=0.66.0
+ARG REPOSITORY_TRIVY_VERSION=0.67.2
 # renovate: datasource=github-tags depName=aquasecurity/trivy
-ARG REPOSITORY_TRIVY_SBOM_VERSION=0.66.0
+ARG REPOSITORY_TRIVY_SBOM_VERSION=0.67.2
+# renovate: datasource=pypi depName=robotframework-robocop
+ARG PIP_ROBOT_FRAMEWORK_ROBOCOP_VERSION=6.7.2
 # renovate: datasource=pypi depName=Pygments
 ARG PIP_PYGMENTS_VERSION=2.19.2
 # renovate: datasource=pypi depName=restructuredtext_lint
@@ -253,17 +255,17 @@ ARG PIP_RESTRUCTUREDTEXT_LINT_VERSION=1.4.0
 # renovate: datasource=pypi depName=rstcheck
 ARG PIP_RSTCHECK_VERSION=6.2.5
 # renovate: datasource=pypi depName=click
-ARG PIP_RSTCHECK_CLICK_VERSION=8.2.1
+ARG PIP_RSTCHECK_CLICK_VERSION=8.3.0
 # renovate: datasource=pypi depName=rstfmt
 ARG PIP_RSTFMT_VERSION=0.0.14
 # renovate: datasource=rubygems depName=rubocop
-ARG GEM_RUBOCOP_VERSION=1.80.2
+ARG GEM_RUBOCOP_VERSION=1.81.1
 # renovate: datasource=rubygems depName=rubocop-github
 ARG GEM_RUBOCOP_GITHUB_VERSION=0.26.0
 # renovate: datasource=rubygems depName=rubocop-performance
 ARG GEM_RUBOCOP_PERFORMANCE_VERSION=1.26.0
 # renovate: datasource=rubygems depName=rubocop-rails
-ARG GEM_RUBOCOP_RAILS_VERSION=2.33.3
+ARG GEM_RUBOCOP_RAILS_VERSION=2.33.4
 # renovate: datasource=rubygems depName=rubocop-rake
 ARG GEM_RUBOCOP_RAKE_VERSION=0.7.1
 # renovate: datasource=rubygems depName=rubocop-rspec
@@ -277,9 +279,9 @@ ARG PIP_SQLFLUFF_VERSION=3.4.2
 # renovate: datasource=npm depName=prettyjson
 ARG NPM_PRETTYJSON_VERSION=1.2.5
 # renovate: datasource=npm depName=@typescript-eslint/eslint-plugin
-ARG NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION=8.44.0
+ARG NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION=8.44.1
 # renovate: datasource=npm depName=@typescript-eslint/parser
-ARG NPM_TYPESCRIPT_ESLINT_PARSER_VERSION=8.44.0
+ARG NPM_TYPESCRIPT_ESLINT_PARSER_VERSION=8.44.1
 # renovate: datasource=npm depName=ts-standard
 ARG NPM_TS_STANDARD_VERSION=12.0.2
 # renovate: datasource=pypi depName=yamllint
@@ -289,7 +291,7 @@ ARG PIP_PIP_VERSION=25.2
 # renovate: datasource=pypi depName=virtualenv
 ARG PIP_VIRTUALENV_VERSION=20.34.0
 # renovate: datasource=github-tags depName=rust-lang/rust
-ARG RUST_RUST_VERSION=1.89.0
+ARG RUST_RUST_VERSION=1.90.0
 
 ARG ACTION_ACTIONLINT_VERSION
 ARG BASH_SHELLCHECK_VERSION
@@ -407,13 +409,14 @@ RUN uv pip install --system --no-cache pip==${PIP_PIP_VERSION} virtualenv==${PIP
     && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/stylelint" && VIRTUAL_ENV="/venvs/stylelint" uv pip install --no-cache cpplint==${PIP_CPPLINT_VERSION} \
     && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/djlint" && VIRTUAL_ENV="/venvs/djlint" uv pip install --no-cache djlint==${PIP_DJLINT_VERSION} \
     && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/pylint" && VIRTUAL_ENV="/venvs/pylint" uv pip install --no-cache pylint==${PIP_PYLINT_VERSION} typing-extensions==${PIP_TYPING_EXTENSIONS_VERSION} \
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/black" && VIRTUAL_ENV="/venvs/black" uv pip install --no-cache black==${PIP_BLACK_VERSION} \
+    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/black" && VIRTUAL_ENV="/venvs/black" uv pip install --no-cache black[jupyter]==${PIP_BLACK_VERSION} \
     && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/flake8" && VIRTUAL_ENV="/venvs/flake8" uv pip install --no-cache flake8==${PIP_FLAKE8_VERSION} \
     && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/isort" && VIRTUAL_ENV="/venvs/isort" uv pip install --no-cache black==${PIP_BLACK_VERSION} isort==${PIP_ISORT_VERSION} \
     && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/mypy" && VIRTUAL_ENV="/venvs/mypy" uv pip install --no-cache mypy==${PIP_MYPY_VERSION} \
     && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/ruff" && VIRTUAL_ENV="/venvs/ruff" uv pip install --no-cache ruff==${PIP_RUFF_VERSION} \
     && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/ruff-format" && VIRTUAL_ENV="/venvs/ruff-format" uv pip install --no-cache ruff==${PIP_RUFF_VERSION} \
     && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/semgrep" && VIRTUAL_ENV="/venvs/semgrep" uv pip install --no-cache semgrep==${PIP_SEMGREP_VERSION} \
+    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/robocop" && VIRTUAL_ENV="/venvs/robocop" uv pip install --no-cache robotframework-robocop==${PIP_ROBOT_FRAMEWORK_ROBOCOP_VERSION} \
     && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/rst-lint" && VIRTUAL_ENV="/venvs/rst-lint" uv pip install --no-cache Pygments==${PIP_PYGMENTS_VERSION} restructuredtext_lint==${PIP_RESTRUCTUREDTEXT_LINT_VERSION} \
     && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/rstcheck" && VIRTUAL_ENV="/venvs/rstcheck" uv pip install --no-cache click==${PIP_RSTCHECK_CLICK_VERSION} rstcheck[toml,sphinx]==${PIP_RSTCHECK_VERSION} \
     && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/rstfmt" && VIRTUAL_ENV="/venvs/rstfmt" uv pip install --no-cache rstfmt==${PIP_RSTFMT_VERSION} \
@@ -422,7 +425,7 @@ RUN uv pip install --system --no-cache pip==${PIP_PIP_VERSION} virtualenv==${PIP
     && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/yamllint" && VIRTUAL_ENV="/venvs/yamllint" uv pip install --no-cache yamllint==${PIP_YAMLLINT_VERSION}  \
     && find /venvs \( -type f \( -iname \*.pyc -o -iname \*.pyo \) -o -type d -iname __pycache__ \) -delete \
     && rm -rf /root/.cache
-ENV PATH="${PATH}":/venvs/ansible-lint/bin:/venvs/cpplint/bin:/venvs/cfn-lint/bin:/venvs/stylelint/bin:/venvs/djlint/bin:/venvs/pylint/bin:/venvs/black/bin:/venvs/flake8/bin:/venvs/isort/bin:/venvs/mypy/bin:/venvs/ruff/bin:/venvs/ruff-format/bin:/venvs/semgrep/bin:/venvs/rst-lint/bin:/venvs/rstcheck/bin:/venvs/rstfmt/bin:/venvs/proselint/bin:/venvs/sqlfluff/bin:/venvs/yamllint/bin
+ENV PATH="${PATH}":/venvs/ansible-lint/bin:/venvs/cpplint/bin:/venvs/cfn-lint/bin:/venvs/stylelint/bin:/venvs/djlint/bin:/venvs/pylint/bin:/venvs/black/bin:/venvs/flake8/bin:/venvs/isort/bin:/venvs/mypy/bin:/venvs/ruff/bin:/venvs/ruff-format/bin:/venvs/semgrep/bin:/venvs/robocop/bin:/venvs/rst-lint/bin:/venvs/rstcheck/bin:/venvs/rstfmt/bin:/venvs/proselint/bin:/venvs/sqlfluff/bin:/venvs/yamllint/bin
 #PIPVENV__END
 
 ############################
@@ -797,6 +800,8 @@ RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/refs/tags/v${REPOS
 #
 # trufflehog installation
 # Managed with COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
+#
+# robocop installation
 #
 # rst-lint installation
 #

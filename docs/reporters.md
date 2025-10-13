@@ -8,7 +8,7 @@ description: "List of all available reporters: Text, SARIF, TAP, GitHub, Gitlab,
 
 # Reporters
 
-MegaLinter can generate various reports that you can activate / deactivate and customize
+MegaLinter can generate various reports that you can activate or deactivate and customize.
 
 | Reporter                                                                   | Description                                                                                                   | Default                      |
 |----------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|------------------------------|

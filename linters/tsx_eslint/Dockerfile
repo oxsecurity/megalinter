@@ -49,7 +49,7 @@ FROM python:3.13-alpine3.22
 #############################################################################################
 #ARG__START
 # renovate: datasource=npm depName=typescript
-ARG NPM_TYPESCRIPT_VERSION=5.9.2
+ARG NPM_TYPESCRIPT_VERSION=5.9.3
 # renovate: datasource=npm depName=eslint
 ARG NPM_ESLINT_VERSION=8.57.1
 # renovate: datasource=npm depName=eslint-config-airbnb
@@ -69,9 +69,9 @@ ARG NPM_PRETTIER_VERSION=3.6.2
 # renovate: datasource=npm depName=prettyjson
 ARG NPM_PRETTYJSON_VERSION=1.2.5
 # renovate: datasource=npm depName=@typescript-eslint/eslint-plugin
-ARG NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION=8.44.0
+ARG NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION=8.44.1
 # renovate: datasource=npm depName=@typescript-eslint/parser
-ARG NPM_TYPESCRIPT_ESLINT_PARSER_VERSION=8.44.0
+ARG NPM_TYPESCRIPT_ESLINT_PARSER_VERSION=8.44.1
 # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
 ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
 #ARG__END

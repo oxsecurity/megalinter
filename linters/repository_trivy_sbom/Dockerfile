@@ -49,7 +49,7 @@ FROM python:3.13-alpine3.22
 #############################################################################################
 #ARG__START
 # renovate: datasource=github-tags depName=aquasecurity/trivy
-ARG REPOSITORY_TRIVY_SBOM_VERSION=0.66.0
+ARG REPOSITORY_TRIVY_SBOM_VERSION=0.67.2
 #ARG__END
 
 ####################

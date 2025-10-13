@@ -49,9 +49,9 @@ FROM python:3.13-alpine3.22
 #############################################################################################
 #ARG__START
 # renovate: datasource=pypi depName=black
-ARG PIP_BLACK_VERSION=25.1.0
+ARG PIP_BLACK_VERSION=25.9.0
 # renovate: datasource=pypi depName=isort
-ARG PIP_ISORT_VERSION=6.0.1
+ARG PIP_ISORT_VERSION=6.1.0
 # renovate: datasource=pypi depName=pip
 ARG PIP_PIP_VERSION=25.2
 # renovate: datasource=pypi depName=virtualenv

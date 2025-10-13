@@ -1,0 +1,57 @@
+descriptor_id: ROBOTFRAMEWORK
+descriptor_type: tooling_format
+descriptor_flavors:
+  - cupcake
+  - formatters
+linters:
+  # robotframework-robocop
+  - linter_name: robocop
+    linter_text: |
+      RoboCop is a linter and code formatter for the Robot Framework. It helps maintain clean, consistent, and high-quality automation test code.
+
+      **Key Features:**
+
+      - **Static code analysis** detecting common issues, code smells, and potential errors in Robot Framework test suites.
+      - **Customizable rules (checks)** with a large set of built-in rules (e.g., naming conventions, spacing, structure) that can be enabled, disabled, or configured to fit team standards.
+      - **Code formatting** can automatically format Robot Framework files to follow consistent style guidelines.
+      - **Error, warning, and info levels** each message is categorized, making it easy to distinguish between critical issues and style suggestions.
+      - **Extensibility** supports custom rules, so teams can enforce project-specific conventions.
+      - **Configuration flexibility** rules can be configured via pyproject.toml, robocop.toml, or CLI options, making integration smooth in different environments.
+      - **Integration with CI/CD** easy to run in pipelines to ensure code quality before merging changes.
+      - **Pre-commit hook support** can be added to Git pre-commit hooks to lint and format files automatically before committing.
+      - **Output options** supports multiple output formats (text, JSON, SARIF), useful for different reporting tools.
+      - **Performance** optimized for speed and can handle large Robot Framework projects.
+    can_output_sarif: true
+    linter_url: https://github.com/MarketSquare/robotframework-robocop
+    linter_repo: https://github.com/MarketSquare/robotframework-robocop
+    linter_spdx_license: Apache-2.0
+    linter_rules_url: https://robocop.readthedocs.io/en/stable/rules/rules_list.html
+    linter_rules_configuration_url: https://robocop.readthedocs.io/en/stable/configuration/configuration.html
+    linter_rules_inline_disable_url: https://robocop.readthedocs.io/en/stable/rules/rules_basics.html#selecting-and-ignoring-rules
+    config_file_name: robocop.toml
+    cli_lint_mode: list_of_files
+    cli_lint_extra_args:
+      - check
+    cli_lint_fix_arg_name: format
+    cli_lint_fix_remove_args:
+      - check
+    cli_sarif_args:
+      - --reports
+      - sarif
+    file_extensions:
+      - ".robot"
+      - ".resource"
+    sarif_default_output_file: .sarif.json
+    examples:
+      - "robocop check myfile.robot"
+    install:
+      dockerfile:
+        - |-
+          # renovate: datasource=pypi depName=robotframework-robocop
+          ARG PIP_ROBOT_FRAMEWORK_ROBOCOP_VERSION=6.7.2
+      pip:
+        - robotframework-robocop==${PIP_ROBOT_FRAMEWORK_ROBOCOP_VERSION}
+    ide:
+      vscode:
+        - name: RobotCode
+          url: https://marketplace.visualstudio.com/items?itemName=d-biehl.robotcode

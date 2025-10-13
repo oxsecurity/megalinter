@@ -8,9 +8,9 @@ description: Build and use your own plugins for MegaLinter, like jupyfmt, nitpic
 
 # Plugins
 
-For performances and security reasons, we can not embed all linters of the world within MegaLinter.
+For performance and security reasons, we cannot embed every linter in MegaLinter.
 
-But our core architecture allows to build and publish MegaLinter Plugins !
+But our core architecture allows building and publishing MegaLinter plugins!
 
 ## External Plugins Catalog
 
@@ -28,13 +28,13 @@ But our core architecture allows to build and publish MegaLinter Plugins !
 | [**fmlint**](https://github.com/wesley-dean/mega-linter-plugin-fmlint/blob/main/README.md)                | Plugin to lint YAML frontmatter in Markdown documents                                                                                                                                   |    [Wesley Dean](https://github.com/wesley-dean)     | [Descriptor](https://github.com/wesley-dean/mega-linter-plugin-fmlint/blob/main/mega-linter-plugin-fmlint/fmlint.megalinter-descriptor.yml)                   |
 <!-- plugins-table-end -->
 
-> Note: Using an external plugin means you trust its author
+> Note: Using an external plugin means you trust its author.
 
 Submit a Pull Request if you want your plugin to appear here :)
 
 ## Use external plugins
 
-Add plugin URLs in `PLUGINS` property of `.mega-linter.yml`. URLs must either begin with "https://" or take the form of "file://\<path\>", where \<path\> points to a valid plugin descriptor file.
+Add plugin URLs in the `PLUGINS` property of `.mega-linter.yml`. URLs must either begin with "https://" or take the form of "file://\<path\>", where \<path\> points to a valid plugin descriptor file.
 
 > Note: Both \<path\> and the default mount directory (/tmp/lint/\<path\>) will be checked for a valid descriptor.
 
@@ -48,11 +48,11 @@ PLUGINS:
 
 ## Create your own plugin
 
-You can implement your own descriptors and load them as plugins during MegaLinter runtime
+You can implement your own descriptors and load them as plugins during MegaLinter runtime.
 
-- Descriptor format is exactly the same than [MegaLinter embedded ones](https://github.com/oxsecurity/megalinter/tree/main/megalinter/descriptors) ([see json schema documentation](https://megalinter.io/json-schemas/descriptor.html))
-- Plugins descriptor files must be named **\*\*.megalinter-descriptor.yml** and respect [MegaLinter Json Schema](https://github.com/oxsecurity/megalinter/blob/main/megalinter/descriptors/schemas/megalinter-descriptor.jsonschema.json)
-- Plugins must be hosted in a url containing **\*\*/mega-linter-plugin-\*\*/**
+- Descriptor format is exactly the same as [MegaLinter embedded ones](https://github.com/oxsecurity/megalinter/tree/main/megalinter/descriptors) ([see JSON schema documentation](https://megalinter.io/json-schemas/descriptor.html))
+- Plugin descriptor files must be named **\*\*.megalinter-descriptor.yml** and conform to the [MegaLinter JSON Schema](https://github.com/oxsecurity/megalinter/blob/main/megalinter/descriptors/schemas/megalinter-descriptor.jsonschema.json)
+- Plugins must be hosted in a URL containing **\*\*/mega-linter-plugin-\*\*/**
 - File URLs must conform to the same directory and file naming criteria as defined above.
 
 ### Limitations

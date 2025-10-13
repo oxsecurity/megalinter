@@ -15,7 +15,7 @@
 # renovate: datasource=docker depName=koalaman/shellcheck
 ARG BASH_SHELLCHECK_VERSION=v0.11.0
 # renovate: datasource=docker depName=hadolint/hadolint
-ARG DOCKERFILE_HADOLINT_VERSION=v2.13.1-alpine
+ARG DOCKERFILE_HADOLINT_VERSION=v2.14.0-alpine
 # renovate: datasource=docker depName=ghcr.io/yannh/kubeconform
 ARG KUBERNETES_KUBECONFORM_VERSION=v0.7.0-alpine
 # renovate: datasource=github-tags depName=checkmarx/dustilock
@@ -23,15 +23,15 @@ ARG REPOSITORY_DUSTILOCK_VERSION=1.2.0
 # renovate: datasource=docker depName=zricethezav/gitleaks
 ARG REPOSITORY_GITLEAKS_VERSION=v8.28.0
 # renovate: datasource=docker depName=checkmarx/kics
-ARG REPOSITORY_KICS_VERSION=v2.1.13-alpine
+ARG REPOSITORY_KICS_VERSION=v2.1.14-alpine
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
-ARG REPOSITORY_TRUFFLEHOG_VERSION=3.90.6
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.90.8
 # renovate: datasource=docker depName=ghcr.io/terraform-linters/tflint
 ARG TERRAFORM_TFLINT_VERSION=0.59.1
 # renovate: datasource=docker depName=tenable/terrascan
 ARG TERRAFORM_TERRASCAN_VERSION=1.19.9
 # renovate: datasource=docker depName=alpine/terragrunt
-ARG TERRAFORM_TERRAGRUNT_VERSION=1.13.2
+ARG TERRAFORM_TERRAGRUNT_VERSION=1.13.3
 #ARGTOP__END
 
 #############################################################################################
@@ -82,11 +82,11 @@ FROM python:3.13-alpine3.22
 # renovate: datasource=crate depName=sarif-fmt
 ARG CARGO_SARIF_FMT_VERSION=0.8.0
 # renovate: datasource=pypi depName=ansible-lint
-ARG PIP_ANSIBLE_LINT_VERSION=25.9.0
+ARG PIP_ANSIBLE_LINT_VERSION=25.9.2
 # renovate: datasource=crate depName=shellcheck-sarif
 ARG CARGO_SHELLCHECK_SARIF_VERSION=0.8.0
 # renovate: datasource=pypi depName=cfn-lint
-ARG PIP_CFN_LINT_VERSION=1.39.1
+ARG PIP_CFN_LINT_VERSION=1.40.1
 # renovate: datasource=github-tags depName=kubescape/kubescape
 ARG KUBERNETES_KUBESCAPE_VERSION=3.0.41
 # renovate: datasource=pypi depName=bandit
@@ -108,15 +108,15 @@ ARG PIP_SEMGREP_VERSION=1.116.0
 # renovate: datasource=github-tags depName=anchore/syft
 ARG REPOSITORY_SYFT_VERSION=1.33.0
 # renovate: datasource=github-tags depName=aquasecurity/trivy
-ARG REPOSITORY_TRIVY_VERSION=0.66.0
+ARG REPOSITORY_TRIVY_VERSION=0.67.2
 # renovate: datasource=github-tags depName=aquasecurity/trivy
-ARG REPOSITORY_TRIVY_SBOM_VERSION=0.66.0
+ARG REPOSITORY_TRIVY_SBOM_VERSION=0.67.2
 # renovate: datasource=pypi depName=pip
 ARG PIP_PIP_VERSION=25.2
 # renovate: datasource=pypi depName=virtualenv
 ARG PIP_VIRTUALENV_VERSION=20.34.0
 # renovate: datasource=github-tags depName=rust-lang/rust
-ARG RUST_RUST_VERSION=1.89.0
+ARG RUST_RUST_VERSION=1.90.0
 
 ARG BASH_SHELLCHECK_VERSION
 ARG DOCKERFILE_HADOLINT_VERSION

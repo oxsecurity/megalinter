@@ -15,7 +15,7 @@
 # renovate: datasource=docker depName=mvdan/shfmt
 ARG BASH_SHFMT_VERSION=v3.12.0-alpine
 # renovate: datasource=docker depName=alpine/terragrunt
-ARG TERRAFORM_TERRAGRUNT_VERSION=1.13.2
+ARG TERRAFORM_TERRAGRUNT_VERSION=1.13.3
 #ARGTOP__END
 
 #############################################################################################
@@ -59,7 +59,7 @@ ARG CARGO_SARIF_FMT_VERSION=0.8.0
 ARG POWERSHELL_VERSION=7.5.3
 
 # renovate: datasource=npm depName=typescript
-ARG NPM_TYPESCRIPT_VERSION=5.9.2
+ARG NPM_TYPESCRIPT_VERSION=5.9.3
 # renovate: datasource=nuget depName=csharpier
 ARG CSHARP_CSHARPIER_VERSION=1.1.2
 # renovate: datasource=nuget depName=roslynator.dotnet.cli
@@ -74,11 +74,11 @@ ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.6.1
 ARG PSSA_VERSION='1.24.0'
 
 # renovate: datasource=pypi depName=black
-ARG PIP_BLACK_VERSION=25.1.0
+ARG PIP_BLACK_VERSION=25.9.0
 # renovate: datasource=pypi depName=isort
-ARG PIP_ISORT_VERSION=6.0.1
+ARG PIP_ISORT_VERSION=6.1.0
 # renovate: datasource=pypi depName=ruff
-ARG PIP_RUFF_VERSION=0.13.0
+ARG PIP_RUFF_VERSION=0.14.0
 # renovate: datasource=pypi depName=rstfmt
 ARG PIP_RSTFMT_VERSION=0.0.14
 # renovate: datasource=pypi depName=snakefmt
@@ -88,7 +88,7 @@ ARG PIP_PIP_VERSION=25.2
 # renovate: datasource=pypi depName=virtualenv
 ARG PIP_VIRTUALENV_VERSION=20.34.0
 # renovate: datasource=github-tags depName=rust-lang/rust
-ARG RUST_RUST_VERSION=1.89.0
+ARG RUST_RUST_VERSION=1.90.0
 
 ARG BASH_SHFMT_VERSION
 ARG TERRAFORM_TERRAGRUNT_VERSION
@@ -157,7 +157,7 @@ ENV PATH="/root/.cargo/bin:/root/.cargo/env:${PATH}"
 
 #PIPVENV__START
 RUN uv pip install --system --no-cache pip==${PIP_PIP_VERSION} virtualenv==${PIP_VIRTUALENV_VERSION} \
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/black" && VIRTUAL_ENV="/venvs/black" uv pip install --no-cache black==${PIP_BLACK_VERSION} \
+    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/black" && VIRTUAL_ENV="/venvs/black" uv pip install --no-cache black[jupyter]==${PIP_BLACK_VERSION} \
     && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/isort" && VIRTUAL_ENV="/venvs/isort" uv pip install --no-cache black==${PIP_BLACK_VERSION} isort==${PIP_ISORT_VERSION} \
     && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/ruff-format" && VIRTUAL_ENV="/venvs/ruff-format" uv pip install --no-cache ruff==${PIP_RUFF_VERSION} \
     && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/rstfmt" && VIRTUAL_ENV="/venvs/rstfmt" uv pip install --no-cache rstfmt==${PIP_RSTFMT_VERSION} \

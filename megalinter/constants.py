@@ -27,7 +27,8 @@ DEFAULT_SARIF_REPORT_FILE_NAME = "megalinter-report.sarif"
 DEFAULT_MARKDOWN_SUMMARY_REPORT_FILE_NAME = "megalinter-report.md"
 DEFAULT_SARIF_SCHEMA_URI = "https://json.schemastore.org/sarif-2.1.0.json"
 DEFAULT_SARIF_VERSION = "2.1.0"
-DEFAULT_RELEASE = "v8"
+# MAJOR-RELEASE-IMPACTED
+DEFAULT_RELEASE = "v9"
 
 DEFAULT_DOCKERFILE_ARGS: list[str] = []
 
@@ -77,7 +78,7 @@ DEFAULT_DOCKERFILE_PIPENV_ARGS = [
 ]
 
 DEFAULT_DOCKERFILE_RUST_ARGS = [
-    "# renovate: datasource=github-tags depName=rust-lang/rust\nARG RUST_RUST_VERSION=1.89.0",
+    "# renovate: datasource=github-tags depName=rust-lang/rust\nARG RUST_RUST_VERSION=1.90.0",
 ]
 
 DEFAULT_DOCKERFILE_FLAVOR_ARGS = [

@@ -10,9 +10,11 @@ description: Manual instructions to setup MegaLinter as a Concourse job
 
 ## Pipeline step
 
-Use the following `job.step` in your pipeline template
+Use the following job step in your pipeline template.
 
-Note: make sure you have `job.plan.get` step which gets `repo` containing your repository as shown in example
+Note: Make sure you have a `job.plan.get` step that retrieves the `repo` containing your repository, as shown in the example.
+
+<!-- # MAJOR-RELEASE-IMPACTED -->
 
 ```yaml
 ---
@@ -27,7 +29,7 @@ Note: make sure you have `job.plan.get` step which gets `repo` containing your r
             type: docker-image
             source:
               repository: oxsecurity/megalinter
-              tag: v8
+              tag: v9
           inputs:
             - name: repo
           run:
@@ -49,11 +51,13 @@ Note: make sure you have `job.plan.get` step which gets `repo` containing your r
 
 OR
 
-## Use it as reusable task
+## Use it as a reusable task
 
-Create reusable concourse task which can be used with multiple pipelines
+Create a reusable Concourse task that can be used with multiple pipelines.
 
 1. Create task file `task-linting.yaml`
+
+<!-- # MAJOR-RELEASE-IMPACTED -->
 
 ```yaml
 ---
@@ -62,7 +66,7 @@ image_resource:
   type: docker-image
   source:
     repository: oxsecurity/megalinter
-    tag: v8
+    tag: v9
 
 inputs:
 - name: repo
@@ -82,13 +86,13 @@ run:
     bash -ex /entrypoint.sh
 ```
 
-2. Use that `task-linting.yaml` task in pipeline
+2. Use that `task-linting.yaml` task in your pipeline.
 
 Note:
 
-  1. make sure `task-linting.yaml` is available in that `repo` input at root
+  1. Make sure `task-linting.yaml` is available in the `repo` input at the repository root.
 
-  2. task `output` is **not** shown here
+  2. Task `output` is **not** shown here.
 
 ```yaml
 resources:
