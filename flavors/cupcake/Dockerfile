@@ -13,7 +13,7 @@
 #############################################################################################
 #ARGTOP__START
 # renovate: datasource=docker depName=rhysd/actionlint
-ARG ACTION_ACTIONLINT_VERSION=1.7.7
+ARG ACTION_ACTIONLINT_VERSION=1.7.8
 # renovate: datasource=docker depName=koalaman/shellcheck
 ARG BASH_SHELLCHECK_VERSION=v0.11.0
 # renovate: datasource=docker depName=mvdan/shfmt
@@ -106,7 +106,7 @@ ARG ALPINE_GLIBC_PACKAGE_VERSION=2.34-r0
 # renovate: datasource=npm depName=typescript
 ARG NPM_TYPESCRIPT_VERSION=5.9.3
 # renovate: datasource=pypi depName=ansible-lint
-ARG PIP_ANSIBLE_LINT_VERSION=25.9.1
+ARG PIP_ANSIBLE_LINT_VERSION=25.9.2
 # renovate: datasource=crate depName=shellcheck-sarif
 ARG CARGO_SHELLCHECK_SARIF_VERSION=0.8.0
 # renovate: datasource=pypi depName=cpplint
@@ -117,7 +117,7 @@ ARG CLJ_KONDO_VERSION=2025.01.16
 # renovate: datasource=github-tags depName=greglook/cljstyle
 ARG CLJ_STYLE_VERSION=0.17.642
 # renovate: datasource=pypi depName=cfn-lint
-ARG PIP_CFN_LINT_VERSION=1.40.0
+ARG PIP_CFN_LINT_VERSION=1.40.1
 # renovate: datasource=npm depName=jscpd
 ARG NPM_JSCPD_VERSION=4.0.5
 # renovate: datasource=npm depName=stylelint
@@ -162,7 +162,7 @@ ARG NPM_ESLINT_PLUGIN_PRETTIER_VERSION=5.5.4
 # renovate: datasource=npm depName=eslint-plugin-promise
 ARG NPM_ESLINT_PLUGIN_PROMISE_VERSION=6.6.0
 # renovate: datasource=npm depName=eslint-plugin-vue
-ARG NPM_ESLINT_PLUGIN_VUE_VERSION=10.4.0
+ARG NPM_ESLINT_PLUGIN_VUE_VERSION=10.5.0
 # renovate: datasource=npm depName=@babel/core
 ARG NPM_BABEL_CORE_VERSION=7.28.4
 # renovate: datasource=npm depName=@babel/eslint-parser
@@ -212,7 +212,7 @@ ARG PHP_OVERTRUE_PHPLINT_VERSION=9.6.2
 # renovate: datasource=packagist depName=friendsofphp/php-cs-fixer
 ARG PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION=v3.88.2
 # renovate: datasource=pypi depName=pylint
-ARG PIP_PYLINT_VERSION=3.3.9
+ARG PIP_PYLINT_VERSION=4.0.0
 # renovate: datasource=pypi depName=typing-extensions
 ARG PIP_TYPING_EXTENSIONS_VERSION=4.15.0
 # renovate: datasource=pypi depName=black
@@ -226,7 +226,7 @@ ARG PIP_MYPY_VERSION=1.18.2
 # renovate: datasource=npm depName=pyright
 ARG NPM_PYRIGHT_VERSION=1.1.406
 # renovate: datasource=pypi depName=ruff
-ARG PIP_RUFF_VERSION=0.13.3
+ARG PIP_RUFF_VERSION=0.14.0
 # renovate: datasource=pypi depName=checkov
 ARG PIP_CHECKOV_VERSION=3.2.477
 # renovate: datasource=github-tags depName=anchore/grype
@@ -244,9 +244,9 @@ ARG PIP_SEMGREP_VERSION=1.116.0
 # renovate: datasource=github-tags depName=anchore/syft
 ARG REPOSITORY_SYFT_VERSION=1.33.0
 # renovate: datasource=github-tags depName=aquasecurity/trivy
-ARG REPOSITORY_TRIVY_VERSION=0.67.0
+ARG REPOSITORY_TRIVY_VERSION=0.67.2
 # renovate: datasource=github-tags depName=aquasecurity/trivy
-ARG REPOSITORY_TRIVY_SBOM_VERSION=0.67.0
+ARG REPOSITORY_TRIVY_SBOM_VERSION=0.67.2
 # renovate: datasource=pypi depName=robotframework-robocop
 ARG PIP_ROBOT_FRAMEWORK_ROBOCOP_VERSION=6.7.2
 # renovate: datasource=pypi depName=Pygments

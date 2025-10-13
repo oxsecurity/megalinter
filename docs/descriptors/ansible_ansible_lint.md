@@ -30,7 +30,7 @@ Ansible-lint helps teams maintain consistent, secure, and well-structured Ansibl
 
 ## ansible-lint documentation
 
-- Version in MegaLinter: **25.9.1**
+- Version in MegaLinter: **25.9.2**
 - Visit [Official Web Site](https://ansible-lint.readthedocs.io/){target=_blank}
 - See [How to configure ansible-lint rules](https://ansible-lint.readthedocs.io/configuring/#configuration-file){target=_blank}
   - If custom `.ansible-lint` config file isn't found, [.ansible-lint](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.ansible-lint){target=_blank} will be used
@@ -195,8 +195,8 @@ ANSIBLE_LINT_NODEPS: Avoids installing content dependencies and avoids performin
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=ansible-lint
-ARG PIP_ANSIBLE_LINT_VERSION=25.9.1
+ARG PIP_ANSIBLE_LINT_VERSION=25.9.2
 ```
 
 - PIP packages (Python):
-  - [ansible-lint==25.9.1](https://pypi.org/project/ansible-lint/25.9.1)
+  - [ansible-lint==25.9.2](https://pypi.org/project/ansible-lint/25.9.2)

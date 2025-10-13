@@ -13,7 +13,7 @@
 #############################################################################################
 #ARGTOP__START
 # renovate: datasource=docker depName=rhysd/actionlint
-ARG ACTION_ACTIONLINT_VERSION=1.7.7
+ARG ACTION_ACTIONLINT_VERSION=1.7.8
 # renovate: datasource=docker depName=koalaman/shellcheck
 ARG BASH_SHELLCHECK_VERSION=v0.11.0
 # renovate: datasource=docker depName=mvdan/shfmt
@@ -86,7 +86,7 @@ FROM python:3.13-alpine3.22
 # renovate: datasource=crate depName=sarif-fmt
 ARG CARGO_SARIF_FMT_VERSION=0.8.0
 # renovate: datasource=pypi depName=ansible-lint
-ARG PIP_ANSIBLE_LINT_VERSION=25.9.1
+ARG PIP_ANSIBLE_LINT_VERSION=25.9.2
 # renovate: datasource=npm depName=@stoplight/spectral-cli
 ARG NPM_SPECTRAL_CLI_VERSION=6.15.0
 # renovate: datasource=crate depName=shellcheck-sarif
@@ -132,7 +132,7 @@ ARG NPM_MARKDOWNLINT_CLI_VERSION=0.45.0
 # renovate: datasource=npm depName=markdown-table-formatter
 ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.6.1
 # renovate: datasource=pypi depName=pylint
-ARG PIP_PYLINT_VERSION=3.3.9
+ARG PIP_PYLINT_VERSION=4.0.0
 # renovate: datasource=pypi depName=typing-extensions
 ARG PIP_TYPING_EXTENSIONS_VERSION=4.15.0
 # renovate: datasource=pypi depName=black
@@ -150,7 +150,7 @@ ARG PIP_MYPY_VERSION=1.18.2
 # renovate: datasource=npm depName=pyright
 ARG NPM_PYRIGHT_VERSION=1.1.406
 # renovate: datasource=pypi depName=ruff
-ARG PIP_RUFF_VERSION=0.13.3
+ARG PIP_RUFF_VERSION=0.14.0
 # renovate: datasource=pypi depName=checkov
 ARG PIP_CHECKOV_VERSION=3.2.477
 # renovate: datasource=github-tags depName=anchore/grype
@@ -168,9 +168,9 @@ ARG PIP_SEMGREP_VERSION=1.116.0
 # renovate: datasource=github-tags depName=anchore/syft
 ARG REPOSITORY_SYFT_VERSION=1.33.0
 # renovate: datasource=github-tags depName=aquasecurity/trivy
-ARG REPOSITORY_TRIVY_VERSION=0.67.0
+ARG REPOSITORY_TRIVY_VERSION=0.67.2
 # renovate: datasource=github-tags depName=aquasecurity/trivy
-ARG REPOSITORY_TRIVY_SBOM_VERSION=0.67.0
+ARG REPOSITORY_TRIVY_SBOM_VERSION=0.67.2
 # renovate: datasource=pypi depName=Pygments
 ARG PIP_PYGMENTS_VERSION=2.19.2
 # renovate: datasource=pypi depName=restructuredtext_lint
@@ -182,7 +182,7 @@ ARG PIP_RSTCHECK_CLICK_VERSION=8.3.0
 # renovate: datasource=pypi depName=rstfmt
 ARG PIP_RSTFMT_VERSION=0.0.14
 # renovate: datasource=pypi depName=snakemake
-ARG PIP_SNAKEMAKE_VERSION=9.11.9
+ARG PIP_SNAKEMAKE_VERSION=9.13.2
 # renovate: datasource=pypi depName=snakefmt
 ARG PIP_SNAKEFMT_VERSION=0.11.2
 # renovate: datasource=npm depName=cspell

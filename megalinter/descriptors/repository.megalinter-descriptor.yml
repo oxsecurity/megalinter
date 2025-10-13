@@ -61,7 +61,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=checkov
-          ARG PIP_CHECKOV_VERSION=3.2.477
+          ARG PIP_CHECKOV_VERSION=3.2.483
       pip:
         - checkov==${PIP_CHECKOV_VERSION}
     test_folder: repository_checkov
@@ -758,7 +758,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=github-tags depName=aquasecurity/trivy
-          ARG REPOSITORY_TRIVY_VERSION=0.67.0
+          ARG REPOSITORY_TRIVY_VERSION=0.67.2
         - |
           RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin "v${REPOSITORY_TRIVY_VERSION}" \
               && (trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress)
@@ -819,7 +819,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=github-tags depName=aquasecurity/trivy
-          ARG REPOSITORY_TRIVY_SBOM_VERSION=0.67.0
+          ARG REPOSITORY_TRIVY_SBOM_VERSION=0.67.2
         - |
           RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin "v${REPOSITORY_TRIVY_SBOM_VERSION}" \
               && (trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress)
