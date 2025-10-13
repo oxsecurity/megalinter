@@ -49,6 +49,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [pylint](https://pylint.readthedocs.io) from 3.3.9 to **4.0.0** on 2025-10-13
   - [ruff-format](https://github.com/astral-sh/ruff) from 0.13.3 to **0.14.0** on 2025-10-13
   - [ruff](https://github.com/astral-sh/ruff) from 0.13.3 to **0.14.0** on 2025-10-13
+  - [editorconfig-checker](https://editorconfig-checker.github.io/) from 3.4.0 to **3.4.1** on 2025-10-13
+  - [phpstan](https://phpstan.org/) from 2.1.30 to **2.1.31** on 2025-10-13
 <!-- linter-versions-end -->
 
 ## [v9.1.0] - 2025-10-07

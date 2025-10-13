@@ -26,7 +26,7 @@ description: How to use editorconfig-checker (configure, ignore files, ignore er
 
 ## editorconfig-checker documentation
 
-- Version in MegaLinter: **3.4.0**
+- Version in MegaLinter: **3.4.1**
 - Visit [Official Web Site](https://editorconfig-checker.github.io/){target=_blank}
 - See [How to configure editorconfig-checker rules](https://github.com/editorconfig-checker/editorconfig-checker#configuration){target=_blank}
 - See [How to disable editorconfig-checker rules in files](https://github.com/editorconfig-checker/editorconfig-checker#excluding){target=_blank}
@@ -107,6 +107,8 @@ USAGE:
       enables printing color
   -config string
       config
+  -cpuprofile string
+      write cpu profile to file
   -debug
       print debugging information
   -disable-end-of-line
@@ -150,7 +152,7 @@ USAGE:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=docker depName=mstruebing/editorconfig-checker
-ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=v3.4.0
+ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=v3.4.1
 FROM mstruebing/editorconfig-checker:${EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION} AS editorconfig-checker
 COPY --link --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
 ```
