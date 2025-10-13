@@ -13,7 +13,7 @@
 #############################################################################################
 #ARGTOP__START
 # renovate: datasource=docker depName=rhysd/actionlint
-ARG ACTION_ACTIONLINT_VERSION=1.7.7
+ARG ACTION_ACTIONLINT_VERSION=1.7.8
 # renovate: datasource=docker depName=koalaman/shellcheck
 ARG BASH_SHELLCHECK_VERSION=v0.11.0
 # renovate: datasource=docker depName=mvdan/shfmt
@@ -132,7 +132,7 @@ ARG NPM_MARKDOWNLINT_CLI_VERSION=0.45.0
 # renovate: datasource=npm depName=markdown-table-formatter
 ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.6.1
 # renovate: datasource=pypi depName=pylint
-ARG PIP_PYLINT_VERSION=3.3.9
+ARG PIP_PYLINT_VERSION=4.0.0
 # renovate: datasource=pypi depName=typing-extensions
 ARG PIP_TYPING_EXTENSIONS_VERSION=4.15.0
 # renovate: datasource=pypi depName=black
@@ -150,7 +150,7 @@ ARG PIP_MYPY_VERSION=1.18.2
 # renovate: datasource=npm depName=pyright
 ARG NPM_PYRIGHT_VERSION=1.1.406
 # renovate: datasource=pypi depName=ruff
-ARG PIP_RUFF_VERSION=0.13.3
+ARG PIP_RUFF_VERSION=0.14.0
 # renovate: datasource=github-tags depName=anchore/grype
 ARG REPOSITORY_GRYPE_VERSION=0.100.0
 # renovate: datasource=npm depName=@ls-lint/ls-lint

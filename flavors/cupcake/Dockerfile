@@ -13,7 +13,7 @@
 #############################################################################################
 #ARGTOP__START
 # renovate: datasource=docker depName=rhysd/actionlint
-ARG ACTION_ACTIONLINT_VERSION=1.7.7
+ARG ACTION_ACTIONLINT_VERSION=1.7.8
 # renovate: datasource=docker depName=koalaman/shellcheck
 ARG BASH_SHELLCHECK_VERSION=v0.11.0
 # renovate: datasource=docker depName=mvdan/shfmt
@@ -162,7 +162,7 @@ ARG NPM_ESLINT_PLUGIN_PRETTIER_VERSION=5.5.4
 # renovate: datasource=npm depName=eslint-plugin-promise
 ARG NPM_ESLINT_PLUGIN_PROMISE_VERSION=6.6.0
 # renovate: datasource=npm depName=eslint-plugin-vue
-ARG NPM_ESLINT_PLUGIN_VUE_VERSION=10.4.0
+ARG NPM_ESLINT_PLUGIN_VUE_VERSION=10.5.0
 # renovate: datasource=npm depName=@babel/core
 ARG NPM_BABEL_CORE_VERSION=7.28.4
 # renovate: datasource=npm depName=@babel/eslint-parser
@@ -202,7 +202,7 @@ ARG PHP_SQUIZLABS_PHP_CODESNIFFER_VERSION=4.0.0
 # renovate: datasource=packagist depName=bartlett/sarif-php-converters
 ARG PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION=1.3.1
 # renovate: datasource=packagist depName=phpstan/phpstan
-ARG PHP_PHPSTAN_PHPSTAN_VERSION=2.1.30
+ARG PHP_PHPSTAN_PHPSTAN_VERSION=2.1.31
 # renovate: datasource=packagist depName=phpstan/extension-installer
 ARG PHP_PHPSTAN_EXTENSION_INSTALLER_VERSION=1.4.3
 # renovate: datasource=packagist depName=vimeo/psalm
@@ -212,7 +212,7 @@ ARG PHP_OVERTRUE_PHPLINT_VERSION=9.6.2
 # renovate: datasource=packagist depName=friendsofphp/php-cs-fixer
 ARG PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION=v3.88.2
 # renovate: datasource=pypi depName=pylint
-ARG PIP_PYLINT_VERSION=3.3.9
+ARG PIP_PYLINT_VERSION=4.0.0
 # renovate: datasource=pypi depName=typing-extensions
 ARG PIP_TYPING_EXTENSIONS_VERSION=4.15.0
 # renovate: datasource=pypi depName=black
@@ -226,7 +226,7 @@ ARG PIP_MYPY_VERSION=1.18.2
 # renovate: datasource=npm depName=pyright
 ARG NPM_PYRIGHT_VERSION=1.1.406
 # renovate: datasource=pypi depName=ruff
-ARG PIP_RUFF_VERSION=0.13.3
+ARG PIP_RUFF_VERSION=0.14.0
 # renovate: datasource=github-tags depName=anchore/grype
 ARG REPOSITORY_GRYPE_VERSION=0.100.0
 # renovate: datasource=npm depName=@ls-lint/ls-lint
