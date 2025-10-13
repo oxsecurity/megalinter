@@ -21,7 +21,7 @@ description: How to use actionlint (configure, ignore files, ignore errors, help
 
 ## actionlint documentation
 
-- Version in MegaLinter: **1.7.7**
+- Version in MegaLinter: **1.7.8**
 - Visit [Official Web Site](https://rhysd.github.io/actionlint/){target=_blank}
 - See [How to configure actionlint rules](https://github.com/rhysd/actionlint/blob/main/docs/config.md){target=_blank}
 
@@ -122,9 +122,9 @@ Usage: actionlint [FLAGS] [FILES...] [-]
 
 Documents:
 
-  - List of checks: https://github.com/rhysd/actionlint/tree/v1.7.7/docs/checks.md
-  - Usage:          https://github.com/rhysd/actionlint/tree/v1.7.7/docs/usage.md
-  - Configuration:  https://github.com/rhysd/actionlint/tree/v1.7.7/docs/config.md
+  - List of checks: https://github.com/rhysd/actionlint/tree/v1.7.8/docs/checks.md
+  - Usage:          https://github.com/rhysd/actionlint/tree/v1.7.8/docs/usage.md
+  - Configuration:  https://github.com/rhysd/actionlint/tree/v1.7.8/docs/config.md
 
 Flags:
   -color
@@ -160,7 +160,7 @@ Flags:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=docker depName=rhysd/actionlint
-ARG ACTION_ACTIONLINT_VERSION=1.7.7
+ARG ACTION_ACTIONLINT_VERSION=1.7.8
 # renovate: datasource=docker depName=koalaman/shellcheck
 ARG BASH_SHELLCHECK_VERSION=v0.11.0
 FROM rhysd/actionlint:${ACTION_ACTIONLINT_VERSION} AS actionlint

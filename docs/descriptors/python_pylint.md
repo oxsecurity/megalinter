@@ -41,7 +41,7 @@ For legacy projects, start with `--errors-only` flag and progressively enable mo
 
 ## pylint documentation
 
-- Version in MegaLinter: **3.3.9**
+- Version in MegaLinter: **4.0.0**
 - Visit [Official Web Site](https://pylint.readthedocs.io){target=_blank}
 - See [How to configure pylint rules](https://pylint.readthedocs.io/en/stable/user_guide/configuration/index.html){target=_blank}
   - If custom `.pylintrc` config file isn't found, [.pylintrc](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.pylintrc){target=_blank} will be used
@@ -217,10 +217,6 @@ Main:
                         arbitrary code. (This is an alternative name to
                         extension-pkg-allow-list for backward compatibility.)
                         (default: [])
-  --suggestion-mode <y or n>
-                        When enabled, pylint would attempt to guess common
-                        misconfiguration and emit user-friendly hints instead
-                        of false-positive error messages. (default: True)
   --exit-zero           Always return a 0 (non-error) status code, even if
                         lint errors are found. This is primarily useful in
                         continuous integration scripts. (default: False)
@@ -424,7 +420,9 @@ Format:
 
   --max-line-length <int>
                         Maximum number of characters on a single line.
-                        (default: 100)
+                        Pylint's default of 100 is based on PEP 8's guidance
+                        that teams may choose line lengths up to 99
+                        characters. (default: 100)
   --ignore-long-lines <regexp>
                         Regexp for a line that is allowed to be longer than
                         the limit. (default: ^\s*(# )?<?https?://\S+>?$)
@@ -614,6 +612,11 @@ Basic:
                         Overrides module-naming-style. If left empty, module
                         names will be checked with the set naming style.
                         (default: None)
+  --paramspec-rgx <regexp>
+                        Regular expression matching correct parameter
+                        specification variable names. If left empty, parameter
+                        specification variable names will be checked with the
+                        set naming style. (default: None)
   --typealias-rgx <regexp>
                         Regular expression matching correct type alias names.
                         If left empty, type alias names will be checked with
@@ -622,6 +625,11 @@ Basic:
                         Regular expression matching correct type variable
                         names. If left empty, type variable names will be
                         checked with the set naming style. (default: None)
+  --typevartuple-rgx <regexp>
+                        Regular expression matching correct type variable
+                        tuple names. If left empty, type variable tuple names
+                        will be checked with the set naming style. (default:
+                        None)
   --variable-naming-style <style>
                         Naming style matching correct variable names.
                         (default: snake_case)
@@ -680,13 +688,16 @@ Exceptions:
                         'builtins.Exception'))
 
 Miscellaneous:
-  BaseChecker for encoding issues.
+  BaseChecker for encoding issues and fixme notes.
 
   --notes <comma separated values>
                         List of note tags to take in consideration, separated
                         by a comma. (default: ('FIXME', 'XXX', 'TODO'))
   --notes-rgx <regexp>  Regular expression of note tags to take in
                         consideration. (default: )
+  --check-fixme-in-docstring <y or n>
+                        Whether or not to search for fixme's in docstrings.
+                        (default: False)
 
 Design:
   Checker of potential misdesigns.
@@ -797,11 +808,11 @@ Imports:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=pylint
-ARG PIP_PYLINT_VERSION=3.3.9
+ARG PIP_PYLINT_VERSION=4.0.0
 # renovate: datasource=pypi depName=typing-extensions
 ARG PIP_TYPING_EXTENSIONS_VERSION=4.15.0
 ```
 
 - PIP packages (Python):
-  - [pylint==3.3.9](https://pypi.org/project/pylint/3.3.9)
+  - [pylint==4.0.0](https://pypi.org/project/pylint/4.0.0)
   - [typing-extensions==4.15.0](https://pypi.org/project/typing-extensions/4.15.0)
