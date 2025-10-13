@@ -220,7 +220,7 @@ puppet-lint --fail-on-warnings --no-autoloader_layout-check --fix myfile.pp
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=rubygems depName=puppet-lint
-ARG GEM_PUPPET_LINT_VERSION=5.0.0
+ARG GEM_PUPPET_LINT_VERSION=5.1.0
 ```
 
 - GEM packages (Ruby) :
