@@ -51,6 +51,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [ruff](https://github.com/astral-sh/ruff) from 0.13.3 to **0.14.0** on 2025-10-13
   - [editorconfig-checker](https://editorconfig-checker.github.io/) from 3.4.0 to **3.4.1** on 2025-10-13
   - [phpstan](https://phpstan.org/) from 2.1.30 to **2.1.31** on 2025-10-13
+  - [stylelint](https://stylelint.io) from 16.24.0 to **16.25.0** on 2025-10-14
+  - [secretlint](https://github.com/secretlint/secretlint) from 11.2.4 to **11.2.5** on 2025-10-14
+  - [robocop](https://github.com/MarketSquare/robotframework-robocop) from 6.7.2 to **6.8.0** on 2025-10-14
+  - [swiftlint](https://github.com/realm/SwiftLint) from 0.61.0 to **0.62.1** on 2025-10-14
 <!-- linter-versions-end -->
 
 ## [v9.1.0] - 2025-10-07
