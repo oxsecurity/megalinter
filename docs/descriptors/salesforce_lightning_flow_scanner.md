@@ -12,7 +12,7 @@ description: How to use lightning-flow-scanner (configure, ignore files, ignore 
   </a>
 </div>
 
-![disabled](https://shields.io/badge/-disabled-orange) [![GitHub stars](https://img.shields.io/github/stars/Flow-Scanner/lightning-flow-scanner-cli?cacheSeconds=3600)](https://github.com/Flow-Scanner/lightning-flow-scanner-cli) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/Flow-Scanner/lightning-flow-scanner-cli?sort=semver)](https://github.com/Flow-Scanner/lightning-flow-scanner-cli/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/Flow-Scanner/lightning-flow-scanner-cli)](https://github.com/Flow-Scanner/lightning-flow-scanner-cli/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/Flow-Scanner/lightning-flow-scanner-cli)](https://github.com/Flow-Scanner/lightning-flow-scanner-cli/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/Flow-Scanner/lightning-flow-scanner-cli)](https://github.com/Flow-Scanner/lightning-flow-scanner-cli/graphs/contributors/)
+[![GitHub stars](https://img.shields.io/github/stars/Flow-Scanner/lightning-flow-scanner-cli?cacheSeconds=3600)](https://github.com/Flow-Scanner/lightning-flow-scanner-cli) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/Flow-Scanner/lightning-flow-scanner-cli?sort=semver)](https://github.com/Flow-Scanner/lightning-flow-scanner-cli/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/Flow-Scanner/lightning-flow-scanner-cli)](https://github.com/Flow-Scanner/lightning-flow-scanner-cli/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/Flow-Scanner/lightning-flow-scanner-cli)](https://github.com/Flow-Scanner/lightning-flow-scanner-cli/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/Flow-Scanner/lightning-flow-scanner-cli)](https://github.com/Flow-Scanner/lightning-flow-scanner-cli/graphs/contributors/)
 
 A Salesforce CLI Plugin designed to proactively enforce secure and maintainable Salesforce Flows. It detects unsafe running contexts, hardcoded IDs, unhandled nulls, inefficient database operations and more, helping teams ensure their automations are safe and reliable.
 
@@ -140,7 +140,7 @@ ARG NPM_SALESFORCE_CLI_VERSION=2.107.6
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
 ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.20.5
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=6.5.4
+ARG SFDX_HARDIS_VERSION=6.7.4
 ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 RUN sf plugins install @salesforce/plugin-packaging@${NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION} \
