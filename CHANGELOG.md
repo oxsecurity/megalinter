@@ -13,6 +13,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - New linters
 
 - Disabled linters
+  - Reactivate [checkov](https://megalinter.io/beta/descriptors/repository_checkov/)
 
 - Removed linters
 

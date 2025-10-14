@@ -227,6 +227,8 @@ ARG PIP_MYPY_VERSION=1.18.2
 ARG NPM_PYRIGHT_VERSION=1.1.406
 # renovate: datasource=pypi depName=ruff
 ARG PIP_RUFF_VERSION=0.14.0
+# renovate: datasource=pypi depName=checkov
+ARG PIP_CHECKOV_VERSION=3.2.483
 # renovate: datasource=github-tags depName=anchore/grype
 ARG REPOSITORY_GRYPE_VERSION=0.100.0
 # renovate: datasource=npm depName=@ls-lint/ls-lint
@@ -414,6 +416,7 @@ RUN uv pip install --system --no-cache pip==${PIP_PIP_VERSION} virtualenv==${PIP
     && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/mypy" && VIRTUAL_ENV="/venvs/mypy" uv pip install --no-cache mypy==${PIP_MYPY_VERSION} \
     && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/ruff" && VIRTUAL_ENV="/venvs/ruff" uv pip install --no-cache ruff==${PIP_RUFF_VERSION} \
     && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/ruff-format" && VIRTUAL_ENV="/venvs/ruff-format" uv pip install --no-cache ruff==${PIP_RUFF_VERSION} \
+    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/checkov" && VIRTUAL_ENV="/venvs/checkov" uv pip install --no-cache checkov==${PIP_CHECKOV_VERSION} \
     && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/semgrep" && VIRTUAL_ENV="/venvs/semgrep" uv pip install --no-cache semgrep==${PIP_SEMGREP_VERSION} \
     && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/robocop" && VIRTUAL_ENV="/venvs/robocop" uv pip install --no-cache robotframework-robocop==${PIP_ROBOT_FRAMEWORK_ROBOCOP_VERSION} \
     && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/rst-lint" && VIRTUAL_ENV="/venvs/rst-lint" uv pip install --no-cache Pygments==${PIP_PYGMENTS_VERSION} restructuredtext_lint==${PIP_RESTRUCTUREDTEXT_LINT_VERSION} \
@@ -424,7 +427,7 @@ RUN uv pip install --system --no-cache pip==${PIP_PIP_VERSION} virtualenv==${PIP
     && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/yamllint" && VIRTUAL_ENV="/venvs/yamllint" uv pip install --no-cache yamllint==${PIP_YAMLLINT_VERSION}  \
     && find /venvs \( -type f \( -iname \*.pyc -o -iname \*.pyo \) -o -type d -iname __pycache__ \) -delete \
     && rm -rf /root/.cache
-ENV PATH="${PATH}":/venvs/ansible-lint/bin:/venvs/cpplint/bin:/venvs/cfn-lint/bin:/venvs/stylelint/bin:/venvs/djlint/bin:/venvs/pylint/bin:/venvs/black/bin:/venvs/flake8/bin:/venvs/isort/bin:/venvs/mypy/bin:/venvs/ruff/bin:/venvs/ruff-format/bin:/venvs/semgrep/bin:/venvs/robocop/bin:/venvs/rst-lint/bin:/venvs/rstcheck/bin:/venvs/rstfmt/bin:/venvs/proselint/bin:/venvs/sqlfluff/bin:/venvs/yamllint/bin
+ENV PATH="${PATH}":/venvs/ansible-lint/bin:/venvs/cpplint/bin:/venvs/cfn-lint/bin:/venvs/stylelint/bin:/venvs/djlint/bin:/venvs/pylint/bin:/venvs/black/bin:/venvs/flake8/bin:/venvs/isort/bin:/venvs/mypy/bin:/venvs/ruff/bin:/venvs/ruff-format/bin:/venvs/checkov/bin:/venvs/semgrep/bin:/venvs/robocop/bin:/venvs/rst-lint/bin:/venvs/rstcheck/bin:/venvs/rstfmt/bin:/venvs/proselint/bin:/venvs/sqlfluff/bin:/venvs/yamllint/bin
 #PIPVENV__END
 
 ############################
@@ -763,6 +766,8 @@ ENV MYPY_CACHE_DIR=/tmp
 # ruff installation
 #
 # ruff-format installation
+#
+# checkov installation
 #
 # gitleaks installation
 # Managed with COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
