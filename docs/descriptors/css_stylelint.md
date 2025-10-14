@@ -28,7 +28,7 @@ description: How to use stylelint (configure, ignore files, ignore errors, help 
 
 ## stylelint documentation
 
-- Version in MegaLinter: **16.24.0**
+- Version in MegaLinter: **16.25.0**
 - Visit [Official Web Site](https://stylelint.io){target=_blank}
 - See [How to configure stylelint rules](https://stylelint.io/user-guide/configure){target=_blank}
   - If custom `.stylelintrc.json` config file isn't found, [.stylelintrc.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.stylelintrc.json){target=_blank} will be used
@@ -300,6 +300,18 @@ stylelint --fix --config .stylelintrc.json myfile.css myfile2.css myfile3.css
 
       When a glob pattern matches no files, the process will exit without throwing an error.
 
+    --suppress [<rule>]
+      Suppress problems and record them in a file. If no rule is specified,
+      all problems are suppressed. Otherwise, only problems with the given
+      rules are suppressed, e.g., "--suppress rule1 --suppress rule2".
+      See also "--suppress-location".
+
+    --suppress-location <path>
+
+      A path to a file or directory to be used for the suppressions file location. If a
+      directory is specified, a suppressions file will be created inside the specified
+      folder, with the name "stylelint-suppressions.json".
+
     --globby-options, --go <json>
 
       Options in JSON format passed to globby.
@@ -319,7 +331,7 @@ stylelint --fix --config .stylelintrc.json myfile.css myfile2.css myfile3.css
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=stylelint
-ARG NPM_STYLELINT_VERSION=16.24.0
+ARG NPM_STYLELINT_VERSION=16.25.0
 # renovate: datasource=npm depName=stylelint-config-standard
 ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=39.0.1
 # renovate: datasource=npm depName=stylelint-config-sass-guidelines
@@ -331,7 +343,7 @@ ARG PIP_CPPLINT_VERSION=2.0.2
 ```
 
 - NPM packages (node.js):
-  - [stylelint@16.24.0](https://www.npmjs.com/package/stylelint/v/16.24.0)
+  - [stylelint@16.25.0](https://www.npmjs.com/package/stylelint/v/16.25.0)
   - [stylelint-config-standard@39.0.1](https://www.npmjs.com/package/stylelint-config-standard/v/39.0.1)
   - [stylelint-config-sass-guidelines@12.1.0](https://www.npmjs.com/package/stylelint-config-sass-guidelines/v/12.1.0)
   - [stylelint-scss@6.12.1](https://www.npmjs.com/package/stylelint-scss/v/6.12.1)
