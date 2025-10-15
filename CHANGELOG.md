@@ -56,6 +56,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [secretlint](https://github.com/secretlint/secretlint) from 11.2.4 to **11.2.5** on 2025-10-14
   - [robocop](https://github.com/MarketSquare/robotframework-robocop) from 6.7.2 to **6.8.0** on 2025-10-14
   - [swiftlint](https://github.com/realm/SwiftLint) from 0.61.0 to **0.62.1** on 2025-10-14
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.40.1 to **1.40.2** on 2025-10-15
+  - [checkov](https://www.checkov.io/) from 3.2.413 to **3.2.483** on 2025-10-15
 <!-- linter-versions-end -->
 
 ## [v9.1.0] - 2025-10-07
