@@ -58,6 +58,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [swiftlint](https://github.com/realm/SwiftLint) from 0.61.0 to **0.62.1** on 2025-10-14
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.40.1 to **1.40.2** on 2025-10-15
   - [checkov](https://www.checkov.io/) from 3.2.413 to **3.2.483** on 2025-10-15
+  - [roslynator](https://github.com/dotnet/Roslynator) from 0.10.2.0 to **0.11.0.0** on 2025-10-15
+  - [kubescape](https://github.com/kubescape/kubescape) from 3.0.41 to **3.0.42** on 2025-10-15
+  - [pylint](https://pylint.readthedocs.io) from 4.0.0 to **4.0.1** on 2025-10-15
+  - [syft](https://github.com/anchore/syft) from 1.33.0 to **1.34.1** on 2025-10-15
 <!-- linter-versions-end -->
 
 ## [v9.1.0] - 2025-10-07
