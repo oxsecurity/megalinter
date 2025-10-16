@@ -62,6 +62,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [kubescape](https://github.com/kubescape/kubescape) from 3.0.41 to **3.0.42** on 2025-10-15
   - [pylint](https://pylint.readthedocs.io) from 4.0.0 to **4.0.1** on 2025-10-15
   - [syft](https://github.com/anchore/syft) from 1.33.0 to **1.34.1** on 2025-10-15
+  - [grype](https://github.com/anchore/grype) from 0.100.0 to **0.101.0** on 2025-10-15
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.90.8 to **3.90.9** on 2025-10-15
 <!-- linter-versions-end -->
 
 ## [v9.1.0] - 2025-10-07

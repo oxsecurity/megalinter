@@ -29,7 +29,7 @@ description: How to use trufflehog (configure, ignore files, ignore errors, help
 
 ## trufflehog documentation
 
-- Version in MegaLinter: **3.90.8**
+- Version in MegaLinter: **3.90.9**
 - Visit [Official Web Site](https://github.com/trufflesecurity/trufflehog#readme){target=_blank}
 - See [How to configure trufflehog rules](https://github.com/trufflesecurity/trufflehog#regex-detector-alpha){target=_blank}
 
@@ -122,9 +122,12 @@ Flags:
       --[no-]github-actions      Output in GitHub Actions format.
       --concurrency=4            Number of concurrent workers.
       --[no-]no-verification     Don't verify the results.
-      --results=RESULTS          Specifies which type(s) of results to
-                                 output: verified, unknown, unverified,
-                                 filtered_unverified. Defaults to
+      --results=RESULTS          Specifies which type(s) of results to output:
+                                 verified (confirmed valid by API),
+                                 unknown (verification failed due to error),
+                                 unverified (detected but not verified),
+                                 filtered_unverified (unverified but would
+                                 have been filtered out). Defaults to
                                  verified,unverified,unknown.
       --[no-]no-color            Disable colorized output
       --[no-]allow-verification-overlap
@@ -141,6 +144,9 @@ Flags:
                                  Print the average time spent on each detector.
       --[no-]no-update           Don't check for updates.
       --[no-]fail                Exit with code 183 if results are found.
+      --[no-]fail-on-scan-errors
+                                 Exit with non-zero error code if an error
+                                 occurs during the scan.
       --verifier=VERIFIER ...    Set custom verification endpoints.
       --[no-]custom-verifiers-only
                                  Only use custom verification endpoints.
@@ -241,7 +247,7 @@ analyze
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
-ARG REPOSITORY_TRUFFLEHOG_VERSION=3.90.8
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.90.9
 FROM trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION} AS trufflehog
 COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
 ```
