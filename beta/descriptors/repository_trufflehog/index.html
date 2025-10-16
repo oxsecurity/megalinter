@@ -10220,7 +10220,7 @@
 </ul>
 <h2 id="trufflehog-documentation">trufflehog documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>3.90.8</strong></li>
+<li>Version in MegaLinter: <strong>3.90.9</strong></li>
 <li>Visit <a href="https://github.com/trufflesecurity/trufflehog#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/trufflesecurity/trufflehog#regex-detector-alpha" target="_blank">How to configure trufflehog rules</a></li>
 </ul>
@@ -10472,9 +10472,12 @@ Flags:
       --[no-]github-actions      Output in GitHub Actions format.
       --concurrency=4            Number of concurrent workers.
       --[no-]no-verification     Don't verify the results.
-      --results=RESULTS          Specifies which type(s) of results to
-                                 output: verified, unknown, unverified,
-                                 filtered_unverified. Defaults to
+      --results=RESULTS          Specifies which type(s) of results to output:
+                                 verified (confirmed valid by API),
+                                 unknown (verification failed due to error),
+                                 unverified (detected but not verified),
+                                 filtered_unverified (unverified but would
+                                 have been filtered out). Defaults to
                                  verified,unverified,unknown.
       --[no-]no-color            Disable colorized output
       --[no-]allow-verification-overlap
@@ -10491,6 +10494,9 @@ Flags:
                                  Print the average time spent on each detector.
       --[no-]no-update           Don't check for updates.
       --[no-]fail                Exit with code 183 if results are found.
+      --[no-]fail-on-scan-errors
+                                 Exit with non-zero error code if an error
+                                 occurs during the scan.
       --verifier=VERIFIER ...    Set custom verification endpoints.
       --[no-]custom-verifiers-only
                                  Only use custom verification endpoints.
@@ -10590,7 +10596,7 @@ analyze
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile"># renovate: datasource=docker depName=trufflesecurity/trufflehog
-ARG REPOSITORY_TRUFFLEHOG_VERSION=3.90.8
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.90.9
 FROM trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION} AS trufflehog
 COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
 </code></pre>
