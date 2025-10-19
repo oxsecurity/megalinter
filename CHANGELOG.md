@@ -20,6 +20,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Media
 
 - Linters enhancements
+  - Install dotenv-linter deterministically, by @bdovaz in <https://github.com/oxsecurity/megalinter/pull/6385>
 
 - Fixes
 
