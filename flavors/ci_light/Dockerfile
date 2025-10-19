@@ -68,6 +68,8 @@ ARG CARGO_SARIF_FMT_VERSION=0.8.0
 ARG CARGO_SHELLCHECK_SARIF_VERSION=0.8.0
 # renovate: datasource=npm depName=jscpd
 ARG NPM_JSCPD_VERSION=4.0.5
+# renovate: datasource=github-tags depName=dotenv-linter/dotenv-linter
+ARG DOTENV_LINTER_VERSION=4.0.0
 # renovate: datasource=npm depName=npm-groovy-lint
 ARG NPM_GROOVY_LINT_VERSION=15.2.2
 # renovate: datasource=npm depName=@prantlf/jsonlint
@@ -254,7 +256,7 @@ COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
 # Managed with COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
 #
 # dotenv-linter installation
-RUN wget -q -O - https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/master/install.sh | sh -s
+RUN wget -q -O - https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/master/install.sh | sh -s -- -b /usr/local/bin "v${DOTENV_LINTER_VERSION}"
 #
 # npm-groovy-lint installation
 ENV JAVA_HOME_17=/usr/lib/jvm/java-17-openjdk

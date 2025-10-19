@@ -124,6 +124,8 @@ ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=39.0.1
 ARG NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION=12.1.0
 # renovate: datasource=npm depName=stylelint-scss
 ARG NPM_STYLELINT_SCSS_VERSION=6.12.1
+# renovate: datasource=github-tags depName=dotenv-linter/dotenv-linter
+ARG DOTENV_LINTER_VERSION=4.0.0
 # renovate: datasource=npm depName=gherkin-lint
 ARG NPM_GHERKIN_LINT_VERSION=4.2.4
 # renovate: datasource=npm depName=graphql
@@ -541,7 +543,7 @@ RUN curl --retry 5 --retry-delay 5 -sLO "https://github.com/Azure/arm-ttk/releas
 # Managed with COPY --link --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
 #
 # dotenv-linter installation
-    && wget -q -O - https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/master/install.sh | sh -s
+    && wget -q -O - https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/master/install.sh | sh -s -- -b /usr/local/bin "v${DOTENV_LINTER_VERSION}"
 #
 # gherkin-lint installation
 #

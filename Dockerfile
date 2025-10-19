@@ -168,6 +168,8 @@ ARG NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION=12.1.0
 ARG NPM_STYLELINT_SCSS_VERSION=6.12.1
 # renovate: datasource=dart-version depName=dart
 ARG DART_VERSION='3.8.3'
+# renovate: datasource=github-tags depName=dotenv-linter/dotenv-linter
+ARG DOTENV_LINTER_VERSION=4.0.0
 # renovate: datasource=npm depName=gherkin-lint
 ARG NPM_GHERKIN_LINT_VERSION=4.2.4
 # renovate: datasource=github-tags depName=golangci/golangci-lint
@@ -883,7 +885,7 @@ ENV PATH="/usr/lib/dart/bin:${PATH}"
 # Managed with COPY --link --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
 #
 # dotenv-linter installation
-RUN wget -q -O - https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/master/install.sh | sh -s \
+RUN wget -q -O - https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/master/install.sh | sh -s -- -b /usr/local/bin "v${DOTENV_LINTER_VERSION}" \
 #
 # gherkin-lint installation
 #
