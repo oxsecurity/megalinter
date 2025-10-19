@@ -41,7 +41,7 @@ For legacy projects, start with `--errors-only` flag and progressively enable mo
 
 ## pylint documentation
 
-- Version in MegaLinter: **3.3.8**
+- Version in MegaLinter: **4.0.1**
 - Visit [Official Web Site](https://pylint.readthedocs.io){target=_blank}
 - See [How to configure pylint rules](https://pylint.readthedocs.io/en/stable/user_guide/configuration/index.html){target=_blank}
   - If custom `.pylintrc` config file isn't found, [.pylintrc](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.pylintrc){target=_blank} will be used
@@ -91,8 +91,8 @@ This linter is available in the following flavors
 |                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                     | Embedded linters |                                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       127        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        87        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)   | Optimized for PYTHON based projects             |        64        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        88        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)   | Optimized for PYTHON based projects             |        65        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
 
 ## Behind the scenes
 
@@ -217,10 +217,6 @@ Main:
                         arbitrary code. (This is an alternative name to
                         extension-pkg-allow-list for backward compatibility.)
                         (default: [])
-  --suggestion-mode <y or n>
-                        When enabled, pylint would attempt to guess common
-                        misconfiguration and emit user-friendly hints instead
-                        of false-positive error messages. (default: True)
   --exit-zero           Always return a 0 (non-error) status code, even if
                         lint errors are found. This is primarily useful in
                         continuous integration scripts. (default: False)
@@ -424,7 +420,9 @@ Format:
 
   --max-line-length <int>
                         Maximum number of characters on a single line.
-                        (default: 100)
+                        Pylint's default of 100 is based on PEP 8's guidance
+                        that teams may choose line lengths up to 99
+                        characters. (default: 100)
   --ignore-long-lines <regexp>
                         Regexp for a line that is allowed to be longer than
                         the limit. (default: ^\s*(# )?<?https?://\S+>?$)
@@ -614,6 +612,11 @@ Basic:
                         Overrides module-naming-style. If left empty, module
                         names will be checked with the set naming style.
                         (default: None)
+  --paramspec-rgx <regexp>
+                        Regular expression matching correct parameter
+                        specification variable names. If left empty, parameter
+                        specification variable names will be checked with the
+                        set naming style. (default: None)
   --typealias-rgx <regexp>
                         Regular expression matching correct type alias names.
                         If left empty, type alias names will be checked with
@@ -622,6 +625,11 @@ Basic:
                         Regular expression matching correct type variable
                         names. If left empty, type variable names will be
                         checked with the set naming style. (default: None)
+  --typevartuple-rgx <regexp>
+                        Regular expression matching correct type variable
+                        tuple names. If left empty, type variable tuple names
+                        will be checked with the set naming style. (default:
+                        None)
   --variable-naming-style <style>
                         Naming style matching correct variable names.
                         (default: snake_case)
@@ -680,13 +688,16 @@ Exceptions:
                         'builtins.Exception'))
 
 Miscellaneous:
-  BaseChecker for encoding issues.
+  BaseChecker for encoding issues and fixme notes.
 
   --notes <comma separated values>
                         List of note tags to take in consideration, separated
                         by a comma. (default: ('FIXME', 'XXX', 'TODO'))
   --notes-rgx <regexp>  Regular expression of note tags to take in
                         consideration. (default: )
+  --check-fixme-in-docstring <y or n>
+                        Whether or not to search for fixme's in docstrings.
+                        (default: False)
 
 Design:
   Checker of potential misdesigns.
@@ -797,11 +808,11 @@ Imports:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=pylint
-ARG PIP_PYLINT_VERSION=3.3.8
+ARG PIP_PYLINT_VERSION=4.0.1
 # renovate: datasource=pypi depName=typing-extensions
 ARG PIP_TYPING_EXTENSIONS_VERSION=4.15.0
 ```
 
 - PIP packages (Python):
-  - [pylint==3.3.8](https://pypi.org/project/pylint/3.3.8)
+  - [pylint==4.0.1](https://pypi.org/project/pylint/4.0.1)
   - [typing-extensions==4.15.0](https://pypi.org/project/typing-extensions/4.15.0)

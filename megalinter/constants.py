@@ -27,6 +27,7 @@ DEFAULT_SARIF_REPORT_FILE_NAME = "megalinter-report.sarif"
 DEFAULT_MARKDOWN_SUMMARY_REPORT_FILE_NAME = "megalinter-report.md"
 DEFAULT_SARIF_SCHEMA_URI = "https://json.schemastore.org/sarif-2.1.0.json"
 DEFAULT_SARIF_VERSION = "2.1.0"
+# MAJOR-RELEASE-IMPACTED
 DEFAULT_RELEASE = "v9"
 
 DEFAULT_DOCKERFILE_ARGS: list[str] = []
@@ -73,7 +74,7 @@ DEFAULT_DOCKERFILE_PIP_ARGS = [
 ]
 
 DEFAULT_DOCKERFILE_PIPENV_ARGS = [
-    "# renovate: datasource=pypi depName=virtualenv\nARG PIP_VIRTUALENV_VERSION=20.34.0",
+    "# renovate: datasource=pypi depName=virtualenv\nARG PIP_VIRTUALENV_VERSION=20.35.3",
 ]
 
 DEFAULT_DOCKERFILE_RUST_ARGS = [

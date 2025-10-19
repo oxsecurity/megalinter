@@ -12334,6 +12334,13 @@
       "title": "(DEPRECATED) Activate GitHub Status reporter",
       "type": "boolean"
     },
+    "OLLAMA_BASE_URL": {
+      "$id": "#/properties/OLLAMA_BASE_URL",
+      "default": "http://localhost:11434",
+      "description": "Base URL to connect to Ollama server",
+      "title": "OLLAMA: Base URL",
+      "type": "string"
+    },
     "OPENAPI_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/OPENAPI_FILTER_REGEX_EXCLUDE",
       "title": "Excluding regex filter for OPENAPI descriptor",

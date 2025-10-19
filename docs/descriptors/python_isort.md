@@ -29,7 +29,7 @@ description: How to use isort (configure, ignore files, ignore errors, help & ve
 
 ## isort documentation
 
-- Version in MegaLinter: **6.1.0**
+- Version in MegaLinter: **7.0.0**
 - Visit [Official Web Site](https://pycqa.github.io/isort/){target=_blank}
 - See [How to configure isort rules](https://pycqa.github.io/isort/docs/configuration/config_files.html){target=_blank}
   - If custom `.isort.cfg` config file isn't found, [.isort.cfg](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.isort.cfg){target=_blank} will be used
@@ -80,9 +80,9 @@ This linter is available in the following flavors
 |                                                                         <!-- -->                                                                         | Flavor                                                       | Description                                     | Embedded linters |                                                                                                                                                                                             Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor                       |       127        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)       | MegaLinter for the most commonly used languages |        87        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)       | MegaLinter for the most commonly used languages |        88        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
 |     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/formatters.ico" alt="" height="32px" class="megalinter-icon"></a>      | [formatters](https://megalinter.io/beta/flavors/formatters/) | Contains only formatters                        |        18        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-formatters/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-formatters) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)         | Optimized for PYTHON based projects             |        64        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)         | Optimized for PYTHON based projects             |        65        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
 
 ## Behind the scenes
 
@@ -147,7 +147,7 @@ usage: isort [-h] [-V] [--vn] [-v] [--only-modified] [--dedup-headings] [-q]
              [-f KNOWN_FUTURE_LIBRARY] [-o KNOWN_THIRD_PARTY]
              [-p KNOWN_FIRST_PARTY] [--known-local-folder KNOWN_LOCAL_FOLDER]
              [--virtual-env VIRTUAL_ENV] [--conda-env CONDA_ENV]
-             [--py {all,2,27,3,310,311,312,313,36,37,38,39,auto}]
+             [--py {all,2,27,3,310,311,312,313,314,36,37,38,39,auto}]
              [files ...]
 
 Sort Python import definitions alphabetically within logical sections. Run
@@ -476,7 +476,7 @@ section output options:
   --conda-env CONDA_ENV
                         Conda environment to use for determining whether a
                         package is third-party
-  --py, --python-version {all,2,27,3,310,311,312,313,36,37,38,39,auto}
+  --py, --python-version {all,2,27,3,310,311,312,313,314,36,37,38,39,auto}
                         Tells isort to set the known standard library based on
                         the specified Python version. Default is to assume any
                         Python 3 version could be the target, and use a union
@@ -492,9 +492,9 @@ section output options:
 # renovate: datasource=pypi depName=black
 ARG PIP_BLACK_VERSION=25.9.0
 # renovate: datasource=pypi depName=isort
-ARG PIP_ISORT_VERSION=6.0.1
+ARG PIP_ISORT_VERSION=7.0.0
 ```
 
 - PIP packages (Python):
   - [black==25.9.0](https://pypi.org/project/black/25.9.0)
-  - [isort==6.0.1](https://pypi.org/project/isort/6.0.1)
+  - [isort==7.0.0](https://pypi.org/project/isort/7.0.0)

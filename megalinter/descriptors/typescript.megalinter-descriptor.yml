@@ -11,7 +11,7 @@ install:
   dockerfile:
     - |-
       # renovate: datasource=npm depName=typescript
-      ARG NPM_TYPESCRIPT_VERSION=5.9.2
+      ARG NPM_TYPESCRIPT_VERSION=5.9.3
   npm:
     - typescript@${NPM_TYPESCRIPT_VERSION}
 linters:
@@ -109,10 +109,10 @@ linters:
           ARG NPM_PRETTYJSON_VERSION=1.2.5
         - |-
           # renovate: datasource=npm depName=@typescript-eslint/eslint-plugin
-          ARG NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION=8.44.1
+          ARG NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION=8.46.1
         - |-
           # renovate: datasource=npm depName=@typescript-eslint/parser
-          ARG NPM_TYPESCRIPT_ESLINT_PARSER_VERSION=8.44.1
+          ARG NPM_TYPESCRIPT_ESLINT_PARSER_VERSION=8.46.1
         - |-
           # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
           ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0

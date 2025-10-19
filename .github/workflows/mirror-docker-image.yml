@@ -71,7 +71,8 @@ jobs:
         run: docker push "${{ github.event.inputs.target-image }}"
 
   copy-to-docker-hub-release:
-    if: github.ref_name == 'main' && contains(github.event.inputs.source-image,'v8') && (contains(github.event.inputs.target-image,'v8') || contains(github.event.inputs.target-image,'latest'))
+    # MAJOR-RELEASE-IMPACTED
+    if: github.ref_name == 'main' && contains(github.event.inputs.source-image,'v9') && (contains(github.event.inputs.target-image,'v9') || contains(github.event.inputs.target-image,'latest'))
     runs-on: ubuntu-latest
     environment:
       name: release

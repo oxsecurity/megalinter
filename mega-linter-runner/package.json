@@ -1,6 +1,6 @@
 {
   "name": "mega-linter-runner",
-  "version": "9.0.1",
+  "version": "9.1.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/oxsecurity/megalinter.git"
@@ -103,7 +103,7 @@
     "mocha": "^11.0.0"
   },
   "resolutions": {
-    "semver": "7.7.2",
+    "semver": "7.7.3",
     "tmp": "0.2.5"
   }
 }

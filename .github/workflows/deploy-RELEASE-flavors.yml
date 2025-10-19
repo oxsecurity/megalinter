@@ -102,6 +102,7 @@ jobs:
           push: true
           secrets: |
             GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
+          # MAJOR-RELEASE-IMPACTED
           tags: |
             ghcr.io/oxsecurity/megalinter-${{ matrix.flavor }}:v9
             ghcr.io/oxsecurity/megalinter-${{ matrix.flavor }}:${{ github.event.release.tag_name }}
@@ -111,18 +112,21 @@ jobs:
         uses: benc-uk/workflow-dispatch@v1
         with:
           workflow: mirror-docker-image.yml
+          # MAJOR-RELEASE-IMPACTED
           inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter-${{ matrix.flavor }}:v9", "target-image": "docker.io/oxsecurity/megalinter-${{ matrix.flavor }}:v9" }'
           ref: main
       - name: Invoke Mirror docker image workflow (Main image)
         uses: benc-uk/workflow-dispatch@v1
         with:
           workflow: mirror-docker-image.yml
+          # MAJOR-RELEASE-IMPACTED
           inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter-${{ matrix.flavor }}:v9", "target-image": "docker.io/oxsecurity/megalinter-${{ matrix.flavor }}:${{ github.event.release.tag_name }}" }'
           ref: main
       - name: Invoke Mirror docker image workflow (Main image)
         uses: benc-uk/workflow-dispatch@v1
         with:
           workflow: mirror-docker-image.yml
+          # MAJOR-RELEASE-IMPACTED
           inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter-${{ matrix.flavor }}:v9", "target-image": "docker.io/oxsecurity/megalinter-${{ matrix.flavor }}:latest" }'
           ref: main
       # - name: Build Worker Image

@@ -55,7 +55,7 @@ jobs:
       ########################################################
       # Publish updated version of mega-linter-runner on NPM #
       ########################################################
-      - uses: actions/setup-node@v5.0.0
+      - uses: actions/setup-node@v6.0.0
         with:
           node-version: "22.x"
           registry-url: "https://registry.npmjs.org"
@@ -98,6 +98,7 @@ jobs:
           push: true
           secrets: |
             GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
+          # MAJOR-RELEASE-IMPACTED
           tags: |
             ghcr.io/oxsecurity/megalinter:v9
             ghcr.io/oxsecurity/megalinter:${{ github.event.release.tag_name }}
@@ -107,18 +108,21 @@ jobs:
         uses: benc-uk/workflow-dispatch@v1
         with:
           workflow: mirror-docker-image.yml
+          # MAJOR-RELEASE-IMPACTED
           inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter:v9", "target-image": "docker.io/oxsecurity/megalinter:v9" }'
           ref: main
       - name: Invoke Mirror docker image workflow (Main image)
         uses: benc-uk/workflow-dispatch@v1
         with:
           workflow: mirror-docker-image.yml
+          # MAJOR-RELEASE-IMPACTED
           inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter:v9", "target-image": "docker.io/oxsecurity/megalinter:${{ github.event.release.tag_name }}" }'
           ref: main
       - name: Invoke Mirror docker image workflow (Main image)
         uses: benc-uk/workflow-dispatch@v1
         with:
           workflow: mirror-docker-image.yml
+          # MAJOR-RELEASE-IMPACTED
           inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter:v9", "target-image": "docker.io/oxsecurity/megalinter:latest" }'
           ref: main
 
@@ -136,6 +140,7 @@ jobs:
           push: true
           secrets: |
             GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
+          # MAJOR-RELEASE-IMPACTED
           tags: |
             ghcr.io/oxsecurity/megalinter-custom-flavor-builder:v9
             ghcr.io/oxsecurity/megalinter-custom-flavor-builder:${{ github.event.release.tag_name }}
@@ -206,7 +211,7 @@ jobs:
           echo "curr ver ${{ steps.version.outputs.cversion }}"
       - uses: actions/setup-python@v6
         with:
-          python-version: 3.12.11
+          python-version: 3.12.12
       - run: pip install --upgrade -r .config/python/dev/requirements.txt
       - run: cd .automation && bash build_schemas_doc.sh && cd ..
       # - run: mkdocs gh-deploy --force
@@ -225,6 +230,7 @@ jobs:
         run: |
           git checkout ${{ steps.version.outputs.ctag }}
       - name: Mike deploy current version
+        # MAJOR-RELEASE-IMPACTED
         run: |
           mike delete latest
           mike delete v9 || true
