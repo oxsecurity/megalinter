@@ -256,7 +256,7 @@ COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
 # Managed with COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
 #
 # dotenv-linter installation
-RUN wget -q -O - https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/master/install.sh | sh -s -- -b usr/local/bin "v${DOTENV_LINTER_VERSION}"
+RUN wget -q -O - https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/master/install.sh | sh -s -- -b /usr/local/bin "v${DOTENV_LINTER_VERSION}"
 #
 # npm-groovy-lint installation
 ENV JAVA_HOME_17=/usr/lib/jvm/java-17-openjdk
