@@ -619,6 +619,7 @@ linters:
     cli_config_default_value: auto
     ignore_file_name: .semgrepignore
     cli_lint_extra_args:
+      - --no-git
       - --error # Exit 1 when errors are found
     cli_lint_extra_args_after:
       - "{{WORKSPACE}}"
@@ -639,7 +640,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=semgrep
-          ARG PIP_SEMGREP_VERSION=1.116.0
+          ARG PIP_SEMGREP_VERSION=1.130.0
       pip:
         - semgrep==${PIP_SEMGREP_VERSION}
     variables:
