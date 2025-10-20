@@ -491,7 +491,7 @@ RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/rel
 # Managed with COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
 #
 # sfdx-scanner-apex installation
-    && sf plugins install @salesforce/sfdx-scanner@${SALESFORCE_SFDX_SCANNER_VERSION} \
+    && sf plugins install @salesforce/code-analyzer@${SALESFORCE_SFDX_SCANNER_VERSION} \
     && (npm cache clean --force || true) \
     && rm -rf /root/.npm/_cacache
 #

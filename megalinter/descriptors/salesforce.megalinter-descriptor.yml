@@ -85,7 +85,7 @@ linters:
     cli_version_extra_args:
       - "plugins"
     cli_version_arg_name: ""
-    version_extract_regex: "(?<=@salesforce/sfdx-scanner )\\d+(\\.\\d+)+"
+    version_extract_regex: "(?<=@salesforce/code-analyzer )\\d+(\\.\\d+)+"
     cli_lint_errors_count: regex_sum
     cli_lint_errors_regex: "found ([0-9]+) violation"
     examples:
@@ -93,10 +93,10 @@ linters:
     install:
       dockerfile:
         - |-
-          # renovate: datasource=npm depName=@salesforce/sfdx-scanner
+          # renovate: datasource=npm depName=@salesforce/code-analyzer
           ARG SALESFORCE_SFDX_SCANNER_VERSION=5.5.0
         - |-
-          RUN sf plugins install @salesforce/sfdx-scanner@${SALESFORCE_SFDX_SCANNER_VERSION} \
+          RUN sf plugins install @salesforce/code-analyzer@${SALESFORCE_SFDX_SCANNER_VERSION} \
               && (npm cache clean --force || true) \
               && rm -rf /root/.npm/_cacache
     ide:
@@ -170,7 +170,7 @@ linters:
     cli_version_extra_args:
       - "plugins"
     cli_version_arg_name: ""
-    version_extract_regex: "(?<=@salesforce/sfdx-scanner )\\d+(\\.\\d+)+"
+    version_extract_regex: "(?<=@salesforce/code-analyzer )\\d+(\\.\\d+)+"
     cli_lint_errors_count: regex_sum
     cli_lint_errors_regex: "found ([0-9]+) violation"
     examples:
@@ -178,10 +178,10 @@ linters:
     install:
       dockerfile:
         - |-
-          # renovate: datasource=npm depName=@salesforce/sfdx-scanner
+          # renovate: datasource=npm depName=@salesforce/code-analyzer
           ARG SALESFORCE_SFDX_SCANNER_VERSION=5.5.0
         - |-
-          RUN sf plugins install @salesforce/sfdx-scanner@${SALESFORCE_SFDX_SCANNER_VERSION} \
+          RUN sf plugins install @salesforce/code-analyzer@${SALESFORCE_SFDX_SCANNER_VERSION} \
               && (npm cache clean --force || true) \
               && rm -rf /root/.npm/_cacache
     ide:
@@ -246,7 +246,7 @@ linters:
     cli_version_extra_args:
       - "plugins"
     cli_version_arg_name: ""
-    version_extract_regex: "(?<=@salesforce/sfdx-scanner )\\d+(\\.\\d+)+"
+    version_extract_regex: "(?<=@salesforce/code-analyzer )\\d+(\\.\\d+)+"
     cli_lint_errors_count: regex_sum
     cli_lint_errors_regex: "found ([0-9]+) violation"
     examples:
@@ -254,10 +254,10 @@ linters:
     install:
       dockerfile:
         - |-
-          # renovate: datasource=npm depName=@salesforce/sfdx-scanner
+          # renovate: datasource=npm depName=@salesforce/code-analyzer
           ARG SALESFORCE_SFDX_SCANNER_VERSION=5.5.0
         - |-
-          RUN sf plugins install @salesforce/sfdx-scanner@${SALESFORCE_SFDX_SCANNER_VERSION} \
+          RUN sf plugins install @salesforce/code-analyzer@${SALESFORCE_SFDX_SCANNER_VERSION} \
               && (npm cache clean --force || true) \
               && rm -rf /root/.npm/_cacache
     ide:
