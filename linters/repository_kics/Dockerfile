@@ -25,7 +25,7 @@ FROM checkmarx/kics:${REPOSITORY_KICS_VERSION} AS kics
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.9.3 AS uv
+FROM ghcr.io/astral-sh/uv:0.9.4 AS uv
 FROM python:3.13-alpine3.22 AS build-ml-core
 WORKDIR /
 COPY --from=uv /uv /uvx /bin/
