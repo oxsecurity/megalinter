@@ -61,6 +61,15 @@
       ],
     },
     {
+      groupName: 'langchain',
+      matchPackageNames: [
+        'langchain_*',
+      ],
+      schedule: [
+        'before 3pm every 3 day',
+      ],
+    },
+    {
       groupName: 'Salesforce packages',
       matchPackageNames: [
         '@salesforce/**',
