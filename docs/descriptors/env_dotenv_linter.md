@@ -29,7 +29,7 @@ description: How to use dotenv-linter (configure, ignore files, ignore errors, h
 
 ## dotenv-linter documentation
 
-- Version in MegaLinter: **3.3.0**
+- Version in MegaLinter: **4.0.0**
 - Visit [Official Web Site](https://dotenv-linter.github.io/){target=_blank}
 - See [How to configure dotenv-linter rules](https://dotenv-linter.github.io/#/usage/check){target=_blank}
 - See [How to disable dotenv-linter rules in files](https://dotenv-linter.github.io/#/usage/check?id=skip-checks){target=_blank}
@@ -110,36 +110,31 @@ dotenv-linter fix myfile.env
 ### Help content
 
 ```shell
-dotenv-linter 3.3.0
-Mikhail Grachev <work@mgrachev.com>
+dotenv-linter 4.0.0
+Mikhail Grachev <work@mgrachev.com>, dotenv-linter core team & contributors
 Lightning-fast linter for .env files
 
-USAGE:
-    dotenv-linter [OPTIONS] [input]... [SUBCOMMAND]
+Usage: dotenv-linter [OPTIONS] <COMMAND>
 
-ARGS:
-    <input>...    files or paths [default: /]
+Commands:
+  check  Check .env files for errors such as duplicate keys or invalid syntax
+  fix    Automatically fix issues in .env files
+  diff   Compare .env files to ensure matching key sets
+  help   Print this message or the help of the given subcommand(s)
 
-OPTIONS:
-    -e, --exclude <FILE_NAME>...    Excludes files from check
-    -h, --help                      Print help information
-        --no-color                  Turns off the colored output
-        --not-check-updates         Doesn't check for updates
-    -q, --quiet                     Doesn't display additional information
-    -r, --recursive                 Recursively searches and checks .env files
-    -s, --skip <CHECK_NAME>...      Skips checks
-    -v, --version                   Print version information
-
-SUBCOMMANDS:
-    compare    Compares if files have the same keys [aliases: c]
-    fix        Automatically fixes warnings [aliases: f]
-    list       Shows list of available checks [aliases: l]
+Options:
+      --plain    Switch to plain text output without colors
+  -q, --quiet    Display only critical results, suppressing extra details
+  -h, --help     Print help
+  -V, --version  Print version
 ```
 
 ### Installation on mega-linter Docker image
 
 - Dockerfile commands :
 ```dockerfile
-RUN wget -q -O - https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/master/install.sh | sh -s
+# renovate: datasource=github-tags depName=dotenv-linter/dotenv-linter
+ARG DOTENV_LINTER_VERSION=4.0.0
+RUN wget -q -O - https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/master/install.sh | sh -s -- -b /usr/local/bin "v${DOTENV_LINTER_VERSION}"
 ```
 
