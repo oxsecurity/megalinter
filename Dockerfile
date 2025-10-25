@@ -44,7 +44,7 @@ ARG TERRAFORM_TFLINT_VERSION=0.59.1
 # renovate: datasource=docker depName=tenable/terrascan
 ARG TERRAFORM_TERRASCAN_VERSION=1.19.9
 # renovate: datasource=docker depName=alpine/terragrunt
-ARG TERRAFORM_TERRAGRUNT_VERSION=1.13.3
+ARG TERRAFORM_TERRAGRUNT_VERSION=1.13.4
 #ARGTOP__END
 
 #############################################################################################
@@ -86,7 +86,7 @@ FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} AS terragrunt
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.9.3 AS uv
+FROM ghcr.io/astral-sh/uv:0.9.4 AS uv
 FROM python:3.13-alpine3.22 AS build-ml-core
 WORKDIR /
 COPY --from=uv /uv /uvx /bin/
@@ -168,6 +168,8 @@ ARG NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION=12.1.0
 ARG NPM_STYLELINT_SCSS_VERSION=6.12.1
 # renovate: datasource=dart-version depName=dart
 ARG DART_VERSION='3.8.3'
+# renovate: datasource=github-tags depName=dotenv-linter/dotenv-linter
+ARG DOTENV_LINTER_VERSION=4.0.0
 # renovate: datasource=npm depName=gherkin-lint
 ARG NPM_GHERKIN_LINT_VERSION=4.2.4
 # renovate: datasource=github-tags depName=golangci/golangci-lint
@@ -291,7 +293,7 @@ ARG RAKU_RAKU_VERSION=2024.12
 ARG RAKU_RAKU_ALPINE_VERSION=3.20
 
 # renovate: datasource=pypi depName=checkov
-ARG PIP_CHECKOV_VERSION=3.2.483
+ARG PIP_CHECKOV_VERSION=3.2.484
 # renovate: datasource=nuget depName=Microsoft.CST.DevSkim.CLI
 ARG REPOSITORY_DEVSKIM_VERSION=1.0.67
 # renovate: datasource=github-tags depName=anchore/grype
@@ -339,7 +341,7 @@ ARG GEM_RUBOCOP_RSPEC_VERSION=3.7.0
 # renovate: datasource=npm depName=@salesforce/code-analyzer
 ARG SALESFORCE_SFDX_SCANNER_VERSION=5.5.0
 # renovate: datasource=pypi depName=snakemake
-ARG PIP_SNAKEMAKE_VERSION=9.13.2
+ARG PIP_SNAKEMAKE_VERSION=9.13.3
 # renovate: datasource=pypi depName=snakefmt
 ARG PIP_SNAKEFMT_VERSION=0.11.2
 # renovate: datasource=npm depName=cspell
@@ -347,7 +349,7 @@ ARG NPM_CSPELL_VERSION=9.2.1
 # renovate: datasource=pypi depName=proselint
 ARG PIP_PROSELINT_VERSION=0.14.0
 # renovate: datasource=pypi depName=sqlfluff
-ARG PIP_SQLFLUFF_VERSION=3.4.2
+ARG PIP_SQLFLUFF_VERSION=3.5.0
 # renovate: datasource=nuget depName=TSQLLint
 ARG SQL_TSQLLINT_VERSION=1.16.0
 # renovate: datasource=npm depName=@ibm/tekton-lint
@@ -883,7 +885,7 @@ ENV PATH="/usr/lib/dart/bin:${PATH}"
 # Managed with COPY --link --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
 #
 # dotenv-linter installation
-RUN wget -q -O - https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/master/install.sh | sh -s \
+RUN wget -q -O - https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/master/install.sh | sh -s -- -b /usr/local/bin "v${DOTENV_LINTER_VERSION}" \
 #
 # gherkin-lint installation
 #
