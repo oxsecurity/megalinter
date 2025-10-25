@@ -51,7 +51,7 @@ FROM python:3.13-alpine3.22
 # renovate: datasource=pypi depName=semgrep
 ARG PIP_SEMGREP_VERSION=1.116.0
 # renovate: datasource=pypi depName=pip
-ARG PIP_PIP_VERSION=25.2
+ARG PIP_PIP_VERSION=25.3
 # renovate: datasource=pypi depName=virtualenv
 ARG PIP_VIRTUALENV_VERSION=20.35.3
 #ARG__END
