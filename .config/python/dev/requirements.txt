@@ -39,5 +39,5 @@ langchain_core==1.0.0
 langchain_anthropic==1.0.0
 langchain_deepseek==1.0.0
 langchain_google_genai==3.0.0
-langchain_mistralai==1.0.0
+langchain_mistralai==1.0.1
 langchain_community==0.4
