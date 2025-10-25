@@ -31,7 +31,7 @@ ARG TERRAFORM_TFLINT_VERSION=0.59.1
 # renovate: datasource=docker depName=tenable/terrascan
 ARG TERRAFORM_TERRASCAN_VERSION=1.19.9
 # renovate: datasource=docker depName=alpine/terragrunt
-ARG TERRAFORM_TERRAGRUNT_VERSION=1.13.3
+ARG TERRAFORM_TERRAGRUNT_VERSION=1.13.4
 #ARGTOP__END
 
 #############################################################################################
@@ -55,7 +55,7 @@ FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} AS terragrunt
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.9.3 AS uv
+FROM ghcr.io/astral-sh/uv:0.9.4 AS uv
 FROM python:3.13-alpine3.22 AS build-ml-core
 WORKDIR /
 COPY --from=uv /uv /uvx /bin/
@@ -94,7 +94,7 @@ ARG PIP_BANDIT_VERSION=1.8.6
 # renovate: datasource=pypi depName=bandit_sarif_formatter
 ARG PIP_BANDIT_SARIF_FORMATTER_VERSION=1.1.1
 # renovate: datasource=pypi depName=checkov
-ARG PIP_CHECKOV_VERSION=3.2.483
+ARG PIP_CHECKOV_VERSION=3.2.484
 # renovate: datasource=nuget depName=Microsoft.CST.DevSkim.CLI
 ARG REPOSITORY_DEVSKIM_VERSION=1.0.67
 # renovate: datasource=github-tags depName=anchore/grype

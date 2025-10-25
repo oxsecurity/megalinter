@@ -59,7 +59,7 @@ FROM lycheeverse/lychee:${SPELL_LYCHEE_VERSION} AS lychee
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.9.3 AS uv
+FROM ghcr.io/astral-sh/uv:0.9.4 AS uv
 FROM python:3.13-alpine3.22 AS build-ml-core
 WORKDIR /
 COPY --from=uv /uv /uvx /bin/
@@ -125,6 +125,8 @@ ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=39.0.1
 ARG NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION=12.1.0
 # renovate: datasource=npm depName=stylelint-scss
 ARG NPM_STYLELINT_SCSS_VERSION=6.12.1
+# renovate: datasource=github-tags depName=dotenv-linter/dotenv-linter
+ARG DOTENV_LINTER_VERSION=4.0.0
 # renovate: datasource=npm depName=gherkin-lint
 ARG NPM_GHERKIN_LINT_VERSION=4.2.4
 # renovate: datasource=npm depName=graphql
@@ -195,7 +197,7 @@ ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.6.1
 ARG PSSA_VERSION='1.24.0'
 
 # renovate: datasource=pypi depName=checkov
-ARG PIP_CHECKOV_VERSION=3.2.483
+ARG PIP_CHECKOV_VERSION=3.2.484
 # renovate: datasource=github-tags depName=anchore/grype
 ARG REPOSITORY_GRYPE_VERSION=0.101.1
 # renovate: datasource=npm depName=@ls-lint/ls-lint
@@ -215,7 +217,7 @@ ARG REPOSITORY_TRIVY_VERSION=0.67.2
 # renovate: datasource=github-tags depName=aquasecurity/trivy
 ARG REPOSITORY_TRIVY_SBOM_VERSION=0.67.2
 # renovate: datasource=pypi depName=snakemake
-ARG PIP_SNAKEMAKE_VERSION=9.13.2
+ARG PIP_SNAKEMAKE_VERSION=9.13.3
 # renovate: datasource=pypi depName=snakefmt
 ARG PIP_SNAKEFMT_VERSION=0.11.2
 # renovate: datasource=npm depName=cspell
@@ -223,7 +225,7 @@ ARG NPM_CSPELL_VERSION=9.2.1
 # renovate: datasource=pypi depName=proselint
 ARG PIP_PROSELINT_VERSION=0.14.0
 # renovate: datasource=pypi depName=sqlfluff
-ARG PIP_SQLFLUFF_VERSION=3.4.2
+ARG PIP_SQLFLUFF_VERSION=3.5.0
 # renovate: datasource=nuget depName=TSQLLint
 ARG SQL_TSQLLINT_VERSION=1.16.0
 # renovate: datasource=npm depName=@ibm/tekton-lint
@@ -550,7 +552,7 @@ esac \
 # Managed with COPY --link --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
 #
 # dotenv-linter installation
-    && wget -q -O - https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/master/install.sh | sh -s
+    && wget -q -O - https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/master/install.sh | sh -s -- -b /usr/local/bin "v${DOTENV_LINTER_VERSION}"
 #
 # gherkin-lint installation
 #

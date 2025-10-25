@@ -20,6 +20,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Media
 
 - Linters enhancements
+  - Install dotenv-linter deterministically, by @bdovaz in <https://github.com/oxsecurity/megalinter/pull/6385>
 
 - Fixes
 
@@ -64,6 +65,21 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [syft](https://github.com/anchore/syft) from 1.33.0 to **1.34.1** on 2025-10-15
   - [grype](https://github.com/anchore/grype) from 0.100.0 to **0.101.0** on 2025-10-15
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.90.8 to **3.90.9** on 2025-10-15
+  - [dotenv-linter](https://dotenv-linter.github.io/) from 3.3.0 to **4.0.0** on 2025-10-19
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2025.09.22 to **2025.10.23** on 2025-10-24
+  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 9.0.110 to **9.0.111** on 2025-10-24
+  - [checkstyle](https://checkstyle.org/) from 12.0.1 to **12.1.0** on 2025-10-24
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.14.0 to **0.14.1** on 2025-10-24
+  - [ruff](https://github.com/astral-sh/ruff) from 0.14.0 to **0.14.1** on 2025-10-24
+  - [checkov](https://www.checkov.io/) from 3.2.483 to **3.2.484** on 2025-10-24
+  - [grype](https://github.com/anchore/grype) from 0.101.0 to **0.102.0** on 2025-10-24
+  - [syft](https://github.com/anchore/syft) from 1.34.1 to **1.36.0** on 2025-10-24
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.90.9 to **3.90.11** on 2025-10-24
+  - [robocop](https://github.com/MarketSquare/robotframework-robocop) from 6.8.0 to **6.8.3** on 2025-10-24
+  - [snakemake](https://snakemake.github.io/) from 9.13.2 to **9.13.3** on 2025-10-24
+  - [sqlfluff](https://www.sqlfluff.com/) from 3.4.2 to **3.5.0** on 2025-10-24
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.13.3 to **1.13.4** on 2025-10-24
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.90.0 to **0.91.1** on 2025-10-24
 <!-- linter-versions-end -->
 
 ## [v9.1.0] - 2025-10-07

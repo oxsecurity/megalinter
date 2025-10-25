@@ -39,7 +39,7 @@ ARG TERRAFORM_TFLINT_VERSION=0.59.1
 # renovate: datasource=docker depName=tenable/terrascan
 ARG TERRAFORM_TERRASCAN_VERSION=1.19.9
 # renovate: datasource=docker depName=alpine/terragrunt
-ARG TERRAFORM_TERRAGRUNT_VERSION=1.13.3
+ARG TERRAFORM_TERRAGRUNT_VERSION=1.13.4
 #ARGTOP__END
 
 #############################################################################################
@@ -75,7 +75,7 @@ FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} AS terragrunt
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.9.3 AS uv
+FROM ghcr.io/astral-sh/uv:0.9.4 AS uv
 FROM python:3.13-alpine3.22 AS build-ml-core
 WORKDIR /
 COPY --from=uv /uv /uvx /bin/
@@ -128,6 +128,8 @@ ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=39.0.1
 ARG NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION=12.1.0
 # renovate: datasource=npm depName=stylelint-scss
 ARG NPM_STYLELINT_SCSS_VERSION=6.12.1
+# renovate: datasource=github-tags depName=dotenv-linter/dotenv-linter
+ARG DOTENV_LINTER_VERSION=4.0.0
 # renovate: datasource=github-tags depName=golangci/golangci-lint
 ARG GO_GOLANGCI_LINT_VERSION=2.5.0
 # renovate: datasource=npm depName=graphql
@@ -228,7 +230,7 @@ ARG NPM_PYRIGHT_VERSION=1.1.406
 # renovate: datasource=pypi depName=ruff
 ARG PIP_RUFF_VERSION=0.14.1
 # renovate: datasource=pypi depName=checkov
-ARG PIP_CHECKOV_VERSION=3.2.483
+ARG PIP_CHECKOV_VERSION=3.2.484
 # renovate: datasource=github-tags depName=anchore/grype
 ARG REPOSITORY_GRYPE_VERSION=0.101.1
 # renovate: datasource=npm depName=@ls-lint/ls-lint
@@ -276,7 +278,7 @@ ARG NPM_CSPELL_VERSION=9.2.1
 # renovate: datasource=pypi depName=proselint
 ARG PIP_PROSELINT_VERSION=0.14.0
 # renovate: datasource=pypi depName=sqlfluff
-ARG PIP_SQLFLUFF_VERSION=3.4.2
+ARG PIP_SQLFLUFF_VERSION=3.5.0
 # renovate: datasource=npm depName=prettyjson
 ARG NPM_PRETTYJSON_VERSION=1.2.5
 # renovate: datasource=npm depName=@typescript-eslint/eslint-plugin
@@ -653,7 +655,7 @@ RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: Fil
 # Managed with COPY --link --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
 #
 # dotenv-linter installation
-    && wget -q -O - https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/master/install.sh | sh -s \
+    && wget -q -O - https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/master/install.sh | sh -s -- -b /usr/local/bin "v${DOTENV_LINTER_VERSION}" \
 #
 # golangci-lint installation
     && wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s "v${GO_GOLANGCI_LINT_VERSION}" \

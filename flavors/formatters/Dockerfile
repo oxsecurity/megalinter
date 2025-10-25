@@ -15,7 +15,7 @@
 # renovate: datasource=docker depName=mvdan/shfmt
 ARG BASH_SHFMT_VERSION=v3.12.0-alpine
 # renovate: datasource=docker depName=alpine/terragrunt
-ARG TERRAFORM_TERRAGRUNT_VERSION=1.13.3
+ARG TERRAFORM_TERRAGRUNT_VERSION=1.13.4
 #ARGTOP__END
 
 #############################################################################################
@@ -29,7 +29,7 @@ FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} AS terragrunt
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.9.3 AS uv
+FROM ghcr.io/astral-sh/uv:0.9.4 AS uv
 FROM python:3.13-alpine3.22 AS build-ml-core
 WORKDIR /
 COPY --from=uv /uv /uvx /bin/
