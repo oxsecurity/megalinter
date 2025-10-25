@@ -10220,7 +10220,7 @@
 </ul>
 <h2 id="dotenv-linter-documentation">dotenv-linter documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>3.3.0</strong></li>
+<li>Version in MegaLinter: <strong>4.0.0</strong></li>
 <li>Visit <a href="https://dotenv-linter.github.io/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://dotenv-linter.github.io/#/usage/check" target="_blank">How to configure dotenv-linter rules</a></li>
 <li>See <a href="https://dotenv-linter.github.io/#/usage/check?id=skip-checks" target="_blank">How to disable dotenv-linter rules in files</a></li>
@@ -10462,36 +10462,31 @@
 <pre><code class="language-shell">dotenv-linter fix myfile.env
 </code></pre>
 <h3 id="help-content">Help content</h3>
-<pre><code class="language-shell">dotenv-linter 3.3.0
-Mikhail Grachev &lt;work@mgrachev.com&gt;
+<pre><code class="language-shell">dotenv-linter 4.0.0
+Mikhail Grachev &lt;work@mgrachev.com&gt;, dotenv-linter core team &amp; contributors
 Lightning-fast linter for .env files
 
-USAGE:
-    dotenv-linter [OPTIONS] [input]... [SUBCOMMAND]
+Usage: dotenv-linter [OPTIONS] &lt;COMMAND&gt;
 
-ARGS:
-    &lt;input&gt;...    files or paths [default: /]
+Commands:
+  check  Check .env files for errors such as duplicate keys or invalid syntax
+  fix    Automatically fix issues in .env files
+  diff   Compare .env files to ensure matching key sets
+  help   Print this message or the help of the given subcommand(s)
 
-OPTIONS:
-    -e, --exclude &lt;FILE_NAME&gt;...    Excludes files from check
-    -h, --help                      Print help information
-        --no-color                  Turns off the colored output
-        --not-check-updates         Doesn't check for updates
-    -q, --quiet                     Doesn't display additional information
-    -r, --recursive                 Recursively searches and checks .env files
-    -s, --skip &lt;CHECK_NAME&gt;...      Skips checks
-    -v, --version                   Print version information
-
-SUBCOMMANDS:
-    compare    Compares if files have the same keys [aliases: c]
-    fix        Automatically fixes warnings [aliases: f]
-    list       Shows list of available checks [aliases: l]
+Options:
+      --plain    Switch to plain text output without colors
+  -q, --quiet    Display only critical results, suppressing extra details
+  -h, --help     Print help
+  -V, --version  Print version
 </code></pre>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
 <ul>
 <li>Dockerfile commands :</li>
 </ul>
-<pre><code class="language-dockerfile">RUN wget -q -O - https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/master/install.sh | sh -s
+<pre><code class="language-dockerfile"># renovate: datasource=github-tags depName=dotenv-linter/dotenv-linter
+ARG DOTENV_LINTER_VERSION=4.0.0
+RUN wget -q -O - https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/master/install.sh | sh -s -- -b /usr/local/bin "v${DOTENV_LINTER_VERSION}"
 </code></pre>
 
 
