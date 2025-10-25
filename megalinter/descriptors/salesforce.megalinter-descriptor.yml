@@ -95,7 +95,7 @@ linters:
           # renovate: datasource=npm depName=@salesforce/code-analyzer
           ARG SALESFORCE_SFDX_SCANNER_VERSION=5.5.0
         - |-
-          RUN sf plugins install @salesforce/code-analyzer@${SALESFORCE_SFDX_SCANNER_VERSION} \
+          RUN sf plugins install code-analyzer@${SALESFORCE_SFDX_SCANNER_VERSION} \
               && (npm cache clean --force || true) \
               && rm -rf /root/.npm/_cacache
     ide:
@@ -183,7 +183,7 @@ linters:
           # renovate: datasource=npm depName=@salesforce/code-analyzer
           ARG SALESFORCE_SFDX_SCANNER_VERSION=5.5.0
         - |-
-          RUN sf plugins install @salesforce/code-analyzer@${SALESFORCE_SFDX_SCANNER_VERSION} \
+          RUN sf plugins install code-analyzer@${SALESFORCE_SFDX_SCANNER_VERSION} \
               && (npm cache clean --force || true) \
               && rm -rf /root/.npm/_cacache
     ide:
@@ -262,7 +262,7 @@ linters:
           # renovate: datasource=npm depName=@salesforce/code-analyzer
           ARG SALESFORCE_SFDX_SCANNER_VERSION=5.5.0
         - |-
-          RUN sf plugins install @salesforce/code-analyzer@${SALESFORCE_SFDX_SCANNER_VERSION} \
+          RUN sf plugins install code-analyzer@${SALESFORCE_SFDX_SCANNER_VERSION} \
               && (npm cache clean --force || true) \
               && rm -rf /root/.npm/_cacache
     ide:

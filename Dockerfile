@@ -1103,7 +1103,7 @@ RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/refs/tags/v${REPOS
 # rubocop installation
 #
 # code-analyzer-apex installation
-    && sf plugins install @salesforce/code-analyzer@${SALESFORCE_SFDX_SCANNER_VERSION} \
+    && sf plugins install code-analyzer@${SALESFORCE_SFDX_SCANNER_VERSION} \
     && (npm cache clean --force || true) \
     && rm -rf /root/.npm/_cacache \
 #
