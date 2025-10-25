@@ -80,6 +80,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [sqlfluff](https://www.sqlfluff.com/) from 3.4.2 to **3.5.0** on 2025-10-24
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.13.3 to **1.13.4** on 2025-10-24
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.90.0 to **0.91.1** on 2025-10-24
+  - [kics](https://www.kics.io) from 2.1.14 to **2.1.15** on 2025-10-25
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 9.2.1 to **9.2.2** on 2025-10-25
 <!-- linter-versions-end -->
 
 ## [v9.1.0] - 2025-10-07
