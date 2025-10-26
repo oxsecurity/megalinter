@@ -259,7 +259,7 @@ linters:
     install:
       dockerfile:
         - |-
-          # renovate: datasource=npm depName= @salesforce/plugin-code-analyzer
+          # renovate: datasource=npm depName=@salesforce/plugin-code-analyzer
           ARG SALESFORCE_SFDX_SCANNER_VERSION=5.5.0
         - |-
           RUN sf plugins install code-analyzer@${SALESFORCE_SFDX_SCANNER_VERSION} \
