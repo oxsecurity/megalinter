@@ -54,6 +54,11 @@ linters:
           ARG BICEP_VERSION=0.38.33
         - ARG BICEP_EXE='bicep'
         - ARG BICEP_DIR='/usr/local/bin'
+        - FROM multiarch/qemu-user-static:x86_64-aarch64 AS qemu
+        - |
+          COPY --from=qemu /usr/bin/qemu-aarch64-static /usr/bin/
+          RUN apk update \
+              && apk add libc6-compat
         - |
           RUN case ${TARGETPLATFORM} in \
             "linux/amd64")  POWERSHELL_ARCH=musl-x64 ;; \

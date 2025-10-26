@@ -54,9 +54,12 @@ ARG TERRAFORM_TERRAGRUNT_VERSION=1.13.4
 FROM rhysd/actionlint:${ACTION_ACTIONLINT_VERSION} AS actionlint
 # shellcheck is a dependency for actionlint
 FROM koalaman/shellcheck:${BASH_SHELLCHECK_VERSION} AS shellcheck
+FROM multiarch/qemu-user-static:x86_64-aarch64 AS qemu
 # Next FROM line commented because already managed by another linter
 # FROM koalaman/shellcheck:${BASH_SHELLCHECK_VERSION} AS shellcheck
 FROM mvdan/shfmt:${BASH_SHFMT_VERSION} AS shfmt
+# Next FROM line commented because already managed by another linter
+# FROM multiarch/qemu-user-static:x86_64-aarch64 AS qemu
 FROM hadolint/hadolint:${DOCKERFILE_HADOLINT_VERSION} AS hadolint
 FROM mstruebing/editorconfig-checker:${EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION} AS editorconfig-checker
 FROM golang:1-alpine AS revive
@@ -628,9 +631,17 @@ COPY --from=composer/composer:2-bin /composer /usr/bin/composer
 COPY --link --from=actionlint /usr/local/bin/actionlint /usr/bin/actionlint
 # shellcheck is a dependency for actionlint
 COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
+COPY --from=qemu /usr/bin/qemu-aarch64-static /usr/bin/
+RUN apk update \
+    && apk add libc6-compat
+
 # Next COPY line commented because already managed by another linter
 # COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
 COPY --link --from=shfmt /bin/shfmt /usr/bin/
+# Next COPY line commented because already managed by another linter
+# COPY --from=qemu /usr/bin/qemu-aarch64-static /usr/bin/
+# RUN apk update \
+#     && apk add libc6-compat
 COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
 COPY --link --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
 COPY --link --from=revive /usr/bin/revive /usr/bin/revive
@@ -656,6 +667,10 @@ COPY --link --from=terragrunt /bin/terraform /usr/bin/
 #OTHER__START
 RUN rc-update add docker boot && (rc-service docker start || true) \
 # ARM installation
+    && case ${TARGETPLATFORM} in \
+  "linux/amd64")  POWERSHELL_ARCH=musl-x64 ;; \
+  "linux/arm64")  POWERSHELL_ARCH=arm64    ;; \
+esac \
     && curl -L https://github.com/PowerShell/PowerShell/releases/download/v${POWERSHELL_VERSION}/powershell-${POWERSHELL_VERSION}-linux-${POWERSHELL_ARCH}.tar.gz -o /tmp/powershell.tar.gz \
     && mkdir -p /opt/microsoft/powershell/7 \
     && tar zxf /tmp/powershell.tar.gz -C /opt/microsoft/powershell/7 \
@@ -774,22 +789,23 @@ RUN wget --tries=5 https://www.lua.org/ftp/lua-5.3.5.tar.gz -O - -q | tar -xzf -
 ENV PATH="/root/.composer/vendor/bin:${PATH}"
 #
 # POWERSHELL installation
-RUN case ${TARGETPLATFORM} in \
-  "linux/amd64")  POWERSHELL_ARCH=musl-x64 ;; \
-  "linux/arm64")  POWERSHELL_ARCH=arm64    ;; \
-esac \
-    && curl -L https://github.com/PowerShell/PowerShell/releases/download/v${POWERSHELL_VERSION}/powershell-${POWERSHELL_VERSION}-linux-${POWERSHELL_ARCH}.tar.gz -o /tmp/powershell.tar.gz \
-    && mkdir -p /opt/microsoft/powershell/7 \
-    && tar zxf /tmp/powershell.tar.gz -C /opt/microsoft/powershell/7 \
-    && chmod +x /opt/microsoft/powershell/7/pwsh \
-    && ln -s /opt/microsoft/powershell/7/pwsh /usr/bin/pwsh \
+# Next line commented because already managed by another linter
+# RUN case ${TARGETPLATFORM} in \
+#   "linux/amd64")  POWERSHELL_ARCH=musl-x64 ;; \
+#   "linux/arm64")  POWERSHELL_ARCH=arm64    ;; \
+# esac \
+#     && curl -L https://github.com/PowerShell/PowerShell/releases/download/v${POWERSHELL_VERSION}/powershell-${POWERSHELL_VERSION}-linux-${POWERSHELL_ARCH}.tar.gz -o /tmp/powershell.tar.gz \
+#     && mkdir -p /opt/microsoft/powershell/7 \
+#     && tar zxf /tmp/powershell.tar.gz -C /opt/microsoft/powershell/7 \
+#     && chmod +x /opt/microsoft/powershell/7/pwsh \
+#     && ln -s /opt/microsoft/powershell/7/pwsh /usr/bin/pwsh
 #
 # SALESFORCE installation
 # Next line commented because already managed by another linter
 # ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 # Next line commented because already managed by another linter
 # ENV PATH="$JAVA_HOME/bin:${PATH}"
-    && sf plugins install @salesforce/plugin-packaging@${NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION} \
+RUN sf plugins install @salesforce/plugin-packaging@${NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION} \
     && echo y|sf plugins install sfdx-hardis@${SFDX_HARDIS_VERSION} \
     && (npm cache clean --force || true) \
     && rm -rf /root/.npm/_cacache
@@ -823,6 +839,9 @@ RUN curl --retry-all-errors --retry 10 -fLo coursier https://git.io/coursier-cli
 #
 # arm-ttk installation
 ENV ARM_TTK_PSD1="${ARM_TTK_DIRECTORY}/arm-ttk/arm-ttk/arm-ttk.psd1"
+# Managed with COPY --from=qemu /usr/bin/qemu-aarch64-static /usr/bin/
+#              RUN apk update \
+#                  && apk add libc6-compat
 RUN curl --retry 5 --retry-delay 5 -sLO "https://github.com/Azure/arm-ttk/releases/download/${ARM_TTK_VERSION}/${ARM_TTK_NAME}" \
     && unzip "${ARM_TTK_NAME}" -d "${ARM_TTK_DIRECTORY}" \
     && rm "${ARM_TTK_NAME}" \
@@ -841,6 +860,10 @@ RUN curl --retry 5 --retry-delay 5 -sLO "https://github.com/Azure/arm-ttk/releas
 # Managed with COPY --link --from=shfmt /bin/shfmt /usr/bin/
 #
 # bicep_linter installation
+# Managed with # Next COPY line commented because already managed by another linter
+#              # COPY --from=qemu /usr/bin/qemu-aarch64-static /usr/bin/
+#              # RUN apk update \
+#              #     && apk add libc6-compat
     && case ${TARGETPLATFORM} in \
   "linux/amd64")  POWERSHELL_ARCH=musl-x64 ;; \
   "linux/arm64")  POWERSHELL_ARCH=arm64    ;; \
