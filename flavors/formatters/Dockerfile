@@ -56,7 +56,7 @@ FROM python:3.13-alpine3.22
 # renovate: datasource=crate depName=sarif-fmt
 ARG CARGO_SARIF_FMT_VERSION=0.8.0
 # renovate: datasource=github-tags depName=PowerShell/PowerShell
-ARG POWERSHELL_VERSION=7.5.3
+ARG POWERSHELL_VERSION=7.5.4
 
 # renovate: datasource=npm depName=typescript
 ARG NPM_TYPESCRIPT_VERSION=5.9.3
@@ -78,7 +78,7 @@ ARG PIP_BLACK_VERSION=25.9.0
 # renovate: datasource=pypi depName=isort
 ARG PIP_ISORT_VERSION=7.0.0
 # renovate: datasource=pypi depName=ruff
-ARG PIP_RUFF_VERSION=0.14.1
+ARG PIP_RUFF_VERSION=0.14.2
 # renovate: datasource=pypi depName=rstfmt
 ARG PIP_RSTFMT_VERSION=0.0.14
 # renovate: datasource=pypi depName=snakefmt
