@@ -163,7 +163,7 @@ ARG REPOSITORY_SYFT_VERSION=1.34.2
 ARG REPOSITORY_TRIVY_VERSION=0.67.2
 # renovate: datasource=github-tags depName=aquasecurity/trivy
 ARG REPOSITORY_TRIVY_SBOM_VERSION=0.67.2
-# renovate: datasource=npm depName= @salesforce/plugin-code-analyzer
+# renovate: datasource=npm depName=@salesforce/plugin-code-analyzer
 ARG SALESFORCE_SFDX_SCANNER_VERSION=5.5.0
 # renovate: datasource=npm depName=@salesforce/code-analyzer
 ARG SALESFORCE_SFDX_SCANNER_VERSION=5.5.0

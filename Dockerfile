@@ -338,7 +338,7 @@ ARG GEM_RUBOCOP_RAILS_VERSION=2.33.4
 ARG GEM_RUBOCOP_RAKE_VERSION=0.7.1
 # renovate: datasource=rubygems depName=rubocop-rspec
 ARG GEM_RUBOCOP_RSPEC_VERSION=3.7.0
-# renovate: datasource=npm depName= @salesforce/plugin-code-analyzer
+# renovate: datasource=npm depName=@salesforce/plugin-code-analyzer
 ARG SALESFORCE_SFDX_SCANNER_VERSION=5.5.0
 # renovate: datasource=npm depName=@salesforce/code-analyzer
 ARG SALESFORCE_SFDX_SCANNER_VERSION=5.5.0
