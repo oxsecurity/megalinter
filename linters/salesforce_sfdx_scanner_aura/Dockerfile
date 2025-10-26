@@ -54,7 +54,7 @@ ARG NPM_SALESFORCE_CLI_VERSION=2.108.6
 ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.20.5
 # renovate: datasource=npm depName=sfdx-hardis
 ARG SFDX_HARDIS_VERSION=6.9.0
-# renovate: datasource=npm depName=@salesforce/code-analyzer
+# renovate: datasource=npm depName=@salesforce/plugin-code-analyzer
 ARG SALESFORCE_SFDX_SCANNER_VERSION=5.5.0
 #ARG__END
 

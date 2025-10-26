@@ -340,8 +340,6 @@ ARG GEM_RUBOCOP_RAKE_VERSION=0.7.1
 ARG GEM_RUBOCOP_RSPEC_VERSION=3.7.0
 # renovate: datasource=npm depName=@salesforce/plugin-code-analyzer
 ARG SALESFORCE_SFDX_SCANNER_VERSION=5.5.0
-# renovate: datasource=npm depName=@salesforce/code-analyzer
-ARG SALESFORCE_SFDX_SCANNER_VERSION=5.5.0
 # renovate: datasource=pypi depName=snakemake
 ARG PIP_SNAKEMAKE_VERSION=9.13.4
 # renovate: datasource=pypi depName=snakefmt

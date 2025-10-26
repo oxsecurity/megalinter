@@ -165,8 +165,6 @@ ARG REPOSITORY_TRIVY_VERSION=0.67.2
 ARG REPOSITORY_TRIVY_SBOM_VERSION=0.67.2
 # renovate: datasource=npm depName=@salesforce/plugin-code-analyzer
 ARG SALESFORCE_SFDX_SCANNER_VERSION=5.5.0
-# renovate: datasource=npm depName=@salesforce/code-analyzer
-ARG SALESFORCE_SFDX_SCANNER_VERSION=5.5.0
 # renovate: datasource=pypi depName=snakemake
 ARG PIP_SNAKEMAKE_VERSION=9.13.4
 # renovate: datasource=pypi depName=snakefmt
