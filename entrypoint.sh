@@ -29,7 +29,7 @@ git config --global --add safe.directory /tmp/lint
 # Called by Auto-update CI job
 if [ "${UPGRADE_LINTERS_VERSION}" == "true" ]; then
   echo "[MegaLinter init] UPGRADING LINTER VERSION"
-  pip install ``pytest``-cov pytest-timeout pytest-rerunfailures
+  pip install pytest-cov pytest-timeout pytest-rerunfailures
   # Run only get_linter_version test methods
   pytest --reruns 3 --reruns-delay 1 -v --durations=0 -k _get_linter_version megalinter/
   # Run only get_linter_help test methods
