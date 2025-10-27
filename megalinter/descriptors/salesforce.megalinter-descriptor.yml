@@ -270,64 +270,6 @@ linters:
         - name: Salesforce Extension Pack
           url: https://marketplace.visualstudio.com/items?itemName=salesforce.salesforcedx-vscode
 
-  # Lightning Flow Scanner
-  - linter_name: lightning-flow-scanner
-    disabled: true
-    disabled_reason: Repo archived -> https://github.com/Lightning-Flow-Scanner
-    files_sub_directory: force-app
-    linter_text: |
-      **Lightning Flow Scanner** is a specialized SFDX plugin that analyzes Salesforce Flows for integrity issues, performance problems, and adherence to best practices. It helps developers build reliable and maintainable Flow automations.
-
-      **Key Features:**
-
-      - **Flow Integrity Analysis**: Validates Flow logic, connections, and component configurations for correctness
-      - **Best Practice Enforcement**: Checks against established Salesforce Flow development best practices
-      - **Performance Optimization**: Identifies potential performance bottlenecks and inefficient Flow patterns
-      - **Error Prevention**: Detects common Flow configuration errors before deployment
-      - **Comprehensive Rule Set**: Multiple rule categories covering design, performance, and maintainability
-      - **Configurable Scanning**: Customizable rules and thresholds through configuration files
-      - **CI/CD Integration**: Seamless integration with Salesforce development pipelines
-      - **Detailed Reporting**: Clear error messages with specific recommendations for improvement
-      - **SFDX Native**: Built as a native SFDX plugin for consistent Salesforce toolchain integration
-
-      If your root folder is not **force-app**, please set variable SALESFORCE_LIGHTNING_FLOW_SCANNER_DIRECTORY
-    linter_url: https://github.com/Lightning-Flow-Scanner
-    linter_repo: https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx
-    linter_rules_url: https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-core#rules
-    linter_banner_image_url: https://raw.githubusercontent.com/Lightning-Flow-Scanner/.github/main/docs/images/bannerslim.png
-    linter_rules_configuration_url: https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx#configuration
-    linter_spdx_license: AGPL-3.0
-    config_file_name: .flow-scanner.json
-    cli_config_arg_name: --config
-    cli_executable: sf
-    cli_lint_extra_args:
-      - "flow:scan"
-    cli_lint_mode: project
-    cli_help_extra_args:
-      - "flow:scan"
-    cli_version_extra_args:
-      - "plugins"
-    cli_version_arg_name: ""
-    version_extract_regex: "(?<=lightning-flow-scanner )\\d+(\\.\\d+)+"
-    cli_lint_errors_count: regex_number
-    cli_lint_errors_regex: "- error: ([0-9]+)"
-    test_folder: salesforce-lfs
-    examples:
-      - "sf flow:scan"
-    install:
-      dockerfile:
-        - |-
-          # renovate: datasource=npm depName=lightning-flow-scanner
-          ARG LIGHTNING_FLOW_SCANNER_VERSION=5.6.2
-        - |-
-          RUN echo y|sf plugins install lightning-flow-scanner@${LIGHTNING_FLOW_SCANNER_VERSION} \
-              && (npm cache clean --force || true) \
-              && rm -rf /root/.npm/_cacache
-    ide:
-      vscode:
-        - name: Lightning Flow Scanner
-          url: https://marketplace.visualstudio.com/items?itemName=ForceConfigControl.lightningflowscanner
-
   # SFDX Scanner Apex
   - linter_name: sfdx-scanner-apex
     name: SALESFORCE_SFDX_SCANNER_APEX
@@ -562,3 +504,61 @@ linters:
       vscode:
         - name: Salesforce Extension Pack
           url: https://marketplace.visualstudio.com/items?itemName=salesforce.salesforcedx-vscode
+
+# Lightning Flow Scanner
+  - linter_name: lightning-flow-scanner
+    disabled: true
+    disabled_reason: Repo archived -> https://github.com/Lightning-Flow-Scanner
+    files_sub_directory: force-app
+    linter_text: |
+      **Lightning Flow Scanner** is a specialized SFDX plugin that analyzes Salesforce Flows for integrity issues, performance problems, and adherence to best practices. It helps developers build reliable and maintainable Flow automations.
+
+      **Key Features:**
+
+      - **Flow Integrity Analysis**: Validates Flow logic, connections, and component configurations for correctness
+      - **Best Practice Enforcement**: Checks against established Salesforce Flow development best practices
+      - **Performance Optimization**: Identifies potential performance bottlenecks and inefficient Flow patterns
+      - **Error Prevention**: Detects common Flow configuration errors before deployment
+      - **Comprehensive Rule Set**: Multiple rule categories covering design, performance, and maintainability
+      - **Configurable Scanning**: Customizable rules and thresholds through configuration files
+      - **CI/CD Integration**: Seamless integration with Salesforce development pipelines
+      - **Detailed Reporting**: Clear error messages with specific recommendations for improvement
+      - **SFDX Native**: Built as a native SFDX plugin for consistent Salesforce toolchain integration
+
+      If your root folder is not **force-app**, please set variable SALESFORCE_LIGHTNING_FLOW_SCANNER_DIRECTORY
+    linter_url: https://github.com/Lightning-Flow-Scanner
+    linter_repo: https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx
+    linter_rules_url: https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-core#rules
+    linter_banner_image_url: https://raw.githubusercontent.com/Lightning-Flow-Scanner/.github/main/docs/images/bannerslim.png
+    linter_rules_configuration_url: https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx#configuration
+    linter_spdx_license: AGPL-3.0
+    config_file_name: .flow-scanner.json
+    cli_config_arg_name: --config
+    cli_executable: sf
+    cli_lint_extra_args:
+      - "flow:scan"
+    cli_lint_mode: project
+    cli_help_extra_args:
+      - "flow:scan"
+    cli_version_extra_args:
+      - "plugins"
+    cli_version_arg_name: ""
+    version_extract_regex: "(?<=lightning-flow-scanner )\\d+(\\.\\d+)+"
+    cli_lint_errors_count: regex_number
+    cli_lint_errors_regex: "- error: ([0-9]+)"
+    test_folder: salesforce-lfs
+    examples:
+      - "sf flow:scan"
+    install:
+      dockerfile:
+        - |-
+          # renovate: datasource=npm depName=lightning-flow-scanner
+          ARG LIGHTNING_FLOW_SCANNER_VERSION=5.6.2
+        - |-
+          RUN echo y|sf plugins install lightning-flow-scanner@${LIGHTNING_FLOW_SCANNER_VERSION} \
+              && (npm cache clean --force || true) \
+              && rm -rf /root/.npm/_cacache
+    ide:
+      vscode:
+        - name: Lightning Flow Scanner
+          url: https://marketplace.visualstudio.com/items?itemName=ForceConfigControl.lightningflowscanner
