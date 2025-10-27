@@ -87,10 +87,6 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [kics](https://www.kics.io) from 2.1.14 to **2.1.15** on 2025-10-26
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 9.2.1 to **9.2.2** on 2025-10-26
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.91.1 to **0.91.5** on 2025-10-26
-  - [powershell_formatter](https://github.com/PowerShell/PSScriptAnalyzer) from 7.5.4 to **5.1.26100** on 2025-10-27
-  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.5.4 to **5.1.26100** on 2025-10-27
-  - [git_diff](https://git-scm.com) from 2.49.1 to **2.47.0** on 2025-10-27
-  - [bash-exec](https://www.gnu.org/software/bash/) from 5.2.37 to **5.1.4** on 2025-10-27
 <!-- linter-versions-end -->
 
 ## [v9.1.0] - 2025-10-07
