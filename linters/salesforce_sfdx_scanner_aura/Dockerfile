@@ -54,8 +54,8 @@ ARG NPM_SALESFORCE_CLI_VERSION=2.108.6
 ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.20.5
 # renovate: datasource=npm depName=sfdx-hardis
 ARG SFDX_HARDIS_VERSION=6.9.0
-# renovate: datasource=npm depName=@salesforce/plugin-code-analyzer
-ARG SALESFORCE_SFDX_SCANNER_VERSION=5.5.0
+# renovate: datasource=npm depName=@salesforce/sfdx-scanner
+ARG SALESFORCE_SFDX_SCANNER_VERSION=4.12.0
 #ARG__END
 
 ####################
@@ -179,7 +179,7 @@ RUN sf plugins install @salesforce/plugin-packaging@${NPM_SALESFORCE_PLUGIN_PACK
 ENV SF_AUTOUPDATE_DISABLE=true SF_CLI_DISABLE_AUTOUPDATE=true
 #
 # sfdx-scanner-aura installation
-RUN sf plugins install code-analyzer@${SALESFORCE_SFDX_SCANNER_VERSION} \
+RUN sf plugins install @salesforce/sfdx-scanner@${SALESFORCE_SFDX_SCANNER_VERSION} \
     && (npm cache clean --force || true) \
     && rm -rf /root/.npm/_cacache
 #

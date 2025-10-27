@@ -164,7 +164,9 @@ ARG REPOSITORY_TRIVY_VERSION=0.67.2
 # renovate: datasource=github-tags depName=aquasecurity/trivy
 ARG REPOSITORY_TRIVY_SBOM_VERSION=0.67.2
 # renovate: datasource=npm depName=@salesforce/plugin-code-analyzer
-ARG SALESFORCE_SFDX_SCANNER_VERSION=5.5.0
+ARG SALESFORCE_CODE_ANALYZER_VERSION=5.5.0
+# renovate: datasource=npm depName=@salesforce/sfdx-scanner
+ARG SALESFORCE_SFDX_SCANNER_VERSION=4.12.0
 # renovate: datasource=pypi depName=snakemake
 ARG PIP_SNAKEMAKE_VERSION=9.13.4
 # renovate: datasource=pypi depName=snakefmt
@@ -492,20 +494,37 @@ RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/rel
 # trufflehog installation
 # Managed with COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
 #
+# code-analyzer-apex installation
+    && sf plugins install code-analyzer@${SALESFORCE_CODE_ANALYZER_VERSION} \
+    && (npm cache clean --force || true) \
+    && rm -rf /root/.npm/_cacache \
+#
+# code-analyzer-aura installation
+# Next line commented because already managed by another linter
+# RUN sf plugins install code-analyzer@${SALESFORCE_CODE_ANALYZER_VERSION} \
+#     && (npm cache clean --force || true) \
+#     && rm -rf /root/.npm/_cacache
+#
+# code-analyzer-lwc installation
+# Next line commented because already managed by another linter
+# RUN sf plugins install code-analyzer@${SALESFORCE_CODE_ANALYZER_VERSION} \
+#     && (npm cache clean --force || true) \
+#     && rm -rf /root/.npm/_cacache
+#
 # sfdx-scanner-apex installation
-    && sf plugins install code-analyzer@${SALESFORCE_SFDX_SCANNER_VERSION} \
+    && sf plugins install @salesforce/sfdx-scanner@${SALESFORCE_SFDX_SCANNER_VERSION} \
     && (npm cache clean --force || true) \
     && rm -rf /root/.npm/_cacache
 #
 # sfdx-scanner-aura installation
 # Next line commented because already managed by another linter
-# RUN sf plugins install code-analyzer@${SALESFORCE_SFDX_SCANNER_VERSION} \
+# RUN sf plugins install @salesforce/sfdx-scanner@${SALESFORCE_SFDX_SCANNER_VERSION} \
 #     && (npm cache clean --force || true) \
 #     && rm -rf /root/.npm/_cacache
 #
 # sfdx-scanner-lwc installation
 # Next line commented because already managed by another linter
-# RUN sf plugins install code-analyzer@${SALESFORCE_SFDX_SCANNER_VERSION} \
+# RUN sf plugins install @salesforce/sfdx-scanner@${SALESFORCE_SFDX_SCANNER_VERSION} \
 #     && (npm cache clean --force || true) \
 #     && rm -rf /root/.npm/_cacache
 #

@@ -30,9 +30,9 @@ install:
   npm:
     - "@salesforce/cli@${NPM_SALESFORCE_CLI_VERSION}"
 linters:
-  # SFDX Scanner
-  - linter_name: sfdx-scanner-apex
-    name: SALESFORCE_SFDX_SCANNER_APEX
+  # Code Analyzer Apex
+  - linter_name: code-analyzer-apex
+    name: SALESFORCE_CODE_ANALYZER_APEX
     files_sub_directory: force-app
     linter_text: |
       **Salesforce Code Analyzer (SFDX Scanner)** is the official Salesforce CLI plugin for scanning Apex code, triggers, and other Salesforce components to identify potential issues, security vulnerabilities, and code quality problems. It uses industry-standard tools like PMD and ESLint to provide comprehensive analysis of Salesforce development artifacts.
@@ -62,7 +62,7 @@ linters:
     linter_rules_inline_disable_url: https://docs.pmd-code.org/latest/pmd_userdocs_suppressing_warnings.html
     linter_megalinter_ref_url: https://github.com/forcedotcom/code-analyzer
     linter_spdx_license: BSD-3-Clause
-    config_file_name: apex-pmd-ruleset.xml
+    config_file_name: apex.yml
     cli_executable: sf
     cli_config_arg_name: "--config-file"
     cli_lint_extra_args:
@@ -93,9 +93,9 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=@salesforce/plugin-code-analyzer
-          ARG SALESFORCE_SFDX_SCANNER_VERSION=5.5.0
+          ARG SALESFORCE_CODE_ANALYZER_VERSION=5.5.0
         - |-
-          RUN sf plugins install code-analyzer@${SALESFORCE_SFDX_SCANNER_VERSION} \
+          RUN sf plugins install code-analyzer@${SALESFORCE_CODE_ANALYZER_VERSION} \
               && (npm cache clean --force || true) \
               && rm -rf /root/.npm/_cacache
     ide:
@@ -113,9 +113,9 @@ linters:
         - name: Salesforce Extension Pack
           url: https://marketplace.visualstudio.com/items?itemName=salesforce.salesforcedx-vscode
 
-  # SFDX Scanner Aura
-  - linter_name: sfdx-scanner-aura
-    name: SALESFORCE_SFDX_SCANNER_AURA
+  # Code Analyzer Aura
+  - linter_name: code-analyzer-aura
+    name: SALESFORCE_CODE_ANALYZER_AURA
     files_sub_directory: force-app
     linter_text: |
       **Salesforce Code Analyzer for Aura Components** is a specialized linting tool that focuses on Aura Lightning components, using ESLint with Salesforce-specific rules to ensure Aura components follow best practices and platform guidelines.
@@ -181,9 +181,9 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=@salesforce/plugin-code-analyzer
-          ARG SALESFORCE_SFDX_SCANNER_VERSION=5.5.0
+          ARG SALESFORCE_CODE_ANALYZER_VERSION=5.5.0
         - |-
-          RUN sf plugins install code-analyzer@${SALESFORCE_SFDX_SCANNER_VERSION} \
+          RUN sf plugins install code-analyzer@${SALESFORCE_CODE_ANALYZER_VERSION} \
               && (npm cache clean --force || true) \
               && rm -rf /root/.npm/_cacache
     ide:
@@ -191,9 +191,9 @@ linters:
         - name: Salesforce Extension Pack
           url: https://marketplace.visualstudio.com/items?itemName=salesforce.salesforcedx-vscode
 
-  # SFDX Scanner LWC
-  - linter_name: sfdx-scanner-lwc
-    name: SALESFORCE_SFDX_SCANNER_LWC
+  # Code Analyzer LWC
+  - linter_name: code-analyzer-lwc
+    name: SALESFORCE_CODE_ANALYZER_LWC
     files_sub_directory: force-app
     linter_text: |
       **Salesforce Code Analyzer for Lightning Web Components** is a specialized linting tool that focuses on Lightning Web Components (LWC), using ESLint with LWC-specific rules to ensure components follow modern web standards and Salesforce platform best practices.
@@ -260,9 +260,9 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=@salesforce/plugin-code-analyzer
-          ARG SALESFORCE_SFDX_SCANNER_VERSION=5.5.0
+          ARG SALESFORCE_CODE_ANALYZER_VERSION=5.5.0
         - |-
-          RUN sf plugins install code-analyzer@${SALESFORCE_SFDX_SCANNER_VERSION} \
+          RUN sf plugins install code-analyzer@${SALESFORCE_CODE_ANALYZER_VERSION} \
               && (npm cache clean --force || true) \
               && rm -rf /root/.npm/_cacache
     ide:
@@ -327,3 +327,238 @@ linters:
       vscode:
         - name: Lightning Flow Scanner
           url: https://marketplace.visualstudio.com/items?itemName=ForceConfigControl.lightningflowscanner
+
+  # SFDX Scanner Apex
+  - linter_name: sfdx-scanner-apex
+    name: SALESFORCE_SFDX_SCANNER_APEX
+    files_sub_directory: force-app
+    linter_text: |
+      **Salesforce Code Analyzer (SFDX Scanner)** is the official Salesforce CLI plugin for scanning Apex code, triggers, and other Salesforce components to identify potential issues, security vulnerabilities, and code quality problems. It uses industry-standard tools like PMD and ESLint to provide comprehensive analysis of Salesforce development artifacts.
+
+      **Key Features:**
+
+      - **Multi-Engine Analysis**: Combines PMD for Apex analysis with ESLint for JavaScript/Lightning Web Components
+      - **Security Focus**: Identifies security vulnerabilities and potential attack vectors in Salesforce code
+      - **Performance Optimization**: Detects performance anti-patterns and inefficient code constructs
+      - **Code Quality Rules**: Comprehensive rule sets covering best practices, naming conventions, and maintainability
+      - **Configurable Severity**: Customizable severity thresholds and rule categories for different project needs
+      - **Multiple Output Formats**: Supports CSV, JSON, SARIF, and other formats for integration with development tools
+      - **Lightning Platform Specific**: Rules tailored for Salesforce platform constraints and governor limits
+      - **Custom Rule Sets**: Support for custom PMD rule sets and organization-specific coding standards
+
+      If your root folder is not **force-app**, please set variable `SALESFORCE_SFDX_SCANNER_DIRECTORY`
+
+      You can select categories and single rules by defining custom arguments (example: `SALESFORCE_SFDX_SCANNER_ARGUMENTS: -c "Best Practices,Security"`)
+
+      See more details in [Help](#help-content)
+
+      **Workaround: Restricted to PMD**
+    linter_url: https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html
+    linter_repo: https://github.com/forcedotcom/code-analyzer
+    linter_rules_url: https://docs.pmd-code.org/latest/pmd_rules_apex.html
+    linter_rules_configuration_url: https://docs.pmd-code.org/latest/pmd_userdocs_making_rulesets.html
+    linter_rules_inline_disable_url: https://docs.pmd-code.org/latest/pmd_userdocs_suppressing_warnings.html
+    linter_megalinter_ref_url: https://github.com/forcedotcom/code-analyzer
+    linter_spdx_license: BSD-3-Clause
+    config_file_name: apex-pmd-ruleset.xml
+    cli_executable: sf
+    cli_config_arg_name: "--pmdconfig"
+    cli_lint_extra_args:
+      - "scanner:run"
+      - "--engine"
+      - "pmd"
+      - "--target"
+      - '"./**/*"'
+      - "--severity-threshold"
+      - "2"
+      - "--outfile"
+      - "{{REPORT_FOLDER}}/sfdx-scanner-report-apex.csv"
+      - "--format"
+      - "csv"
+    cli_lint_mode: project
+    cli_help_extra_args:
+      - "scanner:run"
+    cli_help_extra_commands:
+      - "sf scanner:rule:list"
+    cli_version_extra_args:
+      - "plugins"
+    cli_version_arg_name: ""
+    version_extract_regex: "(?<=@salesforce/sfdx-scanner )\\d+(\\.\\d+)+"
+    cli_lint_errors_count: regex_sum
+    cli_lint_errors_regex: "found ([0-9]+) violation"
+    examples:
+      - "sf scanner:run"
+    install:
+      dockerfile:
+        - |-
+          # renovate: datasource=npm depName=@salesforce/sfdx-scanner
+          ARG SALESFORCE_SFDX_SCANNER_VERSION=4.12.0
+        - |-
+          RUN sf plugins install @salesforce/sfdx-scanner@${SALESFORCE_SFDX_SCANNER_VERSION} \
+              && (npm cache clean --force || true) \
+              && rm -rf /root/.npm/_cacache
+    ide:
+      eclipse:
+        - name: pmd-eclipse-plugin
+          url: https://github.com/pmd/pmd-eclipse-plugin
+      emacs:
+        - name: pmd-emacs
+          url: https://github.com/pmd/pmd-emacs/
+      idea:
+        - name: PMD IntelliJ
+          url: https://plugins.jetbrains.com/plugin/1137-pmdplugin
+          id: PMDPlugin
+      vscode:
+        - name: Salesforce Extension Pack
+          url: https://marketplace.visualstudio.com/items?itemName=salesforce.salesforcedx-vscode
+
+  # SFDX Scanner Aura
+  - linter_name: sfdx-scanner-aura
+    name: SALESFORCE_SFDX_SCANNER_AURA
+    files_sub_directory: force-app
+    linter_text: |
+      **Salesforce Code Analyzer for Aura Components** is a specialized linting tool that focuses on Aura Lightning components, using ESLint with Salesforce-specific rules to ensure Aura components follow best practices and platform guidelines.
+
+      **Key Features:**
+
+      - **Aura-Specific Rules**: Specialized ESLint rules designed for Aura Lightning component development patterns
+      - **JavaScript Analysis**: Comprehensive JavaScript linting for Aura component controllers, helpers, and renderers
+      - **Security Validation**: Identifies security vulnerabilities specific to Aura component architecture
+      - **Platform Compliance**: Ensures components follow Salesforce Lightning platform requirements and constraints
+      - **Event Handling**: Validates proper event handling patterns and component communication
+      - **Performance Optimization**: Detects inefficient patterns that could impact component performance
+      - **API Usage Validation**: Ensures proper use of Aura framework APIs and deprecated method detection
+      - **Configurable Rules**: Customizable ESLint configuration for organization-specific coding standards
+      - **Integration Ready**: Seamless integration with Salesforce development workflows and CI/CD pipelines
+
+      If your root folder is not **force-app**, please set variable `SALESFORCE_SFDX_SCANNER_AURA_DIRECTORY`
+
+      You can select categories and single rules by defining custom arguments (example: `SALESFORCE_SFDX_SCANNER_ARGUMENTS: -c "Best Practices,Security"`)
+
+      See more details in [Help](#help-content)
+
+      **Workaround: Restricted to Aura**
+    linter_url: https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html
+    linter_repo: https://github.com/forcedotcom/code-analyzer
+    linter_rules_url: https://github.com/forcedotcom/eslint-plugin-aura#rules
+    linter_rules_configuration_url: https://eslint.org/docs/latest/use/configure
+    linter_rules_inline_disable_url: https://eslint.org/docs/latest/use/configure/rules#disabling-rules
+    linter_megalinter_ref_url: https://github.com/forcedotcom/code-analyzer
+    linter_spdx_license: BSD-3-Clause
+    config_file_name: --eslintconfig
+    cli_config_arg_name: ".eslintrc-aura.json"
+    cli_executable: sf
+    cli_lint_extra_args:
+      - "scanner:run"
+      - "--engine"
+      - "eslint"
+      - "--target"
+      - "**/aura/**/*.js"
+      - "--severity-threshold"
+      - "2"
+      - "--outfile"
+      - "{{REPORT_FOLDER}}/sfdx-scanner-report-aura.csv"
+      - "--format"
+      - "csv"
+    cli_lint_mode: project
+    cli_help_extra_args:
+      - "scanner:run"
+    cli_help_extra_commands:
+      - "sf scanner:rule:list"
+    cli_version_extra_args:
+      - "plugins"
+    cli_version_arg_name: ""
+    version_extract_regex: "(?<=@salesforce/sfdx-scanner )\\d+(\\.\\d+)+"
+    cli_lint_errors_count: regex_sum
+    cli_lint_errors_regex: "found ([0-9]+) violation"
+    examples:
+      - "sf scanner:run"
+    install:
+      dockerfile:
+        - |-
+          # renovate: datasource=npm depName=@salesforce/sfdx-scanner
+          ARG SALESFORCE_SFDX_SCANNER_VERSION=4.12.0
+        - |-
+          RUN sf plugins install @salesforce/sfdx-scanner@${SALESFORCE_SFDX_SCANNER_VERSION} \
+              && (npm cache clean --force || true) \
+              && rm -rf /root/.npm/_cacache
+    ide:
+      vscode:
+        - name: Salesforce Extension Pack
+          url: https://marketplace.visualstudio.com/items?itemName=salesforce.salesforcedx-vscode
+
+  # SFDX Scanner LWC
+  - linter_name: sfdx-scanner-lwc
+    name: SALESFORCE_SFDX_SCANNER_LWC
+    files_sub_directory: force-app
+    linter_text: |
+      **Salesforce Code Analyzer for Lightning Web Components** is a specialized linting tool that focuses on Lightning Web Components (LWC), using ESLint with LWC-specific rules to ensure components follow modern web standards and Salesforce platform best practices.
+
+      **Key Features:**
+
+      - **LWC-Specific Rules**: Comprehensive ESLint rules designed specifically for Lightning Web Component development patterns
+      - **Modern JavaScript Analysis**: Validates modern JavaScript/ES6+ usage within the LWC framework constraints
+      - **Security Validation**: Identifies security vulnerabilities and potential XSS issues in LWC components
+      - **Performance Optimization**: Detects performance anti-patterns and inefficient rendering patterns
+      - **Lightning Platform Integration**: Ensures proper use of Lightning platform APIs and decorators (@api, @track, @wire)
+      - **Component Lifecycle**: Validates correct component lifecycle method usage and patterns
+      - **Wire Service Validation**: Ensures proper use of @wire decorators and Lightning Data Service
+      - **Event Handling**: Validates custom event creation and handling patterns
+      - **Template Validation**: Analyzes HTML templates for proper binding and directive usage
+      - **Accessibility Compliance**: Built-in accessibility checks for inclusive Lightning component design
+
+      If your root folder is not **force-app**, please set variable `SALESFORCE_SFDX_SCANNER_LWC_DIRECTORY`
+
+      You can select categories and single rules by defining custom arguments (example: `SALESFORCE_SFDX_SCANNER_ARGUMENTS: -c "Best Practices,Security"`)
+
+      See more details in [Help](#help-content)
+
+      **Workaround: Restricted to LWC**
+    linter_url: https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html
+    linter_repo: https://github.com/forcedotcom/code-analyzer
+    linter_rules_url: https://github.com/salesforce/eslint-plugin-lwc#rules
+    linter_rules_configuration_url: https://eslint.org/docs/latest/use/configure
+    linter_rules_inline_disable_url: https://eslint.org/docs/latest/use/configure/rules#disabling-rules
+    linter_megalinter_ref_url: https://github.com/forcedotcom/code-analyzer
+    linter_spdx_license: BSD-3-Clause
+    config_file_name: --eslintconfig
+    cli_config_arg_name: ".eslintrc-lwc.json"
+    cli_executable: sf
+    cli_lint_extra_args:
+      - "scanner:run"
+      - "--engine"
+      - "eslint-lwc"
+      - "--target"
+      - "**/lwc/**/*.js"
+      - "--severity-threshold"
+      - "2"
+      - "--outfile"
+      - "{{REPORT_FOLDER}}/sfdx-scanner-report-lwc.csv"
+      - "--format"
+      - "csv"
+    cli_lint_mode: project
+    cli_help_extra_args:
+      - "scanner:run"
+    cli_help_extra_commands:
+      - "sf scanner:rule:list"
+    cli_version_extra_args:
+      - "plugins"
+    cli_version_arg_name: ""
+    version_extract_regex: "(?<=@salesforce/sfdx-scanner )\\d+(\\.\\d+)+"
+    cli_lint_errors_count: regex_sum
+    cli_lint_errors_regex: "found ([0-9]+) violation"
+    examples:
+      - "sf scanner:run"
+    install:
+      dockerfile:
+        - |-
+          # renovate: datasource=npm depName=@salesforce/sfdx-scanner
+          ARG SALESFORCE_SFDX_SCANNER_VERSION=4.12.0
+        - |-
+          RUN sf plugins install @salesforce/sfdx-scanner@${SALESFORCE_SFDX_SCANNER_VERSION} \
+              && (npm cache clean --force || true) \
+              && rm -rf /root/.npm/_cacache
+    ide:
+      vscode:
+        - name: Salesforce Extension Pack
+          url: https://marketplace.visualstudio.com/items?itemName=salesforce.salesforcedx-vscode
