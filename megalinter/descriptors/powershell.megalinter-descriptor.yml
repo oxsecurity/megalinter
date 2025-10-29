@@ -22,7 +22,7 @@ install:
     - ARG TARGETPLATFORM
     - |
       # renovate: datasource=github-tags depName=PowerShell/PowerShell
-      ARG POWERSHELL_VERSION=7.5.3
+      ARG POWERSHELL_VERSION=7.5.4
     - |
       RUN case ${TARGETPLATFORM} in \
         "linux/amd64")  POWERSHELL_ARCH=musl-x64 ;; \

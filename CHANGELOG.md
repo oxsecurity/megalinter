@@ -80,6 +80,18 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [sqlfluff](https://www.sqlfluff.com/) from 3.4.2 to **3.5.0** on 2025-10-24
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.13.3 to **1.13.4** on 2025-10-24
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.90.0 to **0.91.1** on 2025-10-24
+  - [powershell_formatter](https://github.com/PowerShell/PSScriptAnalyzer) from 7.5.3 to **7.5.4** on 2025-10-26
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.5.3 to **7.5.4** on 2025-10-26
+  - [pylint](https://pylint.readthedocs.io) from 4.0.1 to **4.0.2** on 2025-10-26
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.406 to **1.1.407** on 2025-10-26
+  - [kics](https://www.kics.io) from 2.1.14 to **2.1.15** on 2025-10-26
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 9.2.1 to **9.2.2** on 2025-10-26
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.91.1 to **0.91.5** on 2025-10-26
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.88.2 to **3.89.1** on 2025-10-29
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.14.1 to **0.14.2** on 2025-10-29
+  - [ruff](https://github.com/astral-sh/ruff) from 0.14.1 to **0.14.2** on 2025-10-29
+  - [rubocop](https://rubocop.org/) from 1.81.1 to **1.81.6** on 2025-10-29
+  - [snakemake](https://snakemake.github.io/) from 9.13.3 to **9.13.4** on 2025-10-29
 <!-- linter-versions-end -->
 
 ## [v9.1.0] - 2025-10-07

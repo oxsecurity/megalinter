@@ -32,7 +32,7 @@ ARG REPOSITORY_DUSTILOCK_VERSION=1.2.0
 # renovate: datasource=docker depName=zricethezav/gitleaks
 ARG REPOSITORY_GITLEAKS_VERSION=v8.28.0
 # renovate: datasource=docker depName=checkmarx/kics
-ARG REPOSITORY_KICS_VERSION=v2.1.14-alpine
+ARG REPOSITORY_KICS_VERSION=v2.1.15-alpine
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
 ARG REPOSITORY_TRUFFLEHOG_VERSION=3.90.11
 # renovate: datasource=docker depName=jdkato/vale
@@ -117,11 +117,11 @@ FROM python:3.13-alpine3.22
 ARG CARGO_SARIF_FMT_VERSION=0.8.0
 ARG TARGETPLATFORM
 # renovate: datasource=github-tags depName=PowerShell/PowerShell
-ARG POWERSHELL_VERSION=7.5.3
+ARG POWERSHELL_VERSION=7.5.4
 # renovate: datasource=github-tags depName=sgerrand/alpine-pkg-glibc
 ARG ALPINE_GLIBC_PACKAGE_VERSION=2.34-r0
 # renovate: datasource=github-tags depName=PowerShell/PowerShell
-ARG POWERSHELL_VERSION=7.5.3
+ARG POWERSHELL_VERSION=7.5.4
 
 # renovate: datasource=npm depName=@salesforce/cli
 ARG NPM_SALESFORCE_CLI_VERSION=2.108.6
@@ -188,6 +188,8 @@ ARG NPM_GROOVY_LINT_VERSION=15.2.2
 ARG PIP_DJLINT_VERSION=1.36.4
 # renovate: datasource=npm depName=htmlhint
 ARG NPM_HTMLHINT_VERSION=1.7.1
+# renovate: datasource=github-releases depName=checkstyle/checkstyle
+ARG JAVA_CHECKSTYLE_VERSION=12.1.0
 # renovate: datasource=github-tags depName=pmd/pmd extractVersion=^pmd_releases/(?<version>.*)$
 ARG PMD_VERSION=7.17.0
 
@@ -212,9 +214,9 @@ ARG NPM_ESLINT_PLUGIN_PROMISE_VERSION=6.6.0
 # renovate: datasource=npm depName=eslint-plugin-vue
 ARG NPM_ESLINT_PLUGIN_VUE_VERSION=10.5.1
 # renovate: datasource=npm depName=@babel/core
-ARG NPM_BABEL_CORE_VERSION=7.28.4
+ARG NPM_BABEL_CORE_VERSION=7.28.5
 # renovate: datasource=npm depName=@babel/eslint-parser
-ARG NPM_BABEL_ESLINT_PARSER_VERSION=7.28.4
+ARG NPM_BABEL_ESLINT_PARSER_VERSION=7.28.5
 # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
 ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
 # renovate: datasource=npm depName=standard
@@ -268,12 +270,12 @@ ARG PHP_VIMEO_PSALM_VERSION=6.13.1
 # renovate: datasource=packagist depName=overtrue/phplint
 ARG PHP_OVERTRUE_PHPLINT_VERSION=9.6.2
 # renovate: datasource=packagist depName=friendsofphp/php-cs-fixer
-ARG PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION=v3.88.2
+ARG PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION=v3.89.1
 # renovate: datasource=nuget depName=PSScriptAnalyzer registryUrl=https://www.powershellgallery.com/api/v2/
 ARG PSSA_VERSION='1.24.0'
 
 # renovate: datasource=pypi depName=pylint
-ARG PIP_PYLINT_VERSION=4.0.1
+ARG PIP_PYLINT_VERSION=4.0.2
 # renovate: datasource=pypi depName=typing-extensions
 ARG PIP_TYPING_EXTENSIONS_VERSION=4.15.0
 # renovate: datasource=pypi depName=black
@@ -289,9 +291,9 @@ ARG PIP_BANDIT_SARIF_FORMATTER_VERSION=1.1.1
 # renovate: datasource=pypi depName=mypy
 ARG PIP_MYPY_VERSION=1.18.2
 # renovate: datasource=npm depName=pyright
-ARG NPM_PYRIGHT_VERSION=1.1.406
+ARG NPM_PYRIGHT_VERSION=1.1.407
 # renovate: datasource=pypi depName=ruff
-ARG PIP_RUFF_VERSION=0.14.1
+ARG PIP_RUFF_VERSION=0.14.2
 # renovate: datasource=github-tags depName=nxadm/rakudo-pkg
 ARG RAKU_RAKU_VERSION=2024.12
 ARG RAKU_RAKU_ALPINE_VERSION=3.20
@@ -331,11 +333,11 @@ ARG PIP_RSTCHECK_CLICK_VERSION=8.3.0
 # renovate: datasource=pypi depName=rstfmt
 ARG PIP_RSTFMT_VERSION=0.0.14
 # renovate: datasource=rubygems depName=rubocop
-ARG GEM_RUBOCOP_VERSION=1.81.1
+ARG GEM_RUBOCOP_VERSION=1.81.6
 # renovate: datasource=rubygems depName=rubocop-github
 ARG GEM_RUBOCOP_GITHUB_VERSION=0.26.0
 # renovate: datasource=rubygems depName=rubocop-performance
-ARG GEM_RUBOCOP_PERFORMANCE_VERSION=1.26.0
+ARG GEM_RUBOCOP_PERFORMANCE_VERSION=1.26.1
 # renovate: datasource=rubygems depName=rubocop-rails
 ARG GEM_RUBOCOP_RAILS_VERSION=2.33.4
 # renovate: datasource=rubygems depName=rubocop-rake
@@ -345,11 +347,11 @@ ARG GEM_RUBOCOP_RSPEC_VERSION=3.7.0
 # renovate: datasource=npm depName=@salesforce/sfdx-scanner
 ARG SALESFORCE_SFDX_SCANNER_VERSION=4.12.0
 # renovate: datasource=pypi depName=snakemake
-ARG PIP_SNAKEMAKE_VERSION=9.13.3
+ARG PIP_SNAKEMAKE_VERSION=9.13.4
 # renovate: datasource=pypi depName=snakefmt
 ARG PIP_SNAKEFMT_VERSION=0.11.2
 # renovate: datasource=npm depName=cspell
-ARG NPM_CSPELL_VERSION=9.2.1
+ARG NPM_CSPELL_VERSION=9.2.2
 # renovate: datasource=pypi depName=proselint
 ARG PIP_PROSELINT_VERSION=0.14.0
 # renovate: datasource=pypi depName=sqlfluff
@@ -361,9 +363,9 @@ ARG NPM_IBM_TEKTON_LINT_VERSION=1.1.0
 # renovate: datasource=npm depName=prettyjson
 ARG NPM_PRETTYJSON_VERSION=1.2.5
 # renovate: datasource=npm depName=@typescript-eslint/eslint-plugin
-ARG NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION=8.46.1
+ARG NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION=8.46.2
 # renovate: datasource=npm depName=@typescript-eslint/parser
-ARG NPM_TYPESCRIPT_ESLINT_PARSER_VERSION=8.46.1
+ARG NPM_TYPESCRIPT_ESLINT_PARSER_VERSION=8.46.2
 # renovate: datasource=npm depName=ts-standard
 ARG NPM_TS_STANDARD_VERSION=12.0.2
 # renovate: datasource=pypi depName=yamllint
@@ -939,19 +941,12 @@ ENV JAVA_HOME_17=/usr/lib/jvm/java-17-openjdk
 # htmlhint installation
 #
 # checkstyle installation
-RUN --mount=type=secret,id=GITHUB_TOKEN CHECKSTYLE_LATEST=$(curl -s \
-    -H "Accept: application/vnd.github+json" \
-    -H "Authorization: Bearer $(cat /run/secrets/GITHUB_TOKEN)" \
-    https://api.github.com/repos/checkstyle/checkstyle/releases/latest \
-        | grep browser_download_url \
-        | grep ".jar" \
-        | cut -d '"' -f 4) \
-    && curl --retry 5 --retry-delay 5 -sSL $CHECKSTYLE_LATEST \
-        --output /usr/bin/checkstyle
-
+RUN curl --retry 5 --retry-delay 5 -sSL \
+    "https://github.com/checkstyle/checkstyle/releases/download/checkstyle-${JAVA_CHECKSTYLE_VERSION}/checkstyle-${JAVA_CHECKSTYLE_VERSION}-all.jar" \
+    --output /usr/bin/checkstyle \
 #
 # pmd installation
-RUN wget --quiet https://github.com/pmd/pmd/releases/download/pmd_releases%2F${PMD_VERSION}/pmd-dist-${PMD_VERSION}-bin.zip && \
+    && wget --quiet https://github.com/pmd/pmd/releases/download/pmd_releases%2F${PMD_VERSION}/pmd-dist-${PMD_VERSION}-bin.zip && \
     unzip pmd-dist-${PMD_VERSION}-bin.zip || echo "Error unzipping" && \
     rm pmd-dist-${PMD_VERSION}-bin.zip || echo "Error rm" && \
     mv pmd-bin-${PMD_VERSION} /usr/bin/pmd || echo "Error mv" && \

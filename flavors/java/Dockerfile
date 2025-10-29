@@ -124,6 +124,8 @@ ARG NPM_GROOVY_LINT_VERSION=15.2.2
 ARG PIP_DJLINT_VERSION=1.36.4
 # renovate: datasource=npm depName=htmlhint
 ARG NPM_HTMLHINT_VERSION=1.7.1
+# renovate: datasource=github-releases depName=checkstyle/checkstyle
+ARG JAVA_CHECKSTYLE_VERSION=12.1.0
 # renovate: datasource=github-tags depName=pmd/pmd extractVersion=^pmd_releases/(?<version>.*)$
 ARG PMD_VERSION=7.17.0
 
@@ -166,11 +168,11 @@ ARG REPOSITORY_TRIVY_VERSION=0.67.2
 # renovate: datasource=github-tags depName=aquasecurity/trivy
 ARG REPOSITORY_TRIVY_SBOM_VERSION=0.67.2
 # renovate: datasource=pypi depName=snakemake
-ARG PIP_SNAKEMAKE_VERSION=9.13.3
+ARG PIP_SNAKEMAKE_VERSION=9.13.4
 # renovate: datasource=pypi depName=snakefmt
 ARG PIP_SNAKEFMT_VERSION=0.11.2
 # renovate: datasource=npm depName=cspell
-ARG NPM_CSPELL_VERSION=9.2.1
+ARG NPM_CSPELL_VERSION=9.2.2
 # renovate: datasource=pypi depName=proselint
 ARG PIP_PROSELINT_VERSION=0.14.0
 # renovate: datasource=pypi depName=sqlfluff
@@ -476,19 +478,12 @@ ENV JAVA_HOME_17=/usr/lib/jvm/java-17-openjdk
 # htmlhint installation
 #
 # checkstyle installation
-RUN --mount=type=secret,id=GITHUB_TOKEN CHECKSTYLE_LATEST=$(curl -s \
-    -H "Accept: application/vnd.github+json" \
-    -H "Authorization: Bearer $(cat /run/secrets/GITHUB_TOKEN)" \
-    https://api.github.com/repos/checkstyle/checkstyle/releases/latest \
-        | grep browser_download_url \
-        | grep ".jar" \
-        | cut -d '"' -f 4) \
-    && curl --retry 5 --retry-delay 5 -sSL $CHECKSTYLE_LATEST \
-        --output /usr/bin/checkstyle
-
+RUN curl --retry 5 --retry-delay 5 -sSL \
+    "https://github.com/checkstyle/checkstyle/releases/download/checkstyle-${JAVA_CHECKSTYLE_VERSION}/checkstyle-${JAVA_CHECKSTYLE_VERSION}-all.jar" \
+    --output /usr/bin/checkstyle \
 #
 # pmd installation
-RUN wget --quiet https://github.com/pmd/pmd/releases/download/pmd_releases%2F${PMD_VERSION}/pmd-dist-${PMD_VERSION}-bin.zip && \
+    && wget --quiet https://github.com/pmd/pmd/releases/download/pmd_releases%2F${PMD_VERSION}/pmd-dist-${PMD_VERSION}-bin.zip && \
     unzip pmd-dist-${PMD_VERSION}-bin.zip || echo "Error unzipping" && \
     rm pmd-dist-${PMD_VERSION}-bin.zip || echo "Error rm" && \
     mv pmd-bin-${PMD_VERSION} /usr/bin/pmd || echo "Error mv" && \
