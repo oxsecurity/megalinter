@@ -79,7 +79,7 @@ linters:
       - **Performance Optimized**: Efficient processing suitable for large documentation projects and automated pipelines
       - **Standards Compliant**: Supports CommonMark and GitHub Flavored Markdown specifications with extension support
     disabled: true
-    disabled_reason: "Bug in remark-lint: https://github.com/remarkjs/remark-lint/issues/322"
+    disabled_reason: "Bug in remark-lint: <https://github.com/remarkjs/remark-lint/issues/322>"
     is_formatter: true
     activation_rules:
       - type: variable

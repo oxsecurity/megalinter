@@ -114,12 +114,10 @@ linters:
           ARG CARGO_SELENE_VERSION=0.29.0
     ide:
       neovim:
-        - name:
-            - nvim-lint
-            - none-ls
-          url:
-            - https://github.com/mfussenegger/nvim-lint
-            - https://github.com/nvimtools/none-ls.nvim
+        - name: nvim-lint
+          url: https://github.com/mfussenegger/nvim-lint
+        - name: none-ls
+          url: https://github.com/nvimtools/none-ls.nvim
       sublime:
         - name: SublimeLinter-contrib-selene
           url: https://packagecontrol.io/packages/SublimeLinter-contrib-selene
