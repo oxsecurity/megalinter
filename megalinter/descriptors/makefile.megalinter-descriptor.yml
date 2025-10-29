@@ -34,7 +34,7 @@ linters:
       - **Detailed error reporting** with line numbers and suggestions
       - **Build optimization suggestions** improving compilation efficiency
     disabled: true
-    disabled_reason: "Security issues: https://github.com/checkmake/checkmake/issues/99"
+    disabled_reason: "Security issues: <https://github.com/checkmake/checkmake/issues/99>"
     name: MAKEFILE_CHECKMAKE
     linter_url: https://github.com/mrtazz/checkmake
     linter_repo: https://github.com/mrtazz/checkmake

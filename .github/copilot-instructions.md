@@ -87,7 +87,7 @@ megalinter/
 
 1. **Create/Update Descriptor**: Add linter configuration to appropriate `.megalinter-descriptor.yml`
 2. **Custom Class (if needed)**: Create custom linter class in `megalinter/linters/` if special logic required
-3. **Regenerate**: Run `make megalinter-build` to update Dockerfiles, or `make megalinter-build-with-doc` to update Dockerfiles
+3. **Regenerate**: Run `make megalinter-build` to update Dockerfiles, or `make megalinter-build-with-doc` to update Dockerfiles and documentation pages
 4. **Test**: Add test cases in `megalinter/tests/test_megalinter/linters/`
 
 ### Descriptor File Structure

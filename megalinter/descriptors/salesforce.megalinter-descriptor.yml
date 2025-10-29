@@ -268,7 +268,7 @@ linters:
   # Lightning Flow Scanner
   - linter_name: lightning-flow-scanner
     disabled: true
-    disabled_reason: Repo archived -> https://github.com/Lightning-Flow-Scanner
+    disabled_reason: "Repo archived -> <https://github.com/Lightning-Flow-Scanner>"
     files_sub_directory: force-app
     linter_text: |
       **Lightning Flow Scanner** is a specialized SFDX plugin that analyzes Salesforce Flows for integrity issues, performance problems, and adherence to best practices. It helps developers build reliable and maintainable Flow automations.

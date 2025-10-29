@@ -6,7 +6,7 @@ linters:
   # PuppetLint
   - linter_name: puppet-lint
     disabled: true
-    disabled_reason: https://github.com/puppetlabs/puppet-lint/issues/251
+    disabled_reason: "<https://github.com/puppetlabs/puppet-lint/issues/251>"
     linter_text: |
       **puppet-lint** is the standard linting tool for Puppet code that enforces the recommended Puppet language style guide and ensures consistent code formatting across Puppet manifests. It focuses on style and formatting rather than syntax validation.
 
