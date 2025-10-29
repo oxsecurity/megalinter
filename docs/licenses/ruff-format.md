@@ -1,5 +1,5 @@
 ---
-title: License info for ruff within MegaLinter
+title: License info for ruff-format within MegaLinter
 search:
   exclude: true
 ---
