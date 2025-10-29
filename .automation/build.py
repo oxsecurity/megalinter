@@ -3449,6 +3449,31 @@ def reformat_markdown_tables():
     logging.info(f"Format table results: ({process.returncode})\n" + stdout)
 
 
+def generate_json_schema_docs():
+    logging.info("Generating json schema html docs…")
+    if sys.platform == "win32":
+        generate_json_schema_docs_command = ["bash", "build_schemas_doc.sh"]
+    else:
+        generate_json_schema_docs_command = ["./build_schemas_doc.sh"]
+    cwd = os.getcwd() + "/.automation"
+    logging.info(
+        "Running command: " + str(generate_json_schema_docs_command) + f" in cwd {cwd}"
+    )
+    process = subprocess.run(
+        generate_json_schema_docs_command,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        universal_newlines=True,
+        cwd=cwd,
+        shell=True,
+        executable=None if sys.platform == "win32" else which("bash"),
+    )
+    stdout = utils.clean_string(process.stdout)
+    logging.info(
+        f"Generate json schema docs results: ({process.returncode})\n" + stdout
+    )
+
+
 def generate_version():
     # npm version
     logging.info("Updating npm package version…")
@@ -3646,6 +3671,7 @@ if __name__ == "__main__":
             generate_documentation_all_linters()
             # generate_documentation_all_users() # deprecated since now we use github-dependents-info
             generate_mkdocs_yml()
+            generate_json_schema_docs()
         validate_own_megalinter_config()
         manage_output_variables()
         reformat_markdown_tables()
