@@ -325,14 +325,6 @@
          <lastmod>2025-10-29</lastmod>
     </url>
     <url>
-         <loc>https://megalinter.io/beta/descriptors/credentials/</loc>
-         <lastmod>2025-10-29</lastmod>
-    </url>
-    <url>
-         <loc>https://megalinter.io/beta/descriptors/credentials_secretlint/</loc>
-         <lastmod>2025-10-29</lastmod>
-    </url>
-    <url>
          <loc>https://megalinter.io/beta/descriptors/csharp/</loc>
          <lastmod>2025-10-29</lastmod>
     </url>
@@ -394,14 +386,6 @@
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/gherkin_gherkin_lint/</loc>
-         <lastmod>2025-10-29</lastmod>
-    </url>
-    <url>
-         <loc>https://megalinter.io/beta/descriptors/git/</loc>
-         <lastmod>2025-10-29</lastmod>
-    </url>
-    <url>
-         <loc>https://megalinter.io/beta/descriptors/git_git_diff/</loc>
          <lastmod>2025-10-29</lastmod>
     </url>
     <url>
@@ -573,19 +557,11 @@
          <lastmod>2025-10-29</lastmod>
     </url>
     <url>
-         <loc>https://megalinter.io/beta/descriptors/markdown_markdown_table_prettify/</loc>
-         <lastmod>2025-10-29</lastmod>
-    </url>
-    <url>
          <loc>https://megalinter.io/beta/descriptors/markdown_markdownlint/</loc>
          <lastmod>2025-10-29</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/markdown_remark_lint/</loc>
-         <lastmod>2025-10-29</lastmod>
-    </url>
-    <url>
-         <loc>https://megalinter.io/beta/descriptors/openapi/</loc>
          <lastmod>2025-10-29</lastmod>
     </url>
     <url>
@@ -598,10 +574,6 @@
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/php/</loc>
-         <lastmod>2025-10-29</lastmod>
-    </url>
-    <url>
-         <loc>https://megalinter.io/beta/descriptors/php_php/</loc>
          <lastmod>2025-10-29</lastmod>
     </url>
     <url>
@@ -817,10 +789,6 @@
          <lastmod>2025-10-29</lastmod>
     </url>
     <url>
-         <loc>https://megalinter.io/beta/descriptors/salesforce_sfdx_scanner/</loc>
-         <lastmod>2025-10-29</lastmod>
-    </url>
-    <url>
          <loc>https://megalinter.io/beta/descriptors/salesforce_sfdx_scanner_apex/</loc>
          <lastmod>2025-10-29</lastmod>
     </url>
@@ -905,10 +873,6 @@
          <lastmod>2025-10-29</lastmod>
     </url>
     <url>
-         <loc>https://megalinter.io/beta/descriptors/terraform_kics/</loc>
-         <lastmod>2025-10-29</lastmod>
-    </url>
-    <url>
          <loc>https://megalinter.io/beta/descriptors/terraform_terraform_fmt/</loc>
          <lastmod>2025-10-29</lastmod>
     </url>
@@ -942,10 +906,6 @@
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/typescript_prettier/</loc>
-         <lastmod>2025-10-29</lastmod>
-    </url>
-    <url>
-         <loc>https://megalinter.io/beta/descriptors/typescript_standard/</loc>
          <lastmod>2025-10-29</lastmod>
     </url>
     <url>
@@ -1257,10 +1217,6 @@
          <lastmod>2025-10-29</lastmod>
     </url>
     <url>
-         <loc>https://megalinter.io/beta/licenses/markdown-link-check/</loc>
-         <lastmod>2025-10-29</lastmod>
-    </url>
-    <url>
          <loc>https://megalinter.io/beta/licenses/markdown-table-formatter/</loc>
          <lastmod>2025-10-29</lastmod>
     </url>
@@ -1353,6 +1309,10 @@
          <lastmod>2025-10-29</lastmod>
     </url>
     <url>
+         <loc>https://megalinter.io/beta/licenses/robocop/</loc>
+         <lastmod>2025-10-29</lastmod>
+    </url>
+    <url>
          <loc>https://megalinter.io/beta/licenses/roslynator/</loc>
          <lastmod>2025-10-29</lastmod>
     </url>
@@ -1369,6 +1329,10 @@
          <lastmod>2025-10-29</lastmod>
     </url>
     <url>
+         <loc>https://megalinter.io/beta/licenses/ruff-format/</loc>
+         <lastmod>2025-10-29</lastmod>
+    </url>
+    <url>
          <loc>https://megalinter.io/beta/licenses/ruff/</loc>
          <lastmod>2025-10-29</lastmod>
     </url>
@@ -1377,11 +1341,11 @@
          <lastmod>2025-10-29</lastmod>
     </url>
     <url>
-         <loc>https://megalinter.io/beta/licenses/scss-lint/</loc>
+         <loc>https://megalinter.io/beta/licenses/secretlint/</loc>
          <lastmod>2025-10-29</lastmod>
     </url>
     <url>
-         <loc>https://megalinter.io/beta/licenses/secretlint/</loc>
+         <loc>https://megalinter.io/beta/licenses/selene/</loc>
          <lastmod>2025-10-29</lastmod>
     </url>
     <url>
@@ -1418,10 +1382,6 @@
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/spectral/</loc>
-         <lastmod>2025-10-29</lastmod>
-    </url>
-    <url>
-         <loc>https://megalinter.io/beta/licenses/sql-lint/</loc>
          <lastmod>2025-10-29</lastmod>
     </url>
     <url>
