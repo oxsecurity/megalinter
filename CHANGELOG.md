@@ -87,6 +87,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [kics](https://www.kics.io) from 2.1.14 to **2.1.15** on 2025-10-26
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 9.2.1 to **9.2.2** on 2025-10-26
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.91.1 to **0.91.5** on 2025-10-26
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.88.2 to **3.89.1** on 2025-10-29
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.14.1 to **0.14.2** on 2025-10-29
+  - [ruff](https://github.com/astral-sh/ruff) from 0.14.1 to **0.14.2** on 2025-10-29
+  - [rubocop](https://rubocop.org/) from 1.81.1 to **1.81.6** on 2025-10-29
+  - [snakemake](https://snakemake.github.io/) from 9.13.3 to **9.13.4** on 2025-10-29
 <!-- linter-versions-end -->
 
 ## [v9.1.0] - 2025-10-07

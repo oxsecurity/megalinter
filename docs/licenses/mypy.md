@@ -9,8 +9,8 @@ Mypy (and mypyc) are licensed under the terms of the MIT license, reproduced bel
 
 The MIT License
 
-Copyright (c) 2012-2022 Jukka Lehtosalo and contributors
-Copyright (c) 2015-2022 Dropbox, Inc.
+Copyright (c) 2012-2023 Jukka Lehtosalo and contributors
+Copyright (c) 2015-2023 Dropbox, Inc.
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
@@ -131,7 +131,7 @@ between BeOpen and Licensee.  This License Agreement does not grant
 permission to use BeOpen trademarks or trade names in a trademark
 sense to endorse or promote products or services of Licensee, or any
 third party.  As an exception, the "BeOpen Python" logos available at
-<http://www.pythonlabs.com/logos.html> may be used according to the
+http://www.pythonlabs.com/logos.html may be used according to the
 permissions granted on that web page.
 
 7. By copying, installing or otherwise using the software, Licensee
@@ -163,7 +163,7 @@ conditions in CNRI's License Agreement.  This Agreement together with
 Python 1.6.1 may be located on the Internet using the following
 unique, persistent identifier (known as a handle): 1895.22/1013.  This
 Agreement may also be obtained from a proxy server on the Internet
-using the following URL: <http://hdl.handle.net/1895.22/1013>".
+using the following URL: http://hdl.handle.net/1895.22/1013".
 
 3. In the event Licensee prepares a derivative work that is based on
 or incorporates Python 1.6.1 or any part thereof, and wants to make
