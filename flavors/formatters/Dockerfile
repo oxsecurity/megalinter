@@ -15,7 +15,7 @@
 # renovate: datasource=docker depName=mvdan/shfmt
 ARG BASH_SHFMT_VERSION=v3.12.0-alpine
 # renovate: datasource=docker depName=alpine/terragrunt
-ARG TERRAFORM_TERRAGRUNT_VERSION=1.13.3
+ARG TERRAFORM_TERRAGRUNT_VERSION=1.13.4
 #ARGTOP__END
 
 #############################################################################################
@@ -29,7 +29,7 @@ FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} AS terragrunt
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.8.17 AS uv
+FROM ghcr.io/astral-sh/uv:0.9.4 AS uv
 FROM python:3.13-alpine3.22 AS build-ml-core
 WORKDIR /
 COPY --from=uv /uv /uvx /bin/
@@ -56,14 +56,14 @@ FROM python:3.13-alpine3.22
 # renovate: datasource=crate depName=sarif-fmt
 ARG CARGO_SARIF_FMT_VERSION=0.8.0
 # renovate: datasource=github-tags depName=PowerShell/PowerShell
-ARG POWERSHELL_VERSION=7.5.3
+ARG POWERSHELL_VERSION=7.5.4
 
 # renovate: datasource=npm depName=typescript
 ARG NPM_TYPESCRIPT_VERSION=5.9.3
 # renovate: datasource=nuget depName=csharpier
 ARG CSHARP_CSHARPIER_VERSION=1.1.2
 # renovate: datasource=nuget depName=roslynator.dotnet.cli
-ARG CSHARP_ROSLYNATOR_VERSION=0.10.2
+ARG CSHARP_ROSLYNATOR_VERSION=0.11.0
 # renovate: datasource=npm depName=prettier
 ARG NPM_PRETTIER_VERSION=3.6.2
 # renovate: datasource=npm depName=markdownlint-cli
@@ -76,15 +76,15 @@ ARG PSSA_VERSION='1.24.0'
 # renovate: datasource=pypi depName=black
 ARG PIP_BLACK_VERSION=25.9.0
 # renovate: datasource=pypi depName=isort
-ARG PIP_ISORT_VERSION=6.1.0
+ARG PIP_ISORT_VERSION=7.0.0
 # renovate: datasource=pypi depName=ruff
-ARG PIP_RUFF_VERSION=0.14.0
+ARG PIP_RUFF_VERSION=0.14.2
 # renovate: datasource=pypi depName=rstfmt
 ARG PIP_RSTFMT_VERSION=0.0.14
 # renovate: datasource=pypi depName=snakefmt
 ARG PIP_SNAKEFMT_VERSION=0.11.2
 # renovate: datasource=pypi depName=pip
-ARG PIP_PIP_VERSION=25.2
+ARG PIP_PIP_VERSION=25.3
 # renovate: datasource=pypi depName=virtualenv
 ARG PIP_VIRTUALENV_VERSION=20.35.3
 # renovate: datasource=github-tags depName=rust-lang/rust

@@ -61,7 +61,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=checkov
-          ARG PIP_CHECKOV_VERSION=3.2.483
+          ARG PIP_CHECKOV_VERSION=3.2.484
       pip:
         - checkov==${PIP_CHECKOV_VERSION}
     test_folder: repository_checkov
@@ -261,11 +261,13 @@ linters:
       If MegaLinter with gitleaks runs against a PR on a platform not listed above, analysis is performed on the whole repository (this is the default gitleaks behavior; the commits scanned depend on the fetch-depth configuration).
 
       You can still choose to scan only PR commits in your CI/CD platform by setting the following MegaLinter environment variables:
+
         - `PULL_REQUEST=true`\*
         - `REPOSITORY_GITLEAKS_PR_COMMITS_SCAN: true`
         - `REPOSITORY_GITLEAKS_PR_SOURCE_SHA` with last commit sha from your PR and `REPOSITORY_GITLEAKS_PR_TARGET_SHA` commit sha from your target branch (for example, `main` if you do PR to main branch)
 
           Example commands:
+
             - Source commit SHA:
               ```bash
               git rev-list -n 1 refs/remotes/origin/<source_branch>
@@ -275,6 +277,7 @@ linters:
               ```bash
               git rev-parse refs/remotes/origin/<target_branch>
               ```
+
       \* `PULL_REQUEST` environment variable must be set to `true` only on Pull Requests, so you must calculate the value in your pipeline and pass the outcome.
 
       The PR commits scan feature, if applicable, will override your `--log-opts` argument if you used it in the `REPOSITORY_GITLEAKS_ARGUMENTS`.
@@ -415,7 +418,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=github-tags depName=anchore/grype
-          ARG REPOSITORY_GRYPE_VERSION=0.100.0
+          ARG REPOSITORY_GRYPE_VERSION=0.101.1
         - RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/refs/tags/v${REPOSITORY_GRYPE_VERSION}/install.sh | sh -s -- -b /usr/local/bin
     test_folder: repository_grype
 
@@ -476,7 +479,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=docker depName=checkmarx/kics
-          ARG REPOSITORY_KICS_VERSION=v2.1.14-alpine
+          ARG REPOSITORY_KICS_VERSION=v2.1.15-alpine
         - FROM checkmarx/kics:${REPOSITORY_KICS_VERSION} AS kics
         - COPY --link --from=kics /app/bin/kics /usr/bin/kics
         - ENV KICS_QUERIES_PATH=/usr/bin/assets/queries KICS_LIBRARIES_PATH=/usr/bin/assets/libraries
@@ -700,7 +703,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=github-tags depName=anchore/syft
-          ARG REPOSITORY_SYFT_VERSION=1.33.0
+          ARG REPOSITORY_SYFT_VERSION=1.34.2
         - RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/refs/tags/v${REPOSITORY_SYFT_VERSION}/install.sh | sh -s -- -b /usr/local/bin
 
   # TRIVY
@@ -873,7 +876,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=docker depName=trufflesecurity/trufflehog
-          ARG REPOSITORY_TRUFFLEHOG_VERSION=3.90.8
+          ARG REPOSITORY_TRUFFLEHOG_VERSION=3.90.11
         - FROM trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION} AS trufflehog
         - COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
     test_folder: gitleaks

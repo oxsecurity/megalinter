@@ -26,7 +26,7 @@ description: How to use checkstyle (configure, ignore files, ignore errors, help
 
 ## checkstyle documentation
 
-- Version in MegaLinter: **12.0.1**
+- Version in MegaLinter: **12.1.0**
 - Visit [Official Web Site](https://checkstyle.org/){target=_blank}
 - See [How to configure checkstyle rules](https://checkstyle.org/config.html){target=_blank}
   - If custom `sun_checks.xml` config file isn't found, [sun_checks.xml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/sun_checks.xml){target=_blank} will be used
@@ -75,8 +75,8 @@ This linter is available in the following flavors
 |                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                     | Embedded linters |                                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       127        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        87        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
-|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.io/beta/flavors/java/)       | Optimized for JAVA based projects               |        53        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        88        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.io/beta/flavors/java/)       | Optimized for JAVA based projects               |        54        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
 
 ## Behind the scenes
 
@@ -214,15 +214,10 @@ To specify an argument for a long option, you can use --<name>=<value> or
 ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 # Linter install
-RUN CHECKSTYLE_LATEST=$(curl -s \
-    -H "Accept: application/vnd.github+json" \
-    -H "Authorization: Bearer $(cat /run/secrets/GITHUB_TOKEN)" \
-    https://api.github.com/repos/checkstyle/checkstyle/releases/latest \
-        | grep browser_download_url \
-        | grep ".jar" \
-        | cut -d '"' -f 4) \
-    && curl --retry 5 --retry-delay 5 -sSL $CHECKSTYLE_LATEST \
-        --output /usr/bin/checkstyle
-
+# renovate: datasource=github-releases depName=checkstyle/checkstyle
+ARG JAVA_CHECKSTYLE_VERSION=12.1.0
+RUN curl --retry 5 --retry-delay 5 -sSL \
+    "https://github.com/checkstyle/checkstyle/releases/download/checkstyle-${JAVA_CHECKSTYLE_VERSION}/checkstyle-${JAVA_CHECKSTYLE_VERSION}-all.jar" \
+    --output /usr/bin/checkstyle
 ```
 

@@ -20,6 +20,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Media
 
 - Linters enhancements
+  - Install dotenv-linter deterministically, by @bdovaz in <https://github.com/oxsecurity/megalinter/pull/6385>
 
 - Fixes
 
@@ -56,6 +57,41 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [secretlint](https://github.com/secretlint/secretlint) from 11.2.4 to **11.2.5** on 2025-10-14
   - [robocop](https://github.com/MarketSquare/robotframework-robocop) from 6.7.2 to **6.8.0** on 2025-10-14
   - [swiftlint](https://github.com/realm/SwiftLint) from 0.61.0 to **0.62.1** on 2025-10-14
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.40.1 to **1.40.2** on 2025-10-15
+  - [checkov](https://www.checkov.io/) from 3.2.413 to **3.2.483** on 2025-10-15
+  - [roslynator](https://github.com/dotnet/Roslynator) from 0.10.2.0 to **0.11.0.0** on 2025-10-15
+  - [kubescape](https://github.com/kubescape/kubescape) from 3.0.41 to **3.0.42** on 2025-10-15
+  - [pylint](https://pylint.readthedocs.io) from 4.0.0 to **4.0.1** on 2025-10-15
+  - [syft](https://github.com/anchore/syft) from 1.33.0 to **1.34.1** on 2025-10-15
+  - [grype](https://github.com/anchore/grype) from 0.100.0 to **0.101.0** on 2025-10-15
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.90.8 to **3.90.9** on 2025-10-15
+  - [dotenv-linter](https://dotenv-linter.github.io/) from 3.3.0 to **4.0.0** on 2025-10-19
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2025.09.22 to **2025.10.23** on 2025-10-24
+  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 9.0.110 to **9.0.111** on 2025-10-24
+  - [checkstyle](https://checkstyle.org/) from 12.0.1 to **12.1.0** on 2025-10-24
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.14.0 to **0.14.1** on 2025-10-24
+  - [ruff](https://github.com/astral-sh/ruff) from 0.14.0 to **0.14.1** on 2025-10-24
+  - [checkov](https://www.checkov.io/) from 3.2.483 to **3.2.484** on 2025-10-24
+  - [grype](https://github.com/anchore/grype) from 0.101.0 to **0.102.0** on 2025-10-24
+  - [syft](https://github.com/anchore/syft) from 1.34.1 to **1.36.0** on 2025-10-24
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.90.9 to **3.90.11** on 2025-10-24
+  - [robocop](https://github.com/MarketSquare/robotframework-robocop) from 6.8.0 to **6.8.3** on 2025-10-24
+  - [snakemake](https://snakemake.github.io/) from 9.13.2 to **9.13.3** on 2025-10-24
+  - [sqlfluff](https://www.sqlfluff.com/) from 3.4.2 to **3.5.0** on 2025-10-24
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.13.3 to **1.13.4** on 2025-10-24
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.90.0 to **0.91.1** on 2025-10-24
+  - [powershell_formatter](https://github.com/PowerShell/PSScriptAnalyzer) from 7.5.3 to **7.5.4** on 2025-10-26
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.5.3 to **7.5.4** on 2025-10-26
+  - [pylint](https://pylint.readthedocs.io) from 4.0.1 to **4.0.2** on 2025-10-26
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.406 to **1.1.407** on 2025-10-26
+  - [kics](https://www.kics.io) from 2.1.14 to **2.1.15** on 2025-10-26
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 9.2.1 to **9.2.2** on 2025-10-26
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.91.1 to **0.91.5** on 2025-10-26
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.88.2 to **3.89.1** on 2025-10-29
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.14.1 to **0.14.2** on 2025-10-29
+  - [ruff](https://github.com/astral-sh/ruff) from 0.14.1 to **0.14.2** on 2025-10-29
+  - [rubocop](https://rubocop.org/) from 1.81.1 to **1.81.6** on 2025-10-29
+  - [snakemake](https://snakemake.github.io/) from 9.13.3 to **9.13.4** on 2025-10-29
 <!-- linter-versions-end -->
 
 ## [v9.1.0] - 2025-10-07

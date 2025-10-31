@@ -2545,7 +2545,7 @@
             />
         </svg>
     <a href="#linters_items_cli_lint_errors_count" onclick="anchorLink('linters_items_cli_lint_errors_count')">cli_lint_errors_count</a></div><h4>Lint errors count mode</h4><span class="badge badge-dark value-type">Type: enum (of string)</span><br/>
-<span class="description"><p>Defines how to count errors from log file. regex<em>number, regex</em>count, regex<em>sum, or total</em>lines</p>
+<span class="description"><p>Defines how to count errors from log file. regex<em>number, regex</em>count, regex<em>sum, total</em>lines or sarif</p>
 </span><div class="enum-value" id="linters_items_cli_lint_errors_count_enum">
             <h4>Must be one of:</h4>
             <ul class="list-group"><li class="list-group-item enum-item">"regex_number"</li><li class="list-group-item enum-item">"regex_count"</li><li class="list-group-item enum-item">"regex_sum"</li><li class="list-group-item enum-item">"total_lines"</li><li class="list-group-item enum-item">"sarif"</li></ul>
@@ -2564,6 +2564,8 @@
 </div><div id="linters_items_cli_lint_errors_count_ex3" class="jumbotron examples"><div class="highlight"><pre><span></span><span class="s2">&quot;regex_sum&quot;</span>
 </pre></div>
 </div><div id="linters_items_cli_lint_errors_count_ex4" class="jumbotron examples"><div class="highlight"><pre><span></span><span class="s2">&quot;total_lines&quot;</span>
+</pre></div>
+</div><div id="linters_items_cli_lint_errors_count_ex5" class="jumbotron examples"><div class="highlight"><pre><span></span><span class="s2">&quot;sarif&quot;</span>
 </pre></div>
 </div>
             </div>
@@ -3052,6 +3054,121 @@
         
 
         
+            </div>
+        </div>
+    </div>
+</div>
+<div class="accordion" id="accordionlinters_items_cli_lint_warnings_count">
+    <div class="card">
+        <div class="card-header" id="headinglinters_items_cli_lint_warnings_count">
+            <h2 class="mb-0">
+                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#linters_items_cli_lint_warnings_count"
+                        aria-expanded="" aria-controls="linters_items_cli_lint_warnings_count" onclick="setAnchor('#linters_items_cli_lint_warnings_count')"><span class="property-name">cli_lint_warnings_count</span></button>
+            </h2>
+        </div>
+
+        <div id="linters_items_cli_lint_warnings_count"
+             class="collapse property-definition-div" aria-labelledby="headinglinters_items_cli_lint_warnings_count"
+             data-parent="#accordionlinters_items_cli_lint_warnings_count">
+            <div class="card-body pl-5">
+
+    <div class="breadcrumbs">root
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#linters" onclick="anchorLink('linters')">linters</a>
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#linters_items" onclick="anchorLink('linters_items')">Linter definition</a>
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#linters_items_cli_lint_warnings_count" onclick="anchorLink('linters_items_cli_lint_warnings_count')">cli_lint_warnings_count</a></div><h4>Lint errors count mode</h4><span class="badge badge-dark value-type">Type: enum (of string)</span><br/>
+<span class="description"><p>Defines how to count warnings from log file. regex<em>number, regex</em>count, regex<em>sum, total</em>lines or sarif</p>
+</span><div class="enum-value" id="linters_items_cli_lint_warnings_count_enum">
+            <h4>Must be one of:</h4>
+            <ul class="list-group"><li class="list-group-item enum-item">"regex_number"</li><li class="list-group-item enum-item">"regex_count"</li><li class="list-group-item enum-item">"regex_sum"</li><li class="list-group-item enum-item">"total_lines"</li><li class="list-group-item enum-item">"sarif"</li></ul>
+            </div>
+        
+
+        
+        
+
+        <br/>
+<div class="badge badge-secondary">Examples:</div>
+<br/><div id="linters_items_cli_lint_warnings_count_ex1" class="jumbotron examples"><div class="highlight"><pre><span></span><span class="s2">&quot;regex_number&quot;</span>
+</pre></div>
+</div><div id="linters_items_cli_lint_warnings_count_ex2" class="jumbotron examples"><div class="highlight"><pre><span></span><span class="s2">&quot;regex_count&quot;</span>
+</pre></div>
+</div><div id="linters_items_cli_lint_warnings_count_ex3" class="jumbotron examples"><div class="highlight"><pre><span></span><span class="s2">&quot;regex_sum&quot;</span>
+</pre></div>
+</div><div id="linters_items_cli_lint_warnings_count_ex4" class="jumbotron examples"><div class="highlight"><pre><span></span><span class="s2">&quot;total_lines&quot;</span>
+</pre></div>
+</div><div id="linters_items_cli_lint_warnings_count_ex5" class="jumbotron examples"><div class="highlight"><pre><span></span><span class="s2">&quot;sarif&quot;</span>
+</pre></div>
+</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="accordion" id="accordionlinters_items_cli_lint_warnings_regex">
+    <div class="card">
+        <div class="card-header" id="headinglinters_items_cli_lint_warnings_regex">
+            <h2 class="mb-0">
+                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#linters_items_cli_lint_warnings_regex"
+                        aria-expanded="" aria-controls="linters_items_cli_lint_warnings_regex" onclick="setAnchor('#linters_items_cli_lint_warnings_regex')"><span class="property-name">cli_lint_warnings_regex</span></button>
+            </h2>
+        </div>
+
+        <div id="linters_items_cli_lint_warnings_regex"
+             class="collapse property-definition-div" aria-labelledby="headinglinters_items_cli_lint_warnings_regex"
+             data-parent="#accordionlinters_items_cli_lint_warnings_regex">
+            <div class="card-body pl-5">
+
+    <div class="breadcrumbs">root
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#linters" onclick="anchorLink('linters')">linters</a>
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#linters_items" onclick="anchorLink('linters_items')">Linter definition</a>
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#linters_items_cli_lint_warnings_regex" onclick="anchorLink('linters_items_cli_lint_warnings_regex')">cli_lint_warnings_regex</a></div><h4>Lint warnings number regex</h4><span class="badge badge-dark value-type">Type: string</span><br/>
+<span class="description"><p>Regex allowing to extract the number of warnings from linter output logs</p>
+</span>
+        
+
+        
+        
+
+        <br/>
+<div class="badge badge-secondary">Example:</div>
+<br/><div id="linters_items_cli_lint_warnings_regex_ex1" class="jumbotron examples"><div class="highlight"><pre><span></span><span class="s2">&quot;Issues found: (.*) in .* files&quot;</span>
+</pre></div>
+</div>
             </div>
         </div>
     </div>
@@ -6343,9 +6460,11 @@
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_post_commands_items" onclick="anchorLink('linters_items_post_commands_items')">command_info</a></div><span class="badge badge-dark value-type">Type: object</span><br/>
+    <a href="#linters_items_post_commands_items" onclick="anchorLink('linters_items_post_commands_items')">Command</a></div><h4>Command</h4><span class="badge badge-dark value-type">Type: object</span><br/>
 <span class="description"><p>Command information</p>
 </span>
+
+    
 
     
         
@@ -6552,6 +6671,128 @@
         </div>
     </div>
 </div>
+<div class="accordion" id="accordionlinters_items_post_commands_items_run_after_linters">
+    <div class="card">
+        <div class="card-header" id="headinglinters_items_post_commands_items_run_after_linters">
+            <h2 class="mb-0">
+                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#linters_items_post_commands_items_run_after_linters"
+                        aria-expanded="" aria-controls="linters_items_post_commands_items_run_after_linters" onclick="setAnchor('#linters_items_post_commands_items_run_after_linters')"><span class="property-name">run_after_linters</span></button>
+            </h2>
+        </div>
+
+        <div id="linters_items_post_commands_items_run_after_linters"
+             class="collapse property-definition-div" aria-labelledby="headinglinters_items_post_commands_items_run_after_linters"
+             data-parent="#accordionlinters_items_post_commands_items_run_after_linters">
+            <div class="card-body pl-5">
+
+    <div class="breadcrumbs">root
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#linters" onclick="anchorLink('linters')">linters</a>
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#linters_items" onclick="anchorLink('linters_items')">Linter definition</a>
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#linters_items_post_commands" onclick="anchorLink('linters_items_post_commands')">post_commands</a>
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#linters_items_post_commands_items" onclick="anchorLink('linters_items_post_commands_items')">Command</a>
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#linters_items_post_commands_items_run_after_linters" onclick="anchorLink('linters_items_post_commands_items_run_after_linters')">run_after_linters</a></div><h4>Process command after running linters</h4><span class="badge badge-dark value-type">Type: boolean</span> <span class="badge badge-success default-value">Default: false</span><br/>
+
+        
+
+        
+        
+
+        
+            </div>
+        </div>
+    </div>
+</div>
+<div class="accordion" id="accordionlinters_items_post_commands_items_run_before_linters">
+    <div class="card">
+        <div class="card-header" id="headinglinters_items_post_commands_items_run_before_linters">
+            <h2 class="mb-0">
+                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#linters_items_post_commands_items_run_before_linters"
+                        aria-expanded="" aria-controls="linters_items_post_commands_items_run_before_linters" onclick="setAnchor('#linters_items_post_commands_items_run_before_linters')"><span class="property-name">run_before_linters</span></button>
+            </h2>
+        </div>
+
+        <div id="linters_items_post_commands_items_run_before_linters"
+             class="collapse property-definition-div" aria-labelledby="headinglinters_items_post_commands_items_run_before_linters"
+             data-parent="#accordionlinters_items_post_commands_items_run_before_linters">
+            <div class="card-body pl-5">
+
+    <div class="breadcrumbs">root
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#linters" onclick="anchorLink('linters')">linters</a>
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#linters_items" onclick="anchorLink('linters_items')">Linter definition</a>
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#linters_items_post_commands" onclick="anchorLink('linters_items_post_commands')">post_commands</a>
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#linters_items_post_commands_items" onclick="anchorLink('linters_items_post_commands_items')">Command</a>
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#linters_items_post_commands_items_run_before_linters" onclick="anchorLink('linters_items_post_commands_items_run_before_linters')">run_before_linters</a></div><h4>Process command before running linters</h4><span class="badge badge-dark value-type">Type: boolean</span> <span class="badge badge-success default-value">Default: false</span><br/>
+
+        
+
+        
+        
+
+        
+            </div>
+        </div>
+    </div>
+</div>
         </div>
     </div><br/>
 <div class="badge badge-secondary">Example:</div>
@@ -6648,9 +6889,11 @@
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#linters_items_pre_commands_items" onclick="anchorLink('linters_items_pre_commands_items')">command_info</a></div><span class="badge badge-dark value-type">Type: object</span><br/>
+    <a href="#linters_items_pre_commands_items" onclick="anchorLink('linters_items_pre_commands_items')">Command</a></div><h4>Command</h4><span class="badge badge-dark value-type">Type: object</span><br/>
 <span class="description"><p>Command information</p>
 </span>
+
+    
 
     
         
@@ -6853,6 +7096,128 @@
 </div><div id="linters_items_pre_commands_items_cwd_ex2" class="jumbotron examples"><div class="highlight"><pre><span></span><span class="s2">&quot;workspace&quot;</span>
 </pre></div>
 </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="accordion" id="accordionlinters_items_pre_commands_items_run_after_linters">
+    <div class="card">
+        <div class="card-header" id="headinglinters_items_pre_commands_items_run_after_linters">
+            <h2 class="mb-0">
+                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#linters_items_pre_commands_items_run_after_linters"
+                        aria-expanded="" aria-controls="linters_items_pre_commands_items_run_after_linters" onclick="setAnchor('#linters_items_pre_commands_items_run_after_linters')"><span class="property-name">run_after_linters</span></button>
+            </h2>
+        </div>
+
+        <div id="linters_items_pre_commands_items_run_after_linters"
+             class="collapse property-definition-div" aria-labelledby="headinglinters_items_pre_commands_items_run_after_linters"
+             data-parent="#accordionlinters_items_pre_commands_items_run_after_linters">
+            <div class="card-body pl-5">
+
+    <div class="breadcrumbs">root
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#linters" onclick="anchorLink('linters')">linters</a>
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#linters_items" onclick="anchorLink('linters_items')">Linter definition</a>
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#linters_items_pre_commands" onclick="anchorLink('linters_items_pre_commands')">pre_commands</a>
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#linters_items_pre_commands_items" onclick="anchorLink('linters_items_pre_commands_items')">Command</a>
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#linters_items_pre_commands_items_run_after_linters" onclick="anchorLink('linters_items_pre_commands_items_run_after_linters')">run_after_linters</a></div><h4>Process command after running linters</h4><span class="badge badge-dark value-type">Type: boolean</span> <span class="badge badge-success default-value">Default: false</span><br/>
+
+        
+
+        
+        
+
+        
+            </div>
+        </div>
+    </div>
+</div>
+<div class="accordion" id="accordionlinters_items_pre_commands_items_run_before_linters">
+    <div class="card">
+        <div class="card-header" id="headinglinters_items_pre_commands_items_run_before_linters">
+            <h2 class="mb-0">
+                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#linters_items_pre_commands_items_run_before_linters"
+                        aria-expanded="" aria-controls="linters_items_pre_commands_items_run_before_linters" onclick="setAnchor('#linters_items_pre_commands_items_run_before_linters')"><span class="property-name">run_before_linters</span></button>
+            </h2>
+        </div>
+
+        <div id="linters_items_pre_commands_items_run_before_linters"
+             class="collapse property-definition-div" aria-labelledby="headinglinters_items_pre_commands_items_run_before_linters"
+             data-parent="#accordionlinters_items_pre_commands_items_run_before_linters">
+            <div class="card-body pl-5">
+
+    <div class="breadcrumbs">root
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#linters" onclick="anchorLink('linters')">linters</a>
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#linters_items" onclick="anchorLink('linters_items')">Linter definition</a>
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#linters_items_pre_commands" onclick="anchorLink('linters_items_pre_commands')">pre_commands</a>
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#linters_items_pre_commands_items" onclick="anchorLink('linters_items_pre_commands_items')">Command</a>
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#linters_items_pre_commands_items_run_before_linters" onclick="anchorLink('linters_items_pre_commands_items_run_before_linters')">run_before_linters</a></div><h4>Process command before running linters</h4><span class="badge badge-dark value-type">Type: boolean</span> <span class="badge badge-success default-value">Default: false</span><br/>
+
+        
+
+        
+        
+
+        
             </div>
         </div>
     </div>
@@ -7418,7 +7783,7 @@
             />
         </svg>
     <a href="#processing_order" onclick="anchorLink('processing_order')">processing_order</a></div><h4>Descriptor processing order</h4><span class="badge badge-dark value-type">Type: number</span> <span class="badge badge-success default-value">Default: 0</span><br/>
-<span class="description"><p>If descriptor linters may be slow, put a negative processing order. If it is fast, put a positive one. If you don&#39;t know, do not set</p>
+<span class="description"><p>If descriptor linters may be slow, put a negative processing order. If it is fast, put a positive one. If you don't know, do not set</p>
 </span>
         
 
@@ -7481,6 +7846,6 @@
 </div>
 
     <footer>
-        <p class="generated-by-footer">Generated using <a href="https://github.com/coveooss/json-schema-for-humans">json-schema-for-humans</a> on 2024-05-30 at 01:05:12 +0000</p>
+        <p class="generated-by-footer">Generated using <a href="https://github.com/coveooss/json-schema-for-humans">json-schema-for-humans</a></p>
     </footer></body>
 </html>

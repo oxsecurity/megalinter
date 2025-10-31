@@ -14,6 +14,7 @@ from datetime import date, datetime
 from shutil import copyfile, which
 from typing import Any
 from urllib import parse as parse_urllib
+from pathlib import Path
 
 import git
 import jsonschema
@@ -242,9 +243,8 @@ branding:
   color: "green"
 """
             main_action_yml = "action.yml"
-            with open(main_action_yml, "w", encoding="utf-8") as file:
-                file.write(action_yml)
-                logging.info(f"Updated {main_action_yml}")
+            Path(main_action_yml).write_text(action_yml, encoding="utf-8")
+            logging.info(f"Updated {main_action_yml}")
     else:
         # Flavor json
         flavor_file = f"{FLAVORS_DIR}/{flavor}/flavor.json"
@@ -306,9 +306,8 @@ branding:
   color: "green"
 """
         flavor_action_yml = f"{FLAVORS_DIR}/{flavor}/action.yml"
-        with open(flavor_action_yml, "w", encoding="utf-8") as file:
-            file.write(action_yml)
-            logging.info(f"Updated {flavor_action_yml}")
+        Path(flavor_action_yml).write_text(action_yml, encoding="utf-8")
+        logging.info(f"Updated {flavor_action_yml}")
     extra_lines = []
     if CUSTOM_FLAVOR is True:
         current_date_time_iso = datetime.now().isoformat()
@@ -832,9 +831,7 @@ def generate_linter_dockerfiles():
         logging.info(f"Updated {linters_matrix_file}")
 
     # Write MD file
-    file = open(f"{REPO_HOME}/docs/standalone-linters.md", "w", encoding="utf-8")
-    file.write(linters_md + "\n")
-    file.close()
+    Path(f"{REPO_HOME}/docs/standalone-linters.md").write_text(linters_md + "\n", encoding="utf-8")
 
 
 # Automatically generate a test class for each linter class
@@ -1166,9 +1163,8 @@ def generate_descriptor_documentation(descriptor):
         descriptor_md += ["", "### Installation", ""]
         descriptor_md += get_install_md(descriptor)
     # Write MD file
-    file = open(f"{REPO_HOME}/docs/descriptors/{lang_lower}.md", "w", encoding="utf-8")
-    file.write("\n".join(descriptor_md) + "\n")
-    file.close()
+    file = Path(f"{REPO_HOME}/docs/descriptors/{lang_lower}.md")
+    file.write_text("\n".join(descriptor_md) + "\n", encoding="utf-8")
     logging.info("Updated " + file.name)
 
 
@@ -1233,9 +1229,7 @@ def generate_flavor_documentation(flavor_id, flavor, linters_tables_md):
     flavor_doc_md += filtered_table_md
     # Write MD file
     flavor_doc_file = f"{REPO_HOME}/docs/flavors/{flavor_id}.md"
-    file = open(flavor_doc_file, "w", encoding="utf-8")
-    file.write("\n".join(flavor_doc_md) + "\n")
-    file.close()
+    Path(flavor_doc_file).write_text("\n".join(flavor_doc_md) + "\n", encoding="utf-8")
     logging.info("Updated " + flavor_doc_file)
 
 
@@ -1992,13 +1986,8 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             linter_doc_md += ["```"]
 
         # Write md file
-        file = open(
-            f"{REPO_HOME}/docs/descriptors/{lang_lower}_{linter_name_lower}.md",
-            "w",
-            encoding="utf-8",
-        )
-        file.write("\n".join(linter_doc_md) + "\n")
-        file.close()
+        file = Path(f"{REPO_HOME}/docs/descriptors/{lang_lower}_{linter_name_lower}.md")
+        file.write_text("\n".join(linter_doc_md) + "\n", encoding="utf-8")
         logging.info("Updated " + file.name)
     linters_tables_md += [""]
     return linters_tables_md
@@ -2473,8 +2462,7 @@ def get_arg_variable_value(package_version):
 
 def replace_in_file(file_path, start, end, content, add_new_line=True):
     # Read in the file
-    with open(file_path, "r", encoding="utf-8") as file:
-        file_content = file.read()
+    file_content = Path(file_path).read_text(encoding="utf-8")
     # Detect markdown headers if in replacement
     header_content = None
     header_matches = re.findall(
@@ -2513,8 +2501,8 @@ def replace_in_file(file_path, start, end, content, add_new_line=True):
         else:
             file_content = header_content + "\n" + file_content
     # Write the file out again
-    with open(file_path, "w", encoding="utf-8") as file:
-        file.write(file_content)
+    file = Path(file_path)
+    file.write_text(file_content, encoding="utf-8")
     logging.info("Updated " + file.name + " between " + start + " and " + end)
 
 
@@ -2570,8 +2558,7 @@ def copy_md_file(source_file, target_file):
 
 def move_to_file(file_path, start, end, target_file, keep_in_source=False):
     # Read in the file
-    with open(file_path, "r", encoding="utf-8") as file:
-        file_content = file.read()
+    file_content = Path(file_path).read_text(encoding="utf-8")
     # Replace the target string
     replacement_content = ""
     replacement = f"{start}\n{replacement_content}\n{end}"
@@ -2584,9 +2571,8 @@ def move_to_file(file_path, start, end, target_file, keep_in_source=False):
     if keep_in_source is False:
         file_content = re.sub(regex, replacement, file_content, 1, re.DOTALL)
     # Write the file out again
-    with open(file_path, "w", encoding="utf-8") as file:
-        file.write(file_content)
-    logging.info("Updated " + file.name + " between " + start + " and " + end)
+    Path(file_path).write_text(file_content, encoding="utf-8")
+    logging.info("Updated " + file_path + " between " + start + " and " + end)
     if "<!-- install-" in start or "<!-- config-" in start:
         bracket_content = (
             bracket_content.replace("####", "#TWO#")
@@ -2624,8 +2610,7 @@ def replace_full_url_links(target_file, full_url__base, shorten_url=""):
 
 
 def replace_anchors_by_links(file_path, moves):
-    with open(file_path, "r", encoding="utf-8") as file:
-        file_content = file.read()
+    file_content = Path(file_path).read_text(encoding="utf-8")
     file_content_new = file_content
     for move in moves:
         file_content_new = file_content_new.replace(f"(#{move})", f"({move}.md)")
@@ -2645,8 +2630,7 @@ def replace_anchors_by_links(file_path, moves):
     ]:
         file_content_new = file_content_new.replace(f"(#{pair[0]})", f"({pair[1]})")
     if file_content_new != file_content:
-        with open(file_path, "w", encoding="utf-8") as file:
-            file.write(file_content_new)
+        Path(file_path).write_text(file_content_new, encoding="utf-8")
         logging.info(f"Updated links in {file_path}")
 
 
@@ -3268,8 +3252,9 @@ def generate_documentation_all_users():
             f"(https://github.com/{repo_full}){{target=_blank}}",
         ]
         # pylint: enable=no-member
-    with open(f"{REPO_HOME}/docs/all_users.md", "w", encoding="utf-8") as file:
-        file.write("\n".join(linter_doc_md) + "\n")
+    Path(f"{REPO_HOME}/docs/all_users.md").write_text(
+        "\n".join(linter_doc_md) + "\n", encoding="utf-8"
+    )
     logging.info(f"Generated {REPO_HOME}/docs/all_users.md")
 
 
@@ -3449,6 +3434,31 @@ def reformat_markdown_tables():
     logging.info(f"Format table results: ({process.returncode})\n" + stdout)
 
 
+def generate_json_schema_docs():
+    logging.info("Generating json schema html docs…")
+    if sys.platform == "win32":
+        generate_json_schema_docs_command = ["bash", "build_schemas_doc.sh"]
+    else:
+        generate_json_schema_docs_command = ["./build_schemas_doc.sh"]
+    cwd = os.getcwd() + "/.automation"
+    logging.info(
+        "Running command: " + str(generate_json_schema_docs_command) + f" in cwd {cwd}"
+    )
+    process = subprocess.run(
+        generate_json_schema_docs_command,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        universal_newlines=True,
+        cwd=cwd,
+        shell=True,
+        executable=None if sys.platform == "win32" else which("bash"),
+    )
+    stdout = utils.clean_string(process.stdout)
+    logging.info(
+        f"Generate json schema docs results: ({process.returncode})\n" + stdout
+    )
+
+
 def generate_version():
     # npm version
     logging.info("Updating npm package version…")
@@ -3480,8 +3490,7 @@ def generate_version():
     # Update changelog
     if UPDATE_CHANGELOG is True:
         changelog_file = f"{REPO_HOME}/CHANGELOG.md"
-        with open(changelog_file, "r", encoding="utf-8") as md_file:
-            changelog_content = md_file.read()
+        changelog_content = Path(changelog_file).read_text(encoding="utf-8")
         changelog_content = changelog_content.replace(
             "<!-- linter-versions-end -->", ""
         )
@@ -3496,8 +3505,7 @@ def generate_version():
         changelog_content = changelog_content.replace(
             "<!-- unreleased-content-marker -->", "\n".join(new_release_lines)
         )
-        with open(changelog_file, "w", encoding="utf-8") as file:
-            file.write(changelog_content)
+        Path(changelog_file).write_text(changelog_content, encoding="utf-8")
 
     # git add , commit & tag
     repo = git.Repo(os.getcwd())
@@ -3572,9 +3580,8 @@ def generate_custom_flavor():
         )
         shutil.rmtree(dockerfile_tmp_dir, ignore_errors=True)
     # Display dockerfile content in log
-    with open(dockerfile, "r", encoding="utf-8") as f:
-        dockerfile_content = f.read()
-        logging.info(f"Generated custom flavor dockerfile:\n\n{dockerfile_content}\n")
+    dockerfile_content = Path(dockerfile).read_text(encoding="utf-8")
+    logging.info(f"Generated custom flavor dockerfile:\n\n{dockerfile_content}\n")
     return dockerfile
 
 
@@ -3646,6 +3653,7 @@ if __name__ == "__main__":
             generate_documentation_all_linters()
             # generate_documentation_all_users() # deprecated since now we use github-dependents-info
             generate_mkdocs_yml()
+            generate_json_schema_docs()
         validate_own_megalinter_config()
         manage_output_variables()
         reformat_markdown_tables()
