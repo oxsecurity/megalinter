@@ -391,6 +391,14 @@ COPY --link --from=shfmt /bin/shfmt /usr/bin/
 COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
 COPY --link --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
 COPY --link --from=kubeconform /kubeconform /usr/bin/
+# Next COPY line commented because already managed by another linter
+# COPY --from=qemu /usr/bin/qemu-aarch64-static /usr/bin/
+# RUN apk update \
+#     && apk add libc6-compat
+# Next COPY line commented because already managed by another linter
+# COPY --from=qemu /usr/bin/qemu-aarch64-static /usr/bin/
+# RUN apk update \
+#     && apk add libc6-compat
 COPY --link --from=protolint /usr/local/bin/protolint /usr/bin/
 COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
@@ -550,9 +558,17 @@ RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/rel
 # markdown-table-formatter installation
 #
 # powershell installation
+# Managed with # Next COPY line commented because already managed by another linter
+#              # COPY --from=qemu /usr/bin/qemu-aarch64-static /usr/bin/
+#              # RUN apk update \
+#              #     && apk add libc6-compat
     && pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSION} -Scope AllUsers -Force' \
 #
 # powershell_formatter installation
+# Managed with # Next COPY line commented because already managed by another linter
+#              # COPY --from=qemu /usr/bin/qemu-aarch64-static /usr/bin/
+#              # RUN apk update \
+#              #     && apk add libc6-compat
 # Next line commented because already managed by another linter
 # RUN pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSION} -Scope AllUsers -Force'
 #

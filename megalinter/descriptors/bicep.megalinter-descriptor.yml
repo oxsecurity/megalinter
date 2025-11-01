@@ -54,6 +54,7 @@ linters:
           ARG BICEP_VERSION=0.38.33
         - ARG BICEP_EXE='bicep'
         - ARG BICEP_DIR='/usr/local/bin'
+        # https://stackoverflow.com/a/73711302
         - FROM multiarch/qemu-user-static:x86_64-aarch64 AS qemu
         - |
           COPY --from=qemu /usr/bin/qemu-aarch64-static /usr/bin/

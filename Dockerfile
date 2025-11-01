@@ -295,8 +295,8 @@ ARG NPM_PYRIGHT_VERSION=1.1.407
 # renovate: datasource=pypi depName=ruff
 ARG PIP_RUFF_VERSION=0.14.2
 # renovate: datasource=github-tags depName=nxadm/rakudo-pkg
-ARG RAKU_RAKU_VERSION=2024.12
-ARG RAKU_RAKU_ALPINE_VERSION=3.20
+ARG RAKU_RAKU_VERSION=2025.08
+ARG RAKU_RAKU_ALPINE_VERSION=3.22
 
 # renovate: datasource=pypi depName=checkov
 ARG PIP_CHECKOV_VERSION=3.2.484
@@ -644,11 +644,23 @@ COPY --link --from=shfmt /bin/shfmt /usr/bin/
 # COPY --from=qemu /usr/bin/qemu-aarch64-static /usr/bin/
 # RUN apk update \
 #     && apk add libc6-compat
+# Next COPY line commented because already managed by another linter
+# COPY --from=qemu /usr/bin/qemu-aarch64-static /usr/bin/
+# RUN apk update \
+#     && apk add libc6-compat
 COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
 COPY --link --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
 COPY --link --from=revive /usr/bin/revive /usr/bin/revive
 COPY --link --from=kubeconform /kubeconform /usr/bin/
 COPY --link --from=chktex /usr/bin/chktex /usr/bin/
+# Next COPY line commented because already managed by another linter
+# COPY --from=qemu /usr/bin/qemu-aarch64-static /usr/bin/
+# RUN apk update \
+#     && apk add libc6-compat
+# Next COPY line commented because already managed by another linter
+# COPY --from=qemu /usr/bin/qemu-aarch64-static /usr/bin/
+# RUN apk update \
+#     && apk add libc6-compat
 COPY --link --from=protolint /usr/local/bin/protolint /usr/bin/
 COPY --link --from=dustilock /usr/bin/dustilock /usr/bin/dustilock
 COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
@@ -877,6 +889,10 @@ esac \
 # cpplint installation
 #
 # clj-kondo installation
+# Managed with # Next COPY line commented because already managed by another linter
+#              # COPY --from=qemu /usr/bin/qemu-aarch64-static /usr/bin/
+#              # RUN apk update \
+#              #     && apk add libc6-compat
     && curl --retry 5 --retry-delay 5 -sLO https://raw.githubusercontent.com/clj-kondo/clj-kondo/refs/tags/v${CLJ_KONDO_VERSION}/script/install-clj-kondo \
     && chmod +x install-clj-kondo \
     && ./install-clj-kondo \
@@ -1035,9 +1051,17 @@ RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GI
 
 #
 # powershell installation
+# Managed with # Next COPY line commented because already managed by another linter
+#              # COPY --from=qemu /usr/bin/qemu-aarch64-static /usr/bin/
+#              # RUN apk update \
+#              #     && apk add libc6-compat
 RUN pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSION} -Scope AllUsers -Force'
 #
 # powershell_formatter installation
+# Managed with # Next COPY line commented because already managed by another linter
+#              # COPY --from=qemu /usr/bin/qemu-aarch64-static /usr/bin/
+#              # RUN apk update \
+#              #     && apk add libc6-compat
 # Next line commented because already managed by another linter
 # RUN pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSION} -Scope AllUsers -Force'
 #

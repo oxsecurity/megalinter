@@ -72,6 +72,7 @@ linters:
         - ARG ARM_TTK_NAME='arm-ttk.zip'
         - ARG ARM_TTK_DIRECTORY='/opt/microsoft'
         - ENV ARM_TTK_PSD1="${ARM_TTK_DIRECTORY}/arm-ttk/arm-ttk/arm-ttk.psd1"
+        # https://stackoverflow.com/a/73711302
         - FROM multiarch/qemu-user-static:x86_64-aarch64 AS qemu
         - |
           COPY --from=qemu /usr/bin/qemu-aarch64-static /usr/bin/
