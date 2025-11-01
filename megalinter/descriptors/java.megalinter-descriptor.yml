@@ -5,6 +5,10 @@ descriptor_flavors:
   - java
 file_extensions:
   - ".java"
+supported_platforms:
+  platform:
+    - linux/amd64
+    - linux/arm64
 install:
   apk:
     - openjdk21
@@ -62,6 +66,10 @@ linters:
           RUN curl --retry 5 --retry-delay 5 -sSL \
               "https://github.com/checkstyle/checkstyle/releases/download/checkstyle-${JAVA_CHECKSTYLE_VERSION}/checkstyle-${JAVA_CHECKSTYLE_VERSION}-all.jar" \
               --output /usr/bin/checkstyle
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       eclipse:
         - name: eclipse-cs
@@ -121,3 +129,7 @@ linters:
               rm pmd-dist-${PMD_VERSION}-bin.zip || echo "Error rm" && \
               mv pmd-bin-${PMD_VERSION} /usr/bin/pmd || echo "Error mv" && \
               chmod +x /usr/bin/pmd/bin/pmd || echo "Error chmod"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
