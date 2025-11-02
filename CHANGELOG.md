@@ -94,6 +94,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [snakemake](https://snakemake.github.io/) from 9.13.3 to **9.13.4** on 2025-10-29
   - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.90 to **0.1.91** on 2025-10-31
   - [robocop](https://github.com/MarketSquare/robotframework-robocop) from 6.8.3 to **6.9.2** on 2025-11-02
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.40.2 to **1.40.3** on 2025-11-02
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.91.5 to **0.93.0** on 2025-11-02
 <!-- linter-versions-end -->
 
 ## [v9.1.0] - 2025-10-07
