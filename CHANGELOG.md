@@ -99,6 +99,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [rubocop](https://rubocop.org/) from 1.81.6 to **1.81.7** on 2025-11-02
   - [ruff-format](https://github.com/astral-sh/ruff) from 0.14.2 to **0.14.3** on 2025-11-02
   - [ruff](https://github.com/astral-sh/ruff) from 0.14.2 to **0.14.3** on 2025-11-02
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.90.11 to **3.90.12** on 2025-11-02
+  - [swiftlint](https://github.com/realm/SwiftLint) from 0.62.1 to **0.62.2** on 2025-11-02
 <!-- linter-versions-end -->
 
 ## [v9.1.0] - 2025-10-07
