@@ -286,10 +286,10 @@ linters:
       - **SFDX Native**: Built as a native SFDX plugin for consistent Salesforce toolchain integration
 
       If your root folder is not **force-app**, please set variable SALESFORCE_LIGHTNING_FLOW_SCANNER_DIRECTORY
-    linter_url: https://github.com/Lightning-Flow-Scanner
-    linter_repo: https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx
+    linter_url: https://github.com/Flow-Scanner/lightning-flow-scanner-cli
+    linter_repo: https://github.com/Flow-Scanner/lightning-flow-scanner-cli
     linter_rules_url: https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-core#rules
-    linter_banner_image_url: https://raw.githubusercontent.com/Lightning-Flow-Scanner/.github/main/docs/images/bannerslim.png
+    linter_banner_image_url: https://github.com/Flow-Scanner/lightning-flow-scanner-cli/raw/main/docs/images/banner.png
     linter_rules_configuration_url: https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx#configuration
     linter_spdx_license: AGPL-3.0
     config_file_name: .flow-scanner.json
@@ -321,4 +321,4 @@ linters:
     ide:
       vscode:
         - name: Lightning Flow Scanner
-          url: https://marketplace.visualstudio.com/items?itemName=ForceConfigControl.lightningflowscanner
+          url: https://marketplace.visualstudio.com/items?itemName=ForceConfigControl.lightning-flow-scanner-vsx
