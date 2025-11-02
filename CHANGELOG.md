@@ -97,6 +97,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.40.2 to **1.40.3** on 2025-11-02
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.91.5 to **0.93.0** on 2025-11-02
   - [rubocop](https://rubocop.org/) from 1.81.6 to **1.81.7** on 2025-11-02
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.14.2 to **0.14.3** on 2025-11-02
+  - [ruff](https://github.com/astral-sh/ruff) from 0.14.2 to **0.14.3** on 2025-11-02
 <!-- linter-versions-end -->
 
 ## [v9.1.0] - 2025-10-07
