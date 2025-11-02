@@ -152,7 +152,7 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 RUN rc-update add docker boot && (rc-service docker start || true)
 # swiftlint installation
 # renovate: datasource=docker depName=ghcr.io/realm/swiftlint
-ENV SWIFT_SWIFTLINT_VERSION=0.62.1
+ENV SWIFT_SWIFTLINT_VERSION=0.62.2
 #
 #OTHER__END
 
