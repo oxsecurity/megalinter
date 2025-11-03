@@ -102,6 +102,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.90.11 to **3.90.12** on 2025-11-02
   - [swiftlint](https://github.com/realm/SwiftLint) from 0.62.1 to **0.62.2** on 2025-11-02
   - [golangci-lint](https://golangci-lint.run/) from 2.5.0 to **2.6.0** on 2025-11-03
+  - [pmd](https://pmd.github.io/) from 7.17.0 to **7.18.0** on 2025-11-03
 <!-- linter-versions-end -->
 
 ## [v9.1.0] - 2025-10-07
