@@ -29,7 +29,15 @@ CVE-2025-30204
 CVE-2025-47906
 # https://avd.aquasec.com/nvd/2025/cve-2025-47907/ , not a security issue in MegaLinter context
 CVE-2025-47907
-
+CVE-2025-58187
+CVE-2025-47912
+CVE-2025-58183
+CVE-2025-58185
+CVE-2025-58186
+CVE-2025-58187
+CVE-2025-58188
+CVE-2025-61723
+CVE-2025-61724
 
 # go-git
 CVE-2025-21613
@@ -144,6 +152,8 @@ CVE-2025-7783
 CVE-2025-8959
 # https://avd.aquasec.com/nvd/cve-2025-9288 : sha.js: Missing type checks leading to hash rewind and passing on crafte. Harmless in MegaLinter because Salesforce linters do not connect to Salesforce orgs
 CVE-2025-9288
+# https://avd.aquasec.com/nvd/cve-2025-64118 : node-tar has a race condition leading to uninitialized memory exposure. Not applicable in MegaLinter context
+CVE-2025-64118
 # Dockerfile
 DS001
 DS002

@@ -11,10 +11,10 @@ import shutil
 import subprocess
 import sys
 from datetime import date, datetime
+from pathlib import Path
 from shutil import copyfile, which
 from typing import Any
 from urllib import parse as parse_urllib
-from pathlib import Path
 
 import git
 import jsonschema
@@ -831,7 +831,9 @@ def generate_linter_dockerfiles():
         logging.info(f"Updated {linters_matrix_file}")
 
     # Write MD file
-    Path(f"{REPO_HOME}/docs/standalone-linters.md").write_text(linters_md + "\n", encoding="utf-8")
+    Path(f"{REPO_HOME}/docs/standalone-linters.md").write_text(
+        linters_md + "\n", encoding="utf-8"
+    )
 
 
 # Automatically generate a test class for each linter class

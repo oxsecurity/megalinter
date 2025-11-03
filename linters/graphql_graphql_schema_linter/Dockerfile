@@ -49,7 +49,7 @@ FROM python:3.13-alpine3.22
 #############################################################################################
 #ARG__START
 # renovate: datasource=npm depName=graphql
-ARG NPM_GRAPHQL_VERSION=16.11.0
+ARG NPM_GRAPHQL_VERSION=16.12.0
 # renovate: datasource=npm depName=graphql-schema-linter
 ARG NPM_GRAPHQL_SCHEMA_LINTER_VERSION=3.0.1
 #ARG__END

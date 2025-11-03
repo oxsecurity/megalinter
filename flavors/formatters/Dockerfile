@@ -80,7 +80,7 @@ ARG PIP_BLACK_VERSION=25.9.0
 # renovate: datasource=pypi depName=isort
 ARG PIP_ISORT_VERSION=7.0.0
 # renovate: datasource=pypi depName=ruff
-ARG PIP_RUFF_VERSION=0.14.2
+ARG PIP_RUFF_VERSION=0.14.3
 # renovate: datasource=pypi depName=rstfmt
 ARG PIP_RSTFMT_VERSION=0.0.14
 # renovate: datasource=pypi depName=snakefmt
@@ -88,9 +88,9 @@ ARG PIP_SNAKEFMT_VERSION=0.11.2
 # renovate: datasource=pypi depName=pip
 ARG PIP_PIP_VERSION=25.3
 # renovate: datasource=pypi depName=virtualenv
-ARG PIP_VIRTUALENV_VERSION=20.35.3
+ARG PIP_VIRTUALENV_VERSION=20.35.4
 # renovate: datasource=github-tags depName=rust-lang/rust
-ARG RUST_RUST_VERSION=1.90.0
+ARG RUST_RUST_VERSION=1.91.0
 
 ARG BASH_SHFMT_VERSION
 ARG TERRAFORM_TERRAGRUNT_VERSION

@@ -93,6 +93,17 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [rubocop](https://rubocop.org/) from 1.81.1 to **1.81.6** on 2025-10-29
   - [snakemake](https://snakemake.github.io/) from 9.13.3 to **9.13.4** on 2025-10-29
   - [raku](https://raku.org/) from 2024.12 to **2025.08** on 2025-11-01
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.90 to **0.1.91** on 2025-10-31
+  - [robocop](https://github.com/MarketSquare/robotframework-robocop) from 6.8.3 to **6.9.2** on 2025-11-02
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.40.2 to **1.40.3** on 2025-11-02
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.91.5 to **0.93.0** on 2025-11-02
+  - [rubocop](https://rubocop.org/) from 1.81.6 to **1.81.7** on 2025-11-02
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.14.2 to **0.14.3** on 2025-11-02
+  - [ruff](https://github.com/astral-sh/ruff) from 0.14.2 to **0.14.3** on 2025-11-02
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.90.11 to **3.90.12** on 2025-11-02
+  - [swiftlint](https://github.com/realm/SwiftLint) from 0.62.1 to **0.62.2** on 2025-11-02
+  - [golangci-lint](https://golangci-lint.run/) from 2.5.0 to **2.6.0** on 2025-11-03
+  - [pmd](https://pmd.github.io/) from 7.17.0 to **7.18.0** on 2025-11-03
 <!-- linter-versions-end -->
 
 ## [v9.1.0] - 2025-10-07

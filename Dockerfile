@@ -34,7 +34,7 @@ ARG REPOSITORY_GITLEAKS_VERSION=v8.28.0
 # renovate: datasource=docker depName=checkmarx/kics
 ARG REPOSITORY_KICS_VERSION=v2.1.15-alpine
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
-ARG REPOSITORY_TRUFFLEHOG_VERSION=3.90.11
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.90.12
 # renovate: datasource=docker depName=jdkato/vale
 ARG SPELL_VALE_VERSION=v3.12.0
 # renovate: datasource=docker depName=lycheeverse/lychee
@@ -153,7 +153,7 @@ ARG CLJ_KONDO_VERSION=2025.01.16
 # renovate: datasource=github-tags depName=greglook/cljstyle
 ARG CLJ_STYLE_VERSION=0.17.642
 # renovate: datasource=pypi depName=cfn-lint
-ARG PIP_CFN_LINT_VERSION=1.40.2
+ARG PIP_CFN_LINT_VERSION=1.40.3
 # renovate: datasource=npm depName=@coffeelint/cli
 ARG NPM_COFFEELINT_CLI_VERSION=5.2.11
 # renovate: datasource=npm depName=jscpd
@@ -177,9 +177,9 @@ ARG DOTENV_LINTER_VERSION=4.0.0
 # renovate: datasource=npm depName=gherkin-lint
 ARG NPM_GHERKIN_LINT_VERSION=4.2.4
 # renovate: datasource=github-tags depName=golangci/golangci-lint
-ARG GO_GOLANGCI_LINT_VERSION=2.5.0
+ARG GO_GOLANGCI_LINT_VERSION=2.6.0
 # renovate: datasource=npm depName=graphql
-ARG NPM_GRAPHQL_VERSION=16.11.0
+ARG NPM_GRAPHQL_VERSION=16.12.0
 # renovate: datasource=npm depName=graphql-schema-linter
 ARG NPM_GRAPHQL_SCHEMA_LINTER_VERSION=3.0.1
 # renovate: datasource=npm depName=npm-groovy-lint
@@ -191,7 +191,7 @@ ARG NPM_HTMLHINT_VERSION=1.7.1
 # renovate: datasource=github-releases depName=checkstyle/checkstyle
 ARG JAVA_CHECKSTYLE_VERSION=12.1.0
 # renovate: datasource=github-tags depName=pmd/pmd extractVersion=^pmd_releases/(?<version>.*)$
-ARG PMD_VERSION=7.17.0
+ARG PMD_VERSION=7.18.0
 
 # renovate: datasource=npm depName=eslint
 ARG NPM_ESLINT_VERSION=8.57.1
@@ -293,7 +293,7 @@ ARG PIP_MYPY_VERSION=1.18.2
 # renovate: datasource=npm depName=pyright
 ARG NPM_PYRIGHT_VERSION=1.1.407
 # renovate: datasource=pypi depName=ruff
-ARG PIP_RUFF_VERSION=0.14.2
+ARG PIP_RUFF_VERSION=0.14.3
 # renovate: datasource=github-tags depName=nxadm/rakudo-pkg
 ARG RAKU_RAKU_VERSION=2025.08
 ARG RAKU_RAKU_ALPINE_VERSION=3.22
@@ -303,7 +303,7 @@ ARG PIP_CHECKOV_VERSION=3.2.484
 # renovate: datasource=nuget depName=Microsoft.CST.DevSkim.CLI
 ARG REPOSITORY_DEVSKIM_VERSION=1.0.67
 # renovate: datasource=github-tags depName=anchore/grype
-ARG REPOSITORY_GRYPE_VERSION=0.101.1
+ARG REPOSITORY_GRYPE_VERSION=0.102.0
 # renovate: datasource=npm depName=@ls-lint/ls-lint
 ARG NPM_LS_LINT_LS_LINT_VERSION=2.3.1
 # renovate: datasource=npm depName=secretlint
@@ -315,13 +315,13 @@ ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=11.2.5
 # renovate: datasource=pypi depName=semgrep
 ARG PIP_SEMGREP_VERSION=1.116.0
 # renovate: datasource=github-tags depName=anchore/syft
-ARG REPOSITORY_SYFT_VERSION=1.34.2
+ARG REPOSITORY_SYFT_VERSION=1.36.0
 # renovate: datasource=github-tags depName=aquasecurity/trivy
 ARG REPOSITORY_TRIVY_VERSION=0.67.2
 # renovate: datasource=github-tags depName=aquasecurity/trivy
 ARG REPOSITORY_TRIVY_SBOM_VERSION=0.67.2
 # renovate: datasource=pypi depName=robotframework-robocop
-ARG PIP_ROBOT_FRAMEWORK_ROBOCOP_VERSION=6.8.3
+ARG PIP_ROBOT_FRAMEWORK_ROBOCOP_VERSION=6.9.2
 # renovate: datasource=pypi depName=Pygments
 ARG PIP_PYGMENTS_VERSION=2.19.2
 # renovate: datasource=pypi depName=restructuredtext_lint
@@ -333,7 +333,7 @@ ARG PIP_RSTCHECK_CLICK_VERSION=8.3.0
 # renovate: datasource=pypi depName=rstfmt
 ARG PIP_RSTFMT_VERSION=0.0.14
 # renovate: datasource=rubygems depName=rubocop
-ARG GEM_RUBOCOP_VERSION=1.81.6
+ARG GEM_RUBOCOP_VERSION=1.81.7
 # renovate: datasource=rubygems depName=rubocop-github
 ARG GEM_RUBOCOP_GITHUB_VERSION=0.26.0
 # renovate: datasource=rubygems depName=rubocop-performance
@@ -373,9 +373,9 @@ ARG PIP_YAMLLINT_VERSION=1.37.1
 # renovate: datasource=pypi depName=pip
 ARG PIP_PIP_VERSION=25.3
 # renovate: datasource=pypi depName=virtualenv
-ARG PIP_VIRTUALENV_VERSION=20.35.3
+ARG PIP_VIRTUALENV_VERSION=20.35.4
 # renovate: datasource=github-tags depName=rust-lang/rust
-ARG RUST_RUST_VERSION=1.90.0
+ARG RUST_RUST_VERSION=1.91.0
 
 ARG ACTION_ACTIONLINT_VERSION
 ARG BASH_SHELLCHECK_VERSION
@@ -1198,7 +1198,7 @@ RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/refs/tags/v${REPOS
 #
 # swiftlint installation
 # renovate: datasource=docker depName=ghcr.io/realm/swiftlint
-ENV SWIFT_SWIFTLINT_VERSION=0.62.1
+ENV SWIFT_SWIFTLINT_VERSION=0.62.2
 #
 # tekton-lint installation
 #
