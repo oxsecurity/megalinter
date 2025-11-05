@@ -107,6 +107,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [syft](https://github.com/anchore/syft) from 1.36.0 to **1.37.0** on 2025-11-03
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.40.3 to **1.40.4** on 2025-11-05
   - [golangci-lint](https://golangci-lint.run/) from 2.6.0 to **2.6.1** on 2025-11-05
+  - [checkov](https://www.checkov.io/) from 3.2.484 to **3.2.490** on 2025-11-05
+  - [snakemake](https://snakemake.github.io/) from 9.13.4 to **9.13.5** on 2025-11-05
 <!-- linter-versions-end -->
 
 ## [v9.1.0] - 2025-10-07
