@@ -109,6 +109,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [golangci-lint](https://golangci-lint.run/) from 2.6.0 to **2.6.1** on 2025-11-05
   - [checkov](https://www.checkov.io/) from 3.2.484 to **3.2.490** on 2025-11-05
   - [snakemake](https://snakemake.github.io/) from 9.13.4 to **9.13.5** on 2025-11-05
+  - [kubescape](https://github.com/kubescape/kubescape) from 3.0.42 to **3.0.43** on 2025-11-05
 <!-- linter-versions-end -->
 
 ## [v9.1.0] - 2025-10-07
