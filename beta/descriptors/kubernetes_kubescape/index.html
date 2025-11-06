@@ -10238,7 +10238,7 @@
 </ul>
 <h2 id="kubescape-documentation">kubescape documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>3.0.42</strong></li>
+<li>Version in MegaLinter: <strong>3.0.43</strong></li>
 <li>Visit <a href="https://github.com/kubescape/kubescape#readme" target="_blank">Official Web Site</a></li>
 </ul>
 <p><a href="https://github.com/kubescape/kubescape" target="_blank"><img alt="kubescape - GitHub" src="https://gh-card.dev/repos/kubescape/kubescape.svg?fullname="></a></p>
@@ -10536,14 +10536,13 @@ Flags:
       --server string         Backend discovery server URL
 
 Use "kubescape [command] --help" for more information about a command.
-{"level":"info","ts":"2025-11-05T06:31:31Z","msg":"Received interrupt signal, exiting..."}
 </code></pre>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
 <ul>
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile"># renovate: datasource=github-tags depName=kubescape/kubescape
-ARG KUBERNETES_KUBESCAPE_VERSION=3.0.42
+ARG KUBERNETES_KUBESCAPE_VERSION=3.0.43
 RUN ln -s /lib/libc.so.6 /usr/lib/libresolv.so.2 &amp;&amp; \
     curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash -s -- -v "v${KUBERNETES_KUBESCAPE_VERSION}"
 </code></pre>
