@@ -87,7 +87,7 @@ linters:
     cli_version_arg_name: ""
     version_extract_regex: "(?<=code-analyzer )\\d+(\\.\\d+)+"
     cli_lint_errors_count: regex_sum
-    cli_lint_errors_regex: "severity violation"
+    cli_lint_errors_regex: "([0-9]+) violation"
     examples:
       - "sf code-analyzer run --rule-selector pmd:Recommended --workspace . --output-file results.csv"
     install:
@@ -176,7 +176,7 @@ linters:
     cli_version_arg_name: ""
     version_extract_regex: "(?<=code-analyzer )\\d+(\\.\\d+)+"
     cli_lint_errors_count: regex_sum
-    cli_lint_errors_regex: "severity violation"
+    cli_lint_errors_regex: "([0-9]+) violation"
     examples:
       - "sf code-analyzer run --rule-selector eslint --workspace . --file-glob '**/aura/**/*.js' --output-file results.csv"
     install:
@@ -256,7 +256,7 @@ linters:
     cli_version_arg_name: ""
     version_extract_regex: "(?<=code-analyzer )\\d+(\\.\\d+)+"
     cli_lint_errors_count: regex_sum
-    cli_lint_errors_regex: "severity violation"
+    cli_lint_errors_regex: "([0-9]+) violation"
     examples:
       - "sf code-analyzer run --rule-selector eslint:LWC --workspace . --target '**/lwc/**/*.js' --output-file report.csv"
     install:
