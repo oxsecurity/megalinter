@@ -49,11 +49,11 @@ FROM python:3.13-alpine3.22
 #############################################################################################
 #ARG__START
 # renovate: datasource=pypi depName=robotframework-robocop
-ARG PIP_ROBOT_FRAMEWORK_ROBOCOP_VERSION=6.8.3
+ARG PIP_ROBOT_FRAMEWORK_ROBOCOP_VERSION=6.9.2
 # renovate: datasource=pypi depName=pip
 ARG PIP_PIP_VERSION=25.3
 # renovate: datasource=pypi depName=virtualenv
-ARG PIP_VIRTUALENV_VERSION=20.35.3
+ARG PIP_VIRTUALENV_VERSION=20.35.4
 #ARG__END
 
 ####################

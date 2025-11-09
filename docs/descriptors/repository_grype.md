@@ -30,7 +30,7 @@ description: How to use grype (configure, ignore files, ignore errors, help & ve
 
 ## grype documentation
 
-- Version in MegaLinter: **0.102.0**
+- Version in MegaLinter: **0.103.0**
 - Visit [Official Web Site](https://github.com/anchore/grype#readme){target=_blank}
 - See [How to configure grype rules](https://github.com/anchore/grype#configuration){target=_blank}
   - If custom `.grype.yaml` config file isn't found, [.grype.yaml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.grype.yaml){target=_blank} will be used
@@ -147,7 +147,7 @@ Flags:
       --add-cpes-if-none       generate CPEs for packages with no CPE data
       --by-cve                 orient results by CVE instead of the original vulnerability ID when possible
   -c, --config stringArray     grype configuration file(s) to use
-      --distro string          distro to match against in the format: <distro>:<version>
+      --distro string          distro to match against in the format: <distro>[-:@]<version>
       --exclude stringArray    exclude paths from being scanned using a glob expression
   -f, --fail-on string         set the return code to 1 if a vulnerability is found with a severity >= the given severity, options=[negligible low medium high critical]
       --file string            file to write the default report output to (default is STDOUT)
@@ -176,7 +176,7 @@ Use "grype [command] --help" for more information about a command.
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=github-tags depName=anchore/grype
-ARG REPOSITORY_GRYPE_VERSION=0.101.1
+ARG REPOSITORY_GRYPE_VERSION=0.103.0
 RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/refs/tags/v${REPOSITORY_GRYPE_VERSION}/install.sh | sh -s -- -b /usr/local/bin
 ```
 

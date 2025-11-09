@@ -62,7 +62,7 @@ jobs:
           sudo rm -rf "$AGENT_TOOLSDIRECTORY"
 
       - name: Docker Metadata action
-        uses: docker/metadata-action@v5.8.0
+        uses: docker/metadata-action@v5.9.0
         id: meta
         with:
           images: |
@@ -191,7 +191,7 @@ jobs:
       # Upload MegaLinter artifacts
       - name: Archive production artifacts
         if: success() || failure()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: MegaLinter reports
           include-hidden-files: "true"
@@ -219,7 +219,7 @@ jobs:
         if: ${{ steps.docker_build.outcome }} == 'success' && !contains(github.event.head_commit.message, 'quick build')
         uses: actions/setup-node@v6.0.0
         with:
-          node-version: "22.x"
+          node-version: "24.x"
       - name: Install NPM dependencies
         if: ${{ steps.docker_build.outcome }} == 'success' && !contains(github.event.head_commit.message, 'quick build')
         run: cd mega-linter-runner && yarn install --frozen-lockfile && npm link
