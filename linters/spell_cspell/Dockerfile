@@ -49,7 +49,7 @@ FROM python:3.13-alpine3.22
 #############################################################################################
 #ARG__START
 # renovate: datasource=npm depName=cspell
-ARG NPM_CSPELL_VERSION=9.2.2
+ARG NPM_CSPELL_VERSION=9.3.0
 #ARG__END
 
 ####################
