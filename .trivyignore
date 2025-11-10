@@ -9,6 +9,11 @@ CVE-2024-43485
 # https://avd.aquasec.com/nvd/2025/cve-2025-26646/ Not applicable in MegaLinter context
 CVE-2025-26646
 
+# https://avd.aquasec.com/nvd/cve-2024-25621 containerd, Not applicable in MegaLinter context
+CVE-2024-25621
+# https://avd.aquasec.com/nvd/cve-2025-52881 containerd, Not applicable in MegaLinter context
+CVE-2025-52881
+
 # Docker
 CVE-2024-41110
 
