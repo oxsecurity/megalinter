@@ -67,6 +67,6 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=ansible-lint
-          ARG PIP_ANSIBLE_LINT_VERSION=25.9.2
+          ARG PIP_ANSIBLE_LINT_VERSION=25.11.0
       pip:
         - ansible-lint==${PIP_ANSIBLE_LINT_VERSION}
