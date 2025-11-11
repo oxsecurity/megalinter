@@ -284,7 +284,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=packagist depName=friendsofphp/php-cs-fixer
-          ARG PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION=v3.89.1
+          ARG PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION=v3.89.2
         - |
           RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require friendsofphp/php-cs-fixer:${PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION} --with-all-dependencies
     ide:
