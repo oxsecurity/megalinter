@@ -49,7 +49,7 @@ FROM python:3.13-alpine3.22
 #############################################################################################
 #ARG__START
 # renovate: datasource=rubygems depName=puppet-lint
-ARG GEM_PUPPET_LINT_VERSION=5.1.0
+ARG GEM_PUPPET_LINT_VERSION=5.1.1
 #ARG__END
 
 ####################
