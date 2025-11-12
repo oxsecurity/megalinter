@@ -51,7 +51,7 @@ FROM python:3.13-alpine3.22
 # renovate: datasource=crate depName=stylua
 ARG CARGO_STYLUA_VERSION=2.0.0
 # renovate: datasource=github-tags depName=rust-lang/rust
-ARG RUST_RUST_VERSION=1.91.0
+ARG RUST_RUST_VERSION=1.91.1
 #ARG__END
 
 ####################
