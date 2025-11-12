@@ -490,11 +490,11 @@ section output options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=black
-ARG PIP_BLACK_VERSION=25.9.0
+ARG PIP_BLACK_VERSION=25.11.0
 # renovate: datasource=pypi depName=isort
 ARG PIP_ISORT_VERSION=7.0.0
 ```
 
 - PIP packages (Python):
-  - [black==25.9.0](https://pypi.org/project/black/25.9.0)
+  - [black==25.11.0](https://pypi.org/project/black/25.11.0)
   - [isort==7.0.0](https://pypi.org/project/isort/7.0.0)
