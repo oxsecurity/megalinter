@@ -10257,7 +10257,7 @@
 <p><strong>Note</strong>: Black formats code according to its opinionated style. If you prefer different formatting options, you might consider other formatters, though Black's consistency is its main strength.</p>
 <h2 id="black-documentation">black documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>25.9.0</strong></li>
+<li>Version in MegaLinter: <strong>25.11.0</strong></li>
 <li>Visit <a href="https://black.readthedocs.io/en/stable/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://black.readthedocs.io/en/stable/usage_and_configuration/the_basics.html#configuration-format" target="_blank">How to configure black rules</a><ul>
 <li>If custom <code>pyproject.toml</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/pyproject.toml" target="_blank">pyproject.toml</a> will be used</li>
@@ -10518,7 +10518,7 @@ Options:
                                   expected to make it into the stable style
                                   Black's next major release. Implies
                                   --preview.
-  --enable-unstable-feature [string_processing|hug_parens_with_braces_and_square_brackets|wrap_long_dict_values_in_parens|multiline_string_handling|always_one_newline_after_import|fix_fmt_skip_in_one_liners|wrap_comprehension_in|remove_parens_around_except_types|normalize_cr_newlines]
+  --enable-unstable-feature [string_processing|hug_parens_with_braces_and_square_brackets|wrap_long_dict_values_in_parens|multiline_string_handling|always_one_newline_after_import|fix_fmt_skip_in_one_liners|standardize_type_comments|wrap_comprehension_in|remove_parens_around_except_types|normalize_cr_newlines|fix_module_docstring_detection|fix_type_expansion_split]
                                   Enable specific features included in the
                                   `--unstable` style. Requires `--preview`. No
                                   compatibility guarantees are provided on the
@@ -10610,6 +10610,8 @@ Options:
   --version                       Show the version and exit.
   --config FILE                   Read configuration options from a
                                   configuration file.
+  --no-cache                      Skip reading and writing the cache, forcing
+                                  Black to reformat all included files.
   -h, --help                      Show this message and exit.
 </code></pre>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
@@ -10617,11 +10619,11 @@ Options:
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile"># renovate: datasource=pypi depName=black
-ARG PIP_BLACK_VERSION=25.9.0
+ARG PIP_BLACK_VERSION=25.11.0
 </code></pre>
 <ul>
 <li>PIP packages (Python):<ul>
-<li><a href="https://pypi.org/project/black[jupyter]/25.9.0">black[jupyter]==25.9.0</a></li>
+<li><a href="https://pypi.org/project/black[jupyter]/25.11.0">black[jupyter]==25.11.0</a></li>
 </ul>
 </li>
 </ul>
