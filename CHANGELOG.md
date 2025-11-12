@@ -111,6 +111,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [snakemake](https://snakemake.github.io/) from 9.13.4 to **9.13.5** on 2025-11-05
   - [kubescape](https://github.com/kubescape/kubescape) from 3.0.42 to **3.0.43** on 2025-11-05
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 9.2.2 to **9.3.0** on 2025-11-09
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 25.9.2 to **25.11.0** on 2025-11-12
+  - [csharpier](https://csharpier.com/) from 1.1.2 to **1.2.1** on 2025-11-12
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.89.1 to **3.89.2** on 2025-11-12
+  - [black](https://black.readthedocs.io/en/stable/) from 25.9.0 to **25.11.0** on 2025-11-12
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.90.12 to **3.90.13** on 2025-11-12
 <!-- linter-versions-end -->
 
 ## [v9.1.0] - 2025-10-07
