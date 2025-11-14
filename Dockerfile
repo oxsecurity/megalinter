@@ -271,7 +271,7 @@ ARG PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION=v3.89.2
 ARG PSSA_VERSION='1.24.0'
 
 # renovate: datasource=pypi depName=pylint
-ARG PIP_PYLINT_VERSION=4.0.2
+ARG PIP_PYLINT_VERSION=4.0.3
 # renovate: datasource=pypi depName=typing-extensions
 ARG PIP_TYPING_EXTENSIONS_VERSION=4.15.0
 # renovate: datasource=pypi depName=black
