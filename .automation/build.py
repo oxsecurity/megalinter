@@ -3602,6 +3602,8 @@ def build_custom_flavor(dockerfile):
         tag_id,
         "-f",
         dockerfile,
+        "--secret",
+        "id=GITHUB_TOKEN"
         work_dir,
     ]
     logging.info("Running command: " + " ".join(command))
