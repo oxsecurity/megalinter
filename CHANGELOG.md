@@ -116,6 +116,15 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [php-cs-fixer](https://cs.symfony.com/) from 3.89.1 to **3.89.2** on 2025-11-12
   - [black](https://black.readthedocs.io/en/stable/) from 25.9.0 to **25.11.0** on 2025-11-12
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.90.12 to **3.90.13** on 2025-11-12
+  - [kubescape](https://github.com/kubescape/kubescape) from 3.0.43 to **3.0.45** on 2025-11-14
+  - [phpcs](https://github.com/PHPCSStandards/PHP_CodeSniffer) from 4.0.0 to **4.0.1** on 2025-11-14
+  - [phpstan](https://phpstan.org/) from 2.1.31 to **2.1.32** on 2025-11-14
+  - [pylint](https://pylint.readthedocs.io) from 4.0.2 to **4.0.3** on 2025-11-14
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.14.3 to **0.14.5** on 2025-11-14
+  - [ruff](https://github.com/astral-sh/ruff) from 0.14.3 to **0.14.5** on 2025-11-14
+  - [snakemake](https://snakemake.github.io/) from 9.13.5 to **9.13.7** on 2025-11-14
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 9.3.0 to **9.3.1** on 2025-11-14
+  - [vale](https://vale.sh/) from 3.12.0 to **3.13.0** on 2025-11-14
 <!-- linter-versions-end -->
 
 ## [v9.1.0] - 2025-10-07
