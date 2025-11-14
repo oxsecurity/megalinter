@@ -3597,6 +3597,7 @@ def build_custom_flavor(dockerfile):
     )
     command = [
         "docker",
+        "buildx",
         "build",
         "-t",
         tag_id,
