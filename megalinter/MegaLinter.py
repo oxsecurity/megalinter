@@ -701,7 +701,7 @@ class Megalinter:
             # List files using git diff
             try:
                 all_files = self.list_files_git_diff()
-            except git.InvalidGitRepositoryError as git_err:
+            except (git.InvalidGitRepositoryError, git.exc.GitCommandError) as git_err:
                 logging.warning(
                     "Unable to list updated files from git diff. Switch to VALIDATE_ALL_CODE_BASE=true"
                 )
@@ -788,12 +788,45 @@ class Megalinter:
             if len(linter.files) == 0 and linter.lint_all_files is False:
                 linter.is_active = False
 
+    def _is_git_worktree(self, repo):
+        """
+        Detect if the current git repository is a worktree.
+        
+        In a worktree, the .git directory is actually a file containing
+        a gitdir reference to the main repository's worktrees directory.
+        
+        Args:
+            repo: GitPython Repo object
+            
+        Returns:
+            bool: True if this is a worktree, False otherwise
+        """
+        try:
+            git_dir = repo.git_dir
+            # Check if .git is a file (worktree) or directory (regular repo)
+            git_path = os.path.join(repo.working_dir, '.git')
+            if os.path.isfile(git_path):
+                # It's a worktree - .git is a file containing gitdir reference
+                return True
+            # Also check if git_dir contains 'worktrees' in the path
+            if 'worktrees' in git_dir:
+                return True
+        except Exception as e:
+            logging.debug(f"Error checking for worktree: {str(e)}")
+        return False
+
     def list_files_git_diff(self):
         # List all updated files from git
         logging.info(
             "Listing updated files in [" + self.github_workspace + "] using git diff."
         )
         repo = git.Repo(os.path.realpath(self.github_workspace))
+        
+        # Check if we're in a git worktree
+        is_worktree = self._is_git_worktree(repo)
+        if is_worktree:
+            logging.info("Detected git worktree environment")
+        
         # Add auth header if necessary
         if config.get(self.request_id, "GIT_AUTHORIZATION_BEARER", "") != "":
             auth_bearer = "Authorization: Bearer " + config.get(
@@ -810,7 +843,25 @@ class Megalinter:
             )
             local_ref = f"refs/remotes/{default_branch_remote}"
             # Try to fetch default_branch from origin, because it isn't cached locally.
-            repo.git.fetch("origin", f"{remote_ref}:{local_ref}")
+            try:
+                repo.git.fetch("origin", f"{remote_ref}:{local_ref}")
+            except git.exc.GitCommandError as fetch_err:
+                # Handle worktree and other fetch errors gracefully
+                logging.warning(
+                    f"Unable to fetch {remote_ref} from origin: {str(fetch_err)}"
+                )
+                if is_worktree:
+                    logging.warning(
+                        "Git worktree detected - this is a known issue when running in Docker. "
+                        "The worktree's .git file contains an absolute path that is invalid inside the container. "
+                        "Continuing without fetch - ensure your repository is up-to-date before running MegaLinter."
+                    )
+                else:
+                    logging.warning(
+                        "Continuing without fetch - this may result in comparing against a stale branch. "
+                        "Consider setting VALIDATE_ALL_CODEBASE=true to avoid git operations."
+                    )
+                # Continue without the fetch - use whatever refs are available
         # Make git diff to list files (and exclude symlinks)
         try:
             # Use optimized way from https://github.com/oxsecurity/megalinter/pull/3472
