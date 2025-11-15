@@ -23,6 +23,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Install dotenv-linter deterministically, by @bdovaz in <https://github.com/oxsecurity/megalinter/pull/6385>
 
 - Fixes
+  - [#6544](https://github.com/oxsecurity/megalinter/issues/6544): Add GITHUB_TOKEN in docker build command for custom flavor
 
 - Reporters
 
