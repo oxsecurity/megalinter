@@ -93,6 +93,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [ruff](https://github.com/astral-sh/ruff) from 0.14.1 to **0.14.2** on 2025-10-29
   - [rubocop](https://rubocop.org/) from 1.81.1 to **1.81.6** on 2025-10-29
   - [snakemake](https://snakemake.github.io/) from 9.13.3 to **9.13.4** on 2025-10-29
+  - [raku](https://raku.org/) from 2024.12 to **2025.08** on 2025-11-01
   - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.90 to **0.1.91** on 2025-10-31
   - [robocop](https://github.com/MarketSquare/robotframework-robocop) from 6.8.3 to **6.9.2** on 2025-11-02
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.40.2 to **1.40.3** on 2025-11-02
