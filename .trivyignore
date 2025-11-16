@@ -9,6 +9,11 @@ CVE-2024-43485
 # https://avd.aquasec.com/nvd/2025/cve-2025-26646/ Not applicable in MegaLinter context
 CVE-2025-26646
 
+# https://avd.aquasec.com/nvd/cve-2024-25621 containerd, Not applicable in MegaLinter context
+CVE-2024-25621
+# https://avd.aquasec.com/nvd/cve-2025-52881 containerd, Not applicable in MegaLinter context
+CVE-2025-52881
+
 # Docker
 CVE-2024-41110
 
@@ -29,7 +34,15 @@ CVE-2025-30204
 CVE-2025-47906
 # https://avd.aquasec.com/nvd/2025/cve-2025-47907/ , not a security issue in MegaLinter context
 CVE-2025-47907
-
+CVE-2025-58187
+CVE-2025-47912
+CVE-2025-58183
+CVE-2025-58185
+CVE-2025-58186
+CVE-2025-58187
+CVE-2025-58188
+CVE-2025-61723
+CVE-2025-61724
 
 # go-git
 CVE-2025-21613
@@ -76,6 +89,8 @@ GHSA-xpw8-rcwv-8f8p
 # https://avd.aquasec.com/nvd/cve-2025-48734 Not dangerous in MegaLinter context, and sfdx-scanner will be soon replaced by code-analyzer plugin
 CVE-2025-48734
 CVE-2025-55163
+# Remove when migrated to code-analyzer
+CVE-2025-59419
 
 # octokit
 CVE-2025-25288
@@ -142,6 +157,8 @@ CVE-2025-7783
 CVE-2025-8959
 # https://avd.aquasec.com/nvd/cve-2025-9288 : sha.js: Missing type checks leading to hash rewind and passing on crafte. Harmless in MegaLinter because Salesforce linters do not connect to Salesforce orgs
 CVE-2025-9288
+# https://avd.aquasec.com/nvd/cve-2025-64118 : node-tar has a race condition leading to uninitialized memory exposure. Not applicable in MegaLinter context
+CVE-2025-64118
 # Dockerfile
 DS001
 DS002

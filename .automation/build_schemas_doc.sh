@@ -6,10 +6,12 @@ generate-schema-doc ../megalinter/descriptors/schemas/megalinter-descriptor.json
   ../docs/json-schemas/descriptor.html \
   --config minify=false \
   --config expand_buttons=false \
+  --config footer_show_time=false \
   --config link_to_reused_ref=false
 
 generate-schema-doc ../megalinter/descriptors/schemas/megalinter-configuration.jsonschema.json \
   ../docs/json-schemas/configuration.html \
   --config minify=false \
   --config expand_buttons=false \
+  --config footer_show_time=false \
   --config link_to_reused_ref=false

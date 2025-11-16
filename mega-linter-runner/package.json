@@ -103,7 +103,7 @@
     "mocha": "^11.0.0"
   },
   "resolutions": {
-    "semver": "7.7.2",
+    "semver": "7.7.3",
     "tmp": "0.2.5"
   }
 }

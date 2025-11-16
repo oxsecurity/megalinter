@@ -3,7 +3,7 @@ title: License info for snakemake within MegaLinter
 search:
   exclude: true
 ---
-Copyright (c) 2012-2022 Johannes Köster <johannes.koester@tu-dortmund.de>
+Copyright (c) 2012-2024 The Snakemake team
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in

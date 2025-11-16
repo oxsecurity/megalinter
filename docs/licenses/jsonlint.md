@@ -6,7 +6,7 @@ search:
 MIT License
 
 Copyright (c) 2012-2018 Zachary Carter
-Copyright (c) 2019-2023 Ferdinand Prantl
+Copyright (c) 2019-2024 Ferdinand Prantl
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

@@ -31,6 +31,12 @@
       schedule: [
         'before 4am on Friday',
       ],
+      matchUpdateTypes: [
+        'digest',
+        'patch',
+        'minor',
+        'major',
+      ],
     },
     {
       groupName: 'Roslynator',
@@ -58,6 +64,22 @@
       ],
       schedule: [
         'before 10am every 4 day',
+      ],
+    },
+    {
+      groupName: 'langchain',
+      matchPackageNames: [
+        'langchain_*',
+        'langchain*',
+      ],
+      schedule: [
+        'before 3pm every 3 day',
+      ],
+      matchUpdateTypes: [
+        'digest',
+        'patch',
+        'minor',
+        'major',
       ],
     },
     {

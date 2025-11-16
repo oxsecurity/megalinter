@@ -70,15 +70,15 @@ DEFAULT_DOCKERFILE_GEM_APK_PACKAGES = [
 ]
 
 DEFAULT_DOCKERFILE_PIP_ARGS = [
-    "# renovate: datasource=pypi depName=pip\nARG PIP_PIP_VERSION=25.2",
+    "# renovate: datasource=pypi depName=pip\nARG PIP_PIP_VERSION=25.3",
 ]
 
 DEFAULT_DOCKERFILE_PIPENV_ARGS = [
-    "# renovate: datasource=pypi depName=virtualenv\nARG PIP_VIRTUALENV_VERSION=20.34.0",
+    "# renovate: datasource=pypi depName=virtualenv\nARG PIP_VIRTUALENV_VERSION=20.35.4",
 ]
 
 DEFAULT_DOCKERFILE_RUST_ARGS = [
-    "# renovate: datasource=github-tags depName=rust-lang/rust\nARG RUST_RUST_VERSION=1.90.0",
+    "# renovate: datasource=github-tags depName=rust-lang/rust\nARG RUST_RUST_VERSION=1.91.1",
 ]
 
 DEFAULT_DOCKERFILE_FLAVOR_ARGS = [
