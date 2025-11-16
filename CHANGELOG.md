@@ -129,6 +129,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [golangci-lint](https://golangci-lint.run/) from 2.6.1 to **2.6.2** on 2025-11-15
   - [revive](https://revive.run/) from 1.12.0 to **1.13.0** on 2025-11-15
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.90.13 to **3.91.0** on 2025-11-15
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.13.4 to **1.13.5** on 2025-11-16
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.93.0 to **0.93.8** on 2025-11-16
 <!-- linter-versions-end -->
 
 ## [v9.1.0] - 2025-10-07
