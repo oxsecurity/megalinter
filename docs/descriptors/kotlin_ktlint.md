@@ -28,7 +28,7 @@ description: How to use ktlint (configure, ignore files, ignore errors, help & v
 
 ## ktlint documentation
 
-- Version in MegaLinter: **1.7.1**
+- Version in MegaLinter: **1.8.0**
 - Visit [Official Web Site](https://ktlint.github.io){target=_blank}
 - See [How to configure ktlint rules](https://pinterest.github.io/ktlint/latest/rules/configuration-ktlint/){target=_blank}
 - See [How to disable ktlint rules in files](https://pinterest.github.io/ktlint/latest/faq/#how-do-i-suppress-errors-for-a-lineblockfile){target=_blank}
@@ -165,44 +165,52 @@ Usage: ktlint [<options>] [<arguments>]... <command> [<args>]...
   # Options and commands
 
 Options:
-  -v, --version            Show the version and exit
+  -v, --version                  Show the version and exit
   --code-style=(android_studio|intellij_idea|ktlint_official)
-                           (deprecated)
-  --color                  Make output colorful
-  --color-name=<text>      Customize the output color
-  -F, --format             Fix deviations from the code style when possible
-  --limit=<int>            Maximum number of errors to show (default: show all)
-  --relative               Print files relative to the working directory (e.g.
-                           dir/file.kt instead of
-                           /home/user/project/dir/file.kt)
-  --reporter=<text>        A reporter to use (built-in: plain (default),
-                           plain?group_by_file, plain-summary, json, sarif,
-                           checkstyle, html). To usea third-party reporter
-                           specify a path to a JAR file on the filesystem via
-                           ',artifact=' option. To override reporter output,
-                           use ',output=' option.
-  -R, --ruleset=<text>     A path to a JAR file containing additional
-                           ruleset(s)
-  --stdin                  Read file from stdin
-  --stdin-path=<text>      Virtual file location for stdin. When combined with
-                           option '--format' the actual file will not be
-                           overwritten
+                                 (deprecated)
+  --color                        Make output colorful
+  --color-name=<text>            Customize the output color
+  -F, --format                   Fix deviations from the code style when
+                                 possible
+  --ignore-autocorrect-failures  Ignore all violations for which no autocorrect
+                                 is available
+  --limit=<int>                  Maximum number of errors to show (default:
+                                 show all)
+  --relative                     Print files relative to the working directory
+                                 (e.g. dir/file.kt instead of
+                                 /home/user/project/dir/file.kt)
+  --reporter=<text>              A reporter to use (built-in: plain (default),
+                                 plain?group_by_file, plain-summary, json,
+                                 sarif, checkstyle, html). To usea third-party
+                                 reporter specify a path to a JAR file on the
+                                 filesystem via ',artifact=' option. To
+                                 override reporter output, use ',output='
+                                 option.
+  -R, --ruleset=<text>           A path to a JAR file containing additional
+                                 ruleset(s)
+  --stdin                        Read file from stdin
+  --stdin-path=<text>            Virtual file location for stdin. When combined
+                                 with option '--format' the actual file will
+                                 not be overwritten
   --patterns-from-stdin[=<text>]
-                           Read additional patterns to check/format from stdin.
-                           Patterns are delimited by the given argument.
-                           (default is newline). If the argument is an empty
-                           string, the NUL byte is used.
-  --editorconfig=<text>    Path to the default '.editorconfig'. A property
-                           value from this file is used only when no
-                           '.editorconfig' file on the path to the source file
-                           specifies that property. Note: up until ktlint 0.46
-                           the property value in this file used to override
-                           values found in '.editorconfig' files on the path to
-                           the source file.
-  --baseline=<text>        Defines a baseline file to check against
-  -l, --log-level=<value>  Defines the minimum log level (trace, debug, info,
-                           warn, error) or none to suppress all logging
-  -h, --help               Show this message and exit
+                                 Read additional patterns to check/format from
+                                 stdin. Patterns are delimited by the given
+                                 argument. (default is newline). If the
+                                 argument is an empty string, the NUL byte is
+                                 used.
+  --editorconfig=<text>          Path to the default '.editorconfig'. A
+                                 property value from this file is used only
+                                 when no '.editorconfig' file on the path to
+                                 the source file specifies that property. Note:
+                                 up until ktlint 0.46 the property value in
+                                 this file used to override values found in
+                                 '.editorconfig' files on the path to the
+                                 source file.
+  --baseline=<text>              Defines a baseline file to check against
+  -l, --log-level=<value>        Defines the minimum log level (trace, debug,
+                                 info, warn, error) or none to suppress all
+                                 logging
+  -h, --help                     Show this message and exit
 
 Commands:
   generateEditorConfig     Generate kotlin style section for '.editorconfig'
@@ -223,7 +231,7 @@ ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 # Linter install
 # renovate: datasource=github-tags depName=pinterest/ktlint
-ARG KTLINT_VERSION=1.7.1
+ARG KTLINT_VERSION=1.8.0
 
 RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/releases/download/${KTLINT_VERSION}/ktlint && \
     chmod a+x ktlint && \
