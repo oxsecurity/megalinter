@@ -278,7 +278,7 @@ ARG GEM_RUBOCOP_RSPEC_VERSION=3.8.0
 # renovate: datasource=npm depName=cspell
 ARG NPM_CSPELL_VERSION=9.3.2
 # renovate: datasource=pypi depName=proselint
-ARG PIP_PROSELINT_VERSION=0.14.0
+ARG PIP_PROSELINT_VERSION=0.16.0
 # renovate: datasource=pypi depName=sqlfluff
 ARG PIP_SQLFLUFF_VERSION=3.5.0
 # renovate: datasource=npm depName=prettyjson
