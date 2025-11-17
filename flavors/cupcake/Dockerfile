@@ -274,7 +274,7 @@ ARG GEM_RUBOCOP_RAILS_VERSION=2.34.0
 # renovate: datasource=rubygems depName=rubocop-rake
 ARG GEM_RUBOCOP_RAKE_VERSION=0.7.1
 # renovate: datasource=rubygems depName=rubocop-rspec
-ARG GEM_RUBOCOP_RSPEC_VERSION=3.7.0
+ARG GEM_RUBOCOP_RSPEC_VERSION=3.8.0
 # renovate: datasource=npm depName=cspell
 ARG NPM_CSPELL_VERSION=9.3.2
 # renovate: datasource=pypi depName=proselint
