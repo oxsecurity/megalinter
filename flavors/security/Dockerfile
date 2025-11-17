@@ -27,7 +27,7 @@ ARG REPOSITORY_KICS_VERSION=v2.1.15-alpine
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
 ARG REPOSITORY_TRUFFLEHOG_VERSION=3.91.0
 # renovate: datasource=docker depName=ghcr.io/terraform-linters/tflint
-ARG TERRAFORM_TFLINT_VERSION=0.59.1
+ARG TERRAFORM_TFLINT_VERSION=0.60.0
 # renovate: datasource=docker depName=tenable/terrascan
 ARG TERRAFORM_TERRASCAN_VERSION=1.19.9
 # renovate: datasource=docker depName=alpine/terragrunt
