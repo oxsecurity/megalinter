@@ -352,7 +352,7 @@
         "General help using GNU software: <http://www.gnu.org/gethelp/>"
     ],
     "bicep_linter": [
-        "Bicep CLI version 0.38.33 (6bb5d5f859)",
+        "Bicep CLI version 0.39.26 (1e90b06e40)",
         "",
         "Usage:",
         "  bicep build [options] [<file>]",
@@ -544,15 +544,16 @@
         "      bicep build-params --pattern './dir/**/*.bicepparam'",
         "",
         "  bicep jsonrpc [options]",
-        "    Runs a JSONRPC server for interacting with Bicep programmatically.",
+        "    Starts the Bicep CLI listening for JSONRPC messages, for programatically interacting with Bicep. See https://aka.ms/bicep/jsonrpc for more information.",
         "",
         "    Options:",
-        "      --pipe <name>   Runs the JSONRPC server using a named pipe.",
-        "      --socket <dir>  Runs the JSONRPC server on a specific port.",
-        "      --stdio         Runs the JSONRPC server over stdin/stdout.",
+        "      --pipe <name>    Bicep CLI will connect to the supplied named pipe as a client, and start listening for JSONRPC requests.",
+        "      --socket <port>  Bicep CLI will connect to the supplied TCP port on the loopback interface as a client, and start listening for JSONRPC requests.",
+        "      --stdio          Bicep CLI will use stdin/stdout for JSONRPC requests.",
         "",
         "    Examples:",
         "      bicep jsonrpc --pipe /path/to/pipe.sock",
+        "      bicep jsonrpc --socket 9853",
         "      bicep jsonrpc --stdio",
         ""
     ],
@@ -3836,8 +3837,7 @@
         "  -l, --logger string         Logger level. Supported: debug/info/success/warning/error/fatal [$KS_LOGGER] (default \"info\")",
         "      --server string         Backend discovery server URL",
         "",
-        "Use \"kubescape [command] --help\" for more information about a command.",
-        "{\"level\":\"info\",\"ts\":\"2025-11-19T07:52:12Z\",\"msg\":\"Received interrupt signal, exiting...\"}"
+        "Use \"kubescape [command] --help\" for more information about a command."
     ],
     "kubeval": [
         "Validate a Kubernetes YAML file against the relevant schema",
@@ -9613,7 +9613,7 @@
         "                 [--summary] [--detailed-summary] [--archive FILE]",
         "                 [--cleanup-metadata FILE [FILE ...]] [--cleanup-shadow]",
         "                 [--skip-script-cleanup] [--unlock]",
-        "                 [--list-changes {params,input,code}] [--list-input-changes]",
+        "                 [--list-changes {input,code,params}] [--list-input-changes]",
         "                 [--list-params-changes] [--list-untracked]",
         "                 [--delete-all-output | --delete-temp-output]",
         "                 [--keep-incomplete] [--drop-metadata] [--version]",
@@ -10147,7 +10147,7 @@
         "                        (default: False)",
         "  --unlock              Remove a lock on the working directory. (default:",
         "                        False)",
-        "  --list-changes, --lc {params,input,code}",
+        "  --list-changes, --lc {input,code,params}",
         "                        List all output files for which the given items (code,",
         "                        input, params) have changed since creation.",
         "  --list-input-changes, --li",

@@ -140,6 +140,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [bandit](https://bandit.readthedocs.io/en/latest/) from 1.8.6 to **1.9.1** on 2025-11-19
   - [grype](https://github.com/anchore/grype) from 0.103.0 to **0.104.0** on 2025-11-19
   - [syft](https://github.com/anchore/syft) from 1.37.0 to **1.38.0** on 2025-11-19
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.38.33 to **0.39.26** on 2025-11-19
 <!-- linter-versions-end -->
 
 ## [v9.1.0] - 2025-10-07
