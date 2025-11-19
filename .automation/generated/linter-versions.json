@@ -4,7 +4,7 @@
     "arm-ttk": "0.0.0",
     "bandit": "1.9.1",
     "bash-exec": "5.2.37",
-    "bicep_linter": "0.38.33",
+    "bicep_linter": "0.39.26",
     "black": "25.11.0",
     "cfn-lint": "1.40.4",
     "checkmake": "0.2.0",
