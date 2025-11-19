@@ -12303,7 +12303,7 @@
 </ul>
 <h2 id="grype-documentation">grype documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>0.103.0</strong></li>
+<li>Version in MegaLinter: <strong>0.104.0</strong></li>
 <li>Visit <a href="https://github.com/anchore/grype#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/anchore/grype#configuration" target="_blank">How to configure grype rules</a><ul>
 <li>If custom <code>.grype.yaml</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.grype.yaml" target="_blank">.grype.yaml</a> will be used</li>
@@ -12585,6 +12585,7 @@ Flags:
       --exclude stringArray    exclude paths from being scanned using a glob expression
   -f, --fail-on string         set the return code to 1 if a vulnerability is found with a severity &gt;= the given severity, options=[negligible low medium high critical]
       --file string            file to write the default report output to (default is STDOUT)
+      --from stringArray       specify the source behavior to use (e.g. docker, registry, podman, oci-dir, ...)
   -h, --help                   help for grype
       --ignore-states string   ignore matches for vulnerabilities with specified comma separated fix states, options=[fixed not-fixed unknown wont-fix]
       --name string            set the name of the target being analyzed
@@ -12609,7 +12610,7 @@ Use "grype [command] --help" for more information about a command.
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile"># renovate: datasource=github-tags depName=anchore/grype
-ARG REPOSITORY_GRYPE_VERSION=0.103.0
+ARG REPOSITORY_GRYPE_VERSION=0.104.0
 RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/refs/tags/v${REPOSITORY_GRYPE_VERSION}/install.sh | sh -s -- -b /usr/local/bin
 </code></pre>
 
