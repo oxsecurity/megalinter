@@ -137,6 +137,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [robocop](https://github.com/MarketSquare/robotframework-robocop) from 6.9.2 to **6.10.0** on 2025-11-17
   - [tflint](https://github.com/terraform-linters/tflint) from 0.59.1 to **0.60.0** on 2025-11-17
   - [robocop](https://github.com/MarketSquare/robotframework-robocop) from 6.10.0 to **6.10.1** on 2025-11-17
+  - [bandit](https://bandit.readthedocs.io/en/latest/) from 1.8.6 to **1.9.1** on 2025-11-19
+  - [grype](https://github.com/anchore/grype) from 0.103.0 to **0.104.0** on 2025-11-19
+  - [syft](https://github.com/anchore/syft) from 1.37.0 to **1.38.0** on 2025-11-19
 <!-- linter-versions-end -->
 
 ## [v9.1.0] - 2025-10-07
