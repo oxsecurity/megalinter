@@ -45,7 +45,7 @@
     "isort": "7.0.0",
     "jscpd": "4.0.5",
     "jsonlint": "16.0.0",
-    "kics": "2.1.15",
+    "kics": "2.1.16",
     "ktlint": "1.8.0",
     "kubeconform": "0.7.0",
     "kubescape": "3.0.45",
