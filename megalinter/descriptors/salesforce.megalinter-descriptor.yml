@@ -275,6 +275,8 @@ linters:
 
   # SFDX Scanner Apex
   - linter_name: sfdx-scanner-apex
+    deprecated: true
+    deprecated_description: sfdx-scanner has been deprecated by Salesforce and will be soon be removed from MegaLinter. Please use SALESFORCE_CODE_ANALYZER_APEX instead.
     name: SALESFORCE_SFDX_SCANNER_APEX
     files_sub_directory: force-app
     linter_text: |
@@ -359,6 +361,8 @@ linters:
 
   # SFDX Scanner Aura
   - linter_name: sfdx-scanner-aura
+    deprecated: true
+    deprecated_description: sfdx-scanner has been deprecated by Salesforce and will be soon be removed from MegaLinter. Please use SALESFORCE_CODE_ANALYZER_AURA instead.
     name: SALESFORCE_SFDX_SCANNER_AURA
     files_sub_directory: force-app
     linter_text: |
@@ -434,6 +438,8 @@ linters:
 
   # SFDX Scanner LWC
   - linter_name: sfdx-scanner-lwc
+    deprecated: true
+    deprecated_description: sfdx-scanner has been deprecated by Salesforce and will be soon be removed from MegaLinter. Please use SALESFORCE_CODE_ANALYZER_LWC instead.
     name: SALESFORCE_SFDX_SCANNER_LWC
     files_sub_directory: force-app
     linter_text: |
