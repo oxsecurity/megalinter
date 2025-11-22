@@ -25,7 +25,7 @@ description: How to use php-cs-fixer (configure, ignore files, ignore errors, he
 
 ## php-cs-fixer documentation
 
-- Version in MegaLinter: **3.89.1**
+- Version in MegaLinter: **3.89.2**
 - Visit [Official Web Site](https://cs.symfony.com/){target=_blank}
 - See [How to configure php-cs-fixer rules](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/blob/master/doc/config.rst){target=_blank}
   - If custom `.php-cs-fixer.dist.php` config file isn't found, [.php-cs-fixer.dist.php](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.php-cs-fixer.dist.php){target=_blank} will be used
@@ -162,7 +162,7 @@ COPY --from=composer/composer:2-bin /composer /usr/bin/composer
 ENV PATH="/root/.composer/vendor/bin:${PATH}"
 # Linter install
 # renovate: datasource=packagist depName=friendsofphp/php-cs-fixer
-ARG PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION=v3.89.1
+ARG PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION=v3.89.2
 RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require friendsofphp/php-cs-fixer:${PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION} --with-all-dependencies
 
 ```

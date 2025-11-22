@@ -77,7 +77,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=github-tags depName=golangci/golangci-lint
-          ARG GO_GOLANGCI_LINT_VERSION=2.6.1
+          ARG GO_GOLANGCI_LINT_VERSION=2.6.2
         - |
           RUN wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s "v${GO_GOLANGCI_LINT_VERSION}" \
               && golangci-lint --version
@@ -145,7 +145,7 @@ linters:
         # - COPY --link --from=revive /usr/bin/revive /usr/bin/revive
         - |-
           # renovate: datasource=github-tags depName=mgechev/revive
-          ARG GO_REVIVE_VERSION=v1.12.0
+          ARG GO_REVIVE_VERSION=v1.13.0
         - |-
           FROM golang:1-alpine AS revive
           ## The golang image used as a builder is a temporary workaround (https://github.com/mgechev/revive/issues/787)

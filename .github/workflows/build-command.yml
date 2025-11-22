@@ -57,7 +57,7 @@ jobs:
           INPUTS_CONTEXT: ${{ toJson(github.event.inputs) }}
         run: echo "$INPUTS_CONTEXT"
       # Checkout the pull request branch
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           repository: ${{ github.event.inputs.checkout-repository }}
