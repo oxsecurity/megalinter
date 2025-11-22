@@ -91,6 +91,7 @@ CVE-2025-48734
 CVE-2025-55163
 # Remove when migrated to code-analyzer
 CVE-2025-59419
+CVE-2025-64756
 
 # octokit
 CVE-2025-25288
