@@ -33,7 +33,7 @@
     "eslint-plugin-jsonc": "2.15.1",
     "flake8": "7.3.0",
     "gherkin-lint": "0.0.0",
-    "git_diff": "2.49.1",
+    "git_diff": "2.47.0",
     "gitleaks": "8.28.0",
     "golangci-lint": "2.6.2",
     "goodcheck": "3.1.0",
