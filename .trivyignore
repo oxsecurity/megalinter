@@ -159,6 +159,8 @@ CVE-2025-8959
 CVE-2025-9288
 # https://avd.aquasec.com/nvd/cve-2025-64118 : node-tar has a race condition leading to uninitialized memory exposure. Not applicable in MegaLinter context
 CVE-2025-64118
+#  https://avd.aquasec.com/nvd/cve-2025-65106 : Langchain core vulnerable to prompt injection. As prompts are built only by MegaLinter or local overrides in the repo, this is harmless
+CVE-2025-65106
 # Dockerfile
 DS001
 DS002
