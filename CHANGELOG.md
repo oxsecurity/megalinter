@@ -11,6 +11,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Core
 
 - New linters
+  - Add [codespell](https://github.com/codespell-project/codespell)
 
 - Disabled linters
   - Reactivate [checkov](https://megalinter.io/beta/descriptors/repository_checkov/)
