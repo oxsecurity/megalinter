@@ -142,6 +142,18 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [syft](https://github.com/anchore/syft) from 1.37.0 to **1.38.0** on 2025-11-19
   - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.38.33 to **0.39.26** on 2025-11-19
   - [kics](https://www.kics.io) from 2.1.15 to **2.1.16** on 2025-11-20
+  - [actionlint](https://rhysd.github.io/actionlint/) from 1.7.8 to **1.7.9** on 2025-11-23
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.40.4 to **1.41.0** on 2025-11-23
+  - [stylelint](https://stylelint.io) from 16.25.0 to **16.26.0** on 2025-11-23
+  - [editorconfig-checker](https://editorconfig-checker.github.io/) from 3.4.1 to **3.5.0** on 2025-11-23
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.14.5 to **0.14.6** on 2025-11-23
+  - [ruff](https://github.com/astral-sh/ruff) from 0.14.5 to **0.14.6** on 2025-11-23
+  - [checkov](https://www.checkov.io/) from 3.2.493 to **3.2.495** on 2025-11-23
+  - [git_diff](https://git-scm.com) from 2.47.0 to **2.49.1** on 2025-11-23
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.91.0 to **3.91.1** on 2025-11-23
+  - [robocop](https://github.com/MarketSquare/robotframework-robocop) from 6.10.1 to **6.11.0** on 2025-11-23
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.13.5 to **1.14.0** on 2025-11-23
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.93.8 to **0.93.10** on 2025-11-23
 <!-- linter-versions-end -->
 
 ## [v9.1.0] - 2025-10-07
