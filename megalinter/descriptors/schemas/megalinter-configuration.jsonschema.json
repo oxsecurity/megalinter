@@ -19635,7 +19635,7 @@
     },
     "SALESFORCE_CODE_ANALYZER_APEX_CONFIG_FILE": {
       "$id": "#/properties/SALESFORCE_CODE_ANALYZER_APEX_CONFIG_FILE",
-      "default": "apex.yml",
+      "default": "code-analyzer.yml",
       "description": "SALESFORCE_CODE_ANALYZER_APEX: User custom config file name if different from default",
       "title": "SALESFORCE_CODE_ANALYZER_APEX: Custom config file name",
       "type": "string"

@@ -66,6 +66,11 @@ engines:
       ./apex-pmd-ruleset.xml
     ]
 
+  eslint:
+    auto_discover_eslint_config: true
+    # Whether to turn off the 'pmd' engine so that it is not included when running Code Analyzer commands.
+    disable_engine: false
+
 # ======================================================================
 # END OF CODE ANALYZER CONFIGURATION
 # ======================================================================

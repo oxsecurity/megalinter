@@ -102,7 +102,7 @@ export default class StockTable extends LightningElement {
       let aKey = key(a);
       let bKey = key(b);
 
-      if (typeof a = "string") {
+      if (typeof a == "string") {
         aKey = aKey.toUpperCase();
         bKey = bKey.toUpperCase();
       }

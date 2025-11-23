@@ -60,9 +60,8 @@ linters:
     linter_rules_url: https://docs.pmd-code.org/latest/pmd_rules_apex.html
     linter_rules_configuration_url: https://docs.pmd-code.org/latest/pmd_userdocs_making_rulesets.html
     linter_rules_inline_disable_url: https://docs.pmd-code.org/latest/pmd_userdocs_suppressing_warnings.html
-    linter_megalinter_ref_url: https://github.com/forcedotcom/code-analyzer
     linter_spdx_license: BSD-3-Clause
-    config_file_name: apex.yml
+    config_file_name: code-analyzer.yml
     cli_executable: sf
     cli_config_arg_name: "--config-file"
     cli_lint_extra_args:
@@ -72,6 +71,8 @@ linters:
       - "pmd:Recommended"
       - "--workspace"
       - "."
+      - --severity-threshold
+      - "Moderate"
       - "--output-file"
       - "{{REPORT_FOLDER}}/code-analyzer-report-apex.csv"
       - "--view"
@@ -86,8 +87,8 @@ linters:
       - "plugins"
     cli_version_arg_name: ""
     version_extract_regex: "(?<=code-analyzer )\\d+(\\.\\d+)+"
-    cli_lint_errors_count: regex_sum
-    cli_lint_errors_regex: "([0-9]+) violation"
+    cli_lint_errors_count: regex_number
+    cli_lint_errors_regex: "Found ([1-9]+) violation\\(s\\)"
     examples:
       - "sf code-analyzer run --rule-selector pmd:Recommended --workspace . --output-file results.csv"
     install:
@@ -145,11 +146,10 @@ linters:
     linter_rules_url: https://github.com/forcedotcom/eslint-plugin-aura#rules
     linter_rules_configuration_url: https://eslint.org/docs/latest/use/configure
     linter_rules_inline_disable_url: https://eslint.org/docs/latest/use/configure/rules#disabling-rules
-    linter_megalinter_ref_url: https://github.com/forcedotcom/code-analyzer
     linter_spdx_license: BSD-3-Clause
-    config_file_name: --eslintconfig
-    cli_config_arg_name: ".eslintrc-aura.json"
+    config_file_name: code-analyzer.yml
     cli_executable: sf
+    cli_config_arg_name: "--config-file"
     cli_lint_extra_args:
       - "code-analyzer"
       - "run"
@@ -160,7 +160,7 @@ linters:
       - "--target"
       - "**/aura/**/*.js"
       - "--severity-threshold"
-      - "2"
+      - "Moderate"
       - "--output-file"
       - "{{REPORT_FOLDER}}/code-analyzer-report-aura.csv"
       - "--view"
@@ -175,8 +175,8 @@ linters:
       - "plugins"
     cli_version_arg_name: ""
     version_extract_regex: "(?<=code-analyzer )\\d+(\\.\\d+)+"
-    cli_lint_errors_count: regex_sum
-    cli_lint_errors_regex: "([0-9]+) violation"
+    cli_lint_errors_count: regex_number
+    cli_lint_errors_regex: "Found ([1-9]+) violation\\(s\\)"
     examples:
       - "sf code-analyzer run --rule-selector eslint --workspace . --file-glob '**/aura/**/*.js' --output-file results.csv"
     install:
@@ -225,11 +225,10 @@ linters:
     linter_rules_url: https://github.com/salesforce/eslint-plugin-lwc#rules
     linter_rules_configuration_url: https://eslint.org/docs/latest/use/configure
     linter_rules_inline_disable_url: https://eslint.org/docs/latest/use/configure/rules#disabling-rules
-    linter_megalinter_ref_url: https://github.com/forcedotcom/code-analyzer
     linter_spdx_license: BSD-3-Clause
-    config_file_name: --eslintconfig
-    cli_config_arg_name: ".eslintrc-lwc.json"
+    config_file_name: code-analyzer.yml
     cli_executable: sf
+    cli_config_arg_name: "--config-file"
     cli_lint_extra_args:
       - "code-analyzer"
       - "run"
@@ -240,7 +239,7 @@ linters:
       - "--target"
       - "**/lwc/**/*.js"
       - "--severity-threshold"
-      - "2"
+      - "Moderate"
       - "--output-file"
       - "{{REPORT_FOLDER}}/code-analyzer-report-lwc.csv"
       - "--view"
@@ -255,8 +254,8 @@ linters:
       - "plugins"
     cli_version_arg_name: ""
     version_extract_regex: "(?<=code-analyzer )\\d+(\\.\\d+)+"
-    cli_lint_errors_count: regex_sum
-    cli_lint_errors_regex: "([0-9]+) violation"
+    cli_lint_errors_count: regex_number
+    cli_lint_errors_regex: 'Found (\d+) violation\(s\).*'
     examples:
       - "sf code-analyzer run --rule-selector eslint:LWC --workspace . --target '**/lwc/**/*.js' --output-file report.csv"
     install:
@@ -305,7 +304,6 @@ linters:
     linter_rules_url: https://docs.pmd-code.org/latest/pmd_rules_apex.html
     linter_rules_configuration_url: https://docs.pmd-code.org/latest/pmd_userdocs_making_rulesets.html
     linter_rules_inline_disable_url: https://docs.pmd-code.org/latest/pmd_userdocs_suppressing_warnings.html
-    linter_megalinter_ref_url: https://github.com/forcedotcom/code-analyzer
     linter_spdx_license: BSD-3-Clause
     config_file_name: apex-pmd-ruleset.xml
     cli_executable: sf
@@ -392,7 +390,6 @@ linters:
     linter_rules_url: https://github.com/forcedotcom/eslint-plugin-aura#rules
     linter_rules_configuration_url: https://eslint.org/docs/latest/use/configure
     linter_rules_inline_disable_url: https://eslint.org/docs/latest/use/configure/rules#disabling-rules
-    linter_megalinter_ref_url: https://github.com/forcedotcom/code-analyzer
     linter_spdx_license: BSD-3-Clause
     config_file_name: --eslintconfig
     cli_config_arg_name: ".eslintrc-aura.json"
@@ -470,7 +467,6 @@ linters:
     linter_rules_url: https://github.com/salesforce/eslint-plugin-lwc#rules
     linter_rules_configuration_url: https://eslint.org/docs/latest/use/configure
     linter_rules_inline_disable_url: https://eslint.org/docs/latest/use/configure/rules#disabling-rules
-    linter_megalinter_ref_url: https://github.com/forcedotcom/code-analyzer
     linter_spdx_license: BSD-3-Clause
     config_file_name: --eslintconfig
     cli_config_arg_name: ".eslintrc-lwc.json"
