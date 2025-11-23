@@ -162,6 +162,8 @@ CVE-2025-9288
 CVE-2025-64118
 #  https://avd.aquasec.com/nvd/cve-2025-65106 : Langchain core vulnerable to prompt injection. As prompts are built only by MegaLinter or local overrides in the repo, this is harmless
 CVE-2025-65106
+# https://avd.aquasec.com/nvd/cve-2025-64756 : Glob command injection. Harmless in MegaLinter context as user inputs are not passed to glob patterns
+CVE-2025-64756
 # Dockerfile
 DS001
 DS002
