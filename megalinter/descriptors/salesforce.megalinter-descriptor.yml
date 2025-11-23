@@ -510,7 +510,7 @@ linters:
         - name: Salesforce Extension Pack
           url: https://marketplace.visualstudio.com/items?itemName=salesforce.salesforcedx-vscode
 
-# Lightning Flow Scanner
+  # Lightning Flow Scanner
   - linter_name: lightning-flow-scanner
     disabled: true
     disabled_reason: "Repo archived -> <https://github.com/Lightning-Flow-Scanner>"
