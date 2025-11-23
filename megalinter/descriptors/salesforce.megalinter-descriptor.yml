@@ -95,7 +95,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=@salesforce/plugin-code-analyzer
-          ARG SALESFORCE_CODE_ANALYZER_VERSION=5.5.0
+          ARG SALESFORCE_CODE_ANALYZER_VERSION=5.6.1
         - |-
           RUN sf plugins install code-analyzer@${SALESFORCE_CODE_ANALYZER_VERSION} \
               && (npm cache clean --force || true) \
@@ -183,7 +183,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=@salesforce/plugin-code-analyzer
-          ARG SALESFORCE_CODE_ANALYZER_VERSION=5.5.0
+          ARG SALESFORCE_CODE_ANALYZER_VERSION=5.6.1
         - |-
           RUN sf plugins install code-analyzer@${SALESFORCE_CODE_ANALYZER_VERSION} \
               && (npm cache clean --force || true) \
@@ -262,7 +262,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=@salesforce/plugin-code-analyzer
-          ARG SALESFORCE_CODE_ANALYZER_VERSION=5.5.0
+          ARG SALESFORCE_CODE_ANALYZER_VERSION=5.6.1
         - |-
           RUN sf plugins install code-analyzer@${SALESFORCE_CODE_ANALYZER_VERSION} \
               && (npm cache clean --force || true) \
