@@ -1,5 +1,6 @@
 ({
 	convertValHlp : function(Val) {
+		eval("console.log('using eval')");
 		if (Val === 'true')
 			return true ;
 		else 

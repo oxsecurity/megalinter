@@ -132,6 +132,16 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.13.4 to **1.13.5** on 2025-11-16
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.93.0 to **0.93.8** on 2025-11-16
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 9.3.1 to **9.3.2** on 2025-11-16
+  - [ktlint](https://ktlint.github.io) from 1.7.1 to **1.8.0** on 2025-11-17
+  - [checkov](https://www.checkov.io/) from 3.2.490 to **3.2.493** on 2025-11-17
+  - [robocop](https://github.com/MarketSquare/robotframework-robocop) from 6.9.2 to **6.10.0** on 2025-11-17
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.59.1 to **0.60.0** on 2025-11-17
+  - [robocop](https://github.com/MarketSquare/robotframework-robocop) from 6.10.0 to **6.10.1** on 2025-11-17
+  - [bandit](https://bandit.readthedocs.io/en/latest/) from 1.8.6 to **1.9.1** on 2025-11-19
+  - [grype](https://github.com/anchore/grype) from 0.103.0 to **0.104.0** on 2025-11-19
+  - [syft](https://github.com/anchore/syft) from 1.37.0 to **1.38.0** on 2025-11-19
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.38.33 to **0.39.26** on 2025-11-19
+  - [kics](https://www.kics.io) from 2.1.15 to **2.1.16** on 2025-11-20
 <!-- linter-versions-end -->
 
 ## [v9.1.0] - 2025-10-07

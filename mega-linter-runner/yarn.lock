@@ -1198,7 +1198,7 @@ default-browser-id@^5.0.0:
   resolved "https://registry.yarnpkg.com/default-browser-id/-/default-browser-id-5.0.1.tgz#f7a7ccb8f5104bf8e0f71ba3b1ccfa5eafdb21e8"
   integrity sha512-x1VCxdX4t+8wVfd1so/9w+vQ4vx7lKd2Qp5tDRutErwmR85OgmfX7RlLRMWafRMY7hbEiXIbudNrjOAPa/hL8Q==
 
-default-browser@^5.2.1:
+default-browser@^5.4.0:
   version "5.4.0"
   resolved "https://registry.yarnpkg.com/default-browser/-/default-browser-5.4.0.tgz#b55cf335bb0b465dd7c961a02cd24246aa434287"
   integrity sha512-XDuvSq38Hr1MdN47EDvYtx3U0MTqpCEn+F6ft8z2vYDzMrvQhVp0ui9oQdqW3MvK3vqUETglt1tVGgjLuJ5izg==
@@ -1725,13 +1725,13 @@ glob@^10.4.5:
     path-scurry "^1.11.1"
 
 glob@^11.0.0, glob@^11.0.3:
-  version "11.0.3"
-  resolved "https://registry.yarnpkg.com/glob/-/glob-11.0.3.tgz#9d8087e6d72ddb3c4707b1d2778f80ea3eaefcd6"
-  integrity sha512-2Nim7dha1KVkaiF4q6Dj+ngPPMdfvLJEOpZk/jKiUAkqKebpGAWQXAq9z1xu9HKu5lWfqw/FASuccEjyznjPaA==
+  version "11.1.0"
+  resolved "https://registry.yarnpkg.com/glob/-/glob-11.1.0.tgz#4f826576e4eb99c7dad383793d2f9f08f67e50a6"
+  integrity sha512-vuNwKSaKiqm7g0THUBu2x7ckSs3XJLXE+2ssL7/MfTGPLLcrJQ/4Uq1CjPTtO5cCIiRxqvN6Twy1qOwhL0Xjcw==
   dependencies:
     foreground-child "^3.3.1"
     jackspeak "^4.1.1"
-    minimatch "^10.0.3"
+    minimatch "^10.1.1"
     minipass "^7.1.2"
     package-json-from-dist "^1.0.0"
     path-scurry "^2.0.0"
@@ -1986,6 +1986,11 @@ is-glob@^4.0.0, is-glob@^4.0.1, is-glob@^4.0.3:
   integrity sha512-xelSayHH36ZgE7ZWhli7pW34hNbNl8Ojv5KVmkJD4hBdD3th8Tfk9vYasLM+mXWOZhFkgZfxhLSnrwRr4elSSg==
   dependencies:
     is-extglob "^2.1.1"
+
+is-in-ssh@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/is-in-ssh/-/is-in-ssh-1.0.0.tgz#8eb73c1cabba77748d389588eeea132a63057622"
+  integrity sha512-jYa6Q9rH90kR1vKB6NM7qqd1mge3Fx4Dhw5TVlK1MUBqhEOuCagrEHMevNuCcbECmXZ0ThXkRm+Ymr51HwEPAw==
 
 is-inside-container@^1.0.0:
   version "1.0.0"
@@ -2360,7 +2365,7 @@ mimic-function@^5.0.0:
   resolved "https://registry.yarnpkg.com/mimic-function/-/mimic-function-5.0.1.tgz#acbe2b3349f99b9deaca7fb70e48b83e94e67076"
   integrity sha512-VP79XUPxV2CigYP3jWwAUFSku2aKqBH7uTAapFWCBqutsbmDo96KY5o8uh6U+/YSIn5OxJnXp73beVkpqMIGhA==
 
-minimatch@^10.0.3:
+minimatch@^10.0.3, minimatch@^10.1.1:
   version "10.1.1"
   resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-10.1.1.tgz#e6e61b9b0c1dcab116b5a7d1458e8b6ae9e73a55"
   integrity sha512-enIvLvRAFZYXJzkCYG5RKmPfrFArdLv+R+lbQ53BmIMLIry74bjKzX6iHAm8WYamJkhSSEabrWN5D97XnKObjQ==
@@ -2685,15 +2690,17 @@ onetime@^7.0.0:
   dependencies:
     mimic-function "^5.0.0"
 
-open@^10.0.2:
-  version "10.2.0"
-  resolved "https://registry.yarnpkg.com/open/-/open-10.2.0.tgz#b9d855be007620e80b6fb05fac98141fe62db73c"
-  integrity sha512-YgBpdJHPyQ2UE5x+hlSXcnejzAvD0b22U2OuAP+8OnlJT+PjWPxtgmGqKKc+RgTM63U9gN0YzrYc71R2WT/hTA==
+open@^11.0.0:
+  version "11.0.0"
+  resolved "https://registry.yarnpkg.com/open/-/open-11.0.0.tgz#897e6132f994d3554cbcf72e0df98f176a7e5f62"
+  integrity sha512-smsWv2LzFjP03xmvFoJ331ss6h+jixfA4UUV/Bsiyuu4YJPfN+FIQGOIiv4w9/+MoHkfkJ22UIaQWRVFRfH6Vw==
   dependencies:
-    default-browser "^5.2.1"
+    default-browser "^5.4.0"
     define-lazy-prop "^3.0.0"
+    is-in-ssh "^1.0.0"
     is-inside-container "^1.0.0"
-    wsl-utils "^0.1.0"
+    powershell-utils "^0.1.0"
+    wsl-utils "^0.3.0"
 
 optionator@^0.9.3:
   version "0.9.4"
@@ -2925,6 +2932,11 @@ postcss-selector-parser@^7.0.0:
   dependencies:
     cssesc "^3.0.0"
     util-deprecate "^1.0.2"
+
+powershell-utils@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/powershell-utils/-/powershell-utils-0.1.0.tgz#5a42c9a824fb4f2f251ccb41aaae73314f5d6ac2"
+  integrity sha512-dM0jVuXJPsDN6DvRpea484tCUaMiXWjuCn++HGTqUWzGDjv5tZkEZldAJ/UMlqRYGFrD/etByo4/xOuC/snX2A==
 
 prelude-ls@^1.2.1:
   version "1.2.1"
@@ -3640,13 +3652,6 @@ which@^2.0.1:
   dependencies:
     isexe "^2.0.0"
 
-which@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/which/-/which-5.0.0.tgz#d93f2d93f79834d4363c7d0c23e00d07c466c8d6"
-  integrity sha512-JEdGzHwwkrbWoGOlIHqQ5gtprKGOenpDHpxE9zVR1bWbOtYRyPPHMe9FaP6x61CmNaTThSkb0DAJte5jD+DmzQ==
-  dependencies:
-    isexe "^3.1.1"
-
 which@^6.0.0:
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/which/-/which-6.0.0.tgz#a3a721a14cdd9b991a722e493c177eeff82ff32a"
@@ -3708,12 +3713,13 @@ write-file-atomic@^6.0.0:
     imurmurhash "^0.1.4"
     signal-exit "^4.0.1"
 
-wsl-utils@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/wsl-utils/-/wsl-utils-0.1.0.tgz#8783d4df671d4d50365be2ee4c71917a0557baab"
-  integrity sha512-h3Fbisa2nKGPxCpm89Hk33lBLsnaGBvctQopaBSOW/uIs6FTe1ATyAnKFJrzVs9vpGdsTe73WF3V4lIsk4Gacw==
+wsl-utils@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/wsl-utils/-/wsl-utils-0.3.0.tgz#197049b93b34b822703bf4ccde8256660651205f"
+  integrity sha512-3sFIGLiaDP7rTO4xh3g+b3AzhYDIUGGywE/WsmqzJWDxus5aJXVnPTNC/6L+r2WzrwXqVOdD262OaO+cEyPMSQ==
   dependencies:
     is-wsl "^3.1.0"
+    powershell-utils "^0.1.0"
 
 y18n@^5.0.5:
   version "5.0.8"

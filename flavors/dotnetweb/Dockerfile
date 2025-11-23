@@ -13,7 +13,7 @@
 #############################################################################################
 #ARGTOP__START
 # renovate: datasource=docker depName=rhysd/actionlint
-ARG ACTION_ACTIONLINT_VERSION=1.7.8
+ARG ACTION_ACTIONLINT_VERSION=1.7.9
 # renovate: datasource=docker depName=koalaman/shellcheck
 ARG BASH_SHELLCHECK_VERSION=v0.11.0
 # renovate: datasource=docker depName=mvdan/shfmt
@@ -29,7 +29,7 @@ ARG PROTOBUF_PROTOLINT_VERSION=0.56.4
 # renovate: datasource=docker depName=zricethezav/gitleaks
 ARG REPOSITORY_GITLEAKS_VERSION=v8.28.0
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
-ARG REPOSITORY_TRUFFLEHOG_VERSION=3.91.0
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.91.1
 # renovate: datasource=docker depName=jdkato/vale
 ARG SPELL_VALE_VERSION=v3.13.0
 # renovate: datasource=docker depName=lycheeverse/lychee
@@ -59,7 +59,7 @@ FROM lycheeverse/lychee:${SPELL_LYCHEE_VERSION} AS lychee
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.9.4 AS uv
+FROM ghcr.io/astral-sh/uv:0.9.9 AS uv
 FROM python:3.13-alpine3.22 AS build-ml-core
 WORKDIR /
 COPY --from=uv /uv /uvx /bin/
@@ -103,7 +103,7 @@ ARG ARM_TTK_DIRECTORY='/opt/microsoft'
 # renovate: datasource=crate depName=shellcheck-sarif
 ARG CARGO_SHELLCHECK_SARIF_VERSION=0.8.0
 # renovate: datasource=github-tags depName=Azure/bicep
-ARG BICEP_VERSION=0.38.33
+ARG BICEP_VERSION=0.39.26
 ARG BICEP_EXE='bicep'
 ARG BICEP_DIR='/usr/local/bin'
 # renovate: datasource=pypi depName=cpplint
@@ -117,7 +117,7 @@ ARG CSHARP_CSHARPIER_VERSION=1.2.1
 # renovate: datasource=nuget depName=roslynator.dotnet.cli
 ARG CSHARP_ROSLYNATOR_VERSION=0.11.0
 # renovate: datasource=npm depName=stylelint
-ARG NPM_STYLELINT_VERSION=16.25.0
+ARG NPM_STYLELINT_VERSION=16.26.0
 # renovate: datasource=npm depName=stylelint-config-standard
 ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=39.0.1
 # renovate: datasource=npm depName=stylelint-config-sass-guidelines
@@ -196,9 +196,9 @@ ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.6.1
 ARG PSSA_VERSION='1.24.0'
 
 # renovate: datasource=pypi depName=checkov
-ARG PIP_CHECKOV_VERSION=3.2.493
+ARG PIP_CHECKOV_VERSION=3.2.495
 # renovate: datasource=github-tags depName=anchore/grype
-ARG REPOSITORY_GRYPE_VERSION=0.103.0
+ARG REPOSITORY_GRYPE_VERSION=0.104.0
 # renovate: datasource=npm depName=@ls-lint/ls-lint
 ARG NPM_LS_LINT_LS_LINT_VERSION=2.3.1
 # renovate: datasource=npm depName=secretlint
@@ -210,7 +210,7 @@ ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=11.2.5
 # renovate: datasource=pypi depName=semgrep
 ARG PIP_SEMGREP_VERSION=1.116.0
 # renovate: datasource=github-tags depName=anchore/syft
-ARG REPOSITORY_SYFT_VERSION=1.37.0
+ARG REPOSITORY_SYFT_VERSION=1.38.0
 # renovate: datasource=github-tags depName=aquasecurity/trivy
 ARG REPOSITORY_TRIVY_VERSION=0.67.2
 # renovate: datasource=github-tags depName=aquasecurity/trivy

@@ -38,7 +38,7 @@ jobs:
       linters: ${{ steps.set-matrix.outputs.linters }}
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
       - name: Read linters_matrix.json
         id: set-matrix
         run: |
@@ -68,7 +68,7 @@ jobs:
       # Checkout the code base #
       ##########################
       - name: Checkout Code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v3

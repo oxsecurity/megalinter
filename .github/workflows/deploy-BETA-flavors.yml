@@ -89,7 +89,7 @@ jobs:
     ##################
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: Docker Metadata action
         uses: docker/metadata-action@v5.9.0

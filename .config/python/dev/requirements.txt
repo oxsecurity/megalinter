@@ -7,7 +7,7 @@ fastapi==0.121.2
 gitpython==3.1.45
 giturlparse==0.14.0
 importlib-metadata==8.7.0
-json-schema-for-humans==1.4.1
+json-schema-for-humans==1.5.1
 jsonpickle==4.1.1
 jsonschema==4.25.1
 markdown==3.10
@@ -35,7 +35,7 @@ termcolor==3.2.0
 urllib3==2.5.0
 webpreview==1.7.2
 yq==3.4.3
-langchain_core==1.0.5
+langchain_core==1.0.7
 langchain_anthropic==1.0.4
 langchain_deepseek==1.0.1
 langchain_google_genai==3.0.3

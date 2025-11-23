@@ -13,7 +13,7 @@
 #############################################################################################
 #ARGTOP__START
 # renovate: datasource=docker depName=rhysd/actionlint
-ARG ACTION_ACTIONLINT_VERSION=1.7.8
+ARG ACTION_ACTIONLINT_VERSION=1.7.9
 # renovate: datasource=docker depName=koalaman/shellcheck
 ARG BASH_SHELLCHECK_VERSION=v0.11.0
 # renovate: datasource=docker depName=mvdan/shfmt
@@ -29,9 +29,9 @@ ARG PROTOBUF_PROTOLINT_VERSION=0.56.4
 # renovate: datasource=docker depName=zricethezav/gitleaks
 ARG REPOSITORY_GITLEAKS_VERSION=v8.28.0
 # renovate: datasource=docker depName=checkmarx/kics
-ARG REPOSITORY_KICS_VERSION=v2.1.15-alpine
+ARG REPOSITORY_KICS_VERSION=v2.1.16-alpine
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
-ARG REPOSITORY_TRUFFLEHOG_VERSION=3.91.0
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.91.1
 # renovate: datasource=docker depName=jdkato/vale
 ARG SPELL_VALE_VERSION=v3.13.0
 # renovate: datasource=docker depName=lycheeverse/lychee
@@ -41,7 +41,7 @@ ARG TERRAFORM_TFLINT_VERSION=0.60.0
 # renovate: datasource=docker depName=tenable/terrascan
 ARG TERRAFORM_TERRASCAN_VERSION=1.19.9
 # renovate: datasource=docker depName=alpine/terragrunt
-ARG TERRAFORM_TERRAGRUNT_VERSION=1.13.5
+ARG TERRAFORM_TERRAGRUNT_VERSION=1.14.0
 #ARGTOP__END
 
 #############################################################################################
@@ -73,7 +73,7 @@ FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} AS terragrunt
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.9.4 AS uv
+FROM ghcr.io/astral-sh/uv:0.9.9 AS uv
 FROM python:3.13-alpine3.22 AS build-ml-core
 WORKDIR /
 COPY --from=uv /uv /uvx /bin/
@@ -108,7 +108,7 @@ ARG CARGO_SHELLCHECK_SARIF_VERSION=0.8.0
 # renovate: datasource=npm depName=jscpd
 ARG NPM_JSCPD_VERSION=4.0.5
 # renovate: datasource=npm depName=stylelint
-ARG NPM_STYLELINT_VERSION=16.25.0
+ARG NPM_STYLELINT_VERSION=16.26.0
 # renovate: datasource=npm depName=stylelint-config-standard
 ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=39.0.1
 # renovate: datasource=npm depName=stylelint-config-sass-guidelines
@@ -148,9 +148,9 @@ ARG NPM_MARKDOWNLINT_CLI_VERSION=0.45.0
 # renovate: datasource=npm depName=markdown-table-formatter
 ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.6.1
 # renovate: datasource=pypi depName=checkov
-ARG PIP_CHECKOV_VERSION=3.2.493
+ARG PIP_CHECKOV_VERSION=3.2.495
 # renovate: datasource=github-tags depName=anchore/grype
-ARG REPOSITORY_GRYPE_VERSION=0.103.0
+ARG REPOSITORY_GRYPE_VERSION=0.104.0
 # renovate: datasource=npm depName=@ls-lint/ls-lint
 ARG NPM_LS_LINT_LS_LINT_VERSION=2.3.1
 # renovate: datasource=npm depName=secretlint
@@ -162,7 +162,7 @@ ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=11.2.5
 # renovate: datasource=pypi depName=semgrep
 ARG PIP_SEMGREP_VERSION=1.116.0
 # renovate: datasource=github-tags depName=anchore/syft
-ARG REPOSITORY_SYFT_VERSION=1.37.0
+ARG REPOSITORY_SYFT_VERSION=1.38.0
 # renovate: datasource=github-tags depName=aquasecurity/trivy
 ARG REPOSITORY_TRIVY_VERSION=0.67.2
 # renovate: datasource=github-tags depName=aquasecurity/trivy

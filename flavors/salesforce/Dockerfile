@@ -13,7 +13,7 @@
 #############################################################################################
 #ARGTOP__START
 # renovate: datasource=docker depName=rhysd/actionlint
-ARG ACTION_ACTIONLINT_VERSION=1.7.8
+ARG ACTION_ACTIONLINT_VERSION=1.7.9
 # renovate: datasource=docker depName=koalaman/shellcheck
 ARG BASH_SHELLCHECK_VERSION=v0.11.0
 # renovate: datasource=docker depName=mvdan/shfmt
@@ -29,7 +29,7 @@ ARG PROTOBUF_PROTOLINT_VERSION=0.56.4
 # renovate: datasource=docker depName=zricethezav/gitleaks
 ARG REPOSITORY_GITLEAKS_VERSION=v8.28.0
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
-ARG REPOSITORY_TRUFFLEHOG_VERSION=3.91.0
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.91.1
 # renovate: datasource=docker depName=jdkato/vale
 ARG SPELL_VALE_VERSION=v3.13.0
 # renovate: datasource=docker depName=lycheeverse/lychee
@@ -59,7 +59,7 @@ FROM lycheeverse/lychee:${SPELL_LYCHEE_VERSION} AS lychee
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.9.4 AS uv
+FROM ghcr.io/astral-sh/uv:0.9.9 AS uv
 FROM python:3.13-alpine3.22 AS build-ml-core
 WORKDIR /
 COPY --from=uv /uv /uvx /bin/
@@ -90,7 +90,7 @@ ARG NPM_SALESFORCE_CLI_VERSION=2.108.6
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
 ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.20.5
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=6.12.2
+ARG SFDX_HARDIS_VERSION=6.12.3
 # renovate: datasource=pypi depName=ansible-lint
 ARG PIP_ANSIBLE_LINT_VERSION=25.11.0
 # renovate: datasource=npm depName=@stoplight/spectral-cli
@@ -100,7 +100,7 @@ ARG CARGO_SHELLCHECK_SARIF_VERSION=0.8.0
 # renovate: datasource=npm depName=jscpd
 ARG NPM_JSCPD_VERSION=4.0.5
 # renovate: datasource=npm depName=stylelint
-ARG NPM_STYLELINT_VERSION=16.25.0
+ARG NPM_STYLELINT_VERSION=16.26.0
 # renovate: datasource=npm depName=stylelint-config-standard
 ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=39.0.1
 # renovate: datasource=npm depName=stylelint-config-sass-guidelines
@@ -144,9 +144,9 @@ ARG NPM_MARKDOWNLINT_CLI_VERSION=0.45.0
 # renovate: datasource=npm depName=markdown-table-formatter
 ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.6.1
 # renovate: datasource=pypi depName=checkov
-ARG PIP_CHECKOV_VERSION=3.2.493
+ARG PIP_CHECKOV_VERSION=3.2.495
 # renovate: datasource=github-tags depName=anchore/grype
-ARG REPOSITORY_GRYPE_VERSION=0.103.0
+ARG REPOSITORY_GRYPE_VERSION=0.104.0
 # renovate: datasource=npm depName=@ls-lint/ls-lint
 ARG NPM_LS_LINT_LS_LINT_VERSION=2.3.1
 # renovate: datasource=npm depName=secretlint
@@ -158,11 +158,13 @@ ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=11.2.5
 # renovate: datasource=pypi depName=semgrep
 ARG PIP_SEMGREP_VERSION=1.116.0
 # renovate: datasource=github-tags depName=anchore/syft
-ARG REPOSITORY_SYFT_VERSION=1.37.0
+ARG REPOSITORY_SYFT_VERSION=1.38.0
 # renovate: datasource=github-tags depName=aquasecurity/trivy
 ARG REPOSITORY_TRIVY_VERSION=0.67.2
 # renovate: datasource=github-tags depName=aquasecurity/trivy
 ARG REPOSITORY_TRIVY_SBOM_VERSION=0.67.2
+# renovate: datasource=npm depName=@salesforce/plugin-code-analyzer
+ARG SALESFORCE_CODE_ANALYZER_VERSION=5.6.1
 # renovate: datasource=npm depName=@salesforce/sfdx-scanner
 ARG SALESFORCE_SFDX_SCANNER_VERSION=4.12.0
 # renovate: datasource=pypi depName=snakemake
@@ -491,6 +493,23 @@ RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/rel
 #
 # trufflehog installation
 # Managed with COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
+#
+# code-analyzer-apex installation
+    && sf plugins install code-analyzer@${SALESFORCE_CODE_ANALYZER_VERSION} \
+    && (npm cache clean --force || true) \
+    && rm -rf /root/.npm/_cacache \
+#
+# code-analyzer-aura installation
+# Next line commented because already managed by another linter
+# RUN sf plugins install code-analyzer@${SALESFORCE_CODE_ANALYZER_VERSION} \
+#     && (npm cache clean --force || true) \
+#     && rm -rf /root/.npm/_cacache
+#
+# code-analyzer-lwc installation
+# Next line commented because already managed by another linter
+# RUN sf plugins install code-analyzer@${SALESFORCE_CODE_ANALYZER_VERSION} \
+#     && (npm cache clean --force || true) \
+#     && rm -rf /root/.npm/_cacache
 #
 # sfdx-scanner-apex installation
     && sf plugins install @salesforce/sfdx-scanner@${SALESFORCE_SFDX_SCANNER_VERSION} \

@@ -223,20 +223,6 @@ jobs:
   build:
 `,
       },
-      // V5 to V6 migration rules
-      // GitHub actions
-      {
-        regex: /actions\/checkout@v2/gm,
-        replacement: "actions/checkout@v3",
-        test: "uses: actions/checkout@v2",
-        testRes: "uses: actions/checkout@v3",
-      },
-      {
-        regex: /actions\/checkout@v3/gm,
-        replacement: "actions/checkout@v4",
-        test: "uses: actions/checkout@v3",
-        testRes: "uses: actions/checkout@v4",
-      },
       // Documentation base URL
       {
         regex: /https:\/\/megalinter\.github\.io/gm,
@@ -497,10 +483,10 @@ jobs:
       },
       // v8 to v9 migrations rules
       {
-        regex: /actions\/checkout@v4/gm,
-        replacement: "actions/checkout@v5",
+        regex: /actions\/checkout@v(1|2|3|4|5)/gm,
+        replacement: "actions/checkout@v6",
         test: "uses: actions/checkout@v4",
-        testRes: "uses: actions/checkout@v5",
+        testRes: "uses: actions/checkout@v6",
       },
       // Upload artifact action
       {
