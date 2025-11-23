@@ -340,6 +340,8 @@ ARG GEM_RUBOCOP_RAILS_VERSION=2.34.0
 ARG GEM_RUBOCOP_RAKE_VERSION=0.7.1
 # renovate: datasource=rubygems depName=rubocop-rspec
 ARG GEM_RUBOCOP_RSPEC_VERSION=3.8.0
+# renovate: datasource=npm depName=@salesforce/plugin-code-analyzer
+ARG SALESFORCE_CODE_ANALYZER_VERSION=5.6.1
 # renovate: datasource=npm depName=@salesforce/sfdx-scanner
 ARG SALESFORCE_SFDX_SCANNER_VERSION=4.12.0
 # renovate: datasource=pypi depName=snakemake
@@ -1096,6 +1098,23 @@ RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/refs/tags/v${REPOS
 # rstfmt installation
 #
 # rubocop installation
+#
+# code-analyzer-apex installation
+    && sf plugins install code-analyzer@${SALESFORCE_CODE_ANALYZER_VERSION} \
+    && (npm cache clean --force || true) \
+    && rm -rf /root/.npm/_cacache \
+#
+# code-analyzer-aura installation
+# Next line commented because already managed by another linter
+# RUN sf plugins install code-analyzer@${SALESFORCE_CODE_ANALYZER_VERSION} \
+#     && (npm cache clean --force || true) \
+#     && rm -rf /root/.npm/_cacache
+#
+# code-analyzer-lwc installation
+# Next line commented because already managed by another linter
+# RUN sf plugins install code-analyzer@${SALESFORCE_CODE_ANALYZER_VERSION} \
+#     && (npm cache clean --force || true) \
+#     && rm -rf /root/.npm/_cacache
 #
 # sfdx-scanner-apex installation
     && sf plugins install @salesforce/sfdx-scanner@${SALESFORCE_SFDX_SCANNER_VERSION} \

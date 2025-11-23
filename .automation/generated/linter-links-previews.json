@@ -84,6 +84,21 @@
     "image": "https://opengraph.githubassets.com/bf0d187aea6f03a804178458080b2be18a5fd1bf8d8cc353ff3150743aae9805/greglook/cljstyle",
     "title": "GitHub - greglook/cljstyle: A tool for formatting Clojure code"
   },
+  "code-analyzer-apex": {
+    "description": "To get started scanning your code with Salesforce Code Analyzer, follow this developer workflow and choose resources that match your learning style.",
+    "image": null,
+    "title": "Get Started | Salesforce Code Analyzer | Salesforce Developers"
+  },
+  "code-analyzer-aura": {
+    "description": "To get started scanning your code with Salesforce Code Analyzer, follow this developer workflow and choose resources that match your learning style.",
+    "image": null,
+    "title": "Get Started | Salesforce Code Analyzer | Salesforce Developers"
+  },
+  "code-analyzer-lwc": {
+    "description": "To get started scanning your code with Salesforce Code Analyzer, follow this developer workflow and choose resources that match your learning style.",
+    "image": null,
+    "title": "Get Started | Salesforce Code Analyzer | Salesforce Developers"
+  },
   "coffeelint": {
     "description": "\n          CoffeeLint is a style checker that helps keep\n          CoffeeScript\n          code clean and consistent. CoffeeScript does a great job at\n          insulating programmers from many of\n          JavaScript's bad parts, but it won't help enforce a consistent style\n          across a code base. CoffeeLint can help with that.\n        ",
     "image": null,

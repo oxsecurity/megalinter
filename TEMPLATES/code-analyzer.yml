@@ -1,0 +1,75 @@
+# ======================================================================
+# CODE ANALYZER CONFIGURATION
+# To learn more about this configuration, visit:
+#   https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/config-custom.html
+# ======================================================================
+# Level at which to log messages to log files.
+# Possible values are:
+#   1 or 'Error' - Includes only error messages in the log.
+#   2 or 'Warn' - Includes warning and error messages in the log.
+#   3 or 'Info' - Includes informative, warning, and error messages in the log.
+#   4 or 'Debug' - Includes debug, informative, warning, and error messages in the log.
+#   5 or 'Fine' - Includes fine detail, debug, informative, warning, and error messages in the log.
+# If unspecified, or if specified as null, then the 'Debug' log level will be used.
+log_level: 4
+
+# Engine specific custom configuration settings of the format engines.{engine_name}.{property_name} = {value} where:
+#   {engine_name} is the name of the engine containing the setting that you want to override.
+#   {property_name} is the name of a property that you would like to override.
+# Each engine may have its own set of properties available to help customize that particular engine's behavior.
+engines:
+  # ======================================================================
+  # PMD ENGINE CONFIGURATION
+  # To learn more about this configuration, visit:
+  #   https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/engine-pmd.html#pmd-configuration-reference
+  # ======================================================================
+  pmd:
+
+    # Whether to turn off the 'pmd' engine so that it is not included when running Code Analyzer commands.
+    disable_engine: false
+
+    # Specifies the list of file extensions to associate to each rule language.
+    # The rule(s) associated with a given language will run against all the files in your workspace containing one of
+    # the specified file extensions. Each file extension can only be associated to one language. If a specific language
+    # is not specified, then a set of default file extensions for that language will be used.
+    file_extensions:
+      apex:
+        - .cls
+        - .trigger
+      html:
+        - .html
+        - .htm
+        - .xhtml
+        - .xht
+        - .shtml
+        - .cmp
+      javascript:
+        - .js
+        - .cjs
+        - .mjs
+      typescript:
+        - .ts
+      visualforce:
+        - .page
+        - .component
+      xml:
+        - .xml
+
+    # List of xml ruleset files containing custom PMD rules to be made available for rule selection.
+    # Each ruleset must be an xml file that is either:
+    #   - on disk (provided as an absolute path or a relative path to 'config_root')
+    #   - or a relative resource found on the Java classpath.
+    # Not all custom rules can be fully defined within an xml ruleset file. For example, Java based rules may be defined in jar files.
+    # In these cases, you will need to also add your additional files to the Java classpath using the 'java_classpath_entries' field.
+    # See https://pmd.github.io/pmd/pmd_userdocs_making_rulesets.html to learn more about PMD rulesets.
+    custom_rulesets: [
+      ./apex-pmd-ruleset.xml
+    ]
+
+  eslint:
+    # Whether to turn off the 'pmd' engine so that it is not included when running Code Analyzer commands.
+    disable_engine: false
+
+# ======================================================================
+# END OF CODE ANALYZER CONFIGURATION
+# ======================================================================

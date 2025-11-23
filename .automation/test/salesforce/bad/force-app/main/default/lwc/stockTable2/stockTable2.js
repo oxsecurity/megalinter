@@ -66,6 +66,21 @@ export default class StockTable extends LightningElement {
   sortedBy;
   maxRows = DEFAULT_END_ARRAY;
 
+  // HIGH: @lwc/lwc/no-async-operation - Async operation in connectedCallback
+  connectedCallback() {
+    setTimeout(() => {
+      this.initializeTable();
+    }, 500);
+  }
+
+  // HIGH: @lwc/lwc/no-document-query - Direct DOM query
+  initializeTable() {
+    const tableEl = document.getElementById('stock-table');
+    if (tableEl) {
+      tableEl.classList.add('initialized');
+    }
+  }
+
   handleChangeDisplay(event) {
     this.maxRows = event.detail.pageSize;
     this.setStocksToDisplay(event.detail);
@@ -92,6 +107,9 @@ export default class StockTable extends LightningElement {
     this.template.querySelector("c-stock-paginator").setControlClass();
     this.sortedBy = sortedBy;
     this.sortDirection = sortDirection;
+    
+    // HIGH: Using document directly
+    document.title = 'Stock Table Sorted';
   }
 
   sortBy(field, sortDirection) {
@@ -102,7 +120,7 @@ export default class StockTable extends LightningElement {
       let aKey = key(a);
       let bKey = key(b);
 
-      if (typeof a = "string") {
+      if (typeof a == "string") {
         aKey = aKey.toUpperCase();
         bKey = bKey.toUpperCase();
       }
