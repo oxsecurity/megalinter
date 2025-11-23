@@ -45,7 +45,7 @@ Bandit is essential for maintaining secure Python codebases and is widely used i
 
 ## bandit documentation
 
-- Version in MegaLinter: **1.8.6**
+- Version in MegaLinter: **1.9.1**
 - Visit [Official Web Site](https://bandit.readthedocs.io/en/latest/){target=_blank}
 - See [How to configure bandit rules](https://bandit.readthedocs.io/en/latest/config.html#){target=_blank}
   - If custom `.bandit.yml` config file isn't found, [.bandit.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.bandit.yml){target=_blank} will be used
@@ -302,12 +302,12 @@ The following tests were discovered and loaded:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=bandit
-ARG PIP_BANDIT_VERSION=1.8.6
+ARG PIP_BANDIT_VERSION=1.9.1
 # renovate: datasource=pypi depName=bandit_sarif_formatter
 ARG PIP_BANDIT_SARIF_FORMATTER_VERSION=1.1.1
 ```
 
 - PIP packages (Python):
-  - [bandit==1.8.6](https://pypi.org/project/bandit/1.8.6)
+  - [bandit==1.9.1](https://pypi.org/project/bandit/1.9.1)
   - [bandit_sarif_formatter==1.1.1](https://pypi.org/project/bandit_sarif_formatter/1.1.1)
-  - [bandit[toml]==1.8.6](https://pypi.org/project/bandit[toml]/1.8.6)
+  - [bandit[toml]==1.9.1](https://pypi.org/project/bandit[toml]/1.9.1)

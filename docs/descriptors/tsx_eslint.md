@@ -195,7 +195,7 @@ ARG NPM_ESLINT_CONFIG_AIRBNB_VERSION=19.0.4
 # renovate: datasource=npm depName=eslint-config-prettier
 ARG NPM_ESLINT_CONFIG_PRETTIER_VERSION=10.1.8
 # renovate: datasource=npm depName=eslint-plugin-jest
-ARG NPM_ESLINT_PLUGIN_JEST_VERSION=29.0.1
+ARG NPM_ESLINT_PLUGIN_JEST_VERSION=29.1.0
 # renovate: datasource=npm depName=eslint-plugin-prettier
 ARG NPM_ESLINT_PLUGIN_PRETTIER_VERSION=5.5.4
 # renovate: datasource=npm depName=eslint-plugin-react
@@ -207,9 +207,9 @@ ARG NPM_PRETTIER_VERSION=3.6.2
 # renovate: datasource=npm depName=prettyjson
 ARG NPM_PRETTYJSON_VERSION=1.2.5
 # renovate: datasource=npm depName=@typescript-eslint/eslint-plugin
-ARG NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION=8.46.2
+ARG NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION=8.46.4
 # renovate: datasource=npm depName=@typescript-eslint/parser
-ARG NPM_TYPESCRIPT_ESLINT_PARSER_VERSION=8.46.2
+ARG NPM_TYPESCRIPT_ESLINT_PARSER_VERSION=8.46.4
 # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
 ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
 ```
@@ -219,12 +219,12 @@ ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
   - [eslint@8.57.1](https://www.npmjs.com/package/eslint/v/8.57.1)
   - [eslint-config-airbnb@19.0.4](https://www.npmjs.com/package/eslint-config-airbnb/v/19.0.4)
   - [eslint-config-prettier@10.1.8](https://www.npmjs.com/package/eslint-config-prettier/v/10.1.8)
-  - [eslint-plugin-jest@29.0.1](https://www.npmjs.com/package/eslint-plugin-jest/v/29.0.1)
+  - [eslint-plugin-jest@29.1.0](https://www.npmjs.com/package/eslint-plugin-jest/v/29.1.0)
   - [eslint-plugin-prettier@5.5.4](https://www.npmjs.com/package/eslint-plugin-prettier/v/5.5.4)
   - [eslint-plugin-react@7.37.5](https://www.npmjs.com/package/eslint-plugin-react/v/7.37.5)
   - [@babel/eslint-parser@7.28.5](https://www.npmjs.com/package/@babel/eslint-parser/v/7.28.5)
   - [prettier@3.6.2](https://www.npmjs.com/package/prettier/v/3.6.2)
   - [prettyjson@1.2.5](https://www.npmjs.com/package/prettyjson/v/1.2.5)
-  - [@typescript-eslint/eslint-plugin@8.46.2](https://www.npmjs.com/package/@typescript-eslint/eslint-plugin/v/8.46.2)
-  - [@typescript-eslint/parser@8.46.2](https://www.npmjs.com/package/@typescript-eslint/parser/v/8.46.2)
+  - [@typescript-eslint/eslint-plugin@8.46.4](https://www.npmjs.com/package/@typescript-eslint/eslint-plugin/v/8.46.4)
+  - [@typescript-eslint/parser@8.46.4](https://www.npmjs.com/package/@typescript-eslint/parser/v/8.46.4)
   - [@microsoft/eslint-formatter-sarif@3.1.0](https://www.npmjs.com/package/@microsoft/eslint-formatter-sarif/v/3.1.0)

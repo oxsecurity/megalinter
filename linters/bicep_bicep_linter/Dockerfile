@@ -24,7 +24,7 @@ FROM multiarch/qemu-user-static:x86_64-aarch64 AS qemu
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.9.4 AS uv
+FROM ghcr.io/astral-sh/uv:0.9.9 AS uv
 FROM python:3.13-alpine3.22 AS build-ml-core
 WORKDIR /
 COPY --from=uv /uv /uvx /bin/
@@ -50,7 +50,7 @@ FROM python:3.13-alpine3.22
 #ARG__START
 ARG TARGETPLATFORM
 # renovate: datasource=github-tags depName=Azure/bicep
-ARG BICEP_VERSION=0.38.33
+ARG BICEP_VERSION=0.39.26
 ARG BICEP_EXE='bicep'
 ARG BICEP_DIR='/usr/local/bin'
 #ARG__END

@@ -1,8 +1,8 @@
 aiofiles==25.1.0
 gitpython==3.1.45
-fastapi==0.120.4
+fastapi==0.121.2
 python-multipart==0.0.20
 pygments==2.19.2
 uvicorn[standard]==0.38.0
-redis==6.4.0
+redis==7.0.1
 rq==2.6.0

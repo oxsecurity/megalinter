@@ -24,7 +24,7 @@
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.9.4 AS uv
+FROM ghcr.io/astral-sh/uv:0.9.9 AS uv
 FROM python:3.13-alpine3.22 AS build-ml-core
 WORKDIR /
 COPY --from=uv /uv /uvx /bin/
@@ -49,7 +49,7 @@ FROM python:3.13-alpine3.22
 #############################################################################################
 #ARG__START
 # renovate: datasource=pypi depName=ansible-lint
-ARG PIP_ANSIBLE_LINT_VERSION=25.9.2
+ARG PIP_ANSIBLE_LINT_VERSION=25.11.0
 # renovate: datasource=pypi depName=pip
 ARG PIP_PIP_VERSION=25.3
 # renovate: datasource=pypi depName=virtualenv

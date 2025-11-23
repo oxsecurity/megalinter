@@ -23,6 +23,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Install dotenv-linter deterministically, by @bdovaz in <https://github.com/oxsecurity/megalinter/pull/6385>
 
 - Fixes
+  - [#6544](https://github.com/oxsecurity/megalinter/issues/6544): Add GITHUB_TOKEN in docker build command for custom flavor
 
 - Reporters
 
@@ -104,6 +105,44 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [swiftlint](https://github.com/realm/SwiftLint) from 0.62.1 to **0.62.2** on 2025-11-02
   - [golangci-lint](https://golangci-lint.run/) from 2.5.0 to **2.6.0** on 2025-11-03
   - [pmd](https://pmd.github.io/) from 7.17.0 to **7.18.0** on 2025-11-03
+  - [grype](https://github.com/anchore/grype) from 0.102.0 to **0.103.0** on 2025-11-03
+  - [syft](https://github.com/anchore/syft) from 1.36.0 to **1.37.0** on 2025-11-03
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.40.3 to **1.40.4** on 2025-11-05
+  - [golangci-lint](https://golangci-lint.run/) from 2.6.0 to **2.6.1** on 2025-11-05
+  - [checkov](https://www.checkov.io/) from 3.2.484 to **3.2.490** on 2025-11-05
+  - [snakemake](https://snakemake.github.io/) from 9.13.4 to **9.13.5** on 2025-11-05
+  - [kubescape](https://github.com/kubescape/kubescape) from 3.0.42 to **3.0.43** on 2025-11-05
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 9.2.2 to **9.3.0** on 2025-11-09
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 25.9.2 to **25.11.0** on 2025-11-12
+  - [csharpier](https://csharpier.com/) from 1.1.2 to **1.2.1** on 2025-11-12
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.89.1 to **3.89.2** on 2025-11-12
+  - [black](https://black.readthedocs.io/en/stable/) from 25.9.0 to **25.11.0** on 2025-11-12
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.90.12 to **3.90.13** on 2025-11-12
+  - [kubescape](https://github.com/kubescape/kubescape) from 3.0.43 to **3.0.45** on 2025-11-14
+  - [phpcs](https://github.com/PHPCSStandards/PHP_CodeSniffer) from 4.0.0 to **4.0.1** on 2025-11-14
+  - [phpstan](https://phpstan.org/) from 2.1.31 to **2.1.32** on 2025-11-14
+  - [pylint](https://pylint.readthedocs.io) from 4.0.2 to **4.0.3** on 2025-11-14
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.14.3 to **0.14.5** on 2025-11-14
+  - [ruff](https://github.com/astral-sh/ruff) from 0.14.3 to **0.14.5** on 2025-11-14
+  - [snakemake](https://snakemake.github.io/) from 9.13.5 to **9.13.7** on 2025-11-14
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 9.3.0 to **9.3.1** on 2025-11-14
+  - [vale](https://vale.sh/) from 3.12.0 to **3.13.0** on 2025-11-14
+  - [golangci-lint](https://golangci-lint.run/) from 2.6.1 to **2.6.2** on 2025-11-15
+  - [revive](https://revive.run/) from 1.12.0 to **1.13.0** on 2025-11-15
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.90.13 to **3.91.0** on 2025-11-15
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.13.4 to **1.13.5** on 2025-11-16
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.93.0 to **0.93.8** on 2025-11-16
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 9.3.1 to **9.3.2** on 2025-11-16
+  - [ktlint](https://ktlint.github.io) from 1.7.1 to **1.8.0** on 2025-11-17
+  - [checkov](https://www.checkov.io/) from 3.2.490 to **3.2.493** on 2025-11-17
+  - [robocop](https://github.com/MarketSquare/robotframework-robocop) from 6.9.2 to **6.10.0** on 2025-11-17
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.59.1 to **0.60.0** on 2025-11-17
+  - [robocop](https://github.com/MarketSquare/robotframework-robocop) from 6.10.0 to **6.10.1** on 2025-11-17
+  - [bandit](https://bandit.readthedocs.io/en/latest/) from 1.8.6 to **1.9.1** on 2025-11-19
+  - [grype](https://github.com/anchore/grype) from 0.103.0 to **0.104.0** on 2025-11-19
+  - [syft](https://github.com/anchore/syft) from 1.37.0 to **1.38.0** on 2025-11-19
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.38.33 to **0.39.26** on 2025-11-19
+  - [kics](https://www.kics.io) from 2.1.15 to **2.1.16** on 2025-11-20
 <!-- linter-versions-end -->
 
 ## [v9.1.0] - 2025-10-07

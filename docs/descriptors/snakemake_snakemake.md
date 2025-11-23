@@ -29,7 +29,7 @@ description: How to use snakemake (configure, ignore files, ignore errors, help 
 
 ## snakemake documentation
 
-- Version in MegaLinter: **9.13.4**
+- Version in MegaLinter: **9.13.7**
 - Visit [Official Web Site](https://snakemake.github.io/){target=_blank}
 - See [How to configure snakemake rules](https://snakemake.readthedocs.io/en/stable/snakefiles/configuration.html){target=_blank}
 
@@ -149,7 +149,7 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--summary] [--detailed-summary] [--archive FILE]
                  [--cleanup-metadata FILE [FILE ...]] [--cleanup-shadow]
                  [--skip-script-cleanup] [--unlock]
-                 [--list-changes {input,params,code}] [--list-input-changes]
+                 [--list-changes {code,params,input}] [--list-input-changes]
                  [--list-params-changes] [--list-untracked]
                  [--delete-all-output | --delete-temp-output]
                  [--keep-incomplete] [--drop-metadata] [--version]
@@ -161,6 +161,7 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--max-checksum-file-size SIZE] [--latency-wait SECONDS]
                  [--wait-for-free-local-storage WAIT_FOR_FREE_LOCAL_STORAGE]
                  [--wait-for-files [FILE ...]] [--wait-for-files-file FILE]
+                 [--runtime-source-cache-path PATH]
                  [--queue-input-wait-time SECONDS]
                  [--omit-flags OMIT_FLAGS [OMIT_FLAGS ...]] [--notemp]
                  [--all-temp] [--unneeded-temp-files FILE [FILE ...]]
@@ -194,7 +195,7 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--apptainer-args ARGS] [--use-envmodules]
                  [--deploy-sources QUERY CHECKSUM]
                  [--target-jobs TARGET_JOBS [TARGET_JOBS ...]]
-                 [--mode {remote,default,subprocess}]
+                 [--mode {remote,subprocess,default}]
                  [--scheduler-solver-path SCHEDULER_SOLVER_PATH]
                  [--max-jobs-per-second MAX_JOBS_PER_SECOND]
                  [--report-html-path VALUE]
@@ -682,7 +683,7 @@ UTILITIES:
                         (default: False)
   --unlock              Remove a lock on the working directory. (default:
                         False)
-  --list-changes, --lc {input,params,code}
+  --list-changes, --lc {code,params,input}
                         List all output files for which the given items (code,
                         input, params) have changed since creation.
   --list-input-changes, --li
@@ -786,7 +787,11 @@ BEHAVIOR:
                         Same behaviour as `--wait-for-files`, but file list is
                         stored in file instead of being passed on the
                         commandline. This is useful when the list of files is
-                        too long to be passed on the commandline.
+                        too long to be passed on the commandline. Meant for
+                        internal use.
+  --runtime-source-cache-path PATH
+                        Path to the runtime source cache directory. Meant for
+                        internal use.
   --queue-input-wait-time SECONDS
                         Set the interval in seconds to check for new input in
                         rules that use from_queue to obtain input files.
@@ -924,7 +929,7 @@ REMOTE EXECUTION:
                         contain a working snakemake installation that is
                         compatible with (or ideally the same as) the currently
                         running version. (default:
-                        snakemake/snakemake:v9.13.4)
+                        snakemake/snakemake:v9.13.7)
   --immediate-submit, --is
                         Immediately submit all jobs to the cluster instead of
                         waiting for present input files. This will fail,
@@ -1037,7 +1042,7 @@ INTERNAL:
   --target-jobs TARGET_JOBS [TARGET_JOBS ...]
                         Internal use only: Target particular jobs by
                         RULE:WILDCARD1=VALUE,WILDCARD2=VALUE,...
-  --mode {remote,default,subprocess}
+  --mode {remote,subprocess,default}
                         Internal use only: Set execution mode of Snakemake.
                         (default: default)
   --scheduler-solver-path SCHEDULER_SOLVER_PATH
@@ -1087,8 +1092,8 @@ defaults.
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=snakemake
-ARG PIP_SNAKEMAKE_VERSION=9.13.4
+ARG PIP_SNAKEMAKE_VERSION=9.13.7
 ```
 
 - PIP packages (Python):
-  - [snakemake==9.13.4](https://pypi.org/project/snakemake/9.13.4)
+  - [snakemake==9.13.7](https://pypi.org/project/snakemake/9.13.7)

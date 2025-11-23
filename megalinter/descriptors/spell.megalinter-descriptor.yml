@@ -47,7 +47,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=cspell
-          ARG NPM_CSPELL_VERSION=9.2.2
+          ARG NPM_CSPELL_VERSION=9.3.2
       npm:
         - "cspell@${NPM_CSPELL_VERSION}"
     supported_platforms:
@@ -167,7 +167,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=docker depName=jdkato/vale
-          ARG SPELL_VALE_VERSION=v3.12.0
+          ARG SPELL_VALE_VERSION=v3.13.0
         - FROM jdkato/vale:${SPELL_VALE_VERSION} AS vale
         - COPY --link --from=vale /bin/vale /bin/vale
     supported_platforms:

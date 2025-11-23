@@ -29,9 +29,9 @@ ARG PROTOBUF_PROTOLINT_VERSION=0.56.4
 # renovate: datasource=docker depName=zricethezav/gitleaks
 ARG REPOSITORY_GITLEAKS_VERSION=v8.28.0
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
-ARG REPOSITORY_TRUFFLEHOG_VERSION=3.90.12
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.91.1
 # renovate: datasource=docker depName=jdkato/vale
-ARG SPELL_VALE_VERSION=v3.12.0
+ARG SPELL_VALE_VERSION=v3.13.0
 # renovate: datasource=docker depName=lycheeverse/lychee
 ARG SPELL_LYCHEE_VERSION=sha-7c4b132-alpine
 #ARGTOP__END
@@ -59,7 +59,7 @@ FROM lycheeverse/lychee:${SPELL_LYCHEE_VERSION} AS lychee
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.9.4 AS uv
+FROM ghcr.io/astral-sh/uv:0.9.9 AS uv
 FROM python:3.13-alpine3.22 AS build-ml-core
 WORKDIR /
 COPY --from=uv /uv /uvx /bin/
@@ -86,7 +86,7 @@ FROM python:3.13-alpine3.22
 # renovate: datasource=crate depName=sarif-fmt
 ARG CARGO_SARIF_FMT_VERSION=0.8.0
 # renovate: datasource=pypi depName=ansible-lint
-ARG PIP_ANSIBLE_LINT_VERSION=25.9.2
+ARG PIP_ANSIBLE_LINT_VERSION=25.11.0
 # renovate: datasource=npm depName=@stoplight/spectral-cli
 ARG NPM_SPECTRAL_CLI_VERSION=6.15.0
 # renovate: datasource=crate depName=shellcheck-sarif
@@ -96,7 +96,7 @@ ARG PIP_CPPLINT_VERSION=2.0.2
 # renovate: datasource=npm depName=jscpd
 ARG NPM_JSCPD_VERSION=4.0.5
 # renovate: datasource=npm depName=stylelint
-ARG NPM_STYLELINT_VERSION=16.25.0
+ARG NPM_STYLELINT_VERSION=16.26.0
 # renovate: datasource=npm depName=stylelint-config-standard
 ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=39.0.1
 # renovate: datasource=npm depName=stylelint-config-sass-guidelines
@@ -122,29 +122,29 @@ ARG NPM_V8R_VERSION=5.1.0
 # renovate: datasource=npm depName=prettier
 ARG NPM_PRETTIER_VERSION=3.6.2
 # renovate: datasource=github-tags depName=pinterest/ktlint
-ARG KTLINT_VERSION=1.7.1
+ARG KTLINT_VERSION=1.8.0
 
 # renovate: datasource=github-tags depName=detekt/detekt
 ARG DETEKT_VERSION=1.23.8
 
 # renovate: datasource=github-tags depName=kubescape/kubescape
-ARG KUBERNETES_KUBESCAPE_VERSION=3.0.42
+ARG KUBERNETES_KUBESCAPE_VERSION=3.0.45
 # renovate: datasource=npm depName=markdownlint-cli
 ARG NPM_MARKDOWNLINT_CLI_VERSION=0.45.0
 # renovate: datasource=npm depName=markdown-table-formatter
 ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.6.1
 # renovate: datasource=pypi depName=pylint
-ARG PIP_PYLINT_VERSION=4.0.2
+ARG PIP_PYLINT_VERSION=4.0.3
 # renovate: datasource=pypi depName=typing-extensions
 ARG PIP_TYPING_EXTENSIONS_VERSION=4.15.0
 # renovate: datasource=pypi depName=black
-ARG PIP_BLACK_VERSION=25.9.0
+ARG PIP_BLACK_VERSION=25.11.0
 # renovate: datasource=pypi depName=flake8
 ARG PIP_FLAKE8_VERSION=7.3.0
 # renovate: datasource=pypi depName=isort
 ARG PIP_ISORT_VERSION=7.0.0
 # renovate: datasource=pypi depName=bandit
-ARG PIP_BANDIT_VERSION=1.8.6
+ARG PIP_BANDIT_VERSION=1.9.1
 # renovate: datasource=pypi depName=bandit_sarif_formatter
 ARG PIP_BANDIT_SARIF_FORMATTER_VERSION=1.1.1
 # renovate: datasource=pypi depName=mypy
@@ -152,11 +152,11 @@ ARG PIP_MYPY_VERSION=1.18.2
 # renovate: datasource=npm depName=pyright
 ARG NPM_PYRIGHT_VERSION=1.1.407
 # renovate: datasource=pypi depName=ruff
-ARG PIP_RUFF_VERSION=0.14.3
+ARG PIP_RUFF_VERSION=0.14.6
 # renovate: datasource=pypi depName=checkov
-ARG PIP_CHECKOV_VERSION=3.2.484
+ARG PIP_CHECKOV_VERSION=3.2.495
 # renovate: datasource=github-tags depName=anchore/grype
-ARG REPOSITORY_GRYPE_VERSION=0.102.0
+ARG REPOSITORY_GRYPE_VERSION=0.104.0
 # renovate: datasource=npm depName=@ls-lint/ls-lint
 ARG NPM_LS_LINT_LS_LINT_VERSION=2.3.1
 # renovate: datasource=npm depName=secretlint
@@ -168,7 +168,7 @@ ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=11.2.5
 # renovate: datasource=pypi depName=semgrep
 ARG PIP_SEMGREP_VERSION=1.116.0
 # renovate: datasource=github-tags depName=anchore/syft
-ARG REPOSITORY_SYFT_VERSION=1.36.0
+ARG REPOSITORY_SYFT_VERSION=1.38.0
 # renovate: datasource=github-tags depName=aquasecurity/trivy
 ARG REPOSITORY_TRIVY_VERSION=0.67.2
 # renovate: datasource=github-tags depName=aquasecurity/trivy
@@ -180,15 +180,15 @@ ARG PIP_RESTRUCTUREDTEXT_LINT_VERSION=1.4.0
 # renovate: datasource=pypi depName=rstcheck
 ARG PIP_RSTCHECK_VERSION=6.2.5
 # renovate: datasource=pypi depName=click
-ARG PIP_RSTCHECK_CLICK_VERSION=8.3.0
+ARG PIP_RSTCHECK_CLICK_VERSION=8.3.1
 # renovate: datasource=pypi depName=rstfmt
 ARG PIP_RSTFMT_VERSION=0.0.14
 # renovate: datasource=pypi depName=snakemake
-ARG PIP_SNAKEMAKE_VERSION=9.13.4
+ARG PIP_SNAKEMAKE_VERSION=9.13.7
 # renovate: datasource=pypi depName=snakefmt
 ARG PIP_SNAKEFMT_VERSION=0.11.2
 # renovate: datasource=npm depName=cspell
-ARG NPM_CSPELL_VERSION=9.2.2
+ARG NPM_CSPELL_VERSION=9.3.2
 # renovate: datasource=pypi depName=proselint
 ARG PIP_PROSELINT_VERSION=0.14.0
 # renovate: datasource=pypi depName=sqlfluff
@@ -202,7 +202,7 @@ ARG PIP_PIP_VERSION=25.3
 # renovate: datasource=pypi depName=virtualenv
 ARG PIP_VIRTUALENV_VERSION=20.35.4
 # renovate: datasource=github-tags depName=rust-lang/rust
-ARG RUST_RUST_VERSION=1.91.0
+ARG RUST_RUST_VERSION=1.91.1
 
 ARG ACTION_ACTIONLINT_VERSION
 ARG BASH_SHELLCHECK_VERSION
