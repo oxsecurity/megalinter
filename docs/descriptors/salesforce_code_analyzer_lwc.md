@@ -32,8 +32,10 @@ See more details in [Help](#help-content)
 
 ## code-analyzer-lwc documentation
 
+- Version in MegaLinter: **5.6.1**
 - Visit [Official Web Site](https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html){target=_blank}
 - See [How to configure code-analyzer-lwc rules](https://eslint.org/docs/latest/use/configure){target=_blank}
+  - If custom `code-analyzer.yml` config file isn't found, [code-analyzer.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/code-analyzer.yml){target=_blank} will be used
 - See [How to disable code-analyzer-lwc rules in files](https://eslint.org/docs/latest/use/configure/rules#disabling-rules){target=_blank}
 - See [Index of problems detected by code-analyzer-lwc](https://github.com/salesforce/eslint-plugin-lwc#rules){target=_blank}
 
@@ -52,7 +54,7 @@ See more details in [Help](#help-content)
 | SALESFORCE_CODE_ANALYZER_LWC_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                                                                                        | None                                            |
 | SALESFORCE_CODE_ANALYZER_LWC_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                                                                                         | None                                            |
 | SALESFORCE_CODE_ANALYZER_LWC_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling SALESFORCE_CODE_ANALYZER_LWC and its pre/post commands                                                                                                                                                                   | None                                            |
-| SALESFORCE_CODE_ANALYZER_LWC_CONFIG_FILE                 | code-analyzer-lwc configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                                                                          | `--eslintconfig`                                |
+| SALESFORCE_CODE_ANALYZER_LWC_CONFIG_FILE                 | code-analyzer-lwc configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                                                                          | `code-analyzer.yml`                             |
 | SALESFORCE_CODE_ANALYZER_LWC_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                                                                                          | Workspace folder, then MegaLinter default rules |
 | SALESFORCE_CODE_ANALYZER_LWC_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                                                                                            | `false`                                         |
 | SALESFORCE_CODE_ANALYZER_LWC_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                                                                                      | `0`                                             |
@@ -99,6 +101,131 @@ sf code-analyzer run --rule-selector eslint:LWC --workspace . --target '**/lwc/*
 ```
 
 
+### Help content
+
+```shell
+ ›   Warning: @salesforce/cli update available from 2.108.6 to 2.113.6.
+Analyze your code with a selection of rules to ensure good coding practices.
+
+USAGE
+  $ sf code-analyzer run [--flags-dir <value>] [-w <value>...] [-t <value>...]
+    [-r <value>...] [-s <value>] [-v detail|table] [-f <value>...] [-c <value>]
+
+FLAGS
+  -c, --config-file=<value>         Path to the configuration file used to
+                                    customize the engines and rules.
+  -f, --output-file=<value>...      Name of the file where the analysis results
+                                    are written. The file format depends on the
+                                    extension you specify, such as .csv, .html,
+                                    .xml, and so on.
+  -r, --rule-selector=<value>...    [default: Recommended] Selection of rules,
+                                    based on engine name, severity level, rule
+                                    name, tag, or a combination of criteria
+                                    separated by colons.
+  -s, --severity-threshold=<value>  Severity level of a found violation that
+                                    must be met or exceeded to cause this
+                                    command to fail with a non-zero exit code.
+  -t, --target=<value>...           Subset of files within your workspace to be
+                                    targeted for analysis.
+  -v, --view=<option>               Format to display the command results in the
+                                    terminal.
+                                    <options: detail|table>
+  -w, --workspace=<value>...        [default: .] Set of files that make up your
+                                    workspace.
+
+GLOBAL FLAGS
+  --flags-dir=<value>  Import flag values from a directory.
+
+ ›   Warning: @salesforce/cli update available from 2.108.6 to 2.113.6.
+
+Streaming logs in real time to:
+    /tmp/sfca-2025_11_23_23_52_18_390.log
+
+Selecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 0%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 14%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 28%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 30%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 31%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 32%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 33%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 34%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 35%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 36%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 37%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 38%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 39%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 40%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 41%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 42%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 53%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 57%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 62%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 72%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 74%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 75%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 75%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 84%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 85%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 87%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 96%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 98%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 99%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 100%; Elapsed time: 1sSelecting rules... done.
+
+  #    Name                                                              Engine   Severity       Tag
+ ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  1    @lwc/lwc-platform/no-aura                                         eslint   3 (Moderate)   Recommended, LWC, ErrorProne, JavaScript
+  2    @lwc/lwc-platform/no-aura-libs                                    eslint   3 (Moderate)   Recommended, LWC, ErrorProne, JavaScript
+  3    @lwc/lwc-platform/no-community-import                             eslint   3 (Moderate)   Recommended, LWC, ErrorProne, JavaScript
+  4    @lwc/lwc-platform/no-create-context-provider                      eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  5    @lwc/lwc-platform/no-deprecated-module-import                     eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  6    @lwc/lwc-platform/no-dynamic-import-identifier                    eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  7    @lwc/lwc-platform/no-inline-disable                               eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  8    @lwc/lwc-platform/no-interop                                      eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  9    @lwc/lwc-platform/no-interop-create                               eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  10   @lwc/lwc-platform/no-interop-dispatch                             eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  11   @lwc/lwc-platform/no-interop-execute                              eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  12   @lwc/lwc-platform/no-interop-execute-controller-with-client-def   eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  13   @lwc/lwc-platform/no-interop-execute-privileged                   eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  14   @lwc/lwc-platform/no-interop-execute-raw-response                 eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  15   @lwc/lwc-platform/no-interop-execute-with-callback                eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  16   @lwc/lwc-platform/no-interop-get-event                            eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  17   @lwc/lwc-platform/no-interop-get-module                           eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  18   @lwc/lwc-platform/no-interop-is-external-definition               eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  19   @lwc/lwc-platform/no-interop-load-definitions                     eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  20   @lwc/lwc-platform/no-interop-module-instrumentation               eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  21   @lwc/lwc-platform/no-interop-module-storage                       eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  22   @lwc/lwc-platform/no-interop-register                             eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  23   @lwc/lwc-platform/no-interop-render                               eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  24   @lwc/lwc-platform/no-interop-sanitize                             eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  25   @lwc/lwc-platform/no-lds-aura-controller-method                   eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  26   @lwc/lwc-platform/no-process-env                                  eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  27   @lwc/lwc-platform/no-restricted-namespaces                        eslint   3 (Moderate)   Recommended, LWC, ErrorProne, JavaScript
+  28   @lwc/lwc-platform/no-site-import                                  eslint   3 (Moderate)   Recommended, LWC, ErrorProne, JavaScript
+  29   @lwc/lwc-platform/no-wire-service                                 eslint   3 (Moderate)   Recommended, LWC, ErrorProne, JavaScript
+  30   @lwc/lwc-platform/valid-dynamic-import-hint                       eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  31   @lwc/lwc/no-api-reassignments                                     eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  32   @lwc/lwc/no-async-operation                                       eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  33   @lwc/lwc/no-attributes-during-construction                        eslint   3 (Moderate)   Recommended, LWC, ErrorProne, JavaScript
+  34   @lwc/lwc/no-deprecated                                            eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  35   @lwc/lwc/no-disallowed-lwc-imports                                eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  36   @lwc/lwc/no-document-query                                        eslint   3 (Moderate)   Recommended, LWC, ErrorProne, JavaScript
+  37   @lwc/lwc/no-inner-html                                            eslint   2 (High)       Recommended, LWC, Security, JavaScript
+  38   @lwc/lwc/no-leading-uppercase-api-name                            eslint   3 (Moderate)   Recommended, LWC, ErrorProne, JavaScript
+  39   @lwc/lwc/no-template-children                                     eslint   3 (Moderate)   Recommended, LWC, ErrorProne, JavaScript
+  40   @lwc/lwc/no-unexpected-wire-adapter-usages                        eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  41   @lwc/lwc/no-unknown-wire-adapters                                 eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  42   @lwc/lwc/prefer-custom-event                                      eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  43   @lwc/lwc/valid-api                                                eslint   3 (Moderate)   Recommended, LWC, ErrorProne, JavaScript
+  44   @lwc/lwc/valid-graphql-wire-adapter-callback-parameters           eslint   3 (Moderate)   Recommended, LWC, ErrorProne, JavaScript
+  45   @lwc/lwc/valid-track                                              eslint   3 (Moderate)   Recommended, LWC, ErrorProne, JavaScript
+  46   @lwc/lwc/valid-wire                                               eslint   3 (Moderate)   Recommended, LWC, ErrorProne, JavaScript
+  47   @salesforce/lightning/valid-apex-method-invocation                eslint   3 (Moderate)   Recommended, LWC, ErrorProne, JavaScript
+  48   import/default                                                    eslint   2 (High)       Recommended, LWC, ErrorProne, JavaScript
+  49   import/export                                                     eslint   2 (High)       Recommended, LWC, ErrorProne, JavaScript
+  50   import/named                                                      eslint   2 (High)       Recommended, LWC, ErrorProne, JavaScript
+  51   import/namespace                                                  eslint   2 (High)       Recommended, LWC, ErrorProne, JavaScript
+  52   jest/expect-expect                                                eslint   5 (Info)       Recommended, LWC, BestPractices, JavaScript
+  53   jest/no-alias-methods                                             eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  54   jest/no-commented-out-tests                                       eslint   5 (Info)       Recommended, LWC, BestPractices, JavaScript
+  55   jest/no-conditional-expect                                        eslint   2 (High)       Recommended, LWC, ErrorProne, JavaScript
+  56   jest/no-disabled-tests                                            eslint   5 (Info)       Recommended, LWC, BestPractices, JavaScript
+  57   jest/no-done-callback                                             eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  58   jest/no-export                                                    eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  59   jest/no-focused-tests                                             eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  60   jest/no-identical-title                                           eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  61   jest/no-interpolation-in-snapshots                                eslint   2 (High)       Recommended, LWC, ErrorProne, JavaScript
+  62   jest/no-jasmine-globals                                           eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  63   jest/no-mocks-import                                              eslint   2 (High)       Recommended, LWC, ErrorProne, JavaScript
+  64   jest/no-standalone-expect                                         eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  65   jest/no-test-prefixes                                             eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  66   jest/valid-describe-callback                                      eslint   2 (High)       Recommended, LWC, ErrorProne, JavaScript
+  67   jest/valid-expect                                                 eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  68   jest/valid-expect-in-promise                                      eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  69   jest/valid-title                                                  eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+
+
+
+=== Summary
+
+Found 69 rule(s) from 1 engine(s):
+    69 eslint rule(s) found.
+
+Additional log information written to:
+    /tmp/sfca-2025_11_23_23_52_18_390.log
+```
+
 ### Installation on mega-linter Docker image
 
 - Dockerfile commands :
@@ -109,7 +236,7 @@ ARG NPM_SALESFORCE_CLI_VERSION=2.108.6
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
 ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.20.5
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=6.9.0
+ARG SFDX_HARDIS_VERSION=6.12.3
 ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 RUN sf plugins install @salesforce/plugin-packaging@${NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION} \
