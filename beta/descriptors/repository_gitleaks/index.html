@@ -12619,7 +12619,7 @@
 </code></pre>
 <h2 id="gitleaks-documentation">gitleaks documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>8.28.0</strong></li>
+<li>Version in MegaLinter: <strong>8.29.1</strong></li>
 <li>Visit <a href="https://github.com/gitleaks/gitleaks#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/gitleaks/gitleaks#configuration" target="_blank">How to configure gitleaks rules</a><ul>
 <li>If custom <code>.gitleaks.toml</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.gitleaks.toml" target="_blank">.gitleaks.toml</a> will be used</li>
@@ -12912,8 +12912,9 @@ Flags:
       --no-color                      turn off color for verbose output
       --redact uint[=100]             redact secrets from logs and stdout. To redact only parts of the secret just apply a percent value from 0..100. For example --redact=20 (default 100%)
   -f, --report-format string          output format (json, csv, junit, sarif, template)
-  -r, --report-path string            report file
+  -r, --report-path string            report file (use "-" for stdout)
       --report-template string        template file used to generate the report (implies --report-format=template)
+      --timeout int                   set a timeout for gitleaks commands in seconds (default "0", no timeout is set)
   -v, --verbose                       show verbose output from scan
       --version                       version for gitleaks
 
@@ -12924,7 +12925,7 @@ Use "gitleaks [command] --help" for more information about a command.
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile"># renovate: datasource=docker depName=zricethezav/gitleaks
-ARG REPOSITORY_GITLEAKS_VERSION=v8.28.0
+ARG REPOSITORY_GITLEAKS_VERSION=v8.29.1
 FROM zricethezav/gitleaks:${REPOSITORY_GITLEAKS_VERSION} AS gitleaks
 COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 </code></pre>
