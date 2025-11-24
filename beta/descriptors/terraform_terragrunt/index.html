@@ -12385,7 +12385,7 @@
 </ul>
 <h2 id="terragrunt-documentation">terragrunt documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>0.93.8</strong></li>
+<li>Version in MegaLinter: <strong>0.93.10</strong></li>
 <li>Visit <a href="https://terragrunt.gruntwork.io" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://terragrunt.gruntwork.io/docs/getting-started/quick-start/#add-terragrunthcl-to-your-project" target="_blank">How to configure terragrunt rules</a></li>
 </ul>
@@ -12501,7 +12501,7 @@
 <td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" data-desc-position="bottom"><img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a></td>
 <td style="text-align: left;"><a href="https://megalinter.io/beta/supported-linters/">all</a></td>
 <td style="text-align: left;">Default MegaLinter Flavor</td>
-<td style="text-align: center;">127</td>
+<td style="text-align: center;">130</td>
 <td style="text-align: right;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta" data-desc-position="bottom"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta"></a> <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter" data-desc-position="bottom"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter"></a></td>
 </tr>
 <tr>
@@ -12600,7 +12600,7 @@ Global Options:
    --help, -h                 Show help. (default: false)
    --version, -v              Show terragrunt version. (default: false)
 
-Version: v0.93.8
+Version: v0.93.10
 
 Author: Gruntwork &lt;www.gruntwork.io&gt;
 </code></pre>
@@ -12609,7 +12609,7 @@ Author: Gruntwork &lt;www.gruntwork.io&gt;
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile"># renovate: datasource=docker depName=alpine/terragrunt
-ARG TERRAFORM_TERRAGRUNT_VERSION=1.13.5
+ARG TERRAFORM_TERRAGRUNT_VERSION=1.14.0
 FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} AS terragrunt
 COPY --link --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
 </code></pre>
