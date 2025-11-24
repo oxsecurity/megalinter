@@ -19767,7 +19767,7 @@
     },
     "SALESFORCE_CODE_ANALYZER_AURA_CONFIG_FILE": {
       "$id": "#/properties/SALESFORCE_CODE_ANALYZER_AURA_CONFIG_FILE",
-      "default": "--eslintconfig",
+      "default": "code-analyzer.yml",
       "description": "SALESFORCE_CODE_ANALYZER_AURA: User custom config file name if different from default",
       "title": "SALESFORCE_CODE_ANALYZER_AURA: Custom config file name",
       "type": "string"
@@ -19899,7 +19899,7 @@
     },
     "SALESFORCE_CODE_ANALYZER_LWC_CONFIG_FILE": {
       "$id": "#/properties/SALESFORCE_CODE_ANALYZER_LWC_CONFIG_FILE",
-      "default": "--eslintconfig",
+      "default": "code-analyzer.yml",
       "description": "SALESFORCE_CODE_ANALYZER_LWC: User custom config file name if different from default",
       "title": "SALESFORCE_CODE_ANALYZER_LWC: Custom config file name",
       "type": "string"
@@ -20165,7 +20165,7 @@
       "items": {
         "type": "string"
       },
-      "title": "SALESFORCE_SFDX_SCANNER_APEX: Custom arguments",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_APEX: Custom arguments",
       "type": [
         "array",
         "string"
@@ -20181,7 +20181,7 @@
       "items": {
         "type": "string"
       },
-      "title": "SALESFORCE_SFDX_SCANNER_APEX: CLI Executable",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_APEX: CLI Executable",
       "type": "array"
     },
     "SALESFORCE_SFDX_SCANNER_APEX_CLI_LINT_MODE": {
@@ -20192,7 +20192,7 @@
         "list_of_files",
         "project"
       ],
-      "title": "SALESFORCE_SFDX_SCANNER_APEX: Override default cli lint mode",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_APEX: Override default cli lint mode",
       "type": "string"
     },
     "SALESFORCE_SFDX_SCANNER_APEX_COMMAND_REMOVE_ARGUMENTS": {
@@ -20205,7 +20205,7 @@
       "items": {
         "type": "string"
       },
-      "title": "SALESFORCE_SFDX_SCANNER_APEX: Custom remove arguments",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_APEX: Custom remove arguments",
       "type": [
         "array",
         "string"
@@ -20215,26 +20215,26 @@
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_APEX_CONFIG_FILE",
       "default": "apex-pmd-ruleset.xml",
       "description": "SALESFORCE_SFDX_SCANNER_APEX: User custom config file name if different from default",
-      "title": "SALESFORCE_SFDX_SCANNER_APEX: Custom config file name",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_APEX: Custom config file name",
       "type": "string"
     },
     "SALESFORCE_SFDX_SCANNER_APEX_DIRECTORY": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_APEX_DIRECTORY",
       "default": "force-app",
       "description": "Directory that must be found to activate linter. Use value \"any\" to always activate",
-      "title": "SALESFORCE_SFDX_SCANNER_APEX: Directory containing SALESFORCE files",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_APEX: Directory containing SALESFORCE files",
       "type": "string"
     },
     "SALESFORCE_SFDX_SCANNER_APEX_DISABLE_ERRORS": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_APEX_DISABLE_ERRORS",
       "default": false,
-      "title": "SALESFORCE_SFDX_SCANNER_APEX: Linter doesn't make MegaLinter fail even if errors are found",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_APEX: Linter doesn't make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "SALESFORCE_SFDX_SCANNER_APEX_DISABLE_ERRORS_IF_LESS_THAN": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_APEX_DISABLE_ERRORS_IF_LESS_THAN",
       "default": 0,
-      "title": "SALESFORCE_SFDX_SCANNER_APEX: Maximum number of errors allowed",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_APEX: Maximum number of errors allowed",
       "type": "number"
     },
     "SALESFORCE_SFDX_SCANNER_APEX_POST_COMMANDS": {
@@ -20251,7 +20251,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "SALESFORCE_SFDX_SCANNER_APEX: Define or override a list of bash commands to run after the linter",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_APEX: Define or override a list of bash commands to run after the linter",
       "type": "array"
     },
     "SALESFORCE_SFDX_SCANNER_APEX_PRE_COMMANDS": {
@@ -20268,13 +20268,13 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "SALESFORCE_SFDX_SCANNER_APEX: Define or override a list of bash commands to run before the linter",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_APEX: Define or override a list of bash commands to run before the linter",
       "type": "array"
     },
     "SALESFORCE_SFDX_SCANNER_APEX_RULES_PATH": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_APEX_RULES_PATH",
       "description": "SALESFORCE_SFDX_SCANNER_APEX: Path where to find linter configuration file",
-      "title": "SALESFORCE_SFDX_SCANNER_APEX: Custom config file path",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_APEX: Custom config file path",
       "type": "string"
     },
     "SALESFORCE_SFDX_SCANNER_APEX_UNSECURED_ENV_VARIABLES": {
@@ -20284,7 +20284,7 @@
       "items": {
         "type": "string"
       },
-      "title": "SALESFORCE_SFDX_SCANNER_APEX: Unsecured env variables",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_APEX: Unsecured env variables",
       "type": "array"
     },
     "SALESFORCE_SFDX_SCANNER_ARGUMENTS": {
@@ -20313,7 +20313,7 @@
       "items": {
         "type": "string"
       },
-      "title": "SALESFORCE_SFDX_SCANNER_AURA: Custom arguments",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_AURA: Custom arguments",
       "type": [
         "array",
         "string"
@@ -20329,7 +20329,7 @@
       "items": {
         "type": "string"
       },
-      "title": "SALESFORCE_SFDX_SCANNER_AURA: CLI Executable",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_AURA: CLI Executable",
       "type": "array"
     },
     "SALESFORCE_SFDX_SCANNER_AURA_CLI_LINT_MODE": {
@@ -20340,7 +20340,7 @@
         "list_of_files",
         "project"
       ],
-      "title": "SALESFORCE_SFDX_SCANNER_AURA: Override default cli lint mode",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_AURA: Override default cli lint mode",
       "type": "string"
     },
     "SALESFORCE_SFDX_SCANNER_AURA_COMMAND_REMOVE_ARGUMENTS": {
@@ -20353,7 +20353,7 @@
       "items": {
         "type": "string"
       },
-      "title": "SALESFORCE_SFDX_SCANNER_AURA: Custom remove arguments",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_AURA: Custom remove arguments",
       "type": [
         "array",
         "string"
@@ -20363,26 +20363,26 @@
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_AURA_CONFIG_FILE",
       "default": "--eslintconfig",
       "description": "SALESFORCE_SFDX_SCANNER_AURA: User custom config file name if different from default",
-      "title": "SALESFORCE_SFDX_SCANNER_AURA: Custom config file name",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_AURA: Custom config file name",
       "type": "string"
     },
     "SALESFORCE_SFDX_SCANNER_AURA_DIRECTORY": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_AURA_DIRECTORY",
       "default": "force-app",
       "description": "Directory that must be found to activate linter. Use value \"any\" to always activate",
-      "title": "SALESFORCE_SFDX_SCANNER_AURA: Directory containing SALESFORCE files",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_AURA: Directory containing SALESFORCE files",
       "type": "string"
     },
     "SALESFORCE_SFDX_SCANNER_AURA_DISABLE_ERRORS": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_AURA_DISABLE_ERRORS",
       "default": false,
-      "title": "SALESFORCE_SFDX_SCANNER_AURA: Linter doesn't make MegaLinter fail even if errors are found",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_AURA: Linter doesn't make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "SALESFORCE_SFDX_SCANNER_AURA_DISABLE_ERRORS_IF_LESS_THAN": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_AURA_DISABLE_ERRORS_IF_LESS_THAN",
       "default": 0,
-      "title": "SALESFORCE_SFDX_SCANNER_AURA: Maximum number of errors allowed",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_AURA: Maximum number of errors allowed",
       "type": "number"
     },
     "SALESFORCE_SFDX_SCANNER_AURA_POST_COMMANDS": {
@@ -20399,7 +20399,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "SALESFORCE_SFDX_SCANNER_AURA: Define or override a list of bash commands to run after the linter",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_AURA: Define or override a list of bash commands to run after the linter",
       "type": "array"
     },
     "SALESFORCE_SFDX_SCANNER_AURA_PRE_COMMANDS": {
@@ -20416,13 +20416,13 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "SALESFORCE_SFDX_SCANNER_AURA: Define or override a list of bash commands to run before the linter",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_AURA: Define or override a list of bash commands to run before the linter",
       "type": "array"
     },
     "SALESFORCE_SFDX_SCANNER_AURA_RULES_PATH": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_AURA_RULES_PATH",
       "description": "SALESFORCE_SFDX_SCANNER_AURA: Path where to find linter configuration file",
-      "title": "SALESFORCE_SFDX_SCANNER_AURA: Custom config file path",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_AURA: Custom config file path",
       "type": "string"
     },
     "SALESFORCE_SFDX_SCANNER_AURA_UNSECURED_ENV_VARIABLES": {
@@ -20432,7 +20432,7 @@
       "items": {
         "type": "string"
       },
-      "title": "SALESFORCE_SFDX_SCANNER_AURA: Unsecured env variables",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_AURA: Unsecured env variables",
       "type": "array"
     },
     "SALESFORCE_SFDX_SCANNER_DIRECTORY": {
@@ -20497,7 +20497,7 @@
       "items": {
         "type": "string"
       },
-      "title": "SALESFORCE_SFDX_SCANNER_LWC: Custom arguments",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_LWC: Custom arguments",
       "type": [
         "array",
         "string"
@@ -20513,7 +20513,7 @@
       "items": {
         "type": "string"
       },
-      "title": "SALESFORCE_SFDX_SCANNER_LWC: CLI Executable",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_LWC: CLI Executable",
       "type": "array"
     },
     "SALESFORCE_SFDX_SCANNER_LWC_CLI_LINT_MODE": {
@@ -20524,7 +20524,7 @@
         "list_of_files",
         "project"
       ],
-      "title": "SALESFORCE_SFDX_SCANNER_LWC: Override default cli lint mode",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_LWC: Override default cli lint mode",
       "type": "string"
     },
     "SALESFORCE_SFDX_SCANNER_LWC_COMMAND_REMOVE_ARGUMENTS": {
@@ -20537,7 +20537,7 @@
       "items": {
         "type": "string"
       },
-      "title": "SALESFORCE_SFDX_SCANNER_LWC: Custom remove arguments",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_LWC: Custom remove arguments",
       "type": [
         "array",
         "string"
@@ -20547,26 +20547,26 @@
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_LWC_CONFIG_FILE",
       "default": "--eslintconfig",
       "description": "SALESFORCE_SFDX_SCANNER_LWC: User custom config file name if different from default",
-      "title": "SALESFORCE_SFDX_SCANNER_LWC: Custom config file name",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_LWC: Custom config file name",
       "type": "string"
     },
     "SALESFORCE_SFDX_SCANNER_LWC_DIRECTORY": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_LWC_DIRECTORY",
       "default": "force-app",
       "description": "Directory that must be found to activate linter. Use value \"any\" to always activate",
-      "title": "SALESFORCE_SFDX_SCANNER_LWC: Directory containing SALESFORCE files",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_LWC: Directory containing SALESFORCE files",
       "type": "string"
     },
     "SALESFORCE_SFDX_SCANNER_LWC_DISABLE_ERRORS": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_LWC_DISABLE_ERRORS",
       "default": false,
-      "title": "SALESFORCE_SFDX_SCANNER_LWC: Linter doesn't make MegaLinter fail even if errors are found",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_LWC: Linter doesn't make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "SALESFORCE_SFDX_SCANNER_LWC_DISABLE_ERRORS_IF_LESS_THAN": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_LWC_DISABLE_ERRORS_IF_LESS_THAN",
       "default": 0,
-      "title": "SALESFORCE_SFDX_SCANNER_LWC: Maximum number of errors allowed",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_LWC: Maximum number of errors allowed",
       "type": "number"
     },
     "SALESFORCE_SFDX_SCANNER_LWC_POST_COMMANDS": {
@@ -20583,7 +20583,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "SALESFORCE_SFDX_SCANNER_LWC: Define or override a list of bash commands to run after the linter",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_LWC: Define or override a list of bash commands to run after the linter",
       "type": "array"
     },
     "SALESFORCE_SFDX_SCANNER_LWC_PRE_COMMANDS": {
@@ -20600,13 +20600,13 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "SALESFORCE_SFDX_SCANNER_LWC: Define or override a list of bash commands to run before the linter",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_LWC: Define or override a list of bash commands to run before the linter",
       "type": "array"
     },
     "SALESFORCE_SFDX_SCANNER_LWC_RULES_PATH": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_LWC_RULES_PATH",
       "description": "SALESFORCE_SFDX_SCANNER_LWC: Path where to find linter configuration file",
-      "title": "SALESFORCE_SFDX_SCANNER_LWC: Custom config file path",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_LWC: Custom config file path",
       "type": "string"
     },
     "SALESFORCE_SFDX_SCANNER_LWC_UNSECURED_ENV_VARIABLES": {
@@ -20616,7 +20616,7 @@
       "items": {
         "type": "string"
       },
-      "title": "SALESFORCE_SFDX_SCANNER_LWC: Unsecured env variables",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_LWC: Unsecured env variables",
       "type": "array"
     },
     "SARIF_REPORTER": {
