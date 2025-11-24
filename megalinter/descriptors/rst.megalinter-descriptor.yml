@@ -41,7 +41,7 @@ linters:
           ARG PIP_PYGMENTS_VERSION=2.19.2
         - |-
           # renovate: datasource=pypi depName=restructuredtext_lint
-          ARG PIP_RESTRUCTUREDTEXT_LINT_VERSION=1.4.0
+          ARG PIP_RESTRUCTUREDTEXT_LINT_VERSION=1.4.1
       pip:
         - Pygments==${PIP_PYGMENTS_VERSION}
         - restructuredtext_lint==${PIP_RESTRUCTUREDTEXT_LINT_VERSION}
