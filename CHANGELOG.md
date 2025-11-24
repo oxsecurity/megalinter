@@ -154,6 +154,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [robocop](https://github.com/MarketSquare/robotframework-robocop) from 6.10.1 to **6.11.0** on 2025-11-23
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.13.5 to **1.14.0** on 2025-11-23
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.93.8 to **0.93.10** on 2025-11-23
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.89.2 to **3.90.0** on 2025-11-24
+  - [rst-lint](https://github.com/twolfson/restructuredtext-lint) from 1.4.0 to **1.4.1** on 2025-11-24
 <!-- linter-versions-end -->
 
 ## [v9.1.0] - 2025-10-07
