@@ -158,6 +158,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [rst-lint](https://github.com/twolfson/restructuredtext-lint) from 1.4.0 to **1.4.1** on 2025-11-24
   - [rst-lint](https://github.com/twolfson/restructuredtext-lint) from 1.4.1 to **2.0.2** on 2025-11-24
   - [raku](https://raku.org/) from 2024.12 to **2025.11** on 2025-11-24
+  - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.28.0 to **8.29.1** on 2025-11-24
+  - [grype](https://github.com/anchore/grype) from 0.104.0 to **0.104.1** on 2025-11-24
 <!-- linter-versions-end -->
 
 ## [v9.1.0] - 2025-10-07

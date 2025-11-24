@@ -34,18 +34,18 @@ If MegaLinter with gitleaks runs against a PR on a platform not listed above, an
 
 You can still choose to scan only PR commits in your CI/CD platform by setting the following MegaLinter environment variables:
 
-- `PULL_REQUEST=true`\*
-- `REPOSITORY_GITLEAKS_PR_COMMITS_SCAN: true`
-- `REPOSITORY_GITLEAKS_PR_SOURCE_SHA` with last commit sha from your PR and `REPOSITORY_GITLEAKS_PR_TARGET_SHA` commit sha from your target branch (for example, `main` if you do PR to main branch)
+  - `PULL_REQUEST=true`\*
+  - `REPOSITORY_GITLEAKS_PR_COMMITS_SCAN: true`
+  - `REPOSITORY_GITLEAKS_PR_SOURCE_SHA` with last commit sha from your PR and `REPOSITORY_GITLEAKS_PR_TARGET_SHA` commit sha from your target branch (for example, `main` if you do PR to main branch)
 
     Example commands:
 
-  - Source commit SHA:
+      - Source commit SHA:
         ```bash
         git rev-list -n 1 refs/remotes/origin/<source_branch>
         ```
 
-  - Target commit SHA:
+      - Target commit SHA:
         ```bash
         git rev-parse refs/remotes/origin/<target_branch>
         ```
@@ -102,7 +102,7 @@ git fetch --depth=0
 
 ## gitleaks documentation
 
-- Version in MegaLinter: **8.28.0**
+- Version in MegaLinter: **8.29.1**
 - Visit [Official Web Site](https://github.com/gitleaks/gitleaks#readme){target=_blank}
 - See [How to configure gitleaks rules](https://github.com/gitleaks/gitleaks#configuration){target=_blank}
   - If custom `.gitleaks.toml` config file isn't found, [.gitleaks.toml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.gitleaks.toml){target=_blank} will be used
@@ -224,8 +224,9 @@ Flags:
       --no-color                      turn off color for verbose output
       --redact uint[=100]             redact secrets from logs and stdout. To redact only parts of the secret just apply a percent value from 0..100. For example --redact=20 (default 100%)
   -f, --report-format string          output format (json, csv, junit, sarif, template)
-  -r, --report-path string            report file
+  -r, --report-path string            report file (use "-" for stdout)
       --report-template string        template file used to generate the report (implies --report-format=template)
+      --timeout int                   set a timeout for gitleaks commands in seconds (default "0", no timeout is set)
   -v, --verbose                       show verbose output from scan
       --version                       version for gitleaks
 
@@ -237,7 +238,7 @@ Use "gitleaks [command] --help" for more information about a command.
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=docker depName=zricethezav/gitleaks
-ARG REPOSITORY_GITLEAKS_VERSION=v8.28.0
+ARG REPOSITORY_GITLEAKS_VERSION=v8.29.1
 FROM zricethezav/gitleaks:${REPOSITORY_GITLEAKS_VERSION} AS gitleaks
 COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 ```
