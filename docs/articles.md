@@ -117,9 +117,6 @@ description: List of all known articles, blog posts and videos that talk about M
 - [rubocop](https://docs.rubocop.org/rubocop/integration_with_other_tools.html#mega-linter-integration){target=_blank}
 - [scalafix](https://scalacenter.github.io/scalafix/docs/users/installation.html#plugins-for-other-build-tools){target=_blank}
 - [secretlint](https://github.com/secretlint/secretlint#mega-linter){target=_blank}
-- [sfdx-scanner-apex](https://github.com/forcedotcom/code-analyzer){target=_blank}
-- [sfdx-scanner-aura](https://github.com/forcedotcom/code-analyzer){target=_blank}
-- [sfdx-scanner-lwc](https://github.com/forcedotcom/code-analyzer){target=_blank}
 <!-- referring-linters-end -->
 
 <!-- /* cspell:enable */ -->

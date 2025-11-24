@@ -26,7 +26,7 @@ description: How to use rst-lint (configure, ignore files, ignore errors, help &
 
 ## rst-lint documentation
 
-- Version in MegaLinter: **1.4.0**
+- Version in MegaLinter: **1.4.1**
 - Visit [Official Web Site](https://github.com/twolfson/restructuredtext-lint#readme){target=_blank}
 - See [How to configure rst-lint rules](https://github.com/twolfson/restructuredtext-lint#cli-utility){target=_blank}
 - See [How to disable rst-lint rules in files](https://docutils.sourceforge.io/docs/ref/rst/directives.html#raw-data-pass-through){target=_blank}
@@ -116,9 +116,9 @@ options:
 # renovate: datasource=pypi depName=Pygments
 ARG PIP_PYGMENTS_VERSION=2.19.2
 # renovate: datasource=pypi depName=restructuredtext_lint
-ARG PIP_RESTRUCTUREDTEXT_LINT_VERSION=1.4.0
+ARG PIP_RESTRUCTUREDTEXT_LINT_VERSION=1.4.1
 ```
 
 - PIP packages (Python):
   - [Pygments==2.19.2](https://pypi.org/project/Pygments/2.19.2)
-  - [restructuredtext_lint==1.4.0](https://pypi.org/project/restructuredtext_lint/1.4.0)
+  - [restructuredtext_lint==1.4.1](https://pypi.org/project/restructuredtext_lint/1.4.1)
