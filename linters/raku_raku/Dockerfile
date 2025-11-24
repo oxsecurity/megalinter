@@ -50,7 +50,7 @@ FROM python:3.13-alpine3.22
 #ARG__START
 # renovate: datasource=github-tags depName=nxadm/rakudo-pkg
 ARG RAKU_RAKU_VERSION=2025.11
-ARG RAKU_RAKU_ALPINE_VERSION=3.20
+ARG RAKU_RAKU_ALPINE_VERSION=3.22
 
 #ARG__END
 

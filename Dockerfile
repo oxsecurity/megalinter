@@ -292,7 +292,7 @@ ARG NPM_PYRIGHT_VERSION=1.1.407
 ARG PIP_RUFF_VERSION=0.14.5
 # renovate: datasource=github-tags depName=nxadm/rakudo-pkg
 ARG RAKU_RAKU_VERSION=2025.11
-ARG RAKU_RAKU_ALPINE_VERSION=3.20
+ARG RAKU_RAKU_ALPINE_VERSION=3.22
 
 # renovate: datasource=pypi depName=checkov
 ARG PIP_CHECKOV_VERSION=3.2.493
