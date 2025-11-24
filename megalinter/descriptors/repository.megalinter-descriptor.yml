@@ -61,7 +61,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=checkov
-          ARG PIP_CHECKOV_VERSION=3.2.493
+          ARG PIP_CHECKOV_VERSION=3.2.495
       pip:
         - checkov==${PIP_CHECKOV_VERSION}
     test_folder: repository_checkov
@@ -876,7 +876,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=docker depName=trufflesecurity/trufflehog
-          ARG REPOSITORY_TRUFFLEHOG_VERSION=3.91.0
+          ARG REPOSITORY_TRUFFLEHOG_VERSION=3.91.1
         - FROM trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION} AS trufflehog
         - COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
     test_folder: gitleaks

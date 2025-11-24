@@ -113,7 +113,7 @@ linters:
           ARG NPM_ESLINT_PLUGIN_PROMISE_VERSION=6.6.0
         - |-
           # renovate: datasource=npm depName=eslint-plugin-vue
-          ARG NPM_ESLINT_PLUGIN_VUE_VERSION=10.5.1
+          ARG NPM_ESLINT_PLUGIN_VUE_VERSION=10.6.0
         - |-
           # renovate: datasource=npm depName=@babel/core
           ARG NPM_BABEL_CORE_VERSION=7.28.5
