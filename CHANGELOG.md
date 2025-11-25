@@ -160,6 +160,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [raku](https://raku.org/) from 2024.12 to **2025.11** on 2025-11-24
   - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.28.0 to **8.29.1** on 2025-11-24
   - [grype](https://github.com/anchore/grype) from 0.104.0 to **0.104.1** on 2025-11-24
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 25.11.0 to **25.11.1** on 2025-11-25
 <!-- linter-versions-end -->
 
 ## [v9.1.0] - 2025-10-07
