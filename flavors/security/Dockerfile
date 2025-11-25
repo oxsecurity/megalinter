@@ -90,7 +90,7 @@ ARG PIP_CFN_LINT_VERSION=1.41.0
 # renovate: datasource=github-tags depName=kubescape/kubescape
 ARG KUBERNETES_KUBESCAPE_VERSION=3.0.45
 # renovate: datasource=pypi depName=bandit
-ARG PIP_BANDIT_VERSION=1.9.1
+ARG PIP_BANDIT_VERSION=1.9.2
 # renovate: datasource=pypi depName=bandit_sarif_formatter
 ARG PIP_BANDIT_SARIF_FORMATTER_VERSION=1.1.1
 # renovate: datasource=pypi depName=checkov
