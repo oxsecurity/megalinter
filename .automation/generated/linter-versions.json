@@ -1,6 +1,6 @@
 {
     "actionlint": "1.7.9",
-    "ansible-lint": "25.11.0",
+    "ansible-lint": "25.11.1",
     "arm-ttk": "0.0.0",
     "bandit": "1.9.1",
     "bash-exec": "5.2.37",
