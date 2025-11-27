@@ -6,6 +6,7 @@ mega-linter-runner
 .coverage
 .cache
 .env
+.python-version
 .yarn-integrity
 *.tgz
 .npm
