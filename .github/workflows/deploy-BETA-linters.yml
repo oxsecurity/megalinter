@@ -156,7 +156,7 @@ jobs:
         uses: benc-uk/workflow-dispatch@v1
         with:
           workflow: mirror-docker-image.yml
-          inputs: '{ "source-image": "${{ fromJson(steps.meta.outputs.json).tags[0]}}", "target-image": "${{ fromJson(steps.meta-dhub.outputs.json).tags[0]}}" }'
+          inputs: '{ "source-image": "${{ fromJson(steps.meta.outputs.json).tags[0]}}", "target-image": "${{ fromJson(steps.meta-dhub.outputs.json).tags[0]}}", "free-space-before": "false" }'
 
       ##############################################
       # Check Docker image security with Trivy #
