@@ -15,6 +15,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Disabled linters
   - Reactivate [checkov](https://megalinter.io/beta/descriptors/repository_checkov/)
 
+- Deprecated linters
+  - Deprecate [terrascan](https://megalinter.io/latest/descriptors/terraform_terrascan/) as the project is discontinued. Will be completely removed in a future version.
+
 - Removed linters
 
 - Media
@@ -24,6 +27,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Fixes
   - [#6544](https://github.com/oxsecurity/megalinter/issues/6544): Add GITHUB_TOKEN in docker build command for custom flavor
+  - Hide warning when compiling a regex
 
 - Reporters
 
@@ -32,6 +36,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Flavors
 
 - CI
+  - Optimize performances of standalone linters releases
 
 - mega-linter-runner
   - Handle upgrade of stefanzweifel/git-auto-commit-action to v7
@@ -161,6 +166,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.28.0 to **8.29.1** on 2025-11-24
   - [grype](https://github.com/anchore/grype) from 0.104.0 to **0.104.1** on 2025-11-24
   - [ansible-lint](https://ansible-lint.readthedocs.io/) from 25.11.0 to **25.11.1** on 2025-11-25
+  - [bandit](https://bandit.readthedocs.io/en/latest/) from 1.9.1 to **1.9.2** on 2025-11-28
 <!-- linter-versions-end -->
 
 ## [v9.1.0] - 2025-10-07
