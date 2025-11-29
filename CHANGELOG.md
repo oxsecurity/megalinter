@@ -37,6 +37,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - CI
   - Optimize performances of standalone linters releases
+  - Add conversion from Jenkins variables to related Git provider variables
 
 - mega-linter-runner
   - Handle upgrade of stefanzweifel/git-auto-commit-action to v7

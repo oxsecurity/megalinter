@@ -1148,6 +1148,7 @@
         "mypy",
         "myrepository",
         "myrulesfolder",
+        "mytoken",
         "natbib",
         "nbbytes",
         "ndiff",
