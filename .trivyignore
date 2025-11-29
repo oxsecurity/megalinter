@@ -164,6 +164,8 @@ CVE-2025-64118
 CVE-2025-65106
 # https://avd.aquasec.com/nvd/cve-2025-64756 : Glob command injection. Harmless in MegaLinter context as user inputs are not passed to glob patterns
 CVE-2025-64756
+# https://avd.aquasec.com/nvd/cve-2025-65965 : Credentials are hidden to linters logs, so not applicable in MegaLinter context
+CVE-2025-65965
 # Dockerfile
 DS001
 DS002

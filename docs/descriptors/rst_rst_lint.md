@@ -26,7 +26,7 @@ description: How to use rst-lint (configure, ignore files, ignore errors, help &
 
 ## rst-lint documentation
 
-- Version in MegaLinter: **1.4.1**
+- Version in MegaLinter: **2.0.2**
 - Visit [Official Web Site](https://github.com/twolfson/restructuredtext-lint#readme){target=_blank}
 - See [How to configure rst-lint rules](https://github.com/twolfson/restructuredtext-lint#cli-utility){target=_blank}
 - See [How to disable rst-lint rules in files](https://docutils.sourceforge.io/docs/ref/rst/directives.html#raw-data-pass-through){target=_blank}
@@ -86,7 +86,7 @@ rst-lint myfile.rst
 ### Help content
 
 ```shell
-usage: rst-lint [-h] [--version] [--format {text,json}] [--encoding ENCODING]
+usage: rst-lint [-h] [--version] [--format {text,json}]
                 [--level {debug,info,warning,error,severe}]
                 [--rst-prolog RST_PROLOG]
                 path [path ...]
@@ -101,7 +101,6 @@ options:
   -h, --help            show this help message and exit
   --version             show program's version number and exit
   --format {text,json}  Format of the output (default: "text")
-  --encoding ENCODING   Encoding of the input file (e.g. "utf-8")
   --level {debug,info,warning,error,severe}
                         Minimum error level to report (default: "warning")
   --rst-prolog RST_PROLOG
@@ -116,9 +115,9 @@ options:
 # renovate: datasource=pypi depName=Pygments
 ARG PIP_PYGMENTS_VERSION=2.19.2
 # renovate: datasource=pypi depName=restructuredtext_lint
-ARG PIP_RESTRUCTUREDTEXT_LINT_VERSION=1.4.1
+ARG PIP_RESTRUCTUREDTEXT_LINT_VERSION=2.0.2
 ```
 
 - PIP packages (Python):
   - [Pygments==2.19.2](https://pypi.org/project/Pygments/2.19.2)
-  - [restructuredtext_lint==1.4.1](https://pypi.org/project/restructuredtext_lint/1.4.1)
+  - [restructuredtext_lint==2.0.2](https://pypi.org/project/restructuredtext_lint/2.0.2)
