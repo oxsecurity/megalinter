@@ -31,6 +31,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Flavors
 
 - CI
+  - Free disk space on GitHub actions runner when releasing a new flavor
 
 - mega-linter-runner
 
@@ -137,7 +138,6 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.90.11 to **3.91.1**
   - [vale](https://vale.sh/) from 3.12.0 to **3.13.0**
   - [xmllint](https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home) from 21308 to **21309**
-<!-- linter-versions-end -->
 
 ## [v9.1.0] - 2025-10-07
 
