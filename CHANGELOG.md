@@ -15,6 +15,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Disabled linters
   - Reactivate [checkov](https://megalinter.io/beta/descriptors/repository_checkov/)
 
+- Deprecated linters
+  - Deprecate [terrascan](https://megalinter.io/latest/descriptors/terraform_terrascan/) as the project is discontinued. Will be completely removed in a future version.
+
 - Removed linters
 
 - Media
