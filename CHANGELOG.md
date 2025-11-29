@@ -50,7 +50,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Deprecated linters
   - Deprecate [terrascan](https://megalinter.io/latest/descriptors/terraform_terrascan/) as the project is discontinued. Will be completely removed in a future version.
-  - SALESFORCE_SFDX_SCANNER_* linters have been deprecated and will be removed in a future version. (they are replaced by SALESFORCE_CODE_ANALYZER_* linters)
+  - SALESFORCE_SFDX_SCANNER_*linters have been deprecated and will be removed in a future version. (they are replaced by SALESFORCE_CODE_ANALYZER_* linters)
 
 - Media
   - [Looking for the best CI/CD Pipeline Linting Tool? Try MegaLinter!](https://medium.com/@SeasonedDeveloper/looking-for-the-best-ci-cd-pipeline-linting-tool-try-megalinter-d89c9eba850d), by [Seasoned Developer](https://medium.com/@SeasonedDeveloper)
@@ -62,23 +62,23 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Fixes
   - [#6544](https://github.com/oxsecurity/megalinter/issues/6544): Add GITHUB_TOKEN in docker build command for custom flavor
   - Hide warning when compiling a regex
-  - Fix formatting in descriptor files to reduce changes in generated markdown, by @echoix in https://github.com/oxsecurity/megalinter/pull/6449
+  - Fix formatting in descriptor files to reduce changes in generated markdown, by @echoix in <https://github.com/oxsecurity/megalinter/pull/6449>
 
 - Reporters
   - Add conversion from Jenkins variables to related Git based reporters variables
 
 - Doc
-  - Keep jsonschema html docs updated when using `build.py --doc`, by @echoix in https://github.com/oxsecurity/megalinter/pull/6447
-  - Commit updated license info generated from build script by @echoix in https://github.com/oxsecurity/megalinter/pull/6448
-  - Recreate docs/descriptors folder, delete old pages by @echoix in https://github.com/oxsecurity/megalinter/pull/6451
+  - Keep jsonschema html docs updated when using `build.py --doc`, by @echoix in <https://github.com/oxsecurity/megalinter/pull/6447>
+  - Commit updated license info generated from build script by @echoix in <https://github.com/oxsecurity/megalinter/pull/6448>
+  - Recreate docs/descriptors folder, delete old pages by @echoix in <https://github.com/oxsecurity/megalinter/pull/6451>
 
 - Flavors
-  - Add GITHUB_TOKEN in docker buildx build command for custom flavor, by @davidfevre-gouv-nc in https://github.com/oxsecurity/megalinter/pull/6545
+  - Add GITHUB_TOKEN in docker buildx build command for custom flavor, by @davidfevre-gouv-nc in <https://github.com/oxsecurity/megalinter/pull/6545>
 
 - CI
   - Optimize performances of standalone linters releases
-  - Renovate: Add langchain group for package updates, by @echoix in https://github.com/oxsecurity/megalinter/pull/6400
-  - Refactor file handling in build.py to use pathlib for improved readability, by @echoix in https://github.com/oxsecurity/megalinter/pull/6450
+  - Renovate: Add langchain group for package updates, by @echoix in <https://github.com/oxsecurity/megalinter/pull/6400>
+  - Refactor file handling in build.py to use pathlib for improved readability, by @echoix in <https://github.com/oxsecurity/megalinter/pull/6450>
 
 - mega-linter-runner
   - Handle upgrade of stefanzweifel/git-auto-commit-action to v7
