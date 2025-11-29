@@ -7,6 +7,7 @@ import os
 import re
 import tempfile
 import urllib.parse
+import warnings
 from fnmatch import fnmatch
 from pathlib import Path
 from typing import Any, Optional, Pattern, Sequence
@@ -640,7 +641,9 @@ def keep_only_valid_regex_patterns(patterns, fail=False):
         # First, attempt to fix the pattern
         fixed_pattern = fix_regex_pattern(pattern)
         try:
-            re.compile(fixed_pattern)  # Check if the pattern is valid
+            with warnings.catch_warnings():
+                warnings.simplefilter("ignore", FutureWarning)
+                re.compile(fixed_pattern)  # Check if the pattern is valid
             # Skip if pattern has nested quantifiers (ReDoS risk)
             if nested_quantifier_regex.search(fixed_pattern):
                 logging.debug(
