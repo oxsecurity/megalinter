@@ -11,7 +11,15 @@ description: How to use terrascan (configure, ignore files, ignore errors, help 
   </a>
 </div>
 
-![downgraded version](https://shields.io/badge/-downgraded%20version-orange) [![GitHub stars](https://img.shields.io/github/stars/tenable/terrascan?cacheSeconds=3600)](https://github.com/tenable/terrascan) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/tenable/terrascan?sort=semver)](https://github.com/tenable/terrascan/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/tenable/terrascan)](https://github.com/tenable/terrascan/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/tenable/terrascan)](https://github.com/tenable/terrascan/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/tenable/terrascan)](https://github.com/tenable/terrascan/graphs/contributors/)
+![deprecated](https://shields.io/badge/-deprecated-red) ![downgraded version](https://shields.io/badge/-downgraded%20version-orange) [![GitHub stars](https://img.shields.io/github/stars/tenable/terrascan?cacheSeconds=3600)](https://github.com/tenable/terrascan) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/tenable/terrascan?sort=semver)](https://github.com/tenable/terrascan/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/tenable/terrascan)](https://github.com/tenable/terrascan/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/tenable/terrascan)](https://github.com/tenable/terrascan/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/tenable/terrascan)](https://github.com/tenable/terrascan/graphs/contributors/)
+
+> This linter has been deprecated.
+>
+> Repo archived. https://github.com/tenable/terrascan
+>
+> You should disable terrascan by adding it in DISABLE_LINTERS property.
+>
+> It will be maintained at least until the next major release.
 
 **Terrascan** is a comprehensive static code analyzer for Infrastructure as Code that detects security vulnerabilities, compliance violations, and misconfigurations in cloud infrastructure. It supports multiple IaC tools including Terraform, Kubernetes, Docker, AWS CloudFormation, and more, providing over 1000 built-in policies across major cloud providers and compliance frameworks.
 
