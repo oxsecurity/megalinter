@@ -168,6 +168,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [grype](https://github.com/anchore/grype) from 0.104.0 to **0.104.1** on 2025-11-24
   - [ansible-lint](https://ansible-lint.readthedocs.io/) from 25.11.0 to **25.11.1** on 2025-11-25
   - [bandit](https://bandit.readthedocs.io/en/latest/) from 1.9.1 to **1.9.2** on 2025-11-28
+  - [editorconfig-checker](https://editorconfig-checker.github.io/) from 3.5.0 to **3.6.0** on 2025-11-29
+  - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.29.1 to **8.30.0** on 2025-11-29
 <!-- linter-versions-end -->
 
 ## [v9.1.0] - 2025-10-07
