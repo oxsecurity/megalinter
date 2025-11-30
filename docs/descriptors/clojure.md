@@ -20,7 +20,7 @@ description: clj-kondo, cljstyle are available to analyze CLOJURE files in MegaL
   - `.clj`
   - `.cljs`
   - `.cljc`
-  - `.edn`
+  - `.end`
 
 ## Configuration in MegaLinter
 
