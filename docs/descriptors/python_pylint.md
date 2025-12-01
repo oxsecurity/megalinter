@@ -11,7 +11,7 @@ description: How to use pylint (configure, ignore files, ignore errors, help & v
 
 **Key features:**
 
-- **Advanced Code Inference**: Uses internal code representation (asteroid) to infer actual values and types, catching more complex issues
+- **Advanced Code Inference**: Uses internal code representation (astroid) to infer actual values and types, catching more complex issues
 - **Comprehensive Analysis**: Checks for errors, style violations, code complexity, and potential bugs
 - **Highly Configurable**: Extensive configuration options to customize rules and integrate with any coding standard
 - **Plugin Ecosystem**: Rich ecosystem of plugins for popular frameworks (Django, Pydantic, etc.)

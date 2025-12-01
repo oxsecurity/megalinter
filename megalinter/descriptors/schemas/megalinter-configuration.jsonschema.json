@@ -2072,7 +2072,7 @@
     },
     "CLOJURE_CLJ_KONDO_CONFIG_FILE": {
       "$id": "#/properties/CLOJURE_CLJ_KONDO_CONFIG_FILE",
-      "default": ".clj-kondo/config.end",
+      "default": ".clj-kondo/config.edn",
       "description": "CLOJURE_CLJ_KONDO: User custom config file name if different from default",
       "title": "CLOJURE_CLJ_KONDO: Custom config file name",
       "type": "string"
@@ -2103,7 +2103,7 @@
     },
     "CLOJURE_CLJ_KONDO_FILE_NAME": {
       "$id": "#/properties/CLOJURE_CLJ_KONDO_FILE_NAME",
-      "default": ".clj-kondo/config.end",
+      "default": ".clj-kondo/config.edn",
       "description": "CLOJURE_CLJ_KONDO: User custom config file name if different from default",
       "title": "CLOJURE_CLJ_KONDO: Custom config file name",
       "type": "string"
@@ -14203,7 +14203,7 @@
       "$id": "#/properties/PRINT_ALPACA",
       "default": true,
       "description": "Enable printing alpaca image to console output",
-      "title": "Print le llama NUL (alpaca)",
+      "title": "Print le lama NUL (alpaca)",
       "type": "boolean"
     },
     "PROTOBUF_FILTER_REGEX_EXCLUDE": {

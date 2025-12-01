@@ -290,7 +290,7 @@ Usage:
       bicep build-params --pattern './dir/**/*.bicepparam'
 
   bicep jsonrpc [options]
-    Starts the Bicep CLI listening for JSONRPC messages, for programmatically interacting with Bicep. See https://aka.ms/bicep/jsonrpc for more information.
+    Starts the Bicep CLI listening for JSONRPC messages, for programatically interacting with Bicep. See https://aka.ms/bicep/jsonrpc for more information.
 
     Options:
       --pipe <name>    Bicep CLI will connect to the supplied named pipe as a client, and start listening for JSONRPC requests.

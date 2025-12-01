@@ -172,7 +172,7 @@ MegaLinter includes built-in logic to detect common bots and automated PRs:
 
 - **GitHub Actions**: Detects Dependabot, Renovate, and GitHub Actions bot PRs
 - **GitLab CI**: Identifies bot merge requests using author and title patterns
-- **Azure Pipelines**: Checks branch names and requester information for bot patterns
+- **Azure Pipelines**: Checks branch names and requestor information for bot patterns
 - **Bitbucket**: Analyzes branch names and PR titles for automation patterns
 - **Jenkins**: Examines branch names and change authors for bot signatures
 - **Drone CI**: Filters based on PR titles and commit authors

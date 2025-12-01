@@ -100,7 +100,7 @@ Usage: gherkin-lint [options] <feature-files>
 Options:
   -f, --format [format]  output format. Possible values: json, stylish, xunit.
                          Defaults to stylish
-  -i, --ignore <...>     comma separated list of files/glob patterns that the
+  -i, --ignore <...>     comma seperated list of files/glob patterns that the
                          linter should ignore, overrides .gherkin-lintignore
                          file
   -c, --config [config]  configuration file, defaults to .gherkin-lintrc
