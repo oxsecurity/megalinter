@@ -13,7 +13,7 @@ description: How to use clj-kondo (configure, ignore files, ignore errors, help 
 
 [![GitHub stars](https://img.shields.io/github/stars/borkdude/clj-kondo?cacheSeconds=3600)](https://github.com/borkdude/clj-kondo) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/borkdude/clj-kondo?sort=semver)](https://github.com/borkdude/clj-kondo/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/borkdude/clj-kondo)](https://github.com/borkdude/clj-kondo/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/borkdude/clj-kondo)](https://github.com/borkdude/clj-kondo/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/borkdude/clj-kondo)](https://github.com/borkdude/clj-kondo/graphs/contributors/)
 
-**clj-kondo** is a static analyzer and linter for Clojure code that sparks joy. It performs static analysis on Clojure, ClojureScript and EDN files to detect potential errors without executing your program.
+**clj-kondo** is a static analyzer and linter for Clojure code that sparks joy. It performs static analysis on Clojure, ClojureScript and END files to detect potential errors without executing your program.
 
 **Key Features:**
 
@@ -29,7 +29,7 @@ description: How to use clj-kondo (configure, ignore files, ignore errors, help 
 - Version in MegaLinter: **2025.10.23**
 - Visit [Official Web Site](https://github.com/borkdude/clj-kondo#readme){target=_blank}
 - See [How to configure clj-kondo rules](https://github.com/borkdude/clj-kondo/blob/master/doc/config.md#configuration){target=_blank}
-  - If custom `.clj-kondo/config.edn` config file isn't found, [.clj-kondo/config.edn](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.clj-kondo/config.edn){target=_blank} will be used
+  - If custom `.clj-kondo/config.end` config file isn't found, [.clj-kondo/config.end](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.clj-kondo/config.end){target=_blank} will be used
 - See [How to disable clj-kondo rules in files](https://github.com/clj-kondo/clj-kondo/blob/master/doc/config.md#ignore-warnings-in-an-expression){target=_blank}
 - See [Index of problems detected by clj-kondo](https://github.com/borkdude/clj-kondo#features){target=_blank}
 
@@ -47,12 +47,12 @@ description: How to use clj-kondo (configure, ignore files, ignore errors, help 
 | CLOJURE_CLJ_KONDO_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                           | Include every file                              |
 | CLOJURE_CLJ_KONDO_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                     | Exclude no file                                 |
 | CLOJURE_CLJ_KONDO_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `project`: Call the linter from the root of the project                                                    | `file`                                          |
-| CLOJURE_CLJ_KONDO_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                      | `[".clj", ".cljs", ".cljc", ".edn"]`            |
+| CLOJURE_CLJ_KONDO_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                      | `[".clj", ".cljs", ".cljc", ".end"]`            |
 | CLOJURE_CLJ_KONDO_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file                              |
 | CLOJURE_CLJ_KONDO_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                               | None                                            |
 | CLOJURE_CLJ_KONDO_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                | None                                            |
 | CLOJURE_CLJ_KONDO_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling CLOJURE_CLJ_KONDO and its pre/post commands                                                                                     | None                                            |
-| CLOJURE_CLJ_KONDO_CONFIG_FILE                 | clj-kondo configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                         | `.clj-kondo/config.edn`                         |
+| CLOJURE_CLJ_KONDO_CONFIG_FILE                 | clj-kondo configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                         | `.clj-kondo/config.end`                         |
 | CLOJURE_CLJ_KONDO_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                 | Workspace folder, then MegaLinter default rules |
 | CLOJURE_CLJ_KONDO_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`                                         |
 | CLOJURE_CLJ_KONDO_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                             |
@@ -82,7 +82,7 @@ This linter is available in the following flavors
 
 ### How are identified applicable files
 
-- File extensions: `.clj`, `.cljs`, `.cljc`, `.edn`
+- File extensions: `.clj`, `.cljs`, `.cljc`, `.end`
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
@@ -97,7 +97,7 @@ clj-kondo --lint myfile.clj
 ```
 
 ```shell
-clj-kondo --lint --config .clj-kondo/config.edn myfile.clj
+clj-kondo --lint --config .clj-kondo/config.end myfile.clj
 ```
 
 
@@ -125,7 +125,7 @@ Options:
   using `--cache-dir`. If `--cache-dir` is not set, cache is resolved using the
   nearest `.clj-kondo` directory in the current and parent directories.
 
-  --config <config>: extra config that is merged. May be a file or an EDN expression. See https://github.com/clj-kondo/clj-kondo/blob/master/doc/config.md.
+  --config <config>: extra config that is merged. May be a file or an END expression. See https://github.com/clj-kondo/clj-kondo/blob/master/doc/config.md.
 
   --config-dir <config-dir>: use this config directory instead of auto-detected
     .clj-kondo dir.
