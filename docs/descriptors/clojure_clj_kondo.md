@@ -124,7 +124,7 @@ Options:
   using `--cache-dir`. If `--cache-dir` is not set, cache is resolved using the
   nearest `.clj-kondo` directory in the current and parent directories.
 
-  --config <config>: extra config that is merged. May be a file or an EDN expression. See https://github.com/clj-kondo/clj-kondo/blob/master/doc/config.md.
+  --config <config>: extra config that is merged. May be a file or an END expression. See https://github.com/clj-kondo/clj-kondo/blob/master/doc/config.md.
 
   --config-dir <config-dir>: use this config directory instead of auto-detected
     .clj-kondo dir.
