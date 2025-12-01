@@ -350,6 +350,7 @@ nav:
               - "proselint": "descriptors/spell_proselint.md"
               - "vale": "descriptors/spell_vale.md"
               - "lychee": "descriptors/spell_lychee.md"
+              - "codespell": "descriptors/spell_codespell.md"
 # other-end
   - "Reporters":
       - "All reporters": "reporters.md"

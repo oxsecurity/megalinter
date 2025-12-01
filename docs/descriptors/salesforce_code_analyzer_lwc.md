@@ -75,8 +75,8 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                       | Description                             | Embedded linters |                                                                                                                                                                                             Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------|:----------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor               |       130        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://megalinter.io/beta/flavors/salesforce/) | Optimized for Salesforce based projects |        56        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor               |       131        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://megalinter.io/beta/flavors/salesforce/) | Optimized for Salesforce based projects |        57        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce) |
 
 ## Behind the scenes
 
@@ -137,15 +137,15 @@ GLOBAL FLAGS
 
 
 Streaming logs in real time to:
-    /tmp/sfca-2025_11_29_17_32_03_226.log
+    /tmp/sfca-2025_12_01_10_56_34_566.log
 
 Selecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 0%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 14%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 28%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 30%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 31%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 32%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 33%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 34%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 35%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 36%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 37%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 38%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 39%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 40%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 41%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 42%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 53%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 57%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 62%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 72%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 74%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 75%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 75%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 84%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 85%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 87%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 96%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 98%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 99%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 100%; Elapsed time: 1sSelecting rules... done.
 
   #    Name                                                              Engine   Severity       Tag
  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-  1    @lwc/lwc-platform/no-aura                                         eslint   3 (Moderate)   Recommended, LWC, error-prone, JavaScript
-  2    @lwc/lwc-platform/no-aura-libs                                    eslint   3 (Moderate)   Recommended, LWC, error-prone, JavaScript
-  3    @lwc/lwc-platform/no-community-import                             eslint   3 (Moderate)   Recommended, LWC, error-prone, JavaScript
+  1    @lwc/lwc-platform/no-aura                                         eslint   3 (Moderate)   Recommended, LWC, ErrorProne, JavaScript
+  2    @lwc/lwc-platform/no-aura-libs                                    eslint   3 (Moderate)   Recommended, LWC, ErrorProne, JavaScript
+  3    @lwc/lwc-platform/no-community-import                             eslint   3 (Moderate)   Recommended, LWC, ErrorProne, JavaScript
   4    @lwc/lwc-platform/no-create-context-provider                      eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
   5    @lwc/lwc-platform/no-deprecated-module-import                     eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
   6    @lwc/lwc-platform/no-dynamic-import-identifier                    eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
@@ -169,46 +169,46 @@ Selecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, s
   24   @lwc/lwc-platform/no-interop-sanitize                             eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
   25   @lwc/lwc-platform/no-lds-aura-controller-method                   eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
   26   @lwc/lwc-platform/no-process-env                                  eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
-  27   @lwc/lwc-platform/no-restricted-namespaces                        eslint   3 (Moderate)   Recommended, LWC, error-prone, JavaScript
-  28   @lwc/lwc-platform/no-site-import                                  eslint   3 (Moderate)   Recommended, LWC, error-prone, JavaScript
-  29   @lwc/lwc-platform/no-wire-service                                 eslint   3 (Moderate)   Recommended, LWC, error-prone, JavaScript
+  27   @lwc/lwc-platform/no-restricted-namespaces                        eslint   3 (Moderate)   Recommended, LWC, ErrorProne, JavaScript
+  28   @lwc/lwc-platform/no-site-import                                  eslint   3 (Moderate)   Recommended, LWC, ErrorProne, JavaScript
+  29   @lwc/lwc-platform/no-wire-service                                 eslint   3 (Moderate)   Recommended, LWC, ErrorProne, JavaScript
   30   @lwc/lwc-platform/valid-dynamic-import-hint                       eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
   31   @lwc/lwc/no-api-reassignments                                     eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
   32   @lwc/lwc/no-async-operation                                       eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
-  33   @lwc/lwc/no-attributes-during-construction                        eslint   3 (Moderate)   Recommended, LWC, error-prone, JavaScript
+  33   @lwc/lwc/no-attributes-during-construction                        eslint   3 (Moderate)   Recommended, LWC, ErrorProne, JavaScript
   34   @lwc/lwc/no-deprecated                                            eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
   35   @lwc/lwc/no-disallowed-lwc-imports                                eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
-  36   @lwc/lwc/no-document-query                                        eslint   3 (Moderate)   Recommended, LWC, error-prone, JavaScript
+  36   @lwc/lwc/no-document-query                                        eslint   3 (Moderate)   Recommended, LWC, ErrorProne, JavaScript
   37   @lwc/lwc/no-inner-html                                            eslint   2 (High)       Recommended, LWC, Security, JavaScript
-  38   @lwc/lwc/no-leading-uppercase-api-name                            eslint   3 (Moderate)   Recommended, LWC, error-prone, JavaScript
-  39   @lwc/lwc/no-template-children                                     eslint   3 (Moderate)   Recommended, LWC, error-prone, JavaScript
+  38   @lwc/lwc/no-leading-uppercase-api-name                            eslint   3 (Moderate)   Recommended, LWC, ErrorProne, JavaScript
+  39   @lwc/lwc/no-template-children                                     eslint   3 (Moderate)   Recommended, LWC, ErrorProne, JavaScript
   40   @lwc/lwc/no-unexpected-wire-adapter-usages                        eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
   41   @lwc/lwc/no-unknown-wire-adapters                                 eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
   42   @lwc/lwc/prefer-custom-event                                      eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
-  43   @lwc/lwc/valid-api                                                eslint   3 (Moderate)   Recommended, LWC, error-prone, JavaScript
-  44   @lwc/lwc/valid-graphql-wire-adapter-callback-parameters           eslint   3 (Moderate)   Recommended, LWC, error-prone, JavaScript
-  45   @lwc/lwc/valid-track                                              eslint   3 (Moderate)   Recommended, LWC, error-prone, JavaScript
-  46   @lwc/lwc/valid-wire                                               eslint   3 (Moderate)   Recommended, LWC, error-prone, JavaScript
-  47   @salesforce/lightning/valid-apex-method-invocation                eslint   3 (Moderate)   Recommended, LWC, error-prone, JavaScript
-  48   import/default                                                    eslint   2 (High)       Recommended, LWC, error-prone, JavaScript
-  49   import/export                                                     eslint   2 (High)       Recommended, LWC, error-prone, JavaScript
-  50   import/named                                                      eslint   2 (High)       Recommended, LWC, error-prone, JavaScript
-  51   import/namespace                                                  eslint   2 (High)       Recommended, LWC, error-prone, JavaScript
+  43   @lwc/lwc/valid-api                                                eslint   3 (Moderate)   Recommended, LWC, ErrorProne, JavaScript
+  44   @lwc/lwc/valid-graphql-wire-adapter-callback-parameters           eslint   3 (Moderate)   Recommended, LWC, ErrorProne, JavaScript
+  45   @lwc/lwc/valid-track                                              eslint   3 (Moderate)   Recommended, LWC, ErrorProne, JavaScript
+  46   @lwc/lwc/valid-wire                                               eslint   3 (Moderate)   Recommended, LWC, ErrorProne, JavaScript
+  47   @salesforce/lightning/valid-apex-method-invocation                eslint   3 (Moderate)   Recommended, LWC, ErrorProne, JavaScript
+  48   import/default                                                    eslint   2 (High)       Recommended, LWC, ErrorProne, JavaScript
+  49   import/export                                                     eslint   2 (High)       Recommended, LWC, ErrorProne, JavaScript
+  50   import/named                                                      eslint   2 (High)       Recommended, LWC, ErrorProne, JavaScript
+  51   import/namespace                                                  eslint   2 (High)       Recommended, LWC, ErrorProne, JavaScript
   52   jest/expect-expect                                                eslint   5 (Info)       Recommended, LWC, BestPractices, JavaScript
   53   jest/no-alias-methods                                             eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
   54   jest/no-commented-out-tests                                       eslint   5 (Info)       Recommended, LWC, BestPractices, JavaScript
-  55   jest/no-conditional-expect                                        eslint   2 (High)       Recommended, LWC, error-prone, JavaScript
+  55   jest/no-conditional-expect                                        eslint   2 (High)       Recommended, LWC, ErrorProne, JavaScript
   56   jest/no-disabled-tests                                            eslint   5 (Info)       Recommended, LWC, BestPractices, JavaScript
   57   jest/no-done-callback                                             eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
   58   jest/no-export                                                    eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
   59   jest/no-focused-tests                                             eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
   60   jest/no-identical-title                                           eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
-  61   jest/no-interpolation-in-snapshots                                eslint   2 (High)       Recommended, LWC, error-prone, JavaScript
+  61   jest/no-interpolation-in-snapshots                                eslint   2 (High)       Recommended, LWC, ErrorProne, JavaScript
   62   jest/no-jasmine-globals                                           eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
-  63   jest/no-mocks-import                                              eslint   2 (High)       Recommended, LWC, error-prone, JavaScript
+  63   jest/no-mocks-import                                              eslint   2 (High)       Recommended, LWC, ErrorProne, JavaScript
   64   jest/no-standalone-expect                                         eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
   65   jest/no-test-prefixes                                             eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
-  66   jest/valid-describe-callback                                      eslint   2 (High)       Recommended, LWC, error-prone, JavaScript
+  66   jest/valid-describe-callback                                      eslint   2 (High)       Recommended, LWC, ErrorProne, JavaScript
   67   jest/valid-expect                                                 eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
   68   jest/valid-expect-in-promise                                      eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
   69   jest/valid-title                                                  eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
@@ -221,7 +221,7 @@ Found 69 rule(s) from 1 engine(s):
     69 eslint rule(s) found.
 
 Additional log information written to:
-    /tmp/sfca-2025_11_29_17_32_03_226.log
+    /tmp/sfca-2025_12_01_10_56_34_566.log
 ```
 
 ### Installation on mega-linter Docker image
