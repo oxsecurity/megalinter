@@ -37,6 +37,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - mega-linter-runner
 
 - Linter versions upgrades (N)
+  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 9.0.111 to **9.0.112** on 2025-12-01
+  - [phplint](https://github.com/overtrue/phplint) from 9.6.2 to **9.6.3** on 2025-12-01
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.93.10 to **0.93.11** on 2025-12-01
 <!-- linter-versions-end -->
 
 ## [v9.2.0] - 2025-11-29
