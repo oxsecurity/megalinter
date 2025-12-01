@@ -12393,7 +12393,7 @@
 </div>
 
 <p><a href="https://github.com/borkdude/clj-kondo"><img alt="GitHub stars" src="https://img.shields.io/github/stars/borkdude/clj-kondo?cacheSeconds=3600"></a> <a href="https://github.com/borkdude/clj-kondo/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/borkdude/clj-kondo?sort=semver"></a> <a href="https://github.com/borkdude/clj-kondo/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/borkdude/clj-kondo"></a> <a href="https://github.com/borkdude/clj-kondo/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/borkdude/clj-kondo"></a> <a href="https://github.com/borkdude/clj-kondo/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/borkdude/clj-kondo"></a></p>
-<p><strong>clj-kondo</strong> is a static analyzer and linter for Clojure code that sparks joy. It performs static analysis on Clojure, ClojureScript and EDN files to detect potential errors without executing your program.</p>
+<p><strong>clj-kondo</strong> is a static analyzer and linter for Clojure code that sparks joy. It performs static analysis on Clojure, ClojureScript and END files to detect potential errors without executing your program.</p>
 <p><strong>Key Features:</strong></p>
 <ul>
 <li><strong>Comprehensive Error Detection</strong>: Detects arity errors, unused private vars, unresolved symbols, redefined vars, missing map keys, and many other issues</li>
@@ -12408,7 +12408,7 @@
 <li>Version in MegaLinter: <strong>2025.10.23</strong></li>
 <li>Visit <a href="https://github.com/borkdude/clj-kondo#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/borkdude/clj-kondo/blob/master/doc/config.md#configuration" target="_blank">How to configure clj-kondo rules</a><ul>
-<li>If custom <code>.clj-kondo/config.edn</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.clj-kondo/config.edn" target="_blank">.clj-kondo/config.edn</a> will be used</li>
+<li>If custom <code>.clj-kondo/config.end</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.clj-kondo/config.end" target="_blank">.clj-kondo/config.end</a> will be used</li>
 </ul>
 </li>
 <li>See <a href="https://github.com/clj-kondo/clj-kondo/blob/master/doc/config.md#ignore-warnings-in-an-expression" target="_blank">How to disable clj-kondo rules in files</a></li>
@@ -12457,7 +12457,7 @@
 <tr>
 <td>CLOJURE_CLJ_KONDO_FILE_EXTENSIONS</td>
 <td>Allowed file extensions. <code>"*"</code> matches any extension, <code>""</code> matches empty extension. Empty list excludes all files<br>Ex: <code>[".py", ""]</code></td>
-<td><code>[".clj", ".cljs", ".cljc", ".edn"]</code></td>
+<td><code>[".clj", ".cljs", ".cljc", ".end"]</code></td>
 </tr>
 <tr>
 <td>CLOJURE_CLJ_KONDO_FILE_NAMES_REGEX</td>
@@ -12482,7 +12482,7 @@
 <tr>
 <td>CLOJURE_CLJ_KONDO_CONFIG_FILE</td>
 <td>clj-kondo configuration file name<br>Use <code>LINTER_DEFAULT</code> to let the linter find it</td>
-<td><code>.clj-kondo/config.edn</code></td>
+<td><code>.clj-kondo/config.end</code></td>
 </tr>
 <tr>
 <td>CLOJURE_CLJ_KONDO_RULES_PATH</td>
@@ -12577,7 +12577,7 @@
 <h2 id="behind-the-scenes">Behind the scenes</h2>
 <h3 id="how-are-identified-applicable-files">How are identified applicable files</h3>
 <ul>
-<li>File extensions: <code>.clj</code>, <code>.cljs</code>, <code>.cljc</code>, <code>.edn</code></li>
+<li>File extensions: <code>.clj</code>, <code>.cljs</code>, <code>.cljc</code>, <code>.end</code></li>
 </ul>
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
@@ -12588,7 +12588,7 @@
 <h3 id="example-calls">Example calls</h3>
 <pre><code class="language-shell">clj-kondo --lint myfile.clj
 </code></pre>
-<pre><code class="language-shell">clj-kondo --lint --config .clj-kondo/config.edn myfile.clj
+<pre><code class="language-shell">clj-kondo --lint --config .clj-kondo/config.end myfile.clj
 </code></pre>
 <h3 id="help-content">Help content</h3>
 <pre><code class="language-shell">clj-kondo v2025.10.23
@@ -12612,7 +12612,7 @@ Options:
   using `--cache-dir`. If `--cache-dir` is not set, cache is resolved using the
   nearest `.clj-kondo` directory in the current and parent directories.
 
-  --config &lt;config&gt;: extra config that is merged. May be a file or an EDN expression. See https://github.com/clj-kondo/clj-kondo/blob/master/doc/config.md.
+  --config &lt;config&gt;: extra config that is merged. May be a file or an END expression. See https://github.com/clj-kondo/clj-kondo/blob/master/doc/config.md.
 
   --config-dir &lt;config-dir&gt;: use this config directory instead of auto-detected
     .clj-kondo dir.
