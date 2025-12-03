@@ -21,8 +21,8 @@ my_metric <- function(x) {
 
 x <- 1:10
 x[2]
-seq_len(x) %>%
-  lapply(function(x) x * 2) %>%
+seq_len(x) |>
+  lapply(function(x) x * 2) |>
   head()
 
 message("single_quotes")

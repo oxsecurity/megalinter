@@ -1,9 +1,9 @@
 # Please check changes with entrypoint.sh and keep in sync
 aiofiles==25.1.0
 azure-devops==6.0.0b4
-beautifulsoup4==4.14.2
+beautifulsoup4==4.14.3
 commentjson==0.9.0
-fastapi==0.121.3
+fastapi==0.123.0
 gitpython==3.1.45
 giturlparse==0.14.0
 importlib-metadata==8.7.0
@@ -18,7 +18,7 @@ mkdocs-glightbox==0.5.2
 mkdocs-material==9.7.0
 multiprocessing_logging==0.3.4
 pygithub==2.8.1
-pymdown-extensions==10.17.1
+pymdown-extensions==10.17.2
 pytablewriter==1.2.1
 pytest-cov==7.0.0
 pytest-timeout==2.4.0

@@ -21,13 +21,13 @@ ARG BASH_SHFMT_VERSION=v3.12.0-alpine
 # renovate: datasource=docker depName=hadolint/hadolint
 ARG DOCKERFILE_HADOLINT_VERSION=v2.14.0-alpine
 # renovate: datasource=docker depName=mstruebing/editorconfig-checker
-ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=v3.5.0
+ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=v3.6.0
 # renovate: datasource=docker depName=ghcr.io/yannh/kubeconform
 ARG KUBERNETES_KUBECONFORM_VERSION=v0.7.0-alpine
 # renovate: datasource=docker depName=yoheimuta/protolint
 ARG PROTOBUF_PROTOLINT_VERSION=0.56.4
 # renovate: datasource=docker depName=zricethezav/gitleaks
-ARG REPOSITORY_GITLEAKS_VERSION=v8.29.1
+ARG REPOSITORY_GITLEAKS_VERSION=v8.30.0
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
 ARG REPOSITORY_TRUFFLEHOG_VERSION=3.91.1
 # renovate: datasource=docker depName=jdkato/vale
@@ -144,7 +144,7 @@ ARG PHP_PHPSTAN_EXTENSION_INSTALLER_VERSION=1.4.3
 # renovate: datasource=packagist depName=vimeo/psalm
 ARG PHP_VIMEO_PSALM_VERSION=6.13.1
 # renovate: datasource=packagist depName=overtrue/phplint
-ARG PHP_OVERTRUE_PHPLINT_VERSION=9.6.2
+ARG PHP_OVERTRUE_PHPLINT_VERSION=9.6.3
 # renovate: datasource=packagist depName=friendsofphp/php-cs-fixer
 ARG PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION=v3.90.0
 # renovate: datasource=pypi depName=checkov
@@ -175,6 +175,8 @@ ARG PIP_SNAKEFMT_VERSION=0.11.2
 ARG NPM_CSPELL_VERSION=9.3.2
 # renovate: datasource=pypi depName=proselint
 ARG PIP_PROSELINT_VERSION=0.16.0
+# renovate: datasource=pypi depName=codespell
+ARG PIP_CODESPELL_VERSION=2.4.1
 # renovate: datasource=pypi depName=sqlfluff
 ARG PIP_SQLFLUFF_VERSION=3.5.0
 # renovate: datasource=npm depName=@ibm/tekton-lint
@@ -295,11 +297,12 @@ RUN uv pip install --system --no-cache pip==${PIP_PIP_VERSION} virtualenv==${PIP
     && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/snakemake" && VIRTUAL_ENV="/venvs/snakemake" uv pip install --no-cache snakemake==${PIP_SNAKEMAKE_VERSION} \
     && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/snakefmt" && VIRTUAL_ENV="/venvs/snakefmt" uv pip install --no-cache snakefmt==${PIP_SNAKEFMT_VERSION} \
     && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/proselint" && VIRTUAL_ENV="/venvs/proselint" uv pip install --no-cache proselint==${PIP_PROSELINT_VERSION} \
+    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/codespell" && VIRTUAL_ENV="/venvs/codespell" uv pip install --no-cache codespell==${PIP_CODESPELL_VERSION} \
     && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/sqlfluff" && VIRTUAL_ENV="/venvs/sqlfluff" uv pip install --no-cache sqlfluff==${PIP_SQLFLUFF_VERSION} \
     && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/yamllint" && VIRTUAL_ENV="/venvs/yamllint" uv pip install --no-cache yamllint==${PIP_YAMLLINT_VERSION}  \
     && find /venvs \( -type f \( -iname \*.pyc -o -iname \*.pyo \) -o -type d -iname __pycache__ \) -delete \
     && rm -rf /root/.cache
-ENV PATH="${PATH}":/venvs/ansible-lint/bin:/venvs/stylelint/bin:/venvs/djlint/bin:/venvs/checkov/bin:/venvs/semgrep/bin:/venvs/snakemake/bin:/venvs/snakefmt/bin:/venvs/proselint/bin:/venvs/sqlfluff/bin:/venvs/yamllint/bin
+ENV PATH="${PATH}":/venvs/ansible-lint/bin:/venvs/stylelint/bin:/venvs/djlint/bin:/venvs/checkov/bin:/venvs/semgrep/bin:/venvs/snakemake/bin:/venvs/snakefmt/bin:/venvs/proselint/bin:/venvs/codespell/bin:/venvs/sqlfluff/bin:/venvs/yamllint/bin
 #PIPVENV__END
 
 ############################
@@ -531,6 +534,8 @@ RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/refs/tags/v${REPO
 #
 # lychee installation
 # Managed with COPY --link --from=lychee /usr/local/bin/lychee /usr/bin/
+#
+# codespell installation
 #
 # sqlfluff installation
 #
