@@ -38,7 +38,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=rubygems depName=rubocop
-          ARG GEM_RUBOCOP_VERSION=1.81.6
+          ARG GEM_RUBOCOP_VERSION=1.81.7
         - |-
           # renovate: datasource=rubygems depName=rubocop-github
           ARG GEM_RUBOCOP_GITHUB_VERSION=0.26.0
@@ -47,13 +47,13 @@ linters:
           ARG GEM_RUBOCOP_PERFORMANCE_VERSION=1.26.1
         - |-
           # renovate: datasource=rubygems depName=rubocop-rails
-          ARG GEM_RUBOCOP_RAILS_VERSION=2.33.4
+          ARG GEM_RUBOCOP_RAILS_VERSION=2.34.2
         - |-
           # renovate: datasource=rubygems depName=rubocop-rake
           ARG GEM_RUBOCOP_RAKE_VERSION=0.7.1
         - |-
           # renovate: datasource=rubygems depName=rubocop-rspec
-          ARG GEM_RUBOCOP_RSPEC_VERSION=3.7.0
+          ARG GEM_RUBOCOP_RSPEC_VERSION=3.8.0
       gem:
         - rubocop:${GEM_RUBOCOP_VERSION}
         - rubocop-github:${GEM_RUBOCOP_GITHUB_VERSION}

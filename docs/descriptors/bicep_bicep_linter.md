@@ -24,7 +24,7 @@ By default, Bicep linter errors are set as warnings. To customize linter setting
 
 ## bicep_linter documentation
 
-- Version in MegaLinter: **0.38.33**
+- Version in MegaLinter: **0.39.26**
 - Visit [Official Web Site](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter){target=_blank}
 - See [How to configure bicep_linter rules](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/bicep-config){target=_blank}
 - See [How to disable bicep_linter rules in files](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter#silencing-false-positives){target=_blank}
@@ -67,9 +67,9 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                     | Description                                              | Embedded linters |                                                                                                                                                                                           Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------|:---------------------------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)       | Default MegaLinter Flavor                                |       127        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/)       | Optimized for C, C++, C# or VB based projects            |        64        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
-|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/) | Optimized for C, C++, C# or VB based projects with JS/TS |        73        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)       | Default MegaLinter Flavor                                |       131        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/)       | Optimized for C, C++, C# or VB based projects            |        65        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/) | Optimized for C, C++, C# or VB based projects with JS/TS |        74        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
 
 ## Behind the scenes
 
@@ -98,7 +98,7 @@ az bicep build -f infra.bicep
 ### Help content
 
 ```shell
-Bicep CLI version 0.38.33 (6bb5d5f859)
+Bicep CLI version 0.39.26 (1e90b06e40)
 
 Usage:
   bicep build [options] [<file>]
@@ -290,15 +290,16 @@ Usage:
       bicep build-params --pattern './dir/**/*.bicepparam'
 
   bicep jsonrpc [options]
-    Runs a JSONRPC server for interacting with Bicep programmatically.
+    Starts the Bicep CLI listening for JSONRPC messages, for programatically interacting with Bicep. See https://aka.ms/bicep/jsonrpc for more information.
 
     Options:
-      --pipe <name>   Runs the JSONRPC server using a named pipe.
-      --socket <dir>  Runs the JSONRPC server on a specific port.
-      --stdio         Runs the JSONRPC server over stdin/stdout.
+      --pipe <name>    Bicep CLI will connect to the supplied named pipe as a client, and start listening for JSONRPC requests.
+      --socket <port>  Bicep CLI will connect to the supplied TCP port on the loopback interface as a client, and start listening for JSONRPC requests.
+      --stdio          Bicep CLI will use stdin/stdout for JSONRPC requests.
 
     Examples:
       bicep jsonrpc --pipe /path/to/pipe.sock
+      bicep jsonrpc --socket 9853
       bicep jsonrpc --stdio
 
 ```
@@ -308,7 +309,7 @@ Usage:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=github-tags depName=Azure/bicep
-ARG BICEP_VERSION=0.38.33
+ARG BICEP_VERSION=0.39.26
 ARG BICEP_EXE='bicep'
 ARG BICEP_DIR='/usr/local/bin'
 RUN curl --retry 5 --retry-delay 5 -sLo ${BICEP_EXE} "https://github.com/Azure/bicep/releases/download/v${BICEP_VERSION}/bicep-linux-musl-x64" \

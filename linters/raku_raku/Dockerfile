@@ -24,7 +24,7 @@
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.9.4 AS uv
+FROM ghcr.io/astral-sh/uv:0.9.9 AS uv
 FROM python:3.13-alpine3.22 AS build-ml-core
 WORKDIR /
 COPY --from=uv /uv /uvx /bin/
@@ -49,8 +49,8 @@ FROM python:3.13-alpine3.22
 #############################################################################################
 #ARG__START
 # renovate: datasource=github-tags depName=nxadm/rakudo-pkg
-ARG RAKU_RAKU_VERSION=2024.12
-ARG RAKU_RAKU_ALPINE_VERSION=3.20
+ARG RAKU_RAKU_VERSION=2025.11
+ARG RAKU_RAKU_ALPINE_VERSION=3.22
 
 #ARG__END
 

@@ -47,7 +47,7 @@ jobs:
       # Checkout the code base #
       ##########################
       - name: Checkout Code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       # Free disk space
       - name: Free Disk space
@@ -111,7 +111,7 @@ jobs:
       # Upload MegaLinter artifacts
       - name: Archive production artifacts
         if: success() || failure()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: MegaLinter reports
           include-hidden-files: "true"

@@ -241,6 +241,9 @@
         "RUBY_RUBOCOP",
         "RUST_CLIPPY",
         "R_LINTR",
+        "SALESFORCE_CODE_ANALYZER_APEX",
+        "SALESFORCE_CODE_ANALYZER_AURA",
+        "SALESFORCE_CODE_ANALYZER_LWC",
         "SALESFORCE_LIGHTNING_FLOW_SCANNER",
         "SALESFORCE_SFDX_SCANNER_APEX",
         "SALESFORCE_SFDX_SCANNER_AURA",
@@ -248,6 +251,7 @@
         "SCALA_SCALAFIX",
         "SNAKEMAKE_LINT",
         "SNAKEMAKE_SNAKEFMT",
+        "SPELL_CODESPELL",
         "SPELL_CSPELL",
         "SPELL_LYCHEE",
         "SPELL_MISSPELL",
@@ -19574,6 +19578,402 @@
       "title": "Pre commands for R descriptor",
       "type": "array"
     },
+    "SALESFORCE_CODE_ANALYZER_APEX_ARGUMENTS": {
+      "$id": "#/properties/SALESFORCE_CODE_ANALYZER_APEX_ARGUMENTS",
+      "description": "SALESFORCE_CODE_ANALYZER_APEX: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SALESFORCE_CODE_ANALYZER_APEX: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "SALESFORCE_CODE_ANALYZER_APEX_CLI_EXECUTABLE": {
+      "$id": "#/properties/SALESFORCE_CODE_ANALYZER_APEX_CLI_EXECUTABLE",
+      "default": [
+        [
+          "sf"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SALESFORCE_CODE_ANALYZER_APEX: CLI Executable",
+      "type": "array"
+    },
+    "SALESFORCE_CODE_ANALYZER_APEX_CLI_LINT_MODE": {
+      "$id": "#/properties/SALESFORCE_CODE_ANALYZER_APEX_CLI_LINT_MODE",
+      "default": "project",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "SALESFORCE_CODE_ANALYZER_APEX: Override default cli lint mode",
+      "type": "string"
+    },
+    "SALESFORCE_CODE_ANALYZER_APEX_COMMAND_REMOVE_ARGUMENTS": {
+      "$id": "#/properties/SALESFORCE_CODE_ANALYZER_APEX_COMMAND_REMOVE_ARGUMENTS",
+      "description": "SALESFORCE_CODE_ANALYZER_APEX: User custom arguments to remove before calling linter",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SALESFORCE_CODE_ANALYZER_APEX: Custom remove arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "SALESFORCE_CODE_ANALYZER_APEX_CONFIG_FILE": {
+      "$id": "#/properties/SALESFORCE_CODE_ANALYZER_APEX_CONFIG_FILE",
+      "default": "code-analyzer.yml",
+      "description": "SALESFORCE_CODE_ANALYZER_APEX: User custom config file name if different from default",
+      "title": "SALESFORCE_CODE_ANALYZER_APEX: Custom config file name",
+      "type": "string"
+    },
+    "SALESFORCE_CODE_ANALYZER_APEX_DIRECTORY": {
+      "$id": "#/properties/SALESFORCE_CODE_ANALYZER_APEX_DIRECTORY",
+      "default": "force-app",
+      "description": "Directory that must be found to activate linter. Use value \"any\" to always activate",
+      "title": "SALESFORCE_CODE_ANALYZER_APEX: Directory containing SALESFORCE files",
+      "type": "string"
+    },
+    "SALESFORCE_CODE_ANALYZER_APEX_DISABLE_ERRORS": {
+      "$id": "#/properties/SALESFORCE_CODE_ANALYZER_APEX_DISABLE_ERRORS",
+      "default": false,
+      "title": "SALESFORCE_CODE_ANALYZER_APEX: Linter doesn't make MegaLinter fail even if errors are found",
+      "type": "boolean"
+    },
+    "SALESFORCE_CODE_ANALYZER_APEX_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/SALESFORCE_CODE_ANALYZER_APEX_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "SALESFORCE_CODE_ANALYZER_APEX: Maximum number of errors allowed",
+      "type": "number"
+    },
+    "SALESFORCE_CODE_ANALYZER_APEX_POST_COMMANDS": {
+      "$id": "#/properties/SALESFORCE_CODE_ANALYZER_APEX_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "SALESFORCE_CODE_ANALYZER_APEX: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "SALESFORCE_CODE_ANALYZER_APEX_PRE_COMMANDS": {
+      "$id": "#/properties/SALESFORCE_CODE_ANALYZER_APEX_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "SALESFORCE_CODE_ANALYZER_APEX: Define or override a list of bash commands to run before the linter",
+      "type": "array"
+    },
+    "SALESFORCE_CODE_ANALYZER_APEX_RULES_PATH": {
+      "$id": "#/properties/SALESFORCE_CODE_ANALYZER_APEX_RULES_PATH",
+      "description": "SALESFORCE_CODE_ANALYZER_APEX: Path where to find linter configuration file",
+      "title": "SALESFORCE_CODE_ANALYZER_APEX: Custom config file path",
+      "type": "string"
+    },
+    "SALESFORCE_CODE_ANALYZER_APEX_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/SALESFORCE_CODE_ANALYZER_APEX_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling SALESFORCE_CODE_ANALYZER_APEX and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "SALESFORCE_CODE_ANALYZER_APEX: Unsecured env variables",
+      "type": "array"
+    },
+    "SALESFORCE_CODE_ANALYZER_AURA_ARGUMENTS": {
+      "$id": "#/properties/SALESFORCE_CODE_ANALYZER_AURA_ARGUMENTS",
+      "description": "SALESFORCE_CODE_ANALYZER_AURA: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SALESFORCE_CODE_ANALYZER_AURA: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "SALESFORCE_CODE_ANALYZER_AURA_CLI_EXECUTABLE": {
+      "$id": "#/properties/SALESFORCE_CODE_ANALYZER_AURA_CLI_EXECUTABLE",
+      "default": [
+        [
+          "sf"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SALESFORCE_CODE_ANALYZER_AURA: CLI Executable",
+      "type": "array"
+    },
+    "SALESFORCE_CODE_ANALYZER_AURA_CLI_LINT_MODE": {
+      "$id": "#/properties/SALESFORCE_CODE_ANALYZER_AURA_CLI_LINT_MODE",
+      "default": "project",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "SALESFORCE_CODE_ANALYZER_AURA: Override default cli lint mode",
+      "type": "string"
+    },
+    "SALESFORCE_CODE_ANALYZER_AURA_COMMAND_REMOVE_ARGUMENTS": {
+      "$id": "#/properties/SALESFORCE_CODE_ANALYZER_AURA_COMMAND_REMOVE_ARGUMENTS",
+      "description": "SALESFORCE_CODE_ANALYZER_AURA: User custom arguments to remove before calling linter",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SALESFORCE_CODE_ANALYZER_AURA: Custom remove arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "SALESFORCE_CODE_ANALYZER_AURA_CONFIG_FILE": {
+      "$id": "#/properties/SALESFORCE_CODE_ANALYZER_AURA_CONFIG_FILE",
+      "default": "code-analyzer.yml",
+      "description": "SALESFORCE_CODE_ANALYZER_AURA: User custom config file name if different from default",
+      "title": "SALESFORCE_CODE_ANALYZER_AURA: Custom config file name",
+      "type": "string"
+    },
+    "SALESFORCE_CODE_ANALYZER_AURA_DIRECTORY": {
+      "$id": "#/properties/SALESFORCE_CODE_ANALYZER_AURA_DIRECTORY",
+      "default": "force-app",
+      "description": "Directory that must be found to activate linter. Use value \"any\" to always activate",
+      "title": "SALESFORCE_CODE_ANALYZER_AURA: Directory containing SALESFORCE files",
+      "type": "string"
+    },
+    "SALESFORCE_CODE_ANALYZER_AURA_DISABLE_ERRORS": {
+      "$id": "#/properties/SALESFORCE_CODE_ANALYZER_AURA_DISABLE_ERRORS",
+      "default": false,
+      "title": "SALESFORCE_CODE_ANALYZER_AURA: Linter doesn't make MegaLinter fail even if errors are found",
+      "type": "boolean"
+    },
+    "SALESFORCE_CODE_ANALYZER_AURA_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/SALESFORCE_CODE_ANALYZER_AURA_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "SALESFORCE_CODE_ANALYZER_AURA: Maximum number of errors allowed",
+      "type": "number"
+    },
+    "SALESFORCE_CODE_ANALYZER_AURA_POST_COMMANDS": {
+      "$id": "#/properties/SALESFORCE_CODE_ANALYZER_AURA_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "SALESFORCE_CODE_ANALYZER_AURA: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "SALESFORCE_CODE_ANALYZER_AURA_PRE_COMMANDS": {
+      "$id": "#/properties/SALESFORCE_CODE_ANALYZER_AURA_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "SALESFORCE_CODE_ANALYZER_AURA: Define or override a list of bash commands to run before the linter",
+      "type": "array"
+    },
+    "SALESFORCE_CODE_ANALYZER_AURA_RULES_PATH": {
+      "$id": "#/properties/SALESFORCE_CODE_ANALYZER_AURA_RULES_PATH",
+      "description": "SALESFORCE_CODE_ANALYZER_AURA: Path where to find linter configuration file",
+      "title": "SALESFORCE_CODE_ANALYZER_AURA: Custom config file path",
+      "type": "string"
+    },
+    "SALESFORCE_CODE_ANALYZER_AURA_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/SALESFORCE_CODE_ANALYZER_AURA_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling SALESFORCE_CODE_ANALYZER_AURA and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "SALESFORCE_CODE_ANALYZER_AURA: Unsecured env variables",
+      "type": "array"
+    },
+    "SALESFORCE_CODE_ANALYZER_LWC_ARGUMENTS": {
+      "$id": "#/properties/SALESFORCE_CODE_ANALYZER_LWC_ARGUMENTS",
+      "description": "SALESFORCE_CODE_ANALYZER_LWC: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SALESFORCE_CODE_ANALYZER_LWC: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "SALESFORCE_CODE_ANALYZER_LWC_CLI_EXECUTABLE": {
+      "$id": "#/properties/SALESFORCE_CODE_ANALYZER_LWC_CLI_EXECUTABLE",
+      "default": [
+        [
+          "sf"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SALESFORCE_CODE_ANALYZER_LWC: CLI Executable",
+      "type": "array"
+    },
+    "SALESFORCE_CODE_ANALYZER_LWC_CLI_LINT_MODE": {
+      "$id": "#/properties/SALESFORCE_CODE_ANALYZER_LWC_CLI_LINT_MODE",
+      "default": "project",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "SALESFORCE_CODE_ANALYZER_LWC: Override default cli lint mode",
+      "type": "string"
+    },
+    "SALESFORCE_CODE_ANALYZER_LWC_COMMAND_REMOVE_ARGUMENTS": {
+      "$id": "#/properties/SALESFORCE_CODE_ANALYZER_LWC_COMMAND_REMOVE_ARGUMENTS",
+      "description": "SALESFORCE_CODE_ANALYZER_LWC: User custom arguments to remove before calling linter",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SALESFORCE_CODE_ANALYZER_LWC: Custom remove arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "SALESFORCE_CODE_ANALYZER_LWC_CONFIG_FILE": {
+      "$id": "#/properties/SALESFORCE_CODE_ANALYZER_LWC_CONFIG_FILE",
+      "default": "code-analyzer.yml",
+      "description": "SALESFORCE_CODE_ANALYZER_LWC: User custom config file name if different from default",
+      "title": "SALESFORCE_CODE_ANALYZER_LWC: Custom config file name",
+      "type": "string"
+    },
+    "SALESFORCE_CODE_ANALYZER_LWC_DIRECTORY": {
+      "$id": "#/properties/SALESFORCE_CODE_ANALYZER_LWC_DIRECTORY",
+      "default": "force-app",
+      "description": "Directory that must be found to activate linter. Use value \"any\" to always activate",
+      "title": "SALESFORCE_CODE_ANALYZER_LWC: Directory containing SALESFORCE files",
+      "type": "string"
+    },
+    "SALESFORCE_CODE_ANALYZER_LWC_DISABLE_ERRORS": {
+      "$id": "#/properties/SALESFORCE_CODE_ANALYZER_LWC_DISABLE_ERRORS",
+      "default": false,
+      "title": "SALESFORCE_CODE_ANALYZER_LWC: Linter doesn't make MegaLinter fail even if errors are found",
+      "type": "boolean"
+    },
+    "SALESFORCE_CODE_ANALYZER_LWC_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/SALESFORCE_CODE_ANALYZER_LWC_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "SALESFORCE_CODE_ANALYZER_LWC: Maximum number of errors allowed",
+      "type": "number"
+    },
+    "SALESFORCE_CODE_ANALYZER_LWC_POST_COMMANDS": {
+      "$id": "#/properties/SALESFORCE_CODE_ANALYZER_LWC_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "SALESFORCE_CODE_ANALYZER_LWC: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "SALESFORCE_CODE_ANALYZER_LWC_PRE_COMMANDS": {
+      "$id": "#/properties/SALESFORCE_CODE_ANALYZER_LWC_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "SALESFORCE_CODE_ANALYZER_LWC: Define or override a list of bash commands to run before the linter",
+      "type": "array"
+    },
+    "SALESFORCE_CODE_ANALYZER_LWC_RULES_PATH": {
+      "$id": "#/properties/SALESFORCE_CODE_ANALYZER_LWC_RULES_PATH",
+      "description": "SALESFORCE_CODE_ANALYZER_LWC: Path where to find linter configuration file",
+      "title": "SALESFORCE_CODE_ANALYZER_LWC: Custom config file path",
+      "type": "string"
+    },
+    "SALESFORCE_CODE_ANALYZER_LWC_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/SALESFORCE_CODE_ANALYZER_LWC_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling SALESFORCE_CODE_ANALYZER_LWC and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "SALESFORCE_CODE_ANALYZER_LWC: Unsecured env variables",
+      "type": "array"
+    },
     "SALESFORCE_DIRECTORY": {
       "$id": "#/properties/SALESFORCE_DIRECTORY",
       "default": "force-app",
@@ -19766,7 +20166,7 @@
       "items": {
         "type": "string"
       },
-      "title": "SALESFORCE_SFDX_SCANNER_APEX: Custom arguments",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_APEX: Custom arguments",
       "type": [
         "array",
         "string"
@@ -19782,7 +20182,7 @@
       "items": {
         "type": "string"
       },
-      "title": "SALESFORCE_SFDX_SCANNER_APEX: CLI Executable",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_APEX: CLI Executable",
       "type": "array"
     },
     "SALESFORCE_SFDX_SCANNER_APEX_CLI_LINT_MODE": {
@@ -19793,7 +20193,7 @@
         "list_of_files",
         "project"
       ],
-      "title": "SALESFORCE_SFDX_SCANNER_APEX: Override default cli lint mode",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_APEX: Override default cli lint mode",
       "type": "string"
     },
     "SALESFORCE_SFDX_SCANNER_APEX_COMMAND_REMOVE_ARGUMENTS": {
@@ -19806,7 +20206,7 @@
       "items": {
         "type": "string"
       },
-      "title": "SALESFORCE_SFDX_SCANNER_APEX: Custom remove arguments",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_APEX: Custom remove arguments",
       "type": [
         "array",
         "string"
@@ -19816,26 +20216,26 @@
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_APEX_CONFIG_FILE",
       "default": "apex-pmd-ruleset.xml",
       "description": "SALESFORCE_SFDX_SCANNER_APEX: User custom config file name if different from default",
-      "title": "SALESFORCE_SFDX_SCANNER_APEX: Custom config file name",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_APEX: Custom config file name",
       "type": "string"
     },
     "SALESFORCE_SFDX_SCANNER_APEX_DIRECTORY": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_APEX_DIRECTORY",
       "default": "force-app",
       "description": "Directory that must be found to activate linter. Use value \"any\" to always activate",
-      "title": "SALESFORCE_SFDX_SCANNER_APEX: Directory containing SALESFORCE files",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_APEX: Directory containing SALESFORCE files",
       "type": "string"
     },
     "SALESFORCE_SFDX_SCANNER_APEX_DISABLE_ERRORS": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_APEX_DISABLE_ERRORS",
       "default": false,
-      "title": "SALESFORCE_SFDX_SCANNER_APEX: Linter doesn't make MegaLinter fail even if errors are found",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_APEX: Linter doesn't make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "SALESFORCE_SFDX_SCANNER_APEX_DISABLE_ERRORS_IF_LESS_THAN": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_APEX_DISABLE_ERRORS_IF_LESS_THAN",
       "default": 0,
-      "title": "SALESFORCE_SFDX_SCANNER_APEX: Maximum number of errors allowed",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_APEX: Maximum number of errors allowed",
       "type": "number"
     },
     "SALESFORCE_SFDX_SCANNER_APEX_POST_COMMANDS": {
@@ -19852,7 +20252,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "SALESFORCE_SFDX_SCANNER_APEX: Define or override a list of bash commands to run after the linter",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_APEX: Define or override a list of bash commands to run after the linter",
       "type": "array"
     },
     "SALESFORCE_SFDX_SCANNER_APEX_PRE_COMMANDS": {
@@ -19869,13 +20269,13 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "SALESFORCE_SFDX_SCANNER_APEX: Define or override a list of bash commands to run before the linter",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_APEX: Define or override a list of bash commands to run before the linter",
       "type": "array"
     },
     "SALESFORCE_SFDX_SCANNER_APEX_RULES_PATH": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_APEX_RULES_PATH",
       "description": "SALESFORCE_SFDX_SCANNER_APEX: Path where to find linter configuration file",
-      "title": "SALESFORCE_SFDX_SCANNER_APEX: Custom config file path",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_APEX: Custom config file path",
       "type": "string"
     },
     "SALESFORCE_SFDX_SCANNER_APEX_UNSECURED_ENV_VARIABLES": {
@@ -19885,7 +20285,7 @@
       "items": {
         "type": "string"
       },
-      "title": "SALESFORCE_SFDX_SCANNER_APEX: Unsecured env variables",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_APEX: Unsecured env variables",
       "type": "array"
     },
     "SALESFORCE_SFDX_SCANNER_ARGUMENTS": {
@@ -19914,7 +20314,7 @@
       "items": {
         "type": "string"
       },
-      "title": "SALESFORCE_SFDX_SCANNER_AURA: Custom arguments",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_AURA: Custom arguments",
       "type": [
         "array",
         "string"
@@ -19930,7 +20330,7 @@
       "items": {
         "type": "string"
       },
-      "title": "SALESFORCE_SFDX_SCANNER_AURA: CLI Executable",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_AURA: CLI Executable",
       "type": "array"
     },
     "SALESFORCE_SFDX_SCANNER_AURA_CLI_LINT_MODE": {
@@ -19941,7 +20341,7 @@
         "list_of_files",
         "project"
       ],
-      "title": "SALESFORCE_SFDX_SCANNER_AURA: Override default cli lint mode",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_AURA: Override default cli lint mode",
       "type": "string"
     },
     "SALESFORCE_SFDX_SCANNER_AURA_COMMAND_REMOVE_ARGUMENTS": {
@@ -19954,7 +20354,7 @@
       "items": {
         "type": "string"
       },
-      "title": "SALESFORCE_SFDX_SCANNER_AURA: Custom remove arguments",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_AURA: Custom remove arguments",
       "type": [
         "array",
         "string"
@@ -19964,26 +20364,26 @@
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_AURA_CONFIG_FILE",
       "default": "--eslintconfig",
       "description": "SALESFORCE_SFDX_SCANNER_AURA: User custom config file name if different from default",
-      "title": "SALESFORCE_SFDX_SCANNER_AURA: Custom config file name",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_AURA: Custom config file name",
       "type": "string"
     },
     "SALESFORCE_SFDX_SCANNER_AURA_DIRECTORY": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_AURA_DIRECTORY",
       "default": "force-app",
       "description": "Directory that must be found to activate linter. Use value \"any\" to always activate",
-      "title": "SALESFORCE_SFDX_SCANNER_AURA: Directory containing SALESFORCE files",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_AURA: Directory containing SALESFORCE files",
       "type": "string"
     },
     "SALESFORCE_SFDX_SCANNER_AURA_DISABLE_ERRORS": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_AURA_DISABLE_ERRORS",
       "default": false,
-      "title": "SALESFORCE_SFDX_SCANNER_AURA: Linter doesn't make MegaLinter fail even if errors are found",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_AURA: Linter doesn't make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "SALESFORCE_SFDX_SCANNER_AURA_DISABLE_ERRORS_IF_LESS_THAN": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_AURA_DISABLE_ERRORS_IF_LESS_THAN",
       "default": 0,
-      "title": "SALESFORCE_SFDX_SCANNER_AURA: Maximum number of errors allowed",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_AURA: Maximum number of errors allowed",
       "type": "number"
     },
     "SALESFORCE_SFDX_SCANNER_AURA_POST_COMMANDS": {
@@ -20000,7 +20400,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "SALESFORCE_SFDX_SCANNER_AURA: Define or override a list of bash commands to run after the linter",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_AURA: Define or override a list of bash commands to run after the linter",
       "type": "array"
     },
     "SALESFORCE_SFDX_SCANNER_AURA_PRE_COMMANDS": {
@@ -20017,13 +20417,13 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "SALESFORCE_SFDX_SCANNER_AURA: Define or override a list of bash commands to run before the linter",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_AURA: Define or override a list of bash commands to run before the linter",
       "type": "array"
     },
     "SALESFORCE_SFDX_SCANNER_AURA_RULES_PATH": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_AURA_RULES_PATH",
       "description": "SALESFORCE_SFDX_SCANNER_AURA: Path where to find linter configuration file",
-      "title": "SALESFORCE_SFDX_SCANNER_AURA: Custom config file path",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_AURA: Custom config file path",
       "type": "string"
     },
     "SALESFORCE_SFDX_SCANNER_AURA_UNSECURED_ENV_VARIABLES": {
@@ -20033,7 +20433,7 @@
       "items": {
         "type": "string"
       },
-      "title": "SALESFORCE_SFDX_SCANNER_AURA: Unsecured env variables",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_AURA: Unsecured env variables",
       "type": "array"
     },
     "SALESFORCE_SFDX_SCANNER_DIRECTORY": {
@@ -20098,7 +20498,7 @@
       "items": {
         "type": "string"
       },
-      "title": "SALESFORCE_SFDX_SCANNER_LWC: Custom arguments",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_LWC: Custom arguments",
       "type": [
         "array",
         "string"
@@ -20114,7 +20514,7 @@
       "items": {
         "type": "string"
       },
-      "title": "SALESFORCE_SFDX_SCANNER_LWC: CLI Executable",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_LWC: CLI Executable",
       "type": "array"
     },
     "SALESFORCE_SFDX_SCANNER_LWC_CLI_LINT_MODE": {
@@ -20125,7 +20525,7 @@
         "list_of_files",
         "project"
       ],
-      "title": "SALESFORCE_SFDX_SCANNER_LWC: Override default cli lint mode",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_LWC: Override default cli lint mode",
       "type": "string"
     },
     "SALESFORCE_SFDX_SCANNER_LWC_COMMAND_REMOVE_ARGUMENTS": {
@@ -20138,7 +20538,7 @@
       "items": {
         "type": "string"
       },
-      "title": "SALESFORCE_SFDX_SCANNER_LWC: Custom remove arguments",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_LWC: Custom remove arguments",
       "type": [
         "array",
         "string"
@@ -20148,26 +20548,26 @@
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_LWC_CONFIG_FILE",
       "default": "--eslintconfig",
       "description": "SALESFORCE_SFDX_SCANNER_LWC: User custom config file name if different from default",
-      "title": "SALESFORCE_SFDX_SCANNER_LWC: Custom config file name",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_LWC: Custom config file name",
       "type": "string"
     },
     "SALESFORCE_SFDX_SCANNER_LWC_DIRECTORY": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_LWC_DIRECTORY",
       "default": "force-app",
       "description": "Directory that must be found to activate linter. Use value \"any\" to always activate",
-      "title": "SALESFORCE_SFDX_SCANNER_LWC: Directory containing SALESFORCE files",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_LWC: Directory containing SALESFORCE files",
       "type": "string"
     },
     "SALESFORCE_SFDX_SCANNER_LWC_DISABLE_ERRORS": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_LWC_DISABLE_ERRORS",
       "default": false,
-      "title": "SALESFORCE_SFDX_SCANNER_LWC: Linter doesn't make MegaLinter fail even if errors are found",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_LWC: Linter doesn't make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "SALESFORCE_SFDX_SCANNER_LWC_DISABLE_ERRORS_IF_LESS_THAN": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_LWC_DISABLE_ERRORS_IF_LESS_THAN",
       "default": 0,
-      "title": "SALESFORCE_SFDX_SCANNER_LWC: Maximum number of errors allowed",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_LWC: Maximum number of errors allowed",
       "type": "number"
     },
     "SALESFORCE_SFDX_SCANNER_LWC_POST_COMMANDS": {
@@ -20184,7 +20584,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "SALESFORCE_SFDX_SCANNER_LWC: Define or override a list of bash commands to run after the linter",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_LWC: Define or override a list of bash commands to run after the linter",
       "type": "array"
     },
     "SALESFORCE_SFDX_SCANNER_LWC_PRE_COMMANDS": {
@@ -20201,13 +20601,13 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "SALESFORCE_SFDX_SCANNER_LWC: Define or override a list of bash commands to run before the linter",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_LWC: Define or override a list of bash commands to run before the linter",
       "type": "array"
     },
     "SALESFORCE_SFDX_SCANNER_LWC_RULES_PATH": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_LWC_RULES_PATH",
       "description": "SALESFORCE_SFDX_SCANNER_LWC: Path where to find linter configuration file",
-      "title": "SALESFORCE_SFDX_SCANNER_LWC: Custom config file path",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_LWC: Custom config file path",
       "type": "string"
     },
     "SALESFORCE_SFDX_SCANNER_LWC_UNSECURED_ENV_VARIABLES": {
@@ -20217,7 +20617,7 @@
       "items": {
         "type": "string"
       },
-      "title": "SALESFORCE_SFDX_SCANNER_LWC: Unsecured env variables",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_LWC: Unsecured env variables",
       "type": "array"
     },
     "SARIF_REPORTER": {
@@ -20873,6 +21273,165 @@
         "type": "string"
       },
       "title": "SNAKEMAKE_SNAKEFMT: Unsecured env variables",
+      "type": "array"
+    },
+    "SPELL_CODESPELL_ARGUMENTS": {
+      "$id": "#/properties/SPELL_CODESPELL_ARGUMENTS",
+      "description": "SPELL_CODESPELL: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SPELL_CODESPELL: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "SPELL_CODESPELL_CLI_EXECUTABLE": {
+      "$id": "#/properties/SPELL_CODESPELL_CLI_EXECUTABLE",
+      "default": [
+        [
+          "codespell"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SPELL_CODESPELL: CLI Executable",
+      "type": "array"
+    },
+    "SPELL_CODESPELL_CLI_LINT_MODE": {
+      "$id": "#/properties/SPELL_CODESPELL_CLI_LINT_MODE",
+      "default": "list_of_files",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "SPELL_CODESPELL: Override default cli lint mode",
+      "type": "string"
+    },
+    "SPELL_CODESPELL_COMMAND_REMOVE_ARGUMENTS": {
+      "$id": "#/properties/SPELL_CODESPELL_COMMAND_REMOVE_ARGUMENTS",
+      "description": "SPELL_CODESPELL: User custom arguments to remove before calling linter",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SPELL_CODESPELL: Custom remove arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "SPELL_CODESPELL_CONFIG_FILE": {
+      "$id": "#/properties/SPELL_CODESPELL_CONFIG_FILE",
+      "default": ".codespellrc",
+      "description": "SPELL_CODESPELL: User custom config file name if different from default",
+      "title": "SPELL_CODESPELL: Custom config file name",
+      "type": "string"
+    },
+    "SPELL_CODESPELL_DISABLE_ERRORS": {
+      "$id": "#/properties/SPELL_CODESPELL_DISABLE_ERRORS",
+      "default": false,
+      "title": "SPELL_CODESPELL: Linter doesn't make MegaLinter fail even if errors are found",
+      "type": "boolean"
+    },
+    "SPELL_CODESPELL_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/SPELL_CODESPELL_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "SPELL_CODESPELL: Maximum number of errors allowed",
+      "type": "number"
+    },
+    "SPELL_CODESPELL_FILE_EXTENSIONS": {
+      "$id": "#/properties/SPELL_CODESPELL_FILE_EXTENSIONS",
+      "examples:": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SPELL_CODESPELL: Override descriptor/linter matching files extensions",
+      "type": "array"
+    },
+    "SPELL_CODESPELL_FILE_NAMES_REGEX": {
+      "$id": "#/properties/SPELL_CODESPELL_FILE_NAMES_REGEX",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SPELL_CODESPELL: Override descriptor/linter matching file name regex",
+      "type": "array"
+    },
+    "SPELL_CODESPELL_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/SPELL_CODESPELL_FILTER_REGEX_EXCLUDE",
+      "title": "SPELL_CODESPELL: Excluding Regex",
+      "type": "string"
+    },
+    "SPELL_CODESPELL_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/SPELL_CODESPELL_FILTER_REGEX_INCLUDE",
+      "title": "SPELL_CODESPELL: Including Regex",
+      "type": "string"
+    },
+    "SPELL_CODESPELL_POST_COMMANDS": {
+      "$id": "#/properties/SPELL_CODESPELL_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "SPELL_CODESPELL: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "SPELL_CODESPELL_PRE_COMMANDS": {
+      "$id": "#/properties/SPELL_CODESPELL_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "SPELL_CODESPELL: Define or override a list of bash commands to run before the linter",
+      "type": "array"
+    },
+    "SPELL_CODESPELL_RULES_PATH": {
+      "$id": "#/properties/SPELL_CODESPELL_RULES_PATH",
+      "description": "SPELL_CODESPELL: Path where to find linter configuration file",
+      "title": "SPELL_CODESPELL: Custom config file path",
+      "type": "string"
+    },
+    "SPELL_CODESPELL_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/SPELL_CODESPELL_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling SPELL_CODESPELL and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "SPELL_CODESPELL: Unsecured env variables",
       "type": "array"
     },
     "SPELL_CSPELL_ANALYZE_FILE_NAMES": {
@@ -23234,7 +23793,7 @@
       "items": {
         "type": "string"
       },
-      "title": "TERRAFORM_TERRASCAN: Custom arguments",
+      "title": "(deprecated) TERRAFORM_TERRASCAN: Custom arguments",
       "type": [
         "array",
         "string"
@@ -23250,7 +23809,7 @@
       "items": {
         "type": "string"
       },
-      "title": "TERRAFORM_TERRASCAN: CLI Executable",
+      "title": "(deprecated) TERRAFORM_TERRASCAN: CLI Executable",
       "type": "array"
     },
     "TERRAFORM_TERRASCAN_CLI_LINT_MODE": {
@@ -23261,7 +23820,7 @@
         "list_of_files",
         "project"
       ],
-      "title": "TERRAFORM_TERRASCAN: Override default cli lint mode",
+      "title": "(deprecated) TERRAFORM_TERRASCAN: Override default cli lint mode",
       "type": "string"
     },
     "TERRAFORM_TERRASCAN_COMMAND_REMOVE_ARGUMENTS": {
@@ -23274,7 +23833,7 @@
       "items": {
         "type": "string"
       },
-      "title": "TERRAFORM_TERRASCAN: Custom remove arguments",
+      "title": "(deprecated) TERRAFORM_TERRASCAN: Custom remove arguments",
       "type": [
         "array",
         "string"
@@ -23284,19 +23843,19 @@
       "$id": "#/properties/TERRAFORM_TERRASCAN_CONFIG_FILE",
       "default": "terrascan.toml",
       "description": "TERRAFORM_TERRASCAN: User custom config file name if different from default",
-      "title": "TERRAFORM_TERRASCAN: Custom config file name",
+      "title": "(deprecated) TERRAFORM_TERRASCAN: Custom config file name",
       "type": "string"
     },
     "TERRAFORM_TERRASCAN_DISABLE_ERRORS": {
       "$id": "#/properties/TERRAFORM_TERRASCAN_DISABLE_ERRORS",
       "default": false,
-      "title": "TERRAFORM_TERRASCAN: Linter doesn't make MegaLinter fail even if errors are found",
+      "title": "(deprecated) TERRAFORM_TERRASCAN: Linter doesn't make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "TERRAFORM_TERRASCAN_DISABLE_ERRORS_IF_LESS_THAN": {
       "$id": "#/properties/TERRAFORM_TERRASCAN_DISABLE_ERRORS_IF_LESS_THAN",
       "default": 0,
-      "title": "TERRAFORM_TERRASCAN: Maximum number of errors allowed",
+      "title": "(deprecated) TERRAFORM_TERRASCAN: Maximum number of errors allowed",
       "type": "number"
     },
     "TERRAFORM_TERRASCAN_FILE_EXTENSIONS": {
@@ -23308,7 +23867,7 @@
       "items": {
         "type": "string"
       },
-      "title": "TERRAFORM_TERRASCAN: Override descriptor/linter matching files extensions",
+      "title": "(deprecated) TERRAFORM_TERRASCAN: Override descriptor/linter matching files extensions",
       "type": "array"
     },
     "TERRAFORM_TERRASCAN_FILE_NAMES_REGEX": {
@@ -23320,7 +23879,7 @@
       "items": {
         "type": "string"
       },
-      "title": "TERRAFORM_TERRASCAN: Override descriptor/linter matching file name regex",
+      "title": "(deprecated) TERRAFORM_TERRASCAN: Override descriptor/linter matching file name regex",
       "type": "array"
     },
     "TERRAFORM_TERRASCAN_POST_COMMANDS": {
@@ -23337,7 +23896,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "TERRAFORM_TERRASCAN: Define or override a list of bash commands to run after the linter",
+      "title": "(deprecated) TERRAFORM_TERRASCAN: Define or override a list of bash commands to run after the linter",
       "type": "array"
     },
     "TERRAFORM_TERRASCAN_PRE_COMMANDS": {
@@ -23354,13 +23913,13 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "TERRAFORM_TERRASCAN: Define or override a list of bash commands to run before the linter",
+      "title": "(deprecated) TERRAFORM_TERRASCAN: Define or override a list of bash commands to run before the linter",
       "type": "array"
     },
     "TERRAFORM_TERRASCAN_RULES_PATH": {
       "$id": "#/properties/TERRAFORM_TERRASCAN_RULES_PATH",
       "description": "TERRAFORM_TERRASCAN: Path where to find linter configuration file",
-      "title": "TERRAFORM_TERRASCAN: Custom config file path",
+      "title": "(deprecated) TERRAFORM_TERRASCAN: Custom config file path",
       "type": "string"
     },
     "TERRAFORM_TERRASCAN_UNSECURED_ENV_VARIABLES": {
@@ -23370,7 +23929,7 @@
       "items": {
         "type": "string"
       },
-      "title": "TERRAFORM_TERRASCAN: Unsecured env variables",
+      "title": "(deprecated) TERRAFORM_TERRASCAN: Unsecured env variables",
       "type": "array"
     },
     "TERRAFORM_TFLINT_ARGUMENTS": {

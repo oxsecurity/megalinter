@@ -50,14 +50,14 @@ jobs:
       # Checkout the code base #
       ##########################
       - name: Checkout Code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       ########################################################
       # Publish updated version of mega-linter-runner on NPM #
       ########################################################
       - uses: actions/setup-node@v6.0.0
         with:
-          node-version: "22.x"
+          node-version: "24.x"
           registry-url: "https://registry.npmjs.org"
       - run: cd mega-linter-runner && npm install
       - run: cd mega-linter-runner && npm publish || echo "mega-linter-runner not published"
@@ -191,7 +191,7 @@ jobs:
     environment:
       name: release
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
       - name: Get release version

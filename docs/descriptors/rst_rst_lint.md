@@ -26,7 +26,7 @@ description: How to use rst-lint (configure, ignore files, ignore errors, help &
 
 ## rst-lint documentation
 
-- Version in MegaLinter: **1.4.0**
+- Version in MegaLinter: **2.0.2**
 - Visit [Official Web Site](https://github.com/twolfson/restructuredtext-lint#readme){target=_blank}
 - See [How to configure rst-lint rules](https://github.com/twolfson/restructuredtext-lint#cli-utility){target=_blank}
 - See [How to disable rst-lint rules in files](https://docutils.sourceforge.io/docs/ref/rst/directives.html#raw-data-pass-through){target=_blank}
@@ -60,9 +60,9 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                     | Embedded linters |                                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       127        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        88        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)   | Optimized for PYTHON based projects             |        65        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       131        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        89        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)   | Optimized for PYTHON based projects             |        66        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
 
 ## Behind the scenes
 
@@ -86,7 +86,7 @@ rst-lint myfile.rst
 ### Help content
 
 ```shell
-usage: rst-lint [-h] [--version] [--format {text,json}] [--encoding ENCODING]
+usage: rst-lint [-h] [--version] [--format {text,json}]
                 [--level {debug,info,warning,error,severe}]
                 [--rst-prolog RST_PROLOG]
                 path [path ...]
@@ -101,7 +101,6 @@ options:
   -h, --help            show this help message and exit
   --version             show program's version number and exit
   --format {text,json}  Format of the output (default: "text")
-  --encoding ENCODING   Encoding of the input file (e.g. "utf-8")
   --level {debug,info,warning,error,severe}
                         Minimum error level to report (default: "warning")
   --rst-prolog RST_PROLOG
@@ -116,9 +115,9 @@ options:
 # renovate: datasource=pypi depName=Pygments
 ARG PIP_PYGMENTS_VERSION=2.19.2
 # renovate: datasource=pypi depName=restructuredtext_lint
-ARG PIP_RESTRUCTUREDTEXT_LINT_VERSION=1.4.0
+ARG PIP_RESTRUCTUREDTEXT_LINT_VERSION=2.0.2
 ```
 
 - PIP packages (Python):
   - [Pygments==2.19.2](https://pypi.org/project/Pygments/2.19.2)
-  - [restructuredtext_lint==1.4.0](https://pypi.org/project/restructuredtext_lint/1.4.0)
+  - [restructuredtext_lint==2.0.2](https://pypi.org/project/restructuredtext_lint/2.0.2)

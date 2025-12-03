@@ -9,6 +9,56 @@ pipeline {
         // https://megalinter.io/latest/config-file/
         DEFAULT_WORKSPACE = "${WORKSPACE}"
 
+        // Uncomment below if used with Bitbucket
+        /*
+        TOKEN = credentials('mytoken')
+        BITBUCKET_REPO_ACCESS_TOKEN = "${env.TOKEN_PSW}"
+        BITBUCKET_REPO_FULL_NAME = "${env.BITBUCKET_OWNER}/${env.BITBUCKET_REPOSITORY}"
+        BITBUCKET_GIT_HTTP_ORIGIN = "${env.GIT_URL.replaceAll('\\.git$', '')}"
+        BITBUCKET_BUILD_NUMBER = "${env.BUILD_NUMBER}"
+        BITBUCKET_PR_ID = "${env.CHANGE_ID}"
+        BITBUCKET_STEP_UUID = "${env.BUILD_ID}"
+        */
+
+        // Uncomment below if used with GitLab
+        /*
+        GITLAB_TOKEN = credentials('gitlab-token')
+        CI_JOB_TOKEN = "${env.GITLAB_TOKEN_PSW}"
+        CI_SERVER_URL = "${env.gitlabHost ?: 'https://gitlab.com'}"
+        CI_PROJECT_NAME = "${env.gitlabSourceRepoName ?: env.JOB_NAME}"
+        CI_PROJECT_ID = "${env.gitlabSourceRepoId ?: env.JOB_NAME}"
+        CI_JOB_URL = "${env.BUILD_URL}"
+        CI_MERGE_REQUEST_ID = "${env.gitlabMergeRequestIid ?: env.CHANGE_ID ?: ''}"
+        CI_OPEN_MERGE_REQUESTS = "${env.gitlabMergeRequestLastCommit ?: ''}"
+        CI_COMMIT_SHA = "${env.gitlabMergeRequestLastCommit ?: env.GIT_COMMIT}"
+        */
+
+        // Uncomment below if used with GitHub
+        /*
+        GITHUB_TOKEN = credentials('github-token')
+        PAT = "${env.GITHUB_TOKEN_PSW}"
+        GITHUB_REPOSITORY = "${env.CHANGE_URL ? env.CHANGE_URL.replaceAll('https://github.com/', '').split('/pull/')[0] : env.GIT_URL?.replaceAll('^.*github.com[:/]', '')?.replaceAll('\\.git$', '')}"
+        GITHUB_SERVER_URL = "https://github.com"
+        GITHUB_API_URL = "https://api.github.com"
+        GITHUB_REF = "${env.CHANGE_BRANCH ?: env.BRANCH_NAME ?: env.GIT_BRANCH}"
+        GITHUB_SHA = "${env.GIT_COMMIT}"
+        GITHUB_RUN_ID = "${env.BUILD_ID}"
+        GITHUB_WORKFLOW = "${env.JOB_NAME}"
+        GITHUB_JOB = "${env.STAGE_NAME ?: 'MegaLinter'}"
+        */
+
+        // Uncomment below if used with Azure DevOps
+        /*
+        AZURE_TOKEN = credentials('azure-system-token')
+        SYSTEM_ACCESSTOKEN = "${env.AZURE_TOKEN_PSW}"
+        SYSTEM_COLLECTIONURI = "${env.ADO_COLLECTION_URI ?: 'https://dev.azure.com/your-org/'}"
+        SYSTEM_TEAMPROJECT = "${env.ADO_TEAM_PROJECT ?: env.JOB_NAME}"
+        BUILD_BUILDID = "${env.BUILD_ID}"
+        BUILD_REPOSITORY_ID = "${env.ADO_REPOSITORY_ID ?: env.GIT_URL?.tokenize('/')?.last()?.replace('.git','')}"
+        SYSTEM_PULLREQUEST_PULLREQUESTID = "${env.CHANGE_ID ?: ''}"
+        SYSTEM_PULLREQUEST_SOURCEREPOSITORYURI = "${env.GIT_URL}"
+        */
+
         // Disable LLM Advisor for bot PRs (dependabot, renovate, etc.)
         // Note: Jenkins has limited access to PR metadata, this is a basic check
         LLM_ADVISOR_ENABLED = script {
