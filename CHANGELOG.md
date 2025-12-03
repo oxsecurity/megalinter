@@ -40,6 +40,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 9.0.111 to **9.0.112** on 2025-12-01
   - [phplint](https://github.com/overtrue/phplint) from 9.6.2 to **9.6.3** on 2025-12-01
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.93.10 to **0.93.11** on 2025-12-01
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.14.6 to **0.14.7** on 2025-12-03
+  - [ruff](https://github.com/astral-sh/ruff) from 0.14.6 to **0.14.7** on 2025-12-03
+  - [kics](https://www.kics.io) from 2.1.16 to **2.1.17** on 2025-12-03
 <!-- linter-versions-end -->
 
 ## [v9.2.0] - 2025-11-29
