@@ -121,7 +121,7 @@
     "tflint": "0.60.0",
     "trivy": "0.67.2",
     "trivy-sbom": "0.67.2",
-    "trufflehog": "3.91.1",
+    "trufflehog": "3.91.2",
     "ts-standard": "12.0.2",
     "tsqllint": "1.16.0.0",
     "v8r": "5.1.0",
