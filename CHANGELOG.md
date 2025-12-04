@@ -44,6 +44,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [ruff](https://github.com/astral-sh/ruff) from 0.14.6 to **0.14.7** on 2025-12-03
   - [kics](https://www.kics.io) from 2.1.16 to **2.1.17** on 2025-12-03
   - [pylint](https://pylint.readthedocs.io) from 4.0.3 to **4.0.4** on 2025-12-04
+  - [stylelint](https://stylelint.io) from 16.26.0 to **16.26.1** on 2025-12-04
 <!-- linter-versions-end -->
 
 ## [v9.2.0] - 2025-11-29
