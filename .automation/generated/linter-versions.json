@@ -80,7 +80,7 @@
     "protolint": "0.56.4",
     "psalm": "Psalm.6.13.1@",
     "puppet-lint": "4.3.0",
-    "pylint": "4.0.3",
+    "pylint": "4.0.4",
     "pyright": "1.1.407",
     "raku": "2025.11",
     "remark-lint": "14.0.2",
