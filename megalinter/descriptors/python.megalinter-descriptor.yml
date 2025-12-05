@@ -66,7 +66,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=pylint
-          ARG PIP_PYLINT_VERSION=4.0.3
+          ARG PIP_PYLINT_VERSION=4.0.4
         - |-
           # renovate: datasource=pypi depName=typing-extensions
           ARG PIP_TYPING_EXTENSIONS_VERSION=4.15.0
@@ -380,7 +380,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=bandit
-          ARG PIP_BANDIT_VERSION=1.9.1
+          ARG PIP_BANDIT_VERSION=1.9.2
         - |-
           # renovate: datasource=pypi depName=bandit_sarif_formatter
           ARG PIP_BANDIT_SARIF_FORMATTER_VERSION=1.1.1
@@ -447,7 +447,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=mypy
-          ARG PIP_MYPY_VERSION=1.18.2
+          ARG PIP_MYPY_VERSION=1.19.0
         - ENV MYPY_CACHE_DIR=/tmp # Avoid mypy cache to mess with other linters
       pip:
         - mypy==${PIP_MYPY_VERSION}
@@ -613,7 +613,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=ruff
-          ARG PIP_RUFF_VERSION=0.14.6
+          ARG PIP_RUFF_VERSION=0.14.7
       pip:
         - ruff==${PIP_RUFF_VERSION}
     supported_platforms:
@@ -678,7 +678,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=ruff
-          ARG PIP_RUFF_VERSION=0.14.6
+          ARG PIP_RUFF_VERSION=0.14.7
       pip:
         - ruff==${PIP_RUFF_VERSION}
     supported_platforms:

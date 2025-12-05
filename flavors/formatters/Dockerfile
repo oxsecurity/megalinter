@@ -15,7 +15,7 @@
 # renovate: datasource=docker depName=mvdan/shfmt
 ARG BASH_SHFMT_VERSION=v3.12.0-alpine
 # renovate: datasource=docker depName=alpine/terragrunt
-ARG TERRAFORM_TERRAGRUNT_VERSION=1.13.5
+ARG TERRAFORM_TERRAGRUNT_VERSION=1.14.0
 #ARGTOP__END
 
 #############################################################################################
@@ -80,7 +80,7 @@ ARG PIP_BLACK_VERSION=25.11.0
 # renovate: datasource=pypi depName=isort
 ARG PIP_ISORT_VERSION=7.0.0
 # renovate: datasource=pypi depName=ruff
-ARG PIP_RUFF_VERSION=0.14.6
+ARG PIP_RUFF_VERSION=0.14.7
 # renovate: datasource=pypi depName=rstfmt
 ARG PIP_RSTFMT_VERSION=0.0.14
 # renovate: datasource=pypi depName=snakefmt

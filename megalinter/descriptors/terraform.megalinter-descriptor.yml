@@ -79,6 +79,8 @@ linters:
   # TERRASCAN
   - class: TerrascanLinter
     linter_name: terrascan
+    deprecated: true
+    deprecated_description: Repo archived. https://github.com/tenable/terrascan
     linter_text: |
       **Terrascan** is a comprehensive static code analyzer for Infrastructure as Code that detects security vulnerabilities, compliance violations, and misconfigurations in cloud infrastructure. It supports multiple IaC tools including Terraform, Kubernetes, Docker, AWS CloudFormation, and more, providing over 1000 built-in policies across major cloud providers and compliance frameworks.
 
@@ -183,7 +185,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=docker depName=alpine/terragrunt
-          ARG TERRAFORM_TERRAGRUNT_VERSION=1.13.5
+          ARG TERRAFORM_TERRAGRUNT_VERSION=1.14.0
         - FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} AS terragrunt
         - COPY --link --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
     supported_platforms:
@@ -228,7 +230,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=docker depName=alpine/terragrunt
-          ARG TERRAFORM_TERRAGRUNT_VERSION=1.13.5
+          ARG TERRAFORM_TERRAGRUNT_VERSION=1.14.0
         - FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} AS terragrunt
         - COPY --link --from=terragrunt /bin/terraform /usr/bin/
     supported_platforms:

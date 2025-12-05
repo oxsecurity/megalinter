@@ -1,13 +1,13 @@
 # Please check changes with entrypoint.sh and keep in sync
 aiofiles==25.1.0
 azure-devops==6.0.0b4
-beautifulsoup4==4.14.2
+beautifulsoup4==4.14.3
 commentjson==0.9.0
-fastapi==0.121.2
+fastapi==0.123.7
 gitpython==3.1.45
 giturlparse==0.14.0
 importlib-metadata==8.7.0
-json-schema-for-humans==1.4.1
+json-schema-for-humans==1.5.1
 jsonpickle==4.1.1
 jsonschema==4.25.1
 markdown==3.10
@@ -18,7 +18,7 @@ mkdocs-glightbox==0.5.2
 mkdocs-material==9.7.0
 multiprocessing_logging==0.3.4
 pygithub==2.8.1
-pymdown-extensions==10.17.1
+pymdown-extensions==10.17.2
 pytablewriter==1.2.1
 pytest-cov==7.0.0
 pytest-timeout==2.4.0
@@ -27,7 +27,7 @@ pytest-rerunfailures==16.1
 python-gitlab==7.0.0
 python-multipart==0.0.20
 pyyaml==6.0.3
-redis==7.0.1
+redis==7.1.0
 regex==2025.11.3
 requests==2.32.5
 terminaltables==3.1.10
@@ -35,9 +35,9 @@ termcolor==3.2.0
 urllib3==2.5.0
 webpreview==1.7.2
 yq==3.4.3
-langchain_core==1.0.7
-langchain_anthropic==1.0.4
+langchain_core==1.1.0
+langchain_anthropic==1.2.0
 langchain_deepseek==1.0.1
-langchain_google_genai==3.0.3
-langchain_mistralai==1.0.1
+langchain_google_genai==3.2.0
+langchain_mistralai==1.1.0
 langchain_community==0.4.1
