@@ -32,7 +32,7 @@ regex==2025.11.3
 requests==2.32.5
 terminaltables==3.1.10
 termcolor==3.2.0
-urllib3==2.5.0
+urllib3==2.6.0
 webpreview==1.7.2
 yq==3.4.3
 langchain_core==1.1.0
