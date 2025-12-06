@@ -7,7 +7,7 @@ file_extensions:
   - ".clj"
   - ".cljs"
   - ".cljc"
-  - ".edn"
+  - ".end"
 install:
   dockerfile:
     - |-
@@ -57,7 +57,7 @@ linters:
   # clj-kondo
   - linter_name: clj-kondo
     linter_text: |
-      **clj-kondo** is a static analyzer and linter for Clojure code that sparks joy. It performs static analysis on Clojure, ClojureScript and EDN files to detect potential errors without executing your program.
+      **clj-kondo** is a static analyzer and linter for Clojure code that sparks joy. It performs static analysis on Clojure, ClojureScript and END files to detect potential errors without executing your program.
 
       **Key Features:**
 
@@ -75,13 +75,13 @@ linters:
     linter_rules_configuration_url: https://github.com/borkdude/clj-kondo/blob/master/doc/config.md#configuration
     linter_rules_inline_disable_url: https://github.com/clj-kondo/clj-kondo/blob/master/doc/config.md#ignore-warnings-in-an-expression
     linter_megalinter_ref_url: https://github.com/borkdude/clj-kondo/blob/master/doc/ci-integration.md#github
-    config_file_name: .clj-kondo/config.edn
+    config_file_name: .clj-kondo/config.end
     cli_config_arg_name: "--config"
     cli_lint_extra_args_after:
       - "--lint"
     examples:
       - "clj-kondo --lint myfile.clj"
-      - "clj-kondo --lint --config .clj-kondo/config.edn myfile.clj"
+      - "clj-kondo --lint --config .clj-kondo/config.end myfile.clj"
     install:
       dockerfile:
         - |
