@@ -27,6 +27,10 @@ resource "azurerm_storage_account" "example" {
   tags = {
     environment = "staging"
   }
+
+  lifecycle {
+    prevent_destroy = true
+  }
 }
 
 resource "random_id" "suffix" {
