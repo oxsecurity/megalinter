@@ -30,7 +30,7 @@ description: How to use mypy (configure, ignore files, ignore errors, help & ver
 
 ## mypy documentation
 
-- Version in MegaLinter: **1.18.2**
+- Version in MegaLinter: **1.19.0**
 - Visit [Official Web Site](https://mypy.readthedocs.io/en/stable/){target=_blank}
 - See [How to configure mypy rules](https://mypy.readthedocs.io/en/stable/config_file.html){target=_blank}
   - If custom `.mypy.ini` config file isn't found, [.mypy.ini](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.mypy.ini){target=_blank} will be used
@@ -135,7 +135,7 @@ command line flags. For more details, see:
 - https://mypy.readthedocs.io/en/stable/config_file.html
 
 options:
-  --enable-incomplete-feature {InlineTypedDict,PreciseTupleTypes}
+  --enable-incomplete-feature {InlineTypedDict,PreciseTupleTypes,TypeForm}
                             Enable support of incomplete/experimental features
                             for early preview
 
@@ -174,10 +174,6 @@ Import discovery:
   --no-silence-site-packages
                             Do not silence errors in PEP 561 compliant
                             installed packages
-  --junit-format {global,per_file}
-                            If --junit-xml is set, specifies format. global:
-                            single test with all errors; per_file: one test
-                            entry per file with failures
 
 Platform configuration:
   Type check code assuming it will be run under certain runtime conditions.
@@ -240,8 +236,7 @@ Untyped definitions and calls:
 None and Optional handling:
   Adjust how values of type 'None' are handled. For more context on how mypy
   handles values of type 'None', see:
-  https://mypy.readthedocs.io/en/stable/kinds_of_types.html#optional-types-
-  and-the-none-type
+  https://mypy.readthedocs.io/en/stable/kinds_of_types.html#optional-types-and-the-none-type
 
   --implicit-optional       Assume arguments with default values of None are
                             Optional (inverse: --no-implicit-optional)
@@ -336,7 +331,7 @@ Incremental mode:
   Adjust how mypy incrementally type checks and caches modules. Mypy caches
   type information about modules into a cache to let you speed up future
   invocations of mypy. Also see mypy's daemon mode:
-  mypy.readthedocs.io/en/stable/mypy_daemon.html#mypy-daemon
+  https://mypy.readthedocs.io/en/stable/mypy_daemon.html#mypy-daemon
 
   --no-incremental          Disable module cache (inverse: --incremental)
   --cache-dir DIR           Store module cache info in the given folder in
@@ -345,8 +340,7 @@ Incremental mode:
                             --no-sqlite-cache)
   --cache-fine-grained      Include fine-grained dependency information in the
                             cache for the mypy daemon
-  --fixed-format-cache      Use experimental fast and compact fixed format
-                            cache
+  --fixed-format-cache      Use new fast and compact fixed format cache
   --skip-version-check      Allow using cache written by older mypy version
   --skip-cache-mtime-checks
                             Skip cache internal consistency checks based on
@@ -385,7 +379,13 @@ Report generation:
   --xslt-txt-report DIR
 
 Miscellaneous:
-  --junit-xml JUNIT_XML     Write junit.xml to the given file
+  --junit-xml JUNIT_XML_OUTPUT_FILE
+                            Write a JUnit XML test result document with type
+                            checking results to the given file
+  --junit-format {global,per_file}
+                            If --junit-xml is set, specifies format. global
+                            (default): single test with all errors; per_file:
+                            one test entry per file with failures
   --find-occurrences CLASS.MEMBER
                             Print out all usages of a class member
                             (experimental)
@@ -398,7 +398,7 @@ Miscellaneous:
 
 Running code:
   Specify the code you want to type check. For more details, see
-  mypy.readthedocs.io/en/stable/running_mypy.html#running-mypy
+  https://mypy.readthedocs.io/en/stable/running_mypy.html#running-mypy
 
   --explicit-package-bases  Use current directory and MYPYPATH to determine
                             module names of files passed (inverse: --no-
@@ -427,9 +427,9 @@ Environment variables:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=mypy
-ARG PIP_MYPY_VERSION=1.18.2
+ARG PIP_MYPY_VERSION=1.19.0
 ENV MYPY_CACHE_DIR=/tmp
 ```
 
 - PIP packages (Python):
-  - [mypy==1.18.2](https://pypi.org/project/mypy/1.18.2)
+  - [mypy==1.19.0](https://pypi.org/project/mypy/1.19.0)

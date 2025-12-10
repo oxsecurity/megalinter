@@ -46,6 +46,16 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [pylint](https://pylint.readthedocs.io) from 4.0.3 to **4.0.4** on 2025-12-04
   - [stylelint](https://stylelint.io) from 16.26.0 to **16.26.1** on 2025-12-04
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.91.1 to **3.91.2** on 2025-12-04
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 25.11.1 to **25.12.0** on 2025-12-10
+  - [golangci-lint](https://golangci-lint.run/) from 2.6.2 to **2.7.1** on 2025-12-10
+  - [pmd](https://pmd.github.io/) from 7.18.0 to **7.19.0** on 2025-12-10
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.90.0 to **3.91.2** on 2025-12-10
+  - [black](https://black.readthedocs.io/en/stable/) from 25.11.0 to **25.12.0** on 2025-12-10
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.18.2 to **1.19.0** on 2025-12-10
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.14.7 to **0.14.8** on 2025-12-10
+  - [ruff](https://github.com/astral-sh/ruff) from 0.14.7 to **0.14.8** on 2025-12-10
+  - [grype](https://github.com/anchore/grype) from 0.104.1 to **0.104.2** on 2025-12-10
+  - [syft](https://github.com/anchore/syft) from 1.38.0 to **1.38.2** on 2025-12-10
 <!-- linter-versions-end -->
 
 ## [v9.2.0] - 2025-11-29
