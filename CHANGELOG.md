@@ -56,6 +56,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [ruff](https://github.com/astral-sh/ruff) from 0.14.7 to **0.14.8** on 2025-12-10
   - [grype](https://github.com/anchore/grype) from 0.104.1 to **0.104.2** on 2025-12-10
   - [syft](https://github.com/anchore/syft) from 1.38.0 to **1.38.2** on 2025-12-10
+  - [phplint](https://github.com/overtrue/phplint) from 9.6.3 to **9.7.1** on 2025-12-13
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.91 to **0.1.92** on 2025-12-13
+  - [snakemake](https://snakemake.github.io/) from 9.13.7 to **9.14.4** on 2025-12-13
 <!-- linter-versions-end -->
 
 ## [v9.2.0] - 2025-11-29
