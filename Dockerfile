@@ -445,7 +445,7 @@ RUN apk -U --no-cache upgrade \
                 coreutils \
                 py3-pyflakes \
                 cppcheck \
-                clang20-extra-tools \
+                cmd:clang-format \
                 openjdk17 \
                 helm \
                 gcompat \

@@ -21,10 +21,10 @@ description: How to use clang-format (configure, ignore files, ignore errors, he
 ## clang-format documentation
 
 - Version in MegaLinter: **20.1.8**
-- Visit [Official Web Site](https://releases.llvm.org/17.0.1/tools/clang/docs/ClangFormat.html){target=_blank}
-- See [How to configure clang-format rules](https://releases.llvm.org/17.0.1/tools/clang/docs/ClangFormatStyleOptions.html){target=_blank}
-- See [How to disable clang-format rules in files](https://releases.llvm.org/17.0.1/tools/clang/docs/ClangFormatStyleOptions.html#disabling-formatting-on-a-piece-of-code){target=_blank}
-- See [Index of problems detected by clang-format](https://releases.llvm.org/17.0.1/tools/clang/docs/ClangFormat.html){target=_blank}
+- Visit [Official Web Site](https://releases.llvm.org/21.1.0/tools/clang/docs/ClangFormat.html){target=_blank}
+- See [How to configure clang-format rules](https://releases.llvm.org/21.1.0/tools/clang/docs/ClangFormatStyleOptions.html){target=_blank}
+- See [How to disable clang-format rules in files](https://releases.llvm.org/21.1.0/tools/clang/docs/ClangFormatStyleOptions.html#disabling-formatting-on-a-piece-of-code){target=_blank}
+- See [Index of problems detected by clang-format](https://releases.llvm.org/21.1.0/tools/clang/docs/ClangFormat.html){target=_blank}
 
 [![llvm-project - GitHub](https://gh-card.dev/repos/llvm/llvm-project.svg?fullname=)](https://github.com/llvm/llvm-project){target=_blank}
 
@@ -60,7 +60,7 @@ Use clang-format in your favorite IDE to catch errors before MegaLinter !
 |                                                                  <!-- -->                                                                   | IDE                                                  | Extension Name                                                                                       |                                                                                 Install                                                                                 |
 |:-------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [Clang-Format](https://marketplace.visualstudio.com/items?itemName=xaver.clang-format)               | [![Install in VSCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/xaver.clang-format){target=_blank} |
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Emacs](https://www.gnu.org/software/emacs/)         | [clang-format](https://releases.llvm.org/17.0.1/tools/clang/docs/ClangFormat.html#emacs-integration) |                          [Visit Web Site](https://releases.llvm.org/17.0.1/tools/clang/docs/ClangFormat.html#emacs-integration){target=_blank}                          |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Emacs](https://www.gnu.org/software/emacs/)         | [clang-format](https://releases.llvm.org/21.1.0/tools/clang/docs/ClangFormat.html#emacs-integration) |                          [Visit Web Site](https://releases.llvm.org/21.1.0/tools/clang/docs/ClangFormat.html#emacs-integration){target=_blank}                          |
 
 ## MegaLinter Flavors
 
@@ -195,4 +195,4 @@ Generic Options:
 ### Installation on mega-linter Docker image
 
 - APK packages (Linux):
-  - [clang20-extra-tools](https://pkgs.alpinelinux.org/packages?branch=v3.22&arch=x86_64&name=clang20-extra-tools)
+  - [cmd:clang-format](https://pkgs.alpinelinux.org/packages?branch=v3.23&arch=x86_64&name=cmd:clang-format)

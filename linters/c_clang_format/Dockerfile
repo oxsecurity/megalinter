@@ -74,7 +74,7 @@ RUN apk -U --no-cache upgrade \
                 make \
                 musl-dev \
                 openssh \
-                clang20-extra-tools \
+                cmd:clang-format \
     && git config --global core.autocrlf true
 #APK__END
 
