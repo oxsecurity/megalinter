@@ -12412,7 +12412,7 @@
 </ul>
 <h2 id="phplint-documentation">phplint documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>9.6.3</strong></li>
+<li>Version in MegaLinter: <strong>9.7.1</strong></li>
 <li>Visit <a href="https://github.com/overtrue/phplint#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/overtrue/phplint/blob/main/docs/configuration.md#configuration" target="_blank">How to configure phplint rules</a><ul>
 <li>If custom <code>.phplint.yml</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.phplint.yml" target="_blank">.phplint.yml</a> will be used</li>
@@ -12613,7 +12613,7 @@ COPY --from=composer/composer:2-bin /composer /usr/bin/composer
 ENV PATH="/root/.composer/vendor/bin:${PATH}"
 # Linter install
 # renovate: datasource=packagist depName=overtrue/phplint
-ARG PHP_OVERTRUE_PHPLINT_VERSION=9.6.3
+ARG PHP_OVERTRUE_PHPLINT_VERSION=9.7.1
 # renovate: datasource=packagist depName=bartlett/sarif-php-converters
 ARG PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION=1.3.1
 RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" &amp;&amp; export GITHUB_AUTH_TOKEN &amp;&amp; composer global require overtrue/phplint:${PHP_OVERTRUE_PHPLINT_VERSION} bartlett/sarif-php-converters:${PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION}
