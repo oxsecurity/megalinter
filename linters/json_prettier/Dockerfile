@@ -49,7 +49,7 @@ FROM python:3.13-alpine3.22
 #############################################################################################
 #ARG__START
 # renovate: datasource=npm depName=prettier
-ARG NPM_PRETTIER_VERSION=3.6.2
+ARG NPM_PRETTIER_VERSION=3.7.4
 #ARG__END
 
 ####################
