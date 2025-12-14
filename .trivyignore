@@ -166,6 +166,8 @@ CVE-2025-65106
 CVE-2025-64756
 # https://avd.aquasec.com/nvd/cve-2025-65965 : Credentials are hidden to linters logs, so not applicable in MegaLinter context
 CVE-2025-65965
+# https://avd.aquasec.com/nvd/cve-2025-61729 : stdlib crypto/x509: Excessive resource consumption when printing error string, not applicable in MegaLinter context
+CVE-2025-61729
 # Dockerfile
 DS001
 DS002
