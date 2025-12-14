@@ -49,13 +49,13 @@ FROM python:3.13-alpine3.22
 #############################################################################################
 #ARG__START
 # renovate: datasource=npm depName=@salesforce/cli
-ARG NPM_SALESFORCE_CLI_VERSION=2.113.6
+ARG NPM_SALESFORCE_CLI_VERSION=2.115.15
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
-ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.23.3
+ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.24.0
 # renovate: datasource=npm depName=sfdx-hardis
 ARG SFDX_HARDIS_VERSION=6.12.10
 # renovate: datasource=npm depName=@salesforce/plugin-code-analyzer
-ARG SALESFORCE_CODE_ANALYZER_VERSION=5.6.1
+ARG SALESFORCE_CODE_ANALYZER_VERSION=5.7.1
 #ARG__END
 
 ####################
