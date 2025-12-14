@@ -116,7 +116,7 @@
   ],
   dockerfile: {
     managerFilePatterns: [
-      '/^.automation/test/Dockerfile-megalinter-custom$/'
+      '/^\\.automation/test/Dockerfile-megalinter-custom$/'
     ]
   }
 }
