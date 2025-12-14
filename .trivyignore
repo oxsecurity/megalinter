@@ -170,6 +170,10 @@ CVE-2025-65965
 CVE-2025-61729
 # https://avd.aquasec.com/nvd/cve-2025-65945 : auth0/node-jws Improperly Verifies HMAC Signatures. Not applicable in MegaLinter context as linters do not use auth0 nor jws  
 CVE-2025-65945
+# https://avd.aquasec.com/nvd/cve-2025-66506 : github.com/sigstore/fulcio: Fulcio: Denial of Service, not applicable in MegaLinter context         
+CVE-2025-66506
+# https://avd.aquasec.com/nvd/cve-2025-66564 :  github.com/sigstore/timestamp-authority: Sigstore Timestamp Authority: Denial of Service via excessive OID, not applicable in MegaLinter context
+CVE-2025-66564
 # Dockerfile
 DS001
 DS002
