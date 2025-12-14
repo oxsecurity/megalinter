@@ -51,7 +51,7 @@ FROM python:3.13-alpine3.22
 # renovate: datasource=npm depName=typescript
 ARG NPM_TYPESCRIPT_VERSION=5.9.3
 # renovate: datasource=npm depName=prettier
-ARG NPM_PRETTIER_VERSION=3.6.2
+ARG NPM_PRETTIER_VERSION=3.7.4
 #ARG__END
 
 ####################
