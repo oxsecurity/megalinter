@@ -12413,7 +12413,7 @@
 </ul>
 <h2 id="terragrunt-documentation">terragrunt documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>0.93.11</strong></li>
+<li>Version in MegaLinter: <strong>0.93.13</strong></li>
 <li>Visit <a href="https://terragrunt.gruntwork.io" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://terragrunt.gruntwork.io/docs/getting-started/quick-start/#add-terragrunthcl-to-your-project" target="_blank">How to configure terragrunt rules</a></li>
 </ul>
@@ -12628,7 +12628,7 @@ Global Options:
    --help, -h                 Show help. (default: false)
    --version, -v              Show terragrunt version. (default: false)
 
-Version: v0.93.11
+Version: v0.93.13
 
 Author: Gruntwork &lt;www.gruntwork.io&gt;
 </code></pre>
@@ -12637,7 +12637,7 @@ Author: Gruntwork &lt;www.gruntwork.io&gt;
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile"># renovate: datasource=docker depName=alpine/terragrunt
-ARG TERRAFORM_TERRAGRUNT_VERSION=1.14.0
+ARG TERRAFORM_TERRAGRUNT_VERSION=1.14.1
 FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} AS terragrunt
 COPY --link --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
 </code></pre>

@@ -12387,11 +12387,11 @@
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile"># renovate: datasource=npm depName=@salesforce/cli
-ARG NPM_SALESFORCE_CLI_VERSION=2.113.6
+ARG NPM_SALESFORCE_CLI_VERSION=2.115.15
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
-ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.23.3
+ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.24.0
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=6.12.10
+ARG SFDX_HARDIS_VERSION=6.15.1
 ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 RUN sf plugins install @salesforce/plugin-packaging@${NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION} \
@@ -12402,12 +12402,12 @@ ENV SF_AUTOUPDATE_DISABLE=true SF_CLI_DISABLE_AUTOUPDATE=true
 </code></pre>
 <ul>
 <li>APK packages (Linux):<ul>
-<li><a href="https://pkgs.alpinelinux.org/packages?branch=v3.22&amp;arch=x86_64&amp;name=coreutils">coreutils</a></li>
-<li><a href="https://pkgs.alpinelinux.org/packages?branch=v3.22&amp;arch=x86_64&amp;name=openjdk21">openjdk21</a></li>
+<li><a href="https://pkgs.alpinelinux.org/packages?branch=v3.23&amp;arch=x86_64&amp;name=coreutils">coreutils</a></li>
+<li><a href="https://pkgs.alpinelinux.org/packages?branch=v3.23&amp;arch=x86_64&amp;name=openjdk21">openjdk21</a></li>
 </ul>
 </li>
 <li>NPM packages (node.js):<ul>
-<li><a href="https://www.npmjs.com/package/@salesforce/cli/v/2.113.6">@salesforce/cli@2.113.6</a></li>
+<li><a href="https://www.npmjs.com/package/@salesforce/cli/v/2.115.15">@salesforce/cli@2.115.15</a></li>
 </ul>
 </li>
 </ul>

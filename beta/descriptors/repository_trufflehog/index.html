@@ -12414,7 +12414,7 @@
 </ul>
 <h2 id="trufflehog-documentation">trufflehog documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>3.91.2</strong></li>
+<li>Version in MegaLinter: <strong>3.92.3</strong></li>
 <li>Visit <a href="https://github.com/trufflesecurity/trufflehog#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/trufflesecurity/trufflehog#regex-detector-alpha" target="_blank">How to configure trufflehog rules</a></li>
 </ul>
@@ -12790,7 +12790,7 @@ analyze
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile"># renovate: datasource=docker depName=trufflesecurity/trufflehog
-ARG REPOSITORY_TRUFFLEHOG_VERSION=3.91.2
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.92.3
 FROM trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION} AS trufflehog
 COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
 </code></pre>
