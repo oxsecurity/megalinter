@@ -11,6 +11,7 @@
         "**/node_modules/**",
         "**/package-lock.json",
         "**/used-by-stats.md",
+        "**/used-by-stats-*.md",
         "**/valestyles/**",
         "**/vscode-extension/**",
         ".vscode",
