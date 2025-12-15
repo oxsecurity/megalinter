@@ -59,6 +59,29 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [phplint](https://github.com/overtrue/phplint) from 9.6.3 to **9.7.1** on 2025-12-13
   - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.91 to **0.1.92** on 2025-12-13
   - [snakemake](https://snakemake.github.io/) from 9.13.7 to **9.14.4** on 2025-12-13
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 25.12.0 to **25.12.1** on 2025-12-15
+  - [bash-exec](https://www.gnu.org/software/bash/) from 5.2.37 to **5.3.3** on 2025-12-15
+  - [clang-format](https://releases.llvm.org/21.1.0/tools/clang/docs/ClangFormat.html) from 20.1.8 to **21.1.2** on 2025-12-15
+  - [cppcheck](https://cppcheck.sourceforge.io/) from 2.14.2 to **2.18.3** on 2025-12-15
+  - [golangci-lint](https://golangci-lint.run/) from 2.7.1 to **2.7.2** on 2025-12-15
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 15.2.2 to **16.0.1** on 2025-12-15
+  - [prettier](https://prettier.io/) from 3.6.2 to **3.7.4** on 2025-12-15
+  - [helm](https://helm.sh/docs/helm/helm_lint/) from 3.18.4 to **3.19.0** on 2025-12-15
+  - [kubescape](https://github.com/kubescape/kubescape) from 3.0.45 to **3.0.46** on 2025-12-15
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.91.2 to **3.91.3** on 2025-12-15
+  - [phpstan](https://phpstan.org/) from 2.1.32 to **2.1.33** on 2025-12-15
+  - [psalm](https://psalm.dev) from Psalm.6.13.1@ to **Psalm.6.14.2@** on 2025-12-15
+  - [git_diff](https://git-scm.com) from 2.49.1 to **2.52.0** on 2025-12-15
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.67.2 to **0.68.1** on 2025-12-15
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.67.2 to **0.68.1** on 2025-12-15
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.91.2 to **3.92.3** on 2025-12-15
+  - [robocop](https://github.com/MarketSquare/robotframework-robocop) from 6.11.0 to **6.13.0** on 2025-12-15
+  - [code-analyzer-apex](https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html) from 5.6.1 to **5.7.1** on 2025-12-15
+  - [code-analyzer-aura](https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html) from 5.6.1 to **5.7.1** on 2025-12-15
+  - [code-analyzer-lwc](https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html) from 5.6.1 to **5.7.1** on 2025-12-15
+  - [scalafix](https://scalacenter.github.io/scalafix/) from 0.14.4 to **0.14.5** on 2025-12-15
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.14.0 to **1.14.1** on 2025-12-15
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.93.11 to **0.93.13** on 2025-12-15
 <!-- linter-versions-end -->
 
 ## [v9.2.0] - 2025-11-29

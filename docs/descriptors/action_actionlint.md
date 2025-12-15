@@ -172,4 +172,4 @@ COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
 ```
 
 - APK packages (Linux):
-  - [py3-pyflakes](https://pkgs.alpinelinux.org/packages?branch=v3.22&arch=x86_64&name=py3-pyflakes)
+  - [py3-pyflakes](https://pkgs.alpinelinux.org/packages?branch=v3.23&arch=x86_64&name=py3-pyflakes)

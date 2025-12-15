@@ -15,7 +15,7 @@ description: How to use terrascan (configure, ignore files, ignore errors, help 
 
 > This linter has been deprecated.
 >
-> Repo archived. <https://github.com/tenable/terrascan>
+> Repo archived. https://github.com/tenable/terrascan
 >
 > You should disable terrascan by adding it in DISABLE_LINTERS property.
 >

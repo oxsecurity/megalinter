@@ -27,7 +27,7 @@ description: How to use helm (configure, ignore files, ignore errors, help & ver
 
 ## helm documentation
 
-- Version in MegaLinter: **3.18.4**
+- Version in MegaLinter: **3.19.0**
 - Visit [Official Web Site](https://helm.sh/docs/helm/helm_lint/){target=_blank}
 - See [How to configure helm rules](https://helm.sh/docs/helm/helm_lint/){target=_blank}
 - See [How to disable helm rules in files](https://helm.sh/docs/topics/charts/#schema-files){target=_blank}
@@ -218,4 +218,4 @@ Use "helm [command] --help" for more information about a command.
 ### Installation on mega-linter Docker image
 
 - APK packages (Linux):
-  - [helm](https://pkgs.alpinelinux.org/packages?branch=v3.22&arch=x86_64&name=helm)
+  - [helm](https://pkgs.alpinelinux.org/packages?branch=v3.23&arch=x86_64&name=helm)

@@ -29,7 +29,7 @@ Cppcheck helps ensure your C/C++ code is secure, reliable, and follows best prac
 
 ## cppcheck documentation
 
-- Version in MegaLinter: **2.14.2**
+- Version in MegaLinter: **2.18.3**
 - Visit [Official Web Site](https://cppcheck.sourceforge.io/){target=_blank}
 - See [How to configure cppcheck rules](https://cppcheck.sourceforge.io/manual.html#configuration){target=_blank}
 - See [Index of problems detected by cppcheck](https://sourceforge.net/p/cppcheck/wiki/ListOfChecks/){target=_blank}
@@ -117,8 +117,9 @@ Options:
     --check-config       Check cppcheck configuration. The normal code
                          analysis is disabled by this flag.
     --check-level=<level>
-                         Configure how much checking you want:
-                          * normal: Cppcheck uses some compromises in the checking so
+                         Configure how much valueflow analysis you want:
+                          * reduced: Reduce valueflow to finish checking quickly.
+                          * normal: Cppcheck uses some compromises in the analysis so
                             the checking will finish in reasonable time.
                           * exhaustive: deeper analysis that you choose when you can
                             wait.
@@ -212,10 +213,9 @@ Options:
                          this is not needed.
     --include=<file>
                          Force inclusion of a file before the checked file.
-    -i <dir or file>     Give a source file or source file directory to exclude
-                         from the check. This applies only to source files so
-                         header files included by source files are not matched.
-                         Directory name is matched to all parts of the path.
+    -i <str>             Exclude source files or directories matching str from
+                         the check. This applies only to source files so header
+                         files included by source files are not matched.
     --inconclusive       Allow that Cppcheck reports even though the analysis is
                          inconclusive.
                          There are false positives with this option. Each result
@@ -247,6 +247,11 @@ Options:
                          is 2. A larger value will mean more errors can be found
                          but also means the analysis will be slower.
     --output-file=<file> Write results to file, rather than standard error.
+    --output-format=<format>
+                        Specify the output format. The available formats are:
+                          * text
+                          * sarif
+                          * xml
     --platform=<type>, --platform=<file>
                          Specifies platform specific types and sizes. The
                          available builtin platforms are:
@@ -303,9 +308,23 @@ Options:
                          currently only possible to apply the base paths to
                          files that are on a lower level in the directory tree.
     --report-progress    Report progress messages while checking a file (single job only).
+    --report-type=<type> Add guideline and classification fields for specified coding standard.
+                         The available report types are:
+                          * normal           Default, only show cppcheck error ID and severity
+                          * autosar          Autosar
+                          * cert-c-2016      Cert C 2016
+                          * cert-cpp-2016    Cert C++ 2016
+                          * misra-c-2012     Misra C 2012
+                          * misra-c-2023     Misra C 2023
+                          * misra-c-2025     Misra C 2025
+                          * misra-cpp-2008   Misra C++ 2008
+                          * misra-cpp-2023   Misra C++ 2023
     --rule=<rule>        Match regular expression.
     --rule-file=<file>   Use given rule file. For more information, see:
                          http://sourceforge.net/projects/cppcheck/files/Articles/
+    --safety             Enable safety-certified checking mode: display checker summary, enforce
+                         stricter checks for critical errors, and return a non-zero exit code
+                         if such errors occur.
     --showtime=<mode>    Show timing information.
                          The available modes are:
                           * none
@@ -320,8 +339,6 @@ Options:
                                  Show the top 5 for each processed file
                           * top5_summary
                                  Show the top 5 summary at the end
-                          * top5
-                                 Alias for top5_file (deprecated)
     --std=<id>           Set standard.
                          The available options are:
                           * c89
@@ -423,4 +440,4 @@ Many thanks to the 3rd party libraries we use:
 ### Installation on mega-linter Docker image
 
 - APK packages (Linux):
-  - [cppcheck](https://pkgs.alpinelinux.org/packages?branch=v3.22&arch=x86_64&name=cppcheck)
+  - [cppcheck](https://pkgs.alpinelinux.org/packages?branch=v3.23&arch=x86_64&name=cppcheck)
