@@ -214,7 +214,7 @@ ARG PHP_VIMEO_PSALM_VERSION=6.14.2
 # renovate: datasource=packagist depName=overtrue/phplint
 ARG PHP_OVERTRUE_PHPLINT_VERSION=9.7.1
 # renovate: datasource=packagist depName=friendsofphp/php-cs-fixer
-ARG PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION=v3.91.3
+ARG PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION=v3.92.0
 # renovate: datasource=pypi depName=pylint
 ARG PIP_PYLINT_VERSION=4.0.4
 # renovate: datasource=pypi depName=typing-extensions
