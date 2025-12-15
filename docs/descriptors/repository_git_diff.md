@@ -18,7 +18,7 @@ description: How to use git_diff (configure, ignore files, ignore errors, help &
 
 ## git_diff documentation
 
-- Version in MegaLinter: **2.49.1**
+- Version in MegaLinter: **2.52.0**
 - Visit [Official Web Site](https://git-scm.com){target=_blank}
 
 [![git - GitHub](https://gh-card.dev/repos/git/git.svg?fullname=)](https://github.com/git/git){target=_blank}
@@ -124,7 +124,7 @@ grow, mark and tweak your common history
    rebase     Reapply commits on top of another base tip
    reset      Reset current HEAD to the specified state
    switch     Switch branches
-   tag        Create, list, delete or verify a tag object signed with GPG
+   tag        Create, list, delete or verify tags
 
 collaborate (see also: git help workflows)
    fetch      Download objects and refs from another repository

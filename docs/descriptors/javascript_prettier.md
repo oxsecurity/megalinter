@@ -28,7 +28,7 @@ description: How to use prettier (configure, ignore files, ignore errors, help &
 
 ## prettier documentation
 
-- Version in MegaLinter: **3.6.2**
+- Version in MegaLinter: **3.7.4**
 - Visit [Official Web Site](https://prettier.io/){target=_blank}
 - See [How to configure prettier rules](https://prettier.io/docs/en/configuration.html){target=_blank}
 - See [How to disable prettier rules in files](https://prettier.io/docs/en/ignore.html#javascript){target=_blank}
@@ -250,8 +250,8 @@ Other options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=prettier
-ARG NPM_PRETTIER_VERSION=3.6.2
+ARG NPM_PRETTIER_VERSION=3.7.4
 ```
 
 - NPM packages (node.js):
-  - [prettier@3.6.2](https://www.npmjs.com/package/prettier/v/3.6.2)
+  - [prettier@3.7.4](https://www.npmjs.com/package/prettier/v/3.7.4)

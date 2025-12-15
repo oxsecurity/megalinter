@@ -24,7 +24,7 @@ description: How to use npm-groovy-lint (configure, ignore files, ignore errors,
 
 ## npm-groovy-lint documentation
 
-- Version in MegaLinter: **15.2.2**
+- Version in MegaLinter: **16.0.1**
 - Visit [Official Web Site](https://nvuillam.github.io/npm-groovy-lint/){target=_blank}
 - See [How to configure npm-groovy-lint rules](https://github.com/nvuillam/npm-groovy-lint#configuration){target=_blank}
   - If custom `.groovylintrc.json` config file isn't found, [.groovylintrc.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.groovylintrc.json){target=_blank} will be used
@@ -144,7 +144,7 @@ Note: command-line arguments have priority on config file properties - default: 
   --failonwarning              (Deprecated) Fails if at least one warning is found
   --failoninfo                 (Deprecated) Fails if at least one error is found
   --codenarcargs               Use core CodeNarc arguments (all npm-groovy-lint arguments will be ignored). Doc: http://codenarc.github.io/CodeNarc/codenarc-command-line.html
-  --noserver                   For better performances, npm-groovy-lint runs a local server to eep CodeNarc alive instead of loading java/groovy at each call. If you don't want that, send this argument
+  --noserver                   For better performances, npm-groovy-lint runs a local server to keep CodeNarc alive instead of loading java/groovy at each call. If you don't want that, send this argument
   --serverhost String          If use of CodeNarc server, host where is the CodeNarc server (default: localhost) - default: http://localhost
   --serverport String          If use of CodeNarc server, port of the CodeNarc server (default: 7484) - default: 7484
   -j, --javaexecutable String  If you do not want to use default java executable to run CodeNarcServer, you can override it - default: java
@@ -165,10 +165,10 @@ Note: command-line arguments have priority on config file properties - default: 
 ```dockerfile
 ENV JAVA_HOME_17=/usr/lib/jvm/java-17-openjdk
 # renovate: datasource=npm depName=npm-groovy-lint
-ARG NPM_GROOVY_LINT_VERSION=15.2.2
+ARG NPM_GROOVY_LINT_VERSION=16.0.1
 ```
 
 - APK packages (Linux):
-  - [openjdk17](https://pkgs.alpinelinux.org/packages?branch=v3.22&arch=x86_64&name=openjdk17)
+  - [openjdk17](https://pkgs.alpinelinux.org/packages?branch=v3.23&arch=x86_64&name=openjdk17)
 - NPM packages (node.js):
-  - [npm-groovy-lint@15.2.2](https://www.npmjs.com/package/npm-groovy-lint/v/15.2.2)
+  - [npm-groovy-lint@16.0.1](https://www.npmjs.com/package/npm-groovy-lint/v/16.0.1)

@@ -19,7 +19,7 @@ description: How to use bash-exec (configure, ignore files, ignore errors, help 
 
 ## bash-exec documentation
 
-- Version in MegaLinter: **5.2.37**
+- Version in MegaLinter: **5.3.3**
 - Visit [Official Web Site](https://www.gnu.org/software/bash/){target=_blank}
 - See [How to configure bash-exec rules](https://www.gnu.org/software/bash/manual/bash.html){target=_blank}
 
@@ -92,7 +92,7 @@ bash-exec myfile.sh
 ### Help content
 
 ```shell
-GNU bash, version 5.2.37(1)-release-(x86_64-alpine-linux-musl)
+GNU bash, version 5.3.3(1)-release-(x86_64-alpine-linux-musl)
 Usage:  bash [GNU long option] [option] ...
   bash [GNU long option] [option] script-file ...
 GNU long options:

@@ -77,7 +77,7 @@ linters:
   - class: TerrascanLinter
     linter_name: terrascan
     deprecated: true
-    deprecated_description: Repo archived. https://github.com/tenable/terrascan
+    deprecated_description: Repo archived. <https://github.com/tenable/terrascan>
     linter_text: |
       **Terrascan** is a comprehensive static code analyzer for Infrastructure as Code that detects security vulnerabilities, compliance violations, and misconfigurations in cloud infrastructure. It supports multiple IaC tools including Terraform, Kubernetes, Docker, AWS CloudFormation, and more, providing over 1000 built-in policies across major cloud providers and compliance frameworks.
 

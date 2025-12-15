@@ -28,7 +28,7 @@ description: How to use trivy-sbom (configure, ignore files, ignore errors, help
 
 ## trivy-sbom documentation
 
-- Version in MegaLinter: **0.67.2**
+- Version in MegaLinter: **0.68.1**
 - Visit [Official Web Site](https://aquasecurity.github.io/trivy/){target=_blank}
 - See [How to configure trivy-sbom rules](https://aquasecurity.github.io/trivy/latest/docs/configuration/){target=_blank}
 - See [How to ignore files and directories with trivy-sbom](https://aquasecurity.github.io/trivy/latest/docs/configuration/filtering/#by-inline-comments){target=_blank}
@@ -160,6 +160,7 @@ Utility Commands
   version     Print the version
 
 Flags:
+      --cacert string             Path to PEM-encoded CA certificate file
       --cache-dir string          cache directory (default "/root/.cache/trivy")
   -c, --config string             config path (default "trivy.yaml")
   -d, --debug                     debug mode
@@ -179,7 +180,7 @@ Use "trivy [command] --help" for more information about a command.
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=github-tags depName=aquasecurity/trivy
-ARG REPOSITORY_TRIVY_SBOM_VERSION=0.67.2
+ARG REPOSITORY_TRIVY_SBOM_VERSION=0.68.1
 RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin "v${REPOSITORY_TRIVY_SBOM_VERSION}" \
     && (trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress)
 
