@@ -82,6 +82,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [scalafix](https://scalacenter.github.io/scalafix/) from 0.14.4 to **0.14.5** on 2025-12-15
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.14.0 to **1.14.1** on 2025-12-15
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.93.11 to **0.93.13** on 2025-12-15
+  - [csharpier](https://csharpier.com/) from 1.2.1 to **1.2.3** on 2025-12-16
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.91.3 to **3.92.0** on 2025-12-16
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.14.8 to **0.14.9** on 2025-12-16
+  - [ruff](https://github.com/astral-sh/ruff) from 0.14.8 to **0.14.9** on 2025-12-16
+  - [robocop](https://github.com/MarketSquare/robotframework-robocop) from 6.13.0 to **7.0.0** on 2025-12-16
 <!-- linter-versions-end -->
 
 ## [v9.2.0] - 2025-11-29
