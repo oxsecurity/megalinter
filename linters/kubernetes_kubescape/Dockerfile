@@ -49,7 +49,7 @@ FROM python:3.13-alpine3.23
 #############################################################################################
 #ARG__START
 # renovate: datasource=github-tags depName=kubescape/kubescape
-ARG KUBERNETES_KUBESCAPE_VERSION=3.0.46
+ARG KUBERNETES_KUBESCAPE_VERSION=3.0.47
 #ARG__END
 
 ####################
