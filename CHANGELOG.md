@@ -87,6 +87,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [ruff-format](https://github.com/astral-sh/ruff) from 0.14.8 to **0.14.9** on 2025-12-16
   - [ruff](https://github.com/astral-sh/ruff) from 0.14.8 to **0.14.9** on 2025-12-16
   - [robocop](https://github.com/MarketSquare/robotframework-robocop) from 6.13.0 to **7.0.0** on 2025-12-16
+  - [kubescape](https://github.com/kubescape/kubescape) from 3.0.46 to **3.0.47** on 2025-12-17
 <!-- linter-versions-end -->
 
 ## [v9.2.0] - 2025-11-29
