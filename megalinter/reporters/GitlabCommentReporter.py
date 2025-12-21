@@ -30,8 +30,7 @@ class GitlabCommentReporter(Reporter):
         ):  # Legacy - true by default
             self.is_active = True
 
-    @property
-    def comment_marker(self):
+    def get_comment_marker(self):
         """Generate the comment marker
 
         This marker is used to find the same comment again so it can be updated.
@@ -86,7 +85,7 @@ class GitlabCommentReporter(Reporter):
             action_run_url = config.get(self.master.request_id, "CI_JOB_URL", "")
 
             # add comment marker, with extra newlines in between.
-            marker = self.comment_marker
+            marker = self.get_comment_marker()
             p_r_msg = "\n".join(
                 [build_markdown_summary(self, action_run_url), "", marker, ""]
             )

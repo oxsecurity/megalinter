@@ -28,8 +28,7 @@ class BitbucketCommentReporter(Reporter):
         else:
             self.is_active = False
 
-    @property
-    def comment_marker(self):
+    def get_comment_marker(self):
         """Generate the comment marker
 
         This marker is used to find the same comment again so it can be updated.
@@ -88,7 +87,7 @@ class BitbucketCommentReporter(Reporter):
         )
 
         # add comment marker, with extra newlines in between.
-        marker = self.comment_marker
+        marker = self.get_comment_marker()
         p_r_msg = "\n".join(
             [build_markdown_summary(self, pipeline_step_run_url), "", marker, ""]
         )
