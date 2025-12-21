@@ -51,7 +51,7 @@ FROM python:3.13-alpine3.23
 # renovate: datasource=crate depName=selene
 ARG CARGO_SELENE_VERSION=0.29.0
 # renovate: datasource=github-tags depName=rust-lang/rust
-ARG RUST_RUST_VERSION=1.91.1
+ARG RUST_RUST_VERSION=1.92.0
 #ARG__END
 
 ####################
