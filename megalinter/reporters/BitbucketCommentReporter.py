@@ -33,9 +33,7 @@ class BitbucketCommentReporter(Reporter):
 
         This marker is used to find the same comment again so it can be updated.
         """
-        repo_full_name = config.get(
-            self.master.request_id, "BITBUCKET_REPO_FULL_NAME", ""
-        )
+        repo_full_name = config.get(self.master.request_id, "BITBUCKET_REPO_FULL_NAME", "")
         multirun_key = config.get(self.master.request_id, "MEGALINTER_MULTIRUN_KEY", "")
 
         repo_full_name = repo_full_name and f"repo={repo_full_name!r}"
@@ -93,7 +91,7 @@ class BitbucketCommentReporter(Reporter):
         p_r_msg = "\n".join(
             [build_markdown_summary(self, pipeline_step_run_url), "", marker, ""]
         )
-
+        
         bitbucket_auth_header = {
             "Authorization": f"Bearer {BITBUCKET_REPO_ACCESS_TOKEN}"
         }

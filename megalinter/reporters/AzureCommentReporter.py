@@ -35,22 +35,14 @@ class AzureCommentReporter(Reporter):
 
         This marker is used to find the same comment again so it can be updated.
         """
-        system_team_project = config.get(
-            self.master.request_id, "SYSTEM_TEAMPROJECT", ""
-        )
-        build_repository_id = config.get(
-            self.master.request_id, "BUILD_REPOSITORY_ID", ""
-        )
-        system_definition_id = config.get(
-            self.master.request_id, "SYSTEM_DEFINITIONID", ""
-        )
+        system_team_project = config.get(self.master.request_id, "SYSTEM_TEAMPROJECT", "")
+        build_repository_id = config.get(self.master.request_id, "BUILD_REPOSITORY_ID", "")
+        system_definition_id = config.get(self.master.request_id, "SYSTEM_DEFINITIONID", "")
         multirun_key = config.get(self.master.request_id, "MEGALINTER_MULTIRUN_KEY", "")
 
         system_team_project = system_team_project and f"project={system_team_project!r}"
         build_repository_id = build_repository_id and f"repo_id={build_repository_id!r}"
-        system_definition_id = (
-            system_definition_id and f"pipeline_id={system_definition_id!r}"
-        )
+        system_definition_id = system_definition_id and f"pipeline_id={system_definition_id!r}"
         multirun_key = multirun_key and f"key={multirun_key!r}"
 
         identifier = " ".join(
@@ -58,12 +50,7 @@ class AzureCommentReporter(Reporter):
                 "azure-comment-reporter",
                 *filter(
                     None,
-                    (
-                        system_team_project,
-                        build_repository_id,
-                        system_definition_id,
-                        multirun_key,
-                    ),
+                    (system_team_project, build_repository_id, system_definition_id, multirun_key),
                 ),
             ]
         )
@@ -113,13 +100,13 @@ class AzureCommentReporter(Reporter):
                 )
             else:
                 artifacts_url = f"{SYSTEM_COLLECTIONURI}{SYSTEM_TEAMPROJECT}/_build/results?buildId={BUILD_BUILDID}"
-
+            
             # add comment marker, with extra newlines in between.
             marker = self.get_comment_marker()
             p_r_msg = "\n".join(
                 [build_markdown_summary(self, artifacts_url), "", marker, ""]
             )
-
+            
             comment_status = "fixed" if self.master.return_code == 0 else 1
             thread_data = {
                 "comments": [
