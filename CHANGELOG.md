@@ -27,6 +27,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Reporters
   - Handle multiple MegaLinter runs on the same repo using custom value sent in variable **MEGALINTER_MULTIRUN_KEY**
+  - Allow to override url to CI build in Git based reporters using **REPORTERS_ACTION_RUN_URL** variable
 
 - Doc
 
