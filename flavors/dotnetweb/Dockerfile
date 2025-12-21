@@ -216,11 +216,11 @@ ARG REPOSITORY_TRIVY_VERSION=0.68.1
 # renovate: datasource=github-tags depName=aquasecurity/trivy
 ARG REPOSITORY_TRIVY_SBOM_VERSION=0.68.1
 # renovate: datasource=pypi depName=snakemake
-ARG PIP_SNAKEMAKE_VERSION=9.14.4
+ARG PIP_SNAKEMAKE_VERSION=9.14.5
 # renovate: datasource=pypi depName=snakefmt
 ARG PIP_SNAKEFMT_VERSION=0.11.2
 # renovate: datasource=npm depName=cspell
-ARG NPM_CSPELL_VERSION=9.3.2
+ARG NPM_CSPELL_VERSION=9.4.0
 # renovate: datasource=pypi depName=proselint
 ARG PIP_PROSELINT_VERSION=0.14.0
 # renovate: datasource=pypi depName=codespell
@@ -246,7 +246,7 @@ ARG PIP_PIP_VERSION=25.3
 # renovate: datasource=pypi depName=virtualenv
 ARG PIP_VIRTUALENV_VERSION=20.35.4
 # renovate: datasource=github-tags depName=rust-lang/rust
-ARG RUST_RUST_VERSION=1.91.1
+ARG RUST_RUST_VERSION=1.92.0
 
 ARG ACTION_ACTIONLINT_VERSION
 ARG BASH_SHELLCHECK_VERSION

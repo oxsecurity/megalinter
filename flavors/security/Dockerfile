@@ -86,7 +86,7 @@ ARG PIP_ANSIBLE_LINT_VERSION=25.12.1
 # renovate: datasource=crate depName=shellcheck-sarif
 ARG CARGO_SHELLCHECK_SARIF_VERSION=0.8.0
 # renovate: datasource=pypi depName=cfn-lint
-ARG PIP_CFN_LINT_VERSION=1.41.0
+ARG PIP_CFN_LINT_VERSION=1.43.1
 # renovate: datasource=github-tags depName=kubescape/kubescape
 ARG KUBERNETES_KUBESCAPE_VERSION=3.0.47
 # renovate: datasource=pypi depName=bandit
@@ -118,7 +118,7 @@ ARG PIP_PIP_VERSION=25.3
 # renovate: datasource=pypi depName=virtualenv
 ARG PIP_VIRTUALENV_VERSION=20.35.4
 # renovate: datasource=github-tags depName=rust-lang/rust
-ARG RUST_RUST_VERSION=1.91.1
+ARG RUST_RUST_VERSION=1.92.0
 
 ARG BASH_SHELLCHECK_VERSION
 ARG DOCKERFILE_HADOLINT_VERSION

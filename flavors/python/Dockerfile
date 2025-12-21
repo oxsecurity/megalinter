@@ -148,7 +148,7 @@ ARG PIP_BANDIT_VERSION=1.9.2
 # renovate: datasource=pypi depName=bandit_sarif_formatter
 ARG PIP_BANDIT_SARIF_FORMATTER_VERSION=1.1.1
 # renovate: datasource=pypi depName=mypy
-ARG PIP_MYPY_VERSION=1.19.0
+ARG PIP_MYPY_VERSION=1.19.1
 # renovate: datasource=npm depName=pyright
 ARG NPM_PYRIGHT_VERSION=1.1.407
 # renovate: datasource=pypi depName=ruff
@@ -184,11 +184,11 @@ ARG PIP_RSTCHECK_CLICK_VERSION=8.3.1
 # renovate: datasource=pypi depName=rstfmt
 ARG PIP_RSTFMT_VERSION=0.0.14
 # renovate: datasource=pypi depName=snakemake
-ARG PIP_SNAKEMAKE_VERSION=9.14.4
+ARG PIP_SNAKEMAKE_VERSION=9.14.5
 # renovate: datasource=pypi depName=snakefmt
 ARG PIP_SNAKEFMT_VERSION=0.11.2
 # renovate: datasource=npm depName=cspell
-ARG NPM_CSPELL_VERSION=9.3.2
+ARG NPM_CSPELL_VERSION=9.4.0
 # renovate: datasource=pypi depName=proselint
 ARG PIP_PROSELINT_VERSION=0.14.0
 # renovate: datasource=pypi depName=codespell
@@ -204,7 +204,7 @@ ARG PIP_PIP_VERSION=25.3
 # renovate: datasource=pypi depName=virtualenv
 ARG PIP_VIRTUALENV_VERSION=20.35.4
 # renovate: datasource=github-tags depName=rust-lang/rust
-ARG RUST_RUST_VERSION=1.91.1
+ARG RUST_RUST_VERSION=1.92.0
 
 ARG ACTION_ACTIONLINT_VERSION
 ARG BASH_SHELLCHECK_VERSION
