@@ -47,12 +47,16 @@ class GithubCommentReporter(Reporter):
           <!-- megalinter: github-comment-reporter workflow='…' jobid='…' -->
 
         """
-        workflow = os.getenv("GITHUB_WORKFLOW")
-        jobid = os.getenv("GITHUB_JOB")
+        workflow = config.get(self.master.request_id, "GITHUB_WORKFLOW")
+        jobid = config.get(self.master.request_id, "GITHUB_JOB")
+        multirun_key = config.get(self.master.request_id, "MEGALINTER_MULTIRUN_KEY")
+
         workflow = workflow and f"workflow={workflow!r}"
         jobid = jobid and f"jobid={jobid!r}"
+        multirun_key = multirun_key and f"key={multirun_key!r}"
+
         identifier = " ".join(
-            ["github-comment-reporter", *filter(None, (workflow, jobid))]
+            ["github-comment-reporter", *filter(None, (workflow, jobid, multirun_key))]
         )
         return f"<!-- megalinter: {identifier} -->"
 

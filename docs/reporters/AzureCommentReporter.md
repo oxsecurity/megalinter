@@ -55,3 +55,4 @@ Example:
 | REPORTERS_MARKDOWN_TYPE                    | Set to `simple` to avoid external images in generated markdown                                          | `advanced`       |
 | REPORTERS_MARKDOWN_SUMMARY_TYPE            | Display summary in PR/MR comments as `sections`, `table` or both (`sections-table` or `table-sections`) | `table-sections` |
 | JOB_SUMMARY_ADDITIONAL_MARKDOWN            | Custom markdown to add at the end of the summary message                                                | <!-- -->         |
+| MEGALINTER_MULTIRUN_KEY                    | Key to identify multirun when multiple MegaLinter runs are executed in the same pipeline (ex: `java`)   | <!-- -->         |

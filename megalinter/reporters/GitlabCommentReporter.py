@@ -30,6 +30,28 @@ class GitlabCommentReporter(Reporter):
         ):  # Legacy - true by default
             self.is_active = True
 
+    @property
+    def comment_marker(self):
+        """Generate the comment marker
+
+        This marker is used to find the same comment again so it can be updated.
+        """
+        pipeline_source = config.get(self.master.request_id, "CI_PIPELINE_SOURCE")
+        job_name = config.get(self.master.request_id, "CI_JOB_NAME")
+        multirun_key = config.get(self.master.request_id, "MEGALINTER_MULTIRUN_KEY")
+
+        pipeline_source = pipeline_source and f"pipeline_source={pipeline_source!r}"
+        job_name = job_name and f"job_name={job_name!r}"
+        multirun_key = multirun_key and f"key={multirun_key!r}"
+
+        identifier = " ".join(
+            [
+                "gitlab-comment-reporter",
+                *filter(None, (pipeline_source, job_name, multirun_key)),
+            ]
+        )
+        return f"<!-- megalinter: {identifier} -->"
+
     def produce_report(self):
         # Post comment on Gitlab pull request
         if config.get(self.master.request_id, "CI_JOB_TOKEN", "") != "":
@@ -62,7 +84,12 @@ class GitlabCommentReporter(Reporter):
                 self.master.request_id, "CI_SERVER_URL", self.gitlab_server_url
             )
             action_run_url = config.get(self.master.request_id, "CI_JOB_URL", "")
-            p_r_msg = build_markdown_summary(self, action_run_url)
+
+            # add comment marker, with extra newlines in between.
+            marker = self.comment_marker
+            p_r_msg = "\n".join(
+                [build_markdown_summary(self, action_run_url), "", marker, ""]
+            )
 
             # Build gitlab options
             gitlab_options = {}
@@ -171,7 +198,7 @@ class GitlabCommentReporter(Reporter):
                     return
                 # Check if there is already a MegaLinter comment
                 for comment in existing_comments:
-                    if "MegaLinter is graciously provided by" in comment.body:
+                    if marker in comment.body:
                         existing_comment = comment
                         break
 
