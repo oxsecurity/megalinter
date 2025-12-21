@@ -87,7 +87,7 @@ class ApiReporter(Reporter):
         )
         git_identifier = f"{repo_info['repo_name']}/{repo_info['branch_name']}"
         org_identifier = self.get_org_identifier(repo_info["branch_name"])
-        
+
         # Build comment marker
         multirun_key = config.get(self.master.request_id, "MEGALINTER_MULTIRUN_KEY", "")
         multirun_key = multirun_key and f"key={multirun_key!r}"
