@@ -85,14 +85,20 @@ class ApiReporter(Reporter):
         repo_info = get_git_context_info(
             self.master.request_id, os.path.realpath(self.master.github_workspace)
         )
-        git_identifier = f"{repo_info["repo_name"]}/{repo_info["branch_name"]}"
+        git_identifier = f"{repo_info['repo_name']}/{repo_info['branch_name']}"
         org_identifier = self.get_org_identifier(repo_info["branch_name"])
+
+        # Build comment marker
+        multirun_key = config.get(self.master.request_id, "MEGALINTER_MULTIRUN_KEY", "")
+        multirun_key = multirun_key and f"key={multirun_key!r}"
+
         self.payload = {
             "source": "MegaLinter",
             "gitRepoName": repo_info["repo_name"],
             "gitBranchName": repo_info["branch_name"],
             "gitIdentifier": git_identifier,
             "orgIdentifier": org_identifier,
+            "marker": multirun_key,
             "data": {},
             "linters": [],
         }

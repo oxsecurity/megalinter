@@ -26,6 +26,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Fixes
 
 - Reporters
+  - Handle multiple MegaLinter runs on the same repo using custom value sent in variable **MEGALINTER_MULTIRUN_KEY**
 
 - Doc
 
