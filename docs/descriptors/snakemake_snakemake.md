@@ -29,7 +29,7 @@ description: How to use snakemake (configure, ignore files, ignore errors, help 
 
 ## snakemake documentation
 
-- Version in MegaLinter: **9.14.4**
+- Version in MegaLinter: **9.14.5**
 - Visit [Official Web Site](https://snakemake.github.io/){target=_blank}
 - See [How to configure snakemake rules](https://snakemake.readthedocs.io/en/stable/snakefiles/configuration.html){target=_blank}
 
@@ -929,7 +929,7 @@ REMOTE EXECUTION:
                         contain a working snakemake installation that is
                         compatible with (or ideally the same as) the currently
                         running version. (default:
-                        snakemake/snakemake:v9.14.4)
+                        snakemake/snakemake:v9.14.5)
   --immediate-submit, --is
                         Immediately submit all jobs to the cluster instead of
                         waiting for present input files. This will fail,
@@ -1092,8 +1092,8 @@ defaults.
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=snakemake
-ARG PIP_SNAKEMAKE_VERSION=9.14.4
+ARG PIP_SNAKEMAKE_VERSION=9.14.5
 ```
 
 - PIP packages (Python):
-  - [snakemake==9.14.4](https://pypi.org/project/snakemake/9.14.4)
+  - [snakemake==9.14.5](https://pypi.org/project/snakemake/9.14.5)

@@ -30,7 +30,7 @@ description: How to use mypy (configure, ignore files, ignore errors, help & ver
 
 ## mypy documentation
 
-- Version in MegaLinter: **1.19.0**
+- Version in MegaLinter: **1.19.1**
 - Visit [Official Web Site](https://mypy.readthedocs.io/en/stable/){target=_blank}
 - See [How to configure mypy rules](https://mypy.readthedocs.io/en/stable/config_file.html){target=_blank}
   - If custom `.mypy.ini` config file isn't found, [.mypy.ini](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.mypy.ini){target=_blank} will be used
@@ -427,9 +427,9 @@ Environment variables:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=mypy
-ARG PIP_MYPY_VERSION=1.19.0
+ARG PIP_MYPY_VERSION=1.19.1
 ENV MYPY_CACHE_DIR=/tmp
 ```
 
 - PIP packages (Python):
-  - [mypy==1.19.0](https://pypi.org/project/mypy/1.19.0)
+  - [mypy==1.19.1](https://pypi.org/project/mypy/1.19.1)
