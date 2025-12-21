@@ -26,6 +26,9 @@ def build_markdown_summary(reporter_self, action_run_url="", max_total_chars=400
         "REPORTERS_MARKDOWN_SUMMARY_TYPE",
         "table-sections",
     )
+    action_run_url = config.get(
+        reporter_self.master.request_id, "REPORTERS_ACTION_RUN_URL", action_run_url
+    )
     if markdown_summary_type == "sections":
         return build_markdown_summary_sections(
             reporter_self, action_run_url, max_total_chars

@@ -28,6 +28,26 @@ class BitbucketCommentReporter(Reporter):
         else:
             self.is_active = False
 
+    def get_comment_marker(self):
+        """Generate the comment marker
+
+        This marker is used to find the same comment again so it can be updated.
+        """
+        repo_full_name = config.get(
+            self.master.request_id, "BITBUCKET_REPO_FULL_NAME", ""
+        )
+        multirun_key = config.get(self.master.request_id, "MEGALINTER_MULTIRUN_KEY", "")
+
+        repo_full_name = repo_full_name and f"repo={repo_full_name!r}"
+        multirun_key = multirun_key and f"key={multirun_key!r}"
+        identifier = " ".join(
+            [
+                "bitbucket-comment-reporter",
+                *filter(None, (repo_full_name, multirun_key)),
+            ]
+        )
+        return f"<!-- megalinter: {identifier} -->"
+
     def produce_report(self):
         # Post comment on Bitbucket pull request
 
@@ -68,7 +88,12 @@ class BitbucketCommentReporter(Reporter):
             f"{bitbucket_pipeline_job_number}/steps/{pipeline_step_run_uuid}"
         )
 
-        p_r_msg = build_markdown_summary(self, pipeline_step_run_url)
+        # add comment marker, with extra newlines in between.
+        marker = self.get_comment_marker()
+        p_r_msg = "\n".join(
+            [build_markdown_summary(self, pipeline_step_run_url), "", marker, ""]
+        )
+
         bitbucket_auth_header = {
             "Authorization": f"Bearer {BITBUCKET_REPO_ACCESS_TOKEN}"
         }
@@ -120,9 +145,7 @@ class BitbucketCommentReporter(Reporter):
                 return
             # Check if there is already a MegaLinter comment
             for comment in existing_comments:
-                if "MegaLinter is graciously provided by" in comment.get(
-                    "content", {}
-                ).get("raw", ""):
+                if marker in comment.get("content", {}).get("raw", ""):
                     comment_id = comment.get("id", None)
                     break
 
