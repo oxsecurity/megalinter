@@ -34,18 +34,18 @@ If MegaLinter with gitleaks runs against a PR on a platform not listed above, an
 
 You can still choose to scan only PR commits in your CI/CD platform by setting the following MegaLinter environment variables:
 
-- `PULL_REQUEST=true`\*
-- `REPOSITORY_GITLEAKS_PR_COMMITS_SCAN: true`
-- `REPOSITORY_GITLEAKS_PR_SOURCE_SHA` with last commit sha from your PR and `REPOSITORY_GITLEAKS_PR_TARGET_SHA` commit sha from your target branch (for example, `main` if you do PR to main branch)
+  - `PULL_REQUEST=true`\*
+  - `REPOSITORY_GITLEAKS_PR_COMMITS_SCAN: true`
+  - `REPOSITORY_GITLEAKS_PR_SOURCE_SHA` with last commit sha from your PR and `REPOSITORY_GITLEAKS_PR_TARGET_SHA` commit sha from your target branch (for example, `main` if you do PR to main branch)
 
     Example commands:
 
-  - Source commit SHA:
+      - Source commit SHA:
         ```bash
         git rev-list -n 1 refs/remotes/origin/<source_branch>
         ```
 
-  - Target commit SHA:
+      - Target commit SHA:
         ```bash
         git rev-parse refs/remotes/origin/<target_branch>
         ```
