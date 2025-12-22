@@ -3711,9 +3711,9 @@ yargs@^17.7.2:
     yargs-parser "^21.1.1"
 
 yeoman-environment@^5.0.0:
-  version "5.1.1"
-  resolved "https://registry.yarnpkg.com/yeoman-environment/-/yeoman-environment-5.1.1.tgz#b318b5d5951d8ddd253602efcdfb1537f4181710"
-  integrity sha512-g4ichW3SBdi0IZff7Fd8tWXwF0jHsNFfgYTi9/bqDaEr9OSL5OTKupFa9XikOcVhkeCMQysyRqXzgLK/VH/JgA==
+  version "5.1.2"
+  resolved "https://registry.yarnpkg.com/yeoman-environment/-/yeoman-environment-5.1.2.tgz#6b275459a8b1d8f4765d631293ee27bf8cbb04b2"
+  integrity sha512-NFNm3T+Lk+57Lp+4SSnUdcHwSlyD5yq7KvDwx0xIUg5GngNPezWHLaejWRj3j26xgmlJXUw9371p1LZzv4s/6g==
   dependencies:
     "@yeoman/adapter" "^3.1.0"
     "@yeoman/conflicter" "^4.0.0"
