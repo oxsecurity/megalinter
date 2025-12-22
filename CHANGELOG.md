@@ -94,6 +94,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.19.0 to **1.19.1** on 2025-12-20
   - [snakemake](https://snakemake.github.io/) from 9.14.4 to **9.14.5** on 2025-12-20
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 9.3.2 to **9.4.0** on 2025-12-20
+  - [htmlhint](https://htmlhint.com/) from 1.7.1 to **1.8.0** on 2025-12-22
 <!-- linter-versions-end -->
 
 ## [v9.2.0] - 2025-11-29
