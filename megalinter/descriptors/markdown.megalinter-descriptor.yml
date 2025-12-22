@@ -170,6 +170,7 @@ linters:
           url: https://github.com/darkriszty/MarkdownTablePrettify-VSCodeExt
   # rumdl
   - linter_name: rumdl
+    can_output_sarif: true
     is_formatter: true
     linter_text: |
       **rumdl** is a high-performance Markdown linter and formatter that helps ensure consistency and best practices in your Markdown files. Inspired by ruff 's approach to Python linting, rumdl brings similar speed and developer experience improvements to the Markdown ecosystem.
@@ -197,6 +198,9 @@ linters:
     cli_lint_extra_args:
       - "check"
     cli_lint_fix_arg_name: "--fix"
+    cli_sarif_args:
+      - --output-format
+      - sarif
     examples:
       - "rumdl check myfile.md" # Check only
       - "rumdl check --fix myfile.md" # Apply formatting
