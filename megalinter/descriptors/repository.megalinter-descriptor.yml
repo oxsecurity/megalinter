@@ -883,6 +883,9 @@ linters:
   # kingfisher
   - linter_name: kingfisher
     can_output_sarif: true
+    descriptor_flavors:
+      - all
+      - security
     linter_text: |
       **kingfisher** is a blazingly fast secret-scanning and live validation tool built in Rust. It combines Intel's SIMD-accelerated regex engine (Hyperscan) with language-aware parsing to achieve high accuracy at massive scale, and ships with hundreds of built-in rules to detect, validate, and triage secrets before they ever reach production.
 
