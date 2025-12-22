@@ -49,7 +49,7 @@ FROM python:3.13-alpine3.23
 #############################################################################################
 #ARG__START
 # renovate: datasource=npm depName=htmlhint
-ARG NPM_HTMLHINT_VERSION=1.7.1
+ARG NPM_HTMLHINT_VERSION=1.8.0
 #ARG__END
 
 ####################
