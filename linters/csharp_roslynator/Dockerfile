@@ -49,7 +49,7 @@ FROM python:3.13-alpine3.23
 #############################################################################################
 #ARG__START
 # renovate: datasource=nuget depName=roslynator.dotnet.cli
-ARG CSHARP_ROSLYNATOR_VERSION=0.11.0
+ARG CSHARP_ROSLYNATOR_VERSION=0.12.0
 #ARG__END
 
 ####################
