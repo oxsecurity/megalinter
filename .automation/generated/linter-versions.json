@@ -50,6 +50,7 @@
     "jscpd": "4.0.5",
     "jsonlint": "16.0.0",
     "kics": "2.1.17",
+    "kingfisher": "1.71.0",
     "ktlint": "1.8.0",
     "kubeconform": "0.7.0",
     "kubescape": "3.0.47",

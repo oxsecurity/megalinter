@@ -259,6 +259,11 @@
     "image": "./wp-content/uploads/2021/07/kics-hat-logo-full-e1625478786624.png",
     "title": "KICS - Keeping Infrastructure as Code Secure"
   },
+  "kingfisher": {
+    "description": "Kingfisher is a blazingly fast and highly accurate tool for secret detection and live validation across files, Git repos, GitHub, GitLab, Azure Repos, BitBucket, Gitea, AWS S3, Docker images, Jira,...",
+    "image": "https://opengraph.githubassets.com/9929efb5c25764f666b96c1c92dc8d492d73baae4842958b2b8b9832544562ba/mongodb/kingfisher",
+    "title": "GitHub - mongodb/kingfisher: Kingfisher is a blazingly fast and highly accurate tool for secret detection and live validation across files, Git repos, GitHub, GitLab, Azure Repos, BitBucket, Gitea, AWS S3, Docker images, Jira, Slack, and Confluence"
+  },
   "ktlint": {
     "description": "An anti-bikeshedding Kotlin linter with built-in formatter.",
     "image": null,
