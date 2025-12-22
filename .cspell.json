@@ -490,6 +490,8 @@
         "Rscript",
         "Rubo",
         "Rubocop",
+        "rumdl", 
+        "RUMDL",
         "SAST",
         "SBOM",
         "SCALAFIX",
