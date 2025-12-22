@@ -54,6 +54,7 @@
   "lua_stylua",
   "markdown_markdownlint",
   "markdown_markdown_table_formatter",
+  "markdown_rumdl",
   "perl_perlcritic",
   "php_phpcs",
   "php_phpstan",
