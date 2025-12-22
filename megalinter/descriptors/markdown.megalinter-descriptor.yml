@@ -172,7 +172,7 @@ linters:
   - linter_name: rumdl
     is_formatter: true
     linter_text: |
-      **markdown-table-formatter** is a high-performance Markdown linter and formatter that helps ensure consistency and best practices in your Markdown files. Inspired by ruff 's approach to Python linting, rumdl brings similar speed and developer experience improvements to the Markdown ecosystem.
+      **rumdl** is a high-performance Markdown linter and formatter that helps ensure consistency and best practices in your Markdown files. Inspired by ruff 's approach to Python linting, rumdl brings similar speed and developer experience improvements to the Markdown ecosystem.
 
       **Key Features:**
 
