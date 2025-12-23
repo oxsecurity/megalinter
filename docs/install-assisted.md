@@ -12,5 +12,4 @@ Just run `npx mega-linter-runner --install` at the root of your repository and a
 
 ![Runner Install](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/mega-linter-runner-generator.gif?raw=true)
 
-
 <!-- install-assisted-section-end -->

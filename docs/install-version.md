@@ -20,5 +20,4 @@ You can also use **beta** version (corresponding to the content of main branch)
 - Docker image: `oxsecurity/megalinter:beta`
 - GitHub Action: `oxsecurity/megalinter@beta`
 
-
 <!-- install-version-section-end -->
