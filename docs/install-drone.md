@@ -58,5 +58,4 @@ trigger:
 
 The workflow above triggers only on push, and not in other situations. For more information about configuring Drone CI trigger rules, see the [documentation](https://docs.drone.io/pipeline/triggers/).
 
-
 <!-- install-drone-section-end -->

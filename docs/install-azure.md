@@ -99,5 +99,4 @@ Note: If your pipelines run on Azure DevOps but your source code is hosted on Gi
 
 You can also follow this [detailed tutorial](https://github.com/DonKoning/megaLinter) by [DonKoning](https://github.com/DonKoning).
 
-
 <!-- install-azure-section-end -->

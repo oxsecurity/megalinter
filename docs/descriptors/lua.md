@@ -29,12 +29,12 @@ description: luacheck, selene, stylua are available to analyze LUA files in Mega
 | LUA_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
 | LUA_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 
-
 ## Behind the scenes
 
 ### Installation
 
 - Dockerfile commands :
+
 ```dockerfile
 RUN wget --tries=5 https://www.lua.org/ftp/lua-5.3.5.tar.gz -O - -q | tar -xzf - \
     && cd lua-5.3.5 \

@@ -45,5 +45,4 @@ PRE_COMMANDS:
 | **output_variables**   | ENV variables to read from output after running the commands, and store in MegaLinter's ENV context so they can be reused in subsequent commands | `[]`          |
 | **tag**                | Tag defining at which command entry point the command will be run (available tags: `before_plugins`)                                             | <!-- -->      |
 
-
 <!-- config-precommands-section-end -->

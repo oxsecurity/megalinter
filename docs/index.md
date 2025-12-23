@@ -43,7 +43,6 @@ MegaLinter has **native integrations** with many major CI/CD tools.
 [![SARIF](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/sarif.png?raw=true>)](reporters/SarifReporter.md)
 [![Grafana](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/grafana.png?raw=true>)](reporters/ApiReporter.md)
 
-
 <!-- welcome-phrase-end -->
 
 ![MegaLinter Presentation GIF](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/MegaLinter-banner-Medium.gif?raw=true)

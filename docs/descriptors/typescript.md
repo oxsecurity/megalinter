@@ -29,12 +29,12 @@ description: eslint, ts-standard, prettier are available to analyze TYPESCRIPT f
 | TYPESCRIPT_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
 | TYPESCRIPT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 
-
 ## Behind the scenes
 
 ### Installation
 
 - Dockerfile commands :
+
 ```dockerfile
 # renovate: datasource=npm depName=typescript
 ARG NPM_TYPESCRIPT_VERSION=5.9.3

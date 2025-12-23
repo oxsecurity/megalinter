@@ -28,12 +28,12 @@ description: checkstyle, pmd are available to analyze JAVA files in MegaLinter
 | JAVA_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
 | JAVA_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 
-
 ## Behind the scenes
 
 ### Installation
 
 - Dockerfile commands :
+
 ```dockerfile
 ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"

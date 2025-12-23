@@ -28,7 +28,8 @@ description: How to use lychee (configure, ignore files, ignore errors, help & v
 A file **.lycheeignore** can be defined at the root of the repository to ignore some urls.
 Each line can contain Regular Expressions or glob format.
 Example with glob, regex and full url:
-```
+
+```text
 https://twitter.com/intent/tweet*
 (.*some_url_part)
 https://github.com/sgerrand/alpine-pkg-glibc/releases/download
@@ -373,10 +374,10 @@ Options:
 ### Installation on mega-linter Docker image
 
 - Dockerfile commands :
+
 ```dockerfile
 # renovate: datasource=docker depName=lycheeverse/lychee
 ARG SPELL_LYCHEE_VERSION=sha-7c4b132-alpine
 FROM lycheeverse/lychee:${SPELL_LYCHEE_VERSION} AS lychee
 COPY --link --from=lychee /usr/local/bin/lychee /usr/bin/
 ```
-
