@@ -13,6 +13,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - New linters
   - Add [codespell](https://github.com/codespell-project/codespell)
   - Add [kingfisher](https://github.com/mongodb/kingfisher) by @bdovaz
+  - Add [rumdl](https://github.com/rvben/rumdl) by @bdovaz
 
 - Disabled linters
 

@@ -7,7 +7,6 @@ python_launcher := python$(shell cut -d '.' -f 1,2 .python-version)
 ## —— Tests ———————————————————————————————————————————————————————————————————————
 .PHONY: tests
 tests: ## Tests all
-	$(MAKE) gitpod-tests
 	$(MAKE) megalinter-tests
 
 .PHONY: tests-fast

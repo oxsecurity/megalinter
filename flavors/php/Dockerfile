@@ -133,6 +133,8 @@ ARG KUBERNETES_KUBESCAPE_VERSION=3.0.47
 ARG NPM_MARKDOWNLINT_CLI_VERSION=0.45.0
 # renovate: datasource=npm depName=markdown-table-formatter
 ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.6.1
+# renovate: datasource=pypi depName=rumdl
+ARG RUMDL_MYPY_VERSION=0.0.199
 # renovate: datasource=packagist depName=squizlabs/php_codesniffer
 ARG PHP_SQUIZLABS_PHP_CODESNIFFER_VERSION=4.0.1
 # renovate: datasource=packagist depName=bartlett/sarif-php-converters
@@ -292,6 +294,7 @@ RUN uv pip install --system --no-cache pip==${PIP_PIP_VERSION} virtualenv==${PIP
     && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/ansible-lint" && VIRTUAL_ENV="/venvs/ansible-lint" uv pip install --no-cache ansible-lint==${PIP_ANSIBLE_LINT_VERSION} \
     && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/stylelint" && VIRTUAL_ENV="/venvs/stylelint" uv pip install --no-cache cpplint==${PIP_CPPLINT_VERSION} \
     && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/djlint" && VIRTUAL_ENV="/venvs/djlint" uv pip install --no-cache djlint==${PIP_DJLINT_VERSION} \
+    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/rumdl" && VIRTUAL_ENV="/venvs/rumdl" uv pip install --no-cache rumdl==${RUMDL_MYPY_VERSION} \
     && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/checkov" && VIRTUAL_ENV="/venvs/checkov" uv pip install --no-cache checkov==${PIP_CHECKOV_VERSION} \
     && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/semgrep" && VIRTUAL_ENV="/venvs/semgrep" uv pip install --no-cache semgrep==${PIP_SEMGREP_VERSION} \
     && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/snakemake" && VIRTUAL_ENV="/venvs/snakemake" uv pip install --no-cache snakemake==${PIP_SNAKEMAKE_VERSION} \
@@ -302,7 +305,7 @@ RUN uv pip install --system --no-cache pip==${PIP_PIP_VERSION} virtualenv==${PIP
     && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/yamllint" && VIRTUAL_ENV="/venvs/yamllint" uv pip install --no-cache yamllint==${PIP_YAMLLINT_VERSION}  \
     && find /venvs \( -type f \( -iname \*.pyc -o -iname \*.pyo \) -o -type d -iname __pycache__ \) -delete \
     && rm -rf /root/.cache
-ENV PATH="${PATH}":/venvs/ansible-lint/bin:/venvs/stylelint/bin:/venvs/djlint/bin:/venvs/checkov/bin:/venvs/semgrep/bin:/venvs/snakemake/bin:/venvs/snakefmt/bin:/venvs/proselint/bin:/venvs/codespell/bin:/venvs/sqlfluff/bin:/venvs/yamllint/bin
+ENV PATH="${PATH}":/venvs/ansible-lint/bin:/venvs/stylelint/bin:/venvs/djlint/bin:/venvs/rumdl/bin:/venvs/checkov/bin:/venvs/semgrep/bin:/venvs/snakemake/bin:/venvs/snakefmt/bin:/venvs/proselint/bin:/venvs/codespell/bin:/venvs/sqlfluff/bin:/venvs/yamllint/bin
 #PIPVENV__END
 
 ############################
@@ -469,6 +472,8 @@ RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/rel
 # markdownlint installation
 #
 # markdown-table-formatter installation
+#
+# rumdl installation
 #
 # phpcs installation
 RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require squizlabs/php_codesniffer:${PHP_SQUIZLABS_PHP_CODESNIFFER_VERSION} bartlett/sarif-php-converters:${PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION}
