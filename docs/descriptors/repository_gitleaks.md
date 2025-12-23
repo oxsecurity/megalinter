@@ -48,6 +48,7 @@ You can still choose to scan only PR commits in your CI/CD platform by setting t
         git rev-list -n 1 refs/remotes/origin/<source_branch>```
 
   - Target commit SHA:
+
 ```
 
         ```bash
@@ -62,6 +63,8 @@ The PR commits scan feature, if applicable, will override your `--log-opts` argu
 In the case of Azure Pipelines when running in a Docker container, we have to explicitly pass some environment variables:
 
 <!-- # MAJOR-RELEASE-IMPACTED -->
+
+```
 
 ```bash
   docker run -v $(System.DefaultWorkingDirectory):/tmp/lint \
@@ -240,6 +243,7 @@ Use "gitleaks [command] --help" for more information about a command.
 ### Installation on mega-linter Docker image
 
 - Dockerfile commands :
+
 ```dockerfile
 # renovate: datasource=docker depName=zricethezav/gitleaks
 ARG REPOSITORY_GITLEAKS_VERSION=v8.30.0

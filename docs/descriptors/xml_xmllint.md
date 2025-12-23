@@ -37,9 +37,9 @@ description: How to use xmllint (configure, ignore files, ignore errors, help & 
 
 - Enable **autofixes** by adding `XML_XMLLINT` in [APPLY_FIXES variable](https://megalinter.io/beta/configuration/#apply-fixes)
 
-| Variable                                | Description                                                                                                                                                                                                         | Default value      |
-|-----------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
-| XML_XMLLINT_AUTOFORMAT                  | If set to `true`, it will reformat and reindent the output                                                                                                                                                          | `false`            |
+| Variable               | Description                                                | Default value |
+|------------------------|------------------------------------------------------------|---------------|
+| XML_XMLLINT_AUTOFORMAT | If set to `true`, it will reformat and reindent the output | `false`       |
 
 | XML_XMLLINT_INDENT                      | The number of indentation spaces when `XML_XMLLINT_AUTOFORMAT` is `true`                                                                                                                                            | ``                 |
 | XML_XMLLINT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                    |
