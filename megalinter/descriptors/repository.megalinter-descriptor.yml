@@ -548,6 +548,10 @@ linters:
           ARG NPM_LS_LINT_LS_LINT_VERSION=2.3.1
       npm:
         - "@ls-lint/ls-lint@${NPM_LS_LINT_LS_LINT_VERSION}"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
 
   # SECRETLINT
   - class: SecretLintLinter

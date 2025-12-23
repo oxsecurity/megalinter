@@ -118,6 +118,10 @@ linters:
               chmod a+x detekt-cli-${DETEKT_VERSION}/lib/* && \
               mv -n detekt-cli-${DETEKT_VERSION}/bin/* usr/bin && \
               mv -n detekt-cli-${DETEKT_VERSION}/lib/* usr/lib
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       emacs:
         - name: flycheck-kotlin
