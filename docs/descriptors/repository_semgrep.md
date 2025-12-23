@@ -45,9 +45,9 @@ Exception for standalone and security flavors docker images, that use a list of 
 - Enable semgrep by adding `REPOSITORY_SEMGREP` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 - Disable semgrep by adding `REPOSITORY_SEMGREP` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-| Variable                                       | Description                                                                                                                                                                                                                                                                           | Default value |
-|------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|
-| REPOSITORY_SEMGREP_RULESETS                    | List of semgrep rulesets identifiers that you want to enforce                                                                                                                                                                                                                         | `auto`        |
+| Variable                    | Description                                                   | Default value |
+|-----------------------------|---------------------------------------------------------------|---------------|
+| REPOSITORY_SEMGREP_RULESETS | List of semgrep rulesets identifiers that you want to enforce | `auto`        |
 
 | REPOSITORY_SEMGREP_RULESETS_TYPE               | MegaLinter semgrep ruleset list preset id . Available values: security                                                                                                                                                                                                                | ``            |
 | REPOSITORY_SEMGREP_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                                                                                              |               |

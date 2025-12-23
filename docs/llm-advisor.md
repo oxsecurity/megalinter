@@ -305,4 +305,5 @@ LOG_LEVEL: DEBUG
 ```
 
 This will show detailed information about LLM requests and responses.
-```
+
+```text
