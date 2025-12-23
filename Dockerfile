@@ -32,9 +32,9 @@ ARG REPOSITORY_DUSTILOCK_VERSION=1.2.0
 # renovate: datasource=docker depName=zricethezav/gitleaks
 ARG REPOSITORY_GITLEAKS_VERSION=v8.30.0
 # renovate: datasource=docker depName=checkmarx/kics
-ARG REPOSITORY_KICS_VERSION=v2.1.17-alpine
+ARG REPOSITORY_KICS_VERSION=v2.1.18-alpine
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
-ARG REPOSITORY_TRUFFLEHOG_VERSION=3.92.3
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.92.4
 # renovate: datasource=docker depName=jdkato/vale
 ARG SPELL_VALE_VERSION=v3.13.0
 # renovate: datasource=docker depName=lycheeverse/lychee
@@ -120,7 +120,7 @@ ARG ALPINE_GLIBC_PACKAGE_VERSION=2.34-r0
 ARG POWERSHELL_VERSION=7.5.4
 
 # renovate: datasource=npm depName=@salesforce/cli
-ARG NPM_SALESFORCE_CLI_VERSION=2.115.15
+ARG NPM_SALESFORCE_CLI_VERSION=2.116.6
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
 ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.24.4
 # renovate: datasource=npm depName=sfdx-hardis
@@ -289,7 +289,7 @@ ARG PIP_MYPY_VERSION=1.19.1
 # renovate: datasource=npm depName=pyright
 ARG NPM_PYRIGHT_VERSION=1.1.407
 # renovate: datasource=pypi depName=ruff
-ARG PIP_RUFF_VERSION=0.14.9
+ARG PIP_RUFF_VERSION=0.14.10
 # renovate: datasource=github-tags depName=nxadm/rakudo-pkg
 ARG RAKU_RAKU_VERSION=2025.11
 ARG RAKU_RAKU_ALPINE_VERSION=3.22
@@ -313,9 +313,9 @@ ARG PIP_SEMGREP_VERSION=1.116.0
 # renovate: datasource=github-tags depName=anchore/syft
 ARG REPOSITORY_SYFT_VERSION=1.38.2
 # renovate: datasource=github-tags depName=aquasecurity/trivy
-ARG REPOSITORY_TRIVY_VERSION=0.68.1
+ARG REPOSITORY_TRIVY_VERSION=0.68.2
 # renovate: datasource=github-tags depName=aquasecurity/trivy
-ARG REPOSITORY_TRIVY_SBOM_VERSION=0.68.1
+ARG REPOSITORY_TRIVY_SBOM_VERSION=0.68.2
 # renovate: datasource=github-tags depName=mongodb/kingfisher
 ARG REPOSITORY_KINGFISHER_VERSION=1.72.0
 # renovate: datasource=pypi depName=robotframework-robocop
@@ -331,7 +331,7 @@ ARG PIP_RSTCHECK_CLICK_VERSION=8.3.1
 # renovate: datasource=pypi depName=rstfmt
 ARG PIP_RSTFMT_VERSION=0.0.14
 # renovate: datasource=rubygems depName=rubocop
-ARG GEM_RUBOCOP_VERSION=1.81.7
+ARG GEM_RUBOCOP_VERSION=1.82.0
 # renovate: datasource=rubygems depName=rubocop-github
 ARG GEM_RUBOCOP_GITHUB_VERSION=0.26.0
 # renovate: datasource=rubygems depName=rubocop-performance
