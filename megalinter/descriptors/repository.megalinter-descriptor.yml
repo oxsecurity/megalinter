@@ -898,7 +898,7 @@ linters:
       - **Compressed Files:** Supports extracting and scanning compressed files for secrets
       - **Baseline management:** generate and track baselines to suppress known secrets (docs/BASELINE.md)
       - **Checksum-aware detection:** verifies tokens with built-in checksums (e.g., GitHub, Confluent, Zuplo) — no API calls required
-      - **Built-in Report Viewer:** Visualize and triage findings locally with kingisher view ./report-file.json
+      - **Built-in Report Viewer:** Visualize and triage findings locally with kingfisher view ./report-file.json
     linter_url: https://github.com/mongodb/kingfisher
     linter_repo: https://github.com/mongodb/kingfisher
     linter_spdx_license: Apache-2.0
@@ -917,4 +917,8 @@ linters:
       - "kingfisher scan ."
     install:
       dockerfile:
-        - RUN curl --silent --location https://raw.githubusercontent.com/mongodb/kingfisher/main/scripts/install-kingfisher.sh | bash -s -- /usr/local/bin
+        - |-
+          # renovate: datasource=github-tags depName=mongodb/kingfisher
+          ARG REPOSITORY_KINGFISHER_VERSION=1.72.0
+        - |
+          RUN curl --silent --location https://raw.githubusercontent.com/mongodb/kingfisher/main/scripts/install-kingfisher.sh | bash -s -- /usr/local/bin --tag "v${REPOSITORY_KINGFISHER_VERSION}"
