@@ -44,4 +44,4 @@ description: bash-exec, shellcheck, shfmt are available to analyze BASH files in
 ### Installation
 
 - APK packages (Linux):
-  - [bash](https://pkgs.alpinelinux.org/packages?branch=v3.22&arch=x86_64&name=bash)
+  - [bash](https://pkgs.alpinelinux.org/packages?branch=v3.23&arch=x86_64&name=bash)

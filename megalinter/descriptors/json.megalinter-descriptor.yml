@@ -260,7 +260,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=prettier
-          ARG NPM_PRETTIER_VERSION=3.6.2
+          ARG NPM_PRETTIER_VERSION=3.7.4
       npm:
         - "prettier@${NPM_PRETTIER_VERSION}"
     supported_platforms:

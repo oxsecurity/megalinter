@@ -106,7 +106,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=nuget depName=csharpier
-          ARG CSHARP_CSHARPIER_VERSION=1.2.1
+          ARG CSHARP_CSHARPIER_VERSION=1.2.3
         - RUN dotnet tool install --allow-roll-forward --global csharpier --version "${CSHARP_CSHARPIER_VERSION}"
     supported_platforms:
       platform:
@@ -164,7 +164,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=nuget depName=roslynator.dotnet.cli
-          ARG CSHARP_ROSLYNATOR_VERSION=0.11.0
+          ARG CSHARP_ROSLYNATOR_VERSION=0.12.0
         - RUN dotnet tool install --allow-roll-forward --global roslynator.dotnet.cli --version "${CSHARP_ROSLYNATOR_VERSION}"
     supported_platforms:
       platform:

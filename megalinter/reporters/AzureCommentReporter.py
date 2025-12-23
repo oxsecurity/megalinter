@@ -30,6 +30,45 @@ class AzureCommentReporter(Reporter):
         ):  # True by default
             self.is_active = True
 
+    def get_comment_marker(self):
+        """Generate the comment marker
+
+        This marker is used to find the same comment again so it can be updated.
+        """
+        system_team_project = config.get(
+            self.master.request_id, "SYSTEM_TEAMPROJECT", ""
+        )
+        build_repository_id = config.get(
+            self.master.request_id, "BUILD_REPOSITORY_ID", ""
+        )
+        system_definition_id = config.get(
+            self.master.request_id, "SYSTEM_DEFINITIONID", ""
+        )
+        multirun_key = config.get(self.master.request_id, "MEGALINTER_MULTIRUN_KEY", "")
+
+        system_team_project = system_team_project and f"project={system_team_project!r}"
+        build_repository_id = build_repository_id and f"repo_id={build_repository_id!r}"
+        system_definition_id = (
+            system_definition_id and f"pipeline_id={system_definition_id!r}"
+        )
+        multirun_key = multirun_key and f"key={multirun_key!r}"
+
+        identifier = " ".join(
+            [
+                "azure-comment-reporter",
+                *filter(
+                    None,
+                    (
+                        system_team_project,
+                        build_repository_id,
+                        system_definition_id,
+                        multirun_key,
+                    ),
+                ),
+            ]
+        )
+        return f"<!-- megalinter: {identifier} -->"
+
     def produce_report(self):
         # Post thread on Azure pull request
         if config.get(self.master.request_id, "SYSTEM_ACCESSTOKEN", "") != "":
@@ -74,7 +113,13 @@ class AzureCommentReporter(Reporter):
                 )
             else:
                 artifacts_url = f"{SYSTEM_COLLECTIONURI}{SYSTEM_TEAMPROJECT}/_build/results?buildId={BUILD_BUILDID}"
-            p_r_msg = build_markdown_summary(self, artifacts_url)
+
+            # add comment marker, with extra newlines in between.
+            marker = self.get_comment_marker()
+            p_r_msg = "\n".join(
+                [build_markdown_summary(self, artifacts_url), "", marker, ""]
+            )
+
             comment_status = "fixed" if self.master.return_code == 0 else 1
             thread_data = {
                 "comments": [
@@ -139,9 +184,7 @@ class AzureCommentReporter(Reporter):
             existing_thread_comment_id = None
             for existing_thread in existing_threads:
                 for comment in existing_thread.comments or []:
-                    if "MegaLinter is graciously provided by" in (
-                        comment.content or ""
-                    ):
+                    if marker in (comment.content or ""):
                         existing_thread_comment = existing_thread
                         existing_thread_comment_id = existing_thread.comments[0].id
                         existing_thread_id = existing_thread.id

@@ -50,7 +50,7 @@ Black is successfully used by many projects, small and big, and has become the d
 
 ## black documentation
 
-- Version in MegaLinter: **25.11.0**
+- Version in MegaLinter: **25.12.0**
 - Visit [Official Web Site](https://black.readthedocs.io/en/stable/){target=_blank}
 - See [How to configure black rules](https://black.readthedocs.io/en/stable/usage_and_configuration/the_basics.html#configuration-format){target=_blank}
   - If custom `pyproject.toml` config file isn't found, [pyproject.toml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/pyproject.toml){target=_blank} will be used
@@ -179,7 +179,7 @@ Options:
                                   expected to make it into the stable style
                                   Black's next major release. Implies
                                   --preview.
-  --enable-unstable-feature [string_processing|hug_parens_with_braces_and_square_brackets|wrap_long_dict_values_in_parens|multiline_string_handling|always_one_newline_after_import|fix_fmt_skip_in_one_liners|standardize_type_comments|wrap_comprehension_in|remove_parens_around_except_types|normalize_cr_newlines|fix_module_docstring_detection|fix_type_expansion_split]
+  --enable-unstable-feature [string_processing|hug_parens_with_braces_and_square_brackets|wrap_long_dict_values_in_parens|multiline_string_handling|always_one_newline_after_import|fix_fmt_skip_in_one_liners|standardize_type_comments|wrap_comprehension_in|remove_parens_around_except_types|normalize_cr_newlines|fix_module_docstring_detection|fix_type_expansion_split|remove_parens_from_assignment_lhs]
                                   Enable specific features included in the
                                   `--unstable` style. Requires `--preview`. No
                                   compatibility guarantees are provided on the
@@ -281,8 +281,8 @@ Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=black
-ARG PIP_BLACK_VERSION=25.11.0
+ARG PIP_BLACK_VERSION=25.12.0
 ```
 
 - PIP packages (Python):
-  - [black[jupyter]==25.11.0](https://pypi.org/project/black[jupyter]/25.11.0)
+  - [black[jupyter]==25.12.0](https://pypi.org/project/black[jupyter]/25.12.0)

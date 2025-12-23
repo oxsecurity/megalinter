@@ -31,4 +31,6 @@ If you really want a new PR comment for each MegaLinter run, define variable `BI
 | BITBUCKET_COMMENT_REPORTER_OVERWRITE_COMMENT | Set to false to not overwrite existing comments in case of new runs on the same Pull Request            | `true`           |
 | REPORTERS_MARKDOWN_TYPE                      | Set to `simple` to avoid external images in generated markdown                                          | `advanced`       |
 | REPORTERS_MARKDOWN_SUMMARY_TYPE              | Display summary in PR/MR comments as `sections`, `table` or both (`sections-table` or `table-sections`) | `table-sections` |
+| REPORTERS_ACTION_RUN_URL                     | Override default URL of the CI job visualization page                                                   | <!-- -->         |
 | JOB_SUMMARY_ADDITIONAL_MARKDOWN              | Custom markdown to add at the end of the summary message                                                | <!-- -->         |
+| MEGALINTER_MULTIRUN_KEY                      | Key to identify multirun when multiple MegaLinter runs are executed in the same pipeline (ex: `java`)   | <!-- -->         |

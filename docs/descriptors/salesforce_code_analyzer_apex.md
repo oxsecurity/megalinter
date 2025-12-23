@@ -30,7 +30,7 @@ See more details in [Help](#help-content)
 
 ## code-analyzer-apex documentation
 
-- Version in MegaLinter: **5.6.1**
+- Version in MegaLinter: **5.7.1**
 - Visit [Official Web Site](https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html){target=_blank}
 - See [How to configure code-analyzer-apex rules](https://docs.pmd-code.org/latest/pmd_userdocs_making_rulesets.html){target=_blank}
   - If custom `code-analyzer.yml` config file isn't found, [code-analyzer.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/code-analyzer.yml){target=_blank} will be used
@@ -105,7 +105,7 @@ sf code-analyzer run --rule-selector pmd:Recommended --workspace . --output-file
 ### Help content
 
 ```shell
- ›   Warning: @salesforce/cli update available from 2.113.6 to 2.114.5.
+ ›   Warning: @salesforce/cli update available from 2.115.15 to 2.116.6.
 Analyze your code with a selection of rules to ensure good coding practices.
 
 USAGE
@@ -137,10 +137,10 @@ FLAGS
 GLOBAL FLAGS
   --flags-dir=<value>  Import flag values from a directory.
 
- ›   Warning: @salesforce/cli update available from 2.113.6 to 2.114.5.
+ ›   Warning: @salesforce/cli update available from 2.115.15 to 2.116.6.
 
 Streaming logs in real time to:
-    /tmp/sfca-2025_12_04_12_53_17_271.log
+    /tmp/sfca-2025_12_22_12_20_52_292.log
 
 Selecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 0%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 14%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 28%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 30%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 31%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 32%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 33%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 34%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 35%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 36%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 37%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 38%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 39%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 40%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 41%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 42%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 53%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 57%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 62%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 72%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 74%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 75%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 75%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 84%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 85%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 87%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 96%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 98%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 99%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 100%; Elapsed time: 1sSelecting rules... done.
 
@@ -185,230 +185,240 @@ Selecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, s
   37    @lwc/lwc-platform/no-site-import                                  eslint      3 (Moderate)   Recommended, LWC, ErrorProne, JavaScript
   38    @lwc/lwc-platform/no-wire-service                                 eslint      3 (Moderate)   Recommended, LWC, ErrorProne, JavaScript
   39    @lwc/lwc-platform/valid-dynamic-import-hint                       eslint      3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
-  40    @lwc/lwc/no-api-reassignments                                     eslint      3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
-  41    @lwc/lwc/no-async-operation                                       eslint      3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
-  42    @lwc/lwc/no-attributes-during-construction                        eslint      3 (Moderate)   Recommended, LWC, ErrorProne, JavaScript
-  43    @lwc/lwc/no-deprecated                                            eslint      3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
-  44    @lwc/lwc/no-disallowed-lwc-imports                                eslint      3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
-  45    @lwc/lwc/no-document-query                                        eslint      3 (Moderate)   Recommended, LWC, ErrorProne, JavaScript
-  46    @lwc/lwc/no-inner-html                                            eslint      2 (High)       Recommended, LWC, Security, JavaScript
-  47    @lwc/lwc/no-leading-uppercase-api-name                            eslint      3 (Moderate)   Recommended, LWC, ErrorProne, JavaScript
-  48    @lwc/lwc/no-template-children                                     eslint      3 (Moderate)   Recommended, LWC, ErrorProne, JavaScript
-  49    @lwc/lwc/no-unexpected-wire-adapter-usages                        eslint      3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
-  50    @lwc/lwc/no-unknown-wire-adapters                                 eslint      3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
-  51    @lwc/lwc/prefer-custom-event                                      eslint      3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
-  52    @lwc/lwc/valid-api                                                eslint      3 (Moderate)   Recommended, LWC, ErrorProne, JavaScript
-  53    @lwc/lwc/valid-graphql-wire-adapter-callback-parameters           eslint      3 (Moderate)   Recommended, LWC, ErrorProne, JavaScript
-  54    @lwc/lwc/valid-track                                              eslint      3 (Moderate)   Recommended, LWC, ErrorProne, JavaScript
-  55    @lwc/lwc/valid-wire                                               eslint      3 (Moderate)   Recommended, LWC, ErrorProne, JavaScript
-  56    @salesforce-ux/slds/enforce-bem-usage                             eslint      4 (Low)        Recommended, SLDS, BestPractices, HTML
-  57    @salesforce-ux/slds/enforce-component-hook-naming-convention      eslint      4 (Low)        Recommended, SLDS, CodeStyle, CSS
-  58    @salesforce-ux/slds/enforce-sds-to-slds-hooks                     eslint      4 (Low)        Recommended, SLDS, Design, CSS
-  59    @salesforce-ux/slds/lwc-token-to-slds-hook                        eslint      3 (Moderate)   Recommended, SLDS, ErrorProne, CSS
-  60    @salesforce-ux/slds/modal-close-button-issue                      eslint      3 (Moderate)   Recommended, SLDS, ErrorProne, HTML
-  61    @salesforce-ux/slds/no-deprecated-classes-slds2                   eslint      3 (Moderate)   Recommended, SLDS, ErrorProne, HTML
-  62    @salesforce-ux/slds/no-deprecated-slds-classes                    eslint      3 (Moderate)   Recommended, SLDS, ErrorProne, CSS
-  63    @salesforce-ux/slds/no-hardcoded-values-slds2                     eslint      4 (Low)        Recommended, SLDS, Design, CSS
-  64    @salesforce-ux/slds/no-slds-class-overrides                       eslint      4 (Low)        Recommended, SLDS, BestPractices, CSS
-  65    @salesforce-ux/slds/no-slds-namespace-for-custom-hooks            eslint      4 (Low)        Recommended, SLDS, BestPractices, CSS
-  66    @salesforce-ux/slds/no-slds-private-var                           eslint      3 (Moderate)   Recommended, SLDS, ErrorProne, CSS
-  67    @salesforce-ux/slds/no-slds-var-without-fallback                  eslint      3 (Moderate)   Recommended, SLDS, ErrorProne, CSS
-  68    @salesforce-ux/slds/no-sldshook-fallback-for-lwctoken             eslint      4 (Low)        Recommended, SLDS, BestPractices, CSS
-  69    @salesforce-ux/slds/no-unsupported-hooks-slds2                    eslint      3 (Moderate)   Recommended, SLDS, ErrorProne, CSS
-  70    @salesforce-ux/slds/reduce-annotations                            eslint      4 (Low)        Recommended, SLDS, BestPractices, CSS
-  71    @salesforce/lightning/valid-apex-method-invocation                eslint      3 (Moderate)   Recommended, LWC, ErrorProne, JavaScript
-  72    @typescript-eslint/ban-ts-comment                                 eslint      2 (High)       Recommended, ErrorProne, TypeScript
-  73    @typescript-eslint/no-array-constructor                           eslint      3 (Moderate)   Recommended, BestPractices, TypeScript
-  74    @typescript-eslint/no-duplicate-enum-values                       eslint      2 (High)       Recommended, ErrorProne, TypeScript
-  75    @typescript-eslint/no-empty-object-type                           eslint      3 (Moderate)   Recommended, BestPractices, TypeScript
-  76    @typescript-eslint/no-explicit-any                                eslint      3 (Moderate)   Recommended, BestPractices, TypeScript
-  77    @typescript-eslint/no-extra-non-null-assertion                    eslint      2 (High)       Recommended, ErrorProne, TypeScript
-  78    @typescript-eslint/no-misused-new                                 eslint      2 (High)       Recommended, ErrorProne, TypeScript
-  79    @typescript-eslint/no-namespace                                   eslint      3 (Moderate)   Recommended, BestPractices, TypeScript
-  80    @typescript-eslint/no-non-null-asserted-optional-chain            eslint      2 (High)       Recommended, ErrorProne, TypeScript
-  81    @typescript-eslint/no-require-imports                             eslint      2 (High)       Recommended, ErrorProne, TypeScript
-  82    @typescript-eslint/no-this-alias                                  eslint      3 (Moderate)   Recommended, BestPractices, TypeScript
-  83    @typescript-eslint/no-unnecessary-type-constraint                 eslint      3 (Moderate)   Recommended, BestPractices, TypeScript
-  84    @typescript-eslint/no-unsafe-declaration-merging                  eslint      2 (High)       Recommended, ErrorProne, TypeScript
-  85    @typescript-eslint/no-unsafe-function-type                        eslint      2 (High)       Recommended, ErrorProne, TypeScript
-  86    @typescript-eslint/no-unused-expressions                          eslint      3 (Moderate)   Recommended, BestPractices, TypeScript
-  87    @typescript-eslint/no-unused-vars                                 eslint      2 (High)       Recommended, ErrorProne, TypeScript
-  88    @typescript-eslint/no-wrapper-object-types                        eslint      2 (High)       Recommended, ErrorProne, TypeScript
-  89    @typescript-eslint/prefer-as-const                                eslint      3 (Moderate)   Recommended, BestPractices, TypeScript
-  90    @typescript-eslint/prefer-namespace-keyword                       eslint      3 (Moderate)   Recommended, BestPractices, TypeScript
-  91    @typescript-eslint/triple-slash-reference                         eslint      3 (Moderate)   Recommended, BestPractices, TypeScript
-  92    constructor-super                                                 eslint      2 (High)       Recommended, ErrorProne, JavaScript
-  93    for-direction                                                     eslint      2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
-  94    getter-return                                                     eslint      2 (High)       Recommended, ErrorProne, JavaScript
-  95    import/default                                                    eslint      2 (High)       Recommended, LWC, ErrorProne, JavaScript
-  96    import/export                                                     eslint      2 (High)       Recommended, LWC, ErrorProne, JavaScript
-  97    import/named                                                      eslint      2 (High)       Recommended, LWC, ErrorProne, JavaScript
-  98    import/namespace                                                  eslint      2 (High)       Recommended, LWC, ErrorProne, JavaScript
-  99    jest/expect-expect                                                eslint      5 (Info)       Recommended, LWC, BestPractices, JavaScript
-  100   jest/no-alias-methods                                             eslint      3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
-  101   jest/no-commented-out-tests                                       eslint      5 (Info)       Recommended, LWC, BestPractices, JavaScript
-  102   jest/no-conditional-expect                                        eslint      2 (High)       Recommended, LWC, ErrorProne, JavaScript
-  103   jest/no-disabled-tests                                            eslint      5 (Info)       Recommended, LWC, BestPractices, JavaScript
-  104   jest/no-done-callback                                             eslint      3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
-  105   jest/no-export                                                    eslint      3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
-  106   jest/no-focused-tests                                             eslint      3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
-  107   jest/no-identical-title                                           eslint      3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
-  108   jest/no-interpolation-in-snapshots                                eslint      2 (High)       Recommended, LWC, ErrorProne, JavaScript
-  109   jest/no-jasmine-globals                                           eslint      3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
-  110   jest/no-mocks-import                                              eslint      2 (High)       Recommended, LWC, ErrorProne, JavaScript
-  111   jest/no-standalone-expect                                         eslint      3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
-  112   jest/no-test-prefixes                                             eslint      3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
-  113   jest/valid-describe-callback                                      eslint      2 (High)       Recommended, LWC, ErrorProne, JavaScript
-  114   jest/valid-expect                                                 eslint      3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
-  115   jest/valid-expect-in-promise                                      eslint      3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
-  116   jest/valid-title                                                  eslint      3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
-  117   no-async-promise-executor                                         eslint      2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
-  118   no-case-declarations                                              eslint      3 (Moderate)   Recommended, BestPractices, JavaScript, TypeScript
-  119   no-class-assign                                                   eslint      2 (High)       Recommended, ErrorProne, JavaScript
-  120   no-compare-neg-zero                                               eslint      2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
-  121   no-cond-assign                                                    eslint      2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
-  122   no-const-assign                                                   eslint      2 (High)       Recommended, ErrorProne, JavaScript
-  123   no-constant-condition                                             eslint      2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
-  124   no-control-regex                                                  eslint      2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
-  125   no-debugger                                                       eslint      2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
-  126   no-delete-var                                                     eslint      3 (Moderate)   Recommended, BestPractices, JavaScript, TypeScript
-  127   no-dupe-args                                                      eslint      2 (High)       Recommended, ErrorProne, JavaScript
-  128   no-dupe-class-members                                             eslint      2 (High)       Recommended, ErrorProne, JavaScript
-  129   no-dupe-else-if                                                   eslint      2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
-  130   no-dupe-keys                                                      eslint      2 (High)       Recommended, ErrorProne, JavaScript
-  131   no-duplicate-case                                                 eslint      2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
-  132   no-empty                                                          eslint      3 (Moderate)   Recommended, BestPractices, JavaScript, TypeScript
-  133   no-empty-character-class                                          eslint      2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
-  134   no-empty-pattern                                                  eslint      2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
-  135   no-ex-assign                                                      eslint      2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
-  136   no-extra-boolean-cast                                             eslint      3 (Moderate)   Recommended, BestPractices, JavaScript, TypeScript
-  137   no-fallthrough                                                    eslint      2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
-  138   no-func-assign                                                    eslint      2 (High)       Recommended, ErrorProne, JavaScript
-  139   no-global-assign                                                  eslint      3 (Moderate)   Recommended, BestPractices, JavaScript, TypeScript
-  140   no-import-assign                                                  eslint      2 (High)       Recommended, ErrorProne, JavaScript
-  141   no-inner-declarations                                             eslint      2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
-  142   no-invalid-regexp                                                 eslint      2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
-  143   no-irregular-whitespace                                           eslint      2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
-  144   no-loss-of-precision                                              eslint      2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
-  145   no-misleading-character-class                                     eslint      2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
-  146   no-nonoctal-decimal-escape                                        eslint      3 (Moderate)   Recommended, BestPractices, JavaScript, TypeScript
-  147   no-obj-calls                                                      eslint      2 (High)       Recommended, ErrorProne, JavaScript
-  148   no-octal                                                          eslint      2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
-  149   no-prototype-builtins                                             eslint      2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
-  150   no-redeclare                                                      eslint      3 (Moderate)   Recommended, BestPractices, JavaScript
-  151   no-regex-spaces                                                   eslint      3 (Moderate)   Recommended, BestPractices, JavaScript, TypeScript
-  152   no-self-assign                                                    eslint      2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
-  153   no-setter-return                                                  eslint      2 (High)       Recommended, ErrorProne, JavaScript
-  154   no-shadow-restricted-names                                        eslint      3 (Moderate)   Recommended, BestPractices, JavaScript, TypeScript
-  155   no-sparse-arrays                                                  eslint      2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
-  156   no-this-before-super                                              eslint      2 (High)       Recommended, ErrorProne, JavaScript
-  157   no-undef                                                          eslint      2 (High)       Recommended, ErrorProne, JavaScript
-  158   no-unexpected-multiline                                           eslint      2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
-  159   no-unreachable                                                    eslint      2 (High)       Recommended, ErrorProne, JavaScript
-  160   no-unsafe-finally                                                 eslint      2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
-  161   no-unsafe-negation                                                eslint      2 (High)       Recommended, ErrorProne, JavaScript
-  162   no-unsafe-optional-chaining                                       eslint      2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
-  163   no-unused-labels                                                  eslint      3 (Moderate)   Recommended, BestPractices, JavaScript, TypeScript
-  164   no-unused-vars                                                    eslint      2 (High)       Recommended, ErrorProne, JavaScript
-  165   no-useless-backreference                                          eslint      2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
-  166   no-useless-catch                                                  eslint      3 (Moderate)   Recommended, BestPractices, JavaScript, TypeScript
-  167   no-useless-escape                                                 eslint      3 (Moderate)   Recommended, BestPractices, JavaScript, TypeScript
-  168   no-var                                                            eslint      3 (Moderate)   Recommended, BestPractices, JavaScript, TypeScript
-  169   no-with                                                           eslint      3 (Moderate)   Recommended, BestPractices, JavaScript
-  170   prefer-const                                                      eslint      3 (Moderate)   Recommended, BestPractices, JavaScript, TypeScript
-  171   prefer-rest-params                                                eslint      3 (Moderate)   Recommended, BestPractices, JavaScript, TypeScript
-  172   prefer-spread                                                     eslint      3 (Moderate)   Recommended, BestPractices, JavaScript, TypeScript
-  173   require-yield                                                     eslint      3 (Moderate)   Recommended, BestPractices, JavaScript, TypeScript
-  174   use-isnan                                                         eslint      2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
-  175   valid-typeof                                                      eslint      2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
-  176   PreventPassingUserDataIntoElementWithoutSharing                   flow        2 (High)       Recommended, Security, XML
-  177   PreventPassingUserDataIntoElementWithSharing                      flow        4 (Low)        Recommended, Security, XML
-  178   AnnotationsNamingConventions                                      pmd         4 (Low)        Recommended, CodeStyle, Apex
-  179   ApexBadCrypto                                                     pmd         2 (High)       Recommended, Security, Apex
-  180   ApexCRUDViolation                                                 pmd         2 (High)       Recommended, Security, Apex
-  181   ApexCSRF                                                          pmd         1 (Critical)   Recommended, Security, Apex
-  182   ApexDangerousMethods                                              pmd         3 (Moderate)   Recommended, Security, Apex
-  183   ApexDoc                                                           pmd         4 (Low)        Recommended, Documentation, Apex
-  184   ApexInsecureEndpoint                                              pmd         2 (High)       Recommended, Security, Apex
-  185   ApexOpenRedirect                                                  pmd         2 (High)       Recommended, Security, Apex
-  186   ApexSharingViolations                                             pmd         3 (Moderate)   Recommended, Security, Apex
-  187   ApexSOQLInjection                                                 pmd         2 (High)       Recommended, Security, Apex
-  188   ApexSuggestUsingNamedCred                                         pmd         2 (High)       Recommended, Security, Apex
-  189   ApexUnitTestClassShouldHaveAsserts                                pmd         3 (Moderate)   Recommended, BestPractices, Apex
-  190   ApexUnitTestClassShouldHaveRunAs                                  pmd         4 (Low)        Recommended, BestPractices, Apex
-  191   ApexUnitTestMethodShouldHaveIsTestAnnotation                      pmd         2 (High)       Recommended, BestPractices, Apex
-  192   ApexUnitTestShouldNotUseSeeAllDataTrue                            pmd         2 (High)       Recommended, BestPractices, Apex
-  193   ApexXSSFromEscapeFalse                                            pmd         2 (High)       Recommended, Security, Apex
-  194   ApexXSSFromURLParam                                               pmd         2 (High)       Recommended, Security, Apex
-  195   AvoidBooleanMethodParameters                                      pmd         3 (Moderate)   Recommended, Design, Apex
-  196   AvoidDebugStatements                                              pmd         4 (Low)        Recommended, Performance, Apex
-  197   AvoidDeeplyNestedIfStmts                                          pmd         3 (Moderate)   Recommended, Design, Apex
-  198   AvoidDirectAccessTriggerMap                                       pmd         3 (Moderate)   Recommended, ErrorProne, Apex
-  199   AvoidGlobalModifier                                               pmd         3 (Moderate)   Recommended, BestPractices, Apex
-  200   AvoidHardcodingId                                                 pmd         3 (Moderate)   Recommended, ErrorProne, Apex
-  201   AvoidLogicInTrigger                                               pmd         3 (Moderate)   Recommended, BestPractices, Apex
-  202   AvoidNonExistentAnnotations                                       pmd         4 (Low)        Recommended, ErrorProne, Apex
-  203   AvoidNonRestrictiveQueries                                        pmd         4 (Low)        Recommended, Performance, Apex
-  204   AvoidStatefulDatabaseResult                                       pmd         3 (Moderate)   Recommended, ErrorProne, Apex
-  205   ClassNamingConventions                                            pmd         3 (Moderate)   Recommended, CodeStyle, Apex
-  206   CognitiveComplexity                                               pmd         3 (Moderate)   Recommended, Design, Apex
-  207   CyclomaticComplexity                                              pmd         3 (Moderate)   Recommended, Design, Apex
-  208   DebugsShouldUseLoggingLevel                                       pmd         4 (Low)        Recommended, BestPractices, Apex
-  209   EagerlyLoadedDescribeSObjectResult                                pmd         2 (High)       Recommended, Performance, Apex
-  210   EmptyCatchBlock                                                   pmd         2 (High)       Recommended, ErrorProne, Apex
-  211   EmptyIfStmt                                                       pmd         3 (Moderate)   Recommended, ErrorProne, Apex
-  212   EmptyStatementBlock                                               pmd         3 (Moderate)   Recommended, ErrorProne, Apex
-  213   EmptyTryOrFinallyBlock                                            pmd         3 (Moderate)   Recommended, ErrorProne, Apex
-  214   EmptyWhileStmt                                                    pmd         3 (Moderate)   Recommended, ErrorProne, Apex
-  215   ExcessiveClassLength                                              pmd         3 (Moderate)   Recommended, Design, Apex
-  216   ExcessiveParameterList                                            pmd         3 (Moderate)   Recommended, Design, Apex
-  217   ExcessivePublicCount                                              pmd         3 (Moderate)   Recommended, Design, Apex
-  218   FieldDeclarationsShouldBeAtStart                                  pmd         3 (Moderate)   Recommended, CodeStyle, Apex
-  219   FieldNamingConventions                                            pmd         3 (Moderate)   Recommended, CodeStyle, Apex
-  220   ForLoopsMustUseBraces                                             pmd         3 (Moderate)   Recommended, CodeStyle, Apex
-  221   FormalParameterNamingConventions                                  pmd         3 (Moderate)   Recommended, CodeStyle, Apex
-  222   IfElseStmtsMustUseBraces                                          pmd         3 (Moderate)   Recommended, CodeStyle, Apex
-  223   IfStmtsMustUseBraces                                              pmd         3 (Moderate)   Recommended, CodeStyle, Apex
-  224   InaccessibleAuraEnabledGetter                                     pmd         3 (Moderate)   Recommended, ErrorProne, Apex
-  225   LocalVariableNamingConventions                                    pmd         3 (Moderate)   Recommended, CodeStyle, Apex
-  226   MethodNamingConventions                                           pmd         3 (Moderate)   Recommended, CodeStyle, Apex
-  227   MethodWithSameNameAsEnclosingClass                                pmd         3 (Moderate)   Recommended, ErrorProne, Apex
-  228   NcssConstructorCount                                              pmd         4 (Low)        Recommended, Design, Apex
-  229   NcssMethodCount                                                   pmd         4 (Low)        Recommended, Design, Apex
-  230   OneDeclarationPerLine                                             pmd         3 (Moderate)   Recommended, CodeStyle, Apex
-  231   OperationWithHighCostInLoop                                       pmd         3 (Moderate)   Recommended, Performance, Apex
-  232   OperationWithLimitsInLoop                                         pmd         3 (Moderate)   Recommended, Performance, Apex
-  233   OverrideBothEqualsAndHashcode                                     pmd         2 (High)       Recommended, ErrorProne, Apex
-  234   PropertyNamingConventions                                         pmd         3 (Moderate)   Recommended, CodeStyle, Apex
-  235   QueueableWithoutFinalizer                                         pmd         4 (Low)        Recommended, BestPractices, Apex
-  236   TestMethodsMustBeInTestClasses                                    pmd         3 (Moderate)   Recommended, ErrorProne, Apex
-  237   TooManyFields                                                     pmd         3 (Moderate)   Recommended, Design, Apex
-  238   TypeShadowsBuiltInNamespace                                       pmd         2 (High)       Recommended, ErrorProne, Apex
-  239   UnusedLocalVariable                                               pmd         3 (Moderate)   Recommended, BestPractices, Apex
-  240   UnusedMethod                                                      pmd         3 (Moderate)   Recommended, Design, Apex
-  241   VfCsrf                                                            pmd         2 (High)       Recommended, Security, Visualforce
-  242   VfHtmlStyleTagXss                                                 pmd         2 (High)       Recommended, Security, Visualforce
-  243   VfUnescapeEl                                                      pmd         2 (High)       Recommended, Security, Visualforce
-  244   WhileLoopsMustUseBraces                                           pmd         3 (Moderate)   Recommended, CodeStyle, Apex
-  245   DetectCopyPasteForApex                                            cpd         5 (Info)       Recommended, Design, Apex
-  246   DetectCopyPasteForJavascript                                      cpd         5 (Info)       Recommended, Design, Javascript
-  247   DetectCopyPasteForTypescript                                      cpd         5 (Info)       Recommended, Design, Typescript
-  248   DetectCopyPasteForVisualforce                                     cpd         5 (Info)       Recommended, Design, Visualforce
+  40    @lwc/lwc/newer-version-available                                  eslint      3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  41    @lwc/lwc/no-api-reassignments                                     eslint      3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  42    @lwc/lwc/no-async-operation                                       eslint      3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  43    @lwc/lwc/no-attributes-during-construction                        eslint      3 (Moderate)   Recommended, LWC, ErrorProne, JavaScript
+  44    @lwc/lwc/no-deprecated                                            eslint      3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  45    @lwc/lwc/no-disallowed-lwc-imports                                eslint      3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  46    @lwc/lwc/no-document-query                                        eslint      3 (Moderate)   Recommended, LWC, ErrorProne, JavaScript
+  47    @lwc/lwc/no-inner-html                                            eslint      2 (High)       Recommended, LWC, Security, JavaScript
+  48    @lwc/lwc/no-leading-uppercase-api-name                            eslint      3 (Moderate)   Recommended, LWC, ErrorProne, JavaScript
+  49    @lwc/lwc/no-template-children                                     eslint      3 (Moderate)   Recommended, LWC, ErrorProne, JavaScript
+  50    @lwc/lwc/no-unexpected-wire-adapter-usages                        eslint      3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  51    @lwc/lwc/no-unknown-wire-adapters                                 eslint      3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  52    @lwc/lwc/prefer-custom-event                                      eslint      3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  53    @lwc/lwc/valid-api                                                eslint      3 (Moderate)   Recommended, LWC, ErrorProne, JavaScript
+  54    @lwc/lwc/valid-graphql-wire-adapter-callback-parameters           eslint      3 (Moderate)   Recommended, LWC, ErrorProne, JavaScript
+  55    @lwc/lwc/valid-track                                              eslint      3 (Moderate)   Recommended, LWC, ErrorProne, JavaScript
+  56    @lwc/lwc/valid-wire                                               eslint      3 (Moderate)   Recommended, LWC, ErrorProne, JavaScript
+  57    @salesforce-ux/slds/enforce-bem-usage                             eslint      4 (Low)        Recommended, SLDS, BestPractices, HTML
+  58    @salesforce-ux/slds/enforce-component-hook-naming-convention      eslint      4 (Low)        Recommended, SLDS, CodeStyle, CSS
+  59    @salesforce-ux/slds/enforce-sds-to-slds-hooks                     eslint      4 (Low)        Recommended, SLDS, Design, CSS
+  60    @salesforce-ux/slds/lwc-token-to-slds-hook                        eslint      3 (Moderate)   Recommended, SLDS, ErrorProne, CSS
+  61    @salesforce-ux/slds/modal-close-button-issue                      eslint      3 (Moderate)   Recommended, SLDS, ErrorProne, HTML
+  62    @salesforce-ux/slds/no-deprecated-classes-slds2                   eslint      3 (Moderate)   Recommended, SLDS, ErrorProne, HTML
+  63    @salesforce-ux/slds/no-deprecated-slds-classes                    eslint      3 (Moderate)   Recommended, SLDS, ErrorProne, CSS
+  64    @salesforce-ux/slds/no-hardcoded-values-slds2                     eslint      4 (Low)        Recommended, SLDS, Design, CSS
+  65    @salesforce-ux/slds/no-slds-class-overrides                       eslint      4 (Low)        Recommended, SLDS, BestPractices, CSS
+  66    @salesforce-ux/slds/no-slds-namespace-for-custom-hooks            eslint      4 (Low)        Recommended, SLDS, BestPractices, CSS
+  67    @salesforce-ux/slds/no-slds-private-var                           eslint      3 (Moderate)   Recommended, SLDS, ErrorProne, CSS
+  68    @salesforce-ux/slds/no-slds-var-without-fallback                  eslint      3 (Moderate)   Recommended, SLDS, ErrorProne, CSS
+  69    @salesforce-ux/slds/no-sldshook-fallback-for-lwctoken             eslint      4 (Low)        Recommended, SLDS, BestPractices, CSS
+  70    @salesforce-ux/slds/no-unsupported-hooks-slds2                    eslint      3 (Moderate)   Recommended, SLDS, ErrorProne, CSS
+  71    @salesforce-ux/slds/reduce-annotations                            eslint      4 (Low)        Recommended, SLDS, BestPractices, CSS
+  72    @salesforce/lightning/valid-apex-method-invocation                eslint      3 (Moderate)   Recommended, LWC, ErrorProne, JavaScript
+  73    @typescript-eslint/ban-ts-comment                                 eslint      2 (High)       Recommended, ErrorProne, TypeScript
+  74    @typescript-eslint/no-array-constructor                           eslint      3 (Moderate)   Recommended, BestPractices, TypeScript
+  75    @typescript-eslint/no-duplicate-enum-values                       eslint      2 (High)       Recommended, ErrorProne, TypeScript
+  76    @typescript-eslint/no-empty-object-type                           eslint      3 (Moderate)   Recommended, BestPractices, TypeScript
+  77    @typescript-eslint/no-explicit-any                                eslint      3 (Moderate)   Recommended, BestPractices, TypeScript
+  78    @typescript-eslint/no-extra-non-null-assertion                    eslint      2 (High)       Recommended, ErrorProne, TypeScript
+  79    @typescript-eslint/no-misused-new                                 eslint      2 (High)       Recommended, ErrorProne, TypeScript
+  80    @typescript-eslint/no-namespace                                   eslint      3 (Moderate)   Recommended, BestPractices, TypeScript
+  81    @typescript-eslint/no-non-null-asserted-optional-chain            eslint      2 (High)       Recommended, ErrorProne, TypeScript
+  82    @typescript-eslint/no-require-imports                             eslint      2 (High)       Recommended, ErrorProne, TypeScript
+  83    @typescript-eslint/no-this-alias                                  eslint      3 (Moderate)   Recommended, BestPractices, TypeScript
+  84    @typescript-eslint/no-unnecessary-type-constraint                 eslint      3 (Moderate)   Recommended, BestPractices, TypeScript
+  85    @typescript-eslint/no-unsafe-declaration-merging                  eslint      2 (High)       Recommended, ErrorProne, TypeScript
+  86    @typescript-eslint/no-unsafe-function-type                        eslint      2 (High)       Recommended, ErrorProne, TypeScript
+  87    @typescript-eslint/no-unused-expressions                          eslint      3 (Moderate)   Recommended, BestPractices, TypeScript
+  88    @typescript-eslint/no-unused-vars                                 eslint      2 (High)       Recommended, ErrorProne, TypeScript
+  89    @typescript-eslint/no-wrapper-object-types                        eslint      2 (High)       Recommended, ErrorProne, TypeScript
+  90    @typescript-eslint/prefer-as-const                                eslint      3 (Moderate)   Recommended, BestPractices, TypeScript
+  91    @typescript-eslint/prefer-namespace-keyword                       eslint      3 (Moderate)   Recommended, BestPractices, TypeScript
+  92    @typescript-eslint/triple-slash-reference                         eslint      3 (Moderate)   Recommended, BestPractices, TypeScript
+  93    constructor-super                                                 eslint      2 (High)       Recommended, ErrorProne, JavaScript
+  94    for-direction                                                     eslint      2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
+  95    getter-return                                                     eslint      2 (High)       Recommended, ErrorProne, JavaScript
+  96    import/default                                                    eslint      2 (High)       Recommended, LWC, ErrorProne, JavaScript
+  97    import/export                                                     eslint      2 (High)       Recommended, LWC, ErrorProne, JavaScript
+  98    import/named                                                      eslint      2 (High)       Recommended, LWC, ErrorProne, JavaScript
+  99    import/namespace                                                  eslint      2 (High)       Recommended, LWC, ErrorProne, JavaScript
+  100   jest/expect-expect                                                eslint      5 (Info)       Recommended, LWC, BestPractices, JavaScript
+  101   jest/no-alias-methods                                             eslint      3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  102   jest/no-commented-out-tests                                       eslint      5 (Info)       Recommended, LWC, BestPractices, JavaScript
+  103   jest/no-conditional-expect                                        eslint      2 (High)       Recommended, LWC, ErrorProne, JavaScript
+  104   jest/no-disabled-tests                                            eslint      5 (Info)       Recommended, LWC, BestPractices, JavaScript
+  105   jest/no-done-callback                                             eslint      3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  106   jest/no-export                                                    eslint      3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  107   jest/no-focused-tests                                             eslint      3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  108   jest/no-identical-title                                           eslint      3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  109   jest/no-interpolation-in-snapshots                                eslint      2 (High)       Recommended, LWC, ErrorProne, JavaScript
+  110   jest/no-jasmine-globals                                           eslint      3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  111   jest/no-mocks-import                                              eslint      2 (High)       Recommended, LWC, ErrorProne, JavaScript
+  112   jest/no-standalone-expect                                         eslint      3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  113   jest/no-test-prefixes                                             eslint      3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  114   jest/valid-describe-callback                                      eslint      2 (High)       Recommended, LWC, ErrorProne, JavaScript
+  115   jest/valid-expect                                                 eslint      3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  116   jest/valid-expect-in-promise                                      eslint      3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  117   jest/valid-title                                                  eslint      3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  118   no-async-promise-executor                                         eslint      2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
+  119   no-case-declarations                                              eslint      3 (Moderate)   Recommended, BestPractices, JavaScript, TypeScript
+  120   no-class-assign                                                   eslint      2 (High)       Recommended, ErrorProne, JavaScript
+  121   no-compare-neg-zero                                               eslint      2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
+  122   no-cond-assign                                                    eslint      2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
+  123   no-const-assign                                                   eslint      2 (High)       Recommended, ErrorProne, JavaScript
+  124   no-constant-condition                                             eslint      2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
+  125   no-control-regex                                                  eslint      2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
+  126   no-debugger                                                       eslint      2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
+  127   no-delete-var                                                     eslint      3 (Moderate)   Recommended, BestPractices, JavaScript, TypeScript
+  128   no-dupe-args                                                      eslint      2 (High)       Recommended, ErrorProne, JavaScript
+  129   no-dupe-class-members                                             eslint      2 (High)       Recommended, ErrorProne, JavaScript
+  130   no-dupe-else-if                                                   eslint      2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
+  131   no-dupe-keys                                                      eslint      2 (High)       Recommended, ErrorProne, JavaScript
+  132   no-duplicate-case                                                 eslint      2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
+  133   no-empty                                                          eslint      3 (Moderate)   Recommended, BestPractices, JavaScript, TypeScript
+  134   no-empty-character-class                                          eslint      2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
+  135   no-empty-pattern                                                  eslint      2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
+  136   no-ex-assign                                                      eslint      2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
+  137   no-extra-boolean-cast                                             eslint      3 (Moderate)   Recommended, BestPractices, JavaScript, TypeScript
+  138   no-fallthrough                                                    eslint      2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
+  139   no-func-assign                                                    eslint      2 (High)       Recommended, ErrorProne, JavaScript
+  140   no-global-assign                                                  eslint      3 (Moderate)   Recommended, BestPractices, JavaScript, TypeScript
+  141   no-import-assign                                                  eslint      2 (High)       Recommended, ErrorProne, JavaScript
+  142   no-inner-declarations                                             eslint      2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
+  143   no-invalid-regexp                                                 eslint      2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
+  144   no-irregular-whitespace                                           eslint      2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
+  145   no-loss-of-precision                                              eslint      2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
+  146   no-misleading-character-class                                     eslint      2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
+  147   no-nonoctal-decimal-escape                                        eslint      3 (Moderate)   Recommended, BestPractices, JavaScript, TypeScript
+  148   no-obj-calls                                                      eslint      2 (High)       Recommended, ErrorProne, JavaScript
+  149   no-octal                                                          eslint      2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
+  150   no-prototype-builtins                                             eslint      2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
+  151   no-redeclare                                                      eslint      3 (Moderate)   Recommended, BestPractices, JavaScript
+  152   no-regex-spaces                                                   eslint      3 (Moderate)   Recommended, BestPractices, JavaScript, TypeScript
+  153   no-self-assign                                                    eslint      2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
+  154   no-setter-return                                                  eslint      2 (High)       Recommended, ErrorProne, JavaScript
+  155   no-shadow-restricted-names                                        eslint      3 (Moderate)   Recommended, BestPractices, JavaScript, TypeScript
+  156   no-sparse-arrays                                                  eslint      2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
+  157   no-this-before-super                                              eslint      2 (High)       Recommended, ErrorProne, JavaScript
+  158   no-undef                                                          eslint      2 (High)       Recommended, ErrorProne, JavaScript
+  159   no-unexpected-multiline                                           eslint      2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
+  160   no-unreachable                                                    eslint      2 (High)       Recommended, ErrorProne, JavaScript
+  161   no-unsafe-finally                                                 eslint      2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
+  162   no-unsafe-negation                                                eslint      2 (High)       Recommended, ErrorProne, JavaScript
+  163   no-unsafe-optional-chaining                                       eslint      2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
+  164   no-unused-labels                                                  eslint      3 (Moderate)   Recommended, BestPractices, JavaScript, TypeScript
+  165   no-unused-vars                                                    eslint      2 (High)       Recommended, ErrorProne, JavaScript
+  166   no-useless-backreference                                          eslint      2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
+  167   no-useless-catch                                                  eslint      3 (Moderate)   Recommended, BestPractices, JavaScript, TypeScript
+  168   no-useless-escape                                                 eslint      3 (Moderate)   Recommended, BestPractices, JavaScript, TypeScript
+  169   no-var                                                            eslint      3 (Moderate)   Recommended, BestPractices, JavaScript, TypeScript
+  170   no-with                                                           eslint      3 (Moderate)   Recommended, BestPractices, JavaScript
+  171   prefer-const                                                      eslint      3 (Moderate)   Recommended, BestPractices, JavaScript, TypeScript
+  172   prefer-rest-params                                                eslint      3 (Moderate)   Recommended, BestPractices, JavaScript, TypeScript
+  173   prefer-spread                                                     eslint      3 (Moderate)   Recommended, BestPractices, JavaScript, TypeScript
+  174   require-yield                                                     eslint      3 (Moderate)   Recommended, BestPractices, JavaScript, TypeScript
+  175   use-isnan                                                         eslint      2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
+  176   valid-typeof                                                      eslint      2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
+  177   CyclicSubflow                                                     flow        1 (Critical)   Recommended, Performance, XML
+  178   DbInLoop                                                          flow        2 (High)       Recommended, Performance, XML
+  179   DefaultCopy                                                       flow        3 (Moderate)   Recommended, CodeStyle, XML
+  180   HardcodedId                                                       flow        3 (Moderate)   Recommended, BestPractices, XML
+  181   MissingNextValueConnector                                         flow        1 (Critical)   Recommended, BestPractices, XML
+  182   PreventPassingUserDataIntoElementWithoutSharing                   flow        2 (High)       Recommended, Security, XML
+  183   PreventPassingUserDataIntoElementWithSharing                      flow        4 (Low)        Recommended, Security, XML
+  184   SameRecordUpdate                                                  flow        3 (Moderate)   Recommended, Security, XML
+  185   TriggerCallout                                                    flow        2 (High)       Recommended, Performance, XML
+  186   TriggerEntryCriteria                                              flow        2 (High)       Recommended, Performance, XML
+  187   TriggerWaitEvent                                                  flow        2 (High)       Recommended, Performance, XML
+  188   AnnotationsNamingConventions                                      pmd         4 (Low)        Recommended, CodeStyle, Apex
+  189   ApexBadCrypto                                                     pmd         2 (High)       Recommended, Security, Apex
+  190   ApexCRUDViolation                                                 pmd         2 (High)       Recommended, Security, Apex
+  191   ApexCSRF                                                          pmd         1 (Critical)   Recommended, Security, Apex
+  192   ApexDangerousMethods                                              pmd         3 (Moderate)   Recommended, Security, Apex
+  193   ApexDoc                                                           pmd         4 (Low)        Recommended, Documentation, Apex
+  194   ApexInsecureEndpoint                                              pmd         2 (High)       Recommended, Security, Apex
+  195   ApexOpenRedirect                                                  pmd         2 (High)       Recommended, Security, Apex
+  196   ApexSharingViolations                                             pmd         3 (Moderate)   Recommended, Security, Apex
+  197   ApexSOQLInjection                                                 pmd         2 (High)       Recommended, Security, Apex
+  198   ApexSuggestUsingNamedCred                                         pmd         2 (High)       Recommended, Security, Apex
+  199   ApexUnitTestClassShouldHaveAsserts                                pmd         3 (Moderate)   Recommended, BestPractices, Apex
+  200   ApexUnitTestClassShouldHaveRunAs                                  pmd         4 (Low)        Recommended, BestPractices, Apex
+  201   ApexUnitTestMethodShouldHaveIsTestAnnotation                      pmd         2 (High)       Recommended, BestPractices, Apex
+  202   ApexUnitTestShouldNotUseSeeAllDataTrue                            pmd         2 (High)       Recommended, BestPractices, Apex
+  203   ApexXSSFromEscapeFalse                                            pmd         2 (High)       Recommended, Security, Apex
+  204   ApexXSSFromURLParam                                               pmd         2 (High)       Recommended, Security, Apex
+  205   AvoidBooleanMethodParameters                                      pmd         3 (Moderate)   Recommended, Design, Apex
+  206   AvoidDebugStatements                                              pmd         4 (Low)        Recommended, Performance, Apex
+  207   AvoidDeeplyNestedIfStmts                                          pmd         3 (Moderate)   Recommended, Design, Apex
+  208   AvoidDirectAccessTriggerMap                                       pmd         3 (Moderate)   Recommended, ErrorProne, Apex
+  209   AvoidGlobalModifier                                               pmd         3 (Moderate)   Recommended, BestPractices, Apex
+  210   AvoidHardcodingId                                                 pmd         3 (Moderate)   Recommended, ErrorProne, Apex
+  211   AvoidLogicInTrigger                                               pmd         3 (Moderate)   Recommended, BestPractices, Apex
+  212   AvoidNonExistentAnnotations                                       pmd         4 (Low)        Recommended, ErrorProne, Apex
+  213   AvoidNonRestrictiveQueries                                        pmd         4 (Low)        Recommended, Performance, Apex
+  214   AvoidStatefulDatabaseResult                                       pmd         3 (Moderate)   Recommended, ErrorProne, Apex
+  215   ClassNamingConventions                                            pmd         3 (Moderate)   Recommended, CodeStyle, Apex
+  216   CognitiveComplexity                                               pmd         3 (Moderate)   Recommended, Design, Apex
+  217   CyclomaticComplexity                                              pmd         3 (Moderate)   Recommended, Design, Apex
+  218   DebugsShouldUseLoggingLevel                                       pmd         4 (Low)        Recommended, BestPractices, Apex
+  219   EagerlyLoadedDescribeSObjectResult                                pmd         2 (High)       Recommended, Performance, Apex
+  220   EmptyCatchBlock                                                   pmd         2 (High)       Recommended, ErrorProne, Apex
+  221   EmptyIfStmt                                                       pmd         3 (Moderate)   Recommended, ErrorProne, Apex
+  222   EmptyStatementBlock                                               pmd         3 (Moderate)   Recommended, ErrorProne, Apex
+  223   EmptyTryOrFinallyBlock                                            pmd         3 (Moderate)   Recommended, ErrorProne, Apex
+  224   EmptyWhileStmt                                                    pmd         3 (Moderate)   Recommended, ErrorProne, Apex
+  225   ExcessiveClassLength                                              pmd         3 (Moderate)   Recommended, Design, Apex
+  226   ExcessiveParameterList                                            pmd         3 (Moderate)   Recommended, Design, Apex
+  227   ExcessivePublicCount                                              pmd         3 (Moderate)   Recommended, Design, Apex
+  228   FieldDeclarationsShouldBeAtStart                                  pmd         3 (Moderate)   Recommended, CodeStyle, Apex
+  229   FieldNamingConventions                                            pmd         3 (Moderate)   Recommended, CodeStyle, Apex
+  230   ForLoopsMustUseBraces                                             pmd         3 (Moderate)   Recommended, CodeStyle, Apex
+  231   FormalParameterNamingConventions                                  pmd         3 (Moderate)   Recommended, CodeStyle, Apex
+  232   IfElseStmtsMustUseBraces                                          pmd         3 (Moderate)   Recommended, CodeStyle, Apex
+  233   IfStmtsMustUseBraces                                              pmd         3 (Moderate)   Recommended, CodeStyle, Apex
+  234   InaccessibleAuraEnabledGetter                                     pmd         3 (Moderate)   Recommended, ErrorProne, Apex
+  235   LocalVariableNamingConventions                                    pmd         3 (Moderate)   Recommended, CodeStyle, Apex
+  236   MethodNamingConventions                                           pmd         3 (Moderate)   Recommended, CodeStyle, Apex
+  237   MethodWithSameNameAsEnclosingClass                                pmd         3 (Moderate)   Recommended, ErrorProne, Apex
+  238   NcssConstructorCount                                              pmd         4 (Low)        Recommended, Design, Apex
+  239   NcssMethodCount                                                   pmd         4 (Low)        Recommended, Design, Apex
+  240   OneDeclarationPerLine                                             pmd         3 (Moderate)   Recommended, CodeStyle, Apex
+  241   OperationWithHighCostInLoop                                       pmd         3 (Moderate)   Recommended, Performance, Apex
+  242   OperationWithLimitsInLoop                                         pmd         3 (Moderate)   Recommended, Performance, Apex
+  243   OverrideBothEqualsAndHashcode                                     pmd         2 (High)       Recommended, ErrorProne, Apex
+  244   PropertyNamingConventions                                         pmd         3 (Moderate)   Recommended, CodeStyle, Apex
+  245   QueueableWithoutFinalizer                                         pmd         4 (Low)        Recommended, BestPractices, Apex
+  246   TestMethodsMustBeInTestClasses                                    pmd         3 (Moderate)   Recommended, ErrorProne, Apex
+  247   TooManyFields                                                     pmd         3 (Moderate)   Recommended, Design, Apex
+  248   TypeShadowsBuiltInNamespace                                       pmd         2 (High)       Recommended, ErrorProne, Apex
+  249   UnusedLocalVariable                                               pmd         3 (Moderate)   Recommended, BestPractices, Apex
+  250   UnusedMethod                                                      pmd         3 (Moderate)   Recommended, Design, Apex
+  251   VfCsrf                                                            pmd         2 (High)       Recommended, Security, Visualforce
+  252   VfHtmlStyleTagXss                                                 pmd         2 (High)       Recommended, Security, Visualforce
+  253   VfUnescapeEl                                                      pmd         2 (High)       Recommended, Security, Visualforce
+  254   WhileLoopsMustUseBraces                                           pmd         3 (Moderate)   Recommended, CodeStyle, Apex
+  255   DetectCopyPasteForApex                                            cpd         5 (Info)       Recommended, Design, Apex
+  256   DetectCopyPasteForJavascript                                      cpd         5 (Info)       Recommended, Design, Javascript
+  257   DetectCopyPasteForTypescript                                      cpd         5 (Info)       Recommended, Design, Typescript
+  258   DetectCopyPasteForVisualforce                                     cpd         5 (Info)       Recommended, Design, Visualforce
 
 
 
 === Summary
 
-Found 248 rule(s) from 6 engine(s):
+Found 258 rule(s) from 6 engine(s):
     4 retire-js rule(s) found.
     5 regex rule(s) found.
-    166 eslint rule(s) found.
-    2 flow rule(s) found.
+    167 eslint rule(s) found.
+    11 flow rule(s) found.
     67 pmd rule(s) found.
     4 cpd rule(s) found.
 
 Additional log information written to:
-    /tmp/sfca-2025_12_04_12_53_17_271.log
+    /tmp/sfca-2025_12_22_12_20_52_292.log
 ```
 
 ### Installation on mega-linter Docker image
@@ -417,11 +427,11 @@ Additional log information written to:
 ```dockerfile
 # Parent descriptor install
 # renovate: datasource=npm depName=@salesforce/cli
-ARG NPM_SALESFORCE_CLI_VERSION=2.113.6
+ARG NPM_SALESFORCE_CLI_VERSION=2.115.15
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
-ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.23.3
+ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.24.4
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=6.12.10
+ARG SFDX_HARDIS_VERSION=6.16.0
 ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 RUN sf plugins install @salesforce/plugin-packaging@${NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION} \
@@ -431,7 +441,7 @@ RUN sf plugins install @salesforce/plugin-packaging@${NPM_SALESFORCE_PLUGIN_PACK
 ENV SF_AUTOUPDATE_DISABLE=true SF_CLI_DISABLE_AUTOUPDATE=true
 # Linter install
 # renovate: datasource=npm depName=@salesforce/plugin-code-analyzer
-ARG SALESFORCE_CODE_ANALYZER_VERSION=5.6.1
+ARG SALESFORCE_CODE_ANALYZER_VERSION=5.7.1
 RUN sf plugins install code-analyzer@${SALESFORCE_CODE_ANALYZER_VERSION} \
     && (npm cache clean --force || true) \
     && rm -rf /root/.npm/_cacache

@@ -91,7 +91,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=htmlhint
-          ARG NPM_HTMLHINT_VERSION=1.7.1
+          ARG NPM_HTMLHINT_VERSION=1.8.0
       npm:
         - htmlhint@${NPM_HTMLHINT_VERSION}
     supported_platforms:

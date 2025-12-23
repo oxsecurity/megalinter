@@ -34,8 +34,7 @@ class GithubCommentReporter(Reporter):
         ):  # Legacy - true by default
             self.is_active = True
 
-    @property
-    def comment_marker(self):
+    def get_comment_marker(self):
         """Generate the comment marker
 
         This marker is used to find the same comment again so it can be updated.
@@ -47,12 +46,16 @@ class GithubCommentReporter(Reporter):
           <!-- megalinter: github-comment-reporter workflow='…' jobid='…' -->
 
         """
-        workflow = os.getenv("GITHUB_WORKFLOW")
-        jobid = os.getenv("GITHUB_JOB")
+        workflow = config.get(self.master.request_id, "GITHUB_WORKFLOW")
+        jobid = config.get(self.master.request_id, "GITHUB_JOB")
+        multirun_key = config.get(self.master.request_id, "MEGALINTER_MULTIRUN_KEY")
+
         workflow = workflow and f"workflow={workflow!r}"
         jobid = jobid and f"jobid={jobid!r}"
+        multirun_key = multirun_key and f"key={multirun_key!r}"
+
         identifier = " ".join(
-            ["github-comment-reporter", *filter(None, (workflow, jobid))]
+            ["github-comment-reporter", *filter(None, (workflow, jobid, multirun_key))]
         )
         return f"<!-- megalinter: {identifier} -->"
 
@@ -81,7 +84,7 @@ class GithubCommentReporter(Reporter):
                 action_run_url = ""
 
             # add comment marker, with extra newlines in between.
-            marker = self.comment_marker
+            marker = self.get_comment_marker()
             p_r_msg = "\n".join(
                 [build_markdown_summary(self, action_run_url), "", marker, ""]
             )
