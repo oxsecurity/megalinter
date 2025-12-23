@@ -1,7 +1,7 @@
 aiofiles==25.1.0
 gitpython==3.1.45
 fastapi==0.124.4
-python-multipart==0.0.20
+python-multipart==0.0.21
 pygments==2.19.2
 uvicorn[standard]==0.38.0
 redis==7.1.0

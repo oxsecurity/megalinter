@@ -25,7 +25,7 @@ pytest-timeout==2.4.0
 pytest-xdist==3.8.0
 pytest-rerunfailures==16.1
 python-gitlab==7.0.0
-python-multipart==0.0.20
+python-multipart==0.0.21
 pyyaml==6.0.3
 redis==7.1.0
 regex==2025.11.3
