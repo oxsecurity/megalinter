@@ -167,7 +167,7 @@ ARG NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION=12.1.0
 # renovate: datasource=npm depName=stylelint-scss
 ARG NPM_STYLELINT_SCSS_VERSION=6.13.0
 # renovate: datasource=dart-version depName=dart
-ARG DART_VERSION='3.8.3'
+ARG DART_VERSION='3.10.7'
 # renovate: datasource=github-tags depName=dotenv-linter/dotenv-linter
 ARG DOTENV_LINTER_VERSION=4.0.0
 # renovate: datasource=npm depName=gherkin-lint
@@ -884,6 +884,7 @@ RUN curl --retry 5 --retry-delay 5 -sLO "https://github.com/Azure/arm-ttk/releas
     && mkdir -p /usr/lib/dart \
     && mv dart-sdk/* /usr/lib/dart/ \
     && chmod +x /usr/lib/dart/bin/dart \
+    && chmod +x /usr/lib/dart/bin/dartaotruntime \
     && rm -r dart-sdk/
 
 ENV PATH="/usr/lib/dart/bin:${PATH}"
