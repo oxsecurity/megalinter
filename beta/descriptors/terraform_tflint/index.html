@@ -12447,22 +12447,78 @@ The default configuration enables all supported languages and rules, which may n
 <td>Allows to send the full env to <strong>tflint --init</strong>. Initialized with default value <code>true</code>. Set to <code>false</code> to allow <code>tflint --init</code> to access your env vars.</td>
 <td><code>True</code></td>
 </tr>
+<tr>
+<td>PAT_GITHUB_COM</td>
+<td>If you have issues with tflint --init, create a GitHub Personal Access Token and set its value to PAT_GITHUB_COM variable.</td>
+<td>``</td>
+</tr>
+<tr>
+<td>TERRAFORM_TFLINT_ARGUMENTS</td>
+<td>User custom arguments to add in linter CLI call<br>Ex: <code>-s --foo "bar"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>TERRAFORM_TFLINT_COMMAND_REMOVE_ARGUMENTS</td>
+<td>User custom arguments to remove from command line before calling the linter<br>Ex: <code>-s --foo "bar"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>TERRAFORM_TFLINT_CLI_LINT_MODE</td>
+<td>Override default CLI lint mode<br>⚠️ As default value is <strong>project</strong>, overriding might not work<br>- <code>file</code>: Calls the linter for each file<br>- <code>list_of_files</code>: Call the linter with the list of files as argument<br>- <code>project</code>: Call the linter from the root of the project</td>
+<td><code>project</code></td>
+</tr>
+<tr>
+<td>TERRAFORM_TFLINT_FILE_EXTENSIONS</td>
+<td>Allowed file extensions. <code>"*"</code> matches any extension, <code>""</code> matches empty extension. Empty list excludes all files<br>Ex: <code>[".py", ""]</code></td>
+<td><code>[".tf"]</code></td>
+</tr>
+<tr>
+<td>TERRAFORM_TFLINT_FILE_NAMES_REGEX</td>
+<td>File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br>Ex: <code>["Dockerfile(-.+)?", "Jenkinsfile"]</code></td>
+<td>Include every file</td>
+</tr>
+<tr>
+<td>TERRAFORM_TFLINT_PRE_COMMANDS</td>
+<td>List of bash commands to run before the linter</td>
+<td>None</td>
+</tr>
+<tr>
+<td>TERRAFORM_TFLINT_POST_COMMANDS</td>
+<td>List of bash commands to run after the linter</td>
+<td>None</td>
+</tr>
+<tr>
+<td>TERRAFORM_TFLINT_UNSECURED_ENV_VARIABLES</td>
+<td>List of env variables explicitly not filtered before calling TERRAFORM_TFLINT and its pre/post commands</td>
+<td>None</td>
+</tr>
+<tr>
+<td>TERRAFORM_TFLINT_CONFIG_FILE</td>
+<td>tflint configuration file name<br>Use <code>LINTER_DEFAULT</code> to let the linter find it</td>
+<td><code>.tflint.hcl</code></td>
+</tr>
+<tr>
+<td>TERRAFORM_TFLINT_RULES_PATH</td>
+<td>Path where to find linter configuration file</td>
+<td>Workspace folder, then MegaLinter default rules</td>
+</tr>
+<tr>
+<td>TERRAFORM_TFLINT_DISABLE_ERRORS</td>
+<td>Run linter but consider errors as warnings</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td>TERRAFORM_TFLINT_DISABLE_ERRORS_IF_LESS_THAN</td>
+<td>Maximum number of errors allowed</td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td>TERRAFORM_TFLINT_CLI_EXECUTABLE</td>
+<td>Override CLI executable</td>
+<td><code>['tflint']</code></td>
+</tr>
 </tbody>
 </table>
-<p>| PAT_GITHUB_COM                               | If you have issues with tflint --init, create a GitHub Personal Access Token and set its value to PAT_GITHUB_COM variable.                                                                                                                                                            | <code>`                                              |
-| TERRAFORM_TFLINT_ARGUMENTS                   | User custom arguments to add in linter CLI call&lt;br/&gt;Ex:</code>-s --foo "bar"<code>|                                                 |
-| TERRAFORM_TFLINT_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter&lt;br/&gt;Ex:</code>-s --foo "bar"<code>|                                                 |
-| TERRAFORM_TFLINT_CLI_LINT_MODE               | Override default CLI lint mode&lt;br/&gt;⚠️ As default value is **project**, overriding might not work&lt;br/&gt;-</code>file<code>: Calls the linter for each file&lt;br/&gt;-</code>list_of_files<code>: Call the linter with the list of files as argument&lt;br/&gt;-</code>project<code>: Call the linter from the root of the project |</code>project<code>|
-| TERRAFORM_TFLINT_FILE_EXTENSIONS             | Allowed file extensions.</code>"*"<code>matches any extension,</code>""<code>matches empty extension. Empty list excludes all files&lt;br/&gt;Ex:</code>[".py", ""]<code>|</code>[".tf"]<code>|
-| TERRAFORM_TFLINT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files&lt;br/&gt;Ex:</code>["Dockerfile(-.+)?", "Jenkinsfile"]<code>| Include every file                              |
-| TERRAFORM_TFLINT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                                                                                        | None                                            |
-| TERRAFORM_TFLINT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                                                                                         | None                                            |
-| TERRAFORM_TFLINT_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling TERRAFORM_TFLINT and its pre/post commands                                                                                                                                                                               | None                                            |
-| TERRAFORM_TFLINT_CONFIG_FILE                 | tflint configuration file name&lt;/br&gt;Use</code>LINTER_DEFAULT<code>to let the linter find it                                                                                                                                                                                                     |</code>.tflint.hcl<code>|
-| TERRAFORM_TFLINT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                                                                                          | Workspace folder, then MegaLinter default rules |
-| TERRAFORM_TFLINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                                                                                            |</code>false<code>|
-| TERRAFORM_TFLINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                                                                                      |</code>0<code>|
-| TERRAFORM_TFLINT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                                                                                               |</code>['tflint']`                                    |</p>
 <h2 id="megalinter-flavors">MegaLinter Flavors</h2>
 <p>This linter is available in the following flavors</p>
 <table>

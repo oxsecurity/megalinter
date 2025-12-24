@@ -9541,6 +9541,17 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#azure-pipelines-environment-variables-on-pull-requests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Azure Pipelines environment variables on Pull Requests
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#repository-checkout-on-pull-requests" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -12362,6 +12373,17 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#azure-pipelines-environment-variables-on-pull-requests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Azure Pipelines environment variables on Pull Requests
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#repository-checkout-on-pull-requests" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -12568,12 +12590,10 @@
 <li><strong>Entropy detection</strong> for finding high-entropy strings that may be secrets</li>
 </ul>
 <h2 id="scan-only-pull-request-commits">Scan only Pull Request commits</h2>
-<p><code>VALIDATE_ALL_CODEBASE: false</code> doesn't make gitleaks analyze only updated files. To analyze only commits on a Pull Request, set <code>VALIDATE_ALL_CODEBASE: false</code> together with <code>REPOSITORY_GITLEAKS_PR_COMMITS_SCAN: true</code> (you have to specify it explicitly); however, this only works for select platforms:</p>
-<ul>
-<li>GitHub Actions</li>
-<li>Azure Pipelines</li>
-<li>GitLab Pipelines* (Merge Requests and External Pull Requests)</li>
-</ul>
+<p><code>VALIDATE_ALL_CODEBASE: false</code> doesn't make gitleaks analyze only updated files. To analyze only commits on a Pull Request, set <code>VALIDATE_ALL_CODEBASE: false</code> together with <code>REPOSITORY_GITLEAKS_PR_COMMITS_SCAN: true</code> (you have to specify it explicitly); however, this only works for select platforms:
+* GitHub Actions
+* Azure Pipelines
+* GitLab Pipelines* (Merge Requests and External Pull Requests)</p>
 <p><strong>Note:</strong> Only GitLab self-managed and GitLab SaaS (Premium and Ultimate) are supported (this is a GitLab-specific limitation). Additionally, the <a href="https://docs.gitlab.com/ee/ci/pipelines/merged_results_pipelines.html#enable-merged-results-pipelines" target="_blank">Merge result pipelines</a> feature has to be enabled.</p>
 <p>If MegaLinter with gitleaks runs against a PR on a platform not listed above, analysis is performed on the whole repository (this is the default gitleaks behavior; the commits scanned depend on the fetch-depth configuration).</p>
 <p>You can still choose to scan only PR commits in your CI/CD platform by setting the following MegaLinter environment variables:</p>
@@ -12589,25 +12609,18 @@
       git rev-list -n 1 refs/remotes/origin/&lt;source_branch&gt;</code></li>
 </ul>
 <ul>
-<li>Target commit SHA:</li>
+<li>Target commit SHA:
+      <code>bash
+      git rev-parse refs/remotes/origin/&lt;target_branch&gt;</code></li>
 </ul>
 </li>
 </ul>
-<pre><code>
-        ```bash
-        git rev-parse refs/remotes/origin/&lt;target_branch&gt;```
+<p>* <code>PULL_REQUEST</code> environment variable must be set to <code>true</code> only on Pull Requests, so you must calculate the value in your pipeline and pass the outcome.</p>
+<p>The PR commits scan feature, if applicable, will override your <code>--log-opts</code> argument if you used it in the <code>REPOSITORY_GITLEAKS_ARGUMENTS</code>.</p>
+<h3 id="azure-pipelines-environment-variables-on-pull-requests">Azure Pipelines environment variables on Pull Requests</h3>
+<p>In the case of Azure Pipelines when running in a Docker container, we have to explicitly pass some environment variables:</p>
+<!-- # MAJOR-RELEASE-IMPACTED -->
 
-\* `PULL_REQUEST` environment variable must be set to `true` only on Pull Requests, so you must calculate the value in your pipeline and pass the outcome.
-
-The PR commits scan feature, if applicable, will override your `--log-opts` argument if you used it in the `REPOSITORY_GITLEAKS_ARGUMENTS`.
-
-### Azure Pipelines environment variables on Pull Requests
-
-In the case of Azure Pipelines when running in a Docker container, we have to explicitly pass some environment variables:
-
-&lt;!-- # MAJOR-RELEASE-IMPACTED --&gt;
-
-</code></pre>
 <pre><code class="language-bash">  docker run -v $(System.DefaultWorkingDirectory):/tmp/lint \
       -e SYSTEM_PULLREQUEST_SOURCECOMMITID=$(System.PullRequest.SourceCommitId) \
       -e SYSTEM_PULLREQUEST_TARGETBRANCH=$(System.PullRequest.TargetBranch) \
@@ -12663,21 +12676,73 @@ In the case of Azure Pipelines when running in a Docker container, we have to ex
 <td>Scan only commits in the current Pull Request/Merge Request</td>
 <td><code>false</code></td>
 </tr>
+<tr>
+<td>REPOSITORY_GITLEAKS_PR_SOURCE_SHA</td>
+<td>Source commit SHA of the Pull Request/Merge Request</td>
+<td>``</td>
+</tr>
+<tr>
+<td>REPOSITORY_GITLEAKS_PR_TARGET_SHA</td>
+<td>Target commit SHA of the Pull Request/Merge Request</td>
+<td>``</td>
+</tr>
+<tr>
+<td>REPOSITORY_GITLEAKS_ARGUMENTS</td>
+<td>User custom arguments to add in linter CLI call<br>Ex: <code>-s --foo "bar"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>REPOSITORY_GITLEAKS_COMMAND_REMOVE_ARGUMENTS</td>
+<td>User custom arguments to remove from command line before calling the linter<br>Ex: <code>-s --foo "bar"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>REPOSITORY_GITLEAKS_CLI_LINT_MODE</td>
+<td>Override default CLI lint mode<br>⚠️ As default value is <strong>project</strong>, overriding might not work<br>- <code>file</code>: Calls the linter for each file<br>- <code>list_of_files</code>: Call the linter with the list of files as argument<br>- <code>project</code>: Call the linter from the root of the project</td>
+<td><code>project</code></td>
+</tr>
+<tr>
+<td>REPOSITORY_GITLEAKS_PRE_COMMANDS</td>
+<td>List of bash commands to run before the linter</td>
+<td>None</td>
+</tr>
+<tr>
+<td>REPOSITORY_GITLEAKS_POST_COMMANDS</td>
+<td>List of bash commands to run after the linter</td>
+<td>None</td>
+</tr>
+<tr>
+<td>REPOSITORY_GITLEAKS_UNSECURED_ENV_VARIABLES</td>
+<td>List of env variables explicitly not filtered before calling REPOSITORY_GITLEAKS and its pre/post commands</td>
+<td>None</td>
+</tr>
+<tr>
+<td>REPOSITORY_GITLEAKS_CONFIG_FILE</td>
+<td>gitleaks configuration file name<br>Use <code>LINTER_DEFAULT</code> to let the linter find it</td>
+<td><code>.gitleaks.toml</code></td>
+</tr>
+<tr>
+<td>REPOSITORY_GITLEAKS_RULES_PATH</td>
+<td>Path where to find linter configuration file</td>
+<td>Workspace folder, then MegaLinter default rules</td>
+</tr>
+<tr>
+<td>REPOSITORY_GITLEAKS_DISABLE_ERRORS</td>
+<td>Run linter but consider errors as warnings</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td>REPOSITORY_GITLEAKS_DISABLE_ERRORS_IF_LESS_THAN</td>
+<td>Maximum number of errors allowed</td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td>REPOSITORY_GITLEAKS_CLI_EXECUTABLE</td>
+<td>Override CLI executable</td>
+<td><code>['gitleaks']</code></td>
+</tr>
 </tbody>
 </table>
-<p>| REPOSITORY_GITLEAKS_PR_SOURCE_SHA               | Source commit SHA of the Pull Request/Merge Request                                                                                                                                                                                                                                   | <code>|
-| REPOSITORY_GITLEAKS_PR_TARGET_SHA               | Target commit SHA of the Pull Request/Merge Request                                                                                                                                                                                                                                   |</code>                                              |
-| REPOSITORY_GITLEAKS_ARGUMENTS                   | User custom arguments to add in linter CLI call<br>Ex: <code>-s --foo "bar"</code>                                                                                                                                                                                                              |                                                 |
-| REPOSITORY_GITLEAKS_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br>Ex: <code>-s --foo "bar"</code>                                                                                                                                                                                  |                                                 |
-| REPOSITORY_GITLEAKS_CLI_LINT_MODE               | Override default CLI lint mode<br>⚠️ As default value is <strong>project</strong>, overriding might not work<br>- <code>file</code>: Calls the linter for each file<br>- <code>list_of_files</code>: Call the linter with the list of files as argument<br>- <code>project</code>: Call the linter from the root of the project | <code>project</code>                                       |
-| REPOSITORY_GITLEAKS_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                                                                                        | None                                            |
-| REPOSITORY_GITLEAKS_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                                                                                         | None                                            |
-| REPOSITORY_GITLEAKS_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling REPOSITORY_GITLEAKS and its pre/post commands                                                                                                                                                                            | None                                            |
-| REPOSITORY_GITLEAKS_CONFIG_FILE                 | gitleaks configuration file name<br>Use <code>LINTER_DEFAULT</code> to let the linter find it                                                                                                                                                                                                   | <code>.gitleaks.toml</code>                                |
-| REPOSITORY_GITLEAKS_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                                                                                          | Workspace folder, then MegaLinter default rules |
-| REPOSITORY_GITLEAKS_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                                                                                            | <code>false</code>                                         |
-| REPOSITORY_GITLEAKS_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                                                                                      | <code>0</code>                                             |
-| REPOSITORY_GITLEAKS_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                                                                                               | <code>['gitleaks']</code>                                  |</p>
 <h2 id="megalinter-flavors">MegaLinter Flavors</h2>
 <p>This linter is available in the following flavors</p>
 <table>

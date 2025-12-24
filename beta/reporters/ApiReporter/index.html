@@ -12528,8 +12528,8 @@
 <p>Send results as logs and metrics to observability tools, like Grafana.</p>
 <h2 id="usage">Usage</h2>
 <p>Use Grafana default MegaLinter dashboards, and build new ones to monitor everything you need from MegaLinter logs and metrics.</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/screenshot-grafana-1.jpg" data-desc-position="bottom"><img alt="Screenshot Grafana 1 image" src="../../assets/images/screenshot-grafana-1.jpg"></a></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/screenshot-grafana-2.jpg" data-desc-position="bottom"><img alt="Screenshot Grafana 2 image" src="../../assets/images/screenshot-grafana-2.jpg"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/screenshot-grafana-1.jpg" data-desc-position="bottom"><img alt="" src="../../assets/images/screenshot-grafana-1.jpg"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/screenshot-grafana-2.jpg" data-desc-position="bottom"><img alt="" src="../../assets/images/screenshot-grafana-2.jpg"></a></p>
 <p>If you create new useful dashboards, please share them with the MegaLinter community by exporting them then create a pull request :)</p>
 <h2 id="logs-configuration">Logs Configuration</h2>
 <p>Define the following CI/CD variables:</p>
@@ -12695,13 +12695,13 @@ linter_run,source=MegaLinter,orgIdentifier=tmpX,gitIdentifier=megalinter/tmpX,gi
 <p>If you don't have a Grafana server, you can use Grafana Cloud Free Tier (14 days of logs &amp; metrics retention + 3 users, no credit card required, free forever)</p>
 <h3 id="create-grafana-account">Create Grafana Account</h3>
 <p>Create a Grafana Cloud Free account at <a href="https://grafana.com/auth/sign-up/create-user?pg=hp&amp;plcmt=cloud-promo&amp;cta=create-free-account" target="blank">this url</a></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/grafana-config-1.jpg" data-desc-position="bottom"><img alt="Grafana Config 1 image" src="../../assets/images/grafana-config-1.jpg"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/grafana-config-1.jpg" data-desc-position="bottom"><img alt="" src="../../assets/images/grafana-config-1.jpg"></a></p>
 <hr>
 <p>Input a Grafana Cloud org name (megalinter in the example)</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/grafana-config-2.jpg" data-desc-position="bottom"><img alt="Grafana Config 2 image" src="../../assets/images/grafana-config-2.jpg"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/grafana-config-2.jpg" data-desc-position="bottom"><img alt="" src="../../assets/images/grafana-config-2.jpg"></a></p>
 <hr>
 <p>Next screen, you can skip setup</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/grafana-config-3.jpg" data-desc-position="bottom"><img alt="Grafana Config 3 image" src="../../assets/images/grafana-config-3.jpg"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/grafana-config-3.jpg" data-desc-position="bottom"><img alt="" src="../../assets/images/grafana-config-3.jpg"></a></p>
 <h3 id="gather-urls-auth-info">Gather URLs &amp; auth info</h3>
 <p>Create a notepad when you copy paste the following text</p>
 <pre><code class="language-sh">API_REPORTER_URL=
@@ -12713,7 +12713,7 @@ API_REPORTER_METRICS_BASIC_AUTH_PASSWORD=
 </code></pre>
 <h3 id="get-loki-configuration">Get Loki configuration</h3>
 <p>Go to <strong>Connections</strong> -&gt; <strong>Data Sources</strong> and click on <strong>grafanacloud-YOURORGNAME-logs (Loki)</strong></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/grafana-config-4.jpg" data-desc-position="bottom"><img alt="Grafana Config 4 image" src="../../assets/images/grafana-config-4.jpg"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/grafana-config-4.jpg" data-desc-position="bottom"><img alt="" src="../../assets/images/grafana-config-4.jpg"></a></p>
 <hr>
 <p>Build Logs push url</p>
 <ul>
@@ -12725,11 +12725,11 @@ API_REPORTER_METRICS_BASIC_AUTH_PASSWORD=
 <p>Copy value of Authentication -&gt; User and paste it with variable <code>API_REPORTER_BASIC_AUTH_USERNAME</code></p>
 <p>Example: <code>API_REPORTER_BASIC_AUTH_USERNAME=898189</code></p>
 <p>Leave <code>API_REPORTER_BASIC_AUTH_PASSWORD</code> empty for now, you can't get it here</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/grafana-config-5.jpg" data-desc-position="bottom"><img alt="Grafana Config 5 image" src="../../assets/images/grafana-config-5.jpg"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/grafana-config-5.jpg" data-desc-position="bottom"><img alt="" src="../../assets/images/grafana-config-5.jpg"></a></p>
 <p><em>See <a href="https://grafana.com/blog/2024/03/21/how-to-use-http-apis-to-send-metrics-and-logs-to-grafana-cloud/#sending-logs-using-the-http-api">Grafana documentation</a> for more info</em></p>
 <h3 id="get-prometheus-configuration">Get Prometheus configuration</h3>
 <p>Go to <strong>Connections</strong> -&gt; <strong>Data Sources</strong> and click on <strong>grafanacloud-YOURORGNAME-prom (Prometheus)</strong></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/grafana-config-6.jpg" data-desc-position="bottom"><img alt="Grafana Config 6 image" src="../../assets/images/grafana-config-6.jpg"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/grafana-config-6.jpg" data-desc-position="bottom"><img alt="" src="../../assets/images/grafana-config-6.jpg"></a></p>
 <hr>
 <p>Build Metrics push url</p>
 <ul>
@@ -12742,11 +12742,11 @@ API_REPORTER_METRICS_BASIC_AUTH_PASSWORD=
 <p>Copy value of Authentication -&gt; User and paste it with variable <code>API_REPORTER_METRICS_BASIC_AUTH_USERNAME</code></p>
 <p>Example: <code>API_REPORTER_METRICS_BASIC_AUTH_USERNAME=1596503</code></p>
 <p>Leave <code>API_REPORTER_METRICS_BASIC_AUTH_PASSWORD</code> empty for now, you can't get it here</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/grafana-config-7.jpg" data-desc-position="bottom"><img alt="Grafana Config 7 image" src="../../assets/images/grafana-config-7.jpg"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/grafana-config-7.jpg" data-desc-position="bottom"><img alt="" src="../../assets/images/grafana-config-7.jpg"></a></p>
 <p><em>See <a href="https://grafana.com/blog/2024/03/21/how-to-use-http-apis-to-send-metrics-and-logs-to-grafana-cloud/#sending-metrics-using-the-http-api">Grafana documentation</a> for more info</em></p>
 <h3 id="create-service-account">Create Service Account</h3>
 <p>Go to <strong>Administration</strong> -&gt; <strong>Users and Access</strong> -&gt; <strong>Cloud Access Policies</strong>, then click on <strong>Create Access Policy</strong></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/grafana-config-8.jpg" data-desc-position="bottom"><img alt="Grafana Config 8 image" src="../../assets/images/grafana-config-8.jpg"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/grafana-config-8.jpg" data-desc-position="bottom"><img alt="" src="../../assets/images/grafana-config-8.jpg"></a></p>
 <hr>
 <p>Create the access policy</p>
 <ul>
@@ -12754,26 +12754,26 @@ API_REPORTER_METRICS_BASIC_AUTH_PASSWORD=
 <li>Select <strong>write</strong> for items <strong>metrics, logs, traces, profiles, alerts</strong> (only metrics and logs are used today, but who knows hat new features we'll release in the future !)</li>
 <li>Click on <strong>Create</strong></li>
 </ul>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/grafana-config-9.jpg" data-desc-position="bottom"><img alt="Grafana Config 9 image" src="../../assets/images/grafana-config-9.jpg"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/grafana-config-9.jpg" data-desc-position="bottom"><img alt="" src="../../assets/images/grafana-config-9.jpg"></a></p>
 <hr>
 <p>On the new Access Policy <code>MegaLinter</code>, click on <strong>Add Token</strong> at the bottom right</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/grafana-config-10.jpg" data-desc-position="bottom"><img alt="Grafana Config 10 image" src="../../assets/images/grafana-config-10.jpg"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/grafana-config-10.jpg" data-desc-position="bottom"><img alt="" src="../../assets/images/grafana-config-10.jpg"></a></p>
 <hr>
 <p>Name it megalinter-token, let <code>No expiration</code> then click <strong>Create</strong></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/grafana-config-11.jpg" data-desc-position="bottom"><img alt="Grafana Config 11 image" src="../../assets/images/grafana-config-11.jpg"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/grafana-config-11.jpg" data-desc-position="bottom"><img alt="" src="../../assets/images/grafana-config-11.jpg"></a></p>
 <hr>
 <p>On the next screen, click on <strong>Copy to clipboard</strong> then paste in your notepad in front of variables <strong>API_REPORTER_BASIC_AUTH_PASSWORD</strong> and <strong>API_REPORTER_METRICS_BASIC_AUTH_PASSWORD</strong></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/grafana-config-12.jpg" data-desc-position="bottom"><img alt="Grafana Config 12 image" src="../../assets/images/grafana-config-12.jpg"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/grafana-config-12.jpg" data-desc-position="bottom"><img alt="" src="../../assets/images/grafana-config-12.jpg"></a></p>
 <p>Example:</p>
-<pre><code class="language-text">API_REPORTER_BASIC_AUTH_PASSWORD=glc_eyJvIjoiMTEzMjI4OCIsIm4iOiJzZmR4arZW4iLCJrIjoiN0x6Mz1IM041IiwibSI6eyJyXN0LTIifX0=
+<pre><code>API_REPORTER_BASIC_AUTH_PASSWORD=glc_eyJvIjoiMTEzMjI4OCIsIm4iOiJzZmR4arZW4iLCJrIjoiN0x6Mz1IM041IiwibSI6eyJyXN0LTIifX0=
 API_REPORTER_METRICS_BASIC_AUTH_PASSWORD=glc_eyJvIjoiMTEzMjI4OCIsIm4iOiJzZmR4arZW4iLCJrIjoiN0x6Mz1IM041IiwibSI6eyJyXN0LTIifX0=
 </code></pre>
 <h3 id="configure-ci-variables-on-repository">Configure CI variables on repository</h3>
 <p>Now configure all of the 6 variables on the repository running MegaLinter.</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/grafana-config-13.jpg" data-desc-position="bottom"><img alt="Grafana Config 13 image" src="../../assets/images/grafana-config-13.jpg"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/grafana-config-13.jpg" data-desc-position="bottom"><img alt="" src="../../assets/images/grafana-config-13.jpg"></a></p>
 <p>There value must be accessible from MegaLinter Docker image, so you might need to redeclare them in YML workflows depending on your git provider.</p>
 <p><em>Example with GitHub Workflow:</em></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/grafana-config-13bis.jpg" data-desc-position="bottom"><img alt="Grafana Config 13bis image" src="../../assets/images/grafana-config-13bis.jpg"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/grafana-config-13bis.jpg" data-desc-position="bottom"><img alt="" src="../../assets/images/grafana-config-13bis.jpg"></a></p>
 <pre><code class="language-yaml">          API_REPORTER: true
           API_REPORTER_URL: ${{ secrets.API_REPORTER_URL }}
           API_REPORTER_BASIC_AUTH_USERNAME: ${{ secrets.API_REPORTER_BASIC_AUTH_USERNAME }}
@@ -12785,20 +12785,20 @@ API_REPORTER_METRICS_BASIC_AUTH_PASSWORD=glc_eyJvIjoiMTEzMjI4OCIsIm4iOiJzZmR4arZ
 </code></pre>
 <h3 id="download-megalinter-dashboards">Download MegaLinter dashboards</h3>
 <p>Download all MegaLinter Dashboard JSON files from <a href="https://github.com/oxsecurity/megalinter/tree/main/docs/grafana">this MegaLinter repo folder</a></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/grafana-config-16.jpg" data-desc-position="bottom"><img alt="Grafana Config 16 image" src="../../assets/images/grafana-config-16.jpg"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/grafana-config-16.jpg" data-desc-position="bottom"><img alt="" src="../../assets/images/grafana-config-16.jpg"></a></p>
 <h3 id="create-dashboard-folder">Create Dashboard folder</h3>
 <p>Go in menu <strong>Dashboards</strong> then click on <strong>New</strong> then <strong>New folder</strong></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/grafana-config-14.jpg" data-desc-position="bottom"><img alt="Grafana Config 14 image" src="../../assets/images/grafana-config-14.jpg"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/grafana-config-14.jpg" data-desc-position="bottom"><img alt="" src="../../assets/images/grafana-config-14.jpg"></a></p>
 <hr>
 <p>Create folder <code>MegaLinter Dashboards</code></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/grafana-config-15.jpg" data-desc-position="bottom"><img alt="Grafana Config 15 image" src="../../assets/images/grafana-config-15.jpg"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/grafana-config-15.jpg" data-desc-position="bottom"><img alt="" src="../../assets/images/grafana-config-15.jpg"></a></p>
 <h3 id="import-default-megalinter-grafana-dashboards">Import default MegaLinter Grafana Dashboards</h3>
 <p>For each downloaded Dashboard JSON file, process the following actions.</p>
 <p>Click <strong>New</strong> then <strong>Import</strong></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/grafana-config-17.jpg" data-desc-position="bottom"><img alt="Grafana Config 17 image" src="../../assets/images/grafana-config-17.jpg"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/grafana-config-17.jpg" data-desc-position="bottom"><img alt="" src="../../assets/images/grafana-config-17.jpg"></a></p>
 <hr>
 <p>Click on <strong>Upload Dashboard JSON File</strong> and select one of the Dashboards JSON files you downloaded on your computer.</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/grafana-config-18.jpg" data-desc-position="bottom"><img alt="Grafana Config 18 image" src="../../assets/images/grafana-config-18.jpg"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/grafana-config-18.jpg" data-desc-position="bottom"><img alt="" src="../../assets/images/grafana-config-18.jpg"></a></p>
 <hr>
 <ul>
 <li>Let Name, Folder and UID default values</li>
@@ -12809,10 +12809,10 @@ API_REPORTER_METRICS_BASIC_AUTH_PASSWORD=glc_eyJvIjoiMTEzMjI4OCIsIm4iOiJzZmR4arZ
 </li>
 <li>Click import</li>
 </ul>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/grafana-config-19.jpg" data-desc-position="bottom"><img alt="Grafana Config 19 image" src="../../assets/images/grafana-config-19.jpg"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/grafana-config-19.jpg" data-desc-position="bottom"><img alt="" src="../../assets/images/grafana-config-19.jpg"></a></p>
 <p>__</p>
 <p>Repeat the operation for all Dashboard JSON files, and you're all set !</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/grafana-config-21.jpg" data-desc-position="bottom"><img alt="Grafana Config 21 image" src="../../assets/images/grafana-config-21.jpg"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/grafana-config-21.jpg" data-desc-position="bottom"><img alt="" src="../../assets/images/grafana-config-21.jpg"></a></p>
 
 
 

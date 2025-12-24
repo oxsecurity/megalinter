@@ -13099,7 +13099,7 @@
 <h2 id="project-overview">Project Overview</h2>
 <p>MegaLinter is an open-source linting tool that analyzes code quality across multiple programming languages, formats, and tooling formats. It's written primarily in Python and designed to run in CI/CD pipelines as a Docker container or GitHub Action.</p>
 <h2 id="project-structure">Project Structure</h2>
-<pre><code class="language-text">megalinter/
+<pre><code>megalinter/
 ├── .automation/            # Build automation and scripts
 │   └── build.py           # Main build script for generating files
 ├── megalinter/            # Core Python package
@@ -13229,7 +13229,7 @@ class CustomLinter(Linter):
 </ul>
 <h2 id="testing-guidelines">Testing Guidelines</h2>
 <h3 id="test-structure">Test Structure</h3>
-<pre><code class="language-text">megalinter/tests/test_megalinter/
+<pre><code>megalinter/tests/test_megalinter/
 ├── linters/                    # Individual linter tests
 ├── test_megalinter.py          # Main integration tests
 └── helpers/                    # Test utilities
