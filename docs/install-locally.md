@@ -24,4 +24,5 @@ npx mega-linter-runner --flavor salesforce -e "'ENABLE=DOCKERFILE,MARKDOWN,YAML'
 
 Note: You can also use this command line in your custom CI/CD pipelines.
 
+
 <!-- install-locally-section-end -->

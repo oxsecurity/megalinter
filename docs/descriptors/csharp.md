@@ -29,13 +29,14 @@ description: dotnet-format, csharpier, roslynator are available to analyze CSHAR
 | CSHARP_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
 | CSHARP_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 
+
 ## Behind the scenes
 
 ### Installation
 
 - Dockerfile commands :
-
 ```dockerfile
 RUN apk add --no-cache dotnet9-sdk
 ENV PATH="${PATH}:/root/.dotnet/tools"
 ```
+

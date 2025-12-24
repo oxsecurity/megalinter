@@ -604,7 +604,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - CI
   - Update **.devcontainer** configuration, by @bdovaz in <https://github.com/oxsecurity/megalinter/pull/4843>
   - Configure Renovate for gem, cargo, pip and npm dependencies, by @bdovaz in <https://github.com/oxsecurity/megalinter/pull/4673>
-  - Configure Renovate for composer dependencies, by @bdovaz in <https://github.com/oxsecurity/megalinter/pull/4916>
+  - Configure Renovate for composer dependencies,  by @bdovaz in <https://github.com/oxsecurity/megalinter/pull/4916>
   - Use packagist data source, by @bdovaz in <https://github.com/oxsecurity/megalinter/pull/4922>
   - Bring back codecov, by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/4836>
 
@@ -856,7 +856,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Fix handling of git submodule paths
 
 - Fixes
-  - [trivy](https://megalinter.io/latest/descriptors/repository_trivy/): retry in case of BLOB_UNKNOWN while downloading vulnerability list
+  - [trivy](https://megalinter.io/latest/descriptors/repository_trivy/): retry in case of BLOB_UNKNOWN  while downloading vulnerability list
 
 - Reporters
   - Fix UpdatedSourcesReporter when `APPLY_FIXES` is list (array)
@@ -1090,7 +1090,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Linters enhancements
   - [bandit](https://megalinter.io/latest/descriptors/python_bandit/) Call bandit with quiet mode to generate less logs, by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/3892>
-  - [grype](https://megalinter.io/latest/descriptors/repository_grype/) Count number of errors returned by Grype, by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/3906>
+  - [grype](https://megalinter.io/latest/descriptors/repository_grype/) Count number of errors returned by Grype,  by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/3906>
   - [yamllint](https://megalinter.io/latest/descriptors/yaml_yamllint) Fix yamllint default format to avoid special characters or GitHub sections in text logs, by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/3898>
 
 - Fixes
@@ -1173,7 +1173,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Add [**ls-lint**](https://ls-lint.org/), file and folder linter, by @scolladon in <https://github.com/oxsecurity/megalinter/pull/3681>
 
 - Core
-  - Handle renovate version comments in build script, by @echoix in <https://github.com/oxsecurity/megalinter/pull/3617> , <https://github.com/oxsecurity/megalinter/pull/3627> , <https://github.com/oxsecurity/megalinter/pull/3643> , <https://github.com/oxsecurity/megalinter/pull/3699> , <https://github.com/oxsecurity/megalinter/pull/3700>
+  - Handle renovate version comments in build script, by @echoix in <https://github.com/oxsecurity/megalinter/pull/3617> ,  <https://github.com/oxsecurity/megalinter/pull/3627> , <https://github.com/oxsecurity/megalinter/pull/3643> , <https://github.com/oxsecurity/megalinter/pull/3699> , <https://github.com/oxsecurity/megalinter/pull/3700>
   - Update base image to python:3.12.4-alpine3.20
   - Use `dotnet8-sdk` available in the main repository, by @TommyE123 in <https://github.com/oxsecurity/megalinter/pull/3696>
 
@@ -1401,7 +1401,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Fixes
   - Fix listing of modified files, by @vkucera in <https://github.com/oxsecurity/megalinter/pull/3472>. Fixes <https://github.com/oxsecurity/megalinter/issues/2125>.
   - Fix conflict between prettier and yamllint about spaces, by @apeyrat in <https://github.com/oxsecurity/megalinter/pull/3426>
-  - Ensure [trufflehog](https://github.com/trufflesecurity/trufflehog) does not auto-update itself, by @wandering-tales in <https://github.com/oxsecurity/megalinter/pull/3430>
+  - Ensure [trufflehog](https://github.com/trufflesecurity/trufflehog) does not auto-update itself,  by @wandering-tales in <https://github.com/oxsecurity/megalinter/pull/3430>
   - Salesforce linters: use sf + default Flow Scanner rules, by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/3435>
   - Disable JSON_ESLINT_PLUGIN_JSONC until <https://github.com/ota-meshi/eslint-plugin-jsonc/issues/328> is fixed
   - Upgrade tar in mega-linter-runner
@@ -1604,7 +1604,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Reporters
   - New reporter **MARKDOWN_SUMMARY_REPORTER**, allows saving MegaLinter results summary as a markdown file. This file can be further utilised to add comments on the pull request (PR) from Jenkins and other continuous integration (CI) tools by @saishivarcr in <https://github.com/oxsecurity/megalinter/pull/3250>
-  - New reporter **BITBUCKET_COMMENT_REPORTER** allowing to post MegaLinter results as comments on Bitbucket pull requests by @saishivarcr in <https://github.com/oxsecurity/megalinter/pull/3256>
+  - New reporter **BITBUCKET_COMMENT_REPORTER** allowing to post MegaLinter results as comments on Bitbucket pull requests  by @saishivarcr in <https://github.com/oxsecurity/megalinter/pull/3256>
 
 - Core
   - mega-linter-runner: Remove container by default, except of `no-remove-container` option is sent by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/3203>
@@ -2263,7 +2263,7 @@ To upgrade to MegaLinter v7, run `npx mega-linter-runner@latest --upgrade` , com
   - [Gitleaks](https://megalinter.io/latest/descriptors/repository_gitleaks/)
     - Add support to scan PR commits only on PRs when `VALIDATE_ALL_CODEBASE` is set to `false`, by @DariuszPorowski [#2504](https://github.com/oxsecurity/megalinter/pull/2504)
   - [KICS](https://megalinter.io/latest/descriptors/repository_kics/)
-    - Move KICS to REPOSITORY descriptor, so it can analyze all types of files, not terraform only, by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/2689>
+    - Move KICS to REPOSITORY descriptor, so it can analyze all types of files, not terraform only,  by @nvuillam in <https://github.com/oxsecurity/megalinter/pull/2689>
     - KICS can now output SARIF
     - The new version can have performance issues: customize of disable REPOSITORY_KICS if necessary
   - [KubeConform](https://megalinter.io/latest/descriptors/kubernetes_kubeconform/)
@@ -4361,7 +4361,7 @@ _Note: MegaLinter 6.9.0 release has been cancelled: it was fine but the docker i
 
 - Quick build to fix stargazers badge regression (see issue #873) (#909)
 - Improve Azure Pipeline template documentation (#908)
-- Take in account legacy docker images for total docker pull count (#910)
+- Take in account  legacy docker images for total docker pull count (#910)
 - Upgrade stale github action
 
 - Linter versions upgrades

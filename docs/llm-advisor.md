@@ -43,7 +43,7 @@ LLM_MAX_TOKENS: 1000
 LLM_TEMPERATURE: 0.1
 ```
 
-1. **Run MegaLinter** - AI suggestions will appear in your reports
+4. **Run MegaLinter** - AI suggestions will appear in your reports
 
 ## Basic Configuration
 
@@ -305,5 +305,3 @@ LOG_LEVEL: DEBUG
 ```
 
 This will show detailed information about LLM requests and responses.
-
-```text

@@ -24,7 +24,6 @@ description: How to use semgrep (configure, ignore files, ignore errors, help & 
 - **Lightning Fast**: Median CI scan time of 10 seconds, designed for developer workflow integration
 - **Extensive Rule Registry**: Thousands of community and expert-maintained rules covering security, correctness, and performance
 To use SemGrep in MegaLinter you must define a list of rulesets to use.
-
 Example: `REPOSITORY_SEMGREP_RULESETS: ["p/docker-compose","p/owasp-top-ten"]`
 Exception for standalone and security flavors docker images, that use a list of security rulesets by default.
 
@@ -45,10 +44,9 @@ Exception for standalone and security flavors docker images, that use a list of 
 - Enable semgrep by adding `REPOSITORY_SEMGREP` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 - Disable semgrep by adding `REPOSITORY_SEMGREP` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-| Variable                    | Description                                                   | Default value |
-|-----------------------------|---------------------------------------------------------------|---------------|
-| REPOSITORY_SEMGREP_RULESETS | List of semgrep rulesets identifiers that you want to enforce | `auto`        |
-
+| Variable                                       | Description                                                                                                                                                                                                                                                                           | Default value |
+|------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|
+| REPOSITORY_SEMGREP_RULESETS                    | List of semgrep rulesets identifiers that you want to enforce                                                                                                                                                                                                                         | `auto`        |
 | REPOSITORY_SEMGREP_RULESETS_TYPE               | MegaLinter semgrep ruleset list preset id . Available values: security                                                                                                                                                                                                                | ``            |
 | REPOSITORY_SEMGREP_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                                                                                              |               |
 | REPOSITORY_SEMGREP_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                                                                                                  |               |

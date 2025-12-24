@@ -11,9 +11,9 @@ Send results as logs and metrics to observability tools, like Grafana.
 
 Use Grafana default MegaLinter dashboards, and build new ones to monitor everything you need from MegaLinter logs and metrics.
 
-![Screenshot Grafana 1 image](../assets/images/screenshot-grafana-1.jpg)
+![](../assets/images/screenshot-grafana-1.jpg)
 
-![Screenshot Grafana 2 image](../assets/images/screenshot-grafana-2.jpg)
+![](../assets/images/screenshot-grafana-2.jpg)
 
 If you create new useful dashboards, please share them with the MegaLinter community by exporting them then create a pull request :)
 
@@ -150,6 +150,7 @@ The following variables must be sent to the docker run command
 | API_REPORTER_METRICS_BEARER_TOKEN        | Logs endpoint auth token                                 | <!-- -->      |
 | API_REPORTER_DEBUG                       | Activate to see notif content in MegaLinter console logs | `false`       |
 
+
 ## Grafana Setup
 
 If you don't have a Grafana server, you can use Grafana Cloud Free Tier (14 days of logs & metrics retention + 3 users, no credit card required, free forever)
@@ -158,19 +159,19 @@ If you don't have a Grafana server, you can use Grafana Cloud Free Tier (14 days
 
 Create a Grafana Cloud Free account at [this url](https://grafana.com/auth/sign-up/create-user?pg=hp&plcmt=cloud-promo&cta=create-free-account){target=blank}
 
-![Grafana Config 1 image](../assets/images/grafana-config-1.jpg)
+![](../assets/images/grafana-config-1.jpg)
 
 ___
 
 Input a Grafana Cloud org name (megalinter in the example)
 
-![Grafana Config 2 image](../assets/images/grafana-config-2.jpg)
+![](../assets/images/grafana-config-2.jpg)
 
 ___
 
 Next screen, you can skip setup
 
-![Grafana Config 3 image](../assets/images/grafana-config-3.jpg)
+![](../assets/images/grafana-config-3.jpg)
 
 ### Gather URLs & auth info
 
@@ -189,7 +190,7 @@ API_REPORTER_METRICS_BASIC_AUTH_PASSWORD=
 
 Go to **Connections** -> **Data Sources** and click on **grafanacloud-YOURORGNAME-logs (Loki)**
 
-![Grafana Config 4 image](../assets/images/grafana-config-4.jpg)
+![](../assets/images/grafana-config-4.jpg)
 
 ___
 
@@ -207,7 +208,7 @@ Example: `API_REPORTER_BASIC_AUTH_USERNAME=898189`
 
 Leave `API_REPORTER_BASIC_AUTH_PASSWORD` empty for now, you can't get it here
 
-![Grafana Config 5 image](../assets/images/grafana-config-5.jpg)
+![](../assets/images/grafana-config-5.jpg)
 
 _See [Grafana documentation](https://grafana.com/blog/2024/03/21/how-to-use-http-apis-to-send-metrics-and-logs-to-grafana-cloud/#sending-logs-using-the-http-api) for more info_
 
@@ -215,7 +216,7 @@ _See [Grafana documentation](https://grafana.com/blog/2024/03/21/how-to-use-http
 
 Go to **Connections** -> **Data Sources** and click on **grafanacloud-YOURORGNAME-prom (Prometheus)**
 
-![Grafana Config 6 image](../assets/images/grafana-config-6.jpg)
+![](../assets/images/grafana-config-6.jpg)
 
 ___
 
@@ -234,7 +235,7 @@ Example: `API_REPORTER_METRICS_BASIC_AUTH_USERNAME=1596503`
 
 Leave `API_REPORTER_METRICS_BASIC_AUTH_PASSWORD` empty for now, you can't get it here
 
-![Grafana Config 7 image](../assets/images/grafana-config-7.jpg)
+![](../assets/images/grafana-config-7.jpg)
 
 _See [Grafana documentation](https://grafana.com/blog/2024/03/21/how-to-use-http-apis-to-send-metrics-and-logs-to-grafana-cloud/#sending-metrics-using-the-http-api) for more info_
 
@@ -242,7 +243,7 @@ _See [Grafana documentation](https://grafana.com/blog/2024/03/21/how-to-use-http
 
 Go to **Administration** -> **Users and Access** -> **Cloud Access Policies**, then click on **Create Access Policy**
 
-![Grafana Config 8 image](../assets/images/grafana-config-8.jpg)
+![](../assets/images/grafana-config-8.jpg)
 
 ___
 
@@ -252,29 +253,29 @@ Create the access policy
 - Select **write** for items **metrics, logs, traces, profiles, alerts** (only metrics and logs are used today, but who knows hat new features we'll release in the future !)
 - Click on **Create**
 
-![Grafana Config 9 image](../assets/images/grafana-config-9.jpg)
+![](../assets/images/grafana-config-9.jpg)
 
 ___
 
 On the new Access Policy `MegaLinter`, click on **Add Token** at the bottom right
 
-![Grafana Config 10 image](../assets/images/grafana-config-10.jpg)
+![](../assets/images/grafana-config-10.jpg)
 
 ___
 
 Name it megalinter-token, let `No expiration` then click **Create**
 
-![Grafana Config 11 image](../assets/images/grafana-config-11.jpg)
+![](../assets/images/grafana-config-11.jpg)
 
 ___
 
 On the next screen, click on **Copy to clipboard** then paste in your notepad in front of variables **API_REPORTER_BASIC_AUTH_PASSWORD** and **API_REPORTER_METRICS_BASIC_AUTH_PASSWORD**
 
-![Grafana Config 12 image](../assets/images/grafana-config-12.jpg)
+![](../assets/images/grafana-config-12.jpg)
 
 Example:
 
-```text
+```
 API_REPORTER_BASIC_AUTH_PASSWORD=glc_eyJvIjoiMTEzMjI4OCIsIm4iOiJzZmR4arZW4iLCJrIjoiN0x6Mz1IM041IiwibSI6eyJyXN0LTIifX0=
 API_REPORTER_METRICS_BASIC_AUTH_PASSWORD=glc_eyJvIjoiMTEzMjI4OCIsIm4iOiJzZmR4arZW4iLCJrIjoiN0x6Mz1IM041IiwibSI6eyJyXN0LTIifX0=
 ```
@@ -283,13 +284,13 @@ API_REPORTER_METRICS_BASIC_AUTH_PASSWORD=glc_eyJvIjoiMTEzMjI4OCIsIm4iOiJzZmR4arZ
 
 Now configure all of the 6 variables on the repository running MegaLinter.
 
-![Grafana Config 13 image](../assets/images/grafana-config-13.jpg)
+![](../assets/images/grafana-config-13.jpg)
 
 There value must be accessible from MegaLinter Docker image, so you might need to redeclare them in YML workflows depending on your git provider.
 
 _Example with GitHub Workflow:_
 
-![Grafana Config 13bis image](../assets/images/grafana-config-13bis.jpg)
+![](../assets/images/grafana-config-13bis.jpg)
 
 ```yaml
           API_REPORTER: true
@@ -306,19 +307,19 @@ _Example with GitHub Workflow:_
 
 Download all MegaLinter Dashboard JSON files from [this MegaLinter repo folder](https://github.com/oxsecurity/megalinter/tree/main/docs/grafana)
 
-![Grafana Config 16 image](../assets/images/grafana-config-16.jpg)
+![](../assets/images/grafana-config-16.jpg)
 
 ### Create Dashboard folder
 
 Go in menu **Dashboards** then click on **New** then **New folder**
 
-![Grafana Config 14 image](../assets/images/grafana-config-14.jpg)
+![](../assets/images/grafana-config-14.jpg)
 
 ___
 
 Create folder `MegaLinter Dashboards`
 
-![Grafana Config 15 image](../assets/images/grafana-config-15.jpg)
+![](../assets/images/grafana-config-15.jpg)
 
 ### Import default MegaLinter Grafana Dashboards
 
@@ -326,13 +327,13 @@ For each downloaded Dashboard JSON file, process the following actions.
 
 Click **New** then **Import**
 
-![Grafana Config 17 image](../assets/images/grafana-config-17.jpg)
+![](../assets/images/grafana-config-17.jpg)
 
 ___
 
 Click on **Upload Dashboard JSON File** and select one of the Dashboards JSON files you downloaded on your computer.
 
-![Grafana Config 18 image](../assets/images/grafana-config-18.jpg)
+![](../assets/images/grafana-config-18.jpg)
 
 ___
 
@@ -342,10 +343,10 @@ ___
   - **grafanacloud-YOURORGNAME-prom (Prometheus)**
 - Click import
 
-![Grafana Config 19 image](../assets/images/grafana-config-19.jpg)
+![](../assets/images/grafana-config-19.jpg)
 
 __
 
 Repeat the operation for all Dashboard JSON files, and you're all set !
 
-![Grafana Config 21 image](../assets/images/grafana-config-21.jpg)
+![](../assets/images/grafana-config-21.jpg)

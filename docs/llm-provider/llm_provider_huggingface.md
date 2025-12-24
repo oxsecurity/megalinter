@@ -30,7 +30,7 @@ Set **HUGGINGFACE_API_TOKEN=hf_your-token** in your CI/CD secret variables.
 
 > Make sure the secret variable is sent to MegaLinter from your CI/CD workflow. Example in GitHub Action: `HUGGINGFACE_API_TOKEN: ${{ secrets.HUGGINGFACE_API_TOKEN }}`
 
-1. **Configure MegaLinter**:
+3. **Configure MegaLinter**:
 
 ```yaml
 LLM_ADVISOR_ENABLED: true

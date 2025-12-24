@@ -39,4 +39,5 @@ The core architecture does the following:
     - **0** if no error (or only non blocking errors if user defined `DISABLE_ERRORS` or `<descriptor_or_linter_key>_DISABLE_ERRORS`)
     - **1** if errors
 
+
 <!-- frequently-asked-questions-section-end -->

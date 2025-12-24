@@ -27,13 +27,14 @@ description: dotnet-format is available to analyze VBDOTNET files in MegaLinter
 | VBDOTNET_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
 | VBDOTNET_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 
+
 ## Behind the scenes
 
 ### Installation
 
 - Dockerfile commands :
-
 ```dockerfile
 RUN apk add --no-cache dotnet9-sdk
 ENV PATH="${PATH}:/root/.dotnet/tools"
 ```
+

@@ -28,6 +28,7 @@ description: golangci-lint, revive are available to analyze GO files in MegaLint
 | GO_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
 | GO_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 
+
 ## Behind the scenes
 
 ### Installation
