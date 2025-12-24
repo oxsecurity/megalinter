@@ -12439,78 +12439,22 @@
 <td>If set to <code>true</code>, it will reformat and reindent the output</td>
 <td><code>false</code></td>
 </tr>
-<tr>
-<td>XML_XMLLINT_INDENT</td>
-<td>The number of indentation spaces when <code>XML_XMLLINT_AUTOFORMAT</code> is <code>true</code></td>
-<td><code></code></td>
-</tr>
-<tr>
-<td>XML_XMLLINT_ARGUMENTS</td>
-<td>User custom arguments to add in linter CLI call<br>Ex: <code>-s --foo "bar"</code></td>
-<td></td>
-</tr>
-<tr>
-<td>XML_XMLLINT_COMMAND_REMOVE_ARGUMENTS</td>
-<td>User custom arguments to remove from command line before calling the linter<br>Ex: <code>-s --foo "bar"</code></td>
-<td></td>
-</tr>
-<tr>
-<td>XML_XMLLINT_FILTER_REGEX_INCLUDE</td>
-<td>Custom regex including filter<br>Ex: <code>(src\|lib)</code></td>
-<td>Include every file</td>
-</tr>
-<tr>
-<td>XML_XMLLINT_FILTER_REGEX_EXCLUDE</td>
-<td>Custom regex excluding filter<br>Ex: <code>(test\|examples)</code></td>
-<td>Exclude no file</td>
-</tr>
-<tr>
-<td>XML_XMLLINT_CLI_LINT_MODE</td>
-<td>Override default CLI lint mode<br>- <code>file</code>: Calls the linter for each file<br>- <code>list_of_files</code>: Call the linter with the list of files as argument<br>- <code>project</code>: Call the linter from the root of the project</td>
-<td><code>list_of_files</code></td>
-</tr>
-<tr>
-<td>XML_XMLLINT_FILE_EXTENSIONS</td>
-<td>Allowed file extensions. <code>"*"</code> matches any extension, <code>""</code> matches empty extension. Empty list excludes all files<br>Ex: <code>[".py", ""]</code></td>
-<td><code>[".xml", ".xsd"]</code></td>
-</tr>
-<tr>
-<td>XML_XMLLINT_FILE_NAMES_REGEX</td>
-<td>File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br>Ex: <code>["Dockerfile(-.+)?", "Jenkinsfile"]</code></td>
-<td>Include every file</td>
-</tr>
-<tr>
-<td>XML_XMLLINT_PRE_COMMANDS</td>
-<td>List of bash commands to run before the linter</td>
-<td>None</td>
-</tr>
-<tr>
-<td>XML_XMLLINT_POST_COMMANDS</td>
-<td>List of bash commands to run after the linter</td>
-<td>None</td>
-</tr>
-<tr>
-<td>XML_XMLLINT_UNSECURED_ENV_VARIABLES</td>
-<td>List of env variables explicitly not filtered before calling XML_XMLLINT and its pre/post commands</td>
-<td>None</td>
-</tr>
-<tr>
-<td>XML_XMLLINT_DISABLE_ERRORS</td>
-<td>Run linter but consider errors as warnings</td>
-<td><code>false</code></td>
-</tr>
-<tr>
-<td>XML_XMLLINT_DISABLE_ERRORS_IF_LESS_THAN</td>
-<td>Maximum number of errors allowed</td>
-<td><code>0</code></td>
-</tr>
-<tr>
-<td>XML_XMLLINT_CLI_EXECUTABLE</td>
-<td>Override CLI executable</td>
-<td><code>['xmllint']</code></td>
-</tr>
 </tbody>
 </table>
+<p>| XML_XMLLINT_INDENT                      | The number of indentation spaces when <code>XML_XMLLINT_AUTOFORMAT</code> is <code>true</code>                                                                                                                                            | <code>`                 |
+| XML_XMLLINT_ARGUMENTS                   | User custom arguments to add in linter CLI call&lt;br/&gt;Ex:</code>-s --foo "bar"<code>|                    |
+| XML_XMLLINT_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter&lt;br/&gt;Ex:</code>-s --foo "bar"<code>|                    |
+| XML_XMLLINT_FILTER_REGEX_INCLUDE        | Custom regex including filter&lt;br/&gt;Ex:</code>(src|lib)<code>| Include every file |
+| XML_XMLLINT_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter&lt;br/&gt;Ex:</code>(test|examples)<code>| Exclude no file    |
+| XML_XMLLINT_CLI_LINT_MODE               | Override default CLI lint mode&lt;br/&gt;-</code>file<code>: Calls the linter for each file&lt;br/&gt;-</code>list_of_files<code>: Call the linter with the list of files as argument&lt;br/&gt;-</code>project<code>: Call the linter from the root of the project |</code>list_of_files<code>|
+| XML_XMLLINT_FILE_EXTENSIONS             | Allowed file extensions.</code>"*"<code>matches any extension,</code>""<code>matches empty extension. Empty list excludes all files&lt;br/&gt;Ex:</code>[".py", ""]<code>|</code>[".xml", ".xsd"]<code>|
+| XML_XMLLINT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files&lt;br/&gt;Ex:</code>["Dockerfile(-.+)?", "Jenkinsfile"]<code>| Include every file |
+| XML_XMLLINT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None               |
+| XML_XMLLINT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None               |
+| XML_XMLLINT_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling XML_XMLLINT and its pre/post commands                                                                                                                  | None               |
+| XML_XMLLINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          |</code>false<code>|
+| XML_XMLLINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    |</code>0<code>|
+| XML_XMLLINT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             |</code>['xmllint']`      |</p>
 <h2 id="megalinter-flavors">MegaLinter Flavors</h2>
 <p>This linter is available in the following flavors</p>
 <table>

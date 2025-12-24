@@ -12916,9 +12916,9 @@ We're thrilled that you'd like to contribute to this project. Your help is essen
 <h4 id="upgrading-python-packages">Upgrading Python Packages</h4>
 <ol>
 <li>
-<p><strong>Update version in pyproject.toml</strong>: Change the version constraint
-   <code>toml
-   "package-name&gt;=2.0.0",  # Updated from 1.0.0</code></p>
+<p><strong>Update version in pyproject.toml</strong>: Change the version constraint</p>
+<p><code>toml
+ "package-name&gt;=2.0.0",  # Updated from 1.0.0</code></p>
 </li>
 <li>
 <p><strong>Update lock file</strong>: Run <code>uv lock</code> to resolve and lock new versions</p>
@@ -12982,7 +12982,7 @@ hatch shell
 </code></pre>
 <p>By default it listens on <code>http://127.0.0.1:8000/</code>.</p>
 <p>Every time a change is made to a <code>.md</code> file it will automatically update if the server is up.</p>
-<p>Once you think everything is correct run <code>make megalinter-build --doc</code> or  <code>bash build.sh --doc</code> and it will generate all the rest!</p>
+<p>Once you think everything is correct run <code>make megalinter-build --doc</code> or <code>bash build.sh --doc</code> and it will generate all the rest!</p>
 <h3 id="add-a-new-linter">Add a new linter</h3>
 <p>Each linter must:</p>
 <ul>

@@ -12430,10 +12430,10 @@
 <li><strong>Custom Rule Engine</strong>: Simple, code-like syntax for writing custom rules that match your organization's coding standards</li>
 <li><strong>Lightning Fast</strong>: Median CI scan time of 10 seconds, designed for developer workflow integration</li>
 <li><strong>Extensive Rule Registry</strong>: Thousands of community and expert-maintained rules covering security, correctness, and performance
-To use SemGrep in MegaLinter you must define a list of rulesets to use.
-Example: <code>REPOSITORY_SEMGREP_RULESETS: ["p/docker-compose","p/owasp-top-ten"]</code>
-Exception for standalone and security flavors docker images, that use a list of security rulesets by default.</li>
+To use SemGrep in MegaLinter you must define a list of rulesets to use.</li>
 </ul>
+<p>Example: <code>REPOSITORY_SEMGREP_RULESETS: ["p/docker-compose","p/owasp-top-ten"]</code>
+Exception for standalone and security flavors docker images, that use a list of security rulesets by default.</p>
 <h2 id="semgrep-documentation">semgrep documentation</h2>
 <ul>
 <li>Version in MegaLinter: <strong>3.13</strong></li>
@@ -12466,58 +12466,18 @@ Exception for standalone and security flavors docker images, that use a list of 
 <td>List of semgrep rulesets identifiers that you want to enforce</td>
 <td><code>auto</code></td>
 </tr>
-<tr>
-<td>REPOSITORY_SEMGREP_RULESETS_TYPE</td>
-<td>MegaLinter semgrep ruleset list preset id . Available values: security</td>
-<td>``</td>
-</tr>
-<tr>
-<td>REPOSITORY_SEMGREP_ARGUMENTS</td>
-<td>User custom arguments to add in linter CLI call<br>Ex: <code>-s --foo "bar"</code></td>
-<td></td>
-</tr>
-<tr>
-<td>REPOSITORY_SEMGREP_COMMAND_REMOVE_ARGUMENTS</td>
-<td>User custom arguments to remove from command line before calling the linter<br>Ex: <code>-s --foo "bar"</code></td>
-<td></td>
-</tr>
-<tr>
-<td>REPOSITORY_SEMGREP_CLI_LINT_MODE</td>
-<td>Override default CLI lint mode<br>⚠️ As default value is <strong>project</strong>, overriding might not work<br>- <code>file</code>: Calls the linter for each file<br>- <code>list_of_files</code>: Call the linter with the list of files as argument<br>- <code>project</code>: Call the linter from the root of the project</td>
-<td><code>project</code></td>
-</tr>
-<tr>
-<td>REPOSITORY_SEMGREP_PRE_COMMANDS</td>
-<td>List of bash commands to run before the linter</td>
-<td>None</td>
-</tr>
-<tr>
-<td>REPOSITORY_SEMGREP_POST_COMMANDS</td>
-<td>List of bash commands to run after the linter</td>
-<td>None</td>
-</tr>
-<tr>
-<td>REPOSITORY_SEMGREP_UNSECURED_ENV_VARIABLES</td>
-<td>List of env variables explicitly not filtered before calling REPOSITORY_SEMGREP and its pre/post commands</td>
-<td>None</td>
-</tr>
-<tr>
-<td>REPOSITORY_SEMGREP_DISABLE_ERRORS</td>
-<td>Run linter but consider errors as warnings</td>
-<td><code>false</code></td>
-</tr>
-<tr>
-<td>REPOSITORY_SEMGREP_DISABLE_ERRORS_IF_LESS_THAN</td>
-<td>Maximum number of errors allowed</td>
-<td><code>0</code></td>
-</tr>
-<tr>
-<td>REPOSITORY_SEMGREP_CLI_EXECUTABLE</td>
-<td>Override CLI executable</td>
-<td><code>['semgrep']</code></td>
-</tr>
 </tbody>
 </table>
+<p>| REPOSITORY_SEMGREP_RULESETS_TYPE               | MegaLinter semgrep ruleset list preset id . Available values: security                                                                                                                                                                                                                | <code>`            |
+| REPOSITORY_SEMGREP_ARGUMENTS                   | User custom arguments to add in linter CLI call&lt;br/&gt;Ex:</code>-s --foo "bar"<code>|               |
+| REPOSITORY_SEMGREP_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter&lt;br/&gt;Ex:</code>-s --foo "bar"<code>|               |
+| REPOSITORY_SEMGREP_CLI_LINT_MODE               | Override default CLI lint mode&lt;br/&gt;⚠️ As default value is **project**, overriding might not work&lt;br/&gt;-</code>file<code>: Calls the linter for each file&lt;br/&gt;-</code>list_of_files<code>: Call the linter with the list of files as argument&lt;br/&gt;-</code>project<code>: Call the linter from the root of the project |</code>project<code>|
+| REPOSITORY_SEMGREP_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                                                                                        | None          |
+| REPOSITORY_SEMGREP_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                                                                                         | None          |
+| REPOSITORY_SEMGREP_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling REPOSITORY_SEMGREP and its pre/post commands                                                                                                                                                                             | None          |
+| REPOSITORY_SEMGREP_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                                                                                            |</code>false<code>|
+| REPOSITORY_SEMGREP_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                                                                                      |</code>0<code>|
+| REPOSITORY_SEMGREP_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                                                                                               |</code>['semgrep']` |</p>
 <h2 id="ide-integration">IDE Integration</h2>
 <p>Use semgrep in your favorite IDE to catch errors before MegaLinter !</p>
 <table>
