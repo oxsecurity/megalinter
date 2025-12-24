@@ -49,7 +49,7 @@ FROM python:3.13-alpine3.23
 #############################################################################################
 #ARG__START
 # renovate: datasource=packagist depName=friendsofphp/php-cs-fixer
-ARG PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION=v3.92.0
+ARG PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION=v3.92.3
 #ARG__END
 
 ####################
