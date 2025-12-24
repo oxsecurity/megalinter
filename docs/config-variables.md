@@ -60,5 +60,4 @@ description: List of common variables that you can use to customize MegaLinter b
 | **TYPESCRIPT_DEFAULT_STYLE**                                      | `standard`                                    | Typescript default style to check/apply. `standard`,`prettier`                                                                                                                                                                                                                                                |
 | **VALIDATE_ALL_CODEBASE**                                         | `true`                                        | Will parse the entire repository and find all files to validate across all types. **NOTE:** When set to `false`, only **new** or **edited** files will be parsed for validation.                                                                                                                              |
 
-
 <!-- config-variables-section-end -->

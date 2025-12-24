@@ -6,7 +6,7 @@ MegaLinter is an open-source linting tool that analyzes code quality across mult
 
 ## Project Structure
 
-```
+```text
 megalinter/
 ├── .automation/            # Build automation and scripts
 │   └── build.py           # Main build script for generating files
@@ -118,7 +118,7 @@ class CustomLinter(Linter):
     def build_lint_command(self, file):
         # Custom command building logic
         pass
-    
+
     def complete_command_line(self, command, files):
         # Modify final command
         pass
@@ -153,7 +153,7 @@ MegaLinter uses hierarchical configuration:
 
 ### Test Structure
 
-```
+```text
 megalinter/tests/test_megalinter/
 ├── linters/                    # Individual linter tests
 ├── test_megalinter.py          # Main integration tests

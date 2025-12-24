@@ -30,12 +30,12 @@ description: code-analyzer-apex, code-analyzer-aura, code-analyzer-lwc, sfdx-sca
 | SALESFORCE_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
 | SALESFORCE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 
-
 ## Behind the scenes
 
 ### Installation
 
 - Dockerfile commands :
+
 ```dockerfile
 # renovate: datasource=npm depName=@salesforce/cli
 ARG NPM_SALESFORCE_CLI_VERSION=2.115.15

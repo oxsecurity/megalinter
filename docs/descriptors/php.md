@@ -31,12 +31,12 @@ description: phpcs, phpstan, psalm, phplint, php-cs-fixer are available to analy
 | PHP_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
 | PHP_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 
-
 ## Behind the scenes
 
 ### Installation
 
 - Dockerfile commands :
+
 ```dockerfile
 RUN update-alternatives --install /usr/bin/php php /usr/bin/php84 110
 COPY --from=composer/composer:2-bin /composer /usr/bin/composer

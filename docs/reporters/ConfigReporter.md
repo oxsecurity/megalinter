@@ -26,8 +26,6 @@ This reporter **activated by default**.
   - _You can copy all IDE_Config folder, or select config files and IDE extensions recommendations that you are interested into_
 - Restart your IDE
 
-
-
 ## Configuration
 
 | Variable                   | Description                                                    | Default value |

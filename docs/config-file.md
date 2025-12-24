@@ -17,9 +17,9 @@ Configuration is assisted with autocompletion and validation in most commonly us
 - IntelliJ IDEA family: Autocompletion is supported natively.
 
 You can also define variables as environment variables.
+
 - If a variable exists in both ENV and the `.mega-linter.yml` file, priority is given to the ENV variable.
 
 ![Assisted configuration](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/assisted-configuration.gif)
-
 
 <!-- config-file-section-end -->

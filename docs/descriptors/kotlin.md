@@ -29,12 +29,12 @@ description: ktlint, detekt are available to analyze KOTLIN files in MegaLinter
 | KOTLIN_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
 | KOTLIN_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 
-
 ## Behind the scenes
 
 ### Installation
 
 - Dockerfile commands :
+
 ```dockerfile
 ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"

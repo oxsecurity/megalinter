@@ -30,12 +30,12 @@ description: arm-ttk is available to analyze ARM files in MegaLinter
 | ARM_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
 | ARM_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 
-
 ## Behind the scenes
 
 ### Installation
 
 - Dockerfile commands :
+
 ```dockerfile
 # renovate: datasource=github-tags depName=PowerShell/PowerShell
 ARG POWERSHELL_VERSION=7.5.4

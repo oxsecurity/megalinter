@@ -19,5 +19,4 @@ _Example:_
 
 `docker run --rm -v /var/run/docker.sock:/var/run/docker.sock:rw -v $(pwd):/example/folder:rw oxsecurity/megalinter:v9`
 
-
 <!-- install-docker-section-end -->

@@ -29,6 +29,7 @@ To solve these issues, apply one of the following solutions.
   - Update your GitHub Actions workflow to add the environment name
 
 -- Method 2: Easier, but any contributor with write access can see your Personal Access Token, so use it only on private repositories.
+
 - [Create a Classic Personal Access Token](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token#creating-a-token), then copy the PAT value
 - [Define secret variable](https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets#creating-encrypted-secrets-for-a-repository) named **PAT** on your repository, and paste the PAT value
 
@@ -41,6 +42,5 @@ To solve these issues, apply one of the following solutions.
 ```shell
 megalinter-reports/
 ```
-
 
 <!-- config-apply-fixes-section-end -->
