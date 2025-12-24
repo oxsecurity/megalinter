@@ -48,6 +48,8 @@ You can still choose to scan only PR commits in your CI/CD platform by setting t
         git rev-list -n 1 refs/remotes/origin/<source_branch>```
 
   - Target commit SHA:
+```
+
         ```bash
         git rev-parse refs/remotes/origin/<target_branch>```
 
@@ -117,9 +119,9 @@ git fetch --depth=0
 - Enable gitleaks by adding `REPOSITORY_GITLEAKS` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 - Disable gitleaks by adding `REPOSITORY_GITLEAKS` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-| Variable                                        | Description                                                                                                                                                                                                                                                                           | Default value                                   |
-|-------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
-| REPOSITORY_GITLEAKS_PR_COMMITS_SCAN             | Scan only commits in the current Pull Request/Merge Request                                                                                                                                                                                                                           | `false`                                         |
+| Variable                            | Description                                                 | Default value |
+|-------------------------------------|-------------------------------------------------------------|---------------|
+| REPOSITORY_GITLEAKS_PR_COMMITS_SCAN | Scan only commits in the current Pull Request/Merge Request | `false`       |
 
 | REPOSITORY_GITLEAKS_PR_SOURCE_SHA               | Source commit SHA of the Pull Request/Merge Request                                                                                                                                                                                                                                   | ``|
 | REPOSITORY_GITLEAKS_PR_TARGET_SHA               | Target commit SHA of the Pull Request/Merge Request                                                                                                                                                                                                                                   |``                                              |
