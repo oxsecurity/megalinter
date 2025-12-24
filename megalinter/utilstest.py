@@ -612,9 +612,8 @@ def test_linter_report_sarif(linter, test_self):
                 "REPOSITORY_SYFT",
             ]
         ):
-            if (
-                linter.name != "MARKDOWN_RUMDL" and linter.name != "REPOSITORY_GITLEAKS"
-            ):  # does not report errors
+            # https://github.com/gitleaks/gitleaks/issues/1858
+            if linter.name != "REPOSITORY_GITLEAKS": # does not report errors
                 test_self.assertTrue(
                     linter.total_number_errors > 1,
                     f"Missing multiple sarif errors in {linter.name}"
