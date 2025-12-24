@@ -86,13 +86,13 @@ run:
     bash -ex /entrypoint.sh
 ```
 
-2. Use that `task-linting.yaml` task in your pipeline.
+1. Use that `task-linting.yaml` task in your pipeline.
 
 Note:
 
-  1. Make sure `task-linting.yaml` is available in the `repo` input at the repository root.
+1. Make sure `task-linting.yaml` is available in the `repo` input at the repository root.
 
-  2. Task `output` is **not** shown here.
+2. Task `output` is **not** shown here.
 
 ```yaml
 resources:
@@ -109,6 +109,5 @@ resources:
         #   DISABLE_ERRORS: true
         #   VALIDATE_ALL_CODEBASE: true
 ```
-
 
 <!-- install-concourse-section-end -->

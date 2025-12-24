@@ -25,5 +25,4 @@ Special considerations:
 
 - Linters that are configured to use the `project` lint mode ignore variables like `FILTER_REGEX_INCLUDE` and `FILTER_REGEX_EXCLUDE`, as they are not passed a list of files to lint. For those linters, you must check their documentation to see if a linter can be configured to ignore specific files. For example, the [Secretlint](https://megalinter.io/latest/descriptors/repository_secretlint/) linter ignores files listed in `~/.secretlintignore` by default, or it can be configured to instead ignore files listed in `~/.gitignore` by setting `REPOSITORY_SECRETLINT_ARGUMENTS` to `--secretlintignore .gitignore.`
 
-
 <!-- config-cli-lint-mode-section-end -->

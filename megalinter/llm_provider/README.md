@@ -26,20 +26,22 @@ This directory contains the modular LLM provider system for MegaLinter's AI-powe
 ## Adding a New Provider
 
 1. **Create Provider Class**:
+
    ```python
    # llm_provider_newprovider.py
    from .llm_provider import LLMProvider
-   
+
    class NewProvider(LLMProvider):
        def get_default_model(self) -> str:
            return "default-model-name"
-       
+
        def initialize(self) -> bool:
            # Initialize your LLM here
            # Return True if successful, False otherwise
    ```
 
 2. **Register in Factory**:
+
    ```python
    # Add to llm_provider_factory.py
    SUPPORTED_PROVIDERS = {
@@ -49,6 +51,7 @@ This directory contains the modular LLM provider system for MegaLinter's AI-powe
    ```
 
 3. **Update Imports**:
+
    ```python
    # Add to __init__.py
    from .llm_provider_newprovider import NewProvider

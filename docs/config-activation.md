@@ -17,7 +17,6 @@ MegaLinter has all linters enabled by default, but allows enabling or disabling 
 - If `DISABLE_ERRORS_LINTERS` is set, the listed linters will run, but if errors are found, they will be considered non-blocking.
 - If `ENABLE_ERRORS_LINTERS` is set, only the linters in this list will be considered blocking.
 
-
 Examples:
 
 - Run all javascript and groovy linters except STANDARD javascript linter. DevSkim errors will be non-blocking
@@ -47,6 +46,5 @@ DISABLE_LINTERS:
   - PHP_PHPSTAN
   - PHP_PSALM
 ```
-
 
 <!-- config-activation-section-end -->

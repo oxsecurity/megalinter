@@ -82,5 +82,4 @@ TERRAFORM_TFLINT_UNSECURED_ENV_VARIABLES:
   - GITHUB_TOKEN # Can contain string only, not regex
 ```
 
-
 <!-- config-variables-security-section-end -->

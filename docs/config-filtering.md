@@ -19,5 +19,4 @@ Examples:
 
 Warning: Not applicable with linters using CLI lint mode `project` ([see details](config-cli-lint-mode.md)).
 
-
 <!-- config-filtering-section-end -->

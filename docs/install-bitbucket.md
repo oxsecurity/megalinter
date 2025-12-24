@@ -26,5 +26,4 @@ pipelines:
             -  megalinter-reports/**
 ```
 
-
 <!-- install-bitbucket-section-end -->

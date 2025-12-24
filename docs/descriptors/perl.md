@@ -34,7 +34,6 @@ description: perlcritic is available to analyze PERL files in MegaLinter
 | PERL_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
 | PERL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 
-
 ## Behind the scenes
 
 ### Installation

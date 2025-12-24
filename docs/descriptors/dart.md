@@ -27,12 +27,12 @@ description: dartanalyzer is available to analyze DART files in MegaLinter
 | DART_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
 | DART_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 
-
 ## Behind the scenes
 
 ### Installation
 
 - Dockerfile commands :
+
 ```dockerfile
 # renovate: datasource=github-tags depName=sgerrand/alpine-pkg-glibc
 ARG ALPINE_GLIBC_PACKAGE_VERSION=2.34-r0
@@ -77,4 +77,3 @@ RUN ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases
         "$ALPINE_GLIBC_I18N_PACKAGE_FILENAME"
 
 ```
-

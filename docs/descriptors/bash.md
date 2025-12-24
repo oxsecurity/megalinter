@@ -38,7 +38,6 @@ description: bash-exec, shellcheck, shfmt are available to analyze BASH files in
 | BASH_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
 | BASH_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 
-
 ## Behind the scenes
 
 ### Installation

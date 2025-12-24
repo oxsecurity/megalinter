@@ -97,6 +97,7 @@ description: List of all known articles, blog posts and videos that talk about M
 ## Linters
 
 <!-- referring-linters-start -->
+
 - [checkmake](https://github.com/checkmake/checkmake?tab=readme-ov-file#megalinter){target=_blank}
 - [checkstyle](https://checkstyle.org/index.html#Related_Tools_Active_Tools){target=_blank}
 - [clj-kondo](https://github.com/borkdude/clj-kondo/blob/master/doc/ci-integration.md#github){target=_blank}
@@ -125,6 +126,5 @@ description: List of all known articles, blog posts and videos that talk about M
 <!-- referring-linters-end -->
 
 <!-- /* cspell:enable */ -->
-
 
 <!-- articles-section-end -->

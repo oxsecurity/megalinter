@@ -67,14 +67,17 @@ Consider sponsoring the maintainer via [GitHub](https://github.com/sponsors/nvui
 7. Pat yourself on the back and wait for your pull request to be reviewed and merged.
 
 Maintainers with write access can also comment on pull requests with a command to run the build script on the PR, for example:
+
 ```text
 /build
 ```
 
 Available commands can be listed with the help command by posting the following comment:
+
 ```text
 /help
 ```
+
 Which returns:
 >
 > Command | Description
@@ -151,6 +154,7 @@ MegaLinter uses **uv** (fast Python package installer) and **hatch** (modern Pyt
 #### Upgrading Python Packages
 
 1. **Update version in pyproject.toml**: Change the version constraint
+
    ```toml
    "package-name>=2.0.0",  # Updated from 1.0.0
    ```
@@ -232,7 +236,7 @@ By default it listens on `http://127.0.0.1:8000/`.
 
 Every time a change is made to a `.md` file it will automatically update if the server is up.
 
-Once you think everything is correct run `make megalinter-build --doc` or  `bash build.sh --doc` and it will generate all the rest!
+Once you think everything is correct run `make megalinter-build --doc` or `bash build.sh --doc` and it will generate all the rest!
 
 ### Add a new linter
 
@@ -263,9 +267,9 @@ If you are creating a linter or making changes to a linter, you may want to run 
 
 When running them, you may encounter several problems:
 
-* It's not installed on the machine locally and you don't want to install it.
-* The OS doesn't allow the installation of the linter because it's not cross-platform.
-* The behavior between running it on the local machine (host) and the container is different.
+- It's not installed on the machine locally and you don't want to install it.
+- The OS doesn't allow the installation of the linter because it's not cross-platform.
+- The behavior between running it on the local machine (host) and the container is different.
 
 For those cases, it's important to have the possibility to run the tests inside the container. To do so:
 

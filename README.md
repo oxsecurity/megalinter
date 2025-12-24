@@ -49,7 +49,6 @@ MegaLinter has **native integrations** with many major CI/CD tools.
 [![SARIF](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/sarif.png?raw=true>)](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/SarifReporter.md)
 [![Grafana](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/grafana.png?raw=true>)](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/ApiReporter.md)
 
-
 <!-- welcome-phrase-end -->
 
 ![MegaLinter Presentation GIF](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/MegaLinter-banner-Medium.gif?raw=true)
@@ -409,7 +408,7 @@ You can also use **beta** version (corresponding to the content of main branch)
 <!-- markdown-headers
 ---
 title: Install MegaLinter on GitHub Actions
-description: Manual instructions to setup MegaLinter in a GitHub Action Workflow 
+description: Manual instructions to setup MegaLinter in a GitHub Action Workflow
 ---
 -->
 ### GitHub Action
@@ -825,13 +824,13 @@ run:
     bash -ex /entrypoint.sh
 ```
 
-2. Use that `task-linting.yaml` task in your pipeline.
+1. Use that `task-linting.yaml` task in your pipeline.
 
 Note:
 
-  1. Make sure `task-linting.yaml` is available in the `repo` input at the repository root.
+1. Make sure `task-linting.yaml` is available in the `repo` input at the repository root.
 
-  2. Task `output` is **not** shown here.
+2. Task `output` is **not** shown here.
 
 ```yaml
 resources:
@@ -986,6 +985,7 @@ Configuration is assisted with autocompletion and validation in most commonly us
 - IntelliJ IDEA family: Autocompletion is supported natively.
 
 You can also define variables as environment variables.
+
 - If a variable exists in both ENV and the `.mega-linter.yml` file, priority is given to the ENV variable.
 
 ![Assisted configuration](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/assisted-configuration.gif)
@@ -1071,7 +1071,6 @@ MegaLinter has all linters enabled by default, but allows enabling or disabling 
 - If `DISABLE_ERRORS_LINTERS` is set, the listed linters will run, but if errors are found, they will be considered non-blocking.
 - If `ENABLE_ERRORS_LINTERS` is set, only the linters in this list will be considered blocking.
 
-
 Examples:
 
 - Run all javascript and groovy linters except STANDARD javascript linter. DevSkim errors will be non-blocking
@@ -1154,6 +1153,7 @@ To solve these issues, apply one of the following solutions.
   - Update your GitHub Actions workflow to add the environment name
 
 -- Method 2: Easier, but any contributor with write access can see your Personal Access Token, so use it only on private repositories.
+
 - [Create a Classic Personal Access Token](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token#creating-a-token), then copy the PAT value
 - [Define secret variable](https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets#creating-encrypted-secrets-for-a-repository) named **PAT** on your repository, and paste the PAT value
 
@@ -1390,6 +1390,7 @@ MegaLinter can generate various reports that you can activate or deactivate and 
 | [TAP files](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/TapReporter.md)                                      | One file by linter following [**Test Anything Protocol**](https://testanything.org/) format                   | Active                       |
 | [Console](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/ConsoleReporter.md)                                    | **Execution logs** visible in **console** with **summary table** and **links to other reports** at the end    | Active                       |
 | [Markdown Summary](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/MarkdownSummaryReporter.md)                   | Generates a Markdown summary report file                                                                      | Inactive                     |
+
 <!-- reporters-section-end -->
 
 <!-- flavors-section-start -->
@@ -1409,6 +1410,7 @@ To improve run performance, we provide **flavored MegaLinter images** containing
 _The following table doesn't display docker pulls from [MegaLinter v4 & v5 images](https://hub.docker.com/r/nvuillam/mega-linter)._
 
 <!-- flavors-table-start -->
+
 |                                                                         <!-- -->                                                                         | Flavor                                                                                            | Description                                                            | Embedded linters |                                                                                                                                                                                                   Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)                                              | Default MegaLinter Flavor                                              |       131        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
@@ -1430,6 +1432,7 @@ _The following table doesn't display docker pulls from [MegaLinter v4 & v5 image
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://github.com/oxsecurity/megalinter/tree/main/docs/flavors/security.md)           | Optimized for security                                                 |        24        |           ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
 |        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/swift.ico" alt="" height="32px" class="megalinter-icon"></a>        | [swift](https://github.com/oxsecurity/megalinter/tree/main/docs/flavors/swift.md)                 | Optimized for SWIFT based projects                                     |        51        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-swift/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-swift) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://github.com/oxsecurity/megalinter/tree/main/docs/flavors/terraform.md)         | Optimized for TERRAFORM based projects                                 |        55        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform) |
+
 <!-- flavors-table-end -->
 
 If you need a new flavor, [post an issue](https://github.com/oxsecurity/megalinter/issues) :wink:
@@ -1502,6 +1505,7 @@ But our core architecture allows building and publishing MegaLinter plugins!
 ### External Plugins Catalog
 
 <!-- plugins-table-start -->
+
 | Name                                                                                                      | Description                                                                                                                                                                             |                        Author                        | Raw URL                                                                                                                                                       |
 |:----------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [**jupyfmt**](https://github.com/kpj/jupyfmt#mega-linter-integration)                                     | The uncompromising Jupyter notebook formatter                                                                                                                                           |   [Kim Philipp Jablonski](https://github.com/kpj)    | [Descriptor](https://raw.githubusercontent.com/kpj/jupyfmt/master/mega-linter-plugin-jupyfmt/jupyfmt.megalinter-descriptor.yml)                               |
@@ -1513,6 +1517,7 @@ But our core architecture allows building and publishing MegaLinter plugins!
 | [**repolinter**](https://github.com/wesley-dean/mega-linter-plugin-repolinter/blob/main/README.md)        | Plugin to run TODO Group's repolinter to look for repository best practices                                                                                                             |    [Wesley Dean](https://github.com/wesley-dean)     | [Descriptor](https://github.com/wesley-dean/mega-linter-plugin-repolinter/blob/main/mega-linter-plugin-repolinter/repolinter.megalinter-descriptor.yml)       |
 | [**j2lint**](https://github.com/wesley-dean/mega-linter-plugin-j2lint/blob/main/README.md)                | Plugin to lint Jinja2 files                                                                                                                                                             |    [Wesley Dean](https://github.com/wesley-dean)     | [Descriptor](https://github.com/wesley-dean/mega-linter-plugin-j2lint/blob/main/mega-linter-plugin-j2lint/j2lint.megalinter-descriptor.yml)                   |
 | [**fmlint**](https://github.com/wesley-dean/mega-linter-plugin-fmlint/blob/main/README.md)                | Plugin to lint YAML frontmatter in Markdown documents                                                                                                                                   |    [Wesley Dean](https://github.com/wesley-dean)     | [Descriptor](https://github.com/wesley-dean/mega-linter-plugin-fmlint/blob/main/mega-linter-plugin-fmlint/fmlint.megalinter-descriptor.yml)                   |
+
 <!-- plugins-table-end -->
 
 > Note: Using an external plugin means you trust its author.
@@ -1647,6 +1652,7 @@ description: List of all known articles, blog posts and videos that talk about M
 ### Linters
 
 <!-- referring-linters-start -->
+
 - [checkmake](https://github.com/checkmake/checkmake?tab=readme-ov-file#megalinter){target=_blank}
 - [checkstyle](https://checkstyle.org/index.html#Related_Tools_Active_Tools){target=_blank}
 - [clj-kondo](https://github.com/borkdude/clj-kondo/blob/master/doc/ci-integration.md#github){target=_blank}

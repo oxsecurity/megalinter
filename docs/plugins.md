@@ -15,6 +15,7 @@ But our core architecture allows building and publishing MegaLinter plugins!
 ## External Plugins Catalog
 
 <!-- plugins-table-start -->
+
 | Name                                                                                                      | Description                                                                                                                                                                             |                        Author                        | Raw URL                                                                                                                                                       |
 |:----------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [**jupyfmt**](https://github.com/kpj/jupyfmt#mega-linter-integration)                                     | The uncompromising Jupyter notebook formatter                                                                                                                                           |   [Kim Philipp Jablonski](https://github.com/kpj)    | [Descriptor](https://raw.githubusercontent.com/kpj/jupyfmt/master/mega-linter-plugin-jupyfmt/jupyfmt.megalinter-descriptor.yml)                               |
@@ -26,6 +27,7 @@ But our core architecture allows building and publishing MegaLinter plugins!
 | [**repolinter**](https://github.com/wesley-dean/mega-linter-plugin-repolinter/blob/main/README.md)        | Plugin to run TODO Group's repolinter to look for repository best practices                                                                                                             |    [Wesley Dean](https://github.com/wesley-dean)     | [Descriptor](https://github.com/wesley-dean/mega-linter-plugin-repolinter/blob/main/mega-linter-plugin-repolinter/repolinter.megalinter-descriptor.yml)       |
 | [**j2lint**](https://github.com/wesley-dean/mega-linter-plugin-j2lint/blob/main/README.md)                | Plugin to lint Jinja2 files                                                                                                                                                             |    [Wesley Dean](https://github.com/wesley-dean)     | [Descriptor](https://github.com/wesley-dean/mega-linter-plugin-j2lint/blob/main/mega-linter-plugin-j2lint/j2lint.megalinter-descriptor.yml)                   |
 | [**fmlint**](https://github.com/wesley-dean/mega-linter-plugin-fmlint/blob/main/README.md)                | Plugin to lint YAML frontmatter in Markdown documents                                                                                                                                   |    [Wesley Dean](https://github.com/wesley-dean)     | [Descriptor](https://github.com/wesley-dean/mega-linter-plugin-fmlint/blob/main/mega-linter-plugin-fmlint/fmlint.megalinter-descriptor.yml)                   |
+
 <!-- plugins-table-end -->
 
 > Note: Using an external plugin means you trust its author.
@@ -58,6 +60,5 @@ You can implement your own descriptors and load them as plugins during MegaLinte
 ### Limitations
 
 - For now, the only `install` attributes managed are `dockerfile` instructions starting by `RUN`
-
 
 <!-- plugins-section-end -->

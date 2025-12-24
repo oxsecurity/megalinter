@@ -10,5 +10,4 @@ description: Every linters has its own variables that can be customized
 
 See variables related to a single linter behavior in [linters documentations](supported-linters.md)
 
-
 <!-- config-linters-section-end -->
