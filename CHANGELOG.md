@@ -110,6 +110,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [trivy](https://aquasecurity.github.io/trivy/) from 0.68.1 to **0.68.2** on 2025-12-24
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.92.3 to **3.92.4** on 2025-12-24
   - [rubocop](https://rubocop.org/) from 1.81.7 to **1.82.0** on 2025-12-24
+  - [dartanalyzer](https://dart.dev/tools/dart-analyze) from 3.8.3 to **3.10.7** on 2025-12-25
 <!-- linter-versions-end -->
 
 ## [v9.2.0] - 2025-11-29

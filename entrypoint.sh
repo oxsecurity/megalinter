@@ -38,7 +38,7 @@ if [ "${UPGRADE_LINTERS_VERSION}" == "true" ]; then
   pip3 install --upgrade markdown mike mkdocs-material pymdown-extensions mkdocs-glightbox mdx_truly_sane_lists jsonschema json-schema-for-humans giturlparse webpreview github-dependents-info
   cd /tmp/lint || exit 1
   chmod +x build.sh
-  GITHUB_TOKEN="${GITHUB_TOKEN}" bash build.sh --doc --dependents --stats
+  GITHUB_TOKEN="${GITHUB_TOKEN}" GEMINI_API_KEY="${GEMINI_API_KEY}" bash build.sh --doc --dependents --stats
   exit $?
 fi
 
