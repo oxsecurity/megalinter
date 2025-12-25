@@ -910,6 +910,7 @@ linters:
       - "scan"
       - "."
       - "--redact"
+      - "--git-history=none"
     cli_sarif_args:
       - --format
       - sarif
