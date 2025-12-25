@@ -49,7 +49,7 @@ FROM python:3.13-alpine3.23
 #############################################################################################
 #ARG__START
 # renovate: datasource=packagist depName=vimeo/psalm
-ARG PHP_VIMEO_PSALM_VERSION=6.14.2
+ARG PHP_VIMEO_PSALM_VERSION=6.14.3
 #ARG__END
 
 ####################

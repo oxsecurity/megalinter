@@ -172,6 +172,11 @@ linters:
   - linter_name: rumdl
     can_output_sarif: true
     is_formatter: true
+    activation_rules:
+      - type: variable
+        variable: MARKDOWN_DEFAULT_STYLE
+        expected_value: rumdl
+        default_value: markdownlint
     linter_text: |
       **rumdl** is a high-performance Markdown linter and formatter that helps ensure consistency and best practices in your Markdown files. Inspired by ruff 's approach to Python linting, rumdl brings similar speed and developer experience improvements to the Markdown ecosystem.
 
@@ -194,6 +199,8 @@ linters:
     linter_rules_inline_disable_url: https://github.com/rvben/rumdl/blob/main/docs/inline-configuration.md
     config_file_name: .rumdl.toml
     test_folder: markdown_rumdl
+    test_variables:
+      MARKDOWN_DEFAULT_STYLE: rumdl
     cli_lint_mode: list_of_files
     cli_lint_extra_args:
       - "check"
@@ -209,7 +216,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=rumdl
-          ARG RUMDL_MYPY_VERSION=0.0.199
+          ARG RUMDL_MYPY_VERSION=0.0.200
       pip:
         - rumdl==${RUMDL_MYPY_VERSION}
     ide:
