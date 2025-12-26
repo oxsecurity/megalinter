@@ -318,6 +318,8 @@ ARG REPOSITORY_SYFT_VERSION=1.38.2
 ARG REPOSITORY_TRIVY_VERSION=0.68.2
 # renovate: datasource=github-tags depName=aquasecurity/trivy
 ARG REPOSITORY_TRIVY_SBOM_VERSION=0.68.2
+# renovate: datasource=github-tags depName=mongodb/kingfisher
+ARG REPOSITORY_KINGFISHER_VERSION=1.72.0
 # renovate: datasource=pypi depName=robotframework-robocop
 ARG PIP_ROBOT_FRAMEWORK_ROBOCOP_VERSION=7.0.0
 # renovate: datasource=pypi depName=Pygments
@@ -1097,6 +1099,9 @@ RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/refs/tags/v${REPOS
 #
 # trufflehog installation
 # Managed with COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
+#
+# kingfisher installation
+    && curl --silent --location https://raw.githubusercontent.com/mongodb/kingfisher/main/scripts/install-kingfisher.sh | bash -s -- /usr/local/bin --tag "v${REPOSITORY_KINGFISHER_VERSION}" \
 #
 # robocop installation
 #

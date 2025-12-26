@@ -89,6 +89,7 @@
   "repository_trivy",
   "repository_trivy_sbom",
   "repository_trufflehog",
+  "repository_kingfisher",
   "robotframework_robocop",
   "rst_rst_lint",
   "rst_rstcheck",

@@ -12,6 +12,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - New linters
   - Add [codespell](https://github.com/codespell-project/codespell)
+  - Add [kingfisher](https://github.com/mongodb/kingfisher) by @bdovaz
   - Add [rumdl](https://github.com/rvben/rumdl) by @bdovaz
 
 - Disabled linters
@@ -97,6 +98,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 9.3.2 to **9.4.0** on 2025-12-20
   - [htmlhint](https://htmlhint.com/) from 1.7.1 to **1.8.0** on 2025-12-22
   - [roslynator](https://github.com/dotnet/Roslynator) from 0.11.0.0 to **0.12.0.0** on 2025-12-22
+  - [kingfisher](https://github.com/mongodb/kingfisher) from 1.71.0 to **1.72.0** on 2025-12-23
   - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2025.10.23 to **2025.12.23** on 2025-12-24
   - [rumdl](https://github.com/rvben/rumdl) from 0.0.199 to **0.0.200** on 2025-12-24
   - [php-cs-fixer](https://cs.symfony.com/) from 3.92.0 to **3.92.3** on 2025-12-24
