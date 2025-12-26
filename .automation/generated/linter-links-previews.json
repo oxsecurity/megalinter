@@ -259,6 +259,11 @@
     "image": "./wp-content/uploads/2021/07/kics-hat-logo-full-e1625478786624.png",
     "title": "KICS - Keeping Infrastructure as Code Secure"
   },
+  "kingfisher": {
+    "description": "Kingfisher is a blazingly fast and highly accurate tool for secret detection and live validation across files, Git repos, GitHub, GitLab, Azure Repos, BitBucket, Gitea, AWS S3, Docker images, Jira,...",
+    "image": "https://opengraph.githubassets.com/9929efb5c25764f666b96c1c92dc8d492d73baae4842958b2b8b9832544562ba/mongodb/kingfisher",
+    "title": "GitHub - mongodb/kingfisher: Kingfisher is a blazingly fast and highly accurate tool for secret detection and live validation across files, Git repos, GitHub, GitLab, Azure Repos, BitBucket, Gitea, AWS S3, Docker images, Jira, Slack, and Confluence"
+  },
   "ktlint": {
     "description": "An anti-bikeshedding Kotlin linter with built-in formatter.",
     "image": null,
@@ -483,6 +488,11 @@
     "description": "An extremely fast Python linter and code formatter, written in Rust. - astral-sh/ruff",
     "image": "https://opengraph.githubassets.com/38f6877259b2afe1e6f34f52be78027dce0e559671d0403656bae0f133893abc/astral-sh/ruff",
     "title": "GitHub - astral-sh/ruff: An extremely fast Python linter and code formatter, written in Rust."
+  },
+  "rumdl": {
+    "description": "Markdown Linter and Formatter written in Rust. Contribute to rvben/rumdl development by creating an account on GitHub.",
+    "image": "https://opengraph.githubassets.com/337f5fe8a5fd465646e5351370fcc5a92fde0cd84ab316c89a6f99ff9f4b0887/rvben/rumdl",
+    "title": "GitHub - rvben/rumdl: Markdown Linter and Formatter written in Rust"
   },
   "scalafix": {
     "description": "Refactoring and linting tool for Scala",

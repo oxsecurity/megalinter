@@ -53,11 +53,6 @@ updates:
     schedule:
       interval: "weekly"
     open-pull-requests-limit: 10
-  - package-ecosystem: "docker"
-    directory: "/.config/gitpod"
-    schedule:
-      interval: "weekly"
-    open-pull-requests-limit: 10
 
   # Maintain dependencies for python with pip
   - package-ecosystem: "pip"

@@ -435,7 +435,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=github-tags depName=anchore/grype
-          ARG REPOSITORY_GRYPE_VERSION=0.104.2
+          ARG REPOSITORY_GRYPE_VERSION=0.104.3
         - RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/refs/tags/v${REPOSITORY_GRYPE_VERSION}/install.sh | sh -s -- -b /usr/local/bin
     supported_platforms:
       platform:
@@ -930,3 +930,50 @@ linters:
         - linux/amd64
         - linux/arm64
     test_folder: gitleaks
+  # kingfisher
+  - linter_name: kingfisher
+    can_output_sarif: true
+    descriptor_flavors:
+      - all
+      - security
+    linter_text: |
+      **kingfisher** is a blazingly fast secret-scanning and live validation tool built in Rust. It combines Intel's SIMD-accelerated regex engine (Hyperscan) with language-aware parsing to achieve high accuracy at massive scale, and ships with hundreds of built-in rules to detect, validate, and triage secrets before they ever reach production.
+
+      **Key Features:**
+
+      - **Performance:** multithreaded, Hyperscan-powered scanning built for huge codebases
+      - **Extensible rules:** hundreds of built-in detectors plus YAML-defined custom rules (docs/RULES.md)
+      - **Blast Radius Mapping:** instantly map leaked keys to their effective cloud identities and exposed resources with --access-map
+      - **Broad AI SaaS coverage:** finds and validates tokens for OpenAI, Anthropic, Google Gemini, Cohere, AWS Bedrock, Voyage AI, Mistral, Stability AI, Replicate, xAI (Grok), Ollama, Langchain, Perplexity, Weights & Biases, Cerebras, Friendli, Fireworks.ai, NVIDIA NIM, Together.ai, Zhipu, and many more
+      - **Compressed Files:** Supports extracting and scanning compressed files for secrets
+      - **Baseline management:** generate and track baselines to suppress known secrets (docs/BASELINE.md)
+      - **Checksum-aware detection:** verifies tokens with built-in checksums (e.g., GitHub, Confluent, Zuplo) — no API calls required
+      - **Built-in Report Viewer:** Visualize and triage findings locally with kingfisher view ./report-file.json
+    linter_url: https://github.com/mongodb/kingfisher
+    linter_repo: https://github.com/mongodb/kingfisher
+    linter_spdx_license: Apache-2.0
+    linter_rules_url: https://github.com/mongodb/kingfisher/tree/main/data/rules
+    linter_rules_inline_disable_url: https://github.com/mongodb/kingfisher?tab=readme-ov-file#inline-ignore-directives
+    test_folder: repository_kingfisher
+    cli_lint_mode: project
+    cli_lint_extra_args:
+      - "scan"
+      - "."
+      - "--redact"
+      - "--git-history=none"
+    cli_sarif_args:
+      - --format
+      - sarif
+    examples:
+      - "kingfisher scan ."
+    install:
+      dockerfile:
+        - |-
+          # renovate: datasource=github-tags depName=mongodb/kingfisher
+          ARG REPOSITORY_KINGFISHER_VERSION=1.72.0
+        - |
+          RUN curl --silent --location https://raw.githubusercontent.com/mongodb/kingfisher/main/scripts/install-kingfisher.sh | bash -s -- /usr/local/bin --tag "v${REPOSITORY_KINGFISHER_VERSION}"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64

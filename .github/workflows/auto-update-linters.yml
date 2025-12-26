@@ -100,7 +100,7 @@ jobs:
       - name: Collect latest versions and help
         id: compute_versions
         shell: bash
-        run: docker run -e UPGRADE_LINTERS_VERSION=true -e GITHUB_SHA=${{ github.sha }} -e GITHUB_TOKEN=${GITHUB_TOKEN} -e GITHUB_OUTPUT="${GITHUB_OUTPUT}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v "/home/runner/work/_temp/_runner_file_commands":"/github/file_commands" -v ${GITHUB_WORKSPACE}:/tmp/lint oxsecurity/megalinter:auto_update_${{ github.sha }}
+        run: docker run -e UPGRADE_LINTERS_VERSION=true -e GITHUB_SHA=${{ github.sha }} -e GITHUB_TOKEN=${GITHUB_TOKEN} -e GEMINI_API_KEY=${{ secrets.GEMINI_API_KEY }} -e GITHUB_OUTPUT="${GITHUB_OUTPUT}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v "/home/runner/work/_temp/_runner_file_commands":"/github/file_commands" -v ${GITHUB_WORKSPACE}:/tmp/lint oxsecurity/megalinter:auto_update_${{ github.sha }}
         timeout-minutes: 60
 
       # Format markdown tables
