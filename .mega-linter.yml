@@ -48,6 +48,15 @@ REPOSITORY_TRIVY_ARGUMENTS:
   - ".venv"
 REPOSITORY_TRUFFLEHOG_ARGUMENTS:
   - --exclude-paths=.trufflehogignore
+REPOSITORY_KINGFISHER_ARGUMENTS:
+  - "--exclude"
+  - ".automation/generated"
+  - "--exclude"
+  - ".automation/test"
+  - "--exclude"
+  - "docs"
+  - "--exclude"
+  - "gitleaks-default.toml"
 REPORTERS_MARKDOWN_SUMMARY_TYPE: sections
 SHOW_ELAPSED_TIME: true
 FLAVOR_SUGGESTIONS: false
