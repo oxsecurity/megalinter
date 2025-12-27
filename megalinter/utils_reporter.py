@@ -290,8 +290,8 @@ def log_section_start(section_key: str, section_title: str):
             ts = int(time.time())
             safe_key = _sanitize_ci_section_key(section_key)
             return (
-                f"\x1b[0Ksection_start:{ts}:{safe_key}"  # noqa: W605
-                + f"[collapsed=true]\r\x1b[0K{section_title} (expand for details)"  # noqa: W605
+                f"section_start:{ts}:{safe_key}"  # noqa: W605
+                + f"[collapsed=true]\r\x1b[0K{section_title}"  # noqa: W605
             )
         elif utils.is_azure_pipelines():
             return f"##[group]{section_title} (expand for details)"
@@ -310,7 +310,7 @@ def log_section_end(section_key):
         elif utils.is_gitlab_ci():
             ts = int(time.time())
             safe_key = _sanitize_ci_section_key(section_key)
-            return f"\x1b[0Ksection_end:{ts}:{safe_key}\r\x1b[0K"  # noqa: W605
+            return f"section_end:{ts}:{safe_key}\r\x1b[0K"  # noqa: W605
         elif utils.is_azure_pipelines():
             return "##[endgroup]"
         elif utils.is_bitbucket() or utils.is_jenkins():
