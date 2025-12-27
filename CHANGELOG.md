@@ -115,6 +115,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [dartanalyzer](https://dart.dev/tools/dart-analyze) from 3.8.3 to **3.10.7** on 2025-12-25
   - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.45.0 to **0.47.0** on 2025-12-27
   - [rumdl](https://github.com/rvben/rumdl) from 0.0.200 to **0.0.204** on 2025-12-27
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 25.12.1 to **25.12.2** on 2025-12-27
 <!-- linter-versions-end -->
 
 ## [v9.2.0] - 2025-11-29
