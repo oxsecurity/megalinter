@@ -202,7 +202,7 @@ ARG NPM_MARKDOWNLINT_CLI_VERSION=0.47.0
 # renovate: datasource=npm depName=markdown-table-formatter
 ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.6.1
 # renovate: datasource=pypi depName=rumdl
-ARG RUMDL_MYPY_VERSION=0.0.204
+ARG RUMDL_MYPY_VERSION=0.0.205
 # renovate: datasource=packagist depName=squizlabs/php_codesniffer
 ARG PHP_SQUIZLABS_PHP_CODESNIFFER_VERSION=4.0.1
 # renovate: datasource=packagist depName=bartlett/sarif-php-converters
