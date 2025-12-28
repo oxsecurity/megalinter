@@ -2,6 +2,7 @@
 import json
 import logging
 import os
+import re
 import subprocess
 import time
 
@@ -271,6 +272,13 @@ def get_linter_doc_url(linter):
     return linter_doc_url
 
 
+def _sanitize_ci_section_key(key: str) -> str:
+    # GitLab section names can only contain letters, numbers, and '_', '.', '-'.
+    # Keep it stable and avoid characters that can break folding.
+    key = re.sub(r"[^0-9A-Za-z_.-]+", "_", (key or "")).strip("._")
+    return (key or "section")[:80]
+
+
 def log_section_start(section_key: str, section_title: str):
     if (
         utils.is_ci()
@@ -279,12 +287,16 @@ def log_section_start(section_key: str, section_title: str):
         if utils.is_github_actions():
             return f"::group::{section_title} (expand for details)"
         elif utils.is_gitlab_ci():
+            ts = int(time.time())
+            safe_key = _sanitize_ci_section_key(section_key)
             return (
-                f"\x1b[0Ksection_start:`{time.time_ns()}`:{section_key}"  # noqa: W605
-                + f"[collapsed=true]\r\x1b[0K{section_title} (expand for details)"  # noqa: W605
+                f"section_start:{ts}:{safe_key}"  # noqa: W605
+                + f"[collapsed=true]\r\x1b[0K{section_title}"  # noqa: W605
             )
         elif utils.is_azure_pipelines():
             return f"##[group]{section_title} (expand for details)"
+        elif utils.is_bitbucket() or utils.is_jenkins():
+            return section_title
     return section_title
 
 
@@ -296,9 +308,13 @@ def log_section_end(section_key):
         if utils.is_github_actions():
             return "::endgroup::"
         elif utils.is_gitlab_ci():
-            return f"\x1b[0Ksection_end:`{time.time_ns()}`:{section_key}\r\x1b[0K"  # noqa: W605
+            ts = int(time.time())
+            safe_key = _sanitize_ci_section_key(section_key)
+            return f"section_end:{ts}:{safe_key}\r\x1b[0K"  # noqa: W605
         elif utils.is_azure_pipelines():
             return "##[endgroup]"
+        elif utils.is_bitbucket() or utils.is_jenkins():
+            return ""
     return ""
 
 
