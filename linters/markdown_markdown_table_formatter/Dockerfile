@@ -49,7 +49,7 @@ FROM python:3.13-alpine3.23
 #############################################################################################
 #ARG__START
 # renovate: datasource=npm depName=markdown-table-formatter
-ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.6.1
+ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.7.0
 #ARG__END
 
 ####################
