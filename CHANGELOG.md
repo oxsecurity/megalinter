@@ -120,6 +120,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [csharpier](https://csharpier.com/) from 1.2.3 to **1.2.4** on 2025-12-27
   - [robocop](https://github.com/MarketSquare/robotframework-robocop) from 7.0.0 to **7.1.0** on 2025-12-27
   - [rubocop](https://rubocop.org/) from 1.82.0 to **1.82.1** on 2025-12-27
+  - [rumdl](https://github.com/rvben/rumdl) from 0.0.204 to **0.0.206** on 2025-12-29
 <!-- linter-versions-end -->
 
 ## [v9.2.0] - 2025-11-29
