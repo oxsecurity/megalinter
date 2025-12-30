@@ -36,9 +36,9 @@ linters:
     disabled: true
     disabled_reason: "Security issues: <https://github.com/checkmake/checkmake/issues/99>"
     name: MAKEFILE_CHECKMAKE
-    linter_url: https://github.com/mrtazz/checkmake
-    linter_repo: https://github.com/mrtazz/checkmake
-    linter_rules_configuration_url: https://github.com/mrtazz/checkmake/blob/main/fixtures/exampleConfig.ini
+    linter_url: https://github.com/checkmake/checkmake
+    linter_repo: https://github.com/checkmake/checkmake
+    linter_rules_configuration_url: https://github.com/checkmake/checkmake/blob/main/fixtures/exampleConfig.ini
     linter_megalinter_ref_url: https://github.com/checkmake/checkmake?tab=readme-ov-file#megalinter
     linter_spdx_license: MIT
     cli_config_arg_name: "--config"
@@ -47,12 +47,11 @@ linters:
       - "checkmake Makefile"
       - "checkmake --config .checkmake.ini Makefile"
     install:
-      # make is included in the mrtazz/checkmake:latest image
-      # (DIGEST:sha256:eb6919b20b22d1701a976856e4a224627df0a74b118246101fb6cf5c2e03049f)
+      # make is included in the backplane/checkmake:latest image
       # It may not be a real dependency, like their pandoc mention in the README,
       # that is not included in the docker image they provide.
       apk:
         - make
       dockerfile:
-        - FROM mrtazz/checkmake:latest AS checkmake
+        - FROM backplane/checkmake:latest AS checkmake
         - COPY --link --from=checkmake /checkmake /usr/bin/checkmake
