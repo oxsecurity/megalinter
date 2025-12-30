@@ -17507,6 +17507,118 @@
       "title": "REPOSITORY_KICS: Unsecured env variables",
       "type": "array"
     },
+    "REPOSITORY_KINGFISHER_ARGUMENTS": {
+      "$id": "#/properties/REPOSITORY_KINGFISHER_ARGUMENTS",
+      "description": "REPOSITORY_KINGFISHER: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_KINGFISHER: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "REPOSITORY_KINGFISHER_CLI_EXECUTABLE": {
+      "$id": "#/properties/REPOSITORY_KINGFISHER_CLI_EXECUTABLE",
+      "default": [
+        [
+          "kingfisher"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_KINGFISHER: CLI Executable",
+      "type": "array"
+    },
+    "REPOSITORY_KINGFISHER_CLI_LINT_MODE": {
+      "$id": "#/properties/REPOSITORY_KINGFISHER_CLI_LINT_MODE",
+      "default": "project",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "REPOSITORY_KINGFISHER: Override default cli lint mode",
+      "type": "string"
+    },
+    "REPOSITORY_KINGFISHER_COMMAND_REMOVE_ARGUMENTS": {
+      "$id": "#/properties/REPOSITORY_KINGFISHER_COMMAND_REMOVE_ARGUMENTS",
+      "description": "REPOSITORY_KINGFISHER: User custom arguments to remove before calling linter",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_KINGFISHER: Custom remove arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "REPOSITORY_KINGFISHER_DISABLE_ERRORS": {
+      "$id": "#/properties/REPOSITORY_KINGFISHER_DISABLE_ERRORS",
+      "default": false,
+      "title": "REPOSITORY_KINGFISHER: Linter doesn't make MegaLinter fail even if errors are found",
+      "type": "boolean"
+    },
+    "REPOSITORY_KINGFISHER_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/REPOSITORY_KINGFISHER_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "REPOSITORY_KINGFISHER: Maximum number of errors allowed",
+      "type": "number"
+    },
+    "REPOSITORY_KINGFISHER_POST_COMMANDS": {
+      "$id": "#/properties/REPOSITORY_KINGFISHER_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "REPOSITORY_KINGFISHER: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "REPOSITORY_KINGFISHER_PRE_COMMANDS": {
+      "$id": "#/properties/REPOSITORY_KINGFISHER_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "REPOSITORY_KINGFISHER: Define or override a list of bash commands to run before the linter",
+      "type": "array"
+    },
+    "REPOSITORY_KINGFISHER_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/REPOSITORY_KINGFISHER_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling REPOSITORY_KINGFISHER and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_KINGFISHER: Unsecured env variables",
+      "type": "array"
+    },
     "REPOSITORY_LS_LINT_ARGUMENTS": {
       "$id": "#/properties/REPOSITORY_LS_LINT_ARGUMENTS",
       "description": "REPOSITORY_LS_LINT: User custom arguments to add in linter CLI call",

@@ -3,7 +3,7 @@ aiofiles==25.1.0
 azure-devops==6.0.0b4
 beautifulsoup4==4.14.3
 commentjson==0.9.0
-fastapi==0.124.4
+fastapi==0.128.0
 gitpython==3.1.45
 giturlparse==0.14.0
 importlib-metadata==8.7.1
@@ -24,7 +24,7 @@ pytest-cov==7.0.0
 pytest-timeout==2.4.0
 pytest-xdist==3.8.0
 pytest-rerunfailures==16.1
-python-gitlab==7.0.0
+python-gitlab==7.1.0
 python-multipart==0.0.21
 pyyaml==6.0.3
 redis==7.1.0
