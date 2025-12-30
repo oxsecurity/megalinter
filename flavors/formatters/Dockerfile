@@ -69,7 +69,7 @@ ARG NPM_PRETTIER_VERSION=3.7.4
 # renovate: datasource=npm depName=markdownlint-cli
 ARG NPM_MARKDOWNLINT_CLI_VERSION=0.47.0
 # renovate: datasource=npm depName=markdown-table-formatter
-ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.6.1
+ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.7.0
 # renovate: datasource=pypi depName=rumdl
 ARG RUMDL_MYPY_VERSION=0.0.206
 # renovate: datasource=nuget depName=PSScriptAnalyzer registryUrl=https://www.powershellgallery.com/api/v2/

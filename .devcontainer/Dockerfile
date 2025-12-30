@@ -1,7 +1,7 @@
 FROM mcr.microsoft.com/devcontainers/python:2-3.12-bullseye
 
 # renovate: datasource=npm depName=markdown-table-formatter
-ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.6.1
+ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.7.0
 
 # renovate: datasource=node-version depName=node
 ARG NODE_VERSION="24.12.0"
