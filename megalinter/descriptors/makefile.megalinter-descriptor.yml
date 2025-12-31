@@ -47,11 +47,11 @@ linters:
       - "checkmake Makefile"
       - "checkmake --config .checkmake.ini Makefile"
     install:
-      # make is included in the backplane/checkmake:latest image
+      # make is included in the quay.io/checkmake/checkmake:latest image
       # It may not be a real dependency, like their pandoc mention in the README,
       # that is not included in the docker image they provide.
       apk:
         - make
       dockerfile:
-        - FROM backplane/checkmake:latest AS checkmake
+        - FROM quay.io/checkmake/checkmake:latest AS checkmake
         - COPY --link --from=checkmake /checkmake /usr/bin/checkmake
