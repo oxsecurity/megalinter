@@ -125,6 +125,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [markdown-table-formatter](https://www.npmjs.com/package/markdown-table-formatter) from 1.6.1 to **1.7.0** on 2025-12-30
   - [actionlint](https://rhysd.github.io/actionlint/) from 1.7.9 to **1.7.10** on 2025-12-30
   - [rumdl](https://github.com/rvben/rumdl) from 0.0.206 to **0.0.207** on 2025-12-31
+  - [pmd](https://pmd.github.io/) from 7.19.0 to **7.20.0** on 2026-01-01
+  - [checkov](https://www.checkov.io/) from 3.2.495 to **3.2.497** on 2026-01-01
 <!-- linter-versions-end -->
 
 ## [v9.2.0] - 2025-11-29
