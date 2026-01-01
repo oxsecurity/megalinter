@@ -127,6 +127,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [rumdl](https://github.com/rvben/rumdl) from 0.0.206 to **0.0.207** on 2025-12-31
   - [pmd](https://pmd.github.io/) from 7.19.0 to **7.20.0** on 2026-01-01
   - [checkov](https://www.checkov.io/) from 3.2.495 to **3.2.497** on 2026-01-01
+  - [csharpier](https://csharpier.com/) from 1.2.4 to **1.2.5** on 2026-01-01
 <!-- linter-versions-end -->
 
 ## [v9.2.0] - 2025-11-29
