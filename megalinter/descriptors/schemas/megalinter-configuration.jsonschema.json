@@ -828,13 +828,6 @@
       "title": "ANSIBLE_ANSIBLE_LINT: Override descriptor/linter matching files extensions",
       "type": "array"
     },
-    "ANSIBLE_ANSIBLE_LINT_FILE_NAME": {
-      "$id": "#/properties/ANSIBLE_ANSIBLE_LINT_FILE_NAME",
-      "default": ".ansible-lint.yml",
-      "description": "ANSIBLE_ANSIBLE_LINT: User custom config file name if different from default",
-      "title": "ANSIBLE_ANSIBLE_LINT: Custom config file name",
-      "type": "string"
-    },
     "ANSIBLE_ANSIBLE_LINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/ANSIBLE_ANSIBLE_LINT_FILE_NAMES_REGEX",
       "examples": [
@@ -1263,13 +1256,6 @@
       },
       "title": "ARM_ARM_TTK: Override descriptor/linter matching files extensions",
       "type": "array"
-    },
-    "ARM_ARM_TTK_FILE_NAME": {
-      "$id": "#/properties/ARM_ARM_TTK_FILE_NAME",
-      "default": ".arm-ttk.psd1",
-      "description": "ARM_ARM_TTK: User custom config file name if different from default",
-      "title": "ARM_ARM_TTK: Custom config file name",
-      "type": "string"
     },
     "ARM_ARM_TTK_FILE_NAMES_REGEX": {
       "$id": "#/properties/ARM_ARM_TTK_FILE_NAMES_REGEX",
@@ -2369,13 +2355,6 @@
       "title": "CLOJURE_CLJ_KONDO: Override descriptor/linter matching files extensions",
       "type": "array"
     },
-    "CLOJURE_CLJ_KONDO_FILE_NAME": {
-      "$id": "#/properties/CLOJURE_CLJ_KONDO_FILE_NAME",
-      "default": ".clj-kondo/config.edn",
-      "description": "CLOJURE_CLJ_KONDO: User custom config file name if different from default",
-      "title": "CLOJURE_CLJ_KONDO: Custom config file name",
-      "type": "string"
-    },
     "CLOJURE_CLJ_KONDO_FILE_NAMES_REGEX": {
       "$id": "#/properties/CLOJURE_CLJ_KONDO_FILE_NAMES_REGEX",
       "examples": [
@@ -2584,13 +2563,6 @@
       "title": "CLOUDFORMATION_CFN_LINT: Override descriptor/linter matching files extensions",
       "type": "array"
     },
-    "CLOUDFORMATION_CFN_LINT_FILE_NAME": {
-      "$id": "#/properties/CLOUDFORMATION_CFN_LINT_FILE_NAME",
-      "default": ".cfnlintrc.yml",
-      "description": "CLOUDFORMATION_CFN_LINT: User custom config file name if different from default",
-      "title": "CLOUDFORMATION_CFN_LINT: Custom config file name",
-      "type": "string"
-    },
     "CLOUDFORMATION_CFN_LINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/CLOUDFORMATION_CFN_LINT_FILE_NAMES_REGEX",
       "examples": [
@@ -2796,13 +2768,6 @@
       },
       "title": "COFFEE_COFFEELINT: Override descriptor/linter matching files extensions",
       "type": "array"
-    },
-    "COFFEE_COFFEELINT_FILE_NAME": {
-      "$id": "#/properties/COFFEE_COFFEELINT_FILE_NAME",
-      "default": ".coffee-lint.json",
-      "description": "COFFEE_COFFEELINT: User custom config file name if different from default",
-      "title": "COFFEE_COFFEELINT: Custom config file name",
-      "type": "string"
     },
     "COFFEE_COFFEELINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/COFFEE_COFFEELINT_FILE_NAMES_REGEX",
@@ -3050,13 +3015,6 @@
       "default": 0,
       "title": "COPYPASTE_JSCPD: Maximum number of errors allowed",
       "type": "number"
-    },
-    "COPYPASTE_JSCPD_FILE_NAME": {
-      "$id": "#/properties/COPYPASTE_JSCPD_FILE_NAME",
-      "default": ".jscpd.json",
-      "description": "COPYPASTE_JSCPD: User custom config file name if different from default",
-      "title": "COPYPASTE_JSCPD: Custom config file name",
-      "type": "string"
     },
     "COPYPASTE_JSCPD_POST_COMMANDS": {
       "$id": "#/properties/COPYPASTE_JSCPD_POST_COMMANDS",
@@ -4562,13 +4520,6 @@
       "title": "CSS_STYLELINT: Override descriptor/linter matching files extensions",
       "type": "array"
     },
-    "CSS_STYLELINT_FILE_NAME": {
-      "$id": "#/properties/CSS_STYLELINT_FILE_NAME",
-      "default": ".stylelintrc.json",
-      "description": "CSS_STYLELINT: User custom config file name if different from default",
-      "title": "CSS_STYLELINT: Custom config file name",
-      "type": "string"
-    },
     "CSS_STYLELINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/CSS_STYLELINT_FILE_NAMES_REGEX",
       "examples": [
@@ -5239,13 +5190,6 @@
       "title": "DART_DARTANALYZER: Override descriptor/linter matching files extensions",
       "type": "array"
     },
-    "DART_DARTANALYZER_FILE_NAME": {
-      "$id": "#/properties/DART_DARTANALYZER_FILE_NAME",
-      "default": "analysis_options.yml",
-      "description": "DART_DARTANALYZER: User custom config file name if different from default",
-      "title": "DART_DARTANALYZER: Custom config file name",
-      "type": "string"
-    },
     "DART_DARTANALYZER_FILE_NAMES_REGEX": {
       "$id": "#/properties/DART_DARTANALYZER_FILE_NAMES_REGEX",
       "examples": [
@@ -5666,13 +5610,6 @@
       "title": "DOCKERFILE_HADOLINT: Override descriptor/linter matching files extensions",
       "type": "array"
     },
-    "DOCKERFILE_HADOLINT_FILE_NAME": {
-      "$id": "#/properties/DOCKERFILE_HADOLINT_FILE_NAME",
-      "default": ".hadolint.yml",
-      "description": "DOCKERFILE_HADOLINT: User custom config file name if different from default",
-      "title": "DOCKERFILE_HADOLINT: Custom config file name",
-      "type": "string"
-    },
     "DOCKERFILE_HADOLINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/DOCKERFILE_HADOLINT_FILE_NAMES_REGEX",
       "examples": [
@@ -5870,13 +5807,6 @@
       },
       "title": "EDITORCONFIG_EDITORCONFIG_CHECKER: Override descriptor/linter matching files extensions",
       "type": "array"
-    },
-    "EDITORCONFIG_EDITORCONFIG_CHECKER_FILE_NAME": {
-      "$id": "#/properties/EDITORCONFIG_EDITORCONFIG_CHECKER_FILE_NAME",
-      "default": ".ecrc",
-      "description": "EDITORCONFIG_EDITORCONFIG_CHECKER: User custom config file name if different from default",
-      "title": "EDITORCONFIG_EDITORCONFIG_CHECKER: Custom config file name",
-      "type": "string"
     },
     "EDITORCONFIG_EDITORCONFIG_CHECKER_FILE_NAMES_REGEX": {
       "$id": "#/properties/EDITORCONFIG_EDITORCONFIG_CHECKER_FILE_NAMES_REGEX",
@@ -6481,13 +6411,6 @@
       "title": "GHERKIN_GHERKIN_LINT: Override descriptor/linter matching files extensions",
       "type": "array"
     },
-    "GHERKIN_GHERKIN_LINT_FILE_NAME": {
-      "$id": "#/properties/GHERKIN_GHERKIN_LINT_FILE_NAME",
-      "default": ".gherkin-lintrc",
-      "description": "GHERKIN_GHERKIN_LINT: User custom config file name if different from default",
-      "title": "GHERKIN_GHERKIN_LINT: Custom config file name",
-      "type": "string"
-    },
     "GHERKIN_GHERKIN_LINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/GHERKIN_GHERKIN_LINT_FILE_NAMES_REGEX",
       "examples": [
@@ -6870,13 +6793,6 @@
       "title": "GO_GOLANGCI_LINT: Override descriptor/linter matching files extensions",
       "type": "array"
     },
-    "GO_GOLANGCI_LINT_FILE_NAME": {
-      "$id": "#/properties/GO_GOLANGCI_LINT_FILE_NAME",
-      "default": ".golangci.yml",
-      "description": "GO_GOLANGCI_LINT: User custom config file name if different from default",
-      "title": "GO_GOLANGCI_LINT: Custom config file name",
-      "type": "string"
-    },
     "GO_GOLANGCI_LINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/GO_GOLANGCI_LINT_FILE_NAMES_REGEX",
       "examples": [
@@ -7237,13 +7153,6 @@
       "title": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: Override descriptor/linter matching files extensions",
       "type": "array"
     },
-    "GRAPHQL_GRAPHQL_SCHEMA_LINTER_FILE_NAME": {
-      "$id": "#/properties/GRAPHQL_GRAPHQL_SCHEMA_LINTER_FILE_NAME",
-      "default": ".graphql-schema-linterrc",
-      "description": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: User custom config file name if different from default",
-      "title": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: Custom config file name",
-      "type": "string"
-    },
     "GRAPHQL_GRAPHQL_SCHEMA_LINTER_FILE_NAMES_REGEX": {
       "$id": "#/properties/GRAPHQL_GRAPHQL_SCHEMA_LINTER_FILE_NAMES_REGEX",
       "examples": [
@@ -7451,13 +7360,6 @@
       },
       "title": "GROOVY_NPM_GROOVY_LINT: Override descriptor/linter matching files extensions",
       "type": "array"
-    },
-    "GROOVY_NPM_GROOVY_LINT_FILE_NAME": {
-      "$id": "#/properties/GROOVY_NPM_GROOVY_LINT_FILE_NAME",
-      "default": ".groovylintrc.json",
-      "description": "GROOVY_NPM_GROOVY_LINT: User custom config file name if different from default",
-      "title": "GROOVY_NPM_GROOVY_LINT: Custom config file name",
-      "type": "string"
     },
     "GROOVY_NPM_GROOVY_LINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/GROOVY_NPM_GROOVY_LINT_FILE_NAMES_REGEX",
@@ -7818,13 +7720,6 @@
       "title": "HTML_HTMLHINT: Override descriptor/linter matching files extensions",
       "type": "array"
     },
-    "HTML_HTMLHINT_FILE_NAME": {
-      "$id": "#/properties/HTML_HTMLHINT_FILE_NAME",
-      "default": ".htmlhintrc",
-      "description": "HTML_HTMLHINT: User custom config file name if different from default",
-      "title": "HTML_HTMLHINT: Custom config file name",
-      "type": "string"
-    },
     "HTML_HTMLHINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/HTML_HTMLHINT_FILE_NAMES_REGEX",
       "examples": [
@@ -8052,13 +7947,6 @@
       },
       "title": "JAVASCRIPT_ES: Override descriptor/linter matching files extensions",
       "type": "array"
-    },
-    "JAVASCRIPT_ES_FILE_NAME": {
-      "$id": "#/properties/JAVASCRIPT_ES_FILE_NAME",
-      "default": ".eslintrc.json",
-      "description": "JAVASCRIPT_ES: User custom config file name if different from default",
-      "title": "JAVASCRIPT_ES: Custom config file name",
-      "type": "string"
     },
     "JAVASCRIPT_ES_FILE_NAMES_REGEX": {
       "$id": "#/properties/JAVASCRIPT_ES_FILE_NAMES_REGEX",
@@ -8583,13 +8471,6 @@
       "title": "JAVA_CHECKSTYLE: Override descriptor/linter matching files extensions",
       "type": "array"
     },
-    "JAVA_CHECKSTYLE_FILE_NAME": {
-      "$id": "#/properties/JAVA_CHECKSTYLE_FILE_NAME",
-      "default": "sun_checks.xml",
-      "description": "JAVA_CHECKSTYLE: User custom config file name if different from default",
-      "title": "JAVA_CHECKSTYLE: Custom config file name",
-      "type": "string"
-    },
     "JAVA_CHECKSTYLE_FILE_NAMES_REGEX": {
       "$id": "#/properties/JAVA_CHECKSTYLE_FILE_NAMES_REGEX",
       "examples": [
@@ -8967,13 +8848,6 @@
       },
       "title": "JSON_ESLINT_PLUGIN_JSONC: Override descriptor/linter matching files extensions",
       "type": "array"
-    },
-    "JSON_ESLINT_PLUGIN_JSONC_FILE_NAME": {
-      "$id": "#/properties/JSON_ESLINT_PLUGIN_JSONC_FILE_NAME",
-      "default": ".eslintrc.json",
-      "description": "JSON_ESLINT_PLUGIN_JSONC: User custom config file name if different from default",
-      "title": "JSON_ESLINT_PLUGIN_JSONC: Custom config file name",
-      "type": "string"
     },
     "JSON_ESLINT_PLUGIN_JSONC_FILE_NAMES_REGEX": {
       "$id": "#/properties/JSON_ESLINT_PLUGIN_JSONC_FILE_NAMES_REGEX",
@@ -9837,13 +9711,6 @@
       },
       "title": "JSX_ESLINT: Override descriptor/linter matching files extensions",
       "type": "array"
-    },
-    "JSX_ESLINT_FILE_NAME": {
-      "$id": "#/properties/JSX_ESLINT_FILE_NAME",
-      "default": ".eslintrc.json",
-      "description": "JSX_ESLINT: User custom config file name if different from default",
-      "title": "JSX_ESLINT: Custom config file name",
-      "type": "string"
     },
     "JSX_ESLINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/JSX_ESLINT_FILE_NAMES_REGEX",
@@ -11032,13 +10899,6 @@
       "title": "LATEX_CHKTEX: Override descriptor/linter matching files extensions",
       "type": "array"
     },
-    "LATEX_CHKTEX_FILE_NAME": {
-      "$id": "#/properties/LATEX_CHKTEX_FILE_NAME",
-      "default": ".chktexrc",
-      "description": "LATEX_CHKTEX: User custom config file name if different from default",
-      "title": "LATEX_CHKTEX: Custom config file name",
-      "type": "string"
-    },
     "LATEX_CHKTEX_FILE_NAMES_REGEX": {
       "$id": "#/properties/LATEX_CHKTEX_FILE_NAMES_REGEX",
       "examples": [
@@ -11440,13 +11300,6 @@
       },
       "title": "LUA_LUACHECK: Override descriptor/linter matching files extensions",
       "type": "array"
-    },
-    "LUA_LUACHECK_FILE_NAME": {
-      "$id": "#/properties/LUA_LUACHECK_FILE_NAME",
-      "default": ".luacheckrc",
-      "description": "LUA_LUACHECK: User custom config file name if different from default",
-      "title": "LUA_LUACHECK: Custom config file name",
-      "type": "string"
     },
     "LUA_LUACHECK_FILE_NAMES_REGEX": {
       "$id": "#/properties/LUA_LUACHECK_FILE_NAMES_REGEX",
@@ -12199,13 +12052,6 @@
       },
       "title": "MARKDOWN_MARKDOWNLINT: Override descriptor/linter matching files extensions",
       "type": "array"
-    },
-    "MARKDOWN_MARKDOWNLINT_FILE_NAME": {
-      "$id": "#/properties/MARKDOWN_MARKDOWNLINT_FILE_NAME",
-      "default": ".markdownlint.json",
-      "description": "MARKDOWN_MARKDOWNLINT: User custom config file name if different from default",
-      "title": "MARKDOWN_MARKDOWNLINT: Custom config file name",
-      "type": "string"
     },
     "MARKDOWN_MARKDOWNLINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/MARKDOWN_MARKDOWNLINT_FILE_NAMES_REGEX",
@@ -13880,13 +13726,6 @@
       "title": "PHP_PHPCS: Override descriptor/linter matching files extensions",
       "type": "array"
     },
-    "PHP_PHPCS_FILE_NAME": {
-      "$id": "#/properties/PHP_PHPCS_FILE_NAME",
-      "default": "phpcs.xml",
-      "description": "PHP_PHPCS: User custom config file name if different from default",
-      "title": "PHP_PHPCS: Custom config file name",
-      "type": "string"
-    },
     "PHP_PHPCS_FILE_NAMES_REGEX": {
       "$id": "#/properties/PHP_PHPCS_FILE_NAMES_REGEX",
       "examples": [
@@ -14051,13 +13890,6 @@
       "title": "PHP_PHPLINT: Override descriptor/linter matching files extensions",
       "type": "array"
     },
-    "PHP_PHPLINT_FILE_NAME": {
-      "$id": "#/properties/PHP_PHPLINT_FILE_NAME",
-      "default": ".phplint.yml",
-      "description": "PHP_PHPLINT: User custom config file name if different from default",
-      "title": "PHP_PHPLINT: Custom config file name",
-      "type": "string"
-    },
     "PHP_PHPLINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/PHP_PHPLINT_FILE_NAMES_REGEX",
       "examples": [
@@ -14221,13 +14053,6 @@
       },
       "title": "PHP_PHPSTAN: Override descriptor/linter matching files extensions",
       "type": "array"
-    },
-    "PHP_PHPSTAN_FILE_NAME": {
-      "$id": "#/properties/PHP_PHPSTAN_FILE_NAME",
-      "default": "phpstan.neon",
-      "description": "PHP_PHPSTAN: User custom config file name if different from default",
-      "title": "PHP_PHPSTAN: Custom config file name",
-      "type": "string"
     },
     "PHP_PHPSTAN_FILE_NAMES_REGEX": {
       "$id": "#/properties/PHP_PHPSTAN_FILE_NAMES_REGEX",
@@ -14427,13 +14252,6 @@
       "title": "PHP_PSALM: Override descriptor/linter matching files extensions",
       "type": "array"
     },
-    "PHP_PSALM_FILE_NAME": {
-      "$id": "#/properties/PHP_PSALM_FILE_NAME",
-      "default": "psalm.xml",
-      "description": "PHP_PSALM: User custom config file name if different from default",
-      "title": "PHP_PSALM: Custom config file name",
-      "type": "string"
-    },
     "PHP_PSALM_FILE_NAMES_REGEX": {
       "$id": "#/properties/PHP_PSALM_FILE_NAMES_REGEX",
       "examples": [
@@ -14600,7 +14418,7 @@
       "$id": "#/properties/POWERSHELL_POWERSHELL_CLI_EXECUTABLE",
       "default": [
         [
-          "pwsh"
+          "powershell"
         ]
       ],
       "items": {
@@ -14670,13 +14488,6 @@
       "title": "POWERSHELL_POWERSHELL: Override descriptor/linter matching files extensions",
       "type": "array"
     },
-    "POWERSHELL_POWERSHELL_FILE_NAME": {
-      "$id": "#/properties/POWERSHELL_POWERSHELL_FILE_NAME",
-      "default": ".powershell-psscriptanalyzer.psd1",
-      "description": "POWERSHELL_POWERSHELL: User custom config file name if different from default",
-      "title": "POWERSHELL_POWERSHELL: Custom config file name",
-      "type": "string"
-    },
     "POWERSHELL_POWERSHELL_FILE_NAMES_REGEX": {
       "$id": "#/properties/POWERSHELL_POWERSHELL_FILE_NAMES_REGEX",
       "examples": [
@@ -14719,7 +14530,7 @@
       "$id": "#/properties/POWERSHELL_POWERSHELL_FORMATTER_CLI_EXECUTABLE",
       "default": [
         [
-          "pwsh"
+          "powershell"
         ]
       ],
       "items": {
@@ -15106,13 +14917,6 @@
       "title": "PROTOBUF_PROTOLINT: Override descriptor/linter matching files extensions",
       "type": "array"
     },
-    "PROTOBUF_PROTOLINT_FILE_NAME": {
-      "$id": "#/properties/PROTOBUF_PROTOLINT_FILE_NAME",
-      "default": ".protolintrc.yml",
-      "description": "PROTOBUF_PROTOLINT: User custom config file name if different from default",
-      "title": "PROTOBUF_PROTOLINT: Custom config file name",
-      "type": "string"
-    },
     "PROTOBUF_PROTOLINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/PROTOBUF_PROTOLINT_FILE_NAMES_REGEX",
       "examples": [
@@ -15318,13 +15122,6 @@
       },
       "title": "PUPPET_PUPPET_LINT: Override descriptor/linter matching files extensions",
       "type": "array"
-    },
-    "PUPPET_PUPPET_LINT_FILE_NAME": {
-      "$id": "#/properties/PUPPET_PUPPET_LINT_FILE_NAME",
-      "default": ".puppet-lint.rc",
-      "description": "PUPPET_PUPPET_LINT: User custom config file name if different from default",
-      "title": "PUPPET_PUPPET_LINT: Custom config file name",
-      "type": "string"
     },
     "PUPPET_PUPPET_LINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/PUPPET_PUPPET_LINT_FILE_NAMES_REGEX",
@@ -15654,13 +15451,6 @@
       "title": "PYTHON_BLACK: Override descriptor/linter matching files extensions",
       "type": "array"
     },
-    "PYTHON_BLACK_FILE_NAME": {
-      "$id": "#/properties/PYTHON_BLACK_FILE_NAME",
-      "default": ".python-black",
-      "description": "PYTHON_BLACK: User custom config file name if different from default",
-      "title": "PYTHON_BLACK: Custom config file name",
-      "type": "string"
-    },
     "PYTHON_BLACK_FILE_NAMES_REGEX": {
       "$id": "#/properties/PYTHON_BLACK_FILE_NAMES_REGEX",
       "examples": [
@@ -15853,13 +15643,6 @@
       "title": "PYTHON_FLAKE8: Override descriptor/linter matching files extensions",
       "type": "array"
     },
-    "PYTHON_FLAKE8_FILE_NAME": {
-      "$id": "#/properties/PYTHON_FLAKE8_FILE_NAME",
-      "default": ".flake8",
-      "description": "PYTHON_FLAKE8: User custom config file name if different from default",
-      "title": "PYTHON_FLAKE8: Custom config file name",
-      "type": "string"
-    },
     "PYTHON_FLAKE8_FILE_NAMES_REGEX": {
       "$id": "#/properties/PYTHON_FLAKE8_FILE_NAMES_REGEX",
       "examples": [
@@ -16023,13 +15806,6 @@
       },
       "title": "PYTHON_ISORT: Override descriptor/linter matching files extensions",
       "type": "array"
-    },
-    "PYTHON_ISORT_FILE_NAME": {
-      "$id": "#/properties/PYTHON_ISORT_FILE_NAME",
-      "default": ".isort.cfg",
-      "description": "PYTHON_ISORT: User custom config file name if different from default",
-      "title": "PYTHON_ISORT: Custom config file name",
-      "type": "string"
     },
     "PYTHON_ISORT_FILE_NAMES_REGEX": {
       "$id": "#/properties/PYTHON_ISORT_FILE_NAMES_REGEX",
@@ -16392,13 +16168,6 @@
       },
       "title": "PYTHON_PYLINT: Override descriptor/linter matching files extensions",
       "type": "array"
-    },
-    "PYTHON_PYLINT_FILE_NAME": {
-      "$id": "#/properties/PYTHON_PYLINT_FILE_NAME",
-      "default": ".python-lint",
-      "description": "PYTHON_PYLINT: User custom config file name if different from default",
-      "title": "PYTHON_PYLINT: Custom config file name",
-      "type": "string"
     },
     "PYTHON_PYLINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/PYTHON_PYLINT_FILE_NAMES_REGEX",
@@ -17097,13 +16866,6 @@
       },
       "title": "RAKU_RAKU: Override descriptor/linter matching files extensions",
       "type": "array"
-    },
-    "RAKU_RAKU_FILE_NAME": {
-      "$id": "#/properties/RAKU_RAKU_FILE_NAME",
-      "default": "META6.json",
-      "description": "RAKU_RAKU: User custom config file name if different from default",
-      "title": "RAKU_RAKU: Custom config file name",
-      "type": "string"
     },
     "RAKU_RAKU_FILE_NAMES_REGEX": {
       "$id": "#/properties/RAKU_RAKU_FILE_NAMES_REGEX",
@@ -19624,13 +19386,6 @@
       "title": "RST_RSTCHECK: Override descriptor/linter matching files extensions",
       "type": "array"
     },
-    "RST_RSTCHECK_FILE_NAME": {
-      "$id": "#/properties/RST_RSTCHECK_FILE_NAME",
-      "default": ".rstcheck.cfg",
-      "description": "RST_RSTCHECK: User custom config file name if different from default",
-      "title": "RST_RSTCHECK: Custom config file name",
-      "type": "string"
-    },
     "RST_RSTCHECK_FILE_NAMES_REGEX": {
       "$id": "#/properties/RST_RSTCHECK_FILE_NAMES_REGEX",
       "examples": [
@@ -20135,13 +19890,6 @@
       "title": "RUBY_RUBOCOP: Override descriptor/linter matching files extensions",
       "type": "array"
     },
-    "RUBY_RUBOCOP_FILE_NAME": {
-      "$id": "#/properties/RUBY_RUBOCOP_FILE_NAME",
-      "default": ".ruby-lint.yml",
-      "description": "RUBY_RUBOCOP: User custom config file name if different from default",
-      "title": "RUBY_RUBOCOP: Custom config file name",
-      "type": "string"
-    },
     "RUBY_RUBOCOP_FILE_NAMES_REGEX": {
       "$id": "#/properties/RUBY_RUBOCOP_FILE_NAMES_REGEX",
       "examples": [
@@ -20305,13 +20053,6 @@
       },
       "title": "RUST_CLIPPY: Override descriptor/linter matching files extensions",
       "type": "array"
-    },
-    "RUST_CLIPPY_FILE_NAME": {
-      "$id": "#/properties/RUST_CLIPPY_FILE_NAME",
-      "default": ".clippy.toml",
-      "description": "RUST_CLIPPY: User custom config file name if different from default",
-      "title": "RUST_CLIPPY: Custom config file name",
-      "type": "string"
     },
     "RUST_CLIPPY_FILE_NAMES_REGEX": {
       "$id": "#/properties/RUST_CLIPPY_FILE_NAMES_REGEX",
@@ -20518,13 +20259,6 @@
       },
       "title": "R_LINTR: Override descriptor/linter matching files extensions",
       "type": "array"
-    },
-    "R_LINTR_FILE_NAME": {
-      "$id": "#/properties/R_LINTR_FILE_NAME",
-      "default": ".lintr",
-      "description": "R_LINTR: User custom config file name if different from default",
-      "title": "R_LINTR: Custom config file name",
-      "type": "string"
     },
     "R_LINTR_FILE_NAMES_REGEX": {
       "$id": "#/properties/R_LINTR_FILE_NAMES_REGEX",
@@ -21872,13 +21606,6 @@
       "title": "SCALA_SCALAFIX: Override descriptor/linter matching files extensions",
       "type": "array"
     },
-    "SCALA_SCALAFIX_FILE_NAME": {
-      "$id": "#/properties/SCALA_SCALAFIX_FILE_NAME",
-      "default": ".scalafix.conf",
-      "description": "SCALA_SCALAFIX: User custom config file name if different from default",
-      "title": "SCALA_SCALAFIX: Custom config file name",
-      "type": "string"
-    },
     "SCALA_SCALAFIX_FILE_NAMES_REGEX": {
       "$id": "#/properties/SCALA_SCALAFIX_FILE_NAMES_REGEX",
       "examples": [
@@ -22302,13 +22029,6 @@
       "title": "SNAKEMAKE_SNAKEFMT: Override descriptor/linter matching files extensions",
       "type": "array"
     },
-    "SNAKEMAKE_SNAKEFMT_FILE_NAME": {
-      "$id": "#/properties/SNAKEMAKE_SNAKEFMT_FILE_NAME",
-      "default": ".snakefmt.toml",
-      "description": "SNAKEMAKE_SNAKEFMT: User custom config file name if different from default",
-      "title": "SNAKEMAKE_SNAKEFMT: Custom config file name",
-      "type": "string"
-    },
     "SNAKEMAKE_SNAKEFMT_FILE_NAMES_REGEX": {
       "$id": "#/properties/SNAKEMAKE_SNAKEFMT_FILE_NAMES_REGEX",
       "examples": [
@@ -22643,13 +22363,6 @@
       },
       "title": "SPELL_CSPELL: Override descriptor/linter matching files extensions",
       "type": "array"
-    },
-    "SPELL_CSPELL_FILE_NAME": {
-      "$id": "#/properties/SPELL_CSPELL_FILE_NAME",
-      "default": ".cspell.json",
-      "description": "SPELL_CSPELL: User custom config file name if different from default",
-      "title": "SPELL_CSPELL: Custom config file name",
-      "type": "string"
     },
     "SPELL_CSPELL_FILE_NAMES_REGEX": {
       "$id": "#/properties/SPELL_CSPELL_FILE_NAMES_REGEX",
@@ -24271,13 +23984,6 @@
       "title": "TEKTON_TEKTON_LINT: Override descriptor/linter matching files extensions",
       "type": "array"
     },
-    "TEKTON_TEKTON_LINT_FILE_NAME": {
-      "$id": "#/properties/TEKTON_TEKTON_LINT_FILE_NAME",
-      "default": ".tektonlintrc.yaml",
-      "description": "TEKTON_TEKTON_LINT: User custom config file name if different from default",
-      "title": "TEKTON_TEKTON_LINT: Custom config file name",
-      "type": "string"
-    },
     "TEKTON_TEKTON_LINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/TEKTON_TEKTON_LINT_FILE_NAMES_REGEX",
       "examples": [
@@ -24879,13 +24585,6 @@
       "title": "TERRAFORM_TERRAGRUNT: Override descriptor/linter matching files extensions",
       "type": "array"
     },
-    "TERRAFORM_TERRAGRUNT_FILE_NAME": {
-      "$id": "#/properties/TERRAFORM_TERRAGRUNT_FILE_NAME",
-      "default": "terragrunt.hcl",
-      "description": "TERRAFORM_TERRAGRUNT: User custom config file name if different from default",
-      "title": "TERRAFORM_TERRAGRUNT: Custom config file name",
-      "type": "string"
-    },
     "TERRAFORM_TERRAGRUNT_FILE_NAMES_REGEX": {
       "$id": "#/properties/TERRAFORM_TERRAGRUNT_FILE_NAMES_REGEX",
       "examples": [
@@ -25204,13 +24903,6 @@
       "title": "TERRAFORM_TFLINT: Override descriptor/linter matching files extensions",
       "type": "array"
     },
-    "TERRAFORM_TFLINT_FILE_NAME": {
-      "$id": "#/properties/TERRAFORM_TFLINT_FILE_NAME",
-      "default": ".tflint.hcl",
-      "description": "TERRAFORM_TFLINT: User custom config file name if different from default",
-      "title": "TERRAFORM_TFLINT: Custom config file name",
-      "type": "string"
-    },
     "TERRAFORM_TFLINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/TERRAFORM_TFLINT_FILE_NAMES_REGEX",
       "examples": [
@@ -25385,13 +25077,6 @@
       },
       "title": "TSX_ESLINT: Override descriptor/linter matching files extensions",
       "type": "array"
-    },
-    "TSX_ESLINT_FILE_NAME": {
-      "$id": "#/properties/TSX_ESLINT_FILE_NAME",
-      "default": ".eslintrc.json",
-      "description": "TSX_ESLINT: User custom config file name if different from default",
-      "title": "TSX_ESLINT: Custom config file name",
-      "type": "string"
     },
     "TSX_ESLINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/TSX_ESLINT_FILE_NAMES_REGEX",
@@ -25618,13 +25303,6 @@
       },
       "title": "TYPESCRIPT_ES: Override descriptor/linter matching files extensions",
       "type": "array"
-    },
-    "TYPESCRIPT_ES_FILE_NAME": {
-      "$id": "#/properties/TYPESCRIPT_ES_FILE_NAME",
-      "default": ".eslintrc.json",
-      "description": "TYPESCRIPT_ES: User custom config file name if different from default",
-      "title": "TYPESCRIPT_ES: Custom config file name",
-      "type": "string"
     },
     "TYPESCRIPT_ES_FILE_NAMES_REGEX": {
       "$id": "#/properties/TYPESCRIPT_ES_FILE_NAMES_REGEX",
@@ -26929,13 +26607,6 @@
       },
       "title": "YAML_YAMLLINT: Override descriptor/linter matching files extensions",
       "type": "array"
-    },
-    "YAML_YAMLLINT_FILE_NAME": {
-      "$id": "#/properties/YAML_YAMLLINT_FILE_NAME",
-      "default": ".yaml-lint.yml",
-      "description": "YAML_YAMLLINT: User custom config file name if different from default",
-      "title": "YAML_YAMLLINT: Custom config file name",
-      "type": "string"
     },
     "YAML_YAMLLINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/YAML_YAMLLINT_FILE_NAMES_REGEX",
