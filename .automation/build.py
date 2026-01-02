@@ -2508,17 +2508,88 @@ def replace_in_file(file_path, start, end, content, add_new_line=True):
     logging.info("Updated " + file.name + " between " + start + " and " + end)
 
 
+_ENUM_LABEL_SMALL_WORDS = {
+    "a",
+    "an",
+    "and",
+    "as",
+    "at",
+    "but",
+    "by",
+    "for",
+    "in",
+    "nor",
+    "of",
+    "on",
+    "or",
+    "per",
+    "the",
+    "to",
+    "via",
+    "vs",
+    "with",
+}
+
+
+def _enum_value_to_label(value: Any) -> str:
+    if isinstance(value, str):
+        normalized = re.sub(r"[_-]+", " ", value).strip()
+        normalized = re.sub(r"\s+", " ", normalized)
+        if not normalized:
+            return "(empty)"
+
+        # Preserve already-cased values (acronyms / CamelCase / mixed casing)
+        if re.search(r"[A-Z]", normalized):
+            return normalized
+
+        words = normalized.split(" ")
+        labeled_words: list[str] = []
+        for i, word in enumerate(words):
+            lower_word = word.lower()
+            if i > 0 and lower_word in _ENUM_LABEL_SMALL_WORDS:
+                labeled_words.append(lower_word)
+            else:
+                labeled_words.append(lower_word[:1].upper() + lower_word[1:])
+        return " ".join(labeled_words)
+
+    return str(value)
+
+
+def _ensure_enum_names(schema_fragment: Any) -> bool:
+    changed = False
+    if isinstance(schema_fragment, dict):
+        if (
+            "enum" in schema_fragment
+            and "enumNames" not in schema_fragment
+            and isinstance(schema_fragment["enum"], list)
+        ):
+            schema_fragment["enumNames"] = [
+                _enum_value_to_label(enum_value)
+                for enum_value in schema_fragment["enum"]
+            ]
+            changed = True
+
+        for child_value in schema_fragment.values():
+            changed = _ensure_enum_names(child_value) or changed
+    elif isinstance(schema_fragment, list):
+        for item in schema_fragment:
+            changed = _ensure_enum_names(item) or changed
+    return changed
+
+
 def add_in_config_schema_file(variables):
     with open(CONFIG_JSON_SCHEMA, "r", encoding="utf-8") as json_file:
         json_schema = json.load(json_file)
     json_schema_props = json_schema["properties"]
     updated = False
     for key, variable in variables:
+        updated = _ensure_enum_names(variable) or updated
         prev_val = json_schema_props.get(key, "")
         json_schema_props[key] = variable
         if prev_val != variable:
             updated = True
     json_schema["properties"] = json_schema_props
+    updated = _ensure_enum_names(json_schema) or updated
     if updated is True:
         with open(CONFIG_JSON_SCHEMA, "w", encoding="utf-8") as outfile:
             json.dump(json_schema, outfile, indent=2, sort_keys=True)
