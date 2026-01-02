@@ -1165,6 +1165,9 @@
           "MARKDOWN_MARKDOWNLINT"
         ]
       ],
+      "items": {
+        "$ref": "#/definitions/enum_linter_keys"
+      },
       "title": "Apply linters formatting and auto-fixes",
       "type": [
         "array",
