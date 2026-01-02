@@ -1805,6 +1805,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                     ],
                 ]
             )
+        remove_in_config_schema_file([f"{linter.name}_FILE_NAME"])
         default_disable_errors = "true" if linter.is_formatter is True else "false"
         linter_doc_md += [
             f"| {linter.name}_DISABLE_ERRORS | Run linter but consider errors as warnings |"
