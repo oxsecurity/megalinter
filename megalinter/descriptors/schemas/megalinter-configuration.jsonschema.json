@@ -25,6 +25,10 @@
             "root",
             "workspace"
           ],
+          "enumNames": [
+            "Root",
+            "Workspace"
+          ],
           "examples": [
             "root",
             "workspace"
@@ -67,6 +71,69 @@
     },
     "enum_descriptor_keys": {
       "enum": [
+        "ACTION",
+        "ANSIBLE",
+        "API",
+        "ARM",
+        "BASH",
+        "BICEP",
+        "C",
+        "CLOJURE",
+        "CLOUDFORMATION",
+        "COFFEE",
+        "COPYPASTE",
+        "CPP",
+        "CREDENTIALS",
+        "CSHARP",
+        "CSS",
+        "DART",
+        "DOCKERFILE",
+        "EDITORCONFIG",
+        "ENV",
+        "GHERKIN",
+        "GIT",
+        "GO",
+        "GRAPHQL",
+        "GROOVY",
+        "HTML",
+        "JAVA",
+        "JAVASCRIPT",
+        "JSON",
+        "JSX",
+        "KOTLIN",
+        "KUBERNETES",
+        "LATEX",
+        "LUA",
+        "MAKEFILE",
+        "MARKDOWN",
+        "PERL",
+        "PHP",
+        "POWERSHELL",
+        "PROTOBUF",
+        "PUPPET",
+        "PYTHON",
+        "R",
+        "RAKU",
+        "REPOSITORY",
+        "ROBOTFRAMEWORK",
+        "RST",
+        "RUBY",
+        "RUST",
+        "SALESFORCE",
+        "SCALA",
+        "SNAKEMAKE",
+        "SPELL",
+        "SQL",
+        "SWIFT",
+        "TEKTON",
+        "TERRAFORM",
+        "TSX",
+        "TYPESCRIPT",
+        "VBDOTNET",
+        "XML",
+        "YAML"
+      ],
+      "enumNames": [
         "ACTION",
         "ANSIBLE",
         "API",
@@ -280,6 +347,154 @@
         "YAML_V8R",
         "YAML_YAMLLINT"
       ],
+      "enumNames": [
+        "ACTION ACTIONLINT",
+        "ANSIBLE ANSIBLE LINT",
+        "API SPECTRAL",
+        "ARM ARM TTK",
+        "BASH EXEC",
+        "BASH SHELLCHECK",
+        "BASH SHFMT",
+        "BICEP BICEP LINTER",
+        "CLOJURE CLJSTYLE",
+        "CLOJURE CLJ KONDO",
+        "CLOUDFORMATION CFN LINT",
+        "COFFEE COFFEELINT",
+        "COPYPASTE JSCPD",
+        "CPP CLANG FORMAT",
+        "CPP CPPCHECK",
+        "CPP CPPLINT",
+        "CREDENTIALS SECRETLINT",
+        "CSHARP CSHARPIER",
+        "CSHARP DOTNET FORMAT",
+        "CSHARP ROSLYNATOR",
+        "CSS SCSSLINT",
+        "CSS STYLELINT",
+        "C CLANG FORMAT",
+        "C CPPCHECK",
+        "C CPPLINT",
+        "DART DARTANALYZER",
+        "DOCKERFILE DOCKERFILELINT",
+        "DOCKERFILE HADOLINT",
+        "EDITORCONFIG EDITORCONFIG CHECKER",
+        "ENV DOTENV LINTER",
+        "GHERKIN GHERKIN LINT",
+        "GIT GIT DIFF",
+        "GO GOLANGCI LINT",
+        "GO REVIVE",
+        "GRAPHQL GRAPHQL SCHEMA LINTER",
+        "GROOVY NPM GROOVY LINT",
+        "HTML DJLINT",
+        "HTML HTMLHINT",
+        "JAVASCRIPT ES",
+        "JAVASCRIPT PRETTIER",
+        "JAVASCRIPT STANDARD",
+        "JAVA CHECKSTYLE",
+        "JAVA PMD",
+        "JSON ESLINT PLUGIN JSONC",
+        "JSON JSONLINT",
+        "JSON NPM PACKAGE JSON LINT",
+        "JSON PRETTIER",
+        "JSON V8R",
+        "JSX ESLINT",
+        "KOTLIN DETEKT",
+        "KOTLIN KTLINT",
+        "KUBERNETES HELM",
+        "KUBERNETES KUBECONFORM",
+        "KUBERNETES KUBESCAPE",
+        "KUBERNETES KUBEVAL",
+        "LATEX CHKTEX",
+        "LUA LUACHECK",
+        "LUA SELENE",
+        "LUA STYLUA",
+        "MAKEFILE CHECKMAKE",
+        "MARKDOWN MARKDOWNLINT",
+        "MARKDOWN MARKDOWN LINK CHECK",
+        "MARKDOWN MARKDOWN TABLE FORMATTER",
+        "MARKDOWN REMARK LINT",
+        "MARKDOWN RUMDL",
+        "OPENAPI SPECTRAL",
+        "PERL PERLCRITIC",
+        "PHP BUILTIN",
+        "PHP PHPCS",
+        "PHP PHPCSFIXER",
+        "PHP PHPLINT",
+        "PHP PHPSTAN",
+        "PHP PSALM",
+        "POWERSHELL POWERSHELL",
+        "POWERSHELL POWERSHELL FORMATTER",
+        "PROTOBUF PROTOLINT",
+        "PUPPET PUPPET LINT",
+        "PYTHON BANDIT",
+        "PYTHON BLACK",
+        "PYTHON FLAKE8",
+        "PYTHON ISORT",
+        "PYTHON MYPY",
+        "PYTHON PYLINT",
+        "PYTHON PYRIGHT",
+        "PYTHON RUFF",
+        "PYTHON RUFF FORMAT",
+        "RAKU RAKU",
+        "REPOSITORY CHECKOV",
+        "REPOSITORY DEVSKIM",
+        "REPOSITORY DUSTILOCK",
+        "REPOSITORY GITLEAKS",
+        "REPOSITORY GIT DIFF",
+        "REPOSITORY GOODCHECK",
+        "REPOSITORY GRYPE",
+        "REPOSITORY KICS",
+        "REPOSITORY KINGFISHER",
+        "REPOSITORY LS LINT",
+        "REPOSITORY SECRETLINT",
+        "REPOSITORY SEMGREP",
+        "REPOSITORY SYFT",
+        "REPOSITORY TRIVY",
+        "REPOSITORY TRIVY SBOM",
+        "REPOSITORY TRUFFLEHOG",
+        "ROBOTFRAMEWORK ROBOCOP",
+        "RST RSTCHECK",
+        "RST RSTFMT",
+        "RST RST LINT",
+        "RUBY RUBOCOP",
+        "RUST CLIPPY",
+        "R LINTR",
+        "SALESFORCE CODE ANALYZER APEX",
+        "SALESFORCE CODE ANALYZER AURA",
+        "SALESFORCE CODE ANALYZER LWC",
+        "SALESFORCE LIGHTNING FLOW SCANNER",
+        "SALESFORCE SFDX SCANNER APEX",
+        "SALESFORCE SFDX SCANNER AURA",
+        "SALESFORCE SFDX SCANNER LWC",
+        "SCALA SCALAFIX",
+        "SNAKEMAKE LINT",
+        "SNAKEMAKE SNAKEFMT",
+        "SPELL CODESPELL",
+        "SPELL CSPELL",
+        "SPELL LYCHEE",
+        "SPELL MISSPELL",
+        "SPELL PROSELINT",
+        "SPELL VALE",
+        "SQL SQLFLUFF",
+        "SQL SQL LINT",
+        "SQL TSQLLINT",
+        "SWIFT SWIFTLINT",
+        "TEKTON TEKTON LINT",
+        "TERRAFORM CHECKOV",
+        "TERRAFORM KICS",
+        "TERRAFORM TERRAFORM FMT",
+        "TERRAFORM TERRAGRUNT",
+        "TERRAFORM TERRASCAN",
+        "TERRAFORM TFLINT",
+        "TSX ESLINT",
+        "TYPESCRIPT ES",
+        "TYPESCRIPT PRETTIER",
+        "TYPESCRIPT STANDARD",
+        "VBDOTNET DOTNET FORMAT",
+        "XML XMLLINT",
+        "YAML PRETTIER",
+        "YAML V8R",
+        "YAML YAMLLINT"
+      ],
       "type": "string"
     }
   },
@@ -321,6 +536,11 @@
         "file",
         "list_of_files",
         "project"
+      ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
       ],
       "title": "ACTION_ACTIONLINT: Override default cli lint mode",
       "type": "string"
@@ -545,6 +765,11 @@
         "file",
         "list_of_files",
         "project"
+      ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
       ],
       "title": "ANSIBLE_ANSIBLE_LINT: Override default cli lint mode",
       "type": "string"
@@ -802,6 +1027,10 @@
         "file",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "Project"
+      ],
       "title": "API_SPECTRAL: Override default cli lint mode",
       "type": "string"
     },
@@ -977,6 +1206,10 @@
       "enum": [
         "file",
         "project"
+      ],
+      "enumNames": [
+        "File",
+        "Project"
       ],
       "title": "ARM_ARM_TTK: Override default cli lint mode",
       "type": "string"
@@ -1165,6 +1398,10 @@
         "artifacts",
         "build"
       ],
+      "enumNames": [
+        "Artifacts",
+        "Build"
+      ],
       "title": "Type of hyperlinks in Azure PR Comments (artifacts or build)",
       "type": "string"
     },
@@ -1203,6 +1440,10 @@
       "enum": [
         "file",
         "project"
+      ],
+      "enumNames": [
+        "File",
+        "Project"
       ],
       "title": "BASH_EXEC: Override default cli lint mode",
       "type": "string"
@@ -1394,6 +1635,11 @@
         "list_of_files",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
+      ],
       "title": "BASH_SHELLCHECK: Override default cli lint mode",
       "type": "string"
     },
@@ -1540,6 +1786,11 @@
         "list_of_files",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
+      ],
       "title": "BASH_SHFMT: Override default cli lint mode",
       "type": "string"
     },
@@ -1684,6 +1935,10 @@
       "enum": [
         "file",
         "project"
+      ],
+      "enumNames": [
+        "File",
+        "Project"
       ],
       "title": "BICEP_BICEP_LINTER: Override default cli lint mode",
       "type": "string"
@@ -1895,6 +2150,10 @@
         "file",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "Project"
+      ],
       "title": "CLOJURE_CLJSTYLE: Override default cli lint mode",
       "type": "string"
     },
@@ -2052,6 +2311,10 @@
       "enum": [
         "file",
         "project"
+      ],
+      "enumNames": [
+        "File",
+        "Project"
       ],
       "title": "CLOJURE_CLJ_KONDO: Override default cli lint mode",
       "type": "string"
@@ -2263,6 +2526,11 @@
         "list_of_files",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
+      ],
       "title": "CLOUDFORMATION_CFN_LINT: Override default cli lint mode",
       "type": "string"
     },
@@ -2471,6 +2739,10 @@
       "enum": [
         "file",
         "project"
+      ],
+      "enumNames": [
+        "File",
+        "Project"
       ],
       "title": "COFFEE_COFFEELINT: Override default cli lint mode",
       "type": "string"
@@ -2733,6 +3005,11 @@
         "list_of_files",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
+      ],
       "title": "COPYPASTE_JSCPD: Override default cli lint mode",
       "type": "string"
     },
@@ -2899,6 +3176,11 @@
         "list_of_files",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
+      ],
       "title": "CPP_CLANG_FORMAT: Override default cli lint mode",
       "type": "string"
     },
@@ -3057,6 +3339,10 @@
         "file",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "Project"
+      ],
       "title": "CPP_CPPCHECK: Override default cli lint mode",
       "type": "string"
     },
@@ -3202,6 +3488,11 @@
         "file",
         "list_of_files",
         "project"
+      ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
       ],
       "title": "CPP_CPPLINT: Override default cli lint mode",
       "type": "string"
@@ -3502,6 +3793,11 @@
         "list_of_files",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
+      ],
       "title": "CSHARP_CSHARPIER: Override default cli lint mode",
       "type": "string"
     },
@@ -3660,6 +3956,11 @@
         "file",
         "list_of_files",
         "project"
+      ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
       ],
       "title": "CSHARP_DOTNET_FORMAT: Override default cli lint mode",
       "type": "string"
@@ -3839,6 +4140,10 @@
       "enum": [
         "file",
         "project"
+      ],
+      "enumNames": [
+        "File",
+        "Project"
       ],
       "title": "CSHARP_ROSLYNATOR: Override default cli lint mode",
       "type": "string"
@@ -4029,6 +4334,10 @@
         "file",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "Project"
+      ],
       "title": "(deprecated) CSS_SCSS_LINT: Override default cli lint mode",
       "type": "string"
     },
@@ -4194,6 +4503,11 @@
         "file",
         "list_of_files",
         "project"
+      ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
       ],
       "title": "CSS_STYLELINT: Override default cli lint mode",
       "type": "string"
@@ -4361,6 +4675,11 @@
         "list_of_files",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
+      ],
       "title": "C_CLANG_FORMAT: Override default cli lint mode",
       "type": "string"
     },
@@ -4519,6 +4838,10 @@
         "file",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "Project"
+      ],
       "title": "C_CPPCHECK: Override default cli lint mode",
       "type": "string"
     },
@@ -4664,6 +4987,11 @@
         "file",
         "list_of_files",
         "project"
+      ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
       ],
       "title": "C_CPPLINT: Override default cli lint mode",
       "type": "string"
@@ -4853,6 +5181,10 @@
       "enum": [
         "file",
         "project"
+      ],
+      "enumNames": [
+        "File",
+        "Project"
       ],
       "title": "DART_DARTANALYZER: Override default cli lint mode",
       "type": "string"
@@ -5121,6 +5453,11 @@
         "list_of_files",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
+      ],
       "title": "(removed) DOCKERFILE_DOCKERFILELINT: Override default cli lint mode",
       "type": "string"
     },
@@ -5270,6 +5607,11 @@
         "file",
         "list_of_files",
         "project"
+      ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
       ],
       "title": "DOCKERFILE_HADOLINT: Override default cli lint mode",
       "type": "string"
@@ -5470,6 +5812,11 @@
         "file",
         "list_of_files",
         "project"
+      ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
       ],
       "title": "EDITORCONFIG_EDITORCONFIG_CHECKER: Override default cli lint mode",
       "type": "string"
@@ -5775,6 +6122,10 @@
         "file",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "Project"
+      ],
       "title": "ENV_DOTENV_LINTER: Override default cli lint mode",
       "type": "string"
     },
@@ -6072,6 +6423,10 @@
       "enum": [
         "file",
         "project"
+      ],
+      "enumNames": [
+        "File",
+        "Project"
       ],
       "title": "GHERKIN_GHERKIN_LINT: Override default cli lint mode",
       "type": "string"
@@ -6457,6 +6812,11 @@
         "list_of_files",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
+      ],
       "title": "GO_GOLANGCI_LINT: Override default cli lint mode",
       "type": "string"
     },
@@ -6647,6 +7007,11 @@
         "list_of_files",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
+      ],
       "title": "GO_REVIVE: Override default cli lint mode",
       "type": "string"
     },
@@ -6814,6 +7179,10 @@
       "enum": [
         "file",
         "project"
+      ],
+      "enumNames": [
+        "File",
+        "Project"
       ],
       "title": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: Override default cli lint mode",
       "type": "string"
@@ -7025,6 +7394,11 @@
         "list_of_files",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
+      ],
       "title": "GROOVY_NPM_GROOVY_LINT: Override default cli lint mode",
       "type": "string"
     },
@@ -7225,6 +7599,11 @@
         "list_of_files",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
+      ],
       "title": "HTML_DJLINT: Override default cli lint mode",
       "type": "string"
     },
@@ -7380,6 +7759,11 @@
         "file",
         "list_of_files",
         "project"
+      ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
       ],
       "title": "HTML_HTMLHINT: Override default cli lint mode",
       "type": "string"
@@ -7563,6 +7947,10 @@
         "standard",
         "prettier"
       ],
+      "enumNames": [
+        "Standard",
+        "Prettier"
+      ],
       "examples": [
         "standard",
         "prettier"
@@ -7606,6 +7994,11 @@
         "file",
         "list_of_files",
         "project"
+      ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
       ],
       "title": "JAVASCRIPT_ES: Override default cli lint mode",
       "type": "string"
@@ -7800,6 +8193,11 @@
         "list_of_files",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
+      ],
       "title": "JAVASCRIPT_PRETTIER: Override default cli lint mode",
       "type": "string"
     },
@@ -7976,6 +8374,11 @@
         "list_of_files",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
+      ],
       "title": "JAVASCRIPT_STANDARD: Override default cli lint mode",
       "type": "string"
     },
@@ -8121,6 +8524,11 @@
         "file",
         "list_of_files",
         "project"
+      ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
       ],
       "title": "JAVA_CHECKSTYLE: Override default cli lint mode",
       "type": "string"
@@ -8297,6 +8705,11 @@
         "file",
         "list_of_files",
         "project"
+      ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
       ],
       "title": "JAVA_PMD: Override default cli lint mode",
       "type": "string"
@@ -8497,6 +8910,11 @@
         "list_of_files",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
+      ],
       "title": "JSON_ESLINT_PLUGIN_JSONC: Override default cli lint mode",
       "type": "string"
     },
@@ -8673,6 +9091,11 @@
         "list_of_files",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
+      ],
       "title": "JSON_JSONLINT: Override default cli lint mode",
       "type": "string"
     },
@@ -8831,6 +9254,11 @@
         "file",
         "list_of_files",
         "project"
+      ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
       ],
       "title": "JSON_NPM_PACKAGE_JSON_LINT: Override default cli lint mode",
       "type": "string"
@@ -8998,6 +9426,11 @@
         "list_of_files",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
+      ],
       "title": "JSON_PRETTIER: Override default cli lint mode",
       "type": "string"
     },
@@ -9152,6 +9585,10 @@
         "simple",
         "detailed"
       ],
+      "enumNames": [
+        "Simple",
+        "Detailed"
+      ],
       "title": "JSON reporter output detail",
       "type": "string"
     },
@@ -9191,6 +9628,11 @@
         "file",
         "list_of_files",
         "project"
+      ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
       ],
       "title": "JSON_V8R: Override default cli lint mode",
       "type": "string"
@@ -9337,6 +9779,11 @@
         "file",
         "list_of_files",
         "project"
+      ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
       ],
       "title": "JSX_ESLINT: Override default cli lint mode",
       "type": "string"
@@ -9548,6 +9995,11 @@
         "list_of_files",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
+      ],
       "title": "KOTLIN_DETEKT: Override default cli lint mode",
       "type": "string"
     },
@@ -9706,6 +10158,11 @@
         "file",
         "list_of_files",
         "project"
+      ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
       ],
       "title": "KOTLIN_KTLINT: Override default cli lint mode",
       "type": "string"
@@ -9902,6 +10359,11 @@
         "list_of_files",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
+      ],
       "title": "KUBERNETES_HELM: Override default cli lint mode",
       "type": "string"
     },
@@ -10044,6 +10506,11 @@
         "file",
         "list_of_files",
         "project"
+      ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
       ],
       "title": "KUBERNETES_KUBECONFORM: Override default cli lint mode",
       "type": "string"
@@ -10198,6 +10665,11 @@
         "list_of_files",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
+      ],
       "title": "KUBERNETES_KUBESCAPE: Override default cli lint mode",
       "type": "string"
     },
@@ -10339,6 +10811,10 @@
       "enum": [
         "file",
         "project"
+      ],
+      "enumNames": [
+        "File",
+        "Project"
       ],
       "title": "(removed) KUBERNETES_KUBEVAL: Override default cli lint mode",
       "type": "string"
@@ -10498,6 +10974,10 @@
       "enum": [
         "file",
         "project"
+      ],
+      "enumNames": [
+        "File",
+        "Project"
       ],
       "title": "LATEX_CHKTEX: Override default cli lint mode",
       "type": "string"
@@ -10732,6 +11212,10 @@
         "ERROR",
         "WARNING"
       ],
+      "enumNames": [
+        "ERROR",
+        "WARNING"
+      ],
       "examples": [
         "ERROR",
         "WARNING"
@@ -10746,6 +11230,10 @@
       "enum": [
         "after_linter_output",
         "before_linter_output"
+      ],
+      "enumNames": [
+        "After Linter Output",
+        "Before Linter Output"
       ],
       "examples": [
         "after_linter_output",
@@ -10792,6 +11280,16 @@
         "grok",
         "ollama"
       ],
+      "enumNames": [
+        "Openai",
+        "Anthropic",
+        "Google",
+        "Huggingface",
+        "Mistral",
+        "Deepseek",
+        "Grok",
+        "Ollama"
+      ],
       "examples": [
         "openai",
         "anthropic",
@@ -10826,6 +11324,12 @@
       "default": "INFO",
       "description": "How much output the script will generate to the console. One of INFO, DEBUG, WARNING or ERROR.",
       "enum": [
+        "INFO",
+        "DEBUG",
+        "WARNING",
+        "ERROR"
+      ],
+      "enumNames": [
         "INFO",
         "DEBUG",
         "WARNING",
@@ -10879,6 +11383,10 @@
       "enum": [
         "file",
         "project"
+      ],
+      "enumNames": [
+        "File",
+        "Project"
       ],
       "title": "LUA_LUACHECK: Override default cli lint mode",
       "type": "string"
@@ -11079,6 +11587,10 @@
         "file",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "Project"
+      ],
       "title": "LUA_SELENE: Override default cli lint mode",
       "type": "string"
     },
@@ -11237,6 +11749,10 @@
         "file",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "Project"
+      ],
       "title": "LUA_STYLUA: Override default cli lint mode",
       "type": "string"
     },
@@ -11394,6 +11910,10 @@
       "enum": [
         "file",
         "project"
+      ],
+      "enumNames": [
+        "File",
+        "Project"
       ],
       "title": "MAKEFILE_CHECKMAKE: Override default cli lint mode",
       "type": "string"
@@ -11568,6 +12088,10 @@
         "markdownlint",
         "remark-lint"
       ],
+      "enumNames": [
+        "Markdownlint",
+        "Remark Lint"
+      ],
       "title": "Markdown default formatting style",
       "type": "string"
     },
@@ -11617,6 +12141,11 @@
         "file",
         "list_of_files",
         "project"
+      ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
       ],
       "title": "MARKDOWN_MARKDOWNLINT: Override default cli lint mode",
       "type": "string"
@@ -11784,6 +12313,11 @@
         "list_of_files",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
+      ],
       "title": "(deprecated) MARKDOWN_MARKDOWN_LINK_CHECK: Override default cli lint mode",
       "type": "string"
     },
@@ -11949,6 +12483,11 @@
         "file",
         "list_of_files",
         "project"
+      ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
       ],
       "title": "MARKDOWN_MARKDOWN_TABLE_FORMATTER: Override default cli lint mode",
       "type": "string"
@@ -12182,6 +12721,10 @@
         "file",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "Project"
+      ],
       "title": "MARKDOWN_REMARK_LINT: Override default cli lint mode",
       "type": "string"
     },
@@ -12340,6 +12883,11 @@
         "file",
         "list_of_files",
         "project"
+      ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
       ],
       "title": "MARKDOWN_RUMDL: Override default cli lint mode",
       "type": "string"
@@ -12586,6 +13134,10 @@
         "file",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "Project"
+      ],
       "title": "(deprecated) OPENAPI_SPECTRAL: Override default cli lint mode",
       "type": "string"
     },
@@ -12722,6 +13274,10 @@
         "simple",
         "detailed"
       ],
+      "enumNames": [
+        "Simple",
+        "Detailed"
+      ],
       "title": "Output detail (DEPRECATED, use reporters variables instead)",
       "type": "string"
     },
@@ -12731,6 +13287,10 @@
       "enum": [
         "text",
         "tap"
+      ],
+      "enumNames": [
+        "Text",
+        "Tap"
       ],
       "title": "Output format (DEPRECATED, use reporters variables instead)",
       "type": "string"
@@ -12796,6 +13356,10 @@
       "enum": [
         "file",
         "project"
+      ],
+      "enumNames": [
+        "File",
+        "Project"
       ],
       "title": "PERL_PERLCRITIC: Override default cli lint mode",
       "type": "string"
@@ -12969,6 +13533,11 @@
         "list_of_files",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
+      ],
       "title": "(removed) PHP_BUILTIN: Override default cli lint mode",
       "type": "string"
     },
@@ -13098,6 +13667,11 @@
         "file",
         "list_of_files",
         "project"
+      ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
       ],
       "title": "PHP_PHPCSFIXER: Override default cli lint mode",
       "type": "string"
@@ -13247,6 +13821,11 @@
         "file",
         "list_of_files",
         "project"
+      ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
       ],
       "title": "PHP_PHPCS: Override default cli lint mode",
       "type": "string"
@@ -13414,6 +13993,11 @@
         "list_of_files",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
+      ],
       "title": "PHP_PHPLINT: Override default cli lint mode",
       "type": "string"
     },
@@ -13579,6 +14163,11 @@
         "file",
         "list_of_files",
         "project"
+      ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
       ],
       "title": "PHP_PHPSTAN: Override default cli lint mode",
       "type": "string"
@@ -13779,6 +14368,11 @@
         "file",
         "list_of_files",
         "project"
+      ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
       ],
       "title": "PHP_PSALM: Override default cli lint mode",
       "type": "string"
@@ -14019,6 +14613,10 @@
         "file",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "Project"
+      ],
       "title": "POWERSHELL_POWERSHELL: Override default cli lint mode",
       "type": "string"
     },
@@ -14133,6 +14731,10 @@
       "enum": [
         "file",
         "project"
+      ],
+      "enumNames": [
+        "File",
+        "Project"
       ],
       "title": "POWERSHELL_POWERSHELL_FORMATTER: Override default cli lint mode",
       "type": "string"
@@ -14447,6 +15049,10 @@
         "file",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "Project"
+      ],
       "title": "PROTOBUF_PROTOLINT: Override default cli lint mode",
       "type": "string"
     },
@@ -14656,6 +15262,10 @@
         "file",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "Project"
+      ],
       "title": "PUPPET_PUPPET_LINT: Override default cli lint mode",
       "type": "string"
     },
@@ -14822,6 +15432,11 @@
         "list_of_files",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
+      ],
       "title": "PYTHON_BANDIT: Override default cli lint mode",
       "type": "string"
     },
@@ -14981,6 +15596,11 @@
         "list_of_files",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
+      ],
       "title": "PYTHON_BLACK: Override default cli lint mode",
       "type": "string"
     },
@@ -15117,6 +15737,10 @@
         "black",
         "ruff"
       ],
+      "enumNames": [
+        "Black",
+        "Ruff"
+      ],
       "examples": [
         "black",
         "ruff"
@@ -15170,6 +15794,11 @@
         "file",
         "list_of_files",
         "project"
+      ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
       ],
       "title": "PYTHON_FLAKE8: Override default cli lint mode",
       "type": "string"
@@ -15337,6 +15966,11 @@
         "list_of_files",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
+      ],
       "title": "PYTHON_ISORT: Override default cli lint mode",
       "type": "string"
     },
@@ -15502,6 +16136,11 @@
         "file",
         "list_of_files",
         "project"
+      ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
       ],
       "title": "PYTHON_MYPY: Override default cli lint mode",
       "type": "string"
@@ -15696,6 +16335,11 @@
         "list_of_files",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
+      ],
       "title": "PYTHON_PYLINT: Override default cli lint mode",
       "type": "string"
     },
@@ -15862,6 +16506,11 @@
         "list_of_files",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
+      ],
       "title": "PYTHON_PYRIGHT: Override default cli lint mode",
       "type": "string"
     },
@@ -16021,6 +16670,11 @@
         "list_of_files",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
+      ],
       "title": "PYTHON_RUFF: Override default cli lint mode",
       "type": "string"
     },
@@ -16129,6 +16783,11 @@
         "file",
         "list_of_files",
         "project"
+      ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
       ],
       "title": "PYTHON_RUFF_FORMAT: Override default cli lint mode",
       "type": "string"
@@ -16382,6 +17041,10 @@
         "file",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "Project"
+      ],
       "title": "RAKU_RAKU: Override default cli lint mode",
       "type": "string"
     },
@@ -16521,6 +17184,12 @@
         "sections-table",
         "table-sections"
       ],
+      "enumNames": [
+        "Sections",
+        "Table",
+        "Sections Table",
+        "Table Sections"
+      ],
       "title": "Reporters Markdown Summary type",
       "type": "string"
     },
@@ -16531,6 +17200,10 @@
       "enum": [
         "simple",
         "advanced"
+      ],
+      "enumNames": [
+        "Simple",
+        "Advanced"
       ],
       "title": "Reporters Markdown type",
       "type": "string"
@@ -16578,6 +17251,11 @@
         "file",
         "list_of_files",
         "project"
+      ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
       ],
       "title": "REPOSITORY_CHECKOV: Override default cli lint mode",
       "type": "string"
@@ -16704,6 +17382,11 @@
         "list_of_files",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
+      ],
       "title": "REPOSITORY_DEVSKIM: Override default cli lint mode",
       "type": "string"
     },
@@ -16829,6 +17512,11 @@
         "list_of_files",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
+      ],
       "title": "REPOSITORY_DUSTILOCK: Override default cli lint mode",
       "type": "string"
     },
@@ -16950,6 +17638,11 @@
         "file",
         "list_of_files",
         "project"
+      ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
       ],
       "title": "REPOSITORY_GITLEAKS: Override default cli lint mode",
       "type": "string"
@@ -17093,6 +17786,11 @@
         "file",
         "list_of_files",
         "project"
+      ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
       ],
       "title": "REPOSITORY_GIT_DIFF: Override default cli lint mode",
       "type": "string"
@@ -17294,6 +17992,11 @@
         "list_of_files",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
+      ],
       "title": "REPOSITORY_GRYPE: Override default cli lint mode",
       "type": "string"
     },
@@ -17418,6 +18121,11 @@
         "file",
         "list_of_files",
         "project"
+      ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
       ],
       "title": "REPOSITORY_KICS: Override default cli lint mode",
       "type": "string"
@@ -17544,6 +18252,11 @@
         "list_of_files",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
+      ],
       "title": "REPOSITORY_KINGFISHER: Override default cli lint mode",
       "type": "string"
     },
@@ -17655,6 +18368,11 @@
         "file",
         "list_of_files",
         "project"
+      ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
       ],
       "title": "REPOSITORY_LS_LINT: Override default cli lint mode",
       "type": "string"
@@ -17815,6 +18533,11 @@
         "list_of_files",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
+      ],
       "title": "REPOSITORY_SECRETLINT: Override default cli lint mode",
       "type": "string"
     },
@@ -17939,6 +18662,11 @@
         "file",
         "list_of_files",
         "project"
+      ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
       ],
       "title": "REPOSITORY_SEMGREP: Override default cli lint mode",
       "type": "string"
@@ -18068,6 +18796,11 @@
         "list_of_files",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
+      ],
       "title": "REPOSITORY_SYFT: Override default cli lint mode",
       "type": "string"
     },
@@ -18193,6 +18926,11 @@
         "list_of_files",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
+      ],
       "title": "REPOSITORY_TRIVY: Override default cli lint mode",
       "type": "string"
     },
@@ -18307,6 +19045,11 @@
         "file",
         "list_of_files",
         "project"
+      ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
       ],
       "title": "REPOSITORY_TRIVY_SBOM: Override default cli lint mode",
       "type": "string"
@@ -18442,6 +19185,11 @@
         "file",
         "list_of_files",
         "project"
+      ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
       ],
       "title": "REPOSITORY_TRUFFLEHOG: Override default cli lint mode",
       "type": "string"
@@ -18611,6 +19359,11 @@
         "file",
         "list_of_files",
         "project"
+      ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
       ],
       "title": "ROBOTFRAMEWORK_ROBOCOP: Override default cli lint mode",
       "type": "string"
@@ -18814,6 +19567,10 @@
         "file",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "Project"
+      ],
       "title": "RST_RSTCHECK: Override default cli lint mode",
       "type": "string"
     },
@@ -18979,6 +19736,10 @@
         "file",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "Project"
+      ],
       "title": "RST_RSTFMT: Override default cli lint mode",
       "type": "string"
     },
@@ -19123,6 +19884,10 @@
       "enum": [
         "file",
         "project"
+      ],
+      "enumNames": [
+        "File",
+        "Project"
       ],
       "title": "RST_RST_LINT: Override default cli lint mode",
       "type": "string"
@@ -19313,6 +20078,10 @@
         "file",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "Project"
+      ],
       "title": "RUBY_RUBOCOP: Override default cli lint mode",
       "type": "string"
     },
@@ -19478,6 +20247,11 @@
         "file",
         "list_of_files",
         "project"
+      ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
       ],
       "title": "RUST_CLIPPY: Override default cli lint mode",
       "type": "string"
@@ -19688,6 +20462,10 @@
         "file",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "Project"
+      ],
       "title": "R_LINTR: Override default cli lint mode",
       "type": "string"
     },
@@ -19888,6 +20666,11 @@
         "list_of_files",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
+      ],
       "title": "SALESFORCE_CODE_ANALYZER_APEX: Override default cli lint mode",
       "type": "string"
     },
@@ -20020,6 +20803,11 @@
         "list_of_files",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
+      ],
       "title": "SALESFORCE_CODE_ANALYZER_AURA: Override default cli lint mode",
       "type": "string"
     },
@@ -20151,6 +20939,11 @@
         "file",
         "list_of_files",
         "project"
+      ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
       ],
       "title": "SALESFORCE_CODE_ANALYZER_LWC: Override default cli lint mode",
       "type": "string"
@@ -20299,6 +21092,11 @@
         "file",
         "list_of_files",
         "project"
+      ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
       ],
       "title": "SALESFORCE_LIGHTNING_FLOW_SCANNER: Override default cli lint mode",
       "type": "string"
@@ -20466,6 +21264,11 @@
         "list_of_files",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
+      ],
       "title": "(deprecated) SALESFORCE_SFDX_SCANNER_APEX: Override default cli lint mode",
       "type": "string"
     },
@@ -20613,6 +21416,11 @@
         "file",
         "list_of_files",
         "project"
+      ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
       ],
       "title": "(deprecated) SALESFORCE_SFDX_SCANNER_AURA: Override default cli lint mode",
       "type": "string"
@@ -20797,6 +21605,11 @@
         "file",
         "list_of_files",
         "project"
+      ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
       ],
       "title": "(deprecated) SALESFORCE_SFDX_SCANNER_LWC: Override default cli lint mode",
       "type": "string"
@@ -21002,6 +21815,10 @@
         "file",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "Project"
+      ],
       "title": "SCALA_SCALAFIX: Override default cli lint mode",
       "type": "string"
     },
@@ -21189,6 +22006,11 @@
           "file",
           "list_of_files",
           "project"
+        ],
+        "enumNames": [
+          "File",
+          "List of Files",
+          "Project"
         ]
       },
       "title": "List of CLI lint modes to skip",
@@ -21239,6 +22061,10 @@
       "enum": [
         "file",
         "project"
+      ],
+      "enumNames": [
+        "File",
+        "Project"
       ],
       "title": "SNAKEMAKE_LINT: Override default cli lint mode",
       "type": "string"
@@ -21419,6 +22245,10 @@
         "file",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "Project"
+      ],
       "title": "SNAKEMAKE_SNAKEFMT: Override default cli lint mode",
       "type": "string"
     },
@@ -21585,6 +22415,11 @@
         "list_of_files",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
+      ],
       "title": "SPELL_CODESPELL: Override default cli lint mode",
       "type": "string"
     },
@@ -21750,6 +22585,11 @@
         "file",
         "list_of_files",
         "project"
+      ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
       ],
       "title": "SPELL_CSPELL: Override default cli lint mode",
       "type": "string"
@@ -21927,6 +22767,11 @@
         "list_of_files",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
+      ],
       "title": "SPELL_LYCHEE: Override default cli lint mode",
       "type": "string"
     },
@@ -22086,6 +22931,11 @@
         "list_of_files",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
+      ],
       "title": "SPELL_MISSPELL: Override default cli lint mode",
       "type": "string"
     },
@@ -22239,6 +23089,11 @@
         "file",
         "list_of_files",
         "project"
+      ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
       ],
       "title": "SPELL_PROSELINT: Override default cli lint mode",
       "type": "string"
@@ -22398,6 +23253,11 @@
         "file",
         "list_of_files",
         "project"
+      ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
       ],
       "title": "SPELL_VALE: Override default cli lint mode",
       "type": "string"
@@ -22602,6 +23462,11 @@
         "list_of_files",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
+      ],
       "title": "SQL_SQLFLUFF: Override default cli lint mode",
       "type": "string"
     },
@@ -22759,6 +23624,10 @@
       "enum": [
         "file",
         "project"
+      ],
+      "enumNames": [
+        "File",
+        "Project"
       ],
       "title": "SQL_SQL_LINT: Override default cli lint mode",
       "type": "string"
@@ -22925,6 +23794,11 @@
         "file",
         "list_of_files",
         "project"
+      ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
       ],
       "title": "SQL_TSQLLINT: Override default cli lint mode",
       "type": "string"
@@ -23128,6 +24002,11 @@
         "file",
         "list_of_files",
         "project"
+      ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
       ],
       "title": "SWIFT_SWIFTLINT: Override default cli lint mode",
       "type": "string"
@@ -23335,6 +24214,10 @@
         "file",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "Project"
+      ],
       "title": "TEKTON_TEKTON_LINT: Override default cli lint mode",
       "type": "string"
     },
@@ -23500,6 +24383,10 @@
         "file",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "Project"
+      ],
       "title": "(removed) TERRAFORM_CHECKOV: Override default cli lint mode",
       "type": "string"
     },
@@ -23628,6 +24515,10 @@
       "enum": [
         "file",
         "project"
+      ],
+      "enumNames": [
+        "File",
+        "Project"
       ],
       "title": "(removed) TERRAFORM_KICS: Override default cli lint mode",
       "type": "string"
@@ -23782,6 +24673,10 @@
         "file",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "Project"
+      ],
       "title": "TERRAFORM_TERRAFORM_FMT: Override default cli lint mode",
       "type": "string"
     },
@@ -23926,6 +24821,10 @@
       "enum": [
         "file",
         "project"
+      ],
+      "enumNames": [
+        "File",
+        "Project"
       ],
       "title": "TERRAFORM_TERRAGRUNT: Override default cli lint mode",
       "type": "string"
@@ -24093,6 +24992,11 @@
         "list_of_files",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
+      ],
       "title": "(deprecated) TERRAFORM_TERRASCAN: Override default cli lint mode",
       "type": "string"
     },
@@ -24241,6 +25145,11 @@
         "file",
         "list_of_files",
         "project"
+      ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
       ],
       "title": "TERRAFORM_TFLINT: Override default cli lint mode",
       "type": "string"
@@ -24418,6 +25327,11 @@
         "file",
         "list_of_files",
         "project"
+      ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
       ],
       "title": "TSX_ESLINT: Override default cli lint mode",
       "type": "string"
@@ -24599,6 +25513,10 @@
         "standard",
         "prettier"
       ],
+      "enumNames": [
+        "Standard",
+        "Prettier"
+      ],
       "examples": [
         "standard",
         "prettier"
@@ -24642,6 +25560,11 @@
         "file",
         "list_of_files",
         "project"
+      ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
       ],
       "title": "TYPESCRIPT_ES: Override default cli lint mode",
       "type": "string"
@@ -24836,6 +25759,11 @@
         "list_of_files",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
+      ],
       "title": "TYPESCRIPT_PRETTIER: Override default cli lint mode",
       "type": "string"
     },
@@ -25012,6 +25940,11 @@
         "list_of_files",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
+      ],
       "title": "TYPESCRIPT_STANDARD: Override default cli lint mode",
       "type": "string"
     },
@@ -25174,6 +26107,11 @@
         "file",
         "list_of_files",
         "project"
+      ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
       ],
       "title": "VBDOTNET_DOTNET_FORMAT: Override default cli lint mode",
       "type": "string"
@@ -25405,6 +26343,11 @@
         "list_of_files",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
+      ],
       "title": "XML_XMLLINT: Override default cli lint mode",
       "type": "string"
     },
@@ -25584,6 +26527,11 @@
         "list_of_files",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
+      ],
       "title": "YAML_PRETTIER: Override default cli lint mode",
       "type": "string"
     },
@@ -25760,6 +26708,11 @@
         "list_of_files",
         "project"
       ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
+      ],
       "title": "YAML_V8R: Override default cli lint mode",
       "type": "string"
     },
@@ -25918,6 +26871,11 @@
         "file",
         "list_of_files",
         "project"
+      ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
       ],
       "title": "YAML_YAMLLINT: Override default cli lint mode",
       "type": "string"
