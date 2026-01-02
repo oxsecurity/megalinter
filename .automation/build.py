@@ -2564,7 +2564,8 @@ def _ensure_enum_names(schema_fragment: Any) -> bool:
             and isinstance(schema_fragment["enum"], list)
         ):
             schema_fragment["enumNames"] = [
-                _enum_value_to_label(enum_value) for enum_value in schema_fragment["enum"]
+                _enum_value_to_label(enum_value)
+                for enum_value in schema_fragment["enum"]
             ]
             changed = True
 
