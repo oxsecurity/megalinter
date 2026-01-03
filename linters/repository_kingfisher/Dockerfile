@@ -49,7 +49,7 @@ FROM python:3.13-alpine3.23
 #############################################################################################
 #ARG__START
 # renovate: datasource=github-tags depName=mongodb/kingfisher
-ARG REPOSITORY_KINGFISHER_VERSION=1.72.0
+ARG REPOSITORY_KINGFISHER_VERSION=1.73.0
 #ARG__END
 
 ####################
