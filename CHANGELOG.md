@@ -131,6 +131,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [csharpier](https://csharpier.com/) from 1.2.4 to **1.2.5** on 2026-01-01
   - [rumdl](https://github.com/rvben/rumdl) from 0.0.207 to **0.0.208** on 2026-01-02
   - [robocop](https://github.com/MarketSquare/robotframework-robocop) from 7.1.0 to **7.2.0** on 2026-01-02
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 16.0.1 to **16.1.1** on 2026-01-03
+  - [kingfisher](https://github.com/mongodb/kingfisher) from 1.72.0 to **1.73.0** on 2026-01-03
 <!-- linter-versions-end -->
 
 ## [v9.2.0] - 2025-11-29
