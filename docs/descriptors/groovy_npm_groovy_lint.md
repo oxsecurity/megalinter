@@ -24,7 +24,7 @@ description: How to use npm-groovy-lint (configure, ignore files, ignore errors,
 
 ## npm-groovy-lint documentation
 
-- Version in MegaLinter: **16.0.1**
+- Version in MegaLinter: **16.1.1**
 - Visit [Official Web Site](https://nvuillam.github.io/npm-groovy-lint/){target=_blank}
 - See [How to configure npm-groovy-lint rules](https://github.com/nvuillam/npm-groovy-lint#configuration){target=_blank}
   - If custom `.groovylintrc.json` config file isn't found, [.groovylintrc.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.groovylintrc.json){target=_blank} will be used
@@ -133,6 +133,7 @@ Note: command-line arguments have priority on config file properties - default: 
   --format                     Format source code
   --fix                        Automatically fix problems when possible
   -x, --fixrules String        Option for --fix argument: List of rule identifiers to fix (if not specified, all available fixes will be applied) - default: all
+  --fixrulesexclude String     Option for --fix argument: Comma-separated list of rule identifiers to exclude from fixes (if not specified, none are excluded). Can be combined with --fixrules
   -i, --ignorepattern String   Comma-separated list of Ant-style file patterns specifying files that must be ignored. Default: none
   -r, --rulesets String        RuleSet file(s) to use for linting. If it is a directory, all rulesets will be used. RuleSet file definition: http://codenarc.github.io/CodeNarc/codenarc-creating-ruleset.html. If not specified, npm-groovy-script default one will be used. Can also be a list of rule identifiers with parameters
   --rulesetsoverridetype String  If list of rules sent in rulesets option, defines if they replace rules defined in .groovylintrc.json, or if they are appended - either: replaceConfig or appendConfig - default: replaceConfig
@@ -165,10 +166,10 @@ Note: command-line arguments have priority on config file properties - default: 
 ```dockerfile
 ENV JAVA_HOME_17=/usr/lib/jvm/java-17-openjdk
 # renovate: datasource=npm depName=npm-groovy-lint
-ARG NPM_GROOVY_LINT_VERSION=16.0.1
+ARG NPM_GROOVY_LINT_VERSION=16.1.1
 ```
 
 - APK packages (Linux):
   - [openjdk17](https://pkgs.alpinelinux.org/packages?branch=v3.23&arch=x86_64&name=openjdk17)
 - NPM packages (node.js):
-  - [npm-groovy-lint@16.0.1](https://www.npmjs.com/package/npm-groovy-lint/v/16.0.1)
+  - [npm-groovy-lint@16.1.1](https://www.npmjs.com/package/npm-groovy-lint/v/16.1.1)
