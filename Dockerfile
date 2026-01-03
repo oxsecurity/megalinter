@@ -1177,7 +1177,7 @@ RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/refs/tags/v${REPOS
 #
 # swiftlint installation
 # renovate: datasource=docker depName=ghcr.io/realm/swiftlint
-ENV SWIFT_SWIFTLINT_VERSION=0.62.2
+ENV SWIFT_SWIFTLINT_VERSION=0.63.0
 #
 # tekton-lint installation
 #
