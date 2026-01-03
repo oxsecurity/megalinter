@@ -53,6 +53,10 @@ linters:
           ARG NPM_MARKDOWNLINT_CLI_VERSION=0.47.0
       npm:
         - markdownlint-cli@${NPM_MARKDOWNLINT_CLI_VERSION}
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       sublime:
         - name: SublimeLinter-contrib-markdownlint
@@ -118,6 +122,10 @@ linters:
       npm:
         - remark-cli@${NPM_REMARK_CLI_VERSION}
         - remark-preset-lint-recommended@${NPM_REMARK_PRESET_LINT_RECOMMENDED_VERSION}
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       sublime:
         - name: SublimeLinter-contrib-remark-lint
@@ -165,6 +173,10 @@ linters:
           ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.7.0
       npm:
         - markdown-table-formatter@${NPM_MARKDOWN_TABLE_FORMATTER_VERSION}
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       vscode:
         - name: Markdown Table Prettify Extension
@@ -220,6 +232,10 @@ linters:
           ARG RUMDL_MYPY_VERSION=0.0.208
       pip:
         - rumdl==${RUMDL_MYPY_VERSION}
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       vscode:
         - name: rumdl - Markdown Linter
