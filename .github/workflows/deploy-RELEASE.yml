@@ -1,190 +1,18 @@
 ---
-#########################
-#########################
-## Deploy Docker Image ##
-#########################
-#########################
 
-#
-# Documentation:
-# https://help.github.com/en/articles/workflow-syntax-for-github-actions
-#
-
-#######################################
-# Start the job on all push to main #
-#######################################
 name: "Build & Deploy - RELEASE"
 on:
-  release:
-    # Want to run the automation when a release is created
-    types: ["created"]
-    paths:
-      - "Dockerfile"
-      - "megalinter/**"
-      - "mega-linter-runner/**"
-      - "flavors/**"
-      - "**/linter-versions.json"
-      - "**/.sh"
+  push:
+    branches:
+      - fix-doc
 
 ###############
 # Set the Job #
 ###############
 jobs:
-  build:
-    # Name the Job
-    name: Deploy Docker Image - RELEASE
-    # Set the agent to run on
-    runs-on: ubuntu-latest
-    # Only run on main repo
-    if: github.repository == 'oxsecurity/megalinter' && !contains(github.event.head_commit.message, 'skip deploy')
-    permissions:
-      actions: write
-      packages: write
-    environment:
-      name: release
-    ##################
-    # Load all steps #
-    ##################
-    steps:
-      ##########################
-      # Checkout the code base #
-      ##########################
-      - name: Checkout Code
-        uses: actions/checkout@v6
-
-      ########################################################
-      # Publish updated version of mega-linter-runner on NPM #
-      ########################################################
-      - uses: actions/setup-node@v6.1.0
-        with:
-          node-version: "24.x"
-          registry-url: "https://registry.npmjs.org"
-      - run: cd mega-linter-runner && npm install
-      - run: cd mega-linter-runner && npm publish || echo "mega-linter-runner not published"
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: Login to GitHub Container Registry
-        uses: docker/login-action@v3
-        with:
-          registry: ghcr.io
-          username: ${{ github.repository_owner }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-
-      # Free disk space
-      - name: Free Disk space
-        shell: bash
-        run: |
-          sudo rm -rf /usr/local/lib/android  # will release about 10 GB if you don't need Android
-          sudo rm -rf /usr/share/dotnet # will release about 20GB if you don't need .NET
-          sudo rm -rf /opt/ghc
-          sudo rm -rf "$AGENT_TOOLSDIRECTORY"
-
-      - name: Get current date
-        run: echo "BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" >> ${GITHUB_ENV}
-
-      - name: Build Image
-        uses: docker/build-push-action@v6
-        with:
-          context: .
-          file: Dockerfile-release
-          platforms: linux/amd64
-          build-args: |
-            MEGALINTER_BASE_IMAGE=docker.io/oxsecurity/megalinter:beta
-            BUILD_DATE=${{ env.BUILD_DATE }}
-            BUILD_REVISION=${{ github.sha }}
-            BUILD_VERSION=${{ github.event.release.tag_name }}
-          load: false
-          push: true
-          secrets: |
-            GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
-          # MAJOR-RELEASE-IMPACTED
-          tags: |
-            ghcr.io/oxsecurity/megalinter:v9
-            ghcr.io/oxsecurity/megalinter:${{ github.event.release.tag_name }}
-            ghcr.io/oxsecurity/megalinter:latest
-
-      - name: Invoke Mirror docker image workflow (Main image)
-        uses: benc-uk/workflow-dispatch@v1
-        with:
-          workflow: mirror-docker-image.yml
-          # MAJOR-RELEASE-IMPACTED
-          inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter:v9", "target-image": "docker.io/oxsecurity/megalinter:v9" }'
-          ref: main
-      - name: Invoke Mirror docker image workflow (Main image)
-        uses: benc-uk/workflow-dispatch@v1
-        with:
-          workflow: mirror-docker-image.yml
-          # MAJOR-RELEASE-IMPACTED
-          inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter:v9", "target-image": "docker.io/oxsecurity/megalinter:${{ github.event.release.tag_name }}" }'
-          ref: main
-      - name: Invoke Mirror docker image workflow (Main image)
-        uses: benc-uk/workflow-dispatch@v1
-        with:
-          workflow: mirror-docker-image.yml
-          # MAJOR-RELEASE-IMPACTED
-          inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter:v9", "target-image": "docker.io/oxsecurity/megalinter:latest" }'
-          ref: main
-
-      - name: Build Flavor Builder Image
-        uses: docker/build-push-action@v6
-        with:
-          context: .
-          file: Dockerfile-custom-flavor
-          platforms: linux/amd64
-          build-args: |
-            BUILD_DATE=${{ env.BUILD_DATE }}
-            BUILD_REVISION=${{ github.sha }}
-            BUILD_VERSION=${{ github.event.release.tag_name }}
-          load: false
-          push: true
-          secrets: |
-            GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
-          # MAJOR-RELEASE-IMPACTED
-          tags: |
-            ghcr.io/oxsecurity/megalinter-custom-flavor-builder:v9
-            ghcr.io/oxsecurity/megalinter-custom-flavor-builder:${{ github.event.release.tag_name }}
-            ghcr.io/oxsecurity/megalinter-custom-flavor-builder:latest
-
-      # - name: Build Worker Image
-      #   uses: docker/build-push-action@v6
-      #   with:
-      #     context: .
-      #     file: Dockerfile-release
-      #     platforms: linux/amd64
-      #     build-args: |
-      #       MEGALINTER_BASE_IMAGE=docker.io/oxsecurity/megalinter-worker:beta
-      #       BUILD_DATE=${{ env.BUILD_DATE }}
-      #       BUILD_REVISION=${{ github.sha }}
-      #       BUILD_VERSION=${{ github.event.release.tag_name }}
-      #     load: false
-      #     push: true
-      #     secrets: |
-      #       GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
-      #     tags: |
-      #       ghcr.io/oxsecurity/megalinter-worker:v9
-      #       ghcr.io/oxsecurity/megalinter-worker:${{ github.event.release.tag_name }}
-      #       ghcr.io/oxsecurity/megalinter-worker:latest
-
-      # - name: Invoke Mirror docker image workflow (Worker image)
-      #   uses: benc-uk/workflow-dispatch@v1
-      #   with:
-      #     workflow: mirror-docker-image.yml
-      #     inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter-worker:v9", "target-image": "docker.io/oxsecurity/megalinter-worker:v9" }'
-      # - name: Invoke Mirror docker image workflow (Worker image)
-      #   uses: benc-uk/workflow-dispatch@v1
-      #   with:
-      #     workflow: mirror-docker-image.yml
-      #     inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter-worker:v9", "target-image": "docker.io/oxsecurity/megalinter-worker:${{ github.event.release.tag_name }}" }'
-      # - name: Invoke Mirror docker image workflow (Worker image)
-      #   uses: benc-uk/workflow-dispatch@v1
-      #   with:
-      #     workflow: mirror-docker-image.yml
-      #     inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter-worker:v9", "target-image": "docker.io/oxsecurity/megalinter-worker:latest" }'
 
   deploy_doc:
     runs-on: ubuntu-latest
-    needs: build
     if: github.repository == 'oxsecurity/megalinter'
     permissions:
       contents: write
@@ -198,11 +26,11 @@ jobs:
         id: version
         run: |
           {
-            echo "cversion=$(git describe --tags --match='v*' --abbrev=0 | cut -c2-)"
-            echo "ctag=$(git describe --tags --match='v*' --abbrev=0)"
-            echo "pversion=$(git describe --abbrev=0 --match='v*' --tags "$(git rev-list --tags --skip=1 --max-count=1)" | cut -c2-)"
-            echo "ptag=$(git describe --abbrev=0 --match='v*' --tags "$(git rev-list --tags --skip=1 --max-count=1)")"
-          } >>"$GITHUB_OUTPUT"
+            echo "cversion=9.3.0"
+            echo "ctag=v9.3.0"
+            echo "pversion=9.2.0"
+            echo "ptag=v9.2.0"
+          } >>"$GITHUB_OUTPUT" 
       - name: Print tags
         run: |
           echo "prev tag ${{ steps.version.outputs.ptag }}"
