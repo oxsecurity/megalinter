@@ -224,7 +224,7 @@ ARG NPM_PRANTLF_JSONLINT_VERSION=16.0.0
 # renovate: datasource=npm depName=v8r
 ARG NPM_V8R_VERSION=5.1.0
 # renovate: datasource=npm depName=npm-package-json-lint
-ARG NPM_PACKAGE_JSON_LINT_VERSION=9.0.0
+ARG NPM_PACKAGE_JSON_LINT_VERSION=9.1.0
 # renovate: datasource=npm depName=npm-package-json-lint-config-default
 ARG NPM_PACKAGE_JSON_LINT_CONFIG_DEFAULT_VERSION=8.0.1
 # renovate: datasource=npm depName=eslint-plugin-react
@@ -268,7 +268,7 @@ ARG PHP_VIMEO_PSALM_VERSION=6.14.3
 # renovate: datasource=packagist depName=overtrue/phplint
 ARG PHP_OVERTRUE_PHPLINT_VERSION=9.7.1
 # renovate: datasource=packagist depName=friendsofphp/php-cs-fixer
-ARG PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION=v3.92.3
+ARG PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION=v3.92.4
 # renovate: datasource=nuget depName=PSScriptAnalyzer registryUrl=https://www.powershellgallery.com/api/v2/
 ARG PSSA_VERSION='1.24.0'
 
