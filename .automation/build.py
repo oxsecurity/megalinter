@@ -2578,6 +2578,249 @@ def _ensure_enum_names(schema_fragment: Any) -> bool:
     return changed
 
 
+_CONFIG_SCHEMA_IDS_CACHE: dict[str, Any] = {
+    "descriptor_ids_sorted": None,
+    "linter_ids_sorted": None,
+}
+
+
+def _is_removed_linter_related_variable(property_name: str) -> bool:
+    # Removed linters can still leave legacy variables in schema; ignore them for checks.
+    removed_linters_sorted = sorted(DEPRECATED_LINTERS, key=len, reverse=True)
+    for removed_linter_id in removed_linters_sorted:
+        if property_name == removed_linter_id or property_name.startswith(
+            removed_linter_id + "_"
+        ):
+            return True
+    return False
+
+
+def _collect_descriptor_ids_sorted() -> list[str]:
+    cached = _CONFIG_SCHEMA_IDS_CACHE.get("descriptor_ids_sorted")
+    if isinstance(cached, list):
+        return cached
+
+    descriptor_ids: set[str] = set()
+    descriptor_files = megalinter.linter_factory.list_descriptor_files()
+    for descriptor_file in descriptor_files:
+        with open(descriptor_file, "r", encoding="utf-8") as f:
+            descriptor = yaml.safe_load(f)
+            if isinstance(descriptor, dict):
+                descriptor_id = descriptor.get("descriptor_id")
+                if isinstance(descriptor_id, str) and descriptor_id:
+                    descriptor_ids.add(descriptor_id)
+
+    sorted_ids = sorted(descriptor_ids, key=len, reverse=True)
+    _CONFIG_SCHEMA_IDS_CACHE["descriptor_ids_sorted"] = sorted_ids
+    return sorted_ids
+
+
+def _collect_linter_ids_sorted() -> list[str]:
+    cached = _CONFIG_SCHEMA_IDS_CACHE.get("linter_ids_sorted")
+    if isinstance(cached, list):
+        return cached
+
+    linter_ids: set[str] = set()
+    linters = megalinter.linter_factory.list_all_linters(({"request_id": "build"}))
+    for linter in linters:
+        linter_name = getattr(linter, "name", None)
+        if isinstance(linter_name, str) and linter_name:
+            linter_ids.add(linter_name)
+
+    sorted_ids = sorted(linter_ids, key=len, reverse=True)
+    _CONFIG_SCHEMA_IDS_CACHE["linter_ids_sorted"] = sorted_ids
+    return sorted_ids
+
+
+def _infer_config_schema_descriptor_or_linter_category(
+    property_name: str,
+) -> str | None:
+    # Prefer linter ids over descriptor ids (linter ids usually start with descriptor id)
+    for linter_id in _collect_linter_ids_sorted():
+        if property_name == linter_id or property_name.startswith(linter_id + "_"):
+            return linter_id
+
+    for descriptor_id in _collect_descriptor_ids_sorted():
+        if property_name == descriptor_id or property_name.startswith(
+            descriptor_id + "_"
+        ):
+            return descriptor_id
+
+    return None
+
+
+def _infer_config_schema_section(property_name: str) -> str:
+    if property_name.endswith("_UNSECURED_ENV_VARIABLES"):
+        return "SECURITY"
+
+    if property_name.endswith("_PRE_COMMANDS") or property_name.endswith(
+        "_POST_COMMANDS"
+    ):
+        return "PREPOSTCOMMANDS"
+
+    if property_name.endswith("_DISABLE_ERRORS") or property_name.endswith(
+        "_DISABLE_ERRORS_IF_LESS_THAN"
+    ):
+        return "ERRORS"
+
+    if property_name.endswith("_DIRECTORY"):
+        return "ACTIVATION"
+
+    if (
+        "FILTER_REGEX" in property_name
+        or property_name.endswith("_FILE_EXTENSIONS")
+        or property_name.endswith("_FILE_NAMES_REGEX")
+    ):
+        return "SCOPE"
+
+    if (
+        property_name.endswith("_ARGUMENTS")
+        or property_name.endswith("_COMMAND_REMOVE_ARGUMENTS")
+        or property_name.endswith("_CLI_LINT_MODE")
+        or property_name.endswith("_CLI_EXECUTABLE")
+        or property_name.endswith("_DOCKER_IMAGE_VERSION")
+        or property_name.endswith("_CONFIG_FILE")
+        or property_name.endswith("_RULES_PATH")
+    ):
+        return "LINTER_COMMAND"
+
+    return "GENERAL"
+
+
+def _infer_config_schema_x_order(property_name: str, section: str) -> int:
+    # Order is meant to be used by schema doc tooling.
+    # It is computed per-variable (not alphabetical), mainly within a category.
+    section_rank = {
+        "ACTIVATION": 100,
+        "LINTER_COMMAND": 200,
+        "SCOPE": 300,
+        "ERRORS": 400,
+        "PREPOSTCOMMANDS": 500,
+        "SECURITY": 600,
+        "GENERAL": 900,
+    }.get(section, 900)
+
+    # Within-section relevance ordering
+    if section == "PREPOSTCOMMANDS":
+        if property_name.endswith("_PRE_COMMANDS"):
+            return section_rank * 1000 + 0
+        if property_name.endswith("_POST_COMMANDS"):
+            return section_rank * 1000 + 10
+
+    if section == "ERRORS":
+        if property_name.endswith("_DISABLE_ERRORS"):
+            return section_rank * 1000 + 0
+        if property_name.endswith("_DISABLE_ERRORS_IF_LESS_THAN"):
+            return section_rank * 1000 + 10
+
+    if section == "ACTIVATION":
+        if property_name.endswith("_DIRECTORY"):
+            return section_rank * 1000 + 0
+
+    if section == "SCOPE":
+        if property_name.endswith("_FILTER_REGEX_INCLUDE"):
+            return section_rank * 1000 + 0
+        if property_name.endswith("_FILTER_REGEX_EXCLUDE"):
+            return section_rank * 1000 + 10
+        if property_name.endswith("_FILE_EXTENSIONS"):
+            return section_rank * 1000 + 20
+        if property_name.endswith("_FILE_NAMES_REGEX"):
+            return section_rank * 1000 + 30
+
+    if section == "LINTER_COMMAND":
+        if property_name.endswith("_CONFIG_FILE"):
+            return section_rank * 1000 + 10
+        if property_name.endswith("_ARGUMENTS"):
+            return section_rank * 1000 + 20
+        if property_name.endswith("_COMMAND_REMOVE_ARGUMENTS"):
+            return section_rank * 1000 + 30
+        if property_name.endswith("_RULES_PATH"):
+            return section_rank * 1000 + 40
+        if property_name.endswith("_CLI_LINT_MODE"):
+            return section_rank * 1000 + 50
+        if property_name.endswith("_CLI_EXECUTABLE"):
+            return section_rank * 1000 + 60
+        if property_name.endswith("_DOCKER_IMAGE_VERSION"):
+            return section_rank * 1000 + 70
+
+    if section == "SECURITY":
+        if property_name.endswith("_UNSECURED_ENV_VARIABLES"):
+            return section_rank * 1000 + 0
+
+    return section_rank * 1000 + 999
+
+
+def ensure_config_schema_root_x_metadata_for_descriptors_and_linters() -> None:
+    with open(CONFIG_JSON_SCHEMA, "r", encoding="utf-8") as json_file:
+        json_schema = json.load(json_file)
+
+    props = json_schema.get("properties")
+    if not isinstance(props, dict):
+        logging.warning("Config schema has no root properties to enrich")
+        return
+
+    updated = False
+    for prop_name, prop_schema in props.items():
+        if not isinstance(prop_name, str) or not isinstance(prop_schema, dict):
+            continue
+
+        if _is_removed_linter_related_variable(prop_name):
+            continue
+        category = _infer_config_schema_descriptor_or_linter_category(prop_name)
+        if category is None:
+            continue
+
+        section = _infer_config_schema_section(prop_name)
+        x_order = _infer_config_schema_x_order(prop_name, section)
+
+        if prop_schema.get("x-category") != category:
+            prop_schema["x-category"] = category
+            updated = True
+        if prop_schema.get("x-section") != section:
+            prop_schema["x-section"] = section
+            updated = True
+        if prop_schema.get("x-order") != x_order:
+            prop_schema["x-order"] = x_order
+            updated = True
+
+    if updated is True:
+        with open(CONFIG_JSON_SCHEMA, "w", encoding="utf-8") as outfile:
+            json.dump(json_schema, outfile, indent=2, sort_keys=True)
+            outfile.write("\n")
+
+
+def validate_config_schema_root_x_metadata() -> None:
+    with open(CONFIG_JSON_SCHEMA, "r", encoding="utf-8") as json_file:
+        json_schema = json.load(json_file)
+
+    props = json_schema.get("properties")
+    if not isinstance(props, dict):
+        logging.warning("Config schema has no root properties to validate")
+        return
+
+    required_keys = ("x-category", "x-section", "x-order")
+    missing: list[tuple[str, list[str]]] = []
+    for prop_name, prop_schema in props.items():
+        if not isinstance(prop_name, str) or not isinstance(prop_schema, dict):
+            continue
+
+        if _is_removed_linter_related_variable(prop_name):
+            continue
+
+        missing_keys = [key for key in required_keys if key not in prop_schema]
+        if missing_keys:
+            missing.append((prop_name, missing_keys))
+
+    if missing:
+        logging.warning(
+            "Config schema root properties missing x-metadata: %s",
+            str(len(missing)),
+        )
+        for prop_name, missing_keys in sorted(missing, key=lambda x: x[0]):
+            logging.warning("- %s: missing %s", prop_name, ", ".join(missing_keys))
+        raise Exception("Config schema root properties missing x-keys")
+
+
 def add_in_config_schema_file(variables):
     with open(CONFIG_JSON_SCHEMA, "r", encoding="utf-8") as json_file:
         json_schema = json.load(json_file)
@@ -3727,6 +3970,8 @@ if __name__ == "__main__":
             logging.info("Running documentation generators…")
             # refresh_users_info() # deprecated since now we use github-dependents-info
             generate_documentation()
+            ensure_config_schema_root_x_metadata_for_descriptors_and_linters()
+            validate_config_schema_root_x_metadata()
             generate_documentation_all_linters()
             # generate_documentation_all_users() # deprecated since now we use github-dependents-info
             generate_mkdocs_yml()
