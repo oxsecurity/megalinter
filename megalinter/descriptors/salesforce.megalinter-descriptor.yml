@@ -534,7 +534,7 @@ linters:
     linter_url: https://github.com/Flow-Scanner/lightning-flow-scanner-cli
     linter_repo: https://github.com/Flow-Scanner/lightning-flow-scanner-cli
     linter_rules_url: https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-core#rules
-    linter_banner_image_url: https://github.com/Flow-Scanner/lightning-flow-scanner-cli/raw/main/docs/images/banner.png
+    linter_banner_image_url: https://github.com/Flow-Scanner/lightning-flow-scanner-cli/raw/main/docs/media/banner.png
     linter_rules_configuration_url: https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx#configuration
     linter_spdx_license: AGPL-3.0
     config_file_name: .flow-scanner.json
