@@ -292,6 +292,8 @@ linters:
       - .json5
       - .yaml
       - .yml
+    active_only_if_file_found:
+      - .codespellrc
     config_file_name: .codespellrc
     cli_config_arg_name: --config
     cli_help_arg_name: --help
