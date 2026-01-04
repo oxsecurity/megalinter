@@ -1,3 +1,4 @@
+---
 extends: existence
 message: "Consider removing '%s'."
 link: https://docs.microsoft.com/en-us/style-guide/word-choice/use-simple-words-concise-sentences

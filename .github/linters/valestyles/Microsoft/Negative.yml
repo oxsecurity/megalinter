@@ -1,3 +1,4 @@
+---
 extends: existence
 message: "Form a negative number with an en dash, not a hyphen."
 link: https://docs.microsoft.com/en-us/style-guide/numbers
