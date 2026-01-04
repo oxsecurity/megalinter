@@ -2632,14 +2632,18 @@ def _collect_linter_ids_sorted() -> list[str]:
     return sorted_ids
 
 
-def _infer_config_schema_descriptor_or_linter_category(property_name: str) -> str | None:
+def _infer_config_schema_descriptor_or_linter_category(
+    property_name: str,
+) -> str | None:
     # Prefer linter ids over descriptor ids (linter ids usually start with descriptor id)
     for linter_id in _collect_linter_ids_sorted():
         if property_name == linter_id or property_name.startswith(linter_id + "_"):
             return linter_id
 
     for descriptor_id in _collect_descriptor_ids_sorted():
-        if property_name == descriptor_id or property_name.startswith(descriptor_id + "_"):
+        if property_name == descriptor_id or property_name.startswith(
+            descriptor_id + "_"
+        ):
             return descriptor_id
 
     return None
@@ -2649,7 +2653,9 @@ def _infer_config_schema_section(property_name: str) -> str:
     if property_name.endswith("_UNSECURED_ENV_VARIABLES"):
         return "SECURITY"
 
-    if property_name.endswith("_PRE_COMMANDS") or property_name.endswith("_POST_COMMANDS"):
+    if property_name.endswith("_PRE_COMMANDS") or property_name.endswith(
+        "_POST_COMMANDS"
+    ):
         return "PREPOSTCOMMANDS"
 
     if property_name.endswith("_DISABLE_ERRORS") or property_name.endswith(
