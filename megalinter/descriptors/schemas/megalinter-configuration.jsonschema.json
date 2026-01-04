@@ -852,7 +852,7 @@
       "type": "array",
       "x-category": "GENERAL",
       "x-order": 200040,
-      "x-section": "ACTIVATION"
+      "x-section": "SCOPE"
     },
     "ANSIBLE_ANSIBLE_LINT_ARGUMENTS": {
       "$id": "#/properties/ANSIBLE_ANSIBLE_LINT_ARGUMENTS",
@@ -7787,7 +7787,7 @@
       "type": "string",
       "x-category": "GENERAL",
       "x-order": 200020,
-      "x-section": "ACTIVATION"
+      "x-section": "SCOPE"
     },
     "FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/FILTER_REGEX_INCLUDE",
@@ -7799,7 +7799,7 @@
       "type": "string",
       "x-category": "GENERAL",
       "x-order": 200010,
-      "x-section": "ACTIVATION"
+      "x-section": "SCOPE"
     },
     "FLAVOR_SUGGESTIONS": {
       "$id": "#/properties/FLAVOR_SUGGESTIONS",
