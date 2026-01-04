@@ -209,7 +209,7 @@
         "FILEIO_REPORTER",
         "GITHUB_COMMENT_REPORTER",
         "GITLAB_COMMENT_REPORTER",
-        "MARKDOWN_REPORTE",
+        "MARKDOWN_REPORTER",
         "SARIF_REPORTER",
         "TEXT_REPORTER",
         "TAP_REPORTER"
@@ -16005,7 +16005,7 @@
       "description": "Generate SUMMARY reports that can be used to display issues directly in PR comment",
       "title": "Activate SUMMARY reporter",
       "type": "boolean",
-      "x-category": "MARKDOWN",
+      "x-category": "MARKDOWN_REPORTER",
       "x-order": 950999,
       "x-section": "GENERAL"
     },
@@ -16015,7 +16015,7 @@
       "description": "Override SUMMARY output file name",
       "title": "SUMMARY report file name",
       "type": "string",
-      "x-category": "MARKDOWN",
+      "x-category": "MARKDOWN_REPORTER",
       "x-order": 950999,
       "x-section": "GENERAL"
     },
