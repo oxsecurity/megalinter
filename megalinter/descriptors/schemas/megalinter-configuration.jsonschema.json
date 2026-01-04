@@ -7421,11 +7421,11 @@
       "items": {
         "$ref": "#/definitions/enum_linter_keys"
       },
-      "title": "Disabled errors linter keys",
+      "title": "Enabled errors linter keys",
       "type": "array",
       "x-category": "GENERAL",
       "x-order": 400020,
-      "x-section": "ACTIVATION"
+      "x-section": "ERRORS"
     },
     "ENABLE_LINTERS": {
       "$id": "#/properties/ENABLE_LINTERS",
