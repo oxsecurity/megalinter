@@ -134,6 +134,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 16.0.1 to **16.1.1** on 2026-01-03
   - [kingfisher](https://github.com/mongodb/kingfisher) from 1.72.0 to **1.73.0** on 2026-01-03
   - [swiftlint](https://github.com/realm/SwiftLint) from 0.62.2 to **0.63.0** on 2026-01-03
+  - [npm-package-json-lint](https://npmpackagejsonlint.org/) from 9.0.0 to **9.1.0** on 2026-01-04
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.92.3 to **3.92.4** on 2026-01-04
 <!-- linter-versions-end -->
 
 ## [v9.2.0] - 2025-11-29
