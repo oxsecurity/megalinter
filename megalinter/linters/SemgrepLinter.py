@@ -86,9 +86,7 @@ class SemgrepLinter(Linter):
             "w",
             encoding="utf-8",
         ) as f:
-            f.write(
-                """"""
-            )
+            f.write("""""")
 
     def post_test(self, test_name):
         os.remove(os.path.join(os.getcwd(), ".semgrepignore"))
