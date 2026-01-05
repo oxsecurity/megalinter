@@ -13,6 +13,7 @@ class PyrightLinter(Linter):
         # The file must be in the root of the repository so we create it temporarily for the test.
         # By default pyright ignores files starting with "." so we override this behavior
         # to work with the .automation folder
+        # https://microsoft.github.io/pyright/#/configuration?id=environment-options
         with open(
             os.path.join(os.getcwd(), "pyproject.toml"),
             "w",
