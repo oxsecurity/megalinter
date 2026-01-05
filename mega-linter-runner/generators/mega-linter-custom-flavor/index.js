@@ -115,8 +115,24 @@ Example: 'megalinter-custom-flavor-python-light'
     this.customFlavorAuthor = user.value;
     // Get remote repo
     const remote = await git.getRemotes(true);
-    this.customFlavorRepo = remote[0].refs.fetch.replace('https://github.com/', '').replace('.git', '');
-    this.customFlavorRepoUrl = remote[0].refs.fetch.replace('.git', '');
+    const remoteUrl = remote[0].refs.fetch;
+    
+    // Handle both HTTPS and SSH git origins
+    let repoPath, repoUrl;
+    if (remoteUrl.startsWith('https://github.com/')) {
+      // HTTPS format: https://github.com/user/repo.git
+      repoPath = remoteUrl.replace('https://github.com/', '').replace('.git', '');
+      repoUrl = remoteUrl.replace('.git', '');
+    } else if (remoteUrl.startsWith('git@github.com:')) {
+      // SSH format: git@github.com:user/repo.git
+      repoPath = remoteUrl.replace('git@github.com:', '').replace('.git', '');
+      repoUrl = `https://github.com/${repoPath}`;
+    } else {
+      throw new Error(`Unsupported git remote format: ${remoteUrl}. Only GitHub HTTPS and SSH formats are supported.`);
+    }
+    
+    this.customFlavorRepo = repoPath;
+    this.customFlavorRepoUrl = repoUrl;
     // Custom flavor docker image version
     this.customFlavorDockerImageVersion = `ghcr.io/${this.customFlavorRepo}/megalinter-custom-flavor:latest`;
   }
