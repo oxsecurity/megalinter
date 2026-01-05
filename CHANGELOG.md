@@ -35,6 +35,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - mega-linter-runner
 
 - Linter versions upgrades (N)
+  - [code-analyzer-apex](https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html) from 5.7.1 to **5.8.0** on 2026-01-05
+  - [code-analyzer-aura](https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html) from 5.7.1 to **5.8.0** on 2026-01-05
+  - [code-analyzer-lwc](https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html) from 5.7.1 to **5.8.0** on 2026-01-05
 <!-- linter-versions-end -->
 
 ## [v9.3.0] - 2026-01-04

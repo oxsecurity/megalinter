@@ -7,7 +7,7 @@ description: How to use lightning-flow-scanner (configure, ignore files, ignore 
 
 <div align="center">
   <a href="https://github.com/Flow-Scanner/lightning-flow-scanner-cli#readme" target="blank" title="Visit linter Web Site">
-    <img src="https://github.com/Flow-Scanner/lightning-flow-scanner-cli/raw/main/docs/images/banner.png" alt="lightning-flow-scanner" height="150px" class="megalinter-banner">
+    <img src="https://github.com/Flow-Scanner/lightning-flow-scanner-cli/raw/main/docs/media/banner.png" alt="lightning-flow-scanner" height="150px" class="megalinter-banner">
   </a>
 </div>
 
