@@ -26,9 +26,9 @@ RoboCop is a linter and code formatter for the Robot Framework. It helps maintai
 
 - Version in MegaLinter: **7.2.0**
 - Visit [Official Web Site](https://github.com/MarketSquare/robotframework-robocop#readme){target=_blank}
-- See [How to configure robocop rules](https://robocop.readthedocs.io/en/stable/configuration/configuration.html){target=_blank}
-- See [How to disable robocop rules in files](https://robocop.readthedocs.io/en/stable/rules/rules_basics.html#selecting-and-ignoring-rules){target=_blank}
-- See [Index of problems detected by robocop](https://robocop.readthedocs.io/en/stable/rules/rules_list.html){target=_blank}
+- See [How to configure robocop rules](https://robocop.dev/stable/configuration/){target=_blank}
+- See [How to disable robocop rules in files](https://robocop.dev/stable/configuration/disablers/){target=_blank}
+- See [Index of problems detected by robocop](https://robocop.dev/stable/rules_list/){target=_blank}
 
 [![robotframework-robocop - GitHub](https://gh-card.dev/repos/MarketSquare/robotframework-robocop.svg?fullname=)](https://github.com/MarketSquare/robotframework-robocop){target=_blank}
 

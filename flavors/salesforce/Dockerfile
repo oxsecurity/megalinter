@@ -144,7 +144,7 @@ ARG NPM_MARKDOWNLINT_CLI_VERSION=0.47.0
 # renovate: datasource=npm depName=markdown-table-formatter
 ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.7.0
 # renovate: datasource=pypi depName=rumdl
-ARG RUMDL_MYPY_VERSION=0.0.208
+ARG RUMDL_MYPY_VERSION=0.0.211
 # renovate: datasource=pypi depName=checkov
 ARG PIP_CHECKOV_VERSION=3.2.497
 # renovate: datasource=github-tags depName=anchore/grype
@@ -166,7 +166,7 @@ ARG REPOSITORY_TRIVY_VERSION=0.68.2
 # renovate: datasource=github-tags depName=aquasecurity/trivy
 ARG REPOSITORY_TRIVY_SBOM_VERSION=0.68.2
 # renovate: datasource=npm depName=@salesforce/plugin-code-analyzer
-ARG SALESFORCE_CODE_ANALYZER_VERSION=5.7.1
+ARG SALESFORCE_CODE_ANALYZER_VERSION=5.8.0
 # renovate: datasource=npm depName=@salesforce/sfdx-scanner
 ARG SALESFORCE_SFDX_SCANNER_VERSION=4.12.0
 # renovate: datasource=pypi depName=snakemake

@@ -117,7 +117,7 @@ ARG CLJ_KONDO_VERSION=2025.01.16
 # renovate: datasource=github-tags depName=greglook/cljstyle
 ARG CLJ_STYLE_VERSION=0.17.642
 # renovate: datasource=pypi depName=cfn-lint
-ARG PIP_CFN_LINT_VERSION=1.43.1
+ARG PIP_CFN_LINT_VERSION=1.43.2
 # renovate: datasource=npm depName=jscpd
 ARG NPM_JSCPD_VERSION=4.0.5
 # renovate: datasource=npm depName=stylelint
@@ -158,7 +158,7 @@ ARG NPM_ESLINT_CONFIG_STANDARD_VERSION=17.1.0
 # renovate: datasource=npm depName=eslint-plugin-import
 ARG NPM_ESLINT_PLUGIN_IMPORT_VERSION=2.32.0
 # renovate: datasource=npm depName=eslint-plugin-jest
-ARG NPM_ESLINT_PLUGIN_JEST_VERSION=29.12.0
+ARG NPM_ESLINT_PLUGIN_JEST_VERSION=29.12.1
 # renovate: datasource=npm depName=eslint-plugin-n
 ARG NPM_ESLINT_PLUGIN_N_VERSION=16.6.2
 # renovate: datasource=npm depName=eslint-plugin-prettier
@@ -202,7 +202,7 @@ ARG NPM_MARKDOWNLINT_CLI_VERSION=0.47.0
 # renovate: datasource=npm depName=markdown-table-formatter
 ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.7.0
 # renovate: datasource=pypi depName=rumdl
-ARG RUMDL_MYPY_VERSION=0.0.208
+ARG RUMDL_MYPY_VERSION=0.0.211
 # renovate: datasource=packagist depName=squizlabs/php_codesniffer
 ARG PHP_SQUIZLABS_PHP_CODESNIFFER_VERSION=4.0.1
 # renovate: datasource=packagist depName=bartlett/sarif-php-converters
