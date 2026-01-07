@@ -1,6 +1,6 @@
+---
 # MegaLinter GitLab CI job configuration file
 # More info at https://megalinter.io
----
 mega-linter:
   stage: test
 
