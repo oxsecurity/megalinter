@@ -2,7 +2,7 @@
 #
 # See all available variables at https://megalinter.io/latest/config-file/ and in
 # linters documentation
-
+---
 # all, none, or list of linter keys
 APPLY_FIXES: <%= APPLY_FIXES %>
 

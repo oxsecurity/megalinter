@@ -1,3 +1,4 @@
+---
 extends: occurrence
 message: "Try to keep sentences short (< 30 words)."
 scope: sentence

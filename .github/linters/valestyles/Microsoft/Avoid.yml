@@ -1,3 +1,4 @@
+---
 extends: existence
 message: "Don't use '%s'. See the A-Z word list for details."
 # See the A-Z word list

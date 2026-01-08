@@ -1,6 +1,6 @@
+---
 # MegaLinter Custom Flavor configuration
 # If you update it manually, run `npx mega-linter-runner --custom-flavor-setup` to propagate updates.
-
 label: <%= CUSTOM_FLAVOR_LABEL %>
 linters:
 <%= CUSTOM_FLAVOR_LINTERS %>
