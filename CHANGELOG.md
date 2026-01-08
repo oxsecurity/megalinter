@@ -41,6 +41,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [code-analyzer-lwc](https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html) from 5.7.1 to **5.8.0** on 2026-01-05
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.43.1 to **1.43.2** on 2026-01-05
   - [rumdl](https://github.com/rvben/rumdl) from 0.0.208 to **0.0.210** on 2026-01-05
+  - [rumdl](https://github.com/rvben/rumdl) from 0.0.210 to **0.0.212** on 2026-01-07
+  - [kics](https://www.kics.io) from 2.1.18 to **2.1.19** on 2026-01-07
 <!-- linter-versions-end -->
 
 ## [v9.3.0] - 2026-01-04
