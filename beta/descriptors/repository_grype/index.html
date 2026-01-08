@@ -12471,7 +12471,7 @@
 </ul>
 <h2 id="grype-documentation">grype documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>0.104.3</strong></li>
+<li>Version in MegaLinter: <strong>0.104.4</strong></li>
 <li>Visit <a href="https://github.com/anchore/grype#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/anchore/grype#configuration" target="_blank">How to configure grype rules</a><ul>
 <li>If custom <code>.grype.yaml</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.grype.yaml" target="_blank">.grype.yaml</a> will be used</li>
@@ -12751,7 +12751,7 @@ Flags:
   -c, --config stringArray     grype configuration file(s) to use
       --distro string          distro to match against in the format: &lt;distro&gt;[-:@]&lt;version&gt;
       --exclude stringArray    exclude paths from being scanned using a glob expression
-  -f, --fail-on string         set the return code to 1 if a vulnerability is found with a severity &gt;= the given severity, options=[negligible low medium high critical]
+  -f, --fail-on string         set the return code to 2 if a vulnerability is found with a severity &gt;= the given severity, options=[negligible low medium high critical]
       --file string            file to write the default report output to (default is STDOUT)
       --from stringArray       specify the source behavior to use (e.g. docker, registry, podman, oci-dir, ...)
   -h, --help                   help for grype
