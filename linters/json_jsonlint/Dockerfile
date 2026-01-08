@@ -49,7 +49,7 @@ FROM python:3.13-alpine3.23
 #############################################################################################
 #ARG__START
 # renovate: datasource=npm depName=@prantlf/jsonlint
-ARG NPM_PRANTLF_JSONLINT_VERSION=16.0.0
+ARG NPM_PRANTLF_JSONLINT_VERSION=17.0.0
 #ARG__END
 
 ####################
