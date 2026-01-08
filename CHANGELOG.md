@@ -44,6 +44,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [rumdl](https://github.com/rvben/rumdl) from 0.0.208 to **0.0.210** on 2026-01-05
   - [rumdl](https://github.com/rvben/rumdl) from 0.0.210 to **0.0.212** on 2026-01-07
   - [kics](https://www.kics.io) from 2.1.18 to **2.1.19** on 2026-01-07
+  - [grype](https://github.com/anchore/grype) from 0.104.3 to **0.104.4** on 2026-01-08
+  - [syft](https://github.com/anchore/syft) from 1.39.0 to **1.40.0** on 2026-01-08
 <!-- linter-versions-end -->
 
 ## [v9.3.0] - 2026-01-04
