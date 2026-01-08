@@ -22,6 +22,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Media
 
 - Linters enhancements
+  - Use the official checkmake image by @bdovaz
 
 - Fixes
 
