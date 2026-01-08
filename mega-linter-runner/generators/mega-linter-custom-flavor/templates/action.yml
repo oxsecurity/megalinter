@@ -1,3 +1,4 @@
+---
 name: "MegaLinter Custom Flavor: <%= CUSTOM_FLAVOR_LABEL %>"
 author: "<%= CUSTOM_FLAVOR_AUTHOR %>"
 description: "MegaLinter Custom Flavor <%= CUSTOM_FLAVOR_LABEL %>"

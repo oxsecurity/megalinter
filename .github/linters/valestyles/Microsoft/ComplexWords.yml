@@ -1,3 +1,4 @@
+---
 extends: substitution
 message: "Consider using '%s' instead of '%s'."
 link: https://docs.microsoft.com/en-us/style-guide/word-choice/use-simple-words-concise-sentences

@@ -1,3 +1,4 @@
+---
 # =============================================================
 # Check for New MegaLinter Version Workflow
 #
@@ -40,7 +41,6 @@
 #   10. Click "New repository secret"
 #   11. Name: PAT_TOKEN, Value: paste your token
 # =============================================================
-
 name: Check for New MegaLinter Version
 
 on:

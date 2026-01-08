@@ -1,3 +1,4 @@
+---
 descriptor_id: RAKU
 descriptor_type: language
 file_extensions:
@@ -29,7 +30,7 @@ linters:
     linter_spdx_license: Artistic-2.0
     linter_rules_configuration_url: https://docs.raku.org/language/pragmas
     linter_rules_inline_disable_url: https://docs.raku.org/language/pragmas#no
-    linter_image_url: https://raku.org/camelia-logo.png
+    linter_image_url: https://raku.org/img/camelia-logo.png
     config_file_name: META6.json
     cli_lint_extra_args:
       - "-I"

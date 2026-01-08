@@ -345,6 +345,7 @@ nav:
               - "trivy": "descriptors/repository_trivy.md"
               - "trivy-sbom": "descriptors/repository_trivy_sbom.md"
               - "trufflehog": "descriptors/repository_trufflehog.md"
+              - "kingfisher": "descriptors/repository_kingfisher.md"
           - "SPELL":
               - "All SPELL linters": "descriptors/spell.md"
               - "cspell": "descriptors/spell_cspell.md"

@@ -21,7 +21,7 @@ description: How to use markdown-table-formatter (configure, ignore files, ignor
 
 ## markdown-table-formatter documentation
 
-- Version in MegaLinter: **1.6.1**
+- Version in MegaLinter: **1.7.0**
 - Visit [Official Web Site](https://www.npmjs.com/package/markdown-table-formatter){target=_blank}
 - See [How to configure markdown-table-formatter rules](https://github.com/nvuillam/markdown-table-formatter#options){target=_blank}
 - See [How to disable markdown-table-formatter rules in files](https://github.com/nvuillam/markdown-table-formatter#ignoring-code-blocks){target=_blank}
@@ -65,7 +65,7 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                             | Description                                              | Embedded linters |                                                                                                                                                                                                   Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------|:---------------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)               | Default MegaLinter Flavor                                |       132        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)               | Default MegaLinter Flavor                                |       133        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 |        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/c_cpp.ico" alt="" height="32px" class="megalinter-icon"></a>        | [c_cpp](https://megalinter.io/beta/flavors/c_cpp/)                 | Optimized for pure C/C++ projects                        |        58        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-c_cpp/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-c_cpp) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)             | MegaLinter for the most commonly used languages          |        90        |             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
 |    <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/documentation.ico" alt="" height="32px" class="megalinter-icon"></a>    | [documentation](https://megalinter.io/beta/flavors/documentation/) | MegaLinter for documentation projects                    |        51        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-documentation/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-documentation) |
@@ -127,8 +127,8 @@ markdown-table-formatter [options]
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=markdown-table-formatter
-ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.6.1
+ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.7.0
 ```
 
 - NPM packages (node.js):
-  - [markdown-table-formatter@1.6.1](https://www.npmjs.com/package/markdown-table-formatter/v/1.6.1)
+  - [markdown-table-formatter@1.7.0](https://www.npmjs.com/package/markdown-table-formatter/v/1.7.0)

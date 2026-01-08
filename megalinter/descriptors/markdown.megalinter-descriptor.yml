@@ -1,3 +1,4 @@
+---
 descriptor_id: MARKDOWN
 descriptor_type: format
 descriptor_flavors:
@@ -170,7 +171,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=markdown-table-formatter
-          ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.6.1
+          ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.7.0
       npm:
         - markdown-table-formatter@${NPM_MARKDOWN_TABLE_FORMATTER_VERSION}
     supported_platforms:
@@ -229,7 +230,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=rumdl
-          ARG RUMDL_MYPY_VERSION=0.0.204
+          ARG RUMDL_MYPY_VERSION=0.0.212
       pip:
         - rumdl==${RUMDL_MYPY_VERSION}
     supported_platforms:

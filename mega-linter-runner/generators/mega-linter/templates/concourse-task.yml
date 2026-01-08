@@ -1,6 +1,5 @@
 # MegaLinter Concourse CI configuration file
 # More info at https://megalinter.io
-
 ---
 platform: linux
 
