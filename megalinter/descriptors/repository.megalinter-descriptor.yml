@@ -1,3 +1,4 @@
+---
 descriptor_id: REPOSITORY
 descriptor_type: other
 descriptor_flavors:
@@ -61,7 +62,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=checkov
-          ARG PIP_CHECKOV_VERSION=3.2.495
+          ARG PIP_CHECKOV_VERSION=3.2.497
       pip:
         - checkov==${PIP_CHECKOV_VERSION}
     test_folder: repository_checkov
@@ -479,7 +480,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=docker depName=checkmarx/kics
-          ARG REPOSITORY_KICS_VERSION=v2.1.18-alpine
+          ARG REPOSITORY_KICS_VERSION=v2.1.19-alpine
         - FROM checkmarx/kics:${REPOSITORY_KICS_VERSION} AS kics
         - COPY --link --from=kics /app/bin/kics /usr/bin/kics
         - ENV KICS_QUERIES_PATH=/usr/bin/assets/queries KICS_LIBRARIES_PATH=/usr/bin/assets/libraries
@@ -920,6 +921,6 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=github-tags depName=mongodb/kingfisher
-          ARG REPOSITORY_KINGFISHER_VERSION=1.72.0
+          ARG REPOSITORY_KINGFISHER_VERSION=1.73.0
         - |
           RUN curl --silent --location https://raw.githubusercontent.com/mongodb/kingfisher/main/scripts/install-kingfisher.sh | bash -s -- /usr/local/bin --tag "v${REPOSITORY_KINGFISHER_VERSION}"

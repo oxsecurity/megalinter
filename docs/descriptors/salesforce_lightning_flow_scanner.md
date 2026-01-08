@@ -7,7 +7,7 @@ description: How to use lightning-flow-scanner (configure, ignore files, ignore 
 
 <div align="center">
   <a href="https://github.com/Flow-Scanner/lightning-flow-scanner-cli#readme" target="blank" title="Visit linter Web Site">
-    <img src="https://github.com/Flow-Scanner/lightning-flow-scanner-cli/raw/main/docs/images/banner.png" alt="lightning-flow-scanner" height="150px" class="megalinter-banner">
+    <img src="https://github.com/Flow-Scanner/lightning-flow-scanner-cli/raw/main/docs/media/banner.png" alt="lightning-flow-scanner" height="150px" class="megalinter-banner">
   </a>
 </div>
 
@@ -139,9 +139,9 @@ GLOBAL FLAGS
 # renovate: datasource=npm depName=@salesforce/cli
 ARG NPM_SALESFORCE_CLI_VERSION=2.116.6
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
-ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.24.4
+ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.24.5
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=6.18.0
+ARG SFDX_HARDIS_VERSION=6.20.0
 ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 RUN sf plugins install @salesforce/plugin-packaging@${NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION} \

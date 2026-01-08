@@ -1,3 +1,4 @@
+---
 # https://docs.codecov.io/docs/commit-status#disabling-a-status
 # Disable blocking patch status to avoid to block PRs without good reason !
 coverage:

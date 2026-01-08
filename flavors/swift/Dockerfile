@@ -59,7 +59,7 @@ FROM lycheeverse/lychee:${SPELL_LYCHEE_VERSION} AS lychee
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.9.9 AS uv
+FROM ghcr.io/astral-sh/uv:0.9.21 AS uv
 FROM python:3.13-alpine3.23 AS build-ml-core
 WORKDIR /
 COPY --from=uv /uv /uvx /bin/
@@ -100,7 +100,7 @@ ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=39.0.1
 # renovate: datasource=npm depName=stylelint-config-sass-guidelines
 ARG NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION=12.1.0
 # renovate: datasource=npm depName=stylelint-scss
-ARG NPM_STYLELINT_SCSS_VERSION=6.13.0
+ARG NPM_STYLELINT_SCSS_VERSION=6.14.0
 # renovate: datasource=pypi depName=cpplint
 ARG PIP_CPPLINT_VERSION=2.0.2
 # renovate: datasource=github-tags depName=dotenv-linter/dotenv-linter
@@ -110,7 +110,7 @@ ARG NPM_GRAPHQL_VERSION=16.12.0
 # renovate: datasource=npm depName=graphql-schema-linter
 ARG NPM_GRAPHQL_SCHEMA_LINTER_VERSION=3.0.1
 # renovate: datasource=npm depName=npm-groovy-lint
-ARG NPM_GROOVY_LINT_VERSION=16.0.1
+ARG NPM_GROOVY_LINT_VERSION=16.1.1
 # renovate: datasource=pypi depName=djlint
 ARG PIP_DJLINT_VERSION=1.36.4
 # renovate: datasource=npm depName=htmlhint
@@ -134,9 +134,9 @@ ARG NPM_MARKDOWNLINT_CLI_VERSION=0.47.0
 # renovate: datasource=npm depName=markdown-table-formatter
 ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.7.0
 # renovate: datasource=pypi depName=rumdl
-ARG RUMDL_MYPY_VERSION=0.0.207
+ARG RUMDL_MYPY_VERSION=0.0.212
 # renovate: datasource=pypi depName=checkov
-ARG PIP_CHECKOV_VERSION=3.2.495
+ARG PIP_CHECKOV_VERSION=3.2.497
 # renovate: datasource=github-tags depName=anchore/grype
 ARG REPOSITORY_GRYPE_VERSION=0.104.3
 # renovate: datasource=npm depName=@ls-lint/ls-lint
@@ -495,7 +495,7 @@ RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/rel
 #
 # swiftlint installation
 # renovate: datasource=docker depName=ghcr.io/realm/swiftlint
-ENV SWIFT_SWIFTLINT_VERSION=0.62.2
+ENV SWIFT_SWIFTLINT_VERSION=0.63.0
 #
 # tekton-lint installation
 #

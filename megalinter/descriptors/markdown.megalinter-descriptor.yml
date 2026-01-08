@@ -1,3 +1,4 @@
+---
 descriptor_id: MARKDOWN
 descriptor_type: format
 descriptor_flavors:
@@ -217,7 +218,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=rumdl
-          ARG RUMDL_MYPY_VERSION=0.0.207
+          ARG RUMDL_MYPY_VERSION=0.0.212
       pip:
         - rumdl==${RUMDL_MYPY_VERSION}
     ide:

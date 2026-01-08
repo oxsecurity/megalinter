@@ -70,7 +70,6 @@ Use rubocop in your favorite IDE to catch errors before MegaLinter !
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/brackets.ico" alt="" height="32px" class="megalinter-icon"></a> | [Brackets](https://brackets.io/)                     | [brackets-rubocop](https://github.com/smockle-archive/brackets-rubocop)                    |                                        [Visit Web Site](https://github.com/smockle-archive/brackets-rubocop){target=_blank}                                        |
 |  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Emacs](https://www.gnu.org/software/emacs/)         | [rubocop-emacs](https://github.com/rubocop-hq/rubocop-emacs)                               |                                            [Visit Web Site](https://github.com/rubocop-hq/rubocop-emacs){target=_blank}                                            |
 |  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Emacs](https://www.gnu.org/software/emacs/)         | [flycheck](https://github.com/flycheck/flycheck)                                           |                                               [Visit Web Site](https://github.com/flycheck/flycheck){target=_blank}                                                |
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Sublime Text](https://www.sublimetext.com/)         | [sublime_rubocop](https://github.com/pderichs/sublime_rubocop)                             |                                            [Visit Web Site](https://github.com/pderichs/sublime_rubocop){target=_blank}                                            |
 |   <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a>    | [vim](https://www.vim.org/)                          | [vim-rubocop](https://github.com/ngmy/vim-rubocop)                                         |                                                [Visit Web Site](https://github.com/ngmy/vim-rubocop){target=_blank}                                                |
 |   <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a>    | [vim](https://www.vim.org/)                          | [ale](https://github.com/w0rp/ale)                                                         |                                                    [Visit Web Site](https://github.com/w0rp/ale){target=_blank}                                                    |
 |  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/) | [VSCode Ruby Extension](https://marketplace.visualstudio.com/items?itemName=rebornix.Ruby) | [![Install in VSCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/rebornix.Ruby){target=_blank} |
@@ -305,7 +304,7 @@ ARG GEM_RUBOCOP_GITHUB_VERSION=0.26.0
 # renovate: datasource=rubygems depName=rubocop-performance
 ARG GEM_RUBOCOP_PERFORMANCE_VERSION=1.26.1
 # renovate: datasource=rubygems depName=rubocop-rails
-ARG GEM_RUBOCOP_RAILS_VERSION=2.34.2
+ARG GEM_RUBOCOP_RAILS_VERSION=2.34.3
 # renovate: datasource=rubygems depName=rubocop-rake
 ARG GEM_RUBOCOP_RAKE_VERSION=0.7.1
 # renovate: datasource=rubygems depName=rubocop-rspec
@@ -316,6 +315,6 @@ ARG GEM_RUBOCOP_RSPEC_VERSION=3.8.0
   - [rubocop:1.82.1](https://rubygems.org/gems/rubocop/versions/1.82.1)
   - [rubocop-github:0.26.0](https://rubygems.org/gems/rubocop-github/versions/0.26.0)
   - [rubocop-performance:1.26.1](https://rubygems.org/gems/rubocop-performance/versions/1.26.1)
-  - [rubocop-rails:2.34.2](https://rubygems.org/gems/rubocop-rails/versions/2.34.2)
+  - [rubocop-rails:2.34.3](https://rubygems.org/gems/rubocop-rails/versions/2.34.3)
   - [rubocop-rake:0.7.1](https://rubygems.org/gems/rubocop-rake/versions/0.7.1)
   - [rubocop-rspec:3.8.0](https://rubygems.org/gems/rubocop-rspec/versions/3.8.0)

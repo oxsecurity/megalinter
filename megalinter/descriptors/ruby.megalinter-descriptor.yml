@@ -1,3 +1,4 @@
+---
 descriptor_id: RUBY
 descriptor_type: language
 descriptor_flavors:
@@ -47,7 +48,7 @@ linters:
           ARG GEM_RUBOCOP_PERFORMANCE_VERSION=1.26.1
         - |-
           # renovate: datasource=rubygems depName=rubocop-rails
-          ARG GEM_RUBOCOP_RAILS_VERSION=2.34.2
+          ARG GEM_RUBOCOP_RAILS_VERSION=2.34.3
         - |-
           # renovate: datasource=rubygems depName=rubocop-rake
           ARG GEM_RUBOCOP_RAKE_VERSION=0.7.1
@@ -70,9 +71,6 @@ linters:
           url: https://github.com/rubocop-hq/rubocop-emacs
         - name: flycheck
           url: https://github.com/flycheck/flycheck
-      sublime:
-        - name: sublime_rubocop
-          url: https://github.com/pderichs/sublime_rubocop
       vim:
         - name: vim-rubocop
           url: https://github.com/ngmy/vim-rubocop

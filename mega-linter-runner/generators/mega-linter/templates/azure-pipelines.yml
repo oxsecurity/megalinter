@@ -1,6 +1,6 @@
 # MegaLinter Azure Pipelines configuration file
 # More info at https://megalinter.io
-
+---
 trigger:
   - main
 

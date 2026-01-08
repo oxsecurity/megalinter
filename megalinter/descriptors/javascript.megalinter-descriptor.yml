@@ -1,3 +1,4 @@
+---
 descriptor_id: JAVASCRIPT
 descriptor_type: language
 descriptor_flavors:
@@ -101,7 +102,7 @@ linters:
           ARG NPM_ESLINT_PLUGIN_IMPORT_VERSION=2.32.0
         - |-
           # renovate: datasource=npm depName=eslint-plugin-jest
-          ARG NPM_ESLINT_PLUGIN_JEST_VERSION=29.11.0
+          ARG NPM_ESLINT_PLUGIN_JEST_VERSION=29.12.1
         - |-
           # renovate: datasource=npm depName=eslint-plugin-n
           ARG NPM_ESLINT_PLUGIN_N_VERSION=16.6.2

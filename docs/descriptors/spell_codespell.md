@@ -74,6 +74,7 @@ This linter is available in the following flavors
 
 ### How are identified applicable files
 
+- Activated only if one of these files is found: `.codespellrc`
 - If this linter is active, all files linted by all other active linters will be linted
 - File extensions: `.md`, `.mdx`, `.markdown`, `.html`, `.htm`, `.rst`, `.txt`, `.json`, `.jsonc`, `.json5`, `.yaml`, `.yml`
 

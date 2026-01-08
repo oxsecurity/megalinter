@@ -24,7 +24,7 @@
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.9.9 AS uv
+FROM ghcr.io/astral-sh/uv:0.9.21 AS uv
 FROM python:3.13-alpine3.23 AS build-ml-core
 WORKDIR /
 COPY --from=uv /uv /uvx /bin/
@@ -49,7 +49,7 @@ FROM python:3.13-alpine3.23
 #############################################################################################
 #ARG__START
 # renovate: datasource=pypi depName=cfn-lint
-ARG PIP_CFN_LINT_VERSION=1.43.1
+ARG PIP_CFN_LINT_VERSION=1.43.2
 # renovate: datasource=pypi depName=pip
 ARG PIP_PIP_VERSION=25.3
 # renovate: datasource=pypi depName=virtualenv

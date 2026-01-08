@@ -24,7 +24,7 @@
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.9.9 AS uv
+FROM ghcr.io/astral-sh/uv:0.9.21 AS uv
 FROM python:3.13-alpine3.23 AS build-ml-core
 WORKDIR /
 COPY --from=uv /uv /uvx /bin/
@@ -49,7 +49,7 @@ FROM python:3.13-alpine3.23
 #############################################################################################
 #ARG__START
 # renovate: datasource=packagist depName=friendsofphp/php-cs-fixer
-ARG PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION=v3.92.3
+ARG PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION=v3.92.4
 #ARG__END
 
 ####################

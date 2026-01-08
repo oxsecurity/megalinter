@@ -24,7 +24,7 @@
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.9.9 AS uv
+FROM ghcr.io/astral-sh/uv:0.9.21 AS uv
 FROM python:3.13-alpine3.23 AS build-ml-core
 WORKDIR /
 COPY --from=uv /uv /uvx /bin/
@@ -49,7 +49,7 @@ FROM python:3.13-alpine3.23
 #############################################################################################
 #ARG__START
 # renovate: datasource=github-tags depName=mongodb/kingfisher
-ARG REPOSITORY_KINGFISHER_VERSION=1.72.0
+ARG REPOSITORY_KINGFISHER_VERSION=1.73.0
 #ARG__END
 
 ####################

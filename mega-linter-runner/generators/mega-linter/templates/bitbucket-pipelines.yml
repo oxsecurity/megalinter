@@ -1,6 +1,6 @@
 # MegaLinter Bitbucket Pipelines configuration file
 # More info at https://megalinter.io
-
+---
 image: atlassian/default-image:5
 
 pipelines:

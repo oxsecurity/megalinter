@@ -38,7 +38,7 @@ FROM trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION} AS trufflehog
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.9.9 AS uv
+FROM ghcr.io/astral-sh/uv:0.9.21 AS uv
 FROM python:3.13-alpine3.23 AS build-ml-core
 WORKDIR /
 COPY --from=uv /uv /uvx /bin/
@@ -71,7 +71,7 @@ ARG NPM_JSCPD_VERSION=4.0.5
 # renovate: datasource=github-tags depName=dotenv-linter/dotenv-linter
 ARG DOTENV_LINTER_VERSION=4.0.0
 # renovate: datasource=npm depName=npm-groovy-lint
-ARG NPM_GROOVY_LINT_VERSION=16.0.1
+ARG NPM_GROOVY_LINT_VERSION=16.1.1
 # renovate: datasource=npm depName=@prantlf/jsonlint
 ARG NPM_PRANTLF_JSONLINT_VERSION=16.0.0
 # renovate: datasource=npm depName=v8r

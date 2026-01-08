@@ -1,3 +1,4 @@
+---
 descriptor_id: JSON
 descriptor_type: format
 descriptor_flavors:
@@ -326,7 +327,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=npm-package-json-lint
-          ARG NPM_PACKAGE_JSON_LINT_VERSION=9.0.0
+          ARG NPM_PACKAGE_JSON_LINT_VERSION=9.1.0
         - |-
           # renovate: datasource=npm depName=npm-package-json-lint-config-default
           ARG NPM_PACKAGE_JSON_LINT_CONFIG_DEFAULT_VERSION=8.0.1
