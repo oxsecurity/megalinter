@@ -25,6 +25,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Use the official checkmake image by @bdovaz
 
 - Fixes
+  - Fix issue with plugins ignored when FLAVOR_SUGGESTIONS=false
 
 - Reporters
 
