@@ -47,6 +47,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [grype](https://github.com/anchore/grype) from 0.104.3 to **0.104.4** on 2026-01-08
   - [syft](https://github.com/anchore/syft) from 1.39.0 to **1.40.0** on 2026-01-08
   - [jsonlint](https://github.com/prantlf/jsonlint) from 16.0.0 to **17.0.0** on 2026-01-09
+  - [golangci-lint](https://golangci-lint.run/) from 2.7.2 to **2.8.0** on 2026-01-09
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.92.4 to **3.92.5** on 2026-01-09
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.14.10 to **0.14.11** on 2026-01-09
+  - [ruff](https://github.com/astral-sh/ruff) from 0.14.10 to **0.14.11** on 2026-01-09
 <!-- linter-versions-end -->
 
 ## [v9.3.0] - 2026-01-04
