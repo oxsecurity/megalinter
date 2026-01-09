@@ -1216,13 +1216,15 @@
     },
     "API_SPECTRAL_CLI_LINT_MODE": {
       "$id": "#/properties/API_SPECTRAL_CLI_LINT_MODE",
-      "default": "file",
+      "default": "list_of_files",
       "enum": [
         "file",
+        "list_of_files",
         "project"
       ],
       "enumNames": [
         "File",
+        "List of Files",
         "Project"
       ],
       "title": "API_SPECTRAL: Override default cli lint mode",
