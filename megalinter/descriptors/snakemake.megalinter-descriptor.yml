@@ -1,3 +1,4 @@
+---
 descriptor_id: SNAKEMAKE
 descriptor_type: tooling_format
 descriptor_flavors:
@@ -39,7 +40,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=snakemake
-          ARG PIP_SNAKEMAKE_VERSION=9.14.5
+          ARG PIP_SNAKEMAKE_VERSION=9.14.6
       pip:
         - snakemake==${PIP_SNAKEMAKE_VERSION}
     ide:

@@ -1,3 +1,4 @@
+---
 descriptor_id: ROBOTFRAMEWORK
 descriptor_type: tooling_format
 descriptor_flavors:
@@ -25,9 +26,9 @@ linters:
     linter_url: https://github.com/MarketSquare/robotframework-robocop
     linter_repo: https://github.com/MarketSquare/robotframework-robocop
     linter_spdx_license: Apache-2.0
-    linter_rules_url: https://robocop.readthedocs.io/en/stable/rules/rules_list.html
-    linter_rules_configuration_url: https://robocop.readthedocs.io/en/stable/configuration/configuration.html
-    linter_rules_inline_disable_url: https://robocop.readthedocs.io/en/stable/rules/rules_basics.html#selecting-and-ignoring-rules
+    linter_rules_url: https://robocop.dev/stable/rules_list/
+    linter_rules_configuration_url: https://robocop.dev/stable/configuration/
+    linter_rules_inline_disable_url: https://robocop.dev/stable/configuration/disablers/
     config_file_name: robocop.toml
     cli_lint_mode: list_of_files
     cli_lint_extra_args:
@@ -48,7 +49,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=robotframework-robocop
-          ARG PIP_ROBOT_FRAMEWORK_ROBOCOP_VERSION=7.0.0
+          ARG PIP_ROBOT_FRAMEWORK_ROBOCOP_VERSION=7.2.0
       pip:
         - robotframework-robocop==${PIP_ROBOT_FRAMEWORK_ROBOCOP_VERSION}
     ide:

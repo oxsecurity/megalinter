@@ -595,6 +595,19 @@ def is_azure_devops_pr() -> bool:
     return config.get(None, "BUILD_REASON") == "PullRequest"
 
 
+# Bitbucket Pipelines ref: https://support.atlassian.com/bitbucket-cloud/docs/variables-and-secrets/
+def is_bitbucket() -> bool:
+    return config.get(None, "BITBUCKET_BUILD_NUMBER") is not None
+
+
+# Jenkins ref: https://www.jenkins.io/doc/book/pipeline/jenkinsfile/#using-environment-variables
+def is_jenkins() -> bool:
+    return (
+        config.get(None, "JENKINS_URL") is not None
+        or config.get(None, "JENKINS_HOME") is not None
+    )
+
+
 def is_ci() -> bool:
     return (
         True

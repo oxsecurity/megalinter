@@ -1,3 +1,4 @@
+---
 descriptor_id: MARKDOWN
 descriptor_type: format
 descriptor_flavors:
@@ -41,6 +42,7 @@ linters:
     config_file_name: .markdownlint.json
     cli_lint_fix_arg_name: "--fix"
     cli_lint_errors_count: total_lines
+    test_folder: markdown_markdownlint
     examples:
       - "markdownlint myfile.md"
       - "markdownlint -c .markdownlint.json myfile.md"
@@ -49,7 +51,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=markdownlint-cli
-          ARG NPM_MARKDOWNLINT_CLI_VERSION=0.45.0
+          ARG NPM_MARKDOWNLINT_CLI_VERSION=0.47.0
       npm:
         - markdownlint-cli@${NPM_MARKDOWNLINT_CLI_VERSION}
     ide:
@@ -161,10 +163,65 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=markdown-table-formatter
-          ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.6.1
+          ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.7.0
       npm:
         - markdown-table-formatter@${NPM_MARKDOWN_TABLE_FORMATTER_VERSION}
     ide:
       vscode:
         - name: Markdown Table Prettify Extension
           url: https://github.com/darkriszty/MarkdownTablePrettify-VSCodeExt
+  # rumdl
+  - linter_name: rumdl
+    can_output_sarif: true
+    is_formatter: true
+    activation_rules:
+      - type: variable
+        variable: MARKDOWN_DEFAULT_STYLE
+        expected_value: rumdl
+        default_value: markdownlint
+    linter_text: |
+      **rumdl** is a high-performance Markdown linter and formatter that helps ensure consistency and best practices in your Markdown files. Inspired by ruff 's approach to Python linting, rumdl brings similar speed and developer experience improvements to the Markdown ecosystem.
+
+      **Key Features:**
+
+      - Built for speed with Rust - significantly faster than alternatives
+      - 57 lint rules covering common Markdown issues
+      - Automatic formatting with --fix for files and stdin/stdout
+      - Zero dependencies - single binary with no runtime requirements
+      - Highly configurable with TOML-based config files
+      - Multiple installation options - Rust, Python, standalone binaries
+      - Installable via pip for Python users
+      - Modern CLI with detailed error reporting
+      - CI/CD friendly with non-zero exit code on errors
+    linter_url: https://github.com/rvben/rumdl
+    linter_repo: https://github.com/rvben/rumdl
+    linter_spdx_license: MIT
+    linter_rules_url: https://github.com/rvben/rumdl/blob/main/docs/RULES.md
+    linter_rules_configuration_url: https://github.com/rvben/rumdl/blob/main/docs/global-settings.md
+    linter_rules_inline_disable_url: https://github.com/rvben/rumdl/blob/main/docs/inline-configuration.md
+    config_file_name: .rumdl.toml
+    test_folder: markdown_rumdl
+    test_variables:
+      MARKDOWN_DEFAULT_STYLE: rumdl
+    cli_lint_mode: list_of_files
+    cli_lint_extra_args:
+      - "check"
+    cli_lint_fix_arg_name: "--fix"
+    cli_sarif_args:
+      - --output-format
+      - sarif
+    examples:
+      - "rumdl check myfile.md" # Check only
+      - "rumdl check --fix myfile.md" # Apply formatting
+      - "rumdl check --fix myfile.md myfile2.md myfile3.md" # Apply formatting
+    install:
+      dockerfile:
+        - |-
+          # renovate: datasource=pypi depName=rumdl
+          ARG RUMDL_MYPY_VERSION=0.0.212
+      pip:
+        - rumdl==${RUMDL_MYPY_VERSION}
+    ide:
+      vscode:
+        - name: rumdl - Markdown Linter
+          url: https://marketplace.visualstudio.com/items?itemName=rvben.rumdl

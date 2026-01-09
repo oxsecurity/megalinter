@@ -25,7 +25,7 @@ def list_flavor_linters(linters_init_params=None, flavor_id="all"):
     flavor_linter_ids = flavor_factory.list_flavor_linters(flavor_id)
     linters = []
     for linter in all_linters:
-        if linter.name in flavor_linter_ids:
+        if linter.name in flavor_linter_ids or linter.is_plugin is True:
             linters += [linter]
         else:
             del linter

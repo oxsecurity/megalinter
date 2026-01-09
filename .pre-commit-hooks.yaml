@@ -1,3 +1,4 @@
+---
 - id: megalinter-incremental
   name: Run MegaLinter (skipping linters that run in project mode)
   entry: npx --

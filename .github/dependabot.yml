@@ -1,3 +1,4 @@
+---
 #################################
 # GitHub Dependabot Config info #
 #################################
@@ -49,11 +50,6 @@ updates:
     open-pull-requests-limit: 10
   - package-ecosystem: "docker"
     directory: "/server"
-    schedule:
-      interval: "weekly"
-    open-pull-requests-limit: 10
-  - package-ecosystem: "docker"
-    directory: "/.config/gitpod"
     schedule:
       interval: "weekly"
     open-pull-requests-limit: 10

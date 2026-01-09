@@ -1,0 +1,7 @@
+Results of markdownlint linter (version 0.25.0)
+See documentation on https://megalinter.io/descriptors/markdown_markdownlint/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/markdown/markdown_good_1.md
+    
+
