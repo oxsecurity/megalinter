@@ -12475,7 +12475,7 @@
 <p>Ansible-lint helps teams maintain consistent, secure, and well-structured Ansible automation code.</p>
 <h2 id="ansible-lint-documentation">ansible-lint documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>25.12.2</strong></li>
+<li>Version in MegaLinter: <strong>26.1.0</strong></li>
 <li>Visit <a href="https://ansible-lint.readthedocs.io/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://ansible-lint.readthedocs.io/configuring/#configuration-file" target="_blank">How to configure ansible-lint rules</a><ul>
 <li>If custom <code>.ansible-lint</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.ansible-lint" target="_blank">.ansible-lint</a> will be used</li>
@@ -12726,7 +12726,7 @@ usage: ansible-lint [-h] [-P | -L | -T]
                     [-f {brief,full,md,json,codeclimate,quiet,pep8,sarif}]
                     [--sarif-file SARIF_FILE] [-q]
                     [--profile {min,basic,moderate,safety,shared,production}]
-                    [-p] [--project-dir PROJECT_DIR] [-r RULESDIR] [-R] [-s]
+                    [--project-dir PROJECT_DIR] [-r RULESDIR] [-R] [-s]
                     [--fix [WRITE_LIST]] [--show-relpath] [-t TAGS] [-v]
                     [-x SKIP_LIST] [--generate-ignore] [-w WARN_LIST]
                     [--enable-list ENABLE_LIST] [--nocolor] [--force-color]
@@ -12751,7 +12751,6 @@ options:
   -q                    quieter, reduce verbosity, can be specified twice.
   --profile {min,basic,moderate,safety,shared,production}
                         Specify which rules profile to be used.
-  -p, --parseable       parseable output, same as '-f pep8'
   --project-dir PROJECT_DIR
                         Location of project/repository, autodetected based on location of configuration file.
   -r, --rules-dir RULESDIR
@@ -12800,11 +12799,11 @@ ANSIBLE_LINT_NODEPS: Avoids installing content dependencies and avoids performin
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile"># renovate: datasource=pypi depName=ansible-lint
-ARG PIP_ANSIBLE_LINT_VERSION=25.12.2
+ARG PIP_ANSIBLE_LINT_VERSION=26.1.0
 </code></pre>
 <ul>
 <li>PIP packages (Python):<ul>
-<li><a href="https://pypi.org/project/ansible-lint/25.12.2">ansible-lint==25.12.2</a></li>
+<li><a href="https://pypi.org/project/ansible-lint/26.1.0">ansible-lint==26.1.0</a></li>
 </ul>
 </li>
 </ul>
