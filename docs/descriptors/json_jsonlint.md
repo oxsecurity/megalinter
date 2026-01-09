@@ -22,7 +22,7 @@ description: How to use jsonlint (configure, ignore files, ignore errors, help &
 
 ## jsonlint documentation
 
-- Version in MegaLinter: **16.0.0**
+- Version in MegaLinter: **17.0.0**
 - Visit [Official Web Site](https://github.com/prantlf/jsonlint#readme){target=_blank}
 - See [How to configure jsonlint rules](https://github.com/prantlf/jsonlint#configuration){target=_blank}
 - See [Index of problems detected by jsonlint](https://github.com/prantlf/jsonlint#configuration){target=_blank}
@@ -142,20 +142,39 @@ Options:
   -P, --pretty-print-invalid   force pretty-printing even for invalid input
   -r, --trailing-newline       ensure a line break at the end of the output
   -R, --no-trailing-newline    ensure no line break at the end of the output
+  --no-strict                  disable the strict schema validation mode
   --prune-comments             omit comments from the prettified output
   --strip-object-keys          strip quotes from object keys if possible
-  --enforce-double-quotes      surrounds all strings with double quotes
-  --enforce-single-quotes      surrounds all strings with single quotes
+  --enforce-double-quotes      surround all strings with double quotes
+  --enforce-single-quotes      surround all strings with single quotes
   --trim-trailing-commas       omit trailing commas from objects and arrays
+  --no-compact-empty-objects   insert line break between empty {} and []
+  --force-crlf                 make sure all line breaks are CRLF
   --succeed-with-no-files      succeed (exit code 0) if no files were found
+  --[no-]color                 force or disable colourful output of the diff
   -v, --version                output the version number
   -h, --help                   display help for command
+
+You can use BASH patterns for including and excluding files (only files).
+Patterns are case-sensitive and have to use slashes as directory separators.
+A pattern to exclude from processing starts with "!".
+
+Parsing mode can be "cjson" or "json5" to enable other flags automatically.
+If no files or directories are specified, stdin will be parsed. Environments
+for JSON Schema validation are "draft-04", "draft-06", "draft-07",
+"draft-2019-09" or "draft-2020-12". The environment may be prefixed
+with "json-schema-". JSON Type Definition can be selected by "rfc8927",
+"json-type-definition" or "jtd". If not specified, it will be "draft-07".
+
+If you specify multiple schemas, either separate them by comma (,) or
+use the "-V" parameter multiple times.
 
 Examples:
   $ jsonlint myfile.json
   $ jsonlint --in-place --pretty-print mydir
   $ jsonlint --comments --trailing-commas --no-duplicate-keys \
       --log-files --compact --continue '**/*.json' '!**/node_modules'
+  $ jsonlint --validate openapi-schema.json --environment draft-07 myapi.json
 ```
 
 ### Installation on mega-linter Docker image
@@ -163,8 +182,8 @@ Examples:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=@prantlf/jsonlint
-ARG NPM_PRANTLF_JSONLINT_VERSION=16.0.0
+ARG NPM_PRANTLF_JSONLINT_VERSION=17.0.0
 ```
 
 - NPM packages (node.js):
-  - [@prantlf/jsonlint@16.0.0](https://www.npmjs.com/package/@prantlf/jsonlint/v/16.0.0)
+  - [@prantlf/jsonlint@17.0.0](https://www.npmjs.com/package/@prantlf/jsonlint/v/17.0.0)
