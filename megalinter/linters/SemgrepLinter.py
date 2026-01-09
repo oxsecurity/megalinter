@@ -4,8 +4,9 @@ Use SemGrep to lint any type of file according to local config
 """
 
 import logging
+import os
 
-from megalinter import Linter, config, flavor_factory, utils
+from megalinter import Linter, config, flavor_factory, utils, utilstest
 
 
 class SemgrepLinter(Linter):
@@ -74,3 +75,18 @@ class SemgrepLinter(Linter):
                 "p/xss",
             ]
         return []
+
+    def pre_test(self, test_name):
+        # The file must be in the root of the repository so we create it temporarily for the test.
+        # By default semgrep ignores files with "test" so we override this behavior
+        # to work with the .automation/test folder
+        # https://semgrep.dev/docs/ignoring-files-folders-code#override-defaults
+        with open(
+            os.path.join(utilstest.get_root_dir(), ".semgrepignore"),
+            "w",
+            encoding="utf-8",
+        ) as f:
+            f.write("")
+
+    def post_test(self, test_name):
+        os.remove(os.path.join(utilstest.get_root_dir(), ".semgrepignore"))
