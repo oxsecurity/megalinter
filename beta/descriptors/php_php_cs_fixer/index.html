@@ -12494,7 +12494,7 @@
 </ul>
 <h2 id="php-cs-fixer-documentation">php-cs-fixer documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>3.92.4</strong></li>
+<li>Version in MegaLinter: <strong>3.92.5</strong></li>
 <li>Visit <a href="https://cs.symfony.com/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/blob/master/doc/config.rst" target="_blank">How to configure php-cs-fixer rules</a><ul>
 <li>If custom <code>.php-cs-fixer.dist.php</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.php-cs-fixer.dist.php" target="_blank">.php-cs-fixer.dist.php</a> will be used</li>
@@ -12734,7 +12734,7 @@ COPY --from=composer/composer:2-bin /composer /usr/bin/composer
 ENV PATH="/root/.composer/vendor/bin:${PATH}"
 # Linter install
 # renovate: datasource=packagist depName=friendsofphp/php-cs-fixer
-ARG PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION=v3.92.4
+ARG PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION=v3.92.5
 RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" &amp;&amp; export GITHUB_AUTH_TOKEN &amp;&amp; composer global require friendsofphp/php-cs-fixer:${PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION} --with-all-dependencies
 
 </code></pre>
