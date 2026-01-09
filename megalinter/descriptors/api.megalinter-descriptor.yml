@@ -37,6 +37,7 @@ linters:
     linter_rules_configuration_url: https://docs.stoplight.io/docs/spectral/9ffa04e052cc1-spectral-cli#using-a-ruleset-file
     linter_spdx_license: Apache-2.0
     config_file_name: .spectral.yaml
+    cli_lint_mode: list_of_files
     cli_config_arg_name: "-r"
     cli_lint_extra_args:
       - "lint"
