@@ -118,7 +118,7 @@ ARG REPOSITORY_KINGFISHER_VERSION=1.73.0
 # renovate: datasource=pypi depName=pip
 ARG PIP_PIP_VERSION=25.3
 # renovate: datasource=pypi depName=virtualenv
-ARG PIP_VIRTUALENV_VERSION=20.35.4
+ARG PIP_VIRTUALENV_VERSION=20.36.0
 # renovate: datasource=github-tags depName=rust-lang/rust
 ARG RUST_RUST_VERSION=1.92.0
 
