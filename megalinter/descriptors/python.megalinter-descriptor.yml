@@ -582,7 +582,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=ruff
-          ARG PIP_RUFF_VERSION=0.14.10
+          ARG PIP_RUFF_VERSION=0.14.11
       pip:
         - ruff==${PIP_RUFF_VERSION}
     ide:
@@ -643,7 +643,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=ruff
-          ARG PIP_RUFF_VERSION=0.14.10
+          ARG PIP_RUFF_VERSION=0.14.11
       pip:
         - ruff==${PIP_RUFF_VERSION}
     ide:
