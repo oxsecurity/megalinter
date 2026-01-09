@@ -46,6 +46,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [kics](https://www.kics.io) from 2.1.18 to **2.1.19** on 2026-01-07
   - [grype](https://github.com/anchore/grype) from 0.104.3 to **0.104.4** on 2026-01-08
   - [syft](https://github.com/anchore/syft) from 1.39.0 to **1.40.0** on 2026-01-08
+  - [jsonlint](https://github.com/prantlf/jsonlint) from 16.0.0 to **17.0.0** on 2026-01-09
 <!-- linter-versions-end -->
 
 ## [v9.3.0] - 2026-01-04
