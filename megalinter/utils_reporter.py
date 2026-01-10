@@ -248,6 +248,12 @@ def build_markdown_summary_footer(reporter_self, action_run_url=""):
     else:
         footer += os.linesep + OX_MARKDOWN_LINK
 
+
+    footer += (
+        os.linesep
+        + "Show us your support by [starring ⭐ the repository](https://github.com/oxsecurity/megalinter)"
+    )
+
     if config.exists(
         reporter_self.master.request_id, "JOB_SUMMARY_ADDITIONAL_MARKDOWN"
     ):
