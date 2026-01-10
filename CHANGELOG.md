@@ -29,6 +29,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Fix issue with plugins ignored when FLAVOR_SUGGESTIONS=false
 
 - Reporters
+  - Add a link inviting to star MegaLinter
 
 - Doc
 
