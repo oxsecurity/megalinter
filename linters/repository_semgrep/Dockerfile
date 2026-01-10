@@ -49,11 +49,11 @@ FROM python:3.13-alpine3.23
 #############################################################################################
 #ARG__START
 # renovate: datasource=pypi depName=semgrep
-ARG PIP_SEMGREP_VERSION=1.146.0
+ARG PIP_SEMGREP_VERSION=1.147.0
 # renovate: datasource=pypi depName=pip
 ARG PIP_PIP_VERSION=25.3
 # renovate: datasource=pypi depName=virtualenv
-ARG PIP_VIRTUALENV_VERSION=20.36.0
+ARG PIP_VIRTUALENV_VERSION=20.36.1
 #ARG__END
 
 ####################

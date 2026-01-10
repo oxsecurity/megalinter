@@ -158,7 +158,7 @@ ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=11.2.5
 # renovate: datasource=npm depName=@secretlint/secretlint-formatter-sarif
 ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=11.2.5
 # renovate: datasource=pypi depName=semgrep
-ARG PIP_SEMGREP_VERSION=1.146.0
+ARG PIP_SEMGREP_VERSION=1.147.0
 # renovate: datasource=github-tags depName=anchore/syft
 ARG REPOSITORY_SYFT_VERSION=1.40.0
 # renovate: datasource=github-tags depName=aquasecurity/trivy
@@ -184,7 +184,7 @@ ARG PIP_YAMLLINT_VERSION=1.37.1
 # renovate: datasource=pypi depName=pip
 ARG PIP_PIP_VERSION=25.3
 # renovate: datasource=pypi depName=virtualenv
-ARG PIP_VIRTUALENV_VERSION=20.36.0
+ARG PIP_VIRTUALENV_VERSION=20.36.1
 # renovate: datasource=github-tags depName=rust-lang/rust
 ARG RUST_RUST_VERSION=1.92.0
 
