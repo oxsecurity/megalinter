@@ -1111,7 +1111,6 @@ def generate_descriptor_documentation(descriptor):
                 f"{descriptor.get('descriptor_id')}_PRE_COMMANDS",
                 {
                     "$id": f"#/properties/{descriptor.get('descriptor_id')}_PRE_COMMANDS",
-
                     "description": (
                         f"{descriptor.get('descriptor_id')}: "
                         "List of bash commands to run before the linters"
@@ -1647,7 +1646,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                 # FILE_EXTENSIONS
                 f"| {linter.name}_FILE_EXTENSIONS | Allowed file extensions."
                 f' `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>'
-                f"Ex: `[\".py\", \"\"]` | {file_extensions_default} |",
+                f'Ex: `[".py", ""]` | {file_extensions_default} |',
                 # FILE_NAMES_REGEX
                 f"| {linter.name}_FILE_NAMES_REGEX | File name regex filters. Regular expression list for"
                 f" filtering files by their base names using regex full match. Empty list includes all files<br/>"
@@ -1786,10 +1785,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                             f"{linter.name}: "
                             "If true, the linter doesn't make MegaLinter fail even if errors are found"
                         ),
-                        "title": (
-                            title_prefix
-                            + f"{linter.name}: Disable errors"
-                        ),
+                        "title": (title_prefix + f"{linter.name}: Disable errors"),
                     },
                 ],
                 [
@@ -1816,7 +1812,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                             f"{linter.name}: "
                             "Override CLI executable used to build the linter command line (rarely needed)"
                         ),
-                  "title": f"{title_prefix}{linter.name}: CLI Executable",
+                        "title": f"{title_prefix}{linter.name}: CLI Executable",
                         "items": {"type": "string"},
                     },
                 ],
