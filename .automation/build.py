@@ -195,7 +195,7 @@ def generate_all_flavors():
             logging.warning("Unable to update docker pull counters: " + str(e))
 
 
-# Automatically generate Dockerfile, action.yml and upgrade all_flavors.json
+# Automatically generate Dockerfile , action.yml and upgrade all_flavors.json
 def generate_flavor(flavor, flavor_info):
     descriptor_and_linters = []
     flavor_descriptors = []
@@ -1111,6 +1111,11 @@ def generate_descriptor_documentation(descriptor):
                 f"{descriptor.get('descriptor_id')}_PRE_COMMANDS",
                 {
                     "$id": f"#/properties/{descriptor.get('descriptor_id')}_PRE_COMMANDS",
+
+                    "description": (
+                        f"{descriptor.get('descriptor_id')}: "
+                        "List of bash commands to run before the linters"
+                    ),
                     "type": "array",
                     "title": f"Pre commands for {descriptor.get('descriptor_id')} descriptor",
                     "examples": [
@@ -1129,6 +1134,7 @@ def generate_descriptor_documentation(descriptor):
                 f"{descriptor.get('descriptor_id')}_POST_COMMANDS",
                 {
                     "$id": f"#/properties/{descriptor.get('descriptor_id')}_POST_COMMANDS",
+                    "description": f"{descriptor.get('descriptor_id')}: List of bash commands to run after the linters",
                     "type": "array",
                     "title": f"Post commands for {descriptor.get('descriptor_id')} descriptor",
                     "examples": [
@@ -1147,6 +1153,10 @@ def generate_descriptor_documentation(descriptor):
                 f"{descriptor.get('descriptor_id')}_FILTER_REGEX_INCLUDE",
                 {
                     "$id": f"#/properties/{descriptor.get('descriptor_id')}_FILTER_REGEX_INCLUDE",
+                    "description": (
+                        f"{descriptor.get('descriptor_id')}: "
+                        "Custom regex including filter: only files matching this regex will be linted"
+                    ),
                     "type": "string",
                     "title": f"Including regex filter for {descriptor.get('descriptor_id')} descriptor",
                 },
@@ -1155,6 +1165,10 @@ def generate_descriptor_documentation(descriptor):
                 f"{descriptor.get('descriptor_id')}_FILTER_REGEX_EXCLUDE",
                 {
                     "$id": f"#/properties/{descriptor.get('descriptor_id')}_FILTER_REGEX_EXCLUDE",
+                    "description": (
+                        f"{descriptor.get('descriptor_id')}: "
+                        "Custom regex excluding filter: files matching this regex will NOT be linted"
+                    ),
                     "type": "string",
                     "title": f"Excluding regex filter for {descriptor.get('descriptor_id')} descriptor",
                 },
@@ -1551,6 +1565,11 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                         f"{linter.name}_FILTER_REGEX_INCLUDE",
                         {
                             "$id": f"#/properties/{linter.name}_FILTER_REGEX_INCLUDE",
+                            "description": (
+                                f"{linter.name}: "
+                                "Custom regex including filter: "
+                                "only files matching this regex will be linted"
+                            ),
                             "type": "string",
                             "title": f"{title_prefix}{linter.name}: Including Regex",
                         },
@@ -1559,6 +1578,11 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                         f"{linter.name}_FILTER_REGEX_EXCLUDE",
                         {
                             "$id": f"#/properties/{linter.name}_FILTER_REGEX_EXCLUDE",
+                            "description": (
+                                f"{linter.name}: "
+                                "Custom regex excluding filter: "
+                                "files matching this regex will NOT be linted"
+                            ),
                             "type": "string",
                             "title": f"{title_prefix}{linter.name}: Excluding Regex",
                         },
@@ -1598,6 +1622,10 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                     f"{linter.name}_CLI_LINT_MODE",
                     {
                         "$id": f"#/properties/{linter.name}_CLI_LINT_MODE",
+                        "description": (
+                            f"{linter.name}: "
+                            "Override default CLI lint mode used to call the linter (rarely needed)"
+                        ),
                         "type": "string",
                         "title": f"{title_prefix}{linter.name}: Override default cli lint mode",
                         "default": linter.cli_lint_mode,
@@ -1609,16 +1637,22 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
 
         # File extensions & file names override if not "lint_all_files"
         if linter.lint_all_files is False:
+            file_extensions_default = dump_as_json(
+                linter.file_extensions, "Exclude every file"
+            )
+            file_names_regex_default = dump_as_json(
+                linter.file_names_regex, "Include every file"
+            )
             linter_doc_md += [
                 # FILE_EXTENSIONS
                 f"| {linter.name}_FILE_EXTENSIONS | Allowed file extensions."
                 f' `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>'
-                f"Ex: `[\".py\", \"\"]` | {dump_as_json(linter.file_extensions, 'Exclude every file')} |",
+                f"Ex: `[\".py\", \"\"]` | {file_extensions_default} |",
                 # FILE_NAMES_REGEX
                 f"| {linter.name}_FILE_NAMES_REGEX | File name regex filters. Regular expression list for"
                 f" filtering files by their base names using regex full match. Empty list includes all files<br/>"
                 f'Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` '
-                f"| {dump_as_json(linter.file_names_regex, 'Include every file')} |",
+                f"| {file_names_regex_default} |",
             ]
             add_in_config_schema_file(
                 [
@@ -1626,6 +1660,11 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                         f"{linter.name}_FILE_EXTENSIONS",
                         {
                             "$id": f"#/properties/{linter.name}_FILE_EXTENSIONS",
+                            "description": (
+                                f"{linter.name}: "
+                                "Override descriptor/linter matching files extensions that will be used "
+                                "to select files to lint"
+                            ),
                             "type": "array",
                             "title": (
                                 title_prefix
@@ -1639,6 +1678,11 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                         f"{linter.name}_FILE_NAMES_REGEX",
                         {
                             "$id": f"#/properties/{linter.name}_FILE_NAMES_REGEX",
+                            "description": (
+                                f"{linter.name}: "
+                                "Override descriptor/linter matching file name regex that will be used "
+                                "to select files to lint"
+                            ),
                             "type": "array",
                             "title": (
                                 title_prefix
@@ -1692,6 +1736,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                     f"{linter.name}_PRE_COMMANDS",
                     {
                         "$id": f"#/properties/{linter.name}_PRE_COMMANDS",
+                        "description": f"{linter.name}: List of bash commands to run before the linter",
                         "type": "array",
                         "title": (
                             title_prefix
@@ -1713,6 +1758,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                     f"{linter.name}_POST_COMMANDS",
                     {
                         "$id": f"#/properties/{linter.name}_POST_COMMANDS",
+                        "description": f"{linter.name}: List of bash commands to run after the linter",
                         "type": "array",
                         "title": (
                             title_prefix
@@ -1736,9 +1782,13 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                         "$id": f"#/properties/{linter.name}_DISABLE_ERRORS",
                         "type": "boolean",
                         "default": False,
+                        "description": (
+                            f"{linter.name}: "
+                            "If true, the linter doesn't make MegaLinter fail even if errors are found"
+                        ),
                         "title": (
                             title_prefix
-                            + f"{linter.name}: Linter doesn't make MegaLinter fail even if errors are found"
+                            + f"{linter.name}: Disable errors"
                         ),
                     },
                 ],
@@ -1748,6 +1798,11 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                         "$id": f"#/properties/{linter.name}_DISABLE_ERRORS_IF_LESS_THAN",
                         "type": "number",
                         "default": 0,
+                        "description": (
+                            f"{linter.name}: "
+                            "If the number of errors found is less than this value, the linter doesn't "
+                            "make MegaLinter fail"
+                        ),
                         "title": f"{title_prefix}{linter.name}: Maximum number of errors allowed",
                     },
                 ],
@@ -1757,7 +1812,11 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                         "$id": f"#/properties/{linter.name}_CLI_EXECUTABLE",
                         "type": "array",
                         "default": [linter.cli_executable],
-                        "title": f"{title_prefix}{linter.name}: CLI Executable",
+                        "description": (
+                            f"{linter.name}: "
+                            "Override CLI executable used to build the linter command line (rarely needed)"
+                        ),
+                  "title": f"{title_prefix}{linter.name}: CLI Executable",
                         "items": {"type": "string"},
                     },
                 ],
