@@ -114,7 +114,7 @@ checkmake.
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=docker depName=quay.io/checkmake/checkmake
-ARG MAKEFILE_CHECKMAKE_VERSION=v0.3.1
+ARG MAKEFILE_CHECKMAKE_VERSION=v0.3.2
 FROM quay.io/checkmake/checkmake:${MAKEFILE_CHECKMAKE_VERSION} AS checkmake
 COPY --link --from=checkmake /checkmake /usr/bin/checkmake
 ```
