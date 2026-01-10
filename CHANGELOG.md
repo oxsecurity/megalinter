@@ -23,6 +23,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Linters enhancements
   - Use the official checkmake image by @bdovaz
+  - Add sarif support to spectral by @bdovaz
 
 - Fixes
   - Fix issue with plugins ignored when FLAVOR_SUGGESTIONS=false
