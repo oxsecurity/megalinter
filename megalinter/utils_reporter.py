@@ -250,7 +250,7 @@ def build_markdown_summary_footer(reporter_self, action_run_url=""):
 
     footer += (
         os.linesep
-        + "Show us your support by [starring ⭐ the repository](https://github.com/oxsecurity/megalinter)"
+        + "Show us your support by [**starring ⭐ the repository**](https://github.com/oxsecurity/megalinter)"
     )
 
     if config.exists(
