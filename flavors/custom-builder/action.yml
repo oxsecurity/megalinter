@@ -6,6 +6,10 @@ inputs:
   megalinter-custom-flavor-builder-tag:
     description: "Tag of the megalinter-custom-flavor-builder Docker image to use"
     required: true
+  platform:
+    description: "The platform(s) it will build on"
+    required: true
+    default: "linux/amd64"
   is-latest:
     description: "Is this the latest version of the custom flavor?"
     required: true
@@ -32,6 +36,7 @@ runs:
           -v /var/run/docker.sock:/var/run/docker.sock:rw \
           -v ${{ github.workspace }}:/github/workspace \
             -e GITHUB_TOKEN=${{ env.GITHUB_TOKEN }} \
+            -e CUSTOM_FLAVOR_PLATFORM=${{ inputs.platform }} \
             -e CUSTOM_FLAVOR_BUILD_REPO=${{ env.CUSTOM_FLAVOR_BUILD_REPO }} \
             -e CUSTOM_FLAVOR_BUILD_REPO_URL=${{ env.CUSTOM_FLAVOR_BUILD_REPO_URL }} \
             -e CUSTOM_FLAVOR_BUILD_USER=${{ env.CUSTOM_FLAVOR_BUILD_USER }} \
