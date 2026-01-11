@@ -1669,7 +1669,8 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                                 title_prefix
                                 + f"{linter.name}: Override descriptor/linter matching files extensions"
                             ),
-                            "examples:": [".py", ".myext"],
+                            "default": linter.file_extensions,
+                            "examples": [".py", ".myext"],
                             "items": {"type": "string"},
                         },
                     ],
@@ -1687,6 +1688,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                                 title_prefix
                                 + f"{linter.name}: Override descriptor/linter matching file name regex"
                             ),
+                            "default": linter.file_names_regex,
                             "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
                             "items": {"type": "string"},
                         },
