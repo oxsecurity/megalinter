@@ -30,6 +30,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Reporters
   - Add a link inviting to star MegaLinter
+  - Display in the console reporter the working directory from which the commands are executed by @bdovaz
 
 - Doc
 
