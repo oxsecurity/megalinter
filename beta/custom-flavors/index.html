@@ -11151,6 +11151,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#optional-generate-the-image-for-arm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Optional: Generate the image for ARM
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#commit-and-push-your-changes" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -12485,6 +12496,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#optional-generate-the-image-for-arm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Optional: Generate the image for ARM
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#commit-and-push-your-changes" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -12625,7 +12647,7 @@
 <ul>
 <li>Create a new GitHub public repository whose name starts with <code>megalinter-custom-flavor</code> (example: <code>megalinter-custom-flavor-npm-groovy-lint</code>), with default README checked.</li>
 </ul>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/images/custom-flavor-new-repo.png" data-desc-position="bottom"><img alt="" src="../assets/images/custom-flavor-new-repo.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/images/custom-flavor-new-repo.png" data-desc-position="bottom"><img alt="GitHub form to create a repository" src="../assets/images/custom-flavor-new-repo.png"></a></p>
 <h3 id="clone-your-new-repository-locally">Clone your new repository locally</h3>
 <p>Clone your new repository to your local machine.
 You can work directly on <strong>main</strong> branch, or create a sub-branch if you prefer.</p>
@@ -12634,21 +12656,33 @@ You can work directly on <strong>main</strong> branch, or create a sub-branch if
 <pre><code class="language-bash">npx mega-linter-runner@beta --custom-flavor-setup
 </code></pre>
 <p>You can also send the list of linters as parameters, available from the logs of any official MegaLinter flavor (if you don't see it, make sure <code>FLAVOR_SUGGESTIONS: true</code> is defined in your <code>.mega-linter.yml</code> config file).</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/images/custom-flavor-command.png" data-desc-position="bottom"><img alt="" src="../assets/images/custom-flavor-command.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/images/custom-flavor-command.png" data-desc-position="bottom"><img alt="Example command to generate the custom flavor" src="../assets/images/custom-flavor-command.png"></a></p>
 <pre><code class="language-bash">npx mega-linter-runner@beta --custom-flavor-setup --custom-flavor-linters "PYTHON_BANDIT,PYTHON_BLACK,PYTHON_RUFF,REPOSITORY_TRIVY"
 </code></pre>
 <h3 id="follow-the-interactive-prompts">Follow the interactive prompts</h3>
 <p>Select your custom flavor label and the linters you want to include.</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/images/custom-flavor-linter-select.png" data-desc-position="bottom"><img alt="" src="../assets/images/custom-flavor-linter-select.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/images/custom-flavor-linter-select.png" data-desc-position="bottom"><img alt="Selection of linters in the custom flavor" src="../assets/images/custom-flavor-linter-select.png"></a></p>
 <h3 id="generated-files">Generated files</h3>
 <p>The generator will create all necessary configuration files, GitHub Actions workflows, and documentation in your repository.</p>
-<p>Two workflows are generated:
-- <strong>megalinter-custom-flavor-builder.yml</strong>: Builds and publishes your custom flavor Docker image
-- <strong>check-new-megalinter-version.yml</strong>: Automatically checks daily for new MegaLinter releases and creates matching releases in your repository</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/images/custom-flavor-generated-files.png" data-desc-position="bottom"><img alt="" src="../assets/images/custom-flavor-generated-files.png"></a></p>
+<p>Two workflows are generated:</p>
+<ul>
+<li><strong>megalinter-custom-flavor-builder.yml</strong>: Builds and publishes your custom flavor Docker image</li>
+<li><strong>check-new-megalinter-version.yml</strong>: Automatically checks daily for new MegaLinter releases and creates matching releases in your repository</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/images/custom-flavor-generated-files.png" data-desc-position="bottom"><img alt="Custom flavor generated files in VS Code" src="../assets/images/custom-flavor-generated-files.png"></a></p>
+<h3 id="optional-generate-the-image-for-arm">Optional: Generate the image for ARM</h3>
+<blockquote>
+<p><strong>Important:</strong> Check the <a href="../all_linters/">linters you have selected</a> in your flavor to see if they are compatible with <code>linux/arm64</code> platform.</p>
+</blockquote>
+<p>To build the image for ARM as well, edit <strong>megalinter-custom-flavor-builder.yml</strong> and change:</p>
+<pre><code class="language-yml">platform: "linux/amd64"
+</code></pre>
+<p>To:</p>
+<pre><code class="language-yml">platform: "linux/amd64,linux/arm64"
+</code></pre>
 <h3 id="commit-and-push-your-changes">Commit and push your changes</h3>
 <p>Commit and push the generated files to GitHub.</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/images/custom-flavor-commit-push.png" data-desc-position="bottom"><img alt="" src="../assets/images/custom-flavor-commit-push.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/images/custom-flavor-commit-push.png" data-desc-position="bottom"><img alt="Commit in VS Code" src="../assets/images/custom-flavor-commit-push.png"></a></p>
 <h3 id="configure-personal-access-token-required">Configure Personal Access Token (Required)</h3>
 <p>To enable automatic version checking and release creation, you need to configure a <strong>repository-scoped fine-grained Personal Access Token</strong>:</p>
 <ol>
@@ -12698,12 +12732,11 @@ You can work directly on <strong>main</strong> branch, or create a sub-branch if
 </ul>
 </li>
 </ol>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/images/custom-flavor-release-1.png" data-desc-position="bottom"><img alt="" src="../assets/images/custom-flavor-release-1.png"></a></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/images/custom-flavor-release-2.png" data-desc-position="bottom"><img alt="" src="../assets/images/custom-flavor-release-2.png"></a></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="assets/images/custom-flavor-build-job.png" data-desc-position="bottom"><img alt="" src="assets/images/custom-flavor-build-job.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/images/custom-flavor-release-1.png" data-desc-position="bottom"><img alt="Creating a GitHub release checks" src="../assets/images/custom-flavor-release-1.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/images/custom-flavor-release-2.png" data-desc-position="bottom"><img alt="Creating a GitHub release form" src="../assets/images/custom-flavor-release-2.png"></a></p>
 <h2 id="use-a-custom-flavor">Use a Custom Flavor</h2>
 <p>Follow <a href="https://megalinter.io/latest/install-assisted/">MegaLinter installation guide</a>, and replace related elements in the workflow.</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/images/custom-flavor-run.png" data-desc-position="bottom"><img alt="" src="../assets/images/custom-flavor-run.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/images/custom-flavor-run.png" data-desc-position="bottom"><img alt="Running a custom flavor workflow" src="../assets/images/custom-flavor-run.png"></a></p>
 <h3 id="github-action">GitHub Action</h3>
 <p>On MegaLinter step in <code>.github/workflows/mega-linter.yml</code>, replace the official GitHub Action with your custom flavor repo action.</p>
 <p>Example:</p>
