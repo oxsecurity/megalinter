@@ -680,8 +680,12 @@
     },
     "ACTION_ACTIONLINT_FILE_EXTENSIONS": {
       "$id": "#/properties/ACTION_ACTIONLINT_FILE_EXTENSIONS",
+      "default": [
+        ".yml",
+        ".yaml"
+      ],
       "description": "ACTION_ACTIONLINT: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -696,6 +700,7 @@
     },
     "ACTION_ACTIONLINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/ACTION_ACTIONLINT_FILE_NAMES_REGEX",
+      "default": [],
       "description": "ACTION_ACTIONLINT: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -986,8 +991,12 @@
     },
     "ANSIBLE_ANSIBLE_LINT_FILE_EXTENSIONS": {
       "$id": "#/properties/ANSIBLE_ANSIBLE_LINT_FILE_EXTENSIONS",
+      "default": [
+        ".yml",
+        ".yaml"
+      ],
       "description": "ANSIBLE_ANSIBLE_LINT: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -1002,6 +1011,7 @@
     },
     "ANSIBLE_ANSIBLE_LINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/ANSIBLE_ANSIBLE_LINT_FILE_NAMES_REGEX",
+      "default": [],
       "description": "ANSIBLE_ANSIBLE_LINT: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -1316,8 +1326,13 @@
     },
     "API_SPECTRAL_FILE_EXTENSIONS": {
       "$id": "#/properties/API_SPECTRAL_FILE_EXTENSIONS",
+      "default": [
+        ".yml",
+        ".yaml",
+        ".json"
+      ],
       "description": "API_SPECTRAL: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -1332,6 +1347,7 @@
     },
     "API_SPECTRAL_FILE_NAMES_REGEX": {
       "$id": "#/properties/API_SPECTRAL_FILE_NAMES_REGEX",
+      "default": [],
       "description": "API_SPECTRAL: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -1557,8 +1573,11 @@
     },
     "ARM_ARM_TTK_FILE_EXTENSIONS": {
       "$id": "#/properties/ARM_ARM_TTK_FILE_EXTENSIONS",
+      "default": [
+        ".json"
+      ],
       "description": "ARM_ARM_TTK: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -1573,6 +1592,7 @@
     },
     "ARM_ARM_TTK_FILE_NAMES_REGEX": {
       "$id": "#/properties/ARM_ARM_TTK_FILE_NAMES_REGEX",
+      "default": [],
       "description": "ARM_ARM_TTK: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -1851,8 +1871,15 @@
     },
     "BASH_EXEC_FILE_EXTENSIONS": {
       "$id": "#/properties/BASH_EXEC_FILE_EXTENSIONS",
+      "default": [
+        "",
+        ".sh",
+        ".bash",
+        ".dash",
+        ".ksh"
+      ],
       "description": "BASH_EXEC: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -1867,6 +1894,7 @@
     },
     "BASH_EXEC_FILE_NAMES_REGEX": {
       "$id": "#/properties/BASH_EXEC_FILE_NAMES_REGEX",
+      "default": [],
       "description": "BASH_EXEC: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -2111,8 +2139,15 @@
     },
     "BASH_SHELLCHECK_FILE_EXTENSIONS": {
       "$id": "#/properties/BASH_SHELLCHECK_FILE_EXTENSIONS",
+      "default": [
+        "",
+        ".sh",
+        ".bash",
+        ".dash",
+        ".ksh"
+      ],
       "description": "BASH_SHELLCHECK: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -2127,6 +2162,7 @@
     },
     "BASH_SHELLCHECK_FILE_NAMES_REGEX": {
       "$id": "#/properties/BASH_SHELLCHECK_FILE_NAMES_REGEX",
+      "default": [],
       "description": "BASH_SHELLCHECK: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -2311,8 +2347,15 @@
     },
     "BASH_SHFMT_FILE_EXTENSIONS": {
       "$id": "#/properties/BASH_SHFMT_FILE_EXTENSIONS",
+      "default": [
+        "",
+        ".sh",
+        ".bash",
+        ".dash",
+        ".ksh"
+      ],
       "description": "BASH_SHFMT: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -2327,6 +2370,7 @@
     },
     "BASH_SHFMT_FILE_NAMES_REGEX": {
       "$id": "#/properties/BASH_SHFMT_FILE_NAMES_REGEX",
+      "default": [],
       "description": "BASH_SHFMT: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -2509,8 +2553,11 @@
     },
     "BICEP_BICEP_LINTER_FILE_EXTENSIONS": {
       "$id": "#/properties/BICEP_BICEP_LINTER_FILE_EXTENSIONS",
+      "default": [
+        ".bicep"
+      ],
       "description": "BICEP_BICEP_LINTER: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -2525,6 +2572,7 @@
     },
     "BICEP_BICEP_LINTER_FILE_NAMES_REGEX": {
       "$id": "#/properties/BICEP_BICEP_LINTER_FILE_NAMES_REGEX",
+      "default": [],
       "description": "BICEP_BICEP_LINTER: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -2807,8 +2855,14 @@
     },
     "CLOJURE_CLJSTYLE_FILE_EXTENSIONS": {
       "$id": "#/properties/CLOJURE_CLJSTYLE_FILE_EXTENSIONS",
+      "default": [
+        ".clj",
+        ".cljs",
+        ".cljc",
+        ".edn"
+      ],
       "description": "CLOJURE_CLJSTYLE: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -2823,6 +2877,7 @@
     },
     "CLOJURE_CLJSTYLE_FILE_NAMES_REGEX": {
       "$id": "#/properties/CLOJURE_CLJSTYLE_FILE_NAMES_REGEX",
+      "default": [],
       "description": "CLOJURE_CLJSTYLE: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -3024,8 +3079,14 @@
     },
     "CLOJURE_CLJ_KONDO_FILE_EXTENSIONS": {
       "$id": "#/properties/CLOJURE_CLJ_KONDO_FILE_EXTENSIONS",
+      "default": [
+        ".clj",
+        ".cljs",
+        ".cljc",
+        ".edn"
+      ],
       "description": "CLOJURE_CLJ_KONDO: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -3040,6 +3101,7 @@
     },
     "CLOJURE_CLJ_KONDO_FILE_NAMES_REGEX": {
       "$id": "#/properties/CLOJURE_CLJ_KONDO_FILE_NAMES_REGEX",
+      "default": [],
       "description": "CLOJURE_CLJ_KONDO: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -3303,8 +3365,13 @@
     },
     "CLOUDFORMATION_CFN_LINT_FILE_EXTENSIONS": {
       "$id": "#/properties/CLOUDFORMATION_CFN_LINT_FILE_EXTENSIONS",
+      "default": [
+        ".yml",
+        ".yaml",
+        ".json"
+      ],
       "description": "CLOUDFORMATION_CFN_LINT: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -3319,6 +3386,7 @@
     },
     "CLOUDFORMATION_CFN_LINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/CLOUDFORMATION_CFN_LINT_FILE_NAMES_REGEX",
+      "default": [],
       "description": "CLOUDFORMATION_CFN_LINT: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -3580,8 +3648,11 @@
     },
     "COFFEE_COFFEELINT_FILE_EXTENSIONS": {
       "$id": "#/properties/COFFEE_COFFEELINT_FILE_EXTENSIONS",
+      "default": [
+        ".coffee"
+      ],
       "description": "COFFEE_COFFEELINT: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -3596,6 +3667,7 @@
     },
     "COFFEE_COFFEELINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/COFFEE_COFFEELINT_FILE_NAMES_REGEX",
+      "default": [],
       "description": "COFFEE_COFFEELINT: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -4144,8 +4216,21 @@
     },
     "CPP_CLANG_FORMAT_FILE_EXTENSIONS": {
       "$id": "#/properties/CPP_CLANG_FORMAT_FILE_EXTENSIONS",
+      "default": [
+        ".cpp",
+        ".h",
+        ".cc",
+        ".hpp",
+        ".cxx",
+        ".cu",
+        ".hxx",
+        ".c++",
+        ".hh",
+        ".h++",
+        ".cuh"
+      ],
       "description": "CPP_CLANG_FORMAT: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -4160,6 +4245,7 @@
     },
     "CPP_CLANG_FORMAT_FILE_NAMES_REGEX": {
       "$id": "#/properties/CPP_CLANG_FORMAT_FILE_NAMES_REGEX",
+      "default": [],
       "description": "CPP_CLANG_FORMAT: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -4351,8 +4437,21 @@
     },
     "CPP_CPPCHECK_FILE_EXTENSIONS": {
       "$id": "#/properties/CPP_CPPCHECK_FILE_EXTENSIONS",
+      "default": [
+        ".cpp",
+        ".h",
+        ".cc",
+        ".hpp",
+        ".cxx",
+        ".cu",
+        ".hxx",
+        ".c++",
+        ".hh",
+        ".h++",
+        ".cuh"
+      ],
       "description": "CPP_CPPCHECK: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -4367,6 +4466,7 @@
     },
     "CPP_CPPCHECK_FILE_NAMES_REGEX": {
       "$id": "#/properties/CPP_CPPCHECK_FILE_NAMES_REGEX",
+      "default": [],
       "description": "CPP_CPPCHECK: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -4551,8 +4651,21 @@
     },
     "CPP_CPPLINT_FILE_EXTENSIONS": {
       "$id": "#/properties/CPP_CPPLINT_FILE_EXTENSIONS",
+      "default": [
+        ".cpp",
+        ".h",
+        ".cc",
+        ".hpp",
+        ".cxx",
+        ".cu",
+        ".hxx",
+        ".c++",
+        ".hh",
+        ".h++",
+        ".cuh"
+      ],
       "description": "CPP_CPPLINT: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -4567,6 +4680,7 @@
     },
     "CPP_CPPLINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/CPP_CPPLINT_FILE_NAMES_REGEX",
+      "default": [],
       "description": "CPP_CPPLINT: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -4821,8 +4935,15 @@
     },
     "CSHARP_CSHARPIER_FILE_EXTENSIONS": {
       "$id": "#/properties/CSHARP_CSHARPIER_FILE_EXTENSIONS",
+      "default": [
+        ".config",
+        ".cs",
+        ".csproj",
+        ".props",
+        ".targets"
+      ],
       "description": "CSHARP_CSHARPIER: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -4837,6 +4958,7 @@
     },
     "CSHARP_CSHARPIER_FILE_NAMES_REGEX": {
       "$id": "#/properties/CSHARP_CSHARPIER_FILE_NAMES_REGEX",
+      "default": [],
       "description": "CSHARP_CSHARPIER: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -5030,8 +5152,11 @@
     },
     "CSHARP_DOTNET_FORMAT_FILE_EXTENSIONS": {
       "$id": "#/properties/CSHARP_DOTNET_FORMAT_FILE_EXTENSIONS",
+      "default": [
+        ".cs"
+      ],
       "description": "CSHARP_DOTNET_FORMAT: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -5046,6 +5171,7 @@
     },
     "CSHARP_DOTNET_FORMAT_FILE_NAMES_REGEX": {
       "$id": "#/properties/CSHARP_DOTNET_FORMAT_FILE_NAMES_REGEX",
+      "default": [],
       "description": "CSHARP_DOTNET_FORMAT: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -5270,8 +5396,11 @@
     },
     "CSHARP_ROSLYNATOR_FILE_EXTENSIONS": {
       "$id": "#/properties/CSHARP_ROSLYNATOR_FILE_EXTENSIONS",
+      "default": [
+        ".csproj"
+      ],
       "description": "CSHARP_ROSLYNATOR: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -5286,6 +5415,7 @@
     },
     "CSHARP_ROSLYNATOR_FILE_NAMES_REGEX": {
       "$id": "#/properties/CSHARP_ROSLYNATOR_FILE_NAMES_REGEX",
+      "default": [],
       "description": "CSHARP_ROSLYNATOR: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -5757,8 +5887,13 @@
     },
     "CSS_STYLELINT_FILE_EXTENSIONS": {
       "$id": "#/properties/CSS_STYLELINT_FILE_EXTENSIONS",
+      "default": [
+        ".css",
+        ".scss",
+        ".saas"
+      ],
       "description": "CSS_STYLELINT: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -5773,6 +5908,7 @@
     },
     "CSS_STYLELINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/CSS_STYLELINT_FILE_NAMES_REGEX",
+      "default": [],
       "description": "CSS_STYLELINT: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -5976,8 +6112,12 @@
     },
     "C_CLANG_FORMAT_FILE_EXTENSIONS": {
       "$id": "#/properties/C_CLANG_FORMAT_FILE_EXTENSIONS",
+      "default": [
+        ".c",
+        ".h"
+      ],
       "description": "C_CLANG_FORMAT: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -5992,6 +6132,7 @@
     },
     "C_CLANG_FORMAT_FILE_NAMES_REGEX": {
       "$id": "#/properties/C_CLANG_FORMAT_FILE_NAMES_REGEX",
+      "default": [],
       "description": "C_CLANG_FORMAT: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -6183,8 +6324,12 @@
     },
     "C_CPPCHECK_FILE_EXTENSIONS": {
       "$id": "#/properties/C_CPPCHECK_FILE_EXTENSIONS",
+      "default": [
+        ".c",
+        ".h"
+      ],
       "description": "C_CPPCHECK: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -6199,6 +6344,7 @@
     },
     "C_CPPCHECK_FILE_NAMES_REGEX": {
       "$id": "#/properties/C_CPPCHECK_FILE_NAMES_REGEX",
+      "default": [],
       "description": "C_CPPCHECK: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -6383,8 +6529,12 @@
     },
     "C_CPPLINT_FILE_EXTENSIONS": {
       "$id": "#/properties/C_CPPLINT_FILE_EXTENSIONS",
+      "default": [
+        ".c",
+        ".h"
+      ],
       "description": "C_CPPLINT: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -6399,6 +6549,7 @@
     },
     "C_CPPLINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/C_CPPLINT_FILE_NAMES_REGEX",
+      "default": [],
       "description": "C_CPPLINT: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -6651,8 +6802,11 @@
     },
     "DART_DARTANALYZER_FILE_EXTENSIONS": {
       "$id": "#/properties/DART_DARTANALYZER_FILE_EXTENSIONS",
+      "default": [
+        ".dart"
+      ],
       "description": "DART_DARTANALYZER: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -6667,6 +6821,7 @@
     },
     "DART_DARTANALYZER_FILE_NAMES_REGEX": {
       "$id": "#/properties/DART_DARTANALYZER_FILE_NAMES_REGEX",
+      "default": [],
       "description": "DART_DARTANALYZER: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -7207,8 +7362,9 @@
     },
     "DOCKERFILE_HADOLINT_FILE_EXTENSIONS": {
       "$id": "#/properties/DOCKERFILE_HADOLINT_FILE_EXTENSIONS",
+      "default": [],
       "description": "DOCKERFILE_HADOLINT: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -7223,6 +7379,10 @@
     },
     "DOCKERFILE_HADOLINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/DOCKERFILE_HADOLINT_FILE_NAMES_REGEX",
+      "default": [
+        "Containerfile",
+        "(.*\\.)?Dockerfile"
+      ],
       "description": "DOCKERFILE_HADOLINT: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -7468,8 +7628,11 @@
     },
     "EDITORCONFIG_EDITORCONFIG_CHECKER_FILE_EXTENSIONS": {
       "$id": "#/properties/EDITORCONFIG_EDITORCONFIG_CHECKER_FILE_EXTENSIONS",
+      "default": [
+        "*"
+      ],
       "description": "EDITORCONFIG_EDITORCONFIG_CHECKER: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -7484,6 +7647,7 @@
     },
     "EDITORCONFIG_EDITORCONFIG_CHECKER_FILE_NAMES_REGEX": {
       "$id": "#/properties/EDITORCONFIG_EDITORCONFIG_CHECKER_FILE_NAMES_REGEX",
+      "default": [],
       "description": "EDITORCONFIG_EDITORCONFIG_CHECKER: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -7863,8 +8027,11 @@
     },
     "ENV_DOTENV_LINTER_FILE_EXTENSIONS": {
       "$id": "#/properties/ENV_DOTENV_LINTER_FILE_EXTENSIONS",
+      "default": [
+        ".env"
+      ],
       "description": "ENV_DOTENV_LINTER: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -7879,6 +8046,7 @@
     },
     "ENV_DOTENV_LINTER_FILE_NAMES_REGEX": {
       "$id": "#/properties/ENV_DOTENV_LINTER_FILE_NAMES_REGEX",
+      "default": [],
       "description": "ENV_DOTENV_LINTER: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -8281,8 +8449,11 @@
     },
     "GHERKIN_GHERKIN_LINT_FILE_EXTENSIONS": {
       "$id": "#/properties/GHERKIN_GHERKIN_LINT_FILE_EXTENSIONS",
+      "default": [
+        ".feature"
+      ],
       "description": "GHERKIN_GHERKIN_LINT: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -8297,6 +8468,7 @@
     },
     "GHERKIN_GHERKIN_LINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/GHERKIN_GHERKIN_LINT_FILE_NAMES_REGEX",
+      "default": [],
       "description": "GHERKIN_GHERKIN_LINT: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -8648,8 +8820,11 @@
     },
     "GO_GOLANGCI_LINT_FILE_EXTENSIONS": {
       "$id": "#/properties/GO_GOLANGCI_LINT_FILE_EXTENSIONS",
+      "default": [
+        ".go"
+      ],
       "description": "GO_GOLANGCI_LINT: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -8664,6 +8839,7 @@
     },
     "GO_GOLANGCI_LINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/GO_GOLANGCI_LINT_FILE_NAMES_REGEX",
+      "default": [],
       "description": "GO_GOLANGCI_LINT: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -8891,8 +9067,11 @@
     },
     "GO_REVIVE_FILE_EXTENSIONS": {
       "$id": "#/properties/GO_REVIVE_FILE_EXTENSIONS",
+      "default": [
+        ".go"
+      ],
       "description": "GO_REVIVE: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -8907,6 +9086,7 @@
     },
     "GO_REVIVE_FILE_NAMES_REGEX": {
       "$id": "#/properties/GO_REVIVE_FILE_NAMES_REGEX",
+      "default": [],
       "description": "GO_REVIVE: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -9126,8 +9306,11 @@
     },
     "GRAPHQL_GRAPHQL_SCHEMA_LINTER_FILE_EXTENSIONS": {
       "$id": "#/properties/GRAPHQL_GRAPHQL_SCHEMA_LINTER_FILE_EXTENSIONS",
+      "default": [
+        ".graphql"
+      ],
       "description": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -9142,6 +9325,7 @@
     },
     "GRAPHQL_GRAPHQL_SCHEMA_LINTER_FILE_NAMES_REGEX": {
       "$id": "#/properties/GRAPHQL_GRAPHQL_SCHEMA_LINTER_FILE_NAMES_REGEX",
+      "default": [],
       "description": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -9405,8 +9589,14 @@
     },
     "GROOVY_NPM_GROOVY_LINT_FILE_EXTENSIONS": {
       "$id": "#/properties/GROOVY_NPM_GROOVY_LINT_FILE_EXTENSIONS",
+      "default": [
+        ".groovy",
+        ".gvy",
+        ".gradle",
+        ".nf"
+      ],
       "description": "GROOVY_NPM_GROOVY_LINT: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -9421,6 +9611,9 @@
     },
     "GROOVY_NPM_GROOVY_LINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/GROOVY_NPM_GROOVY_LINT_FILE_NAMES_REGEX",
+      "default": [
+        "Jenkinsfile"
+      ],
       "description": "GROOVY_NPM_GROOVY_LINT: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -9656,8 +9849,12 @@
     },
     "HTML_DJLINT_FILE_EXTENSIONS": {
       "$id": "#/properties/HTML_DJLINT_FILE_EXTENSIONS",
+      "default": [
+        ".html",
+        ".htm"
+      ],
       "description": "HTML_DJLINT: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -9672,6 +9869,7 @@
     },
     "HTML_DJLINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/HTML_DJLINT_FILE_NAMES_REGEX",
+      "default": [],
       "description": "HTML_DJLINT: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -9884,8 +10082,12 @@
     },
     "HTML_HTMLHINT_FILE_EXTENSIONS": {
       "$id": "#/properties/HTML_HTMLHINT_FILE_EXTENSIONS",
+      "default": [
+        ".html",
+        ".htm"
+      ],
       "description": "HTML_HTMLHINT: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -9900,6 +10102,7 @@
     },
     "HTML_HTMLHINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/HTML_HTMLHINT_FILE_NAMES_REGEX",
+      "default": [],
       "description": "HTML_HTMLHINT: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -10060,6 +10263,7 @@
     },
     "JAVASCRIPT_DEFAULT_STYLE": {
       "$id": "#/properties/JAVASCRIPT_DEFAULT_STYLE",
+      "default": "prettier",
       "description": "Style of javascript formatting to apply",
       "enum": [
         "standard",
@@ -10073,7 +10277,6 @@
         "standard",
         "prettier"
       ],
-      "default": "prettier",
       "title": "Javascript default style",
       "type": "string",
       "x-category": "JAVASCRIPT",
@@ -10187,8 +10390,12 @@
     },
     "JAVASCRIPT_ES_FILE_EXTENSIONS": {
       "$id": "#/properties/JAVASCRIPT_ES_FILE_EXTENSIONS",
+      "default": [
+        ".js",
+        ".vue"
+      ],
       "description": "JAVASCRIPT_ES: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -10203,6 +10410,7 @@
     },
     "JAVASCRIPT_ES_FILE_NAMES_REGEX": {
       "$id": "#/properties/JAVASCRIPT_ES_FILE_NAMES_REGEX",
+      "default": [],
       "description": "JAVASCRIPT_ES: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -10445,8 +10653,11 @@
     },
     "JAVASCRIPT_PRETTIER_FILE_EXTENSIONS": {
       "$id": "#/properties/JAVASCRIPT_PRETTIER_FILE_EXTENSIONS",
+      "default": [
+        ".js"
+      ],
       "description": "JAVASCRIPT_PRETTIER: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -10461,6 +10672,7 @@
     },
     "JAVASCRIPT_PRETTIER_FILE_NAMES_REGEX": {
       "$id": "#/properties/JAVASCRIPT_PRETTIER_FILE_NAMES_REGEX",
+      "default": [],
       "description": "JAVASCRIPT_PRETTIER: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -10675,8 +10887,11 @@
     },
     "JAVASCRIPT_STANDARD_FILE_EXTENSIONS": {
       "$id": "#/properties/JAVASCRIPT_STANDARD_FILE_EXTENSIONS",
+      "default": [
+        ".js"
+      ],
       "description": "JAVASCRIPT_STANDARD: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -10691,6 +10906,7 @@
     },
     "JAVASCRIPT_STANDARD_FILE_NAMES_REGEX": {
       "$id": "#/properties/JAVASCRIPT_STANDARD_FILE_NAMES_REGEX",
+      "default": [],
       "description": "JAVASCRIPT_STANDARD: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -10885,8 +11101,11 @@
     },
     "JAVA_CHECKSTYLE_FILE_EXTENSIONS": {
       "$id": "#/properties/JAVA_CHECKSTYLE_FILE_EXTENSIONS",
+      "default": [
+        ".java"
+      ],
       "description": "JAVA_CHECKSTYLE: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -10901,6 +11120,7 @@
     },
     "JAVA_CHECKSTYLE_FILE_NAMES_REGEX": {
       "$id": "#/properties/JAVA_CHECKSTYLE_FILE_NAMES_REGEX",
+      "default": [],
       "description": "JAVA_CHECKSTYLE: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -11122,8 +11342,11 @@
     },
     "JAVA_PMD_FILE_EXTENSIONS": {
       "$id": "#/properties/JAVA_PMD_FILE_EXTENSIONS",
+      "default": [
+        ".java"
+      ],
       "description": "JAVA_PMD: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -11138,6 +11361,7 @@
     },
     "JAVA_PMD_FILE_NAMES_REGEX": {
       "$id": "#/properties/JAVA_PMD_FILE_NAMES_REGEX",
+      "default": [],
       "description": "JAVA_PMD: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -11392,8 +11616,13 @@
     },
     "JSON_ESLINT_PLUGIN_JSONC_FILE_EXTENSIONS": {
       "$id": "#/properties/JSON_ESLINT_PLUGIN_JSONC_FILE_EXTENSIONS",
+      "default": [
+        ".json",
+        ".json5",
+        ".jsonc"
+      ],
       "description": "JSON_ESLINT_PLUGIN_JSONC: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -11408,6 +11637,7 @@
     },
     "JSON_ESLINT_PLUGIN_JSONC_FILE_NAMES_REGEX": {
       "$id": "#/properties/JSON_ESLINT_PLUGIN_JSONC_FILE_NAMES_REGEX",
+      "default": [],
       "description": "JSON_ESLINT_PLUGIN_JSONC: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -11629,8 +11859,11 @@
     },
     "JSON_JSONLINT_FILE_EXTENSIONS": {
       "$id": "#/properties/JSON_JSONLINT_FILE_EXTENSIONS",
+      "default": [
+        ".json"
+      ],
       "description": "JSON_JSONLINT: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -11645,6 +11878,7 @@
     },
     "JSON_JSONLINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/JSON_JSONLINT_FILE_NAMES_REGEX",
+      "default": [],
       "description": "JSON_JSONLINT: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -11848,8 +12082,11 @@
     },
     "JSON_NPM_PACKAGE_JSON_LINT_FILE_EXTENSIONS": {
       "$id": "#/properties/JSON_NPM_PACKAGE_JSON_LINT_FILE_EXTENSIONS",
+      "default": [
+        ".json"
+      ],
       "description": "JSON_NPM_PACKAGE_JSON_LINT: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -11864,6 +12101,9 @@
     },
     "JSON_NPM_PACKAGE_JSON_LINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/JSON_NPM_PACKAGE_JSON_LINT_FILE_NAMES_REGEX",
+      "default": [
+        "package\\.json"
+      ],
       "description": "JSON_NPM_PACKAGE_JSON_LINT: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -12070,8 +12310,11 @@
     },
     "JSON_PRETTIER_FILE_EXTENSIONS": {
       "$id": "#/properties/JSON_PRETTIER_FILE_EXTENSIONS",
+      "default": [
+        ".json"
+      ],
       "description": "JSON_PRETTIER: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -12086,6 +12329,7 @@
     },
     "JSON_PRETTIER_FILE_NAMES_REGEX": {
       "$id": "#/properties/JSON_PRETTIER_FILE_NAMES_REGEX",
+      "default": [],
       "description": "JSON_PRETTIER: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -12328,8 +12572,11 @@
     },
     "JSON_V8R_FILE_EXTENSIONS": {
       "$id": "#/properties/JSON_V8R_FILE_EXTENSIONS",
+      "default": [
+        ".json"
+      ],
       "description": "JSON_V8R: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -12344,6 +12591,7 @@
     },
     "JSON_V8R_FILE_NAMES_REGEX": {
       "$id": "#/properties/JSON_V8R_FILE_NAMES_REGEX",
+      "default": [],
       "description": "JSON_V8R: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -12538,8 +12786,11 @@
     },
     "JSX_ESLINT_FILE_EXTENSIONS": {
       "$id": "#/properties/JSX_ESLINT_FILE_EXTENSIONS",
+      "default": [
+        ".jsx"
+      ],
       "description": "JSX_ESLINT: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -12554,6 +12805,7 @@
     },
     "JSX_ESLINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/JSX_ESLINT_FILE_NAMES_REGEX",
+      "default": [],
       "description": "JSX_ESLINT: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -12817,8 +13069,12 @@
     },
     "KOTLIN_DETEKT_FILE_EXTENSIONS": {
       "$id": "#/properties/KOTLIN_DETEKT_FILE_EXTENSIONS",
+      "default": [
+        ".kt",
+        ".kts"
+      ],
       "description": "KOTLIN_DETEKT: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -12833,6 +13089,7 @@
     },
     "KOTLIN_DETEKT_FILE_NAMES_REGEX": {
       "$id": "#/properties/KOTLIN_DETEKT_FILE_NAMES_REGEX",
+      "default": [],
       "description": "KOTLIN_DETEKT: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -13026,8 +13283,12 @@
     },
     "KOTLIN_KTLINT_FILE_EXTENSIONS": {
       "$id": "#/properties/KOTLIN_KTLINT_FILE_EXTENSIONS",
+      "default": [
+        ".kt",
+        ".kts"
+      ],
       "description": "KOTLIN_KTLINT: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -13042,6 +13303,7 @@
     },
     "KOTLIN_KTLINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/KOTLIN_KTLINT_FILE_NAMES_REGEX",
+      "default": [],
       "description": "KOTLIN_KTLINT: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -13304,8 +13566,13 @@
     },
     "KUBERNETES_HELM_FILE_EXTENSIONS": {
       "$id": "#/properties/KUBERNETES_HELM_FILE_EXTENSIONS",
+      "default": [
+        ".yml",
+        ".yaml",
+        ".json"
+      ],
       "description": "KUBERNETES_HELM: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -13320,6 +13587,7 @@
     },
     "KUBERNETES_HELM_FILE_NAMES_REGEX": {
       "$id": "#/properties/KUBERNETES_HELM_FILE_NAMES_REGEX",
+      "default": [],
       "description": "KUBERNETES_HELM: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -13496,8 +13764,13 @@
     },
     "KUBERNETES_KUBECONFORM_FILE_EXTENSIONS": {
       "$id": "#/properties/KUBERNETES_KUBECONFORM_FILE_EXTENSIONS",
+      "default": [
+        ".yml",
+        ".yaml",
+        ".json"
+      ],
       "description": "KUBERNETES_KUBECONFORM: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -13512,6 +13785,7 @@
     },
     "KUBERNETES_KUBECONFORM_FILE_NAMES_REGEX": {
       "$id": "#/properties/KUBERNETES_KUBECONFORM_FILE_NAMES_REGEX",
+      "default": [],
       "description": "KUBERNETES_KUBECONFORM: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -13706,8 +13980,13 @@
     },
     "KUBERNETES_KUBESCAPE_FILE_EXTENSIONS": {
       "$id": "#/properties/KUBERNETES_KUBESCAPE_FILE_EXTENSIONS",
+      "default": [
+        ".yml",
+        ".yaml",
+        ".json"
+      ],
       "description": "KUBERNETES_KUBESCAPE: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -13722,6 +14001,7 @@
     },
     "KUBERNETES_KUBESCAPE_FILE_NAMES_REGEX": {
       "$id": "#/properties/KUBERNETES_KUBESCAPE_FILE_NAMES_REGEX",
+      "default": [],
       "description": "KUBERNETES_KUBESCAPE: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -14103,8 +14383,11 @@
     },
     "LATEX_CHKTEX_FILE_EXTENSIONS": {
       "$id": "#/properties/LATEX_CHKTEX_FILE_EXTENSIONS",
+      "default": [
+        ".tex"
+      ],
       "description": "LATEX_CHKTEX: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -14119,6 +14402,7 @@
     },
     "LATEX_CHKTEX_FILE_NAMES_REGEX": {
       "$id": "#/properties/LATEX_CHKTEX_FILE_NAMES_REGEX",
+      "default": [],
       "description": "LATEX_CHKTEX: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -14620,8 +14904,11 @@
     },
     "LUA_LUACHECK_FILE_EXTENSIONS": {
       "$id": "#/properties/LUA_LUACHECK_FILE_EXTENSIONS",
+      "default": [
+        ".lua"
+      ],
       "description": "LUA_LUACHECK: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -14636,6 +14923,7 @@
     },
     "LUA_LUACHECK_FILE_NAMES_REGEX": {
       "$id": "#/properties/LUA_LUACHECK_FILE_NAMES_REGEX",
+      "default": [],
       "description": "LUA_LUACHECK: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -14879,8 +15167,11 @@
     },
     "LUA_SELENE_FILE_EXTENSIONS": {
       "$id": "#/properties/LUA_SELENE_FILE_EXTENSIONS",
+      "default": [
+        ".lua"
+      ],
       "description": "LUA_SELENE: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -14895,6 +15186,7 @@
     },
     "LUA_SELENE_FILE_NAMES_REGEX": {
       "$id": "#/properties/LUA_SELENE_FILE_NAMES_REGEX",
+      "default": [],
       "description": "LUA_SELENE: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -15096,8 +15388,11 @@
     },
     "LUA_STYLUA_FILE_EXTENSIONS": {
       "$id": "#/properties/LUA_STYLUA_FILE_EXTENSIONS",
+      "default": [
+        ".lua"
+      ],
       "description": "LUA_STYLUA: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -15112,6 +15407,7 @@
     },
     "LUA_STYLUA_FILE_NAMES_REGEX": {
       "$id": "#/properties/LUA_STYLUA_FILE_NAMES_REGEX",
+      "default": [],
       "description": "LUA_STYLUA: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -15313,8 +15609,9 @@
     },
     "MAKEFILE_CHECKMAKE_FILE_EXTENSIONS": {
       "$id": "#/properties/MAKEFILE_CHECKMAKE_FILE_EXTENSIONS",
+      "default": [],
       "description": "MAKEFILE_CHECKMAKE: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -15329,6 +15626,9 @@
     },
     "MAKEFILE_CHECKMAKE_FILE_NAMES_REGEX": {
       "$id": "#/properties/MAKEFILE_CHECKMAKE_FILE_NAMES_REGEX",
+      "default": [
+        "Makefile"
+      ],
       "description": "MAKEFILE_CHECKMAKE: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -15487,6 +15787,7 @@
     },
     "MARKDOWN_DEFAULT_STYLE": {
       "$id": "#/properties/MARKDOWN_DEFAULT_STYLE",
+      "default": "markdownlint",
       "description": "Style of markdown formatting to apply",
       "enum": [
         "markdownlint",
@@ -15498,7 +15799,6 @@
         "Remark Lint",
         "Rumdl"
       ],
-      "default": "markdownlint",
       "title": "Markdown default formatting style",
       "type": "string",
       "x-category": "MARKDOWN",
@@ -15630,8 +15930,11 @@
     },
     "MARKDOWN_MARKDOWNLINT_FILE_EXTENSIONS": {
       "$id": "#/properties/MARKDOWN_MARKDOWNLINT_FILE_EXTENSIONS",
+      "default": [
+        ".md"
+      ],
       "description": "MARKDOWN_MARKDOWNLINT: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -15646,6 +15949,7 @@
     },
     "MARKDOWN_MARKDOWNLINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/MARKDOWN_MARKDOWNLINT_FILE_NAMES_REGEX",
+      "default": [],
       "description": "MARKDOWN_MARKDOWNLINT: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -16058,8 +16362,11 @@
     },
     "MARKDOWN_MARKDOWN_TABLE_FORMATTER_FILE_EXTENSIONS": {
       "$id": "#/properties/MARKDOWN_MARKDOWN_TABLE_FORMATTER_FILE_EXTENSIONS",
+      "default": [
+        ".md"
+      ],
       "description": "MARKDOWN_MARKDOWN_TABLE_FORMATTER: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -16074,6 +16381,7 @@
     },
     "MARKDOWN_MARKDOWN_TABLE_FORMATTER_FILE_NAMES_REGEX": {
       "$id": "#/properties/MARKDOWN_MARKDOWN_TABLE_FORMATTER_FILE_NAMES_REGEX",
+      "default": [],
       "description": "MARKDOWN_MARKDOWN_TABLE_FORMATTER: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -16379,8 +16687,11 @@
     },
     "MARKDOWN_REMARK_LINT_FILE_EXTENSIONS": {
       "$id": "#/properties/MARKDOWN_REMARK_LINT_FILE_EXTENSIONS",
+      "default": [
+        ".md"
+      ],
       "description": "MARKDOWN_REMARK_LINT: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -16395,6 +16706,7 @@
     },
     "MARKDOWN_REMARK_LINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/MARKDOWN_REMARK_LINT_FILE_NAMES_REGEX",
+      "default": [],
       "description": "MARKDOWN_REMARK_LINT: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -16598,8 +16910,11 @@
     },
     "MARKDOWN_RUMDL_FILE_EXTENSIONS": {
       "$id": "#/properties/MARKDOWN_RUMDL_FILE_EXTENSIONS",
+      "default": [
+        ".md"
+      ],
       "description": "MARKDOWN_RUMDL: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -16614,6 +16929,7 @@
     },
     "MARKDOWN_RUMDL_FILE_NAMES_REGEX": {
       "$id": "#/properties/MARKDOWN_RUMDL_FILE_NAMES_REGEX",
+      "default": [],
       "description": "MARKDOWN_RUMDL: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -16919,8 +17235,14 @@
     },
     "PERL_PERLCRITIC_FILE_EXTENSIONS": {
       "$id": "#/properties/PERL_PERLCRITIC_FILE_EXTENSIONS",
+      "default": [
+        ".pl",
+        ".pm",
+        ".t",
+        ""
+      ],
       "description": "PERL_PERLCRITIC: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -16935,6 +17257,7 @@
     },
     "PERL_PERLCRITIC_FILE_NAMES_REGEX": {
       "$id": "#/properties/PERL_PERLCRITIC_FILE_NAMES_REGEX",
+      "default": [],
       "description": "PERL_PERLCRITIC: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -17339,8 +17662,11 @@
     },
     "PHP_PHPCSFIXER_FILE_EXTENSIONS": {
       "$id": "#/properties/PHP_PHPCSFIXER_FILE_EXTENSIONS",
+      "default": [
+        ".php"
+      ],
       "description": "PHP_PHPCSFIXER: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -17355,6 +17681,7 @@
     },
     "PHP_PHPCSFIXER_FILE_NAMES_REGEX": {
       "$id": "#/properties/PHP_PHPCSFIXER_FILE_NAMES_REGEX",
+      "default": [],
       "description": "PHP_PHPCSFIXER: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -17540,8 +17867,11 @@
     },
     "PHP_PHPCS_FILE_EXTENSIONS": {
       "$id": "#/properties/PHP_PHPCS_FILE_EXTENSIONS",
+      "default": [
+        ".php"
+      ],
       "description": "PHP_PHPCS: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -17556,6 +17886,7 @@
     },
     "PHP_PHPCS_FILE_NAMES_REGEX": {
       "$id": "#/properties/PHP_PHPCS_FILE_NAMES_REGEX",
+      "default": [],
       "description": "PHP_PHPCS: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -17759,8 +18090,11 @@
     },
     "PHP_PHPLINT_FILE_EXTENSIONS": {
       "$id": "#/properties/PHP_PHPLINT_FILE_EXTENSIONS",
+      "default": [
+        ".php"
+      ],
       "description": "PHP_PHPLINT: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -17775,6 +18109,7 @@
     },
     "PHP_PHPLINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/PHP_PHPLINT_FILE_NAMES_REGEX",
+      "default": [],
       "description": "PHP_PHPLINT: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -17978,8 +18313,11 @@
     },
     "PHP_PHPSTAN_FILE_EXTENSIONS": {
       "$id": "#/properties/PHP_PHPSTAN_FILE_EXTENSIONS",
+      "default": [
+        ".php"
+      ],
       "description": "PHP_PHPSTAN: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -17994,6 +18332,7 @@
     },
     "PHP_PHPSTAN_FILE_NAMES_REGEX": {
       "$id": "#/properties/PHP_PHPSTAN_FILE_NAMES_REGEX",
+      "default": [],
       "description": "PHP_PHPSTAN: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -18239,8 +18578,11 @@
     },
     "PHP_PSALM_FILE_EXTENSIONS": {
       "$id": "#/properties/PHP_PSALM_FILE_EXTENSIONS",
+      "default": [
+        ".php"
+      ],
       "description": "PHP_PSALM: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -18255,6 +18597,7 @@
     },
     "PHP_PSALM_FILE_NAMES_REGEX": {
       "$id": "#/properties/PHP_PSALM_FILE_NAMES_REGEX",
+      "default": [],
       "description": "PHP_PSALM: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -18554,8 +18897,17 @@
     },
     "POWERSHELL_POWERSHELL_FILE_EXTENSIONS": {
       "$id": "#/properties/POWERSHELL_POWERSHELL_FILE_EXTENSIONS",
+      "default": [
+        ".ps1",
+        ".psm1",
+        ".psd1",
+        ".ps1xml",
+        ".pssc",
+        ".psrc",
+        ".cdxml"
+      ],
       "description": "POWERSHELL_POWERSHELL: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -18570,6 +18922,7 @@
     },
     "POWERSHELL_POWERSHELL_FILE_NAMES_REGEX": {
       "$id": "#/properties/POWERSHELL_POWERSHELL_FILE_NAMES_REGEX",
+      "default": [],
       "description": "POWERSHELL_POWERSHELL: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -18707,8 +19060,17 @@
     },
     "POWERSHELL_POWERSHELL_FORMATTER_FILE_EXTENSIONS": {
       "$id": "#/properties/POWERSHELL_POWERSHELL_FORMATTER_FILE_EXTENSIONS",
+      "default": [
+        ".ps1",
+        ".psm1",
+        ".psd1",
+        ".ps1xml",
+        ".pssc",
+        ".psrc",
+        ".cdxml"
+      ],
       "description": "POWERSHELL_POWERSHELL_FORMATTER: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -18723,6 +19085,7 @@
     },
     "POWERSHELL_POWERSHELL_FORMATTER_FILE_NAMES_REGEX": {
       "$id": "#/properties/POWERSHELL_POWERSHELL_FORMATTER_FILE_NAMES_REGEX",
+      "default": [],
       "description": "POWERSHELL_POWERSHELL_FORMATTER: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -19125,8 +19488,11 @@
     },
     "PROTOBUF_PROTOLINT_FILE_EXTENSIONS": {
       "$id": "#/properties/PROTOBUF_PROTOLINT_FILE_EXTENSIONS",
+      "default": [
+        ".proto"
+      ],
       "description": "PROTOBUF_PROTOLINT: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -19141,6 +19507,7 @@
     },
     "PROTOBUF_PROTOLINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/PROTOBUF_PROTOLINT_FILE_NAMES_REGEX",
+      "default": [],
       "description": "PROTOBUF_PROTOLINT: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -19402,8 +19769,11 @@
     },
     "PUPPET_PUPPET_LINT_FILE_EXTENSIONS": {
       "$id": "#/properties/PUPPET_PUPPET_LINT_FILE_EXTENSIONS",
+      "default": [
+        ".pp"
+      ],
       "description": "PUPPET_PUPPET_LINT: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -19418,6 +19788,7 @@
     },
     "PUPPET_PUPPET_LINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/PUPPET_PUPPET_LINT_FILE_NAMES_REGEX",
+      "default": [],
       "description": "PUPPET_PUPPET_LINT: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -19621,8 +19992,13 @@
     },
     "PYTHON_BANDIT_FILE_EXTENSIONS": {
       "$id": "#/properties/PYTHON_BANDIT_FILE_EXTENSIONS",
+      "default": [
+        ".py",
+        ".pyi",
+        ".ipynb"
+      ],
       "description": "PYTHON_BANDIT: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -19637,6 +20013,7 @@
     },
     "PYTHON_BANDIT_FILE_NAMES_REGEX": {
       "$id": "#/properties/PYTHON_BANDIT_FILE_NAMES_REGEX",
+      "default": [],
       "description": "PYTHON_BANDIT: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -19840,8 +20217,13 @@
     },
     "PYTHON_BLACK_FILE_EXTENSIONS": {
       "$id": "#/properties/PYTHON_BLACK_FILE_EXTENSIONS",
+      "default": [
+        ".py",
+        ".pyi",
+        ".ipynb"
+      ],
       "description": "PYTHON_BLACK: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -19856,6 +20238,7 @@
     },
     "PYTHON_BLACK_FILE_NAMES_REGEX": {
       "$id": "#/properties/PYTHON_BLACK_FILE_NAMES_REGEX",
+      "default": [],
       "description": "PYTHON_BLACK: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -19954,6 +20337,7 @@
     },
     "PYTHON_DEFAULT_STYLE": {
       "$id": "#/properties/PYTHON_DEFAULT_STYLE",
+      "default": "black",
       "description": "Style of python formatting to apply",
       "enum": [
         "black",
@@ -19967,7 +20351,6 @@
         "black",
         "ruff"
       ],
-      "default": "black",
       "title": "Python default style",
       "type": "string",
       "x-category": "PYTHON",
@@ -20099,8 +20482,11 @@
     },
     "PYTHON_FLAKE8_FILE_EXTENSIONS": {
       "$id": "#/properties/PYTHON_FLAKE8_FILE_EXTENSIONS",
+      "default": [
+        ".py"
+      ],
       "description": "PYTHON_FLAKE8: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -20115,6 +20501,7 @@
     },
     "PYTHON_FLAKE8_FILE_NAMES_REGEX": {
       "$id": "#/properties/PYTHON_FLAKE8_FILE_NAMES_REGEX",
+      "default": [],
       "description": "PYTHON_FLAKE8: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -20318,8 +20705,14 @@
     },
     "PYTHON_ISORT_FILE_EXTENSIONS": {
       "$id": "#/properties/PYTHON_ISORT_FILE_EXTENSIONS",
+      "default": [
+        ".py",
+        ".pyi",
+        ".pyx",
+        ".pxd"
+      ],
       "description": "PYTHON_ISORT: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -20334,6 +20727,7 @@
     },
     "PYTHON_ISORT_FILE_NAMES_REGEX": {
       "$id": "#/properties/PYTHON_ISORT_FILE_NAMES_REGEX",
+      "default": [],
       "description": "PYTHON_ISORT: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -20537,8 +20931,13 @@
     },
     "PYTHON_MYPY_FILE_EXTENSIONS": {
       "$id": "#/properties/PYTHON_MYPY_FILE_EXTENSIONS",
+      "default": [
+        ".py",
+        ".pyi",
+        ".ipynb"
+      ],
       "description": "PYTHON_MYPY: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -20553,6 +20952,7 @@
     },
     "PYTHON_MYPY_FILE_NAMES_REGEX": {
       "$id": "#/properties/PYTHON_MYPY_FILE_NAMES_REGEX",
+      "default": [],
       "description": "PYTHON_MYPY: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -20798,8 +21198,12 @@
     },
     "PYTHON_PYLINT_FILE_EXTENSIONS": {
       "$id": "#/properties/PYTHON_PYLINT_FILE_EXTENSIONS",
+      "default": [
+        ".py",
+        ".pyi"
+      ],
       "description": "PYTHON_PYLINT: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -20814,6 +21218,7 @@
     },
     "PYTHON_PYLINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/PYTHON_PYLINT_FILE_NAMES_REGEX",
+      "default": [],
       "description": "PYTHON_PYLINT: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -21017,8 +21422,12 @@
     },
     "PYTHON_PYRIGHT_FILE_EXTENSIONS": {
       "$id": "#/properties/PYTHON_PYRIGHT_FILE_EXTENSIONS",
+      "default": [
+        ".py",
+        ".pyi"
+      ],
       "description": "PYTHON_PYRIGHT: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -21033,6 +21442,7 @@
     },
     "PYTHON_PYRIGHT_FILE_NAMES_REGEX": {
       "$id": "#/properties/PYTHON_PYRIGHT_FILE_NAMES_REGEX",
+      "default": [],
       "description": "PYTHON_PYRIGHT: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -21236,8 +21646,13 @@
     },
     "PYTHON_RUFF_FILE_EXTENSIONS": {
       "$id": "#/properties/PYTHON_RUFF_FILE_EXTENSIONS",
+      "default": [
+        ".py",
+        ".pyi",
+        ".ipynb"
+      ],
       "description": "PYTHON_RUFF: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -21252,6 +21667,7 @@
     },
     "PYTHON_RUFF_FILE_NAMES_REGEX": {
       "$id": "#/properties/PYTHON_RUFF_FILE_NAMES_REGEX",
+      "default": [],
       "description": "PYTHON_RUFF: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -21391,8 +21807,13 @@
     },
     "PYTHON_RUFF_FORMAT_FILE_EXTENSIONS": {
       "$id": "#/properties/PYTHON_RUFF_FORMAT_FILE_EXTENSIONS",
+      "default": [
+        ".py",
+        ".pyi",
+        ".ipynb"
+      ],
       "description": "PYTHON_RUFF_FORMAT: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -21407,6 +21828,7 @@
     },
     "PYTHON_RUFF_FORMAT_FILE_NAMES_REGEX": {
       "$id": "#/properties/PYTHON_RUFF_FORMAT_FILE_NAMES_REGEX",
+      "default": [],
       "description": "PYTHON_RUFF_FORMAT: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -21732,8 +22154,16 @@
     },
     "RAKU_RAKU_FILE_EXTENSIONS": {
       "$id": "#/properties/RAKU_RAKU_FILE_EXTENSIONS",
+      "default": [
+        ".raku",
+        ".rakumod",
+        ".rakutest",
+        ".pm6",
+        ".pl6",
+        ".p6"
+      ],
       "description": "RAKU_RAKU: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -21748,6 +22178,7 @@
     },
     "RAKU_RAKU_FILE_NAMES_REGEX": {
       "$id": "#/properties/RAKU_RAKU_FILE_NAMES_REGEX",
+      "default": [],
       "description": "RAKU_RAKU: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -24738,8 +25169,12 @@
     },
     "ROBOTFRAMEWORK_ROBOCOP_FILE_EXTENSIONS": {
       "$id": "#/properties/ROBOTFRAMEWORK_ROBOCOP_FILE_EXTENSIONS",
+      "default": [
+        ".robot",
+        ".resource"
+      ],
       "description": "ROBOTFRAMEWORK_ROBOCOP: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -24754,6 +25189,7 @@
     },
     "ROBOTFRAMEWORK_ROBOCOP_FILE_NAMES_REGEX": {
       "$id": "#/properties/ROBOTFRAMEWORK_ROBOCOP_FILE_NAMES_REGEX",
+      "default": [],
       "description": "ROBOTFRAMEWORK_ROBOCOP: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -25015,8 +25451,11 @@
     },
     "RST_RSTCHECK_FILE_EXTENSIONS": {
       "$id": "#/properties/RST_RSTCHECK_FILE_EXTENSIONS",
+      "default": [
+        ".rst"
+      ],
       "description": "RST_RSTCHECK: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -25031,6 +25470,7 @@
     },
     "RST_RSTCHECK_FILE_NAMES_REGEX": {
       "$id": "#/properties/RST_RSTCHECK_FILE_NAMES_REGEX",
+      "default": [],
       "description": "RST_RSTCHECK: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -25222,8 +25662,11 @@
     },
     "RST_RSTFMT_FILE_EXTENSIONS": {
       "$id": "#/properties/RST_RSTFMT_FILE_EXTENSIONS",
+      "default": [
+        ".rst"
+      ],
       "description": "RST_RSTFMT: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -25238,6 +25681,7 @@
     },
     "RST_RSTFMT_FILE_NAMES_REGEX": {
       "$id": "#/properties/RST_RSTFMT_FILE_NAMES_REGEX",
+      "default": [],
       "description": "RST_RSTFMT: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -25420,8 +25864,11 @@
     },
     "RST_RST_LINT_FILE_EXTENSIONS": {
       "$id": "#/properties/RST_RST_LINT_FILE_EXTENSIONS",
+      "default": [
+        ".rst"
+      ],
       "description": "RST_RST_LINT: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -25436,6 +25883,7 @@
     },
     "RST_RST_LINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/RST_RST_LINT_FILE_NAMES_REGEX",
+      "default": [],
       "description": "RST_RST_LINT: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -25688,8 +26136,11 @@
     },
     "RUBY_RUBOCOP_FILE_EXTENSIONS": {
       "$id": "#/properties/RUBY_RUBOCOP_FILE_EXTENSIONS",
+      "default": [
+        ".rb"
+      ],
       "description": "RUBY_RUBOCOP: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -25704,6 +26155,7 @@
     },
     "RUBY_RUBOCOP_FILE_NAMES_REGEX": {
       "$id": "#/properties/RUBY_RUBOCOP_FILE_NAMES_REGEX",
+      "default": [],
       "description": "RUBY_RUBOCOP: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -25907,8 +26359,11 @@
     },
     "RUST_CLIPPY_FILE_EXTENSIONS": {
       "$id": "#/properties/RUST_CLIPPY_FILE_EXTENSIONS",
+      "default": [
+        ".rs"
+      ],
       "description": "RUST_CLIPPY: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -25923,6 +26378,7 @@
     },
     "RUST_CLIPPY_FILE_NAMES_REGEX": {
       "$id": "#/properties/RUST_CLIPPY_FILE_NAMES_REGEX",
+      "default": [],
       "description": "RUST_CLIPPY: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -26184,8 +26640,14 @@
     },
     "R_LINTR_FILE_EXTENSIONS": {
       "$id": "#/properties/R_LINTR_FILE_EXTENSIONS",
+      "default": [
+        ".r",
+        ".R",
+        ".Rmd",
+        ".RMD"
+      ],
       "description": "R_LINTR: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -26200,6 +26662,7 @@
     },
     "R_LINTR_FILE_NAMES_REGEX": {
       "$id": "#/properties/R_LINTR_FILE_NAMES_REGEX",
+      "default": [],
       "description": "R_LINTR: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -27955,8 +28418,11 @@
     },
     "SCALA_SCALAFIX_FILE_EXTENSIONS": {
       "$id": "#/properties/SCALA_SCALAFIX_FILE_EXTENSIONS",
+      "default": [
+        ".scala"
+      ],
       "description": "SCALA_SCALAFIX: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -27971,6 +28437,7 @@
     },
     "SCALA_SCALAFIX_FILE_NAMES_REGEX": {
       "$id": "#/properties/SCALA_SCALAFIX_FILE_NAMES_REGEX",
+      "default": [],
       "description": "SCALA_SCALAFIX: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -28260,8 +28727,11 @@
     },
     "SNAKEMAKE_LINT_FILE_EXTENSIONS": {
       "$id": "#/properties/SNAKEMAKE_LINT_FILE_EXTENSIONS",
+      "default": [
+        ".smk"
+      ],
       "description": "SNAKEMAKE_LINT: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -28276,6 +28746,9 @@
     },
     "SNAKEMAKE_LINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/SNAKEMAKE_LINT_FILE_NAMES_REGEX",
+      "default": [
+        "Snakefile"
+      ],
       "description": "SNAKEMAKE_LINT: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -28510,8 +28983,11 @@
     },
     "SNAKEMAKE_SNAKEFMT_FILE_EXTENSIONS": {
       "$id": "#/properties/SNAKEMAKE_SNAKEFMT_FILE_EXTENSIONS",
+      "default": [
+        ".smk"
+      ],
       "description": "SNAKEMAKE_SNAKEFMT: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -28526,6 +29002,9 @@
     },
     "SNAKEMAKE_SNAKEFMT_FILE_NAMES_REGEX": {
       "$id": "#/properties/SNAKEMAKE_SNAKEFMT_FILE_NAMES_REGEX",
+      "default": [
+        "Snakefile"
+      ],
       "description": "SNAKEMAKE_SNAKEFMT: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -28729,8 +29208,22 @@
     },
     "SPELL_CODESPELL_FILE_EXTENSIONS": {
       "$id": "#/properties/SPELL_CODESPELL_FILE_EXTENSIONS",
+      "default": [
+        ".md",
+        ".mdx",
+        ".markdown",
+        ".html",
+        ".htm",
+        ".rst",
+        ".txt",
+        ".json",
+        ".jsonc",
+        ".json5",
+        ".yaml",
+        ".yml"
+      ],
       "description": "SPELL_CODESPELL: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -28745,6 +29238,7 @@
     },
     "SPELL_CODESPELL_FILE_NAMES_REGEX": {
       "$id": "#/properties/SPELL_CODESPELL_FILE_NAMES_REGEX",
+      "default": [],
       "description": "SPELL_CODESPELL: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -28958,8 +29452,9 @@
     },
     "SPELL_CSPELL_FILE_EXTENSIONS": {
       "$id": "#/properties/SPELL_CSPELL_FILE_EXTENSIONS",
+      "default": [],
       "description": "SPELL_CSPELL: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -28974,6 +29469,7 @@
     },
     "SPELL_CSPELL_FILE_NAMES_REGEX": {
       "$id": "#/properties/SPELL_CSPELL_FILE_NAMES_REGEX",
+      "default": [],
       "description": "SPELL_CSPELL: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -29195,8 +29691,22 @@
     },
     "SPELL_LYCHEE_FILE_EXTENSIONS": {
       "$id": "#/properties/SPELL_LYCHEE_FILE_EXTENSIONS",
+      "default": [
+        ".md",
+        ".mdx",
+        ".markdown",
+        ".html",
+        ".htm",
+        ".rst",
+        ".txt",
+        ".json",
+        ".jsonc",
+        ".json5",
+        ".yaml",
+        ".yml"
+      ],
       "description": "SPELL_LYCHEE: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -29211,6 +29721,7 @@
     },
     "SPELL_LYCHEE_FILE_NAMES_REGEX": {
       "$id": "#/properties/SPELL_LYCHEE_FILE_NAMES_REGEX",
+      "default": [],
       "description": "SPELL_LYCHEE: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -29614,8 +30125,12 @@
     },
     "SPELL_PROSELINT_FILE_EXTENSIONS": {
       "$id": "#/properties/SPELL_PROSELINT_FILE_EXTENSIONS",
+      "default": [
+        ".md",
+        ".txt"
+      ],
       "description": "SPELL_PROSELINT: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -29630,6 +30145,7 @@
     },
     "SPELL_PROSELINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/SPELL_PROSELINT_FILE_NAMES_REGEX",
+      "default": [],
       "description": "SPELL_PROSELINT: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -29833,8 +30349,12 @@
     },
     "SPELL_VALE_FILE_EXTENSIONS": {
       "$id": "#/properties/SPELL_VALE_FILE_EXTENSIONS",
+      "default": [
+        ".md",
+        ".rst"
+      ],
       "description": "SPELL_VALE: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -29849,6 +30369,7 @@
     },
     "SPELL_VALE_FILE_NAMES_REGEX": {
       "$id": "#/properties/SPELL_VALE_FILE_NAMES_REGEX",
+      "default": [],
       "description": "SPELL_VALE: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -30112,8 +30633,11 @@
     },
     "SQL_SQLFLUFF_FILE_EXTENSIONS": {
       "$id": "#/properties/SQL_SQLFLUFF_FILE_EXTENSIONS",
+      "default": [
+        ".sql"
+      ],
       "description": "SQL_SQLFLUFF: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -30128,6 +30652,7 @@
     },
     "SQL_SQLFLUFF_FILE_NAMES_REGEX": {
       "$id": "#/properties/SQL_SQLFLUFF_FILE_NAMES_REGEX",
+      "default": [],
       "description": "SQL_SQLFLUFF: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -30548,8 +31073,11 @@
     },
     "SQL_TSQLLINT_FILE_EXTENSIONS": {
       "$id": "#/properties/SQL_TSQLLINT_FILE_EXTENSIONS",
+      "default": [
+        ".sql"
+      ],
       "description": "SQL_TSQLLINT: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -30564,6 +31092,7 @@
     },
     "SQL_TSQLLINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/SQL_TSQLLINT_FILE_NAMES_REGEX",
+      "default": [],
       "description": "SQL_TSQLLINT: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -30827,8 +31356,11 @@
     },
     "SWIFT_SWIFTLINT_FILE_EXTENSIONS": {
       "$id": "#/properties/SWIFT_SWIFTLINT_FILE_EXTENSIONS",
+      "default": [
+        ".swift"
+      ],
       "description": "SWIFT_SWIFTLINT: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -30843,6 +31375,7 @@
     },
     "SWIFT_SWIFTLINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/SWIFT_SWIFTLINT_FILE_NAMES_REGEX",
+      "default": [],
       "description": "SWIFT_SWIFTLINT: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -31106,8 +31639,12 @@
     },
     "TEKTON_TEKTON_LINT_FILE_EXTENSIONS": {
       "$id": "#/properties/TEKTON_TEKTON_LINT_FILE_EXTENSIONS",
+      "default": [
+        ".yml",
+        ".yaml"
+      ],
       "description": "TEKTON_TEKTON_LINT: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -31122,6 +31659,7 @@
     },
     "TEKTON_TEKTON_LINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/TEKTON_TEKTON_LINT_FILE_NAMES_REGEX",
+      "default": [],
       "description": "TEKTON_TEKTON_LINT: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -31685,8 +32223,11 @@
     },
     "TERRAFORM_TERRAFORM_FMT_FILE_EXTENSIONS": {
       "$id": "#/properties/TERRAFORM_TERRAFORM_FMT_FILE_EXTENSIONS",
+      "default": [
+        ".tf"
+      ],
       "description": "TERRAFORM_TERRAFORM_FMT: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -31701,6 +32242,7 @@
     },
     "TERRAFORM_TERRAFORM_FMT_FILE_NAMES_REGEX": {
       "$id": "#/properties/TERRAFORM_TERRAFORM_FMT_FILE_NAMES_REGEX",
+      "default": [],
       "description": "TERRAFORM_TERRAFORM_FMT: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -31893,8 +32435,11 @@
     },
     "TERRAFORM_TERRAGRUNT_FILE_EXTENSIONS": {
       "$id": "#/properties/TERRAFORM_TERRAGRUNT_FILE_EXTENSIONS",
+      "default": [
+        ".hcl"
+      ],
       "description": "TERRAFORM_TERRAGRUNT: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -31909,6 +32454,7 @@
     },
     "TERRAFORM_TERRAGRUNT_FILE_NAMES_REGEX": {
       "$id": "#/properties/TERRAFORM_TERRAGRUNT_FILE_NAMES_REGEX",
+      "default": [],
       "description": "TERRAFORM_TERRAGRUNT: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -32112,8 +32658,11 @@
     },
     "TERRAFORM_TERRASCAN_FILE_EXTENSIONS": {
       "$id": "#/properties/TERRAFORM_TERRASCAN_FILE_EXTENSIONS",
+      "default": [
+        ".tf"
+      ],
       "description": "TERRAFORM_TERRASCAN: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -32128,6 +32677,7 @@
     },
     "TERRAFORM_TERRASCAN_FILE_NAMES_REGEX": {
       "$id": "#/properties/TERRAFORM_TERRASCAN_FILE_NAMES_REGEX",
+      "default": [],
       "description": "TERRAFORM_TERRASCAN: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -32313,8 +32863,11 @@
     },
     "TERRAFORM_TFLINT_FILE_EXTENSIONS": {
       "$id": "#/properties/TERRAFORM_TFLINT_FILE_EXTENSIONS",
+      "default": [
+        ".tf"
+      ],
       "description": "TERRAFORM_TFLINT: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -32329,6 +32882,7 @@
     },
     "TERRAFORM_TFLINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/TERRAFORM_TFLINT_FILE_NAMES_REGEX",
+      "default": [],
       "description": "TERRAFORM_TFLINT: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -32544,8 +33098,11 @@
     },
     "TSX_ESLINT_FILE_EXTENSIONS": {
       "$id": "#/properties/TSX_ESLINT_FILE_EXTENSIONS",
+      "default": [
+        ".tsx"
+      ],
       "description": "TSX_ESLINT: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -32560,6 +33117,7 @@
     },
     "TSX_ESLINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/TSX_ESLINT_FILE_NAMES_REGEX",
+      "default": [],
       "description": "TSX_ESLINT: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -32718,6 +33276,7 @@
     },
     "TYPESCRIPT_DEFAULT_STYLE": {
       "$id": "#/properties/TYPESCRIPT_DEFAULT_STYLE",
+      "default": "prettier",
       "description": "Style of typescript formatting to apply",
       "enum": [
         "standard",
@@ -32731,7 +33290,6 @@
         "standard",
         "prettier"
       ],
-      "default": "prettier",
       "title": "Typescript default style",
       "type": "string",
       "x-category": "TYPESCRIPT",
@@ -32845,8 +33403,11 @@
     },
     "TYPESCRIPT_ES_FILE_EXTENSIONS": {
       "$id": "#/properties/TYPESCRIPT_ES_FILE_EXTENSIONS",
+      "default": [
+        ".ts"
+      ],
       "description": "TYPESCRIPT_ES: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -32861,6 +33422,7 @@
     },
     "TYPESCRIPT_ES_FILE_NAMES_REGEX": {
       "$id": "#/properties/TYPESCRIPT_ES_FILE_NAMES_REGEX",
+      "default": [],
       "description": "TYPESCRIPT_ES: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -33103,8 +33665,11 @@
     },
     "TYPESCRIPT_PRETTIER_FILE_EXTENSIONS": {
       "$id": "#/properties/TYPESCRIPT_PRETTIER_FILE_EXTENSIONS",
+      "default": [
+        ".ts"
+      ],
       "description": "TYPESCRIPT_PRETTIER: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -33119,6 +33684,7 @@
     },
     "TYPESCRIPT_PRETTIER_FILE_NAMES_REGEX": {
       "$id": "#/properties/TYPESCRIPT_PRETTIER_FILE_NAMES_REGEX",
+      "default": [],
       "description": "TYPESCRIPT_PRETTIER: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -33333,8 +33899,11 @@
     },
     "TYPESCRIPT_STANDARD_FILE_EXTENSIONS": {
       "$id": "#/properties/TYPESCRIPT_STANDARD_FILE_EXTENSIONS",
+      "default": [
+        ".ts"
+      ],
       "description": "TYPESCRIPT_STANDARD: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -33349,6 +33918,7 @@
     },
     "TYPESCRIPT_STANDARD_FILE_NAMES_REGEX": {
       "$id": "#/properties/TYPESCRIPT_STANDARD_FILE_NAMES_REGEX",
+      "default": [],
       "description": "TYPESCRIPT_STANDARD: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -33559,8 +34129,11 @@
     },
     "VBDOTNET_DOTNET_FORMAT_FILE_EXTENSIONS": {
       "$id": "#/properties/VBDOTNET_DOTNET_FORMAT_FILE_EXTENSIONS",
+      "default": [
+        ".vb"
+      ],
       "description": "VBDOTNET_DOTNET_FORMAT: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -33575,6 +34148,7 @@
     },
     "VBDOTNET_DOTNET_FORMAT_FILE_NAMES_REGEX": {
       "$id": "#/properties/VBDOTNET_DOTNET_FORMAT_FILE_NAMES_REGEX",
+      "default": [],
       "description": "VBDOTNET_DOTNET_FORMAT: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -33870,8 +34444,12 @@
     },
     "XML_XMLLINT_FILE_EXTENSIONS": {
       "$id": "#/properties/XML_XMLLINT_FILE_EXTENSIONS",
+      "default": [
+        ".xml",
+        ".xsd"
+      ],
       "description": "XML_XMLLINT: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -33886,6 +34464,7 @@
     },
     "XML_XMLLINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/XML_XMLLINT_FILE_NAMES_REGEX",
+      "default": [],
       "description": "XML_XMLLINT: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -34128,8 +34707,12 @@
     },
     "YAML_PRETTIER_FILE_EXTENSIONS": {
       "$id": "#/properties/YAML_PRETTIER_FILE_EXTENSIONS",
+      "default": [
+        ".yml",
+        ".yaml"
+      ],
       "description": "YAML_PRETTIER: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -34144,6 +34727,7 @@
     },
     "YAML_PRETTIER_FILE_NAMES_REGEX": {
       "$id": "#/properties/YAML_PRETTIER_FILE_NAMES_REGEX",
+      "default": [],
       "description": "YAML_PRETTIER: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -34368,8 +34952,12 @@
     },
     "YAML_V8R_FILE_EXTENSIONS": {
       "$id": "#/properties/YAML_V8R_FILE_EXTENSIONS",
+      "default": [
+        ".yml",
+        ".yaml"
+      ],
       "description": "YAML_V8R: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -34384,6 +34972,7 @@
     },
     "YAML_V8R_FILE_NAMES_REGEX": {
       "$id": "#/properties/YAML_V8R_FILE_NAMES_REGEX",
+      "default": [],
       "description": "YAML_V8R: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -34587,8 +35176,12 @@
     },
     "YAML_YAMLLINT_FILE_EXTENSIONS": {
       "$id": "#/properties/YAML_YAMLLINT_FILE_EXTENSIONS",
+      "default": [
+        ".yml",
+        ".yaml"
+      ],
       "description": "YAML_YAMLLINT: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "examples:": [
+      "examples": [
         ".py",
         ".myext"
       ],
@@ -34603,6 +35196,7 @@
     },
     "YAML_YAMLLINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/YAML_YAMLLINT_FILE_NAMES_REGEX",
+      "default": [],
       "description": "YAML_YAMLLINT: Override descriptor/linter matching file name regex that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
