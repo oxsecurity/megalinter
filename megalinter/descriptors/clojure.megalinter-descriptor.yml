@@ -101,7 +101,8 @@ linters:
     supported_platforms:
       platform:
         - linux/amd64
-        - windows/amd64
+        # https://github.com/sgerrand/alpine-pkg-glibc does not appear to be compatible with ARM or uses older versions of glibc.
+        #- linux/arm64
     ide:
       emacs:
         - name: flycheck-clj-kondo
@@ -158,6 +159,7 @@ linters:
     supported_platforms:
       platform:
         - linux/amd64
+        # https://github.com/sgerrand/alpine-pkg-glibc does not appear to be compatible with ARM or uses older versions of glibc.
         # https://github.com/greglook/cljstyle/issues/115
         #- linux/arm64
     ide:
