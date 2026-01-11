@@ -151,6 +151,7 @@ class Linter:
         self.report_folder = ""
         self.reporters = []
         self.lint_command_log: list(str) = []
+        self.lint_cwd_log = ""
 
         # Initialize parameters
         default_params = {
@@ -1100,6 +1101,7 @@ class Linter:
     # noinspection PyMethodMayBeStatic
     def execute_lint_command(self, command):
         cwd = os.path.abspath(self.workspace)
+        self.lint_cwd_log = cwd
         logging.debug(f"[{self.linter_name}] CWD: {cwd}")
         subprocess_env = {
             **config.build_env(self.request_id, True, self.unsecured_env_variables),
