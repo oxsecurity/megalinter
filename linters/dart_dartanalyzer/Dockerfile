@@ -50,6 +50,7 @@ FROM python:3.13-alpine3.23
 #ARG__START
 # renovate: datasource=github-tags depName=sgerrand/alpine-pkg-glibc
 ARG ALPINE_GLIBC_PACKAGE_VERSION=2.34-r0
+ARG TARGETPLATFORM
 # renovate: datasource=dart-version depName=dart
 ARG DART_VERSION='3.10.7'
 #ARG__END
@@ -192,7 +193,11 @@ RUN ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases
         "$ALPINE_GLIBC_I18N_PACKAGE_FILENAME" \
 #
 # dartanalyzer installation
-    && wget --tries=5 https://storage.googleapis.com/dart-archive/channels/stable/release/${DART_VERSION}/sdk/dartsdk-linux-x64-release.zip -O - -q | unzip -q - \
+    && case ${TARGETPLATFORM} in \
+  "linux/amd64")  DART_ARCH=x64   ;; \
+  "linux/arm64")  DART_ARCH=arm64 ;; \
+esac \
+    && wget --tries=5 https://storage.googleapis.com/dart-archive/channels/stable/release/${DART_VERSION}/sdk/dartsdk-linux-${DART_ARCH}-release.zip -O - -q | unzip -q - \
     && mkdir -p /usr/lib/dart \
     && mv dart-sdk/* /usr/lib/dart/ \
     && chmod +x /usr/lib/dart/bin/dart \

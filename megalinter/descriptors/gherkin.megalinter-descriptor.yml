@@ -46,3 +46,7 @@ linters:
           ARG NPM_GHERKIN_LINT_VERSION=4.2.4
       npm:
         - gherkin-lint@${NPM_GHERKIN_LINT_VERSION}
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64

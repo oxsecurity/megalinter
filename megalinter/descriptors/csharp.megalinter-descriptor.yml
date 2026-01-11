@@ -57,7 +57,10 @@ linters:
       - "dotnet format Folder/Solution.sln --verify-no-changes"
       - "dotnet format Project.csproj --verify-no-changes"
       - "dotnet format" # Fix
-
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
   # CSharpier
   - linter_name: csharpier
     linter_text: |
@@ -106,6 +109,10 @@ linters:
           # renovate: datasource=nuget depName=csharpier
           ARG CSHARP_CSHARPIER_VERSION=1.2.5
         - RUN dotnet tool install --allow-roll-forward --global csharpier --version "${CSHARP_CSHARPIER_VERSION}"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       rider:
         - name: csharpier
@@ -160,6 +167,10 @@ linters:
           # renovate: datasource=nuget depName=roslynator.dotnet.cli
           ARG CSHARP_ROSLYNATOR_VERSION=0.12.0
         - RUN dotnet tool install --allow-roll-forward --global roslynator.dotnet.cli --version "${CSHARP_ROSLYNATOR_VERSION}"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       visual_studio:
         - name: Roslynator 2022

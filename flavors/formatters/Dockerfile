@@ -23,6 +23,7 @@ ARG TERRAFORM_TERRAGRUNT_VERSION=1.14.1
 #############################################################################################
 #FROM__START
 FROM mvdan/shfmt:${BASH_SHFMT_VERSION} AS shfmt
+FROM multiarch/qemu-user-static:x86_64-aarch64 AS qemu
 FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} AS terragrunt
 #FROM__END
 
@@ -55,6 +56,7 @@ FROM python:3.13-alpine3.23
 #ARG__START
 # renovate: datasource=crate depName=sarif-fmt
 ARG CARGO_SARIF_FMT_VERSION=0.8.0
+ARG TARGETPLATFORM
 # renovate: datasource=github-tags depName=PowerShell/PowerShell
 ARG POWERSHELL_VERSION=7.5.4
 
@@ -217,6 +219,9 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 
 #COPY__START
 COPY --link --from=shfmt /bin/shfmt /usr/bin/
+COPY --from=qemu /usr/bin/qemu-aarch64-static /usr/bin/
+RUN apk add --no-cache libc6-compat
+
 COPY --link --from=terragrunt /bin/terraform /usr/bin/
 #COPY__END
 
@@ -229,7 +234,11 @@ RUN apk add --no-cache dotnet9-sdk
 ENV PATH="${PATH}:/root/.dotnet/tools"
 #
 # POWERSHELL installation
-RUN curl -L https://github.com/PowerShell/PowerShell/releases/download/v${POWERSHELL_VERSION}/powershell-${POWERSHELL_VERSION}-linux-musl-x64.tar.gz -o /tmp/powershell.tar.gz \
+RUN case ${TARGETPLATFORM} in \
+  "linux/amd64")  POWERSHELL_ARCH=musl-x64 ;; \
+  "linux/arm64")  POWERSHELL_ARCH=arm64    ;; \
+esac \
+    && curl -L https://github.com/PowerShell/PowerShell/releases/download/v${POWERSHELL_VERSION}/powershell-${POWERSHELL_VERSION}-linux-${POWERSHELL_ARCH}.tar.gz -o /tmp/powershell.tar.gz \
     && mkdir -p /opt/microsoft/powershell/7 \
     && tar zxf /tmp/powershell.tar.gz -C /opt/microsoft/powershell/7 \
     && chmod +x /opt/microsoft/powershell/7/pwsh \
@@ -263,6 +272,8 @@ RUN curl -L https://github.com/PowerShell/PowerShell/releases/download/v${POWERS
 # rumdl installation
 #
 # powershell_formatter installation
+# Managed with COPY --from=qemu /usr/bin/qemu-aarch64-static /usr/bin/
+#              RUN apk add --no-cache libc6-compat
     && pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSION} -Scope AllUsers -Force'
 #
 # black installation

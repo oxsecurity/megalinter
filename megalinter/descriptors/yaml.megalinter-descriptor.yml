@@ -55,6 +55,10 @@ linters:
           ARG NPM_PRETTIER_VERSION=3.7.4
       npm:
         - "prettier@${NPM_PRETTIER_VERSION}"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       emacs:
         - name: prettier-emacs
@@ -124,6 +128,10 @@ linters:
           ARG PIP_YAMLLINT_VERSION=1.37.1
       pip:
         - yamllint==${PIP_YAMLLINT_VERSION}
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       emacs:
         - name: flycheck
@@ -166,6 +174,10 @@ linters:
           ARG NPM_V8R_VERSION=5.1.0
       npm:
         - v8r@${NPM_V8R_VERSION}
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       eclipse:
         - name: native support

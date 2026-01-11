@@ -58,7 +58,10 @@ linters:
           ARG KUBERNETES_KUBECONFORM_VERSION=v0.7.0-alpine
         - FROM ghcr.io/yannh/kubeconform:${KUBERNETES_KUBECONFORM_VERSION} AS kubeconform
         - COPY --link --from=kubeconform /kubeconform /usr/bin/
-
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
   # HELM LINT
   - linter_name: helm
     name: KUBERNETES_HELM
@@ -97,6 +100,10 @@ linters:
     install:
       apk:
         - helm
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     # KUBESCAPE
   - class: KubescapeLinter
     linter_name: kubescape
@@ -155,3 +162,7 @@ linters:
         - |-
           RUN ln -s /lib/libc.so.6 /usr/lib/libresolv.so.2 && \
               curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash -s -- -v "v${KUBERNETES_KUBESCAPE_VERSION}"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64

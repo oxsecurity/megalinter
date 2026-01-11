@@ -68,3 +68,7 @@ linters:
           ARG NPM_JSCPD_VERSION=4.0.5
       npm:
         - jscpd@${NPM_JSCPD_VERSION}
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64

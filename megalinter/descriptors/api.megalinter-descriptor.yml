@@ -61,6 +61,10 @@ linters:
           ARG NPM_SPECTRAL_CLI_VERSION=6.15.0
       npm:
         - "@stoplight/spectral-cli@${NPM_SPECTRAL_CLI_VERSION}"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       stoplight:
         - name: Native integration

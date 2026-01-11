@@ -39,6 +39,10 @@ linters:
           ARG NPM_COFFEELINT_CLI_VERSION=5.2.11
       npm:
         - "@coffeelint/cli@${NPM_COFFEELINT_CLI_VERSION}"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       idea:
         - name: coffeelint

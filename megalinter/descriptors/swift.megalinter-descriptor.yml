@@ -59,6 +59,10 @@ linters:
         - |-
           # renovate: datasource=docker depName=ghcr.io/realm/swiftlint
           ENV SWIFT_SWIFTLINT_VERSION=0.63.0
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       idea:
         - name: swiftlint

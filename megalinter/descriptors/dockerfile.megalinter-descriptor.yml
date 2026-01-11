@@ -74,6 +74,10 @@ linters:
           ARG DOCKERFILE_HADOLINT_VERSION=v2.14.0-alpine
         - FROM hadolint/hadolint:${DOCKERFILE_HADOLINT_VERSION} AS hadolint
         - COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       vscode:
         - name: hadolint

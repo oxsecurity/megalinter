@@ -52,6 +52,10 @@ linters:
           ARG PIP_ROBOT_FRAMEWORK_ROBOCOP_VERSION=7.2.0
       pip:
         - robotframework-robocop==${PIP_ROBOT_FRAMEWORK_ROBOCOP_VERSION}
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       vscode:
         - name: RobotCode

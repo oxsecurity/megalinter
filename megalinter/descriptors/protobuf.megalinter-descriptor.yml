@@ -46,6 +46,10 @@ linters:
           ARG PROTOBUF_PROTOLINT_VERSION=0.56.4
         - FROM yoheimuta/protolint:${PROTOBUF_PROTOLINT_VERSION} AS protolint
         - COPY --link --from=protolint /usr/local/bin/protolint /usr/bin/
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       idea:
         - name: Protocol Buffer Linter

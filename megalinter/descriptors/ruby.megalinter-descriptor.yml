@@ -62,6 +62,10 @@ linters:
         - rubocop-rails:${GEM_RUBOCOP_RAILS_VERSION}
         - rubocop-rake:${GEM_RUBOCOP_RAKE_VERSION}
         - rubocop-rspec:${GEM_RUBOCOP_RSPEC_VERSION}
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       brackets:
         - name: brackets-rubocop

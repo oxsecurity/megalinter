@@ -43,6 +43,10 @@ linters:
           ARG NPM_PRANTLF_JSONLINT_VERSION=17.0.0
       npm:
         - "@prantlf/jsonlint@${NPM_PRANTLF_JSONLINT_VERSION}"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
   # ESLINT-PLUGIN-JSONC
   - class: EslintLinter
     disabled: true
@@ -160,6 +164,10 @@ linters:
         - eslint@${NPM_ESLINT_VERSION}
         - eslint-plugin-jsonc@${NPM_ESLINT_PLUGIN_JSONC_VERSION}
         - "@microsoft/eslint-formatter-sarif@${NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION}"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       vscode:
         - name: vscode-eslint
@@ -196,6 +204,10 @@ linters:
           ARG NPM_V8R_VERSION=5.1.0
       npm:
         - v8r@${NPM_V8R_VERSION}
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       eclipse:
         - name: native support
@@ -252,6 +264,10 @@ linters:
           ARG NPM_PRETTIER_VERSION=3.7.4
       npm:
         - "prettier@${NPM_PRETTIER_VERSION}"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       emacs:
         - name: prettier-emacs
@@ -334,3 +350,7 @@ linters:
       npm:
         - "npm-package-json-lint@${NPM_PACKAGE_JSON_LINT_VERSION}"
         - "npm-package-json-lint-config-default@${NPM_PACKAGE_JSON_LINT_CONFIG_DEFAULT_VERSION}"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64

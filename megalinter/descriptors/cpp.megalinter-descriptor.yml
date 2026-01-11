@@ -49,6 +49,10 @@ linters:
     install:
       apk:
         - cppcheck
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
   # CPPLINT
   - class: CppLintLinter
     linter_name: cpplint
@@ -82,6 +86,10 @@ linters:
           ARG PIP_CPPLINT_VERSION=2.0.2
       pip:
         - cpplint==${PIP_CPPLINT_VERSION}
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
   # clang-format
   - linter_name: clang-format
     linter_text: |
@@ -122,6 +130,10 @@ linters:
     install:
       apk:
         - "cmd:clang-format"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       vscode:
         - name: Clang-Format

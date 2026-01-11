@@ -46,6 +46,10 @@ linters:
       pip:
         - Pygments==${PIP_PYGMENTS_VERSION}
         - restructuredtext_lint==${PIP_RESTRUCTUREDTEXT_LINT_VERSION}
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
   # rstcheck
   - linter_name: rstcheck
     linter_text: |
@@ -86,6 +90,10 @@ linters:
       pip:
         - click==${PIP_RSTCHECK_CLICK_VERSION} # Downgrade click as 8.2.0 triggers and error
         - rstcheck[toml,sphinx]==${PIP_RSTCHECK_VERSION}
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       vscode:
         - name: vscode-restructuredtext
@@ -128,3 +136,7 @@ linters:
       pip:
         - rstfmt==${PIP_RSTFMT_VERSION}
     version_extract_regex: "(?<=rstfmt )\\d+(\\.\\d+)+"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64

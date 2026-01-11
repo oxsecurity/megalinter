@@ -81,6 +81,10 @@ linters:
         - eslint-plugin-react@${NPM_ESLINT_PLUGIN_REACT_VERSION}
         - eslint-plugin-jsx-a11y@${NPM_ESLINT_PLUGIN_JSX_ALLY_VERSION}
         - "@microsoft/eslint-formatter-sarif@${NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION}"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       brackets:
         - name: brackets-eslint

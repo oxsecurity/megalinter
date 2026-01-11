@@ -43,9 +43,12 @@ ARG SPELL_LYCHEE_VERSION=sha-7c4b132-alpine
 FROM rhysd/actionlint:${ACTION_ACTIONLINT_VERSION} AS actionlint
 # shellcheck is a dependency for actionlint
 FROM koalaman/shellcheck:${BASH_SHELLCHECK_VERSION} AS shellcheck
+FROM multiarch/qemu-user-static:x86_64-aarch64 AS qemu
 # Next FROM line commented because already managed by another linter
 # FROM koalaman/shellcheck:${BASH_SHELLCHECK_VERSION} AS shellcheck
 FROM mvdan/shfmt:${BASH_SHFMT_VERSION} AS shfmt
+# Next FROM line commented because already managed by another linter
+# FROM multiarch/qemu-user-static:x86_64-aarch64 AS qemu
 FROM hadolint/hadolint:${DOCKERFILE_HADOLINT_VERSION} AS hadolint
 FROM mstruebing/editorconfig-checker:${EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION} AS editorconfig-checker
 FROM ghcr.io/yannh/kubeconform:${KUBERNETES_KUBECONFORM_VERSION} AS kubeconform
@@ -85,6 +88,7 @@ FROM python:3.13-alpine3.23
 #ARG__START
 # renovate: datasource=crate depName=sarif-fmt
 ARG CARGO_SARIF_FMT_VERSION=0.8.0
+ARG TARGETPLATFORM
 # renovate: datasource=github-tags depName=PowerShell/PowerShell
 ARG POWERSHELL_VERSION=7.5.4
 # renovate: datasource=github-tags depName=PowerShell/PowerShell
@@ -379,12 +383,24 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 COPY --link --from=actionlint /usr/local/bin/actionlint /usr/bin/actionlint
 # shellcheck is a dependency for actionlint
 COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
+COPY --from=qemu /usr/bin/qemu-aarch64-static /usr/bin/
+RUN apk add --no-cache libc6-compat
+
 # Next COPY line commented because already managed by another linter
 # COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
 COPY --link --from=shfmt /bin/shfmt /usr/bin/
+# Next COPY line commented because already managed by another linter
+# COPY --from=qemu /usr/bin/qemu-aarch64-static /usr/bin/
+# RUN apk add --no-cache libc6-compat
 COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
 COPY --link --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
 COPY --link --from=kubeconform /kubeconform /usr/bin/
+# Next COPY line commented because already managed by another linter
+# COPY --from=qemu /usr/bin/qemu-aarch64-static /usr/bin/
+# RUN apk add --no-cache libc6-compat
+# Next COPY line commented because already managed by another linter
+# COPY --from=qemu /usr/bin/qemu-aarch64-static /usr/bin/
+# RUN apk add --no-cache libc6-compat
 COPY --link --from=protolint /usr/local/bin/protolint /usr/bin/
 COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
@@ -397,7 +413,11 @@ COPY --link --from=lychee /usr/local/bin/lychee /usr/bin/
 #############################################################################################
 #OTHER__START
 # ARM installation
-RUN curl -L https://github.com/PowerShell/PowerShell/releases/download/v${POWERSHELL_VERSION}/powershell-${POWERSHELL_VERSION}-linux-musl-x64.tar.gz -o /tmp/powershell.tar.gz \
+RUN case ${TARGETPLATFORM} in \
+  "linux/amd64")  POWERSHELL_ARCH=musl-x64 ;; \
+  "linux/arm64")  POWERSHELL_ARCH=arm64    ;; \
+esac \
+    && curl -L https://github.com/PowerShell/PowerShell/releases/download/v${POWERSHELL_VERSION}/powershell-${POWERSHELL_VERSION}-linux-${POWERSHELL_ARCH}.tar.gz -o /tmp/powershell.tar.gz \
     && mkdir -p /opt/microsoft/powershell/7 \
     && tar zxf /tmp/powershell.tar.gz -C /opt/microsoft/powershell/7 \
     && chmod +x /opt/microsoft/powershell/7/pwsh \
@@ -413,7 +433,11 @@ ENV PATH="$JAVA_HOME/bin:${PATH}"
 #
 # POWERSHELL installation
 # Next line commented because already managed by another linter
-# RUN curl -L https://github.com/PowerShell/PowerShell/releases/download/v${POWERSHELL_VERSION}/powershell-${POWERSHELL_VERSION}-linux-musl-x64.tar.gz -o /tmp/powershell.tar.gz \
+# RUN case ${TARGETPLATFORM} in \
+#   "linux/amd64")  POWERSHELL_ARCH=musl-x64 ;; \
+#   "linux/arm64")  POWERSHELL_ARCH=arm64    ;; \
+# esac \
+#     && curl -L https://github.com/PowerShell/PowerShell/releases/download/v${POWERSHELL_VERSION}/powershell-${POWERSHELL_VERSION}-linux-${POWERSHELL_ARCH}.tar.gz -o /tmp/powershell.tar.gz \
 #     && mkdir -p /opt/microsoft/powershell/7 \
 #     && tar zxf /tmp/powershell.tar.gz -C /opt/microsoft/powershell/7 \
 #     && chmod +x /opt/microsoft/powershell/7/pwsh \
@@ -436,6 +460,8 @@ ENV PATH="$JAVA_HOME/bin:${PATH}"
 #
 # arm-ttk installation
 ENV ARM_TTK_PSD1="${ARM_TTK_DIRECTORY}/arm-ttk/arm-ttk/arm-ttk.psd1"
+# Managed with COPY --from=qemu /usr/bin/qemu-aarch64-static /usr/bin/
+#              RUN apk add --no-cache libc6-compat
 RUN curl --retry 5 --retry-delay 5 -sLO "https://github.com/Azure/arm-ttk/releases/download/${ARM_TTK_VERSION}/${ARM_TTK_NAME}" \
     && unzip "${ARM_TTK_NAME}" -d "${ARM_TTK_DIRECTORY}" \
     && rm "${ARM_TTK_NAME}" \
@@ -454,9 +480,16 @@ RUN curl --retry 5 --retry-delay 5 -sLO "https://github.com/Azure/arm-ttk/releas
 # Managed with COPY --link --from=shfmt /bin/shfmt /usr/bin/
 #
 # bicep_linter installation
-    && curl --retry 5 --retry-delay 5 -sLo ${BICEP_EXE} "https://github.com/Azure/bicep/releases/download/v${BICEP_VERSION}/bicep-linux-musl-x64" \
-    && chmod +x "${BICEP_EXE}" \
-    && mv "${BICEP_EXE}" "${BICEP_DIR}" \
+# Managed with # Next COPY line commented because already managed by another linter
+#              # COPY --from=qemu /usr/bin/qemu-aarch64-static /usr/bin/
+#              # RUN apk add --no-cache libc6-compat
+    && case ${TARGETPLATFORM} in \
+  "linux/amd64")  POWERSHELL_ARCH=musl-x64 ;; \
+  "linux/arm64")  POWERSHELL_ARCH=arm64    ;; \
+esac \
+&& curl --retry 5 --retry-delay 5 -sLo ${BICEP_EXE} "https://github.com/Azure/bicep/releases/download/v${BICEP_VERSION}/bicep-linux-${POWERSHELL_ARCH}" \
+&& chmod +x "${BICEP_EXE}" \
+&& mv "${BICEP_EXE}" "${BICEP_DIR}" \
 #
 # cpplint installation
 #
@@ -527,9 +560,15 @@ RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/rel
 # rumdl installation
 #
 # powershell installation
+# Managed with # Next COPY line commented because already managed by another linter
+#              # COPY --from=qemu /usr/bin/qemu-aarch64-static /usr/bin/
+#              # RUN apk add --no-cache libc6-compat
     && pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSION} -Scope AllUsers -Force' \
 #
 # powershell_formatter installation
+# Managed with # Next COPY line commented because already managed by another linter
+#              # COPY --from=qemu /usr/bin/qemu-aarch64-static /usr/bin/
+#              # RUN apk add --no-cache libc6-compat
 # Next line commented because already managed by another linter
 # RUN pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSION} -Scope AllUsers -Force'
 #

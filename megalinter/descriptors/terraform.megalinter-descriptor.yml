@@ -73,7 +73,10 @@ linters:
           ARG TERRAFORM_TFLINT_VERSION=0.60.0
         - FROM ghcr.io/terraform-linters/tflint:v${TERRAFORM_TFLINT_VERSION} AS tflint
         - COPY --link --from=tflint /usr/local/bin/tflint /usr/bin/
-
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
   # TERRASCAN
   - class: TerrascanLinter
     linter_name: terrascan
@@ -129,7 +132,10 @@ linters:
           ARG TERRAFORM_TERRASCAN_VERSION=1.19.9
         - FROM tenable/terrascan:${TERRAFORM_TERRASCAN_VERSION} AS terrascan
         - COPY --link --from=terrascan /go/bin/terrascan /usr/bin/
-
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
   # TERRAGRUNT
   - linter_name: terragrunt
     linter_text: |
@@ -183,7 +189,10 @@ linters:
           ARG TERRAFORM_TERRAGRUNT_VERSION=1.14.1
         - FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} AS terragrunt
         - COPY --link --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
-
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
   # TERRAFORM_FMT
   - linter_name: terraform-fmt
     linter_text: |
@@ -225,6 +234,10 @@ linters:
           ARG TERRAFORM_TERRAGRUNT_VERSION=1.14.1
         - FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} AS terragrunt
         - COPY --link --from=terragrunt /bin/terraform /usr/bin/
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       idea:
         - name: HashiCorp Terraform / HCL language support

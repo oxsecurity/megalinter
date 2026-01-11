@@ -46,3 +46,7 @@ linters:
       npm:
         - graphql@${NPM_GRAPHQL_VERSION}
         - graphql-schema-linter@${NPM_GRAPHQL_SCHEMA_LINTER_VERSION}
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64

@@ -138,6 +138,10 @@ linters:
         - "@babel/core@${NPM_BABEL_CORE_VERSION}"
         - "@babel/eslint-parser@${NPM_BABEL_ESLINT_PARSER_VERSION}"
         - "@microsoft/eslint-formatter-sarif@${NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION}"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       brackets:
         - name: brackets-eslint
@@ -205,6 +209,10 @@ linters:
           ARG NPM_STANDARD_VERSION=17.1.2
       npm:
         - standard@${NPM_STANDARD_VERSION}
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       brackets:
         - name: brackets-standard
@@ -270,6 +278,10 @@ linters:
           ARG NPM_PRETTIER_VERSION=3.7.4
       npm:
         - "prettier@${NPM_PRETTIER_VERSION}"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       emacs:
         - name: prettier-emacs

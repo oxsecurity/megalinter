@@ -56,3 +56,7 @@ linters:
       - "dotnet format Folder/Solution.sln --verify-no-changes"
       - "dotnet format Project.vbproj --verify-no-changes"
       - "dotnet format" # Fix
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64

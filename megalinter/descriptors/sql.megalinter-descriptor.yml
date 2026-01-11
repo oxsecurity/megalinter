@@ -54,6 +54,10 @@ linters:
           ARG PIP_SQLFLUFF_VERSION=3.5.0
       pip:
         - sqlfluff==${PIP_SQLFLUFF_VERSION}
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
   # TSQL
   - linter_name: tsqllint
     linter_text: |
@@ -100,6 +104,10 @@ linters:
         - RUN apk add --no-cache dotnet9-sdk
         - ENV PATH="${PATH}:/root/.dotnet/tools"
         - RUN dotnet tool install --allow-roll-forward --global TSQLLint --version ${SQL_TSQLLINT_VERSION}
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       vscode:
         - name: TSQL Lint

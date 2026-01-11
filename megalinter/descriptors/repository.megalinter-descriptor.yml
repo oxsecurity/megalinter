@@ -65,6 +65,10 @@ linters:
           ARG PIP_CHECKOV_VERSION=3.2.497
       pip:
         - checkov==${PIP_CHECKOV_VERSION}
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     test_folder: repository_checkov
 
   # DEVSKIM
@@ -136,11 +140,14 @@ linters:
         - RUN apk add --no-cache dotnet9-sdk
         - ENV PATH="${PATH}:/root/.dotnet/tools"
         - RUN dotnet tool install --allow-roll-forward --global Microsoft.CST.DevSkim.CLI --version ${REPOSITORY_DEVSKIM_VERSION}
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       vscode:
         - name: VSCode DevSkim
           url: https://marketplace.visualstudio.com/items?itemName=MS-CST-E.vscode-devskim
-
   # DUSTILOCK
   - class: DustilockLinter
     linter_name: dustilock
@@ -189,7 +196,10 @@ linters:
           ARG REPOSITORY_DUSTILOCK_VERSION
           RUN apk add --no-cache git && GOBIN=/usr/bin go install github.com/checkmarx/dustilock@v${REPOSITORY_DUSTILOCK_VERSION}
         - COPY --link --from=dustilock /usr/bin/dustilock /usr/bin/dustilock
-
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
   # GIT_DIFF
   - linter_name: git_diff
     lint_all_files: true
@@ -217,7 +227,10 @@ linters:
     cli_help_arg_name: "--help"
     examples:
       - "git diff --check"
-
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
   # GITLEAKS
   - class: GitleaksLinter
     linter_name: gitleaks
@@ -359,6 +372,10 @@ linters:
           ARG REPOSITORY_GITLEAKS_VERSION=v8.30.0
         - FROM zricethezav/gitleaks:${REPOSITORY_GITLEAKS_VERSION} AS gitleaks
         - COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     variables:
       - name: REPOSITORY_GITLEAKS_PR_COMMITS_SCAN
         description: Scan only commits in the current Pull Request/Merge Request
@@ -421,6 +438,10 @@ linters:
           # renovate: datasource=github-tags depName=anchore/grype
           ARG REPOSITORY_GRYPE_VERSION=0.104.4
         - RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/refs/tags/v${REPOSITORY_GRYPE_VERSION}/install.sh | sh -s -- -b /usr/local/bin
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     test_folder: repository_grype
 
   # KICS
@@ -485,6 +506,10 @@ linters:
         - COPY --link --from=kics /app/bin/kics /usr/bin/kics
         - ENV KICS_QUERIES_PATH=/usr/bin/assets/queries KICS_LIBRARIES_PATH=/usr/bin/assets/libraries
         - COPY --from=kics /app/bin/assets /usr/bin/assets
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     test_folder: repository_kics
 
   # LS-LINT
@@ -524,6 +549,10 @@ linters:
           ARG NPM_LS_LINT_LS_LINT_VERSION=2.3.1
       npm:
         - "@ls-lint/ls-lint@${NPM_LS_LINT_LS_LINT_VERSION}"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
 
   # SECRETLINT
   - class: SecretLintLinter
@@ -586,7 +615,10 @@ linters:
         - secretlint@${NPM_SECRETLINT_VERSION}
         - "@secretlint/secretlint-rule-preset-recommend@${NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION}"
         - "@secretlint/secretlint-formatter-sarif@${NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION}"
-
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
   # SEMGREP
   - class: SemgrepLinter
     linter_name: semgrep
@@ -653,11 +685,14 @@ linters:
       - name: REPOSITORY_SEMGREP_RULESETS_TYPE
         description: "MegaLinter semgrep ruleset list preset id . Available values: security"
         default_value: ""
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       vscode:
         - name: VSCode SemGrep
           url: https://marketplace.visualstudio.com/items?itemName=semgrep.semgrep
-
   # SYFT
   - class: SyftLinter
     linter_name: syft
@@ -706,7 +741,10 @@ linters:
           # renovate: datasource=github-tags depName=anchore/syft
           ARG REPOSITORY_SYFT_VERSION=1.40.0
         - RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/refs/tags/v${REPOSITORY_SYFT_VERSION}/install.sh | sh -s -- -b /usr/local/bin
-
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
   # TRIVY
   - linter_name: trivy
     class: TrivyLinter
@@ -766,6 +804,10 @@ linters:
         - |
           RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin "v${REPOSITORY_TRIVY_VERSION}" \
               && (trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress)
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       vscode:
         - name: VSCode Trivy
@@ -827,6 +869,10 @@ linters:
         - |
           RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin "v${REPOSITORY_TRIVY_SBOM_VERSION}" \
               && (trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress)
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       vscode:
         - name: VSCode Trivy
@@ -880,6 +926,10 @@ linters:
           ARG REPOSITORY_TRUFFLEHOG_VERSION=3.92.4
         - FROM trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION} AS trufflehog
         - COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     test_folder: gitleaks
   # kingfisher
   - linter_name: kingfisher
@@ -924,3 +974,7 @@ linters:
           ARG REPOSITORY_KINGFISHER_VERSION=1.73.0
         - |
           RUN curl --silent --location https://raw.githubusercontent.com/mongodb/kingfisher/main/scripts/install-kingfisher.sh | bash -s -- /usr/local/bin --tag "v${REPOSITORY_KINGFISHER_VERSION}"
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64

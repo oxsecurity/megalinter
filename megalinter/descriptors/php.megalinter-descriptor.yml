@@ -27,6 +27,10 @@ install:
     - RUN update-alternatives --install /usr/bin/php php /usr/bin/php84 110
     - COPY --from=composer/composer:2-bin /composer /usr/bin/composer
     - ENV PATH="/root/.composer/vendor/bin:${PATH}"
+supported_platforms:
+  platform:
+    - linux/amd64
+    - linux/arm64
 linters:
   # PHPCS
   - linter_name: phpcs
@@ -75,6 +79,10 @@ linters:
           ARG PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION=1.4.0
         - |
           RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require squizlabs/php_codesniffer:${PHP_SQUIZLABS_PHP_CODESNIFFER_VERSION} bartlett/sarif-php-converters:${PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION}
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       idea:
         - name: phpcs
@@ -145,6 +153,10 @@ linters:
       vscode:
         - name: vscode-phpstan
           url: https://marketplace.visualstudio.com/items?itemName=calsmurf2904.vscode-phpstan
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
   # PSALM
   - linter_name: psalm
     linter_text: |
@@ -192,6 +204,10 @@ linters:
           ARG PHP_VIMEO_PSALM_VERSION=6.14.3
         - |
           RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require vimeo/psalm:${PHP_VIMEO_PSALM_VERSION}
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       idea:
         - name: PHPStan / Psalm / Generics
@@ -240,6 +256,10 @@ linters:
           ARG PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION=1.4.0
         - |
           RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require overtrue/phplint:${PHP_OVERTRUE_PHPLINT_VERSION} bartlett/sarif-php-converters:${PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION}
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
   # PHP-CS-Fixer
   - linter_name: php-cs-fixer
     name: PHP_PHPCSFIXER

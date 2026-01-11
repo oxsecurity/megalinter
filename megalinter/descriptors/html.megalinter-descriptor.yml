@@ -44,6 +44,10 @@ linters:
           ARG PIP_DJLINT_VERSION=1.36.4
       pip:
         - djlint==${PIP_DJLINT_VERSION}
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       sublime:
         - name: SublimeLinter-contrib-djlint
@@ -91,6 +95,10 @@ linters:
           ARG NPM_HTMLHINT_VERSION=1.8.0
       npm:
         - htmlhint@${NPM_HTMLHINT_VERSION}
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       brackets:
         - name: brackets-htmlhint

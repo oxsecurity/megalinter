@@ -74,6 +74,10 @@ linters:
       pip:
         - pylint==${PIP_PYLINT_VERSION}
         - typing-extensions==${PIP_TYPING_EXTENSIONS_VERSION}
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       eclipse:
         - name: PyLint
@@ -162,6 +166,10 @@ linters:
           ARG PIP_BLACK_VERSION=25.12.0
       pip:
         - black[jupyter]==${PIP_BLACK_VERSION}
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       emacs:
         - name: blacken
@@ -216,6 +224,10 @@ linters:
           ARG PIP_FLAKE8_VERSION=7.3.0
       pip:
         - flake8==${PIP_FLAKE8_VERSION}
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       vscode:
         - name: Flake8
@@ -279,6 +291,10 @@ linters:
       pip:
         - black==${PIP_BLACK_VERSION}
         - isort==${PIP_ISORT_VERSION}
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       emacs:
         - name: py-isort.el
@@ -369,6 +385,10 @@ linters:
         - bandit==${PIP_BANDIT_VERSION}
         - bandit_sarif_formatter==${PIP_BANDIT_SARIF_FORMATTER_VERSION}
         - bandit[toml]==${PIP_BANDIT_VERSION}
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       sublime:
         - name: SublimeLinter-bandit
@@ -428,6 +448,10 @@ linters:
         - ENV MYPY_CACHE_DIR=/tmp # Avoid mypy cache to mess with other linters
       pip:
         - mypy==${PIP_MYPY_VERSION}
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       emacs:
         - name: Flycheck mypy
@@ -518,6 +542,10 @@ linters:
           ARG NPM_PYRIGHT_VERSION=1.1.407
       npm:
         - pyright@${NPM_PYRIGHT_VERSION}
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       emacs:
         - name: LSP-pyright
@@ -585,6 +613,10 @@ linters:
           ARG PIP_RUFF_VERSION=0.14.11
       pip:
         - ruff==${PIP_RUFF_VERSION}
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       idea:
         - name: Ruff
@@ -646,6 +678,10 @@ linters:
           ARG PIP_RUFF_VERSION=0.14.11
       pip:
         - ruff==${PIP_RUFF_VERSION}
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       idea:
         - name: Ruff

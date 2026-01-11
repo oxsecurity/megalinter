@@ -60,6 +60,10 @@ linters:
               && cd .. && rm -r luarocks-${LUA_LUACHECK_VERSION}-super-linter/ \
               && luarocks install luacheck \
               && cd /
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       brackets:
         - name: brackets-luacheck
@@ -113,6 +117,10 @@ linters:
         - |-
           # renovate: datasource=crate depName=selene
           ARG CARGO_SELENE_VERSION=0.29.0
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       neovim:
         - name: nvim-lint
@@ -163,6 +171,10 @@ linters:
         - |-
           # renovate: datasource=crate depName=stylua
           ARG CARGO_STYLUA_VERSION=2.0.0
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
     ide:
       neovim:
         - name:
