@@ -220,8 +220,7 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #COPY__START
 COPY --link --from=shfmt /bin/shfmt /usr/bin/
 COPY --from=qemu /usr/bin/qemu-aarch64-static /usr/bin/
-RUN apk update \
-    && apk add libc6-compat
+RUN apk add --no-cache libc6-compat
 
 COPY --link --from=terragrunt /bin/terraform /usr/bin/
 #COPY__END
@@ -274,8 +273,7 @@ esac \
 #
 # powershell_formatter installation
 # Managed with COPY --from=qemu /usr/bin/qemu-aarch64-static /usr/bin/
-#              RUN apk update \
-#                  && apk add libc6-compat
+#              RUN apk add --no-cache libc6-compat
     && pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSION} -Scope AllUsers -Force'
 #
 # black installation

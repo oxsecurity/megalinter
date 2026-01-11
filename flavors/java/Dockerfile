@@ -365,8 +365,7 @@ COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
 # COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
 COPY --link --from=shfmt /bin/shfmt /usr/bin/
 COPY --from=qemu /usr/bin/qemu-aarch64-static /usr/bin/
-RUN apk update \
-    && apk add libc6-compat
+RUN apk add --no-cache libc6-compat
 
 COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
 COPY --link --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
@@ -456,8 +455,7 @@ RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: Fil
 #
 # clj-kondo installation
 # Managed with COPY --from=qemu /usr/bin/qemu-aarch64-static /usr/bin/
-#              RUN apk update \
-#                  && apk add libc6-compat
+#              RUN apk add --no-cache libc6-compat
     && curl --retry 5 --retry-delay 5 -sLO https://raw.githubusercontent.com/clj-kondo/clj-kondo/refs/tags/v${CLJ_KONDO_VERSION}/script/install-clj-kondo \
     && chmod +x install-clj-kondo \
     && ./install-clj-kondo \

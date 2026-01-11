@@ -148,8 +148,7 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 
 #COPY__START
 COPY --from=qemu /usr/bin/qemu-aarch64-static /usr/bin/
-RUN apk update \
-    && apk add libc6-compat
+RUN apk add --no-cache libc6-compat
 
 #COPY__END
 
@@ -172,8 +171,7 @@ esac \
 # arm-ttk installation
 ENV ARM_TTK_PSD1="${ARM_TTK_DIRECTORY}/arm-ttk/arm-ttk/arm-ttk.psd1"
 # Managed with COPY --from=qemu /usr/bin/qemu-aarch64-static /usr/bin/
-#              RUN apk update \
-#                  && apk add libc6-compat
+#              RUN apk add --no-cache libc6-compat
 RUN curl --retry 5 --retry-delay 5 -sLO "https://github.com/Azure/arm-ttk/releases/download/${ARM_TTK_VERSION}/${ARM_TTK_NAME}" \
     && unzip "${ARM_TTK_NAME}" -d "${ARM_TTK_DIRECTORY}" \
     && rm "${ARM_TTK_NAME}" \

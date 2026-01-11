@@ -384,27 +384,23 @@ COPY --link --from=actionlint /usr/local/bin/actionlint /usr/bin/actionlint
 # shellcheck is a dependency for actionlint
 COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
 COPY --from=qemu /usr/bin/qemu-aarch64-static /usr/bin/
-RUN apk update \
-    && apk add libc6-compat
+RUN apk add --no-cache libc6-compat
 
 # Next COPY line commented because already managed by another linter
 # COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
 COPY --link --from=shfmt /bin/shfmt /usr/bin/
 # Next COPY line commented because already managed by another linter
 # COPY --from=qemu /usr/bin/qemu-aarch64-static /usr/bin/
-# RUN apk update \
-#     && apk add libc6-compat
+# RUN apk add --no-cache libc6-compat
 COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
 COPY --link --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
 COPY --link --from=kubeconform /kubeconform /usr/bin/
 # Next COPY line commented because already managed by another linter
 # COPY --from=qemu /usr/bin/qemu-aarch64-static /usr/bin/
-# RUN apk update \
-#     && apk add libc6-compat
+# RUN apk add --no-cache libc6-compat
 # Next COPY line commented because already managed by another linter
 # COPY --from=qemu /usr/bin/qemu-aarch64-static /usr/bin/
-# RUN apk update \
-#     && apk add libc6-compat
+# RUN apk add --no-cache libc6-compat
 COPY --link --from=protolint /usr/local/bin/protolint /usr/bin/
 COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
@@ -465,8 +461,7 @@ ENV PATH="$JAVA_HOME/bin:${PATH}"
 # arm-ttk installation
 ENV ARM_TTK_PSD1="${ARM_TTK_DIRECTORY}/arm-ttk/arm-ttk/arm-ttk.psd1"
 # Managed with COPY --from=qemu /usr/bin/qemu-aarch64-static /usr/bin/
-#              RUN apk update \
-#                  && apk add libc6-compat
+#              RUN apk add --no-cache libc6-compat
 RUN curl --retry 5 --retry-delay 5 -sLO "https://github.com/Azure/arm-ttk/releases/download/${ARM_TTK_VERSION}/${ARM_TTK_NAME}" \
     && unzip "${ARM_TTK_NAME}" -d "${ARM_TTK_DIRECTORY}" \
     && rm "${ARM_TTK_NAME}" \
@@ -487,8 +482,7 @@ RUN curl --retry 5 --retry-delay 5 -sLO "https://github.com/Azure/arm-ttk/releas
 # bicep_linter installation
 # Managed with # Next COPY line commented because already managed by another linter
 #              # COPY --from=qemu /usr/bin/qemu-aarch64-static /usr/bin/
-#              # RUN apk update \
-#              #     && apk add libc6-compat
+#              # RUN apk add --no-cache libc6-compat
     && case ${TARGETPLATFORM} in \
   "linux/amd64")  POWERSHELL_ARCH=musl-x64 ;; \
   "linux/arm64")  POWERSHELL_ARCH=arm64    ;; \
@@ -568,15 +562,13 @@ RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/rel
 # powershell installation
 # Managed with # Next COPY line commented because already managed by another linter
 #              # COPY --from=qemu /usr/bin/qemu-aarch64-static /usr/bin/
-#              # RUN apk update \
-#              #     && apk add libc6-compat
+#              # RUN apk add --no-cache libc6-compat
     && pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSION} -Scope AllUsers -Force' \
 #
 # powershell_formatter installation
 # Managed with # Next COPY line commented because already managed by another linter
 #              # COPY --from=qemu /usr/bin/qemu-aarch64-static /usr/bin/
-#              # RUN apk update \
-#              #     && apk add libc6-compat
+#              # RUN apk add --no-cache libc6-compat
 # Next line commented because already managed by another linter
 # RUN pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSION} -Scope AllUsers -Force'
 #

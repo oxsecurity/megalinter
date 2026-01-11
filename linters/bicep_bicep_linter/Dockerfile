@@ -146,8 +146,7 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 
 #COPY__START
 COPY --from=qemu /usr/bin/qemu-aarch64-static /usr/bin/
-RUN apk update \
-    && apk add libc6-compat
+RUN apk add --no-cache libc6-compat
 
 #COPY__END
 
@@ -157,8 +156,7 @@ RUN apk update \
 #OTHER__START
 # bicep_linter installation
 # Managed with COPY --from=qemu /usr/bin/qemu-aarch64-static /usr/bin/
-#              RUN apk update \
-#                  && apk add libc6-compat
+#              RUN apk add --no-cache libc6-compat
 RUN case ${TARGETPLATFORM} in \
   "linux/amd64")  POWERSHELL_ARCH=musl-x64 ;; \
   "linux/arm64")  POWERSHELL_ARCH=arm64    ;; \

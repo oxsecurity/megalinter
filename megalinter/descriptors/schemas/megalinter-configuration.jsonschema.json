@@ -10060,6 +10060,7 @@
     },
     "JAVASCRIPT_DEFAULT_STYLE": {
       "$id": "#/properties/JAVASCRIPT_DEFAULT_STYLE",
+      "default": "prettier",
       "description": "Style of javascript formatting to apply",
       "enum": [
         "standard",
@@ -10073,7 +10074,6 @@
         "standard",
         "prettier"
       ],
-      "default": "prettier",
       "title": "Javascript default style",
       "type": "string",
       "x-category": "JAVASCRIPT",
@@ -15487,6 +15487,7 @@
     },
     "MARKDOWN_DEFAULT_STYLE": {
       "$id": "#/properties/MARKDOWN_DEFAULT_STYLE",
+      "default": "markdownlint",
       "description": "Style of markdown formatting to apply",
       "enum": [
         "markdownlint",
@@ -15498,7 +15499,6 @@
         "Remark Lint",
         "Rumdl"
       ],
-      "default": "markdownlint",
       "title": "Markdown default formatting style",
       "type": "string",
       "x-category": "MARKDOWN",
@@ -19954,6 +19954,7 @@
     },
     "PYTHON_DEFAULT_STYLE": {
       "$id": "#/properties/PYTHON_DEFAULT_STYLE",
+      "default": "black",
       "description": "Style of python formatting to apply",
       "enum": [
         "black",
@@ -19967,7 +19968,6 @@
         "black",
         "ruff"
       ],
-      "default": "black",
       "title": "Python default style",
       "type": "string",
       "x-category": "PYTHON",
@@ -32718,6 +32718,7 @@
     },
     "TYPESCRIPT_DEFAULT_STYLE": {
       "$id": "#/properties/TYPESCRIPT_DEFAULT_STYLE",
+      "default": "prettier",
       "description": "Style of typescript formatting to apply",
       "enum": [
         "standard",
@@ -32731,7 +32732,6 @@
         "standard",
         "prettier"
       ],
-      "default": "prettier",
       "title": "Typescript default style",
       "type": "string",
       "x-category": "TYPESCRIPT",
