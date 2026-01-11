@@ -76,7 +76,7 @@ jobs:
             "terraform",
           ]
 # flavors-end
-        platform: ["linux/amd64", "linux/arm64"]
+        platform: ["linux/amd64"]
     # Only run this on the main repo
     if: >-
       (
