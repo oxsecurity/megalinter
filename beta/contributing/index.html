@@ -12972,9 +12972,9 @@ We're thrilled that you'd like to contribute to this project. Your help is essen
 <h4 id="upgrading-python-packages">Upgrading Python Packages</h4>
 <ol>
 <li>
-<p><strong>Update version in pyproject.toml</strong>: Change the version constraint
-   <code>toml
-   "package-name&gt;=2.0.0",  # Updated from 1.0.0</code></p>
+<p><strong>Update version in pyproject.toml</strong>: Change the version constraint</p>
+<p><code>toml
+ "package-name&gt;=2.0.0",  # Updated from 1.0.0</code></p>
 </li>
 <li>
 <p><strong>Update lock file</strong>: Run <code>uv lock</code> to resolve and lock new versions</p>
@@ -13073,16 +13073,32 @@ hatch shell
 <li>Run <code>make megalinter-build</code> or <code>bash build.sh</code> to update the Dockerfile files of each linter.</li>
 <li>Execute the following commands in a <strong>*.sh</strong> script. Example:</li>
 </ol>
-<pre><code class="language-bash">LINTER="spell_misspell"
-docker buildx build -f linters/$LINTER/Dockerfile . --tag $LINTER
-docker run -e TEST_CASE_RUN=true -e OUTPUT_DETAIL=detailed -e TEST_KEYWORDS="${LINTER}" -e MEGALINTER_VOLUME_ROOT="." -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v $(pwd):/tmp/lint $LINTER
+<pre><code class="language-bash">#!/bin/sh
+
+# Taken from: https://megalinter.io/latest/supported-linters/
+LINTER="api_spectral"
+# If you want to build for ARM: linux/arm64
+PLATFORM=linux/amd64
+# If you want to run a specific test such as test_failure, set to: "${LINTER}_test and test_failure"
+TEST_KEYWORDS="${LINTER}_test"
+
+docker buildx build \
+  --platform $PLATFORM \
+  --file linters/$LINTER/Dockerfile \
+  --tag $LINTER \
+  .
+
+docker run \
+  --rm \
+  --env TEST_CASE_RUN=true \
+  --env OUTPUT_DETAIL=detailed \
+  --env TEST_KEYWORDS="${TEST_KEYWORDS}" \
+  --env MEGALINTER_VOLUME_ROOT="." \
+  --volume "/var/run/docker.sock:/var/run/docker.sock:rw" \
+  --volume "$(pwd):/tmp/lint" \
+  $LINTER
 </code></pre>
-<p>In the above example, it builds the <strong>misspell</strong> linter image and then runs its tests. To do the same for another linter you would have to:</p>
-<ol>
-<li>Change the path to the Dockerfile to the appropriate Dockerfile</li>
-<li>Change the <strong>tag</strong> in the 2 places (docker buildx build and docker run)</li>
-<li>Change the value of <strong>TEST_KEYWORDS_TO_USE</strong> which is the one that's responsible for finding the tests of the particular linter</li>
-</ol>
+<p>In the above example, it builds the <strong>spectral</strong> linter image and then runs its tests.</p>
 <h3 id="cictcd">CI/CT/CD</h3>
 <p>The <strong>MegaLinter</strong> has <em>CI/CT/CD</em> configured utilizing <strong>GitHub</strong> Actions.</p>
 <ul>
