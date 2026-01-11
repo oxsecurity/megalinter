@@ -22,10 +22,14 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Media
 
 - Linters enhancements
+  - Use the official checkmake image by @bdovaz
+  - Add sarif support to spectral by @bdovaz
 
 - Fixes
+  - Fix issue with plugins ignored when FLAVOR_SUGGESTIONS=false
 
 - Reporters
+  - Add a link inviting to star MegaLinter
 
 - Doc
 
@@ -43,6 +47,16 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [rumdl](https://github.com/rvben/rumdl) from 0.0.208 to **0.0.210** on 2026-01-05
   - [rumdl](https://github.com/rvben/rumdl) from 0.0.210 to **0.0.212** on 2026-01-07
   - [kics](https://www.kics.io) from 2.1.18 to **2.1.19** on 2026-01-07
+  - [grype](https://github.com/anchore/grype) from 0.104.3 to **0.104.4** on 2026-01-08
+  - [syft](https://github.com/anchore/syft) from 1.39.0 to **1.40.0** on 2026-01-08
+  - [jsonlint](https://github.com/prantlf/jsonlint) from 16.0.0 to **17.0.0** on 2026-01-09
+  - [golangci-lint](https://golangci-lint.run/) from 2.7.2 to **2.8.0** on 2026-01-09
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.92.4 to **3.92.5** on 2026-01-09
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.14.10 to **0.14.11** on 2026-01-09
+  - [ruff](https://github.com/astral-sh/ruff) from 0.14.10 to **0.14.11** on 2026-01-09
+  - [snakemake](https://snakemake.github.io/) from 9.14.5 to **9.14.6** on 2026-01-09
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 25.12.2 to **26.1.0** on 2026-01-09
+  - [rumdl](https://github.com/rvben/rumdl) from 0.0.212 to **0.0.213** on 2026-01-10
 <!-- linter-versions-end -->
 
 ## [v9.3.0] - 2026-01-04

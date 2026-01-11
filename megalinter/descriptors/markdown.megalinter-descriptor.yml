@@ -230,7 +230,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=rumdl
-          ARG RUMDL_MYPY_VERSION=0.0.212
+          ARG RUMDL_MYPY_VERSION=0.0.213
       pip:
         - rumdl==${RUMDL_MYPY_VERSION}
     supported_platforms:

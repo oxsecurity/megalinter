@@ -9,9 +9,9 @@ description: spectral is available to analyze API files in MegaLinter
 
 ## Linters
 
-| Linter                                                                | Additional                                                                                                                             |
-|-----------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
-| [**spectral**](api_spectral.md)<br/>[_API_SPECTRAL_](api_spectral.md) | [![GitHub stars](https://img.shields.io/github/stars/stoplightio/spectral?cacheSeconds=3600)](https://github.com/stoplightio/spectral) |
+| Linter                                                                | Additional                                                                                                                                                                              |
+|-----------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [**spectral**](api_spectral.md)<br/>[_API_SPECTRAL_](api_spectral.md) | [![GitHub stars](https://img.shields.io/github/stars/stoplightio/spectral?cacheSeconds=3600)](https://github.com/stoplightio/spectral) ![sarif](https://shields.io/badge/-SARIF-orange) |
 
 ## Linted files
 

@@ -113,9 +113,9 @@ checkmake.
 
 - Dockerfile commands :
 ```dockerfile
-FROM backplane/checkmake:latest AS checkmake
+# renovate: datasource=docker depName=quay.io/checkmake/checkmake
+ARG MAKEFILE_CHECKMAKE_VERSION=v0.3.2
+FROM quay.io/checkmake/checkmake:${MAKEFILE_CHECKMAKE_VERSION} AS checkmake
 COPY --link --from=checkmake /checkmake /usr/bin/checkmake
 ```
 
-- APK packages (Linux):
-  - [make](https://pkgs.alpinelinux.org/packages?branch=v3.23&arch=x86_64&name=make)
