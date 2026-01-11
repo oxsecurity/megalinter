@@ -103,6 +103,8 @@ class ConsoleLinterReporter(Reporter):
             msg += [
                 f"- Number of files analyzed: [{len(self.master.files_lint_results)}]"
             ]
+        # Cwd
+        msg += [f"- CWD: [{self.master.lint_cwd_log}]"]
         # Command
         if len(self.master.lint_command_log) == 1:
             end = "" if len(self.master.lint_command_log[0]) < 250 else "...(truncated)"
