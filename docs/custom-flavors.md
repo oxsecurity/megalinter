@@ -18,7 +18,7 @@ You can easily generate your own MegaLinter custom flavor using the `mega-linter
 
 - Create a new GitHub public repository whose name starts with `megalinter-custom-flavor` (example: `megalinter-custom-flavor-npm-groovy-lint`), with default README checked.
 
-![](assets/images/custom-flavor-new-repo.png)
+![GitHub form to create a repository](assets/images/custom-flavor-new-repo.png)
 
 ### Clone your new repository locally
 
@@ -35,7 +35,7 @@ npx mega-linter-runner@beta --custom-flavor-setup
 
 You can also send the list of linters as parameters, available from the logs of any official MegaLinter flavor (if you don't see it, make sure `FLAVOR_SUGGESTIONS: true` is defined in your `.mega-linter.yml` config file).
 
-![](assets/images/custom-flavor-command.png)
+![Example command to generate the custom flavor](assets/images/custom-flavor-command.png)
 
 ```bash
 npx mega-linter-runner@beta --custom-flavor-setup --custom-flavor-linters "PYTHON_BANDIT,PYTHON_BLACK,PYTHON_RUFF,REPOSITORY_TRIVY"
@@ -45,23 +45,40 @@ npx mega-linter-runner@beta --custom-flavor-setup --custom-flavor-linters "PYTHO
 
 Select your custom flavor label and the linters you want to include.
 
-![](assets/images/custom-flavor-linter-select.png)
+![Selection of linters in the custom flavor](assets/images/custom-flavor-linter-select.png)
 
 ### Generated files
 
 The generator will create all necessary configuration files, GitHub Actions workflows, and documentation in your repository.
 
 Two workflows are generated:
+
 - **megalinter-custom-flavor-builder.yml**: Builds and publishes your custom flavor Docker image
 - **check-new-megalinter-version.yml**: Automatically checks daily for new MegaLinter releases and creates matching releases in your repository
 
-![](assets/images/custom-flavor-generated-files.png)
+![Custom flavor generated files in VS Code](assets/images/custom-flavor-generated-files.png)
+
+### Optional: Generate the image for ARM
+
+> **Important:** Check the [linters you have selected](all_linters.md) in your flavor to see if they are compatible with `linux/arm64` platform.
+
+To build the image for ARM as well, edit **megalinter-custom-flavor-builder.yml** and change:
+
+```yml
+platform: "linux/amd64"
+```
+
+To:
+
+```yml
+platform: "linux/amd64,linux/arm64"
+```
 
 ### Commit and push your changes
 
 Commit and push the generated files to GitHub.
 
-![](assets/images/custom-flavor-commit-push.png)
+![Commit in VS Code](assets/images/custom-flavor-commit-push.png)
 
 ### Configure Personal Access Token (Required)
 
@@ -106,17 +123,15 @@ Your custom flavor will be built and published automatically in two ways:
    - Push to any branch (except main) to build a `beta` tagged image
    - Manually run the `megalinter-custom-flavor-builder` workflow
 
-![](assets/images/custom-flavor-release-1.png)
+![Creating a GitHub release checks](assets/images/custom-flavor-release-1.png)
 
-![](assets/images/custom-flavor-release-2.png)
-
-![](assets/images/custom-flavor-build-job.png)
+![Creating a GitHub release form](assets/images/custom-flavor-release-2.png)
 
 ## Use a Custom Flavor
 
 Follow [MegaLinter installation guide](https://megalinter.io/latest/install-assisted/), and replace related elements in the workflow.
 
-![](assets/images/custom-flavor-run.png)
+![Running a custom flavor workflow](assets/images/custom-flavor-run.png)
 
 ### GitHub Action
 
@@ -175,11 +190,3 @@ Your custom flavor automatically stays up to date with MegaLinter releases:
 3. The builder workflow will automatically create your custom flavor using that MegaLinter version
 
 **Troubleshooting**: If automatic version checking isn't working, ensure you have configured the `PAT_TOKEN` secret as described in the setup instructions above.
-
-
-
-
-
-
-
-

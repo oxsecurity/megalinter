@@ -3976,6 +3976,7 @@ def build_custom_flavor(dockerfile):
     work_dir = (
         "/megalinter-builder" if os.path.isdir("/megalinter-builder") else REPO_HOME
     )
+    platform = os.getenv("CUSTOM_FLAVOR_PLATFORM", "linux/amd64")
     tag_id = os.getenv("CUSTOM_FLAVOR_BUILD_REPO", "megalinter-custom").replace(
         "/", "_"
     )
@@ -3983,6 +3984,8 @@ def build_custom_flavor(dockerfile):
         "docker",
         "buildx",
         "build",
+        "--platform",
+        platform,
         "-t",
         tag_id,
         "-f",
@@ -3991,6 +3994,7 @@ def build_custom_flavor(dockerfile):
         "id=GITHUB_TOKEN",
         work_dir,
     ]
+    logging.info("Platforms to build on: " + platform)
     logging.info("Running command: " + " ".join(command))
     process = subprocess.run(
         command,

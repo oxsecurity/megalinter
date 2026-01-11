@@ -107,6 +107,7 @@ jobs:
         uses: oxsecurity/megalinter/flavors/custom-builder@main
         with:
           megalinter-custom-flavor-builder-tag: ${{ steps.determine-tag.outputs.tag }}
+          platform: "linux/amd64"
           is-latest: ${{ steps.determine-tag.outputs.is-latest }}
           upload-to-ghcr: "true"
           upload-to-dockerhub: ${{ secrets.DOCKERHUB_USERNAME != '' && secrets.DOCKERHUB_PASSWORD != '' && 'true' || 'false' }}
