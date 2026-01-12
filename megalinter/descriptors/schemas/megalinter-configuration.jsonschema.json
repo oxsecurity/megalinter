@@ -7,18 +7,21 @@
       "description": "Command information",
       "properties": {
         "command": {
+          "description": "Enter a bash command. Do not hardcode secret values in the command, as it is not secured",
           "examples": [
             "npm run test",
             "echo \"This is a custom command\""
           ],
           "title": "Bash command to run",
-          "type": "string"
+          "type": "string",
+          "x-order": 990000
         },
         "continue_if_failed": {
           "default": true,
-          "description": "If command fails, continue MegaLinter process or not",
+          "description": "If the command fails, continue MegaLinter process",
           "title": "Continue if failed",
-          "type": "boolean"
+          "type": "boolean",
+          "x-order": 990020
         },
         "cwd": {
           "enum": [
@@ -33,39 +36,58 @@
             "root",
             "workspace"
           ],
+          "default": "root",
+          "description": "Select if the command will be run at the root of MegaLinter execution (root) or in the workspace folder where code is checked out (workspace)",
           "title": "Folder where to run the command",
-          "type": "string"
+          "type": "string",
+          "x-order": 990010
         },
         "output_variables": {
-          "description": "ENV variables to get from output after running the commands, and store in MegaLinter ENV context",
+          "description": "ENV variables to get from output after running the commands, and store in MegaLinter ENV context, so they can be reused by other custom command and linters.",
           "items": {
             "type": "string"
           },
           "title": "Output ENV variables",
-          "type": "array"
+          "type": "array",
+          "x-order": 990070
         },
         "secured_env": {
           "default": true,
-          "description": "Apply filtering of secured env variables before calling the command (default true). Be careful if you disable it.",
+          "description": "Apply filtering of secured env variables before calling the command (default true). Be careful if you disable it, it will expose all env variables to the command, including secret ones.",
           "title": "Secured ENV variables",
-          "type": "boolean"
+          "type": "boolean",
+          "x-order": 990060
         },
         "tag": {
-          "examples": [
+          "enum": [
+            "default",
             "before_plugins"
           ],
-          "title": "Tag defining at which commands entry point the command will be run",
-          "type": "string"
+          "enumNames": [
+            "Default",
+            "Before Plugins"
+          ],
+          "default": "default",
+          "examples": [
+            "default",
+            "before_plugins"
+          ],
+          "title": "Execution order tag",
+          "description": "Select 'Before Plugins' if you need the command to be run before the MegaLinter plugins are instanciated",
+          "type": "string",
+          "x-order": 990050
         },
         "venv": {
+          "description": "(Optional) Name of the Python virtual environment to use to run the command. Example: flake8 if you want to install a flake8 plugin.",
           "examples": [
             "flake8"
           ],
-          "title": "Name of the python venv to run the command in.",
-          "type": "string"
+          "title": "Python Virtual Env",
+          "type": "string",
+          "x-order": 990015
         }
       },
-      "required": [],
+      "required": ["command"],
       "title": "Command",
       "type": "object"
     },
