@@ -8618,7 +8618,7 @@
       "title": "GitHub API base URL",
       "type": "string",
       "x-category": "GITHUB_COMMENT_REPORTER",
-      "x-order": 950999,
+      "x-order": 950930,
       "x-section": "GENERAL"
     },
     "GITHUB_COMMENT_REPORTER": {
@@ -8628,7 +8628,7 @@
       "title": "Activate GitHub PR Comments reporter",
       "type": "boolean",
       "x-category": "GITHUB_COMMENT_REPORTER",
-      "x-order": 950999,
+      "x-order": 950900,
       "x-section": "GENERAL"
     },
     "GITHUB_SERVER_URL": {
@@ -8642,7 +8642,7 @@
       "title": "GitHub server base URL",
       "type": "string",
       "x-category": "GITHUB_COMMENT_REPORTER",
-      "x-order": 950999,
+      "x-order": 950950,
       "x-section": "GENERAL"
     },
     "GITHUB_STATUS_REPORTER": {
@@ -8653,7 +8653,7 @@
       "type": "boolean",
       "x-category": "GITHUB_COMMENT_REPORTER",
       "x-order": 950999,
-      "x-section": "MISC"
+      "x-section": "GENERAL"
     },
     "GITHUB_WORKSPACE": {
       "$id": "#/properties/GITHUB_WORKSPACE",
@@ -8672,8 +8672,8 @@
       "title": "Gitlab SSL Certificate path",
       "type": "string",
       "x-category": "GITLAB_COMMENT_REPORTER",
-      "x-order": 950999,
-      "x-section": "SECURITY"
+      "x-order": 950950,
+      "x-section": "GENERAL"
     },
     "GITLAB_COMMENT_REPORTER": {
       "$id": "#/properties/GITLAB_COMMENT_REPORTER",
@@ -8682,7 +8682,7 @@
       "title": "Activate Gitlab MR Comments reporter",
       "type": "boolean",
       "x-category": "GITLAB_COMMENT_REPORTER",
-      "x-order": 950999,
+      "x-order": 950900,
       "x-section": "GENERAL"
     },
     "GITLAB_COMMENT_REPORTER_OVERWRITE_COMMENT": {
@@ -8692,8 +8692,8 @@
       "title": "Overwrite Gitlab Merge Request Comment",
       "type": "boolean",
       "x-category": "GITLAB_COMMENT_REPORTER",
-      "x-order": 950999,
-      "x-section": "MISC"
+      "x-order": 950975,
+      "x-section": "GENERAL"
     },
     "GO_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/GO_FILTER_REGEX_EXCLUDE",
@@ -14757,7 +14757,7 @@
       "type": "string",
       "x-category": "TEXT_REPORTER",
       "x-order": 950999,
-      "x-section": "OUTPUT"
+      "x-section": "GENERAL"
     },
     "LOG_LEVEL": {
       "$id": "#/properties/LOG_LEVEL",
@@ -28222,7 +28222,7 @@
       "title": "Activate SARIF reporter",
       "type": "boolean",
       "x-category": "SARIF_REPORTER",
-      "x-order": 950999,
+      "x-order": 950900,
       "x-section": "GENERAL"
     },
     "SARIF_REPORTER_FILE_NAME": {
@@ -28232,7 +28232,7 @@
       "title": "SARIF report file name",
       "type": "string",
       "x-category": "SARIF_REPORTER",
-      "x-order": 950999,
+      "x-order": 950975,
       "x-section": "GENERAL"
     },
     "SARIF_REPORTER_LINTERS": {
@@ -28250,8 +28250,8 @@
       "title": "SARIF enabled linters",
       "type": "array",
       "x-category": "SARIF_REPORTER",
-      "x-order": 950999,
-      "x-section": "ACTIVATION"
+      "x-order": 950950,
+      "x-section": "GENERAL"
     },
     "SCALA_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/SCALA_FILTER_REGEX_EXCLUDE",
@@ -32989,7 +32989,7 @@
       "title": "Activate text reporter",
       "type": "boolean",
       "x-category": "TEXT_REPORTER",
-      "x-order": 950999,
+      "x-order": 950900,
       "x-section": "GENERAL"
     },
     "TEXT_REPORTER_SUB_FOLDER": {
@@ -32999,7 +32999,7 @@
       "title": "Text reporter sub folder",
       "type": "string",
       "x-category": "TEXT_REPORTER",
-      "x-order": 950999,
+      "x-order": 950950,
       "x-section": "GENERAL"
     },
     "TSX_ESLINT_ARGUMENTS": {
