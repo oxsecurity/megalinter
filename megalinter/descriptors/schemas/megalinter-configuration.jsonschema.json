@@ -28534,25 +28534,36 @@
       "x-order": 600000,
       "x-section": "SECURITY"
     },
+    "SECURED_ENV_VARIABLES_DEFAULT": {
+      "$id": "#/properties/SECURED_ENV_VARIABLES_DEFAULT",
+      "items": {
+        "type": "string"
+      },
+      "default": [
+        "PAT",
+        "GIT_AUTHORIZATION_BEARER",
+        "GITLAB_CUSTOM_CERTIFICATE",
+        "(USERNAME)",
+        "(PASSWORD)",
+        "(TOKEN)",
+        "(SFDX_CLIENT_ID_.*)",
+        "(SFDX_CLIENT_KEY_.*)"
+      ],
+      "title": "Default secured environment variables",
+      "description": "List of default secured environment variables that will be hidden when calling linters. Can contain string or regex patterns. This should generally not be overridden, use (additional) SECURED_ENV_VARIABLES instead to add more variables to the list.",
+      "type": "array",
+      "x-category": "GENERAL",
+      "x-order": 800010,
+      "x-section": "SECURITY"
+    },
     "SECURED_ENV_VARIABLES": {
       "$id": "#/properties/SECURED_ENV_VARIABLES",
-      "default": [
-        "GITHUB_TOKEN",
-        "PAT",
-        "SYSTEM_ACCESSTOKEN",
-        "GIT_AUTHORIZATION_BEARER",
-        "CI_JOB_TOKEN",
-        "GITLAB_ACCESS_TOKEN_MEGALINTER",
-        "GITLAB_CUSTOM_CERTIFICATE",
-        "WEBHOOK_REPORTER_BEARER_TOKEN"
-      ],
-      "description": "List of secured environment variables to hide when calling linters",
+      "default": [],
+      "description": "List of additional secured environment variables to hide when calling linters. Can contain string or regex patterns.",
       "examples:": [
         [
-          "GITHUB_TOKEN",
-          "PAT",
-          "SYSTEM_ACCESSTOKEN",
           "CI_JOB_TOKEN",
+          "(AWS_)",
           "GITLAB_ACCESS_TOKEN_MEGALINTER",
           "GITLAB_CUSTOM_CERTIFICATE",
           "WEBHOOK_REPORTER_BEARER_TOKEN"
@@ -28561,7 +28572,7 @@
       "items": {
         "type": "string"
       },
-      "title": "Secured environment variables",
+      "title": "Additional secured environment variables",
       "type": "array",
       "x-category": "GENERAL",
       "x-order": 800000,
