@@ -1158,6 +1158,7 @@ def generate_descriptor_documentation(descriptor):
                     ),
                     "type": "string",
                     "title": f"Including regex filter for {descriptor.get('descriptor_id')} descriptor",
+                    "x-doc-key": "config-filtering",
                 },
             ],
             [
@@ -1170,6 +1171,7 @@ def generate_descriptor_documentation(descriptor):
                     ),
                     "type": "string",
                     "title": f"Excluding regex filter for {descriptor.get('descriptor_id')} descriptor",
+                    "x-doc-key": "config-filtering",
                 },
             ],
         ]
@@ -1571,6 +1573,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                             ),
                             "type": "string",
                             "title": f"{title_prefix}{linter.name}: Including Regex",
+                            "x-doc-key": "config-filtering",
                         },
                     ],
                     [
@@ -1584,6 +1587,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                             ),
                             "type": "string",
                             "title": f"{title_prefix}{linter.name}: Excluding Regex",
+                            "x-doc-key": "config-filtering",
                         },
                     ],
                 ]
@@ -1626,9 +1630,10 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                             "Override default CLI lint mode used to call the linter (rarely needed)"
                         ),
                         "type": "string",
-                        "title": f"{title_prefix}{linter.name}: Override default cli lint mode",
+                        "title": f"{title_prefix}{linter.name}: CLI lint mode",
                         "default": linter.cli_lint_mode,
                         "enum": enum,
+                        "x-doc-key": "config-cli-lint-mode",
                     },
                 ]
             ]
@@ -1667,7 +1672,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                             "type": "array",
                             "title": (
                                 title_prefix
-                                + f"{linter.name}: Override descriptor/linter matching files extensions"
+                                + f"{linter.name}: Matching files extensions"
                             ),
                             "default": linter.file_extensions,
                             "examples": [".py", ".myext"],
@@ -1680,13 +1685,13 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                             "$id": f"#/properties/{linter.name}_FILE_NAMES_REGEX",
                             "description": (
                                 f"{linter.name}: "
-                                "Override descriptor/linter matching file name regex that will be used "
+                                "Override descriptor/linter matching file name regexes that will be used "
                                 "to select files to lint"
                             ),
                             "type": "array",
                             "title": (
                                 title_prefix
-                                + f"{linter.name}: Override descriptor/linter matching file name regex"
+                                + f"{linter.name}: Matching file name regexes"
                             ),
                             "default": linter.file_names_regex,
                             "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
@@ -1737,11 +1742,11 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                     f"{linter.name}_PRE_COMMANDS",
                     {
                         "$id": f"#/properties/{linter.name}_PRE_COMMANDS",
-                        "description": f"{linter.name}: List of bash commands to run before the linter",
+                        "title": f"{linter.name}: Pre-run commands",
                         "type": "array",
-                        "title": (
+                        "description": (
                             title_prefix
-                            + f"{linter.name}: Define or override a list of bash commands to run before the linter"
+                            + f"{linter.name}: Define bash commands to run before running the linter"
                         ),
                         "examples": [
                             [
@@ -1759,11 +1764,11 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                     f"{linter.name}_POST_COMMANDS",
                     {
                         "$id": f"#/properties/{linter.name}_POST_COMMANDS",
-                        "description": f"{linter.name}: List of bash commands to run after the linter",
+                        "title": f"{linter.name}: Post-run commands",
                         "type": "array",
-                        "title": (
+                        "description": (
                             title_prefix
-                            + f"{linter.name}: Define or override a list of bash commands to run after the linter"
+                            + f"{linter.name}: Define bash commands to run after running the linter"
                         ),
                         "examples": [
                             [
@@ -1828,6 +1833,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                         + f"not filtered before calling {linter.name} and its pre/post commands",
                         "title": f"{title_prefix}{linter.name}: Unsecured env variables",
                         "items": {"type": "string"},
+                        "x-doc-key": "config-variables-security/#unhide-variables-for-linters",
                     },
                 ],
             ]

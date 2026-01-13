@@ -308,13 +308,22 @@ Usage:
 
 - Dockerfile commands :
 ```dockerfile
+ARG TARGETPLATFORM
 # renovate: datasource=github-tags depName=Azure/bicep
 ARG BICEP_VERSION=0.39.26
 ARG BICEP_EXE='bicep'
 ARG BICEP_DIR='/usr/local/bin'
-RUN curl --retry 5 --retry-delay 5 -sLo ${BICEP_EXE} "https://github.com/Azure/bicep/releases/download/v${BICEP_VERSION}/bicep-linux-musl-x64" \
-    && chmod +x "${BICEP_EXE}" \
-    && mv "${BICEP_EXE}" "${BICEP_DIR}"
+FROM multiarch/qemu-user-static:x86_64-aarch64 AS qemu
+COPY --from=qemu /usr/bin/qemu-aarch64-static /usr/bin/
+RUN apk add --no-cache libc6-compat
+
+RUN case ${TARGETPLATFORM} in \
+  "linux/amd64")  POWERSHELL_ARCH=musl-x64 ;; \
+  "linux/arm64")  POWERSHELL_ARCH=arm64    ;; \
+esac \
+&& curl --retry 5 --retry-delay 5 -sLo ${BICEP_EXE} "https://github.com/Azure/bicep/releases/download/v${BICEP_VERSION}/bicep-linux-${POWERSHELL_ARCH}" \
+&& chmod +x "${BICEP_EXE}" \
+&& mv "${BICEP_EXE}" "${BICEP_DIR}"
 
 ```
 
