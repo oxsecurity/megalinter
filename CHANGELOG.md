@@ -63,6 +63,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2025.12.23 to **2026.01.12** on 2026-01-13
   - [rumdl](https://github.com/rvben/rumdl) from 0.0.213 to **0.0.215** on 2026-01-13
   - [pyright](https://github.com/Microsoft/pyright) from 1.1.407 to **1.1.408** on 2026-01-13
+  - [rumdl](https://github.com/rvben/rumdl) from 0.0.215 to **0.0.216** on 2026-01-13
 <!-- linter-versions-end -->
 
 ## [v9.3.0] - 2026-01-04
