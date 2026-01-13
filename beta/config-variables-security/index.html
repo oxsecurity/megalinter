@@ -12356,25 +12356,14 @@
 </code></pre>
 <h2 id="default-secured-variables">Default secured variables</h2>
 <p>If you override <code>SECURED_ENV_VARIABLES_DEFAULT</code>, it replaces the default list, so it's better to only define <code>SECURED_ENV_VARIABLES</code> to add items to the default list.</p>
-<p>SECURED_ENV_VARIABLES_DEFAULT contains:</p>
+<p>SECURED_ENV_VARIABLES_DEFAULT contains exact names and (regular expressions) matching patterns for commonly used sensitive environment variables:</p>
 <ul>
-<li>GITHUB_TOKEN</li>
 <li>PAT</li>
-<li>SYSTEM_ACCESSTOKEN</li>
 <li>GIT_AUTHORIZATION_BEARER</li>
-<li>CI_JOB_TOKEN</li>
-<li>GITLAB_ACCESS_TOKEN_MEGALINTER</li>
 <li>GITLAB_CUSTOM_CERTIFICATE</li>
-<li>WEBHOOK_REPORTER_BEARER_TOKEN</li>
-<li>NODE_TOKEN</li>
-<li>NPM_TOKEN</li>
-<li>DOCKER_USERNAME</li>
-<li>DOCKER_PASSWORD</li>
-<li>CODECOV_TOKEN</li>
-<li>GCR_USERNAME</li>
-<li>GCR_PASSWORD</li>
-<li>SMTP_PASSWORD</li>
-<li>CI_SFDX_HARDIS_GITLAB_TOKEN</li>
+<li>(USERNAME)</li>
+<li>(PASSWORD)</li>
+<li>(TOKEN)</li>
 <li>(SFDX_CLIENT_ID_.*)</li>
 <li>(SFDX_CLIENT_KEY_.*)</li>
 </ul>
