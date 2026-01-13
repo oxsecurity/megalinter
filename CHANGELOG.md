@@ -33,7 +33,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Display in the console reporter the working directory from which the commands are executed by @bdovaz
 
 - Doc
-  - JSON Schema: add default values for file extensions and file names variables
+  - JSON Schema: add default values for file extensions and file names variables + improve descriptions
+  - Update default secured env variables documentation
 
 - Flavors
 
