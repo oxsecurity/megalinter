@@ -125,7 +125,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=yamllint
-          ARG PIP_YAMLLINT_VERSION=1.37.1
+          ARG PIP_YAMLLINT_VERSION=1.38.0
       pip:
         - yamllint==${PIP_YAMLLINT_VERSION}
     supported_platforms:

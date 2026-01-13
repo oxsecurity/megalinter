@@ -95,7 +95,7 @@ ARG REPOSITORY_TRIVY_VERSION=0.68.2
 # renovate: datasource=github-tags depName=aquasecurity/trivy
 ARG REPOSITORY_TRIVY_SBOM_VERSION=0.68.2
 # renovate: datasource=pypi depName=yamllint
-ARG PIP_YAMLLINT_VERSION=1.37.1
+ARG PIP_YAMLLINT_VERSION=1.38.0
 # renovate: datasource=pypi depName=pip
 ARG PIP_PIP_VERSION=25.3
 # renovate: datasource=pypi depName=virtualenv
