@@ -24,7 +24,7 @@ FROM multiarch/qemu-user-static:x86_64-aarch64 AS qemu
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.9.22 AS uv
+FROM ghcr.io/astral-sh/uv:0.9.24 AS uv
 FROM python:3.13-alpine3.23 AS build-ml-core
 WORKDIR /
 COPY --from=uv /uv /uvx /bin/
