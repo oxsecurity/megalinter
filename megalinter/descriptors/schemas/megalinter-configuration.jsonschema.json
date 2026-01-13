@@ -1802,6 +1802,7 @@
       "title": "Activate Azure PR Comments reporter",
       "type": "boolean",
       "x-category": "AZURE_COMMENT_REPORTER",
+      "x-doc-key": "reporters/AzureCommentReporter",
       "x-order": 950999,
       "x-section": "GENERAL"
     },
@@ -1819,6 +1820,7 @@
       "title": "Type of hyperlinks in Azure PR Comments (artifacts or build)",
       "type": "string",
       "x-category": "AZURE_COMMENT_REPORTER",
+      "x-doc-key": "reporters/AzureCommentReporter",
       "x-order": 950999,
       "x-section": "GENERAL"
     },
@@ -2793,6 +2795,7 @@
       "title": "Activate Bitbucket PR Comments reporter",
       "type": "boolean",
       "x-category": "BITBUCKET_COMMENT_REPORTER",
+      "x-doc-key": "reporters/BitbucketCommentReporter",
       "x-order": 950999,
       "x-section": "GENERAL"
     },
@@ -2803,6 +2806,7 @@
       "title": "Overwrite Bitbucket Pull Request Comment",
       "type": "boolean",
       "x-category": "BITBUCKET_COMMENT_REPORTER",
+      "x-doc-key": "reporters/BitbucketCommentReporter",
       "x-order": 950999,
       "x-section": "GENERAL"
     },
@@ -3936,6 +3940,7 @@
       "title": "Activate local configuration reporter",
       "type": "boolean",
       "x-category": "CONFIG_REPORTER",
+      "x-doc-key": "reporters/ConfigReporter",
       "x-order": 950999,
       "x-section": "GENERAL"
     },
@@ -3945,6 +3950,7 @@
       "title": "Output folder for IDE configuration files within report folder",
       "type": "string",
       "x-category": "CONFIG_REPORTER",
+      "x-doc-key": "reporters/ConfigReporter",
       "x-order": 950999,
       "x-section": "GENERAL"
     },
@@ -3955,6 +3961,7 @@
       "title": "Activate console reporter",
       "type": "boolean",
       "x-category": "CONSOLE_REPORTER",
+      "x-doc-key": "reporters/ConsoleReporter",
       "x-order": 950999,
       "x-section": "GENERAL"
     },
@@ -3965,6 +3972,7 @@
       "title": "Activate console logs sections",
       "type": "boolean",
       "x-category": "CONSOLE_REPORTER",
+      "x-doc-key": "reporters/ConsoleReporter",
       "x-order": 950999,
       "x-section": "GENERAL"
     },
@@ -7967,6 +7975,7 @@
       "title": "Activate Email reporter",
       "type": "boolean",
       "x-category": "EMAIL_REPORTER",
+      "x-doc-key": "reporters/EmailReporter",
       "x-order": 950999,
       "x-section": "GENERAL"
     },
@@ -7976,6 +7985,7 @@
       "title": "Email reporter: E-mail addresses",
       "type": "string",
       "x-category": "EMAIL_REPORTER",
+      "x-doc-key": "reporters/EmailReporter",
       "x-order": 950999,
       "x-section": "GENERAL"
     },
@@ -7985,6 +7995,7 @@
       "title": "Email reporter: Sender of emails",
       "type": "string",
       "x-category": "EMAIL_REPORTER",
+      "x-doc-key": "reporters/EmailReporter",
       "x-order": 950999,
       "x-section": "GENERAL"
     },
@@ -7995,6 +8006,7 @@
       "title": "Send email reports even when success",
       "type": "boolean",
       "x-category": "EMAIL_REPORTER",
+      "x-doc-key": "reporters/EmailReporter",
       "x-order": 950999,
       "x-section": "GENERAL"
     },
@@ -8004,6 +8016,7 @@
       "title": "Email reporter: SMTP server host",
       "type": "string",
       "x-category": "EMAIL_REPORTER",
+      "x-doc-key": "reporters/EmailReporter",
       "x-order": 950999,
       "x-section": "GENERAL"
     },
@@ -8012,6 +8025,7 @@
       "title": "Email reporter: SMTP server password. Never hardcode it in a config variable, use secrets and context variables",
       "type": "string",
       "x-category": "EMAIL_REPORTER",
+      "x-doc-key": "reporters/EmailReporter",
       "x-order": 950999,
       "x-section": "GENERAL"
     },
@@ -8021,6 +8035,7 @@
       "title": "Email reporter: SMTP server port",
       "type": "number",
       "x-category": "EMAIL_REPORTER",
+      "x-doc-key": "reporters/EmailReporter",
       "x-order": 950999,
       "x-section": "GENERAL"
     },
@@ -8030,6 +8045,7 @@
       "title": "Email reporter: SMTP username",
       "type": "string",
       "x-category": "EMAIL_REPORTER",
+      "x-doc-key": "reporters/EmailReporter",
       "x-order": 950999,
       "x-section": "GENERAL"
     },
@@ -8430,6 +8446,7 @@
       "title": "Activate File.io reporter",
       "type": "boolean",
       "x-category": "FILEIO_REPORTER",
+      "x-doc-key": "reporters/FileIoReporter",
       "x-order": 950999,
       "x-section": "GENERAL"
     },
@@ -8440,6 +8457,7 @@
       "title": "Skip file.io if success",
       "type": "boolean",
       "x-category": "FILEIO_REPORTER",
+      "x-doc-key": "reporters/FileIoReporter",
       "x-order": 950999,
       "x-section": "GENERAL"
     },
@@ -8786,6 +8804,7 @@
       "title": "GitHub API base URL",
       "type": "string",
       "x-category": "GITHUB_COMMENT_REPORTER",
+      "x-doc-key": "reporters/GitHubCommentReporter",
       "x-order": 950930,
       "x-section": "GENERAL"
     },
@@ -8796,6 +8815,7 @@
       "title": "Activate GitHub PR Comments reporter",
       "type": "boolean",
       "x-category": "GITHUB_COMMENT_REPORTER",
+      "x-doc-key": "reporters/GitHubCommentReporter",
       "x-order": 950900,
       "x-section": "GENERAL"
     },
@@ -8810,6 +8830,7 @@
       "title": "GitHub server base URL",
       "type": "string",
       "x-category": "GITHUB_COMMENT_REPORTER",
+      "x-doc-key": "reporters/GitHubCommentReporter",
       "x-order": 950950,
       "x-section": "GENERAL"
     },
@@ -8820,6 +8841,7 @@
       "title": "Activate GitHub Status reporter",
       "type": "boolean",
       "x-category": "GITHUB_COMMENT_REPORTER",
+      "x-doc-key": "reporters/GitHubStatusReporter",
       "x-order": 950999,
       "x-section": "GENERAL"
     },
@@ -8840,6 +8862,7 @@
       "title": "Gitlab SSL Certificate path",
       "type": "string",
       "x-category": "GITLAB_COMMENT_REPORTER",
+      "x-doc-key": "reporters/GitlabCommentReporter",
       "x-order": 950950,
       "x-section": "GENERAL"
     },
@@ -8850,6 +8873,7 @@
       "title": "Activate Gitlab MR Comments reporter",
       "type": "boolean",
       "x-category": "GITLAB_COMMENT_REPORTER",
+      "x-doc-key": "reporters/GitlabCommentReporter",
       "x-order": 950900,
       "x-section": "GENERAL"
     },
@@ -8860,6 +8884,7 @@
       "title": "Overwrite Gitlab Merge Request Comment",
       "type": "boolean",
       "x-category": "GITLAB_COMMENT_REPORTER",
+      "x-doc-key": "reporters/GitlabCommentReporter",
       "x-order": 950975,
       "x-section": "GENERAL"
     },
@@ -11728,6 +11753,7 @@
       "title": "Job Summary additional markdown",
       "type": "string",
       "x-category": "GENERAL",
+      "x-doc-key": "reporters/MarkdownSummaryReporter",
       "x-order": 700080,
       "x-section": "OUTPUT"
     },
@@ -12692,6 +12718,7 @@
       "title": "JSON reporter",
       "type": "boolean",
       "x-category": "JSON",
+      "x-doc-key": "reporters/JsonReporter",
       "x-order": 900999,
       "x-section": "GENERAL"
     },
@@ -12710,6 +12737,7 @@
       "title": "JSON reporter output detail",
       "type": "string",
       "x-category": "JSON",
+      "x-doc-key": "reporters/JsonReporter",
       "x-order": 900999,
       "x-section": "GENERAL"
     },
@@ -17343,6 +17371,7 @@
       "title": "Activate SUMMARY reporter",
       "type": "boolean",
       "x-category": "MARKDOWN",
+      "x-doc-key": "reporters/MarkdownSummaryReporter",
       "x-order": 900999,
       "x-section": "GENERAL"
     },
@@ -17353,6 +17382,7 @@
       "title": "SUMMARY report file name",
       "type": "string",
       "x-category": "MARKDOWN",
+      "x-doc-key": "reporters/MarkdownSummaryReporter",
       "x-order": 900999,
       "x-section": "GENERAL"
     },
@@ -22696,6 +22726,7 @@
       "title": "Reporters Markdown Summary type",
       "type": "string",
       "x-category": "GENERAL",
+      "x-doc-key": "reporters/GitHubCommentReporter",
       "x-order": 700090,
       "x-section": "OUTPUT"
     },
@@ -22714,6 +22745,7 @@
       "title": "Reporters Markdown type",
       "type": "string",
       "x-category": "GENERAL",
+      "x-doc-key": "reporters/GitHubCommentReporter",
       "x-order": 700100,
       "x-section": "OUTPUT"
     },
@@ -28708,6 +28740,7 @@
       "title": "Activate SARIF reporter",
       "type": "boolean",
       "x-category": "SARIF_REPORTER",
+      "x-doc-key": "reporters/SarifReporter",
       "x-order": 950900,
       "x-section": "GENERAL"
     },
@@ -28718,6 +28751,7 @@
       "title": "SARIF report file name",
       "type": "string",
       "x-category": "SARIF_REPORTER",
+      "x-doc-key": "reporters/SarifReporter",
       "x-order": 950975,
       "x-section": "GENERAL"
     },
@@ -28736,6 +28770,7 @@
       "title": "SARIF enabled linters",
       "type": "array",
       "x-category": "SARIF_REPORTER",
+      "x-doc-key": "reporters/SarifReporter",
       "x-order": 950950,
       "x-section": "GENERAL"
     },
@@ -32010,6 +32045,7 @@
       "title": "Activate TAP reporter",
       "type": "boolean",
       "x-category": "GENERAL",
+      "x-doc-key": "reporters/TapReporter",
       "x-order": 700999,
       "x-section": "TAP_REPORTER"
     },
@@ -32020,6 +32056,7 @@
       "title": "TAP reporter sub folder",
       "type": "string",
       "x-category": "GENERAL",
+      "x-doc-key": "reporters/TapReporter",
       "x-order": 700999,
       "x-section": "TAP_REPORTER"
     },
@@ -33547,6 +33584,7 @@
       "title": "Activate text reporter",
       "type": "boolean",
       "x-category": "TEXT_REPORTER",
+      "x-doc-key": "reporters/TextReporter",
       "x-order": 950900,
       "x-section": "GENERAL"
     },
@@ -33557,6 +33595,7 @@
       "title": "Text reporter sub folder",
       "type": "string",
       "x-category": "TEXT_REPORTER",
+      "x-doc-key": "reporters/TextReporter",
       "x-order": 950950,
       "x-section": "GENERAL"
     },
@@ -34600,6 +34639,7 @@
       "title": "Activates/Deactivates updated sources reporter",
       "type": "boolean",
       "x-category": "GENERAL",
+      "x-doc-key": "reporters/UpdatedSourcesReporter",
       "x-order": 700060,
       "x-section": "OUTPUT"
     },
@@ -34608,6 +34648,7 @@
       "title": "Sub-folder of reports folder containing updated sources",
       "type": "string",
       "x-category": "GENERAL",
+      "x-doc-key": "reporters/UpdatedSourcesReporter",
       "x-order": 700070,
       "x-section": "OUTPUT"
     },
