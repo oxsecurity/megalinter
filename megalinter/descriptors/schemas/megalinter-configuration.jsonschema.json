@@ -60,7 +60,7 @@
         },
         "tag": {
           "default": "default",
-          "description": "Select 'Before Plugins' if you need the command to be run before the MegaLinter plugins are instanciated",
+          "description": "Select 'Before Plugins' if you need the command to be run before the MegaLinter plugins are initialized (rarely needed)",
           "enum": [
             "default",
             "before_plugins"
