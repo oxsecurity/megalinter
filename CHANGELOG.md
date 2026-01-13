@@ -60,6 +60,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [snakemake](https://snakemake.github.io/) from 9.14.5 to **9.14.6** on 2026-01-09
   - [ansible-lint](https://ansible-lint.readthedocs.io/) from 25.12.2 to **26.1.0** on 2026-01-09
   - [rumdl](https://github.com/rvben/rumdl) from 0.0.212 to **0.0.213** on 2026-01-10
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2025.12.23 to **2026.01.12** on 2026-01-13
+  - [rumdl](https://github.com/rvben/rumdl) from 0.0.213 to **0.0.215** on 2026-01-13
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.407 to **1.1.408** on 2026-01-13
 <!-- linter-versions-end -->
 
 ## [v9.3.0] - 2026-01-04
