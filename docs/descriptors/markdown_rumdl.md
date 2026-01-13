@@ -23,7 +23,7 @@ description: How to use rumdl (configure, ignore files, ignore errors, help & ve
 
 ## rumdl documentation
 
-- Version in MegaLinter: **0.0.213**
+- Version in MegaLinter: **0.0.215**
 - Visit [Official Web Site](https://github.com/rvben/rumdl#readme){target=_blank}
 - See [How to configure rumdl rules](https://github.com/rvben/rumdl/blob/main/docs/global-settings.md){target=_blank}
 - See [How to disable rumdl rules in files](https://github.com/rvben/rumdl/blob/main/docs/inline-configuration.md){target=_blank}
