@@ -41,10 +41,15 @@ description: powershell, powershell_formatter are available to analyze POWERSHEL
 
 - Dockerfile commands :
 ```dockerfile
+ARG TARGETPLATFORM
 # renovate: datasource=github-tags depName=PowerShell/PowerShell
 ARG POWERSHELL_VERSION=7.5.4
 
-RUN curl -L https://github.com/PowerShell/PowerShell/releases/download/v${POWERSHELL_VERSION}/powershell-${POWERSHELL_VERSION}-linux-musl-x64.tar.gz -o /tmp/powershell.tar.gz \
+RUN case ${TARGETPLATFORM} in \
+  "linux/amd64")  POWERSHELL_ARCH=musl-x64 ;; \
+  "linux/arm64")  POWERSHELL_ARCH=arm64    ;; \
+esac \
+    && curl -L https://github.com/PowerShell/PowerShell/releases/download/v${POWERSHELL_VERSION}/powershell-${POWERSHELL_VERSION}-linux-${POWERSHELL_ARCH}.tar.gz -o /tmp/powershell.tar.gz \
     && mkdir -p /opt/microsoft/powershell/7 \
     && tar zxf /tmp/powershell.tar.gz -C /opt/microsoft/powershell/7 \
     && chmod +x /opt/microsoft/powershell/7/pwsh \

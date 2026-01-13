@@ -152,8 +152,8 @@ Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=rumdl
-ARG RUMDL_MYPY_VERSION=0.0.213
+ARG RUMDL_MYPY_VERSION=0.0.215
 ```
 
 - PIP packages (Python):
-  - [rumdl==0.0.213](https://pypi.org/project/rumdl/0.0.213)
+  - [rumdl==0.0.215](https://pypi.org/project/rumdl/0.0.215)
