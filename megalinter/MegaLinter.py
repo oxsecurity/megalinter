@@ -353,7 +353,7 @@ class Megalinter:
             process_number = int(config.get(self.request_id, "PARALLEL_PROCESS_NUMBER"))
             logging.info(
                 f"Processing linters on [{str(process_number)}] parallel cores… "
-                "(according to variable PARALLEL_PROCESS_NUMBER"
+                "(according to variable PARALLEL_PROCESS_NUMBER)"
             )
         else:
             process_number = mp.cpu_count()
@@ -368,13 +368,16 @@ class Megalinter:
             initargs=(config.get(self.request_id),),
         )
         pool_results = []
+        # Display linter groups to be processed in parallel if logging is in DEBUG mode
+        if logging.getLogger().isEnabledFor(logging.DEBUG):
+            logging.debug("[MegaLinter] Linter groups to be processed in parallel:")
+            for linter_group in linter_groups:
+                logging.debug(
+                    f"- {linter_group[0].descriptor_id}: "
+                    + str([linter2.name for linter2 in linter_group])
+                )
         # Add linter groups to pool
         for linter_group in linter_groups:
-            logging.debug(
-                linter_group[0].descriptor_id
-                + ": "
-                + str([o.linter_name for o in linter_group])
-            )
             result = pool.apply_async(run_linters, args=[linter_group, self.request_id])
             pool_results += [result]
         pool.close()
