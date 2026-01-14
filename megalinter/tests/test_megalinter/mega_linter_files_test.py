@@ -26,9 +26,7 @@ class MegaLinterFilesTest(unittest.TestCase):
 
             # Allowed directory with nested excluded child
             os.makedirs(os.path.join(tmp_dir, "keep", "nested_excluded"), exist_ok=True)
-            with open(
-                os.path.join(tmp_dir, "keep", "keep.txt"), "w", encoding="utf-8"
-            ):
+            with open(os.path.join(tmp_dir, "keep", "keep.txt"), "w", encoding="utf-8"):
                 pass
             with open(
                 os.path.join(tmp_dir, "keep", "nested_excluded", "skip_me.txt"),
@@ -43,7 +41,9 @@ class MegaLinterFilesTest(unittest.TestCase):
             ml.workspace = tmp_dir
             ml.request_id = "test"
 
-            with patch("megalinter.utils.get_excluded_directories", return_value=excluded):
+            with patch(
+                "megalinter.utils.get_excluded_directories", return_value=excluded
+            ):
                 files = ml.list_files_all()
 
             self.assertIn("root.txt", files)
