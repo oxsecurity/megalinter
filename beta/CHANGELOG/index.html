@@ -15544,7 +15544,6 @@
 <p>Note: Can be used with <code>oxsecurity/megalinter@beta</code> in your GitHub Action mega-linter.yml file, or with <code>oxsecurity/megalinter:beta</code> docker image</p>
 <ul>
 <li>Core<ul>
-<li>Add support for SSH remote origins when building custom flavors (fixes: #6511)</li>
 <li>Improve files browsing performances</li>
 <li>Optimize parallel linter processing and improve grouping logic</li>
 </ul>
@@ -15574,7 +15573,9 @@
 </ul>
 <ul>
 <li>Fixes<ul>
+<li>Add support for SSH remote origins when building custom flavors (fixes: #6511)</li>
 <li>Fix issue with plugins ignored when FLAVOR_SUGGESTIONS=false</li>
+<li>Fix wrong tagging <code>apply_fixes=True</code> when linter has no fix options configured</li>
 </ul>
 </li>
 </ul>
