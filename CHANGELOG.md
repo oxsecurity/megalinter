@@ -9,7 +9,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
 - Core
-  - Add support for SSH remote origins when building custom flavors (fixes: #6511)
   - Improve files browsing performances
   - Optimize parallel linter processing and improve grouping logic
 
@@ -28,7 +27,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Add sarif support to spectral by @bdovaz
 
 - Fixes
+  - Add support for SSH remote origins when building custom flavors (fixes: #6511)
   - Fix issue with plugins ignored when FLAVOR_SUGGESTIONS=false
+  - Fix wrong tagging `apply_fixes=True` when linter has no fix options configured
 
 - Reporters
   - Add a link inviting to star MegaLinter
