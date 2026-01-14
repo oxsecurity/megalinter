@@ -353,7 +353,7 @@ class Megalinter:
             process_number = int(config.get(self.request_id, "PARALLEL_PROCESS_NUMBER"))
             logging.info(
                 f"Processing linters on [{str(process_number)}] parallel cores… "
-                "(according to variable PARALLEL_PROCESS_NUMBER"
+                "(according to variable PARALLEL_PROCESS_NUMBER)"
             )
         else:
             process_number = mp.cpu_count()
