@@ -847,7 +847,16 @@ class Megalinter:
             logging.debug("Root dir content:" + utils.format_bullet_list(all_files))
         excluded_directories = utils.get_excluded_directories(self.request_id)
         for dirpath, dirnames, filenames in os.walk(self.workspace, topdown=True):
-            dirnames[:] = [d for d in dirnames if d not in excluded_directories]
+            rel_dirpath = os.path.relpath(dirpath, self.workspace)
+            if rel_dirpath in excluded_directories:
+                continue
+            dirnames[:] = [
+                d
+                for d in dirnames
+                if d not in excluded_directories
+                and os.path.join(rel_dirpath, d).replace(".\\", "").replace("./", "")
+                not in excluded_directories
+            ]
             all_files += [
                 os.path.relpath(os.path.join(dirpath, file), self.workspace)
                 for file in sorted(filenames)
