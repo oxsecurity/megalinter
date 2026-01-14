@@ -843,7 +843,9 @@ class Megalinter:
         if logging.getLogger().isEnabledFor(logging.DEBUG):
             logging.debug("Root dir content:" + utils.format_bullet_list(all_files))
         excluded_directories = utils.get_excluded_directories(self.request_id)
-        for dirpath, dirnames, filenames in os.walk(self.workspace, topdown=True, followlinks=False):
+        for dirpath, dirnames, filenames in os.walk(
+            self.workspace, topdown=True, followlinks=False
+        ):
             rel_dirpath = os.path.relpath(dirpath, self.workspace)
             if rel_dirpath in excluded_directories:
                 continue
