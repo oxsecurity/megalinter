@@ -176,6 +176,8 @@ CVE-2025-66506
 CVE-2025-66564
 # https://avd.aquasec.com/nvd/cve-2025-68156 : github.com/expr-lang/expr: Expr: Denial of Service via uncontrolled recursion in expression evaluation, not applicable in MegaLinter context
 CVE-2025-68156
+# https://avd.aquasec.com/nvd/cve-2026-22701 : filelock Time-of-Check-Time-of-Use (TOCTOU) race condition leading to privilege escalation, not applicable in MegaLinter context
+CVE-2026-22701
 # Dockerfile
 DS001
 DS002

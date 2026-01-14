@@ -6,6 +6,7 @@ import re
 import subprocess
 import time
 
+import requests
 from megalinter import config, utils
 from megalinter.constants import (
     DEFAULT_RELEASE,
@@ -464,6 +465,46 @@ def manage_redis_stream(result, redis_stream):
             elif isinstance(result_val, bool):
                 result[result_key] = int(result_val)
     return result
+
+
+def build_webhook_headers(request_id: str) -> dict:
+    headers = {
+        "accept": "application/json",
+        "content-type": "application/json",
+    }
+    if config.exists(request_id, "WEBHOOK_REPORTER_BEARER_TOKEN"):
+        headers["authorization"] = (
+            f"Bearer {config.get(request_id, 'WEBHOOK_REPORTER_BEARER_TOKEN')}"
+        )
+    return headers
+
+
+def post_webhook_message(hook_url: str, payload: object, reporter, success_label: str):
+    context = ""
+    if reporter.scope == "linter":
+        context = (
+            f" for {reporter.master.descriptor_id}"
+            f" with {reporter.master.linter_name}"
+        )
+    try:
+        response = requests.post(
+            hook_url,
+            headers=build_webhook_headers(reporter.master.request_id),
+            json=payload,
+        )
+        if 200 <= response.status_code < 299:
+            logging.debug(
+                f"[WebHook Reporter] Successfully posted {success_label}{context}"
+            )
+        else:
+            logging.warning(
+                f"[WebHook Reporter] Error posting {success_label}{context}: {response.status_code}\n"
+                f"API response: {response.text}"
+            )
+    except requests.exceptions.RequestException as e:
+        logging.warning(
+            f"[WebHook Reporter] Error posting {success_label}{context}: {str(e)}"
+        )
 
 
 def send_redis_message(reporter_self, message_data):
