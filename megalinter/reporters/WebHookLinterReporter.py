@@ -46,4 +46,6 @@ class WebHookLinterReporter(Reporter):
     # Send message when linter is completed
     def produce_report(self):
         self.web_hook_data = build_linter_reporter_external_result(self)
-        post_webhook_message(self.hook_url, self.web_hook_data, self, "linter complete event")
+        post_webhook_message(
+            self.hook_url, self.web_hook_data, self, "linter complete event"
+        )

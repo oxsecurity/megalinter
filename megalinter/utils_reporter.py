@@ -7,7 +7,6 @@ import subprocess
 import time
 
 import requests
-
 from megalinter import config, utils
 from megalinter.constants import (
     DEFAULT_RELEASE,

@@ -41,9 +41,13 @@ class WebHookReporter(Reporter):
     # Send message when MegaLinter is about to start
     def initialize(self):
         start_message = build_reporter_start_message(self)
-        post_webhook_message(self.hook_url, start_message, self, "MegaLinter start event")
+        post_webhook_message(
+            self.hook_url, start_message, self, "MegaLinter start event"
+        )
 
     # Send message when MegaLinter is completed
     def produce_report(self):
         self.web_hook_data = build_reporter_external_result(self)
-        post_webhook_message(self.hook_url, self.web_hook_data, self, "MegaLinter complete event")
+        post_webhook_message(
+            self.hook_url, self.web_hook_data, self, "MegaLinter complete event"
+        )
