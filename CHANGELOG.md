@@ -41,6 +41,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Flavors
 
 - CI
+  - Free more space on GitHub Actions runners to avoid build failures
 
 - mega-linter-runner
 
