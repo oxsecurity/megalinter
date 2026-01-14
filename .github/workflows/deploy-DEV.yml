@@ -53,6 +53,7 @@ jobs:
         uses: actions/checkout@v6
         with:
           fetch-depth: 0
+
       - name: Free Disk space
         shell: bash
         run: |
@@ -60,6 +61,8 @@ jobs:
           sudo rm -rf /usr/share/dotnet # will release about 20GB if you don't need .NET
           sudo rm -rf /opt/ghc
           sudo rm -rf "$AGENT_TOOLSDIRECTORY"
+          sudo rm -rf /opt/hostedtoolcache/CodeQL # large cache
+          sudo rm -rf /opt/hostedtoolcache/go # Go toolcache
 
       - name: Docker Metadata action
         uses: docker/metadata-action@v5.10.0

@@ -57,6 +57,8 @@ jobs:
           sudo rm -rf /usr/share/dotnet # will release about 20GB if you don't need .NET
           sudo rm -rf /opt/ghc
           sudo rm -rf "$AGENT_TOOLSDIRECTORY"
+          sudo rm -rf /opt/hostedtoolcache/CodeQL # large cache
+          sudo rm -rf /opt/hostedtoolcache/go # Go toolcache
 
       #######################
       # Docker Buildx setup #

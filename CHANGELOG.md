@@ -10,6 +10,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Core
   - Add support for SSH remote origins when building custom flavors (fixes: #6511)
+  - Improve files browsing performances
 
 - New linters
 
@@ -40,6 +41,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Flavors
 
 - CI
+  - Free more space on GitHub Actions runners to avoid build failures
 
 - mega-linter-runner
 

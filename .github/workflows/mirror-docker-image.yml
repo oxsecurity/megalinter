@@ -29,6 +29,8 @@ jobs:
         run: |
           sudo rm -rf /usr/local/lib/android  # will release about 10 GB if you don't need Android
           sudo rm -rf /usr/share/dotnet # will release about 20GB if you don't need .NET
+          sudo rm -rf /opt/hostedtoolcache/CodeQL # large cache
+          sudo rm -rf /opt/hostedtoolcache/go # Go toolcache
       # Login to docker hub
       - name: Login to Docker Hub
         uses: docker/login-action@v3
@@ -56,6 +58,8 @@ jobs:
         run: |
           sudo rm -rf /usr/local/lib/android  # will release about 10 GB if you don't need Android
           sudo rm -rf /usr/share/dotnet # will release about 20GB if you don't need .NET
+          sudo rm -rf /opt/hostedtoolcache/CodeQL # large cache
+          sudo rm -rf /opt/hostedtoolcache/go # Go toolcache
       # Login to docker hub
       - name: Login to Docker Hub
         uses: docker/login-action@v3
@@ -84,6 +88,8 @@ jobs:
         run: |
           sudo rm -rf /usr/local/lib/android  # will release about 10 GB if you don't need Android
           sudo rm -rf /usr/share/dotnet # will release about 20GB if you don't need .NET
+          sudo rm -rf /opt/hostedtoolcache/CodeQL # large cache
+          sudo rm -rf /opt/hostedtoolcache/go # Go toolcache
       # Login to docker hub
       - name: Login to Docker Hub
         uses: docker/login-action@v3
