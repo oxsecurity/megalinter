@@ -903,6 +903,7 @@
         "flycheck",
         "flymake",
         "fnmatch",
+        "followlinks",
         "fontawesome",
         "footnotemark",
         "footnotesize",

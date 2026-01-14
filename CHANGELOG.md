@@ -11,6 +11,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Core
   - Add support for SSH remote origins when building custom flavors (fixes: #6511)
   - Improve files browsing performances
+  - Optimize parallel linter processing and improve grouping logic
 
 - New linters
 

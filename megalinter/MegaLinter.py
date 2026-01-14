@@ -321,28 +321,25 @@ class Megalinter:
     def process_linters_parallel(self, active_linters, linters_do_fixes):
         linter_groups = []
         if linters_do_fixes is True:
-            # Group linters by descriptor, to avoid different linters to update files at the same time
+            # Group linters by descriptor, but only keep them together when at least one can apply fixes
             linters_by_descriptor = {}
-            linter_groups_without_fixes = []
             for linter in active_linters:
-                if linter.apply_fixes is True:
-                    # If the linter can update sources, it must be run in the same group than
-                    # other linters that can update the same sources
-                    descriptor_active_linters = linters_by_descriptor.get(
-                        linter.descriptor_id, []
-                    )
-                    descriptor_active_linters += [linter]
-                    linters_by_descriptor[linter.descriptor_id] = (
-                        descriptor_active_linters
-                    )
-                else:
-                    # If the linter can not updates sources, no need to run it in the same group
-                    linter_groups_without_fixes += [[linter]]
-            # Add groups of linters that can update sources
+                descriptor_active_linters = linters_by_descriptor.get(
+                    linter.descriptor_id, []
+                )
+                descriptor_active_linters += [linter]
+                linters_by_descriptor[linter.descriptor_id] = descriptor_active_linters
+
+            linter_groups_without_fixes = []
             for _descriptor_id, linters in linters_by_descriptor.items():
-                linter_groups += [linters]
+                has_fixers = any(linter1.apply_fixes is True for linter1 in linters)
+                if has_fixers:
+                    linter_groups += [linters]
+                else:
+                    for linter in linters:
+                        linter_groups_without_fixes += [[linter]]
+
             linter_groups = linter_factory.sort_linters_groups_by_speed(linter_groups)
-            # Add "groups" of 1 linter than can not update sources
             linter_groups += linter_factory.sort_linters_groups_by_speed(
                 linter_groups_without_fixes
             )
@@ -846,7 +843,7 @@ class Megalinter:
         if logging.getLogger().isEnabledFor(logging.DEBUG):
             logging.debug("Root dir content:" + utils.format_bullet_list(all_files))
         excluded_directories = utils.get_excluded_directories(self.request_id)
-        for dirpath, dirnames, filenames in os.walk(self.workspace, topdown=True):
+        for dirpath, dirnames, filenames in os.walk(self.workspace, topdown=True, followlinks=False):
             rel_dirpath = os.path.relpath(dirpath, self.workspace)
             if rel_dirpath in excluded_directories:
                 continue
