@@ -46,6 +46,8 @@ REPOSITORY_TRIVY_ARGUMENTS:
   - ".automation/test"
   - "--skip-dirs"
   - ".venv"
+  - "--skip-dirs"
+  - "github_conf"
 REPOSITORY_TRUFFLEHOG_ARGUMENTS:
   - --exclude-paths=.trufflehogignore
 REPOSITORY_KINGFISHER_ARGUMENTS:

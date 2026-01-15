@@ -21,3 +21,10 @@ GITHUB_STATUS_REPORTER: false
 SHOW_ELAPSED_TIME: true
 FILEIO_REPORTER: true
 PRINT_ALL_FILES: false
+REPOSITORY_TRIVY_ARGUMENTS:
+  - "--skip-dirs"
+  - ".automation/test"
+  - "--skip-dirs"
+  - ".venv"
+  - "--skip-dirs"
+  - "github_conf"
