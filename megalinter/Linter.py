@@ -494,9 +494,19 @@ class Linter:
         else:
             self.apply_fixes = False
 
-        if self.apply_fixes:
+        # Check that the linter is configured to be able to apply fixes
+        if self.apply_fixes is True and (
+            self.cli_lint_fix_arg_name is not None
+            or len(self.cli_lint_fix_remove_args) > 0
+            or str(self.cli_executable_fix) != str(self.cli_executable)
+        ):
             logging.debug(
                 f"[Apply Fixes] is enabled for + {self.name} ({self.descriptor_id})"
+            )
+        elif self.apply_fixes is True:
+            self.apply_fixes = False
+            logging.debug(
+                f"[Apply Fixes] cannot be enabled for {self.name} (descriptor has no fix options configured)"
             )
         else:
             logging.debug(

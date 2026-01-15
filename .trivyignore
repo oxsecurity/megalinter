@@ -178,6 +178,8 @@ CVE-2025-66564
 CVE-2025-68156
 # https://avd.aquasec.com/nvd/cve-2026-22701 : filelock Time-of-Check-Time-of-Use (TOCTOU) race condition leading to privilege escalation, not applicable in MegaLinter context
 CVE-2026-22701
+# https://github.com/advisories/GHSA-58pv-8j8x-9vj2 : jaraco.context Has a Path Traversal Vulnerability. jaraco & setuptools are not used in MegaLinter context
+GHSA-58pv-8j8x-9vj2
 # Dockerfile
 DS001
 DS002
