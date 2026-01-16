@@ -70,6 +70,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [rumdl](https://github.com/rvben/rumdl) from 0.0.213 to **0.0.215** on 2026-01-13
   - [pyright](https://github.com/Microsoft/pyright) from 1.1.407 to **1.1.408** on 2026-01-13
   - [rumdl](https://github.com/rvben/rumdl) from 0.0.215 to **0.0.216** on 2026-01-13
+  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 9.0.112 to **9.0.113** on 2026-01-15
+  - [syft](https://github.com/anchore/syft) from 1.40.0 to **1.40.1** on 2026-01-15
 <!-- linter-versions-end -->
 
 ## [v9.3.0] - 2026-01-04
