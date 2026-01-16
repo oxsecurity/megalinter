@@ -11,6 +11,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Core
   - Improve files browsing performances
   - Optimize parallel linter processing and improve grouping logic
+  - Improve performance of listing .gitignored files by sending excluded directories to git ls-files 
 
 - New linters
 
