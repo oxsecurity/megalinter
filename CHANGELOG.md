@@ -11,6 +11,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Core
   - Improve files browsing performances
   - Optimize parallel linter processing and improve grouping logic
+  - Improve performance of listing .gitignored files by sending excluded directories to git ls-files 
 
 - New linters
 
@@ -46,6 +47,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Free more space on GitHub Actions runners to avoid build failures
 
 - mega-linter-runner
+  - If variables are defined in a local .env file, send their values to docker/podman run command (can be useful for secret variables)
+  - Never send .env file to the docker run for security reasons, instead create an empty one if needed
 
 - Linter versions upgrades (N)
   - [code-analyzer-apex](https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html) from 5.7.1 to **5.8.0** on 2026-01-05

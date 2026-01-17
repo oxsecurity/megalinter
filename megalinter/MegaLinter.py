@@ -868,6 +868,12 @@ class Megalinter:
     def list_git_ignored_files(self):
         dirpath = os.path.realpath(self.github_workspace)
         repo = git.Repo(dirpath)
+        excluded_dirs = utils.get_excluded_directories(self.request_id)
+        normalized_excluded_dirs = set(
+            os.path.normpath(excluded_dir).replace("\\", "/").lstrip("./")
+            for excluded_dir in excluded_dirs
+        )
+        pathspec_excludes = [f":(exclude){excluded_dir}/**" for excluded_dir in normalized_excluded_dirs if excluded_dir]
         ignored_files = repo.git.execute(
             [
                 "git",
@@ -876,6 +882,7 @@ class Megalinter:
                 "--ignored",
                 "--others",
                 "--cached",
+                *pathspec_excludes,
             ]
         ).splitlines()
         ignored_files = map(lambda x: x + "**" if x.endswith("/") else x, ignored_files)

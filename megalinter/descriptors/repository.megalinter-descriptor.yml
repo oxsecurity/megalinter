@@ -770,6 +770,18 @@ linters:
       - **Extensive Integration**: Works with major CI/CD platforms, container registries, and security orchestration tools
 
       **Note**: You can ignore specific findings by defining a [.trivyignore file](https://aquasecurity.github.io/trivy/latest/docs/configuration/filtering/#by-finding-ids) at your repository root.
+
+      **Tip**: if you see errors related to files that do not exist, you can bypass them using "--skip-dirs"
+
+      Example:
+
+      ```yaml
+      REPOSITORY_TRIVY_ARGUMENTS:
+      - "--skip-dirs"
+      - ".venv"
+      - "--skip-dirs"
+      - "github_conf"
+      ```
     linter_url: https://aquasecurity.github.io/trivy/
     linter_repo: https://github.com/aquasecurity/trivy
     linter_speed: 2
