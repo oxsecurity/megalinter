@@ -869,10 +869,12 @@ class Megalinter:
         dirpath = os.path.realpath(self.github_workspace)
         repo = git.Repo(dirpath)
         excluded_dirs = utils.get_excluded_directories(self.request_id)
-        normalized_excluded_dirs = set(
-            os.path.normpath(excluded_dir).replace("\\", "/").lstrip("./")
-            for excluded_dir in excluded_dirs
-        )
+        normalized_excluded_dirs = set()
+        for excluded_dir in excluded_dirs:
+            normalized = os.path.normpath(excluded_dir).replace("\\", "/")
+            if normalized.startswith("./"):
+                normalized = normalized[2:]
+            normalized_excluded_dirs.add(normalized)
         pathspec_excludes = [f":(exclude){excluded_dir}/**" for excluded_dir in normalized_excluded_dirs if excluded_dir]
         ignored_files = repo.git.execute(
             [
