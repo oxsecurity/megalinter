@@ -889,7 +889,8 @@ class Megalinter:
         ).splitlines()
         ignored_files = map(lambda x: x + "**" if x.endswith("/") else x, ignored_files)
         ignored_files = sorted(list(ignored_files))
-        # If there are more than 500 ignored files, advise to add more excluded directories using variable ADDITIONAL_EXCLUDED_DIRECTORIES, to improve performances
+        # If there are more than 500 ignored files, advise to add more excluded
+        # directories using variable ADDITIONAL_EXCLUDED_DIRECTORIES, to improve performances
         if len(ignored_files) > 300:
             logging.warning(
                 f"⚠️ More than 300 .gitignored files have been detected ({len(ignored_files)}). "
