@@ -1125,6 +1125,18 @@ Examples:
 
 Warning: Not applicable with linters using CLI lint mode `project` ([see details](https://github.com/oxsecurity/megalinter/tree/main/docs/config-cli-lint-mode.md)).
 
+You can also use variable **ADDITIONAL_EXCLUDED_DIRECTORIES** to add more excluded directories
+
+Example:
+
+```yaml
+ADDITIONAL_EXCLUDED_DIRECTORIES:
+  - .wireit
+  - dist
+  - build
+  - vendor
+```
+
 <!-- config-filtering-section-end -->
 <!-- config-apply-fixes-section-start -->
 <!-- markdown-headers
