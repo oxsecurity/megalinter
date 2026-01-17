@@ -875,7 +875,11 @@ class Megalinter:
             if normalized.startswith("./"):
                 normalized = normalized[2:]
             normalized_excluded_dirs.add(normalized)
-        pathspec_excludes = [f":(exclude){excluded_dir}/**" for excluded_dir in normalized_excluded_dirs if excluded_dir]
+        pathspec_excludes = [
+            f":(exclude){excluded_dir}/**"
+            for excluded_dir in normalized_excluded_dirs
+            if excluded_dir
+        ]
         ignored_files = repo.git.execute(
             [
                 "git",
