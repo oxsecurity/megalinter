@@ -15546,6 +15546,7 @@
 <li>Core<ul>
 <li>Improve files browsing performances</li>
 <li>Optimize parallel linter processing and improve grouping logic</li>
+<li>Improve performance of listing .gitignored files by sending excluded directories to git ls-files </li>
 </ul>
 </li>
 </ul>
@@ -15604,7 +15605,11 @@
 </li>
 </ul>
 <ul>
-<li>mega-linter-runner</li>
+<li>mega-linter-runner<ul>
+<li>If variables are defined in a local .env file, send their values to docker/podman run command (can be useful for secret variables)</li>
+<li>Never send .env file to the docker run for security reasons, instead create an empty one if needed</li>
+</ul>
+</li>
 </ul>
 <ul>
 <li>Linter versions upgrades (N)<ul>
