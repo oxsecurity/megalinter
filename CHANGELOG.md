@@ -11,7 +11,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Core
   - Improve files browsing performances
   - Optimize parallel linter processing and improve grouping logic
-  - Improve performance of listing .gitignored files by sending excluded directories to git ls-files 
+  - Improve performance of listing .gitignored files by sending excluded directories to git ls-files
+  - If there are more than 500 .gitignored files, advise to add more excluded directories using variable ADDITIONAL_EXCLUDED_DIRECTORIES, to improve performances
 
 - New linters
 
