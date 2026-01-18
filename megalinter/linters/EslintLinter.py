@@ -92,7 +92,9 @@ class EslintLinter(Linter):
 
         # q2: Is the environment variable 'ESLINT_USE_FLAT_CONFIG' set?
         if "ESLINT_USE_FLAT_CONFIG" in os.environ:
-            return self._parse_bool(os.environ.get("ESLINT_USE_FLAT_CONFIG"), default=False)
+            return self._parse_bool(
+                os.environ.get("ESLINT_USE_FLAT_CONFIG"), default=False
+            )
 
         eslint_major = self._eslint_major_version()
 
@@ -123,7 +125,9 @@ class EslintLinter(Linter):
             return cmd
 
         # Case 1: arg is like "--config=" or "--config:"
-        if self.cli_config_arg_name.endswith("=") or self.cli_config_arg_name.endswith(":"):
+        if self.cli_config_arg_name.endswith("=") or self.cli_config_arg_name.endswith(
+            ":"
+        ):
             needle = f"{self.cli_config_arg_name}{self.final_config_file}"
             cmd = [a for a in cmd if a != needle]
             return cmd
@@ -167,4 +171,3 @@ class EslintLinter(Linter):
             cmd.append(".")
 
         return cmd
-
