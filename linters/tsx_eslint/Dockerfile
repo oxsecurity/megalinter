@@ -51,7 +51,7 @@ FROM python:3.13-alpine3.23
 # renovate: datasource=npm depName=typescript
 ARG NPM_TYPESCRIPT_VERSION=5.9.3
 # renovate: datasource=npm depName=eslint
-ARG NPM_ESLINT_VERSION=8.57.1
+ARG NPM_ESLINT_VERSION=9.39.2
 # renovate: datasource=npm depName=eslint-config-airbnb
 ARG NPM_ESLINT_CONFIG_AIRBNB_VERSION=19.0.4
 # renovate: datasource=npm depName=eslint-config-prettier

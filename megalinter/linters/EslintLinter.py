@@ -143,15 +143,36 @@ class EslintLinter(Linter):
             i += 1
         return cmd
 
+    def _append_config_arg(self, cmd, config_path):
+        if not isinstance(cmd, list) or not cmd:
+            return cmd
+        if not config_path:
+            return cmd
+
+        if self.cli_config_arg_name.endswith("=") or self.cli_config_arg_name.endswith(":"):
+            cmd.append(f"{self.cli_config_arg_name}{config_path}")
+        elif self.cli_config_arg_name != "":
+            cmd += [self.cli_config_arg_name, config_path]
+        return cmd
+
     def build_lint_command(self, file=None):
         cmd = super().build_lint_command(file)
 
         # Handle flat config vs eslintrc
         if self.is_flat_config():
-            # If flat config is selected but we're not explicitly pointing ESLint at a flat config file,
-            # avoid forcing a legacy config file (usually coming from MegaLinter default rules).
+            # If we were pointing to an eslintrc config, remove it.
+            # ESLint 9+ expects flat config files.
             if not self._config_file_name_is_flat():
                 cmd = self._strip_megalinter_config_arg_if_any(cmd)
+
+                # If the repository already provides an eslint.config.* file, let ESLint discover it.
+                # Otherwise, provide MegaLinter's bundled fallback flat config.
+                if not self._workspace_has_any_file(self.FLAT_CONFIG_FILES):
+                    fallback_flat = os.path.join(
+                        self.default_rules_location, self.FLAT_CONFIG_FILES[0]
+                    )
+                    if os.path.isfile(fallback_flat):
+                        cmd = self._append_config_arg(cmd, fallback_flat)
 
             # Remove flags that are incompatible with flat config
             cmd = list(filter(lambda a: a not in ["--no-eslintrc", "--no-ignore"], cmd))

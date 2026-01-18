@@ -149,7 +149,7 @@ ARG JAVA_CHECKSTYLE_VERSION=12.1.0
 ARG PMD_VERSION=7.20.0
 
 # renovate: datasource=npm depName=eslint
-ARG NPM_ESLINT_VERSION=8.57.1
+ARG NPM_ESLINT_VERSION=9.39.2
 # renovate: datasource=npm depName=eslint-config-airbnb
 ARG NPM_ESLINT_CONFIG_AIRBNB_VERSION=19.0.4
 # renovate: datasource=npm depName=eslint-config-prettier

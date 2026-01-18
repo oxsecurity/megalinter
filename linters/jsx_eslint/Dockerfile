@@ -49,7 +49,7 @@ FROM python:3.13-alpine3.23
 #############################################################################################
 #ARG__START
 # renovate: datasource=npm depName=eslint
-ARG NPM_ESLINT_VERSION=8.57.1
+ARG NPM_ESLINT_VERSION=9.39.2
 # renovate: datasource=npm depName=eslint-plugin-react
 ARG NPM_ESLINT_PLUGIN_REACT_VERSION=7.37.5
 # renovate: datasource=npm depName=eslint-plugin-jsx-a11y
