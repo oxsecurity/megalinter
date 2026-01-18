@@ -149,7 +149,9 @@ class EslintLinter(Linter):
         if not config_path:
             return cmd
 
-        if self.cli_config_arg_name.endswith("=") or self.cli_config_arg_name.endswith(":"):
+        if self.cli_config_arg_name.endswith("=") or self.cli_config_arg_name.endswith(
+            ":"
+        ):
             cmd.append(f"{self.cli_config_arg_name}{config_path}")
         elif self.cli_config_arg_name != "":
             cmd += [self.cli_config_arg_name, config_path]
