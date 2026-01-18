@@ -11,10 +11,11 @@ from megalinter import linter_factory, utilstest
 class LinterTestRoot:
     descriptor_id: Optional[str] = None
     linter_name: Optional[str] = None
+    test_folder: Optional[str] = None
     request_id: str | None = None
 
     def get_linter_instance(self, request_id):
-        return linter_factory.build_linter(
+        linter = linter_factory.build_linter(
             self.descriptor_id,
             self.linter_name,
             {
@@ -29,6 +30,9 @@ class LinterTestRoot:
                 "request_id": request_id,
             },
         )
+        if self.test_folder is not None:
+            linter.test_folder = self.test_folder
+        return linter
 
     def test_success(self):
         self.request_id = str(uuid.uuid1())
