@@ -101,7 +101,7 @@ linters:
           ARG NPM_ESLINT_PLUGIN_PROMISE_VERSION=6.6.0
         - |-
           # renovate: datasource=npm depName=@babel/eslint-parser
-          ARG NPM_BABEL_ESLINT_PARSER_VERSION=7.28.5
+          ARG NPM_BABEL_ESLINT_PARSER_VERSION=7.28.6
         - |-
           # renovate: datasource=npm depName=prettier
           ARG NPM_PRETTIER_VERSION=3.7.4
