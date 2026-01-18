@@ -49,7 +49,7 @@ FROM python:3.13-alpine3.23
 #############################################################################################
 #ARG__START
 # renovate: datasource=npm depName=jscpd
-ARG NPM_JSCPD_VERSION=4.0.5
+ARG NPM_JSCPD_VERSION=4.0.7
 #ARG__END
 
 ####################
