@@ -150,8 +150,6 @@ ARG PMD_VERSION=7.20.0
 
 # renovate: datasource=npm depName=eslint
 ARG NPM_ESLINT_VERSION=9.39.2
-# renovate: datasource=npm depName=eslint-config-airbnb
-ARG NPM_ESLINT_CONFIG_AIRBNB_VERSION=19.0.4
 # renovate: datasource=npm depName=eslint-config-prettier
 ARG NPM_ESLINT_CONFIG_PRETTIER_VERSION=10.1.8
 # renovate: datasource=npm depName=eslint-config-standard
@@ -463,7 +461,6 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 npm-groovy-lint@${NPM_GROOVY_LINT_VERSION} \
                 htmlhint@${NPM_HTMLHINT_VERSION} \
                 eslint@${NPM_ESLINT_VERSION} \
-                eslint-config-airbnb@${NPM_ESLINT_CONFIG_AIRBNB_VERSION} \
                 eslint-config-prettier@${NPM_ESLINT_CONFIG_PRETTIER_VERSION} \
                 eslint-config-standard@${NPM_ESLINT_CONFIG_STANDARD_VERSION} \
                 eslint-plugin-import@${NPM_ESLINT_PLUGIN_IMPORT_VERSION} \
