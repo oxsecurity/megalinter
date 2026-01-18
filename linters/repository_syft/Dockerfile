@@ -49,7 +49,7 @@ FROM python:3.13-alpine3.23
 #############################################################################################
 #ARG__START
 # renovate: datasource=github-tags depName=anchore/syft
-ARG REPOSITORY_SYFT_VERSION=1.40.0
+ARG REPOSITORY_SYFT_VERSION=1.40.1
 #ARG__END
 
 ####################
