@@ -76,7 +76,8 @@ linters:
     supported_platforms:
       platform:
         - linux/amd64
-        - linux/arm64
+        # https://github.com/PowerShell/PowerShell/issues/25762
+        #- linux/arm64
     ide:
       vscode:
         - name: VSCode PowerShell extension
@@ -124,7 +125,8 @@ linters:
     supported_platforms:
       platform:
         - linux/amd64
-        - linux/arm64
+        # https://github.com/PowerShell/PowerShell/issues/25762
+        #- linux/arm64
     ide:
       vscode:
         - name: VSCode PowerShell extension

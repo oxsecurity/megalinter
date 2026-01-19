@@ -532,10 +532,10 @@ RUN curl --retry 5 --retry-delay 5 -sLO "https://github.com/Azure/arm-ttk/releas
 #
 # bicep_linter installation
     && case ${TARGETPLATFORM} in \
-  "linux/amd64")  POWERSHELL_ARCH=musl-x64 ;; \
-  "linux/arm64")  POWERSHELL_ARCH=arm64    ;; \
+  "linux/amd64")  BICEP_ARCH=musl-x64 ;; \
+  "linux/arm64")  BICEP_ARCH=arm64    ;; \
 esac \
-&& curl --retry 5 --retry-delay 5 -sLo ${BICEP_EXE} "https://github.com/Azure/bicep/releases/download/v${BICEP_VERSION}/bicep-linux-${POWERSHELL_ARCH}" \
+&& curl --retry 5 --retry-delay 5 -sLo ${BICEP_EXE} "https://github.com/Azure/bicep/releases/download/v${BICEP_VERSION}/bicep-linux-${BICEP_ARCH}" \
 && chmod +x "${BICEP_EXE}" \
 && mv "${BICEP_EXE}" "${BICEP_DIR}" \
 #

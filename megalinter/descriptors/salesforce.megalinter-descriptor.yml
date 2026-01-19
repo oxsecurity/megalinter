@@ -113,6 +113,11 @@ linters:
           RUN sf plugins install code-analyzer@${SALESFORCE_CODE_ANALYZER_VERSION} \
               && (npm cache clean --force || true) \
               && rm -rf /root/.npm/_cacache
+    supported_platforms:
+      platform:
+        - linux/amd64
+        # Errors when building the image
+        #- linux/arm64
     ide:
       eclipse:
         - name: pmd-eclipse-plugin
@@ -201,6 +206,11 @@ linters:
           RUN sf plugins install code-analyzer@${SALESFORCE_CODE_ANALYZER_VERSION} \
               && (npm cache clean --force || true) \
               && rm -rf /root/.npm/_cacache
+    supported_platforms:
+      platform:
+        - linux/amd64
+        # Errors when building the image
+        #- linux/arm64
     ide:
       vscode:
         - name: Salesforce Extension Pack
@@ -280,6 +290,11 @@ linters:
           RUN sf plugins install code-analyzer@${SALESFORCE_CODE_ANALYZER_VERSION} \
               && (npm cache clean --force || true) \
               && rm -rf /root/.npm/_cacache
+    supported_platforms:
+      platform:
+        - linux/amd64
+        # Errors when building the image
+        #- linux/arm64
     ide:
       vscode:
         - name: Salesforce Extension Pack
@@ -358,7 +373,8 @@ linters:
     supported_platforms:
       platform:
         - linux/amd64
-        - linux/arm64
+        # Errors when building the image
+        #- linux/arm64
     ide:
       eclipse:
         - name: pmd-eclipse-plugin
@@ -448,7 +464,8 @@ linters:
     supported_platforms:
       platform:
         - linux/amd64
-        - linux/arm64
+        # Errors when building the image
+        #- linux/arm64
     ide:
       vscode:
         - name: Salesforce Extension Pack
@@ -529,7 +546,8 @@ linters:
     supported_platforms:
       platform:
         - linux/amd64
-        - linux/arm64
+        # Errors when building the image
+        #- linux/arm64
     ide:
       vscode:
         - name: Salesforce Extension Pack
