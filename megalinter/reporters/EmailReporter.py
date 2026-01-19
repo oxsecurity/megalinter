@@ -2,6 +2,7 @@
 """
 Send reports artifacts by email
 """
+
 import logging
 import os
 import smtplib

@@ -3,6 +3,7 @@
 API Reporter
 Send MegaLinter results to an external API, like Grafana Loki
 """
+
 import copy
 import json
 import logging

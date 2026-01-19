@@ -3,6 +3,7 @@
 Web Hook linter reporter
 Post linter lifecycle events to a Web Hook endpoint
 """
+
 import logging
 
 from megalinter import Reporter, config
