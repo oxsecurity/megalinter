@@ -175,7 +175,7 @@ jobs:
           runner: ubuntu-24.04-arm
 
     # Name the Job
-    name: Deploy Docker Image - RELEASE
+    name: Deploy Docker Image (Custom Flavor Builder) - RELEASE
     # Set the agent to run on
     runs-on: ubuntu-latest
     # Only run on main repo
@@ -232,9 +232,9 @@ jobs:
             GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
           # MAJOR-RELEASE-IMPACTED
           tags: |
-            ghcr.io/oxsecurity/megalinter-custom-flavor-builder:v9
-            ghcr.io/oxsecurity/megalinter-custom-flavor-builder:${{ github.event.release.tag_name }}
-            ghcr.io/oxsecurity/megalinter-custom-flavor-builder:latest
+            ghcr.io/${{ github.repository }}-custom-flavor-builder:v9
+            ghcr.io/${{ github.repository }}-custom-flavor-builder:${{ github.event.release.tag_name }}
+            ghcr.io/${{ github.repository }}-custom-flavor-builder:latest
           outputs: type=image,push-by-digest=true,name-canonical=true,push=true
 
       - name: Export digest
@@ -283,7 +283,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ghcr.io/oxsecurity/megalinter-custom-flavor-builder
+          images: ghcr.io/${{ github.repository }}-custom-flavor-builder
           tags: |
             type=ref,event=branch
             type=ref,event=pr
@@ -294,11 +294,11 @@ jobs:
         working-directory: ${{ runner.temp }}/digests
         run: |
           docker buildx imagetools create $(jq -cr '.tags | map("-t " + .) | join(" ")' <<< "$DOCKER_METADATA_OUTPUT_JSON") \
-            $(printf 'ghcr.io/oxsecurity/megalinter-custom-flavor-builder@sha256:%s ' *)
+            $(printf 'ghcr.io/${{ github.repository }}-custom-flavor-builder@sha256:%s ' *)
 
       - name: Inspect image
         run: |
-          docker buildx imagetools inspect ghcr.io/oxsecurity/megalinter-custom-flavor-builder:${{ steps.meta.outputs.version }}
+          docker buildx imagetools inspect ghcr.io/${{ github.repository }}-custom-flavor-builder:${{ steps.meta.outputs.version }}
 
   deploy_doc:
     runs-on: ubuntu-latest
