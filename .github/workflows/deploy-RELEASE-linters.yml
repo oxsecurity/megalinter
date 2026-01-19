@@ -42,7 +42,7 @@ jobs:
       - name: Read linters_matrix.json
         id: set-matrix
         run: |
-          echo "linters=$(cat .automation/generated/linters_matrix.json | jq -c)" >> $GITHUB_OUTPUT
+          echo "linters=$(cat .automation/generated/linters_matrix.json | jq -c '[.["linux/amd64"][]]')" >> $GITHUB_OUTPUT
 
   build:
     name: Deploy Docker Image - Release - Linters

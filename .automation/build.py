@@ -755,6 +755,7 @@ def generate_linter_dockerfiles():
     linters_md += "| :----------| :----------- | :--: |\n"
     descriptor_files = megalinter.linter_factory.list_descriptor_files()
     active_linter_list_lower = []
+    active_linter_list_lower_arm = []
     for descriptor_file in descriptor_files:
         descriptor_items = []
         with open(descriptor_file, "r", encoding="utf-8") as f:
@@ -825,10 +826,22 @@ def generate_linter_dockerfiles():
             if not (hasattr(linter, "disabled") and linter.disabled is True):
                 active_linter_list_lower += [linter_lower_name]
 
+                if (
+                    hasattr(linter, "supported_platforms")
+                    and "platform" in linter.supported_platforms
+                    and "linux/arm64" in linter.supported_platforms["platform"]
+                ):
+                    active_linter_list_lower_arm += [linter_lower_name]
+
     # Write linter_list_lower in .automation/generated/linters_matrix.json
     linters_matrix_file = f"{REPO_HOME}/.automation/generated/linters_matrix.json"
     with open(linters_matrix_file, "w", encoding="utf-8") as file:
-        json.dump(active_linter_list_lower, file, indent=2, sort_keys=True)
+        json.dump(
+            { 
+                "linux/amd64": active_linter_list_lower,
+                "linux/arm64": active_linter_list_lower_arm
+            },
+            file, indent=2, sort_keys=True)
         file.write("\n")
         logging.info(f"Updated {linters_matrix_file}")
 
