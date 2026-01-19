@@ -90,11 +90,11 @@ jobs:
         runner: ["ubuntu-latest", "ubuntu-24.04-arm"]
     # Only run this on the main repo
     if: |
-        (
-        (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository) ||
-        (github.event_name == 'push' && github.repository == 'oxsecurity/megalinter')
-        )
-        && !contains(github.event.head_commit.message, 'skip deploy')
+      (
+      (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository) ||
+      (github.event_name == 'push' && github.repository == 'oxsecurity/megalinter')
+      )
+      && !contains(github.event.head_commit.message, 'skip deploy')
 
     ##################
     # Load all steps #
