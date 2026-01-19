@@ -3,6 +3,7 @@
 Use lintr to lint R files
 https://github.com/r-lib/lintr
 """
+
 from pathlib import Path
 
 from megalinter import Linter

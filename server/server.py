@@ -11,6 +11,7 @@ docker pull --platform linux/amd64 ghcr.io/oxsecurity/megalinter-server:alpha
 DOCKER_DEFAULT_PLATFORM=linux/amd64 docker-compose -f server/docker-compose.yml up
 
 """
+
 import logging
 import logging.config
 import os

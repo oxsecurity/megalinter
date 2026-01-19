@@ -2,6 +2,7 @@
 """
 Use Detekt to lint kt files
 """
+
 from megalinter import Linter, config
 
 

@@ -2,6 +2,7 @@
 """
 Use Kubescape to lint Kubernetes files
 """
+
 from megalinter import Linter, config
 
 
