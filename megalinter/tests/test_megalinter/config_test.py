@@ -3,6 +3,7 @@
 Unit tests for Megalinter class
 
 """
+
 import contextlib
 import glob
 import io

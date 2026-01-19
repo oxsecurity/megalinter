@@ -3,6 +3,7 @@
 Use TfLint to lint terraform files
 https://github.com/terraform-linters/tflint
 """
+
 import logging
 
 import megalinter

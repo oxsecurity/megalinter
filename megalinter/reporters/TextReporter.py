@@ -2,6 +2,7 @@
 """
 Text reporter
 """
+
 import logging
 import os
 

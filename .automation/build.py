@@ -2,6 +2,7 @@
 """
 Automatically generate source code ,descriptive files Dockerfiles and documentation
 """
+
 # pylint: disable=import-error
 import json
 import logging
@@ -837,11 +838,14 @@ def generate_linter_dockerfiles():
     linters_matrix_file = f"{REPO_HOME}/.automation/generated/linters_matrix.json"
     with open(linters_matrix_file, "w", encoding="utf-8") as file:
         json.dump(
-            { 
+            {
                 "linux/amd64": active_linter_list_lower,
-                "linux/arm64": active_linter_list_lower_arm
+                "linux/arm64": active_linter_list_lower_arm,
             },
-            file, indent=2, sort_keys=True)
+            file,
+            indent=2,
+            sort_keys=True,
+        )
         file.write("\n")
         logging.info(f"Updated {linters_matrix_file}")
 

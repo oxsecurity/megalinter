@@ -2,6 +2,7 @@
 """
 Unit tests for Linter class (and sub-classes)
 """
+
 import uuid
 from typing import Optional
 

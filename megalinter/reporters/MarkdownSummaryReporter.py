@@ -2,6 +2,7 @@
 """
 Produce MARKDOWN_SUMMARY report
 """
+
 import logging
 import os
 
