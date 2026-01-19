@@ -137,7 +137,6 @@
     "bash_exec",
     "bash_shellcheck",
     "bash_shfmt",
-    "bicep_bicep_linter",
     "c_cpplint",
     "c_clang_format",
     "cloudformation_cfn_lint",

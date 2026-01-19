@@ -55,11 +55,6 @@ linters:
           ARG BICEP_VERSION=0.39.26
         - ARG BICEP_EXE='bicep'
         - ARG BICEP_DIR='/usr/local/bin'
-        # https://stackoverflow.com/a/73711302
-        - FROM multiarch/qemu-user-static:x86_64-aarch64 AS qemu
-        - |
-          COPY --from=qemu /usr/bin/qemu-aarch64-static /usr/bin/
-          RUN apk add --no-cache libc6-compat
         - |
           RUN case ${TARGETPLATFORM} in \
             "linux/amd64")  POWERSHELL_ARCH=musl-x64 ;; \
@@ -71,7 +66,8 @@ linters:
     supported_platforms:
       platform:
         - linux/amd64
-        - linux/arm64
+        # https://github.com/Azure/azure-cli/issues/28756 InsufficientExecutionStackException errors.
+        #- linux/arm64
     ide:
       vscode:
         - name: VSCode Bicep

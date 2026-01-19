@@ -23,7 +23,6 @@ ARG TERRAFORM_TERRAGRUNT_VERSION=1.14.1
 #############################################################################################
 #FROM__START
 FROM mvdan/shfmt:${BASH_SHFMT_VERSION} AS shfmt
-FROM multiarch/qemu-user-static:x86_64-aarch64 AS qemu
 FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} AS terragrunt
 #FROM__END
 
@@ -219,9 +218,6 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 
 #COPY__START
 COPY --link --from=shfmt /bin/shfmt /usr/bin/
-COPY --from=qemu /usr/bin/qemu-aarch64-static /usr/bin/
-RUN apk add --no-cache libc6-compat
-
 COPY --link --from=terragrunt /bin/terraform /usr/bin/
 #COPY__END
 
@@ -272,8 +268,6 @@ esac \
 # rumdl installation
 #
 # powershell_formatter installation
-# Managed with COPY --from=qemu /usr/bin/qemu-aarch64-static /usr/bin/
-#              RUN apk add --no-cache libc6-compat
     && pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSION} -Scope AllUsers -Force'
 #
 # black installation
