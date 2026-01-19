@@ -115,11 +115,11 @@ jobs:
           echo "job_enabled=$job_enabled" >> $GITHUB_OUTPUT
 
       - name: Checkout Code
-        if: ${{ steps.set-enabled.job_enabled == 'true' }}
+        if: ${{ steps.set-enabled.outputs.job_enabled == 'true' }}
         uses: actions/checkout@v6
 
       - name: Docker Metadata action
-        if: ${{ steps.set-enabled.job_enabled == 'true' }}
+        if: ${{ steps.set-enabled.outputs.job_enabled == 'true' }}
         uses: docker/metadata-action@v5.10.0
         id: meta
         with:
@@ -128,14 +128,14 @@ jobs:
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
-        if: ${{ steps.set-enabled.job_enabled == 'true' && ( ( ( runner.arch != 'X64' || runner.os != 'Linux' ) && matrix.platform == 'linux/amd64' ) || matrix.platform != 'linux/amd64' ) }}
+        if: ${{ steps.set-enabled.outputs.job_enabled == 'true' && ( ( ( runner.arch != 'X64' || runner.os != 'Linux' ) && matrix.platform == 'linux/amd64' ) || matrix.platform != 'linux/amd64' ) }}
 
       - name: Set up Docker Buildx
-        if: ${{ steps.set-enabled.job_enabled == 'true' }}
+        if: ${{ steps.set-enabled.outputs.job_enabled == 'true' }}
         uses: docker/setup-buildx-action@v3
 
       - name: Build Image
-        if: ${{ steps.set-enabled.job_enabled == 'true' }}
+        if: ${{ steps.set-enabled.outputs.job_enabled == 'true' }}
         uses: docker/build-push-action@v6
         with:
           context: .
@@ -155,7 +155,7 @@ jobs:
       # Run Linter test cases #
       #####################################
       - name: Run Test Cases
-        if: ${{ steps.set-enabled.job_enabled == 'true' }}
+        if: ${{ steps.set-enabled.outputs.job_enabled == 'true' }}
         shell: bash
         run: |
           GITHUB_REPOSITORY=$([ "${{ github.event_name }}" == "pull_request" ] && echo "${{ github.event.pull_request.head.repo.full_name }}" || echo "${{ github.repository }}")
@@ -171,7 +171,7 @@ jobs:
       # Check Docker image security with Trivy #
       ##############################################
       - name: Run Trivy vulnerability scanner
-        if: ${{ steps.set-enabled.job_enabled == 'true' }}
+        if: ${{ steps.set-enabled.outputs.job_enabled == 'true' }}
         uses: aquasecurity/trivy-action@master
         with:
           image-ref: "${{ fromJson(steps.meta.outputs.json).tags[0] }}"
