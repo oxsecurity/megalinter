@@ -182,8 +182,8 @@ Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=jscpd
-ARG NPM_JSCPD_VERSION=4.0.5
+ARG NPM_JSCPD_VERSION=4.0.7
 ```
 
 - NPM packages (node.js):
-  - [jscpd@4.0.5](https://www.npmjs.com/package/jscpd/v/4.0.5)
+  - [jscpd@4.0.7](https://www.npmjs.com/package/jscpd/v/4.0.7)

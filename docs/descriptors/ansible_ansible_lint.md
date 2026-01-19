@@ -194,8 +194,8 @@ ANSIBLE_LINT_NODEPS: Avoids installing content dependencies and avoids performin
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=ansible-lint
-ARG PIP_ANSIBLE_LINT_VERSION=26.1.0
+ARG PIP_ANSIBLE_LINT_VERSION=26.1.1
 ```
 
 - PIP packages (Python):
-  - [ansible-lint==26.1.0](https://pypi.org/project/ansible-lint/26.1.0)
+  - [ansible-lint==26.1.1](https://pypi.org/project/ansible-lint/26.1.1)
