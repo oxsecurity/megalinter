@@ -19,6 +19,7 @@ The following list of items can/must be overridden on custom linter local class:
                                                  Default: "\\d+(\\.\\d+)+"
 
 """
+
 import errno
 import json
 import logging

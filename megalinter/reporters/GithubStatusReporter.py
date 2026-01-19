@@ -3,6 +3,7 @@
 GitHub Status reporter
 Post a GitHub status for each linter
 """
+
 import logging
 
 import requests

@@ -3,6 +3,7 @@
 Web Hook linter reporter
 Post linter results to a Web Hook
 """
+
 import logging
 
 from megalinter import Reporter, config
