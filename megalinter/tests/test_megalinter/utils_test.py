@@ -3,6 +3,7 @@
 Unit tests for utils class
 
 """
+
 import unittest
 
 from megalinter.logger import fetch_gitleaks_regexes, sanitize_string

@@ -3,6 +3,7 @@
 Use Standard to lint js files
 https://github.com/standard/standard
 """
+
 from megalinter import Linter, utilstest
 
 

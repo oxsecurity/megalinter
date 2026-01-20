@@ -3,6 +3,7 @@
 Unit tests for Megalinter class
 
 """
+
 import glob
 import os
 import tempfile

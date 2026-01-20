@@ -959,7 +959,9 @@ class Megalinter:
             self.check_updated_sources_failure()
         elif self.status == "warning":
             logging.warning(
-                utils.yellow("⚠️ Successfully linted all files, but with ignored errors")
+                utils.yellow(
+                    "⚠️ Successfully linted all files, but with ignored errors"
+                )
             )
             config.delete(self.request_id)
             self.check_updated_sources_failure()
