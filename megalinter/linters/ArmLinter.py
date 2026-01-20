@@ -3,6 +3,7 @@
 Use Azure Resource Manager Template Toolkit to lint ARM files
 https://github.com/Azure/arm-ttk
 """
+
 import sys
 
 from megalinter import Linter, config

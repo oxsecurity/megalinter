@@ -2,6 +2,7 @@
 """
 Output results in console
 """
+
 import logging
 
 import terminaltables
