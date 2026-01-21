@@ -8,8 +8,50 @@ import os
 import unittest
 import uuid
 
+from git import Repo
 from megalinter import utilstest
 from megalinter.constants import ML_REPO
+
+
+def get_git_repo_info() -> tuple[str, str]:
+    """
+    Get the current git repository owner/name and branch name.
+    Returns (repo_slug, branch) tuple.
+    Falls back to (ML_REPO, "main") if git info cannot be determined.
+    This allows tests to work correctly on forks and feature branches.
+    """
+    try:
+        # Get the repository from the current file location
+        repo = Repo(__file__, search_parent_directories=True)
+
+        # Get current branch name
+        branch = repo.active_branch.name
+
+        # Get repository owner/name from remote URL
+        # Try origin remote first, fallback to any remote
+        remote_url = None
+        if "origin" in repo.remotes:
+            remote_url = repo.remotes.origin.url
+        else:
+            # Fallback to first available remote
+            for remote in repo.remotes:
+                remote_url = remote.url
+                break
+
+        if remote_url:
+            # Parse GitHub URL to get owner/repo
+            # Handles: git@github.com:owner/repo.git
+            #         https://github.com/owner/repo.git
+            if "github.com/" in remote_url:
+                repo_slug = remote_url.split("github.com/")[-1]
+                repo_slug = repo_slug.replace(".git", "")
+                return repo_slug, branch
+
+    except Exception:
+        # If git detection fails, fall back to defaults
+        pass
+
+    return ML_REPO, "main"
 
 
 class plugins_test(unittest.TestCase):
@@ -26,14 +68,12 @@ class plugins_test(unittest.TestCase):
         )
 
     def test_load_plugin_success(self):
-        # {ML_REPO}/local_branch won't necessarily be valid on fork branches.
-        # Temporary workaround: use megalinter/main branch to host the file.
-        # It's not a huge issue here because in theory this file will always be available.
-        # TODO: don't just use the local branch name, but parse {ML_REPO} as well.
-        local_branch = "main"
+        # Get the current git repository and branch dynamically
+        # This allows tests to work correctly on forks and feature branches
+        repo_slug, local_branch = get_git_repo_info()
         mega_linter, output = utilstest.call_mega_linter(
             {
-                "PLUGINS": f"https://raw.githubusercontent.com/{ML_REPO}/"
+                "PLUGINS": f"https://raw.githubusercontent.com/{repo_slug}/"
                 + local_branch
                 + "/.automation/test/mega-linter-plugin-test/test.megalinter-descriptor.yml",
                 "LOG_LEVEL": "DEBUG",
