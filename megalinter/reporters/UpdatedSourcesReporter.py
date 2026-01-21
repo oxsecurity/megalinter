@@ -3,6 +3,7 @@
 Updated Repository reporter
 Creates a folder containing only files updated by the linters
 """
+
 import logging
 import os
 import shutil

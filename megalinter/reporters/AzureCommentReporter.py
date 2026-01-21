@@ -3,6 +3,7 @@
 Azure Comment reporter
 Post a comment on Azure Pipelines Pull Requests
 """
+
 import logging
 import urllib.parse
 

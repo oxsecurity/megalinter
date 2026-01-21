@@ -2,6 +2,7 @@
 """
 Output results in console
 """
+
 import copy
 import json
 import logging

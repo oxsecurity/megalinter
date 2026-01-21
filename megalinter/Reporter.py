@@ -3,7 +3,6 @@
 Template class for custom reporters: any linter class in /reporters folder must inherit from this class
 """
 
-
 from typing import Optional
 
 from megalinter.Linter import Linter
