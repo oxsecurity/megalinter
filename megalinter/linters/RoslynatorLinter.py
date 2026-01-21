@@ -2,6 +2,7 @@
 """
 Use roslynator to lint CSharp files
 """
+
 import logging
 
 from megalinter import Linter

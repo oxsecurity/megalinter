@@ -3,6 +3,7 @@
 Unit tests for utils class
 
 """
+
 import re
 import unittest
 

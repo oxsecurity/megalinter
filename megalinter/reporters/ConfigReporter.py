@@ -2,6 +2,7 @@
 """
 Output results in console
 """
+
 import json
 import os
 import xml.dom.minidom

@@ -3,6 +3,7 @@
 Gitlab Comment reporter
 Post a comment on Gitlab Merge Requests
 """
+
 import logging
 
 import gitlab
