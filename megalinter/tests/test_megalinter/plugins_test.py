@@ -3,6 +3,7 @@
 Unit tests for Megalinter class
 
 """
+
 import os
 import unittest
 import uuid

@@ -2,6 +2,7 @@
 """
 Output results in console
 """
+
 import logging
 
 from megalinter import Reporter, config, utils

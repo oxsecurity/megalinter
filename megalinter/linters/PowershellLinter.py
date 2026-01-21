@@ -3,6 +3,7 @@
 Use PowerShell to lint Powershell files
 https://github.com/PowerShell/PSScriptAnalyzer
 """
+
 import sys
 from shutil import get_terminal_size
 

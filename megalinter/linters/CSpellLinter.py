@@ -3,6 +3,7 @@
 Use cspell to check spell in files
 https://github.com/streetsidesoftware/cspell
 """
+
 import json
 import logging
 import os
