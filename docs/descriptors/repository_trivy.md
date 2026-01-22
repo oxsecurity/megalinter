@@ -29,6 +29,18 @@ description: How to use trivy (configure, ignore files, ignore errors, help & ve
 
 **Note**: You can ignore specific findings by defining a [.trivyignore file](https://aquasecurity.github.io/trivy/latest/docs/configuration/filtering/#by-finding-ids) at your repository root.
 
+**Tip**: if you see errors related to files that do not exist, you can bypass them using "--skip-dirs"
+
+Example:
+
+```yaml
+REPOSITORY_TRIVY_ARGUMENTS:
+- "--skip-dirs"
+- ".venv"
+- "--skip-dirs"
+- "github_conf"
+```
+
 ## trivy documentation
 
 - Version in MegaLinter: **0.68.2**
