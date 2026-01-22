@@ -30,8 +30,22 @@ def get_git_repo_info() -> tuple[str, str]:
             branch = repo.active_branch.name
         except TypeError:
             # In detached HEAD state, use git rev-parse to get branch name
-            # This returns "HEAD" if truly detached, or the branch name if possible
             branch = repo.git.rev_parse("--abbrev-ref", "HEAD")
+
+            # If branch is "HEAD" (detached), check CI environment variables
+            # This matches the approach in megalinter/utils.py
+            if branch == "HEAD":
+                branch = (
+                    os.environ.get("GITHUB_HEAD_REF")
+                    or os.environ.get("GITHUB_REF_NAME")
+                    or os.environ.get("GIT_BRANCH")
+                    or os.environ.get("CI_COMMIT_REF_NAME")
+                    or os.environ.get("BITBUCKET_BRANCH")
+                    or os.environ.get("BUILD_SOURCEBRANCHNAME")
+                )
+                # If still no branch found, fall back to defaults
+                if not branch:
+                    return ML_REPO, "main"
 
         # Get repository owner/name from remote URL
         # Try origin remote first, fallback to any remote
@@ -48,6 +62,7 @@ def get_git_repo_info() -> tuple[str, str]:
             # Parse GitHub URL to get owner/repo
             # Handles: git@github.com:owner/repo.git (SSH)
             #         https://github.com/owner/repo.git (HTTPS)
+            repo_slug = None
             if "github.com/" in remote_url:
                 # HTTPS format: https://github.com/owner/repo.git
                 repo_slug = remote_url.split("github.com/")[-1]
@@ -55,8 +70,10 @@ def get_git_repo_info() -> tuple[str, str]:
                 # SSH format: git@github.com:owner/repo.git
                 repo_slug = remote_url.split("github.com:")[-1]
 
-            repo_slug = repo_slug.replace(".git", "")
-            return repo_slug, branch
+            # Only proceed if we found a GitHub URL
+            if repo_slug:
+                repo_slug = repo_slug.replace(".git", "")
+                return repo_slug, branch
 
     except Exception:
         # If git detection fails, fall back to defaults
