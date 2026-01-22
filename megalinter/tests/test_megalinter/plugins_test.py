@@ -54,13 +54,13 @@ def _parse_fork_pr_ref(head_ref: str) -> tuple[str, str] | None:
     Parse GITHUB_HEAD_REF in fork PR format (owner:branch).
 
     Args:
-        head_ref: The GITHUB_HEAD_REF value (e.g., "yousfiSaad:fix/plugin-test")
+        head_ref: The GITHUB_HEAD_REF value (e.g., "owner:fix/plugin-test")
 
     Returns:
         (fork_owner, fork_branch) tuple if valid fork PR format, None otherwise
 
     Examples:
-        "yousfiSaad:fix/plugin-test" -> ("yousfiSaad", "fix/plugin-test")
+        "owner:fix/plugin-test" -> ("owner", "fix/plugin-test")
         "user:feature:part:1" -> ("user", "feature:part:1")  # branch with colons
         "main" -> None
     """
