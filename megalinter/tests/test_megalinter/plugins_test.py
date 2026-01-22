@@ -18,11 +18,11 @@ def _get_branch_from_ci_env() -> str | None:
     """
     Get branch name from GitHub Actions environment variables.
     Returns None if no GitHub CI environment variable is set.
+    Note: GITHUB_REF contains full ref path (refs/heads/main), not just branch name.
     """
     return (
         os.environ.get("GITHUB_HEAD_REF")
         or os.environ.get("GITHUB_REF_NAME")
-        or os.environ.get("GITHUB_REF")
     )
 
 
@@ -146,8 +146,8 @@ class plugins_test(unittest.TestCase):
         # Get the current git repository and branch dynamically
         # This allows tests to work correctly on forks and feature branches
         repo_slug, local_branch = get_git_repo_info()
-        # URL-encode branch name to handle special characters (#, ?, spaces, etc.)
-        encoded_branch = quote(local_branch, safe="")
+        # URL-encode branch name, preserving slashes (common in branch names)
+        encoded_branch = quote(local_branch, safe="/")
         mega_linter, output = utilstest.call_mega_linter(
             {
                 "PLUGINS": f"https://raw.githubusercontent.com/{repo_slug}/"
