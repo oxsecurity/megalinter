@@ -12491,6 +12491,14 @@
 <li><strong>Extensive Integration</strong>: Works with major CI/CD platforms, container registries, and security orchestration tools</li>
 </ul>
 <p><strong>Note</strong>: You can ignore specific findings by defining a <a href="https://aquasecurity.github.io/trivy/latest/docs/configuration/filtering/#by-finding-ids">.trivyignore file</a> at your repository root.</p>
+<p><strong>Tip</strong>: if you see errors related to files that do not exist, you can bypass them using "--skip-dirs"</p>
+<p>Example:</p>
+<pre><code class="language-yaml">REPOSITORY_TRIVY_ARGUMENTS:
+- "--skip-dirs"
+- ".venv"
+- "--skip-dirs"
+- "github_conf"
+</code></pre>
 <h2 id="trivy-documentation">trivy documentation</h2>
 <ul>
 <li>Version in MegaLinter: <strong>0.68.2</strong></li>

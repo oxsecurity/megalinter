@@ -12203,6 +12203,14 @@ You can apply filters to a single linter by defining the variables <code>&lt;LIN
 <li>Don't lint javascript files inside test folder: <code>FILTER_REGEX_EXCLUDE: (test/.*\.js)</code></li>
 </ul>
 <p>Warning: Not applicable with linters using CLI lint mode <code>project</code> (<a href="../config-cli-lint-mode/">see details</a>).</p>
+<p>You can also use variable <strong>ADDITIONAL_EXCLUDED_DIRECTORIES</strong> to add more excluded directories</p>
+<p>Example:</p>
+<pre><code class="language-yaml">ADDITIONAL_EXCLUDED_DIRECTORIES:
+  - .wireit
+  - dist
+  - build
+  - vendor
+</code></pre>
 <!-- config-filtering-section-end -->
 
 
