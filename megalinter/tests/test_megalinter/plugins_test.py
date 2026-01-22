@@ -25,7 +25,13 @@ def get_git_repo_info() -> tuple[str, str]:
         repo = Repo(__file__, search_parent_directories=True)
 
         # Get current branch name
-        branch = repo.active_branch.name
+        # Handle detached HEAD state (common in CI) by using git command
+        try:
+            branch = repo.active_branch.name
+        except TypeError:
+            # In detached HEAD state, use git rev-parse to get branch name
+            # This returns "HEAD" if truly detached, or the branch name if possible
+            branch = repo.git.rev_parse("--abbrev-ref", "HEAD")
 
         # Get repository owner/name from remote URL
         # Try origin remote first, fallback to any remote
@@ -40,12 +46,17 @@ def get_git_repo_info() -> tuple[str, str]:
 
         if remote_url:
             # Parse GitHub URL to get owner/repo
-            # Handles: git@github.com:owner/repo.git
-            #         https://github.com/owner/repo.git
+            # Handles: git@github.com:owner/repo.git (SSH)
+            #         https://github.com/owner/repo.git (HTTPS)
             if "github.com/" in remote_url:
+                # HTTPS format: https://github.com/owner/repo.git
                 repo_slug = remote_url.split("github.com/")[-1]
-                repo_slug = repo_slug.replace(".git", "")
-                return repo_slug, branch
+            elif "github.com:" in remote_url:
+                # SSH format: git@github.com:owner/repo.git
+                repo_slug = remote_url.split("github.com:")[-1]
+
+            repo_slug = repo_slug.replace(".git", "")
+            return repo_slug, branch
 
     except Exception:
         # If git detection fails, fall back to defaults
