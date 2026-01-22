@@ -16,17 +16,13 @@ from megalinter.constants import ML_REPO
 
 def _get_branch_from_ci_env() -> str | None:
     """
-    Get branch name from CI environment variables.
-    Uses the same priority order as megalinter/utils.py get_git_context_info().
-    Returns None if no CI environment variable is set.
+    Get branch name from GitHub Actions environment variables.
+    Returns None if no GitHub CI environment variable is set.
     """
     return (
         os.environ.get("GITHUB_HEAD_REF")
         or os.environ.get("GITHUB_REF_NAME")
-        or os.environ.get("GIT_BRANCH")
-        or os.environ.get("CI_COMMIT_REF_NAME")
-        or os.environ.get("BITBUCKET_BRANCH")
-        or os.environ.get("BUILD_SOURCEBRANCHNAME")
+        or os.environ.get("GITHUB_REF")
     )
 
 
@@ -81,7 +77,7 @@ def get_git_repo_info() -> tuple[str, str]:
         Falls back to (ML_REPO, "main") if git info cannot be determined
 
     This allows tests to work correctly on forks and feature branches.
-    Follows the same environment variable priority as megalinter/utils.py.
+    Uses GitHub Actions environment variables for CI detection.
     """
     try:
         repo = Repo(__file__, search_parent_directories=True)
