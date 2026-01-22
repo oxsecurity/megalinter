@@ -118,7 +118,8 @@ def get_git_repo_info() -> tuple[str, str]:
                         repo_slug = f"{fork_owner}/{repo_name}"
                         branch = fork_branch
 
-                repo_slug = repo_slug.replace(".git", "")
+                # Remove .git suffix only (not all occurrences)
+                repo_slug = repo_slug.removesuffix(".git")
                 return repo_slug, branch
 
     except Exception:
