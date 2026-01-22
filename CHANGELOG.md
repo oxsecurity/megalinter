@@ -75,6 +75,18 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [rumdl](https://github.com/rvben/rumdl) from 0.0.215 to **0.0.216** on 2026-01-13
   - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 9.0.112 to **9.0.113** on 2026-01-15
   - [syft](https://github.com/anchore/syft) from 1.40.0 to **1.40.1** on 2026-01-15
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 26.1.0 to **26.1.1** on 2026-01-22
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2026.01.12 to **2026.01.19** on 2026-01-22
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.43.2 to **1.43.3** on 2026-01-22
+  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd) from 4.0.5 to **4.0.7** on 2026-01-22
+  - [rumdl](https://github.com/rvben/rumdl) from 0.0.216 to **0.0.222** on 2026-01-22
+  - [phpstan](https://phpstan.org/) from 2.1.33 to **2.1.35** on 2026-01-22
+  - [bandit](https://bandit.readthedocs.io/en/latest/) from 1.9.2 to **1.9.3** on 2026-01-22
+  - [black](https://black.readthedocs.io/en/stable/) from 25.12.0 to **26.1.0** on 2026-01-22
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.14.11 to **0.14.13** on 2026-01-22
+  - [ruff](https://github.com/astral-sh/ruff) from 0.14.11 to **0.14.13** on 2026-01-22
+  - [grype](https://github.com/anchore/grype) from 0.104.4 to **0.105.0** on 2026-01-22
+  - [yamllint](https://yamllint.readthedocs.io/) from 1.37.1 to **1.38.0** on 2026-01-22
 <!-- linter-versions-end -->
 
 ## [v9.3.0] - 2026-01-04
