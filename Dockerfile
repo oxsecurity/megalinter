@@ -250,8 +250,6 @@ ARG KUBERNETES_KUBESCAPE_VERSION=3.0.47
 # renovate: datasource=github-tags depName=cvega/luarocks
 ARG LUA_LUACHECK_VERSION=3.3.1
 
-# renovate: datasource=crate depName=selene
-ARG CARGO_SELENE_VERSION=0.29.0
 # renovate: datasource=crate depName=stylua
 ARG CARGO_STYLUA_VERSION=2.0.0
 # renovate: datasource=npm depName=markdownlint-cli
@@ -502,7 +500,7 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin || true && \
 RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --profile minimal --default-toolchain ${RUST_RUST_VERSION} \
     && export PATH="/root/.cargo/bin:/root/.cargo/env:${PATH}" \
     && rustup default stable \
-    && rustup component add clippy && cargo install --force --locked sarif-fmt@${CARGO_SARIF_FMT_VERSION} shellcheck-sarif@${CARGO_SHELLCHECK_SARIF_VERSION} selene@${CARGO_SELENE_VERSION} stylua@${CARGO_STYLUA_VERSION} \
+    && rustup component add clippy && cargo install --force --locked sarif-fmt@${CARGO_SARIF_FMT_VERSION} shellcheck-sarif@${CARGO_SHELLCHECK_SARIF_VERSION} stylua@${CARGO_STYLUA_VERSION} \
     && rm -rf /root/.cargo/registry /root/.cargo/git /root/.cache/sccache
 ENV PATH="/root/.cargo/bin:/root/.cargo/env:${PATH}"
 #CARGO__END
@@ -1029,8 +1027,6 @@ RUN curl --retry 5 --retry-delay 5 -sSL \
     && cd .. && rm -r luarocks-${LUA_LUACHECK_VERSION}-super-linter/ \
     && luarocks install luacheck \
     && cd / \
-#
-# selene installation
 #
 # stylua installation
 #
