@@ -17,7 +17,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - New linters
 
 - Disabled linters
-  - LUA_SELENE: https://github.com/Kampfkarren/selene/issues/662
+  - LUA_SELENE: <https://github.com/Kampfkarren/selene/issues/662>
 
 - Deprecated linters
 

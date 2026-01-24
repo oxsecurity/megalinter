@@ -673,10 +673,7 @@ def build_dockerfile(
         )
         # Force upgrade of setuptools & wheel to fix CVE
         pipenv_install_command += (
-            " \\\n    && "
-            + upgrade_cmd
-            + " \\\n    && "
-            + remove_wheel_cmd
+            " \\\n    && " + upgrade_cmd + " \\\n    && " + remove_wheel_cmd
         )
         pipenv_install_command += (
             " \\\n    && "
