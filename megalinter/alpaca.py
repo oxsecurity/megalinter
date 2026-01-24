@@ -9,8 +9,7 @@ def alpaca(request_id: str | None = None):
     if not print_alpaca:
         return
 
-    print(
-        """
+    print("""
     .:oool'                                  ,looo;                           
     .xNXNXl                                 .dXNNXo.                          
      lXXXX0c.                              'oKXXN0;                           
@@ -33,6 +32,5 @@ def alpaca(request_id: str | None = None):
 =============   MegaLinter, by OX.security   =============
 =========  https://ox.security?ref=megalinter  ===========
 ==========================================================
-"""
-    )
+""")
     return True

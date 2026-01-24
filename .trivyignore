@@ -180,8 +180,10 @@ CVE-2025-68156
 CVE-2026-22701
 # https://github.com/advisories/GHSA-58pv-8j8x-9vj2 : jaraco.context Has a Path Traversal Vulnerability. jaraco & setuptools are not used in MegaLinter context
 GHSA-58pv-8j8x-9vj2
-# https://avd.aquasec.com/nvd/cve-2026-23745 : tar package, present only in Salesforce Code Analyzer packages that will be removed in a next version
+# https://avd.aquasec.com/nvd/cve-2026-23745 : Node tar, not applicable in MegaLinter context
 CVE-2026-23745
+# https://avd.aquasec.com/nvd/cve-2026-23950 : Node tar, not applicable in MegaLinter context
+CVE-2026-23950
 # Dockerfile
 DS001
 DS002
