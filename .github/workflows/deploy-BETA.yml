@@ -41,6 +41,9 @@ jobs:
   publish_runner:
     name: Publish mega-linter-runner (beta)
     if: github.repository == 'oxsecurity/megalinter' && !contains(github.event.head_commit.message, 'skip deploy') && !contains(github.event.head_commit.message, 'Release MegaLinter v')
+    permissions:
+      contents: read
+      id-token: write
     uses: ./.github/workflows/deploy-mega-linter-runner.yml
     with:
       dist-tag: beta
