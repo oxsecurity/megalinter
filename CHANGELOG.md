@@ -17,6 +17,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - New linters
 
 - Disabled linters
+  - LUA_SELENE: <https://github.com/Kampfkarren/selene/issues/662>
 
 - Deprecated linters
 
@@ -37,6 +38,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Add a link inviting to star MegaLinter
   - Display in the console reporter the working directory from which the commands are executed by @bdovaz
   - Update WebHook reporter so it can send more events for a better integration with UI
+  - When truncating long comments in markdown reports, keep the end of the text instead of the beginning (which usually contains less useful information)
 
 - Doc
   - JSON Schema: add default values for file extensions and file names variables + improve descriptions

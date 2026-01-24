@@ -10,11 +10,13 @@ RUN --mount=type=cache,target=/root/.cache/uv \
      uv pip install --system -r pyproject.toml
 COPY . .
 RUN --mount=type=cache,target=/root/.cache/uv \
-    uv pip install --system .
+    uv pip install --system . \
+    && python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0"
 
 FROM python:3.13-alpine
 
-RUN apk add --upgrade --no-cache git
+RUN apk add --upgrade --no-cache git \
+    && python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0"
 
 WORKDIR /
 
@@ -24,9 +26,8 @@ COPY --from=build-ml-core pyproject.toml README.md ./
 COPY --from=build-ml-core megalinter /megalinter/
 RUN --mount=type=cache,target=/root/.cache/uv,from=build-ml-core \
     --mount=from=uv,source=/uv,target=/bin/uv \
-    uv pip install --system -e .
+    uv pip install --system -e . \
+    && pip install --no-cache-dir -r server/requirements.txt
 
 COPY server /server
-COPY server/requirements.txt requirements.txt
-RUN pip install --no-cache-dir -r requirements.txt
 
