@@ -44,18 +44,11 @@ linters:
     linter_rules_ignore_config_url: https://eslint.org/docs/latest/use/configure/ignore#the-eslintignore-file
     linter_megalinter_ref_url: https://eslint.org/docs/latest/use/integrations#source-control
     active_only_if_file_found:
-      - ".eslintrc.json"
-      - ".eslintrc.yml"
-      - ".eslintrc.yaml"
-      - ".eslintrc.js"
-      - ".eslintrc.cjs"
-      - "package.json:eslintConfig"
+      - "eslint.config.js"
+      - "eslint.config.mjs"
+      - "eslint.config.cjs"
     cli_lint_mode: list_of_files
-    config_file_name: .eslintrc.json
-    cli_config_extra_args:
-      - "--no-eslintrc"
-    cli_lint_extra_args:
-      - "--no-ignore"
+    config_file_name: eslint.config.js
     ignore_file_name: .eslintignore
     cli_lint_ignore_arg_name: --ignore-path
     cli_lint_fix_arg_name: "--fix"
@@ -68,8 +61,8 @@ linters:
     cli_lint_errors_regex: "✖ ([0-9]+) problem"
     examples:
       - "eslint myfile.ts"
-      - "eslint -c .eslintrc.json --no-eslintrc --no-ignore myfile.ts"
-      - "eslint --fix -c .eslintrc.json --no-eslintrc --no-ignore myfile.ts"
+      - "eslint --config eslint.config.js myfile.ts"
+      - "eslint --fix --config eslint.config.js myfile.ts"
     install:
       dockerfile:
         - |-

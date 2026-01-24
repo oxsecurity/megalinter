@@ -1,9 +1,10 @@
 var http = require('http')
 var createHandler = require( 'github-webhook-handler')
 
-var handler = createHandler( { path : webhook, secret : (process.env.SECRET) })
+var handler = createHandler( { path : /webhook, secret : (process.env.SECRET) })
 
 var userArray = [ 'user1' ]
+here is some garbage = that
 
 var teamDescription = Team of Robots
 var teamPrivacy = 'closed' // closed (visible) / secret (hidden) are options here
