@@ -690,8 +690,8 @@ def _build_sections_content(
                     if len(linter_output) > max_chars_per_linter:
                         total_chars = len(linter_output)
                         linter_output = (
-                            linter_output[:max_chars_per_linter]
-                            + f"\n\n(Truncated to {max_chars_per_linter} characters out of {total_chars})"
+                            linter_output[-max_chars_per_linter:]
+                            + f"\n\n(Truncated to last {max_chars_per_linter} characters out of {total_chars})"
                         )
                     if linter_output.strip():
                         # Escape any HTML in the output and wrap in code block
