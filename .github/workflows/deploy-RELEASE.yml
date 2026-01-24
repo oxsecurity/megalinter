@@ -30,6 +30,15 @@ on:
 # Set the Job #
 ###############
 jobs:
+  publish_runner:
+    name: Publish mega-linter-runner (release)
+    if: github.repository == 'oxsecurity/megalinter' && !contains(github.event.head_commit.message, 'skip deploy')
+    uses: ./.github/workflows/deploy-mega-linter-runner.yml
+    with:
+      dist-tag: latest
+      prerelease: false
+    secrets: inherit
+
   build:
     # Name the Job
     name: Deploy Docker Image - RELEASE
@@ -51,18 +60,6 @@ jobs:
       ##########################
       - name: Checkout Code
         uses: actions/checkout@v6
-
-      ########################################################
-      # Publish updated version of mega-linter-runner on NPM #
-      ########################################################
-      - uses: actions/setup-node@v6.1.0
-        with:
-          node-version: "24.x"
-          registry-url: "https://registry.npmjs.org"
-      - run: cd mega-linter-runner && npm install
-      - run: cd mega-linter-runner && npm publish || echo "mega-linter-runner not published"
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v3

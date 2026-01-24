@@ -40,6 +40,16 @@ concurrency:
 
 jobs:
 
+  publish_runner:
+    name: Publish mega-linter-runner (alpha)
+    if: github.repository == 'oxsecurity/megalinter' && !contains(github.event.head_commit.message, 'skip deploy')
+    uses: ./.github/workflows/deploy-mega-linter-runner.yml
+    with:
+      dist-tag: alpha
+      prerelease: true
+      preid: alpha
+    secrets: inherit
+
   build:
     # Name the Job
     name: Deploy Docker Image - ALPHA
@@ -59,20 +69,6 @@ jobs:
       ##########################
       - name: Checkout Code
         uses: actions/checkout@v6
-
-      ########################################################
-      # Publish updated version of mega-linter-runner on NPM #
-      ########################################################
-      - uses: actions/setup-node@v6.1.0
-        with:
-          node-version: "24.x"
-          registry-url: "https://registry.npmjs.org"
-      - run: cd mega-linter-runner && yarn install --frozen-lockfile
-      - run: cd mega-linter-runner && ALPHAID=$(date '+%Y%m%d%H%M') && npm version prerelease --preid="alpha$ALPHAID"
-        shell: bash
-      # - run: cd mega-linter-runner && npm publish --tag alpha || echo "mega-linter-runner alpha not published"
-      #   env:
-      #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
