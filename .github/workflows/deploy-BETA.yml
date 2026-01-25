@@ -375,7 +375,7 @@ jobs:
         with:
           images: ghcr.io/${{ github.repository }}-custom-flavor-builder
           tags: |
-            ghcr.io/${{ github.repository }}-custom-flavor-builder:beta
+            type=raw,value=beta
 
       - name: Create manifest list and push
         working-directory: ${{ runner.temp }}/digests
