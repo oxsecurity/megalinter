@@ -660,21 +660,16 @@ def build_dockerfile(
                 + f'&& VIRTUAL_ENV="/venvs/{pip_linter}" uv pip install --no-cache '
                 + (" ".join(pip_linter_packages))
                 + " \\\n"
+                + f"    && if VIRTUAL_ENV=\"/venvs/{pip_linter}\" uv pip show wheel >/dev/null 2>&1; "
+                + "then \\\n"
+                + f"         VIRTUAL_ENV=\"/venvs/{pip_linter}\" uv pip install --no-cache --upgrade "
+                + '"wheel>=0.46.2" "setuptools>=75.8.0" \\\n'
+                + f"         && VIRTUAL_ENV=\"/venvs/{pip_linter}\" rm -rf "
+                + f"/venvs/{pip_linter}/lib/python3.13/site-packages/setuptools/_vendor/wheel*; \\\n"
+                + "       fi \\\n"
             )
             env_path_command += f":/venvs/{pip_linter}/bin"
         pipenv_install_command = pipenv_install_command[:-2]  # remove last \
-        upgrade_cmd = (
-            f"VIRTUAL_ENV=/venvs/{pip_linter} uv pip install --no-cache "
-            f'--upgrade "wheel>=0.46.2" "setuptools>=75.8.0"'
-        )
-        remove_wheel_cmd = (
-            f"VIRTUAL_ENV=/venvs/{pip_linter} rm -rf "
-            f"/venvs/{pip_linter}/lib/python3.13/site-packages/setuptools/_vendor/wheel*"
-        )
-        # Force upgrade of setuptools & wheel to fix CVE
-        pipenv_install_command += (
-            " \\\n    && " + upgrade_cmd + " \\\n    && " + remove_wheel_cmd
-        )
         pipenv_install_command += (
             " \\\n    && "
             + r"find /venvs \( -type f \( -iname \*.pyc -o -iname \*.pyo \) -o -type d -iname __pycache__ \) -delete"
