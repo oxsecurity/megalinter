@@ -9,7 +9,7 @@ description: How to use selene (configure, ignore files, ignore errors, help & v
 
 _This linter has been disabled in this version_
 
-_Disabled reason: https://github.com/Kampfkarren/selene/issues/662_
+_Disabled reason: <https://github.com/Kampfkarren/selene/issues/662>_
 
 **Selene** is a blazing-fast modern Lua linter written in Rust that provides comprehensive static analysis for Lua code. It offers extensive configurability and can be tailored to specific Lua environments like Roblox, World of Warcraft addons, or standard Lua.
 
