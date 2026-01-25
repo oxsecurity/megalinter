@@ -218,8 +218,7 @@ jobs:
           secrets: |
             GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
           tags: |
-            ghcr.io/${{ github.repository }}-custom-flavor-builder:alpha
-          # ghcr.io/${{ github.repository }}-custom-flavor-builder:alpha-${{ github.sha }}
+            ghcr.io/${{ github.repository }}-custom-flavor-builder
           outputs: type=image,push-by-digest=true,name-canonical=true,push=true
 
       - name: Export digest
@@ -270,10 +269,8 @@ jobs:
         with:
           images: ghcr.io/${{ github.repository }}-custom-flavor-builder
           tags: |
-            type=ref,event=branch
-            type=ref,event=pr
-            type=semver,pattern={{version}}
-            type=semver,pattern={{major}}.{{minor}}
+            ghcr.io/${{ github.repository }}-custom-flavor-builder:alpha
+          # ghcr.io/${{ github.repository }}-custom-flavor-builder:alpha-${{ github.sha }}
 
       - name: Create manifest list and push
         working-directory: ${{ runner.temp }}/digests
