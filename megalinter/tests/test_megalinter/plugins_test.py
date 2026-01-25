@@ -20,10 +20,7 @@ def _get_branch_from_ci_env() -> str | None:
     Returns None if no GitHub CI environment variable is set.
     Note: GITHUB_REF contains full ref path (refs/heads/main), not just branch name.
     """
-    return (
-        os.environ.get("GITHUB_HEAD_REF")
-        or os.environ.get("GITHUB_REF_NAME")
-    )
+    return os.environ.get("GITHUB_HEAD_REF") or os.environ.get("GITHUB_REF_NAME")
 
 
 def _parse_github_remote_url(remote_url: str) -> str | None:
