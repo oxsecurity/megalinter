@@ -56,8 +56,8 @@ jobs:
             await github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              workflow_id: "deploy-mega-linter-runner.yml",
-              ref: context.ref,
+              workflow_id: ".github/workflows/deploy-mega-linter-runner.yml",
+              ref: "main",
               inputs: {
                 "dist-tag": "alpha",
                 prerelease: "true",
