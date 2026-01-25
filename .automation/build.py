@@ -662,7 +662,7 @@ def build_dockerfile(
                 + " \\\n"
                 + f'    && VIRTUAL_ENV="/venvs/{pip_linter}" uv pip install --no-cache --upgrade '
                 + '"wheel>=0.46.2" "setuptools>=75.8.0" \\\n'
-                + f"    && VIRTUAL_ENV=\"/venvs/{pip_linter}\" rm -rf "
+                + f'    && VIRTUAL_ENV="/venvs/{pip_linter}" rm -rf '
                 + f"/venvs/{pip_linter}/lib/python3.13/site-packages/setuptools/_vendor/wheel* \\\n"
             )
             env_path_command += f":/venvs/{pip_linter}/bin"
