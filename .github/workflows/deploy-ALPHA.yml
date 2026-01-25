@@ -61,8 +61,7 @@ jobs:
               inputs: {
                 "dist-tag": "alpha",
                 prerelease: "true",
-                preid: "alpha",
-                environment: "release-runner",
+                preid: "alpha"
               },
             });
 
