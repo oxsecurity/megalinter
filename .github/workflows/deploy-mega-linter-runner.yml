@@ -1,0 +1,85 @@
+---
+name: "Deploy mega-linter-runner"
+
+on:
+  workflow_dispatch:
+    inputs:
+      dist-tag:
+        description: "npm dist-tag to publish under (example: latest, beta)"
+        required: false
+        default: latest
+        type: string
+      prerelease:
+        description: Bump a prerelease version before publishing
+        required: false
+        default: false
+        type: boolean
+      preid:
+        description: Prefix used for the prerelease identifier when enabled
+        required: false
+        default: beta
+        type: string
+  workflow_call:
+    inputs:
+      dist-tag:
+        required: false
+        type: string
+      prerelease:
+        required: false
+        type: boolean
+      preid:
+        required: false
+        type: string
+
+jobs:
+  publish:
+    name: Publish mega-linter-runner to npm
+    runs-on: ubuntu-latest
+    environment:
+      name: release-runner
+    permissions:
+      contents: read
+      id-token: write
+    env:
+      PACKAGE_DIR: mega-linter-runner
+      DIST_TAG: ${{ inputs['dist-tag'] && inputs['dist-tag'] || 'latest' }}
+      PREID: ${{ inputs.preid && inputs.preid || 'beta' }}
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node
+        uses: actions/setup-node@v6.1.0
+        with:
+          node-version: "24.x"
+          registry-url: "https://registry.npmjs.org"
+          cache: yarn
+          cache-dependency-path: mega-linter-runner/yarn.lock
+          scope: nvuillam
+
+      - name: Install dependencies
+        working-directory: ${{ env.PACKAGE_DIR }}
+        run: yarn install --frozen-lockfile
+
+      - name: Prepare prerelease version
+        if: inputs.prerelease == true
+        working-directory: ${{ env.PACKAGE_DIR }}
+        shell: bash
+        run: |
+          TIMESTAMP=$(date '+%Y%m%d%H%M')
+          npm version prerelease --preid="${PREID}${TIMESTAMP}"
+
+      - name: Publish to npm
+        working-directory: ${{ env.PACKAGE_DIR }}
+        env:
+          NPM_CONFIG_PROVENANCE: true
+          NPM_CONFIG_REGISTRY: https://registry.npmjs.org
+        run: npm publish --provenance --tag "${DIST_TAG}"
+
+      - name: Report published version
+        working-directory: ${{ env.PACKAGE_DIR }}
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          echo "Published ${VERSION} with dist-tag ${DIST_TAG}"

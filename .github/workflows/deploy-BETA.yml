@@ -38,6 +38,31 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  publish_runner:
+    name: Publish mega-linter-runner (beta)
+    if: github.repository == 'oxsecurity/megalinter' && !contains(github.event.head_commit.message, 'skip deploy') && !contains(github.event.head_commit.message, 'Release MegaLinter v')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: write
+    steps:
+      - name: Trigger deploy-mega-linter-runner workflow
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              workflow_id: ".github/workflows/deploy-mega-linter-runner.yml",
+              ref: "main",
+              inputs: {
+                "dist-tag": "beta",
+                prerelease: "true",
+                preid: "beta"
+              },
+            });
+
   build:
     # Name the Job
     name: Deploy Docker Image - BETA
@@ -56,20 +81,6 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v6
-
-      ########################################################
-      # Publish updated version of mega-linter-runner on NPM #
-      ########################################################
-      - uses: actions/setup-node@v6.1.0
-        with:
-          node-version: "24.x"
-          registry-url: "https://registry.npmjs.org"
-      - run: cd mega-linter-runner && yarn install --frozen-lockfile
-      - run: cd mega-linter-runner && BETAID=$(date '+%Y%m%d%H%M') && npm version prerelease --preid="beta$BETAID"
-        shell: bash
-      - run: cd mega-linter-runner && npm publish --tag beta || echo "mega-linter-runner beta not published"
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       # Free disk space
       - name: Free Disk space
