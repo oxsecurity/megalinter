@@ -21,7 +21,7 @@ ARG DOCKERFILE_HADOLINT_VERSION=v2.14.0-alpine
 # renovate: datasource=docker depName=zricethezav/gitleaks
 ARG REPOSITORY_GITLEAKS_VERSION=v8.30.0
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
-ARG REPOSITORY_TRUFFLEHOG_VERSION=3.92.4
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.92.5
 #ARGTOP__END
 
 #############################################################################################
@@ -180,9 +180,9 @@ ENV PATH="/root/.cargo/bin:/root/.cargo/env:${PATH}"
 
 #PIPVENV__START
 RUN uv pip install --system --no-cache pip==${PIP_PIP_VERSION} virtualenv==${PIP_VIRTUALENV_VERSION} \
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/yamllint" && VIRTUAL_ENV="/venvs/yamllint" uv pip install --no-cache yamllint==${PIP_YAMLLINT_VERSION}  \
-    && VIRTUAL_ENV=/venvs/yamllint uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
-    && VIRTUAL_ENV=/venvs/yamllint rm -rf /venvs/yamllint/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
+    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/yamllint" && VIRTUAL_ENV="/venvs/yamllint" uv pip install --no-cache yamllint==${PIP_YAMLLINT_VERSION} \
+    && VIRTUAL_ENV="/venvs/yamllint" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+    && VIRTUAL_ENV="/venvs/yamllint" rm -rf /venvs/yamllint/lib/python3.13/site-packages/setuptools/_vendor/wheel*  \
     && find /venvs \( -type f \( -iname \*.pyc -o -iname \*.pyo \) -o -type d -iname __pycache__ \) -delete \
     && rm -rf /root/.cache
 ENV PATH="${PATH}":/venvs/yamllint/bin
