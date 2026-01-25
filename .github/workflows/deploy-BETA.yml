@@ -41,15 +41,28 @@ jobs:
   publish_runner:
     name: Publish mega-linter-runner (beta)
     if: github.repository == 'oxsecurity/megalinter' && !contains(github.event.head_commit.message, 'skip deploy') && !contains(github.event.head_commit.message, 'Release MegaLinter v')
+    runs-on: ubuntu-latest
     permissions:
       contents: read
-      id-token: write
-    uses: ./.github/workflows/deploy-mega-linter-runner.yml
-    with:
-      dist-tag: beta
-      prerelease: true
-      preid: beta
-    secrets: inherit
+      actions: write
+    steps:
+      - name: Trigger deploy-mega-linter-runner workflow
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              workflow_id: "deploy-mega-linter-runner.yml",
+              ref: context.ref,
+              inputs: {
+                "dist-tag": "beta",
+                prerelease: "true",
+                preid: "beta",
+                environment: "release-runner",
+              },
+            });
 
   build:
     # Name the Job
