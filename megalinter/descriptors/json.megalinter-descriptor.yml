@@ -48,10 +48,9 @@ linters:
         - linux/amd64
         - linux/arm64
   # ESLINT-PLUGIN-JSONC
-  - class: EslintLinter
+  - linter_name: eslint-plugin-jsonc
     disabled: true
     disabled_reason: "Bug in eslint-plugin-jsonc: <https://github.com/ota-meshi/eslint-plugin-jsonc/issues/328>"
-    linter_name: eslint-plugin-jsonc
     linter_spdx_license: MIT
     can_output_sarif: true
     file_extensions:
@@ -125,7 +124,11 @@ linters:
     linter_megalinter_ref_url: https://eslint.org/docs/latest/use/integrations#source-control
     cli_lint_mode: list_of_files
     cli_executable: eslint
-    config_file_name: eslint.config.js
+    config_file_name: .eslintrc-json.json
+    cli_config_extra_args:
+      - "--no-eslintrc"
+    cli_lint_extra_args:
+      - "--no-ignore"
     ignore_file_name: .eslintignore
     cli_lint_ignore_arg_name: --ignore-path
     cli_lint_fix_arg_name: "--fix"
@@ -141,15 +144,15 @@ linters:
     cli_version_extra_args: ["list", "eslint-plugin-jsonc", "--prefix", "/node-deps"]
     examples:
       - "eslint myfile.json"
-      - "eslint --config eslint.config.js myfile.json"
-      - "eslint --config eslint.config.js myfile.json5"
-      - "eslint --config eslint.config.js myfile.jsonc"
-      - "eslint --fix --config eslint.config.js myfile.json"
+      - "eslint -c .eslintrc-json.json --no-eslintrc --no-ignore myfile.json"
+      - "eslint -c .eslintrc-json.json --no-eslintrc --no-ignore myfile.json5"
+      - "eslint -c .eslintrc-json.json --no-eslintrc --no-ignore myfile.jsonc"
+      - "eslint --fix -c .eslintrc-json.json --no-eslintrc --no-ignore myfile.json"
     install:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=eslint
-          ARG NPM_ESLINT_VERSION=9.39.2
+          ARG NPM_ESLINT_VERSION=8.57.1
         - |-
           # renovate: datasource=npm depName=eslint-plugin-jsonc
           ARG NPM_ESLINT_PLUGIN_JSONC_VERSION=2.21.0

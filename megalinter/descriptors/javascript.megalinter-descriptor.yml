@@ -10,8 +10,7 @@ file_extensions:
   - ".js"
 linters:
   # ESLINT
-  - class: EslintLinter
-    linter_name: eslint
+  - linter_name: eslint
     name: JAVASCRIPT_ES
     can_output_sarif: true
     linter_spdx_license: MIT

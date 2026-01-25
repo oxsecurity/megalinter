@@ -17,8 +17,7 @@ install:
     - typescript@${NPM_TYPESCRIPT_VERSION}
 linters:
   # ESLINT
-  - class: EslintLinter
-    linter_name: eslint
+  - linter_name: eslint
     name: TYPESCRIPT_ES
     can_output_sarif: true
     linter_spdx_license: MIT

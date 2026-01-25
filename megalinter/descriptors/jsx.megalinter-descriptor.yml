@@ -9,8 +9,7 @@ file_extensions:
   - ".jsx"
 linters:
   # ESLINT
-  - class: EslintLinter
-    linter_name: eslint
+  - linter_name: eslint
     can_output_sarif: true
     linter_text: |
       **ESLint with React Plugin** provides comprehensive linting for JSX files, combining ESLint's powerful static analysis with React-specific rules to ensure high-quality React applications written in JavaScript.
