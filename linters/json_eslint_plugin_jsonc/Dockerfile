@@ -58,6 +58,8 @@ ARG NPM_ESLINT_VERSION=8.57.1
 ARG NPM_ESLINT_PLUGIN_JSONC_VERSION=2.21.0
 # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
 ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
+# renovate: datasource=npm depName=globals
+ARG NPM_GLOBALS_VERSION=15.0.1
 #ARG__END
 
 ####################
@@ -132,7 +134,8 @@ WORKDIR /node-deps
 RUN npm --no-cache install --ignore-scripts --omit=dev \
                 eslint@${NPM_ESLINT_VERSION} \
                 eslint-plugin-jsonc@${NPM_ESLINT_PLUGIN_JSONC_VERSION} \
-                @microsoft/eslint-formatter-sarif@${NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION} && \
+                @microsoft/eslint-formatter-sarif@${NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION} \
+                globals@${NPM_GLOBALS_VERSION} && \
     echo "Cleaning npm cache…" \
     && (npm cache clean --force || true) \
     && echo "Changing owner of node_modules files…" \

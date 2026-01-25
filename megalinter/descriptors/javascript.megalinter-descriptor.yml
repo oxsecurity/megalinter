@@ -107,6 +107,9 @@ linters:
         - |-
           # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
           ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
+        - |-
+          # renovate: datasource=npm depName=globals
+          ARG NPM_GLOBALS_VERSION=15.0.1
       npm:
         - eslint@${NPM_ESLINT_VERSION}
         - eslint-config-prettier@${NPM_ESLINT_CONFIG_PRETTIER_VERSION}
@@ -119,6 +122,7 @@ linters:
         - "@babel/core@${NPM_BABEL_CORE_VERSION}"
         - "@babel/eslint-parser@${NPM_BABEL_ESLINT_PARSER_VERSION}"
         - "@microsoft/eslint-formatter-sarif@${NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION}"
+        - globals@${NPM_GLOBALS_VERSION}
     supported_platforms:
       platform:
         - linux/amd64

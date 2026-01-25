@@ -145,6 +145,8 @@ ARG NPM_BABEL_CORE_VERSION=7.28.6
 ARG NPM_BABEL_ESLINT_PARSER_VERSION=7.28.6
 # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
 ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
+# renovate: datasource=npm depName=globals
+ARG NPM_GLOBALS_VERSION=15.0.1
 # renovate: datasource=npm depName=standard
 ARG NPM_STANDARD_VERSION=17.1.2
 # renovate: datasource=npm depName=prettier
@@ -385,6 +387,7 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 @babel/core@${NPM_BABEL_CORE_VERSION} \
                 @babel/eslint-parser@${NPM_BABEL_ESLINT_PARSER_VERSION} \
                 @microsoft/eslint-formatter-sarif@${NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION} \
+                globals@${NPM_GLOBALS_VERSION} \
                 standard@${NPM_STANDARD_VERSION} \
                 prettier@${NPM_PRETTIER_VERSION} \
                 @prantlf/jsonlint@${NPM_PRANTLF_JSONLINT_VERSION} \

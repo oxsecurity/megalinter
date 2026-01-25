@@ -74,6 +74,8 @@ ARG NPM_BABEL_CORE_VERSION=7.28.6
 ARG NPM_BABEL_ESLINT_PARSER_VERSION=7.28.6
 # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
 ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
+# renovate: datasource=npm depName=globals
+ARG NPM_GLOBALS_VERSION=15.0.1
 #ARG__END
 
 ####################
@@ -156,7 +158,8 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 eslint-plugin-vue@${NPM_ESLINT_PLUGIN_VUE_VERSION} \
                 @babel/core@${NPM_BABEL_CORE_VERSION} \
                 @babel/eslint-parser@${NPM_BABEL_ESLINT_PARSER_VERSION} \
-                @microsoft/eslint-formatter-sarif@${NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION} && \
+                @microsoft/eslint-formatter-sarif@${NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION} \
+                globals@${NPM_GLOBALS_VERSION} && \
     echo "Cleaning npm cache…" \
     && (npm cache clean --force || true) \
     && echo "Changing owner of node_modules files…" \
