@@ -61,7 +61,7 @@ ARG NPM_ESLINT_PLUGIN_JSX_ALLY_VERSION=6.10.2
 # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
 ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
 # renovate: datasource=npm depName=globals
-ARG NPM_GLOBALS_VERSION=15.0.1
+ARG NPM_GLOBALS_VERSION=17.1.0
 #ARG__END
 
 ####################
