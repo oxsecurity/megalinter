@@ -51,7 +51,7 @@ jobs:
           fetch-depth: 0
 
       - name: Set up Node
-        uses: actions/setup-node@v6.1.0
+        uses: actions/setup-node@v6.2.0
         with:
           node-version: "24.x"
           registry-url: "https://registry.npmjs.org"
