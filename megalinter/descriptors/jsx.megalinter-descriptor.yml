@@ -39,8 +39,6 @@ linters:
       - eslint.config.cjs
     cli_lint_mode: list_of_files
     config_file_name: eslint.config.js
-    ignore_file_name: .eslintignore
-    cli_lint_ignore_arg_name: --ignore-path
     cli_lint_fix_arg_name: "--fix"
     cli_sarif_args:
       - --format
