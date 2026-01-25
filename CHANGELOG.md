@@ -52,6 +52,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - mega-linter-runner
   - If variables are defined in a local .env file, send their values to docker/podman run command (can be useful for secret variables)
   - Never send .env file to the docker run for security reasons, instead create an empty one if needed
+  - Use npm trusted publishers (OIDC) to publish mega-linter-runner
 
 - Linter versions upgrades (N)
   - [code-analyzer-apex](https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html) from 5.7.1 to **5.8.0** on 2026-01-05

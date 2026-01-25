@@ -26,8 +26,11 @@ COPY --from=build-ml-core pyproject.toml README.md ./
 COPY --from=build-ml-core megalinter /megalinter/
 RUN --mount=type=cache,target=/root/.cache/uv,from=build-ml-core \
     --mount=from=uv,source=/uv,target=/bin/uv \
-    uv pip install --system -e . \
-    && pip install --no-cache-dir -r server/requirements.txt
+    uv pip install --system -e .
 
 COPY server /server
+COPY server/requirements.txt requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+
+
 
