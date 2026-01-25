@@ -115,10 +115,8 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin || true && \
 #PIPVENV__START
 RUN uv pip install --system --no-cache pip==${PIP_PIP_VERSION} virtualenv==${PIP_VIRTUALENV_VERSION} \
     && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/ansible-lint" && VIRTUAL_ENV="/venvs/ansible-lint" uv pip install --no-cache ansible-lint==${PIP_ANSIBLE_LINT_VERSION} \
-    && if VIRTUAL_ENV="/venvs/ansible-lint" uv pip show wheel >/dev/null 2>&1; then \
-         VIRTUAL_ENV="/venvs/ansible-lint" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
-         && VIRTUAL_ENV="/venvs/ansible-lint" rm -rf /venvs/ansible-lint/lib/python3.13/site-packages/setuptools/_vendor/wheel*; \
-       fi  \
+    && VIRTUAL_ENV="/venvs/ansible-lint" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+    && VIRTUAL_ENV="/venvs/ansible-lint" rm -rf /venvs/ansible-lint/lib/python3.13/site-packages/setuptools/_vendor/wheel*  \
     && find /venvs \( -type f \( -iname \*.pyc -o -iname \*.pyo \) -o -type d -iname __pycache__ \) -delete \
     && rm -rf /root/.cache
 ENV PATH="${PATH}":/venvs/ansible-lint/bin

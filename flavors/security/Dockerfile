@@ -204,30 +204,20 @@ ENV PATH="/root/.cargo/bin:/root/.cargo/env:${PATH}"
 #PIPVENV__START
 RUN uv pip install --system --no-cache pip==${PIP_PIP_VERSION} virtualenv==${PIP_VIRTUALENV_VERSION} \
     && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/ansible-lint" && VIRTUAL_ENV="/venvs/ansible-lint" uv pip install --no-cache ansible-lint==${PIP_ANSIBLE_LINT_VERSION} \
-    && if VIRTUAL_ENV="/venvs/ansible-lint" uv pip show wheel >/dev/null 2>&1; then \
-         VIRTUAL_ENV="/venvs/ansible-lint" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
-         && VIRTUAL_ENV="/venvs/ansible-lint" rm -rf /venvs/ansible-lint/lib/python3.13/site-packages/setuptools/_vendor/wheel*; \
-       fi \
+    && VIRTUAL_ENV="/venvs/ansible-lint" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+    && VIRTUAL_ENV="/venvs/ansible-lint" rm -rf /venvs/ansible-lint/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
     && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/cfn-lint" && VIRTUAL_ENV="/venvs/cfn-lint" uv pip install --no-cache cfn-lint[sarif]==${PIP_CFN_LINT_VERSION} \
-    && if VIRTUAL_ENV="/venvs/cfn-lint" uv pip show wheel >/dev/null 2>&1; then \
-         VIRTUAL_ENV="/venvs/cfn-lint" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
-         && VIRTUAL_ENV="/venvs/cfn-lint" rm -rf /venvs/cfn-lint/lib/python3.13/site-packages/setuptools/_vendor/wheel*; \
-       fi \
+    && VIRTUAL_ENV="/venvs/cfn-lint" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+    && VIRTUAL_ENV="/venvs/cfn-lint" rm -rf /venvs/cfn-lint/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
     && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/bandit" && VIRTUAL_ENV="/venvs/bandit" uv pip install --no-cache bandit==${PIP_BANDIT_VERSION} bandit_sarif_formatter==${PIP_BANDIT_SARIF_FORMATTER_VERSION} bandit[toml]==${PIP_BANDIT_VERSION} \
-    && if VIRTUAL_ENV="/venvs/bandit" uv pip show wheel >/dev/null 2>&1; then \
-         VIRTUAL_ENV="/venvs/bandit" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
-         && VIRTUAL_ENV="/venvs/bandit" rm -rf /venvs/bandit/lib/python3.13/site-packages/setuptools/_vendor/wheel*; \
-       fi \
+    && VIRTUAL_ENV="/venvs/bandit" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+    && VIRTUAL_ENV="/venvs/bandit" rm -rf /venvs/bandit/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
     && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/checkov" && VIRTUAL_ENV="/venvs/checkov" uv pip install --no-cache checkov==${PIP_CHECKOV_VERSION} \
-    && if VIRTUAL_ENV="/venvs/checkov" uv pip show wheel >/dev/null 2>&1; then \
-         VIRTUAL_ENV="/venvs/checkov" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
-         && VIRTUAL_ENV="/venvs/checkov" rm -rf /venvs/checkov/lib/python3.13/site-packages/setuptools/_vendor/wheel*; \
-       fi \
+    && VIRTUAL_ENV="/venvs/checkov" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+    && VIRTUAL_ENV="/venvs/checkov" rm -rf /venvs/checkov/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
     && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/semgrep" && VIRTUAL_ENV="/venvs/semgrep" uv pip install --no-cache semgrep==${PIP_SEMGREP_VERSION} \
-    && if VIRTUAL_ENV="/venvs/semgrep" uv pip show wheel >/dev/null 2>&1; then \
-         VIRTUAL_ENV="/venvs/semgrep" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
-         && VIRTUAL_ENV="/venvs/semgrep" rm -rf /venvs/semgrep/lib/python3.13/site-packages/setuptools/_vendor/wheel*; \
-       fi  \
+    && VIRTUAL_ENV="/venvs/semgrep" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+    && VIRTUAL_ENV="/venvs/semgrep" rm -rf /venvs/semgrep/lib/python3.13/site-packages/setuptools/_vendor/wheel*  \
     && find /venvs \( -type f \( -iname \*.pyc -o -iname \*.pyo \) -o -type d -iname __pycache__ \) -delete \
     && rm -rf /root/.cache
 ENV PATH="${PATH}":/venvs/ansible-lint/bin:/venvs/cfn-lint/bin:/venvs/bandit/bin:/venvs/checkov/bin:/venvs/semgrep/bin

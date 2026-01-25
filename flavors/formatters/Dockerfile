@@ -166,35 +166,23 @@ ENV PATH="/root/.cargo/bin:/root/.cargo/env:${PATH}"
 #PIPVENV__START
 RUN uv pip install --system --no-cache pip==${PIP_PIP_VERSION} virtualenv==${PIP_VIRTUALENV_VERSION} \
     && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/rumdl" && VIRTUAL_ENV="/venvs/rumdl" uv pip install --no-cache rumdl==${PIP_RUMDL_VERSION} \
-    && if VIRTUAL_ENV="/venvs/rumdl" uv pip show wheel >/dev/null 2>&1; then \
-         VIRTUAL_ENV="/venvs/rumdl" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
-         && VIRTUAL_ENV="/venvs/rumdl" rm -rf /venvs/rumdl/lib/python3.13/site-packages/setuptools/_vendor/wheel*; \
-       fi \
+    && VIRTUAL_ENV="/venvs/rumdl" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+    && VIRTUAL_ENV="/venvs/rumdl" rm -rf /venvs/rumdl/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
     && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/black" && VIRTUAL_ENV="/venvs/black" uv pip install --no-cache black[jupyter]==${PIP_BLACK_VERSION} \
-    && if VIRTUAL_ENV="/venvs/black" uv pip show wheel >/dev/null 2>&1; then \
-         VIRTUAL_ENV="/venvs/black" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
-         && VIRTUAL_ENV="/venvs/black" rm -rf /venvs/black/lib/python3.13/site-packages/setuptools/_vendor/wheel*; \
-       fi \
+    && VIRTUAL_ENV="/venvs/black" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+    && VIRTUAL_ENV="/venvs/black" rm -rf /venvs/black/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
     && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/isort" && VIRTUAL_ENV="/venvs/isort" uv pip install --no-cache black==${PIP_BLACK_VERSION} isort==${PIP_ISORT_VERSION} \
-    && if VIRTUAL_ENV="/venvs/isort" uv pip show wheel >/dev/null 2>&1; then \
-         VIRTUAL_ENV="/venvs/isort" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
-         && VIRTUAL_ENV="/venvs/isort" rm -rf /venvs/isort/lib/python3.13/site-packages/setuptools/_vendor/wheel*; \
-       fi \
+    && VIRTUAL_ENV="/venvs/isort" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+    && VIRTUAL_ENV="/venvs/isort" rm -rf /venvs/isort/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
     && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/ruff-format" && VIRTUAL_ENV="/venvs/ruff-format" uv pip install --no-cache ruff==${PIP_RUFF_VERSION} \
-    && if VIRTUAL_ENV="/venvs/ruff-format" uv pip show wheel >/dev/null 2>&1; then \
-         VIRTUAL_ENV="/venvs/ruff-format" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
-         && VIRTUAL_ENV="/venvs/ruff-format" rm -rf /venvs/ruff-format/lib/python3.13/site-packages/setuptools/_vendor/wheel*; \
-       fi \
+    && VIRTUAL_ENV="/venvs/ruff-format" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+    && VIRTUAL_ENV="/venvs/ruff-format" rm -rf /venvs/ruff-format/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
     && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/rstfmt" && VIRTUAL_ENV="/venvs/rstfmt" uv pip install --no-cache rstfmt==${PIP_RSTFMT_VERSION} \
-    && if VIRTUAL_ENV="/venvs/rstfmt" uv pip show wheel >/dev/null 2>&1; then \
-         VIRTUAL_ENV="/venvs/rstfmt" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
-         && VIRTUAL_ENV="/venvs/rstfmt" rm -rf /venvs/rstfmt/lib/python3.13/site-packages/setuptools/_vendor/wheel*; \
-       fi \
+    && VIRTUAL_ENV="/venvs/rstfmt" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+    && VIRTUAL_ENV="/venvs/rstfmt" rm -rf /venvs/rstfmt/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
     && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/snakefmt" && VIRTUAL_ENV="/venvs/snakefmt" uv pip install --no-cache snakefmt==${PIP_SNAKEFMT_VERSION} \
-    && if VIRTUAL_ENV="/venvs/snakefmt" uv pip show wheel >/dev/null 2>&1; then \
-         VIRTUAL_ENV="/venvs/snakefmt" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
-         && VIRTUAL_ENV="/venvs/snakefmt" rm -rf /venvs/snakefmt/lib/python3.13/site-packages/setuptools/_vendor/wheel*; \
-       fi  \
+    && VIRTUAL_ENV="/venvs/snakefmt" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+    && VIRTUAL_ENV="/venvs/snakefmt" rm -rf /venvs/snakefmt/lib/python3.13/site-packages/setuptools/_vendor/wheel*  \
     && find /venvs \( -type f \( -iname \*.pyc -o -iname \*.pyo \) -o -type d -iname __pycache__ \) -delete \
     && rm -rf /root/.cache
 ENV PATH="${PATH}":/venvs/rumdl/bin:/venvs/black/bin:/venvs/isort/bin:/venvs/ruff-format/bin:/venvs/rstfmt/bin:/venvs/snakefmt/bin

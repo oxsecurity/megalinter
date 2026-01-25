@@ -660,13 +660,10 @@ def build_dockerfile(
                 + f'&& VIRTUAL_ENV="/venvs/{pip_linter}" uv pip install --no-cache '
                 + (" ".join(pip_linter_packages))
                 + " \\\n"
-                + f"    && if VIRTUAL_ENV=\"/venvs/{pip_linter}\" uv pip show wheel >/dev/null 2>&1; "
-                + "then \\\n"
-                + f"         VIRTUAL_ENV=\"/venvs/{pip_linter}\" uv pip install --no-cache --upgrade "
+                + f'    && VIRTUAL_ENV="/venvs/{pip_linter}" uv pip install --no-cache --upgrade '
                 + '"wheel>=0.46.2" "setuptools>=75.8.0" \\\n'
-                + f"         && VIRTUAL_ENV=\"/venvs/{pip_linter}\" rm -rf "
-                + f"/venvs/{pip_linter}/lib/python3.13/site-packages/setuptools/_vendor/wheel*; \\\n"
-                + "       fi \\\n"
+                + f"    && VIRTUAL_ENV=\"/venvs/{pip_linter}\" rm -rf "
+                + f"/venvs/{pip_linter}/lib/python3.13/site-packages/setuptools/_vendor/wheel* \\\n"
             )
             env_path_command += f":/venvs/{pip_linter}/bin"
         pipenv_install_command = pipenv_install_command[:-2]  # remove last \
