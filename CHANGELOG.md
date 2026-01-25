@@ -17,6 +17,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - New linters
 
 - Disabled linters
+  - LUA_SELENE: <https://github.com/Kampfkarren/selene/issues/662>
 
 - Deprecated linters
 
@@ -37,6 +38,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Add a link inviting to star MegaLinter
   - Display in the console reporter the working directory from which the commands are executed by @bdovaz
   - Update WebHook reporter so it can send more events for a better integration with UI
+  - When truncating long comments in markdown reports, keep the end of the text instead of the beginning (which usually contains less useful information)
 
 - Doc
   - JSON Schema: add default values for file extensions and file names variables + improve descriptions
@@ -50,6 +52,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - mega-linter-runner
   - If variables are defined in a local .env file, send their values to docker/podman run command (can be useful for secret variables)
   - Never send .env file to the docker run for security reasons, instead create an empty one if needed
+  - Use npm trusted publishers (OIDC) to publish mega-linter-runner
 
 - Linter versions upgrades (N)
   - [code-analyzer-apex](https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html) from 5.7.1 to **5.8.0** on 2026-01-05
@@ -87,6 +90,12 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [ruff](https://github.com/astral-sh/ruff) from 0.14.11 to **0.14.13** on 2026-01-22
   - [grype](https://github.com/anchore/grype) from 0.104.4 to **0.105.0** on 2026-01-22
   - [yamllint](https://yamllint.readthedocs.io/) from 1.37.1 to **1.38.0** on 2026-01-22
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.43.3 to **1.43.4** on 2026-01-25
+  - [jsonlint](https://github.com/prantlf/jsonlint) from 17.0.0 to **17.0.1** on 2026-01-25
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.92.4 to **3.92.5** on 2026-01-25
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.92 to **0.1.93** on 2026-01-25
+  - [snakemake](https://snakemake.github.io/) from 9.14.6 to **9.14.8** on 2026-01-25
+  - [swiftlint](https://github.com/realm/SwiftLint) from 0.63.0 to **0.63.1** on 2026-01-25
 <!-- linter-versions-end -->
 
 ## [v9.3.0] - 2026-01-04

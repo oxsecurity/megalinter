@@ -83,6 +83,8 @@ linters:
 
   # SELENE
   - linter_name: selene
+    disabled: true
+    disabled_reason: https://github.com/Kampfkarren/selene/issues/662
     linter_text: |
       **Selene** is a blazing-fast modern Lua linter written in Rust that provides comprehensive static analysis for Lua code. It offers extensive configurability and can be tailored to specific Lua environments like Roblox, World of Warcraft addons, or standard Lua.
 
