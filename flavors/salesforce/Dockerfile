@@ -92,7 +92,7 @@ ARG CARGO_SARIF_FMT_VERSION=0.8.0
 # renovate: datasource=npm depName=@salesforce/cli
 ARG NPM_SALESFORCE_CLI_VERSION=2.117.7
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
-ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.24.5
+ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.24.7
 # renovate: datasource=npm depName=sfdx-hardis
 ARG SFDX_HARDIS_VERSION=6.21.1
 # renovate: datasource=pypi depName=ansible-lint
@@ -126,7 +126,7 @@ ARG PIP_DJLINT_VERSION=1.36.4
 # renovate: datasource=npm depName=htmlhint
 ARG NPM_HTMLHINT_VERSION=1.8.0
 # renovate: datasource=npm depName=@prantlf/jsonlint
-ARG NPM_PRANTLF_JSONLINT_VERSION=17.0.0
+ARG NPM_PRANTLF_JSONLINT_VERSION=17.0.1
 # renovate: datasource=npm depName=v8r
 ARG NPM_V8R_VERSION=5.1.0
 # renovate: datasource=npm depName=prettier

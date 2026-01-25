@@ -40,7 +40,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=@prantlf/jsonlint
-          ARG NPM_PRANTLF_JSONLINT_VERSION=17.0.0
+          ARG NPM_PRANTLF_JSONLINT_VERSION=17.0.1
       npm:
         - "@prantlf/jsonlint@${NPM_PRANTLF_JSONLINT_VERSION}"
     supported_platforms:
