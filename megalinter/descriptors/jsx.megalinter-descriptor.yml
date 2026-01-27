@@ -9,8 +9,7 @@ file_extensions:
   - ".jsx"
 linters:
   # ESLINT
-  - class: EslintLinter
-    linter_name: eslint
+  - linter_name: eslint
     can_output_sarif: true
     linter_text: |
       **ESLint with React Plugin** provides comprehensive linting for JSX files, combining ESLint's powerful static analysis with React-specific rules to ensure high-quality React applications written in JavaScript.
@@ -38,18 +37,8 @@ linters:
       - eslint.config.js
       - eslint.config.mjs
       - eslint.config.cjs
-      - ".eslintrc.json"
-      - ".eslintrc.yml"
-      - ".eslintrc.yaml"
-      - ".eslintrc.js"
-      - ".eslintrc.cjs"
-      - "package.json:eslintConfig"
     cli_lint_mode: list_of_files
     config_file_name: eslint.config.js
-    cli_lint_extra_args:
-      - "--no-ignore"
-    ignore_file_name: .eslintignore
-    cli_lint_ignore_arg_name: --ignore-path
     cli_lint_fix_arg_name: "--fix"
     cli_sarif_args:
       - --format
@@ -60,13 +49,13 @@ linters:
     cli_lint_errors_regex: "✖ ([0-9]+) problem"
     examples:
       - "eslint myfile.jsx"
-      - "eslint -c .eslintrc.json --no-eslintrc --no-ignore myfile.jsx"
-      - "eslint --fix -c .eslintrc.json --no-eslintrc --no-ignore myfile.jsx"
+      - "eslint --config eslint.config.js myfile.jsx"
+      - "eslint --fix --config eslint.config.js myfile.jsx"
     install:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=eslint
-          ARG NPM_ESLINT_VERSION=8.57.1
+          ARG NPM_ESLINT_VERSION=9.39.2
         - |-
           # renovate: datasource=npm depName=eslint-plugin-react
           ARG NPM_ESLINT_PLUGIN_REACT_VERSION=7.37.5
@@ -76,11 +65,15 @@ linters:
         - |-
           # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
           ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
+        - |-
+          # renovate: datasource=npm depName=globals
+          ARG NPM_GLOBALS_VERSION=17.1.0
       npm:
         - eslint@${NPM_ESLINT_VERSION}
         - eslint-plugin-react@${NPM_ESLINT_PLUGIN_REACT_VERSION}
         - eslint-plugin-jsx-a11y@${NPM_ESLINT_PLUGIN_JSX_ALLY_VERSION}
         - "@microsoft/eslint-formatter-sarif@${NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION}"
+        - globals@${NPM_GLOBALS_VERSION}
     supported_platforms:
       platform:
         - linux/amd64
