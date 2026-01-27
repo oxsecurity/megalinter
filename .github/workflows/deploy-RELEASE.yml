@@ -141,26 +141,6 @@ jobs:
           inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter:v9", "target-image": "docker.io/oxsecurity/megalinter:latest" }'
           ref: main
 
-      - name: Build Flavor Builder Image
-        uses: docker/build-push-action@v6
-        with:
-          context: .
-          file: Dockerfile-custom-flavor
-          platforms: linux/amd64
-          build-args: |
-            BUILD_DATE=${{ env.BUILD_DATE }}
-            BUILD_REVISION=${{ github.sha }}
-            BUILD_VERSION=${{ github.event.release.tag_name }}
-          load: false
-          push: true
-          secrets: |
-            GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
-          # MAJOR-RELEASE-IMPACTED
-          tags: |
-            ghcr.io/oxsecurity/megalinter-custom-flavor-builder:v9
-            ghcr.io/oxsecurity/megalinter-custom-flavor-builder:${{ github.event.release.tag_name }}
-            ghcr.io/oxsecurity/megalinter-custom-flavor-builder:latest
-
       # - name: Build Worker Image
       #   uses: docker/build-push-action@v6
       #   with:
@@ -196,6 +176,139 @@ jobs:
       #   with:
       #     workflow: mirror-docker-image.yml
       #     inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter-worker:v9", "target-image": "docker.io/oxsecurity/megalinter-worker:latest" }'
+
+
+  build-custom-flavor-builder:
+    strategy:
+      matrix:
+        include:
+        - platform: linux/amd64
+          runner: ubuntu-latest
+        - platform: linux/arm64
+          runner: ubuntu-24.04-arm
+
+    # Name the Job
+    name: Deploy Docker Image (Custom Flavor Builder) - RELEASE
+    # Set the agent to run on
+    runs-on: ubuntu-latest
+    # Only run on main repo
+    if: github.repository == 'oxsecurity/megalinter' && !contains(github.event.head_commit.message, 'skip deploy')
+    permissions:
+      actions: write
+      packages: write
+    environment:
+      name: release
+    ##################
+    # Load all steps #
+    ##################
+    steps:
+      ##########################
+      # Checkout the code base #
+      ##########################
+      - name: Checkout Code
+        uses: actions/checkout@v6
+
+      - name: Prepare
+        run: |
+          platform=${{ matrix.platform }}
+          echo "PLATFORM_PAIR=${platform//\//-}" >> $GITHUB_ENV
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Get current date
+        run: echo "BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" >> ${GITHUB_ENV}
+
+      - name: Build Flavor Builder Image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: Dockerfile-custom-flavor
+          platforms: ${{ matrix.platform }}
+          build-args: |
+            BUILD_DATE=${{ env.BUILD_DATE }}
+            BUILD_REVISION=${{ github.sha }}
+            BUILD_VERSION=${{ github.event.release.tag_name }}
+          load: false
+          push: true
+          secrets: |
+            GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
+          # MAJOR-RELEASE-IMPACTED
+          tags: |
+            ghcr.io/${{ github.repository }}-custom-flavor-builder
+          outputs: type=image,push-by-digest=true,name-canonical=true,push=true
+
+      - name: Export digest
+        run: |
+          mkdir -p ${{ runner.temp }}/digests
+          digest="${{ steps.build.outputs.digest }}"
+          touch "${{ runner.temp }}/digests/${digest#sha256:}"
+
+      - name: Upload digest
+        uses: actions/upload-artifact@v4
+        with:
+          name: custom-flavor-builder-digests-${{ env.PLATFORM_PAIR }}
+          path: ${{ runner.temp }}/digests/*
+          if-no-files-found: error
+          retention-days: 1
+
+  merge-custom-flavor-builder:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: write
+
+    needs:
+      - build-custom-flavor-builder
+
+    steps:
+      - name: Download digests
+        uses: actions/download-artifact@v4
+        with:
+          path: ${{ runner.temp }}/digests
+          pattern: custom-flavor-builder-digests-*
+          merge-multiple: true
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ghcr.io/${{ github.repository }}-custom-flavor-builder
+          tags: |
+            type=raw,value=v9
+            type=raw,value=${{ github.event.release.tag_name }}
+            type=raw,value=latest
+
+      - name: Create manifest list and push
+        working-directory: ${{ runner.temp }}/digests
+        run: |
+          docker buildx imagetools create $(jq -cr '.tags | map("-t " + .) | join(" ")' <<< "$DOCKER_METADATA_OUTPUT_JSON") \
+            $(printf 'ghcr.io/${{ github.repository }}-custom-flavor-builder@sha256:%s ' *)
+
+      - name: Inspect image
+        run: |
+          docker buildx imagetools inspect ghcr.io/${{ github.repository }}-custom-flavor-builder:${{ steps.meta.outputs.version }}
 
   deploy_doc:
     runs-on: ubuntu-latest
