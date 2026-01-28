@@ -15,6 +15,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - If there are more than 500 .gitignored files, advise to add more excluded directories using variable ADDITIONAL_EXCLUDED_DIRECTORIES, to improve performances
 
 - New linters
+  - Add [PYTHON_NBQA_MYPY](https://nbqa.readthedocs.io/) for type-checking Jupyter notebooks using nbqa + mypy
 
 - Disabled linters
   - LUA_SELENE: <https://github.com/Kampfkarren/selene/issues/662>
