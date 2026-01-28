@@ -509,7 +509,7 @@ linters:
       **Note**: This linter only checks `.ipynb` files. Use PYTHON_MYPY for `.py` and `.pyi` files.
     linter_url: https://github.com/nbQA-dev/nbQA
     linter_repo: https://github.com/nbQA-dev/nbQA
-    linter_rules_url: https://nbqa.readthedocs.io/en/latest/how.html
+    linter_rules_url: https://github.com/nbQA-dev/nbQA
     linter_spdx_license: MIT
     linter_speed: 2
     examples:
