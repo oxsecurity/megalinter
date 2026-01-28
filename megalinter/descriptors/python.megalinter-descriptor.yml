@@ -485,6 +485,7 @@ linters:
     version_extract_regex: "(?<=mypy )\\d+(\\.\\d+)+"
     cli_config_arg_name: "--config-file"
     config_file_name: ".mypy.ini"
+    test_folder: python_nbqa_mypy
     linter_text: |
       **nbqa + mypy** provides static type checking for Jupyter notebooks.
 
