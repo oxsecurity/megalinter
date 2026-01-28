@@ -33,6 +33,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Add support for SSH remote origins when building custom flavors (fixes: #6511)
   - Fix issue with plugins ignored when FLAVOR_SUGGESTIONS=false
   - Fix wrong tagging `apply_fixes=True` when linter has no fix options configured
+  - Python mypy: Remove `.ipynb` from file extensions (mypy doesn't support notebooks directly) - fixes #6904
 
 - Reporters
   - Add a link inviting to star MegaLinter
