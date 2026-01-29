@@ -100,7 +100,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=proselint
-          ARG PIP_PROSELINT_VERSION=0.14.0
+          ARG PIP_PROSELINT_VERSION=0.16.0
       pip:
         - proselint==${PIP_PROSELINT_VERSION}
     supported_platforms:
