@@ -88,7 +88,7 @@ linters:
         - ARG TARGETPLATFORM
         - |-
           # renovate: datasource=dart-version depName=dart
-          ARG DART_VERSION='3.10.7'
+          ARG DART_VERSION='3.10.8'
         - |
           RUN case ${TARGETPLATFORM} in \
             "linux/amd64")  DART_ARCH=x64   ;; \
