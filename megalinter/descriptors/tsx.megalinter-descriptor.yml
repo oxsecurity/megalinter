@@ -9,8 +9,7 @@ file_extensions:
   - ".tsx"
 linters:
   # ESLINT
-  - class: EslintLinter
-    linter_name: eslint
+  - linter_name: eslint
     can_output_sarif: true
     linter_text: |
       **ESLint with React Plugin** provides comprehensive linting for TSX (TypeScript React) files, combining ESLint's powerful static analysis with React-specific rules to ensure high-quality React applications written in TypeScript.
@@ -35,20 +34,11 @@ linters:
     linter_megalinter_ref_url: https://eslint.org/docs/latest/use/integrations#source-control
     linter_spdx_license: MIT
     active_only_if_file_found:
-      - ".eslintrc.json"
-      - ".eslintrc.yml"
-      - ".eslintrc.yaml"
-      - ".eslintrc.js"
-      - ".eslintrc.cjs"
-      - "package.json:eslintConfig"
+      - "eslint.config.js"
+      - "eslint.config.mjs"
+      - "eslint.config.cjs"
     cli_lint_mode: list_of_files
-    config_file_name: .eslintrc.json
-    cli_config_extra_args:
-      - "--no-eslintrc"
-    cli_lint_extra_args:
-      - "--no-ignore"
-    ignore_file_name: .eslintignore
-    cli_lint_ignore_arg_name: --ignore-path
+    config_file_name: eslint.config.js
     cli_lint_fix_arg_name: "--fix"
     cli_sarif_args:
       - --format
@@ -59,8 +49,8 @@ linters:
     cli_lint_errors_regex: "✖ ([0-9]+) problem"
     examples:
       - "eslint myfile.tsx"
-      - "eslint -c .eslintrc.json --no-eslintrc --no-ignore myfile.tsx"
-      - "eslint --fix -c .eslintrc.json --no-eslintrc --no-ignore myfile.tsx"
+      - "eslint --config eslint.config.js myfile.tsx"
+      - "eslint --fix --config eslint.config.js myfile.tsx"
     install:
       dockerfile:
         - |-
@@ -68,10 +58,7 @@ linters:
           ARG NPM_TYPESCRIPT_VERSION=5.9.3
         - |-
           # renovate: datasource=npm depName=eslint
-          ARG NPM_ESLINT_VERSION=8.57.1
-        - |-
-          # renovate: datasource=npm depName=eslint-config-airbnb
-          ARG NPM_ESLINT_CONFIG_AIRBNB_VERSION=19.0.4
+          ARG NPM_ESLINT_VERSION=9.39.2
         - |-
           # renovate: datasource=npm depName=eslint-config-prettier
           ARG NPM_ESLINT_CONFIG_PRETTIER_VERSION=10.1.8
@@ -102,10 +89,12 @@ linters:
         - |-
           # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
           ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
+        - |-
+          # renovate: datasource=npm depName=globals
+          ARG NPM_GLOBALS_VERSION=17.1.0
       npm:
         - typescript@${NPM_TYPESCRIPT_VERSION}
         - eslint@${NPM_ESLINT_VERSION}
-        - eslint-config-airbnb@${NPM_ESLINT_CONFIG_AIRBNB_VERSION}
         - eslint-config-prettier@${NPM_ESLINT_CONFIG_PRETTIER_VERSION}
         - eslint-plugin-jest@${NPM_ESLINT_PLUGIN_JEST_VERSION}
         - eslint-plugin-prettier@${NPM_ESLINT_PLUGIN_PRETTIER_VERSION}
@@ -116,6 +105,7 @@ linters:
         - "@typescript-eslint/eslint-plugin@${NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION}"
         - "@typescript-eslint/parser@${NPM_TYPESCRIPT_ESLINT_PARSER_VERSION}"
         - "@microsoft/eslint-formatter-sarif@${NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION}"
+        - globals@${NPM_GLOBALS_VERSION}
     supported_platforms:
       platform:
         - linux/amd64
