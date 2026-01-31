@@ -97,6 +97,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.92 to **0.1.93** on 2026-01-25
   - [snakemake](https://snakemake.github.io/) from 9.14.6 to **9.14.8** on 2026-01-25
   - [swiftlint](https://github.com/realm/SwiftLint) from 0.63.0 to **0.63.1** on 2026-01-25
+  - [grype](https://github.com/anchore/grype) from 0.105.0 to **0.107.0** on 2026-01-31
+  - [syft](https://github.com/anchore/syft) from 1.40.1 to **1.41.1** on 2026-01-31
 <!-- linter-versions-end -->
 
 ## [v9.3.0] - 2026-01-04
