@@ -460,10 +460,6 @@ esac \
 # renovate: datasource=nuget depName=PSScriptAnalyzer registryUrl=https://www.powershellgallery.com/api/v2/
 ARG PSSA_VERSION='1.24.0'
 
-FROM multiarch/qemu-user-static:x86_64-aarch64 AS qemu
-COPY --from=qemu /usr/bin/qemu-aarch64-static /usr/bin/
-RUN apk add --no-cache libc6-compat
-
 RUN pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSION} -Scope AllUsers -Force'
 ```
 
