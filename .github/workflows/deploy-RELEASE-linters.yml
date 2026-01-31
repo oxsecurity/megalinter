@@ -36,17 +36,19 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       linters: ${{ steps.set-matrix.outputs.linters }}
+      linters_arm: ${{ steps.set-matrix.outputs.linters_arm }}
     steps:
       - name: Checkout Code
         uses: actions/checkout@v6
       - name: Read linters_matrix.json
         id: set-matrix
         run: |
-          echo "linters=$(cat .automation/generated/linters_matrix.json | jq -c)" >> $GITHUB_OUTPUT
+          echo "linters=$(cat .automation/generated/linters_matrix.json | jq -c '[.["linux/amd64"][]]')" >> $GITHUB_OUTPUT
+          echo "linters_arm=$(cat .automation/generated/linters_matrix.json | jq -c '[.["linux/arm64"][]]')" >> $GITHUB_OUTPUT
 
   build:
     name: Deploy Docker Image - Release - Linters
-    runs-on: ${{ matrix.os }}
+    runs-on: ${{ matrix.runner }}
     needs: get-linters-matrix
     permissions:
       actions: write
@@ -56,21 +58,40 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest]
         linter: ${{ fromJson(needs.get-linters-matrix.outputs.linters) }}
+        runner: ["ubuntu-latest", "ubuntu-24.04-arm"]
     # Only run this on the main repo
     if: github.repository == 'oxsecurity/megalinter' && !contains(github.event.head_commit.message, 'skip deploy')
     ##################
     # Load all steps #
     ##################
     steps:
+      # https://github.com/actions/runner/issues/1985
+      - name: Prepare
+        id: prepare
+        run: |
+          job_enabled=true
+          platforms=linux/amd64
+
+          ARM_RUNNER_REGEX="^ubuntu-.*-arm$"
+
+          if [[ "${{ matrix.runner }}" =~ $ARM_RUNNER_REGEX ]]; then
+            job_enabled="${{ contains(fromJson(needs.get-linters-matrix.outputs.linters_arm), matrix.linter) }}"
+            platforms=linux/arm64
+          fi
+
+          echo "job_enabled=$job_enabled" >> $GITHUB_OUTPUT
+          echo "platforms=$platforms" >> $GITHUB_OUTPUT
+
       ##########################
       # Checkout the code base #
       ##########################
       - name: Checkout Code
+        if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
         uses: actions/checkout@v6
 
       - name: Login to GitHub Container Registry
+        if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
         uses: docker/login-action@v3
         with:
           registry: ghcr.io
@@ -78,14 +99,16 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Get current date
+        if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
         run: echo "BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" >> ${GITHUB_ENV}
 
       - name: Build Image
+        if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
         uses: docker/build-push-action@v6
         with:
           context: .
           file: Dockerfile-release
-          platforms: linux/amd64
+          platforms: ${{ steps.prepare.outputs.platforms }}
           build-args: |
             MEGALINTER_BASE_IMAGE=docker.io/oxsecurity/megalinter-only-${{ matrix.linter }}:beta
             BUILD_DATE=${{ env.BUILD_DATE }}
@@ -102,6 +125,7 @@ jobs:
             ghcr.io/oxsecurity/megalinter-only-${{ matrix.linter }}:latest
 
       - name: Invoke Mirror docker image workflow (Standalone image)
+        if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
         uses: benc-uk/workflow-dispatch@v1
         with:
           workflow: mirror-docker-image.yml
@@ -109,6 +133,7 @@ jobs:
           inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter-only-${{ matrix.linter }}:v9", "target-image": "docker.io/oxsecurity/megalinter-only-${{ matrix.linter }}:v9", "free-space-before": "false" }'
           ref: main
       - name: Invoke Mirror docker image workflow (Standalone image)
+        if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
         uses: benc-uk/workflow-dispatch@v1
         with:
           workflow: mirror-docker-image.yml
@@ -116,6 +141,7 @@ jobs:
           inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter-only-${{ matrix.linter }}:v9", "target-image": "docker.io/oxsecurity/megalinter-only-${{ matrix.linter }}:${{ github.event.release.tag_name }}", "free-space-before": "false" }'
           ref: main
       - name: Invoke Mirror docker image workflow (Standalone image)
+        if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
         uses: benc-uk/workflow-dispatch@v1
         with:
           workflow: mirror-docker-image.yml
@@ -126,6 +152,7 @@ jobs:
       # Run Linter test cases #
       #####################################
       - name: Run Test Cases
+        if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
         shell: bash
         run: |
           GITHUB_REPOSITORY=$([ "${{ github.event_name }}" == "pull_request" ] && echo "${{ github.event.pull_request.head.repo.full_name }}" || echo "${{ github.repository }}")
@@ -141,6 +168,7 @@ jobs:
       # Check Docker image security with Trivy #
       ##############################################
       - name: Run Trivy vulnerability scanner
+        if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
         uses: aquasecurity/trivy-action@master
         with:
           image-ref: ghcr.io/oxsecurity/megalinter-only-${{ matrix.linter }}:${{ github.event.release.tag_name }}
