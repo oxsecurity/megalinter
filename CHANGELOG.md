@@ -118,6 +118,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [swiftlint](https://github.com/realm/SwiftLint) from 0.63.1 to **0.63.2** on 2026-02-01
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.14.1 to **1.14.4** on 2026-02-01
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.93.13 to **0.99.1** on 2026-02-01
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.14.13 to **0.14.14** on 2026-02-01
+  - [ruff](https://github.com/astral-sh/ruff) from 0.14.13 to **0.14.14** on 2026-02-01
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.68.2 to **0.69.0** on 2026-02-01
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.68.2 to **0.69.0** on 2026-02-01
 <!-- linter-versions-end -->
 
 ## [v9.3.0] - 2026-01-04
