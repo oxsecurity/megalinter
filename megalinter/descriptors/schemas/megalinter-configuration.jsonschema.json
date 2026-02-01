@@ -22717,10 +22717,10 @@
         "table-sections"
       ],
       "enumNames": [
-        "Sections",
-        "Table",
-        "Sections Table",
-        "Table Sections"
+        "Errors details only",
+        "Results Table only",
+        "Error details then Results Table",
+        "Results Table then Errors details"
       ],
       "title": "Reporters Markdown Summary type",
       "type": "string",
