@@ -104,7 +104,7 @@ linters:
           ARG NPM_BABEL_ESLINT_PARSER_VERSION=7.28.6
         - |-
           # renovate: datasource=npm depName=prettier
-          ARG NPM_PRETTIER_VERSION=3.7.4
+          ARG NPM_PRETTIER_VERSION=3.8.1
         - |-
           # renovate: datasource=npm depName=prettyjson
           ARG NPM_PRETTYJSON_VERSION=1.2.5
@@ -266,7 +266,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=prettier
-          ARG NPM_PRETTIER_VERSION=3.7.4
+          ARG NPM_PRETTIER_VERSION=3.8.1
       npm:
         - "prettier@${NPM_PRETTIER_VERSION}"
     supported_platforms:
