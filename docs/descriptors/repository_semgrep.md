@@ -119,6 +119,7 @@ semgrep
 ### Help content
 
 ```shell
+cmdliner error: Illegal escape char '\n' in "[INTERNAL] Dump symbol analysis results in JSON format, \\\n          ATD type 'symbol_analysis'.\n"
 NAME
        semgrep scan - run semgrep rules on files
 
@@ -302,10 +303,18 @@ OPTIONS
            it defaults to 3 hours.
 
        -j VAL, --jobs=VAL (absent=3)
-           Number of subprocesses to use to run checks in parallel. The
-           default is based on a best effort to determine the number of
-           logical CPUs that are available to the user and that semgrep can
-           take advantage of (1 if using --pro, 1 on Windows).
+           Degree of parallelism to use for parallel scanning, either using
+           shared-memory threads (the default) or the legacy process-based
+           parallelism (enabled with the deprecated --x-parmap flag). Semgrep
+           recommends under-provisioning the job count by 10-15 percent to
+           account for overhead from the garbage collector managing the
+           shared heap (for example, on a 12-core box, a -j value of 10 or 11
+           would be considered a good starting value). We highly recommend
+           that users do not _oversubscribe_ threads to CPUs, since this has
+           been seen to induce significant GC latency and slow scan times.
+           (Doing so will log a warning in debug mode.) The default jobs
+           value is derived from the number of logical cores that are
+           detected by Semgrep, scaled by 0.85.
 
        --json
            Output results in Semgrep's JSON format.
@@ -610,6 +619,10 @@ EXPERIMENTAL OPTIONS
            [INTERNAL] Disable transitive reachability analysis regardless of
            app-based configuration.
 
+       --x-dump-symbol-analysis
+           [INTERNAL] Dump symbol analysis results in JSON format, ATD type
+           'symbol_analysis'.
+
        --x-eio
            [INTERNAL] <deprecated>
 
@@ -721,8 +734,8 @@ BUGS
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=semgrep
-ARG PIP_SEMGREP_VERSION=1.147.0
+ARG PIP_SEMGREP_VERSION=1.150.0
 ```
 
 - PIP packages (Python):
-  - [semgrep==1.147.0](https://pypi.org/project/semgrep/1.147.0)
+  - [semgrep==1.150.0](https://pypi.org/project/semgrep/1.150.0)
