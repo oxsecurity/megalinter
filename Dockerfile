@@ -257,7 +257,7 @@ ARG NPM_MARKDOWNLINT_CLI_VERSION=0.47.0
 # renovate: datasource=npm depName=markdown-table-formatter
 ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.7.0
 # renovate: datasource=pypi depName=rumdl
-ARG PIP_RUMDL_VERSION=0.0.222
+ARG PIP_RUMDL_VERSION=0.0.224
 # renovate: datasource=github-tags depName=skaji/cpm
 ARG PERL_PERLCRITIC_VERSION=0.998003
 
