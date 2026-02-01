@@ -22752,7 +22752,7 @@
       "$id": "#/properties/REPORT_OUTPUT_FOLDER",
       "default": "megalinter-reports",
       "description": "The location where the output reporting will be generated to",
-      "title": "Output folder",
+      "title": "Reports Output folder",
       "type": "string",
       "x-category": "GENERAL",
       "x-order": 700000,
@@ -34640,7 +34640,7 @@
       "x-category": "GENERAL",
       "x-doc-key": "reporters/UpdatedSourcesReporter",
       "x-order": 700060,
-      "x-section": "OUTPUT"
+      "x-section": "FIXES"
     },
     "UPDATED_SOURCES_REPORTER_DIR": {
       "$id": "#/properties/UPDATED_SOURCES_REPORTER_DIR",
@@ -34649,7 +34649,7 @@
       "x-category": "GENERAL",
       "x-doc-key": "reporters/UpdatedSourcesReporter",
       "x-order": 700070,
-      "x-section": "OUTPUT"
+      "x-section": "FIXES"
     },
     "VALIDATE_ALL_CODEBASE": {
       "$id": "#/properties/VALIDATE_ALL_CODEBASE",
