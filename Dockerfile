@@ -20,7 +20,7 @@ ARG BASH_SHFMT_VERSION=v3.12.0-alpine
 # renovate: datasource=docker depName=hadolint/hadolint
 ARG DOCKERFILE_HADOLINT_VERSION=v2.14.0-alpine
 # renovate: datasource=docker depName=mstruebing/editorconfig-checker
-ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=v3.6.0
+ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=v3.6.1
 # renovate: datasource=github-tags depName=mgechev/revive
 ARG GO_REVIVE_VERSION=v1.13.0
 # renovate: datasource=docker depName=ghcr.io/yannh/kubeconform
@@ -44,7 +44,7 @@ ARG TERRAFORM_TFLINT_VERSION=0.60.0
 # renovate: datasource=docker depName=tenable/terrascan
 ARG TERRAFORM_TERRASCAN_VERSION=1.19.9
 # renovate: datasource=docker depName=alpine/terragrunt
-ARG TERRAFORM_TERRAGRUNT_VERSION=1.14.1
+ARG TERRAFORM_TERRAGRUNT_VERSION=1.14.4
 #ARGTOP__END
 
 #############################################################################################
@@ -89,7 +89,7 @@ FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} AS terragrunt
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.9.24 AS uv
+FROM ghcr.io/astral-sh/uv:0.9.28 AS uv
 FROM python:3.13-alpine3.23 AS build-ml-core
 RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
     && rm -rf /usr/local/lib/python3.13/site-packages/setuptools/_vendor/wheel*
@@ -132,7 +132,7 @@ ARG NPM_SALESFORCE_CLI_VERSION=2.117.7
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
 ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.24.7
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=6.21.1
+ARG SFDX_HARDIS_VERSION=6.23.5
 # renovate: datasource=npm depName=typescript
 ARG NPM_TYPESCRIPT_VERSION=5.9.3
 # renovate: datasource=pypi depName=ansible-lint
@@ -146,7 +146,7 @@ ARG ARM_TTK_DIRECTORY='/opt/microsoft'
 # renovate: datasource=crate depName=shellcheck-sarif
 ARG CARGO_SHELLCHECK_SARIF_VERSION=0.8.0
 # renovate: datasource=github-tags depName=Azure/bicep
-ARG BICEP_VERSION=0.39.26
+ARG BICEP_VERSION=0.40.2
 ARG BICEP_EXE='bicep'
 ARG BICEP_DIR='/usr/local/bin'
 # renovate: datasource=pypi depName=cpplint
@@ -175,7 +175,7 @@ ARG NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION=12.1.0
 # renovate: datasource=npm depName=stylelint-scss
 ARG NPM_STYLELINT_SCSS_VERSION=6.14.0
 # renovate: datasource=dart-version depName=dart
-ARG DART_VERSION='3.10.7'
+ARG DART_VERSION='3.10.8'
 # renovate: datasource=github-tags depName=dotenv-linter/dotenv-linter
 ARG DOTENV_LINTER_VERSION=4.0.0
 # renovate: datasource=npm depName=gherkin-lint
@@ -187,7 +187,7 @@ ARG NPM_GRAPHQL_VERSION=16.12.0
 # renovate: datasource=npm depName=graphql-schema-linter
 ARG NPM_GRAPHQL_SCHEMA_LINTER_VERSION=3.0.1
 # renovate: datasource=npm depName=npm-groovy-lint
-ARG NPM_GROOVY_LINT_VERSION=16.1.1
+ARG NPM_GROOVY_LINT_VERSION=16.2.0
 # renovate: datasource=pypi depName=djlint
 ARG PIP_DJLINT_VERSION=1.36.4
 # renovate: datasource=npm depName=htmlhint
@@ -195,7 +195,7 @@ ARG NPM_HTMLHINT_VERSION=1.8.0
 # renovate: datasource=github-releases depName=checkstyle/checkstyle
 ARG JAVA_CHECKSTYLE_VERSION=12.1.0
 # renovate: datasource=github-tags depName=pmd/pmd extractVersion=^pmd_releases/(?<version>.*)$
-ARG PMD_VERSION=7.20.0
+ARG PMD_VERSION=7.21.0
 
 # renovate: datasource=npm depName=eslint
 ARG NPM_ESLINT_VERSION=8.57.1
@@ -226,7 +226,7 @@ ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
 # renovate: datasource=npm depName=standard
 ARG NPM_STANDARD_VERSION=17.1.2
 # renovate: datasource=npm depName=prettier
-ARG NPM_PRETTIER_VERSION=3.7.4
+ARG NPM_PRETTIER_VERSION=3.8.1
 # renovate: datasource=npm depName=@prantlf/jsonlint
 ARG NPM_PRANTLF_JSONLINT_VERSION=17.0.1
 # renovate: datasource=npm depName=v8r
@@ -246,7 +246,7 @@ ARG KTLINT_VERSION=1.8.0
 ARG DETEKT_VERSION=1.23.8
 
 # renovate: datasource=github-tags depName=kubescape/kubescape
-ARG KUBERNETES_KUBESCAPE_VERSION=3.0.47
+ARG KUBERNETES_KUBESCAPE_VERSION=3.0.48
 # renovate: datasource=github-tags depName=cvega/luarocks
 ARG LUA_LUACHECK_VERSION=3.3.1
 
@@ -257,24 +257,24 @@ ARG NPM_MARKDOWNLINT_CLI_VERSION=0.47.0
 # renovate: datasource=npm depName=markdown-table-formatter
 ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.7.0
 # renovate: datasource=pypi depName=rumdl
-ARG PIP_RUMDL_VERSION=0.0.222
+ARG PIP_RUMDL_VERSION=0.0.224
 # renovate: datasource=github-tags depName=skaji/cpm
 ARG PERL_PERLCRITIC_VERSION=0.998003
 
 # renovate: datasource=packagist depName=squizlabs/php_codesniffer
 ARG PHP_SQUIZLABS_PHP_CODESNIFFER_VERSION=4.0.1
 # renovate: datasource=packagist depName=bartlett/sarif-php-converters
-ARG PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION=1.4.0
+ARG PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION=1.5.0
 # renovate: datasource=packagist depName=phpstan/phpstan
-ARG PHP_PHPSTAN_PHPSTAN_VERSION=2.1.35
+ARG PHP_PHPSTAN_PHPSTAN_VERSION=2.1.38
 # renovate: datasource=packagist depName=phpstan/extension-installer
 ARG PHP_PHPSTAN_EXTENSION_INSTALLER_VERSION=1.4.3
 # renovate: datasource=packagist depName=vimeo/psalm
-ARG PHP_VIMEO_PSALM_VERSION=6.14.3
+ARG PHP_VIMEO_PSALM_VERSION=6.15.0
 # renovate: datasource=packagist depName=overtrue/phplint
 ARG PHP_OVERTRUE_PHPLINT_VERSION=9.7.1
 # renovate: datasource=packagist depName=friendsofphp/php-cs-fixer
-ARG PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION=v3.92.5
+ARG PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION=v3.93.1
 # renovate: datasource=nuget depName=PSScriptAnalyzer registryUrl=https://www.powershellgallery.com/api/v2/
 ARG PSSA_VERSION='1.24.0'
 
@@ -303,11 +303,11 @@ ARG RAKU_RAKU_VERSION=2025.11
 ARG RAKU_RAKU_ALPINE_VERSION=3.22
 
 # renovate: datasource=pypi depName=checkov
-ARG PIP_CHECKOV_VERSION=3.2.497
+ARG PIP_CHECKOV_VERSION=3.2.499
 # renovate: datasource=nuget depName=Microsoft.CST.DevSkim.CLI
-ARG REPOSITORY_DEVSKIM_VERSION=1.0.67
+ARG REPOSITORY_DEVSKIM_VERSION=1.0.70
 # renovate: datasource=github-tags depName=anchore/grype
-ARG REPOSITORY_GRYPE_VERSION=0.104.4
+ARG REPOSITORY_GRYPE_VERSION=0.107.0
 # renovate: datasource=npm depName=@ls-lint/ls-lint
 ARG NPM_LS_LINT_LS_LINT_VERSION=2.3.1
 # renovate: datasource=npm depName=secretlint
@@ -317,9 +317,9 @@ ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=11.2.5
 # renovate: datasource=npm depName=@secretlint/secretlint-formatter-sarif
 ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=11.2.5
 # renovate: datasource=pypi depName=semgrep
-ARG PIP_SEMGREP_VERSION=1.147.0
+ARG PIP_SEMGREP_VERSION=1.150.0
 # renovate: datasource=github-tags depName=anchore/syft
-ARG REPOSITORY_SYFT_VERSION=1.40.1
+ARG REPOSITORY_SYFT_VERSION=1.41.1
 # renovate: datasource=github-tags depName=aquasecurity/trivy
 ARG REPOSITORY_TRIVY_VERSION=0.68.2
 # renovate: datasource=github-tags depName=aquasecurity/trivy
@@ -339,7 +339,7 @@ ARG PIP_RSTCHECK_CLICK_VERSION=8.3.1
 # renovate: datasource=pypi depName=rstfmt
 ARG PIP_RSTFMT_VERSION=0.0.14
 # renovate: datasource=rubygems depName=rubocop
-ARG GEM_RUBOCOP_VERSION=1.82.1
+ARG GEM_RUBOCOP_VERSION=1.84.0
 # renovate: datasource=rubygems depName=rubocop-github
 ARG GEM_RUBOCOP_GITHUB_VERSION=0.26.0
 # renovate: datasource=rubygems depName=rubocop-performance
@@ -355,9 +355,9 @@ ARG SALESFORCE_CODE_ANALYZER_VERSION=5.8.0
 # renovate: datasource=npm depName=@salesforce/sfdx-scanner
 ARG SALESFORCE_SFDX_SCANNER_VERSION=4.12.0
 # renovate: datasource=pypi depName=snakemake
-ARG PIP_SNAKEMAKE_VERSION=9.14.8
+ARG PIP_SNAKEMAKE_VERSION=9.16.2
 # renovate: datasource=pypi depName=snakefmt
-ARG PIP_SNAKEFMT_VERSION=0.11.2
+ARG PIP_SNAKEFMT_VERSION=0.11.3
 # renovate: datasource=npm depName=cspell
 ARG NPM_CSPELL_VERSION=9.4.0
 # renovate: datasource=pypi depName=proselint
@@ -385,7 +385,7 @@ ARG PIP_PIP_VERSION=25.3
 # renovate: datasource=pypi depName=virtualenv
 ARG PIP_VIRTUALENV_VERSION=20.36.1
 # renovate: datasource=github-tags depName=rust-lang/rust
-ARG RUST_RUST_VERSION=1.92.0
+ARG RUST_RUST_VERSION=1.93.0
 
 ARG ACTION_ACTIONLINT_VERSION
 ARG BASH_SHELLCHECK_VERSION
@@ -1278,7 +1278,7 @@ RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/refs/tags/v${REPOS
 #
 # swiftlint installation
 # renovate: datasource=docker depName=ghcr.io/realm/swiftlint
-ENV SWIFT_SWIFTLINT_VERSION=0.63.1
+ENV SWIFT_SWIFTLINT_VERSION=0.63.2
 #
 # tekton-lint installation
 #

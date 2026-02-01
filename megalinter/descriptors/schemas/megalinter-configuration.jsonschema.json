@@ -21340,8 +21340,7 @@
       "$id": "#/properties/PYTHON_MYPY_FILE_EXTENSIONS",
       "default": [
         ".py",
-        ".pyi",
-        ".ipynb"
+        ".pyi"
       ],
       "description": "PYTHON_MYPY: Override descriptor/linter matching files extensions that will be used to select files to lint",
       "examples": [

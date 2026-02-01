@@ -402,7 +402,6 @@ linters:
     file_extensions:
       - ".py"
       - ".pyi"
-      - ".ipynb"
     linter_text: |
       **MyPy** is Python's premier static type checker that brings optional static typing to Python through gradual typing. It analyzes type annotations and infers types to catch bugs before runtime, bridging the gap between Python's dynamic nature and static analysis benefits.
 

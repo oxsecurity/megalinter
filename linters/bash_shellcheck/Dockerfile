@@ -25,7 +25,7 @@ FROM koalaman/shellcheck:${BASH_SHELLCHECK_VERSION} AS shellcheck
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.9.24 AS uv
+FROM ghcr.io/astral-sh/uv:0.9.28 AS uv
 FROM python:3.13-alpine3.23 AS build-ml-core
 RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
     && rm -rf /usr/local/lib/python3.13/site-packages/setuptools/_vendor/wheel*
@@ -56,7 +56,7 @@ RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
 # renovate: datasource=crate depName=shellcheck-sarif
 ARG CARGO_SHELLCHECK_SARIF_VERSION=0.8.0
 # renovate: datasource=github-tags depName=rust-lang/rust
-ARG RUST_RUST_VERSION=1.92.0
+ARG RUST_RUST_VERSION=1.93.0
 
 ARG BASH_SHELLCHECK_VERSION
 #ARG__END

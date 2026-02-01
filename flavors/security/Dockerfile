@@ -31,7 +31,7 @@ ARG TERRAFORM_TFLINT_VERSION=0.60.0
 # renovate: datasource=docker depName=tenable/terrascan
 ARG TERRAFORM_TERRASCAN_VERSION=1.19.9
 # renovate: datasource=docker depName=alpine/terragrunt
-ARG TERRAFORM_TERRAGRUNT_VERSION=1.14.1
+ARG TERRAFORM_TERRAGRUNT_VERSION=1.14.4
 #ARGTOP__END
 
 #############################################################################################
@@ -55,7 +55,7 @@ FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} AS terragrunt
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.9.24 AS uv
+FROM ghcr.io/astral-sh/uv:0.9.28 AS uv
 FROM python:3.13-alpine3.23 AS build-ml-core
 RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
     && rm -rf /usr/local/lib/python3.13/site-packages/setuptools/_vendor/wheel*
@@ -92,17 +92,17 @@ ARG CARGO_SHELLCHECK_SARIF_VERSION=0.8.0
 # renovate: datasource=pypi depName=cfn-lint
 ARG PIP_CFN_LINT_VERSION=1.43.4
 # renovate: datasource=github-tags depName=kubescape/kubescape
-ARG KUBERNETES_KUBESCAPE_VERSION=3.0.47
+ARG KUBERNETES_KUBESCAPE_VERSION=3.0.48
 # renovate: datasource=pypi depName=bandit
 ARG PIP_BANDIT_VERSION=1.9.3
 # renovate: datasource=pypi depName=bandit_sarif_formatter
 ARG PIP_BANDIT_SARIF_FORMATTER_VERSION=1.1.1
 # renovate: datasource=pypi depName=checkov
-ARG PIP_CHECKOV_VERSION=3.2.497
+ARG PIP_CHECKOV_VERSION=3.2.499
 # renovate: datasource=nuget depName=Microsoft.CST.DevSkim.CLI
-ARG REPOSITORY_DEVSKIM_VERSION=1.0.67
+ARG REPOSITORY_DEVSKIM_VERSION=1.0.70
 # renovate: datasource=github-tags depName=anchore/grype
-ARG REPOSITORY_GRYPE_VERSION=0.104.4
+ARG REPOSITORY_GRYPE_VERSION=0.107.0
 # renovate: datasource=npm depName=secretlint
 ARG NPM_SECRETLINT_VERSION=11.2.5
 # renovate: datasource=npm depName=@secretlint/secretlint-rule-preset-recommend
@@ -110,9 +110,9 @@ ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=11.2.5
 # renovate: datasource=npm depName=@secretlint/secretlint-formatter-sarif
 ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=11.2.5
 # renovate: datasource=pypi depName=semgrep
-ARG PIP_SEMGREP_VERSION=1.147.0
+ARG PIP_SEMGREP_VERSION=1.150.0
 # renovate: datasource=github-tags depName=anchore/syft
-ARG REPOSITORY_SYFT_VERSION=1.40.1
+ARG REPOSITORY_SYFT_VERSION=1.41.1
 # renovate: datasource=github-tags depName=aquasecurity/trivy
 ARG REPOSITORY_TRIVY_VERSION=0.68.2
 # renovate: datasource=github-tags depName=aquasecurity/trivy
@@ -124,7 +124,7 @@ ARG PIP_PIP_VERSION=25.3
 # renovate: datasource=pypi depName=virtualenv
 ARG PIP_VIRTUALENV_VERSION=20.36.1
 # renovate: datasource=github-tags depName=rust-lang/rust
-ARG RUST_RUST_VERSION=1.92.0
+ARG RUST_RUST_VERSION=1.93.0
 
 ARG BASH_SHELLCHECK_VERSION
 ARG DOCKERFILE_HADOLINT_VERSION
