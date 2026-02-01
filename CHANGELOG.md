@@ -33,6 +33,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Add support for SSH remote origins when building custom flavors (fixes: #6511)
   - Fix issue with plugins ignored when FLAVOR_SUGGESTIONS=false
   - Fix wrong tagging `apply_fixes=True` when linter has no fix options configured
+  - Python mypy: Remove `.ipynb` from file extensions (mypy doesn't support notebooks directly) - fixes #6904
 
 - Reporters
   - Add a link inviting to star MegaLinter
@@ -90,6 +91,14 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [ruff](https://github.com/astral-sh/ruff) from 0.14.11 to **0.14.13** on 2026-01-22
   - [grype](https://github.com/anchore/grype) from 0.104.4 to **0.105.0** on 2026-01-22
   - [yamllint](https://yamllint.readthedocs.io/) from 1.37.1 to **1.38.0** on 2026-01-22
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.43.3 to **1.43.4** on 2026-01-25
+  - [jsonlint](https://github.com/prantlf/jsonlint) from 17.0.0 to **17.0.1** on 2026-01-25
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.92.4 to **3.92.5** on 2026-01-25
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.92 to **0.1.93** on 2026-01-25
+  - [snakemake](https://snakemake.github.io/) from 9.14.6 to **9.14.8** on 2026-01-25
+  - [swiftlint](https://github.com/realm/SwiftLint) from 0.63.0 to **0.63.1** on 2026-01-25
+  - [grype](https://github.com/anchore/grype) from 0.105.0 to **0.107.0** on 2026-01-31
+  - [syft](https://github.com/anchore/syft) from 1.40.1 to **1.41.1** on 2026-01-31
 <!-- linter-versions-end -->
 
 ## [v9.3.0] - 2026-01-04

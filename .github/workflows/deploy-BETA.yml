@@ -59,8 +59,7 @@ jobs:
               inputs: {
                 "dist-tag": "beta",
                 prerelease: "true",
-                preid: "beta",
-                environment: "release-runner",
+                preid: "beta"
               },
             });
 

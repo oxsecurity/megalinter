@@ -52,7 +52,7 @@ linters:
         - ARG TARGETPLATFORM
         - |-
           # renovate: datasource=github-tags depName=Azure/bicep
-          ARG BICEP_VERSION=0.39.26
+          ARG BICEP_VERSION=0.40.2
         - ARG BICEP_EXE='bicep'
         - ARG BICEP_DIR='/usr/local/bin'
         # https://stackoverflow.com/a/73711302
