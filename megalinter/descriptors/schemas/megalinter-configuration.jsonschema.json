@@ -22750,7 +22750,7 @@
     },
     "REPORT_OUTPUT_FOLDER": {
       "$id": "#/properties/REPORT_OUTPUT_FOLDER",
-      "default": "report",
+      "default": "megalinter-reports",
       "description": "The location where the output reporting will be generated to",
       "title": "Output folder",
       "type": "string",
