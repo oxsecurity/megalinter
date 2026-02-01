@@ -172,7 +172,7 @@ ARG REPOSITORY_TRIVY_SBOM_VERSION=0.68.2
 # renovate: datasource=pypi depName=snakemake
 ARG PIP_SNAKEMAKE_VERSION=9.16.2
 # renovate: datasource=pypi depName=snakefmt
-ARG PIP_SNAKEFMT_VERSION=0.11.2
+ARG PIP_SNAKEFMT_VERSION=0.11.3
 # renovate: datasource=npm depName=cspell
 ARG NPM_CSPELL_VERSION=9.4.0
 # renovate: datasource=pypi depName=proselint
