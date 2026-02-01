@@ -99,6 +99,25 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [swiftlint](https://github.com/realm/SwiftLint) from 0.63.0 to **0.63.1** on 2026-01-25
   - [grype](https://github.com/anchore/grype) from 0.105.0 to **0.107.0** on 2026-01-31
   - [syft](https://github.com/anchore/syft) from 1.40.1 to **1.41.1** on 2026-01-31
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.39.26 to **0.40.2** on 2026-02-01
+  - [dartanalyzer](https://dart.dev/tools/dart-analyze) from 3.10.7 to **3.10.8** on 2026-02-01
+  - [editorconfig-checker](https://editorconfig-checker.github.io/) from 3.6.0 to **3.6.1** on 2026-02-01
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 16.1.1 to **16.2.0** on 2026-02-01
+  - [pmd](https://pmd.github.io/) from 7.20.0 to **7.21.0** on 2026-02-01
+  - [prettier](https://prettier.io/) from 3.7.4 to **3.8.1** on 2026-02-01
+  - [kubescape](https://github.com/kubescape/kubescape) from 3.0.47 to **3.0.48** on 2026-02-01
+  - [rumdl](https://github.com/rvben/rumdl) from 0.0.222 to **0.0.224** on 2026-02-01
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.92.5 to **3.93.1** on 2026-02-01
+  - [phpstan](https://phpstan.org/) from 2.1.35 to **2.1.38** on 2026-02-01
+  - [psalm](https://psalm.dev) from Psalm.6.14.3@ to **Psalm.6.15.0@** on 2026-02-01
+  - [checkov](https://www.checkov.io/) from 3.2.497 to **3.2.499** on 2026-02-01
+  - [devskim](https://github.com/microsoft/DevSkim) from 1.0.67 to **1.0.70** on 2026-02-01
+  - [rubocop](https://rubocop.org/) from 1.82.1 to **1.84.0** on 2026-02-01
+  - [snakemake](https://snakemake.github.io/) from 9.14.8 to **9.16.2** on 2026-02-01
+  - [snakefmt](https://github.com/snakemake/snakefmt) from 0.11.2 to **0.11.3** on 2026-02-01
+  - [swiftlint](https://github.com/realm/SwiftLint) from 0.63.1 to **0.63.2** on 2026-02-01
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.14.1 to **1.14.4** on 2026-02-01
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.93.13 to **0.99.1** on 2026-02-01
 <!-- linter-versions-end -->
 
 ## [v9.3.0] - 2026-01-04
