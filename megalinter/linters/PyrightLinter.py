@@ -3,6 +3,7 @@
 Use Pyright to lint py files
 https://github.com/Microsoft/pyright/
 """
+
 import os
 
 from megalinter import Linter
@@ -19,13 +20,11 @@ class PyrightLinter(Linter):
             "w",
             encoding="utf-8",
         ) as f:
-            f.write(
-                """[tool.pyright]
+            f.write("""[tool.pyright]
 exclude = [
     "**/node_modules",
     "**/__pycache__"
-]"""
-            )
+]""")
 
     def post_test(self, test_name):
         os.remove(os.path.join(os.getcwd(), "pyproject.toml"))

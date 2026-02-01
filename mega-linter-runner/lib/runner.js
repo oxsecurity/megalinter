@@ -4,6 +4,7 @@ import { default as c } from 'chalk';
 import * as path from 'path';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
+import os from "os";
 import which from "which";
 import { default as fs } from "fs-extra";
 import { MegaLinterUpgrader } from "./upgrade.js";
@@ -165,6 +166,31 @@ export class MegaLinterRunner {
 
     // Build docker run options
     const lintPath = path.resolve(options.path || ".");
+    const dotenvPath = path.join(lintPath, ".env");
+    const envVarsFromDotenv = [];
+    let emptyEnvFile = null;
+    if (fs.existsSync(dotenvPath)) {
+      const dotenvContent = await fs.readFile(dotenvPath, "utf8");
+      dotenvContent.split(/\r?\n/).forEach((line) => {
+        const trimmedLine = line.trim();
+        if (!trimmedLine || trimmedLine.startsWith("#")) {
+          return;
+        }
+        const equalIndex = trimmedLine.indexOf("=");
+        if (equalIndex === -1) {
+          return;
+        }
+        const key = trimmedLine.slice(0, equalIndex).trim();
+        const value = trimmedLine.slice(equalIndex + 1).trim();
+        if (!key) {
+          return;
+        }
+        envVarsFromDotenv.push(`${key}=${value}`);
+      });
+      const tmpDir = await fs.mkdtemp(path.join(os.tmpdir(), "megalinter-"));
+      emptyEnvFile = path.join(tmpDir, "empty.env");
+      await fs.writeFile(emptyEnvFile, "");
+    }
     const commandArgs = ["run", "--platform", imagePlatform];
     const removeContainer = options["removeContainer"] ? true : options["noRemoveContainer"] ? false : true;
     if (removeContainer) {
@@ -175,6 +201,9 @@ export class MegaLinterRunner {
     }
     commandArgs.push(...["-v", "/var/run/docker.sock:/var/run/docker.sock:rw"]);
     commandArgs.push(...["-v", `${lintPath}:/tmp/lint:rw`]);
+    if (emptyEnvFile) {
+      commandArgs.push(...["-v", `${emptyEnvFile}:/tmp/lint/.env:ro`]);
+    }
     if (options.fix === true) {
       commandArgs.push(...["-e", "APPLY_FIXES=all"]);
     }
@@ -183,6 +212,11 @@ export class MegaLinterRunner {
     }
     if (options.json === true) {
       commandArgs.push(...["-e", "JSON_REPORTER=true"]);
+    }
+    if (envVarsFromDotenv.length > 0) {
+      for (const envVarEqualsValue of envVarsFromDotenv) {
+        commandArgs.push(...["-e", envVarEqualsValue]);
+      }
     }
     if (options.env) {
       for (const envVarEqualsValue of options.env) {

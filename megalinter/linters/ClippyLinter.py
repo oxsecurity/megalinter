@@ -2,6 +2,7 @@
 """
 Use Clippy to lint rust files
 """
+
 import logging
 import os
 

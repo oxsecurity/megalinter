@@ -377,7 +377,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=bandit
-          ARG PIP_BANDIT_VERSION=1.9.2
+          ARG PIP_BANDIT_VERSION=1.9.3
         - |-
           # renovate: datasource=pypi depName=bandit_sarif_formatter
           ARG PIP_BANDIT_SARIF_FORMATTER_VERSION=1.1.1
@@ -402,7 +402,6 @@ linters:
     file_extensions:
       - ".py"
       - ".pyi"
-      - ".ipynb"
     linter_text: |
       **MyPy** is Python's premier static type checker that brings optional static typing to Python through gradual typing. It analyzes type annotations and infers types to catch bugs before runtime, bridging the gap between Python's dynamic nature and static analysis benefits.
 
@@ -610,7 +609,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=ruff
-          ARG PIP_RUFF_VERSION=0.14.11
+          ARG PIP_RUFF_VERSION=0.14.13
       pip:
         - ruff==${PIP_RUFF_VERSION}
     supported_platforms:
@@ -675,7 +674,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=ruff
-          ARG PIP_RUFF_VERSION=0.14.11
+          ARG PIP_RUFF_VERSION=0.14.13
       pip:
         - ruff==${PIP_RUFF_VERSION}
     supported_platforms:

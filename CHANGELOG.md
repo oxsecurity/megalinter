@@ -11,10 +11,13 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Core
   - Improve files browsing performances
   - Optimize parallel linter processing and improve grouping logic
+  - Improve performance of listing .gitignored files by sending excluded directories to git ls-files
+  - If there are more than 500 .gitignored files, advise to add more excluded directories using variable ADDITIONAL_EXCLUDED_DIRECTORIES, to improve performances
 
 - New linters
 
 - Disabled linters
+  - LUA_SELENE: <https://github.com/Kampfkarren/selene/issues/662>
 
 - Deprecated linters
 
@@ -30,11 +33,13 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Add support for SSH remote origins when building custom flavors (fixes: #6511)
   - Fix issue with plugins ignored when FLAVOR_SUGGESTIONS=false
   - Fix wrong tagging `apply_fixes=True` when linter has no fix options configured
+  - Python mypy: Remove `.ipynb` from file extensions (mypy doesn't support notebooks directly) - fixes #6904
 
 - Reporters
   - Add a link inviting to star MegaLinter
   - Display in the console reporter the working directory from which the commands are executed by @bdovaz
   - Update WebHook reporter so it can send more events for a better integration with UI
+  - When truncating long comments in markdown reports, keep the end of the text instead of the beginning (which usually contains less useful information)
 
 - Doc
   - JSON Schema: add default values for file extensions and file names variables + improve descriptions
@@ -46,6 +51,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Free more space on GitHub Actions runners to avoid build failures
 
 - mega-linter-runner
+  - If variables are defined in a local .env file, send their values to docker/podman run command (can be useful for secret variables)
+  - Never send .env file to the docker run for security reasons, instead create an empty one if needed
+  - Use npm trusted publishers (OIDC) to publish mega-linter-runner
 
 - Linter versions upgrades (N)
   - [code-analyzer-apex](https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html) from 5.7.1 to **5.8.0** on 2026-01-05
@@ -71,6 +79,26 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [rumdl](https://github.com/rvben/rumdl) from 0.0.215 to **0.0.216** on 2026-01-13
   - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 9.0.112 to **9.0.113** on 2026-01-15
   - [syft](https://github.com/anchore/syft) from 1.40.0 to **1.40.1** on 2026-01-15
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 26.1.0 to **26.1.1** on 2026-01-22
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2026.01.12 to **2026.01.19** on 2026-01-22
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.43.2 to **1.43.3** on 2026-01-22
+  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd) from 4.0.5 to **4.0.7** on 2026-01-22
+  - [rumdl](https://github.com/rvben/rumdl) from 0.0.216 to **0.0.222** on 2026-01-22
+  - [phpstan](https://phpstan.org/) from 2.1.33 to **2.1.35** on 2026-01-22
+  - [bandit](https://bandit.readthedocs.io/en/latest/) from 1.9.2 to **1.9.3** on 2026-01-22
+  - [black](https://black.readthedocs.io/en/stable/) from 25.12.0 to **26.1.0** on 2026-01-22
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.14.11 to **0.14.13** on 2026-01-22
+  - [ruff](https://github.com/astral-sh/ruff) from 0.14.11 to **0.14.13** on 2026-01-22
+  - [grype](https://github.com/anchore/grype) from 0.104.4 to **0.105.0** on 2026-01-22
+  - [yamllint](https://yamllint.readthedocs.io/) from 1.37.1 to **1.38.0** on 2026-01-22
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.43.3 to **1.43.4** on 2026-01-25
+  - [jsonlint](https://github.com/prantlf/jsonlint) from 17.0.0 to **17.0.1** on 2026-01-25
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.92.4 to **3.92.5** on 2026-01-25
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.92 to **0.1.93** on 2026-01-25
+  - [snakemake](https://snakemake.github.io/) from 9.14.6 to **9.14.8** on 2026-01-25
+  - [swiftlint](https://github.com/realm/SwiftLint) from 0.63.0 to **0.63.1** on 2026-01-25
+  - [grype](https://github.com/anchore/grype) from 0.105.0 to **0.107.0** on 2026-01-31
+  - [syft](https://github.com/anchore/syft) from 1.40.1 to **1.41.1** on 2026-01-31
 <!-- linter-versions-end -->
 
 ## [v9.3.0] - 2026-01-04

@@ -2,6 +2,7 @@
 """
 Use GitLeaks to check for credentials in repository
 """
+
 import json
 import os
 

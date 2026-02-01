@@ -40,7 +40,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=@prantlf/jsonlint
-          ARG NPM_PRANTLF_JSONLINT_VERSION=17.0.0
+          ARG NPM_PRANTLF_JSONLINT_VERSION=17.0.1
       npm:
         - "@prantlf/jsonlint@${NPM_PRANTLF_JSONLINT_VERSION}"
     supported_platforms:
@@ -261,7 +261,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=prettier
-          ARG NPM_PRETTIER_VERSION=3.7.4
+          ARG NPM_PRETTIER_VERSION=3.8.1
       npm:
         - "prettier@${NPM_PRETTIER_VERSION}"
     supported_platforms:

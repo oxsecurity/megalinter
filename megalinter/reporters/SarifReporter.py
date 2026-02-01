@@ -2,6 +2,7 @@
 """
 Produce SARIF report
 """
+
 import json
 import logging
 import os

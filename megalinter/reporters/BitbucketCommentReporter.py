@@ -3,6 +3,7 @@
 Bitbucket Comment reporter
 Post a comment on Bitbucket Merge Requests
 """
+
 import logging
 import urllib.parse
 
