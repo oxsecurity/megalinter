@@ -56,7 +56,7 @@ RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
 # renovate: datasource=crate depName=shellcheck-sarif
 ARG CARGO_SHELLCHECK_SARIF_VERSION=0.8.0
 # renovate: datasource=github-tags depName=rust-lang/rust
-ARG RUST_RUST_VERSION=1.92.0
+ARG RUST_RUST_VERSION=1.93.0
 
 ARG BASH_SHELLCHECK_VERSION
 #ARG__END
