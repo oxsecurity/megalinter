@@ -62,7 +62,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=checkov
-          ARG PIP_CHECKOV_VERSION=3.2.497
+          ARG PIP_CHECKOV_VERSION=3.2.499
       pip:
         - checkov==${PIP_CHECKOV_VERSION}
     supported_platforms:
@@ -136,7 +136,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=nuget depName=Microsoft.CST.DevSkim.CLI
-          ARG REPOSITORY_DEVSKIM_VERSION=1.0.67
+          ARG REPOSITORY_DEVSKIM_VERSION=1.0.70
         - RUN apk add --no-cache dotnet9-sdk
         - ENV PATH="${PATH}:/root/.dotnet/tools"
         - RUN dotnet tool install --allow-roll-forward --global Microsoft.CST.DevSkim.CLI --version ${REPOSITORY_DEVSKIM_VERSION}
@@ -436,7 +436,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=github-tags depName=anchore/grype
-          ARG REPOSITORY_GRYPE_VERSION=0.104.4
+          ARG REPOSITORY_GRYPE_VERSION=0.107.0
         - RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/refs/tags/v${REPOSITORY_GRYPE_VERSION}/install.sh | sh -s -- -b /usr/local/bin
     supported_platforms:
       platform:
@@ -675,7 +675,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=semgrep
-          ARG PIP_SEMGREP_VERSION=1.147.0
+          ARG PIP_SEMGREP_VERSION=1.150.0
       pip:
         - semgrep==${PIP_SEMGREP_VERSION}
     variables:
@@ -739,7 +739,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=github-tags depName=anchore/syft
-          ARG REPOSITORY_SYFT_VERSION=1.40.0
+          ARG REPOSITORY_SYFT_VERSION=1.41.1
         - RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/refs/tags/v${REPOSITORY_SYFT_VERSION}/install.sh | sh -s -- -b /usr/local/bin
     supported_platforms:
       platform:
@@ -770,6 +770,18 @@ linters:
       - **Extensive Integration**: Works with major CI/CD platforms, container registries, and security orchestration tools
 
       **Note**: You can ignore specific findings by defining a [.trivyignore file](https://aquasecurity.github.io/trivy/latest/docs/configuration/filtering/#by-finding-ids) at your repository root.
+
+      **Tip**: if you see errors related to files that do not exist, you can bypass them using "--skip-dirs"
+
+      Example:
+
+      ```yaml
+      REPOSITORY_TRIVY_ARGUMENTS:
+      - "--skip-dirs"
+      - ".venv"
+      - "--skip-dirs"
+      - "github_conf"
+      ```
     linter_url: https://aquasecurity.github.io/trivy/
     linter_repo: https://github.com/aquasecurity/trivy
     linter_speed: 2
@@ -800,7 +812,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=github-tags depName=aquasecurity/trivy
-          ARG REPOSITORY_TRIVY_VERSION=0.68.2
+          ARG REPOSITORY_TRIVY_VERSION=0.69.0
         - |
           RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin "v${REPOSITORY_TRIVY_VERSION}" \
               && (trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress)
@@ -865,7 +877,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=github-tags depName=aquasecurity/trivy
-          ARG REPOSITORY_TRIVY_SBOM_VERSION=0.68.2
+          ARG REPOSITORY_TRIVY_SBOM_VERSION=0.69.0
         - |
           RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin "v${REPOSITORY_TRIVY_SBOM_VERSION}" \
               && (trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress)
@@ -923,7 +935,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=docker depName=trufflesecurity/trufflehog
-          ARG REPOSITORY_TRUFFLEHOG_VERSION=3.92.4
+          ARG REPOSITORY_TRUFFLEHOG_VERSION=3.92.5
         - FROM trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION} AS trufflehog
         - COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
     supported_platforms:

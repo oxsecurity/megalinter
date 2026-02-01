@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Tests for MegaLinter file listing helpers."""
+
 import os
 import tempfile
 import unittest

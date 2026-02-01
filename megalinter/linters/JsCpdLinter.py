@@ -3,6 +3,7 @@
 Use JSCPD to detect copy-pastes
 https://github.com/kucherenko/jscpd
 """
+
 import os
 import shutil
 

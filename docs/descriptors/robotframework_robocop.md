@@ -115,13 +115,13 @@ robocop check myfile.robot
 │                                                      exit.                   │
 ╰──────────────────────────────────────────────────────────────────────────────╯
 ╭─ Commands ───────────────────────────────────────────────────────────────────╮
-│ check           Lint Robot Framework files.                                  │
-│ check-project   Analyse the whole project using project level checkers.      │
-│ format          Format Robot Framework files.                                │
-│ list            List available rules, reports or formatters.                 │
-│ docs            Print formatter, rule or report documentation.               │
-│ migrate         Migrate Robocop and Robotidy old configuration files to the  │
-│                 new format supported by the Robocop 6.0.                     │
+│ check          Lint Robot Framework files.                                   │
+│ check-project  Analyse the whole project using project level checkers.       │
+│ format         Format Robot Framework files.                                 │
+│ list           List available rules, reports or formatters.                  │
+│ docs           Print formatter, rule or report documentation.                │
+│ migrate        Migrate Robocop and Robotidy old configuration files to the   │
+│                new format supported by the Robocop 6.0.                      │
 ╰──────────────────────────────────────────────────────────────────────────────╯
 
 ```

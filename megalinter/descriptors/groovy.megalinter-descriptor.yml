@@ -62,7 +62,7 @@ linters:
         - ENV JAVA_HOME_17=/usr/lib/jvm/java-17-openjdk
         - |-
           # renovate: datasource=npm depName=npm-groovy-lint
-          ARG NPM_GROOVY_LINT_VERSION=16.1.1
+          ARG NPM_GROOVY_LINT_VERSION=16.2.0
       npm:
         - npm-groovy-lint@${NPM_GROOVY_LINT_VERSION}
     supported_platforms:

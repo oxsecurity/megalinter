@@ -43,6 +43,8 @@ CVE-2025-58187
 CVE-2025-58188
 CVE-2025-61723
 CVE-2025-61724
+CVE-2025-61726
+CVE-2025-61728
 
 # go-git
 CVE-2025-21613
@@ -180,6 +182,14 @@ CVE-2025-68156
 CVE-2026-22701
 # https://github.com/advisories/GHSA-58pv-8j8x-9vj2 : jaraco.context Has a Path Traversal Vulnerability. jaraco & setuptools are not used in MegaLinter context
 GHSA-58pv-8j8x-9vj2
+# https://avd.aquasec.com/nvd/cve-2026-23745 : Node tar, not applicable in MegaLinter context
+CVE-2026-23745
+# https://avd.aquasec.com/nvd/cve-2026-23950 : Node tar, not applicable in MegaLinter context
+CVE-2026-23950
+# https://avd.aquasec.com/nvd/cve-2026-25128: fast-xml-parser has RangeError DoS Numeric Entities Bug: Biggest risk is crashing the application when reading a malicious XML file, not applicable in MegaLinter context
+CVE-2026-25128
+# https://avd.aquasec.com/nvd/cve-2026-24842: Node tar, not applicable in MegaLinter context
+CVE-2026-24842
 # Dockerfile
 DS001
 DS002

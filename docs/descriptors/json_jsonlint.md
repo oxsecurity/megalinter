@@ -22,7 +22,7 @@ description: How to use jsonlint (configure, ignore files, ignore errors, help &
 
 ## jsonlint documentation
 
-- Version in MegaLinter: **17.0.0**
+- Version in MegaLinter: **17.0.1**
 - Visit [Official Web Site](https://github.com/prantlf/jsonlint#readme){target=_blank}
 - See [How to configure jsonlint rules](https://github.com/prantlf/jsonlint#configuration){target=_blank}
 - See [Index of problems detected by jsonlint](https://github.com/prantlf/jsonlint#configuration){target=_blank}
@@ -182,8 +182,8 @@ Examples:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=@prantlf/jsonlint
-ARG NPM_PRANTLF_JSONLINT_VERSION=17.0.0
+ARG NPM_PRANTLF_JSONLINT_VERSION=17.0.1
 ```
 
 - NPM packages (node.js):
-  - [@prantlf/jsonlint@17.0.0](https://www.npmjs.com/package/@prantlf/jsonlint/v/17.0.0)
+  - [@prantlf/jsonlint@17.0.1](https://www.npmjs.com/package/@prantlf/jsonlint/v/17.0.1)
