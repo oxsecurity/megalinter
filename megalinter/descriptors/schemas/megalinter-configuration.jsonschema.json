@@ -14893,14 +14893,14 @@
     },
     "LLM_ADVISOR_ENABLED": {
       "$id": "#/properties/LLM_ADVISOR_ENABLED",
-      "default": "false",
+      "default": false,
       "description": "Enable AI-powered fix suggestions using Large Language Models",
-      "examples": [
-        "true",
-        "false"
+      "examples":  [
+        true,
+        false
       ],
       "title": "LLM Advisor enabled",
-      "type": "string",
+      "type": "boolean",
       "x-category": "LLM",
       "x-order": 950999,
       "x-section": "GENERAL"
