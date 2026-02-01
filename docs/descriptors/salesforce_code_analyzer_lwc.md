@@ -139,7 +139,7 @@ GLOBAL FLAGS
  ›   Warning: @salesforce/cli update available from 2.117.7 to 2.120.3.
 
 Streaming logs in real time to:
-    /tmp/sfca-2026_01_31_22_18_08_633.log
+    /tmp/sfca-2026_02_01_15_40_34_111.log
 
 Selecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 0%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 14%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 28%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 30%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 31%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 32%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 33%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 34%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 35%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 36%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 37%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 38%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 39%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 40%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 41%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 42%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 53%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 57%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 62%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 72%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 74%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 75%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 75%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 84%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 85%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 87%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 96%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 98%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 99%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 100%; Elapsed time: 1sSelecting rules... done.
 
@@ -224,7 +224,7 @@ Found 70 rule(s) from 1 engine(s):
     70 eslint rule(s) found.
 
 Additional log information written to:
-    /tmp/sfca-2026_01_31_22_18_08_633.log
+    /tmp/sfca-2026_02_01_15_40_34_111.log
 ```
 
 ### Installation on mega-linter Docker image
@@ -235,9 +235,9 @@ Additional log information written to:
 # renovate: datasource=npm depName=@salesforce/cli
 ARG NPM_SALESFORCE_CLI_VERSION=2.117.7
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
-ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.24.7
+ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.24.10
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=6.21.1
+ARG SFDX_HARDIS_VERSION=6.23.5
 ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 RUN sf plugins install @salesforce/plugin-packaging@${NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION} \

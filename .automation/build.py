@@ -1751,7 +1751,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                         "type": "array",
                         "description": (
                             title_prefix
-                            + f"{linter.name}: Define bash commands to run before running the linter"
+                            + f"{linter.name}: Define bash commands to run before running {linter.name}"
                         ),
                         "examples": [
                             [
@@ -1773,7 +1773,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                         "type": "array",
                         "description": (
                             title_prefix
-                            + f"{linter.name}: Define bash commands to run after running the linter"
+                            + f"{linter.name}: Define bash commands to run after running {linter.name}"
                         ),
                         "examples": [
                             [
@@ -1795,7 +1795,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                         "default": False,
                         "description": (
                             f"{linter.name}: "
-                            "If true, the linter doesn't make MegaLinter fail even if errors are found"
+                            f"If true, {linter.name} doesn't make MegaLinter fail even if errors are found"
                         ),
                         "title": (title_prefix + f"{linter.name}: Disable errors"),
                     },
@@ -1808,7 +1808,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                         "default": 0,
                         "description": (
                             f"{linter.name}: "
-                            "If the number of errors found is less than this value, the linter doesn't "
+                            f"If the number of errors found is less than this value, {linter.name} doesn't "
                             "make MegaLinter fail"
                         ),
                         "title": f"{title_prefix}{linter.name}: Maximum number of errors allowed",

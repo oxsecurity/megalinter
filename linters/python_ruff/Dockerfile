@@ -53,7 +53,7 @@ RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
 #############################################################################################
 #ARG__START
 # renovate: datasource=pypi depName=ruff
-ARG PIP_RUFF_VERSION=0.14.13
+ARG PIP_RUFF_VERSION=0.14.14
 # renovate: datasource=pypi depName=pip
 ARG PIP_PIP_VERSION=25.3
 # renovate: datasource=pypi depName=virtualenv

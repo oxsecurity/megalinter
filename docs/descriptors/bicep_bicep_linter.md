@@ -24,7 +24,7 @@ By default, Bicep linter errors are set as warnings. To customize linter setting
 
 ## bicep_linter documentation
 
-- Version in MegaLinter: **0.39.26**
+- Version in MegaLinter: **0.40.2**
 - Visit [Official Web Site](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter){target=_blank}
 - See [How to configure bicep_linter rules](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/bicep-config){target=_blank}
 - See [How to disable bicep_linter rules in files](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter#silencing-false-positives){target=_blank}
@@ -98,7 +98,7 @@ az bicep build -f infra.bicep
 ### Help content
 
 ```shell
-Bicep CLI version 0.39.26 (1e90b06e40)
+Bicep CLI version 0.40.2 (271b0e1d4b)
 
 Usage:
   bicep build [options] [<file>]
@@ -310,7 +310,7 @@ Usage:
 ```dockerfile
 ARG TARGETPLATFORM
 # renovate: datasource=github-tags depName=Azure/bicep
-ARG BICEP_VERSION=0.39.26
+ARG BICEP_VERSION=0.40.2
 ARG BICEP_EXE='bicep'
 ARG BICEP_DIR='/usr/local/bin'
 FROM multiarch/qemu-user-static:x86_64-aarch64 AS qemu
