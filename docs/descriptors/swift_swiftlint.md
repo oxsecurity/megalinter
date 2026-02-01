@@ -22,7 +22,7 @@ description: How to use swiftlint (configure, ignore files, ignore errors, help 
 
 ## swiftlint documentation
 
-- Version in MegaLinter: **0.63.0**
+- Version in MegaLinter: **0.63.1**
 - Visit [Official Web Site](https://github.com/realm/SwiftLint#readme){target=_blank}
 - Docker image: [ghcr.io/realm/swiftlint:SWIFT_SWIFTLINT_VERSION](https://hub.docker.com/r/ghcr.io/realm/swiftlint){target=_blank}
   - arguments: `-v {{WORKSPACE}}:/tmp/lint:rw -w /tmp/lint`
@@ -162,6 +162,8 @@ OPTIONS:
   --no-cache              Ignore cache when linting.
   --enable-all-rules      Run all rules, even opt-in and disabled ones,
                           ignoring `only_rules`.
+  --disable-sourcekit     Do not dynamically load SourceKit at runtime. Skip
+                          and report rules that require it.
   --version               Show the version.
   -h, --help              Show help information.
 
@@ -172,6 +174,6 @@ OPTIONS:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=docker depName=ghcr.io/realm/swiftlint
-ENV SWIFT_SWIFTLINT_VERSION=0.63.0
+ENV SWIFT_SWIFTLINT_VERSION=0.63.1
 ```
 
